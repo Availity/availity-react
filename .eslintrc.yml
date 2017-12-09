@@ -1,0 +1,11 @@
+extends: availity/browser
+env:
+  jest: true
+rules:
+  object-curly-newline: 0
+  function-paren-newline: 0
+  import/no-extraneous-dependencies:
+    - error
+    - packageDir: '.'
+
+

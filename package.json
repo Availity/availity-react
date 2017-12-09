@@ -1,0 +1,136 @@
+{
+  "name": "@availity/availity-react",
+  "private": true,
+  "description": "React components using Availity UIKit and Bootstrap 4",
+  "repository": {
+    "type": "git",
+    "url": "git+ssh://git@github.com/Availity/availity-react.git"
+  },
+  "scripts": {
+    "format": "prettier --write 'packages/*/*.js' 'packages/*/!(node_modules)/**/*.js' 'packages/*/!(docs)/**/*.js'",
+    "lint": "eslint ./packages",
+    "bootstrap": "lerna bootstrap --hoist",
+    "link": "lerna link",
+    "clean": "lerna clean",
+    "precommit": "lint-staged",
+    "test": "jest",
+    "postinstall": "npm run bootstrap",
+    "start": "start-storybook -p 2222 -c .storybook",
+    "build:docs": "build-storybook -c .storybook -o docs/stories",
+    "release": "sh ./scripts/release.sh"
+  },
+  "dependencies": {
+    "@availity/api-axios": "^1.0.0-alpha.0",
+    "@availity/api-core": "^1.0.0-alpha.0",
+    "@availity/localstorage-core": "^1.0.0-alpha.0",
+    "@storybook/addon-actions": "^3.2.16",
+    "@storybook/addon-links": "^3.2.16",
+    "@storybook/react": "^3.2.16",
+    "availity-uikit": "^3.0.0-beta.14",
+    "axios": "^0.17.1",
+    "axios-mock-adapter": "^1.9.0",
+    "prop-types": "^15.6.0",
+    "react": "^16.0.0",
+    "react-dom": "^16.0.0"
+  },
+  "devDependencies": {
+    "@storybook/addon-a11y": "^3.2.17",
+    "@storybook/addon-options": "^3.2.17",
+    "babel-core": "^6.26.0",
+    "babel-eslint": "^8.0.2",
+    "babel-jest": "^21.2.0",
+    "babel-plugin-transform-class-properties": "^6.24.1",
+    "babel-plugin-transform-object-rest-spread": "^6.26.0",
+    "babel-preset-env": "^1.6.1",
+    "babel-preset-react": "^6.24.1",
+    "babel-preset-stage-0": "^6.24.1",
+    "conventional-changelog-cli": "^1.3.5",
+    "conventional-recommended-bump": "^1.1.0",
+    "enzyme": "^3.2.0",
+    "enzyme-adapter-react-16": "1.1.0",
+    "eslint": "^4.11.0",
+    "eslint-config-airbnb": "^16.1.0",
+    "eslint-config-airbnb-base": "^12.1.0",
+    "eslint-config-availity": "^3.0.0-beta.10",
+    "eslint-config-prettier": "^2.9.0",
+    "eslint-plugin-import": "^2.8.0",
+    "eslint-plugin-jsx-a11y": "^6.0.2",
+    "eslint-plugin-promise": "^3.6.0",
+    "eslint-plugin-react": "^7.4.0",
+    "husky": "^0.14.3",
+    "jest": "^21.2.1",
+    "lerna": "^2.5.1",
+    "lint-staged": "^5.0.0",
+    "node-sass": "^4.7.2",
+    "prettier": "^1.8.2",
+    "raf": "^3.4.0",
+    "raw-loader": "^0.5.1",
+    "react-test-renderer": "^16.2.0",
+    "regenerator-runtime": "^0.11.0",
+    "sass-loader": "^6.0.6",
+    "storybook-readme": "^3.1.1"
+  },
+  "license": "MIT",
+  "lint-staged": {
+    "*.js": [
+      "eslint --fix",
+      "prettier --write",
+      "git add"
+    ]
+  },
+  "prettier": {
+    "singleQuote": true,
+    "trailingComma": "es5"
+  },
+  "jest": {
+    "transformIgnorePatterns": [
+      "<rootDir>.*(node_modules)(?!.*@availity.*).*$"
+    ],
+    "setupFiles": [
+      "raf/polyfill"
+    ],
+    "setupTestFrameworkScriptFile": "<rootDir>/jest.setup.js"
+  },
+  "babel": {
+    "env": {
+      "test": {
+        "plugins": [
+          "transform-class-properties",
+          "transform-object-rest-spread"
+        ],
+        "presets": [
+          "jest",
+          "react",
+          "stage-0",
+          [
+            "env",
+            {
+              "debug": false,
+              "modules": "commonjs",
+              "targets": {
+                "node": "current"
+              },
+              "useBuiltIns": true
+            }
+          ]
+        ]
+      }
+    }
+  },
+  "contributors": [
+    "tyson warner (https://github.com/nylon22)",
+    "robert mcguinness (https://github.com/robmcguinness)"
+  ],
+  "bugs": {
+    "url": "https://github.com/Availity/availity-react/issues"
+  },
+  "homepage": "https://github.com/Availity/availity-react#readme",
+  "version": "0.0.1",
+  "main": "index.js",
+  "keywords": [
+    "availity",
+    "react",
+    "ui"
+  ],
+  "author": "Robert McGuinness <rob.mcguinness@availity.com>"
+}
