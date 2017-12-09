@@ -30,6 +30,11 @@ module.exports = (storybookBaseConfig, configType) => {
 
   storybookBaseConfig.resolve.extensions = ['.js', '.jsx', '.scss', '.css'];
 
+  if (configType === 'PRODUCTION') {
+    // Removing uglification until we figure out a fix for that.
+    storybookBaseConfig.plugins.pop();
+  }
+
   // Return the altered config
   return storybookBaseConfig;
 };
