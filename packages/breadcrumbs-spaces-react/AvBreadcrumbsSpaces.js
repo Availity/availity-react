@@ -13,7 +13,7 @@ const BreadcrumbsSpaces = ({ spaceName, spaceId, pageName }) => (
 
     <li className="breadcrumb-item">
       {spaceName ? (
-        <a href={`/public/apps/spaces/#/${spaceId}`}>{spaceName}</a>
+        <a href={`/web/spaces/spaces/#/${spaceId}`}>{spaceName}</a>
       ) : (
         <span>{emptyState}</span>
       )}
