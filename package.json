@@ -18,7 +18,8 @@
     "start": "start-storybook -p 2222 -c .storybook",
     "build:docs": "build-storybook -c .storybook -o docs",
     "release": "sh ./scripts/release.sh",
-    "deploy-storybook": "storybook-to-ghpages"
+    "deploy-storybook": "storybook-to-ghpages",
+    "updated": "lerna updated"
   },
   "dependencies": {
     "@availity/api-axios": "^1.0.0-alpha.0",
