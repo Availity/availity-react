@@ -1,6 +1,6 @@
 {
   "name": "@availity/breadcrumbs-spaces-react",
-  "version": "0.0.1",
+  "version": "0.1.0",
   "description": "Breadscrumbs component for Spaces platform",
   "main": "index.js",
   "scripts": {
