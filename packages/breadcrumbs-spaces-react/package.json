@@ -1,5 +1,5 @@
 {
-  "name": "@avality/breadcrumbs-spaces-react",
+  "name": "@availity/breadcrumbs-spaces-react",
   "version": "0.0.1",
   "description": "Breadscrumbs component for Spaces platform",
   "main": "index.js",
@@ -28,9 +28,9 @@
     "react": "^16.0.0"
   },
   "devDependencies": {
-    "@availity/localstorage-core": "^1.0.0-alpha.0",
-    "@availity/api-core": "^1.0.0-alpha.0",
     "@availity/api-axios": "^1.0.0-alpha.0",
+    "@availity/api-core": "^1.0.0-alpha.0",
+    "@availity/localstorage-core": "^1.0.0-alpha.0",
     "prop-types": "^15.6.0",
     "react": "^16.0.0"
   },
