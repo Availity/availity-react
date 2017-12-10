@@ -4,7 +4,7 @@
 #### Installation
 
 ```bash
-npm install @availity/avality/breadcrumbs-spaces-react @availity/api-axios --save
+npm install @availity/avality/breadcrumbs-spaces-react @availity/api-axios @availity/api-core --save
 ```
 
 #### Usage
