@@ -19,12 +19,16 @@
     "build:docs": "build-storybook -c .storybook -o docs",
     "release": "sh ./scripts/release.sh",
     "deploy-storybook": "storybook-to-ghpages",
-    "updated": "lerna updated"
+    "updated": "lerna updated",
+    "commitmsg": "commitlint -e $GIT_PARAMS"
   },
   "dependencies": {
     "@availity/api-axios": "^1.0.0-alpha.0",
     "@availity/api-core": "^1.0.0-alpha.0",
     "@availity/localstorage-core": "^1.0.0-alpha.0",
+    "@commitlint/cli": "^5.2.5",
+    "@commitlint/config-conventional": "^5.2.3",
+    "@commitlint/config-lerna-scopes": "^5.2.0",
     "@storybook/addon-actions": "^3.2.16",
     "@storybook/addon-links": "^3.2.16",
     "@storybook/react": "^3.2.16",
@@ -79,6 +83,12 @@
       "eslint --fix",
       "prettier --write",
       "git add"
+    ]
+  },
+  "commitlint": {
+    "extends": [
+      "@commitlint/config-conventional",
+      "@commitlint/config-lerna-scopes"
     ]
   },
   "prettier": {
