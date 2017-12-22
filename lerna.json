@@ -3,6 +3,6 @@
   "packages": [
     "packages/*"
   ],
-  "message": "chore(release): publish %s",
+  "message": "chore: release publish %s",
   "version": "0.1.0"
 }
