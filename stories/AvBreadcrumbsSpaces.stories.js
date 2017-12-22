@@ -16,6 +16,12 @@ storiesOf('AvBreadcrumbsSpaces', module)
       spaceName="My Health Plan"
     />
   ))
+  .add('with page name', () => (
+    <AvBreadcrumbsSpaces
+      spaceId="1093906101146120962309999999"
+      spaceName="My Health Plan"
+    />
+  ))
   .add('without space name', () => (
     <AvBreadcrumbsSpaces
       spaceId="1093906101146120962309999999"

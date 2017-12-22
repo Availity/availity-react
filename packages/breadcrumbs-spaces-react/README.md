@@ -12,7 +12,7 @@ npm install @availity/breadcrumbs-spaces-react @availity/api-axios @availity/api
 ```javascript
 import Breadcrumbs from '@availity/breadcrumbs-spaces-react';
 
-const Example = (props) => (
+const Example = () => (
     <Breadcrumbs/>
 );
 
