@@ -6,8 +6,7 @@ import { checkA11y } from '@storybook/addon-a11y';
 import { AvBreadcrumbsSpaces } from '../packages/breadcrumbs-spaces-react';
 import README from '../packages/breadcrumbs-spaces-react/README.md';
 
-storiesOf('AvBreadcrumbsSpaces', module)
-  .addDecorator(checkA11y)
+const story = storiesOf('AvBreadcrumbsSpaces')
   .addDecorator(withReadme([README]))
   .add('default', () => (
     <AvBreadcrumbsSpaces
@@ -29,3 +28,7 @@ storiesOf('AvBreadcrumbsSpaces', module)
       spaceName={null}
     />
   ));
+
+if (process.env.NODE_ENV === 'development') {
+  story.addDecorator(checkA11y);
+}
