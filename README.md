@@ -10,6 +10,10 @@ https://availity.github.io/availity-react
 * Google Chrome
 * Mozilla Firefox
 
+## Documentation
+
+- [breadcrumb-spaces-react](packages/breadcrumb-spaces-react/README.md) - Breadscrumbs component for Spaces platform
+
 ## License
 
 [MIT](./LICENSE)
