@@ -12,7 +12,7 @@ https://availity.github.io/availity-react
 
 ## Documentation
 
-- [breadcrumb-spaces-react](packages/breadcrumb-spaces-react/README.md) - Breadscrumbs component for Spaces platform
+- [breadcrumb-spaces-react](packages/breadcrumbs-spaces-react/README.md) - Breadscrumbs component for Spaces platform
 
 ## License
 
