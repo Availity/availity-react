@@ -1,0 +1,16 @@
+extends: availity/browser
+env:
+  jest: true
+rules:
+  object-curly-newline: 0
+  function-paren-newline: 0
+  import/no-extraneous-dependencies:
+    - error
+    - packageDir: './packages/uppy-react/'
+  react/forbid-prop-types:
+    - error
+    - forbid:
+      - any
+  promise/avoid-new: 0
+
+

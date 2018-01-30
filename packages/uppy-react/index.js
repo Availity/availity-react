@@ -24,7 +24,7 @@ class AvUppy extends Component {
 
     this.uppy.run();
 
-    this.uppy._rawUpload = this.upload;
+    this.uppy.rawUpload = this.upload;
     this.uppy.upload = this.upload;
     this.uppy.validate = this.validate;
 
@@ -35,11 +35,13 @@ class AvUppy extends Component {
 
   upload = () =>
     this.uppy
-      ._rawUpload()
-      .then(result => getScanResults(result.successful, this.headers(), this.uppy));
+      .rawUpload()
+      .then(result =>
+        getScanResults(result.successful, this.headers(), this.uppy)
+      );
 
   validate = () => {
-    const files = this.uppy.getState().files;
+    const { files } = this.uppy.getState();
     if (!files) return true;
     const instance = Object.keys(files).map(fileId => {
       const touched = {};

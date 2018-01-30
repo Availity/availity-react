@@ -1,26 +1,3 @@
-export function getScanResults(files, headers, uppy) {
-  if (uppy) {
-    uppy.setState({ scanning: true });
-    uppy.emit('scan-start', files);
-  }
-
-  return Promise.all(
-    files.map(file => {
-      if (uppy) {
-        uppy.emit('file-scan-start', file);
-        uppy.setFileState(file.id, { scanning: true, scanProgress: 0 });
-      }
-      return scan(file, headers, uppy);
-    })
-  ).then(files => {
-    if (uppy) {
-      uppy.setState({ scanning: false });
-      uppy.emit('scan-success', files);
-    }
-    return files;
-  });
-}
-
 export function scan(file, headers = {}, uppy) {
   return new Promise((resolve, reject) => {
     const xhr = new window.XMLHttpRequest();
@@ -33,7 +10,7 @@ export function scan(file, headers = {}, uppy) {
     });
 
     xhr.onload = () => {
-      if (~~(xhr.status / 100) !== 2) {
+      if (Math.floor(xhr.status / 100) !== 2) {
         return reject(xhr);
       }
 
@@ -41,8 +18,8 @@ export function scan(file, headers = {}, uppy) {
 
       if (result === 'accepted') {
         const referencesHeader = xhr.getResponseHeader('references');
-        if (references) {
-          const reference = JSON.parse(references)[0];
+        if (referencesHeader) {
+          const reference = JSON.parse(referencesHeader)[0];
           const resultingFile = {
             ...file,
             reference,
@@ -72,7 +49,7 @@ export function scan(file, headers = {}, uppy) {
             scanProgress: 100,
           });
         }
-        return reject('File upload response invalid');
+        return reject(new Error('File upload response invalid'));
       }
 
       if (result === 'rejected') {
@@ -89,7 +66,7 @@ export function scan(file, headers = {}, uppy) {
             scanProgress: 100,
           });
         }
-        return reject('File upload rejected');
+        return reject(new Error('File upload rejected'));
       }
 
       if (uppy) {
@@ -117,9 +94,32 @@ export function scan(file, headers = {}, uppy) {
           scanResult: 'Network Error',
         });
       }
-      reject(err);
+      reject(new Error(err));
     };
 
     xhr.send(null);
+  });
+}
+
+export function getScanResults(files, headers, uppy) {
+  if (uppy) {
+    uppy.setState({ scanning: true });
+    uppy.emit('scan-start', files);
+  }
+
+  return Promise.all(
+    files.map(file => {
+      if (uppy) {
+        uppy.emit('file-scan-start', file);
+        uppy.setFileState(file.id, { scanning: true, scanProgress: 0 });
+      }
+      return scan(file, headers, uppy);
+    })
+  ).then(files => {
+    if (uppy) {
+      uppy.setState({ scanning: false });
+      uppy.emit('scan-success', files);
+    }
+    return files;
   });
 }
