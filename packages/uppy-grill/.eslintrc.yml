@@ -1,0 +1,19 @@
+extends: availity/browser
+env:
+  jest: true
+rules:
+  no-nested-ternary: 0
+  jsx-a11y/label-has-for:
+    - error
+    - components:
+      - Label
+      - label
+      required:
+        some:
+        - nesting
+        - id
+      allowChildren: true
+  jsx-a11y/click-events-have-key-events: 0
+  jsx-a11y/no-static-element-interactions: 0
+
+
