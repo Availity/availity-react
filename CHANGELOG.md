@@ -1,3 +1,18 @@
+<a name="1.0.0-alpha.2"></a>
+# [1.0.0-alpha.2](https://github.com/Availity/availity-react/compare/v1.0.0-alpha.1...v1.0.0-alpha.2) (2018-01-31)
+
+
+### Bug Fixes
+
+* **uppy-grill:** match project version ([340a8dd](https://github.com/Availity/availity-react/commit/340a8dd))
+
+
+### Features
+
+* add uppy-grill ([095390c](https://github.com/Availity/availity-react/commit/095390c))
+
+
+
 <a name="1.0.0-alpha.1"></a>
 # [1.0.0-alpha.1](https://github.com/Availity/availity-react/compare/v1.0.0-alpha.0...v1.0.0-alpha.1) (2018-01-31)
 
