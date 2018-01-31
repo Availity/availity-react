@@ -1,0 +1,29 @@
+extends: availity/browser
+env:
+  jest: true
+rules:
+  object-curly-newline: 0
+  function-paren-newline: 0
+  import/no-extraneous-dependencies:
+    - error
+    - packageDir: './packages/uppy-grill/'
+  react/forbid-prop-types:
+    - error
+    - forbid:
+      - any
+  promise/avoid-new: 0
+  no-nested-ternary: 0
+  jsx-a11y/label-has-for:
+    - error
+    - components:
+      - Label
+      - label
+      required:
+        some:
+        - nesting
+        - id
+      allowChildren: true
+  jsx-a11y/click-events-have-key-events: 0
+  jsx-a11y/no-static-element-interactions: 0
+
+

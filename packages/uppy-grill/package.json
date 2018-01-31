@@ -1,0 +1,43 @@
+{
+  "name": "@availity/uppy-grill",
+  "version": "1.0.0",
+  "description": "availity uppy plugin ui upload",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Availity/sdk-js.git"
+  },
+  "keywords": [
+    "availity",
+    "uppy",
+    "plugin",
+    "ui",
+    "upload"
+  ],
+  "author": "Evan Sharp <evan.sharp@availity.com>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/Availity/sdk-js/issues"
+  },
+  "homepage": "https://github.com/Availity/sdk-js/uppy-grill#readme",
+  "dependencies": {
+    "classnames": "^2.2.5",
+    "drag-drop": "^2.13.2",
+    "preact": "^8.2.7",
+    "prettier-bytes": "^1.0.4",
+    "prop-types": "^15.5.7",
+    "uppy": "^0.22.1"
+  },
+  "peerDependencies": {
+    "react": "^0.14.9 || ^15.3.0 || ^16.0.0"
+  },
+  "devDependencies": {
+    "react": "^16.0.0"
+  },
+  "publishConfig": {
+    "access": "public"
+  }
+}
