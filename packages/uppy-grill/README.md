@@ -4,7 +4,7 @@
 #### Installation
 
 ```bash
-npm install @availity/uppy-grll--save
+npm install @availity/uppy-grill--save
 ```
 
 #### Usage
