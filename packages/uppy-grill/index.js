@@ -92,7 +92,7 @@ class Grill extends Plugin {
       width: 750,
       height: 550,
       thumbnailWidth: 280,
-      defaultTabIcon: defaultTabIcon,
+      defaultTabIcon,
       showProgressDetails: false,
       hideUploadButton: false,
       hideProgressAfterFinish: false,
@@ -153,7 +153,7 @@ class Grill extends Plugin {
       callerPluginType !== 'progressindicator' &&
       callerPluginType !== 'presenter'
     ) {
-      let msg =
+      const msg =
         'Grill: Modal can only be used by plugins of types: acquirer, progressindicator, presenter';
       this.uppy.log(msg);
       return;
@@ -185,21 +185,20 @@ class Grill extends Plugin {
   showPanel(id) {
     const { targets } = this.getPluginState();
 
-    const activePanel = targets.filter(target => {
-      return target.type === 'acquirer' && target.id === id;
-    })[0];
+    const activePanel = targets.filter(
+      target => target.type === 'acquirer' && target.id === id
+    )[0];
 
     this.setPluginState({
-      activePanel: activePanel,
+      activePanel,
     });
   }
 
   requestCloseModal() {
     if (this.opts.onRequestCloseModal) {
       return this.opts.onRequestCloseModal();
-    } else {
-      this.closeModal();
     }
+    this.closeModal();
   }
 
   getFocusableNodes() {
@@ -213,8 +212,8 @@ class Grill extends Plugin {
   }
 
   maintainFocus(event) {
-    var focusableNodes = this.getFocusableNodes();
-    var focusedItemIndex = focusableNodes.indexOf(document.activeElement);
+    const focusableNodes = this.getFocusableNodes();
+    const focusedItemIndex = focusableNodes.indexOf(document.activeElement);
 
     if (event.shiftKey && focusedItemIndex === 0) {
       focusableNodes[focusableNodes.length - 1].focus();
@@ -384,30 +383,28 @@ class Grill extends Plugin {
 
   render(state) {
     const pluginState = this.getPluginState();
-    const files = state.files;
+    const { files } = state;
 
-    const newFiles = Object.keys(files).filter(file => {
-      return !files[file].progress.uploadStarted;
-    });
-    const inProgressFiles = Object.keys(files).filter(file => {
-      return (
+    const newFiles = Object.keys(files).filter(
+      file => !files[file].progress.uploadStarted
+    );
+    const inProgressFiles = Object.keys(files).filter(
+      file =>
         !files[file].progress.uploadComplete &&
         files[file].progress.uploadStarted &&
         !files[file].isPaused
-      );
-    });
+    );
 
-    let inProgressFilesArray = [];
+    const inProgressFilesArray = [];
     inProgressFiles.forEach(file => {
       inProgressFilesArray.push(files[file]);
     });
 
-    let totalSize = 0;
-    let totalUploadedSize = 0;
+    let totalSize = 0; // eslint-disable-line
+    let totalUploadedSize = 0; // eslint-disable-line
     inProgressFilesArray.forEach(file => {
-      totalSize = totalSize + (file.progress.bytesTotal || 0);
-      totalUploadedSize =
-        totalUploadedSize + (file.progress.bytesUploaded || 0);
+      totalSize += file.progress.bytesTotal || 0;
+      totalUploadedSize += file.progress.bytesUploaded || 0;
     });
     totalSize = prettyBytes(totalSize);
     totalUploadedSize = prettyBytes(totalUploadedSize);
@@ -437,7 +434,7 @@ class Grill extends Plugin {
       .filter(target => target.type === 'progressindicator')
       .map(attachRenderFunctionToTarget);
 
-    const startUpload = ev => {
+    const startUpload = () => {
       this.uppy.upload().catch(err => {
         // Log error.
         this.uppy.log(err.stack || err.message || err);
@@ -459,16 +456,16 @@ class Grill extends Plugin {
     };
 
     return GrillUI({
-      state: state,
+      state,
       modal: pluginState,
-      newFiles: newFiles,
-      files: files,
+      newFiles,
+      files,
       totalFileCount: Object.keys(files).length,
       totalProgress: state.totalProgress,
-      acquirers: acquirers,
+      acquirers,
       activePanel: pluginState.activePanel,
       getPlugin: this.uppy.getPlugin,
-      progressindicators: progressindicators,
+      progressindicators,
       autoProceed: this.uppy.opts.autoProceed,
       hideUploadButton: this.opts.hideUploadButton,
       id: this.id,
@@ -488,13 +485,13 @@ class Grill extends Plugin {
       note: this.opts.note,
       metaFields: this.getPluginState().metaFields,
       resumableUploads: this.uppy.state.capabilities.resumableUploads || false,
-      startUpload: startUpload,
+      startUpload,
       pauseUpload: this.uppy.pauseResume,
       retryUpload: this.uppy.retryUpload,
-      cancelUpload: cancelUpload,
+      cancelUpload,
       fileCardFor: pluginState.fileCardFor,
-      showFileCard: showFileCard,
-      fileCardDone: fileCardDone,
+      showFileCard,
+      fileCardDone,
       updateGrillElWidth: this.updateGrillElWidth,
       maxWidth: this.opts.maxWidth,
       maxHeight: this.opts.maxHeight,
@@ -526,7 +523,7 @@ class Grill extends Plugin {
       targets: [],
     });
 
-    const target = this.opts.target;
+    const { target } = this.opts;
     if (target) {
       this.mount(target, this);
     }
@@ -590,6 +587,6 @@ class Grill extends Plugin {
     this.unmount();
     this.removeEvents();
   }
-};
+}
 
 export default Grill;
