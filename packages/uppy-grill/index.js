@@ -2,6 +2,7 @@ import dragDrop from 'drag-drop';
 import prettyBytes from 'prettier-bytes';
 import Plugin from 'uppy/lib/core/Plugin';
 import Translator from 'uppy/lib/core/Translator';
+import ThumbnailGenerator from 'uppy/lib/plugins/ThumbnailGenerator';
 import StatusBar from 'uppy/lib/plugins/StatusBar';
 import Informer from 'uppy/lib/plugins/Informer';
 import { findAllDOMElements, toArray } from 'uppy/lib/core/Utils';
@@ -12,7 +13,7 @@ import GrillUI from './Grill';
 // MIT licence, https://github.com/transloadit/uppy/blob/master/LICENSE
 // Copyright (c) 2018 Transloadit
 
-// some code for managing focus was adopted from https://github.com/ghosh/micromodal
+// Some code for managing focus was adopted from https://github.com/ghosh/micromodal
 // MIT licence, https://github.com/ghosh/micromodal/blob/master/LICENSE.md
 // Copyright (c) 2017 Indrashish Ghosh
 const FOCUSABLE_ELEMENTS = [
@@ -49,8 +50,14 @@ class Grill extends Plugin {
         GrillTitle: 'Uppy Grill',
         copyLinkToClipboardSuccess: 'Link copied to clipboard.',
         copyLinkToClipboardFallback: 'Copy the URL below',
+        copyLink: 'Copy link',
         fileSource: 'File source',
         done: 'Done',
+        name: 'Name',
+        removeFile: 'Remove file',
+        editFile: 'Edit file',
+        editing: 'Editing',
+        finishEditingFile: 'Finish editing file',
         localDisk: 'Local Disk',
         myDevice: 'My Device',
         dropPasteImport:
@@ -61,6 +68,14 @@ class Grill extends Plugin {
         numberOfSelectedFiles: 'Number of selected files',
         uploadAllNewFiles: 'Upload all new files',
         emptyFolderAdded: 'No files were added from empty folder',
+        uploadXFiles: {
+          0: 'Upload %{smart_count} file',
+          1: 'Upload %{smart_count} files',
+        },
+        uploadXNewFiles: {
+          0: 'Upload +%{smart_count} file',
+          1: 'Upload +%{smart_count} files',
+        },
         folderAdded: {
           0: 'Added %{smart_count} file from %{folder}',
           1: 'Added %{smart_count} files from %{folder}',
@@ -76,15 +91,19 @@ class Grill extends Plugin {
       inline: false,
       width: 750,
       height: 550,
-      semiTransparent: false,
-      defaultTabIcon,
+      thumbnailWidth: 280,
+      defaultTabIcon: defaultTabIcon,
       showProgressDetails: false,
       hideUploadButton: false,
       hideProgressAfterFinish: false,
       note: null,
       closeModalOnClickOutside: false,
-      locale: defaultLocale,
+      disableStatusBar: false,
+      disableInformer: false,
+      disableThumbnailGenerator: false,
+      disablePageScrollWhenModalOpen: true,
       onRequestCloseModal: () => this.closeModal(),
+      locale: defaultLocale,
     };
 
     // merge default options with the ones set by user
@@ -100,9 +119,9 @@ class Grill extends Plugin {
     this.translator = new Translator({ locale: this.locale });
     this.i18n = this.translator.translate.bind(this.translator);
 
+    this.openModal = this.openModal.bind(this);
     this.closeModal = this.closeModal.bind(this);
     this.requestCloseModal = this.requestCloseModal.bind(this);
-    this.openModal = this.openModal.bind(this);
     this.isModalOpen = this.isModalOpen.bind(this);
 
     this.addTarget = this.addTarget.bind(this);
@@ -134,7 +153,7 @@ class Grill extends Plugin {
       callerPluginType !== 'progressindicator' &&
       callerPluginType !== 'presenter'
     ) {
-      const msg =
+      let msg =
         'Grill: Modal can only be used by plugins of types: acquirer, progressindicator, presenter';
       this.uppy.log(msg);
       return;
@@ -166,20 +185,21 @@ class Grill extends Plugin {
   showPanel(id) {
     const { targets } = this.getPluginState();
 
-    const activePanel = targets.filter(
-      target => target.type === 'acquirer' && target.id === id
-    )[0];
+    const activePanel = targets.filter(target => {
+      return target.type === 'acquirer' && target.id === id;
+    })[0];
 
     this.setPluginState({
-      activePanel,
+      activePanel: activePanel,
     });
   }
 
   requestCloseModal() {
     if (this.opts.onRequestCloseModal) {
       return this.opts.onRequestCloseModal();
+    } else {
+      this.closeModal();
     }
-    this.closeModal();
   }
 
   getFocusableNodes() {
@@ -193,8 +213,8 @@ class Grill extends Plugin {
   }
 
   maintainFocus(event) {
-    const focusableNodes = this.getFocusableNodes();
-    const focusedItemIndex = focusableNodes.indexOf(document.activeElement);
+    var focusableNodes = this.getFocusableNodes();
+    var focusedItemIndex = focusableNodes.indexOf(document.activeElement);
 
     if (event.shiftKey && focusedItemIndex === 0) {
       focusableNodes[focusableNodes.length - 1].focus();
@@ -213,12 +233,13 @@ class Grill extends Plugin {
     });
 
     // save scroll position
-    this.savedDocumentScrollPosition = window.scrollY;
+    this.savedScrollPosition = window.scrollY;
+    // save active element, so we can restore focus when modal is closed
+    this.savedActiveElement = document.activeElement;
 
-    // add class to body that sets position fixed, move everything back
-    // to scroll position
-    document.body.classList.add('uppy-Grill-isOpen');
-    document.body.style.top = `-${this.savedDocumentScrollPosition}px`;
+    if (this.opts.disablePageScrollWhenModalOpen) {
+      document.body.classList.add('uppy-Grill-isOpen');
+    }
 
     this.updateGrillElWidth();
     this.setFocusToFirstNode();
@@ -229,9 +250,11 @@ class Grill extends Plugin {
       isHidden: true,
     });
 
-    document.body.classList.remove('uppy-Grill-isOpen');
+    if (this.opts.disablePageScrollWhenModalOpen) {
+      document.body.classList.remove('uppy-Grill-isOpen');
+    }
 
-    window.scrollTo(0, this.savedDocumentScrollPosition);
+    this.savedActiveElement.focus();
   }
 
   isModalOpen() {
@@ -295,8 +318,7 @@ class Grill extends Plugin {
 
     if (!this.opts.inline && !showModalTrigger) {
       this.uppy.log(
-        'Grill modal trigger not found, you won’t be able to select files. Make sure `trigger` is set correctly in Grill options',
-        'error'
+        'Grill modal trigger not found. Make sure `trigger` is set in Grill options unless you are planning to call openModal() method yourself'
       );
     }
 
@@ -328,9 +350,7 @@ class Grill extends Plugin {
     }
 
     this.removeDragDropListener();
-
     this.uppy.off('Grill:file-card', this.handleFileCard);
-
     window.removeEventListener('resize', this.updateGrillElWidth);
   }
 
@@ -364,28 +384,29 @@ class Grill extends Plugin {
 
   render(state) {
     const pluginState = this.getPluginState();
-    const { files } = state;
+    const files = state.files;
 
-    const newFiles = Object.keys(files).filter(
-      file => !files[file].progress.uploadStarted
-    );
-    const inProgressFiles = Object.keys(files).filter(
-      file =>
+    const newFiles = Object.keys(files).filter(file => {
+      return !files[file].progress.uploadStarted;
+    });
+    const inProgressFiles = Object.keys(files).filter(file => {
+      return (
         !files[file].progress.uploadComplete &&
         files[file].progress.uploadStarted &&
         !files[file].isPaused
-    );
+      );
+    });
 
-    const inProgressFilesArray = [];
+    let inProgressFilesArray = [];
     inProgressFiles.forEach(file => {
       inProgressFilesArray.push(files[file]);
     });
 
-    let totalSize = 0; // eslint-disable-line
+    let totalSize = 0;
     let totalUploadedSize = 0;
     inProgressFilesArray.forEach(file => {
-      totalSize += file.progress.bytesTotal || 0;
-      totalUploadedSize +=
+      totalSize = totalSize + (file.progress.bytesTotal || 0);
+      totalUploadedSize =
         totalUploadedSize + (file.progress.bytesUploaded || 0);
     });
     totalSize = prettyBytes(totalSize);
@@ -416,7 +437,7 @@ class Grill extends Plugin {
       .filter(target => target.type === 'progressindicator')
       .map(attachRenderFunctionToTarget);
 
-    const startUpload = () => {
+    const startUpload = ev => {
       this.uppy.upload().catch(err => {
         // Log error.
         this.uppy.log(err.stack || err.message || err);
@@ -438,17 +459,16 @@ class Grill extends Plugin {
     };
 
     return GrillUI({
-      uppy: this.uppy,
-      state,
+      state: state,
       modal: pluginState,
-      newFiles,
-      files,
+      newFiles: newFiles,
+      files: files,
       totalFileCount: Object.keys(files).length,
       totalProgress: state.totalProgress,
-      acquirers,
+      acquirers: acquirers,
       activePanel: pluginState.activePanel,
       getPlugin: this.uppy.getPlugin,
-      progressindicators,
+      progressindicators: progressindicators,
       autoProceed: this.uppy.opts.autoProceed,
       hideUploadButton: this.opts.hideUploadButton,
       id: this.id,
@@ -468,13 +488,13 @@ class Grill extends Plugin {
       note: this.opts.note,
       metaFields: this.getPluginState().metaFields,
       resumableUploads: this.uppy.state.capabilities.resumableUploads || false,
-      startUpload,
+      startUpload: startUpload,
       pauseUpload: this.uppy.pauseResume,
       retryUpload: this.uppy.retryUpload,
-      cancelUpload,
+      cancelUpload: cancelUpload,
       fileCardFor: pluginState.fileCardFor,
-      showFileCard,
-      fileCardDone,
+      showFileCard: showFileCard,
+      fileCardDone: fileCardDone,
       updateGrillElWidth: this.updateGrillElWidth,
       maxWidth: this.opts.maxWidth,
       maxHeight: this.opts.maxHeight,
@@ -506,7 +526,7 @@ class Grill extends Plugin {
       targets: [],
     });
 
-    const { target } = this.opts;
+    const target = this.opts.target;
     if (target) {
       this.mount(target, this);
     }
@@ -522,12 +542,19 @@ class Grill extends Plugin {
         target: this,
         hideUploadButton: this.opts.hideUploadButton,
         hideAfterFinish: this.opts.hideProgressAfterFinish,
+        locale: this.opts.locale,
       });
     }
 
     if (!this.opts.disableInformer) {
       this.uppy.use(Informer, {
         target: this,
+      });
+    }
+
+    if (!this.opts.disableThumbnailGenerator) {
+      this.uppy.use(ThumbnailGenerator, {
+        thumbnailWidth: this.opts.thumbnailWidth,
       });
     }
 
@@ -539,14 +566,19 @@ class Grill extends Plugin {
   uninstall() {
     if (!this.opts.disableInformer) {
       const informer = this.uppy.getPlugin('Informer');
+      // Checking if this plugin exists, in case it was removed by uppy-core
+      // before the Grill was.
       if (informer) this.uppy.removePlugin(informer);
     }
 
     if (!this.opts.disableStatusBar) {
       const statusBar = this.uppy.getPlugin('StatusBar');
-      // Checking if this plugin exists, in case it was removed by uppy-core
-      // before the Grill was.
       if (statusBar) this.uppy.removePlugin(statusBar);
+    }
+
+    if (!this.opts.disableThumbnailGenerator) {
+      const thumbnail = this.uppy.getPlugin('ThumbnailGenerator');
+      if (thumbnail) this.uppy.removePlugin(thumbnail);
     }
 
     const plugins = this.opts.plugins || [];
@@ -558,6 +590,6 @@ class Grill extends Plugin {
     this.unmount();
     this.removeEvents();
   }
-}
+};
 
 export default Grill;
