@@ -24,7 +24,7 @@ class AvUppy extends Component {
 
     this.uppy.run();
 
-    this.uppy.rawUpload = this.upload;
+    this.uppy.rawUpload = this.uppy.upload;
     this.uppy.upload = this.upload;
     this.uppy.validate = this.validate;
 
