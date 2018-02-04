@@ -1,3 +1,14 @@
+<a name="1.0.0-alpha.3"></a>
+# [1.0.0-alpha.3](https://github.com/Availity/availity-react/compare/v1.0.0-alpha.2...v1.0.0-alpha.3) (2018-02-04)
+
+
+### Bug Fixes
+
+* uppy-grill thumnbnails not showing ([0692a37](https://github.com/Availity/availity-react/commit/0692a37))
+* uppy-react upload loop ([121cd2c](https://github.com/Availity/availity-react/commit/121cd2c))
+
+
+
 <a name="1.0.0-alpha.2"></a>
 # [1.0.0-alpha.2](https://github.com/Availity/availity-react/compare/v1.0.0-alpha.1...v1.0.0-alpha.2) (2018-01-31)
 
