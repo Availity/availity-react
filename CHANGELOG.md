@@ -1,3 +1,13 @@
+<a name="1.0.0-alpha.4"></a>
+# [1.0.0-alpha.4](https://github.com/Availity/availity-react/compare/v1.0.0-alpha.3...v1.0.0-alpha.4) (2018-02-06)
+
+
+### Bug Fixes
+
+* uppy-grill check for undefined last modified value ([72f37af](https://github.com/Availity/availity-react/commit/72f37af))
+
+
+
 <a name="1.0.0-alpha.3"></a>
 # [1.0.0-alpha.3](https://github.com/Availity/availity-react/compare/v1.0.0-alpha.2...v1.0.0-alpha.3) (2018-02-04)
 
