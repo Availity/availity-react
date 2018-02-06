@@ -16,6 +16,8 @@ https://availity.github.io/availity-react
 ## Documentation
 
 - [breadcrumb-spaces-react](packages/breadcrumbs-spaces-react/README.md) - Breadscrumbs component for Spaces platform
+- [uppy-grill](packages/uppy-grill/README.md) - Uppy Plugin based on uppy's Dashboard Plugin that changes the layout and provides enhanced form capabilities
+- [uppy-react](packages/uppy-react/README.md)- Uppy wrapper with opinions around file-uploads and virus scanning with Availity.
 
 ## License
 
