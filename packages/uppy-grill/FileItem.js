@@ -21,15 +21,17 @@ React.createElement = React;
 class FileItem extends Component {
   constructor(props) {
     super(props);
-    const [year, month, day] = new Date(props.file.data.lastModified)
-      .toJSON()
-      .split('T')[0]
-      .split('-');
     this.meta = {
-      lastModified: `${month}/${day}/${year}`,
       validations: {},
       touched: {},
     };
+    if (props.file.data.lastModified) {
+      const [year, month, day] = new Date(props.file.data.lastModified)
+        .toJSON()
+        .split('T')[0]
+        .split('-');
+      this.meta.lastModified = `${month}/${day}/${year}`;
+    }
 
     if (this.props.metaFields) {
       this.props.metaFields.forEach(field => {
