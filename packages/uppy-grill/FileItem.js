@@ -95,24 +95,21 @@ class FileItem extends Component {
     );
   }
 
-  renderMetaFields(file) {
+  renderMetaFields({ meta, id }, disableInputs) {
     const metaFields = this.props.metaFields || [];
     return metaFields.map((field, i) => {
       const groupClass = classNames(
         'form-group',
-        file.meta.validations &&
-          !file.meta.validations[field.id] &&
-          file.meta.touched &&
-          file.meta.touched[field.id] &&
+        meta.validations &&
+          !meta.validations[field.id] &&
+          meta.touched &&
+          meta.touched[field.id] &&
           'text-danger has-danger'
       );
       return (
         <div className={`col col-12 col-md-${field.col || 12}`}>
           <fieldset className={groupClass}>
-            <label
-              htmlFor={`${file.id}${field.id}`}
-              className="form-control-label"
-            >
+            <label htmlFor={`${id}${field.id}`} className="form-control-label">
               {field.validation &&
                 field.validation.required && (
                   <sup className="text-danger">*</sup>
@@ -125,13 +122,14 @@ class FileItem extends Component {
                 {...field.props}
                 data-name={field.id}
                 data-index={i}
-                id={`${file.id}${field.id}`}
-                value={file.meta[field.id]}
+                id={`${id}${field.id}`}
+                value={meta[field.id]}
                 placeholder={field.placeholder}
                 onChange={this.tempStoreMetaOrSubmit}
                 onBlur={this.tempStoreMetaOnBlur}
                 options={field.option}
                 required={field.validate && field.validate.required}
+                disabled={disableInputs}
               >
                 <option value="" />
                 {field.options.map(o => (
@@ -146,12 +144,13 @@ class FileItem extends Component {
                 {...field.props}
                 data-name={field.id}
                 data-index={i}
-                id={`${file.id}${field.id}`}
-                value={file.meta[field.id]}
+                id={`${id}${field.id}`}
+                value={meta[field.id]}
                 placeholder={field.placeholder}
                 onInput={this.tempStoreMetaOrSubmit}
                 onBlur={this.tempStoreMetaOnBlur}
                 required={field.validate && field.validate.required}
+                disabled={disableInputs}
               />
             )}
           </fieldset>
@@ -176,6 +175,8 @@ class FileItem extends Component {
       isProcessing;
     const isPaused = file.isPaused || false;
     const error = file.error || false;
+    const disableInputs =
+      error || isPaused || isProcessing || isUploaded || uploadInProgress;
 
     const onPauseResumeCancelRetry = () => {
       if (isUploaded) return;
@@ -289,37 +290,35 @@ class FileItem extends Component {
             </div>
           </div>
           <div className="uppy-GrillItem-action">
-            {!isUploaded && (
-              <button
-                className="uppy-GrillItem-remove"
-                type="button"
-                aria-label="Remove file"
-                title="Remove file"
-                onClick={() => props.removeFile(file.id)}
+            <button
+              className="uppy-GrillItem-remove"
+              type="button"
+              aria-label="Remove file"
+              title="Remove file"
+              onClick={() => props.removeFile(file.id)}
+            >
+              <svg
+                aria-hidden="true"
+                className="UppyIcon"
+                width="60"
+                height="60"
+                viewBox="0 0 60 60"
+                xmlns="http://www.w3.org/2000/svg"
               >
-                <svg
-                  aria-hidden="true"
-                  className="UppyIcon"
-                  width="60"
-                  height="60"
-                  viewBox="0 0 60 60"
-                  xmlns="http://www.w3.org/2000/svg"
-                >
-                  <path
-                    stroke="#FFF"
-                    strokeWidth="1"
-                    fillRule="nonzero"
-                    vectorEffect="non-scaling-stroke"
-                    d="M30 1C14 1 1 14 1 30s13 29 29 29 29-13 29-29S46 1 30 1z"
-                  />
-                  <path
-                    fill="#FFF"
-                    vectorEffect="non-scaling-stroke"
-                    d="M42 39.667L39.667 42 30 32.333 20.333 42 18 39.667 27.667 30 18 20.333 20.333 18 30 27.667 39.667 18 42 20.333 32.333 30z"
-                  />
-                </svg>
-              </button>
-            )}
+                <path
+                  stroke="#FFF"
+                  strokeWidth="1"
+                  fillRule="nonzero"
+                  vectorEffect="non-scaling-stroke"
+                  d="M30 1C14 1 1 14 1 30s13 29 29 29 29-13 29-29S46 1 30 1z"
+                />
+                <path
+                  fill="#FFF"
+                  vectorEffect="non-scaling-stroke"
+                  d="M42 39.667L39.667 42 30 32.333 20.333 42 18 39.667 27.667 30 18 20.333 20.333 18 30 27.667 39.667 18 42 20.333 32.333 30z"
+                />
+              </svg>
+            </button>
           </div>
         </div>
         <div className="uppy-GrillItem-fields">
@@ -339,10 +338,11 @@ class FileItem extends Component {
                   onKeyUp={this.tempStoreMetaOrSubmit}
                   onKeyDown={this.tempStoreMetaOrSubmit}
                   onKeyPress={this.tempStoreMetaOrSubmit}
+                  disabled={disableInputs}
                 />
               </fieldset>
             </div>
-            {this.renderMetaFields(file)}
+            {this.renderMetaFields(file, disableInputs)}
           </div>
         </div>
       </li>
