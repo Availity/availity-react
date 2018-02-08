@@ -1,3 +1,13 @@
+<a name="1.0.0-alpha.5"></a>
+# [1.0.0-alpha.5](https://github.com/Availity/availity-react/compare/v1.0.0-alpha.4...v1.0.0-alpha.5) (2018-02-08)
+
+
+### Features
+
+* **uppy-grill:** disable metadata fields for updated files ([995e73c](https://github.com/Availity/availity-react/commit/995e73c))
+
+
+
 <a name="1.0.0-alpha.4"></a>
 # [1.0.0-alpha.4](https://github.com/Availity/availity-react/compare/v1.0.0-alpha.3...v1.0.0-alpha.4) (2018-02-06)
 
