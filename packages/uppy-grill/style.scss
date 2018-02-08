@@ -691,6 +691,23 @@ $screen-medium: 'only screen and (min-width: 768px)';
 .uppy-GrillItem.is-inprogress:not(.is-resumable) .uppy-GrillItem-remove {
   display: none;
 }
+.uppy-GrillItem {
+  &.is-inprogress,
+  &.is-processing,
+  &.is-complete,
+  &.is-paused,
+  &.is-error {
+    .uppy-GrillItem-remove {
+      display: none;
+    }
+    &:hover .uppy-GrillItem-remove {
+      display: block;
+    }
+    &:hover .uppy-GrillItem-progress {
+      display: none;
+    }
+  }
+}
 
 // .uppy-GrillItem-remove .UppyIcon {
 //   max-width: 100%;
