@@ -1,6 +1,6 @@
 {
   "name": "@availity/uppy-react",
-  "version": "1.0.0-alpha.4",
+  "version": "1.0.0-alpha.5",
   "description": "React component which wraps uppy with availity API integrations",
   "main": "index.js",
   "scripts": {
