@@ -118,7 +118,7 @@ class FileItem extends Component {
             </label>
             {field.tag === 'select' ? (
               <select
-                className="form-control"
+                className="custom-select"
                 {...field.props}
                 data-name={field.id}
                 data-index={i}
