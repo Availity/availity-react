@@ -23,11 +23,6 @@ module.exports = (storybookBaseConfig, configType) => {
     use: ['file-loader?name=fonts/[name].[ext]&limit=10000'],
   });
 
-  storybookBaseConfig.module.rules.push({
-    test: /\.md$/,
-    use: 'raw-loader',
-  });
-
   storybookBaseConfig.resolve.extensions = ['.js', '.jsx', '.scss', '.css'];
 
   if (configType === 'PRODUCTION') {
