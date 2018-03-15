@@ -8,7 +8,7 @@ class AvUppy extends Component {
   componentWillMount() {
     this.uppy = Uppy({
       autoProceed: this.props.autoProceed,
-      restrictions: this.props.restrictions,
+      restrictions: this.props.restrictions || {},
       ...this.props.uppyOptions,
     });
     this.uppy.use(Tus, {
@@ -109,7 +109,8 @@ AvUppy.propTypes = {
 
 AvUppy.defaultProps = {
   endpoint: '/ms/api/availity/internal/core/vault/upload/v1/resumable',
-  chunkSize: 3e6, // ~3MB
+  chunkSize: 3e6, // ~3MB,
+  autoProceed: false,
 };
 
 export default AvUppy;
