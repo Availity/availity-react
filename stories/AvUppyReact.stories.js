@@ -9,10 +9,10 @@ import 'uppy/dist/uppy.min.css';
 import AvUppy from '../packages/uppy-react';
 import README from '../packages/uppy-react/README.md';
 
-storiesOf('AvUppyGrill')
+storiesOf('AvUppyReact')
   .addDecorator(withReadme([README]))
   .addDecorator(checkA11y)
-  .add('With DragDrop', () => (
+  .add('with drag drop', () => (
     <AvUppy
       bucket="AVAILITY_BUCKET"
       clientId="AVAILITY_API_CLIENT_ID"
@@ -21,7 +21,7 @@ storiesOf('AvUppyGrill')
       showProgressDetails
     />
   ))
-  .add('With File validations and Dashboard', () => (
+  .add('with validations and dashboard', () => (
     <AvUppy
       bucket="AVAILITY_BUCKET"
       clientId="AVAILITY_API_CLIENT_ID"

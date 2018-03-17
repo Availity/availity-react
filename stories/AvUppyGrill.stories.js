@@ -81,7 +81,7 @@ storiesOf('AvUppyGrill')
       showProgressDetails
     />
   ))
-  .add('File validations', () => (
+  .add('with validation', () => (
     <AvUppy
       bucket="AVAILITY_BUCKET"
       clientId="AVAILITY_API_CLIENT_ID"
