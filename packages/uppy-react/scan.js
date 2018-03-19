@@ -13,6 +13,24 @@ export function scan(file, headers = {}, uppy) {
       if (Math.floor(xhr.status / 100) !== 2) {
         return reject(xhr);
       }
+      const uploadResult = xhr.getResponseHeader('Upload-Result');
+
+      if (uploadResult === 'rejected') {
+        if (uppy) {
+          uppy.emit('file-scan-complete', file);
+          uppy.emit('file-scan-error', {
+            request: xhr,
+            file,
+            error: 'File upload rejected',
+          });
+          uppy.setFileState(file.id, {
+            scanning: false,
+            scanResult: uploadResult,
+            scanProgress: 100,
+          });
+        }
+        return reject(new Error('File upload rejected'));
+      }
 
       const result = xhr.getResponseHeader('AV-Scan-Result');
 
