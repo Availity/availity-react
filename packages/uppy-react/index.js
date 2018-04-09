@@ -9,6 +9,16 @@ class AvUppy extends Component {
     this.uppy = Uppy({
       autoProceed: this.props.autoProceed,
       restrictions: this.props.restrictions || {},
+      onBeforeUpload: () => {
+        if (!this.validate()) {
+          if (!this.props.allowInvalidMetadata) {
+            return Promise.reject(
+              new Error('File metadata validation failed.')
+            );
+          }
+        }
+        return Promise.resolve();
+      },
       ...this.props.uppyOptions,
     });
     this.uppy.use(Tus, {
@@ -45,13 +55,13 @@ class AvUppy extends Component {
     if (!files) return true;
     const instance = Object.keys(files).map(fileId => {
       const touched = {};
-      const ret = Object.keys(files[fileId].meta.validations)
+      const ret = Object.keys(files[fileId].validations)
         .map(field => {
           touched[field] = true;
-          return files[fileId].meta.validations[field];
+          return files[fileId].validations[field];
         })
         .every(v => v);
-      this.uppy.setFileMeta(fileId, { touched });
+      this.uppy.setFileState(fileId, { touched });
       return ret;
     });
     return instance.every(v => v);
@@ -98,6 +108,7 @@ AvUppy.propTypes = {
     minNumberOfFiles: PropTypes.number,
     allowedFileTypes: PropTypes.arrayOf(PropTypes.string),
   }),
+  allowInvalidMetadata: PropTypes.bool,
   uppyOptions: PropTypes.object,
   tusOptions: PropTypes.object,
   getUppy: PropTypes.func,
@@ -111,6 +122,7 @@ AvUppy.defaultProps = {
   endpoint: '/ms/api/availity/internal/core/vault/upload/v1/resumable',
   chunkSize: 3e6, // ~3MB,
   autoProceed: false,
+  allowInvalidMetadata: false,
 };
 
 export default AvUppy;

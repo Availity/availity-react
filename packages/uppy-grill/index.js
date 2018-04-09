@@ -450,8 +450,14 @@ class Grill extends Plugin {
       this.uppy.emit('Grill:file-card', fileID);
     };
 
-    const fileCardDone = (meta, fileID) => {
-      this.uppy.setFileMeta(fileID, meta);
+    const fileCardDone = (meta, state, fileID) => {
+      const file = this.uppy.getState().files[fileID];
+      const newMeta = Object.assign({}, file.meta, meta);
+      const newFile = Object.assign({}, file, {
+        ...state,
+        meta: newMeta,
+      });
+      this.uppy.setFileState(fileID, newFile);
       this.uppy.emit('Grill:file-card');
     };
 

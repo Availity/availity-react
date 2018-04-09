@@ -21,7 +21,8 @@ React.createElement = React;
 class FileItem extends Component {
   constructor(props) {
     super(props);
-    this.meta = {
+    this.meta = {};
+    this.fileState = {
       validations: {},
       touched: {},
     };
@@ -39,7 +40,7 @@ class FileItem extends Component {
           this.meta[field.id] =
             this.meta[field.defaultValue] || field.defaultValue;
         }
-        this.meta.validations[field.id] = this.validate(
+        this.fileState.validations[field.id] = this.validate(
           this.meta[field.id],
           field.validation
         );
@@ -53,7 +54,7 @@ class FileItem extends Component {
   }
 
   componentDidMount() {
-    this.props.fileCardDone(this.meta, this.props.file.id);
+    this.props.fileCardDone(this.meta, this.fileState, this.props.file.id);
   }
 
   componentWillReceiveProps(nextProps) {
@@ -64,19 +65,19 @@ class FileItem extends Component {
     const { value } = ev.target;
     const { name, index } = ev.target.dataset;
     this.meta[name] = value;
-    this.props.fileCardDone(this.meta, this.props.file.id);
-    this.meta.validations[name] = this.validate(
+    this.props.fileCardDone(this.meta, this.fileState, this.props.file.id);
+    this.fileState.validations[name] = this.validate(
       value,
       this.props.metaFields && this.props.metaFields[index].validation
     );
     this.setState({
-      [`${name}Valid`]: this.meta.validations[name],
+      [`${name}Valid`]: this.fileState.validations[name],
     });
   }
 
   tempStoreMetaOnBlur(ev) {
     const { name } = ev.target.dataset;
-    this.meta.touched[name] = true;
+    this.fileState.touched[name] = true;
     this.tempStoreMetaOrSubmit(ev);
     this.setState({ [`${name}Touched`]: true });
   }
@@ -95,15 +96,15 @@ class FileItem extends Component {
     );
   }
 
-  renderMetaFields({ meta, id }, disableInputs) {
+  renderMetaFields({ validations, touched, meta, id }, disableInputs) {
     const metaFields = this.props.metaFields || [];
     return metaFields.map((field, i) => {
       const groupClass = classNames(
         'form-group',
-        meta.validations &&
-          !meta.validations[field.id] &&
-          meta.touched &&
-          meta.touched[field.id] &&
+        validations &&
+          !validations[field.id] &&
+          touched &&
+          touched[field.id] &&
           'text-danger has-danger'
       );
       return (
@@ -160,7 +161,7 @@ class FileItem extends Component {
   }
 
   handleClick() {
-    this.props.fileCardDone(this.meta, this.props.file.id);
+    this.props.fileCardDone(this.meta, this.fileState, this.props.file.id);
   }
 
   render() {
