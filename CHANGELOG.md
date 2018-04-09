@@ -1,3 +1,20 @@
+<a name="1.0.0"></a>
+# [1.0.0](https://github.com/Availity/availity-react/compare/v1.0.0-alpha.5...v1.0.0) (2018-04-09)
+
+
+### Bug Fixes
+
+* **uppy-grill:** use custom-select style ([#12](https://github.com/Availity/availity-react/issues/12)) ([66f2ca8](https://github.com/Availity/availity-react/commit/66f2ca8))
+* **uppy-react:** account for upload-result header ([6d29e27](https://github.com/Availity/availity-react/commit/6d29e27))
+* **uppy-react:** default restrictions to empty object ([#11](https://github.com/Availity/availity-react/issues/11)) ([34b0f0a](https://github.com/Availity/availity-react/commit/34b0f0a))
+
+
+### Features
+
+* **uppy-react:** validate on before file upload ([e1b5ebd](https://github.com/Availity/availity-react/commit/e1b5ebd))
+
+
+
 <a name="1.0.0-alpha.5"></a>
 # [1.0.0-alpha.5](https://github.com/Availity/availity-react/compare/v1.0.0-alpha.4...v1.0.0-alpha.5) (2018-02-08)
 

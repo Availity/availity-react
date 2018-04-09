@@ -137,7 +137,7 @@
     "url": "https://github.com/Availity/availity-react/issues"
   },
   "homepage": "https://github.com/Availity/availity-react#readme",
-  "version": "1.0.0-alpha.5",
+  "version": "1.0.0",
   "main": "index.js",
   "keywords": [
     "availity",
