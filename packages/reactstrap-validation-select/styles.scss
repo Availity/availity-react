@@ -1,0 +1,14 @@
+.is-touched.is-invalid .av__control {
+  border-color: #931b1d;
+  background-color: #fbcbc8;
+  .is-invalid__dropdown-indicator {
+    color: #931b1d;
+  }
+}
+
+.is-touched.is-invalid .av__control-is-focused {
+  background-color: #fff;
+  .is-invalid__dropdown-indicator {
+    color: #000;
+  }
+}

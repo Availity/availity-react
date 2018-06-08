@@ -26,6 +26,7 @@
     "@availity/api-core": "^2.0.0",
     "@availity/breadcrumbs-spaces-react": "^1.0.0",
     "@availity/localstorage-core": "^1.4.0",
+    "@availity/reactstrap-validation-select": "^1.0.0-alpha.9",
     "@availity/upload-core": "^2.0.0",
     "@availity/uppy-grill": "^1.0.0",
     "@availity/uppy-react": "^1.0.0",
@@ -50,6 +51,7 @@
     "sass-loader": "^7.0.1",
     "storybook-readme": "^3.3.0",
     "tus-js-client": "^1.5.1",
-    "uppy": "^0.25.2"
+    "uppy": "^0.25.2",
+    "xhr-mock": "^2.3.2"
   }
 }
