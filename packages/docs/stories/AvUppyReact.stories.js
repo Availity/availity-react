@@ -5,13 +5,12 @@ import { checkA11y } from '@storybook/addon-a11y';
 
 import DragDrop from 'uppy/lib/react/DragDrop';
 import Dashboard from 'uppy/lib/react/Dashboard';
-import 'uppy/dist/uppy.min.css';
-import AvUppy from '../packages/uppy-react';
-import README from '../packages/uppy-react/README.md';
+// import 'uppy/dist/uppy.min.css';
+import AvUppy from '@availity/uppy-react';
+import README from '@availity/uppy-react/README.md';
 
-storiesOf('AvUppyReact')
+storiesOf('AvUppyReact', module)
   .addDecorator(withReadme([README]))
-  .addDecorator(checkA11y)
   .add('with drag drop', () => (
     <AvUppy
       bucket="AVAILITY_BUCKET"

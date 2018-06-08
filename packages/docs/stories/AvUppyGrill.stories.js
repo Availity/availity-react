@@ -3,13 +3,12 @@ import { storiesOf } from '@storybook/react';
 import { withReadme } from 'storybook-readme';
 import { checkA11y } from '@storybook/addon-a11y';
 
-import AvUppy from '../packages/uppy-react';
-import AvUppyGrill from '../packages/uppy-grill/react';
-import README from '../packages/uppy-grill/README.md';
+import AvUppy from '@availity/uppy-react';
+import AvUppyGrill from '@availity/uppy-grill/react';
+import README from '@availity/uppy-grill/README.md';
 
-storiesOf('AvUppyGrill')
+storiesOf('AvUppyGrill', module)
   .addDecorator(withReadme([README]))
-  .addDecorator(checkA11y)
   .add('default', () => (
     <AvUppy
       bucket="AVAILITY_BUCKET"
