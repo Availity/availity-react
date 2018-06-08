@@ -5,7 +5,6 @@ import { closeIcon } from 'uppy/lib/plugins/Dashboard/icons';
 import classNames from 'classnames';
 import Tabs from 'uppy/lib/plugins/Dashboard/Tabs';
 import FileList from './FileList';
-import './style.scss';
 
 React.createElement = React;
 

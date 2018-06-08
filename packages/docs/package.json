@@ -1,0 +1,55 @@
+{
+  "name": "@availity/docs",
+  "version": "1.0.0",
+  "private": true,
+  "author": "Robert McGuinness <rob.mcguinness@availity.com>",
+  "description": "Storybook docs for availity-react",
+  "main": "index.js",
+  "keywords": [
+    "react",
+    "availity"
+  ],
+  "scripts": {
+    "start": "start-storybook -p 2222 -c .storybook",
+    "build": "build-storybook -c .storybook -o ../../docs"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+ssh://git@github.com/Availity/availity-react.git"
+  },
+  "bugs": {
+    "url": "https://github.com/Availity/availity-react/issues"
+  },
+  "license": "MIT",
+  "devDependencies": {
+    "@availity/api-axios": "^2.0.0",
+    "@availity/api-core": "^2.0.0",
+    "@availity/breadcrumbs-spaces-react": "^1.0.0",
+    "@availity/localstorage-core": "^1.4.0",
+    "@availity/upload-core": "^2.0.0",
+    "@availity/uppy-grill": "^1.0.0",
+    "@availity/uppy-react": "^1.0.0",
+    "@storybook/addon-a11y": "^3.4.3",
+    "@storybook/addon-actions": "^3.4.3",
+    "@storybook/addon-knobs": "^3.4.3",
+    "@storybook/addon-links": "^3.4.3",
+    "@storybook/addon-options": "^3.4.3",
+    "@storybook/addon-storysource": "^3.4.3",
+    "@storybook/addons": "^3.4.3",
+    "@storybook/react": "^3.4.3",
+    "@storybook/storybook-deployer": "^2.3.0",
+    "availity-reactstrap-validation": "^2.0.2",
+    "availity-uikit": "^3.0.0-beta.19",
+    "axios": "^0.18.0",
+    "duplicate-package-checker-webpack-plugin": "^2.1.0",
+    "prop-types": "^15.5.8",
+    "raw-loader": "^0.5.1",
+    "react": "^16.3.0",
+    "react-dom": "^16.3.2",
+    "reactstrap": "^6.1.0",
+    "sass-loader": "^7.0.1",
+    "storybook-readme": "^3.3.0",
+    "tus-js-client": "^1.5.1",
+    "uppy": "^0.25.2"
+  }
+}

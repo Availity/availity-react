@@ -34,6 +34,7 @@
     "@availity/api-core": "^1.0.0-alpha.0",
     "@availity/localstorage-core": "^1.0.0-alpha.0",
     "availity-uikit": "^3.0.0-beta.14",
+    "axios": "^0.18.0",
     "react": "^16.0.0"
   },
   "publishConfig": {
