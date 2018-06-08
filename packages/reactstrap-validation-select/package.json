@@ -1,0 +1,41 @@
+{
+  "name": "@availity/reactstrap-validation-select",
+  "version": "1.0.0-alpha.9",
+  "description":
+    "Wrapper for react-select to work with availity-reactstrap-validation",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": ["availity", "reactstrap", "validation", "select"],
+  "author": "Evan Sharp <evan.sharp@availity.com>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/Availity/availity-react/issues"
+  },
+  "homepage": "https://github.com/Availity/availity-react#readme",
+  "devDependencies": {
+    "@availity/api-axios": "^2.0.0",
+    "@availity/api-core": "^2.0.0",
+    "@availity/localstorage-core": "^1.4.0",
+    "availity-reactstrap-validation": "^2.0.0",
+    "react": "^16.3.0",
+    "react-dom": "^16.3.2",
+    "reactstrap": "^6.0.1"
+  },
+  "peerDependencies": {
+    "@availity/api-axios": "^2.0.0",
+    "availity-uikit": "^3.0.0-beta.19",
+    "availity-reactstrap-validation": "^2.0.0",
+    "react": "^16.0.0",
+    "reactstrap": "^5.0.0 || ^6.0.0"
+  },
+  "dependencies": {
+    "@thesharpieone/react-select-async-pagination": "2.0.0-beta.6",
+    "classnames": "^2.2.5",
+    "debounce": "^1.1.0",
+    "lodash": "^4.17.10",
+    "prop-types": "^15.5.8",
+    "qs": "^6.5.2"
+  }
+}
