@@ -1,3 +1,13 @@
+<a name="1.1.0"></a>
+# [1.1.0](https://github.com/Availity/availity-react/compare/v1.0.0...v1.1.0) (2018-06-11)
+
+
+### Features
+
+* **reactstrap-validation-select:** add reactstrap-validation-select ([7c220f0](https://github.com/Availity/availity-react/commit/7c220f0))
+
+
+
 <a name="1.0.0"></a>
 # [1.0.0](https://github.com/Availity/availity-react/compare/v1.0.0-alpha.5...v1.0.0) (2018-04-09)
 
