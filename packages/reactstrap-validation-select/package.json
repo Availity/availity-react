@@ -1,13 +1,17 @@
 {
   "name": "@availity/reactstrap-validation-select",
-  "version": "1.0.0-alpha.9",
-  "description":
-    "Wrapper for react-select to work with availity-reactstrap-validation",
+  "version": "1.1.0",
+  "description": "Wrapper for react-select to work with availity-reactstrap-validation",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "keywords": ["availity", "reactstrap", "validation", "select"],
+  "keywords": [
+    "availity",
+    "reactstrap",
+    "validation",
+    "select"
+  ],
   "author": "Evan Sharp <evan.sharp@availity.com>",
   "license": "MIT",
   "bugs": {
@@ -25,8 +29,8 @@
   },
   "peerDependencies": {
     "@availity/api-axios": "^2.0.0",
-    "availity-uikit": "^3.0.0-beta.19",
     "availity-reactstrap-validation": "^2.0.0",
+    "availity-uikit": "^3.0.0-beta.19",
     "react": "^16.0.0",
     "reactstrap": "^5.0.0 || ^6.0.0"
   },

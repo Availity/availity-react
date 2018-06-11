@@ -1,6 +1,6 @@
 {
   "name": "@availity/uppy-grill",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "description": "availity uppy plugin ui upload",
   "main": "index.js",
   "scripts": {
