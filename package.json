@@ -19,7 +19,7 @@
     "start": "npm start --prefix packages/docs",
     "build:docs": "npm run build --prefix packages/docs",
     "release": "sh ./scripts/release.sh",
-    "deploy": "storybook-to-ghpages",
+    "deploy-docs": "npm run deploy-docs --prefix packages/docs",
     "updated": "lerna updated",
     "commitmsg": "commitlint -e $GIT_PARAMS"
   },

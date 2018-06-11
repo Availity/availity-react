@@ -11,7 +11,8 @@
   ],
   "scripts": {
     "start": "start-storybook -p 2222 -c .storybook",
-    "build": "build-storybook -c .storybook -o ../../docs"
+    "build": "build-storybook -c .storybook -o ../../docs",
+    "deploy-docs": "storybook-to-ghpages"
   },
   "repository": {
     "type": "git",
