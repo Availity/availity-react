@@ -47,7 +47,7 @@ storiesOf('reactstrap Validation|AvSelect', module)
           isMulti={isMulti}
           options={options}
           name="standAlone"
-          inputProps={{ 'aria-label': 'stand-alone' }}
+          aria-label="stand-alone"
           required={boolean('Required', false)}
           raw
         />
@@ -124,7 +124,6 @@ storiesOf('reactstrap Validation|AvSelect', module)
           minLength={min}
           maxLength={max}
           isMulti={isMulti}
-          options={options}
           required={required}
           resource={avCustomResource}
           errorMessage={text('Generic Error Message', 'This field is invalid')}
@@ -157,7 +156,6 @@ storiesOf('reactstrap Validation|AvSelect/resources', module)
           minLength={min}
           maxLength={max}
           isMulti={isMulti}
-          options={options}
           required={required}
           errorMessage={text('Generic Error Message', 'This field is invalid')}
           validate={{
@@ -186,7 +184,6 @@ storiesOf('reactstrap Validation|AvSelect/resources', module)
           minLength={min}
           maxLength={max}
           isMulti={isMulti}
-          options={options}
           required={required}
           errorMessage={text('Generic Error Message', 'This field is invalid')}
           validate={{
@@ -215,7 +212,6 @@ storiesOf('reactstrap Validation|AvSelect/resources', module)
           minLength={min}
           maxLength={max}
           isMulti={isMulti}
-          options={options}
           required={required}
           errorMessage={text('Generic Error Message', 'This field is invalid')}
           validate={{
@@ -244,7 +240,6 @@ storiesOf('reactstrap Validation|AvSelect/resources', module)
           minLength={min}
           maxLength={max}
           isMulti={isMulti}
-          options={options}
           required={required}
           errorMessage={text('Generic Error Message', 'This field is invalid')}
           validate={{
@@ -273,7 +268,6 @@ storiesOf('reactstrap Validation|AvSelect/resources', module)
           minLength={min}
           maxLength={max}
           isMulti={isMulti}
-          options={options}
           required={required}
           errorMessage={text('Generic Error Message', 'This field is invalid')}
           validate={{
@@ -302,7 +296,6 @@ storiesOf('reactstrap Validation|AvSelect/resources', module)
           minLength={min}
           maxLength={max}
           isMulti={isMulti}
-          options={options}
           required={required}
           errorMessage={text('Generic Error Message', 'This field is invalid')}
           validate={{
