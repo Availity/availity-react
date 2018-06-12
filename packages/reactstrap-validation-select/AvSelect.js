@@ -4,10 +4,31 @@ import classNames from 'classnames';
 import { AvBaseInput } from 'availity-reactstrap-validation';
 import Select from '@thesharpieone/react-select-async-pagination';
 import Async from '@thesharpieone/react-select-async-pagination/lib/Async';
+import {
+  DownChevron,
+  CrossIcon,
+  DropdownIndicator,
+  ClearIndicator,
+} from '@thesharpieone/react-select-async-pagination/lib/components/indicators';
 import get from 'lodash/get';
 import find from 'lodash/find';
 import filter from 'lodash/filter';
 import isEqual from 'lodash/isEqual';
+
+const components = {
+  DropdownIndicator: props => (
+    <DropdownIndicator {...props}>
+      <DownChevron />
+      <span className="sr-only">Toggle Select Options</span>
+    </DropdownIndicator>
+  ),
+  ClearIndicator: props => (
+    <ClearIndicator {...props}>
+      <CrossIcon />
+      <span className="sr-only">Clear all selections</span>
+    </ClearIndicator>
+  ),
+};
 
 class AvSelect extends AvBaseInput {
   static contextTypes = {
@@ -142,6 +163,7 @@ class AvSelect extends AvBaseInput {
     if (this.context.FormCtrl) {
       classes = classNames(
         className,
+        'av-select',
         touched ? 'is-touched' : 'is-untouched',
         this.context.FormCtrl.isDirty(this.props.name)
           ? 'is-dirty'
@@ -161,6 +183,7 @@ class AvSelect extends AvBaseInput {
         getOptionLabel={this.getOptionLabel}
         getOptionValue={this.getOptionValue}
         closeMenuOnSelect={!attributes.isMulti}
+        components={components}
         {...attributes}
         {...this.getValidatorProps()}
         value={this.state.value}

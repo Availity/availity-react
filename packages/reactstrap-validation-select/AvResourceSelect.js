@@ -27,13 +27,21 @@ class AvResourceSelect extends Component {
     itemsPerPage: 50,
   };
 
-  loadOptions = debounce((inputValue, page, callback) => {
+  loadOptions = debounce((...args) => {
+    const [inputValue] = args;
+    let [, page, callback] = args;
     const params = {
       q: inputValue,
       limit: this.props.itemsPerPage,
-      offset: (page - 1) * this.props.itemsPerPage,
       ...this.props.parameters,
     };
+    if (args.length === 3) {
+      params.offset = (page - 1) * this.props.itemsPerPage;
+    } else {
+      callback = page;
+      page = undefined;
+    }
+    if (this.props.onPageChange) this.props.onPageChange(inputValue, page);
     this.props.resource
       .postGet(
         qs.stringify(params, {
