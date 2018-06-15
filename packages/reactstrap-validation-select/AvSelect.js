@@ -98,7 +98,7 @@ class AvSelect extends AvBaseInput {
   getOptionValue = option =>
     this.props.raw && !this.props.valueKey
       ? option
-      : option[this.getValueKey(this.props)];
+      : get(option, this.getValueKey(this.props), option);
 
   getLabelKey(nextProps = this.props) {
     return get(nextProps, 'labelKey', 'label');
@@ -110,7 +110,7 @@ class AvSelect extends AvBaseInput {
     if (this.props.isMulti && digIfMulti && Array.isArray(value)) {
       return value.map(this.prepValue, false);
     }
-    if (this.props.raw) {
+    if (this.props.raw || this.props.loadOptions) {
       return value;
     }
     const valueKey = this.getValueKey();
@@ -152,6 +152,24 @@ class AvSelect extends AvBaseInput {
     return this.value === null ? '' : this.value;
   }
 
+  findOptionFromValue(value, options) {
+    return (
+      Array.isArray(options) &&
+      options.filter(option => this.getOptionValue(option) === value)[0]
+    );
+  }
+
+  getViewValue() {
+    if (this.props.raw || this.props.loadOptions || !this.props.options)
+      return this.state.value;
+    if (this.props.isMulti && Array.isArray(this.state.value)) {
+      return this.state.value.map(value =>
+        this.findOptionFromValue(value, this.props.options)
+      );
+    }
+    return this.findOptionFromValue(this.state.value, this.props.options);
+  }
+
   render() {
     const { className, ...attributes } = this.props;
     const touched =
@@ -186,7 +204,7 @@ class AvSelect extends AvBaseInput {
         components={components}
         {...attributes}
         {...this.getValidatorProps()}
-        value={this.state.value}
+        value={this.getViewValue()}
         defaultOptions
       />
     );

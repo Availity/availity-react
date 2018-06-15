@@ -2,12 +2,13 @@ import React from 'react';
 import { storiesOf } from '@storybook/react';
 import { withReadme } from 'storybook-readme';
 import { Label, Button } from 'reactstrap';
-import { AvForm, AvGroup, AvFeedback } from 'availity-reactstrap-validation';
+import { AvGroup, AvFeedback } from 'availity-reactstrap-validation';
 import { withKnobs, number, text, boolean } from '@storybook/addon-knobs/react';
 import AvApi from '@availity/api-axios';
 import providersMock from './mocks/providers';
 import providersOrganizations from './mocks/organizations';
 import providersRegions from './mocks/regions';
+import AvFormResults from './mocks/AvFormResults';
 
 import AvSelect, {
   AvSelectField,
@@ -40,7 +41,7 @@ storiesOf('reactstrap Validation|AvSelect', module)
     const min = (isMulti && number('Min Selection', 2)) || undefined;
     const max = (isMulti && number('Max Selection', 3)) || undefined;
     return (
-      <AvForm>
+      <AvFormResults>
         <AvSelect
           minLength={min}
           maxLength={max}
@@ -49,12 +50,12 @@ storiesOf('reactstrap Validation|AvSelect', module)
           name="standAlone"
           aria-label="stand-alone"
           required={boolean('Required', false)}
-          raw
+          raw={boolean('Raw value', false)}
         />
         <Button className="mt-3" color="primary">
           Submit
         </Button>
-      </AvForm>
+      </AvFormResults>
     );
   })
   .add('default (with label)', () => {
@@ -62,9 +63,11 @@ storiesOf('reactstrap Validation|AvSelect', module)
     const min = (isMulti && number('Min Selection', 2)) || undefined;
     const max = (isMulti && number('Max Selection', 3)) || undefined;
     return (
-      <AvForm>
+      <AvFormResults>
         <AvGroup>
-          <Label>{text('Label', 'AvSelect Label')}</Label>
+          <Label for="standAloneWithLabel">
+            {text('Label', 'AvSelect Label')}
+          </Label>
           <AvSelect
             minLength={min}
             maxLength={max}
@@ -73,13 +76,14 @@ storiesOf('reactstrap Validation|AvSelect', module)
             name="standAloneWithLabel"
             inputProps={{ 'aria-label': 'stand-alone with Label' }}
             required={boolean('Required', false)}
+            raw={boolean('Raw value', false)}
           />
           <AvFeedback>
             {text('Error Message', 'This field is invalid')}
           </AvFeedback>
         </AvGroup>
         <Button color="primary">Submit</Button>
-      </AvForm>
+      </AvFormResults>
     );
   })
   .add('AvSelectField', () => {
@@ -88,7 +92,7 @@ storiesOf('reactstrap Validation|AvSelect', module)
     const max = (isMulti && number('Max Selection', 3)) || undefined;
     const required = boolean('Required', false);
     return (
-      <AvForm>
+      <AvFormResults>
         <AvSelectField
           label={text('Label', 'Field Label')}
           name="AvSelectField"
@@ -106,9 +110,10 @@ storiesOf('reactstrap Validation|AvSelect', module)
                 text('Required Error Message', 'This field is required'),
             },
           }}
+          raw={boolean('Raw value', false)}
         />
         <Button color="primary">Submit</Button>
-      </AvForm>
+      </AvFormResults>
     );
   })
   .add('AvSelectResource', () => {
@@ -117,7 +122,7 @@ storiesOf('reactstrap Validation|AvSelect', module)
     const max = (isMulti && number('Max Selection', 3)) || undefined;
     const required = boolean('Required', false);
     return (
-      <AvForm>
+      <AvFormResults>
         <AvSelectResource
           label={text('Label', 'Select Custom "Thing"')}
           name="AvSelectResource"
@@ -137,7 +142,7 @@ storiesOf('reactstrap Validation|AvSelect', module)
           }}
         />
         <Button color="primary">Submit</Button>
-      </AvForm>
+      </AvFormResults>
     );
   });
 storiesOf('reactstrap Validation|AvSelect/resources', module)
@@ -149,7 +154,7 @@ storiesOf('reactstrap Validation|AvSelect/resources', module)
     const max = (isMulti && number('Max Selection', 3)) || undefined;
     const required = boolean('Required', false);
     return (
-      <AvForm>
+      <AvFormResults>
         <AvProviderSelect
           label={text('Label', 'Select Provider')}
           name="AvProviderSelect"
@@ -168,7 +173,7 @@ storiesOf('reactstrap Validation|AvSelect/resources', module)
           }}
         />
         <Button color="primary">Submit</Button>
-      </AvForm>
+      </AvFormResults>
     );
   })
   .add('AvOrganizationSelect', () => {
@@ -177,7 +182,7 @@ storiesOf('reactstrap Validation|AvSelect/resources', module)
     const max = (isMulti && number('Max Selection', 3)) || undefined;
     const required = boolean('Required', false);
     return (
-      <AvForm>
+      <AvFormResults>
         <AvOrganizationSelect
           label={text('Label', 'Select Organization')}
           name="AvOrganizationSelect"
@@ -196,7 +201,7 @@ storiesOf('reactstrap Validation|AvSelect/resources', module)
           }}
         />
         <Button color="primary">Submit</Button>
-      </AvForm>
+      </AvFormResults>
     );
   })
   .add('AvRegionSelect', () => {
@@ -205,7 +210,7 @@ storiesOf('reactstrap Validation|AvSelect/resources', module)
     const max = (isMulti && number('Max Selection', 3)) || undefined;
     const required = boolean('Required', false);
     return (
-      <AvForm>
+      <AvFormResults>
         <AvRegionSelect
           label={text('Label', 'Select Region')}
           name="AvRegionSelect"
@@ -224,7 +229,7 @@ storiesOf('reactstrap Validation|AvSelect/resources', module)
           }}
         />
         <Button color="primary">Submit</Button>
-      </AvForm>
+      </AvFormResults>
     );
   })
   .add('AvPermissionSelect', () => {
@@ -233,7 +238,7 @@ storiesOf('reactstrap Validation|AvSelect/resources', module)
     const max = (isMulti && number('Max Selection', 3)) || undefined;
     const required = boolean('Required', false);
     return (
-      <AvForm>
+      <AvFormResults>
         <AvPermissionSelect
           label={text('Label', 'Select Permission')}
           name="AvPermissionSelect"
@@ -252,7 +257,7 @@ storiesOf('reactstrap Validation|AvSelect/resources', module)
           }}
         />
         <Button color="primary">Submit</Button>
-      </AvForm>
+      </AvFormResults>
     );
   })
   .add('AvNavigationSelect', () => {
@@ -261,7 +266,7 @@ storiesOf('reactstrap Validation|AvSelect/resources', module)
     const max = (isMulti && number('Max Selection', 3)) || undefined;
     const required = boolean('Required', false);
     return (
-      <AvForm>
+      <AvFormResults>
         <AvNavigationSelect
           label={text('Label', 'Select Payer Space')}
           name="AvNavigationSelect"
@@ -280,7 +285,7 @@ storiesOf('reactstrap Validation|AvSelect/resources', module)
           }}
         />
         <Button color="primary">Submit</Button>
-      </AvForm>
+      </AvFormResults>
     );
   })
   .add('AvUserSelect', () => {
@@ -289,7 +294,7 @@ storiesOf('reactstrap Validation|AvSelect/resources', module)
     const max = (isMulti && number('Max Selection', 3)) || undefined;
     const required = boolean('Required', false);
     return (
-      <AvForm>
+      <AvFormResults>
         <AvUserSelect
           label={text('Label', 'Select User')}
           name="AvUserSelect"
@@ -308,6 +313,6 @@ storiesOf('reactstrap Validation|AvSelect/resources', module)
           }}
         />
         <Button color="primary">Submit</Button>
-      </AvForm>
+      </AvFormResults>
     );
   });
