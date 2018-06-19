@@ -33,6 +33,7 @@ class AvResourceSelect extends Component {
     const params = {
       q: inputValue,
       limit: this.props.itemsPerPage,
+      customerId: this.props.customerId,
       ...this.props.parameters,
     };
     if (args.length === 3) {
@@ -51,7 +52,9 @@ class AvResourceSelect extends Component {
           allowDots: true,
         }),
         {
-          headers: { 'X-Availity-Customer-ID': this.props.customerId },
+          headers: {
+            'Content-Type': 'application/x-www-form-urlencoded',
+          },
           ...this.props.requestConfig,
         }
       )
