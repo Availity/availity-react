@@ -1,3 +1,19 @@
+<a name="1.2.0"></a>
+# [1.2.0](https://github.com/Availity/availity-react/compare/v1.1.0...v1.2.0) (2018-06-19)
+
+
+### Bug Fixes
+
+* **reactstrap-validation-select:** fix a11y issues ([ffe0358](https://github.com/Availity/availity-react/commit/ffe0358))
+* **reactstrap-validation-select:** fix headers ([0dbd032](https://github.com/Availity/availity-react/commit/0dbd032))
+
+
+### Features
+
+* **reactstrap-validation-select:** make select work with simple values ([8634165](https://github.com/Availity/availity-react/commit/8634165))
+
+
+
 <a name="1.1.0"></a>
 # [1.1.0](https://github.com/Availity/availity-react/compare/v1.0.0...v1.1.0) (2018-06-11)
 
