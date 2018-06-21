@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { spacesApi } from '@availity/api-axios';
+import { avSpacesApi } from '@availity/api-axios';
 
 import AvBreadcrumbsSpaces from './AvBreadcrumbsSpaces';
 
@@ -13,12 +13,12 @@ class AvBreadcrumbsSpacesContainer extends React.Component {
   state = { pageName: this.props.pageName };
 
   getSpaceName(spaceId) {
-    return spacesApi.getSpaceName(spaceId);
+    return avSpacesApi.getSpaceName(spaceId);
   }
 
   async componentDidMount() {
     const spaceId =
-      this.props.spaceId || spacesApi.parseSpaceId(window.location.search);
+      this.props.spaceId || avSpacesApi.parseSpaceId(window.location.search);
     const spaceName = await this.getSpaceName(spaceId);
 
     // eslint-disable-next-line react/no-did-mount-set-state
