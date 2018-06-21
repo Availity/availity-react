@@ -12,6 +12,8 @@ const AvSelectField = (props, { FormCtrl }) => {
     labelHidden,
     id = props.name,
     feedbackClass,
+    groupClass,
+    labelClass,
     ...attributes
   } = props;
 
@@ -37,14 +39,14 @@ const AvSelectField = (props, { FormCtrl }) => {
       selectAttributes.inputId = id;
     }
     thisLabel = (
-      <Label for={forLabel} hidden={labelHidden}>
+      <Label for={forLabel} hidden={labelHidden} {...labelClass}>
         {label}
       </Label>
     );
   }
 
   return (
-    <AvGroup>
+    <AvGroup {...groupClass}>
       {thisLabel}
       <AvSelect {...selectAttributes} />
       {feedback}
@@ -57,6 +59,8 @@ AvSelectField.propTypes = {
   labelHidden: PropTypes.bool,
   id: PropTypes.string,
   feedbackClass: PropTypes.string,
+  groupClass: PropTypes.string,
+  labelClass: PropTypes.string,
   name: PropTypes.string.isRequired,
 };
 

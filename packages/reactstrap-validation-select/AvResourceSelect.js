@@ -20,6 +20,8 @@ class AvResourceSelect extends Component {
     parameters: PropTypes.object,
     itemsPerPage: PropTypes.number,
     onPageChange: PropTypes.func,
+    isDisabled: PropTypes.bool,
+    requiredParams: PropTypes.array,
   };
 
   static defaultProps = {
@@ -42,6 +44,14 @@ class AvResourceSelect extends Component {
       callback = page;
       page = undefined;
     }
+    if (
+      this.props.isDisabled ||
+      (this.props.requiredParams &&
+        this.props.requiredParams.some(param => !params[param]))
+    ) {
+      callback([]);
+      return;
+    }
     if (this.props.onPageChange) this.props.onPageChange(inputValue, page);
     this.props.resource
       .postGet(
@@ -59,6 +69,9 @@ class AvResourceSelect extends Component {
         }
       )
       .then(resp => {
+        if (!resp || !resp.data) {
+          throw new Error(`API returned an invalid response.`);
+        }
         const getResult = this.props.getResult || this.props.resource.getResult;
 
         const items =

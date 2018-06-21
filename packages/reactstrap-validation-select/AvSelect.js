@@ -12,7 +12,6 @@ import {
 } from '@thesharpieone/react-select-async-pagination/lib/components/indicators';
 import get from 'lodash/get';
 import find from 'lodash/find';
-import filter from 'lodash/filter';
 import isEqual from 'lodash/isEqual';
 
 const components = {
@@ -46,30 +45,10 @@ class AvSelect extends AvBaseInput {
   };
 
   componentWillReceiveProps(nextProps) {
-    let newValue = nextProps.value;
-    let valueChanged = !isEqual(newValue, this.props.value); // if prop changed, used new prop regardless
+    const newValue =
+      nextProps.value !== undefined ? nextProps.value : this.value;
 
-    if (nextProps.options && !isEqual(nextProps.options, this.props.options)) {
-      if (!valueChanged) {
-        // if props didn't change value, use state for current value
-        newValue = this.state.value;
-      }
-
-      if (nextProps.isMulti) {
-        newValue = filter(newValue, value => {
-          const keep = this.optionsContainsValue(nextProps, value);
-          if (!valueChanged && !keep) {
-            valueChanged = true;
-          }
-          return keep;
-        });
-      } else if (!this.optionsContainsValue(nextProps, newValue)) {
-        newValue = undefined;
-        valueChanged = true;
-      }
-    }
-
-    if (valueChanged) {
+    if (newValue !== this.value) {
       this.value = newValue;
       this.setState({ value: newValue });
       this.validate();
@@ -163,11 +142,14 @@ class AvSelect extends AvBaseInput {
     if (this.props.raw || this.props.loadOptions || !this.props.options)
       return this.state.value;
     if (this.props.isMulti && Array.isArray(this.state.value)) {
-      return this.state.value.map(value =>
-        this.findOptionFromValue(value, this.props.options)
+      return this.state.value.map(
+        value => this.findOptionFromValue(value, this.props.options) || value
       );
     }
-    return this.findOptionFromValue(this.state.value, this.props.options);
+    return (
+      this.findOptionFromValue(this.state.value, this.props.options) ||
+      this.state.value
+    );
   }
 
   render() {

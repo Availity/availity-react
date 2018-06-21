@@ -11,6 +11,7 @@ import AvResourceSelect from './AvResourceSelect';
 const AvProviderSelect = AvResourceSelect.create({
   resource: avProvidersApi,
   labelKey: 'uiDisplayName',
+  requiredParams: ['customerId'],
 });
 const AvOrganizationSelect = AvResourceSelect.create({
   resource: avOrganizationsApi,

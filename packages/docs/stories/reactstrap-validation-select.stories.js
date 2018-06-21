@@ -6,8 +6,8 @@ import { AvGroup, AvFeedback } from 'availity-reactstrap-validation';
 import { withKnobs, number, text, boolean } from '@storybook/addon-knobs/react';
 import AvApi from '@availity/api-axios';
 import providersMock from './mocks/providers';
-import providersOrganizations from './mocks/organizations';
-import providersRegions from './mocks/regions';
+import OrganizationsMock from './mocks/organizations';
+import RegionsMock from './mocks/regions';
 import AvFormResults from './mocks/AvFormResults';
 
 import AvSelect, {
@@ -51,6 +51,7 @@ storiesOf('reactstrap Validation|AvSelect', module)
           aria-label="stand-alone"
           required={boolean('Required', false)}
           raw={boolean('Raw value', false)}
+          isDisabled={boolean('Disabled', false)}
         />
         <Button className="mt-3" color="primary">
           Submit
@@ -77,6 +78,7 @@ storiesOf('reactstrap Validation|AvSelect', module)
             inputProps={{ 'aria-label': 'stand-alone with Label' }}
             required={boolean('Required', false)}
             raw={boolean('Raw value', false)}
+            isDisabled={boolean('Disabled', false)}
           />
           <AvFeedback>
             {text('Error Message', 'This field is invalid')}
@@ -111,6 +113,7 @@ storiesOf('reactstrap Validation|AvSelect', module)
             },
           }}
           raw={boolean('Raw value', false)}
+          isDisabled={boolean('Disabled', false)}
         />
         <Button color="primary">Submit</Button>
       </AvFormResults>
@@ -140,6 +143,7 @@ storiesOf('reactstrap Validation|AvSelect', module)
                 text('Required Error Message', 'This field is required'),
             },
           }}
+          isDisabled={boolean('Disabled', false)}
         />
         <Button color="primary">Submit</Button>
       </AvFormResults>
@@ -158,6 +162,7 @@ storiesOf('reactstrap Validation|AvSelect/resources', module)
         <AvProviderSelect
           label={text('Label', 'Select Provider')}
           name="AvProviderSelect"
+          customerId="1234"
           minLength={min}
           maxLength={max}
           isMulti={isMulti}
@@ -171,6 +176,7 @@ storiesOf('reactstrap Validation|AvSelect/resources', module)
                 text('Required Error Message', 'This field is required'),
             },
           }}
+          isDisabled={boolean('Disabled', false)}
         />
         <Button color="primary">Submit</Button>
       </AvFormResults>
@@ -199,6 +205,7 @@ storiesOf('reactstrap Validation|AvSelect/resources', module)
                 text('Required Error Message', 'This field is required'),
             },
           }}
+          isDisabled={boolean('Disabled', false)}
         />
         <Button color="primary">Submit</Button>
       </AvFormResults>
@@ -227,6 +234,7 @@ storiesOf('reactstrap Validation|AvSelect/resources', module)
                 text('Required Error Message', 'This field is required'),
             },
           }}
+          isDisabled={boolean('Disabled', false)}
         />
         <Button color="primary">Submit</Button>
       </AvFormResults>
@@ -255,6 +263,7 @@ storiesOf('reactstrap Validation|AvSelect/resources', module)
                 text('Required Error Message', 'This field is required'),
             },
           }}
+          isDisabled={boolean('Disabled', false)}
         />
         <Button color="primary">Submit</Button>
       </AvFormResults>
@@ -283,6 +292,7 @@ storiesOf('reactstrap Validation|AvSelect/resources', module)
                 text('Required Error Message', 'This field is required'),
             },
           }}
+          isDisabled={boolean('Disabled', false)}
         />
         <Button color="primary">Submit</Button>
       </AvFormResults>
@@ -311,6 +321,7 @@ storiesOf('reactstrap Validation|AvSelect/resources', module)
                 text('Required Error Message', 'This field is required'),
             },
           }}
+          isDisabled={boolean('Disabled', false)}
         />
         <Button color="primary">Submit</Button>
       </AvFormResults>
