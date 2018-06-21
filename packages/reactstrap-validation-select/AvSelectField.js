@@ -39,14 +39,14 @@ const AvSelectField = (props, { FormCtrl }) => {
       selectAttributes.inputId = id;
     }
     thisLabel = (
-      <Label for={forLabel} hidden={labelHidden} {...labelClass}>
+      <Label for={forLabel} hidden={labelHidden} className={labelClass}>
         {label}
       </Label>
     );
   }
 
   return (
-    <AvGroup {...groupClass}>
+    <AvGroup className={groupClass}>
       {thisLabel}
       <AvSelect {...selectAttributes} />
       {feedback}

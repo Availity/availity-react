@@ -96,6 +96,9 @@ Please refer to [react-select with async pagination](https://github.com/TheSharp
 *   **`raw`**: Boolean. Optional. Default: `false`. If `true`, the entire object of the selected value will be returned as the value instead of the value for the `valueKey` within the object.
 *   **`valueKey`**: String. Optional. The key of the value you want returned when selected. Default: `value`
 *   **`labelKey`**: String. Optional. The key for the label you want to appear in the dropdrop for the user to see. Default `label`
+*   **`groupClass`**: String. Optional. ClassName to add to the wrapping AvGroup
+*   **`labelClass`**: String. Optional. ClassName to add to the label
+*   **`feedbackClass`**: String. Optional. ClassName to add to the AvFeedback
 
 #### AvSelectField Example usage
 
