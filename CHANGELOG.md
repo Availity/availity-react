@@ -1,3 +1,13 @@
+<a name="1.3.0"></a>
+# [1.3.0](https://github.com/Availity/availity-react/compare/v1.2.2...v1.3.0) (2018-06-22)
+
+
+### Features
+
+* **reactstrap-validation-select:** add ability to reload options ([5d1c7c4](https://github.com/Availity/availity-react/commit/5d1c7c4))
+
+
+
 <a name="1.2.2"></a>
 ## [1.2.2](https://github.com/Availity/availity-react/compare/v1.2.1...v1.2.2) (2018-06-21)
 
