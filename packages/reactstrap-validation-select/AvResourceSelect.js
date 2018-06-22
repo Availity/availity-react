@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { Component, createRef } from 'react';
 import PropTypes from 'prop-types';
 import debounce from 'debounce';
 import qs from 'qs';
@@ -22,12 +22,36 @@ class AvResourceSelect extends Component {
     onPageChange: PropTypes.func,
     isDisabled: PropTypes.bool,
     requiredParams: PropTypes.array,
+    watchParams: PropTypes.array,
   };
 
   static defaultProps = {
     delay: 350,
     itemsPerPage: 50,
   };
+
+  select = createRef();
+
+  componentDidUpdate(prevProps) {
+    if (this.props.watchParams && this.select.current) {
+      const params = {
+        customerId: this.props.customerId,
+        ...this.props.parameters,
+      };
+      const prevParams = {
+        customerId: prevProps.customerId,
+        ...prevProps.parameters,
+      };
+      if (
+        this.props.watchParams.some(
+          param => params[param] && params[param] !== prevParams[param]
+        )
+      ) {
+        this.select.current.optionsCache = {};
+        this.select.current.optionsFromCacheOrLoad('');
+      }
+    }
+  }
 
   loadOptions = debounce((...args) => {
     const [inputValue] = args;
@@ -49,7 +73,7 @@ class AvResourceSelect extends Component {
       (this.props.requiredParams &&
         this.props.requiredParams.some(param => !params[param]))
     ) {
-      callback([]);
+      callback();
       return;
     }
     if (this.props.onPageChange) this.props.onPageChange(inputValue, page);
@@ -96,7 +120,13 @@ class AvResourceSelect extends Component {
     const Tag = this.props.label ? AvSelectField : AvSelect;
 
     return (
-      <Tag loadOptions={this.loadOptions} pagination raw {...this.props} />
+      <Tag
+        selectRef={this.select}
+        loadOptions={this.loadOptions}
+        pagination
+        raw
+        {...this.props}
+      />
     );
   }
 }

@@ -137,7 +137,9 @@ Please refer to [react-select with async pagination](https://github.com/TheSharp
 *   **`label`**: String. Optional. If provided, the rendered component will mimic `AvSelectField` instead of `AvSelect` (it will create a group with a label and feedback).
 *   **`requestConfig`**: Object. Optional. Configuration object which will be used with the query method on the resource. Useful for defining headers to be sent with the request.
 *   **`parameters`**: Object. Optional. Object which will be used to create querystring parameters in the request.
-*   **`customerId`**: String. Optional. The value of the customer ID which will be sent in the header of the request. Useful for restricting the loaded options to be related to the organization the user has in context.
+*   **`customerId`**: String. Optional. The value of the customer ID which will be sent in the parameters. Useful for restricting the loaded options to be related to the organization the user has in context.
+*   **`requiredParams`**: Array of strings. Optional. If present, the network request will not be made until all of the required parameters specified in the array have a truthy value.
+*   **`watchParams`**: Array of strings. Optional. If present, the options will reset when any of the parameters specified in the array change value. This is useful for when a customerId changes and you need to load a new list of options for the user to choose from.
 *   **`resource`**: Availity API resource (see [@availity/api-core](https://github.com/Availity/sdk-js/tree/master/packages/api-core) and [@availity/api-axios](https://github.com/Availity/sdk-js/tree/master/packages/api-axios)). Required.
 *   **`getResult`**: String or Function. Optional. When a function, the function will be called with the API response body/payload and is expected to return an array containing the list of items for the page. When a string, the string is expected to be a simple key used to get the value from the response ("simple" meaning not handling dot-notation for nested objects, if you need that provide a function.)
 *   **`delay`**: Number. default: 350, The amount of time (in milliseconds) to wait after the user has stopped typing before making the network request (debounced input).
@@ -206,6 +208,9 @@ import '@availity/reactstrap-validation-select/styles.scss';
     />
     <AvProviderSelect
         name="provider"
+        customerId="1234"
+        requiredParams={['customerId']}
+        watchParams={['customerId']}
         label="Select a provider"
         customerId={customerId}
         required

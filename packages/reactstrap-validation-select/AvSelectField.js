@@ -28,15 +28,13 @@ const AvSelectField = (props, { FormCtrl }) => {
     );
   }
 
-  const selectAttributes = { ...attributes };
-
   let thisLabel = false;
   if (label) {
     let forLabel = id;
-    if (selectAttributes.inputId) {
-      forLabel = selectAttributes.inputId;
+    if (attributes.inputId) {
+      forLabel = attributes.inputId;
     } else {
-      selectAttributes.inputId = id;
+      attributes.inputId = id;
     }
     thisLabel = (
       <Label for={forLabel} hidden={labelHidden} className={labelClass}>
@@ -48,7 +46,7 @@ const AvSelectField = (props, { FormCtrl }) => {
   return (
     <AvGroup className={groupClass}>
       {thisLabel}
-      <AvSelect {...selectAttributes} />
+      <AvSelect {...attributes} />
       {feedback}
     </AvGroup>
   );

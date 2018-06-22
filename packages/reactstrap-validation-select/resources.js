@@ -12,6 +12,7 @@ const AvProviderSelect = AvResourceSelect.create({
   resource: avProvidersApi,
   labelKey: 'uiDisplayName',
   requiredParams: ['customerId'],
+  watchParams: ['customerId'],
 });
 const AvOrganizationSelect = AvResourceSelect.create({
   resource: avOrganizationsApi,

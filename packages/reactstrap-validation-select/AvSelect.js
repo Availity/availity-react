@@ -153,7 +153,7 @@ class AvSelect extends AvBaseInput {
   }
 
   render() {
-    const { className, ...attributes } = this.props;
+    const { className, selectRef, ...attributes } = this.props;
     const touched =
       this.context.FormCtrl && this.context.FormCtrl.isTouched(this.props.name);
     const hasError =
@@ -178,6 +178,7 @@ class AvSelect extends AvBaseInput {
 
     return (
       <Tag
+        ref={selectRef}
         classNamePrefix="av"
         className={classes}
         getOptionLabel={this.getOptionLabel}

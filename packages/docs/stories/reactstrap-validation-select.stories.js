@@ -162,7 +162,9 @@ storiesOf('reactstrap Validation|AvSelect/resources', module)
         <AvProviderSelect
           label={text('Label', 'Select Provider')}
           name="AvProviderSelect"
-          customerId="1234"
+          customerId={text('Customer ID', '1234')}
+          requiredParams={['customerId']}
+          watchParams={['customerId']}
           minLength={min}
           maxLength={max}
           isMulti={isMulti}
