@@ -112,6 +112,12 @@ class AvSelect extends AvBaseInput {
     return this.props.onFocus && this.props.onFocus(value);
   }
 
+  onInputHandler(...args) {
+    if (this.props.onInputChange) {
+      this.props.onInputChange(...args);
+    }
+  }
+
   onChangeHandler(inputValue) {
     const value = this.prepValue(inputValue);
     if (this.props.isMulti) {
@@ -120,11 +126,7 @@ class AvSelect extends AvBaseInput {
         return;
       }
     }
-    this.onInputHandler(value);
     super.onChangeHandler(value);
-    if (this.props.onInputChange) {
-      this.props.onInputChange(value);
-    }
   }
 
   getValue() {
