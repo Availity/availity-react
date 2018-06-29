@@ -1,3 +1,13 @@
+<a name="1.3.5"></a>
+## [1.3.5](https://github.com/Availity/availity-react/compare/v1.3.4...v1.3.5) (2018-06-29)
+
+
+### Bug Fixes
+
+* **reactstrap-validation-select:** update dep to pull in fix ([c5d9114](https://github.com/Availity/availity-react/commit/c5d9114))
+
+
+
 <a name="1.3.4"></a>
 ## [1.3.4](https://github.com/Availity/availity-react/compare/v1.3.3...v1.3.4) (2018-06-27)
 
