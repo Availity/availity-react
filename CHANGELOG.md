@@ -1,3 +1,13 @@
+<a name="1.3.6"></a>
+## [1.3.6](https://github.com/Availity/availity-react/compare/v1.3.5...v1.3.6) (2018-07-09)
+
+
+### Bug Fixes
+
+* **reactstrap-validation-select:** encode q and fix overflow ([31c0b34](https://github.com/Availity/availity-react/commit/31c0b34))
+
+
+
 <a name="1.3.5"></a>
 ## [1.3.5](https://github.com/Availity/availity-react/compare/v1.3.4...v1.3.5) (2018-06-29)
 
