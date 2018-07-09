@@ -57,7 +57,7 @@ class AvResourceSelect extends Component {
     const [inputValue] = args;
     let [, page, callback] = args;
     const params = {
-      q: inputValue,
+      q: encodeURIComponent(inputValue),
       limit: this.props.itemsPerPage,
       customerId: this.props.customerId,
       ...this.props.parameters,
