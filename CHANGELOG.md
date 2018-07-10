@@ -1,3 +1,13 @@
+<a name="1.3.7"></a>
+## [1.3.7](https://github.com/Availity/availity-react/compare/v1.3.6...v1.3.7) (2018-07-10)
+
+
+### Bug Fixes
+
+* **reactstrap-validation-select:** fix IE overflow ([8f5b4a1](https://github.com/Availity/availity-react/commit/8f5b4a1))
+
+
+
 <a name="1.3.6"></a>
 ## [1.3.6](https://github.com/Availity/availity-react/compare/v1.3.5...v1.3.6) (2018-07-09)
 
