@@ -21,11 +21,20 @@
   color: #666;
 }
 .av__value-container {
-  max-width: calc(100% - 40px);
+  width: 90%;
 }
-.av__value-container--is-multi.av__value-container--has-value .av__value-container{
-  max-width: calc(100% - 75px);
+.av__value-container--is-multi.av__value-container--has-value.av__value-container {
+  width: 85%;
 }
-.av__value-container > div, .av__input, .av__input > input {
+.av__value-container > div,
+.av__input,
+.av__input > input {
+  max-width: 99%;
+}
+.av__input > input + div {
   max-width: 100%;
+}
+svg,
+use {
+  pointer-events: none;
 }
