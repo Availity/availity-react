@@ -1,3 +1,13 @@
+<a name="1.4.0"></a>
+# [1.4.0](https://github.com/Availity/availity-react/compare/v1.3.7...v1.4.0) (2018-08-07)
+
+
+### Features
+
+* **reactstrap-validation-date:** add reactstrap-validation-date ([fe7a1aa](https://github.com/Availity/availity-react/commit/fe7a1aa))
+
+
+
 <a name="1.3.7"></a>
 ## [1.3.7](https://github.com/Availity/availity-react/compare/v1.3.6...v1.3.7) (2018-07-10)
 
