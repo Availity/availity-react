@@ -27,6 +27,7 @@
     "@availity/api-core": "^2.0.0",
     "@availity/breadcrumbs-spaces-react": "^1.2.1",
     "@availity/localstorage-core": "^1.4.0",
+    "@availity/reactstrap-validation-date": "^1.3.7",
     "@availity/reactstrap-validation-select": "^1.3.7",
     "@availity/upload-core": "^2.0.0",
     "@availity/uppy-grill": "^1.1.0",
