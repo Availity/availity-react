@@ -1,4 +1,5 @@
 # availity-react
+
 > React components using Availity UIKit and Bootstrap 4
 
 [![License](https://img.shields.io/badge/license-MIT-blue.svg?style=flat-square&label=license)](http://opensource.org/licenses/MIT)
@@ -15,9 +16,10 @@ https://availity.github.io/availity-react
 
 ## Documentation
 
-- [breadcrumb-spaces-react](packages/breadcrumbs-spaces-react/README.md) - Breadscrumbs component for Spaces platform
-- [uppy-grill](packages/uppy-grill/README.md) - Uppy Plugin based on uppy's Dashboard Plugin that changes the layout and provides enhanced form capabilities
-- [uppy-react](packages/uppy-react/README.md)- Uppy wrapper with opinions around file-uploads and virus scanning with Availity.
+* [breadcrumb-spaces-react](packages/breadcrumbs-spaces-react/README.md) - Breadscrumbs component for Spaces platform
+* [reactstrap-validation-date](packages/reactstrap-validation-date/README.md) - Wrapper for react-date-range to work with availity-reactstrap-validation
+* [reactstrap-validation-select](packages/reactstrap-validation-select/README.md) - Wrapper for react-select to work with availity-reactstrap-validation
+* [upload](packages/upload/README.md) - Availity upload component for uploading files
 
 ## License
 
