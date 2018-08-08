@@ -1,0 +1,32 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Upload should render 1`] = `
+Array [
+  <div
+    className="d-none"
+  >
+    <input
+      accept={undefined}
+      className="form-control-file"
+      id="filePicker-1"
+      multiple={true}
+      name={undefined}
+      onChange={[Function]}
+      size={undefined}
+      type="file"
+      value=""
+    />
+  </div>,
+  <button
+    className="btn btn-light"
+    onClick={[Function]}
+    type="button"
+  >
+    <i
+      className="icon icon-plus-circle"
+      title="Add File Icon"
+    />
+    Add File
+  </button>,
+]
+`;

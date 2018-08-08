@@ -1,0 +1,23 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Upload should render 1`] = `
+<div
+  className="custom-file"
+>
+  <input
+    accept={undefined}
+    className="custom-file-input"
+    id="filePicker-1"
+    onChange={[Function]}
+    size={undefined}
+    type="file"
+    value=""
+  />
+  <label
+    className="custom-file-label"
+    htmlFor="filePicker-1"
+  >
+    Choose file
+  </label>
+</div>
+`;
