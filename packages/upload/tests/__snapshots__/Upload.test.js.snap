@@ -6,13 +6,10 @@ Array [
     className="d-none"
   >
     <input
-      accept={undefined}
       className="form-control-file"
       id="filePicker-1"
       multiple={true}
-      name={undefined}
       onChange={[Function]}
-      size={undefined}
       type="file"
       value=""
     />
