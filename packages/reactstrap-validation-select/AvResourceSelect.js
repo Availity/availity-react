@@ -109,6 +109,7 @@ class AvResourceSelect extends Component {
           );
         }
 
+        // eslint-disable-next-line promise/no-callback-in-promise
         return callback(items);
       })
       .catch(error => {
