@@ -1,3 +1,13 @@
+<a name="1.5.0"></a>
+# [1.5.0](https://github.com/Availity/availity-react/compare/v1.4.0...v1.5.0) (2018-08-13)
+
+
+### Features
+
+* **upload:** add upload ([caf9e7c](https://github.com/Availity/availity-react/commit/caf9e7c))
+
+
+
 <a name="1.4.0"></a>
 # [1.4.0](https://github.com/Availity/availity-react/compare/v1.3.7...v1.4.0) (2018-08-07)
 

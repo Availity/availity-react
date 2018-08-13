@@ -14,8 +14,8 @@ export default (url, key, fields, data) => {
         prev[key] = value;
         return prev;
       }, {});
-    const offset = params.offset || 0;
-    const limit = params.limit || 50;
+    const offset = parseInt(params.offset) || 0;
+    const limit = parseInt(params.limit) || 50;
     const list = find(params.q).slice(offset, offset + limit);
     return res.status(200).body(
       JSON.stringify({
