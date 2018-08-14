@@ -106,7 +106,7 @@ FilePicker.propTypes = {
   children: PropTypes.func,
   name: PropTypes.string,
   allowedFileTypes: PropTypes.arrayOf(PropTypes.string),
-  maxSize: PropTypes.number,
+  maxSize: PropTypes.oneOfType([PropTypes.number, PropTypes.string])
 };
 
 FilePicker.defaultProps = {
