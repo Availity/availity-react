@@ -91,7 +91,7 @@ class FilePicker extends Component {
             ? allowedFileTypes.join(',')
             : undefined
         }
-        size={maxSize + ''}
+        size={maxSize ? maxSize.toString() : undefined}
         {...props}
         onChange={this.onChange}
       />
@@ -106,7 +106,7 @@ FilePicker.propTypes = {
   children: PropTypes.func,
   name: PropTypes.string,
   allowedFileTypes: PropTypes.arrayOf(PropTypes.string),
-  maxSize: PropTypes.oneOfType([PropTypes.number, PropTypes.string])
+  maxSize: PropTypes.oneOfType([PropTypes.number, PropTypes.string]),
 };
 
 FilePicker.defaultProps = {
