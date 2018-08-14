@@ -39,7 +39,7 @@
     "reactstrap": "^5.0.0 || ^6.0.0"
   },
   "dependencies": {
-    "@thesharpieone/react-select-async-pagination": "2.0.0-beta.10",
+    "@thesharpieone/react-select-async-pagination": "^2.0.0",
     "classnames": "^2.2.5",
     "debounce": "^1.1.0",
     "lodash": "^4.17.10",
