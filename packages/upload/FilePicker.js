@@ -91,7 +91,7 @@ class FilePicker extends Component {
             ? allowedFileTypes.join(',')
             : undefined
         }
-        size={maxSize}
+        size={maxSize + ''}
         {...props}
         onChange={this.onChange}
       />
