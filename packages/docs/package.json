@@ -1,6 +1,6 @@
 {
   "name": "@availity/docs",
-  "version": "1.5.0",
+  "version": "1.5.1",
   "private": true,
   "author": "Robert McGuinness <rob.mcguinness@availity.com>",
   "description": "Storybook docs for availity-react",
@@ -28,8 +28,8 @@
     "@availity/breadcrumbs-spaces-react": "^1.2.1",
     "@availity/localstorage-core": "^1.4.0",
     "@availity/reactstrap-validation-date": "^1.5.0",
-    "@availity/reactstrap-validation-select": "^1.5.0",
-    "@availity/upload": "^1.5.0",
+    "@availity/reactstrap-validation-select": "^1.5.1",
+    "@availity/upload": "^1.5.1",
     "@availity/upload-core": "^2.0.0",
     "@storybook/addon-a11y": "^3.4.3",
     "@storybook/addon-actions": "^3.4.3",
