@@ -6,7 +6,7 @@ Array [
     className="d-none"
   >
     <input
-      className="form-control-undefined form-control-file"
+      className="form-control-file"
       id="filePicker-1"
       onChange={[Function]}
       type="file"

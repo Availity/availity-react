@@ -8,7 +8,6 @@ exports[`Upload should render 1`] = `
     className="custom-file-input"
     id="filePicker-1"
     onChange={[Function]}
-    size="undefined"
     type="file"
     value=""
   />
