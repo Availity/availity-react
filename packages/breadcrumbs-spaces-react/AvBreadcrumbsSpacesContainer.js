@@ -19,13 +19,15 @@ class AvBreadcrumbsSpacesContainer extends React.Component {
   async componentDidMount() {
     const spaceId =
       this.props.spaceId || avSpacesApi.parseSpaceId(window.location.search);
-    const spaceName = await this.getSpaceName(spaceId);
 
-    // eslint-disable-next-line react/no-did-mount-set-state
-    this.setState({
-      spaceName,
-      spaceId,
-    });
+    if (spaceId) {
+      const spaceName = await this.getSpaceName(spaceId);
+      // eslint-disable-next-line react/no-did-mount-set-state
+      this.setState({
+        spaceName,
+        spaceId,
+      });
+    }
   }
 
   render() {
