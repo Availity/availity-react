@@ -86,7 +86,7 @@ export default class AvDateRange extends Component {
       PropTypes.instanceOf(moment),
     ]),
     distance: PropTypes.object,
-    ranges: PropTypes.array,
+    ranges: PropTypes.oneOfType([PropTypes.array, PropTypes.object]),
     defaultValues: PropTypes.object,
     theme: PropTypes.object,
   };
