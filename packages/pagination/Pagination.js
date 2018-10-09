@@ -7,14 +7,24 @@ import {
 } from 'reactstrap';
 import PaginationItem from './PaginationItem';
 
+const buttonTypeProps = PropTypes.oneOfType([PropTypes.string, PropTypes.bool]);
+const defaultButtonText = {
+  firstBtn: '«« First',
+  prevBtn: '« Prev',
+  nextBtn: 'Next »',
+  lastBtn: 'Last »»',
+};
+
 const propTypes = {
   totalCount: PropTypes.number,
   pagePadding: PropTypes.number,
   page: PropTypes.number,
   itemsPerPage: PropTypes.number,
   onPageChange: PropTypes.func.isRequired,
-  prevBtn: PropTypes.oneOfType([PropTypes.string, PropTypes.oneOf([false])]),
-  nextBtn: PropTypes.oneOfType([PropTypes.string, PropTypes.oneOf([false])]),
+  prevBtn: buttonTypeProps,
+  nextBtn: buttonTypeProps,
+  firstBtn: buttonTypeProps,
+  lastBtn: buttonTypeProps,
   size: PropTypes.string,
   align: PropTypes.oneOf(['start', 'center', 'end', 'between']),
   simple: PropTypes.bool,
@@ -25,8 +35,10 @@ const propTypes = {
 const defaultProps = {
   pagePadding: 2,
   itemsPerPage: 10,
-  prevBtn: '« Prev',
-  nextBtn: 'Next »',
+  firstBtn: true,
+  prevBtn: true,
+  nextBtn: true,
+  lastBtn: true,
   align: 'start',
   unstyled: true,
   size: 'sm',
@@ -64,6 +76,51 @@ class Pagination extends Component {
     this.props.onPageChange(this.getLastPage());
   };
 
+  getStartButtons() {
+    const { firstBtn, prevBtn } = this.props;
+    const output = [];
+    const firstBtnText =
+      !firstBtn || typeof firstBtn === 'string'
+        ? firstBtn
+        : defaultButtonText.firstBtn;
+
+    if (firstBtnText) {
+      output.push(
+        <RsPaginationItem disabled={this.isFirstPage()} key="firstBtn">
+          <PaginationLink
+            tag="button"
+            type="button"
+            onClick={this.firstPage}
+            aria-label="First"
+          >
+            {firstBtnText}
+          </PaginationLink>
+        </RsPaginationItem>
+      );
+    }
+
+    const prevBtnText =
+      !prevBtn || typeof prevBtn === 'string'
+        ? prevBtn
+        : defaultButtonText.prevBtn;
+    if (prevBtnText) {
+      output.push(
+        <RsPaginationItem disabled={this.isFirstPage()} key="prevBtn">
+          <PaginationLink
+            previous
+            tag="button"
+            type="button"
+            onClick={this.prevPage}
+          >
+            {prevBtnText}
+          </PaginationLink>
+        </RsPaginationItem>
+      );
+    }
+
+    return output;
+  }
+
   getPages() {
     const { page, pagePadding } = this.props;
     const lastPage = this.getLastPage();
@@ -100,6 +157,49 @@ class Pagination extends Component {
     return output;
   }
 
+  getEndButtons() {
+    const { nextBtn, lastBtn } = this.props;
+    const output = [];
+    const nextBtnText =
+      !nextBtn || typeof nextBtn === 'string'
+        ? nextBtn
+        : defaultButtonText.nextBtn;
+    if (nextBtnText) {
+      output.push(
+        <RsPaginationItem disabled={this.isLastPage()} key="nextBtn">
+          <PaginationLink
+            previous
+            tag="button"
+            type="button"
+            onClick={this.nextPage}
+          >
+            {nextBtnText}
+          </PaginationLink>
+        </RsPaginationItem>
+      );
+    }
+    const lastBtnText =
+      !lastBtn || typeof lastBtn === 'string'
+        ? lastBtn
+        : defaultButtonText.lastBtn;
+    if (lastBtnText) {
+      output.push(
+        <RsPaginationItem disabled={this.isLastPage()} key="lastBtn">
+          <PaginationLink
+            tag="button"
+            type="button"
+            onClick={this.prevPage}
+            aria-label="Last"
+          >
+            {lastBtnText}
+          </PaginationLink>
+        </RsPaginationItem>
+      );
+    }
+
+    return output;
+  }
+
   render() {
     return (
       <React.Fragment>
@@ -111,31 +211,9 @@ class Pagination extends Component {
             this.props.className ? this.props.className : ''
           }`}
         >
-          {this.props.prevBtn && (
-            <RsPaginationItem disabled={this.isFirstPage()}>
-              <PaginationLink
-                previous
-                tag="button"
-                type="button"
-                onClick={this.prevPage}
-              >
-                {this.props.prevBtn}
-              </PaginationLink>
-            </RsPaginationItem>
-          )}
+          {this.getStartButtons()}
           {!this.props.simple && this.getPages()}
-          {this.props.nextBtn && (
-            <RsPaginationItem disabled={this.isLastPage()}>
-              <PaginationLink
-                next
-                tag="button"
-                type="button"
-                onClick={this.nextPage}
-              >
-                {this.props.nextBtn}
-              </PaginationLink>
-            </RsPaginationItem>
-          )}
+          {this.getEndButtons()}
         </RsPagination>
       </React.Fragment>
     );
