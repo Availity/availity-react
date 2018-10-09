@@ -1,5 +1,8 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
+
+import classNames from 'classnames';
+
 import {
   Pagination as RsPagination,
   PaginationLink,
@@ -16,9 +19,10 @@ const defaultButtonText = {
 };
 
 const propTypes = {
-  totalCount: PropTypes.number,
   pagePadding: PropTypes.number,
   page: PropTypes.number,
+  pageCount: PropTypes.number,
+  totalCount: PropTypes.number,
   itemsPerPage: PropTypes.number,
   onPageChange: PropTypes.func.isRequired,
   prevBtn: buttonTypeProps,
@@ -45,10 +49,12 @@ const defaultProps = {
 };
 
 class Pagination extends Component {
-  getLastPage() {
-    return this.props.totalCount
-      ? Math.ceil(this.props.totalCount / this.props.itemsPerPage)
-      : null;
+  getPageCount() {
+    let output = this.props.pageCount;
+    if (!output && this.props.totalCount && this.props.itemsPerPage > 0) {
+      output = Math.ceil(this.props.totalCount / this.props.itemsPerPage);
+    }
+    return output;
   }
 
   isFirstPage() {
@@ -56,7 +62,7 @@ class Pagination extends Component {
   }
 
   isLastPage() {
-    const lastPage = this.getLastPage();
+    const lastPage = this.getPageCount();
     return lastPage ? this.props.page >= lastPage : false;
   }
 
@@ -73,7 +79,7 @@ class Pagination extends Component {
   };
 
   lastPage = () => {
-    this.props.onPageChange(this.getLastPage());
+    this.props.onPageChange(this.getPageCount());
   };
 
   getStartButtons() {
@@ -123,7 +129,7 @@ class Pagination extends Component {
 
   getPages() {
     const { page, pagePadding } = this.props;
-    const lastPage = this.getLastPage();
+    const lastPage = this.getPageCount();
     // start min/max values are page +- padding
     let minPage = page - pagePadding;
     let maxPage = page + pagePadding;
@@ -201,16 +207,15 @@ class Pagination extends Component {
   }
 
   render() {
+    const { size, className, align, unstyled } = this.props;
+    const listClassName = classNames(
+      className,
+      `pagination-${unstyled ? 'un' : ''}styles`,
+      `justify-content-${align}`
+    );
     return (
       <React.Fragment>
-        <RsPagination
-          size={this.props.size}
-          listClassName={`pagination-${
-            this.props.unstyled ? 'un' : ''
-          }styled justify-content-${this.props.align} ${
-            this.props.className ? this.props.className : ''
-          }`}
-        >
+        <RsPagination size={size} listClassName={listClassName}>
           {this.getStartButtons()}
           {!this.props.simple && this.getPages()}
           {this.getEndButtons()}
