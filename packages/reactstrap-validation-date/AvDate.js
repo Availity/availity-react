@@ -63,6 +63,18 @@ class AvDate extends Component {
     return null;
   };
 
+  getRef = el => {
+    this.inputRef = el;
+
+    if (this.props.innerRef) {
+      if (typeof this.props.innerRef === 'function') {
+        this.props.innerRef(el);
+      } else {
+        this.props.innerRef.current = el;
+      }
+    }
+  };
+
   reset() {
     this.setState({ value: '' });
   }
@@ -111,7 +123,7 @@ class AvDate extends Component {
   onFieldChange = event => {
     const value = event && event.target ? event.target.value : event;
     this.setState({ value, open: false }, () => {
-      if (this.props.onChange) this.props.onChange(value);
+      if (this.props.onChange) this.props.onChange(event, value);
     });
   };
 
@@ -122,7 +134,10 @@ class AvDate extends Component {
       { value: value.format(this.state.format), open: false },
       () => {
         if (this.props.onChange)
-          this.props.onChange(value.format(this.state.format));
+          this.props.onChange(
+            { target: this.inputRef },
+            value.format(this.state.format)
+          );
       }
     );
   };
@@ -137,6 +152,7 @@ class AvDate extends Component {
       <AvInput
         placeholder={this.state.format.toLowerCase()}
         {...props}
+        innerRef={this.getRef}
         value={this.state.value || ''}
         onChange={this.onFieldChange}
         valueFormatter={this.valueFormatter}
