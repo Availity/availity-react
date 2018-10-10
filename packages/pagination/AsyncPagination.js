@@ -114,7 +114,7 @@ class AsyncPagination extends Component {
       const items =
         (typeof getResult === 'function'
           ? getResult.call(this.props.resource, resp.data)
-          : resp.data[getResult]) || this.data;
+          : resp.data[getResult]) || resp.data;
 
       if (!Array.isArray(items)) {
         throw new Error(
