@@ -148,7 +148,7 @@ class Pager extends Component {
     }
 
     const output = [];
-    if (maxPage > minPage) {
+    if (maxPage >= minPage) {
       for (let i = minPage; i <= maxPage; i += 1) {
         output.push(
           <PaginationItem

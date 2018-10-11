@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
+import BlockUi from 'react-block-ui';
+import 'react-block-ui/style.css';
 
 // import classNames from 'classnames';
 
@@ -19,6 +21,8 @@ const propTypes = {
   options: PropTypes.array,
   pageOnlyOptions: PropTypes.bool,
   pageCount: PropTypes.number,
+  loader: PropTypes.oneOfType([PropTypes.string, PropTypes.bool]),
+  loading: PropTypes.bool,
 };
 
 const defaultProps = {
@@ -100,11 +104,13 @@ class Pagination extends Component {
       hideOnSinglePage,
       options,
       pageOnlyOptions,
+      loading,
+      loader,
       ...pagerProps
     } = this.props;
 
     const pageCount = this.getPageCount();
-    const showPagination = !hideOnSinglePage || pageCount > 0;
+    const showPagination = !hideOnSinglePage || pageCount > 1;
 
     const usePage = this.state.page;
 
@@ -135,7 +141,13 @@ class Pagination extends Component {
     return (
       <React.Fragment>
         {topPager}
-        {children(items || [], this.state)}
+        <BlockUi
+          keepInView
+          blocking={loader && loading}
+          message={typeof loader === 'string' ? loader : undefined}
+        >
+          {children(items || [], this.state)}
+        </BlockUi>
         {bottomPager}
       </React.Fragment>
     );
