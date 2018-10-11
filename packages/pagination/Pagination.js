@@ -5,7 +5,7 @@ import PropTypes from 'prop-types';
 
 import { warnOnce } from './utils';
 
-import Pager from './Pager';
+import { Pager } from './Pager';
 
 const propTypes = {
   page: PropTypes.number,
