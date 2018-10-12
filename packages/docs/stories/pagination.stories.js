@@ -13,7 +13,8 @@ import { avNotificationApi } from '@availity/api-axios';
 import { Card, CardBody, CardTitle, CardSubtitle, CardText } from 'reactstrap';
 
 import Pagination, { Pager, AsyncPagination } from '@availity/pagination';
-import { defaultButtonText } from '@availity/pagination/Pager/Component';
+import PaginationControls from '@availity/pagination/PaginationControls';
+import { defaultButtonText } from '@availity/pagination/PaginationControls/Pages';
 import README from '@availity/pagination/README.md';
 import paginationData from './data/pagination.json';
 
@@ -129,9 +130,13 @@ function PagerProps() {
 storiesOf('Navigation|Pagination', module)
   .addDecorator(withReadme([README]))
   .addDecorator(withKnobs)
-  .add('Pager', () => {
+  .add('Controls', () => {
     const props = PagerProps(true);
-    return <Pager {...props} />;
+    props.perPageOptions = [10, 20, 30];
+    props.onSelectionChange = (event, value) => {
+      console.log(`selection changed: ${value}`);
+    };
+    return <PaginationControls {...props} />;
   })
   .add('default', () => {
     const props = {
