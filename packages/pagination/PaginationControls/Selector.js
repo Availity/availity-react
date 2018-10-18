@@ -11,10 +11,11 @@ const propTypes = {
       PropTypes.shape({ label: PropTypes.string, value: PropTypes.number }),
     ])
   ),
+  optionLabel: PropTypes.oneOfType([PropTypes.string, PropTypes.func]),
+  itemLabel: PropTypes.string,
   page: PropTypes.number,
   totalCount: PropTypes.number,
-  onChange: PropTypes.func,
-  optionLabel: PropTypes.func,
+  onCountChange: PropTypes.func,
 };
 
 const Selector = ({
@@ -22,15 +23,16 @@ const Selector = ({
   perPageOptions,
   page,
   totalCount,
-  onChange,
+  onCountChange,
   optionLabel,
+  itemLabel,
 }) => {
   let input = false;
   if (Array.isArray(perPageOptions) && perPageOptions.length > 1) {
     const onSelectionChange = event => {
-      if (onChange) {
+      if (onCountChange) {
         const value = event && event.target && event.target.value;
-        onChange(event, value);
+        onCountChange(value);
       }
     };
     input = (
@@ -49,9 +51,16 @@ const Selector = ({
               return false;
             }
             const value = obj.value || obj;
-            let label = obj.label ? obj.lable : `${value} results`;
-            if (!obj.label && optionLabel) {
-              label = optionLabel(value);
+            let { label } = obj;
+            if (!label) {
+              if (optionLabel) {
+                label =
+                  typeof optionLabel === 'string'
+                    ? `${value} ${optionLabel}`
+                    : optionLabel(value);
+              } else {
+                label = `${value} ${itemLabel || 'results'}`;
+              }
             }
 
             return (
@@ -66,13 +75,14 @@ const Selector = ({
   }
 
   let info = false;
+
   if (typeof itemsPerPage !== 'undefined' && typeof page !== 'undefined') {
     const starting = (page - 1) * itemsPerPage;
     let max = page * itemsPerPage;
-    if (totalCount && max > totalCount) {
+    if (totalCount && max > totalCount && starting < totalCount) {
       max = totalCount;
     }
-    let displayString = `Showing Items ${starting}-${max}`;
+    let displayString = `Showing ${itemLabel || 'Items'} ${starting}-${max}`;
     if (totalCount) {
       displayString += ` of ${totalCount}`;
     }

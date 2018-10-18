@@ -1,6 +1,6 @@
 import Pagination from './Pagination';
 
-export * from './Pager';
+export * from './PaginationControls';
 export AsyncPagination from './AsyncPagination';
 
 export default Pagination;

@@ -3,25 +3,32 @@ import PropTypes from 'prop-types';
 import BlockUi from 'react-block-ui';
 import 'react-block-ui/style.css';
 
+import isFunction from 'lodash/isFunction';
+import isEqual from 'lodash/isEqual';
+
 // import classNames from 'classnames';
 
 import { warnOnce } from './utils';
 
-import { Pager } from './Pager';
+import { PaginationControls } from './PaginationControls';
 
 const propTypes = {
-  page: PropTypes.number,
-  // animate: PropTypes.bool, // maybe do something cool in the future
+  // style props
   scroll: PropTypes.oneOf(['window', 'list', false]),
-  children: PropTypes.func.isRequired,
-  itemsPerPage: PropTypes.number,
-  onPageChange: PropTypes.func,
   placement: PropTypes.oneOf(['top', 'bottom', 'both']),
   hideOnSinglePage: PropTypes.bool,
-  options: PropTypes.array,
-  pageOnlyOptions: PropTypes.bool,
-  pageCount: PropTypes.number,
+  withSelector: PropTypes.bool,
+  // animate: PropTypes.bool, // maybe do something cool in the future
+  children: PropTypes.func.isRequired,
   loader: PropTypes.oneOfType([PropTypes.string, PropTypes.bool]),
+
+  // state setting props
+  page: PropTypes.number,
+  items: PropTypes.oneOfType([PropTypes.array, PropTypes.func]).isRequired,
+  pageCount: PropTypes.number,
+  itemsPerPage: PropTypes.number,
+  onPageChange: PropTypes.func,
+  onCountChange: PropTypes.func,
   loading: PropTypes.bool,
 };
 
@@ -33,26 +40,23 @@ const defaultProps = {
 };
 
 class Pagination extends Component {
+  /*
+    state parts:
+    loading: true if async items getting in process
+    items: store the current items to render
+
+    pageControlled: True if props used to control value - following values can have
+    page: current page, kept in sync with props if controlled
+
+    itemsPerPage: how many items are on the page, controlled only relevant if there are perPageOptions provided as well
+    */
+
   state = {
-    controlled: false,
+    loading: false,
+    items: false,
     page: 1,
   };
-
-  constructor(props) {
-    super(props);
-    if (typeof props.page !== 'undefined') {
-      if (typeof props.onPageChange === 'function') {
-        this.state.controlled = true;
-        this.state.page = props.page;
-      } else {
-        warnOnce(
-          'You provided `page` to Pagination but did not provide a function to handle page changes; `page` is being ignored'
-        );
-      }
-    }
-    this.lastRequest = 0;
-    this.scrollRef = React.createRef();
-  }
+  scrollRef = React.createRef();
 
   componentDidUpdate(prevProps, prevState) {
     if (this.props.scroll && this.state.page !== prevState.page) {
@@ -70,116 +74,192 @@ class Pagination extends Component {
         });
       }
     }
+    if (!this.state.pageControlled && !this.state.page) {
+      this.goToPage(1);
+    } else if (!this.state.items) {
+      this.getItems();
+    }
   }
 
-  getPageCount() {
-    if (this.props.pageOnlyOptions) {
-      return this.props.pageCount;
+  itemsLastGotWith = {};
+  async getItems() {
+    const { page, itemsPerPage } = this.state;
+    const itemsLastGotWith = { page, itemsPerPage };
+    if (
+      !page ||
+      !itemsPerPage ||
+      (this.state.loading && isEqual(this.itemsLastGotWith, itemsLastGotWith))
+    ) {
+      return;
     }
-    return Math.ceil(this.props.options.length / this.props.itemsPerPage);
+    this.setState({ loading: true });
+    this.itemsLastGotWith = itemsLastGotWith;
+    const newState = {
+      items: false,
+      loading: false,
+    };
+    if (isFunction(this.props.items)) {
+      const response = await this.props.items(page, itemsPerPage);
+      if (Array.isArray(response)) {
+        newState.items = response;
+      } else {
+        Object.assign(newState, response);
+      }
+    } else {
+      newState.items = this.props.items.slice(
+        (page - 1) * itemsPerPage,
+        page * itemsPerPage
+      );
+      newState.pageCount = Math.ceil(this.props.items / itemsPerPage);
+      newState.totalCount = this.props.items.length;
+    }
+
+    this.setState(newState);
   }
 
   goToPage = page => {
     if (this.props.onPageChange) this.props.onPageChange(page);
-    if (!this.state.controlled) {
+    if (!this.state.pageControlled) {
       this.setState(prevState => {
-        const lastPage = this.getPageCount(prevState);
-        if (page > 0 && (!lastPage || page <= lastPage)) {
+        if (page > 0 && (!prevState.pageCount || page <= prevState.pageCount)) {
           return {
             page,
+            items: false,
           };
         }
       });
     }
   };
 
+  onCountChange = itemsPerPage => {
+    if (this.props.onCountChange) this.props.onCountChange(itemsPerPage);
+    if (!this.state.pageControlled && this.state.page !== 1) {
+      this.goToPage(1);
+    }
+    this.setState({
+      itemsPerPage,
+      items: false,
+    });
+  };
+
   render() {
     const {
-      page,
-      scroll,
-      children,
-      itemsPerPage,
-      onPageChange,
       placement,
       hideOnSinglePage,
-      options,
-      pageOnlyOptions,
-      loading,
+      children,
       loader,
-      ...pagerProps
+      page: propPage,
+      pageCount: propsPageCount,
+      totalCount: propsTotalCount,
+      itemsPerPage: propsItemsPerPage,
+      loading: propsLoading,
+      onPageChange: propsOnPageChange,
+      onCountChange: propsOnCountChange,
+      ...controlProps
     } = this.props;
 
-    const pageCount = this.getPageCount();
-    const showPagination = !hideOnSinglePage || pageCount > 1;
+    const {
+      page: statePage,
+      items,
+      itemsPerPage,
+      pageCount: statePageCount,
+      totalCount: stateTotalCount,
+      loading: stateLoading,
+    } = this.state;
 
-    const usePage = this.state.page;
+    const page = statePage || 1;
 
-    let topPager = false;
-    let bottomPager = false;
-    if (showPagination) {
-      const pager = (
-        <Pager
-          {...pagerProps}
-          page={usePage}
-          pageCount={pageCount}
-          onPageChange={this.goToPage}
-          className="my-3"
-        />
-      );
-      if (placement !== 'bottom') {
-        topPager = <div ref={this.scrollRef}>{pager}</div>;
-      }
-      if (placement !== 'top') {
-        bottomPager = pager;
-      }
-    }
+    const pageCount = propsPageCount || statePageCount;
 
-    const items = pageOnlyOptions
-      ? options
-      : options.slice((usePage - 1) * itemsPerPage, usePage * itemsPerPage);
+    const controls = (!hideOnSinglePage || pageCount > 1) && (
+      <PaginationControls
+        page={page}
+        pageCount={pageCount}
+        itemsPerPage={itemsPerPage}
+        totalCount={propsTotalCount || stateTotalCount}
+        className="my-3"
+        onPageChange={this.goToPage}
+        onCountChange={this.onCountChange}
+        {...controlProps}
+      />
+    );
+
+    const topControls = placement !== 'bottom' && controls;
+    const bottomControls = placement !== 'top' && controls;
 
     return (
       <React.Fragment>
-        {topPager}
+        {topControls}
         <BlockUi
           keepInView
-          blocking={loader && loading}
+          blocking={loader && (propsLoading || stateLoading)}
           message={typeof loader === 'string' ? loader : undefined}
         >
           {children(items || [], this.state)}
         </BlockUi>
-        {bottomPager}
+        {bottomControls}
       </React.Fragment>
     );
   }
 }
 
 Pagination.getDerivedStateFromProps = (nextProps, prevState) => {
+  let changed = false;
   const state = {};
-  if (!prevState.controlled && typeof nextProps.page !== 'undefined') {
-    if (typeof nextProps.onPageChange === 'function') {
-      state.controlled = true;
+
+  // page controlled values
+  state.pageControlled = typeof nextProps.page !== 'undefined';
+  if (state.pageControlled) {
+    // if controlled, check if onPageChange provided
+    if (isFunction(nextProps.onPageChange)) {
       state.page = nextProps.page;
+    } else {
+      state.pageControlled = false;
       warnOnce(
-        'You have changed Pagination from an uncontrolled component to a controlled component; bad things may happen'
+        'You provided `page` to Pagination but did not provide a function to handle page changes; `page` is being ignored'
       );
-      return state;
     }
+  }
+  // check if page controlled changed
+  if (typeof prevState.pageControlled === 'undefined') {
+    changed = true;
+  } else if (prevState.pageControlled !== state.pageControlled) {
+    changed = true;
     warnOnce(
-      'You provided `page` to Pagination but did not provide a function to handle page changes; `page` is being ignored'
+      `You have changed Pagination from a${
+        state.pageControlled ? 'n un' : ' '
+      }controlled component to a${
+        !state.pageControlled ? 'n un' : ' '
+      }controlled component; bad things may happen`
     );
-  } else if (
-    prevState.controlled &&
-    (typeof nextProps.page === 'undefined' ||
-      typeof nextProps.onPageChange !== 'function')
-  ) {
-    state.controlled = false;
-    warnOnce(
-      'You have changed Pagination from an controlled component to a uncontrolled component; bad things may happen'
-    );
-    return state;
-  } else if (prevState.controlled && nextProps.page !== prevState.page) {
-    state.page = nextProps.page;
+  }
+
+  // if itemsPerPage changes from props update value
+  if (prevState.propsItemsPerPage !== nextProps.itemsPerPage) {
+    state.propsItemsPerPage = nextProps.itemsPerPage;
+    state.itemsPerPage = nextProps.itemsPerPage;
+    changed = true;
+    // set page back to 1 if uncontrolled
+    if (!state.pageControlled && prevState.page !== 1) {
+      state.page = false;
+    }
+  }
+
+  if (!isEqual(prevState.allItems, nextProps.items)) {
+    state.allItems = nextProps.items;
+    state.items = false;
+    changed = true;
+    if (!state.pageControlled && prevState.page !== 1) {
+      state.page = false;
+    }
+  }
+
+  if (typeof state.page !== 'undefined' && state.page !== prevState.page) {
+    changed = true;
+    state.items = false;
+  }
+
+  if (changed) {
     return state;
   }
   return null;

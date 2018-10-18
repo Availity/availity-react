@@ -44,7 +44,7 @@ const defaultProps = {
 };
 
 class Pages extends Component {
-  getPageCount() {
+  get pageCount() {
     let output = this.props.pageCount;
     if (!output && this.props.totalCount && this.props.itemsPerPage > 0) {
       output = Math.ceil(this.props.totalCount / this.props.itemsPerPage);
@@ -57,7 +57,7 @@ class Pages extends Component {
   }
 
   isLastPage() {
-    const lastPage = this.getPageCount();
+    const lastPage = this.pageCount;
     return lastPage ? this.props.page >= lastPage : false;
   }
 
@@ -66,15 +66,19 @@ class Pages extends Component {
   };
 
   nextPage = () => {
-    this.props.onPageChange(this.props.page + 1);
+    let nextPage = this.props.page + 1;
+    if (nextPage > this.pageCount) {
+      nextPage = this.pageCount;
+    }
+    this.props.onPageChange(nextPage);
   };
 
   prevPage = () => {
-    this.props.onPageChange(this.props.page - 1);
+    this.props.onPageChange(this.props.page > 1 ? this.props.page - 1 : 1);
   };
 
   lastPage = () => {
-    this.props.onPageChange(this.getPageCount());
+    this.props.onPageChange(this.pageCount);
   };
 
   getStartButtons() {
@@ -124,7 +128,7 @@ class Pages extends Component {
 
   getPages() {
     const { page, pagePadding } = this.props;
-    const lastPage = this.getPageCount();
+    const lastPage = this.pageCount;
     // start min/max values are page +- padding
     let minPage = page - pagePadding;
     let maxPage = page + pagePadding;
@@ -191,7 +195,7 @@ class Pages extends Component {
           <PaginationLink
             tag="button"
             type="button"
-            onClick={this.prevPage}
+            onClick={this.lastPage}
             aria-label="Last"
           >
             {lastBtnText}
@@ -208,6 +212,7 @@ class Pages extends Component {
     const listClassName = classNames(
       className,
       'pagination',
+      'flex-grow-1',
       {
         [`pagination-${size}`]: !!size,
         [`justify-content-${align}`]: !!align,

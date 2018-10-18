@@ -12,8 +12,10 @@ import {
 import { avNotificationApi } from '@availity/api-axios';
 import { Card, CardBody, CardTitle, CardSubtitle, CardText } from 'reactstrap';
 
-import Pagination, { Pager, AsyncPagination } from '@availity/pagination';
-import PaginationControls from '@availity/pagination/PaginationControls';
+import Pagination, {
+  AsyncPagination,
+  PaginationControls,
+} from '@availity/pagination';
 import { defaultButtonText } from '@availity/pagination/PaginationControls/Pages';
 import README from '@availity/pagination/README.md';
 import paginationData from './data/pagination.json';
@@ -44,7 +46,7 @@ function getButtonValue(title, key) {
   return buttonText || buttonBool;
 }
 
-function PagerProps() {
+function ControlProps() {
   const output = {
     firstBtn: getButtonValue('First Button', 'firstBtn'),
     prevBtn: getButtonValue('Previous Button', 'prevBtn'),
@@ -70,7 +72,7 @@ function PagerProps() {
   } else {
     output.itemsPerPage = number(
       'Items per page',
-      Pager.defaultProps.itemsPerPage,
+      10,
       { min: 1 },
       'Page Values'
     );
@@ -89,18 +91,14 @@ function PagerProps() {
     'Page Values'
   );
 
-  output.pagePadding = number(
-    'Page Padding',
-    Pager.defaultProps.pagePadding,
-    'Page Values'
-  );
+  output.pagePadding = number('Page Padding', 2, 'Page Values');
 
-  output.unstyled = boolean('Unstyled', Pager.defaultProps.unstyled, 'Style');
+  output.unstyled = boolean('Unstyled', false, 'Style');
 
   output.size = selectV2(
     'Size',
     { Small: 'sm', Normal: '', Large: 'lg' },
-    Pager.defaultProps.size,
+    'sm',
     'Style'
   );
 
@@ -110,17 +108,37 @@ function PagerProps() {
       Start: 'start',
       Center: 'center',
       End: 'end',
+      Between: 'between',
+    },
+    PaginationControls.defaultProps.align,
+    'Style'
+  );
+
+  output.pageButtonsAlign = selectV2(
+    'Align Pagebuttons',
+    {
+      Start: 'start',
+      Center: 'center',
+      End: 'end',
       'Between (goes well with "simple")': 'between',
     },
-    Pager.defaultProps.align,
+    PaginationControls.defaultProps.align,
     'Style'
   );
 
   output.simple = boolean(
     'Simple (just prev/next)',
-    Pager.defaultProps.simple,
+    PaginationControls.defaultProps.simple,
     'Style'
   );
+
+  output.withSelector = boolean(
+    'Use Selector',
+    PaginationControls.defaultProps.withSelector,
+    'Selector'
+  );
+  output.optionLabel = text('Item Options Label', 'results', 'Selector');
+  output.itemLabel = text('Item Label', 'Items', 'Selector');
 
   output.onPageChange = () => {};
 
@@ -131,7 +149,7 @@ storiesOf('Navigation|Pagination', module)
   .addDecorator(withReadme([README]))
   .addDecorator(withKnobs)
   .add('Controls', () => {
-    const props = PagerProps(true);
+    const props = ControlProps();
     props.perPageOptions = [10, 20, 30];
     props.onSelectionChange = (event, value) => {
       console.log(`selection changed: ${value}`);
@@ -143,7 +161,7 @@ storiesOf('Navigation|Pagination', module)
       onPageChange: () => {},
     };
 
-    props.options = array('Options', [
+    const items = array('Items', [
       'red',
       'blue',
       'green',
@@ -163,16 +181,22 @@ storiesOf('Navigation|Pagination', module)
 
     props.hideOnSinglePage = boolean('Hide Controls for one page', false);
 
-    props.pageOnlyOptions = boolean('Page Only Options', false);
-    if (props.pageOnlyOptions) {
+    const overrideItemValues = boolean('Define custom page values', false);
+    if (overrideItemValues) {
       props.pageCount = number('Total number of pages', 10, { min: 1 });
-    } else {
-      props.itemsPerPage = number(
-        'Items per page',
-        Pager.defaultProps.itemsPerPage,
-        { min: 1 },
-        'Page Values'
-      );
+      props.totalCount = number('Total number of items', 15, { min: 1 });
+    }
+
+    props.itemsPerPage = number(
+      'Items per page',
+      10,
+      { min: 1 },
+      'Page Values'
+    );
+
+    const useItemCountOptions = boolean('Use ItemPerPage Options', false);
+    if (useItemCountOptions) {
+      props.perPageOptions = [1, 2, 3].map(val => props.itemsPerPage * val);
     }
 
     const loaderBool = boolean('Block UI while loading', true, 'loader');
@@ -192,6 +216,25 @@ storiesOf('Navigation|Pagination', module)
         { min: 1, max: maxPages, step: 1 },
         'Page Values'
       );
+    }
+
+    const useAsync = boolean('use Async items', false);
+    if (!useAsync) {
+      props.items = items;
+    } else {
+      props.items = (page, itemsPerPage) =>
+        new Promise(resolve => {
+          setTimeout(() => {
+            resolve({
+              items: items.slice(
+                (page - 1) * itemsPerPage,
+                page * itemsPerPage
+              ),
+              pageCount: Math.ceil(items / itemsPerPage),
+              totalCount: items.length,
+            });
+          }, 1000);
+        });
     }
 
     return (
@@ -229,7 +272,7 @@ storiesOf('Navigation|Pagination', module)
     props.hideOnSinglePage = boolean('Hide Controls for one page', false);
     props.itemsPerPage = number(
       'Items per page',
-      Pager.defaultProps.itemsPerPage,
+      10,
       { min: 1 },
       'Page Values'
     );

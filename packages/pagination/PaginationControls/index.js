@@ -1,1 +1,1 @@
-export default from './Component';
+export PaginationControls from './Component';
