@@ -1,0 +1,40 @@
+{
+  "name": "@availity/grid",
+  "version": "1.5.2",
+  "author": "Kasey Powers <kaseyepowers@gmail.com>",
+  "description": "Components to simplify and use css Grid",
+  "main": "index.js",
+  "keywords": [
+    "react",
+    "availity",
+    "grid"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Availity/availity-react.git"
+  },
+  "bugs": {
+    "url": "https://github.com/Availity/availity-react/issues"
+  },
+  "homepage": "https://github.com/Availity/availity-react/tree/master/packages/grid#readme",
+  "license": "MIT",
+  "publishConfig": {
+    "access": "public"
+  },
+  "peerDependencies": {
+    "react": "^16.3.0",
+    "reactstrap": "^5.0.0 || ^6.0.0"
+  },
+  "dependencies": {
+    "prop-types": "^15.5.8",
+    "lodash": "^4.17.10",
+    "memoize-one": "^4.0.2",
+    "merge-options-es5": "^1.0.0",
+    "resize-observer-polyfill": "^1.5.0"
+  },
+  "devDependencies": {
+    "react": "^16.3.0",
+    "react-dom": "^16.3.0",
+    "reactstrap": "^6.0.0"
+  }
+}
