@@ -113,15 +113,20 @@ class Pagination extends Component {
       if (Array.isArray(response)) {
         newState.items = response;
       } else {
-        Object.assign(newState, response);
+        newState.items = response.items;
+        if (response.totalCount) {
+          newState.totalCount = response.totalCount;
+        }
       }
     } else {
       newState.items = this.props.items.slice(
         (page - 1) * itemsPerPage,
         page * itemsPerPage
       );
-      newState.pageCount = Math.ceil(this.props.items / itemsPerPage);
       newState.totalCount = this.props.items.length;
+    }
+    if (!newState.pageCount && newState.totalCount) {
+      newState.pageCount = Math.ceil(newState.totalCount / itemsPerPage);
     }
 
     this.setState(newState);
