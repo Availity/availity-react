@@ -13,7 +13,7 @@ import { avNotificationApi } from '@availity/api-axios';
 import { Card, CardBody, CardTitle, CardSubtitle, CardText } from 'reactstrap';
 
 import Pagination, {
-  AsyncPagination,
+  AvResourcePagination,
   PaginationControls,
 } from '@availity/pagination';
 import { defaultButtonText } from '@availity/pagination/PaginationControls/Pages';
@@ -262,7 +262,7 @@ storiesOf('Navigation|Pagination', module)
       </Pagination>
     );
   })
-  .add('async', () => {
+  .add('AvResourcePagination', () => {
     const props = {
       resource: mockResponse,
       getResult: 'notifications',
@@ -277,18 +277,6 @@ storiesOf('Navigation|Pagination', module)
       'Page Values'
     );
 
-    const controlled = boolean('Controlled', false);
-    if (controlled) {
-      const maxPages = props.pageOnlyOptions
-        ? props.pageCount
-        : Math.ceil(paginationData.length / props.itemsPerPage);
-      props.page = number(
-        'Page',
-        1,
-        { min: 1, max: maxPages, step: 1 },
-        'Page Values'
-      );
-    }
     const loaderBool = boolean('Block UI while loading', true, 'loader');
     const loaderText = loaderBool && text('Loader message', '', 'loader');
 
@@ -296,7 +284,7 @@ storiesOf('Navigation|Pagination', module)
     props.loading = boolean('Block UI loading', false, 'loader');
 
     return (
-      <AsyncPagination {...props}>
+      <AvResourcePagination {...props}>
         {items =>
           items.map(item => (
             <Card key={item.id}>
@@ -317,6 +305,6 @@ storiesOf('Navigation|Pagination', module)
             </Card>
           ))
         }
-      </AsyncPagination>
+      </AvResourcePagination>
     );
   });

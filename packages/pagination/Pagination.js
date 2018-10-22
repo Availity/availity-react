@@ -25,6 +25,7 @@ const propTypes = {
   // state setting props
   page: PropTypes.number,
   items: PropTypes.oneOfType([PropTypes.array, PropTypes.func]).isRequired,
+  itemExtraArgs: PropTypes.object,
   pageCount: PropTypes.number,
   itemsPerPage: PropTypes.number,
   onPageChange: PropTypes.func,
@@ -82,9 +83,14 @@ class Pagination extends Component {
   }
 
   itemsLastGotWith = {};
+
   async getItems() {
     const { page, itemsPerPage } = this.state;
-    const itemsLastGotWith = { page, itemsPerPage };
+    const itemsLastGotWith = {
+      page,
+      itemsPerPage,
+      extraArgs: this.props.itemExtraArgs,
+    };
     if (
       !page ||
       !itemsPerPage ||
@@ -99,7 +105,11 @@ class Pagination extends Component {
       loading: false,
     };
     if (isFunction(this.props.items)) {
-      const response = await this.props.items(page, itemsPerPage);
+      const response = await this.props.items(
+        page,
+        itemsPerPage,
+        this.props.itemExtraArgs
+      );
       if (Array.isArray(response)) {
         newState.items = response;
       } else {
@@ -155,6 +165,7 @@ class Pagination extends Component {
       loading: propsLoading,
       onPageChange: propsOnPageChange,
       onCountChange: propsOnCountChange,
+      itemExtraArgs: extraArgs,
       ...controlProps
     } = this.props;
 
@@ -234,24 +245,34 @@ Pagination.getDerivedStateFromProps = (nextProps, prevState) => {
     );
   }
 
+  let resetPage = false;
+
   // if itemsPerPage changes from props update value
   if (prevState.propsItemsPerPage !== nextProps.itemsPerPage) {
     state.propsItemsPerPage = nextProps.itemsPerPage;
     state.itemsPerPage = nextProps.itemsPerPage;
     changed = true;
     // set page back to 1 if uncontrolled
-    if (!state.pageControlled && prevState.page !== 1) {
-      state.page = false;
-    }
+    resetPage = true;
   }
 
   if (!isEqual(prevState.allItems, nextProps.items)) {
     state.allItems = nextProps.items;
     state.items = false;
     changed = true;
-    if (!state.pageControlled && prevState.page !== 1) {
-      state.page = false;
-    }
+    resetPage = true;
+  }
+
+  if (!isEqual(prevState.prevItemExtraArgs, nextProps.itemExtraArgs)) {
+    state.prevItemExtraArgs = nextProps.itemExtraArgs;
+    state.items = false;
+    changed = true;
+    resetPage = true;
+  }
+
+  if (resetPage && !state.pageControlled && prevState.page !== 1) {
+    state.page = false;
+    changed = true;
   }
 
   if (typeof state.page !== 'undefined' && state.page !== prevState.page) {
