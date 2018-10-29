@@ -6,9 +6,7 @@ import 'react-block-ui/style.css';
 import isFunction from 'lodash/isFunction';
 import isEqual from 'lodash/isEqual';
 
-// import classNames from 'classnames';
-
-import { warnOnce } from './utils';
+import warnOnce from './warnOnce';
 
 import { PaginationControls } from './PaginationControls';
 
@@ -91,15 +89,11 @@ class Pagination extends Component {
       itemsPerPage,
       extraArgs: this.props.itemExtraArgs,
     };
-    if (
-      !page ||
-      !itemsPerPage ||
-      (this.state.loading && isEqual(this.itemsLastGotWith, itemsLastGotWith))
-    ) {
+    if (this.state.items && isEqual(this.itemsLastGotWith, itemsLastGotWith)) {
       return;
     }
-    this.setState({ loading: true });
     this.itemsLastGotWith = itemsLastGotWith;
+    this.setState({ loading: true });
     const newState = {
       items: false,
       loading: false,
@@ -110,6 +104,9 @@ class Pagination extends Component {
         itemsPerPage,
         this.props.itemExtraArgs
       );
+      if (!isEqual(this.itemsLastGotWith, itemsLastGotWith)) {
+        return;
+      }
       if (Array.isArray(response)) {
         newState.items = response;
       } else {
