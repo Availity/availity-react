@@ -13,12 +13,23 @@ export const defaultButtonText = {
   lastBtn: 'Last »»',
 };
 
+const requirePageCountCheck = (props, propName) => {
+  const thisProp = props[propName];
+  if (typeof thisProp === 'number' && thisProp <= 0) {
+    return new Error(`${propName} must be a positive number`);
+  }
+
+  if (!props.pageCount && (!props.totalCount || !props.itemsPerPage)) {
+    return new Error(`must define pageCount or totalCount and itemsPerPage`);
+  }
+};
+
 const propTypes = {
   pagePadding: PropTypes.number,
   page: PropTypes.number,
-  pageCount: PropTypes.number,
-  totalCount: PropTypes.number,
-  itemsPerPage: PropTypes.number,
+  pageCount: requirePageCountCheck,
+  totalCount: requirePageCountCheck,
+  itemsPerPage: requirePageCountCheck,
   onPageChange: PropTypes.func.isRequired,
   prevBtn: buttonTypeProps,
   nextBtn: buttonTypeProps,
@@ -175,7 +186,7 @@ class Pages extends Component {
       output.push(
         <RsPaginationItem disabled={this.isLastPage()} key="nextBtn">
           <PaginationLink
-            previous
+            next
             tag="button"
             type="button"
             onClick={this.nextPage}
