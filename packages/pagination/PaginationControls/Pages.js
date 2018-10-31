@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 
 import classNames from 'classnames';
 
-import { PaginationLink, PaginationItem as RsPaginationItem } from 'reactstrap';
+import { PaginationLink, PaginationItem } from 'reactstrap';
 
 const buttonTypeProps = PropTypes.oneOfType([PropTypes.string, PropTypes.bool]);
 export const defaultButtonText = {
@@ -102,7 +102,7 @@ class Pages extends Component {
 
     if (firstBtnText) {
       output.push(
-        <RsPaginationItem disabled={this.isFirstPage()} key="firstBtn">
+        <PaginationItem disabled={this.isFirstPage()} key="firstBtn">
           <PaginationLink
             tag="button"
             type="button"
@@ -111,7 +111,7 @@ class Pages extends Component {
           >
             {firstBtnText}
           </PaginationLink>
-        </RsPaginationItem>
+        </PaginationItem>
       );
     }
 
@@ -121,7 +121,7 @@ class Pages extends Component {
         : defaultButtonText.prevBtn;
     if (prevBtnText) {
       output.push(
-        <RsPaginationItem disabled={this.isFirstPage()} key="prevBtn">
+        <PaginationItem disabled={this.isFirstPage()} key="prevBtn">
           <PaginationLink
             previous
             tag="button"
@@ -130,7 +130,7 @@ class Pages extends Component {
           >
             {prevBtnText}
           </PaginationLink>
-        </RsPaginationItem>
+        </PaginationItem>
       );
     }
 
@@ -138,7 +138,12 @@ class Pages extends Component {
   }
 
   getPages() {
-    const { page, pagePadding } = this.props;
+    const { page, pagePadding, simple } = this.props;
+
+    if (simple) {
+      return;
+    }
+
     const lastPage = this.pageCount;
     // start min/max values are page +- padding
     let minPage = page - pagePadding;
@@ -164,11 +169,16 @@ class Pages extends Component {
           this.props.onPageChange(i);
         };
         output.push(
-          <RsPaginationItem key={i} active={i === page}>
-            <PaginationLink tag="button" type="button" onClick={onClick}>
+          <PaginationItem key={i} active={i === page}>
+            <PaginationLink
+              tag="button"
+              type="button"
+              onClick={onClick}
+              aria-label={`Page-${i}`}
+            >
               {i}
             </PaginationLink>
-          </RsPaginationItem>
+          </PaginationItem>
         );
       }
     }
@@ -184,7 +194,7 @@ class Pages extends Component {
         : defaultButtonText.nextBtn;
     if (nextBtnText) {
       output.push(
-        <RsPaginationItem disabled={this.isLastPage()} key="nextBtn">
+        <PaginationItem disabled={this.isLastPage()} key="nextBtn">
           <PaginationLink
             next
             tag="button"
@@ -193,7 +203,7 @@ class Pages extends Component {
           >
             {nextBtnText}
           </PaginationLink>
-        </RsPaginationItem>
+        </PaginationItem>
       );
     }
     const lastBtnText =
@@ -202,7 +212,7 @@ class Pages extends Component {
         : defaultButtonText.lastBtn;
     if (lastBtnText) {
       output.push(
-        <RsPaginationItem disabled={this.isLastPage()} key="lastBtn">
+        <PaginationItem disabled={this.isLastPage()} key="lastBtn">
           <PaginationLink
             tag="button"
             type="button"
@@ -211,7 +221,7 @@ class Pages extends Component {
           >
             {lastBtnText}
           </PaginationLink>
-        </RsPaginationItem>
+        </PaginationItem>
       );
     }
 
@@ -233,7 +243,7 @@ class Pages extends Component {
     return (
       <ul className={listClassName}>
         {this.getStartButtons()}
-        {!this.props.simple && this.getPages()}
+        {this.getPages()}
         {this.getEndButtons()}
       </ul>
     );
