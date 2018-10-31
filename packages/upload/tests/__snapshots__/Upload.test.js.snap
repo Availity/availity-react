@@ -15,6 +15,7 @@ Array [
     />
   </div>,
   <button
+    aria-label={null}
     className="btn btn-light"
     onClick={[Function]}
     type="button"

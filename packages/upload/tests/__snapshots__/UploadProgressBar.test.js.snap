@@ -45,6 +45,7 @@ Array [
     className="pwRequired"
   >
     <button
+      aria-label={null}
       className="btn btn-primary btn-sm"
       onClick={[Function]}
       type="button"
