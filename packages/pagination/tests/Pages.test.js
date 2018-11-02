@@ -1,5 +1,5 @@
 import React from 'react';
-import { render, cleanup } from 'react-testing-library';
+import { render, cleanup, fireEvent } from 'react-testing-library';
 
 import 'jest-dom/extend-expect';
 
@@ -165,6 +165,45 @@ describe('Pages', () => {
         if (i === page) {
           expect(pageButton.parentElement).toHaveClass('active');
         }
+      }
+    });
+  });
+
+  test('should call onPageChange for each button', () => {
+    const pageCount = 5;
+    const page = 2;
+    const { getByLabelText } = render(
+      <Pages onPageChange={mockFn} pageCount={pageCount} page={page} />
+    );
+    expect(mockFn).not.toHaveBeenCalled();
+    let totalCalls = 0;
+    const Labels = [
+      {
+        label: 'First',
+        expected: 1,
+      },
+      {
+        label: 'Previous',
+        expected: page - 1,
+      },
+      { label: 'Next', expected: page + 1 },
+      { label: 'Last', expected: pageCount },
+    ];
+    for (let i = 1; i <= pageCount; i += 1) {
+      Labels.push({
+        label: `Page-${i}`,
+        expected: i === page ? false : i,
+      });
+    }
+
+    Labels.forEach(({ label, expected }) => {
+      if (expected) {
+        const btn = getByLabelText(label);
+        expect(btn).toBeDefined();
+        fireEvent.click(btn);
+        totalCalls += 1;
+        expect(mockFn).toHaveBeenLastCalledWith(expected);
+        expect(mockFn).toHaveBeenCalledTimes(totalCalls);
       }
     });
   });
