@@ -36,7 +36,11 @@ const Selector = ({
       }
     };
     input = (
-      <span className="ml-2" style={{ whiteSpace: 'nowrap' }}>
+      <span
+        className="ml-2"
+        style={{ whiteSpace: 'nowrap' }}
+        data-testid="selector-input"
+      >
         Show
         <Input
           type="select"
@@ -86,7 +90,11 @@ const Selector = ({
     if (totalCount) {
       displayString += ` of ${totalCount}`;
     }
-    info = <span className="ml-2">{displayString}</span>;
+    info = (
+      <span className="ml-2" data-testid="selector-info">
+        {displayString}
+      </span>
+    );
   }
   if (info && input) {
     return (

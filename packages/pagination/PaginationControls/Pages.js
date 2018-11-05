@@ -241,7 +241,7 @@ class Pages extends Component {
       `pagination-${unstyled ? 'un' : ''}styled`
     );
     return (
-      <ul className={listClassName}>
+      <ul className={listClassName} data-testid="page-selector">
         {this.getStartButtons()}
         {this.getPages()}
         {this.getEndButtons()}

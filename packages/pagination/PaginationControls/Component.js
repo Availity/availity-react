@@ -45,7 +45,11 @@ const PaginationControls = props => {
   );
 
   return (
-    <nav className={topClassName} aria-label={ariaLabel}>
+    <nav
+      className={topClassName}
+      aria-label={ariaLabel}
+      data-testid="pagination-controls"
+    >
       <Pages
         align={pageButtonsAlign || align}
         className={pagesClassName}
