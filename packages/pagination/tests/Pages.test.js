@@ -5,6 +5,8 @@ import 'jest-dom/extend-expect';
 
 import Pages from '../PaginationControls/Pages';
 
+import { testPagesRender } from './pagesTestFn';
+
 describe('Pages', () => {
   afterEach(cleanup);
   let mockFn;
@@ -12,19 +14,8 @@ describe('Pages', () => {
     mockFn = jest.fn();
   });
 
-  test('renders successfully', () => {
-    const { container } = render(<Pages onPageChange={mockFn} pageCount={5} />);
-    expect(container).toBeDefined();
-  });
-
-  test('renders nav buttons by default', () => {
-    const { getByLabelText } = render(
-      <Pages onPageChange={mockFn} pageCount={5} />
-    );
-    ['First', 'Previous', 'Next', 'Last'].forEach(label => {
-      const navLink = getByLabelText(label);
-      expect(navLink).toBeDefined();
-    });
+  testPagesRender({
+    Component: Pages,
   });
 
   test('should add correct classes for size,align,unstyled', () => {
