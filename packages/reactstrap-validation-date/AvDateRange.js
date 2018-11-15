@@ -138,6 +138,30 @@ export default class AvDateRange extends Component {
     this.guid = `date-range-${count}-btn`;
   }
 
+  getStartRef = el => {
+    this.startRef = el;
+
+    if (this.props.start.innerRef) {
+      if (typeof this.props.start.innerRef === 'function') {
+        this.props.start.innerRef(el);
+      } else {
+        this.props.start.innerRef.current = el;
+      }
+    }
+  };
+
+  getEndRef = el => {
+    this.endRef = el;
+
+    if (this.props.end.innerRef) {
+      if (typeof this.props.end.innerRef === 'function') {
+        this.props.end.innerRef(el);
+      } else {
+        this.props.end.innerRef.current = el;
+      }
+    }
+  };
+
   togglePicker = () => {
     this.setState({ open: !this.state.open });
   };
@@ -307,6 +331,7 @@ export default class AvDateRange extends Component {
           type={this.props.type}
           className={this.props.disabled ? 'border-right-0' : undefined}
           {...this.props.start}
+          innerRef={this.getStartRef}
           validate={{ ...this.props.validate, ...this.props.start.validate }}
           onChange={this.onStartFieldChange}
           value={this.state.startValue || ''}
@@ -326,6 +351,7 @@ export default class AvDateRange extends Component {
           type={this.props.type}
           className={this.props.disabled ? 'border-left-0' : undefined}
           {...this.props.end}
+          innerRef={this.getEndRef}
           validate={endValidate}
           disabled={this.props.disabled}
           onChange={this.onEndFieldChange}

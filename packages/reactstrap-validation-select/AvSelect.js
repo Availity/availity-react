@@ -187,10 +187,10 @@ class AvSelect extends AvBaseInput {
         getOptionValue={this.getOptionValue}
         closeMenuOnSelect={!attributes.isMulti}
         components={components}
+        defaultOptions
         {...attributes}
         {...this.getValidatorProps()}
         value={this.getViewValue()}
-        defaultOptions
       />
     );
   }
