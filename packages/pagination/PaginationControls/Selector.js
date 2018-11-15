@@ -28,7 +28,11 @@ const Selector = ({
   itemLabel,
 }) => {
   let input = false;
-  if (Array.isArray(perPageOptions) && perPageOptions.length > 1) {
+  if (
+    Array.isArray(perPageOptions) &&
+    perPageOptions.length > 1 &&
+    onCountChange
+  ) {
     const onSelectionChange = event => {
       if (onCountChange) {
         const value = event && event.target && event.target.value;

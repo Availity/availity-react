@@ -1,5 +1,6 @@
 import React from 'react';
 import { render, cleanup } from 'react-testing-library';
+// import { render, cleanup, fireEvent } from 'react-testing-library';
 
 import 'jest-dom/extend-expect';
 
@@ -7,36 +8,33 @@ import Selector from '../PaginationControls/Selector';
 
 describe('Selector', () => {
   afterEach(cleanup);
-  let mockFn;
-  beforeEach(() => {
-    mockFn = jest.fn();
-  });
 
   test('renders successfully', () => {
     const { container } = render(
-      <Selector
-        itemsPerPage={10}
-        page={1}
-        totalCount={10}
-        onCountChange={mockFn}
-      />
+      <Selector itemsPerPage={10} page={1} totalCount={10} />
     );
     expect(container).toBeDefined();
   });
 
   describe('info', () => {
+    const infoTestId = 'selector-info';
+
     test('does not render if itemsPerPage is undefined', () => {
-      const { queryByText } = render(
-        <Selector page={1} totalCount={10} onCountChange={mockFn} />
-      );
-      expect(queryByText(/^Showing/)).toBeNull();
+      const { queryByTestId } = render(<Selector page={1} />);
+      expect(queryByTestId(infoTestId)).toBeNull();
     });
 
-    const baseProps = {
-      onCountChange: mockFn,
-    };
+    test('does not render if page is undefined', () => {
+      const { queryByTestId } = render(<Selector itemsPerPage={10} />);
+      expect(queryByTestId(infoTestId)).toBeNull();
+    });
 
-    [
+    test('does render with page and itemsPerPage defined', () => {
+      const { getByTestId } = render(<Selector page={1} itemsPerPage={10} />);
+      expect(getByTestId(infoTestId)).toBeDefined();
+    });
+
+    const baseTests = [
       {
         testName: 'base render for first 10 items of 100 on page 1',
         props: {
@@ -65,90 +63,301 @@ describe('Selector', () => {
         expected: 'Showing Items 0-1 of 10',
       },
       {
-        testName: 'renders custom itemLabel if passed in props',
+        testName: 'renders items through totalCount if less than page number',
         props: {
           itemsPerPage: 10,
           page: 1,
-          totalCount: 100,
-          itemLabel: 'Users',
+          totalCount: 5,
         },
-        expected: 'Showing Users 0-10 of 100',
+        expected: 'Showing Items 0-5 of 5',
       },
-    ].forEach(testCase => {
-      test(testCase.testName || testCase.expected, () => {
-        const { getByText } = render(
-          <Selector {...baseProps} {...testCase.props} />
-        );
-        const infoElm = getByText(/^Showing/);
-        expect(infoElm).toHaveTextContent(testCase.expected);
+      {
+        testName:
+          'renders items through totalCount if less than page number on other pages',
+        props: {
+          itemsPerPage: 10,
+          page: 2,
+          totalCount: 15,
+        },
+        expected: 'Showing Items 10-15 of 15',
+      },
+      {
+        testName: "doesn't render 'of count' without totalCount",
+        props: {
+          itemsPerPage: 10,
+          page: 1,
+        },
+        expected: 'Showing Items 0-10',
+      },
+    ];
+
+    const runInfoTests = testCases => {
+      testCases.forEach(testCase => {
+        test(testCase.testName || testCase.expected, () => {
+          const { getByTestId } = render(<Selector {...testCase.props} />);
+          const infoElm = getByTestId(infoTestId);
+          expect(infoElm).toHaveTextContent(testCase.expected);
+        });
       });
+    };
+
+    runInfoTests(baseTests);
+
+    describe('itemLabel', () => {
+      const labelTests = baseTests.map(testCase => {
+        const { props, expected } = testCase;
+        const output = { ...testCase };
+        output.props = {
+          ...props,
+          itemLabel: 'Users',
+        };
+        output.expected = expected.replace('Items', 'Users');
+
+        return output;
+      });
+      runInfoTests(labelTests);
     });
   });
 
   describe('input', () => {
-    const baseProps = {
-      page: 1,
-      totalCount: 20,
-      itemsPerPage: 10,
-      onCountChange: mockFn,
-    };
+    const inputTestId = 'selector-input';
 
-    [
-      {
-        testName: 'does not render if perPageOptions prop is not defined',
-        props: null,
-        testObjects: [
-          {
-            queryString: /^10 results/,
-            expected: 'toBeNull',
-          },
-        ],
-      },
-      {
-        testName: 'renders correct results defined in perPageOptions prop',
-        props: {
-          perPageOptions: [1, 2],
-        },
-        testObjects: [
-          {
-            queryString: /^1 results/,
-            expected: 'toBeDefined',
-          },
-          {
-            queryString: /^2 results/,
-            expected: 'toBeDefined',
-          },
-        ],
-      },
-      {
-        testName: 'renders custom optionLabel when defined in props',
-        props: {
-          perPageOptions: [1, 2],
-          optionsLabel: 'Cards',
-        },
-        testObjects: [
-          {
-            queryString: /^1 Cards/,
-            expected: 'toBeDefined',
-          },
-        ],
-      },
-    ].forEach(testCase => {
-      test(testCase.testName, () => {
-        const { queryByText } = render(
-          <Selector {...baseProps} {...testCase.props} />
-        );
+    let baseProps = {};
 
-        testCase.testObjects.forEach(test => {
-          const queryElm = queryByText(test.queryString);
+    beforeEach(() => {
+      baseProps = {
+        onCountChange: jest.fn(),
+      };
+    });
 
-          if (test.expected === 'toBeNull') {
-            expect(queryElm).toBeNull();
-          } else if (test.expected === 'toBeDefined') {
-            expect(queryElm).toBeDefined();
-          }
+    const standardOptions = [];
+    for (let i = 1; i <= 10; i += 1) {
+      standardOptions.push(i * 5);
+    }
+
+    test("doesn't render without perPageOptions", () => {
+      const { queryByTestId } = render(<Selector {...baseProps} />);
+      expect(queryByTestId(inputTestId)).toBeNull();
+    });
+
+    test("doesn't render with less than 2 perPageOptions", () => {
+      const { queryByTestId } = render(
+        <Selector {...baseProps} perPageOptions={[1]} />
+      );
+      expect(queryByTestId(inputTestId)).toBeNull();
+    });
+
+    test("doesn't render without onCountChange", () => {
+      const { queryByTestId } = render(
+        <Selector perPageOptions={standardOptions} />
+      );
+      expect(queryByTestId(inputTestId)).toBeNull();
+    });
+
+    test('renders when perPageOptions provided', () => {
+      const { getByTestId } = render(
+        <Selector {...baseProps} perPageOptions={[1, 2, 3]} />
+      );
+      expect(getByTestId(inputTestId)).toBeDefined();
+    });
+
+    test('renders options for each number provided', () => {
+      const { rerender, getByTestId } = render(
+        <Selector {...baseProps} perPageOptions={[1, 2, 3]} />
+      );
+
+      // init options with value so first test starts with 2 options
+      const allOptions = [1];
+
+      for (let i = 1; i <= 10; i += 1) {
+        // push new factor of 5 to options and update
+        allOptions.push(5 * i);
+        rerender(<Selector {...baseProps} perPageOptions={allOptions} />);
+
+        const outerContainer = getByTestId(inputTestId);
+        expect(outerContainer).toBeDefined();
+        // get all options and make sure they are only whats provided by the options array
+        const renderedOptions = outerContainer.querySelectorAll('option');
+        expect(renderedOptions.length).toBe(allOptions.length);
+        allOptions.forEach((value, index) => {
+          const option = renderedOptions[index];
+          expect(option).toHaveTextContent(new RegExp(`^${value}`));
+          expect(option).toHaveAttribute('value', value.toString());
         });
+      }
+    });
+
+    test('supports options object syntax', () => {
+      const useOptions = standardOptions.map(value => ({ value }));
+      const { getByTestId } = render(
+        <Selector {...baseProps} perPageOptions={useOptions} />
+      );
+
+      const outerContainer = getByTestId(inputTestId);
+      expect(outerContainer).toBeDefined();
+      // get all options and make sure they are only whats provided by the options array
+      const renderedOptions = outerContainer.querySelectorAll('option');
+      expect(renderedOptions.length).toBe(useOptions.length);
+      useOptions.forEach(({ value }, index) => {
+        const option = renderedOptions[index];
+        expect(option).toHaveTextContent(new RegExp(`^${value}`));
+        expect(option).toHaveAttribute('value', value.toString());
       });
     });
+
+    test('renders option labels if object provided', () => {
+      const useOptions = [
+        { value: 1, label: 'hello' },
+        { value: 2, label: 'world' },
+        { value: 3 },
+      ];
+
+      const { getByTestId } = render(
+        <Selector {...baseProps} perPageOptions={useOptions} />
+      );
+
+      const outerContainer = getByTestId(inputTestId);
+      expect(outerContainer).toBeDefined();
+      // get all options and make sure they are only whats provided by the options array
+      const renderedOptions = outerContainer.querySelectorAll('option');
+      expect(renderedOptions.length).toBe(useOptions.length);
+      useOptions.forEach(({ value, label }, index) => {
+        const option = renderedOptions[index];
+        expect(option).toHaveTextContent(label || new RegExp(`^${value}`));
+        expect(option).toHaveAttribute('value', value.toString());
+      });
+    });
+
+    test("renders optionLabel (string), itemLabel, or 'results' for each option", () => {
+      const props = {
+        ...baseProps,
+        perPageOptions: standardOptions,
+      };
+
+      const { getByTestId, rerender } = render(<Selector {...props} />);
+
+      let expectLabel = 'results';
+      const itemLabelTest = 'Item Label Test';
+      const optionLabelTest = 'Option Label Test';
+
+      const testOptions = () => {
+        rerender(<Selector {...props} />);
+
+        const outerContainer = getByTestId(inputTestId);
+        expect(outerContainer).toBeDefined();
+        // get all options and make sure they are only whats provided by the options array
+        const renderedOptions = outerContainer.querySelectorAll('option');
+        expect(renderedOptions.length).toBe(standardOptions.length);
+        standardOptions.forEach((value, index) => {
+          const option = renderedOptions[index];
+          expect(option).toHaveTextContent(`${value} ${expectLabel}`);
+          expect(option).toHaveAttribute('value', value.toString());
+        });
+      };
+
+      testOptions();
+
+      props.itemLabel = itemLabelTest;
+      expectLabel = itemLabelTest;
+
+      testOptions();
+
+      props.optionLabel = optionLabelTest;
+      expectLabel = optionLabelTest;
+
+      testOptions();
+    });
+
+    test('accept function for optionLabel', () => {
+      const optionLabel = jest.fn(value => `wow! ${value} options per page`);
+      const props = {
+        ...baseProps,
+        perPageOptions: standardOptions,
+        optionLabel,
+      };
+
+      const { getByTestId } = render(<Selector {...props} />);
+
+      const outerContainer = getByTestId(inputTestId);
+      expect(outerContainer).toBeDefined();
+      // get all options and make sure they are only whats provided by the options array
+      const renderedOptions = outerContainer.querySelectorAll('option');
+      expect(renderedOptions.length).toBe(standardOptions.length);
+      standardOptions.forEach((value, index) => {
+        const option = renderedOptions[index];
+        expect(optionLabel).toHaveBeenCalledWith(value);
+        expect(option).toHaveTextContent(`wow! ${value} options per page`);
+        expect(option).toHaveAttribute('value', value.toString());
+      });
+    });
+
+    test('sets input selected value to itemsPerPage', () => {
+      const props = {
+        ...baseProps,
+        perPageOptions: standardOptions,
+      };
+      const { getByTestId, rerender } = render(<Selector {...props} />);
+
+      standardOptions.forEach((value, index) => {
+        rerender(<Selector {...props} itemsPerPage={value} />);
+
+        const outerContainer = getByTestId(inputTestId);
+        expect(outerContainer).toBeDefined();
+
+        const input = outerContainer.querySelector('select');
+        expect(input).toBeDefined();
+        expect(input.value).toBe(value.toString());
+
+        const renderedOptions = outerContainer.querySelectorAll('option');
+        for (let i = 0; i < standardOptions.length; i += 1) {
+          const option = renderedOptions[i];
+          expect(option.selected).toBe(i === index);
+        }
+      });
+    });
+
+    // TODO: get this test working, not sure if select doesn't work as I expect or if its finding a bug ¯\_(ツ)_/¯
+    // test('calls on count change when option selected', () => {
+    //   const props = {
+    //     ...baseProps,
+    //     perPageOptions: standardOptions,
+    //     itemsPerPage: 10,
+    //   };
+    //   const { getByTestId } = render(<Selector {...props} />);
+
+    //   const outerContainer = getByTestId(inputTestId);
+    //   expect(outerContainer).toBeDefined();
+    //   // get all options and make sure they are only whats provided by the options array
+    //   const input = outerContainer.querySelector('select');
+    //   expect(input).toBeDefined();
+
+    //   // trying to make change event calls, not getting expected results though
+    //   [
+    //     { value: 1, expected: '5' },
+    //     { value: 2, expected: '5' },
+    //     { value: 5, expected: '5' },
+    //     { value: 6, expected: '10' },
+    //   ].forEach(({ value, expected }, index) => {
+    //     console.log(`test ${value}: expected ${expected}`);
+    //     fireEvent.change(input, {
+    //       target: { value },
+    //     });
+    //     expect(props.onCountChange).toHaveBeenCalledTimes(index + 1);
+    //     expect(props.onCountChange).toHaveBeenLastCalledWith(expected);
+    //   });
+
+    //   // trying to trigger clicks on each option, does not seem to work
+    //   const renderedOptions = outerContainer.querySelectorAll('option');
+    //   expect(renderedOptions.length).toBe(standardOptions.length);
+
+    //   let totalCalls = 0;
+    //   standardOptions.forEach((value, index) => {
+    //     const option = renderedOptions[index];
+    //     fireEvent.click(option);
+    //     totalCalls += 1;
+    //     expect(props.onCountChange).toHaveBeenLastCalledWith(value);
+    //     expect(props.onCountChange).toHaveBeenCalledTimes(totalCalls);
+    //   });
+    // });
   });
 });
