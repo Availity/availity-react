@@ -1,6 +1,5 @@
 import React from 'react';
-import { render, cleanup } from 'react-testing-library';
-// import { render, cleanup, fireEvent } from 'react-testing-library';
+import { render, cleanup, fireEvent } from 'react-testing-library';
 
 import 'jest-dom/extend-expect';
 
@@ -316,48 +315,24 @@ describe('Selector', () => {
       });
     });
 
-    // TODO: get this test working, not sure if select doesn't work as I expect or if its finding a bug ¯\_(ツ)_/¯
-    // test('calls on count change when option selected', () => {
-    //   const props = {
-    //     ...baseProps,
-    //     perPageOptions: standardOptions,
-    //     itemsPerPage: 10,
-    //   };
-    //   const { getByTestId } = render(<Selector {...props} />);
+    test('calls on count change when option selected', () => {
+      const props = {
+        ...baseProps,
+        perPageOptions: standardOptions,
+      };
+      const { container } = render(<Selector {...props} />);
 
-    //   const outerContainer = getByTestId(inputTestId);
-    //   expect(outerContainer).toBeDefined();
-    //   // get all options and make sure they are only whats provided by the options array
-    //   const input = outerContainer.querySelector('select');
-    //   expect(input).toBeDefined();
+      const input = container.querySelector('select');
+      expect(input).toBeDefined();
 
-    //   // trying to make change event calls, not getting expected results though
-    //   [
-    //     { value: 1, expected: '5' },
-    //     { value: 2, expected: '5' },
-    //     { value: 5, expected: '5' },
-    //     { value: 6, expected: '10' },
-    //   ].forEach(({ value, expected }, index) => {
-    //     console.log(`test ${value}: expected ${expected}`);
-    //     fireEvent.change(input, {
-    //       target: { value },
-    //     });
-    //     expect(props.onCountChange).toHaveBeenCalledTimes(index + 1);
-    //     expect(props.onCountChange).toHaveBeenLastCalledWith(expected);
-    //   });
-
-    //   // trying to trigger clicks on each option, does not seem to work
-    //   const renderedOptions = outerContainer.querySelectorAll('option');
-    //   expect(renderedOptions.length).toBe(standardOptions.length);
-
-    //   let totalCalls = 0;
-    //   standardOptions.forEach((value, index) => {
-    //     const option = renderedOptions[index];
-    //     fireEvent.click(option);
-    //     totalCalls += 1;
-    //     expect(props.onCountChange).toHaveBeenLastCalledWith(value);
-    //     expect(props.onCountChange).toHaveBeenCalledTimes(totalCalls);
-    //   });
-    // });
+      standardOptions.forEach((value, index) => {
+        const stringValue = value.toString();
+        fireEvent.change(input, {
+          target: { value: stringValue },
+        });
+        expect(props.onCountChange).toHaveBeenCalledTimes(index + 1);
+        expect(props.onCountChange).toHaveBeenLastCalledWith(stringValue);
+      });
+    });
   });
 });
