@@ -44,7 +44,6 @@ const propTypes = {
 
 const defaultProps = {
   pagePadding: 2,
-  itemsPerPage: 10,
   firstBtn: true,
   prevBtn: true,
   nextBtn: true,

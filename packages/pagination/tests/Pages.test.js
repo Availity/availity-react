@@ -9,10 +9,9 @@ const pagesTestId = 'page-selector';
 
 describe('Pages', () => {
   afterEach(cleanup);
-  let mockFn;
+
   let baseProps;
   beforeEach(() => {
-    mockFn = jest.fn();
     baseProps = {
       onPageChange: jest.fn(),
       pageCount: 5,
@@ -44,24 +43,8 @@ describe('Pages', () => {
     }).toThrowError(/must define pageCount or totalCount and itemsPerPage/);
   });
 
-  // TODO: figure out how to get this test working to validate props
-  // test('pageCount, totalCount, and itemsPerPage must be positive if defined', () => {
-  //   ['pageCount', 'totalCount', 'itemsPerPage'].forEach(propName => {
-  //     const errorCheck = new RegExp(`${propName} must be a positive number`);
-  //     [-2, -1].forEach(i => {
-  //       expect(() => {
-  //         const props = { ...baseProps, [propName]: i };
-  //         // console.log(`${propName}: ${props[propName]}`);
-  //         render(<Pages {...props} />);
-  //       }).toThrowError(errorCheck);
-  //     });
-  //   });
-  // });
-
   test('should add correct classes for size,align,unstyled', () => {
-    const { container, rerender } = render(
-      <Pages onPageChange={mockFn} pageCount={5} />
-    );
+    const { container, rerender } = render(<Pages {...baseProps} />);
     expect(container.firstChild).toHaveClass('pagination flex-grow-1');
 
     [
@@ -91,10 +74,11 @@ describe('Pages', () => {
             : testCase.class[option];
 
         const testProps = {
+          ...baseProps,
           [testCase.prop]: option,
         };
 
-        rerender(<Pages onPageChange={mockFn} {...testProps} pageCount={5} />);
+        rerender(<Pages {...testProps} />);
         expect(container.firstChild).toHaveClass(expected);
       });
     });
@@ -157,7 +141,7 @@ describe('Pages', () => {
   describe('Page buttons', () => {
     test('renders a page button', () => {
       const { getByLabelText } = render(
-        <Pages onPageChange={mockFn} pageCount={1} page={1} />
+        <Pages {...baseProps} pageCount={1} page={1} />
       );
       const pageButton = getByLabelText('Page-1');
       expect(pageButton).toHaveTextContent('1');
@@ -165,7 +149,7 @@ describe('Pages', () => {
 
     test('does not render pages on simple', () => {
       const { queryByLabelText } = render(
-        <Pages onPageChange={mockFn} pageCount={1} page={1} simple />
+        <Pages {...baseProps} pageCount={1} page={1} simple />
       );
       const pageButton = queryByLabelText('Page-1');
       expect(pageButton).toBeNull();
@@ -173,7 +157,7 @@ describe('Pages', () => {
 
     test('should render current page as active', () => {
       const { getByLabelText } = render(
-        <Pages onPageChange={mockFn} pageCount={1} page={1} />
+        <Pages {...baseProps} pageCount={1} page={1} />
       );
       const pageButton = getByLabelText('Page-1');
       expect(pageButton.parentElement).toHaveClass('active');
@@ -184,14 +168,14 @@ describe('Pages', () => {
       const pagePadding = 2;
       const pageCount = 10;
 
-      const { getByLabelText } = render(
-        <Pages
-          onPageChange={mockFn}
-          pageCount={pageCount}
-          page={page}
-          pagePadding={pagePadding}
-        />
-      );
+      const props = {
+        ...baseProps,
+        page,
+        pagePadding,
+        pageCount,
+      };
+
+      const { getByLabelText } = render(<Pages {...props} />);
 
       for (let i = page - pagePadding; i <= page + pagePadding; i += 1) {
         const pageButton = getByLabelText(`Page-${i}`);
@@ -207,14 +191,14 @@ describe('Pages', () => {
       const pagePadding = 2;
       const pageCount = 4;
 
-      const { queryByLabelText } = render(
-        <Pages
-          onPageChange={mockFn}
-          pageCount={pageCount}
-          page={page}
-          pagePadding={pagePadding}
-        />
-      );
+      const props = {
+        ...baseProps,
+        page,
+        pagePadding,
+        pageCount,
+      };
+
+      const { queryByLabelText } = render(<Pages {...props} />);
 
       for (let i = page - pagePadding; i <= page + pagePadding; i += 1) {
         const pageButton = queryByLabelText(`Page-${i}`);
@@ -235,14 +219,14 @@ describe('Pages', () => {
 
       const page = 1;
 
-      const { getByLabelText } = render(
-        <Pages
-          onPageChange={mockFn}
-          pageCount={pageCount}
-          page={page}
-          pagePadding={pagePadding}
-        />
-      );
+      const props = {
+        ...baseProps,
+        pagePadding,
+        pageCount,
+        page,
+      };
+
+      const { getByLabelText } = render(<Pages {...props} />);
 
       for (let i = 1; i <= 5; i += 1) {
         const pageButton = getByLabelText(`Page-${i}`);
@@ -257,10 +241,13 @@ describe('Pages', () => {
   test('should call onPageChange for each button', () => {
     const pageCount = 5;
     const page = 2;
-    const { getByLabelText } = render(
-      <Pages onPageChange={mockFn} pageCount={pageCount} page={page} />
-    );
-    expect(mockFn).not.toHaveBeenCalled();
+    const props = {
+      ...baseProps,
+      pageCount,
+      page,
+    };
+    const { getByLabelText } = render(<Pages {...props} />);
+    expect(props.onPageChange).not.toHaveBeenCalled();
     let totalCalls = 0;
     const Labels = [
       {
@@ -287,8 +274,8 @@ describe('Pages', () => {
         expect(btn).toBeDefined();
         fireEvent.click(btn);
         totalCalls += 1;
-        expect(mockFn).toHaveBeenLastCalledWith(expected);
-        expect(mockFn).toHaveBeenCalledTimes(totalCalls);
+        expect(props.onPageChange).toHaveBeenLastCalledWith(expected);
+        expect(props.onPageChange).toHaveBeenCalledTimes(totalCalls);
       }
     });
   });

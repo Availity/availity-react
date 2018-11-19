@@ -5,28 +5,106 @@ import 'jest-dom/extend-expect';
 
 import { PaginationControls } from '../PaginationControls';
 
-import { testPagesRender } from './pagesTestFn';
-
 describe('PaginationControls', () => {
   afterEach(cleanup);
-  let mockFn;
+  let baseProps;
   beforeEach(() => {
-    mockFn = jest.fn();
+    baseProps = {
+      pageCount: 5,
+      onPageChange: jest.fn(),
+    };
   });
 
   test('renders successfully', () => {
-    const { container } = render(
-      <PaginationControls onPageChange={mockFn} pageCount={5} />
-    );
+    const { container } = render(<PaginationControls {...baseProps} />);
     expect(container).toBeDefined();
   });
 
   describe('Pages', () => {
-    testPagesRender({
-      Component: PaginationControls,
-      props: {
-        pageCount: 5,
-      },
+    const pagesTestId = 'page-selector';
+    test('renders pages component', () => {
+      const { getByTestId } = render(<PaginationControls {...baseProps} />);
+      expect(getByTestId(pagesTestId)).toBeDefined();
+    });
+
+    test('passed down pagesClassName', () => {
+      const mockClass = 'testPageClass';
+      const { getByTestId } = render(
+        <PaginationControls {...baseProps} pagesClassName={mockClass} />
+      );
+      expect(getByTestId(pagesTestId)).toHaveClass(mockClass);
+    });
+    test('use pageButtonAlign or align', () => {
+      const { getByTestId, rerender } = render(
+        <PaginationControls {...baseProps} />
+      );
+      [
+        {
+          props: {
+            pageButtonsAlign: 'start',
+            align: 'center',
+          },
+          expected: 'start',
+        },
+        {
+          props: {
+            pageButtonsAlign: 'start',
+            align: 'end',
+          },
+          expected: 'start',
+        },
+        {
+          props: {
+            pageButtonsAlign: 'center',
+            align: 'start',
+          },
+          expected: 'center',
+        },
+        {
+          props: {
+            pageButtonsAlign: 'end',
+            align: 'start',
+          },
+          expected: 'end',
+        },
+        {
+          props: {
+            pageButtonsAlign: 'between',
+            align: 'start',
+          },
+          expected: 'between',
+        },
+        {
+          props: {
+            align: 'start',
+          },
+          expected: 'start',
+        },
+        {
+          props: {
+            align: 'center',
+          },
+          expected: 'center',
+        },
+        {
+          props: {
+            align: 'end',
+          },
+          expected: 'end',
+        },
+        {
+          props: {
+            align: 'between',
+          },
+          expected: 'between',
+        },
+      ].forEach(testCase => {
+        const props = { ...baseProps, ...testCase.props };
+        rerender(<PaginationControls {...props} />);
+        expect(getByTestId(pagesTestId)).toHaveClass(
+          `justify-content-${testCase.expected}`
+        );
+      });
     });
   });
 });
