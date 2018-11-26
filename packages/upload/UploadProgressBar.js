@@ -23,23 +23,28 @@ class UploadProgressBar extends Component {
   }
 
   onProgress = () => {
-    this.setState({ percentage: this.props.upload.percentage, error: false });
-    if (this.props.onProgress) this.props.onProgress(this.props.upload);
+    const { upload, onProgress } = this.props;
+    this.setState({ percentage: upload.percentage, error: false });
+    if (onProgress) onProgress(upload);
   };
 
   onSuccess = () => {
+    const { onSuccess, upload } = this.props;
     this.setState({ percentage: 100, error: false });
-    if (this.props.onSuccess) this.props.onSuccess(this.props.upload);
+    if (onSuccess) onSuccess(upload);
   };
 
   onError = () => {
+    const { onError, upload } = this.props;
     this.setState({ error: true });
-    if (this.props.onError) this.props.onError(this.props.upload);
+    if (onError) onError(upload);
   };
 
   verifyPassword = event => {
+    const { upload } = this.props;
+    const { password } = this.state;
     event.preventDefault();
-    this.props.upload.sendPassword(this.state.password);
+    upload.sendPassword(password);
     this.toggleModal();
   };
 
@@ -53,7 +58,7 @@ class UploadProgressBar extends Component {
 
   render() {
     const { upload, animated, className } = this.props;
-    const { percentage, error } = this.state;
+    const { percentage, error, modalOpen } = this.state;
     return upload.errorMessage ? (
       <React.Fragment>
         <span className="text-danger">{upload.errorMessage}</span>
@@ -62,7 +67,7 @@ class UploadProgressBar extends Component {
             <Button size="sm" color="primary" onClick={this.toggleModal}>
               Enter password
             </Button>
-            <Modal isOpen={this.state.modalOpen} toggle={this.toggleModal}>
+            <Modal isOpen={modalOpen} toggle={this.toggleModal}>
               <form onSubmit={this.verifyPassword}>
                 <ModalHeader toggle={this.toggleModal}>
                   Enter Password

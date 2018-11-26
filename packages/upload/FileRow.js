@@ -83,7 +83,10 @@ class FileRow extends Component {
             onClick={this.remove}
           >
             <i className="icon icon-trash-empty">
-              <span className="sr-only">Remove {file.file.name}</span>
+              <span className="sr-only">
+                Remove
+                {file.file.name}
+              </span>
             </i>
           </Button>
         </td>

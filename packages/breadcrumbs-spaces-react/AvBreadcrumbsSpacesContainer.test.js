@@ -1,6 +1,6 @@
 import React from 'react';
 import { mount, shallow } from 'enzyme';
-import AvBreadcrumbsSpacesContainer from './';
+import AvBreadcrumbsSpacesContainer from '.';
 
 describe('AvBreadcrumbsSpacesContainer', () => {
   const SPACE_NAME = 'a';
