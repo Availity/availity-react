@@ -14,7 +14,7 @@ const propTypes = {
   loader: PropTypes.oneOfType([PropTypes.string, PropTypes.bool]),
 
   // state setting props
-  page: PropTypes.number,
+  page: PropTypes.number.isRequired,
   items: PropTypes.oneOfType([PropTypes.array, PropTypes.func]).isRequired,
   parameters: PropTypes.object,
   itemsPerPage: PropTypes.number,
@@ -39,6 +39,10 @@ class Pagination extends Component {
     items: false,
   };
   scrollRef = React.createRef();
+
+  componentDidMount() {
+    this.updateItems();
+  }
 
   getItemProps = ({ page, items, parameters, itemsPerPage } = this.props) => ({
     page,

@@ -46,110 +46,104 @@ function getButtonValue(title, key) {
   return buttonText || buttonBool;
 }
 
-function ControlProps() {
-  const output = {
-    firstBtn: getButtonValue('First Button', 'firstBtn'),
-    prevBtn: getButtonValue('Previous Button', 'prevBtn'),
-    nextBtn: getButtonValue('Next Button', 'nextBtn'),
-    lastBtn: getButtonValue('Last Button', 'lastBtn'),
-  };
-
-  const usePageCount = selectV2(
-    'Pages Type',
-    { pageCount: 'page', itemCount: 'item' },
-    'page',
-    'Page Values'
-  );
-  let maxPages = 0;
-  if (usePageCount === 'page') {
-    output.pageCount = number(
-      'Total number of pages',
-      10,
-      { min: 1 },
-      'Page Values'
-    );
-    maxPages = output.pageCount;
-  } else {
-    output.itemsPerPage = number(
-      'Items per page',
-      10,
-      { min: 1 },
-      'Page Values'
-    );
-    output.totalCount = number(
-      'Total number of items',
-      100,
-      { min: 1 },
-      'Page Values'
-    );
-    maxPages = Math.ceil(output.totalCount / output.itemsPerPage);
-  }
-  output.page = number(
-    'Page',
-    1,
-    { min: 1, max: maxPages, step: 1 },
-    'Page Values'
-  );
-
-  output.pagePadding = number('Page Padding', 2, 'Page Values');
-
-  output.unstyled = boolean('Unstyled', false, 'Style');
-
-  output.size = selectV2(
-    'Size',
-    { Small: 'sm', Normal: '', Large: 'lg' },
-    'sm',
-    'Style'
-  );
-
-  output.align = selectV2(
-    'Align',
-    {
-      Start: 'start',
-      Center: 'center',
-      End: 'end',
-      Between: 'between',
-    },
-    PaginationControls.defaultProps.align,
-    'Style'
-  );
-
-  output.pageButtonsAlign = selectV2(
-    'Align Pagebuttons',
-    {
-      Start: 'start',
-      Center: 'center',
-      End: 'end',
-      'Between (goes well with "simple")': 'between',
-    },
-    PaginationControls.defaultProps.align,
-    'Style'
-  );
-
-  output.simple = boolean(
-    'Simple (just prev/next)',
-    PaginationControls.defaultProps.simple,
-    'Style'
-  );
-
-  output.withSelector = boolean(
-    'Use Selector',
-    PaginationControls.defaultProps.withSelector,
-    'Selector'
-  );
-  output.optionLabel = text('Item Options Label', 'results', 'Selector');
-  output.itemLabel = text('Item Label', 'Items', 'Selector');
-
-  output.onPageChange = () => {};
-
-  return output;
-}
-
 storiesOf('Navigation|Pagination', module)
   .addDecorator(withReadme([README]))
   .addDecorator(withKnobs)
   .add('Controls', () => {
-    const props = ControlProps();
+    const props = {
+      firstBtn: getButtonValue('First Button', 'firstBtn'),
+      prevBtn: getButtonValue('Previous Button', 'prevBtn'),
+      nextBtn: getButtonValue('Next Button', 'nextBtn'),
+      lastBtn: getButtonValue('Last Button', 'lastBtn'),
+    };
+
+    const usePageCount = selectV2(
+      'Pages Type',
+      { pageCount: 'page', itemCount: 'item' },
+      'page',
+      'Page Values'
+    );
+    let maxPages = 0;
+    if (usePageCount === 'page') {
+      props.pageCount = number(
+        'Total number of pages',
+        10,
+        { min: 1 },
+        'Page Values'
+      );
+      maxPages = props.pageCount;
+    } else {
+      props.itemsPerPage = number(
+        'Items per page',
+        10,
+        { min: 1 },
+        'Page Values'
+      );
+      props.totalCount = number(
+        'Total number of items',
+        100,
+        { min: 1 },
+        'Page Values'
+      );
+      maxPages = Math.ceil(props.totalCount / props.itemsPerPage);
+    }
+    props.page = number(
+      'Page',
+      1,
+      { min: 1, max: maxPages, step: 1 },
+      'Page Values'
+    );
+
+    props.pagePadding = number('Page Padding', 2, 'Page Values');
+
+    props.unstyled = boolean('Unstyled', false, 'Style');
+
+    props.size = selectV2(
+      'Size',
+      { Small: 'sm', Normal: '', Large: 'lg' },
+      'sm',
+      'Style'
+    );
+
+    props.align = selectV2(
+      'Align',
+      {
+        Start: 'start',
+        Center: 'center',
+        End: 'end',
+        Between: 'between',
+      },
+      PaginationControls.defaultProps.align,
+      'Style'
+    );
+
+    props.pageButtonsAlign = selectV2(
+      'Align Pagebuttons',
+      {
+        Start: 'start',
+        Center: 'center',
+        End: 'end',
+        'Between (goes well with "simple")': 'between',
+      },
+      PaginationControls.defaultProps.align,
+      'Style'
+    );
+
+    props.simple = boolean(
+      'Simple (just prev/next)',
+      PaginationControls.defaultProps.simple,
+      'Style'
+    );
+
+    props.withSelector = boolean(
+      'Use Selector',
+      PaginationControls.defaultProps.withSelector,
+      'Selector'
+    );
+    props.optionLabel = text('Item Options Label', 'results', 'Selector');
+    props.itemLabel = text('Item Label', 'Items', 'Selector');
+
+    props.onPageChange = () => {};
     props.perPageOptions = [10, 20, 30];
     props.onSelectionChange = (event, value) => {
       console.log(`selection changed: ${value}`);
@@ -157,10 +151,7 @@ storiesOf('Navigation|Pagination', module)
     return <PaginationControls {...props} />;
   })
   .add('default', () => {
-    const props = {
-      onPageChange: () => {},
-    };
-
+    const props = {};
     const items = array('Items', [
       'red',
       'blue',
@@ -179,13 +170,7 @@ storiesOf('Navigation|Pagination', module)
       'charmander',
     ]);
 
-    props.hideOnSinglePage = boolean('Hide Controls for one page', false);
-
-    const overrideItemValues = boolean('Define custom page values', false);
-    if (overrideItemValues) {
-      props.pageCount = number('Total number of pages', 10, { min: 1 });
-      props.totalCount = number('Total number of items', 15, { min: 1 });
-    }
+    props.page = number('Page', 1, { min: 1, step: 1 }, 'Page Values');
 
     props.itemsPerPage = number(
       'Items per page',
@@ -194,29 +179,11 @@ storiesOf('Navigation|Pagination', module)
       'Page Values'
     );
 
-    const useItemCountOptions = boolean('Use ItemPerPage Options', false);
-    if (useItemCountOptions) {
-      props.perPageOptions = [1, 2, 3].map(val => props.itemsPerPage * val);
-    }
-
     const loaderBool = boolean('Block UI while loading', true, 'loader');
     const loaderText = loaderBool && text('Loader message', '', 'loader');
 
     props.loader = loaderText || loaderBool;
     props.loading = boolean('Block UI loading', false, 'loader');
-
-    const controlled = boolean('Controlled', false);
-    if (controlled) {
-      const maxPages = props.pageOnlyOptions
-        ? props.pageCount
-        : Math.ceil(props.options.length / props.itemsPerPage);
-      props.page = number(
-        'Page',
-        1,
-        { min: 1, max: maxPages, step: 1 },
-        'Page Values'
-      );
-    }
 
     const useAsync = boolean('use Async items', false);
     if (!useAsync) {
@@ -266,10 +233,10 @@ storiesOf('Navigation|Pagination', module)
     const props = {
       resource: mockResponse,
       getResult: 'notifications',
-      onPageChange: () => {},
     };
 
-    props.hideOnSinglePage = boolean('Hide Controls for one page', false);
+    props.page = number('Page', 1, { min: 1, step: 1 }, 'Page Values');
+
     props.itemsPerPage = number(
       'Items per page',
       10,
