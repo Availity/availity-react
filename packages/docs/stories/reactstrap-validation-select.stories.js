@@ -33,7 +33,7 @@ const options = [
 
 const avCustomResource = new AvApi({ name: 'my-custom-resource' });
 
-storiesOf('reactstrap Validation|AvSelect', module)
+storiesOf('AvSelect', module)
   .addDecorator(withReadme([README]))
   .addDecorator(withKnobs)
   .add('default', () => {
@@ -148,10 +148,7 @@ storiesOf('reactstrap Validation|AvSelect', module)
         <Button color="primary">Submit</Button>
       </AvFormResults>
     );
-  });
-storiesOf('reactstrap Validation|AvSelect/resources', module)
-  .addDecorator(withReadme([README]))
-  .addDecorator(withKnobs)
+  })
   .add('AvProviderSelect', () => {
     const isMulti = boolean('Multiple', false);
     const min = (isMulti && number('Min Selection', 2)) || undefined;

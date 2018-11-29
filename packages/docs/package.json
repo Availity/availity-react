@@ -12,7 +12,9 @@
   "scripts": {
     "start": "start-storybook -p 2222 -c .storybook",
     "build": "build-storybook -c .storybook -o ../../docs",
-    "deploy-docs": "storybook-to-ghpages"
+    "deploy-docs": "storybook-to-ghpages",
+    "storybook": "start-storybook -p 6006",
+    "build-storybook": "build-storybook"
   },
   "repository": {
     "type": "git",
@@ -23,35 +25,38 @@
   },
   "license": "MIT",
   "devDependencies": {
-    "@availity/api-axios": "^2.0.0",
-    "@availity/api-core": "^2.0.0",
+    "@availity/api-axios": "^3.0.1",
+    "@availity/api-core": "^3.0.0",
     "@availity/breadcrumbs-spaces-react": "^1.5.2",
-    "@availity/localstorage-core": "^1.4.0",
+    "@availity/localstorage-core": "^2.5.0",
     "@availity/reactstrap-validation-date": "^1.6.0",
     "@availity/reactstrap-validation-select": "^1.6.0",
     "@availity/upload": "^1.5.2",
     "@availity/upload-core": "^2.0.0",
-    "@storybook/addon-a11y": "^3.4.3",
-    "@storybook/addon-actions": "^3.4.3",
+    "@storybook/addon-a11y": "^4.0.9",
+    "@storybook/addon-actions": "^4.0.9",
     "@storybook/addon-knobs": "^3.4.3",
-    "@storybook/addon-links": "^3.4.3",
+    "@storybook/addon-links": "^4.0.9",
     "@storybook/addon-options": "^3.4.3",
-    "@storybook/addon-storysource": "^3.4.3",
-    "@storybook/addons": "^3.4.3",
-    "@storybook/react": "^3.4.3",
+    "@storybook/addon-storysource": "^4.0.9",
+    "@storybook/addons": "^4.0.9",
+    "@storybook/react": "^4.0.9",
     "@storybook/storybook-deployer": "^2.3.0",
     "availity-reactstrap-validation": "^2.0.2",
     "availity-uikit": "^3.0.0-beta.19",
     "axios": "^0.18.0",
-    "duplicate-package-checker-webpack-plugin": "^2.1.0",
+    "duplicate-package-checker-webpack-plugin": "^3.0.0",
     "prop-types": "^15.5.8",
     "raw-loader": "^0.5.1",
     "react": "^16.3.0",
     "react-dom": "^16.3.2",
     "reactstrap": "^6.1.0",
     "sass-loader": "^7.0.1",
-    "storybook-readme": "^3.3.0",
+    "storybook-readme": "^4.0.2",
     "tus-js-client": "^1.5.1",
-    "xhr-mock": "^2.3.2"
-  }
+    "xhr-mock": "^2.3.2",
+    "@babel/core": "^7.1.6",
+    "babel-loader": "^8.0.4"
+  },
+  "dependencies": {}
 }

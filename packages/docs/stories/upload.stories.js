@@ -143,7 +143,7 @@ mock.use(proxy);
 
 let instance;
 
-storiesOf('Actions|Upload', module)
+storiesOf('Upload', module)
   .addDecorator(withReadme([README]))
   .addDecorator(withKnobs)
   .addDecorator(story => {
@@ -216,7 +216,5 @@ storiesOf('Actions|Upload', module)
         />
       </div>
     );
-  });
-storiesOf('Actions|Upload/With Metadata', module).add('Pre-upload', () => (
-  <PreUpload />
-));
+  })
+  .add('Pre-upload', () => <PreUpload />);

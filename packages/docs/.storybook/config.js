@@ -1,4 +1,3 @@
-import 'regenerator-runtime/runtime';
 import { configure, addDecorator } from '@storybook/react';
 import { setOptions } from '@storybook/addon-options';
 import { checkA11y } from '@storybook/addon-a11y';
@@ -18,9 +17,10 @@ setOptions({
 
 addDecorator(checkA11y);
 
-// automatically import all story js files that end with *.stories.js
-const req = require.context('../stories/', true, /\.stories\.js$/);
+// automatically import all files ending in *.stories.js
+const req = require.context('../stories', true, /.stories.js$/);
 function loadStories() {
   req.keys().forEach(filename => req(filename));
 }
+
 configure(loadStories, module);

@@ -22,7 +22,7 @@ const types = {
   text: 'text',
   date: 'date',
 };
-storiesOf('reactstrap Validation|AvDate', module)
+storiesOf('AvDate', module)
   .addDecorator(withReadme([README]))
   .addDecorator(withKnobs)
   .add('default', () => (
