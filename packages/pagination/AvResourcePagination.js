@@ -20,14 +20,14 @@ const AvResourcePagination = ({
   getResult,
   ...paginationProps
 }) => {
-  async function loadPage(page, itemsPerPage, extraArgs = {}) {
+  async function loadPage({ page, itemsPerPage, parameters = {} }) {
     const params = {
       limit: itemsPerPage,
       offset: (page - 1) * itemsPerPage,
-      ...(extraArgs.parameters || {}),
+      ...(parameters.params || {}),
     };
 
-    const resp = await resource.postGet(params, extraArgs.requestConfig || {});
+    const resp = await resource.postGet(params, parameters.requestConfig || {});
 
     const useGetResult = resource.getResult || getResult;
 
@@ -52,8 +52,8 @@ const AvResourcePagination = ({
     <Pagination
       {...paginationProps}
       items={loadPage}
-      itemExtraAgs={{
-        parameters,
+      parameters={{
+        params: parameters,
         requestConfig,
       }}
     />
