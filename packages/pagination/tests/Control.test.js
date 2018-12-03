@@ -3,24 +3,45 @@ import { render, cleanup, fireEvent } from 'react-testing-library';
 
 import 'jest-dom/extend-expect';
 
-import Pages, { defaultButtonText } from '../PaginationControls/Pages';
+import PaginationControl, { defaultButtonText } from '../PaginationControl';
 
 const pagesTestId = 'page-selector';
 
-describe('Pages', () => {
+describe('PaginationControl', () => {
   afterEach(cleanup);
 
   let baseProps;
   beforeEach(() => {
     baseProps = {
       onPageChange: jest.fn(),
+      page: 1,
       pageCount: 5,
     };
   });
 
   test('renders as expected', () => {
-    const { getByTestId } = render(<Pages {...baseProps} />);
+    const { getByTestId } = render(<PaginationControl {...baseProps} />);
     expect(getByTestId(pagesTestId)).toBeDefined();
+  });
+
+  test('page is required', () => {
+    const useProps = {
+      ...baseProps,
+      page: undefined,
+    };
+    expect(() => {
+      render(<PaginationControl {...useProps} />);
+    }).toThrow();
+  });
+
+  test('pageCount is required', () => {
+    const useProps = {
+      ...baseProps,
+      pageCount: undefined,
+    };
+    expect(() => {
+      render(<PaginationControl {...useProps} />);
+    }).toThrow();
   });
 
   test('onPageChange is required', () => {
@@ -29,22 +50,14 @@ describe('Pages', () => {
       onPageChange: undefined,
     };
     expect(() => {
-      render(<Pages {...useProps} />);
+      render(<PaginationControl {...useProps} />);
     }).toThrow();
   });
 
-  test('pageCount must be defined', () => {
-    const useProps = {
-      ...baseProps,
-      pageCount: undefined,
-    };
-    expect(() => {
-      render(<Pages {...useProps} />);
-    }).toThrowError(/must define pageCount or totalCount and itemsPerPage/);
-  });
-
   test('should add correct classes for size,align,unstyled', () => {
-    const { container, rerender } = render(<Pages {...baseProps} />);
+    const { container, rerender } = render(
+      <PaginationControl {...baseProps} />
+    );
     expect(container.firstChild).toHaveClass('pagination flex-grow-1');
 
     [
@@ -78,7 +91,7 @@ describe('Pages', () => {
           [testCase.prop]: option,
         };
 
-        rerender(<Pages {...testProps} />);
+        rerender(<PaginationControl {...testProps} />);
         expect(container.firstChild).toHaveClass(expected);
       });
     });
@@ -86,7 +99,7 @@ describe('Pages', () => {
 
   describe('Navigation buttons', () => {
     test('renders nav buttons by default', () => {
-      const { getByLabelText } = render(<Pages {...baseProps} />);
+      const { getByLabelText } = render(<PaginationControl {...baseProps} />);
       [
         { label: 'First', text: defaultButtonText.firstBtn },
         { label: 'Previous', text: defaultButtonText.prevBtn },
@@ -98,7 +111,9 @@ describe('Pages', () => {
     });
 
     test('renders nav buttons with expected text', () => {
-      const { queryByLabelText, rerender } = render(<Pages {...baseProps} />);
+      const { queryByLabelText, rerender } = render(
+        <PaginationControl {...baseProps} />
+      );
 
       [
         {
@@ -123,7 +138,12 @@ describe('Pages', () => {
         },
       ].forEach(testCase => {
         testCase.testValues.forEach(testText => {
-          rerender(<Pages {...baseProps} {...{ [testCase.prop]: testText }} />);
+          rerender(
+            <PaginationControl
+              {...baseProps}
+              {...{ [testCase.prop]: testText }}
+            />
+          );
 
           const elm = queryByLabelText(testCase.label);
 
@@ -141,7 +161,7 @@ describe('Pages', () => {
   describe('Page buttons', () => {
     test('renders a page button', () => {
       const { getByLabelText } = render(
-        <Pages {...baseProps} pageCount={1} page={1} />
+        <PaginationControl {...baseProps} pageCount={1} page={1} />
       );
       const pageButton = getByLabelText('Page-1');
       expect(pageButton).toHaveTextContent('1');
@@ -149,7 +169,7 @@ describe('Pages', () => {
 
     test('does not render pages on simple', () => {
       const { queryByLabelText } = render(
-        <Pages {...baseProps} pageCount={1} page={1} simple />
+        <PaginationControl {...baseProps} pageCount={1} page={1} simple />
       );
       const pageButton = queryByLabelText('Page-1');
       expect(pageButton).toBeNull();
@@ -157,7 +177,7 @@ describe('Pages', () => {
 
     test('should render current page as active', () => {
       const { getByLabelText } = render(
-        <Pages {...baseProps} pageCount={1} page={1} />
+        <PaginationControl {...baseProps} pageCount={1} page={1} />
       );
       const pageButton = getByLabelText('Page-1');
       expect(pageButton.parentElement).toHaveClass('active');
@@ -175,7 +195,7 @@ describe('Pages', () => {
         pageCount,
       };
 
-      const { getByLabelText } = render(<Pages {...props} />);
+      const { getByLabelText } = render(<PaginationControl {...props} />);
 
       for (let i = page - pagePadding; i <= page + pagePadding; i += 1) {
         const pageButton = getByLabelText(`Page-${i}`);
@@ -198,7 +218,7 @@ describe('Pages', () => {
         pageCount,
       };
 
-      const { queryByLabelText } = render(<Pages {...props} />);
+      const { queryByLabelText } = render(<PaginationControl {...props} />);
 
       for (let i = page - pagePadding; i <= page + pagePadding; i += 1) {
         const pageButton = queryByLabelText(`Page-${i}`);
@@ -226,7 +246,7 @@ describe('Pages', () => {
         page,
       };
 
-      const { getByLabelText } = render(<Pages {...props} />);
+      const { getByLabelText } = render(<PaginationControl {...props} />);
 
       for (let i = 1; i <= 5; i += 1) {
         const pageButton = getByLabelText(`Page-${i}`);
@@ -246,7 +266,7 @@ describe('Pages', () => {
       pageCount,
       page,
     };
-    const { getByLabelText } = render(<Pages {...props} />);
+    const { getByLabelText } = render(<PaginationControl {...props} />);
     expect(props.onPageChange).not.toHaveBeenCalled();
     let totalCalls = 0;
     const Labels = [

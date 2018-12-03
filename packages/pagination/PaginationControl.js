@@ -13,23 +13,10 @@ export const defaultButtonText = {
   lastBtn: 'Last »»',
 };
 
-const requirePageCountCheck = (props, propName) => {
-  const thisProp = props[propName];
-  if (typeof thisProp === 'number' && thisProp <= 0) {
-    return new Error(`${propName} must be a positive number`);
-  }
-
-  if (!props.pageCount && (!props.totalCount || !props.itemsPerPage)) {
-    return new Error(`must define pageCount or totalCount and itemsPerPage`);
-  }
-};
-
 const propTypes = {
   pagePadding: PropTypes.number,
-  page: PropTypes.number,
-  pageCount: requirePageCountCheck,
-  totalCount: requirePageCountCheck,
-  itemsPerPage: requirePageCountCheck,
+  page: PropTypes.number.isRequired,
+  pageCount: PropTypes.number.isRequired,
   onPageChange: PropTypes.func.isRequired,
   prevBtn: buttonTypeProps,
   nextBtn: buttonTypeProps,
@@ -53,22 +40,13 @@ const defaultProps = {
   size: 'sm',
 };
 
-class Pages extends Component {
-  get pageCount() {
-    let output = this.props.pageCount;
-    if (!output && this.props.totalCount && this.props.itemsPerPage > 0) {
-      output = Math.ceil(this.props.totalCount / this.props.itemsPerPage);
-    }
-    return output;
-  }
-
+class PaginationControl extends Component {
   isFirstPage() {
     return this.props.page <= 1;
   }
 
   isLastPage() {
-    const lastPage = this.pageCount;
-    return lastPage ? this.props.page >= lastPage : false;
+    return this.props.page >= this.props.pageCount;
   }
 
   firstPage = () => {
@@ -77,18 +55,22 @@ class Pages extends Component {
 
   nextPage = () => {
     let nextPage = this.props.page + 1;
-    if (nextPage > this.pageCount) {
-      nextPage = this.pageCount;
+    if (nextPage > this.props.pageCount) {
+      nextPage = this.props.pageCount;
     }
     this.props.onPageChange(nextPage);
   };
 
   prevPage = () => {
-    this.props.onPageChange(this.props.page > 1 ? this.props.page - 1 : 1);
+    let prevPage = this.props.page - 1;
+    if (prevPage < 1) {
+      prevPage = 1;
+    }
+    this.props.onPageChange(prevPage);
   };
 
   lastPage = () => {
-    this.props.onPageChange(this.pageCount);
+    this.props.onPageChange(this.props.pageCount);
   };
 
   getStartButtons() {
@@ -143,7 +125,7 @@ class Pages extends Component {
       return;
     }
 
-    const lastPage = this.pageCount;
+    const lastPage = this.props.pageCount;
     // start min/max values are page +- padding
     let minPage = page - pagePadding;
     let maxPage = page + pagePadding;
@@ -249,7 +231,7 @@ class Pages extends Component {
   }
 }
 
-Pages.propTypes = propTypes;
-Pages.defaultProps = defaultProps;
+PaginationControl.propTypes = propTypes;
+PaginationControl.defaultProps = defaultProps;
 
-export default Pages;
+export default PaginationControl;

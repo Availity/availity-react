@@ -18,7 +18,7 @@ const propTypes = {
   onCountChange: PropTypes.func,
 };
 
-const Selector = ({
+const PaginationSelector = ({
   itemsPerPage,
   perPageOptions,
   page,
@@ -115,6 +115,6 @@ const Selector = ({
   return null;
 };
 
-Selector.propTypes = propTypes;
+PaginationSelector.propTypes = propTypes;
 
-export default Selector;
+export default PaginationSelector;

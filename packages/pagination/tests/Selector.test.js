@@ -3,7 +3,7 @@ import { render, cleanup, fireEvent } from 'react-testing-library';
 
 import 'jest-dom/extend-expect';
 
-import Selector from '../PaginationControls/Selector';
+import Selector from '../PaginationSelector';
 
 describe('Selector', () => {
   afterEach(cleanup);

@@ -1,6 +1,7 @@
 import Pagination from './Pagination';
 
-export * from './PaginationControls';
 export AvResourcePagination from './AvResourcePagination';
+export PaginationControl from './PaginationControl';
+export PaginationSelector from './PaginationSelector';
 
 export default Pagination;

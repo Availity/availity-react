@@ -1,1 +1,0 @@
-export PaginationControls from './Component';
