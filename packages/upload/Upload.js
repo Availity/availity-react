@@ -35,6 +35,7 @@ class Upload extends Component {
   input = createRef();
 
   files = [];
+
   error = null;
 
   state = {
