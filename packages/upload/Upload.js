@@ -1,8 +1,12 @@
 import React, { Component, createRef, Fragment } from 'react';
 import PropTypes from 'prop-types';
 import UploadCore from '@availity/upload-core';
+import { FormFeedback } from 'reactstrap';
+import Dropzone from 'react-dropzone';
+import map from 'lodash.map';
 import FilePickerBtn from './FilePickerBtn';
 import FileList from './FileList';
+import './styles.scss';
 
 const validationAttrs = ['min', 'max', 'required'];
 
@@ -20,21 +24,25 @@ class Upload extends Component {
     multiple: PropTypes.bool,
     children: PropTypes.func,
     name: PropTypes.string,
+    showFileDrop: PropTypes.bool,
   };
 
   static defaultProps = {
     multiple: true,
+    showFileDrop: false,
   };
 
   input = createRef();
 
   files = [];
+  error = null;
 
   state = {
     files: [],
   };
 
   removeFile = fileId => {
+    this.error = null;
     this.setState(({ files }) => {
       const newFiles = files.filter(file => file.id !== fileId);
       if (newFiles.length !== files.length) {
@@ -48,11 +56,10 @@ class Upload extends Component {
     });
   };
 
-  handleFileInputChange = event => {
-    const { files: selectedFilesList } = event.target;
+  setFiles = files => {
     let selectedFiles = [];
-    for (let i = 0; i < selectedFilesList.length; i++) {
-      selectedFiles[i] = selectedFilesList[i];
+    for (let i = 0; i < files.length; i++) {
+      selectedFiles[i] = files[i];
     }
     if (
       this.props.max &&
@@ -77,12 +84,27 @@ class Upload extends Component {
         return upload;
       })
     );
+    this.error = null;
     this.setState({ files: this.files });
+  };
+
+  handleFileInputChange = event => {
+    this.setFiles(event.target.selectedFiles);
+  };
+
+  onDrop = (acceptedFiles, rejectedFiles) => {
+    if (rejectedFiles && rejectedFiles.length > 0) {
+      const fileNames = map(rejectedFiles, 'name');
+      this.error = `Could not attach ${fileNames.slice().join(', ')}`;
+    }
+
+    this.setFiles(acceptedFiles);
   };
 
   reset = () => {
     this.files = [];
     this.setState({ files: [] });
+    this.error = null;
   };
 
   componentDidMount() {
@@ -134,14 +156,41 @@ class Upload extends Component {
       allowedFileTypes,
       maxSize,
       children,
+      showFileDrop,
     } = this.props;
     const { files } = this.state;
-    return (
+
+    let fileAddArea;
+    const text = btnText || (
       <Fragment>
-        <FileList files={files} onRemoveFile={this.removeFile}>
-          {children}
-        </FileList>
-        {(!max || files.length < max) && (
+        <i className="icon icon-plus-circle" title="Add File Icon" />
+        {files.length === 0 ? 'Add File' : 'Add Another File Attachment'}
+      </Fragment>
+    );
+
+    if (!max || files.length < max) {
+      if (showFileDrop) {
+        fileAddArea = (
+          <div>
+            <Dropzone
+              onDrop={this.onDrop}
+              multiple={multiple}
+              maxSize={maxSize}
+              className="file-drop"
+              activeClassName="file-drop-active"
+            >
+              <div>
+                <strong>Drag and Drop</strong>
+              </div>
+              {text}
+            </Dropzone>
+            <FormFeedback valid={!this.error} className="d-block">
+              {this.error}
+            </FormFeedback>
+          </div>
+        );
+      } else {
+        fileAddArea = (
           <FilePickerBtn
             onChange={this.handleFileInputChange}
             color={files.length === 0 ? 'light' : 'link'}
@@ -149,16 +198,18 @@ class Upload extends Component {
             allowedFileTypes={allowedFileTypes}
             maxSize={maxSize}
           >
-            {btnText || (
-              <Fragment>
-                <i className="icon icon-plus-circle" title="Add File Icon" />
-                {files.length === 0
-                  ? 'Add File'
-                  : 'Add Another File Attachment'}
-              </Fragment>
-            )}
+            {text}
           </FilePickerBtn>
-        )}
+        );
+      }
+    }
+
+    return (
+      <Fragment>
+        <FileList files={files} onRemoveFile={this.removeFile}>
+          {children}
+        </FileList>
+        {fileAddArea}
       </Fragment>
     );
   }
