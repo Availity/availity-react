@@ -94,7 +94,10 @@
       "raf/polyfill"
     ],
     "testEnvironment": "jest-environment-jsdom-global",
-    "setupTestFrameworkScriptFile": "<rootDir>/jest.setup.js"
+    "setupTestFrameworkScriptFile": "<rootDir>/jest.setup.js",
+    "moduleNameMapper": {
+      ".scss$": "babel-jest"
+    }
   },
   "babel": {
     "env": {
