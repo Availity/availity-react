@@ -36,6 +36,7 @@ The default export is an all-in-one solution which handles uploads, encrypted fi
 - **`maxSize`**: Number. Optional. The maximum file size (in bytes) for a file to be uploaded.
 - **`max`**: Number. Optional. The maximum number of files allowed to be uploaded. `0` (or a falsey value) means unlimited. When the max number has been reached the add button will disappear. Default: unlimited.
 - **`multiple`**: Boolean. Optional. Indicates that the user will be allowed to select multiple files when selecting files from the OS prompt. Default: `true`
+- **`showFileDrop`**: Boolean. Optional. Set as true to show a drag and drop file upload option instead of a button (file explorer still available on click). Default: `false`.
 
 ##### Upload Usage
 
