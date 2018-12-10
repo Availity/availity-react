@@ -25,11 +25,11 @@
   "devDependencies": {
     "@availity/api-axios": "^2.0.0",
     "@availity/api-core": "^2.0.0",
-    "@availity/breadcrumbs-spaces-react": "^1.5.2",
+    "@availity/breadcrumbs-spaces-react": "^1.6.0",
     "@availity/localstorage-core": "^1.4.0",
     "@availity/reactstrap-validation-date": "^1.6.0",
     "@availity/reactstrap-validation-select": "^1.6.0",
-    "@availity/upload": "^1.5.2",
+    "@availity/upload": "^1.6.0",
     "@availity/upload-core": "^2.0.0",
     "@storybook/addon-a11y": "^3.4.3",
     "@storybook/addon-actions": "^3.4.3",
