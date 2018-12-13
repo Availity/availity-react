@@ -90,7 +90,7 @@ class Upload extends Component {
   };
 
   handleFileInputChange = event => {
-    this.setFiles(event.target.selectedFiles);
+    this.setFiles(event.target.files);
   };
 
   onDrop = (acceptedFiles, rejectedFiles) => {
