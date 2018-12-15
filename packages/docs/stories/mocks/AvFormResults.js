@@ -21,9 +21,9 @@ class AvFormResult extends Component {
           <div>
             <p>Results (submitted {this.state.submitted}):</p>
             <p>Errors: {this.state.errors}</p>
-            <p>
+            <div>
               Values: <pre>{this.state.values}</pre>
-            </p>
+            </div>
           </div>
         )}
       </React.Fragment>
