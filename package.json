@@ -13,7 +13,6 @@
     "lerna": "lerna",
     "link": "lerna link",
     "clean": "lerna clean",
-    "precommit": "lint-staged",
     "test": "jest",
     "postinstall": "npm run bootstrap",
     "start": "npm start --prefix packages/docs",
@@ -21,7 +20,6 @@
     "release": "sh ./scripts/release.sh",
     "deploy-docs": "npm run deploy-docs --prefix packages/docs",
     "updated": "lerna updated",
-    "commitmsg": "commitlint -e $GIT_PARAMS",
     "remove-locks": "find . -type f -name 'package-lock.json' -delete",
     "check": "npm-check -u && lerna exec --bail false --concurrency 1 -- npm-check -u"
   },
@@ -109,7 +107,10 @@
       "raf/polyfill"
     ],
     "testEnvironment": "jest-environment-jsdom-global",
-    "setupTestFrameworkScriptFile": "<rootDir>/jest.setup.js"
+    "setupTestFrameworkScriptFile": "<rootDir>/jest.setup.js",
+    "moduleNameMapper": {
+      ".scss$": "babel-jest"
+    }
   },
   "babel": {
     "env": {
@@ -170,12 +171,18 @@
     "url": "https://github.com/Availity/availity-react/issues"
   },
   "homepage": "https://github.com/Availity/availity-react#readme",
-  "version": "1.5.2",
+  "version": "1.6.0",
   "main": "index.js",
   "keywords": [
     "availity",
     "react",
     "ui"
   ],
-  "author": "Robert McGuinness <rob.mcguinness@availity.com>"
+  "author": "Robert McGuinness <rob.mcguinness@availity.com>",
+  "husky": {
+    "hooks": {
+      "commit-msg": "commitlint -e $HUSKY_GIT_PARAMS",
+      "pre-commit": "lint-staged"
+    }
+  }
 }

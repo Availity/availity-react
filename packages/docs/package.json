@@ -31,7 +31,7 @@
     "@availity/localstorage-core": "^2.5.0",
     "@availity/reactstrap-validation-date": "^1.6.0",
     "@availity/reactstrap-validation-select": "^1.6.0",
-    "@availity/upload": "^1.5.2",
+    "@availity/upload": "^1.6.0",
     "@availity/upload-core": "^2.0.0",
     "@babel/core": "^7.1.6",
     "@storybook/addon-a11y": "^4.0.9",
