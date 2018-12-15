@@ -3,7 +3,7 @@ import { storiesOf } from '@storybook/react';
 import { withReadme } from 'storybook-readme';
 import { Label, Button } from 'reactstrap';
 import { AvGroup, AvFeedback } from 'availity-reactstrap-validation';
-import { withKnobs, number, text, boolean } from '@storybook/addon-knobs/react';
+import { withKnobs, number, text, boolean } from '@storybook/addon-knobs';
 import AvApi from '@availity/api-axios';
 import providersMock from './mocks/providers';
 import OrganizationsMock from './mocks/organizations';
@@ -35,7 +35,6 @@ const avCustomResource = new AvApi({ name: 'my-custom-resource' });
 
 storiesOf('AvSelect', module)
   .addDecorator(withReadme([README]))
-  .addDecorator(withKnobs)
   .add('default', () => {
     const isMulti = boolean('Multiple', false);
     const min = (isMulti && number('Min Selection', 2)) || undefined;

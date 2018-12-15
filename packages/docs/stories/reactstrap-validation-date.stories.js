@@ -3,12 +3,7 @@ import { storiesOf } from '@storybook/react';
 import { withReadme } from 'storybook-readme';
 import { Label, Button } from 'reactstrap';
 import { AvGroup, AvFeedback } from 'availity-reactstrap-validation';
-import {
-  withKnobs,
-  text,
-  boolean,
-  selectV2,
-} from '@storybook/addon-knobs/react';
+import { text, boolean, select } from '@storybook/addon-knobs';
 import AvFormResults from './mocks/AvFormResults';
 
 import AvDate, {
@@ -24,13 +19,12 @@ const types = {
 };
 storiesOf('AvDate', module)
   .addDecorator(withReadme([README]))
-  .addDecorator(withKnobs)
   .add('default', () => (
     <AvFormResults>
       <AvDate
         min={text('Min Date (yyyy-mm-dd)')}
         max={text('Max Date (yyyy-mm-dd)')}
-        type={selectV2('Type', types, 'text')}
+        type={select('Type', types, 'text')}
         name="standAlone"
         aria-label="stand-alone"
         required={boolean('Required', false)}
@@ -49,7 +43,7 @@ storiesOf('AvDate', module)
         <AvDate
           min={text('Min Date (yyyy-mm-dd)')}
           max={text('Max Date (yyyy-mm-dd)')}
-          type={selectV2('Type', types, 'text')}
+          type={select('Type', types, 'text')}
           name="standAlone"
           aria-label="stand-alone"
           required={boolean('Required', false)}
@@ -71,7 +65,7 @@ storiesOf('AvDate', module)
           label={text('Label', 'Field Label')}
           min={text('Min Date (yyyy-mm-dd)')}
           max={text('Max Date (yyyy-mm-dd)')}
-          type={selectV2('Type', types, 'text')}
+          type={select('Type', types, 'text')}
           name="AvDateField"
           required={boolean('Required', false)}
           disabled={boolean('Disabled', false)}
@@ -96,7 +90,7 @@ storiesOf('AvDate', module)
       <AvFormResults>
         <AvDateRange
           name="AvDateRange"
-          type={selectV2('Type', types, 'text')}
+          type={select('Type', types, 'text')}
           start={{ name: 'date.start' }}
           end={{ name: 'date.end' }}
           min={text('Min Date (yyyy-mm-dd)')}
@@ -124,7 +118,7 @@ storiesOf('AvDate', module)
         <AvDateRangeField
           label={text('Label', 'Date Range')}
           name="AvDateRange"
-          type={selectV2('Type', types, 'text')}
+          type={select('Type', types, 'text')}
           start={{ name: 'date.start', required }}
           end={{ name: 'date.end', required }}
           min={text('Min Date (yyyy-mm-dd)')}

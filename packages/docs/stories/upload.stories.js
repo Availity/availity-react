@@ -1,13 +1,7 @@
 import React, { Component, createRef } from 'react';
 import { storiesOf } from '@storybook/react';
 import { withReadme } from 'storybook-readme';
-import {
-  withKnobs,
-  button,
-  boolean,
-  number,
-  array,
-} from '@storybook/addon-knobs/react';
+import { button, boolean, number, array } from '@storybook/addon-knobs';
 import mock, { proxy } from 'xhr-mock';
 import { Button, CustomInput } from 'reactstrap';
 import { AvForm, AvField, AvGroup } from 'availity-reactstrap-validation';
@@ -19,6 +13,7 @@ import Upload, {
   FilePicker,
   FilePickerBtn,
 } from '@availity/upload';
+
 import README from '@availity/upload/README.md';
 import MockUpload from '@availity/upload/tests/mockUpload';
 
@@ -145,7 +140,6 @@ let instance;
 
 storiesOf('Upload', module)
   .addDecorator(withReadme([README]))
-  .addDecorator(withKnobs)
   .addDecorator(story => {
     instance = new MockUpload();
     return story();
