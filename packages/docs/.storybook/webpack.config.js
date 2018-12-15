@@ -33,7 +33,14 @@ module.exports = (storybookBaseConfig, env, defaultConfig) => {
 
   defaultConfig.module.rules.push({
     test: /\.md$/,
-    loader: ['markdown-loader'],
+    use: [
+      {
+        loader: 'html-loader',
+      },
+      {
+        loader: 'markdown-loader',
+      },
+    ],
     enforce: 'pre',
   });
 
