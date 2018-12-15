@@ -5,7 +5,6 @@ import { checkA11y } from '@storybook/addon-a11y';
 
 import { AvBreadcrumbsSpaces } from '@availity/breadcrumbs-spaces-react';
 import README from '@availity/breadcrumbs-spaces-react/README.md';
-debugger;
 
 storiesOf('AvBreadcrumbsSpaces', module)
   .addDecorator(withReadme([README]))
