@@ -3,12 +3,8 @@ import { storiesOf } from '@storybook/react';
 import { withReadme } from 'storybook-readme';
 import { Label, Button } from 'reactstrap';
 import { AvGroup, AvFeedback } from 'availity-reactstrap-validation';
-import { withKnobs, number, text, boolean } from '@storybook/addon-knobs';
+import { number, text, boolean } from '@storybook/addon-knobs';
 import AvApi from '@availity/api-axios';
-import providersMock from './mocks/providers';
-import OrganizationsMock from './mocks/organizations';
-import RegionsMock from './mocks/regions';
-import AvFormResults from './mocks/AvFormResults';
 
 import AvSelect, {
   AvSelectField,
@@ -22,6 +18,13 @@ import AvSelectResource, {
   AvUserSelect,
 } from '@availity/reactstrap-validation-select/resources';
 import README from '@availity/reactstrap-validation-select/README.md';
+
+import './mocks/providers';
+import './mocks/organizations';
+import './mocks/regions';
+
+import AvFormResults from './mocks/AvFormResults';
+
 // import '@av/reactstrap-validation-select/styles.scss';
 
 const options = [

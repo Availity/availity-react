@@ -2,7 +2,7 @@ import React, { Component, createRef } from 'react';
 import { storiesOf } from '@storybook/react';
 import { withReadme } from 'storybook-readme';
 import { button, boolean, number, array } from '@storybook/addon-knobs';
-import mock, { proxy } from 'xhr-mock';
+import mock from 'xhr-mock';
 import { Button, CustomInput } from 'reactstrap';
 import { AvForm, AvField, AvGroup } from 'availity-reactstrap-validation';
 import UploadCore from '@availity/upload-core';
@@ -81,8 +81,6 @@ class PreUpload extends Component {
   }
 }
 
-mock.setup();
-
 mock.post(
   /\/ms\/api\/availity\/internal\/core\/vault\/upload\/v1\/resumable\/[^/]\//,
   (req, res) =>
@@ -134,7 +132,7 @@ mock.use(
       .body('')
 );
 
-mock.use(proxy);
+// mock.use(proxy);
 
 let instance;
 

@@ -4,14 +4,13 @@ import { withReadme } from 'storybook-readme';
 import { Label, Button } from 'reactstrap';
 import { AvGroup, AvFeedback } from 'availity-reactstrap-validation';
 import { text, boolean, select } from '@storybook/addon-knobs';
-import AvFormResults from './mocks/AvFormResults';
-
 import AvDate, {
   AvDateField,
   AvDateRange,
   AvDateRangeField,
 } from '@availity/reactstrap-validation-date';
 import README from '@availity/reactstrap-validation-date/README.md';
+import AvFormResults from './mocks/AvFormResults';
 
 const types = {
   text: 'text',

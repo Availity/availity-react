@@ -2,8 +2,10 @@ import { configure, addDecorator } from '@storybook/react';
 import { withOptions } from '@storybook/addon-options';
 import { checkA11y } from '@storybook/addon-a11y';
 import { withKnobs } from '@storybook/addon-knobs';
-
+import mock from 'xhr-mock';
 import './config.scss';
+
+mock.setup();
 
 addDecorator(
   withOptions({
