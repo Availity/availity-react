@@ -19,7 +19,7 @@ describe('Upload', () => {
     const instance = component.instance();
     const file = new Buffer.from('hello world'.split('')); // eslint-disable-line new-cap
     file.name = 'fileName.png';
-    const fileEvent = { target: { selectedFiles: [file] } };
+    const fileEvent = { target: { files: [file] } };
     instance.handleFileInputChange(fileEvent);
 
     expect(instance.files.length).toBe(1);
@@ -32,7 +32,7 @@ describe('Upload', () => {
     const instance = component.instance();
     const file = new Buffer.from('hello world'.split('')); // eslint-disable-line new-cap
     file.name = 'fileName.png';
-    const fileEvent = { target: { selectedFiles: [file] } };
+    const fileEvent = { target: { files: [file] } };
     instance.handleFileInputChange(fileEvent);
 
     expect(instance.files.length).toBe(1);
@@ -54,7 +54,7 @@ describe('Upload', () => {
     const instance = component.instance();
     const file = new Buffer.from('hello world'.split('')); // eslint-disable-line new-cap
     file.name = 'fileName.png';
-    const fileEvent = { target: { selectedFiles: [file] } };
+    const fileEvent = { target: { files: [file] } };
     instance.handleFileInputChange(fileEvent);
 
     expect(instance.files.length).toBe(1);
