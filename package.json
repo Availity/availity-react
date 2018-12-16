@@ -19,7 +19,7 @@
     "build:docs": "npm run build --prefix packages/docs",
     "release": "sh ./scripts/release.sh",
     "add": "sh ./scripts/add.sh",
-    "deploy-docs": "npm run deploy-docs --prefix packages/docs",
+    "deploy:docs": "npm run deploy-docs --prefix packages/docs",
     "updated": "lerna updated",
     "remove-locks": "find . -type f -name 'package-lock.json' -delete",
     "check": "npm-check -u && lerna exec --bail false --concurrency 1 -- npm-check -u"
