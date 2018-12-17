@@ -31,19 +31,6 @@ module.exports = (storybookBaseConfig, env, defaultConfig) => {
     enforce: 'pre',
   });
 
-  defaultConfig.module.rules.push({
-    test: /\.md$/,
-    use: [
-      {
-        loader: 'html-loader',
-      },
-      {
-        loader: 'markdown-loader',
-      },
-    ],
-    enforce: 'pre',
-  });
-
   defaultConfig.resolve.extensions = ['.js', '.jsx', '.scss', '.css'];
   defaultConfig.resolve.alias['axios'] = path.resolve(
     path.join(__dirname, '../node_modules', 'axios')
