@@ -17,7 +17,8 @@ addDecorator(
     showSearchBox: false,
     addonPanelInRight: true,
     selectedAddonPanel: undefined,
-    sortStoriesByKind: true,
+    hierarchySeparator: /\//,
+    hierarchyRootSeparator: /\|/,
   })
 );
 

@@ -136,7 +136,7 @@ mock.use(
 
 let instance;
 
-storiesOf('Upload', module)
+storiesOf('Components|Upload', module)
   .addDecorator(withReadme([README]))
   .addDecorator(story => {
     instance = new MockUpload();

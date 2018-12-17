@@ -16,7 +16,7 @@ const types = {
   text: 'text',
   date: 'date',
 };
-storiesOf('AvDate', module)
+storiesOf('Reactstrap Validation|AvDate', module)
   .addDecorator(withReadme([README]))
   .add('default', () => (
     <AvFormResults>
@@ -35,7 +35,7 @@ storiesOf('AvDate', module)
       </Button>
     </AvFormResults>
   ))
-  .add('default (with own label)', () => (
+  .add('with label', () => (
     <AvFormResults>
       <AvGroup>
         <Label for="standAloneWithLabel">{text('Label', 'AvDate Label')}</Label>
