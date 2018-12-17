@@ -1,26 +1,33 @@
-import 'regenerator-runtime/runtime';
 import { configure, addDecorator } from '@storybook/react';
-import { setOptions } from '@storybook/addon-options';
+import { withOptions } from '@storybook/addon-options';
 import { checkA11y } from '@storybook/addon-a11y';
+import { withKnobs } from '@storybook/addon-knobs';
+import mock from 'xhr-mock';
 import './config.scss';
 
-setOptions({
-  name: 'availity-react',
-  url: 'https://github.com/availity/availity-react',
-  goFullScreen: false,
-  showStoriesPanel: true,
-  showAddonPanel: true,
-  showSearchBox: false,
-  addonPanelInRight: true,
-  hierarchySeparator: /\//,
-  hierarchyRootSeparator: /\|/,
-});
+mock.setup();
 
-addDecorator(checkA11y);
+addDecorator(
+  withOptions({
+    name: 'availity-react',
+    url: 'https://github.com/availity/availity-react',
+    goFullScreen: false,
+    showStoriesPanel: true,
+    showAddonPanel: true,
+    showSearchBox: false,
+    addonPanelInRight: true,
+    selectedAddonPanel: undefined,
+    hierarchySeparator: /\//,
+    hierarchyRootSeparator: /\|/,
+  })
+);
 
-// automatically import all story js files that end with *.stories.js
-const req = require.context('../stories/', true, /\.stories\.js$/);
+// automatically import all files ending in *.stories.js
+const req = require.context('../stories', true, /.stories.js$/);
 function loadStories() {
   req.keys().forEach(filename => req(filename));
 }
+addDecorator(checkA11y);
+addDecorator(withKnobs);
+
 configure(loadStories, module);

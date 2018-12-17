@@ -30,9 +30,9 @@
     "react": "^16.0.0"
   },
   "devDependencies": {
-    "@availity/api-axios": "^2.0.0",
-    "@availity/api-core": "^2.0.0",
-    "@availity/localstorage-core": "^1.0.0",
+    "@availity/api-axios": "^3.0.1",
+    "@availity/api-core": "^3.0.0",
+    "@availity/localstorage-core": "^2.5.0",
     "availity-uikit": "^3.0.0-beta.23",
     "axios": "^0.18.0",
     "react": "^16.0.0"
