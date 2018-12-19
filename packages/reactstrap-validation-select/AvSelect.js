@@ -33,6 +33,7 @@ class AvSelect extends AvBaseInput {
   static contextTypes = {
     FormCtrl: PropTypes.object,
   };
+
   static propTypes = Object.assign({}, AvBaseInput.propTypes, {
     options: PropTypes.array,
     loadOptions: PropTypes.func,

@@ -1,7 +1,7 @@
 import React from 'react';
 import renderer from 'react-test-renderer';
 import MockUpload from './mockUpload';
-import { UploadProgressBar } from '../';
+import { UploadProgressBar } from '..';
 
 const instance = new MockUpload();
 

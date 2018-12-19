@@ -12,13 +12,14 @@ class FilePicker extends Component {
 
   onChange = event => {
     const { files } = event.target;
+    const { onChange } = this.props;
     this.value = [];
     for (let i = 0; i < files.length; i++) {
       this.value[i] = files[i];
     }
     this.setState({ value: this.value });
     this.validate();
-    if (this.props.onChange) this.props.onChange(event);
+    if (onChange) onChange(event);
   };
 
   reset = () => {

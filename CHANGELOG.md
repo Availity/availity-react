@@ -1,3 +1,23 @@
+<a name="1.6.0"></a>
+# [1.6.0](https://github.com/Availity/availity-react/compare/v1.5.2...v1.6.0) (2018-12-10)
+
+
+### Bug Fixes
+
+* **reactstrap-validation-date:** fix proptype for range ([3b5eb7c](https://github.com/Availity/availity-react/commit/3b5eb7c)), closes [#26](https://github.com/Availity/availity-react/issues/26)
+* **reactstrap-validation-select:** allow defaultOptions to be overridden ([814f221](https://github.com/Availity/availity-react/commit/814f221))
+* **upload:** fix lint ([4fe8cd0](https://github.com/Availity/availity-react/commit/4fe8cd0))
+* **upload:** fix package.json for build ([9e26285](https://github.com/Availity/availity-react/commit/9e26285))
+* **upload:** fix package.json for build ([2710030](https://github.com/Availity/availity-react/commit/2710030))
+
+
+### Features
+
+* **reactstrap-validation-date:** allow for refs ([bdb8b85](https://github.com/Availity/availity-react/commit/bdb8b85))
+* **upload:** add drag and drop for uploads ([a45ad71](https://github.com/Availity/availity-react/commit/a45ad71))
+
+
+
 <a name="1.5.2"></a>
 ## [1.5.2](https://github.com/Availity/availity-react/compare/v1.5.1...v1.5.2) (2018-09-06)
 

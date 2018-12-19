@@ -13,7 +13,7 @@ npm install @availity/upload --save
 ```javascript
 import React from 'react';
 import Upload from '@availity/upload';
-// ... 
+// ...
 <Upload
   clientId="a"
   bucketId="b"
@@ -36,13 +36,14 @@ The default export is an all-in-one solution which handles uploads, encrypted fi
 - **`maxSize`**: Number. Optional. The maximum file size (in bytes) for a file to be uploaded.
 - **`max`**: Number. Optional. The maximum number of files allowed to be uploaded. `0` (or a falsey value) means unlimited. When the max number has been reached the add button will disappear. Default: unlimited.
 - **`multiple`**: Boolean. Optional. Indicates that the user will be allowed to select multiple files when selecting files from the OS prompt. Default: `true`
+- **`showFileDrop`**: Boolean. Optional. Set as true to show a drag and drop file upload option instead of a button (file explorer still available on click). Default: `false`.
 
 ##### Upload Usage
 
 ```javascript
 import React from 'react';
 import Upload from '@availity/upload';
-// ... 
+// ...
 <Upload
   btnText="Upload a claim"
   clientId="a"
@@ -53,6 +54,34 @@ import Upload from '@availity/upload';
 />
 // ...
 ```
+
+##### Callback function Usage
+
+```javascript
+// ...
+<Upload
+  btnText="Upload a claim"
+  clientId="a"
+  bucketId="b"
+  customerId="c"
+  onFileUpload={onUpload} // <-- callback function
+  max={1}
+/>
+
+// onUpload callback definition
+onUpload(upload) {
+    if (upload) {
+      upload.onSuccess.push(async () => {
+        // success action
+      });
+      upload.onError.push(() => {
+        // error action
+      });
+    }
+  }
+// ...
+```
+
 
 #### UploadProgressBar
 The raw progress bar to be used when making your own.
@@ -71,7 +100,7 @@ The raw progress bar to be used when making your own.
 ```javascript
 import React from 'react';
 import { UploadProgressBar } from '@availity/upload';
-// ... 
+// ...
 <UploadProgressBar
   upload={uploadInstance}
   animated
@@ -100,7 +129,7 @@ handleFileSelection = event => {
   const { files } = event.target;
   // do something with the files.
 }
-// ... 
+// ...
 <FilePickerBtn
   onChange={this.handleFileSelection}
 />
@@ -130,7 +159,7 @@ handleFileSelection = event => {
   const { files } = event.target;
   // do something with the files.
 }
-// ... 
+// ...
 <FilePicker
   tag={CustomInput}
   onChange={this.handleFileSelection}

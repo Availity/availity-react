@@ -1,6 +1,6 @@
 import React from 'react';
 import renderer from 'react-test-renderer';
-import { FilePickerBtn } from '../';
+import { FilePickerBtn } from '..';
 
 describe('Upload', () => {
   test('should render', () => {

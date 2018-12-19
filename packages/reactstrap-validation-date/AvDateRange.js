@@ -163,7 +163,7 @@ export default class AvDateRange extends Component {
   };
 
   togglePicker = () => {
-    this.setState({ open: !this.state.open });
+    this.setState(prevState => ({ open: !prevState.open }));
   };
 
   onStartFieldChange = event => {
@@ -191,7 +191,7 @@ export default class AvDateRange extends Component {
   };
 
   toggle = () => {
-    this.setState({ open: !this.state.open });
+    this.setState(prevState => ({ open: !prevState.open }));
   };
 
   open = () => {
@@ -304,16 +304,26 @@ export default class AvDateRange extends Component {
     if (!this.context.FormCtrl.isTouched(this.props.end.name)) {
       this.context.FormCtrl.setTouched(this.props.end.name);
     }
-    const startValue = range.startDate.format(this.state.format);
-    const endValue = range.endDate.format(this.state.format);
-    this.setState({ startValue, endValue, open: false }, () => {
-      if (this.props.onChange) {
-        this.props.onChange(range, { start: startValue, end: endValue });
+    const startValue = range.startDate.format(this.state.format); // eslint-disable-line
+    const endValue = range.endDate.format(this.state.format); // eslint-disable-line
+    this.setState(
+      {
+        startValue,
+        endValue,
+        open: false,
+      },
+      () => {
+        if (this.props.onChange) {
+          this.props.onChange(range, {
+            start: startValue,
+            end: endValue,
+          });
+        }
+        this.checkDistanceValidation(endValue, {
+          [this.props.start.name]: startValue,
+        });
       }
-      this.checkDistanceValidation(endValue, {
-        [this.props.start.name]: startValue,
-      });
-    });
+    );
   };
 
   render() {

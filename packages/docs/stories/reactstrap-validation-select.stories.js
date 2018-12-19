@@ -3,12 +3,8 @@ import { storiesOf } from '@storybook/react';
 import { withReadme } from 'storybook-readme';
 import { Label, Button } from 'reactstrap';
 import { AvGroup, AvFeedback } from 'availity-reactstrap-validation';
-import { withKnobs, number, text, boolean } from '@storybook/addon-knobs/react';
+import { number, text, boolean } from '@storybook/addon-knobs';
 import AvApi from '@availity/api-axios';
-import providersMock from './mocks/providers';
-import OrganizationsMock from './mocks/organizations';
-import RegionsMock from './mocks/regions';
-import AvFormResults from './mocks/AvFormResults';
 
 import AvSelect, {
   AvSelectField,
@@ -22,6 +18,13 @@ import AvSelectResource, {
   AvUserSelect,
 } from '@availity/reactstrap-validation-select/resources';
 import README from '@availity/reactstrap-validation-select/README.md';
+
+import './mocks/providers';
+import './mocks/organizations';
+import './mocks/regions';
+
+import AvFormResults from './mocks/AvFormResults';
+
 // import '@av/reactstrap-validation-select/styles.scss';
 
 const options = [
@@ -33,9 +36,8 @@ const options = [
 
 const avCustomResource = new AvApi({ name: 'my-custom-resource' });
 
-storiesOf('reactstrap Validation|AvSelect', module)
+storiesOf('Reactstrap Validation|AvSelect', module)
   .addDecorator(withReadme([README]))
-  .addDecorator(withKnobs)
   .add('default', () => {
     const isMulti = boolean('Multiple', false);
     const min = (isMulti && number('Min Selection', 2)) || undefined;
@@ -59,7 +61,7 @@ storiesOf('reactstrap Validation|AvSelect', module)
       </AvFormResults>
     );
   })
-  .add('default (with label)', () => {
+  .add('with label', () => {
     const isMulti = boolean('Multiple', false);
     const min = (isMulti && number('Min Selection', 2)) || undefined;
     const max = (isMulti && number('Max Selection', 3)) || undefined;
@@ -149,9 +151,9 @@ storiesOf('reactstrap Validation|AvSelect', module)
       </AvFormResults>
     );
   });
-storiesOf('reactstrap Validation|AvSelect/resources', module)
+
+storiesOf('Reactstrap Validation|AvSelect/resources', module)
   .addDecorator(withReadme([README]))
-  .addDecorator(withKnobs)
   .add('AvProviderSelect', () => {
     const isMulti = boolean('Multiple', false);
     const min = (isMulti && number('Min Selection', 2)) || undefined;

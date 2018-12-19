@@ -1,0 +1,16 @@
+.file-drop {
+  color: #464a4c;
+  text-align: center;
+  border: 1px dashed rgba(0, 0, 0, .15);
+  width: 8rem;
+  min-width: fit-content;
+  height: 8rem;
+  padding: 3rem 0;
+}
+
+.file-drop-active {
+  border: 1px solid #3960ed;
+  border-width: 2px;
+  background-color: #ebebeb;
+  border-radius: 5px;
+}

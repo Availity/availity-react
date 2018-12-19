@@ -1,7 +1,7 @@
 import { shallow } from 'enzyme';
 import React from 'react';
 import renderer from 'react-test-renderer';
-import Upload from '../';
+import Upload from '..';
 
 describe('Upload', () => {
   test('should render', () => {
@@ -60,5 +60,24 @@ describe('Upload', () => {
     expect(instance.files.length).toBe(1);
     instance.removeFile(instance.files[0].id);
     expect(mockFunc.mock.calls.length).toBe(1);
+  });
+
+  test('adds file via dropzone', () => {
+    const component = shallow(
+      <Upload clientId="a" bucketId="b" customerId="c" showFileDrop />
+    );
+    const instance = component.instance();
+    const file = new Buffer.from('hello world'.split('')); // eslint-disable-line new-cap
+    file.name = 'fileName.png';
+    instance.onDrop([file]);
+
+    expect(instance.files.length).toBe(1);
+    instance.removeFile(instance.files[0].id);
+
+    expect(instance.files.length).toBe(0);
+
+    instance.onDrop([], [file]);
+
+    expect(instance.files.length).toBe(0);
   });
 });
