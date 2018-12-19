@@ -1,22 +1,15 @@
 import React from 'react';
 import { storiesOf } from '@storybook/react';
 import { withReadme } from 'storybook-readme';
-import {
-  withKnobs,
-  text,
-  boolean,
-  number,
-  array,
-  selectV2,
-} from '@storybook/addon-knobs/react';
-import { avNotificationApi } from '@availity/api-axios';
+import { text, boolean, number, array, select } from '@storybook/addon-knobs';
 import { Card, CardBody, CardTitle, CardSubtitle, CardText } from 'reactstrap';
 
 import Pagination, {
   AvResourcePagination,
-  PaginationControls,
+  PaginationControl,
+  defaultButtonText,
 } from '@availity/pagination';
-import { defaultButtonText } from '@availity/pagination/PaginationControls/Pages';
+
 import README from '@availity/pagination/README.md';
 import paginationData from './data/pagination.json';
 
@@ -46,9 +39,8 @@ function getButtonValue(title, key) {
   return buttonText || buttonBool;
 }
 
-storiesOf('Navigation|Pagination', module)
+storiesOf('Components|Pagination', module)
   .addDecorator(withReadme([README]))
-  .addDecorator(withKnobs)
   .add('Controls', () => {
     const props = {
       firstBtn: getButtonValue('First Button', 'firstBtn'),
@@ -57,7 +49,7 @@ storiesOf('Navigation|Pagination', module)
       lastBtn: getButtonValue('Last Button', 'lastBtn'),
     };
 
-    const usePageCount = selectV2(
+    const usePageCount = select(
       'Pages Type',
       { pageCount: 'page', itemCount: 'item' },
       'page',
@@ -98,14 +90,14 @@ storiesOf('Navigation|Pagination', module)
 
     props.unstyled = boolean('Unstyled', false, 'Style');
 
-    props.size = selectV2(
+    props.size = select(
       'Size',
       { Small: 'sm', Normal: '', Large: 'lg' },
       'sm',
       'Style'
     );
 
-    props.align = selectV2(
+    props.align = select(
       'Align',
       {
         Start: 'start',
@@ -113,11 +105,11 @@ storiesOf('Navigation|Pagination', module)
         End: 'end',
         Between: 'between',
       },
-      PaginationControls.defaultProps.align,
+      PaginationControl.defaultProps.align,
       'Style'
     );
 
-    props.pageButtonsAlign = selectV2(
+    props.pageButtonsAlign = select(
       'Align Pagebuttons',
       {
         Start: 'start',
@@ -125,19 +117,19 @@ storiesOf('Navigation|Pagination', module)
         End: 'end',
         'Between (goes well with "simple")': 'between',
       },
-      PaginationControls.defaultProps.align,
+      PaginationControl.defaultProps.align,
       'Style'
     );
 
     props.simple = boolean(
       'Simple (just prev/next)',
-      PaginationControls.defaultProps.simple,
+      PaginationControl.defaultProps.simple,
       'Style'
     );
 
     props.withSelector = boolean(
       'Use Selector',
-      PaginationControls.defaultProps.withSelector,
+      PaginationControl.defaultProps.withSelector,
       'Selector'
     );
     props.optionLabel = text('Item Options Label', 'results', 'Selector');
@@ -148,7 +140,7 @@ storiesOf('Navigation|Pagination', module)
     props.onSelectionChange = (event, value) => {
       console.log(`selection changed: ${value}`);
     };
-    return <PaginationControls {...props} />;
+    return <PaginationControl {...props} />;
   })
   .add('default', () => {
     const props = {};
