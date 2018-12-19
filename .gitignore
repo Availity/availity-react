@@ -1,10 +1,6 @@
 *.log
 /dist
-/node_modules
-.tmp
-/lib
-/.vscode
-**/**/node_modules
 /docs
+node_modules
 .DS_Store
 /.history
