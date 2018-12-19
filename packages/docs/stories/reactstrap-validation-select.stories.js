@@ -25,8 +25,6 @@ import './mocks/regions';
 
 import AvFormResults from './mocks/AvFormResults';
 
-// import '@av/reactstrap-validation-select/styles.scss';
-
 const options = [
   { label: 'Option 1', value: 'value for option 1' },
   { label: 'Option 2', value: 'value for option 2' },
