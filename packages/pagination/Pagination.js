@@ -38,6 +38,7 @@ class Pagination extends Component {
     loading: false,
     items: false,
   };
+
   scrollRef = React.createRef();
 
   componentDidMount() {

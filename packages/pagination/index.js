@@ -1,7 +1,12 @@
 import Pagination from './Pagination';
-
-export AvResourcePagination from './AvResourcePagination';
-export PaginationControl from './PaginationControl';
-export PaginationSelector from './PaginationSelector';
+import AvResourcePagination from './AvResourcePagination';
+import PaginationControl, { defaultButtonText } from './PaginationControl';
+import PaginationSelector from './PaginationSelector';
 
 export default Pagination;
+export {
+  AvResourcePagination,
+  PaginationControl,
+  PaginationSelector,
+  defaultButtonText,
+};
