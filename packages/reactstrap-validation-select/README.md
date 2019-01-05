@@ -1,5 +1,5 @@
 # @availity/reactstrap-validation-select
-
+ <small>[<a href="https://github.com/Availity/availity-react/blob/master/packages/reactstrap-validation-select/README.md" target="_blank">FullScreen</a>]</small>
 > Wrapper for react-select (with async pagination) to work with availity-reactstrap-validation.
 
 ## Installation
@@ -45,19 +45,23 @@ const options = [
 
 Note: the input callbacks (e.g. onChange) do not get called with an event like other reactstrap-validation component; just the value of the field. This is because the underlying react-select does not return the event in it's callbacks.
 
-### AvSelect (Default export)
+***
+
+## AvSelect (Default export)
 
 This is the underlying select without the `AvGroup`, `Label` or `AvFeedback`
 
-#### AvSelect Props
+> Please refer to [react-select with async pagination](https://github.com/TheSharpieOne/react-select/tree/npm/v2-async-pagination)'s props and [availity-reactstrap-validation](https://github.com/Availity/availity-reactstrap-validation)'s input validation props. This component just combines those.
 
-Please refer to [react-select with async pagination](https://github.com/TheSharpieOne/react-select/tree/npm/v2-async-pagination)'s props and [availity-reactstrap-validation](https://github.com/Availity/availity-reactstrap-validation)'s input validation props. This component just combines those.
+### Props
 
-*   **`raw`**: Boolean. Optional. Default: `false`. If `true`, the entire object of the selected value will be returned as the value instead of the value for the `valueKey` within the object.
-*   **`valueKey`**: String. Optional. The key of the value you want returned when selected. Default: `value`
-*   **`labelKey`**: String. Optional. The key for the label you want to appear in the dropdrop for the user to see. Default `label`
+| Prop Name | Types | Default | Description |
+| --- | --- | --- | --- | 
+| **`raw`** | `Boolean` | `false` | If `true`, the entire object of the selected value will be returned as the value instead of the value for the `valueKey` within the object. |
+| **`valueKey`** | `String` | `value` | The key of the value you want returned when selected. |
+| **`labelKey`** | `String` | `label` | The key for the label you want to appear in the dropdrop for the user to see. |
 
-#### AvSelect Example usage
+#### Usage
 
 ```javascript
 import React from 'react';
@@ -84,23 +88,24 @@ const options = [
     </AvGroup>
 </AvForm>;
 ```
+***
 
-### AvSelectField
+## AvSelectField
 
-Please refer to [react-select with async pagination](https://github.com/TheSharpieOne/react-select/tree/npm/v2-async-pagination)'s props and [availity-reactstrap-validation](https://github.com/Availity/availity-reactstrap-validation)'s field validation props. This component just combines those.
+> Please refer to [react-select with async pagination](https://github.com/TheSharpieOne/react-select/tree/npm/v2-async-pagination)'s props and [availity-reactstrap-validation](https://github.com/Availity/availity-reactstrap-validation)'s field validation props. This component just combines those.
 
-#### AvSelectField Props
+### Props
 
-Please refer to [react-select with async pagination](https://github.com/TheSharpieOne/react-select/tree/npm/v2-async-pagination)'s props and [availity-reactstrap-validation](https://github.com/Availity/availity-reactstrap-validation)'s input validation props. This component just combines those.
+| Prop Name | Types | Default | Description |
+| --- | --- | --- | --- | 
+| **`raw`** | `Boolean` | `false` | If `true`, the entire object of the selected value will be returned as the value instead of the value for the `valueKey` within the object. |
+| **`valueKey`** | `String` | `value` | The key of the value you want returned when selected. | 
+| **`labelKey`** | `String` | `label` | The key for the label you want to appear in the dropdrop for the user to see. |
+| **`groupClass`** | `String` | | ClassName to add to the wrapping AvGroup |
+| **`labelClass`** | `String` | | ClassName to add to the label |
+| **`feedbackClass`** | `String` | | ClassName to add to the AvFeedback |
 
-*   **`raw`**: Boolean. Optional. Default: `false`. If `true`, the entire object of the selected value will be returned as the value instead of the value for the `valueKey` within the object.
-*   **`valueKey`**: String. Optional. The key of the value you want returned when selected. Default: `value`
-*   **`labelKey`**: String. Optional. The key for the label you want to appear in the dropdrop for the user to see. Default `label`
-*   **`groupClass`**: String. Optional. ClassName to add to the wrapping AvGroup
-*   **`labelClass`**: String. Optional. ClassName to add to the label
-*   **`feedbackClass`**: String. Optional. ClassName to add to the AvFeedback
-
-#### AvSelectField Example usage
+#### Usage
 
 ```javascript
 import React from 'react';
@@ -122,31 +127,35 @@ const options = [
     />
 </AvForm>;
 ```
+***
 
-### AvResourceSelect
+## AvResourceSelect
 
 A select list which automatically loads and pages though a resource when the user scrolls down.
 
+> Please refer to [react-select with async pagination](https://github.com/TheSharpieOne/react-select/tree/npm/v2-async-pagination)'s props and [availity-reactstrap-validation](https://github.com/Availity/availity-reactstrap-validation)'s input validation props. This component just combines those.
+
 #### AvResourceSelect Props
 
-Please refer to [react-select with async pagination](https://github.com/TheSharpieOne/react-select/tree/npm/v2-async-pagination)'s props and [availity-reactstrap-validation](https://github.com/Availity/availity-reactstrap-validation)'s input validation props. This component just combines those.
+| Prop Name | Types | Default | Description |
+| --- | --- | --- | --- | 
+|**`resource`** | `api-core` | **Required** | Availity API resource (see [@availity/api-core](https://github.com/Availity/sdk-js/tree/master/packages/api-core) and [@availity/api-axios](https://github.com/Availity/sdk-js/tree/master/packages/api-axios)). 
+|**`raw`** | `Boolean` |  | `true` | If `true`, the entire object of the selected value will be returned as the value instead of the value for the `valueKey` within the object.
+| **`valueKey`** | `String` | `value` | The key of the value you want returned when selected. |
+| **`labelKey`** | `String` | `label` | The key for the label you want to appear in the dropdrop for the user to see. |
+| **`label`** | `String` |  | If provided, the rendered component will mimic `AvSelectField` instead of `AvSelect` (it will create a group with a label and feedback). |
+| **`requestConfig`** | `Object` | | Configuration object which will be used with the query method on the resource. Useful for defining headers to be sent with the request. |
+| **`parameters`** | `Object` | | Object which will be used to create querystring parameters in the request. |
+| **`customerId`** | `String` | | The value of the customer ID which will be sent in the parameters. Useful for restricting the loaded options to be related to the organization the user has in context. |
+| **`requiredParams`** | `Array[`**`String`**`]` | | If present, the network request will not be made until all of the required parameters specified in the array have a truthy value. |
+| **`watchParams`** | `Array[`**`String`**`]` | | If present, the options will reset when any of the parameters specified in the array change value. This is useful for when a customerId changes and you need to load a new list of options for the user to choose from. |
+| **`getResult`** | `String` or `Function` | | When a function, the function will be called with the API response body/payload and is expected to return an array containing the list of items for the page. When a string, the string is expected to be a simple key used to get the value from the response ("simple" meaning not handling dot-notation for nested objects, if you need that provide a function.) |
+| **`delay`** | `Number` | `350` | The amount of time (in milliseconds) to wait after the user has stopped typing before making the network request (debounced input). |
+| **`itemsPerPage`** | `Number` | `50` | The number of items to fetched be displayed per page when the usr scrolls down. |
+| **`onPageChange`** | `Function` | | A callback function to inform you that the user has scrolled to the bottom of the list and more items are loaded. The current input value and the page the user wants to go to will be provided as arguments to the callback function. |
 
-*   **`raw`**: Boolean. Optional. Default: `true`. If `true`, the entire object of the selected value will be returned as the value instead of the value for the `valueKey` within the object.
-*   **`valueKey`**: String. Optional. The key of the value you want returned when selected. Default: `value`
-*   **`labelKey`**: String. Optional. The key for the label you want to appear in the dropdrop for the user to see. Default `label`
-*   **`label`**: String. Optional. If provided, the rendered component will mimic `AvSelectField` instead of `AvSelect` (it will create a group with a label and feedback).
-*   **`requestConfig`**: Object. Optional. Configuration object which will be used with the query method on the resource. Useful for defining headers to be sent with the request.
-*   **`parameters`**: Object. Optional. Object which will be used to create querystring parameters in the request.
-*   **`customerId`**: String. Optional. The value of the customer ID which will be sent in the parameters. Useful for restricting the loaded options to be related to the organization the user has in context.
-*   **`requiredParams`**: Array of strings. Optional. If present, the network request will not be made until all of the required parameters specified in the array have a truthy value.
-*   **`watchParams`**: Array of strings. Optional. If present, the options will reset when any of the parameters specified in the array change value. This is useful for when a customerId changes and you need to load a new list of options for the user to choose from.
-*   **`resource`**: Availity API resource (see [@availity/api-core](https://github.com/Availity/sdk-js/tree/master/packages/api-core) and [@availity/api-axios](https://github.com/Availity/sdk-js/tree/master/packages/api-axios)). Required.
-*   **`getResult`**: String or Function. Optional. When a function, the function will be called with the API response body/payload and is expected to return an array containing the list of items for the page. When a string, the string is expected to be a simple key used to get the value from the response ("simple" meaning not handling dot-notation for nested objects, if you need that provide a function.)
-*   **`delay`**: Number. default: 350, The amount of time (in milliseconds) to wait after the user has stopped typing before making the network request (debounced input).
-*   **`itemsPerPage`**: Number. Optional. Default: `50`. The number of items to fetched be displayed per page when the usr scrolls down.
-*   **`onPageChange`**: Function. Optional. A callback function to inform you that the user has scrolled to the bottom of the list and more items are loaded. The current input value and the page the user wants to go to will be provided as arguments to the callback function.
 
-#### AvResourceSelect Example usage
+#### Usage
 
 ```javascript
 import React from 'react';
