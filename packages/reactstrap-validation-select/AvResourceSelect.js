@@ -15,7 +15,7 @@ class AvResourceSelect extends Component {
     }).isRequired,
     getResult: PropTypes.oneOfType([PropTypes.string, PropTypes.func]),
     delay: PropTypes.number,
-    label: PropTypes.string,
+    label: PropTypes.node,
     customerId: PropTypes.string,
     parameters: PropTypes.object,
     itemsPerPage: PropTypes.number,

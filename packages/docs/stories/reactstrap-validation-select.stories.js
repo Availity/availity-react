@@ -129,7 +129,12 @@ storiesOf('Reactstrap Validation|AvSelect', module)
     return (
       <AvFormResults>
         <AvSelectResource
-          label={text('Label', 'Select Custom "Thing"')}
+          label={
+            <>
+              {text('Label', 'Custom Select')}
+              <span className="text-primary">*</span>
+            </>
+          }
           name="AvSelectResource"
           minLength={min}
           maxLength={max}
