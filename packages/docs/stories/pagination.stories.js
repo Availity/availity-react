@@ -8,6 +8,7 @@ import Pagination, {
   AvResourcePagination,
   PaginationControl,
   defaultButtonText,
+  PaginationSelector,
 } from '@availity/pagination';
 
 import README from '@availity/pagination/README.md';
@@ -30,23 +31,22 @@ const mockResponse = {
   },
 };
 
-function getButtonValue(title, key) {
-  const buttonBool = boolean(title, true, 'Buttons');
-  const customText =
-    buttonBool && boolean(`${title} Custom Text`, false, 'Buttons');
-  const buttonText =
-    customText && text(`${title} Text`, defaultButtonText[key], 'Buttons');
-  return buttonText || buttonBool;
-}
-
 storiesOf('Components|Pagination', module)
   .addDecorator(withReadme([README]))
   .add('Controls', () => {
     const props = {
-      firstBtn: getButtonValue('First Button', 'firstBtn'),
-      prevBtn: getButtonValue('Previous Button', 'prevBtn'),
-      nextBtn: getButtonValue('Next Button', 'nextBtn'),
-      lastBtn: getButtonValue('Last Button', 'lastBtn'),
+      firstBtn: text(
+        'First Button Text',
+        defaultButtonText.firstBtn,
+        'Buttons'
+      ),
+      prevBtn: text(
+        'Previous Button Text',
+        defaultButtonText.prevBtn,
+        'Buttons'
+      ),
+      nextBtn: text('Next Button Text', defaultButtonText.nextBtn, 'Buttons'),
+      lastBtn: text('Last Button Text', defaultButtonText.lastBtn, 'Buttons'),
     };
 
     const usePageCount = select(
@@ -109,42 +109,46 @@ storiesOf('Components|Pagination', module)
       'Style'
     );
 
-    props.pageButtonsAlign = select(
-      'Align Pagebuttons',
-      {
-        Start: 'start',
-        Center: 'center',
-        End: 'end',
-        'Between (goes well with "simple")': 'between',
-      },
-      PaginationControl.defaultProps.align,
-      'Style'
-    );
-
     props.simple = boolean(
       'Simple (just prev/next)',
       PaginationControl.defaultProps.simple,
       'Style'
     );
 
-    props.withSelector = boolean(
-      'Use Selector',
-      PaginationControl.defaultProps.withSelector,
-      'Selector'
-    );
-    props.optionLabel = text('Item Options Label', 'results', 'Selector');
-    props.itemLabel = text('Item Label', 'Items', 'Selector');
-
     props.onPageChange = () => {};
-    props.perPageOptions = [10, 20, 30];
-    props.onSelectionChange = (event, value) => {
-      console.log(`selection changed: ${value}`);
-    };
     return <PaginationControl {...props} />;
+  })
+  .add('Selector', () => {
+    const props = {};
+
+    const usePageCount = select(
+      'Pages Type',
+      { pageCount: 'page', itemCount: 'item' },
+      'item'
+    );
+    let maxPages = 0;
+    if (usePageCount === 'page') {
+      props.pageCount = number('Total number of pages', 10, { min: 1 });
+      maxPages = props.pageCount;
+    } else {
+      props.itemsPerPage = number('Items per page', 10, { min: 1 });
+      props.perPageOptions = array('per Page Options', [5, 10, 15, 20]);
+      props.totalCount = number('Total number of items', 100, { min: 1 });
+      maxPages = Math.ceil(props.totalCount / props.itemsPerPage);
+    }
+    const page = number('Page', 1, { min: 1, max: maxPages, step: 1 });
+
+    if (typeof page === 'number') {
+      props.page = page;
+    }
+
+    props.onCountChange = () => {};
+    return <PaginationSelector {...props} />;
   })
   .add('default', () => {
     const props = {};
-    const items = array('Items', [
+
+    const rawItems = array('Items', [
       'red',
       'blue',
       'green',
@@ -162,35 +166,30 @@ storiesOf('Components|Pagination', module)
       'charmander',
     ]);
 
-    props.page = number('Page', 1, { min: 1, step: 1 }, 'Page Values');
+    props.page = number('Page', 1, { min: 1, step: 1 });
 
-    props.itemsPerPage = number(
-      'Items per page',
-      10,
-      { min: 1 },
-      'Page Values'
-    );
+    props.itemsPerPage = number('Items per page', 10, { min: 1 });
 
-    const loaderBool = boolean('Block UI while loading', true, 'loader');
-    const loaderText = loaderBool && text('Loader message', '', 'loader');
+    const loaderBool = boolean('Block UI while loading', true);
+    const loaderText = text('Loader message', '');
 
-    props.loader = loaderText || loaderBool;
-    props.loading = boolean('Block UI loading', false, 'loader');
+    props.loader = (loaderBool && loaderText) || loaderBool;
+    props.loading = boolean('Block UI loading', false);
 
     const useAsync = boolean('use Async items', false);
     if (!useAsync) {
-      props.items = items;
+      props.items = rawItems;
     } else {
-      props.items = (page, itemsPerPage) =>
+      props.items = ({ page, itemsPerPage }) =>
         new Promise(resolve => {
           setTimeout(() => {
             resolve({
-              items: items.slice(
+              items: rawItems.slice(
                 (page - 1) * itemsPerPage,
                 page * itemsPerPage
               ),
-              pageCount: Math.ceil(items / itemsPerPage),
-              totalCount: items.length,
+              pageCount: Math.ceil(rawItems / itemsPerPage),
+              totalCount: rawItems.length,
             });
           }, 1000);
         });
@@ -227,20 +226,15 @@ storiesOf('Components|Pagination', module)
       getResult: 'notifications',
     };
 
-    props.page = number('Page', 1, { min: 1, step: 1 }, 'Page Values');
+    props.page = number('Page', 1, { min: 1, step: 1 });
 
-    props.itemsPerPage = number(
-      'Items per page',
-      10,
-      { min: 1 },
-      'Page Values'
-    );
+    props.itemsPerPage = number('Items per page', 10, { min: 1 });
 
-    const loaderBool = boolean('Block UI while loading', true, 'loader');
-    const loaderText = loaderBool && text('Loader message', '', 'loader');
+    const loaderBool = boolean('Block UI while loading', true);
+    const loaderText = text('Loader message', '');
 
-    props.loader = loaderText || loaderBool;
-    props.loading = boolean('Block UI loading', false, 'loader');
+    props.loader = (loaderBool && loaderText) || loaderBool;
+    props.loading = boolean('Block UI loading', false);
 
     return (
       <AvResourcePagination {...props}>

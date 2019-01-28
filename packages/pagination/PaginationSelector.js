@@ -107,9 +107,11 @@ const PaginationSelector = ({
         {input}
       </Fragment>
     );
-  } else if (info) {
+  }
+  if (info) {
     return info;
-  } else if (input) {
+  }
+  if (input) {
     return input;
   }
   return null;

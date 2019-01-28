@@ -6,6 +6,7 @@ import classNames from 'classnames';
 import { PaginationLink, PaginationItem } from 'reactstrap';
 
 const buttonTypeProps = PropTypes.oneOfType([PropTypes.string, PropTypes.bool]);
+
 export const defaultButtonText = {
   firstBtn: '«« First',
   prevBtn: '« Prev',
@@ -13,34 +14,34 @@ export const defaultButtonText = {
   lastBtn: 'Last »»',
 };
 
-const propTypes = {
-  pagePadding: PropTypes.number,
-  page: PropTypes.number.isRequired,
-  pageCount: PropTypes.number.isRequired,
-  onPageChange: PropTypes.func.isRequired,
-  prevBtn: buttonTypeProps,
-  nextBtn: buttonTypeProps,
-  firstBtn: buttonTypeProps,
-  lastBtn: buttonTypeProps,
-  size: PropTypes.string,
-  align: PropTypes.oneOf(['start', 'center', 'end', 'between']),
-  simple: PropTypes.bool,
-  unstyled: PropTypes.bool,
-  className: PropTypes.string,
-};
-
-const defaultProps = {
-  pagePadding: 2,
-  firstBtn: true,
-  prevBtn: true,
-  nextBtn: true,
-  lastBtn: true,
-  align: 'start',
-  unstyled: true,
-  size: 'sm',
-};
-
 class PaginationControl extends Component {
+  static propTypes = {
+    pagePadding: PropTypes.number,
+    page: PropTypes.number.isRequired,
+    pageCount: PropTypes.number.isRequired,
+    onPageChange: PropTypes.func.isRequired,
+    prevBtn: buttonTypeProps,
+    nextBtn: buttonTypeProps,
+    firstBtn: buttonTypeProps,
+    lastBtn: buttonTypeProps,
+    size: PropTypes.string,
+    align: PropTypes.oneOf(['start', 'center', 'end', 'between']),
+    simple: PropTypes.bool,
+    unstyled: PropTypes.bool,
+    className: PropTypes.string,
+  };
+
+  static defaultProps = {
+    pagePadding: 2,
+    firstBtn: true,
+    prevBtn: true,
+    nextBtn: true,
+    lastBtn: true,
+    align: 'start',
+    unstyled: true,
+    size: 'sm',
+  };
+
   isFirstPage() {
     return this.props.page <= 1;
   }
@@ -75,6 +76,7 @@ class PaginationControl extends Component {
 
   getStartButtons() {
     const { firstBtn, prevBtn } = this.props;
+    const disabled = this.isFirstPage();
     const output = [];
     const firstBtnText =
       !firstBtn || typeof firstBtn === 'string'
@@ -83,7 +85,7 @@ class PaginationControl extends Component {
 
     if (firstBtnText) {
       output.push(
-        <PaginationItem disabled={this.isFirstPage()} key="firstBtn">
+        <PaginationItem disabled={disabled} key="firstBtn">
           <PaginationLink
             tag="button"
             type="button"
@@ -102,7 +104,7 @@ class PaginationControl extends Component {
         : defaultButtonText.prevBtn;
     if (prevBtnText) {
       output.push(
-        <PaginationItem disabled={this.isFirstPage()} key="prevBtn">
+        <PaginationItem disabled={disabled} key="prevBtn">
           <PaginationLink
             previous
             tag="button"
@@ -120,7 +122,6 @@ class PaginationControl extends Component {
 
   getPages() {
     const { page, pagePadding, simple } = this.props;
-
     if (simple) {
       return;
     }
@@ -168,6 +169,8 @@ class PaginationControl extends Component {
 
   getEndButtons() {
     const { nextBtn, lastBtn } = this.props;
+    const disabled = this.isLastPage();
+
     const output = [];
     const nextBtnText =
       !nextBtn || typeof nextBtn === 'string'
@@ -175,7 +178,7 @@ class PaginationControl extends Component {
         : defaultButtonText.nextBtn;
     if (nextBtnText) {
       output.push(
-        <PaginationItem disabled={this.isLastPage()} key="nextBtn">
+        <PaginationItem disabled={disabled} key="nextBtn">
           <PaginationLink
             next
             tag="button"
@@ -193,7 +196,7 @@ class PaginationControl extends Component {
         : defaultButtonText.lastBtn;
     if (lastBtnText) {
       output.push(
-        <PaginationItem disabled={this.isLastPage()} key="lastBtn">
+        <PaginationItem disabled={disabled} key="lastBtn">
           <PaginationLink
             tag="button"
             type="button"
@@ -230,8 +233,5 @@ class PaginationControl extends Component {
     );
   }
 }
-
-PaginationControl.propTypes = propTypes;
-PaginationControl.defaultProps = defaultProps;
 
 export default PaginationControl;
