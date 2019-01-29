@@ -16,7 +16,7 @@ export const defaultButtonText = {
 
 class PaginationControl extends Component {
   static propTypes = {
-    pagePadding: PropTypes.number,
+    pagePadding: PropTypes.oneOfType([PropTypes.bool, PropTypes.number]),
     page: PropTypes.number.isRequired,
     pageCount: PropTypes.number.isRequired,
     onPageChange: PropTypes.func.isRequired,
@@ -121,27 +121,33 @@ class PaginationControl extends Component {
   }
 
   getPages() {
-    const { page, pagePadding, simple } = this.props;
+    const { page, pagePadding: propPagePadding, simple } = this.props;
     if (simple) {
       return;
     }
+    const pagePadding = propPagePadding || 0;
 
     const lastPage = this.props.pageCount;
-    // start min/max values are page +- padding
-    let minPage = page - pagePadding;
-    let maxPage = page + pagePadding;
+    let minPage = 1;
+    let maxPage = lastPage;
 
-    // if min page is lower than 1, add extra values to maxPage
-    if (minPage < 1) {
-      maxPage += 1 - minPage;
-      minPage = 1;
-    }
+    if (typeof pagePadding === 'number') {
+      // start min/max values are page +- padding
+      minPage = page - pagePadding;
+      maxPage = page + pagePadding;
 
-    // if maxPage is greater than allowed, add values back to minPage
-    if (maxPage > lastPage) {
-      // don't let min get moved to below 1
-      minPage = Math.max(1, minPage - (maxPage - lastPage));
-      maxPage = lastPage;
+      // if min page is lower than 1, add extra values to maxPage
+      if (minPage < 1) {
+        maxPage += 1 - minPage;
+        minPage = 1;
+      }
+
+      // if maxPage is greater than allowed, add values back to minPage
+      if (maxPage > lastPage) {
+        // don't let min get moved to below 1
+        minPage = Math.max(1, minPage - (maxPage - lastPage));
+        maxPage = lastPage;
+      }
     }
 
     const output = [];

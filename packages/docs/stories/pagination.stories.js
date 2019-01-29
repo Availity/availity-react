@@ -35,67 +35,44 @@ storiesOf('Components|Pagination', module)
   .addDecorator(withReadme([README]))
   .add('Controls', () => {
     const props = {
-      firstBtn: text(
-        'First Button Text',
-        defaultButtonText.firstBtn,
-        'Buttons'
-      ),
-      prevBtn: text(
-        'Previous Button Text',
-        defaultButtonText.prevBtn,
-        'Buttons'
-      ),
-      nextBtn: text('Next Button Text', defaultButtonText.nextBtn, 'Buttons'),
-      lastBtn: text('Last Button Text', defaultButtonText.lastBtn, 'Buttons'),
+      firstBtn: text('First Button Text', defaultButtonText.firstBtn),
+      prevBtn: text('Previous Button Text', defaultButtonText.prevBtn),
+      nextBtn: text('Next Button Text', defaultButtonText.nextBtn),
+      lastBtn: text('Last Button Text', defaultButtonText.lastBtn),
     };
 
     const usePageCount = select(
       'Pages Type',
       { pageCount: 'page', itemCount: 'item' },
-      'page',
-      'Page Values'
+      'page'
     );
     let maxPages = 0;
     if (usePageCount === 'page') {
-      props.pageCount = number(
-        'Total number of pages',
-        10,
-        { min: 1 },
-        'Page Values'
-      );
+      props.pageCount = number('Total number of pages', 10, { min: 1 });
       maxPages = props.pageCount;
     } else {
-      props.itemsPerPage = number(
-        'Items per page',
-        10,
-        { min: 1 },
-        'Page Values'
-      );
-      props.totalCount = number(
-        'Total number of items',
-        100,
-        { min: 1 },
-        'Page Values'
-      );
+      props.itemsPerPage = number('Items per page', 10, { min: 1 });
+      props.totalCount = number('Total number of items', 100, { min: 1 });
       maxPages = Math.ceil(props.totalCount / props.itemsPerPage);
     }
-    props.page = number(
-      'Page',
-      1,
-      { min: 1, max: maxPages, step: 1 },
-      'Page Values'
+    props.page = number('Page', 1, { min: 1, max: maxPages, step: 1 });
+
+    const pagePaddingType = select(
+      'paddingType',
+      { Number: 'number', True: 'true', False: 'false' },
+      'number'
     );
+    const paddingNumber = number('Page Padding', 2);
 
-    props.pagePadding = number('Page Padding', 2, 'Page Values');
+    if (pagePaddingType === 'number') {
+      props.pagePadding = paddingNumber;
+    } else {
+      props.pagePadding = pagePaddingType === 'true';
+    }
 
-    props.unstyled = boolean('Unstyled', false, 'Style');
+    props.unstyled = boolean('Unstyled', false);
 
-    props.size = select(
-      'Size',
-      { Small: 'sm', Normal: '', Large: 'lg' },
-      'sm',
-      'Style'
-    );
+    props.size = select('Size', { Small: 'sm', Normal: '', Large: 'lg' }, 'sm');
 
     props.align = select(
       'Align',
@@ -105,17 +82,15 @@ storiesOf('Components|Pagination', module)
         End: 'end',
         Between: 'between',
       },
-      PaginationControl.defaultProps.align,
-      'Style'
+      PaginationControl.defaultProps.align
     );
 
     props.simple = boolean(
       'Simple (just prev/next)',
-      PaginationControl.defaultProps.simple,
-      'Style'
+      PaginationControl.defaultProps.simple
     );
 
-    props.onPageChange = () => {};
+    props.onPageChange = newPage => console.log(`go to page ${newPage}`);
     return <PaginationControl {...props} />;
   })
   .add('Selector', () => {
