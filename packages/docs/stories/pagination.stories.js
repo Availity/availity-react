@@ -9,6 +9,7 @@ import Pagination, {
   PaginationControl,
   defaultButtonText,
   PaginationSelector,
+  PaginationInfo,
 } from '@availity/pagination';
 
 import README from '@availity/pagination/README.md';
@@ -93,29 +94,26 @@ storiesOf('Components|Pagination', module)
     props.onPageChange = newPage => console.log(`go to page ${newPage}`);
     return <PaginationControl {...props} />;
   })
+  .add('Info', () => {
+    const props = {};
+
+    props.itemsPerPage = number('Items per page', 10, { min: 1 });
+    const withTotalCount = boolean('Use Total Count', true);
+    const totalCount = number('Total number of items', 100, { min: 1 });
+    if (withTotalCount) {
+      props.totalCount = totalCount;
+    }
+    const maxPages = Math.ceil(props.totalCount / props.itemsPerPage);
+
+    props.page = number('Page', 1, { min: 1, max: maxPages, step: 1 });
+
+    return <PaginationInfo {...props} />;
+  })
   .add('Selector', () => {
     const props = {};
 
-    const usePageCount = select(
-      'Pages Type',
-      { pageCount: 'page', itemCount: 'item' },
-      'item'
-    );
-    let maxPages = 0;
-    if (usePageCount === 'page') {
-      props.pageCount = number('Total number of pages', 10, { min: 1 });
-      maxPages = props.pageCount;
-    } else {
-      props.itemsPerPage = number('Items per page', 10, { min: 1 });
-      props.perPageOptions = array('per Page Options', [5, 10, 15, 20]);
-      props.totalCount = number('Total number of items', 100, { min: 1 });
-      maxPages = Math.ceil(props.totalCount / props.itemsPerPage);
-    }
-    const page = number('Page', 1, { min: 1, max: maxPages, step: 1 });
-
-    if (typeof page === 'number') {
-      props.page = page;
-    }
+    props.itemsPerPage = number('Items per page', 10, { min: 1 });
+    props.perPageOptions = array('per Page Options', [5, 10, 15, 20]);
 
     props.onCountChange = () => {};
     return <PaginationSelector {...props} />;
