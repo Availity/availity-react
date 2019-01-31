@@ -1,0 +1,65 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Authorize should render 1`] = `
+<div
+  aria-busy={true}
+  className="block-ui undefined"
+>
+  <div
+    onKeyDown={[Function]}
+    onKeyUp={[Function]}
+    tabIndex="0"
+  />
+  <div
+    className="block-ui-container"
+    onKeyDown={[Function]}
+    onKeyUp={[Function]}
+    tabIndex="0"
+  >
+    <div
+      className="block-ui-overlay"
+    />
+    <div
+      className="block-ui-message-container"
+      style={
+        Object {
+          "top": undefined,
+        }
+      }
+    >
+      <div
+        className="block-ui-message"
+      >
+        <div
+          className="loading-indicator"
+        >
+          <span
+            className="loading-bullet"
+          >
+            •
+          </span>
+           
+          <span
+            className="loading-bullet"
+          >
+            •
+          </span>
+           
+          <span
+            className="loading-bullet"
+          >
+            •
+          </span>
+        </div>
+      </div>
+    </div>
+  </div>
+  <span />
+</div>
+`;
+
+exports[`Authorize should render negate permissions 1`] = `null`;
+
+exports[`Authorize should render with array of permissions 1`] = `null`;
+
+exports[`Authorize should render with single permission 1`] = `null`;

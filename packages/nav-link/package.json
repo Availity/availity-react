@@ -1,0 +1,25 @@
+{
+  "name": "@availity/nav-link",
+  "version": "1.0.0",
+  "author": "Kasey Powers <kasey.powers@availity.com>",
+  "description": "links to use in portal apps to automatically adjust to keep navbar if opening on new tab",
+  "main": "index.js",
+  "keywords": [
+    "react",
+    "availity"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "https://git.availity.com/projects/PUI/repos/av-react"
+  },
+  "bugs": {
+    "url": "https://jira.availity.com/projects/PLT"
+  },
+  "license": "UNLICENSED",
+  "publishConfig": {
+    "registry": "https://artifactory.availity.com/artifactory/api/npm/local-npm/"
+  },
+  "dependencies": {
+    "query-string": "^6.1.0"
+  }
+}

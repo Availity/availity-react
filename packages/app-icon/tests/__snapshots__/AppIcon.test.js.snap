@@ -1,0 +1,56 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`AppIcon should render 1`] = `
+<span
+  className="app-icon app-icon-black"
+/>
+`;
+
+exports[`AppIcon should render additional attributes 1`] = `
+<span
+  className="app-icon app-icon-black"
+  title="Availity Icon"
+/>
+`;
+
+exports[`AppIcon should render additional classNames 1`] = `
+<span
+  className="and-more app-icon app-icon-black"
+/>
+`;
+
+exports[`AppIcon should render branded 1`] = `
+<span
+  className="app-icon app-icon-branded-black"
+>
+  <span
+    className="caret"
+  />
+</span>
+`;
+
+exports[`AppIcon should render children 1`] = `
+<span
+  className="app-icon app-icon-black"
+>
+  AI
+</span>
+`;
+
+exports[`AppIcon should render color 1`] = `
+<span
+  className="app-icon app-icon-green"
+/>
+`;
+
+exports[`AppIcon should render custom tags 1`] = `
+<i
+  className="app-icon app-icon-black"
+/>
+`;
+
+exports[`AppIcon should render size 1`] = `
+<span
+  className="app-icon app-icon-black app-icon-lg"
+/>
+`;

@@ -1,0 +1,34 @@
+{
+  "name": "@availity/list-group",
+  "version": "1.0.0",
+  "author": "Evan Sharp <evan.sharp@availity.com>",
+  "description": "List Group with some Availity flair",
+  "main": "index.js",
+  "keywords": [
+    "react",
+    "availity"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "https://git.availity.com/projects/PUI/repos/av-react"
+  },
+  "bugs": {
+    "url": "https://jira.availity.com/projects/PLT"
+  },
+  "license": "UNLICENSED",
+  "publishConfig": {
+    "registry": "https://artifactory.availity.com/artifactory/api/npm/local-npm/"
+  },
+  "peerDependencies": {
+    "react": "^16.3.0",
+    "reactstrap": "^5.0.0 || ^6.0.0"
+  },
+  "dependencies": {
+    "prop-types": "^15.5.8"
+  },
+  "devDependencies": {
+    "react": "^16.3.0",
+    "react-dom": "^16.3.2",
+    "reactstrap": "^6.0.0"
+  }
+}

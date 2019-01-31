@@ -1,0 +1,43 @@
+{
+  "name": "@availity/feature",
+  "version": "1.0.0",
+  "author": "Evan Sharp <evan.sharp@gmail.com>",
+  "description": "Check if a feature is enabled or disabled before doing something.",
+  "main": "index.js",
+  "bin": {
+    "generate-features-json": "bin.js"
+  },
+  "scripts": {
+    "feature": "generate-features-json . path-to-dist"
+  },
+  "keywords": [
+    "react",
+    "availity"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "https://git.availity.com/projects/PUI/repos/av-react"
+  },
+  "bugs": {
+    "url": "https://jira.availity.com/projects/PLT"
+  },
+  "license": "UNLICENSED",
+  "publishConfig": {
+    "registry": "https://artifactory.availity.com/artifactory/api/npm/local-npm/"
+  },
+  "dependencies": {
+    "fs-extra": "^7.0.0",
+    "prop-types": "^15.5.8",
+    "react-block-ui": "^1.1.1"
+  },
+  "devDependencies": {
+    "axios": "^0.18.0",
+    "axios-mock-adapter": "^1.15.0",
+    "react": "^16.3.2",
+    "react-dom": "^16.3.2"
+  },
+  "peerDependencies": {
+    "axios": "^0.18.0",
+    "react": "^16.3.0"
+  }
+}

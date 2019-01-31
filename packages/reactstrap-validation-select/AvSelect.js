@@ -183,6 +183,7 @@ class AvSelect extends AvBaseInput {
       <Tag
         ref={selectRef}
         classNamePrefix="av"
+        role="listbox"
         className={classes}
         getOptionLabel={this.getOptionLabel}
         getOptionValue={this.getOptionValue}

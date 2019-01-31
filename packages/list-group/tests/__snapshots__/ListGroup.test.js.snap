@@ -1,0 +1,25 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`ListGroup should render 1`] = `
+<ul
+  className="list-group"
+/>
+`;
+
+exports[`ListGroup should render cards 1`] = `
+<ul
+  className="list-group-cards list-group"
+/>
+`;
+
+exports[`ListGroup should render selectable 1`] = `
+<ul
+  className="list-group-selectable list-group"
+/>
+`;
+
+exports[`ListGroup should render selectable cards 1`] = `
+<ul
+  className="list-group-cards list-group-selectable list-group"
+/>
+`;

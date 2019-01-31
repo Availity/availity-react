@@ -1,0 +1,32 @@
+{
+  "name": "@availity/training-link",
+  "version": "1.0.0",
+  "author": "Andrew Bauer <andrew.bauer@availity.com>",
+  "description": "Component for allowing link out to training in the Header component",
+  "main": "index.js",
+  "keywords": [
+    "react",
+    "availity"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "https://git.availity.com/projects/PUI/repos/av-react"
+  },
+  "bugs": {
+    "url": "https://jira.availity.com/projects/PLT"
+  },
+  "license": "UNLICENSED",
+  "publishConfig": {
+    "registry": "https://artifactory.availity.com/artifactory/api/npm/local-npm/"
+  },
+  "dependencies": {
+    "prop-types": "^15.5.8"
+  },
+  "devDependencies": {
+    "react": "^16.3.2",
+    "react-dom": "^16.3.2"
+  },
+  "peerDependencies": {
+    "react": "^16.3.0"
+  }
+}

@@ -1,0 +1,531 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Feedback should indicate active smiley 1`] = `
+<div
+  className="text-center"
+>
+  <p>
+    Tell us what you think about Payer Space.
+  </p>
+  <div
+    className="btn-group"
+    role="group"
+  >
+    <button
+      className="btn btn-light"
+      onClick={[Function]}
+      style={
+        Object {
+          "fontSize": "1.4em",
+          "padding": ".2em .4em",
+        }
+      }
+      type="button"
+    >
+      <span
+        className="icon icon-smile"
+      />
+      <span
+        className="sr-only"
+      >
+        Smiley face
+      </span>
+    </button>
+    <button
+      className="btn btn-light"
+      onClick={[Function]}
+      style={
+        Object {
+          "fontSize": "1.4em",
+          "padding": ".2em .4em",
+        }
+      }
+      type="button"
+    >
+      <span
+        className="icon icon-meh"
+      />
+      <span
+        className="sr-only"
+      >
+        Meh face
+      </span>
+    </button>
+    <button
+      className="btn btn-light"
+      onClick={[Function]}
+      style={
+        Object {
+          "fontSize": "1.4em",
+          "padding": ".2em .4em",
+        }
+      }
+      type="button"
+    >
+      <span
+        className="icon icon-frown"
+      />
+      <span
+        className="sr-only"
+      >
+        Frowny face
+      </span>
+    </button>
+  </div>
+  <div
+    className="invalid-feedback"
+  >
+    Please select one of the faces above
+  </div>
+  <textarea
+    aria-label="Please provide any feedback, requests, and/or defects."
+    className="mt-3 form-control"
+    onChange={[Function]}
+    placeholder="Feedback? Requests? Defects? (optional)"
+  />
+  <div
+    className="mt-3 text-right"
+  >
+    <button
+      className="btn btn-primary"
+      onClick={[Function]}
+      type="button"
+    >
+      Send
+    </button>
+  </div>
+</div>
+`;
+
+exports[`Feedback should render 1`] = `
+<div
+  className="text-center"
+>
+  <p>
+    Tell us what you think about Payer Space.
+  </p>
+  <div
+    className="btn-group"
+    role="group"
+  >
+    <button
+      className="btn btn-light"
+      onClick={[Function]}
+      style={
+        Object {
+          "fontSize": "1.4em",
+          "padding": ".2em .4em",
+        }
+      }
+      type="button"
+    >
+      <span
+        className="icon icon-smile"
+      />
+      <span
+        className="sr-only"
+      >
+        Smiley face
+      </span>
+    </button>
+    <button
+      className="btn btn-light"
+      onClick={[Function]}
+      style={
+        Object {
+          "fontSize": "1.4em",
+          "padding": ".2em .4em",
+        }
+      }
+      type="button"
+    >
+      <span
+        className="icon icon-meh"
+      />
+      <span
+        className="sr-only"
+      >
+        Meh face
+      </span>
+    </button>
+    <button
+      className="btn btn-light"
+      onClick={[Function]}
+      style={
+        Object {
+          "fontSize": "1.4em",
+          "padding": ".2em .4em",
+        }
+      }
+      type="button"
+    >
+      <span
+        className="icon icon-frown"
+      />
+      <span
+        className="sr-only"
+      >
+        Frowny face
+      </span>
+    </button>
+  </div>
+  <div
+    className="invalid-feedback"
+  >
+    Please select one of the faces above
+  </div>
+  <textarea
+    aria-label="Please provide any feedback, requests, and/or defects."
+    className="mt-3 form-control"
+    onChange={[Function]}
+    placeholder="Feedback? Requests? Defects? (optional)"
+  />
+  <div
+    className="mt-3 text-right"
+  >
+    <button
+      className="btn btn-primary"
+      onClick={[Function]}
+      type="button"
+    >
+      Send
+    </button>
+  </div>
+</div>
+`;
+
+exports[`Feedback should render custom button color 1`] = `
+<div
+  className="text-center"
+>
+  <p>
+    Tell us what you think about Payer Space.
+  </p>
+  <div
+    className="btn-group"
+    role="group"
+  >
+    <button
+      className="btn btn-light"
+      onClick={[Function]}
+      style={
+        Object {
+          "fontSize": "1.4em",
+          "padding": ".2em .4em",
+        }
+      }
+      type="button"
+    >
+      <span
+        className="icon icon-smile"
+      />
+      <span
+        className="sr-only"
+      >
+        Smiley face
+      </span>
+    </button>
+    <button
+      className="btn btn-light"
+      onClick={[Function]}
+      style={
+        Object {
+          "fontSize": "1.4em",
+          "padding": ".2em .4em",
+        }
+      }
+      type="button"
+    >
+      <span
+        className="icon icon-meh"
+      />
+      <span
+        className="sr-only"
+      >
+        Meh face
+      </span>
+    </button>
+    <button
+      className="btn btn-light"
+      onClick={[Function]}
+      style={
+        Object {
+          "fontSize": "1.4em",
+          "padding": ".2em .4em",
+        }
+      }
+      type="button"
+    >
+      <span
+        className="icon icon-frown"
+      />
+      <span
+        className="sr-only"
+      >
+        Frowny face
+      </span>
+    </button>
+  </div>
+  <div
+    className="invalid-feedback"
+  >
+    Please select one of the faces above
+  </div>
+  <select
+    className="custom-select"
+    type="select"
+  >
+    <option
+      value="this space"
+    >
+      This Payer Space
+    </option>
+    <option
+      value="that space"
+    >
+      That Payer Space
+    </option>
+    <option
+      value="portal"
+    >
+      Portal as a whole
+    </option>
+    <option
+      value="availity"
+    >
+      Availity as a whole
+    </option>
+  </select>
+  <textarea
+    aria-label="Please provide any feedback, requests, and/or defects."
+    className="mt-3 form-control"
+    onChange={[Function]}
+    placeholder="Feedback? Requests? Defects? (optional)"
+  />
+  <div
+    className="mt-3 text-right"
+  >
+    <button
+      className="btn btn-primary"
+      onClick={[Function]}
+      type="button"
+    >
+      Send
+    </button>
+  </div>
+</div>
+`;
+
+exports[`Feedback should render custom face icons 1`] = `
+<div
+  className="text-center"
+>
+  <p>
+    Tell us what you think about Payer Space.
+  </p>
+  <div
+    className="btn-group"
+    role="group"
+  >
+    <button
+      className="btn btn-light"
+      onClick={[Function]}
+      style={
+        Object {
+          "fontSize": "1.4em",
+          "padding": ".2em .4em",
+        }
+      }
+      type="button"
+    >
+      <span
+        className="icon icon-happy"
+      />
+      <span
+        className="sr-only"
+      >
+        Happy face
+      </span>
+    </button>
+    <button
+      className="btn btn-light"
+      onClick={[Function]}
+      style={
+        Object {
+          "fontSize": "1.4em",
+          "padding": ".2em .4em",
+        }
+      }
+      type="button"
+    >
+      <span
+        className="icon icon-okay"
+      />
+      <span
+        className="sr-only"
+      >
+        Okay face
+      </span>
+    </button>
+    <button
+      className="btn btn-light"
+      onClick={[Function]}
+      style={
+        Object {
+          "fontSize": "1.4em",
+          "padding": ".2em .4em",
+        }
+      }
+      type="button"
+    >
+      <span
+        className="icon icon-sad"
+      />
+      <span
+        className="sr-only"
+      >
+        Sad face
+      </span>
+    </button>
+    <button
+      className="btn btn-light"
+      onClick={[Function]}
+      style={
+        Object {
+          "fontSize": "1.4em",
+          "padding": ".2em .4em",
+        }
+      }
+      type="button"
+    >
+      <span
+        className="icon icon-confused"
+      />
+      <span
+        className="sr-only"
+      >
+        Confused face
+      </span>
+    </button>
+  </div>
+  <div
+    className="invalid-feedback"
+  >
+    Please select one of the faces above
+  </div>
+  <textarea
+    aria-label="Please provide any feedback, requests, and/or defects."
+    className="mt-3 form-control"
+    onChange={[Function]}
+    placeholder="Feedback? Requests? Defects? (optional)"
+  />
+  <div
+    className="mt-3 text-right"
+  >
+    <button
+      className="btn btn-primary"
+      onClick={[Function]}
+      type="button"
+    >
+      Send
+    </button>
+  </div>
+</div>
+`;
+
+exports[`Feedback should set the feedback text value 1`] = `
+<div
+  className="text-center"
+>
+  <p>
+    Tell us what you think about Payer Space.
+  </p>
+  <div
+    className="btn-group"
+    role="group"
+  >
+    <button
+      className="btn btn-light"
+      onClick={[Function]}
+      style={
+        Object {
+          "fontSize": "1.4em",
+          "padding": ".2em .4em",
+        }
+      }
+      type="button"
+    >
+      <span
+        className="icon icon-smile"
+      />
+      <span
+        className="sr-only"
+      >
+        Smiley face
+      </span>
+    </button>
+    <button
+      className="btn btn-light"
+      onClick={[Function]}
+      style={
+        Object {
+          "fontSize": "1.4em",
+          "padding": ".2em .4em",
+        }
+      }
+      type="button"
+    >
+      <span
+        className="icon icon-meh"
+      />
+      <span
+        className="sr-only"
+      >
+        Meh face
+      </span>
+    </button>
+    <button
+      className="btn btn-light"
+      onClick={[Function]}
+      style={
+        Object {
+          "fontSize": "1.4em",
+          "padding": ".2em .4em",
+        }
+      }
+      type="button"
+    >
+      <span
+        className="icon icon-frown"
+      />
+      <span
+        className="sr-only"
+      >
+        Frowny face
+      </span>
+    </button>
+  </div>
+  <div
+    className="invalid-feedback"
+  >
+    Please select one of the faces above
+  </div>
+  <textarea
+    aria-label="Please provide any feedback, requests, and/or defects."
+    className="mt-3 form-control"
+    onChange={[Function]}
+    placeholder="Feedback? Requests? Defects? (optional)"
+  />
+  <div
+    className="mt-3 text-right"
+  >
+    <button
+      className="btn btn-primary"
+      onClick={[Function]}
+      type="button"
+    >
+      Send
+    </button>
+  </div>
+</div>
+`;

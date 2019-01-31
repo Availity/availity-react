@@ -1,0 +1,97 @@
+[
+  {
+    "id": "7482",
+    "description": "Claim Appeals",
+    "organizations": [
+      {
+        "id": "235168",
+        "customerId": 1194,
+        "name": "CMT TEST ORG",
+        "resources": [
+          {
+            "id": "12256",
+            "payerId": "AGPMEDICAID",
+            "payerName": "AMERIGROUP"
+          },
+          {
+            "id": "12257",
+            "payerId": "HUMANA",
+            "payerName": "HUMANA"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "1234",
+    "description": "Fake 1234",
+    "organizations": [
+      {
+        "id": "1495",
+        "customerId": 1194,
+        "name": "Availity Test Org",
+        "resources": []
+      }
+    ]
+  },
+  {
+    "id": "2345",
+    "description": "Fake 2345",
+    "organizations": [
+      {
+        "id": "1495",
+        "customerId": 1194,
+        "name": "Availity Test Org",
+        "resources": []
+      }
+    ]
+  },
+  {
+    "id": "3456",
+    "description": "Fake 3456",
+    "organizations": [
+      {
+        "id": "1495",
+        "customerId": 1194,
+        "name": "Availity Test Org",
+        "resources": []
+      }
+    ]
+  },
+  {
+    "id": "4567",
+    "description": "Fake 4567",
+    "organizations": [
+      {
+        "id": "1495",
+        "customerId": 1194,
+        "name": "Availity Test Org",
+        "resources": []
+      }
+    ]
+  },
+  {
+    "id": "5678",
+    "description": "Fake 5678",
+    "organizations": [
+      {
+        "id": "1495",
+        "customerId": 1194,
+        "name": "Availity Test Org",
+        "resources": []
+      }
+    ]
+  },
+  {
+    "id": "6789",
+    "description": "Fake 6789",
+    "organizations": [
+      {
+        "id": "1495",
+        "customerId": 1194,
+        "name": "Availity Test Org",
+        "resources": []
+      }
+    ]
+  }
+]
