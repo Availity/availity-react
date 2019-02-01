@@ -1,4 +1,3 @@
-/* eslint no-nested-ternary: 0 */
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { Button, Popover, InputGroupAddon } from 'reactstrap';
@@ -304,8 +303,8 @@ export default class AvDateRange extends Component {
     if (!this.context.FormCtrl.isTouched(this.props.end.name)) {
       this.context.FormCtrl.setTouched(this.props.end.name);
     }
-    const startValue = range.startDate.format(this.state.format); // eslint-disable-line
-    const endValue = range.endDate.format(this.state.format); // eslint-disable-line
+    const startValue = range.startDate.format(this.state.format);
+    const endValue = range.endDate.format(this.state.format);
     this.setState(
       {
         startValue,
@@ -403,6 +402,7 @@ export default class AvDateRange extends Component {
             maxDate={this.props.max}
             minDate={this.props.min}
             ranges={
+              // eslint-disable-next-line no-nested-ternary
               this.props.ranges !== undefined
                 ? Array.isArray(this.props.ranges)
                   ? pick(relativeRanges, this.props.ranges)

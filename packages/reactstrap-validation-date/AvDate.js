@@ -18,6 +18,7 @@ const getRelativeDate = (validate, key) => {
     }
     return value;
   }
+  return null;
 };
 
 const theme = {
