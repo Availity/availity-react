@@ -33,7 +33,7 @@ storiesOf('Page|Header', module)
   ))
   .add('with payer logo', () => (
     <div>
-      <PageHeader appName="PayerSpaces" payerId={text('Payer ID', 'PayerID')}>
+      <PageHeader appName="Payer Space" payerId={text('Payer ID', 'PayerID')}>
         {text('Application Name', 'Payer Space (Beta)')}
       </PageHeader>
       <p>
@@ -44,7 +44,7 @@ storiesOf('Page|Header', module)
   ))
   .add('with Payer Space breadcrumb', () => (
     <PageHeader
-      appName="Payer Spaces"
+      appName="Payer Space"
       spaceId={text('Payer Space ID', '73162546201441126239486200007187')}
       spaceName={text('Payer Space Name', 'Payers Space')}
     >
@@ -53,7 +53,7 @@ storiesOf('Page|Header', module)
   ))
   .add('with arbitrary breadcrumbs', () => (
     <PageHeader
-      appName="Payer Spaces"
+      appName="Payer Space"
       crumbs={[
         { name: 'Grand Parent', url: '/grand-parent' },
         { name: 'Parent', url: '/parent' },

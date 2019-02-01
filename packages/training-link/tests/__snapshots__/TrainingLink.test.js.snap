@@ -1,25 +1,23 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`TrainingLink should not render with link and name 1`] = `
-<span
-  className="ml-auto"
-  style={
-    Object {
-      "paddingTop": "12px",
-    }
-  }
->
-  Need Help?
-   
-  <a
-    href="http://catvidoes.com"
-    rel="noopener noreferrer"
-    target="_blank"
+<div>
+  <span
+    class="ml-auto"
+    style="padding-top: 12px;"
   >
-    Watch a demo
-  </a>
-   
-  for 
-  Appeals
-</span>
+    Need Help?
+     
+    <a
+      href="http://catvidoes.com"
+      rel="noopener noreferrer"
+      target="_blank"
+    >
+      Watch a demo
+    </a>
+     
+    for 
+    Appeals
+  </span>
+</div>
 `;

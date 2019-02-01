@@ -1,109 +1,103 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`UploadProgressBar should render 1`] = `
-<div
-  className=" undefined progress"
->
+<div>
   <div
-    aria-valuemax={100}
-    aria-valuemin="0"
-    aria-valuenow={0}
-    className="progress-bar bg-success"
-    role="progressbar"
-    style={
-      Object {
-        "width": "0%",
-      }
-    }
+    class=" undefined progress"
   >
-    <span
-      className="sr-only"
+    <div
+      aria-valuemax="100"
+      aria-valuemin="0"
+      aria-valuenow="0"
+      class="progress-bar bg-success"
+      role="progressbar"
+      style="width: 0%;"
     >
-      0
-      % Complete
-    </span>
+      <span
+        class="sr-only"
+      >
+        0
+        % Complete
+      </span>
+    </div>
   </div>
 </div>
 `;
 
 exports[`UploadProgressBar should render error 1`] = `
-<span
-  className="text-danger"
->
-  File upload rejected
-</span>
+<div>
+  <span
+    class="text-danger"
+  >
+    File upload rejected
+  </span>
+</div>
 `;
 
 exports[`UploadProgressBar should render password verification button 1`] = `
-Array [
+<div>
   <span
-    className="text-danger"
+    class="text-danger"
   >
     Encrypted files require a password
-  </span>,
+  </span>
   <div
-    className="pwRequired"
+    class="pwRequired"
   >
     <button
-      aria-label={null}
-      className="btn btn-primary btn-sm"
-      onClick={[Function]}
+      class="btn btn-primary btn-sm"
       type="button"
     >
       Enter password
     </button>
-  </div>,
-]
+  </div>
+</div>
 `;
 
 exports[`UploadProgressBar should render progress 1`] = `
-<div
-  className=" undefined progress"
->
+<div>
   <div
-    aria-valuemax={100}
-    aria-valuemin="0"
-    aria-valuenow={50}
-    className="progress-bar bg-success"
-    role="progressbar"
-    style={
-      Object {
-        "width": "50%",
-      }
-    }
+    class=" undefined progress"
   >
-    <span
-      className="sr-only"
+    <div
+      aria-valuemax="100"
+      aria-valuemin="0"
+      aria-valuenow="50"
+      class="progress-bar bg-success"
+      role="progressbar"
+      style="width: 50%;"
     >
-      50
-      % Complete
-    </span>
+      <span
+        class="sr-only"
+      >
+        50
+        % Complete
+      </span>
+    </div>
   </div>
 </div>
 `;
 
 exports[`UploadProgressBar should render success 1`] = `
-<div
-  className=" progress-complete progress"
->
+<div>
   <div
-    aria-valuemax={100}
-    aria-valuemin="0"
-    aria-valuenow={100}
-    className="progress-bar bg-success"
-    role="progressbar"
-    style={
-      Object {
-        "width": "100%",
-      }
-    }
+    class=" progress-complete progress"
   >
-    <span
-      className="sr-only"
+    <div
+      aria-valuemax="100"
+      aria-valuemin="0"
+      aria-valuenow="100"
+      class="progress-bar bg-success"
+      role="progressbar"
+      style="width: 100%;"
     >
-      100
-      % Complete
-    </span>
+      <span
+        class="sr-only"
+      >
+        100
+        % Complete
+      </span>
+    </div>
   </div>
 </div>
 `;

@@ -2,36 +2,40 @@
 
 exports[`AppIcon should render 1`] = `
 <span
-  className="app-icon app-icon-black"
+  class="app-icon app-icon-black"
 />
 `;
 
 exports[`AppIcon should render additional attributes 1`] = `
-<span
-  className="app-icon app-icon-black"
-  title="Availity Icon"
-/>
+<div>
+  <span
+    class="app-icon app-icon-black"
+    title="Availity Icon"
+  />
+</div>
 `;
 
 exports[`AppIcon should render additional classNames 1`] = `
-<span
-  className="and-more app-icon app-icon-black"
-/>
+<div>
+  <span
+    class="and-more app-icon app-icon-black"
+  />
+</div>
 `;
 
 exports[`AppIcon should render branded 1`] = `
 <span
-  className="app-icon app-icon-branded-black"
+  class="app-icon app-icon-branded-black"
 >
   <span
-    className="caret"
+    class="caret"
   />
 </span>
 `;
 
 exports[`AppIcon should render children 1`] = `
 <span
-  className="app-icon app-icon-black"
+  class="app-icon app-icon-black"
 >
   AI
 </span>
@@ -39,18 +43,20 @@ exports[`AppIcon should render children 1`] = `
 
 exports[`AppIcon should render color 1`] = `
 <span
-  className="app-icon app-icon-green"
+  class="app-icon app-icon-green"
 />
 `;
 
 exports[`AppIcon should render custom tags 1`] = `
-<i
-  className="app-icon app-icon-black"
-/>
+<div>
+  <i
+    class="app-icon app-icon-black"
+  />
+</div>
 `;
 
 exports[`AppIcon should render size 1`] = `
 <span
-  className="app-icon app-icon-black app-icon-lg"
+  class="app-icon app-icon-black app-icon-lg"
 />
 `;

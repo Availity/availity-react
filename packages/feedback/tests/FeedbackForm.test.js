@@ -1,28 +1,47 @@
 import React from 'react';
-import renderer from 'react-test-renderer';
+import { render, fireEvent } from 'react-testing-library';
 import { FeedbackForm } from '..';
 
 describe('Feedback', () => {
   test('should render', () => {
-    const component = renderer.create(<FeedbackForm name="Payer Space" />);
-    const json = component.toJSON();
-    expect(json).toMatchSnapshot();
+    const { container } = render(<FeedbackForm name="Payer Space" />);
+
+    expect(container).toMatchSnapshot();
   });
 
   test('should indicate active smiley', () => {
-    const component = renderer.create(<FeedbackForm name="Payer Space" />);
-    component.getInstance().setActive('smiley');
-    const json = component.toJSON();
-    expect(json).toMatchSnapshot();
+    const { container, getByText } = render(
+      <FeedbackForm name="Payer Space" />
+    );
+
+    // Get the Option with the smiley face
+    const smileyFeedbackField = getByText('Smiley face');
+
+    // Simulate the Click
+    fireEvent.click(smileyFeedbackField);
+
+    expect(container).toMatchSnapshot();
   });
 
   test('should set the feedback text value', () => {
-    const component = renderer.create(<FeedbackForm name="Payer Space" />);
-    component
-      .getInstance()
-      .setTextFeedback({ target: { value: 'some good text here' } });
-    const json = component.toJSON();
-    expect(json).toMatchSnapshot();
+    const { container, getByPlaceholderText } = render(
+      <FeedbackForm name="Payer Space" />
+    );
+
+    // Get the Input Node for the Feedback
+    const feedbackNode = getByPlaceholderText(
+      'Feedback? Requests? Defects? (optional)'
+    );
+
+    // Simulate a user typing the value below into the field
+    fireEvent.change(feedbackNode, {
+      target: { value: 'some good text here' },
+    });
+
+    // Check if the Input Got Updated
+    expect(feedbackNode.value).toEqual('some good text here');
+
+    expect(container).toMatchSnapshot();
   });
 
   test('should render custom face icons', () => {
@@ -44,11 +63,12 @@ describe('Feedback', () => {
         description: 'Confused face',
       },
     ];
-    const component = renderer.create(
+
+    const { container } = render(
       <FeedbackForm name="Payer Space" faceOptions={faceOptions} />
     );
-    const json = component.toJSON();
-    expect(json).toMatchSnapshot();
+
+    expect(container).toMatchSnapshot();
   });
 
   test('should render custom button color', () => {
@@ -70,10 +90,10 @@ describe('Feedback', () => {
         label: 'Availity as a whole',
       },
     ];
-    const component = renderer.create(
+    const { container } = render(
       <FeedbackForm name="Payer Space" aboutOptions={aboutOptions} />
     );
-    const json = component.toJSON();
-    expect(json).toMatchSnapshot();
+
+    expect(container).toMatchSnapshot();
   });
 });

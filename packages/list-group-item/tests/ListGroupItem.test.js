@@ -1,31 +1,31 @@
 import React from 'react';
-import renderer from 'react-test-renderer';
+import { render } from 'react-testing-library';
 import ListGroupItem from '..';
 
 describe('ListGroupItem', () => {
   test('should render', () => {
-    const component = renderer.create(<ListGroupItem />);
-    const json = component.toJSON();
-    expect(json).toMatchSnapshot();
+    const { container } = render(<ListGroupItem />);
+
+    expect(container).toMatchSnapshot();
   });
 
   test('should render color', () => {
-    const component = renderer.create(<ListGroupItem color="success" />);
-    const json = component.toJSON();
-    expect(json).toMatchSnapshot();
+    const { container } = render(<ListGroupItem color="success" />);
+
+    expect(container).toMatchSnapshot();
   });
 
   test('should render border color', () => {
-    const component = renderer.create(<ListGroupItem borderColor="success" />);
-    const json = component.toJSON();
-    expect(json).toMatchSnapshot();
+    const { container } = render(<ListGroupItem borderColor="success" />);
+
+    expect(container).toMatchSnapshot();
   });
 
   test('should render border color and color', () => {
-    const component = renderer.create(
+    const { container } = render(
       <ListGroupItem borderColor="success" color="success" />
     );
-    const json = component.toJSON();
-    expect(json).toMatchSnapshot();
+
+    expect(container).toMatchSnapshot();
   });
 });

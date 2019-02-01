@@ -78,6 +78,7 @@ class FileRow extends Component {
         </td>
         <td className="align-middle" style={{ width: '10%' }}>
           <Button
+            data-testid="remove-file-btn"
             color="link"
             className="text-danger px-0"
             onClick={this.remove}

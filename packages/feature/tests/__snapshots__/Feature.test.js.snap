@@ -1,65 +1,58 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`Feature should render 1`] = `
-<div
-  aria-busy={true}
-  className="block-ui undefined"
->
+<div>
   <div
-    onKeyDown={[Function]}
-    onKeyUp={[Function]}
-    tabIndex="0"
-  />
-  <div
-    className="block-ui-container"
-    onKeyDown={[Function]}
-    onKeyUp={[Function]}
-    tabIndex="0"
+    aria-busy="true"
+    class="block-ui undefined"
   >
     <div
-      className="block-ui-overlay"
+      tabindex="0"
     />
     <div
-      className="block-ui-message-container"
-      style={
-        Object {
-          "top": undefined,
-        }
-      }
+      class="block-ui-container"
+      tabindex="0"
     >
       <div
-        className="block-ui-message"
+        class="block-ui-overlay"
+      />
+      <div
+        class="block-ui-message-container"
       >
         <div
-          className="loading-indicator"
+          class="block-ui-message"
         >
-          <span
-            className="loading-bullet"
+          <div
+            class="loading-indicator"
           >
-            •
-          </span>
-           
-          <span
-            className="loading-bullet"
-          >
-            •
-          </span>
-           
-          <span
-            className="loading-bullet"
-          >
-            •
-          </span>
+            <span
+              class="loading-bullet"
+            >
+              •
+            </span>
+             
+            <span
+              class="loading-bullet"
+            >
+              •
+            </span>
+             
+            <span
+              class="loading-bullet"
+            >
+              •
+            </span>
+          </div>
         </div>
       </div>
     </div>
+    <span />
   </div>
-  <span />
 </div>
 `;
 
-exports[`Feature should render negate features 1`] = `null`;
+exports[`Feature should render negate features 1`] = `<div />`;
 
-exports[`Feature should render with array of features 1`] = `null`;
+exports[`Feature should render with array of features 1`] = `<div />`;
 
-exports[`Feature should render with single permission 1`] = `null`;
+exports[`Feature should render with single permission 1`] = `<div />`;

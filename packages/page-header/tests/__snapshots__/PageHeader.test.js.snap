@@ -1,20 +1,19 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`PageHeader should render 1`] = `
-Array [
+<div>
   <div
-    className="d-flex align-items-start"
+    class="d-flex align-items-start"
   >
     <nav
       aria-label="breadcrumb"
-      className=""
+      class=""
     >
       <ol
-        className="breadcrumb"
+        class="breadcrumb"
       >
         <li
-          aria-current={undefined}
-          className="breadcrumb-item"
+          class="breadcrumb-item"
         >
           <a
             href="/public/apps/dashboard"
@@ -24,42 +23,41 @@ Array [
         </li>
         <li
           aria-current="page"
-          className="active breadcrumb-item"
+          class="active breadcrumb-item"
         >
           Payer Space
         </li>
       </ol>
     </nav>
      
-  </div>,
+  </div>
   <h1
-    className="h4 page-header page-header-brand"
+    class="h4 page-header page-header-brand"
   >
     <div
-      className="page-header-title"
+      class="page-header-title"
     >
        
       Payer Space
     </div>
-  </h1>,
-]
+  </h1>
+</div>
 `;
 
 exports[`PageHeader should render app icon 1`] = `
-Array [
+<div>
   <div
-    className="d-flex align-items-start"
+    class="d-flex align-items-start"
   >
     <nav
       aria-label="breadcrumb"
-      className=""
+      class=""
     >
       <ol
-        className="breadcrumb"
+        class="breadcrumb"
       >
         <li
-          aria-current={undefined}
-          className="breadcrumb-item"
+          class="breadcrumb-item"
         >
           <a
             href="/public/apps/dashboard"
@@ -69,22 +67,22 @@ Array [
         </li>
         <li
           aria-current="page"
-          className="active breadcrumb-item"
+          class="active breadcrumb-item"
         >
           Payer Space
         </li>
       </ol>
     </nav>
      
-  </div>,
+  </div>
   <h1
-    className="h4 page-header page-header-brand"
+    class="h4 page-header page-header-brand"
   >
     <div
-      className="page-header-title"
+      class="page-header-title"
     >
       <span
-        className="app-icon app-icon-black"
+        class="app-icon app-icon-black"
         title="Payer Space"
       >
         PS
@@ -92,25 +90,24 @@ Array [
        
       Payer Space
     </div>
-  </h1>,
-]
+  </h1>
+</div>
 `;
 
 exports[`PageHeader should render app icon color 1`] = `
-Array [
+<div>
   <div
-    className="d-flex align-items-start"
+    class="d-flex align-items-start"
   >
     <nav
       aria-label="breadcrumb"
-      className=""
+      class=""
     >
       <ol
-        className="breadcrumb"
+        class="breadcrumb"
       >
         <li
-          aria-current={undefined}
-          className="breadcrumb-item"
+          class="breadcrumb-item"
         >
           <a
             href="/public/apps/dashboard"
@@ -120,22 +117,22 @@ Array [
         </li>
         <li
           aria-current="page"
-          className="active breadcrumb-item"
+          class="active breadcrumb-item"
         >
           Payer Space
         </li>
       </ol>
     </nav>
      
-  </div>,
+  </div>
   <h1
-    className="h4 page-header page-header-brand"
+    class="h4 page-header page-header-brand"
   >
     <div
-      className="page-header-title"
+      class="page-header-title"
     >
       <span
-        className="app-icon app-icon-green"
+        class="app-icon app-icon-green"
         title="Payer Space"
       >
         PS
@@ -143,25 +140,24 @@ Array [
        
       Payer Space
     </div>
-  </h1>,
-]
+  </h1>
+</div>
 `;
 
 exports[`PageHeader should render app icon color branded 1`] = `
-Array [
+<div>
   <div
-    className="d-flex align-items-start"
+    class="d-flex align-items-start"
   >
     <nav
       aria-label="breadcrumb"
-      className=""
+      class=""
     >
       <ol
-        className="breadcrumb"
+        class="breadcrumb"
       >
         <li
-          aria-current={undefined}
-          className="breadcrumb-item"
+          class="breadcrumb-item"
         >
           <a
             href="/public/apps/dashboard"
@@ -171,51 +167,50 @@ Array [
         </li>
         <li
           aria-current="page"
-          className="active breadcrumb-item"
+          class="active breadcrumb-item"
         >
           Payer Space
         </li>
       </ol>
     </nav>
      
-  </div>,
+  </div>
   <h1
-    className="h4 page-header page-header-brand"
+    class="h4 page-header page-header-brand"
   >
     <div
-      className="page-header-title"
+      class="page-header-title"
     >
       <span
-        className="app-icon app-icon-branded-green"
+        class="app-icon app-icon-branded-green"
         title="Payer Space"
       >
         PS
         <span
-          className="caret"
+          class="caret"
         />
       </span>
        
       Payer Space
     </div>
-  </h1>,
-]
+  </h1>
+</div>
 `;
 
 exports[`PageHeader should render children 1`] = `
-Array [
+<div>
   <div
-    className="d-flex align-items-start"
+    class="d-flex align-items-start"
   >
     <nav
       aria-label="breadcrumb"
-      className=""
+      class=""
     >
       <ol
-        className="breadcrumb"
+        class="breadcrumb"
       >
         <li
-          aria-current={undefined}
-          className="breadcrumb-item"
+          class="breadcrumb-item"
         >
           <a
             href="/public/apps/dashboard"
@@ -225,44 +220,43 @@ Array [
         </li>
         <li
           aria-current="page"
-          className="active breadcrumb-item"
+          class="active breadcrumb-item"
         >
           Payer Space
         </li>
       </ol>
     </nav>
      
-  </div>,
+  </div>
   <h1
-    className="h4 page-header page-header-brand"
+    class="h4 page-header page-header-brand"
   >
     <div
-      className="page-header-title"
+      class="page-header-title"
     >
        
       <p>
         this is cool
       </p>
     </div>
-  </h1>,
-]
+  </h1>
+</div>
 `;
 
 exports[`PageHeader should render feedback 1`] = `
-Array [
+<div>
   <div
-    className="d-flex align-items-start"
+    class="d-flex align-items-start"
   >
     <nav
       aria-label="breadcrumb"
-      className=""
+      class=""
     >
       <ol
-        className="breadcrumb"
+        class="breadcrumb"
       >
         <li
-          aria-current={undefined}
-          className="breadcrumb-item"
+          class="breadcrumb-item"
         >
           <a
             href="/public/apps/dashboard"
@@ -272,136 +266,109 @@ Array [
         </li>
         <li
           aria-current="page"
-          className="active breadcrumb-item"
+          class="active breadcrumb-item"
         >
           Payer Space
         </li>
       </ol>
     </nav>
      
-  </div>,
+  </div>
   <h1
-    className="h4 page-header page-header-brand"
+    class="h4 page-header page-header-brand"
   >
     <div
-      className="page-header-title"
+      class="page-header-title"
     >
        
       Payer Space
     </div>
     <div
-      className="float-md-right d-inline-block hidden-print dropdown"
-      onKeyDown={[Function]}
+      class="float-md-right d-inline-block hidden-print dropdown"
     >
       <button
-        aria-expanded={false}
-        aria-haspopup={true}
-        className="btn btn-light"
-        onClick={[Function]}
+        aria-expanded="false"
+        aria-haspopup="true"
+        class="btn btn-light"
         type="button"
       >
         Give Feedback
       </button>
       <div
-        aria-hidden={true}
-        className="p-3 dropdown-menu dropdown-menu-right"
+        aria-hidden="true"
+        class="p-3 dropdown-menu dropdown-menu-right"
         role="menu"
-        style={
-          Object {
-            "width": "400px",
-          }
-        }
-        tabIndex="-1"
-        x-placement={undefined}
+        style="width: 400px;"
+        tabindex="-1"
       >
         <div
-          className="text-center"
+          class="text-center"
         >
           <p>
             Tell us what you think about Payer Space.
           </p>
           <div
-            className="btn-group"
+            class="btn-group"
             role="group"
           >
             <button
-              className="btn btn-light"
-              onClick={[Function]}
-              style={
-                Object {
-                  "fontSize": "1.4em",
-                  "padding": ".2em .4em",
-                }
-              }
+              class="btn btn-light"
+              style="font-size: 1.4em; padding: .2em .4em;"
               type="button"
             >
               <span
-                className="icon icon-smile"
+                class="icon icon-smile"
               />
               <span
-                className="sr-only"
+                class="sr-only"
               >
                 Smiley face
               </span>
             </button>
             <button
-              className="btn btn-light"
-              onClick={[Function]}
-              style={
-                Object {
-                  "fontSize": "1.4em",
-                  "padding": ".2em .4em",
-                }
-              }
+              class="btn btn-light"
+              style="font-size: 1.4em; padding: .2em .4em;"
               type="button"
             >
               <span
-                className="icon icon-meh"
+                class="icon icon-meh"
               />
               <span
-                className="sr-only"
+                class="sr-only"
               >
                 Meh face
               </span>
             </button>
             <button
-              className="btn btn-light"
-              onClick={[Function]}
-              style={
-                Object {
-                  "fontSize": "1.4em",
-                  "padding": ".2em .4em",
-                }
-              }
+              class="btn btn-light"
+              style="font-size: 1.4em; padding: .2em .4em;"
               type="button"
             >
               <span
-                className="icon icon-frown"
+                class="icon icon-frown"
               />
               <span
-                className="sr-only"
+                class="sr-only"
               >
                 Frowny face
               </span>
             </button>
           </div>
           <div
-            className="invalid-feedback"
+            class="invalid-feedback"
           >
             Please select one of the faces above
           </div>
           <textarea
             aria-label="Please provide any feedback, requests, and/or defects."
-            className="mt-3 form-control"
-            onChange={[Function]}
+            class="mt-3 form-control"
             placeholder="Feedback? Requests? Defects? (optional)"
           />
           <div
-            className="mt-3 text-right"
+            class="mt-3 text-right"
           >
             <button
-              className="btn btn-primary"
-              onClick={[Function]}
+              class="btn btn-primary"
               type="button"
             >
               Send
@@ -410,74 +377,6 @@ Array [
         </div>
       </div>
     </div>
-  </h1>,
-]
-`;
-
-exports[`PageHeader should render trainingLink 1`] = `
-Array [
-  <div
-    className="d-flex align-items-start"
-  >
-    <nav
-      aria-label="breadcrumb"
-      className=""
-    >
-      <ol
-        className="breadcrumb"
-      >
-        <li
-          aria-current={undefined}
-          className="breadcrumb-item"
-        >
-          <a
-            href="/public/apps/dashboard"
-          >
-            Home
-          </a>
-        </li>
-        <li
-          aria-current="page"
-          className="active breadcrumb-item"
-        >
-          Payer Space
-        </li>
-      </ol>
-    </nav>
-     
-    <span
-      className="ml-auto"
-      style={
-        Object {
-          "paddingTop": "12px",
-        }
-      }
-    >
-      Need Help?
-       
-      <a
-        href="https://www.youtube.com/watch?v=GgwE94KZJ7E"
-        rel="noopener noreferrer"
-        target="_blank"
-      >
-        Watch a demo
-      </a>
-       
-      for 
-      Appeals
-    </span>
-  </div>,
-  <h1
-    className="h4 page-header page-header-brand"
-  >
-    <div
-      className="page-header-title"
-    >
-       
-      <p>
-        this is cool
-      </p>
-    </div>
-  </h1>,
-]
+  </h1>
+</div>
 `;

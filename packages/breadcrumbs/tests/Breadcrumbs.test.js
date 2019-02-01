@@ -1,18 +1,19 @@
 import React from 'react';
-import renderer from 'react-test-renderer';
+import { render, cleanup } from 'react-testing-library';
 import Breadcrumbs from '..';
+
+afterEach(cleanup);
 
 describe('Breadcrumbs', () => {
   test('should render', () => {
-    const component = renderer.create(<Breadcrumbs active="" />);
-    const json = component.toJSON();
-    expect(json).toMatchSnapshot();
+    const { container } = render(<Breadcrumbs active="" />);
+    expect(container.firstChild).toMatchSnapshot();
   });
 
   test('should render child as current page', () => {
-    const component = renderer.create(<Breadcrumbs active="Payer Space" />);
-    const json = component.toJSON();
-    expect(json).toMatchSnapshot();
+    const { container } = render(<Breadcrumbs active="Payer Space" />);
+
+    expect(container.firstChild).toMatchSnapshot();
   });
 
   test('should render crumbs', () => {
@@ -26,11 +27,10 @@ describe('Breadcrumbs', () => {
         url: '/grand-parent-page',
       },
     ];
-    const component = renderer.create(
+    const { container } = render(
       <Breadcrumbs crumbs={crumbs} active="Payer Space" />
     );
-    const json = component.toJSON();
-    expect(json).toMatchSnapshot();
+    expect(container.firstChild).toMatchSnapshot();
   });
 
   test('should render crumbs with missing values', () => {
@@ -44,11 +44,10 @@ describe('Breadcrumbs', () => {
         url: '',
       },
     ];
-    const component = renderer.create(
+    const { container } = render(
       <Breadcrumbs crumbs={crumbs} active="Payer Space" />
     );
-    const json = component.toJSON();
-    expect(json).toMatchSnapshot();
+    expect(container.firstChild).toMatchSnapshot();
   });
 
   test('should render custom ellipse', () => {
@@ -58,10 +57,10 @@ describe('Breadcrumbs', () => {
         url: '',
       },
     ];
-    const component = renderer.create(
+    const { container } = render(
       <Breadcrumbs crumbs={crumbs} emptyState="???" active="Payer Space" />
     );
-    const json = component.toJSON();
-    expect(json).toMatchSnapshot();
+
+    expect(container.firstChild).toMatchSnapshot();
   });
 });

@@ -1,123 +1,98 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`Feedback should render 1`] = `
-<div
-  className=" hidden-print dropdown"
-  onKeyDown={[Function]}
->
-  <button
-    aria-expanded={false}
-    aria-haspopup={true}
-    className="btn btn-light"
-    onClick={[Function]}
-    type="button"
-  >
-    Give Feedback
-  </button>
+<div>
   <div
-    aria-hidden={true}
-    className="p-3 dropdown-menu dropdown-menu-right"
-    role="menu"
-    style={
-      Object {
-        "width": "400px",
-      }
-    }
-    tabIndex="-1"
-    x-placement={undefined}
+    class=" hidden-print dropdown"
   >
-    <div
-      className="text-center"
+    <button
+      aria-expanded="false"
+      aria-haspopup="true"
+      class="btn btn-light"
+      type="button"
     >
-      <p>
-        Tell us what you think about Payer Space.
-      </p>
+      Give Feedback
+    </button>
+    <div
+      aria-hidden="true"
+      class="p-3 dropdown-menu dropdown-menu-right"
+      role="menu"
+      style="width: 400px;"
+      tabindex="-1"
+    >
       <div
-        className="btn-group"
-        role="group"
+        class="text-center"
       >
-        <button
-          className="btn btn-light"
-          onClick={[Function]}
-          style={
-            Object {
-              "fontSize": "1.4em",
-              "padding": ".2em .4em",
-            }
-          }
-          type="button"
+        <p>
+          Tell us what you think about Payer Space.
+        </p>
+        <div
+          class="btn-group"
+          role="group"
         >
-          <span
-            className="icon icon-smile"
-          />
-          <span
-            className="sr-only"
+          <button
+            class="btn btn-light"
+            style="font-size: 1.4em; padding: .2em .4em;"
+            type="button"
           >
-            Smiley face
-          </span>
-        </button>
-        <button
-          className="btn btn-light"
-          onClick={[Function]}
-          style={
-            Object {
-              "fontSize": "1.4em",
-              "padding": ".2em .4em",
-            }
-          }
-          type="button"
-        >
-          <span
-            className="icon icon-meh"
-          />
-          <span
-            className="sr-only"
+            <span
+              class="icon icon-smile"
+            />
+            <span
+              class="sr-only"
+            >
+              Smiley face
+            </span>
+          </button>
+          <button
+            class="btn btn-light"
+            style="font-size: 1.4em; padding: .2em .4em;"
+            type="button"
           >
-            Meh face
-          </span>
-        </button>
-        <button
-          className="btn btn-light"
-          onClick={[Function]}
-          style={
-            Object {
-              "fontSize": "1.4em",
-              "padding": ".2em .4em",
-            }
-          }
-          type="button"
-        >
-          <span
-            className="icon icon-frown"
-          />
-          <span
-            className="sr-only"
+            <span
+              class="icon icon-meh"
+            />
+            <span
+              class="sr-only"
+            >
+              Meh face
+            </span>
+          </button>
+          <button
+            class="btn btn-light"
+            style="font-size: 1.4em; padding: .2em .4em;"
+            type="button"
           >
-            Frowny face
-          </span>
-        </button>
-      </div>
-      <div
-        className="invalid-feedback"
-      >
-        Please select one of the faces above
-      </div>
-      <textarea
-        aria-label="Please provide any feedback, requests, and/or defects."
-        className="mt-3 form-control"
-        onChange={[Function]}
-        placeholder="Feedback? Requests? Defects? (optional)"
-      />
-      <div
-        className="mt-3 text-right"
-      >
-        <button
-          className="btn btn-primary"
-          onClick={[Function]}
-          type="button"
+            <span
+              class="icon icon-frown"
+            />
+            <span
+              class="sr-only"
+            >
+              Frowny face
+            </span>
+          </button>
+        </div>
+        <div
+          class="invalid-feedback"
         >
-          Send
-        </button>
+          Please select one of the faces above
+        </div>
+        <textarea
+          aria-label="Please provide any feedback, requests, and/or defects."
+          class="mt-3 form-control"
+          placeholder="Feedback? Requests? Defects? (optional)"
+        />
+        <div
+          class="mt-3 text-right"
+        >
+          <button
+            class="btn btn-primary"
+            type="button"
+          >
+            Send
+          </button>
+        </div>
       </div>
     </div>
   </div>
@@ -125,123 +100,98 @@ exports[`Feedback should render 1`] = `
 `;
 
 exports[`Feedback should render custom button color 1`] = `
-<div
-  className=" hidden-print dropdown"
-  onKeyDown={[Function]}
->
-  <button
-    aria-expanded={false}
-    aria-haspopup={true}
-    className="btn btn-success"
-    onClick={[Function]}
-    type="button"
-  >
-    Give Feedback
-  </button>
+<div>
   <div
-    aria-hidden={true}
-    className="p-3 dropdown-menu dropdown-menu-right"
-    role="menu"
-    style={
-      Object {
-        "width": "400px",
-      }
-    }
-    tabIndex="-1"
-    x-placement={undefined}
+    class=" hidden-print dropdown"
   >
-    <div
-      className="text-center"
+    <button
+      aria-expanded="false"
+      aria-haspopup="true"
+      class="btn btn-success"
+      type="button"
     >
-      <p>
-        Tell us what you think about Payer Space.
-      </p>
+      Give Feedback
+    </button>
+    <div
+      aria-hidden="true"
+      class="p-3 dropdown-menu dropdown-menu-right"
+      role="menu"
+      style="width: 400px;"
+      tabindex="-1"
+    >
       <div
-        className="btn-group"
-        role="group"
+        class="text-center"
       >
-        <button
-          className="btn btn-light"
-          onClick={[Function]}
-          style={
-            Object {
-              "fontSize": "1.4em",
-              "padding": ".2em .4em",
-            }
-          }
-          type="button"
+        <p>
+          Tell us what you think about Payer Space.
+        </p>
+        <div
+          class="btn-group"
+          role="group"
         >
-          <span
-            className="icon icon-smile"
-          />
-          <span
-            className="sr-only"
+          <button
+            class="btn btn-light"
+            style="font-size: 1.4em; padding: .2em .4em;"
+            type="button"
           >
-            Smiley face
-          </span>
-        </button>
-        <button
-          className="btn btn-light"
-          onClick={[Function]}
-          style={
-            Object {
-              "fontSize": "1.4em",
-              "padding": ".2em .4em",
-            }
-          }
-          type="button"
-        >
-          <span
-            className="icon icon-meh"
-          />
-          <span
-            className="sr-only"
+            <span
+              class="icon icon-smile"
+            />
+            <span
+              class="sr-only"
+            >
+              Smiley face
+            </span>
+          </button>
+          <button
+            class="btn btn-light"
+            style="font-size: 1.4em; padding: .2em .4em;"
+            type="button"
           >
-            Meh face
-          </span>
-        </button>
-        <button
-          className="btn btn-light"
-          onClick={[Function]}
-          style={
-            Object {
-              "fontSize": "1.4em",
-              "padding": ".2em .4em",
-            }
-          }
-          type="button"
-        >
-          <span
-            className="icon icon-frown"
-          />
-          <span
-            className="sr-only"
+            <span
+              class="icon icon-meh"
+            />
+            <span
+              class="sr-only"
+            >
+              Meh face
+            </span>
+          </button>
+          <button
+            class="btn btn-light"
+            style="font-size: 1.4em; padding: .2em .4em;"
+            type="button"
           >
-            Frowny face
-          </span>
-        </button>
-      </div>
-      <div
-        className="invalid-feedback"
-      >
-        Please select one of the faces above
-      </div>
-      <textarea
-        aria-label="Please provide any feedback, requests, and/or defects."
-        className="mt-3 form-control"
-        onChange={[Function]}
-        placeholder="Feedback? Requests? Defects? (optional)"
-      />
-      <div
-        className="mt-3 text-right"
-      >
-        <button
-          className="btn btn-primary"
-          onClick={[Function]}
-          type="button"
+            <span
+              class="icon icon-frown"
+            />
+            <span
+              class="sr-only"
+            >
+              Frowny face
+            </span>
+          </button>
+        </div>
+        <div
+          class="invalid-feedback"
         >
-          Send
-        </button>
+          Please select one of the faces above
+        </div>
+        <textarea
+          aria-label="Please provide any feedback, requests, and/or defects."
+          class="mt-3 form-control"
+          placeholder="Feedback? Requests? Defects? (optional)"
+        />
+        <div
+          class="mt-3 text-right"
+        >
+          <button
+            class="btn btn-primary"
+            type="button"
+          >
+            Send
+          </button>
+        </div>
       </div>
     </div>
   </div>
@@ -249,123 +199,98 @@ exports[`Feedback should render custom button color 1`] = `
 `;
 
 exports[`Feedback should render custom button text 1`] = `
-<div
-  className=" hidden-print dropdown"
-  onKeyDown={[Function]}
->
-  <button
-    aria-expanded={false}
-    aria-haspopup={true}
-    className="btn btn-light"
-    onClick={[Function]}
-    type="button"
-  >
-    Provide Valuable Feedback
-  </button>
+<div>
   <div
-    aria-hidden={true}
-    className="p-3 dropdown-menu dropdown-menu-right"
-    role="menu"
-    style={
-      Object {
-        "width": "400px",
-      }
-    }
-    tabIndex="-1"
-    x-placement={undefined}
+    class=" hidden-print dropdown"
   >
-    <div
-      className="text-center"
+    <button
+      aria-expanded="false"
+      aria-haspopup="true"
+      class="btn btn-light"
+      type="button"
     >
-      <p>
-        Tell us what you think about Payer Space.
-      </p>
+      Provide Valuable Feedback
+    </button>
+    <div
+      aria-hidden="true"
+      class="p-3 dropdown-menu dropdown-menu-right"
+      role="menu"
+      style="width: 400px;"
+      tabindex="-1"
+    >
       <div
-        className="btn-group"
-        role="group"
+        class="text-center"
       >
-        <button
-          className="btn btn-light"
-          onClick={[Function]}
-          style={
-            Object {
-              "fontSize": "1.4em",
-              "padding": ".2em .4em",
-            }
-          }
-          type="button"
+        <p>
+          Tell us what you think about Payer Space.
+        </p>
+        <div
+          class="btn-group"
+          role="group"
         >
-          <span
-            className="icon icon-smile"
-          />
-          <span
-            className="sr-only"
+          <button
+            class="btn btn-light"
+            style="font-size: 1.4em; padding: .2em .4em;"
+            type="button"
           >
-            Smiley face
-          </span>
-        </button>
-        <button
-          className="btn btn-light"
-          onClick={[Function]}
-          style={
-            Object {
-              "fontSize": "1.4em",
-              "padding": ".2em .4em",
-            }
-          }
-          type="button"
-        >
-          <span
-            className="icon icon-meh"
-          />
-          <span
-            className="sr-only"
+            <span
+              class="icon icon-smile"
+            />
+            <span
+              class="sr-only"
+            >
+              Smiley face
+            </span>
+          </button>
+          <button
+            class="btn btn-light"
+            style="font-size: 1.4em; padding: .2em .4em;"
+            type="button"
           >
-            Meh face
-          </span>
-        </button>
-        <button
-          className="btn btn-light"
-          onClick={[Function]}
-          style={
-            Object {
-              "fontSize": "1.4em",
-              "padding": ".2em .4em",
-            }
-          }
-          type="button"
-        >
-          <span
-            className="icon icon-frown"
-          />
-          <span
-            className="sr-only"
+            <span
+              class="icon icon-meh"
+            />
+            <span
+              class="sr-only"
+            >
+              Meh face
+            </span>
+          </button>
+          <button
+            class="btn btn-light"
+            style="font-size: 1.4em; padding: .2em .4em;"
+            type="button"
           >
-            Frowny face
-          </span>
-        </button>
-      </div>
-      <div
-        className="invalid-feedback"
-      >
-        Please select one of the faces above
-      </div>
-      <textarea
-        aria-label="Please provide any feedback, requests, and/or defects."
-        className="mt-3 form-control"
-        onChange={[Function]}
-        placeholder="Feedback? Requests? Defects? (optional)"
-      />
-      <div
-        className="mt-3 text-right"
-      >
-        <button
-          className="btn btn-primary"
-          onClick={[Function]}
-          type="button"
+            <span
+              class="icon icon-frown"
+            />
+            <span
+              class="sr-only"
+            >
+              Frowny face
+            </span>
+          </button>
+        </div>
+        <div
+          class="invalid-feedback"
         >
-          Send
-        </button>
+          Please select one of the faces above
+        </div>
+        <textarea
+          aria-label="Please provide any feedback, requests, and/or defects."
+          class="mt-3 form-control"
+          placeholder="Feedback? Requests? Defects? (optional)"
+        />
+        <div
+          class="mt-3 text-right"
+        >
+          <button
+            class="btn btn-primary"
+            type="button"
+          >
+            Send
+          </button>
+        </div>
       </div>
     </div>
   </div>
@@ -373,123 +298,98 @@ exports[`Feedback should render custom button text 1`] = `
 `;
 
 exports[`Feedback should render custom className 1`] = `
-<div
-  className="junk and-stuff hidden-print dropdown"
-  onKeyDown={[Function]}
->
-  <button
-    aria-expanded={false}
-    aria-haspopup={true}
-    className="btn btn-light"
-    onClick={[Function]}
-    type="button"
-  >
-    Give Feedback
-  </button>
+<div>
   <div
-    aria-hidden={true}
-    className="p-3 dropdown-menu dropdown-menu-right"
-    role="menu"
-    style={
-      Object {
-        "width": "400px",
-      }
-    }
-    tabIndex="-1"
-    x-placement={undefined}
+    class="junk and-stuff hidden-print dropdown"
   >
-    <div
-      className="text-center"
+    <button
+      aria-expanded="false"
+      aria-haspopup="true"
+      class="btn btn-light"
+      type="button"
     >
-      <p>
-        Tell us what you think about Payer Space.
-      </p>
+      Give Feedback
+    </button>
+    <div
+      aria-hidden="true"
+      class="p-3 dropdown-menu dropdown-menu-right"
+      role="menu"
+      style="width: 400px;"
+      tabindex="-1"
+    >
       <div
-        className="btn-group"
-        role="group"
+        class="text-center"
       >
-        <button
-          className="btn btn-light"
-          onClick={[Function]}
-          style={
-            Object {
-              "fontSize": "1.4em",
-              "padding": ".2em .4em",
-            }
-          }
-          type="button"
+        <p>
+          Tell us what you think about Payer Space.
+        </p>
+        <div
+          class="btn-group"
+          role="group"
         >
-          <span
-            className="icon icon-smile"
-          />
-          <span
-            className="sr-only"
+          <button
+            class="btn btn-light"
+            style="font-size: 1.4em; padding: .2em .4em;"
+            type="button"
           >
-            Smiley face
-          </span>
-        </button>
-        <button
-          className="btn btn-light"
-          onClick={[Function]}
-          style={
-            Object {
-              "fontSize": "1.4em",
-              "padding": ".2em .4em",
-            }
-          }
-          type="button"
-        >
-          <span
-            className="icon icon-meh"
-          />
-          <span
-            className="sr-only"
+            <span
+              class="icon icon-smile"
+            />
+            <span
+              class="sr-only"
+            >
+              Smiley face
+            </span>
+          </button>
+          <button
+            class="btn btn-light"
+            style="font-size: 1.4em; padding: .2em .4em;"
+            type="button"
           >
-            Meh face
-          </span>
-        </button>
-        <button
-          className="btn btn-light"
-          onClick={[Function]}
-          style={
-            Object {
-              "fontSize": "1.4em",
-              "padding": ".2em .4em",
-            }
-          }
-          type="button"
-        >
-          <span
-            className="icon icon-frown"
-          />
-          <span
-            className="sr-only"
+            <span
+              class="icon icon-meh"
+            />
+            <span
+              class="sr-only"
+            >
+              Meh face
+            </span>
+          </button>
+          <button
+            class="btn btn-light"
+            style="font-size: 1.4em; padding: .2em .4em;"
+            type="button"
           >
-            Frowny face
-          </span>
-        </button>
-      </div>
-      <div
-        className="invalid-feedback"
-      >
-        Please select one of the faces above
-      </div>
-      <textarea
-        aria-label="Please provide any feedback, requests, and/or defects."
-        className="mt-3 form-control"
-        onChange={[Function]}
-        placeholder="Feedback? Requests? Defects? (optional)"
-      />
-      <div
-        className="mt-3 text-right"
-      >
-        <button
-          className="btn btn-primary"
-          onClick={[Function]}
-          type="button"
+            <span
+              class="icon icon-frown"
+            />
+            <span
+              class="sr-only"
+            >
+              Frowny face
+            </span>
+          </button>
+        </div>
+        <div
+          class="invalid-feedback"
         >
-          Send
-        </button>
+          Please select one of the faces above
+        </div>
+        <textarea
+          aria-label="Please provide any feedback, requests, and/or defects."
+          class="mt-3 form-control"
+          placeholder="Feedback? Requests? Defects? (optional)"
+        />
+        <div
+          class="mt-3 text-right"
+        >
+          <button
+            class="btn btn-primary"
+            type="button"
+          >
+            Send
+          </button>
+        </div>
       </div>
     </div>
   </div>
@@ -497,138 +397,113 @@ exports[`Feedback should render custom className 1`] = `
 `;
 
 exports[`Feedback should render custom form props 1`] = `
-<div
-  className=" hidden-print dropdown"
-  onKeyDown={[Function]}
->
-  <button
-    aria-expanded={false}
-    aria-haspopup={true}
-    className="btn btn-light"
-    onClick={[Function]}
-    type="button"
-  >
-    Give Feedback
-  </button>
+<div>
   <div
-    aria-hidden={true}
-    className="p-3 dropdown-menu dropdown-menu-right"
-    role="menu"
-    style={
-      Object {
-        "width": "400px",
-      }
-    }
-    tabIndex="-1"
-    x-placement={undefined}
+    class=" hidden-print dropdown"
   >
-    <div
-      className="text-center"
+    <button
+      aria-expanded="false"
+      aria-haspopup="true"
+      class="btn btn-light"
+      type="button"
     >
-      <p>
-        Tell us what you think about Payer Space.
-      </p>
+      Give Feedback
+    </button>
+    <div
+      aria-hidden="true"
+      class="p-3 dropdown-menu dropdown-menu-right"
+      role="menu"
+      style="width: 400px;"
+      tabindex="-1"
+    >
       <div
-        className="btn-group"
-        role="group"
+        class="text-center"
       >
-        <button
-          className="btn btn-light"
-          onClick={[Function]}
-          style={
-            Object {
-              "fontSize": "1.4em",
-              "padding": ".2em .4em",
-            }
-          }
-          type="button"
+        <p>
+          Tell us what you think about Payer Space.
+        </p>
+        <div
+          class="btn-group"
+          role="group"
         >
-          <span
-            className="icon icon-smile"
-          />
-          <span
-            className="sr-only"
+          <button
+            class="btn btn-light"
+            style="font-size: 1.4em; padding: .2em .4em;"
+            type="button"
           >
-            Smiley face
-          </span>
-        </button>
-        <button
-          className="btn btn-light"
-          onClick={[Function]}
-          style={
-            Object {
-              "fontSize": "1.4em",
-              "padding": ".2em .4em",
-            }
-          }
-          type="button"
-        >
-          <span
-            className="icon icon-meh"
-          />
-          <span
-            className="sr-only"
+            <span
+              class="icon icon-smile"
+            />
+            <span
+              class="sr-only"
+            >
+              Smiley face
+            </span>
+          </button>
+          <button
+            class="btn btn-light"
+            style="font-size: 1.4em; padding: .2em .4em;"
+            type="button"
           >
-            Meh face
-          </span>
-        </button>
-        <button
-          className="btn btn-light"
-          onClick={[Function]}
-          style={
-            Object {
-              "fontSize": "1.4em",
-              "padding": ".2em .4em",
-            }
-          }
-          type="button"
-        >
-          <span
-            className="icon icon-frown"
-          />
-          <span
-            className="sr-only"
+            <span
+              class="icon icon-meh"
+            />
+            <span
+              class="sr-only"
+            >
+              Meh face
+            </span>
+          </button>
+          <button
+            class="btn btn-light"
+            style="font-size: 1.4em; padding: .2em .4em;"
+            type="button"
           >
-            Frowny face
-          </span>
-        </button>
-      </div>
-      <div
-        className="invalid-feedback"
-      >
-        Please select one of the faces above
-      </div>
-      <select
-        className="custom-select"
-        type="select"
-      >
-        <option
-          value="payerSpace"
+            <span
+              class="icon icon-frown"
+            />
+            <span
+              class="sr-only"
+            >
+              Frowny face
+            </span>
+          </button>
+        </div>
+        <div
+          class="invalid-feedback"
         >
-          Payer Space
-        </option>
-        <option
-          value="wholeSite"
+          Please select one of the faces above
+        </div>
+        <select
+          class="custom-select"
+          type="select"
         >
-          Whole Site
-        </option>
-      </select>
-      <textarea
-        aria-label="Please provide any feedback, requests, and/or defects."
-        className="mt-3 form-control"
-        onChange={[Function]}
-        placeholder="Feedback? Requests? Defects? (optional)"
-      />
-      <div
-        className="mt-3 text-right"
-      >
-        <button
-          className="btn btn-primary"
-          onClick={[Function]}
-          type="button"
+          <option
+            value="payerSpace"
+          >
+            Payer Space
+          </option>
+          <option
+            value="wholeSite"
+          >
+            Whole Site
+          </option>
+        </select>
+        <textarea
+          aria-label="Please provide any feedback, requests, and/or defects."
+          class="mt-3 form-control"
+          placeholder="Feedback? Requests? Defects? (optional)"
+        />
+        <div
+          class="mt-3 text-right"
         >
-          Send
-        </button>
+          <button
+            class="btn btn-primary"
+            type="button"
+          >
+            Send
+          </button>
+        </div>
       </div>
     </div>
   </div>
@@ -636,123 +511,98 @@ exports[`Feedback should render custom form props 1`] = `
 `;
 
 exports[`Feedback should render custom prompt text 1`] = `
-<div
-  className=" hidden-print dropdown"
-  onKeyDown={[Function]}
->
-  <button
-    aria-expanded={false}
-    aria-haspopup={true}
-    className="btn btn-light"
-    onClick={[Function]}
-    type="button"
-  >
-    Give Feedback
-  </button>
+<div>
   <div
-    aria-hidden={true}
-    className="p-3 dropdown-menu dropdown-menu-right"
-    role="menu"
-    style={
-      Object {
-        "width": "400px",
-      }
-    }
-    tabIndex="-1"
-    x-placement={undefined}
+    class=" hidden-print dropdown"
   >
-    <div
-      className="text-center"
+    <button
+      aria-expanded="false"
+      aria-haspopup="true"
+      class="btn btn-light"
+      type="button"
     >
-      <p>
-        Provide same feedback
-      </p>
+      Give Feedback
+    </button>
+    <div
+      aria-hidden="true"
+      class="p-3 dropdown-menu dropdown-menu-right"
+      role="menu"
+      style="width: 400px;"
+      tabindex="-1"
+    >
       <div
-        className="btn-group"
-        role="group"
+        class="text-center"
       >
-        <button
-          className="btn btn-light"
-          onClick={[Function]}
-          style={
-            Object {
-              "fontSize": "1.4em",
-              "padding": ".2em .4em",
-            }
-          }
-          type="button"
+        <p>
+          Provide same feedback
+        </p>
+        <div
+          class="btn-group"
+          role="group"
         >
-          <span
-            className="icon icon-smile"
-          />
-          <span
-            className="sr-only"
+          <button
+            class="btn btn-light"
+            style="font-size: 1.4em; padding: .2em .4em;"
+            type="button"
           >
-            Smiley face
-          </span>
-        </button>
-        <button
-          className="btn btn-light"
-          onClick={[Function]}
-          style={
-            Object {
-              "fontSize": "1.4em",
-              "padding": ".2em .4em",
-            }
-          }
-          type="button"
-        >
-          <span
-            className="icon icon-meh"
-          />
-          <span
-            className="sr-only"
+            <span
+              class="icon icon-smile"
+            />
+            <span
+              class="sr-only"
+            >
+              Smiley face
+            </span>
+          </button>
+          <button
+            class="btn btn-light"
+            style="font-size: 1.4em; padding: .2em .4em;"
+            type="button"
           >
-            Meh face
-          </span>
-        </button>
-        <button
-          className="btn btn-light"
-          onClick={[Function]}
-          style={
-            Object {
-              "fontSize": "1.4em",
-              "padding": ".2em .4em",
-            }
-          }
-          type="button"
-        >
-          <span
-            className="icon icon-frown"
-          />
-          <span
-            className="sr-only"
+            <span
+              class="icon icon-meh"
+            />
+            <span
+              class="sr-only"
+            >
+              Meh face
+            </span>
+          </button>
+          <button
+            class="btn btn-light"
+            style="font-size: 1.4em; padding: .2em .4em;"
+            type="button"
           >
-            Frowny face
-          </span>
-        </button>
-      </div>
-      <div
-        className="invalid-feedback"
-      >
-        Please select one of the faces above
-      </div>
-      <textarea
-        aria-label="Please provide any feedback, requests, and/or defects."
-        className="mt-3 form-control"
-        onChange={[Function]}
-        placeholder="Feedback? Requests? Defects? (optional)"
-      />
-      <div
-        className="mt-3 text-right"
-      >
-        <button
-          className="btn btn-primary"
-          onClick={[Function]}
-          type="button"
+            <span
+              class="icon icon-frown"
+            />
+            <span
+              class="sr-only"
+            >
+              Frowny face
+            </span>
+          </button>
+        </div>
+        <div
+          class="invalid-feedback"
         >
-          Send
-        </button>
+          Please select one of the faces above
+        </div>
+        <textarea
+          aria-label="Please provide any feedback, requests, and/or defects."
+          class="mt-3 form-control"
+          placeholder="Feedback? Requests? Defects? (optional)"
+        />
+        <div
+          class="mt-3 text-right"
+        >
+          <button
+            class="btn btn-primary"
+            type="button"
+          >
+            Send
+          </button>
+        </div>
       </div>
     </div>
   </div>

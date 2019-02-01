@@ -1,35 +1,40 @@
 import React from 'react';
-import renderer from 'react-test-renderer';
+import { render, cleanup } from 'react-testing-library';
 import Authorize from '..';
+
+afterEach(cleanup);
 
 describe('Authorize', () => {
   test('should render', () => {
-    const component = renderer.create(<Authorize permissions="1234" loader />);
-    const json = component.toJSON();
-    expect(json).toMatchSnapshot();
+    const { container } = render(<Authorize permissions="1234" loader />);
+
+    expect(container.firstChild).toMatchSnapshot();
   });
+
   test('should render with single permission', () => {
-    const component = renderer.create(
+    const { container } = render(
       <Authorize
         permissions="1234"
         unauthorized="You do not have permission to see this"
       />
     );
-    const json = component.toJSON();
-    expect(json).toMatchSnapshot();
+
+    expect(container).toMatchSnapshot();
   });
+
   test('should render with array of permissions', () => {
-    const component = renderer.create(
+    const { container } = render(
       <Authorize
         permissions={['1234', 2345, [3456, '4567']]}
         unauthorized="You do not have permission to see this"
       />
     );
-    const json = component.toJSON();
-    expect(json).toMatchSnapshot();
+
+    expect(container.firstChild).toMatchSnapshot();
   });
+
   test('should render negate permissions', () => {
-    const component = renderer.create(
+    const { container } = render(
       <Authorize
         permissions="1234"
         negate
@@ -38,7 +43,7 @@ describe('Authorize', () => {
         You can see this
       </Authorize>
     );
-    const json = component.toJSON();
-    expect(json).toMatchSnapshot();
+
+    expect(container.firstChild).toMatchSnapshot();
   });
 });

@@ -1,25 +1,33 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`ListGroup should render 1`] = `
-<ul
-  className="list-group"
-/>
+<div>
+  <ul
+    class="list-group"
+  />
+</div>
 `;
 
 exports[`ListGroup should render cards 1`] = `
-<ul
-  className="list-group-cards list-group"
-/>
+<div>
+  <ul
+    class="list-group-cards list-group"
+  />
+</div>
 `;
 
 exports[`ListGroup should render selectable 1`] = `
-<ul
-  className="list-group-selectable list-group"
-/>
+<div>
+  <ul
+    class="list-group-selectable list-group"
+  />
+</div>
 `;
 
 exports[`ListGroup should render selectable cards 1`] = `
-<ul
-  className="list-group-cards list-group-selectable list-group"
-/>
+<div>
+  <ul
+    class="list-group-cards list-group-selectable list-group"
+  />
+</div>
 `;

@@ -1,53 +1,62 @@
 import React from 'react';
-import renderer from 'react-test-renderer';
+import { render, cleanup } from 'react-testing-library';
 import AppIcon from '..';
+
+afterEach(cleanup);
 
 describe('AppIcon', () => {
   test('should render', () => {
-    const component = renderer.create(<AppIcon />);
-    const json = component.toJSON();
-    expect(json).toMatchSnapshot();
+    const { container } = render(<AppIcon />);
+    expect(container.firstChild).toMatchSnapshot();
   });
 
   test('should render color', () => {
-    const component = renderer.create(<AppIcon color="green" />);
-    const json = component.toJSON();
-    expect(json).toMatchSnapshot();
+    const { container } = render(<AppIcon color="green" />);
+
+    expect(container.firstChild.className).toContain('app-icon-green');
+    expect(container.firstChild).toMatchSnapshot();
   });
 
   test('should render size', () => {
-    const component = renderer.create(<AppIcon size="lg" />);
-    const json = component.toJSON();
-    expect(json).toMatchSnapshot();
+    const { container } = render(<AppIcon size="lg" />);
+
+    expect(container.firstChild.className).toContain('app-icon-lg');
+    expect(container.firstChild).toMatchSnapshot();
   });
 
   test('should render children', () => {
-    const component = renderer.create(<AppIcon>AI</AppIcon>);
-    const json = component.toJSON();
-    expect(json).toMatchSnapshot();
+    const { container } = render(<AppIcon>AI</AppIcon>);
+
+    expect(container.firstChild.textContent).toEqual('AI');
+    expect(container.firstChild).toMatchSnapshot();
   });
 
   test('should render branded', () => {
-    const component = renderer.create(<AppIcon branded />);
-    const json = component.toJSON();
-    expect(json).toMatchSnapshot();
+    const { container } = render(<AppIcon branded />);
+
+    expect(container.firstChild).toMatchSnapshot();
   });
 
   test('should render additional classNames', () => {
-    const component = renderer.create(<AppIcon className="and-more" />);
-    const json = component.toJSON();
-    expect(json).toMatchSnapshot();
+    const { container } = render(<AppIcon className="and-more" />);
+
+    expect(container.firstChild.className).toContain('and-more');
+    expect(container).toMatchSnapshot();
   });
 
   test('should render additional attributes', () => {
-    const component = renderer.create(<AppIcon title="Availity Icon" />);
-    const json = component.toJSON();
-    expect(json).toMatchSnapshot();
+    const { container, getAllByTitle } = render(
+      <AppIcon title="Availity Icon" />
+    );
+
+    expect(getAllByTitle('Availity Icon')).toBeDefined();
+    expect(container).toMatchSnapshot();
   });
 
   test('should render custom tags', () => {
-    const component = renderer.create(<AppIcon tag="i" />);
-    const json = component.toJSON();
-    expect(json).toMatchSnapshot();
+    const { container } = render(<AppIcon tag="i" />);
+
+    expect(container.firstChild.tagName.toLowerCase()).toEqual('i');
+    expect(container).toMatchSnapshot();
   });
 });

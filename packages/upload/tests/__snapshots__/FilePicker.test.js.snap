@@ -1,21 +1,22 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`Upload should render 1`] = `
-<div
-  className="custom-file"
->
-  <input
-    className="custom-file-input"
-    id="filePicker-1"
-    onChange={[Function]}
-    type="file"
-    value=""
-  />
-  <label
-    className="custom-file-label"
-    htmlFor="filePicker-1"
+<div>
+  <div
+    class="custom-file"
   >
-    Choose file
-  </label>
+    <input
+      class="custom-file-input"
+      id="filePicker-1"
+      type="file"
+      value=""
+    />
+    <label
+      class="custom-file-label"
+      for="filePicker-1"
+    >
+      Choose file
+    </label>
+  </div>
 </div>
 `;

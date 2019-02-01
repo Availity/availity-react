@@ -1,29 +1,29 @@
 import React from 'react';
-import renderer from 'react-test-renderer';
+import { render } from 'react-testing-library';
 import ListGroup from '..';
 
 describe('ListGroup', () => {
   test('should render', () => {
-    const component = renderer.create(<ListGroup />);
-    const json = component.toJSON();
-    expect(json).toMatchSnapshot();
+    const { container } = render(<ListGroup />);
+
+    expect(container).toMatchSnapshot();
   });
 
   test('should render cards', () => {
-    const component = renderer.create(<ListGroup cards />);
-    const json = component.toJSON();
-    expect(json).toMatchSnapshot();
+    const { container } = render(<ListGroup cards />);
+
+    expect(container).toMatchSnapshot();
   });
 
   test('should render selectable', () => {
-    const component = renderer.create(<ListGroup selectable />);
-    const json = component.toJSON();
-    expect(json).toMatchSnapshot();
+    const { container } = render(<ListGroup selectable />);
+
+    expect(container).toMatchSnapshot();
   });
 
   test('should render selectable cards', () => {
-    const component = renderer.create(<ListGroup selectable cards />);
-    const json = component.toJSON();
-    expect(json).toMatchSnapshot();
+    const { container } = render(<ListGroup selectable cards />);
+
+    expect(container).toMatchSnapshot();
   });
 });
