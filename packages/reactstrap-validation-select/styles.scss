@@ -20,21 +20,37 @@
 .av-select .av__placeholder {
   color: #666;
 }
+
 .av__value-container {
   width: 90%;
 }
+
 .av__value-container--is-multi.av__value-container--has-value.av__value-container {
   width: 85%;
 }
-.av__value-container > div,
+
+.av__value-container>div,
 .av__input,
-.av__input > input {
+.av__input>input {
   max-width: 99%;
 }
-.av__input > input + div {
+
+.av__input>input+div {
   max-width: 100%;
 }
+
 svg,
 use {
   pointer-events: none;
+}
+
+.av-select.form-control {
+  padding: 0;
+  border-width: 0;
+  .av__control {
+    border-radius: inherit;
+    &.av__control--is-focused {
+      z-index: 3;
+    }
+  }
 }
