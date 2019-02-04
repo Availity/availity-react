@@ -104,7 +104,7 @@ class AvResourceSelect extends Component {
             : resp.data[getResult]) || this.data;
 
         if (!Array.isArray(items)) {
-          throw new Error(
+          throw new TypeError(
             `Expected data to be an array but got \`${typeof items}\`. Use the \`getData\` prop to specify how to get the data from the API response.`
           );
         }

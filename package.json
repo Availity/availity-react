@@ -25,6 +25,7 @@
     "check": "npm-check -u && lerna exec --bail false --concurrency 1 -- npm-check -u"
   },
   "devDependencies": {
+    "@availity/workflow-babel-preset": "^4.0.4",
     "@babel/core": "^7.2.2",
     "@babel/plugin-proposal-class-properties": "^7.2.1",
     "@babel/plugin-proposal-decorators": "^7.2.2",
@@ -47,26 +48,15 @@
     "@commitlint/config-conventional": "^7.1.2",
     "@commitlint/config-lerna-scopes": "^7.2.1",
     "babel-core": "^7.0.0-bridge.0",
-    "babel-eslint": "^10.0.1",
-    "babel-jest": "^23.4.2",
+    "babel-jest": "^24.0.0",
     "babel-plugin-dynamic-import-node": "^2.2.0",
     "conventional-changelog-cli": "^2.0.11",
     "conventional-recommended-bump": "^4.0.4",
-    "enzyme": "^3.8.0",
-    "enzyme-adapter-react-16": "^1.7.1",
-    "eslint": "^5.10.0",
-    "eslint-config-airbnb": "^17.1.0",
-    "eslint-config-airbnb-base": "^13.1.0",
-    "eslint-config-availity": "^4.0.0-alpha.2",
-    "eslint-config-prettier": "^3.3.0",
-    "eslint-plugin-import": "^2.14.0",
-    "eslint-plugin-jsx-a11y": "^6.1.2",
-    "eslint-plugin-promise": "^4.0.1",
-    "eslint-plugin-react": "^7.11.1",
+    "eslint-config-availity": "^4.0.0-alpha.5",
     "husky": "^1.2.1",
     "identity-obj-proxy": "^3.0.0",
-    "jest": "^23.6.0",
-    "jest-environment-jsdom-global": "^1.0.2",
+    "jest": "^24.0.0",
+    "jest-environment-jsdom-global": "^1.1.0",
     "lerna": "^3.6.0",
     "lint-staged": "^8.1.0",
     "node-sass": "^4.11.0",
@@ -76,7 +66,7 @@
     "raw-loader": "^1.0.0",
     "react": "^16.6.3",
     "react-dom": "^16.6.3",
-    "react-test-renderer": "^16.6.3",
+    "react-testing-library": "^5.4.4",
     "regenerator-runtime": "^0.13.1",
     "sass-loader": "^7.1.0"
   },
@@ -103,14 +93,16 @@
     "transformIgnorePatterns": [
       "<rootDir>.*(node_modules)(?!.*@availity.*).*$"
     ],
+    "setupFilesAfterEnv": [
+      "react-testing-library/cleanup-after-each"
+    ],
     "moduleNameMapper": {
       ".+\\.(css|styl|less|sass|scss|png|jpg|ttf|woff|woff2)$": "identity-obj-proxy"
     },
     "setupFiles": [
       "raf/polyfill"
     ],
-    "testEnvironment": "jest-environment-jsdom-global",
-    "setupTestFrameworkScriptFile": "<rootDir>/jest.setup.js"
+    "testEnvironment": "jest-environment-jsdom-global"
   },
   "contributors": [
     "tyson warner (https://github.com/nylon22)",
@@ -120,7 +112,7 @@
     "url": "https://github.com/Availity/availity-react/issues"
   },
   "homepage": "https://github.com/Availity/availity-react#readme",
-  "version": "1.6.0",
+  "version": "1.7.0-alpha.0",
   "main": "index.js",
   "keywords": [
     "availity",

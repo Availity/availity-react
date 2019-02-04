@@ -1,0 +1,38 @@
+{
+  "name": "@availity/page-header",
+  "version": "1.0.0",
+  "author": "Evan Sharp <evan.sharp@availity.com>",
+  "description": "The standard page header for Availity Portal Applications",
+  "main": "index.js",
+  "keywords": [
+    "react",
+    "availity"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "https://git.availity.com/projects/PUI/repos/av-react"
+  },
+  "bugs": {
+    "url": "https://jira.availity.com/projects/PLT"
+  },
+  "license": "UNLICENSED",
+  "publishConfig": {
+    "registry": "https://artifactory.availity.com/artifactory/api/npm/local-npm/"
+  },
+  "dependencies": {
+    "@availity/app-icon": "^1.0.0",
+    "@availity/breadcrumbs": "^1.0.0",
+    "@availity/feedback": "^1.0.0",
+    "@availity/payer-logo": "^1.0.0",
+    "@availity/training-link": "^1.0.0",
+    "prop-types": "^15.5.8"
+  },
+  "devDependencies": {
+    "react": "^16.3.0",
+    "react-dom": "^16.3.0",
+    "react-testing-library": "^5.4.4"
+  },
+  "peerDependencies": {
+    "react": "^16.3.0"
+  }
+}

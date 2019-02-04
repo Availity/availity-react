@@ -1,11 +1,11 @@
 import React from 'react';
-import renderer from 'react-test-renderer';
+import { render } from 'react-testing-library';
 import { FilePickerBtn } from '..';
 
 describe('Upload', () => {
   test('should render', () => {
-    const component = renderer.create(<FilePickerBtn onChange={() => {}} />);
-    const json = component.toJSON();
-    expect(json).toMatchSnapshot();
+    const { container } = render(<FilePickerBtn onChange={() => {}} />);
+
+    expect(container).toMatchSnapshot();
   });
 });

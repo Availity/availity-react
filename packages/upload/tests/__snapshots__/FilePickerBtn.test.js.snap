@@ -1,25 +1,22 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`Upload should render 1`] = `
-Array [
+<div>
   <div
-    className="d-none"
+    class="d-none"
   >
     <input
-      className="form-control-file"
+      class="form-control-file"
       id="filePicker-1"
-      onChange={[Function]}
       type="file"
       value=""
     />
-  </div>,
+  </div>
   <button
-    aria-label={null}
-    className="btn btn-primary"
-    onClick={[Function]}
+    class="btn btn-primary"
     type="button"
   >
     Select File
-  </button>,
-]
+  </button>
+</div>
 `;

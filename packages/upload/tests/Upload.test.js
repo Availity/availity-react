@@ -1,49 +1,63 @@
-import { shallow } from 'enzyme';
 import React from 'react';
-import renderer from 'react-test-renderer';
+import { render, fireEvent } from 'react-testing-library';
+// You can either import this and it will auto cleanup or do `afterEach(cleanup)`
+import 'react-testing-library/cleanup-after-each';
 import Upload from '..';
 
 describe('Upload', () => {
   test('should render', () => {
-    const component = renderer.create(
+    const { container } = render(
       <Upload clientId="a" bucketId="b" customerId="c" />
     );
-    const json = component.toJSON();
-    expect(json).toMatchSnapshot();
+
+    expect(container).toMatchSnapshot();
   });
 
   test('adding a file', () => {
-    const component = shallow(
-      <Upload clientId="a" bucketId="b" customerId="c" />
+    const { getByTestId } = render(
+      <Upload clientId="a" bucketId="b" customerId="c" showFileDrop />
     );
-    const instance = component.instance();
+
     const file = new Buffer.from('hello world'.split('')); // eslint-disable-line new-cap
     file.name = 'fileName.png';
     const fileEvent = { target: { files: [file] } };
-    instance.handleFileInputChange(fileEvent);
 
-    expect(instance.files.length).toBe(1);
+    const inputNode = getByTestId('file-picker');
+
+    fireEvent.change(inputNode, fileEvent);
+
+    expect(inputNode.files.length).toBe(1);
   });
 
   test('removing a file', () => {
-    const component = shallow(
+    const { getByTestId, queryByTestId } = render(
       <Upload clientId="a" bucketId="b" customerId="c" />
     );
-    const instance = component.instance();
+
+    // Create a new file
     const file = new Buffer.from('hello world'.split('')); // eslint-disable-line new-cap
     file.name = 'fileName.png';
+
     const fileEvent = { target: { files: [file] } };
-    instance.handleFileInputChange(fileEvent);
 
-    expect(instance.files.length).toBe(1);
-    instance.removeFile(instance.files[0].id);
+    const inputNode = getByTestId('file-picker');
 
-    expect(instance.files.length).toBe(0);
+    // Simulate the upload to the Components
+    fireEvent.change(inputNode, fileEvent);
+
+    expect(inputNode.files.length).toBe(1);
+
+    const filerow = getByTestId('remove-file-btn');
+
+    fireEvent.click(filerow);
+
+    expect(queryByTestId('remove-file-btn')).toBeNull();
   });
 
   test('calls onFileRemove callback', () => {
     const mockFunc = jest.fn();
-    const component = shallow(
+
+    const { getByTestId } = render(
       <Upload
         clientId="a"
         bucketId="b"
@@ -51,33 +65,36 @@ describe('Upload', () => {
         onFileRemove={mockFunc}
       />
     );
-    const instance = component.instance();
+
+    const inputNode = getByTestId('file-picker');
+
     const file = new Buffer.from('hello world'.split('')); // eslint-disable-line new-cap
     file.name = 'fileName.png';
     const fileEvent = { target: { files: [file] } };
-    instance.handleFileInputChange(fileEvent);
 
-    expect(instance.files.length).toBe(1);
-    instance.removeFile(instance.files[0].id);
-    expect(mockFunc.mock.calls.length).toBe(1);
+    fireEvent.change(inputNode, fileEvent);
+
+    expect(inputNode.files.length).toBe(1);
+
+    const filerow = getByTestId('remove-file-btn');
+
+    fireEvent.click(filerow);
+
+    expect(mockFunc).toHaveBeenCalled();
   });
 
   test('adds file via dropzone', () => {
-    const component = shallow(
+    const { getByTestId } = render(
       <Upload clientId="a" bucketId="b" customerId="c" showFileDrop />
     );
-    const instance = component.instance();
     const file = new Buffer.from('hello world'.split('')); // eslint-disable-line new-cap
     file.name = 'fileName.png';
-    instance.onDrop([file]);
 
-    expect(instance.files.length).toBe(1);
-    instance.removeFile(instance.files[0].id);
+    const inputNode = getByTestId('file-picker');
+    const fileEvent = { target: { files: [file] } };
 
-    expect(instance.files.length).toBe(0);
+    fireEvent.drop(inputNode, fileEvent);
 
-    instance.onDrop([], [file]);
-
-    expect(instance.files.length).toBe(0);
+    expect(inputNode.files.length).toBe(1);
   });
 });

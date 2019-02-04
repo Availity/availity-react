@@ -13,6 +13,7 @@ class FilePickerBtn extends Component {
     children: PropTypes.node,
     allowedFileTypes: PropTypes.arrayOf(PropTypes.string),
     maxSize: PropTypes.number,
+    'data-testid': PropTypes.string,
   };
 
   static defaultProps = {
@@ -38,6 +39,7 @@ class FilePickerBtn extends Component {
       name,
       allowedFileTypes,
       maxSize,
+      'data-testid': testId,
       ...props
     } = this.props;
     return (
@@ -51,6 +53,7 @@ class FilePickerBtn extends Component {
             name={name}
             allowedFileTypes={allowedFileTypes}
             maxSize={maxSize}
+            data-testid={testId}
           />
         </div>
         <Button {...props} onClick={this.onClick} />

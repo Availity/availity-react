@@ -10,7 +10,7 @@
     "availity"
   ],
   "scripts": {
-    "start": "start-storybook -p 2222 -c .storybook",
+    "start": "start-storybook -p 2222 -c .storybook -s ./static",
     "build": "build-storybook -c .storybook -o ../../docs",
     "deploy-docs": "storybook-to-ghpages",
     "storybook": "start-storybook -p 6006",
@@ -25,9 +25,18 @@
   },
   "license": "MIT",
   "devDependencies": {
+    "@availity/app-icon": "^1.0.0",
+    "@availity/authorize": "^1.0.0",
+    "@availity/breadcrumbs": "^1.0.0",
+    "@availity/feature": "^1.0.0",
+    "@availity/feedback": "^1.0.0",
+    "@availity/list-group": "^1.0.0",
+    "@availity/list-group-item": "^1.0.0",
+    "@availity/page-header": "^1.0.0",
+    "@availity/payer-logo": "^1.0.0",
+    "@availity/training-link": "^1.0.0",
     "@availity/api-axios": "^3.0.1",
     "@availity/api-core": "^3.0.0",
-    "@availity/breadcrumbs-spaces-react": "^1.5.2",
     "@availity/localstorage-core": "^2.5.0",
     "@availity/reactstrap-validation-date": "^1.6.0",
     "@availity/reactstrap-validation-select": "^1.6.0",

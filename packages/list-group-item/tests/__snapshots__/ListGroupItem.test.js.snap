@@ -1,0 +1,33 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`ListGroupItem should render 1`] = `
+<div>
+  <li
+    class="list-group-item"
+  />
+</div>
+`;
+
+exports[`ListGroupItem should render border color 1`] = `
+<div>
+  <li
+    class="success list-group-item"
+  />
+</div>
+`;
+
+exports[`ListGroupItem should render border color and color 1`] = `
+<div>
+  <li
+    class="success list-group-item-success list-group-item"
+  />
+</div>
+`;
+
+exports[`ListGroupItem should render color 1`] = `
+<div>
+  <li
+    class="list-group-item-success list-group-item"
+  />
+</div>
+`;

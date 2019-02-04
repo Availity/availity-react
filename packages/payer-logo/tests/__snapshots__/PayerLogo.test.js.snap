@@ -1,0 +1,21 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`PayerLogo should not render when no space or payer id 1`] = `<div />`;
+
+exports[`PayerLogo should render with payer id 1`] = `
+<div>
+  <img
+    alt="Payer logo"
+    src="/public/apps/eligibility/images/value-add-logos/BCBSF.gif"
+  />
+</div>
+`;
+
+exports[`PayerLogo should render with space id 1`] = `
+<div>
+  <img
+    alt="Payer logo"
+    src="/static/spaces/73162546201441126239486200007187/banner.png"
+  />
+</div>
+`;

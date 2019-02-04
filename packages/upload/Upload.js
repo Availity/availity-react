@@ -48,6 +48,7 @@ class Upload extends Component {
       const newFiles = files.filter(file => file.id !== fileId);
       if (newFiles.length !== files.length) {
         this.files = newFiles;
+
         if (this.props.onFileRemove) this.props.onFileRemove(this.files);
         return {
           files: newFiles,
@@ -174,6 +175,7 @@ class Upload extends Component {
         fileAddArea = (
           <div>
             <Dropzone
+              data-testid="file-picker"
               onDrop={this.onDrop}
               multiple={multiple}
               maxSize={maxSize}
@@ -193,6 +195,7 @@ class Upload extends Component {
       } else {
         fileAddArea = (
           <FilePickerBtn
+            data-testid="file-picker"
             onChange={this.handleFileInputChange}
             color={files.length === 0 ? 'light' : 'link'}
             multiple={multiple}
