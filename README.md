@@ -16,10 +16,20 @@ https://availity.github.io/availity-react
 
 ## Documentation
 
-* [breadcrumb-spaces-react](packages/breadcrumbs-spaces-react/README.md) - Breadscrumbs component for Spaces platform
+* [app-icon](packages/app-icon/README.md) - Availity UI Kit application icon react component.
+* [authorize](packages/authorize/README.md) - Check user permissions to see if the current user is authorized to see your content.
+* [breadcrumbs](packages/breadcrumbs/README.md) - Breadscrumbs component for Spaces platform.
+* [feature](packages/feature/README.md) - Check environment features for the current environment to determine if a particular feature is enabled.
+* [feedback](packages/feedback/README.md) - Availity feedback with simley faces react component.
+* [list-group](packages/list-group/README.md) - List Group with some Availity flair.
+* [list-group-item](packages/list-group-item/README.md) - List Group Item with some Availity flair.
+* [page-header](packages/page-header/README.md) - The standard page header for Availity Portal Applications.
+* [payer-logo](packages/payer-logo/README.md) - Easy to use component to display the payer's logo given the payer's ID.
 * [reactstrap-validation-date](packages/reactstrap-validation-date/README.md) - Wrapper for react-date-range to work with availity-reactstrap-validation
 * [reactstrap-validation-select](packages/reactstrap-validation-select/README.md) - Wrapper for react-select to work with availity-reactstrap-validation
 * [upload](packages/upload/README.md) - Availity upload component for uploading files
+* [training-link](packages/training-link/README.md) - Component for allowing link out to training in the Header component.
+* [upload](packages/upload/README.md) - Availity upload component for uploading files.
 
 ## License
 
