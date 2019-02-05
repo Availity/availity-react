@@ -122,6 +122,7 @@ class AvDate extends Component {
   };
 
   onFieldChange = event => {
+    event.persist();
     const value = event && event.target ? event.target.value : event;
     this.setState({ value, open: false }, () => {
       if (this.props.onChange) this.props.onChange(event, value);
