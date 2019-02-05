@@ -32,7 +32,7 @@ exports[`PageHeader should render 1`] = `
     </nav>
      
   </div>
-  <h4
+  <h1
     class="page-header page-header-brand"
   >
     <div
@@ -41,7 +41,7 @@ exports[`PageHeader should render 1`] = `
        
       Payer Space
     </div>
-  </h4>
+  </h1>
 </div>
 `;
 
@@ -77,7 +77,7 @@ exports[`PageHeader should render app icon 1`] = `
     </nav>
      
   </div>
-  <h4
+  <h1
     class="page-header page-header-brand"
   >
     <div
@@ -92,7 +92,7 @@ exports[`PageHeader should render app icon 1`] = `
        
       Payer Space
     </div>
-  </h4>
+  </h1>
 </div>
 `;
 
@@ -128,7 +128,7 @@ exports[`PageHeader should render app icon color 1`] = `
     </nav>
      
   </div>
-  <h4
+  <h1
     class="page-header page-header-brand"
   >
     <div
@@ -143,7 +143,7 @@ exports[`PageHeader should render app icon color 1`] = `
        
       Payer Space
     </div>
-  </h4>
+  </h1>
 </div>
 `;
 
@@ -179,7 +179,7 @@ exports[`PageHeader should render app icon color branded 1`] = `
     </nav>
      
   </div>
-  <h4
+  <h1
     class="page-header page-header-brand"
   >
     <div
@@ -197,7 +197,7 @@ exports[`PageHeader should render app icon color branded 1`] = `
        
       Payer Space
     </div>
-  </h4>
+  </h1>
 </div>
 `;
 
@@ -233,7 +233,7 @@ exports[`PageHeader should render children 1`] = `
     </nav>
      
   </div>
-  <h4
+  <h1
     class="page-header page-header-brand"
   >
     <div
@@ -244,7 +244,7 @@ exports[`PageHeader should render children 1`] = `
         this is cool
       </p>
     </div>
-  </h4>
+  </h1>
 </div>
 `;
 
@@ -280,7 +280,7 @@ exports[`PageHeader should render feedback 1`] = `
     </nav>
      
   </div>
-  <h4
+  <h1
     class="page-header page-header-brand"
   >
     <div
@@ -383,6 +383,6 @@ exports[`PageHeader should render feedback 1`] = `
         </div>
       </div>
     </div>
-  </h4>
+  </h1>
 </div>
 `;
