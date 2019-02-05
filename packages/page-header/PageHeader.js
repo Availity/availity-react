@@ -30,7 +30,7 @@ const PageHeader = ({
       <div className="d-flex align-items-start">
         <Breadcrumbs crumbs={crumbs} active={appName || children} /> {component}
       </div>
-      <h1 className="h4 page-header page-header-brand" {...props}>
+      <h4 className="page-header page-header-brand" {...props}>
         <div className="page-header-title">
           {!payerId && appAbbr && (
             <AppIcon color={iconColor} branded={branded} title={appName}>
@@ -52,7 +52,7 @@ const PageHeader = ({
             className="float-md-right d-inline-block"
           />
         )}
-      </h1>
+      </h4>
     </React.Fragment>
   );
 };

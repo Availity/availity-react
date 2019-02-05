@@ -5,7 +5,9 @@ import { Breadcrumb, BreadcrumbItem } from 'reactstrap';
 const Breadcrumbs = ({ crumbs, active, emptyState, ...props }) => (
   <Breadcrumb {...props}>
     <BreadcrumbItem>
-      <a href="/public/apps/dashboard">Home</a>
+      <a href="/public/apps/dashboard" aria-label="Home">
+        Home
+      </a>
     </BreadcrumbItem>
 
     {crumbs &&
@@ -13,7 +15,9 @@ const Breadcrumbs = ({ crumbs, active, emptyState, ...props }) => (
       crumbs.map(crumb => (
         <BreadcrumbItem key={crumb.name + crumb.url}>
           {crumb.name && crumb.url ? (
-            <a href={crumb.url}>{crumb.name}</a>
+            <a aria-label={crumb.name} href={crumb.url}>
+              {crumb.name}
+            </a>
           ) : (
             <span>{emptyState}</span>
           )}
