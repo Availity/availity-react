@@ -1,6 +1,6 @@
 {
   "name": "@availity/feature",
-  "version": "1.0.0",
+  "version": "0.0.0-t325224b2",
   "author": "Evan Sharp <evan.sharp@gmail.com>",
   "description": "Check if a feature is enabled or disabled before doing something.",
   "main": "index.js",
