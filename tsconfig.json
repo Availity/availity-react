@@ -1,0 +1,33 @@
+{
+  "compilerOptions": {
+    "module": "commonjs",
+    "target": "es5",
+    "lib": ["es6", "dom"],
+    "jsx": "react",
+    "moduleResolution": "node",
+    "forceConsistentCasingInFileNames": true,
+    "strict": true,
+    "noEmit": true,
+    "experimentalDecorators": true,
+    "baseUrl": "./packages",
+    "allowSyntheticDefaultImports": true,
+    "paths": {
+      "@mavaility/app-icon": ["./app-icon/src"],
+      "@availity/authorize": ["./authorize"],
+      "@availity/breadcrumbs": ["./breadcrumbs"],
+      "@availity/feature": ["./feature"],
+      "@availity/feedback": ["./feedback"],
+      "@availity/list-group": ["./list-group"],
+      "@availity/list-group-item": ["./list-group-item"],
+      "@availity/page-header": ["./page-header"],
+      "@availity/payer-logo": ["./payer-logo"],
+      "@availity/reactstrap-validation-date": ["./reactstrap-validation-date"],
+      "@availity/reactstrap-validation-select": ["./reactstrap-validation-select"],
+      "@availity/training-link": ["./training-link"],
+      "@availity/upload": ["./upload"],
+    }
+  },
+  "exclude": [
+    "**/node_modules/"
+  ]
+}
