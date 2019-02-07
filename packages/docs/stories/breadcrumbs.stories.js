@@ -63,4 +63,14 @@ storiesOf('Navigation|Breadcrumbs', module)
       <Route path="/react-router-parent" component={ReactRouterDestination} />
       <Route path="/react-router-demo" component={ReactRouterBreadcrumbs} />
     </div>
+  ))
+  .add('Custom Breadcrumb', () => (
+    <Breadcrumbs
+      crumbs={[
+        { name: 'Grand Parent', url: '/grand-parent' },
+        { name: 'Parent', url: '/parent' },
+      ]}
+      active="Current Page"
+      renderCustomCrumbContent={() => <a href="/custom-url">Custom anchor</a>}
+    />
   ));

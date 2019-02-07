@@ -18,7 +18,10 @@ class Breadcrumbs extends React.Component {
   };
 
   renderProvidedLink = renderCustomCrumbContent => {
-    if (!renderCustomCrumbContent) {
+    if (
+      !renderCustomCrumbContent ||
+      typeof renderCustomCrumbContent !== 'function'
+    ) {
       return null;
     }
     return <BreadcrumbItem>{renderCustomCrumbContent()}</BreadcrumbItem>;
