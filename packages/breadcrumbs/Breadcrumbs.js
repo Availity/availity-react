@@ -2,31 +2,43 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { Breadcrumb, BreadcrumbItem } from 'reactstrap';
 
-const Breadcrumbs = ({ crumbs, active, emptyState, ...props }) => (
-  <Breadcrumb {...props}>
-    <BreadcrumbItem>
-      <a href="/public/apps/dashboard" aria-label="Home">
-        Home
-      </a>
-    </BreadcrumbItem>
+class Breadcrumbs extends React.Component {
+  renderBreadCrumb = crumb => {
+    // default breadcrumbitem render
+    let breadCrumbItemChildren = <span>{this.props.emptyState}</span>;
+    // render static link
+    if (crumb.name && crumb.url) {
+      breadCrumbItemChildren = <a href={crumb.url}>{crumb.name}</a>;
+    }
+    return (
+      <BreadcrumbItem key={crumb.name + crumb.url}>
+        {breadCrumbItemChildren}
+      </BreadcrumbItem>
+    );
+  };
 
-    {crumbs &&
-      crumbs.length > 0 &&
-      crumbs.map(crumb => (
-        <BreadcrumbItem key={crumb.name + crumb.url}>
-          {crumb.name && crumb.url ? (
-            <a aria-label={crumb.name} href={crumb.url}>
-              {crumb.name}
-            </a>
-          ) : (
-            <span>{emptyState}</span>
-          )}
+  renderProvidedLink = renderCustomCrumbContent => {
+    if (!renderCustomCrumbContent) {
+      return null;
+    }
+    return <BreadcrumbItem>{renderCustomCrumbContent()}</BreadcrumbItem>;
+  };
+
+  render() {
+    const { crumbs, active, emptyState } = this.props;
+
+    return (
+      <Breadcrumb>
+        <BreadcrumbItem>
+          <a href="/public/apps/dashboard">Home</a>
         </BreadcrumbItem>
-      ))}
-
-    <BreadcrumbItem active>{active || emptyState}</BreadcrumbItem>
-  </Breadcrumb>
-);
+        {crumbs && crumbs.length > 0 && crumbs.map(this.renderBreadCrumb)}
+        {this.renderProvidedLink(this.props.renderCustomCrumbContent)}
+        <BreadcrumbItem active>{active || emptyState}</BreadcrumbItem>
+      </Breadcrumb>
+    );
+  }
+}
 
 Breadcrumbs.propTypes = {
   crumbs: PropTypes.arrayOf(
@@ -37,6 +49,7 @@ Breadcrumbs.propTypes = {
   ),
   active: PropTypes.string.isRequired,
   emptyState: PropTypes.string,
+  renderCustomCrumbContent: PropTypes.func,
 };
 
 Breadcrumbs.defaultProps = {

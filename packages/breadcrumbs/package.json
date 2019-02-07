@@ -19,12 +19,11 @@
   "publishConfig": {
     "registry": "https://artifactory.availity.com/artifactory/api/npm/local-npm/"
   },
-  "dependencies": {
-    "prop-types": "^15.5.8"
-  },
   "devDependencies": {
+    "prop-types": "^15.5.8",
     "react": "^16.3.0",
     "react-dom": "^16.3.0",
+    "react-router-dom": "^4.3.1",
     "react-testing-library": "^5.4.4",
     "reactstrap": "^7.0.0"
   },
