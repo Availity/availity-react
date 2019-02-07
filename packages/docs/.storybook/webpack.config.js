@@ -31,7 +31,20 @@ module.exports = (storybookBaseConfig, env, defaultConfig) => {
     enforce: 'pre',
   });
 
-  defaultConfig.resolve.extensions = ['.js', '.jsx', '.scss', '.css'];
+  defaultConfig.module.rules.push({
+    test: /\.(ts|tsx)$/,
+    use: ['awesome-typescript-loader', 'react-docgen-typescript-loader'],
+    enforce: 'pre',
+  });
+
+  defaultConfig.resolve.extensions = [
+    '.js',
+    '.jsx',
+    '.ts',
+    '.tsx',
+    '.scss',
+    '.css',
+  ];
   defaultConfig.resolve.alias['axios'] = path.resolve(
     path.join(__dirname, '../node_modules', 'axios')
   );

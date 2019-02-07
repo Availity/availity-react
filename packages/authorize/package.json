@@ -10,14 +10,14 @@
   ],
   "repository": {
     "type": "git",
-    "url": "https://git.availity.com/projects/PUI/repos/av-react"
+    "url": "https://github.com/Availity/availity-react.git"
   },
   "bugs": {
-    "url": "https://jira.availity.com/projects/PLT"
+    "url": "https://github.com/Availity/availity-react/issues"
   },
-  "license": "UNLICENSED",
+  "license": "MIT",
   "publishConfig": {
-    "registry": "https://artifactory.availity.com/artifactory/api/npm/local-npm/"
+    "access": "public"
   },
   "dependencies": {
     "prop-types": "^15.5.8",

@@ -9,6 +9,7 @@
   "scripts": {
     "format": "prettier --write 'packages/*/*.js' 'packages/*/!(node_modules)/**/*.js' 'packages/*/!(docs)/**/*.js'",
     "lint": "eslint .",
+    "nuke": "npm run remove-locks && npm run clean",
     "bootstrap": "lerna bootstrap",
     "lerna": "lerna",
     "link": "lerna link",
@@ -47,6 +48,9 @@
     "@commitlint/cli": "^7.2.1",
     "@commitlint/config-conventional": "^7.1.2",
     "@commitlint/config-lerna-scopes": "^7.2.1",
+    "@types/node": "^10.12.21",
+    "@types/react": "^16.8.2",
+    "@types/react-dom": "^16.8.0",
     "babel-core": "^7.0.0-bridge.0",
     "babel-jest": "^24.0.0",
     "babel-plugin-dynamic-import-node": "^2.2.0",
@@ -68,7 +72,9 @@
     "react-dom": "^16.6.3",
     "react-testing-library": "^5.4.4",
     "regenerator-runtime": "^0.13.1",
-    "sass-loader": "^7.1.0"
+    "sass-loader": "^7.1.0",
+    "ts-jest": "^23.10.5",
+    "typescript": "^3.3.1"
   },
   "license": "MIT",
   "lint-staged": {
