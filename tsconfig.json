@@ -12,7 +12,7 @@
     "baseUrl": "./packages",
     "allowSyntheticDefaultImports": true,
     "paths": {
-      "@mavaility/app-icon": ["./app-icon/src"],
+      "@availity/app-icon": ["./app-icon/src"],
       "@availity/authorize": ["./authorize"],
       "@availity/breadcrumbs": ["./breadcrumbs"],
       "@availity/feature": ["./feature"],

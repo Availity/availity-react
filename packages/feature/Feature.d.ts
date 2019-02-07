@@ -1,8 +1,8 @@
 export interface FeatureProps {
     features: string | Array<Array<String> | string>;
-    loader?: boolean | Node;
-    whenDisabled?: Node;
-    children?: Node;
+    loader?: boolean | React.ReactType;
+    whenDisabled?: React.ReactType;
+    children?: React.ReactType;
     negate?: boolean;
 }
 

@@ -1,5 +1,5 @@
 export interface UploadProps {
-    btnText?: Node;
+    btnText?: React.ReactType;
     bucketId: string;
     customerId: string;
     clientId: string;

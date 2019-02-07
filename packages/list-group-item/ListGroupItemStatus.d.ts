@@ -3,8 +3,8 @@ type BadgeType = {
     text?: string;
 }
 export interface ListGroupItemStatusProps {
-    titleContent?: Node;
-    children?: Node;
+    titleContent?: React.ReactType;
+    children?: React.ReactType;
     color?: boolean | string;
     badge?: boolean | string | BadgeType;
 }

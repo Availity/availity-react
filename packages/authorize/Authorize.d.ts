@@ -1,11 +1,11 @@
 export interface AuthorizeProps {
     permissions: Array<string | number> | Array<Array<string | number>>;
     region?: boolean | string;
-    loader?: boolean | Node;
+    loader?: boolean | React.ReactType;
     organizationId?: string;
     customerId?: string;
-    unauthorized?: Node;
-    children?: Node;
+    unauthorized?: React.ReactType;
+    children?: React.ReactType;
     negate?: boolean;
 }
 

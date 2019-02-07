@@ -4,7 +4,7 @@ export interface FilePickerBtnProps {
     multiple?: boolean;
     name?: string;
     color?: string;
-    children?: Node;
+    children?: React.ReactType;
     allowedFileTypes?: Array<string>;
     maxSize?: number;
     'data-testid'?:string;

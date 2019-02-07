@@ -1,5 +1,3 @@
-import * as React from 'react';
-
 type Crumb = {
     name: string;
     url: string;

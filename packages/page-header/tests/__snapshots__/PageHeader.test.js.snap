@@ -16,6 +16,7 @@ exports[`PageHeader should render 1`] = `
           class="breadcrumb-item"
         >
           <a
+            aria-label="Home"
             href="/public/apps/dashboard"
           >
             Home
@@ -32,7 +33,7 @@ exports[`PageHeader should render 1`] = `
      
   </div>
   <h1
-    class="h4 page-header page-header-brand"
+    class="page-header page-header-brand"
   >
     <div
       class="page-header-title"
@@ -60,6 +61,7 @@ exports[`PageHeader should render app icon 1`] = `
           class="breadcrumb-item"
         >
           <a
+            aria-label="Home"
             href="/public/apps/dashboard"
           >
             Home
@@ -76,7 +78,7 @@ exports[`PageHeader should render app icon 1`] = `
      
   </div>
   <h1
-    class="h4 page-header page-header-brand"
+    class="page-header page-header-brand"
   >
     <div
       class="page-header-title"
@@ -110,6 +112,7 @@ exports[`PageHeader should render app icon color 1`] = `
           class="breadcrumb-item"
         >
           <a
+            aria-label="Home"
             href="/public/apps/dashboard"
           >
             Home
@@ -126,7 +129,7 @@ exports[`PageHeader should render app icon color 1`] = `
      
   </div>
   <h1
-    class="h4 page-header page-header-brand"
+    class="page-header page-header-brand"
   >
     <div
       class="page-header-title"
@@ -160,6 +163,7 @@ exports[`PageHeader should render app icon color branded 1`] = `
           class="breadcrumb-item"
         >
           <a
+            aria-label="Home"
             href="/public/apps/dashboard"
           >
             Home
@@ -176,7 +180,7 @@ exports[`PageHeader should render app icon color branded 1`] = `
      
   </div>
   <h1
-    class="h4 page-header page-header-brand"
+    class="page-header page-header-brand"
   >
     <div
       class="page-header-title"
@@ -213,6 +217,7 @@ exports[`PageHeader should render children 1`] = `
           class="breadcrumb-item"
         >
           <a
+            aria-label="Home"
             href="/public/apps/dashboard"
           >
             Home
@@ -229,7 +234,7 @@ exports[`PageHeader should render children 1`] = `
      
   </div>
   <h1
-    class="h4 page-header page-header-brand"
+    class="page-header page-header-brand"
   >
     <div
       class="page-header-title"
@@ -259,6 +264,7 @@ exports[`PageHeader should render feedback 1`] = `
           class="breadcrumb-item"
         >
           <a
+            aria-label="Home"
             href="/public/apps/dashboard"
           >
             Home
@@ -275,7 +281,7 @@ exports[`PageHeader should render feedback 1`] = `
      
   </div>
   <h1
-    class="h4 page-header page-header-brand"
+    class="page-header page-header-brand"
   >
     <div
       class="page-header-title"

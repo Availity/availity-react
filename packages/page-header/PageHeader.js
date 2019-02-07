@@ -17,6 +17,7 @@ const PageHeader = ({
   crumbs: ogCrumbs,
   feedback,
   component,
+  tag: Tag,
   ...props
 }) => {
   let crumbs = ogCrumbs;
@@ -30,7 +31,7 @@ const PageHeader = ({
       <div className="d-flex align-items-start">
         <Breadcrumbs crumbs={crumbs} active={appName || children} /> {component}
       </div>
-      <h1 className="h4 page-header page-header-brand" {...props}>
+      <Tag className="page-header page-header-brand" {...props}>
         <div className="page-header-title">
           {!payerId && appAbbr && (
             <AppIcon color={iconColor} branded={branded} title={appName}>
@@ -52,7 +53,7 @@ const PageHeader = ({
             className="float-md-right d-inline-block"
           />
         )}
-      </h1>
+      </Tag>
     </React.Fragment>
   );
 };
@@ -74,6 +75,11 @@ PageHeader.propTypes = {
       url: PropTypes.string,
     })
   ),
+  tag: PropTypes.oneOfType([PropTypes.func, PropTypes.string]),
+};
+
+PageHeader.defaultProps = {
+  tag: 'h1',
 };
 
 export default PageHeader;

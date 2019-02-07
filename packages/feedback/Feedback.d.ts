@@ -5,7 +5,7 @@ export interface FeedbackProps {
     color?: string;
     outline?: boolean;
     formProps?: object;
-    children?: Node;
+    children?: React.ReactType;
     onFeedbackSent: Function;
 }
 

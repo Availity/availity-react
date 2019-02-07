@@ -1,5 +1,5 @@
 export interface AvDateRangeFieldProps {
-    label?: Node;
+    label?: React.ReactType;
     labelHidden?: boolean;
     disabled?: boolean;
     readOnly?: boolean;

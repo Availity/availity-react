@@ -1,5 +1,5 @@
 export interface AvDateFieldProps {
-    label?: Node;
+    label?: React.ReactType;
     labelHidden?: boolean;
     disabled?: boolean;
     readOnly?: boolean;
@@ -11,7 +11,7 @@ export interface AvDateFieldProps {
     labelAttrs?: object;
     groupAttrs?: object;
     grid?: object;
-    children?: Node;
+    children?: React.ReactType;
     name: string;
     size?: string | number;
 }

@@ -1,5 +1,5 @@
 export interface AvSelectFieldProps {
-    label?: Node;
+    label?: React.ReactType;
     labelHidden?: boolean;
     id?: string;
     feedbackClass?: string;

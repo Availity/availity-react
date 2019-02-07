@@ -8,7 +8,7 @@ export interface AvResourceSelectProps {
     resource: ResourceType;
     getResult?: string | Function;
     delay?: number;
-    label?: Node;
+    label?: React.ReactType;
     customerId?: string;
     parameters?: object;
     itemsPerPage?: number;
