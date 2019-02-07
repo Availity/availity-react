@@ -9,6 +9,7 @@
   "scripts": {
     "format": "prettier --write 'packages/*/*.js' 'packages/*/!(node_modules)/**/*.js' 'packages/*/!(docs)/**/*.js'",
     "lint": "eslint .",
+    "nuke": "npm run remove-locks && npm run clean",
     "bootstrap": "lerna bootstrap",
     "lerna": "lerna",
     "link": "lerna link",
