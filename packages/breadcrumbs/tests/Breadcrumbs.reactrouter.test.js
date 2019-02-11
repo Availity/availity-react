@@ -3,17 +3,17 @@ import { withRouter } from 'react-router';
 import { Link, Route, Router, Switch } from 'react-router-dom';
 import { createMemoryHistory } from 'history';
 import { render, fireEvent, cleanup } from 'react-testing-library';
+import { BreadcrumbItem } from 'reactstrap';
 import Breadcrumbs from '../index';
 
 const StartPage = () => (
   <div>
     Start page content
-    <Breadcrumbs
-      active="react-router-demo-page"
-      renderCustomCrumbContent={() => (
+    <Breadcrumbs active="react-router-demo-page">
+      <BreadcrumbItem>
         <Link to="react-router-destination">React Router Breadcrumb</Link>
-      )}
-    />
+      </BreadcrumbItem>
+    </Breadcrumbs>
   </div>
 );
 

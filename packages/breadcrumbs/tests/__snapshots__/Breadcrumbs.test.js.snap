@@ -3,14 +3,13 @@
 exports[`Breadcrumbs should render 1`] = `
 <nav
   aria-label="breadcrumb"
-  className=""
+  class=""
 >
   <ol
-    className="breadcrumb"
+    class="breadcrumb"
   >
     <li
-      aria-current={undefined}
-      className="breadcrumb-item"
+      class="breadcrumb-item"
     >
       <a
         href="/public/apps/dashboard"
@@ -20,7 +19,7 @@ exports[`Breadcrumbs should render 1`] = `
     </li>
     <li
       aria-current="page"
-      className="active breadcrumb-item"
+      class="active breadcrumb-item"
     >
       …
     </li>
@@ -31,14 +30,13 @@ exports[`Breadcrumbs should render 1`] = `
 exports[`Breadcrumbs should render child as current page 1`] = `
 <nav
   aria-label="breadcrumb"
-  className=""
+  class=""
 >
   <ol
-    className="breadcrumb"
+    class="breadcrumb"
   >
     <li
-      aria-current={undefined}
-      className="breadcrumb-item"
+      class="breadcrumb-item"
     >
       <a
         href="/public/apps/dashboard"
@@ -48,7 +46,7 @@ exports[`Breadcrumbs should render child as current page 1`] = `
     </li>
     <li
       aria-current="page"
-      className="active breadcrumb-item"
+      class="active breadcrumb-item"
     >
       Payer Space
     </li>
@@ -59,14 +57,13 @@ exports[`Breadcrumbs should render child as current page 1`] = `
 exports[`Breadcrumbs should render crumbs 1`] = `
 <nav
   aria-label="breadcrumb"
-  className=""
+  class=""
 >
   <ol
-    className="breadcrumb"
+    class="breadcrumb"
   >
     <li
-      aria-current={undefined}
-      className="breadcrumb-item"
+      class="breadcrumb-item"
     >
       <a
         href="/public/apps/dashboard"
@@ -75,8 +72,7 @@ exports[`Breadcrumbs should render crumbs 1`] = `
       </a>
     </li>
     <li
-      aria-current={undefined}
-      className="breadcrumb-item"
+      class="breadcrumb-item"
     >
       <a
         href="/parent-page"
@@ -85,8 +81,7 @@ exports[`Breadcrumbs should render crumbs 1`] = `
       </a>
     </li>
     <li
-      aria-current={undefined}
-      className="breadcrumb-item"
+      class="breadcrumb-item"
     >
       <a
         href="/grand-parent-page"
@@ -96,7 +91,7 @@ exports[`Breadcrumbs should render crumbs 1`] = `
     </li>
     <li
       aria-current="page"
-      className="active breadcrumb-item"
+      class="active breadcrumb-item"
     >
       Payer Space
     </li>
@@ -107,14 +102,13 @@ exports[`Breadcrumbs should render crumbs 1`] = `
 exports[`Breadcrumbs should render crumbs with missing values 1`] = `
 <nav
   aria-label="breadcrumb"
-  className=""
+  class=""
 >
   <ol
-    className="breadcrumb"
+    class="breadcrumb"
   >
     <li
-      aria-current={undefined}
-      className="breadcrumb-item"
+      class="breadcrumb-item"
     >
       <a
         href="/public/apps/dashboard"
@@ -123,8 +117,7 @@ exports[`Breadcrumbs should render crumbs with missing values 1`] = `
       </a>
     </li>
     <li
-      aria-current={undefined}
-      className="breadcrumb-item"
+      class="breadcrumb-item"
     >
       <a
         href="/parent-page"
@@ -133,8 +126,7 @@ exports[`Breadcrumbs should render crumbs with missing values 1`] = `
       </a>
     </li>
     <li
-      aria-current={undefined}
-      className="breadcrumb-item"
+      class="breadcrumb-item"
     >
       <span>
         …
@@ -142,7 +134,7 @@ exports[`Breadcrumbs should render crumbs with missing values 1`] = `
     </li>
     <li
       aria-current="page"
-      className="active breadcrumb-item"
+      class="active breadcrumb-item"
     >
       Payer Space
     </li>
@@ -153,14 +145,13 @@ exports[`Breadcrumbs should render crumbs with missing values 1`] = `
 exports[`Breadcrumbs should render custom ellipse 1`] = `
 <nav
   aria-label="breadcrumb"
-  className=""
+  class=""
 >
   <ol
-    className="breadcrumb"
+    class="breadcrumb"
   >
     <li
-      aria-current={undefined}
-      className="breadcrumb-item"
+      class="breadcrumb-item"
     >
       <a
         href="/public/apps/dashboard"
@@ -169,8 +160,7 @@ exports[`Breadcrumbs should render custom ellipse 1`] = `
       </a>
     </li>
     <li
-      aria-current={undefined}
-      className="breadcrumb-item"
+      class="breadcrumb-item"
     >
       <span>
         ???
@@ -178,7 +168,7 @@ exports[`Breadcrumbs should render custom ellipse 1`] = `
     </li>
     <li
       aria-current="page"
-      className="active breadcrumb-item"
+      class="active breadcrumb-item"
     >
       Payer Space
     </li>

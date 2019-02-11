@@ -6,7 +6,7 @@ class Breadcrumbs extends React.Component {
   renderBreadCrumb = crumb => {
     // default breadcrumbitem render
     let breadCrumbItemChildren = <span>{this.props.emptyState}</span>;
-    // render static link
+    // render static links
     if (crumb.name && crumb.url) {
       breadCrumbItemChildren = <a href={crumb.url}>{crumb.name}</a>;
     }
@@ -15,16 +15,6 @@ class Breadcrumbs extends React.Component {
         {breadCrumbItemChildren}
       </BreadcrumbItem>
     );
-  };
-
-  renderProvidedLink = renderCustomCrumbContent => {
-    if (
-      !renderCustomCrumbContent ||
-      typeof renderCustomCrumbContent !== 'function'
-    ) {
-      return null;
-    }
-    return <BreadcrumbItem>{renderCustomCrumbContent()}</BreadcrumbItem>;
   };
 
   render() {
@@ -36,7 +26,7 @@ class Breadcrumbs extends React.Component {
           <a href="/public/apps/dashboard">Home</a>
         </BreadcrumbItem>
         {crumbs && crumbs.length > 0 && crumbs.map(this.renderBreadCrumb)}
-        {this.renderProvidedLink(this.props.renderCustomCrumbContent)}
+        {this.props.children}
         <BreadcrumbItem active>{active || emptyState}</BreadcrumbItem>
       </Breadcrumb>
     );
@@ -52,7 +42,19 @@ Breadcrumbs.propTypes = {
   ),
   active: PropTypes.string.isRequired,
   emptyState: PropTypes.string,
-  renderCustomCrumbContent: PropTypes.func,
+  children: (props, propName, componentName) => {
+    const prop = props[propName];
+
+    let error = null;
+    React.Children.forEach(prop, child => {
+      if (child.type !== BreadcrumbItem) {
+        error = new Error(
+          `${componentName} children should be of type BreadCrumbItem`
+        );
+      }
+    });
+    return error;
+  },
 };
 
 Breadcrumbs.defaultProps = {
