@@ -9,7 +9,7 @@ class Breadcrumbs extends React.Component {
     // render static links
     if (crumb.name && crumb.url) {
       breadCrumbItemChildren = (
-        <a aria-label={`Link to ${crumb.name}`} href={crumb.url}>
+        <a aria-label={crumb.name} href={crumb.url}>
           {crumb.name}
         </a>
       );
@@ -27,7 +27,7 @@ class Breadcrumbs extends React.Component {
     return (
       <Breadcrumb>
         <BreadcrumbItem>
-          <a aria-label="Link to Home Page" href="/public/apps/dashboard">
+          <a aria-label="Home" href="/public/apps/dashboard">
             Home
           </a>
         </BreadcrumbItem>
