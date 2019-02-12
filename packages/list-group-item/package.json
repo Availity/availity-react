@@ -1,6 +1,6 @@
 {
   "name": "@availity/list-group-item",
-  "version": "1.1.2",
+  "version": "1.1.0",
   "author": "Evan Sharp <evan.sharp@availity.com>",
   "description": "List Group Item with some Availity flair",
   "main": "index.js",
@@ -10,14 +10,14 @@
   ],
   "repository": {
     "type": "git",
-    "url": "https://git.availity.com/projects/PUI/repos/av-react"
+    "url": "https://github.com/Availity/availity-react.git"
   },
   "bugs": {
-    "url": "https://jira.availity.com/projects/PLT"
+    "url": "https://github.com/Availity/availity-react/issues"
   },
-  "license": "UNLICENSED",
+  "license": "MIT",
   "publishConfig": {
-    "registry": "https://artifactory.availity.com/artifactory/api/npm/local-npm/"
+    "access": "public"
   },
   "peerDependencies": {
     "react": "^16.3.0",
