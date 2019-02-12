@@ -35,11 +35,8 @@ const ReactRouterBreadcrumbs = () => (
 
 const ReactRouterDestination = () => (
   <div>
-    <Breadcrumbs active={text('Active Page', 'React Router Destination Page')}>
-      <BreadcrumbItem>
-        <Link to="/react-router-demo">react-router Link Back To demo</Link>
-      </BreadcrumbItem>
-    </Breadcrumbs>
+    <Breadcrumbs active={text('Active Page', 'Custom Breadcrumb Demo')} />
+    <Link to="/react-router-demo">react-router Link Back To demo</Link>
     <p>Sample destination page with react-router navigation</p>
   </div>
 );
@@ -72,19 +69,9 @@ storiesOf('Navigation|Breadcrumbs', module)
       active={text('Active Page', 'Payer Spaces')}
     />
   ))
-  .add('with React Router', () => (
+  .add('with custom content', () => (
     <div>
       <Route path="/react-router-parent" component={ReactRouterDestination} />
       <Route path="/react-router-demo" component={ReactRouterBreadcrumbs} />
     </div>
-  ))
-  .add('Custom Breadcrumb', () => (
-    <Breadcrumbs
-      crumbs={[
-        { name: 'Grand Parent', url: '/grand-parent' },
-        { name: 'Parent', url: '/parent' },
-      ]}
-      active="Current Page"
-      renderCustomCrumbContent={() => <a href="/custom-url">Custom anchor</a>}
-    />
   ));
