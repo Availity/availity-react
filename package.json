@@ -27,7 +27,6 @@
     "check": "npm-check -u && lerna exec --bail false --concurrency 1 -- npm-check -u"
   },
   "devDependencies": {
-    "@availity/workflow-babel-preset": "^4.0.4",
     "@babel/core": "^7.2.2",
     "@babel/plugin-proposal-class-properties": "^7.2.1",
     "@babel/plugin-proposal-decorators": "^7.2.2",
