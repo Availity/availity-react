@@ -15,6 +15,11 @@ env:
     - USE_YARN=no
 before_script:
   - npm run bootstrap
+install:
+  # Tell npm to ignore package-lock.json to avoid making local file
+  # changes that would dirty the git workspace.
+  - npm config set package-lock false
+  - npm install
 script:
   - npm run lint
   - npm test
