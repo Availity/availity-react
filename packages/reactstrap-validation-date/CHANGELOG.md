@@ -3,6 +3,18 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.7.1](https://github.com/Availity/availity-react/compare/@availity/reactstrap-validation-date@1.7.0...@availity/reactstrap-validation-date@1.7.1) (2019-02-13)
+
+
+### Bug Fixes
+
+* fixed package-locks ([ddb49bb](https://github.com/Availity/availity-react/commit/ddb49bb))
+* so many package-lock.json's ([8b5dc24](https://github.com/Availity/availity-react/commit/8b5dc24))
+
+
+
+
+
 # [1.7.0](https://github.com/Availity/availity-react/compare/@availity/reactstrap-validation-date@1.6.0...@availity/reactstrap-validation-date@1.7.0) (2019-02-08)
 
 

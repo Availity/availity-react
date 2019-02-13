@@ -3,6 +3,26 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [1.8.0](https://github.com/Availity/availity-react/compare/@availity/docs@1.7.0...@availity/docs@1.8.0) (2019-02-13)
+
+
+### Bug Fixes
+
+* breadcrumbs can take child props with custom content ([eaa2bdd](https://github.com/Availity/availity-react/commit/eaa2bdd))
+* fixed package-locks ([ddb49bb](https://github.com/Availity/availity-react/commit/ddb49bb))
+* included package.json for docs ([7a71f29](https://github.com/Availity/availity-react/commit/7a71f29))
+* modified storybook demo for custom breadcrumbs ([c09eb2c](https://github.com/Availity/availity-react/commit/c09eb2c))
+* so many package-lock.json's ([8b5dc24](https://github.com/Availity/availity-react/commit/8b5dc24))
+
+
+### Features
+
+* added dynamic breadcrumb (react-router tests) ([f79f8cf](https://github.com/Availity/availity-react/commit/f79f8cf))
+
+
+
+
+
 # [1.7.0](https://github.com/Availity/availity-react/compare/@availity/docs@1.6.0...@availity/docs@1.7.0) (2019-02-08)
 
 
