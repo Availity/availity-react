@@ -19,7 +19,7 @@ install:
   # Tell npm to ignore package-lock.json to avoid making local file
   # changes that would dirty the git workspace.
   - npm config set package-lock false
-  - npm install
+  - npm install --no-shrinkwrap
 script:
   - npm run lint
   - npm test
