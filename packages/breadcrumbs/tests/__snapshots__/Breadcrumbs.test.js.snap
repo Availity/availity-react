@@ -12,6 +12,7 @@ exports[`Breadcrumbs should render 1`] = `
       class="breadcrumb-item"
     >
       <a
+        aria-label="Home"
         href="/public/apps/dashboard"
       >
         Home
@@ -39,6 +40,7 @@ exports[`Breadcrumbs should render child as current page 1`] = `
       class="breadcrumb-item"
     >
       <a
+        aria-label="Home"
         href="/public/apps/dashboard"
       >
         Home
@@ -66,6 +68,7 @@ exports[`Breadcrumbs should render crumbs 1`] = `
       class="breadcrumb-item"
     >
       <a
+        aria-label="Home"
         href="/public/apps/dashboard"
       >
         Home
@@ -75,6 +78,7 @@ exports[`Breadcrumbs should render crumbs 1`] = `
       class="breadcrumb-item"
     >
       <a
+        aria-label="my grand parent page"
         href="/parent-page"
       >
         my grand parent page
@@ -84,6 +88,7 @@ exports[`Breadcrumbs should render crumbs 1`] = `
       class="breadcrumb-item"
     >
       <a
+        aria-label="my parent page"
         href="/grand-parent-page"
       >
         my parent page
@@ -111,6 +116,7 @@ exports[`Breadcrumbs should render crumbs with missing values 1`] = `
       class="breadcrumb-item"
     >
       <a
+        aria-label="Home"
         href="/public/apps/dashboard"
       >
         Home
@@ -120,6 +126,7 @@ exports[`Breadcrumbs should render crumbs with missing values 1`] = `
       class="breadcrumb-item"
     >
       <a
+        aria-label="my grand parent page"
         href="/parent-page"
       >
         my grand parent page
@@ -154,6 +161,7 @@ exports[`Breadcrumbs should render custom ellipse 1`] = `
       class="breadcrumb-item"
     >
       <a
+        aria-label="Home"
         href="/public/apps/dashboard"
       >
         Home

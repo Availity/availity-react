@@ -16,6 +16,7 @@ exports[`PageHeader should render 1`] = `
           class="breadcrumb-item"
         >
           <a
+            aria-label="Home"
             href="/public/apps/dashboard"
           >
             Home
@@ -60,6 +61,7 @@ exports[`PageHeader should render app icon 1`] = `
           class="breadcrumb-item"
         >
           <a
+            aria-label="Home"
             href="/public/apps/dashboard"
           >
             Home
@@ -110,6 +112,7 @@ exports[`PageHeader should render app icon color 1`] = `
           class="breadcrumb-item"
         >
           <a
+            aria-label="Home"
             href="/public/apps/dashboard"
           >
             Home
@@ -160,6 +163,7 @@ exports[`PageHeader should render app icon color branded 1`] = `
           class="breadcrumb-item"
         >
           <a
+            aria-label="Home"
             href="/public/apps/dashboard"
           >
             Home
@@ -213,6 +217,7 @@ exports[`PageHeader should render children 1`] = `
           class="breadcrumb-item"
         >
           <a
+            aria-label="Home"
             href="/public/apps/dashboard"
           >
             Home
@@ -259,6 +264,7 @@ exports[`PageHeader should render feedback 1`] = `
           class="breadcrumb-item"
         >
           <a
+            aria-label="Home"
             href="/public/apps/dashboard"
           >
             Home
