@@ -123,10 +123,14 @@ class AvDate extends Component {
 
   onFieldChange = event => {
     event.persist();
+    const dateValidation = /^(0?[1-9]|1[0-2])\/(0?[1-9]|1\d|2\d|3[01])\/(19|20)\d{2}$/;
     const value = event && event.target ? event.target.value : event;
-    this.setState({ value, open: false }, () => {
-      if (this.props.onChange) this.props.onChange(event, value);
-    });
+    const date = dateValidation.exec(value);
+    if (date !== null) {
+      this.setState({ value, open: false }, () => {
+        if (this.props.onChange) this.props.onChange(event, value);
+      });
+    }
   };
 
   onPickerChange = value => {
