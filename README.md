@@ -21,6 +21,7 @@ https://availity.github.io/availity-react
 * [breadcrumbs](packages/breadcrumbs/README.md) - Breadscrumbs component for Spaces platform.
 * [feature](packages/feature/README.md) - Check environment features for the current environment to determine if a particular feature is enabled.
 * [feedback](packages/feedback/README.md) - Availity feedback with simley faces react component.
+* [hooks](packages/hooks/README.md) - Custom Hooks that can be used in any projects.
 * [list-group](packages/list-group/README.md) - List Group with some Availity flair.
 * [list-group-item](packages/list-group-item/README.md) - List Group Item with some Availity flair.
 * [page-header](packages/page-header/README.md) - The standard page header for Availity Portal Applications.
