@@ -1,0 +1,33 @@
+{
+  "name": "@availity/hooks",
+  "version": "1.0.0",
+  "author": "Kyle Gray <kyle.gray@availity.com>",
+  "description": "A group of pre-built hooks that are common in most apps",
+  "main": "index.js",
+  "keywords": [
+    "react",
+    "availity"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Availity/availity-react.git"
+  },
+  "bugs": {
+    "url": "https://github.com/Availity/availity-react/issues"
+  },
+  "license": "MIT",
+  "publishConfig": {
+    "access": "public"
+  },
+  "dependencies": {
+    "prop-types": "^15.5.8"
+  },
+  "devDependencies": {
+    "react": "^16.8.0",
+    "react-dom": "^16.8.0",
+    "react-testing-library": "^5.4.4"
+  },
+  "peerDependencies": {
+    "react": "^16.8.0"
+  }
+}
