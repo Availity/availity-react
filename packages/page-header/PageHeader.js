@@ -14,13 +14,13 @@ const PageHeader = ({
   appAbbr,
   iconColor,
   branded,
-  crumbs: ogCrumbs,
+  crumbs,
+  CustomBreadCrumbs = null,
   feedback,
   component,
   tag: Tag,
   ...props
 }) => {
-  let crumbs = ogCrumbs;
   if (spaceId || spaceName) {
     crumbs = [
       { name: spaceName, url: spaceId && `/web/spaces/spaces/#/${spaceId}` },
@@ -29,7 +29,12 @@ const PageHeader = ({
   return (
     <React.Fragment>
       <div className="d-flex align-items-start">
-        <Breadcrumbs crumbs={crumbs} active={appName || children} /> {component}
+        {crumbs ? (
+          <Breadcrumbs crumbs={crumbs} active={appName || children} />
+        ) : (
+          CustomBreadCrumbs
+        )}
+        {component}
       </div>
       <Tag className="page-header page-header-brand" {...props}>
         <div className="page-header-title">
@@ -69,6 +74,16 @@ PageHeader.propTypes = {
   component: PropTypes.element,
   feedback: PropTypes.bool,
   children: PropTypes.node,
+  CustomBreadCrumbs: (props, propName) => {
+    if (!props.CustomBreadCrumbs) {
+      return null;
+    }
+    let error = null;
+    if (props.CustomBreadCrumbs.type !== Breadcrumbs) {
+      error = new Error(`${propName} should be of type Breadcrumbs`);
+    }
+    return error;
+  },
   crumbs: PropTypes.arrayOf(
     PropTypes.shape({
       name: PropTypes.string,
