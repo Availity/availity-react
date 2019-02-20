@@ -4,34 +4,7 @@ exports[`PageHeader should render 1`] = `
 <div>
   <div
     class="d-flex align-items-start"
-  >
-    <nav
-      aria-label="breadcrumb"
-      class=""
-    >
-      <ol
-        class="breadcrumb"
-      >
-        <li
-          class="breadcrumb-item"
-        >
-          <a
-            aria-label="Home"
-            href="/public/apps/dashboard"
-          >
-            Home
-          </a>
-        </li>
-        <li
-          aria-current="page"
-          class="active breadcrumb-item"
-        >
-          Payer Space
-        </li>
-      </ol>
-    </nav>
-     
-  </div>
+  />
   <h1
     class="page-header page-header-brand"
   >
@@ -49,34 +22,7 @@ exports[`PageHeader should render app icon 1`] = `
 <div>
   <div
     class="d-flex align-items-start"
-  >
-    <nav
-      aria-label="breadcrumb"
-      class=""
-    >
-      <ol
-        class="breadcrumb"
-      >
-        <li
-          class="breadcrumb-item"
-        >
-          <a
-            aria-label="Home"
-            href="/public/apps/dashboard"
-          >
-            Home
-          </a>
-        </li>
-        <li
-          aria-current="page"
-          class="active breadcrumb-item"
-        >
-          Payer Space
-        </li>
-      </ol>
-    </nav>
-     
-  </div>
+  />
   <h1
     class="page-header page-header-brand"
   >
@@ -100,34 +46,7 @@ exports[`PageHeader should render app icon color 1`] = `
 <div>
   <div
     class="d-flex align-items-start"
-  >
-    <nav
-      aria-label="breadcrumb"
-      class=""
-    >
-      <ol
-        class="breadcrumb"
-      >
-        <li
-          class="breadcrumb-item"
-        >
-          <a
-            aria-label="Home"
-            href="/public/apps/dashboard"
-          >
-            Home
-          </a>
-        </li>
-        <li
-          aria-current="page"
-          class="active breadcrumb-item"
-        >
-          Payer Space
-        </li>
-      </ol>
-    </nav>
-     
-  </div>
+  />
   <h1
     class="page-header page-header-brand"
   >
@@ -151,34 +70,7 @@ exports[`PageHeader should render app icon color branded 1`] = `
 <div>
   <div
     class="d-flex align-items-start"
-  >
-    <nav
-      aria-label="breadcrumb"
-      class=""
-    >
-      <ol
-        class="breadcrumb"
-      >
-        <li
-          class="breadcrumb-item"
-        >
-          <a
-            aria-label="Home"
-            href="/public/apps/dashboard"
-          >
-            Home
-          </a>
-        </li>
-        <li
-          aria-current="page"
-          class="active breadcrumb-item"
-        >
-          Payer Space
-        </li>
-      </ol>
-    </nav>
-     
-  </div>
+  />
   <h1
     class="page-header page-header-brand"
   >
@@ -205,34 +97,7 @@ exports[`PageHeader should render children 1`] = `
 <div>
   <div
     class="d-flex align-items-start"
-  >
-    <nav
-      aria-label="breadcrumb"
-      class=""
-    >
-      <ol
-        class="breadcrumb"
-      >
-        <li
-          class="breadcrumb-item"
-        >
-          <a
-            aria-label="Home"
-            href="/public/apps/dashboard"
-          >
-            Home
-          </a>
-        </li>
-        <li
-          aria-current="page"
-          class="active breadcrumb-item"
-        >
-          Payer Space
-        </li>
-      </ol>
-    </nav>
-     
-  </div>
+  />
   <h1
     class="page-header page-header-brand"
   >
@@ -252,34 +117,7 @@ exports[`PageHeader should render feedback 1`] = `
 <div>
   <div
     class="d-flex align-items-start"
-  >
-    <nav
-      aria-label="breadcrumb"
-      class=""
-    >
-      <ol
-        class="breadcrumb"
-      >
-        <li
-          class="breadcrumb-item"
-        >
-          <a
-            aria-label="Home"
-            href="/public/apps/dashboard"
-          >
-            Home
-          </a>
-        </li>
-        <li
-          aria-current="page"
-          class="active breadcrumb-item"
-        >
-          Payer Space
-        </li>
-      </ol>
-    </nav>
-     
-  </div>
+  />
   <h1
     class="page-header page-header-brand"
   >
