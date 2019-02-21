@@ -15,7 +15,6 @@ const PageHeader = ({
   iconColor,
   branded,
   crumbs,
-  CustomBreadCrumbs = null,
   feedback,
   component,
   tag: Tag,
@@ -29,10 +28,10 @@ const PageHeader = ({
   return (
     <React.Fragment>
       <div className="d-flex align-items-start">
-        {crumbs ? (
-          <Breadcrumbs crumbs={crumbs} active={appName || children} />
+        {crumbs && crumbs.type === Breadcrumbs ? (
+          crumbs
         ) : (
-          CustomBreadCrumbs
+          <Breadcrumbs crumbs={crumbs} active={appName || children} />
         )}
         {component}
       </div>
@@ -74,22 +73,15 @@ PageHeader.propTypes = {
   component: PropTypes.element,
   feedback: PropTypes.bool,
   children: PropTypes.node,
-  CustomBreadCrumbs: (props, propName) => {
-    if (!props.CustomBreadCrumbs) {
-      return null;
-    }
-    let error = null;
-    if (props.CustomBreadCrumbs.type !== Breadcrumbs) {
-      error = new Error(`${propName} should be of type Breadcrumbs`);
-    }
-    return error;
-  },
-  crumbs: PropTypes.arrayOf(
-    PropTypes.shape({
-      name: PropTypes.string,
-      url: PropTypes.string,
-    })
-  ),
+  crumbs: PropTypes.oneOfType([
+    PropTypes.arrayOf(
+      PropTypes.shape({
+        name: PropTypes.string,
+        url: PropTypes.string,
+      })
+    ),
+    PropTypes.node,
+  ]),
   tag: PropTypes.oneOfType([PropTypes.func, PropTypes.string]),
 };
 

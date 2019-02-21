@@ -76,7 +76,7 @@ storiesOf('Page|Header', module)
     </PageHeader>
   ))
   .add('with custom breadcrumbs', () => (
-    <PageHeader appName="Payer Space" CustomBreadCrumbs={CustomBreadcrumbs}>
+    <PageHeader appName="Payer Space" crumbs={CustomBreadcrumbs}>
       {text('Application Name', 'Payer Space (Beta)')}
     </PageHeader>
   ))
