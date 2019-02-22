@@ -20,6 +20,11 @@
     "access": "public"
   },
   "dependencies": {
+    "@availity/api-axios": "^4.0.0",
+    "@availity/api-core": "^4.0.1",
+    "@availity/localstorage-core": "^2.6.1",
+    "axios": "^0.17.0",
+    "lodash.get": "^4.4.2",
     "prop-types": "^15.5.8"
   },
   "devDependencies": {
