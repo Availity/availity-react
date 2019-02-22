@@ -1,9 +1,12 @@
-import React, { useState } from 'react';
+import React, { useState, useContext } from 'react';
 import PropTypes from 'prop-types';
+import isFunction from 'lodash/isFunction';
 import sortBy from 'lodash.sortby';
 import matchSorter from 'match-sorter';
 
 export const PaginationContext = React.createContext();
+
+export const usePagination = () => useContext(PaginationContext);
 
 /**
  * Easy sort method for sorting objects in an array
@@ -22,15 +25,18 @@ const sortItems = (items, sort) => {
 };
 
 const Pagination = ({
-  items,
+  items: theItems,
   totalItems,
-  itemsPerPage = 5,
+  itemsPerPage,
   searchKeys,
   search,
   sort = null,
   children,
 }) => {
   const [currentPage, setPage] = useState(1);
+
+  // If the items is a function then await the resposne in case of async actions
+  const items = isFunction(theItems) ? theItems(currentPage) : theItems;
 
   // Get the keys to search on. First check if we got search keys in the props
   // else just use all the properties of the first item in the array
@@ -82,7 +88,7 @@ const Pagination = ({
 };
 
 Pagination.propTypes = {
-  items: PropTypes.arrayOf(PropTypes.any),
+  items: PropTypes.oneOfType([PropTypes.array, PropTypes.func]),
   totalItems: PropTypes.number,
   itemsPerPage: PropTypes.number,
   searchKeys: PropTypes.arrayOf(PropTypes.string),
@@ -92,6 +98,11 @@ Pagination.propTypes = {
     ascending: PropTypes.bool.isRequired,
   }),
   children: PropTypes.node,
+};
+
+Pagination.defaultProps = {
+  itemsPerPage: 10,
+  items: [],
 };
 
 export default Pagination;

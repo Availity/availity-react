@@ -1,16 +1,16 @@
-import React, { useContext } from 'react';
+import React from 'react';
 import PropTypes from 'prop-types';
 import { Pagination, PaginationItem, PaginationLink } from 'reactstrap';
-import { PaginationContext } from './Pagination';
+import { usePagination } from './Pagination';
 
-const PaginationControls = ({ directionLinks = false, hide = false }) => {
-  const { pages, page, setPage } = useContext(PaginationContext);
+const PaginationControls = ({ directionLinks = false, autoHide = true }) => {
+  const { pages, page, setPage } = usePagination();
 
   const { number: current } = page;
 
   return (
     <React.Fragment>
-      {pages.length > 1 || !hide ? (
+      {pages.length > 1 || !autoHide ? (
         <Pagination>
           {directionLinks ? (
             <PaginationItem
@@ -53,6 +53,6 @@ const PaginationControls = ({ directionLinks = false, hide = false }) => {
 
 PaginationControls.propTypes = {
   directionLinks: PropTypes.bool,
-  hide: PropTypes.bool,
+  autoHide: PropTypes.bool, // If there are no items to show. This component will not show
 };
 export default PaginationControls;

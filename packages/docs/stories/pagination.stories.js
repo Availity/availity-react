@@ -1,7 +1,6 @@
 import React from 'react';
 import { storiesOf } from '@storybook/react';
 import { withReadme } from 'storybook-readme';
-import { Container } from 'reactstrap';
 import { withKnobs } from '@storybook/addon-knobs/react';
 import PropTypes from 'prop-types';
 import {
@@ -9,57 +8,48 @@ import {
   PaginationContent,
   PaginationControls,
 } from '@availity/pagination';
-import README from '@availity/payer-logo/README.md';
+import README from '@availity/pagination/README.md';
+import { boolean, number } from '@storybook/addon-knobs';
+import { text } from '@storybook/addon-knobs/dist/deprecated';
 
-const items = [
-  {
-    value: 1,
-  },
-  {
-    value: 2,
-  },
-  {
-    value: 3,
-  },
-  {
-    value: 4,
-  },
-  {
-    value: 5,
-  },
-  {
-    value: 6,
-  },
-  {
-    value: 7,
-  },
-  {
-    value: 8,
-  },
-  {
-    value: 9,
-  },
-  {
-    value: 10,
-  },
-  {
-    value: 11,
-  },
-];
-
+const getItems = (number = 1) =>
+  Array.from({ length: number }, (v, k) => ({
+    value: `Item ${k + 1}`,
+    key: k + 1,
+  }));
 const Component = ({ value }) => <li>{value}</li>;
 Component.propTypes = {
-  value: PropTypes.number,
+  value: PropTypes.string,
 };
 
 storiesOf('Components|Pagination', module)
   .addDecorator(withReadme([README]))
   .addDecorator(withKnobs)
   .add('default', () => (
-    <Container>
-      <Pagination items={items}>
-        <PaginationContent component={Component} />
-        <PaginationControls directionLinks />
-      </Pagination>
-    </Container>
+    <Pagination
+      itemsPerPage={number('Items Per page', 10, { min: 1 }) || 1}
+      items={getItems(number('Items', 20, { min: 1 })) || []}
+    >
+      <PaginationContent
+        loading={boolean('Loading', false)}
+        loadingMessage={text('Loading Message', 'Loading')}
+        component={Component}
+      />
+      <PaginationControls
+        directionLinks
+        autoHide={boolean('Auto Hide Controls', true)}
+      />
+    </Pagination>
+  ))
+  .add('controls', () => (
+    <Pagination
+      items={
+        getItems(number('Items', 20, { min: 1 })) || { value: 'Item 1', key: 1 }
+      }
+    >
+      <PaginationControls
+        directionLinks={boolean('Direction Links', true)}
+        autoHide={boolean('Auto Hide', true)}
+      />
+    </Pagination>
   ));

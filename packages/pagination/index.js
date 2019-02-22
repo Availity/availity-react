@@ -1,8 +1,8 @@
-import Pagination from './Pagination';
+import Pagination, { usePagination } from './Pagination';
 import PaginationControls from './PaginationControls';
 import PaginationContent from './PaginationContent';
 
-export { Pagination, PaginationControls, PaginationContent };
+export { Pagination, PaginationControls, PaginationContent, usePagination };
 
 Pagination.Controls = PaginationControls;
 Pagination.Content = PaginationContent;
