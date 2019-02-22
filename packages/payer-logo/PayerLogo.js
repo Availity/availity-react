@@ -6,7 +6,6 @@ import get from 'lodash.get';
 const spaceIDQuery = `
 query($id: ID!){
   space(id: $id){
-    payerIDs
     images{
       name
       value
