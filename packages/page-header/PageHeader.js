@@ -14,13 +14,12 @@ const PageHeader = ({
   appAbbr,
   iconColor,
   branded,
-  crumbs: ogCrumbs,
+  crumbs,
   feedback,
   component,
   tag: Tag,
   ...props
 }) => {
-  let crumbs = ogCrumbs;
   if (spaceId || spaceName) {
     crumbs = [
       { name: spaceName, url: spaceId && `/web/spaces/spaces/#/${spaceId}` },
@@ -29,7 +28,12 @@ const PageHeader = ({
   return (
     <React.Fragment>
       <div className="d-flex align-items-start">
-        <Breadcrumbs crumbs={crumbs} active={appName || children} /> {component}
+        {crumbs && crumbs.type === Breadcrumbs ? (
+          crumbs
+        ) : (
+          <Breadcrumbs crumbs={crumbs} active={appName || children} />
+        )}
+        {component}
       </div>
       <Tag className="page-header page-header-brand" {...props}>
         <div className="page-header-title">
@@ -69,12 +73,15 @@ PageHeader.propTypes = {
   component: PropTypes.element,
   feedback: PropTypes.bool,
   children: PropTypes.node,
-  crumbs: PropTypes.arrayOf(
-    PropTypes.shape({
-      name: PropTypes.string,
-      url: PropTypes.string,
-    })
-  ),
+  crumbs: PropTypes.oneOfType([
+    PropTypes.arrayOf(
+      PropTypes.shape({
+        name: PropTypes.string,
+        url: PropTypes.string,
+      })
+    ),
+    PropTypes.node,
+  ]),
   tag: PropTypes.oneOfType([PropTypes.func, PropTypes.string]),
 };
 
