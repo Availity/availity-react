@@ -33,6 +33,7 @@
 		"@availity/feature": "^1.1.1",
 		"@availity/feedback": "^1.1.1",
 		"@availity/hooks": "^1.1.0",
+		"@availity/icon": "^0.1.0",
 		"@availity/list-group": "^1.1.1",
 		"@availity/list-group-item": "^1.1.1",
 		"@availity/localstorage-core": "^2.5.0",
