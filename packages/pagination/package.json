@@ -1,0 +1,31 @@
+{
+  "name": "@availity/pagination",
+  "version": "1.5.2",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "Evan Sharp <evan.sharp@availity.com>",
+  "license": "MIT",
+  "publishConfig": {
+    "registry": "https://artifactory.availity.com/artifactory/api/npm/local-npm/"
+  },
+  "peerDependencies": {
+    "react": "^16.8.0",
+    "reactstrap": "^7.0.0"
+  },
+  "dependencies": {
+    "lodash.sortby": "^4.7.0",
+    "match-sorter": "^2.3.0",
+    "prop-types": "^15.5.8",
+    "react-block-ui": "^1.0.0"
+  },
+  "devDependencies": {
+    "react": "^16.8.0",
+    "react-block-ui": "^1.0.0",
+    "react-dom": "^16.8.0",
+    "reactstrap": "^7.0.0"
+  }
+}
