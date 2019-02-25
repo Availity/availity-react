@@ -1,0 +1,14 @@
+{
+  "data": {
+    "spaces": [
+      {
+        "images": [
+          {
+            "name": "logo",
+            "value": "/public/apps/eligibility/images/value-add-logos/PayerID.gif"
+          }
+        ]
+      }
+    ]
+  }
+}
