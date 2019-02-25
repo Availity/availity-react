@@ -4,6 +4,7 @@ import regions from './regions';
 import notifications from './notifications';
 import axiUserPermissions from './axi-user-permissions';
 import appeals from './appeals';
+import slotmachine from './slotmachine';
 
 mock.setup();
 
@@ -16,6 +17,8 @@ axiUserPermissions(mock);
 regions(mock);
 
 appeals(mock);
+
+slotmachine(mock);
 
 // keep this last
 mock.use(proxy);
