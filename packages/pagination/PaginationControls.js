@@ -13,32 +13,32 @@ const PaginationControls = ({ directionLinks = false, autoHide = true }) => {
       {pages.length > 1 || !autoHide ? (
         <Pagination>
           {directionLinks ? (
-            <PaginationItem
-              disabled={current === 1}
-              onClick={() => (current === 1 ? null : setPage(current - 1))}
-            >
-              <PaginationLink previous />
+            <PaginationItem disabled={current === 1}>
+              <PaginationLink
+                onClick={() => (current === 1 ? null : setPage(current - 1))}
+                type="button"
+                previous
+              />
             </PaginationItem>
           ) : (
             ''
           )}
           {pages.map(pageNumber => (
-            <PaginationItem
-              key={pageNumber}
-              active={current === pageNumber}
-              onClick={() => setPage(pageNumber)}
-            >
-              <PaginationLink>{pageNumber}</PaginationLink>
+            <PaginationItem key={pageNumber} active={current === pageNumber}>
+              <PaginationLink onClick={() => setPage(pageNumber)} type="button">
+                {pageNumber}
+              </PaginationLink>
             </PaginationItem>
           ))}
           {directionLinks ? (
-            <PaginationItem
-              disabled={current === pages.length}
-              onClick={() =>
-                current === pages.length ? null : setPage(current + 1)
-              }
-            >
-              <PaginationLink next />
+            <PaginationItem disabled={current === pages.length}>
+              <PaginationLink
+                onClick={() =>
+                  current === pages.length ? null : setPage(current + 1)
+                }
+                type="button"
+                next
+              />
             </PaginationItem>
           ) : (
             ''

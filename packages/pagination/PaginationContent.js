@@ -8,6 +8,7 @@ const PaginationContent = ({
   component: Component,
   loadingMessage,
   loading,
+  ...rest
 }) => {
   const { page } = usePagination();
 
@@ -23,7 +24,7 @@ const PaginationContent = ({
             );
           }
 
-          return <Component key={value.key || key} {...value} />;
+          return <Component {...rest} key={value.key || key} {...value} />;
         })}
     </BlockUI>
   );
