@@ -1,6 +1,6 @@
 export interface IconProps {
     name: string;
-    size?: string | number;
+    size?: string;
 }
 
 declare const Icon: React.FunctionComponent<IconProps>;

@@ -4,21 +4,43 @@ import 'react-testing-library/cleanup-after-each';
 import Icon from '..';
 
 describe('Icon', () => {
-  test('should render normal size when given no size prop', () => {
+  test('should render default size and aria-label', () => {
     const { getByTestId } = render(<Icon data-testid="icon" name="home" />);
 
     const icon = getByTestId('icon');
 
     expect(icon).toBeDefined();
+
+    expect(icon.getAttribute('aria-label')).toBe('home');
   });
 
   test('should render given a size', () => {
     const { container } = render(
-      <Icon data-testid="icon" name="home" size="7" />
+      <Icon data-testid="icon" name="home" size="3x" />
     );
 
-    const icon = container.querySelector('.icon-5x');
+    const icon = container.querySelector('.icon-3x');
 
-    expect(icon).toBeDefined();
+    expect(icon).not.toBe(null);
+  });
+
+  test('should render custom aria-label', () => {
+    const { getByTestId } = render(
+      <Icon data-testid="icon" name="home" aria-label="custom label" />
+    );
+
+    const icon = getByTestId('icon');
+
+    expect(icon.getAttribute('aria-label')).toBe('custom label');
+  });
+
+  test('should render with extra className', () => {
+    const { getByTestId } = render(
+      <Icon data-testid="icon" name="home" className="custom-classname" />
+    );
+
+    const icon = getByTestId('icon');
+
+    expect(icon.className).toBe('icon icon-home custom-classname');
   });
 });

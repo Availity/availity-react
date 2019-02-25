@@ -15,7 +15,7 @@ import React from 'react';
 import Icon from '@availity/icon';
 // ...
 <Container>
-    <Icon name="home" size="3" />
+    <Icon name="home" size="3x" />
 </Container>
 // ...
 ```

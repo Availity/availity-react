@@ -21,8 +21,6 @@ icons.glyphs.forEach(glyph => {
   iconOptions[glyph.css] = glyph.css;
 });
 
-console.log('icon options:', iconOptions);
-
 storiesOf('Icons|Icon', module)
   .addDecorator(withReadme([README]))
   .add('default', () => (
