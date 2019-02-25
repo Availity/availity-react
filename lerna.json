@@ -8,6 +8,9 @@
   "command": {
     "publish": {
       "conventionalCommits": true
+    },
+    "bootstrap": {
+      "npmClientArgs": ["--no-package-lock"]
     }
   }
 }
