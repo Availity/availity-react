@@ -28,79 +28,52 @@ query($payerIDs: [String!], $types: [String!]){
 }
 `;
 
-const getLogoBySpaceId = async spaceId =>
-  new Promise(async (resolve, reject) => {
-    try {
-      const {
-        data: {
-          data: { space },
-        },
-      } = await avSlotMachineApi.create({
-        query: spaceIDQuery,
-        variables: { id: spaceId },
-      });
+const fetchLogo = async (query, variables, path) => {
+  try {
+    const {
+      data: { data },
+    } = await avSlotMachineApi.create({
+      query,
+      variables,
+    });
 
-      const images = get(space, 'images', []).reduce(
-        (accum, { name, value }) => {
-          accum[name] = value;
-          return accum;
-        },
-        {}
-      );
+    const images = get(data, path, []).reduce((accum, { name, value }) => {
+      accum[name] = value;
+      return accum;
+    }, {});
 
-      return resolve(images.logo);
-    } catch (error) {
-      return reject(error);
-    }
-  });
+    return images.logo;
+  } catch (error) {
+    return error;
+  }
+};
 
-const getLogoByPayerId = async payerId =>
-  new Promise(async (resolve, reject) => {
-    try {
-      const {
-        data: {
-          data: { spaces },
-        },
-      } = await avSlotMachineApi.create({
-        query: payerIDQuery,
-        variables: { payerIDs: [payerId], types: ['space'] },
-      });
+const getLogo = async (spaceId, payerId) => {
+  try {
+    let url;
+    if (spaceId) {
+      const variables = { id: spaceId };
+      const path = 'space.images';
+      url = await fetchLogo(spaceIDQuery, variables, path);
+    } else if (payerId) {
+      const variables = { payerIDs: [payerId], types: ['space'] };
+      const path = 'spaces[0].images';
+      url = await fetchLogo(payerIDQuery, variables, path);
 
-      const images = get(spaces, '[0].images', []).reduce(
-        (accum, { name, value }) => {
-          accum[name] = value;
-          return accum;
-        },
-        {}
-      );
-
-      return resolve(images.logo);
-    } catch (error) {
-      return reject(error);
-    }
-  });
-
-const getLogo = (spaceId, payerId) =>
-  new Promise(async (resolve, reject) => {
-    try {
-      let url;
-      if (spaceId) {
-        url = await getLogoBySpaceId(spaceId);
-      } else if (payerId) {
-        url = await getLogoByPayerId(payerId);
-        // We can probably remove this at some point once our spaces data is complete
-        if (!url) {
-          url = `/public/apps/eligibility/images/value-add-logos/${payerId.replace(
-            /\s/g,
-            ''
-          )}.gif`;
-        }
+      // We can probably remove this at some point once our spaces data is complete
+      if (!url) {
+        url = `/public/apps/eligibility/images/value-add-logos/${payerId.replace(
+          /\s/g,
+          ''
+        )}.gif`;
       }
-      return resolve(url);
-    } catch (error) {
-      return reject(error);
     }
-  });
+
+    return url;
+  } catch (error) {
+    return error;
+  }
+};
 
 const PayerLogo = ({ spaceId, payerId, ...props }) => {
   const [url, setUrl] = useState(null);
