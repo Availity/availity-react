@@ -40,12 +40,8 @@ function App() {
   );
 }
 
-// Ok, so here's what your tests might look like
-
 afterEach(cleanup);
 
-// this is a handy function that I would utilize for any component
-// that relies on the router being in context
 function renderWithRouter(
   ui,
   {
@@ -64,11 +60,9 @@ function renderWithRouter(
 
 test('full app rendering/navigating', () => {
   const { container, getByText } = renderWithRouter(<App />);
-  // normally I'd use a data-testid, but just wanted to show this is also possible
   expect(container.innerHTML).toMatch('Start page content');
   const leftClick = { button: 0 };
   fireEvent.click(getByText(/React Router Breadcrumb/i), leftClick);
-  // normally I'd use a data-testid, but just wanted to show this is also possible
   expect(container.innerHTML).toMatch('parent page of start page');
 });
 
@@ -76,12 +70,74 @@ test('landing on a bad page', () => {
   const { container } = renderWithRouter(<App />, {
     route: '/something-that-does-not-match',
   });
-  // normally I'd use a data-testid, but just wanted to show this is also possible
   expect(container.innerHTML).toMatch('No match');
 });
 
-test('rendering a component that uses withRouter', () => {
+test('rendering a component that uses a single breadcrumb', () => {
   const route = '/some-route';
   const { getByTestId } = renderWithRouter(<LocationDisplay />, { route });
   expect(getByTestId('location-display').textContent).toBe(route);
+});
+
+const StartPageMultiBreadcrumbItems = () => (
+  <div>
+    Start page content
+    <Breadcrumbs active="react-router-demo-page">
+      <BreadcrumbItem>
+        <a href="/static/link">Static Breadcrumb</a>
+      </BreadcrumbItem>
+      <BreadcrumbItem>
+        <Link to="react-router-destination">React Router Breadcrumb</Link>
+      </BreadcrumbItem>
+    </Breadcrumbs>
+  </div>
+);
+
+function AppMultiBreadcrumb() {
+  return (
+    <div>
+      <Switch>
+        <Route exact path="/start" component={StartPageMultiBreadcrumbItems} />
+        <Route
+          path="/react-router-destination"
+          component={ReactRouterDestination}
+        />
+        <Route component={NoMatch} />
+      </Switch>
+      <LocationDisplay />
+    </div>
+  );
+}
+
+test('full app rendering with multiple breadcrumbs', () => {
+  const { container, getByText } = renderWithRouter(<AppMultiBreadcrumb />);
+  expect(container.innerHTML).toMatch('Start page content');
+  const leftClick = { button: 0 };
+  fireEvent.click(getByText(/React Router Breadcrumb/i), leftClick);
+  // normally I'd use a data-testid, but just wanted to show this is also possible
+  expect(container.innerHTML).toMatch('parent page of start page');
+});
+
+const StartPageNoBreadcrumbItems = () => (
+  <div>
+    Start page content
+    <Breadcrumbs active="react-router-demo-page" />
+  </div>
+);
+
+function AppNoBreadcrumbItems() {
+  return (
+    <div>
+      <Switch>
+        <Route exact path="/start" component={StartPageNoBreadcrumbItems} />
+        <Route component={NoMatch} />
+      </Switch>
+      <LocationDisplay />
+    </div>
+  );
+}
+
+test('full app rendering with no breadcrumbitems', () => {
+  const { container } = renderWithRouter(<AppNoBreadcrumbItems />);
+  expect(container.innerHTML).toMatch('Start page content');
 });

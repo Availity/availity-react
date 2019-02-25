@@ -13,7 +13,7 @@ npm install @availity/page-header --save
 ```javascript
 import React from 'react';
 import PageHeader from '@availity/page-header';
-// ... 
+// ...
 <PageHeader appName="Applicaiton Name" />
 // ...
 ```
@@ -32,7 +32,7 @@ The standard Availity application header which appears at the top of the page. I
 - **`branded`**: String. Optional. Triggers the app icon's "branded" styles. Only used if the app icon should appear.
 - **`payerId`**: String. Optional. The ID of the payer if the application is payer specific. If provided the payer logo will appear and not the app icon.
 - **`feedback`**: Boolean. Optional. If `true` the feedback loop button will appear. Default: `false`.
-- **`crumbs`**: Array of Objects contains `name` (String) and `url` (string) properties. Optional. The ancestor pages which gets passed to the `Breadcrumbs` component.
+- **`crumbs`**: Array(Object) or [BreadCrumbs](../breadcrumbs/README.md) . Optional. Array of Objects contains `name` (String) and `url` (string) properties. Optional. The ancestor pages which gets passed to the `Breadcrumbs` component. See the children props sections of the @availity/Breadcrumbs documentation
 - **`component`**: Component. Optional. Allow rendering of an optional component in the top right of the header.
 
 ##### PageHeader Usage
@@ -40,7 +40,7 @@ The standard Availity application header which appears at the top of the page. I
 ```javascript
 import React from 'react';
 import PageHeader from '@availity/page-header';
-// ... 
+// ...
 <PageHeader
   appName="Payer Space"
   appAbbr="PS"
