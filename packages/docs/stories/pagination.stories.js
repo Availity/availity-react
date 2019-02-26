@@ -7,6 +7,7 @@ import {
   Pagination,
   PaginationContent,
   PaginationControls,
+  AvResourcePagination,
 } from '@availity/pagination';
 import README from '@availity/pagination/README.md';
 import { boolean, number } from '@storybook/addon-knobs';
@@ -52,4 +53,10 @@ storiesOf('Components|Pagination', module)
         autoHide={boolean('Auto Hide', true)}
       />
     </Pagination>
+  ))
+  .add('resource', () => (
+    <AvResourcePagination>
+      <PaginationContent />
+      <PaginationControls boundaryLinks />
+    </AvResourcePagination>
   ));
