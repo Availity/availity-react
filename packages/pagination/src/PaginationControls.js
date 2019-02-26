@@ -11,9 +11,12 @@ const PaginationControls = ({ directionLinks = false, autoHide = true }) => {
   return (
     <React.Fragment>
       {pages.length > 1 || !autoHide ? (
-        <Pagination>
+        <Pagination data-testid="pagination-controls-con">
           {directionLinks ? (
-            <PaginationItem disabled={current === 1}>
+            <PaginationItem
+              disabled={current === 1}
+              data-testid="pagination-control-previous"
+            >
               <PaginationLink
                 onClick={() => (current === 1 ? null : setPage(current - 1))}
                 type="button"
@@ -24,14 +27,21 @@ const PaginationControls = ({ directionLinks = false, autoHide = true }) => {
             ''
           )}
           {pages.map(pageNumber => (
-            <PaginationItem key={pageNumber} active={current === pageNumber}>
+            <PaginationItem
+              key={pageNumber}
+              active={current === pageNumber}
+              data-testid={`control-page-${pageNumber}`}
+            >
               <PaginationLink onClick={() => setPage(pageNumber)} type="button">
                 {pageNumber}
               </PaginationLink>
             </PaginationItem>
           ))}
           {directionLinks ? (
-            <PaginationItem disabled={current === pages.length}>
+            <PaginationItem
+              disabled={current === pages.length}
+              data-testid="pagination-control-next"
+            >
               <PaginationLink
                 onClick={() =>
                   current === pages.length ? null : setPage(current + 1)

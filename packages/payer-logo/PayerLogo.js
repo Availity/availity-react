@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import PropTypes from 'prop-types';
-import { avSlotMachineApi } from '@availity/api-axios';
 import { useEffectAsync } from '@availity/hooks';
+import { avSlotMachineApi } from '@availity/api-axios';
 import get from 'lodash.get';
 
 const spaceIDQuery = `
@@ -81,7 +81,7 @@ const PayerLogo = ({ spaceId, payerId, ...props }) => {
   useEffectAsync(async () => {
     const _url = await getLogo(spaceId, payerId);
     setUrl(_url);
-  }, [spaceId, payerId]);
+  });
 
   if (!payerId && !spaceId) return null;
 

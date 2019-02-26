@@ -1,7 +1,7 @@
-import Pagination, { usePagination } from './Pagination';
-import PaginationControls from './PaginationControls';
-import PaginationContent from './PaginationContent';
-import AvResourcePagination from './AvResourcePagination';
+import Pagination, { usePagination } from './src/Pagination';
+import PaginationControls from './src/PaginationControls';
+import PaginationContent from './src/PaginationContent';
+import AvResourcePagination from './src/AvResourcePagination';
 
 export {
   Pagination,

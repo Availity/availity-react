@@ -7,6 +7,14 @@ export const PaginationContext = React.createContext();
 
 export const usePagination = () => useContext(PaginationContext);
 
+// todos
+// Add another `useEffect` for only updating the items without calling the function if the `itemsPerPage` prop changes
+
+/**
+ * Pagination Provider that takes in an async function or items and provides a list of items
+ * @param {Function|Object} items - The Items or function to use for pagination
+ * @param {number} itemsPerPage - The items to show per page
+ */
 const Pagination = ({ items: theItems, itemsPerPage, children }) => {
   const [currentPage, setPage] = useState(1);
   const [pageData, setPageData] = useState({
@@ -38,7 +46,8 @@ const Pagination = ({ items: theItems, itemsPerPage, children }) => {
         ? itemsPerPage * currentPage
         : items.length;
 
-    // Slice that data
+    // Slice that data if it was given from a function since we don't know if its returning all or not
+    // todo - add prop if needed to handle this
     const pageData = isFunction(theItems)
       ? items
       : items.slice(lower - 1, upper);

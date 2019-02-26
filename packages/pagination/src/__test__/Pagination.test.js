@@ -1,7 +1,8 @@
 import React from 'react';
 import { render, waitForElement } from 'react-testing-library';
 import 'react-testing-library/cleanup-after-each';
-import { Pagination, usePagination } from '..';
+
+import Pagination, { usePagination } from '../Pagination';
 
 // eslint-disable-next-line react/prop-types
 const PaginationJson = () => {
@@ -9,9 +10,7 @@ const PaginationJson = () => {
 
   return !pagination.loading ? (
     <span data-testid="pagination-con">{JSON.stringify(pagination)}</span>
-  ) : (
-    <div />
-  );
+  ) : null;
 };
 
 describe('Pagination', () => {
@@ -39,6 +38,38 @@ describe('Pagination', () => {
         page: {
           number: 1,
           items,
+        },
+      })
+    );
+  });
+
+  test('should provide a list given a function', async () => {
+    const getItems = () => ({
+      totalCount: 3,
+      items: [
+        { value: '1', key: 1 },
+        { value: '2', key: 2 },
+        { value: '3', key: 3 },
+      ],
+    });
+
+    const { getByTestId } = render(
+      <Pagination items={getItems}>
+        <PaginationJson />
+      </Pagination>
+    );
+
+    const paginationCon = await waitForElement(() =>
+      getByTestId('pagination-con')
+    );
+
+    expect(paginationCon).toBeDefined();
+
+    expect(JSON.parse(paginationCon.textContent)).toEqual(
+      expect.objectContaining({
+        page: {
+          number: 1,
+          items: getItems().items,
         },
       })
     );

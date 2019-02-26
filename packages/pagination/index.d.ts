@@ -1,7 +1,7 @@
-import AvResourcePagination from './AvResourcePagination';
-import Pagination from './Pagination';
-import PaginationControls from './PaginationControls';
-import PaginationContent from './PaginationContent';
+import AvResourcePagination from './types/AvResourcePagination';
+import Pagination from './types/Pagination';
+import PaginationControls from './types/PaginationControls';
+import PaginationContent from './types/PaginationContent';
 
 export default Pagination;
 
