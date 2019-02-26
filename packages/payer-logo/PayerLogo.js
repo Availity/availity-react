@@ -58,7 +58,7 @@ const getLogo = async (spaceId, payerId) => {
       url = await fetchLogo(spaceIDQuery, variables, path);
     } else if (payerId) {
       const variables = { payerIDs: [payerId], types: ['space'] };
-      const path = 'spaces[0].images';
+      const path = 'spaces.spaces[0].images';
       url = await fetchLogo(payerIDQuery, variables, path);
 
       // We can probably remove this at some point once our spaces data is complete

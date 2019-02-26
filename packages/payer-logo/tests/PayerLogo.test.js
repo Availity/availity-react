@@ -17,17 +17,19 @@ describe('PayerLogo', () => {
     avSlotMachineApi.create.mockResolvedValue({
       data: {
         data: {
-          spaces: [
-            {
-              images: [
-                {
-                  name: 'logo',
-                  value:
-                    '/public/apps/eligibility/images/value-add-logos/BCBSF.gif',
-                },
-              ],
-            },
-          ],
+          spaces: {
+            spaces: [
+              {
+                images: [
+                  {
+                    name: 'logo',
+                    value:
+                      '/public/apps/eligibility/images/value-add-logos/BCBSF.gif',
+                  },
+                ],
+              },
+            ],
+          },
         },
       },
     });
