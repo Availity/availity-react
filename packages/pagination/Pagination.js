@@ -28,7 +28,7 @@ const Pagination = ({ items: theItems, itemsPerPage, children }) => {
     // If the items is a function then await the resposne in case of async actions
     const { items, totalCount } = await (isFunction(theItems)
       ? theItems(currentPage, itemsPerPage)
-      : theItems);
+      : { items: theItems });
 
     // Get index of item at the start of the currentPage
     const lower = currentPage === 1 ? 1 : (currentPage - 1) * itemsPerPage + 1;
@@ -61,7 +61,7 @@ const Pagination = ({ items: theItems, itemsPerPage, children }) => {
     );
 
     act(() => toggleLoading());
-  }, [currentPage, itemsPerPage]);
+  }, [currentPage, itemsPerPage, theItems]);
 
   // boom roasted
   return (
@@ -69,6 +69,7 @@ const Pagination = ({ items: theItems, itemsPerPage, children }) => {
       value={{
         ...pageData,
         setPage,
+        loading,
       }}
     >
       {children}

@@ -28,20 +28,23 @@ Component.propTypes = {
 const UserComponent = ({ name }) => <li>{`${name.first} ${name.last}`}</li>;
 
 const mockResponse = {
-  postGet(params = {}, config = {}) {
-    const { offset = 0, limit = 50 } = params;
-    const notifications = paginationData.slice(offset, offset + limit);
-    return Promise.resolve({
-      config,
-      data: {
-        totalCount: paginationData.length,
-        count: notifications.length,
-        offset,
-        limit,
-        notifications,
-      },
-    });
-  },
+  postGet: async (params = {}, config = {}) =>
+    new Promise(resolve =>
+      setTimeout(() => {
+        const { offset = 0, limit = 50 } = params;
+        const notifications = paginationData.slice(offset, offset + limit);
+        resolve({
+          config,
+          data: {
+            totalCount: paginationData.length,
+            count: notifications.length,
+            offset,
+            limit,
+            notifications,
+          },
+        });
+      }, 1000)
+    ),
 };
 
 storiesOf('Components|Pagination', module)
@@ -53,6 +56,7 @@ storiesOf('Components|Pagination', module)
       items={getItems(number('Items', 20, { min: 1 })) || []}
     >
       <PaginationContent
+        itemKey="key"
         loading={boolean('Loading', false)}
         loadingMessage={text('Loading Message', 'Loading')}
         component={Component}
@@ -82,7 +86,7 @@ storiesOf('Components|Pagination', module)
         getResult: 'notifications',
       }}
     >
-      <PaginationContent itemKey="id" component={UserComponent} />
+      <PaginationContent itemKey="id" component={UserComponent} loader />
       <PaginationControls boundaryLinks />
     </AvResourcePagination>
   ));
