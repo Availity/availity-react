@@ -3,10 +3,8 @@ import PropTypes from 'prop-types';
 import Pagination from './Pagination';
 
 const propTypes = {
-  itemsPerPage: PropTypes.number,
   parameters: PropTypes.object,
   children: PropTypes.node,
-  requestConfig: PropTypes.object,
   resource: PropTypes.shape({
     postGet: PropTypes.func,
     getResult: PropTypes.oneOfType([PropTypes.string, PropTypes.func]),
@@ -16,7 +14,6 @@ const propTypes = {
 
 const AvResourcePagination = ({
   parameters = {},
-  requestConfig,
   resource,
   getResult,
   children,
@@ -29,7 +26,7 @@ const AvResourcePagination = ({
       ...(parameters.params || {}),
     };
 
-    const resp = await resource.postGet(params, parameters.requestConfig || {});
+    const resp = await resource.postGet(params, parameters || {});
 
     const useGetResult = resource.getResult || getResult;
 

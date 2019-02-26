@@ -3,6 +3,7 @@
 	"version": "1.5.2",
 	"description": "",
 	"main": "index.js",
+	"types": "index.d.ts",
 	"keywords": [],
 	"author": "Evan Sharp <evan.sharp@availity.com>",
 	"license": "MIT",
