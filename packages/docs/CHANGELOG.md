@@ -3,6 +3,39 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.9.1](https://github.com/Availity/availity-react/compare/@availity/docs@1.9.0...@availity/docs@1.9.1) (2019-02-26)
+
+
+### Bug Fixes
+
+* **docs:** static file path was not being pulled correctly ([dabe985](https://github.com/Availity/availity-react/commit/dabe985))
+* **payer-logo:** correct path from payerID query ([a6edbaf](https://github.com/Availity/availity-react/commit/a6edbaf))
+
+
+
+
+
+# [1.9.0](https://github.com/Availity/availity-react/compare/@availity/docs@1.8.1...@availity/docs@1.9.0) (2019-02-25)
+
+
+### Bug Fixes
+
+* **docs:** added back required dev deps ([3734c8f](https://github.com/Availity/availity-react/commit/3734c8f))
+* **icon:** unit tests not working, updated readme and types ([4fc9300](https://github.com/Availity/availity-react/commit/4fc9300))
+* **page-header:** allow custom crumbs in crumbs prop ([d3af59f](https://github.com/Availity/availity-react/commit/d3af59f))
+* removed npmrc and added config to lerna for now creating locks ([efe82ab](https://github.com/Availity/availity-react/commit/efe82ab))
+* removed package-locks,added npmrc ignore,fixed react as hoisted dep ([4648319](https://github.com/Availity/availity-react/commit/4648319))
+
+
+### Features
+
+* integrated dynamic breadcrumbs into PageHeader ([7865b13](https://github.com/Availity/availity-react/commit/7865b13))
+* **icon:** added package for icons ([6ab3b2f](https://github.com/Availity/availity-react/commit/6ab3b2f))
+
+
+
+
+
 ## [1.8.1](https://github.com/Availity/availity-react/compare/@availity/docs@1.8.0...@availity/docs@1.8.1) (2019-02-21)
 
 **Note:** Version bump only for package @availity/docs

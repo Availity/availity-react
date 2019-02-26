@@ -30,7 +30,6 @@ exports[`PageHeader should render 1`] = `
         </li>
       </ol>
     </nav>
-     
   </div>
   <h1
     class="page-header page-header-brand"
@@ -75,7 +74,6 @@ exports[`PageHeader should render app icon 1`] = `
         </li>
       </ol>
     </nav>
-     
   </div>
   <h1
     class="page-header page-header-brand"
@@ -126,7 +124,6 @@ exports[`PageHeader should render app icon color 1`] = `
         </li>
       </ol>
     </nav>
-     
   </div>
   <h1
     class="page-header page-header-brand"
@@ -177,7 +174,6 @@ exports[`PageHeader should render app icon color branded 1`] = `
         </li>
       </ol>
     </nav>
-     
   </div>
   <h1
     class="page-header page-header-brand"
@@ -231,7 +227,6 @@ exports[`PageHeader should render children 1`] = `
         </li>
       </ol>
     </nav>
-     
   </div>
   <h1
     class="page-header page-header-brand"
@@ -278,7 +273,6 @@ exports[`PageHeader should render feedback 1`] = `
         </li>
       </ol>
     </nav>
-     
   </div>
   <h1
     class="page-header page-header-brand"

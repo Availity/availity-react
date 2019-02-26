@@ -1,5 +1,5 @@
 import React from 'react';
-import { render } from 'react-testing-library';
+import { render, waitForElement } from 'react-testing-library';
 import 'react-testing-library/cleanup-after-each';
 import { Pagination, usePagination } from '..';
 
@@ -7,11 +7,15 @@ import { Pagination, usePagination } from '..';
 const PaginationJson = () => {
   const pagination = usePagination();
 
-  return <span data-testid="pagination-con">{JSON.stringify(pagination)}</span>;
+  return !pagination.loading ? (
+    <span data-testid="pagination-con">{JSON.stringify(pagination)}</span>
+  ) : (
+    <div />
+  );
 };
 
 describe('Pagination', () => {
-  test('should provide a list of items', () => {
+  test('should provide a list of items', async () => {
     const items = [
       { value: '1', key: 1 },
       { value: '2', key: 2 },
@@ -24,7 +28,9 @@ describe('Pagination', () => {
       </Pagination>
     );
 
-    const paginationCon = getByTestId('pagination-con');
+    const paginationCon = await waitForElement(() =>
+      getByTestId('pagination-con')
+    );
 
     expect(paginationCon).toBeDefined();
 

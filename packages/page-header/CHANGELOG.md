@@ -3,6 +3,32 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.3.1](https://github.com/Availity/availity-react/compare/@availity/page-header@1.3.0...@availity/page-header@1.3.1) (2019-02-26)
+
+**Note:** Version bump only for package @availity/page-header
+
+
+
+
+
+# [1.3.0](https://github.com/Availity/availity-react/compare/@availity/page-header@1.2.0...@availity/page-header@1.3.0) (2019-02-25)
+
+
+### Bug Fixes
+
+* **page-header:** allow custom crumbs in crumbs prop ([d3af59f](https://github.com/Availity/availity-react/commit/d3af59f))
+* removed npmrc and added config to lerna for now creating locks ([efe82ab](https://github.com/Availity/availity-react/commit/efe82ab))
+* removed package-locks,added npmrc ignore,fixed react as hoisted dep ([4648319](https://github.com/Availity/availity-react/commit/4648319))
+
+
+### Features
+
+* integrated dynamic breadcrumbs into PageHeader ([7865b13](https://github.com/Availity/availity-react/commit/7865b13))
+
+
+
+
+
 # [1.2.0](https://github.com/Availity/availity-react/compare/@availity/page-header@1.1.0...@availity/page-header@1.2.0) (2019-02-13)
 
 

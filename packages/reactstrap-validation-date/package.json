@@ -1,6 +1,6 @@
 {
   "name": "@availity/reactstrap-validation-date",
-  "version": "1.7.1",
+  "version": "1.7.2",
   "description": "Wrapper for react-date-range to work with availity-reactstrap-validation",
   "main": "index.js",
   "scripts": {
@@ -25,9 +25,9 @@
   "devDependencies": {
     "availity-reactstrap-validation": "^2.0.0",
     "moment": "^2.22.1",
-    "react": "^16.3.0",
+    "react": "^16.8.3",
     "react-date-range": "^0.9.4",
-    "react-dom": "^16.3.0",
+    "react-dom": "^16.8.3",
     "react-testing-library": "^5.4.4",
     "reactstrap": "^7.0.0"
   },

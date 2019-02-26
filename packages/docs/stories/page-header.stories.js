@@ -6,6 +6,19 @@ import { withKnobs, text, selectV2 } from '@storybook/addon-knobs/react';
 import PageHeader from '@availity/page-header';
 import README from '@availity/page-header/README.md';
 import TrainingLink from '@availity/training-link';
+import { BreadcrumbItem } from 'reactstrap';
+import Breadcrumbs from '@availity/breadcrumbs/Breadcrumbs';
+
+const CustomBreadcrumbs = (
+  <Breadcrumbs active="Active Page Name">
+    <BreadcrumbItem>
+      <a href="/custom-link">Custom Breadcrumb Item</a>
+    </BreadcrumbItem>
+    <BreadcrumbItem>
+      <a href="/custom-link2">Custom Breadcrumb Item 2</a>
+    </BreadcrumbItem>
+  </Breadcrumbs>
+);
 
 storiesOf('Page|Header', module)
   .addDecorator(withReadme([README]))
@@ -59,6 +72,11 @@ storiesOf('Page|Header', module)
         { name: 'Parent', url: '/parent' },
       ]}
     >
+      {text('Application Name', 'Payer Space (Beta)')}
+    </PageHeader>
+  ))
+  .add('with custom breadcrumbs', () => (
+    <PageHeader appName="Payer Space" crumbs={CustomBreadcrumbs}>
       {text('Application Name', 'Payer Space (Beta)')}
     </PageHeader>
   ))

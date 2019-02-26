@@ -1,6 +1,6 @@
 {
   "name": "@availity/authorize",
-  "version": "1.1.1",
+  "version": "1.1.2",
   "author": "Evan Sharp <evan.sharp@gmail.com>",
   "description": "Check user permissions to see if the current user is authorized to see your content.",
   "main": "index.js",
@@ -28,8 +28,8 @@
     "@availity/api-core": "^2.0.0",
     "@availity/localstorage-core": "^1.4.0",
     "axios": "^0.18.0",
-    "react": "^16.3.2",
-    "react-dom": "^16.3.2",
+    "react": "^16.8.3",
+    "react-dom": "^16.8.3",
     "react-testing-library": "^5.4.4"
   },
   "peerDependencies": {

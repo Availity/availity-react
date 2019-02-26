@@ -1,5 +1,4 @@
 import React, { useState, useContext } from 'react';
-import { act } from 'react-dom/test-utils';
 import PropTypes from 'prop-types';
 import isFunction from 'lodash.isfunction';
 import { useEffectAsync, useToggle } from '@availity/hooks';
@@ -22,13 +21,13 @@ const Pagination = ({ items: theItems, itemsPerPage, children }) => {
 
   useEffectAsync(async () => {
     if (!loading) {
-      act(() => toggleLoading());
+      toggleLoading();
     }
 
     // If the items is a function then await the resposne in case of async actions
-    const { items, totalCount } = await (isFunction(theItems)
-      ? theItems(currentPage, itemsPerPage)
-      : { items: theItems });
+    const { items, totalCount } = isFunction(theItems)
+      ? await theItems(currentPage, itemsPerPage)
+      : { items: theItems };
 
     // Get index of item at the start of the currentPage
     const lower = currentPage === 1 ? 1 : (currentPage - 1) * itemsPerPage + 1;
@@ -50,17 +49,15 @@ const Pagination = ({ items: theItems, itemsPerPage, children }) => {
       (v, k) => k + 1
     );
 
-    act(() =>
-      setPageData({
-        total: totalCount || items.length,
-        pages,
-        page: { number: currentPage, items: pageData },
-        lower,
-        upper,
-      })
-    );
+    setPageData({
+      total: totalCount || items.length,
+      pages,
+      page: { number: currentPage, items: pageData },
+      lower,
+      upper,
+    });
 
-    act(() => toggleLoading());
+    toggleLoading();
   }, [currentPage, itemsPerPage, theItems]);
 
   // boom roasted
