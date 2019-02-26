@@ -20,10 +20,9 @@ const AvResourcePagination = ({
   resource,
   getResult,
   children,
-  itemsPerPage,
   ...paginationProps
 }) => {
-  async function loadPage({ page }) {
+  async function loadPage(page, itemsPerPage) {
     const params = {
       limit: itemsPerPage,
       offset: (page - 1) * itemsPerPage,

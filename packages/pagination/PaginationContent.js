@@ -8,6 +8,7 @@ const PaginationContent = ({
   component: Component,
   loadingMessage,
   loading,
+  itemKey,
   ...rest
 }) => {
   const { page } = usePagination();
@@ -16,7 +17,7 @@ const PaginationContent = ({
     <BlockUI keepInView blocking={loading} message={loadingMessage}>
       {page.items &&
         page.items.map((value, key) => {
-          if (!value.key) {
+          if (!value[itemKey]) {
             // eslint-disable-next-line no-console
             console.warn(
               "Warning a Pagination Item doesn't have a key:",
@@ -24,7 +25,7 @@ const PaginationContent = ({
             );
           }
 
-          return <Component {...rest} key={value.key || key} {...value} />;
+          return <Component {...rest} key={value[itemKey] || key} {...value} />;
         })}
     </BlockUI>
   );
@@ -34,6 +35,7 @@ PaginationContent.propTypes = {
   component: Util.tagPropType,
   loadingMessage: PropTypes.string,
   loading: PropTypes.bool,
+  itemKey: PropTypes.string,
 };
 
 export default PaginationContent;

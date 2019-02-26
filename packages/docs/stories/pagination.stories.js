@@ -1,3 +1,4 @@
+/* eslint-disable react/prop-types */
 import React from 'react';
 import { storiesOf } from '@storybook/react';
 import { withReadme } from 'storybook-readme';
@@ -12,6 +13,7 @@ import {
 import README from '@availity/pagination/README.md';
 import { boolean, number } from '@storybook/addon-knobs';
 import { text } from '@storybook/addon-knobs/dist/deprecated';
+import paginationData from './data/pagination.json';
 
 const getItems = (number = 1) =>
   Array.from({ length: number }, (v, k) => ({
@@ -21,6 +23,25 @@ const getItems = (number = 1) =>
 const Component = ({ value }) => <li>{value}</li>;
 Component.propTypes = {
   value: PropTypes.string,
+};
+
+const UserComponent = ({ name }) => <li>{`${name.first} ${name.last}`}</li>;
+
+const mockResponse = {
+  postGet(params = {}, config = {}) {
+    const { offset = 0, limit = 50 } = params;
+    const notifications = paginationData.slice(offset, offset + limit);
+    return Promise.resolve({
+      config,
+      data: {
+        totalCount: paginationData.length,
+        count: notifications.length,
+        offset,
+        limit,
+        notifications,
+      },
+    });
+  },
 };
 
 storiesOf('Components|Pagination', module)
@@ -55,8 +76,13 @@ storiesOf('Components|Pagination', module)
     </Pagination>
   ))
   .add('resource', () => (
-    <AvResourcePagination>
-      <PaginationContent />
+    <AvResourcePagination
+      resource={{
+        postGet: mockResponse.postGet,
+        getResult: 'notifications',
+      }}
+    >
+      <PaginationContent itemKey="id" component={UserComponent} />
       <PaginationControls boundaryLinks />
     </AvResourcePagination>
   ));
