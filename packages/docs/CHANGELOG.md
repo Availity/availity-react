@@ -3,6 +3,18 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.9.1](https://github.com/Availity/availity-react/compare/@availity/docs@1.9.0...@availity/docs@1.9.1) (2019-02-26)
+
+
+### Bug Fixes
+
+* **docs:** static file path was not being pulled correctly ([dabe985](https://github.com/Availity/availity-react/commit/dabe985))
+* **payer-logo:** correct path from payerID query ([a6edbaf](https://github.com/Availity/availity-react/commit/a6edbaf))
+
+
+
+
+
 # [1.9.0](https://github.com/Availity/availity-react/compare/@availity/docs@1.8.1...@availity/docs@1.9.0) (2019-02-25)
 
 

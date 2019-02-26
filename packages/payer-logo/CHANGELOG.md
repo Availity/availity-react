@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.1.3](https://github.com/Availity/availity-react/compare/@availity/payer-logo@1.1.2...@availity/payer-logo@1.1.3) (2019-02-26)
+
+
+### Bug Fixes
+
+* **payer-logo:** correct path from payerID query ([a6edbaf](https://github.com/Availity/availity-react/commit/a6edbaf))
+
+
+
+
+
 ## [1.1.2](https://github.com/Availity/availity-react/compare/@availity/payer-logo@1.1.1...@availity/payer-logo@1.1.2) (2019-02-25)
 
 
