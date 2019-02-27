@@ -3,29 +3,32 @@ import React from 'react';
 import { storiesOf } from '@storybook/react';
 import { withReadme } from 'storybook-readme';
 import { withKnobs } from '@storybook/addon-knobs/react';
-import PropTypes from 'prop-types';
 import {
   Pagination,
   PaginationContent,
   PaginationControls,
   AvResourcePagination,
 } from '@availity/pagination';
+import { Card, CardBody, CardText, CardTitle, Col } from 'reactstrap';
 import README from '@availity/pagination/README.md';
 import { boolean, number } from '@storybook/addon-knobs';
 import { text } from '@storybook/addon-knobs/dist/deprecated';
 import paginationData from './data/pagination.json';
 
-const getItems = (number = 1) =>
-  Array.from({ length: number }, (v, k) => ({
-    value: `Item ${k + 1}`,
-    key: k + 1,
-  }));
-const Component = ({ value }) => <li>{value}</li>;
-Component.propTypes = {
-  value: PropTypes.string,
-};
-
-const UserComponent = ({ name }) => <li>{`${name.first} ${name.last}`}</li>;
+const Component = ({ name, address }) => (
+  <Card>
+    <CardBody>
+      <CardTitle>
+        {name.first} {name.last}
+      </CardTitle>
+      <CardText className="mt-2" tag="div">
+        <div className="label">Address</div>
+        {address.street} <br />
+        {address.city} {address.state} {address.postalCode}
+      </CardText>
+    </CardBody>
+  </Card>
+);
 
 const mockResponse = {
   postGet: async (params = {}, config = {}) =>
@@ -57,27 +60,28 @@ storiesOf('Components|Pagination', module)
   .addDecorator(withKnobs)
   .add('default', () => (
     <Pagination
-      itemsPerPage={number('Items Per page', 10, { min: 1 }) || 1}
-      items={getItems(number('Items', 20, { min: 1 })) || []}
+      itemsPerPage={number('Items Per page', 5, { min: 1 }) || 1}
+      items={paginationData}
     >
-      <PaginationContent
-        itemKey="key"
-        loading={boolean('Loading', false)}
-        loadingMessage={text('Loading Message', 'Loading')}
-        component={Component}
-      />
-      <PaginationControls
-        directionLinks
-        autoHide={boolean('Auto Hide Controls', true)}
-      />
+      <div className="d-flex flex-column align-items-center">
+        <Col xs={12}>
+          <PaginationContent
+            itemKey="id"
+            loader={boolean('Show Loader', false)}
+            loadingMessage={text('Loading Message', 'Loading')}
+            component={Component}
+          />
+        </Col>
+        <PaginationControls
+          className="pt-2"
+          directionLinks={boolean('Direction Links', true)}
+          autoHide={boolean('Auto Hide Controls', true)}
+        />
+      </div>
     </Pagination>
   ))
   .add('controls', () => (
-    <Pagination
-      items={
-        getItems(number('Items', 20, { min: 1 })) || { value: 'Item 1', key: 1 }
-      }
-    >
+    <Pagination items={paginationData}>
       <PaginationControls
         directionLinks={boolean('Direction Links', true)}
         autoHide={boolean('Auto Hide', true)}
@@ -85,8 +89,22 @@ storiesOf('Components|Pagination', module)
     </Pagination>
   ))
   .add('resource', () => (
-    <AvResourcePagination resource={resource}>
-      <PaginationContent itemKey="id" component={UserComponent} loader />
-      <PaginationControls boundaryLinks />
+    <AvResourcePagination
+      resource={resource}
+      itemsPerPage={number('Items Per page', 5, { min: 1 }) || 1}
+    >
+      <div className="d-flex flex-column align-items-center">
+        <Col xs={12}>
+          <PaginationContent
+            itemKey="id"
+            component={Component}
+            loader={boolean('Show Loader', true)}
+          />
+        </Col>
+        <PaginationControls
+          className="pt-2"
+          directionLinks={boolean('Direction Links', true)}
+        />
+      </div>
     </AvResourcePagination>
   ));

@@ -67,7 +67,7 @@ const Pagination = ({ items: theItems, itemsPerPage, children }) => {
     });
 
     toggleLoading();
-  }, [currentPage, itemsPerPage, theItems]);
+  }, [currentPage, itemsPerPage, isFunction(theItems) ? null : theItems]);
 
   // boom roasted
   return (

@@ -3,7 +3,11 @@ import PropTypes from 'prop-types';
 import { Pagination, PaginationItem, PaginationLink } from 'reactstrap';
 import { usePagination } from './Pagination';
 
-const PaginationControls = ({ directionLinks = false, autoHide = true }) => {
+const PaginationControls = ({
+  directionLinks = false,
+  autoHide = true,
+  ...rest
+}) => {
   const { pages, page, setPage } = usePagination();
 
   const { number: current } = page;
@@ -11,7 +15,7 @@ const PaginationControls = ({ directionLinks = false, autoHide = true }) => {
   return (
     <React.Fragment>
       {pages.length > 1 || !autoHide ? (
-        <Pagination data-testid="pagination-controls-con">
+        <Pagination data-testid="pagination-controls-con" {...rest}>
           {directionLinks ? (
             <PaginationItem
               disabled={current === 1}
