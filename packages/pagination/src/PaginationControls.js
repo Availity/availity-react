@@ -43,6 +43,7 @@ const PaginationControls = ({ directionLinks = false, autoHide = true }) => {
               data-testid="pagination-control-next"
             >
               <PaginationLink
+                data-testid="pagination-control-next-link"
                 onClick={() =>
                   current === pages.length ? null : setPage(current + 1)
                 }

@@ -47,6 +47,11 @@ const mockResponse = {
     ),
 };
 
+const resource = {
+  postGet: mockResponse.postGet,
+  getResult: 'notifications',
+};
+
 storiesOf('Components|Pagination', module)
   .addDecorator(withReadme([README]))
   .addDecorator(withKnobs)
@@ -80,12 +85,7 @@ storiesOf('Components|Pagination', module)
     </Pagination>
   ))
   .add('resource', () => (
-    <AvResourcePagination
-      resource={{
-        postGet: mockResponse.postGet,
-        getResult: 'notifications',
-      }}
-    >
+    <AvResourcePagination resource={resource}>
       <PaginationContent itemKey="id" component={UserComponent} loader />
       <PaginationControls boundaryLinks />
     </AvResourcePagination>

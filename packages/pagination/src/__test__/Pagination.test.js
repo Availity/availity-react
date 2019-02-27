@@ -1,8 +1,13 @@
 import React from 'react';
-import { render, waitForElement } from 'react-testing-library';
+import {
+  render,
+  waitForElement,
+  waitForDomChange,
+  fireEvent,
+} from 'react-testing-library';
 import 'react-testing-library/cleanup-after-each';
-
 import Pagination, { usePagination } from '../Pagination';
+import PaginationControls from '../PaginationControls';
 
 // eslint-disable-next-line react/prop-types
 const PaginationJson = () => {
@@ -70,6 +75,49 @@ describe('Pagination', () => {
         page: {
           number: 1,
           items: getItems().items,
+        },
+      })
+    );
+  });
+
+  test('show new page of items when page changes', async () => {
+    const items = [
+      { value: '1', key: 1 },
+      { value: '2', key: 2 },
+      { value: '3', key: 3 },
+    ];
+
+    const { getByTestId } = render(
+      <Pagination items={items} itemsPerPage={1}>
+        <PaginationJson />
+        <PaginationControls directionLinks />
+      </Pagination>
+    );
+
+    const paginationCon = await waitForElement(() =>
+      getByTestId('pagination-con')
+    );
+
+    expect(paginationCon).toBeDefined();
+
+    expect(JSON.parse(paginationCon.textContent)).toEqual(
+      expect.objectContaining({
+        page: {
+          number: 1,
+          items: [items[0]],
+        },
+      })
+    );
+
+    fireEvent.click(getByTestId('pagination-control-next-link'));
+
+    waitForDomChange(() => getByTestId('pagination-con'));
+
+    expect(JSON.parse(paginationCon.textContent)).toEqual(
+      expect.objectContaining({
+        page: {
+          number: 2,
+          items: [items[1]],
         },
       })
     );

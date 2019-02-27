@@ -14,7 +14,12 @@ const PaginationContent = ({
   const { page, loading } = usePagination();
 
   return (
-    <BlockUI keepInView blocking={loader && loading} message={loadingMessage}>
+    <BlockUI
+      data-testid="pagination-content-con"
+      keepInView
+      blocking={loader && loading}
+      message={loadingMessage}
+    >
       {page.items &&
         page.items.map((value, key) => {
           if (!value[itemKey]) {
@@ -33,7 +38,7 @@ const PaginationContent = ({
 
 PaginationContent.propTypes = {
   component: Util.tagPropType,
-  loadingMessage: PropTypes.string,
+  loadingMessage: PropTypes.node,
   itemKey: PropTypes.string,
   loader: PropTypes.bool,
 };
