@@ -48,43 +48,7 @@ Breadcrumbs.propTypes = {
   ),
   active: PropTypes.string.isRequired,
   emptyState: PropTypes.string,
-  children: (props, propName, componentName) => {
-    if (!props.children) {
-      return null;
-    }
-    let error = null;
-
-    // multi children
-    if (Array.isArray(props.children)) {
-      props.children.forEach(nextChild => {
-        if (nextChild.type.name !== 'BreadcrumbItem') {
-          error = new Error(
-            `${componentName} children should be of type BreadcrumbItem`
-          );
-        }
-      });
-    }
-    // single child
-    else if (props.children.type) {
-      if (props.children.type.name !== 'BreadcrumbItem') {
-        error = new Error(
-          `${componentName} children should be of type BreadcrumbItem`
-        );
-      }
-    }
-    // ??? this happens in certain react tree implementations
-    else {
-      const prop = props[propName];
-      React.Children.forEach(prop, child => {
-        if (child.type !== BreadcrumbItem) {
-          error = new Error(
-            `${componentName} children should be of type BreadCrumbItem`
-          );
-        }
-      });
-    }
-    return error;
-  },
+  children: PropTypes.node,
 };
 
 Breadcrumbs.defaultProps = {
