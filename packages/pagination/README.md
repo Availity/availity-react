@@ -99,10 +99,8 @@ This is a custom hook for grabbing any Pagination Data you may need from the `Pa
 {
     pages: Array[[1],[2]...],
     total: number,
-    page: {
-        number: number,
-        items: Array
-    },
+    page: Array,
+    currentPage: number,
     lower: number,
     upper: number,
     setPage: function,
@@ -121,4 +119,31 @@ const PageSetter = () => {
 
     return <input type='text' value={page} onChange={({target}) => setPage(target.value)} />
 };
+```
+
+### AvResourcePagination
+
+This is a wrapper around the `Pagination` Component that can be used for paginating `@availity/api-axios` resources.  
+
+#### Props
+
+*   **`resource`**: Availity API resource (see [@availity/api-core](https://github.com/Availity/sdk-js/tree/master/packages/api-core) and [@availity/api-axios](https://github.com/Availity/sdk-js/tree/master/packages/api-axios)). Required.
+*   **`getResult`**: String or Function. Optional. When a function, the function will be called with the API response body/payload and is expected to return an array containing the list of items for the page. When a string, the string is expected to be a simple key used to get the value from the response ("simple" meaning not handling dot-notation for nested objects, if you need that provide a function.)
+*   **`parameters`**: Object. Optional. Object which will be used to create querystring parameters in the request.
+
+All props from the `Pagination` Component are passed in here.
+#### Example usage
+
+```javascript
+import React from 'react';
+import { AvResourcePagination, PaginationControls } from '@availity/pagination';
+import { avOrganizationsApi } from '@availity/api-axios';
+
+// ...
+<AvResourcePagination
+  resource={avOrganizationsApi}
+  itemsPerPage={25}
+>
+    <PaginationControls />
+</AvResourcePagination>
 ```
