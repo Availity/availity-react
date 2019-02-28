@@ -4,9 +4,7 @@ import { Pagination, PaginationItem, PaginationLink } from 'reactstrap';
 import { usePagination } from './Pagination';
 
 const PaginationControls = ({ directionLinks, autoHide, ...rest }) => {
-  const { pages, page, setPage } = usePagination();
-
-  const { number: current } = page;
+  const { pages, currentPage, setPage } = usePagination();
 
   return (
     <React.Fragment>
@@ -14,11 +12,13 @@ const PaginationControls = ({ directionLinks, autoHide, ...rest }) => {
         <Pagination data-testid="pagination-controls-con" {...rest}>
           {directionLinks ? (
             <PaginationItem
-              disabled={current === 1}
+              disabled={currentPage === 1}
               data-testid="pagination-control-previous"
             >
               <PaginationLink
-                onClick={() => (current === 1 ? null : setPage(current - 1))}
+                onClick={() =>
+                  currentPage === 1 ? null : setPage(currentPage - 1)
+                }
                 type="button"
                 previous
               />
@@ -29,7 +29,7 @@ const PaginationControls = ({ directionLinks, autoHide, ...rest }) => {
           {pages.map(pageNumber => (
             <PaginationItem
               key={pageNumber}
-              active={current === pageNumber}
+              active={currentPage === pageNumber}
               data-testid={`control-page-${pageNumber}`}
             >
               <PaginationLink onClick={() => setPage(pageNumber)} type="button">
@@ -39,13 +39,13 @@ const PaginationControls = ({ directionLinks, autoHide, ...rest }) => {
           ))}
           {directionLinks ? (
             <PaginationItem
-              disabled={current === pages.length}
+              disabled={currentPage === pages.length}
               data-testid="pagination-control-next"
             >
               <PaginationLink
                 data-testid="pagination-control-next-link"
                 onClick={() =>
-                  current === pages.length ? null : setPage(current + 1)
+                  currentPage === pages.length ? null : setPage(currentPage + 1)
                 }
                 type="button"
                 next

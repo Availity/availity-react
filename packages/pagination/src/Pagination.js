@@ -1,8 +1,12 @@
 import React, { useState, useContext } from 'react';
 import PropTypes from 'prop-types';
 import isFunction from 'lodash.isfunction';
+import isEqual from 'lodash.isequal';
 import { useEffectAsync, useToggle } from '@availity/hooks';
+import AvLocalStorage from '@availity/localstorage-core';
 import './polyfills/array-from';
+
+const avLocalStorage = new AvLocalStorage();
 
 export const PaginationContext = React.createContext();
 
@@ -21,17 +25,17 @@ const Pagination = ({ items: theItems, itemsPerPage, children }) => {
   const [pageData, setPageData] = useState({
     total: theItems != null && !isFunction(theItems) ? theItems.totalCount : 0,
     pages: [],
-    page: {},
+    page: [],
     lower: 0,
     upper: 0,
   });
 
-  const [loading, toggleLoading] = useToggle(true);
+  // create an abort controller for fetch to be able to cancel it
+
+  const [loading, toggleLoading] = useToggle(false);
 
   useEffectAsync(async () => {
-    if (!loading) {
-      toggleLoading();
-    }
+    avLocalStorage.set('current-page', currentPage);
 
     // If the items is a function then await the resposne in case of async actions
     const { items, totalCount } = isFunction(theItems)
@@ -47,11 +51,9 @@ const Pagination = ({ items: theItems, itemsPerPage, children }) => {
         ? itemsPerPage * currentPage
         : items.length;
 
-    // Slice that data if it was given from a function since we don't know if its returning all or not
+    // Slice that data if it was NOT given from a function since we don't know if its returning all items or not for now.
     // todo - add prop if needed to handle this
-    const pageData = isFunction(theItems)
-      ? items
-      : items.slice(lower - 1, upper);
+    const page = isFunction(theItems) ? items : items.slice(lower - 1, upper);
 
     // Get page numbers
     const pages = Array.from(
@@ -59,23 +61,33 @@ const Pagination = ({ items: theItems, itemsPerPage, children }) => {
       (v, k) => k + 1
     );
 
+    if (!isEqual(avLocalStorage.get('current-page'), currentPage)) {
+      return;
+    }
+
     setPageData({
       total: totalCount || items.length,
       pages,
-      page: { number: currentPage, items: pageData },
+      page,
       lower,
       upper,
     });
 
-    toggleLoading();
+    toggleLoading(false);
   }, [currentPage, itemsPerPage, isFunction(theItems) ? null : theItems]);
+
+  const updatePage = page => {
+    toggleLoading(true);
+    setPage(page);
+  };
 
   // boom roasted
   return (
     <PaginationContext.Provider
       value={{
         ...pageData,
-        setPage,
+        setPage: updatePage,
+        currentPage,
         loading,
       }}
     >

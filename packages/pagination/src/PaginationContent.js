@@ -21,8 +21,8 @@ const PaginationContent = ({
       blocking={loader && loading}
       message={loadingMessage}
     >
-      {page.items &&
-        page.items.map((value, key) => {
+      {page &&
+        page.map((value, key) => {
           if (!value[itemKey]) {
             // eslint-disable-next-line no-console
             console.warn(
