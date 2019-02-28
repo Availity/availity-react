@@ -72,10 +72,7 @@ describe('AvResourcePagination', () => {
 
     expect(JSON.parse(paginationCon.textContent)).toEqual(
       expect.objectContaining({
-        page: {
-          number: 1,
-          items: data.slice(0, 50),
-        },
+        page: data.slice(0, 50),
       })
     );
   });
@@ -104,10 +101,7 @@ describe('AvResourcePagination', () => {
 
     expect(JSON.parse(paginationCon.textContent)).toEqual(
       expect.objectContaining({
-        page: {
-          number: 2,
-          items: data.slice(2, 4),
-        },
+        page: data.slice(2, 4),
       })
     );
   });

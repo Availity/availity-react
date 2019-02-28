@@ -32,7 +32,7 @@ const Pagination = ({ items: theItems, itemsPerPage, children }) => {
 
   // create an abort controller for fetch to be able to cancel it
 
-  const [loading, toggleLoading] = useToggle(false);
+  const [loading, toggleLoading] = useToggle(true);
 
   useEffectAsync(async () => {
     avLocalStorage.set('current-page', currentPage);

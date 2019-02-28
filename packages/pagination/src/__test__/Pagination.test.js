@@ -40,10 +40,7 @@ describe('Pagination', () => {
 
     expect(JSON.parse(paginationCon.textContent)).toEqual(
       expect.objectContaining({
-        page: {
-          number: 1,
-          items,
-        },
+        page: items,
       })
     );
   });
@@ -72,10 +69,7 @@ describe('Pagination', () => {
 
     expect(JSON.parse(paginationCon.textContent)).toEqual(
       expect.objectContaining({
-        page: {
-          number: 1,
-          items: getItems().items,
-        },
+        page: getItems().items,
       })
     );
   });
@@ -94,7 +88,7 @@ describe('Pagination', () => {
       </Pagination>
     );
 
-    const paginationCon = await waitForElement(() =>
+    let paginationCon = await waitForElement(() =>
       getByTestId('pagination-con')
     );
 
@@ -102,23 +96,21 @@ describe('Pagination', () => {
 
     expect(JSON.parse(paginationCon.textContent)).toEqual(
       expect.objectContaining({
-        page: {
-          number: 1,
-          items: [items[0]],
-        },
+        page: [items[0]],
       })
     );
 
     fireEvent.click(getByTestId('pagination-control-next-link'));
 
+    // Wait for component to render nothing
     waitForDomChange(() => getByTestId('pagination-con'));
+
+    // Get the component now with the new page data
+    paginationCon = await waitForElement(() => getByTestId('pagination-con'));
 
     expect(JSON.parse(paginationCon.textContent)).toEqual(
       expect.objectContaining({
-        page: {
-          number: 2,
-          items: [items[1]],
-        },
+        page: [items[1]],
       })
     );
   });
