@@ -3,11 +3,7 @@ import PropTypes from 'prop-types';
 import { Pagination, PaginationItem, PaginationLink } from 'reactstrap';
 import { usePagination } from './Pagination';
 
-const PaginationControls = ({
-  directionLinks = false,
-  autoHide = true,
-  ...rest
-}) => {
+const PaginationControls = ({ directionLinks, autoHide, ...rest }) => {
   const { pages, page, setPage } = usePagination();
 
   const { number: current } = page;
@@ -69,5 +65,10 @@ const PaginationControls = ({
 PaginationControls.propTypes = {
   directionLinks: PropTypes.bool,
   autoHide: PropTypes.bool, // If there are no items to show. This component will not show
+};
+
+PaginationControls.defaultProps = {
+  directionLinks: false,
+  autoHide: true,
 };
 export default PaginationControls;

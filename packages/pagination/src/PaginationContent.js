@@ -2,13 +2,14 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { Util } from 'reactstrap';
 import BlockUI from 'react-block-ui';
+import 'react-block-ui/style.css';
 import { usePagination } from './Pagination';
 
 const PaginationContent = ({
   component: Component,
   loadingMessage,
   itemKey,
-  loader = false,
+  loader,
   ...rest
 }) => {
   const { page, loading } = usePagination();
@@ -41,6 +42,10 @@ PaginationContent.propTypes = {
   loadingMessage: PropTypes.node,
   itemKey: PropTypes.string,
   loader: PropTypes.bool,
+};
+
+PaginationContent.defaultProps = {
+  loader: false,
 };
 
 export default PaginationContent;

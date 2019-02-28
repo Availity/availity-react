@@ -2,6 +2,7 @@ import React, { useState, useContext } from 'react';
 import PropTypes from 'prop-types';
 import isFunction from 'lodash.isfunction';
 import { useEffectAsync, useToggle } from '@availity/hooks';
+import './polyfills/array-from';
 
 export const PaginationContext = React.createContext();
 
@@ -18,7 +19,7 @@ export const usePagination = () => useContext(PaginationContext);
 const Pagination = ({ items: theItems, itemsPerPage, children }) => {
   const [currentPage, setPage] = useState(1);
   const [pageData, setPageData] = useState({
-    total: theItems != null ? theItems.totalCount : 0,
+    total: theItems != null && !isFunction(theItems) ? theItems.totalCount : 0,
     pages: [],
     page: {},
     lower: 0,
