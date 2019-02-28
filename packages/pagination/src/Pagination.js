@@ -4,7 +4,6 @@ import isFunction from 'lodash.isfunction';
 import isEqual from 'lodash.isequal';
 import { useEffectAsync, useToggle } from '@availity/hooks';
 import AvLocalStorage from '@availity/localstorage-core';
-import './polyfills/array-from';
 
 const avLocalStorage = new AvLocalStorage();
 
@@ -56,10 +55,11 @@ const Pagination = ({ items: theItems, itemsPerPage, children }) => {
     const page = isFunction(theItems) ? items : items.slice(lower - 1, upper);
 
     // Get page numbers
-    const pages = Array.from(
-      { length: Math.ceil((totalCount || items.length) / itemsPerPage) },
-      (v, k) => k + 1
-    );
+    // eslint-disable-next-line prefer-spread
+    const pages = Array.apply(
+      null,
+      new Array(Math.ceil((totalCount || items.length) / itemsPerPage))
+    ).map((v, k) => k + 1);
 
     if (!isEqual(avLocalStorage.get('current-page'), currentPage)) {
       return;
