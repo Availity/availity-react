@@ -22,7 +22,7 @@ const Feedback = ({
   return (
     <Dropdown
       isOpen={isOpen && !modal}
-      toggle={toggle}
+      toggle={() => toggle()}
       className={`${className} hidden-print`}
       {...props}
     >
@@ -34,7 +34,7 @@ const Feedback = ({
           onFeedbackSent={onFeedbackSent}
           prompt={prompt}
           isOpen={isOpen}
-          toggle={toggle}
+          toggle={() => toggle()}
           name={appName}
           {...formProps}
         />

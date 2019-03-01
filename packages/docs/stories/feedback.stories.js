@@ -22,12 +22,14 @@ storiesOf('Actions|Feedback', module)
       prompt={text('Prompt')}
       formProps={{
         additionalComments: boolean('Additional Comments', false),
-        aboutOptions: boolean('About Options', false) && [
-          { label: 'The Payer Space', value: 'space' },
-          { label: 'Applications', value: 'applications' },
-          { label: 'Resources', value: 'resoureces' },
-          { label: 'News and Announcements', value: 'news' },
-        ],
+        aboutOptions: boolean('About Options', false)
+          ? [
+              { label: 'The Payer Space', value: 'space' },
+              { label: 'Applications', value: 'applications' },
+              { label: 'Resources', value: 'resoureces' },
+              { label: 'News and Announcements', value: 'news' },
+            ]
+          : [],
       }}
       color={selectV2(
         'Button Color',
