@@ -34,8 +34,7 @@
     "axios": "^0.18.0",
     "axios-mock-adapter": "^1.15.0",
     "react": "^16.8.3",
-    "react-dom": "^16.8.3",
-    "react-testing-library": "^5.4.4"
+    "react-dom": "^16.8.3"
   },
   "peerDependencies": {
     "axios": "^0.18.0",

@@ -29,7 +29,6 @@
     "availity-reactstrap-validation": "^2.0.0",
     "react": "^16.8.3",
     "react-dom": "^16.8.3",
-    "react-testing-library": "^5.4.4",
     "reactstrap": "^7.0.0"
   },
   "peerDependencies": {

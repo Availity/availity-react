@@ -24,8 +24,7 @@
   },
   "devDependencies": {
     "react": "^16.8.3",
-    "react-dom": "^16.8.3",
-    "react-testing-library": "^5.4.4"
+    "react-dom": "^16.8.3"
   },
   "peerDependencies": {
     "react": "^16.3.0"

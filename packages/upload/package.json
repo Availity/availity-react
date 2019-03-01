@@ -39,7 +39,6 @@
     "react": "^16.8.3",
     "react-dom": "^16.8.3",
     "react-dropzone": "^7.0.1",
-    "react-testing-library": "^5.4.4",
     "reactstrap": "^7.0.0",
     "tus-js-client": "1.5.1"
   }
