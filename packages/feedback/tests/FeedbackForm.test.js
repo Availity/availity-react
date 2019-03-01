@@ -1,3 +1,4 @@
+/* eslint-disable unicorn/prefer-query-selector */
 import React from 'react';
 import { render, fireEvent, wait } from 'react-testing-library';
 import 'react-testing-library/cleanup-after-each';
@@ -108,7 +109,6 @@ describe('FeedbackForm', () => {
     expect(faceOptionFields.childElementCount).toBe(4);
 
     faceOptions.forEach(faceOption => {
-      // eslint-disable-next-line unicorn/prefer-query-selector
       expect(
         faceOptionFields.getElementsByClassName(`icon-${faceOption.icon}`)
       ).not.toBe(null);
