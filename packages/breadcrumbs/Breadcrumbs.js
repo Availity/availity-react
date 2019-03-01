@@ -1,11 +1,12 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { Breadcrumb, BreadcrumbItem } from 'reactstrap';
+import Feedback from '@availity/feedback';
 
-class Breadcrumbs extends React.Component {
-  renderBreadCrumb = crumb => {
+const Breadcrumbs = ({ crumbs, active, emptyState, children, feedback }) => {
+  const renderBreadCrumb = crumb => {
     // default breadcrumbitem render
-    let breadCrumbItemChildren = <span>{this.props.emptyState}</span>;
+    let breadCrumbItemChildren = <span>{emptyState}</span>;
     // render static links
     if (crumb.name && crumb.url) {
       breadCrumbItemChildren = (
@@ -21,23 +22,26 @@ class Breadcrumbs extends React.Component {
     );
   };
 
-  render() {
-    const { crumbs, active, emptyState } = this.props;
-
-    return (
-      <Breadcrumb>
-        <BreadcrumbItem>
-          <a aria-label="Home" href="/public/apps/dashboard">
-            Home
-          </a>
-        </BreadcrumbItem>
-        {crumbs && crumbs.length > 0 && crumbs.map(this.renderBreadCrumb)}
-        {this.props.children}
-        <BreadcrumbItem active>{active || emptyState}</BreadcrumbItem>
-      </Breadcrumb>
-    );
-  }
-}
+  return (
+    <Breadcrumb>
+      <BreadcrumbItem>
+        <a aria-label="Home" href="/public/apps/dashboard">
+          Home
+        </a>
+      </BreadcrumbItem>
+      {crumbs && crumbs.length > 0 && crumbs.map(renderBreadCrumb)}
+      {children}
+      <BreadcrumbItem active>{active || emptyState}</BreadcrumbItem>
+      {feedback && (
+        <Feedback
+          appName={feedback.appName || active}
+          className="d-flex flex-fill justify-content-end"
+          {...feedback}
+        />
+      )}
+    </Breadcrumb>
+  );
+};
 
 Breadcrumbs.propTypes = {
   crumbs: PropTypes.arrayOf(
@@ -49,6 +53,7 @@ Breadcrumbs.propTypes = {
   active: PropTypes.string.isRequired,
   emptyState: PropTypes.string,
   children: PropTypes.node,
+  feedback: PropTypes.oneOfType([PropTypes.bool, PropTypes.object]),
 };
 
 Breadcrumbs.defaultProps = {
