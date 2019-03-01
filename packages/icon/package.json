@@ -21,9 +21,8 @@
     "access": "public"
   },
   "devDependencies": {
-    "react": "^16.3.0",
-    "react-dom": "^16.3.0",
-    "react-testing-library": "^5.9.0"
+    "react": "^16.8.3",
+    "react-dom": "^16.8.3"
   },
   "peerDependencies": {
     "react": "^16.3.0"

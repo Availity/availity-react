@@ -8,7 +8,7 @@ jest.mock('@availity/api-axios');
 
 describe('PayerLogo', () => {
   test('should not render when no space or payer id', () => {
-    const { container } = render(<PayerLogo />);
+    const { container } = render(<PayerLogo clientId="my-client-id" />);
 
     expect(container).toMatchSnapshot();
   });
@@ -34,7 +34,9 @@ describe('PayerLogo', () => {
       },
     });
 
-    const { container } = render(<PayerLogo payerId="BCBSF" />);
+    const { container } = render(
+      <PayerLogo payerId="BCBSF" clientId="my-client-id" />
+    );
 
     await waitForElement(() =>
       container.querySelector(
@@ -56,7 +58,9 @@ describe('PayerLogo', () => {
       },
     });
 
-    const { container } = render(<PayerLogo payerId="00681" />);
+    const { container } = render(
+      <PayerLogo payerId="00681" clientId="my-client-id" />
+    );
 
     await waitForElement(() =>
       container.querySelector(
@@ -85,7 +89,10 @@ describe('PayerLogo', () => {
     });
 
     const { container } = render(
-      <PayerLogo spaceId="73162546201441126239486200007187" />
+      <PayerLogo
+        spaceId="73162546201441126239486200007187"
+        clientId="my-client-id"
+      />
     );
 
     await waitForElement(() =>

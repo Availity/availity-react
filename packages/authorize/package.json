@@ -29,8 +29,7 @@
     "@availity/localstorage-core": "^1.4.0",
     "axios": "^0.18.0",
     "react": "^16.8.3",
-    "react-dom": "^16.8.3",
-    "react-testing-library": "^5.4.4"
+    "react-dom": "^16.8.3"
   },
   "peerDependencies": {
     "@availity/api-axios": "^2.0.0",

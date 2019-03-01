@@ -28,7 +28,6 @@
     "react": "^16.8.3",
     "react-date-range": "^0.9.4",
     "react-dom": "^16.8.3",
-    "react-testing-library": "^5.4.4",
     "reactstrap": "^7.0.0"
   },
   "peerDependencies": {

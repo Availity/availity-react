@@ -28,7 +28,7 @@ const PageHeader = ({
   return (
     <React.Fragment>
       <div className="d-flex align-items-start">
-        {crumbs && crumbs.type === Breadcrumbs ? (
+        {React.isValidElement(crumbs) ? (
           crumbs
         ) : (
           <Breadcrumbs crumbs={crumbs} active={appName || children} />

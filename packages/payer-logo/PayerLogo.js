@@ -1,8 +1,7 @@
 import React, { useState } from 'react';
-import { act } from 'react-dom/test-utils';
 import PropTypes from 'prop-types';
-import { avSlotMachineApi } from '@availity/api-axios';
 import { useEffectAsync } from '@availity/hooks';
+import { avSlotMachineApi } from '@availity/api-axios';
 import get from 'lodash.get';
 
 const spaceIDQuery = `
@@ -29,14 +28,17 @@ query($payerIDs: [String!], $types: [String!]){
 }
 `;
 
-const fetchLogo = async (query, variables, path) => {
+const fetchLogo = async (query, variables, path, clientId) => {
   try {
     const {
       data: { data },
-    } = await avSlotMachineApi.create({
-      query,
-      variables,
-    });
+    } = await avSlotMachineApi.create(
+      {
+        query,
+        variables,
+      },
+      { headers: { 'X-Client-ID': clientId } }
+    );
 
     const images = get(data, path, []).reduce((accum, { name, value }) => {
       accum[name] = value;
@@ -49,17 +51,21 @@ const fetchLogo = async (query, variables, path) => {
   }
 };
 
-const getLogo = async (spaceId, payerId) => {
+const getLogo = async (spaceId, payerId, clientId) => {
   try {
+    if (!clientId) {
+      throw new Error('clientId is required');
+    }
+
     let url;
     if (spaceId) {
       const variables = { id: spaceId };
       const path = 'space.images';
-      url = await fetchLogo(spaceIDQuery, variables, path);
+      url = await fetchLogo(spaceIDQuery, variables, path, clientId);
     } else if (payerId) {
       const variables = { payerIDs: [payerId], types: ['space'] };
       const path = 'spaces.spaces[0].images';
-      url = await fetchLogo(payerIDQuery, variables, path);
+      url = await fetchLogo(payerIDQuery, variables, path, clientId);
 
       // We can probably remove this at some point once our spaces data is complete
       if (!url) {
@@ -76,15 +82,15 @@ const getLogo = async (spaceId, payerId) => {
   }
 };
 
-const PayerLogo = ({ spaceId, payerId, ...props }) => {
+const PayerLogo = ({ spaceId, payerId, clientId, ...props }) => {
   const [url, setUrl] = useState(null);
 
   useEffectAsync(async () => {
-    const _url = await getLogo(spaceId, payerId);
-    act(() => setUrl(_url));
-  }, [spaceId, payerId]);
+    const _url = await getLogo(spaceId, payerId, clientId);
+    setUrl(_url);
+  }, [spaceId, payerId, clientId]);
 
-  if (!payerId && !spaceId) return null;
+  if (!clientId || (!payerId && !spaceId)) return null;
 
   return <img src={url} alt="Payer logo" {...props} />;
 };
@@ -92,6 +98,7 @@ const PayerLogo = ({ spaceId, payerId, ...props }) => {
 PayerLogo.propTypes = {
   spaceId: PropTypes.string,
   payerId: PropTypes.string,
+  clientId: PropTypes.string.isRequired,
 };
 
 export default PayerLogo;

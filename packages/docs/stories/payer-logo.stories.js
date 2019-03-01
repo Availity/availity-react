@@ -11,7 +11,10 @@ storiesOf('Logos|Payer', module)
   .addDecorator(withKnobs)
   .add('with payer ID', () => (
     <div>
-      <PayerLogo payerId={text('Payer ID', 'PayerID')} />
+      <PayerLogo
+        payerId={text('Payer ID', 'PayerID')}
+        clientId={text('Client ID', 'my-client-id')}
+      />
       <p>
         Note: the logo uses a relative URL which will only work on Availity
         Portal
@@ -22,6 +25,7 @@ storiesOf('Logos|Payer', module)
     <div>
       <PayerLogo
         spaceId={text('Payer Space ID', '73162546201441126239486200007187')}
+        clientId={text('Client ID', 'my-client-id')}
       />
       <p>
         Note: the logo uses a relative URL which will only work on the Availity

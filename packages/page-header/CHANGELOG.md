@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.3.2](https://github.com/Availity/availity-react/compare/@availity/page-header@1.3.1...@availity/page-header@1.3.2) (2019-02-28)
+
+
+### Bug Fixes
+
+* **page-header:** removing breadcrumb type check ([0896c2d](https://github.com/Availity/availity-react/commit/0896c2d))
+
+
+
+
+
 ## [1.3.1](https://github.com/Availity/availity-react/compare/@availity/page-header@1.3.0...@availity/page-header@1.3.1) (2019-02-26)
 
 **Note:** Version bump only for package @availity/page-header
