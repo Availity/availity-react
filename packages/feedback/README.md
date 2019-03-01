@@ -32,6 +32,7 @@ A component which does awesome things!
 - **`outline`**: Boolean. Optional. Indicates if the button should use the "outline" styles or not. Default: `false`
 - **`prompt`**: String. Optional. Text which prompts/asks the user to provide feedback. Default: `"Tell us what you think about ${appName}."`
 - **`onFeedbackSent`**: Function. Optional. Callback for when the feedback is submitted. It will be called with the feedback object.
+- **`modal`**: Boolean. Default `false`. Will open the feedback form in a modal if `true`.
 
 ##### Usage
 
@@ -61,6 +62,7 @@ This is the underlying form which is exposed in case you need to gather feedback
 - **`aboutOptions`**: Array of Objects containing **`value`** and **`label`**. Optional. Allows a dropdown displaying the options provided to let the uer indicate what the feedback is about.
 - **`prompt`**: String. Optional. Text which prompts/asks the user to provide feedback. Default: `"Tell us what you think about ${appName}."`
 - **`onFeedbackSent`**: Function. Optional. Callback for when the feedback is submitted. It will be called with the feedback object.
+- **`additionalComments`**: Boolean. Default `false`. If `true` will show and optional comments field below.
 
 ##### Usage
 

@@ -16,6 +16,6 @@ export interface FeedBackFormProps {
     prompt?: string;
 }
 
-declare const FeedBackForm: React.ComponentType<FeedBackFormProps>;
+declare const FeedBackForm: React.FunctionComponent<FeedBackFormProps>;
 
 export default FeedBackForm;

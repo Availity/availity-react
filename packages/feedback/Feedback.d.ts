@@ -1,14 +1,14 @@
 export interface FeedbackProps {
-    appName: string;
-    className?: string;
-    prompt?: string;
-    color?: string;
-    outline?: boolean;
-    formProps?: object;
+    appName?: string;
+    modal?: boolean;
     children?: React.ReactType;
-    onFeedbackSent: Function;
+    className?: string;
+    outline?: boolean;
+    color?: string;
+    formProps?: object;
+    prompt?: React.ReactType;
 }
 
-declare const Feedback: React.StatelessComponent<FeedbackProps>;
+declare const Feedback: React.FunctionComponent<FeedbackProps>;
 
 export default Feedback;

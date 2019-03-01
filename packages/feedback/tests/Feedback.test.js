@@ -1,59 +1,28 @@
 import React from 'react';
-import { render } from 'react-testing-library';
+import { render, fireEvent } from 'react-testing-library';
+import 'react-testing-library/cleanup-after-each';
 import Feedback from '..';
 
 describe('Feedback', () => {
-  test('should render', () => {
-    const { container } = render(<Feedback appName="Payer Space" />);
-
-    expect(container).toMatchSnapshot();
-  });
-
-  test('should render custom button text', () => {
-    const { container } = render(
-      <Feedback appName="Payer Space">Provide Valuable Feedback</Feedback>
+  test('should show form on click', () => {
+    const { getByTestId, getByText } = render(
+      <Feedback appName="Test Space" />
     );
 
-    expect(container).toMatchSnapshot();
+    fireEvent.click(getByText('Give Feedback'));
+
+    // eslint-disable-next-line unicorn/prefer-query-selector
+    expect(getByTestId('feedback-form')).toBeDefined();
   });
 
-  test('should render custom button color', () => {
-    const { container } = render(
-      <Feedback appName="Payer Space" color="success" />
+  test('should show modal form on click', () => {
+    const { getByTestId, getByText } = render(
+      <Feedback appName="Test Space" modal />
     );
 
-    expect(container).toMatchSnapshot();
-  });
+    fireEvent.click(getByText('Give Feedback'));
 
-  test('should render custom prompt text', () => {
-    const { container } = render(
-      <Feedback appName="Payer Space" prompt="Provide same feedback" />
-    );
-
-    expect(container).toMatchSnapshot();
-  });
-
-  test('should render custom form props', () => {
-    const { container } = render(
-      <Feedback
-        appName="Payer Space"
-        formProps={{
-          aboutOptions: [
-            { value: 'payerSpace', label: 'Payer Space' },
-            { value: 'wholeSite', label: 'Whole Site' },
-          ],
-        }}
-      />
-    );
-
-    expect(container).toMatchSnapshot();
-  });
-
-  test('should render custom className', () => {
-    const { container } = render(
-      <Feedback appName="Payer Space" className="junk and-stuff" />
-    );
-
-    expect(container).toMatchSnapshot();
+    // eslint-disable-next-line unicorn/prefer-query-selector
+    expect(getByTestId('feedbackModal')).toBeDefined();
   });
 });

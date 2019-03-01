@@ -1,18 +1,40 @@
 import React from 'react';
-import { render, fireEvent } from 'react-testing-library';
+import { render, fireEvent, wait } from 'react-testing-library';
+import 'react-testing-library/cleanup-after-each';
+import { avLogMessagesApi, avRegionsApi } from '@availity/api-axios';
 import { FeedbackForm } from '..';
 
-describe('Feedback', () => {
-  test('should render', () => {
-    const { container } = render(<FeedbackForm name="Payer Space" />);
+jest.mock('@availity/api-axios');
 
-    expect(container).toMatchSnapshot();
+avLogMessagesApi.info = jest.fn(() => Promise.resolve());
+
+avRegionsApi.getCurrentRegion = jest.fn(() =>
+  Promise.resolve({
+    data: {
+      regions: [
+        {
+          id: 'some region id',
+        },
+      ],
+    },
+  })
+);
+
+describe('FeedbackForm', () => {
+  test('should disable submit button until smile selected', () => {
+    const { getByText } = render(<FeedbackForm name="Payer Space" />);
+
+    const submitButton = getByText('Send Feedback');
+
+    expect(submitButton.getAttribute('disabled')).not.toBe(null);
+
+    fireEvent.click(getByText('Smiley face'));
+
+    expect(submitButton.getAttribute('disabled')).toBe(null);
   });
 
   test('should indicate active smiley', () => {
-    const { container, getByText } = render(
-      <FeedbackForm name="Payer Space" />
-    );
+    const { getByText } = render(<FeedbackForm name="Payer Space" />);
 
     // Get the Option with the smiley face
     const smileyFeedbackField = getByText('Smiley face');
@@ -20,18 +42,23 @@ describe('Feedback', () => {
     // Simulate the Click
     fireEvent.click(smileyFeedbackField);
 
-    expect(container).toMatchSnapshot();
+    expect(smileyFeedbackField.parentElement.className).toContain(
+      'btn-primary'
+    );
   });
 
-  test('should set the feedback text value', () => {
-    const { container, getByPlaceholderText } = render(
-      <FeedbackForm name="Payer Space" />
+  test('should submit with feedback text value', () => {
+    const onFeedbackSent = jest.fn();
+
+    const { getByPlaceholderText, getByText } = render(
+      <FeedbackForm onFeedbackSent={onFeedbackSent} name="Payer Space" />
     );
 
+    // Simulate the Click
+    fireEvent.click(getByText('Smiley face'));
+
     // Get the Input Node for the Feedback
-    const feedbackNode = getByPlaceholderText(
-      'Feedback? Requests? Defects? (optional)'
-    );
+    const feedbackNode = getByPlaceholderText('What do you like?');
 
     // Simulate a user typing the value below into the field
     fireEvent.change(feedbackNode, {
@@ -41,7 +68,15 @@ describe('Feedback', () => {
     // Check if the Input Got Updated
     expect(feedbackNode.value).toEqual('some good text here');
 
-    expect(container).toMatchSnapshot();
+    fireEvent.click(getByText('Send Feedback'));
+
+    wait(() =>
+      expect(onFeedbackSent).toHaveBeenCalledWith(
+        expect.objectContaining({
+          feedback: 'some good text here',
+        })
+      )
+    );
   });
 
   test('should render custom face icons', () => {
@@ -64,14 +99,23 @@ describe('Feedback', () => {
       },
     ];
 
-    const { container } = render(
+    const { getByTestId } = render(
       <FeedbackForm name="Payer Space" faceOptions={faceOptions} />
     );
 
-    expect(container).toMatchSnapshot();
+    const faceOptionFields = getByTestId('face-options');
+
+    expect(faceOptionFields.childElementCount).toBe(4);
+
+    faceOptions.forEach(faceOption => {
+      // eslint-disable-next-line unicorn/prefer-query-selector
+      expect(
+        faceOptionFields.getElementsByClassName(`icon-${faceOption.icon}`)
+      ).not.toBe(null);
+    });
   });
 
-  test('should render custom button color', () => {
+  test('should render about options', () => {
     const aboutOptions = [
       {
         value: 'this space',
@@ -90,10 +134,26 @@ describe('Feedback', () => {
         label: 'Availity as a whole',
       },
     ];
-    const { container } = render(
+    const { getByText } = render(
       <FeedbackForm name="Payer Space" aboutOptions={aboutOptions} />
     );
 
-    expect(container).toMatchSnapshot();
+    // Simulate the Click First
+    fireEvent.click(getByText('Smiley face'));
+
+    // Placeholder text on the Select Field to know we rendered it
+    expect(getByText('This is about...')).toBeDefined();
+  });
+
+  test('should render additional comments input', () => {
+    const { getByText, getByPlaceholderText } = render(
+      <FeedbackForm name="Payer Space" additionalComments />
+    );
+
+    fireEvent.click(getByText('Smiley face'));
+
+    expect(
+      getByPlaceholderText('Additional Comments... (Optional)')
+    ).toBeDefined();
   });
 });

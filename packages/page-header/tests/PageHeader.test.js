@@ -40,9 +40,11 @@ describe('PageHeader', () => {
   });
 
   test('should render feedback', () => {
-    const { container } = render(<PageHeader appName="Payer Space" feedback />);
+    const { getByTestId } = render(
+      <PageHeader appName="Payer Space" feedback />
+    );
 
-    expect(container).toMatchSnapshot();
+    expect(getByTestId('face-options')).toBeDefined();
   });
 
   test('should render children', () => {
