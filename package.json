@@ -13,7 +13,7 @@
     "bootstrap": "lerna bootstrap --no-package-locks --hoist react",
     "lerna": "lerna",
     "link": "lerna link",
-    "clean": "lerna clean",
+    "clean": "lerna clean --yes",
     "test": "jest",
     "postinstall": "npm run bootstrap",
     "start": "npm start --prefix packages/docs",
