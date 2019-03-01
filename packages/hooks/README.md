@@ -50,6 +50,15 @@ const Component = () => {
 // ...
 ```
 
+You can also pass the state you are looking to set the toggle to and if its already set it will not perform a state update.
+```javascript
+// This component will never re-render because the toggle is already set to `true`
+const Component = () => {
+    const [isToggled,toggle] = useToggle(true);
+
+    return <div onClick={() => toggle(true)}>{isToggled ? 'Hello' : 'World'</div>;
+}```
+
 #### useEffectAsync
 Hook that will allow asynchronous functions to be called in the standard `useEffect` React hook.
 
