@@ -3,6 +3,28 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [3.0.0](https://github.com/Availity/availity-react/compare/@availity/feedback@1.1.2...@availity/feedback@3.0.0) (2019-03-04)
+
+
+### Bug Fixes
+
+* **feedback:** added ignore for eslint error ([453a533](https://github.com/Availity/availity-react/commit/453a533))
+* **feedback:** fixed toggle not returing boolean when called ([2873a73](https://github.com/Availity/availity-react/commit/2873a73))
+
+
+### Features
+
+* **feedback:** refactored feedback component with more options ([becab2e](https://github.com/Availity/availity-react/commit/becab2e))
+
+
+### BREAKING CHANGES
+
+* **feedback:** The feedback modal has a new look.
+
+
+
+
+
 # [2.0.0](https://github.com/Availity/availity-react/compare/@availity/feedback@1.1.2...@availity/feedback@2.0.0) (2019-03-04)
 
 

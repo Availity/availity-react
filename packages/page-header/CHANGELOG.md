@@ -3,6 +3,22 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [3.0.0](https://github.com/Availity/availity-react/compare/@availity/page-header@1.3.2...@availity/page-header@3.0.0) (2019-03-04)
+
+
+### Features
+
+* **feedback:** refactored feedback component with more options ([becab2e](https://github.com/Availity/availity-react/commit/becab2e))
+
+
+### BREAKING CHANGES
+
+* **feedback:** The feedback modal has a new look.
+
+
+
+
+
 # [2.0.0](https://github.com/Availity/availity-react/compare/@availity/page-header@1.3.2...@availity/page-header@2.0.0) (2019-03-04)
 
 
