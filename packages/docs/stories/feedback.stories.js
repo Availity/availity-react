@@ -26,7 +26,7 @@ storiesOf('Actions|Feedback', module)
           ? [
               { label: 'The Payer Space', value: 'space' },
               { label: 'Applications', value: 'applications' },
-              { label: 'Resources', value: 'resoureces' },
+              { label: 'Resources', value: 'resources' },
               { label: 'News and Announcements', value: 'news' },
             ]
           : [],
