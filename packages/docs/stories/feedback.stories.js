@@ -8,6 +8,8 @@ import {
   selectV2,
 } from '@storybook/addon-knobs/react';
 
+import './mock-requests';
+
 import Feedback, { FeedbackForm } from '@availity/feedback';
 import README from '@availity/feedback/README.md';
 
@@ -18,6 +20,17 @@ storiesOf('Actions|Feedback', module)
     <Feedback
       appName={text('Application Name', 'Payer Space')}
       prompt={text('Prompt')}
+      formProps={{
+        additionalComments: boolean('Additional Comments', false),
+        aboutOptions: boolean('About Options', false)
+          ? [
+              { label: 'The Payer Space', value: 'space' },
+              { label: 'Applications', value: 'applications' },
+              { label: 'Resources', value: 'resources' },
+              { label: 'News and Announcements', value: 'news' },
+            ]
+          : [],
+      }}
       color={selectV2(
         'Button Color',
         {
@@ -35,6 +48,7 @@ storiesOf('Actions|Feedback', module)
       )}
       outline={boolean('Button Outline', false)}
       className={text('ClassName', Feedback.defaultProps.className)}
+      modal={boolean('Modal', false)}
     >
       {text('Button Text')}
     </Feedback>

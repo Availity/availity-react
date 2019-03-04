@@ -1,47 +1,69 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { UncontrolledDropdown, DropdownToggle, DropdownMenu } from 'reactstrap';
-import FeedbackForm from './FeedbackForm';
+import { Dropdown, DropdownToggle } from 'reactstrap';
+import { useToggle } from '@availity/hooks';
+import FeedbackDropdown from './FeedbackDropdown';
+import FeedbackModal from './FeedbackModal';
 
 const Feedback = ({
   appName,
-  formProps,
+  modal,
   children,
   className,
-  color,
   outline,
+  color,
+  formProps,
   prompt,
   onFeedbackSent,
   ...props
-}) => (
-  <UncontrolledDropdown className={`${className} hidden-print`} {...props}>
-    <DropdownToggle color={color} outline={outline}>
-      {children || 'Give Feedback'}
-    </DropdownToggle>
-    <DropdownMenu right className="p-3" style={{ width: '400px' }}>
-      <FeedbackForm
-        name={appName}
-        onFeedbackSent={onFeedbackSent}
-        prompt={prompt}
-        {...formProps}
-      />
-    </DropdownMenu>
-  </UncontrolledDropdown>
-);
+}) => {
+  const [isOpen, toggle] = useToggle(false);
+
+  return (
+    <Dropdown
+      isOpen={isOpen && !modal}
+      toggle={() => toggle()}
+      className={`${className} hidden-print`}
+      {...props}
+    >
+      <DropdownToggle color={color} outline={outline}>
+        {children || 'Give Feedback'}
+      </DropdownToggle>
+      {modal ? (
+        <FeedbackModal
+          onFeedbackSent={onFeedbackSent}
+          prompt={prompt}
+          isOpen={isOpen}
+          toggle={() => toggle()}
+          name={appName}
+          {...formProps}
+        />
+      ) : (
+        <FeedbackDropdown
+          onFeedbackSent={onFeedbackSent}
+          prompt={prompt}
+          name={appName}
+          {...formProps}
+        />
+      )}
+    </Dropdown>
+  );
+};
 
 Feedback.propTypes = {
-  appName: PropTypes.string.isRequired,
-  className: PropTypes.string,
-  prompt: PropTypes.string,
-  color: PropTypes.string,
-  outline: PropTypes.bool,
-  formProps: PropTypes.object,
+  appName: PropTypes.string,
+  modal: PropTypes.bool,
   children: PropTypes.node,
+  className: PropTypes.string,
+  outline: PropTypes.bool,
+  color: PropTypes.string,
+  formProps: PropTypes.object,
+  prompt: PropTypes.string,
   onFeedbackSent: PropTypes.func,
 };
 
 Feedback.defaultProps = {
-  className: '',
+  modal: false,
   color: 'light',
 };
 
