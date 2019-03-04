@@ -1,6 +1,6 @@
 {
   "name": "@availity/pagination",
-  "version": "1.6.0",
+  "version": "1.0.0",
   "description": "",
   "main": "index.js",
   "types": "index.d.ts",
@@ -8,11 +8,18 @@
   "author": "Evan Sharp <evan.sharp@availity.com>",
   "license": "MIT",
   "publishConfig": {
-    "registry": "https://artifactory.availity.com/artifactory/api/npm/local-npm/"
+    "access": "public"
   },
   "peerDependencies": {
     "react": "^16.8.0",
     "reactstrap": "^7.0.0"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Availity/availity-react.git"
+  },
+  "bugs": {
+    "url": "https://github.com/Availity/availity-react/issues"
   },
   "dependencies": {
     "@availity/hooks": "^1.2.0",
@@ -26,5 +33,6 @@
     "react": "^16.8.3",
     "react-dom": "^16.8.3",
     "reactstrap": "^7.0.0"
-  }
+  },
+  "gitHead": "49d436db19e42e3c16b4185b12e9dfcce60ec253"
 }
