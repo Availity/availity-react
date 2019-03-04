@@ -3,6 +3,29 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [2.0.0](https://github.com/Availity/availity-react/compare/@availity/payer-logo@1.1.3...@availity/payer-logo@2.0.0) (2019-03-04)
+
+
+### Bug Fixes
+
+* **payer-logo:** fix typescript definition for clientId ([ec06bfa](https://github.com/Availity/availity-react/commit/ec06bfa))
+* **payer-logo:** send clientId in request to slotmachine ([08ac445](https://github.com/Availity/availity-react/commit/08ac445))
+
+
+### Features
+
+* **pagination:** pagination components using hooks ([590e5fd](https://github.com/Availity/availity-react/commit/590e5fd)), closes [#27](https://github.com/Availity/availity-react/issues/27) [#64](https://github.com/Availity/availity-react/issues/64)
+
+
+### BREAKING CHANGES
+
+* **payer-logo:** clientId prop is required. it is needed in order to
+call slotmachine
+
+
+
+
+
 ## [1.1.3](https://github.com/Availity/availity-react/compare/@availity/payer-logo@1.1.2...@availity/payer-logo@1.1.3) (2019-02-26)
 
 

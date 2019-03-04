@@ -3,6 +3,33 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [2.0.0](https://github.com/Availity/availity-react/compare/@availity/docs@1.9.2...@availity/docs@2.0.0) (2019-03-04)
+
+
+### Bug Fixes
+
+* **docs:** fixed typo in resources ([bb57fba](https://github.com/Availity/availity-react/commit/bb57fba))
+* **feedback:** fixed toggle not returing boolean when called ([2873a73](https://github.com/Availity/availity-react/commit/2873a73))
+* **payer-logo:** send clientId in request to slotmachine ([08ac445](https://github.com/Availity/availity-react/commit/08ac445))
+
+
+### Features
+
+* **breadcrumbs:** added feedback option to breadcrumbs ([7ac5e0d](https://github.com/Availity/availity-react/commit/7ac5e0d))
+* **feedback:** refactored feedback component with more options ([becab2e](https://github.com/Availity/availity-react/commit/becab2e))
+* **pagination:** pagination components using hooks ([590e5fd](https://github.com/Availity/availity-react/commit/590e5fd)), closes [#27](https://github.com/Availity/availity-react/issues/27) [#64](https://github.com/Availity/availity-react/issues/64)
+
+
+### BREAKING CHANGES
+
+* **feedback:** The feedback modal has a new look.
+* **payer-logo:** clientId prop is required. it is needed in order to
+call slotmachine
+
+
+
+
+
 ## [1.9.2](https://github.com/Availity/availity-react/compare/@availity/docs@1.9.1...@availity/docs@1.9.2) (2019-02-28)
 
 **Note:** Version bump only for package @availity/docs
