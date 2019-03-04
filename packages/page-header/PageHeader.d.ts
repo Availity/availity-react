@@ -15,6 +15,7 @@ export interface PageHeaderProps {
     feedback?: boolean;
     children?: React.ReactType;
     crumbs?: Array<CrumbType> | React.ReactType;
+    clientId?: string;
 }
 
 declare const PageHeader: React.FunctionComponent<PageHeaderProps>;

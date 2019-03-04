@@ -18,6 +18,7 @@ const PageHeader = ({
   feedback,
   component,
   tag: Tag,
+  clientId,
   ...props
 }) => {
   if (spaceId || spaceName) {
@@ -54,6 +55,7 @@ const PageHeader = ({
           <PayerLogo
             spaceId={spaceId}
             payerId={payerId}
+            clientId={clientId}
             className="float-md-right d-inline-block"
           />
         )}
@@ -83,6 +85,7 @@ PageHeader.propTypes = {
     PropTypes.node,
   ]),
   tag: PropTypes.oneOfType([PropTypes.func, PropTypes.string]),
+  clientId: PropTypes.string,
 };
 
 PageHeader.defaultProps = {
