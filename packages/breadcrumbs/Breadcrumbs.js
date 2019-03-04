@@ -34,7 +34,7 @@ const Breadcrumbs = ({ crumbs, active, emptyState, children, feedback }) => {
       <BreadcrumbItem active>{active || emptyState}</BreadcrumbItem>
       {feedback && (
         <Feedback
-          appName={feedback.appName || active}
+          appName={feedback.appName}
           className="d-flex flex-fill justify-content-end"
           {...feedback}
         />
