@@ -74,6 +74,9 @@ storiesOf('Components|Pagination', module)
         </Col>
         <PaginationControls
           className="pt-2"
+          pageRange={number('Page Range', 5, { min: 1 }) || 1}
+          breakLabel={boolean('Break Label', true)}
+          marginPages={number('Margin Pages', 2, { min: 1 }) || 1}
           directionLinks={boolean('Direction Links', true)}
           autoHide={boolean('Auto Hide Controls', true)}
         />
@@ -103,6 +106,9 @@ storiesOf('Components|Pagination', module)
         </Col>
         <PaginationControls
           className="pt-2"
+          pageRange={number('Page Range', 5, { min: 1 }) || 1}
+          breakLabel={boolean('Break Label', true)}
+          marginPages={number('Margin Pages', 2, { min: 1 }) || 1}
           directionLinks={boolean('Direction Links', true)}
         />
       </div>

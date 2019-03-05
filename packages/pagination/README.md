@@ -52,7 +52,8 @@ This is the controls for the pagination, with the page selector and optionally v
 
 - **`directionLinks`**: boolean. default `false`. If enabled, will show next and previous arrows on the controls
 - **`autoHide`**: boolean. default `true`. If enabled and there are no items, the component will be hidden.
-
+- **`pageRange`**: number. default 5. The number of pages to display at a time.
+- **`marginPages`**: number. default 2. The number of pages you want to display on the ends when there are more pages than the page range.
 #### Example usage
 
 ```javascript

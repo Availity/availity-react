@@ -65,4 +65,35 @@ describe('Pagination Controls', () => {
 
     expect(paginationControls).not.toBe(null);
   });
+
+  test('should only show first 2 pages', async () => {
+    const items = [
+      { value: '1', key: 1 },
+      { value: '2', key: 2 },
+      { value: '3', key: 3 },
+      { value: '4', key: 4 },
+      { value: '5', key: 5 },
+    ];
+
+    const { getByTestId } = render(
+      <Pagination items={items} itemsPerPage={1}>
+        <PaginationControls pageRange={2} marginPages={1} directionLinks />
+      </Pagination>
+    );
+
+    const paginationControls = await waitForElement(() =>
+      getByTestId('pagination-controls-con')
+    );
+
+    expect(paginationControls).not.toBe(null);
+
+    expect(getByTestId('pagination-control-previous')).toBeDefined();
+    expect(getByTestId('pagination-control-next')).toBeDefined();
+
+    const breakLine = getByTestId('control-page-4');
+
+    expect(breakLine.firstChild.textContent).toBe('...');
+
+    expect(breakLine.nextSibling.firstChild.textContent).toBe('5');
+  });
 });
