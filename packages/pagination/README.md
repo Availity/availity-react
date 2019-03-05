@@ -28,7 +28,7 @@ This is the provider component for pagination to work. All the inner components 
 
 - **`items`**: Array or Function, required. If Array, defaults `totalCount` to length of array, and pages values are sliced from the Array. If a function, will call it with the current page as an argument and expected to return an array of items.
 - **`itemsPerPage`**: number. default `10`. The total amount of items to render at a time. ( After all the filtering )
-
+- **`onPageChange`**: function. optional. When the user changes the page, this will be called after the new page has been set.
 
 
 #### Example usage

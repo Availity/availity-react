@@ -114,4 +114,47 @@ describe('Pagination', () => {
       })
     );
   });
+
+  test('should call onPageChange when page changes', async () => {
+    const items = [
+      { value: '1', key: 1 },
+      { value: '2', key: 2 },
+      { value: '3', key: 3 },
+    ];
+
+    const mockOnPageChange = jest.fn(page => page);
+
+    const { getByTestId } = render(
+      <Pagination
+        onPageChange={mockOnPageChange}
+        items={items}
+        itemsPerPage={1}
+      >
+        <PaginationJson />
+        <PaginationControls directionLinks />
+      </Pagination>
+    );
+
+    let paginationCon = await waitForElement(() =>
+      getByTestId('pagination-con')
+    );
+
+    expect(paginationCon).toBeDefined();
+
+    expect(JSON.parse(paginationCon.textContent)).toEqual(
+      expect.objectContaining({
+        page: [items[0]],
+      })
+    );
+
+    fireEvent.click(getByTestId('pagination-control-next-link'));
+
+    // Wait for component to render nothing
+    waitForDomChange(() => getByTestId('pagination-con'));
+
+    // Get the component now with the new page data
+    paginationCon = await waitForElement(() => getByTestId('pagination-con'));
+
+    expect(mockOnPageChange).toHaveBeenCalledTimes(1);
+  });
 });
