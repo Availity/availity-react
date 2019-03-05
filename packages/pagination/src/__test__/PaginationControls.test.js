@@ -92,7 +92,7 @@ describe('Pagination Controls', () => {
 
     const breakLine = getByTestId('control-page-4');
 
-    expect(breakLine.firstChild.textContent).toBe('...');
+    expect(breakLine.firstChild.textContent.charCodeAt(0)).toBe(8230);
 
     expect(breakLine.nextSibling.firstChild.textContent).toBe('5');
   });

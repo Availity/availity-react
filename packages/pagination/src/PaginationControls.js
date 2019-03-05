@@ -45,7 +45,7 @@ const PaginationControls = ({
   const createBreak = index => (
     <PaginationItem key={index} data-testid={`control-page-${index}`}>
       <PaginationLink onClick={() => handleBreakClick(index)} type="button">
-        ...
+        &hellip;
       </PaginationLink>
     </PaginationItem>
   );
