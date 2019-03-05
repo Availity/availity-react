@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [3.1.0](https://github.com/Availity/availity-react/compare/@availity/page-header@3.0.0...@availity/page-header@3.1.0) (2019-03-05)
+
+
+### Features
+
+* **page-header:** add clientId prop ([85067b9](https://github.com/Availity/availity-react/commit/85067b9))
+
+
+
+
+
 # [3.0.0](https://github.com/Availity/availity-react/compare/@availity/page-header@1.3.2...@availity/page-header@3.0.0) (2019-03-04)
 
 

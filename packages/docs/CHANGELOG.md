@@ -3,6 +3,22 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [3.1.0](https://github.com/Availity/availity-react/compare/@availity/docs@3.0.0...@availity/docs@3.1.0) (2019-03-05)
+
+
+### Bug Fixes
+
+* **docs:** fixed dep version issue ([3d43b3f](https://github.com/Availity/availity-react/commit/3d43b3f))
+
+
+### Features
+
+* **pagination:** added margin pages and page ranges to the controls ([a2ee1de](https://github.com/Availity/availity-react/commit/a2ee1de))
+
+
+
+
+
 # [3.0.0](https://github.com/Availity/availity-react/compare/@availity/docs@1.9.2...@availity/docs@3.0.0) (2019-03-04)
 
 

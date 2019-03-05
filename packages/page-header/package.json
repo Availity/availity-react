@@ -1,6 +1,6 @@
 {
   "name": "@availity/page-header",
-  "version": "3.0.0",
+  "version": "3.1.0",
   "author": "Evan Sharp <evan.sharp@availity.com>",
   "description": "The standard page header for Availity Portal Applications",
   "main": "index.js",
