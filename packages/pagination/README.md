@@ -28,7 +28,7 @@ This is the provider component for pagination to work. All the inner components 
 
 - **`items`**: Array or Function, required. If Array, defaults `totalCount` to length of array, and pages values are sliced from the Array. If a function, will call it with the current page as an argument and expected to return an array of items.
 - **`itemsPerPage`**: number. default `10`. The total amount of items to render at a time. ( After all the filtering )
-
+- **`onPageChange`**: function. optional. When the user changes the page, this will be called after the new page has been set.
 
 
 #### Example usage
@@ -52,7 +52,8 @@ This is the controls for the pagination, with the page selector and optionally v
 
 - **`directionLinks`**: boolean. default `false`. If enabled, will show next and previous arrows on the controls
 - **`autoHide`**: boolean. default `true`. If enabled and there are no items, the component will be hidden.
-
+- **`pageRange`**: number. default 5. The number of pages to display at a time.
+- **`marginPages`**: number. default 2. The number of pages you want to display on the ends when there are more pages than the page range.
 #### Example usage
 
 ```javascript

@@ -19,7 +19,12 @@ export const usePagination = () => useContext(PaginationContext);
  * @param {Function|Object} items - The Items or function to use for pagination
  * @param {number} itemsPerPage - The items to show per page
  */
-const Pagination = ({ items: theItems, itemsPerPage, children }) => {
+const Pagination = ({
+  items: theItems,
+  itemsPerPage,
+  onPageChange,
+  children,
+}) => {
   const [currentPage, setPage] = useState(1);
   const [pageData, setPageData] = useState({
     total: theItems != null && !isFunction(theItems) ? theItems.totalCount : 0,
@@ -79,6 +84,10 @@ const Pagination = ({ items: theItems, itemsPerPage, children }) => {
   const updatePage = page => {
     toggleLoading(true);
     setPage(page);
+
+    if (onPageChange) {
+      onPageChange(page);
+    }
   };
 
   // boom roasted
@@ -99,6 +108,7 @@ const Pagination = ({ items: theItems, itemsPerPage, children }) => {
 Pagination.propTypes = {
   items: PropTypes.oneOfType([PropTypes.array, PropTypes.func]),
   itemsPerPage: PropTypes.number,
+  onPageChange: PropTypes.func,
   children: PropTypes.node,
 };
 
