@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import {
   render,
   waitForElement,
@@ -156,5 +156,53 @@ describe('Pagination', () => {
     paginationCon = await waitForElement(() => getByTestId('pagination-con'));
 
     expect(mockOnPageChange).toHaveBeenCalledTimes(1);
+  });
+
+  test('should re-render if watch List updates', async () => {
+    // Create Mock Function
+    const mockFunc = jest.fn(() => {});
+
+    // Create Component to call the function everytime the component updates
+    const SomeComponent = React.memo(() => {
+      const { currentPage, loading } = usePagination();
+
+      // Should be called
+      // 1 - After the pagination loads
+      // 2 - When the state update happens
+      // 3 - When the Pagination Forces a re-render due to the watch list
+      if (!loading) mockFunc();
+
+      return loading ? null : (
+        <span data-testid="current-page">{currentPage}</span>
+      );
+    });
+
+    const ComponentWrapper = () => {
+      const [state, setState] = useState('hello');
+      return (
+        <>
+          <Pagination watchList={[state]}>
+            <button
+              type="button"
+              data-testid="hello-btn"
+              onClick={() => setState('world')}
+            />
+            <SomeComponent />
+          </Pagination>
+        </>
+      );
+    };
+
+    const { getByTestId } = render(<ComponentWrapper />);
+
+    await waitForElement(() => getByTestId(`current-page`));
+
+    // Called once after the pagination has loaded
+    expect(mockFunc).toHaveBeenCalledTimes(1);
+
+    // Clicking the button will trigger a state update
+    fireEvent.click(getByTestId('hello-btn'));
+
+    expect(mockFunc).toHaveBeenCalledTimes(3);
   });
 });

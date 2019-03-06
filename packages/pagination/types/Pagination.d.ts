@@ -3,6 +3,7 @@ export interface PaginationProps {
     itemsPerPage?: number;
     children?: React.ReactType;
     onPageChange?: Function;
+    watchList?: Array<Object>;
 }
 
 declare const Pagination: React.FunctionComponent<PaginationProps>;
