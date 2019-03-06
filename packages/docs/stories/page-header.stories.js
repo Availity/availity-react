@@ -1,7 +1,7 @@
 import React from 'react';
 import { storiesOf } from '@storybook/react';
 import { withReadme } from 'storybook-readme';
-import { withKnobs, text, selectV2 } from '@storybook/addon-knobs/react';
+import { withKnobs, text, select } from '@storybook/addon-knobs/react';
 
 import PageHeader from '@availity/page-header';
 import README from '@availity/page-header/README.md';
@@ -30,7 +30,7 @@ storiesOf('Page|Header', module)
     <PageHeader
       appName="Payer Spaces"
       appAbbr={text('Application Abbreviation', 'PS')}
-      iconColor={selectV2(
+      iconColor={select(
         'Color',
         {
           Black: 'black',

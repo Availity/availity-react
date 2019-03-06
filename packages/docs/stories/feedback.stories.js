@@ -1,12 +1,7 @@
 import React from 'react';
 import { storiesOf } from '@storybook/react';
 import { withReadme } from 'storybook-readme';
-import {
-  withKnobs,
-  text,
-  boolean,
-  selectV2,
-} from '@storybook/addon-knobs/react';
+import { withKnobs, text, boolean, select } from '@storybook/addon-knobs/react';
 
 import './mock-requests';
 
@@ -31,7 +26,7 @@ storiesOf('Actions|Feedback', module)
             ]
           : [],
       }}
-      color={selectV2(
+      color={select(
         'Button Color',
         {
           light: 'light',

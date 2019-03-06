@@ -1,12 +1,7 @@
 import React from 'react';
 import { storiesOf } from '@storybook/react';
 import { withReadme } from 'storybook-readme';
-import {
-  withKnobs,
-  text,
-  boolean,
-  selectV2,
-} from '@storybook/addon-knobs/react';
+import { withKnobs, text, boolean, select } from '@storybook/addon-knobs/react';
 
 import AppIcon from '@availity/app-icon';
 import README from '@availity/app-icon/README.md';
@@ -16,7 +11,7 @@ storiesOf('Icons|App', module)
   .addDecorator(withKnobs)
   .add('default', () => (
     <AppIcon
-      size={selectV2(
+      size={select(
         'Size',
         {
           Default: '',
@@ -25,7 +20,7 @@ storiesOf('Icons|App', module)
         },
         ''
       )}
-      color={selectV2(
+      color={select(
         'Color',
         {
           Black: 'black',
