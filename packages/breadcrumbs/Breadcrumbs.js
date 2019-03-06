@@ -3,7 +3,14 @@ import PropTypes from 'prop-types';
 import { Breadcrumb, BreadcrumbItem } from 'reactstrap';
 import Feedback from '@availity/feedback';
 
-const Breadcrumbs = ({ crumbs, active, emptyState, children, feedback }) => {
+const Breadcrumbs = ({
+  crumbs,
+  active,
+  emptyState,
+  children,
+  feedback,
+  ...rest
+}) => {
   const renderBreadCrumb = crumb => {
     // default breadcrumbitem render
     let breadCrumbItemChildren = <span>{emptyState}</span>;
@@ -23,7 +30,7 @@ const Breadcrumbs = ({ crumbs, active, emptyState, children, feedback }) => {
   };
 
   return (
-    <Breadcrumb>
+    <Breadcrumb {...rest}>
       <BreadcrumbItem>
         <a aria-label="Home" href="/public/apps/dashboard">
           Home
