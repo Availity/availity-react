@@ -88,11 +88,13 @@ const Pagination = ({
   ]);
 
   const updatePage = page => {
-    toggleLoading(true);
-    setPage(page);
+    if (page !== currentPage) {
+      toggleLoading(true);
+      setPage(page);
 
-    if (onPageChange) {
-      onPageChange(page);
+      if (onPageChange) {
+        onPageChange(page);
+      }
     }
   };
 
