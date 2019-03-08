@@ -1,4 +1,4 @@
-import Pagination, { usePagination } from './src/Pagination';
+import Pagination, { usePagination, PaginationContext } from './src/Pagination';
 import PaginationControls from './src/PaginationControls';
 import PaginationContent from './src/PaginationContent';
 import AvResourcePagination from './src/AvResourcePagination';
@@ -9,6 +9,7 @@ export {
   PaginationContent,
   usePagination,
   AvResourcePagination,
+  PaginationContext,
 };
 
 Pagination.Controls = PaginationControls;

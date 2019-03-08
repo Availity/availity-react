@@ -24,6 +24,7 @@ const Pagination = ({
   itemsPerPage,
   onPageChange,
   children,
+  watchList,
 }) => {
   const [currentPage, setPage] = useState(1);
   const [pageData, setPageData] = useState({
@@ -79,14 +80,21 @@ const Pagination = ({
     });
 
     toggleLoading(false);
-  }, [currentPage, itemsPerPage, isFunction(theItems) ? null : theItems]);
+  }, [
+    currentPage,
+    itemsPerPage,
+    isFunction(theItems) ? null : theItems,
+    ...watchList,
+  ]);
 
   const updatePage = page => {
-    toggleLoading(true);
-    setPage(page);
+    if (page !== currentPage) {
+      toggleLoading(true);
+      setPage(page);
 
-    if (onPageChange) {
-      onPageChange(page);
+      if (onPageChange) {
+        onPageChange(page);
+      }
     }
   };
 
@@ -110,11 +118,13 @@ Pagination.propTypes = {
   itemsPerPage: PropTypes.number,
   onPageChange: PropTypes.func,
   children: PropTypes.node,
+  watchList: PropTypes.array,
 };
 
 Pagination.defaultProps = {
   itemsPerPage: 10,
   items: [],
+  watchList: [],
 };
 
 export default Pagination;
