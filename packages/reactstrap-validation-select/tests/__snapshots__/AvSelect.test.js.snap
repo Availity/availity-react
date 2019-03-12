@@ -12,18 +12,18 @@ exports[`AvSelect should render 1`] = `
       class="css-10nd86i av-select is-untouched is-pristine av-valid"
     >
       <div
-        class="css-1aya2g8 av__control"
+        class="css-1dts05n av__control"
       >
         <div
-          class="css-1rtrksz av__value-container"
+          class="css-mqiw47 av__value-container"
         >
           <div
-            class="css-1492t68 av__placeholder"
+            class="css-jacqom av__placeholder"
           >
             Select...
           </div>
           <div
-            class="css-rsyb7x"
+            class="css-gvjj8i"
           >
             <div
               class="av__input"
@@ -56,7 +56,7 @@ exports[`AvSelect should render 1`] = `
           />
           <div
             aria-hidden="true"
-            class="css-1ep9fjw av__indicator av__dropdown-indicator"
+            class="css-rsvmkg av__indicator av__dropdown-indicator"
           >
             <svg
               aria-hidden="true"
@@ -100,18 +100,18 @@ exports[`AvSelect should show selected as active 1`] = `
       class="css-10nd86i av-select is-untouched is-pristine av-valid"
     >
       <div
-        class="css-1aya2g8 av__control"
+        class="css-1dts05n av__control"
       >
         <div
-          class="css-1rtrksz av__value-container"
+          class="css-mqiw47 av__value-container"
         >
           <div
-            class="css-1492t68 av__placeholder"
+            class="css-jacqom av__placeholder"
           >
             Select...
           </div>
           <div
-            class="css-rsyb7x"
+            class="css-gvjj8i"
           >
             <div
               class="av__input"
@@ -144,7 +144,7 @@ exports[`AvSelect should show selected as active 1`] = `
           />
           <div
             aria-hidden="true"
-            class="css-1ep9fjw av__indicator av__dropdown-indicator"
+            class="css-rsvmkg av__indicator av__dropdown-indicator"
           >
             <svg
               aria-hidden="true"

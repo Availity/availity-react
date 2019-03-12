@@ -156,7 +156,7 @@ class AvSelect extends AvBaseInput {
   }
 
   render() {
-    const { className, selectRef, ...attributes } = this.props;
+    const { className, selectRef, styles, ...attributes } = this.props;
     const touched =
       this.context.FormCtrl && this.context.FormCtrl.isTouched(this.props.name);
     const hasError =
@@ -190,6 +190,45 @@ class AvSelect extends AvBaseInput {
         closeMenuOnSelect={!attributes.isMulti}
         components={components}
         defaultOptions
+        styles={{
+          ...styles,
+          placeholder: provided => ({
+            ...provided,
+            color: '#666',
+            maxWidth: '99%',
+          }),
+          valueContainer: provided => ({
+            ...provided,
+            width: '90%',
+          }),
+          control: (provided, state) => {
+            const showError = touched && hasError && !state.focused;
+            return {
+              ...provided,
+              borderRadius: 'inherit',
+              backgroundColor: showError ? '#fbcbc8' : 'white',
+              borderColor: showError && '#931b1d',
+              zIndex: state.focused && '3',
+            };
+          },
+          multiValue: provided => ({
+            ...provided,
+            width: '85%',
+          }),
+          input: provided => ({
+            ...provided,
+            maxWidth: '99%',
+          }),
+          dropdownIndicator: (provided, state) => {
+            const showError = touched && hasError && !state.focused;
+
+            return {
+              ...provided,
+              pointerEvents: 'none',
+              color: showError && '#931b1d',
+            };
+          },
+        }}
         {...attributes}
         {...this.getValidatorProps()}
         value={this.getViewValue()}
