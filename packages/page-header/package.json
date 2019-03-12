@@ -1,6 +1,6 @@
 {
   "name": "@availity/page-header",
-  "version": "3.1.1",
+  "version": "4.0.0",
   "author": "Evan Sharp <evan.sharp@availity.com>",
   "description": "The standard page header for Availity Portal Applications",
   "main": "index.js",
@@ -21,8 +21,8 @@
   },
   "dependencies": {
     "@availity/app-icon": "^1.1.4",
-    "@availity/breadcrumbs": "^1.5.1",
-    "@availity/feedback": "^3.0.0",
+    "@availity/breadcrumbs": "^2.0.0",
+    "@availity/feedback": "^4.0.0",
     "@availity/payer-logo": "^3.0.0",
     "@availity/training-link": "^1.1.4",
     "prop-types": "^15.5.8"
