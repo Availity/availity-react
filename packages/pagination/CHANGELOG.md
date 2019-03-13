@@ -3,6 +3,22 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [2.0.0](https://github.com/Availity/availity-react/compare/@availity/pagination@1.3.0...@availity/pagination@2.0.0) (2019-03-13)
+
+
+### Bug Fixes
+
+* **pagination:** fixed range error when records go over a certain limit ([44a2bc6](https://github.com/Availity/availity-react/commit/44a2bc6))
+
+
+### BREAKING CHANGES
+
+* **pagination:** pagination provider returns page count rather than array of pages
+
+
+
+
+
 # [1.3.0](https://github.com/Availity/availity-react/compare/@availity/pagination@1.2.0...@availity/pagination@1.3.0) (2019-03-08)
 
 
