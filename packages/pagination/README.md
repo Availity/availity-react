@@ -98,7 +98,7 @@ This is a custom hook for grabbing any Pagination Data you may need from the `Pa
 ### Returns
 ```json
 {
-    pages: Array[1,2,3,4,5,6,...],
+    pageCount: number,
     total: number,
     page: Array,
     currentPage: number,
