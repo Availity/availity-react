@@ -12,8 +12,7 @@ const PaginationControls = ({
   marginPages,
   ...rest
 }) => {
-  const { pages, currentPage, setPage } = usePagination();
-  const pageCount = pages.length;
+  const { pageCount, currentPage, setPage } = usePagination();
 
   const createItem = pageNumber => (
     <PaginationItem
@@ -73,22 +72,21 @@ const PaginationControls = ({
       }
 
       let breakView;
-
-      pages.forEach((pageNumber, index) => {
+      let index;
+      let pageNumber;
+      for (index = 0; index < pageCount; index++) {
+        pageNumber = index + 1;
         if (
           pageNumber <= marginPages ||
           pageNumber > pageCount - marginPages ||
           (index >= selected - leftSide && index <= selected + rightSide)
         ) {
           items.push(createItem(pageNumber));
-          return;
-        }
-
-        if (items[items.length - 1] !== breakView) {
+        } else if (items[items.length - 1] !== breakView) {
           breakView = createBreak(pageNumber);
           items.push(breakView);
         }
-      });
+      }
     }
 
     return items;
@@ -96,7 +94,7 @@ const PaginationControls = ({
 
   return (
     <React.Fragment>
-      {pages.length > 1 || !autoHide ? (
+      {pageCount > 1 || !autoHide ? (
         <Pagination data-testid="pagination-controls-con" {...rest}>
           {directionLinks ? (
             <PaginationItem

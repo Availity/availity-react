@@ -29,7 +29,7 @@ const Pagination = ({
   const [currentPage, setPage] = useState(1);
   const [pageData, setPageData] = useState({
     total: theItems != null && !isFunction(theItems) ? theItems.totalCount : 0,
-    pages: [],
+    pageCount: 0,
     page: [],
     lower: 0,
     upper: 0,
@@ -60,12 +60,7 @@ const Pagination = ({
     // todo - add prop if needed to handle this
     const page = isFunction(theItems) ? items : items.slice(lower - 1, upper);
 
-    // Get page numbers
-    // eslint-disable-next-line prefer-spread
-    const pages = Array.apply(
-      null,
-      new Array(Math.ceil((totalCount || items.length) / itemsPerPage))
-    ).map((v, k) => k + 1);
+    const pageCount = Math.ceil((totalCount || items.length) / itemsPerPage);
 
     if (!isEqual(avLocalStorage.get('current-page'), currentPage)) {
       return;
@@ -73,7 +68,7 @@ const Pagination = ({
 
     setPageData({
       total: totalCount || items.length,
-      pages,
+      pageCount,
       page,
       lower,
       upper,
