@@ -192,11 +192,15 @@ class AvSelect extends AvBaseInput {
         defaultOptions
         styles={{
           ...styles,
-          placeholder: provided => ({
-            ...provided,
-            color: '#666',
-            maxWidth: '99%',
-          }),
+          placeholder: (provided, state) => {
+            const showError = touched && hasError && !state.focused;
+
+            return {
+              ...provided,
+              color: showError ? '#3D3D3D' : '#666',
+              maxWidth: '99%',
+            };
+          },
           valueContainer: provided => ({
             ...provided,
             width: '90%',
