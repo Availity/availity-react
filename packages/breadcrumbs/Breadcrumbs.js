@@ -1,16 +1,8 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { Breadcrumb, BreadcrumbItem } from 'reactstrap';
-import Feedback from '@availity/feedback';
 
-const Breadcrumbs = ({
-  crumbs,
-  active,
-  emptyState,
-  children,
-  feedback,
-  ...rest
-}) => {
+const Breadcrumbs = ({ crumbs, active, emptyState, children, ...rest }) => {
   const renderBreadCrumb = crumb => {
     // default breadcrumbitem render
     let breadCrumbItemChildren = <span>{emptyState}</span>;
@@ -39,14 +31,6 @@ const Breadcrumbs = ({
       {crumbs && crumbs.length > 0 && crumbs.map(renderBreadCrumb)}
       {children}
       <BreadcrumbItem active>{active || emptyState}</BreadcrumbItem>
-      {feedback && (
-        <Feedback
-          tag="li"
-          appName={feedback.appName}
-          className="d-flex flex-fill justify-content-end"
-          {...feedback}
-        />
-      )}
     </Breadcrumb>
   );
 };
@@ -61,7 +45,6 @@ Breadcrumbs.propTypes = {
   active: PropTypes.string.isRequired,
   emptyState: PropTypes.string,
   children: PropTypes.node,
-  feedback: PropTypes.oneOfType([PropTypes.bool, PropTypes.object]),
 };
 
 Breadcrumbs.defaultProps = {
