@@ -207,7 +207,7 @@ class AvSelect extends AvBaseInput {
               ...provided,
               borderRadius: 'inherit',
               backgroundColor: showError ? '#fbcbc8' : 'white',
-              borderColor: showError && '#931b1d',
+              borderColor: showError ? '#931b1d' : 'hsl(0,0%,80%)',
               zIndex: state.focused && '3',
             };
           },
@@ -225,7 +225,7 @@ class AvSelect extends AvBaseInput {
             return {
               ...provided,
               pointerEvents: 'none',
-              color: showError && '#931b1d',
+              color: showError ? '#931b1d' : 'hsl(0,0%,80%)',
             };
           },
         }}
