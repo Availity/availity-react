@@ -12,7 +12,7 @@ exports[`AvSelect should render 1`] = `
       class="css-10nd86i av-select is-untouched is-pristine av-valid"
     >
       <div
-        class="css-1dts05n av__control"
+        class="css-el8l7s av__control"
       >
         <div
           class="css-mqiw47 av__value-container"
@@ -56,7 +56,7 @@ exports[`AvSelect should render 1`] = `
           />
           <div
             aria-hidden="true"
-            class="css-rsvmkg av__indicator av__dropdown-indicator"
+            class="css-s32mkd av__indicator av__dropdown-indicator"
           >
             <svg
               aria-hidden="true"
@@ -100,7 +100,7 @@ exports[`AvSelect should show selected as active 1`] = `
       class="css-10nd86i av-select is-untouched is-pristine av-valid"
     >
       <div
-        class="css-1dts05n av__control"
+        class="css-el8l7s av__control"
       >
         <div
           class="css-mqiw47 av__value-container"
@@ -144,7 +144,7 @@ exports[`AvSelect should show selected as active 1`] = `
           />
           <div
             aria-hidden="true"
-            class="css-rsvmkg av__indicator av__dropdown-indicator"
+            class="css-s32mkd av__indicator av__dropdown-indicator"
           >
             <svg
               aria-hidden="true"
