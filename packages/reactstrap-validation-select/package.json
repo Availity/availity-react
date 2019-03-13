@@ -1,6 +1,6 @@
 {
   "name": "@availity/reactstrap-validation-select",
-  "version": "2.0.1",
+  "version": "2.0.2",
   "description": "Wrapper for react-select to work with availity-reactstrap-validation",
   "main": "index.js",
   "scripts": {
