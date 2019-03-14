@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
 import {
   Button,
@@ -54,16 +54,32 @@ const FeedbackForm = ({
     }
   };
 
+  // Close the Modal once sent after 2 seconds
+  useEffect(() => {
+    if (sent) {
+      setTimeout(() => {
+        onClose(); // Mostly for Screen Reader use but a nice to have for all
+      }, 2000);
+    }
+  }, [sent]);
+
   return sent ? (
-    <ModalHeader className="d-flex justify-content-center">
+    <ModalHeader
+      aria-live="assertive"
+      tabIndex="0"
+      className="d-flex justify-content-center"
+    >
       Thank you for your feedback.
     </ModalHeader>
   ) : (
     <React.Fragment>
-      <ModalHeader>
+      <ModalHeader aria-live="assertive" id="feedback-form-header">
         {prompt || `Tell us what you think about ${name}`}
       </ModalHeader>
       <AvForm
+        aria-label="Feedback Form"
+        aria-describedby="feedback-form-header"
+        role="form"
         name="feedack-form"
         id="feedback-form"
         data-testid="feedback-form"
