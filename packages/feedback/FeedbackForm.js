@@ -24,7 +24,7 @@ const FeedbackForm = ({
 }) => {
   const [active, setActive] = useState(null);
   const [invalid, toggleInvalid] = useToggle(false);
-  const [sent, toggleSent] = useToggle(false);
+  const [sent, setSent] = useState(null);
 
   const sendFeedback = async values => {
     if (!active && !invalid) {
@@ -44,10 +44,7 @@ const FeedbackForm = ({
       ...values, // Spread the form values onto the logger
     });
 
-    if (onFeedbackSent) {
-      onFeedbackSent({ active, values });
-    }
-    toggleSent();
+    setSent(values);
 
     if (invalid) {
       toggleInvalid();
@@ -59,6 +56,9 @@ const FeedbackForm = ({
     if (sent) {
       setTimeout(() => {
         onClose(); // Mostly for Screen Reader use but a nice to have for all
+        if (onFeedbackSent) {
+          onFeedbackSent({ active, sent });
+        }
       }, 2000);
     }
   }, [sent]);
