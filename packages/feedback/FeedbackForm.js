@@ -37,11 +37,11 @@ const FeedbackForm = ({
       surveyId: `${name.replace(/\s/g, '_')}_Smile_Survey`,
       smileLocation: `${name}`,
       smile: `icon-${active}`,
-      feedback: { ...values },
       url: window.location.href,
       region: response.data.regions[0] && response.data.regions[0].id,
       userAgent: window.navigator.userAgent,
       submitTime: new Date(),
+      ...values, // Spread the form values onto the logger
     });
 
     if (onFeedbackSent) {
@@ -121,7 +121,7 @@ const FeedbackForm = ({
               {additionalComments && (
                 <AvField
                   type="textarea"
-                  name="additionalComments"
+                  name="additionalFeedback"
                   placeholder="Additional Comments... (Optional)"
                   style={{ resize: 'none' }}
                   rows="2"
