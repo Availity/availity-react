@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [4.0.4](https://github.com/Availity/availity-react/compare/@availity/feedback@4.0.3...@availity/feedback@4.0.4) (2019-03-14)
+
+
+### Bug Fixes
+
+* **feedback:** feedback smile was being submitted as obj expected string ([63246e1](https://github.com/Availity/availity-react/commit/63246e1))
+
+
+
+
+
 ## [4.0.3](https://github.com/Availity/availity-react/compare/@availity/feedback@4.0.2...@availity/feedback@4.0.3) (2019-03-13)
 
 **Note:** Version bump only for package @availity/feedback

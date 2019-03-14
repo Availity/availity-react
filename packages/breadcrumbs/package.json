@@ -1,6 +1,6 @@
 {
   "name": "@availity/breadcrumbs",
-  "version": "2.0.3",
+  "version": "2.0.4",
   "author": "Evan Sharp <evan.sharp@availity.com>",
   "description": "Availity breadcrumbs",
   "main": "index.js",
@@ -20,7 +20,7 @@
     "access": "public"
   },
   "dependencies": {
-    "@availity/feedback": "^4.0.3",
+    "@availity/feedback": "^4.0.4",
     "prop-types": "^15.5.8"
   },
   "devDependencies": {
