@@ -36,7 +36,7 @@ const FeedbackForm = ({
     await avLogMessagesApi.info({
       surveyId: `${name.replace(/\s/g, '_')}_Smile_Survey`,
       smileLocation: `${name}`,
-      smile: `icon-${active}`,
+      smile: `icon-${active.icon}`,
       url: window.location.href,
       region: response.data.regions[0] && response.data.regions[0].id,
       userAgent: window.navigator.userAgent,
