@@ -18,6 +18,8 @@ const PaginationControls = ({
     <PaginationItem
       key={pageNumber}
       active={currentPage === pageNumber}
+      aria-label={`Page ${pageNumber}`}
+      aria-current={currentPage === pageNumber}
       data-testid={`control-page-${pageNumber}`}
     >
       <PaginationLink onClick={() => setPage(pageNumber)} type="button">
