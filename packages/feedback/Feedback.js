@@ -42,6 +42,7 @@ const Feedback = ({
         <FeedbackDropdown
           onFeedbackSent={onFeedbackSent}
           prompt={prompt}
+          toggle={() => toggle()}
           name={appName}
           {...formProps}
         />
