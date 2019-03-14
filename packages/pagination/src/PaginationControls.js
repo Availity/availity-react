@@ -74,9 +74,8 @@ const PaginationControls = ({
       }
 
       let breakView;
-      let index;
       let pageNumber;
-      for (index = 0; index < pageCount; index++) {
+      for (let index = 0; index < pageCount; index++) {
         pageNumber = index + 1;
         if (
           pageNumber <= marginPages ||
