@@ -3,6 +3,14 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [2.0.1](https://github.com/Availity/availity-react/compare/@availity/pagination@2.0.0...@availity/pagination@2.0.1) (2019-03-14)
+
+**Note:** Version bump only for package @availity/pagination
+
+
+
+
+
 # [2.0.0](https://github.com/Availity/availity-react/compare/@availity/pagination@1.3.0...@availity/pagination@2.0.0) (2019-03-13)
 
 

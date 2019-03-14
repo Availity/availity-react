@@ -18,6 +18,8 @@ const PaginationControls = ({
     <PaginationItem
       key={pageNumber}
       active={currentPage === pageNumber}
+      aria-label={`Page ${pageNumber}`}
+      aria-current={currentPage === pageNumber}
       data-testid={`control-page-${pageNumber}`}
     >
       <PaginationLink onClick={() => setPage(pageNumber)} type="button">
@@ -72,9 +74,8 @@ const PaginationControls = ({
       }
 
       let breakView;
-      let index;
       let pageNumber;
-      for (index = 0; index < pageCount; index++) {
+      for (let index = 0; index < pageCount; index++) {
         pageNumber = index + 1;
         if (
           pageNumber <= marginPages ||

@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
 import {
   Button,
@@ -24,7 +24,7 @@ const FeedbackForm = ({
 }) => {
   const [active, setActive] = useState(null);
   const [invalid, toggleInvalid] = useToggle(false);
-  const [sent, toggleSent] = useToggle(false);
+  const [sent, setSent] = useState(null);
 
   const sendFeedback = async values => {
     if (!active && !invalid) {
@@ -36,34 +36,50 @@ const FeedbackForm = ({
     await avLogMessagesApi.info({
       surveyId: `${name.replace(/\s/g, '_')}_Smile_Survey`,
       smileLocation: `${name}`,
-      smile: `icon-${active}`,
-      feedback: { ...values },
+      smile: `icon-${active.icon}`,
       url: window.location.href,
       region: response.data.regions[0] && response.data.regions[0].id,
       userAgent: window.navigator.userAgent,
       submitTime: new Date(),
+      ...values, // Spread the form values onto the logger
     });
 
-    if (onFeedbackSent) {
-      onFeedbackSent({ active, values });
-    }
-    toggleSent();
+    setSent(values);
 
     if (invalid) {
       toggleInvalid();
     }
   };
 
+  // Close the Modal once sent after 2 seconds
+  useEffect(() => {
+    if (sent) {
+      setTimeout(() => {
+        onClose(); // Mostly for Screen Reader use but a nice to have for all
+        if (onFeedbackSent) {
+          onFeedbackSent({ active, sent });
+        }
+      }, 2000);
+    }
+  }, [sent]);
+
   return sent ? (
-    <ModalHeader className="d-flex justify-content-center">
+    <ModalHeader
+      aria-live="assertive"
+      tabIndex="0"
+      className="d-flex justify-content-center"
+    >
       Thank you for your feedback.
     </ModalHeader>
   ) : (
     <React.Fragment>
-      <ModalHeader>
+      <ModalHeader aria-live="assertive" id="feedback-form-header">
         {prompt || `Tell us what you think about ${name}`}
       </ModalHeader>
       <AvForm
+        aria-label="Feedback Form"
+        aria-describedby="feedback-form-header"
+        role="form"
         name="feedack-form"
         id="feedback-form"
         data-testid="feedback-form"
@@ -121,7 +137,7 @@ const FeedbackForm = ({
               {additionalComments && (
                 <AvField
                   type="textarea"
-                  name="additionalComments"
+                  name="additionalFeedback"
                   placeholder="Additional Comments... (Optional)"
                   style={{ resize: 'none' }}
                   rows="2"

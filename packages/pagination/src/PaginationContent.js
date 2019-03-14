@@ -11,6 +11,7 @@ const PaginationContent = ({
   itemKey,
   loader,
   containerTag,
+  containerProps,
   ...rest
 }) => {
   const { page, loading } = usePagination();
@@ -18,7 +19,9 @@ const PaginationContent = ({
   return (
     <BlockUI
       data-testid="pagination-content-con"
+      role={containerProps.role || 'list'}
       keepInView
+      {...containerProps}
       tag={containerTag}
       blocking={loader && loading}
       message={loadingMessage}
@@ -44,12 +47,14 @@ PaginationContent.propTypes = {
   loadingMessage: PropTypes.node,
   itemKey: PropTypes.string,
   loader: PropTypes.bool,
+  containerProps: PropTypes.object,
   containerTag: PropTypes.oneOfType([PropTypes.string, PropTypes.func]),
 };
 
 PaginationContent.defaultProps = {
   loader: false,
   containerTag: 'div',
+  containerProps: {},
 };
 
 export default PaginationContent;
