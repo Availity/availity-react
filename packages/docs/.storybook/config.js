@@ -2,6 +2,7 @@ import { configure, addDecorator } from '@storybook/react';
 import { withOptions } from '@storybook/addon-options';
 import { checkA11y } from '@storybook/addon-a11y';
 import { withKnobs } from '@storybook/addon-knobs';
+import { addReadme } from 'storybook-readme';
 import mock from 'xhr-mock';
 import './config.scss';
 
@@ -29,5 +30,6 @@ function loadStories() {
 }
 addDecorator(checkA11y);
 addDecorator(withKnobs);
+addDecorator(addReadme);
 
 configure(loadStories, module);

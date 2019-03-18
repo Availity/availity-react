@@ -1,6 +1,5 @@
 import React from 'react';
 import { storiesOf } from '@storybook/react';
-import { withReadme } from 'storybook-readme';
 import { Label, Button } from 'reactstrap';
 import { AvGroup, AvFeedback } from 'availity-reactstrap-validation';
 import { number, text, boolean } from '@storybook/addon-knobs';
@@ -37,7 +36,14 @@ const options = [
 const avCustomResource = new AvApi({ name: 'my-custom-resource' });
 
 storiesOf('Reactstrap Validation|AvSelect', module)
-  .addDecorator(withReadme([README]))
+  .addParameters({
+    readme: {
+      // Show readme at the addons panel
+      sidebar: README,
+      // eslint-disable-next-line react/prop-types
+      StoryPreview: ({ children }) => <div>{children}</div>,
+    },
+  })
   .add('default', () => {
     const isMulti = boolean('Multiple', false);
     const min = (isMulti && number('Min Selection', 2)) || undefined;
@@ -158,7 +164,14 @@ storiesOf('Reactstrap Validation|AvSelect', module)
   });
 
 storiesOf('Reactstrap Validation|AvSelect/resources', module)
-  .addDecorator(withReadme([README]))
+  .addParameters({
+    readme: {
+      // Show readme at the addons panel
+      sidebar: README,
+      // eslint-disable-next-line react/prop-types
+      StoryPreview: ({ children }) => <div>{children}</div>,
+    },
+  })
   .add('AvProviderSelect', () => {
     const isMulti = boolean('Multiple', false);
     const min = (isMulti && number('Min Selection', 2)) || undefined;

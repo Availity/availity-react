@@ -1,6 +1,5 @@
 import React from 'react';
 import { storiesOf } from '@storybook/react';
-import { withReadme } from 'storybook-readme';
 import { select } from '@storybook/addon-knobs';
 import README from '@availity/icon/README.md';
 import Icon from '@availity/icon';
@@ -22,7 +21,14 @@ icons.glyphs.forEach(glyph => {
 });
 
 storiesOf('Icons|Icon', module)
-  .addDecorator(withReadme([README]))
+  .addParameters({
+    readme: {
+      // Show readme at the addons panel
+      sidebar: README,
+      // eslint-disable-next-line react/prop-types
+      StoryPreview: ({ children }) => <div>{children}</div>,
+    },
+  })
   .add('default', () => (
     <div className="py-3">
       <Icon

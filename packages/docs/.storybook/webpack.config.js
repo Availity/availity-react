@@ -1,7 +1,7 @@
 const path = require('path');
 const DuplicatePackageCheckerPlugin = require('duplicate-package-checker-webpack-plugin');
 
-module.exports = (storybookBaseConfig, env, defaultConfig) => {
+module.exports = ({ config: defaultConfig }) => {
   const jsRule = defaultConfig.module.rules[0];
   jsRule.exclude = /node_modules\/(?!(@av)).*/;
   jsRule.include = undefined;

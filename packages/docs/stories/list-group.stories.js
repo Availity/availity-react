@@ -1,6 +1,5 @@
 import React from 'react';
 import { storiesOf } from '@storybook/react';
-import { withReadme } from 'storybook-readme';
 import { withKnobs, boolean } from '@storybook/addon-knobs/react';
 import { ListGroupItem } from 'reactstrap';
 
@@ -8,7 +7,14 @@ import ListGroup from '@availity/list-group';
 import README from '@availity/list-group/README.md';
 
 storiesOf('Collections|List Group', module)
-  .addDecorator(withReadme([README]))
+  .addParameters({
+    readme: {
+      // Show readme at the addons panel
+      sidebar: README,
+      // eslint-disable-next-line react/prop-types
+      StoryPreview: ({ children }) => <div>{children}</div>,
+    },
+  })
   .addDecorator(withKnobs)
   .add('default', () => (
     <ListGroup

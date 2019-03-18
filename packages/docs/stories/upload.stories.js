@@ -1,6 +1,5 @@
 import React, { Component, createRef } from 'react';
 import { storiesOf } from '@storybook/react';
-import { withReadme } from 'storybook-readme';
 import { button, boolean, number, array } from '@storybook/addon-knobs';
 import mock from 'xhr-mock';
 import { Button, CustomInput } from 'reactstrap';
@@ -137,7 +136,14 @@ mock.use(
 let instance;
 
 storiesOf('Components|Upload', module)
-  .addDecorator(withReadme([README]))
+  .addParameters({
+    readme: {
+      // Show readme at the addons panel
+      sidebar: README,
+      // eslint-disable-next-line react/prop-types
+      StoryPreview: ({ children }) => <div>{children}</div>,
+    },
+  })
   .addDecorator(story => {
     instance = new MockUpload();
     return story();

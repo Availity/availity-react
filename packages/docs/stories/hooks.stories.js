@@ -1,7 +1,6 @@
 /* eslint-disable react/prop-types */
 import React, { useState } from 'react';
 import { storiesOf } from '@storybook/react';
-import { withReadme } from 'storybook-readme';
 import { text } from '@storybook/addon-knobs/react';
 import { withKnobs } from '@storybook/addon-knobs';
 import { useToggle, useEffectAsync } from '@availity/hooks';
@@ -42,12 +41,26 @@ const AsyncComponent = ({ mockData }) => {
 };
 
 storiesOf('Hooks|useToggle', module)
-  .addDecorator(withReadme([README]))
+  .addParameters({
+    readme: {
+      // Show readme at the addons panel
+      sidebar: README,
+      // eslint-disable-next-line react/prop-types
+      StoryPreview: ({ children }) => <div>{children}</div>,
+    },
+  })
   .add('default', () => <Component />)
   .add('with initialValue', () => <Component initialValue />);
 
 storiesOf('Hooks|useEffectAsync', module)
-  .addDecorator(withReadme([README]))
+  .addParameters({
+    readme: {
+      // Show readme at the addons panel
+      sidebar: README,
+      // eslint-disable-next-line react/prop-types
+      StoryPreview: ({ children }) => <div>{children}</div>,
+    },
+  })
   .addDecorator(withKnobs)
   .add('default', () => (
     <AsyncComponent mockData={text('Data', 'Test Data')} />

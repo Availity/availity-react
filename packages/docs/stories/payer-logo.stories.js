@@ -1,13 +1,19 @@
 import React from 'react';
 import { storiesOf } from '@storybook/react';
-import { withReadme } from 'storybook-readme';
 import { withKnobs, text } from '@storybook/addon-knobs/react';
 
 import PayerLogo from '@availity/payer-logo';
 import README from '@availity/payer-logo/README.md';
 
 storiesOf('Logos|Payer', module)
-  .addDecorator(withReadme([README]))
+  .addParameters({
+    readme: {
+      // Show readme at the addons panel
+      sidebar: README,
+      // eslint-disable-next-line react/prop-types
+      StoryPreview: ({ children }) => <div>{children}</div>,
+    },
+  })
   .addDecorator(withKnobs)
   .add('with payer ID', () => (
     <div>

@@ -1,12 +1,6 @@
 import React from 'react';
 import { storiesOf } from '@storybook/react';
-import { withReadme } from 'storybook-readme';
-import {
-  withKnobs,
-  boolean,
-  selectV2,
-  text,
-} from '@storybook/addon-knobs/react';
+import { withKnobs, boolean, select, text } from '@storybook/addon-knobs/react';
 
 import ListGroup from '@availity/list-group';
 import ListGroupItem, { ListGroupItemStatus } from '@availity/list-group-item';
@@ -22,7 +16,14 @@ const colorOptions = {
 };
 
 storiesOf('Collections|List Group Item', module)
-  .addDecorator(withReadme([README]))
+  .addParameters({
+    readme: {
+      // Show readme at the addons panel
+      sidebar: README,
+      // eslint-disable-next-line react/prop-types
+      StoryPreview: ({ children }) => <div>{children}</div>,
+    },
+  })
   .addDecorator(withKnobs)
   .add('default', () => {
     const cards = boolean('Cards', false, 'Card') || undefined;
@@ -31,25 +32,25 @@ storiesOf('Collections|List Group Item', module)
         <ListGroup cards={cards} selectable={boolean('Selectable', false)}>
           <ListGroupItem
             borderColor={
-              cards && selectV2('Item 1 Border Color', colorOptions, '', 'Card')
+              cards && select('Item 1 Border Color', colorOptions, '', 'Card')
             }
-            color={selectV2('Item 1 Background Color', colorOptions, '')}
+            color={select('Item 1 Background Color', colorOptions, '')}
           >
             item
           </ListGroupItem>
           <ListGroupItem
             borderColor={
-              cards && selectV2('Item 2 Border Color', colorOptions, '', 'Card')
+              cards && select('Item 2 Border Color', colorOptions, '', 'Card')
             }
-            color={selectV2('Item 2 Background Color', colorOptions, '')}
+            color={select('Item 2 Background Color', colorOptions, '')}
           >
             item
           </ListGroupItem>
           <ListGroupItem
             borderColor={
-              cards && selectV2('Item 3 Border Color', colorOptions, '', 'Card')
+              cards && select('Item 3 Border Color', colorOptions, '', 'Card')
             }
-            color={selectV2('Item 3 Background Color', colorOptions, '')}
+            color={select('Item 3 Background Color', colorOptions, '')}
           >
             item
           </ListGroupItem>
@@ -67,10 +68,10 @@ storiesOf('Collections|List Group Item', module)
     const content = 'item';
 
     const itemProps = number => ({
-      color: selectV2(`Item ${number} Color`, colorOptions, '', 'Card'),
+      color: select(`Item ${number} Color`, colorOptions, '', 'Card'),
       badge: {
         text: text(`Item ${number} Badge`, ''),
-        color: selectV2(`Item ${number} Badge Color`, colorOptions, ''),
+        color: select(`Item ${number} Badge Color`, colorOptions, ''),
       },
     });
 

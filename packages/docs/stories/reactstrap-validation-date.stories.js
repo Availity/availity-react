@@ -1,6 +1,5 @@
 import React from 'react';
 import { storiesOf } from '@storybook/react';
-import { withReadme } from 'storybook-readme';
 import { Label, Button } from 'reactstrap';
 import { AvGroup, AvFeedback } from 'availity-reactstrap-validation';
 import { text, boolean, select } from '@storybook/addon-knobs';
@@ -17,7 +16,14 @@ const types = {
   date: 'date',
 };
 storiesOf('Reactstrap Validation|AvDate', module)
-  .addDecorator(withReadme([README]))
+  .addParameters({
+    readme: {
+      // Show readme at the addons panel
+      sidebar: README,
+      // eslint-disable-next-line react/prop-types
+      StoryPreview: ({ children }) => <div>{children}</div>,
+    },
+  })
   .add('default', () => (
     <AvFormResults>
       <AvDate
