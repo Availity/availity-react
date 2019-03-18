@@ -1,13 +1,19 @@
 import React from 'react';
 import { storiesOf } from '@storybook/react';
-import { withReadme } from 'storybook-readme';
 import { withKnobs, text, boolean, select } from '@storybook/addon-knobs/react';
 
 import AppIcon from '@availity/app-icon';
 import README from '@availity/app-icon/README.md';
 
 storiesOf('Icons|App', module)
-  .addDecorator(withReadme([README]))
+  .addParameters({
+    readme: {
+      // Show readme at the addons panel
+      sidebar: README,
+      // eslint-disable-next-line react/prop-types
+      StoryPreview: ({ children }) => <div>{children}</div>,
+    },
+  })
   .addDecorator(withKnobs)
   .add('default', () => (
     <AppIcon

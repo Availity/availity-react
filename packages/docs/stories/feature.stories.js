@@ -1,6 +1,5 @@
 import React from 'react';
 import { storiesOf } from '@storybook/react';
-import { withReadme } from 'storybook-readme';
 import { withKnobs, text, boolean, object } from '@storybook/addon-knobs/react';
 
 import Feature from '@availity/feature';
@@ -8,7 +7,14 @@ import README from '@availity/feature/README.md';
 import './mock-requests';
 
 storiesOf('Page|Feature', module)
-  .addDecorator(withReadme([README]))
+  .addParameters({
+    readme: {
+      // Show readme at the addons panel
+      sidebar: README,
+      // eslint-disable-next-line react/prop-types
+      StoryPreview: ({ children }) => <div>{children}</div>,
+    },
+  })
   .addDecorator(withKnobs)
   .add('default', () => (
     <div>

@@ -1,6 +1,5 @@
 import React from 'react';
 import { storiesOf } from '@storybook/react';
-import { withReadme } from 'storybook-readme';
 import { withKnobs, text, boolean, select } from '@storybook/addon-knobs/react';
 
 import './mock-requests';
@@ -9,7 +8,14 @@ import Feedback, { FeedbackForm } from '@availity/feedback';
 import README from '@availity/feedback/README.md';
 
 storiesOf('Actions|Feedback', module)
-  .addDecorator(withReadme([README]))
+  .addParameters({
+    readme: {
+      // Show readme at the addons panel
+      sidebar: README,
+      // eslint-disable-next-line react/prop-types
+      StoryPreview: ({ children }) => <div>{children}</div>,
+    },
+  })
   .addDecorator(withKnobs)
   .add('default', () => (
     <Feedback

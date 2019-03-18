@@ -1,6 +1,5 @@
 import React from 'react';
 import { storiesOf } from '@storybook/react';
-import { withReadme } from 'storybook-readme';
 import { withKnobs, text } from '@storybook/addon-knobs/react';
 import { Route, Link } from 'react-router-dom';
 import StoryRouter from 'storybook-react-router';
@@ -42,7 +41,14 @@ const ReactRouterDestination = () => (
 );
 
 storiesOf('Navigation|Breadcrumbs', module)
-  .addDecorator(withReadme([README]))
+  .addParameters({
+    readme: {
+      // Show readme at the addons panel
+      sidebar: README,
+      // eslint-disable-next-line react/prop-types
+      StoryPreview: ({ children }) => <div>{children}</div>,
+    },
+  })
   .addDecorator(withKnobs)
   .addDecorator(
     StoryRouter(

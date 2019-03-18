@@ -1,6 +1,5 @@
 import React from 'react';
 import { storiesOf } from '@storybook/react';
-import { withReadme } from 'storybook-readme';
 import { withKnobs, boolean, select, text } from '@storybook/addon-knobs/react';
 
 import ListGroup from '@availity/list-group';
@@ -17,7 +16,14 @@ const colorOptions = {
 };
 
 storiesOf('Collections|List Group Item', module)
-  .addDecorator(withReadme([README]))
+  .addParameters({
+    readme: {
+      // Show readme at the addons panel
+      sidebar: README,
+      // eslint-disable-next-line react/prop-types
+      StoryPreview: ({ children }) => <div>{children}</div>,
+    },
+  })
   .addDecorator(withKnobs)
   .add('default', () => {
     const cards = boolean('Cards', false, 'Card') || undefined;

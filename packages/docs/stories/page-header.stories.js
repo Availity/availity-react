@@ -1,6 +1,5 @@
 import React from 'react';
 import { storiesOf } from '@storybook/react';
-import { withReadme } from 'storybook-readme';
 import { withKnobs, text, select } from '@storybook/addon-knobs/react';
 
 import PageHeader from '@availity/page-header';
@@ -21,7 +20,14 @@ const CustomBreadcrumbs = (
 );
 
 storiesOf('Page|Header', module)
-  .addDecorator(withReadme([README]))
+  .addParameters({
+    readme: {
+      // Show readme at the addons panel
+      sidebar: README,
+      // eslint-disable-next-line react/prop-types
+      StoryPreview: ({ children }) => <div>{children}</div>,
+    },
+  })
   .addDecorator(withKnobs)
   .add('default', () => (
     <PageHeader appName={text('Application Name', 'Payer Space')} />

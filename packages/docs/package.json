@@ -75,7 +75,7 @@
 		"reactstrap": "^7.0.0",
 		"sass-loader": "^7.0.1",
 		"storybook-react-router": "^1.0.2",
-		"storybook-readme": "^4.0.2",
+		"storybook-readme": "^5.0.0",
 		"style-loader": "^0.23.1",
 		"ts-jest": "^23.10.5",
 		"tus-js-client": "^1.5.1",
