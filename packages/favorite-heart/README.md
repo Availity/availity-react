@@ -13,6 +13,8 @@ npm install @availity/favorite-heart --save
 ```javascript
 import React from 'react';
 import FavoriteHeart from '@availity/favorite-heart';
+// Import the style
+import '@availity/favorite-heart/style.scss';
 // ... 
 <FavoriteHeart id="123456" />
 // ...

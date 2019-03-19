@@ -5,6 +5,7 @@ import { storiesOf } from '@storybook/react';
 // import { withKnobs } from '@storybook/addon-knobs';
 import { Card, CardBody, CardTitle } from 'reactstrap';
 import FavoriteHeart from '@availity/favorite-heart';
+import '@availity/favorite-heart/style.scss';
 import README from '@availity/favorite-heart/README.md';
 import './mock-requests';
 

@@ -3,7 +3,6 @@ import PropTypes from 'prop-types';
 import { useToggle, useEffectAsync } from '@availity/hooks';
 import { Tooltip } from 'reactstrap';
 import { useFavorites } from './FavoriteContext';
-import './style.scss';
 
 // eslint-disable-next-line react-hooks/exhaustive-deps
 const FavoriteHeart = ({ id, onChange, ...props }) => {
