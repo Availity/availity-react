@@ -4,9 +4,9 @@ import { storiesOf } from '@storybook/react';
 // import { text } from '@storybook/addon-knobs/react';
 // import { withKnobs } from '@storybook/addon-knobs';
 import { Card, CardBody, CardTitle } from 'reactstrap';
-import FavoriteHeart from '@availity/favorite-heart';
-import '@availity/favorite-heart/style.scss';
-import README from '@availity/favorite-heart/README.md';
+import Favorites, { FavoriteHeart } from '@availity/favorites';
+import '@availity/favorites/style.scss';
+import README from '@availity/favorites/README.md';
 import './mock-requests';
 
 storiesOf('Icons|Favorite', module)
@@ -19,8 +19,10 @@ storiesOf('Icons|Favorite', module)
     },
   })
   .add('default', () => (
-    <Card tag={CardBody} className="d-flex flex-row">
-      <FavoriteHeart id="1234" />
-      <CardTitle className="ml-2">Hello World</CardTitle>
-    </Card>
+    <Favorites>
+      <Card tag={CardBody} className="d-flex flex-row">
+        <FavoriteHeart id="1234" />
+        <CardTitle className="ml-2">Hello World</CardTitle>
+      </Card>
+    </Favorites>
   ));
