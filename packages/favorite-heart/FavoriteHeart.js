@@ -6,7 +6,7 @@ import { useFavorites } from './FavoriteContext';
 import './style.scss';
 
 // eslint-disable-next-line react-hooks/exhaustive-deps
-const FavoriteHeart = ({ id, ...props }) => {
+const FavoriteHeart = ({ id, onChange, ...props }) => {
   const [isFavorite, toggleFavorite] = useFavorites(id);
   const [tooltipOpen, toggleTooltip] = useToggle(false);
   const [loading, toggleLoading] = useToggle(true);
@@ -15,8 +15,6 @@ const FavoriteHeart = ({ id, ...props }) => {
     () => (
       <span
         id={`av-favorite-heart-${id}`}
-        // ng-if="loaded && show"
-        // av-favorite-heart-icon
         role="button"
         aria-label="Favorite"
         aria-describedby={`av-favorite-heart-desc-${id}`}
@@ -24,12 +22,18 @@ const FavoriteHeart = ({ id, ...props }) => {
         tabIndex="0"
         className={`favorite-heart pt-4 ${isFavorite && 'active'}`}
         onKeyPress={() => {}}
-        onClick={toggleFavorite}
+        onClick={() => {
+          toggleFavorite();
+
+          if (onChange) {
+            onChange(isFavorite);
+          }
+        }}
       >
         <span className="sr-only">Favorite</span>
         <span className="sr-only" id={`av-favorite-heart-desc-${id}`}>
           {isFavorite
-            ? 'This item is favorited'
+            ? 'This item is favorited.'
             : 'This item is not favorited.'}
         </span>
         <span className="icon outline" />
@@ -49,6 +53,7 @@ const FavoriteHeart = ({ id, ...props }) => {
       <>
         {icon}
         <Tooltip
+          id={`av-favorite-heart-${id}-tooltip`}
           placement="top"
           trigger="hover"
           delay={{
@@ -68,6 +73,7 @@ const FavoriteHeart = ({ id, ...props }) => {
 
 FavoriteHeart.propTypes = {
   id: PropTypes.string.isRequired,
+  onChange: PropTypes.func,
 };
 
 export default FavoriteHeart;
