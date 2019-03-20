@@ -40,7 +40,6 @@ const Favorites = ({ children }) => {
     avMessages.subscribe(
       AV_INTERNAL_GLOBALS.FAVORITES_CHANGED,
       (event, data) => {
-        console.log('event just occured', data, 'event:', event);
         setFavorites(get(data, 'favorites') || []);
       }
     );
