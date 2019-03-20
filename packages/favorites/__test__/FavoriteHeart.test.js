@@ -8,6 +8,60 @@ import Favorites, { FavoriteHeart } from '..';
 jest.mock('@availity/api-axios');
 jest.mock('@availity/message-core');
 
+const domain = () => {
+  if (window.location.origin) {
+    return window.location.origin;
+  }
+
+  if (window.location.hostname) {
+    return `${window.location.protocol}//${window.location.hostname}${
+      window.location.port ? `:${window.location.port}` : ''
+    }`;
+  }
+
+  return '*';
+};
+
+avMessages.subscribe = jest.fn((event, fn) => {
+  window.addEventListener('message', event => {
+    if (!event || !event.data) {
+      // check origin as trusted domain
+      return;
+    }
+
+    let { data } = event;
+
+    if (typeof data === 'string') {
+      try {
+        data = JSON.parse(data);
+      } catch (error) {
+        // eslint-disable-next-line no-console
+        console.log(error);
+      }
+    }
+
+    if (typeof data === 'string') {
+      event = data;
+      data = undefined;
+    } else {
+      event = (data && data.event) || this.DEFAULT_EVENT;
+    }
+
+    fn(event, data);
+  });
+});
+
+avMessages.send = jest.fn((payload, target = window.top) => {
+  try {
+    const message =
+      typeof payload === 'string' ? payload : JSON.stringify(payload);
+    target.postMessage(message, domain());
+  } catch (error) {
+    // eslint-disable-next-line no-console
+    console.warn('AvMessage.send()', error);
+  }
+});
+
 avSettingsApi.getApplication = jest.fn(() =>
   Promise.resolve({
     data: {
