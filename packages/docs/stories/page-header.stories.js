@@ -46,6 +46,8 @@ storiesOf('Page|Header', module)
         },
         'black'
       )}
+      iconSrc={text('AppIcon Image')}
+      iconAlt={text('AppIcon Alt')}
     >
       {text('Application Name', 'Payer Space')}
     </PageHeader>
