@@ -28,6 +28,8 @@ A component which outputs one of the "App Icons" from [Availity UI Kit](http://a
 - **`size`**: string, optional. Potential values: `"lg"`, `"xl"`
 - **`color`**: string, optional. Potential values: `"black"`, `"blue"`, `"green"`, `"orange"`. Default value: `"black"`
 - **`branded`**: boolean, optional. Triggers "branded" styles.
+- **`src`**: string, optional. If image source is provided will render this instead of children.
+- **`alt`**: string, required for `src` prop. the alt property for your image source
 - All other props will be passed through; `className` will be merged.
 
 ##### Usage

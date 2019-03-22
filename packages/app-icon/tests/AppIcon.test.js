@@ -59,4 +59,12 @@ describe('AppIcon', () => {
     expect(container.firstChild.tagName.toLowerCase()).toEqual('i');
     expect(container).toMatchSnapshot();
   });
+
+  test('should render with image', () => {
+    const { container } = render(
+      <AppIcon src="/path-to-some-image" alt="icon" />
+    );
+    const image = container.querySelectorAll('img')[0];
+    expect(image.src).toEqual('http://localhost/path-to-some-image');
+  });
 });
