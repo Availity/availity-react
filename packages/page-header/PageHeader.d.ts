@@ -15,6 +15,8 @@ export interface PageHeaderProps {
     feedback?: boolean;
     children?: React.ReactType;
     crumbs?: Array<CrumbType> | React.ReactType;
+    iconSrc?: string;
+    iconAlt?: string;
     clientId?: string;
 }
 

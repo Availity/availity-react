@@ -19,6 +19,8 @@ const PageHeader = ({
   component,
   tag: Tag,
   clientId,
+  iconSrc,
+  iconAlt,
   ...props
 }) => {
   if (spaceId || spaceName) {
@@ -39,7 +41,13 @@ const PageHeader = ({
       <Tag className="page-header page-header-brand" {...props}>
         <div className="page-header-title">
           {!payerId && appAbbr && (
-            <AppIcon color={iconColor} branded={branded} title={appName}>
+            <AppIcon
+              color={iconColor}
+              branded={branded}
+              title={appName}
+              src={iconSrc}
+              alt={iconAlt}
+            >
               {appAbbr}
             </AppIcon>
           )}{' '}
@@ -86,6 +94,8 @@ PageHeader.propTypes = {
   ]),
   tag: PropTypes.oneOfType([PropTypes.func, PropTypes.string]),
   clientId: PropTypes.string,
+  iconSrc: PropTypes.string,
+  iconAlt: PropTypes.string,
 };
 
 PageHeader.defaultProps = {
