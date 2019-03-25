@@ -5,6 +5,8 @@ function AppIcon({
   tag: Tag,
   color,
   size,
+  src: image,
+  alt,
   branded,
   className,
   children,
@@ -15,13 +17,18 @@ function AppIcon({
     'app-icon',
     branded ? `app-icon-branded-${color}` : `app-icon-${color}`,
     size && `app-icon-${size}`,
+    image && 'border-0',
   ]
     .filter(a => a)
     .join(' ');
 
   return (
     <Tag {...props} className={classname}>
-      {children}
+      {image ? (
+        <img className="w-100 h-100 align-baseline" src={image} alt={alt} />
+      ) : (
+        children
+      )}
       {branded && <span className="caret" />}
     </Tag>
   );
@@ -34,6 +41,18 @@ AppIcon.propTypes = {
   className: PropTypes.string,
   tag: PropTypes.oneOfType([PropTypes.func, PropTypes.string]),
   children: PropTypes.node,
+  src: PropTypes.string,
+  alt: (props, propName) => {
+    if (
+      (props.src !== undefined &&
+        props.src !== null &&
+        props[propName] === undefined) ||
+      props[propName] === null
+    ) {
+      return new Error('AppIcon requires and alt property for image src.');
+    }
+    return null;
+  },
 };
 
 AppIcon.defaultProps = {

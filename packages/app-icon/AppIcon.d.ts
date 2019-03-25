@@ -4,6 +4,8 @@ export interface AppIconProps {
     size?: string;
     branded?: boolean;
     className?: string;
+    src?: string;
+    alt?: string;
     children?: any;
 }
 

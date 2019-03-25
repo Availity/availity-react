@@ -38,6 +38,8 @@ storiesOf('Icons|App', module)
       )}
       branded={boolean('Branded', false)}
       className={text('ClassName')}
+      src={text('Image')}
+      alt={text('alt')}
     >
       {text('Application Abbreviation', 'AI')}
     </AppIcon>
