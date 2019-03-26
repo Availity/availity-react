@@ -3,6 +3,19 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [4.1.0](https://github.com/Availity/availity-react/compare/@availity/docs@4.0.5...@availity/docs@4.1.0) (2019-03-26)
+
+
+### Features
+
+* **app-icon:** added image src and alt properties to app-icon ([a73452a](https://github.com/Availity/availity-react/commit/a73452a))
+* **docs:** upgading storybook to v5 ([7560605](https://github.com/Availity/availity-react/commit/7560605))
+* **favorite-heart:** init favorite heart package ([8d3f464](https://github.com/Availity/availity-react/commit/8d3f464))
+
+
+
+
+
 ## [4.0.5](https://github.com/Availity/availity-react/compare/@availity/docs@4.0.4...@availity/docs@4.0.5) (2019-03-14)
 
 **Note:** Version bump only for package @availity/docs

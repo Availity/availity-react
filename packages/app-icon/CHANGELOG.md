@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [1.2.0](https://github.com/Availity/availity-react/compare/@availity/app-icon@1.1.4...@availity/app-icon@1.2.0) (2019-03-26)
+
+
+### Features
+
+* **app-icon:** added image src and alt properties to app-icon ([a73452a](https://github.com/Availity/availity-react/commit/a73452a))
+
+
+
+
+
 ## [1.1.4](https://github.com/Availity/availity-react/compare/@availity/app-icon@1.1.2...@availity/app-icon@1.1.4) (2019-03-04)
 
 **Note:** Version bump only for package @availity/app-icon

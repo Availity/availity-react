@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [4.1.0](https://github.com/Availity/availity-react/compare/@availity/page-header@4.0.4...@availity/page-header@4.1.0) (2019-03-26)
+
+
+### Features
+
+* **page-header:** added new app-icon props to page-header ([b1a4ca0](https://github.com/Availity/availity-react/commit/b1a4ca0))
+
+
+
+
+
 ## [4.0.4](https://github.com/Availity/availity-react/compare/@availity/page-header@4.0.3...@availity/page-header@4.0.4) (2019-03-14)
 
 **Note:** Version bump only for package @availity/page-header
