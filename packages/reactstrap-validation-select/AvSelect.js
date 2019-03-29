@@ -209,7 +209,7 @@ class AvSelect extends AvBaseInput {
             const showError = touched && hasError && !state.focused;
             return {
               ...provided,
-              borderRadius: 'inherit',
+              borderRadius: '.25em',
               backgroundColor: showError ? '#fbcbc8' : 'white',
               borderColor: showError ? '#931b1d' : 'hsl(0,0%,80%)',
               zIndex: state.focused && '3',
