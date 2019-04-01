@@ -41,7 +41,6 @@
   "dependencies": {
     "@thesharpieone/react-select-async-pagination": "^2.0.0",
     "classnames": "^2.2.5",
-    "debounce": "^1.1.0",
     "lodash": "^4.17.10",
     "prop-types": "^15.5.8",
     "qs": "^6.5.2",
