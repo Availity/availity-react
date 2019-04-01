@@ -13,7 +13,7 @@ class AvResourceSelect extends Component {
       getResult: PropTypes.oneOfType([PropTypes.string, PropTypes.func]),
     }).isRequired,
     getResult: PropTypes.oneOfType([PropTypes.string, PropTypes.func]),
-    hasMore: PropTypes.oneOfType([PropTypes.bool, PropTypes.func]).isRequired,
+    hasMore: PropTypes.oneOfType([PropTypes.bool, PropTypes.func]),
     delay: PropTypes.number,
     debounceTimeout: PropTypes.number,
     label: PropTypes.node,
@@ -32,6 +32,7 @@ class AvResourceSelect extends Component {
   static defaultProps = {
     delay: 350,
     itemsPerPage: 50,
+    hasMore: ({ totalCount, limit, offset }) => totalCount > offset + limit,
   };
 
   select = createRef();
