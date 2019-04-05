@@ -1,5 +1,5 @@
 import FavoriteHeart from './FavoriteHeart';
-import Favorites, { useFavorites } from './FavoritesContext';
+import Favorites, { useFavorites, FavoritesContext } from './FavoritesContext';
 
 export default Favorites;
-export { useFavorites, FavoriteHeart };
+export { FavoritesContext, useFavorites, FavoriteHeart };

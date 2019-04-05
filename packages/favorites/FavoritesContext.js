@@ -23,7 +23,7 @@ const AV_INTERNAL_GLOBALS = {
   MY_TOP_APPS_UPDATED: 'av:topApps:updated',
 };
 
-const FavoritesContext = createContext();
+export const FavoritesContext = createContext();
 
 const avSplunkAnalytics = new AvSplunkAnalytics(AvLogMessages, true);
 
