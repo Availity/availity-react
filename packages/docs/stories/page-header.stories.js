@@ -54,7 +54,11 @@ storiesOf('Page|Header', module)
   ))
   .add('with payer logo', () => (
     <div>
-      <PageHeader appName="Payer Space" payerId={text('Payer ID', 'PayerID')}>
+      <PageHeader
+        appName="Payer Space"
+        clientId={text('Client ID', 'my-client-id')}
+        payerId={text('Payer ID', 'PayerID')}
+      >
         {text('Application Name', 'Payer Space (Beta)')}
       </PageHeader>
       <p>
@@ -90,6 +94,16 @@ storiesOf('Page|Header', module)
   ))
   .add('with feedback', () => (
     <PageHeader appName={text('Application Name', 'Payer Space')} feedback>
+      {text('Application Name', 'Payer Space')}
+    </PageHeader>
+  ))
+  .add('with feedback and payer logo', () => (
+    <PageHeader
+      appName={text('Application Name', 'Payer Space')}
+      payerId={text('Payer ID', 'PayerID')}
+      clientId={text('Client ID', 'my-client-id')}
+      feedback
+    >
       {text('Application Name', 'Payer Space')}
     </PageHeader>
   ))
