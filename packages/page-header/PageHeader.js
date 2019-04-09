@@ -16,6 +16,7 @@ const PageHeader = ({
   branded,
   crumbs,
   feedback,
+  feedbackProps,
   component,
   tag: Tag,
   clientId,
@@ -65,6 +66,7 @@ const PageHeader = ({
           <Feedback
             appName={appName}
             className={`float-md-right d-inline-block ${payerId ? 'mx-3' : ''}`}
+            {...feedbackProps}
           />
         )}
       </Tag>
@@ -82,6 +84,7 @@ PageHeader.propTypes = {
   payerId: PropTypes.string,
   component: PropTypes.element,
   feedback: PropTypes.bool,
+  feedbackProps: PropTypes.shape({ ...Feedback.propTypes }),
   children: PropTypes.node,
   crumbs: PropTypes.oneOfType([
     PropTypes.arrayOf(
