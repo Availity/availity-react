@@ -53,18 +53,18 @@ const PageHeader = ({
           )}{' '}
           {children || appName}
         </div>
-        {!payerId && feedback && (
-          <Feedback
-            appName={appName}
-            className="float-md-right d-inline-block"
-          />
-        )}
         {payerId && (
           <PayerLogo
             spaceId={spaceId}
             payerId={payerId}
             clientId={clientId}
             className="float-md-right d-inline-block"
+          />
+        )}
+        {feedback && (
+          <Feedback
+            appName={appName}
+            className={`float-md-right d-inline-block ${payerId ? 'mx-3' : ''}`}
           />
         )}
       </Tag>
