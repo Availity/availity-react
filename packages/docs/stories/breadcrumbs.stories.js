@@ -65,15 +65,6 @@ storiesOf('Navigation|Breadcrumbs', module)
     />
   ))
   .add('activeblank', () => <Breadcrumbs active="" />)
-  .add('with feedback', () => (
-    <Breadcrumbs
-      emptyState={text('Empty State', Breadcrumbs.defaultProps.emptyState)}
-      active={text('Active Page', 'Payer Spaces')}
-      feedback={{
-        modal: true,
-      }}
-    />
-  ))
   .add('with parents', () => (
     <Breadcrumbs
       emptyState={text('Empty State', Breadcrumbs.defaultProps.emptyState)}

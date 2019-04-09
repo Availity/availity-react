@@ -20,7 +20,6 @@
     "access": "public"
   },
   "dependencies": {
-    "@availity/feedback": "^4.0.4",
     "prop-types": "^15.5.8"
   },
   "devDependencies": {
