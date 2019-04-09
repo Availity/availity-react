@@ -156,4 +156,21 @@ describe('FeedbackForm', () => {
       getByPlaceholderText('Additional Comments... (Optional)')
     ).toBeDefined();
   });
+
+  test('should render static fields', () => {
+    const { getByText, getByTestId } = render(
+      <FeedbackForm
+        name="Payer Space"
+        staticFields={[{ name: 'myStaticField', value: 'myStaticFieldValue' }]}
+      />
+    );
+
+    fireEvent.click(getByText('Smiley face'));
+
+    const staticFieldInput = getByTestId('feedback-static-field-myStaticField');
+
+    expect(staticFieldInput).toBeDefined();
+    expect(staticFieldInput.getAttribute('hidden')).toBe('');
+    expect(staticFieldInput.getAttribute('value')).toBe('myStaticFieldValue');
+  });
 });

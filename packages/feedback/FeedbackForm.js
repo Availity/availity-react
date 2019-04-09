@@ -21,6 +21,7 @@ const FeedbackForm = ({
   onFeedbackSent,
   prompt,
   additionalComments,
+  staticFields,
 }) => {
   const [active, setActive] = useState(null);
   const [invalid, toggleInvalid] = useToggle(false);
@@ -147,6 +148,17 @@ const FeedbackForm = ({
                   }}
                 />
               )}
+              {staticFields.map(staticField => (
+                <AvField
+                  data-testid={`feedback-static-field-${staticField.name}`}
+                  type="text"
+                  key={staticField.name}
+                  name={staticField.name}
+                  value={staticField.value}
+                  validate={{}}
+                  hidden
+                />
+              ))}
             </React.Fragment>
           ) : null}
         </ModalBody>
@@ -185,6 +197,9 @@ FeedbackForm.propTypes = {
   onClose: PropTypes.func,
   prompt: PropTypes.string,
   additionalComments: PropTypes.bool,
+  staticFields: PropTypes.arrayOf(
+    PropTypes.shape({ name: PropTypes.string, value: PropTypes.string })
+  ),
 };
 
 FeedbackForm.defaultProps = {
@@ -207,6 +222,7 @@ FeedbackForm.defaultProps = {
   ],
   aboutOptions: [],
   additionalComments: false,
+  staticFields: [],
 };
 
 export default FeedbackForm;
