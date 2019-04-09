@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [4.2.0](https://github.com/Availity/availity-react/compare/@availity/docs@4.1.0...@availity/docs@4.2.0) (2019-04-09)
+
+
+### Features
+
+* **page-header:** allow logo and feedback to rendered at same time ([227d6b9](https://github.com/Availity/availity-react/commit/227d6b9)), closes [#88](https://github.com/Availity/availity-react/issues/88)
+
+
+
+
+
 # [4.1.0](https://github.com/Availity/availity-react/compare/@availity/docs@4.0.5...@availity/docs@4.1.0) (2019-03-26)
 
 
