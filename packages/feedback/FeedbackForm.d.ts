@@ -14,6 +14,7 @@ export interface FeedBackFormProps {
     faceOptions?: Array<FaceOption>;
     aboutOptions?: Array<AboutOption>;
     prompt?: string;
+    staticFields?: object;
 }
 
 declare const FeedBackForm: React.FunctionComponent<FeedBackFormProps>;

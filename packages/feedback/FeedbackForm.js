@@ -43,6 +43,7 @@ const FeedbackForm = ({
       userAgent: window.navigator.userAgent,
       submitTime: new Date(),
       ...values, // Spread the form values onto the logger
+      ...staticFields, // Spread the static key value pairs onto the logger
     });
 
     setSent(values);
@@ -148,17 +149,6 @@ const FeedbackForm = ({
                   }}
                 />
               )}
-              {staticFields.map(staticField => (
-                <AvField
-                  data-testid={`feedback-static-field-${staticField.name}`}
-                  type="text"
-                  key={staticField.name}
-                  name={staticField.name}
-                  value={staticField.value}
-                  validate={{}}
-                  hidden
-                />
-              ))}
             </React.Fragment>
           ) : null}
         </ModalBody>
@@ -197,9 +187,7 @@ FeedbackForm.propTypes = {
   onClose: PropTypes.func,
   prompt: PropTypes.string,
   additionalComments: PropTypes.bool,
-  staticFields: PropTypes.arrayOf(
-    PropTypes.shape({ name: PropTypes.string, value: PropTypes.string })
-  ),
+  staticFields: PropTypes.object,
 };
 
 FeedbackForm.defaultProps = {
@@ -222,7 +210,6 @@ FeedbackForm.defaultProps = {
   ],
   aboutOptions: [],
   additionalComments: false,
-  staticFields: [],
 };
 
 export default FeedbackForm;
