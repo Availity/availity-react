@@ -3,6 +3,22 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [5.0.0](https://github.com/Availity/availity-react/compare/@availity/docs@4.2.0...@availity/docs@5.0.0) (2019-04-09)
+
+
+### Code Refactoring
+
+* **breadcrumbs:** feedback as an item of breadcrumbs bad for a11y ([a299467](https://github.com/Availity/availity-react/commit/a299467))
+
+
+### BREAKING CHANGES
+
+* **breadcrumbs:** Removed feedback prop from breadcrumbs
+
+
+
+
+
 # [4.2.0](https://github.com/Availity/availity-react/compare/@availity/docs@4.1.0...@availity/docs@4.2.0) (2019-04-09)
 
 
