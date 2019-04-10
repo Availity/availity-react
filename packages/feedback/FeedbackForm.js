@@ -21,6 +21,7 @@ const FeedbackForm = ({
   onFeedbackSent,
   prompt,
   additionalComments,
+  staticFields,
 }) => {
   const [active, setActive] = useState(null);
   const [invalid, toggleInvalid] = useToggle(false);
@@ -42,6 +43,7 @@ const FeedbackForm = ({
       userAgent: window.navigator.userAgent,
       submitTime: new Date(),
       ...values, // Spread the form values onto the logger
+      ...staticFields, // Spread the static key value pairs onto the logger
     });
 
     setSent(values);
@@ -185,6 +187,7 @@ FeedbackForm.propTypes = {
   onClose: PropTypes.func,
   prompt: PropTypes.string,
   additionalComments: PropTypes.bool,
+  staticFields: PropTypes.object,
 };
 
 FeedbackForm.defaultProps = {

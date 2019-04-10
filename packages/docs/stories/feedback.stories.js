@@ -31,6 +31,7 @@ storiesOf('Actions|Feedback', module)
               { label: 'News and Announcements', value: 'news' },
             ]
           : [],
+        staticFields: { staticKey: 'my-static-value' },
       }}
       color={select(
         'Button Color',

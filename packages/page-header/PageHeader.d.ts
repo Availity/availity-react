@@ -13,6 +13,7 @@ export interface PageHeaderProps {
     payerId?: string;
     component?: React.ReactType;
     feedback?: boolean;
+    feedbackProps?: any;
     children?: React.ReactType;
     crumbs?: Array<CrumbType> | React.ReactType;
     iconSrc?: string;

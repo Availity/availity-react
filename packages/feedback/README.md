@@ -63,6 +63,7 @@ This is the underlying form which is exposed in case you need to gather feedback
 - **`prompt`**: String. Optional. Text which prompts/asks the user to provide feedback. Default: `"Tell us what you think about ${appName}."`
 - **`onFeedbackSent`**: Function. Optional. Callback for when the feedback is submitted. It will be called with the feedback object.
 - **`additionalComments`**: Boolean. Default `false`. If `true` will show and optional comments field below.
+- **`staticFields`**: Object. Optional. Static (non-user-entered) key/value pairs to be sent in feedback submission
 
 ##### Usage
 
