@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [4.1.0](https://github.com/Availity/availity-react/compare/@availity/feedback@4.0.4...@availity/feedback@4.1.0) (2019-04-10)
+
+
+### Features
+
+* **feedback:** add staticFields prop to feedback form ([07161fc](https://github.com/Availity/availity-react/commit/07161fc))
+
+
+
+
+
 ## [4.0.4](https://github.com/Availity/availity-react/compare/@availity/feedback@4.0.3...@availity/feedback@4.0.4) (2019-03-14)
 
 

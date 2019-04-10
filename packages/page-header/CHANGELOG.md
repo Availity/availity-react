@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [4.3.0](https://github.com/Availity/availity-react/compare/@availity/page-header@4.2.1...@availity/page-header@4.3.0) (2019-04-10)
+
+
+### Features
+
+* **page-header:** add feedbackProps prop type ([525b9e9](https://github.com/Availity/availity-react/commit/525b9e9))
+
+
+
+
+
 ## [4.2.1](https://github.com/Availity/availity-react/compare/@availity/page-header@4.2.0...@availity/page-header@4.2.1) (2019-04-09)
 
 **Note:** Version bump only for package @availity/page-header
