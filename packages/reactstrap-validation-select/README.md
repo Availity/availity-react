@@ -55,7 +55,7 @@ Please refer to [react-select with async pagination](https://github.com/TheSharp
 
 *   **`raw`**: Boolean. Optional. Default: `false`. If `true`, the entire object of the selected value will be returned as the value instead of the value for the `valueKey` within the object.
 *   **`valueKey`**: String. Optional. The key of the value you want returned when selected. Default: `value`
-*   **`labelKey`**: String. Optional. The key for the label you want to appear in the dropdrop for the user to see. Default `label`
+*   **`labelKey`**: String. Optional. The key for the label you want to appear in the dropdown for the user to see. Default `label`
 
 #### AvSelect Example usage
 
@@ -95,7 +95,7 @@ Please refer to [react-select with async pagination](https://github.com/TheSharp
 
 *   **`raw`**: Boolean. Optional. Default: `false`. If `true`, the entire object of the selected value will be returned as the value instead of the value for the `valueKey` within the object.
 *   **`valueKey`**: String. Optional. The key of the value you want returned when selected. Default: `value`
-*   **`labelKey`**: String. Optional. The key for the label you want to appear in the dropdrop for the user to see. Default `label`
+*   **`labelKey`**: String. Optional. The key for the label you want to appear in the dropdown for the user to see. Default `label`
 *   **`groupClass`**: String. Optional. ClassName to add to the wrapping AvGroup
 *   **`labelClass`**: String. Optional. ClassName to add to the label
 *   **`feedbackClass`**: String. Optional. ClassName to add to the AvFeedback
@@ -133,7 +133,7 @@ Please refer to [react-select with async pagination](https://github.com/TheSharp
 
 *   **`raw`**: Boolean. Optional. Default: `true`. If `true`, the entire object of the selected value will be returned as the value instead of the value for the `valueKey` within the object.
 *   **`valueKey`**: String. Optional. The key of the value you want returned when selected. Default: `value`
-*   **`labelKey`**: String. Optional. The key for the label you want to appear in the dropdrop for the user to see. Default `label`
+*   **`labelKey`**: String. Optional. The key for the label you want to appear in the dropdown for the user to see. Default `label`
 *   **`label`**: String. Optional. If provided, the rendered component will mimic `AvSelectField` instead of `AvSelect` (it will create a group with a label and feedback).
 *   **`requestConfig`**: Object. Optional. Configuration object which will be used with the query method on the resource. Useful for defining headers to be sent with the request.
 *   **`parameters`**: Object. Optional. Object which will be used to create querystring parameters in the request.
