@@ -31,6 +31,7 @@ The default export is an all-in-one solution which handles uploads, encrypted fi
 - **`bucketId`**: String. Required. The ID of the bucket you want to upload to.
 - **`customerId`**: String. Required. The customer ID for the organization the user is uploading on behave of.
 - **`clientId`**: String. Required. The ID obtain from APIConnect. Must be subscribed to the resumeable uploads API.
+- **`allowedFileNameCharacters`**: String. Optional. String containing Regular Expression for allowable characters in the file name. E.g. `-_a-zA-z0-9`.
 - **`allowedFileTypes`**: Array of strings. Optional. The file types you want to restrict uploading to. E.g. `['.jpeg', '.jpg']`.
 - **`onFileUpload`**: Function. Optional. Callback called when file is uploaded. The callback will be provided the `Upload` instance form upload-core SDK. Use this callback to track files which have been uploaded (to get references returned by the API).
 - **`maxSize`**: Number. Optional. The maximum file size (in bytes) for a file to be uploaded.

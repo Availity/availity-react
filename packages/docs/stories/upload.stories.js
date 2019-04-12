@@ -192,6 +192,43 @@ storiesOf('Components|Upload', module)
       />
     </div>
   ))
+  .add('file types', () => (
+    <div className="py-3">
+      <p>Allows you to define which file types are available to upload.</p>
+      <p>Here we have jpg, jpeg, doc and docx available to be selected.</p>
+      <Upload
+        clientId="a"
+        bucketId="b"
+        customerId="c"
+        multiple={boolean('Multiple File Select', Upload.defaultProps.multiple)}
+        max={number('Max number of files', 0)}
+        allowedFileTypes={array(
+          'Allowed File Types',
+          ['.jpg', '.jpeg', '.doc', '.docx'],
+          ','
+        )}
+        maxSize={number('Max File Size', 0, { min: 0 }) || undefined}
+      />
+    </div>
+  ))
+  .add('file name', () => (
+    <div className="py-3">
+      <p>
+        Allows you to restrict characters are permissible in the filename of
+        uploads.
+      </p>
+      <p>
+        Here we will allow files with any letter, number or the characters _ and
+        - in its name. (-_a-zA-Z0-9)
+      </p>
+      <Upload
+        clientId="a"
+        bucketId="b"
+        customerId="c"
+        allowedFileNameCharacters="-_a-zA-z0-9"
+      />
+    </div>
+  ))
   .add('progress bar', () => {
     button('+10%', () => instance.progress(10), 'Mock Actions');
     button('Accept', () => instance.success(), 'Mock Actions');
