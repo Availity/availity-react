@@ -1,6 +1,6 @@
 import React, { Component, createRef } from 'react';
 import { storiesOf } from '@storybook/react';
-import { button, boolean, number, array } from '@storybook/addon-knobs';
+import { button, boolean, number, array, text } from '@storybook/addon-knobs';
 import mock from 'xhr-mock';
 import { Button, CustomInput } from 'reactstrap';
 import { AvForm, AvField, AvGroup } from 'availity-reactstrap-validation';
@@ -225,7 +225,7 @@ storiesOf('Components|Upload', module)
         clientId="a"
         bucketId="b"
         customerId="c"
-        allowedFileNameCharacters="-_a-zA-z0-9"
+        allowedFileNameCharacters={text('REGEX', '-_a-zA-z0-9')}
       />
     </div>
   ))
