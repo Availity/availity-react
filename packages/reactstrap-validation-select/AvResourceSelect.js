@@ -115,15 +115,13 @@ class AvResourceSelect extends Component {
     const Tag = this.props.label ? AvSelectField : AvSelect;
     const {
       delay,
-      debounceTimeout,
+      debounceTimeout = delay,
       itemsPerPage,
       watchParams,
       cacheUniq,
       additional,
       ...rest
     } = this.props;
-    const _debounceTimeout =
-      debounceTimeout !== undefined ? debounceTimeout : delay;
     let _cacheUniq = cacheUniq;
 
     if (_cacheUniq === undefined && watchParams && this.select.current) {
@@ -140,7 +138,7 @@ class AvResourceSelect extends Component {
         loadOptions={this.loadOptions}
         pagination
         raw
-        debounceTimeout={_debounceTimeout}
+        debounceTimeout={debounceTimeout}
         cacheUniq={_cacheUniq}
         additional={{
           page: 1,
