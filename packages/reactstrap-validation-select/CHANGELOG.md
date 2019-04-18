@@ -3,6 +3,29 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [3.0.0](https://github.com/Availity/availity-react/compare/@availity/reactstrap-validation-select@2.0.3...@availity/reactstrap-validation-select@3.0.0) (2019-04-18)
+
+
+### Bug Fixes
+
+* fix border radius of AvSelect ([d567ad1](https://github.com/Availity/availity-react/commit/d567ad1))
+* **reactstrap-validation-select:** map legacy props to AvResourceSelect ([010caa4](https://github.com/Availity/availity-react/commit/010caa4))
+
+
+### Features
+
+* **reactstrap-validation-select:** default hasMore prop ([56c775b](https://github.com/Availity/availity-react/commit/56c775b))
+* **reactstrap-validation-select:** updated to use react-select async ([9f5092c](https://github.com/Availity/availity-react/commit/9f5092c))
+
+
+### BREAKING CHANGES
+
+* **reactstrap-validation-select:** props have changed
+
+
+
+
+
 ## [2.0.3](https://github.com/Availity/availity-react/compare/@availity/reactstrap-validation-select@2.0.2...@availity/reactstrap-validation-select@2.0.3) (2019-03-13)
 
 
