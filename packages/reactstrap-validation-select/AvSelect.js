@@ -2,14 +2,14 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import classNames from 'classnames';
 import { AvBaseInput } from 'availity-reactstrap-validation';
-import Select from '@thesharpieone/react-select-async-pagination';
-import Async from '@thesharpieone/react-select-async-pagination/lib/Async';
+import Select from 'react-select';
+import Async from 'react-select-async-paginate';
 import {
   DownChevron,
   CrossIcon,
   DropdownIndicator,
   ClearIndicator,
-} from '@thesharpieone/react-select-async-pagination/lib/components/indicators';
+} from 'react-select/lib/components/indicators';
 import get from 'lodash/get';
 import find from 'lodash/find';
 import isEqual from 'lodash/isEqual';
@@ -209,7 +209,7 @@ class AvSelect extends AvBaseInput {
             const showError = touched && hasError && !state.focused;
             return {
               ...provided,
-              borderRadius: 'inherit',
+              borderRadius: '.25em',
               backgroundColor: showError ? '#fbcbc8' : 'white',
               borderColor: showError ? '#931b1d' : 'hsl(0,0%,80%)',
               zIndex: state.focused && '3',

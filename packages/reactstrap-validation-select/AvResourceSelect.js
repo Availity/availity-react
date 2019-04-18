@@ -1,6 +1,5 @@
 import React, { Component, createRef } from 'react';
 import PropTypes from 'prop-types';
-import debounce from 'debounce';
 import qs from 'qs';
 
 import AvSelect from './AvSelect';
@@ -14,7 +13,9 @@ class AvResourceSelect extends Component {
       getResult: PropTypes.oneOfType([PropTypes.string, PropTypes.func]),
     }).isRequired,
     getResult: PropTypes.oneOfType([PropTypes.string, PropTypes.func]),
+    hasMore: PropTypes.oneOfType([PropTypes.bool, PropTypes.func]),
     delay: PropTypes.number,
+    debounceTimeout: PropTypes.number,
     label: PropTypes.node,
     customerId: PropTypes.string,
     parameters: PropTypes.object,
@@ -23,39 +24,22 @@ class AvResourceSelect extends Component {
     isDisabled: PropTypes.bool,
     requiredParams: PropTypes.array,
     watchParams: PropTypes.array,
+    // eslint-disable-next-line react/forbid-prop-types
+    cacheUniq: PropTypes.any,
+    additional: PropTypes.object,
   };
 
   static defaultProps = {
     delay: 350,
     itemsPerPage: 50,
+    hasMore: ({ totalCount, limit, offset }) => totalCount > offset + limit,
   };
 
   select = createRef();
 
-  componentDidUpdate(prevProps) {
-    if (this.props.watchParams && this.select.current) {
-      const params = {
-        customerId: this.props.customerId,
-        ...this.props.parameters,
-      };
-      const prevParams = {
-        customerId: prevProps.customerId,
-        ...prevProps.parameters,
-      };
-      if (
-        this.props.watchParams.some(
-          param => params[param] && params[param] !== prevParams[param]
-        )
-      ) {
-        this.select.current.optionsCache = {};
-        this.select.current.optionsFromCacheOrLoad('');
-      }
-    }
-  }
-
-  loadOptions = debounce((...args) => {
-    const [inputValue] = args;
-    let [, page, callback] = args;
+  loadOptions = (...args) => {
+    const [inputValue, , additional = {}] = args;
+    let { page } = additional;
     const params = {
       q: encodeURIComponent(inputValue),
       limit: this.props.itemsPerPage,
@@ -65,19 +49,20 @@ class AvResourceSelect extends Component {
     if (args.length === 3) {
       params.offset = (page - 1) * this.props.itemsPerPage;
     } else {
-      callback = page;
-      page = undefined;
+      page = 1;
     }
     if (
       this.props.isDisabled ||
       (this.props.requiredParams &&
         this.props.requiredParams.some(param => !params[param]))
     ) {
-      callback();
-      return;
+      return {
+        options: [],
+        hasMore: false,
+      };
     }
     if (this.props.onPageChange) this.props.onPageChange(inputValue, page);
-    this.props.resource
+    return this.props.resource
       .postGet(
         qs.stringify(params, {
           encode: false,
@@ -97,11 +82,14 @@ class AvResourceSelect extends Component {
           throw new Error(`API returned an invalid response.`);
         }
         const getResult = this.props.getResult || this.props.resource.getResult;
+        let { hasMore } = this.props;
 
         const items =
           (typeof getResult === 'function'
             ? getResult.call(this.props.resource, resp.data)
             : resp.data[getResult]) || this.data;
+
+        hasMore = typeof hasMore === 'function' ? hasMore(resp.data) : hasMore;
 
         if (!Array.isArray(items)) {
           throw new TypeError(
@@ -109,16 +97,40 @@ class AvResourceSelect extends Component {
           );
         }
 
-        // eslint-disable-next-line promise/no-callback-in-promise
-        return callback(items);
+        return {
+          options: items,
+          hasMore,
+          additional: {
+            ...additional,
+            page: page + 1,
+          },
+        };
       })
       .catch(error => {
         throw error;
       });
-  }, this.props.delay);
+  };
 
   render() {
     const Tag = this.props.label ? AvSelectField : AvSelect;
+    const {
+      delay,
+      debounceTimeout = delay,
+      itemsPerPage,
+      watchParams,
+      cacheUniq,
+      additional,
+      ...rest
+    } = this.props;
+    let _cacheUniq = cacheUniq;
+
+    if (_cacheUniq === undefined && watchParams && this.select.current) {
+      const params = {
+        customerId: this.props.customerId,
+        ...this.props.parameters,
+      };
+      _cacheUniq = watchParams.map(watchParam => params[watchParam]).join(',');
+    }
 
     return (
       <Tag
@@ -126,7 +138,13 @@ class AvResourceSelect extends Component {
         loadOptions={this.loadOptions}
         pagination
         raw
-        {...this.props}
+        debounceTimeout={debounceTimeout}
+        cacheUniq={_cacheUniq}
+        additional={{
+          page: 1,
+          ...additional,
+        }}
+        {...rest}
       />
     );
   }
