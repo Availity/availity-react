@@ -61,7 +61,9 @@ class UploadProgressBar extends Component {
     const { percentage, error, modalOpen } = this.state;
     return upload.errorMessage ? (
       <React.Fragment>
-        <span className="text-danger">{upload.errorMessage}</span>
+        <span data-testid="upload-error-message" className="text-danger">
+          {upload.errorMessage}
+        </span>
         {upload.status === 'encrypted' && (
           <div className="pwRequired">
             <Button size="sm" color="primary" onClick={this.toggleModal}>
