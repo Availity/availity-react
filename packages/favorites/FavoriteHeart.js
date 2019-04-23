@@ -20,6 +20,7 @@ const FavoriteHeart = ({ id, onChange, ...props }) => {
         {...props}
         tabIndex="0"
         className={`favorite-heart pt-4 ${isFavorite && 'active'}`}
+        onMouseDown={e => e.preventDefault()}
         onKeyPress={() => {}}
         onClick={() => {
           toggleFavorite();
@@ -40,12 +41,15 @@ const FavoriteHeart = ({ id, onChange, ...props }) => {
         <span className="icon selected-filled" />
       </span>
     ),
-    [id, isFavorite, props, toggleFavorite]
+    [id, isFavorite, onChange, props, toggleFavorite]
   );
 
-  useEffectAsync(async () => {
-    toggleLoading(false);
-  }, [id]);
+  useEffectAsync(
+    async () => {
+      toggleLoading(false);
+    },
+    [id]
+  );
 
   return (
     !loading && (
