@@ -3,7 +3,6 @@ export interface UploadProps {
     bucketId: string;
     customerId: string;
     clientId: string;
-    allowedFileNameCharacters?: string;
     allowedFileTypes?: Array<string>;
     onFileUpload?: Function;
     onFileRemove?: Function;

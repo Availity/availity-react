@@ -16,7 +16,6 @@ class Upload extends Component {
     bucketId: PropTypes.string.isRequired,
     customerId: PropTypes.string.isRequired,
     clientId: PropTypes.string.isRequired,
-    allowedFileNameCharacters: PropTypes.string,
     allowedFileTypes: PropTypes.arrayOf(PropTypes.string),
     onFileUpload: PropTypes.func,
     onFileRemove: PropTypes.func,
@@ -81,7 +80,6 @@ class Upload extends Component {
           clientId: this.props.clientId,
           fileTypes: this.props.allowedFileTypes,
           maxSize: this.props.maxSize,
-          allowedFileNameCharacters: this.props.allowedFileNameCharacters,
         });
         upload.start();
         if (this.props.onFileUpload) this.props.onFileUpload(upload);
