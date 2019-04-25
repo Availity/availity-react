@@ -28,13 +28,13 @@
     "react": "^16.8.3",
     "react-date-range": "^0.9.4",
     "react-dom": "^16.8.3",
-    "reactstrap": "^7.0.0"
+    "reactstrap": "^8.0.0"
   },
   "peerDependencies": {
     "availity-reactstrap-validation": "^2.0.0",
     "moment": "^2.22.1",
     "react": "^16.3.0",
-    "reactstrap": "^7.0.0 || ^6.0.0"
+    "reactstrap": "^8.0.0 || ^7.0.0 || ^6.0.0"
   },
   "dependencies": {
     "prop-types": "^15.5.8",
