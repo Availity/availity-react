@@ -3,6 +3,19 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [5.2.0](https://github.com/Availity/availity-react/compare/@availity/docs@5.1.2...@availity/docs@5.2.0) (2019-04-25)
+
+
+### Features
+
+* **upload:** adding stories for uploads ([0641d72](https://github.com/Availity/availity-react/commit/0641d72))
+* **upload:** i liked it so i put a knob on it ([027e273](https://github.com/Availity/availity-react/commit/027e273))
+* **upload:** rereenabling filename validation ([b02a5f2](https://github.com/Availity/availity-react/commit/b02a5f2))
+
+
+
+
+
 ## [5.1.2](https://github.com/Availity/availity-react/compare/@availity/docs@5.1.1...@availity/docs@5.1.2) (2019-04-23)
 
 **Note:** Version bump only for package @availity/docs

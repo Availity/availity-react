@@ -3,6 +3,18 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [1.8.0](https://github.com/Availity/availity-react/compare/@availity/upload@1.7.4...@availity/upload@1.8.0) (2019-04-25)
+
+
+### Features
+
+* **upload:** adding stories for uploads ([0641d72](https://github.com/Availity/availity-react/commit/0641d72))
+* **upload:** rereenabling filename validation ([b02a5f2](https://github.com/Availity/availity-react/commit/b02a5f2))
+
+
+
+
+
 ## [1.7.4](https://github.com/Availity/availity-react/compare/@availity/upload@1.7.2...@availity/upload@1.7.4) (2019-03-04)
 
 **Note:** Version bump only for package @availity/upload
