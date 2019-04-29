@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import isAbsoluteUrl from 'is-absolute-url';
+import { isAbsoluteUrl } from '@availity/resolve-url';
 
 // if absolute, return url. otherwise loadappify the url
 export const getUrl = (url = '') => {
