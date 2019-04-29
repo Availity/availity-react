@@ -21,7 +21,7 @@
 * [feedback](packages/feedback/README.md) - Availity feedback with simley faces react component.
 * [hooks](packages/hooks/README.md) - Custom Hooks that can be used in any projects.
 * [icon](packages/icon/README.md) - Icon Component using sizes and icons from availity-uikit.
-* [list-group](packages/link/README.md) - Availity Link component
+* [link](packages/link/README.md) - Availity Link component
 * [list-group](packages/list-group/README.md) - List Group with some Availity flair.
 * [list-group-item](packages/list-group-item/README.md) - List Group Item with some Availity flair.
 * [page-header](packages/page-header/README.md) - The standard page header for Availity Portal Applications.
