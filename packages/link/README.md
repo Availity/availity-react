@@ -27,4 +27,4 @@ import AvLink from '@availity/link';
 - **`url`**: String. Required. The url of the page the link goes to
 - **`target`**: String. Optional. Where to open the linked document
 - **`tag`**: React component. Optional. The tag to use in the link that gets rendered. Defaults to an `<a>` tag
-
+- **`onClick`**: Function. Optional. Function to run onClick of the tag. The first argument that gets passed to `onClick` is the event. The second is the processed `url`.

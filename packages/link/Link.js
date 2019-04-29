@@ -10,8 +10,14 @@ export const getUrl = (url = '') => {
   return `/public/apps/home/#!/loadApp?appUrl=${encodeURIComponent(url)}`;
 };
 
-const AvLink = ({ tag: Tag, url, target, children, ...props }) => (
-  <Tag href={getUrl(url)} target={target} data-testid="av-link-tag" {...props}>
+const AvLink = ({ tag: Tag, url, target, children, onClick, ...props }) => (
+  <Tag
+    href={getUrl(url)}
+    target={target}
+    onClick={event => onClick && onClick(event, getUrl(url))}
+    data-testid="av-link-tag"
+    {...props}
+  >
     {children}
   </Tag>
 );
@@ -25,6 +31,7 @@ AvLink.propTypes = {
   target: PropTypes.string,
   tag: PropTypes.oneOfType([PropTypes.func, PropTypes.string]),
   children: PropTypes.node,
+  onClick: PropTypes.func,
 };
 
 export default AvLink;

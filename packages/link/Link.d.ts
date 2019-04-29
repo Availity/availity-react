@@ -3,6 +3,7 @@ export interface AvLinkProps {
     target?: string;
     tag?: React.ReactType | string;
     children?: any;
+    onClick?: Function;
 }
 
 declare const AvLink: React.FunctionComponent<AvLinkProps>;
