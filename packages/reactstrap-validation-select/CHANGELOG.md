@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [3.0.2](https://github.com/Availity/availity-react/compare/@availity/reactstrap-validation-select@3.0.1...@availity/reactstrap-validation-select@3.0.2) (2019-04-30)
+
+
+### Bug Fixes
+
+* **reactstrap-validation-select:** nfinite loop on loadOptions catch ([93837f7](https://github.com/Availity/availity-react/commit/93837f7))
+
+
+
+
+
 ## [3.0.1](https://github.com/Availity/availity-react/compare/@availity/reactstrap-validation-select@3.0.0...@availity/reactstrap-validation-select@3.0.1) (2019-04-23)
 
 
