@@ -1,7 +1,6 @@
 module.exports = {
   setupFilesAfterEnv: [
-    // This should be working however when we remove the
-    // afterEach cleanup from Upload.test.js it fails to clean up properly.
+    '<rootDir>/jest/setupTests.js',
     'react-testing-library/cleanup-after-each',
   ],
   collectCoverageFrom: ['packages/**/*.{js,jsx}'],
