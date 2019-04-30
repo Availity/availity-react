@@ -9,16 +9,16 @@ exports[`AvSelect should render 1`] = `
     novalidate=""
   >
     <div
-      class="css-1pcexqc-container av-select is-untouched is-pristine av-valid"
+      class="css-10nd86i av-select is-untouched is-pristine av-valid"
     >
       <div
-        class="css-jj4t7o-control av__control"
+        class="css-17rctu0 av__control"
       >
         <div
           class="css-eejdxh av__value-container"
         >
           <div
-            class="css-noqz3a-placeholder av__placeholder"
+            class="css-1xo8gps av__placeholder"
           >
             Select...
           </div>
@@ -52,11 +52,11 @@ exports[`AvSelect should render 1`] = `
           class="css-1wy0on6 av__indicators"
         >
           <span
-            class="css-bgvzuu-indicatorSeparator av__indicator-separator"
+            class="css-d8oujb av__indicator-separator"
           />
           <div
             aria-hidden="true"
-            class="css-1u02eyf-indicatorContainer av__indicator av__dropdown-indicator"
+            class="css-s32mkd av__indicator av__dropdown-indicator"
           >
             <svg
               aria-hidden="true"
@@ -97,16 +97,16 @@ exports[`AvSelect should show selected as active 1`] = `
     novalidate=""
   >
     <div
-      class="css-1pcexqc-container av-select is-untouched is-pristine av-valid"
+      class="css-10nd86i av-select is-untouched is-pristine av-valid"
     >
       <div
-        class="css-jj4t7o-control av__control"
+        class="css-17rctu0 av__control"
       >
         <div
           class="css-eejdxh av__value-container"
         >
           <div
-            class="css-noqz3a-placeholder av__placeholder"
+            class="css-1xo8gps av__placeholder"
           >
             Select...
           </div>
@@ -140,11 +140,11 @@ exports[`AvSelect should show selected as active 1`] = `
           class="css-1wy0on6 av__indicators"
         >
           <span
-            class="css-bgvzuu-indicatorSeparator av__indicator-separator"
+            class="css-d8oujb av__indicator-separator"
           />
           <div
             aria-hidden="true"
-            class="css-1u02eyf-indicatorContainer av__indicator av__dropdown-indicator"
+            class="css-s32mkd av__indicator av__dropdown-indicator"
           >
             <svg
               aria-hidden="true"
