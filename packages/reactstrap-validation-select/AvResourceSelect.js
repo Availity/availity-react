@@ -106,9 +106,7 @@ class AvResourceSelect extends Component {
           },
         };
       })
-      .catch(error => {
-        throw error;
-      });
+      .catch(() => ({ options: [], hasMore: false }));
   };
 
   render() {
