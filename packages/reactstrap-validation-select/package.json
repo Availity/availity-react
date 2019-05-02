@@ -30,14 +30,14 @@
     "axios": "^0.18.0",
     "react": "^16.8.3",
     "react-dom": "^16.8.3",
-    "reactstrap": "^7.0.0"
+    "reactstrap": "^8.0.0"
   },
   "peerDependencies": {
     "@availity/api-axios": "^2.0.0",
     "availity-reactstrap-validation": "^2.0.0",
     "availity-uikit": "^3.0.0-beta.19",
     "react": "^16.0.0",
-    "reactstrap": "^7.0.0 || ^6.0.0"
+    "reactstrap": "^8.0.0 || ^7.0.0 || ^6.0.0"
   },
   "dependencies": {
     "@thesharpieone/react-select-async-pagination": "^2.0.0",

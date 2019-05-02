@@ -10,6 +10,7 @@ const PaginationControls = ({
   autoHide,
   pageRange,
   marginPages,
+  breakLabel,
   ...rest
 }) => {
   const { pageCount, currentPage, setPage } = usePagination();
@@ -83,7 +84,7 @@ const PaginationControls = ({
           (index >= selected - leftSide && index <= selected + rightSide)
         ) {
           items.push(createItem(pageNumber));
-        } else if (items[items.length - 1] !== breakView) {
+        } else if (items[items.length - 1] !== breakView && breakLabel) {
           breakView = createBreak(pageNumber);
           items.push(breakView);
         }
@@ -144,6 +145,7 @@ PaginationControls.propTypes = {
   autoHide: PropTypes.bool, // If there are no items to show. This component will not show
   pageRange: PropTypes.number,
   marginPages: PropTypes.number,
+  breakLabel: PropTypes.bool
 };
 
 PaginationControls.defaultProps = {
@@ -151,5 +153,6 @@ PaginationControls.defaultProps = {
   autoHide: true,
   pageRange: 5,
   marginPages: 2,
+  breakLabel: true
 };
 export default PaginationControls;

@@ -12,7 +12,7 @@
   },
   "peerDependencies": {
     "react": "^16.8.0",
-    "reactstrap": "^7.0.0"
+    "reactstrap": "^8.0.0 || ^7.0.0"
   },
   "repository": {
     "type": "git",
@@ -32,7 +32,7 @@
   "devDependencies": {
     "react": "^16.8.3",
     "react-dom": "^16.8.3",
-    "reactstrap": "^7.0.0"
+    "reactstrap": "^8.0.0"
   },
   "gitHead": "49d436db19e42e3c16b4185b12e9dfcce60ec253"
 }

@@ -35,14 +35,15 @@
     "lodash.max": "^4.0.1",
     "lodash.reduce": "^4.6.0",
     "lodash.sortby": "^4.7.0",
-    "prop-types": "^15.5.8",
-    "reactstrap": "^7.1.0"
+    "prop-types": "^15.5.8"
   },
   "devDependencies": {
     "react": "^16.8.3",
-    "react-dom": "^16.8.3"
+    "react-dom": "^16.8.3",
+    "reactstrap": "^8.0.0"
   },
   "peerDependencies": {
-    "react": "^16.8.0"
+    "react": "^16.8.0",
+    "reactstrap": "^8.0.0 || ^7.1.0"
   }
 }
