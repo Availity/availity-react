@@ -4,6 +4,7 @@ export default mock => {
     res.status(200).body(
       window.JSON.stringify({
         id: '1234',
+        email: 'user1@availity.com',
       })
     )
   );

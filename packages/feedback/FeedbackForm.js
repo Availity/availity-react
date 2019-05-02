@@ -7,9 +7,14 @@ import {
   ModalFooter,
   FormGroup,
 } from 'reactstrap';
-import { avLogMessagesApi, avRegionsApi } from '@availity/api-axios';
+import { avLogMessagesApi, avRegionsApi, avUserApi } from '@availity/api-axios';
 import { useToggle } from '@availity/hooks';
-import { AvForm, AvField } from 'availity-reactstrap-validation';
+import {
+  AvForm,
+  AvField,
+  AvCheckbox,
+  AvCheckboxGroup,
+} from 'availity-reactstrap-validation';
 import { AvSelectField } from '@availity/reactstrap-validation-select';
 import FeedbackButton from './FeedbackButton';
 
@@ -28,6 +33,16 @@ const FeedbackForm = ({
   const [sent, setSent] = useState(null);
 
   const sendFeedback = async values => {
+    let emailAddress;
+
+    // If user consents to be contacted about their feedback, fetch their email and add it to feedback payload
+    const consentToEmail = values.allowContact.length > 0;
+    if (consentToEmail) {
+      const { email } = await avUserApi.me();
+      emailAddress = email;
+    }
+    delete values.allowContact;
+
     if (!active && !invalid) {
       toggleInvalid();
       return;
@@ -42,6 +57,7 @@ const FeedbackForm = ({
       region: response.data.regions[0] && response.data.regions[0].id,
       userAgent: window.navigator.userAgent,
       submitTime: new Date(),
+      emailAddress,
       ...values, // Spread the form values onto the logger
       ...staticFields, // Spread the static key value pairs onto the logger
     });
@@ -149,6 +165,13 @@ const FeedbackForm = ({
                   }}
                 />
               )}
+
+              <AvCheckboxGroup value={['allowed']} name="allowContact">
+                <AvCheckbox
+                  value="allowed"
+                  label="It's ok to email me about this feedback"
+                />
+              </AvCheckboxGroup>
             </React.Fragment>
           ) : null}
         </ModalBody>

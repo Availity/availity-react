@@ -1,11 +1,13 @@
 /* eslint-disable unicorn/prefer-query-selector */
 import React from 'react';
-import { render, fireEvent, wait } from 'react-testing-library';
+import { render, fireEvent, wait, waitForElement } from 'react-testing-library';
 import 'react-testing-library/cleanup-after-each';
-import { avLogMessagesApi, avRegionsApi } from '@availity/api-axios';
+import { avLogMessagesApi, avRegionsApi, avUserApi } from '@availity/api-axios';
 import { FeedbackForm } from '..';
 
 jest.mock('@availity/api-axios');
+
+avUserApi.me = jest.fn(() => Promise.resolve({ email: 'user1@availity.com' }));
 
 avLogMessagesApi.info = jest.fn(() => Promise.resolve());
 
@@ -22,6 +24,10 @@ avRegionsApi.getCurrentRegion = jest.fn(() =>
 );
 
 describe('FeedbackForm', () => {
+  afterEach(() => {
+    jest.clearAllMocks();
+  });
+
   test('should disable submit button until smile selected', () => {
     const { getByText } = render(<FeedbackForm name="Payer Space" />);
 
@@ -78,6 +84,65 @@ describe('FeedbackForm', () => {
         })
       )
     );
+  });
+
+  test('should submit with user email address when user consents', async () => {
+    avUserApi.me = jest.fn(() =>
+      Promise.resolve({ email: 'user1@availity.com' })
+    );
+
+    const { getByPlaceholderText, getByText } = render(
+      <FeedbackForm name="Payer Space" />
+    );
+
+    // Simulate the Click
+    fireEvent.click(getByText('Smiley face'));
+
+    // Get the Input Node for the Feedback
+    const feedbackNode = getByPlaceholderText('What do you like?');
+
+    // Simulate a user typing the value below into the field
+    fireEvent.change(feedbackNode, {
+      target: { value: 'some good text here' },
+    });
+
+    fireEvent.click(getByText('Send Feedback'));
+
+    await waitForElement(() => getByText('Thank you for your feedback.'));
+
+    expect(avUserApi.me).toHaveBeenCalledTimes(1);
+    expect(avLogMessagesApi.info.mock.calls[0][0].emailAddress).toBe(
+      'user1@availity.com'
+    );
+  });
+
+  test('should submit without user email address when user does not consent', async () => {
+    const { getByPlaceholderText, getByText } = render(
+      <FeedbackForm name="Payer Space" />
+    );
+
+    // Simulate the Click
+    fireEvent.click(getByText('Smiley face'));
+
+    // Get the Input Node for the Feedback
+    const feedbackNode = getByPlaceholderText('What do you like?');
+
+    // Simulate a user typing the value below into the field
+    fireEvent.change(feedbackNode, {
+      target: { value: 'some good text here' },
+    });
+
+    // Simulate a user unchecking the allow email checkbox
+    fireEvent.click(getByText("It's ok to email me about this feedback"));
+
+    fireEvent.click(getByText('Send Feedback'));
+
+    await waitForElement(() => getByText('Thank you for your feedback.'));
+
+    expect(avUserApi.me).toHaveBeenCalledTimes(0);
+    expect(
+      avLogMessagesApi.info.mock.calls[0][0].emailAddress
+    ).not.toBeDefined();
   });
 
   test('should render custom face icons', () => {
