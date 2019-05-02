@@ -1,3 +1,5 @@
+> This is the old changelog. Now, each package has it's own invididual changelog.
+
 <a name="1.6.0"></a>
 # [1.6.0](https://github.com/Availity/availity-react/compare/v1.5.2...v1.6.0) (2018-12-10)
 
