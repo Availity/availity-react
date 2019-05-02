@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [2.0.2](https://github.com/Availity/availity-react/compare/@availity/pagination@2.0.1...@availity/pagination@2.0.2) (2019-05-02)
+
+
+### Bug Fixes
+
+* **pagination:** fixed breaklabel prop not working ([4fb93e7](https://github.com/Availity/availity-react/commit/4fb93e7))
+
+
+
+
+
 ## [2.0.1](https://github.com/Availity/availity-react/compare/@availity/pagination@2.0.0...@availity/pagination@2.0.1) (2019-03-14)
 
 **Note:** Version bump only for package @availity/pagination
