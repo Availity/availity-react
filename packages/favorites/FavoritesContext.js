@@ -79,9 +79,9 @@ const Favorites = ({ children }) => {
     });
   };
 
-  const sendUpdate = () => {
+  const sendUpdate = faves => {
     const message = {
-      favorites,
+      favorites: faves,
     };
 
     avMessages.send({
@@ -94,9 +94,11 @@ const Favorites = ({ children }) => {
     const result = await submitFavorites(
       clone(favorites).filter(favorite => favorite.id !== id)
     );
-    setFavorites(get(result, 'data.favorites'));
 
-    sendUpdate();
+    const newFavorites = get(result, 'data.favorites');
+    setFavorites(newFavorites);
+
+    sendUpdate(newFavorites);
   };
 
   const openMaxModal = () => {
