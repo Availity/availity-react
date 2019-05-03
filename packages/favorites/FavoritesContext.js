@@ -40,7 +40,7 @@ const Favorites = ({ children }) => {
     avMessages.subscribe(
       AV_INTERNAL_GLOBALS.FAVORITES_CHANGED,
       (event, data) => {
-        setFavorites(get(data, 'favorites') || []);
+        setFavorites(get(data, 'message.favorites') || []);
       }
     );
 
@@ -129,9 +129,12 @@ const Favorites = ({ children }) => {
 
     const result = await submitFavorites(newData);
 
-    setFavorites(get(result, 'data.favorites'));
+    const newFavorites = get(result, 'data.favorites');
+    setFavorites(newFavorites);
 
-    const isFavorited = findwhere(favorites, { id });
+    sendUpdate(newFavorites);
+
+    const isFavorited = findwhere(newFavorites, { id });
 
     return !!isFavorited;
   };
