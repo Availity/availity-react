@@ -382,6 +382,7 @@ export default class AvDateRange extends Component {
             style={{
               lineHeight:
                 this.state.format === isoDateFormat ? '1.4' : undefined,
+              zIndex: 'auto',
             }}
           >
             <span className="icon icon-calendar" />
