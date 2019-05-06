@@ -2,7 +2,6 @@ import React, { createContext, useContext, useState, useMemo } from 'react';
 import PropTypes from 'prop-types';
 import { useEffectAsync } from '@availity/hooks';
 import avMessages from '@availity/message-core';
-import { AvSplunkAnalytics } from '@availity/analytics-core';
 import get from 'lodash.get';
 import isUndefined from 'lodash.isundefined';
 import isNumber from 'lodash.isnumber';
@@ -11,7 +10,7 @@ import reduce from 'lodash.reduce';
 import clone from 'lodash.clone';
 import max from 'lodash.max';
 import findwhere from 'lodash.findwhere';
-import { avSettingsApi, AvLogMessages } from '@availity/api-axios';
+import { avSettingsApi, avLogMessagesApi } from '@availity/api-axios';
 
 const MAX_FAVORITES = 60;
 const NAV_APP_ID = 'Gateway-AvNavigation';
@@ -24,8 +23,6 @@ const AV_INTERNAL_GLOBALS = {
 };
 
 export const FavoritesContext = createContext();
-
-const avSplunkAnalytics = new AvSplunkAnalytics(AvLogMessages, true);
 
 const Favorites = ({ children }) => {
   const [favorites, setFavorites] = useState([]);
@@ -108,7 +105,7 @@ const Favorites = ({ children }) => {
       event: 'modal-open',
     };
 
-    avSplunkAnalytics.trackEvent(atMaxLog);
+    avLogMessagesApi.info(atMaxLog);
 
     avMessages.send(AV_INTERNAL_GLOBALS.MAX_FAVORITES);
   };
