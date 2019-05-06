@@ -3,6 +3,18 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.1.3](https://github.com/Availity/availity-react/compare/@availity/favorites@1.1.2...@availity/favorites@1.1.3) (2019-05-06)
+
+
+### Bug Fixes
+
+* **favorites:** fix favorites sent in avMessage when favorites deleted ([4feacef](https://github.com/Availity/availity-react/commit/4feacef))
+* **favorites:** send post message to window.parent when favorite added ([b7448e4](https://github.com/Availity/availity-react/commit/b7448e4))
+
+
+
+
+
 ## [1.1.2](https://github.com/Availity/availity-react/compare/@availity/favorites@1.1.1...@availity/favorites@1.1.2) (2019-05-02)
 
 **Note:** Version bump only for package @availity/favorites

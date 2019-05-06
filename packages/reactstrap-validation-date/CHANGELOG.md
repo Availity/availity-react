@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.7.7](https://github.com/Availity/availity-react/compare/@availity/reactstrap-validation-date@1.7.6...@availity/reactstrap-validation-date@1.7.7) (2019-05-06)
+
+
+### Bug Fixes
+
+* **reactstrap-validation-date:** fixed z-index issue ([c144bba](https://github.com/Availity/availity-react/commit/c144bba))
+
+
+
+
+
 ## [1.7.6](https://github.com/Availity/availity-react/compare/@availity/reactstrap-validation-date@1.7.5...@availity/reactstrap-validation-date@1.7.6) (2019-05-02)
 
 **Note:** Version bump only for package @availity/reactstrap-validation-date
