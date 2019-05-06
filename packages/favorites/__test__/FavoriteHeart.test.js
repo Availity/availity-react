@@ -1,11 +1,6 @@
 import React from 'react';
 import 'react-testing-library/cleanup-after-each';
-import {
-  fireEvent,
-  render,
-  waitForElement,
-  cleanup,
-} from 'react-testing-library';
+import { fireEvent, render, waitForElement } from 'react-testing-library';
 import { avSettingsApi } from '@availity/api-axios';
 import avMessages from '@availity/message-core';
 import Favorites, { FavoriteHeart } from '..';
@@ -90,7 +85,6 @@ avSettingsApi.getApplication = jest.fn(() =>
 
 describe('FavoriteHeart', () => {
   afterEach(() => {
-    cleanup();
     jest.clearAllMocks();
   });
 
