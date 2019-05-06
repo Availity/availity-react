@@ -28,6 +28,7 @@ exports[`AvDate should render 1`] = `
         <button
           class="btn btn-light"
           id="standAlone-btn"
+          style="z-index: auto;"
           type="button"
         >
           <span

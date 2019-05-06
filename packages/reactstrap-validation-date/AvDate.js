@@ -175,6 +175,9 @@ class AvDate extends Component {
             type="button"
             onClick={this.togglePicker}
             disabled={props.disabled}
+            style={{
+              zIndex: 'auto',
+            }}
           >
             <span className="icon icon-calendar" />
             <span className="sr-only">Toggle Calendar</span>
