@@ -169,7 +169,7 @@ describe('FavoriteHeart', () => {
     expect(avMessages.send).toHaveBeenCalledTimes(1);
     expect(avMessages.send.mock.calls[0][0].event).toBe('av:favorites:update');
     // Test that post message sent to window.parent sends favorites returned from settings api
-    expect(avMessages.send.mock.calls[0][0].message.favorites).toEqual([
+    expect(avMessages.send.mock.calls[0][0].favorites).toEqual([
       { id: '456', pos: 0 },
     ]);
   });
@@ -216,7 +216,7 @@ describe('FavoriteHeart', () => {
     expect(avMessages.send).toHaveBeenCalledTimes(1);
     expect(avMessages.send.mock.calls[0][0].event).toBe('av:favorites:update');
     // Test that post message sent to window.parent sends favorites returned from settings api
-    expect(avMessages.send.mock.calls[0][0].message.favorites).toEqual([
+    expect(avMessages.send.mock.calls[0][0].favorites).toEqual([
       { id: '123', pos: 0 },
       { id: '456', pos: 1 },
       { id: '789', pos: 2 },

@@ -37,7 +37,7 @@ const Favorites = ({ children }) => {
     avMessages.subscribe(
       AV_INTERNAL_GLOBALS.FAVORITES_CHANGED,
       (event, data) => {
-        setFavorites(get(data, 'message.favorites') || []);
+        setFavorites(get(data, 'favorites') || []);
       }
     );
 
@@ -77,12 +77,8 @@ const Favorites = ({ children }) => {
   };
 
   const sendUpdate = faves => {
-    const message = {
-      favorites: faves,
-    };
-
     avMessages.send({
-      message,
+      favorites: faves,
       event: AV_INTERNAL_GLOBALS.FAVORITES_UPDATE,
     });
   };
