@@ -30,7 +30,7 @@ const Favorites = ({ children }) => {
   const getFavorites = async () => {
     const result = await avSettingsApi.getApplication(NAV_APP_ID);
 
-    setFavorites(get(result, 'data.settings[0].favorites'));
+    setFavorites(get(result, 'data.settings[0].favorites') || []);
   };
 
   useEffectAsync(async () => {
