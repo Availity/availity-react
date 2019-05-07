@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [3.0.4](https://github.com/Availity/availity-react/compare/@availity/reactstrap-validation-select@3.0.3...@availity/reactstrap-validation-select@3.0.4) (2019-05-07)
+
+
+### Bug Fixes
+
+* **reactstrap-validation-select:** fix width of multivalue options ([9681abe](https://github.com/Availity/availity-react/commit/9681abe))
+
+
+
+
+
 ## [3.0.3](https://github.com/Availity/availity-react/compare/@availity/reactstrap-validation-select@3.0.2...@availity/reactstrap-validation-select@3.0.3) (2019-05-02)
 
 **Note:** Version bump only for package @availity/reactstrap-validation-select
