@@ -8,7 +8,6 @@ import isNumber from 'lodash.isnumber';
 import sortBy from 'lodash.sortby';
 import reduce from 'lodash.reduce';
 import clone from 'lodash.clone';
-import max from 'lodash.max';
 import findwhere from 'lodash.findwhere';
 import { avSettingsApi, avLogMessagesApi } from '@availity/api-axios';
 
@@ -112,7 +111,12 @@ const Favorites = ({ children }) => {
       return false;
     }
 
-    const maxFavorite = max(favorites, favorite => favorite.pos);
+    const maxFavorite = favorites.reduce((accum, fave) => {
+      if (!accum || fave.pos > accum.pos) {
+        accum = fave;
+      }
+      return accum;
+    }, null);
     const newData = clone(favorites);
 
     newData.push({

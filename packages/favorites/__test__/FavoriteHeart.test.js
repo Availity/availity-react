@@ -213,6 +213,22 @@ describe('FavoriteHeart', () => {
 
     await waitForElement(() => getByText('This item is favorited.'));
 
+    expect(avSettingsApi.setApplication).toHaveBeenCalledTimes(1);
+    // Test that favorite gets sent to settings and to correct position
+    expect(avSettingsApi.setApplication.mock.calls[0][1].favorites).toEqual([
+      {
+        id: '123',
+        pos: 0,
+      },
+      {
+        id: '456',
+        pos: 1,
+      },
+      {
+        id: '789',
+        pos: 2,
+      },
+    ]);
     expect(avMessages.send).toHaveBeenCalledTimes(1);
     expect(avMessages.send.mock.calls[0][0].event).toBe('av:favorites:update');
     // Test that post message sent to window.parent sends favorites returned from settings api

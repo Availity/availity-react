@@ -32,7 +32,6 @@
     "lodash.get": "^4.4.2",
     "lodash.isnumber": "^3.0.3",
     "lodash.isundefined": "^3.0.1",
-    "lodash.max": "^4.0.1",
     "lodash.reduce": "^4.6.0",
     "lodash.sortby": "^4.7.0",
     "prop-types": "^15.5.8"
