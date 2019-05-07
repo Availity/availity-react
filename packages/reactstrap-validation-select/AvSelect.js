@@ -217,7 +217,7 @@ class AvSelect extends AvBaseInput {
           },
           multiValue: provided => ({
             ...provided,
-            width: '85%',
+            width: 'auto',
           }),
           input: provided => ({
             ...provided,
