@@ -8,7 +8,6 @@ import isNumber from 'lodash.isnumber';
 import sortBy from 'lodash.sortby';
 import reduce from 'lodash.reduce';
 import clone from 'lodash.clone';
-import max from 'lodash.max';
 import findwhere from 'lodash.findwhere';
 import { avSettingsApi, avLogMessagesApi } from '@availity/api-axios';
 
@@ -30,14 +29,14 @@ const Favorites = ({ children }) => {
   const getFavorites = async () => {
     const result = await avSettingsApi.getApplication(NAV_APP_ID);
 
-    setFavorites(get(result, 'data.settings[0].favorites'));
+    setFavorites(get(result, 'data.settings[0].favorites') || []);
   };
 
   useEffectAsync(async () => {
     avMessages.subscribe(
       AV_INTERNAL_GLOBALS.FAVORITES_CHANGED,
       (event, data) => {
-        setFavorites(get(data, 'message.favorites') || []);
+        setFavorites(get(data, 'favorites') || []);
       }
     );
 
@@ -77,12 +76,8 @@ const Favorites = ({ children }) => {
   };
 
   const sendUpdate = faves => {
-    const message = {
-      favorites: faves,
-    };
-
     avMessages.send({
-      message,
+      favorites: faves,
       event: AV_INTERNAL_GLOBALS.FAVORITES_UPDATE,
     });
   };
@@ -116,7 +111,12 @@ const Favorites = ({ children }) => {
       return false;
     }
 
-    const maxFavorite = max(favorites, favorite => favorite.pos);
+    const maxFavorite = favorites.reduce((accum, fave) => {
+      if (!accum || fave.pos > accum.pos) {
+        accum = fave;
+      }
+      return accum;
+    }, null);
     const newData = clone(favorites);
 
     newData.push({
