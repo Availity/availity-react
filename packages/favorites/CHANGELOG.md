@@ -3,6 +3,19 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.1.4](https://github.com/Availity/availity-react/compare/@availity/favorites@1.1.3...@availity/favorites@1.1.4) (2019-05-08)
+
+
+### Bug Fixes
+
+* **favorites:** fix favorites structure in sendUpdate postMessage ([3094d47](https://github.com/Availity/availity-react/commit/3094d47))
+* **favorites:** fix logic determining max favorite ([4ce16cd](https://github.com/Availity/availity-react/commit/4ce16cd))
+* **favorites:** set favorites to an empty array rather than undefined ([2ee2249](https://github.com/Availity/availity-react/commit/2ee2249))
+
+
+
+
+
 ## [1.1.3](https://github.com/Availity/availity-react/compare/@availity/favorites@1.1.2...@availity/favorites@1.1.3) (2019-05-06)
 
 
