@@ -27,6 +27,7 @@ storiesOf('Page|Authorize', module)
         permissions={
           text('Permissions', '1234') || object('Permissions Array', [])
         }
+        organizationId={text("OrganizationId","1111")}
         negate={boolean('Negate', false)}
         loader={boolean('Loader', true)}
         unauthorized={text(
