@@ -83,7 +83,7 @@ class Authorize extends Component {
       ? permissions
       : [permissions];
     const permissionsList = [].concat(...permissionsSets);
-    let newPermissions = (await avUserPermissionsApi.getPermissions(
+    const newPermissions = (await avUserPermissionsApi.getPermissions(
       permissionsList,
       await this.getRegion()
     )).reduce((prev, cur) => {
