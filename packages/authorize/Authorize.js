@@ -64,9 +64,6 @@ class Authorize extends Component {
     if (!permission) return false;
 
     if (organizationId) {
-      console.log("Permission",permission,"OrgId",organizationId);
-      console.log("Are they equal?",organizationId.toString() === permission.organizationIds[0]);
-      console.log(`orgId:${organizationId.toString()} permissionOrg: ${permission.organizationIds[0]}`)
       return (
         permission.organizationIds.filter(orgId => orgId === organizationId)
           .length > 0
@@ -100,8 +97,6 @@ class Authorize extends Component {
           this.checkPermission(newPermissions[permission])
         );
       }
-      console.log("New permissions,",newPermissions);
-      console.log("permissionSet",permissionSet);
       return this.checkPermission(newPermissions[permissionSet]);
     });
     if (
