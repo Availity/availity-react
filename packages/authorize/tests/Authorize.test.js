@@ -15,7 +15,7 @@ beforeEach(() => {
   avUserPermissionsApi.getPermissions.mockResolvedValue([
     {
       id: '1234',
-      organizationIds: ['1111']
+      organizationIds: ['1111'],
     },
   ]);
 });
@@ -31,7 +31,7 @@ describe('Authorize', () => {
     await waitForElement(() => getByText('You have permission to see this'));
   });
 
-  test('should render authorized content', async () => {
+  test('should render unauthorized content', async () => {
     const { getByText } = render(
       <Authorize
         permissions="12345"
@@ -78,16 +78,13 @@ describe('Authorize', () => {
       <Authorize
         permissions="1234"
         organizationId="1111"
-        negate
         unauthorized="You do not have permission to see this"
       >
         You have permission to see this
       </Authorize>
     );
 
-    await waitForElement(() =>
-      getByText('You have permission to see this')
-    );
+    await waitForElement(() => getByText('You have permission to see this'));
   });
 
   test('should render unauthorized with incorrect organizationId', async () => {
@@ -95,7 +92,6 @@ describe('Authorize', () => {
       <Authorize
         permissions="1234"
         organizationId="1112"
-        negate
         unauthorized="You do not have permission to see this"
       >
         You have permission to see this
