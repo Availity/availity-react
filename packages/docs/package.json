@@ -1,6 +1,6 @@
 {
 	"name": "@availity/docs",
-	"version": "5.3.5",
+	"version": "5.3.6",
 	"private": true,
 	"author": "Robert McGuinness <rob.mcguinness@availity.com>",
 	"description": "Storybook docs for availity-react",
@@ -28,7 +28,7 @@
 		"@availity/api-axios": "^3.0.1",
 		"@availity/api-core": "^3.0.0",
 		"@availity/app-icon": "^1.2.0",
-		"@availity/authorize": "^1.1.4",
+		"@availity/authorize": "^1.1.5",
 		"@availity/breadcrumbs": "^3.0.1",
 		"@availity/favorites": "^1.1.4",
 		"@availity/feature": "^1.1.4",

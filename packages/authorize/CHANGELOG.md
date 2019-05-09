@@ -3,6 +3,18 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.1.5](https://github.com/Availity/availity-react/compare/@availity/authorize@1.1.4...@availity/authorize@1.1.5) (2019-05-09)
+
+
+### Bug Fixes
+
+* **authorize:** fixed unit tests :facepalm: ([87cac9d](https://github.com/Availity/availity-react/commit/87cac9d))
+* **authorize:** the authorize component was using the wrong axi struct ([acb90b1](https://github.com/Availity/availity-react/commit/acb90b1))
+
+
+
+
+
 ## [1.1.4](https://github.com/Availity/availity-react/compare/@availity/authorize@1.1.2...@availity/authorize@1.1.4) (2019-03-04)
 
 **Note:** Version bump only for package @availity/authorize
