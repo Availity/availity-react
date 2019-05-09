@@ -12,6 +12,7 @@ const WizardStep = ({
   href,
   children,
   className: classes,
+  ...rest
 }) => {
   const className = classNames(
     classes,
@@ -26,7 +27,7 @@ const WizardStep = ({
 
   const tagProps = Tag === 'a' ? { className, href } : { className };
   return (
-    <Tag data-testid="step-wizard-step" {...tagProps}>
+    <Tag data-testid="step-wizard-step" {...rest} {...tagProps}>
       {children}
     </Tag>
   );

@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import classNames from 'classnames';
 
-const Wizard = ({ tag: Tag, bar, stacked, children, progress }) => (
+const Wizard = ({ tag: Tag, bar, stacked, children, progress, ...rest }) => (
   <Tag
     className={classNames(
       'stepwizard',
@@ -11,6 +11,7 @@ const Wizard = ({ tag: Tag, bar, stacked, children, progress }) => (
       { 'stepwizard-progress': progress }
     )}
     data-testid="step-wizard-container"
+    {...rest}
   >
     <div className="stepwizard-row">{children}</div>
   </Tag>
