@@ -4,19 +4,7 @@ import { avUserPermissionsApi, avRegionsApi } from '@availity/api-axios';
 import BlockUi from 'react-block-ui';
 import 'react-block-ui/style.css';
 
-const warned = {};
-
-function warnOnce(message) {
-  if (!warned[message]) {
-    // eslint-disable-next-line no-console
-    if (typeof console !== 'undefined' && typeof console.error === 'function') {
-      console.error(message); // eslint-disable-line no-console
-    }
-    warned[message] = true;
-  }
-}
-
-const watching = ['region', 'organizationId', 'customId'];
+const watching = ['region', 'organizationId'];
 
 class Authorize extends Component {
   static propTypes = {
@@ -36,7 +24,6 @@ class Authorize extends Component {
     region: PropTypes.oneOfType([PropTypes.bool, PropTypes.string]),
     loader: PropTypes.oneOfType([PropTypes.bool, PropTypes.node]),
     organizationId: PropTypes.string,
-    customerId: PropTypes.string,
     unauthorized: PropTypes.node,
     children: PropTypes.node,
     negate: PropTypes.bool,
@@ -73,25 +60,19 @@ class Authorize extends Component {
   }
 
   checkPermission(permission) {
-    const { organizationId, customerId } = this.props;
+    const { organizationId } = this.props;
     if (!permission) return false;
+
     if (organizationId) {
-      if (customerId) {
-        warnOnce(
-          'You provided both `organizationId` and `customerId` to Authorize but both cannot be used together; `organizationId` will be used and `customerId` will be ignored. If you want to use `customerId` do not provide `organizationId`.'
-        );
-      }
+      console.log("Permission",permission,"OrgId",organizationId);
+      console.log("Are they equal?",organizationId.toString() === permission.organizationIds[0]);
+      console.log(`orgId:${organizationId.toString()} permissionOrg: ${permission.organizationIds[0]}`)
       return (
-        permission.organizations.filter(org => org.id === organizationId)
+        permission.organizationIds.filter(orgId => orgId === organizationId)
           .length > 0
       );
     }
-    if (customerId) {
-      return (
-        permission.organizations.filter(org => org.customerId === customerId)
-          .length > 0
-      );
-    }
+
     return true;
   }
 
@@ -105,7 +86,7 @@ class Authorize extends Component {
       ? permissions
       : [permissions];
     const permissionsList = [].concat(...permissionsSets);
-    const newPermissions = (await avUserPermissionsApi.getPermissions(
+    let newPermissions = (await avUserPermissionsApi.getPermissions(
       permissionsList,
       await this.getRegion()
     )).reduce((prev, cur) => {
@@ -119,6 +100,8 @@ class Authorize extends Component {
           this.checkPermission(newPermissions[permission])
         );
       }
+      console.log("New permissions,",newPermissions);
+      console.log("permissionSet",permissionSet);
       return this.checkPermission(newPermissions[permissionSet]);
     });
     if (
