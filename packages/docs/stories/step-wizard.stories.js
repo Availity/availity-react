@@ -1,5 +1,6 @@
 import React from 'react';
 import { storiesOf } from '@storybook/react';
+import { withKnobs, boolean, text } from '@storybook/addon-knobs/react';
 import README from '@availity/step-wizard/README.md';
 import Wizard, {
   WizardStep,
@@ -16,224 +17,45 @@ storiesOf('Components|StepWizard', module)
       StoryPreview: ({ children }) => <div>{children}</div>,
     },
   })
+  .addDecorator(withKnobs)
   .add('default', () => (
     <div className="py-3">
-      <Wizard>
-        <WizardStep complete href="#step-1">
+      <Wizard
+        bar={boolean('Wizard Bar', false)}
+        stacked={boolean('Wizard Stacked', false)}
+        progress={boolean('Wizard Progress', false)}
+      >
+        <WizardStep
+          complete={boolean('First Step Complete', false)}
+          active={boolean('First Step Active', false)}
+          disabled={boolean('First Step Disabled', false)}
+          clickable={boolean('First Step Clickable', false)}
+          href={text('First Step Href', '#step-1')}
+        >
           <WizardStepBadge>1</WizardStepBadge>
           <WizardStepTitle>First</WizardStepTitle>
         </WizardStep>
 
-        <WizardStep active href="#step-2">
+        <WizardStep
+          complete={boolean('Second Step Complete', false)}
+          active={boolean('Second Step Active', false)}
+          disabled={boolean('Second Step Disabled', false)}
+          clickable={boolean('Second Step Clickable', false)}
+          href={text('Second Step Href', '#step-2')}
+        >
           <WizardStepBadge>2</WizardStepBadge>
-          <WizardStepTitle>Second with some long text</WizardStepTitle>
+          <WizardStepTitle>Second</WizardStepTitle>
         </WizardStep>
 
-        <WizardStep href="#step-3">
+        <WizardStep
+          complete={boolean('Third Step Complete', false)}
+          active={boolean('Third Step Active', false)}
+          disabled={boolean('Third Step Disabled', false)}
+          clickable={boolean('Third Step Clickable', false)}
+          href={text('Third Step Href', '#step-3')}
+        >
           <WizardStepBadge>3</WizardStepBadge>
           <WizardStepTitle>Third</WizardStepTitle>
-        </WizardStep>
-
-        <WizardStep disabled href="#step-4">
-          <WizardStepBadge>4</WizardStepBadge>
-          <WizardStepTitle>
-            Fourth with some really really really long text
-          </WizardStepTitle>
-        </WizardStep>
-
-        <WizardStep>
-          <WizardStepBadge>5</WizardStepBadge>
-          <WizardStepTitle>Fifth without link</WizardStepTitle>
-        </WizardStep>
-
-        <WizardStep clickable>
-          <WizardStepBadge>6</WizardStepBadge>
-          <WizardStepTitle>Sixth without link but clickable</WizardStepTitle>
-        </WizardStep>
-      </Wizard>
-    </div>
-  ))
-  .add('default stacked', () => (
-    <div className="py-3">
-      <Wizard stacked>
-        <WizardStep complete href="#step-1">
-          <WizardStepBadge>1</WizardStepBadge>
-          <WizardStepTitle>First</WizardStepTitle>
-        </WizardStep>
-
-        <WizardStep active href="#step-2">
-          <WizardStepBadge>2</WizardStepBadge>
-          <WizardStepTitle>Second with some long text</WizardStepTitle>
-        </WizardStep>
-
-        <WizardStep href="#step-3">
-          <WizardStepBadge>3</WizardStepBadge>
-          <WizardStepTitle>Third</WizardStepTitle>
-        </WizardStep>
-
-        <WizardStep disabled href="#step-4">
-          <WizardStepBadge>4</WizardStepBadge>
-          <WizardStepTitle>
-            Fourth with some really really really long text
-          </WizardStepTitle>
-        </WizardStep>
-
-        <WizardStep>
-          <WizardStepBadge>5</WizardStepBadge>
-          <WizardStepTitle>Fifth without link</WizardStepTitle>
-        </WizardStep>
-
-        <WizardStep clickable>
-          <WizardStepBadge>6</WizardStepBadge>
-          <WizardStepTitle>Sixth without link but clickable</WizardStepTitle>
-        </WizardStep>
-      </Wizard>
-    </div>
-  ))
-  .add('with bar', () => (
-    <div className="py-3">
-      <Wizard bar>
-        <WizardStep complete href="#step-1">
-          <WizardStepBadge>1</WizardStepBadge>
-          <WizardStepTitle>First</WizardStepTitle>
-        </WizardStep>
-
-        <WizardStep active href="#step-2">
-          <WizardStepBadge>2</WizardStepBadge>
-          <WizardStepTitle>Second with some long text</WizardStepTitle>
-        </WizardStep>
-
-        <WizardStep href="#step-3">
-          <WizardStepBadge>3</WizardStepBadge>
-          <WizardStepTitle>Third</WizardStepTitle>
-        </WizardStep>
-
-        <WizardStep disabled href="#step-4">
-          <WizardStepBadge>4</WizardStepBadge>
-          <WizardStepTitle>
-            Fourth with some really really really long text
-          </WizardStepTitle>
-        </WizardStep>
-
-        <WizardStep>
-          <WizardStepBadge>5</WizardStepBadge>
-          <WizardStepTitle>Fifth without link</WizardStepTitle>
-        </WizardStep>
-
-        <WizardStep clickable>
-          <WizardStepBadge>6</WizardStepBadge>
-          <WizardStepTitle>Sixth without link but clickable</WizardStepTitle>
-        </WizardStep>
-      </Wizard>
-    </div>
-  ))
-  .add('with stacked bar', () => (
-    <div className="py-3">
-      <Wizard stacked bar>
-        <WizardStep complete href="#step-1">
-          <WizardStepBadge>1</WizardStepBadge>
-          <WizardStepTitle>First</WizardStepTitle>
-        </WizardStep>
-
-        <WizardStep active href="#step-2">
-          <WizardStepBadge>2</WizardStepBadge>
-          <WizardStepTitle>Second with some long text</WizardStepTitle>
-        </WizardStep>
-
-        <WizardStep href="#step-3">
-          <WizardStepBadge>3</WizardStepBadge>
-          <WizardStepTitle>Third</WizardStepTitle>
-        </WizardStep>
-
-        <WizardStep disabled href="#step-4">
-          <WizardStepBadge>4</WizardStepBadge>
-          <WizardStepTitle>
-            Fourth with some really really really long text
-          </WizardStepTitle>
-        </WizardStep>
-
-        <WizardStep>
-          <WizardStepBadge>5</WizardStepBadge>
-          <WizardStepTitle>Fifth without link</WizardStepTitle>
-        </WizardStep>
-
-        <WizardStep clickable>
-          <WizardStepBadge>6</WizardStepBadge>
-          <WizardStepTitle>Sixth without link but clickable</WizardStepTitle>
-        </WizardStep>
-      </Wizard>
-    </div>
-  ))
-  .add('with progress', () => (
-    <div className="py-3">
-      <Wizard progress>
-        <WizardStep complete href="#step-1">
-          <WizardStepBadge />
-          <WizardStepTitle>First</WizardStepTitle>
-        </WizardStep>
-
-        <WizardStep active href="#step-2">
-          <WizardStepBadge />
-          <WizardStepTitle>Second with some long text</WizardStepTitle>
-        </WizardStep>
-
-        <WizardStep href="#step-3">
-          <WizardStepBadge />
-          <WizardStepTitle>Third</WizardStepTitle>
-        </WizardStep>
-
-        <WizardStep disabled href="#step-4">
-          <WizardStepBadge />
-          <WizardStepTitle>
-            Fourth with some really really really long text
-          </WizardStepTitle>
-        </WizardStep>
-
-        <WizardStep>
-          <WizardStepBadge />
-          <WizardStepTitle>Fifth without link</WizardStepTitle>
-        </WizardStep>
-
-        <WizardStep clickable>
-          <WizardStepBadge />
-          <WizardStepTitle>Sixth without link but clickable</WizardStepTitle>
-        </WizardStep>
-      </Wizard>
-    </div>
-  ))
-  .add('with stacked progress', () => (
-    <div className="py-3">
-      <Wizard stacked progress>
-        <WizardStep complete href="#step-1">
-          <WizardStepBadge />
-          <WizardStepTitle>First</WizardStepTitle>
-        </WizardStep>
-
-        <WizardStep active href="#step-2">
-          <WizardStepBadge />
-          <WizardStepTitle>Second with some long text</WizardStepTitle>
-        </WizardStep>
-
-        <WizardStep href="#step-3">
-          <WizardStepBadge />
-          <WizardStepTitle>Third</WizardStepTitle>
-        </WizardStep>
-
-        <WizardStep disabled href="#step-4">
-          <WizardStepBadge />
-          <WizardStepTitle>
-            Fourth with some really really really long text
-          </WizardStepTitle>
-        </WizardStep>
-
-        <WizardStep>
-          <WizardStepBadge />
-          <WizardStepTitle>Fifth without link</WizardStepTitle>
-        </WizardStep>
-
-        <WizardStep clickable>
-          <WizardStepBadge />
-          <WizardStepTitle>Sixth without link but clickable</WizardStepTitle>
         </WizardStep>
       </Wizard>
     </div>
