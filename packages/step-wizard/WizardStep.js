@@ -4,7 +4,6 @@ import classNames from 'classnames';
 
 const WizardStep = ({
   tag,
-  link,
   complete,
   active,
   disabled,
@@ -23,7 +22,7 @@ const WizardStep = ({
     { 'stepwizard-step-clickable': clickable }
   );
 
-  const Tag = tag || (link ? 'a' : 'div');
+  const Tag = tag || (href ? 'a' : 'div');
 
   const tagProps = Tag === 'a' ? { className, href } : { className };
   return (
@@ -34,7 +33,6 @@ const WizardStep = ({
 };
 
 WizardStep.propTypes = {
-  link: PropTypes.bool,
   complete: PropTypes.bool,
   active: PropTypes.bool,
   disabled: PropTypes.bool,

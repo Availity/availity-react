@@ -19,22 +19,22 @@ storiesOf('Components|StepWizard', module)
   .add('default', () => (
     <div className="py-3">
       <Wizard>
-        <WizardStep complete link href="#step-1">
+        <WizardStep complete href="#step-1">
           <WizardStepBadge>1</WizardStepBadge>
           <WizardStepTitle>First</WizardStepTitle>
         </WizardStep>
 
-        <WizardStep active link href="#step-2">
+        <WizardStep active href="#step-2">
           <WizardStepBadge>2</WizardStepBadge>
           <WizardStepTitle>Second with some long text</WizardStepTitle>
         </WizardStep>
 
-        <WizardStep link href="#step-3">
+        <WizardStep href="#step-3">
           <WizardStepBadge>3</WizardStepBadge>
           <WizardStepTitle>Third</WizardStepTitle>
         </WizardStep>
 
-        <WizardStep disabled link href="#step-4">
+        <WizardStep disabled href="#step-4">
           <WizardStepBadge>4</WizardStepBadge>
           <WizardStepTitle>
             Fourth with some really really really long text
@@ -56,22 +56,22 @@ storiesOf('Components|StepWizard', module)
   .add('default stacked', () => (
     <div className="py-3">
       <Wizard stacked>
-        <WizardStep complete link href="#step-1">
+        <WizardStep complete href="#step-1">
           <WizardStepBadge>1</WizardStepBadge>
           <WizardStepTitle>First</WizardStepTitle>
         </WizardStep>
 
-        <WizardStep active link href="#step-2">
+        <WizardStep active href="#step-2">
           <WizardStepBadge>2</WizardStepBadge>
           <WizardStepTitle>Second with some long text</WizardStepTitle>
         </WizardStep>
 
-        <WizardStep link href="#step-3">
+        <WizardStep href="#step-3">
           <WizardStepBadge>3</WizardStepBadge>
           <WizardStepTitle>Third</WizardStepTitle>
         </WizardStep>
 
-        <WizardStep disabled link href="#step-4">
+        <WizardStep disabled href="#step-4">
           <WizardStepBadge>4</WizardStepBadge>
           <WizardStepTitle>
             Fourth with some really really really long text
@@ -93,22 +93,22 @@ storiesOf('Components|StepWizard', module)
   .add('with bar', () => (
     <div className="py-3">
       <Wizard bar>
-        <WizardStep complete link href="#step-1">
+        <WizardStep complete href="#step-1">
           <WizardStepBadge>1</WizardStepBadge>
           <WizardStepTitle>First</WizardStepTitle>
         </WizardStep>
 
-        <WizardStep active link href="#step-2">
+        <WizardStep active href="#step-2">
           <WizardStepBadge>2</WizardStepBadge>
           <WizardStepTitle>Second with some long text</WizardStepTitle>
         </WizardStep>
 
-        <WizardStep link href="#step-3">
+        <WizardStep href="#step-3">
           <WizardStepBadge>3</WizardStepBadge>
           <WizardStepTitle>Third</WizardStepTitle>
         </WizardStep>
 
-        <WizardStep disabled link href="#step-4">
+        <WizardStep disabled href="#step-4">
           <WizardStepBadge>4</WizardStepBadge>
           <WizardStepTitle>
             Fourth with some really really really long text
@@ -130,22 +130,22 @@ storiesOf('Components|StepWizard', module)
   .add('with stacked bar', () => (
     <div className="py-3">
       <Wizard stacked bar>
-        <WizardStep complete link href="#step-1">
+        <WizardStep complete href="#step-1">
           <WizardStepBadge>1</WizardStepBadge>
           <WizardStepTitle>First</WizardStepTitle>
         </WizardStep>
 
-        <WizardStep active link href="#step-2">
+        <WizardStep active href="#step-2">
           <WizardStepBadge>2</WizardStepBadge>
           <WizardStepTitle>Second with some long text</WizardStepTitle>
         </WizardStep>
 
-        <WizardStep link href="#step-3">
+        <WizardStep href="#step-3">
           <WizardStepBadge>3</WizardStepBadge>
           <WizardStepTitle>Third</WizardStepTitle>
         </WizardStep>
 
-        <WizardStep disabled link href="#step-4">
+        <WizardStep disabled href="#step-4">
           <WizardStepBadge>4</WizardStepBadge>
           <WizardStepTitle>
             Fourth with some really really really long text
@@ -167,22 +167,22 @@ storiesOf('Components|StepWizard', module)
   .add('with progress', () => (
     <div className="py-3">
       <Wizard progress>
-        <WizardStep complete link href="#step-1">
+        <WizardStep complete href="#step-1">
           <WizardStepBadge />
           <WizardStepTitle>First</WizardStepTitle>
         </WizardStep>
 
-        <WizardStep active link href="#step-2">
+        <WizardStep active href="#step-2">
           <WizardStepBadge />
           <WizardStepTitle>Second with some long text</WizardStepTitle>
         </WizardStep>
 
-        <WizardStep link href="#step-3">
+        <WizardStep href="#step-3">
           <WizardStepBadge />
           <WizardStepTitle>Third</WizardStepTitle>
         </WizardStep>
 
-        <WizardStep disabled link href="#step-4">
+        <WizardStep disabled href="#step-4">
           <WizardStepBadge />
           <WizardStepTitle>
             Fourth with some really really really long text
@@ -204,22 +204,22 @@ storiesOf('Components|StepWizard', module)
   .add('with stacked progress', () => (
     <div className="py-3">
       <Wizard stacked progress>
-        <WizardStep complete link href="#step-1">
+        <WizardStep complete href="#step-1">
           <WizardStepBadge />
           <WizardStepTitle>First</WizardStepTitle>
         </WizardStep>
 
-        <WizardStep active link href="#step-2">
+        <WizardStep active href="#step-2">
           <WizardStepBadge />
           <WizardStepTitle>Second with some long text</WizardStepTitle>
         </WizardStep>
 
-        <WizardStep link href="#step-3">
+        <WizardStep href="#step-3">
           <WizardStepBadge />
           <WizardStepTitle>Third</WizardStepTitle>
         </WizardStep>
 
-        <WizardStep disabled link href="#step-4">
+        <WizardStep disabled href="#step-4">
           <WizardStepBadge />
           <WizardStepTitle>
             Fourth with some really really really long text

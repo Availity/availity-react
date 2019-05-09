@@ -37,19 +37,11 @@ describe('WizardStep', () => {
     expect(container.className).toContain('stepwizard-step-clickable');
   });
 
-  test('should render link href when tag is an anchor tag', () => {
-    const { getByTestId } = render(<WizardStep link href="#step1" />);
-
-    const container = getByTestId('step-wizard-step');
-
-    expect(container.getAttribute('href')).toBe('#step1');
-  });
-
-  test('should not render link href when tag is not an anchor tag ', () => {
+  test('should render anchor tag when href is provided', () => {
     const { getByTestId } = render(<WizardStep href="#step1" />);
 
     const container = getByTestId('step-wizard-step');
 
-    expect(container.getAttribute('href')).toBeFalsy();
+    expect(container.querySelector('a[href="#step1"]')).toBeDefined();
   });
 });

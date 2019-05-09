@@ -1,5 +1,4 @@
 export interface WizardStepProps {
-    link?: boolean;
     complete?: boolean;
     active?: boolean;
     disabled?: boolean;

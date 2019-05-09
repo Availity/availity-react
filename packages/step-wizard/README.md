@@ -16,22 +16,22 @@ import Wizard, { WizardStep, WizardStepBadge, WizardStepTitle } from '@availity/
 
 // ...
 <Wizard>
-  <WizardStep complete link href="#step-1">
+  <WizardStep complete href="#step-1">
     <WizardStepBadge>1</WizardStepBadge>
     <WizardStepTitle>First</WizardStepTitle>
   </WizardStep>
 
-  <WizardStep active link href="#step-2">
+  <WizardStep active href="#step-2">
     <WizardStepBadge>2</WizardStepBadge>
     <WizardStepTitle>Second with some long text</WizardStepTitle>
   </WizardStep>
 
-  <WizardStep link href="#step-3">
+  <WizardStep href="#step-3">
     <WizardStepBadge>3</WizardStepBadge>
     <WizardStepTitle>Third</WizardStepTitle>
   </WizardStep>
 
-  <WizardStep disabled link href="#step-4">
+  <WizardStep disabled href="#step-4">
     <WizardStepBadge>4</WizardStepBadge>
     <WizardStepTitle>Fourth with some really really really long text</WizardStepTitle>
   </WizardStep>
@@ -61,12 +61,11 @@ The container for the step wizard
 A step in the `<Wizard />`
 
 ##### Props
-- **`link`**: Boolean. Optional. If true, renders an anchor tag for the step. Otherwise a `<div>` gets rendered.
 - **`complete`**: Boolean. Optional. Triggers the "complete" style in the step.
 - **`active`**: Boolean. Optional. Triggers the "active" style in the step.
 - **`disabled`**: Boolean. Optional. Triggers the "disabled" style in the step.
 - **`clickable`**: Boolean. Optional. Triggers the "clickable" style in the step.
-- **`href`**: String. Optional. Specifies the URL of the page the link goes to. Only used when `link` is true
+- **`href`**: String. Optional. Specifies the URL of the page the link goes to. When provided, an anchor tag will be rendered for the step
 
 #### WizardStepBadge
 The badge to display in a `<WizardStep />`
