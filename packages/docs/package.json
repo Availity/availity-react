@@ -1,6 +1,6 @@
 {
   "name": "@availity/docs",
-  "version": "5.4.0",
+  "version": "5.4.1",
   "private": true,
   "author": "Robert McGuinness <rob.mcguinness@availity.com>",
   "description": "Storybook docs for availity-react",
@@ -44,7 +44,7 @@
     "@availity/payer-logo": "^3.0.0",
     "@availity/reactstrap-validation-date": "^1.7.8",
     "@availity/reactstrap-validation-select": "^3.0.5",
-    "@availity/step-wizard": "^1.2.0",
+    "@availity/step-wizard": "^1.2.1",
     "@availity/training-link": "^1.1.4",
     "@availity/upload": "^1.8.1",
     "@availity/upload-core": "^2.0.0",
