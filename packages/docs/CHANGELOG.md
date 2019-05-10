@@ -3,6 +3,23 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [5.4.0](https://github.com/Availity/availity-react/compare/@availity/docs@5.3.6...@availity/docs@5.4.0) (2019-05-10)
+
+
+### Bug Fixes
+
+* **docs:** add [@availity](https://github.com/availity)/step-wizard dep ([f42dce3](https://github.com/Availity/availity-react/commit/f42dce3))
+
+
+### Features
+
+* **docs:** use knobs for step wizard stories ([4128e91](https://github.com/Availity/availity-react/commit/4128e91))
+* **step-wizard:** add step wizard package ([0e21d6a](https://github.com/Availity/availity-react/commit/0e21d6a))
+
+
+
+
+
 ## [5.3.6](https://github.com/Availity/availity-react/compare/@availity/docs@5.3.5...@availity/docs@5.3.6) (2019-05-09)
 
 **Note:** Version bump only for package @availity/docs
