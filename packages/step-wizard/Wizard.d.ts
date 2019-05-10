@@ -4,6 +4,7 @@ export interface WizardProps {
     progress?: boolean;
     children?: React.ReactType;
     tag?: React.ReactType | string;
+    className?: string;
 }
 
 declare const Wizard: React.FunctionComponent<WizardProps>;
