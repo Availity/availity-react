@@ -115,6 +115,7 @@ See availity-reactstrap-validation for additional props, such as `name`, `valida
 *   **`start`**: Object. Required. and object which will be spread on the start date input. It must contain the `name` prop as required by availity-reactstrap-validation. It can contain additional validations as well.
 *   **`end`**: Object. Required. and object which will be spread on the end date input. It must contain the `name` prop as required by availity-reactstrap-validation. It can contain additional validations as well.
 *   **`distance`**: Object. Optional. Object containing the `min` and `max` distance the start and end dates are allowed to be apart from each other. See example below.
+*   **`calendarIcon`**: Node. Optional. Default: `<Icon name="calendar" />`. You can optional change the icon the calendar renders in the case you don't use the `availity-uikit` icons.
 
 #### AvDateRange Example usage
 
