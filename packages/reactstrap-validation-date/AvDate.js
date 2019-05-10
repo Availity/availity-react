@@ -1,3 +1,4 @@
+/* eslint-disable react/default-props-match-prop-types */
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { Button, InputGroupAddon, Popover } from 'reactstrap';
@@ -6,6 +7,7 @@ import {
   inputType,
   isoDateFormat,
 } from 'availity-reactstrap-validation/lib/AvValidator/utils';
+import Icon from '@availity/icon';
 import { Calendar } from 'react-date-range';
 import { AvInput } from 'availity-reactstrap-validation';
 import './styles.scss';
@@ -46,7 +48,10 @@ const theme = {
 };
 
 class AvDate extends Component {
-  static propTypes = AvInput.propTypes;
+  static propTypes = {
+    ...AvInput.propTypes,
+    calendarIcon: PropTypes.node,
+  };
 
   static contextTypes = {
     FormCtrl: PropTypes.object.isRequired,
@@ -55,6 +60,7 @@ class AvDate extends Component {
   static defaultProps = {
     type: 'text',
     datepicker: true,
+    calendarIcon: <Icon name="calendar" />,
   };
 
   static getDerivedStateFromProps = ({ value }, prevState) => {
@@ -145,7 +151,7 @@ class AvDate extends Component {
   };
 
   render() {
-    const { datepicker, ...props } = this.props;
+    const { datepicker, calendarIcon, ...props } = this.props;
     const id = `${(this.props.id || this.props.name).replace(
       /[^a-zA-Z0-9]/gi,
       ''
@@ -179,7 +185,7 @@ class AvDate extends Component {
               zIndex: 'auto',
             }}
           >
-            <span className="icon icon-calendar" />
+            {calendarIcon}
             <span className="sr-only">Toggle Calendar</span>
           </Button>
         </InputGroupAddon>

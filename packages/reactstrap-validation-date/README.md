@@ -55,6 +55,7 @@ This is the underlying date without the `AvGroup`, `Label` or `AvFeedback`
 See availity-reactstrap-validation for additional props, such as `name`, `validate`, `min`, `max`, and more.
 
 *   **`datepicker`**: Boolean. Optional. Default: `true`. If `true`, the date picker button will be shown, clicking it activates the datepicker calendar. If `false`, only the date input field will be displayed (useful for date of birth fields).
+*   **`calendarIcon`**: Node. Optional. Default: `<Icon name="calendar" />`. You can optional change the icon the calendar renders in the case you don't use the `availity-uikit` icons.
 
 #### AvDate Example usage
 
