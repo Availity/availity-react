@@ -31,8 +31,9 @@ exports[`AvDate should render 1`] = `
           style="z-index: auto;"
           type="button"
         >
-          <span
-            class="icon icon-calendar"
+          <i
+            aria-label="calendar"
+            class="icon icon-calendar undefined"
           />
           <span
             class="sr-only"
