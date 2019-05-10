@@ -6,6 +6,9 @@ module.exports = ({ config: defaultConfig }) => {
   jsRule.exclude = /node_modules\/(?!(@av)).*/;
   jsRule.include = undefined;
 
+  // https://github.com/storybooks/storybook/issues/6204#issuecomment-478998529
+  delete defaultConfig.resolve.alias['core-js'];
+
   defaultConfig.plugins.push(new DuplicatePackageCheckerPlugin());
 
   defaultConfig.module.rules.push({
