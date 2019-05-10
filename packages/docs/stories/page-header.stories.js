@@ -19,7 +19,7 @@ const CustomBreadcrumbs = (
   </Breadcrumbs>
 );
 
-storiesOf('Page|Header', module)
+storiesOf('Components|Header', module)
   .addParameters({
     readme: {
       // Show readme at the addons panel
@@ -59,7 +59,7 @@ storiesOf('Page|Header', module)
         clientId={text('Client ID', 'my-client-id')}
         payerId={text('Payer ID', 'PayerID')}
       >
-        {text('Application Name', 'Payer Space (Beta)')}
+        {text('Application Name', 'Payer Space')}
       </PageHeader>
       <p>
         Note: the logo uses a relative URL which will only work on the Availity
@@ -73,7 +73,7 @@ storiesOf('Page|Header', module)
       spaceId={text('Payer Space ID', '73162546201441126239486200007187')}
       spaceName={text('Payer Space Name', 'Payers Space')}
     >
-      {text('Application Name', 'Payer Space (Beta)')}
+      {text('Application Name', 'Payer Space')}
     </PageHeader>
   ))
   .add('with arbitrary breadcrumbs', () => (
@@ -84,12 +84,12 @@ storiesOf('Page|Header', module)
         { name: 'Parent', url: '/parent' },
       ]}
     >
-      {text('Application Name', 'Payer Space (Beta)')}
+      {text('Application Name', 'Payer Space')}
     </PageHeader>
   ))
   .add('with custom breadcrumbs', () => (
     <PageHeader appName="Payer Space" crumbs={CustomBreadcrumbs}>
-      {text('Application Name', 'Payer Space (Beta)')}
+      {text('Application Name', 'Payer Space')}
     </PageHeader>
   ))
   .add('with feedback', () => (

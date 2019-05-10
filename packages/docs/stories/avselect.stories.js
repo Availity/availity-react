@@ -35,7 +35,7 @@ const options = [
 
 const avCustomResource = new AvApi({ name: 'my-custom-resource' });
 
-storiesOf('Reactstrap Validation|AvSelect', module)
+storiesOf('Components|AvSelect', module)
   .addParameters({
     readme: {
       // Show readme at the addons panel
@@ -163,7 +163,7 @@ storiesOf('Reactstrap Validation|AvSelect', module)
     );
   });
 
-storiesOf('Reactstrap Validation|AvSelect/resources', module)
+storiesOf('Components|AvSelect/resources', module)
   .addParameters({
     readme: {
       // Show readme at the addons panel

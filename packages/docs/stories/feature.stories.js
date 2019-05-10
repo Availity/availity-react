@@ -6,7 +6,7 @@ import Feature from '@availity/feature';
 import README from '@availity/feature/README.md';
 import './mock-requests';
 
-storiesOf('Page|Feature', module)
+storiesOf('Components|Feature', module)
   .addParameters({
     readme: {
       // Show readme at the addons panel

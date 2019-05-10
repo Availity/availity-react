@@ -9,6 +9,7 @@ import {
 } from 'availity-reactstrap-validation/lib/AvValidator/utils';
 import { AvInput } from 'availity-reactstrap-validation';
 import { DateRange } from 'react-date-range';
+import Icon from '@availity/icon';
 import AvDate from './AvDate';
 
 let count = 0;
@@ -88,11 +89,15 @@ export default class AvDateRange extends Component {
     ranges: PropTypes.oneOfType([PropTypes.array, PropTypes.object]),
     defaultValues: PropTypes.object,
     theme: PropTypes.object,
+    calendarIcon: PropTypes.node,
   };
 
   static contextTypes = { FormCtrl: PropTypes.object.isRequired };
 
-  static defaultProps = { type: 'text' };
+  static defaultProps = {
+    type: 'text',
+    calendarIcon: <Icon name="calendar" />,
+  };
 
   constructor(props, context) {
     super(props, context);
@@ -385,7 +390,7 @@ export default class AvDateRange extends Component {
               zIndex: 'auto',
             }}
           >
-            <span className="icon icon-calendar" />
+            {this.props.calendarIcon}
             <span className="sr-only">Toggle Calendar</span>
           </Button>
         </InputGroupAddon>

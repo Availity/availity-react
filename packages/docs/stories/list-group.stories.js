@@ -6,7 +6,7 @@ import { ListGroupItem } from 'reactstrap';
 import ListGroup from '@availity/list-group';
 import README from '@availity/list-group/README.md';
 
-storiesOf('Collections|List Group', module)
+storiesOf('Components|List Group', module)
   .addParameters({
     readme: {
       // Show readme at the addons panel

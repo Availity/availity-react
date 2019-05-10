@@ -7,7 +7,7 @@ import './mock-requests';
 import Feedback, { FeedbackForm } from '@availity/feedback';
 import README from '@availity/feedback/README.md';
 
-storiesOf('Actions|Feedback', module)
+storiesOf('Components|Feedback', module)
   .addParameters({
     readme: {
       // Show readme at the addons panel

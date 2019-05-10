@@ -15,7 +15,7 @@ const colorOptions = {
   '(none)': '',
 };
 
-storiesOf('Collections|List Group Item', module)
+storiesOf('Components|List Group Item', module)
   .addParameters({
     readme: {
       // Show readme at the addons panel

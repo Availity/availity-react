@@ -3,6 +3,14 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [5.3.6](https://github.com/Availity/availity-react/compare/@availity/docs@5.3.5...@availity/docs@5.3.6) (2019-05-09)
+
+**Note:** Version bump only for package @availity/docs
+
+
+
+
+
 ## [5.3.5](https://github.com/Availity/availity-react/compare/@availity/docs@5.3.4...@availity/docs@5.3.5) (2019-05-08)
 
 **Note:** Version bump only for package @availity/docs

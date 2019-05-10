@@ -58,7 +58,7 @@ import PageHeader from '@availity/page-header';
   spaceName="Payer's Space"
   spaceId="73162546201441126239486200007187"
 >
-  Payer Space<sup>beta</sup>
+  Payer Space
 </PageHeader>
 // ...
 ```

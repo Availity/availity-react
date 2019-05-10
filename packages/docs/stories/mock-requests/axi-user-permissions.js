@@ -1,4 +1,4 @@
-import axiUserPermissions from '../data/permissions.json';
+import axiUserPermissions from '../data/legacy-permissions.json';
 
 export default mock => {
   mock.get(/\/api\/internal\/v1\/axi-user-permissions.*/, (req, res) => {
