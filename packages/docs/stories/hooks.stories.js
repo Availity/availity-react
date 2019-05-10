@@ -7,7 +7,6 @@ import { useToggle, useEffectAsync } from '@availity/hooks';
 import { Button, Card } from 'reactstrap';
 
 import README from '@availity/hooks/README.md';
-import { setInterval } from 'core-js';
 
 const asyncFunction = data =>
   new Promise(resolve => setInterval(() => resolve(data), 1000));
