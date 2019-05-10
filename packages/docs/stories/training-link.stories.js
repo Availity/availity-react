@@ -6,7 +6,7 @@ import TrainingLink from '@availity/training-link';
 import README from '@availity/training-link/README.md';
 import { text } from '@storybook/addon-knobs';
 
-storiesOf('Actions|Training Link', module)
+storiesOf('Components|Training Link', module)
   .addParameters({
     readme: {
       // Show readme at the addons panel

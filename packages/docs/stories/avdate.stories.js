@@ -15,7 +15,7 @@ const types = {
   text: 'text',
   date: 'date',
 };
-storiesOf('Reactstrap Validation|AvDate', module)
+storiesOf('Components|AvDate', module)
   .addParameters({
     readme: {
       // Show readme at the addons panel

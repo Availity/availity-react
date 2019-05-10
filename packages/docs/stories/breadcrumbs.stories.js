@@ -40,7 +40,7 @@ const ReactRouterDestination = () => (
   </div>
 );
 
-storiesOf('Navigation|Breadcrumbs', module)
+storiesOf('Components|Breadcrumbs', module)
   .addParameters({
     readme: {
       // Show readme at the addons panel
@@ -64,7 +64,7 @@ storiesOf('Navigation|Breadcrumbs', module)
       active={text('Active Page', 'Payer Spaces')}
     />
   ))
-  .add('activeblank', () => <Breadcrumbs active="" />)
+  .add('active blank', () => <Breadcrumbs active="" />)
   .add('with parents', () => (
     <Breadcrumbs
       emptyState={text('Empty State', Breadcrumbs.defaultProps.emptyState)}

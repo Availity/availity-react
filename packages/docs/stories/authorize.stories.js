@@ -5,7 +5,7 @@ import { withKnobs, text, boolean, object } from '@storybook/addon-knobs/react';
 import Authorize from '@availity/authorize';
 import README from '@availity/authorize/README.md';
 
-storiesOf('Page|Authorize', module)
+storiesOf('Components|Authorize', module)
   .addParameters({
     readme: {
       // Show readme at the addons panel
@@ -27,7 +27,7 @@ storiesOf('Page|Authorize', module)
         permissions={
           text('Permissions', '1234') || object('Permissions Array', [])
         }
-        organizationId={text("OrganizationId","1111")}
+        organizationId={text('OrganizationId', '1111')}
         negate={boolean('Negate', false)}
         loader={boolean('Loader', true)}
         unauthorized={text(
