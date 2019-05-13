@@ -2,12 +2,12 @@ import React from 'react';
 import { render, waitForElement, cleanup } from 'react-testing-library';
 import { avSlotMachineApi } from '@availity/api-axios';
 
-import PayerLogo, { PayerBillboard, PayerTile } from '..';
+import SpacesLogo, { SpacesBillboard, SpacesTile } from '..';
 
 jest.mock('@availity/api-axios');
 
-describe('PayerImage', () => {
-  describe('PayerLogo', () => {
+describe('SpacesImage', () => {
+  describe('SpacesLogo', () => {
     afterEach(() => {
       jest.clearAllMocks();
       cleanup();
@@ -35,7 +35,7 @@ describe('PayerImage', () => {
       });
 
       const { container } = render(
-        <PayerLogo payerId="BCBSF" clientId="my-client-id" />
+        <SpacesLogo payerId="BCBSF" clientId="my-client-id" />
       );
 
       await waitForElement(() =>
@@ -57,7 +57,7 @@ describe('PayerImage', () => {
       });
 
       const { container } = render(
-        <PayerLogo payerId="00681" clientId="my-client-id" />
+        <SpacesLogo payerId="00681" clientId="my-client-id" />
       );
 
       await waitForElement(() =>
@@ -85,7 +85,7 @@ describe('PayerImage', () => {
       });
 
       const { container } = render(
-        <PayerLogo
+        <SpacesLogo
           spaceId="73162546201441126239486200007187"
           clientId="my-client-id"
         />
@@ -99,7 +99,7 @@ describe('PayerImage', () => {
     });
   });
 
-  describe('PayerTile', () => {
+  describe('SpacesTile', () => {
     test('should render with payer id', async () => {
       avSlotMachineApi.create.mockResolvedValue({
         data: {
@@ -122,7 +122,7 @@ describe('PayerImage', () => {
       });
 
       const { container } = render(
-        <PayerTile payerId="BCBSF" clientId="my-client-id" />
+        <SpacesTile payerId="BCBSF" clientId="my-client-id" />
       );
 
       await waitForElement(() =>
@@ -150,7 +150,7 @@ describe('PayerImage', () => {
       });
 
       const { container } = render(
-        <PayerTile
+        <SpacesTile
           spaceId="73162546201441126239486200007187"
           clientId="my-client-id"
         />
@@ -164,7 +164,7 @@ describe('PayerImage', () => {
     });
   });
 
-  describe('PayerBillboard', () => {
+  describe('SpacesBillboard', () => {
     test('should render with payer id', async () => {
       avSlotMachineApi.create.mockResolvedValue({
         data: {
@@ -187,7 +187,7 @@ describe('PayerImage', () => {
       });
 
       const { container } = render(
-        <PayerBillboard payerId="BCBSF" clientId="my-client-id" />
+        <SpacesBillboard payerId="BCBSF" clientId="my-client-id" />
       );
 
       await waitForElement(() =>
@@ -215,7 +215,7 @@ describe('PayerImage', () => {
       });
 
       const { container } = render(
-        <PayerBillboard
+        <SpacesBillboard
           spaceId="73162546201441126239486200007187"
           clientId="my-client-id"
         />

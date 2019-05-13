@@ -94,7 +94,7 @@ const getImage = async (spaceId, payerId, clientId, imageType) => {
   }
 };
 
-const PayerImage = ({ spaceId, payerId, clientId, imageType, ...props }) => {
+const SpacesImage = ({ spaceId, payerId, clientId, imageType, ...props }) => {
   const [url, setUrl] = useState(null);
 
   useEffectAsync(async () => {
@@ -104,10 +104,10 @@ const PayerImage = ({ spaceId, payerId, clientId, imageType, ...props }) => {
 
   if (!clientId || (!payerId && !spaceId)) return null;
 
-  return <img src={url} alt={`Payer ${imageType}`} {...props} />;
+  return <img src={url} alt={`Space ${imageType}`} {...props} />;
 };
 
-PayerImage.propTypes = {
+SpacesImage.propTypes = {
   spaceId: PropTypes.string,
   payerId: PropTypes.string,
   clientId: PropTypes.string.isRequired,
@@ -117,11 +117,11 @@ PayerImage.propTypes = {
 // Adapted from https://github.com/Availity/availity-react/blob/master/packages/reactstrap-validation-select/AvResourceSelect.js
 const ucFirst = str => str && str.charAt(0).toUpperCase() + str.slice(1);
 
-PayerImage.create = defaults => {
-  const SpecificPayerImage = props => <PayerImage {...defaults} {...props} />;
+SpacesImage.create = defaults => {
+  const SpecificSpacesImage = props => <SpacesImage {...defaults} {...props} />;
 
-  SpecificPayerImage.displayName = `Payer${ucFirst(defaults.imageType)}`;
-  return SpecificPayerImage;
+  SpecificSpacesImage.displayName = `Spaces${ucFirst(defaults.imageType)}`;
+  return SpecificSpacesImage;
 };
 
-export default PayerImage;
+export default SpacesImage;

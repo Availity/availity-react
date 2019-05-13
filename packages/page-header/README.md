@@ -35,7 +35,7 @@ The standard Availity application header which appears at the top of the page. I
 - **`feedbackProps`**: See [Feedback](../feedback/README.md). Props to send to `<Feedback />` component
 - **`crumbs`**: Array(Object) or [BreadCrumbs](../breadcrumbs/README.md) . Optional. Array of Objects contains `name` (String) and `url` (string) properties. Optional. The ancestor pages which gets passed to the `Breadcrumbs` component. See the children props sections of the @availity/Breadcrumbs documentation
 - **`component`**: Component. Optional. Allow rendering of an optional component in the top right of the header.
-- **`clientId`**: String. Optional. client id to use in [PayerLogo](../payer-image/README.md)
+- **`clientId`**: String. Optional. client id to use in [SpacesLogo](../spaces-image/README.md)
 - **`iconSrc`**: String. Optional. Image source for `AppIcon` instead of `appAbbr`
 -**`iconAlt`**: String. Required if `iconSrc`. Image alt property of `AppIcon`
 

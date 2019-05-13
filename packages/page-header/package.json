@@ -23,7 +23,7 @@
     "@availity/app-icon": "^1.2.0",
     "@availity/breadcrumbs": "^3.0.1",
     "@availity/feedback": "^4.1.6",
-    "@availity/payer-image": "^1.0.0",
+    "@availity/spaces-image": "^1.0.0",
     "@availity/training-link": "^1.1.4",
     "prop-types": "^15.5.8"
   },

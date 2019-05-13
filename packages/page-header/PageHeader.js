@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import Breadcrumbs from '@availity/breadcrumbs';
 import AppIcon from '@availity/app-icon';
 import Feedback from '@availity/feedback';
-import PayerLogo from '@availity/payer-image';
+import SpacesLogo from '@availity/spaces-image';
 
 const PageHeader = ({
   payerId,
@@ -55,7 +55,7 @@ const PageHeader = ({
           {children || appName}
         </div>
         {payerId && (
-          <PayerLogo
+          <SpacesLogo
             spaceId={spaceId}
             payerId={payerId}
             clientId={clientId}
