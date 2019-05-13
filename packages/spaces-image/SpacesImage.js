@@ -102,7 +102,7 @@ const SpacesImage = ({ spaceId, payerId, clientId, imageType, ...props }) => {
     setUrl(_url);
   }, [spaceId, payerId, clientId, imageType]);
 
-  if (!clientId || (!payerId && !spaceId)) return null;
+  if (!clientId || !url || (!payerId && !spaceId)) return null;
 
   return <img src={url} alt={`Space ${imageType}`} {...props} />;
 };
