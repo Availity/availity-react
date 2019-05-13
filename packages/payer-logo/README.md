@@ -1,4 +1,4 @@
-# THIS PACKAGE HAS BEEN DEPRECATED IN FAVOR OF [payer-image](../payer-image)
+# THIS PACKAGE HAS BEEN DEPRECATED IN FAVOR OF [spaces-image](../spaces-image)
 
 # @availity/payer-logo
 
