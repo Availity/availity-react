@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import Breadcrumbs from '@availity/breadcrumbs';
 import AppIcon from '@availity/app-icon';
 import Feedback from '@availity/feedback';
-import PayerLogo from '@availity/payer-logo';
+import PayerLogo from '@availity/payer-image';
 
 const PageHeader = ({
   payerId,

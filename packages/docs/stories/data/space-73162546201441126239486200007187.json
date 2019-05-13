@@ -5,6 +5,14 @@
         {
           "name": "logo",
           "value": "/static/spaces/73162546201441126239486200007187/banner.png"
+        },
+        {
+          "name": "tile",
+          "value": "/static/spaces/73162546201441126239486200007187/tile.png"
+        },
+        {
+          "name": "billboard",
+          "value": "/static/spaces/73162546201441126239486200007187/billboard.png"
         }
       ]
     }
