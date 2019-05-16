@@ -47,7 +47,7 @@ avMessages.subscribe = jest.fn((event, fn) => {
       event = (data && data.event) || this.DEFAULT_EVENT;
     }
 
-    fn(event, data);
+    fn(data);
   });
 });
 
@@ -112,7 +112,7 @@ describe('FavoriteHeart', () => {
     await waitForElement(() => getByText('This item is not favorited.'));
   });
 
-  test('should update when avMessage event triggers from elsewhere', async () => {
+  test('should update when avMessage changed event triggers from elsewhere', async () => {
     const { container, getByText } = render(
       <Favorites>
         <FavoriteHeart id="123" />
@@ -129,6 +129,29 @@ describe('FavoriteHeart', () => {
 
     avMessages.send({
       event: 'av:favorites:changed',
+      message: { favorites: [] },
+    });
+
+    await waitForElement(() => getByText('This item is not favorited.'));
+  });
+
+  test('should update when avMessage updated event triggers from elsewhere', async () => {
+    const { container, getByText } = render(
+      <Favorites>
+        <FavoriteHeart id="123" />
+      </Favorites>
+    );
+
+    const heart = container.querySelector('#av-favorite-heart-123');
+
+    expect(heart).toBeDefined();
+
+    await waitForElement(() => getByText('This item is favorited.'));
+
+    avMessages.DOMAIN = 'http://localhost';
+
+    avMessages.send({
+      event: 'av:favorites:update',
       message: { favorites: [] },
     });
 

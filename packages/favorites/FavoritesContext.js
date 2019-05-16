@@ -33,16 +33,21 @@ const Favorites = ({ children }) => {
   };
 
   useEffectAsync(async () => {
-    avMessages.subscribe(
-      AV_INTERNAL_GLOBALS.FAVORITES_CHANGED,
-      (event, data) => {
-        setFavorites(get(data, 'favorites') || []);
-      }
-    );
+    avMessages.subscribe(AV_INTERNAL_GLOBALS.FAVORITES_CHANGED, data => {
+      setFavorites(get(data, 'favorites') || []);
+    });
 
     await getFavorites();
 
     return () => avMessages.unsubscribe(AV_INTERNAL_GLOBALS.FAVORITES_CHANGED);
+  }, []);
+
+  useEffectAsync(async () => {
+    avMessages.subscribe(AV_INTERNAL_GLOBALS.FAVORITES_UPDATE, data => {
+      setFavorites(get(data, 'favorites') || []);
+    });
+
+    return () => avMessages.unsubscribe(AV_INTERNAL_GLOBALS.FAVORITES_UPDATE);
   }, []);
 
   const validatedFavorites = input => {
