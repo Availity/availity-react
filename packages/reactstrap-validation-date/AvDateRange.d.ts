@@ -1,4 +1,4 @@
-import moment from 'moment';
+import dayjs from 'dayjs';
 import { AvInput } from './AvInput';
 
 export interface AvDateRangeProps {
@@ -8,8 +8,8 @@ export interface AvDateRangeProps {
     validate?: object;
     type?: string;
     disabled?: boolean;
-    max?: string | number | Date | moment.Moment;
-    min?: string | number | Date | moment.Moment;
+    max?: string | number | Date | dayjs.Dayjs;
+    min?: string | number | Date | dayjs.Dayjs;
     distance?: object;
     ranges?: Array<Object> | object;
     defaultValues?: object;

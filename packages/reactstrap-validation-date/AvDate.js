@@ -2,7 +2,9 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { Button, InputGroupAddon, Popover } from 'reactstrap';
-import moment from 'moment';
+import dayjs from 'dayjs';
+import isBetween from 'dayjs/plugin/isBetween';
+import customParseFormat from 'dayjs/plugin/customParseFormat';
 import {
   inputType,
   isoDateFormat,
@@ -12,11 +14,14 @@ import { Calendar } from 'react-date-range';
 import { AvInput } from 'availity-reactstrap-validation';
 import './styles.scss';
 
+dayjs.extend(isBetween);
+dayjs.extend(customParseFormat);
+
 const getRelativeDate = (validate, key) => {
   if (validate && validate.dateRange && validate.dateRange[key]) {
     const value = validate.dateRange[key];
     if (value.units) {
-      return moment().add(value.value, value.units);
+      return dayjs().add(value.value, value.units);
     }
     return value;
   }
@@ -88,7 +93,7 @@ class AvDate extends Component {
 
   valueParser(value) {
     if (this.state.format === isoDateFormat) return value;
-    const date = moment(
+    const date = dayjs(
       value,
       [this.state.format, 'MMDDYYYY', 'YYYYMMDD'],
       true
@@ -98,7 +103,7 @@ class AvDate extends Component {
   }
 
   valueFormatter(value) {
-    const date = moment(
+    const date = dayjs(
       value,
       [isoDateFormat, this.state.format, 'MMDDYYYY', 'YYYYMMDD'],
       true
@@ -156,6 +161,8 @@ class AvDate extends Component {
       /[^a-zA-Z0-9]/gi,
       ''
     )}-btn`;
+
+    console.log('State value;', this.state.value);
     const input = (
       <AvInput
         placeholder={this.state.format.toLowerCase()}

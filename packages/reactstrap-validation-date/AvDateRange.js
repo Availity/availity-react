@@ -1,7 +1,9 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { Button, Popover, InputGroupAddon } from 'reactstrap';
-import moment from 'moment';
+import dayjs from 'dayjs';
+import isBetween from 'dayjs/plugin/isBetween';
+import customParseFormat from 'dayjs/plugin/customParseFormat';
 import pick from 'lodash/pick';
 import {
   inputType,
@@ -11,6 +13,9 @@ import { AvInput } from 'availity-reactstrap-validation';
 import { DateRange } from 'react-date-range';
 import Icon from '@availity/icon';
 import AvDate from './AvDate';
+
+dayjs.extend(isBetween);
+dayjs.extend(customParseFormat);
 
 let count = 0;
 
@@ -77,13 +82,13 @@ export default class AvDateRange extends Component {
       PropTypes.string,
       PropTypes.number,
       PropTypes.instanceOf(Date),
-      PropTypes.instanceOf(moment),
+      PropTypes.instanceOf(dayjs),
     ]),
     min: PropTypes.oneOfType([
       PropTypes.string,
       PropTypes.number,
       PropTypes.instanceOf(Date),
-      PropTypes.instanceOf(moment),
+      PropTypes.instanceOf(dayjs),
     ]),
     distance: PropTypes.object,
     ranges: PropTypes.oneOfType([PropTypes.array, PropTypes.object]),
@@ -121,7 +126,7 @@ export default class AvDateRange extends Component {
       if (getDefaultValue(props.start.name)) {
         this.state.startValue = getDefaultValue(props.start.name);
       } else if (start) {
-        this.state.startValue = moment(new Date())
+        this.state.startValue = dayjs(new Date())
           .add(start.value, start.units)
           .format(this.state.format);
       }
@@ -129,8 +134,8 @@ export default class AvDateRange extends Component {
         this.state.endValue = getDefaultValue(props.end.name);
       } else if (end) {
         this.state.endValue = (end.fromStart
-          ? moment(this.state.startValue, this.state.format)
-          : moment(new Date())
+          ? dayjs(this.state.startValue, this.state.format)
+          : dayjs(new Date())
         )
           .add(end.value, end.units)
           .format(this.state.format);
@@ -215,8 +220,8 @@ export default class AvDateRange extends Component {
       this.props.start.name
     ).getViewValue();
     if (start && end && this.props.distance) {
-      const mStart = moment(new Date(start));
-      const mEnd = moment(new Date(end));
+      const mStart = dayjs(new Date(start));
+      const mEnd = dayjs(new Date(end));
       if (!mStart.isValid() || !mEnd.isValid()) {
         return true;
       }
@@ -254,7 +259,7 @@ export default class AvDateRange extends Component {
       this.context.FormCtrl.getInput(this.props.end.name).getViewValue() ||
       this.state.startValue;
     if (
-      moment(this.state.startValue, this.state.format).isAfter(
+      dayjs(this.state.startValue, this.state.format).isAfter(
         new Date(endValue)
       )
     ) {
@@ -283,7 +288,7 @@ export default class AvDateRange extends Component {
       this.context.FormCtrl.getInput(this.props.start.name).getViewValue() ||
       this.state.endValue;
     if (
-      moment(this.state.endValue, this.state.format).isBefore(
+      dayjs(this.state.endValue, this.state.format).isBefore(
         new Date(startValue)
       )
     ) {
@@ -404,7 +409,7 @@ export default class AvDateRange extends Component {
           <DateRange
             startDate={this.state.startValue}
             endDate={
-              moment(new Date(this.state.endValue)).isValid()
+              dayjs(new Date(this.state.endValue)).isValid()
                 ? this.state.endValue
                 : null
             }

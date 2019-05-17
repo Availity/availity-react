@@ -23,21 +23,20 @@
   },
   "homepage": "https://github.com/Availity/availity-react/tree/master/packages/reactstrap-validation-date#readme",
   "devDependencies": {
-    "availity-reactstrap-validation": "^2.0.0",
-    "moment": "^2.22.1",
+    "availity-reactstrap-validation": "^2.5.3",
     "react": "^16.8.3",
     "react-date-range": "^0.9.4",
     "react-dom": "^16.8.3",
     "reactstrap": "^8.0.0"
   },
   "peerDependencies": {
-    "availity-reactstrap-validation": "^2.0.0",
-    "moment": "^2.22.1",
+    "availity-reactstrap-validation": "^2.5.3",
     "react": "^16.3.0",
     "reactstrap": "^8.0.0 || ^7.0.0 || ^6.0.0"
   },
   "dependencies": {
     "@availity/icon": "^0.4.0",
+    "dayjs": "^1.8.14",
     "prop-types": "^15.5.8",
     "react-date-range": "^0.9.4"
   },
