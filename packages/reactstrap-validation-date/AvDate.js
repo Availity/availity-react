@@ -93,22 +93,26 @@ class AvDate extends Component {
 
   valueParser(value) {
     if (this.state.format === isoDateFormat) return value;
-    const date = dayjs(
-      value,
-      [this.state.format, 'MMDDYYYY', 'YYYYMMDD'],
-      true
-    );
-    if (date.isValid()) return date.format(isoDateFormat);
+
+    const formats = [this.state.format, 'MMDDYYYY', 'YYYYMMDD'];
+
+    for (const i in formats) {
+      const date = dayjs(value, formats[i]);
+
+      if (date.isValid()) return date.format(isoDateFormat);
+    }
     return value;
   }
 
   valueFormatter(value) {
-    const date = dayjs(
-      value,
-      [isoDateFormat, this.state.format, 'MMDDYYYY', 'YYYYMMDD'],
-      true
-    );
-    if (date.isValid()) return date.format(this.state.format);
+    const formats = [isoDateFormat, this.state.format, 'MMDDYYYY', 'YYYYMMDD'];
+
+    for (const i in formats) {
+      const date = dayjs(value, formats[i]);
+
+      if (date.isValid()) return date.format(this.state.format);
+    }
+
     return value;
   }
 
@@ -162,7 +166,6 @@ class AvDate extends Component {
       ''
     )}-btn`;
 
-    console.log('State value;', this.state.value);
     const input = (
       <AvInput
         placeholder={this.state.format.toLowerCase()}
