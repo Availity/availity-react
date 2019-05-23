@@ -1,0 +1,71 @@
+{
+  "data": {
+    "spaces": {
+      "spaces": [
+        {
+          "id": "space1",
+          "images": [
+            {
+              "name": "logo",
+              "value": "/static/spaces/space1/banner.png"
+            }
+          ]
+        },
+        {
+          "id": "a",
+          "payerIDs": [
+            "availity1"
+          ],
+          "images": [
+            {
+              "name": "logo",
+              "value": "/static/spaces/a/banner.png"
+            }
+          ]
+        },
+        {
+          "id": "space2",
+          "images": [
+            {
+              "name": "tile",
+              "value": "/static/spaces/space2/tile.png"
+            }
+          ]
+        },
+        {
+          "id": "b",
+          "payerIDs": [
+            "availity2"
+          ],
+          "images": [
+            {
+              "name": "tile",
+              "value": "/static/spaces/b/tile.png"
+            }
+          ]
+        },
+        {
+          "id": "space3",
+          "images": [
+            {
+              "name": "billboard",
+              "value": "/static/spaces/space3/billboard.png"
+            }
+          ]
+        },
+        {
+          "id": "c",
+          "payerIDs": [
+            "availity3"
+          ],
+          "images": [
+            {
+              "name": "billboard",
+              "value": "/static/spaces/b/billboard.png"
+            }
+          ]
+        }
+      ]
+    }
+  }
+}
