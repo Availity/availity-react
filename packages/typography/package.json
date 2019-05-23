@@ -1,0 +1,34 @@
+{
+  "name": "@availity/typography",
+  "version": "1.0.0",
+  "author": "Tyson Warner <tyson.warner@availity.com>",
+  "description": "Availity typography components",
+  "main": "index.js",
+  "keywords": [
+    "react",
+    "availity",
+    "typography"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Availity/availity-react.git"
+  },
+  "bugs": {
+    "url": "https://github.com/Availity/availity-react/issues"
+  },
+  "license": "MIT",
+  "publishConfig": {
+    "access": "public"
+  },
+  "devDependencies": {
+    "prop-types": "^15.5.8",
+    "react": "^16.8.3",
+    "react-dom": "^16.8.3"
+  },
+  "peerDependencies": {
+    "react": "^16.3.0"
+  },
+  "dependencies": {
+    "classnames": "^2.2.6"
+  }
+}
