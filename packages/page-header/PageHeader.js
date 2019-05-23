@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import Breadcrumbs from '@availity/breadcrumbs';
 import AppIcon from '@availity/app-icon';
 import Feedback from '@availity/feedback';
-import Spaces, { SpacesLogo } from '@availity/spaces';
+import Spaces, { SpacesLogo, useSpace } from '@availity/spaces';
 
 const PageHeader = ({
   payerId,
@@ -24,9 +24,13 @@ const PageHeader = ({
   iconAlt,
   ...props
 }) => {
+  const id = spaceId || payerId;
+  const space = useSpace(id);
+
+  const _spaceName = spaceName || (space && space.name);
   if (spaceId || spaceName) {
     crumbs = [
-      { name: spaceName, url: spaceId && `/web/spaces/spaces/#/${spaceId}` },
+      { name: _spaceName, url: spaceId && `/web/spaces/spaces/#/${spaceId}` },
     ];
   }
   return (
@@ -55,7 +59,11 @@ const PageHeader = ({
           {children || appName}
         </div>
         {payerId && (
-          <Spaces clientId={clientId}>
+          <Spaces
+            spaceIds={spaceId ? [spaceId] : undefined}
+            payerIds={[payerId]}
+            clientId={clientId}
+          >
             <SpacesLogo
               spaceId={spaceId}
               payerId={payerId}

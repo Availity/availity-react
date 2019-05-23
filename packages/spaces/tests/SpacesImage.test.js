@@ -77,30 +77,39 @@ describe('SpacesImage', () => {
   });
 
   it('renders the spaces images in the spaces provider', async () => {
-    const { getByTestId } = render(
-      <Spaces clientId="my-client-id">
-        {/* wrap SpacesImages in divs to test deeply nested spaces images still get rendered */}
-        <div>
-          <SpacesLogo spaceId="1" />
-        </div>
-        <div>
-          <SpacesTile payerId="payer1" />
-        </div>
-        <div>
-          <SpacesBillboard spaceId="2" />
-        </div>
+    const MyComponent = () => (
+      <Spaces
+        spaceIds={['1', '1', '2', '2']}
+        payerIds={['payer1', 'payer1']}
+        clientId="my-client-id"
+      >
+        <SpacesLogo spaceId="1" />
+        <SpacesTile payerId="payer1" />
+        <SpacesBillboard spaceId="2" />
+        <SpacesLogo spaceId="1" />
+        <SpacesTile payerId="payer1" />
+        <SpacesBillboard spaceId="2" />
       </Spaces>
     );
+    const { getAllByTestId } = render(<MyComponent />);
 
     // Check logo rendered
-    await waitForElement(() => getByTestId('space-logo-1'));
+    await waitForElement(() => getAllByTestId('space-logo-1'));
 
     // Check tile rendered
-    await waitForElement(() => getByTestId('space-tile-payer1'));
+    await waitForElement(() => getAllByTestId('space-tile-payer1'));
 
     // Check billboard rendered
-    await waitForElement(() => getByTestId('space-billboard-2'));
+    await waitForElement(() => getAllByTestId('space-billboard-2'));
 
+    // Check that we did not query for duplicate ids
     expect(avSlotMachineApi.create).toHaveBeenCalledTimes(2);
+    expect(avSlotMachineApi.create.mock.calls[0][0].variables.ids).toEqual([
+      '1',
+      '2',
+    ]);
+    expect(avSlotMachineApi.create.mock.calls[1][0].variables.payerIDs).toEqual(
+      ['payer1']
+    );
   });
 });

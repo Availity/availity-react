@@ -20,7 +20,11 @@ storiesOf('Spaces|Spaces', module)
   })
   .add('Images', () => (
     <div>
-      <Spaces clientId="my-client-id">
+      <Spaces
+        spaceIds={['space1', 'space2', 'space3']}
+        payerIds={['availity1', 'availity2', 'availity3']}
+        clientId="my-client-id"
+      >
         <Row className="mb-3">
           <Col sm={6}>
             <SpacesLogo spaceId="space1" />

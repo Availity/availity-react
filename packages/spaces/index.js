@@ -1,4 +1,4 @@
-import Spaces from './src/Spaces';
+import Spaces, { useSpace, SpacesContext } from './src/Spaces';
 import SpacesImage from './src/SpacesImage';
 
 const SpacesLogo = SpacesImage.create({
@@ -15,4 +15,4 @@ const SpacesBillboard = SpacesImage.create({
 
 export default Spaces;
 
-export { SpacesLogo, SpacesTile, SpacesBillboard };
+export { SpacesLogo, SpacesTile, SpacesBillboard, useSpace, SpacesContext };

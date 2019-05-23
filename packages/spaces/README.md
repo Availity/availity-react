@@ -17,6 +17,9 @@ This is the provider component needed for `@availity/spaces` components to work.
 - **`query`**: String. Optional. Override the default slotmachine query
 - **`variables`**: Object. Override the default variables used in the slotmachine query
 
+At least one of the following props must be provided (and not empty)
+- **`spaceIds`**: String array. Array of spaceIds the Spaces provider should fetch the spaces for
+- **`payerIds`**: String array. Array of payerIds the Spaces provider should fetch the spaces for
 
 ### Images
 
@@ -25,7 +28,11 @@ This is the provider component needed for `@availity/spaces` components to work.
 import React from 'react';
 import Spaces, { SpacesLogo, SpacesBillboard, SpacesTile } from '@availity/spaces';
 // ... 
-<Spaces clientId="my-client-id">
+<Spaces
+  spaceIds={['73162546201441126239486200007187']}
+  payerIds={['PayerID']}
+  clientId="my-client-id"
+>
   <SpacesLogo spaceId="73162546201441126239486200007187" />
   <SpacesBillboard payerId="PayerID" />
   <SpacesTile payerId="PayerID" />
@@ -49,7 +56,7 @@ At least one of the following props must be provided:
 - **`spaceId`**: String. Optional, required if `payerId` is not provided. The payer spaces ID for the payer for which you want a image.
 - **`payerId`**: String. Optional, required if `spaceId` is not provided. The payer ID for the payer for which you want a image.
 
-### useSpaces
+### useSpace
 
 This is a custom hook for grabbing any Spaces data you may need from the `Spaces` provider.
 
@@ -57,11 +64,12 @@ This is a custom hook for grabbing any Spaces data you may need from the `Spaces
 
 ```javascript
 import React from 'react';
-import { useSpaces } from '@availity/spaces';
+import { useSpace } from '@availity/spaces';
 // ...
 const SpacesComponent = () => {
-    const [space, images] = useSpaces(spaceId, payerId);
-    // Returns space and images for spaceId, if available. Otherwise returns space and images for payerId
+    // id can be a space or a payer id
+    const {space, images} = useSpace(id);
+    // Returns space and images for id
 };
 ```
 
@@ -78,8 +86,9 @@ import { SpacesContext } from '@availity/spaces';
 // ...
 class SpacesComponent extends React.Component {
   render() { 
-    const [space, images] = useSpaces(spaceId, payerId);
-    // Returns space and images for spaceId, if available. Otherwise returns space and images for payerId
+    // id can be a space or a payer id
+    const {space, images} = this.context;
+    // Returns space and images for id
   }
 }
 

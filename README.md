@@ -17,6 +17,7 @@
 * [app-icon](packages/app-icon/README.md) - Availity UI Kit application icon react component.
 * [authorize](packages/authorize/README.md) - Check user permissions to see if the current user is authorized to see your content.
 * [breadcrumbs](packages/breadcrumbs/README.md) - Breadscrumbs component for Spaces platform.
+* [favorites](packages/favorites/README.md) - Favorite Heart for favoriting items such as resources/applications etc.
 * [feature](packages/feature/README.md) - Check environment features for the current environment to determine if a particular feature is enabled.
 * [feedback](packages/feedback/README.md) - Availity feedback with simley faces react component.
 * [hooks](packages/hooks/README.md) - Custom Hooks that can be used in any projects.
@@ -30,6 +31,7 @@
 * [reactstrap-validation-date](packages/reactstrap-validation-date/README.md) - Wrapper for react-date-range to work with availity-reactstrap-validation
 * [reactstrap-validation-select](packages/reactstrap-validation-select/README.md) - Wrapper for react-select to work with availity-reactstrap-validation
 * [upload](packages/upload/README.md) - Availity upload component for uploading files
+* [spaces](packages/spaces/README.md) - Easy to use spaces components
 * [training-link](packages/training-link/README.md) - Component for allowing link out to training in the Header component.
 * [upload](packages/upload/README.md) - Availity upload component for uploading files.
 

@@ -1,9 +1,10 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { useSpaces } from './Spaces';
+import { useSpace } from './Spaces';
 
 const SpacesImage = ({ spaceId, payerId, imageType, ...props }) => {
-  const [, images] = useSpaces(spaceId, payerId);
+  const id = spaceId || payerId;
+  const { images } = useSpace(id);
 
   let url = images[imageType];
 

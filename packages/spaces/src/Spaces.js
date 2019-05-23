@@ -1,10 +1,4 @@
-import React, {
-  createContext,
-  useContext,
-  useState,
-  useEffect,
-  useMemo,
-} from 'react';
+import React, { createContext, useContext, useState, useMemo } from 'react';
 import PropTypes from 'prop-types';
 import { avSlotMachineApi } from '@availity/api-axios';
 import { useEffectAsync } from '@availity/hooks';
@@ -48,64 +42,58 @@ export const getAllSpaces = async (
 
 export const SpacesContext = createContext();
 
-// getIDsFromChildren returns all the payer and space ids from the props of all the Spaces children in the Spaces provider
-export const getIDsFromChildren = (children, payerIDs = [], spaceIDs = []) => {
-  React.Children.forEach(children, child => {
-    if (React.isValidElement(child)) {
-      const { payerId, spaceId, children: grandChildren } = child.props;
-      // Check child is a spaces component
-      if (/^Spaces.*/.test(child.type.displayName)) {
-        if (payerId !== undefined) payerIDs.push(payerId);
-        if (spaceId !== undefined) spaceIDs.push(spaceId);
-      } else if (grandChildren) {
-        getIDsFromChildren(grandChildren, payerIDs, spaceIDs);
-      }
-    }
-  });
-
-  // Filter out dupes and order ids. We don't want to query slotmachine again just because the ids change order
-  spaceIDs = spaceIDs
-    .filter((id, i) => spaceIDs.indexOf(id) === i)
-    .sort((a, b) => (a > b ? 1 : -1));
-  payerIDs = payerIDs
-    .filter((id, i) => payerIDs.indexOf(id) === i)
-    .sort((a, b) => (a > b ? 1 : -1));
-
-  return { payerIDs, spaceIDs };
-};
-
-const Spaces = ({ query, variables, clientId, children }) => {
+const Spaces = ({
+  query,
+  variables,
+  clientId,
+  spaceIds,
+  payerIds,
+  children,
+}) => {
   const [spaces, setSpaces] = useState([]);
-  const [payerIDs, setPayerIDs] = useState([]);
-  const [spaceIDs, setSpaceIDs] = useState([]);
 
-  useEffect(() => {
-    const { payerIDs: _payerIDs, spaceIDs: _spaceIDs } = getIDsFromChildren(
-      children
-    );
-    setSpaceIDs(_spaceIDs);
-    setPayerIDs(_payerIDs);
-  }, [children]);
-
-  // Gather all of the spaces given the space and payer ids in the Spaces Provider
+  // NOTE: we do not want to query slotmachine by payerIDs and spaceIDs at the same time
+  // because slotmachine does an AND on those conditions. We want OR
   useEffectAsync(async () => {
-    // NOTE: we do not want to query slotmachine by payerIDs and spaceIDs at the same time
-    // because slotmachine does an AND on those conditions. We want OR
+    // Filter out dupes and ids that we already have the space for
+    const filteredSpaceIDs = spaceIds
+      .filter((id, i) => spaceIds.indexOf(id) === i)
+      .filter(id => !spaces.some(spc => spc && spc.id === id));
+
+    const filteredPayerIDs = payerIds
+      .filter((id, i) => payerIds.indexOf(id) === i)
+      .filter(
+        id =>
+          !spaces.some(
+            spc => spc && spc.payerIDs && spc.payerIDs.some(pId => pId === id)
+          )
+      );
+
     let _spaces = [];
-    if (spaceIDs.length > 0) {
-      const vars = { ...variables, ids: spaceIDs };
-      const spacesBySpaceIDs = await getAllSpaces(query, clientId, vars);
+    if (filteredSpaceIDs.length > 0) {
+      const vars = { ...variables, ids: filteredSpaceIDs };
+      const spacesBySpaceIDs = await getAllSpaces(
+        query,
+        clientId,
+        vars,
+        spaces
+      );
       _spaces = _spaces.concat(spacesBySpaceIDs);
     }
 
-    if (payerIDs.length > 0) {
-      const vars = { ...variables, payerIDs };
-      const spacesByPayerIDs = await getAllSpaces(query, clientId, vars);
+    if (filteredPayerIDs.length > 0) {
+      const vars = { ...variables, payerIDs: filteredPayerIDs };
+      const spacesByPayerIDs = await getAllSpaces(
+        query,
+        clientId,
+        vars,
+        spaces
+      );
       _spaces = _spaces.concat(spacesByPayerIDs);
     }
 
     if (_spaces.length > 0) setSpaces(_spaces);
-  }, [payerIDs, spaceIDs]);
+  }, [payerIds, spaceIds]);
 
   return (
     <SpacesContext.Provider value={{ spaces }}>
@@ -114,15 +102,15 @@ const Spaces = ({ query, variables, clientId, children }) => {
   );
 };
 
-export const useSpaces = (spaceId, payerId) => {
-  const { spaces = [] } = useContext(SpacesContext);
+export const useSpace = id => {
+  const { spaces = [] } = useContext(SpacesContext) || {};
 
   // Try to match by space id first, else match by payer id
   const space = useMemo(() => {
-    let [spc] = spaces.filter(s => s.id === spaceId);
+    let [spc] = spaces.filter(s => s.id === id);
 
     if (!spc) {
-      [spc] = spaces.filter(s => (s.payerIDs || []).some(p => p === payerId));
+      [spc] = spaces.filter(s => (s.payerIDs || []).some(p => p === id));
     }
 
     return spc;
@@ -137,7 +125,7 @@ export const useSpaces = (spaceId, payerId) => {
     }, {});
   });
 
-  return [space, images];
+  return { space, images };
 };
 
 Spaces.propTypes = {
@@ -145,6 +133,8 @@ Spaces.propTypes = {
   children: PropTypes.node,
   query: PropTypes.string,
   variables: PropTypes.object,
+  spaceIds: PropTypes.arrayOf(PropTypes.string),
+  payerIds: PropTypes.arrayOf(PropTypes.string),
 };
 
 Spaces.defaultProps = {
@@ -168,6 +158,8 @@ Spaces.defaultProps = {
     }
   `,
   variables: { types: ['space'] },
+  spaceIds: [],
+  payerIds: [],
 };
 
 export default Spaces;

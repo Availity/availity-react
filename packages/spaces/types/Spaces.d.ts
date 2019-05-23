@@ -2,7 +2,9 @@ export interface SpacesProps {
     clientId: string;
     children?: React.ReactType;
     query?: string;
-    variables?: Object
+    variables?: Object;
+    spaceIds: Array<string>;
+    payerIds: Array<string>;
 }
 
 declare const Spaces: React.FunctionComponent<SpacesProps>;
