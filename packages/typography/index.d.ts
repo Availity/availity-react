@@ -1,4 +1,4 @@
-import Agreement from './src/Wizard';
+import Agreement from './src/Agreement';
 import Disclaimer from './src/Disclaimer';
 
 export { Agreement, Disclaimer };
