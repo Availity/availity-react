@@ -7,7 +7,9 @@ module.exports = ({ config: defaultConfig }) => {
   jsRule.include = undefined;
 
   // https://github.com/storybooks/storybook/issues/6204#issuecomment-478998529
-  delete defaultConfig.resolve.alias['core-js'];
+  console.log(defaultConfig.resolve.alias);
+
+  https: delete defaultConfig.resolve.alias['core-js'];
 
   defaultConfig.plugins.push(new DuplicatePackageCheckerPlugin());
 
