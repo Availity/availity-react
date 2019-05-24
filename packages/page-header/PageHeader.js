@@ -24,15 +24,39 @@ const PageHeader = ({
   iconAlt,
   ...props
 }) => {
-  const id = spaceId || payerId;
-  const space = useSpace(id);
+  const spaceForSpaceID = useSpace(spaceId);
+  const spaceForPayerID = useSpace(payerId);
+  const _space = spaceForSpaceID || spaceForPayerID;
 
-  const _spaceName = spaceName || (space && space.name);
+  let payerLogo = null;
+  if (payerId) {
+    const logo = (
+      <SpacesLogo
+        spaceId={spaceId}
+        payerId={payerId}
+        className="float-md-right d-inline-block"
+      />
+    );
+    payerLogo = spaceForPayerID ? (
+      logo
+    ) : (
+      <Spaces
+        spaceIds={spaceId ? [spaceId] : undefined}
+        payerIds={[payerId]}
+        clientId={clientId}
+      >
+        {logo}
+      </Spaces>
+    );
+  }
+
+  const _spaceName = spaceName || (_space && _space.name);
   if (spaceId || spaceName) {
     crumbs = [
       { name: _spaceName, url: spaceId && `/web/spaces/spaces/#/${spaceId}` },
     ];
   }
+
   return (
     <React.Fragment>
       <div className="d-flex align-items-start">
@@ -58,19 +82,9 @@ const PageHeader = ({
           )}{' '}
           {children || appName}
         </div>
-        {payerId && (
-          <Spaces
-            spaceIds={spaceId ? [spaceId] : undefined}
-            payerIds={[payerId]}
-            clientId={clientId}
-          >
-            <SpacesLogo
-              spaceId={spaceId}
-              payerId={payerId}
-              className="float-md-right d-inline-block"
-            />
-          </Spaces>
-        )}
+
+        {payerLogo}
+
         {feedback && (
           <Feedback
             appName={appName}
