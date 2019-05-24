@@ -4,9 +4,9 @@ import { useSpace } from './Spaces';
 
 const SpacesImage = ({ spaceId, payerId, imageType, ...props }) => {
   const id = spaceId || payerId;
-  const { images } = useSpace(id);
+  const { space = {} } = useSpace(id);
 
-  let url = images[imageType];
+  let url = space.images && space.images[imageType];
 
   // We can probably remove this at some point once our spaces data is complete
   if (!url && payerId && imageType === 'logo') {

@@ -92,6 +92,22 @@ const Spaces = ({
       _spaces = _spaces.concat(spacesByPayerIDs);
     }
 
+    // Normalize space pairs ( [{ name, value }} => { name: value } )
+    const pairFields = ['images', 'metadata', 'colors', 'icons', 'mapping'];
+    _spaces = _spaces.reduce((accum, spc) => {
+      pairFields.forEach(field => {
+        if (spc[field]) {
+          spc[field] = spc[field].reduce((_accum, { name, value }) => {
+            _accum[name] = value;
+            return _accum;
+          }, {});
+        }
+      });
+
+      accum.push(spc);
+      return accum;
+    }, []);
+
     if (_spaces.length > 0) setSpaces(_spaces);
   }, [payerIds, spaceIds]);
 
@@ -116,16 +132,7 @@ export const useSpace = id => {
     return spc;
   });
 
-  const images = useMemo(() => {
-    if (!space) return {};
-
-    return (space.images || []).reduce((accum, { name, value }) => {
-      accum[name] = value;
-      return accum;
-    }, {});
-  });
-
-  return { space, images };
+  return { space };
 };
 
 Spaces.propTypes = {
