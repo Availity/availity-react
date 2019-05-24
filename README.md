@@ -31,6 +31,7 @@
 * [reactstrap-validation-select](packages/reactstrap-validation-select/README.md) - Wrapper for react-select to work with availity-reactstrap-validation
 * [upload](packages/upload/README.md) - Availity upload component for uploading files
 * [training-link](packages/training-link/README.md) - Component for allowing link out to training in the Header component.
+* [typography](packages/typography/README.md) - Availity typography components
 * [upload](packages/upload/README.md) - Availity upload component for uploading files.
 
 ## License

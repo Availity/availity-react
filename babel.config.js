@@ -35,6 +35,8 @@ module.exports = api => {
       {
         debug: false,
         modules: 'commonjs',
+        useBuiltIns: 'usage',
+        corejs: 3,
         targets: {
           node: 'current',
         },
