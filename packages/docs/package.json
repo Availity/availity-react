@@ -25,7 +25,7 @@
   },
   "license": "MIT",
   "devDependencies": {
-    "@availity/api-axios": "^3.0.1",
+    "@availity/api-axios": "^5.1.5",
     "@availity/api-core": "^3.0.0",
     "@availity/app-icon": "^1.2.0",
     "@availity/authorize": "^1.1.5",
