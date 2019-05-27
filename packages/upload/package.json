@@ -22,7 +22,7 @@
     "access": "public"
   },
   "peerDependencies": {
-    "@availity/upload-core": "^2.0.0",
+    "@availity/upload-core": "^3.0.4",
     "lodash.map": "4.6.0",
     "react": "^16.3.0",
     "react-dom": "^16.3.0",
@@ -34,7 +34,7 @@
     "prop-types": "^15.5.8"
   },
   "devDependencies": {
-    "@availity/upload-core": "^2.0.0",
+    "@availity/upload-core": "^3.0.4",
     "lodash.map": "^4.6.0",
     "react": "^16.8.3",
     "react-dom": "^16.8.3",
