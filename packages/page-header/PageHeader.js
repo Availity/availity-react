@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import Breadcrumbs from '@availity/breadcrumbs';
 import AppIcon from '@availity/app-icon';
 import Feedback from '@availity/feedback';
-import PayerLogo from '@availity/payer-logo';
+import Spaces, { SpacesLogo, useSpace } from '@availity/spaces';
 
 const PageHeader = ({
   payerId,
@@ -24,11 +24,39 @@ const PageHeader = ({
   iconAlt,
   ...props
 }) => {
+  const spaceForSpaceID = useSpace(spaceId);
+  const spaceForPayerID = useSpace(payerId);
+  const _space = spaceForSpaceID || spaceForPayerID;
+
+  let payerLogo = null;
+  if (payerId) {
+    const logo = (
+      <SpacesLogo
+        spaceId={spaceId}
+        payerId={payerId}
+        className="float-md-right d-inline-block"
+      />
+    );
+    payerLogo = spaceForPayerID ? (
+      logo
+    ) : (
+      <Spaces
+        spaceIds={spaceId ? [spaceId] : undefined}
+        payerIds={[payerId]}
+        clientId={clientId}
+      >
+        {logo}
+      </Spaces>
+    );
+  }
+
+  const _spaceName = spaceName || (_space && _space.name);
   if (spaceId || spaceName) {
     crumbs = [
-      { name: spaceName, url: spaceId && `/web/spaces/spaces/#/${spaceId}` },
+      { name: _spaceName, url: spaceId && `/web/spaces/spaces/#/${spaceId}` },
     ];
   }
+
   return (
     <React.Fragment>
       <div className="d-flex align-items-start">
@@ -54,14 +82,9 @@ const PageHeader = ({
           )}{' '}
           {children || appName}
         </div>
-        {payerId && (
-          <PayerLogo
-            spaceId={spaceId}
-            payerId={payerId}
-            clientId={clientId}
-            className="float-md-right d-inline-block"
-          />
-        )}
+
+        {payerLogo}
+
         {feedback && (
           <Feedback
             appName={appName}

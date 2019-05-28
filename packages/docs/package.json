@@ -44,6 +44,7 @@
     "@availity/payer-logo": "^3.0.0",
     "@availity/reactstrap-validation-date": "^1.7.10",
     "@availity/reactstrap-validation-select": "^3.0.5",
+    "@availity/spaces": "^1.0.0",
     "@availity/step-wizard": "^1.2.1",
     "@availity/training-link": "^1.1.4",
     "@availity/typography": "^1.1.0",

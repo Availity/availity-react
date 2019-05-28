@@ -1,3 +1,5 @@
+# THIS PACKAGE HAS BEEN DEPRECATED IN FAVOR OF [spaces](../spaces)
+
 # @availity/payer-logo
 
 > Easy to use component to display the payer&#x27;s logo given the payer&#x27;s ID
