@@ -64,6 +64,19 @@ Display the disclaimer for a given space id.
 - **`markdown`**: Boolean. Optional. Default: false. Whether to render the disclaimer as markdown
 - **`styled`**: Boolean. Optional. See [Disclaimer](../typography)
 
+#### Usage
+```javascript
+import React from 'react';
+import Spaces, { SpacesDisclaimer } from '@availity/spaces';
+// ... 
+<Spaces
+  spaceIds={['73162546201441126239486200007187']}
+  clientId="my-client-id"
+>
+  <SpacesDisclaimer spaceId="73162546201441126239486200007187" markdown styled />
+</Spaces>
+// ...
+
 ### useSpace
 
 This is a custom hook for grabbing any Spaces data you may need from the `Spaces` provider.
