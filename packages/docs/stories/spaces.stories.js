@@ -1,11 +1,13 @@
 import React from 'react';
 import { storiesOf } from '@storybook/react';
+import { withKnobs, boolean } from '@storybook/addon-knobs/react';
 import { Row, Col } from 'reactstrap';
 
 import Spaces, {
   SpacesLogo,
   SpacesTile,
   SpacesBillboard,
+  SpacesDisclaimer,
 } from '@availity/spaces';
 import README from '@availity/spaces/README.md';
 
@@ -18,6 +20,7 @@ storiesOf('Spaces|Spaces', module)
       StoryPreview: ({ children }) => <div>{children}</div>,
     },
   })
+  .addDecorator(withKnobs)
   .add('Images', () => (
     <div>
       <Spaces
@@ -59,5 +62,16 @@ storiesOf('Spaces|Spaces', module)
           the Availity Portal
         </p>
       </div>
+    </div>
+  ))
+  .add('Disclaimer', () => (
+    <div>
+      <Spaces spaceIds={['space1']} clientId="my-client-id">
+        <SpacesDisclaimer
+          styled={boolean('Styled', true)}
+          markdown={boolean('Markdown', false)}
+          spaceId="space1"
+        />
+      </Spaces>
     </div>
   ));
