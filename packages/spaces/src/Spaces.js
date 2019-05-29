@@ -122,6 +122,7 @@ export const useSpace = id => {
   const { spaces = [] } = useContext(SpacesContext) || {};
 
   // Try to match by space id first, else match by payer id
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   const space = useMemo(() => {
     let [spc] = spaces.filter(s => s.id === id);
 
