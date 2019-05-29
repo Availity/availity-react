@@ -3,6 +3,23 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [4.4.0](https://github.com/Availity/availity-react/compare/@availity/page-header@4.3.6...@availity/page-header@4.4.0) (2019-05-29)
+
+
+### Bug Fixes
+
+* **spaces:** fixes from code review ([47ba435](https://github.com/Availity/availity-react/commit/47ba435))
+
+
+### Features
+
+* add spaces package ([e2eff44](https://github.com/Availity/availity-react/commit/e2eff44))
+* **page-header:** use space from spaces provider if it exists ([f3e5bdd](https://github.com/Availity/availity-react/commit/f3e5bdd))
+
+
+
+
+
 ## [4.3.6](https://github.com/Availity/availity-react/compare/@availity/page-header@4.3.5...@availity/page-header@4.3.6) (2019-05-10)
 
 **Note:** Version bump only for package @availity/page-header

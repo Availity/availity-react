@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [3.1.0](https://github.com/Availity/availity-react/compare/@availity/payer-logo@3.0.0...@availity/payer-logo@3.1.0) (2019-05-29)
+
+
+### Features
+
+* add spaces package ([e2eff44](https://github.com/Availity/availity-react/commit/e2eff44))
+
+
+
+
+
 # [3.0.0](https://github.com/Availity/availity-react/compare/@availity/payer-logo@1.1.3...@availity/payer-logo@3.0.0) (2019-03-04)
 
 
