@@ -49,7 +49,7 @@
     "@availity/training-link": "^1.1.4",
     "@availity/typography": "^1.1.0",
     "@availity/upload": "^1.8.1",
-    "@availity/upload-core": "^2.0.0",
+    "@availity/upload-core": "^3.0.4",
     "@babel/core": "^7.2.2",
     "@storybook/addon-a11y": "^5.2.0-alpha.10",
     "@storybook/addon-actions": "^5.2.0-alpha.10",
