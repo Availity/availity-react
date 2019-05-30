@@ -2,17 +2,19 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import classNames from 'classnames';
 import { AvBaseInput } from 'availity-reactstrap-validation';
-import Select from 'react-select';
-import Async from 'react-select-async-paginate';
-import {
+import Select, { components as reactSelectComponents } from 'react-select';
+import get from 'lodash/get';
+import find from 'lodash/find';
+import isEqual from 'lodash/isEqual';
+
+const AsyncPaginate = require('react-select-async-paginate');
+
+const {
   DownChevron,
   CrossIcon,
   DropdownIndicator,
   ClearIndicator,
-} from 'react-select/lib/components/indicators';
-import get from 'lodash/get';
-import find from 'lodash/find';
-import isEqual from 'lodash/isEqual';
+} = reactSelectComponents;
 
 const components = {
   DropdownIndicator: props => (
@@ -177,7 +179,7 @@ class AvSelect extends AvBaseInput {
       );
     }
 
-    const Tag = attributes.loadOptions ? Async : Select;
+    const Tag = attributes.loadOptions ? AsyncPaginate : Select;
 
     return (
       <Tag
