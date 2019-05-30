@@ -25,8 +25,9 @@ const Pagination = ({
   onPageChange,
   children,
   watchList,
+  defaultPage,
 }) => {
-  const [currentPage, setPage] = useState(1);
+  const [currentPage, setPage] = useState(defaultPage || 1);
   const [pageData, setPageData] = useState({
     total: theItems != null && !isFunction(theItems) ? theItems.totalCount : 0,
     pageCount: 0,
@@ -114,6 +115,7 @@ Pagination.propTypes = {
   onPageChange: PropTypes.func,
   children: PropTypes.node,
   watchList: PropTypes.array,
+  defaultPage: PropTypes.number,
 };
 
 Pagination.defaultProps = {
