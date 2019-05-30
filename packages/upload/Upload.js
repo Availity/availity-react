@@ -177,17 +177,23 @@ class Upload extends Component {
         fileAddArea = (
           <div>
             <Dropzone
-              data-testid="file-picker"
               onDrop={this.onDrop}
               multiple={multiple}
               maxSize={maxSize}
               className="file-drop"
               activeClassName="file-drop-active"
             >
-              <div>
-                <strong>Drag and Drop</strong>
-              </div>
-              {text}
+              {({ getRootProps, getInputProps }) => (
+                <section>
+                  <div {...getRootProps()}>
+                    <input data-testid="file-picker" {...getInputProps()} />
+                    <p>
+                      <strong>Drag and Drop</strong>
+                    </p>
+                    {text}
+                  </div>
+                </section>
+              )}
             </Dropzone>
             <FormFeedback valid={!this.error} className="d-block">
               {this.error}
@@ -211,12 +217,12 @@ class Upload extends Component {
     }
 
     return (
-      <Fragment>
+      <>
         <FileList files={files} onRemoveFile={this.removeFile}>
           {children}
         </FileList>
         {fileAddArea}
-      </Fragment>
+      </>
     );
   }
 }
