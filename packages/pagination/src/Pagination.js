@@ -27,7 +27,7 @@ const Pagination = ({
   watchList,
   defaultPage,
 }) => {
-  const [currentPage, setPage] = useState(defaultPage || 1);
+  const [currentPage, setPage] = useState(defaultPage);
   const [pageData, setPageData] = useState({
     total: theItems != null && !isFunction(theItems) ? theItems.totalCount : 0,
     pageCount: 0,
@@ -122,6 +122,7 @@ Pagination.defaultProps = {
   itemsPerPage: 10,
   items: [],
   watchList: [],
+  defaultPage: 1,
 };
 
 export default Pagination;
