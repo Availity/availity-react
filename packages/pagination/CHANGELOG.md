@@ -3,6 +3,19 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [2.1.0](https://github.com/Availity/availity-react/compare/@availity/pagination@2.0.3...@availity/pagination@2.1.0) (2019-05-30)
+
+
+### Features
+
+* **pagination:** adding defaultPage prop ([4312029](https://github.com/Availity/availity-react/commit/4312029))
+* **pagination:** adding defaultPage to type ([d5bcf32](https://github.com/Availity/availity-react/commit/d5bcf32))
+* **pagination:** defaulting defaultPage to 1 ([ee4fd2e](https://github.com/Availity/availity-react/commit/ee4fd2e))
+
+
+
+
+
 ## [2.0.3](https://github.com/Availity/availity-react/compare/@availity/pagination@2.0.2...@availity/pagination@2.0.3) (2019-05-29)
 
 **Note:** Version bump only for package @availity/pagination
