@@ -14,7 +14,7 @@ storiesOf('Components|Typography', module)
     },
   })
   .addDecorator(withKnobs)
-  .add('Agreement', () => (
+  .add('agreement', () => (
     <div>
       <Agreement>
         <p>
@@ -95,7 +95,7 @@ storiesOf('Components|Typography', module)
       </Agreement>
     </div>
   ))
-  .add('Disclaimer', () => (
+  .add('disclaimer', () => (
     <div>
       <Disclaimer styled={boolean('Styled', true)}>
         I have fully read this agreement and understand that I am entering into

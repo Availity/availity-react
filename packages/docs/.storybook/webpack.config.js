@@ -6,10 +6,12 @@ module.exports = ({ config: defaultConfig }) => {
   jsRule.exclude = /node_modules\/(?!(@av)).*/;
   jsRule.include = undefined;
 
+  defaultConfig.devtool = 'source-maps';
+
   // https://github.com/storybooks/storybook/issues/6204#issuecomment-478998529
   console.log(defaultConfig.resolve.alias);
 
-  https: delete defaultConfig.resolve.alias['core-js'];
+  delete defaultConfig.resolve.alias['core-js'];
 
   defaultConfig.plugins.push(new DuplicatePackageCheckerPlugin());
 

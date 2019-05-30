@@ -11,7 +11,7 @@ import Spaces, {
 } from '@availity/spaces';
 import README from '@availity/spaces/README.md';
 
-storiesOf('Spaces|Spaces', module)
+storiesOf('Components|Spaces', module)
   .addParameters({
     readme: {
       // Show readme at the addons panel
@@ -21,7 +21,7 @@ storiesOf('Spaces|Spaces', module)
     },
   })
   .addDecorator(withKnobs)
-  .add('Images', () => (
+  .add('images', () => (
     <div>
       <Spaces
         spaceIds={['space1', 'space2', 'space3']}
@@ -64,7 +64,7 @@ storiesOf('Spaces|Spaces', module)
       </div>
     </div>
   ))
-  .add('Disclaimer', () => (
+  .add('disclaimer', () => (
     <div>
       <Spaces spaceIds={['space1']} clientId="my-client-id">
         <SpacesDisclaimer

@@ -67,7 +67,7 @@ storiesOf('Components|Header', module)
       </p>
     </div>
   ))
-  .add('with Payer Space breadcrumb', () => (
+  .add('with payer space breadcrumb', () => (
     <PageHeader
       appName="Payer Space"
       spaceId={text('Payer Space ID', '73162546201441126239486200007187')}
