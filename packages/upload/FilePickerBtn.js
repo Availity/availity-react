@@ -1,65 +1,63 @@
-import React, { Component, createRef, Fragment } from 'react';
+import React, { useRef, Fragment } from 'react';
 import PropTypes from 'prop-types';
 import { Button, Input } from 'reactstrap';
 import FilePicker from './FilePicker';
 
-class FilePickerBtn extends Component {
-  static propTypes = {
-    onClick: PropTypes.func,
-    onChange: PropTypes.func,
-    multiple: PropTypes.bool,
-    name: PropTypes.string,
-    color: PropTypes.string,
-    children: PropTypes.node,
-    allowedFileTypes: PropTypes.arrayOf(PropTypes.string),
-    maxSize: PropTypes.number,
-    'data-testid': PropTypes.string,
-  };
+const FilePickerBtn = ({
+  onClick,
+  onChange,
+  multiple,
+  name,
+  allowedFileTypes,
+  maxSize,
+  'data-testid': testId,
+  ...rest
+}) => {
+  const input = useRef(null);
 
-  static defaultProps = {
-    color: 'primary',
-    children: 'Select File',
-  };
-
-  input = createRef();
-
-  onClick = (...args) => {
-    if (this.input.current) {
-      this.input.current.click();
+  const onBtnClick = (...args) => {
+    if (input.current) {
+      input.current.click();
     }
-    if (this.props.onClick) {
-      this.props.onClick(...args);
+    if (onClick) {
+      onClick(...args);
     }
   };
 
-  render() {
-    const {
-      onChange,
-      multiple,
-      name,
-      allowedFileTypes,
-      maxSize,
-      'data-testid': testId,
-      ...props
-    } = this.props;
-    return (
-      <Fragment>
-        <div className="d-none">
-          <FilePicker
-            tag={Input}
-            innerRef={this.input}
-            onChange={onChange}
-            multiple={multiple}
-            name={name}
-            allowedFileTypes={allowedFileTypes}
-            maxSize={maxSize}
-            data-testid={testId}
-          />
-        </div>
-        <Button {...props} onClick={this.onClick} />
-      </Fragment>
-    );
-  }
-}
+  return (
+    <Fragment>
+      <div className="d-none">
+        <FilePicker
+          tag={Input}
+          innerRef={input}
+          onChange={onChange}
+          multiple={multiple}
+          name={name}
+          allowedFileTypes={allowedFileTypes}
+          maxSize={maxSize}
+          data-testid={testId}
+        />
+      </div>
+      <Button {...rest} onClick={onBtnClick} />
+    </Fragment>
+  );
+};
+
+FilePickerBtn.propTypes = {
+  onClick: PropTypes.func,
+  onChange: PropTypes.func,
+  multiple: PropTypes.bool,
+  name: PropTypes.string,
+  color: PropTypes.string,
+  children: PropTypes.node,
+  allowedFileTypes: PropTypes.arrayOf(PropTypes.string),
+  maxSize: PropTypes.number,
+  'data-testid': PropTypes.string,
+};
+
+FilePickerBtn.defaultProps = {
+  color: 'primary',
+  children: 'Select File',
+};
 
 export default FilePickerBtn;
