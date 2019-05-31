@@ -1,5 +1,5 @@
 import React from 'react';
-import { render } from 'react-testing-library';
+import { render } from '@testing-library/react';
 // import TrainingLink from '@availity/training-link';
 import PageHeader from '..';
 
@@ -70,7 +70,7 @@ describe('PageHeader', () => {
         <p>this is cool</p>
       </PageHeader>
     );
-    
+
     expect(container).toMatchSnapshot();
   }); */
 });

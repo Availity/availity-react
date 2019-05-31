@@ -1,7 +1,7 @@
 module.exports = {
   setupFilesAfterEnv: [
     '<rootDir>/jest/setupTests.js',
-    'react-testing-library/cleanup-after-each',
+    '@testing-library/react/cleanup-after-each',
   ],
   collectCoverageFrom: ['packages/**/*.{js,jsx}'],
   coveragePathIgnorePatterns: ['/node_modules/', '/coverage/', '/dist/'],

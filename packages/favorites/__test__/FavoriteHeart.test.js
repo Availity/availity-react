@@ -1,6 +1,6 @@
 import React from 'react';
-import 'react-testing-library/cleanup-after-each';
-import { fireEvent, render, waitForElement } from 'react-testing-library';
+import '@testing-library/react/cleanup-after-each';
+import { fireEvent, render, waitForElement } from '@testing-library/react';
 import { avSettingsApi } from '@availity/api-axios';
 import avMessages from '@availity/message-core';
 import Favorites, { FavoriteHeart } from '..';

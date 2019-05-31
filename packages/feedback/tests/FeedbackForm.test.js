@@ -1,7 +1,7 @@
 /* eslint-disable unicorn/prefer-query-selector */
 import React from 'react';
-import { render, fireEvent, wait } from 'react-testing-library';
-import 'react-testing-library/cleanup-after-each';
+import { render, fireEvent, wait } from '@testing-library/react';
+import '@testing-library/react/cleanup-after-each';
 import { avLogMessagesApi, avRegionsApi } from '@availity/api-axios';
 import { FeedbackForm } from '..';
 

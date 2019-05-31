@@ -1,5 +1,5 @@
 import React from 'react';
-import { render, cleanup, waitForElement } from 'react-testing-library';
+import { render, cleanup, waitForElement } from '@testing-library/react';
 import { avUserPermissionsApi } from '@availity/api-axios';
 import Authorize from '..';
 

@@ -1,6 +1,6 @@
 import React from 'react';
-import { render, waitForElement } from 'react-testing-library';
-import 'react-testing-library/cleanup-after-each';
+import { render, waitForElement } from '@testing-library/react';
+import '@testing-library/react/cleanup-after-each';
 import Pagination from '../Pagination';
 import PaginationControls from '../PaginationControls';
 
