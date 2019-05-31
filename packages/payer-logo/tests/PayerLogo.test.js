@@ -1,5 +1,5 @@
 import React from 'react';
-import { render, waitForElement } from 'react-testing-library';
+import { render, waitForElement } from '@testing-library/react';
 import { avSlotMachineApi } from '@availity/api-axios';
 
 import PayerLogo from '../PayerLogo';

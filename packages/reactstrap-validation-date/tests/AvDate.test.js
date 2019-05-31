@@ -1,5 +1,5 @@
 import React from 'react';
-import { render } from 'react-testing-library';
+import { render } from '@testing-library/react';
 import { AvDate } from '..';
 import { AvForm } from 'availity-reactstrap-validation';
 

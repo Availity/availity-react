@@ -2,7 +2,7 @@ import React from 'react';
 import { Link, Route, Router, Switch } from 'react-router-dom';
 import { withRouter } from 'react-router';
 import { createMemoryHistory } from 'history';
-import { render, fireEvent, cleanup } from 'react-testing-library';
+import { render, fireEvent, cleanup } from '@testing-library/react';
 import { BreadcrumbItem } from 'reactstrap';
 import Breadcrumbs from '../index';
 

@@ -4,8 +4,8 @@ import {
   waitForElement,
   waitForDomChange,
   fireEvent,
-} from 'react-testing-library';
-import 'react-testing-library/cleanup-after-each';
+} from '@testing-library/react';
+import '@testing-library/react/cleanup-after-each';
 import PaginationControls from '../PaginationControls';
 import { usePagination } from '../Pagination';
 import AvResourcePagination from '../AvResourcePagination';

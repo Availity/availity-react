@@ -1,6 +1,6 @@
 import React from 'react';
-import 'react-testing-library/cleanup-after-each';
-import { fireEvent, waitForElement, render } from 'react-testing-library';
+import '@testing-library/react/cleanup-after-each';
+import { fireEvent, waitForElement, render } from '@testing-library/react';
 import { avRegionsApi } from '@availity/api-axios';
 import { AvForm } from 'availity-reactstrap-validation';
 
