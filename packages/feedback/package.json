@@ -27,9 +27,9 @@
     "prop-types": "^15.5.8"
   },
   "devDependencies": {
-    "@availity/api-axios": "^2.0.0",
-    "@availity/api-core": "^2.0.0",
-    "@availity/localstorage-core": "^1.4.0",
+    "@availity/api-axios": "^5.1.5",
+    "@availity/api-core": "^5.1.5",
+    "@availity/localstorage-core": "^2.6.1",
     "axios": "^0.18.0",
     "react": "^16.8.3",
     "react-dom": "^16.8.3",
