@@ -76,7 +76,7 @@
     "react-docgen-typescript-loader": "^3.0.1",
     "react-docgen-typescript-webpack-plugin": "^1.1.0",
     "react-dom": "^16.8.3",
-    "react-router": "^4.3.1",
+    "react-router": "^5.0.0",
     "react-router-dom": "^4.3.1",
     "reactstrap": "^8.0.0",
     "sass-loader": "^7.0.1",
