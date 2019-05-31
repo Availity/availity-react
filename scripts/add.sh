@@ -18,7 +18,7 @@ SCOPE=${ARGS[$LEN-1]} # extract last arg
 PACKAGES=(${ARGS[@]:0:$LEN-1}) # splice and convert to array. surrounding parens converts back to array
 IS_DEV=false
 
-if [ "$SCOPE" == "--dev" ]; then
+if [ "$SCOPE" == "dev" ]; then
   PACKAGES=(${ARGS[@]:0:$LEN-2})
   SCOPE=${ARGS[$LEN-2]}
   IS_DEV=true
