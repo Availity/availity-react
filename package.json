@@ -70,7 +70,7 @@
     "raf": "^3.4.1",
     "react": "^16.8.3",
     "react-dom": "^16.8.3",
-    "react-testing-library": "^7.0.0",
+    "react-testing-library": "^8.0.1",
     "regenerator-runtime": "^0.13.2",
     "sass-loader": "^7.1.0",
     "ts-jest": "^24.0.0",
