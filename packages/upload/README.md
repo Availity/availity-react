@@ -1,6 +1,6 @@
 # @availity/upload
 
-> Availity upload component for uploading files
+> Availity component for uploading files
 
 ## Installation
 
@@ -10,19 +10,18 @@ npm install @availity/upload --save
 
 ### Usage
 
+This component requires React >= 16.8.
+
 ```javascript
 import React from 'react';
 import Upload from '@availity/upload';
 // ...
-<Upload
-  clientId="a"
-  bucketId="b"
-  customerId="c"
-/>
+<Upload clientId="a" bucketId="b" customerId="c" />;
 // ...
 ```
 
 #### Upload (Default export)
+
 The default export is an all-in-one solution which handles uploads, encrypted file password requests and file state management for you.
 
 ##### Props
@@ -51,7 +50,7 @@ import Upload from '@availity/upload';
   customerId="c"
   multiple={false}
   max={1}
-/>
+/>;
 // ...
 ```
 
@@ -82,8 +81,8 @@ onUpload(upload) {
 // ...
 ```
 
-
 #### UploadProgressBar
+
 The raw progress bar to be used when making your own.
 
 ##### Props
@@ -101,14 +100,12 @@ The raw progress bar to be used when making your own.
 import React from 'react';
 import { UploadProgressBar } from '@availity/upload';
 // ...
-<UploadProgressBar
-  upload={uploadInstance}
-  animated
-/>
+<UploadProgressBar upload={uploadInstance} animated />;
 // ...
 ```
 
 #### FilePickerBtn
+
 The raw file picker button which masks the file input with a button.
 
 ##### Props
@@ -128,15 +125,14 @@ import { FilePickerBtn } from '@availity/upload';
 handleFileSelection = event => {
   const { files } = event.target;
   // do something with the files.
-}
+};
 // ...
-<FilePickerBtn
-  onChange={this.handleFileSelection}
-/>
+<FilePickerBtn onChange={this.handleFileSelection} />;
 // ...
 ```
 
 #### FilePicker
+
 The raw file picker which automatically resets the value of the input, allowing the same file to be selected multiple consecutive files.
 
 ##### Props
@@ -158,11 +154,8 @@ import { CustomInput } from 'reactstrap';
 handleFileSelection = event => {
   const { files } = event.target;
   // do something with the files.
-}
+};
 // ...
-<FilePicker
-  tag={CustomInput}
-  onChange={this.handleFileSelection}
-/>
+<FilePicker tag={CustomInput} onChange={this.handleFileSelection} />;
 // ...
 ```

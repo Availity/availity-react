@@ -252,4 +252,4 @@ storiesOf('Components|Upload', module)
       </div>
     );
   })
-  .add('Pre-upload', () => <PreUpload />);
+  .add('with other input', () => <PreUpload />);
