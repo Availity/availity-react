@@ -9,6 +9,7 @@ const Progress = ({
   complete,
   width,
   className: classes,
+  color,
   ...rest
 }) => (
   <Tag
@@ -21,7 +22,7 @@ const Progress = ({
     <span
       className={classNames(
         'progress-bar',
-        'bg-success',
+        `bg-${color}`,
         { 'progress-bar-striped': striped },
         { 'progress-bar-animated': animated }
       )}
@@ -34,6 +35,7 @@ const Progress = ({
 Progress.defaultProps = {
   tag: 'div',
   width: 0,
+  color: 'success',
 };
 
 Progress.propTypes = {
@@ -43,6 +45,7 @@ Progress.propTypes = {
   complete: PropTypes.bool,
   width: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
   className: PropTypes.string,
+  color: PropTypes.string,
 };
 
 export default Progress;

@@ -1,6 +1,6 @@
 import React from 'react';
 import { storiesOf } from '@storybook/react';
-import { withKnobs, boolean, number } from '@storybook/addon-knobs/react';
+import { withKnobs, boolean, number, text } from '@storybook/addon-knobs/react';
 import README from '@availity/progress/README.md';
 import Progress from '@availity/progress';
 
@@ -23,6 +23,7 @@ storiesOf('Components|Progress', module)
           animated={boolean('Animated', false)}
           striped={boolean('Striped', false)}
           complete={boolean('Complete', false)}
+          color={text('Color', 'success')}
           width={width}
         />
       </div>

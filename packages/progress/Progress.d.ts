@@ -5,6 +5,7 @@ export interface ProgressProps {
     complete?: boolean;
     width?: number | string;
     className?: string;
+    color?: string;
 }
 
 declare const Progress: React.FunctionComponent<ProgressProps>;

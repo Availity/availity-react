@@ -30,3 +30,4 @@ Availity Progress Bar
 - **`animated`**: Boolean. Optional. Triggers the "animated" style in the progress bar.
 - **`striped`**: Boolean. Optional. Triggers the "striped" style in the progress bar.
 - **`complete`**: Boolean. Optional. Triggers the "complete" style in the progress bar. When true, a checkmark appears at the end of the progress bar
+- **`color`**: String. Optional. Default "success". The color of the progress bar
