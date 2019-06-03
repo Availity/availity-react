@@ -24,28 +24,26 @@ const PageHeader = ({
   iconAlt,
   ...props
 }) => {
-  const spaceForSpaceID = useSpace(spaceId);
-  const spaceForPayerID = useSpace(payerId);
+  const { space: spaceForSpaceID } = useSpace(spaceId);
+  const { space: spaceForPayerID } = useSpace(payerId);
   const _space = spaceForSpaceID || spaceForPayerID;
 
   let payerLogo = null;
   if (payerId) {
-    const logo = (
-      <SpacesLogo
-        spaceId={spaceId}
-        payerId={payerId}
-        className="float-md-right d-inline-block"
-      />
-    );
+    const logoAttrs = {
+      spaceId,
+      payerId,
+      className: 'float-md-right d-inline-block',
+    };
     payerLogo = spaceForPayerID ? (
-      logo
+      <SpacesLogo {...logoAttrs} />
     ) : (
       <Spaces
         spaceIds={spaceId ? [spaceId] : undefined}
         payerIds={[payerId]}
         clientId={clientId}
       >
-        {logo}
+        <SpacesLogo {...logoAttrs} />
       </Spaces>
     );
   }
