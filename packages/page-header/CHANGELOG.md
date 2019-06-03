@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [4.4.1](https://github.com/Availity/availity-react/compare/@availity/page-header@4.4.0...@availity/page-header@4.4.1) (2019-06-03)
+
+
+### Bug Fixes
+
+* **page-header:** correct usage of useSpace ([2bc911c](https://github.com/Availity/availity-react/commit/2bc911c))
+
+
+
+
+
 # [4.4.0](https://github.com/Availity/availity-react/compare/@availity/page-header@4.3.6...@availity/page-header@4.4.0) (2019-05-29)
 
 
