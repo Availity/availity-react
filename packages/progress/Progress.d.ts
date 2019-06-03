@@ -3,7 +3,8 @@ export interface ProgressProps {
     animated?: boolean;
     striped?: boolean;
     complete?: boolean;
-    width?: number | string;
+    value?: number | string;
+    max?: number | string;
     className?: string;
     color?: string;
 }

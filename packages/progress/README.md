@@ -17,7 +17,7 @@ import Progress from '@availity/progress';
 // ...
   <div>
     <p>50% Complete</p>
-    <Progress animated={false} striped complete={false} width={50} />
+    <Progress animated={false} striped complete={false} value={50} max={100} />
   </div>
 // ...
 ```
@@ -26,7 +26,8 @@ import Progress from '@availity/progress';
 Availity Progress Bar
 
 ##### Props
-- **`width`**: Number. Optional. Default 0. The percentage of the progress bar that should be filled.
+- **`value`**: Number. Optional. Default 0. The amount the progress bar that should be filled (relative to the `max`)
+- **`max`**: Number. Optional. Default 100. The maximum amount of the progress bar
 - **`animated`**: Boolean. Optional. Triggers the "animated" style in the progress bar.
 - **`striped`**: Boolean. Optional. Triggers the "striped" style in the progress bar.
 - **`complete`**: Boolean. Optional. Triggers the "complete" style in the progress bar. When true, a checkmark appears at the end of the progress bar

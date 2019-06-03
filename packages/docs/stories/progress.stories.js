@@ -15,16 +15,18 @@ storiesOf('Components|Progress', module)
   })
   .addDecorator(withKnobs)
   .add('default', () => {
-    const width = number('Width', 50);
+    const value = number('Value', 50);
+    const max = number('Max', 100);
     return (
       <div>
-        <p>{width}% Complete</p>
+        <p>{Math.round((value / max) * 100)}% Complete</p>
         <Progress
           animated={boolean('Animated', false)}
           striped={boolean('Striped', false)}
           complete={boolean('Complete', false)}
           color={text('Color', 'success')}
-          width={width}
+          value={value}
+          max={max}
         />
       </div>
     );
