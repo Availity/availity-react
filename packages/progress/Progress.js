@@ -17,6 +17,10 @@ const Progress = ({
       'progress-complete': complete,
     })}
     data-testid="progress-outer"
+    role="progressbar"
+    aria-valuenow={width}
+    aria-valuemin={0}
+    aria-valuemax={100}
     {...rest}
   >
     <span
