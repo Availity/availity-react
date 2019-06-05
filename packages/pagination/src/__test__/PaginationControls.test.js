@@ -96,4 +96,26 @@ describe('Pagination Controls', () => {
 
     expect(breakLine.nextSibling.firstChild.textContent).toBe('5');
   });
+
+  test('should have text on Prev and Next buttons', async () => {
+    const items = [
+      { value: '1', key: 1 },
+      { value: '2', key: 2 },
+      { value: '3', key: 3 },
+    ];
+
+    const { getByTestId } = render(
+      <Pagination items={items} itemsPerPage={1}>
+        <PaginationControls pageRange={2} marginPages={1} directionLinks />
+      </Pagination>
+    );
+
+    const previous = getByTestId('pagination-control-previous');
+
+    expect(previous.firstChild.textContent).toMatch('‹ Prev');
+
+    const next = getByTestId('pagination-control-next');
+
+    expect(next.firstChild.textContent).toContain('Next ›');
+  });
 });
