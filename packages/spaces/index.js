@@ -1,6 +1,7 @@
 import Spaces, { useSpace, SpacesContext } from './src/Spaces';
 import SpacesImage from './src/SpacesImage';
 import SpacesDisclaimer from './src/SpacesDisclaimer';
+import SpacesGhostText from './src/SpacesGhostText';
 
 const SpacesLogo = SpacesImage.create({
   imageType: 'logo',
@@ -21,6 +22,7 @@ export {
   SpacesTile,
   SpacesBillboard,
   SpacesDisclaimer,
+  SpacesGhostText,
   useSpace,
   SpacesContext,
 };

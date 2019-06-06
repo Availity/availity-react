@@ -10,13 +10,22 @@
               "name": "logo",
               "value": "/static/spaces/space1/banner.png"
             }
+          ],
+          "parentIDs": ["pid1"],
+          "metadata": [
+            {
+              "name": "ghostText",
+              "value": "This link has moved"
+            },
+            {
+              "name": "ghostParents",
+              "value": "pid1"
+            }
           ]
         },
         {
           "id": "a",
-          "payerIDs": [
-            "availity1"
-          ],
+          "payerIDs": ["availity1"],
           "images": [
             {
               "name": "logo",
@@ -35,9 +44,7 @@
         },
         {
           "id": "b",
-          "payerIDs": [
-            "availity2"
-          ],
+          "payerIDs": ["availity2"],
           "images": [
             {
               "name": "tile",
@@ -56,9 +63,7 @@
         },
         {
           "id": "c",
-          "payerIDs": [
-            "availity3"
-          ],
+          "payerIDs": ["availity3"],
           "images": [
             {
               "name": "billboard",

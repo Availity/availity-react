@@ -76,6 +76,27 @@ import Spaces, { SpacesDisclaimer } from '@availity/spaces';
   <SpacesDisclaimer spaceId="73162546201441126239486200007187" markdown styled />
 </Spaces>
 // ...
+```
+
+### SpacesGhostText (Named Export)
+Display the ghost text for a given space. Renders `null` if the ghost text should not display.
+
+#### Props
+- **`spaceId`**: String. **Required**. The id of the space to render the ghost text for
+
+#### Usage
+```javascript
+import React from 'react';
+import Spaces, { SpacesGhostText } from '@availity/spaces';
+// ... 
+<Spaces
+  spaceIds={['73162546201441126239486200007187']}
+  clientId="my-client-id"
+>
+  <SpacesGhostText spaceId="73162546201441126239486200007187" />
+</Spaces>
+// ...
+```
 
 ### useSpace
 
@@ -89,8 +110,7 @@ import { useSpace } from '@availity/spaces';
 // ...
 const SpacesComponent = () => {
     // id can be a space or a payer id
-    const {space, images} = useSpace(id);
-    // Returns space and images for id
+    const {space, isGhost} = useSpace(id);
 };
 ```
 
