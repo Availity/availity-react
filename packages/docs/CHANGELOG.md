@@ -3,6 +3,25 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [5.7.1](https://github.com/Availity/availity-react/compare/@availity/docs@5.7.0...@availity/docs@5.7.1) (2019-06-05)
+
+**Note:** Version bump only for package @availity/docs
+
+
+
+
+
+# [5.7.0](https://github.com/Availity/availity-react/compare/@availity/docs@5.6.1...@availity/docs@5.7.0) (2019-06-03)
+
+
+### Features
+
+* **upload:** upgrade react-dropzone from 7.x to 10.x ([#139](https://github.com/Availity/availity-react/issues/139)) ([f5e5c63](https://github.com/Availity/availity-react/commit/f5e5c63))
+
+
+
+
+
 ## [5.6.1](https://github.com/Availity/availity-react/compare/@availity/docs@5.6.0...@availity/docs@5.6.1) (2019-05-30)
 
 **Note:** Version bump only for package @availity/docs

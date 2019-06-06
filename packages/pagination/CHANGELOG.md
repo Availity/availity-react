@@ -3,6 +3,25 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [2.2.0](https://github.com/Availity/availity-react/compare/@availity/pagination@2.1.1...@availity/pagination@2.2.0) (2019-06-05)
+
+
+### Features
+
+* **pagination:** prev and next text on buttons ([#145](https://github.com/Availity/availity-react/issues/145)) ([7496dcb](https://github.com/Availity/availity-react/commit/7496dcb))
+
+
+
+
+
+## [2.1.1](https://github.com/Availity/availity-react/compare/@availity/pagination@2.1.0...@availity/pagination@2.1.1) (2019-06-03)
+
+**Note:** Version bump only for package @availity/pagination
+
+
+
+
+
 # [2.1.0](https://github.com/Availity/availity-react/compare/@availity/pagination@2.0.3...@availity/pagination@2.1.0) (2019-05-30)
 
 

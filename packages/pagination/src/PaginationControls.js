@@ -5,6 +5,9 @@ import PropTypes from 'prop-types';
 import { Pagination, PaginationItem, PaginationLink } from 'reactstrap';
 import { usePagination } from './Pagination';
 
+const leftCaret = '\u2039'; // ‹
+const rightCaret = '\u203A'; // ›
+
 const PaginationControls = ({
   directionLinks,
   autoHide,
@@ -109,7 +112,9 @@ const PaginationControls = ({
                 }
                 type="button"
                 previous
-              />
+              >
+                {leftCaret} Prev
+              </PaginationLink>
             </PaginationItem>
           ) : (
             ''
@@ -127,7 +132,9 @@ const PaginationControls = ({
                 }
                 type="button"
                 next
-              />
+              >
+                Next {rightCaret}
+              </PaginationLink>
             </PaginationItem>
           ) : (
             ''
@@ -145,7 +152,7 @@ PaginationControls.propTypes = {
   autoHide: PropTypes.bool, // If there are no items to show. This component will not show
   pageRange: PropTypes.number,
   marginPages: PropTypes.number,
-  breakLabel: PropTypes.bool
+  breakLabel: PropTypes.bool,
 };
 
 PaginationControls.defaultProps = {
@@ -153,6 +160,6 @@ PaginationControls.defaultProps = {
   autoHide: true,
   pageRange: 5,
   marginPages: 2,
-  breakLabel: true
+  breakLabel: true,
 };
 export default PaginationControls;
