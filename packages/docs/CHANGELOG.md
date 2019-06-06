@@ -3,6 +3,19 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [5.8.0](https://github.com/Availity/availity-react/compare/@availity/docs@5.7.1...@availity/docs@5.8.0) (2019-06-06)
+
+
+### Features
+
+* **progress:** add color prop ([de51610](https://github.com/Availity/availity-react/commit/de51610))
+* **progress:** add progress bar package ([c549a3f](https://github.com/Availity/availity-react/commit/c549a3f))
+* **spaces:** add SpacesGhostText component ([b6a11f6](https://github.com/Availity/availity-react/commit/b6a11f6))
+
+
+
+
+
 ## [5.7.1](https://github.com/Availity/availity-react/compare/@availity/docs@5.7.0...@availity/docs@5.7.1) (2019-06-05)
 
 **Note:** Version bump only for package @availity/docs
