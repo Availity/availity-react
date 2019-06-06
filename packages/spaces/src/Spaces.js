@@ -133,7 +133,24 @@ export const useSpace = id => {
     return spc;
   });
 
-  return { space };
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  const isGhost = useMemo(() => {
+    if (!space || !space.metadata || !space.parentIDs) return false;
+    const { metadata, parentIDs } = space;
+
+    return (
+      metadata.ghostText &&
+      metadata.ghostParents &&
+      metadata.ghostParents
+        .split(',')
+        .map(ghostParent => (ghostParent || '').trim())
+        .some(ghostParent =>
+          parentIDs.some(parentID => parentID === ghostParent)
+        )
+    );
+  });
+
+  return { space, isGhost };
 };
 
 Spaces.propTypes = {
@@ -157,6 +174,11 @@ Spaces.defaultProps = {
           name
           description
           payerIDs
+          parentIDs
+          metadata{
+            name
+            value
+          }
           images{
             name
             value

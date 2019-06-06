@@ -8,6 +8,7 @@ import Spaces, {
   SpacesTile,
   SpacesBillboard,
   SpacesDisclaimer,
+  SpacesGhostText,
 } from '@availity/spaces';
 import README from '@availity/spaces/README.md';
 
@@ -72,6 +73,13 @@ storiesOf('Components|Spaces', module)
           markdown={boolean('Markdown', false)}
           spaceId="space1"
         />
+      </Spaces>
+    </div>
+  ))
+  .add('ghost text', () => (
+    <div>
+      <Spaces spaceIds={['space1']} clientId="my-client-id">
+        <SpacesGhostText spaceId="space1" />
       </Spaces>
     </div>
   ));
