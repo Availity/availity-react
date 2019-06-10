@@ -1,4 +1,4 @@
-import React, { useState, useContext } from 'react';
+import React, { useState, useContext, useEffect, useRef } from 'react';
 import PropTypes from 'prop-types';
 import isFunction from 'lodash.isfunction';
 import isEqual from 'lodash.isequal';
@@ -25,6 +25,7 @@ const Pagination = ({
   onPageChange,
   children,
   watchList,
+  resetParams,
   defaultPage,
 }) => {
   const [currentPage, setPage] = useState(defaultPage);
@@ -94,6 +95,17 @@ const Pagination = ({
     }
   };
 
+  // We don't want to reset the page on the first render
+  const firstUpdate = useRef(true);
+  useEffect(() => {
+    if (firstUpdate.current) {
+      firstUpdate.current = false;
+    } else {
+      updatePage(1);
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [...resetParams]);
+
   // boom roasted
   return (
     <PaginationContext.Provider
@@ -115,6 +127,7 @@ Pagination.propTypes = {
   onPageChange: PropTypes.func,
   children: PropTypes.node,
   watchList: PropTypes.array,
+  resetParams: PropTypes.array,
   defaultPage: PropTypes.number,
 };
 
@@ -122,6 +135,7 @@ Pagination.defaultProps = {
   itemsPerPage: 10,
   items: [],
   watchList: [],
+  resetParams: [],
   defaultPage: 1,
 };
 

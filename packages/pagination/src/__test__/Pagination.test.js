@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { useToggle } from '@availity/hooks';
 import {
   render,
   waitForElement,
@@ -204,6 +205,62 @@ describe('Pagination', () => {
     fireEvent.click(getByTestId('hello-btn'));
 
     expect(mockFunc).toHaveBeenCalledTimes(3);
+  });
+
+  test('should reset page to 1 if resetParams updates', async () => {
+    // Create component with button that explicitly sets the current page to 2
+    const SomeComponent = React.memo(() => {
+      const { loading, currentPage, setPage } = usePagination();
+
+      return loading ? null : (
+        <div>
+          <button
+            type="button"
+            data-testid="set-page-btn"
+            onClick={() => {
+              setPage(2);
+            }}
+          />
+          <span data-testid="current-page">{currentPage}</span>
+        </div>
+      );
+    });
+
+    // Create component with button that changes resetParams
+    const ComponentWrapper = () => {
+      const [isToggled, toggle] = useToggle();
+      return (
+        <>
+          <Pagination resetParams={[isToggled]}>
+            <button
+              type="button"
+              data-testid="toggle-btn"
+              onClick={() => toggle()}
+            />
+            <SomeComponent />
+          </Pagination>
+        </>
+      );
+    };
+
+    const { getByTestId } = render(<ComponentWrapper />);
+
+    let currentPageButton = await waitForElement(() =>
+      getByTestId(`current-page`)
+    );
+
+    // Check current page is 1 on first render
+    expect(currentPageButton.textContent).toBe('1');
+
+    // Check current page is 2 after set page button is called
+    fireEvent.click(getByTestId('set-page-btn'));
+    currentPageButton = await waitForElement(() => getByTestId(`current-page`));
+    expect(currentPageButton.textContent).toBe('2');
+
+    // Check current page is 1 after resetParams changes
+    fireEvent.click(getByTestId('toggle-btn'));
+    currentPageButton = await waitForElement(() => getByTestId(`current-page`));
+    expect(currentPageButton.textContent).toBe('1');
   });
 
   test('show correct page when given defaultPage', async () => {

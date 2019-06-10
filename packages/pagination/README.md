@@ -30,6 +30,7 @@ This is the provider component for pagination to work. All the inner components 
 - **`itemsPerPage`**: number. default `10`. The total amount of items to render at a time. ( After all the filtering )
 - **`onPageChange`**: function. optional. When the user changes the page, this will be called after the new page has been set.
 - **`watchList`**: Array. optional. Array of data points you want pagination to re-render if changed. This is helpful for when the function is passed in the `items` prop and you want to force call the pagination update.
+- **`resetParams`**: Array. optional. Array of data points that, when changed, causes pagination to reset the current page to 1.
 - **`defaultPage`**: number. optional. The starting page to use when the component mounts.
 
 #### Example usage
