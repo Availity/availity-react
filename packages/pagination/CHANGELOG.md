@@ -3,6 +3,22 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [2.3.0](https://github.com/Availity/availity-react/compare/@availity/pagination@2.2.0...@availity/pagination@2.3.0) (2019-06-11)
+
+
+### Bug Fixes
+
+* **pagination:** handle resetParams when items prop is a function ([40cf6c2](https://github.com/Availity/availity-react/commit/40cf6c2))
+
+
+### Features
+
+* **pagination:** add resetParams prop ([3823a95](https://github.com/Availity/availity-react/commit/3823a95))
+
+
+
+
+
 # [2.2.0](https://github.com/Availity/availity-react/compare/@availity/pagination@2.1.1...@availity/pagination@2.2.0) (2019-06-05)
 
 
