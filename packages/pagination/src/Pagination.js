@@ -41,7 +41,7 @@ const Pagination = ({
 
   const [loading, toggleLoading] = useToggle(true);
 
-  useEffectAsync(async () => {
+  const getPageData = async () => {
     avLocalStorage.set('current-page', currentPage);
 
     // If the items is a function then await the resposne in case of async actions
@@ -77,6 +77,10 @@ const Pagination = ({
     });
 
     toggleLoading(false);
+  };
+
+  useEffectAsync(async () => {
+    getPageData();
   }, [
     currentPage,
     itemsPerPage,
@@ -101,7 +105,12 @@ const Pagination = ({
     if (firstUpdate.current) {
       firstUpdate.current = false;
     } else {
+      const current = currentPage;
       updatePage(1);
+      // If the current page was already 1 and theItems is a function, re-fetch the page data
+      if (current === 1 && isFunction(theItems)) {
+        getPageData();
+      }
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [...resetParams]);

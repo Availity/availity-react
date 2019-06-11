@@ -263,6 +263,55 @@ describe('Pagination', () => {
     expect(currentPageButton.textContent).toBe('1');
   });
 
+  test('should reset page to 1 and refetch page data if resetParams updates, items is a function, and already on page 1', async () => {
+    // Create component that renders the current page
+    const SomeComponent = React.memo(() => {
+      const { loading, currentPage } = usePagination();
+
+      return loading ? null : (
+        <div>
+          <span data-testid="current-page">{currentPage}</span>
+        </div>
+      );
+    });
+
+    // Create component with button that changes resetParams
+    const items = jest.fn().mockResolvedValue({ items: [] });
+    const ComponentWrapper = () => {
+      const [isToggled, toggle] = useToggle();
+      return (
+        <>
+          <Pagination items={items} resetParams={[isToggled]}>
+            <button
+              type="button"
+              data-testid="toggle-btn"
+              onClick={() => toggle()}
+            />
+            <SomeComponent />
+          </Pagination>
+        </>
+      );
+    };
+
+    const { getByTestId } = render(<ComponentWrapper />);
+
+    let currentPageButton = await waitForElement(() =>
+      getByTestId(`current-page`)
+    );
+
+    // Check current page is 1 on first render
+    expect(currentPageButton.textContent).toBe('1');
+
+    // Check items function was called once on first render
+    expect(items).toHaveBeenCalledTimes(1);
+
+    // Check items function was called again when reset params change, items is a function, and already on page 1
+    fireEvent.click(getByTestId('toggle-btn'));
+    currentPageButton = await waitForElement(() => getByTestId(`current-page`));
+    expect(currentPageButton.textContent).toBe('1');
+    expect(items).toHaveBeenCalledTimes(2);
+  });
+
   test('show correct page when given defaultPage', async () => {
     const items = [
       { value: '1', key: 1 },
