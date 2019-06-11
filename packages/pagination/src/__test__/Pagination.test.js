@@ -275,8 +275,26 @@ describe('Pagination', () => {
       );
     });
 
+    const firstItems = [];
+    const secondItems = [];
+    for (let i = 0; i < 6; i++) {
+      if (i <= 3) {
+        firstItems.push({ value: `${i}`, key: i });
+      } else {
+        secondItems.push({ value: `${i}`, key: i });
+      }
+    }
+
+    const items = jest
+      .fn()
+      .mockResolvedValueOnce({
+        items: firstItems,
+      })
+      .mockResolvedValueOnce({
+        items: secondItems,
+      });
+
     // Create component with button that changes resetParams
-    const items = jest.fn().mockResolvedValue({ items: [] });
     const ComponentWrapper = () => {
       const [isToggled, toggle] = useToggle();
       return (
@@ -288,6 +306,7 @@ describe('Pagination', () => {
               onClick={() => toggle()}
             />
             <SomeComponent />
+            <PaginationJson />
           </Pagination>
         </>
       );
@@ -302,6 +321,19 @@ describe('Pagination', () => {
     // Check current page is 1 on first render
     expect(currentPageButton.textContent).toBe('1');
 
+    // Check correct items render
+    let paginationCon = await waitForElement(() =>
+      getByTestId('pagination-con')
+    );
+
+    expect(paginationCon).toBeDefined();
+
+    expect(JSON.parse(paginationCon.textContent)).toEqual(
+      expect.objectContaining({
+        page: firstItems,
+      })
+    );
+
     // Check items function was called once on first render
     expect(items).toHaveBeenCalledTimes(1);
 
@@ -310,6 +342,17 @@ describe('Pagination', () => {
     currentPageButton = await waitForElement(() => getByTestId(`current-page`));
     expect(currentPageButton.textContent).toBe('1');
     expect(items).toHaveBeenCalledTimes(2);
+
+    // Check correct items render
+    paginationCon = await waitForElement(() => getByTestId('pagination-con'));
+
+    expect(paginationCon).toBeDefined();
+
+    expect(JSON.parse(paginationCon.textContent)).toEqual(
+      expect.objectContaining({
+        page: secondItems,
+      })
+    );
   });
 
   test('show correct page when given defaultPage', async () => {
