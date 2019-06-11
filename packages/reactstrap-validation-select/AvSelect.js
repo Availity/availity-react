@@ -7,7 +7,7 @@ import get from 'lodash/get';
 import find from 'lodash/find';
 import isEqual from 'lodash/isEqual';
 
-const AsyncPaginate = require('react-select-async-paginate');
+import AsyncPaginate from 'react-select-async-paginate';
 
 const {
   DownChevron,
