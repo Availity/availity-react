@@ -16,7 +16,7 @@ This is the provider component needed for `@availity/spaces` components to work.
 - **`clientId`**: String. **Required** clientId to use in slotmachine request
 - **`query`**: String. Optional. Override the default slotmachine query
 - **`variables`**: Object. Override the default variables used in the slotmachine query
-- **`spaces`**: Array<Object>. Array of spaces to be passed into the Spaces provider. Useful for if you already have the spaces in your app and don't want to the spaces provider to have to fetch them again.
+- **`spaces`**: Object array. Array of spaces to be passed into the Spaces provider. Useful for if you already have the spaces in your app and don't want the spaces provider to have to fetch them again.
 - **`spaceIds`**: String array. Array of spaceIds the Spaces provider should fetch the spaces for. Any `spaceIds` already included in `spaces` will not be fetched again.
 - **`payerIds`**: String array. Array of payerIds the Spaces provider should fetch the spaces for. Any `payerIds` already included in `spaces` will not be fetched again.
 
