@@ -40,6 +40,24 @@ export const getAllSpaces = async (
   }
 };
 
+export const sanitizeSpaces = spaces => {
+  // Normalize space pairs ( [{ name, value }} => { name: value } )
+  const pairFields = ['images', 'metadata', 'colors', 'icons', 'mapping'];
+  return spaces.reduce((accum, spc) => {
+    pairFields.forEach(field => {
+      if (spc[field] && Array.isArray(spc[field])) {
+        spc[field] = spc[field].reduce((_accum, { name, value }) => {
+          _accum[name] = value;
+          return _accum;
+        }, {});
+      }
+    });
+
+    accum.push(spc);
+    return accum;
+  }, []);
+};
+
 export const SpacesContext = createContext();
 
 const Spaces = ({
@@ -49,6 +67,7 @@ const Spaces = ({
   spaceIds,
   payerIds,
   children,
+  spaces: spacesFromProps,
 }) => {
   const [spaces, setSpaces] = useState([]);
 
@@ -58,13 +77,20 @@ const Spaces = ({
     // Filter out dupes and ids that we already have the space for
     const filteredSpaceIDs = spaceIds
       .filter((id, i) => spaceIds.indexOf(id) === i)
-      .filter(id => !spaces.some(spc => spc && spc.id === id));
+      .filter(id => !spaces.some(spc => spc && spc.id === id))
+      .filter(id => !spacesFromProps.some(spc => spc && spc.id === id));
 
     const filteredPayerIDs = payerIds
       .filter((id, i) => payerIds.indexOf(id) === i)
       .filter(
         id =>
           !spaces.some(
+            spc => spc && spc.payerIDs && spc.payerIDs.some(pId => pId === id)
+          )
+      )
+      .filter(
+        id =>
+          !spacesFromProps.some(
             spc => spc && spc.payerIDs && spc.payerIDs.some(pId => pId === id)
           )
       );
@@ -92,27 +118,12 @@ const Spaces = ({
       _spaces = _spaces.concat(spacesByPayerIDs);
     }
 
-    // Normalize space pairs ( [{ name, value }} => { name: value } )
-    const pairFields = ['images', 'metadata', 'colors', 'icons', 'mapping'];
-    _spaces = _spaces.reduce((accum, spc) => {
-      pairFields.forEach(field => {
-        if (spc[field]) {
-          spc[field] = spc[field].reduce((_accum, { name, value }) => {
-            _accum[name] = value;
-            return _accum;
-          }, {});
-        }
-      });
-
-      accum.push(spc);
-      return accum;
-    }, []);
-
     if (_spaces.length > 0) setSpaces(_spaces);
   }, [payerIds, spaceIds]);
 
+  const spacesForProvider = sanitizeSpaces(spaces.concat(spacesFromProps));
   return (
-    <SpacesContext.Provider value={{ spaces }}>
+    <SpacesContext.Provider value={{ spaces: spacesForProvider }}>
       {children}
     </SpacesContext.Provider>
   );
@@ -160,6 +171,7 @@ Spaces.propTypes = {
   variables: PropTypes.object,
   spaceIds: PropTypes.arrayOf(PropTypes.string),
   payerIds: PropTypes.arrayOf(PropTypes.string),
+  spaces: PropTypes.arrayOf(PropTypes.object),
 };
 
 Spaces.defaultProps = {
@@ -190,6 +202,7 @@ Spaces.defaultProps = {
   variables: { types: ['space'] },
   spaceIds: [],
   payerIds: [],
+  spaces: [],
 };
 
 export default Spaces;
