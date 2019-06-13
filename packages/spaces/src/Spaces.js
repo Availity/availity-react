@@ -70,10 +70,12 @@ const Spaces = ({
   spaces: spacesFromProps,
 }) => {
   const [spaces, setSpaces] = useState([]);
+  const [loading, setLoading] = useState(false);
 
   // NOTE: we do not want to query slotmachine by payerIDs and spaceIDs at the same time
   // because slotmachine does an AND on those conditions. We want OR
   useEffectAsync(async () => {
+    setLoading(true);
     // Filter out dupes and ids that we already have the space for
     const filteredSpaceIDs = spaceIds
       .filter((id, i) => spaceIds.indexOf(id) === i)
@@ -119,18 +121,19 @@ const Spaces = ({
     }
 
     if (_spaces.length > 0) setSpaces(_spaces);
+    setLoading(false);
   }, [payerIds, spaceIds]);
 
   const spacesForProvider = sanitizeSpaces(spaces.concat(spacesFromProps));
   return (
-    <SpacesContext.Provider value={{ spaces: spacesForProvider }}>
+    <SpacesContext.Provider value={{ spaces: spacesForProvider, loading }}>
       {children}
     </SpacesContext.Provider>
   );
 };
 
 export const useSpace = id => {
-  const { spaces = [] } = useContext(SpacesContext) || {};
+  const { spaces = [], loading } = useContext(SpacesContext) || {};
 
   // Try to match by space id first, else match by payer id
   // eslint-disable-next-line react-hooks/exhaustive-deps
@@ -161,7 +164,7 @@ export const useSpace = id => {
     );
   });
 
-  return { space, isGhost };
+  return { space, isGhost, loading };
 };
 
 Spaces.propTypes = {

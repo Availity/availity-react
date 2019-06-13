@@ -123,6 +123,80 @@ describe('Spaces', () => {
     ]);
   });
 
+  it('toggles whether the spaces provider is loading', async () => {
+    avSlotMachineApi.create
+      .mockResolvedValueOnce({
+        data: {
+          data: {
+            spaces: {
+              totalCount: 1,
+              page: 1,
+              perPage: 1,
+              spaces: [{ id: '1' }],
+            },
+          },
+        },
+      })
+      .mockResolvedValue({
+        data: {
+          data: {
+            spaces: {
+              totalCount: 1,
+              page: 1,
+              perPage: 1,
+              spaces: [{ id: '2' }],
+            },
+          },
+        },
+      });
+
+    const fn = jest.fn(() => {});
+    // Create component to call mock function
+    const SpaceComponent = ({ spaceId }) => {
+      const { loading, space } = useSpace(spaceId);
+
+      // Should be called when async effect to fetch spaces from slotmachine gets executed
+      if (space && !loading) fn();
+      return loading ? null : (
+        <span data-testid={`space-for-${spaceId}`}>
+          {space ? `Space ${space.id}` : 'No Space '}
+        </span>
+      );
+    };
+
+    // Create component that renders a SpaceComponent for the current space id
+    const MyComponent = () => {
+      const [spaceId, setSpaceId] = useState('1');
+
+      return (
+        <Spaces spaceIds={[spaceId]} clientId="my-client-id">
+          <SpaceComponent spaceId={spaceId} />
+
+          <button
+            type="button"
+            data-testid="add-spaceid-btn"
+            onClick={() => setSpaceId('2')}
+          />
+        </Spaces>
+      );
+    };
+
+    const { getByTestId } = render(<MyComponent />);
+
+    await waitForElement(() => getByTestId('space-for-1'));
+
+    // Check func was called when loading space 1
+    expect(fn).toHaveBeenCalledTimes(1);
+
+    // Add a space id
+    fireEvent.click(getByTestId('add-spaceid-btn'));
+
+    await waitForElement(() => getByTestId('space-for-2'));
+
+    // Check func was called when loading space 2
+    expect(fn).toHaveBeenCalledTimes(2);
+  });
+
   describe('getAllSpaces', () => {
     it('gets all spaces', async () => {
       avSlotMachineApi.create
