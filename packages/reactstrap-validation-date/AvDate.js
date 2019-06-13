@@ -56,6 +56,7 @@ class AvDate extends Component {
   static propTypes = {
     ...AvInput.propTypes,
     calendarIcon: PropTypes.node,
+    hideIcon: PropTypes.bool,
   };
 
   static contextTypes = {
@@ -66,6 +67,7 @@ class AvDate extends Component {
     type: 'text',
     datepicker: true,
     calendarIcon: <Icon name="calendar" />,
+    hideIcon: false,
   };
 
   static getDerivedStateFromProps = ({ value }, prevState) => {
@@ -160,7 +162,7 @@ class AvDate extends Component {
   };
 
   render() {
-    const { datepicker, calendarIcon, ...props } = this.props;
+    const { datepicker, calendarIcon, hideIcon, ...props } = this.props;
     const id = `${(this.props.id || this.props.name).replace(
       /[^a-zA-Z0-9]/gi,
       ''
@@ -184,21 +186,23 @@ class AvDate extends Component {
     return (
       <div className="input-group">
         {input}
-        <InputGroupAddon addonType="append">
-          <Button
-            id={id}
-            color="light"
-            type="button"
-            onClick={this.togglePicker}
-            disabled={props.disabled}
-            style={{
-              zIndex: 'auto',
-            }}
-          >
-            {calendarIcon}
-            <span className="sr-only">Toggle Calendar</span>
-          </Button>
-        </InputGroupAddon>
+        {!hideIcon && (
+          <InputGroupAddon addonType="append">
+            <Button
+              id={id}
+              color="light"
+              type="button"
+              onClick={this.togglePicker}
+              disabled={props.disabled}
+              style={{
+                zIndex: 'auto',
+              }}
+            >
+              {calendarIcon}
+              <span className="sr-only">Toggle Calendar</span>
+            </Button>
+          </InputGroupAddon>
+        )}
         <Popover
           placement="top"
           target={id}
