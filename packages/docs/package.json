@@ -33,6 +33,7 @@
     "@availity/favorites": "^1.1.7",
     "@availity/feature": "^1.1.6",
     "@availity/feedback": "^4.1.8",
+    "@availity/form": "^0.1.0",
     "@availity/hooks": "^1.3.2",
     "@availity/icon": "^0.4.1",
     "@availity/link": "^1.2.0",
@@ -88,6 +89,7 @@
     "tus-js-client": "^1.5.1",
     "typescript": "^3.3.1",
     "url-loader": "^1.1.2",
-    "xhr-mock": "^2.3.2"
+    "xhr-mock": "^2.3.2",
+    "yup": "^0.27.0"
   }
 }

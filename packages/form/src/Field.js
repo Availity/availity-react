@@ -1,0 +1,119 @@
+import React from "react";
+import PropTypes from 'prop-types';
+import { Input as RsInput, Label, FormText, Col, Util } from "reactstrap";
+import Feedback from "./Feedback";
+import FormGroup from "./FormGroup";
+import Input from "./Input";
+
+const colSizes = ["xs", "sm", "md", "lg", "xl"];
+
+const Field = ({
+  helpMessage,
+  label,
+  labelHidden,
+  inputClass,
+  labelClass,
+  name: id,
+  size,
+  disabled,
+  readOnly,
+  grid,
+  labelAttrs,
+  groupAttrs,
+  ...attributes
+}) => {
+  let row = false;
+  const col = {};
+  const labelCol = {};
+
+  if (grid) {
+    colSizes.forEach(colSize => {
+      if (grid[colSize]) {
+        row = true;
+        const sizeNum = parseInt(grid[colSize], 10);
+        col[colSize] = sizeNum;
+        labelCol[colSize] = 12 - sizeNum;
+      }
+    });
+  }
+
+  const input = (
+    <Input
+      name={id}
+      className={inputClass}
+      size={size}
+      disabled={disabled}
+      readOnly={readOnly}
+      {...attributes}
+    />
+  );
+
+  const help = helpMessage ? <FormText>{helpMessage}</FormText> : null;
+  const inputRow = row ? (
+    <Col {...col}>
+      {input}
+      <Feedback name={id} />
+      {help}
+    </Col>
+  ) : (
+    input
+  );
+  const check = attributes.type === "checkbox";
+
+  return (
+    <FormGroup
+      for={id}
+      check={check}
+      disabled={disabled}
+      row={row}
+      {...groupAttrs}
+    >
+      {check && inputRow}
+      {label && (
+        <Label
+          for={id}
+          className={labelClass}
+          hidden={labelHidden}
+          size={size}
+          {...labelCol}
+          {...labelAttrs}
+        >
+          {label}
+        </Label>
+      )}
+      {!check && inputRow}
+      {!row && <Feedback name={id} />}
+      {!row && help}
+    </FormGroup>
+  );
+};
+
+Field.propTypes = {
+  tag: Util.tagPropType,
+  label: PropTypes.node,
+  labelHidden: PropTypes.bool,
+  disabled: PropTypes.bool,
+  readOnly: PropTypes.bool,
+  name: PropTypes.string,
+  size: PropTypes.string,
+  inputClass: PropTypes.string,
+  labelClass: PropTypes.string,
+  helpMessage: PropTypes.oneOfType([
+    PropTypes.string,
+    PropTypes.object,
+  ]),
+  errorMessage: PropTypes.oneOfType([
+    PropTypes.string,
+    PropTypes.object,
+  ]),
+  labelAttrs: PropTypes.object,
+  groupAttrs: PropTypes.object,
+  grid: PropTypes.object,
+
+}
+
+Field.defaultProps = {
+  tag: RsInput
+};
+
+export default Field;
