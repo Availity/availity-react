@@ -70,7 +70,7 @@ const Spaces = ({
   spaces: spacesFromProps,
 }) => {
   const [spaces, setSpaces] = useState([]);
-  const [loading, setLoading] = useState(false);
+  const [loading, setLoading] = useState(true);
 
   // NOTE: we do not want to query slotmachine by payerIDs and spaceIDs at the same time
   // because slotmachine does an AND on those conditions. We want OR
