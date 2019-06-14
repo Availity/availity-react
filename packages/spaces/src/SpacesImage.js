@@ -1,5 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import { Spinner } from 'reactstrap';
 import { useSpace } from './Spaces';
 
 const SpacesImage = ({ spaceId, payerId, imageType, ...props }) => {
@@ -7,6 +8,8 @@ const SpacesImage = ({ spaceId, payerId, imageType, ...props }) => {
   const { space = {}, loading } = useSpace(id);
 
   let url = space.images && space.images[imageType];
+
+  if (!url && loading) return <Spinner color="success" {...props} />;
 
   // We can probably remove this at some point once our spaces data is complete
   if (!url && payerId && imageType === 'logo' && !loading) {

@@ -5,7 +5,7 @@
 ## Installation
 
 ```bash
-npm install @availity/spaces --save
+npm install @availity/spaces reactstrap --save
 ```
 
 ## Spaces (Default export)
