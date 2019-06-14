@@ -95,6 +95,7 @@ export default class AvDateRange extends Component {
     defaultValues: PropTypes.object,
     theme: PropTypes.object,
     calendarIcon: PropTypes.node,
+    hideIcon: PropTypes.bool,
   };
 
   static contextTypes = { FormCtrl: PropTypes.object.isRequired };
@@ -102,6 +103,7 @@ export default class AvDateRange extends Component {
   static defaultProps = {
     type: 'text',
     calendarIcon: <Icon name="calendar" />,
+    hideIcon: false,
   };
 
   constructor(props, context) {
@@ -382,23 +384,25 @@ export default class AvDateRange extends Component {
           aria-label="To Date"
           datepicker={false}
         />
-        <InputGroupAddon addonType="append">
-          <Button
-            id={this.guid}
-            color="light"
-            type="button"
-            disabled={this.props.disabled}
-            onClick={this.togglePicker}
-            style={{
-              lineHeight:
-                this.state.format === isoDateFormat ? '1.4' : undefined,
-              zIndex: 'auto',
-            }}
-          >
-            {this.props.calendarIcon}
-            <span className="sr-only">Toggle Calendar</span>
-          </Button>
-        </InputGroupAddon>
+        {!this.props.hideIcon && (
+          <InputGroupAddon addonType="append">
+            <Button
+              id={this.guid}
+              color="light"
+              type="button"
+              disabled={this.props.disabled}
+              onClick={this.togglePicker}
+              style={{
+                lineHeight:
+                  this.state.format === isoDateFormat ? '1.4' : undefined,
+                zIndex: 'auto',
+              }}
+            >
+              {this.props.calendarIcon}
+              <span className="sr-only">Toggle Calendar</span>
+            </Button>
+          </InputGroupAddon>
+        )}
         <Popover
           placement="top"
           target={this.guid}

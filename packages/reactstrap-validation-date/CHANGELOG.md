@@ -3,6 +3,14 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.7.12](https://github.com/Availity/availity-react/compare/@availity/reactstrap-validation-date@1.7.11...@availity/reactstrap-validation-date@1.7.12) (2019-06-14)
+
+**Note:** Version bump only for package @availity/reactstrap-validation-date
+
+
+
+
+
 ## [1.7.11](https://github.com/Availity/availity-react/compare/@availity/reactstrap-validation-date@1.7.10...@availity/reactstrap-validation-date@1.7.11) (2019-06-03)
 
 **Note:** Version bump only for package @availity/reactstrap-validation-date
