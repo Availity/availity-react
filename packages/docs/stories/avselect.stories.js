@@ -15,6 +15,7 @@ import AvSelectResource, {
   AvPermissionSelect,
   AvNavigationSelect,
   AvUserSelect,
+  AvCodeSelect,
 } from '@availity/reactstrap-validation-select/resources';
 import README from '@availity/reactstrap-validation-select/README.md';
 
@@ -330,6 +331,35 @@ storiesOf('Components|AvSelect/resources', module)
         <AvUserSelect
           label={text('Label', 'Select User')}
           name="AvUserSelect"
+          minLength={min}
+          maxLength={max}
+          isMulti={isMulti}
+          required={required}
+          errorMessage={text('Generic Error Message', 'This field is invalid')}
+          validate={{
+            required: {
+              value: required,
+              errorMessage:
+                required &&
+                text('Required Error Message', 'This field is required'),
+            },
+          }}
+          isDisabled={boolean('Disabled', false)}
+        />
+        <Button color="primary">Submit</Button>
+      </AvFormResults>
+    );
+  })
+  .add('AvCodeSelect', () => {
+    const isMulti = boolean('Multiple', false);
+    const min = (isMulti && number('Min Selection', 2)) || undefined;
+    const max = (isMulti && number('Max Selection', 3)) || undefined;
+    const required = boolean('Required', false);
+    return (
+      <AvFormResults>
+        <AvCodeSelect
+          label={text('Label', 'Select Code')}
+          name="AvCodeSelect"
           minLength={min}
           maxLength={max}
           isMulti={isMulti}
