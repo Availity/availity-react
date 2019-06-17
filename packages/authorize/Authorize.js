@@ -4,7 +4,19 @@ import { avUserPermissionsApi, avRegionsApi } from '@availity/api-axios';
 import BlockUi from 'react-block-ui';
 import 'react-block-ui/style.css';
 
-const watching = ['region', 'organizationId'];
+const watching = ['region', 'organizationId', 'customerId'];
+
+const warned = {};
+
+function warnOnce(message) {
+  if (!warned[message]) {
+    // eslint-disable-next-line no-console
+    if (typeof console !== 'undefined' && typeof console.error === 'function') {
+      console.error(message); // eslint-disable-line no-console
+    }
+    warned[message] = true;
+  }
+}
 
 class Authorize extends Component {
   static propTypes = {
@@ -24,6 +36,7 @@ class Authorize extends Component {
     region: PropTypes.oneOfType([PropTypes.bool, PropTypes.string]),
     loader: PropTypes.oneOfType([PropTypes.bool, PropTypes.node]),
     organizationId: PropTypes.string,
+    customerId: PropTypes.string,
     unauthorized: PropTypes.node,
     children: PropTypes.node,
     negate: PropTypes.bool,
@@ -60,13 +73,27 @@ class Authorize extends Component {
   }
 
   checkPermission(permission) {
-    const { organizationId } = this.props;
+    const { organizationId, customerId } = this.props;
     if (!permission) return false;
 
     if (organizationId) {
+      if (customerId) {
+        warnOnce(
+          'You provided both `organizationId` and `customerId` to Authorize but both cannot be used together; `organizationId` will be used and `customerId` will be ignored. If you want to use `customerId` do not provide `organizationId`.'
+        );
+      }
       return (
-        permission.organizationIds.filter(orgId => orgId === organizationId)
-          .length > 0
+        permission.organizations.filter(
+          ({ id: orgId }) => orgId === organizationId
+        ).length > 0
+      );
+    }
+
+    if (customerId) {
+      return (
+        permission.organizations.filter(
+          ({ customerId: orgCustomerId }) => orgCustomerId === customerId
+        ).length > 0
       );
     }
 
