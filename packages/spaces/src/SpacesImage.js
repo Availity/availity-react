@@ -1,7 +1,20 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { Spinner } from 'reactstrap';
+import Skeleton from 'react-loading-skeleton';
+import Img from 'react-image';
 import { useSpace } from './Spaces';
+
+const Loader = ({ skeletonProps, ...rest }) => (
+  <span {...rest}>
+    <Skeleton width={skeletonProps.width} height={skeletonProps.height} />
+  </span>
+);
+
+Loader.defaultProps = {
+  skeletonProps: {
+    height: '100%',
+  },
+};
 
 const SpacesImage = ({ spaceId, payerId, imageType, ...props }) => {
   const id = spaceId || payerId;
@@ -9,7 +22,14 @@ const SpacesImage = ({ spaceId, payerId, imageType, ...props }) => {
 
   let url = space.images && space.images[imageType];
 
-  if (!url && loading) return <Spinner color="success" {...props} />;
+  if (!url && loading) {
+    return (
+      <Loader
+        data-testid={`space-${imageType}-${spaceId || payerId}-loading`}
+        {...props}
+      />
+    );
+  }
 
   // We can probably remove this at some point once our spaces data is complete
   if (!url && payerId && imageType === 'logo' && !loading) {
@@ -22,10 +42,16 @@ const SpacesImage = ({ spaceId, payerId, imageType, ...props }) => {
   if (!url || (!payerId && !spaceId)) return null;
 
   return (
-    <img
+    <Img
       data-testid={`space-${imageType}-${spaceId || payerId}`}
       src={url}
       alt={`Space ${imageType}`}
+      loader={
+        <Loader
+          data-testid={`space-${imageType}-${spaceId || payerId}`}
+          {...props}
+        />
+      }
       {...props}
     />
   );

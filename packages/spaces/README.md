@@ -54,6 +54,7 @@ At least one of the following props must be provided:
 
 - **`spaceId`**: String. Optional, required if `payerId` is not provided. The payer spaces ID for the payer for which you want a image.
 - **`payerId`**: String. Optional, required if `spaceId` is not provided. The payer ID for the payer for which you want a image.
+- **`skeletonProps`**: object. Optional, dimensions passed to loader to show while the image is loading.
 
 ### SpacesDisclaimer (Named Export)
 Display the disclaimer for a given space id. 
