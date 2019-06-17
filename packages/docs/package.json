@@ -89,5 +89,9 @@
     "typescript": "^3.3.1",
     "url-loader": "^1.1.2",
     "xhr-mock": "^2.3.2"
+  },
+  "dependencies": {
+    "@availity/api-axios": "^5.2.0",
+    "@availity/api-core": "^5.2.0"
   }
 }
