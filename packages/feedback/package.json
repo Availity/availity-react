@@ -1,6 +1,6 @@
 {
   "name": "@availity/feedback",
-  "version": "4.1.8",
+  "version": "4.1.9",
   "author": "Evan Sharp <evan.sharp@availity.com>",
   "description": "Availity feedback with simley faces react component.",
   "main": "index.js",
@@ -22,7 +22,7 @@
   "dependencies": {
     "@availity/hooks": "^1.3.2",
     "@availity/icon": "^0.4.1",
-    "@availity/reactstrap-validation-select": "^3.0.6",
+    "@availity/reactstrap-validation-select": "^3.1.0",
     "availity-reactstrap-validation": "^2.5.0",
     "prop-types": "^15.5.8"
   },
