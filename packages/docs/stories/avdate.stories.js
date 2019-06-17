@@ -35,6 +35,7 @@ storiesOf('Components|AvDate', module)
         required={boolean('Required', false)}
         disabled={boolean('Disabled', false)}
         datepicker={boolean('Has DatePicker', true)}
+        hideIcon={boolean('Hide Calendar Icon', false)}
       />
       <Button className="mt-3" color="primary">
         Submit
@@ -54,6 +55,7 @@ storiesOf('Components|AvDate', module)
           required={boolean('Required', false)}
           disabled={boolean('Disabled', false)}
           datepicker={boolean('Has DatePicker', true)}
+          hideIcon={boolean('Hide Calendar Icon', false)}
         />
         <AvFeedback>
           {text('Error Message', 'This field is invalid')}
@@ -84,6 +86,7 @@ storiesOf('Components|AvDate', module)
                 text('Required Error Message', 'This field is required'),
             },
           }}
+          hideIcon={boolean('Hide Calendar Icon', false)}
         />
         <Button color="primary">Submit</Button>
       </AvFormResults>
@@ -111,6 +114,7 @@ storiesOf('Components|AvDate', module)
                 text('Required Error Message', 'This field is required'),
             },
           }}
+          hideIcon={boolean('Hide Calendar Icon', false)}
         />
         <Button color="primary">Submit</Button>
       </AvFormResults>
@@ -139,6 +143,7 @@ storiesOf('Components|AvDate', module)
                 text('Required Error Message', 'This field is required'),
             },
           }}
+          hideIcon={boolean('Hide Calendar Icon', false)}
         />
         <Button color="primary">Submit</Button>
       </AvFormResults>
