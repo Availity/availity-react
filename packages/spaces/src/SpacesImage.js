@@ -16,7 +16,7 @@ Loader.defaultProps = {
   },
 };
 
-const SpacesImage = ({ spaceId, payerId, imageType, ...props }) => {
+const SpacesImage = ({ spaceId, payerId, imageType, fallback, ...props }) => {
   const id = spaceId || payerId;
   const { space = {}, loading } = useSpace(id);
 
@@ -32,11 +32,8 @@ const SpacesImage = ({ spaceId, payerId, imageType, ...props }) => {
   }
 
   // We can probably remove this at some point once our spaces data is complete
-  if (!url && payerId && imageType === 'logo' && !loading) {
-    url = `/public/apps/eligibility/images/value-add-logos/${payerId.replace(
-      /\s/g,
-      ''
-    )}.gif`;
+  if (!url && !loading && fallback) {
+    url = fallback;
   }
 
   if (!url || (!payerId && !spaceId)) return null;
@@ -60,6 +57,7 @@ const SpacesImage = ({ spaceId, payerId, imageType, ...props }) => {
 SpacesImage.propTypes = {
   spaceId: PropTypes.string,
   payerId: PropTypes.string,
+  fallback: PropTypes.string,
   imageType: PropTypes.string.isRequired,
 };
 
