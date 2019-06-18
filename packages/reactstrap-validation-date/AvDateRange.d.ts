@@ -14,6 +14,7 @@ export interface AvDateRangeProps {
     ranges?: Array<Object> | object;
     defaultValues?: object;
     theme?: object;
+    hideIcon?: boolean;
 }
 
 declare const AvDateRange: React.ComponentType<AvDateRangeProps>;

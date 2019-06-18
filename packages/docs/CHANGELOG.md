@@ -3,6 +3,81 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [5.9.1](https://github.com/Availity/availity-react/compare/@availity/docs@5.9.0...@availity/docs@5.9.1) (2019-06-17)
+
+**Note:** Version bump only for package @availity/docs
+
+
+
+
+
+# [5.9.0](https://github.com/Availity/availity-react/compare/@availity/docs@5.8.2...@availity/docs@5.9.0) (2019-06-17)
+
+
+### Features
+
+* **reactstrap-validation-select:** add AvCodeSelect ([387af1a](https://github.com/Availity/availity-react/commit/387af1a))
+
+
+
+
+
+## [5.8.2](https://github.com/Availity/availity-react/compare/@availity/docs@5.8.1...@availity/docs@5.8.2) (2019-06-14)
+
+**Note:** Version bump only for package @availity/docs
+
+
+
+
+
+## [5.8.1](https://github.com/Availity/availity-react/compare/@availity/docs@5.8.0...@availity/docs@5.8.1) (2019-06-11)
+
+**Note:** Version bump only for package @availity/docs
+
+
+
+
+
+# [5.8.0](https://github.com/Availity/availity-react/compare/@availity/docs@5.7.1...@availity/docs@5.8.0) (2019-06-06)
+
+
+### Features
+
+* **progress:** add color prop ([de51610](https://github.com/Availity/availity-react/commit/de51610))
+* **progress:** add progress bar package ([c549a3f](https://github.com/Availity/availity-react/commit/c549a3f))
+* **spaces:** add SpacesGhostText component ([b6a11f6](https://github.com/Availity/availity-react/commit/b6a11f6))
+
+
+
+
+
+## [5.7.1](https://github.com/Availity/availity-react/compare/@availity/docs@5.7.0...@availity/docs@5.7.1) (2019-06-05)
+
+**Note:** Version bump only for package @availity/docs
+
+
+
+
+
+# [5.7.0](https://github.com/Availity/availity-react/compare/@availity/docs@5.6.1...@availity/docs@5.7.0) (2019-06-03)
+
+
+### Features
+
+* **upload:** upgrade react-dropzone from 7.x to 10.x ([#139](https://github.com/Availity/availity-react/issues/139)) ([f5e5c63](https://github.com/Availity/availity-react/commit/f5e5c63))
+
+
+
+
+
+## [5.6.1](https://github.com/Availity/availity-react/compare/@availity/docs@5.6.0...@availity/docs@5.6.1) (2019-05-30)
+
+**Note:** Version bump only for package @availity/docs
+
+
+
+
+
 # [5.6.0](https://github.com/Availity/availity-react/compare/@availity/docs@5.5.0...@availity/docs@5.6.0) (2019-05-29)
 
 

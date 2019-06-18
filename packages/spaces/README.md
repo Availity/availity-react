@@ -16,10 +16,9 @@ This is the provider component needed for `@availity/spaces` components to work.
 - **`clientId`**: String. **Required** clientId to use in slotmachine request
 - **`query`**: String. Optional. Override the default slotmachine query
 - **`variables`**: Object. Override the default variables used in the slotmachine query
-
-At least one of the following props must be provided (and not empty)
-- **`spaceIds`**: String array. Array of spaceIds the Spaces provider should fetch the spaces for
-- **`payerIds`**: String array. Array of payerIds the Spaces provider should fetch the spaces for
+- **`spaces`**: Object array. Array of spaces to be passed into the Spaces provider. Useful for if you already have the spaces in your app and don't want the spaces provider to have to fetch them again.
+- **`spaceIds`**: String array. Array of spaceIds the Spaces provider should fetch the spaces for. Any `spaceIds` already included in `spaces` will not be fetched again.
+- **`payerIds`**: String array. Array of payerIds the Spaces provider should fetch the spaces for. Any `payerIds` already included in `spaces` will not be fetched again.
 
 ### Images
 
@@ -76,6 +75,27 @@ import Spaces, { SpacesDisclaimer } from '@availity/spaces';
   <SpacesDisclaimer spaceId="73162546201441126239486200007187" markdown styled />
 </Spaces>
 // ...
+```
+
+### SpacesGhostText (Named Export)
+Display the ghost text for a given space. Renders `null` if the ghost text should not display.
+
+#### Props
+- **`spaceId`**: String. **Required**. The id of the space to render the ghost text for
+
+#### Usage
+```javascript
+import React from 'react';
+import Spaces, { SpacesGhostText } from '@availity/spaces';
+// ... 
+<Spaces
+  spaceIds={['73162546201441126239486200007187']}
+  clientId="my-client-id"
+>
+  <SpacesGhostText spaceId="73162546201441126239486200007187" />
+</Spaces>
+// ...
+```
 
 ### useSpace
 
@@ -89,8 +109,7 @@ import { useSpace } from '@availity/spaces';
 // ...
 const SpacesComponent = () => {
     // id can be a space or a payer id
-    const {space, images} = useSpace(id);
-    // Returns space and images for id
+    const {space, isGhost} = useSpace(id);
 };
 ```
 

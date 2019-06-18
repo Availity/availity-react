@@ -1,6 +1,6 @@
 # @availity/upload
 
-> Availity upload component for uploading files
+> Availity component for uploading files
 
 ## Installation
 
@@ -10,19 +10,18 @@ npm install @availity/upload --save
 
 ### Usage
 
+This component requires React >= 16.8.
+
 ```javascript
 import React from 'react';
 import Upload from '@availity/upload';
 // ...
-<Upload
-  clientId="a"
-  bucketId="b"
-  customerId="c"
-/>
+<Upload clientId="a" bucketId="b" customerId="c" />;
 // ...
 ```
 
 #### Upload (Default export)
+
 The default export is an all-in-one solution which handles uploads, encrypted file password requests and file state management for you.
 
 ##### Props
@@ -31,8 +30,10 @@ The default export is an all-in-one solution which handles uploads, encrypted fi
 - **`bucketId`**: String. Required. The ID of the bucket you want to upload to.
 - **`customerId`**: String. Required. The customer ID for the organization the user is uploading on behave of.
 - **`clientId`**: String. Required. The ID obtain from APIConnect. Must be subscribed to the resumeable uploads API.
+- **`allowedFileNameCharacters`**: String (regex). Optional. Restrict the file name characters to a regex set
 - **`allowedFileTypes`**: Array of strings. Optional. The file types you want to restrict uploading to. E.g. `['.jpeg', '.jpg']`.
-- **`onFileUpload`**: Function. Optional. Callback called when file is uploaded. The callback will be provided the `Upload` instance form upload-core SDK. Use this callback to track files which have been uploaded (to get references returned by the API).
+- **`onFileUpload`**: Function. Optional. Callback called when file is uploaded. The callback will be provided the `Upload` instance from upload-core SDK. Use this callback to track files which have been uploaded (to get references returned by the API).
+- **`onFileRemove`**: Function. Optional. Callback called when file is removed. The callback will be provided the `Upload` instance from upload-core SDK.
 - **`maxSize`**: Number. Optional. The maximum file size (in bytes) for a file to be uploaded.
 - **`max`**: Number. Optional. The maximum number of files allowed to be uploaded. `0` (or a falsey value) means unlimited. When the max number has been reached the add button will disappear. Default: unlimited.
 - **`multiple`**: Boolean. Optional. Indicates that the user will be allowed to select multiple files when selecting files from the OS prompt. Default: `true`
@@ -51,7 +52,7 @@ import Upload from '@availity/upload';
   customerId="c"
   multiple={false}
   max={1}
-/>
+/>;
 // ...
 ```
 
@@ -64,7 +65,8 @@ import Upload from '@availity/upload';
   clientId="a"
   bucketId="b"
   customerId="c"
-  onFileUpload={onUpload} // <-- callback function
+  onFileUpload={onUpload} // <-- add file callback function
+  onFileRemove={onRemove} // <-- remove file callback function
   max={1}
 />
 
@@ -80,10 +82,15 @@ onUpload(upload) {
     }
   }
 // ...
+
+// onRemove callback definition
+onRemove(file) {
+  // remove action
+}
 ```
 
-
 #### UploadProgressBar
+
 The raw progress bar to be used when making your own.
 
 ##### Props
@@ -101,14 +108,12 @@ The raw progress bar to be used when making your own.
 import React from 'react';
 import { UploadProgressBar } from '@availity/upload';
 // ...
-<UploadProgressBar
-  upload={uploadInstance}
-  animated
-/>
+<UploadProgressBar upload={uploadInstance} animated />;
 // ...
 ```
 
 #### FilePickerBtn
+
 The raw file picker button which masks the file input with a button.
 
 ##### Props
@@ -128,15 +133,14 @@ import { FilePickerBtn } from '@availity/upload';
 handleFileSelection = event => {
   const { files } = event.target;
   // do something with the files.
-}
+};
 // ...
-<FilePickerBtn
-  onChange={this.handleFileSelection}
-/>
+<FilePickerBtn onChange={this.handleFileSelection} />;
 // ...
 ```
 
 #### FilePicker
+
 The raw file picker which automatically resets the value of the input, allowing the same file to be selected multiple consecutive files.
 
 ##### Props
@@ -158,11 +162,8 @@ import { CustomInput } from 'reactstrap';
 handleFileSelection = event => {
   const { files } = event.target;
   // do something with the files.
-}
+};
 // ...
-<FilePicker
-  tag={CustomInput}
-  onChange={this.handleFileSelection}
-/>
+<FilePicker tag={CustomInput} onChange={this.handleFileSelection} />;
 // ...
 ```

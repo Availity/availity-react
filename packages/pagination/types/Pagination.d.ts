@@ -4,6 +4,8 @@ export interface PaginationProps {
     children?: React.ReactType;
     onPageChange?: Function;
     watchList?: Array<any>;
+    resetParams?: Array<any>;
+    defaultPage?: number;
 }
 
 declare const Pagination: React.FunctionComponent<PaginationProps>;

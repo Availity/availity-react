@@ -111,6 +111,7 @@ storiesOf('Components|AvDate', module)
                 text('Required Error Message', 'This field is required'),
             },
           }}
+          datepicker={boolean('Has DatePicker', true)}
         />
         <Button color="primary">Submit</Button>
       </AvFormResults>
@@ -139,6 +140,7 @@ storiesOf('Components|AvDate', module)
                 text('Required Error Message', 'This field is required'),
             },
           }}
+          datepicker={boolean('Has DatePicker', true)}
         />
         <Button color="primary">Submit</Button>
       </AvFormResults>

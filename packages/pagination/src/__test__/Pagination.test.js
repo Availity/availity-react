@@ -1,11 +1,12 @@
 import React, { useState } from 'react';
+import { useToggle } from '@availity/hooks';
 import {
   render,
   waitForElement,
   waitForDomChange,
   fireEvent,
-} from 'react-testing-library';
-import 'react-testing-library/cleanup-after-each';
+} from '@testing-library/react';
+import '@testing-library/react/cleanup-after-each';
 import Pagination, { usePagination } from '../Pagination';
 import PaginationControls from '../PaginationControls';
 
@@ -204,5 +205,195 @@ describe('Pagination', () => {
     fireEvent.click(getByTestId('hello-btn'));
 
     expect(mockFunc).toHaveBeenCalledTimes(3);
+  });
+
+  test('should reset page to 1 if resetParams updates', async () => {
+    // Create component with button that explicitly sets the current page to 2
+    const SomeComponent = React.memo(() => {
+      const { loading, currentPage, setPage } = usePagination();
+
+      return loading ? null : (
+        <div>
+          <button
+            type="button"
+            data-testid="set-page-btn"
+            onClick={() => {
+              setPage(2);
+            }}
+          />
+          <span data-testid="current-page">{currentPage}</span>
+        </div>
+      );
+    });
+
+    // Create component with button that changes resetParams
+    const ComponentWrapper = () => {
+      const [isToggled, toggle] = useToggle();
+      return (
+        <>
+          <Pagination resetParams={[isToggled]}>
+            <button
+              type="button"
+              data-testid="toggle-btn"
+              onClick={() => toggle()}
+            />
+            <SomeComponent />
+          </Pagination>
+        </>
+      );
+    };
+
+    const { getByTestId } = render(<ComponentWrapper />);
+
+    let currentPageButton = await waitForElement(() =>
+      getByTestId(`current-page`)
+    );
+
+    // Check current page is 1 on first render
+    expect(currentPageButton.textContent).toBe('1');
+
+    // Check current page is 2 after set page button is called
+    fireEvent.click(getByTestId('set-page-btn'));
+    currentPageButton = await waitForElement(() => getByTestId(`current-page`));
+    expect(currentPageButton.textContent).toBe('2');
+
+    // Check current page is 1 after resetParams changes
+    fireEvent.click(getByTestId('toggle-btn'));
+    currentPageButton = await waitForElement(() => getByTestId(`current-page`));
+    expect(currentPageButton.textContent).toBe('1');
+  });
+
+  test('should reset page to 1 and refetch page data if resetParams updates, items is a function, and already on page 1', async () => {
+    // Create component that renders the current page
+    const SomeComponent = React.memo(() => {
+      const { loading, currentPage } = usePagination();
+
+      return loading ? null : (
+        <div>
+          <span data-testid="current-page">{currentPage}</span>
+        </div>
+      );
+    });
+
+    const firstItems = [];
+    const secondItems = [];
+    for (let i = 0; i < 6; i++) {
+      if (i <= 3) {
+        firstItems.push({ value: `${i}`, key: i });
+      } else {
+        secondItems.push({ value: `${i}`, key: i });
+      }
+    }
+
+    const items = jest
+      .fn()
+      .mockResolvedValueOnce({
+        items: firstItems,
+      })
+      .mockResolvedValueOnce({
+        items: secondItems,
+      });
+
+    // Create component with button that changes resetParams
+    const ComponentWrapper = () => {
+      const [isToggled, toggle] = useToggle();
+      return (
+        <>
+          <Pagination items={items} resetParams={[isToggled]}>
+            <button
+              type="button"
+              data-testid="toggle-btn"
+              onClick={() => toggle()}
+            />
+            <SomeComponent />
+            <PaginationJson />
+          </Pagination>
+        </>
+      );
+    };
+
+    const { getByTestId } = render(<ComponentWrapper />);
+
+    let currentPageButton = await waitForElement(() =>
+      getByTestId(`current-page`)
+    );
+
+    // Check current page is 1 on first render
+    expect(currentPageButton.textContent).toBe('1');
+
+    // Check correct items render
+    let paginationCon = await waitForElement(() =>
+      getByTestId('pagination-con')
+    );
+
+    expect(paginationCon).toBeDefined();
+
+    expect(JSON.parse(paginationCon.textContent)).toEqual(
+      expect.objectContaining({
+        page: firstItems,
+      })
+    );
+
+    // Check items function was called once on first render
+    expect(items).toHaveBeenCalledTimes(1);
+
+    // Check items function was called again when reset params change, items is a function, and already on page 1
+    fireEvent.click(getByTestId('toggle-btn'));
+    currentPageButton = await waitForElement(() => getByTestId(`current-page`));
+    expect(currentPageButton.textContent).toBe('1');
+    expect(items).toHaveBeenCalledTimes(2);
+
+    // Check correct items render
+    paginationCon = await waitForElement(() => getByTestId('pagination-con'));
+
+    expect(paginationCon).toBeDefined();
+
+    expect(JSON.parse(paginationCon.textContent)).toEqual(
+      expect.objectContaining({
+        page: secondItems,
+      })
+    );
+  });
+
+  test('show correct page when given defaultPage', async () => {
+    const items = [
+      { value: '1', key: 1 },
+      { value: '2', key: 2 },
+      { value: '3', key: 3 },
+    ];
+
+    const { getByTestId } = render(
+      <Pagination items={items} itemsPerPage={1} defaultPage={2}>
+        <PaginationJson />
+        <PaginationControls directionLinks />
+      </Pagination>
+    );
+
+    let paginationCon = await waitForElement(() =>
+      getByTestId('pagination-con')
+    );
+
+    expect(paginationCon).toBeDefined();
+
+    expect(JSON.parse(paginationCon.textContent)).toEqual(
+      expect.objectContaining({
+        page: [items[1]],
+      })
+    );
+
+    // Testing that clicking next still works with a defaultPage
+    fireEvent.click(getByTestId('pagination-control-next-link'));
+
+    // Wait for component to render nothing
+    waitForDomChange(() => getByTestId('pagination-con'));
+
+    // Get the component now with the new page data
+    paginationCon = await waitForElement(() => getByTestId('pagination-con'));
+
+    expect(JSON.parse(paginationCon.textContent)).toEqual(
+      expect.objectContaining({
+        page: [items[2]],
+      })
+    );
   });
 });

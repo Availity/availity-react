@@ -1,5 +1,5 @@
 import React from 'react';
-import { render, cleanup } from 'react-testing-library';
+import { render, cleanup } from '@testing-library/react';
 import AvLink from '..';
 
 afterEach(cleanup);
@@ -23,6 +23,19 @@ describe('AvLink', () => {
     const tag = getByTestId('av-link-tag');
     const expected =
       '/public/apps/home/#!/loadApp?appUrl=%2Fpublic%2Fapps%2Fmy-app';
+
+    expect(tag.getAttribute('href')).toBe(expected);
+  });
+
+  test('should render url prop as is when loadApp is false', () => {
+    const { getByTestId } = render(
+      <AvLink loadApp={false} url="/public/apps/my-app">
+        My App
+      </AvLink>
+    );
+
+    const tag = getByTestId('av-link-tag');
+    const expected = '/public/apps/my-app';
 
     expect(tag.getAttribute('href')).toBe(expected);
   });

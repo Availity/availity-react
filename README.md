@@ -32,6 +32,7 @@ https://availity-react-preview.netlify.com
 * [page-header](packages/page-header/README.md) - The standard page header for Availity Portal Applications.
 * [pagination](packages/pagination/README.md) - Pagination the Availity Way.
 * [payer-logo](packages/payer-logo/README.md) - Easy to use component to display the payer's logo given the payer's ID.
+* [progress](packages/progress/README.md) - Availity Progress Bar
 * [reactstrap-validation-date](packages/reactstrap-validation-date/README.md) - Wrapper for react-date-range to work with availity-reactstrap-validation
 * [reactstrap-validation-select](packages/reactstrap-validation-select/README.md) - Wrapper for react-select to work with availity-reactstrap-validation
 * [upload](packages/upload/README.md) - Availity upload component for uploading files

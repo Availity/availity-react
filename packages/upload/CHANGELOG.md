@@ -3,6 +3,26 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [2.0.0](https://github.com/Availity/availity-react/compare/@availity/upload@1.8.2...@availity/upload@2.0.0) (2019-06-03)
+
+
+### Features
+
+* **upload:** upgrade react-dropzone from 7.x to 10.x ([5a3c204](https://github.com/Availity/availity-react/commit/5a3c204))
+* **upload:** upgrade react-dropzone from 7.x to 10.x ([#139](https://github.com/Availity/availity-react/issues/139)) ([f5e5c63](https://github.com/Availity/availity-react/commit/f5e5c63))
+
+
+### BREAKING CHANGES
+
+* **upload:** - react >= 16.8 is required
+- @see breaking changes in 10.x https://github.com/react-dropzone/react-dropzone/releases/tag/v10.0.0
+-  @see breaking changes in 9.x https://github.com/react-dropzone/react-dropzone/releases/tag/v9.0.0
+- @see breaking changes in 8.x https://github.com/react-dropzone/react-dropzone/releases/tag/v8.0.0
+
+
+
+
+
 ## [1.8.2](https://github.com/Availity/availity-react/compare/@availity/upload@1.8.1...@availity/upload@1.8.2) (2019-05-29)
 
 **Note:** Version bump only for package @availity/upload

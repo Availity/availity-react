@@ -1,6 +1,6 @@
 {
   "name": "@availity/breadcrumbs",
-  "version": "3.0.1",
+  "version": "3.0.2",
   "author": "Evan Sharp <evan.sharp@availity.com>",
   "description": "Availity breadcrumbs",
   "main": "index.js",
@@ -26,8 +26,8 @@
     "history": "^4.7.2",
     "react": "^16.8.3",
     "react-dom": "^16.8.3",
-    "react-router": "^4.3.1",
-    "react-router-dom": "^4.3.1",
+    "react-router": "^5.0.0",
+    "react-router-dom": "^5.0.0",
     "reactstrap": "^8.0.0"
   },
   "peerDependencies": {

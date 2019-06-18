@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React from 'react';
 import PropTypes from 'prop-types';
 import { Button } from 'reactstrap';
 import UploadProgressBar from './UploadProgressBar';
@@ -23,77 +23,75 @@ const fileTypeIconMap = {
   pdf: 'file-pdf',
 };
 
-class FileRow extends Component {
-  static propTypes = {
-    onRemove: PropTypes.func.isRequired,
-    children: PropTypes.func,
-    file: PropTypes.shape({
-      id: PropTypes.string.isRequired,
-      file: PropTypes.shape({
-        name: PropTypes.string.isRequired,
-      }).isRequired,
-    }),
+const FileRow = ({ onRemove, children, file }) => {
+  const remove = () => {
+    onRemove(file.id);
   };
 
-  remove = () => {
-    this.props.onRemove(this.props.file.id);
-  };
+  const progressBar = () => <UploadProgressBar upload={file} />;
 
-  progressBar = () => <UploadProgressBar upload={this.props.file} />;
+  const ext = file.file.name
+    .split('.')
+    .pop()
+    .toUpperCase();
 
-  render() {
-    const { file, children } = this.props;
-    const ext = file.file.name
-      .split('.')
-      .pop()
-      .toUpperCase();
-    const icon = fileTypeIconMap[ext.toLowerCase()] || 'doc';
+  const icon = fileTypeIconMap[ext.toLowerCase()] || 'doc';
 
-    if (typeof children === 'function') {
-      return children({
-        file,
-        metadata: file.options.metadata,
-        name: file.file.name,
-        remove: this.remove,
-        ext,
-        icon,
-        progressBar: this.progressBar,
-      });
-    }
-
-    return (
-      <tr>
-        <td className="align-middle" style={{ width: '10%' }}>
-          <i className={`icon icon-${icon}`} title={`${ext} File Icon`}>
-            <span className="sr-only">{ext} File Icon</span>
-          </i>{' '}
-        </td>
-        <td className="align-middle" style={{ width: '35%' }}>
-          <div className="text-truncate" title={file.file.name}>
-            {file.file.name}
-          </div>
-        </td>
-        <td className="align-middle" style={{ width: '45%' }}>
-          <UploadProgressBar upload={file} />
-        </td>
-        <td className="align-middle" style={{ width: '10%' }}>
-          <Button
-            data-testid="remove-file-btn"
-            color="link"
-            className="text-danger px-0"
-            onClick={this.remove}
-          >
-            <i className="icon icon-trash-empty">
-              <span className="sr-only">
-                Remove
-                {file.file.name}
-              </span>
-            </i>
-          </Button>
-        </td>
-      </tr>
-    );
+  if (typeof children === 'function') {
+    return children({
+      file,
+      metadata: file.options.metadata,
+      name: file.file.name,
+      remove,
+      ext,
+      icon,
+      progressBar,
+    });
   }
-}
+
+  return (
+    <tr>
+      <td className="align-middle" style={{ width: '10%' }}>
+        <i className={`icon icon-${icon}`} title={`${ext} File Icon`}>
+          <span className="sr-only">{ext} File Icon</span>
+        </i>{' '}
+      </td>
+      <td className="align-middle" style={{ width: '35%' }}>
+        <div className="text-truncate" title={file.file.name}>
+          {file.file.name}
+        </div>
+      </td>
+      <td className="align-middle" style={{ width: '45%' }}>
+        <UploadProgressBar upload={file} />
+      </td>
+      <td className="align-middle" style={{ width: '10%' }}>
+        <Button
+          data-testid="remove-file-btn"
+          color="link"
+          className="text-danger px-0"
+          onClick={remove}
+        >
+          <i className="icon icon-trash-empty">
+            <span className="sr-only">
+              Remove
+              {file.file.name}
+            </span>
+          </i>
+        </Button>
+      </td>
+    </tr>
+  );
+};
+
+FileRow.propTypes = {
+  onRemove: PropTypes.func.isRequired,
+  children: PropTypes.func,
+  file: PropTypes.shape({
+    id: PropTypes.string.isRequired,
+    file: PropTypes.shape({
+      name: PropTypes.string.isRequired,
+    }).isRequired,
+  }),
+};
 
 export default FileRow;
