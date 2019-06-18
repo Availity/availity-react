@@ -7,7 +7,7 @@
   "main": "index.js",
   "scripts": {
     "start": "start-storybook -p 2222 -c .storybook -s ./static",
-    "build": "build-storybook -c .storybook -s ./static -o ../../docs --quiet",
+    "build": "NODE_ENV=production build-storybook -c .storybook -s ./static -o ../../docs --quiet",
     "deploy-docs": "storybook-to-ghpages",
     "storybook": "start-storybook -p 6006",
     "build-storybook": "build-storybook"
