@@ -6,7 +6,7 @@ import { useSpace } from './Spaces';
 
 const Loader = ({ skeletonProps, ...rest }) => (
   <span {...rest}>
-    <Skeleton width={skeletonProps.width} height={skeletonProps.height} />
+    <Skeleton {...skeletonProps} />
   </span>
 );
 
