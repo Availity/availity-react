@@ -4,12 +4,19 @@ import Skeleton from 'react-loading-skeleton';
 import Img from 'react-image';
 import { useSpace } from './Spaces';
 
+const skeletonPropType = PropTypes.shape({
+  width: PropTypes.string,
+  height: PropTypes.string,
+});
+
 const Loader = ({ skeletonProps, ...rest }) => (
   <span {...rest}>
     <Skeleton {...skeletonProps} />
   </span>
 );
-
+Loader.propTypes = {
+  skeletonProps: skeletonPropType,
+};
 Loader.defaultProps = {
   skeletonProps: {
     height: '100%',
@@ -59,10 +66,7 @@ SpacesImage.propTypes = {
   payerId: PropTypes.string,
   fallback: PropTypes.string,
   imageType: PropTypes.string.isRequired,
-  skeletonProps: PropTypes.shape({
-    width: PropTypes.string,
-    height: PropTypes.string,
-  }),
+  skeletonProps: skeletonPropType,
 };
 
 // Adapted from https://github.com/Availity/availity-react/blob/master/packages/reactstrap-validation-select/AvResourceSelect.js
