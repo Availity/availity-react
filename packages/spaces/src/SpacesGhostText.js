@@ -17,7 +17,7 @@ const SpacesGhostText = ({ spaceId, ...props }) => {
 };
 
 SpacesGhostText.propTypes = {
-  spaceId: PropTypes.string.isRequired,
+  spaceId: PropTypes.string,
 };
 
 export default SpacesGhostText;

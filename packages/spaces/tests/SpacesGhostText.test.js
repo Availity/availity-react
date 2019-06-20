@@ -51,4 +51,17 @@ describe('SpacesGhostText', () => {
 
     expect(ghost.textContent).toBe('foo');
   });
+
+  it('renders ghost text for single space', async () => {
+    const { getByTestId } = render(
+      <Spaces clientId="my-client-id" spaceIds={['1', '2']}>
+        <SpacesGhostText />
+      </Spaces>
+    );
+
+    const ghost = await waitForElement(() => getByTestId('spaces-ghost-text'));
+
+    expect(ghost.textContent).toBe('foo');
+  })
 });
+

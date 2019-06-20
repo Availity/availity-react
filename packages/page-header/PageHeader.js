@@ -34,6 +34,10 @@ const PageHeader = ({
       spaceId,
       payerId,
       className: 'float-md-right d-inline-block',
+      skeletonProps: {
+        width: 180,
+        height: '100%',
+      },
     };
     payerLogo = spaceForPayerID ? (
       <SpacesLogo {...logoAttrs} />

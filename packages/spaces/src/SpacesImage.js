@@ -1,28 +1,62 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import Skeleton from 'react-loading-skeleton';
+import Img from 'react-image';
 import { useSpace } from './Spaces';
 
-const SpacesImage = ({ spaceId, payerId, imageType, ...props }) => {
-  const id = spaceId || payerId;
-  const { space = {} } = useSpace(id);
+const skeletonPropType = PropTypes.shape({
+  width: PropTypes.string,
+  height: PropTypes.string,
+});
+
+const Loader = ({ skeletonProps, ...rest }) => (
+  <span {...rest}>
+    <Skeleton {...skeletonProps} />
+  </span>
+);
+Loader.propTypes = {
+  skeletonProps: skeletonPropType,
+};
+Loader.defaultProps = {
+  skeletonProps: {
+    height: '100%',
+  },
+};
+
+const SpacesImage = ({ spaceId, payerId, imageType, fallback, ...props }) => {
+  const { space = {}, loading } = useSpace(spaceId || payerId);
+
+  const id = spaceId || payerId || space.id;
 
   let url = space.images && space.images[imageType];
 
-  // We can probably remove this at some point once our spaces data is complete
-  if (!url && payerId && imageType === 'logo') {
-    url = `/public/apps/eligibility/images/value-add-logos/${payerId.replace(
-      /\s/g,
-      ''
-    )}.gif`;
+  if (!url && loading) {
+    return (
+      <Loader
+        data-testid={`space-${imageType}-${id}-loading`}
+        {...props}
+      />
+    );
   }
 
-  if (!url || (!payerId && !spaceId)) return null;
+  // We can probably remove this at some point once our spaces data is complete
+  if (!url && !loading && fallback) {
+    url = fallback;
+  }
+
+  if (!url || (!id)) return null;
 
   return (
-    <img
-      data-testid={`space-${imageType}-${spaceId || payerId}`}
+    <Img
+      data-testid={`space-${imageType}-${id}`}
       src={url}
       alt={`Space ${imageType}`}
+      loader={
+        <Loader
+          data-testid={`space-${imageType}-${id}`}
+          {...props}
+        />
+      }
       {...props}
     />
   );
@@ -31,7 +65,9 @@ const SpacesImage = ({ spaceId, payerId, imageType, ...props }) => {
 SpacesImage.propTypes = {
   spaceId: PropTypes.string,
   payerId: PropTypes.string,
+  fallback: PropTypes.string,
   imageType: PropTypes.string.isRequired,
+  skeletonProps: skeletonPropType,
 };
 
 // Adapted from https://github.com/Availity/availity-react/blob/master/packages/reactstrap-validation-select/AvResourceSelect.js
