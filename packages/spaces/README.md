@@ -84,7 +84,6 @@ import Spaces, { SpacesDisclaimer } from '@availity/spaces';
 // ...
 <Spaces spaceIds={['73162546201441126239486200007187']} clientId="my-client-id">
   <SpacesDisclaimer
-    spaceId="73162546201441126239486200007187"
     markdown
     styled
   />
@@ -107,7 +106,7 @@ import React from 'react';
 import Spaces, { SpacesGhostText } from '@availity/spaces';
 // ...
 <Spaces spaceIds={['73162546201441126239486200007187']} clientId="my-client-id">
-  <SpacesGhostText spaceId="73162546201441126239486200007187" />
+  <SpacesGhostText />
 </Spaces>;
 // ...
 ```
