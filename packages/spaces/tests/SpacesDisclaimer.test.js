@@ -16,11 +16,7 @@ avSlotMachineApi.create.mockResolvedValue({
           {
             id: '1',
             description: 'foo',
-          },
-          {
-            id: '2',
-            description: null,
-          },
+          }
         ],
       },
     },
@@ -35,8 +31,22 @@ describe('SpacesDisclaimer', () => {
 
   it('renders disclaimer from space', async () => {
     const { getByTestId } = render(
-      <Spaces clientId="my-client-id" spaceIds={['1', '2']}>
+      <Spaces clientId="my-client-id" spaceIds={['1']}>
         <SpacesDisclaimer spaceId="1" />
+      </Spaces>
+    );
+
+    const disclaimer = await waitForElement(() =>
+      getByTestId('spaces-disclaimer-1')
+    );
+
+    expect(disclaimer.textContent).toBe('foo');
+  });
+
+  it('renders disclaimer from single space', async () => {
+    const { getByTestId } = render(
+      <Spaces clientId="my-client-id" spaceIds={['1']}>
+        <SpacesDisclaimer />
       </Spaces>
     );
 

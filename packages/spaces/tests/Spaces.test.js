@@ -249,4 +249,43 @@ describe('Spaces', () => {
       expect(sanitized[0].metadata).toEqual({ a: '1' });
     });
   });
+
+  describe('Single Space', () => {
+    it('returns first payer space with when no spaceId passed', async () => {
+      avSlotMachineApi.create.mockResolvedValueOnce({
+        data: {
+          data: {
+            spaces: {
+              totalCount: 1,
+              page: 1,
+              perPage: 1,
+              spaces: [{ id: '1', name: 'hello world' }],
+            },
+          },
+        },
+      });
+
+
+      // Create component that renders a SpaceComponent for the current space id
+      const SpaceComponent = () => {
+        const { space = {} } = useSpace();
+
+        return (
+          <div data-testid={`space-${space.id}`}>
+            <span>{space.name}</span>
+          </div>
+        );
+      };
+
+      const { getByTestId, getByText } = render(
+        <Spaces spaceIds={['1']} clientId="my-client-id">
+          <SpaceComponent />
+        </Spaces>
+      );
+
+      await waitForElement(() => getByTestId('space-1'));
+
+      await waitForElement(() => getByText('hello world'));
+    });
+  });
 });

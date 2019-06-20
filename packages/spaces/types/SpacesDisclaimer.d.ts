@@ -1,5 +1,5 @@
 export interface SpacesDisclaimerProps {
-    spaceId: string;
+    spaceId?: string;
     styled?: boolean;
     markdown?: boolean;
 }

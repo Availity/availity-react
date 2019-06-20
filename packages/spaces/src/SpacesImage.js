@@ -24,15 +24,16 @@ Loader.defaultProps = {
 };
 
 const SpacesImage = ({ spaceId, payerId, imageType, fallback, ...props }) => {
-  const id = spaceId || payerId;
-  const { space = {}, loading } = useSpace(id);
+  const { space = {}, loading } = useSpace(spaceId || payerId);
+
+  const id = spaceId || payerId || space.id;
 
   let url = space.images && space.images[imageType];
 
   if (!url && loading) {
     return (
       <Loader
-        data-testid={`space-${imageType}-${spaceId || payerId}-loading`}
+        data-testid={`space-${imageType}-${id}-loading`}
         {...props}
       />
     );
@@ -43,16 +44,16 @@ const SpacesImage = ({ spaceId, payerId, imageType, fallback, ...props }) => {
     url = fallback;
   }
 
-  if (!url || (!payerId && !spaceId)) return null;
+  if (!url || (!id)) return null;
 
   return (
     <Img
-      data-testid={`space-${imageType}-${spaceId || payerId}`}
+      data-testid={`space-${imageType}-${id}`}
       src={url}
       alt={`Space ${imageType}`}
       loader={
         <Loader
-          data-testid={`space-${imageType}-${spaceId || payerId}`}
+          data-testid={`space-${imageType}-${id}`}
           {...props}
         />
       }

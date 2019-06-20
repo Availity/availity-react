@@ -74,55 +74,58 @@ const Spaces = ({
 
   // NOTE: we do not want to query slotmachine by payerIDs and spaceIDs at the same time
   // because slotmachine does an AND on those conditions. We want OR
-  useEffectAsync(async () => {
-    setLoading(true);
-    // Filter out dupes and ids that we already have the space for
-    const filteredSpaceIDs = spaceIds
-      .filter((id, i) => spaceIds.indexOf(id) === i)
-      .filter(id => !spaces.some(spc => spc && spc.id === id))
-      .filter(id => !spacesFromProps.some(spc => spc && spc.id === id));
+  useEffectAsync(
+    async () => {
+      setLoading(true);
+      // Filter out dupes and ids that we already have the space for
+      const filteredSpaceIDs = spaceIds
+        .filter((id, i) => spaceIds.indexOf(id) === i)
+        .filter(id => !spaces.some(spc => spc && spc.id === id))
+        .filter(id => !spacesFromProps.some(spc => spc && spc.id === id));
 
-    const filteredPayerIDs = payerIds
-      .filter((id, i) => payerIds.indexOf(id) === i)
-      .filter(
-        id =>
-          !spaces.some(
-            spc => spc && spc.payerIDs && spc.payerIDs.some(pId => pId === id)
-          )
-      )
-      .filter(
-        id =>
-          !spacesFromProps.some(
-            spc => spc && spc.payerIDs && spc.payerIDs.some(pId => pId === id)
-          )
-      );
+      const filteredPayerIDs = payerIds
+        .filter((id, i) => payerIds.indexOf(id) === i)
+        .filter(
+          id =>
+            !spaces.some(
+              spc => spc && spc.payerIDs && spc.payerIDs.some(pId => pId === id)
+            )
+        )
+        .filter(
+          id =>
+            !spacesFromProps.some(
+              spc => spc && spc.payerIDs && spc.payerIDs.some(pId => pId === id)
+            )
+        );
 
-    let _spaces = [];
-    if (filteredSpaceIDs.length > 0) {
-      const vars = { ...variables, ids: filteredSpaceIDs };
-      const spacesBySpaceIDs = await getAllSpaces(
-        query,
-        clientId,
-        vars,
-        spaces
-      );
-      _spaces = _spaces.concat(spacesBySpaceIDs);
-    }
+      let _spaces = [];
+      if (filteredSpaceIDs.length > 0) {
+        const vars = { ...variables, ids: filteredSpaceIDs };
+        const spacesBySpaceIDs = await getAllSpaces(
+          query,
+          clientId,
+          vars,
+          spaces
+        );
+        _spaces = _spaces.concat(spacesBySpaceIDs);
+      }
 
-    if (filteredPayerIDs.length > 0) {
-      const vars = { ...variables, payerIDs: filteredPayerIDs };
-      const spacesByPayerIDs = await getAllSpaces(
-        query,
-        clientId,
-        vars,
-        spaces
-      );
-      _spaces = _spaces.concat(spacesByPayerIDs);
-    }
+      if (filteredPayerIDs.length > 0) {
+        const vars = { ...variables, payerIDs: filteredPayerIDs };
+        const spacesByPayerIDs = await getAllSpaces(
+          query,
+          clientId,
+          vars,
+          spaces
+        );
+        _spaces = _spaces.concat(spacesByPayerIDs);
+      }
 
-    if (_spaces.length > 0) setSpaces(_spaces);
-    setLoading(false);
-  }, [payerIds, spaceIds]);
+      if (_spaces.length > 0) setSpaces(_spaces);
+      setLoading(false);
+    },
+    [payerIds, spaceIds]
+  );
 
   const spacesForProvider = sanitizeSpaces(spaces.concat(spacesFromProps));
   return (
@@ -138,6 +141,18 @@ export const useSpace = id => {
   // Try to match by space id first, else match by payer id
   // eslint-disable-next-line react-hooks/exhaustive-deps
   const space = useMemo(() => {
+    // If we don't pass a spaceId in then we will get the first space in the array. If there is more than one space we will raise a
+    // warning because it should only be expected that we use no spaceId if the app only is using a single space in the provider.
+    if (id === undefined) {
+      if (spaces.length > 1) {
+        console.warn(
+          `You did not pass an ID in to find a space, and there is more than 1 space in the space array. Returning the first.`
+        );
+      }
+
+      return spaces[0];
+    }
+
     let [spc] = spaces.filter(s => s.id === id);
 
     if (!spc) {

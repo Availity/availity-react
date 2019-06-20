@@ -18,7 +18,7 @@ const SpacesDisclaimer = ({ styled, spaceId, markdown, ...props }) => {
 
     return (
       <Disclaimer
-        data-testid={`spaces-disclaimer-${spaceId}`}
+        data-testid={`spaces-disclaimer-${spaceId || space.id}`}
         styled={styled}
         {...props}
       >
@@ -35,7 +35,7 @@ SpacesDisclaimer.defaultProps = {
 };
 
 SpacesDisclaimer.propTypes = {
-  spaceId: PropTypes.string.isRequired,
+  spaceId: PropTypes.string,
   markdown: PropTypes.bool,
   styled: PropTypes.bool,
 };
