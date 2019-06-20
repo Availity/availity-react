@@ -3,6 +3,23 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [4.0.0](https://github.com/Availity/availity-react/compare/@availity/reactstrap-validation-select@3.1.0...@availity/reactstrap-validation-select@4.0.0) (2019-06-20)
+
+
+### Features
+
+* **reacstrap-validation-select:** upgrade react-select 3.0 ([2502fc5](https://github.com/Availity/availity-react/commit/2502fc5))
+* **reactstrap-validation-select:** upgrade react-select 3.0 ([e588848](https://github.com/Availity/availity-react/commit/e588848))
+
+
+### BREAKING CHANGES
+
+* **reactstrap-validation-select:** required react peer-dependecy of 16.8. @see https://github.com/JedWatson/react-select/blob/master/packages/react-select/CHANGELOG.md#300
+
+
+
+
+
 # [3.1.0](https://github.com/Availity/availity-react/compare/@availity/reactstrap-validation-select@3.0.6...@availity/reactstrap-validation-select@3.1.0) (2019-06-17)
 
 

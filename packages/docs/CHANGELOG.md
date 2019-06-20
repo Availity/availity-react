@@ -3,6 +3,28 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [6.0.0](https://github.com/Availity/availity-react/compare/@availity/docs@5.9.1...@availity/docs@6.0.0) (2019-06-20)
+
+
+### Code Refactoring
+
+* **reactstrap-validation-date:** fixed datepicker prop for hiding ([89233c0](https://github.com/Availity/availity-react/commit/89233c0))
+
+
+### Features
+
+* **reactstrap-validation-select:** upgrade react-select 3.0 ([e588848](https://github.com/Availity/availity-react/commit/e588848))
+
+
+### BREAKING CHANGES
+
+* **reactstrap-validation-date:** removed the hideIcon prop in favor of the datepicker prop from the standard date picker to keep the same high level API for showing and hiding the calendar
+* **reactstrap-validation-select:** required react peer-dependecy of 16.8. @see https://github.com/JedWatson/react-select/blob/master/packages/react-select/CHANGELOG.md#300
+
+
+
+
+
 ## [5.9.1](https://github.com/Availity/availity-react/compare/@availity/docs@5.9.0...@availity/docs@5.9.1) (2019-06-17)
 
 **Note:** Version bump only for package @availity/docs
