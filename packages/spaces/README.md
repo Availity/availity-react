@@ -61,8 +61,8 @@ Display the Space's billboard
 
 At least one of the following props must be provided:
 
-- **`spaceId`**: String. Optional, required if `payerId` is not provided. The payer spaces ID for the payer for which you want a image. If no spaceId or payerId passed, will use the first space in the `spaces` array. Note this is only to be used in single space use cases.
-- **`payerId`**: String. Optional, required if `spaceId` is not provided. The payer ID for the payer for which you want a image. If no spaceId or payerId passed, will use the first space in the `spaces` array. Note this is only to be used in single space use cases.
+- **`spaceId`**: String. Optional, required if `payerId` is not provided. The payer spaces ID for the payer for which you want a image. If no `spaceId` or `payerId` passed, will use the first space in the `spaces` array. Note this is only to be used in single space use cases.
+- **`payerId`**: String. Optional, required if `spaceId` is not provided. The payer ID for the payer for which you want a image. If no `spaceId` or `payerId` passed, will use the first space in the `spaces` array. Note this is only to be used in single space use cases.
 - **`skeletonProps`**: object. Optional, dimensions passed to loader to show while the image is loading.
 - **`fallback`**: String. Optional. If the url for the spaces image is not valid or not found, this fallback image url will be rendered.
 
