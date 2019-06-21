@@ -2,6 +2,8 @@
 
 > THIS PACKAGE HAS BEEN DEPRECATED IN FAVOR OF `@availity/spaces`
 
+[![Version](https://img.shields.io/npm/v/@availity/payer-logo.svg?style=for-the-badge)](https://www.npmjs.com/package/@availity/payer-logo)
+
 Easy to use component to display the payer&#x27;s logo given the payer&#x27;s ID
 
 ## Installation

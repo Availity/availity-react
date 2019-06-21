@@ -2,6 +2,8 @@
 
 > Check environment features for the current environment to determine if a particular feature is enabled.
 
+[![Version](https://img.shields.io/npm/v/@availity/feature.svg?style=for-the-badge)](https://www.npmjs.com/package/@availity/feature)
+
 Note: Only works with OpenShift deployed applications using the standard pipeline
 
 ## Installation
