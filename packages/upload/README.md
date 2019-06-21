@@ -95,7 +95,7 @@ The raw progress bar to be used when making your own.
 
 ##### Props
 
-- **`upload`**: Instance of Upload from upload-core. Required. The upload instance returned by creating a `new Upload` via upload-core.
+- **`upload`**: Instance of Upload from [upload-core](https://github.com/Availity/sdk-js/tree/master/packages/upload-core). Required. The upload instance returned by creating a `new Upload` via [upload-core](https://github.com/Availity/sdk-js/tree/master/packages/upload-core).
 - **`onProgress`**: Function. Optional. Callback function to hook into the `onProgress` within the Upload instance provided in the `upload` prop.
 - **`onSuccess`**: Function. Optional. Callback function to hook into the `onSuccess` within the Upload instance provided in the `upload` prop.
 - **`onError`**: Function. Optional. Callback function to hook into the `onError` within the Upload instance provided in the `upload` prop.
