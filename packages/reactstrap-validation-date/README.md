@@ -2,6 +2,8 @@
 
 > Wrapper for react-date-range to work with availity-reactstrap-validation.
 
+[![Version](https://img.shields.io/npm/v/@availity/reactstrap-validation-date.svg?style=for-the-badge)](https://www.npmjs.com/package/@availity/reactstrap-validation-date)
+
 ## Installation
 
 ```bash
