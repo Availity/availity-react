@@ -59,7 +59,8 @@ const Component = () => {
     const [isToggled,toggle] = useToggle(true);
 
     return <div onClick={() => toggle(true)}>{isToggled ? 'Hello' : 'World'</div>;
-}```
+}
+```
 
 #### useEffectAsync
 Hook that will allow asynchronous functions to be called in the standard `useEffect` React hook.
