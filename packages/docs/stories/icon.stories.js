@@ -14,6 +14,20 @@ const options = {
   '5x': '5x',
 };
 
+const colors = {
+  none: 'none',
+  primary: 'primary',
+  secondary: 'secondary',
+  danger: 'danger',
+  warning: 'warning',
+  dark: 'dark',
+  white: 'white',
+  light: 'light',
+  success: 'success',
+  info: 'info',
+  muted: 'muted',
+};
+
 const iconOptions = {};
 
 icons.glyphs.forEach(glyph => {
@@ -34,6 +48,7 @@ storiesOf('Icons|Icon', module)
       <Icon
         name={select('Icon Name', iconOptions, 'home')}
         size={select('Sizes', options, '3x')}
+        color={select('Colors', colors)}
       />
     </div>
   ));

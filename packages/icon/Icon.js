@@ -1,10 +1,24 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import classNames from 'classnames';
 
-const Icon = ({ name, size, 'aria-label': ariaLabel, className, ...rest }) => (
+const Icon = ({
+  name,
+  size,
+  'aria-label': ariaLabel,
+  color,
+  className,
+  ...rest
+}) => (
   <i
     aria-label={ariaLabel || name}
-    className={`icon icon-${name}${size ? ` icon-${size}` : ''} ${className}`}
+    className={classNames(
+      'icon',
+      `icon-${name}`,
+      size && `icon-${size}`,
+      color && `text-${color}`,
+      className
+    )}
     {...rest}
   />
 );
@@ -14,6 +28,7 @@ Icon.propTypes = {
   size: PropTypes.string,
   'aria-label': PropTypes.string,
   className: PropTypes.string,
+  color: PropTypes.string,
 };
 
 export default Icon;

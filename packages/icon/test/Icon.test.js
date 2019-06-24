@@ -43,4 +43,14 @@ describe('Icon', () => {
 
     expect(icon.className).toBe('icon icon-home custom-classname');
   });
+
+  test('should render with different color', () => {
+    const { getByTestId } = render(
+      <Icon data-testid="icon" name="home" color="primary" />
+    );
+
+    const icon = getByTestId('icon');
+
+    expect(icon.className).toBe('icon icon-home text-primary');
+  });
 });

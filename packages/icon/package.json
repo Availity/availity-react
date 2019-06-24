@@ -26,5 +26,8 @@
   },
   "peerDependencies": {
     "react": "^16.3.0"
+  },
+  "dependencies": {
+    "classnames": "^2.2.6"
   }
 }
