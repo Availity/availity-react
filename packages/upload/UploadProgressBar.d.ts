@@ -18,10 +18,6 @@ export interface UploadProgressBarProps {
     className?: string;
     tag?: React.ReactType | string;
     striped?: boolean;
-    complete?: boolean;
-    value?: number | string;
-    max?: number | string;
-    color?: string;
 }
 
 

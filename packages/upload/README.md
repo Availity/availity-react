@@ -104,6 +104,7 @@ The raw progress bar to be used when making your own.
 - **`animated`**: Boolean. Optional. When `true` the progress bar will have animated stripes while uploading is in progress.
 - **`className`**: String. Optional. Additional classNames to add to the progress bar.
 
+
 ##### UploadProgressBar Usage
 
 ```javascript

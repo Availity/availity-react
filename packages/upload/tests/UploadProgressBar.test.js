@@ -10,36 +10,42 @@ describe('UploadProgressBar', () => {
     instance.reset();
   });
   test('should render', () => {
-    const { container } = render(<UploadProgressBar upload={instance} />);
-
-    expect(container).toMatchSnapshot();
+    render(<UploadProgressBar upload={instance} />);
   });
 
   test('should render progress', () => {
-    const { container } = render(<UploadProgressBar upload={instance} />);
+    const { getByTestId } = render(<UploadProgressBar upload={instance} />);
     instance.progress(50);
 
-    expect(container).toMatchSnapshot();
+    getByTestId('upload-progress');
   });
 
   test('should render success', () => {
-    const { container } = render(<UploadProgressBar upload={instance} />);
+    const { getByTestId } = render(<UploadProgressBar upload={instance} />);
     instance.success();
 
-    expect(container).toMatchSnapshot();
+    const progressBar = getByTestId('upload-progress');
+
+    expect(progressBar.className).toContain('progress-complete');
   });
 
   test('should render error', () => {
-    const { container } = render(<UploadProgressBar upload={instance} />);
+    const { getByTestId } = render(<UploadProgressBar upload={instance} />);
     instance.error('File upload rejected');
 
-    expect(container).toMatchSnapshot();
+    getByTestId('upload-error-message');
   });
 
   test('should render password verification button', () => {
-    const { container } = render(<UploadProgressBar upload={instance} />);
+    const { getByTestId } = render(<UploadProgressBar upload={instance} />);
     instance.error('Encrypted files require a password', 'encrypted');
 
-    expect(container).toMatchSnapshot();
+    getByTestId('password-form-encrypted');
   });
+
+  // 1 Test for striped and animated
+  // striped
+  // animated
+
+
 });

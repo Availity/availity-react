@@ -62,14 +62,14 @@ class UploadProgressBar extends Component {
     const { percentage, error, modalOpen } = this.state;
     return upload.errorMessage ? (
       <React.Fragment>
-        <span className="text-danger">{upload.errorMessage}</span>
+        <span data-testid="upload-error-message" className="text-danger">{upload.errorMessage}</span>
         {upload.status === 'encrypted' && (
-          <div className="pwRequired">
+          <div className="pwRequired" data-testid="password-form-encrypted">
             <Button size="sm" color="primary" onClick={this.toggleModal}>
               Enter password
             </Button>
             <Modal isOpen={modalOpen} toggle={this.toggleModal}>
-              <form onSubmit={this.verifyPassword}>
+              <form onSubmit={this.verifyPassword} data-testid="password-form-modal">
                 <ModalHeader toggle={this.toggleModal}>
                   Enter Password
                 </ModalHeader>
@@ -91,8 +91,15 @@ class UploadProgressBar extends Component {
         )}
       </React.Fragment>
     ) : (
-      <Progress {...rest}
-      />
+      <Progress
+        data-testid="upload-progress"
+        value={percentage}
+        complete={percentage === 100}
+        color={error ? 'danger' : 'success'}
+        {...rest}
+      >
+      <span className="sr-only">{percentage}% Complete</span>
+      </Progress>
   
     );
   }
@@ -115,11 +122,7 @@ UploadProgressBar.propTypes = {
   onError: PropTypes.func,
   animated: PropTypes.bool,
   className: PropTypes.string,
-  striped: PropTypes.bool,
-  complete: PropTypes.bool,
-  value: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
-  max: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
-  color: PropTypes.string,
+  striped: PropTypes.bool
 };
 
 UploadProgressBar.defaultProps = {};
