@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
+import Progress from '@availity/progress';
+
 import {
-  Progress,
   Button,
   Modal,
   ModalHeader,
@@ -90,19 +91,12 @@ class UploadProgressBar extends Component {
         )}
       </React.Fragment>
     ) : (
-      <Progress
-        animated={animated && percentage !== 100}
-        value={percentage}
-        className={`${className || ''} ${
-          percentage === 100 ? 'progress-complete' : undefined
-        }`}
-        color={error ? 'danger' : 'success'}
-      >
-        <span className="sr-only">{percentage}% Complete</span>
-      </Progress>
+      <Progress />
+  
     );
   }
 }
+
 
 UploadProgressBar.propTypes = {
   upload: PropTypes.shape({

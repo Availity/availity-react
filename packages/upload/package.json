@@ -31,6 +31,7 @@
     "tus-js-client": "1.5.1"
   },
   "dependencies": {
+    "@availity/progress": "^1.1.1",
     "prop-types": "^15.5.8"
   },
   "devDependencies": {

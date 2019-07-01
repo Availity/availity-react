@@ -16,7 +16,15 @@ export interface UploadProgressBarProps {
     onError?: Function;
     animated?: boolean;
     className?: string;
+    tag?: React.ReactType | string;
+    striped?: boolean;
+    complete?: boolean;
+    value?: number | string;
+    max?: number | string;
+    color?: string;
 }
+
+
 
 declare const UploadProgressBar: React.ComponentType<UploadProgressBarProps>;
 
