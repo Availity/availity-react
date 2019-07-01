@@ -58,7 +58,7 @@ class UploadProgressBar extends Component {
   };
 
   render() {
-    const { upload, animated, className } = this.props;
+    const { upload, ...rest } = this.props;
     const { percentage, error, modalOpen } = this.state;
     return upload.errorMessage ? (
       <React.Fragment>
@@ -91,7 +91,8 @@ class UploadProgressBar extends Component {
         )}
       </React.Fragment>
     ) : (
-      <Progress />
+      <Progress {...rest}
+      />
   
     );
   }
@@ -114,6 +115,11 @@ UploadProgressBar.propTypes = {
   onError: PropTypes.func,
   animated: PropTypes.bool,
   className: PropTypes.string,
+  striped: PropTypes.bool,
+  complete: PropTypes.bool,
+  value: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
+  max: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
+  color: PropTypes.string,
 };
 
 UploadProgressBar.defaultProps = {};
