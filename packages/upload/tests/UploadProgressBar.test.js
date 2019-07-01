@@ -47,5 +47,33 @@ describe('UploadProgressBar', () => {
   // striped
   // animated
 
+  test('should render striped', () =>{
+    const { getByTestId } = render(<UploadProgressBar upload={instance} striped />);
+    
+    const progressBar = getByTestId('progress-inner')
+
+    expect(progressBar.className).toContain('progress-bar-striped')
+    
+  })
+
+  test('should render animated', () =>{
+    const { getByTestId } = render(<UploadProgressBar upload={instance} animated />);
+    
+    const progressBar = getByTestId('progress-inner')
+
+    expect(progressBar.className).toContain('progress-bar-animated')
+    
+  })
+
+  test('should render striped and animated', () =>{
+    const { getByTestId } = render(<UploadProgressBar upload={instance} striped animated />);
+    
+    const progressBar = getByTestId('progress-inner')
+
+    expect(progressBar.className).toContain('animated')
+    expect (progressBar.className).toContain('striped')
+    
+  })
+
 
 });
