@@ -100,9 +100,12 @@ The raw progress bar to be used when making your own.
 - **`upload`**: Instance of Upload from [upload-core](https://github.com/Availity/sdk-js/tree/master/packages/upload-core). Required. The upload instance returned by creating a `new Upload` via [upload-core](https://github.com/Availity/sdk-js/tree/master/packages/upload-core).
 - **`onProgress`**: Function. Optional. Callback function to hook into the `onProgress` within the Upload instance provided in the `upload` prop.
 - **`onSuccess`**: Function. Optional. Callback function to hook into the `onSuccess` within the Upload instance provided in the `upload` prop.
+- **`complete`**: Boolean. Optional. Triggers the "complete" style in the progress bar. When true, a checkmark appears at the end of the progress bar
 - **`onError`**: Function. Optional. Callback function to hook into the `onError` within the Upload instance provided in the `upload` prop.
+- **`striped`**: Boolean. Optional. Triggers the "striped" style in the progress bar.
 - **`animated`**: Boolean. Optional. When `true` the progress bar will have animated stripes while uploading is in progress.
-- **`className`**: String. Optional. Additional classNames to add to the progress bar.
+- **`color`**: String. Optional. Default "success". The color of the progress bar
+
 
 ##### UploadProgressBar Usage
 
@@ -125,6 +128,8 @@ The raw file picker button which masks the file input with a button.
 - **`multiple`**: Boolean. Optional. Indicates that the user will be allowed to select multiple files when selecting files from the OS prompt.
 - **`allowedFileTypes`**: Array of strings. Optional. The file types you want to restrict uploading to. E.g. `['.jpeg', '.jpg']`.
 - **`maxSize`**: Number. Optional. The maximum file size (in bytes) for a file to be uploaded.
+
+
 
 ##### FilePickerBtn Usage
 

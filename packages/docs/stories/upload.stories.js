@@ -182,6 +182,9 @@ storiesOf('Components|Upload', module)
         <UploadProgressBar
           upload={instance}
           animated={boolean('Animated', false)}
+          striped={boolean('Striped', false)}
+          complete={boolean('Complete', false)}
+          color={text('Color', 'success')}
         />
       </div>
     );
