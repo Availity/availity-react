@@ -1,6 +1,6 @@
 {
   "name": "@availity/upload",
-  "version": "2.0.2",
+  "version": "2.0.3",
   "author": "Evan Sharp <evan.sharp@availity.com>",
   "description": "Availity upload component for uploading files",
   "main": "index.js",
