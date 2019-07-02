@@ -5,7 +5,6 @@ import { AvBaseInput } from 'availity-reactstrap-validation';
 import Select, { components as reactSelectComponents } from 'react-select';
 import get from 'lodash.get';
 import isEqual from 'lodash.isEqual';
-import find from 'lodash/find';
 
 import AsyncPaginate from 'react-select-async-paginate';
 
@@ -44,7 +43,10 @@ class AvSelect extends AvBaseInput {
 
   optionsContainsValue = (props, value) => {
     const valueKey = this.getValueKey(props);
-    return !!find(props.options, [valueKey, value]);
+    const matchingValues = props.options.filter(
+      option => option.value === valueKey
+    );
+    return matchingValues.length > 0;
   };
 
   componentWillReceiveProps(nextProps) {
