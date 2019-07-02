@@ -3,9 +3,9 @@ import PropTypes from 'prop-types';
 import classNames from 'classnames';
 import { AvBaseInput } from 'availity-reactstrap-validation';
 import Select, { components as reactSelectComponents } from 'react-select';
-import { get } from 'lodash.get';
+import get from 'lodash.get';
+import isEqual from 'lodash.isEqual';
 import find from 'lodash/find';
-import isEqual from 'lodash/isEqual';
 
 import AsyncPaginate from 'react-select-async-paginate';
 
