@@ -3,11 +3,19 @@ import { storiesOf } from '@storybook/react';
 import { withKnobs } from '@storybook/addon-knobs/react';
 import { Button } from 'reactstrap';
 import * as yup from 'yup';
-import { Form, Field, Input, Checkbox, CheckboxGroup, RadioGroup, Radio } from '@availity/form';
+import {
+  Form,
+  Field,
+  Input,
+  Checkbox,
+  CheckboxGroup,
+  RadioGroup,
+  Radio,
+} from '@availity/form';
 import README from '@availity/form/README.md';
 
-
-storiesOf('Components|Form', module)
+// eslint-disable-next-line no-undef
+storiesOf('Formik|Form', module)
   .addParameters({
     readme: {
       // Show readme at the addons panel
@@ -18,14 +26,13 @@ storiesOf('Components|Form', module)
   })
   .addDecorator(withKnobs)
   .add('default', () => {
-
     const schema = yup.object().shape({
-        hello: yup.string().required(),
-      });
+      hello: yup.string().required(),
+    });
     return (
-        <Form
+      <Form
         initialValues={{
-          hello: ""
+          hello: '',
         }}
         // eslint-disable-next-line no-undef
         onSubmit={values => alert(JSON.stringify(values))}
@@ -37,38 +44,39 @@ storiesOf('Components|Form', module)
         </Button>
       </Form>
     );
-  }).add('Input', () => {
-
+  })
+  .add('Input', () => {
     const schema = yup.object().shape({
-        hello: yup.string().required(),
+      hello: yup.string().required(),
     });
 
     return (
-        <Form
+      <Form
         initialValues={{
-          hello: ""
+          hello: '',
         }}
         // eslint-disable-next-line no-undef
         onSubmit={values => alert(JSON.stringify(values))}
         validationSchema={schema}
       >
         <div className="d-flex">
-        <Input name="hello" type="text" label="Hello" />
-        <Button className="ml-1" color="primary" type="submit">
-          Submit
-        </Button></div>
+          <Input name="hello" type="text" label="Hello" />
+          <Button className="ml-1" color="primary" type="submit">
+            Submit
+          </Button>
+        </div>
       </Form>
     );
-  }).add('Field', () => {
-
+  })
+  .add('Field', () => {
     const schema = yup.object().shape({
-        hello: yup.string().required(),
+      hello: yup.string().required(),
     });
 
     return (
-        <Form
+      <Form
         initialValues={{
-          hello: ""
+          hello: '',
         }}
         // eslint-disable-next-line no-undef
         onSubmit={values => alert(JSON.stringify(values))}
@@ -80,16 +88,16 @@ storiesOf('Components|Form', module)
         </Button>
       </Form>
     );
-  }).add('Checkbox', () => {
-
+  })
+  .add('Checkbox', () => {
     const schema = yup.object().shape({
-        checkboxGroup: yup.array().required("At least one checkbox is required")
+      checkboxGroup: yup.array().required('At least one checkbox is required'),
     });
 
     return (
-        <Form
+      <Form
         initialValues={{
-            checkboxGroup: [],
+          checkboxGroup: [],
         }}
         // eslint-disable-next-line no-undef
         onSubmit={values => alert(JSON.stringify(values))}
@@ -105,16 +113,16 @@ storiesOf('Components|Form', module)
         </Button>
       </Form>
     );
-  }).add('Radio', () => {
-
+  })
+  .add('Radio', () => {
     const schema = yup.object().shape({
-        hello: yup.string().required("This field is required")
+      hello: yup.string().required('This field is required'),
     });
 
     return (
-        <Form
+      <Form
         initialValues={{
-            hello: "",
+          hello: '',
         }}
         // eslint-disable-next-line no-undef
         onSubmit={values => alert(JSON.stringify(values))}
@@ -130,5 +138,4 @@ storiesOf('Components|Form', module)
         </Button>
       </Form>
     );
-  })
-  
+  });

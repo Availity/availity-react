@@ -44,7 +44,7 @@ const multiValueSchema = (name, required, min, max) =>
 const avCustomResource = new AvApi({ name: 'my-custom-resource' });
 
 // eslint-disable-next-line no-undef
-storiesOf('Components|Select', module)
+storiesOf('Formik|Select', module)
   .addParameters({
     readme: {
       // Show readme at the addons panel
@@ -193,7 +193,7 @@ storiesOf('Components|Select', module)
   });
 
 // eslint-disable-next-line no-undef
-storiesOf('Components|Select/resources', module)
+storiesOf('Formik|Select/resources', module)
   .addParameters({
     readme: {
       // Show readme at the addons panel
