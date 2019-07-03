@@ -120,7 +120,7 @@ See availity-reactstrap-validation for additional props, such as `name`, `valida
 *   **`calendarIcon`**: Node. Optional. Default: `<Icon name="calendar" />`. You can optional change the icon the calendar renders in the case you don't use the `availity-uikit` icons.
 *    **`buttonColorOnChange`**: String. Optional. Default: `light`. You can optionally change the buttonColor when the DatePicker Changes
 
-#### AvDateRange Example  
+#### AvDateRange Example usage
 
 ```javascript
 import React from 'react';

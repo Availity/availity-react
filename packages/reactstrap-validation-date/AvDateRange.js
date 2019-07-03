@@ -234,7 +234,9 @@ export default class AvDateRange extends Component {
         if (!mEnd.isBefore(mStart.add(max.value, max.units), 'day')) {
           return (
             max.errorMessage ||
-            `The end date must be within ${max.value} ${max.units} of the start date`
+            `The end date must be within ${max.value} ${
+              max.units
+            } of the start date`
           );
         }
       }
@@ -242,7 +244,9 @@ export default class AvDateRange extends Component {
         if (mEnd.isAfter(mStart.add(min.value, min.units), 'day')) {
           return (
             min.errorMessage ||
-            `The end date must be greater than ${min.value} ${min.units} of the start date`
+            `The end date must be greater than ${min.value} ${
+              min.units
+            } of the start date`
           );
         }
       }
@@ -318,7 +322,6 @@ export default class AvDateRange extends Component {
     }
     const startValue = range.startDate.format(this.state.format);
     const endValue = range.endDate.format(this.state.format);
-    console.log(this.state.buttonColor, this.props.buttonColorOnChange);
 
     this.setState(
       {
@@ -336,8 +339,6 @@ export default class AvDateRange extends Component {
             end: endValue,
           });
         }
-
-        console.log(this.state.buttonColor, this.props.buttonColorOnChange);
 
         this.checkDistanceValidation(endValue, {
           [this.props.start.name]: startValue,
