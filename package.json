@@ -10,7 +10,7 @@
     "format": "prettier --write 'packages/*/*.js' 'packages/*/!(node_modules)/**/*.js' 'packages/*/!(docs)/**/*.js'",
     "lint": "eslint .",
     "nuke": "npm run remove-locks && npm run clean",
-    "bootstrap": "lerna bootstrap --no-package-locks --hoist react",
+    "bootstrap": "lerna bootstrap --no-package-locks --hoist {formik,react}",
     "lerna": "lerna",
     "link": "lerna link",
     "clean": "lerna clean --yes",
