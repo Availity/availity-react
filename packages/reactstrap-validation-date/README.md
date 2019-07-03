@@ -7,7 +7,7 @@
 ## Installation
 
 ```bash
-npm install @availity/reactstrap-validation-date availity-reactstrap-validation reactstrap react --save
+    npm install @availity/reactstrap-validation-date availity-reactstrap-validation reactstrap react --save
 ```
 
 ### Usage
@@ -113,13 +113,14 @@ This is the underlying date-range without the `AvGroup`, `Label` or `AvFeedback`
 
 See availity-reactstrap-validation for additional props, such as `name`, `validate`, `min`, `max`, and more.
 
-*   **`ranges`**: Object or Array. Optional. Default: `['Last 7 Days','Last 30 Days','Last Calendar Month','Last 120 Days','Last 6 Months','Last 12 Months']`. Controls the preset range options which allows the user to easily select predefined ranges. If an array, the array *must* be a subset of the default array, any string not in the array will be omitted. If an object, the keys will be the display text and the value will be an object containing `startDate` and `endDate` *function* which will be called with the current date `dayjs` object and are expected to return the start and end dates respectfully.
+* **`ranges`**: Object or Array. Optional. Default: `['Last 7 Days','Last 30 Days','Last Calendar Month','Last 120 Days','Last 6 Months','Last 12 Months']`. Controls the preset range options which allows the user to easily select predefined ranges. If an array, the array *must* be a subset of the default array, any string not in the array will be omitted. If an object, the keys will be the display text and the value will be an object containing `startDate` and `endDate` *function* which will be called with the current date `dayjs` object and are expected to return the start and end dates respectfully.
 *   **`start`**: Object. Required. and object which will be spread on the start date input. It must contain the `name` prop as required by availity-reactstrap-validation. It can contain additional validations as well.
 *   **`end`**: Object. Required. and object which will be spread on the end date input. It must contain the `name` prop as required by availity-reactstrap-validation. It can contain additional validations as well.
 *   **`distance`**: Object. Optional. Object containing the `min` and `max` distance the start and end dates are allowed to be apart from each other. See example below.
 *   **`calendarIcon`**: Node. Optional. Default: `<Icon name="calendar" />`. You can optional change the icon the calendar renders in the case you don't use the `availity-uikit` icons.
+*    **`buttonColorOnChange`**: String. Optional. Default: `light`. You can optionally change the buttonColor when the DatePicker Changes
 
-#### AvDateRange Example usage
+#### AvDateRange Example  
 
 ```javascript
 import React from 'react';

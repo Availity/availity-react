@@ -96,6 +96,7 @@ export default class AvDateRange extends Component {
     theme: PropTypes.object,
     calendarIcon: PropTypes.node,
     datepicker: PropTypes.bool,
+    buttonColorOnChange: PropTypes.string,
   };
 
   static contextTypes = { FormCtrl: PropTypes.object.isRequired };
@@ -113,6 +114,7 @@ export default class AvDateRange extends Component {
       open: false,
       startValue: props.start.value,
       endValue: props.end.value,
+      buttonColor: 'light',
     };
     if (props.type.toLowerCase() === 'date' && inputType.date) {
       this.state.format = isoDateFormat;
@@ -232,9 +234,7 @@ export default class AvDateRange extends Component {
         if (!mEnd.isBefore(mStart.add(max.value, max.units), 'day')) {
           return (
             max.errorMessage ||
-            `The end date must be within ${max.value} ${
-              max.units
-            } of the start date`
+            `The end date must be within ${max.value} ${max.units} of the start date`
           );
         }
       }
@@ -242,9 +242,7 @@ export default class AvDateRange extends Component {
         if (mEnd.isAfter(mStart.add(min.value, min.units), 'day')) {
           return (
             min.errorMessage ||
-            `The end date must be greater than ${min.value} ${
-              min.units
-            } of the start date`
+            `The end date must be greater than ${min.value} ${min.units} of the start date`
           );
         }
       }
@@ -320,11 +318,16 @@ export default class AvDateRange extends Component {
     }
     const startValue = range.startDate.format(this.state.format);
     const endValue = range.endDate.format(this.state.format);
+    console.log(this.state.buttonColor, this.props.buttonColorOnChange);
+
     this.setState(
       {
         startValue,
         endValue,
         open: false,
+        buttonColor: this.props.buttonColorOnChange
+          ? this.props.buttonColorOnChange
+          : 'light',
       },
       () => {
         if (this.props.onChange) {
@@ -333,6 +336,9 @@ export default class AvDateRange extends Component {
             end: endValue,
           });
         }
+
+        console.log(this.state.buttonColor, this.props.buttonColorOnChange);
+
         this.checkDistanceValidation(endValue, {
           [this.props.start.name]: startValue,
         });
@@ -389,7 +395,7 @@ export default class AvDateRange extends Component {
             <InputGroupAddon addonType="append">
               <Button
                 id={this.guid}
-                color="light"
+                color={this.state.buttonColor}
                 type="button"
                 disabled={this.props.disabled}
                 onClick={this.togglePicker}
