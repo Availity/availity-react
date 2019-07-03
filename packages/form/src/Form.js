@@ -5,7 +5,7 @@ import { Formik, Form as FForm } from 'formik';
 
 const Form = ({ children, ...rest }) => (
   <Formik {...rest}>
-    <RsForm tag={FForm}>{children}</RsForm>
+    <RsForm data-testid="form-container" tag={FForm}>{children}</RsForm>
   </Formik>
 );
 
