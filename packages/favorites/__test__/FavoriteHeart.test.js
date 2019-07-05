@@ -35,8 +35,7 @@ avMessages.subscribe = jest.fn((event, fn) => {
       try {
         data = JSON.parse(data);
       } catch (error) {
-        // eslint-disable-next-line no-console
-        console.log(error);
+        console.error(error);
       }
     }
 
