@@ -76,14 +76,9 @@ const Select = ({
     <Tag
       {...field}
       onChange={newValue => {
-        if (maxLength && attributes.isMulti && newValue.length === maxLength)
+        if (maxLength && attributes.isMulti && newValue.length > maxLength)
           return;
-        setFieldValue(
-          name,
-          attributes.isMulti
-            ? newValue.map(({ value }) => value)
-            : newValue.value
-        );
+        setFieldValue(name, newValue);
       }}
       ref={selectRef}
       name={name}

@@ -170,7 +170,11 @@ storiesOf('Formik|Select', module)
         }}
         // eslint-disable-next-line no-undef
         onSubmit={values => alert(JSON.stringify(values))}
-        validationSchema={singleValueSchema('SelectResource')}
+        validationSchema={
+          isMulti
+            ? multiValueSchema('SelectField', required, min, max)
+            : singleValueSchema('SelectField', required)
+        }
       >
         <SelectResource
           label={
@@ -180,7 +184,6 @@ storiesOf('Formik|Select', module)
             </>
           }
           name="SelectResource"
-          minLength={min}
           maxLength={max}
           isMulti={isMulti}
           required={required}

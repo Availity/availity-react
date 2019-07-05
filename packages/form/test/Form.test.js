@@ -2,7 +2,7 @@ import React from 'react';
 import { render, fireEvent, wait } from '@testing-library/react';
 import { Button } from 'reactstrap';
 import * as yup from 'yup';
-import { Form, Input } from "..";
+import { Form, Input } from '..';
 
 describe('Form', () => {
   test('renders', () => {
@@ -15,10 +15,10 @@ describe('Form', () => {
     const schema = yup.object().shape({
       hello: yup.string().required('This field is required.'),
     });
-    
+
     const onSubmit = jest.fn();
 
-    const { getByTestId,getByText } = render(
+    const { getByTestId, getByText } = render(
       <Form
         initialValues={{
           hello: 'hello',
@@ -36,14 +36,12 @@ describe('Form', () => {
     await fireEvent.click(getByText('Submit'));
 
     await wait(() => {
-        expect(onSubmit).toHaveBeenCalledWith(
-            expect.objectContaining({
-                hello:'hello'
-            }),
-            expect.anything()
-        );
-    },1000);
-
-
+      expect(onSubmit).toHaveBeenCalledWith(
+        expect.objectContaining({
+          hello: 'hello',
+        }),
+        expect.anything()
+      );
+    });
   });
 });

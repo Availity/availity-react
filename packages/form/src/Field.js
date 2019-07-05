@@ -1,11 +1,11 @@
-import React from "react";
+import React from 'react';
 import PropTypes from 'prop-types';
-import { Input as RsInput, Label, FormText, Col, Util } from "reactstrap";
-import Feedback from "./Feedback";
-import FormGroup from "./FormGroup";
-import Input from "./Input";
+import { Input as RsInput, Label, FormText, Col } from 'reactstrap';
+import Feedback from './Feedback';
+import FormGroup from './FormGroup';
+import Input from './Input';
 
-const colSizes = ["xs", "sm", "md", "lg", "xl"];
+const colSizes = ['xs', 'sm', 'md', 'lg', 'xl'];
 
 const Field = ({
   helpMessage,
@@ -58,7 +58,7 @@ const Field = ({
   ) : (
     input
   );
-  const check = attributes.type === "checkbox";
+  const check = attributes.type === 'checkbox';
 
   return (
     <FormGroup
@@ -89,7 +89,7 @@ const Field = ({
 };
 
 Field.propTypes = {
-  tag: Util.tagPropType,
+  tag: PropTypes.oneOfType([PropTypes.func, PropTypes.string]),
   label: PropTypes.node,
   labelHidden: PropTypes.bool,
   disabled: PropTypes.bool,
@@ -98,22 +98,15 @@ Field.propTypes = {
   size: PropTypes.string,
   inputClass: PropTypes.string,
   labelClass: PropTypes.string,
-  helpMessage: PropTypes.oneOfType([
-    PropTypes.string,
-    PropTypes.object,
-  ]),
-  errorMessage: PropTypes.oneOfType([
-    PropTypes.string,
-    PropTypes.object,
-  ]),
+  helpMessage: PropTypes.oneOfType([PropTypes.string, PropTypes.object]),
+  errorMessage: PropTypes.oneOfType([PropTypes.string, PropTypes.object]),
   labelAttrs: PropTypes.object,
   groupAttrs: PropTypes.object,
   grid: PropTypes.object,
-
-}
+};
 
 Field.defaultProps = {
-  tag: RsInput
+  tag: RsInput,
 };
 
 export default Field;

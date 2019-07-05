@@ -1,9 +1,9 @@
-import React, { createContext, useContext } from "react";
+import React, { createContext, useContext } from 'react';
 import PropTypes from 'prop-types';
-import classNames from "classnames";
-import { useField, useFormikContext } from "formik";
-import Feedback from "./Feedback";
-import FormGroup from "./FormGroup";
+import classNames from 'classnames';
+import { useField, useFormikContext } from 'formik';
+import Feedback from './Feedback';
+import FormGroup from './FormGroup';
 
 export const CheckboxGroupContext = createContext();
 
@@ -33,18 +33,20 @@ const CheckboxGroup = ({ name, children, label, ...rest }) => {
   const [field, metadata] = useField(name);
 
   const classes = classNames(
-    "form-control border-0 p-0 h-auto",
-    metadata.touched ? "is-touched" : "is-untouched",
-    metadata.touched && metadata.error && "is-invalid"
+    'form-control border-0 p-0 h-auto',
+    metadata.touched ? 'is-touched' : 'is-untouched',
+    metadata.touched && metadata.error && 'is-invalid'
   );
 
-  const legend = label ? <legend>{label}</legend> : "";
+  const legend = label ? <legend>{label}</legend> : '';
 
   return (
     <CheckboxGroupContext.Provider value={{ ...field, metadata }}>
       <FormGroup tag="fieldset" for={name} {...rest}>
         {legend}
-        <div className={classes}>{children}</div>
+        <div className={classes} data-testid={`check-items-${name}`}>
+          {children}
+        </div>
         <Feedback name={name} />
       </FormGroup>
     </CheckboxGroupContext.Provider>
@@ -54,7 +56,7 @@ const CheckboxGroup = ({ name, children, label, ...rest }) => {
 CheckboxGroup.propTypes = {
   name: PropTypes.string,
   children: PropTypes.node,
-  label: PropTypes.string
-}
+  label: PropTypes.string,
+};
 
 export default CheckboxGroup;
