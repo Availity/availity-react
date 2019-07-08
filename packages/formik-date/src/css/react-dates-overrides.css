@@ -36,13 +36,6 @@
   border-bottom: none;
 }
 
-.SingleDatePickerInput_calendarIcon {
-  color: #212529;
-  background-color: #e8ebeb;
-  border-color: #e8ebeb;
-  margin-right: 0;
-}
-
 .CalendarDay__selected,
 .CalendarDay__selected:active,
 .CalendarDay__selected:hover {

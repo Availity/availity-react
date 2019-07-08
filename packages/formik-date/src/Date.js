@@ -9,8 +9,7 @@ import { SingleDatePicker } from 'react-dates';
 import 'react-dates/lib/css/_datepicker.css';
 import './css/react-dates-overrides.css';
 import Icon from '@availity/icon';
-import { InputGroup,Input } from 'reactstrap';
-// import { Input } from '@availity/form';
+import { InputGroup, Input } from 'reactstrap';
 
 const isOutsideRange = (min, max) => day => {
   if (moment.isMoment(min) && moment.isMoment(max)) {
@@ -74,11 +73,7 @@ const AvDate = ({
     ''
   )}-picker`;
 
-  const onPickerChange = async val => {
-    if (!metadata.touched) {
-      setTouched({ [name]: true });
-    }
-
+  const onPickerChange = async (val,...args) => {
     setValue(val);
     await setValues({ [name]: (val && val.format(format)) || null });
     inputRef.value = val && val.format(format);
@@ -94,6 +89,11 @@ const AvDate = ({
   };
 
   const onFocusChange = ({ focused }) => {
+    
+    if (!metadata.touched && !focused) {
+      setTouched({ [name]: true });
+    }
+
     toggleIsFocused(focused);
     if (onPickerFocusChange) onPickerFocusChange({ focused });
   };
@@ -117,9 +117,8 @@ const AvDate = ({
         style={{ display: 'none' }}
         name={name}
         className={classes}
-        value={field.value || ''}
       />
-      <InputGroup disabled={attributes.disabled} className={classes}>
+      <InputGroup disabled={attributes.disabled} className={classes} onChange={({target}) => console.log("Target Val",target.value)}>
       <SingleDatePicker
         {...attributes}
         placeholder={format.toLowerCase()}
@@ -164,7 +163,7 @@ AvDate.propTypes = {
 
 AvDate.defaultProps = {
   datepicker: true,
-  calendarIcon: <Icon name="calendar" className="btn-light" />,
+  calendarIcon: <Icon name="calendar" />,
   format: 'MM/DD/YYYY',
 };
 

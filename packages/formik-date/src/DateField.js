@@ -4,11 +4,11 @@ import { Label } from 'reactstrap';
 import { FormGroup, Feedback } from '@availity/form';
 import Date from './Date';
 
-const DateField = ({ name, label }) => {
+const DateField = ({ name, label, ...props }) => {
   return (
     <FormGroup for={name}>
       {label && <Label for={name}>{label}</Label>}
-      <Date name={name} />
+      <Date name={name} {...props} />
       <Feedback name={name} />
     </FormGroup>
   );
