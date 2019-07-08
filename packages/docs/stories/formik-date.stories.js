@@ -3,7 +3,7 @@ import { storiesOf } from '@storybook/react';
 import { withKnobs } from '@storybook/addon-knobs/react';
 import { Button } from 'reactstrap';
 import * as yup from 'yup';
-import { Date as FormikDate } from '@availity/formik-date';
+import Date, { DateField } from '@availity/formik-date';
 import { Form } from '@availity/form';
 import README from '@availity/formik-date/README.md';
 
@@ -32,9 +32,39 @@ storiesOf('Formik|Date', module)
         onSubmit={values => alert(JSON.stringify(values))}
         validationSchema={schema}
       >
-        <FormikDate
+      <div className="d-flex">
+        <Date
           id="dateOfService"
           name="dateOfService"
+          min={{ value: 7, units: 'days' }}
+          max={{ value: 7, units: 'days' }}
+        />
+
+        <Button className="ml-1" color="primary" type="submit">
+          Submit
+        </Button>
+        </div>
+      </Form>
+    );
+  })
+  .add('DateField', () => {
+    const schema = yup.object().shape({
+      dateOfService: yup.string().required('This field is required'),
+    });
+
+    return (
+      <Form
+        initialValues={{
+          dateOfService: '',
+        }}
+        // eslint-disable-next-line no-undef
+        onSubmit={values => alert(JSON.stringify(values))}
+        validationSchema={schema}
+      >
+        <DateField
+          id="dateOfService"
+          name="dateOfService"
+          label="Date of Service"
           min={{ value: 7, units: 'days' }}
           max={{ value: 7, units: 'days' }}
         />

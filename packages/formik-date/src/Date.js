@@ -9,7 +9,8 @@ import { SingleDatePicker } from 'react-dates';
 import 'react-dates/lib/css/_datepicker.css';
 import './css/react-dates-overrides.css';
 import Icon from '@availity/icon';
-import { FormGroup, Input, Feedback } from '@availity/form';
+import { InputGroup, Input } from 'reactstrap';
+// import { Input } from '@availity/form';
 
 const isOutsideRange = (min, max) => day => {
   if (moment.isMoment(min) && moment.isMoment(max)) {
@@ -110,18 +111,14 @@ const AvDate = ({
   };
 
   return (
-    <FormGroup
-      tag="fieldset"
-      for={attributes.id}
-      disabled={attributes.disabled}
-      className={classes}
-    >
+    <>
       <Input
         innerRef={getRef}
         style={{ display: 'none' }}
         name={name}
         value={field.value || ''}
       />
+      <InputGroup disabled={attributes.disabled} className={classes}>
       <SingleDatePicker
         {...attributes}
         placeholder={format.toLowerCase()}
@@ -135,9 +132,8 @@ const AvDate = ({
         customInputIcon={calendarIcon}
         inputIconPosition="after"
         onClose={onClose}
-      />
-      <Feedback name={name} />
-    </FormGroup>
+      /></InputGroup>
+    </>
   );
 };
 
@@ -167,7 +163,7 @@ AvDate.propTypes = {
 
 AvDate.defaultProps = {
   datepicker: true,
-  calendarIcon: <Icon name="calendar" />,
+  calendarIcon: <Icon name="calendar" className="btn-light" />,
   format: 'MM/DD/YYYY',
 };
 

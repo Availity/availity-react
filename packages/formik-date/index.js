@@ -1,2 +1,2 @@
-/* eslint-disable import/prefer-default-export */
-export { default as Date } from './src/Date';
+export { default } from './src/Date';
+export { default as DateField } from './src/DateField';
