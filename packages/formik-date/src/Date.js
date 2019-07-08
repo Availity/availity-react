@@ -9,7 +9,7 @@ import { SingleDatePicker } from 'react-dates';
 import 'react-dates/lib/css/_datepicker.css';
 import './css/react-dates-overrides.css';
 import Icon from '@availity/icon';
-import { InputGroup, Input } from 'reactstrap';
+import { InputGroup,Input } from 'reactstrap';
 // import { Input } from '@availity/form';
 
 const isOutsideRange = (min, max) => day => {
@@ -116,6 +116,7 @@ const AvDate = ({
         innerRef={getRef}
         style={{ display: 'none' }}
         name={name}
+        className={classes}
         value={field.value || ''}
       />
       <InputGroup disabled={attributes.disabled} className={classes}>
