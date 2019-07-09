@@ -36,7 +36,7 @@ const Radio = ({ label, id, value: checkValue, className, ...attributes }) => {
 Radio.propTypes = {
   id: PropTypes.string,
   label: PropTypes.string,
-  value: PropTypes.object,
+  value: PropTypes.string,
   disabled: PropTypes.bool,
   className: PropTypes.string,
 };

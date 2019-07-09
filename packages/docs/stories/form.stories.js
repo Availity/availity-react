@@ -11,11 +11,12 @@ import {
   CheckboxGroup,
   RadioGroup,
   Radio,
+  FormGroup,
 } from '@availity/form';
 import README from '@availity/form/README.md';
 
 // eslint-disable-next-line no-undef
-storiesOf('Components|Form', module)
+storiesOf('Formik|Form', module)
   .addParameters({
     readme: {
       // Show readme at the addons panel
@@ -70,6 +71,24 @@ storiesOf('Components|Form', module)
             Submit
           </Button>
         </div>
+      </Form>
+    );
+  })
+  .add('Form Group', () => {
+    return (
+      <Form
+        initialValues={{
+          hello: '',
+        }}
+        onSubmit={values => alert(JSON.stringify(values))}
+        validationSchema={yup.object().shape({
+          hello: yup.string().optional(),
+        })}
+      >
+        <FormGroup name="hello" data-testid="hello-group">
+          <Input name="hello" data-testid="hello-input" />
+        </FormGroup>
+        <Button type="submit">Submit</Button>
       </Form>
     );
   })

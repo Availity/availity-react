@@ -1,0 +1,48 @@
+{
+  "name": "@availity/formik-date",
+  "version": "0.1.0",
+  "description": "Wrapper for react-dates to work with formik",
+  "main": "index.js",
+  "typings": "typings/index.d.ts",
+  "keywords": [
+    "availity",
+    "reactstrap",
+    "validation",
+    "date"
+  ],
+  "author": "Tyson Warner <tyson.warner@availity.com>",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Availity/availity-react.git"
+  },
+  "bugs": {
+    "url": "https://github.com/Availity/availity-react/issues"
+  },
+  "homepage": "https://github.com/Availity/availity-react/tree/master/packages/formik-date#readme",
+  "devDependencies": {
+    "@availity/form": "^0.1.0",
+    "@types/react-dates": "^17.1.5",
+    "formik": "^2.0.1-rc.5",
+    "react": "^16.8.3",
+    "react-dom": "^16.8.3",
+    "reactstrap": "^8.0.0"
+  },
+  "peerDependencies": {
+    "@availity/form": "^0.1.0",
+    "formik": "^2.0.1-rc.5",
+    "react": "^16.3.0",
+    "reactstrap": "^8.0.0 || ^7.0.0 || ^6.0.0"
+  },
+  "dependencies": {
+    "@availity/hooks": "^1.3.3",
+    "@availity/icon": "^0.4.2",
+    "classnames": "^2.2.6",
+    "moment": "^2.24.0",
+    "prop-types": "^15.7.2",
+    "react-dates": "^20.2.5"
+  },
+  "publishConfig": {
+    "access": "public"
+  }
+}

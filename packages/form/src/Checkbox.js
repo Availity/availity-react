@@ -42,7 +42,7 @@ const Checkbox = ({
 Checkbox.propTypes = {
   id: PropTypes.string,
   label: PropTypes.string,
-  value: PropTypes.object,
+  value: PropTypes.string,
   disabled: PropTypes.bool,
   className: PropTypes.string,
 };
