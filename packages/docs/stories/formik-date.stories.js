@@ -26,6 +26,7 @@ yup.addMethod(yup.string, 'dateRange', function format(
     test(value) {
       if (!value) return false;
       let [startDate, endDate] = value.split('-');
+      if (!startDate || !endDate) return false;
 
       startDate = moment(
         startDate,
@@ -38,6 +39,7 @@ yup.addMethod(yup.string, 'dateRange', function format(
         ['MM/DD/YYYY', format, 'MMDDYYYY', 'YYYYMMDD'],
         true
       );
+
       return (
         startDate.isValid() &&
         endDate.isValid() &&
