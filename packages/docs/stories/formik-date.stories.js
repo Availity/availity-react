@@ -3,12 +3,53 @@ import { storiesOf } from '@storybook/react';
 import { withKnobs } from '@storybook/addon-knobs/react';
 import { Button } from 'reactstrap';
 import * as yup from 'yup';
-import FormikDate, { DateField } from '@availity/formik-date';
+import FormikDate, {
+  DateField,
+  DateRange,
+  DateRangeField,
+} from '@availity/formik-date';
 import { Form } from '@availity/form';
 import README from '@availity/formik-date/README.md';
 import moment from 'moment';
 
-// Validates another date field is after this date field
+// Validates a date range is in valid format
+yup.addMethod(yup.string, 'dateRange', function format(
+  { min, max, format = 'MM/DD/YYYY' },
+  msg
+) {
+  // Can't use arrow function because we rely on 'this' referencing yup's internals
+  return this.test({
+    name: 'dateRange',
+    exclusive: true, // Validation errors don't stack
+    // NOTE: Intentional use of single quotes - yup will handle the string interpolation
+    message: msg || 'This field is invalid.',
+    test(value) {
+      if (!value) return false;
+      let [startDate, endDate] = value.split('-');
+
+      startDate = moment(
+        startDate,
+        ['MM/DD/YYYY', format, 'MMDDYYYY', 'YYYYMMDD'],
+        true
+      );
+
+      endDate = moment(
+        endDate,
+        ['MM/DD/YYYY', format, 'MMDDYYYY', 'YYYYMMDD'],
+        true
+      );
+      return (
+        startDate.isValid() &&
+        endDate.isValid() &&
+        endDate.isSameOrAfter(startDate) &&
+        startDate.isSameOrAfter(min) &&
+        endDate.isSameOrBefore(max)
+      );
+    },
+  });
+});
+
+// Validates a date is in valid format
 yup.addMethod(yup.string, 'format', function format(
   format = 'MM/DD/YYYY',
   msg
@@ -143,5 +184,89 @@ storiesOf('Formik|Date', module)
         </Button>
       </Form>
     );
+  })
+  .add('DateRange', () => {
+    const dateFormat = 'MM/DD/YYYY';
+    const minDate = moment()
+      .subtract(7, 'day')
+      .format(dateFormat);
+    const maxDate = moment()
+      .add(7, 'day')
+      .format(dateFormat);
+
+    const schema = yup.object().shape({
+      dateOfService: yup
+        .string()
+        .typeError('This field is invalid.')
+        .required('This field is required.')
+        .dateRange(
+          { min: minDate, max: maxDate, format: dateFormat },
+          `Date must be between ${minDate} and ${maxDate}`
+        ),
+    });
+
+    return (
+      <Form
+        initialValues={{
+          dateOfService: '',
+        }}
+        // eslint-disable-next-line no-undef
+        onSubmit={values => alert(JSON.stringify(values))}
+        validationSchema={schema}
+      >
+        <DateRange
+          id="dateOfService"
+          name="dateOfService"
+          min={{ value: 7, units: 'days' }}
+          max={{ value: 7, units: 'days' }}
+        />
+
+        <Button className="mt-1 ml-1" color="primary" type="submit">
+          Submit
+        </Button>
+      </Form>
+    );
+  })
+  .add('DateRangeField', () => {
+    const dateFormat = 'MM/DD/YYYY';
+    const minDate = moment()
+      .subtract(7, 'day')
+      .format(dateFormat);
+    const maxDate = moment()
+      .add(7, 'day')
+      .format(dateFormat);
+
+    const schema = yup.object().shape({
+      dateOfService: yup
+        .string()
+        .typeError('This field is invalid.')
+        .required('This field is required.')
+        .dateRange(
+          { min: minDate, max: maxDate, format: dateFormat },
+          `Date must be between ${minDate} and ${maxDate}`
+        ),
+    });
+
+    return (
+      <Form
+        initialValues={{
+          dateOfService: '',
+        }}
+        // eslint-disable-next-line no-undef
+        onSubmit={values => alert(JSON.stringify(values))}
+        validationSchema={schema}
+      >
+        <DateRangeField
+          id="dateOfService"
+          name="dateOfService"
+          label="Date of Service"
+          min={{ value: 7, units: 'days' }}
+          max={{ value: 7, units: 'days' }}
+        />
+
+        <Button className="mt-1 ml-1" color="primary" type="submit">
+          Submit
+        </Button>
+      </Form>
+    );
   });
-  

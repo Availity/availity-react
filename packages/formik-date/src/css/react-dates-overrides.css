@@ -54,3 +54,40 @@
 .DayPickerKeyboardShortcuts_show__bottomRight:hover::before {
   border-right: 33px solid #007cc2;
 }
+
+.DateRangePicker {
+  border-radius: 0.25em;
+}
+
+.DateRangePickerInput {
+  border-radius: 0.25em;
+}
+
+.CalendarDay__hovered_span:hover {
+  border: 1px double #007cc2;
+  color: #2261b5;
+  background: #afdaf4;
+}
+
+.CalendarDay__hovered_span,
+.CalendarDay__hovered_span:hover {
+  border: 1px double #007cc2;
+  color: #2261b5;
+  background: #afdaf4;
+}
+
+.CalendarDay__selected_span {
+  background: #08a0f6;
+  border: 1px double #007cc2;
+  color: #fff;
+}
+
+.CalendarDay__selected_span:hover {
+  background: #0595e6;
+  border: 1px double #007cc2;
+  color: #fff;
+}
+
+.is-invalid > div.DateRangePicker > div > div.DateRangePickerInput {
+  border-color: #dc3545;
+}
