@@ -12,7 +12,7 @@ describe('Radio', () => {
           hello: '',
         }}
         validationSchema={yup.object().shape({
-          hello: yup.string().required('This field is required'),
+          hello: yup.array().required('This field is required'),
         })}
       >
         <CheckboxGroup name="hello" label="Checkbox Group">

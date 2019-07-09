@@ -4,11 +4,11 @@ import { Label, Button } from 'reactstrap';
 import { number, text, boolean } from '@storybook/addon-knobs';
 import AvApi from '@availity/api-axios';
 
-import Select, { SelectField } from '@availity/select';
-import SelectResource, {
+import Select, { SelectField,ResourceSelect ,
   AvProviderSelect,
   AvOrganizationSelect,
-} from '@availity/select/resources';
+} from '@availity/select';
+
 import { Feedback, FormGroup } from '@availity/form';
 import * as yup from 'yup';
 import README from '@availity/select/README.md';
@@ -158,7 +158,7 @@ storiesOf('Formik|Select', module)
       </FormikResults>
     );
   })
-  .add('SelectResource', () => {
+  .add('ResourceSelect', () => {
     const isMulti = boolean('Multiple', false);
     const min = (isMulti && number('Min Selection', 2)) || undefined;
     const max = (isMulti && number('Max Selection', 3)) || undefined;
@@ -166,7 +166,7 @@ storiesOf('Formik|Select', module)
     return (
       <FormikResults
         initialValues={{
-          SelectResource: null,
+          ResourceSelect: null,
         }}
         // eslint-disable-next-line no-undef
         onSubmit={values => alert(JSON.stringify(values))}
@@ -176,14 +176,14 @@ storiesOf('Formik|Select', module)
             : singleValueSchema('SelectField', required)
         }
       >
-        <SelectResource
+        <ResourceSelect
           label={
             <>
               {text('Label', 'Custom Select')}
               <span className="text-primary">*</span>
             </>
           }
-          name="SelectResource"
+          name="ResourceSelect"
           maxLength={max}
           isMulti={isMulti}
           required={required}

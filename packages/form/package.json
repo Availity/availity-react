@@ -4,6 +4,7 @@
   "author": "Kyle Gray <kyle.gray@availity.com>",
   "description": "Form Wrapper around formik using reactstrap components",
   "main": "index.js",
+  "typings":"typings/index.d.ts",
   "keywords": [
     "react",
     "availity"
@@ -30,7 +31,7 @@
     "formik": "^2.0.1-rc.5"
   },
   "peerDependencies": {
-    "reacstrap": "^8.0.0",
+    "reactstrap": "^8.0.0",
     "react": "^16.8.3",
     "formik": "^2.0.1-rc.5",
     "yup": "^0.27.0"

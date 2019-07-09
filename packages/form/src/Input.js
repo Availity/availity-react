@@ -24,7 +24,7 @@ const Input = ({ tag: Tag, className, name, ...rest }) => {
 Input.propTypes = {
   tag: PropTypes.oneOfType([PropTypes.func, PropTypes.string]),
   className: PropTypes.string,
-  name: PropTypes.string,
+  name: PropTypes.string.isRequired,
 };
 
 Input.defaultProps = {

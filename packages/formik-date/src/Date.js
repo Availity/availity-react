@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 import classNames from 'classnames';
 import { useField, useFormikContext } from 'formik';
@@ -10,6 +10,8 @@ import 'react-dates/lib/css/_datepicker.css';
 import './css/react-dates-overrides.css';
 import Icon from '@availity/icon';
 import { InputGroup, Input } from 'reactstrap';
+
+export const isoDateFormat = 'YYYY-MM-DD';
 
 const isOutsideRange = (min, max) => day => {
   if (moment.isMoment(min) && moment.isMoment(max)) {
@@ -37,8 +39,6 @@ const isOutsideRange = (min, max) => day => {
 };
 
 const AvDate = ({
-  label,
-  value: valueFromProps,
   className,
   name,
   datepicker,
@@ -54,13 +54,8 @@ const AvDate = ({
 }) => {
   const { setTouched, setValues } = useFormikContext();
   const [field, metadata] = useField(name);
-  const [value, setValue] = useState(valueFromProps);
   const [isFocused, toggleIsFocused] = useToggle(false);
   const [inputRef, setInputRef] = useState(null);
-
-  useEffect(() => {
-    setValue(valueFromProps);
-  }, [valueFromProps]);
 
   const classes = classNames(
     className,
@@ -73,10 +68,16 @@ const AvDate = ({
     ''
   )}-picker`;
 
-  const onPickerChange = async (val,...args) => {
-    setValue(val);
-    await setValues({ [name]: (val && val.format(format)) || null });
-    inputRef.value = val && val.format(format);
+  const onPickerChange = async value => {
+    if (value === null) return;
+
+    let val = value;
+    if (val instanceof Object && val.isValid()) {
+      val = val.format(format);
+    }
+
+    await setValues({ [name]: val });
+    inputRef.value = val;
     field.onChange({ target: inputRef });
     if (onChange) {
       onChange({ value: val });
@@ -89,7 +90,6 @@ const AvDate = ({
   };
 
   const onFocusChange = ({ focused }) => {
-    
     if (!metadata.touched && !focused) {
       setTouched({ [name]: true });
     }
@@ -110,6 +110,16 @@ const AvDate = ({
     }
   };
 
+  const getDateValue = () => {
+    const date = moment(
+      field.value,
+      [isoDateFormat, format, 'MMDDYYYY', 'YYYYMMDD'],
+      true
+    );
+    if (date.isValid()) return date;
+    return null;
+  };
+
   return (
     <>
       <Input
@@ -118,21 +128,29 @@ const AvDate = ({
         name={name}
         className={classes}
       />
-      <InputGroup disabled={attributes.disabled} className={classes} onChange={({target}) => console.log("Target Val",target.value)}>
-      <SingleDatePicker
-        {...attributes}
-        placeholder={format.toLowerCase()}
-        id={pickerId}
-        date={value || null}
-        onDateChange={onPickerChange}
-        focused={isFocused}
-        onFocusChange={onFocusChange}
-        numberOfMonths={1}
-        isOutsideRange={isOutsideRange(min, max)}
-        customInputIcon={calendarIcon}
-        inputIconPosition="after"
-        onClose={onClose}
-      /></InputGroup>
+      <InputGroup
+        disabled={attributes.disabled}
+        className={classes}
+        onChange={({ target }) =>
+          target.id === pickerId && onPickerChange(target.value)
+        }
+        data-testid={`date-input-group-${name}`}
+      >
+        <SingleDatePicker
+          {...attributes}
+          placeholder={format.toLowerCase()}
+          id={pickerId}
+          date={getDateValue()}
+          onDateChange={onPickerChange}
+          focused={isFocused}
+          onFocusChange={onFocusChange}
+          numberOfMonths={1}
+          isOutsideRange={isOutsideRange(min, max)}
+          customInputIcon={calendarIcon}
+          inputIconPosition="after"
+          onClose={onClose}
+        />
+      </InputGroup>
     </>
   );
 };
@@ -144,10 +162,7 @@ const limitPropType = PropTypes.oneOfType([
 ]);
 
 AvDate.propTypes = {
-  id: PropTypes.string.isRequired,
   name: PropTypes.string.isRequired,
-  label: PropTypes.string,
-  value: PropTypes.object,
   disabled: PropTypes.bool,
   className: PropTypes.string,
   min: limitPropType,
