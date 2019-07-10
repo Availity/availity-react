@@ -1,11 +1,19 @@
 import React from 'react';
 import '@testing-library/react/cleanup-after-each';
-import { fireEvent, waitForElement, render } from '@testing-library/react';
+import {
+  fireEvent,
+  waitForElement,
+  render,
+  wait,
+} from '@testing-library/react';
 import { avRegionsApi } from '@availity/api-axios';
+import { Button } from 'reactstrap';
 import { Form } from '@availity/form';
 import { ResourceSelect } from '..';
 
 jest.mock('@availity/api-axios');
+
+const onSubmit = jest.fn();
 
 const renderSelect = props =>
   render(
@@ -13,8 +21,10 @@ const renderSelect = props =>
       initialValues={{
         'test-form-input': undefined,
       }}
+      onSubmit={onSubmit}
     >
       <ResourceSelect name="test-form-input" {...props} />
+      <Button type="submit">Submit</Button>
     </Form>
   );
 
@@ -51,11 +61,14 @@ describe('ResourceSelect', () => {
 
     fireEvent.click(regionsOption);
 
-    expect(
-      container.querySelector('.test__regions__option--is-selected')
-    ).toBeDefined();
-    expect(regionsSelect.querySelector('.test__regions__placeholder')).toBe(
-      null
-    );
+    await fireEvent.click(getByText('Submit'));
+    await wait(() => {
+      expect(onSubmit).toHaveBeenCalledWith(
+        expect.objectContaining({
+          'test-form-input': 'FL',
+        }),
+        expect.anything()
+      );
+    });
   });
 });

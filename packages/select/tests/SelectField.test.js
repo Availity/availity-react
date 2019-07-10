@@ -7,7 +7,7 @@ import { SelectField } from '..';
 describe('Select', () => {
   test('renders with Label', async () => {
     const { getByText } = render(
-      <Form>
+      <Form onSubmit={() => {}} initialValues={{}}>
         <SelectField
           name="singleSelect"
           label="Single Select Field"
