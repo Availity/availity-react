@@ -27,6 +27,7 @@ const AvDate = ({
   max,
   datePickerProps,
   format,
+  'data-testid': dataTestId,
   ...attributes
 }) => {
   const { setTouched, setValues } = useFormikContext();
@@ -145,6 +146,7 @@ AvDate.propTypes = {
   innerRef: PropTypes.oneOfType([PropTypes.func, PropTypes.node]),
   datePickerProps: PropTypes.object,
   format: PropTypes.string,
+  'data-testid': PropTypes.string,
 };
 
 AvDate.defaultProps = {

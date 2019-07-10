@@ -22,6 +22,7 @@ const AvDateRange = ({
   className,
   format,
   calendarIcon,
+  'data-testid': dataTestId,
   ...attributes
 }) => {
   const { setTouched, setValues } = useFormikContext();
@@ -93,7 +94,11 @@ const AvDateRange = ({
         className={classes}
       />
 
-      <InputGroup disabled={attributes.disabled} className={classes}>
+      <InputGroup
+        disabled={attributes.disabled}
+        className={classes}
+        data-testid={`date-range-input-group-${name}`}
+      >
         <DateRangePicker
           {...attributes}
           startDate={startDate}
@@ -127,6 +132,7 @@ AvDateRange.propTypes = {
   calendarIcon: PropTypes.node,
   innerRef: PropTypes.oneOfType([PropTypes.func, PropTypes.node]),
   format: PropTypes.string,
+  'data-testid': PropTypes.string,
 };
 
 AvDateRange.defaultProps = {
