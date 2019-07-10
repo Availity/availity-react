@@ -128,7 +128,6 @@ AvDateRange.propTypes = {
   disabled: PropTypes.bool,
   onChange: PropTypes.func,
   onPickerFocusChange: PropTypes.func,
-  distance: PropTypes.object,
   calendarIcon: PropTypes.node,
   innerRef: PropTypes.oneOfType([PropTypes.func, PropTypes.node]),
   format: PropTypes.string,

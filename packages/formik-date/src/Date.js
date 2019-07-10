@@ -18,14 +18,12 @@ export const isoDateFormat = 'YYYY-MM-DD';
 const AvDate = ({
   className,
   name,
-  datepicker,
   calendarIcon,
   innerRef,
   onChange,
   onPickerFocusChange,
   min,
   max,
-  datePickerProps,
   format,
   'data-testid': dataTestId,
   ...attributes
@@ -139,18 +137,15 @@ AvDate.propTypes = {
   className: PropTypes.string,
   min: limitPropType,
   max: limitPropType,
-  datepicker: PropTypes.bool,
   calendarIcon: PropTypes.node,
   onChange: PropTypes.func,
   onPickerFocusChange: PropTypes.func,
   innerRef: PropTypes.oneOfType([PropTypes.func, PropTypes.node]),
-  datePickerProps: PropTypes.object,
   format: PropTypes.string,
   'data-testid': PropTypes.string,
 };
 
 AvDate.defaultProps = {
-  datepicker: true,
   calendarIcon: <Icon name="calendar" />,
   format: 'MM/DD/YYYY',
 };
