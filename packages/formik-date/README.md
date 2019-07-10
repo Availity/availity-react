@@ -5,12 +5,12 @@
 ## Installation
 
 ```bash
-npm install @availity/formik-date yup @availity/yup --save
+npm install @availity/formik-date @availity/form formik react reactstrap --save
 ```
 
 ## Validation
 
-See [@availity/yup](https://github.com/Availity/sdk-js/tree/master/packages/yup)
+See [yup](https://github.com/jquense/yup) and [@availity/yup](https://github.com/Availity/sdk-js/tree/master/packages/yup)
 
 ### FormikDate (Default Export)
 
@@ -19,7 +19,7 @@ Date picker without a `Label` or `Feedback`
 #### FormikDate Usage
 
 ```javascript
-import React form 'react';
+import React from 'react';
 import { Form } from '@availity/form';
 import FormikDate from '@availity/formik-date';
 import * as yup from 'yup';
@@ -78,7 +78,7 @@ The same as `FormikDate` but with a `Label` that appears above input and a `Feed
 #### DateField Usage
 
 ```javascript
-import React form 'react';
+import React from 'react';
 import { Form } from '@availity/form';
 import { DateField } from '@availity/formik-date';
 import * as yup from 'yup';
@@ -127,7 +127,7 @@ A date range, consisting of 2 fields, a start date and an end date, without a `L
 #### DateRange Usage
 
 ```javascript
-import React form 'react';
+import React from 'react';
 import { Form } from '@availity/form';
 import { DateRange } from '@availity/formik-date';
 import * as yup from 'yup';
@@ -197,7 +197,7 @@ The same as `DateRange` but with a `Label` that appears above the input and a `F
 #### DateRangeField Usage
 
 ```javascript
-import React form 'react';
+import React from 'react';
 import { Form } from '@availity/form';
 import { DateRangeField } from '@availity/formik-date';
 import * as yup from 'yup';
