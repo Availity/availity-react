@@ -14,6 +14,7 @@ describe('Radio', () => {
         validationSchema={yup.object().shape({
           hello: yup.string().required('This field is required'),
         })}
+        onSubmit={() => {}}
       >
         <RadioGroup name="hello" label="Radio Group">
           <Radio label="Radio One" value="uno" data-testid="hello-radio" />
@@ -38,6 +39,7 @@ describe('Radio', () => {
         initialValues={{
           hello: '',
         }}
+        onSubmit={() => {}}
       >
         <RadioGroup name="hello" label="Radio Group">
           <Radio label="Radio One" value="uno" />

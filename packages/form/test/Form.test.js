@@ -6,7 +6,9 @@ import { Form, Input } from '..';
 
 describe('Form', () => {
   test('renders', () => {
-    const { getByTestId } = render(<Form />);
+    const { getByTestId } = render(
+      <Form initialValues={{}} onSubmit={() => {}} />
+    );
 
     getByTestId('form-container');
   });

@@ -11,6 +11,7 @@ describe('Input', () => {
         initialValues={{
           hello: 'hello',
         }}
+        onSubmit={() => {}}
       >
         <Input name="hello" data-testid="hello-input" />
       </Form>
@@ -27,6 +28,7 @@ describe('Input', () => {
         initialValues={{
           hello: '',
         }}
+        onSubmit={() => {}}
         validationSchema={yup.object().shape({
           hello: yup.string().required(),
         })}
@@ -54,6 +56,7 @@ describe('Input', () => {
         validationSchema={yup.object().shape({
           hello: yup.string().required(),
         })}
+        onSubmit={() => {}}
       >
         <Input name="hello" data-testid="hello-input" />
         <Button type="submit">Submit</Button>
@@ -80,6 +83,7 @@ describe('Input', () => {
         validationSchema={yup.object().shape({
           hello: yup.string().required(),
         })}
+        onSubmit={() => {}}
       >
         <Input name="hello" data-testid="hello-input" type="checkbox" />
         <Button type="submit">Submit</Button>

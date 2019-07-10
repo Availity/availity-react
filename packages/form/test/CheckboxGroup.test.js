@@ -11,6 +11,7 @@ describe('CheckboxGroup', () => {
         initialValues={{
           hello: [],
         }}
+        onSubmit={() => {}}
         // eslint-disable-next-line no-undef
         validationSchema={yup.object().shape({
           hello: yup.array().required('At least one checkbox is required'),

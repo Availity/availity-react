@@ -11,6 +11,7 @@ describe('RadioGroup', () => {
         initialValues={{
           hello: '',
         }}
+        onSubmit={() => {}}
         validationSchema={yup.object().shape({
           hello: yup.string().required('This field is required'),
         })}
