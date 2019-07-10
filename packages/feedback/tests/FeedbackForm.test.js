@@ -48,7 +48,7 @@ describe('FeedbackForm', () => {
     );
   });
 
-  test('should submit with feedback text value', () => {
+  test('should submit with feedback text value', async () => {
     const onFeedbackSent = jest.fn();
 
     const { getByPlaceholderText, getByText } = render(
@@ -71,9 +71,10 @@ describe('FeedbackForm', () => {
 
     fireEvent.click(getByText('Send Feedback'));
 
-    wait(() =>
+    await wait(() =>
       expect(onFeedbackSent).toHaveBeenCalledWith(
         expect.objectContaining({
+          active: 'smile',
           feedback: 'some good text here',
         })
       )

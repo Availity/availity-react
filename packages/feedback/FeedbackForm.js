@@ -8,10 +8,24 @@ import {
   FormGroup,
 } from 'reactstrap';
 import { avLogMessagesApi, avRegionsApi } from '@availity/api-axios';
-import { useToggle } from '@availity/hooks';
-import { AvForm, AvField } from 'availity-reactstrap-validation';
-import { AvSelectField } from '@availity/reactstrap-validation-select';
-import FeedbackButton from './FeedbackButton';
+import { Form, Field } from '@availity/form';
+import { SelectField } from '@availity/select';
+import * as yup from 'yup';
+import SmileField from './SmileField';
+
+yup.addMethod(yup.string, 'isRequired', function format(isRequired, msg) {
+  return this.test({
+    name: 'dateRange',
+    exclusive: true,
+    message: msg || 'This field is required.',
+    test(value) {
+      if (isRequired) {
+        return value !== undefined;
+      }
+      return true;
+    },
+  });
+});
 
 const FeedbackForm = ({
   name,
@@ -24,20 +38,15 @@ const FeedbackForm = ({
   staticFields,
 }) => {
   const [active, setActive] = useState(null);
-  const [invalid, toggleInvalid] = useToggle(false);
   const [sent, setSent] = useState(null);
 
-  const sendFeedback = async values => {
-    if (!active && !invalid) {
-      toggleInvalid();
-      return;
-    }
+  const sendFeedback = async ({ smileField, ...values }) => {
     const response = await avRegionsApi.getCurrentRegion();
 
     await avLogMessagesApi.info({
       surveyId: `${name.replace(/\s/g, '_')}_Smile_Survey`,
       smileLocation: `${name}`,
-      smile: `icon-${active.icon}`,
+      smile: `icon-${smileField.icon}`,
       url: window.location.href,
       region: response.data.regions[0] && response.data.regions[0].id,
       userAgent: window.navigator.userAgent,
@@ -47,19 +56,24 @@ const FeedbackForm = ({
     });
 
     setSent(values);
-
-    if (invalid) {
-      toggleInvalid();
-    }
   };
 
   // Close the Modal once sent after 2 seconds
   useEffect(() => {
     if (sent) {
       setTimeout(() => {
-        onClose(); // Mostly for Screen Reader use but a nice to have for all
+        if (onClose) {
+          onClose(); // Mostly for Screen Reader use but a nice to have for all
+        }
         if (onFeedbackSent) {
-          onFeedbackSent({ active, sent });
+          Object.keys(sent).forEach(
+            key => sent[key] === undefined && delete sent[key]
+          );
+
+          onFeedbackSent({
+            active: active.icon,
+            ...sent,
+          });
         }
       }, 2000);
     }
@@ -79,14 +93,39 @@ const FeedbackForm = ({
       <ModalHeader aria-live="assertive" id="feedback-form-header">
         {prompt || `Tell us what you think about ${name}`}
       </ModalHeader>
-      <AvForm
+      <Form
         aria-label="Feedback Form"
         aria-describedby="feedback-form-header"
         role="form"
-        name="feedack-form"
-        id="feedback-form"
         data-testid="feedback-form"
-        onValidSubmit={(event, values) => sendFeedback(values)}
+        onSubmit={values => sendFeedback(values)}
+        initialValues={{
+          'face-options': undefined,
+          additionalFeedback: undefined,
+          feedback: undefined,
+          feedbackApp: undefined,
+          smileField: undefined,
+        }}
+        validationSchema={yup.object().shape({
+          feedback: yup
+            .string()
+            .max(200, 'Additional Feedback cannot exceed 200 characters.')
+            .required('This field is required.'),
+          additionalFeedback: yup
+            .string()
+            .max(200, 'Additional Feedback cannot exceed 200 characters.'),
+          smileField: yup
+            .object()
+            .shape({
+              icon: yup.string().required(),
+              description: yup.string(),
+              placeholder: yup.string(),
+            })
+            .required('This field is required.'),
+          feedbackApp: yup
+            .string()
+            .isRequired(aboutOptions.length > 0, 'This field is required.'),
+        })}
       >
         <ModalBody>
           <FormGroup
@@ -95,32 +134,24 @@ const FeedbackForm = ({
             data-testid="face-options"
             className="d-flex flex-row justify-content-between"
           >
-            {faceOptions.map(option => (
-              <FeedbackButton
-                style={{ flex: 1, margin: '0 2% 0 2%' }}
-                key={option.icon}
-                icon={option.icon}
-                iconSize="2x"
-                active={active && active.icon}
-                onClick={() => setActive(option)}
-              >
-                {option.description}
-              </FeedbackButton>
-            ))}
+            <SmileField
+              options={faceOptions}
+              name="smileField"
+              onChange={option => setActive(option)}
+            />
           </FormGroup>
           {active ? (
             <React.Fragment>
               {aboutOptions.length > 0 && (
-                <AvSelectField
+                <SelectField
                   name="feedbackApp"
                   id="about-options"
                   data-testid="about-options"
                   placeholder="This is about..."
                   options={aboutOptions}
-                  required
                 />
               )}
-              <AvField
+              <Field
                 type="textarea"
                 name="feedback"
                 placeholder={
@@ -129,25 +160,14 @@ const FeedbackForm = ({
                 }
                 style={{ resize: 'none' }}
                 rows="2"
-                validate={{
-                  required: {
-                    value: true,
-                    errorMessage: 'This field is required.',
-                  },
-                  maxLength: { value: 200 },
-                }}
               />
               {additionalComments && (
-                <AvField
+                <Field
                   type="textarea"
                   name="additionalFeedback"
                   placeholder="Additional Comments... (Optional)"
                   style={{ resize: 'none' }}
                   rows="2"
-                  validate={{
-                    required: { value: false },
-                    maxLength: { value: 200 },
-                  }}
                 />
               )}
             </React.Fragment>
@@ -164,7 +184,7 @@ const FeedbackForm = ({
             Send Feedback
           </Button>
         </ModalFooter>
-      </AvForm>
+      </Form>
     </React.Fragment>
   );
 };
@@ -192,23 +212,6 @@ FeedbackForm.propTypes = {
 };
 
 FeedbackForm.defaultProps = {
-  faceOptions: [
-    {
-      icon: 'smile',
-      description: 'Smiley face',
-      placeholder: 'What do you like?',
-    },
-    {
-      icon: 'meh',
-      description: 'Meh face',
-      placeholder: 'What would you improve?',
-    },
-    {
-      icon: 'frown',
-      description: 'Frowny face',
-      placeholder: "What don't you like?",
-    },
-  ],
   aboutOptions: [],
   additionalComments: false,
 };
