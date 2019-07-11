@@ -94,7 +94,7 @@ Field.propTypes = {
   labelHidden: PropTypes.bool,
   disabled: PropTypes.bool,
   readOnly: PropTypes.bool,
-  name: PropTypes.string,
+  name: PropTypes.string.isRequired,
   size: PropTypes.string,
   inputClass: PropTypes.string,
   labelClass: PropTypes.string,

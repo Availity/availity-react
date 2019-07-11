@@ -1,35 +1,26 @@
 import React from 'react';
-import { render, fireEvent, wait } from '@testing-library/react';
-import '@testing-library/react/cleanup-after-each';
-import { array, object } from 'yup';
+import { render, wait, fireEvent } from '@testing-library/react';
 import { Button } from 'reactstrap';
-import { Checkbox, CheckboxGroup, Form } from '..';
-
-const initialValues = { name: ['Joe'] };
-const validations = object().shape({
-  name: array().required('required'),
-});
-
-function renderForm(props) {
-  return render(
-    <Form
-      initialValues={initialValues}
-      validationSchema={validations}
-      onSubmit={() => {}}
-      {...props}
-    >
-      <CheckboxGroup data-testid="nameField" name="name" label="Name">
-        <Checkbox label="John" value="John" />
-        <Checkbox label="Joe" value="Joe" />
-      </CheckboxGroup>
-      <Button type="submit">Submit</Button>
-    </Form>
-  );
-}
+import * as yup from 'yup';
+import { Form, Checkbox, CheckboxGroup } from '..';
 
 describe('Checkbox', () => {
   test('renders with initial value', () => {
-    const { container, getByText, getByDisplayValue } = renderForm();
+    const { container, getByText, getByDisplayValue } = render(
+      <Form
+        initialValues={{ name: ['Joe'] }}
+        validationSchema={object().shape({
+          name: yup.array().required('required'),
+        })}
+        onSubmit={() => {}}
+      >
+        <CheckboxGroup name="name" label="Name">
+          <Checkbox label="John" value="John" />
+          <Checkbox label="Joe" value="Joe" />
+        </CheckboxGroup>
+        <Button type="submit">Submit</Button>
+      </Form>
+    );
 
     expect(container.querySelectorAll('input')).toHaveLength(2);
     expect(container.querySelectorAll('.is-untouched')).toHaveLength(3);
@@ -39,20 +30,49 @@ describe('Checkbox', () => {
     expect(getByDisplayValue('Joe').checked).toEqual(true);
   });
 
-  test('should render label', () => {
-    const { getByText } = renderForm();
+  test('renders danger className when invalid form', async () => {
+    const { getByText, getByTestId, getByDisplayValue } = render(
+      <Form
+        initialValues={{
+          hello: '',
+        }}
+        validationSchema={yup.object().shape({
+          hello: yup.array().required('This field is required'),
+        })}
+        onSubmit={() => {}}
+      >
+        <CheckboxGroup name="hello" label="Checkbox Group">
+          <Checkbox label="Check One" value="uno" data-testid="hello-check" />
+        </CheckboxGroup>
+        <Button type="submit">Submit</Button>
+      </Form>
+    );
 
-    expect(getByText('Name')).toBeDefined();
+    await fireEvent.click(getByText('Submit'));
+
+    await wait(() => {
+      const checkbox = getByTestId('hello-check');
+
+      expect(checkbox.className).toContain('is-touched');
+      expect(checkbox.className).toContain('is-invalid');
+      expect(getByDisplayValue('This field is required').toBeDefined());
+    });
   });
 
-  test('should render error message when none selected', async () => {
-    const { getByText, getByDisplayValue } = renderForm();
-    const checkbox = getByDisplayValue('Joe');
-    fireEvent.click(checkbox);
+  test('renders with label', async () => {
+    const { getByText } = render(
+      <Form
+        initialValues={{
+          hello: '',
+        }}
+        onSubmit={() => {}}
+      >
+        <CheckboxGroup name="hello" label="Checkbox Group">
+          <Checkbox label="Check One" value="uno" />
+        </CheckboxGroup>
+      </Form>
+    );
 
-    fireEvent.click(getByText('Submit'));
-    await wait(() => {
-      expect(getByText('required')).toBeDefined();
-    });
+    getByText('Check One');
   });
 });

@@ -1,50 +1,75 @@
 import React from 'react';
-import { render, fireEvent, wait } from '@testing-library/react';
-import '@testing-library/react/cleanup-after-each';
-import { string, object } from 'yup';
+import { render, wait, fireEvent } from '@testing-library/react';
 import { Button } from 'reactstrap';
-import { Radio, RadioGroup, Form } from '..';
-
-const initialValues = { name: '' };
-const validations = object().shape({
-  name: string().required('required'),
-});
-
-function renderForm() {
-  return render(
-    <Form initialValues={initialValues} validationSchema={validations}>
-      <RadioGroup data-testid="nameField" name="name" label="Name">
-        <Radio label="John" value="John" />
-        <Radio label="Joe" value="Joe" />
-      </RadioGroup>
-      <Button type="submit">Submit</Button>
-    </Form>
-  );
-}
+import * as yup from 'yup';
+import { Form, Radio, RadioGroup } from '..';
 
 describe('Radio', () => {
   test('renders with initial value', () => {
-    const { container, getByText } = renderForm();
-
+    const { container, getByText } = render(
+      <Form
+        initialValues={{
+          hello: 'greet',
+        }}
+        validationSchema={yup.object().shape({
+          hello: yup.string().required('This field is required'),
+        })}
+        onSubmit={() => {}}
+      >
+        <RadioGroup name="hello" label="Radio Group">
+          <Radio label="Radio One" value="uno" data-testid="hello-radio" />
+        </RadioGroup>
+        <Button type="submit">Submit</Button>
+      </Form>
+    );
     expect(container.querySelectorAll('input')).toHaveLength(2);
     expect(container.querySelectorAll('.is-untouched')).toHaveLength(3);
 
-    expect(getByText('John')).toBeDefined();
-    expect(getByText('Joe')).toBeDefined();
+    expect(getByText('greet')).toBeDefined();
   });
 
-  test('should render label', () => {
-    const { getByText } = renderForm();
+  test('renders danger className when invalid form', async () => {
+    const { getByText, getByTestId } = render(
+      <Form
+        initialValues={{
+          hello: '',
+        }}
+        validationSchema={yup.object().shape({
+          hello: yup.string().required('This field is required'),
+        })}
+        onSubmit={() => {}}
+      >
+        <RadioGroup name="hello" label="Radio Group">
+          <Radio label="Radio One" value="uno" data-testid="hello-radio" />
+        </RadioGroup>
+        <Button type="submit">Submit</Button>
+      </Form>
+    );
 
-    expect(getByText('Name')).toBeDefined();
-  });
+    await fireEvent.click(getByText('Submit'));
 
-  test('should render error message when none selected', async () => {
-    const { getByText } = renderForm();
-
-    fireEvent.click(getByText('Submit'));
     await wait(() => {
-      expect(getByText('required')).toBeDefined();
+      const radio = getByTestId('hello-radio');
+
+      expect(radio.className).toContain('is-touched');
+      expect(radio.className).toContain('is-invalid');
     });
+  });
+
+  test('renders with label', async () => {
+    const { getByText } = render(
+      <Form
+        initialValues={{
+          hello: '',
+        }}
+        onSubmit={() => {}}
+      >
+        <RadioGroup name="hello" label="Radio Group">
+          <Radio label="Radio One" value="uno" />
+        </RadioGroup>
+      </Form>
+    );
+
+    getByText('Radio One');
   });
 });

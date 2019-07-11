@@ -1,32 +1,47 @@
 import React from 'react';
 import { render, fireEvent, wait } from '@testing-library/react';
-import '@testing-library/react/cleanup-after-each';
-import { string, object } from 'yup';
-import { Button } from 'reactstrap';
-import { Field, Form } from '..';
-
-const initialValues = { name: 'John' };
-const validations = object().shape({
-  name: string().required('error'),
-});
-const validate = jest.fn();
-
-function renderForm(props) {
-  return render(
-    <Form
-      initialValues={initialValues}
-      validationSchema={validations}
-      validate={validate}
-    >
-      <Field data-testid="nameField" name="name" {...props} />
-      <Button type="submit">Submit</Button>
-    </Form>
-  );
-}
+import { Form, Field } from '..';
 
 describe('Field', () => {
+  test('renders with label', () => {
+    const { getByText } = render(
+      <Form
+        initialValues={{
+          hello: 'hello',
+        }}
+        onSubmit={() => {}}
+      >
+        <Field name="hello" label="Hello Label" data-testid="hello-input" />
+      </Form>
+    );
+
+    getByText('Hello Label');
+  });
+
+  test('should render help message', () => {
+    const { getByText } = render(
+      <Form
+        initialValues={{
+          hello: 'hello',
+        }}
+        onSubmit={() => {}}
+      >
+        <Field name="hello" helpMessage="help text" data-testid="hello-input" />
+      </Form>
+    );
+
+    getByText('help text');
+  });
+
   test('renders with initial value', () => {
-    const { container, getByDisplayValue } = renderForm();
+    const { container, getByDisplayValue } = render(
+      <Form
+        initialValues={{ name: 'John' }}
+        onSubmit={() => {}}
+      >
+        <Field name="name" />
+      </Form>
+    );
 
     expect(container.querySelectorAll('input')).toHaveLength(1);
     expect(container.querySelectorAll('.is-untouched')).toHaveLength(1);
@@ -35,18 +50,15 @@ describe('Field', () => {
     expect(getByDisplayValue('John')).toBeDefined();
   });
 
-  test('should render label and help', () => {
-    const { getByText } = renderForm({
-      label: 'Name',
-      helpMessage: 'help text',
-    });
-
-    expect(getByText('Name')).toBeDefined();
-    expect(getByText('help text')).toBeDefined();
-  });
-
   test('should render error message', async () => {
-    const { getByText, getByDisplayValue } = renderForm();
+    const { getByText, getByDisplayValue } = render(
+      <Form
+        initialValues={{ name: 'John' }}
+        onSubmit={() => {}}
+      >
+        <Field name="name" />
+      </Form>
+    );
 
     await fireEvent.change(getByDisplayValue('John'), {
       target: {
@@ -61,10 +73,14 @@ describe('Field', () => {
   });
 
   test('should hide label if labelHidden passed', async () => {
-    const { queryByDisplayValue } = renderForm({
-      label: 'Name',
-      labelHidden: true,
-    });
+    const { queryByDisplayValue } = render(
+      <Form
+        initialValues={{ name: 'John' }}
+        onSubmit={() => {}}
+      >
+        <Field name="hello" label="Name" labelHidden />
+      </Form>
+    );
 
     await expect(queryByDisplayValue('Name')).toEqual(null);
   });

@@ -1,100 +1,103 @@
 import React from 'react';
-import { render, fireEvent, wait } from '@testing-library/react';
-import '@testing-library/react/cleanup-after-each';
-import { string, object } from 'yup';
-import { Input, Form, RadioGroup } from '..';
-
-const initialValues = { name: 'John' };
-const validations = object().shape({
-  name: string().required(),
-});
-const validate = jest.fn();
-
-function renderForm(props) {
-  return render(
-    <Form
-      initialValues={initialValues}
-      validationSchema={validations}
-      validate={validate}
-    >
-      <Input data-testid="nameInput" name="name" {...props} />
-    </Form>
-  );
-}
-
-function renderCheckboxForm() {
-  return render(
-    <Form
-      initialValues={initialValues}
-      validationSchema={validations}
-      validate={validate}
-    >
-      <RadioGroup name="name">
-        <Input
-          data-testid="nameInput"
-          // name="name"
-          type="checkbox"
-          checked={false}
-        />
-      </RadioGroup>
-    </Form>
-  );
-}
+import { render, wait, fireEvent } from '@testing-library/react';
+import { Button } from 'reactstrap';
+import * as yup from 'yup';
+import { Form, Input } from '..';
 
 describe('Input', () => {
-  test('should render default input', () => {
-    const { container, getByDisplayValue } = renderForm();
+  test('renders with initial value', () => {
+    const { getByTestId } = render(
+      <Form
+        initialValues={{
+          hello: 'hello',
+        }}
+        onSubmit={() => {}}
+      >
+        <Input name="hello" data-testid="hello-input" />
+      </Form>
+    );
 
-    expect(container.querySelectorAll('input')).toHaveLength(1);
-    expect(container.querySelectorAll('.is-untouched')).toHaveLength(1);
-    expect(container.querySelectorAll('.av-valid')).toHaveLength(1);
+    const input = getByTestId('hello-input');
 
-    expect(getByDisplayValue('John')).toBeDefined();
-    expect(container.querySelectorAll('.is-touched')).toHaveLength(0);
-    expect(container.querySelectorAll('.av-invalid')).toHaveLength(0);
-    expect(container.querySelectorAll('.is-invalid')).toHaveLength(0);
+    expect(input.value).toBe('hello');
   });
 
-  test('should render touched classes', () => {
-    const { container, getByTestId } = renderForm();
+  test('renders error className', async () => {
+    const { getByTestId, getByText } = render(
+      <Form
+        initialValues={{
+          hello: '',
+        }}
+        onSubmit={() => {}}
+        validationSchema={yup.object().shape({
+          hello: yup.string().required(),
+        })}
+      >
+        <Input name="hello" data-testid="hello-input" />
+        <Button type="submit">Submit</Button>
+      </Form>
+    );
 
-    const input = getByTestId('nameInput');
-    fireEvent.blur(input);
-    expect(container.querySelectorAll('.is-touched')).toHaveLength(1);
-    expect(container.querySelectorAll('.av-invalid')).toHaveLength(0);
-    expect(container.querySelectorAll('.is-invalid')).toHaveLength(0);
-  });
+    await fireEvent.click(getByText('Submit'));
 
-  test('should render error classes', async () => {
-    const { container, getByTestId } = renderForm();
-
-    const input = getByTestId('nameInput');
-    fireEvent.change(input, {
-      target: {
-        name: 'name',
-        value: '',
-      },
-    });
     await wait(() => {
-      expect(validate).toHaveBeenCalled();
+      const input = getByTestId('hello-input');
+      expect(input.className).toContain('av-invalid');
+      expect(input.className).toContain('is-touched');
     });
-    fireEvent.blur(input);
-
-    expect(container.querySelectorAll('.av-invalid')).toHaveLength(1);
-    expect(container.querySelectorAll('.is-invalid')).toHaveLength(1);
   });
 
-  test('should render for type checkbox', async () => {
-    const { container, getByTestId } = renderCheckboxForm();
+  test('renders error className after touch', async () => {
+    const { getByTestId } = render(
+      <Form
+        initialValues={{
+          hello: '',
+        }}
+        validationSchema={yup.object().shape({
+          hello: yup.string().required(),
+        })}
+        onSubmit={() => {}}
+      >
+        <Input name="hello" data-testid="hello-input" />
+        <Button type="submit">Submit</Button>
+      </Form>
+    );
 
-    const input = getByTestId('nameInput');
-    await fireEvent.click(input);
-    await fireEvent.click(input);
+    await fireEvent.focus(getByTestId('hello-input'));
+
+    await fireEvent.blur(getByTestId('hello-input'));
+
     await wait(() => {
-      expect(container.querySelectorAll('.is-touched')).toHaveLength(1);
-      expect(container.querySelectorAll('.av-invalid')).toHaveLength(1);
-      expect(container.querySelectorAll('.is-invalid')).toHaveLength(1);
-      expect(container.querySelectorAll('.was-validated')).toHaveLength(1);
+      const input = getByTestId('hello-input');
+      expect(input.className).toContain('is-invalid');
+      expect(input.className).toContain('is-touched');
+    });
+  });
+
+  test('checkbox renders error className after touch', async () => {
+    const { getByTestId } = render(
+      <Form
+        initialValues={{
+          hello: '',
+        }}
+        validationSchema={yup.object().shape({
+          hello: yup.string().required(),
+        })}
+        onSubmit={() => {}}
+      >
+        <Input name="hello" data-testid="hello-input" type="checkbox" />
+        <Button type="submit">Submit</Button>
+      </Form>
+    );
+
+    await fireEvent.focus(getByTestId('hello-input'));
+
+    await fireEvent.blur(getByTestId('hello-input'));
+
+    await wait(() => {
+      const input = getByTestId('hello-input');
+      expect(input.className).toContain('is-invalid');
+      expect(input.className).toContain('was-validated');
     });
   });
 });
