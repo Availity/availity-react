@@ -5,8 +5,8 @@ import Img from 'react-image';
 import { useSpace } from './Spaces';
 
 const skeletonPropType = PropTypes.shape({
-  width: PropTypes.string,
-  height: PropTypes.string,
+  width: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
+  height: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
 });
 
 const Loader = ({ skeletonProps, ...rest }) => (
@@ -23,7 +23,14 @@ Loader.defaultProps = {
   },
 };
 
-const SpacesImage = ({ spaceId, payerId, imageType, fallback, ...props }) => {
+const SpacesImage = ({
+  spaceId,
+  payerId,
+  imageType,
+  fallback,
+  skeletonProps,
+  ...props
+}) => {
   const { space = {}, loading } = useSpace(spaceId || payerId);
 
   const id = spaceId || payerId || space.id;
@@ -34,6 +41,7 @@ const SpacesImage = ({ spaceId, payerId, imageType, fallback, ...props }) => {
     return (
       <Loader
         data-testid={`space-${imageType}-${id}-loading`}
+        skeletonProps={skeletonProps}
         {...props}
       />
     );
@@ -44,7 +52,7 @@ const SpacesImage = ({ spaceId, payerId, imageType, fallback, ...props }) => {
     url = fallback;
   }
 
-  if (!url || (!id)) return null;
+  if (!url || !id) return null;
 
   return (
     <Img
@@ -54,6 +62,7 @@ const SpacesImage = ({ spaceId, payerId, imageType, fallback, ...props }) => {
       loader={
         <Loader
           data-testid={`space-${imageType}-${id}`}
+          skeletonProps={skeletonProps}
           {...props}
         />
       }
