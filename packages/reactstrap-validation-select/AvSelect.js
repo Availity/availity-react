@@ -4,7 +4,7 @@ import classNames from 'classnames';
 import { AvBaseInput } from 'availity-reactstrap-validation';
 import Select, { components as reactSelectComponents } from 'react-select';
 import get from 'lodash.get';
-import isEqual from 'lodash.isEqual';
+import isEqual from 'lodash.isequal';
 
 import AsyncPaginate from 'react-select-async-paginate';
 
@@ -41,7 +41,7 @@ class AvSelect extends AvBaseInput {
     raw: PropTypes.bool,
   });
 
-  optionsContainsValue = (props, value) => {
+  optionsContainsValue = props => {
     const valueKey = this.getValueKey(props);
     const matchingValues = props.options.filter(
       option => option.value === valueKey
