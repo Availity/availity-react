@@ -35,7 +35,7 @@ const PageHeader = ({
       payerId,
       className: 'float-md-right d-inline-block',
       skeletonProps: {
-        width: '180',
+        width: 180,
         height: '100%',
       },
     };

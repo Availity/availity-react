@@ -5,8 +5,8 @@ import Img from 'react-image';
 import { useSpace } from './Spaces';
 
 const skeletonPropType = PropTypes.shape({
-  width: PropTypes.string,
-  height: PropTypes.string,
+  width: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
+  height: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
 });
 
 const Loader = ({ skeletonProps, ...rest }) => (
