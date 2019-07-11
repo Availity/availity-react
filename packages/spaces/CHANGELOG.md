@@ -3,6 +3,18 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [2.0.3](https://github.com/Availity/availity-react/compare/@availity/spaces@2.0.2...@availity/spaces@2.0.3) (2019-07-11)
+
+
+### Bug Fixes
+
+* **spaces:** allow number or string for skeleton width/height ([800c937](https://github.com/Availity/availity-react/commit/800c937))
+* **spaces:** only spread skeletonProps onto Loader ([d2aa0af](https://github.com/Availity/availity-react/commit/d2aa0af))
+
+
+
+
+
 ## [2.0.2](https://github.com/Availity/availity-react/compare/@availity/spaces@2.0.1...@availity/spaces@2.0.2) (2019-07-02)
 
 **Note:** Version bump only for package @availity/spaces
