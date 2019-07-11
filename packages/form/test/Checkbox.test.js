@@ -14,6 +14,7 @@ describe('Radio', () => {
         validationSchema={yup.object().shape({
           hello: yup.array().required('This field is required'),
         })}
+        onSubmit={() => {}}
       >
         <CheckboxGroup name="hello" label="Checkbox Group">
           <Checkbox label="Check One" value="uno" data-testid="hello-check" />
@@ -38,6 +39,7 @@ describe('Radio', () => {
         initialValues={{
           hello: '',
         }}
+        onSubmit={() => {}}
       >
         <CheckboxGroup name="hello" label="Checkbox Group">
           <Checkbox label="Check One" value="uno" />

@@ -75,7 +75,7 @@ describe('Select', () => {
     await wait(() => {
       expect(onSubmit).toHaveBeenCalledWith(
         expect.objectContaining({
-          singleSelect: { label: 'Option 1', value: 'value for option 1' },
+          singleSelect: 'value for option 1',
         }),
         expect.anything()
       );
@@ -110,11 +110,7 @@ describe('Select', () => {
     await wait(() => {
       expect(onSubmit).toHaveBeenCalledWith(
         expect.objectContaining({
-          multiSelect: [
-            { label: 'Option 1', value: 'value for option 1' },
-
-            { label: 'Option 2', value: 'value for option 2' },
-          ],
+          multiSelect: ['value for option 1', 'value for option 2'],
         }),
         expect.anything()
       );
@@ -127,6 +123,7 @@ describe('Select', () => {
         initialValues={{
           singleSelect: undefined,
         }}
+        onSubmit={() => {}}
         validationSchema={singleValueSchema('singleSelect')}
       >
         <Select
@@ -180,11 +177,41 @@ describe('Select', () => {
     await wait(() => {
       expect(onSubmit).toHaveBeenCalledWith(
         expect.objectContaining({
-          multiSelect: [
-            { label: 'Option 1', value: 'value for option 1' },
+          multiSelect: ['value for option 1', 'value for option 2'],
+        }),
+        expect.anything()
+      );
+    });
+  });
 
-            { label: 'Option 2', value: 'value for option 2' },
-          ],
+  test('raw props submits whole object', async () => {
+    const onSubmit = jest.fn();
+    const { container, getByText } = render(
+      <Form
+        initialValues={{
+          singleSelect: undefined,
+        }}
+        onSubmit={onSubmit}
+        validationSchema={singleValueSchema('singleSelect')}
+      >
+        <Select
+          name="singleSelect"
+          options={options}
+          raw
+          data-testid="single-select"
+        />
+        <Button type="submit">Submit</Button>
+      </Form>
+    );
+
+    await selectItem(container, getByText, 'Option 1');
+
+    await fireEvent.click(getByText('Submit'));
+
+    await wait(() => {
+      expect(onSubmit).toHaveBeenCalledWith(
+        expect.objectContaining({
+          singleSelect: { label: 'Option 1', value: 'value for option 1' },
         }),
         expect.anything()
       );

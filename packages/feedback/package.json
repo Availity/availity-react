@@ -22,21 +22,24 @@
   "dependencies": {
     "@availity/hooks": "^1.3.2",
     "@availity/icon": "^0.4.1",
-    "@availity/reactstrap-validation-select": "^3.0.6",
-    "availity-reactstrap-validation": "^2.5.0",
-    "prop-types": "^15.5.8"
+    "prop-types": "^15.5.8",
+    "yup": "^0.27.0"
   },
   "devDependencies": {
     "@availity/api-axios": "^5.1.5",
     "@availity/api-core": "^5.1.5",
+    "@availity/form": "^0.1.0",
     "@availity/localstorage-core": "^2.6.1",
+    "@availity/select": "^0.1.0",
     "axios": "^0.18.0",
+    "formik": "^2.0.1-rc.5",
     "react": "^16.8.3",
     "react-dom": "^16.8.3",
     "reactstrap": "^8.0.0"
   },
   "peerDependencies": {
     "@availity/api-axios": "^2.0.0",
+    "formik": "^2.0.1-rc.5",
     "react": "^16.3.0",
     "reactstrap": "^8.0.0 || ^7.0.0 || ^6.0.0"
   }

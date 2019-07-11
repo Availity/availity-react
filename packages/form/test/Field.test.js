@@ -9,6 +9,7 @@ describe('Field', () => {
         initialValues={{
           hello: 'hello',
         }}
+        onSubmit={() => {}}
       >
         <Field name="hello" label="Hello Label" data-testid="hello-input" />
       </Form>

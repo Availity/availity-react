@@ -78,7 +78,12 @@ const Select = ({
       onChange={newValue => {
         if (maxLength && attributes.isMulti && newValue.length > maxLength)
           return;
-        setFieldValue(name, newValue);
+
+        if (attributes.isMulti) {
+          setFieldValue(name, newValue.map(val => getOptionValue(val)));
+        } else {
+          setFieldValue(name, getOptionValue(newValue));
+        }
       }}
       ref={selectRef}
       name={name}
@@ -140,7 +145,6 @@ const Select = ({
         },
       }}
       {...attributes}
-      // {...this.getValidatorProps()}
       value={getViewValue()}
     />
   );

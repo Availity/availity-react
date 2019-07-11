@@ -11,7 +11,7 @@ export type limitTypeAlt = {
   _isValid?: Function;
 };
 
-export interface DateProps extends SingleDatePickerShape {
+export interface DateBaseProps {
   name: string;
   disabled?: boolean | false;
   className: string;
@@ -23,6 +23,10 @@ export interface DateProps extends SingleDatePickerShape {
   innerRef?: Function | string;
   datePickerProps: object;
   format: string;
+}
+
+export interface DateProps extends SingleDatePickerShape,DateBaseProps {
+
 }
 
 declare class Date extends React.Component<DateProps> {}
