@@ -5,19 +5,26 @@ import * as yup from 'yup';
 import { Form, Radio, RadioGroup } from '..';
 
 describe('Radio', () => {
-  test('renders with initial value', () => {
+  test('submits with initial value', async () => {
+    const onSubmit = jest.fn();
+
     const { container, getByText } = render(
       <Form
         initialValues={{
-          hello: 'greet',
+          greeting: 'hello',
         }}
         validationSchema={yup.object().shape({
-          hello: yup.string().required('This field is required'),
+          greeting: yup.string().required('This field is required'),
         })}
-        onSubmit={() => {}}
+        onSubmit={onSubmit}
       >
-        <RadioGroup name="hello" label="Radio Group">
-          <Radio label="Radio One" value="uno" data-testid="hello-radio" />
+        <RadioGroup name="greeting" label="Radio Group">
+          <Radio label="Hello" value="hello" data-testid="greeting-radio-1" />
+          <Radio
+            label="Goodbye"
+            value="goodbye"
+            data-testid="greeting-radio-2"
+          />
         </RadioGroup>
         <Button type="submit">Submit</Button>
       </Form>
@@ -25,7 +32,58 @@ describe('Radio', () => {
     expect(container.querySelectorAll('input')).toHaveLength(2);
     expect(container.querySelectorAll('.is-untouched')).toHaveLength(3);
 
-    expect(getByText('greet')).toBeDefined();
+    fireEvent.click(getByText('Submit'));
+
+    await wait(() => {
+      expect(onSubmit).toHaveBeenCalledWith(
+        expect.objectContaining({
+          greeting: 'hello',
+        }),
+        expect.anything()
+      );
+    });
+  });
+
+  test('submits with selected value', async () => {
+    const onSubmit = jest.fn();
+
+    const { container, getByText, getByTestId } = render(
+      <Form
+        initialValues={{
+          greeting: 'hello',
+        }}
+        validationSchema={yup.object().shape({
+          greeting: yup.string().required('This field is required'),
+        })}
+        onSubmit={onSubmit}
+      >
+        <RadioGroup name="greeting" label="Radio Group">
+          <Radio label="Hello" value="hello" data-testid="greeting-radio-1" />
+          <Radio
+            label="Goodbye"
+            value="goodbye"
+            data-testid="greeting-radio-2"
+          />
+        </RadioGroup>
+        <Button type="submit">Submit</Button>
+      </Form>
+    );
+    expect(container.querySelectorAll('input')).toHaveLength(2);
+    expect(container.querySelectorAll('.is-untouched')).toHaveLength(3);
+
+    // Simulate user selecting the goodbye option
+    fireEvent.click(getByTestId('greeting-radio-2'));
+
+    fireEvent.click(getByText('Submit'));
+
+    await wait(() => {
+      expect(onSubmit).toHaveBeenCalledWith(
+        expect.objectContaining({
+          greeting: 'goodbye',
+        }),
+        expect.anything()
+      );
+    });
   });
 
   test('renders danger className when invalid form', async () => {

@@ -31,7 +31,7 @@ describe('Checkbox', () => {
   });
 
   test('renders danger className when invalid form', async () => {
-    const { getByText, getByTestId, getByDisplayValue } = render(
+    const { getByText, getByTestId } = render(
       <Form
         initialValues={{
           hello: '',
@@ -55,7 +55,7 @@ describe('Checkbox', () => {
 
       expect(checkbox.className).toContain('is-touched');
       expect(checkbox.className).toContain('is-invalid');
-      expect(getByDisplayValue('This field is required')).toBeDefined();
+      expect(getByText('This field is required')).toBeDefined();
     });
   });
 

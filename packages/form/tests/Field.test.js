@@ -1,6 +1,8 @@
 import React from 'react';
 import { render, fireEvent, wait } from '@testing-library/react';
 import { Form, Field } from '..';
+import { Button } from 'reactstrap';
+import * as yup from 'yup';
 
 describe('Field', () => {
   test('renders with label', () => {
@@ -35,10 +37,7 @@ describe('Field', () => {
 
   test('renders with initial value', () => {
     const { container, getByDisplayValue } = render(
-      <Form
-        initialValues={{ name: 'John' }}
-        onSubmit={() => {}}
-      >
+      <Form initialValues={{ name: 'John' }} onSubmit={() => {}}>
         <Field name="name" />
       </Form>
     );
@@ -51,12 +50,14 @@ describe('Field', () => {
   });
 
   test('should render error message', async () => {
-    const { getByText, getByDisplayValue } = render(
+    const { container, getByText, getByDisplayValue } = render(
       <Form
         initialValues={{ name: 'John' }}
         onSubmit={() => {}}
+        validationSchema={yup.object().shape({ name: yup.string().required() })}
       >
         <Field name="name" />
+        <Button type="submit">Submit</Button>
       </Form>
     );
 
@@ -67,17 +68,15 @@ describe('Field', () => {
       },
     });
     fireEvent.click(getByText('Submit'));
+
     await wait(() => {
-      expect(getByText('error')).toBeDefined();
+      expect(container.querySelector('.invalid-feedback')).toBeDefined();
     });
   });
 
   test('should hide label if labelHidden passed', async () => {
     const { queryByDisplayValue } = render(
-      <Form
-        initialValues={{ name: 'John' }}
-        onSubmit={() => {}}
-      >
+      <Form initialValues={{ name: 'John' }} onSubmit={() => {}}>
         <Field name="hello" label="Name" labelHidden />
       </Form>
     );
