@@ -42,6 +42,7 @@ class PreUpload extends Component {
   };
 
   render() {
+    const { files } = this.state;
     return (
       <div className="py-3">
         <AvForm onValidSubmit={this.addFile} ref={this.form}>
@@ -73,7 +74,7 @@ class PreUpload extends Component {
           <Button color="primary">Upload File</Button>
         </AvForm>
         <div className="mt-3">
-          <FileList files={this.state.files} onRemoveFile={this.removeFile} />
+          <FileList files={files} onRemoveFile={this.removeFile} />
         </div>
       </div>
     );

@@ -74,24 +74,23 @@ storiesOf('Formik|Form', module)
       </Form>
     );
   })
-  .add('Form Group', () => {
-    return (
-      <Form
-        initialValues={{
-          hello: '',
-        }}
-        onSubmit={values => alert(JSON.stringify(values))}
-        validationSchema={yup.object().shape({
-          hello: yup.string().optional(),
-        })}
-      >
-        <FormGroup name="hello" data-testid="hello-group">
-          <Input name="hello" data-testid="hello-input" />
-        </FormGroup>
-        <Button type="submit">Submit</Button>
-      </Form>
-    );
-  })
+  .add('Form Group', () => (
+    <Form
+      initialValues={{
+        hello: '',
+      }}
+      // eslint-disable-next-line no-undef
+      onSubmit={values => alert(JSON.stringify(values))}
+      validationSchema={yup.object().shape({
+        hello: yup.string().optional(),
+      })}
+    >
+      <FormGroup name="hello" data-testid="hello-group">
+        <Input name="hello" data-testid="hello-input" />
+      </FormGroup>
+      <Button type="submit">Submit</Button>
+    </Form>
+  ))
   .add('Field', () => {
     const schema = yup.object().shape({
       hello: yup.string().required(),

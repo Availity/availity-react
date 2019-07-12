@@ -9,7 +9,7 @@ describe('Checkbox', () => {
     const { container, getByText, getByDisplayValue } = render(
       <Form
         initialValues={{ name: ['Joe'] }}
-        validationSchema={object().shape({
+        validationSchema={yup.object().shape({
           name: yup.array().required('required'),
         })}
         onSubmit={() => {}}
@@ -55,7 +55,7 @@ describe('Checkbox', () => {
 
       expect(checkbox.className).toContain('is-touched');
       expect(checkbox.className).toContain('is-invalid');
-      expect(getByDisplayValue('This field is required').toBeDefined());
+      expect(getByDisplayValue('This field is required')).toBeDefined();
     });
   });
 
