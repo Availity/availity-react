@@ -4,7 +4,7 @@ import classNames from 'classnames';
 import { useField, useFormikContext } from 'formik';
 import RSelect from 'react-select';
 import Async from 'react-select-async-paginate';
-import get from 'lodash/get';
+import get from 'lodash.get';
 import {
   DownChevron,
   CrossIcon,
@@ -48,12 +48,9 @@ const Select = ({
       ? option
       : get(option, get(attributes, 'valueKey', 'value'), option);
 
-  const findOptionFromValue = (value, options) => {
-    return (
-      Array.isArray(options) &&
-      options.filter(option => getOptionValue(option) === value)[0]
-    );
-  };
+  const findOptionFromValue = (value, options) =>
+    Array.isArray(options) &&
+    options.filter(option => getOptionValue(option) === value)[0];
 
   const getViewValue = () => {
     if (attributes.raw || attributes.loadOptions || !attributes.options)
