@@ -39,7 +39,7 @@ storiesOf('Components|Authorize', module)
       </Authorize>
     </div>
   ))
-  .add('useAuthoirze', () => 
+  .add('useAuthorize', () => 
   {
     const Component = () => {
       const [authorized] = useAuthorize(text('Permissions', '1234') || object('Permissions Array', []),{
