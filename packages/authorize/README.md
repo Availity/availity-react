@@ -49,3 +49,32 @@ import Authorize from '@availity/authorize';
 </Authorize>
 // ...
 ```
+
+#### useAuthorize
+Hook which validates the user's permissions and return if the user is authorized or not.
+
+##### Arguments
+
+- **`permissions`**: String, number, or an array containing strings/numbers or an array containing strings/numbers. Required.
+  - **string/number**: The permission ID, eg: `'1234'`
+  - **array**: The array can contain Permission ID strings as well as other arrays which contain permission ID strings/numbers, eg: `['1234', '2345', ['3456', '4567'], ['5678', '6789']]`. The items in deep/nested array indicate permission IDs which must all be granted to the user to be consider authorized, they act as "and". The items in the top array act as 'or', if any are granted to the user the user would be consider authorized. The example `['1234', '2345', ['3456', '4567'], ['5678', '6789']]` would be similar `'1234' || '2345' || ('3456' && '4567') || ('5678' && '6789')`
+- **`options`** object. optional. additional options
+  - **`organizationId`**: String. Optional, when present, the permission will be validated to ensure it is assigned to the organization.
+  - **`customerId`**:  String. Optional, when present, the permission will be validated to ensure it is assigned to the customer. Note: Cannot be used in combination with the `organizationId` prop
+  - **`region`**:  String or boolean. Optional, default: `true`. When a string, the permission will be validated to ensure it is assigned in the region. When true, the current region will be used.
+
+##### Usage
+
+```javascript
+import React from 'react';
+import { useAuthorize } from '@availity/authorize';
+// ... 
+export default () => {
+  const [authorized,loading] = useAuthorized(["1234","5678"], {
+    region: 'FL'
+  })
+
+  return authorized && <SomeAuthorizedComponent />
+}
+// ...
+```

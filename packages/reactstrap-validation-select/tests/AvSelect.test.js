@@ -1,7 +1,7 @@
 import React from 'react';
 import { render } from '@testing-library/react';
-import AvSelect from '..';
 import { AvForm } from 'availity-reactstrap-validation';
+import AvSelect from '..';
 
 const options = [
   { label: 'Option 1', value: 'value for option 1' },
