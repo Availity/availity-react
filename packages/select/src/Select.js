@@ -33,6 +33,7 @@ const Select = ({
   selectRef,
   styles,
   maxLength,
+  onChange: onChangeCallback,
   ...attributes
 }) => {
   const [
@@ -76,10 +77,17 @@ const Select = ({
         if (maxLength && attributes.isMulti && newValue.length > maxLength)
           return;
 
+        let newVal;
         if (attributes.isMulti) {
-          setFieldValue(name, newValue.map(val => getOptionValue(val)));
+          newVal = newValue.map(val => getOptionValue(val));
         } else {
-          setFieldValue(name, getOptionValue(newValue));
+          newVal = getOptionValue(newValue);
+        }
+
+        setFieldValue(name, newVal);
+
+        if (onChangeCallback) {
+          onChangeCallback(newVal);
         }
       }}
       ref={selectRef}
