@@ -107,6 +107,7 @@ export default (permissions,{
     checkPermissions();
     // todo - optimize this so we only have a permissions effect for fetching
     // and the others are just filters
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [organizationId, region, customerId, permissions]);
 
   return [authorized,loading];
