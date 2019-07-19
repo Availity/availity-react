@@ -1,8 +1,8 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import useAuthorize from './useAuthorize';
 import BlockUi from 'react-block-ui';
 import 'react-block-ui/style.css';
+import useAuthorize from './useAuthorize';
 
 const Authorize = ({
   permissions,
