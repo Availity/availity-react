@@ -15,12 +15,11 @@ function warnOnce(message) {
   }
 
   
-export default ({
-  permissions,
+export default (permissions,{
   organizationId,
   customerId,
   region = true,
-}) => {
+}= {}) => {
   const [authorized, setAuthorized] = useState(false);
   const [loading, setLoading] = useState(true);
 

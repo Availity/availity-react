@@ -14,8 +14,7 @@ const Authorize = ({
   children,
   unauthorized,
 }) => {
-  const [authorized, loading] = useAuthorize({
-    permissions,
+  const [authorized, loading] = useAuthorize(permissions,{
     customerId,
     organizationId,
     region,
