@@ -73,7 +73,7 @@
     "duplicate-package-checker-webpack-plugin": "^3.0.0",
     "file-loader": "^4.0.0",
     "prop-types": "^15.5.8",
-    "raw-loader": "^1.0.0",
+    "raw-loader": "^3.1.0",
     "react-docgen-typescript-loader": "^3.0.1",
     "react-docgen-typescript-webpack-plugin": "^1.1.0",
     "react-dom": "^16.8.3",
@@ -87,7 +87,7 @@
     "ts-jest": "^24.0.2",
     "tus-js-client": "^1.5.1",
     "typescript": "^3.3.1",
-    "url-loader": "^1.1.2",
+    "url-loader": "^2.1.0",
     "xhr-mock": "^2.3.2"
   },
   "dependencies": {
