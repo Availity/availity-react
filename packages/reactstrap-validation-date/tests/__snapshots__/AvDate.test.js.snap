@@ -33,7 +33,7 @@ exports[`AvDate should render 1`] = `
         >
           <i
             aria-label="calendar"
-            class="icon icon-calendar undefined"
+            class="icon icon-calendar"
           />
           <span
             class="sr-only"

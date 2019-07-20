@@ -3,6 +3,95 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [6.0.4](https://github.com/Availity/availity-react/compare/@availity/docs@6.0.3...@availity/docs@6.0.4) (2019-07-19)
+
+**Note:** Version bump only for package @availity/docs
+
+
+
+
+
+## [6.0.3](https://github.com/Availity/availity-react/compare/@availity/docs@6.0.2...@availity/docs@6.0.3) (2019-07-11)
+
+**Note:** Version bump only for package @availity/docs
+
+
+
+
+
+## [6.0.2](https://github.com/Availity/availity-react/compare/@availity/docs@6.0.1...@availity/docs@6.0.2) (2019-07-02)
+
+**Note:** Version bump only for package @availity/docs
+
+
+
+
+
+## [6.0.1](https://github.com/Availity/availity-react/compare/@availity/docs@6.0.0...@availity/docs@6.0.1) (2019-06-24)
+
+**Note:** Version bump only for package @availity/docs
+
+
+
+
+
+# [6.0.0](https://github.com/Availity/availity-react/compare/@availity/docs@5.9.1...@availity/docs@6.0.0) (2019-06-20)
+
+
+### Code Refactoring
+
+* **reactstrap-validation-date:** fixed datepicker prop for hiding ([89233c0](https://github.com/Availity/availity-react/commit/89233c0))
+
+
+### Features
+
+* **reactstrap-validation-select:** upgrade react-select 3.0 ([e588848](https://github.com/Availity/availity-react/commit/e588848))
+
+
+### BREAKING CHANGES
+
+* **reactstrap-validation-date:** removed the hideIcon prop in favor of the datepicker prop from the standard date picker to keep the same high level API for showing and hiding the calendar
+* **reactstrap-validation-select:** required react peer-dependecy of 16.8. @see https://github.com/JedWatson/react-select/blob/master/packages/react-select/CHANGELOG.md#300
+
+
+
+
+
+## [5.9.1](https://github.com/Availity/availity-react/compare/@availity/docs@5.9.0...@availity/docs@5.9.1) (2019-06-17)
+
+**Note:** Version bump only for package @availity/docs
+
+
+
+
+
+# [5.9.0](https://github.com/Availity/availity-react/compare/@availity/docs@5.8.2...@availity/docs@5.9.0) (2019-06-17)
+
+
+### Features
+
+* **reactstrap-validation-select:** add AvCodeSelect ([387af1a](https://github.com/Availity/availity-react/commit/387af1a))
+
+
+
+
+
+## [5.8.2](https://github.com/Availity/availity-react/compare/@availity/docs@5.8.1...@availity/docs@5.8.2) (2019-06-14)
+
+**Note:** Version bump only for package @availity/docs
+
+
+
+
+
+## [5.8.1](https://github.com/Availity/availity-react/compare/@availity/docs@5.8.0...@availity/docs@5.8.1) (2019-06-11)
+
+**Note:** Version bump only for package @availity/docs
+
+
+
+
+
 # [5.8.0](https://github.com/Availity/availity-react/compare/@availity/docs@5.7.1...@availity/docs@5.8.0) (2019-06-06)
 
 

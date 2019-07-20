@@ -26,4 +26,17 @@ describe('AvLink', () => {
 
     expect(tag.getAttribute('href')).toBe(expected);
   });
+
+  test('should render url prop as is when loadApp is false', () => {
+    const { getByTestId } = render(
+      <AvLink loadApp={false} url="/public/apps/my-app">
+        My App
+      </AvLink>
+    );
+
+    const tag = getByTestId('av-link-tag');
+    const expected = '/public/apps/my-app';
+
+    expect(tag.getAttribute('href')).toBe(expected);
+  });
 });

@@ -1,7 +1,7 @@
 import React from 'react';
 import { render, cleanup, waitForElement } from '@testing-library/react';
 import { avUserPermissionsApi } from '@availity/api-axios';
-import Authorize from '..';
+import { useAuthorize } from '..';
 
 jest.mock('@availity/api-axios');
 
@@ -10,6 +10,23 @@ afterEach(() => {
 
   jest.clearAllMocks();
 });
+
+// eslint-disable-next-line react/prop-types
+const Component = ({ permissions, options, children }) => {
+  const [authorized, loading] = useAuthorize(permissions, options);
+
+  if (loading) {
+    return <span data-testid="component-loading">Loading</span>;
+  }
+
+  return authorized ? (
+    children
+  ) : (
+    <span data-testid="component-content">
+      You do not have permission to see this
+    </span>
+  );
+};
 
 beforeEach(() => {
   avUserPermissionsApi.getPermissions.mockResolvedValue([
@@ -25,24 +42,17 @@ beforeEach(() => {
   ]);
 });
 
-describe('Authorize', () => {
+describe('useAuthorize', () => {
   test('should render authorized content', async () => {
     const { getByText } = render(
-      <Authorize permissions="1234" loader>
-        You have permission to see this
-      </Authorize>
+      <Component permissions="1234">You have permission to see this</Component>
     );
 
     await waitForElement(() => getByText('You have permission to see this'));
   });
 
   test('should render unauthorized content', async () => {
-    const { getByText } = render(
-      <Authorize
-        permissions="12345"
-        unauthorized="You do not have permission to see this"
-      />
-    );
+    const { getByText } = render(<Component permissions="12345" />);
 
     await waitForElement(() =>
       getByText('You do not have permission to see this')
@@ -51,42 +61,24 @@ describe('Authorize', () => {
 
   test('should render authorized with array of permissions', async () => {
     const { getByText } = render(
-      <Authorize
-        permissions={['1234', 2345, [3456, '4567']]}
-        unauthorized="You do not have permission to see this"
-      >
+      <Component permissions={['1234', 2345, [3456, '4567']]}>
         You have permission to see this
-      </Authorize>
+      </Component>
     );
 
     await waitForElement(() => getByText('You have permission to see this'));
   });
 
-  test('should render negate permissions', async () => {
-    const { getByText } = render(
-      <Authorize
-        permissions="1234"
-        negate
-        unauthorized="You do not have permission to see this"
-      >
-        You have permission to see this
-      </Authorize>
-    );
-
-    await waitForElement(() =>
-      getByText('You do not have permission to see this')
-    );
-  });
-
   test('should render authorized with correct organizationId', async () => {
     const { getByText } = render(
-      <Authorize
+      <Component
         permissions="1234"
-        organizationId="1111"
-        unauthorized="You do not have permission to see this"
+        options={{
+          organizationId: '1111',
+        }}
       >
         You have permission to see this
-      </Authorize>
+      </Component>
     );
 
     await waitForElement(() => getByText('You have permission to see this'));
@@ -94,13 +86,14 @@ describe('Authorize', () => {
 
   test('should render unauthorized with incorrect organizationId', async () => {
     const { getByText } = render(
-      <Authorize
+      <Component
         permissions="1234"
-        organizationId="1112"
-        unauthorized="You do not have permission to see this"
+        options={{
+          organizationId: '1112',
+        }}
       >
         You have permission to see this
-      </Authorize>
+      </Component>
     );
 
     await waitForElement(() =>
@@ -110,13 +103,14 @@ describe('Authorize', () => {
 
   test('should render authorized with correct customerId', async () => {
     const { getByText } = render(
-      <Authorize
+      <Component
         permissions="1234"
-        customerId="1194"
-        unauthorized="You do not have permission to see this"
+        options={{
+          customerId: '1194',
+        }}
       >
         You have permission to see this
-      </Authorize>
+      </Component>
     );
 
     await waitForElement(() => getByText('You have permission to see this'));
@@ -124,13 +118,14 @@ describe('Authorize', () => {
 
   test('should render unauthorized with incorrect customerId', async () => {
     const { getByText } = render(
-      <Authorize
+      <Component
         permissions="1234"
-        customerId="1193"
-        unauthorized="You do not have permission to see this"
+        options={{
+          customerId: '1193',
+        }}
       >
         You have permission to see this
-      </Authorize>
+      </Component>
     );
 
     await waitForElement(() =>

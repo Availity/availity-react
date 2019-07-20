@@ -1,6 +1,6 @@
 {
   "name": "@availity/icon",
-  "version": "0.4.1",
+  "version": "0.4.2",
   "author": "Kyle Gray <kyle.gray@availity.com>",
   "description": "Simple Icon Component that uses classes from availity uikit",
   "main": "index.js",
@@ -26,5 +26,8 @@
   },
   "peerDependencies": {
     "react": "^16.3.0"
+  },
+  "dependencies": {
+    "classnames": "^2.2.6"
   }
 }

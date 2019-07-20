@@ -2,6 +2,8 @@
 
 > Availity component for uploading files
 
+[![Version](https://img.shields.io/npm/v/@availity/upload.svg?style=for-the-badge)](https://www.npmjs.com/package/@availity/upload)
+
 ## Installation
 
 ```bash
@@ -30,8 +32,10 @@ The default export is an all-in-one solution which handles uploads, encrypted fi
 - **`bucketId`**: String. Required. The ID of the bucket you want to upload to.
 - **`customerId`**: String. Required. The customer ID for the organization the user is uploading on behave of.
 - **`clientId`**: String. Required. The ID obtain from APIConnect. Must be subscribed to the resumeable uploads API.
+- **`allowedFileNameCharacters`**: String (regex). Optional. Restrict the file name characters to a regex set
 - **`allowedFileTypes`**: Array of strings. Optional. The file types you want to restrict uploading to. E.g. `['.jpeg', '.jpg']`.
-- **`onFileUpload`**: Function. Optional. Callback called when file is uploaded. The callback will be provided the `Upload` instance form upload-core SDK. Use this callback to track files which have been uploaded (to get references returned by the API).
+- **`onFileUpload`**: Function. Optional. Callback called when file is uploaded. The callback will be provided the `Upload` instance from upload-core SDK. Use this callback to track files which have been uploaded (to get references returned by the API).
+- **`onFileRemove`**: Function. Optional. Callback called when file is removed. The callback will be provided the `Upload` instance from upload-core SDK.
 - **`maxSize`**: Number. Optional. The maximum file size (in bytes) for a file to be uploaded.
 - **`max`**: Number. Optional. The maximum number of files allowed to be uploaded. `0` (or a falsey value) means unlimited. When the max number has been reached the add button will disappear. Default: unlimited.
 - **`multiple`**: Boolean. Optional. Indicates that the user will be allowed to select multiple files when selecting files from the OS prompt. Default: `true`
@@ -63,7 +67,8 @@ import Upload from '@availity/upload';
   clientId="a"
   bucketId="b"
   customerId="c"
-  onFileUpload={onUpload} // <-- callback function
+  onFileUpload={onUpload} // <-- add file callback function
+  onFileRemove={onRemove} // <-- remove file callback function
   max={1}
 />
 
@@ -79,6 +84,11 @@ onUpload(upload) {
     }
   }
 // ...
+
+// onRemove callback definition
+onRemove(file) {
+  // remove action
+}
 ```
 
 #### UploadProgressBar
@@ -87,12 +97,15 @@ The raw progress bar to be used when making your own.
 
 ##### Props
 
-- **`upload`**: Instance of Upload from upload-core. Required. The upload instance returned by creating a `new Upload` via upload-core.
+- **`upload`**: Instance of Upload from [upload-core](https://github.com/Availity/sdk-js/tree/master/packages/upload-core). Required. The upload instance returned by creating a `new Upload` via [upload-core](https://github.com/Availity/sdk-js/tree/master/packages/upload-core).
 - **`onProgress`**: Function. Optional. Callback function to hook into the `onProgress` within the Upload instance provided in the `upload` prop.
 - **`onSuccess`**: Function. Optional. Callback function to hook into the `onSuccess` within the Upload instance provided in the `upload` prop.
+- **`complete`**: Boolean. Optional. Triggers the "complete" style in the progress bar. When true, a checkmark appears at the end of the progress bar
 - **`onError`**: Function. Optional. Callback function to hook into the `onError` within the Upload instance provided in the `upload` prop.
+- **`striped`**: Boolean. Optional. Triggers the "striped" style in the progress bar.
 - **`animated`**: Boolean. Optional. When `true` the progress bar will have animated stripes while uploading is in progress.
-- **`className`**: String. Optional. Additional classNames to add to the progress bar.
+- **`color`**: String. Optional. Default "success". The color of the progress bar
+
 
 ##### UploadProgressBar Usage
 
@@ -115,6 +128,8 @@ The raw file picker button which masks the file input with a button.
 - **`multiple`**: Boolean. Optional. Indicates that the user will be allowed to select multiple files when selecting files from the OS prompt.
 - **`allowedFileTypes`**: Array of strings. Optional. The file types you want to restrict uploading to. E.g. `['.jpeg', '.jpg']`.
 - **`maxSize`**: Number. Optional. The maximum file size (in bytes) for a file to be uploaded.
+
+
 
 ##### FilePickerBtn Usage
 

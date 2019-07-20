@@ -160,7 +160,7 @@ class AvDate extends Component {
   };
 
   render() {
-    const { datepicker, calendarIcon, ...props } = this.props;
+    const { datepicker, calendarIcon, hideIcon, ...props } = this.props;
     const id = `${(this.props.id || this.props.name).replace(
       /[^a-zA-Z0-9]/gi,
       ''

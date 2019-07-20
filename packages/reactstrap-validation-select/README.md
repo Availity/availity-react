@@ -2,6 +2,8 @@
 
 > Wrapper for react-select (with async pagination) to work with availity-reactstrap-validation.
 
+[![Version](https://img.shields.io/npm/v/@availity/reactstrap-validation-select.svg?style=for-the-badge)](https://www.npmjs.com/package/@availity/reactstrap-validation-select)
+
 ## Installation
 
 ```bash

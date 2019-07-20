@@ -1,4 +1,4 @@
-import React, { useState, useContext } from 'react';
+import React, { useState, useContext, useEffect, useRef } from 'react';
 import PropTypes from 'prop-types';
 import isFunction from 'lodash.isfunction';
 import isEqual from 'lodash.isequal';
@@ -25,6 +25,7 @@ const Pagination = ({
   onPageChange,
   children,
   watchList,
+  resetParams,
   defaultPage,
 }) => {
   const [currentPage, setPage] = useState(defaultPage);
@@ -40,7 +41,7 @@ const Pagination = ({
 
   const [loading, toggleLoading] = useToggle(true);
 
-  useEffectAsync(async () => {
+  const getPageData = async () => {
     avLocalStorage.set('current-page', currentPage);
 
     // If the items is a function then await the resposne in case of async actions
@@ -76,6 +77,10 @@ const Pagination = ({
     });
 
     toggleLoading(false);
+  };
+
+  useEffectAsync(async () => {
+    getPageData();
   }, [
     currentPage,
     itemsPerPage,
@@ -93,6 +98,22 @@ const Pagination = ({
       }
     }
   };
+
+  // We don't want to reset the page on the first render
+  const firstUpdate = useRef(true);
+  useEffect(() => {
+    if (firstUpdate.current) {
+      firstUpdate.current = false;
+    } else {
+      const current = currentPage;
+      updatePage(1);
+      // If the current page was already 1 and theItems is a function, re-fetch the page data
+      if (current === 1 && isFunction(theItems)) {
+        getPageData();
+      }
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [...resetParams]);
 
   // boom roasted
   return (
@@ -115,6 +136,7 @@ Pagination.propTypes = {
   onPageChange: PropTypes.func,
   children: PropTypes.node,
   watchList: PropTypes.array,
+  resetParams: PropTypes.array,
   defaultPage: PropTypes.number,
 };
 
@@ -122,6 +144,7 @@ Pagination.defaultProps = {
   itemsPerPage: 10,
   items: [],
   watchList: [],
+  resetParams: [],
   defaultPage: 1,
 };
 

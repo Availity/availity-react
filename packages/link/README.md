@@ -2,6 +2,8 @@
 
 > Simple link component that renders an `<a>` tag with the `href` formatted to leverage loadApp so that when the link is opened in a new tab, it gets loaded inside the home page's iframe
 
+[![Version](https://img.shields.io/npm/v/@availity/link.svg?style=for-the-badge)](https://www.npmjs.com/package/@availity/link)
+
 ## Installation
 
 ```bash
@@ -28,3 +30,4 @@ import AvLink from '@availity/link';
 - **`target`**: String. Optional. Where to open the linked document
 - **`tag`**: React component. Optional. The tag to use in the link that gets rendered. Defaults to an `<a>` tag
 - **`onClick`**: Function. Optional. Function to run onClick of the tag. The first argument that gets passed to `onClick` is the event. The second is the processed `url`.
+- **`loadApp`**: Boolean. Optional. Default `true`. When `false`, the `url` prop to `AvLink` _will not_ be formatted to leverage loadApp.

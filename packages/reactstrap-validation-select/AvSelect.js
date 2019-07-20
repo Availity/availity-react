@@ -2,17 +2,18 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import classNames from 'classnames';
 import { AvBaseInput } from 'availity-reactstrap-validation';
-import Select from 'react-select';
-import Async from 'react-select-async-paginate';
-import {
+import Select, { components as reactSelectComponents } from 'react-select';
+import get from 'lodash.get';
+import isEqual from 'lodash.isequal';
+
+import AsyncPaginate from 'react-select-async-paginate';
+
+const {
   DownChevron,
   CrossIcon,
   DropdownIndicator,
   ClearIndicator,
-} from 'react-select/lib/components/indicators';
-import get from 'lodash/get';
-import find from 'lodash/find';
-import isEqual from 'lodash/isEqual';
+} = reactSelectComponents;
 
 const components = {
   DropdownIndicator: props => (
@@ -40,9 +41,12 @@ class AvSelect extends AvBaseInput {
     raw: PropTypes.bool,
   });
 
-  optionsContainsValue = (props, value) => {
+  optionsContainsValue = props => {
     const valueKey = this.getValueKey(props);
-    return !!find(props.options, [valueKey, value]);
+    const matchingValues = props.options.filter(
+      option => option.value === valueKey
+    );
+    return matchingValues.length > 0;
   };
 
   componentWillReceiveProps(nextProps) {
@@ -177,7 +181,7 @@ class AvSelect extends AvBaseInput {
       );
     }
 
-    const Tag = attributes.loadOptions ? Async : Select;
+    const Tag = attributes.loadOptions ? AsyncPaginate : Select;
 
     return (
       <Tag

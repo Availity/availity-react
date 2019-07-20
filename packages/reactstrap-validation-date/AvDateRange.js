@@ -95,6 +95,7 @@ export default class AvDateRange extends Component {
     defaultValues: PropTypes.object,
     theme: PropTypes.object,
     calendarIcon: PropTypes.node,
+    datepicker: PropTypes.bool,
   };
 
   static contextTypes = { FormCtrl: PropTypes.object.isRequired };
@@ -102,6 +103,7 @@ export default class AvDateRange extends Component {
   static defaultProps = {
     type: 'text',
     calendarIcon: <Icon name="calendar" />,
+    datepicker: true,
   };
 
   constructor(props, context) {
@@ -382,54 +384,59 @@ export default class AvDateRange extends Component {
           aria-label="To Date"
           datepicker={false}
         />
-        <InputGroupAddon addonType="append">
-          <Button
-            id={this.guid}
-            color="light"
-            type="button"
-            disabled={this.props.disabled}
-            onClick={this.togglePicker}
-            style={{
-              lineHeight:
-                this.state.format === isoDateFormat ? '1.4' : undefined,
-              zIndex: 'auto',
-            }}
-          >
-            {this.props.calendarIcon}
-            <span className="sr-only">Toggle Calendar</span>
-          </Button>
-        </InputGroupAddon>
-        <Popover
-          placement="top"
-          target={this.guid}
-          isOpen={this.state.open}
-          toggle={this.toggle}
-          className="popover-calendar-range"
-        >
-          <DateRange
-            startDate={this.state.startValue}
-            endDate={
-              dayjs(new Date(this.state.endValue)).isValid()
-                ? this.state.endValue
-                : null
-            }
-            maxDate={this.props.max}
-            minDate={this.props.min}
-            ranges={
-              // eslint-disable-next-line no-nested-ternary
-              this.props.ranges !== undefined
-                ? Array.isArray(this.props.ranges)
-                  ? pick(relativeRanges, this.props.ranges)
-                  : this.props.ranges
-                : relativeRanges
-            }
-            onChange={this.onPickerChange}
-            format={this.state.format}
-            theme={this.props.theme || theme}
-            twoStepChange
-            linkedCalendars
-          />
-        </Popover>
+        {this.props.datepicker && (
+          <>
+            <InputGroupAddon addonType="append">
+              <Button
+                id={this.guid}
+                color="light"
+                type="button"
+                disabled={this.props.disabled}
+                onClick={this.togglePicker}
+                style={{
+                  lineHeight:
+                    this.state.format === isoDateFormat ? '1.4' : undefined,
+                  zIndex: 'auto',
+                }}
+              >
+                {this.props.calendarIcon}
+                <span className="sr-only">Toggle Calendar</span>
+              </Button>
+            </InputGroupAddon>
+
+            <Popover
+              placement="top"
+              target={this.guid}
+              isOpen={this.state.open}
+              toggle={this.toggle}
+              className="popover-calendar-range"
+            >
+              <DateRange
+                startDate={this.state.startValue}
+                endDate={
+                  dayjs(new Date(this.state.endValue)).isValid()
+                    ? this.state.endValue
+                    : null
+                }
+                maxDate={this.props.max}
+                minDate={this.props.min}
+                ranges={
+                  // eslint-disable-next-line no-nested-ternary
+                  this.props.ranges !== undefined
+                    ? Array.isArray(this.props.ranges)
+                      ? pick(relativeRanges, this.props.ranges)
+                      : this.props.ranges
+                    : relativeRanges
+                }
+                onChange={this.onPickerChange}
+                format={this.state.format}
+                theme={this.props.theme || theme}
+                twoStepChange
+                linkedCalendars
+              />
+            </Popover>
+          </>
+        )}
       </div>
     );
   }

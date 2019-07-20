@@ -1,14 +1,10 @@
-import React, { Component, createRef } from 'react';
+import React from 'react';
 import { storiesOf } from '@storybook/react';
 import { button, boolean, number, array, text } from '@storybook/addon-knobs';
 import mock from 'xhr-mock';
-import { Button, CustomInput } from 'reactstrap';
-import { AvForm, AvField, AvGroup } from 'availity-reactstrap-validation';
-import UploadCore from '@availity/upload-core';
 
 import Upload, {
   UploadProgressBar,
-  FileList,
   FilePicker,
   FilePickerBtn,
 } from '@availity/upload';
@@ -17,68 +13,6 @@ import README from '@availity/upload/README.md';
 import MockUpload from '@availity/upload/tests/mockUpload';
 
 const log = window.console.log.bind(console);
-
-class PreUpload extends Component {
-  state = {
-    files: [],
-  };
-
-  form = createRef();
-
-  addFile = (event, values) => {
-    const upload = new UploadCore(values.file, {
-      bucketId: 'b',
-      customerId: 'c',
-      clientId: 'a',
-      metadata: { type: values.type },
-    });
-    upload.start();
-    this.setState(({ files }) => ({ files: files.concat(upload) }));
-    if (this.form.current) this.form.current.reset();
-  };
-
-  removeFile = id => {
-    this.setState(({ files }) => ({ files: files.filter(f => f.id !== id) }));
-  };
-
-  render() {
-    return (
-      <div className="py-3">
-        <AvForm onValidSubmit={this.addFile} ref={this.form}>
-          <AvField
-            label="Type"
-            name="type"
-            required
-            type="select"
-            tag={CustomInput}
-          >
-            <option value="">Select Type</option>
-            <option>X-ray</option>
-            <option>MRI</option>
-            <option>CT</option>
-            <option>Other</option>
-          </AvField>
-          <AvGroup>
-            <FilePicker name="file" multiple={false} required>
-              {({ file, clear }) => (
-                <div>
-                  {file.name}{' '}
-                  <Button color="link" className="text-danger" onClick={clear}>
-                    Remove
-                  </Button>
-                </div>
-              )}
-            </FilePicker>
-          </AvGroup>
-          <Button color="primary">Upload File</Button>
-        </AvForm>
-        <div className="mt-3">
-          <FileList files={this.state.files} onRemoveFile={this.removeFile} />
-        </div>
-      </div>
-    );
-  }
-}
 
 mock.post(
   /\/ms\/api\/availity\/internal\/core\/vault\/upload\/v1\/resumable\/[^/]\//,
@@ -192,7 +126,7 @@ storiesOf('Components|Upload', module)
       />
     </div>
   ))
-  .add('file types', () => (
+  .add('restrict file types', () => (
     <div className="py-3">
       <p>Allows you to define which file types are available to upload.</p>
       <p>Here we have jpg, jpeg, doc and docx available to be selected.</p>
@@ -211,7 +145,7 @@ storiesOf('Components|Upload', module)
       />
     </div>
   ))
-  .add('file name', () => (
+  .add('restrict file name', () => (
     <div className="py-3">
       <p>
         Allows you to restrict characters are permissible in the filename of
@@ -248,8 +182,10 @@ storiesOf('Components|Upload', module)
         <UploadProgressBar
           upload={instance}
           animated={boolean('Animated', false)}
+          striped={boolean('Striped', false)}
+          complete={boolean('Complete', false)}
+          color={text('Color', 'success')}
         />
       </div>
     );
-  })
-  .add('with other input', () => <PreUpload />);
+  });
