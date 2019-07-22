@@ -1,6 +1,6 @@
 import React from 'react';
 import { render } from '@testing-library/react';
-// import TrainingLink from '@availity/training-link';
+import TrainingLink from '@availity/training-link';
 import PageHeader from '..';
 
 describe('PageHeader', () => {
@@ -56,8 +56,8 @@ describe('PageHeader', () => {
 
     expect(container).toMatchSnapshot();
   });
-  /* test('should render trainingLink', () => {
-    const { container } = render(
+  test('should render trainingLink', () => {
+    const { getByText } = render(
       <PageHeader
         appName="Payer Space"
         component={
@@ -71,6 +71,6 @@ describe('PageHeader', () => {
       </PageHeader>
     );
 
-    expect(container).toMatchSnapshot();
-  }); */
+    getByText('Watch a demo');
+  });
 });

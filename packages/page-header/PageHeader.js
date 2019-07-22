@@ -128,6 +128,10 @@ PageHeader.propTypes = {
 
 PageHeader.defaultProps = {
   tag: 'h1',
+  // SpaceId and payerId are defaulted to null to prevent `useSpace` from
+  // returning a space we may not want
+  spaceId: null,
+  payerId: null,
 };
 
 export default PageHeader;
