@@ -63,7 +63,7 @@
     "@storybook/addons": "^5.1.3",
     "@storybook/react": "^5.1.3",
     "@storybook/storybook-deployer": "^2.8.1",
-    "availity-reactstrap-validation": "2.5.4",
+    "availity-reactstrap-validation": "2.6.0",
     "availity-uikit": "^3.0.0",
     "awesome-typescript-loader": "^5.2.1",
     "axios": "^0.18.0",
