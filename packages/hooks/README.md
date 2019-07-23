@@ -141,3 +141,23 @@ const Component = () => {
 };
 // ...
 ```
+
+
+#### useCurrentRegion
+
+Hook that will return the current user's region.
+
+
+##### useCurrentRegion Usage
+
+```jsx
+import React, { useState } from 'react';
+import { useCurrentRegion } from '@availity/hooks';
+// ...
+const Component = () => {
+  const [region,loading] = useCurrentRegion();
+
+  return <div>Test Component</div>;
+};
+// ...
+```

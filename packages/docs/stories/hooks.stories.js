@@ -7,7 +7,6 @@ import {
   useToggle,
   useEffectAsync,
   useCurrentRegion,
-  useDisclaimer,
   useMount,
   useTimeout,
 } from '@availity/hooks';
@@ -136,22 +135,6 @@ storiesOf('Hooks|resources', module)
     },
   })
   .addDecorator(withKnobs)
-  .add('useDisclaimer', () => {
-    const SomeComponent = () => {
-      const [disclaimer, loading] = useDisclaimer('1234');
-
-      return (
-        <Card>
-          <CardTitle className="text-center" tag="h4">
-            Disclaimer
-          </CardTitle>
-          <CardBody>{loading ? 'Loading...' : disclaimer}</CardBody>
-        </Card>
-      );
-    };
-
-    return <SomeComponent />;
-  })
   .add('useCurrentRegion', () => {
     const SomeComponent = () => {
       const [currentRegion, loading] = useCurrentRegion();

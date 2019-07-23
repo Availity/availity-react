@@ -20,6 +20,10 @@ avRegionsApi.getCurrentRegion.mockResolvedValue({
   statusText: 'Ok',
 });
 
+afterEach(() => {
+  jest.clearAllMocks();
+});
+
 const Component = () => {
   const [region, loading] = useCurrentRegion();
 
