@@ -1,10 +1,11 @@
 import React from 'react';
 import '@testing-library/react/cleanup-after-each';
 import { fireEvent, waitForElement, render } from '@testing-library/react';
-import { avRegionsApi } from '@availity/api-axios';
+import { avRegionsApi, avThanosApi } from '@availity/api-axios';
 import { AvForm } from 'availity-reactstrap-validation';
 
 import { AvResourceSelect } from '..';
+import { AvPatientSelect } from '../resources';
 
 jest.mock('@availity/api-axios');
 
@@ -55,6 +56,56 @@ describe('AvResourceSelect', () => {
       container.querySelector('.test__regions__option--is-selected')
     ).toBeDefined();
     expect(regionsSelect.querySelector('.test__regions__placeholder')).toBe(
+      null
+    );
+  });
+
+  it('renders AvPatientSelect options', async () => {
+    avThanosApi.post.mockResolvedValue({
+      data: {
+        data: {
+          patientsMany: [
+            {
+              firstName: 'Bram',
+              lastName: 'Moolenaar',
+              subscriberMemberId: 'ABC123',
+            },
+          ],
+        },
+      },
+    });
+
+    const { container, getByText } = render(
+      <AvForm>
+        <AvPatientSelect
+          name="test-form-input"
+          classNamePrefix="test__patients"
+          parameters={{ customerId: '1194' }}
+        />
+      </AvForm>
+    );
+
+    const patientsSelect = container.querySelector('.test__patients__control');
+    fireEvent.keyDown(patientsSelect, { key: 'ArrowDown', keyCode: 40 });
+    fireEvent.keyDown(patientsSelect, { key: 'Enter', keyCode: 13 });
+
+    const patientsOption = await waitForElement(() =>
+      getByText('Moolenaar, Bram (ABC123)')
+    );
+    expect(avThanosApi.post).toHaveBeenCalledTimes(1);
+    expect(avThanosApi.post.mock.calls[0][0].variables.filters.customerId).toBe(
+      '1194'
+    );
+    expect(avThanosApi.post.mock.calls[0][0].query).toContain('patientsMany');
+
+    expect(patientsOption).toBeDefined();
+
+    fireEvent.click(patientsOption);
+
+    expect(
+      container.querySelector('.test__patients__option--is-selected')
+    ).toBeDefined();
+    expect(patientsSelect.querySelector('.test__patients__placeholder')).toBe(
       null
     );
   });

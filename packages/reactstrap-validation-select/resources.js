@@ -6,6 +6,7 @@ import {
   avNavigationApi,
   avUserApi,
   avCodesApi,
+  avThanosApi,
 } from '@availity/api-axios';
 import AvResourceSelect from './AvResourceSelect';
 
@@ -46,6 +47,46 @@ const AvCodeSelect = AvResourceSelect.create({
   requiredParams: ['list'],
   watchParams: ['list'],
 });
+const AvPatientSelect = AvResourceSelect.create({
+  resource: avThanosApi,
+  getOptionLabel: option =>
+    `${option.lastName}, ${option.firstName} (${option.memberId ||
+      option.subscriberMemberId})`,
+  requiredParams: ['customerId'],
+  watchParams: ['customerId', 'providerUserId'],
+  hasMore: false, // pagination not supported
+  getResult: data => data.data.patientsMany,
+  graphqlConfig: {
+    type: 'patient',
+    query: `query($filters: PatientFilters) {
+  patientsMany(filters: $filters) {
+    firstName
+    middleName
+    lastName
+    suffix
+    patientAccountNumber
+    memberId
+    familyUnitNumber
+    subscriberRelationship
+    subscriberRelationshipCode
+    gender
+    genderCode
+    ssn
+    birthDate
+    deathDate
+    address {
+      line1
+      line2
+      city
+      state
+      stateCode
+      zipCode
+    }
+    subscriberMemberId
+  }
+}`,
+  },
+});
 
 export default AvResourceSelect;
 export {
@@ -56,4 +97,5 @@ export {
   AvNavigationSelect,
   AvUserSelect,
   AvCodeSelect,
+  AvPatientSelect,
 };

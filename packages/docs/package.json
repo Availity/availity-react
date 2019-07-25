@@ -25,8 +25,8 @@
   },
   "license": "MIT",
   "devDependencies": {
-    "@availity/api-axios": "^3.0.1",
-    "@availity/api-core": "^3.0.0",
+    "@availity/api-axios": "^5.3.0",
+    "@availity/api-core": "^5.3.0",
     "@availity/app-icon": "^1.2.2",
     "@availity/authorize": "^1.2.0",
     "@availity/breadcrumbs": "^3.0.3",
@@ -91,7 +91,6 @@
     "xhr-mock": "^2.3.2"
   },
   "dependencies": {
-    "@availity/api-axios": "^5.2.0",
-    "@availity/api-core": "^5.2.0"
+    "@availity/api-axios": "^5.2.0"
   }
 }

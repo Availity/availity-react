@@ -16,6 +16,7 @@ import AvSelectResource, {
   AvNavigationSelect,
   AvUserSelect,
   AvCodeSelect,
+  AvPatientSelect,
 } from '@availity/reactstrap-validation-select/resources';
 import README from '@availity/reactstrap-validation-select/README.md';
 
@@ -365,6 +366,41 @@ storiesOf('Components|AvSelect/resources', module)
           isMulti={isMulti}
           required={required}
           errorMessage={text('Generic Error Message', 'This field is invalid')}
+          parameters={{
+            list: 'ALLCPTCODES',
+          }}
+          validate={{
+            required: {
+              value: required,
+              errorMessage:
+                required &&
+                text('Required Error Message', 'This field is required'),
+            },
+          }}
+          isDisabled={boolean('Disabled', false)}
+        />
+        <Button color="primary">Submit</Button>
+      </AvFormResults>
+    );
+  })
+  .add('AvPatientSelect', () => {
+    const isMulti = boolean('Multiple', false);
+    const min = (isMulti && number('Min Selection', 2)) || undefined;
+    const max = (isMulti && number('Max Selection', 3)) || undefined;
+    const required = boolean('Required', false);
+    return (
+      <AvFormResults>
+        <AvPatientSelect
+          label={text('Label', 'Select Patient')}
+          name="AvCodeSelect"
+          minLength={min}
+          maxLength={max}
+          isMulti={isMulti}
+          required={required}
+          errorMessage={text('Generic Error Message', 'This field is invalid')}
+          parameters={{
+            customerId: '1194',
+          }}
           validate={{
             required: {
               value: required,

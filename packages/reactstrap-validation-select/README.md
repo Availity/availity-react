@@ -149,8 +149,9 @@ Please refer to [react-select-async-paginate](https://github.com/vtaits/react-se
 *   **`delay`**: Number. default: 350. Set to `debounceTimeout` if `debounceTimeout` is not provided. (see [react-select-async-paginate](https://github.com/vtaits/react-select-async-paginate#debouncetimeout))
 *   **`itemsPerPage`**: Number. Optional. Default: `50`. The number of items to fetched be displayed per page when the usr scrolls down.
 *   **`onPageChange`**: Function. Optional. A callback function to inform you that the user has scrolled to the bottom of the list and more items are loaded. The current input value and the page the user wants to go to will be provided as arguments to the callback function.
-*   **`hasMore`**: Boolean or Function. Optional. If true, `AvResourceSelect` will attempt to retrieve the next page of results. `response.data` from axios response is passed as the only argument to `hasMore` when `hasMore` is a function. Defaults to: `({ totalCount, limit, offset }) => totalCount > offset + limit;`
+*   **`hasMore`**: Boolean or Function. Optional. If true, `AvResourceSelect` will attempt to retrieve the next page of results. `response.data` from axios response is passed as the only argument to `hasMore` when `hasMore` is a function. Defaults to: `({ totalCount, limit, offset }) => totalCount > offset + limit;` for non-GraphQL apis. Defaults to `(data) => data.data[${this.props.graphqlConfig.type}Pagination].pageInfo.hasNextPage` for GraphQL apis.
 *   **`additional`**: Object. Optional. Additional properties to pass to `AsyncPaginate` (see [react-select-async-paginate](https://github.com/vtaits/react-select-async-paginate#additional)).
+*   **`graphqlConfig`**: Object{ type, query }. Optional. `type` String. is the type of asset returned. `query` String. is the GraphQL query to use in the request.
 
 #### AvResourceSelect Example usage
 
@@ -198,6 +199,7 @@ import {
   AvPermissionSelect,
   AvNavigationSelect,
   AvUserSelect,
+  AvPatientSelect,
 } from '@availity/reactstrap-validation-select/resources';
 import '@availity/reactstrap-validation-select/styles.scss';
 // ...
@@ -238,6 +240,13 @@ import '@availity/reactstrap-validation-select/styles.scss';
         name="user"
         label="Select a User"
         customerId={customerId}
+    />
+    <AvPatientSelect
+        name="patient"
+        label="Select a Patient"
+        parameters={{
+          customerId,
+        }}
     />
 </AvForm>;
 ```

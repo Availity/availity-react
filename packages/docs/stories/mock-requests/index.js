@@ -8,6 +8,7 @@ import slotmachine from './slotmachine';
 import me from './me';
 import settings from './settings';
 import disclaimers from './disclaimers';
+import thanos from './thanos';
 
 mock.setup();
 
@@ -28,6 +29,8 @@ me(mock);
 settings(mock);
 
 disclaimers(mock);
+
+thanos(mock);
 
 // keep this last
 mock.use(proxy);
