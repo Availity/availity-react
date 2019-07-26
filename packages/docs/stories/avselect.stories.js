@@ -25,8 +25,6 @@ import './mocks/regions';
 
 import AvFormResults from './mocks/AvFormResults';
 
-// import '@availity/reactstrap-validation-select/styles.scss';
-
 const options = [
   { label: 'Option 1', value: 'value for option 1' },
   { label: 'Option 2', value: 'value for option 2' },
@@ -61,6 +59,7 @@ storiesOf('Components|AvSelect', module)
           required={boolean('Required', false)}
           raw={boolean('Raw value', false)}
           isDisabled={boolean('Disabled', false)}
+          creatable={boolean('Creatable',false)}
         />
         <Button className="mt-3" color="primary">
           Submit
@@ -88,7 +87,8 @@ storiesOf('Components|AvSelect', module)
             required={boolean('Required', false)}
             raw={boolean('Raw value', false)}
             isDisabled={boolean('Disabled', false)}
-          />
+            creatable={boolean('Creatable',false)}
+            />
           <AvFeedback>
             {text('Error Message', 'This field is invalid')}
           </AvFeedback>
@@ -123,6 +123,7 @@ storiesOf('Components|AvSelect', module)
           }}
           raw={boolean('Raw value', false)}
           isDisabled={boolean('Disabled', false)}
+          creatable={boolean('Creatable',false)}
         />
         <Button color="primary">Submit</Button>
       </AvFormResults>
@@ -148,6 +149,7 @@ storiesOf('Components|AvSelect', module)
           isMulti={isMulti}
           required={required}
           resource={avCustomResource}
+          labelKey='name'
           errorMessage={text('Generic Error Message', 'This field is invalid')}
           validate={{
             required: {
@@ -158,6 +160,7 @@ storiesOf('Components|AvSelect', module)
             },
           }}
           isDisabled={boolean('Disabled', false)}
+          creatable={boolean('Creatable',false)}
         />
         <Button color="primary">Submit</Button>
       </AvFormResults>
