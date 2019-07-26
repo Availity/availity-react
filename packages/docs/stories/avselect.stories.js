@@ -15,6 +15,7 @@ import AvSelectResource, {
   AvPermissionSelect,
   AvNavigationSelect,
   AvUserSelect,
+  AvCodeSelect,
 } from '@availity/reactstrap-validation-select/resources';
 import README from '@availity/reactstrap-validation-select/README.md';
 
@@ -23,8 +24,6 @@ import './mocks/organizations';
 import './mocks/regions';
 
 import AvFormResults from './mocks/AvFormResults';
-
-// import '@availity/reactstrap-validation-select/styles.scss';
 
 const options = [
   { label: 'Option 1', value: 'value for option 1' },
@@ -60,6 +59,7 @@ storiesOf('Components|AvSelect', module)
           required={boolean('Required', false)}
           raw={boolean('Raw value', false)}
           isDisabled={boolean('Disabled', false)}
+          creatable={boolean('Creatable',false)}
         />
         <Button className="mt-3" color="primary">
           Submit
@@ -87,7 +87,8 @@ storiesOf('Components|AvSelect', module)
             required={boolean('Required', false)}
             raw={boolean('Raw value', false)}
             isDisabled={boolean('Disabled', false)}
-          />
+            creatable={boolean('Creatable',false)}
+            />
           <AvFeedback>
             {text('Error Message', 'This field is invalid')}
           </AvFeedback>
@@ -122,6 +123,7 @@ storiesOf('Components|AvSelect', module)
           }}
           raw={boolean('Raw value', false)}
           isDisabled={boolean('Disabled', false)}
+          creatable={boolean('Creatable',false)}
         />
         <Button color="primary">Submit</Button>
       </AvFormResults>
@@ -147,6 +149,7 @@ storiesOf('Components|AvSelect', module)
           isMulti={isMulti}
           required={required}
           resource={avCustomResource}
+          labelKey='name'
           errorMessage={text('Generic Error Message', 'This field is invalid')}
           validate={{
             required: {
@@ -157,6 +160,7 @@ storiesOf('Components|AvSelect', module)
             },
           }}
           isDisabled={boolean('Disabled', false)}
+          creatable={boolean('Creatable',false)}
         />
         <Button color="primary">Submit</Button>
       </AvFormResults>
@@ -330,6 +334,35 @@ storiesOf('Components|AvSelect/resources', module)
         <AvUserSelect
           label={text('Label', 'Select User')}
           name="AvUserSelect"
+          minLength={min}
+          maxLength={max}
+          isMulti={isMulti}
+          required={required}
+          errorMessage={text('Generic Error Message', 'This field is invalid')}
+          validate={{
+            required: {
+              value: required,
+              errorMessage:
+                required &&
+                text('Required Error Message', 'This field is required'),
+            },
+          }}
+          isDisabled={boolean('Disabled', false)}
+        />
+        <Button color="primary">Submit</Button>
+      </AvFormResults>
+    );
+  })
+  .add('AvCodeSelect', () => {
+    const isMulti = boolean('Multiple', false);
+    const min = (isMulti && number('Min Selection', 2)) || undefined;
+    const max = (isMulti && number('Max Selection', 3)) || undefined;
+    const required = boolean('Required', false);
+    return (
+      <AvFormResults>
+        <AvCodeSelect
+          label={text('Label', 'Select Code')}
+          name="AvCodeSelect"
           minLength={min}
           maxLength={max}
           isMulti={isMulti}

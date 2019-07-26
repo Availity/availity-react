@@ -3,6 +3,70 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [4.4.10](https://github.com/Availity/availity-react/compare/@availity/page-header@4.4.9...@availity/page-header@4.4.10) (2019-07-23)
+
+**Note:** Version bump only for package @availity/page-header
+
+
+
+
+
+## [4.4.9](https://github.com/Availity/availity-react/compare/@availity/page-header@4.4.8...@availity/page-header@4.4.9) (2019-07-19)
+
+**Note:** Version bump only for package @availity/page-header
+
+
+
+
+
+## [4.4.8](https://github.com/Availity/availity-react/compare/@availity/page-header@4.4.7...@availity/page-header@4.4.8) (2019-07-11)
+
+**Note:** Version bump only for package @availity/page-header
+
+
+
+
+
+## [4.4.7](https://github.com/Availity/availity-react/compare/@availity/page-header@4.4.6...@availity/page-header@4.4.7) (2019-07-02)
+
+**Note:** Version bump only for package @availity/page-header
+
+
+
+
+
+## [4.4.6](https://github.com/Availity/availity-react/compare/@availity/page-header@4.4.5...@availity/page-header@4.4.6) (2019-06-24)
+
+**Note:** Version bump only for package @availity/page-header
+
+
+
+
+
+## [4.4.5](https://github.com/Availity/availity-react/compare/@availity/page-header@4.4.4...@availity/page-header@4.4.5) (2019-06-20)
+
+**Note:** Version bump only for package @availity/page-header
+
+
+
+
+
+## [4.4.4](https://github.com/Availity/availity-react/compare/@availity/page-header@4.4.3...@availity/page-header@4.4.4) (2019-06-17)
+
+**Note:** Version bump only for package @availity/page-header
+
+
+
+
+
+## [4.4.3](https://github.com/Availity/availity-react/compare/@availity/page-header@4.4.2...@availity/page-header@4.4.3) (2019-06-14)
+
+**Note:** Version bump only for package @availity/page-header
+
+
+
+
+
 ## [4.4.2](https://github.com/Availity/availity-react/compare/@availity/page-header@4.4.1...@availity/page-header@4.4.2) (2019-06-06)
 
 **Note:** Version bump only for package @availity/page-header

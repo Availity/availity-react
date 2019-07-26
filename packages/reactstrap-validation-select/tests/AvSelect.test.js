@@ -1,7 +1,8 @@
 import React from 'react';
-import { render } from '@testing-library/react';
-import AvSelect from '..';
+import { render, fireEvent, waitForElement } from '@testing-library/react';
+import '@testing-library/react/cleanup-after-each';
 import { AvForm } from 'availity-reactstrap-validation';
+import AvSelect from '..';
 
 const options = [
   { label: 'Option 1', value: 'value for option 1' },
@@ -10,32 +11,60 @@ const options = [
   { label: 'Option 4', value: 'value for option 4' },
 ];
 
-describe('AvSelect', () => {
-  test('should render', () => {
-    const { container } = render(
-      <AvForm>
-        <AvSelect
-          options={options}
-          name="standAlone"
-          aria-label="stand-alone"
-        />
-      </AvForm>
-    );
+const renderSelect = props =>
+  render(
+    <AvForm>
+      <AvSelect name="test-form-input" {...props} />
+    </AvForm>
+  );
 
-    expect(container).toMatchSnapshot();
+describe('AvSelect', () => {
+  test('default behavior works', async () => {
+    const { container, getByText } = renderSelect({
+      options,
+      classNamePrefix: 'test',
+      getResult: 'regions',
+    });
+
+    const select = container.querySelector('.test__control');
+    fireEvent.keyDown(select, { key: 'ArrowDown', keyCode: 40 });
+    fireEvent.keyDown(select, { key: 'Enter', keyCode: 13 });
+
+    const option = await waitForElement(() => getByText('Option 1'));
+
+    expect(option).toBeDefined();
+
+    fireEvent.click(option);
+
+    expect(
+      container.querySelector('.test__creatable__option--is-selected')
+    ).toBeDefined();
+    expect(select.querySelector('.test__creatable__placeholder')).toBe(null);
   });
 
-  test('should show selected as active', () => {
-    const { container } = render(
-      <AvForm>
-        <AvSelect
-          options={options}
-          name="standAlone"
-          aria-label="stand-alone"
-        />
-      </AvForm>
-    );
+  test('creatable works', async () => {
+    const { container, getByText } = renderSelect({
+      options,
+      classNamePrefix: 'test__creatable',
+      getResult: 'regions',
+      creatable: true,
+    });
 
-    expect(container).toMatchSnapshot();
+    const selectInput = container.querySelector('#react-select-3-input');
+    fireEvent.change(selectInput, {
+      target: { value: 'Test' },
+    });
+    fireEvent.keyDown(selectInput, { key: 'Enter', keyCode: 13 });
+
+    const selectOption = await waitForElement(() => getByText('Test'));
+
+    expect(selectOption).toBeDefined();
+
+    expect(
+      container.querySelector('.test__creatable__option--is-selected')
+    ).toBeDefined();
+    expect(selectInput.querySelector('.test__creatable__placeholder')).toBe(
+      null
+    );
   });
 });

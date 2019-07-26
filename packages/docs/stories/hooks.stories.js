@@ -1,10 +1,16 @@
 /* eslint-disable react/prop-types */
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { storiesOf } from '@storybook/react';
-import { text } from '@storybook/addon-knobs/react';
+import { text, number } from '@storybook/addon-knobs/react';
 import { withKnobs } from '@storybook/addon-knobs';
-import { useToggle, useEffectAsync } from '@availity/hooks';
-import { Button, Card } from 'reactstrap';
+import {
+  useToggle,
+  useEffectAsync,
+  useCurrentRegion,
+  useMount,
+  useTimeout,
+} from '@availity/hooks';
+import { Button, Card, CardBody, CardTitle } from 'reactstrap';
 
 import README from '@availity/hooks/README.md';
 
@@ -64,3 +70,86 @@ storiesOf('Hooks|useEffectAsync', module)
   .add('default', () => (
     <AsyncComponent mockData={text('Data', 'Test Data')} />
   ));
+
+storiesOf('Hooks|useMount', module)
+  .addParameters({
+    readme: {
+      // Show readme at the addons panel
+      sidebar: README,
+      // eslint-disable-next-line react/prop-types
+      StoryPreview: ({ children }) => <div>{children}</div>,
+    },
+  })
+  .addDecorator(withKnobs)
+  .add('default', () => {
+    const Component = () => {
+      const [text, setText] = useState('hello');
+
+      useMount(() => {
+        setText('world');
+      });
+
+      return <span>{text}</span>;
+    };
+
+    return <Component />;
+  });
+
+storiesOf('Hooks|useTimeout', module)
+  .addParameters({
+    readme: {
+      // Show readme at the addons panel
+      sidebar: README,
+      // eslint-disable-next-line react/prop-types
+      StoryPreview: ({ children }) => <div>{children}</div>,
+    },
+  })
+  .addDecorator(withKnobs)
+  .add('default', () => {
+    const beforeTimeoutText = text('Before Timeout', 'Hello');
+    const afterTimeoutText = text('After Timeout', 'World');
+
+    const Component = () => {
+      const [value, setValue] = useState(beforeTimeoutText);
+      const ready = useTimeout(number('Timeout', 3000));
+
+      useEffect(() => {
+        if (ready) {
+          setValue(afterTimeoutText);
+        }
+      }, [ready]);
+
+      return <span>{value}</span>;
+    };
+
+    return <Component />;
+  });
+
+storiesOf('Hooks|resources', module)
+  .addParameters({
+    readme: {
+      // Show readme at the addons panel
+      sidebar: README,
+      // eslint-disable-next-line react/prop-types
+      StoryPreview: ({ children }) => <div>{children}</div>,
+    },
+  })
+  .addDecorator(withKnobs)
+  .add('useCurrentRegion', () => {
+    const SomeComponent = () => {
+      const [currentRegion, loading] = useCurrentRegion();
+
+      return (
+        <Card body>
+          <CardTitle className="text-center" tag="h4">
+            Region
+          </CardTitle>
+          <CardBody>
+            {loading ? 'Loading...' : JSON.stringify(currentRegion)}
+          </CardBody>
+        </Card>
+      );
+    };
+
+    return <SomeComponent />;
+  });

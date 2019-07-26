@@ -1,6 +1,6 @@
 {
   "name": "@availity/hooks",
-  "version": "1.3.2",
+  "version": "1.4.0",
   "author": "Kyle Gray <kyle.gray@availity.com>",
   "description": "A group of pre-built hooks that are common in most apps",
   "main": "index.js",
@@ -23,10 +23,18 @@
     "prop-types": "^15.5.8"
   },
   "devDependencies": {
+    "@availity/api-axios": "^5.2.1",
+    "@availity/api-core": "^5.2.1",
+    "@availity/localstorage-core": "^2.6.1",
+    "axios": "^0.18.0",
     "react": "^16.8.3",
     "react-dom": "^16.8.3"
   },
   "peerDependencies": {
+    "@availity/api-axios": "^5.2.1",
+    "@availity/api-core": "^5.2.1",
+    "@availity/localstorage-core": "^2.6.1",
+    "axios": "^0.16.0 || ^0.17.0 || ^0.18.0 || ^0.19.0",
     "react": "^16.8.0"
   }
 }

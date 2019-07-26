@@ -7,6 +7,8 @@ import appeals from './appeals';
 import slotmachine from './slotmachine';
 import me from './me';
 import settings from './settings';
+import disclaimers from './disclaimers';
+import resourceSelect from './resource-select';
 
 mock.setup();
 
@@ -25,6 +27,10 @@ slotmachine(mock);
 me(mock);
 
 settings(mock);
+
+disclaimers(mock);
+
+resourceSelect(mock);
 
 // keep this last
 mock.use(proxy);

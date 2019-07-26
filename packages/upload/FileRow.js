@@ -91,6 +91,7 @@ FileRow.propTypes = {
     file: PropTypes.shape({
       name: PropTypes.string.isRequired,
     }).isRequired,
+    options: PropTypes.object,
   }),
 };
 

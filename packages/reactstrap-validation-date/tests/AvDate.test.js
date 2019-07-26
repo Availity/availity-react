@@ -1,7 +1,7 @@
 import React from 'react';
 import { render } from '@testing-library/react';
-import { AvDate } from '..';
 import { AvForm } from 'availity-reactstrap-validation';
+import { AvDate } from '..';
 
 describe('AvDate', () => {
   test('should render', () => {

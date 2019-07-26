@@ -3,6 +3,25 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [1.4.0](https://github.com/Availity/availity-react/compare/@availity/hooks@1.3.3...@availity/hooks@1.4.0) (2019-07-23)
+
+
+### Features
+
+* **hooks:** added useTimout and useMount hooks, tests, and docs ([e82c81e](https://github.com/Availity/availity-react/commit/e82c81e))
+
+
+
+
+
+## [1.3.3](https://github.com/Availity/availity-react/compare/@availity/hooks@1.3.2...@availity/hooks@1.3.3) (2019-06-24)
+
+**Note:** Version bump only for package @availity/hooks
+
+
+
+
+
 ## [1.3.2](https://github.com/Availity/availity-react/compare/@availity/hooks@1.3.1...@availity/hooks@1.3.2) (2019-06-03)
 
 **Note:** Version bump only for package @availity/hooks

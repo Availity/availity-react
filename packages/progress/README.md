@@ -2,6 +2,8 @@
 
 > Availity Progress Bar
 
+[![Version](https://img.shields.io/npm/v/@availity/progress.svg?style=for-the-badge)](https://www.npmjs.com/package/@availity/progress)
+
 ## Installation
 
 ```bash

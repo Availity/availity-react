@@ -2,6 +2,8 @@
 
 > Wrapper for react-select (with async pagination) to work with availity-reactstrap-validation.
 
+[![Version](https://img.shields.io/npm/v/@availity/reactstrap-validation-select.svg?style=for-the-badge)](https://www.npmjs.com/package/@availity/reactstrap-validation-select)
+
 ## Installation
 
 ```bash
@@ -99,6 +101,7 @@ Please refer to [react-select with async pagination](https://github.com/TheSharp
 *   **`groupClass`**: String. Optional. ClassName to add to the wrapping AvGroup
 *   **`labelClass`**: String. Optional. ClassName to add to the label
 *   **`feedbackClass`**: String. Optional. ClassName to add to the AvFeedback
+*   **`creatable`**: boolean. Optional. Whether or not to allow new items to be created if not found.
 
 #### AvSelectField Example usage
 
@@ -149,6 +152,7 @@ Please refer to [react-select-async-paginate](https://github.com/vtaits/react-se
 *   **`onPageChange`**: Function. Optional. A callback function to inform you that the user has scrolled to the bottom of the list and more items are loaded. The current input value and the page the user wants to go to will be provided as arguments to the callback function.
 *   **`hasMore`**: Boolean or Function. Optional. If true, `AvResourceSelect` will attempt to retrieve the next page of results. `response.data` from axios response is passed as the only argument to `hasMore` when `hasMore` is a function. Defaults to: `({ totalCount, limit, offset }) => totalCount > offset + limit;`
 *   **`additional`**: Object. Optional. Additional properties to pass to `AsyncPaginate` (see [react-select-async-paginate](https://github.com/vtaits/react-select-async-paginate#additional)).
+*   **`creatable`**: boolean. Optional. Whether or not to allow new items to be created if not found.
 
 #### AvResourceSelect Example usage
 

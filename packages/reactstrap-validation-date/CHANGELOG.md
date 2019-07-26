@@ -3,6 +3,46 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [2.0.2](https://github.com/Availity/availity-react/compare/@availity/reactstrap-validation-date@2.0.1...@availity/reactstrap-validation-date@2.0.2) (2019-07-19)
+
+**Note:** Version bump only for package @availity/reactstrap-validation-date
+
+
+
+
+
+## [2.0.1](https://github.com/Availity/availity-react/compare/@availity/reactstrap-validation-date@2.0.0...@availity/reactstrap-validation-date@2.0.1) (2019-06-24)
+
+**Note:** Version bump only for package @availity/reactstrap-validation-date
+
+
+
+
+
+# [2.0.0](https://github.com/Availity/availity-react/compare/@availity/reactstrap-validation-date@1.7.12...@availity/reactstrap-validation-date@2.0.0) (2019-06-20)
+
+
+### Code Refactoring
+
+* **reactstrap-validation-date:** fixed datepicker prop for hiding ([89233c0](https://github.com/Availity/availity-react/commit/89233c0))
+
+
+### BREAKING CHANGES
+
+* **reactstrap-validation-date:** removed the hideIcon prop in favor of the datepicker prop from the standard date picker to keep the same high level API for showing and hiding the calendar
+
+
+
+
+
+## [1.7.12](https://github.com/Availity/availity-react/compare/@availity/reactstrap-validation-date@1.7.11...@availity/reactstrap-validation-date@1.7.12) (2019-06-14)
+
+**Note:** Version bump only for package @availity/reactstrap-validation-date
+
+
+
+
+
 ## [1.7.11](https://github.com/Availity/availity-react/compare/@availity/reactstrap-validation-date@1.7.10...@availity/reactstrap-validation-date@1.7.11) (2019-06-03)
 
 **Note:** Version bump only for package @availity/reactstrap-validation-date

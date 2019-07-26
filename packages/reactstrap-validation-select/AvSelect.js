@@ -2,17 +2,24 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import classNames from 'classnames';
 import { AvBaseInput } from 'availity-reactstrap-validation';
-import Select from 'react-select';
-import Async from 'react-select-async-paginate';
-import {
+import Select, { components as reactSelectComponents } from 'react-select';
+import Creatable from 'react-select/creatable';
+import get from 'lodash.get';
+import isEqual from 'lodash.isequal';
+
+import AsyncPaginate from 'react-select-async-paginate';
+
+const {
   DownChevron,
   CrossIcon,
   DropdownIndicator,
   ClearIndicator,
-} from 'react-select/lib/components/indicators';
-import get from 'lodash/get';
-import find from 'lodash/find';
-import isEqual from 'lodash/isEqual';
+} = reactSelectComponents;
+
+const createOption = (label, labelkey = 'label') => ({
+  [labelkey]: label,
+  value: label.toLowerCase().replace(/\W/g, ''),
+});
 
 const components = {
   DropdownIndicator: props => (
@@ -30,6 +37,14 @@ const components = {
 };
 
 class AvSelect extends AvBaseInput {
+  constructor(props) {
+    super(props);
+
+    this.state = {
+      newOptions: [],
+    };
+  }
+
   static contextTypes = {
     FormCtrl: PropTypes.object,
   };
@@ -38,11 +53,15 @@ class AvSelect extends AvBaseInput {
     options: PropTypes.array,
     loadOptions: PropTypes.func,
     raw: PropTypes.bool,
+    creatable: PropTypes.bool,
   });
 
-  optionsContainsValue = (props, value) => {
+  optionsContainsValue = props => {
     const valueKey = this.getValueKey(props);
-    return !!find(props.options, [valueKey, value]);
+    const matchingValues = props.options.filter(
+      option => option.value === valueKey
+    );
+    return matchingValues.length > 0;
   };
 
   componentWillReceiveProps(nextProps) {
@@ -58,6 +77,24 @@ class AvSelect extends AvBaseInput {
       this.updateValidations(nextProps);
     }
   }
+
+  handleCreate = value => {
+    const { newOptions, value: currentValue } = this.state;
+    const { isMulti } = this.props;
+    const newOpt = createOption(value, this.getLabelKey(this.props));
+    newOptions.push(newOpt);
+    this.setState({
+      newOptions,
+    });
+
+    if (isMulti) {
+      this.getValidatorProps().onChange(
+        Array.isArray(currentValue) ? currentValue.concat(newOpt) : [newOpt]
+      );
+    } else {
+      this.getValidatorProps().onChange(newOpt);
+    }
+  };
 
   getDefaultValue() {
     let defaultValue = '';
@@ -84,7 +121,13 @@ class AvSelect extends AvBaseInput {
     return get(nextProps, 'labelKey', 'label');
   }
 
-  getOptionLabel = option => option[this.getLabelKey(this.props)];
+  getOptionLabel = option => {
+    if (option.__isNew__) {
+      return option.label;
+    }
+    const optLabel = option[this.getLabelKey(this.props)];
+    return optLabel;
+  };
 
   prepValue = (value, digIfMulti = true) => {
     if (this.props.isMulti && digIfMulti && Array.isArray(value)) {
@@ -123,7 +166,7 @@ class AvSelect extends AvBaseInput {
     const value = this.prepValue(inputValue);
     if (this.props.isMulti) {
       const max = this.props.maxLength || this.props.max;
-      if (value.length > max) {
+      if (value && value.length > max) {
         return;
       }
     }
@@ -134,7 +177,12 @@ class AvSelect extends AvBaseInput {
     return this.value === null ? '' : this.value;
   }
 
-  findOptionFromValue(value, options) {
+  findOptionFromValue(value) {
+    const { options: propOptions } = this.props;
+    const { newOptions } = this.state;
+
+    const options = [...propOptions, ...newOptions];
+
     return (
       Array.isArray(options) &&
       options.filter(option => this.getOptionValue(option) === value)[0]
@@ -146,17 +194,22 @@ class AvSelect extends AvBaseInput {
       return this.state.value;
     if (this.props.isMulti && Array.isArray(this.state.value)) {
       return this.state.value.map(
-        value => this.findOptionFromValue(value, this.props.options) || value
+        value => this.findOptionFromValue(value) || value
       );
     }
-    return (
-      this.findOptionFromValue(this.state.value, this.props.options) ||
-      this.state.value
-    );
+    return this.findOptionFromValue(this.state.value) || this.state.value;
   }
 
   render() {
-    const { className, selectRef, styles, ...attributes } = this.props;
+    const {
+      className,
+      selectRef,
+      styles,
+      creatable,
+      options,
+      ...attributes
+    } = this.props;
+    const { newOptions } = this.state;
     const touched =
       this.context.FormCtrl && this.context.FormCtrl.isTouched(this.props.name);
     const hasError =
@@ -177,7 +230,11 @@ class AvSelect extends AvBaseInput {
       );
     }
 
-    const Tag = attributes.loadOptions ? Async : Select;
+    let Tag = attributes.loadOptions ? AsyncPaginate : Select;
+
+    if (!attributes.loadOptions && creatable) {
+      Tag = Creatable;
+    }
 
     return (
       <Tag
@@ -185,10 +242,12 @@ class AvSelect extends AvBaseInput {
         classNamePrefix="av"
         role="listbox"
         className={classes}
+        SelectComponent={
+          attributes.loadOptions && creatable ? Creatable : undefined
+        }
         getOptionLabel={this.getOptionLabel}
         getOptionValue={this.getOptionValue}
         closeMenuOnSelect={!attributes.isMulti}
-        components={components}
         defaultOptions
         styles={{
           ...styles,
@@ -233,6 +292,11 @@ class AvSelect extends AvBaseInput {
             };
           },
         }}
+        options={
+          !attributes.loadOptions ? [...options, ...newOptions] : undefined
+        }
+        onCreateOption={this.handleCreate}
+        components={components}
         {...attributes}
         {...this.getValidatorProps()}
         value={this.getViewValue()}

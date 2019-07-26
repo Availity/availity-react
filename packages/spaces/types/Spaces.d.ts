@@ -5,6 +5,7 @@ export interface SpacesProps {
     variables?: Object;
     spaceIds: Array<string>;
     payerIds: Array<string>;
+    spaces: Array<Object>;
 }
 
 declare const Spaces: React.FunctionComponent<SpacesProps>;
