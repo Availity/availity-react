@@ -59,7 +59,7 @@
     "conventional-recommended-bump": "^5.0.0",
     "core-js": "^3.1.2",
     "eslint-config-availity": "^4.0.9",
-    "husky": "^2.1.0",
+    "husky": "^3.0.1",
     "identity-obj-proxy": "^3.0.0",
     "jest": "^24.0.0",
     "jest-environment-jsdom-global": "^1.1.0",
