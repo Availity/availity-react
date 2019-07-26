@@ -236,14 +236,15 @@ class AvSelect extends AvBaseInput {
       Tag = Creatable;
     }
 
-
     return (
       <Tag
         ref={selectRef}
         classNamePrefix="av"
         role="listbox"
         className={classes}
-        SelectComponent={attributes.loadOptions && creatable ? Creatable : undefined}
+        SelectComponent={
+          attributes.loadOptions && creatable ? Creatable : undefined
+        }
         getOptionLabel={this.getOptionLabel}
         getOptionValue={this.getOptionValue}
         closeMenuOnSelect={!attributes.isMulti}
@@ -291,7 +292,9 @@ class AvSelect extends AvBaseInput {
             };
           },
         }}
-        options={!attributes.loadOptions && [...options, ...newOptions]}
+        options={
+          !attributes.loadOptions ? [...options, ...newOptions] : undefined
+        }
         onCreateOption={this.handleCreate}
         components={components}
         {...attributes}
