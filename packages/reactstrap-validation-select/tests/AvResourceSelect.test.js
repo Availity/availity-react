@@ -90,7 +90,7 @@ describe('AvResourceSelect', () => {
     fireEvent.keyDown(patientsSelect, { key: 'Enter', keyCode: 13 });
 
     const patientsOption = await waitForElement(() =>
-      getByText('Moolenaar, Bram (ABC123)')
+      getByText('Moolenaar, Bram')
     );
     expect(avThanosApi.post).toHaveBeenCalledTimes(1);
     expect(avThanosApi.post.mock.calls[0][0].variables.filters.customerId).toBe(
