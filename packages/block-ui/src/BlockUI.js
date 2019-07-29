@@ -22,9 +22,7 @@ const BlockUi = ({
   const messageContainer = useRef();
 
   const keepInViewFunc = () => {
-    console.log('keep in view?');
     if (blocking && keepInView && container && container.current) {
-      console.log('Container', container);
       const containerBounds = container.current.getBoundingClientRect();
       const windowHeight = window.innerHeight;
       if (containerBounds.top > windowHeight || containerBounds.bottom < 0)
@@ -81,8 +79,6 @@ const BlockUi = ({
       }
 
       return () => {
-        detachListeners();
-
         const ae = safeActiveElement();
         if (focused && (!ae || ae === document.body || ae === topFocus)) {
           if (typeof focused.focus === 'function') {
@@ -95,12 +91,11 @@ const BlockUi = ({
   }, [blocking]);
 
   useEffect(() => {
-    if (keepInView !== undefined) {
+    if (keepInView) {
       attachListeners();
-      keepInViewFunc();
       return detachListeners;
     }
-  }, [keepInView, blocking]);
+  }, [keepInView, blocking, attachListeners, detachListeners]);
 
   const classes = blocking ? `block-ui ${className}` : className;
   const renderChilds = !blocking || renderChildren;
