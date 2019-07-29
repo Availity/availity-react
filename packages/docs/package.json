@@ -29,6 +29,7 @@
     "@availity/api-core": "^3.0.0",
     "@availity/app-icon": "^1.2.2",
     "@availity/authorize": "^1.2.0",
+    "@availity/block-ui": "^2.0.0",
     "@availity/breadcrumbs": "^3.0.3",
     "@availity/favorites": "^1.1.9",
     "@availity/feature": "^1.1.7",
