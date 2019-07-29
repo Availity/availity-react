@@ -134,9 +134,9 @@ The search field will fire a request after the debounce timer (see `debounceTime
 
 ```js
 {
-   limit: 50, //can be changed with 'itemsPerPage' prop
-   offset: 0 ,
-   q: 'user typed search text after debounce'
+   limit: "50", //limit quantity can be changed with `itemsPerPage` prop
+   offset: "0",
+   q: "user typed search text after debounce"
 }
 ```
 
