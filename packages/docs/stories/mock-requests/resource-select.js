@@ -1,0 +1,30 @@
+export default mock => {
+  // this path is ridiculously long
+  mock.post(/\/api\/v1\/my-custom-resource/, (req, res) =>
+    res.status(200).body(
+      window.JSON.stringify({
+        totalCount: 3,
+        count: 3,
+        offset: 0,
+        limit: 50,
+        resources: [
+          {
+            id: 1,
+            name: 'Option 1',
+            value: 'resource1',
+          },
+          {
+            id: 2,
+            name: 'Option 2',
+            value: 'resource2',
+          },
+          {
+            id: 3,
+            name: 'Option 3',
+            value: 'resource3',
+          },
+        ],
+      })
+    )
+  );
+};
