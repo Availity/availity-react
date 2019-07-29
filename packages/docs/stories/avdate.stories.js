@@ -6,7 +6,7 @@ import { text, boolean, select } from '@storybook/addon-knobs';
 import AvDate, {
   AvDateField,
   AvDateRange,
-  AvDateRangeField,
+  AvDateRangeField
 } from '@availity/reactstrap-validation-date';
 import README from '@availity/reactstrap-validation-date/README.md';
 import AvFormResults from './mocks/AvFormResults';
@@ -31,7 +31,6 @@ storiesOf('Components|AvDate', module)
         max={text('Max Date (yyyy-mm-dd)')}
         type={select('Type', types, 'text')}
         name="standAlone"
-        aria-label="stand-alone"
         required={boolean('Required', false)}
         disabled={boolean('Disabled', false)}
         datepicker={boolean('Has DatePicker', true)}
@@ -50,7 +49,6 @@ storiesOf('Components|AvDate', module)
           max={text('Max Date (yyyy-mm-dd)')}
           type={select('Type', types, 'text')}
           name="standAlone"
-          aria-label="stand-alone"
           required={boolean('Required', false)}
           disabled={boolean('Disabled', false)}
           datepicker={boolean('Has DatePicker', true)}

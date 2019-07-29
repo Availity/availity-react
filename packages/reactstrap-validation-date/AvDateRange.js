@@ -1,74 +1,20 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import { Button, Popover, InputGroupAddon } from 'reactstrap';
-import dayjs from 'dayjs';
-import isBetween from 'dayjs/plugin/isBetween';
-import customParseFormat from 'dayjs/plugin/customParseFormat';
-import pick from 'lodash/pick';
+import { InputGroup } from 'reactstrap';
+import moment from 'moment';
 import {
   inputType,
   isoDateFormat,
 } from 'availity-reactstrap-validation/lib/AvValidator/utils';
 import { AvInput } from 'availity-reactstrap-validation';
-import { DateRange } from 'react-date-range';
+import { DateRangePicker } from 'react-dates';
+import classNames from 'classnames';
+import 'react-dates/lib/css/_datepicker.css';
 import Icon from '@availity/icon';
-import AvDate from './AvDate';
-
-dayjs.extend(isBetween);
-dayjs.extend(customParseFormat);
+import { isOutsideRange, limitPropType } from './utils';
+import './css/react-dates-overrides.css';
 
 let count = 0;
-
-const relativeRanges = {
-  'Last 7 Days': {
-    startDate: now => now.add(-6, 'd'),
-    endDate: now => now,
-  },
-  'Last 30 Days': {
-    startDate: now => now.add(-29, 'd'),
-    endDate: now => now,
-  },
-  'Last Calendar Month': {
-    startDate: now => now.startOf('month').add(-1, 'M'),
-    endDate: now => now.startOf('month').add(-1, 'd'),
-  },
-  'Last 120 Days': {
-    startDate: now => now.add(-119, 'd'),
-    endDate: now => now,
-  },
-  'Last 6 Months': {
-    startDate: now => now.add(-6, 'M'),
-    endDate: now => now,
-  },
-  'Last 12 Months': {
-    startDate: now => now.add(-12, 'M'),
-    endDate: now => now,
-  },
-};
-
-const theme = {
-  DateRange: { background: '#ffffff' },
-  Calendar: { color: '#4d4f53' },
-  MonthButton: { background: 'none' },
-  MonthArrowPrev: { borderRightColor: '#4d4f53' },
-  MonthArrowNext: { borderLeftColor: '#4d4f53' },
-  DaySelected: {
-    background: '#2261b5',
-    borderColor: '#143a6c',
-  },
-  DayActive: {
-    background: '#2261b5',
-    boxShadow: 'none',
-  },
-  DayInRange: {
-    background: '#0093e8',
-    color: '#fff',
-  },
-  DayHover: {
-    background: '#e8ebeb',
-    color: '#4d4f53',
-  },
-};
 
 export default class AvDateRange extends Component {
   static propTypes = {
@@ -82,18 +28,17 @@ export default class AvDateRange extends Component {
       PropTypes.string,
       PropTypes.number,
       PropTypes.instanceOf(Date),
-      PropTypes.instanceOf(dayjs),
+      PropTypes.instanceOf(moment),
     ]),
     min: PropTypes.oneOfType([
       PropTypes.string,
       PropTypes.number,
       PropTypes.instanceOf(Date),
-      PropTypes.instanceOf(dayjs),
+      PropTypes.instanceOf(moment),
     ]),
     distance: PropTypes.object,
     ranges: PropTypes.oneOfType([PropTypes.array, PropTypes.object]),
     defaultValues: PropTypes.object,
-    theme: PropTypes.object,
     calendarIcon: PropTypes.node,
     datepicker: PropTypes.bool,
   };
@@ -128,7 +73,7 @@ export default class AvDateRange extends Component {
       if (getDefaultValue(props.start.name)) {
         this.state.startValue = getDefaultValue(props.start.name);
       } else if (start) {
-        this.state.startValue = dayjs(new Date())
+        this.state.startValue = moment(new Date())
           .add(start.value, start.units)
           .format(this.state.format);
       }
@@ -136,8 +81,8 @@ export default class AvDateRange extends Component {
         this.state.endValue = getDefaultValue(props.end.name);
       } else if (end) {
         this.state.endValue = (end.fromStart
-          ? dayjs(this.state.startValue, this.state.format)
-          : dayjs(new Date())
+          ? moment(this.state.startValue, this.state.format)
+          : moment(new Date())
         )
           .add(end.value, end.units)
           .format(this.state.format);
@@ -148,62 +93,6 @@ export default class AvDateRange extends Component {
     count += 1;
     this.guid = `date-range-${count}-btn`;
   }
-
-  getStartRef = el => {
-    this.startRef = el;
-
-    if (this.props.start.innerRef) {
-      if (typeof this.props.start.innerRef === 'function') {
-        this.props.start.innerRef(el);
-      } else {
-        this.props.start.innerRef.current = el;
-      }
-    }
-  };
-
-  getEndRef = el => {
-    this.endRef = el;
-
-    if (this.props.end.innerRef) {
-      if (typeof this.props.end.innerRef === 'function') {
-        this.props.end.innerRef(el);
-      } else {
-        this.props.end.innerRef.current = el;
-      }
-    }
-  };
-
-  togglePicker = () => {
-    this.setState(prevState => ({ open: !prevState.open }));
-  };
-
-  onStartFieldChange = event => {
-    const startValue = event && event.target ? event.target.value : event;
-    this.setState({ startValue, open: false }, () => {
-      if (this.props.onChange) {
-        this.props.onChange(event, {
-          start: startValue,
-          end: this.state.endValue,
-        });
-      }
-    });
-  };
-
-  onEndFieldChange = event => {
-    const endValue = event && event.target ? event.target.value : event;
-    this.setState({ endValue, open: false }, () => {
-      if (this.props.onChange) {
-        this.props.onChange(event, {
-          start: this.state.startValue,
-          end: endValue,
-        });
-      }
-    });
-  };
-
-  toggle = () => {
-    this.setState(prevState => ({ open: !prevState.open }));
-  };
 
   open = () => {
     if (!this.state.open) {
@@ -222,8 +111,8 @@ export default class AvDateRange extends Component {
       this.props.start.name
     ).getViewValue();
     if (start && end && this.props.distance) {
-      const mStart = dayjs(new Date(start));
-      const mEnd = dayjs(new Date(end));
+      const mStart = moment(new Date(start));
+      const mEnd = moment(new Date(end));
       if (!mStart.isValid() || !mEnd.isValid()) {
         return true;
       }
@@ -232,9 +121,7 @@ export default class AvDateRange extends Component {
         if (!mEnd.isBefore(mStart.add(max.value, max.units), 'day')) {
           return (
             max.errorMessage ||
-            `The end date must be within ${max.value} ${
-              max.units
-            } of the start date`
+            `The end date must be within ${max.value} ${max.units} of the start date`
           );
         }
       }
@@ -242,9 +129,7 @@ export default class AvDateRange extends Component {
         if (mEnd.isAfter(mStart.add(min.value, min.units), 'day')) {
           return (
             min.errorMessage ||
-            `The end date must be greater than ${min.value} ${
-              min.units
-            } of the start date`
+            `The end date must be greater than ${min.value} ${min.units} of the start date`
           );
         }
       }
@@ -254,61 +139,6 @@ export default class AvDateRange extends Component {
 
   checkDistanceValidation = () => {
     this.context.FormCtrl.validate(this.props.end.name);
-  };
-
-  syncStartEnd = event => {
-    let endValue =
-      this.context.FormCtrl.getInput(this.props.end.name).getViewValue() ||
-      this.state.startValue;
-    if (
-      dayjs(this.state.startValue, this.state.format).isAfter(
-        new Date(endValue)
-      )
-    ) {
-      endValue = this.state.startValue;
-    }
-    if (this.state.endValue !== endValue) {
-      this.setState({ endValue }, () => {
-        if (this.props.onChange) {
-          this.props.onChange(event, {
-            start: this.state.startValue,
-            end: endValue,
-          });
-        }
-      });
-    }
-    if (!this.context.FormCtrl.isTouched(this.props.end.name)) {
-      this.context.FormCtrl.setTouched(this.props.end.name);
-    }
-    this.checkDistanceValidation(endValue, {
-      [this.props.start.name]: this.state.startValue,
-    });
-  };
-
-  syncEndStart = event => {
-    let startValue =
-      this.context.FormCtrl.getInput(this.props.start.name).getViewValue() ||
-      this.state.endValue;
-    if (
-      dayjs(this.state.endValue, this.state.format).isBefore(
-        new Date(startValue)
-      )
-    ) {
-      startValue = this.state.endValue;
-    }
-    if (this.state.startValue !== startValue) {
-      this.setState({ startValue }, () => {
-        if (this.props.onChange) {
-          this.props.onChange(event, {
-            start: startValue,
-            end: this.state.endValue,
-          });
-        }
-      });
-    }
-    if (!this.context.FormCtrl.isTouched(this.props.start.name)) {
-      this.context.FormCtrl.setTouched(this.props.start.name);
-    }
   };
 
   onPickerChange = range => {
@@ -340,7 +170,69 @@ export default class AvDateRange extends Component {
     );
   };
 
+  onDatesChange = async ({ startDate, endDate }) => {
+    const { format } = this.state;
+
+    const _startDate = (startDate && startDate.format(format)) || '';
+    const _endDate = (endDate && endDate.format(format)) || '';
+
+    console.log('onClose', startDate, endDate);
+    this.setState({
+      startValue: _startDate,
+      endValue: _endDate,
+    });
+
+    // field.onChange({ target: inputRef });
+    // if (onChange) {
+    //   onChange({ value: range });
+    // }
+  };
+
+  onClose = ({ startDate, endDate }) => {
+    const { format } = this.state;
+    const _startDate = (startDate && startDate.format(format)) || '';
+    const _endDate = (endDate && endDate.format(format)) || '';
+
+    console.log('onClose', startDate, endDate);
+
+    if (startDate !== null) {
+    }
+
+    if (endDate !== null) {
+    }
+
+    this.setState({
+      startValue: _startDate,
+      endValue: _endDate,
+    });
+    // inputRef.value = range;
+    // field.onBlur({ target: inputRef });
+    // if (!metadata.touched) {
+    //   setTouched({ [name]: true });
+    // }
+  };
+
+  onFocusChange = input => {
+    const { onPickerFocusChange } = this.props;
+
+    this.setState({
+      focusedInput: input,
+    });
+
+    if (onPickerFocusChange) onPickerFocusChange({ focusedInput: input });
+  };
+
   render() {
+    const {
+      name,
+      className,
+      id,
+      min,
+      max,
+      calendarIcon,
+      ...attributes
+    } = this.props;
+    const { startValue, endValue, format, focusedInput } = this.state;
     const endValidate = {
       ...this.props.validate,
       ...this.props.end.validate,
@@ -348,96 +240,68 @@ export default class AvDateRange extends Component {
     if (this.props.distance) {
       endValidate.distance = this.validateDistance;
     }
-    return (
-      <div className="input-group input-group-date-range">
-        <AvDate
-          placeholder={this.state.format.toLowerCase()}
-          type={this.props.type}
-          className={this.props.disabled ? 'border-right-0' : undefined}
-          {...this.props.start}
-          innerRef={this.getStartRef}
-          validate={{ ...this.props.validate, ...this.props.start.validate }}
-          onChange={this.onStartFieldChange}
-          value={this.state.startValue || ''}
-          disabled={this.props.disabled}
-          onBlur={this.syncStartEnd}
-          aria-label="From Date"
-          datepicker={false}
-        />
-        <InputGroupAddon
-          addonType="append"
-          className="input-group-prepend input-group-addon-dash"
-        >
-          -
-        </InputGroupAddon>
-        <AvDate
-          placeholder={this.state.format.toLowerCase()}
-          type={this.props.type}
-          className={this.props.disabled ? 'border-left-0' : undefined}
-          {...this.props.end}
-          innerRef={this.getEndRef}
-          validate={endValidate}
-          disabled={this.props.disabled}
-          onChange={this.onEndFieldChange}
-          value={this.state.endValue || ''}
-          onBlur={this.syncEndStart}
-          aria-label="To Date"
-          datepicker={false}
-        />
-        {this.props.datepicker && (
-          <>
-            <InputGroupAddon addonType="append">
-              <Button
-                id={this.guid}
-                color="light"
-                type="button"
-                disabled={this.props.disabled}
-                onClick={this.togglePicker}
-                style={{
-                  lineHeight:
-                    this.state.format === isoDateFormat ? '1.4' : undefined,
-                  zIndex: 'auto',
-                }}
-              >
-                {this.props.calendarIcon}
-                <span className="sr-only">Toggle Calendar</span>
-              </Button>
-            </InputGroupAddon>
 
-            <Popover
-              placement="top"
-              target={this.guid}
-              isOpen={this.state.open}
-              toggle={this.toggle}
-              className="popover-calendar-range"
-            >
-              <DateRange
-                startDate={this.state.startValue}
-                endDate={
-                  dayjs(new Date(this.state.endValue)).isValid()
-                    ? this.state.endValue
-                    : null
-                }
-                maxDate={this.props.max}
-                minDate={this.props.min}
-                ranges={
-                  // eslint-disable-next-line no-nested-ternary
-                  this.props.ranges !== undefined
-                    ? Array.isArray(this.props.ranges)
-                      ? pick(relativeRanges, this.props.ranges)
-                      : this.props.ranges
-                    : relativeRanges
-                }
-                onChange={this.onPickerChange}
-                format={this.state.format}
-                theme={this.props.theme || theme}
-                twoStepChange
-                linkedCalendars
-              />
-            </Popover>
-          </>
-        )}
-      </div>
+    const startId = `${(id || name).replace(/[^a-zA-Z0-9]/gi, '')}-start`;
+
+    const endId = `${(attributes.id || name).replace(
+      /[^a-zA-Z0-9]/gi,
+      ''
+    )}-end`;
+
+    const touched = this.context.FormCtrl.isTouched(name);
+    const hasError = this.context.FormCtrl.hasError(name);
+
+    const startDate = startValue ? moment(startValue, format) : null;
+    const endDate = endValue ? moment(endValue, format) : null;
+
+    const classes = classNames(
+      className,
+      touched ? 'is-touched' : 'is-untouched',
+      this.context.FormCtrl.isDirty(name) ? 'is-dirty' : 'is-pristine',
+      this.context.FormCtrl.isBad(name) ? 'is-bad-input' : null,
+      hasError ? 'av-invalid' : 'av-valid',
+      touched && hasError && 'is-invalid'
+    );
+
+    return (
+      <>
+        <AvInput
+          style={{ display: 'none' }}
+          {...this.props.start}
+          validate={{ ...this.props.validate, ...this.props.start.validate }}
+          value={this.state.startValue || ''}
+          valueFormatter={this.valueFormatter}
+          valueParser={this.valueParser}
+        />
+        <AvInput
+          style={{ display: 'none' }}
+          {...this.props.end}
+          validate={{ ...this.props.validate, ...this.props.end.validate }}
+          value={this.state.endValue || ''}
+          valueFormatter={this.valueFormatter}
+          valueParser={this.valueParser}
+        />
+        <InputGroup
+          disabled={attributes.disabled}
+          className={classes}
+          data-testid={`date-range-input-group-${name}`}
+        >
+          <DateRangePicker
+            startDate={startDate}
+            startDateId={startId}
+            endDate={endDate}
+            endDateId={endId}
+            onDatesChange={this.onDatesChange}
+            focusedInput={focusedInput}
+            onFocusChange={this.onFocusChange}
+            isOutsideRange={isOutsideRange(min, max)}
+            customInputIcon={calendarIcon}
+            inputIconPosition="after"
+            onClose={this.onClose}
+            numberOfMonths={1}
+          />
+        </InputGroup>
+      </>
     );
   }
 }
