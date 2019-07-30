@@ -326,8 +326,10 @@ export default class AvDateRange extends Component {
           disabled={attributes.disabled}
           className={classes}
           onChange={({ target }) => {
-            (target.id === startId || target.id === endId) &&
+            if(target.id === startId || target.id === endId){
               this.onDatesChange(target.value);
+
+            }
           }}
           data-testid={`date-range-input-group-${name}`}
         >
