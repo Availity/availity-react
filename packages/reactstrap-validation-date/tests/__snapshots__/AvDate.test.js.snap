@@ -1,0 +1,71 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`AvDate should render 1`] = `
+<div>
+  <form
+    action="#"
+    class="av-valid"
+    method="get"
+    novalidate=""
+  >
+    <input
+      aria-label="stand-alone"
+      class="is-untouched is-pristine av-valid form-control"
+      id="standAlone"
+      max="Max Date (yyyy-mm-dd)"
+      min="Min Date (yyyy-mm-dd)"
+      name="standAlone"
+      placeholder="yyyy-mm-dd"
+      style="display: none;"
+      type="text"
+      value=""
+    />
+    <div
+      class="is-untouched is-pristine av-valid input-group"
+      data-testid="date-input-group-standAlone"
+    >
+      <div
+        class="SingleDatePicker SingleDatePicker_1"
+      >
+        <div>
+          <div
+            class="SingleDatePickerInput SingleDatePickerInput_1 SingleDatePickerInput__withBorder SingleDatePickerInput__withBorder_2"
+          >
+            <div
+              class="DateInput DateInput_1"
+            >
+              <input
+                aria-describedby="DateInput__screen-reader-message-standAlone-btn"
+                aria-label="yyyy-mm-dd"
+                autocomplete="off"
+                class="DateInput_input DateInput_input_1"
+                id="standAlone-btn"
+                name="standAlone-btn"
+                placeholder="yyyy-mm-dd"
+                type="text"
+                value=""
+              />
+              <p
+                class="DateInput_screenReaderMessage DateInput_screenReaderMessage_1"
+                id="DateInput__screen-reader-message-standAlone-btn"
+              >
+                Press the down arrow key to interact with the calendar and
+  select a date. Press the question mark key to get the keyboard shortcuts for changing dates.
+              </p>
+            </div>
+            <button
+              class="SingleDatePickerInput_calendarIcon SingleDatePickerInput_calendarIcon_1"
+              type="button"
+            >
+              <i
+                aria-label="calendar"
+                class="icon icon-calendar"
+              />
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </form>
+</div>
+`;

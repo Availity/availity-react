@@ -17,6 +17,7 @@ let count = 0;
 
 export default class AvDateRange extends Component {
   static propTypes = {
+    ...AvInput.propTypes,
     start: PropTypes.shape(AvInput.propTypes),
     end: PropTypes.shape(AvInput.propTypes),
     onChange: PropTypes.func,
@@ -27,6 +28,7 @@ export default class AvDateRange extends Component {
     min: limitPropType,
     distance: PropTypes.object,
     ranges: PropTypes.oneOfType([PropTypes.array, PropTypes.object]),
+    onPickerFocusChange: PropTypes.func,
     defaultValues: PropTypes.object,
     calendarIcon: PropTypes.node,
     datepicker: PropTypes.bool,
@@ -168,13 +170,13 @@ export default class AvDateRange extends Component {
     if (startDate !== null) {
       this.context.FormCtrl.getInput(this.props.start.name)
         .getValidatorProps()
-        ['onChange'](_startDate);
+        .onChange(_startDate);
     }
 
     if (endDate !== null) {
       this.context.FormCtrl.getInput(this.props.end.name)
         .getValidatorProps()
-        ['onChange'](_endDate);
+        .onChange(_endDate);
     }
 
     this.setState({
@@ -188,18 +190,16 @@ export default class AvDateRange extends Component {
     const _startDate = (startDate && startDate.format(format)) || '';
     const _endDate = (endDate && endDate.format(format)) || '';
 
-    console.log('onClose', _startDate, _endDate);
-
     if (startDate !== null) {
       this.context.FormCtrl.getInput(this.props.start.name)
         .getValidatorProps()
-        ['onBlur'](_startDate);
+        .onBlur(_startDate);
     }
 
     if (endDate !== null) {
       this.context.FormCtrl.getInput(this.props.end.name)
         .getValidatorProps()
-        ['onBlur'](_endDate);
+        .onBlur(_endDate);
     }
 
     this.setState({
@@ -302,8 +302,6 @@ export default class AvDateRange extends Component {
       hasError ? 'av-invalid' : 'av-valid',
       touched && hasError && 'is-invalid'
     );
-
-    console.log('StartDate', this.state.startValue, 'min', min);
 
     return (
       <>

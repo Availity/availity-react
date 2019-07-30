@@ -2,22 +2,23 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { SingleDatePicker } from 'react-dates';
-import { InputGroup, Input } from 'reactstrap';
+import { InputGroup } from 'reactstrap';
 import classNames from 'classnames';
 import moment from 'moment';
 import 'react-dates/initialize';
 import 'react-dates/lib/css/_datepicker.css';
-import { isOutsideRange, limitPropType } from './utils';
 
 import {
   inputType,
   isoDateFormat,
 } from 'availity-reactstrap-validation/lib/AvValidator/utils';
 import Icon from '@availity/icon';
-import { AvBaseInput, AvInput } from 'availity-reactstrap-validation';
+import { AvInput } from 'availity-reactstrap-validation';
+import { isOutsideRange, limitPropType } from './utils';
 
 class AvDate extends Component {
   static propTypes = {
+    ...AvInput.propTypes,
     calendarIcon: PropTypes.node,
     min: limitPropType,
     max: limitPropType,
@@ -93,7 +94,7 @@ class AvDate extends Component {
 
     this.context.FormCtrl.getInput(this.props.name)
       .getValidatorProps()
-      ['onChange'](val);
+      .onChange(val);
 
     this.setState({ value: val }, () => {
       if (this.props.onChange) this.props.onChange(event, val);
@@ -105,7 +106,7 @@ class AvDate extends Component {
 
     const onBlur = this.context.FormCtrl.getInput(
       this.props.name
-    ).getValidatorProps()['onBlur'];
+    ).getValidatorProps().onBlur;
 
     onBlur(date && date.format(format));
   };
