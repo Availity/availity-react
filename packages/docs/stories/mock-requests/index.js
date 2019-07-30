@@ -9,6 +9,7 @@ import me from './me';
 import settings from './settings';
 import disclaimers from './disclaimers';
 import resourceSelect from './resource-select';
+import thanos from './thanos';
 
 mock.setup();
 
@@ -29,6 +30,8 @@ me(mock);
 settings(mock);
 
 disclaimers(mock);
+
+thanos(mock);
 
 resourceSelect(mock);
 

@@ -164,6 +164,7 @@ Select.propTypes = {
   selectRef: PropTypes.object,
   styles: PropTypes.object,
   maxLength: PropTypes.number,
+  onChange: PropTypes.func,
 };
 
 export default Select;

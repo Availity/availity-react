@@ -3,7 +3,13 @@ import { SelectFieldProps } from './SelectField';
 
 type ResourceType = {
   postGet?: Function;
+  post?: Function;
   getResult?: string | Function;
+};
+
+type GraphQLConfigType = {
+  type?: string;
+  query?: string;
 };
 
 export interface ResourceSelectProps extends SelectFieldProps {
@@ -21,6 +27,7 @@ export interface ResourceSelectProps extends SelectFieldProps {
   watchParams?: Array<any>;
   cacheUniq?: any;
   additional?: object;
+  graphqlConfig?: GraphQLConfigType;
 }
 
 declare class ResourceSelect extends React.Component<ResourceSelectProps> {

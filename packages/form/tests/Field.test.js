@@ -1,8 +1,9 @@
 import React from 'react';
 import { render, fireEvent, wait } from '@testing-library/react';
-import { Form, Field } from '..';
 import { Button } from 'reactstrap';
 import * as yup from 'yup';
+
+import { Form, Field } from '..';
 
 describe('Field', () => {
   test('renders with label', () => {

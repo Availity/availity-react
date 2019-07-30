@@ -194,9 +194,9 @@ See [react-select-async-paginate](https://github.com/vtaits/react-select-async-p
 *   **`delay`**: Number. Default: `350`. Set to `debounceTimeout` if `debounceTimeout` is not provided. (see [react-select-async-paginate](https://github.com/vtaits/react-select-async-paginate#debouncetimeout))
 *   **`itemsPerPage`**: Number. Optional. Default: `50`. The number of items to fetched be displayed per page when the usr scrolls down.
 *   **`onPageChange`**: Function. Optional. A callback function to inform you that the user has scrolled to the bottom of the list and more items are loaded. The current input value and the page the user wants to go to will be provided as arguments to the callback function.
-*   **`hasMore`**: Boolean or Function. Optional. If true, `ResourceSelect` will attempt to retrieve the next page of results. `response.data` from axios response is passed as the only argument to `hasMore` when `hasMore` is a function. Defaults to: `({ totalCount, limit, offset }) => totalCount > offset + limit;`
+*   **`hasMore`**: Boolean or Function. Optional. If true, `ResourceSelect` will attempt to retrieve the next page of results. `response.data` from axios response is passed as the only argument to `hasMore` when `hasMore` is a function. Defaults to: `({ totalCount, limit, offset }) => totalCount > offset + limit;` for non-GraphQL apis. Defaults to `(data) => data.data[${this.props.graphqlConfig.type}Pagination].pageInfo.hasNextPage` for GraphQL apis.
 *   **`additional`**: Object. Optional. Additional properties to pass to `AsyncPaginate` (see [react-select-async-paginate](https://github.com/vtaits/react-select-async-paginate#additional)).
-
+*   **`graphqlConfig`**: Object{ type, query }. Optional. `type` String. is the type of asset returned. `query` String. is the GraphQL query to use in the request.
 #### Pre-made Resource Selects
 
 The follow components exist and can be imported by name from `@availity/select/resources`
@@ -207,6 +207,7 @@ The follow components exist and can be imported by name from `@availity/select/r
 * AvPermissionSelect
 * AvNavigationSelect
 * AvUserSelect
+* AvPatientSelect
 
 These components are `ResourceSelect` with pre-configured `resource`, `valueKey`, and `labelKey` to make it easy to use. All of the props for `ResourceSelect` can be provided to override the defaults of these pre-made components. For some of the components you will want to provide the `customerId` prop.
 
@@ -223,6 +224,7 @@ import {
   AvPermissionSelect,
   AvNavigationSelect,
   AvUserSelect,
+  AvPatientSelect,
 } from '@availity/select/resources';
 
 const schema = yup.object().shape({
@@ -232,17 +234,19 @@ const schema = yup.object().shape({
   AvPermissionSelect: yup.string().required('This field is required.'),
   AvNavigationSelect: yup.string().required('This field is required.'),
   AvUserSelect: yup.string().required('This field is required.'),
+  AvPatientSelect: yup.string().required('This field is required.'),
 });
 
 // ...
 <Form
   initialValues={{
-    AvProviderSelect: null,
-    AvOrganizationSelect: null,
-    AvRegionSelect: null,
-    AvPermissionSelect: null,
-    AvNavigationSelect: null,
-    AvUserSelect: null,
+    provider: null,
+    organization: null,
+    region: null,
+    permissions: null,
+    payerSpace: null,
+    user: null,
+    patient: null,
   }}
   onSubmit={values => apiResource.submit(values)}
   validationSchema={schema}
@@ -283,6 +287,13 @@ const schema = yup.object().shape({
         name="user"
         label="Select a User"
         customerId={customerId}
+    />
+    <AvPatientSelect
+        name="patient"
+        label="Select a Patient"
+        parameters={{
+          customerId,
+        }}
     />
 </Form>;
 ```
