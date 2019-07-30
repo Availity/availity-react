@@ -80,12 +80,12 @@ border-color: #cdd3d3;
   border-bottom-right-radius: 0;
 };
 
-.DateRangePickerInput > input.DateInput_input:last-of-type {
+.DateRangePickerInput input.DateInput_input:last-of-type {
   border-top-right-radius: 0;
   border-bottom-right-radius: 0;
   border-top-left-radius: 0;
   border-bottom-left-radius: 0;
-  border-right: 0;
+  border-right: none;
 };
 
 .DateInput_input__focused {
