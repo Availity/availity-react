@@ -8,7 +8,6 @@ import moment from 'moment';
 import 'react-dates/initialize';
 import 'react-dates/lib/css/_datepicker.css';
 import { isOutsideRange, limitPropType } from './utils';
-import './css/react-dates-overrides.css';
 
 import {
   inputType,
@@ -23,6 +22,7 @@ class AvDate extends Component {
     min: limitPropType,
     max: limitPropType,
     onPickerFocusChange: PropTypes.func,
+    datePickerProps: PropTypes.object,
   };
 
   static contextTypes = {
@@ -32,6 +32,7 @@ class AvDate extends Component {
   static defaultProps = {
     type: 'text',
     datepicker: true,
+    datePickerProps: {},
     calendarIcon: <Icon name="calendar" />,
   };
 
@@ -56,9 +57,7 @@ class AvDate extends Component {
   constructor(props) {
     super(props);
 
-    this.state = {
-
-    };
+    this.state = {};
 
     if (props.type.toLowerCase() === 'date' && inputType.date) {
       this.state.format = isoDateFormat;
@@ -92,8 +91,9 @@ class AvDate extends Component {
       val = val.format(format);
     }
 
-    console.log('val', val);
-    this.context.FormCtrl.getInput(this.props.name).getValidatorProps()['onChange'](val);
+    this.context.FormCtrl.getInput(this.props.name)
+      .getValidatorProps()
+      ['onChange'](val);
 
     this.setState({ value: val }, () => {
       if (this.props.onChange) this.props.onChange(event, val);
@@ -103,9 +103,9 @@ class AvDate extends Component {
   onClose = ({ date }) => {
     const { format } = this.state;
 
-    console.log('on close', date && date.format(format));
-
-    const onBlur = this.context.FormCtrl.getInput(this.props.name).getValidatorProps()['onBlur'];
+    const onBlur = this.context.FormCtrl.getInput(
+      this.props.name
+    ).getValidatorProps()['onBlur'];
 
     onBlur(date && date.format(format));
   };
@@ -137,6 +137,9 @@ class AvDate extends Component {
       calendarIcon,
       hideIcon,
       className,
+      datePickerProps,
+      min,
+      max,
       type,
       name,
       ...attributes
@@ -165,6 +168,8 @@ class AvDate extends Component {
         placeholder={this.state.format.toLowerCase()}
         {...attributes}
         type="text"
+        min={min}
+        max={max}
         style={{ display: 'none' }}
         value={this.state.value || ''}
         valueFormatter={this.valueFormatter}
@@ -185,16 +190,18 @@ class AvDate extends Component {
           data-testid={`date-input-group-${name}`}
         >
           <SingleDatePicker
-            {...attributes}
+            {...datePickerProps}
             placeholder={this.state.format.toLowerCase()}
             id={pickerId}
+            disabled={attributes.disabled}
             date={this.getDateValue()}
             onDateChange={this.onPickerChange}
-            focused={this.state.focused}
+            focused={datepicker && this.state.focused}
             onFocusChange={this.onFocusChange}
             numberOfMonths={1}
-            isOutsideRange={isOutsideRange(attributes.min, attributes.max)}
-            customInputIcon={calendarIcon}
+            isOutsideRange={isOutsideRange(min, max)}
+            customInputIcon={datepicker ? calendarIcon : undefined}
+            showDefaultInputIcon={datepicker}
             inputIconPosition="after"
             onClose={this.onClose}
           />

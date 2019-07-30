@@ -12,7 +12,6 @@ import classNames from 'classnames';
 import 'react-dates/lib/css/_datepicker.css';
 import Icon from '@availity/icon';
 import { isOutsideRange, limitPropType } from './utils';
-import './css/react-dates-overrides.css';
 
 let count = 0;
 
@@ -24,18 +23,8 @@ export default class AvDateRange extends Component {
     validate: PropTypes.object,
     type: PropTypes.string,
     disabled: PropTypes.bool,
-    max: PropTypes.oneOfType([
-      PropTypes.string,
-      PropTypes.number,
-      PropTypes.instanceOf(Date),
-      PropTypes.instanceOf(moment),
-    ]),
-    min: PropTypes.oneOfType([
-      PropTypes.string,
-      PropTypes.number,
-      PropTypes.instanceOf(Date),
-      PropTypes.instanceOf(moment),
-    ]),
+    max: limitPropType,
+    min: limitPropType,
     distance: PropTypes.object,
     ranges: PropTypes.oneOfType([PropTypes.array, PropTypes.object]),
     defaultValues: PropTypes.object,
@@ -176,16 +165,22 @@ export default class AvDateRange extends Component {
     const _startDate = (startDate && startDate.format(format)) || '';
     const _endDate = (endDate && endDate.format(format)) || '';
 
-    console.log('onClose', startDate, endDate);
+    if (startDate !== null) {
+      this.context.FormCtrl.getInput(this.props.start.name)
+        .getValidatorProps()
+        ['onChange'](_startDate);
+    }
+
+    if (endDate !== null) {
+      this.context.FormCtrl.getInput(this.props.end.name)
+        .getValidatorProps()
+        ['onChange'](_endDate);
+    }
+
     this.setState({
       startValue: _startDate,
       endValue: _endDate,
     });
-
-    // field.onChange({ target: inputRef });
-    // if (onChange) {
-    //   onChange({ value: range });
-    // }
   };
 
   onClose = ({ startDate, endDate }) => {
@@ -193,33 +188,67 @@ export default class AvDateRange extends Component {
     const _startDate = (startDate && startDate.format(format)) || '';
     const _endDate = (endDate && endDate.format(format)) || '';
 
-    console.log('onClose', startDate, endDate);
+    console.log('onClose', _startDate, _endDate);
 
     if (startDate !== null) {
+      this.context.FormCtrl.getInput(this.props.start.name)
+        .getValidatorProps()
+        ['onBlur'](_startDate);
     }
 
     if (endDate !== null) {
+      this.context.FormCtrl.getInput(this.props.end.name)
+        .getValidatorProps()
+        ['onBlur'](_endDate);
     }
 
     this.setState({
       startValue: _startDate,
       endValue: _endDate,
     });
-    // inputRef.value = range;
-    // field.onBlur({ target: inputRef });
-    // if (!metadata.touched) {
-    //   setTouched({ [name]: true });
-    // }
   };
 
   onFocusChange = input => {
-    const { onPickerFocusChange } = this.props;
+    const { onPickerFocusChange, start, end } = this.props;
+    const startDateTouched = this.context.FormCtrl.isTouched(start.name);
+    const endDateTouched = this.context.FormCtrl.isTouched(end.name);
+
+    if (!input) {
+      if (!startDateTouched) {
+        this.context.FormCtrl.setTouched(start.name);
+      }
+
+      if (!endDateTouched) {
+        this.context.FormCtrl.setTouched(end.name);
+      }
+    }
 
     this.setState({
       focusedInput: input,
     });
 
     if (onPickerFocusChange) onPickerFocusChange({ focusedInput: input });
+  };
+
+  valueParser = value => {
+    if (this.state.format === isoDateFormat) return value;
+    const date = moment(
+      value,
+      [this.state.format, 'MMDDYYYY', 'YYYYMMDD'],
+      true
+    );
+    if (date.isValid()) return date.format(isoDateFormat);
+    return value;
+  };
+
+  valueFormatter = value => {
+    const date = moment(
+      value,
+      [isoDateFormat, this.state.format, 'MMDDYYYY', 'YYYYMMDD'],
+      true
+    );
+    if (date.isValid()) return date.format(this.state.format);
+    return value;
   };
 
   render() {
@@ -230,6 +259,7 @@ export default class AvDateRange extends Component {
       min,
       max,
       calendarIcon,
+      datepicker,
       ...attributes
     } = this.props;
     const { startValue, endValue, format, focusedInput } = this.state;
@@ -248,8 +278,18 @@ export default class AvDateRange extends Component {
       ''
     )}-end`;
 
-    const touched = this.context.FormCtrl.isTouched(name);
-    const hasError = this.context.FormCtrl.hasError(name);
+    const touched =
+      this.context.FormCtrl.isTouched(this.props.start.name) ||
+      this.context.FormCtrl.isTouched(this.props.end.name);
+    const hasError =
+      this.context.FormCtrl.hasError(this.props.start.name) ||
+      this.context.FormCtrl.hasError(this.props.end.name);
+    const isDirty =
+      this.context.FormCtrl.isDirty(this.props.start.name) ||
+      this.context.FormCtrl.isDirty(this.props.end.name);
+    const isBad =
+      this.context.FormCtrl.isBad(this.props.start.name) ||
+      this.context.FormCtrl.isBad(this.props.end.name);
 
     const startDate = startValue ? moment(startValue, format) : null;
     const endDate = endValue ? moment(endValue, format) : null;
@@ -257,27 +297,42 @@ export default class AvDateRange extends Component {
     const classes = classNames(
       className,
       touched ? 'is-touched' : 'is-untouched',
-      this.context.FormCtrl.isDirty(name) ? 'is-dirty' : 'is-pristine',
-      this.context.FormCtrl.isBad(name) ? 'is-bad-input' : null,
+      isDirty ? 'is-dirty' : 'is-pristine',
+      isBad ? 'is-bad-input' : null,
       hasError ? 'av-invalid' : 'av-valid',
       touched && hasError && 'is-invalid'
     );
+
+    console.log('StartDate', this.state.startValue, 'min', min);
 
     return (
       <>
         <AvInput
           style={{ display: 'none' }}
           {...this.props.start}
-          validate={{ ...this.props.validate, ...this.props.start.validate }}
+          validate={{
+            date: true,
+            ...this.props.validate,
+            ...this.props.start.validate,
+          }}
           value={this.state.startValue || ''}
+          type="text"
+          min={min}
+          max={max}
           valueFormatter={this.valueFormatter}
           valueParser={this.valueParser}
         />
         <AvInput
           style={{ display: 'none' }}
           {...this.props.end}
-          validate={{ ...this.props.validate, ...this.props.end.validate }}
+          validate={{
+            date: true,
+            ...this.props.validate,
+            ...this.props.end.validate,
+          }}
           value={this.state.endValue || ''}
+          min={min}
+          max={max}
           valueFormatter={this.valueFormatter}
           valueParser={this.valueParser}
         />
@@ -287,6 +342,7 @@ export default class AvDateRange extends Component {
           data-testid={`date-range-input-group-${name}`}
         >
           <DateRangePicker
+            disabled={attributes.disabled}
             startDate={startDate}
             startDateId={startId}
             endDate={endDate}
@@ -295,8 +351,9 @@ export default class AvDateRange extends Component {
             focusedInput={focusedInput}
             onFocusChange={this.onFocusChange}
             isOutsideRange={isOutsideRange(min, max)}
-            customInputIcon={calendarIcon}
+            customInputIcon={datepicker ? calendarIcon : undefined}
             inputIconPosition="after"
+            showDefaultInputIcon={datepicker}
             onClose={this.onClose}
             numberOfMonths={1}
           />
