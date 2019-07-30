@@ -1,18 +1,58 @@
-
 .DateInput {
   font-size: 16px;
   font-weight: normal;
   line-height: normal;
 }
 
-.SingleDatePicker {
+.SingleDatePicker,
+.DateRangePicker {
   width: 100%;
 }
 
-.SingleDatePickerInput__withBorder {
+.DateRangePickerInput_arrow {
+  padding: 0.375rem 0.75rem;
+  background-color: #e9ecef;
+  border: 1px solid #ced4da;
+  border-left: none;
+  border-right: none;
+}
+
+.DateRangePickerInput_calendarIcon,
+.SingleDatePickerInput_calendarIcon {
+  background-color: #e9ecef;
+  margin-right: 0;
+  margin-left: 0;
+  border-top-right-radius: 5px;
+    border-bottom-right-radius: 5px;
+}
+
+.DateRangePickerInput_calendarIcon:hover,
+.SingleDatePickerInput_calendarIcon:hover {
+  color: #212529;
+background-color: #d4d9d9;
+border-color: #cdd3d3;
+}
+
+.DateRangePickerInput_calendarIcon:focus,
+.SingleDatePickerInput_calendarIcon:focus {
+  box-shadow: 0 0 0 0.2rem rgba(202, 205, 206, 0.5);
+  outline: 0;
+}
+
+
+.current-day-hightlight {
+  .CalendarDay__today {
+    background: #2261b5;
+    color: #fff;
+  }
+}
+
+.SingleDatePickerInput__withBorder,
+.DateRangePickerInput__withBorder {
   border-radius: 0.25em;
   width: 100%;
   display: flex;
+  border: none;
 }
 
 .is-invalid > div.SingleDatePicker > div > div.SingleDatePickerInput {
@@ -24,17 +64,33 @@
   flex: 1;
 }
 
+
 .DateInput_input {
-  border-radius: 0.25em;
   font-size: 16px;
   font-weight: normal;
+  height:100%;
   line-height: normal;
+  padding: 0.375rem 0.75rem;
+  border: 1px solid #ced4da;
+  transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
 }
+
+.DateRangePickerInput input.DateInput_input:first-of-type {
+  border-top-right-radius: 0;
+  border-bottom-right-radius: 0;
+};
+
+.DateRangePickerInput > input.DateInput_input:last-of-type {
+  border-top-right-radius: 0;
+  border-bottom-right-radius: 0;
+  border-top-left-radius: 0;
+  border-bottom-left-radius: 0;
+  border-right: 0;
+};
 
 .DateInput_input__focused {
   border-radius: 0;
   /* border-bottom: 2px solid #2261b5; */
-  border-bottom: none;
 }
 
 .CalendarDay__selected,

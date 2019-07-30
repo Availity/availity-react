@@ -288,7 +288,8 @@ export default class AvDateRange extends Component {
       isDirty ? 'is-dirty' : 'is-pristine',
       isBad ? 'is-bad-input' : null,
       hasError ? 'av-invalid' : 'av-valid',
-      touched && hasError && 'is-invalid'
+      touched && hasError && 'is-invalid',
+      !startValue && !endValue && 'current-day-hightlight'
     );
 
     return (
@@ -326,9 +327,8 @@ export default class AvDateRange extends Component {
           disabled={attributes.disabled}
           className={classes}
           onChange={({ target }) => {
-            if(target.id === startId || target.id === endId){
+            if (target.id === startId || target.id === endId) {
               this.onDatesChange(target.value);
-
             }
           }}
           data-testid={`date-range-input-group-${name}`}
@@ -345,6 +345,7 @@ export default class AvDateRange extends Component {
             isOutsideRange={isOutsideRange(min, max)}
             customInputIcon={datepicker ? calendarIcon : undefined}
             inputIconPosition="after"
+            customArrowIcon="-"
             showDefaultInputIcon={datepicker}
             onClose={this.onClose}
             numberOfMonths={2}

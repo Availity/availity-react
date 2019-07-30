@@ -105,7 +105,7 @@ class AvDate extends Component {
   onClose = ({ date }) => {
     const { format } = this.state;
 
-    const {onBlur} = this.context.FormCtrl.getInput(
+    const { onBlur } = this.context.FormCtrl.getInput(
       this.props.name
     ).getValidatorProps();
 
@@ -161,7 +161,8 @@ class AvDate extends Component {
       this.context.FormCtrl.isDirty(name) ? 'is-dirty' : 'is-pristine',
       this.context.FormCtrl.isBad(name) ? 'is-bad-input' : null,
       hasError ? 'av-invalid' : 'av-valid',
-      touched && hasError && 'is-invalid'
+      touched && hasError && 'is-invalid',
+      !this.state.value && 'current-day-hightlight'
     );
 
     const input = (
