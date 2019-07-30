@@ -23,6 +23,7 @@
   },
   "homepage": "https://github.com/Availity/availity-react/tree/master/packages/reactstrap-validation-date#readme",
   "devDependencies": {
+    "@types/react-dates": "^17.1.5",
     "availity-reactstrap-validation": "^2.5.3",
     "react": "^16.8.3",
     "react-date-range": "^0.9.4",

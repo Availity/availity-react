@@ -85,6 +85,7 @@ class AvDate extends Component {
 
   onPickerChange = async value => {
     const { format } = this.state;
+    const { name, onChange } = this.props;
     if (value === null) return;
 
     let val = value;
@@ -92,21 +93,21 @@ class AvDate extends Component {
       val = val.format(format);
     }
 
-    this.context.FormCtrl.getInput(this.props.name)
+    this.context.FormCtrl.getInput(name)
       .getValidatorProps()
       .onChange(val);
 
     this.setState({ value: val }, () => {
-      if (this.props.onChange) this.props.onChange(event, val);
+      if (onChange) onChange(val);
     });
   };
 
   onClose = ({ date }) => {
     const { format } = this.state;
 
-    const onBlur = this.context.FormCtrl.getInput(
+    const {onBlur} = this.context.FormCtrl.getInput(
       this.props.name
-    ).getValidatorProps().onBlur;
+    ).getValidatorProps();
 
     onBlur(date && date.format(format));
   };

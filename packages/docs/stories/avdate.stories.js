@@ -82,11 +82,7 @@ storiesOf('Components|AvDate', module)
               errorMessage:
                 required &&
                 text('Required Error Message', 'This field is required'),
-            },
-            min: {
-              value: min,
-              errorMessage: `Date must be before ${min}`,
-            },
+            }
           }}
         />
         <Button color="primary">Submit</Button>

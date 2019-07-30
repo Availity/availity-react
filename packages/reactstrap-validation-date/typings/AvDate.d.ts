@@ -1,7 +1,8 @@
 import { AvInput } from "./AvInput";
-
-export interface AvDateProps extends AvInput{
-    hideIcon?: boolean;
+import { SingleDatePickerShape } from 'react-dates';
+export interface AvDateProps extends AvInput, SingleDatePickerShape{
+    id: any;
+    datepicker?: boolean;
 }
 
 declare const AvDate: React.ComponentType<AvDateProps>;

@@ -128,75 +128,63 @@ export default class AvDateRange extends Component {
     return true;
   };
 
-  checkDistanceValidation = () => {
-    this.context.FormCtrl.validate(this.props.end.name);
-  };
-
-  onPickerChange = range => {
-    if (!this.context.FormCtrl.isTouched(this.props.start.name)) {
-      this.context.FormCtrl.setTouched(this.props.start.name);
-    }
-    if (!this.context.FormCtrl.isTouched(this.props.end.name)) {
-      this.context.FormCtrl.setTouched(this.props.end.name);
-    }
-    const startValue = range.startDate.format(this.state.format);
-    const endValue = range.endDate.format(this.state.format);
-    this.setState(
-      {
-        startValue,
-        endValue,
-        open: false,
-      },
-      () => {
-        if (this.props.onChange) {
-          this.props.onChange(range, {
-            start: startValue,
-            end: endValue,
-          });
-        }
-        this.checkDistanceValidation(endValue, {
-          [this.props.start.name]: startValue,
-        });
-      }
-    );
-  };
-
   onDatesChange = async ({ startDate, endDate }) => {
     const { format } = this.state;
+    const { start, end, onChange } = this.props;
 
-    const _startDate = (startDate && startDate.format(format)) || '';
-    const _endDate = (endDate && endDate.format(format)) || '';
+    const _startDate =
+      (startDate && startDate.format(format)) || this.state.startValue;
+    const _endDate = (endDate && endDate.format(format)) || this.state.endValue;
 
     if (startDate !== null) {
-      this.context.FormCtrl.getInput(this.props.start.name)
+      this.context.FormCtrl.getInput(start.name)
         .getValidatorProps()
         .onChange(_startDate);
     }
 
     if (endDate !== null) {
-      this.context.FormCtrl.getInput(this.props.end.name)
+      this.context.FormCtrl.getInput(end.name)
         .getValidatorProps()
         .onChange(_endDate);
     }
 
-    this.setState({
-      startValue: _startDate,
-      endValue: _endDate,
-    });
+    this.setState(
+      {
+        startValue: _startDate,
+        endValue: _endDate,
+      },
+      () => {
+        if (onChange) {
+          onChange({
+            start: _startDate,
+            end: _endDate,
+          });
+        }
+
+        if (startDate) {
+          this.context.FormCtrl.validate(start.name);
+        }
+
+        if (endDate) {
+          this.context.FormCtrl.validate(end.name);
+        }
+      }
+    );
   };
 
   onClose = ({ startDate, endDate }) => {
     const { format } = this.state;
-    const _startDate = (startDate && startDate.format(format)) || '';
-    const _endDate = (endDate && endDate.format(format)) || '';
+    const _startDate =
+      (startDate && startDate.format(format)) || this.state.startValue;
+    const _endDate = (endDate && endDate.format(format)) || this.state.endValue;
 
-    if (startDate !== null) {
+    if (startDate) {
       this.context.FormCtrl.getInput(this.props.start.name)
         .getValidatorProps()
         .onBlur(_startDate);
     }
 
-    if (endDate !== null) {
+    if (endDate) {
       this.context.FormCtrl.getInput(this.props.end.name)
         .getValidatorProps()
         .onBlur(_endDate);
@@ -337,6 +325,10 @@ export default class AvDateRange extends Component {
         <InputGroup
           disabled={attributes.disabled}
           className={classes}
+          onChange={({ target }) => {
+            target.id === startId ||
+              (target.id === endId && this.onDatesChange(target.value));
+          }}
           data-testid={`date-range-input-group-${name}`}
         >
           <DateRangePicker
@@ -353,7 +345,7 @@ export default class AvDateRange extends Component {
             inputIconPosition="after"
             showDefaultInputIcon={datepicker}
             onClose={this.onClose}
-            numberOfMonths={1}
+            numberOfMonths={2}
           />
         </InputGroup>
       </>
