@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [4.1.0](https://github.com/Availity/availity-react/compare/@availity/reactstrap-validation-select@4.0.3...@availity/reactstrap-validation-select@4.1.0) (2019-07-31)
+
+
+### Features
+
+* **reactstrap-validation-select:** added creatable support ([4966487](https://github.com/Availity/availity-react/commit/4966487))
+
+
+
+
+
 ## [4.0.3](https://github.com/Availity/availity-react/compare/@availity/reactstrap-validation-select@4.0.2...@availity/reactstrap-validation-select@4.0.3) (2019-07-19)
 
 **Note:** Version bump only for package @availity/reactstrap-validation-select
