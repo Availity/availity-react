@@ -289,7 +289,8 @@ export default class AvDateRange extends Component {
       isBad ? 'is-bad-input' : null,
       hasError ? 'av-invalid' : 'av-valid',
       touched && hasError && 'is-invalid',
-      !startValue && !endValue && 'current-day-hightlight'
+      !startValue && !endValue && 'current-day-highlight',
+      datepicker && 'av-calendar-show'
     );
 
     return (

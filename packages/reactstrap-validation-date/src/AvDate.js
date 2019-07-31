@@ -162,7 +162,8 @@ class AvDate extends Component {
       this.context.FormCtrl.isBad(name) ? 'is-bad-input' : null,
       hasError ? 'av-invalid' : 'av-valid',
       touched && hasError && 'is-invalid',
-      !this.state.value && 'current-day-hightlight'
+      !this.state.value && 'current-day-highlight',
+      datepicker && 'av-calendar-show'
     );
 
     const input = (
@@ -199,7 +200,7 @@ class AvDate extends Component {
             disabled={attributes.disabled}
             date={this.getDateValue()}
             onDateChange={this.onPickerChange}
-            focused={datepicker && this.state.focused}
+            focused={this.state.focused}
             onFocusChange={this.onFocusChange}
             numberOfMonths={1}
             isOutsideRange={isOutsideRange(min, max)}
