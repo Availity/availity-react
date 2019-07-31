@@ -54,6 +54,7 @@ class AvSelect extends AvBaseInput {
     loadOptions: PropTypes.func,
     raw: PropTypes.bool,
     creatable: PropTypes.bool,
+    autofill: PropTypes.bool,
   });
 
   optionsContainsValue = props => {
@@ -162,7 +163,7 @@ class AvSelect extends AvBaseInput {
     }
   }
 
-  onChangeHandler(inputValue) {
+  onChangeHandler(inputValue, { name } = {}) {
     const value = this.prepValue(inputValue);
     if (this.props.isMulti) {
       const max = this.props.maxLength || this.props.max;
@@ -171,6 +172,37 @@ class AvSelect extends AvBaseInput {
       }
     }
     super.onChangeHandler(value);
+
+    const shouldAutofill =
+      this.props.autofill &&
+      !this.props.isMulti &&
+      inputValue &&
+      typeof inputValue === 'object';
+
+    if (shouldAutofill) {
+      const formValues = this.context.FormCtrl.getValues();
+      Object.keys(formValues)
+        // Filter out the input that the onChangeHandler is being called for
+        .filter(fieldName => fieldName !== name)
+        .forEach(fieldName => {
+          let rawValue = inputValue;
+          if (
+            !!inputValue.label &&
+            !!inputValue.value &&
+            typeof inputValue.value === 'object'
+          ) {
+            rawValue = inputValue.value;
+          }
+          const inputValueIsInForm = Object.keys(rawValue).some(
+            key => key === fieldName
+          );
+          if (inputValueIsInForm) {
+            const input = this.context.FormCtrl.getInput(fieldName);
+
+            input.onChangeHandler(rawValue[fieldName]);
+          }
+        });
+    }
   }
 
   getValue() {

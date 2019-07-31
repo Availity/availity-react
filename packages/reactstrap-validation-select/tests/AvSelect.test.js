@@ -1,7 +1,14 @@
 import React from 'react';
-import { render, fireEvent, waitForElement } from '@testing-library/react';
+import {
+  render,
+  fireEvent,
+  waitForElement,
+  wait,
+} from '@testing-library/react';
 import '@testing-library/react/cleanup-after-each';
-import { AvForm } from 'availity-reactstrap-validation';
+import { AvForm, AvInput } from 'availity-reactstrap-validation';
+import { Button } from 'reactstrap';
+
 import AvSelect from '..';
 
 const options = [
@@ -66,5 +73,66 @@ describe('AvSelect', () => {
     expect(selectInput.querySelector('.test__creatable__placeholder')).toBe(
       null
     );
+  });
+
+  test('autofill works', async () => {
+    const opts = [
+      {
+        label: 'Doe, John',
+        value: {
+          firstName: 'John',
+          lastName: 'Doe',
+        },
+      },
+      {
+        label: 'Doe, Jane',
+        value: {
+          firstName: 'Jane',
+          lastName: 'Doe',
+        },
+      },
+    ];
+
+    const onSubmit = jest.fn();
+    const { container, getByText } = render(
+      <AvForm onSubmit={onSubmit}>
+        <AvSelect
+          name="test-form-input"
+          options={opts}
+          classNamePrefix="test"
+          raw
+          autofill
+        />
+        <AvInput data-testid="first-input" name="firstName" />
+        <AvInput data-testid="last-input" name="lastName" />
+
+        <Button>Submit</Button>
+      </AvForm>
+    );
+
+    // Simulate the user selecting "Doe, John"
+    const select = container.querySelector('.test__control');
+    fireEvent.keyDown(select, { key: 'ArrowDown', keyCode: 40 });
+    fireEvent.keyDown(select, { key: 'Enter', keyCode: 13 });
+
+    const option = await waitForElement(() => getByText('Doe, John'));
+
+    expect(option).toBeDefined();
+
+    fireEvent.click(option);
+
+    // Simulate the user clicking "Submit"
+    const submitButton = getByText('Submit');
+    expect(submitButton).toBeDefined();
+
+    await fireEvent.click(submitButton);
+
+    // Check that values got autofilled
+    await wait(() => {
+      expect(onSubmit).toHaveBeenCalledTimes(1);
+      const payload = onSubmit.mock.calls[0][2];
+      expect(payload.firstName).toBe('John');
+      expect(payload.lastName).toBe('Doe');
+    });
   });
 });
