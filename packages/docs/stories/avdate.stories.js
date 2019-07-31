@@ -10,6 +10,7 @@ import AvDate, {
 } from '@availity/reactstrap-validation-date';
 import README from '@availity/reactstrap-validation-date/README.md';
 import AvFormResults from './mocks/AvFormResults';
+import '@availity/reactstrap-validation-date/styles.scss';
 
 const types = {
   text: 'text',
@@ -31,7 +32,6 @@ storiesOf('Components|AvDate', module)
         max={text('Max Date (yyyy-mm-dd)')}
         type={select('Type', types, 'text')}
         name="standAlone"
-        aria-label="stand-alone"
         required={boolean('Required', false)}
         disabled={boolean('Disabled', false)}
         datepicker={boolean('Has DatePicker', true)}
@@ -50,7 +50,6 @@ storiesOf('Components|AvDate', module)
           max={text('Max Date (yyyy-mm-dd)')}
           type={select('Type', types, 'text')}
           name="standAlone"
-          aria-label="stand-alone"
           required={boolean('Required', false)}
           disabled={boolean('Disabled', false)}
           datepicker={boolean('Has DatePicker', true)}
@@ -64,11 +63,12 @@ storiesOf('Components|AvDate', module)
   ))
   .add('AvDateField', () => {
     const required = boolean('Required', false);
+    const min = text('Min Date (yyyy-mm-dd)');
     return (
       <AvFormResults>
         <AvDateField
           label={text('Label', 'Field Label')}
-          min={text('Min Date (yyyy-mm-dd)')}
+          min={min}
           max={text('Max Date (yyyy-mm-dd)')}
           type={select('Type', types, 'text')}
           name="AvDateField"
@@ -82,7 +82,7 @@ storiesOf('Components|AvDate', module)
               errorMessage:
                 required &&
                 text('Required Error Message', 'This field is required'),
-            },
+            }
           }}
         />
         <Button color="primary">Submit</Button>
