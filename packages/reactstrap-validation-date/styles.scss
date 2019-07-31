@@ -92,14 +92,16 @@ border-color: #cdd3d3;
   border-bottom-right-radius: 0;
 };
 
-.DateRangePickerInput [class~='DateInput']:last-of-type input.DateInput_input {
+.DateRangePickerInput .DateRangePickerInput_arrow ~ .DateInput input.DateInput_input {
   border-top-left-radius: 0;
   border-bottom-left-radius: 0;
 };
-.av-calendar-show .DateRangePickerInput [class~='DateInput']:last-of-type input.DateInput_input {
+.av-calendar-show .DateRangePickerInput .DateRangePickerInput_arrow ~ .DateInput input.DateInput_input{
   border-top-right-radius: 0;
   border-bottom-right-radius: 0;
   border-right: none;
+  // background-color:purple;
+  // color:purple;
 }
 
 .CalendarDay__selected,
