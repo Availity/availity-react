@@ -248,16 +248,20 @@ export default class AvDateRange extends Component {
       max,
       calendarIcon,
       datepicker,
+      validate,
       ...attributes
     } = this.props;
     const { startValue, endValue, format, focusedInput } = this.state;
     const endValidate = {
-      ...this.props.validate,
+      ...validate,
       ...this.props.end.validate,
     };
     if (this.props.distance) {
       endValidate.distance = this.validateDistance;
     }
+
+    const minDate = validate && validate.min ? validate.min.value : min;
+    const maxDate = validate && validate.max ? validate.max.value : max;
 
     const startId = `${(id || name).replace(/[^a-zA-Z0-9]/gi, '')}-start`;
 
@@ -300,13 +304,13 @@ export default class AvDateRange extends Component {
           {...this.props.start}
           validate={{
             date: true,
-            ...this.props.validate,
+            ...validate,
             ...this.props.start.validate,
           }}
           value={this.state.startValue || ''}
           type="text"
-          min={min}
-          max={max}
+          min={minDate}
+          max={maxDate}
           valueFormatter={this.valueFormatter}
           valueParser={this.valueParser}
         />
@@ -315,12 +319,12 @@ export default class AvDateRange extends Component {
           {...this.props.end}
           validate={{
             date: true,
-            ...this.props.validate,
+            ...validate,
             ...this.props.end.validate,
           }}
           value={this.state.endValue || ''}
-          min={min}
-          max={max}
+          min={minDate}
+          max={maxDate}
           valueFormatter={this.valueFormatter}
           valueParser={this.valueParser}
         />
@@ -343,7 +347,7 @@ export default class AvDateRange extends Component {
             onDatesChange={this.onDatesChange}
             focusedInput={focusedInput}
             onFocusChange={this.onFocusChange}
-            isOutsideRange={isOutsideRange(min, max)}
+            isOutsideRange={isOutsideRange(minDate, maxDate)}
             customInputIcon={datepicker ? calendarIcon : undefined}
             inputIconPosition="after"
             customArrowIcon="-"

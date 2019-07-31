@@ -144,8 +144,12 @@ class AvDate extends Component {
       max,
       type,
       name,
+      validate,
       ...attributes
     } = this.props;
+
+    const minDate = validate && validate.min ? validate.min.value : min;
+    const maxDate = validate && validate.max ? validate.max.value : max;
 
     const pickerId = `${(this.props.id || name).replace(
       /[^a-zA-Z0-9]/gi,
@@ -172,13 +176,13 @@ class AvDate extends Component {
         placeholder={this.state.format.toLowerCase()}
         {...attributes}
         type="text"
-        min={min}
-        max={max}
+        min={minDate}
+        max={maxDate}
         style={{ display: 'none' }}
         value={this.state.value || ''}
         valueFormatter={this.valueFormatter}
         valueParser={this.valueParser}
-        validate={{ date: true, ...this.props.validate }}
+        validate={{ date: true, ...validate }}
       />
     );
 
@@ -203,7 +207,7 @@ class AvDate extends Component {
             focused={this.state.focused}
             onFocusChange={this.onFocusChange}
             numberOfMonths={1}
-            isOutsideRange={isOutsideRange(min, max)}
+            isOutsideRange={isOutsideRange(minDate, maxDate)}
             customInputIcon={datepicker ? calendarIcon : undefined}
             showDefaultInputIcon={datepicker}
             inputIconPosition="after"
