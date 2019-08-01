@@ -54,7 +54,7 @@ class AvSelect extends AvBaseInput {
     loadOptions: PropTypes.func,
     raw: PropTypes.bool,
     creatable: PropTypes.bool,
-    autofill: PropTypes.bool,
+    autofill: PropTypes.oneOfType([PropTypes.bool, PropTypes.object]),
   });
 
   optionsContainsValue = props => {
@@ -193,13 +193,29 @@ class AvSelect extends AvBaseInput {
           ) {
             rawValue = inputValue.value;
           }
-          const inputValueIsInForm = Object.keys(rawValue).some(
-            key => key === fieldName
-          );
+
+          let inputValueIsInForm = false;
+          if (typeof this.props.autofill === 'object') {
+            inputValueIsInForm = Object.keys(this.props.autofill).some(
+              key => key === fieldName
+            );
+          } else {
+            inputValueIsInForm = Object.keys(rawValue).some(
+              key => key === fieldName
+            );
+          }
+
           if (inputValueIsInForm) {
             const input = this.context.FormCtrl.getInput(fieldName);
 
-            input.onChangeHandler(rawValue[fieldName]);
+            let val;
+            if (typeof this.props.autofill === 'object') {
+              val = get(rawValue, `${this.props.autofill[fieldName]}`);
+            } else {
+              val = rawValue[fieldName];
+            }
+
+            input.onChangeHandler(val);
           }
         });
     }
