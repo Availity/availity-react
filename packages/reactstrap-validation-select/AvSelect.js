@@ -194,18 +194,20 @@ class AvSelect extends AvBaseInput {
             rawValue = inputValue.value;
           }
 
-          let inputValueIsInForm = false;
+          let shouldAutofillField = false;
           if (typeof this.props.autofill === 'object') {
-            inputValueIsInForm = Object.keys(this.props.autofill).some(
-              key => key === fieldName
+            shouldAutofillField = Object.prototype.hasOwnProperty.call(
+              this.props.autofill,
+              fieldName
             );
           } else {
-            inputValueIsInForm = Object.keys(rawValue).some(
-              key => key === fieldName
+            shouldAutofillField = Object.prototype.hasOwnProperty.call(
+              rawValue,
+              fieldName
             );
           }
 
-          if (inputValueIsInForm) {
+          if (shouldAutofillField) {
             const input = this.context.FormCtrl.getInput(fieldName);
 
             let val;
