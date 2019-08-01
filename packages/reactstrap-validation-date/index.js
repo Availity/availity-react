@@ -1,7 +1,7 @@
-import AvDate from './AvDate';
-import AvDateField from './AvDateField';
-import AvDateRange from './AvDateRange';
-import AvDateRangeField from './AvDateRangeField';
+import AvDate from './src/AvDate';
+import AvDateField from './src/AvDateField';
+import AvDateRange from './src/AvDateRange';
+import AvDateRangeField from './src/AvDateRangeField';
 
 export default AvDate;
 export { AvDate, AvDateField, AvDateRange, AvDateRangeField };

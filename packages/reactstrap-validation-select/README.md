@@ -132,6 +132,16 @@ const options = [
 
 A select list which automatically loads and pages though a resource when the user scrolls down.
 
+The search field will fire a request after the debounce timer (see `debounceTimeout` prop) using the given `resource` prop with the payload:
+
+```js
+{
+   limit: "50", //limit quantity can be changed with `itemsPerPage` prop
+   offset: "0",
+   q: "user typed search text after debounce"
+}
+```
+
 #### AvResourceSelect Props
 
 Please refer to [react-select-async-paginate](https://github.com/vtaits/react-select-async-paginate)'s props and [availity-reactstrap-validation](https://github.com/Availity/availity-reactstrap-validation)'s input validation props. This component just combines those.
