@@ -8,8 +8,8 @@ import {
 } from 'availity-reactstrap-validation/lib/AvValidator/utils';
 import { AvInput } from 'availity-reactstrap-validation';
 import { DateRangePicker } from 'react-dates';
+import 'react-dates/initialize';
 import classNames from 'classnames';
-import 'react-dates/lib/css/_datepicker.css';
 import Icon from '@availity/icon';
 import { isOutsideRange, limitPropType } from './utils';
 
