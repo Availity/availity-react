@@ -196,10 +196,7 @@ class AvSelect extends AvBaseInput {
 
           let shouldAutofillField = false;
           if (typeof this.props.autofill === 'object') {
-            shouldAutofillField = Object.prototype.hasOwnProperty.call(
-              this.props.autofill,
-              fieldName
-            );
+            shouldAutofillField = this.props.autofill[fieldName];
           } else {
             shouldAutofillField = Object.prototype.hasOwnProperty.call(
               rawValue,
