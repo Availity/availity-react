@@ -1,7 +1,7 @@
 import React from 'react';
 import '@testing-library/react/cleanup-after-each';
 import { fireEvent, waitForElement, render } from '@testing-library/react';
-import { avRegionsApi, avThanosApi } from '@availity/api-axios';
+import { avRegionsApi, avWebQLApi } from '@availity/api-axios';
 import { AvForm } from 'availity-reactstrap-validation';
 
 import { AvResourceSelect } from '..';
@@ -61,7 +61,7 @@ describe('AvResourceSelect', () => {
   });
 
   it('renders AvPatientSelect options', async () => {
-    avThanosApi.post.mockResolvedValue({
+    avWebQLApi.post.mockResolvedValue({
       data: {
         data: {
           patientsMany: [
@@ -92,11 +92,11 @@ describe('AvResourceSelect', () => {
     const patientsOption = await waitForElement(() =>
       getByText('Moolenaar, Bram')
     );
-    expect(avThanosApi.post).toHaveBeenCalledTimes(1);
-    expect(avThanosApi.post.mock.calls[0][0].variables.filters.customerId).toBe(
+    expect(avWebQLApi.post).toHaveBeenCalledTimes(1);
+    expect(avWebQLApi.post.mock.calls[0][0].variables.filters.customerId).toBe(
       '1194'
     );
-    expect(avThanosApi.post.mock.calls[0][0].query).toContain('patientsMany');
+    expect(avWebQLApi.post.mock.calls[0][0].query).toContain('patientsMany');
 
     expect(patientsOption).toBeDefined();
 

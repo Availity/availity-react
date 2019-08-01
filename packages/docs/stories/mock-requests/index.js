@@ -8,7 +8,7 @@ import slotmachine from './slotmachine';
 import me from './me';
 import settings from './settings';
 import disclaimers from './disclaimers';
-import thanos from './thanos';
+import webQL from './webQL';
 import resourceSelect from './resource-select';
 
 mock.setup();
@@ -31,7 +31,7 @@ settings(mock);
 
 disclaimers(mock);
 
-thanos(mock);
+webQL(mock);
 
 resourceSelect(mock);
 
