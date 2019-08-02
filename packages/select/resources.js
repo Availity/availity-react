@@ -1,5 +1,3 @@
-import React, { Fragment } from 'react';
-import { components } from 'react-select';
 import {
   avProvidersApi,
   avOrganizationsApi,
@@ -11,6 +9,11 @@ import {
   avWebQLApi,
 } from '@availity/api-axios';
 import { ResourceSelect } from '.';
+import {
+  PatientOption,
+  PatientSingleValue,
+  PatientMultiValueLabel,
+} from './resource-components';
 
 const AvProviderSelect = ResourceSelect.create({
   resource: avProvidersApi,
@@ -49,135 +52,11 @@ const AvCodeSelect = ResourceSelect.create({
   requiredParams: ['list'],
   watchParams: ['list'],
 });
-
-/* eslint-disable react/prop-types */
-const PatientOption = props => {
-  const {
-    lastName,
-    firstName,
-    middleName,
-    payerName,
-    subscriberMemberId,
-    memberId,
-    birthDate: bd,
-  } = props.data;
-
-  const option = (
-    <Fragment>
-      <strong>
-        {lastName}, {firstName} {middleName ? `${middleName}.` : ''}
-      </strong>
-      &nbsp;&nbsp;&nbsp;{payerName} {memberId || subscriberMemberId}
-    </Fragment>
-  );
-
-  let birthDate = null;
-  // Format date
-  if (bd) {
-    birthDate = (
-      <Fragment>
-        &nbsp;&nbsp;&nbsp;&nbsp;{bd[5]}
-        {bd[6]}/{bd[8]}
-        {bd[9]}/{bd[0]}
-        {bd[1]}
-        {bd[2]}
-        {bd[3]}
-      </Fragment>
-    );
-  }
-
-  return (
-    <components.Option {...props}>
-      {option}
-      {birthDate}
-    </components.Option>
-  );
-};
-
-const PatientSingleValue = props => {
-  const {
-    lastName,
-    firstName,
-    middleName,
-    payerName,
-    subscriberMemberId,
-    memberId,
-    birthDate: bd,
-  } = props.data;
-
-  const value = (
-    <Fragment>
-      <strong>
-        {lastName}, {firstName} {middleName ? `${middleName}.` : ''}
-      </strong>
-      &nbsp;&nbsp;&nbsp;{payerName} {memberId || subscriberMemberId}
-    </Fragment>
-  );
-
-  let birthDate = null;
-  // Format date
-  if (bd) {
-    birthDate = (
-      <Fragment>
-        &nbsp;&nbsp;&nbsp;&nbsp;{bd[5]}
-        {bd[6]}/{bd[8]}
-        {bd[9]}/{bd[0]}
-        {bd[1]}
-        {bd[2]}
-        {bd[3]}
-      </Fragment>
-    );
-  }
-
-  return (
-    <components.SingleValue {...props}>
-      {value}
-      {birthDate}
-    </components.SingleValue>
-  );
-};
-
-const PatientMultiValueLabel = props => {
-  const { lastName, firstName, middleName } = props.data;
-
-  const value = (
-    <Fragment>
-      {lastName}, {firstName} {middleName ? `${middleName}.` : ''}
-    </Fragment>
-  );
-
-  return (
-    <components.MultiValueLabel {...props}>{value}</components.MultiValueLabel>
-  );
-};
-
-// https://github.com/JedWatson/react-select/issues/2656
-const PatientValueContainer = ({ children, ...props }) => {
-  const [firstChild, ...siblings] = children;
-  if (Array.isArray(firstChild) && firstChild.length > 0) {
-    const options = firstChild.map((opt, i) => {
-      // eslint-disable-next-line react/no-array-index-key
-      return React.cloneElement(opt, { key: i });
-    });
-    const newChildren = [options, ...siblings];
-    return (
-      <components.ValueContainer {...props}>
-        {newChildren}
-      </components.ValueContainer>
-    );
-  }
-  return (
-    <components.ValueContainer {...props}>{children}</components.ValueContainer>
-  );
-};
-/* eslint-enable react/prop-types */
-
 const AvPatientSelect = ResourceSelect.create({
   components: {
     Option: PatientOption,
     SingleValue: PatientSingleValue,
     MultiValueLabel: PatientMultiValueLabel,
-    ValueContainer: PatientValueContainer,
   },
   resource: avWebQLApi,
   requiredParams: ['customerId'],

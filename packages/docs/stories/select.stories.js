@@ -12,7 +12,7 @@ import {
   AvPatientSelect,
 } from '@availity/select/resources';
 
-import { Feedback, FormGroup } from '@availity/form';
+import { Feedback, FormGroup, Field } from '@availity/form';
 import * as yup from 'yup';
 import README from '@availity/select/README.md';
 
@@ -27,6 +27,37 @@ const options = [
   { label: 'Option 2', value: 'value for option 2' },
   { label: 'Option 3', value: 'value for option 3' },
   { label: 'Option 4', value: 'value for option 4' },
+];
+
+const autofillOptions = [
+  {
+    label: 'Option 1',
+    value: {
+      autoFill1: 'option 1 autofill value 1',
+      autoFill2: 'option 1 autofill value 2',
+    },
+  },
+  {
+    label: 'Option 2',
+    value: {
+      autoFill1: 'option 2 autofill value 1',
+      autoFill2: 'option 2 autofill value 2',
+    },
+  },
+  {
+    label: 'Option 3',
+    value: {
+      autoFill1: 'option 3 autofill value 1',
+      autoFill2: 'option 3 autofill value 2',
+    },
+  },
+  {
+    label: 'Option 4',
+    value: {
+      autoFill1: 'option 4 autofill value 1',
+      autoFill2: 'option 4 autofill value 2',
+    },
+  },
 ];
 
 const singleValueSchema = name =>
@@ -57,14 +88,17 @@ storiesOf('Formik|Select', module)
     },
   })
   .add('default', () => {
-    const isMulti = boolean('Multiple', true);
+    const isMulti = boolean('Multiple', false);
     const min = (isMulti && number('Min Selection', 2)) || undefined;
     const max = (isMulti && number('Max Selection', 3)) || undefined;
     const required = boolean('Required', false);
+    const autofill = boolean('Autofill', false);
     return (
       <FormikResults
         initialValues={{
           standAlone: undefined,
+          autoFill1: '',
+          autoFill2: '',
         }}
         // eslint-disable-next-line no-undef
         onSubmit={values => alert(JSON.stringify(values))}
@@ -75,13 +109,21 @@ storiesOf('Formik|Select', module)
         }
       >
         <Select
+          autofill={autofill}
           isMulti={isMulti}
-          options={options}
+          options={autofill ? autofillOptions : options}
           name="standAlone"
           aria-label="stand-alone"
           raw={boolean('Raw value', false)}
           isDisabled={boolean('Disabled', false)}
         />
+        {autofill && (
+          <Field name="autoFill1" type="text" label="Autofill Value 1" />
+        )}
+
+        {autofill && (
+          <Field name="autoFill2" type="text" label="Autofill Value 2" />
+        )}
         <Button className="mt-3" color="primary">
           Submit
         </Button>
@@ -93,11 +135,14 @@ storiesOf('Formik|Select', module)
     const min = (isMulti && number('Min Selection', 2)) || undefined;
     const max = (isMulti && number('Max Selection', 3)) || undefined;
     const required = boolean('Required', false);
+    const autofill = boolean('Autofill', false);
 
     return (
       <FormikResults
         initialValues={{
           standAloneWithLabel: null,
+          autoFill1: '',
+          autoFill2: '',
         }}
         // eslint-disable-next-line no-undef
         onSubmit={values => alert(JSON.stringify(values))}
@@ -112,10 +157,11 @@ storiesOf('Formik|Select', module)
             {text('Label', 'Select Label')}
           </Label>
           <Select
+            autofill={autofill}
             minLength={min}
             maxLength={max}
             isMulti={isMulti}
-            options={options}
+            options={autofill ? autofillOptions : options}
             name="standAloneWithLabel"
             inputProps={{ 'aria-label': 'stand-alone with Label' }}
             required={boolean('Required', false)}
@@ -124,6 +170,14 @@ storiesOf('Formik|Select', module)
           />
           <Feedback>{text('Error Message', 'This field is invalid')}</Feedback>
         </FormGroup>
+
+        {autofill && (
+          <Field name="autoFill1" type="text" label="Autofill Value 1" />
+        )}
+
+        {autofill && (
+          <Field name="autoFill2" type="text" label="Autofill Value 2" />
+        )}
         <Button color="primary">Submit</Button>
       </FormikResults>
     );
@@ -133,11 +187,14 @@ storiesOf('Formik|Select', module)
     const min = (isMulti && number('Min Selection', 2)) || undefined;
     const max = (isMulti && number('Max Selection', 3)) || undefined;
     const required = boolean('Required', false);
+    const autofill = boolean('Autofill', false);
 
     return (
       <FormikResults
         initialValues={{
           SelectField: undefined,
+          autoFill1: '',
+          autoFill2: '',
         }}
         // eslint-disable-next-line no-undef
         onSubmit={values => alert(JSON.stringify(values))}
@@ -148,15 +205,23 @@ storiesOf('Formik|Select', module)
         }
       >
         <SelectField
+          autofill={autofill}
           label={text('Label', 'Field Label')}
           name="SelectField"
           maxLength={max}
           isMulti={isMulti}
-          options={options}
+          options={autofill ? autofillOptions : options}
           required={required}
           raw={boolean('Raw value', false)}
           isDisabled={boolean('Disabled', false)}
         />
+        {autofill && (
+          <Field name="autoFill1" type="text" label="Autofill Value 1" />
+        )}
+
+        {autofill && (
+          <Field name="autoFill2" type="text" label="Autofill Value 2" />
+        )}
         <Button color="primary">Submit</Button>
       </FormikResults>
     );
@@ -279,16 +344,20 @@ storiesOf('Formik|Select/resources', module)
     const min = (isMulti && number('Min Selection', 2)) || undefined;
     const max = (isMulti && number('Max Selection', 3)) || undefined;
     const required = boolean('Required', false);
+    const autofill = boolean('Autofill', false);
     return (
       <FormikResults
         initialValues={{
           AvPatientSelect: null,
+          firstName: '',
+          lastName: '',
         }}
         // eslint-disable-next-line no-undef
         onSubmit={values => alert(JSON.stringify(values))}
         validationSchema={singleValueSchema('AvPatientSelect')}
       >
         <AvPatientSelect
+          autofill={autofill}
           label={text('Label', 'Select Patient')}
           name="AvPatientSelect"
           minLength={min}
@@ -307,7 +376,16 @@ storiesOf('Formik|Select/resources', module)
           }}
           isDisabled={boolean('Disabled', false)}
         />
-        <Button color="primary">Submit</Button>
+        {autofill && (
+          <Field name="firstName" type="text" label="Patient First Name" />
+        )}
+
+        {autofill && (
+          <Field name="lastName" type="text" label="Patient Last Name" />
+        )}
+        <Button type="submit" color="primary">
+          Submit
+        </Button>
       </FormikResults>
     );
   });
