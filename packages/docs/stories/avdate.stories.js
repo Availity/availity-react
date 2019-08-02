@@ -2,7 +2,7 @@ import React from 'react';
 import { storiesOf } from '@storybook/react';
 import { Label, Button } from 'reactstrap';
 import { AvGroup, AvFeedback } from 'availity-reactstrap-validation';
-import { text, boolean, select } from '@storybook/addon-knobs';
+import { text, boolean, select, number } from '@storybook/addon-knobs';
 import AvDate, {
   AvDateField,
   AvDateRange,
@@ -76,13 +76,19 @@ storiesOf('Components|AvDate', module)
           disabled={boolean('Disabled', false)}
           datepicker={boolean('Has DatePicker', true)}
           errorMessage={text('Generic Error Message', 'This field is invalid')}
+          distance={{
+            max: {
+              value: 90,
+              units: 'days',
+            },
+          }}
           validate={{
             required: {
               value: required,
               errorMessage:
                 required &&
                 text('Required Error Message', 'This field is required'),
-            }
+            },
           }}
         />
         <Button color="primary">Submit</Button>
@@ -118,7 +124,35 @@ storiesOf('Components|AvDate', module)
     );
   })
   .add('AvDateRangeField', () => {
+    const distanceUnits = ['days', 'month'];
+
     const required = boolean('Required', false);
+    const minDistance = number('Min Distance');
+    const maxDistance = number('Max Distance');
+
+    let minDistanceUnits;
+    let maxDistanceUnits;
+    if (minDistance) {
+      minDistanceUnits = select('Min Distance Units', distanceUnits, 'days');
+    }
+    if (maxDistance) {
+      maxDistanceUnits = select('Max Distance Units', distanceUnits, 'days');
+    }
+
+    const min = minDistance &&
+      minDistanceUnits && {
+        value: minDistance,
+        units: minDistanceUnits,
+      };
+
+    const max = maxDistance &&
+      maxDistanceUnits && {
+        value: maxDistance,
+        units: maxDistanceUnits,
+      };
+
+    const distance = (min || max) && { min, max };
+
     return (
       <AvFormResults>
         <AvDateRangeField
@@ -129,6 +163,7 @@ storiesOf('Components|AvDate', module)
           end={{ name: 'date.end', required }}
           min={text('Min Date (yyyy-mm-dd)')}
           max={text('Max Date (yyyy-mm-dd)')}
+          distance={distance}
           required={boolean('Required', false)}
           disabled={boolean('Disabled', false)}
           errorMessage={text('Generic Error Message', 'This field is invalid')}

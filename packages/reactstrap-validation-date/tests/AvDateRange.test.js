@@ -54,4 +54,50 @@ describe('AvDateRange', () => {
       );
     });
   });
+
+  test('should call invalid submit if date range exceeds max distance', async () => {
+    const { getByText } = render(
+      <DateRange
+        name="standAlone"
+        start={{
+          name: 'date.start',
+          value: '01/01/2001',
+        }}
+        end={{
+          name: 'date.end',
+          value: '01/04/2001',
+        }}
+        distance={{ max: { value: 2, units: 'day' } }}
+      />
+    );
+
+    fireEvent.click(getByText('Submit'));
+
+    await wait(() => {
+      expect(onInvalidSubmit).toHaveBeenCalled();
+    });
+  });
+
+  test('should call invalid submit if date range is shorter than min distance', async () => {
+    const { getByText } = render(
+      <DateRange
+        name="standAlone"
+        start={{
+          name: 'date.start',
+          value: '01/01/2001',
+        }}
+        end={{
+          name: 'date.end',
+          value: '01/04/2001',
+        }}
+        distance={{ min: { value: 10, units: 'day' } }}
+      />
+    );
+
+    fireEvent.click(getByText('Submit'));
+
+    await wait(() => {
+      expect(onInvalidSubmit).toHaveBeenCalled();
+    });
+  });
 });
