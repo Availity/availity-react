@@ -58,6 +58,7 @@ Please refer to [react-select with async pagination](https://github.com/TheSharp
 *   **`raw`**: Boolean. Optional. Default: `false`. If `true`, the entire object of the selected value will be returned as the value instead of the value for the `valueKey` within the object.
 *   **`valueKey`**: String. Optional. The key of the value you want returned when selected. Default: `value`
 *   **`labelKey`**: String. Optional. The key for the label you want to appear in the dropdown for the user to see. Default `label`
+*   **`autofill`**: Boolean or Object. Optional. Default: `false`. If `true`, when the value of the dropdown changes, if the `isMulti` prop is `false` _and_ the new value of the dropdown is an object, all fields on the form corresponding to the new value will be auto-filled. In order for a field to be auto-filled, the `name` property on the field _must_ match the key inside the new value. For example, if the new value is `{ "payer": "Availity" }`, in order for the payer input in the form to be auto-filled to "Availity", the `name` prop on the input must be "payer". If `autofill` is an object, when the value of the dropdown changes, if the `isMulti` prop is `false` _and_ the new value of the dropdown is an object, all fields on the form corresponding to the keys in the `autofill` prop will be auto-filled. For example, if the new value is `{ "payer": { "name": "Availity", "id": "1" } }`, in order for the "payerName" and "payerId" inputs to be auto-filled to "Availity" and "1" respectively, the `autofill` prop should be `{ payerName: 'payer.name', payerId: 'payer.id' }`.
 
 #### AvSelect Example usage
 
@@ -102,6 +103,7 @@ Please refer to [react-select with async pagination](https://github.com/TheSharp
 *   **`labelClass`**: String. Optional. ClassName to add to the label
 *   **`feedbackClass`**: String. Optional. ClassName to add to the AvFeedback
 *   **`creatable`**: boolean. Optional. Whether or not to allow new items to be created if not found.
+*   **`autofill`**: Boolean or Object. Optional. Default: `false`. If `true`, when the value of the dropdown changes, if the `isMulti` prop is `false` _and_ the new value of the dropdown is an object, all fields on the form corresponding to the new value will be auto-filled. In order for a field to be auto-filled, the `name` property on the field _must_ match the key inside the new value. For example, if the new value is `{ "payer": "Availity" }`, in order for the payer input in the form to be auto-filled to "Availity", the `name` prop on the input must be "payer". If `autofill` is an object, when the value of the dropdown changes, if the `isMulti` prop is `false` _and_ the new value of the dropdown is an object, all fields on the form corresponding to the keys in the `autofill` prop will be auto-filled. For example, if the new value is `{ "payer": { "name": "Availity", "id": "1" } }`, in order for the "payerName" and "payerId" inputs to be auto-filled to "Availity" and "1" respectively, the `autofill` prop should be `{ payerName: 'payer.name', payerId: 'payer.id' }`.
 
 #### AvSelectField Example usage
 
@@ -130,6 +132,16 @@ const options = [
 
 A select list which automatically loads and pages though a resource when the user scrolls down.
 
+The search field will fire a request after the debounce timer (see `debounceTimeout` prop) using the given `resource` prop with the payload:
+
+```js
+{
+   limit: "50", //limit quantity can be changed with `itemsPerPage` prop
+   offset: "0",
+   q: "user typed search text after debounce"
+}
+```
+
 #### AvResourceSelect Props
 
 Please refer to [react-select-async-paginate](https://github.com/vtaits/react-select-async-paginate)'s props and [availity-reactstrap-validation](https://github.com/Availity/availity-reactstrap-validation)'s input validation props. This component just combines those.
@@ -150,9 +162,11 @@ Please refer to [react-select-async-paginate](https://github.com/vtaits/react-se
 *   **`delay`**: Number. default: 350. Set to `debounceTimeout` if `debounceTimeout` is not provided. (see [react-select-async-paginate](https://github.com/vtaits/react-select-async-paginate#debouncetimeout))
 *   **`itemsPerPage`**: Number. Optional. Default: `50`. The number of items to fetched be displayed per page when the usr scrolls down.
 *   **`onPageChange`**: Function. Optional. A callback function to inform you that the user has scrolled to the bottom of the list and more items are loaded. The current input value and the page the user wants to go to will be provided as arguments to the callback function.
-*   **`hasMore`**: Boolean or Function. Optional. If true, `AvResourceSelect` will attempt to retrieve the next page of results. `response.data` from axios response is passed as the only argument to `hasMore` when `hasMore` is a function. Defaults to: `({ totalCount, limit, offset }) => totalCount > offset + limit;`
+*   **`hasMore`**: Boolean or Function. Optional. If true, `AvResourceSelect` will attempt to retrieve the next page of results. `response.data` from axios response is passed as the only argument to `hasMore` when `hasMore` is a function. Defaults to: `({ totalCount, limit, offset }) => totalCount > offset + limit;` for non-GraphQL apis. Defaults to `(data) => data.data[${this.props.graphqlConfig.type}Pagination].pageInfo.hasNextPage` for GraphQL apis.
 *   **`additional`**: Object. Optional. Additional properties to pass to `AsyncPaginate` (see [react-select-async-paginate](https://github.com/vtaits/react-select-async-paginate#additional)).
+*   **`graphqlConfig`**: Object{ type, query }. Optional. `type` String. is the type of asset returned. `query` String. is the GraphQL query to use in the request.
 *   **`creatable`**: boolean. Optional. Whether or not to allow new items to be created if not found.
+*   **`autofill`**: Boolean or Object. Optional. Default: `false`. If `true`, when the value of the dropdown changes, if the `isMulti` prop is `false` _and_ the new value of the dropdown is an object, all fields on the form corresponding to the new value will be auto-filled. In order for a field to be auto-filled, the `name` property on the field _must_ match the key inside the new value. For example, if the new value is `{ "payer": "Availity" }`, in order for the payer input in the form to be auto-filled to "Availity", the `name` prop on the input must be "payer". If `autofill` is an object, when the value of the dropdown changes, if the `isMulti` prop is `false` _and_ the new value of the dropdown is an object, all fields on the form corresponding to the keys in the `autofill` prop will be auto-filled. For example, if the new value is `{ "payer": { "name": "Availity", "id": "1" } }`, in order for the "payerName" and "payerId" inputs to be auto-filled to "Availity" and "1" respectively, the `autofill` prop should be `{ payerName: 'payer.name', payerId: 'payer.id' }`.
 
 #### AvResourceSelect Example usage
 
@@ -200,6 +214,7 @@ import {
   AvPermissionSelect,
   AvNavigationSelect,
   AvUserSelect,
+  AvPatientSelect,
 } from '@availity/reactstrap-validation-select/resources';
 import '@availity/reactstrap-validation-select/styles.scss';
 // ...
@@ -240,6 +255,13 @@ import '@availity/reactstrap-validation-select/styles.scss';
         name="user"
         label="Select a User"
         customerId={customerId}
+    />
+    <AvPatientSelect
+        name="patient"
+        label="Select a Patient"
+        parameters={{
+          customerId,
+        }}
     />
 </AvForm>;
 ```

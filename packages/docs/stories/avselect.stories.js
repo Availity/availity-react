@@ -1,7 +1,7 @@
 import React from 'react';
 import { storiesOf } from '@storybook/react';
 import { Label, Button } from 'reactstrap';
-import { AvGroup, AvFeedback } from 'availity-reactstrap-validation';
+import { AvGroup, AvFeedback, AvField } from 'availity-reactstrap-validation';
 import { number, text, boolean } from '@storybook/addon-knobs';
 import AvApi from '@availity/api-axios';
 
@@ -16,6 +16,7 @@ import AvSelectResource, {
   AvNavigationSelect,
   AvUserSelect,
   AvCodeSelect,
+  AvPatientSelect,
 } from '@availity/reactstrap-validation-select/resources';
 import README from '@availity/reactstrap-validation-select/README.md';
 
@@ -30,6 +31,37 @@ const options = [
   { label: 'Option 2', value: 'value for option 2' },
   { label: 'Option 3', value: 'value for option 3' },
   { label: 'Option 4', value: 'value for option 4' },
+];
+
+const autofillOptions = [
+  {
+    label: 'Option 1',
+    value: {
+      autoFill1: 'option 1 autofill value 1',
+      autoFill2: 'option 1 autofill value 2',
+    },
+  },
+  {
+    label: 'Option 2',
+    value: {
+      autoFill1: 'option 2 autofill value 1',
+      autoFill2: 'option 2 autofill value 2',
+    },
+  },
+  {
+    label: 'Option 3',
+    value: {
+      autoFill1: 'option 3 autofill value 1',
+      autoFill2: 'option 3 autofill value 2',
+    },
+  },
+  {
+    label: 'Option 4',
+    value: {
+      autoFill1: 'option 4 autofill value 1',
+      autoFill2: 'option 4 autofill value 2',
+    },
+  },
 ];
 
 const avCustomResource = new AvApi({ name: 'my-custom-resource' });
@@ -47,20 +79,29 @@ storiesOf('Components|AvSelect', module)
     const isMulti = boolean('Multiple', false);
     const min = (isMulti && number('Min Selection', 2)) || undefined;
     const max = (isMulti && number('Max Selection', 3)) || undefined;
+    const autofill = boolean('Autofill', false);
     return (
       <AvFormResults>
         <AvSelect
           minLength={min}
           maxLength={max}
           isMulti={isMulti}
-          options={options}
+          options={autofill ? autofillOptions : options}
           name="standAlone"
           aria-label="stand-alone"
           required={boolean('Required', false)}
           raw={boolean('Raw value', false)}
           isDisabled={boolean('Disabled', false)}
-          creatable={boolean('Creatable',false)}
+          creatable={boolean('Creatable', false)}
+          autofill={autofill}
         />
+        {autofill && (
+          <AvField name="autoFill1" type="text" label="Autofill Value 1" />
+        )}
+
+        {autofill && (
+          <AvField name="autoFill2" type="text" label="Autofill Value 2" />
+        )}
         <Button className="mt-3" color="primary">
           Submit
         </Button>
@@ -71,6 +112,7 @@ storiesOf('Components|AvSelect', module)
     const isMulti = boolean('Multiple', false);
     const min = (isMulti && number('Min Selection', 2)) || undefined;
     const max = (isMulti && number('Max Selection', 3)) || undefined;
+    const autofill = boolean('Autofill', false);
     return (
       <AvFormResults>
         <AvGroup>
@@ -81,14 +123,22 @@ storiesOf('Components|AvSelect', module)
             minLength={min}
             maxLength={max}
             isMulti={isMulti}
-            options={options}
+            options={autofill ? autofillOptions : options}
             name="standAloneWithLabel"
             inputProps={{ 'aria-label': 'stand-alone with Label' }}
             required={boolean('Required', false)}
             raw={boolean('Raw value', false)}
+            autofill={autofill}
             isDisabled={boolean('Disabled', false)}
-            creatable={boolean('Creatable',false)}
-            />
+            creatable={boolean('Creatable', false)}
+          />
+          {autofill && (
+            <AvField name="autoFill1" type="text" label="Autofill Value 1" />
+          )}
+
+          {autofill && (
+            <AvField name="autoFill2" type="text" label="Autofill Value 2" />
+          )}
           <AvFeedback>
             {text('Error Message', 'This field is invalid')}
           </AvFeedback>
@@ -102,6 +152,7 @@ storiesOf('Components|AvSelect', module)
     const min = (isMulti && number('Min Selection', 2)) || undefined;
     const max = (isMulti && number('Max Selection', 3)) || undefined;
     const required = boolean('Required', false);
+    const autofill = boolean('Autofill', false);
     return (
       <AvFormResults>
         <AvSelectField
@@ -110,7 +161,7 @@ storiesOf('Components|AvSelect', module)
           minLength={min}
           maxLength={max}
           isMulti={isMulti}
-          options={options}
+          options={autofill ? autofillOptions : options}
           required={required}
           errorMessage={text('Generic Error Message', 'This field is invalid')}
           validate={{
@@ -123,8 +174,16 @@ storiesOf('Components|AvSelect', module)
           }}
           raw={boolean('Raw value', false)}
           isDisabled={boolean('Disabled', false)}
-          creatable={boolean('Creatable',false)}
+          creatable={boolean('Creatable', false)}
+          autofill={autofill}
         />
+        {autofill && (
+          <AvField name="autoFill1" type="text" label="Autofill Value 1" />
+        )}
+
+        {autofill && (
+          <AvField name="autoFill2" type="text" label="Autofill Value 2" />
+        )}
         <Button color="primary">Submit</Button>
       </AvFormResults>
     );
@@ -149,7 +208,7 @@ storiesOf('Components|AvSelect', module)
           isMulti={isMulti}
           required={required}
           resource={avCustomResource}
-          labelKey='name'
+          labelKey="name"
           errorMessage={text('Generic Error Message', 'This field is invalid')}
           validate={{
             required: {
@@ -160,7 +219,7 @@ storiesOf('Components|AvSelect', module)
             },
           }}
           isDisabled={boolean('Disabled', false)}
-          creatable={boolean('Creatable',false)}
+          creatable={boolean('Creatable', false)}
         />
         <Button color="primary">Submit</Button>
       </AvFormResults>
@@ -368,6 +427,9 @@ storiesOf('Components|AvSelect/resources', module)
           isMulti={isMulti}
           required={required}
           errorMessage={text('Generic Error Message', 'This field is invalid')}
+          parameters={{
+            list: 'ALLCPTCODES',
+          }}
           validate={{
             required: {
               value: required,
@@ -378,6 +440,49 @@ storiesOf('Components|AvSelect/resources', module)
           }}
           isDisabled={boolean('Disabled', false)}
         />
+        <Button color="primary">Submit</Button>
+      </AvFormResults>
+    );
+  })
+  .add('AvPatientSelect', () => {
+    const isMulti = boolean('Multiple', false);
+    const min = (isMulti && number('Min Selection', 2)) || undefined;
+    const max = (isMulti && number('Max Selection', 3)) || undefined;
+    const required = boolean('Required', false);
+    const autofill = boolean('Autofill', false);
+    return (
+      <AvFormResults>
+        <AvPatientSelect
+          autofill={autofill}
+          label={text('Label', 'Select Patient')}
+          name="AvCodeSelect"
+          minLength={min}
+          maxLength={max}
+          isMulti={isMulti}
+          required={required}
+          errorMessage={text('Generic Error Message', 'This field is invalid')}
+          parameters={{
+            customerId: '1194',
+          }}
+          validate={{
+            required: {
+              value: required,
+              errorMessage:
+                required &&
+                text('Required Error Message', 'This field is required'),
+            },
+          }}
+          isDisabled={boolean('Disabled', false)}
+        />
+
+        {autofill && (
+          <AvField name="firstName" type="text" label="Patient First Name" />
+        )}
+
+        {autofill && (
+          <AvField name="lastName" type="text" label="Patient Last Name" />
+        )}
+
         <Button color="primary">Submit</Button>
       </AvFormResults>
     );

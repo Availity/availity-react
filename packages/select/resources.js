@@ -8,7 +8,7 @@ import {
   avNavigationApi,
   avUserApi,
   avCodesApi,
-  avThanosApi,
+  avWebQLApi,
 } from '@availity/api-axios';
 import { ResourceSelect } from '.';
 
@@ -179,7 +179,7 @@ const AvPatientSelect = ResourceSelect.create({
     MultiValueLabel: PatientMultiValueLabel,
     ValueContainer: PatientValueContainer,
   },
-  resource: avThanosApi,
+  resource: avWebQLApi,
   requiredParams: ['customerId'],
   watchParams: ['customerId', 'providerUserId'],
   hasMore: false, // pagination not supported

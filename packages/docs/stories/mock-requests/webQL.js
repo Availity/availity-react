@@ -1,7 +1,7 @@
 import patients from '../data/patients.json';
 
 export default mock => {
-  mock.post('/ms/api/availity/internal/spc/thanos/graphql', (req, res) => {
+  mock.post('/ms/api/availity/internal/spc/web/graphql', (req, res) => {
     let resp = {};
     const body = JSON.parse(req._body);
 

@@ -54,6 +54,7 @@ class AvSelect extends AvBaseInput {
     loadOptions: PropTypes.func,
     raw: PropTypes.bool,
     creatable: PropTypes.bool,
+    autofill: PropTypes.oneOfType([PropTypes.bool, PropTypes.object]),
   });
 
   optionsContainsValue = props => {
@@ -162,7 +163,7 @@ class AvSelect extends AvBaseInput {
     }
   }
 
-  onChangeHandler(inputValue) {
+  onChangeHandler(inputValue, { name } = {}) {
     const value = this.prepValue(inputValue);
     if (this.props.isMulti) {
       const max = this.props.maxLength || this.props.max;
@@ -171,6 +172,52 @@ class AvSelect extends AvBaseInput {
       }
     }
     super.onChangeHandler(value);
+
+    const shouldAutofill =
+      this.props.autofill &&
+      !this.props.isMulti &&
+      inputValue &&
+      typeof inputValue === 'object';
+
+    if (shouldAutofill) {
+      const formValues = this.context.FormCtrl.getValues();
+      Object.keys(formValues)
+        // Filter out the input that the onChangeHandler is being called for
+        .filter(fieldName => fieldName !== name)
+        .forEach(fieldName => {
+          let rawValue = inputValue;
+          if (
+            !!inputValue.label &&
+            !!inputValue.value &&
+            typeof inputValue.value === 'object'
+          ) {
+            rawValue = inputValue.value;
+          }
+
+          let shouldAutofillField = false;
+          if (typeof this.props.autofill === 'object') {
+            shouldAutofillField = this.props.autofill[fieldName];
+          } else {
+            shouldAutofillField = Object.prototype.hasOwnProperty.call(
+              rawValue,
+              fieldName
+            );
+          }
+
+          if (shouldAutofillField) {
+            const input = this.context.FormCtrl.getInput(fieldName);
+
+            let val;
+            if (typeof this.props.autofill === 'object') {
+              val = get(rawValue, `${this.props.autofill[fieldName]}`);
+            } else {
+              val = rawValue[fieldName];
+            }
+
+            input.onChangeHandler(val);
+          }
+        });
+    }
   }
 
   getValue() {

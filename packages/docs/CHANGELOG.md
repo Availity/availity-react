@@ -3,6 +3,35 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [7.0.1](https://github.com/Availity/availity-react/compare/@availity/docs@7.0.0...@availity/docs@7.0.1) (2019-08-01)
+
+**Note:** Version bump only for package @availity/docs
+
+
+
+
+
+# [7.0.0](https://github.com/Availity/availity-react/compare/@availity/docs@6.0.5...@availity/docs@7.0.0) (2019-07-31)
+
+
+### Code Refactoring
+
+* **reactstrap-validation-select:** started adding react-dates ([917f1b4](https://github.com/Availity/availity-react/commit/917f1b4))
+
+
+### Features
+
+* **reactstrap-validation-select:** added creatable support ([4966487](https://github.com/Availity/availity-react/commit/4966487))
+
+
+### BREAKING CHANGES
+
+* **reactstrap-validation-select:** this required moment to be installed and the whole look and feel of the picker has changed
+
+
+
+
+
 ## [6.0.5](https://github.com/Availity/availity-react/compare/@availity/docs@6.0.4...@availity/docs@6.0.5) (2019-07-23)
 
 **Note:** Version bump only for package @availity/docs
