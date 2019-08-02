@@ -97,6 +97,35 @@ storiesOf('Components|AvDate', module)
   })
   .add('AvDateRange', () => {
     const required = boolean('Required', false);
+
+    const distanceUnits = ['day', 'month'];
+
+    const minDistance = number('Min Distance');
+    const maxDistance = number('Max Distance');
+
+    let minDistanceUnits;
+    let maxDistanceUnits;
+    if (minDistance) {
+      minDistanceUnits = select('Min Distance Units', distanceUnits, 'day');
+    }
+    if (maxDistance) {
+      maxDistanceUnits = select('Max Distance Units', distanceUnits, 'day');
+    }
+
+    const min = minDistance &&
+      minDistanceUnits && {
+        value: minDistance,
+        units: minDistanceUnits,
+      };
+
+    const max = maxDistance &&
+      maxDistanceUnits && {
+        value: maxDistance,
+        units: maxDistanceUnits,
+      };
+
+    const distance = (min || max) && { min, max };
+
     return (
       <AvFormResults>
         <AvDateRange
@@ -108,6 +137,7 @@ storiesOf('Components|AvDate', module)
           max={text('Max Date (yyyy-mm-dd)')}
           required={boolean('Required', false)}
           disabled={boolean('Disabled', false)}
+          distance={distance}
           errorMessage={text('Generic Error Message', 'This field is invalid')}
           validate={{
             required: {
@@ -124,7 +154,7 @@ storiesOf('Components|AvDate', module)
     );
   })
   .add('AvDateRangeField', () => {
-    const distanceUnits = ['days', 'month'];
+    const distanceUnits = ['day', 'month'];
 
     const required = boolean('Required', false);
     const minDistance = number('Min Distance');
@@ -133,10 +163,10 @@ storiesOf('Components|AvDate', module)
     let minDistanceUnits;
     let maxDistanceUnits;
     if (minDistance) {
-      minDistanceUnits = select('Min Distance Units', distanceUnits, 'days');
+      minDistanceUnits = select('Min Distance Units', distanceUnits, 'day');
     }
     if (maxDistance) {
-      maxDistanceUnits = select('Max Distance Units', distanceUnits, 'days');
+      maxDistanceUnits = select('Max Distance Units', distanceUnits, 'day');
     }
 
     const min = minDistance &&

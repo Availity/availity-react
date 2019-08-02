@@ -97,25 +97,30 @@ export default class AvDateRange extends Component {
     }
   };
 
-  validateDistance = end => {
+  validateDistance = () => {
     const start = this.context.FormCtrl.getInput(
       this.props.start.name
     ).getViewValue();
-    const formattedEnd = moment(end)
-      .format('MM/DD/YYYY')
-      .toString();
+
+    // We want the view value so not calling from args
+    const end = this.context.FormCtrl.getInput(
+      this.props.end.name
+    ).getViewValue();
+
     if (start && end && this.props.distance) {
       const mStart = moment(new Date(start));
-      const mEnd = moment(new Date(formattedEnd));
+      const mEnd = moment(new Date(end));
       if (!mStart.isValid() || !mEnd.isValid()) {
         return true;
       }
       const { max, min } = this.props.distance;
       if (max) {
-        if (mEnd.isAfter(mStart.add(max.value, max.units), 'day')) {
+        if (mEnd.isAfter(moment(mStart).add(max.value, max.units), 'day')) {
           return (
             max.errorMessage ||
-            `The end date must be within ${max.value} ${max.units} of the start date`
+            `The end date must be within ${max.value} ${max.units}${
+              max.value > 1 ? 's' : ''
+            } of the start date`
           );
         }
       }
@@ -123,7 +128,9 @@ export default class AvDateRange extends Component {
         if (mEnd.isBefore(mStart.add(min.value, min.units), 'day')) {
           return (
             min.errorMessage ||
-            `The end date must be greater than ${min.value} ${min.units} of the start date`
+            `The end date must be greater than ${min.value} ${min.units}${
+              min.value > 1 ? 's' : ''
+            } of the start date`
           );
         }
       }

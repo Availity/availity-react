@@ -15,7 +15,11 @@ class AvFormResult extends Component {
   render() {
     return (
       <React.Fragment>
-        <AvForm {...this.props} onSubmit={this.onSubmit} />
+        <AvForm
+          {...this.props}
+          onSubmit={this.onSubmit}
+          onInvalidSubmit={() => console.log('invalid')}
+        />
         <hr />
         {this.state.submitted && (
           <div>
