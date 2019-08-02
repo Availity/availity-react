@@ -97,10 +97,16 @@ export default class AvDateRange extends Component {
     }
   };
 
-  validateDistance = end => {
+  validateDistance = () => {
     const start = this.context.FormCtrl.getInput(
       this.props.start.name
     ).getViewValue();
+
+    // We want the view value so not calling from args
+    const end = this.context.FormCtrl.getInput(
+      this.props.end.name
+    ).getViewValue();
+
     if (start && end && this.props.distance) {
       const mStart = moment(new Date(start));
       const mEnd = moment(new Date(end));
@@ -109,24 +115,33 @@ export default class AvDateRange extends Component {
       }
       const { max, min } = this.props.distance;
       if (max) {
-        if (!mEnd.isBefore(mStart.add(max.value, max.units), 'day')) {
+        if (mEnd.isAfter(moment(mStart).add(max.value, max.units), 'day')) {
           return (
             max.errorMessage ||
-            `The end date must be within ${max.value} ${max.units} of the start date`
+            `The end date must be within ${max.value} ${max.units}${
+              max.value > 1 ? 's' : ''
+            } of the start date`
           );
         }
       }
       if (min) {
-        if (mEnd.isAfter(mStart.add(min.value, min.units), 'day')) {
+        if (mEnd.isBefore(mStart.add(min.value, min.units), 'day')) {
           return (
             min.errorMessage ||
-            `The end date must be greater than ${min.value} ${min.units} of the start date`
+            `The end date must be greater than ${min.value} ${min.units}${
+              min.value > 1 ? 's' : ''
+            } of the start date`
           );
         }
       }
     }
     return true;
   };
+
+  checkDistanceValidation() {
+    const { end } = this.props;
+    this.context.FormCtrl.validate(end.name);
+  }
 
   onDatesChange = async ({ startDate, endDate }) => {
     const { format } = this.state;
@@ -168,6 +183,8 @@ export default class AvDateRange extends Component {
         if (endDate) {
           this.context.FormCtrl.validate(end.name);
         }
+
+        this.checkDistanceValidation();
       }
     );
   };
@@ -249,6 +266,7 @@ export default class AvDateRange extends Component {
       calendarIcon,
       datepicker,
       validate,
+      distance,
       ...attributes
     } = this.props;
     const { startValue, endValue, format, focusedInput } = this.state;
@@ -256,7 +274,7 @@ export default class AvDateRange extends Component {
       ...validate,
       ...this.props.end.validate,
     };
-    if (this.props.distance) {
+    if (distance) {
       endValidate.distance = this.validateDistance;
     }
 
@@ -319,8 +337,7 @@ export default class AvDateRange extends Component {
           {...this.props.end}
           validate={{
             date: true,
-            ...validate,
-            ...this.props.end.validate,
+            ...endValidate,
           }}
           value={this.state.endValue || ''}
           min={minDate}
