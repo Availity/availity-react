@@ -8,6 +8,7 @@ import slotmachine from './slotmachine';
 import me from './me';
 import settings from './settings';
 import disclaimers from './disclaimers';
+import webQL from './webQL';
 import resourceSelect from './resource-select';
 
 mock.setup();
@@ -29,6 +30,8 @@ me(mock);
 settings(mock);
 
 disclaimers(mock);
+
+webQL(mock);
 
 resourceSelect(mock);
 
