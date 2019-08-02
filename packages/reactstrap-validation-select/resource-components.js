@@ -1,6 +1,7 @@
 /* eslint-disable react/prop-types */
 import React, { Fragment } from 'react';
 import { components } from 'react-select';
+import { Row, Col } from 'reactstrap';
 
 export const PatientOption = props => {
   const {
@@ -15,34 +16,35 @@ export const PatientOption = props => {
 
   const option = (
     <Fragment>
-      <strong>
-        {lastName}, {firstName} {middleName ? `${middleName}.` : ''}
-      </strong>
-      &nbsp;&nbsp;&nbsp;{payerName} {memberId || subscriberMemberId}
+      <Row>
+        <Col>
+          <strong>
+            {lastName}, {firstName} {middleName ? `${middleName}.` : ''}
+          </strong>
+        </Col>
+      </Row>
+      {bd && (
+        <Row>
+          <Col>
+            DOB:&nbsp;
+            {bd[5]}
+            {bd[6]}/{bd[8]}
+            {bd[9]}/{bd[0]}
+            {bd[1]}
+            {bd[2]}
+            {bd[3]}
+          </Col>
+        </Row>
+      )}
+      <Row>
+        <Col>
+          {payerName} {memberId || subscriberMemberId}
+        </Col>
+      </Row>
     </Fragment>
   );
 
-  let birthDate = null;
-  // Format date
-  if (bd) {
-    birthDate = (
-      <Fragment>
-        &nbsp;&nbsp;&nbsp;&nbsp;{bd[5]}
-        {bd[6]}/{bd[8]}
-        {bd[9]}/{bd[0]}
-        {bd[1]}
-        {bd[2]}
-        {bd[3]}
-      </Fragment>
-    );
-  }
-
-  return (
-    <components.Option {...props}>
-      {option}
-      {birthDate}
-    </components.Option>
-  );
+  return <components.Option {...props}>{option}</components.Option>;
 };
 
 export const PatientSingleValue = props => {
