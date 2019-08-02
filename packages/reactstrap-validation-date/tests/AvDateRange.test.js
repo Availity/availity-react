@@ -100,4 +100,33 @@ describe('AvDateRange', () => {
       expect(onInvalidSubmit).toHaveBeenCalled();
     });
   });
+
+  test('should pass on date range with min and max distance', async () => {
+    const { getByText } = render(
+      <DateRange
+        name="standAlone"
+        start={{
+          name: 'date.start',
+          value: '01/01/2001',
+        }}
+        end={{
+          name: 'date.end',
+          value: '01/05/2001',
+        }}
+        distance={{
+          min: { value: 2, units: 'day' },
+          max: {
+            value: 6,
+            units: 'day',
+          },
+        }}
+      />
+    );
+
+    fireEvent.click(getByText('Submit'));
+
+    await wait(() => {
+      expect(onValidSubmit).toHaveBeenCalled();
+    });
+  });
 });
