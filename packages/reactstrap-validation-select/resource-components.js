@@ -16,7 +16,7 @@ export const PatientOption = props => {
 
   const option = (
     <Fragment>
-      <Row>
+      <Row noGutters>
         <Col>
           <strong>
             {lastName}, {firstName} {middleName ? `${middleName}.` : ''}
@@ -24,7 +24,7 @@ export const PatientOption = props => {
         </Col>
       </Row>
       {bd && (
-        <Row>
+        <Row noGutters>
           <Col>
             DOB:&nbsp;
             {bd[5]}
@@ -36,7 +36,7 @@ export const PatientOption = props => {
           </Col>
         </Row>
       )}
-      <Row>
+      <Row noGutters>
         <Col>
           {payerName} {memberId || subscriberMemberId}
         </Col>
