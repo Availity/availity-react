@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [3.0.2](https://github.com/Availity/availity-react/compare/@availity/reactstrap-validation-date@3.0.1...@availity/reactstrap-validation-date@3.0.2) (2019-08-02)
+
+
+### Bug Fixes
+
+* **reactstrap-validation-date:** fixing distance validation ON-1163 ([ef4b951](https://github.com/Availity/availity-react/commit/ef4b951))
+
+
+
+
+
 ## [3.0.1](https://github.com/Availity/availity-react/compare/@availity/reactstrap-validation-date@3.0.0...@availity/reactstrap-validation-date@3.0.1) (2019-08-01)
 
 **Note:** Version bump only for package @availity/reactstrap-validation-date
