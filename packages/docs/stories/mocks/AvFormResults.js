@@ -18,6 +18,7 @@ class AvFormResult extends Component {
         <AvForm
           {...this.props}
           onSubmit={this.onSubmit}
+          /* eslint-disable-next-line no-console */
           onInvalidSubmit={() => console.log('invalid')}
         />
         <hr />

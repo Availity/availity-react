@@ -9,11 +9,7 @@ import {
   avWebQLApi,
 } from '@availity/api-axios';
 import AvResourceSelect from './AvResourceSelect';
-import {
-  PatientOption,
-  PatientSingleValue,
-  PatientMultiValueLabel,
-} from './resource-components';
+import { PatientOption } from './resource-components';
 
 const AvProviderSelect = AvResourceSelect.create({
   resource: avProvidersApi,
@@ -56,12 +52,12 @@ const AvCodeSelect = AvResourceSelect.create({
 const AvPatientSelect = AvResourceSelect.create({
   components: {
     Option: PatientOption,
-    SingleValue: PatientSingleValue,
-    MultiValueLabel: PatientMultiValueLabel,
   },
   resource: avWebQLApi,
   requiredParams: ['customerId'],
-  watchParams: ['customerId', 'providerUserId'],
+  watchParams: ['customerId', 'providerUserId', 'payerId'],
+  valueKey: 'lastName',
+  labelKey: 'lastName',
   hasMore: false, // pagination not supported
   getResult: data => data.data.patientsMany,
   graphqlConfig: {
