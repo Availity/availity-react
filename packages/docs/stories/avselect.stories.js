@@ -480,7 +480,11 @@ storiesOf('Components|AvSelect/resources', module)
         )}
 
         {autofill && (
-          <AvField name="lastName" type="text" label="Patient Last Name" />
+          <AvField
+            name="subscriberRelationship"
+            type="text"
+            label="Relationship To Subscriber"
+          />
         )}
 
         <Button color="primary">Submit</Button>
