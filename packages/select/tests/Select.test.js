@@ -7,7 +7,7 @@ import {
 } from '@testing-library/react';
 import { Button } from 'reactstrap';
 import * as yup from 'yup';
-import { Form } from '@availity/form';
+import { Form, Input } from '@availity/form';
 import Select from '..';
 
 const singleValueSchema = name =>
@@ -215,6 +215,149 @@ describe('Select', () => {
         }),
         expect.anything()
       );
+    });
+  });
+
+  test('autofill as boolean works', async () => {
+    const opts = [
+      {
+        label: 'Doe, John',
+        value: {
+          firstName: 'John',
+          lastName: 'Doe',
+        },
+      },
+      {
+        label: 'Doe, Jane',
+        value: {
+          firstName: 'Jane',
+          lastName: 'Doe',
+        },
+      },
+    ];
+
+    const onSubmit = jest.fn();
+    const { container, getByText } = render(
+      <Form
+        initialValues={{
+          testFormInput: undefined,
+          firstName: '',
+          lastName: '',
+        }}
+        onSubmit={onSubmit}
+      >
+        <Select
+          name="testFormInput"
+          options={opts}
+          classNamePrefix="test"
+          raw
+          autofill
+        />
+        <Input data-testid="first-input" name="firstName" />
+        <Input data-testid="last-input" name="lastName" />
+
+        <Button>Submit</Button>
+      </Form>
+    );
+
+    // Simulate the user selecting "Doe, John"
+    const select = container.querySelector('.test__control');
+    fireEvent.keyDown(select, { key: 'ArrowDown', keyCode: 40 });
+    fireEvent.keyDown(select, { key: 'Enter', keyCode: 13 });
+
+    const option = await waitForElement(() => getByText('Doe, John'));
+
+    expect(option).toBeDefined();
+
+    fireEvent.click(option);
+
+    // Simulate the user clicking "Submit"
+    const submitButton = getByText('Submit');
+    expect(submitButton).toBeDefined();
+
+    await fireEvent.click(submitButton);
+
+    // Check that values got autofilled
+    await wait(() => {
+      expect(onSubmit).toHaveBeenCalledTimes(1);
+      const payload = onSubmit.mock.calls[0][0];
+      expect(payload.firstName).toBe('John');
+      expect(payload.lastName).toBe('Doe');
+    });
+  });
+
+  test('autofill as object works', async () => {
+    const opts = [
+      {
+        label: 'Doe, John',
+        value: {
+          name: {
+            first: 'John',
+            last: 'Doe',
+          },
+        },
+      },
+      {
+        label: 'Doe, Jane',
+        value: {
+          name: {
+            first: 'Jane',
+            last: 'Doe',
+          },
+        },
+      },
+    ];
+
+    const onSubmit = jest.fn();
+    const { container, getByText } = render(
+      <Form
+        initialValues={{
+          testFormInput: undefined,
+          firstName: '',
+          lastName: '',
+        }}
+        onSubmit={onSubmit}
+      >
+        <Select
+          name="test-form-input"
+          options={opts}
+          classNamePrefix="test"
+          raw
+          autofill={{
+            firstName: 'name.first',
+            lastName: 'name.last',
+          }}
+        />
+        <Input data-testid="first-input" name="firstName" />
+        <Input data-testid="last-input" name="lastName" />
+
+        <Button>Submit</Button>
+      </Form>
+    );
+
+    // Simulate the user selecting "Doe, John"
+    const select = container.querySelector('.test__control');
+    fireEvent.keyDown(select, { key: 'ArrowDown', keyCode: 40 });
+    fireEvent.keyDown(select, { key: 'Enter', keyCode: 13 });
+
+    const option = await waitForElement(() => getByText('Doe, John'));
+
+    expect(option).toBeDefined();
+
+    fireEvent.click(option);
+
+    // Simulate the user clicking "Submit"
+    const submitButton = getByText('Submit');
+    expect(submitButton).toBeDefined();
+
+    await fireEvent.click(submitButton);
+
+    // Check that values got autofilled
+    await wait(() => {
+      expect(onSubmit).toHaveBeenCalledTimes(1);
+      const payload = onSubmit.mock.calls[0][0];
+      expect(payload.firstName).toBe('John');
+      expect(payload.lastName).toBe('Doe');
     });
   });
 });

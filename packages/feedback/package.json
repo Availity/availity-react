@@ -33,7 +33,7 @@
     "@availity/localstorage-core": "^2.6.1",
     "@availity/select": "^0.1.0",
     "axios": "^0.18.0",
-    "formik": "^2.0.1-rc.5",
+    "formik": "^2.0.1-rc.12",
     "react": "^16.8.3",
     "react-dom": "^16.8.3",
     "reactstrap": "^8.0.0",

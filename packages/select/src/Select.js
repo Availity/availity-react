@@ -34,13 +34,14 @@ const Select = ({
   styles,
   maxLength,
   onChange: onChangeCallback,
+  autofill,
   ...attributes
 }) => {
   const [
     { onChange, value: fieldValue, ...field },
     { touched, error: hasError },
   ] = useField(name);
-  const { setFieldValue } = useFormikContext();
+  const { values, setValues } = useFormikContext();
 
   const getOptionLabel = option => option[get(attributes, 'labelKey', 'label')];
 
@@ -70,26 +71,65 @@ const Select = ({
     attributes.inputId = name;
   }
 
+  const onChangeHandler = async (newValue, { name } = {}) => {
+    if (maxLength && attributes.isMulti && newValue.length > maxLength) return;
+
+    let newVal;
+    if (attributes.isMulti) {
+      newVal = newValue.map(val => getOptionValue(val));
+    } else {
+      newVal = getOptionValue(newValue);
+    }
+
+    const valuesToSet = { [name]: newVal };
+
+    const shouldAutofill =
+      autofill && !attributes.isMulti && newValue && typeof newVal === 'object';
+
+    if (shouldAutofill) {
+      Object.keys(values)
+        .filter(fieldName => fieldName !== name)
+        .forEach(fieldName => {
+          let rawValue = newValue;
+          if (
+            !!newValue.label &&
+            !!newValue.value &&
+            typeof newValue.value === 'object'
+          ) {
+            rawValue = newValue.value;
+          }
+
+          let shouldAutofillField = false;
+          if (typeof autofill === 'object') {
+            shouldAutofillField = autofill[fieldName];
+          } else {
+            shouldAutofillField = Object.prototype.hasOwnProperty.call(
+              rawValue,
+              fieldName
+            );
+          }
+
+          if (shouldAutofillField) {
+            let val;
+            if (typeof autofill === 'object') {
+              val = get(rawValue, `${autofill[fieldName]}`);
+            } else {
+              val = rawValue[fieldName];
+            }
+            valuesToSet[fieldName] = val;
+          }
+        });
+    }
+    await setValues(valuesToSet);
+    if (onChangeCallback) {
+      onChangeCallback(newVal);
+    }
+  };
+
   return (
     <Tag
       {...field}
-      onChange={newValue => {
-        if (maxLength && attributes.isMulti && newValue.length > maxLength)
-          return;
-
-        let newVal;
-        if (attributes.isMulti) {
-          newVal = newValue.map(val => getOptionValue(val));
-        } else {
-          newVal = getOptionValue(newValue);
-        }
-
-        setFieldValue(name, newVal);
-
-        if (onChangeCallback) {
-          onChangeCallback(newVal);
-        }
-      }}
+      onChange={onChangeHandler}
       ref={selectRef}
       name={name}
       classNamePrefix="av"
@@ -165,6 +205,7 @@ Select.propTypes = {
   styles: PropTypes.object,
   maxLength: PropTypes.number,
   onChange: PropTypes.func,
+  autofill: PropTypes.oneOfType([PropTypes.bool, PropTypes.object]),
 };
 
 export default Select;
