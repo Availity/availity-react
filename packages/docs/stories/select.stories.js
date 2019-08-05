@@ -3,7 +3,7 @@ import { storiesOf } from '@storybook/react';
 import { Label, Button } from 'reactstrap';
 import { number, text, boolean } from '@storybook/addon-knobs';
 import AvApi from '@availity/api-axios';
-
+import '@availity/yup';
 import Select, { SelectField, ResourceSelect } from '@availity/select';
 
 import {
@@ -29,9 +29,9 @@ const options = [
   { label: 'Option 4', value: 'value for option 4' },
 ];
 
-const singleValueSchema = name =>
+const singleValueSchema = (name,required) =>
   yup.object().shape({
-    [name]: yup.string().required('This field is required.'),
+    [name]: yup.string().isRequired(required,'This field is required.'),
   });
 
 const multiValueSchema = (name, required, min, max) =>
@@ -41,7 +41,7 @@ const multiValueSchema = (name, required, min, max) =>
       .of(yup.string())
       .min(min, `Must select at least ${min} option${min !== 1 && 's'}.`)
       .max(max, `Cannot select more than ${max} option${max !== 1 && 's'}.`)
-      .required('This field is required.'),
+      .isRequired(required,'This field is required.'),
   });
 
 const avCustomResource = new AvApi({ name: 'my-custom-resource' });
@@ -57,7 +57,7 @@ storiesOf('Formik|Select', module)
     },
   })
   .add('default', () => {
-    const isMulti = boolean('Multiple', true);
+    const isMulti = boolean('Multiple', false);
     const min = (isMulti && number('Min Selection', 2)) || undefined;
     const max = (isMulti && number('Max Selection', 3)) || undefined;
     const required = boolean('Required', false);
@@ -66,8 +66,6 @@ storiesOf('Formik|Select', module)
         initialValues={{
           standAlone: undefined,
         }}
-        // eslint-disable-next-line no-undef
-        onSubmit={values => alert(JSON.stringify(values))}
         validationSchema={
           isMulti
             ? multiValueSchema('standAlone', required, min, max)
@@ -99,8 +97,6 @@ storiesOf('Formik|Select', module)
         initialValues={{
           standAloneWithLabel: null,
         }}
-        // eslint-disable-next-line no-undef
-        onSubmit={values => alert(JSON.stringify(values))}
         validationSchema={
           isMulti
             ? multiValueSchema('standAloneWithLabel', required, min, max)
@@ -139,8 +135,6 @@ storiesOf('Formik|Select', module)
         initialValues={{
           SelectField: undefined,
         }}
-        // eslint-disable-next-line no-undef
-        onSubmit={values => alert(JSON.stringify(values))}
         validationSchema={
           isMulti
             ? multiValueSchema('SelectField', required, min, max)
@@ -171,8 +165,6 @@ storiesOf('Formik|Select', module)
         initialValues={{
           ResourceSelect: null,
         }}
-        // eslint-disable-next-line no-undef
-        onSubmit={values => alert(JSON.stringify(values))}
         validationSchema={
           isMulti
             ? multiValueSchema('SelectField', required, min, max)
@@ -218,8 +210,6 @@ storiesOf('Formik|Select/resources', module)
         initialValues={{
           AvProviderSelect: null,
         }}
-        // eslint-disable-next-line no-undef
-        onSubmit={values => alert(JSON.stringify(values))}
         validationSchema={singleValueSchema('AvProviderSelect')}
       >
         <AvProviderSelect
@@ -248,8 +238,6 @@ storiesOf('Formik|Select/resources', module)
         initialValues={{
           AvOrganizationSelect: null,
         }}
-        // eslint-disable-next-line no-undef
-        onSubmit={values => alert(JSON.stringify(values))}
         validationSchema={singleValueSchema('AvOrganizationSelect')}
       >
         <AvOrganizationSelect
@@ -284,8 +272,6 @@ storiesOf('Formik|Select/resources', module)
         initialValues={{
           AvPatientSelect: null,
         }}
-        // eslint-disable-next-line no-undef
-        onSubmit={values => alert(JSON.stringify(values))}
         validationSchema={singleValueSchema('AvPatientSelect')}
       >
         <AvPatientSelect

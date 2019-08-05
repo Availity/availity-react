@@ -1,6 +1,6 @@
 import React from 'react';
 import { storiesOf } from '@storybook/react';
-import { withKnobs } from '@storybook/addon-knobs/react';
+import { withKnobs, boolean } from '@storybook/addon-knobs/react';
 import { Button } from 'reactstrap';
 import * as yup from 'yup';
 import FormikDate, {
@@ -8,93 +8,11 @@ import FormikDate, {
   DateRange,
   DateRangeField,
 } from '@availity/formik-date';
-import { Form } from '@availity/form';
+import '@availity/formik-date/styles.scss';
+import '@availity/yup'
 import README from '@availity/formik-date/README.md';
 import moment from 'moment';
-
-// Validates a date range is in valid format
-yup.addMethod(yup.string, 'dateRange', function format(
-  { min, max, format = 'MM/DD/YYYY' },
-  msg
-) {
-  // Can't use arrow function because we rely on 'this' referencing yup's internals
-  return this.test({
-    name: 'dateRange',
-    exclusive: true, // Validation errors don't stack
-    // NOTE: Intentional use of single quotes - yup will handle the string interpolation
-    message: msg || 'This field is invalid.',
-    test(value) {
-      if (!value) return false;
-      let [startDate, endDate] = value.split('-');
-      if (!startDate || !endDate) return false;
-
-      startDate = moment(
-        startDate,
-        ['MM/DD/YYYY', format, 'MMDDYYYY', 'YYYYMMDD'],
-        true
-      );
-
-      endDate = moment(
-        endDate,
-        ['MM/DD/YYYY', format, 'MMDDYYYY', 'YYYYMMDD'],
-        true
-      );
-
-      return (
-        startDate.isValid() &&
-        endDate.isValid() &&
-        endDate.isSameOrAfter(startDate) &&
-        startDate.isSameOrAfter(min) &&
-        endDate.isSameOrBefore(max)
-      );
-    },
-  });
-});
-
-// Validates a date is in valid format
-yup.addMethod(yup.string, 'format', function format(
-  format = 'MM/DD/YYYY',
-  msg
-) {
-  // Can't use arrow function because we rely on 'this' referencing yup's internals
-  return this.test({
-    name: 'format',
-    exclusive: true, // Validation errors don't stack
-    // NOTE: Intentional use of single quotes - yup will handle the string interpolation
-    message: msg || 'This field is invalid.',
-    test(value) {
-      const date = moment(
-        value,
-        ['MM/DD/YYYY', format, 'MMDDYYYY', 'YYYYMMDD'],
-        true
-      );
-      return date.isValid();
-    },
-  });
-});
-
-// Validates another date field is after this date field
-yup.addMethod(yup.string, 'between', function format(
-  { min, max, format = 'MM/DD/YYYY' },
-  msg
-) {
-  // Can't use arrow function because we rely on 'this' referencing yup's internals
-  return this.test({
-    name: 'between',
-    exclusive: true, // Validation errors don't stack
-    // NOTE: Intentional use of single quotes - yup will handle the string interpolation
-    message: msg || 'This field is invalid.',
-    test(value) {
-      const date = moment(
-        value,
-        ['MM/DD/YYYY', format, 'MMDDYYYY', 'YYYYMMDD'],
-        true
-      );
-
-      return date.isBetween(min, max);
-    },
-  });
-});
+import FormikResults from './mocks/FormikResults';
 
 // eslint-disable-next-line no-undef
 storiesOf('Formik|Date', module)
@@ -111,16 +29,14 @@ storiesOf('Formik|Date', module)
     const schema = yup.object().shape({
       dateOfService: yup
         .date('This field is invalid.')
-        .format('MM/DD/YYYY', true),
+        // .format('MM/DD/YYYY', true),
     });
 
     return (
-      <Form
+      <FormikResults
         initialValues={{
           dateOfService: '',
         }}
-        // eslint-disable-next-line no-undef
-        onSubmit={values => alert(JSON.stringify(values))}
         validationSchema={schema}
       >
         <div className="d-flex">
@@ -135,7 +51,7 @@ storiesOf('Formik|Date', module)
             Submit
           </Button>
         </div>
-      </Form>
+      </FormikResults>
     );
   })
   .add('DateField', () => {
@@ -146,37 +62,37 @@ storiesOf('Formik|Date', module)
     const maxDate = moment()
       .add(7, 'day')
       .format(dateFormat);
+      const required = boolean('Required',false);
 
     const schema = yup.object().shape({
       dateOfService: yup
-        .string()
+        .date({
+          format: dateFormat
+        })
         .typeError('This field is invalid.')
-        .required('This field is required.')
-        .format(dateFormat)
-        .between(
-          {
-            min: minDate,
-            max: maxDate,
-            format: 'MM/DD/YYYY',
-          },
-          `Date must be between ${minDate} and ${maxDate}`
-        ),
+        // .isRequired(required,'This field is required.')
+        // .between(
+        //   {
+        //     min: minDate,
+        //     max: maxDate,
+        //     format: 'MM/DD/YYYY',
+        //   },
+        //   `Date must be between ${minDate} and ${maxDate}`
+        // ),
     });
 
     return (
-      <Form
+      <FormikResults
         initialValues={{
           dateOfService: '',
         }}
-        // eslint-disable-next-line no-undef
-        onSubmit={values => alert(JSON.stringify(values))}
         validationSchema={schema}
       >
         <DateField
           id="dateOfService"
           name="dateOfService"
           label="Date of Service"
-          dateFormat={dateFormat}
+          format={dateFormat}
           min={{ value: 7, units: 'days' }}
           max={{ value: 7, units: 'days' }}
         />
@@ -184,91 +100,86 @@ storiesOf('Formik|Date', module)
         <Button className="ml-1" color="primary" type="submit">
           Submit
         </Button>
-      </Form>
+      </FormikResults>
     );
   })
-  .add('DateRange', () => {
-    const dateFormat = 'MM/DD/YYYY';
-    const minDate = moment()
-      .subtract(7, 'day')
-      .format(dateFormat);
-    const maxDate = moment()
-      .add(7, 'day')
-      .format(dateFormat);
+  // .add('DateRange', () => {
+  //   const dateFormat = 'MM/DD/YYYY';
+  //   const minDate = moment()
+  //     .subtract(7, 'day')
+  //     .format(dateFormat);
+  //   const maxDate = moment()
+  //     .add(7, 'day')
+  //     .format(dateFormat);
 
-    const schema = yup.object().shape({
-      dateOfService: yup
-        .string()
-        .typeError('This field is invalid.')
-        .required('This field is required.')
-        .dateRange(
-          { min: minDate, max: maxDate, format: dateFormat },
-          `Date must be between ${minDate} and ${maxDate}`
-        ),
-    });
+  //   const schema = yup.object().shape({
+  //     dateOfService: yup
+  //       .string()
+  //       .typeError('This field is invalid.')
+  //       .required('This field is required.')
+  //       .dateRange(
+  //         { min: minDate, max: maxDate, format: dateFormat },
+  //         `Date must be between ${minDate} and ${maxDate}`
+  //       ),
+  //   });
 
-    return (
-      <Form
-        initialValues={{
-          dateOfService: '',
-        }}
-        // eslint-disable-next-line no-undef
-        onSubmit={values => alert(JSON.stringify(values))}
-        validationSchema={schema}
-      >
-        <DateRange
-          id="dateOfService"
-          name="dateOfService"
-          min={{ value: 7, units: 'days' }}
-          max={{ value: 7, units: 'days' }}
-        />
+  //   return (
+  //     <FormikResults
+  //       initialValues={{
+  //         dateOfService: '',
+  //       }}
+  //       validationSchema={schema}
+  //     >
+  //       <DateRange
+  //         id="dateOfService"
+  //         name="dateOfService"
+  //         min={{ value: 7, units: 'days' }}
+  //         max={{ value: 7, units: 'days' }}
+  //       />
 
-        <Button className="mt-1 ml-1" color="primary" type="submit">
-          Submit
-        </Button>
-      </Form>
-    );
-  })
-  .add('DateRangeField', () => {
-    const dateFormat = 'MM/DD/YYYY';
-    const minDate = moment()
-      .subtract(7, 'day')
-      .format(dateFormat);
-    const maxDate = moment()
-      .add(7, 'day')
-      .format(dateFormat);
+  //       <Button className="mt-1 ml-1" color="primary" type="submit">
+  //         Submit
+  //       </Button>
+  //     </FormikResults>
+  //   );
+  // })
+  // .add('DateRangeField', () => {
+  //   const dateFormat = 'MM/DD/YYYY';
+  //   const minDate = moment()
+  //     .subtract(7, 'day')
+  //     .format(dateFormat);
+  //   const maxDate = moment()
+  //     .add(7, 'day')
+  //     .format(dateFormat);
 
-    const schema = yup.object().shape({
-      dateOfService: yup
-        .string()
-        .typeError('This field is invalid.')
-        .required('This field is required.')
-        .dateRange(
-          { min: minDate, max: maxDate, format: dateFormat },
-          `Date must be between ${minDate} and ${maxDate}`
-        ),
-    });
+  //   const schema = yup.object().shape({
+  //     dateOfService: yup
+  //       .dateRange({
+  //         startKey: 'startDate',
+  //         endKey:'endDate'
+  //       }).between(minDate,maxDate)
+  //   });
 
-    return (
-      <Form
-        initialValues={{
-          dateOfService: '',
-        }}
-        // eslint-disable-next-line no-undef
-        onSubmit={values => alert(JSON.stringify(values))}
-        validationSchema={schema}
-      >
-        <DateRangeField
-          id="dateOfService"
-          name="dateOfService"
-          label="Date of Service"
-          min={{ value: 7, units: 'days' }}
-          max={{ value: 7, units: 'days' }}
-        />
-
-        <Button className="mt-1 ml-1" color="primary" type="submit">
-          Submit
-        </Button>
-      </Form>
-    );
-  });
+  //   return (
+  //     <FormikResults
+  //       initialValues={{
+  //         dateOfService: {
+  //           startDate: '',
+  //           endDate: ''
+  //         },
+  //       }}
+  //       validationSchema={schema}
+  //     >
+  //       <DateRangeField
+  //         id="dateOfService"
+  //         name="dateOfService"
+  //         label="Date of Service"
+  //         min={{ value: 7, units: 'days' }}
+  //         max={{ value: 7, units: 'days' }}
+  //       />
+  //       <Button className="mt-1 ml-1" color="primary" type="submit">
+  //         Submit
+  //       </Button>
+  //     </FormikResults>
+  //   );
+  // });

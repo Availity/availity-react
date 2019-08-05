@@ -44,4 +44,8 @@ Form.propTypes = {
   children: PropTypes.node,
 };
 
+Form.defaultProps = {
+  onSubmit: () => {}
+}
+
 export default Form;

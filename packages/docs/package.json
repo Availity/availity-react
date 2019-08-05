@@ -33,6 +33,8 @@
     "@availity/favorites": "^1.1.9",
     "@availity/feature": "^1.1.7",
     "@availity/feedback": "^4.1.16",
+    "@availity/form": "^0.1.0",
+    "@availity/formik-date": "^0.1.0",
     "@availity/hooks": "^1.4.0",
     "@availity/icon": "^0.4.2",
     "@availity/link": "^1.2.1",
@@ -45,6 +47,7 @@
     "@availity/progress": "^1.1.1",
     "@availity/reactstrap-validation-date": "^3.0.2",
     "@availity/reactstrap-validation-select": "^4.2.0",
+    "@availity/select": "^0.1.0",
     "@availity/spaces": "^2.0.4",
     "@availity/step-wizard": "^1.2.3",
     "@availity/training-link": "^1.1.6",
@@ -92,5 +95,8 @@
     "url-loader": "^2.1.0",
     "xhr-mock": "^2.3.2",
     "yup": "^0.27.0"
+  },
+  "dependencies": {
+    "@availity/yup": "^1.0.1-alpha.610"
   }
 }

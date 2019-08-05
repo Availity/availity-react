@@ -6,7 +6,6 @@ import { useToggle } from '@availity/hooks';
 import 'react-dates/initialize';
 import { SingleDatePicker } from 'react-dates';
 import 'react-dates/lib/css/_datepicker.css';
-import './css/react-dates-overrides.css';
 import Icon from '@availity/icon';
 import { InputGroup, Input } from 'reactstrap';
 import moment from 'moment';
@@ -24,19 +23,21 @@ const AvDate = ({
   onPickerFocusChange,
   min,
   max,
+  datepicker,
   format,
   'data-testid': dataTestId,
   ...attributes
 }) => {
-  const { setTouched, setValues } = useFormikContext();
+  const { setFieldValue, handleBlur, setTouched, setValues } = useFormikContext();
   const [field, metadata] = useField(name);
   const [isFocused, toggleIsFocused] = useToggle(false);
-  const [inputRef, setInputRef] = useState(null);
 
   const classes = classNames(
     className,
     metadata.touched ? 'is-touched' : 'is-untouched',
-    metadata.touched && metadata.error && 'is-invalid'
+    metadata.touched && metadata.error && 'is-invalid',
+    !field.value && 'current-day-highlight',
+    datepicker && 'av-calendar-show'
   );
 
   const pickerId = `${(attributes.id || name).replace(
@@ -53,16 +54,16 @@ const AvDate = ({
     }
 
     await setValues({ [name]: val });
-    inputRef.value = val;
-    field.onChange({ target: inputRef });
+    // inputRef.value = val;
+    // field.onChange({ target: inputRef });
+    setFieldValue(name,val);
     if (onChange) {
       onChange({ value: val });
     }
   };
 
   const onClose = ({ date }) => {
-    inputRef.value = date && date.format(format);
-    field.onBlur({ target: inputRef });
+    handleBlur(name);
   };
 
   const onFocusChange = ({ focused }) => {
@@ -72,18 +73,6 @@ const AvDate = ({
 
     toggleIsFocused(focused);
     if (onPickerFocusChange) onPickerFocusChange({ focused });
-  };
-
-  const getRef = el => {
-    setInputRef(el);
-
-    if (innerRef) {
-      if (typeof innerRef === 'function') {
-        innerRef(el);
-      } else {
-        innerRef.current = el;
-      }
-    }
   };
 
   const getDateValue = () => {
@@ -97,13 +86,6 @@ const AvDate = ({
   };
 
   return (
-    <>
-      <Input
-        innerRef={getRef}
-        style={{ display: 'none' }}
-        name={name}
-        className={classes}
-      />
       <InputGroup
         disabled={attributes.disabled}
         className={classes}
@@ -122,12 +104,12 @@ const AvDate = ({
           onFocusChange={onFocusChange}
           numberOfMonths={1}
           isOutsideRange={isOutsideRange(min, max)}
-          customInputIcon={calendarIcon}
+          showDefaultInputIcon={datepicker}
+          customInputIcon={datepicker ? calendarIcon : undefined}
           inputIconPosition="after"
           onClose={onClose}
         />
       </InputGroup>
-    </>
   );
 };
 
@@ -143,11 +125,13 @@ AvDate.propTypes = {
   innerRef: PropTypes.oneOfType([PropTypes.func, PropTypes.node]),
   format: PropTypes.string,
   'data-testid': PropTypes.string,
+  datepicker: PropTypes.bool
 };
 
 AvDate.defaultProps = {
   calendarIcon: <Icon name="calendar" />,
   format: 'MM/DD/YYYY',
+  datepicker: true
 };
 
 export default AvDate;

@@ -4,7 +4,6 @@ import { withKnobs, select } from '@storybook/addon-knobs/react';
 import { Button } from 'reactstrap';
 import * as yup from 'yup';
 import {
-  Form,
   Field,
   Input,
   Checkbox,
@@ -14,6 +13,7 @@ import {
   FormGroup,
 } from '@availity/form';
 import README from '@availity/form/README.md';
+import FormResults from './mocks/FormikResults';
 
 // eslint-disable-next-line no-undef
 storiesOf('Formik|Form', module)
@@ -31,12 +31,10 @@ storiesOf('Formik|Form', module)
       hello: yup.string().required(),
     });
     return (
-      <Form
+      <FormResults
         initialValues={{
           hello: '',
         }}
-        // eslint-disable-next-line no-undef
-        onSubmit={values => alert(JSON.stringify(values))}
         validationSchema={select('Validation', {
           required: schema,
           optional: yup.object().shape({
@@ -48,7 +46,7 @@ storiesOf('Formik|Form', module)
         <Button color="primary" type="submit">
           Submit
         </Button>
-      </Form>
+      </FormResults>
     );
   })
   .add('Input', () => {
@@ -57,12 +55,10 @@ storiesOf('Formik|Form', module)
     });
 
     return (
-      <Form
+      <FormResults
         initialValues={{
           hello: '',
         }}
-        // eslint-disable-next-line no-undef
-        onSubmit={values => alert(JSON.stringify(values))}
         validationSchema={schema}
       >
         <div className="d-flex">
@@ -71,16 +67,14 @@ storiesOf('Formik|Form', module)
             Submit
           </Button>
         </div>
-      </Form>
+      </FormResults>
     );
   })
   .add('Form Group', () => (
-    <Form
+    <FormResults
       initialValues={{
         hello: '',
       }}
-      // eslint-disable-next-line no-undef
-      onSubmit={values => alert(JSON.stringify(values))}
       validationSchema={yup.object().shape({
         hello: yup.string().optional(),
       })}
@@ -89,7 +83,7 @@ storiesOf('Formik|Form', module)
         <Input name="hello" data-testid="hello-input" />
       </FormGroup>
       <Button type="submit">Submit</Button>
-    </Form>
+    </FormResults>
   ))
   .add('Field', () => {
     const schema = yup.object().shape({
@@ -97,19 +91,17 @@ storiesOf('Formik|Form', module)
     });
 
     return (
-      <Form
+      <FormResults
         initialValues={{
           hello: '',
         }}
-        // eslint-disable-next-line no-undef
-        onSubmit={values => alert(JSON.stringify(values))}
         validationSchema={schema}
       >
         <Field name="hello" type="text" label="Hello" />
         <Button className="ml-1" color="primary" type="submit">
           Submit
         </Button>
-      </Form>
+      </FormResults>
     );
   })
   .add('Checkbox', () => {
@@ -118,12 +110,10 @@ storiesOf('Formik|Form', module)
     });
 
     return (
-      <Form
+      <FormResults
         initialValues={{
           checkboxGroup: [],
         }}
-        // eslint-disable-next-line no-undef
-        onSubmit={values => alert(JSON.stringify(values))}
         validationSchema={schema}
       >
         <CheckboxGroup name="checkboxGroup" label="Checkbox Group">
@@ -134,7 +124,7 @@ storiesOf('Formik|Form', module)
         <Button className="ml-1" color="primary" type="submit">
           Submit
         </Button>
-      </Form>
+      </FormResults>
     );
   })
   .add('Radio', () => {
@@ -143,12 +133,10 @@ storiesOf('Formik|Form', module)
     });
 
     return (
-      <Form
+      <FormResults
         initialValues={{
           hello: '',
         }}
-        // eslint-disable-next-line no-undef
-        onSubmit={values => alert(JSON.stringify(values))}
         validationSchema={schema}
       >
         <RadioGroup name="hello" label="Radio Group">
@@ -159,6 +147,6 @@ storiesOf('Formik|Form', module)
         <Button className="ml-1" color="primary" type="submit">
           Submit
         </Button>
-      </Form>
+      </FormResults>
     );
   });
