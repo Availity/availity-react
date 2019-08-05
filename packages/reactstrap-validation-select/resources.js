@@ -55,7 +55,7 @@ const AvPatientSelect = AvResourceSelect.create({
   },
   resource: avWebQLApi,
   requiredParams: ['customerId'],
-  watchParams: ['customerId', 'providerUserId'],
+  watchParams: ['customerId', 'providerUserId', 'payerId'],
   valueKey: 'lastName',
   labelKey: 'lastName',
   hasMore: false, // pagination not supported
