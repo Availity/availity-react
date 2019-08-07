@@ -28,14 +28,14 @@ Loader.defaultProps = {
 };
 
 const Avatar = ({ fallback, skeletonProps, ...props }) => {
-  const [avatar, setAvatar] = useState(null);
+  const [avatar, setAvatar] = useState(fallback);
   const [loading, setLoading] = useState(true);
 
   useEffectAsync(async () => {
     setLoading(true);
     const resp = await avSettingsApi.getApplication('AVATAR');
 
-    const avi = get(resp, 'data.settings[0].avatar');
+    const avi = get(resp, 'data.settings[0].avatar', fallback);
 
     setAvatar(avi);
     setLoading(false);
@@ -51,12 +51,10 @@ const Avatar = ({ fallback, skeletonProps, ...props }) => {
     );
   }
 
-  const url = avatar || fallback;
-
   return (
     <Img
       data-testid="avatar-img"
-      src={url}
+      src={avatar}
       alt="Avatar"
       loader={
         <Loader
