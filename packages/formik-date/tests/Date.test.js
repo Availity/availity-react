@@ -66,7 +66,7 @@ describe('Date', () => {
     await wait(() => {
       expect(onSubmit).toHaveBeenCalledWith(
         expect.objectContaining({
-          singleDate: '01/04/1997',
+          singleDate: '1997-01-04',
         }),
         expect.anything()
       );
@@ -99,7 +99,7 @@ describe('Date', () => {
     await wait(() => {
       expect(onSubmit).toHaveBeenCalledWith(
         expect.objectContaining({
-          singleDate: moment().format('MM/DD/YYYY'),
+          singleDate: moment().format('YYYY-MM-DD'),
         }),
         expect.anything()
       );

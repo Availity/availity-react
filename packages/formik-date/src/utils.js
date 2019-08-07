@@ -2,28 +2,38 @@ import moment from 'moment';
 import PropTypes from 'prop-types';
 
 export const isOutsideRange = (min, max) => day => {
-  if (moment.isMoment(min) && moment.isMoment(max)) {
-    return day.isBefore(min) || day.isAfter(max);
+  let isOutsideMax = false;
+  let isOutsideMin = false;
+
+  if (min) {
+    if (moment.isMoment(min)) {
+      isOutsideMin = day.isBefore(min);
+    }
+
+    if (typeof min === 'string') {
+      isOutsideMin = day.isBefore(moment(min));
+    }
+
+    if (min.value !== undefined && min.units) {
+      isOutsideMin = day.isBefore(moment().subtract(min.value, min.units));
+    }
   }
 
-  if (typeof min === 'string' && typeof max === 'string') {
-    return day.isBefore(moment(min)) || day.isAfter(moment(max));
+  if (max) {
+    if (moment.isMoment(max)) {
+      isOutsideMax = day.isAfter(max);
+    }
+
+    if (typeof min === 'string') {
+      isOutsideMax = day.isAfter(moment(max));
+    }
+
+    if (max.value !== undefined && max.units) {
+      isOutsideMax = day.isAfter(moment().add(max.value, max.units));
+    }
   }
 
-  if (
-    min &&
-    min.value !== undefined &&
-    min.units &&
-    max &&
-    max.value !== undefined &&
-    max.units
-  ) {
-    const start = moment().subtract(min.value, min.units);
-    const end = moment().add(max.value, max.units);
-    return day.isBefore(start) || day.isAfter(end);
-  }
-
-  return false;
+  return isOutsideMax || isOutsideMin;
 };
 
 export const limitPropType = PropTypes.oneOfType([

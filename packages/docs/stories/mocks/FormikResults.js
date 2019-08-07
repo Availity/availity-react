@@ -2,23 +2,29 @@ import React, { useState, useEffect } from 'react';
 import { Form } from '@availity/form';
 import { useFormikContext } from 'formik';
 
+
+
 const Results = () => {
     const [results,setResults] = useState(null);
-    const { values = {}, errors, submitCount, isValidating } = useFormikContext();
+    const [submitted,setSubmitted] = useState(null);
+    const { values = {}, errors, submitCount } = useFormikContext();
 
     useEffect(() => {
-        if(submitCount > 0 && !isValidating) {
-            setResults({
-                submitted: new Date().toJSON(),
-                errors:window.JSON.stringify(errors,null,2),
-                values: window.JSON.stringify(values,null,2)
-            });
-        }
-    },[submitCount,isValidating]);
+        setResults({
+            errors:window.JSON.stringify(errors,null,2),
+            values: window.JSON.stringify(values,null,2)
+        });
+    },[values,errors]);
 
-    return results && (
+    useEffect(() => {
+        if(submitCount > 0) {
+            setSubmitted(new Date().toJSON())
+        }
+    },[submitCount])
+
+    return submitted && (
         <div>
-            <p>Results (submitted {results.submitted}):</p>
+            <p>Results (submitted {submitted}):</p>
             <p>Errors: {results.errors}</p>
             <div>
                 Values: <pre>{results.values}</pre>

@@ -76,7 +76,10 @@ describe('DateRange', () => {
     await wait(() => {
       expect(onSubmit).toHaveBeenCalledWith(
         expect.objectContaining({
-          dateRange: '01/04/1997-01/05/1997',
+          dateRange: {
+            startDate: '01/04/1997',
+            endDate: '01/05/1997'
+          }
         }),
         expect.anything()
       );
@@ -115,9 +118,12 @@ describe('DateRange', () => {
     await wait(() => {
       expect(onSubmit).toHaveBeenCalledWith(
         expect.objectContaining({
-          dateRange: `${moment().format('MM/DD/YYYY')}-${moment()
+          dateRange: {
+            startDate:moment().format('MM/DD/YYYY'),
+            endDate: moment()
             .add(1, 'day')
-            .format('MM/DD/YYYY')}`,
+            .format('MM/DD/YYYY')
+          }
         }),
         expect.anything()
       );

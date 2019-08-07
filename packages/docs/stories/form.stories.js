@@ -1,6 +1,6 @@
 import React from 'react';
 import { storiesOf } from '@storybook/react';
-import { withKnobs, select } from '@storybook/addon-knobs/react';
+import { withKnobs, boolean } from '@storybook/addon-knobs/react';
 import { Button } from 'reactstrap';
 import * as yup from 'yup';
 import {
@@ -12,6 +12,7 @@ import {
   Radio,
   FormGroup,
 } from '@availity/form';
+import '@availity/yup';
 import README from '@availity/form/README.md';
 import FormResults from './mocks/FormikResults';
 
@@ -27,19 +28,13 @@ storiesOf('Formik|Form', module)
   })
   .addDecorator(withKnobs)
   .add('default', () => {
-    const schema = yup.object().shape({
-      hello: yup.string().required(),
-    });
     return (
       <FormResults
         initialValues={{
           hello: '',
         }}
-        validationSchema={select('Validation', {
-          required: schema,
-          optional: yup.object().shape({
-            hello: yup.string(),
-          }),
+        validationSchema={yup.object().shape({
+          hello: yup.string().isRequired(boolean('Required',false),"This field is required."),
         })}
       >
         <Field name="hello" type="text" label="Hello" />
@@ -76,7 +71,7 @@ storiesOf('Formik|Form', module)
         hello: '',
       }}
       validationSchema={yup.object().shape({
-        hello: yup.string().optional(),
+        hello: yup.string().isRequired(boolean('Required',false),"This field is required."),
       })}
     >
       <FormGroup name="hello" data-testid="hello-group">
@@ -87,7 +82,7 @@ storiesOf('Formik|Form', module)
   ))
   .add('Field', () => {
     const schema = yup.object().shape({
-      hello: yup.string().required(),
+      hello: yup.string().isRequired(boolean('Required',false),"This field is required."),
     });
 
     return (
@@ -105,8 +100,9 @@ storiesOf('Formik|Form', module)
     );
   })
   .add('Checkbox', () => {
+    const required = boolean("Required",false);
     const schema = yup.object().shape({
-      checkboxGroup: yup.array().required('At least one checkbox is required'),
+      checkboxGroup: yup.array().isRequired(required,'At least one checkbox is required'),
     });
 
     return (
@@ -129,7 +125,7 @@ storiesOf('Formik|Form', module)
   })
   .add('Radio', () => {
     const schema = yup.object().shape({
-      hello: yup.string().required('This field is required'),
+      hello: yup.string().isRequired(boolean('Required',false),"This field is required."),
     });
 
     return (
