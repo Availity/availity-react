@@ -14,7 +14,7 @@ export const useCheckboxGroup = name => {
   );
 
   const toggle = () => {
-    const valueArray = [...value] || [];
+    const valueArray = [...value];
 
     const indexOfVal = valueArray.indexOf(name);
 
