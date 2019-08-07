@@ -71,8 +71,6 @@ class AvDate extends Component {
   }
 
   onFocusChange = ({ focused }) => {
-    console.log("Focus change",focused)
-
     const { onPickerFocusChange, name } = this.props;
     const touched = this.context.FormCtrl.isTouched(name);
     if (!touched && !focused) {
