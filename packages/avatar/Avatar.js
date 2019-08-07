@@ -31,8 +31,6 @@ const Avatar = ({ fallback, skeletonProps, ...props }) => {
   const [avatar, setAvatar] = useState(null);
   const [loading, setLoading] = useState(true);
 
-  let url = avatar;
-
   useEffectAsync(async () => {
     setLoading(true);
     const resp = await avSettingsApi.getApplication('AVATAR');
@@ -43,7 +41,7 @@ const Avatar = ({ fallback, skeletonProps, ...props }) => {
     setLoading(false);
   }, []);
 
-  if (!url && loading) {
+  if (loading) {
     return (
       <Loader
         data-testid="avatar-img-loader"
@@ -53,9 +51,7 @@ const Avatar = ({ fallback, skeletonProps, ...props }) => {
     );
   }
 
-  if (!url && !loading && fallback) {
-    url = fallback;
-  }
+  const url = avatar || fallback;
 
   return (
     <Img
