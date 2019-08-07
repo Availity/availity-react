@@ -33,7 +33,7 @@ const Form = ({
 
 Form.propTypes = {
   initialValues: PropTypes.object.isRequired,
-  onSubmit: PropTypes.func.isRequired,
+  onSubmit: PropTypes.func,
   onReset: PropTypes.func,
   // eslint-disable-next-line react/forbid-prop-types
   initialStatus: PropTypes.any,
@@ -45,7 +45,7 @@ Form.propTypes = {
 };
 
 Form.defaultProps = {
-  onSubmit: () => {}
-}
+  onSubmit: () => {},
+};
 
 export default Form;

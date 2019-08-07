@@ -29,7 +29,6 @@ const options = [
   { label: 'Option 4', value: 'value for option 4' },
 ];
 
-
 const autofillOptions = [
   {
     label: 'Option 1',
@@ -61,10 +60,9 @@ const autofillOptions = [
   },
 ];
 
-const singleValueSchema = name =>
-
+const singleValueSchema = (name, required) =>
   yup.object().shape({
-    [name]: yup.string().isRequired(required,'This field is required.'),
+    [name]: yup.string().isRequired(required, 'This field is required.'),
   });
 
 const multiValueSchema = (name, required, min, max) =>
@@ -74,7 +72,7 @@ const multiValueSchema = (name, required, min, max) =>
       .of(yup.string())
       .min(min, `Must select at least ${min} option${min !== 1 && 's'}.`)
       .max(max, `Cannot select more than ${max} option${max !== 1 && 's'}.`)
-      .isRequired(required,'This field is required.'),
+      .isRequired(required, 'This field is required.'),
   });
 
 const avCustomResource = new AvApi({ name: 'my-custom-resource' });
