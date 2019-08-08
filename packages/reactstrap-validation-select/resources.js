@@ -58,36 +58,45 @@ const AvPatientSelect = AvResourceSelect.create({
   watchParams: ['customerId', 'providerUserId', 'payerId'],
   valueKey: 'lastName',
   labelKey: 'lastName',
-  hasMore: false, // pagination not supported
-  getResult: data => data.data.patientsMany,
+  getResult: data => data.data.patientPagination.items,
   graphqlConfig: {
     type: 'patient',
     query: `query($filters: PatientFilters) {
-  patientsMany(filters: $filters) {
-    firstName
-    middleName
-    lastName
-    suffix
-    patientAccountNumber
-    memberId
-    familyUnitNumber
-    subscriberRelationship
-    subscriberRelationshipCode
-    gender
-    genderCode
-    ssn
-    birthDate
-    deathDate
-    address {
-      line1
-      line2
-      city
-      state
-      stateCode
-      zipCode
+  patientPagination(filters: $filters) {
+    pageInfo {
+      hasNextPage
     }
-    subscriberMemberId
-    payerName
+    items {
+      firstName
+      middleName
+      lastName
+      suffix
+      patientAccountNumber
+      memberId
+      familyUnitNumber
+      subscriberRelationship
+      subscriberRelationshipCode
+      gender
+      genderCode
+      ssn
+      birthDate
+      deathDate
+      address {
+        line1
+        line2
+        city
+        state
+        stateCode
+        zipCode
+      }
+      subscriberFirstName
+      subscriberLastName
+      subscriberMiddleName
+      subscriberMemberId
+      payerName
+      payerId
+      requestingProviderNpi
+    }
   }
 }`,
   },
