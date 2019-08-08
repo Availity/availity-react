@@ -16,3 +16,9 @@ You can alternatively run a canary release that will not impact the current `lat
 ```bash
 lerna publish -c
 ```
+
+### Adding a New Package
+
+```bash
+npm run new
+```

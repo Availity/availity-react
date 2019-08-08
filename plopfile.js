@@ -15,6 +15,10 @@ module.exports = plop => {
     return email.replace(/\n$/, '').trim();
   });
 
+  plop.setActionType('bootstrap', () => {
+    execSync('npm run bootstrap');
+  });
+
   plop.setGenerator('package', {
     description: 'Create new package in monorepo',
     prompts: [
@@ -72,6 +76,20 @@ module.exports = plop => {
         type: 'add',
         path: 'packages/{{kebabCase packageName}}/package.json',
         templateFile: 'plop-templates/package/package.json.hbs',
+      },
+      {
+        type: 'add',
+        path: 'packages/docs/stories/{{kebabCase packageName}}.stories.js',
+        templateFile: 'plop-templates/package/stories.js.hbs',
+      },
+      {
+        type: 'append',
+        path: 'packages/docs/package.json',
+        pattern: '"devDependencies": {',
+        template: '    "@availity/{{kebabCase packageName}}": "^1.0.0",',
+      },
+      {
+        type: 'bootstrap',
       },
     ],
   });
