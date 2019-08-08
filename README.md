@@ -41,6 +41,12 @@ https://availity-react-preview.netlify.com
 * [typography](packages/typography/README.md) - Availity typography components
 * [upload](packages/upload/README.md) - Availity upload component for uploading files.
 
+## Adding a New Package
+
+```bash
+$ npm run new
+```
+
 ## License
 
 [MIT](./LICENSE)
