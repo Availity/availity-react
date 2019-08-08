@@ -11,7 +11,6 @@ export default mock => {
                 pos: 0,
               },
             ],
-            avatar: '/public/apps/my-profile/images/Avatars-18.png',
           },
         ],
       })
