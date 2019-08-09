@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [7.2.0](https://github.com/Availity/availity-react/compare/@availity/docs@7.1.2...@availity/docs@7.2.0) (2019-08-08)
+
+
+### Features
+
+* **avatar:** add user avatar component ([78699b6](https://github.com/Availity/availity-react/commit/78699b6))
+
+
+
+
+
 ## [7.1.2](https://github.com/Availity/availity-react/compare/@availity/docs@7.1.1...@availity/docs@7.1.2) (2019-08-05)
 
 **Note:** Version bump only for package @availity/docs

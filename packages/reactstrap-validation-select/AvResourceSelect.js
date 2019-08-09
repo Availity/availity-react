@@ -50,9 +50,9 @@ class AvResourceSelect extends Component {
     if (this.props.graphqlConfig) {
       data = {
         variables: {
+          perPage: this.props.itemsPerPage,
           filters: {
             q: encodeURIComponent(inputValue),
-            perPage: this.props.itemsPerPage,
             ...this.props.parameters,
           },
         },
@@ -72,7 +72,7 @@ class AvResourceSelect extends Component {
 
     if (args.length === 3) {
       if (this.props.graphqlConfig) {
-        data.variables.filters.page = page;
+        data.variables.page = page;
       } else {
         params.offset = (page - 1) * this.props.itemsPerPage;
       }
