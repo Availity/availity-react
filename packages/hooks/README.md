@@ -165,7 +165,7 @@ const Component = () => {
 
 #### useCurrentUser
 
-Hook that will return the current user's region.
+Hook that will return the current user.
 
 
 ##### useCurrentUser Usage
