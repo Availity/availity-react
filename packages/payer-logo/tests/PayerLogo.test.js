@@ -1,10 +1,12 @@
 import React from 'react';
-import { render, waitForElement } from '@testing-library/react';
+import { render, waitForElement, cleanup } from '@testing-library/react';
 import { avSlotMachineApi } from '@availity/api-axios';
 
 import PayerLogo from '../PayerLogo';
 
 jest.mock('@availity/api-axios');
+
+afterEach(cleanup);
 
 describe('PayerLogo', () => {
   test('should not render when no space or payer id', () => {

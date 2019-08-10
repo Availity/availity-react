@@ -1,5 +1,5 @@
 import React from 'react';
-import { render } from '@testing-library/react';
+import { render, cleanup } from '@testing-library/react';
 import MockUpload from './mockUpload';
 import { UploadProgressBar } from '..';
 
@@ -8,6 +8,8 @@ const instance = new MockUpload();
 describe('UploadProgressBar', () => {
   afterEach(() => {
     instance.reset();
+    cleanup();
+    jest.clearAllMocks();
   });
   test('should render', () => {
     render(<UploadProgressBar upload={instance} />);
