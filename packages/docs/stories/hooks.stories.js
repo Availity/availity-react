@@ -9,6 +9,7 @@ import {
   useCurrentRegion,
   useMount,
   useTimeout,
+  useCurrentUser,
 } from '@availity/hooks';
 import { Button, Card, CardBody, CardTitle } from 'reactstrap';
 
@@ -31,26 +32,37 @@ const AsyncComponent = ({ mockData }) => {
   const [loading, toggle] = useToggle(true);
   const [state, setState] = useState(null);
 
-  useEffectAsync(async () => {
-    if (!loading) {
+  useEffectAsync(
+    async () => {
+      if (!loading) {
+        toggle();
+      }
+
+      const newState = await asyncFunction(mockData);
+
+      setState(newState);
       toggle();
-    }
-
-    const newState = await asyncFunction(mockData);
-
-    setState(newState);
-    toggle();
-  }, [mockData]);
+    },
+    [mockData]
+  );
 
   return <Card>{loading ? 'Loading...' : state}</Card>;
 };
+
+const ResourceComponent = ({ data, loading, title = '' }) => (
+  <Card body>
+    <CardTitle className="text-center" tag="h4">
+      {title}
+    </CardTitle>
+    <CardBody>{loading ? 'Loading...' : JSON.stringify(data)}</CardBody>
+  </Card>
+);
 
 storiesOf('Hooks|useToggle', module)
   .addParameters({
     readme: {
       // Show readme at the addons panel
       sidebar: README,
-      // eslint-disable-next-line react/prop-types
       StoryPreview: ({ children }) => <div>{children}</div>,
     },
   })
@@ -62,7 +74,6 @@ storiesOf('Hooks|useEffectAsync', module)
     readme: {
       // Show readme at the addons panel
       sidebar: README,
-      // eslint-disable-next-line react/prop-types
       StoryPreview: ({ children }) => <div>{children}</div>,
     },
   })
@@ -76,7 +87,6 @@ storiesOf('Hooks|useMount', module)
     readme: {
       // Show readme at the addons panel
       sidebar: README,
-      // eslint-disable-next-line react/prop-types
       StoryPreview: ({ children }) => <div>{children}</div>,
     },
   })
@@ -100,7 +110,6 @@ storiesOf('Hooks|useTimeout', module)
     readme: {
       // Show readme at the addons panel
       sidebar: README,
-      // eslint-disable-next-line react/prop-types
       StoryPreview: ({ children }) => <div>{children}</div>,
     },
   })
@@ -113,11 +122,14 @@ storiesOf('Hooks|useTimeout', module)
       const [value, setValue] = useState(beforeTimeoutText);
       const ready = useTimeout(number('Timeout', 3000));
 
-      useEffect(() => {
-        if (ready) {
-          setValue(afterTimeoutText);
-        }
-      }, [ready]);
+      useEffect(
+        () => {
+          if (ready) {
+            setValue(afterTimeoutText);
+          }
+        },
+        [ready]
+      );
 
       return <span>{value}</span>;
     };
@@ -130,7 +142,6 @@ storiesOf('Hooks|resources', module)
     readme: {
       // Show readme at the addons panel
       sidebar: README,
-      // eslint-disable-next-line react/prop-types
       StoryPreview: ({ children }) => <div>{children}</div>,
     },
   })
@@ -140,15 +151,21 @@ storiesOf('Hooks|resources', module)
       const [currentRegion, loading] = useCurrentRegion();
 
       return (
-        <Card body>
-          <CardTitle className="text-center" tag="h4">
-            Region
-          </CardTitle>
-          <CardBody>
-            {loading ? 'Loading...' : JSON.stringify(currentRegion)}
-          </CardBody>
-        </Card>
+        <ResourceComponent
+          title="Region"
+          data={currentRegion}
+          loading={loading}
+        />
       );
+    };
+
+    return <SomeComponent />;
+  })
+  .add('useCurrentUser', () => {
+    const SomeComponent = () => {
+      const [user, loading] = useCurrentUser();
+
+      return <ResourceComponent title="User" data={user} loading={loading} />;
     };
 
     return <SomeComponent />;
