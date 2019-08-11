@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [7.3.0](https://github.com/Availity/availity-react/compare/@availity/docs@7.2.0...@availity/docs@7.3.0) (2019-08-11)
+
+
+### Features
+
+* **hooks:** added storybook story for useCurrentUser ([00277b7](https://github.com/Availity/availity-react/commit/00277b7))
+
+
+
+
+
 # [7.2.0](https://github.com/Availity/availity-react/compare/@availity/docs@7.1.2...@availity/docs@7.2.0) (2019-08-08)
 
 
