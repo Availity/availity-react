@@ -24,7 +24,7 @@ jobs:
       - run: # Test
           name: Run Test
           command: |
-            npm test
+            npm run test:ci
   deploy:
     docker:
       - image: circleci/node:10
@@ -45,7 +45,7 @@ jobs:
             echo "//registry.npmjs.org/:_authToken=$NPM_TOKEN" >> ~/.npmrc
             git config --global user.email $GITHUB_EMAIL
             git config --global user.name $GITHUB_USER
-      - run: # Test
+      - run:
           command: |
             npm run release:ci
 workflows:
