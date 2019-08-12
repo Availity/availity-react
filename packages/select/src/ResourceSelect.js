@@ -39,9 +39,9 @@ const ResourceSelect = ({
     if (graphqlConfig) {
       data = {
         variables: {
+          perPage: rest.itemsPerPage,
           filters: {
             q: encodeURIComponent(inputValue),
-            perPage: rest.itemsPerPage,
             ...rest.parameters,
           },
         },
@@ -60,7 +60,7 @@ const ResourceSelect = ({
     }
     if (args.length === 3) {
       if (graphqlConfig) {
-        data.variables.filters.page = page;
+        data.variables.page = page;
       } else {
         params.offset = (page - 1) * rest.itemsPerPage;
       }

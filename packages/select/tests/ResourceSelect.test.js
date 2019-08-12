@@ -66,7 +66,10 @@ describe('ResourceSelect', () => {
     await wait(() => {
       expect(onSubmit).toHaveBeenCalledWith(
         expect.objectContaining({
-          'test-form-input': 'FL',
+          'test-form-input': {
+            id: 'FL',
+            value: 'Florida',
+          },
         }),
         expect.anything()
       );
@@ -77,13 +80,18 @@ describe('ResourceSelect', () => {
     avWebQLApi.post.mockResolvedValue({
       data: {
         data: {
-          patientsMany: [
-            {
-              firstName: 'Bram',
-              lastName: 'Moolenaar',
-              subscriberMemberId: 'ABC123',
+          patientPagination: {
+            pageInfo: {
+              hasNextPage: false,
             },
-          ],
+            items: [
+              {
+                firstName: 'Bram',
+                lastName: 'Moolenaar',
+                subscriberMemberId: 'ABC123',
+              },
+            ],
+          },
         },
       },
     });
@@ -115,7 +123,9 @@ describe('ResourceSelect', () => {
     expect(avWebQLApi.post.mock.calls[0][0].variables.filters.customerId).toBe(
       '1194'
     );
-    expect(avWebQLApi.post.mock.calls[0][0].query).toContain('patientsMany');
+    expect(avWebQLApi.post.mock.calls[0][0].query).toContain(
+      'patientPagination'
+    );
 
     expect(patientsOption).toBeDefined();
 

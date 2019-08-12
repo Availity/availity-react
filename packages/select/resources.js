@@ -9,11 +9,7 @@ import {
   avWebQLApi,
 } from '@availity/api-axios';
 import { ResourceSelect } from '.';
-import {
-  PatientOption,
-  PatientSingleValue,
-  PatientMultiValueLabel,
-} from './resource-components';
+import { PatientOption } from './resource-components';
 
 const AvProviderSelect = ResourceSelect.create({
   resource: avProvidersApi,
@@ -55,18 +51,21 @@ const AvCodeSelect = ResourceSelect.create({
 const AvPatientSelect = ResourceSelect.create({
   components: {
     Option: PatientOption,
-    SingleValue: PatientSingleValue,
-    MultiValueLabel: PatientMultiValueLabel,
   },
   resource: avWebQLApi,
   requiredParams: ['customerId'],
-  watchParams: ['customerId', 'providerUserId'],
-  hasMore: false, // pagination not supported
-  getResult: data => data.data.patientsMany,
+  watchParams: ['customerId', 'providerUserId', 'payerId'],
+  valueKey: 'lastName',
+  labelKey: 'lastName',
+  getResult: data => data.data.patientPagination.items,
   graphqlConfig: {
     type: 'patient',
     query: `query($filters: PatientFilters) {
-  patientsMany(filters: $filters) {
+patientPagination(filters: $filters) {
+  pageInfo {
+    hasNextPage
+  }
+  items {
     firstName
     middleName
     lastName
@@ -89,9 +88,15 @@ const AvPatientSelect = ResourceSelect.create({
       stateCode
       zipCode
     }
+    subscriberFirstName
+    subscriberLastName
+    subscriberMiddleName
     subscriberMemberId
     payerName
+    payerId
+    requestingProviderNpi
   }
+}
 }`,
   },
 });
