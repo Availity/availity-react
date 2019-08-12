@@ -1,6 +1,6 @@
 {
   "name": "@availity/spaces",
-  "version": "2.0.4",
+  "version": "2.0.5",
   "author": "Tyson Warner <tyson.warner@availity.com>",
   "description": "Easy to use spaces components",
   "main": "index.js",
@@ -22,7 +22,7 @@
   "dependencies": {
     "@availity/api-axios": "^5.1.5",
     "@availity/api-core": "^5.1.5",
-    "@availity/hooks": "^1.4.0",
+    "@availity/hooks": "^1.5.0",
     "@availity/localstorage-core": "^2.6.1",
     "@availity/typography": "^1.1.2",
     "axios": "^0.18.0",

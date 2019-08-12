@@ -1,6 +1,10 @@
 import React from 'react';
-import '@testing-library/react/cleanup-after-each';
-import { fireEvent, waitForElement, render } from '@testing-library/react';
+import {
+  fireEvent,
+  waitForElement,
+  render,
+  cleanup,
+} from '@testing-library/react';
 import { avRegionsApi, avWebQLApi } from '@availity/api-axios';
 import { AvForm } from 'availity-reactstrap-validation';
 
@@ -18,6 +22,7 @@ const renderSelect = props =>
 
 describe('AvResourceSelect', () => {
   afterEach(() => {
+    cleanup();
     jest.clearAllMocks();
   });
 

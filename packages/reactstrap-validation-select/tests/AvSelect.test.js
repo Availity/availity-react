@@ -4,12 +4,15 @@ import {
   fireEvent,
   waitForElement,
   wait,
+  cleanup,
 } from '@testing-library/react';
 import '@testing-library/react/cleanup-after-each';
 import { AvForm, AvInput } from 'availity-reactstrap-validation';
 import { Button } from 'reactstrap';
 
 import AvSelect from '..';
+
+afterEach(cleanup);
 
 const options = [
   { label: 'Option 1', value: 'value for option 1' },

@@ -1,6 +1,8 @@
 import React from 'react';
-import { render } from '@testing-library/react';
+import { render, cleanup } from '@testing-library/react';
 import TrainingLink from '..';
+
+afterEach(cleanup);
 
 describe('TrainingLink', () => {
   test('should not render with link and name', () => {

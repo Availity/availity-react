@@ -155,9 +155,29 @@ import React, { useState } from 'react';
 import { useCurrentRegion } from '@availity/hooks';
 // ...
 const Component = () => {
-  const [region,loading] = useCurrentRegion();
+  const [region, loading] = useCurrentRegion();
 
-  return <div>Test Component</div>;
+  return <div>{loading ? 'Loading...' : region.value}</div>;
+};
+// ...
+```
+
+
+#### useCurrentUser
+
+Hook that will return the current user.
+
+
+##### useCurrentUser Usage
+
+```jsx
+import React, { useState } from 'react';
+import { useCurrentUser } from '@availity/hooks';
+// ...
+const Component = () => {
+  const [user = {}, loading] = useCurrentUser();
+
+  return <div>{loading ? 'Loading...' : user.id}</div>;
 };
 // ...
 ```

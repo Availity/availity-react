@@ -9,6 +9,7 @@ import {
   useCurrentRegion,
   useMount,
   useTimeout,
+  useCurrentUser,
 } from '@availity/hooks';
 import { Button, Card, CardBody, CardTitle } from 'reactstrap';
 
@@ -45,12 +46,20 @@ const AsyncComponent = ({ mockData }) => {
   return <Card>{loading ? 'Loading...' : state}</Card>;
 };
 
+const ResourceComponent = ({ data, loading, title = '' }) => (
+  <Card body>
+    <CardTitle className="text-center" tag="h4">
+      {title}
+    </CardTitle>
+    <CardBody>{loading ? 'Loading...' : JSON.stringify(data)}</CardBody>
+  </Card>
+);
+
 storiesOf('Hooks|useToggle', module)
   .addParameters({
     readme: {
       // Show readme at the addons panel
       sidebar: README,
-      // eslint-disable-next-line react/prop-types
       StoryPreview: ({ children }) => <div>{children}</div>,
     },
   })
@@ -62,7 +71,6 @@ storiesOf('Hooks|useEffectAsync', module)
     readme: {
       // Show readme at the addons panel
       sidebar: README,
-      // eslint-disable-next-line react/prop-types
       StoryPreview: ({ children }) => <div>{children}</div>,
     },
   })
@@ -76,7 +84,6 @@ storiesOf('Hooks|useMount', module)
     readme: {
       // Show readme at the addons panel
       sidebar: README,
-      // eslint-disable-next-line react/prop-types
       StoryPreview: ({ children }) => <div>{children}</div>,
     },
   })
@@ -100,7 +107,6 @@ storiesOf('Hooks|useTimeout', module)
     readme: {
       // Show readme at the addons panel
       sidebar: README,
-      // eslint-disable-next-line react/prop-types
       StoryPreview: ({ children }) => <div>{children}</div>,
     },
   })
@@ -130,7 +136,6 @@ storiesOf('Hooks|resources', module)
     readme: {
       // Show readme at the addons panel
       sidebar: README,
-      // eslint-disable-next-line react/prop-types
       StoryPreview: ({ children }) => <div>{children}</div>,
     },
   })
@@ -140,15 +145,21 @@ storiesOf('Hooks|resources', module)
       const [currentRegion, loading] = useCurrentRegion();
 
       return (
-        <Card body>
-          <CardTitle className="text-center" tag="h4">
-            Region
-          </CardTitle>
-          <CardBody>
-            {loading ? 'Loading...' : JSON.stringify(currentRegion)}
-          </CardBody>
-        </Card>
+        <ResourceComponent
+          title="Region"
+          data={currentRegion}
+          loading={loading}
+        />
       );
+    };
+
+    return <SomeComponent />;
+  })
+  .add('useCurrentUser', () => {
+    const SomeComponent = () => {
+      const [user, loading] = useCurrentUser();
+
+      return <ResourceComponent title="User" data={user} loading={loading} />;
     };
 
     return <SomeComponent />;

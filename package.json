@@ -19,6 +19,7 @@
     "start": "npm start --prefix packages/docs",
     "build:docs": "npm run build --prefix packages/docs",
     "release": "lerna publish",
+    "release:ci": "lerna publish --yes",
     "release:canary": "lerna publish -c",
     "add": "sh ./scripts/add.sh",
     "deploy:docs": "npm run deploy-docs --prefix packages/docs",

@@ -3,6 +3,15 @@ import { render, fireEvent } from '@testing-library/react';
 import '@testing-library/react/cleanup-after-each';
 import Feedback from '..';
 
+global.document.createRange = () => ({
+  setStart: () => {},
+  setEnd: () => {},
+  commonAncestorContainer: {
+    nodeName: 'BODY',
+    ownerDocument: document,
+  },
+});
+
 describe('Feedback', () => {
   test('should show form on click', () => {
     const { getByTestId, getByText } = render(
