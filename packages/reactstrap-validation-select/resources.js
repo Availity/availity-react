@@ -61,8 +61,8 @@ const AvPatientSelect = AvResourceSelect.create({
   getResult: data => data.data.patientPagination.items,
   graphqlConfig: {
     type: 'patient',
-    query: `query($filters: PatientFilters) {
-  patientPagination(filters: $filters) {
+    query: `query($page: Int, $perPage: Int, $filters: PatientFilters) {
+  patientPagination(page: $page, perPage: $perPage, filters: $filters) {
     pageInfo {
       hasNextPage
     }
