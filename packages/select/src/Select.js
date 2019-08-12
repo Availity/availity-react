@@ -45,10 +45,23 @@ const Select = ({
 
   const getOptionLabel = option => option[get(attributes, 'labelKey', 'label')];
 
+  const getValueKey = (attrs = attributes) => get(attrs, 'valueKey', 'value');
+
   const getOptionValue = option =>
     attributes.raw && !attributes.valueKey
       ? option
-      : get(option, get(attributes, 'valueKey', 'value'), option);
+      : get(option, getValueKey(attributes), option);
+
+  const prepValue = (value, digIfMulti = true) => {
+    if (attributes.isMulti && digIfMulti && Array.isArray(value)) {
+      return value.map(prepValue, false);
+    }
+    if (attributes.raw || attributes.loadOptions) {
+      return value;
+    }
+    const valueKey = getValueKey();
+    return get(value, valueKey, value);
+  };
 
   const findOptionFromValue = (value, options) =>
     Array.isArray(options) &&
@@ -72,14 +85,14 @@ const Select = ({
   }
 
   const onChangeHandler = async (newValue, { name } = {}) => {
-    if (maxLength && attributes.isMulti && newValue.length > maxLength) return;
+    const newVal = prepValue(newValue);
+    const isOverMax =
+      maxLength &&
+      attributes.isMulti &&
+      newValue &&
+      newValue.length > maxLength;
 
-    let newVal;
-    if (attributes.isMulti) {
-      newVal = newValue.map(val => getOptionValue(val));
-    } else {
-      newVal = getOptionValue(newValue);
-    }
+    if (isOverMax) return;
 
     const valuesToSet = { [name]: newVal };
 
