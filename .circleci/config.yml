@@ -25,6 +25,9 @@ jobs:
           name: Run Test
           command: |
             npm run test:ci
+      - run: # Coverage
+          name: Coverage
+          command: npm run codecov:ci
   deploy:
     docker:
       - image: circleci/node:10
