@@ -12,7 +12,13 @@ npm install @availity/form formik react reactstrap --save
 
 ## Validation
 
-See [yup](https://github.com/jquense/yup) and [@availity/yup](https://github.com/Availity/sdk-js/tree/master/packages/yup)
+See [yup](https://github.com/jquense/yup) and [@availity/yup](https://github.com/Availity/sdk-js/tree/master/packages/yup).
+
+## Browser Compatibility! ( Internet Explorer )
+In order for this library to be compatible with Internet explorer the following polyfills needs to be provided. Not if you are on `availity-worklfow@6.0.0` or later it is already provided for you.
+
+- [Array.from](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/from)
+- [Object.assign](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object/assign)
 
 ## Components
 

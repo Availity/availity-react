@@ -10,7 +10,7 @@ npm install @availity/date @availity/form formik react reactstrap --save
 
 ## Validation
 
-See [yup](https://github.com/jquense/yup) and [@availity/yup](https://github.com/Availity/sdk-js/tree/master/packages/yup)
+See [yup](https://github.com/jquense/yup) and [@availity/yup](https://github.com/Availity/sdk-js/tree/master/packages/yup). Note to use this package with `@availity/yup` you will need to import the `moment` version as noted in the example below.
 
 ### FormikDate (Default Export)
 
@@ -23,7 +23,7 @@ import React from 'react';
 import { Form } from '@availity/form';
 import FormikDate from '@availity/date';
 import * as yup from 'yup';
-import '@availity/yup';
+import '@availity/yup/moment';
 
 // ...
 const schema = yup.object().shape({
