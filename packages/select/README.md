@@ -69,6 +69,7 @@ See [react-select-async-paginate](https://github.com/vtaits/react-select-async-p
 *   **`maxLength`**: Number. Optional. The maximum number of options that can be selected (when `isMulti` is true)
 *   **`selectRef`**: Function or Node. Optional. Ref passed to `react-select-async-paginate` component
 *   **`className`**: Additional styles to be added to the `<Select />`
+*   **`creatable`**: boolean. Optional. Whether or not to allow new items to be created if not found.
 *   **`autofill`**: Boolean or Object. Optional. Default: `false`. If `true`, when the value of the dropdown changes, if the `isMulti` prop is `false` _and_ the new value of the dropdown is an object, all fields on the form corresponding to the new value will be auto-filled. In order for a field to be auto-filled, the `name` property on the field _must_ match the key inside the new value. For example, if the new value is `{ "payer": "Availity" }`, in order for the payer input in the form to be auto-filled to "Availity", the `name` prop on the input must be "payer". If `autofill` is an object, when the value of the dropdown changes, if the `isMulti` prop is `false` _and_ the new value of the dropdown is an object, all fields on the form corresponding to the keys in the `autofill` prop will be auto-filled. For example, if the new value is `{ "payer": { "name": "Availity", "id": "1" } }`, in order for the "payerName" and "payerId" inputs to be auto-filled to "Availity" and "1" respectively, the `autofill` prop should be `{ payerName: 'payer.name', payerId: 'payer.id' }`.
 
 ### SelectField
@@ -131,7 +132,8 @@ Same as `Select`, with the following additional props:
 *   **`labelHidden`**: Boolean. Optional. Whether the `label` should be hidden
 *   **`labelClass`**: String. Optional. classNames to pass to the `Label`
 *   **`feedbackClass`**: String. Optional. classNames to pass to the `Feedback`
-*   **`groupClass`**: String. Optional. classNames to pass to the `FormGroup`
+*   **`groupClass`**: String. Optional. classNames to pass to the `FormGroup`.
+*   **`creatable`**: boolean. Optional. Whether or not to allow new items to be created if not found.
 *   **`autofill`**: Boolean or Object. Optional. Default: `false`. If `true`, when the value of the dropdown changes, if the `isMulti` prop is `false` _and_ the new value of the dropdown is an object, all fields on the form corresponding to the new value will be auto-filled. In order for a field to be auto-filled, the `name` property on the field _must_ match the key inside the new value. For example, if the new value is `{ "payer": "Availity" }`, in order for the payer input in the form to be auto-filled to "Availity", the `name` prop on the input must be "payer". If `autofill` is an object, when the value of the dropdown changes, if the `isMulti` prop is `false` _and_ the new value of the dropdown is an object, all fields on the form corresponding to the keys in the `autofill` prop will be auto-filled. For example, if the new value is `{ "payer": { "name": "Availity", "id": "1" } }`, in order for the "payerName" and "payerId" inputs to be auto-filled to "Availity" and "1" respectively, the `autofill` prop should be `{ payerName: 'payer.name', payerId: 'payer.id' }`.
 
 ### ResourceSelect
@@ -184,6 +186,7 @@ See [react-select-async-paginate](https://github.com/vtaits/react-select-async-p
 *   **`valueKey`**: String. Optional. The key of the value you want returned when selected. Default: `value`
 *   **`labelKey`**: String. Optional. The key for the label you want to appear in the dropdown for the user to see. Default `label`
 *   **`label`**: String. Optional. If provided, the rendered component will mimic `SelectField` instead of `Select` (it will create a group with a label and feedback).
+*   **`creatable`**: boolean. Optional. Whether or not to allow new items to be created if not found.
 *   **`requestConfig`**: Object. Optional. Configuration object which will be used with the query method on the resource. Useful for defining headers to be sent with the request.
 *   **`parameters`**: Object. Optional. Object which will be used to create querystring parameters in the request.
 *   **`customerId`**: String. Optional. The value of the customer ID which will be sent in the parameters. Useful for restricting the loaded options to be related to the organization the user has in context.

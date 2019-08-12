@@ -109,7 +109,10 @@ storiesOf('Formik|Select', module)
         <Select
           autofill={autofill}
           isMulti={isMulti}
+          creatable={boolean('Creatable', false)}
           options={autofill ? autofillOptions : options}
+          minLength={min}
+          maxLength={max}
           name="standAlone"
           aria-label="stand-alone"
           raw={boolean('Raw value', false)}
@@ -158,6 +161,7 @@ storiesOf('Formik|Select', module)
             maxLength={max}
             isMulti={isMulti}
             options={autofill ? autofillOptions : options}
+            creatable={boolean('Creatable', false)}
             name="standAloneWithLabel"
             inputProps={{ 'aria-label': 'stand-alone with Label' }}
             required={boolean('Required', false)}
@@ -202,7 +206,9 @@ storiesOf('Formik|Select', module)
           autofill={autofill}
           label={text('Label', 'Field Label')}
           name="SelectField"
+          minLength={min}
           maxLength={max}
+          creatable={boolean('Creatable', false)}
           isMulti={isMulti}
           options={autofill ? autofillOptions : options}
           required={required}
@@ -244,10 +250,12 @@ storiesOf('Formik|Select', module)
             </>
           }
           name="ResourceSelect"
+          labelKey="name"
           maxLength={max}
           isMulti={isMulti}
           required={required}
           resource={avCustomResource}
+          creatable={boolean('Creatable', false)}
           isDisabled={boolean('Disabled', false)}
         />
         <Button color="primary">Submit</Button>
@@ -346,6 +354,7 @@ storiesOf('Formik|Select/resources', module)
           autofill={autofill}
           label={text('Label', 'Select Patient')}
           name="AvPatientSelect"
+          creatable={boolean('Creatable', false)}
           minLength={min}
           maxLength={max}
           isMulti={isMulti}

@@ -209,6 +209,7 @@ storiesOf('Components|AvSelect', module)
           required={required}
           resource={avCustomResource}
           labelKey="name"
+          creatable={boolean('Creatable', false)}
           errorMessage={text('Generic Error Message', 'This field is invalid')}
           validate={{
             required: {
@@ -219,7 +220,6 @@ storiesOf('Components|AvSelect', module)
             },
           }}
           isDisabled={boolean('Disabled', false)}
-          creatable={boolean('Creatable', false)}
         />
         <Button color="primary">Submit</Button>
       </AvFormResults>
@@ -458,6 +458,7 @@ storiesOf('Components|AvSelect/resources', module)
           name="AvCodeSelect"
           minLength={min}
           maxLength={max}
+          creatable={boolean('Creatable', false)}
           isMulti={isMulti}
           required={required}
           errorMessage={text('Generic Error Message', 'This field is invalid')}

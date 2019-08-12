@@ -1,16 +1,18 @@
-import React from 'react';
+import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 import classNames from 'classnames';
 import { useField, useFormikContext } from 'formik';
-import RSelect from 'react-select';
+import RSelect, { components as reactSelectComponents } from 'react-select';
+import Creatable from 'react-select/creatable';
 import Async from 'react-select-async-paginate';
 import get from 'lodash.get';
-import {
+
+const {
   DownChevron,
   CrossIcon,
   DropdownIndicator,
   ClearIndicator,
-} from 'react-select/lib/components/indicators';
+} = reactSelectComponents;
 
 const components = {
   DropdownIndicator: props => (
@@ -27,14 +29,21 @@ const components = {
   ),
 };
 
+const createOption = (label, labelkey = 'label') => ({
+  [labelkey]: label,
+  value: label.toLowerCase().replace(/\W/g, ''),
+});
+
 const Select = ({
   name,
   className,
+  options,
   selectRef,
   styles,
   maxLength,
   onChange: onChangeCallback,
   autofill,
+  creatable,
   ...attributes
 }) => {
   const [
@@ -42,8 +51,15 @@ const Select = ({
     { touched, error: hasError },
   ] = useField(name);
   const { values, setValues } = useFormikContext();
+  const [newOptions, setNewOptions] = useState([]);
 
-  const getOptionLabel = option => option[get(attributes, 'labelKey', 'label')];
+  const getOptionLabel = option => {
+    if (option.__isNew__) {
+      return option.label;
+    }
+
+    return option[get(attributes, 'labelKey', 'label')];
+  };
 
   const getValueKey = (attrs = attributes) => get(attrs, 'valueKey', 'value');
 
@@ -65,26 +81,31 @@ const Select = ({
 
   const findOptionFromValue = (value, options) =>
     Array.isArray(options) &&
-    options.filter(option => getOptionValue(option) === value)[0];
+    [...options, ...newOptions].filter(
+      option => getOptionValue(option) === value
+    )[0];
 
   const getViewValue = () => {
-    if (attributes.raw || attributes.loadOptions || !attributes.options)
-      return fieldValue;
+    if (attributes.raw || attributes.loadOptions || !options) return fieldValue;
     if (attributes.isMulti && Array.isArray(fieldValue)) {
       return fieldValue.map(
-        value => findOptionFromValue(value, attributes.options) || value
+        value => findOptionFromValue(value, options) || value
       );
     }
-    return findOptionFromValue(fieldValue, attributes.options) || fieldValue;
+    return findOptionFromValue(fieldValue, options) || fieldValue;
   };
 
-  const Tag = attributes.loadOptions ? Async : RSelect;
+  let Tag = attributes.loadOptions ? Async : RSelect;
+
+  if (!attributes.loadOptions && creatable) {
+    Tag = Creatable;
+  }
 
   if (!attributes.inputId) {
     attributes.inputId = name;
   }
 
-  const onChangeHandler = async (newValue, { name } = {}) => {
+  const onChangeHandler = async newValue => {
     const newVal = prepValue(newValue);
     const isOverMax =
       maxLength &&
@@ -133,9 +154,24 @@ const Select = ({
           }
         });
     }
+
     await setValues(valuesToSet);
     if (onChangeCallback) {
       onChangeCallback(newVal);
+    }
+  };
+
+  const handleCreate = value => {
+    const newOpt = createOption(value, get(attributes, 'labelKey', 'label'));
+    newOptions.push(newOpt);
+    setNewOptions([...newOptions]);
+
+    if (attributes.isMulti) {
+      onChangeHandler(
+        Array.isArray(fieldValue) ? fieldValue.concat(newOpt) : [newOpt]
+      );
+    } else {
+      onChangeHandler(newOpt);
     }
   };
 
@@ -147,6 +183,10 @@ const Select = ({
       name={name}
       classNamePrefix="av"
       role="listbox"
+      SelectComponent={
+        attributes.loadOptions && creatable ? Creatable : undefined
+      }
+      onCreateOption={handleCreate}
       className={classNames(
         className,
         'av-select',
@@ -158,6 +198,9 @@ const Select = ({
       getOptionValue={getOptionValue}
       closeMenuOnSelect={!attributes.isMulti}
       components={components}
+      options={
+        !attributes.loadOptions ? [...options, ...newOptions] : undefined
+      }
       defaultOptions
       styles={{
         ...styles,
@@ -218,6 +261,7 @@ Select.propTypes = {
   styles: PropTypes.object,
   maxLength: PropTypes.number,
   onChange: PropTypes.func,
+  creatable: PropTypes.bool,
   autofill: PropTypes.oneOfType([PropTypes.bool, PropTypes.object]),
 };
 

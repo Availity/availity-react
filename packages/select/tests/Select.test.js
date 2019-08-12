@@ -363,4 +363,65 @@ describe('Select', () => {
       expect(payload.lastName).toBe('Doe');
     });
   });
+
+  test('creatable', async () => {
+    const opts = [
+      {
+        label: 'Doe, John',
+        value: {
+          name: {
+            first: 'John',
+            last: 'Doe',
+          },
+        },
+      },
+      {
+        label: 'Doe, Jane',
+        value: {
+          name: {
+            first: 'Jane',
+            last: 'Doe',
+          },
+        },
+      },
+    ];
+
+    const onSubmit = jest.fn();
+    const { container, getByText } = render(
+      <Form
+        initialValues={{
+          singleSelectCreatable: undefined,
+        }}
+        onSubmit={onSubmit}
+      >
+        <Select name="singleSelectCreatable" options={opts} creatable />
+        <Button>Submit</Button>
+      </Form>
+    );
+
+    // Simulate the user selecting "Doe, John"
+    const select = container.querySelector('.av__control');
+    fireEvent.keyDown(select, { key: 'ArrowDown', keyCode: 40 });
+
+    fireEvent.change(container.querySelector('#singleSelectCreatable'), {
+      target: {
+        value: 'HelloWorld',
+      },
+    });
+
+    await selectItem(container, getByText, 'Create "HelloWorld"');
+
+    // Simulate the user clicking "Submit"
+    const submitButton = getByText('Submit');
+    expect(submitButton).toBeDefined();
+
+    await fireEvent.click(submitButton);
+
+    // Check that values got autofilled
+    await wait(() => {
+      expect(onSubmit).toHaveBeenCalledTimes(1);
+      const payload = onSubmit.mock.calls[0][0];
+      expect(payload.singleSelectCreatable).toBe('helloworld');
+    });
+  });
 });
