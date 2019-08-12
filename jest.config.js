@@ -1,7 +1,12 @@
 module.exports = {
   setupFilesAfterEnv: ['<rootDir>/jest/setupTests.js'],
   collectCoverageFrom: ['packages/**/*.{js,jsx}'],
-  coveragePathIgnorePatterns: ['/node_modules/', '/coverage/', '/dist/'],
+  coveragePathIgnorePatterns: [
+    '/node_modules/',
+    '/coverage/',
+    '/dist/',
+    '/packages/docs/'
+  ],
   transformIgnorePatterns: [
     '[/\\\\]node_modules[/\\\\](?!@availity).+\\.(js|jsx)$',
   ],
