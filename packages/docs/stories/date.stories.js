@@ -7,10 +7,10 @@ import FormikDate, {
   DateField,
   DateRange,
   DateRangeField,
-} from '@availity/formik-date';
-import '@availity/formik-date/styles.scss';
+} from '@availity/date';
+import '@availity/date/styles.scss';
 import '@availity/yup'
-import README from '@availity/formik-date/README.md';
+import README from '@availity/date/README.md';
 import moment from 'moment';
 import FormikResults from './mocks/FormikResults';
 

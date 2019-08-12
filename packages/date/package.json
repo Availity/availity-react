@@ -1,5 +1,5 @@
 {
-  "name": "@availity/formik-date",
+  "name": "@availity/date",
   "version": "0.1.0",
   "description": "Wrapper for react-dates to work with formik",
   "main": "index.js",
@@ -19,7 +19,7 @@
   "bugs": {
     "url": "https://github.com/Availity/availity-react/issues"
   },
-  "homepage": "https://github.com/Availity/availity-react/tree/master/packages/formik-date#readme",
+  "homepage": "https://github.com/Availity/availity-react/tree/master/packages/date#readme",
   "devDependencies": {
     "@availity/form": "^0.1.0",
     "@types/react-dates": "^17.1.5",

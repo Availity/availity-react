@@ -34,7 +34,7 @@
     "@availity/favorites": "^1.1.10",
     "@availity/feature": "^1.1.7",
     "@availity/feedback": "^4.1.20",
-    "@availity/formik-date": "^0.1.0",
+    "@availity/date": "^0.1.0",
     "@availity/form": "^0.1.0",
     "@availity/hooks": "^1.5.0",
     "@availity/icon": "^0.4.2",

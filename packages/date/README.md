@@ -1,11 +1,11 @@
-# @availity/formik-date
+# @availity/date
 
 > Wrapper for [react-dates](https://github.com/airbnb/react-dates) to work with [formik](https://github.com/jaredpalmer/formik)
 
 ## Installation
 
 ```bash
-npm install @availity/formik-date @availity/form formik react reactstrap --save
+npm install @availity/date @availity/form formik react reactstrap --save
 ```
 
 ## Validation
@@ -21,7 +21,7 @@ Date picker without a `Label` or `Feedback`
 ```javascript
 import React from 'react';
 import { Form } from '@availity/form';
-import FormikDate from '@availity/formik-date';
+import FormikDate from '@availity/date';
 import * as yup from 'yup';
 import '@availity/yup';
 
@@ -80,7 +80,7 @@ The same as `FormikDate` but with a `Label` that appears above input and a `Feed
 ```javascript
 import React from 'react';
 import { Form } from '@availity/form';
-import { DateField } from '@availity/formik-date';
+import { DateField } from '@availity/date';
 import * as yup from 'yup';
 import '@availity/yup';
 
@@ -129,7 +129,7 @@ A date range, consisting of 2 fields, a start date and an end date, without a `L
 ```javascript
 import React from 'react';
 import { Form } from '@availity/form';
-import { DateRange } from '@availity/formik-date';
+import { DateRange } from '@availity/date';
 import * as yup from 'yup';
 import '@availity/yup';
 
@@ -199,7 +199,7 @@ The same as `DateRange` but with a `Label` that appears above the input and a `F
 ```javascript
 import React from 'react';
 import { Form } from '@availity/form';
-import { DateRangeField } from '@availity/formik-date';
+import { DateRangeField } from '@availity/date';
 import * as yup from 'yup';
 import '@availity/yup';
 
