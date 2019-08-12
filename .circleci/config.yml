@@ -53,7 +53,7 @@ jobs:
             npm run release:ci
 workflows:
   version: 2
-  deploy:
+  build_test_deploy:
     jobs:
       - build
       - deploy:
