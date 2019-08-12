@@ -16,7 +16,7 @@
     "link": "lerna link",
     "clean": "lerna clean --yes",
     "test": "jest",
-    "test:ci": "jest --runInBand",
+    "test:ci": "jest --runInBand --collectCoverage",
     "postinstall": "npm run bootstrap",
     "start": "npm start --prefix packages/docs",
     "build:docs": "npm run build --prefix packages/docs",
