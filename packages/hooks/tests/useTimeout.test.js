@@ -1,6 +1,5 @@
 import React from 'react';
 import { render } from '@testing-library/react';
-import '@testing-library/react/cleanup-after-each';
 import { useTimeout } from '..';
 
 // eslint-disable-next-line react/prop-types

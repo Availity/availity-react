@@ -1,7 +1,5 @@
 import React from 'react';
 import { render, fireEvent } from '@testing-library/react';
-// You can either import this and it will auto cleanup or do `afterEach(cleanup)`
-import '@testing-library/react/cleanup-after-each';
 import Upload from '..';
 
 describe('Upload', () => {

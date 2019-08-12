@@ -5,7 +5,6 @@ import {
   waitForElement,
   waitForDomChange,
 } from '@testing-library/react';
-import '@testing-library/react/cleanup-after-each';
 import Pagination from '../Pagination';
 import PaginationContent from '../PaginationContent';
 

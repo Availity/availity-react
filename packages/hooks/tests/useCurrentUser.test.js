@@ -1,6 +1,5 @@
 import React from 'react';
 import { render, waitForElement } from '@testing-library/react';
-import '@testing-library/react/cleanup-after-each';
 import { avUserApi } from '@availity/api-axios';
 import { useCurrentUser } from '..';
 

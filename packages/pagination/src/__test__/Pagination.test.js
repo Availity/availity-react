@@ -6,7 +6,6 @@ import {
   waitForDomChange,
   fireEvent,
 } from '@testing-library/react';
-import '@testing-library/react/cleanup-after-each';
 import Pagination, { usePagination } from '../Pagination';
 import PaginationControls from '../PaginationControls';
 

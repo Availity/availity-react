@@ -50,7 +50,7 @@
     "@commitlint/cli": "^8.0.0",
     "@commitlint/config-conventional": "^8.1.0",
     "@commitlint/config-lerna-scopes": "^8.1.0",
-    "@testing-library/react": "^8.0.1",
+    "@testing-library/react": "^9.1.0",
     "@types/node": "^12.0.2",
     "@types/react": "^16.8.2",
     "@types/react-dom": "^16.8.0",
@@ -108,9 +108,6 @@
     "testURL": "http://localhost/",
     "transformIgnorePatterns": [
       "<rootDir>.*(node_modules)(?!.*@availity.*).*$"
-    ],
-    "setupFilesAfterEnv": [
-      "@testing-library/react/cleanup-after-each"
     ],
     "moduleNameMapper": {
       ".+\\.(css|styl|less|sass|scss|png|jpg|ttf|woff|woff2)$": "identity-obj-proxy"
