@@ -1,8 +1,10 @@
 import React from 'react';
-import { render } from '@testing-library/react';
+import { render, cleanup } from '@testing-library/react';
 import { Button } from 'reactstrap';
 import { Form } from '@availity/form';
 import { SelectField } from '..';
+
+afterEach(cleanup);
 
 describe('Select', () => {
   test('renders with Label', async () => {

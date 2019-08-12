@@ -1,6 +1,8 @@
 import React from 'react';
-import { render, fireEvent } from '@testing-library/react';
+import { render, fireEvent, cleanup } from '@testing-library/react';
 import { useToggle } from '..';
+
+afterEach(cleanup);
 
 // eslint-disable-next-line react/prop-types
 const Component = ({ initialToggle = false }) => {

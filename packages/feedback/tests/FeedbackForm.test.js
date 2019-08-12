@@ -1,6 +1,6 @@
 /* eslint-disable unicorn/prefer-query-selector */
 import React from 'react';
-import { render, fireEvent, wait } from '@testing-library/react';
+import { render, fireEvent, wait, cleanup } from '@testing-library/react';
 import { avLogMessagesApi, avRegionsApi } from '@availity/api-axios';
 import { FeedbackForm } from '..';
 
@@ -19,6 +19,8 @@ avRegionsApi.getCurrentRegion = jest.fn(() =>
     },
   })
 );
+
+afterEach(cleanup);
 
 describe('FeedbackForm', () => {
   test('should disable submit button until smile selected', () => {

@@ -1,6 +1,8 @@
 import React, { useState } from 'react';
-import { render } from '@testing-library/react';
+import { render, cleanup } from '@testing-library/react';
 import { useMount } from '..';
+
+afterEach(cleanup);
 
 // eslint-disable-next-line react/prop-types
 const Component = () => {

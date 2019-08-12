@@ -5,9 +5,12 @@ import {
   waitForElement,
   waitForDomChange,
   fireEvent,
+  cleanup,
 } from '@testing-library/react';
 import Pagination, { usePagination } from '../Pagination';
 import PaginationControls from '../PaginationControls';
+
+afterEach(cleanup);
 
 // eslint-disable-next-line react/prop-types
 const PaginationJson = () => {

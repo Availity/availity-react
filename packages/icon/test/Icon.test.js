@@ -1,6 +1,8 @@
 import React from 'react';
-import { render } from '@testing-library/react';
+import { render, cleanup } from '@testing-library/react';
 import Icon from '..';
+
+afterEach(cleanup);
 
 describe('Icon', () => {
   test('should render default size and aria-label', () => {

@@ -1,8 +1,10 @@
 import React from 'react';
-import { render, wait, fireEvent } from '@testing-library/react';
+import { render, wait, fireEvent, cleanup } from '@testing-library/react';
 import { Button } from 'reactstrap';
 import * as yup from 'yup';
 import { Form, Input } from '..';
+
+afterEach(cleanup);
 
 describe('Input', () => {
   test('renders with initial value', () => {

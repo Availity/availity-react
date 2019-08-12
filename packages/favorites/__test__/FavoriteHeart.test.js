@@ -1,5 +1,10 @@
 import React from 'react';
-import { fireEvent, render, waitForElement } from '@testing-library/react';
+import {
+  fireEvent,
+  render,
+  waitForElement,
+  cleanup,
+} from '@testing-library/react';
 import { avSettingsApi } from '@availity/api-axios';
 import avMessages from '@availity/message-core';
 import Favorites, { FavoriteHeart } from '..';
@@ -85,6 +90,7 @@ avSettingsApi.getApplication = jest.fn(() =>
 describe('FavoriteHeart', () => {
   afterEach(() => {
     jest.clearAllMocks();
+    cleanup();
   });
 
   test('should render favorited', async () => {

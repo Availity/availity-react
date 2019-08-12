@@ -1,6 +1,8 @@
 import React, { useState } from 'react';
-import { render, waitForElement, act } from '@testing-library/react';
+import { render, waitForElement, act, cleanup } from '@testing-library/react';
 import { useEffectAsync } from '..';
+
+afterEach(cleanup);
 
 // eslint-disable-next-line react/prop-types
 const Component = ({ asyncFunc }) => {

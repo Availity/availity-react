@@ -1,6 +1,8 @@
 import React from 'react';
-import { render } from '@testing-library/react';
+import { render, cleanup } from '@testing-library/react';
 import { useTimeout } from '..';
+
+afterEach(cleanup);
 
 // eslint-disable-next-line react/prop-types
 const Component = () => {

@@ -1,8 +1,10 @@
 import React from 'react';
-import { render, wait, fireEvent } from '@testing-library/react';
+import { render, wait, fireEvent, cleanup } from '@testing-library/react';
 import { Button } from 'reactstrap';
 import * as yup from 'yup';
 import { Form, Input, FormGroup } from '..';
+
+afterEach(cleanup);
 
 describe('FormGroup', () => {
   test('renders with danger className when invalid form input', async () => {

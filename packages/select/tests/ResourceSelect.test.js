@@ -4,6 +4,7 @@ import {
   waitForElement,
   render,
   wait,
+  cleanup,
 } from '@testing-library/react';
 import { avRegionsApi, avWebQLApi } from '@availity/api-axios';
 import { Button } from 'reactstrap';
@@ -31,6 +32,7 @@ const renderSelect = props =>
 describe('ResourceSelect', () => {
   afterEach(() => {
     jest.clearAllMocks();
+    cleanup();
   });
 
   it('returns resource options', async () => {

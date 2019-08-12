@@ -4,11 +4,14 @@ import {
   wait,
   fireEvent,
   waitForElement,
+  cleanup,
 } from '@testing-library/react';
 import { Button } from 'reactstrap';
 import * as yup from 'yup';
 import { Form, Input } from '@availity/form';
 import Select from '..';
+
+afterEach(cleanup);
 
 const singleValueSchema = name =>
   yup.object().shape({

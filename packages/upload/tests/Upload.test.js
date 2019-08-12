@@ -1,6 +1,8 @@
 import React from 'react';
-import { render, fireEvent } from '@testing-library/react';
+import { render, fireEvent, cleanup } from '@testing-library/react';
 import Upload from '..';
+
+afterEach(cleanup);
 
 describe('Upload', () => {
   test('should render', () => {
