@@ -22,8 +22,6 @@
   "dependencies": {
     "@availity/hooks": "^1.5.0",
     "@availity/icon": "^0.4.2",
-    "@availity/reactstrap-validation-select": "^4.2.4",
-    "availity-reactstrap-validation": "^2.5.0",
     "prop-types": "^15.5.8"
   },
   "devDependencies": {

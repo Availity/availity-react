@@ -6,7 +6,7 @@ import FeedbackButton from './FeedbackButton';
 const SmileField = ({ name, options, onChange }) => {
   const [{ value }] = useField(name);
   const { setFieldValue } = useFormikContext();
-
+  
   return options.map(option => (
     <FeedbackButton
       style={{ flex: 1, margin: '0 2% 0 2%' }}

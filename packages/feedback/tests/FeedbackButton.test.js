@@ -1,6 +1,6 @@
 import React from 'react';
 import { render, cleanup } from '@testing-library/react';
-import FeedbackButton from '../FeedbackButton';
+import FeedbackButton from '../src/FeedbackButton';
 
 afterEach(cleanup);
 
