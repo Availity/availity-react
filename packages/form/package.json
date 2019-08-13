@@ -1,0 +1,40 @@
+{
+  "name": "@availity/form",
+  "version": "0.1.0",
+  "author": "Kyle Gray <kyle.gray@availity.com>",
+  "description": "Form Wrapper around formik using reactstrap components",
+  "main": "index.js",
+  "typings": "typings/index.d.ts",
+  "keywords": [
+    "react",
+    "availity"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Availity/availity-react.git"
+  },
+  "bugs": {
+    "url": "https://github.com/Availity/availity-react/issues"
+  },
+  "license": "MIT",
+  "publishConfig": {
+    "access": "public"
+  },
+  "dependencies": {
+    "classnames": "^2.2.6",
+    "prop-types": "^15.5.8"
+  },
+  "devDependencies": {
+    "formik": "^2.0.1-rc.12",
+    "react": "^16.8.3",
+    "react-dom": "^16.8.3",
+    "reactstrap": "^8.0.0",
+    "yup": "^0.27.0"
+  },
+  "peerDependencies": {
+    "reactstrap": "^8.0.0",
+    "react": "^16.8.3",
+    "formik": "^2.0.1-rc.5",
+    "yup": "^0.27.0"
+  }
+}

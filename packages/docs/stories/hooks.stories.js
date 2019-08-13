@@ -32,19 +32,16 @@ const AsyncComponent = ({ mockData }) => {
   const [loading, toggle] = useToggle(true);
   const [state, setState] = useState(null);
 
-  useEffectAsync(
-    async () => {
-      if (!loading) {
-        toggle();
-      }
-
-      const newState = await asyncFunction(mockData);
-
-      setState(newState);
+  useEffectAsync(async () => {
+    if (!loading) {
       toggle();
-    },
-    [mockData]
-  );
+    }
+
+    const newState = await asyncFunction(mockData);
+
+    setState(newState);
+    toggle();
+  }, [mockData]);
 
   return <Card>{loading ? 'Loading...' : state}</Card>;
 };
@@ -122,14 +119,11 @@ storiesOf('Hooks|useTimeout', module)
       const [value, setValue] = useState(beforeTimeoutText);
       const ready = useTimeout(number('Timeout', 3000));
 
-      useEffect(
-        () => {
-          if (ready) {
-            setValue(afterTimeoutText);
-          }
-        },
-        [ready]
-      );
+      useEffect(() => {
+        if (ready) {
+          setValue(afterTimeoutText);
+        }
+      }, [ready]);
 
       return <span>{value}</span>;
     };

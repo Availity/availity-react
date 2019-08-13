@@ -1,5 +1,10 @@
 import React from 'react';
-import { fireEvent, waitForElement, render, cleanup } from '@testing-library/react';
+import {
+  fireEvent,
+  waitForElement,
+  render,
+  cleanup,
+} from '@testing-library/react';
 import { avRegionsApi, avWebQLApi } from '@availity/api-axios';
 import { AvForm } from 'availity-reactstrap-validation';
 

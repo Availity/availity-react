@@ -1,6 +1,10 @@
 import React from 'react';
-import '@testing-library/react/cleanup-after-each';
-import { fireEvent, render, waitForElement } from '@testing-library/react';
+import {
+  fireEvent,
+  render,
+  waitForElement,
+  cleanup,
+} from '@testing-library/react';
 import { avSettingsApi } from '@availity/api-axios';
 import avMessages from '@availity/message-core';
 import Favorites, { FavoriteHeart } from '..';
@@ -36,7 +40,7 @@ avMessages.subscribe = jest.fn((event, fn) => {
         data = JSON.parse(data);
       } catch (error) {
         // eslint-disable-next-line no-console
-        console.log(error);
+        console.error(error);
       }
     }
 
@@ -86,6 +90,7 @@ avSettingsApi.getApplication = jest.fn(() =>
 describe('FavoriteHeart', () => {
   afterEach(() => {
     jest.clearAllMocks();
+    cleanup();
   });
 
   test('should render favorited', async () => {

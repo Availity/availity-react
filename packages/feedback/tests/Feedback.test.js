@@ -1,6 +1,5 @@
 import React from 'react';
-import { render, fireEvent } from '@testing-library/react';
-import '@testing-library/react/cleanup-after-each';
+import { render, fireEvent, cleanup } from '@testing-library/react';
 import Feedback from '..';
 
 global.document.createRange = () => ({
@@ -12,6 +11,7 @@ global.document.createRange = () => ({
   },
 });
 
+afterEach(cleanup);
 
 describe('Feedback', () => {
   test('should show form on click', () => {

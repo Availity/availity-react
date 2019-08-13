@@ -97,6 +97,17 @@ export default class AvDateRange extends Component {
     }
   };
 
+  getDateValue = value => {
+    const { format } = this.state;
+    const date = moment(
+      value,
+      [isoDateFormat, format, 'MMDDYYYY', 'YYYYMMDD'],
+      true
+    );
+    if (date.isValid()) return date;
+    return null;
+  };
+
   validateDistance = () => {
     const start = this.context.FormCtrl.getInput(
       this.props.start.name
@@ -138,11 +149,6 @@ export default class AvDateRange extends Component {
     return true;
   };
 
-  checkDistanceValidation() {
-    const { end } = this.props;
-    this.context.FormCtrl.validate(end.name);
-  }
-
   onDatesChange = async ({ startDate, endDate }) => {
     const { format } = this.state;
     const { start, end, onChange } = this.props;
@@ -183,56 +189,72 @@ export default class AvDateRange extends Component {
         if (endDate) {
           this.context.FormCtrl.validate(end.name);
         }
-
-        this.checkDistanceValidation();
       }
     );
   };
 
-  onClose = ({ startDate, endDate }) => {
-    const { format } = this.state;
-    const _startDate =
-      (startDate && startDate.format(format)) || this.state.startValue;
-    const _endDate = (endDate && endDate.format(format)) || this.state.endValue;
+  // For updating when we delete the current input
+  onInputChange = async val => {
+    const { onChange, start, end } = this.props;
+    const { focusedInput, format, startValue, endValue } = this.state;
+    const isStart = focusedInput === 'startDate';
+    const date = moment(
+      val,
+      [isoDateFormat, format, 'MMDDYYYY', 'YYYYMMDD'],
+      true
+    );
 
-    if (startDate) {
-      this.context.FormCtrl.getInput(this.props.start.name)
-        .getValidatorProps()
-        .onBlur(_startDate);
-    }
+    const valueToSet = date.isValid() ? date.format(isoDateFormat) : null;
 
-    if (endDate) {
-      this.context.FormCtrl.getInput(this.props.end.name)
-        .getValidatorProps()
-        .onBlur(_endDate);
-    }
+    this.context.FormCtrl.getInput(isStart ? start.name : end.name)
+      .getValidatorProps()
+      .onChange(valueToSet);
 
-    this.setState({
-      startValue: _startDate,
-      endValue: _endDate,
-    });
+    this.setState(
+      {
+        [isStart ? 'startValue' : 'endValue']: valueToSet,
+      },
+      () => {
+        if (onChange) {
+          onChange({
+            start: isStart ? valueToSet : startValue,
+            end: !isStart ? valueToSet : endValue,
+          });
+        }
+
+        if (isStart && date.isValid()) {
+          this.context.FormCtrl.validate(start.name);
+          this.setState({
+            focusedInput: 'endDate',
+          });
+        } else if (!isStart && date.isValid()) {
+          // this.context.FormCtrl.validate(end.name);
+          this.setState({
+            focusedInput: undefined,
+          });
+          this.context.FormCtrl.setTouched(end.name);
+        }
+      }
+    );
   };
 
   onFocusChange = input => {
     const { onPickerFocusChange, start, end } = this.props;
-    const startDateTouched = this.context.FormCtrl.isTouched(start.name);
-    const endDateTouched = this.context.FormCtrl.isTouched(end.name);
 
-    if (!input) {
-      if (!startDateTouched) {
-        this.context.FormCtrl.setTouched(start.name);
-      }
-
-      if (!endDateTouched) {
-        this.context.FormCtrl.setTouched(end.name);
-      }
+    if (input === 'endDate') {
+      this.context.FormCtrl.setTouched(start.name);
+    } else if (!input) {
+      this.context.FormCtrl.setTouched(end.name);
     }
 
-    this.setState({
-      focusedInput: input,
-    });
-
-    if (onPickerFocusChange) onPickerFocusChange({ focusedInput: input });
+    this.setState(
+      {
+        focusedInput: input,
+      },
+      () => {
+        if (onPickerFocusChange) onPickerFocusChange({ focusedInput: input });
+      }
+    );
   };
 
   valueParser = value => {
@@ -256,6 +278,30 @@ export default class AvDateRange extends Component {
     return value;
   };
 
+  afterStartValidate = () => {
+    const start = this.context.FormCtrl.getInput(
+      this.props.start.name
+    ).getViewValue();
+
+    // We want the view value so not calling from args
+    const end = this.context.FormCtrl.getInput(
+      this.props.end.name
+    ).getViewValue();
+
+    if (start && end) {
+      const mStart = moment(new Date(start));
+      const mEnd = moment(new Date(end));
+      if (!mStart.isValid() || !mEnd.isValid()) {
+        return true;
+      }
+
+      if (mStart.isAfter(mEnd)) {
+        return 'Start Date must come before End Date.';
+      }
+    }
+    return true;
+  };
+
   render() {
     const {
       name,
@@ -269,8 +315,9 @@ export default class AvDateRange extends Component {
       distance,
       ...attributes
     } = this.props;
-    const { startValue, endValue, format, focusedInput } = this.state;
+    const { startValue, endValue, focusedInput } = this.state;
     const endValidate = {
+      afterStart: this.afterStartValidate,
       ...validate,
       ...this.props.end.validate,
     };
@@ -289,7 +336,7 @@ export default class AvDateRange extends Component {
     )}-end`;
 
     const touched =
-      this.context.FormCtrl.isTouched(this.props.start.name) ||
+      this.context.FormCtrl.isTouched(this.props.start.name) &&
       this.context.FormCtrl.isTouched(this.props.end.name);
     const hasError =
       this.context.FormCtrl.hasError(this.props.start.name) ||
@@ -300,9 +347,6 @@ export default class AvDateRange extends Component {
     const isBad =
       this.context.FormCtrl.isBad(this.props.start.name) ||
       this.context.FormCtrl.isBad(this.props.end.name);
-
-    const startDate = startValue ? moment(startValue, format) : null;
-    const endDate = endValue ? moment(endValue, format) : null;
 
     const classes = classNames(
       className,
@@ -350,21 +394,21 @@ export default class AvDateRange extends Component {
           className={classes}
           onChange={({ target }) => {
             if (target.id === startId || target.id === endId) {
-              this.onDatesChange(target.value);
+              this.onInputChange(target.value);
             }
           }}
           data-testid={`date-range-input-group-${name}`}
         >
           <DateRangePicker
             disabled={attributes.disabled}
-            startDate={startDate}
+            startDate={this.getDateValue(startValue)}
             startDateId={startId}
-            endDate={endDate}
+            endDate={this.getDateValue(endValue)}
             endDateId={endId}
             onDatesChange={this.onDatesChange}
             focusedInput={focusedInput}
             onFocusChange={this.onFocusChange}
-            isOutsideRange={isOutsideRange(minDate, maxDate)}
+            isOutsideRange={isOutsideRange(minDate, maxDate, this.state.format)}
             customInputIcon={datepicker ? calendarIcon : undefined}
             inputIconPosition="after"
             customArrowIcon="-"

@@ -1,7 +1,9 @@
 import React from 'react';
-import { render } from '@testing-library/react';
+import { render, cleanup } from '@testing-library/react';
 import TrainingLink from '@availity/training-link';
 import PageHeader from '..';
+
+afterEach(cleanup);
 
 describe('PageHeader', () => {
   test('should render', () => {

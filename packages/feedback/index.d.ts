@@ -1,5 +1,5 @@
-import Feedback from './Feedback';
-import FeedbackForm from './FeedbackForm';
+import Feedback from './typings/Feedback';
+import FeedbackForm from './typings/FeedbackForm';
 
 export default Feedback;
 

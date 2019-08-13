@@ -1,6 +1,5 @@
 import React from 'react';
-import { render, waitForElement } from '@testing-library/react';
-import '@testing-library/react/cleanup-after-each';
+import { render, waitForElement, cleanup } from '@testing-library/react';
 import { avRegionsApi } from '@availity/api-axios';
 import { useCurrentRegion } from '..';
 
@@ -22,6 +21,7 @@ avRegionsApi.getCurrentRegion.mockResolvedValue({
 
 afterEach(() => {
   jest.clearAllMocks();
+  cleanup();
 });
 
 const Component = () => {

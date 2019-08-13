@@ -6,9 +6,8 @@ import Authorize from '..';
 jest.mock('@availity/api-axios');
 
 afterEach(() => {
-  cleanup();
-
   jest.clearAllMocks();
+  cleanup();
 });
 
 beforeEach(() => {

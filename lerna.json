@@ -12,5 +12,6 @@
     "bootstrap": {
       "npmClientArgs": ["--no-package-lock"]
     }
-  }
+  },
+  "hoist":["react","formik"]
 }

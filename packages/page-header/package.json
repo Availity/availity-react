@@ -29,6 +29,7 @@
     "prop-types": "^15.5.8"
   },
   "devDependencies": {
+    "formik": "^2.0.1-rc.12",
     "react": "^16.8.3",
     "react-dom": "^16.8.3"
   },

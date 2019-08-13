@@ -1,5 +1,10 @@
 import React from 'react';
-import { render, cleanup, fireEvent, waitForElement } from '@testing-library/react';
+import {
+  render,
+  cleanup,
+  fireEvent,
+  waitForElement,
+} from '@testing-library/react';
 import { AvForm } from 'availity-reactstrap-validation';
 import { Button } from 'reactstrap';
 import { AvDateField } from '..';
@@ -66,7 +71,6 @@ describe('AvDateField', () => {
     );
 
     fireEvent.click(getByText('Submit'));
-
 
     await waitForElement(() => getByText('value must come before this date'));
   });

@@ -1,6 +1,5 @@
 import React from 'react';
-import { render, waitForElement } from '@testing-library/react';
-import '@testing-library/react/cleanup-after-each';
+import { render, waitForElement, cleanup } from '@testing-library/react';
 import { avUserApi } from '@availity/api-axios';
 import { useCurrentUser } from '..';
 
@@ -16,6 +15,7 @@ avUserApi.me.mockResolvedValue({
 
 afterEach(() => {
   jest.clearAllMocks();
+  cleanup();
 });
 
 const Component = () => {

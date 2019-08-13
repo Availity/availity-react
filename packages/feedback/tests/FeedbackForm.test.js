@@ -1,7 +1,6 @@
 /* eslint-disable unicorn/prefer-query-selector */
 import React from 'react';
-import { render, fireEvent, wait } from '@testing-library/react';
-import '@testing-library/react/cleanup-after-each';
+import { render, fireEvent, wait, cleanup } from '@testing-library/react';
 import { avLogMessagesApi, avRegionsApi } from '@availity/api-axios';
 import { FeedbackForm } from '..';
 
@@ -20,6 +19,8 @@ avRegionsApi.getCurrentRegion = jest.fn(() =>
     },
   })
 );
+
+afterEach(cleanup);
 
 describe('FeedbackForm', () => {
   test('should disable submit button until smile selected', () => {
@@ -48,7 +49,7 @@ describe('FeedbackForm', () => {
     );
   });
 
-  test('should submit with feedback text value', () => {
+  test('should submit with feedback text value', async () => {
     const onFeedbackSent = jest.fn();
 
     const { getByPlaceholderText, getByText } = render(
@@ -71,9 +72,10 @@ describe('FeedbackForm', () => {
 
     fireEvent.click(getByText('Send Feedback'));
 
-    wait(() =>
+    await wait(() =>
       expect(onFeedbackSent).toHaveBeenCalledWith(
         expect.objectContaining({
+          active: 'smile',
           feedback: 'some good text here',
         })
       )
