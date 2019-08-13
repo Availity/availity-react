@@ -82,32 +82,30 @@ class AvDate extends Component {
     if (onPickerFocusChange) onPickerFocusChange({ focused });
   };
 
-    // For updating when we delete the current input
-    onInputChange = async value=> {
-      const { name, onChange } = this.props;
-      const date = moment(
-        value,
-        [isoDateFormat, this.state.format, 'MMDDYYYY', 'YYYYMMDD'],
-        true
-      );
-  
-      this.context.FormCtrl.getInput(name)
+  // For updating when we delete the current input
+  onInputChange = async value => {
+    const { name, onChange } = this.props;
+    const date = moment(
+      value,
+      [isoDateFormat, this.state.format, 'MMDDYYYY', 'YYYYMMDD'],
+      true
+    );
+
+    this.context.FormCtrl.getInput(name)
       .getValidatorProps()
       .onChange(value);
 
     this.setState({ value }, () => {
       if (onChange) onChange(value);
 
-      if(date.isValid()) {
+      if (date.isValid()) {
         this.setState({
-          focused: false
-        })
-      this.context.FormCtrl.setTouched(name);
-
+          focused: false,
+        });
+        this.context.FormCtrl.setTouched(name);
       }
     });
-    }
-  
+  };
 
   onPickerChange = async value => {
     if (value === null) return;
@@ -234,7 +232,7 @@ class AvDate extends Component {
             focused={this.state.focused}
             onFocusChange={this.onFocusChange}
             numberOfMonths={1}
-            isOutsideRange={isOutsideRange(minDate, maxDate)}
+            isOutsideRange={isOutsideRange(minDate, maxDate, this.state.format)}
             customInputIcon={datepicker ? calendarIcon : undefined}
             showDefaultInputIcon={datepicker}
             inputIconPosition="after"

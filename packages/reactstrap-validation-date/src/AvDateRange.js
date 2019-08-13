@@ -149,7 +149,6 @@ export default class AvDateRange extends Component {
     return true;
   };
 
-
   onDatesChange = async ({ startDate, endDate }) => {
     const { format } = this.state;
     const { start, end, onChange } = this.props;
@@ -194,70 +193,68 @@ export default class AvDateRange extends Component {
     );
   };
 
-      // For updating when we delete the current input
-      onInputChange = async val=> {
-        const { onChange, start, end } = this.props;
-        const { focusedInput, format, startValue, endValue } = this.state; 
-        const isStart = focusedInput === 'startDate';
-        const date = moment(
-          val,
-          [isoDateFormat, format, 'MMDDYYYY', 'YYYYMMDD'],
-          true
-        );
-  
-        const valueToSet = date.isValid() ? date.format(isoDateFormat): null;
+  // For updating when we delete the current input
+  onInputChange = async val => {
+    const { onChange, start, end } = this.props;
+    const { focusedInput, format, startValue, endValue } = this.state;
+    const isStart = focusedInput === 'startDate';
+    const date = moment(
+      val,
+      [isoDateFormat, format, 'MMDDYYYY', 'YYYYMMDD'],
+      true
+    );
 
-        this.context.FormCtrl.getInput(isStart ? start.name: end.name)
-        .getValidatorProps()
-        .onChange(valueToSet);
+    const valueToSet = date.isValid() ? date.format(isoDateFormat) : null;
 
+    this.context.FormCtrl.getInput(isStart ? start.name : end.name)
+      .getValidatorProps()
+      .onChange(valueToSet);
 
-        this.setState(
-          {
-            [isStart ? 'startValue':'endValue']: valueToSet
-          },
-          () => {
-            if (onChange) {
-              onChange({
-                start: isStart ? valueToSet : startValue,
-                end: !isStart ? valueToSet : endValue,
-              });
-            }
+    this.setState(
+      {
+        [isStart ? 'startValue' : 'endValue']: valueToSet,
+      },
+      () => {
+        if (onChange) {
+          onChange({
+            start: isStart ? valueToSet : startValue,
+            end: !isStart ? valueToSet : endValue,
+          });
+        }
 
-            if(isStart && date.isValid()) {
-              this.context.FormCtrl.validate(start.name);
-              this.setState({
-                focusedInput: 'endDate'
-              })
-            }else if(!isStart && date.isValid()){
-              // this.context.FormCtrl.validate(end.name);
-              this.setState({
-                focusedInput: undefined
-              })
-              this.context.FormCtrl.setTouched(end.name);
-
-            }
-          }
-        );
-      
+        if (isStart && date.isValid()) {
+          this.context.FormCtrl.validate(start.name);
+          this.setState({
+            focusedInput: 'endDate',
+          });
+        } else if (!isStart && date.isValid()) {
+          // this.context.FormCtrl.validate(end.name);
+          this.setState({
+            focusedInput: undefined,
+          });
+          this.context.FormCtrl.setTouched(end.name);
+        }
       }
-
+    );
+  };
 
   onFocusChange = input => {
     const { onPickerFocusChange, start, end } = this.props;
 
-    if(input === 'endDate') {
+    if (input === 'endDate') {
       this.context.FormCtrl.setTouched(start.name);
-    }else if(!input){
+    } else if (!input) {
       this.context.FormCtrl.setTouched(end.name);
     }
 
-    this.setState({
-      focusedInput: input,
-    }, () => {
-      if (onPickerFocusChange) onPickerFocusChange({ focusedInput: input });
-    });
-
+    this.setState(
+      {
+        focusedInput: input,
+      },
+      () => {
+        if (onPickerFocusChange) onPickerFocusChange({ focusedInput: input });
+      }
+    );
   };
 
   valueParser = value => {
@@ -298,14 +295,12 @@ export default class AvDateRange extends Component {
         return true;
       }
 
-      if(mStart.isAfter(mEnd)){
-        return (
-          'Start Date must come before End Date.'
-        )
+      if (mStart.isAfter(mEnd)) {
+        return 'Start Date must come before End Date.';
       }
     }
     return true;
-  }
+  };
 
   render() {
     const {
@@ -413,7 +408,7 @@ export default class AvDateRange extends Component {
             onDatesChange={this.onDatesChange}
             focusedInput={focusedInput}
             onFocusChange={this.onFocusChange}
-            isOutsideRange={isOutsideRange(minDate, maxDate)}
+            isOutsideRange={isOutsideRange(minDate, maxDate, this.state.format)}
             customInputIcon={datepicker ? calendarIcon : undefined}
             inputIconPosition="after"
             customArrowIcon="-"

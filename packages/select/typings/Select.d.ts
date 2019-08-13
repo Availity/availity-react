@@ -6,6 +6,7 @@ export interface SelectProps extends Props<{}> {
     raw?: boolean;
     name: string;
     autofill?: boolean | object;
+    creatable?: boolean;
 }
 
 declare class Select<T = { [key: string]: any }> extends React.Component<

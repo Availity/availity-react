@@ -1,7 +1,9 @@
 import moment from 'moment';
 import PropTypes from 'prop-types';
 
-export const isOutsideRange = (min, max) => day => {
+const isoDateFormat = 'YYYY-MM-DD';
+
+export const isOutsideRange = (min, max, format = 'MM/DD/YYYY') => day => {
   let isOutsideMax = false;
   let isOutsideMin = false;
 
@@ -11,7 +13,9 @@ export const isOutsideRange = (min, max) => day => {
     }
 
     if (typeof min === 'string') {
-      isOutsideMin = day.isBefore(moment(min));
+      isOutsideMin = day.isBefore(
+        moment(min, [isoDateFormat, format, 'MMDDYYYY', 'YYYYMMDD'])
+      );
     }
 
     if (min.value !== undefined && min.units) {
@@ -24,8 +28,10 @@ export const isOutsideRange = (min, max) => day => {
       isOutsideMax = day.isAfter(max);
     }
 
-    if (typeof min === 'string') {
-      isOutsideMax = day.isAfter(moment(max));
+    if (typeof max === 'string') {
+      isOutsideMax = day.isAfter(
+        moment(max, [isoDateFormat, format, 'MMDDYYYY', 'YYYYMMDD'])
+      );
     }
 
     if (max.value !== undefined && max.units) {
