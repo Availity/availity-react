@@ -1,6 +1,6 @@
 {
 	"name": "@availity/select",
-	"version": "0.2.0",
+	"version": "0.2.1",
 	"description": "Wrapper for react-select to work with availity-reactstrap-validation",
 	"main": "index.js",
 	"typings": "typings/index.d.ts",
@@ -23,7 +23,7 @@
 	"devDependencies": {
 		"@availity/api-axios": "^5.3.0",
 		"@availity/api-core": "^5.3.0",
-		"@availity/form": "^0.2.0",
+		"@availity/form": "^0.2.1",
 		"@availity/localstorage-core": "^2.5.0",
 		"@types/react-select": "^3.0.0",
 		"axios": "^0.18.0",
