@@ -48,7 +48,7 @@ $ npm run new
 ```
 
 ## Additional Notes
-We use `data-testid` for for unit tests to use for grabbing unique attributes. If you are using `availity-workflow@6.0.0` or later it will be removed for you in production builds. However, if you are not you will need to add the following babel plugin to remove it: 
+We use `data-testid` for unit tests to use for grabbing unique attributes. If you are using `availity-workflow@6.0.0` or later it will be removed for you in production builds. However, if you don't want it and not using workflow, you will need to add the following babel plugin to remove it: 
 - [babel-plugin-jsx-remove-data-test-id](https://github.com/coderas/babel-plugin-jsx-remove-data-test-id)
 
 ## License
