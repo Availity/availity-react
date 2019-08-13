@@ -3,6 +3,22 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [7.4.0](https://github.com/Availity/availity-react/compare/@availity/docs@7.3.1...@availity/docs@7.4.0) (2019-08-13)
+
+
+### Features
+
+* **form:** init commit adding formik ([ed98ffc](https://github.com/Availity/availity-react/commit/ed98ffc))
+* **formik-date:** add DateRange,DateRangeField ([323fd15](https://github.com/Availity/availity-react/commit/323fd15))
+* **formik-date:** add formik-date package WIP ([2f12049](https://github.com/Availity/availity-react/commit/2f12049))
+* **select:** add autofill prop ([37d3fba](https://github.com/Availity/availity-react/commit/37d3fba))
+* **select:** add patient dropdown ([4f8d67c](https://github.com/Availity/availity-react/commit/4f8d67c))
+* **select:** added select package using formik ([770d9c1](https://github.com/Availity/availity-react/commit/770d9c1))
+
+
+
+
+
 ## [7.3.1](https://github.com/Availity/availity-react/compare/@availity/docs@7.3.0...@availity/docs@7.3.1) (2019-08-12)
 
 **Note:** Version bump only for package @availity/docs

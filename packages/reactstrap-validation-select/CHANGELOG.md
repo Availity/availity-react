@@ -3,6 +3,22 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [4.3.0](https://github.com/Availity/availity-react/compare/@availity/reactstrap-validation-select@4.2.5...@availity/reactstrap-validation-select@4.3.0) (2019-08-13)
+
+
+### Bug Fixes
+
+* **reactstrap-validation-select:** add noGutters prop to rows ([2f3cff4](https://github.com/Availity/availity-react/commit/2f3cff4))
+
+
+### Features
+
+* **select:** added select package using formik ([770d9c1](https://github.com/Availity/availity-react/commit/770d9c1))
+
+
+
+
+
 ## [4.2.5](https://github.com/Availity/availity-react/compare/@availity/reactstrap-validation-select@4.2.4...@availity/reactstrap-validation-select@4.2.5) (2019-08-12)
 
 

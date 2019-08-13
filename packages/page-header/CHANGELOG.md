@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [4.5.0](https://github.com/Availity/availity-react/compare/@availity/page-header@4.4.17...@availity/page-header@4.5.0) (2019-08-13)
+
+
+### Features
+
+* **select:** add autofill prop ([37d3fba](https://github.com/Availity/availity-react/commit/37d3fba))
+
+
+
+
+
 ## [4.4.17](https://github.com/Availity/availity-react/compare/@availity/page-header@4.4.16...@availity/page-header@4.4.17) (2019-08-12)
 
 **Note:** Version bump only for package @availity/page-header

@@ -3,6 +3,14 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.1.8](https://github.com/Availity/availity-react/compare/@availity/feature@1.1.7...@availity/feature@1.1.8) (2019-08-13)
+
+**Note:** Version bump only for package @availity/feature
+
+
+
+
+
 ## [1.1.7](https://github.com/Availity/availity-react/compare/@availity/feature@1.1.6...@availity/feature@1.1.7) (2019-06-24)
 
 **Note:** Version bump only for package @availity/feature
