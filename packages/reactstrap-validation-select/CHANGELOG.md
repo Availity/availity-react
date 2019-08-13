@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [4.2.5](https://github.com/Availity/availity-react/compare/@availity/reactstrap-validation-select@4.2.4...@availity/reactstrap-validation-select@4.2.5) (2019-08-12)
+
+
+### Bug Fixes
+
+* **reactstrap-validation-select:** add paging info to patients query ([b3d7e67](https://github.com/Availity/availity-react/commit/b3d7e67))
+
+
+
+
+
 ## [4.2.4](https://github.com/Availity/availity-react/compare/@availity/reactstrap-validation-select@4.2.3...@availity/reactstrap-validation-select@4.2.4) (2019-08-11)
 
 **Note:** Version bump only for package @availity/reactstrap-validation-select
