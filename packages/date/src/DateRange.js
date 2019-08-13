@@ -23,6 +23,8 @@ const AvDateRange = ({
   className,
   format,
   calendarIcon,
+  startKey,
+  endKey,
   datepickerProps,
   'data-testid': dataTestId,
   datepicker,
@@ -36,8 +38,8 @@ const AvDateRange = ({
 
   const endId = `${(attributes.id || name).replace(/[^a-zA-Z0-9]/gi, '')}-end`;
 
-  const startValue = get(value, 'startDate');
-  const endValue = get(value, 'endDate');
+  const startValue = get(value, startKey);
+  const endValue = get(value, endKey);
 
   const classes = classNames(
     'input-group-date-range',
@@ -57,13 +59,13 @@ const AvDateRange = ({
       true
     );
 
-    const valueToSet = date.isValid() ? date.format(isoDateFormat) : null;
+    const valueToSet = date.isValid() ? date.format(format) : null;
 
     await setFieldValue(
       name,
       {
-        startDate: isStart ? valueToSet : startValue,
-        endDate: !isStart ? valueToSet : endValue,
+        [startKey]: isStart ? valueToSet : startValue,
+        [endKey]: !isStart ? valueToSet : endValue,
       },
       metadata.touched
     );
@@ -81,8 +83,8 @@ const AvDateRange = ({
     await setFieldValue(
       name,
       {
-        startDate: _startDate,
-        endDate: _endDate,
+        [startKey]: _startDate,
+        [endKey]: _endDate,
       },
       _startDate && _endDate
     );
@@ -93,8 +95,8 @@ const AvDateRange = ({
 
     if (onChange) {
       onChange({
-        startDate: _startDate,
-        endDate: _endDate,
+        [startKey]: _startDate,
+        [endKey]: _endDate,
       });
     }
   };
@@ -142,7 +144,7 @@ const AvDateRange = ({
           disabled={attributes.disabled}
           onFocusChange={onFocusChange}
           customArrowIcon="-"
-          isOutsideRange={isOutsideRange(min, max)}
+          isOutsideRange={isOutsideRange(min, max, format)}
           customInputIcon={datepicker ? calendarIcon : undefined}
           showDefaultInputIcon={datepicker}
           inputIconPosition="after"
@@ -167,12 +169,16 @@ AvDateRange.propTypes = {
   format: PropTypes.string,
   datepicker: PropTypes.bool,
   datepickerProps: PropTypes.object,
+  startKey: PropTypes.string,
+  endKey: PropTypes.string,
   'data-testid': PropTypes.string,
 };
 
 AvDateRange.defaultProps = {
   calendarIcon: <Icon name="calendar" />,
   format: 'MM/DD/YYYY',
+  startKey: 'startDate',
+  endKey: 'endDate',
   datepicker: true,
 };
 

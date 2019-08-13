@@ -44,8 +44,8 @@ return (
     <FormikDate
       id="dateOfService"
       name="dateOfService"
-      min={{ value: 7, units: 'days' }}
-      max={{ value: 7, units: 'days' }}
+      min={{ value: 7, units: 'day' }}
+      max={{ value: 7, units: 'day' }}
     />
 
     <Button color="primary" type="submit">
@@ -103,8 +103,8 @@ return (
     <DateField
       id="dateOfService"
       name="dateOfService"
-      min={{ value: 7, units: 'days' }}
-      max={{ value: 7, units: 'days' }}
+      min={{ value: 7, units: 'day' }}
+      max={{ value: 7, units: 'day' }}
     />
 
     <Button color="primary" type="submit">
@@ -164,8 +164,8 @@ return (
     <DateRange
       id="dateOfService"
       name="dateOfService"
-      min={{ value: 7, units: 'days' }}
-      max={{ value: 7, units: 'days' }}
+      min={{ value: 7, units: 'day' }}
+      max={{ value: 7, units: 'day' }}
     />
 
     <Button color="primary" type="submit">
@@ -189,6 +189,8 @@ return (
 *   **`innerRef`**: Function or Node. Optional. Ref passed to `<Input />` inside of `<FormikDate />`.
 *   **`format`**: String. Optional. Default: `MM/DD/YYYY`. How to format date value in `onSubmit` callback. Must be a format recognized by [moment](https://momentjs.com/docs/#/displaying/format/)
 *   **`data-testid`**: String. Optional. Useful for writing unit tests with [@testing-library/react](https://github.com/testing-library/react-testing-library)
+*   **`startKey`**: String. Optional. Key to return start date as on form submit. Should match the yup schema `startKey`. Default `startDate`
+*   **`endKey`**: String. Optional. Key to return end date as on form submit. Should match the yup schema `endKey`. Default `endDate`
 
 ### DateRangeField
 
@@ -234,8 +236,8 @@ return (
     <DateRangeField
       id="dateOfService"
       name="dateOfService"
-      min={{ value: 7, units: 'days' }}
-      max={{ value: 7, units: 'days' }}
+      min={{ value: 7, units: 'day' }}
+      max={{ value: 7, units: 'day' }}
     />
 
     <Button color="primary" type="submit">

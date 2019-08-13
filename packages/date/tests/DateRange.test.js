@@ -2,6 +2,7 @@ import React from 'react';
 import { render, fireEvent, wait, cleanup } from '@testing-library/react';
 import { Button } from 'reactstrap';
 import { Form } from '@availity/form';
+import '@availity/yup/moment';
 import * as yup from 'yup';
 import moment from 'moment';
 import { DateRange } from '..';
@@ -17,7 +18,7 @@ describe('DateRange', () => {
     const { getByText, getByTestId } = render(
       <Form
         initialValues={{
-          dateRange: '',
+          dateRange: undefined,
         }}
         onSubmit={onSubmit}
         validationSchema={yup.object().shape({
@@ -44,7 +45,7 @@ describe('DateRange', () => {
     const { container, getByText } = render(
       <Form
         initialValues={{
-          dateRange: '',
+          dateRange: undefined,
         }}
         onSubmit={onSubmit}
       >
@@ -78,8 +79,8 @@ describe('DateRange', () => {
         expect.objectContaining({
           dateRange: {
             startDate: '01/04/1997',
-            endDate: '01/05/1997'
-          }
+            endDate: '01/05/1997',
+          },
         }),
         expect.anything()
       );
@@ -92,7 +93,7 @@ describe('DateRange', () => {
     const { container, getByText } = render(
       <Form
         initialValues={{
-          dateRange: '',
+          dateRange: undefined,
         }}
         onSubmit={onSubmit}
       >
@@ -119,11 +120,67 @@ describe('DateRange', () => {
       expect(onSubmit).toHaveBeenCalledWith(
         expect.objectContaining({
           dateRange: {
-            startDate:moment().format('MM/DD/YYYY'),
+            startDate: moment().format('MM/DD/YYYY'),
             endDate: moment()
-            .add(1, 'day')
-            .format('MM/DD/YYYY')
-          }
+              .add(1, 'day')
+              .format('MM/DD/YYYY'),
+          },
+        }),
+        expect.anything()
+      );
+    });
+  });
+
+  test('works with custom start/end keys', async () => {
+    const onSubmit = jest.fn();
+    const schema = yup.object().shape({
+      dateRange: yup.dateRange({
+        startKey: 'customStartKey',
+        endKey: 'customEndKey',
+      }),
+    });
+
+    const { container, getByText } = render(
+      <Form
+        initialValues={{
+          dateRange: undefined,
+        }}
+        onSubmit={onSubmit}
+        validationSchema={schema}
+      >
+        <DateRange
+          id="dateRange"
+          name="dateRange"
+          startKey="customStartKey"
+          endKey="customEndKey"
+        />
+        <Button type="submit">Submit</Button>
+      </Form>
+    );
+
+    const input = container.querySelector('.DateInput_input');
+
+    fireEvent.focus(input);
+
+    // Simulate user selecting today as start date
+    const start = container.querySelector('.CalendarDay__today');
+    fireEvent.click(start);
+
+    // Simulate user selecting tomorrow as end date
+    const end = container.querySelector('.CalendarDay__today').nextSibling;
+    fireEvent.click(end);
+
+    fireEvent.click(getByText('Submit'));
+
+    await wait(() => {
+      expect(onSubmit).toHaveBeenCalledWith(
+        expect.objectContaining({
+          dateRange: {
+            customStartKey: moment().format('MM/DD/YYYY'),
+            customEndKey: moment()
+              .add(1, 'day')
+              .format('MM/DD/YYYY'),
+          },
         }),
         expect.anything()
       );
