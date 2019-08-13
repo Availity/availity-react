@@ -50,7 +50,7 @@ const Select = ({
     { onChange, value: fieldValue, ...field },
     { touched, error: hasError },
   ] = useField(name);
-  const { values, setValues } = useFormikContext();
+  const { values, setFieldValue } = useFormikContext();
   const [newOptions, setNewOptions] = useState([]);
 
   const getOptionLabel = option => {
@@ -115,7 +115,9 @@ const Select = ({
 
     if (isOverMax) return;
 
-    const valuesToSet = { [name]: newVal };
+    const valuesToSet = { [name]: true };
+
+    await setFieldValue(name, newVal);
 
     const shouldAutofill =
       autofill && !attributes.isMulti && newValue && typeof newVal === 'object';
@@ -123,7 +125,7 @@ const Select = ({
     if (shouldAutofill) {
       Object.keys(values)
         .filter(fieldName => fieldName !== name)
-        .forEach(fieldName => {
+        .forEach(async fieldName => {
           let rawValue = newValue;
           if (
             !!newValue.label &&
@@ -150,12 +152,12 @@ const Select = ({
             } else {
               val = rawValue[fieldName];
             }
-            valuesToSet[fieldName] = val;
+            valuesToSet[fieldName] = true;
+            await setFieldValue(fieldName, val);
           }
         });
     }
 
-    await setValues(valuesToSet);
     if (onChangeCallback) {
       onChangeCallback(newVal);
     }
