@@ -15,22 +15,22 @@ const ListItemStatus = ({ color, titleContent, children, badge, ...props }) => {
 
   if (badgeText) {
     const useBadge = badgeColor && badgeText && (
-      <Badge color={badgeColor} pill>
+      <Badge color={badgeColor} pill data-testid="lgi-badge">
         {badgeText}
       </Badge>
     );
     title = (
-      <div className="d-flex py-1 justify-content-between align-items-baseline">
+      <div className="d-flex py-1 justify-content-between align-items-baseline" data-testid="lgi-content-wrapper">
         {titleContent}
         {useBadge}
       </div>
     );
   } else if (typeof title === 'string') {
-    title = <div className="py-1">{titleContent}</div>;
+    title = <div className="py-1" data-testid="lgi-title-content">{titleContent}</div>;
   }
 
   return (
-    <ListGroupItem {...props} borderColor={borderColor}>
+    <ListGroupItem data-testid="list-group-item-status-id" {...props} borderColor={borderColor}>
       {title}
       {children}
     </ListGroupItem>
