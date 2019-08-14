@@ -1,3 +1,4 @@
+/* eslint-disable no-console */
 /* eslint-disable react/prop-types */
 import React, { useState } from 'react';
 import {
@@ -8,7 +9,7 @@ import {
 } from '@testing-library/react';
 import { avSlotMachineApi } from '@availity/api-axios';
 import { getAllSpaces, sanitizeSpaces } from '../src/Spaces';
-import Spaces, { useSpace } from '..';
+import Spaces, { useSpace, SpacesLogo } from '..';
 
 jest.mock('@availity/api-axios');
 
@@ -265,7 +266,6 @@ describe('Spaces', () => {
         },
       });
 
-
       // Create component that renders a SpaceComponent for the current space id
       const SpaceComponent = () => {
         const { space = {} } = useSpace();
@@ -287,5 +287,34 @@ describe('Spaces', () => {
 
       await waitForElement(() => getByText('hello world'));
     });
+  });
+
+  test('renders with warning', async () => {
+    avSlotMachineApi.create.mockResolvedValueOnce({
+      data: {
+        data: {
+          spaces: {
+            totalCount: 2,
+            page: 1,
+            perPage: 2,
+            spaces: [{ id: '1' }, { id: '2' }],
+          },
+        },
+      },
+    });
+
+    console.warn = jest.fn();
+
+    const { getByTestId } = render(
+      <Spaces spaceIds={['1', '2']} clientId="test-client-id">
+        <SpacesLogo data-testid="spaces-logo-1" />
+      </Spaces>
+    );
+
+    await waitForElement(() => getByTestId('spaces-logo-1'));
+
+    expect(console.warn.mock.calls[0][0]).toBe(
+      'You did not pass an ID in to find a space, and there is more than 1 space in the space array. Returning the first.'
+    );
   });
 });
