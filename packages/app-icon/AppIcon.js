@@ -42,17 +42,7 @@ AppIcon.propTypes = {
   tag: PropTypes.oneOfType([PropTypes.func, PropTypes.string]),
   children: PropTypes.node,
   src: PropTypes.string,
-  alt: (props, propName) => {
-    if (
-      (props.src !== undefined &&
-        props.src !== null &&
-        props[propName] === undefined) ||
-      props[propName] === null
-    ) {
-      return new Error('AppIcon requires and alt property for image src.');
-    }
-    return null;
-  },
+  alt: PropTypes.string,
 };
 
 AppIcon.defaultProps = {
