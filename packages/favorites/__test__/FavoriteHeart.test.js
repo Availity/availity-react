@@ -4,6 +4,7 @@ import {
   render,
   waitForElement,
   cleanup,
+  wait,
 } from '@testing-library/react';
 import { avSettingsApi } from '@availity/api-axios';
 import avMessages from '@availity/message-core';
@@ -11,6 +12,15 @@ import Favorites, { FavoriteHeart } from '..';
 
 jest.mock('@availity/api-axios');
 jest.mock('@availity/message-core');
+
+global.document.createRange = () => ({
+  setStart: () => {},
+  setEnd: () => {},
+  commonAncestorContainer: {
+    nodeName: 'BODY',
+    ownerDocument: document,
+  },
+});
 
 const domain = () => {
   if (window.location.origin) {
@@ -284,5 +294,54 @@ describe('FavoriteHeart', () => {
     fireEvent.click(heart);
 
     expect(onChange).toHaveBeenCalledTimes(1);
+  });
+  test('should prevent default focus event', async () => {
+    const onChange = jest.fn(() => {});
+    const onMouseDown = jest.fn();
+    const { container, getByText } = render(
+      <Favorites>
+        <FavoriteHeart
+          onChange={onChange}
+          id="1234"
+          onMouseDown={onMouseDown}
+        />
+      </Favorites>
+    );
+
+    const heart = container.querySelector('#av-favorite-heart-1234');
+
+    expect(heart).toBeDefined();
+
+    await waitForElement(() => getByText('This item is not favorited.'));
+
+    const event = new MouseEvent('mouseDown');
+
+    fireEvent.mouseDown(heart, event);
+    fireEvent.click(heart);
+
+    expect(onChange).toHaveBeenCalledTimes(1);
+    expect(onMouseDown).toHaveBeenCalledTimes(1);
+  });
+
+  test('should show tooltip', async () => {
+    const { container, getByText, getByTestId } = render(
+      <Favorites>
+        <FavoriteHeart id="1234" />
+      </Favorites>
+    );
+
+    const heart = container.querySelector('#av-favorite-heart-1234');
+
+    expect(heart).toBeDefined();
+
+    await waitForElement(() => getByText('This item is not favorited.'));
+
+    fireEvent.mouseOver(heart);
+
+    await wait(() => {
+      const tooltip = getByTestId('av-favorite-heart-1234-tooltip');
+
+      expect(tooltip.textContent).toContain('Add to My Favorites');
+    }, 2000);
   });
 });
