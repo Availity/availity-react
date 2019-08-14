@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [4.4.0](https://github.com/Availity/availity-react/compare/@availity/reactstrap-validation-select@4.3.0...@availity/reactstrap-validation-select@4.4.0) (2019-08-14)
+
+
+### Features
+
+* **reactstrap-validation-select:** add minCharsToSearch prop ([b80b9c1](https://github.com/Availity/availity-react/commit/b80b9c1))
+
+
+
+
+
 # [4.3.0](https://github.com/Availity/availity-react/compare/@availity/reactstrap-validation-select@4.2.5...@availity/reactstrap-validation-select@4.3.0) (2019-08-13)
 
 

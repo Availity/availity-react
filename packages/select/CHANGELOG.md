@@ -3,6 +3,22 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.3.0](https://github.com/Availity/availity-react/compare/@availity/select@0.2.1...@availity/select@0.3.0) (2019-08-14)
+
+
+### Bug Fixes
+
+* **select:** fix incorrect limit/offset passed into query parameters ([1f46c5b](https://github.com/Availity/availity-react/commit/1f46c5b))
+
+
+### Features
+
+* **select:** add minCharsToSearch prop ([4a7e7fa](https://github.com/Availity/availity-react/commit/4a7e7fa))
+
+
+
+
+
 ## [0.2.1](https://github.com/Availity/availity-react/compare/@availity/select@0.2.0...@availity/select@0.2.1) (2019-08-13)
 
 **Note:** Version bump only for package @availity/select
