@@ -3,6 +3,57 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [3.0.4](https://github.com/Availity/availity-react/compare/@availity/reactstrap-validation-date@3.0.3...@availity/reactstrap-validation-date@3.0.4) (2019-08-13)
+
+**Note:** Version bump only for package @availity/reactstrap-validation-date
+
+
+
+
+
+## [3.0.3](https://github.com/Availity/availity-react/compare/@availity/reactstrap-validation-date@3.0.2...@availity/reactstrap-validation-date@3.0.3) (2019-08-13)
+
+**Note:** Version bump only for package @availity/reactstrap-validation-date
+
+
+
+
+
+## [3.0.2](https://github.com/Availity/availity-react/compare/@availity/reactstrap-validation-date@3.0.1...@availity/reactstrap-validation-date@3.0.2) (2019-08-02)
+
+
+### Bug Fixes
+
+* **reactstrap-validation-date:** fixing distance validation ON-1163 ([ef4b951](https://github.com/Availity/availity-react/commit/ef4b951))
+
+
+
+
+
+## [3.0.1](https://github.com/Availity/availity-react/compare/@availity/reactstrap-validation-date@3.0.0...@availity/reactstrap-validation-date@3.0.1) (2019-08-01)
+
+**Note:** Version bump only for package @availity/reactstrap-validation-date
+
+
+
+
+
+# [3.0.0](https://github.com/Availity/availity-react/compare/@availity/reactstrap-validation-date@2.0.2...@availity/reactstrap-validation-date@3.0.0) (2019-07-31)
+
+
+### Code Refactoring
+
+* **reactstrap-validation-select:** started adding react-dates ([917f1b4](https://github.com/Availity/availity-react/commit/917f1b4))
+
+
+### BREAKING CHANGES
+
+* **reactstrap-validation-select:** this required moment to be installed and the whole look and feel of the picker has changed
+
+
+
+
+
 ## [2.0.2](https://github.com/Availity/availity-react/compare/@availity/reactstrap-validation-date@2.0.1...@availity/reactstrap-validation-date@2.0.2) (2019-07-19)
 
 **Note:** Version bump only for package @availity/reactstrap-validation-date

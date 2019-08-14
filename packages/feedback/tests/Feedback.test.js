@@ -1,7 +1,17 @@
 import React from 'react';
-import { render, fireEvent } from '@testing-library/react';
-import '@testing-library/react/cleanup-after-each';
+import { render, fireEvent, cleanup } from '@testing-library/react';
 import Feedback from '..';
+
+global.document.createRange = () => ({
+  setStart: () => {},
+  setEnd: () => {},
+  commonAncestorContainer: {
+    nodeName: 'BODY',
+    ownerDocument: document,
+  },
+});
+
+afterEach(cleanup);
 
 describe('Feedback', () => {
   test('should show form on click', () => {

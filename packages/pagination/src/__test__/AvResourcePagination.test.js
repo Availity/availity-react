@@ -4,8 +4,8 @@ import {
   waitForElement,
   waitForDomChange,
   fireEvent,
+  cleanup,
 } from '@testing-library/react';
-import '@testing-library/react/cleanup-after-each';
 import PaginationControls from '../PaginationControls';
 import { usePagination } from '../Pagination';
 import AvResourcePagination from '../AvResourcePagination';
@@ -49,6 +49,7 @@ const mockResponse = {
 
 afterEach(() => {
   mockResponse.postGet.mockClear();
+  cleanup();
 });
 
 const resource = {

@@ -8,7 +8,9 @@ import slotmachine from './slotmachine';
 import me from './me';
 import settings from './settings';
 import disclaimers from './disclaimers';
+import webQL from './webQL';
 import resourceSelect from './resource-select';
+import logMessages from './LogMessages';
 
 mock.setup();
 
@@ -30,7 +32,11 @@ settings(mock);
 
 disclaimers(mock);
 
+webQL(mock);
+
 resourceSelect(mock);
+
+logMessages(mock);
 
 // keep this last
 mock.use(proxy);

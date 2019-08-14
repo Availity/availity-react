@@ -1,6 +1,8 @@
 import React from 'react';
-import { render } from '@testing-library/react';
+import { render, cleanup } from '@testing-library/react';
 import ListGroupItem from '..';
+
+afterEach(cleanup);
 
 describe('ListGroupItem', () => {
   test('should render', () => {

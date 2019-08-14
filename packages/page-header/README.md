@@ -7,7 +7,7 @@
 ## Installation
 
 ```bash
-npm install @availity/page-header --save
+npm install @availity/page-header formik yup --save
 ```
 
 ### Usage

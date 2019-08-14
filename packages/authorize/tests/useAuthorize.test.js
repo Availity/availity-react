@@ -6,9 +6,8 @@ import { useAuthorize } from '..';
 jest.mock('@availity/api-axios');
 
 afterEach(() => {
-  cleanup();
-
   jest.clearAllMocks();
+  cleanup();
 });
 
 // eslint-disable-next-line react/prop-types

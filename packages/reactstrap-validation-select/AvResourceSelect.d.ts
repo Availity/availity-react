@@ -1,6 +1,12 @@
 type ResourceType = {
     postGet?: Function;
+    post?: Function;
     getResult?: string | Function;
+};
+
+type GraphQLConfigType = {
+  type?: string;
+  query?: string;
 };
 
 export interface AvResourceSelectProps {
@@ -20,6 +26,8 @@ export interface AvResourceSelectProps {
     watchParams?: Array<any>;
     cacheUniq?: any;
     additional?: object;
+    graphqlConfig?: GraphQLConfigType;
+    minCharsToSearch?: number;
 }
 
 declare const AvResourceSelect: React.ComponentType<AvResourceSelectProps>;

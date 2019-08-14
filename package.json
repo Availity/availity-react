@@ -10,21 +10,25 @@
     "format": "prettier --write 'packages/*/*.js' 'packages/*/!(node_modules)/**/*.js' 'packages/*/!(docs)/**/*.js'",
     "lint": "eslint .",
     "nuke": "npm run remove-locks && npm run clean",
-    "bootstrap": "lerna bootstrap --no-package-locks --hoist react",
+    "bootstrap": "lerna bootstrap --no-package-locks",
     "lerna": "lerna",
+    "codecov:ci": "codecov",
     "link": "lerna link",
     "clean": "lerna clean --yes",
     "test": "jest",
+    "test:ci": "jest --runInBand --collectCoverage",
     "postinstall": "npm run bootstrap",
     "start": "npm start --prefix packages/docs",
     "build:docs": "npm run build --prefix packages/docs",
     "release": "lerna publish",
+    "release:ci": "lerna publish --yes",
     "release:canary": "lerna publish -c",
     "add": "sh ./scripts/add.sh",
     "deploy:docs": "npm run deploy-docs --prefix packages/docs",
     "updated": "lerna updated",
     "remove-locks": "find . -type f -name 'package-lock.json' -delete",
-    "check": "npm-check -u && lerna exec --bail false --concurrency 1 -- npm-check -u"
+    "check": "npm-check -u && lerna exec --bail false --concurrency 1 -- npm-check -u",
+    "new": "plop"
   },
   "devDependencies": {
     "@babel/core": "^7.4.5",
@@ -48,15 +52,16 @@
     "@commitlint/cli": "^8.0.0",
     "@commitlint/config-conventional": "^8.1.0",
     "@commitlint/config-lerna-scopes": "^8.1.0",
-    "@testing-library/react": "^8.0.1",
+    "@testing-library/react": "^9.1.0",
     "@types/node": "^12.0.2",
     "@types/react": "^16.8.2",
     "@types/react-dom": "^16.8.0",
     "babel-core": "^7.0.0-bridge.0",
     "babel-jest": "^24.8.0",
     "babel-plugin-dynamic-import-node": "^2.2.0",
+    "codecov": "^3.5.0",
     "conventional-changelog-cli": "^2.0.11",
-    "conventional-recommended-bump": "^5.0.0",
+    "conventional-recommended-bump": "^6.0.0",
     "core-js": "^3.1.2",
     "eslint-config-availity": "^4.0.9",
     "husky": "^3.0.1",
@@ -66,6 +71,7 @@
     "lerna": "^3.6.0",
     "lint-staged": "^9.2.0",
     "node-sass": "^4.12.0",
+    "plop": "^2.4.0",
     "prettier": "^1.15.3",
     "prop-types": "^15.6.2",
     "raf": "^3.4.1",
@@ -88,7 +94,14 @@
     "extends": [
       "@commitlint/config-conventional",
       "@commitlint/config-lerna-scopes"
-    ]
+    ],
+    "rules": {
+      "header-max-length": [
+        0,
+        "always",
+        100
+      ]
+    }
   },
   "prettier": {
     "singleQuote": true,
@@ -98,9 +111,6 @@
     "testURL": "http://localhost/",
     "transformIgnorePatterns": [
       "<rootDir>.*(node_modules)(?!.*@availity.*).*$"
-    ],
-    "setupFilesAfterEnv": [
-      "@testing-library/react/cleanup-after-each"
     ],
     "moduleNameMapper": {
       ".+\\.(css|styl|less|sass|scss|png|jpg|ttf|woff|woff2)$": "identity-obj-proxy"

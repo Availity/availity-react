@@ -6,8 +6,10 @@ import {
   avNavigationApi,
   avUserApi,
   avCodesApi,
+  avWebQLApi,
 } from '@availity/api-axios';
 import AvResourceSelect from './AvResourceSelect';
+import { PatientOption } from './resource-components';
 
 const AvProviderSelect = AvResourceSelect.create({
   resource: avProvidersApi,
@@ -47,6 +49,60 @@ const AvCodeSelect = AvResourceSelect.create({
   watchParams: ['list'],
 });
 
+const AvPatientSelect = AvResourceSelect.create({
+  components: {
+    Option: PatientOption,
+  },
+  resource: avWebQLApi,
+  requiredParams: ['customerId'],
+  watchParams: ['customerId', 'providerUserId', 'payerId'],
+  valueKey: 'lastName',
+  labelKey: 'lastName',
+  getResult: data => data.data.patientPagination.items,
+  minCharsToSearch: 3,
+  graphqlConfig: {
+    type: 'patient',
+    query: `query($page: Int, $perPage: Int, $filters: PatientFilters) {
+  patientPagination(page: $page, perPage: $perPage, filters: $filters) {
+    pageInfo {
+      hasNextPage
+    }
+    items {
+      firstName
+      middleName
+      lastName
+      suffix
+      patientAccountNumber
+      memberId
+      familyUnitNumber
+      subscriberRelationship
+      subscriberRelationshipCode
+      gender
+      genderCode
+      ssn
+      birthDate
+      deathDate
+      address {
+        line1
+        line2
+        city
+        state
+        stateCode
+        zipCode
+      }
+      subscriberFirstName
+      subscriberLastName
+      subscriberMiddleName
+      subscriberMemberId
+      payerName
+      payerId
+      requestingProviderNpi
+    }
+  }
+}`,
+  },
+});
+
 export default AvResourceSelect;
 export {
   AvProviderSelect,
@@ -56,4 +112,5 @@ export {
   AvNavigationSelect,
   AvUserSelect,
   AvCodeSelect,
+  AvPatientSelect,
 };

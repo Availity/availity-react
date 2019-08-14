@@ -1,8 +1,9 @@
 import React from 'react';
-import { render, waitForElement } from '@testing-library/react';
-import '@testing-library/react/cleanup-after-each';
+import { render, waitForElement, cleanup } from '@testing-library/react';
 import Pagination from '../Pagination';
 import PaginationControls from '../PaginationControls';
+
+afterEach(cleanup);
 
 describe('Pagination Controls', () => {
   test('should provide a list of page controls', async () => {

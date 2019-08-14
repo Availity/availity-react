@@ -3,6 +3,147 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [7.4.4](https://github.com/Availity/availity-react/compare/@availity/docs@7.4.3...@availity/docs@7.4.4) (2019-08-14)
+
+**Note:** Version bump only for package @availity/docs
+
+
+
+
+
+## [7.4.3](https://github.com/Availity/availity-react/compare/@availity/docs@7.4.2...@availity/docs@7.4.3) (2019-08-14)
+
+**Note:** Version bump only for package @availity/docs
+
+
+
+
+
+## [7.4.2](https://github.com/Availity/availity-react/compare/@availity/docs@7.4.1...@availity/docs@7.4.2) (2019-08-14)
+
+**Note:** Version bump only for package @availity/docs
+
+
+
+
+
+## [7.4.1](https://github.com/Availity/availity-react/compare/@availity/docs@7.4.0...@availity/docs@7.4.1) (2019-08-13)
+
+**Note:** Version bump only for package @availity/docs
+
+
+
+
+
+# [7.4.0](https://github.com/Availity/availity-react/compare/@availity/docs@7.3.1...@availity/docs@7.4.0) (2019-08-13)
+
+
+### Features
+
+* **form:** init commit adding formik ([ed98ffc](https://github.com/Availity/availity-react/commit/ed98ffc))
+* **formik-date:** add DateRange,DateRangeField ([323fd15](https://github.com/Availity/availity-react/commit/323fd15))
+* **formik-date:** add formik-date package WIP ([2f12049](https://github.com/Availity/availity-react/commit/2f12049))
+* **select:** add autofill prop ([37d3fba](https://github.com/Availity/availity-react/commit/37d3fba))
+* **select:** add patient dropdown ([4f8d67c](https://github.com/Availity/availity-react/commit/4f8d67c))
+* **select:** added select package using formik ([770d9c1](https://github.com/Availity/availity-react/commit/770d9c1))
+
+
+
+
+
+## [7.3.1](https://github.com/Availity/availity-react/compare/@availity/docs@7.3.0...@availity/docs@7.3.1) (2019-08-12)
+
+**Note:** Version bump only for package @availity/docs
+
+
+
+
+
+# [7.3.0](https://github.com/Availity/availity-react/compare/@availity/docs@7.2.0...@availity/docs@7.3.0) (2019-08-11)
+
+
+### Features
+
+* **hooks:** added storybook story for useCurrentUser ([00277b7](https://github.com/Availity/availity-react/commit/00277b7))
+
+
+
+
+
+# [7.2.0](https://github.com/Availity/availity-react/compare/@availity/docs@7.1.2...@availity/docs@7.2.0) (2019-08-08)
+
+
+### Features
+
+* **avatar:** add user avatar component ([78699b6](https://github.com/Availity/availity-react/commit/78699b6))
+
+
+
+
+
+## [7.1.2](https://github.com/Availity/availity-react/compare/@availity/docs@7.1.1...@availity/docs@7.1.2) (2019-08-05)
+
+**Note:** Version bump only for package @availity/docs
+
+
+
+
+
+## [7.1.1](https://github.com/Availity/availity-react/compare/@availity/docs@7.1.0...@availity/docs@7.1.1) (2019-08-05)
+
+**Note:** Version bump only for package @availity/docs
+
+
+
+
+
+# [7.1.0](https://github.com/Availity/availity-react/compare/@availity/docs@7.0.1...@availity/docs@7.1.0) (2019-08-02)
+
+
+### Bug Fixes
+
+* **reactstrap-validation-date:** babel config removed for storyboard ([7fa16dc](https://github.com/Availity/availity-react/commit/7fa16dc))
+* **reactstrap-validation-date:** fixing distance validation ON-1163 ([ef4b951](https://github.com/Availity/availity-react/commit/ef4b951))
+
+
+### Features
+
+* **reactstrap-validation-select:** add autofill prop ([3935883](https://github.com/Availity/availity-react/commit/3935883))
+* **reactstrap-validation-select:** add AvPatientSelect ([8900b69](https://github.com/Availity/availity-react/commit/8900b69))
+
+
+
+
+
+## [7.0.1](https://github.com/Availity/availity-react/compare/@availity/docs@7.0.0...@availity/docs@7.0.1) (2019-08-01)
+
+**Note:** Version bump only for package @availity/docs
+
+
+
+
+
+# [7.0.0](https://github.com/Availity/availity-react/compare/@availity/docs@6.0.5...@availity/docs@7.0.0) (2019-07-31)
+
+
+### Code Refactoring
+
+* **reactstrap-validation-select:** started adding react-dates ([917f1b4](https://github.com/Availity/availity-react/commit/917f1b4))
+
+
+### Features
+
+* **reactstrap-validation-select:** added creatable support ([4966487](https://github.com/Availity/availity-react/commit/4966487))
+
+
+### BREAKING CHANGES
+
+* **reactstrap-validation-select:** this required moment to be installed and the whole look and feel of the picker has changed
+
+
+
+
+
 ## [6.0.5](https://github.com/Availity/availity-react/compare/@availity/docs@6.0.4...@availity/docs@6.0.5) (2019-07-23)
 
 **Note:** Version bump only for package @availity/docs

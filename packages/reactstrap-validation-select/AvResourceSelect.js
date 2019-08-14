@@ -1,15 +1,23 @@
 import React, { Component, createRef } from 'react';
 import PropTypes from 'prop-types';
 import qs from 'qs';
+import get from 'lodash.get';
 
 import AvSelect from './AvSelect';
 import AvSelectField from './AvSelectField';
 
 class AvResourceSelect extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {};
+    this.state.previousOptions = [];
+  }
+
   static propTypes = {
     requestConfig: PropTypes.object,
     resource: PropTypes.shape({
       postGet: PropTypes.func,
+      post: PropTypes.func,
       getResult: PropTypes.oneOfType([PropTypes.string, PropTypes.func]),
     }).isRequired,
     getResult: PropTypes.oneOfType([PropTypes.string, PropTypes.func]),
@@ -27,12 +35,16 @@ class AvResourceSelect extends Component {
     // eslint-disable-next-line react/forbid-prop-types
     cacheUniq: PropTypes.any,
     additional: PropTypes.object,
+    graphqlConfig: PropTypes.shape({
+      type: PropTypes.string,
+      query: PropTypes.string,
+    }),
+    minCharsToSearch: PropTypes.number,
   };
 
   static defaultProps = {
     delay: 350,
     itemsPerPage: 50,
-    hasMore: ({ totalCount, limit, offset }) => totalCount > offset + limit,
   };
 
   select = createRef();
@@ -40,49 +52,125 @@ class AvResourceSelect extends Component {
   loadOptions = (...args) => {
     const [inputValue, , additional = {}] = args;
     let { page } = additional;
-    const params = {
-      q: encodeURIComponent(inputValue),
-      limit: this.props.itemsPerPage,
-      customerId: this.props.customerId,
-      ...this.props.parameters,
-    };
+
+    const shouldReturnPreviousOptions =
+      inputValue.length > 0 &&
+      this.props.minCharsToSearch !== undefined &&
+      inputValue.length < this.props.minCharsToSearch;
+
+    if (shouldReturnPreviousOptions) {
+      return {
+        options: this.state.previousOptions,
+        hasMore: false,
+        additional: {
+          page,
+          limit: this.props.itemsPerPage,
+        },
+      };
+    }
+
+    let data;
+    let params;
+    if (this.props.graphqlConfig) {
+      data = {
+        variables: {
+          perPage: this.props.itemsPerPage,
+          filters: {
+            q: encodeURIComponent(inputValue),
+            ...this.props.parameters,
+          },
+        },
+      };
+
+      if (this.props.graphqlConfig.query) {
+        data.query = this.props.graphqlConfig.query;
+      }
+    } else {
+      params = {
+        q: encodeURIComponent(inputValue),
+        limit: this.props.itemsPerPage,
+        customerId: this.props.customerId,
+        ...this.props.parameters,
+      };
+    }
+
     if (args.length === 3) {
-      params.offset = (page - 1) * this.props.itemsPerPage;
+      if (this.props.graphqlConfig) {
+        data.variables.page = page;
+      } else {
+        params.offset = (page - 1) * this.props.itemsPerPage;
+      }
     } else {
       page = 1;
     }
-    if (
-      this.props.isDisabled ||
-      (this.props.requiredParams &&
-        this.props.requiredParams.some(param => !params[param]))
-    ) {
+
+    let requiredSatisfied =
+      !this.props.requiredParams || this.props.requiredParams.length === 0;
+
+    if (!requiredSatisfied) {
+      if (this.props.graphqlConfig) {
+        requiredSatisfied = this.props.requiredParams.every(param =>
+          get(data, `variables.filters.${param}`)
+        );
+      } else {
+        requiredSatisfied = this.props.requiredParams.every(
+          param => params[param]
+        );
+      }
+    }
+    if (this.props.isDisabled || !requiredSatisfied) {
       return {
         options: [],
         hasMore: false,
       };
     }
     if (this.props.onPageChange) this.props.onPageChange(inputValue, page);
-    return this.props.resource
-      .postGet(
-        qs.stringify(params, {
-          encode: false,
-          arrayFormat: 'repeat',
-          indices: false,
-          allowDots: true,
-        }),
-        {
+    let fetch;
+    if (this.props.graphqlConfig) {
+      fetch = () =>
+        this.props.resource.post(data, {
           headers: {
-            'Content-Type': 'application/x-www-form-urlencoded',
+            'Content-Type': 'application/json',
           },
           ...this.props.requestConfig,
-        }
-      )
+        });
+    } else {
+      fetch = () =>
+        this.props.resource.postGet(
+          qs.stringify(params, {
+            encode: false,
+            arrayFormat: 'repeat',
+            indices: false,
+            allowDots: true,
+          }),
+          {
+            headers: {
+              'Content-Type': 'application/x-www-form-urlencoded',
+            },
+            ...this.props.requestConfig,
+          }
+        );
+    }
+    return fetch()
       .then(resp => {
         if (!resp || !resp.data) {
           throw new Error(`API returned an invalid response.`);
         }
         const getResult = this.props.getResult || this.props.resource.getResult;
         let { hasMore } = this.props;
+        if (hasMore === undefined) {
+          if (this.props.graphqlConfig) {
+            hasMore = data =>
+              get(
+                data.data,
+                `${this.props.graphqlConfig.type}Pagination.pageInfo.hasNextPage`,
+                false
+              );
+          } else {
+            hasMore = ({ totalCount, limit, offset }) =>
+              totalCount > offset + limit;
+          }
+        }
 
         const items =
           (typeof getResult === 'function'
@@ -96,6 +184,7 @@ class AvResourceSelect extends Component {
             `Expected data to be an array but got \`${typeof items}\`. Use the \`getData\` prop to specify how to get the data from the API response.`
           );
         }
+        this.setState({ previousOptions: items });
 
         return {
           options: items,

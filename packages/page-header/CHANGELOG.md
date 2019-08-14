@@ -3,6 +3,113 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [5.0.2](https://github.com/Availity/availity-react/compare/@availity/page-header@5.0.1...@availity/page-header@5.0.2) (2019-08-14)
+
+**Note:** Version bump only for package @availity/page-header
+
+
+
+
+
+## [5.0.1](https://github.com/Availity/availity-react/compare/@availity/page-header@5.0.0...@availity/page-header@5.0.1) (2019-08-14)
+
+**Note:** Version bump only for package @availity/page-header
+
+
+
+
+
+# [5.0.0](https://github.com/Availity/availity-react/compare/@availity/page-header@4.5.1...@availity/page-header@5.0.0) (2019-08-14)
+
+
+### chore
+
+* **page-header:** feedback update to latest formik should have been major bump ([f217189](https://github.com/Availity/availity-react/commit/f217189))
+
+
+### BREAKING CHANGES
+
+* **page-header:** this requires formik and yup to be installed alongside for feedback to work
+
+
+
+
+
+## [4.5.1](https://github.com/Availity/availity-react/compare/@availity/page-header@4.5.0...@availity/page-header@4.5.1) (2019-08-13)
+
+**Note:** Version bump only for package @availity/page-header
+
+
+
+
+
+# [4.5.0](https://github.com/Availity/availity-react/compare/@availity/page-header@4.4.17...@availity/page-header@4.5.0) (2019-08-13)
+
+
+### Features
+
+* **select:** add autofill prop ([37d3fba](https://github.com/Availity/availity-react/commit/37d3fba))
+
+
+
+
+
+## [4.4.17](https://github.com/Availity/availity-react/compare/@availity/page-header@4.4.16...@availity/page-header@4.4.17) (2019-08-12)
+
+**Note:** Version bump only for package @availity/page-header
+
+
+
+
+
+## [4.4.16](https://github.com/Availity/availity-react/compare/@availity/page-header@4.4.15...@availity/page-header@4.4.16) (2019-08-11)
+
+**Note:** Version bump only for package @availity/page-header
+
+
+
+
+
+## [4.4.15](https://github.com/Availity/availity-react/compare/@availity/page-header@4.4.14...@availity/page-header@4.4.15) (2019-08-08)
+
+**Note:** Version bump only for package @availity/page-header
+
+
+
+
+
+## [4.4.14](https://github.com/Availity/availity-react/compare/@availity/page-header@4.4.13...@availity/page-header@4.4.14) (2019-08-05)
+
+**Note:** Version bump only for package @availity/page-header
+
+
+
+
+
+## [4.4.13](https://github.com/Availity/availity-react/compare/@availity/page-header@4.4.12...@availity/page-header@4.4.13) (2019-08-05)
+
+**Note:** Version bump only for package @availity/page-header
+
+
+
+
+
+## [4.4.12](https://github.com/Availity/availity-react/compare/@availity/page-header@4.4.11...@availity/page-header@4.4.12) (2019-08-02)
+
+**Note:** Version bump only for package @availity/page-header
+
+
+
+
+
+## [4.4.11](https://github.com/Availity/availity-react/compare/@availity/page-header@4.4.10...@availity/page-header@4.4.11) (2019-07-31)
+
+**Note:** Version bump only for package @availity/page-header
+
+
+
+
+
 ## [4.4.10](https://github.com/Availity/availity-react/compare/@availity/page-header@4.4.9...@availity/page-header@4.4.10) (2019-07-23)
 
 **Note:** Version bump only for package @availity/page-header

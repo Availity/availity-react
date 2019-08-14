@@ -4,10 +4,12 @@ import {
   render,
   waitForElement,
   waitForDomChange,
+  cleanup,
 } from '@testing-library/react';
-import '@testing-library/react/cleanup-after-each';
 import Pagination from '../Pagination';
 import PaginationContent from '../PaginationContent';
+
+afterEach(cleanup);
 
 const Component = ({ value }) => (
   <span data-testid={`item-${value}`}>Item {value}</span>

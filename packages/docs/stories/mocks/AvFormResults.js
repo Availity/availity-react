@@ -13,16 +13,22 @@ class AvFormResult extends Component {
   };
 
   render() {
+    const { submitted, errors, values } = this.state;
     return (
       <React.Fragment>
-        <AvForm {...this.props} onSubmit={this.onSubmit} />
+        <AvForm
+          {...this.props}
+          onSubmit={this.onSubmit}
+          /* eslint-disable-next-line no-console */
+          onInvalidSubmit={() => console.log('invalid')}
+        />
         <hr />
-        {this.state.submitted && (
+        {submitted && (
           <div>
-            <p>Results (submitted {this.state.submitted}):</p>
-            <p>Errors: {this.state.errors}</p>
+            <p>Results (submitted {submitted}):</p>
+            <p>Errors: {errors}</p>
             <div>
-              Values: <pre>{this.state.values}</pre>
+              Values: <pre>{values}</pre>
             </div>
           </div>
         )}

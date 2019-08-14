@@ -3,6 +3,111 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [4.4.0](https://github.com/Availity/availity-react/compare/@availity/reactstrap-validation-select@4.3.0...@availity/reactstrap-validation-select@4.4.0) (2019-08-14)
+
+
+### Features
+
+* **reactstrap-validation-select:** add minCharsToSearch prop ([b80b9c1](https://github.com/Availity/availity-react/commit/b80b9c1))
+
+
+
+
+
+# [4.3.0](https://github.com/Availity/availity-react/compare/@availity/reactstrap-validation-select@4.2.5...@availity/reactstrap-validation-select@4.3.0) (2019-08-13)
+
+
+### Bug Fixes
+
+* **reactstrap-validation-select:** add noGutters prop to rows ([2f3cff4](https://github.com/Availity/availity-react/commit/2f3cff4))
+
+
+### Features
+
+* **select:** added select package using formik ([770d9c1](https://github.com/Availity/availity-react/commit/770d9c1))
+
+
+
+
+
+## [4.2.5](https://github.com/Availity/availity-react/compare/@availity/reactstrap-validation-select@4.2.4...@availity/reactstrap-validation-select@4.2.5) (2019-08-12)
+
+
+### Bug Fixes
+
+* **reactstrap-validation-select:** add paging info to patients query ([b3d7e67](https://github.com/Availity/availity-react/commit/b3d7e67))
+
+
+
+
+
+## [4.2.4](https://github.com/Availity/availity-react/compare/@availity/reactstrap-validation-select@4.2.3...@availity/reactstrap-validation-select@4.2.4) (2019-08-11)
+
+**Note:** Version bump only for package @availity/reactstrap-validation-select
+
+
+
+
+
+## [4.2.3](https://github.com/Availity/availity-react/compare/@availity/reactstrap-validation-select@4.2.2...@availity/reactstrap-validation-select@4.2.3) (2019-08-08)
+
+
+### Bug Fixes
+
+* **reactstrap-validation-select:** fix patient query and pagination args ([43f1076](https://github.com/Availity/availity-react/commit/43f1076))
+
+
+
+
+
+## [4.2.2](https://github.com/Availity/availity-react/compare/@availity/reactstrap-validation-select@4.2.1...@availity/reactstrap-validation-select@4.2.2) (2019-08-05)
+
+**Note:** Version bump only for package @availity/reactstrap-validation-select
+
+
+
+
+
+## [4.2.1](https://github.com/Availity/availity-react/compare/@availity/reactstrap-validation-select@4.2.0...@availity/reactstrap-validation-select@4.2.1) (2019-08-05)
+
+
+### Bug Fixes
+
+* **reactstrap-validation-select:** add noGutters prop to rows ([a687af1](https://github.com/Availity/availity-react/commit/a687af1))
+
+
+
+
+
+# [4.2.0](https://github.com/Availity/availity-react/compare/@availity/reactstrap-validation-select@4.1.0...@availity/reactstrap-validation-select@4.2.0) (2019-08-02)
+
+
+### Bug Fixes
+
+* **reactstrap-validation-select:** check autofill key is truthy ([4740d97](https://github.com/Availity/availity-react/commit/4740d97))
+
+
+### Features
+
+* **reactstrap-validation-select:** add autofill prop ([3935883](https://github.com/Availity/availity-react/commit/3935883))
+* **reactstrap-validation-select:** add AvPatientSelect ([8900b69](https://github.com/Availity/availity-react/commit/8900b69))
+* **reactstrap-validation-select:** allow autofill prop to be an object ([0598d5c](https://github.com/Availity/availity-react/commit/0598d5c))
+
+
+
+
+
+# [4.1.0](https://github.com/Availity/availity-react/compare/@availity/reactstrap-validation-select@4.0.3...@availity/reactstrap-validation-select@4.1.0) (2019-07-31)
+
+
+### Features
+
+* **reactstrap-validation-select:** added creatable support ([4966487](https://github.com/Availity/availity-react/commit/4966487))
+
+
+
+
+
 ## [4.0.3](https://github.com/Availity/availity-react/compare/@availity/reactstrap-validation-select@4.0.2...@availity/reactstrap-validation-select@4.0.3) (2019-07-19)
 
 **Note:** Version bump only for package @availity/reactstrap-validation-select

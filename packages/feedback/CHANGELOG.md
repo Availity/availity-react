@@ -3,6 +3,99 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [5.0.2](https://github.com/Availity/availity-react/compare/@availity/feedback@5.0.1...@availity/feedback@5.0.2) (2019-08-14)
+
+**Note:** Version bump only for package @availity/feedback
+
+
+
+
+
+## [5.0.1](https://github.com/Availity/availity-react/compare/@availity/feedback@5.0.0...@availity/feedback@5.0.1) (2019-08-13)
+
+**Note:** Version bump only for package @availity/feedback
+
+
+
+
+
+# [5.0.0](https://github.com/Availity/availity-react/compare/@availity/feedback@4.1.21...@availity/feedback@5.0.0) (2019-08-13)
+
+
+### Code Refactoring
+
+* **feedback:** updated feedback to use formik ([ef1919f](https://github.com/Availity/availity-react/commit/ef1919f))
+
+
+### Features
+
+* **select:** add autofill prop ([37d3fba](https://github.com/Availity/availity-react/commit/37d3fba))
+
+
+### BREAKING CHANGES
+
+* **feedback:** availtiy-reactstrap-validation has been swapped out for formik using @availity/form
+
+
+
+
+
+## [4.1.21](https://github.com/Availity/availity-react/compare/@availity/feedback@4.1.20...@availity/feedback@4.1.21) (2019-08-12)
+
+**Note:** Version bump only for package @availity/feedback
+
+
+
+
+
+## [4.1.20](https://github.com/Availity/availity-react/compare/@availity/feedback@4.1.19...@availity/feedback@4.1.20) (2019-08-11)
+
+**Note:** Version bump only for package @availity/feedback
+
+
+
+
+
+## [4.1.19](https://github.com/Availity/availity-react/compare/@availity/feedback@4.1.18...@availity/feedback@4.1.19) (2019-08-08)
+
+**Note:** Version bump only for package @availity/feedback
+
+
+
+
+
+## [4.1.18](https://github.com/Availity/availity-react/compare/@availity/feedback@4.1.17...@availity/feedback@4.1.18) (2019-08-05)
+
+**Note:** Version bump only for package @availity/feedback
+
+
+
+
+
+## [4.1.17](https://github.com/Availity/availity-react/compare/@availity/feedback@4.1.16...@availity/feedback@4.1.17) (2019-08-05)
+
+**Note:** Version bump only for package @availity/feedback
+
+
+
+
+
+## [4.1.16](https://github.com/Availity/availity-react/compare/@availity/feedback@4.1.15...@availity/feedback@4.1.16) (2019-08-02)
+
+**Note:** Version bump only for package @availity/feedback
+
+
+
+
+
+## [4.1.15](https://github.com/Availity/availity-react/compare/@availity/feedback@4.1.14...@availity/feedback@4.1.15) (2019-07-31)
+
+**Note:** Version bump only for package @availity/feedback
+
+
+
+
+
 ## [4.1.14](https://github.com/Availity/availity-react/compare/@availity/feedback@4.1.13...@availity/feedback@4.1.14) (2019-07-23)
 
 **Note:** Version bump only for package @availity/feedback

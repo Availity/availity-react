@@ -1,0 +1,23 @@
+import React from 'react';
+import { storiesOf } from '@storybook/react';
+import { withKnobs } from '@storybook/addon-knobs/react';
+
+import {{pascalCase packageName}} from '@availity/{{kebabCase packageName}}';
+import README from '@availity/{{kebabCase packageName}}/README.md';
+
+storiesOf('TODO|{{pascalCase packageName}}', module)
+  .addParameters({
+    readme: {
+      // Show readme at the addons panel
+      sidebar: README,
+      // eslint-disable-next-line react/prop-types
+      StoryPreview: ({ children }) => <div>{children}</div>,
+    },
+  })
+  .addDecorator(withKnobs)
+  .add('default', () => (
+    <div>
+      <{{pascalCase packageName}} />
+    </div>
+  ));
+

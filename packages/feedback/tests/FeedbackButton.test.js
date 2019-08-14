@@ -1,7 +1,8 @@
 import React from 'react';
-import { render } from '@testing-library/react';
-import '@testing-library/react/cleanup-after-each';
-import FeedbackButton from '../FeedbackButton';
+import { render, cleanup } from '@testing-library/react';
+import FeedbackButton from '../src/FeedbackButton';
+
+afterEach(cleanup);
 
 describe('Feedback', () => {
   test('should render an icon', () => {

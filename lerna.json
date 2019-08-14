@@ -4,7 +4,7 @@
   "packages": [
     "packages/*"
   ],
-  "message": "chore: publish release",
+  "message": "chore: publish release [skip ci]",
   "command": {
     "publish": {
       "conventionalCommits": true
@@ -12,5 +12,6 @@
     "bootstrap": {
       "npmClientArgs": ["--no-package-lock"]
     }
-  }
+  },
+  "hoist":["react","formik"]
 }

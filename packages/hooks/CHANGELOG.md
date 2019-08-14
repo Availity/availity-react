@@ -3,6 +3,27 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.5.1](https://github.com/Availity/availity-react/compare/@availity/hooks@1.5.0...@availity/hooks@1.5.1) (2019-08-13)
+
+**Note:** Version bump only for package @availity/hooks
+
+
+
+
+
+# [1.5.0](https://github.com/Availity/availity-react/compare/@availity/hooks@1.4.0...@availity/hooks@1.5.0) (2019-08-11)
+
+
+### Features
+
+* **hooks:** added storybook story for useCurrentUser ([00277b7](https://github.com/Availity/availity-react/commit/00277b7))
+* **hooks:** added useCurrentUser hook ([8cab508](https://github.com/Availity/availity-react/commit/8cab508))
+* **hooks:** fixed the copy pasta ([d82d5f9](https://github.com/Availity/availity-react/commit/d82d5f9))
+
+
+
+
+
 # [1.4.0](https://github.com/Availity/availity-react/compare/@availity/hooks@1.3.3...@availity/hooks@1.4.0) (2019-07-23)
 
 
