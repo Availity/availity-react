@@ -1,3 +1,3 @@
-import BlockUI from './typings/BlockU';
+import BlockUI from './typings/BlockUI';
 
 export default BlockUI;
