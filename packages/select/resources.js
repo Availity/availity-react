@@ -58,6 +58,7 @@ const AvPatientSelect = ResourceSelect.create({
   valueKey: 'lastName',
   labelKey: 'lastName',
   getResult: data => data.data.patientPagination.items,
+  minCharsToSearch: 3,
   graphqlConfig: {
     type: 'patient',
     query: `query($page: Int, $perPage: Int, $filters: PatientFilters) {

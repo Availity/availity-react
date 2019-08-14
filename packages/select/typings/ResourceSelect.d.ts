@@ -28,6 +28,7 @@ export interface ResourceSelectProps extends SelectFieldProps {
   cacheUniq?: any;
   additional?: object;
   graphqlConfig?: GraphQLConfigType;
+  minCharsToSearch?: number;
 }
 
 declare class ResourceSelect extends React.Component<ResourceSelectProps> {

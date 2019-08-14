@@ -65,6 +65,78 @@ describe('AvResourceSelect', () => {
     );
   });
 
+  it('returns previousOptions when search input is less than minCharsToSearch', async () => {
+    avRegionsApi.postGet
+      .mockResolvedValueOnce({
+        data: {
+          regions: [
+            {
+              id: 'FL',
+              value: 'Florida',
+            },
+          ],
+        },
+      })
+      .mockResolvedValueOnce({
+        data: {
+          regions: [
+            {
+              id: 'GA',
+              value: 'Georgia',
+            },
+          ],
+        },
+      });
+
+    const { container, getByText } = renderSelect({
+      resource: avRegionsApi,
+      labelKey: 'value',
+      valueKey: 'id',
+      classNamePrefix: 'test__regions',
+      getResult: 'regions',
+      minCharsToSearch: 3,
+    });
+
+    const regionsSelect = container.querySelector('.test__regions__control');
+    fireEvent.keyDown(regionsSelect, { key: 'ArrowDown', keyCode: 40 });
+    fireEvent.keyDown(regionsSelect, { key: 'Enter', keyCode: 13 });
+
+    let regionsOption = await waitForElement(() => getByText('Florida'));
+    expect(regionsOption).toBeDefined();
+
+    let selectInput;
+
+    // Should skip network request
+    selectInput = container.querySelector('#react-select-3-input');
+    fireEvent.change(selectInput, {
+      target: { value: 'g' },
+    });
+    regionsOption = await waitForElement(() => getByText('Florida'));
+    expect(regionsOption).toBeDefined();
+
+    // Should skip network request
+    selectInput = container.querySelector('#react-select-3-input');
+    fireEvent.change(selectInput, {
+      target: { value: 'ge' },
+    });
+    regionsOption = await waitForElement(() => getByText('Florida'));
+    expect(regionsOption).toBeDefined();
+
+    // Should make network request
+    selectInput = container.querySelector('#react-select-3-input');
+    fireEvent.change(selectInput, {
+      target: { value: 'geo' },
+    });
+    regionsOption = await waitForElement(() => getByText('Georgia'));
+    expect(regionsOption).toBeDefined();
+
+    expect(avRegionsApi.postGet).toHaveBeenCalledTimes(2);
+    expect(avRegionsApi.postGet.mock.calls[0][0]).toBe('q=&limit=50&offset=0');
+    expect(avRegionsApi.postGet.mock.calls[1][0]).toBe(
+      'q=geo&limit=50&offset=0'
+    );
+  });
+
   it('renders AvPatientSelect options', async () => {
     avWebQLApi.post.mockResolvedValue({
       data: {
