@@ -1,8 +1,8 @@
 import React from 'react';
 import { storiesOf } from '@storybook/react';
 import { boolean } from '@storybook/addon-knobs';
-import README from '@availity/block-ui/README.md';
-import BlockUI from '@availity/block-ui';
+import README from 'react-block-ui/README.md';
+import BlockUI from 'react-block-ui';
 
 storiesOf('Components|BlockUI', module)
   .addParameters({

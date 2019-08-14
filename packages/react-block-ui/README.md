@@ -1,8 +1,8 @@
-# @availity/block-ui
+# react-block-ui
 
 > Easy way to block the user from interacting with your UI.
 
-[![Version](https://img.shields.io/npm/v/@availity/block-ui.svg?style=for-the-badge)](https://www.npmjs.com/package/@availity/block-ui)
+[![Version](https://img.shields.io/npm/v/react-block-ui.svg?style=for-the-badge)](https://www.npmjs.com/package/react-block-ui)
 
 This library contains easy to use components to prevent the user from interacting with the user interface based on some conditions.
 
@@ -11,7 +11,7 @@ There is also a separate component which works with redux to help block and unbl
 ## Installation
 
 ```bash
-npm install @availity/block-ui --save
+npm install react-block-ui --save
 ```
 
 ### Usage

@@ -28,7 +28,7 @@
     "@availity/api-axios": "^5.4.0",
     "@availity/api-core": "^5.4.0",
     "@availity/app-icon": "^1.2.2",
-    "@availity/block-ui": "^2.0.0",
+    "react-block-ui": "^2.0.0",
     "@availity/authorize": "^1.2.1",
     "@availity/avatar": "^0.2.2",
     "@availity/breadcrumbs": "^3.0.3",

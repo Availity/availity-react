@@ -1,5 +1,5 @@
 {
-  "name": "@availity/block-ui",
+  "name": "react-block-ui",
   "version": "2.0.0",
   "author": "Evan Sharp <evan.sharp@availity.com>",
   "description": "Block UI for react",
@@ -25,7 +25,7 @@
     "react-dom": "^16.8.3"
   },
   "peerDependencies": {
-    "react": "^16.3.0"
+    "react": "^16.8.3"
   },
   "dependencies": {
     "classnames": "^2.2.6",
