@@ -48,7 +48,7 @@ const ResourceSelect = ({
         hasMore: false,
         additional: {
           page,
-          limit: rest.itemsPerPage,
+          limit: itemsPerPage,
         },
       };
     }
@@ -58,7 +58,7 @@ const ResourceSelect = ({
     if (graphqlConfig) {
       data = {
         variables: {
-          perPage: rest.itemsPerPage,
+          perPage: itemsPerPage,
           filters: {
             q: encodeURIComponent(inputValue),
             ...rest.parameters,
@@ -72,7 +72,7 @@ const ResourceSelect = ({
     } else {
       params = {
         q: encodeURIComponent(inputValue),
-        limit: rest.itemsPerPage,
+        limit: itemsPerPage,
         customerId: rest.customerId,
         ...rest.parameters,
       };
@@ -81,7 +81,7 @@ const ResourceSelect = ({
       if (graphqlConfig) {
         data.variables.page = page;
       } else {
-        params.offset = (page - 1) * rest.itemsPerPage;
+        params.offset = (page - 1) * itemsPerPage;
       }
     } else {
       page = 1;
