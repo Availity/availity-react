@@ -2,6 +2,7 @@ import React from 'react';
 import { render, cleanup, fireEvent, wait } from '@testing-library/react';
 import { AvForm } from 'availity-reactstrap-validation';
 import { Button } from 'reactstrap';
+import moment from 'moment';
 import { AvDate } from '..';
 
 const onValidSubmit = jest.fn();
@@ -9,8 +10,8 @@ const onInvalidSubmit = jest.fn();
 const onSubmit = jest.fn();
 
 afterEach(() => {
-  cleanup();
   jest.clearAllMocks();
+  cleanup();
 });
 
 const Date = props => (
@@ -60,6 +61,50 @@ describe('AvDate', () => {
     await wait(() => {
       expect(onSubmit).toHaveBeenCalledTimes(1);
       expect(onInvalidSubmit).toHaveBeenCalledTimes(1);
+    });
+  });
+
+  test('works with text input', async () => {
+    const { container, getByText } = render(<Date name="standAlone" />);
+
+    const input = container.querySelector('.DateInput_input');
+
+    fireEvent.change(input, {
+      target: {
+        value: '01/04/1997',
+      },
+    });
+
+    fireEvent.click(getByText('Submit'));
+
+    await wait(() => {
+      expect(onValidSubmit).toHaveBeenCalledWith(
+        expect.anything(),
+        expect.objectContaining({
+          standAlone: '1997-01-04',
+        })
+      );
+    });
+  });
+
+  test('works with date picker', async () => {
+    const { container, getByText } = render(<Date name="standAlone" />);
+
+    const input = container.querySelector('.DateInput_input');
+
+    fireEvent.focus(input);
+
+    fireEvent.click(container.querySelector('.CalendarDay__today'));
+
+    fireEvent.click(getByText('Submit'));
+
+    await wait(() => {
+      expect(onValidSubmit).toHaveBeenCalledWith(
+        expect.anything(),
+        expect.objectContaining({
+          standAlone: moment().format('YYYY-MM-DD'),
+        })
+      );
     });
   });
 });

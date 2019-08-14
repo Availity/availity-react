@@ -47,4 +47,29 @@ describe('AvDateRange', () => {
 
     await waitForElement(() => getByText('Date must come after value'));
   });
+
+  test('display label with grid', async () => {
+    const { getByText } = render(
+      <DateRange
+        name="standAlone"
+        start={{
+          name: 'date.start',
+          value: '01/01/2001',
+        }}
+        end={{
+          name: 'date.end',
+          value: '01/04/2001',
+        }}
+        label="Date Range Field"
+        grid={{
+          xs: 12,
+          md: 6,
+        }}
+      />
+    );
+
+    const label = getByText('Date Range Field');
+
+    expect(label.className).toContain('col-md-6');
+  });
 });
