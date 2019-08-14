@@ -50,7 +50,8 @@ const Select = ({
     { onChange, value: fieldValue, ...field },
     { touched, error: hasError },
   ] = useField(name);
-  const { values, setFieldValue } = useFormikContext();
+  const { values, setFieldValue, initialValues } = useFormikContext();
+
   const [newOptions, setNewOptions] = useState([]);
 
   const getOptionLabel = option => {
@@ -148,9 +149,13 @@ const Select = ({
           if (shouldAutofillField) {
             let val;
             if (typeof autofill === 'object') {
-              val = get(rawValue, `${autofill[fieldName]}`);
+              val = get(
+                rawValue,
+                `${autofill[fieldName]}`,
+                initialValues[fieldName]
+              );
             } else {
-              val = rawValue[fieldName];
+              val = get(rawValue, fieldName, initialValues[fieldName]);
             }
             valuesToSet[fieldName] = true;
             await setFieldValue(fieldName, val);
