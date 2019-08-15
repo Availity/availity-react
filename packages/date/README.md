@@ -5,7 +5,7 @@
 ## Installation
 
 ```bash
-npm install @availity/date @availity/form formik react reactstrap --save
+npm install @availity/date @availity/form formik@^2.0.1-rc.5 react reactstrap --save
 ```
 
 ## Validation
