@@ -5,7 +5,8 @@ module.exports = {
     '/node_modules/',
     '/coverage/',
     '/dist/',
-    '/packages/docs/'
+    '/packages/docs/',
+    '/packages/feature/bin.js',
   ],
   transformIgnorePatterns: [
     '[/\\\\]node_modules[/\\\\](?!@availity).+\\.(js|jsx)$',
