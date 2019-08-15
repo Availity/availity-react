@@ -7,7 +7,7 @@
 ## Installation
 
 ```bash
-npm install @availity/spaces reactstrap --save
+npx install-peerdeps @availity/spaces --save
 ```
 
 ## Spaces (Default export)
