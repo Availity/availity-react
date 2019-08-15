@@ -8,6 +8,7 @@ import {
 } from '@testing-library/react';
 import { avSettingsApi } from '@availity/api-axios';
 import avMessages from '@availity/message-core';
+import maxFavorites from './maxFavorites';
 import Favorites, { FavoriteHeart } from '..';
 
 jest.mock('@availity/api-axios');
@@ -50,7 +51,6 @@ avMessages.subscribe = jest.fn((event, fn) => {
         data = JSON.parse(data);
       } catch (error) {
         // eslint-disable-next-line no-console
-        console.error(error);
       }
     }
 
@@ -343,5 +343,37 @@ describe('FavoriteHeart', () => {
 
       expect(tooltip.textContent).toContain('Add to My Favorites');
     }, 2000);
+  });
+
+  test('should call max modal when at max favorites', async () => {
+    avSettingsApi.getApplication = jest.fn(() =>
+      Promise.resolve({
+        data: {
+          settings: [
+            {
+              favorites: maxFavorites,
+            },
+          ],
+        },
+      })
+    );
+    const { container, getByText } = render(
+      <Favorites>
+        <FavoriteHeart id="123" />
+      </Favorites>
+    );
+
+    const heart = container.querySelector('#av-favorite-heart-123');
+
+    expect(heart).toBeDefined();
+
+    await waitForElement(() => getByText('This item is not favorited.'));
+
+    fireEvent.click(heart);
+
+    await wait(() => {
+      expect(avMessages.send).toHaveBeenCalledTimes(1);
+      expect(avMessages.send.mock.calls[0][0]).toBe('av:favorites:maxed');
+    });
   });
 });
