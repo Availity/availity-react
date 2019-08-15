@@ -7,7 +7,7 @@
 ## Installation
 
 ```bash
-npm install @availity/reactstrap-validation-select availity-reactstrap-validation reactstrap react --save
+npx install-peerdeps @availity/reactstrap-validation-select --save
 ```
 
 ### Usage
