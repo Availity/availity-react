@@ -31,9 +31,18 @@
   "devDependencies": {
     "formik": "^2.0.1-rc.12",
     "react": "^16.8.3",
-    "react-dom": "^16.8.3"
+    "react-dom": "^16.8.3",
+    "@availity/api-axios": "^5.4.0",
+    "@availity/api-core": "^5.4.0",
+    "@availity/localstorage-core": "^2.6.1",
+    "axios": "^0.18.0"
   },
   "peerDependencies": {
-    "react": "^16.3.0"
+    "react": "^16.8.3",
+    "react-dom": "^16.8.3",
+    "@availity/api-axios": "^5.4.0",
+    "@availity/api-core": "^5.4.0",
+    "@availity/localstorage-core": "^2.6.1",
+    "axios": "^0.18.0"
   }
 }

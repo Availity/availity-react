@@ -7,7 +7,7 @@
 ## Installation
 
 ```bash
-npm install @availity/page-header --save
+npm install-peerdeps @availity/page-header --save
 ```
 
 ### Usage
