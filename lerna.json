@@ -13,5 +13,5 @@
       "npmClientArgs": ["--no-package-lock"]
     }
   },
-  "hoist":["react","formik"]
+  "hoist":["react","formik","@availity/api-axios"]
 }
