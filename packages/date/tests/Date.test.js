@@ -38,6 +38,39 @@ describe('Date', () => {
     });
   });
 
+  test('renders calls on change', async () => {
+    const onSubmit = jest.fn();
+    const onChange = jest.fn();
+
+    const { container } = render(
+      <Form
+        initialValues={{
+          singleDate: '',
+        }}
+        onSubmit={onSubmit}
+      >
+        <FormikDate
+          name="singleDate"
+          data-testid="single-select"
+          onChange={onChange}
+        />
+        <Button type="submit">Submit</Button>
+      </Form>
+    );
+
+    const input = container.querySelector('.DateInput_input');
+
+    fireEvent.change(input, {
+      target: {
+        value: '01/04/1997',
+      },
+    });
+
+    await wait(() => {
+      expect(onChange.mock.calls[0][0]).toBe('1997-01-04');
+    });
+  });
+
   test('works with text input', async () => {
     const onSubmit = jest.fn();
 
