@@ -239,6 +239,17 @@ describe('Spaces', () => {
       expect(avSlotMachineApi.create).toHaveBeenCalledTimes(2);
       expect(avSlotMachineApi.create.mock.calls[1][0].variables.page).toBe(2);
     });
+
+    it('should throw error when missing clientId', async () => {
+      let message = false;
+      try {
+        await getAllSpaces('query');
+      } catch (error) {
+        const { message: mess } = error;
+        message = mess;
+      }
+      expect(message).toBe('clientId is required');
+    });
   });
 
   describe('sanitizeSpaces', () => {
