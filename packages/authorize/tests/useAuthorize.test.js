@@ -145,6 +145,16 @@ describe('useAuthorize', () => {
     await waitForElement(() => getByText('You have permission to see this'));
   });
 
+  test('should render authorized with no region', async () => {
+    const { getByText } = render(
+      <Component permissions="1234" region={false} organizationId="1111">
+        You have permission to see this
+      </Component>
+    );
+
+    await waitForElement(() => getByText('You have permission to see this'));
+  });
+
   test('should render unauthorized with region', async () => {
     avUserPermissionsApi.getPermissions.mockResolvedValue([]);
     const { getByText } = render(
