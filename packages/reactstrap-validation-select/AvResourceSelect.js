@@ -7,6 +7,12 @@ import AvSelect from './AvSelect';
 import AvSelectField from './AvSelectField';
 
 class AvResourceSelect extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {};
+    this.state.previousOptions = [];
+  }
+
   static propTypes = {
     requestConfig: PropTypes.object,
     resource: PropTypes.shape({
@@ -33,6 +39,7 @@ class AvResourceSelect extends Component {
       type: PropTypes.string,
       query: PropTypes.string,
     }),
+    minCharsToSearch: PropTypes.number,
   };
 
   static defaultProps = {
@@ -45,6 +52,23 @@ class AvResourceSelect extends Component {
   loadOptions = (...args) => {
     const [inputValue, , additional = {}] = args;
     let { page } = additional;
+
+    const shouldReturnPreviousOptions =
+      inputValue.length > 0 &&
+      this.props.minCharsToSearch !== undefined &&
+      inputValue.length < this.props.minCharsToSearch;
+
+    if (shouldReturnPreviousOptions) {
+      return {
+        options: this.state.previousOptions,
+        hasMore: false,
+        additional: {
+          page,
+          limit: this.props.itemsPerPage,
+        },
+      };
+    }
+
     let data;
     let params;
     if (this.props.graphqlConfig) {
@@ -162,6 +186,7 @@ class AvResourceSelect extends Component {
             `Expected data to be an array but got \`${typeof items}\`. Use the \`getData\` prop to specify how to get the data from the API response.`
           );
         }
+        this.setState({ previousOptions: items });
 
         return {
           options: items,

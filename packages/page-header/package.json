@@ -1,6 +1,6 @@
 {
   "name": "@availity/page-header",
-  "version": "4.5.0",
+  "version": "5.0.4",
   "author": "Evan Sharp <evan.sharp@availity.com>",
   "description": "The standard page header for Availity Portal Applications",
   "main": "index.js",
@@ -22,7 +22,7 @@
   "dependencies": {
     "@availity/app-icon": "^1.2.2",
     "@availity/breadcrumbs": "^3.0.3",
-    "@availity/feedback": "^5.0.0",
+    "@availity/feedback": "^5.0.4",
     "@availity/payer-logo": "^3.1.5",
     "@availity/spaces": "^2.0.6",
     "@availity/training-link": "^1.1.7",
@@ -35,7 +35,8 @@
     "@availity/api-axios": "^5.4.0",
     "@availity/api-core": "^5.4.0",
     "@availity/localstorage-core": "^2.6.1",
-    "axios": "^0.18.0"
+    "axios": "^0.18.0",        
+    "yup": "^0.27.0"
   },
   "peerDependencies": {
     "react": "^16.8.3",
@@ -43,6 +44,8 @@
     "@availity/api-axios": "^5.4.0",
     "@availity/api-core": "^5.4.0",
     "@availity/localstorage-core": "^2.6.1",
-    "axios": "^0.18.0"
+    "axios": "^0.18.0",
+    "formik": "^2.0.1-rc.12",
+    "yup": "^0.27.0"
   }
 }
