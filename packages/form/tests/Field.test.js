@@ -23,6 +23,31 @@ describe('Field', () => {
     getByText('Hello Label');
   });
 
+  test('renders with grid', () => {
+    const { getByText } = render(
+      <Form
+        initialValues={{
+          hello: 'hello',
+        }}
+        onSubmit={() => {}}
+      >
+        <Field
+          name="hello"
+          label="Hello Label"
+          data-testid="hello-input"
+          grid={{
+            xs: 12,
+            md: 6,
+          }}
+        />
+      </Form>
+    );
+
+    const label = getByText('Hello Label');
+
+    expect(label.className).toContain('col-md-6');
+  });
+
   test('should render help message', () => {
     const { getByText } = render(
       <Form
