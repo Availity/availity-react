@@ -1,5 +1,5 @@
 import React from 'react';
-import { render, cleanup } from '@testing-library/react';
+import { render, cleanup, wait } from '@testing-library/react';
 import { useTimeout } from '..';
 
 afterEach(cleanup);
@@ -18,11 +18,11 @@ describe('useTimeout', () => {
     expect(getByTestId('timeout-test').textContent).toEqual('False');
   });
 
-  test('should render "True"', () => {
+  test('should render "True"', async () => {
     const { getByTestId } = render(<Component />);
 
-    setTimeout(() => {
+    await wait(() => {
       expect(getByTestId('timeout-test').textContent).toEqual('True');
-    }, 1100);
+    });
   });
 });
