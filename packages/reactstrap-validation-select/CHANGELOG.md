@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [4.4.1](https://github.com/Availity/availity-react/compare/@availity/reactstrap-validation-select@4.4.0...@availity/reactstrap-validation-select@4.4.1) (2019-08-15)
+
+
+### Bug Fixes
+
+* **reactstrap-validation-select:** set field value to default value on autofill when new value undefined ([453ebef](https://github.com/Availity/availity-react/commit/453ebef))
+
+
+
+
+
 # [4.4.0](https://github.com/Availity/availity-react/compare/@availity/reactstrap-validation-select@4.3.0...@availity/reactstrap-validation-select@4.4.0) (2019-08-14)
 
 
