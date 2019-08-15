@@ -19,6 +19,9 @@ lerna publish -c
 
 ### Adding a New Package
 
+1. 
 ```bash
-npm run new
+$ npm run new
 ```
+
+2. Add link to new package in README

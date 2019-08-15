@@ -1,13 +1,13 @@
 # @availity/form
 
-> Availity form components that are wired to be hooked up to Formik
+> Availity form components that are wired to be hooked up to [formik](https://github.com/jaredpalmer/formik)
 
 [![Version](https://img.shields.io/npm/v/@availity/form.svg?style=for-the-badge)](https://www.npmjs.com/package/@availity/form)
 
 ## Installation
 
 ```bash
-npm install @availity/form formik react reactstrap --save
+npm install @availity/form formik@^2.0.1-rc.5 react reactstrap --save
 ```
 
 ## Validation

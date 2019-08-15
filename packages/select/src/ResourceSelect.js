@@ -1,4 +1,4 @@
-import React, { useRef } from 'react';
+import React, { useRef, useState } from 'react';
 import PropTypes from 'prop-types';
 import qs from 'qs';
 import get from 'lodash.get';
@@ -17,11 +17,13 @@ const ResourceSelect = ({
   onPageChange,
   hasMore,
   graphqlConfig,
+  minCharsToSearch,
   ...rest
 }) => {
   let _cacheUniq = cacheUniq;
 
   const selectRef = useRef();
+  const [previousOptions, setPreviousOptions] = useState([]);
 
   if (_cacheUniq === undefined && watchParams && selectRef.current) {
     const params = {
@@ -34,12 +36,29 @@ const ResourceSelect = ({
   const loadOptions = (...args) => {
     const [inputValue, , additional = {}] = args;
     let { page } = additional;
+
+    const shouldReturnPreviousOptions =
+      inputValue.length > 0 &&
+      minCharsToSearch !== undefined &&
+      inputValue.length < minCharsToSearch;
+
+    if (shouldReturnPreviousOptions) {
+      return {
+        options: previousOptions,
+        hasMore: false,
+        additional: {
+          page,
+          limit: itemsPerPage,
+        },
+      };
+    }
+
     let data;
     let params;
     if (graphqlConfig) {
       data = {
         variables: {
-          perPage: rest.itemsPerPage,
+          perPage: itemsPerPage,
           filters: {
             q: encodeURIComponent(inputValue),
             ...rest.parameters,
@@ -53,7 +72,7 @@ const ResourceSelect = ({
     } else {
       params = {
         q: encodeURIComponent(inputValue),
-        limit: rest.itemsPerPage,
+        limit: itemsPerPage,
         customerId: rest.customerId,
         ...rest.parameters,
       };
@@ -62,7 +81,7 @@ const ResourceSelect = ({
       if (graphqlConfig) {
         data.variables.page = page;
       } else {
-        params.offset = (page - 1) * rest.itemsPerPage;
+        params.offset = (page - 1) * itemsPerPage;
       }
     } else {
       page = 1;
@@ -145,6 +164,7 @@ const ResourceSelect = ({
             `Expected data to be an array but got \`${typeof items}\`. Use the \`getData\` prop to specify how to get the data from the API response.`
           );
         }
+        setPreviousOptions(items);
 
         return {
           options: items,
@@ -196,6 +216,7 @@ ResourceSelect.propTypes = {
   isDisabled: PropTypes.bool,
   requiredParams: PropTypes.array,
   watchParams: PropTypes.array,
+  minCharsToSearch: PropTypes.number,
   // eslint-disable-next-line react/forbid-prop-types
   cacheUniq: PropTypes.any,
   additional: PropTypes.object,

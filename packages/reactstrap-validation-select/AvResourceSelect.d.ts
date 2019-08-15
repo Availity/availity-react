@@ -27,6 +27,7 @@ export interface AvResourceSelectProps {
     cacheUniq?: any;
     additional?: object;
     graphqlConfig?: GraphQLConfigType;
+    minCharsToSearch?: number;
 }
 
 declare const AvResourceSelect: React.ComponentType<AvResourceSelectProps>;
