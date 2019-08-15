@@ -209,9 +209,13 @@ class AvSelect extends AvBaseInput {
 
             let val;
             if (typeof this.props.autofill === 'object') {
-              val = get(rawValue, `${this.props.autofill[fieldName]}`);
+              val = get(
+                rawValue,
+                `${this.props.autofill[fieldName]}`,
+                input.getDefaultValue()
+              );
             } else {
-              val = rawValue[fieldName];
+              val = get(rawValue, fieldName, input.getDefaultValue());
             }
 
             input.onChangeHandler(val);
