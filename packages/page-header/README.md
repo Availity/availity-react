@@ -7,7 +7,7 @@
 ## Installation
 
 ```bash
-npm install-peerdeps @availity/page-header --save
+npx install-peerdeps @availity/page-header --save
 ```
 
 ### Usage
@@ -16,7 +16,7 @@ npm install-peerdeps @availity/page-header --save
 import React from 'react';
 import PageHeader from '@availity/page-header';
 // ...
-<PageHeader appName="Applicaiton Name" />
+<PageHeader appName="Application Name" />
 // ...
 ```
 
