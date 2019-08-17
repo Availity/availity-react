@@ -1,9 +1,16 @@
 import React from 'react';
-import { render, cleanup } from '@testing-library/react';
+import { render, cleanup, waitForElement } from '@testing-library/react';
 import TrainingLink from '@availity/training-link';
+import { avSlotMachineApi } from '@availity/api-axios';
+import Spaces from '@availity/spaces';
 import PageHeader from '..';
 
-afterEach(cleanup);
+jest.mock('@availity/api-axios');
+
+afterEach(() => {
+  jest.clearAllMocks();
+  cleanup();
+});
 
 describe('PageHeader', () => {
   test('should render', () => {
@@ -74,5 +81,64 @@ describe('PageHeader', () => {
     );
 
     getByText('Watch a demo');
+  });
+
+  describe('spaces', () => {
+    test('should work with spaceId', async () => {
+      avSlotMachineApi.create.mockResolvedValue({
+        data: {
+          data: {
+            spaces: {
+              totalCount: 1,
+              page: 1,
+              perPage: 1,
+              spaces: [{ id: '1', name: 'My Space' }],
+            },
+          },
+        },
+      });
+      const { getByText } = render(
+        <Spaces spaceIds={['1']} clientId="my-client-id">
+          <PageHeader appName="Payer Space" spaceId="1" />
+        </Spaces>
+      );
+
+      await waitForElement(() => getByText('My Space'));
+    });
+
+    test('should work with payerId', async () => {
+      avSlotMachineApi.create.mockResolvedValue({
+        data: {
+          data: {
+            spaces: {
+              totalCount: 1,
+              page: 1,
+              perPage: 1,
+              spaces: [
+                {
+                  id: 'payer1',
+                  name: 'My Space',
+                  payerIDs: ['payer1'],
+
+                  images: [
+                    {
+                      name: 'logo',
+                      value: '/static/spaces/payer1/logo.png',
+                    },
+                  ],
+                },
+              ],
+            },
+          },
+        },
+      });
+      const { getByTestId } = render(
+        <Spaces payerIds={['payer1']} clientId="my-client-id">
+          <PageHeader appName="Payer Space" payerId="payer1" />
+        </Spaces>
+      );
+
+      await waitForElement(() => getByTestId('space-logo-payer1'));
+    });
   });
 });

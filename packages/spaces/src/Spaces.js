@@ -13,31 +13,27 @@ export const getAllSpaces = async (
     throw new Error('clientId is required');
   }
 
-  try {
-    const {
-      data: {
-        data: { spaces },
-      },
-    } = await avSlotMachineApi.create(
-      {
-        query,
-        variables,
-      },
-      { headers: { 'X-Client-ID': clientId } }
-    );
+  const {
+    data: {
+      data: { spaces },
+    },
+  } = await avSlotMachineApi.create(
+    {
+      query,
+      variables,
+    },
+    { headers: { 'X-Client-ID': clientId } }
+  );
 
-    const { totalCount, page, perPage } = spaces;
-    const unionedSpaces = _spaces.concat(spaces.spaces);
+  const { totalCount, page, perPage } = spaces;
+  const unionedSpaces = _spaces.concat(spaces.spaces);
 
-    if (totalCount > page * perPage) {
-      const vars = { ...variables, page: page + 1 };
-      return getAllSpaces(query, clientId, vars, unionedSpaces);
-    }
-
-    return unionedSpaces;
-  } catch (error) {
-    throw error;
+  if (totalCount > page * perPage) {
+    const vars = { ...variables, page: page + 1 };
+    return getAllSpaces(query, clientId, vars, unionedSpaces);
   }
+
+  return unionedSpaces;
 };
 
 export const sanitizeSpaces = spaces => {

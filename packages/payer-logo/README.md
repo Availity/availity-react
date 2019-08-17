@@ -9,7 +9,7 @@ Easy to use component to display the payer&#x27;s logo given the payer&#x27;s ID
 ## Installation
 
 ```bash
-npm install @availity/payer-logo --save
+npx install-peerdeps @availity/payer-logo --save
 ```
 
 ### Usage

@@ -6,28 +6,33 @@ afterEach(cleanup);
 
 describe('ListGroupItem', () => {
   test('should render', () => {
-    const { container } = render(<ListGroupItem />);
+    const { getByTestId } = render(<ListGroupItem />);
 
-    expect(container).toMatchSnapshot();
+    getByTestId('list-group-item-id');
   });
 
   test('should render color', () => {
-    const { container } = render(<ListGroupItem color="success" />);
+    const { getByTestId } = render(<ListGroupItem color="success" />);
 
-    expect(container).toMatchSnapshot();
+    const el = getByTestId('list-group-item-id');
+    expect(el.className).toContain('list-group-item-success');
   });
 
   test('should render border color', () => {
-    const { container } = render(<ListGroupItem borderColor="success" />);
+    const { getByTestId } = render(<ListGroupItem borderColor="success" />);
 
-    expect(container).toMatchSnapshot();
+    const el = getByTestId('list-group-item-id');
+    expect(el.className).toBe('success list-group-item');
   });
 
   test('should render border color and color', () => {
-    const { container } = render(
+    const { getByTestId } = render(
       <ListGroupItem borderColor="success" color="success" />
     );
 
-    expect(container).toMatchSnapshot();
+    const el = getByTestId('list-group-item-id');
+    expect(el.className).toBe(
+      'success list-group-item-success list-group-item'
+    );
   });
 });

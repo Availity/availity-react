@@ -1,7 +1,7 @@
-import Wizard from './Wizard';
-import WizardStep from './WizardStep';
-import WizardStepBadge from './WizardStepBadge';
-import WizardStepTitle from './WizardStepTitle';
+import Wizard from './typings/Wizard';
+import WizardStep from './typings/WizardStep';
+import WizardStepBadge from './typings/WizardStepBadge';
+import WizardStepTitle from './typings/WizardStepTitle';
 
 export default Wizard;
 

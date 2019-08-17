@@ -20,19 +20,23 @@
     "access": "public"
   },
   "dependencies": {
-    "@availity/api-axios": "^5.1.5",
-    "@availity/api-core": "^5.1.5",
     "@availity/hooks": "^1.5.1",
-    "@availity/localstorage-core": "^2.6.1",
-    "axios": "^0.18.0",
     "lodash.get": "^4.4.2",
     "prop-types": "^15.5.8"
   },
   "devDependencies": {
     "react": "^16.8.3",
-    "react-dom": "^16.8.3"
+    "react-dom": "^16.8.3",
+    "@availity/api-axios": "^5.4.0",
+    "@availity/api-core": "^5.4.0",
+    "@availity/localstorage-core": "^2.6.1",
+    "axios": "^0.18.0"
   },
   "peerDependencies": {
-    "react": "^16.8.3"
+    "react": "^16.8.3",
+    "@availity/api-axios": "^5.1.5",
+    "@availity/api-core": "^5.1.5",
+    "@availity/localstorage-core": "^2.6.1",
+    "axios": "^0.18.0"
   }
 }

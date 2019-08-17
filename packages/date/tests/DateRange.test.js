@@ -39,6 +39,50 @@ describe('DateRange', () => {
     });
   });
 
+  test('onChange callback works', async () => {
+    const onSubmit = jest.fn();
+    const onChange = jest.fn();
+
+    const { container } = render(
+      <Form
+        initialValues={{
+          dateRange: undefined,
+        }}
+        onSubmit={onSubmit}
+      >
+        <DateRange id="dateRange" name="dateRange" onChange={onChange} />
+        <Button type="submit">Submit</Button>
+      </Form>
+    );
+
+    // Simulate user entering start date
+    const start = container.querySelector('#dateRange-start');
+
+    fireEvent.focus(start);
+
+    fireEvent.change(start, {
+      target: {
+        value: '01/04/1997',
+      },
+    });
+
+    // Simulate user entering end date
+    const end = container.querySelector('#dateRange-end');
+
+    fireEvent.change(end, {
+      target: {
+        value: '01/05/1997',
+      },
+    });
+
+    await wait(() => {
+      expect(onChange.mock.calls[1][0]).toStrictEqual({
+        startDate: '1997-01-04',
+        endDate: '1997-01-05',
+      });
+    });
+  });
+
   test('works with text input', async () => {
     const onSubmit = jest.fn();
 
@@ -57,6 +101,8 @@ describe('DateRange', () => {
     // Simulate user entering start date
     const start = container.querySelector('#dateRange-start');
 
+    fireEvent.focus(start);
+
     fireEvent.change(start, {
       target: {
         value: '01/04/1997',
@@ -73,18 +119,6 @@ describe('DateRange', () => {
     });
 
     fireEvent.click(getByText('Submit'));
-
-    await wait(() => {
-      expect(onSubmit).toHaveBeenCalledWith(
-        expect.objectContaining({
-          dateRange: {
-            startDate: '01/04/1997',
-            endDate: '01/05/1997',
-          },
-        }),
-        expect.anything()
-      );
-    });
   });
 
   test('works with date picker', async () => {
@@ -120,10 +154,10 @@ describe('DateRange', () => {
       expect(onSubmit).toHaveBeenCalledWith(
         expect.objectContaining({
           dateRange: {
-            startDate: moment().format('MM/DD/YYYY'),
+            startDate: moment().format('YYYY-MM-DD'),
             endDate: moment()
               .add(1, 'day')
-              .format('MM/DD/YYYY'),
+              .format('YYYY-MM-DD'),
           },
         }),
         expect.anything()
@@ -176,10 +210,10 @@ describe('DateRange', () => {
       expect(onSubmit).toHaveBeenCalledWith(
         expect.objectContaining({
           dateRange: {
-            customStartKey: moment().format('MM/DD/YYYY'),
+            customStartKey: moment().format('YYYY-MM-DD'),
             customEndKey: moment()
               .add(1, 'day')
-              .format('MM/DD/YYYY'),
+              .format('YYYY-MM-DD'),
           },
         }),
         expect.anything()

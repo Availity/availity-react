@@ -1,8 +1,7 @@
 import React from 'react';
 import { render, waitForElement, cleanup } from '@testing-library/react';
 import { avSlotMachineApi } from '@availity/api-axios';
-
-import PayerLogo from '../PayerLogo';
+import PayerLogo, { getLogo } from '../PayerLogo';
 
 jest.mock('@availity/api-axios');
 
@@ -104,5 +103,25 @@ describe('PayerLogo', () => {
     );
 
     expect(container).toMatchSnapshot();
+  });
+
+  test('should throw error on missing clientId', async () => {
+    let message;
+    try {
+      await getLogo();
+    } catch (error) {
+      const { message: mess } = error;
+      message = mess;
+    }
+
+    expect(message).toBe('clientId is required');
+  });
+
+  test('should return error on rejected promise', async () => {
+    avSlotMachineApi.create.mockRejectedValue('This field was rejected');
+
+    const response = await getLogo(null, '3', 'test-client-id');
+
+    expect(response).toBe('This field was rejected');
   });
 });

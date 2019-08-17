@@ -25,7 +25,10 @@ const PageHeader = ({
   ...props
 }) => {
   const { space: spaceForSpaceID } = useSpace(spaceId);
-  const { space: spaceForPayerID } = useSpace(payerId);
+  const { space: spaceForPayerID, loading: spaceForPayerIDLoading } = useSpace(
+    payerId
+  );
+
   const _space = spaceForSpaceID || spaceForPayerID;
 
   let payerLogo = null;
@@ -39,17 +42,18 @@ const PageHeader = ({
         height: '100%',
       },
     };
-    payerLogo = spaceForPayerID ? (
-      <SpacesLogo {...logoAttrs} />
-    ) : (
-      <Spaces
-        spaceIds={spaceId ? [spaceId] : undefined}
-        payerIds={[payerId]}
-        clientId={clientId}
-      >
+    payerLogo =
+      spaceForPayerID || spaceForPayerIDLoading ? (
         <SpacesLogo {...logoAttrs} />
-      </Spaces>
-    );
+      ) : (
+        <Spaces
+          spaceIds={spaceId ? [spaceId] : undefined}
+          payerIds={[payerId]}
+          clientId={clientId}
+        >
+          <SpacesLogo {...logoAttrs} />
+        </Spaces>
+      );
   }
 
   const _spaceName = spaceName || (_space && _space.name);

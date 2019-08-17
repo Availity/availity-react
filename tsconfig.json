@@ -21,6 +21,7 @@
       "@availity/list-group-item": ["./list-group-item"],
       "@availity/page-header": ["./page-header"],
       "@availity/payer-logo": ["./payer-logo"],
+      "@availity/spaces": ["./spaces"],
       "@availity/reactstrap-validation-date": ["./reactstrap-validation-date"],
       "@availity/reactstrap-validation-select": ["./reactstrap-validation-select"],
       "@availity/training-link": ["./training-link"],

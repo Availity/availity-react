@@ -5,7 +5,8 @@ module.exports = {
     '/node_modules/',
     '/coverage/',
     '/dist/',
-    '/packages/docs/'
+    '/packages/docs/',
+    '/packages/feature/bin.js',
   ],
   transformIgnorePatterns: [
     '[/\\\\]node_modules[/\\\\](?!@availity).+\\.(js|jsx)$',
@@ -15,4 +16,7 @@ module.exports = {
     '^.+\\.css$': `${require.resolve('./jest/css.js')}`,
     '^(?!.*\\.(js|jsx|css|json)$)': `${require.resolve('./jest/file.js')}`,
   },
+  roots: [
+    'packages/',
+  ],
 };

@@ -7,7 +7,7 @@
 ## Installation
 
 ```bash
-npm install @availity/feedback --save
+npx install-peerdeps @availity/feedback --save
 ```
 
 ### Usage

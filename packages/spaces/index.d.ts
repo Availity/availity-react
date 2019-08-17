@@ -7,6 +7,9 @@ export default Spaces;
 
 export {
     SpacesImage,
+    SpacesImage as SpacesLogo,
+    SpacesImage as SpacesBillboard,
+    SpacesImage as SpacesTile,
     SpacesDisclaimer,
     SpacesAgreement
 };

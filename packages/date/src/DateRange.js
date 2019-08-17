@@ -176,7 +176,7 @@ AvDateRange.propTypes = {
 
 AvDateRange.defaultProps = {
   calendarIcon: <Icon name="calendar" />,
-  format: 'MM/DD/YYYY',
+  format: isoDateFormat,
   startKey: 'startDate',
   endKey: 'endDate',
   datepicker: true,

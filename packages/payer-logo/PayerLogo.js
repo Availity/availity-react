@@ -51,12 +51,12 @@ const fetchLogo = async (query, variables, path, clientId) => {
   }
 };
 
-const getLogo = async (spaceId, payerId, clientId) => {
-  try {
-    if (!clientId) {
-      throw new Error('clientId is required');
-    }
+export const getLogo = async (spaceId, payerId, clientId) => {
+  if (!clientId) {
+    throw new Error('clientId is required');
+  }
 
+  try {
     let url;
     if (spaceId) {
       const variables = { id: spaceId };

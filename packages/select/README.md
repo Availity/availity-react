@@ -5,7 +5,7 @@
 ## Installation
 
 ```bash
-npm install @availity/select @availity/api-axios @availity/api-core @availity/form formik@^2.0.1-rc.5 react reactstrap --save
+npx install-peerdeps @availity/select --save
 ```
 
 ## Validation

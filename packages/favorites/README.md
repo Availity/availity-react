@@ -7,7 +7,7 @@
 ## Installation
 
 ```bash
-npm install @availity/favorites --save
+npx install-peerdeps @availity/favorites --save
 ```
 
 ### Usage

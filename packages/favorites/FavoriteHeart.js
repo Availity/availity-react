@@ -5,7 +5,7 @@ import { Tooltip } from 'reactstrap';
 import { useFavorites } from './FavoritesContext';
 
 // eslint-disable-next-line react-hooks/exhaustive-deps
-const FavoriteHeart = ({ id, onChange, ...props }) => {
+const FavoriteHeart = ({ id, onChange, onMouseDown, ...props }) => {
   const [isFavorite, toggleFavorite] = useFavorites(id);
   const [tooltipOpen, toggleTooltip] = useToggle(false);
   const [loading, toggleLoading] = useToggle(true);
@@ -20,7 +20,12 @@ const FavoriteHeart = ({ id, onChange, ...props }) => {
         {...props}
         tabIndex="0"
         className={`favorite-heart pt-4 ${isFavorite && 'active'}`}
-        onMouseDown={e => e.preventDefault()}
+        onMouseDown={e => {
+          e.preventDefault();
+          if (onMouseDown) {
+            onMouseDown(e);
+          }
+        }}
         onKeyPress={() => {}}
         onClick={() => {
           toggleFavorite();
@@ -41,15 +46,12 @@ const FavoriteHeart = ({ id, onChange, ...props }) => {
         <span className="icon selected-filled" />
       </span>
     ),
-    [id, isFavorite, onChange, props, toggleFavorite]
+    [id, isFavorite, onChange, onMouseDown, props, toggleFavorite]
   );
 
-  useEffectAsync(
-    async () => {
-      toggleLoading(false);
-    },
-    [id]
-  );
+  useEffectAsync(async () => {
+    toggleLoading(false);
+  }, [id]);
 
   return (
     !loading && (
@@ -57,6 +59,7 @@ const FavoriteHeart = ({ id, onChange, ...props }) => {
         {icon}
         <Tooltip
           id={`av-favorite-heart-${id}-tooltip`}
+          data-testid={`av-favorite-heart-${id}-tooltip`}
           placement="top"
           trigger="hover"
           delay={{

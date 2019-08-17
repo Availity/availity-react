@@ -21,12 +21,8 @@
   },
   "dependencies": {
     "@availity/analytics-core": "^2.6.0",
-    "@availity/api-axios": "^5.0.0",
-    "@availity/api-core": "^5.0.0",
     "@availity/hooks": "^1.5.1",
-    "@availity/localstorage-core": "^2.6.1",
     "@availity/message-core": "^4.0.1",
-    "axios": "^0.18.0",
     "lodash.clone": "^4.5.0",
     "lodash.findwhere": "^3.1.0",
     "lodash.get": "^4.4.2",
@@ -39,10 +35,18 @@
   "devDependencies": {
     "react": "^16.8.3",
     "react-dom": "^16.8.3",
-    "reactstrap": "^8.0.0"
+    "reactstrap": "^8.0.0",
+    "@availity/api-axios": "^5.4.0",
+    "@availity/api-core": "^5.4.0",
+    "@availity/localstorage-core": "^2.6.1",
+    "axios": "^0.18.0"
   },
   "peerDependencies": {
     "react": "^16.8.0",
-    "reactstrap": "^8.0.0 || ^7.1.0"
+    "reactstrap": "^8.0.0 || ^7.1.0",
+    "@availity/api-axios": "^5.4.0",
+    "@availity/api-core": "^5.0.0",
+    "@availity/localstorage-core": "^2.6.1",
+    "axios": "^0.18.0"
   }
 }
