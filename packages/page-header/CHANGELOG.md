@@ -3,6 +3,22 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [6.0.0](https://github.com/Availity/availity-react/compare/@availity/page-header@5.0.4...@availity/page-header@6.0.0) (2019-08-19)
+
+
+### Code Refactoring
+
+* **page-header:** made api resources peer dep ([66e136a](https://github.com/Availity/availity-react/commit/66e136a))
+
+
+### BREAKING CHANGES
+
+* **page-header:** api-axios api-core and axios are peer deps now
+
+
+
+
+
 ## [5.0.4](https://github.com/Availity/availity-react/compare/@availity/page-header@5.0.3...@availity/page-header@5.0.4) (2019-08-15)
 
 **Note:** Version bump only for package @availity/page-header

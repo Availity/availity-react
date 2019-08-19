@@ -1,6 +1,6 @@
 {
   "name": "@availity/favorites",
-  "version": "1.1.11",
+  "version": "2.0.0",
   "author": "Kyle Gray <kyle.gray@availity.com>",
   "description": "Favorite Heart for favoriting items such as links/resources etc.",
   "main": "index.js",
@@ -21,7 +21,7 @@
   },
   "dependencies": {
     "@availity/analytics-core": "^2.6.0",
-    "@availity/hooks": "^1.5.1",
+    "@availity/hooks": "^1.5.2",
     "@availity/message-core": "^4.0.1",
     "lodash.clone": "^4.5.0",
     "lodash.findwhere": "^3.1.0",
@@ -33,20 +33,20 @@
     "prop-types": "^15.5.8"
   },
   "devDependencies": {
-    "react": "^16.8.3",
-    "react-dom": "^16.8.3",
-    "reactstrap": "^8.0.0",
     "@availity/api-axios": "^5.4.0",
     "@availity/api-core": "^5.4.0",
     "@availity/localstorage-core": "^2.6.1",
-    "axios": "^0.18.0"
+    "axios": "^0.18.0",
+    "react": "^16.8.3",
+    "react-dom": "^16.8.3",
+    "reactstrap": "^8.0.0"
   },
   "peerDependencies": {
-    "react": "^16.8.0",
-    "reactstrap": "^8.0.0 || ^7.1.0",
     "@availity/api-axios": "^5.4.0",
     "@availity/api-core": "^5.0.0",
     "@availity/localstorage-core": "^2.6.1",
-    "axios": "^0.18.0"
+    "axios": "^0.18.0",
+    "react": "^16.8.0",
+    "reactstrap": "^8.0.0 || ^7.1.0"
   }
 }

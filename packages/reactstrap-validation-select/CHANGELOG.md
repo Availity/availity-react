@@ -3,6 +3,22 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [5.0.0](https://github.com/Availity/availity-react/compare/@availity/reactstrap-validation-select@4.4.1...@availity/reactstrap-validation-select@5.0.0) (2019-08-19)
+
+
+### Code Refactoring
+
+* **reactstrap-validation-select:** made api resources peer dep ([b0f783d](https://github.com/Availity/availity-react/commit/b0f783d))
+
+
+### BREAKING CHANGES
+
+* **reactstrap-validation-select:** api-axios api-core and axios are peer deps now
+
+
+
+
+
 ## [4.4.1](https://github.com/Availity/availity-react/compare/@availity/reactstrap-validation-select@4.4.0...@availity/reactstrap-validation-select@4.4.1) (2019-08-15)
 
 

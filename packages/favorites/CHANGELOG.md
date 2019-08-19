@@ -3,6 +3,22 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [2.0.0](https://github.com/Availity/availity-react/compare/@availity/favorites@1.1.11...@availity/favorites@2.0.0) (2019-08-19)
+
+
+### Code Refactoring
+
+* **favorites:** made api resources peer dep ([0ddf6ec](https://github.com/Availity/availity-react/commit/0ddf6ec))
+
+
+### BREAKING CHANGES
+
+* **favorites:** api-axios api-core and axios are peer deps now
+
+
+
+
+
 ## [1.1.11](https://github.com/Availity/availity-react/compare/@availity/favorites@1.1.10...@availity/favorites@1.1.11) (2019-08-13)
 
 **Note:** Version bump only for package @availity/favorites
