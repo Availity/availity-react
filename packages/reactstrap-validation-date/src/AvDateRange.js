@@ -240,11 +240,19 @@ export default class AvDateRange extends Component {
 
   onFocusChange = input => {
     const { onPickerFocusChange, start, end } = this.props;
-
     if (input === 'endDate') {
       this.context.FormCtrl.setTouched(start.name);
     } else if (!input) {
-      this.context.FormCtrl.setTouched(end.name);
+      if (!this.context.FormCtrl.isTouched(end.name)) {
+        this.context.FormCtrl.setTouched(end.name);
+      }
+
+      if (!this.context.FormCtrl.isTouched(start.name)) {
+        this.context.FormCtrl.setTouched(start.name);
+      }
+
+      this.context.FormCtrl.validate(start.name);
+      this.context.FormCtrl.validate(end.name);
     }
 
     this.setState(
@@ -313,6 +321,40 @@ export default class AvDateRange extends Component {
     return endValidation;
   };
 
+  requireStartIfEnd = () => {
+    const start = this.context.FormCtrl.getInput(
+      this.props.start.name
+    ).getViewValue();
+
+    // We want the view value so not calling from args
+    const end =
+      this.context.FormCtrl.getInput(this.props.end.name) &&
+      this.context.FormCtrl.getInput(this.props.end.name).getViewValue();
+
+    if (!start && end) {
+      return 'Both start and end date are required';
+    }
+
+    return true;
+  };
+
+  requireEndIfStart = () => {
+    const start = this.context.FormCtrl.getInput(
+      this.props.start.name
+    ).getViewValue();
+
+    // We want the view value so not calling from args
+    const end = this.context.FormCtrl.getInput(
+      this.props.end.name
+    ).getViewValue();
+
+    if (start && !end) {
+      return 'Both start and end date are required.';
+    }
+
+    return true;
+  };
+
   render() {
     const {
       name,
@@ -329,8 +371,15 @@ export default class AvDateRange extends Component {
     const { startValue, endValue, focusedInput } = this.state;
     const endValidate = {
       afterStart: this.afterStartValidate,
+      requireEndIfStart: this.requireEndIfStart,
       ...validate,
       ...this.props.end.validate,
+    };
+
+    const startValidate = {
+      requireStartIfEnd: this.requireStartIfEnd,
+      ...validate,
+      ...this.props.start.validate,
     };
     if (distance) {
       endValidate.distance = this.validateDistance;
@@ -376,8 +425,7 @@ export default class AvDateRange extends Component {
           {...this.props.start}
           validate={{
             date: true,
-            ...validate,
-            ...this.props.start.validate,
+            ...startValidate,
           }}
           value={this.state.startValue || ''}
           type="text"
