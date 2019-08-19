@@ -302,6 +302,17 @@ export default class AvDateRange extends Component {
     return true;
   };
 
+  getInputState = () => {
+    const startValidation = this.context.FormCtrl.getInputState(
+      this.props.start.name
+    );
+    if (startValidation.errorMessage) return startValidation;
+    const endValidation = this.context.FormCtrl.getInputState(
+      this.props.end.name
+    );
+    return endValidation;
+  };
+
   render() {
     const {
       name,
@@ -345,13 +356,15 @@ export default class AvDateRange extends Component {
       this.context.FormCtrl.isBad(this.props.start.name) ||
       this.context.FormCtrl.isBad(this.props.end.name);
 
+    const validation = this.getInputState();
+
     const classes = classNames(
       className,
       touched ? 'is-touched' : 'is-untouched',
       isDirty ? 'is-dirty' : 'is-pristine',
       isBad ? 'is-bad-input' : null,
       hasError ? 'av-invalid' : 'av-valid',
-      touched && hasError && 'is-invalid',
+      validation.error && 'is-invalid',
       !startValue && !endValue && 'current-day-highlight',
       datepicker && 'av-calendar-show'
     );
