@@ -332,7 +332,7 @@ export default class AvDateRange extends Component {
       this.context.FormCtrl.getInput(this.props.end.name).getViewValue();
 
     if (!start && end) {
-      return 'Both start and end date are required';
+      return 'Both start and end date are required.';
     }
 
     return true;
