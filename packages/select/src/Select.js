@@ -251,6 +251,10 @@ const Select = ({
             color: showError ? '#931b1d' : 'hsl(0,0%,80%)',
           };
         },
+        option: provided => ({
+          ...provided,
+          color: '#000',
+        }),
       }}
       {...attributes}
       value={getViewValue()}
