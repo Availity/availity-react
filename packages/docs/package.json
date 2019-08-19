@@ -55,7 +55,7 @@
     "@availity/typography": "^1.1.2",
     "@availity/upload": "^2.0.6",
     "@availity/upload-core": "^3.0.4",
-    "@availity/yup": "^1.1.0",
+    "@availity/yup": "^1.1.1",
     "@babel/core": "^7.2.2",
     "@storybook/addon-a11y": "^5.1.3",
     "@storybook/addon-actions": "^5.1.3",

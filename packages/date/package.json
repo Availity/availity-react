@@ -22,7 +22,7 @@
   "homepage": "https://github.com/Availity/availity-react/tree/master/packages/date#readme",
   "devDependencies": {
     "@availity/form": "^0.2.2",
-    "@availity/yup": "^1.1.0",
+    "@availity/yup": "^1.1.1",
     "@types/react-dates": "^17.1.5",
     "formik": "^2.0.1-rc.12",
     "react": "^16.8.3",
