@@ -42,6 +42,8 @@ Another key difference is we define the initial state of the inputs in the form 
 
 ```jsx
 import { AvField, AvForm } from 'availity-reactstrap-validation';
+import '@availity/yup';
+import * as yup from 'yup';
 
 // ...
 <AvForm onValidSubmit={() => {}}>
