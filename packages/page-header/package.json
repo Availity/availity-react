@@ -24,13 +24,13 @@
     "@availity/breadcrumbs": "^3.0.3",
     "@availity/feedback": "^5.0.6",
     "@availity/payer-logo": "^4.0.0",
-    "@availity/spaces": "^3.0.0",
     "@availity/training-link": "^1.1.7",
     "prop-types": "^15.5.8"
   },
   "devDependencies": {
     "@availity/api-axios": "^5.4.0",
     "@availity/api-core": "^5.4.0",
+    "@availity/spaces": "^3.0.0",
     "@availity/localstorage-core": "^2.6.1",
     "axios": "^0.18.0",
     "formik": "^2.0.1-rc.12",
@@ -42,6 +42,7 @@
     "@availity/api-axios": "^5.4.0",
     "@availity/api-core": "^5.4.0",
     "@availity/localstorage-core": "^2.6.1",
+    "@availity/spaces": "^3.0.0",
     "axios": "^0.18.0",
     "formik": "^2.0.1-rc.12",
     "react": "^16.8.3",
