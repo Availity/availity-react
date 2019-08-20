@@ -21,6 +21,22 @@ import { AvInput, AvForm } from 'availity-reactstrap-validation';
 // ...
 ```
 
+Note: `availity-reactstrap-validation` also has a `required` prop that acts as a shorthand for required validation using the `validate` prop. The code snippet above is equivalent to:
+
+```jsx
+import { AvInput, AvForm } from 'availity-reactstrap-validation';
+
+// ...
+<AvForm>
+  <AvInput
+    name="myInput"
+    type="text"
+    required
+  />
+</AvForm>
+// ...
+```
+
 With `@availity/form`, we use `yup` and `@availity/yup` to define the validation schema for all of the inputs in the form on the `<Form />` component with the `validationSchema` prop from [formik](https://jaredpalmer.com/formik/docs/guides/validation#validationschema), like so:
 
 ```jsx
@@ -29,7 +45,7 @@ import { Input, Form } from '@availity/form';
 // ...
 <Form
   initialValues={{ myInput: '' }}
-  validationSchema={yup.object().shape({ myInput: yup.string().isRequired(true, 'This field is required') })}
+  validationSchema={yup.object().shape({ myInput: yup.string().isRequired(true, 'This field is required.') })}
 >
   <Input name="myInput" type="text" />
 </Form>
