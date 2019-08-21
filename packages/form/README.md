@@ -7,15 +7,23 @@
 ## Installation
 
 ```bash
-npm install @availity/form formik@^2.0.1-rc.5 react reactstrap --save
+npx install-peerdeps @availity/form --save
 ```
+
+## Programmatically controlling the state of the form
+
+See [Formik documentation](https://jaredpalmer.com/formik/docs/api/formik)
+
+## Migrating from `availity-reactstrap-validation`
+
+See [MIGRATION.md](./MIGRATION.md)
 
 ## Validation
 
 See [yup](https://github.com/jquense/yup) and [@availity/yup](https://github.com/Availity/sdk-js/tree/master/packages/yup).
 
 ## Browser Compatibility! ( Internet Explorer )
-In order for this library to be compatible with Internet explorer the following polyfills needs to be provided. Not if you are on `availity-worklfow@6.0.0` or later it is already provided for you.
+In order for this library to be compatible with Internet Explorer, the following polyfills need to be provided. If you are on `@availity/workflow@6.0.0` or later, they are already provided for you.
 
 - [Array.from](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/from)
 - [Object.assign](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object/assign)
