@@ -154,10 +154,10 @@ describe('Spaces', () => {
     const fn = jest.fn(() => {});
     // Create component to call mock function
     const SpaceComponent = ({ spaceId }) => {
-      const { loading, space } = useSpace(spaceId);
+      const { loading, space, error } = useSpace(spaceId);
 
       // Should be called when async effect to fetch spaces from slotmachine gets executed
-      if (space && !loading) fn();
+      if (space && !loading) fn(space, error);
       return loading ? null : (
         <span data-testid={`space-for-${spaceId}`}>
           {space ? `Space ${space.id}` : 'No Space '}
@@ -327,5 +327,32 @@ describe('Spaces', () => {
     expect(console.warn.mock.calls[0][0]).toBe(
       'You did not pass an ID in to find a space, and there is more than 1 space in the space array. Returning the first.'
     );
+  });
+
+  it('returns error when missing clientId', async () => {
+    // Create component that renders a SpaceComponent for the current space id
+    const fn = jest.fn(() => {});
+    // Create component to call mock function
+    const SpaceComponent = ({ spaceId }) => {
+      const { loading, space, error } = useSpace(spaceId);
+
+      // Should be called when async effect to fetch spaces from slotmachine gets executed
+      if (!loading) fn(space, error);
+      return loading ? null : (
+        <span data-testid={`space-for-${spaceId}`}>
+          {space ? `Space ${space.id}` : 'No Space '}
+        </span>
+      );
+    };
+
+    const { getByText } = render(
+      <Spaces spaceIds={['1']}>
+        <SpaceComponent />
+      </Spaces>
+    );
+
+    await waitForElement(() => getByText('No Space'));
+
+    expect(fn.mock.calls[0][1]).toBe('clientId is required');
   });
 });
