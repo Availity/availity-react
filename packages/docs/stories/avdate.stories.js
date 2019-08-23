@@ -138,7 +138,7 @@ storiesOf('Components|AvDate', module)
           required={boolean('Required', false)}
           disabled={boolean('Disabled', false)}
           distance={distance}
-          ranges
+          ranges={boolean('ranges', false)}
           errorMessage={text('Generic Error Message', 'This field is invalid')}
           validate={{
             required: {
@@ -195,7 +195,7 @@ storiesOf('Components|AvDate', module)
           min={text('Min Date (yyyy-mm-dd)')}
           max={text('Max Date (yyyy-mm-dd)')}
           distance={distance}
-          ranges
+          ranges={boolean('ranges', false)}
           required={boolean('Required', false)}
           disabled={boolean('Disabled', false)}
           errorMessage={text('Generic Error Message', 'This field is invalid')}
