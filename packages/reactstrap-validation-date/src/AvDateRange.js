@@ -343,7 +343,10 @@ export default class AvDateRange extends Component {
       this.props.end.name
     ).getViewValue();
 
-    if (start && end) {
+    const hasStart = start && start !== '';
+    const hasEnd = end && end !== '';
+
+    if (hasStart && hasEnd) {
       const mStart = moment(new Date(start));
       const mEnd = moment(new Date(end));
       if (!mStart.isValid() || !mEnd.isValid()) {
@@ -378,7 +381,10 @@ export default class AvDateRange extends Component {
       this.context.FormCtrl.getInput(this.props.end.name) &&
       this.context.FormCtrl.getInput(this.props.end.name).getViewValue();
 
-    if (!start && end) {
+    const hasStart = start && start !== '';
+    const hasEnd = end && end !== '';
+
+    if (!hasStart && hasEnd) {
       return 'Both start and end date are required.';
     }
 
@@ -395,7 +401,10 @@ export default class AvDateRange extends Component {
       this.props.end.name
     ).getViewValue();
 
-    if (start && !end) {
+    const hasStart = start && start !== '';
+    const hasEnd = end && end !== '';
+
+    if (hasStart && !hasEnd) {
       return 'Both start and end date are required.';
     }
 
