@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [3.1.0](https://github.com/Availity/availity-react/compare/@availity/reactstrap-validation-date@3.0.5...@availity/reactstrap-validation-date@3.1.0) (2019-08-23)
+
+
+### Features
+
+* **reactstrap-validation-date:** added back the ranges props ([b5b4d05](https://github.com/Availity/availity-react/commit/b5b4d05))
+
+
+
+
+
 ## [3.0.5](https://github.com/Availity/availity-react/compare/@availity/reactstrap-validation-date@3.0.4...@availity/reactstrap-validation-date@3.0.5) (2019-08-19)
 
 **Note:** Version bump only for package @availity/reactstrap-validation-date
