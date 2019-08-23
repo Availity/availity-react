@@ -17,6 +17,10 @@ import { isOutsideRange, limitPropType, isSameDay } from './utils';
 let count = 0;
 
 const relativeRanges = {
+  Today: {
+    startDate: now => now,
+    endDate: now => now,
+  },
   'Last 7 Days': {
     startDate: now => now.add(-6, 'd'),
     endDate: now => now,
@@ -24,10 +28,6 @@ const relativeRanges = {
   'Last 30 Days': {
     startDate: now => now.add(-29, 'd'),
     endDate: now => now,
-  },
-  'Last Calendar Month': {
-    startDate: now => now.startOf('month').add(-1, 'M'),
-    endDate: now => now.startOf('month').add(-1, 'd'),
   },
   'Last 120 Days': {
     startDate: now => now.add(-119, 'd'),
@@ -55,7 +55,11 @@ export default class AvDateRange extends Component {
     max: limitPropType,
     min: limitPropType,
     distance: PropTypes.object,
-    ranges: PropTypes.oneOfType([PropTypes.array, PropTypes.object]),
+    ranges: PropTypes.oneOfType([
+      PropTypes.bool,
+      PropTypes.array,
+      PropTypes.object,
+    ]),
     onPickerFocusChange: PropTypes.func,
     defaultValues: PropTypes.object,
     calendarIcon: PropTypes.node,
@@ -402,15 +406,18 @@ export default class AvDateRange extends Component {
     const { ranges: propsRanges } = this.props;
     const { startValue, endValue, format } = this.state;
 
-    const ranges =
-      // eslint-disable-next-line no-nested-ternary
-      propsRanges !== undefined
-        ? Array.isArray(propsRanges)
-          ? pick(relativeRanges, propsRanges)
-          : propsRanges
-        : relativeRanges;
+    console.log('propsRanges', propsRanges);
 
-    return (
+    let ranges;
+    if (typeof propsRanges === 'boolean' && propsRanges) {
+      ranges = relativeRanges;
+    } else if (propsRanges) {
+      ranges = Array.isArray(propsRanges)
+        ? pick(relativeRanges, propsRanges)
+        : propsRanges;
+    }
+
+    return ranges ? (
       <div className="d-flex flex-column ml-2 mt-2">
         {Object.keys(ranges).map(text => {
           const { startDate: startDateFunc, endDate: endDateFunc } = ranges[
@@ -460,7 +467,7 @@ export default class AvDateRange extends Component {
           );
         })}
       </div>
-    );
+    ) : null;
   };
 
   render() {
