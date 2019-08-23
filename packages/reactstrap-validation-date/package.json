@@ -38,6 +38,7 @@
   "dependencies": {
     "@availity/icon": "^0.4.3",
     "classnames": "^2.2.6",
+    "lodash.pick": "^4.4.0",
     "moment": "^2.24.0",
     "prop-types": "^15.5.8",
     "react-dates": "^20.2.5",

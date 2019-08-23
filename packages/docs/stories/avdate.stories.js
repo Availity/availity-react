@@ -9,8 +9,8 @@ import AvDate, {
   AvDateRangeField,
 } from '@availity/reactstrap-validation-date';
 import README from '@availity/reactstrap-validation-date/README.md';
-import AvFormResults from './mocks/AvFormResults';
 import '@availity/reactstrap-validation-date/styles.scss';
+import AvFormResults from './mocks/AvFormResults';
 
 const types = {
   text: 'text',
