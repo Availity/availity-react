@@ -58,6 +58,50 @@ describe('AvDateRange', () => {
     });
   });
 
+  test('should re-render with new value props', async () => {
+    const { getByText, rerender } = render(
+      <DateRange
+        name="standAlone"
+        start={{
+          name: 'date.start',
+          value: '01/01/2001',
+        }}
+        end={{
+          name: 'date.end',
+          value: '01/04/2001',
+        }}
+      />
+    );
+
+    rerender(
+      <DateRange
+        name="standAlone"
+        start={{
+          name: 'date.start',
+          value: '01/02/2001',
+        }}
+        end={{
+          name: 'date.end',
+          value: '01/04/2001',
+        }}
+      />
+    );
+
+    fireEvent.click(getByText('Submit'));
+
+    await wait(() => {
+      expect(onValidSubmit).toHaveBeenCalledWith(
+        expect.anything(),
+        expect.objectContaining({
+          date: {
+            start: '2001-01-02',
+            end: '2001-01-04',
+          },
+        })
+      );
+    });
+  });
+
   test('should work with default values prop', async () => {
     const { getByText } = render(
       <DateRange

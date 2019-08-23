@@ -115,6 +115,13 @@ export default class AvDateRange extends Component {
     this.guid = `date-range-${count}-btn`;
   }
 
+  static getDerivedStateFromProps(props, prevState) {
+    return {
+      startValue: props.start.value || prevState.startValue,
+      endValue: props.end.value || prevState.endValue
+    }
+  }
+
   open = () => {
     if (!this.state.open) {
       this.setState({ open: true });
