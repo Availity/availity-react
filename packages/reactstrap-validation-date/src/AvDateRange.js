@@ -415,8 +415,6 @@ export default class AvDateRange extends Component {
     const { ranges: propsRanges } = this.props;
     const { startValue, endValue, format } = this.state;
 
-    console.log('propsRanges', propsRanges);
-
     let ranges;
     if (typeof propsRanges === 'boolean' && propsRanges) {
       ranges = relativeRanges;
