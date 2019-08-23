@@ -56,7 +56,10 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 
 ### BREAKING CHANGES
 
-* **reactstrap-validation-select:** this required moment to be installed and the whole look and feel of the picker has changed
+* **reactstrap-validation-date:** 
+  - `moment` is now a required dep
+  -  UI has been swapped out with `react-dates`. 
+  - DateRange `onChange` callback now runs on single date selected and when both are.
 
 
 

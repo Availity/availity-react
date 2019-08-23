@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import { InputGroup } from 'reactstrap';
+import { InputGroup, Button } from 'reactstrap';
 import moment from 'moment';
+import pick from 'lodash.pick';
 import {
   inputType,
   isoDateFormat,
@@ -11,9 +12,36 @@ import { DateRangePicker } from 'react-dates';
 import 'react-dates/initialize';
 import classNames from 'classnames';
 import Icon from '@availity/icon';
-import { isOutsideRange, limitPropType } from './utils';
+import { isOutsideRange, limitPropType, isSameDay } from './utils';
 
 let count = 0;
+
+const relativeRanges = {
+  Today: {
+    startDate: now => now,
+    endDate: now => now,
+  },
+  'Last 7 Days': {
+    startDate: now => now.add(-6, 'd'),
+    endDate: now => now,
+  },
+  'Last 30 Days': {
+    startDate: now => now.add(-29, 'd'),
+    endDate: now => now,
+  },
+  'Last 120 Days': {
+    startDate: now => now.add(-119, 'd'),
+    endDate: now => now,
+  },
+  'Last 6 Months': {
+    startDate: now => now.add(-6, 'M'),
+    endDate: now => now,
+  },
+  'Last 12 Months': {
+    startDate: now => now.add(-12, 'M'),
+    endDate: now => now,
+  },
+};
 
 export default class AvDateRange extends Component {
   static propTypes = {
@@ -27,7 +55,11 @@ export default class AvDateRange extends Component {
     max: limitPropType,
     min: limitPropType,
     distance: PropTypes.object,
-    ranges: PropTypes.oneOfType([PropTypes.array, PropTypes.object]),
+    ranges: PropTypes.oneOfType([
+      PropTypes.bool,
+      PropTypes.array,
+      PropTypes.object,
+    ]),
     onPickerFocusChange: PropTypes.func,
     defaultValues: PropTypes.object,
     calendarIcon: PropTypes.node,
@@ -41,6 +73,8 @@ export default class AvDateRange extends Component {
     calendarIcon: <Icon name="calendar" />,
     datepicker: true,
   };
+
+  calendarIconRef = React.createRef();
 
   constructor(props, context) {
     super(props, context);
@@ -83,6 +117,19 @@ export default class AvDateRange extends Component {
     }
     count += 1;
     this.guid = `date-range-${count}-btn`;
+  }
+
+  static getDerivedStateFromProps({ start, end }, { startValue, endValue }) {
+    if (
+      (start.value && start.value !== startValue) ||
+      (end.value && end.value !== endValue)
+    ) {
+      return {
+        startValue: start.value || startValue,
+        endValue: end.value || endValue,
+      };
+    }
+    return null;
   }
 
   open = () => {
@@ -296,7 +343,10 @@ export default class AvDateRange extends Component {
       this.props.end.name
     ).getViewValue();
 
-    if (start && end) {
+    const hasStart = start && start !== '';
+    const hasEnd = end && end !== '';
+
+    if (hasStart && hasEnd) {
       const mStart = moment(new Date(start));
       const mEnd = moment(new Date(end));
       if (!mStart.isValid() || !mEnd.isValid()) {
@@ -331,7 +381,10 @@ export default class AvDateRange extends Component {
       this.context.FormCtrl.getInput(this.props.end.name) &&
       this.context.FormCtrl.getInput(this.props.end.name).getViewValue();
 
-    if (!start && end) {
+    const hasStart = start && start !== '';
+    const hasEnd = end && end !== '';
+
+    if (!hasStart && hasEnd) {
       return 'Both start and end date are required.';
     }
 
@@ -348,11 +401,80 @@ export default class AvDateRange extends Component {
       this.props.end.name
     ).getViewValue();
 
-    if (start && !end) {
+    const hasStart = start && start !== '';
+    const hasEnd = end && end !== '';
+
+    if (hasStart && !hasEnd) {
       return 'Both start and end date are required.';
     }
 
     return true;
+  };
+
+  renderDateRanges = () => {
+    const { ranges: propsRanges } = this.props;
+    const { startValue, endValue, format } = this.state;
+
+    let ranges;
+    if (typeof propsRanges === 'boolean' && propsRanges) {
+      ranges = relativeRanges;
+    } else if (propsRanges) {
+      ranges = Array.isArray(propsRanges)
+        ? pick(relativeRanges, propsRanges)
+        : propsRanges;
+    }
+
+    return ranges ? (
+      <div className="d-flex flex-column ml-2 mt-2">
+        {Object.keys(ranges).map(text => {
+          const { startDate: startDateFunc, endDate: endDateFunc } = ranges[
+            text
+          ];
+
+          const presetStartDate = startDateFunc(moment());
+          const presetEndDate = endDateFunc(moment());
+
+          const isSelected =
+            isSameDay(
+              presetStartDate,
+              moment(startValue, [
+                isoDateFormat,
+                format,
+                'MMDDYYYY',
+                'YYYYMMDD',
+              ])
+            ) &&
+            isSameDay(
+              presetEndDate,
+              moment(endValue, [isoDateFormat, format, 'MMDDYYYY', 'YYYYMMDD'])
+            );
+          return (
+            <Button
+              key={text}
+              className="mt-1 mb-1"
+              color={isSelected ? 'primary' : 'default'}
+              size="sm"
+              onClick={() => {
+                this.onDatesChange({
+                  startDate: presetStartDate,
+                  endDate: presetEndDate,
+                });
+
+                this.setState({ focusedInput: undefined });
+                this.context.FormCtrl.setTouched(this.props.start.name);
+                this.context.FormCtrl.setTouched(this.props.end.name);
+
+                // // Focucs the calendar icon once clicked because we don't
+                // // want to get back in the loop of opening the calendar
+                this.calendarIconRef.current.parentElement.focus();
+              }}
+            >
+              {text}
+            </Button>
+          );
+        })}
+      </div>
+    ) : null;
   };
 
   render() {
@@ -451,23 +573,39 @@ export default class AvDateRange extends Component {
           disabled={attributes.disabled}
           className={classes}
           onChange={({ target }) => {
+            const val = target.value;
             if (target.id === startId || target.id === endId) {
-              this.onInputChange(target.value);
+              this.onInputChange(val);
             }
           }}
           data-testid={`date-range-input-group-${name}`}
         >
           <DateRangePicker
             disabled={attributes.disabled}
+            enableOutsideDays
             startDate={this.getDateValue(startValue)}
             startDateId={startId}
             endDate={this.getDateValue(endValue)}
             endDateId={endId}
+            calendarInfoPosition="before"
+            renderCalendarInfo={this.renderDateRanges}
             onDatesChange={this.onDatesChange}
             focusedInput={focusedInput}
             onFocusChange={this.onFocusChange}
             isOutsideRange={isOutsideRange(minDate, maxDate, this.state.format)}
-            customInputIcon={datepicker ? calendarIcon : undefined}
+            customInputIcon={
+              datepicker
+                ? React.cloneElement(calendarIcon, {
+                    ref: this.calendarIconRef,
+                    onClick: () => {
+                      const { focusedInput } = this.state;
+                      if (focusedInput) {
+                        this.setState({ focusedInput: undefined });
+                      }
+                    },
+                  })
+                : undefined
+            }
             inputIconPosition="after"
             customArrowIcon="-"
             showDefaultInputIcon={datepicker}
