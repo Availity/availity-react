@@ -16,7 +16,6 @@
     "link": "lerna link",
     "clean": "lerna clean --yes",
     "test": "jest",
-    "test:commit": "jest --onlyChanged",
     "test:ci": "jest --runInBand --collectCoverage",
     "postinstall": "npm run bootstrap",
     "start": "npm start --prefix packages/docs",
@@ -143,7 +142,7 @@
   "husky": {
     "hooks": {
       "commit-msg": "commitlint -e $HUSKY_GIT_PARAMS",
-      "pre-commit": "npm run test:commit && lint-staged"
+      "pre-commit": "npm test && lint-staged"
     }
   }
 }
