@@ -10,6 +10,14 @@ const FavoriteHeart = ({ id, onChange, onMouseDown, ...props }) => {
   const [tooltipOpen, toggleTooltip] = useToggle(false);
   const [loading, toggleLoading] = useToggle(true);
 
+  const onChangeHandler = () => {
+    toggleFavorite();
+
+    if (onChange) {
+      onChange(isFavorite);
+    }
+  };
+
   const icon = useMemo(
     () => (
       <span
@@ -26,14 +34,8 @@ const FavoriteHeart = ({ id, onChange, onMouseDown, ...props }) => {
             onMouseDown(e);
           }
         }}
-        onKeyPress={() => {}}
-        onClick={() => {
-          toggleFavorite();
-
-          if (onChange) {
-            onChange(isFavorite);
-          }
-        }}
+        onKeyPress={({ charCode }) => charCode === 13 && onChangeHandler()}
+        onClick={onChangeHandler}
       >
         <span className="sr-only">Favorite</span>
         <span className="sr-only" id={`av-favorite-heart-desc-${id}`}>
@@ -46,7 +48,7 @@ const FavoriteHeart = ({ id, onChange, onMouseDown, ...props }) => {
         <span className="icon selected-filled" />
       </span>
     ),
-    [id, isFavorite, onChange, onMouseDown, props, toggleFavorite]
+    [id, isFavorite, onChangeHandler, onMouseDown, props]
   );
 
   useEffectAsync(async () => {

@@ -212,6 +212,45 @@ describe('FavoriteHeart', () => {
     ]);
   });
 
+  test('should delete favorite and send post message with updated favorites when enter is pressed', async () => {
+    avSettingsApi.setApplication = jest.fn(() =>
+      Promise.resolve({
+        data: {
+          favorites: [
+            {
+              id: '456',
+              pos: 0,
+            },
+          ],
+        },
+      })
+    );
+
+    const { container, getByText } = render(
+      <Favorites>
+        <FavoriteHeart id="123" />
+      </Favorites>
+    );
+
+    const heart = container.querySelector('#av-favorite-heart-123');
+
+    expect(heart).toBeDefined();
+
+    await waitForElement(() => getByText('This item is favorited.'));
+
+    // Simulate user unfavoriting item
+    fireEvent.keyPress(heart, { key: 'Enter', code: 13, charCode: 13 });
+
+    await waitForElement(() => getByText('This item is not favorited.'));
+
+    expect(avMessages.send).toHaveBeenCalledTimes(1);
+    expect(avMessages.send.mock.calls[0][0].event).toBe('av:favorites:update');
+    // Test that post message sent to window.parent sends favorites returned from settings api
+    expect(avMessages.send.mock.calls[0][0].favorites).toEqual([
+      { id: '456', pos: 0 },
+    ]);
+  });
+
   test('should add favorite and send post message with updated favorites', async () => {
     avSettingsApi.setApplication = jest.fn(() =>
       Promise.resolve({
