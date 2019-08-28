@@ -16,6 +16,7 @@ const types = {
   text: 'text',
   date: 'date',
 };
+
 storiesOf('Components|AvDate', module)
   .addParameters({
     readme: {
@@ -126,13 +127,34 @@ storiesOf('Components|AvDate', module)
 
     const distance = (min || max) && { min, max };
 
+    const baseStart = {
+      name: 'date.start',
+    };
+    const baseEnd = {
+      name: 'date.end',
+    };
+
+    const hasDefaultStart = boolean('Has Default Start Date', false);
+    const defaultStartDate =
+      hasDefaultStart && text('Default Start Date (yyyy-mm-dd)', '2019-01-01');
+    const hasDefaultEnd = boolean('Has Default End Date', false);
+    const defaultEndDate =
+      hasDefaultEnd && text('Default End Date (yyyy-mm-dd)', '2019-12-31');
+
+    if (defaultStartDate) {
+      baseStart.value = defaultStartDate;
+    }
+    if (defaultEndDate) {
+      baseEnd.value = defaultEndDate;
+    }
+
     return (
       <AvFormResults>
         <AvDateRange
           name="AvDateRange"
           type={select('Type', types, 'text')}
-          start={{ name: 'date.start' }}
-          end={{ name: 'date.end' }}
+          start={baseStart}
+          end={baseEnd}
           min={text('Min Date (yyyy-mm-dd)')}
           max={text('Max Date (yyyy-mm-dd)')}
           required={boolean('Required', false)}
@@ -184,14 +206,35 @@ storiesOf('Components|AvDate', module)
 
     const distance = (min || max) && { min, max };
 
+    const baseStart = {
+      name: 'date.start',
+    };
+    const baseEnd = {
+      name: 'date.end',
+    };
+
+    const hasDefaultStart = boolean('Has Default Start Date', false);
+    const defaultStartDate =
+      hasDefaultStart && text('Default Start Date (yyyy-mm-dd)', '2019-01-01');
+    const hasDefaultEnd = boolean('Has Default End Date', false);
+    const defaultEndDate =
+      hasDefaultEnd && text('Default End Date (yyyy-mm-dd)', '2019-12-31');
+
+    if (defaultStartDate) {
+      baseStart.value = defaultStartDate;
+    }
+    if (defaultEndDate) {
+      baseEnd.value = defaultEndDate;
+    }
+
     return (
       <AvFormResults>
         <AvDateRangeField
           label={text('Label', 'Date Range')}
           name="AvDateRange"
           type={select('Type', types, 'text')}
-          start={{ name: 'date.start', required }}
-          end={{ name: 'date.end', required }}
+          start={baseStart}
+          end={baseEnd}
           min={text('Min Date (yyyy-mm-dd)')}
           max={text('Max Date (yyyy-mm-dd)')}
           distance={distance}
