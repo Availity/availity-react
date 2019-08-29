@@ -330,4 +330,90 @@ describe('AvDateRange', () => {
       );
     });
   });
+
+  test('text input works with default start and end dates', async () => {
+    const defaultStartDate = moment('01/01/2019').format('YYYY-MM-DD');
+    const defaultEndDate = moment('12/31/2022').format('YYYY-MM-DD');
+    const { container, getByText } = render(
+      <DateRange
+        name="dateRange"
+        start={{ name: 'date.start', value: defaultStartDate }}
+        end={{ name: 'date.end', value: defaultEndDate }}
+      />
+    );
+
+    // Simulate user entering start date
+    const start = container.querySelector('#dateRange-start');
+
+    fireEvent.change(start, {
+      target: {
+        value: '01/01/2018',
+      },
+    });
+
+    // Simulate user entering end date
+    const end = container.querySelector('#dateRange-end');
+
+    fireEvent.change(end, {
+      target: {
+        value: '12/31/2020',
+      },
+    });
+
+    fireEvent.click(getByText('Submit'));
+
+    await wait(() => {
+      expect(onValidSubmit).toHaveBeenCalledWith(
+        expect.anything(),
+        expect.objectContaining({
+          date: {
+            start: '2018-01-01',
+            end: '2020-12-31',
+          },
+        })
+      );
+    });
+  });
+
+  test('datepicker works with default start and end dates', async () => {
+    const defaultStartDate = moment()
+      .add(-4, 'days')
+      .format('YYYY-MM-DD');
+    const defaultEndDate = moment('12/31/2022').format('YYYY-MM-DD');
+    const { container, getByText } = render(
+      <DateRange
+        name="dateRange"
+        start={{ name: 'date.start', value: defaultStartDate }}
+        end={{ name: 'date.end', value: defaultEndDate }}
+      />
+    );
+
+    const input = container.querySelector('.DateInput_input');
+
+    fireEvent.focus(input);
+
+    // Simulate user selecting today as start date
+    const start = container.querySelector('.CalendarDay__today');
+    fireEvent.click(start);
+
+    // Simulate user selecting tomorrow as end date
+    const end = container.querySelector('.CalendarDay__today').nextSibling;
+    fireEvent.click(end);
+
+    fireEvent.click(getByText('Submit'));
+
+    await wait(() => {
+      expect(onValidSubmit).toHaveBeenCalledWith(
+        expect.anything(),
+        expect.objectContaining({
+          date: {
+            start: moment().format('YYYY-MM-DD'),
+            end: moment()
+              .add(1, 'day')
+              .format('YYYY-MM-DD'),
+          },
+        })
+      );
+    });
+  });
 });

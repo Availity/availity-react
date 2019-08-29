@@ -119,17 +119,48 @@ export default class AvDateRange extends Component {
     this.guid = `date-range-${count}-btn`;
   }
 
-  static getDerivedStateFromProps({ start, end }, { startValue, endValue }) {
-    if (
-      (start.value && start.value !== startValue) ||
-      (end.value && end.value !== endValue)
-    ) {
-      return {
-        startValue: start.value || startValue,
-        endValue: end.value || endValue,
-      };
+  static getDerivedStateFromProps(
+    { start, end },
+    { startValue, endValue, prevStartProp, prevEndProp, format }
+  ) {
+    const newState = {};
+
+    // ensure date values are valid and convert to common format
+    const startMoment = moment(
+      startValue,
+      [isoDateFormat, format, 'MMDDYYYY', 'YYYYMMDD'],
+      true
+    );
+    const endMoment = moment(
+      endValue,
+      [isoDateFormat, format, 'MMDDYYYY', 'YYYYMMDD'],
+      true
+    );
+
+    startValue = startMoment.isValid() && startMoment.format('MM/DD/YYYY');
+    endValue = endMoment.isValid() && endMoment.format('MM/DD/YYYY');
+
+    // evaluate input dates against prop dates
+    if (start.value !== undefined && start.value !== startValue) {
+      newState.startValue = startValue;
     }
-    return null;
+
+    if (end.value !== undefined && end.value !== endValue) {
+      newState.endValue = endValue;
+    }
+
+    // override if prop date change detected
+    if (prevStartProp !== start.value) {
+      newState.startValue = start.value;
+      newState.prevStartProp = start.value;
+    }
+
+    if (prevEndProp !== end.value) {
+      newState.endValue = end.value;
+      newState.prevEndProp = end.value;
+    }
+
+    return Object.keys(newState).length > 0 ? newState : null;
   }
 
   open = () => {
