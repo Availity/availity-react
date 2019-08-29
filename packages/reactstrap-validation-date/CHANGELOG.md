@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [3.1.1](https://github.com/Availity/availity-react/compare/@availity/reactstrap-validation-date@3.1.0...@availity/reactstrap-validation-date@3.1.1) (2019-08-29)
+
+
+### Bug Fixes
+
+* **reactstrap-validation-date:** fix for default start and end dates ([b9e32e2](https://github.com/Availity/availity-react/commit/b9e32e2))
+
+
+
+
+
 # [3.1.0](https://github.com/Availity/availity-react/compare/@availity/reactstrap-validation-date@3.0.5...@availity/reactstrap-validation-date@3.1.0) (2019-08-23)
 
 
