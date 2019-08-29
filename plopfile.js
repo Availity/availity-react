@@ -79,12 +79,12 @@ module.exports = plop => {
       },
       {
         type: 'add',
-        path: 'packages/docs/stories/{{kebabCase packageName}}.stories.js',
+        path: 'packages/storybook/stories/{{kebabCase packageName}}.stories.js',
         templateFile: 'plop-templates/package/stories.js.hbs',
       },
       {
         type: 'append',
-        path: 'packages/docs/package.json',
+        path: 'packages/storybook/package.json',
         pattern: '"devDependencies": {',
         template: '    "@availity/{{kebabCase packageName}}": "^1.0.0",',
       },
