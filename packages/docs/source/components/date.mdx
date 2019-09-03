@@ -63,8 +63,8 @@ See [react-dates](https://github.com/airbnb/react-dates#singledatepicker) for ad
 *   **`name`**: String. Required. The name of the field. Will be the key of the selected date that comes through in the values of the `onSubmit` callback.
 *   **`disabled`**: Boolean. Whether the `<FormikDate />` is disabled
 *   **`className`**: Additional styles to be added to the `<FormikDate />`
-*   **`min`**: limitPropType. Optional. See [limitPropType](./src/utils'). Used in conjunction with `max` to derive `isOutsideRange` prop from `react-dates`. Dates outside the allowed range will not be clickable in datepicker.
-*   **`max`**: limitPropType. Optional. See [limitPropType](./src/utils'). Used in conjunction with `min` to derive `isOutsideRange` prop from `react-dates`. Dates outside the allowed range will not be clickable in datepicker.
+*   **`min`**: limitPropType. Optional. See [limitPropType](https://github.com/Availity/availity-react/blob/master/packages/date/src/utils.js#L45-L49). Used in conjunction with `max` to derive `isOutsideRange` prop from `react-dates`. Dates outside the allowed range will not be clickable in datepicker.
+*   **`max`**: limitPropType. Optional. See [limitPropType](https://github.com/Availity/availity-react/blob/master/packages/date/src/utils.js#L45-L49). Used in conjunction with `min` to derive `isOutsideRange` prop from `react-dates`. Dates outside the allowed range will not be clickable in datepicker.
 *   **`calendarIcon`**: Node. Optional. Default: `<Icon name="calendar" />`. Override the default icon that appears
 *   **`onChange`**: Function. Optional. Function to be run when date is chosen. Selected value is passed to function in format: `{ value }` 
 *   **`onPickerFocusChange`**: Function. Optional. Function to be run when focus on the input changes. Value is passed to function in format `{ focused }`
@@ -180,8 +180,8 @@ return (
 
 *   **`id`**: String. Required. The id of the field.
 *   **`name`**: String. Required. The name of the field. Will be the key of the selected dates that come through in the values of the `onSubmit` callback.
-*   **`min`**: limitPropType. Optional. See [limitPropType](./src/utils'). Used in conjunction with `max` to derive `isOutsideRange` prop from `react-dates`. Dates outside the allowed range will not be clickable in datepicker.
-*   **`max`**: limitPropType. Optional. See [limitPropType](./src/utils'). Used in conjunction with `min` to derive `isOutsideRange` prop from `react-dates`. Dates outside the allowed range will not be clickable in datepicker.
+*   **`min`**: limitPropType. Optional. See [limitPropType](https://github.com/Availity/availity-react/blob/master/packages/date/src/utils.js#L45-L49). Used in conjunction with `max` to derive `isOutsideRange` prop from `react-dates`. Dates outside the allowed range will not be clickable in datepicker.
+*   **`max`**: limitPropType. Optional. See [limitPropType](https://github.com/Availity/availity-react/blob/master/packages/date/src/utils.js#L45-L49). Used in conjunction with `min` to derive `isOutsideRange` prop from `react-dates`. Dates outside the allowed range will not be clickable in datepicker.
 *   **`className`**: Additional styles to be added to the `<DateRange />`
 *   **`disabled`**: Boolean. Whether the `<DateRange />` is disabled
 *   **`onChange`**: Function. Optional. Function to be run when date is chosen. Selected value is passed to function in format: `{ value }` 
