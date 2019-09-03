@@ -17,12 +17,11 @@
   "scripts": {
     "build": "gatsby build",
     "build:deploy": "gatsby build --prefix-paths",
-    "start": "gatsby develop",	
-	"develop": "gatsby develop",
+    "start": "gatsby develop",
+    "develop": "gatsby develop",
     "clean": "gatsby clean"
   },
   "dependencies": {
-    "@availity/gatsby-theme": "^1.0.2",
     "@availity/api-axios": "^5.4.0",
     "@availity/api-core": "^5.4.0",
     "@availity/app-icon": "^1.2.3",
@@ -34,6 +33,7 @@
     "@availity/feature": "^1.1.8",
     "@availity/feedback": "^5.0.8",
     "@availity/form": "^0.2.4",
+    "@availity/gatsby-theme": "^1.1.1",
     "@availity/hooks": "^1.5.2",
     "@availity/icon": "^0.5.0",
     "@availity/link": "^1.2.2",
@@ -56,11 +56,11 @@
     "@availity/yup": "^1.1.1",
     "availity-reactstrap-validation": "2.6.0",
     "axios": "^0.18.0",
+    "formik": "^2.0.1-rc.12",
     "gatsby": "^2.13.83",
     "react": "^16.8.3",
     "react-dom": "^16.8.3",
     "reactstrap": "^8.0.1",
-    "yup": "^0.27.0",
-    "formik": "^2.0.1-rc.12"
+    "yup": "^0.27.0"
   }
 }

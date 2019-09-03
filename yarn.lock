@@ -22,10 +22,10 @@
     "@availity/resolve-url" "^1.1.0"
     qs "^6.5.2"
 
-"@availity/gatsby-theme@^1.0.2":
-  version "1.0.2"
-  resolved "https://registry.yarnpkg.com/@availity/gatsby-theme/-/gatsby-theme-1.0.2.tgz#26d25fec6528ca952d104d2383e22438465605a4"
-  integrity sha512-y1BfQ7vrtxVLkjvWRz6bo6C+uDEzPNnjqRzwOTFldZMQcO7Sh9h+/2Dltf6uQ75TjuQRomifJxQBbaYQuKL7WQ==
+"@availity/gatsby-theme@^1.1.1":
+  version "1.1.1"
+  resolved "https://registry.yarnpkg.com/@availity/gatsby-theme/-/gatsby-theme-1.1.1.tgz#a6b85f311473a69afc944adaf54255a648df055b"
+  integrity sha512-y1sUYSCHZyDbwdVA9AHnkezYs0YQ1Zw5in2Z1y8/0gdVmAI+CblXscTiB7Fem5PnskDKzIoxg+NeY9ObJzlbdg==
   dependencies:
     "@mdx-js/mdx" "^1.3.1"
     "@mdx-js/react" "^1.3.1"

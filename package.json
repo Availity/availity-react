@@ -28,7 +28,7 @@
     "release:ci": "lerna publish --yes",
     "release:canary": "lerna publish -c",
     "add": "sh ./scripts/add.sh",
-    "deploy:storybook": "yarn workspace @availity/storybook deploy-docs",
+    "deploy:storybook": "yarn workspace @availity/storybook build && gh-pages -d docs --dest storybook",
     "deploy:docs": "yarn workspace @availity/docs build:deploy && gh-pages -d packages/docs/public",
     "updated": "lerna updated",
     "remove-locks": "find . -type f -name 'package-lock.json' -delete",
