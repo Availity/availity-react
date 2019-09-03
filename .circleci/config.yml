@@ -73,7 +73,7 @@ jobs:
             git config --global user.name $GITHUB_USER
       - run:
           command: |
-            npm run release:ci
+            npm run deploy:ci
 workflows:
   version: 2
   build_test_deploy:
