@@ -28,11 +28,12 @@
     "release:ci": "lerna publish --yes",
     "release:canary": "lerna publish -c",
     "add": "sh ./scripts/add.sh",
-    "deploy:storybook": "npm run deploy-docs --prefix packages/storybook",
+    "deploy:storybook": "yarn workspace @availity/storybook deploy-docs",
+    "deploy:docs": "yarn workspace @availity/docs build:deploy && gh-pages -d packages/docs/public",
     "updated": "lerna updated",
     "remove-locks": "find . -type f -name 'package-lock.json' -delete",
     "check": "npm-check -u && lerna exec --bail false --concurrency 1 -- npm-check -u",
-    "new": "plop" 
+    "new": "plop"
   },
   "devDependencies": {
     "@availity/api-axios": "^5.4.0",
@@ -148,5 +149,8 @@
       "commit-msg": "commitlint -e $HUSKY_GIT_PARAMS",
       "pre-commit": "npm test && lint-staged"
     }
+  },
+  "dependencies": {
+    "gh-pages": "^2.1.1"
   }
 }
