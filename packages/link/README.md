@@ -4,30 +4,4 @@
 
 [![Version](https://img.shields.io/npm/v/@availity/link.svg?style=for-the-badge)](https://www.npmjs.com/package/@availity/link)
 
-## Installation
-
-```bash
-npm install @availity/link --save
-```
-
-### Usage
-
-```javascript
-import React from 'react';
-import AvLink from '@availity/link';
-// ...
-<Container>
-  <AvLink url="/public/apps/my-app" target="newBody">
-    {/* ... */}
-  </AvLink>
-</Container>
-// ...
-```
-
-#### Props
-
-- **`url`**: String. Required. The url of the page the link goes to
-- **`target`**: String. Optional. Where to open the linked document
-- **`tag`**: React component. Optional. The tag to use in the link that gets rendered. Defaults to an `<a>` tag
-- **`onClick`**: Function. Optional. Function to run onClick of the tag. The first argument that gets passed to `onClick` is the event. The second is the processed `url`.
-- **`loadApp`**: Boolean. Optional. Default `true`. When `false`, the `url` prop to `AvLink` _will not_ be formatted to leverage loadApp.
+## [Documention](https://availity.github.io/availity-react/components/link)

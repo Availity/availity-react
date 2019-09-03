@@ -1,6 +1,9 @@
 {
   "name": "@availity/availity-react",
   "private": true,
+  "workspaces": [
+    "packages/*"
+  ],
   "description": "React components using Availity UIKit and Bootstrap 4",
   "repository": {
     "type": "git",
@@ -10,7 +13,7 @@
     "format": "prettier --write 'packages/*/*.js' 'packages/*/!(node_modules)/**/*.js' 'packages/*/!(storybook|docs)/**/*.js'",
     "lint": "eslint .",
     "nuke": "npm run remove-locks && npm run clean",
-    "bootstrap": "lerna bootstrap --no-package-locks",
+    "bootstrap": "lerna bootstrap --use-workspaces",
     "lerna": "lerna",
     "codecov:ci": "codecov",
     "link": "lerna link",
@@ -19,6 +22,7 @@
     "test:ci": "jest --runInBand --collectCoverage",
     "postinstall": "npm run bootstrap",
     "start": "npm start --prefix packages/storybook",
+    "start:docs": "yarn workspace @availity/docs start",
     "build:storybook": "npm run build --prefix packages/storybook",
     "release": "lerna publish",
     "release:ci": "lerna publish --yes",
@@ -28,7 +32,7 @@
     "updated": "lerna updated",
     "remove-locks": "find . -type f -name 'package-lock.json' -delete",
     "check": "npm-check -u && lerna exec --bail false --concurrency 1 -- npm-check -u",
-    "new": "plop"
+    "new": "plop" 
   },
   "devDependencies": {
     "@availity/api-axios": "^5.4.0",

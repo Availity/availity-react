@@ -1,4 +1,6 @@
-## Contributing
+---
+title: Contributing
+---
 
 This is a monorepo managed using [lerna](https://github.com/lerna/lerna) in independent mode (each packages is versioned and published individually).
 

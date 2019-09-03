@@ -1,0 +1,62 @@
+{
+	"private": true,
+	"name": "@availity/docs",
+	"version": "1.0.0",
+	"license": "MIT",
+	"keywords": [
+		"react",
+		"availity"
+	],
+	"repository": {
+		"type": "git",
+		"url": "git+ssh://git@github.com/Availity/availity-react.git"
+	},
+	"bugs": {
+		"url": "https://github.com/Availity/availity-react/issues"
+	},
+	"scripts": {
+		"start":"gatsby develop"
+	},
+	"dependencies": {		
+		"@availity/gatsby-theme": "^1.0.2",
+		"@availity/api-axios": "^5.4.0",
+		"@availity/api-core": "^5.4.0",
+		"@availity/app-icon": "^1.2.3",
+		"@availity/authorize": "^1.2.2",
+		"@availity/avatar": "^0.2.3",
+		"@availity/breadcrumbs": "^3.0.3",
+		"@availity/date": "^0.1.6",
+		"@availity/favorites": "^2.0.1",
+		"@availity/feature": "^1.1.8",
+		"@availity/feedback": "^5.0.8",
+		"@availity/form": "^0.2.4",
+		"@availity/hooks": "^1.5.2",
+		"@availity/icon": "^0.5.0",
+		"@availity/link": "^1.2.2",
+		"@availity/list-group": "^1.1.8",
+		"@availity/list-group-item": "^1.1.9",
+		"@availity/localstorage-core": "^2.6.1",
+		"@availity/page-header": "^7.0.3",
+		"@availity/pagination": "^2.3.5",
+		"@availity/payer-logo": "^4.0.0",
+		"@availity/progress": "^1.1.1",
+		"@availity/reactstrap-validation-date": "^3.1.1",
+		"@availity/reactstrap-validation-select": "^5.0.0",
+		"@availity/select": "^0.3.5",
+		"@availity/spaces": "^3.0.1",
+		"@availity/step-wizard": "^1.2.4",
+		"@availity/training-link": "^1.1.7",
+		"@availity/typography": "^1.1.2",
+		"@availity/upload": "^2.0.6",
+		"@availity/upload-core": "^3.0.4",
+		"@availity/yup": "^1.1.1",
+		"availity-reactstrap-validation": "2.6.0",
+		"axios": "^0.18.0",
+		"gatsby": "^2.13.83",
+		"react": "^16.8.3",
+		"react-dom": "^16.8.3",
+		"reactstrap": "^8.0.1",
+		"yup": "^0.27.0",
+		"formik": "^2.0.1-rc.12"
+	}
+}
