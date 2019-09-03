@@ -9,12 +9,12 @@ jobs:
     steps:
       - checkout
       - restore_cache: # special step to restore the dependency cache
-          key: dependency-cache-{{ checksum "package.json" }}
+          key: dependency-cache-{{ checksum "yarn.lock" }}
       - run:
           name: Setup Dependencies
-          command: npm install
+          command: yarn install
       - save_cache: # special step to save the dependency cache
-          key: dependency-cache-{{ checksum "package.json" }}
+          key: dependency-cache-{{ checksum "yarn.lock" }}
           paths:
             - ./node_modules
       - run:
@@ -34,12 +34,35 @@ jobs:
     steps:
       - checkout
       - restore_cache: # special step to restore the dependency cache
-          key: dependency-cache-{{ checksum "package.json" }}
+          key: dependency-cache-{{ checksum "yarn.lock" }}
       - run:
           name: Setup Dependencies
-          command: npm install
+          command: yarn install
       - save_cache: # special step to save the dependency cache
-          key: dependency-cache-{{ checksum "package.json" }}
+          key: dependency-cache-{{ checksum "yarn.lock" }}
+          paths:
+            - ./node_modules
+      - run:
+          name: Authenticate
+          command: |
+            echo "//registry.npmjs.org/:_authToken=$NPM_TOKEN" >> ~/.npmrc
+            git config --global user.email $GITHUB_EMAIL
+            git config --global user.name $GITHUB_USER
+      - run:
+          command: |
+            npm run release:ci
+  deploy-docs:
+    docker:
+      - image: circleci/node:10
+    steps:
+      - checkout
+      - restore_cache: # special step to restore the dependency cache
+          key: dependency-cache-{{ checksum "yarn.lock" }}
+      - run:
+          name: Setup Dependencies
+          command: yarn install
+      - save_cache: # special step to save the dependency cache
+          key: dependency-cache-{{ checksum "yarn.lock" }}
           paths:
             - ./node_modules
       - run:
@@ -61,6 +84,14 @@ workflows:
           context: availity-deploy
           requires:
             - build
+          filters:
+            branches:
+              only: master
+      - deploy-docs:
+          context: availity-deploy
+          requires:
+            - build
+            - deploy
           filters:
             branches:
               only: master
