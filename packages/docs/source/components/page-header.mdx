@@ -35,10 +35,10 @@ The standard Availity application header which appears at the top of the page. I
 - **`branded`**: String. Optional. Triggers the app icon's "branded" styles. Only used if the app icon should appear.
 - **`payerId`**: String. Optional. The ID of the payer if the application is payer specific. If provided the payer logo will appear and not the app icon.
 - **`feedback`**: Boolean. Optional. If `true` the feedback loop button will appear. Default: `false`.
-- **`feedbackProps`**: See [Feedback](../feedback). Props to send to `<Feedback />` component
-- **`crumbs`**: Array(Object) or [BreadCrumbs](../breadcrumbs) . Optional. Array of Objects contains `name` (String) and `url` (string) properties. Optional. The ancestor pages which gets passed to the `Breadcrumbs` component. See the children props sections of the @availity/Breadcrumbs documentation
+- **`feedbackProps`**: See [Feedback](/components/feedback). Props to send to `<Feedback />` component
+- **`crumbs`**: Array(Object) or [BreadCrumbs](/components/breadcrumbs) . Optional. Array of Objects contains `name` (String) and `url` (string) properties. Optional. The ancestor pages which gets passed to the `Breadcrumbs` component. See the children props sections of the @availity/Breadcrumbs documentation
 - **`component`**: Component. Optional. Allow rendering of an optional component in the top right of the header.
-- **`clientId`**: String. Optional. client id to use in [spaces](../spaces) to fetch the payer's logo
+- **`clientId`**: String. Optional. client id to use in [spaces](/components/spaces) to fetch the payer's logo
 - **`iconSrc`**: String. Optional. Image source for `AppIcon` instead of `appAbbr`
 - **`iconAlt`**: String. Required if `iconSrc`. Image alt property of `AppIcon`
 
