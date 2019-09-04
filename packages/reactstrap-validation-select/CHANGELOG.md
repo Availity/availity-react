@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [5.0.1](https://github.com/Availity/availity-react/compare/@availity/reactstrap-validation-select@5.0.0...@availity/reactstrap-validation-select@5.0.1) (2019-09-04)
+
+
+### Bug Fixes
+
+* **reactstrap-validation-select:** use valueKey for newly created options if applicable ([d402dc7](https://github.com/Availity/availity-react/commit/d402dc7))
+
+
+
+
+
 # [5.0.0](https://github.com/Availity/availity-react/compare/@availity/reactstrap-validation-select@4.4.1...@availity/reactstrap-validation-select@5.0.0) (2019-08-19)
 
 
