@@ -15,48 +15,13 @@ https://codecov.io/gh/Availity/availity-react)
 * Google Chrome
 * Mozilla Firefox
 
-## Demo
-
+## Storybook
 https://availity-react-preview.netlify.com
 
-## Documentation
+## Gatsby Docs
+https://availity.github.io/availity-react
 
-* [app-icon](packages/app-icon/README.md) - Availity UI Kit application icon react component.
-* [authorize](packages/authorize/README.md) - Check user permissions to see if the current user is authorized to see your content.
-* [avatar](packages/avatar/README.md) - Availity user avatar component
-* [breadcrumbs](packages/breadcrumbs/README.md) - Breadcrumbs component for Spaces platform.
-* [date](packages/date/README.md) - Wrapper for [react-dates](https://github.com/airbnb/react-dates) to work with [formik](https://github.com/jaredpalmer/formik)
-* [favorites](packages/favorites/README.md) - Favorite Heart for favoriting items such as resources/applications etc.
-* [feature](packages/feature/README.md) - Check environment features for the current environment to determine if a particular feature is enabled.
-* [feedback](packages/feedback/README.md) - Availity feedback with simley faces react component.
-* [form](packages/form/README.md) - Availity form components that are wired to be hooked up to [formik](https://github.com/jaredpalmer/formik)
-* [hooks](packages/hooks/README.md) - Custom Hooks that can be used in any projects.
-* [icon](packages/icon/README.md) - Icon Component using sizes and icons from availity-uikit.
-* [link](packages/link/README.md) - Availity Link component
-* [list-group](packages/list-group/README.md) - List Group with some Availity flair.
-* [list-group-item](packages/list-group-item/README.md) - List Group Item with some Availity flair.
-* [page-header](packages/page-header/README.md) - The standard page header for Availity Portal Applications.
-* [pagination](packages/pagination/README.md) - Pagination the Availity Way.
-* [payer-logo](packages/payer-logo/README.md) - Easy to use component to display the payer's logo given the payer's ID.
-* [progress](packages/progress/README.md) - Availity Progress Bar
-* [reactstrap-validation-date](packages/reactstrap-validation-date/README.md) - Wrapper for react-date-range to work with availity-reactstrap-validation
-* [reactstrap-validation-select](packages/reactstrap-validation-select/README.md) - Wrapper for react-select to work with availity-reactstrap-validation
-* [select](packages/select/README.md) - Wrapper for [react-select-async-paginate](https://github.com/vtaits/react-select-async-paginate) to work with [formik](https://github.com/jaredpalmer/formik)
-* [spaces](packages/spaces/README.md) - Easy to use spaces components
-* [step-wizard](packages/step-wizard/README.md) - Step Wizard - the Availity Way
-* [training-link](packages/training-link/README.md) - Component for allowing link out to training in the Header component.
-* [typography](packages/typography/README.md) - Availity typography components
-* [upload](packages/upload/README.md) - Availity upload component for uploading files.
-
-## Adding a New Package
-
-1. 
-```bash
-$ npm run new
-```
-
-2. Add link to new package in README
-
+## [Contributing](./CONTRIBUTING.md)
 ## Additional Notes
 We use `data-testid` for unit tests to use for grabbing unique attributes. If you are using `availity-workflow@6.0.0` or later it will be removed for you in production builds. However, if you don't want it and not using workflow, you will need to add the following babel plugin to remove it: 
 - [babel-plugin-jsx-remove-data-test-id](https://github.com/coderas/babel-plugin-jsx-remove-data-test-id)
