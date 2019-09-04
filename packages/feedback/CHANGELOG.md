@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [5.1.0](https://github.com/Availity/availity-react/compare/@availity/feedback@5.0.8...@availity/feedback@5.1.0) (2019-09-04)
+
+
+### Features
+
+* **docs:** updated to use yarn and added readmes ([3b94748](https://github.com/Availity/availity-react/commit/3b94748))
+
+
+
+
+
 ## [5.0.8](https://github.com/Availity/availity-react/compare/@availity/feedback@5.0.7...@availity/feedback@5.0.8) (2019-08-23)
 
 **Note:** Version bump only for package @availity/feedback

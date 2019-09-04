@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.6.0](https://github.com/Availity/availity-react/compare/@availity/icon@0.5.0...@availity/icon@0.6.0) (2019-09-04)
+
+
+### Features
+
+* **docs:** updated to use yarn and added readmes ([3b94748](https://github.com/Availity/availity-react/commit/3b94748))
+
+
+
+
+
 # [0.5.0](https://github.com/Availity/availity-react/compare/@availity/icon@0.4.3...@availity/icon@0.5.0) (2019-08-23)
 
 

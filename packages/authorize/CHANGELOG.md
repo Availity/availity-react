@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [1.3.0](https://github.com/Availity/availity-react/compare/@availity/authorize@1.2.2...@availity/authorize@1.3.0) (2019-09-04)
+
+
+### Features
+
+* **docs:** updated to use yarn and added readmes ([3b94748](https://github.com/Availity/availity-react/commit/3b94748))
+
+
+
+
+
 ## [1.2.2](https://github.com/Availity/availity-react/compare/@availity/authorize@1.2.1...@availity/authorize@1.2.2) (2019-08-19)
 
 **Note:** Version bump only for package @availity/authorize

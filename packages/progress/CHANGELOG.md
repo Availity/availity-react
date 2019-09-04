@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [1.2.0](https://github.com/Availity/availity-react/compare/@availity/progress@1.1.1...@availity/progress@1.2.0) (2019-09-04)
+
+
+### Features
+
+* **docs:** updated to use yarn and added readmes ([3b94748](https://github.com/Availity/availity-react/commit/3b94748))
+
+
+
+
+
 ## [1.1.1](https://github.com/Availity/availity-react/compare/@availity/progress@1.1.0...@availity/progress@1.1.1) (2019-06-24)
 
 **Note:** Version bump only for package @availity/progress
