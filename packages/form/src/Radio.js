@@ -5,7 +5,14 @@ import classNames from 'classnames';
 import { useRadioGroup } from './RadioGroup';
 import FormGroup from './FormGroup';
 
-const Radio = ({ label, id, value: checkValue, className, ...attributes }) => {
+const Radio = ({
+  label,
+  id,
+  value: checkValue,
+  className,
+  children,
+  ...attributes
+}) => {
   const { value, setValue, metadata } = useRadioGroup(checkValue);
 
   const classes = classNames(
@@ -27,7 +34,7 @@ const Radio = ({ label, id, value: checkValue, className, ...attributes }) => {
         onChange={setValue}
       />
       <Label check for={id || checkValue}>
-        {label}
+        {label || children}
       </Label>
     </FormGroup>
   );
@@ -36,9 +43,10 @@ const Radio = ({ label, id, value: checkValue, className, ...attributes }) => {
 Radio.propTypes = {
   id: PropTypes.string,
   label: PropTypes.string,
-  value: PropTypes.string,
+  value: PropTypes.object,
   disabled: PropTypes.bool,
   className: PropTypes.string,
+  children: PropTypes.node,
 };
 
 export default Radio;
