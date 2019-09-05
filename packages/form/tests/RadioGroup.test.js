@@ -72,4 +72,32 @@ describe('RadioGroup', () => {
       );
     });
   });
+
+  test('calls on change callback', async () => {
+    const onChange = jest.fn();
+    const { getByText } = render(
+      <Form
+        initialValues={{
+          hello: '',
+        }}
+        // eslint-disable-next-line no-undef
+        validationSchema={yup.object().shape({
+          hello: yup.string().required('This field is required'),
+        })}
+      >
+        <RadioGroup name="hello" onChange={onChange} label="Radio Group">
+          <Radio label="Radio One" value="uno" />
+          <Radio label="Radio Two" value="dos" />
+          <Radio label="Radio Three" value="tres" />
+        </RadioGroup>
+        <Button type="submit">Submit</Button>
+      </Form>
+    );
+
+    await fireEvent.click(getByText('Radio One'));
+
+    await wait(() => {
+      expect(onChange).toHaveBeenCalledWith('uno');
+    });
+  });
 });

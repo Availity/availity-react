@@ -9,7 +9,7 @@ export const CheckboxGroupContext = createContext();
 
 export const useCheckboxGroup = name => {
   const { setFieldValue } = useFormikContext();
-  const { name: groupName, value = [], ...rest } = useContext(
+  const { name: groupName, groupOnChange, value = [], ...rest } = useContext(
     CheckboxGroupContext
   );
 
@@ -25,11 +25,22 @@ export const useCheckboxGroup = name => {
     }
 
     setFieldValue(groupName, valueArray);
+
+    if (groupOnChange) {
+      groupOnChange(valueArray);
+    }
   };
 
   return { toggle, value: value.includes(name), ...rest };
 };
-const CheckboxGroup = ({ name, children, label, ...rest }) => {
+
+const CheckboxGroup = ({
+  name,
+  children,
+  onChange: groupOnChange,
+  label,
+  ...rest
+}) => {
   const [field, metadata] = useField(name);
 
   const classes = classNames(
@@ -41,7 +52,9 @@ const CheckboxGroup = ({ name, children, label, ...rest }) => {
   const legend = label ? <legend>{label}</legend> : '';
 
   return (
-    <CheckboxGroupContext.Provider value={{ ...field, metadata }}>
+    <CheckboxGroupContext.Provider
+      value={{ ...field, groupOnChange, metadata }}
+    >
       <FormGroup tag="fieldset" for={name} {...rest}>
         {legend}
         <div className={classes} data-testid={`check-items-${name}`}>
@@ -57,6 +70,7 @@ CheckboxGroup.propTypes = {
   name: PropTypes.string,
   children: PropTypes.node,
   label: PropTypes.string,
+  onChange: PropTypes.func,
 };
 
 export default CheckboxGroup;

@@ -7,17 +7,29 @@ import FormGroup from './FormGroup';
 
 export const RadioGroupContext = createContext();
 
-export const useRadioGroup = name => {
+export const useRadioGroup = radioValue => {
   const { setFieldValue } = useFormikContext();
-  const { name: groupName, value = '', ...rest } = useContext(
+  const { name: groupName, value = '', groupOnChange, ...rest } = useContext(
     RadioGroupContext
   );
 
-  const setValue = () => setFieldValue(groupName, name);
+  const setValue = () => {
+    setFieldValue(groupName, radioValue);
+    if (groupOnChange) {
+      groupOnChange(radioValue);
+    }
+  };
 
-  return { setValue, value: value === name, ...rest };
+  return { setValue, value: value === radioValue, ...rest };
 };
-const RadioGroup = ({ name, children, label, ...rest }) => {
+
+const RadioGroup = ({
+  name,
+  children,
+  label,
+  onChange: groupOnChange,
+  ...rest
+}) => {
   const [field, metadata] = useField(name);
 
   const classes = classNames(
@@ -29,7 +41,7 @@ const RadioGroup = ({ name, children, label, ...rest }) => {
   const legend = label ? <legend>{label}</legend> : '';
 
   return (
-    <RadioGroupContext.Provider value={{ ...field, metadata }}>
+    <RadioGroupContext.Provider value={{ ...field, groupOnChange, metadata }}>
       <FormGroup tag="fieldset" for={name} {...rest}>
         {legend}
         <div className={classes} data-testid={`radio-items-${name}`}>
@@ -45,6 +57,7 @@ RadioGroup.propTypes = {
   name: PropTypes.string,
   children: PropTypes.node,
   label: PropTypes.string,
+  onChange: PropTypes.func,
 };
 
 export default RadioGroup;
