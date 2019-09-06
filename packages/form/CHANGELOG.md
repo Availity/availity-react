@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.3.2](https://github.com/Availity/availity-react/compare/@availity/form@0.3.1...@availity/form@0.3.2) (2019-09-06)
+
+
+### Bug Fixes
+
+* **form:** change label to PropTypes.node for Radio and RadioGroup ([fcc237d](https://github.com/Availity/availity-react/commit/fcc237d))
+
+
+
+
+
 ## [0.3.1](https://github.com/Availity/availity-react/compare/@availity/form@0.3.0...@availity/form@0.3.1) (2019-09-05)
 
 **Note:** Version bump only for package @availity/form
