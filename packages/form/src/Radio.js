@@ -43,7 +43,11 @@ const Radio = ({
 Radio.propTypes = {
   id: PropTypes.string,
   label: PropTypes.node,
-  value: PropTypes.object,
+  value: PropTypes.oneOfType([
+    PropTypes.string,
+    PropTypes.bool,
+    PropTypes.object,
+  ]),
   disabled: PropTypes.bool,
   className: PropTypes.string,
   children: PropTypes.node,
