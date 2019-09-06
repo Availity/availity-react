@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.3.3](https://github.com/Availity/availity-react/compare/@availity/form@0.3.2...@availity/form@0.3.3) (2019-09-06)
+
+
+### Bug Fixes
+
+* **form:** update value for Radio to be one of string, bool, or object. Update radio typings ([a76b8c9](https://github.com/Availity/availity-react/commit/a76b8c9))
+
+
+
+
+
 ## [0.3.2](https://github.com/Availity/availity-react/compare/@availity/form@0.3.1...@availity/form@0.3.2) (2019-09-06)
 
 
