@@ -1,14 +1,15 @@
-const themeOptions = require('@availity/gatsby-theme/theme-options');
+const themeOptions = require('@availity/gatsby-theme-docs/theme-options');
 
 module.exports = {
   pathPrefix: '/availity-react',
   __experimentalThemes: [
     {
-      resolve: '@availity/gatsby-theme',
+      resolve: '@availity/gatsby-theme-docs',
       options: {
         ...themeOptions,
         root: __dirname,
         subtitle: 'React Components',
+        contentDir: 'packages/docs/source',
         description: 'Documentation for React Components',
         githubRepo: 'availity/availity-react',
         sidebarCategories: {
