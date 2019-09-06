@@ -11,22 +11,30 @@ summary: Simple icon component that is a wrapper for the icons in the availity u
 npm install @availity/icon --save
 ```
 
-### Usage
+## Usage
+import Icon from '@availity/icon';
 
-```javascript
+<div className="w-100 d-flex flex-row justify-content-around align-items-center">
+  <Icon name="home" size="3x" color="primary" />
+</div>
+
+```jsx
 import React from 'react';
 import Icon from '@availity/icon';
-// ...
+
 <Container>
     <Icon name="home" size="3x" color="primary" />
 </Container>
-// ...
 ```
 
-#### Arguments
+## Props
 
-- **`name`**: String. Required. The name of the icon you want to display. **[Icon List](http://availity.github.io/availity-uikit/v3/icons)**
-- **`size`**: String or Number. Optional. The size from the list of `['lg','xl','2x','3x','4x','5x']` for the size of the icon.
-- **`color`**: String. Optional. The text color you would like the icon to be. Uses bootstrap 4 color names.
+| Prop Name        | Types   | Required | Default   | Description                                                                                                                       |
+| -------------    | ------- | -------- | --------  | --------------------------------------------------------------------------------------                                            |
+| **`name`**       | String  | true     |           | The name of the icon you want to display. **[Icon List](http://availity.github.io/availity-uikit/v3/icons)**                      |
+| **`size`**       | String  | false    |           | The size of the icon. Potential values: `"lg"`, `"xl"`, `"2x"`, `"3x"`, `"'4x"`, `"5x"`                                           |
+| **`color`**      | String  | false    |           | The text color you would like the icon to be. Uses availity ui kit variants                                                       |
+| **`className`**  | String  | false    |           | Additional styles to pass onto the icon                                                                                           |
+| **`aria-label`** | String  | false    | `${name}` | See: [aria-label](https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/ARIA_Techniques/Using_the_aria-label_attribute) |
 
-Note the name of the icon you put in doesn't require the `icon-` prefix just the name given in the availity uikit docs.
+Note: the name of the icon you put in doesn't require the `icon-` prefix just the name given in the availity uikit docs.

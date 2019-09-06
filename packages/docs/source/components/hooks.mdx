@@ -13,7 +13,7 @@ npm install @availity/hooks --save
 
 ### Usage
 
-```javascript
+```jsx
 import React from 'react';
 import { useToggle, useEffectAsync } from '@availity/hooks';
 // ...
@@ -42,7 +42,7 @@ Simple hook that returns a boolean that can easily be toggled. Useful for loader
 
 ##### useToggle Usage
 
-```javascript
+```jsx
 import React from 'react';
 import { useToggle } from '@availity/hooks';
 // ...
@@ -56,7 +56,7 @@ const Component = () => {
 
 You can also pass the state you are looking to set the toggle to and if its already set it will not perform a state update.
 
-```javascript
+```jsx
 // This component will never re-render because the toggle is already set to `true`
 const Component = () => {
     const [isToggled,toggle] = useToggle(true);
@@ -76,7 +76,7 @@ Hook that will allow asynchronous functions to be called in the standard `useEff
 
 ##### useEffectAsync Usage
 
-```javascript
+```jsx
 import React, { useState } from 'react';
 import { useEffectAsync } from '@availity/hooks';
 // ...
@@ -103,7 +103,7 @@ Hook that will return `true` after the given amount of time in milliseconds.
 
 ##### useTimeout Usage
 
-```javascript
+```jsx
 import React, { useState } from 'react';
 import { useTimeout } from '@availity/hooks';
 // ...
@@ -125,7 +125,7 @@ Hook that will run a function on mount and dismount if a function is returned.
 
 ##### useMount Usage
 
-```javascript
+```jsx
 import React, { useState } from 'react';
 import { useMount } from '@availity/hooks';
 // ...

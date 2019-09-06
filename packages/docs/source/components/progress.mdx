@@ -5,33 +5,41 @@ summary: Availity Progress Bar
 
 [![Version](https://img.shields.io/npm/v/@availity/progress.svg?style=for-the-badge)](https://www.npmjs.com/package/@availity/progress)
 
+Availity Progress Bar
+
 ## Installation
 
 ```bash
 npm install @availity/progress --save
 ```
 
-### Usage
+## Usage
 
-```javascript
-import React from 'react';
 import Progress from '@availity/progress';
 
-// ...
-  <div>
-    <p>50% Complete</p>
-    <Progress animated={false} striped complete={false} value={50} max={100} />
-  </div>
-// ...
+<div className="w-100 d-flex flex-row justify-content-around align-items-center">
+  <p>50% Complete</p>
+  <Progress animated={false} striped complete={false} value={50} max={100} />
+</div>
+
+```jsx
+import Progress from '@availity/progress';
+
+<div>
+  <p>50% Complete</p>
+  <Progress animated={false} striped complete={false} value={50} max={100} />
+</div>
 ```
 
-#### Progress (Default export)
-Availity Progress Bar
+## Props
 
-##### Props
-- **`value`**: Number. Optional. Default 0. The amount the progress bar that should be filled (relative to the `max`)
-- **`max`**: Number. Optional. Default 100. The maximum amount of the progress bar
-- **`animated`**: Boolean. Optional. Triggers the "animated" style in the progress bar.
-- **`striped`**: Boolean. Optional. Triggers the "striped" style in the progress bar.
-- **`complete`**: Boolean. Optional. Triggers the "complete" style in the progress bar. When true, a checkmark appears at the end of the progress bar
-- **`color`**: String. Optional. Default "success". The color of the progress bar
+| Prop Name       | Types       | Required | Default     | Description                                                                                                      |
+| -------------   | -------     | -------- | --------    | --------------------------------------------------------------------------------------                           |
+| **`tag`**       | String,Node | false    | `<div>`     | The tag to render the progress bar as.                                                                           |
+| **`animated`**  | Boolean     | false    |             | Triggers the "animated" style in the progress bar.                                                               |
+| **`striped`**   | Boolean     | false    |             | Triggers the "striped" style in the progress bar.                                                                |
+| **`complete`**  | Boolean     | false    |             | Triggers the "complete" style in the progress bar. When true, a checkmark appears at the end of the progress bar |
+| **`value`**     | Number      | false    | `0`         | The amount the progress bar that should be filled (relative to the `max`)                                        |
+| **`max`**       | Number      | false    | `100`       | The maximum amount of the progress bar                                                                           |
+| **`className`** | String      | false    |             | Additional styles to be passed onto the progress bar                                                             |
+| **`color`**     | String      | false    | `"success"` | The color of the progress bar                                                                                    |

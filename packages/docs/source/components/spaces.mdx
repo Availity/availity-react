@@ -17,25 +17,27 @@ This is the provider component needed for `@availity/spaces` components to work.
 
 ### Props
 
-- **`clientId`**: String. **Required** clientId to use in slotmachine request
-- **`query`**: String. Optional. Override the default slotmachine query
-- **`variables`**: Object. Override the default variables used in the slotmachine query
-- **`spaces`**: Object array. Array of spaces to be passed into the Spaces provider. Useful for if you already have the spaces in your app and don't want the spaces provider to have to fetch them again.
-- **`spaceIds`**: String array. Array of spaceIds the Spaces provider should fetch the spaces for. Any `spaceIds` already included in `spaces` will not be fetched again.
-- **`payerIds`**: String array. Array of payerIds the Spaces provider should fetch the spaces for. Any `payerIds` already included in `spaces` will not be fetched again.
+| Prop Name       | Types         | Required | Default  | Description                                                                                                                                                                  |
+| -------------   | -------       | -------- | -------- | --------------------------------------------------------------------------------------                                                                                       |
+| **`clientId`**  | String        | true     |          | clientId to use in slotmachine request                                                                                                                                       |
+| **`query`**     | String        | false    |          | Override the default slotmachine query                                                                                                                                       |
+| **`variables`** | Object        | false    |          | Override the default variables used in the slotmachine query                                                                                                                 |
+| **`spaces`**    | Array<Object> | false    |          | Array of spaces to be passed into the Spaces provider. Useful for if you already have the spaces in your app and don't want the spaces provider to have to fetch them again. |
+| **`spaceIds`**  | Array<String> | false    |          | Array of spaceIds the Spaces provider should fetch the spaces for. Any `spaceIds` already included in `spaces` will not be fetched again.                                    |
+| **`payerIds`**  | Array<String> | false    |          | Array of payerIds the Spaces provider should fetch the spaces for. Any `payerIds` already included in `spaces` will not be fetched again.                                    |
 
-### Images
+## Images
 
-#### Usage
+### Usage
 
-```javascript
+```jsx
 import React from 'react';
 import Spaces, {
   SpacesLogo,
   SpacesBillboard,
   SpacesTile,
 } from '@availity/spaces';
-// ...
+
 <Spaces
   spaceIds={['73162546201441126239486200007187']}
   payerIds={['PayerID']}
@@ -45,98 +47,99 @@ import Spaces, {
   <SpacesBillboard payerId="PayerID" />
   <SpacesTile payerId="PayerID" />
 </Spaces>;
-// ...
 ```
 
-#### SpacesLogo (Named export)
+### SpacesLogo (Named export)
 
 Display the Space's logo
 
-#### SpacesTile (Named export)
+### SpacesTile (Named export)
 
 Display the Space's tile
 
-#### SpacesBillboard (Named export)
+### SpacesBillboard (Named export)
 
 Display the Space's billboard
 
-##### Props
+### Props
 
-At least one of the following props must be provided:
+| Prop Name           | Types   | Required | Default  | Description                                                                                                                                                                                                                                       |
+| -------------       | ------- | -------- | -------- | --------------------------------------------------------------------------------------                                                                                                                                                            |
+| **`spaceId`**       | String  | false    |          | Required if `payerId` is not provided. The payer spaces ID for the payer for which you want a image. If no `spaceId` or `payerId` passed, will use the first space in the `spaces` array. Note this is only to be used in single space use cases. |
+| **`payerId`**       | String  | false    |          | Required if `spaceId` is not provided. The payer ID for the payer for which you want a image. If no `spaceId` or `payerId` passed, will use the first space in the `spaces` array. Note this is only to be used in single space use cases.        |
+| **`skeletonProps`** | Object  | false    |          | Dimensions passed to loader to show while the image is loading.                                                                                                                                                                                   |
+| **`fallback`**      | String  | false    |          | If the url for the spaces image is not valid or not found, this fallback image url will be rendered.                                                                                                                                              |
 
-- **`spaceId`**: String. Optional, required if `payerId` is not provided. The payer spaces ID for the payer for which you want a image. If no `spaceId` or `payerId` passed, will use the first space in the `spaces` array. Note this is only to be used in single space use cases.
-- **`payerId`**: String. Optional, required if `spaceId` is not provided. The payer ID for the payer for which you want a image. If no `spaceId` or `payerId` passed, will use the first space in the `spaces` array. Note this is only to be used in single space use cases.
-- **`skeletonProps`**: object. Optional, dimensions passed to loader to show while the image is loading.
-- **`fallback`**: String. Optional. If the url for the spaces image is not valid or not found, this fallback image url will be rendered.
-
-### SpacesDisclaimer (Named Export)
+## SpacesDisclaimer (Named Export)
 
 Display the disclaimer for a given space id.
 
-#### Props
+### Props
 
-- **`spaceId`**: String. optional. The id of the space to render the disclaimer for. If no spaceId passed, will default to the first space in the `spaces` array.
-- **`markdown`**: Boolean. Optional. Default: false. Whether to render the disclaimer as markdown
-- **`styled`**: Boolean. Optional. See [Disclaimer](/components/typography)
+| Prop Name      | Types   | Required | Default  | Description                                                                                                                    |
+| -------------  | ------- | -------- | -------- | --------------------------------------------------------------------------------------                                         |
+| **`spaceId`**  | String  | false    |          | The id of the space to render the disclaimer for. If no spaceId passed, will default to the first space in the `spaces` array. |
+| **`markdown`** | Boolean | false    | `false`  | Render the disclaimer as markdown                                                                                              |
+| **`styled`**   | Boolean | false    |          | See [Disclaimer](https://github.com/Availity/availity-react/tree/master/packages/typography)                                   |
 
-#### Usage
+### Usage
 
-```javascript
+```jsx
 import React from 'react';
 import Spaces, { SpacesDisclaimer } from '@availity/spaces';
-// ...
+
 <Spaces spaceIds={['73162546201441126239486200007187']} clientId="my-client-id">
   <SpacesDisclaimer
     markdown
     styled
   />
 </Spaces>;
-// ...
 ```
 
-### SpacesGhostText (Named Export)
+## SpacesGhostText (Named Export)
 
 Display the ghost text for a given space. Renders `null` if the ghost text should not display.
 
-#### Props
+### Props
 
-- **`spaceId`**: String. The id of the space to render the ghost text for. If no spaceId passed, will default to the first space in the `spaces` array.
+| Prop Name     | Types   | Required | Default  | Description                                                                                                                    |
+| ------------- | ------- | -------- | -------- | --------------------------------------------------------------------------------------                                         |
+| **`spaceId`** | String  | false    |          | The id of the space to render the ghost text for. If no spaceId passed, will default to the first space in the `spaces` array. |
 
-#### Usage
+### Usage
 
-```javascript
+```jsx
 import React from 'react';
 import Spaces, { SpacesGhostText } from '@availity/spaces';
-// ...
+
 <Spaces spaceIds={['73162546201441126239486200007187']} clientId="my-client-id">
   <SpacesGhostText />
 </Spaces>;
-// ...
 ```
 
-### useSpace
+## useSpace
 
 This is a custom hook for grabbing any Spaces data you may need from the `Spaces` provider.
 
-#### Example usage
+### Usage
 
-```javascript
+```jsx
 import React from 'react';
 import { useSpace } from '@availity/spaces';
-// ...
+
 const SpacesComponent = () => {
   // id can be a space or a payer id
   const { space, isGhost, loading } = useSpace(id);
 };
 ```
 
-### SpacesContext
+## SpacesContext
 
 If you are using a class component, you can subscribe to the spaces by using this context.
 
-#### Example usage
+### Usage
 
-```javascript
+```jsx
 import React from 'react';
 import { SpacesContext } from '@availity/spaces';
 // ...

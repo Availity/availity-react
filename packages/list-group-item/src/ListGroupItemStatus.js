@@ -20,17 +20,28 @@ const ListItemStatus = ({ color, titleContent, children, badge, ...props }) => {
       </Badge>
     );
     title = (
-      <div className="d-flex py-1 justify-content-between align-items-baseline" data-testid="lgi-content-wrapper">
+      <div
+        className="d-flex py-1 justify-content-between align-items-baseline"
+        data-testid="lgi-content-wrapper"
+      >
         {titleContent}
         {useBadge}
       </div>
     );
   } else if (typeof title === 'string') {
-    title = <div className="py-1" data-testid="lgi-title-content">{titleContent}</div>;
+    title = (
+      <div className="py-1" data-testid="lgi-title-content">
+        {titleContent}
+      </div>
+    );
   }
 
   return (
-    <ListGroupItem data-testid="list-group-item-status-id" {...props} borderColor={borderColor}>
+    <ListGroupItem
+      data-testid="list-group-item-status-id"
+      {...props}
+      borderColor={borderColor}
+    >
       {title}
       {children}
     </ListGroupItem>
@@ -40,7 +51,7 @@ const ListItemStatus = ({ color, titleContent, children, badge, ...props }) => {
 ListItemStatus.propTypes = {
   titleContent: PropTypes.node,
   children: PropTypes.node.isRequired,
-  color: PropTypes.oneOfType([PropTypes.bool, PropTypes.string]),
+  color: PropTypes.string,
   badge: PropTypes.oneOfType([
     PropTypes.bool,
     PropTypes.string,

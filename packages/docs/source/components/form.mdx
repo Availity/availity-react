@@ -168,7 +168,7 @@ Reactstrap `Form` component wrapped in `Formik`
 
 #### Usage
 
-```javascript
+```jsx
 import React from 'react';
 import { Form, Field } from '@availity/form';
 
@@ -191,15 +191,17 @@ const schema = yup.object().shape({
 
 #### Props
 
-- **`initialValues`**: Object. Required. Object of values to initialize the form components with by name.
-- **`onSubmit`**: Function. Required. Action to perform on form submit.
-- **`onReset`**: Function. Optional. Action to perform on form reset.
-- **`initialStatus`**: any. Optional. Arbitrary value for the status of the form.
-- **`initialErrors`**: Object. Optional. Errors to show initially by name.
-- **`initialTouched`**: Object. Optional. Initially touched fields by name.
-- **`validationSchema`**: Object (`yup` preferred). Optional. Validation object for each `name` in the data.
-- **`validate`**: Function. Optional. Returns a true/false within a promise.
-- **`children`**: Node. Optional. Child components to render within the form
+| Prop Name              | Types                    | Required | Default    | Description                                                                            |
+| -------------          | -------                  | -------- | --------   | -------------------------------------------------------------------------------------- |
+| **`initialValues`**    | Object                   | true     |            | Object of values to initialize the form components with by name.                       |
+| **`onSubmit`**         | Function                 | false    | `() => {}` | Action to perform on form submit.                                                      |
+| **`onReset`**          | Function                 | false    |            | Action to perform on form reset.                                                       |
+| **`initialStatus`**    | Any                      | false    |            | Arbitrary value for the status of the form.                                            |
+| **`initialErrors`**    | Object                   | false    |            | Errors to show initially by name.                                                      |
+| **`initialTouched`**   | Object                   | false    |            | Initially touched fields by name.                                                      |
+| **`validationSchema`** | Object (`yup` preferred) | false    |            | Validation object for each `name` in the data.                                         |
+| **`validate`**         | Function                 | false    |            | Returns true/false within a promise.                                                   |
+| **`children`**         | Node                     | false    |            | Child components to render within the form.                                            |
 
 ### Input
 
@@ -207,7 +209,7 @@ Basic Input field that utilizes the `Form` validation
 
 #### Usage
 
-```javascript
+```jsx
 <Form
   initialValues={{
     hello: '',
@@ -222,9 +224,11 @@ Basic Input field that utilizes the `Form` validation
 
 #### Props
 
-- **`name`**: String. Required. Identifies the field and matches the validation key.
-- **`tag`**: Function or String. Optional. Return the Node or tag to substitute as the input field. Defaults to reactstrap `Input`.
-- **`className`**: String. Optional. Class names to pass down to the input.
+| Prop Name       | Types           | Required | Default          | Description                                                                            |
+| -------------   | -------         | -------- | --------         | -------------------------------------------------------------------------------------- |
+| **`name`**      | String          | true     |                  | Identifies the field and matches the validation key.                                   |
+| **`tag`**       | Function,String | false    | Reactstrap Input | The Node or tag to substitute as the input field                                       |
+| **`className`** | String          | false    |                  | Additional styles to pass down to the input.                                           |
 
 ### Field
 
@@ -232,7 +236,7 @@ Input field wrapped in additional features such as label, feedback, grid options
 
 #### Usage
 
-```javascript
+```jsx
 <Form
   initialValues={{
     hello: '',
@@ -247,20 +251,21 @@ Input field wrapped in additional features such as label, feedback, grid options
 
 #### Props
 
-- **`name`**: String. Required. Identifies the field and matches.
-- **`tag`**: Function or String. Optional. Return the Node or tag to substitute as the input field. Defaults to reactstrap `Input`.
-- **`label`**: Node or String. Optional. Displays a label for the field if defined.
-- **`labelHidden`**: Boolean. Optional. Hide the label.
-- **`disabled`**: Boolean. Optional. Disable the field.
-- **`readOnly`**: Boolean. Optional. Mark the field as readOnly.
-- **`size`**: String. Optional. Size of the input field (`lg`/`sm`)
-- **`inputClass`**: String. Optional. Class names passed to the input.
-- **`labelClass`**: String. Optional. Class names passed to the label.
-- **`helpMessage`**: String or Object. Optional. Displays info text below the field if defined.
-- **`errorMessage`**: String or Object. Optional. Pass the error message to show.
-- **`labelAttrs`**: Object. Optional. Pass additional attributes to the label component.
-- **`groupAttrs`**: Object. Optional. Pass additional attributes to the form group component.
-- **`grid`**: Object. Optional. Object mapping number of columns to the label and input.
+| Prop Name         | Types           | Required | Default          | Description                                                                            |
+| -------------     | -------         | -------- | --------         | -------------------------------------------------------------------------------------- |
+| **`name`**        | String          | true     |                  | Identifies the field and matches the validation key.                                   |
+| **`tag`**         | Function,String | false    | Reactstrap Input | The Node or tag to substitute as the input field                                       |
+| **`label`**       | Node            | false    |                  | Displays a Reactstrap `<Label />` for the field                                        |
+| **`labelHidden`** | Boolean         | false    |                  | Hide the `label`                                                                       |
+| **`disabled`**    | Boolean         | false    |                  | Disable the `<Field />`                                                                |
+| **`readOnly`**    | Boolean         | false    |                  | Mark the field as read only.                                                           |
+| **`size`**        | String          | false    |                  | Size of the input field. Potential values: `"lg"`, `"sm"`                              |
+| **`inputClass`**  | String          | false    |                  | Class names passed to the input.                                                       |
+| **`labelClass`**  | String          | false    |                  | Class names passed to the label.                                                       |
+| **`helpMessage`** | Node            | false    |                  | Display info text below the field                                                      |
+| **`labelAttrs`**  | Object          | false    |                  | Pass additional attributes to the label component.                                     |
+| **`groupAttrs`**  | Object          | false    |                  | Pass additional attributes to the form group component.                                |
+| **`grid`**        | Object          | false    |                  | Object mapping number of columns to the label and input.                               |
 
 ### Checkbox
 
@@ -268,7 +273,7 @@ Inputs of type checkbox. Checkboxes should be wrapped in a `CheckboxGroup`
 
 #### Usage
 
-```javascript
+```jsx
 <Form
   initialValues={{
     hello: [],
@@ -289,17 +294,21 @@ Inputs of type checkbox. Checkboxes should be wrapped in a `CheckboxGroup`
 
 ### CheckboxGroup Props
 
-- **`name`**: String. Optional. Should match checkbox id for validation.
-- **`children`**: Node. Optional. Child components to render, use `Checkbox`es.
-- **`label`**: String. Optional. Label for the group of checkboxes.
+| Prop Name      | Types   | Required | Default  | Description                                                                            |
+| -------------  | ------- | -------- | -------- | -------------------------------------------------------------------------------------- |
+| **`name`**     | String  | false    |          | Should match checkbox id for validation.                                               |
+| **`children`** | Node    | false    |          | Child components to render, use `Checkbox`es.                                          |
+| **`label`**    | Node    | false    |          | Label for the group of checkboxes                                                      |
 
-#### Checkbox Props
+### Checkbox Props
 
-- **`id`**: String. Optional. Should match checkboxGroup name for validation.
-- **`label`**: String. Optional. Label to render for this checkbox.
-- **`value`**: String. Optional. Value of the checkbox.
-- **`disabled`**: Boolean. Optional. Disable the checkbox.
-- **`className`**: String. Optional. Class names for the checkboxes.
+| Prop Name       | Types   | Required | Default  | Description                                                                            |
+| -------------   | ------- | -------- | -------- | -------------------------------------------------------------------------------------- |
+| **`id`**        | String  | false    |          | Should match `<CheckboxGroup />` name for validation.                                  |
+| **`label`**     | Node    | false    |          | Label for the checkbox                                                                 |
+| **`value`**     | String  | false    |          | Value of the checkbox                                                                  |
+| **`disabled`**  | Boolean | false    |          | Disable the checkbox                                                                   |
+| **`className`** | String  | false    |          | Class names for the checkbox                                                           |
 
 ### Radio
 
@@ -307,7 +316,7 @@ Inputs of type radio. Radios should be wrapped in a `RadioGroup`.
 
 #### Usage
 
-```javascript
+```jsx
 <Form
   initialValues={{
     hello: '',
@@ -328,17 +337,21 @@ Inputs of type radio. Radios should be wrapped in a `RadioGroup`.
 
 #### RadioGroup Props
 
-- **`name`**: String. Optional. Should match radio id for validation.
-- **`children`**: Node. Optional. Child components to render, use `Radio`s.
-- **`label`**: Node or String. Optional. Displays a label to render for the group of radio buttons if defined.
+| Prop Name      | Types   | Required | Default  | Description                                                                            |
+| -------------  | ------- | -------- | -------- | -------------------------------------------------------------------------------------- |
+| **`name`**     | String  | false    |          | Should match radio id for validation.                                                  |
+| **`children`** | Node    | false    |          | Child components to render, use `Radio`s.                                              |
+| **`label`**    | Node    | false    |          | Label for the group of radio buttons                                                   |
 
 #### Radio Props
 
-- **`id`**: String. Optional. Should match radioGroup name for validation.
-- **`label`**: Node or String. Optional. Displays a label to render for the radio if defined.
-- **`value`**: String or Boolean or Object. Optional. Value of the radio button.
-- **`disabled`**: Boolean. Optional. Disable the radio button.
-- **`className`**: String. Optional. Class names for the radio buttons.
+| Prop Name       | Types   | Required | Default  | Description                                                                            |
+| -------------   | ------- | -------- | -------- | -------------------------------------------------------------------------------------- |
+| **`id`**        | String  | false    |          | Should match `<RadioGroup />` name for validation.                                     |
+| **`label`**     | Node    | false    |          | Label for the radio button                                                             |
+| **`value`**     | String,Boolean,Object  | false    |          | Value of the radio button                                                              |
+| **`disabled`**  | Boolean | false    |          | Disable the radio button                                                               |
+| **`className`** | String  | false    |          | Class names for the radio button                                                       |
 
 ### FormGroup
 
@@ -346,7 +359,7 @@ Wrapper for an Input field. Uses reactstrap `FormGroup`.
 
 #### Usage
 
-```javascript
+```jsx
 <Form
   initialValues={{
     hello: '',
@@ -364,8 +377,10 @@ Wrapper for an Input field. Uses reactstrap `FormGroup`.
 
 #### FormGroup Props
 
-- **`className`**: String. Optional. Class names to pass.
-- **`for`**: String. Optional. Used to match the wrapped input.
+| Prop Name       | Types   | Required | Default  | Description                                                                            |
+| -------------   | ------- | -------- | -------- | -------------------------------------------------------------------------------------- |
+| **`className`** | String  | false    |          | Class names for the form group                                                         |
+| **`for`**       | String  | false    |          | Used to match the wrapped input                                                        |
 
 ### Feedback
 
@@ -373,7 +388,7 @@ Error message container for an input.
 
 #### Usage
 
-```javascript
+```jsx
 <Form
   initialValues={{
     hello: '',
@@ -390,4 +405,6 @@ Error message container for an input.
 
 #### Props
 
-- **`name`**: String. Optional. Name used to match the validation schema to the message.
+| Prop Name     | Types   | Required | Default  | Description                                                                            |
+| ------------- | ------- | -------- | -------- | -------------------------------------------------------------------------------------- |
+| **`name`**    | String  | false    |          | Name used to match the validation schema to the message.                               |

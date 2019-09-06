@@ -11,50 +11,59 @@ summary: Availity breadcrumbs
 npm install @availity/breadcrumbs --save
 ```
 
-### Usage
+## Usage
 
-```javascript
-import React from 'react';
-import Breadcrumbs from '@availity/breadcrumbs';
-// ... 
-<Breadcrumbs active="Payer Space" />
-// ...
-```
-
-#### Breadcrumbs (Default export)
-Breadcrumbs showing the ancestor pages and the current active page
-
-##### Props
-
-- **`active`**: String. Required. The name of the active page (the page the user is currently on).
-- **`crumbs`**: Array of Objects contains `name` (String) and `url` (string) properties. Optional. The ancestor pages.
-- **`emptyState`**: String. Optional. The value which will be display when the active page or an ancestor does not have a value. Default `&hellip;` (&hellip;)
-- **`children`**: BreadcrumbItem Components. Optional. The children must be reactstrap BreadcrumbItem components
-
-##### Usage
-
-```javascript
-import React from 'react';
-import Breadcrumbs from '@availity/breadcrumbs';
-// ... 
-<Breadcrumbs active="Payer Space" crumbs={[{name: 'Grand Parent', url: '/grand-parent'}, {name: 'Parent', url: '/parent'}, ]} />
-// ...
-```
-
-Example with custom child breadcrumbs. This would create the Breadcrumbs "Home > Custom Bread Crumb > Current Page"
-```javascript
-import React from 'react';
 import Breadcrumbs from '@availity/breadcrumbs';
 import { BreadcrumbItem } from 'reactstrap';
-// ...
-<Breadcrumbs
-  emptyState={text('Empty State', Breadcrumbs.defaultProps.emptyState)}
-  active={text('Active Page', 'Current Page')}
->
+
+<div className="w-100 d-flex flex-row justify-content-around align-items-center">
+<div>
+<h2>Basic Example</h2>
+<Breadcrumbs active="Payer Space" />
+</div>
+
+<div>
+<h2>Example with crumbs prop</h2>
+<Breadcrumbs active="Payer Space" crumbs={[{name: 'Grand Parent', url: '/grand-parent'}, {name: 'Parent', url: '/parent'}, ]} />
+</div>
+
+<div>
+<h2>Example with custom breadcrumb children</h2>
+<Breadcrumbs active="Current Page">
   <BreadcrumbItem>
     <div>Custom Bread Crumb</div>
   </BreadcrumbItem>
 </Breadcrumbs>
-// ...
+</div>
+</div>
+
+```jsx
+import Breadcrumbs from '@availity/breadcrumbs';
+import { BreadcrumbItem } from 'reactstrap';
+
+<h2>Basic Example</h2>
+<Breadcrumbs active="Payer Space" />
+
+<h2>Example with crumbs prop</h2>
+<Breadcrumbs active="Payer Space" crumbs={[{name: 'Grand Parent', url: '/grand-parent'}, {name: 'Parent', url: '/parent'}, ]} />
+
+<h2>Example with custom breadcrumb children</h2>
+// Create the Breadcrumbs "Home > Custom Bread Crumb > Current Page"
+<Breadcrumbs active="Current Page">
+  <BreadcrumbItem>
+    <div>Custom Bread Crumb</div>
+  </BreadcrumbItem>
+</Breadcrumbs>
 ```
 
+### Breadcrumbs (Default export)
+Breadcrumbs showing the ancestor pages and the current active page
+
+## Props
+
+| Prop Name        | Types         | Required | Default               | Description                                                                                 |
+| -------------    | -------       | -------- | --------              | --------------------------------------------------------------------------------------      |
+| **`active`**     | String        | true     |                       | The name of the active page (the page the user is currently on).                            |
+| **`crumbs`**     | Array<Object> | false    | `"black"`             | The ancestor pages. Objects in array contain `name` (String) and `url` (String) properties. |
+| **`emptyState`** | String        | false    | `&hellip;` (&hellip;) | The value to display when the active page or an ancestor does not have a value.             |
+| **`children`**   | Node          | false    |                       | The children must be reactstrap BreadcrumbItem components                                   |

@@ -11,43 +11,42 @@ summary: Availity component for uploading files
 npm install @availity/upload --save
 ```
 
-### Usage
+## Usage
 
-This component requires React >= 16.8.
-
-```javascript
+```jsx
 import React from 'react';
 import Upload from '@availity/upload';
-// ...
+
 <Upload clientId="a" bucketId="b" customerId="c" />;
-// ...
 ```
 
 #### Upload (Default export)
 
 The default export is an all-in-one solution which handles uploads, encrypted file password requests and file state management for you.
 
-##### Props
+## Props
 
-- **`btnText`**: Node. Optional. The text which appears on the button. Default: `+ Add File` for initial file or `+ Add Another File Attachment` if an attachment already have been selected.
-- **`bucketId`**: String. Required. The ID of the bucket you want to upload to.
-- **`customerId`**: String. Required. The customer ID for the organization the user is uploading on behave of.
-- **`clientId`**: String. Required. The ID obtain from APIConnect. Must be subscribed to the resumeable uploads API.
-- **`allowedFileNameCharacters`**: String (regex). Optional. Restrict the file name characters to a regex set
-- **`allowedFileTypes`**: Array of strings. Optional. The file types you want to restrict uploading to. E.g. `['.jpeg', '.jpg']`.
-- **`onFileUpload`**: Function. Optional. Callback called when file is uploaded. The callback will be provided the `Upload` instance from upload-core SDK. Use this callback to track files which have been uploaded (to get references returned by the API).
-- **`onFileRemove`**: Function. Optional. Callback called when file is removed. The callback will be provided the `Upload` instance from upload-core SDK.
-- **`maxSize`**: Number. Optional. The maximum file size (in bytes) for a file to be uploaded.
-- **`max`**: Number. Optional. The maximum number of files allowed to be uploaded. `0` (or a falsey value) means unlimited. When the max number has been reached the add button will disappear. Default: unlimited.
-- **`multiple`**: Boolean. Optional. Indicates that the user will be allowed to select multiple files when selecting files from the OS prompt. Default: `true`
-- **`showFileDrop`**: Boolean. Optional. Set as true to show a drag and drop file upload option instead of a button (file explorer still available on click). Default: `false`.
+| Prop Name                       | Types          | Required | Default                                                                                                       | Description                                                                                                                                                                                                         |
+| -------------                   | -------        | -------- | --------                                                                                                      | --------------------------------------------------------------------------------------                                                                                                                              |
+| **`btnText`**                   | Node           | false    | `+ Add File` for initial file or `+ Add Another File Attachment` if an attachment already have been selected. | The text which appears on the button.                                                                                                                                                                               |
+| **`bucketId`**                  | String         | true     |                                                                                                               | The ID of the bucket you want to upload to.                                                                                                                                                                         |
+| **`customerId`**                | String         | true     |                                                                                                               | The customer ID for the organization the user is uploading on behalf of.                                                                                                                                            |
+| **`clientId`**                  | String         | true     |                                                                                                               | The ID obtained from APIConnect. Must be subscribed to the resumeable uploads API.                                                                                                                                  |
+| **`allowedFileNameCharacters`** | String (regex) | false    |                                                                                                               | Restrict the file name characters to a regex set                                                                                                                                                                    |
+| **`allowedFileTypes`**          | Array<String>  | false    |                                                                                                               | Restrict the file types allowed to be uploaded to. eg: `['.jpeg', '.jpg']`.                                                                                                                                         |
+| **`onFileUpload`**              | Function       | false    |                                                                                                               | Callback called when file is uploaded. The callback will be provided the `Upload` instance from upload-core SDK. Use this callback to track files which have been uploaded (to get references returned by the API). |
+| **`onFileRemove`**              | Function       | false    |                                                                                                               | Callback called when file is removed. The callback will be provided the `Upload` instance from upload-core SDK.                                                                                                     |
+| **`maxSize`**                   | Number         | false    |                                                                                                               | The maximum file size (in bytes) for a file to be uploaded.                                                                                                                                                         |
+| **`max`**                       | Number         | false    | unlimited                                                                                                     | The maximum number of files allowed to be uploaded. `0` (or a falsey value) means unlimited. When the max number has been reached the add button will disappear.                                                    |
+| **`multiple`**                  | Boolean        | false    | `true`                                                                                                        | Indicates that the user will be allowed to select multiple files when selecting files from the OS prompt.                                                                                                           |
+| **`showFileDrop`**              | Boolean        | false    | `false`                                                                                                       | Set as true to show a drag and drop file upload option instead of a button (file explorer still available on click).                                                                                                |
 
-##### Upload Usage
+### Usage
 
-```javascript
+```jsx
 import React from 'react';
 import Upload from '@availity/upload';
-// ...
+
 <Upload
   btnText="Upload a claim"
   clientId="a"
@@ -55,14 +54,12 @@ import Upload from '@availity/upload';
   customerId="c"
   multiple={false}
   max={1}
-/>;
-// ...
+/>
 ```
 
-##### Callback function Usage
+### Callback Function Usage
 
-```javascript
-// ...
+```jsx
 <Upload
   btnText="Upload a claim"
   clientId="a"
@@ -92,49 +89,50 @@ onRemove(file) {
 }
 ```
 
-#### UploadProgressBar
+## UploadProgressBar
 
 The raw progress bar to be used when making your own.
 
-##### Props
+### Props
 
-- **`upload`**: Instance of Upload from [upload-core](https://github.com/Availity/sdk-js/tree/master/packages/upload-core). Required. The upload instance returned by creating a `new Upload` via [upload-core](https://github.com/Availity/sdk-js/tree/master/packages/upload-core).
-- **`onProgress`**: Function. Optional. Callback function to hook into the `onProgress` within the Upload instance provided in the `upload` prop.
-- **`onSuccess`**: Function. Optional. Callback function to hook into the `onSuccess` within the Upload instance provided in the `upload` prop.
-- **`complete`**: Boolean. Optional. Triggers the "complete" style in the progress bar. When true, a checkmark appears at the end of the progress bar
-- **`onError`**: Function. Optional. Callback function to hook into the `onError` within the Upload instance provided in the `upload` prop.
-- **`striped`**: Boolean. Optional. Triggers the "striped" style in the progress bar.
-- **`animated`**: Boolean. Optional. When `true` the progress bar will have animated stripes while uploading is in progress.
-- **`color`**: String. Optional. Default "success". The color of the progress bar
+| Prop Name        | Types                                                                                                       | Required | Default     | Description                                                                                                                                     |
+| -------------    | -------                                                                                                     | -------- | --------    | --------------------------------------------------------------------------------------                                                          |
+| **`upload`**     | Instance of Upload from [upload-core](https://github.com/Availity/sdk-js/tree/master/packages/upload-core). | true     |             | The upload instance returned by creating a `new Upload` via [upload-core](https://github.com/Availity/sdk-js/tree/master/packages/upload-core). |
+| **`onProgress`** | Function                                                                                                    | false    |             | Callback function to hook into the `onProgress` within the Upload instance provided in the `upload` prop.                                       |
+| **`onSuccess`**  | Function                                                                                                    | false    |             | Callback function to hook into the `onSuccess` within the Upload instance provided in the `upload` prop.                                        |
+| **`complete`**   | Boolean                                                                                                     | false    |             | Triggers the "complete" style in the progress bar. When true, a checkmark appears at the end of the progress bar                                |
+| **`onError`**    | Function                                                                                                    | false    |             | Callback function to hook into the `onError` within the Upload instance provided in the `upload` prop.                                          |
+| **`striped`**    | Boolean                                                                                                     | false    |             | Triggers the "striped" style in the progress bar.                                                                                               |
+| **`animated`**   | Boolean                                                                                                     | false    |             | When `true` the progress bar will have animated stripes while uploading is in progress.                                                         |
+| **`color`**      | String                                                                                                      | false    | `"success"` | The color of the progress bar                                                                                                                   |
 
 
-##### UploadProgressBar Usage
+### Usage
 
-```javascript
+```jsx
 import React from 'react';
 import { UploadProgressBar } from '@availity/upload';
-// ...
+
 <UploadProgressBar upload={uploadInstance} animated />;
-// ...
 ```
 
-#### FilePickerBtn
+## FilePickerBtn
 
 The raw file picker button which masks the file input with a button.
 
-##### Props
+### Props
 
-- **`onClick`**: Function. Optional. Callback when the button is clicked.
-- **`onChange`**: Function. Optional. Callback when the user has selected a file or multiple files.
-- **`multiple`**: Boolean. Optional. Indicates that the user will be allowed to select multiple files when selecting files from the OS prompt.
-- **`allowedFileTypes`**: Array of strings. Optional. The file types you want to restrict uploading to. E.g. `['.jpeg', '.jpg']`.
-- **`maxSize`**: Number. Optional. The maximum file size (in bytes) for a file to be uploaded.
+| Prop Name              | Types         | Required | Default  | Description                                                                                               |
+| -------------          | -------       | -------- | -------- | --------------------------------------------------------------------------------------                    |
+| **`onClick`**          | Function      | false    |          | Callback when the button is clicked.                                                                      |
+| **`onChange`**         | Function      | false    |          | Callback when the user has selected a file or multiple files.                                             |
+| **`multiple`**         | Boolean       | false    |          | Indicates that the user will be allowed to select multiple files when selecting files from the OS prompt. |
+| **`allowedFileTypes`** | Array<String> | false    |          | The file types you want to restrict uploading to. eg: `['.jpeg', '.jpg']`.                                |
+| **`maxSize`**          | Number        | false    |          | The maximum file size (in bytes) for a file to be uploaded.                                               |
 
+### Usage
 
-
-##### FilePickerBtn Usage
-
-```javascript
+```jsx
 import React from 'react';
 import { FilePickerBtn } from '@availity/upload';
 
@@ -142,27 +140,27 @@ handleFileSelection = event => {
   const { files } = event.target;
   // do something with the files.
 };
-// ...
+
 <FilePickerBtn onChange={this.handleFileSelection} />;
-// ...
 ```
 
-#### FilePicker
+## FilePicker
 
 The raw file picker which automatically resets the value of the input, allowing the same file to be selected multiple consecutive files.
 
-##### Props
+### Props
 
-- **`tag`**: String or Function. Optional. The raw underlying component/element which should be rendered. Default reactstrap's `CustomInput`.
-- **`onClick`**: Function. Optional. Callback when the button is clicked.
-- **`onChange`**: Function. Optional. Callback when the user has selected a file or multiple files.
-- **`multiple`**: Boolean. Optional. Indicates that the user will be allowed to select multiple files when selecting files from the OS prompt.
-- **`allowedFileTypes`**: Array of strings. Optional. The file types you want to restrict uploading to. E.g. `['.jpeg', '.jpg']`.
-- **`maxSize`**: Number. Optional. The maximum file size (in bytes) for a file to be uploaded.
+| Prop Name              | Types         | Required | Default  | Description                                                                                               |
+| -------------          | -------       | -------- | -------- | --------------------------------------------------------------------------------------                    |
+| **`tag`**          | String,Function      | false    | Reactstrap `CustomInput`          | The raw underlying component/element which should be rendered. |
+| **`onClick`**         | Function      | false    |          | Callback when the user has selected a file or multiple files.                                             |
+| **`multiple`**         | Boolean       | false    |          | Indicates that the user will be allowed to select multiple files when selecting files from the OS prompt. |
+| **`allowedFileTypes`** | Array<String> | false    |          | The file types you want to restrict uploading to. eg: `['.jpeg', '.jpg']`.                                |
+| **`maxSize`**          | Number        | false    |          | The maximum file size (in bytes) for a file to be uploaded.                                               |
 
-##### FilePicker Usage
+### Usage
 
-```javascript
+```jsx
 import React from 'react';
 import { FilePicker } from '@availity/upload';
 import { CustomInput } from 'reactstrap';
@@ -171,7 +169,6 @@ handleFileSelection = event => {
   const { files } = event.target;
   // do something with the files.
 };
-// ...
+
 <FilePicker tag={CustomInput} onChange={this.handleFileSelection} />;
-// ...
 ```

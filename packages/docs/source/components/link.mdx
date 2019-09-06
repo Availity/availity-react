@@ -11,24 +11,33 @@ summary: Simple link component that renders an `<a>` tag with the `href` formatt
 npm install @availity/link --save
 ```
 
-### Usage
+## Usage
 
-```javascript
+import AvLink from '@availity/link';
+
+<div className="w-100 d-flex flex-row justify-content-around align-items-center">
+  <AvLink url="/public/apps/my-app" target="newBody">
+    My Application
+  </AvLink>
+</div>
+
+```jsx
 import React from 'react';
 import AvLink from '@availity/link';
-// ...
+
 <Container>
   <AvLink url="/public/apps/my-app" target="newBody">
-    {/* ... */}
+    My Application
   </AvLink>
 </Container>
-// ...
 ```
 
-#### Props
+## Props
 
-- **`url`**: String. Required. The url of the page the link goes to
-- **`target`**: String. Optional. Where to open the linked document
-- **`tag`**: React component. Optional. The tag to use in the link that gets rendered. Defaults to an `<a>` tag
-- **`onClick`**: Function. Optional. Function to run onClick of the tag. The first argument that gets passed to `onClick` is the event. The second is the processed `url`.
-- **`loadApp`**: Boolean. Optional. Default `true`. When `false`, the `url` prop to `AvLink` _will not_ be formatted to leverage loadApp.
+| Prop Name     | Types       | Required | Default  | Description                                                                                                                           |
+| ------------- | -------     | -------- | -------- | --------------------------------------------------------------------------------------                                                |
+| **`url`**     | String      | true     |          | The url of the page the link goes to.                                                                                                 |
+| **`target`**  | String      | false    |          | Where to open the linked document.                                                                                                    |
+| **`tag`**     | Node,String | false    | `<a>`    | The tag to use in the link that gets rendered.                                                                                        |
+| **`onClick`** | Function    | false    |          | Function to run onClick of the tag. The first argument that gets passed to `onClick` is the event. The second is the processed `url`. |
+| **`loadApp`** | String      | false    | `true`   | When `false`, the `url` prop to `AvLink` _will not_ be formatted to leverage loadApp.                                                 |
