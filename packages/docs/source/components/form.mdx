@@ -58,11 +58,9 @@ import { Input, Form } from '@availity/form';
 // ...
 <Form
   initialValues={{ myInput: '' }}
-  validationSchema={yup
-    .object()
-    .shape({
-      myInput: yup.string().isRequired(true, 'This field is required.'),
-    })}
+  validationSchema={yup.object().shape({
+    myInput: yup.string().isRequired(true, 'This field is required.'),
+  })}
 >
   <Input name="myInput" type="text" />
 </Form>;
@@ -332,12 +330,12 @@ Inputs of type radio. Radios should be wrapped in a `RadioGroup`.
 
 - **`name`**: String. Optional. Should match radio id for validation.
 - **`children`**: Node. Optional. Child components to render, use `Radio`s.
-- **`label`**: String. Optional. Label for the group of radio buttons.
+- **`label`**: Node or String. Optional. Displays a label to render for the group of radio buttons if defined.
 
 #### Radio Props
 
 - **`id`**: String. Optional. Should match radioGroup name for validation.
-- **`label`**: String. Optional. Label to render for this radio button.
+- **`label`**: Node or String. Optional. Displays a label to render for the radio if defined.
 - **`value`**: String. Optional. Value of the radio button.
 - **`disabled`**: Boolean. Optional. Disable the radio button.
 - **`className`**: String. Optional. Class names for the radio buttons.
