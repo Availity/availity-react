@@ -13,12 +13,16 @@ npx install-peerdeps @availity/favorites --save
 
 ## Usage
 
-import Favorites, { FavoriteHeart } from '@availity/favorites';
+import Favorites from './Favorites';
 import '@availity/favorites/style.scss';
 
 <div className="w-100 d-flex flex-row justify-content-around align-items-center">
   <Favorites>
-     <FavoriteHeart id="123456" />
+    {({ default: FavoritesProvider, FavoriteHeart }) => (
+      <FavoritesProvider>
+        <FavoriteHeart id="123456" />
+      </FavoritesProvider>
+    )}
   </Favorites>
 </div>
 
@@ -28,31 +32,33 @@ import Favorites, { FavoriteHeart } from '@availity/favorites';
 import '@availity/favorites/style.scss';
 
 <Favorites>
-   <FavoriteHeart id="123456" />
-</Favorites>
+  <FavoriteHeart id="123456" />
+</Favorites>;
 ```
 
 ## Favorites
+
 The Provider Component that stores all of the user's favorites for use in the favorite components.
 
 ### Props
 
-| Prop Name      | Types   | Required | Default  | Description                                                                            |
-| -------------  | ------- | -------- | -------- | -------------------------------------------------------------------------------------- |
-| **`children`** | Node    | false    |          | Children to render inside of Favorites provider                                        |
+| Prop Name      | Types | Required | Default | Description                                     |
+| -------------- | ----- | -------- | ------- | ----------------------------------------------- |
+| **`children`** | Node  | false    |         | Children to render inside of Favorites provider |
 
 ## FavoriteHeart
+
 The default Favorite Icon that can be used to store a favorited item. Can only be used inside of a `<Favorites />` Provider.
 
 ### Props
 
-| Prop Name      | Types    | Required | Default  | Description                                                                            |
-| -------------  | -------  | -------- | -------- | -------------------------------------------------------------------------------------- |
-| **`id`**       | String   | true     |          | The unique id of the favorite item. Will be fetched from API.                          |
-| **`onChange`** | Function | false    |          | Called once the favorite heart has been clicked and updated.                           |
-
+| Prop Name      | Types    | Required | Default | Description                                                   |
+| -------------- | -------- | -------- | ------- | ------------------------------------------------------------- |
+| **`id`**       | String   | true     |         | The unique id of the favorite item. Will be fetched from API. |
+| **`onChange`** | Function | false    |         | Called once the favorite heart has been clicked and updated.  |
 
 ## useFavorites
+
 Hook that will allow you to "hook" into the favorites logic and create a custom component with the same logic. Can only be used inside of a `<Favorites />` Provider.
 
 ### Arguments
@@ -66,8 +72,13 @@ import React, { useState } from 'react';
 import { useFavorites } from '@availity/favorites';
 
 const Component = () => {
-    const [isFavorite, toggleFavorite] = useFavorites('1234');
+  const [isFavorite, toggleFavorite] = useFavorites('1234');
 
-    return <Icon name={isFavorite ? 'plus-circle' : 'minus-circle'} onClick={toggleFavorite} />
+  return (
+    <Icon
+      name={isFavorite ? 'plus-circle' : 'minus-circle'}
+      onClick={toggleFavorite}
+    />
+  );
 };
 ```

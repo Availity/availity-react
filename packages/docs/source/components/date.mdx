@@ -20,9 +20,18 @@ Date picker without a `Label` or `Feedback`
 ### Usage
 
 import { Form } from '@availity/form';
-import FormikDate from '@availity/date';
+import { Button } from 'reactstrap';
+import FormikDate, {
+  DateRange,
+  DateField,
+  DateRangeField,
+} from '@availity/date';
+import '@availity/date/styles.scss';
+
 import * as yup from 'yup';
+import '@availity/yup';
 import '@availity/yup/moment';
+import moment from 'moment';
 
 <div className="w-100 d-flex flex-row justify-content-around align-items-center">
   <Form
@@ -31,10 +40,7 @@ import '@availity/yup/moment';
     }}
     onSubmit={values => console.log(values)}
     validationSchema={yup.object().shape({
-      dateOfService: yup
-      .required()
-      .date('This field is invalid.')
-      .format('MM/DD/YYYY', true),
+      dateOfService: yup.date().required(),
     })}
   >
     <FormikDate
@@ -43,7 +49,6 @@ import '@availity/yup/moment';
       min={{ value: 7, units: 'day' }}
       max={{ value: 7, units: 'day' }}
     />
-
     <Button color="primary" type="submit">
       Submit
     </Button>
@@ -62,10 +67,7 @@ import '@availity/yup/moment';
   }}
   onSubmit={values => console.log(values)}
   validationSchema={yup.object().shape({
-    dateOfService: yup
-    .required()
-    .date('This field is invalid.')
-    .format('MM/DD/YYYY', true),
+    dateOfService: yup.date().required(),
   })}
 >
   <FormikDate
@@ -78,15 +80,15 @@ import '@availity/yup/moment';
   <Button color="primary" type="submit">
     Submit
   </Button>
-</Form>
+</Form>;
 ```
 
-###  Props
+### Props
 
 See [react-dates](https://github.com/airbnb/react-dates#singledatepicker) for additional props
 
 | Prop Name                 | Types                                                                                              | Required | Default                    | Description                                                                                                                                             |
-| -------------             | -------                                                                                            | -------- | --------                   | --------------------------------------------------------------------------------------                                                                  |
+| ------------------------- | -------------------------------------------------------------------------------------------------- | -------- | -------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | **`name`**                | String                                                                                             | true     |                            | The name of the field. Will be the key of the selected date that comes through in the values of the `onSubmit` callback.                                |
 | **`disabled`**            | Boolean                                                                                            | false    |                            | Whether the `<FormikDate />` is disabled                                                                                                                |
 | **`className`**           | String                                                                                             | false    |                            | Additional styles to be added to the `<FormikDate />`                                                                                                   |
@@ -99,18 +101,13 @@ See [react-dates](https://github.com/airbnb/react-dates#singledatepicker) for ad
 | **`format`**              | String                                                                                             | false    | `"MM/DD/YYYY"`             | How to format date value in `onSubmit` callback. Must be a format recognized by [moment](https://momentjs.com/docs/#/displaying/format/)                |
 | **`data-testid`**         | String                                                                                             | false    |                            | Useful for writing unit tests with [@testing-library/react](https://github.com/testing-library/react-testing-library)                                   |
 | **`datepicker`**          | Boolean                                                                                            | false    | `true`                     | Toggle whether the calendar is shown                                                                                                                    |
-| **`datePickerProps`**     | Object                                                                                             | false    |                            | Props to be spread onto the datepicker component from `react-dates`
+| **`datePickerProps`**     | Object                                                                                             | false    |                            | Props to be spread onto the datepicker component from `react-dates`                                                                                     |
 
 ## DateField
 
 The same as `FormikDate` but with a `Label` that appears above input and a `Feedback` that appears below the input.
 
 ### Usage
-
-import { Form } from '@availity/form';
-import FormikDate from '@availity/date';
-import * as yup from 'yup';
-import '@availity/yup/moment';
 
 <div className="w-100 d-flex flex-row justify-content-around align-items-center">
   <Form
@@ -120,22 +117,21 @@ import '@availity/yup/moment';
     onSubmit={values => console.log(values)}
     validationSchema={yup.object().shape({
       dateOfService: yup
+      .date()
       .required()
-      .date('This field is invalid.')
-      .format('MM/DD/YYYY', true),
     })}
   >
-    <FormikDate
+    <DateField
 			label="Date of Service"
       id="dateOfService"
       name="dateOfService"
       min={{ value: 7, units: 'day' }}
       max={{ value: 7, units: 'day' }}
     />
-
     <Button color="primary" type="submit">
       Submit
     </Button>
+
   </Form>
 </div>
 
@@ -145,38 +141,38 @@ import FormikDate from '@availity/date';
 import * as yup from 'yup';
 import '@availity/yup/moment';
 
-  <Form
-    initialValues={{
-      dateOfService: '',
-    }}
-    onSubmit={values => console.log(values)}
-    validationSchema={yup.object().shape({
-      dateOfService: yup
-      .required()
+<Form
+  initialValues={{
+    dateOfService: '',
+  }}
+  onSubmit={values => console.log(values)}
+  validationSchema={yup.object().shape({
+    dateOfService: yup
       .date('This field is invalid.')
+      .required()
       .format('MM/DD/YYYY', true),
-    })}
-  >
-    <FormikDate
-			label="Date of Service"
-      id="dateOfService"
-      name="dateOfService"
-      min={{ value: 7, units: 'day' }}
-      max={{ value: 7, units: 'day' }}
-    />
+  })}
+>
+  <FormikDate
+    label="Date of Service"
+    id="dateOfService"
+    name="dateOfService"
+    min={{ value: 7, units: 'day' }}
+    max={{ value: 7, units: 'day' }}
+  />
 
-    <Button color="primary" type="submit">
-      Submit
-    </Button>
-  </Form>
+  <Button color="primary" type="submit">
+    Submit
+  </Button>
+</Form>;
 ```
 
-###  Props
+### Props
 
 See [react-dates](https://github.com/airbnb/react-dates#singledatepicker) for additional props
 
 | Prop Name                 | Types                                                                                              | Required | Default                    | Description                                                                                                                                             |
-| -------------             | -------                                                                                            | -------- | --------                   | --------------------------------------------------------------------------------------                                                                  |
+| ------------------------- | -------------------------------------------------------------------------------------------------- | -------- | -------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | **`name`**                | String                                                                                             | true     |                            | The name of the field. Will be the key of the selected date that comes through in the values of the `onSubmit` callback.                                |
 | **`label`**               | String                                                                                             | false    |                            | The text that renders inside the `Label` above the input.                                                                                               |
 | **`disabled`**            | Boolean                                                                                            | false    |                            | Whether the `<FormikDate />` is disabled                                                                                                                |
@@ -190,43 +186,36 @@ See [react-dates](https://github.com/airbnb/react-dates#singledatepicker) for ad
 | **`format`**              | String                                                                                             | false    | `"MM/DD/YYYY"`             | How to format date value in `onSubmit` callback. Must be a format recognized by [moment](https://momentjs.com/docs/#/displaying/format/)                |
 | **`data-testid`**         | String                                                                                             | false    |                            | Useful for writing unit tests with [@testing-library/react](https://github.com/testing-library/react-testing-library)                                   |
 | **`datepicker`**          | Boolean                                                                                            | false    | `true`                     | Toggle whether the calendar is shown                                                                                                                    |
-| **`datePickerProps`**     | Object                                                                                             | false    |                            | Props to be spread onto the datepicker component from `react-dates`
+| **`datePickerProps`**     | Object                                                                                             | false    |                            | Props to be spread onto the datepicker component from `react-dates`                                                                                     |
 
 ## DateRange
 
 A date range, consisting of 2 fields, a start date and an end date, without a `Label` or `Feedback`
 
 ### Usage
-import { Form } from '@availity/form';
-import { DateRange } from '@availity/date';
-import * as yup from 'yup';
-import '@availity/yup';
-import '@availity/yup/moment';
-import moment from 'moment';
 
 <div className="w-100 d-flex flex-row justify-content-around align-items-center">
   <Form
     initialValues={{
-      dateOfService: '',
+      dateOfService: undefined,
     }}
     onSubmit={values => console.log(values)}
     validationSchema={
 			yup.object().shape({
 				dateOfService: yup
-					.string()
-					.typeError('This field is invalid.')
-					.required('This field is required.')
 					.dateRange(
 						{
 							min: moment()
   							.subtract(7, 'day')
-  							.format(dateFormat),
+  							.format('MM/DD/YYYY'),
 							max: moment()
   							.add(7, 'day')
-  							.format(dateFormat),
+  							.format('MM/DD/YYYY'),
 							format: 'MM/DD/YYYY' },
 						`Date must be between ${moment().subtract(7, 'day').format('MM/DD/YYYY')} and ${moment().add(7, 'day').format('MM/DD/YYYY')}`
-					),
+					)
+					.typeError('This field is invalid.')
+					.required('This field is required.')
 			})
 		}
   >
@@ -236,10 +225,10 @@ import moment from 'moment';
       min={{ value: 7, units: 'day' }}
       max={{ value: 7, units: 'day' }}
     />
-
     <Button color="primary" type="submit">
       Submit
     </Button>
+
   </Form>
 </div>
 
@@ -300,7 +289,7 @@ return (
 See [react-dates](https://github.com/airbnb/react-dates#daterangepicker) for additional props
 
 | Prop Name                 | Types                                                                                              | Required | Default                    | Description                                                                                                                                             |
-| -------------             | -------                                                                                            | -------- | --------                   | --------------------------------------------------------------------------------------                                                                  |
+| ------------------------- | -------------------------------------------------------------------------------------------------- | -------- | -------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | **`id`**                  | String                                                                                             | true     |                            | The id of the field.                                                                                                                                    |
 | **`name`**                | String                                                                                             | true     |                            | The name of the field. Will be the key of the selected dates that come through in the values of the `onSubmit` callback.                                |
 | **`min`**                 | [limitPropType](https://github.com/Availity/availity-react/blob/master/packages/date/src/utils.js) | false    |                            | Used in conjunction with `max` to derive `isOutsideRange` prop from `react-dates`. Dates outside the allowed range will not be clickable in datepicker. |
@@ -316,20 +305,13 @@ See [react-dates](https://github.com/airbnb/react-dates#daterangepicker) for add
 | **`startKey`**            | String                                                                                             | false    | `"startDate"`              | Key to return start date as on form submit. Should match the yup schema `startKey`.                                                                     |
 | **`endKey`**              | String                                                                                             | false    | `"endDate"`                | Key to return end date as on form submit. Should match the yup schema `endKey`.                                                                         |
 | **`datepicker`**          | Boolean                                                                                            | false    | `true`                     | Toggle whether the calendar is shown                                                                                                                    |
-| **`datePickerProps`**     | Object                                                                                             | false    |                            | Props to be spread onto the date range picker component from `react-dates`
-
+| **`datePickerProps`**     | Object                                                                                             | false    |                            | Props to be spread onto the date range picker component from `react-dates`                                                                              |
 
 ## DateRangeField
 
 The same as `DateRange` but with a `Label` that appears above the input and a `Feedback` that appears below the input.
 
 ### Usage
-import { Form } from '@availity/form';
-import { DateRange } from '@availity/date';
-import * as yup from 'yup';
-import '@availity/yup';
-import '@availity/yup/moment';
-import moment from 'moment';
 
 <div className="w-100 d-flex flex-row justify-content-around align-items-center">
   <Form
@@ -337,33 +319,35 @@ import moment from 'moment';
       dateOfService: '',
     }}
     onSubmit={values => console.log(values)}
-    validationSchema={
-			yup.object().shape({
-				dateOfService: yup
-					.string()
-					.typeError('This field is invalid.')
-					.required('This field is required.')
-					.dateRange(
-						{
-							min: moment()
-  							.subtract(7, 'day')
-  							.format(dateFormat),
-							max: moment()
-  							.add(7, 'day')
-  							.format(dateFormat),
-							format: 'MM/DD/YYYY' },
-						`Date must be between ${moment().subtract(7, 'day').format('MM/DD/YYYY')} and ${moment().add(7, 'day').format('MM/DD/YYYY')}`
-					),
-			})
-		}
+    validationSchema={yup.object().shape({
+      dateOfService: yup
+        .dateRange(
+          {
+            min: moment()
+              .subtract(7, 'day')
+              .format('MM/DD/YYYY'),
+            max: moment()
+              .add(7, 'day')
+              .format('MM/DD/YYYY'),
+            format: 'MM/DD/YYYY',
+          },
+          `Date must be between ${moment()
+            .subtract(7, 'day')
+            .format('MM/DD/YYYY')} and ${moment()
+            .add(7, 'day')
+            .format('MM/DD/YYYY')}`
+        )
+        .typeError('This field is invalid.')
+        .required('This field is required.'),
+    })}
   >
-    <DateRange
+    <DateRangeField
       id="dateOfService"
+      label="Date of Service"
       name="dateOfService"
       min={{ value: 7, units: 'day' }}
       max={{ value: 7, units: 'day' }}
     />
-
     <Button color="primary" type="submit">
       Submit
     </Button>
@@ -428,7 +412,7 @@ return (
 See [react-dates](https://github.com/airbnb/react-dates#daterangepicker) for additional props
 
 | Prop Name                 | Types                                                                                              | Required | Default                    | Description                                                                                                                                             |
-| -------------             | -------                                                                                            | -------- | --------                   | --------------------------------------------------------------------------------------                                                                  |
+| ------------------------- | -------------------------------------------------------------------------------------------------- | -------- | -------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | **`id`**                  | String                                                                                             | true     |                            | The id of the field.                                                                                                                                    |
 | **`label`**               | String                                                                                             | false    |                            | The text that renders inside the `Label` above the input.                                                                                               |
 | **`name`**                | String                                                                                             | true     |                            | The name of the field. Will be the key of the selected dates that come through in the values of the `onSubmit` callback.                                |
@@ -445,4 +429,4 @@ See [react-dates](https://github.com/airbnb/react-dates#daterangepicker) for add
 | **`startKey`**            | String                                                                                             | false    | `"startDate"`              | Key to return start date as on form submit. Should match the yup schema `startKey`.                                                                     |
 | **`endKey`**              | String                                                                                             | false    | `"endDate"`                | Key to return end date as on form submit. Should match the yup schema `endKey`.                                                                         |
 | **`datepicker`**          | Boolean                                                                                            | false    | `true`                     | Toggle whether the calendar is shown                                                                                                                    |
-| **`datePickerProps`**     | Object                                                                                             | false    |                            | Props to be spread onto the date range picker component from `react-dates`
+| **`datePickerProps`**     | Object                                                                                             | false    |                            | Props to be spread onto the date range picker component from `react-dates`                                                                              |

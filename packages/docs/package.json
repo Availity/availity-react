@@ -54,13 +54,18 @@
     "@availity/upload": "^2.1.0",
     "@availity/upload-core": "^3.0.4",
     "@availity/yup": "^1.1.1",
+    "@loadable/component": "^5.10.2",
     "availity-reactstrap-validation": "2.6.0",
     "axios": "^0.18.0",
     "formik": "^2.0.1-rc.12",
     "gatsby": "^2.13.83",
+    "moment": "^2.24.0",
     "react": "^16.8.3",
     "react-dom": "^16.8.3",
     "reactstrap": "^8.0.1",
     "yup": "^0.27.0"
+  },
+  "devDependencies": {
+    "gatsby-plugin-compile-es6-packages": "^2.1.0"
   }
 }

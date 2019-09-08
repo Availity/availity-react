@@ -16,22 +16,28 @@ npm install @availity/breadcrumbs --save
 import Breadcrumbs from '@availity/breadcrumbs';
 import { BreadcrumbItem } from 'reactstrap';
 
-<div className="w-100 d-flex flex-row justify-content-around align-items-center">
+<div className="w-100 d-flex flex-column justify-content-around align-items-start">
 <div>
-<h2>Basic Example</h2>
+<h3>Basic Example</h3>
 <Breadcrumbs active="Payer Space" />
 </div>
 
 <div>
-<h2>Example with crumbs prop</h2>
-<Breadcrumbs active="Payer Space" crumbs={[{name: 'Grand Parent', url: '/grand-parent'}, {name: 'Parent', url: '/parent'}, ]} />
+  <h3>Example with crumbs prop</h3>
+  <Breadcrumbs
+    active="Payer Space"
+    crumbs={[
+      { name: 'Grand Parent', url: '/grand-parent' },
+      { name: 'Parent', url: '/parent' },
+    ]}
+  />
 </div>
 
 <div>
-<h2>Example with custom breadcrumb children</h2>
+<h3>Example with custom breadcrumb children</h3>
 <Breadcrumbs active="Current Page">
   <BreadcrumbItem>
-    <div>Custom Bread Crumb</div>
+    Custom Bread Crumb
   </BreadcrumbItem>
 </Breadcrumbs>
 </div>
@@ -57,13 +63,14 @@ import { BreadcrumbItem } from 'reactstrap';
 ```
 
 ### Breadcrumbs (Default export)
+
 Breadcrumbs showing the ancestor pages and the current active page
 
 ## Props
 
-| Prop Name        | Types         | Required | Default               | Description                                                                                 |
-| -------------    | -------       | -------- | --------              | --------------------------------------------------------------------------------------      |
-| **`active`**     | String        | true     |                       | The name of the active page (the page the user is currently on).                            |
-| **`crumbs`**     | Array<Object> | false    | `"black"`             | The ancestor pages. Objects in array contain `name` (String) and `url` (String) properties. |
-| **`emptyState`** | String        | false    | `&hellip;` (&hellip;) | The value to display when the active page or an ancestor does not have a value.             |
-| **`children`**   | Node          | false    |                       | The children must be reactstrap BreadcrumbItem components                                   |
+| Prop Name        | Types           | Required | Default               | Description                                                                                 |
+| ---------------- | --------------- | -------- | --------------------- | ------------------------------------------------------------------------------------------- |
+| **`active`**     | String          | true     |                       | The name of the active page (the page the user is currently on).                            |
+| **`crumbs`**     | Array<`Object`> | false    | `black`               | The ancestor pages. Objects in array contain `name` (String) and `url` (String) properties. |
+| **`emptyState`** | String          | false    | `&hellip;` (&hellip;) | The value to display when the active page or an ancestor does not have a value.             |
+| **`children`**   | Node            | false    |                       | The children must be reactstrap BreadcrumbItem components                                   |

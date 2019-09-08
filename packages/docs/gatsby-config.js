@@ -2,6 +2,15 @@ const themeOptions = require('@availity/gatsby-theme-docs/theme-options');
 
 module.exports = {
   pathPrefix: '/availity-react',
+  plugins: [
+    {
+      // For compling `availity-react` modules
+      resolve: `gatsby-plugin-compile-es6-packages`,
+      options: {
+        modules: ['@availity/message-core'],
+      },
+    },
+  ],
   __experimentalThemes: [
     {
       resolve: '@availity/gatsby-theme-docs',
