@@ -15,7 +15,7 @@ npx install-peerdeps @availity/feedback --save
 
 import Feedback from '@availity/feedback';
 
-<div className="w-100 d-flex flex-row justify-content-around align-items-center">
+<div className="w-100 d-flex flex-column justify-content-around align-items-start">
   <Feedback
     appName="Payer Space"
     prompt="Please provide some feedback"
@@ -35,16 +35,17 @@ import Feedback from '@availity/feedback';
   color="primary"
 >
   Provide Feedback
-</Feedback>
+</Feedback>;
 ```
 
 ## Feedback (Default export)
+
 Availity Feedback component
 
 ### Props
 
 | Prop Name            | Types    | Required | Default                                      | Description                                                                                                               |
-| -------------        | -------  | -------- | --------                                     | --------------------------------------------------------------------------------------                                    |
+| -------------------- | -------- | -------- | -------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------- |
 | **`appName`**        | String   | false    |                                              | The name of the application this feedback is for. It is used in the API request to indicate where the feedback came from. |
 | **`formProps`**      | Object   | false    |                                              | Props to be spread to the underlying `FeedbackForm`. See the props for `FeedbackForm` below.                              |
 | **`children`**       | Node     | false    | `"Give Feedback"`                            | The text to display on the submit button.                                                                                 |
@@ -61,21 +62,22 @@ This is the underlying form which is exposed in case you need to gather feedback
 
 ### Props
 
-| Prop Name                | Types         | Required | Default                                   | Description                                                                                                                                                                                                                |
-| -------------            | -------       | -------- | --------                                  | --------------------------------------------------------------------------------------                                                                                                                                     |
-| **`name`**               | String        | true     |                                           | The name of the application this feedback is for. It is used in the API request to indicate where the feedback came from.                                                                                                  |
-| **`onFeedbackSent`**     | Function      | false    |                                           | Callback for when the feedback is submitted. It is called with the feedback object.                                                                                                                                        |
-| **`faceOptions`**        | Array<Object> | false    |                                           | Array of Objects containing **`icon`** (String), **`description`** (String), and **`placeholder`** (String). Allows you to override the smiley face options which appear. Default: Smiley Face, Meh Face, and Frowny Face. |
-| **`aboutOptions`**       | Array<Object> | false    |                                           | Array of Objects containing **`value`** (String,Number) and **`label`** (String). Allows a dropdown displaying the options provided to let the user indicate what the feedback is about.                                   |
-| **`onClose`**            | Function      | false    |                                           | When provided, a "Close" button is rendered and `onClose` is executed when it is clicked                                                                                                                                   |
-| **`prompt`**             | String        | false    | `"Tell us what you think about ${name}."` | Text which prompts/asks the user to provide feedback.                                                                                                                                                                      |
-| **`additionalComments`** | Boolean       | false    | `false`                                   | If `true`, shows an optional comments field below.                                                                                                                                                                         |
-| **`staticFields`**       | Object        | false    |                                           | Static (non-user-entered) key/value pairs to be sent in feedback submission                                                                                                                                                |
+| Prop Name                | Types           | Required | Default                                   | Description                                                                                                                                                                                                                |
+| ------------------------ | --------------- | -------- | ----------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| **`name`**               | String          | true     |                                           | The name of the application this feedback is for. It is used in the API request to indicate where the feedback came from.                                                                                                  |
+| **`onFeedbackSent`**     | Function        | false    |                                           | Callback for when the feedback is submitted. It is called with the feedback object.                                                                                                                                        |
+| **`faceOptions`**        | Array<`Object`> | false    |                                           | Array of Objects containing **`icon`** (String), **`description`** (String), and **`placeholder`** (String). Allows you to override the smiley face options which appear. Default: Smiley Face, Meh Face, and Frowny Face. |
+| **`aboutOptions`**       | Array<`Object`> | false    |                                           | Array of Objects containing **`value`** (String,Number) and **`label`** (String). Allows a dropdown displaying the options provided to let the user indicate what the feedback is about.                                   |
+| **`onClose`**            | Function        | false    |                                           | When provided, a "Close" button is rendered and `onClose` is executed when it is clicked                                                                                                                                   |
+| **`prompt`**             | String          | false    | `"Tell us what you think about ${name}."` | Text which prompts/asks the user to provide feedback.                                                                                                                                                                      |
+| **`additionalComments`** | Boolean         | false    | `false`                                   | If `true`, shows an optional comments field below.                                                                                                                                                                         |
+| **`staticFields`**       | Object          | false    |                                           | Static (non-user-entered) key/value pairs to be sent in feedback submission                                                                                                                                                |
 
 ### Usage
+
 import { FeedbackForm } from '@availity/feedback';
 
-<div className="w-100 d-flex flex-row justify-content-around align-items-center">
+<div className="w-100">
   <FeedbackForm name="Payer Space" />
 </div>
 
@@ -83,5 +85,5 @@ import { FeedbackForm } from '@availity/feedback';
 import React from 'react';
 import { FeedbackForm } from '@availity/feedback';
 
-<FeedbackForm name="Payer Space" />
+<FeedbackForm name="Payer Space" />;
 ```

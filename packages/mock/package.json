@@ -4,7 +4,7 @@
   "private": true,
   "author": "Kyle Gray <kyle.gray@availity.com>",
   "description": "Contains xhr mocks for storybook and gatsby docs",
-  "main": "src/index.js",
+  "main": "index.js",
   "keywords": [
     "react",
     "availity"

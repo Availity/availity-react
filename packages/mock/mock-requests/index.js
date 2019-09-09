@@ -14,35 +14,37 @@ import logMessages from './LogMessages';
 import organizations from './organizations';
 import providers from './providers';
 
-mock.setup();
+export default () => {
+  mock.setup();
 
-features(mock);
+  features(mock);
 
-notifications(mock);
+  notifications(mock);
 
-axiUserPermissions(mock);
+  axiUserPermissions(mock);
 
-regions(mock);
+  regions(mock);
 
-appeals(mock);
+  appeals(mock);
 
-slotmachine(mock);
+  slotmachine(mock);
 
-me(mock);
+  me(mock);
 
-settings(mock);
+  settings(mock);
 
-disclaimers(mock);
+  disclaimers(mock);
 
-webQL(mock);
+  webQL(mock);
 
-resourceSelect(mock);
+  resourceSelect(mock);
 
-logMessages(mock);
+  logMessages(mock);
 
-organizations(mock);
+  organizations(mock);
 
-providers(mock);
+  providers(mock);
 
-// keep this last
-mock.use(proxy);
+  // keep this last
+  mock.use(proxy);
+};
