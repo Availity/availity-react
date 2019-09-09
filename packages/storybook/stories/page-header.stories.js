@@ -7,6 +7,7 @@ import README from '@availity/page-header/README.md';
 import TrainingLink from '@availity/training-link';
 import { BreadcrumbItem } from 'reactstrap';
 import Breadcrumbs from '@availity/breadcrumbs/Breadcrumbs';
+import '@availity/mock';
 
 const CustomBreadcrumbs = (
   <Breadcrumbs active="Active Page Name">

@@ -15,10 +15,7 @@ import {
 import { Feedback, FormGroup, Field } from '@availity/form';
 import * as yup from 'yup';
 import README from '@availity/select/README.md';
-
-import './mocks/providers';
-import './mocks/organizations';
-import './mocks/regions';
+import '@availity/mock';
 
 import FormikResults from './mocks/FormikResults';
 

@@ -19,10 +19,7 @@ import AvSelectResource, {
   AvPatientSelect,
 } from '@availity/reactstrap-validation-select/resources';
 import README from '@availity/reactstrap-validation-select/README.md';
-
-import './mocks/providers';
-import './mocks/organizations';
-import './mocks/regions';
+import '@availity/mock';
 
 import AvFormResults from './mocks/AvFormResults';
 

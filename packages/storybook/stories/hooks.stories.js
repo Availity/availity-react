@@ -12,6 +12,7 @@ import {
   useCurrentUser,
 } from '@availity/hooks';
 import { Button, Card, CardBody, CardTitle } from 'reactstrap';
+import '@availity/mock';
 
 import README from '@availity/hooks/README.md';
 

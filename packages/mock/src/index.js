@@ -11,6 +11,8 @@ import disclaimers from './disclaimers';
 import webQL from './webQL';
 import resourceSelect from './resource-select';
 import logMessages from './LogMessages';
+import organizations from './organizations';
+import providers from './providers';
 
 mock.setup();
 
@@ -37,6 +39,10 @@ webQL(mock);
 resourceSelect(mock);
 
 logMessages(mock);
+
+organizations(mock);
+
+providers(mock);
 
 // keep this last
 mock.use(proxy);

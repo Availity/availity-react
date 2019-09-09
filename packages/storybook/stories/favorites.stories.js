@@ -7,7 +7,7 @@ import { Card, CardBody, CardTitle } from 'reactstrap';
 import Favorites, { FavoriteHeart } from '@availity/favorites';
 import '@availity/favorites/style.scss';
 import README from '@availity/favorites/README.md';
-import './mock-requests';
+import '@availity/mock';
 
 storiesOf('Icons|Favorite', module)
   .addParameters({

@@ -4,6 +4,7 @@ import { withKnobs, text } from '@storybook/addon-knobs/react';
 
 import PayerLogo from '@availity/payer-logo';
 import README from '@availity/payer-logo/README.md';
+import '@availity/mock';
 
 storiesOf('Logos|Payer', module)
   .addParameters({
