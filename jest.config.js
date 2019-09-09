@@ -5,11 +5,13 @@ module.exports = {
     '/node_modules/',
     'packages/docs',
     'packages/storybook',
+    '/packages/mock/',
   ],
   coveragePathIgnorePatterns: [
     '/node_modules/',
     '/coverage/',
     '/dist/',
+    '/packages/mock/',
     '/packages/storybook/',
     '/packages/docs/',
     '/packages/feature/bin.js',
