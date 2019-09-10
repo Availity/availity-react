@@ -39,5 +39,5 @@ import AvLink from '@availity/link';
 | **`url`**     | String      | true     |          | The url of the page the link goes to.                                                                                                 |
 | **`target`**  | String      | false    |          | Where to open the linked document.                                                                                                    |
 | **`tag`**     | Node,String | false    | `<a>`    | The tag to use in the link that gets rendered.                                                                                        |
-| **`onClick`** | Function    | false    |          | Function to run onClick of the tag. The first argument that gets passed to `onClick` is the event. The second is the processed `url`. |
-| **`loadApp`** | String      | false    | `true`   | When `false`, the `url` prop to `AvLink` _will not_ be formatted to leverage loadApp.                                                 |
+| **`onClick`** | Function    | false    |          | Function to run onClick of the link. The first argument passed to `onClick` is the event. The second argument is the processed `url`. |
+| **`loadApp`** | String      | false    | `true`   | When `false`, the `url` prop to `AvLink` is _not_ formatted to leverage loadApp.                                                      |

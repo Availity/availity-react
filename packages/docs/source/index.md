@@ -21,5 +21,5 @@ https://codecov.io/gh/Availity/availity-react)
 https://availity-react-preview.netlify.com
 
 ## Additional Notes
-We use `data-testid` for unit tests to use for grabbing unique attributes. If you are using `availity-workflow@6.0.0` or later it will be removed for you in production builds. However, if you don't want it and not using workflow, you will need to add the following babel plugin to remove it: 
+We use `data-testid` in unit tests in order to grab unique attributes. If you are using `availity-workflow@6.0.0` or later, it is removed for you in production builds. To remove it if you are not using `availity-workflow`, add the following babel plugin to your project:
 - [babel-plugin-jsx-remove-data-test-id](https://github.com/coderas/babel-plugin-jsx-remove-data-test-id)

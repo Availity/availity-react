@@ -25,18 +25,18 @@ import Pagination from '@availity/pagination';
 
 ## Pagination (Default export)
 
-This is the provider component for pagination to work. All the inner components must be wrapped in this tag in order to recieve all their required properties.
+This is the provider component needed for `@availity/pagination` components to work. All `@availity/pagination` components must be children of a Pagination provider.
 
 ### Props
 
-| Prop Name          | Types          | Required | Default  | Description                                                                                                                                                                                                   |
-| -------------      | -------        | -------- | -------- | --------------------------------------------------------------------------------------                                                                                                                        |
-| **`items`**        | Array,Function | false    | `[]`     | If Array, defaults `totalCount` to length of array, and page values are sliced from the Array. If a function, it is called with the current page as an argument and expects an array of items to be returned. |
-| **`itemsPerPage`** | Number         | false    | `10`     | The total amount of items to render at a time. ( After all the filtering )                                                                                                                                    |
-| **`onPageChange`** | Function       | false    |          | Function to call after the new page has been set when the user changes the page                                                                                                                               |
-| **`watchList`**    | Array          | false    | `[]`     | Array of data points that, when changed, causes the pagination to update. This is helpful when the `items` prop is a function and you want `items` to be called to get the most up-to-date list.              |
-| **`resetParams`**  | Array          | false    | `[]`     | Array of data points that, when changed, causes pagination to reset the current page to 1.                                                                                                                    |
-| **`defaultPage`**  | Number         | false    | `1`      | The starting page to use when the component mounts.                                                                                                                                                           |
+| Prop Name          | Types          | Required | Default  | Description                                                                                                                                                                                                           |
+| -------------      | -------        | -------- | -------- | --------------------------------------------------------------------------------------                                                                                                                                |
+| **`items`**        | Array,Function | false    | `[]`     | If Array, defaults `totalCount` to the length of the array, and page values are sliced from the Array. If a function, it is called with the current page as an argument and expects an array of items to be returned. |
+| **`itemsPerPage`** | Number         | false    | `10`     | The total amount of items to render at a time. ( After all the filtering )                                                                                                                                            |
+| **`onPageChange`** | Function       | false    |          | Function to call after the new page has been set when the user changes the page                                                                                                                                       |
+| **`watchList`**    | Array          | false    | `[]`     | Array of data points that, when changed, causes the pagination to update. This is helpful when the `items` prop is a function and you want `items` to be called to get the most up-to-date list.                      |
+| **`resetParams`**  | Array          | false    | `[]`     | Array of data points that, when changed, causes pagination to reset the current page to 1.                                                                                                                            |
+| **`defaultPage`**  | Number         | false    | `1`      | The starting page to use when the component mounts.                                                                                                                                                                   |
 
 ### Usage
 
@@ -55,13 +55,13 @@ The controls for the pagination
 
 ### Props
 
-| Prop Name            | Types   | Required | Default  | Description                                                                                        |
-| -------------        | ------- | -------- | -------- | --------------------------------------------------------------------------------------------       |
-| **`directionLinks`** | Boolean | false    | `false`  | If enabled, will show next and previous arrows on the "Next" and "Back" buttons.                   |
-| **`autoHide`**       | Boolean | false    | `true`   | If enabled and there are no items, the component will be hidden.                                   |
-| **`pageRange`**      | Number  | false    | `5`      | The number of pages to display at a time.                                                          |
-| **`marginPages`**    | Number  | false    | `2`      | The number of pages you want to display on the ends when there are more pages than the page range. |
-| **`breakLabel`**     | Boolean | false    | `true`   | When `true`, an ellipsis will be displayed.                                                        |
+| Prop Name            | Types   | Required | Default  | Description                                                                                  |
+| -------------        | ------- | -------- | -------- | -------------------------------------------------------------------------------------------- |
+| **`directionLinks`** | Boolean | false    | `false`  | If enabled, shows next and previous arrows on the "Next" and "Back" buttons.                 |
+| **`autoHide`**       | Boolean | false    | `true`   | If enabled and there are no items, the component is hidden.                                  |
+| **`pageRange`**      | Number  | false    | `5`      | The number of pages to display at a time.                                                    |
+| **`marginPages`**    | Number  | false    | `2`      | The number of pages to display on the ends when there are pages outside of the page range.   |
+| **`breakLabel`**     | Boolean | false    | `true`   | When `true`, an ellipsis is displayed.                                                  |
 
 ### Usage
 
@@ -74,7 +74,7 @@ import { PaginationControls } from '@availity/pagination';
 
 ## PaginationContent
 
-This is the container of all the items that will be rendered to the DOM when the `Pagination` provider receives items. Must be nested inside a `Pagination` component.
+This is the container of all the items rendered to the DOM when the `Pagination` provider receives items. Must be nested inside a `Pagination` component.
 
 ### Props
 
@@ -83,7 +83,7 @@ This is the container of all the items that will be rendered to the DOM when the
 | **`component`**      | Node        | false    |          | The message to render with the loading bar when in the loading state                   |
 | **`loadingMessage`** | String      | false    |          | The message to render with the loading bar when in the loading state                   |
 | **`itemKey`**        | String      | false    |          | The key of the object rendered in the component to be used during mapping              |
-| **`loader`**         | Boolean     | false    | `false`  | If true, will call BlockUI to simulate a loading state if the provider is loading.     |
+| **`loader`**         | Boolean     | false    | `false`  | If true, calls BlockUI to simulate a loading state if the provider is loading.         |
 | **`containerProps`** | Object      | false    | `{}`     | Props to be spread onto the `<BlockUI />` tag                                          |
 | **`containerTag`**   | String,Node | false    | `<div>`  | The tag to render the `<BlockUi />` as                                                 |
 
@@ -138,11 +138,11 @@ const PageSetter = () => {
 };
 ```
 
-### PaginationContext
+## PaginationContext
 
 If you are using a class component, you can subscribe to the pagination by using this context.
 
-#### Example usage
+### Usage
 
 ```jsx
 import React from 'react';
@@ -173,12 +173,12 @@ This is a wrapper around the `Pagination` Component that can be used for paginat
 
 In addition to `Pagination` props:
 
-| Prop Name        | Types                          | Required | Default   | Description                                                                                                                                                                                                                                                                                                                                                          |
-| -------------    | -------                        | -------- | --------  | --------------------------------------------------------------------------------------                                                                                                                                                                                                                                                                               |
-| **`resource`**   | `@availity/api-axios` resource | true     |           | Availity API resource (see [@availity/api-core](https://github.com/Availity/sdk-js/tree/master/packages/api-core) and [@availity/api-axios](https://github.com/Availity/sdk-js/tree/master/packages/api-axios)).                                                                                                                                                     |
-| **`getResult`**  | String,Function                | false    | `"black"` | When a function, the function will be called with the API response body/payload and is expected to return an array containing the list of items for the page. When a string, the string is expected to be a simple key used to get the value from the response ("simple" meaning not handling dot-notation for nested objects, if you need that provide a function.) |
-| **`parameters`** | Object                         | false    |           | Object used to create querystring parameters in the request.                                                                                                                                                                                                                                                                                                         |
-| **`children`**   | Node                           | false    |           | Children to render in the Pagination provider                                                                                                                                                                                                                                                                                                                        |
+| Prop Name        | Types                          | Required | Default  | Description                                                                                                                                                                                                                                                                                                                                                                                                   |
+| -------------    | -------                        | -------- | -------- | --------------------------------------------------------------------------------------                                                                                                                                                                                                                                                                                                                        |
+| **`resource`**   | `@availity/api-axios` resource | true     |          | Availity API resource (see [@availity/api-core](https://github.com/Availity/sdk-js/tree/master/packages/api-core) and [@availity/api-axios](https://github.com/Availity/sdk-js/tree/master/packages/api-axios)).                                                                                                                                                                                              |
+| **`getResult`**  | String,Function                | false    |          | When a function, the function is called with the response body from the API call and is expected to return an array containing the list of items for the page. When a string, the string is expected to be a simple key used to get the value from the response. ("simple" means dot notation is not supported for grabbing values from nested objects. If your result is deeply nested, provide a function.) |
+| **`parameters`** | Object                         | false    |          | Object used to create querystring parameters in the request.                                                                                                                                                                                                                                                                                                                                                  |
+| **`children`**   | Node                           | false    |          | Children to render in the Pagination provider                                                                                                                                                                                                                                                                                                                                                                 |
 
 ### Usage
 

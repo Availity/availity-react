@@ -71,6 +71,6 @@ Breadcrumbs showing the ancestor pages and the current active page
 | Prop Name        | Types           | Required | Default               | Description                                                                                 |
 | ---------------- | --------------- | -------- | --------------------- | ------------------------------------------------------------------------------------------- |
 | **`active`**     | String          | true     |                       | The name of the active page (the page the user is currently on).                            |
-| **`crumbs`**     | Array<`Object`> | false    | `black`               | The ancestor pages. Objects in array contain `name` (String) and `url` (String) properties. |
+| **`crumbs`**     | Array<`Object`> | false    |                       | The ancestor pages. Objects in array contain `name` (String) and `url` (String) properties. |
 | **`emptyState`** | String          | false    | `&hellip;` (&hellip;) | The value to display when the active page or an ancestor does not have a value.             |
-| **`children`**   | Node            | false    |                       | The children must be reactstrap BreadcrumbItem components                                   |
+| **`children`**   | Node            | false    |                       | The children. Must be reactstrap BreadcrumbItem components                                  |

@@ -35,18 +35,19 @@ import ListGroupItem, { ListGroupItemStatus } from '@availity/list-group-item';
 
 ## ListGroupItem (Default export)
 
-Availity's ListGroup which can feature Cards and Selectable items
+Availity's ListGroup, which can feature Cards and Selectable items
 
 ### Props
 
-| Prop Name         | Types   | Required | Default  | Description                                                                                                                                                                                              |
-| -------------     | ------- | -------- | -------- | --------------------------------------------------------------------------------------                                                                                                                   |
-| **`borderColor`** | String  | false    |          | Adds the border to the left according to the UIKit styles. Must be used within a <code>ListGroup</code> from <code>@availity/list-group</code> with the prop <code>cards</code> set to <code>true</code> |
-| **`color`**       | String  | false    |          | Adds a contextual background color to the item. Uses availity ui kit variants                                                                                                                            |
-| **`tag`**         | Node    | false    | `<li>`   | The tag to use in the list group item that gets rendered                                                                                                                                                 |
+| Prop Name         | Types   | Required | Default  | Description                                                                                                                                                                           |
+| -------------     | ------- | -------- | -------- | --------------------------------------------------------------------------------------                                                                                                |
+| **`borderColor`** | String  | false    |          | The border color to display on the left of the item. Uses Availity UI Kit variants. Must be used within a `ListGroup` from `@availity/list-group` with the `cards` prop set to `true` |
+| **`color`**       | String  | false    |          | Adds a contextual background color to the item. Uses Availity UI Kit variants                                                                                                         |
+| **`tag`**         | Node    | false    | `<li>`   | The tag to use in the list group item                                                                                                                                                 |
+
 ## ListGroupItemStatus
 
-ListGroupItem with helpful logic for an optional status badge and relative colors for the card and badge.
+ListGroupItem with an optional status badge and colors for the card and badge.
 
 ### Props
 
@@ -54,7 +55,7 @@ In addition to the props of `ListGroupItem`
 
 | Prop Name          | Types         | Required | Default    | Description                                                                                                                                                                                                         |
 | -------------      | -------       | -------- | --------   | --------------------------------------------------------------------------------------                                                                                                                              |
-| **`titleContent`** | Node          | false    | `<span />` | Renders title on the same level as the badge if used.                                                                                                                                                               |
+| **`titleContent`** | Node          | false    | `<span />` | When present, adds a title on the same level as the badge.                                                                                                                                                          |
 | **`children`**     | Node          | true     |            | Children to render inside of the `<ListGroupItemStatus />`                                                                                                                                                          |
-| **`color`**        | String        | false    | `"info"`   | Adds the border color and default badge color.                                                                                                                                                                      |
-| **`badge`**        | String,Object | false    | `"info"`   | If a String, the text to render inside of the `<Badge />`. If an Object, expects properties `text` (String) and `color` (String). `text` is the text to render inside the badge. `color` is the color of the badge. |
+| **`color`**        | String        | false    | `"info"`   | Set the color for the border and badge.                                                                                                                                                                             |
+| **`badge`**        | String,Object | false    | `"info"`   | If a String, the text to render inside of the `<Badge />`. If an Object, expects `text` (String) and `color` (String) properties. `text` is the text to render inside the badge. `color` is the color of the badge. |

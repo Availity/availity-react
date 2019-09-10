@@ -54,7 +54,7 @@ const Component = () => {
 // ...
 ```
 
-You can also pass the state you are looking to set the toggle to and if its already set it will not perform a state update.
+You can also pass the state you want to set the toggle to. If it hasn't changed, it will not perform a state update.
 
 ```jsx
 // This component will never re-render because the toggle is already set to `true`
@@ -67,12 +67,12 @@ const Component = () => {
 
 #### useEffectAsync
 
-Hook that will allow asynchronous functions to be called in the standard `useEffect` React hook.
+Hook that allows asynchronous functions to be called in the standard `useEffect` React hook.
 
 ##### Arguments
 
-- **`effect`**: The effect to be called just like the function given to `useEffect`.
-- **`inputs`**: The watch params for the effect just like the second arg in `useEffect`.
+- **`effect`**: The effect to call - just like the function given to `useEffect`.
+- **`inputs`**: The watch params for the effect  - just like the second arg in `useEffect`.
 
 ##### useEffectAsync Usage
 
@@ -95,7 +95,7 @@ const Component = ({ asyncFunction }) => {
 
 #### useTimeout
 
-Hook that will return `true` after the given amount of time in milliseconds.
+Hook that returns `true` after the given amount of time in milliseconds.
 
 ##### Arguments
 
@@ -117,11 +117,11 @@ const Component = () => {
 
 #### useMount
 
-Hook that will run a function on mount and dismount if a function is returned.
+Hook that runs a function on mount and dismount if a function is returned.
 
 ##### Arguments
 
-- **`callback`**: Required function which will run.
+- **`callback`**: Function. Required.
 
 ##### useMount Usage
 
@@ -146,7 +146,7 @@ const Component = () => {
 
 #### useCurrentRegion
 
-Hook that will return the current user's region.
+Hook that returns the user's current region.
 
 
 ##### useCurrentRegion Usage
@@ -166,7 +166,7 @@ const Component = () => {
 
 #### useCurrentUser
 
-Hook that will return the current user.
+Hook that returns the current user.
 
 
 ##### useCurrentUser Usage

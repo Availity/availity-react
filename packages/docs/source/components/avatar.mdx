@@ -12,8 +12,13 @@ npm install @availity/avatar --save
 ```
 
 ## Usage
+import Avatar from '@availity/avatar';
 
-```javascript
+<div className="w-100 d-flex flex-row justify-content-around align-items-center">
+<Avatar />
+</div>
+
+```jsx
 import React from 'react';
 import Avatar from '@availity/avatar';
 // ...
@@ -28,4 +33,4 @@ import Avatar from '@availity/avatar';
 | Prop Name           | Types   | Required | Default                                           | Description                                                                            |
 | -------------       | ------- | -------- | --------                                          | -------------------------------------------------------------------------------------- |
 | **`skeletonProps`** | Object  | false    |                                                   | Dimensions passed to loader to show while the avatar is loading.                       |
-| **`fallback`**      | String  | false    | `"/public/apps/my-profile/images/Avatars-00.png"` | Image url to render if the url for the avatar is not not found.                        |
+| **`fallback`**      | String  | false    | `"/public/apps/my-profile/images/Avatars-00.png"` | Image url to render if the url for the avatar is not found.                            |

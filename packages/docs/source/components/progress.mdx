@@ -17,7 +17,7 @@ npm install @availity/progress --save
 
 import Progress from '@availity/progress';
 
-<div className="w-100 d-flex flex-row justify-content-around align-items-center">
+<div className="w-100 flex-row justify-content-around align-items-center">
   <p>50% Complete</p>
   <Progress animated={false} striped complete={false} value={50} max={100} />
 </div>
@@ -39,7 +39,7 @@ import Progress from '@availity/progress';
 | **`animated`**  | Boolean     | false    |             | Triggers the "animated" style in the progress bar.                                                               |
 | **`striped`**   | Boolean     | false    |             | Triggers the "striped" style in the progress bar.                                                                |
 | **`complete`**  | Boolean     | false    |             | Triggers the "complete" style in the progress bar. When true, a checkmark appears at the end of the progress bar |
-| **`value`**     | Number      | false    | `0`         | The amount the progress bar that should be filled (relative to the `max`)                                        |
+| **`value`**     | Number      | false    | `0`         | The amount of the progress bar that should be filled (relative to the `max`)                                     |
 | **`max`**       | Number      | false    | `100`       | The maximum amount of the progress bar                                                                           |
 | **`className`** | String      | false    |             | Additional styles to be passed onto the progress bar                                                             |
 | **`color`**     | String      | false    | `"success"` | The color of the progress bar                                                                                    |
