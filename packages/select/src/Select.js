@@ -29,9 +29,9 @@ const components = {
   ),
 };
 
-const createOption = (label, labelkey = 'label') => ({
-  [labelkey]: label,
-  value: label.toLowerCase().replace(/\W/g, ''),
+const createOption = (label, labelKey = 'label', valueKey = 'value') => ({
+  [labelKey]: label,
+  [valueKey]: label.toLowerCase().replace(/\W/g, ''),
 });
 
 const Select = ({
@@ -169,7 +169,11 @@ const Select = ({
   };
 
   const handleCreate = value => {
-    const newOpt = createOption(value, get(attributes, 'labelKey', 'label'));
+    const newOpt = createOption(
+      value,
+      get(attributes, 'labelKey', 'label'),
+      get(attributes, 'valueKey', 'value')
+    );
     newOptions.push(newOpt);
     setNewOptions([...newOptions]);
 
