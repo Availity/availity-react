@@ -11,7 +11,7 @@ npm install @availity/date @availity/form formik@^2.0.1-rc.5 react reactstrap --
 
 ## Validation
 
-See [yup](https://github.com/jquense/yup) and [@availity/yup](https://github.com/Availity/sdk-js/tree/master/packages/yup). Note to use this package with `@availity/yup` you will need to import the `moment` version as noted in the example below.
+See [yup](https://github.com/jquense/yup) and [@availity/yup](https://github.com/Availity/sdk-js/tree/master/packages/yup). Note: to use this package with `@availity/yup` you will need to import the `moment` version as noted in the example below.
 
 ### FormikDate (Default Export)
 
@@ -25,6 +25,7 @@ import { Form } from '@availity/form';
 import FormikDate from '@availity/date';
 import * as yup from 'yup';
 import '@availity/yup/moment';
+import '@availity/date/styles.scss';
 
 // ...
 const schema = yup.object().shape({
@@ -83,7 +84,8 @@ import React from 'react';
 import { Form } from '@availity/form';
 import { DateField } from '@availity/date';
 import * as yup from 'yup';
-import '@availity/yup';
+import '@availity/yup/moment';
+import '@availity/date/styles.scss';
 
 // ...
 const schema = yup.object().shape({
@@ -132,7 +134,8 @@ import React from 'react';
 import { Form } from '@availity/form';
 import { DateRange } from '@availity/date';
 import * as yup from 'yup';
-import '@availity/yup';
+import '@availity/yup/moment';
+import '@availity/date/styles.scss';
 
 // ...
 const dateFormat = 'MM/DD/YYYY';
@@ -204,7 +207,8 @@ import React from 'react';
 import { Form } from '@availity/form';
 import { DateRangeField } from '@availity/date';
 import * as yup from 'yup';
-import '@availity/yup';
+import '@availity/yup/moment';
+import '@availity/date/styles.scss';
 
 // ...
 const dateFormat = 'MM/DD/YYYY';
