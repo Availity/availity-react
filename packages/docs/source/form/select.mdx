@@ -19,10 +19,44 @@ Select dropdown without a `Label` or `Feedback`
 
 ### Usage
 
+import { Form } from '@availity/form';
+import Select, { SelectField } from '@availity/select';
+import { Button } from 'reactstrap';
+import * as yup from 'yup';
+import '@availity/yup';
+
+<Form
+  initialValues={{
+    justTheInput: undefined,
+  }}
+  onSubmit={values => window.alert(JSON.stringify(values))}
+  validationSchema={yup.object().shape({
+    justTheInput: yup.string().required('This field is required.'),
+  })
+  }
+>
+  <Select
+    id="justTheInput"
+    name="justTheInput"
+    isMulti={false}
+    options={[
+      {label: "Option 1", value: 1},
+      {label: "Option 2", value: 2},
+      {label: "Option 3", value: 3},
+    ]}
+  />
+
+  <Button className="mt-3" color="primary" type="submit">
+    Submit
+  </Button>
+</Form>
+
+
 ```jsx
 import React from 'react';
 import { Form } from '@availity/form';
 import Select from '@availity/select';
+import { Button } from 'reactstrap';
 import * as yup from 'yup';
 import '@availity/yup';
 
@@ -42,7 +76,7 @@ return (
     initialValues={{
       justTheInput: undefined,
     }}
-    onSubmit={values => apiResource.submit(values)}
+    onSubmit={values => window.alert(JSON.stringify(values))}
     validationSchema={schema}
   >
     <Select
@@ -81,21 +115,45 @@ The same as `Select` but with a `Label` that appears above the input and a `Feed
 
 ### Usage
 
+<Form
+  initialValues={{
+    justTheInput: undefined,
+  }}
+  onSubmit={values => window.alert(JSON.stringify(values))}
+  validationSchema={yup.object().shape({
+    justTheInput: yup.string().required('This field is required.'),
+  })
+  }
+>
+  <SelectField
+    label="Just The Input"
+    id="justTheInput"
+    name="justTheInput"
+    isMulti={false}
+    options={[
+      {label: "Option 1", value: 1},
+      {label: "Option 2", value: 2},
+      {label: "Option 3", value: 3},
+    ]}
+  />
+
+  <Button className="mt-3" color="primary" type="submit">
+    Submit
+  </Button>
+</Form>
+
+
 ```jsx
 import React from 'react';
 import { Form } from '@availity/form';
 import { SelectField } from '@availity/select';
+import { Button } from 'reactstrap';
 import * as yup from 'yup';
 import '@availity/yup';
 
 // ...
 const schema = yup.object().shape({
-  justTheInput: yup
-    .array()
-    .of(yup.string())
-    .min(min, 'Must select at least 2 options')
-    .max(max, 'Cannot select more than 4 options')
-    .required('This field is required.'),
+  justTheInput: yup.string().required('This field is required.'),
 });
 
 const options = [
@@ -107,16 +165,16 @@ const options = [
 return (
   <Form
     initialValues={{
-      selectWithLabel: undefined,
+      justTheInput: undefined,
     }}
-    onSubmit={values => apiResource.submit(values)}
+    onSubmit={values => window.alert(JSON.stringify(values))}
     validationSchema={schema}
   >
     <SelectField
-      label="Select a value"
-      id="selectWithLabel"
-      name="selectWithLabel"
-      isMulti
+      label="Just The Input"
+      id="justTheInput"
+      name="justTheInput"
+      isMulti={false}
       options={options}
     />
 
