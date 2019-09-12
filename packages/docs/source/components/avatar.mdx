@@ -12,10 +12,11 @@ npm install @availity/avatar --save
 ```
 
 ## Usage
-import Avatar from '@availity/avatar';
+
+import Avatar from './Avatar';
 
 <div className="w-100 d-flex flex-row justify-content-around align-items-center">
-<Avatar />
+  <Avatar />
 </div>
 
 ```jsx
@@ -24,13 +25,13 @@ import Avatar from '@availity/avatar';
 // ...
 <Container>
   <Avatar />
-</Container>
+</Container>;
 // ...
 ```
 
 ## Props
 
-| Prop Name           | Types   | Required | Default                                           | Description                                                                            |
-| -------------       | ------- | -------- | --------                                          | -------------------------------------------------------------------------------------- |
-| **`skeletonProps`** | Object  | false    |                                                   | Dimensions passed to loader to show while the avatar is loading.                       |
-| **`fallback`**      | String  | false    | `"/public/apps/my-profile/images/Avatars-00.png"` | Image url to render if the url for the avatar is not found.                            |
+| Prop Name           | Types  | Required | Default                                           | Description                                                      |
+| ------------------- | ------ | -------- | ------------------------------------------------- | ---------------------------------------------------------------- |
+| **`skeletonProps`** | Object | false    |                                                   | Dimensions passed to loader to show while the avatar is loading. |
+| **`fallback`**      | String | false    | `"/public/apps/my-profile/images/Avatars-00.png"` | Image url to render if the url for the avatar is not found.      |
