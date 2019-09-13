@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [1.2.0](https://github.com/Availity/availity-react/compare/@availity/docs@1.1.7...@availity/docs@1.2.0) (2019-09-13)
+
+
+### Features
+
+* **form:** adds inline radio control to RadioGroup ([a9c344c](https://github.com/Availity/availity-react/commit/a9c344c))
+
+
+
+
+
 ## [1.1.7](https://github.com/Availity/availity-react/compare/@availity/docs@1.1.6...@availity/docs@1.1.7) (2019-09-13)
 
 **Note:** Version bump only for package @availity/docs
