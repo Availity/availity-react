@@ -367,8 +367,8 @@ describe('Select', () => {
   test('creatable', async () => {
     const opts = [
       {
-        label: 'Doe, John',
-        value: {
+        labelKeyTest: 'Doe, John',
+        valueKeyTest: {
           name: {
             first: 'John',
             last: 'Doe',
@@ -376,8 +376,8 @@ describe('Select', () => {
         },
       },
       {
-        label: 'Doe, Jane',
-        value: {
+        labelKeyTest: 'Doe, Jane',
+        valueKeyTest: {
           name: {
             first: 'Jane',
             last: 'Doe',
@@ -394,7 +394,14 @@ describe('Select', () => {
         }}
         onSubmit={onSubmit}
       >
-        <Select name="singleSelectCreatable" options={opts} creatable />
+        <Select
+          name="singleSelectCreatable"
+          options={opts}
+          valueKey="valueKeyTest"
+          labelKey="labelKeyTest"
+          creatable
+          raw
+        />
         <Button>Submit</Button>
       </Form>
     );
@@ -421,7 +428,8 @@ describe('Select', () => {
     await wait(() => {
       expect(onSubmit).toHaveBeenCalledTimes(1);
       const payload = onSubmit.mock.calls[0][0];
-      expect(payload.singleSelectCreatable).toBe('helloworld');
+      expect(payload.singleSelectCreatable.labelKeyTest).toBe('HelloWorld');
+      expect(payload.singleSelectCreatable.valueKeyTest).toBe('helloworld');
     });
   });
 });
