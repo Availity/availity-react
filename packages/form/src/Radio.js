@@ -13,7 +13,7 @@ const Radio = ({
   children,
   ...attributes
 }) => {
-  const { value, setValue, metadata } = useRadioGroup(checkValue);
+  const { value, setValue, metadata, inline } = useRadioGroup(checkValue);
 
   const classes = classNames(
     className,
@@ -22,7 +22,12 @@ const Radio = ({
   );
 
   return (
-    <FormGroup for={checkValue} check inline disabled={attributes.disabled}>
+    <FormGroup
+      for={checkValue}
+      check
+      inline={inline}
+      disabled={attributes.disabled}
+    >
       <Input
         id={id || checkValue}
         name={checkValue}
@@ -51,6 +56,7 @@ Radio.propTypes = {
   disabled: PropTypes.bool,
   className: PropTypes.string,
   children: PropTypes.node,
+  inline: PropTypes.bool,
 };
 
 export default Radio;
