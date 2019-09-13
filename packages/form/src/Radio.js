@@ -56,7 +56,6 @@ Radio.propTypes = {
   disabled: PropTypes.bool,
   className: PropTypes.string,
   children: PropTypes.node,
-  inline: PropTypes.bool,
 };
 
 export default Radio;
