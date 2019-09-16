@@ -165,6 +165,48 @@ describe('DateRange', () => {
     });
   });
 
+  test('same day can be selected', async () => {
+    const onSubmit = jest.fn();
+
+    const { container, getByText } = render(
+      <Form
+        initialValues={{
+          dateRange: undefined,
+        }}
+        onSubmit={onSubmit}
+      >
+        <DateRange id="dateRange" name="dateRange" />
+        <Button type="submit">Submit</Button>
+      </Form>
+    );
+
+    const input = container.querySelector('.DateInput_input');
+
+    fireEvent.focus(input);
+
+    // Simulate user selecting today as start date
+    const start = container.querySelector('.CalendarDay__today');
+    fireEvent.click(start);
+
+    // Simulate user selecting today as end date
+    const end = container.querySelector('.CalendarDay__today');
+    fireEvent.click(end);
+
+    fireEvent.click(getByText('Submit'));
+
+    await wait(() => {
+      expect(onSubmit).toHaveBeenCalledWith(
+        expect.objectContaining({
+          dateRange: {
+            startDate: moment().format('YYYY-MM-DD'),
+            endDate: moment().format('YYYY-MM-DD'),
+          },
+        }),
+        expect.anything()
+      );
+    });
+  });
+
   test('works with custom start/end keys', async () => {
     const onSubmit = jest.fn();
     const schema = yup.object().shape({

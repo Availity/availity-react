@@ -134,6 +134,7 @@ const AvDateRange = ({
         }}
       >
         <DateRangePicker
+          minimumNights={0}
           {...datepickerProps}
           startDate={getDateValue(startValue)}
           startDateId={startId}
