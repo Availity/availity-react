@@ -1,6 +1,6 @@
 {
   "private": true,
-  "name": "@availity/docs",
+  "name": "@availity/react-docs",
   "version": "1.2.0",
   "license": "MIT",
   "keywords": [
