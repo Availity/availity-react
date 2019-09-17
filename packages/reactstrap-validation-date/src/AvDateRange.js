@@ -642,6 +642,7 @@ export default class AvDateRange extends Component {
             showDefaultInputIcon={datepicker}
             onClose={this.onClose}
             numberOfMonths={2}
+            minimumNights={0}
           />
         </InputGroup>
       </>
