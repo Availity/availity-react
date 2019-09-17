@@ -12,29 +12,23 @@ npm install @availity/icon --save
 ```
 
 ## Usage
+
+```jsx live=true
 import Icon from '@availity/icon';
 
 <div className="w-100 d-flex flex-row justify-content-around align-items-center">
   <Icon name="home" size="3x" color="primary" />
-</div>
-
-```jsx
-import React from 'react';
-import Icon from '@availity/icon';
-
-<Container>
-    <Icon name="home" size="3x" color="primary" />
-</Container>
+</div>;
 ```
 
 ## Props
 
-| Prop Name        | Types   | Required | Default   | Description                                                                                                                       |
-| -------------    | ------- | -------- | --------  | --------------------------------------------------------------------------------------                                            |
-| **`name`**       | String  | true     |           | The name of the icon. **[Icon List](http://availity.github.io/availity-uikit/v3/icons)**                                          |
-| **`size`**       | String  | false    |           | The size of the icon. Potential values: `"lg"`, `"xl"`, `"2x"`, `"3x"`, `"4x"`, `"5x"`                                            |
-| **`color`**      | String  | false    |           | The text color of the icon. Uses Availity UI Kit variants                                                                         |
-| **`className`**  | String  | false    |           | Additional styles to pass onto the icon                                                                                           |
-| **`aria-label`** | String  | false    | `${name}` | See: [aria-label](https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/ARIA_Techniques/Using_the_aria-label_attribute) |
+| Prop Name        | Types  | Required | Default   | Description                                                                                                                       |
+| ---------------- | ------ | -------- | --------- | --------------------------------------------------------------------------------------------------------------------------------- |
+| **`name`**       | String | true     |           | The name of the icon. **[Icon List](http://availity.github.io/availity-uikit/v3/icons)**                                          |
+| **`size`**       | String | false    |           | The size of the icon. Potential values: `"lg"`, `"xl"`, `"2x"`, `"3x"`, `"4x"`, `"5x"`                                            |
+| **`color`**      | String | false    |           | The text color of the icon. Uses Availity UI Kit variants                                                                         |
+| **`className`**  | String | false    |           | Additional styles to pass onto the icon                                                                                           |
+| **`aria-label`** | String | false    | `${name}` | See: [aria-label](https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/ARIA_Techniques/Using_the_aria-label_attribute) |
 
 Note: the `name` of the icon doesn't require the `icon-` prefix. Simply provide the name given in the Availity UI Kit docs.

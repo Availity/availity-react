@@ -13,53 +13,34 @@ npm install @availity/breadcrumbs --save
 
 ## Usage
 
+```jsx live=true
 import Breadcrumbs from '@availity/breadcrumbs';
 import { BreadcrumbItem } from 'reactstrap';
 
 <div className="w-100 d-flex flex-column justify-content-around align-items-start">
-<div>
-<h3>Basic Example</h3>
-<Breadcrumbs active="Payer Space" />
+  <div>
+    <h3>Basic Example</h3>
+    <Breadcrumbs active="Payer Space" />
+  </div>
+
+  <div>
+    <h3>Example with crumbs prop</h3>
+    <Breadcrumbs
+      active="Payer Space"
+      crumbs={[
+        { name: 'Grand Parent', url: '/grand-parent' },
+        { name: 'Parent', url: '/parent' },
+      ]}
+    />
+  </div>
+
+  <div>
+    <h3>Example with custom breadcrumb children</h3>
+    <Breadcrumbs active="Current Page">
+      <BreadcrumbItem>Custom Bread Crumb</BreadcrumbItem>
+    </Breadcrumbs>
+  </div>
 </div>
-
-<div>
-  <h3>Example with crumbs prop</h3>
-  <Breadcrumbs
-    active="Payer Space"
-    crumbs={[
-      { name: 'Grand Parent', url: '/grand-parent' },
-      { name: 'Parent', url: '/parent' },
-    ]}
-  />
-</div>
-
-<div>
-<h3>Example with custom breadcrumb children</h3>
-<Breadcrumbs active="Current Page">
-  <BreadcrumbItem>
-    Custom Bread Crumb
-  </BreadcrumbItem>
-</Breadcrumbs>
-</div>
-</div>
-
-```jsx
-import Breadcrumbs from '@availity/breadcrumbs';
-import { BreadcrumbItem } from 'reactstrap';
-
-<h2>Basic Example</h2>
-<Breadcrumbs active="Payer Space" />
-
-<h2>Example with crumbs prop</h2>
-<Breadcrumbs active="Payer Space" crumbs={[{name: 'Grand Parent', url: '/grand-parent'}, {name: 'Parent', url: '/parent'}, ]} />
-
-<h2>Example with custom breadcrumb children</h2>
-// Create the Breadcrumbs "Home > Custom Bread Crumb > Current Page"
-<Breadcrumbs active="Current Page">
-  <BreadcrumbItem>
-    <div>Custom Bread Crumb</div>
-  </BreadcrumbItem>
-</Breadcrumbs>
 ```
 
 ### Breadcrumbs (Default export)

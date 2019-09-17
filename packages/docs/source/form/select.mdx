@@ -19,6 +19,9 @@ Select dropdown without a `Label` or `Feedback`
 
 ### Usage
 
+import '@availity/yup';
+
+```jsx live=true
 import { Form } from '@availity/form';
 import Select, { SelectField } from '@availity/select';
 import { Button } from 'reactstrap';
@@ -32,65 +35,23 @@ import '@availity/yup';
   onSubmit={values => window.alert(JSON.stringify(values))}
   validationSchema={yup.object().shape({
     justTheInput: yup.string().required('This field is required.'),
-  })
-  }
+  })}
 >
   <Select
     id="justTheInput"
     name="justTheInput"
     isMulti={false}
     options={[
-      {label: "Option 1", value: 1},
-      {label: "Option 2", value: 2},
-      {label: "Option 3", value: 3},
+      { label: 'Option 1', value: 1 },
+      { label: 'Option 2', value: 2 },
+      { label: 'Option 3', value: 3 },
     ]}
   />
 
   <Button className="mt-3" color="primary" type="submit">
     Submit
   </Button>
-</Form>
-
-
-```jsx
-import React from 'react';
-import { Form } from '@availity/form';
-import Select from '@availity/select';
-import { Button } from 'reactstrap';
-import * as yup from 'yup';
-import '@availity/yup';
-
-// ...
-const schema = yup.object().shape({
-  justTheInput: yup.string().required('This field is required.'),
-});
-
-const options = [
-  {label: "Option 1", value: 1},
-  {label: "Option 2", value: 2},
-  {label: "Option 3", value: 3},
-];
-
-return (
-  <Form
-    initialValues={{
-      justTheInput: undefined,
-    }}
-    onSubmit={values => window.alert(JSON.stringify(values))}
-    validationSchema={schema}
-  >
-    <Select
-      id="justTheInput"
-      name="justTheInput"
-      isMulti={false}
-      options={options}
-    />
-
-    <Button color="primary" type="submit">
-      Submit
-    </Button>
-  </Form>
-);
+</Form>;
 ```
 
 ### Props
@@ -98,7 +59,7 @@ return (
 See [react-select](https://github.com/JedWatson/react-select) and [react-select-async-paginate](https://github.com/vtaits/react-select-async-paginate) for additional props.
 
 | Prop Name       | Types          | Required | Default   | Description                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                           |
-| -------------   | -------        | -------- | --------  | --------------------------------------------------------------------------------------                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                |
+| --------------- | -------------- | -------- | --------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | **`name`**      | String         | true     |           | The name of the field. Will be the key of the selected option(s) that come through in the values of the `onSubmit` callback of the form.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                              |
 | **`raw`**       | Boolean        | false    | `false`   | If `true`, the entire object of the selected value is returned as the value instead of the value for the `valueKey` within the object.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                |
 | **`valueKey`**  | String         | false    | `"value"` | The key of the value to return when selected.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                         |
@@ -115,6 +76,13 @@ The same as `Select` but with a `Label` that appears above the input and a `Feed
 
 ### Usage
 
+```jsx live=true
+import { Form } from '@availity/form';
+import { SelectField } from '@availity/select';
+import { Button } from 'reactstrap';
+import * as yup from 'yup';
+import '@availity/yup';
+
 <Form
   initialValues={{
     justTheInput: undefined,
@@ -122,8 +90,7 @@ The same as `Select` but with a `Label` that appears above the input and a `Feed
   onSubmit={values => window.alert(JSON.stringify(values))}
   validationSchema={yup.object().shape({
     justTheInput: yup.string().required('This field is required.'),
-  })
-  }
+  })}
 >
   <SelectField
     label="Just The Input"
@@ -131,71 +98,29 @@ The same as `Select` but with a `Label` that appears above the input and a `Feed
     name="justTheInput"
     isMulti={false}
     options={[
-      {label: "Option 1", value: 1},
-      {label: "Option 2", value: 2},
-      {label: "Option 3", value: 3},
+      { label: 'Option 1', value: 1 },
+      { label: 'Option 2', value: 2 },
+      { label: 'Option 3', value: 3 },
     ]}
   />
 
   <Button className="mt-3" color="primary" type="submit">
     Submit
   </Button>
-</Form>
-
-
-```jsx
-import React from 'react';
-import { Form } from '@availity/form';
-import { SelectField } from '@availity/select';
-import { Button } from 'reactstrap';
-import * as yup from 'yup';
-import '@availity/yup';
-
-// ...
-const schema = yup.object().shape({
-  justTheInput: yup.string().required('This field is required.'),
-});
-
-const options = [
-  {label: "Option 1", value: 1},
-  {label: "Option 2", value: 2},
-  {label: "Option 3", value: 3},
-];
-
-return (
-  <Form
-    initialValues={{
-      justTheInput: undefined,
-    }}
-    onSubmit={values => window.alert(JSON.stringify(values))}
-    validationSchema={schema}
-  >
-    <SelectField
-      label="Just The Input"
-      id="justTheInput"
-      name="justTheInput"
-      isMulti={false}
-      options={options}
-    />
-
-    <Button color="primary" type="submit">
-      Submit
-    </Button>
-  </Form>
-);
+</Form>;
 ```
 
 ### Props
 
 Same as `Select`, with the following additional props:
 
-| Prop Name           | Types   | Required | Default  | Description                                                                            |
-| -------------       | ------- | -------- | -------- | -------------------------------------------------------------------------------------- |
-| **`label`**         | Node    | false    |          | The label to render above the `Select` input                                           |
-| **`labelHidden`**   | Boolean | false    |          | Whether the `label` should be hidden                                                   |
-| **`labelClass`**    | String  | false    |          | Class names to pass to the `Label`                                                     |
-| **`feedbackClass`** | String  | false    |          | Class names to pass to the `Feedback`                                                  |
-| **`groupClass`**    | String  | false    |          | Class names to pass to the `FormGroup`.                                                |
+| Prop Name           | Types   | Required | Default | Description                                  |
+| ------------------- | ------- | -------- | ------- | -------------------------------------------- |
+| **`label`**         | Node    | false    |         | The label to render above the `Select` input |
+| **`labelHidden`**   | Boolean | false    |         | Whether the `label` should be hidden         |
+| **`labelClass`**    | String  | false    |         | Class names to pass to the `Label`           |
+| **`feedbackClass`** | String  | false    |         | Class names to pass to the `Feedback`        |
+| **`groupClass`**    | String  | false    |         | Class names to pass to the `FormGroup`.      |
 
 ## ResourceSelect
 
@@ -244,7 +169,7 @@ return (
 See [react-select](https://github.com/JedWatson/react-select) and [react-select-async-paginate](https://github.com/vtaits/react-select-async-paginate) for additional props
 
 | Prop Name              | Types                          | Required | Default         | Description                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                           |
-| -------------          | -------                        | -------- | --------        | --------------------------------------------------------------------------------------                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                |
+| ---------------------- | ------------------------------ | -------- | --------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | **`name`**             | String                         | true     |                 | The name of the field. Will be the key of the selected option(s) that come through in the values of the `onSubmit` callback of the form.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                              |
 | **`raw`**              | Boolean                        | false    | `false`         | If `true`, the entire object of the selected value is returned as the value instead of the value for the `valueKey` within the object.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                |
 | **`valueKey`**         | String                         | false    | `"value"`       | The key of the value to return when selected.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                         |
@@ -269,19 +194,18 @@ See [react-select](https://github.com/JedWatson/react-select) and [react-select-
 | **`minCharsToSearch`** | Number                         | false    |                 | the minimum number of characters the user must input before `ResourceSelect` makes the network request. If the user has not inputted any characters, the network request will still be made. Useful for relieving pressure on the api the `resource` is calling.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                      |
 | **`autofill`**         | Boolean,Object                 | false    | `false`         | If `true`, when the value of the dropdown changes, if the `isMulti` prop is `false` _and_ the new value of the dropdown is an object, all fields on the form corresponding to the new value are auto-filled. In order for a field to be auto-filled, the `name` property on the field _must_ match the key inside the new value. For example, if the new value is `{ "payer": "Availity" }`, in order for the payer input in the form to be auto-filled to "Availity", the `name` prop on the input must be "payer". If `autofill` is an object, when the value of the dropdown changes, if the `isMulti` prop is `false` _and_ the new value of the dropdown is an object, all fields on the form corresponding to the keys in the `autofill` prop will be auto-filled. For example, if the new value is `{ "payer": { "name": "Availity", "id": "1" } }`, in order for the "payerName" and "payerId" inputs to be auto-filled to "Availity" and "1" respectively, the `autofill` prop should be `{ payerName: 'payer.name', payerId: 'payer.id' }`. |
 
-
 ## Pre-made Resource Selects
 
 The following components can be imported by name from `@availity/select/resources`
 
-* AvProviderSelect
-* AvOrganizationSelect
-* AvRegionSelect
-* AvPermissionSelect
-* AvNavigationSelect
-* AvUserSelect
-* AvCodeSelect
-* AvPatientSelect
+- AvProviderSelect
+- AvOrganizationSelect
+- AvRegionSelect
+- AvPermissionSelect
+- AvNavigationSelect
+- AvUserSelect
+- AvCodeSelect
+- AvPatientSelect
 
 These components are `ResourceSelect` with pre-configured `resource`, `valueKey`, and `labelKey` to make it easy to use. All of the props for `ResourceSelect` can be provided to override the defaults of these pre-made components. For some of these components, you will want to provide the `customerId` prop.
 
@@ -328,53 +252,42 @@ const schema = yup.object().shape({
   onSubmit={values => apiResource.submit(values)}
   validationSchema={schema}
 >
-    <AvProviderSelect
-        name="provider"
-        customerId="1234"
-        requiredParams={['customerId']}
-        watchParams={['customerId']}
-        label="Select a provider"
-        customerId={customerId}
-        required
-    />
-    <AvOrganizationSelect
-        name="organization"
-        label="Select a Organization"
-        required
-    />
-    <AvRegionSelect
-        name="region"
-        label="Select a Region"
-        required
-    />
-    <AvPermissionSelect
-        name="permissions"
-        label="Select a provider"
-        customerId={customerId}
-        isMulti
-        required
-    />
-    <AvNavigationSelect
-        name="payerSpace"
-        label="Select a Payer Space"
-        customerId={customerId}
-        required
-    />
-    <AvUserSelect
-        name="user"
-        label="Select a User"
-        customerId={customerId}
-    />
-    <AvCodeSelect
-        name="code"
-        label="Select a Code"
-    />
-    <AvPatientSelect
-        name="patient"
-        label="Select a Patient"
-        parameters={{
-          customerId,
-        }}
-    />
+  <AvProviderSelect
+    name="provider"
+    customerId="1234"
+    requiredParams={['customerId']}
+    watchParams={['customerId']}
+    label="Select a provider"
+    customerId={customerId}
+    required
+  />
+  <AvOrganizationSelect
+    name="organization"
+    label="Select a Organization"
+    required
+  />
+  <AvRegionSelect name="region" label="Select a Region" required />
+  <AvPermissionSelect
+    name="permissions"
+    label="Select a provider"
+    customerId={customerId}
+    isMulti
+    required
+  />
+  <AvNavigationSelect
+    name="payerSpace"
+    label="Select a Payer Space"
+    customerId={customerId}
+    required
+  />
+  <AvUserSelect name="user" label="Select a User" customerId={customerId} />
+  <AvCodeSelect name="code" label="Select a Code" />
+  <AvPatientSelect
+    name="patient"
+    label="Select a Patient"
+    parameters={{
+      customerId,
+    }}
+  />
 </Form>;
 ```

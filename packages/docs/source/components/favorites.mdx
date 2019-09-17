@@ -13,27 +13,17 @@ npx install-peerdeps @availity/favorites --save
 
 ## Usage
 
-import Favorites from './Favorites';
+import '@availity/favorites/style.scss';
+
+```jsx live=true
+import Favorites, { FavoriteHeart } from '@availity/favorites';
 import '@availity/favorites/style.scss';
 
 <div className="w-100 d-flex flex-row justify-content-around align-items-center">
   <Favorites>
-    {({ default: FavoritesProvider, FavoriteHeart }) => (
-      <FavoritesProvider>
-        <FavoriteHeart id="123456" />
-      </FavoritesProvider>
-    )}
+    <FavoriteHeart id="123456" />
   </Favorites>
-</div>
-
-```jsx
-import React from 'react';
-import Favorites, { FavoriteHeart } from '@availity/favorites';
-import '@availity/favorites/style.scss';
-
-<Favorites>
-  <FavoriteHeart id="123456" />
-</Favorites>;
+</div>;
 ```
 
 ## Favorites
@@ -52,10 +42,10 @@ The default Favorite Icon that can be used to store a favorited item. Can only b
 
 ### Props
 
-| Prop Name      | Types    | Required | Default | Description                                                   |
-| -------------- | -------- | -------- | ------- | ------------------------------------------------------------- |
-| **`id`**       | String   | true     |         | The unique id of the favorite item to be fetched from API.    |
-| **`onChange`** | Function | false    |         | Called once the favorite heart has been clicked and updated.  |
+| Prop Name      | Types    | Required | Default | Description                                                  |
+| -------------- | -------- | -------- | ------- | ------------------------------------------------------------ |
+| **`id`**       | String   | true     |         | The unique id of the favorite item to be fetched from API.   |
+| **`onChange`** | Function | false    |         | Called once the favorite heart has been clicked and updated. |
 
 ## useFavorites
 

@@ -13,6 +13,7 @@ npx install-peerdeps @availity/feedback --save
 
 ## Usage
 
+```jsx live=true
 import Feedback from '@availity/feedback';
 
 <div className="w-100 d-flex flex-column justify-content-around align-items-start">
@@ -23,19 +24,7 @@ import Feedback from '@availity/feedback';
   >
     Provide Feedback
   </Feedback>
-</div>
-
-```jsx
-import React from 'react';
-import Feedback from '@availity/feedback';
-
-<Feedback
-  appName="Payer Space"
-  prompt="Please provide some feedback"
-  color="primary"
->
-  Provide Feedback
-</Feedback>;
+</div>;
 ```
 
 ## Feedback (Default export)
@@ -63,7 +52,7 @@ This is the underlying form, which is exposed in case you need to gather feedbac
 ### Props
 
 | Prop Name                | Types           | Required | Default                                   | Description                                                                                                                                                                                                                           |
-| ------------------------ | --------------- | -------- | ----------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------            |
+| ------------------------ | --------------- | -------- | ----------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | **`name`**               | String          | true     |                                           | The name of the application this feedback is for. It is used in the API request to indicate where the feedback came from.                                                                                                             |
 | **`onFeedbackSent`**     | Function        | false    |                                           | Callback for when the feedback is submitted. It is called with the feedback object.                                                                                                                                                   |
 | **`faceOptions`**        | Array<`Object`> | false    |                                           | Array of Objects containing **`icon`** (String), **`description`** (String), and **`placeholder`** (String) properties. Allows you to override the smiley face options which appear. Default: Smiley Face, Meh Face, and Frowny Face. |
@@ -75,15 +64,10 @@ This is the underlying form, which is exposed in case you need to gather feedbac
 
 ### Usage
 
+```jsx live=true
 import { FeedbackForm } from '@availity/feedback';
 
 <div className="w-100">
   <FeedbackForm name="Payer Space" />
-</div>
-
-```jsx
-import React from 'react';
-import { FeedbackForm } from '@availity/feedback';
-
-<FeedbackForm name="Payer Space" />;
+</div>;
 ```
