@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.4.7](https://github.com/Availity/availity-react/compare/@availity/select@0.4.6...@availity/select@0.4.7) (2019-09-19)
+
+
+### Bug Fixes
+
+* **select:** fixes multiple API calls on component mount ([fd45b4a](https://github.com/Availity/availity-react/commit/fd45b4a))
+
+
+
+
+
 ## [0.4.6](https://github.com/Availity/availity-react/compare/@availity/select@0.4.5...@availity/select@0.4.6) (2019-09-19)
 
 **Note:** Version bump only for package @availity/select

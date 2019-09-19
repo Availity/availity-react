@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [5.0.3](https://github.com/Availity/availity-react/compare/@availity/reactstrap-validation-select@5.0.2...@availity/reactstrap-validation-select@5.0.3) (2019-09-19)
+
+
+### Bug Fixes
+
+* **reactstrap-validation-select:** fixes multiple API calls on component mount ([629e6eb](https://github.com/Availity/availity-react/commit/629e6eb))
+
+
+
+
+
 ## [5.0.2](https://github.com/Availity/availity-react/compare/@availity/reactstrap-validation-select@5.0.1...@availity/reactstrap-validation-select@5.0.2) (2019-09-19)
 
 **Note:** Version bump only for package @availity/reactstrap-validation-select
