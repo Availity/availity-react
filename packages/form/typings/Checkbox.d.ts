@@ -3,7 +3,7 @@ import { InputProps } from './Input';
 
 
 interface CheckboxProps extends InputProps {
-    label?: string;
+    label?: React.ReactNode;
 }
 
 declare class Checkbox extends React.Component<CheckboxProps> {}
