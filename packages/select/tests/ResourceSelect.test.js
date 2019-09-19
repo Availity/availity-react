@@ -6,11 +6,11 @@ import {
   wait,
   cleanup,
 } from '@testing-library/react';
-import { avRegionsApi, avWebQLApi } from '@availity/api-axios';
+import { avRegionsApi, avWebQLApi, avProvidersApi } from '@availity/api-axios';
 import { Button } from 'reactstrap';
 import { Form } from '@availity/form';
 import { ResourceSelect } from '..';
-import { AvPatientSelect } from '../resources';
+import { AvPatientSelect, AvProviderSelect } from '../resources';
 
 jest.mock('@availity/api-axios');
 
@@ -209,6 +209,96 @@ describe('ResourceSelect', () => {
     ).toBeDefined();
     expect(patientsSelect.querySelector('.test__patients__placeholder')).toBe(
       null
+    );
+  });
+
+  // only makes one call when cacheUniq not defined but watchParams are
+  // ensures _cacheUniq is created before the first API call
+  // makes new call when watchParam changes
+
+  it('reacts to watchParams properly', async () => {
+    avProvidersApi.postGet
+      .mockResolvedValueOnce({
+        data: {
+          providers: [
+            {
+              atypical: false,
+              uiDisplayName: 'ABC Hospital',
+              customerIds: ['1194'],
+            },
+          ],
+        },
+      })
+      .mockResolvedValueOnce({
+        data: {
+          providers: [
+            {
+              atypical: true,
+              uiDisplayName: 'latipsoH CBA',
+              customerIds: ['1195'],
+            },
+          ],
+        },
+      });
+
+    // eslint-disable-next-line react/prop-types
+    const ProviderComponent = ({ providerProps }) => {
+      return (
+        <Form
+          initialValues={{
+            'test-form-input': undefined,
+          }}
+          onSubmit={onSubmit}
+        >
+          <AvProviderSelect {...providerProps} />
+          <Button type="submit">Submit</Button>
+        </Form>
+      );
+    };
+
+    const providerProps = {
+      name: 'test-form-input',
+      classNamePrefix: 'test__provider',
+      customerId: '1194',
+      getResult: 'providers',
+    };
+
+    const { container, getByText, rerender } = render(
+      <ProviderComponent providerProps={providerProps} />
+    );
+
+    const providerSelect = container.querySelector('.test__provider__control');
+    fireEvent.keyDown(providerSelect, { key: 'ArrowDown', keyCode: 40 });
+    fireEvent.keyDown(providerSelect, { key: 'Enter', keyCode: 13 });
+
+    let providerOption = await waitForElement(() => getByText('ABC Hospital'));
+
+    expect(providerOption).toBeDefined();
+    expect(avProvidersApi.postGet).toHaveBeenCalledTimes(1);
+    expect(avProvidersApi.postGet.mock.calls[0][0]).toBe(
+      'q=&limit=50&customerId=1194&offset=0'
+    );
+
+    // rerender with same props should not trigger api call
+    rerender(<ProviderComponent providerProps={providerProps} />);
+
+    fireEvent.keyDown(providerSelect, { key: 'ArrowDown', keyCode: 40 });
+    fireEvent.keyDown(providerSelect, { key: 'Enter', keyCode: 13 });
+    expect(avProvidersApi.postGet).toHaveBeenCalledTimes(1);
+
+    // setup rerender for watchParams, should trigger api call
+    providerProps.customerId = '1195';
+    rerender(<ProviderComponent providerProps={providerProps} />);
+
+    fireEvent.keyDown(providerSelect, { key: 'ArrowDown', keyCode: 40 });
+    fireEvent.keyDown(providerSelect, { key: 'Enter', keyCode: 13 });
+
+    providerOption = await waitForElement(() => getByText('latipsoH CBA'));
+
+    expect(providerOption).toBeDefined();
+    expect(avProvidersApi.postGet).toHaveBeenCalledTimes(2);
+    expect(avProvidersApi.postGet.mock.calls[1][0]).toBe(
+      'q=&limit=50&customerId=1195&offset=0'
     );
   });
 });
