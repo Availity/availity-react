@@ -1,6 +1,6 @@
 import { AvDateProps } from './AvDate';
 export interface AvDateFieldProps extends AvDateProps {
-  label?: string | React.ReactType;
+  label?: React.ReactNode;
   labelHidden?: boolean;
   disabled?: boolean;
   readOnly?: boolean;
