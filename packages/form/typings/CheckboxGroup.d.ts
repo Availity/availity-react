@@ -4,7 +4,7 @@ import { FormGroupProps } from './FormGroup';
 
 interface CheckboxGroupProps extends FormGroupProps {
     name: string;
-    label?: string;
+    label?: React.ReactNode;
     onChange?: (value: any) => void;
 }
 

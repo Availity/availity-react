@@ -16,7 +16,7 @@ export interface AvResourceSelectProps {
     hasMore?: boolean | Function;
     delay?: number;
     debounceTimeout?: number;
-    label?: React.ReactType;
+    label?: React.ReactNode;
     customerId?: string;
     parameters?: object;
     itemsPerPage?: number;
