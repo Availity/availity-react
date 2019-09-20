@@ -2,26 +2,37 @@ import { useState, useEffect } from 'react';
 import { avRegionsApi } from '@availity/api-axios';
 
 export default () => {
-  const [currentRegion, setCurrentRegion] = useState(undefined);
+  const [currentRegion, setCurrentRegion] = useState();
   const [loading, setLoading] = useState(true);
-
-  const fetchCurrentRegion = async () => {
-    const response = await avRegionsApi.getCurrentRegion();
-
-    if (response.data.regions[0] !== undefined) {
-      setCurrentRegion({
-        code: response.data.regions[0].id,
-        value: response.data.regions[0].value,
-      });
-    }
-
-    setLoading(false);
-  };
+  const [error, setError] = useState();
 
   useEffect(() => {
-    setLoading(true);
+    let ignore = false;
+
+    const fetchCurrentRegion = async () => {
+      setLoading(true);
+      try {
+        const response = await avRegionsApi.getCurrentRegion();
+
+        if (!ignore) {
+          setCurrentRegion({
+            code: response.data.regions[0].id,
+            value: response.data.regions[0].value,
+          });
+        }
+      } catch (error_) {
+        if (!ignore) setError(error_);
+      }
+
+      setLoading(false);
+    };
+
     fetchCurrentRegion();
+
+    return () => {
+      ignore = true;
+    };
   }, []);
 
-  return [currentRegion, loading];
+  return [currentRegion, loading, error];
 };
