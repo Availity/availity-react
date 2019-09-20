@@ -22,6 +22,7 @@ const PageHeader = ({
   clientId,
   iconSrc,
   iconAlt,
+  homeUrl,
   ...props
 }) => {
   const { space: spaceForSpaceID } = useSpace(spaceId);
@@ -69,7 +70,11 @@ const PageHeader = ({
         {React.isValidElement(crumbs) ? (
           crumbs
         ) : (
-          <Breadcrumbs crumbs={crumbs} active={appName || children} />
+          <Breadcrumbs
+            crumbs={crumbs}
+            active={appName || children}
+            homeUrl={homeUrl}
+          />
         )}
         {component}
       </div>
@@ -125,6 +130,7 @@ PageHeader.propTypes = {
     PropTypes.node,
   ]),
   tag: PropTypes.oneOfType([PropTypes.func, PropTypes.string]),
+  homeUrl: PropTypes.string,
   clientId: PropTypes.string,
   iconSrc: PropTypes.string,
   iconAlt: PropTypes.string,
@@ -136,6 +142,7 @@ PageHeader.defaultProps = {
   // returning a space we may not want
   spaceId: null,
   payerId: null,
+  homeUrl: '/public/apps/dashboard',
 };
 
 export default PageHeader;
