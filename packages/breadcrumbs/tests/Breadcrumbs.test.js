@@ -63,4 +63,14 @@ describe('Breadcrumbs', () => {
 
     expect(container.firstChild).toMatchSnapshot();
   });
+
+  test('should render custom home url', () => {
+    const { getByText } = render(
+      <Breadcrumbs homeUrl="/go-home" active="Payer Space" />
+    );
+
+    const homeBtn = getByText('Home');
+
+    expect(homeBtn.getAttribute('href')).toBe('/go-home');
+  });
 });
