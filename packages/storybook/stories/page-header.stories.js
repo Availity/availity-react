@@ -34,6 +34,7 @@ storiesOf('Components|Header', module)
   ))
   .add('with app icon', () => (
     <PageHeader
+      homeUrl={text('Home Url', '/public/apps/dashboard')}
       appName="Payer Spaces"
       appAbbr={text('Application Abbreviation', 'PS')}
       iconColor={select(
@@ -55,6 +56,7 @@ storiesOf('Components|Header', module)
   .add('with payer logo', () => (
     <div>
       <PageHeader
+        homeUrl={text('Home Url', '/public/apps/dashboard')}
         appName="Payer Space"
         clientId={text('Client ID', 'my-client-id')}
         payerId={text('Payer ID', 'PayerID')}
@@ -69,6 +71,7 @@ storiesOf('Components|Header', module)
   ))
   .add('with payer space breadcrumb', () => (
     <PageHeader
+      homeUrl={text('Home Url', '/public/apps/dashboard')}
       appName="Payer Space"
       spaceId={text('Payer Space ID', '73162546201441126239486200007187')}
       spaceName={text('Payer Space Name', 'Payers Space')}
@@ -88,7 +91,11 @@ storiesOf('Components|Header', module)
     </PageHeader>
   ))
   .add('with custom breadcrumbs', () => (
-    <PageHeader appName="Payer Space" crumbs={CustomBreadcrumbs}>
+    <PageHeader
+      homeUrl={text('Home Url', '/public/apps/dashboard')}
+      appName="Payer Space"
+      crumbs={CustomBreadcrumbs}
+    >
       {text('Application Name', 'Payer Space')}
     </PageHeader>
   ))
@@ -99,6 +106,7 @@ storiesOf('Components|Header', module)
   ))
   .add('with feedback and payer logo', () => (
     <PageHeader
+      homeUrl={text('Home Url', '/public/apps/dashboard')}
       appName={text('Application Name', 'Payer Space')}
       payerId={text('Payer ID', 'PayerID')}
       clientId={text('Client ID', 'my-client-id')}
@@ -109,6 +117,7 @@ storiesOf('Components|Header', module)
   ))
   .add('with training link', () => (
     <PageHeader
+      homeUrl={text('Home Url', '/public/apps/dashboard')}
       feedback
       appName="Payer Spaces"
       component={

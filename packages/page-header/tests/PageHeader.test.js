@@ -141,4 +141,14 @@ describe('PageHeader', () => {
       await waitForElement(() => getByTestId('space-logo-payer1'));
     });
   });
+
+  test('should render custom home url', () => {
+    const { getByText } = render(
+      <PageHeader homeUrl="/go-home" appName="Payer Space" />
+    );
+
+    const homeBtn = getByText('Home');
+
+    expect(homeBtn.getAttribute('href')).toBe('/go-home');
+  });
 });

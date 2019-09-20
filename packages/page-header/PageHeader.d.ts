@@ -19,6 +19,7 @@ export interface PageHeaderProps {
     iconSrc?: string;
     iconAlt?: string;
     clientId?: string;
+    homeUrl?:string;
 }
 
 declare const PageHeader: React.FunctionComponent<PageHeaderProps>;

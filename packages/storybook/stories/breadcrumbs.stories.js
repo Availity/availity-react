@@ -14,6 +14,7 @@ const ReactRouterBreadcrumbs = () => (
     <Breadcrumbs
       emptyState={text('Empty State', Breadcrumbs.defaultProps.emptyState)}
       active={text('Active Page', 'React Router Breadcrumb')}
+      homeUrl={text('Home Url', 'public/apps/dashboard')}
     >
       <BreadcrumbItem>
         <Link to="react-router-parent">Custom Breadcrumb Demo</Link>
@@ -34,7 +35,10 @@ const ReactRouterBreadcrumbs = () => (
 
 const ReactRouterDestination = () => (
   <div>
-    <Breadcrumbs active={text('Active Page', 'Custom Breadcrumb Demo')} />
+    <Breadcrumbs
+      active={text('Active Page', 'Custom Breadcrumb Demo')}
+      homeUrl={text('Home Url', 'public/apps/dashboard')}
+    />
     <Link to="/react-router-demo">react-router Link Back To demo</Link>
     <p>Sample destination page with react-router navigation</p>
   </div>
@@ -62,11 +66,13 @@ storiesOf('Components|Breadcrumbs', module)
     <Breadcrumbs
       emptyState={text('Empty State', Breadcrumbs.defaultProps.emptyState)}
       active={text('Active Page', 'Payer Spaces')}
+      homeUrl={text('Home Url', 'public/apps/dashboard')}
     />
   ))
   .add('active blank', () => <Breadcrumbs active="" />)
   .add('with parents', () => (
     <Breadcrumbs
+      homeUrl={text('Home Url', 'public/apps/dashboard')}
       emptyState={text('Empty State', Breadcrumbs.defaultProps.emptyState)}
       crumbs={[
         { name: 'Grand Parent', url: '/grand-parent' },
