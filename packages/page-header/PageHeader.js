@@ -1,5 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import classNames from 'classnames';
 import Breadcrumbs from '@availity/breadcrumbs';
 import AppIcon from '@availity/app-icon';
 import Feedback from '@availity/feedback';
@@ -23,6 +24,7 @@ const PageHeader = ({
   iconSrc,
   iconAlt,
   homeUrl,
+  className,
   ...props
 }) => {
   const { space: spaceForSpaceID } = useSpace(spaceId);
@@ -78,7 +80,11 @@ const PageHeader = ({
         )}
         {component}
       </div>
-      <Tag className="page-header page-header-brand" {...props}>
+      <Tag
+        className={classNames('page-header page-header-brand', className)}
+        data-testid="page-header"
+        {...props}
+      >
         <div className="page-header-title" data-testid="page-header-title">
           {!payerId && appAbbr && (
             <AppIcon
@@ -110,6 +116,7 @@ const PageHeader = ({
 };
 
 PageHeader.propTypes = {
+  className: PropTypes.string,
   appName: PropTypes.string.isRequired,
   spaceName: PropTypes.string,
   spaceId: PropTypes.string,

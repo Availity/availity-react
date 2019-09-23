@@ -29,6 +29,16 @@ describe('PageHeader', () => {
     getByText('PS');
   });
 
+  test('should add custom class name', () => {
+    const { getByTestId } = render(
+      <PageHeader appName="Payer Space" className="custom-classname" />
+    );
+
+    const pageHeader = getByTestId('page-header');
+
+    expect(pageHeader.className).toContain('custom-classname');
+  });
+
   test('should render app icon color', () => {
     const { getByTestId } = render(
       <PageHeader appName="Payer Space" appAbbr="PS" iconColor="green" />
