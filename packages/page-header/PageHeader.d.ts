@@ -3,6 +3,11 @@ type CrumbType = {
   url?: string;
 };
 
+export interface RightContentProps extends React.HTMLAttributes<HTMLElement> {
+  payerLogo?: React.ReactNode;
+  feedback?: React.ReactNode;
+}
+
 export interface PageHeaderProps extends React.HTMLAttributes<HTMLDivElement> {
   appName: string;
   spaceName?: string;
@@ -15,6 +20,7 @@ export interface PageHeaderProps extends React.HTMLAttributes<HTMLDivElement> {
   feedback?: boolean;
   feedbackProps?: any;
   titleProps?: React.HTMLAttributes<HTMLDivElement>;
+  renderRightContent?: React.FunctionComponent<RightContentProps>;
   children?: React.ReactType;
   crumbs?: Array<CrumbType> | React.ReactType;
   iconSrc?: string;

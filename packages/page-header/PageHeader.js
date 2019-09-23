@@ -19,6 +19,7 @@ const PageHeader = ({
   feedback: showFeedback,
   feedbackProps,
   titleProps: { className: titleClassName, ...restTitleProps },
+  renderRightContent: RenderRightContent,
   component,
   tag: Tag,
   clientId,
@@ -100,7 +101,7 @@ const PageHeader = ({
         data-testid="page-header"
         {...props}
       >
-        <div
+        <Tag
           className={classNames(
             'page-header-title page-header-left d-flex align-items-center mb-0',
             titleClassName
@@ -121,12 +122,20 @@ const PageHeader = ({
               {appAbbr}
             </AppIcon>
           )}
-          {children || <Tag className="mb-0">{appName}</Tag>}
-        </div>
-        <div className="page-header-left">
-          {payerLogo}
-          {showFeedback && feedback}
-        </div>
+          {children || <h1 className="mb-0">{appName}</h1>}
+        </Tag>
+        {!RenderRightContent ? (
+          <div className="page-header-left">
+            {payerLogo}
+            {showFeedback && feedback}
+          </div>
+        ) : (
+          <RenderRightContent
+            className="page-header-left"
+            payerLogo={payerLogo}
+            feedback={showFeedback && feedback}
+          />
+        )}
       </div>
     </React.Fragment>
   );
@@ -156,6 +165,7 @@ PageHeader.propTypes = {
     PropTypes.node,
   ]),
   tag: PropTypes.oneOfType([PropTypes.func, PropTypes.string]),
+  renderRightContent: PropTypes.func,
   homeUrl: PropTypes.string,
   clientId: PropTypes.string,
   iconSrc: PropTypes.string,
@@ -163,7 +173,7 @@ PageHeader.propTypes = {
 };
 
 PageHeader.defaultProps = {
-  tag: 'h1',
+  tag: 'div',
   // SpaceId and payerId are defaulted to null to prevent `useSpace` from
   // returning a space we may not want
   spaceId: null,

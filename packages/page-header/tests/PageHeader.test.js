@@ -181,4 +181,22 @@ describe('PageHeader', () => {
 
     expect(pageHeaderTitle.className).toContain('mb-0');
   });
+
+  test('should render custom right content', () => {
+    const { getByText } = render(
+      <PageHeader
+        appName="Payer Space"
+        feedback
+        renderRightContent={({ feedback, ...props }) => (
+          <div {...props}>
+            Hello World
+            {feedback}
+          </div>
+        )}
+      />
+    );
+
+    getByText('Hello World');
+    getByText('Give Feedback');
+  });
 });
