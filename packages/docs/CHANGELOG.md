@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [2.1.0](https://github.com/Availity/availity-react/compare/@availity/react-docs@2.0.5...@availity/react-docs@2.1.0) (2019-09-23)
+
+
+### Features
+
+* **page-header:** added function prop to render custom right content ([9b36f16](https://github.com/Availity/availity-react/commit/9b36f16))
+
+
+
+
+
 ## [2.0.5](https://github.com/Availity/availity-react/compare/@availity/react-docs@2.0.4...@availity/react-docs@2.0.5) (2019-09-20)
 
 **Note:** Version bump only for package @availity/react-docs

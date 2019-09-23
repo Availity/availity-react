@@ -3,6 +3,22 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [8.0.0](https://github.com/Availity/availity-react/compare/@availity/react-storybook@7.5.15...@availity/react-storybook@8.0.0) (2019-09-23)
+
+
+### Code Refactoring
+
+* **page-header:** refactored page header strcuture to fix ux ([d79d269](https://github.com/Availity/availity-react/commit/d79d269))
+
+
+### BREAKING CHANGES
+
+* **page-header:** Tag prop now is defaulted to div and appName instead of children will render an h1 tag by default
+
+
+
+
+
 ## [7.5.15](https://github.com/Availity/availity-react/compare/@availity/react-storybook@7.5.14...@availity/react-storybook@7.5.15) (2019-09-20)
 
 **Note:** Version bump only for package @availity/react-storybook

@@ -3,6 +3,14 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.2.7](https://github.com/Availity/availity-react/compare/@availity/date@0.2.6...@availity/date@0.2.7) (2019-09-23)
+
+**Note:** Version bump only for package @availity/date
+
+
+
+
+
 ## [0.2.6](https://github.com/Availity/availity-react/compare/@availity/date@0.2.5...@availity/date@0.2.6) (2019-09-19)
 
 **Note:** Version bump only for package @availity/date
