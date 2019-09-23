@@ -1,5 +1,6 @@
-import React from 'react';
+import React, { useMemo } from 'react';
 import PropTypes from 'prop-types';
+import classNames from 'classnames';
 import Breadcrumbs from '@availity/breadcrumbs';
 import AppIcon from '@availity/app-icon';
 import Feedback from '@availity/feedback';
@@ -15,14 +16,17 @@ const PageHeader = ({
   iconColor,
   branded,
   crumbs,
-  feedback,
+  feedback: showFeedback,
   feedbackProps,
+  titleProps: { className: titleClassName, ...restTitleProps },
+  renderRightContent: RenderRightContent,
   component,
   tag: Tag,
   clientId,
   iconSrc,
   iconAlt,
   homeUrl,
+  className,
   ...props
 }) => {
   const { space: spaceForSpaceID } = useSpace(spaceId);
@@ -64,6 +68,17 @@ const PageHeader = ({
     ];
   }
 
+  const feedback = useMemo(
+    () => (
+      <Feedback
+        appName={appName}
+        className={`float-md-right d-inline-block ${payerId ? 'mx-3' : ''}`}
+        {...feedbackProps}
+      />
+    ),
+    [appName, feedbackProps, payerId]
+  );
+
   return (
     <React.Fragment>
       <div className="d-flex align-items-start">
@@ -78,10 +93,26 @@ const PageHeader = ({
         )}
         {component}
       </div>
-      <Tag className="page-header page-header-brand" {...props}>
-        <div className="page-header-title">
+      <div
+        className={classNames(
+          'page-header page-header-brand d-flex justify-content-between align-items-end',
+          className
+        )}
+        data-testid="page-header"
+        {...props}
+      >
+        <Tag
+          className={classNames(
+            'page-header-title page-header-left d-flex align-items-center mb-0',
+            titleClassName
+          )}
+          data-testid="page-header-title"
+          {...restTitleProps}
+        >
           {!payerId && appAbbr && (
             <AppIcon
+              className="mr-2"
+              data-testid="page-header-app-icon"
               color={iconColor}
               branded={branded}
               title={appName}
@@ -90,25 +121,28 @@ const PageHeader = ({
             >
               {appAbbr}
             </AppIcon>
-          )}{' '}
-          {children || appName}
-        </div>
-
-        {payerLogo}
-
-        {feedback && (
-          <Feedback
-            appName={appName}
-            className={`float-md-right d-inline-block ${payerId ? 'mx-3' : ''}`}
-            {...feedbackProps}
+          )}
+          {children || <h1 className="mb-0">{appName}</h1>}
+        </Tag>
+        {!RenderRightContent ? (
+          <div className="page-header-left">
+            {payerLogo}
+            {showFeedback && feedback}
+          </div>
+        ) : (
+          <RenderRightContent
+            className="page-header-left"
+            payerLogo={payerLogo}
+            feedback={feedback}
           />
         )}
-      </Tag>
+      </div>
     </React.Fragment>
   );
 };
 
 PageHeader.propTypes = {
+  className: PropTypes.string,
   appName: PropTypes.string.isRequired,
   spaceName: PropTypes.string,
   spaceId: PropTypes.string,
@@ -119,6 +153,7 @@ PageHeader.propTypes = {
   component: PropTypes.element,
   feedback: PropTypes.bool,
   feedbackProps: PropTypes.shape({ ...Feedback.propTypes }),
+  titleProps: PropTypes.object,
   children: PropTypes.node,
   crumbs: PropTypes.oneOfType([
     PropTypes.arrayOf(
@@ -130,6 +165,7 @@ PageHeader.propTypes = {
     PropTypes.node,
   ]),
   tag: PropTypes.oneOfType([PropTypes.func, PropTypes.string]),
+  renderRightContent: PropTypes.func,
   homeUrl: PropTypes.string,
   clientId: PropTypes.string,
   iconSrc: PropTypes.string,
@@ -137,12 +173,13 @@ PageHeader.propTypes = {
 };
 
 PageHeader.defaultProps = {
-  tag: 'h1',
+  tag: 'div',
   // SpaceId and payerId are defaulted to null to prevent `useSpace` from
   // returning a space we may not want
   spaceId: null,
   payerId: null,
   homeUrl: '/public/apps/dashboard',
+  titleProps: {},
 };
 
 export default PageHeader;

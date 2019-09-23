@@ -25,6 +25,7 @@
     "@availity/feedback": "^5.1.7",
     "@availity/payer-logo": "^4.0.1",
     "@availity/training-link": "^1.2.0",
+    "classnames": "^2.2.6",
     "prop-types": "^15.5.8"
   },
   "devDependencies": {
