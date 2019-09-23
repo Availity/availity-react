@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useMemo } from 'react';
 import PropTypes from 'prop-types';
 import classNames from 'classnames';
 import Breadcrumbs from '@availity/breadcrumbs';
@@ -16,7 +16,7 @@ const PageHeader = ({
   iconColor,
   branded,
   crumbs,
-  feedback,
+  feedback: showFeedback,
   feedbackProps,
   titleProps: { className: titleClassName, ...restTitleProps },
   component,
@@ -67,6 +67,17 @@ const PageHeader = ({
     ];
   }
 
+  const feedback = useMemo(
+    () => (
+      <Feedback
+        appName={appName}
+        className={`float-md-right d-inline-block ${payerId ? 'mx-3' : ''}`}
+        {...feedbackProps}
+      />
+    ),
+    [appName, feedbackProps, payerId]
+  );
+
   return (
     <React.Fragment>
       <div className="d-flex align-items-start">
@@ -81,18 +92,25 @@ const PageHeader = ({
         )}
         {component}
       </div>
-      <Tag
-        className={classNames('page-header page-header-brand', className)}
+      <div
+        className={classNames(
+          'page-header page-header-brand d-flex justify-content-between align-items-end',
+          className
+        )}
         data-testid="page-header"
         {...props}
       >
         <div
-          className={classNames('page-header-title', titleClassName)}
+          className={classNames(
+            'page-header-title page-header-left d-flex align-items-center mb-0',
+            titleClassName
+          )}
           data-testid="page-header-title"
           {...restTitleProps}
         >
           {!payerId && appAbbr && (
             <AppIcon
+              className="mr-2"
               data-testid="page-header-app-icon"
               color={iconColor}
               branded={branded}
@@ -103,19 +121,13 @@ const PageHeader = ({
               {appAbbr}
             </AppIcon>
           )}
-          {children || appName}
+          {children || <Tag className="mb-0">{appName}</Tag>}
         </div>
-
-        {payerLogo}
-
-        {feedback && (
-          <Feedback
-            appName={appName}
-            className={`float-md-right d-inline-block ${payerId ? 'mx-3' : ''}`}
-            {...feedbackProps}
-          />
-        )}
-      </Tag>
+        <div className="page-header-left">
+          {payerLogo}
+          {showFeedback && feedback}
+        </div>
+      </div>
     </React.Fragment>
   );
 };
