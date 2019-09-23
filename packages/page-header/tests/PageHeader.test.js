@@ -186,7 +186,6 @@ describe('PageHeader', () => {
     const { getByText } = render(
       <PageHeader
         appName="Payer Space"
-        feedback
         renderRightContent={({ feedback, ...props }) => (
           <div {...props}>
             Hello World

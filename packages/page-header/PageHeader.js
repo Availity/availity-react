@@ -133,7 +133,7 @@ const PageHeader = ({
           <RenderRightContent
             className="page-header-left"
             payerLogo={payerLogo}
-            feedback={showFeedback && feedback}
+            feedback={feedback}
           />
         )}
       </div>
