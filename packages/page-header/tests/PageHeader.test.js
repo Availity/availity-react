@@ -166,4 +166,19 @@ describe('PageHeader', () => {
 
     expect(homeBtn.getAttribute('href')).toBe('/go-home');
   });
+
+  test('should acccept custom title props', () => {
+    const { getByTestId } = render(
+      <PageHeader
+        appName="Payer Space"
+        titleProps={{
+          className: 'mb-0',
+        }}
+      />
+    );
+
+    const pageHeaderTitle = getByTestId('page-header-title');
+
+    expect(pageHeaderTitle.className).toContain('mb-0');
+  });
 });

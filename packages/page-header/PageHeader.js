@@ -18,6 +18,7 @@ const PageHeader = ({
   crumbs,
   feedback,
   feedbackProps,
+  titleProps: { className: titleClassName, ...restTitleProps },
   component,
   tag: Tag,
   clientId,
@@ -85,7 +86,11 @@ const PageHeader = ({
         data-testid="page-header"
         {...props}
       >
-        <div className="page-header-title" data-testid="page-header-title">
+        <div
+          className={classNames('page-header-title', titleClassName)}
+          data-testid="page-header-title"
+          {...restTitleProps}
+        >
           {!payerId && appAbbr && (
             <AppIcon
               data-testid="page-header-app-icon"
@@ -127,6 +132,7 @@ PageHeader.propTypes = {
   component: PropTypes.element,
   feedback: PropTypes.bool,
   feedbackProps: PropTypes.shape({ ...Feedback.propTypes }),
+  titleProps: PropTypes.object,
   children: PropTypes.node,
   crumbs: PropTypes.oneOfType([
     PropTypes.arrayOf(
@@ -151,6 +157,7 @@ PageHeader.defaultProps = {
   spaceId: null,
   payerId: null,
   homeUrl: '/public/apps/dashboard',
+  titleProps: {},
 };
 
 export default PageHeader;

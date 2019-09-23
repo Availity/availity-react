@@ -14,6 +14,7 @@ export interface PageHeaderProps extends React.HTMLAttributes<HTMLDivElement> {
   component?: React.ReactType;
   feedback?: boolean;
   feedbackProps?: any;
+  titleProps?: React.HTMLAttributes<HTMLDivElement>;
   children?: React.ReactType;
   crumbs?: Array<CrumbType> | React.ReactType;
   iconSrc?: string;
