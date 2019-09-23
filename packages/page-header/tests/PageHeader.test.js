@@ -14,29 +14,33 @@ afterEach(() => {
 
 describe('PageHeader', () => {
   test('should render', () => {
-    const { container } = render(<PageHeader appName="Payer Space" />);
+    const { getByTestId } = render(<PageHeader appName="Payer Space" />);
 
-    expect(container).toMatchSnapshot();
+    const pageHeaderTitle = getByTestId('page-header-title');
+
+    expect(pageHeaderTitle.textContent).toEqual('Payer Space');
   });
 
   test('should render app icon', () => {
-    const { container } = render(
+    const { getByText } = render(
       <PageHeader appName="Payer Space" appAbbr="PS" />
     );
 
-    expect(container).toMatchSnapshot();
+    getByText('PS');
   });
 
   test('should render app icon color', () => {
-    const { container } = render(
+    const { getByTestId } = render(
       <PageHeader appName="Payer Space" appAbbr="PS" iconColor="green" />
     );
 
-    expect(container).toMatchSnapshot();
+    const appIcon = getByTestId('page-header-app-icon');
+
+    expect(appIcon.className).toContain('icon-green');
   });
 
   test('should render app icon color branded', () => {
-    const { container } = render(
+    const { getByTestId } = render(
       <PageHeader
         appName="Payer Space"
         appAbbr="PS"
@@ -45,7 +49,9 @@ describe('PageHeader', () => {
       />
     );
 
-    expect(container).toMatchSnapshot();
+    const appIcon = getByTestId('page-header-app-icon');
+
+    expect(appIcon.className).toContain('icon-branded');
   });
 
   test('should render feedback', () => {
@@ -57,14 +63,13 @@ describe('PageHeader', () => {
   });
 
   test('should render children', () => {
-    const { container } = render(
-      <PageHeader appName="Payer Space">
-        <p>this is cool</p>
-      </PageHeader>
+    const { getByText } = render(
+      <PageHeader appName="Payer Space">this is cool</PageHeader>
     );
 
-    expect(container).toMatchSnapshot();
+    getByText('this is cool');
   });
+
   test('should render trainingLink', () => {
     const { getByText } = render(
       <PageHeader

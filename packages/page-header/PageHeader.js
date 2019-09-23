@@ -79,9 +79,10 @@ const PageHeader = ({
         {component}
       </div>
       <Tag className="page-header page-header-brand" {...props}>
-        <div className="page-header-title">
+        <div className="page-header-title" data-testid="page-header-title">
           {!payerId && appAbbr && (
             <AppIcon
+              data-testid="page-header-app-icon"
               color={iconColor}
               branded={branded}
               title={appName}
@@ -90,7 +91,7 @@ const PageHeader = ({
             >
               {appAbbr}
             </AppIcon>
-          )}{' '}
+          )}
           {children || appName}
         </div>
 
