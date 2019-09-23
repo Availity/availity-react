@@ -22,10 +22,10 @@
     "@availity/resolve-url" "^1.1.0"
     qs "^6.5.2"
 
-"@availity/gatsby-theme-core@^1.2.3":
-  version "1.2.3"
-  resolved "https://registry.yarnpkg.com/@availity/gatsby-theme-core/-/gatsby-theme-core-1.2.3.tgz#9e7e2f27cd6b265505712d502499c204b153bb57"
-  integrity sha512-v1p1TKEeUFd5kQDurl01ukOfRcjAtLeh3qb/4WyW+s8wiJ+/JS1QIh8yBwJvvpgu0/GLbLTHpQk8ckpjAAdg2w==
+"@availity/gatsby-theme-core@^1.2.7":
+  version "1.2.7"
+  resolved "https://registry.yarnpkg.com/@availity/gatsby-theme-core/-/gatsby-theme-core-1.2.7.tgz#5de354b4c52668a1ea04cb8f020b5574ac632fdb"
+  integrity sha512-s1bHRmOhz63FaEs57WvMgczZ26n5OiUz+qZ+/4g2f3t+Nrty56kwfzWaaWxn/oSAETVn5WyLjzdyTprkjyi3eQ==
   dependencies:
     availity-uikit "^3.2.0"
     classnames "^2.2.6"
@@ -36,15 +36,22 @@
     react-icons "^3.7.0"
 
 "@availity/gatsby-theme-docs@^1.2.4":
-  version "1.2.4"
-  resolved "https://registry.yarnpkg.com/@availity/gatsby-theme-docs/-/gatsby-theme-docs-1.2.4.tgz#d789b6f70a460ed928c7bfcf16d890382dc46276"
-  integrity sha512-KRlJXOS2aJFmwumZ3rwJ/6KlKveVb0br+pkf4EXT1MbPgpWv4+ds/0GUEmqWs3gyNqxo2fBYz7RyFXS97hF1Mg==
+  version "1.4.1"
+  resolved "https://registry.yarnpkg.com/@availity/gatsby-theme-docs/-/gatsby-theme-docs-1.4.1.tgz#5ff7d21f4734edf0defc5148b9d4b69f02cf9661"
+  integrity sha512-fFFdujHRBW15K/pbAvQQBR67o76O5tKkTbZHku9oiVfrpnj7M4I9rgpnEjMDTAjDEbilB3qrfNv2+0ysbQp92w==
   dependencies:
-    "@availity/gatsby-theme-core" "^1.2.3"
+    "@availity/api-axios" "^5.4.0"
+    "@availity/api-core" "^5.4.0"
+    "@availity/gatsby-theme-core" "^1.2.7"
+    "@availity/localstorage-core" "^2.6.1"
+    "@availity/page-header" "^8.0.0-alpha.7"
+    "@availity/spaces" "^3.1.0"
     "@mdx-js/mdx" "^1.3.1"
     "@mdx-js/react" "^1.3.1"
     availity-uikit "^3.2.0"
+    axios "^0.19.0"
     classnames "^2.2.6"
+    formik "2.0.1-rc.12"
     gatsby-plugin-mdx "^1.0.24"
     gatsby-remark-autolink-headers "^2.1.4"
     gatsby-remark-check-links "^1.3.4"
@@ -61,6 +68,7 @@
     react-use "^10.7.0"
     rehype-react "^4.0.1"
     striptags "^3.1.1"
+    yup "^0.27.0"
 
 "@availity/localstorage-core@^2.6.1":
   version "2.6.1"
@@ -9139,6 +9147,20 @@ format@^0.2.2:
   version "0.2.2"
   resolved "https://registry.yarnpkg.com/format/-/format-0.2.2.tgz#d6170107e9efdc4ed30c9dc39016df942b5cb58b"
   integrity sha1-1hcBB+nv3E7TDJ3DkBbflCtctYs=
+
+formik@2.0.1-rc.12:
+  version "2.0.1-rc.12"
+  resolved "https://registry.yarnpkg.com/formik/-/formik-2.0.1-rc.12.tgz#6cd4d98d125ba4badcbc70e8d22c1f0f1840f4c1"
+  integrity sha512-V7eaOsbu+U+NWrPrAy3D1XUSYWpGjDMyES1COPGQHaTUr2e/RolUDAbBTqBSgzsMSSfHohDHGQRBQPMYVL3UfA==
+  dependencies:
+    deepmerge "^2.1.1"
+    hoist-non-react-statics "^3.3.0"
+    lodash "^4.17.14"
+    lodash-es "^4.17.14"
+    react-fast-compare "^2.0.1"
+    scheduler "^0.14.0"
+    tiny-warning "^1.0.2"
+    tslib "^1.9.3"
 
 formik@^2.0.1-rc.12:
   version "2.0.1-rc.13"
