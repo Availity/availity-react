@@ -93,6 +93,7 @@ PaginationContent.propTypes = {
 };
 
 PaginationContent.defaultProps = {
+  infiniteScroll: false,
   loader: false,
   containerTag: 'div',
   containerProps: {},
