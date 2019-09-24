@@ -29,7 +29,7 @@
     "release:canary": "lerna publish -c",
     "add": "sh ./scripts/add.sh",
     "deploy:storybook": "yarn workspace @availity/react-storybook build && gh-pages -d docs --dest storybook",
-    "deploy:docs": "yarn workspace @availity/react-docs build:deploy && gh-pages -d packages/docs/public",
+    "deploy:docs": "yarn workspace @availity/react-docs build:deploy && gh-pages -d packages/docs/public --message 'deployed docs [skip ci]'",
     "deploy:ci": "npm run deploy:storybook && npm run deploy:docs",
     "updated": "lerna updated",
     "remove-locks": "find . -type f -name 'package-lock.json' -delete",
