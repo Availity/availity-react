@@ -78,14 +78,16 @@ This is the container of all the items rendered to the DOM when the `Pagination`
 
 ### Props
 
-| Prop Name            | Types       | Required | Default  | Description                                                                            |
-| -------------        | -------     | -------- | -------- | -------------------------------------------------------------------------------------- |
-| **`component`**      | Node        | false    |          | The message to render with the loading bar when in the loading state                   |
-| **`loadingMessage`** | String      | false    |          | The message to render with the loading bar when in the loading state                   |
-| **`itemKey`**        | String      | false    |          | The key of the object rendered in the component to be used during mapping              |
-| **`loader`**         | Boolean     | false    | `false`  | If true, calls BlockUI to simulate a loading state if the provider is loading.         |
-| **`containerProps`** | Object      | false    | `{}`     | Props to be spread onto the `<BlockUI />` tag                                          |
-| **`containerTag`**   | String,Node | false    | `<div>`  | The tag to render the `<BlockUi />` as                                                 |
+| Prop Name                 | Types       | Required | Default  | Description                                                                                                                                          |
+| -------------             | -------     | -------- | -------- | --------------------------------------------------------------------------------------                                                               |
+| **`component`**           | Node        | false    |          | The message to render with the loading bar when in the loading state                                                                                 |
+| **`loadingMessage`**      | String      | false    |          | The message to render with the loading bar when in the loading state                                                                                 |
+| **`itemKey`**             | String      | false    |          | The key of the object rendered in the component to be used during mapping                                                                            |
+| **`loader`**              | Boolean     | false    | `false`  | If true, calls BlockUI to simulate a loading state if the provider is loading.                                                                       |
+| **`containerProps`**      | Object      | false    | `{}`     | Props to be spread onto the `<BlockUI />` tag                                                                                                        |
+| **`containerTag`**        | String,Node | false    | `<div>`  | The tag to render the `<BlockUi />` as                                                                                                               |
+| **`infiniteScroll`**      | Boolean     | false    | `false`  | If true, renders pagination content inside an infinite scroll component                                                                              |
+| **`infiniteScrollProps`** | Object      | false    |          | Only used when `infiniteScroll` is true. See [react-infinite-scroll-component](https://github.com/ankeetmaini/react-infinite-scroll-component#props) |
 
 ### Usage
 
@@ -188,6 +190,11 @@ import { AvResourcePagination, PaginationControls } from '@availity/pagination';
 import { avOrganizationsApi } from '@availity/api-axios';
 
 <AvResourcePagination resource={avOrganizationsApi} itemsPerPage={25}>
+  <PaginationContent
+    loadingMessage="loading"
+    component={Component}
+    itemkey="id"
+  />
   <PaginationControls />
-</AvResourcePagination>;
+</AvResourcePagination>
 ```
