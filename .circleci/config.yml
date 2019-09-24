@@ -58,6 +58,9 @@ workflows:
     jobs:
       - build:
           context: availity-deploy
+          filters:
+            branches:
+              ignore: gh-pages
       - deploy:
           context: availity-deploy
           requires:
