@@ -33,8 +33,10 @@ const Pagination = ({
     total: theItems != null && !isFunction(theItems) ? theItems.totalCount : 0,
     pageCount: 0,
     page: [],
+    allPages: [],
     lower: 0,
     upper: 0,
+    hasMore: false,
   });
 
   // create an abort controller for fetch to be able to cancel it
@@ -72,8 +74,10 @@ const Pagination = ({
       total: totalCount || items.length,
       pageCount,
       page,
+      allPages: [...pageData.allPages, ...page],
       lower,
       upper,
+      hasMore: currentPage < pageCount,
     });
 
     toggleLoading(false);
@@ -105,6 +109,8 @@ const Pagination = ({
     if (firstUpdate.current) {
       firstUpdate.current = false;
     } else {
+      // Reset allPages
+      setPageData({ ...pageData, allPages: [] });
       const current = currentPage;
       updatePage(1);
       // If the current page was already 1 and theItems is a function, re-fetch the page data
@@ -123,6 +129,7 @@ const Pagination = ({
         setPage: updatePage,
         currentPage,
         loading,
+        itemsPerPage,
       }}
     >
       {children}

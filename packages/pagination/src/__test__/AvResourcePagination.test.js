@@ -4,11 +4,12 @@ import {
   waitForElement,
   waitForDomChange,
   fireEvent,
-  cleanup
+  cleanup,
 } from '@testing-library/react';
 import PaginationControls from '../PaginationControls';
 import { usePagination } from '../Pagination';
 import AvResourcePagination from '../AvResourcePagination';
+import PaginationContent from '../PaginationContent';
 import paginationData from './data/pagination.json';
 
 const data = paginationData.map(({ id }) => ({
@@ -105,5 +106,39 @@ describe('AvResourcePagination', () => {
         page: data.slice(2, 4),
       })
     );
+  });
+
+  test('show new page of items when infiniteScroll and user scrolls to bottom', async () => {
+    // eslint-disable-next-line react/prop-types
+    const Component = ({ id }) => <div data-testid={id}>{id}</div>;
+
+    const { getByTestId } = render(
+      <div data-testid="infinite-scroll-container">
+        <AvResourcePagination resource={resource} itemsPerPage={2}>
+          <PaginationContent
+            component={Component}
+            infiniteScroll
+            itemKey="id"
+          />
+        </AvResourcePagination>
+      </div>
+    );
+
+    await waitForDomChange(() => getByTestId('infinite-scroll-container'));
+
+    // Check that first page renders
+    expect(getByTestId('5af1e71f1a38311cd5afe2fe')).toBeDefined();
+    expect(getByTestId('5af1e71f3ef279b4188aeecd')).toBeDefined();
+
+    await fireEvent.scroll(window, { target: { scrollY: 1000 } });
+
+    // Wait for pagination-con to re-render aftering loading prop is toggled
+    await waitForDomChange(() => getByTestId('infinite-scroll-container'));
+    expect(mockResponse.postGet).toHaveBeenCalledTimes(2);
+    // Check that first and second page render
+    expect(getByTestId('5af1e71f1a38311cd5afe2fe')).toBeDefined();
+    expect(getByTestId('5af1e71f3ef279b4188aeecd')).toBeDefined();
+    expect(getByTestId('5af1e71fac54f0e9e6c5e976')).toBeDefined();
+    expect(getByTestId('5af1e71f6727bd6161e62720')).toBeDefined();
   });
 });
