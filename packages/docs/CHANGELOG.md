@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [2.1.1](https://github.com/Availity/availity-react/compare/@availity/react-docs@2.1.0...@availity/react-docs@2.1.1) (2019-09-25)
+
+
+### Bug Fixes
+
+* **docs:** fix avatar image not loading ([7c332a8](https://github.com/Availity/availity-react/commit/7c332a8))
+
+
+
+
+
 # [2.1.0](https://github.com/Availity/availity-react/compare/@availity/react-docs@2.0.5...@availity/react-docs@2.1.0) (2019-09-23)
 
 
