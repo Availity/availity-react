@@ -4,7 +4,7 @@ import { withKnobs, text, boolean, object } from '@storybook/addon-knobs/react';
 
 import Feature from '@availity/feature';
 import README from '@availity/feature/README.md';
-import './mock-requests';
+import '@availity/mock';
 
 storiesOf('Components|Feature', module)
   .addParameters({

@@ -13,89 +13,84 @@ Note: Only works with OpenShift deployed applications using the standard pipelin
 npm install @availity/feature axios --save
 ```
 
-### Usage
+## Example
 
-```javascript
+```jsx
 import React from 'react';
 import Feature from '@availity/feature';
-// ...
-<Feature features="1234">
-    {/* stuff to render if the feature indicated above in enabled in the environment */}
-</Feature>
-// ...
-```
 
-#### Feature (Default export)
+<Feature
+  features={[
+    'AV-1234',
+    'AV-2345',
+    ['AV-3456', 'AV-4567'],
+    ['AV-5678', 'AV-6789'],
+  ]}
+>
+  {/* stuff to render if the feature indicated above is enabled in the environment */}
+</Feature>;
+```
 
 Component which validates the environment's features to determine if children content should be shown.
 
-##### Feature Props
+## Props
 
--   **`features`**: String, or an array containing strings or an array containing strings. Required.
-    -   **string**: The feature ID, eg: `'AV-1234'`
-    -   **array**: The array can contain feature ID strings as well as other arrays which contain feature ID strings, eg: `['AV-1234', 'AV-2345', ['AV-3456', 'AV-4567'], ['AV-5678', 'AV-6789']]`. The items in deep/nested array indicate feature IDs which must all be enabled for feature to be consider feature (see the `children`), they act as "and". The items in the top array act as 'or', if any are enabled the feature would be consider enabled. The example `['AV-1234', 'AV-2345', ['AV-3456', 'AV-4567'], ['AV-5678', 'AV-6789']]` would be similar `'AV-1234' || 'AV-2345' || ('AV-3456' && 'AV-4567') || ('AV-5678' && 'AV-6789')`
--   **`loader`**: Boolean or node. Optional, default: `true`. When `true`, `BlockUi` will be used when loading the features. When a `node`, that node will be render instead of `BlockUi` when loading the features. When `false`, nothing will be render when loading the features.
--   **`whenDisabled`**: Node. Optional. The content which will be render when the features are disabled.
--   **`children`**: Node. Required. The content which will be render when the features are enabled.
--   **`negate`**: Boolean. Optional, default `false`. negation the feature (if the features specified is enabled, it will act as if it was disabled (shown the `whenDisabled` prop content) and if the features specified is disabled, it will be "enabled" and able to see the children content)
+### `features: string | Array<string | Array<string>>`
 
-##### Feature Usage
+Can either be a string, eg: `"AV-1234"` or an array containing feature ID strings as well as other arrays which contain feature ID strings, eg: `['AV-1234', 'AV-2345', ['AV-3456', 'AV-4567'], ['AV-5678', 'AV-6789']]`. The items in a nested array indicate feature IDs that must _all_ be enabled for a feature to be considered enabled (see `children`) - they act as "AND". The items in the top of the array act as "OR" - if _any_ are enabled, the feature is considered enabled. The example `['AV-1234', 'AV-2345', ['AV-3456', 'AV-4567'], ['AV-5678', 'AV-6789']]` is similar to `'AV-1234' OR 'AV-2345' OR ('AV-3456' && 'AV-4567') OR ('AV-5678' && 'AV-6789')`.
 
-```javascript
-import React from 'react';
-import Feature from '@availity/feature';
-// ...
-<Feature
-    features={[
-        'AV-1234',
-        'AV-2345',
-        ['AV-3456', 'AV-4567'],
-        ['AV-5678', 'AV-6789'],
-    ]}
->
-    {/* ... */}
-</Feature>
-// ...
-```
+### `loader?: boolean | ReactNode`
 
-#### `isFeatureEnabled(features)`
+When `true`, `BlockUi` is used when loading the features. When a `node`, that node is rendered instead of `BlockUi` when loading the features. When `false`, nothing is rendered when loading the features. **Default:** `true`.
 
-Function which which validates the environment's features to determine if children content should be shown.
+### `whenDisabled?: ReactNode`
 
-##### isFeatureEnabled Arguments
+The content that renders when the features are disabled.
 
-`isFeatureEnabled(features)`
+### `children?: ReactNode`
 
--   **`features`**: String, or an array containing strings or an array containing strings. Required.
-    -   **string**: The feature ID, eg: `'AV-1234'`
-    -   **array**: The array can contain feature ID strings as well as other arrays which contain feature ID strings, eg: `['AV-1234', 'AV-2345', ['AV-3456', 'AV-4567'], ['AV-5678', 'AV-6789']]`. The items in deep/nested array indicate feature IDs which must all be enabled for feature to be consider feature (see the `children`), they act as "and". The items in the top array act as 'or', if any are enabled the feature would be consider enabled. The example `['AV-1234', 'AV-2345', ['AV-3456', 'AV-4567'], ['AV-5678', 'AV-6789']]` would be similar `'AV-1234' || 'AV-2345' || ('AV-3456' && 'AV-4567') || ('AV-5678' && 'AV-6789')`
+The content that renders when the features are enabled.
 
-##### Returns
+### `negate?: boolean`
 
-A promise which can be awaited and resolves to `true` or `false` indicating whether the feature(s) are enabled or not;
+Negate the feature. If the feature specified is enabled, it acts as if it were disabled (by rendering the `whenDisabled` prop content). If the feature specified is disabled, it acts as if it were enabled (by rendering the `children` prop content).
 
-##### isFeatureEnabled Usage
+## `isFeatureEnabled`
+
+Function that validates the environment's features to determine if children content should be shown.
+
+### Arguments
+
+- **`features`**: String, or an array containing strings. Required.
+  - **string**: The feature ID, eg: `'AV-1234'`
+  - **array**: The array can contain feature ID strings as well as other arrays which contain feature ID strings, eg: `['AV-1234', 'AV-2345', ['AV-3456', 'AV-4567'], ['AV-5678', 'AV-6789']]`. The items in a nested array indicate feature IDs that must _all_ be enabled for a feature to be considered enabled (see `children`) - they act as "AND". The items in the top of the array act as "OR" - if _any_ are enabled, the feature is considered enabled. The example `['AV-1234', 'AV-2345', ['AV-3456', 'AV-4567'], ['AV-5678', 'AV-6789']]` is similar to `'AV-1234' || 'AV-2345' || ('AV-3456' && 'AV-4567') || ('AV-5678' && 'AV-6789')`.
+
+### Returns
+
+A promise that can be awaited and resolves to `true` or `false` indicating whether the feature(s) are enabled or not.
+
+### Usage
 
 ```javascript
 import { isFeatureEnabled } from '@availity/feature';
 
 async () => {
-    const enabled = await isFeatureEnabled('AV-1234');
-    if (!enabled) return;
-    // do stuff, this feature is enabled!
+  const enabled = await isFeatureEnabled('AV-1234');
+  if (!enabled) return;
+  // do stuff, this feature is enabled!
 };
 ```
 
-#### `generate-features-json [path-to-features.json] [path-to-build-dist]` (CLI)
+## `generate-features-json (CLI)
 
-`generate-features-json` is a CLI tool which takes a `features.json` file and outputs environment specific `features.json` files to be used depending on which environment it's currently in. Note: This is where OpenShift comes into play. OpenShift will ensure the right file (based on the ENV) is placed in the right location when the pod starts.
+`generate-features-json` is a CLI tool that takes a `features.json` file and outputs environment specific `features.json` files to be used depending on which environment it's currently in. Note: This is where OpenShift comes into play. OpenShift ensures the right file (based on the ENV) is placed in the right location when the pod starts.
 
-##### generate-features-json Arguments
+### Arguments
 
-- **`path-to-features.json`**: Directory path or file location. Optional, default: `project/config/features.json`. If a directory path, a `features.json` file must exist in the directory. If a file location, it must be a `.json` file. Note: Follow the example `features.json` file for what the contents of the file should be.
-- **`path-to-build-dist`**: Directory path: Optional, default: if `NODE_ENV` is "production" `dist/features`, else `build/features`. The location in which the various environment specific JSON files will be output. Note: OpenShift is looking for the `features` directory in the web root of the image, so if this value is changed, ensure that the resulting image has the `features` directory.
+- **`path-to-features.json`**: Directory path or file location. Optional. Default: `project/config/features.json`. If a directory path, a `features.json` file must exist in the directory. If a file location, it must be a `.json` file. Note: Follow the example `features.json` file for what the contents of the file should be.
+- **`path-to-build-dist`**: Directory path. Optional. Default: if `NODE_ENV` is "production" `dist/features`, else `build/features`. The location to output the various environment specific JSON files. Note: OpenShift is looking for the `features` directory in the web root of the image, so if this value is changed, ensure that the resulting image has the `features` directory.
 
-##### generate-features-json Usage
+### Usage
 
 ```bash
 generate-features-json
@@ -103,7 +98,7 @@ generate-features-json ./features.json
 generate-features-json other-path dist/features
 ```
 
-###### As npm script
+### As npm script
 
 ```json
 {
@@ -123,9 +118,9 @@ with extra parameters
 }
 ```
 
-##### features.json
+## features.json
 
-The `features.json` file is a single file which details "features" and the environments in which each feature is **disabled** in. Typically the name of the feature is the JIRA ticket number which the feature was developed for. This helps identify what the feature does by just knowing the name.
+The `features.json` file is a single file that details "features" and the environments that each feature is **disabled** in. Typically, the name of the feature is the JIRA ticket number that the feature was developed for. This helps identify what the feature does by just knowing the name.
 Possible `disabledEnvironments` values are `"DEV"`, `"STAGE"`, and `"PRD"`. These values line up with the `ENV` environment variable within OpenShift.
 
 ```json
@@ -138,11 +133,11 @@ Possible `disabledEnvironments` values are `"DEV"`, `"STAGE"`, and `"PRD"`. Thes
   {
     "name": "CB-675",
     "description": "https://jira.availity.com:8443/browse/PREC-4597",
-    "disabledEnvironments": ["STAGE","PRD"]
+    "disabledEnvironments": ["STAGE", "PRD"]
   }
 ]
 ```
 
-The environment specific features.json files which gets generated will be a simple array of disabled feature names. The above example would produce a `PRD.json` with `["PREC-4597", "CB-675"]` and `STAGE.json` with `["CB-675"]`.
+The environment specific `features.json` files that get generated are a simple array of disabled feature names. The above example produces a `PRD.json` with `["PREC-4597", "CB-675"]` and `STAGE.json` with `["CB-675"]`.
 
 Enabling and disabling features does require a deployment, but with the OpenShift CI/CD process, that _should_ be painless.

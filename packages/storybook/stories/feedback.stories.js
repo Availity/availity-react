@@ -1,8 +1,7 @@
 import React from 'react';
 import { storiesOf } from '@storybook/react';
 import { withKnobs, text, boolean, select } from '@storybook/addon-knobs/react';
-
-import './mock-requests';
+import '@availity/mock';
 
 import Feedback, { FeedbackForm } from '@availity/feedback';
 import README from '@availity/feedback/README.md';

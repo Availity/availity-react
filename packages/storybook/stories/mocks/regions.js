@@ -1,12 +1,12 @@
-import postGet from './postGet';
-import data from '../data/regions-query.json';
+// import postGet from './postGet';
+// import data from '../data/regions-query.json';
 
-const fields = ['id', 'value'];
+// const fields = ['id', 'value'];
 
-// postGet
-export default postGet(
-  /\/api\/sdk\/platform\/v1\/regions\??.*/,
-  'regions',
-  fields,
-  data
-);
+// // postGet
+// export default postGet(
+//   /\/api\/sdk\/platform\/v1\/regions\??.*/,
+//   'regions',
+//   fields,
+//   data
+// );

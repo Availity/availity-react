@@ -12,6 +12,7 @@ import Spaces, {
   SpacesAgreement,
 } from '@availity/spaces';
 import README from '@availity/spaces/README.md';
+import '@availity/mock';
 
 storiesOf('Components|Spaces', module)
   .addParameters({

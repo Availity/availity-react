@@ -12,7 +12,7 @@ import { Card, CardBody, CardText, CardTitle, Col } from 'reactstrap';
 import README from '@availity/pagination/README.md';
 import { boolean, number } from '@storybook/addon-knobs';
 import { text } from '@storybook/addon-knobs/dist/deprecated';
-import paginationData from './data/pagination.json';
+import paginationData from '@availity/mock/data/pagination.json';
 
 const Component = ({ name, address }) => (
   <Card>
