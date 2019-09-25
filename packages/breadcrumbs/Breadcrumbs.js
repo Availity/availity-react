@@ -7,6 +7,7 @@ const Breadcrumbs = ({
   active,
   emptyState,
   children,
+  linkTag: LinkTag,
   homeUrl,
   ...rest
 }) => {
@@ -16,9 +17,9 @@ const Breadcrumbs = ({
     // render static links
     if (crumb.name && crumb.url) {
       breadCrumbItemChildren = (
-        <a aria-label={crumb.name} href={crumb.url}>
+        <LinkTag aria-label={crumb.name} href={crumb.url}>
           {crumb.name}
-        </a>
+        </LinkTag>
       );
     }
     return (
@@ -31,9 +32,9 @@ const Breadcrumbs = ({
   return (
     <Breadcrumb {...rest}>
       <BreadcrumbItem>
-        <a aria-label="Home" href={homeUrl}>
+        <LinkTag aria-label="Home" href={homeUrl}>
           Home
-        </a>
+        </LinkTag>
       </BreadcrumbItem>
       {crumbs && crumbs.length > 0 && crumbs.map(renderBreadCrumb)}
       {children}
@@ -49,6 +50,7 @@ Breadcrumbs.propTypes = {
       url: PropTypes.string,
     })
   ),
+  linkTag: PropTypes.oneOfType([PropTypes.func, PropTypes.string]),
   active: PropTypes.string.isRequired,
   emptyState: PropTypes.string,
   children: PropTypes.node,
@@ -58,6 +60,7 @@ Breadcrumbs.propTypes = {
 Breadcrumbs.defaultProps = {
   emptyState: '…',
   homeUrl: '/public/apps/dashboard',
+  linkTag: 'a',
 };
 
 export default Breadcrumbs;
