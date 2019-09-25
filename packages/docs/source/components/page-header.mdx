@@ -97,3 +97,6 @@ Additional props passed to the `page-header-title`.
 ### `renderRightContent: React.ComponentType<{ payerLogo: ReactNode, feedback: ReactNode, className: string }>`
 
 Used to customize the contents of the right side of the page header where the feedback and payer logo get rendered. Accepts the rendered `payerLogo` and `feedback` as props
+
+### `linkTag?: React.ComponentType<React.HTMLAttributes<HTMLAnchorElement>> | string`
+Custom link tag for the links. **Default:** `<a>`
