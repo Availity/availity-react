@@ -41,8 +41,12 @@ const Checkbox = ({
 
 Checkbox.propTypes = {
   id: PropTypes.string,
-  label: PropTypes.node,
-  value: PropTypes.object,
+  label: PropTypes.string,
+  value: PropTypes.oneOfType([
+    PropTypes.string,
+    PropTypes.bool,
+    PropTypes.object,
+  ]),
   disabled: PropTypes.bool,
   className: PropTypes.string,
 };

@@ -3,6 +3,86 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [8.0.0](https://github.com/Availity/availity-react/compare/@availity/react-storybook@7.5.15...@availity/react-storybook@8.0.0) (2019-09-23)
+
+
+### Code Refactoring
+
+* **page-header:** refactored page header strcuture to fix ux ([d79d269](https://github.com/Availity/availity-react/commit/d79d269))
+
+
+### BREAKING CHANGES
+
+* **page-header:** Tag prop now is defaulted to div and appName instead of children will render an h1 tag by default
+
+
+
+
+
+## [7.5.15](https://github.com/Availity/availity-react/compare/@availity/react-storybook@7.5.14...@availity/react-storybook@7.5.15) (2019-09-20)
+
+**Note:** Version bump only for package @availity/react-storybook
+
+
+
+
+
+## [7.5.14](https://github.com/Availity/availity-react/compare/@availity/react-storybook@7.5.13...@availity/react-storybook@7.5.14) (2019-09-19)
+
+**Note:** Version bump only for package @availity/react-storybook
+
+
+
+
+
+## [7.5.13](https://github.com/Availity/availity-react/compare/@availity/react-storybook@7.5.12...@availity/react-storybook@7.5.13) (2019-09-19)
+
+**Note:** Version bump only for package @availity/react-storybook
+
+
+
+
+
+## [7.5.12](https://github.com/Availity/availity-react/compare/@availity/react-storybook@7.5.11...@availity/react-storybook@7.5.12) (2019-09-19)
+
+**Note:** Version bump only for package @availity/react-storybook
+
+
+
+
+
+## [7.5.11](https://github.com/Availity/availity-react/compare/@availity/react-storybook@7.5.10...@availity/react-storybook@7.5.11) (2019-09-17)
+
+**Note:** Version bump only for package @availity/react-storybook
+
+
+
+
+
+## 7.5.10 (2019-09-17)
+
+**Note:** Version bump only for package @availity/react-storybook
+
+
+
+
+
+## [7.5.9](https://github.com/Availity/availity-react/compare/@availity/storybook@7.5.8...@availity/storybook@7.5.9) (2019-09-13)
+
+**Note:** Version bump only for package @availity/storybook
+
+
+
+
+
+## [7.5.8](https://github.com/Availity/availity-react/compare/@availity/storybook@7.5.7...@availity/storybook@7.5.8) (2019-09-13)
+
+**Note:** Version bump only for package @availity/storybook
+
+
+
+
+
 ## [7.5.7](https://github.com/Availity/availity-react/compare/@availity/storybook@7.5.6...@availity/storybook@7.5.7) (2019-09-06)
 
 **Note:** Version bump only for package @availity/storybook

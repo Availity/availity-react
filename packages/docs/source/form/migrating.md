@@ -101,7 +101,6 @@ import { Field, Form } from '@availity/form';
 import '@availity/yup';
 import * as yup from 'yup';
 
-// ...
 <Form
   onSubmit={() => {}}
   initialValues={{
@@ -131,5 +130,4 @@ import * as yup from 'yup';
     label="Zip Code"
   />
 </Form>
-// ...
 ```

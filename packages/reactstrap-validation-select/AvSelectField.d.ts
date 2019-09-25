@@ -1,5 +1,7 @@
-export interface AvSelectFieldProps {
-    label?: React.ReactType;
+import { AvSelectProps } from "./AvSelect";
+
+export interface AvSelectFieldProps extends AvSelectProps {
+    label?: React.ReactNode;
     labelHidden?: boolean;
     id?: string;
     feedbackClass?: string;

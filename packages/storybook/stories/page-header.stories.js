@@ -35,7 +35,8 @@ storiesOf('Components|Header', module)
   ))
   .add('with app icon', () => (
     <PageHeader
-      appName="Payer Spaces"
+      homeUrl={text('Home Url', '/public/apps/dashboard')}
+      appName={text('Application Name', 'Payer Space')}
       appAbbr={text('Application Abbreviation', 'PS')}
       iconColor={select(
         'Color',
@@ -49,19 +50,16 @@ storiesOf('Components|Header', module)
       )}
       iconSrc={text('AppIcon Image')}
       iconAlt={text('AppIcon Alt')}
-    >
-      {text('Application Name', 'Payer Space')}
-    </PageHeader>
+    />
   ))
   .add('with payer logo', () => (
     <div>
       <PageHeader
-        appName="Payer Space"
+        homeUrl={text('Home Url', '/public/apps/dashboard')}
+        appName={text('Application Name', 'Payer Space')}
         clientId={text('Client ID', 'my-client-id')}
         payerId={text('Payer ID', 'PayerID')}
-      >
-        {text('Application Name', 'Payer Space')}
-      </PageHeader>
+      />
       <p>
         Note: the logo uses a relative URL which will only work on the Availity
         Portal
@@ -70,55 +68,50 @@ storiesOf('Components|Header', module)
   ))
   .add('with payer space breadcrumb', () => (
     <PageHeader
-      appName="Payer Space"
+      homeUrl={text('Home Url', '/public/apps/dashboard')}
+      appName={text('Application Name', 'Payer Space')}
       spaceId={text('Payer Space ID', '73162546201441126239486200007187')}
       spaceName={text('Payer Space Name', 'Payers Space')}
-    >
-      {text('Application Name', 'Payer Space')}
-    </PageHeader>
+    />
   ))
   .add('with arbitrary breadcrumbs', () => (
     <PageHeader
-      appName="Payer Space"
+      appName={text('Application Name', 'Payer Space')}
       crumbs={[
         { name: 'Grand Parent', url: '/grand-parent' },
         { name: 'Parent', url: '/parent' },
       ]}
-    >
-      {text('Application Name', 'Payer Space')}
-    </PageHeader>
+    />
   ))
   .add('with custom breadcrumbs', () => (
-    <PageHeader appName="Payer Space" crumbs={CustomBreadcrumbs}>
-      {text('Application Name', 'Payer Space')}
-    </PageHeader>
+    <PageHeader
+      homeUrl={text('Home Url', '/public/apps/dashboard')}
+      appName={text('Application Name', 'Payer Space')}
+      crumbs={CustomBreadcrumbs}
+    />
   ))
   .add('with feedback', () => (
-    <PageHeader appName={text('Application Name', 'Payer Space')} feedback>
-      {text('Application Name', 'Payer Space')}
-    </PageHeader>
+    <PageHeader appName={text('Application Name', 'Payer Space')} feedback />
   ))
   .add('with feedback and payer logo', () => (
     <PageHeader
+      homeUrl={text('Home Url', '/public/apps/dashboard')}
       appName={text('Application Name', 'Payer Space')}
       payerId={text('Payer ID', 'PayerID')}
       clientId={text('Client ID', 'my-client-id')}
       feedback
-    >
-      {text('Application Name', 'Payer Space')}
-    </PageHeader>
+    />
   ))
   .add('with training link', () => (
     <PageHeader
+      homeUrl={text('Home Url', '/public/apps/dashboard')}
       feedback
-      appName="Payer Spaces"
+      appName={text('Application Name', 'Payer Space')}
       component={
         <TrainingLink
           link="https://www.youtube.com/watch?v=GgwE94KZJ7E"
           name="Payer Space"
         />
       }
-    >
-      {text('Application Name', 'Payer Space')}
-    </PageHeader>
+    />
   ));

@@ -1,7 +1,7 @@
 import { AvDateRangeProps } from './AvDateRange';
 
 export interface AvDateRangeFieldProps extends AvDateRangeProps {
-  label?: React.ReactType;
+  label?: React.ReactNode;
   labelHidden?: boolean;
   readOnly?: boolean;
   inputClass?: string;

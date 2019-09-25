@@ -163,9 +163,7 @@ class AvResourceSelect extends Component {
             hasMore = data =>
               get(
                 data.data,
-                `${
-                  this.props.graphqlConfig.type
-                }Pagination.pageInfo.hasNextPage`,
+                `${this.props.graphqlConfig.type}Pagination.pageInfo.hasNextPage`,
                 false
               );
           } else {
@@ -213,7 +211,7 @@ class AvResourceSelect extends Component {
     } = this.props;
     let _cacheUniq = cacheUniq;
 
-    if (_cacheUniq === undefined && watchParams && this.select.current) {
+    if (_cacheUniq === undefined && watchParams) {
       const params = {
         customerId: this.props.customerId,
         ...this.props.parameters,

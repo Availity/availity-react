@@ -28,6 +28,7 @@ const RadioGroup = ({
   children,
   label,
   onChange: groupOnChange,
+  inline = false,
   ...rest
 }) => {
   const [field, metadata] = useField(name);
@@ -41,7 +42,9 @@ const RadioGroup = ({
   const legend = label ? <legend>{label}</legend> : '';
 
   return (
-    <RadioGroupContext.Provider value={{ ...field, groupOnChange, metadata }}>
+    <RadioGroupContext.Provider
+      value={{ ...field, groupOnChange, metadata, inline }}
+    >
       <FormGroup tag="fieldset" for={name} {...rest}>
         {legend}
         <div className={classes} data-testid={`radio-items-${name}`}>
@@ -58,6 +61,7 @@ RadioGroup.propTypes = {
   children: PropTypes.node,
   label: PropTypes.node,
   onChange: PropTypes.func,
+  inline: PropTypes.bool,
 };
 
 export default RadioGroup;

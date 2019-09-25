@@ -100,4 +100,25 @@ describe('RadioGroup', () => {
       expect(onChange).toHaveBeenCalledWith('uno');
     });
   });
+
+  test('can render radio inline', async () => {
+    const { getByTestId } = render(
+      <Form
+        initialValues={{
+          hello: '',
+        }}
+        validationSchema={yup.object().shape({
+          hello: yup.string().required('This field is required'),
+        })}
+      >
+        <RadioGroup name="hello" label="Radio Group" inline>
+          <Radio label="Radio One" value="uno" />
+        </RadioGroup>
+      </Form>
+    );
+
+    const radioGroup = getByTestId('radio-items-hello');
+    const formGroup = radioGroup.children[0];
+    expect(formGroup.className).toContain('form-check-inline');
+  });
 });

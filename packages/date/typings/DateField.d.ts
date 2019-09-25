@@ -2,7 +2,7 @@ import * as React from 'react';
 import { DateProps } from './Date';
 
 export interface DateFieldProps extends DateProps {
-  label?: string;
+  label?: React.ReactNode;
 }
 
 declare class DateField extends React.Component<DateFieldProps> {}

@@ -4,7 +4,7 @@ import { FormGroupProps } from './FormGroup';
 
 
 export interface FieldProps extends InputProps {
-    label?: string;
+    label?: React.ReactNode;
     labelHidden?: boolean | false;
     disabled?: boolean | false;
     readOnly?: boolean | false;

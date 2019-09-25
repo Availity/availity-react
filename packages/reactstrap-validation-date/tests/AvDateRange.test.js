@@ -331,6 +331,42 @@ describe('AvDateRange', () => {
     });
   });
 
+  test('same day can be selected', async () => {
+    const { container, getByText } = render(
+      <DateRange
+        name="dateRange"
+        start={{ name: 'date.start' }}
+        end={{ name: 'date.end' }}
+      />
+    );
+
+    const input = container.querySelector('.DateInput_input');
+
+    fireEvent.focus(input);
+
+    // Simulate user selecting today as start date
+    const start = container.querySelector('.CalendarDay__today');
+    fireEvent.click(start);
+
+    // Simulate user selecting today as end date
+    const end = container.querySelector('.CalendarDay__today');
+    fireEvent.click(end);
+
+    fireEvent.click(getByText('Submit'));
+
+    await wait(() => {
+      expect(onValidSubmit).toHaveBeenCalledWith(
+        expect.anything(),
+        expect.objectContaining({
+          date: {
+            start: moment().format('YYYY-MM-DD'),
+            end: moment().format('YYYY-MM-DD'),
+          },
+        })
+      );
+    });
+  });
+
   test('text input works with default start and end dates', async () => {
     const defaultStartDate = moment('01/01/2019').format('YYYY-MM-DD');
     const defaultEndDate = moment('12/31/2022').format('YYYY-MM-DD');

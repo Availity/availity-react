@@ -5,7 +5,7 @@ type FaceOption = {
 
 type AboutOption = {
     icon?: string;
-    label?: string;
+    label?: React.ReactNode;
 };
 
 export interface FeedBackFormProps {

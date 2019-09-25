@@ -3,6 +3,46 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [5.1.8](https://github.com/Availity/availity-react/compare/@availity/feedback@5.1.7...@availity/feedback@5.1.8) (2019-09-23)
+
+**Note:** Version bump only for package @availity/feedback
+
+
+
+
+
+## [5.1.7](https://github.com/Availity/availity-react/compare/@availity/feedback@5.1.6...@availity/feedback@5.1.7) (2019-09-19)
+
+**Note:** Version bump only for package @availity/feedback
+
+
+
+
+
+## [5.1.6](https://github.com/Availity/availity-react/compare/@availity/feedback@5.1.5...@availity/feedback@5.1.6) (2019-09-19)
+
+**Note:** Version bump only for package @availity/feedback
+
+
+
+
+
+## [5.1.5](https://github.com/Availity/availity-react/compare/@availity/feedback@5.1.4...@availity/feedback@5.1.5) (2019-09-13)
+
+**Note:** Version bump only for package @availity/feedback
+
+
+
+
+
+## [5.1.4](https://github.com/Availity/availity-react/compare/@availity/feedback@5.1.3...@availity/feedback@5.1.4) (2019-09-13)
+
+**Note:** Version bump only for package @availity/feedback
+
+
+
+
+
 ## [5.1.3](https://github.com/Availity/availity-react/compare/@availity/feedback@5.1.2...@availity/feedback@5.1.3) (2019-09-06)
 
 **Note:** Version bump only for package @availity/feedback

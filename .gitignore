@@ -10,3 +10,4 @@
 /.history
 package-lock.json
 coverage/
+yarn-error.log

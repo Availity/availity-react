@@ -44,7 +44,6 @@ import { BreadcrumbItem } from 'reactstrap';
 ## Props
 
 ### `active?: string`
-
 The name of the active page (the page the user is currently on).
 
 ### `crumbs?: Array<object>`
@@ -58,3 +57,6 @@ The value to display when the active page or an ancestor does not have a value. 
 ### `children?: BreadcrumbItem | Array<BreadcrumbItem>`
 
 The children must be a reactstrap `BreadcrumbItem` components.
+
+### `homeUrl?: string`
+Url for the Home route. **Default:** `public/apps/dashboard`

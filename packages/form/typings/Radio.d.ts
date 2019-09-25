@@ -2,7 +2,7 @@ import * as React from 'react';
 import { InputProps } from './Input';
 
 interface RadioProps extends InputProps {
-  label?: Node;
+  label?: React.ReactNode;
   value?: string | boolean | object;
 }
 
