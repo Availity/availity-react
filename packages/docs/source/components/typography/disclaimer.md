@@ -1,19 +1,8 @@
 ---
-title: Typography
-summary: Availity typography components
+title: Disclaimer
 ---
 
-[![Version](https://img.shields.io/npm/v/@availity/typography.svg?style=for-the-badge)](https://www.npmjs.com/package/@availity/typography)
-
-## Installation
-
-```bash
-npm install @availity/typography --save
-```
-
-## Disclaimer (Named Export)
-
-### Usage
+## Example
 
 ```jsx live=true
 import { Disclaimer } from '@availity/typography';
@@ -34,22 +23,3 @@ import { Disclaimer } from '@availity/typography';
 | Prop Name    | Types   | Required | Default | Description                                                          |
 | ------------ | ------- | -------- | ------- | -------------------------------------------------------------------- |
 | **`styled`** | Boolean | false    | `true`  | When true, a vertical bar is displayed to the left of the disclaimer |
-
-## Agreement (Named Export)
-
-### Usage
-
-```jsx live=true
-import { Agreement } from '@availity/typography';
-
-<Agreement>
-  <p>
-    veritatis doloremque ut hic et etvitae amet natus perferendisdolores illum
-    et rerum officia autiste deserunt quis sed corporis explicabo qui non
-    pariaturaccusantium molestias non aut ut utnumquam qui vero est nihil eum
-    ullam autemrerum repellat dicta quae dolorest occaecati sapiente a
-    cupiditatereprehenderit quibusdam nam eveniet voluptatem quis soluta
-    quamdelectus consequatur qui incidunt voluptatem consequuntur
-  </p>
-</Agreement>;
-```

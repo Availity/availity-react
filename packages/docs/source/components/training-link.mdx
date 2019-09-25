@@ -3,8 +3,6 @@ title: Training Link
 summary: Component for allowing link out to training in the Header component
 ---
 
-[![Version](https://img.shields.io/npm/v/@availity/training-link.svg?style=for-the-badge)](https://www.npmjs.com/package/@availity/training-link)
-
 Provide a link for training videos for your app
 
 ## Installation
@@ -13,10 +11,10 @@ Provide a link for training videos for your app
 npm install @availity/training-link --save
 ```
 
-## Usage
+## Example
 
 
-```jsx live=true
+```jsx live=true viewCode=true
 import TrainingLink from '@availity/training-link';
 
 <TrainingLink link="https://www.github.com/availity" name="Availity Github" />
@@ -24,7 +22,8 @@ import TrainingLink from '@availity/training-link';
 
 ## Props
 
-| Prop Name     | Types   | Required | Default  | Description                                                                            |
-| ------------- | ------- | -------- | -------- | -------------------------------------------------------------------------------------- |
-| **`link`**    | String  | true     |          | Link to training video                                                                 |
-| **`name`**    | String  | true     |          | Name of your app to make the sentence complete                                         |
+### `link: string`
+Link to training video.
+
+### `name: string`
+Name of your app to make the sentence complete.

@@ -1,13 +1,22 @@
 import * as Reactstrap from 'reactstrap';
+import AvApi from '@availity/api-axios';
+import loadable from '@loadable/component';
 import AppIcon from '@availity/app-icon';
 import Authorize from '@availity/authorize';
-import Avatar from '@availity/avatar';
 import Breadcrumbs from '@availity/breadcrumbs';
 import Date, { DateField, DateRange, DateRangeField } from '@availity/date';
-import { Form, FormGroup, Input, Field } from '@availity/form';
-import Favorites, { FavoriteHeart } from '@availity/favorites';
-import Select, { SelectField } from '@availity/select';
-import PageHeader from '@availity/page-header';
+import {
+  Form,
+  FormGroup,
+  Input,
+  Field,
+  Feedback as FormFeedback,
+  Radio,
+  Checkbox,
+  RadioGroup,
+  CheckboxGroup,
+} from '@availity/form';
+import Select, { SelectField, ResourceSelect } from '@availity/select';
 import Feedback, { FeedbackForm } from '@availity/feedback';
 import Icon from '@availity/icon';
 import AvLink from '@availity/link';
@@ -23,25 +32,31 @@ import TrainingLink from '@availity/training-link';
 import { Disclaimer, Agreement } from '@availity/typography';
 import * as yup from 'yup';
 import moment from 'moment';
-
+import '@availity/favorites/style.scss';
 
 const scopes = {
   ...Reactstrap,
   AppIcon,
   Authorize,
-  Avatar,
+  Avatar: loadable(() => import('@availity/avatar')),
   Breadcrumbs,
   Date,
   DateField,
   DateRange,
   DateRangeField,
-  Favorites,
-  FavoriteHeart,
+  Favorites: loadable.lib(() => import('@availity/favorites')),
+  FormFeedback,
   Select,
   SelectField,
-  PageHeader,
+  ResourceSelect,
+  PageHeader: loadable(() => import('@availity/page-header')),
   Feedback,
   FeedbackForm,
+  Radio,
+  RadioGroup,
+  avCustomResource: new AvApi({ name: 'my-custom-resource' }),
+  Checkbox,
+  CheckboxGroup,
   Icon,
   AvLink,
   ListGroup,
@@ -60,7 +75,7 @@ const scopes = {
   Input,
   Field,
   yup,
-  moment
+  moment,
 };
 
 export default scopes;

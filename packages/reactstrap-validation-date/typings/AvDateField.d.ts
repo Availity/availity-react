@@ -8,7 +8,7 @@ export interface AvDateFieldProps extends AvDateProps {
   labelClass?: string;
   helpMessage?: string | object;
   errorMessage?: string | object;
-  labelAttrs?: object;
+  labelAttrs?: React.HTMLAttributes<HTMLLabelElement>;
   groupAttrs?: object;
   grid?: object;
   children?: React.ReactType;

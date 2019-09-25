@@ -3,17 +3,15 @@ title: Breadcrumbs
 summary: Availity breadcrumbs
 ---
 
-[![Version](https://img.shields.io/npm/v/@availity/breadcrumbs.svg?style=for-the-badge)](https://www.npmjs.com/package/@availity/breadcrumbs)
-
 ## Installation
 
 ```bash
 npm install @availity/breadcrumbs --save
 ```
 
-## Usage
+## Example
 
-```jsx live=true
+```jsx live=true viewCode=true
 import Breadcrumbs from '@availity/breadcrumbs';
 import { BreadcrumbItem } from 'reactstrap';
 
@@ -40,18 +38,23 @@ import { BreadcrumbItem } from 'reactstrap';
       <BreadcrumbItem>Custom Bread Crumb</BreadcrumbItem>
     </Breadcrumbs>
   </div>
-</div>
+</div>;
 ```
-
-### Breadcrumbs (Default export)
-
-Breadcrumbs showing the ancestor pages and the current active page
 
 ## Props
 
-| Prop Name        | Types           | Required | Default               | Description                                                                                 |
-| ---------------- | --------------- | -------- | --------------------- | ------------------------------------------------------------------------------------------- |
-| **`active`**     | String          | true     |                       | The name of the active page (the page the user is currently on).                            |
-| **`crumbs`**     | Array<`Object`> | false    |                       | The ancestor pages. Objects in array contain `name` (String) and `url` (String) properties. |
-| **`emptyState`** | String          | false    | `&hellip;` (&hellip;) | The value to display when the active page or an ancestor does not have a value.             |
-| **`children`**   | Node            | false    |                       | The children. Must be reactstrap BreadcrumbItem components                                  |
+### `active?: string`
+
+The name of the active page (the page the user is currently on).
+
+### `crumbs?: Array<object>`
+
+The ancestor pages. Objects in array contain `name` (String) and `url` (String) properties.
+
+### `emptyState?: string`
+
+The value to display when the active page or an ancestor does not have a value. **Default:** `"&hellip;"`
+
+### `children?: BreadcrumbItem | Array<BreadcrumbItem>`
+
+The children must be a reactstrap `BreadcrumbItem` components.

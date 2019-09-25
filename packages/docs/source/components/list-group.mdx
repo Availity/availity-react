@@ -1,11 +1,7 @@
 ---
 title: List Group
-summary: List Group with some Availity flair
+summary: Availity's ListGroup, which can feature Cards and Selectable items
 ---
-
-[![Version](https://img.shields.io/npm/v/@availity/list-group.svg?style=for-the-badge)](https://www.npmjs.com/package/@availity/list-group)
-
-Availity's ListGroup, which can feature Cards and Selectable items
 
 ## Installation
 
@@ -13,25 +9,28 @@ Availity's ListGroup, which can feature Cards and Selectable items
 npm install @availity/list-group --save
 ```
 
-## Usage
+## Example
 
-```jsx live=true
+```jsx live=true viewCode=true
 import ListGroup from '@availity/list-group';
 import ListGroupItem from '@availity/list-group-item';
 
-<div className="w-100 d-flex flex-row justify-content-around align-items-center">
+<div className="w-100 d-flex flex-row justify-content-center">
   <ListGroup selectable cards>
-    <ListGroupItem>Item</ListGroupItem>
-    <ListGroupItem>Item</ListGroupItem>
-    <ListGroupItem>Item</ListGroupItem>
+    <ListGroupItem>Item 1</ListGroupItem>
+    <ListGroupItem>Item 2</ListGroupItem>
+    <ListGroupItem>Item 3</ListGroupItem>
   </ListGroup>
 </div>
 ```
 
 ## Props
 
-| Prop Name        | Types           | Required | Default  | Description                                                                            |
-| -------------    | -------         | -------- | -------- | -------------------------------------------------------------------------------------- |
-| **`cards`**      | Boolean         | false    |          | Triggers the items (children) to appear as cards                                       |
-| **`selectable`** | Boolean         | false    |          | Triggers the items (children) to appear selectable when hovered over                   |
-| **`tag`**        | Function,String | false    | `<ul>`   | The tag to use in the list group                                                       |
+### `cards?: boolean`
+Triggers the items (children) to appear as cards.
+
+### `selectable?: boolean`
+Triggers the items (children) to appear as selectable when hovered over.
+
+### `tag?: React.ComponentType | string`
+The tag to use in the list group. **Default:** `<ul>`

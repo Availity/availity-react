@@ -36,7 +36,7 @@ const AvDateRange = ({
 
   const startId = `${(id || name).replace(/[^a-zA-Z0-9]/gi, '')}-start`;
 
-  const endId = `${(attributes.id || name).replace(/[^a-zA-Z0-9]/gi, '')}-end`;
+  const endId = `${(id || name).replace(/[^a-zA-Z0-9]/gi, '')}-end`;
 
   const startValue = get(value, startKey);
   const endValue = get(value, endKey);

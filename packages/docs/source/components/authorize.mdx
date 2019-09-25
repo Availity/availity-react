@@ -11,7 +11,7 @@ summary: Check user permissions to see if the current user is authorized to see 
 npm install @availity/authorize @availity/api-axios @availity/api-core axios --save
 ```
 
-## Usage
+## Example
 
 ```jsx
 import React from 'react';
@@ -19,62 +19,67 @@ import Authorize from '@availity/authorize';
 
 <Authorize permissions="1234">
   {/* stuff to render if the user is authorized with permission indicated above */}
-</Authorize>
+</Authorize>;
 ```
 
-### Authorize (Default export)
-Component which validates the user's permissions to determine if they should be able to see the children content.
+## Props
 
-#### Props
+### `permissions: string | number | Array<string | number`>`
 
-| Prop Name            | Types                                  | Required | Default  | Description                                                                                                                                                                                                                                                                          |
-| -------------        | -------                                | -------- | -------- | --------------------------------------------------------------------------------------                                                                                                                                                                                               |
-| **`permissions`**    | String,Number,Array<`String`,`Number`> | true     |          | `permissions` can either be a string, eg: `"1234"`, a number, eg: `1234`, or an array, which can contain permission ID strings as well as other arrays which contain permission ID strings/numbers, eg: `['1234', '2345', ['3456', '4567'], ['5678', '6789']]`. The items in a nested array indicate permission IDs that must *all* be granted to the user to be considered authorized - they act as "AND". The items in the top of the array act as "OR" - if *any* are granted, the user is considered authorized. The example `['1234', '2345', ['3456', '4567'], ['5678', '6789']]` is similar to `'1234' OR '2345' OR ('3456' && '4567') OR ('5678' && '6789')`.
-| **`loader`**         | Boolean,Node                           | false    | `true`   | When `true`, `BlockUi` is used when loading the permissions. When a `node`, that node is rendered instead of `BlockUi` when loading the permissions. When `false`, nothing is rendered when loading the permissions.
-| **`organizationId`** | String                                 | false    |          | When present, the permission is validated to ensure it is assigned to the organization.                                                                                                                                                                                              |
-| **`customerId`**     | String                                 | false    |          | When present, the permission is validated to ensure it is assigned to the customer. Note: Cannot be used in combination with the `organizationId` prop                                                                                                                               |
-| **`region`**         | String,Boolean                         | false    | `true`   | When a string, the permission is validated to ensure it is assigned in the provided region. When true, the permission is validated to ensure it is assigned in the current region.                                                                                                   |
-| **`unauthorized`**   | Node                                   | false    | `null`   | The content that renders when the user *does not* have the permissions required.                                                                                                                                                                                                     |
-| **`children`**       | Node                                   | true     | `null`   | The content that renders when the user *does* have the permissions required.                                                                                                                                                                                                         |
-| **`negate`**         | Boolean                                | false    | `false`  | Negate the authorization. If the user *does* have the permissions specified, they are considered "unauthorized" (shown the `unauthorized` prop content). If the user *does not* have the permissions specified, they are considered "authorized" (shown the `children` prop content) |
+Can either be a string, eg: `"1234"`, a number, eg: `1234`, or an array, which can contain permission ID strings as well as other arrays which contain permission ID strings/numbers, eg: `['1234', '2345', ['3456', '4567'], ['5678', '6789']]`. The items in a nested array indicate permission IDs that must _all_ be granted to the user to be considered authorized - they act as "AND". The items in the top of the array act as "OR" - if _any_ are granted, the user is considered authorized. The example `['1234', '2345', ['3456', '4567'], ['5678', '6789']]` is similar to `'1234' OR '2345' OR ('3456' && '4567') OR ('5678' && '6789')`.
 
-#### Usage
+### `loader?: boolean | ReactNode`
 
-```jsx
-import React from 'react';
-import Authorize from '@availity/authorize';
-// ... 
-<Authorize permissions={['1234', '2345', ['3456', '4567'], ['5678', '6789']]} organizationId="1495">
-  {/* ... */}
-</Authorize>
-// ...
-```
+When `true`, `BlockUi` is used when loading the permissions. When a `node`, that node is rendered instead of `BlockUi` when loading the permissions. When `false`, nothing is rendered when loading the permissions. **Default:** `true`.
 
-### useAuthorize
+### `organizationId?: string`
+
+When present, the permission is validated to ensure it is assigned to the organization.
+
+### `customerId?: string`
+
+When present, the permission is validated to ensure it is assigned to the customer. Note: Cannot be used in combination with the `organizationId` prop.
+
+### `region?: string | boolean`
+
+When a string, the permission is validated to ensure it is assigned in the provided region. When true, the permission is validated to ensure it is assigned in the current region. **Default:** `true`.
+
+### `unauthorized?: ReactNode`
+The content that renders when the user _does not_ have the permissions required.
+
+### `children: ReactNode`
+The content that renders when the user _does_ have the permissions required.
+
+### `negate?: boolean`
+Negate the authorization. If the user _does_ have the permissions specified, they are considered "unauthorized" (shown the `unauthorized` prop content). If the user _does not_ have the permissions specified, they are considered "authorized" (shown the `children` prop content)
+
+
+## useAuthorize
+
 Hook which validates the user's permissions and returns whether the user is authorized.
 
-#### Arguments
+### Arguments
 
 - **`permissions`**: String,Number,Array<`String`,`Number`>. Required.
   - **string/number**: The permission ID, eg: `'1234'` or `1234`
-  - **array**: The array can contain permission ID strings as well as other arrays which contain permission ID strings/numbers, eg: `['1234', '2345', ['3456', '4567'], ['5678', '6789']]`. The items in a nested array indicate permission IDs that must *all* be granted to the user to be considered authorized - they act as "AND". The items in the top of the array act as "OR" - if *any* are granted to the user, the user is considered authorized. The example `['1234', '2345', ['3456', '4567'], ['5678', '6789']]` is similar to `'1234' || '2345' || ('3456' && '4567') || ('5678' && '6789')`.
+  - **array**: The array can contain permission ID strings as well as other arrays which contain permission ID strings/numbers, eg: `['1234', '2345', ['3456', '4567'], ['5678', '6789']]`. The items in a nested array indicate permission IDs that must _all_ be granted to the user to be considered authorized - they act as "AND". The items in the top of the array act as "OR" - if _any_ are granted to the user, the user is considered authorized. The example `['1234', '2345', ['3456', '4567'], ['5678', '6789']]` is similar to `'1234' || '2345' || ('3456' && '4567') || ('5678' && '6789')`.
 - **`options`** Object. Optional. Additional options
   - **`organizationId`**: String. Optional. When present, the permission is validated to ensure it is assigned to the organization.
-  - **`customerId`**:  String. Optional. When present, the permission is validated to ensure it is assigned to the customer. Note: Cannot be used in combination with the `organizationId` prop
-  - **`region`**:  String or Boolean. Optional. Default: `true`. When a string, the permission is validated to ensure it is assigned in the provided region. When true, the permission is validated to ensure it is assigned in the current region.
+  - **`customerId`**: String. Optional. When present, the permission is validated to ensure it is assigned to the customer. Note: Cannot be used in combination with the `organizationId` prop
+  - **`region`**: String or Boolean. Optional. Default: `true`. When a string, the permission is validated to ensure it is assigned in the provided region. When true, the permission is validated to ensure it is assigned in the current region.
 
-#### Usage
+### Usage
 
 ```jsx
 import React from 'react';
 import { useAuthorize } from '@availity/authorize';
-// ... 
+// ...
 export default () => {
-  const [authorized,loading] = useAuthorized(["1234","5678"], {
-    region: 'FL'
-  })
+  const [authorized, loading] = useAuthorized(['1234', '5678'], {
+    region: 'FL',
+  });
 
-  return authorized && <SomeAuthorizedComponent />
-}
+  return authorized && <SomeAuthorizedComponent />;
+};
 // ...
 ```

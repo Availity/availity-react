@@ -13,37 +13,47 @@ Note: Only works with OpenShift deployed applications using the standard pipelin
 npm install @availity/feature axios --save
 ```
 
-## Usage
+## Example
 
 ```jsx
 import React from 'react';
 import Feature from '@availity/feature';
 
 <Feature
-    features={[
-        'AV-1234',
-        'AV-2345',
-        ['AV-3456', 'AV-4567'],
-        ['AV-5678', 'AV-6789'],
-    ]}
+  features={[
+    'AV-1234',
+    'AV-2345',
+    ['AV-3456', 'AV-4567'],
+    ['AV-5678', 'AV-6789'],
+  ]}
 >
-  { /* stuff to render if the feature indicated above is enabled in the environment */ }
-</Feature>
+  {/* stuff to render if the feature indicated above is enabled in the environment */}
+</Feature>;
 ```
-
-## Feature (Default export)
 
 Component which validates the environment's features to determine if children content should be shown.
 
 ## Props
 
-| Prop Name          | Types                                  | Required | Default  | Description                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                |
-| -------------      | -------                                | -------- | -------- | --------------------------------------------------------------------------------------                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                     |
-| **`features`**     | String,Array<`String`,`Array<String>`> | true     |          | `features` can either be a string, eg: `"AV-1234"` or an array containing feature ID strings as well as other arrays which contain feature ID strings, eg: `['AV-1234', 'AV-2345', ['AV-3456', 'AV-4567'], ['AV-5678', 'AV-6789']]`. The items in a nested array indicate feature IDs that must *all* be enabled for a feature to be considered enabled (see `children`) - they act as "AND". The items in the top of the array act as "OR" - if *any* are enabled, the feature is considered enabled. The example `['AV-1234', 'AV-2345', ['AV-3456', 'AV-4567'], ['AV-5678', 'AV-6789']]` is similar to `'AV-1234' OR 'AV-2345' OR ('AV-3456' && 'AV-4567') OR ('AV-5678' && 'AV-6789')` |
-| **`loader`**       | Boolean,Node                           | false    | `true`   | When `true`, `BlockUi` is used when loading the features. When a `node`, that node is rendered instead of `BlockUi` when loading the features. When `false`, nothing is rendered when loading the features.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                |
-| **`whenDisabled`** | Node                                   | false    | `null`   | The content that renders when the features are disabled.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                   |
-| **`children`**     | Node                                   | false    | `null`   | The content that renders when the features are enabled.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    |
-| **`negate`**       | Boolean                                | false    | `false`  | Negate the feature. If the feature specified is enabled, it acts as if it were disabled (by rendering the `whenDisabled` prop content). If the feature specified is disabled, it acts as if it were enabled (by rendering the `children` prop content).                                                                                                                                                                                                                                                                                                                                                                                                                                    |
+### `features: string | Array<string | Array<string>>`
+
+Can either be a string, eg: `"AV-1234"` or an array containing feature ID strings as well as other arrays which contain feature ID strings, eg: `['AV-1234', 'AV-2345', ['AV-3456', 'AV-4567'], ['AV-5678', 'AV-6789']]`. The items in a nested array indicate feature IDs that must _all_ be enabled for a feature to be considered enabled (see `children`) - they act as "AND". The items in the top of the array act as "OR" - if _any_ are enabled, the feature is considered enabled. The example `['AV-1234', 'AV-2345', ['AV-3456', 'AV-4567'], ['AV-5678', 'AV-6789']]` is similar to `'AV-1234' OR 'AV-2345' OR ('AV-3456' && 'AV-4567') OR ('AV-5678' && 'AV-6789')`.
+
+### `loader?: boolean | ReactNode`
+
+When `true`, `BlockUi` is used when loading the features. When a `node`, that node is rendered instead of `BlockUi` when loading the features. When `false`, nothing is rendered when loading the features. **Default:** `true`.
+
+### `whenDisabled?: ReactNode`
+
+The content that renders when the features are disabled.
+
+### `children?: ReactNode`
+
+The content that renders when the features are enabled.
+
+### `negate?: boolean`
+
+Negate the feature. If the feature specified is enabled, it acts as if it were disabled (by rendering the `whenDisabled` prop content). If the feature specified is disabled, it acts as if it were enabled (by rendering the `children` prop content).
 
 ## `isFeatureEnabled`
 
@@ -51,9 +61,9 @@ Function that validates the environment's features to determine if children cont
 
 ### Arguments
 
--   **`features`**: String, or an array containing strings. Required.
-    -   **string**: The feature ID, eg: `'AV-1234'`
-    -   **array**: The array can contain feature ID strings as well as other arrays which contain feature ID strings, eg: `['AV-1234', 'AV-2345', ['AV-3456', 'AV-4567'], ['AV-5678', 'AV-6789']]`. The items in a nested array indicate feature IDs that must *all* be enabled for a feature to be considered enabled (see `children`) - they act as "AND". The items in the top of the array act as "OR" - if *any* are enabled, the feature is considered enabled. The example `['AV-1234', 'AV-2345', ['AV-3456', 'AV-4567'], ['AV-5678', 'AV-6789']]` is similar to `'AV-1234' || 'AV-2345' || ('AV-3456' && 'AV-4567') || ('AV-5678' && 'AV-6789')`.
+- **`features`**: String, or an array containing strings. Required.
+  - **string**: The feature ID, eg: `'AV-1234'`
+  - **array**: The array can contain feature ID strings as well as other arrays which contain feature ID strings, eg: `['AV-1234', 'AV-2345', ['AV-3456', 'AV-4567'], ['AV-5678', 'AV-6789']]`. The items in a nested array indicate feature IDs that must _all_ be enabled for a feature to be considered enabled (see `children`) - they act as "AND". The items in the top of the array act as "OR" - if _any_ are enabled, the feature is considered enabled. The example `['AV-1234', 'AV-2345', ['AV-3456', 'AV-4567'], ['AV-5678', 'AV-6789']]` is similar to `'AV-1234' || 'AV-2345' || ('AV-3456' && 'AV-4567') || ('AV-5678' && 'AV-6789')`.
 
 ### Returns
 
@@ -65,9 +75,9 @@ A promise that can be awaited and resolves to `true` or `false` indicating wheth
 import { isFeatureEnabled } from '@availity/feature';
 
 async () => {
-    const enabled = await isFeatureEnabled('AV-1234');
-    if (!enabled) return;
-    // do stuff, this feature is enabled!
+  const enabled = await isFeatureEnabled('AV-1234');
+  if (!enabled) return;
+  // do stuff, this feature is enabled!
 };
 ```
 
@@ -123,7 +133,7 @@ Possible `disabledEnvironments` values are `"DEV"`, `"STAGE"`, and `"PRD"`. Thes
   {
     "name": "CB-675",
     "description": "https://jira.availity.com:8443/browse/PREC-4597",
-    "disabledEnvironments": ["STAGE","PRD"]
+    "disabledEnvironments": ["STAGE", "PRD"]
   }
 ]
 ```

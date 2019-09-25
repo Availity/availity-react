@@ -3,17 +3,13 @@ title: Progress
 summary: Availity Progress Bar
 ---
 
-[![Version](https://img.shields.io/npm/v/@availity/progress.svg?style=for-the-badge)](https://www.npmjs.com/package/@availity/progress)
-
-Availity Progress Bar
-
 ## Installation
 
 ```bash
 npm install @availity/progress --save
 ```
 
-## Usage
+## Example
 
 ```jsx live=true
 import Progress from '@availity/progress';
@@ -26,13 +22,23 @@ import Progress from '@availity/progress';
 
 ## Props
 
-| Prop Name       | Types       | Required | Default     | Description                                                                                                      |
-| --------------- | ----------- | -------- | ----------- | ---------------------------------------------------------------------------------------------------------------- |
-| **`tag`**       | String,Node | false    | `<div>`     | The tag to render the progress bar as.                                                                           |
-| **`animated`**  | Boolean     | false    |             | Triggers the "animated" style in the progress bar.                                                               |
-| **`striped`**   | Boolean     | false    |             | Triggers the "striped" style in the progress bar.                                                                |
-| **`complete`**  | Boolean     | false    |             | Triggers the "complete" style in the progress bar. When true, a checkmark appears at the end of the progress bar |
-| **`value`**     | Number      | false    | `0`         | The amount of the progress bar that should be filled (relative to the `max`)                                     |
-| **`max`**       | Number      | false    | `100`       | The maximum amount of the progress bar                                                                           |
-| **`className`** | String      | false    |             | Additional styles to be passed onto the progress bar                                                             |
-| **`color`**     | String      | false    | `"success"` | The color of the progress bar                                                                                    |
+### `tag?: React.ComponentType | string`
+The tag to render the progress bar as. **Default:** `<div>`.
+
+### `animated?: boolean`
+Triggers the "animated" style in the progress bar.
+
+### `striped?: boolean`
+Triggers the "striped" style in the progress bar.
+
+### `complete?: boolean`
+Triggers the "complete" style in the progress bar. When true, a checkmark appears at the end of the progress bar
+
+### `value?: number`
+The amount of the progress bar that should be filled (relative to the `max`) **Default:** `0`.
+
+### `max? number`
+The maximum amount of the progress bar. **Default:** `100`.
+
+### `color?: string`
+The color of the progress bar. **Default:** `success`.
