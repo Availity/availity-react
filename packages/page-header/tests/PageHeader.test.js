@@ -2,6 +2,7 @@ import React from 'react';
 import { render, cleanup, waitForElement } from '@testing-library/react';
 import TrainingLink from '@availity/training-link';
 import { avSlotMachineApi } from '@availity/api-axios';
+import { NavLink } from 'reactstrap';
 import Spaces from '@availity/spaces';
 import PageHeader from '..';
 
@@ -197,5 +198,24 @@ describe('PageHeader', () => {
 
     getByText('Hello World');
     getByText('Give Feedback');
+  });
+
+  test('should render custom link tag', () => {
+    const { getByText } = render(
+      <PageHeader
+        appName="Payer Space"
+        renderRightContent={({ feedback, ...props }) => (
+          <div {...props}>
+            Hello World
+            {feedback}
+          </div>
+        )}
+        linkTag={NavLink}
+      />
+    );
+
+    const homeBtn = getByText('Home');
+
+    expect(homeBtn.className).toBe('nav-link');
   });
 });

@@ -26,6 +26,7 @@ const PageHeader = ({
   iconSrc,
   iconAlt,
   homeUrl,
+  linkTag,
   className,
   ...props
 }) => {
@@ -89,6 +90,7 @@ const PageHeader = ({
             crumbs={crumbs}
             active={appName || children}
             homeUrl={homeUrl}
+            linkTag={linkTag}
           />
         )}
         {component}
@@ -155,6 +157,7 @@ PageHeader.propTypes = {
   feedbackProps: PropTypes.shape({ ...Feedback.propTypes }),
   titleProps: PropTypes.object,
   children: PropTypes.node,
+  linkTag: PropTypes.oneOfType([PropTypes.func, PropTypes.string]),
   crumbs: PropTypes.oneOfType([
     PropTypes.arrayOf(
       PropTypes.shape({
