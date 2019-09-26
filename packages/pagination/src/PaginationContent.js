@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { Util } from 'reactstrap';
+import { Util, Button } from 'reactstrap';
 import InfiniteScroll from 'react-infinite-scroll-component';
 import BlockUI from 'react-block-ui';
 import 'react-block-ui/style.css';
@@ -51,6 +51,9 @@ const PaginationContent = ({
               <Component {...rest} key={value[itemKey] || key} {...value} />
             );
           })}
+        <Button className="sr-only" onClick={() => setPage(currentPage + 1)}>
+          Load More
+        </Button>
       </InfiniteScroll>
     );
   }
