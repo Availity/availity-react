@@ -1,6 +1,6 @@
 import React from 'react';
 import { render, fireEvent, wait, cleanup } from '@testing-library/react';
-import { Button } from 'reactstrap';
+import { Button, Label } from 'reactstrap';
 import { Form } from '@availity/form';
 import * as yup from 'yup';
 import { DateField } from '..';
@@ -10,7 +10,7 @@ afterEach(() => {
 });
 
 describe('Date', () => {
-  test('renders with label', async () => {
+  test('renders with a string label', async () => {
     const onSubmit = jest.fn();
 
     const { getByText } = render(
@@ -32,6 +32,31 @@ describe('Date', () => {
     fireEvent.click(getByText('Submit'));
 
     getByText('My Date Field');
+  });
+
+  test('renders with a component label', async () => {
+    const onSubmit = jest.fn();
+
+    const { getByText } = render(
+      <Form
+        initialValues={{
+          singleDate: '',
+        }}
+        onSubmit={onSubmit}
+      >
+        <DateField
+          name="singleDate"
+          data-testid="single-select"
+          label={<Label>My Date Field</Label>}
+        />
+        <Button type="submit">Submit</Button>
+      </Form>
+    );
+
+    fireEvent.click(getByText('Submit'));
+
+    const label = getByText('My Date Field');
+    expect(label.hasAttribute('for')).toBeFalsy();
   });
 
   test('renders error text', async () => {
