@@ -6,7 +6,11 @@ import Date from './Date';
 
 const DateField = ({ name, label, ...props }) => (
   <FormGroup for={name}>
-    {label && <Label for={name}>{label}</Label>}
+    {label && typeof label === 'string' ? (
+      <Label for={name}>{label}</Label>
+    ) : (
+      label
+    )}
     <Date name={name} {...props} />
     <Feedback name={name} />
   </FormGroup>
@@ -14,7 +18,7 @@ const DateField = ({ name, label, ...props }) => (
 
 DateField.propTypes = {
   name: PropTypes.string,
-  label: PropTypes.string,
+  label: PropTypes.node,
 };
 
 export default DateField;

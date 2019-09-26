@@ -6,7 +6,11 @@ import DateRange from './DateRange';
 
 const DateRangeField = ({ name, label, ...props }) => (
   <FormGroup for={name}>
-    {label && <Label for={name}>{label}</Label>}
+    {label && typeof label === 'string' ? (
+      <Label for={name}>{label}</Label>
+    ) : (
+      label
+    )}
     <DateRange name={name} {...props} />
     <Feedback name={name} />
   </FormGroup>
@@ -14,7 +18,7 @@ const DateRangeField = ({ name, label, ...props }) => (
 
 DateRangeField.propTypes = {
   name: PropTypes.string,
-  label: PropTypes.string,
+  label: PropTypes.node,
 };
 
 export default DateRangeField;
