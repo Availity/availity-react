@@ -28,11 +28,6 @@ about: Open a new issue here if something isn't working as expected.
 ### Your environment
 
 <!-- PLEASE FILL THIS OUT -->
-
-| Software         | Version(s) |
-| ---------------- | ---------- |
-| <Component-Name> |            |
-| React            |
-| Browser          |
-| npm/Yarn         |
-| Operating System |
+```bash
+npx envinfo --npmPackages '@availity/*' --binaries
+```

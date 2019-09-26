@@ -22,7 +22,11 @@ module.exports = {
         description: 'Documentation for React Components',
         githubRepo: 'availity/availity-react',
         sidebarCategories: {
-          null: ['index', 'contributing'],
+          null: [
+            'index',
+            '[Storybook](https://availity.github.io/availity-react/storybook)',
+            'contributing',
+          ],
           'form/index': [
             'form/migrating',
             {
