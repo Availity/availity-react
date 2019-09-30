@@ -51,6 +51,7 @@ describe('Date', () => {
     expect(label.hasAttribute('for')).toBeFalsy();
   });
 
+<<<<<<< HEAD
   test('renders label props passed with labelAttrs', async () => {
     const onSubmit = jest.fn();
 
@@ -72,6 +73,8 @@ describe('Date', () => {
     expect(label.tagName).toEqual('H3');
   });
 
+=======
+>>>>>>> 1a6e9bd028452b7c66e73717e39ebafcec23d172
   test('renders error text', async () => {
     const onSubmit = jest.fn();
 
