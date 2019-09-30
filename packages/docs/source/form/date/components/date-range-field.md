@@ -82,5 +82,5 @@ The name of the class for the label. Will be passed to the `className` prop of t
 ### `labelHidden?: boolean`
 Used to control if the label is displayed. When set to `true`, the `<Label>` in the field won't be rendered.
 
-### `labelAttrs?: object`
-Pass any additional props to the `<Label>` in the field.
+### `labelAttrs?: React.HTMLAttributes<HTMLLabelElement>`
+Pass additonal attributes to the label
