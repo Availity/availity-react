@@ -50,7 +50,7 @@ The text that renders inside the `Label` above the input.
 The name of the class for the label. Will be passed to the `className` prop of the label in the field.
 
 ### `labelHidden?: boolean`
-Used to control if the label is displayed. When set to `true`, the `<Label>` in the field won't be rendered.
+Used to control if the label is displayed. When set to `true`, the label in the field won't be visible.
 
 ### `labelAttrs?: React.HTMLAttributes<HTMLLabelElement>`
 Pass additonal attributes to the label
