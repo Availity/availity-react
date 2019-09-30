@@ -59,6 +59,32 @@ describe('Date', () => {
     expect(label.hasAttribute('for')).toBeFalsy();
   });
 
+  test('renders label props passed with labelAttrs', async () => {
+    const onSubmit = jest.fn();
+
+    const { getByText } = render(
+      <Form
+        initialValues={{
+          singleDate: '',
+        }}
+        onSubmit={onSubmit}
+      >
+        <DateField
+          name="singleDate"
+          data-testid="single-select"
+          label="My Date Field"
+          labelAttrs={{tag: "h3"}}
+        />
+        <Button type="submit">Submit</Button>
+      </Form>
+    );
+
+    fireEvent.click(getByText('Submit'));
+
+    const label = getByText('My Date Field');
+    expect(label.tagName).toEqual('H3');
+  });
+
   test('renders error text', async () => {
     const onSubmit = jest.fn();
 
