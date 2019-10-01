@@ -24,8 +24,8 @@
 
 "@availity/gatsby-theme-core@^2.0.0":
   version "2.0.0"
-  resolved "https://artifactory.availity.com/artifactory/api/npm/npm/@availity/gatsby-theme-core/-/gatsby-theme-core-2.0.0.tgz#476059e2ad3a5a8f613e3a9bb4d63ba76489b029"
-  integrity sha1-R2BZ4q06Wo9hPjqbtNY7p2SJsCk=
+  resolved "https://registry.yarnpkg.com/@availity/gatsby-theme-core/-/gatsby-theme-core-2.0.0.tgz#476059e2ad3a5a8f613e3a9bb4d63ba76489b029"
+  integrity sha512-FjKpe9wkzJZBVleoA6I71xGWeWYJC18fkBYQmi1lSfYxXGEQg8kvNJuxCUCmCim/uxg1ggkStwbXRU4pI3BWAg==
   dependencies:
     availity-uikit "^3.2.0"
     classnames "^2.2.6"
