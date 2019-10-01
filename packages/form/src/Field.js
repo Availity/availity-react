@@ -1,6 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { Input as RsInput, Label, FormText, Col } from 'reactstrap';
+import { v4 as uuid } from 'uuid';
 import Feedback from './Feedback';
 import FormGroup from './FormGroup';
 import Input from './Input';
@@ -23,6 +24,7 @@ const Field = ({
   ...attributes
 }) => {
   let row = false;
+  let { inputId } = attributes;
   const col = {};
   const labelCol = {};
 
@@ -37,9 +39,14 @@ const Field = ({
     });
   }
 
+  if (label && !inputId) {
+    inputId = uuid();
+  }
+
   const input = (
     <Input
       name={id}
+      id={inputId}
       className={inputClass}
       size={size}
       disabled={disabled}
@@ -71,7 +78,7 @@ const Field = ({
       {check && inputRow}
       {label && (
         <Label
-          for={id}
+          for={inputId}
           className={labelClass}
           hidden={labelHidden}
           size={size}
