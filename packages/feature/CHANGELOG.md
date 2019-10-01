@@ -3,6 +3,25 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.2.1](https://github.com/Availity/availity-react/compare/@availity/feature@1.2.0...@availity/feature@1.2.1) (2019-09-25)
+
+**Note:** Version bump only for package @availity/feature
+
+
+
+
+
+# [1.2.0](https://github.com/Availity/availity-react/compare/@availity/feature@1.1.8...@availity/feature@1.2.0) (2019-09-04)
+
+
+### Features
+
+* **docs:** updated to use yarn and added readmes ([3b94748](https://github.com/Availity/availity-react/commit/3b94748))
+
+
+
+
+
 ## [1.1.8](https://github.com/Availity/availity-react/compare/@availity/feature@1.1.7...@availity/feature@1.1.8) (2019-08-13)
 
 **Note:** Version bump only for package @availity/feature

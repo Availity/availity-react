@@ -25,7 +25,7 @@ const ResourceSelect = ({
   const selectRef = useRef();
   const [previousOptions, setPreviousOptions] = useState([]);
 
-  if (_cacheUniq === undefined && watchParams && selectRef.current) {
+  if (_cacheUniq === undefined && watchParams) {
     const params = {
       customerId: rest.customerId,
       ...rest.parameters,

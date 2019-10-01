@@ -72,4 +72,53 @@ describe('RadioGroup', () => {
       );
     });
   });
+
+  test('calls on change callback', async () => {
+    const onChange = jest.fn();
+    const { getByText } = render(
+      <Form
+        initialValues={{
+          hello: '',
+        }}
+        // eslint-disable-next-line no-undef
+        validationSchema={yup.object().shape({
+          hello: yup.string().required('This field is required'),
+        })}
+      >
+        <RadioGroup name="hello" onChange={onChange} label="Radio Group">
+          <Radio label="Radio One" value="uno" />
+          <Radio label="Radio Two" value="dos" />
+          <Radio label="Radio Three" value="tres" />
+        </RadioGroup>
+        <Button type="submit">Submit</Button>
+      </Form>
+    );
+
+    await fireEvent.click(getByText('Radio One'));
+
+    await wait(() => {
+      expect(onChange).toHaveBeenCalledWith('uno');
+    });
+  });
+
+  test('can render radio inline', async () => {
+    const { getByTestId } = render(
+      <Form
+        initialValues={{
+          hello: '',
+        }}
+        validationSchema={yup.object().shape({
+          hello: yup.string().required('This field is required'),
+        })}
+      >
+        <RadioGroup name="hello" label="Radio Group" inline>
+          <Radio label="Radio One" value="uno" />
+        </RadioGroup>
+      </Form>
+    );
+
+    const radioGroup = getByTestId('radio-items-hello');
+    const formGroup = radioGroup.children[0];
+    expect(formGroup.className).toContain('form-check-inline');
+  });
 });

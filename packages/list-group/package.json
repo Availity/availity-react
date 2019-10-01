@@ -1,6 +1,6 @@
 {
   "name": "@availity/list-group",
-  "version": "1.1.8",
+  "version": "1.2.1",
   "author": "Evan Sharp <evan.sharp@availity.com>",
   "description": "List Group with some Availity flair",
   "main": "index.js",

@@ -3,6 +3,36 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.6.1](https://github.com/Availity/availity-react/compare/@availity/icon@0.6.0...@availity/icon@0.6.1) (2019-09-25)
+
+**Note:** Version bump only for package @availity/icon
+
+
+
+
+
+# [0.6.0](https://github.com/Availity/availity-react/compare/@availity/icon@0.5.0...@availity/icon@0.6.0) (2019-09-04)
+
+
+### Features
+
+* **docs:** updated to use yarn and added readmes ([3b94748](https://github.com/Availity/availity-react/commit/3b94748))
+
+
+
+
+
+# [0.5.0](https://github.com/Availity/availity-react/compare/@availity/icon@0.4.3...@availity/icon@0.5.0) (2019-08-23)
+
+
+### Features
+
+* **reactstrap-validation-date:** added back the ranges props ([b5b4d05](https://github.com/Availity/availity-react/commit/b5b4d05))
+
+
+
+
+
 ## [0.4.3](https://github.com/Availity/availity-react/compare/@availity/icon@0.4.2...@availity/icon@0.4.3) (2019-08-13)
 
 **Note:** Version bump only for package @availity/icon

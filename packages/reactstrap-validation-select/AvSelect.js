@@ -16,9 +16,9 @@ const {
   ClearIndicator,
 } = reactSelectComponents;
 
-const createOption = (label, labelkey = 'label') => ({
-  [labelkey]: label,
-  value: label.toLowerCase().replace(/\W/g, ''),
+const createOption = (label, labelKey = 'label', valueKey = 'value') => ({
+  [labelKey]: label,
+  [valueKey]: label.toLowerCase().replace(/\W/g, ''),
 });
 
 const components = {
@@ -82,7 +82,11 @@ class AvSelect extends AvBaseInput {
   handleCreate = value => {
     const { newOptions, value: currentValue } = this.state;
     const { isMulti } = this.props;
-    const newOpt = createOption(value, this.getLabelKey(this.props));
+    const newOpt = createOption(
+      value,
+      this.getLabelKey(this.props),
+      this.getValueKey(this.props)
+    );
     newOptions.push(newOpt);
     this.setState({
       newOptions,
@@ -209,9 +213,13 @@ class AvSelect extends AvBaseInput {
 
             let val;
             if (typeof this.props.autofill === 'object') {
-              val = get(rawValue, `${this.props.autofill[fieldName]}`);
+              val = get(
+                rawValue,
+                `${this.props.autofill[fieldName]}`,
+                input.getDefaultValue()
+              );
             } else {
-              val = rawValue[fieldName];
+              val = get(rawValue, fieldName, input.getDefaultValue());
             }
 
             input.onChangeHandler(val);

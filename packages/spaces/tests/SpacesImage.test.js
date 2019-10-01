@@ -5,7 +5,6 @@ import Spaces, { SpacesLogo, SpacesTile, SpacesBillboard } from '..';
 
 jest.mock('@availity/api-axios');
 
-
 describe('SpacesImage', () => {
   afterEach(() => {
     jest.clearAllMocks();
@@ -14,69 +13,69 @@ describe('SpacesImage', () => {
 
   it('renders the spaces images in the spaces provider', async () => {
     avSlotMachineApi.create
-    .mockResolvedValueOnce({
-      data: {
+      .mockResolvedValueOnce({
         data: {
-          spaces: {
-            totalCount: 2,
-            page: 1,
-            perPage: 50,
-            spaces: [
-              {
-                id: '1',
-                images: [
-                  {
-                    name: 'logo',
-                    value: '/static/spaces/1/banner.png',
-                  },
-                ],
-              },
-              {
-                id: '2',
-                payerIDs: ['payer1'],
-                images: [
-                  {
-                    name: 'tile',
-                    value: '/static/spaces/2/tile.png',
-                  },
-                  {
-                    name: 'billboard',
-                    value: '/static/spaces/2/billboard.png',
-                  },
-                ],
-              },
-            ],
+          data: {
+            spaces: {
+              totalCount: 2,
+              page: 1,
+              perPage: 50,
+              spaces: [
+                {
+                  id: '1',
+                  images: [
+                    {
+                      name: 'logo',
+                      value: '/static/spaces/1/banner.png',
+                    },
+                  ],
+                },
+                {
+                  id: '2',
+                  payerIDs: ['payer1'],
+                  images: [
+                    {
+                      name: 'tile',
+                      value: '/static/spaces/2/tile.png',
+                    },
+                    {
+                      name: 'billboard',
+                      value: '/static/spaces/2/billboard.png',
+                    },
+                  ],
+                },
+              ],
+            },
           },
         },
-      },
-    })
-    .mockResolvedValueOnce({
-      data: {
+      })
+      .mockResolvedValueOnce({
         data: {
-          spaces: {
-            totalCount: 1,
-            page: 1,
-            perPage: 50,
-            spaces: [
-              {
-                id: '2',
-                payerIDs: ['payer1'],
-                images: [
-                  {
-                    name: 'tile',
-                    value: '/static/spaces/2/tile.png',
-                  },
-                  {
-                    name: 'billboard',
-                    value: '/static/spaces/2/billboard.png',
-                  },
-                ],
-              },
-            ],
+          data: {
+            spaces: {
+              totalCount: 1,
+              page: 1,
+              perPage: 50,
+              spaces: [
+                {
+                  id: '2',
+                  payerIDs: ['payer1'],
+                  images: [
+                    {
+                      name: 'tile',
+                      value: '/static/spaces/2/tile.png',
+                    },
+                    {
+                      name: 'billboard',
+                      value: '/static/spaces/2/billboard.png',
+                    },
+                  ],
+                },
+              ],
+            },
           },
         },
-      },
-    });
+      });
     const MyComponent = () => (
       <Spaces
         spaceIds={['1', '1', '2', '2']}
@@ -114,8 +113,7 @@ describe('SpacesImage', () => {
   });
 
   it('renders spaces image from single space', async () => {
-    avSlotMachineApi.create
-    .mockResolvedValueOnce({
+    avSlotMachineApi.create.mockResolvedValueOnce({
       data: {
         data: {
           spaces: {
@@ -136,7 +134,7 @@ describe('SpacesImage', () => {
           },
         },
       },
-    })
+    });
     const { getByTestId } = render(
       <Spaces spaceIds={['1']} clientId="my-client-id">
         <SpacesLogo />
@@ -144,5 +142,39 @@ describe('SpacesImage', () => {
     );
 
     await waitForElement(() => getByTestId('space-logo-1'));
+  });
+
+  it('renders fallback image', async () => {
+    avSlotMachineApi.create.mockResolvedValueOnce({
+      data: {
+        data: {
+          spaces: {
+            totalCount: 1,
+            page: 1,
+            perPage: 50,
+            spaces: [
+              {
+                id: '1',
+                images: [
+                  {
+                    name: 'logo',
+                    value: '/static/spaces/1/banner.png',
+                  },
+                ],
+              },
+            ],
+          },
+        },
+      },
+    });
+
+    const { getByTestId } = render(
+      <Spaces spaceIds={['1']} clientId="my-client-id">
+        <SpacesLogo spaceId="3" fallback="fallback-url" />
+      </Spaces>
+    );
+
+    // Would be empty if no fallback
+    await waitForElement(() => getByTestId('space-logo-3'));
   });
 });

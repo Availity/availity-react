@@ -13,31 +13,27 @@ export const getAllSpaces = async (
     throw new Error('clientId is required');
   }
 
-  try {
-    const {
-      data: {
-        data: { spaces },
-      },
-    } = await avSlotMachineApi.create(
-      {
-        query,
-        variables,
-      },
-      { headers: { 'X-Client-ID': clientId } }
-    );
+  const {
+    data: {
+      data: { spaces },
+    },
+  } = await avSlotMachineApi.create(
+    {
+      query,
+      variables,
+    },
+    { headers: { 'X-Client-ID': clientId } }
+  );
 
-    const { totalCount, page, perPage } = spaces;
-    const unionedSpaces = _spaces.concat(spaces.spaces);
+  const { totalCount, page, perPage } = spaces;
+  const unionedSpaces = _spaces.concat(spaces.spaces);
 
-    if (totalCount > page * perPage) {
-      const vars = { ...variables, page: page + 1 };
-      return getAllSpaces(query, clientId, vars, unionedSpaces);
-    }
-
-    return unionedSpaces;
-  } catch (error) {
-    throw error;
+  if (totalCount > page * perPage) {
+    const vars = { ...variables, page: page + 1 };
+    return getAllSpaces(query, clientId, vars, unionedSpaces);
   }
+
+  return unionedSpaces;
 };
 
 export const sanitizeSpaces = spaces => {
@@ -71,69 +67,78 @@ const Spaces = ({
 }) => {
   const [spaces, setSpaces] = useState([]);
   const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(null);
 
   // NOTE: we do not want to query slotmachine by payerIDs and spaceIDs at the same time
   // because slotmachine does an AND on those conditions. We want OR
   useEffectAsync(async () => {
-    setLoading(true);
-    // Filter out dupes and ids that we already have the space for
-    const filteredSpaceIDs = spaceIds
-      .filter((id, i) => spaceIds.indexOf(id) === i)
-      .filter(id => !spaces.some(spc => spc && spc.id === id))
-      .filter(id => !spacesFromProps.some(spc => spc && spc.id === id));
+    try {
+      setLoading(true);
+      // Filter out dupes and ids that we already have the space for
+      const filteredSpaceIDs = spaceIds
+        .filter((id, i) => spaceIds.indexOf(id) === i)
+        .filter(id => !spaces.some(spc => spc && spc.id === id))
+        .filter(id => !spacesFromProps.some(spc => spc && spc.id === id));
 
-    const filteredPayerIDs = payerIds
-      .filter((id, i) => payerIds.indexOf(id) === i)
-      .filter(
-        id =>
-          !spaces.some(
-            spc => spc && spc.payerIDs && spc.payerIDs.some(pId => pId === id)
-          )
-      )
-      .filter(
-        id =>
-          !spacesFromProps.some(
-            spc => spc && spc.payerIDs && spc.payerIDs.some(pId => pId === id)
-          )
-      );
+      const filteredPayerIDs = payerIds
+        .filter((id, i) => payerIds.indexOf(id) === i)
+        .filter(
+          id =>
+            !spaces.some(
+              spc => spc && spc.payerIDs && spc.payerIDs.some(pId => pId === id)
+            )
+        )
+        .filter(
+          id =>
+            !spacesFromProps.some(
+              spc => spc && spc.payerIDs && spc.payerIDs.some(pId => pId === id)
+            )
+        );
 
-    let _spaces = [];
-    if (filteredSpaceIDs.length > 0) {
-      const vars = { ...variables, ids: filteredSpaceIDs };
-      const spacesBySpaceIDs = await getAllSpaces(
-        query,
-        clientId,
-        vars,
-        spaces
-      );
-      _spaces = _spaces.concat(spacesBySpaceIDs);
+      let _spaces = [];
+      if (filteredSpaceIDs.length > 0) {
+        const vars = { ...variables, ids: filteredSpaceIDs };
+        const spacesBySpaceIDs = await getAllSpaces(
+          query,
+          clientId,
+          vars,
+          spaces
+        );
+        _spaces = _spaces.concat(spacesBySpaceIDs);
+      }
+
+      if (filteredPayerIDs.length > 0) {
+        const vars = { ...variables, payerIDs: filteredPayerIDs };
+        const spacesByPayerIDs = await getAllSpaces(
+          query,
+          clientId,
+          vars,
+          spaces
+        );
+        _spaces = _spaces.concat(spacesByPayerIDs);
+      }
+
+      if (_spaces.length > 0) setSpaces(_spaces);
+      setError(null);
+    } catch (error_) {
+      setError(error_.message);
+    } finally {
+      setLoading(false);
     }
-
-    if (filteredPayerIDs.length > 0) {
-      const vars = { ...variables, payerIDs: filteredPayerIDs };
-      const spacesByPayerIDs = await getAllSpaces(
-        query,
-        clientId,
-        vars,
-        spaces
-      );
-      _spaces = _spaces.concat(spacesByPayerIDs);
-    }
-
-    if (_spaces.length > 0) setSpaces(_spaces);
-    setLoading(false);
   }, [payerIds, spaceIds]);
 
   const spacesForProvider = sanitizeSpaces(spaces.concat(spacesFromProps));
   return (
-    <SpacesContext.Provider value={{ spaces: spacesForProvider, loading }}>
+    <SpacesContext.Provider
+      value={{ spaces: spacesForProvider, loading, error }}
+    >
       {children}
     </SpacesContext.Provider>
   );
 };
 
 export const useSpace = id => {
-  const { spaces = [], loading } = useContext(SpacesContext) || {};
+  const { spaces = [], loading, error } = useContext(SpacesContext) || {};
 
   // Try to match by space id first, else match by payer id
   // eslint-disable-next-line react-hooks/exhaustive-deps
@@ -177,7 +182,7 @@ export const useSpace = id => {
     );
   });
 
-  return { space, isGhost, loading };
+  return { space, isGhost, loading, error };
 };
 
 Spaces.propTypes = {

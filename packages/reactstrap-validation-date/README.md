@@ -34,7 +34,7 @@ import '@availity/reactstrap-validation-date/styles.scss';
 
     <AvGroup>
         <Label for="justTheDateRange">My Input Label</Label>
-        <AvDateRange name="justTheDateRange" required />
+        <AvDateRange name="justTheDateRange" required ranges/>
         <AvFeedback>Some error message</AvFeedback>
     </AvGroup>
 
@@ -123,6 +123,19 @@ See availity-reactstrap-validation for additional props, such as `name`, `valida
 *   **`calendarIcon`**: Node. Optional. Default: `<Icon name="calendar" />`. You can optional change the icon the calendar renders in the case you don't use the `availity-uikit` icons.
 *  **`min`**: string. Optional. Minimum date to allow the datepicker and input to take. You can either pass the `min` here or in the `validate` object if you want a custom error message with it.
 *  **`max`**: string. Optional. Max date to allow the datepicker and input to take. You can either pass the `max` here or in the `validate` object if you want a custom error message with it.
+*  **`ranges`**: object, boolean, array. Optional. Renders list of ranges preset to the left of the calendar
+   * boolean - `true` will render the [default ranges](./src/AvDateRange.js#L19-L45)
+   * array<string> - Will pick only the selected date ranges by name. See above default ranges for list of names. ex. ["Today"]
+   * object - list or object of ranges. structure is noted below
+
+```js
+{
+    'Tomorrow': {
+        startDate: now => now.add(1,'day'),
+        endDate: now => now.add(1,'day')
+    }
+}
+```
 
 #### AvDateRange Example usage
 
@@ -198,6 +211,7 @@ import '@availity/reactstrap-validation-date/styles.scss';
         name="dateRange" //required
         start={{name: 'date.start'}}
         end={{name: 'date.end'}}
+        ranges
     />
 </AvForm>
 ```

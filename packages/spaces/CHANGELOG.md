@@ -3,6 +3,57 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [3.1.2](https://github.com/Availity/availity-react/compare/@availity/spaces@3.1.1...@availity/spaces@3.1.2) (2019-09-26)
+
+**Note:** Version bump only for package @availity/spaces
+
+
+
+
+
+## [3.1.1](https://github.com/Availity/availity-react/compare/@availity/spaces@3.1.0...@availity/spaces@3.1.1) (2019-09-25)
+
+**Note:** Version bump only for package @availity/spaces
+
+
+
+
+
+# [3.1.0](https://github.com/Availity/availity-react/compare/@availity/spaces@3.0.1...@availity/spaces@3.1.0) (2019-09-04)
+
+
+### Features
+
+* **docs:** updated to use yarn and added readmes ([3b94748](https://github.com/Availity/availity-react/commit/3b94748))
+
+
+
+
+
+## [3.0.1](https://github.com/Availity/availity-react/compare/@availity/spaces@3.0.0...@availity/spaces@3.0.1) (2019-08-21)
+
+**Note:** Version bump only for package @availity/spaces
+
+
+
+
+
+# [3.0.0](https://github.com/Availity/availity-react/compare/@availity/spaces@2.0.6...@availity/spaces@3.0.0) (2019-08-19)
+
+
+### Code Refactoring
+
+* **spaces:** made api resources peer dep ([f1da56d](https://github.com/Availity/availity-react/commit/f1da56d))
+
+
+### BREAKING CHANGES
+
+* **spaces:** api-axios api-core and axios are peer deps now
+
+
+
+
+
 ## [2.0.6](https://github.com/Availity/availity-react/compare/@availity/spaces@2.0.5...@availity/spaces@2.0.6) (2019-08-13)
 
 **Note:** Version bump only for package @availity/spaces

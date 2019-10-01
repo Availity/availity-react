@@ -36,7 +36,7 @@ const AvDateRange = ({
 
   const startId = `${(id || name).replace(/[^a-zA-Z0-9]/gi, '')}-start`;
 
-  const endId = `${(attributes.id || name).replace(/[^a-zA-Z0-9]/gi, '')}-end`;
+  const endId = `${(id || name).replace(/[^a-zA-Z0-9]/gi, '')}-end`;
 
   const startValue = get(value, startKey);
   const endValue = get(value, endKey);
@@ -134,6 +134,7 @@ const AvDateRange = ({
         }}
       >
         <DateRangePicker
+          minimumNights={0}
           {...datepickerProps}
           startDate={getDateValue(startValue)}
           startDateId={startId}
@@ -176,7 +177,7 @@ AvDateRange.propTypes = {
 
 AvDateRange.defaultProps = {
   calendarIcon: <Icon name="calendar" />,
-  format: 'MM/DD/YYYY',
+  format: isoDateFormat,
   startKey: 'startDate',
   endKey: 'endDate',
   datepicker: true,

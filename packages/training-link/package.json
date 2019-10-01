@@ -1,6 +1,6 @@
 {
   "name": "@availity/training-link",
-  "version": "1.1.7",
+  "version": "1.2.1",
   "author": "Andrew Bauer <andrew.bauer@availity.com>",
   "description": "Component for allowing link out to training in the Header component",
   "main": "index.js",

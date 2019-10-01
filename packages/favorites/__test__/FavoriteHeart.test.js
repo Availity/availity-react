@@ -4,13 +4,24 @@ import {
   render,
   waitForElement,
   cleanup,
+  wait,
 } from '@testing-library/react';
 import { avSettingsApi } from '@availity/api-axios';
 import avMessages from '@availity/message-core';
+import maxFavorites from './maxFavorites';
 import Favorites, { FavoriteHeart } from '..';
 
 jest.mock('@availity/api-axios');
 jest.mock('@availity/message-core');
+
+global.document.createRange = () => ({
+  setStart: () => {},
+  setEnd: () => {},
+  commonAncestorContainer: {
+    nodeName: 'BODY',
+    ownerDocument: document,
+  },
+});
 
 const domain = () => {
   if (window.location.origin) {
@@ -40,7 +51,6 @@ avMessages.subscribe = jest.fn((event, fn) => {
         data = JSON.parse(data);
       } catch (error) {
         // eslint-disable-next-line no-console
-        console.error(error);
       }
     }
 
@@ -202,6 +212,45 @@ describe('FavoriteHeart', () => {
     ]);
   });
 
+  test('should delete favorite and send post message with updated favorites when enter is pressed', async () => {
+    avSettingsApi.setApplication = jest.fn(() =>
+      Promise.resolve({
+        data: {
+          favorites: [
+            {
+              id: '456',
+              pos: 0,
+            },
+          ],
+        },
+      })
+    );
+
+    const { container, getByText } = render(
+      <Favorites>
+        <FavoriteHeart id="123" />
+      </Favorites>
+    );
+
+    const heart = container.querySelector('#av-favorite-heart-123');
+
+    expect(heart).toBeDefined();
+
+    await waitForElement(() => getByText('This item is favorited.'));
+
+    // Simulate user unfavoriting item
+    fireEvent.keyPress(heart, { key: 'Enter', code: 13, charCode: 13 });
+
+    await waitForElement(() => getByText('This item is not favorited.'));
+
+    expect(avMessages.send).toHaveBeenCalledTimes(1);
+    expect(avMessages.send.mock.calls[0][0].event).toBe('av:favorites:update');
+    // Test that post message sent to window.parent sends favorites returned from settings api
+    expect(avMessages.send.mock.calls[0][0].favorites).toEqual([
+      { id: '456', pos: 0 },
+    ]);
+  });
+
   test('should add favorite and send post message with updated favorites', async () => {
     avSettingsApi.setApplication = jest.fn(() =>
       Promise.resolve({
@@ -284,5 +333,86 @@ describe('FavoriteHeart', () => {
     fireEvent.click(heart);
 
     expect(onChange).toHaveBeenCalledTimes(1);
+  });
+  test('should prevent default focus event', async () => {
+    const onChange = jest.fn(() => {});
+    const onMouseDown = jest.fn();
+    const { container, getByText } = render(
+      <Favorites>
+        <FavoriteHeart
+          onChange={onChange}
+          id="1234"
+          onMouseDown={onMouseDown}
+        />
+      </Favorites>
+    );
+
+    const heart = container.querySelector('#av-favorite-heart-1234');
+
+    expect(heart).toBeDefined();
+
+    await waitForElement(() => getByText('This item is not favorited.'));
+
+    const event = new MouseEvent('mouseDown');
+
+    fireEvent.mouseDown(heart, event);
+    fireEvent.click(heart);
+
+    expect(onChange).toHaveBeenCalledTimes(1);
+    expect(onMouseDown).toHaveBeenCalledTimes(1);
+  });
+
+  test('should show tooltip', async () => {
+    const { container, getByText, getByTestId } = render(
+      <Favorites>
+        <FavoriteHeart id="1234" />
+      </Favorites>
+    );
+
+    const heart = container.querySelector('#av-favorite-heart-1234');
+
+    expect(heart).toBeDefined();
+
+    await waitForElement(() => getByText('This item is not favorited.'));
+
+    fireEvent.mouseOver(heart);
+
+    await wait(() => {
+      const tooltip = getByTestId('av-favorite-heart-1234-tooltip');
+
+      expect(tooltip.textContent).toContain('Add to My Favorites');
+    }, 2000);
+  });
+
+  test('should call max modal when at max favorites', async () => {
+    avSettingsApi.getApplication = jest.fn(() =>
+      Promise.resolve({
+        data: {
+          settings: [
+            {
+              favorites: maxFavorites,
+            },
+          ],
+        },
+      })
+    );
+    const { container, getByText } = render(
+      <Favorites>
+        <FavoriteHeart id="123" />
+      </Favorites>
+    );
+
+    const heart = container.querySelector('#av-favorite-heart-123');
+
+    expect(heart).toBeDefined();
+
+    await waitForElement(() => getByText('This item is not favorited.'));
+
+    fireEvent.click(heart);
+
+    await wait(() => {
+      expect(avMessages.send).toHaveBeenCalledTimes(1);
+      expect(avMessages.send.mock.calls[0][0]).toBe('av:favorites:maxed');
+    });
   });
 });

@@ -29,9 +29,9 @@ const components = {
   ),
 };
 
-const createOption = (label, labelkey = 'label') => ({
-  [labelkey]: label,
-  value: label.toLowerCase().replace(/\W/g, ''),
+const createOption = (label, labelKey = 'label', valueKey = 'value') => ({
+  [labelKey]: label,
+  [valueKey]: label.toLowerCase().replace(/\W/g, ''),
 });
 
 const Select = ({
@@ -50,7 +50,8 @@ const Select = ({
     { onChange, value: fieldValue, ...field },
     { touched, error: hasError },
   ] = useField(name);
-  const { values, setFieldValue } = useFormikContext();
+  const { values, setFieldValue, initialValues } = useFormikContext();
+
   const [newOptions, setNewOptions] = useState([]);
 
   const getOptionLabel = option => {
@@ -148,9 +149,13 @@ const Select = ({
           if (shouldAutofillField) {
             let val;
             if (typeof autofill === 'object') {
-              val = get(rawValue, `${autofill[fieldName]}`);
+              val = get(
+                rawValue,
+                `${autofill[fieldName]}`,
+                initialValues[fieldName]
+              );
             } else {
-              val = rawValue[fieldName];
+              val = get(rawValue, fieldName, initialValues[fieldName]);
             }
             valuesToSet[fieldName] = true;
             await setFieldValue(fieldName, val);
@@ -164,7 +169,11 @@ const Select = ({
   };
 
   const handleCreate = value => {
-    const newOpt = createOption(value, get(attributes, 'labelKey', 'label'));
+    const newOpt = createOption(
+      value,
+      get(attributes, 'labelKey', 'label'),
+      get(attributes, 'valueKey', 'value')
+    );
     newOptions.push(newOpt);
     setNewOptions([...newOptions]);
 
@@ -246,6 +255,10 @@ const Select = ({
             color: showError ? '#931b1d' : 'hsl(0,0%,80%)',
           };
         },
+        option: provided => ({
+          ...provided,
+          color: '#000',
+        }),
       }}
       {...attributes}
       value={getViewValue()}

@@ -1,5 +1,6 @@
 import React from 'react';
 import { render, cleanup } from '@testing-library/react';
+import { NavLink } from 'reactstrap';
 import Breadcrumbs from '..';
 
 afterEach(cleanup);
@@ -62,5 +63,25 @@ describe('Breadcrumbs', () => {
     );
 
     expect(container.firstChild).toMatchSnapshot();
+  });
+
+  test('should render custom home url', () => {
+    const { getByText } = render(
+      <Breadcrumbs homeUrl="/go-home" active="Payer Space" />
+    );
+
+    const homeBtn = getByText('Home');
+
+    expect(homeBtn.getAttribute('href')).toBe('/go-home');
+  });
+
+  test('should render custom link tag', () => {
+    const { getByText } = render(
+      <Breadcrumbs homeUrl="/go-home" active="Payer Space" linkTag={NavLink} />
+    );
+
+    const homeBtn = getByText('Home');
+
+    expect(homeBtn.className).toBe('nav-link');
   });
 });

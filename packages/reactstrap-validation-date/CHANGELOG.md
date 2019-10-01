@@ -3,6 +3,71 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [3.1.5](https://github.com/Availity/availity-react/compare/@availity/reactstrap-validation-date@3.1.4...@availity/reactstrap-validation-date@3.1.5) (2019-09-25)
+
+**Note:** Version bump only for package @availity/reactstrap-validation-date
+
+
+
+
+
+## [3.1.4](https://github.com/Availity/availity-react/compare/@availity/reactstrap-validation-date@3.1.3...@availity/reactstrap-validation-date@3.1.4) (2019-09-19)
+
+**Note:** Version bump only for package @availity/reactstrap-validation-date
+
+
+
+
+
+## [3.1.3](https://github.com/Availity/availity-react/compare/@availity/reactstrap-validation-date@3.1.2...@availity/reactstrap-validation-date@3.1.3) (2019-09-17)
+
+
+### Bug Fixes
+
+* **reactstrap-validation-date:** allow same day to be selected as start and end date ([b4a47a9](https://github.com/Availity/availity-react/commit/b4a47a9))
+
+
+
+
+
+## [3.1.2](https://github.com/Availity/availity-react/compare/@availity/reactstrap-validation-date@3.1.1...@availity/reactstrap-validation-date@3.1.2) (2019-09-04)
+
+**Note:** Version bump only for package @availity/reactstrap-validation-date
+
+
+
+
+
+## [3.1.1](https://github.com/Availity/availity-react/compare/@availity/reactstrap-validation-date@3.1.0...@availity/reactstrap-validation-date@3.1.1) (2019-08-29)
+
+
+### Bug Fixes
+
+* **reactstrap-validation-date:** fix for default start and end dates ([b9e32e2](https://github.com/Availity/availity-react/commit/b9e32e2))
+
+
+
+
+
+# [3.1.0](https://github.com/Availity/availity-react/compare/@availity/reactstrap-validation-date@3.0.5...@availity/reactstrap-validation-date@3.1.0) (2019-08-23)
+
+
+### Features
+
+* **reactstrap-validation-date:** added back the ranges props ([b5b4d05](https://github.com/Availity/availity-react/commit/b5b4d05))
+
+
+
+
+
+## [3.0.5](https://github.com/Availity/availity-react/compare/@availity/reactstrap-validation-date@3.0.4...@availity/reactstrap-validation-date@3.0.5) (2019-08-19)
+
+**Note:** Version bump only for package @availity/reactstrap-validation-date
+
+
+
+
+
 ## [3.0.4](https://github.com/Availity/availity-react/compare/@availity/reactstrap-validation-date@3.0.3...@availity/reactstrap-validation-date@3.0.4) (2019-08-13)
 
 **Note:** Version bump only for package @availity/reactstrap-validation-date
@@ -48,7 +113,10 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 
 ### BREAKING CHANGES
 
-* **reactstrap-validation-select:** this required moment to be installed and the whole look and feel of the picker has changed
+* **reactstrap-validation-date:** 
+  - `moment` is now a required dep
+  -  UI has been swapped out with `react-dates`. 
+  - DateRange `onChange` callback now runs on single date selected and when both are.
 
 
 

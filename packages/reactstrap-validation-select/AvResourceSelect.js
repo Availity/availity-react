@@ -211,7 +211,7 @@ class AvResourceSelect extends Component {
     } = this.props;
     let _cacheUniq = cacheUniq;
 
-    if (_cacheUniq === undefined && watchParams && this.select.current) {
+    if (_cacheUniq === undefined && watchParams) {
       const params = {
         customerId: this.props.customerId,
         ...this.props.parameters,

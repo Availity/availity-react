@@ -3,90 +3,108 @@ const { execSync } = require('child_process');
 module.exports = plop => {
   plop.setHelper('userFullName', () => {
     const name = execSync(
-      'git config --global --includes user.name'
+      'git config --global --includes user.name'
     ).toString();
     return name.replace(/\n$/, '').trim();
   });
 
   plop.setHelper('userEmail', () => {
     const email = execSync(
-      'git config --global --includes user.email'
+      'git config --global --includes user.email'
     ).toString();
     return email.replace(/\n$/, '').trim();
   });
 
   plop.setActionType('bootstrap', () => {
-    execSync('npm run bootstrap');
+    execSync('npm run bootstrap');
   });
 
   plop.setGenerator('package', {
-    description: 'Create new package in monorepo',
+    description: 'Create new package in monorepo',
     prompts: [
       {
         type: 'input',
         name: 'packageName',
-        message: 'package name',
+        message: 'package name',
       },
       {
         type: 'input',
         name: 'packageDescription',
-        message: 'package description',
+        message: 'package description',
       },
     ],
     actions: [
       {
         type: 'add',
-        path: 'packages/{{kebabCase packageName}}/CHANGELOG.md',
+        path: 'packages/{{kebabCase packageName}}/CHANGELOG.md',
         templateFile: 'plop-templates/package/CHANGELOG.md.hbs',
       },
       {
         type: 'add',
         path:
-          'packages/{{kebabCase packageName}}/types/{{pascalCase packageName}}.d.ts',
+          'packages/{{kebabCase packageName}}/types/{{pascalCase packageName}}.d.ts',
         templateFile: 'plop-templates/package/Package.d.ts.hbs',
       },
       {
         type: 'add',
         path:
-          'packages/{{kebabCase packageName}}/src/{{pascalCase packageName}}.js',
+          'packages/{{kebabCase packageName}}/src/{{pascalCase packageName}}.js',
         templateFile: 'plop-templates/package/Package.js.hbs',
       },
       {
         type: 'add',
         path:
-          'packages/{{kebabCase packageName}}/tests/{{pascalCase packageName}}.test.js',
+          'packages/{{kebabCase packageName}}/tests/{{pascalCase packageName}}.test.js',
         templateFile: 'plop-templates/package/Package.test.js.hbs',
       },
       {
         type: 'add',
-        path: 'packages/{{kebabCase packageName}}/README.md',
+        path: 'packages/{{kebabCase packageName}}/README.md',
         templateFile: 'plop-templates/package/README.md.hbs',
       },
       {
         type: 'add',
-        path: 'packages/{{kebabCase packageName}}/index.d.ts',
+        path: 'packages/{{kebabCase packageName}}/index.d.ts',
         templateFile: 'plop-templates/package/index.d.ts.hbs',
       },
       {
         type: 'add',
-        path: 'packages/{{kebabCase packageName}}/index.js',
+        path: 'packages/{{kebabCase packageName}}/index.js',
         templateFile: 'plop-templates/package/index.js.hbs',
       },
       {
         type: 'add',
-        path: 'packages/{{kebabCase packageName}}/package.json',
+        path: 'packages/{{kebabCase packageName}}/package.json',
         templateFile: 'plop-templates/package/package.json.hbs',
       },
       {
         type: 'add',
-        path: 'packages/docs/stories/{{kebabCase packageName}}.stories.js',
+        path: 'packages/storybook/stories/{{kebabCase packageName}}.stories.js',
         templateFile: 'plop-templates/package/stories.js.hbs',
+      },
+      {
+        type: 'add',
+        path: 'packages/docs/source/components/{{kebabCase packageName}}.mdx',
+        templateFile: 'plop-templates/package/Package.mdx.hbs',
+      },
+      {
+        type: 'append',
+        path: 'packages/storybook/package.json',
+        pattern: '"devDependencies": {',
+        template: '    "@availity/{{kebabCase packageName}}": "^1.0.0",',
+      },
+      {
+        type: 'append',
+        path: 'packages/docs/gatsby-config.js',
+        pattern: /Components:\[/g,
+        template: "'components/{{kebabCase packageName}}',",
+        unique: true,
       },
       {
         type: 'append',
         path: 'packages/docs/package.json',
-        pattern: '"devDependencies": {',
-        template: '    "@availity/{{kebabCase packageName}}": "^1.0.0",',
+        pattern: '"dependencies": {',
+        template: '    "@availity/{{kebabCase packageName}}": "^1.0.0",',
       },
       {
         type: 'bootstrap',

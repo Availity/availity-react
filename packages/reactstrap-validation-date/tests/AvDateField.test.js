@@ -74,4 +74,22 @@ describe('AvDateField', () => {
 
     await waitForElement(() => getByText('value must come before this date'));
   });
+
+  test('works with grid columns for label', async () => {
+    const { getByText } = render(
+      <Date
+        name="standAlone"
+        value="09/20/1995"
+        label="Field"
+        grid={{
+          xs: 12,
+          md: 6,
+        }}
+      />
+    );
+
+    const label = getByText('Field');
+
+    expect(label.className).toContain('col-md-6');
+  });
 });

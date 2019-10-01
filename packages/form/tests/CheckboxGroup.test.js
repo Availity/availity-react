@@ -74,4 +74,67 @@ describe('CheckboxGroup', () => {
       );
     });
   });
+
+  test('submits with unchecked radio values', async () => {
+    const onSubmit = jest.fn();
+    const { getByText } = render(
+      <Form
+        initialValues={{
+          hello: ['uno', 'dos'],
+        }}
+        // eslint-disable-next-line no-undef
+        onSubmit={onSubmit}
+        validationSchema={yup.object().shape({
+          hello: yup.array(),
+        })}
+      >
+        <CheckboxGroup name="hello" label="Checkbox Group">
+          <Checkbox label="Check One" value="uno" />
+          <Checkbox label="Check Two" value="dos" />
+        </CheckboxGroup>
+        <Button type="submit">Submit</Button>
+      </Form>
+    );
+
+    await fireEvent.click(getByText('Check One'));
+    await fireEvent.click(getByText('Check Two'));
+
+    await fireEvent.click(getByText('Submit'));
+
+    await wait(() => {
+      expect(onSubmit).toHaveBeenCalledWith(
+        expect.objectContaining({
+          hello: [],
+        }),
+        expect.anything()
+      );
+    });
+  });
+
+  test('calls on change callback', async () => {
+    const onChange = jest.fn();
+
+    const { getByText } = render(
+      <Form
+        initialValues={{
+          hello: [],
+        }}
+        validationSchema={yup.object().shape({
+          hello: yup.array(),
+        })}
+      >
+        <CheckboxGroup onChange={onChange} name="hello" label="Checkbox Group">
+          <Checkbox label="Check One" value="uno" />
+          <Checkbox label="Check Two" value="dos" />
+        </CheckboxGroup>
+        <Button type="submit">Submit</Button>
+      </Form>
+    );
+
+    await fireEvent.click(getByText('Check One'));
+
+    await wait(() => {
+      expect(onChange.mock.calls[0][0][0]).toBe('uno');
+    });
+  });
 });

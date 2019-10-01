@@ -1,5 +1,5 @@
 import React from 'react';
-import { render, fireEvent, cleanup } from '@testing-library/react';
+import { render, fireEvent, cleanup, wait } from '@testing-library/react';
 import Feedback from '..';
 
 global.document.createRange = () => ({
@@ -34,5 +34,43 @@ describe('Feedback', () => {
 
     // eslint-disable-next-line unicorn/prefer-query-selector
     expect(getByTestId('feedbackModal')).toBeDefined();
+  });
+
+  test('should call onClose in form', async () => {
+    const onClose = jest.fn();
+
+    const { getByTestId, getByText } = render(
+      <Feedback appName="Test Space" formProps={{ onClose }} />
+    );
+
+    fireEvent.click(getByText('Give Feedback'));
+
+    // eslint-disable-next-line unicorn/prefer-query-selector
+    expect(getByTestId('feedback-form')).toBeDefined();
+
+    fireEvent.click(getByText('Close'));
+
+    await wait(() => {
+      expect(onClose).toHaveBeenCalledTimes(1);
+    });
+  });
+
+  test('should call onClose in modal', async () => {
+    const onClose = jest.fn();
+
+    const { getByTestId, getByText } = render(
+      <Feedback appName="Test Space" formProps={{ onClose }} modal />
+    );
+
+    fireEvent.click(getByText('Give Feedback'));
+
+    // eslint-disable-next-line unicorn/prefer-query-selector
+    expect(getByTestId('feedbackModal')).toBeDefined();
+
+    fireEvent.click(getByText('Close'));
+
+    await wait(() => {
+      expect(onClose).toHaveBeenCalledTimes(1);
+    });
   });
 });

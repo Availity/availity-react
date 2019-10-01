@@ -1,5 +1,5 @@
 import React from 'react';
-import { render, cleanup } from '@testing-library/react';
+import { render, cleanup, fireEvent } from '@testing-library/react';
 import AvLink from '..';
 
 afterEach(cleanup);
@@ -38,5 +38,20 @@ describe('AvLink', () => {
     const expected = '/public/apps/my-app';
 
     expect(tag.getAttribute('href')).toBe(expected);
+  });
+
+  test('should call onClick', () => {
+    const onClick = jest.fn();
+
+    const { getByTestId } = render(
+      <AvLink loadApp={false} url="/public/apps/my-app" onClick={onClick}>
+        My App
+      </AvLink>
+    );
+
+    const tag = getByTestId('av-link-tag');
+    fireEvent.click(tag);
+
+    expect(onClick.mock.calls[0][1]).toBe('/public/apps/my-app');
   });
 });

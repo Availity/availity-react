@@ -39,7 +39,7 @@ module.exports = api => {
         corejs: 3,
         targets: {
           node: 'current',
-        },
+        }
       },
     ],
   ];

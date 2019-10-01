@@ -3,7 +3,7 @@ import { SelectProps } from './Select';
 
 
 export interface SelectFieldProps extends SelectProps {
-    label?: string;
+    label?: React.ReactNode;
     labelHidden?: boolean | false;
     labelClass?: string;
     groupClass?: string;

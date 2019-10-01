@@ -20,6 +20,11 @@ const options = [
   { label: 'Option 4', value: 'value for option 4' },
 ];
 
+const customOptions = [
+  { customLabel: 'Option 1', customValue: 'value for option 1' },
+  { customLabel: 'Option 2', customValue: 'value for option 2' },
+];
+
 const renderSelect = props =>
   render(
     <AvForm>
@@ -75,6 +80,44 @@ describe('AvSelect', () => {
     expect(selectInput.querySelector('.test__creatable__placeholder')).toBe(
       null
     );
+  });
+
+  test('creatable works with custom keys', async () => {
+    const onSubmit = jest.fn();
+    const { container, getByText } = render(
+      <AvForm onSubmit={onSubmit}>
+        <AvSelect
+          name="test_form_input"
+          classNamePrefix="test_custom_creatable"
+          options={customOptions}
+          labelKey="customLabel"
+          valueKey="customValue"
+          raw
+          creatable
+        />
+        <Button>Submit</Button>
+      </AvForm>
+    );
+
+    // Create new option
+    const input = container.querySelector('#react-select-4-input');
+    fireEvent.change(input, {
+      target: { value: 'New Option Test' },
+    });
+    fireEvent.keyDown(input, { key: 'Enter', keyCode: 13 });
+
+    const submitButton = getByText('Submit');
+    expect(submitButton).toBeDefined();
+
+    await fireEvent.click(submitButton);
+
+    // Check for proper object format in payload
+    await wait(() => {
+      expect(onSubmit).toHaveBeenCalledTimes(1);
+      const payload = onSubmit.mock.calls[0][2];
+      expect(payload.test_form_input.customLabel).toBe('New Option Test');
+      expect(payload.test_form_input.customValue).toBe('newoptiontest');
+    });
   });
 
   test('autofill as boolean works', async () => {
