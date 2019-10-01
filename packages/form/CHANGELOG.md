@@ -3,6 +3,20 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.4.4](https://github.com/Availity/availity-react/compare/@availity/form@0.4.3...@availity/form@0.4.4) (2019-10-01)
+
+
+### Bug Fixes
+
+* **form:** adds 3 unit tests for the changes to [#303](https://github.com/Availity/availity-react/issues/303) ([b4ba181](https://github.com/Availity/availity-react/commit/b4ba181))
+* **form:** adds uuid v3.3.3 as a dependency to form package [#303](https://github.com/Availity/availity-react/issues/303) ([443cad5](https://github.com/Availity/availity-react/commit/443cad5))
+* **form:** uses id instead of inputid, fixes the tests and future proofs the import [#303](https://github.com/Availity/availity-react/issues/303) ([0e792d1](https://github.com/Availity/availity-react/commit/0e792d1))
+* **form:** uses inputid attribute or generates uuid [#303](https://github.com/Availity/availity-react/issues/303) ([9c8553d](https://github.com/Availity/availity-react/commit/9c8553d))
+
+
+
+
+
 ## [0.4.3](https://github.com/Availity/availity-react/compare/@availity/form@0.4.2...@availity/form@0.4.3) (2019-09-25)
 
 **Note:** Version bump only for package @availity/form
