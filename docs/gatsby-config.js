@@ -25,7 +25,7 @@ module.exports = {
           null: [
             'index',
             {
-              resolve: '/storybook',
+              resolve: '[Storybook](/storybook)',
               isRelative: false,
               withPrefix: true,
             },
