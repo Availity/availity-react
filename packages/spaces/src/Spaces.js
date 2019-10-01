@@ -1,4 +1,9 @@
-import React, { createContext, useContext, useState, useMemo } from 'react';
+import React, {
+  createContext,
+  useContext,
+  useMemo,
+  useReducer,
+} from 'react';
 import PropTypes from 'prop-types';
 import { avSlotMachineApi } from '@availity/api-axios';
 import { useEffectAsync } from '@availity/hooks';
@@ -56,6 +61,12 @@ export const sanitizeSpaces = spaces => {
 
 export const SpacesContext = createContext();
 
+const INITIAL_STATE = {
+  spaces: [],
+  loading: true,
+  error: null,
+};
+
 const Spaces = ({
   query,
   variables,
@@ -65,15 +76,38 @@ const Spaces = ({
   children,
   spaces: spacesFromProps,
 }) => {
-  const [spaces, setSpaces] = useState([]);
-  const [loading, setLoading] = useState(true);
-  const [error, setError] = useState(null);
+  const [{ spaces, loading, error }, dispatch] = useReducer((state, action) => {
+    switch (action.type) {
+      case 'SPACES':
+        return {
+          spaces: action.spaces || [],
+          error: null,
+          loading: false,
+        };
+      case 'ERROR':
+        return {
+          ...state,
+          loading: false,
+          error: action.error,
+        };
+      case 'LOADING':
+        return {
+          ...state,
+          loading: action.loading !== undefined ? action.loading : !state.loading,
+        };
+      default:
+        throw new Error('Invalid action type');
+    }
+  }, INITIAL_STATE);
 
   // NOTE: we do not want to query slotmachine by payerIDs and spaceIDs at the same time
   // because slotmachine does an AND on those conditions. We want OR
   useEffectAsync(async () => {
     try {
-      setLoading(true);
+      dispatch({
+        type: 'LOADING',
+        loading: true
+      });
       // Filter out dupes and ids that we already have the space for
       const filteredSpaceIDs = spaceIds
         .filter((id, i) => spaceIds.indexOf(id) === i)
@@ -118,12 +152,15 @@ const Spaces = ({
         _spaces = _spaces.concat(spacesByPayerIDs);
       }
 
-      if (_spaces.length > 0) setSpaces(_spaces);
-      setError(null);
+      dispatch({
+        type: 'SPACES',
+        spaces: _spaces,
+      });
     } catch (error_) {
-      setError(error_.message);
-    } finally {
-      setLoading(false);
+      dispatch({
+        type: 'ERROR',
+        error: error_.message,
+      });
     }
   }, [payerIds, spaceIds]);
 
