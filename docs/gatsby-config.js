@@ -18,7 +18,7 @@ module.exports = {
         ...themeOptions,
         root: __dirname,
         subtitle: 'React Components',
-        contentDir: 'packages/docs/source',
+        contentDir: 'docs/source',
         description: 'Documentation for React Components',
         githubRepo: 'availity/availity-react',
         sidebarCategories: {
