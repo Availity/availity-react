@@ -4,11 +4,11 @@ import { Label } from 'reactstrap';
 import { FormGroup, Feedback } from '@availity/form';
 import Date from './Date';
 
-const DateField = ({ name, label, labelClass, labelHidden, labelAttrs, ...props }) => (
+const DateField = ({ name, label, labelClass, labelHidden, labelAttrs, id = name, ...props }) => (
   <FormGroup for={name}>
     {label && (
       <Label 
-        for={name}
+        for={`${id}-picker`}
         className={labelClass}
         hidden={labelHidden}
         {...labelAttrs}
@@ -16,12 +16,13 @@ const DateField = ({ name, label, labelClass, labelHidden, labelAttrs, ...props 
           {label}
         </Label>
     )}
-    <Date name={name} {...props} />
+    <Date name={name} id={id} {...props} />
     <Feedback name={name} />
   </FormGroup>
 );
  
 DateField.propTypes = {
+  id: PropTypes.string,
   name: PropTypes.string,
   label: PropTypes.node,
   labelClass: PropTypes.string,
