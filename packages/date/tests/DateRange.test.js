@@ -141,12 +141,27 @@ describe('DateRange', () => {
     fireEvent.focus(input);
 
     // Simulate user selecting today as start date
-    const start = container.querySelector('.CalendarDay__today');
-    fireEvent.click(start);
+    const current = container.querySelector('.CalendarDay__today');
+    const previous = current.previousSibling;
+    const next = current.nextSibling;
 
-    // Simulate user selecting tomorrow as end date
-    const end = container.querySelector('.CalendarDay__today').nextSibling;
-    fireEvent.click(end);
+    const isCurrentDayLastDayOfMonth =
+      moment().dayOfYear() ===
+      moment()
+        .endOf('month')
+        .dayOfYear();
+
+    let expectedStartDate = moment();
+    let expectedEndDate = moment().add(1, 'day');
+    if (isCurrentDayLastDayOfMonth) {
+      fireEvent.click(previous);
+      fireEvent.click(current);
+      expectedStartDate = moment().subtract(1, 'day');
+      expectedEndDate = moment();
+    } else {
+      fireEvent.click(current);
+      fireEvent.click(next);
+    }
 
     fireEvent.click(getByText('Submit'));
 
@@ -154,10 +169,8 @@ describe('DateRange', () => {
       expect(onSubmit).toHaveBeenCalledWith(
         expect.objectContaining({
           dateRange: {
-            startDate: moment().format('YYYY-MM-DD'),
-            endDate: moment()
-              .add(1, 'day')
-              .format('YYYY-MM-DD'),
+            startDate: expectedStartDate.format('YYYY-MM-DD'),
+            endDate: expectedEndDate.format('YYYY-MM-DD'),
           },
         }),
         expect.anything()
@@ -234,17 +247,25 @@ describe('DateRange', () => {
       </Form>
     );
 
-    const input = container.querySelector('.DateInput_input');
+    // Simulate user entering start date
+    const start = container.querySelector('#dateRange-start');
 
-    fireEvent.focus(input);
+    fireEvent.focus(start);
 
-    // Simulate user selecting today as start date
-    const start = container.querySelector('.CalendarDay__today');
-    fireEvent.click(start);
+    fireEvent.change(start, {
+      target: {
+        value: '01/04/1997',
+      },
+    });
 
-    // Simulate user selecting tomorrow as end date
-    const end = container.querySelector('.CalendarDay__today').nextSibling;
-    fireEvent.click(end);
+    // Simulate user entering end date
+    const end = container.querySelector('#dateRange-end');
+
+    fireEvent.change(end, {
+      target: {
+        value: '01/05/1997',
+      },
+    });
 
     fireEvent.click(getByText('Submit'));
 
@@ -252,10 +273,8 @@ describe('DateRange', () => {
       expect(onSubmit).toHaveBeenCalledWith(
         expect.objectContaining({
           dateRange: {
-            customStartKey: moment().format('YYYY-MM-DD'),
-            customEndKey: moment()
-              .add(1, 'day')
-              .format('YYYY-MM-DD'),
+            customStartKey: '1997-01-04',
+            customEndKey: '1997-01-05',
           },
         }),
         expect.anything()
