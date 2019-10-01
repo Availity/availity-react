@@ -3,8 +3,8 @@ module.exports = {
   collectCoverageFrom: ['packages/**/*.{js,jsx}'],
   testPathIgnorePatterns: [
     '/node_modules/',
-    'packages/docs',
-    'packages/storybook',
+    '/docs',
+    '/storybook',
     '/packages/mock/',
   ],
   coveragePathIgnorePatterns: [
@@ -12,8 +12,8 @@ module.exports = {
     '/coverage/',
     '/dist/',
     '/packages/mock/',
-    '/packages/storybook/',
-    '/packages/docs/',
+    '/storybook/',
+    '/docs/',
     '/packages/feature/bin.js',
   ],
   transformIgnorePatterns: [

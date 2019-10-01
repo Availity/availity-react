@@ -4,8 +4,8 @@
 .tmp
 /lib
 /.vscode
+/storybook-docs
 **/**/node_modules
-/docs
 .DS_Store
 /.history
 package-lock.json

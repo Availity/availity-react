@@ -84,7 +84,7 @@ module.exports = plop => {
       },
       {
         type: 'add',
-        path: 'packages/docs/source/components/{{kebabCase packageName}}.mdx',
+        path: 'docs/source/components/{{kebabCase packageName}}.mdx',
         templateFile: 'plop-templates/package/Package.mdx.hbs',
       },
       {
@@ -95,14 +95,14 @@ module.exports = plop => {
       },
       {
         type: 'append',
-        path: 'packages/docs/gatsby-config.js',
+        path: 'docs/gatsby-config.js',
         pattern: /Components:\[/g,
         template: "'components/{{kebabCase packageName}}',",
         unique: true,
       },
       {
         type: 'append',
-        path: 'packages/docs/package.json',
+        path: 'docs/package.json',
         pattern: '"dependencies": {',
         template: '    "@availity/{{kebabCase packageName}}": "^1.0.0",',
       },
