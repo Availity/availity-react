@@ -16,8 +16,6 @@ https://codecov.io/gh/Availity/availity-react)
 * Google Chrome
 * Mozilla Firefox
 
-## [Storybook Demo](/storybook)
-
 ## Additional Notes
 We use `data-testid` in unit tests in order to grab unique attributes. If you are using `availity-workflow@6.0.0` or later, it is removed for you in production builds. To remove it if you are not using `availity-workflow`, add the following babel plugin to your project:
 - [babel-plugin-jsx-remove-data-test-id](https://github.com/coderas/babel-plugin-jsx-remove-data-test-id)
