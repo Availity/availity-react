@@ -62,29 +62,24 @@ const INITIAL_STATE = {
   error: null,
 };
 
-const spacesReducer = (state, action) => {
-  switch (action.type) {
-    case 'SPACES':
-      return {
-        spaces: action.spaces || [],
-        error: null,
-        loading: false,
-      };
-    case 'ERROR':
-      return {
-        ...state,
-        loading: false,
-        error: action.error,
-      };
-    case 'LOADING':
-      return {
-        ...state,
-        loading: action.loading !== undefined ? action.loading : !state.loading,
-      };
-    default:
-      throw new Error('Invalid action type');
-  }
+const actions = {
+  SPACES: (_, { spaces }) => ({
+    spaces: spaces || [],
+    error: null,
+    loading: false,
+  }),
+  ERROR: (state, { error }) => ({
+    ...state,
+    loading: false,
+    error,
+  }),
+  LOADING: (state, { loading }) => ({
+    ...state,
+    loading: loading !== undefined ? loading : !state.loading,
+  }),
 };
+
+const spacesReducer = (state, action) => actions[action.type](state, action);
 
 const Spaces = ({
   query,
