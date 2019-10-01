@@ -22,10 +22,10 @@
     "@availity/resolve-url" "^1.1.0"
     qs "^6.5.2"
 
-"@availity/gatsby-theme-core@^1.2.12":
-  version "1.2.12"
-  resolved "https://registry.yarnpkg.com/@availity/gatsby-theme-core/-/gatsby-theme-core-1.2.12.tgz#68d2f01310f080e78b6ed6d91f6b6ecf6891065d"
-  integrity sha512-4nHJ3XUUYpPXB7OaJXHksdbZUaJLLkzyfsaMNaz6rqNT2PE9/m0bETjjl4XA7y4/FdmUwPh3UFhAi9gK5D3smQ==
+"@availity/gatsby-theme-core@^2.0.0":
+  version "2.0.0"
+  resolved "https://artifactory.availity.com/artifactory/api/npm/npm/@availity/gatsby-theme-core/-/gatsby-theme-core-2.0.0.tgz#476059e2ad3a5a8f613e3a9bb4d63ba76489b029"
+  integrity sha1-R2BZ4q06Wo9hPjqbtNY7p2SJsCk=
   dependencies:
     availity-uikit "^3.2.0"
     classnames "^2.2.6"
@@ -35,14 +35,14 @@
     react-helmet "^5.2.1"
     react-icons "^3.7.0"
 
-"@availity/gatsby-theme-docs@^1.4.13":
-  version "1.4.13"
-  resolved "https://registry.yarnpkg.com/@availity/gatsby-theme-docs/-/gatsby-theme-docs-1.4.13.tgz#54bd0b1e3242e690af1a58d9fb07f487022e809c"
-  integrity sha512-WfJzPaZSZZRtqkmpWHlEBRVKs8BaSrZu1RO3QvOU5hLC0Zt6YnpffSSblWbKNa7I3o8dVodWut7yDmemZH7LQA==
+"@availity/gatsby-theme-docs@^2.0.2":
+  version "2.0.2"
+  resolved "https://registry.yarnpkg.com/@availity/gatsby-theme-docs/-/gatsby-theme-docs-2.0.2.tgz#de846855c121a38bcbe16d55a4d57375edcb3009"
+  integrity sha512-9uVmXXFzH5ZZiCqct3Z30M+Gs+toXvDgLsqPtyJnomIMWhTdY4ZmZIAatwzvIlHI0Snxk3AVH/VpEaE2fVfxWA==
   dependencies:
     "@availity/api-axios" "^5.4.0"
     "@availity/api-core" "^5.4.0"
-    "@availity/gatsby-theme-core" "^1.2.12"
+    "@availity/gatsby-theme-core" "^2.0.0"
     "@availity/localstorage-core" "^2.6.1"
     "@availity/page-header" "^8.0.2"
     "@availity/resolve-url" "^1.1.0"

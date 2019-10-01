@@ -20,11 +20,15 @@ module.exports = {
         subtitle: 'React Components',
         contentDir: 'docs/source',
         description: 'Documentation for React Components',
-        githubRepo: 'availity/availity-react',
+        gitRepo: 'availity/availity-react',
         sidebarCategories: {
           null: [
             'index',
-            '[Storybook](https://availity.github.io/availity-react/storybook)',
+            {
+              resolve: '/storybook',
+              isRelative: false,
+              withPrefix: true,
+            },
             'contributing',
           ],
           'form/index': [
