@@ -111,4 +111,42 @@ describe('Field', () => {
 
     await expect(queryByDisplayValue('Name')).toEqual(null);
   });
+
+  test('label for attribute should point to a generated uuid when input id is not provided', () => {
+    const { container } = render(
+      <Form onSubmit={() => {}}>
+        <Field name="name" label="Greetings" />
+      </Form>
+    );
+
+    expect(container.querySelector('input').getAttribute('id')).toEqual(
+      container.querySelector('label').getAttribute('for')
+    );
+  });
+
+  test('label for attribute should point to input id', () => {
+    const inputId = 'test-input-id';
+    const { container } = render(
+      <Form onSubmit={() => {}}>
+        <Field name="name" label="Greetings" inputId={inputId} />
+      </Form>
+    );
+
+    expect(container.querySelector('input').getAttribute('id')).toEqual(
+      inputId
+    );
+    expect(container.querySelector('label').getAttribute('for')).toEqual(
+      inputId
+    );
+  });
+
+  test('input id is not generated if no label is present', () => {
+    const { container } = render(
+      <Form onSubmit={() => {}}>
+        <Field name="name" />
+      </Form>
+    );
+
+    expect(container.querySelector('input').hasAttribute('id')).toEqual(false);
+  });
 });
