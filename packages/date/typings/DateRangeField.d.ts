@@ -2,6 +2,7 @@ import * as React from 'react';
 import { DateRangeProps } from './DateRange';
 
 export interface DateRangeFieldProps extends DateRangeProps {
+  id?: string;
   label?: React.ReactNode;
   labelClass?: string;
   labelHidden?: boolean;
