@@ -152,9 +152,7 @@ describe('DateRange', () => {
         .dayOfYear();
 
     let expectedStartDate = moment();
-    let expectedEndDate = moment()
-      .add(1, 'day')
-      .format('YYYY-MM-DD');
+    let expectedEndDate = moment().add(1, 'day');
     if (isCurrentDayLastDayOfMonth) {
       fireEvent.click(previous);
       fireEvent.click(current);
