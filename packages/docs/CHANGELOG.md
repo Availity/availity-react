@@ -3,6 +3,19 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [2.2.0](https://github.com/Availity/availity-react/compare/@availity/react-docs@2.1.7...@availity/react-docs@2.2.0) (2019-10-01)
+
+
+### Features
+
+* **date:** added additional attributes to the label for DateField and DateRangeField ([f321dcd](https://github.com/Availity/availity-react/commit/f321dcd))
+* **date:** fixed docs to match type definitions ([b3b4ed5](https://github.com/Availity/availity-react/commit/b3b4ed5))
+* **date:** updated wording for docs ([6d6ef38](https://github.com/Availity/availity-react/commit/6d6ef38))
+
+
+
+
+
 ## [2.1.7](https://github.com/Availity/availity-react/compare/@availity/react-docs@2.1.6...@availity/react-docs@2.1.7) (2019-09-26)
 
 **Note:** Version bump only for package @availity/react-docs

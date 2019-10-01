@@ -3,6 +3,19 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.3.0](https://github.com/Availity/availity-react/compare/@availity/date@0.2.9...@availity/date@0.3.0) (2019-10-01)
+
+
+### Features
+
+* **date:** added additional attributes to the label for DateField and DateRangeField ([f321dcd](https://github.com/Availity/availity-react/commit/f321dcd))
+* **date:** added new props to type definitions ([95d9aa4](https://github.com/Availity/availity-react/commit/95d9aa4))
+* **date:** added new props to type definitions ([867dfb1](https://github.com/Availity/availity-react/commit/867dfb1))
+
+
+
+
+
 ## [0.2.9](https://github.com/Availity/availity-react/compare/@availity/date@0.2.8...@availity/date@0.2.9) (2019-09-26)
 
 **Note:** Version bump only for package @availity/date
