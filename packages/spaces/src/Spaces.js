@@ -1,9 +1,4 @@
-import React, {
-  createContext,
-  useContext,
-  useMemo,
-  useReducer,
-} from 'react';
+import React, { createContext, useContext, useMemo, useReducer } from 'react';
 import PropTypes from 'prop-types';
 import { avSlotMachineApi } from '@availity/api-axios';
 import { useEffectAsync } from '@availity/hooks';
@@ -67,6 +62,30 @@ const INITIAL_STATE = {
   error: null,
 };
 
+const spacesReducer = (state, action) => {
+  switch (action.type) {
+    case 'SPACES':
+      return {
+        spaces: action.spaces || [],
+        error: null,
+        loading: false,
+      };
+    case 'ERROR':
+      return {
+        ...state,
+        loading: false,
+        error: action.error,
+      };
+    case 'LOADING':
+      return {
+        ...state,
+        loading: action.loading !== undefined ? action.loading : !state.loading,
+      };
+    default:
+      throw new Error('Invalid action type');
+  }
+};
+
 const Spaces = ({
   query,
   variables,
@@ -76,29 +95,10 @@ const Spaces = ({
   children,
   spaces: spacesFromProps,
 }) => {
-  const [{ spaces, loading, error }, dispatch] = useReducer((state, action) => {
-    switch (action.type) {
-      case 'SPACES':
-        return {
-          spaces: action.spaces || [],
-          error: null,
-          loading: false,
-        };
-      case 'ERROR':
-        return {
-          ...state,
-          loading: false,
-          error: action.error,
-        };
-      case 'LOADING':
-        return {
-          ...state,
-          loading: action.loading !== undefined ? action.loading : !state.loading,
-        };
-      default:
-        throw new Error('Invalid action type');
-    }
-  }, INITIAL_STATE);
+  const [{ spaces, loading, error }, dispatch] = useReducer(
+    spacesReducer,
+    INITIAL_STATE
+  );
 
   // NOTE: we do not want to query slotmachine by payerIDs and spaceIDs at the same time
   // because slotmachine does an AND on those conditions. We want OR
@@ -106,7 +106,7 @@ const Spaces = ({
     try {
       dispatch({
         type: 'LOADING',
-        loading: true
+        loading: true,
       });
       // Filter out dupes and ids that we already have the space for
       const filteredSpaceIDs = spaceIds
