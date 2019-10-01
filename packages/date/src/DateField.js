@@ -22,6 +22,7 @@ const DateField = ({ name, label, labelClass, labelHidden, labelAttrs, id = name
 );
  
 DateField.propTypes = {
+  id: PropTypes.string,
   name: PropTypes.string,
   label: PropTypes.node,
   labelClass: PropTypes.string,
