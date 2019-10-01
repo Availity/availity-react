@@ -10,7 +10,6 @@ The same as `DateRange` but with a `Label` that appears above the input and a `F
 import { Form } from '@availity/form';
 import { DateRange } from '@availity/date';
 import * as yup from 'yup';
-import '@availity/yup';
 import '@availity/yup/moment';
 import moment from 'moment';
 

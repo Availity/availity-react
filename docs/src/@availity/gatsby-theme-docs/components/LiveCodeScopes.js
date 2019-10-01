@@ -33,6 +33,7 @@ import { Disclaimer, Agreement } from '@availity/typography';
 import * as yup from 'yup';
 import moment from 'moment';
 import '@availity/favorites/style.scss';
+import '@availity/yup/moment';
 
 const scopes = {
   ...Reactstrap,
