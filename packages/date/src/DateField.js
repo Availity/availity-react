@@ -8,7 +8,7 @@ const DateField = ({ name, label, labelClass, labelHidden, labelAttrs, id = name
   <FormGroup for={name}>
     {label && (
       <Label 
-        for={id}
+        for={`${id}-picker`}
         className={labelClass}
         hidden={labelHidden}
         {...labelAttrs}
