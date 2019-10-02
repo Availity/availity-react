@@ -36,3 +36,9 @@ Props to be spread onto the `<BlockUI />` tag.
 
 ### `containerTag?: React.ComponentType | string`
 The tag to render the `<BlockUI />` as. **Default:** `div`.
+
+### `infiniteScroll?: boolean`
+If `true`, renders pagination content inside an infinite scroll component
+
+### `infiniteScrollProps?: InfiniteScrollProps`
+Only used when `infiniteScroll` is true. See [react-infinite-scroll-component](https://github.com/ankeetmaini/react-infinite-scroll-component#props)
