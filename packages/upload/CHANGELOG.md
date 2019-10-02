@@ -3,6 +3,22 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [2.1.2](https://github.com/Availity/availity-react/compare/@availity/upload@2.1.1...@availity/upload@2.1.2) (2019-10-01)
+
+**Note:** Version bump only for package @availity/upload
+
+
+
+
+
+## [2.1.1](https://github.com/Availity/availity-react/compare/@availity/upload@2.1.0...@availity/upload@2.1.1) (2019-09-25)
+
+**Note:** Version bump only for package @availity/upload
+
+
+
+
+
 # [2.1.0](https://github.com/Availity/availity-react/compare/@availity/upload@2.0.6...@availity/upload@2.1.0) (2019-09-04)
 
 

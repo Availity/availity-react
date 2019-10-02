@@ -3,7 +3,9 @@
   "useWorkspaces": true,
   "version": "independent",
   "packages": [
-    "packages/*"
+    "packages/*",
+    "docs",
+    "storybook"
   ],
   "message": "chore: publish release [skip ci]",
   "command": {

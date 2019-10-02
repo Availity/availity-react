@@ -1,6 +1,6 @@
 {
   "name": "@availity/icon",
-  "version": "0.6.0",
+  "version": "0.6.1",
   "author": "Kyle Gray <kyle.gray@availity.com>",
   "description": "Simple Icon Component that uses classes from availity uikit",
   "main": "index.js",

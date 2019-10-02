@@ -1,6 +1,6 @@
 {
   "name": "@availity/upload",
-  "version": "2.1.0",
+  "version": "2.1.2",
   "author": "Evan Sharp <evan.sharp@availity.com>",
   "description": "Availity upload component for uploading files",
   "main": "index.js",
@@ -26,12 +26,12 @@
     "lodash.map": "4.6.0",
     "react": "^16.8.0",
     "react-dom": "^16.8.0",
-    "react-dropzone": "^7.0.1",
+    "react-dropzone": "^10.0.0 ||^9.0.0 ||^8.0.0 ||^7.0.1",
     "reactstrap": "^8.0.0 || ^7.0.0 || ^6.0.0",
     "tus-js-client": "1.5.1"
   },
   "dependencies": {
-    "@availity/progress": "^1.2.0",
+    "@availity/progress": "^1.2.1",
     "prop-types": "^15.5.8"
   },
   "devDependencies": {

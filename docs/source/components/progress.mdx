@@ -1,0 +1,44 @@
+---
+title: Progress
+summary: Availity Progress Bar
+---
+
+## Installation
+
+```bash
+npm install @availity/progress --save
+```
+
+## Example
+
+```jsx live=true
+import Progress from '@availity/progress';
+
+<div className="w-100 flex-row justify-content-around align-items-center">
+  <p>50% Complete</p>
+  <Progress animated={false} striped complete={false} value={50} max={100} />
+</div>
+```
+
+## Props
+
+### `tag?: React.ComponentType | string`
+The tag to render the progress bar as. **Default:** `<div>`.
+
+### `animated?: boolean`
+Triggers the "animated" style in the progress bar.
+
+### `striped?: boolean`
+Triggers the "striped" style in the progress bar.
+
+### `complete?: boolean`
+Triggers the "complete" style in the progress bar. When true, a checkmark appears at the end of the progress bar
+
+### `value?: number`
+The amount of the progress bar that should be filled (relative to the `max`) **Default:** `0`.
+
+### `max? number`
+The maximum amount of the progress bar. **Default:** `100`.
+
+### `color?: string`
+The color of the progress bar. **Default:** `success`.

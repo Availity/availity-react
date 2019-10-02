@@ -1,0 +1,36 @@
+---
+title: List Group
+summary: Availity's ListGroup, which can feature Cards and Selectable items
+---
+
+## Installation
+
+```bash
+npm install @availity/list-group --save
+```
+
+## Example
+
+```jsx live=true viewCode=true
+import ListGroup from '@availity/list-group';
+import ListGroupItem from '@availity/list-group-item';
+
+<div className="w-100 d-flex flex-row justify-content-center">
+  <ListGroup selectable cards>
+    <ListGroupItem>Item 1</ListGroupItem>
+    <ListGroupItem>Item 2</ListGroupItem>
+    <ListGroupItem>Item 3</ListGroupItem>
+  </ListGroup>
+</div>
+```
+
+## Props
+
+### `cards?: boolean`
+Triggers the items (children) to appear as cards.
+
+### `selectable?: boolean`
+Triggers the items (children) to appear as selectable when hovered over.
+
+### `tag?: React.ComponentType | string`
+The tag to use in the list group. **Default:** `<ul>`

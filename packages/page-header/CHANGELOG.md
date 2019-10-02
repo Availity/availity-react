@@ -3,6 +3,75 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [8.0.5](https://github.com/Availity/availity-react/compare/@availity/page-header@8.0.4...@availity/page-header@8.0.5) (2019-10-01)
+
+**Note:** Version bump only for package @availity/page-header
+
+
+
+
+
+## [8.0.4](https://github.com/Availity/availity-react/compare/@availity/page-header@8.0.3...@availity/page-header@8.0.4) (2019-10-01)
+
+**Note:** Version bump only for package @availity/page-header
+
+
+
+
+
+## [8.0.3](https://github.com/Availity/availity-react/compare/@availity/page-header@8.0.2...@availity/page-header@8.0.3) (2019-09-26)
+
+**Note:** Version bump only for package @availity/page-header
+
+
+
+
+
+## [8.0.2](https://github.com/Availity/availity-react/compare/@availity/page-header@8.0.1...@availity/page-header@8.0.2) (2019-09-25)
+
+**Note:** Version bump only for package @availity/page-header
+
+
+
+
+
+## [8.0.1](https://github.com/Availity/availity-react/compare/@availity/page-header@8.0.0...@availity/page-header@8.0.1) (2019-09-25)
+
+**Note:** Version bump only for package @availity/page-header
+
+
+
+
+
+# [8.0.0](https://github.com/Availity/availity-react/compare/@availity/page-header@7.1.8...@availity/page-header@8.0.0) (2019-09-23)
+
+
+### Code Refactoring
+
+* **page-header:** refactored page header strcuture to fix ux ([d79d269](https://github.com/Availity/availity-react/commit/d79d269))
+
+
+### Features
+
+* **page-header:** added function prop to render custom right content ([9b36f16](https://github.com/Availity/availity-react/commit/9b36f16))
+
+
+### BREAKING CHANGES
+
+* **page-header:** Tag prop now is defaulted to div and appName instead of children will render an h1 tag by default
+
+
+
+
+
+## [7.1.8](https://github.com/Availity/availity-react/compare/@availity/page-header@7.1.7...@availity/page-header@7.1.8) (2019-09-20)
+
+**Note:** Version bump only for package @availity/page-header
+
+
+
+
+
 ## [7.1.7](https://github.com/Availity/availity-react/compare/@availity/page-header@7.1.6...@availity/page-header@7.1.7) (2019-09-19)
 
 **Note:** Version bump only for package @availity/page-header
