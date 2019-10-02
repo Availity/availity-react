@@ -64,31 +64,38 @@ storiesOf('Components|Pagination', module)
     },
   })
   .addDecorator(withKnobs)
-  .add('default', () => (
-    <Pagination
-      itemsPerPage={number('Items Per page', 5, { min: 1 }) || 1}
-      items={paginationData}
-    >
-      <div className="d-flex flex-column align-items-center">
-        <Col xs={12}>
-          <PaginationContent
-            itemKey="id"
-            loader={boolean('Show Loader', false)}
-            loadingMessage={text('Loading Message', 'Loading')}
-            component={Component}
-          />
-        </Col>
-        <PaginationControls
-          className="pt-2"
-          pageRange={number('Page Range', 5, { min: 1 }) || 1}
-          breakLabel={boolean('Break Label', true)}
-          marginPages={number('Margin Pages', 2, { min: 1 }) || 1}
-          directionLinks={boolean('Direction Links', true)}
-          autoHide={boolean('Auto Hide Controls', true)}
-        />
-      </div>
-    </Pagination>
-  ))
+  .add('default', () => {
+    const infiniteScroll = boolean('Infinite Scroll', false);
+
+    return (
+      <Pagination
+        itemsPerPage={number('Items Per page', 5, { min: 1 }) || 1}
+        items={paginationData}
+      >
+        <div className="d-flex flex-column align-items-center">
+          <Col xs={12}>
+            <PaginationContent
+              infiniteScroll={infiniteScroll}
+              itemKey="id"
+              loader={boolean('Show Loader', false)}
+              loadingMessage={text('Loading Message', 'Loading')}
+              component={Component}
+            />
+          </Col>
+          {!infiniteScroll && (
+            <PaginationControls
+              className="pt-2"
+              pageRange={number('Page Range', 5, { min: 1 }) || 1}
+              breakLabel={boolean('Break Label', true)}
+              marginPages={number('Margin Pages', 2, { min: 1 }) || 1}
+              directionLinks={boolean('Direction Links', true)}
+              autoHide={boolean('Auto Hide Controls', true)}
+            />
+          )}
+        </div>
+      </Pagination>
+    );
+  })
   .add('controls', () => (
     <Pagination items={paginationData}>
       <PaginationControls
@@ -97,26 +104,33 @@ storiesOf('Components|Pagination', module)
       />
     </Pagination>
   ))
-  .add('resource', () => (
-    <AvResourcePagination
-      resource={resource}
-      itemsPerPage={number('Items Per page', 5, { min: 1 }) || 1}
-    >
-      <div className="d-flex flex-column align-items-center">
-        <Col xs={12}>
-          <PaginationContent
-            itemKey="id"
-            component={Component}
-            loader={boolean('Show Loader', true)}
-          />
-        </Col>
-        <PaginationControls
-          className="pt-2"
-          pageRange={number('Page Range', 5, { min: 1 }) || 1}
-          breakLabel={boolean('Break Label', true)}
-          marginPages={number('Margin Pages', 2, { min: 1 }) || 1}
-          directionLinks={boolean('Direction Links', true)}
-        />
-      </div>
-    </AvResourcePagination>
-  ));
+  .add('resource', () => {
+    const infiniteScroll = boolean('Infinite Scroll', false);
+
+    return (
+      <AvResourcePagination
+        resource={resource}
+        itemsPerPage={number('Items Per page', 5, { min: 1 }) || 1}
+      >
+        <div className="d-flex flex-column align-items-center">
+          <Col xs={12}>
+            <PaginationContent
+              infiniteScroll={infiniteScroll}
+              itemKey="id"
+              component={Component}
+              loader={boolean('Show Loader', true)}
+            />
+          </Col>
+          {!infiniteScroll && (
+            <PaginationControls
+              className="pt-2"
+              pageRange={number('Page Range', 5, { min: 1 }) || 1}
+              breakLabel={boolean('Break Label', true)}
+              marginPages={number('Margin Pages', 2, { min: 1 }) || 1}
+              directionLinks={boolean('Direction Links', true)}
+            />
+          )}
+        </div>
+      </AvResourcePagination>
+    );
+  });
