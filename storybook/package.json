@@ -8,6 +8,7 @@
   "scripts": {
     "start": "start-storybook -p 2222 -c .storybook -s ./static",
     "build": "NODE_ENV=production build-storybook -c .storybook -s ./static -o ../storybook-docs --quiet",
+    "build:netlify": "NODE_ENV=production build-storybook -c .storybook -s ./static -o ../docs/public/storybook --quiet",
     "deploy-docs": "storybook-to-ghpages",
     "storybook": "start-storybook -p 6006",
     "build-storybook": "build-storybook"
