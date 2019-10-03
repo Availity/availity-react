@@ -216,6 +216,9 @@ const Select = ({
       styles={{
         ...styles,
         placeholder: (provided, state) => {
+          if (state.isDisabled) {
+            return provided;
+          }
           const showError = touched && hasError && !state.focused;
 
           return {
@@ -229,7 +232,11 @@ const Select = ({
           width: '90%',
         }),
         control: (provided, state) => {
+          if (state.isDisabled) {
+            return provided;
+          }
           const showError = touched && hasError && !state.focused;
+
           return {
             ...provided,
             borderRadius: '.25em',
@@ -247,6 +254,9 @@ const Select = ({
           maxWidth: '99%',
         }),
         dropdownIndicator: (provided, state) => {
+          if (state.isDisabled) {
+            return provided;
+          }
           const showError = touched && hasError && !state.focused;
 
           return {
