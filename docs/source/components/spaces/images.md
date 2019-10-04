@@ -10,6 +10,7 @@ import Spaces, {
   SpacesLogo,
   SpacesBillboard,
   SpacesTile,
+  SpacesFile,
 } from '@availity/spaces';
 
 <Spaces
@@ -20,6 +21,7 @@ import Spaces, {
   <SpacesLogo spaceId="73162546201441126239486200007187" />
   <SpacesBillboard payerId="PayerID" />
   <SpacesTile payerId="PayerID" />
+  <SpacesFile payerId="PayerID" />
 </Spaces>;
 ```
 

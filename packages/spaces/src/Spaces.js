@@ -248,6 +248,7 @@ Spaces.defaultProps = {
             name
             value
           }
+          url
         }
       }
     }

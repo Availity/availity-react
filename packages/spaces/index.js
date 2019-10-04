@@ -5,15 +5,19 @@ import SpacesAgreement from './src/SpacesAgreement';
 import SpacesGhostText from './src/SpacesGhostText';
 
 const SpacesLogo = SpacesImage.create({
-  imageType: 'logo',
+  imageType: 'images.logo',
 });
 
 const SpacesTile = SpacesImage.create({
-  imageType: 'tile',
+  imageType: 'images.tile',
 });
 
 const SpacesBillboard = SpacesImage.create({
-  imageType: 'billboard',
+  imageType: 'images.billboard',
+});
+
+const SpacesFile = SpacesImage.create({
+  imageType: 'url',
 });
 
 export default Spaces;
@@ -22,6 +26,7 @@ export {
   SpacesLogo,
   SpacesTile,
   SpacesBillboard,
+  SpacesFile,
   SpacesDisclaimer,
   SpacesAgreement,
   SpacesGhostText,

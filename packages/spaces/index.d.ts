@@ -10,6 +10,7 @@ export {
     SpacesImage as SpacesLogo,
     SpacesImage as SpacesBillboard,
     SpacesImage as SpacesTile,
+    SpacesImage as SpacesFile,
     SpacesDisclaimer,
     SpacesAgreement,
     useSpace

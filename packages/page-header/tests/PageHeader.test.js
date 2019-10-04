@@ -154,7 +154,7 @@ describe('PageHeader', () => {
         </Spaces>
       );
 
-      await waitForElement(() => getByTestId('space-logo-payer1'));
+      await waitForElement(() => getByTestId('space-images.logo-payer1'));
     });
   });
 
