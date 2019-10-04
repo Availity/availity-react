@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [2.5.0](https://github.com/Availity/availity-react/compare/@availity/pagination@2.4.2...@availity/pagination@2.5.0) (2019-10-04)
+
+
+### Features
+
+* **pagination:** add infinite scroll ([caf8202](https://github.com/Availity/availity-react/commit/caf8202))
+
+
+
+
+
 ## [2.4.2](https://github.com/Availity/availity-react/compare/@availity/pagination@2.4.1...@availity/pagination@2.4.2) (2019-09-26)
 
 **Note:** Version bump only for package @availity/pagination

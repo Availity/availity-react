@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [5.0.5](https://github.com/Availity/availity-react/compare/@availity/reactstrap-validation-select@5.0.4...@availity/reactstrap-validation-select@5.0.5) (2019-10-04)
+
+
+### Bug Fixes
+
+* **reactstrap-validation-select:** prevents the provided styles from react-select from being overridden by the styles applied in error conditions ([4acb8b0](https://github.com/Availity/availity-react/commit/4acb8b0))
+
+
+
+
+
 ## [5.0.4](https://github.com/Availity/availity-react/compare/@availity/reactstrap-validation-select@5.0.3...@availity/reactstrap-validation-select@5.0.4) (2019-09-19)
 
 **Note:** Version bump only for package @availity/reactstrap-validation-select

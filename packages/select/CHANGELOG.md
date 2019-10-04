@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.4.11](https://github.com/Availity/availity-react/compare/@availity/select@0.4.10...@availity/select@0.4.11) (2019-10-04)
+
+
+### Bug Fixes
+
+* **select:** prevents the provided styles from react-select from being overridden by the styles applied in an error condition ([9ad49db](https://github.com/Availity/availity-react/commit/9ad49db))
+
+
+
+
+
 ## [0.4.10](https://github.com/Availity/availity-react/compare/@availity/select@0.4.9...@availity/select@0.4.10) (2019-10-01)
 
 **Note:** Version bump only for package @availity/select
