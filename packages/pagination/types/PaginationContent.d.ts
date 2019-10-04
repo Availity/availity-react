@@ -3,6 +3,8 @@ export interface PaginationContentProps {
     loadingMessage?: string;
     itemKey?: string;
     loader?: boolean;
+    infiniteScroll?: boolean;
+    infiniteScrollProps?: object;
 };
 
 declare const PaginationContent: React.FunctionComponent<PaginationContentProps>;
