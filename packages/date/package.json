@@ -38,7 +38,6 @@
     "yup": "^0.27.0"
   },
   "dependencies": {
-    "@availity/hooks": "^1.6.2",
     "@availity/icon": "^0.6.1",
     "classnames": "^2.2.6",
     "lodash.get": "^4.4.2",
