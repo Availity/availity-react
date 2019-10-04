@@ -1,8 +1,7 @@
-import React from 'react';
+import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 import classNames from 'classnames';
 import { useField, useFormikContext } from 'formik';
-import { useToggle } from '@availity/hooks';
 import 'react-dates/initialize';
 import { SingleDatePicker } from 'react-dates';
 import Icon from '@availity/icon';
@@ -31,7 +30,7 @@ const AvDate = ({
 }) => {
   const { setFieldValue, setFieldTouched } = useFormikContext();
   const [field, metadata] = useField(name);
-  const [isFocused, toggleIsFocused] = useToggle(false);
+  const [isFocused, setIsFocused] = useState(false);
   const classes = classNames(
     className,
     metadata.touched ? 'is-touched' : 'is-untouched',
@@ -60,7 +59,9 @@ const AvDate = ({
     );
 
     if (date.isValid()) {
-      toggleIsFocused(false);
+      if (isFocused !== false) {
+        setIsFocused(false);
+      }
     }
   };
 
@@ -84,7 +85,9 @@ const AvDate = ({
       await setFieldTouched(name, true);
     }
 
-    toggleIsFocused(focused);
+    if (focused !== undefined && isFocused !== focused) {
+      setIsFocused(focused);
+    }
     if (onPickerFocusChange) onPickerFocusChange({ focused });
   };
 
