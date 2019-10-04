@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { Fragment } from 'react';
 import PropTypes from 'prop-types';
 import { Util, Button } from 'reactstrap';
 import InfiniteScroll from 'react-infinite-scroll-component';
@@ -24,9 +24,13 @@ const PaginationContent = ({
     allPages,
     hasMore,
     loading,
+    lower,
+    ref,
+    setDoFocusRefOnPageChange,
   } = usePagination();
 
   if (infiniteScroll) {
+    const indexOfItemToReference = lower - 1;
     return (
       <InfiniteScroll
         loader={loader && <div className="h3">{loadingMessage}</div>}
@@ -47,11 +51,39 @@ const PaginationContent = ({
               );
             }
 
+            if (indexOfItemToReference === key) {
+              const ComponentWithRef = React.forwardRef((props, innerRef) => {
+                return (
+                  <Fragment>
+                    <span className="sr-only" ref={innerRef} />
+                    <Component {...props} />
+                  </Fragment>
+                );
+              });
+
+              return (
+                <ComponentWithRef
+                  ref={ref}
+                  {...rest}
+                  key={value[itemKey] || key}
+                  {...value}
+                />
+              );
+            }
+
             return (
               <Component {...rest} key={value[itemKey] || key} {...value} />
             );
           })}
-        <Button className="sr-only" onClick={() => setPage(currentPage + 1)}>
+
+        <Button
+          data-testid="sr-only-pagination-load-more-btn"
+          className="sr-only"
+          onClick={() => {
+            setDoFocusRefOnPageChange(true);
+            setPage(currentPage + 1);
+          }}
+        >
           Load More
         </Button>
       </InfiniteScroll>

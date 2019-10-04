@@ -27,7 +27,7 @@
     "start:docs": "yarn workspace @availity/react-docs start",
     "build:storybook": "yarn workspace @availity/react-storybook build",
     "build:storybook:netlify": "yarn workspace @availity/react-storybook build:netlify",
-    "build:netlify":"yarn workspace @availity/react-docs build && yarn run build:storybook:netlify",
+    "build:netlify": "yarn workspace @availity/react-docs build && yarn run build:storybook:netlify",
     "build:docs": "yarn workspace @availity/react-docs build:deploy",
     "build:deploy": "yarn run build:docs && yarn run build:storybook:netlify",
     "release": "lerna publish",

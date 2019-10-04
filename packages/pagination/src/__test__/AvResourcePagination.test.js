@@ -141,4 +141,52 @@ describe('AvResourcePagination', () => {
     expect(getByTestId('5af1e71fac54f0e9e6c5e976')).toBeDefined();
     expect(getByTestId('5af1e71f6727bd6161e62720')).toBeDefined();
   });
+
+  test('focuses first item in new page when sr-only load more button clicked', async () => {
+    // eslint-disable-next-line react/prop-types
+    const Component = ({ id }) => (
+      <div id={id} data-testid={id}>
+        {id}
+      </div>
+    );
+
+    const { getByTestId } = render(
+      <div data-testid="infinite-scroll-container">
+        <AvResourcePagination resource={resource} itemsPerPage={2}>
+          <PaginationContent
+            component={Component}
+            infiniteScroll
+            itemKey="id"
+          />
+        </AvResourcePagination>
+      </div>
+    );
+
+    await waitForDomChange(() => getByTestId('infinite-scroll-container'));
+
+    // Check that first page renders
+    expect(getByTestId('5af1e71f1a38311cd5afe2fe')).toBeDefined();
+    expect(getByTestId('5af1e71f3ef279b4188aeecd')).toBeDefined();
+
+    const loadMoreButton = getByTestId('sr-only-pagination-load-more-btn');
+
+    fireEvent.click(loadMoreButton);
+
+    // Wait for pagination-con to re-render aftering loading prop is toggled
+    await waitForDomChange(() => getByTestId('infinite-scroll-container'));
+    expect(mockResponse.postGet).toHaveBeenCalledTimes(2);
+
+    // Check that first and second page render
+    expect(getByTestId('5af1e71f1a38311cd5afe2fe')).toBeDefined();
+    expect(getByTestId('5af1e71f3ef279b4188aeecd')).toBeDefined();
+    expect(getByTestId('5af1e71fac54f0e9e6c5e976')).toBeDefined();
+    expect(getByTestId('5af1e71f6727bd6161e62720')).toBeDefined();
+
+    // FIXME https://github.com/testing-library/react-testing-library/issues/276
+    /* await wait(() => {
+      expect(document.activeElement).toEqual(
+        getByTestId('5af1e71fac54f0e9e6c5e976')
+      );
+    }); */
+  });
 });

@@ -28,7 +28,9 @@ const Pagination = ({
   resetParams,
   defaultPage,
 }) => {
+  const ref = React.useRef();
   const [currentPage, setPage] = useState(defaultPage);
+  const [doFocusRefOnPageChange, setDoFocusRefOnPageChange] = useState(false);
   const [pageData, setPageData] = useState({
     total: theItems != null && !isFunction(theItems) ? theItems.totalCount : 0,
     pageCount: 0,
@@ -80,6 +82,11 @@ const Pagination = ({
       hasMore: currentPage < pageCount,
     });
 
+    if (doFocusRefOnPageChange && ref.current && ref.current.nextSibling) {
+      ref.current.nextSibling.focus();
+      setDoFocusRefOnPageChange(false);
+    }
+
     toggleLoading(false);
   };
 
@@ -130,6 +137,8 @@ const Pagination = ({
         currentPage,
         loading,
         itemsPerPage,
+        ref,
+        setDoFocusRefOnPageChange,
       }}
     >
       {children}
