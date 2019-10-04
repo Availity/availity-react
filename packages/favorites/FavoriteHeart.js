@@ -10,16 +10,16 @@ const FavoriteHeart = ({ id, onChange, onMouseDown, ...props }) => {
   const [tooltipOpen, toggleTooltip] = useToggle(false);
   const [loading, toggleLoading] = useToggle(true);
 
-  const onChangeHandler = () => {
-    toggleFavorite();
+  const icon = useMemo(() => {
+    const onChangeHandler = () => {
+      toggleFavorite();
 
-    if (onChange) {
-      onChange(isFavorite);
-    }
-  };
+      if (onChange) {
+        onChange(isFavorite);
+      }
+    };
 
-  const icon = useMemo(
-    () => (
+    return (
       <span
         id={`av-favorite-heart-${id}`}
         role="button"
@@ -47,9 +47,8 @@ const FavoriteHeart = ({ id, onChange, onMouseDown, ...props }) => {
         <span className="icon default-filled" />
         <span className="icon selected-filled" />
       </span>
-    ),
-    [id, isFavorite, onChangeHandler, onMouseDown, props]
-  );
+    );
+  }, [id, isFavorite, onMouseDown, props, onChange, toggleFavorite]);
 
   useEffectAsync(async () => {
     toggleLoading(false);
