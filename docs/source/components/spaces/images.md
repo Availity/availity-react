@@ -10,6 +10,7 @@ import Spaces, {
   SpacesLogo,
   SpacesBillboard,
   SpacesTile,
+  SpacesImage,
 } from '@availity/spaces';
 
 <Spaces
@@ -20,6 +21,7 @@ import Spaces, {
   <SpacesLogo spaceId="73162546201441126239486200007187" />
   <SpacesBillboard payerId="PayerID" />
   <SpacesTile payerId="PayerID" />
+  <SpacesImage payerId="PayerID" />
 </Spaces>;
 ```
 
@@ -40,3 +42,7 @@ Dimensions passed to loader to show while the image is loading.
 ### `fallback?: string`
 
 The fallback image url to render if the url for the spaces image is not valid or not found
+
+### `imageType?: string`
+
+The path on the space containing the image reference. Defaults to: `"url"`. 
