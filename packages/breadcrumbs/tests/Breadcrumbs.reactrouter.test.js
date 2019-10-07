@@ -1,6 +1,5 @@
 import React from 'react';
-import { Link, Route, Router, Switch } from 'react-router-dom';
-import { withRouter } from 'react-router';
+import { Link, Route, Router, Switch, withRouter } from 'react-router-dom';
 import { createMemoryHistory } from 'history';
 import { render, fireEvent, cleanup } from '@testing-library/react';
 import { BreadcrumbItem } from 'reactstrap';
