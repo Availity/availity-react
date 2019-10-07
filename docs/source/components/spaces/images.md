@@ -42,3 +42,7 @@ Dimensions passed to loader to show while the image is loading.
 ### `fallback?: string`
 
 The fallback image url to render if the url for the spaces image is not valid or not found
+
+### `imageType?: string`
+
+The path on the space containing the image reference. Defaults to: `"url"`. 
