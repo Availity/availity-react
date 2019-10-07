@@ -5,7 +5,7 @@ import Spaces, {
   SpacesLogo,
   SpacesTile,
   SpacesBillboard,
-  SpacesFile,
+  SpacesImage,
 } from '..';
 
 jest.mock('@availity/api-axios');
@@ -97,7 +97,7 @@ describe('SpacesImage', () => {
         <SpacesLogo spaceId="1" />
         <SpacesTile payerId="payer1" />
         <SpacesBillboard spaceId="2" />
-        <SpacesFile spaceId="3" />
+        <SpacesImage spaceId="3" />
       </Spaces>
     );
     const { getAllByTestId } = render(<MyComponent />);

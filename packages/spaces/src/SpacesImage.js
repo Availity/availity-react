@@ -75,8 +75,12 @@ SpacesImage.propTypes = {
   spaceId: PropTypes.string,
   payerId: PropTypes.string,
   fallback: PropTypes.string,
-  imageType: PropTypes.string.isRequired,
+  imageType: PropTypes.string,
   skeletonProps: skeletonPropType,
+};
+
+SpacesImage.defaultProps = {
+  imageType: 'url',
 };
 
 // Adapted from https://github.com/Availity/availity-react/blob/master/packages/reactstrap-validation-select/AvResourceSelect.js

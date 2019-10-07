@@ -16,17 +16,13 @@ const SpacesBillboard = SpacesImage.create({
   imageType: 'images.billboard',
 });
 
-const SpacesFile = SpacesImage.create({
-  imageType: 'url',
-});
-
 export default Spaces;
 
 export {
   SpacesLogo,
   SpacesTile,
   SpacesBillboard,
-  SpacesFile,
+  SpacesImage,
   SpacesDisclaimer,
   SpacesAgreement,
   SpacesGhostText,
