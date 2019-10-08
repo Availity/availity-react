@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [8.1.0](https://github.com/Availity/availity-react/compare/@availity/page-header@8.0.6...@availity/page-header@8.1.0) (2019-10-07)
+
+
+### Features
+
+* **spaces:** add SpacesFile component ([d0d95a9](https://github.com/Availity/availity-react/commit/d0d95a9))
+
+
+
+
+
 ## [8.0.6](https://github.com/Availity/availity-react/compare/@availity/page-header@8.0.5...@availity/page-header@8.0.6) (2019-10-04)
 
 **Note:** Version bump only for package @availity/page-header

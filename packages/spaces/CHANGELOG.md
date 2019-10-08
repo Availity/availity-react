@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [3.2.0](https://github.com/Availity/availity-react/compare/@availity/spaces@3.1.3...@availity/spaces@3.2.0) (2019-10-07)
+
+
+### Features
+
+* **spaces:** add SpacesFile component ([d0d95a9](https://github.com/Availity/availity-react/commit/d0d95a9))
+
+
+
+
+
 ## [3.1.3](https://github.com/Availity/availity-react/compare/@availity/spaces@3.1.2...@availity/spaces@3.1.3) (2019-10-01)
 
 **Note:** Version bump only for package @availity/spaces
