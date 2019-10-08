@@ -118,8 +118,10 @@ describe('PageHeader', () => {
           <PageHeader appName="Payer Space" spaceId="1" />
         </Spaces>
       );
-
-      await waitForElement(() => getByText('My Space'));
+      const defaultSpace = await waitForElement(() => getByText('My Space'));
+      expect(defaultSpace.getAttribute('href')).toEqual(
+        '/web/spaces/spaces/#/1'
+      );
     });
 
     test('should work with payerId', async () => {
@@ -217,5 +219,33 @@ describe('PageHeader', () => {
     const homeBtn = getByText('Home');
 
     expect(homeBtn.className).toBe('nav-link');
+  });
+
+  test('should render with url', async () => {
+    avSlotMachineApi.create.mockResolvedValue({
+      data: {
+        data: {
+          spaces: {
+            totalCount: 1,
+            page: 1,
+            perPage: 1,
+            spaces: [
+              { id: '1', name: 'My Space', link: { url: '/custom-link' } },
+            ],
+          },
+        },
+      },
+    });
+    const { getByText } = render(
+      <Spaces spaceIds={['1']} clientId="my-client-id">
+        <PageHeader appName="Payer Space" spaceId="1" />
+      </Spaces>
+    );
+
+    const spaceBreadcrumb = await waitForElement(() => getByText('My Space'));
+
+    expect(spaceBreadcrumb.tagName.toLowerCase()).toBe('a');
+
+    expect(spaceBreadcrumb.getAttribute('href')).toEqual('/custom-link');
   });
 });

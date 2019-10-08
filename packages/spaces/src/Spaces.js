@@ -238,6 +238,9 @@ Spaces.defaultProps = {
           id
           name
           description
+          link {
+            url
+          }
           payerIDs
           parentIDs
           metadata{
