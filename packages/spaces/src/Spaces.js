@@ -250,7 +250,8 @@ Spaces.defaultProps = {
           images{
             name
             value
-          } 
+          }
+          url
         }
       }
     }
