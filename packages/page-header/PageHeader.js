@@ -63,12 +63,12 @@ const PageHeader = ({
   }
 
   const _spaceName = spaceName || (_space && _space.name);
-  if (spaceForSpaceID) {
-    crumbs = [{ name: _spaceName, url: spaceForSpaceID.link.url }];
-  } else {
-    crumbs = [
-      { name: _spaceName, url: spaceId && `/web/spaces/spaces/#/${spaceId}` },
-    ];
+  if (spaceId || spaceName) {
+    const url =
+      spaceForSpaceID && spaceForSpaceID.link && spaceForSpaceID.link.url
+        ? spaceForSpaceID.link.url
+        : `/web/spaces/spaces/#/${spaceId}`;
+    crumbs = [{ name: _spaceName, url }];
   }
 
   const feedback = useMemo(
