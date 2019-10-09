@@ -1,6 +1,7 @@
-import React from 'react';
+import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 import { Label, Input } from 'reactstrap';
+import uuid from 'uuid/v4';
 import classNames from 'classnames';
 import { useRadioGroup } from './RadioGroup';
 import FormGroup from './FormGroup';
@@ -15,6 +16,8 @@ const Radio = ({
 }) => {
   const { value, setValue, metadata, inline } = useRadioGroup(checkValue);
 
+  const [inputId] = useState(id || uuid());
+
   const classes = classNames(
     className,
     metadata.touched ? 'is-touched' : 'is-untouched',
@@ -23,14 +26,14 @@ const Radio = ({
 
   return (
     <FormGroup
-      for={checkValue}
+      for={inputId}
       check
       inline={inline}
       disabled={attributes.disabled}
     >
       <Input
-        id={id || checkValue}
-        name={checkValue}
+        id={inputId}
+        name={inputId}
         className={classes}
         type="radio"
         {...attributes}
@@ -38,7 +41,7 @@ const Radio = ({
         checked={value}
         onChange={setValue}
       />
-      <Label check for={id || checkValue}>
+      <Label check for={inputId}>
         {label || children}
       </Label>
     </FormGroup>
