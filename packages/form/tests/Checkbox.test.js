@@ -77,4 +77,28 @@ describe('Checkbox', () => {
 
     getByText('Check One');
   });
+
+  test('should generate uuid even when id is not added', () => {
+    const { container } = render(
+      <Form onSubmit={() => {}}>
+        <CheckboxGroup name="hello" label="Checkbox Group">
+          <Checkbox label="Check One" value="uno" />
+        </CheckboxGroup>
+      </Form>
+    );
+
+    expect(container.querySelector('input').hasAttribute('id')).toBeTruthy();
+  });
+
+  test('should use id when passed in', () => {
+    const { container } = render(
+      <Form onSubmit={() => {}}>
+        <CheckboxGroup name="hello" label="Checkbox Group">
+          <Checkbox label="Check One" value="uno" id="test" />
+        </CheckboxGroup>
+      </Form>
+    );
+
+    expect(container.querySelector('input').getAttribute('id')).toEqual('test');
+  });
 });

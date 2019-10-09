@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 import { Label, Input } from 'reactstrap';
 import uuid from 'uuid/v4';
@@ -15,7 +15,7 @@ const Checkbox = ({
 }) => {
   const { value, toggle, metadata } = useCheckboxGroup(checkValue);
 
-  const inputId = id || uuid();
+  const [inputId] = useState(id || uuid());
 
   const classes = classNames(
     className,
