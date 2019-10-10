@@ -281,4 +281,30 @@ describe('DateRange', () => {
       );
     });
   });
+
+  test('pre-selected date ranges appear', async () => {
+    const onSubmit = jest.fn();
+
+    const { container } = render(
+      <Form
+        initialValues={{
+          dateRange: undefined,
+        }}
+        onSubmit={onSubmit}
+      >
+        <DateRange id="dateRange" name="dateRange" range />
+        <Button type="submit">Submit</Button>
+      </Form>
+    );
+
+    container.querySelector('.DateRangePickerInput_calendarIcon').click();
+
+    setTimeout(() => {
+      expect(
+        container.querySelector(
+          '.DayPicker_calendarInfo__horizontal DayPicker_calendarInfo__horizontal_1'
+        )
+      ).toBeTruthy();
+    }, 3000);
+  });
 });
