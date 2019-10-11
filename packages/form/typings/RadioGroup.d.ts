@@ -1,7 +1,6 @@
 import * as React from 'react';
-import { FormGroupProps } from './FormGroup';
 
-interface RadioGroupProps extends FormGroupProps {
+interface RadioGroupProps extends React.HTMLAttributes<HTMLFormElement> {
   name: string;
   label?: React.ReactNode;
   onChange?: (value: any) => void;
