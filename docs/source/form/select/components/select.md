@@ -76,6 +76,16 @@ If `true`, when the value of the dropdown changes, if the `isMulti` prop is `fal
 
 For example, if the new value is `{ "payer": "Availity" }`, in order for the payer input in the form to be auto-filled to "Availity", the `name` prop on the input must be "payer". 
 
-If `autofill` is an object, when the value of the dropdown changes, if the `isMulti` prop is `false` _and_ the new value of the dropdown is an object, all fields on the form corresponding to the keys in the `autofill` prop will be auto-filled. 
+If `autofill` is an object, when the value of the dropdown changes, if the `isMulti` prop is `false` _and_ the new value of the dropdown is an object, all fields on the form corresponding to the keys in the `autofill` prop will be auto-filled.
 
-For example, if the new value is `{ "payer": { "name": "Availity", "id": "1" } }`, in order for the "payerName" and "payerId" inputs to be auto-filled to "Availity" and "1" respectively, the `autofill` prop should be `{ payerName: 'payer.name', payerId: 'payer.id' }`.
+When `autofill` is an object, the values in the object can be a string or a function. When a string, the key in the `autofill` prop gets auto-filled to that path on the selected option. When a function, it gets called with the selected option, and the key in the `autofill` prop gets auto-filled to the return value of the function.
+
+For example, if the new value is `{ "payer": { "name": "Availity", "id": "1" } }`, in order for the "payerName", "payerId", and "payerNameAndId" inputs to be auto-filled to "Availity", "1", and "1 - Availity" respectively, the `autofill` prop should be:
+
+```js
+{
+  payerName: 'payer.name',
+  payerId: 'payer.id',
+  payerNameAndId: opt => `${opt.payer.id} - ${opt.payer.name}`,
+}
+```

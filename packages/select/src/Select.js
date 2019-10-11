@@ -6,6 +6,7 @@ import RSelect, { components as reactSelectComponents } from 'react-select';
 import Creatable from 'react-select/creatable';
 import Async from 'react-select-async-paginate';
 import get from 'lodash.get';
+import isFunction from 'lodash.isfunction';
 
 const {
   DownChevron,
@@ -149,11 +150,17 @@ const Select = ({
           if (shouldAutofillField) {
             let val;
             if (typeof autofill === 'object') {
-              val = get(
-                rawValue,
-                `${autofill[fieldName]}`,
-                initialValues[fieldName]
-              );
+              if (isFunction(autofill[fieldName])) {
+                val = autofill[fieldName](rawValue);
+              } else if (typeof autofill[fieldName] === 'string') {
+                val = get(
+                  rawValue,
+                  `${autofill[fieldName]}`,
+                  initialValues[fieldName]
+                );
+              } else {
+                val = initialValues[fieldName];
+              }
             } else {
               val = get(rawValue, fieldName, initialValues[fieldName]);
             }
