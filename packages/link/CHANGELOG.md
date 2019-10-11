@@ -3,6 +3,22 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [2.0.0](https://github.com/Availity/availity-react/compare/@availity/link@1.3.1...@availity/link@2.0.0) (2019-10-11)
+
+
+### Code Refactoring
+
+* **link:** made link extends anchor tag ([ccc370a](https://github.com/Availity/availity-react/commit/ccc370a))
+
+
+### BREAKING CHANGES
+
+* **link:** url prop has been renamed to href to align with that standard anchor elements
+
+
+
+
+
 ## [1.3.1](https://github.com/Availity/availity-react/compare/@availity/link@1.3.0...@availity/link@1.3.1) (2019-09-25)
 
 **Note:** Version bump only for package @availity/link

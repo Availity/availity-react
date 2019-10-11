@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [3.2.2](https://github.com/Availity/availity-react/compare/@availity/spaces@3.2.1...@availity/spaces@3.2.2) (2019-10-11)
+
+
+### Bug Fixes
+
+* eslint issues ([bc4d8e9](https://github.com/Availity/availity-react/commit/bc4d8e9))
+
+
+
+
+
 ## [3.2.1](https://github.com/Availity/availity-react/compare/@availity/spaces@3.2.0...@availity/spaces@3.2.1) (2019-10-08)
 
 **Note:** Version bump only for package @availity/spaces

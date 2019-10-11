@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.4.13](https://github.com/Availity/availity-react/compare/@availity/select@0.4.12...@availity/select@0.4.13) (2019-10-11)
+
+
+### Bug Fixes
+
+* eslint issues ([bc4d8e9](https://github.com/Availity/availity-react/commit/bc4d8e9))
+
+
+
+
+
 ## [0.4.12](https://github.com/Availity/availity-react/compare/@availity/select@0.4.11...@availity/select@0.4.12) (2019-10-09)
 
 **Note:** Version bump only for package @availity/select

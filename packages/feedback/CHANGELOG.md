@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [5.1.14](https://github.com/Availity/availity-react/compare/@availity/feedback@5.1.13...@availity/feedback@5.1.14) (2019-10-11)
+
+
+### Bug Fixes
+
+* eslint issues ([bc4d8e9](https://github.com/Availity/availity-react/commit/bc4d8e9))
+
+
+
+
+
 ## [5.1.13](https://github.com/Availity/availity-react/compare/@availity/feedback@5.1.12...@availity/feedback@5.1.13) (2019-10-09)
 
 **Note:** Version bump only for package @availity/feedback

@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [5.0.6](https://github.com/Availity/availity-react/compare/@availity/reactstrap-validation-select@5.0.5...@availity/reactstrap-validation-select@5.0.6) (2019-10-11)
+
+
+### Bug Fixes
+
+* eslint issues ([bc4d8e9](https://github.com/Availity/availity-react/commit/bc4d8e9))
+
+
+
+
+
 ## [5.0.5](https://github.com/Availity/availity-react/compare/@availity/reactstrap-validation-select@5.0.4...@availity/reactstrap-validation-select@5.0.5) (2019-10-04)
 
 
