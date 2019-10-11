@@ -318,6 +318,7 @@ describe('Select', () => {
           testFormInput: undefined,
           firstName: '',
           lastName: '',
+          fullName: '',
         }}
         onSubmit={onSubmit}
       >
@@ -329,10 +330,12 @@ describe('Select', () => {
           autofill={{
             firstName: 'name.first',
             lastName: 'name.last',
+            fullName: opt => `${opt.name.first} ${opt.name.last}`,
           }}
         />
         <Input data-testid="first-input" name="firstName" />
         <Input data-testid="last-input" name="lastName" />
+        <Input data-testid="full-input" name="fullName" />
 
         <Button>Submit</Button>
       </Form>
@@ -361,6 +364,7 @@ describe('Select', () => {
       const payload = onSubmit.mock.calls[0][0];
       expect(payload.firstName).toBe('John');
       expect(payload.lastName).toBe('Doe');
+      expect(payload.fullName).toBe('John Doe');
     });
   });
 
@@ -424,7 +428,6 @@ describe('Select', () => {
 
     await fireEvent.click(submitButton);
 
-    // Check that values got autofilled
     await wait(() => {
       expect(onSubmit).toHaveBeenCalledTimes(1);
       const payload = onSubmit.mock.calls[0][0];

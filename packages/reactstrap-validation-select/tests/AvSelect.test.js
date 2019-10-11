@@ -214,10 +214,12 @@ describe('AvSelect', () => {
           autofill={{
             firstName: 'name.first',
             lastName: 'name.last',
+            fullName: opt => `${opt.name.first} ${opt.name.last}`,
           }}
         />
         <AvInput data-testid="first-input" name="firstName" />
         <AvInput data-testid="last-input" name="lastName" />
+        <AvInput data-testid="full-input" name="fullName" />
 
         <Button>Submit</Button>
       </AvForm>
@@ -246,6 +248,7 @@ describe('AvSelect', () => {
       const payload = onSubmit.mock.calls[0][2];
       expect(payload.firstName).toBe('John');
       expect(payload.lastName).toBe('Doe');
+      expect(payload.fullName).toBe('John Doe');
     });
   });
 });

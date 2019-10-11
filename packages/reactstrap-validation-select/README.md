@@ -58,7 +58,23 @@ Please refer to [react-select with async pagination](https://github.com/TheSharp
 *   **`raw`**: Boolean. Optional. Default: `false`. If `true`, the entire object of the selected value will be returned as the value instead of the value for the `valueKey` within the object.
 *   **`valueKey`**: String. Optional. The key of the value you want returned when selected. Default: `value`
 *   **`labelKey`**: String. Optional. The key for the label you want to appear in the dropdown for the user to see. Default `label`
-*   **`autofill`**: Boolean or Object. Optional. Default: `false`. If `true`, when the value of the dropdown changes, if the `isMulti` prop is `false` _and_ the new value of the dropdown is an object, all fields on the form corresponding to the new value will be auto-filled. In order for a field to be auto-filled, the `name` property on the field _must_ match the key inside the new value. For example, if the new value is `{ "payer": "Availity" }`, in order for the payer input in the form to be auto-filled to "Availity", the `name` prop on the input must be "payer". If `autofill` is an object, when the value of the dropdown changes, if the `isMulti` prop is `false` _and_ the new value of the dropdown is an object, all fields on the form corresponding to the keys in the `autofill` prop will be auto-filled. For example, if the new value is `{ "payer": { "name": "Availity", "id": "1" } }`, in order for the "payerName" and "payerId" inputs to be auto-filled to "Availity" and "1" respectively, the `autofill` prop should be `{ payerName: 'payer.name', payerId: 'payer.id' }`.
+*   **`autofill`**: Boolean or Object. Optional. Default: `false`. If `true`, when the value of the dropdown changes, if the `isMulti` prop is `false` _and_ the new value of the dropdown is an object, all fields on the form corresponding to the new value are auto-filled. In order for a field to be auto-filled, the `name` property on the field _must_ match the key inside the new value. 
+
+For example, if the new value is `{ "payer": "Availity" }`, in order for the payer input in the form to be auto-filled to "Availity", the `name` prop on the input must be "payer". 
+
+If `autofill` is an object, when the value of the dropdown changes, if the `isMulti` prop is `false` _and_ the new value of the dropdown is an object, all fields on the form corresponding to the keys in the `autofill` prop will be auto-filled.
+
+When `autofill` is an object, the values in the object can be a string or a function. When a string, the key in the `autofill` prop gets auto-filled to that path on the selected option. When a function, it gets called with the selected option, and the key in the `autofill` prop gets auto-filled to the return value of the function.
+
+For example, if the new value is `{ "payer": { "name": "Availity", "id": "1" } }`, in order for the "payerName", "payerId", and "payerNameAndId" inputs to be auto-filled to "Availity", "1", and "1 - Availity" respectively, the `autofill` prop should be:
+
+```js
+{
+  payerName: 'payer.name',
+  payerId: 'payer.id',
+  payerNameAndId: opt => `${opt.payer.id} - ${opt.payer.name}`,
+}
+```
 
 #### AvSelect Example usage
 
@@ -103,7 +119,23 @@ Please refer to [react-select with async pagination](https://github.com/TheSharp
 *   **`labelClass`**: String. Optional. ClassName to add to the label
 *   **`feedbackClass`**: String. Optional. ClassName to add to the AvFeedback
 *   **`creatable`**: boolean. Optional. Whether or not to allow new items to be created if not found.
-*   **`autofill`**: Boolean or Object. Optional. Default: `false`. If `true`, when the value of the dropdown changes, if the `isMulti` prop is `false` _and_ the new value of the dropdown is an object, all fields on the form corresponding to the new value will be auto-filled. In order for a field to be auto-filled, the `name` property on the field _must_ match the key inside the new value. For example, if the new value is `{ "payer": "Availity" }`, in order for the payer input in the form to be auto-filled to "Availity", the `name` prop on the input must be "payer". If `autofill` is an object, when the value of the dropdown changes, if the `isMulti` prop is `false` _and_ the new value of the dropdown is an object, all fields on the form corresponding to the keys in the `autofill` prop will be auto-filled. For example, if the new value is `{ "payer": { "name": "Availity", "id": "1" } }`, in order for the "payerName" and "payerId" inputs to be auto-filled to "Availity" and "1" respectively, the `autofill` prop should be `{ payerName: 'payer.name', payerId: 'payer.id' }`.
+*   **`autofill`**: Boolean or Object. Optional. Default: `false`. If `true`, when the value of the dropdown changes, if the `isMulti` prop is `false` _and_ the new value of the dropdown is an object, all fields on the form corresponding to the new value are auto-filled. In order for a field to be auto-filled, the `name` property on the field _must_ match the key inside the new value. 
+
+For example, if the new value is `{ "payer": "Availity" }`, in order for the payer input in the form to be auto-filled to "Availity", the `name` prop on the input must be "payer". 
+
+If `autofill` is an object, when the value of the dropdown changes, if the `isMulti` prop is `false` _and_ the new value of the dropdown is an object, all fields on the form corresponding to the keys in the `autofill` prop will be auto-filled.
+
+When `autofill` is an object, the values in the object can be a string or a function. When a string, the key in the `autofill` prop gets auto-filled to that path on the selected option. When a function, it gets called with the selected option, and the key in the `autofill` prop gets auto-filled to the return value of the function.
+
+For example, if the new value is `{ "payer": { "name": "Availity", "id": "1" } }`, in order for the "payerName", "payerId", and "payerNameAndId" inputs to be auto-filled to "Availity", "1", and "1 - Availity" respectively, the `autofill` prop should be:
+
+```js
+{
+  payerName: 'payer.name',
+  payerId: 'payer.id',
+  payerNameAndId: opt => `${opt.payer.id} - ${opt.payer.name}`,
+}
+```
 
 #### AvSelectField Example usage
 
@@ -166,8 +198,24 @@ Please refer to [react-select-async-paginate](https://github.com/vtaits/react-se
 *   **`additional`**: Object. Optional. Additional properties to pass to `AsyncPaginate` (see [react-select-async-paginate](https://github.com/vtaits/react-select-async-paginate#additional)).
 *   **`graphqlConfig`**: Object{ type, query }. Optional. `type` String. is the type of asset returned. `query` String. is the GraphQL query to use in the request.
 *   **`creatable`**: boolean. Optional. Whether or not to allow new items to be created if not found.
-*   **`autofill`**: Boolean or Object. Optional. Default: `false`. If `true`, when the value of the dropdown changes, if the `isMulti` prop is `false` _and_ the new value of the dropdown is an object, all fields on the form corresponding to the new value will be auto-filled. In order for a field to be auto-filled, the `name` property on the field _must_ match the key inside the new value. For example, if the new value is `{ "payer": "Availity" }`, in order for the payer input in the form to be auto-filled to "Availity", the `name` prop on the input must be "payer". If `autofill` is an object, when the value of the dropdown changes, if the `isMulti` prop is `false` _and_ the new value of the dropdown is an object, all fields on the form corresponding to the keys in the `autofill` prop will be auto-filled. For example, if the new value is `{ "payer": { "name": "Availity", "id": "1" } }`, in order for the "payerName" and "payerId" inputs to be auto-filled to "Availity" and "1" respectively, the `autofill` prop should be `{ payerName: 'payer.name', payerId: 'payer.id' }`.
 *   **`minCharsToSearch`**: Number. Optional. The minimum number of characters the user must input before `AvResourceSelect` makes the network request. If the user has not inputted any characters, the network request will still be made. Useful for relieving pressure on the api the `resource` is calling.
+*   **`autofill`**: Boolean or Object. Optional. Default: `false`. If `true`, when the value of the dropdown changes, if the `isMulti` prop is `false` _and_ the new value of the dropdown is an object, all fields on the form corresponding to the new value are auto-filled. In order for a field to be auto-filled, the `name` property on the field _must_ match the key inside the new value. 
+
+For example, if the new value is `{ "payer": "Availity" }`, in order for the payer input in the form to be auto-filled to "Availity", the `name` prop on the input must be "payer". 
+
+If `autofill` is an object, when the value of the dropdown changes, if the `isMulti` prop is `false` _and_ the new value of the dropdown is an object, all fields on the form corresponding to the keys in the `autofill` prop will be auto-filled.
+
+When `autofill` is an object, the values in the object can be a string or a function. When a string, the key in the `autofill` prop gets auto-filled to that path on the selected option. When a function, it gets called with the selected option, and the key in the `autofill` prop gets auto-filled to the return value of the function.
+
+For example, if the new value is `{ "payer": { "name": "Availity", "id": "1" } }`, in order for the "payerName", "payerId", and "payerNameAndId" inputs to be auto-filled to "Availity", "1", and "1 - Availity" respectively, the `autofill` prop should be:
+
+```js
+{
+  payerName: 'payer.name',
+  payerId: 'payer.id',
+  payerNameAndId: opt => `${opt.payer.id} - ${opt.payer.name}`,
+}
+```
 
 #### AvResourceSelect Example usage
 
