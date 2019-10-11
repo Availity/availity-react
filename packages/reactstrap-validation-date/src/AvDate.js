@@ -16,26 +16,6 @@ import { AvInput } from 'availity-reactstrap-validation';
 import { isOutsideRange, limitPropType } from './utils';
 
 class AvDate extends Component {
-  static propTypes = {
-    ...AvInput.propTypes,
-    calendarIcon: PropTypes.node,
-    min: limitPropType,
-    max: limitPropType,
-    onPickerFocusChange: PropTypes.func,
-    datePickerProps: PropTypes.object,
-  };
-
-  static contextTypes = {
-    FormCtrl: PropTypes.object.isRequired,
-  };
-
-  static defaultProps = {
-    type: 'text',
-    datepicker: true,
-    datePickerProps: {},
-    calendarIcon: <Icon name="calendar" />,
-  };
-
   static getDerivedStateFromProps = ({ value }, prevState) => {
     if (value !== undefined && value !== prevState.value) {
       return { value };
@@ -243,5 +223,25 @@ class AvDate extends Component {
     );
   }
 }
+
+AvDate.propTypes = {
+  ...AvInput.propTypes,
+  calendarIcon: PropTypes.node,
+  min: limitPropType,
+  max: limitPropType,
+  onPickerFocusChange: PropTypes.func,
+  datePickerProps: PropTypes.object,
+};
+
+AvDate.contextTypes = {
+  FormCtrl: PropTypes.object.isRequired,
+};
+
+AvDate.defaultProps = {
+  type: 'text',
+  datepicker: true,
+  datePickerProps: {},
+  calendarIcon: <Icon name="calendar" />,
+};
 
 export default AvDate;

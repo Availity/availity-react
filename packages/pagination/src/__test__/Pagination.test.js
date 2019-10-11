@@ -189,7 +189,9 @@ describe('Pagination', () => {
               type="button"
               data-testid="hello-btn"
               onClick={() => setState('world')}
-            />
+            >
+              Toggle
+            </button>
             <SomeComponent />
           </Pagination>
         </>
@@ -222,7 +224,9 @@ describe('Pagination', () => {
             onClick={() => {
               setPage(2);
             }}
-          />
+          >
+            Toggle
+          </button>
           <span data-testid="current-page">{currentPage}</span>
         </div>
       );
@@ -260,7 +264,9 @@ describe('Pagination', () => {
               type="button"
               data-testid="toggle-btn"
               onClick={() => toggle()}
-            />
+            >
+              Toggle
+            </button>
             <SomeComponent />
             <PaginationJson />
           </Pagination>
@@ -352,7 +358,9 @@ describe('Pagination', () => {
               type="button"
               data-testid="toggle-btn"
               onClick={() => toggle()}
-            />
+            >
+              Toggle
+            </button>
             <SomeComponent />
             <PaginationJson />
           </Pagination>

@@ -7,33 +7,7 @@ import AvDate from './AvDate';
 
 const colSizes = ['xs', 'sm', 'md', 'lg', 'xl'];
 
-export default class AvDateField extends Component {
-  static propTypes = {
-    label: PropTypes.node,
-    labelHidden: PropTypes.bool,
-    disabled: PropTypes.bool,
-    readOnly: PropTypes.bool,
-    id: PropTypes.string,
-    inputClass: PropTypes.string,
-    labelClass: PropTypes.string,
-    helpMessage: PropTypes.oneOfType([PropTypes.string, PropTypes.object]),
-    errorMessage: PropTypes.oneOfType([PropTypes.string, PropTypes.object]),
-    labelAttrs: PropTypes.object,
-    groupAttrs: PropTypes.object,
-    grid: PropTypes.object,
-    children: PropTypes.node,
-    name: PropTypes.string.isRequired,
-    size: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
-  };
-
-  static contextTypes = {
-    FormCtrl: PropTypes.object.isRequired,
-  };
-
-  static childContextTypes = {
-    FormCtrl: PropTypes.object.isRequired,
-  };
-
+class AvDateField extends Component {
   getChildContext() {
     this.FormCtrl = { ...this.context.FormCtrl };
     const registerValidator = this.FormCtrl.register;
@@ -129,3 +103,31 @@ export default class AvDateField extends Component {
     );
   }
 }
+
+AvDateField.propTypes = {
+  label: PropTypes.node,
+  labelHidden: PropTypes.bool,
+  disabled: PropTypes.bool,
+  readOnly: PropTypes.bool,
+  id: PropTypes.string,
+  inputClass: PropTypes.string,
+  labelClass: PropTypes.string,
+  helpMessage: PropTypes.oneOfType([PropTypes.string, PropTypes.object]),
+  errorMessage: PropTypes.oneOfType([PropTypes.string, PropTypes.object]),
+  labelAttrs: PropTypes.object,
+  groupAttrs: PropTypes.object,
+  grid: PropTypes.object,
+  children: PropTypes.node,
+  name: PropTypes.string.isRequired,
+  size: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
+};
+
+AvDateField.contextTypes = {
+  FormCtrl: PropTypes.object.isRequired,
+};
+
+AvDateField.childContextTypes = {
+  FormCtrl: PropTypes.object.isRequired,
+};
+
+export default AvDateField;

@@ -89,7 +89,7 @@ const FeedbackForm = ({
       Thank you for your feedback.
     </ModalHeader>
   ) : (
-    <React.Fragment>
+    <>
       <ModalHeader aria-live="assertive" id="feedback-form-header">
         {prompt || `Tell us what you think about ${name}`}
       </ModalHeader>
@@ -141,7 +141,7 @@ const FeedbackForm = ({
             />
           </FormGroup>
           {active ? (
-            <React.Fragment>
+            <>
               {aboutOptions.length > 0 && (
                 <SelectField
                   name="feedbackApp"
@@ -170,7 +170,7 @@ const FeedbackForm = ({
                   rows="2"
                 />
               )}
-            </React.Fragment>
+            </>
           ) : null}
         </ModalBody>
 
@@ -185,7 +185,7 @@ const FeedbackForm = ({
           </Button>
         </ModalFooter>
       </Form>
-    </React.Fragment>
+    </>
   );
 };
 

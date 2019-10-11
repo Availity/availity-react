@@ -45,18 +45,6 @@ class AvSelect extends AvBaseInput {
     };
   }
 
-  static contextTypes = {
-    FormCtrl: PropTypes.object,
-  };
-
-  static propTypes = Object.assign({}, AvBaseInput.propTypes, {
-    options: PropTypes.array,
-    loadOptions: PropTypes.func,
-    raw: PropTypes.bool,
-    creatable: PropTypes.bool,
-    autofill: PropTypes.oneOfType([PropTypes.bool, PropTypes.object]),
-  });
-
   optionsContainsValue = props => {
     const valueKey = this.getValueKey(props);
     const matchingValues = props.options.filter(
@@ -369,5 +357,18 @@ class AvSelect extends AvBaseInput {
     );
   }
 }
+
+AvSelect.contextTypes = {
+  FormCtrl: PropTypes.object,
+};
+
+AvSelect.propTypes = {
+  ...AvBaseInput.propTypes,
+  options: PropTypes.array,
+  loadOptions: PropTypes.func,
+  raw: PropTypes.bool,
+  creatable: PropTypes.bool,
+  autofill: PropTypes.oneOfType([PropTypes.bool, PropTypes.object]),
+};
 
 export default AvSelect;

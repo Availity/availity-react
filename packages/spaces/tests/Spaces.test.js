@@ -79,7 +79,9 @@ describe('Spaces', () => {
             type="button"
             data-testid="add-spaceid-btn"
             onClick={() => setSpaceIds(['1', '2', '3'])}
-          />
+          >
+            Add
+          </button>
         </Spaces>
       );
     };
@@ -177,7 +179,9 @@ describe('Spaces', () => {
             type="button"
             data-testid="add-spaceid-btn"
             onClick={() => setSpaceId('2')}
-          />
+          >
+            Add
+          </button>
         </Spaces>
       );
     };

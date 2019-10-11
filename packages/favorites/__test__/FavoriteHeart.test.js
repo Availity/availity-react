@@ -8,7 +8,7 @@ import {
 } from '@testing-library/react';
 import { avSettingsApi } from '@availity/api-axios';
 import avMessages from '@availity/message-core';
-import maxFavorites from './maxFavorites';
+import maxFavorites from './maxFavorites.json';
 import Favorites, { FavoriteHeart } from '..';
 
 jest.mock('@availity/api-axios');

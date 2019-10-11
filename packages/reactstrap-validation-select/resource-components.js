@@ -1,6 +1,6 @@
 /* eslint-disable react/prop-types */
 /* eslint-disable import/prefer-default-export */
-import React, { Fragment } from 'react';
+import React from 'react';
 import { components } from 'react-select';
 import { Row, Col } from 'reactstrap';
 
@@ -21,7 +21,7 @@ export const PatientOption = props => {
     option = props.data.label;
   } else {
     option = (
-      <Fragment>
+      <>
         <Row noGutters>
           <Col>
             <strong>
@@ -47,7 +47,7 @@ export const PatientOption = props => {
             {payerName} {memberId || subscriberMemberId}
           </Col>
         </Row>
-      </Fragment>
+      </>
     );
   }
 
