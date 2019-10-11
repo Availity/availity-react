@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [5.1.0](https://github.com/Availity/availity-react/compare/@availity/reactstrap-validation-select@5.0.6...@availity/reactstrap-validation-select@5.1.0) (2019-10-11)
+
+
+### Features
+
+* **reactstrap-validation-select:** handle AutoFillType function values ([e320080](https://github.com/Availity/availity-react/commit/e320080))
+
+
+
+
+
 ## [5.0.6](https://github.com/Availity/availity-react/compare/@availity/reactstrap-validation-select@5.0.5...@availity/reactstrap-validation-select@5.0.6) (2019-10-11)
 
 

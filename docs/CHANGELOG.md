@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [3.1.0](https://github.com/Availity/availity-react/compare/@availity/react-docs@3.0.2...@availity/react-docs@3.1.0) (2019-10-11)
+
+
+### Features
+
+* **select:** handle AutoFillType function values ([c9d5540](https://github.com/Availity/availity-react/commit/c9d5540))
+
+
+
+
+
 ## [3.0.2](https://github.com/Availity/availity-react/compare/@availity/react-docs@3.0.1...@availity/react-docs@3.0.2) (2019-10-11)
 
 **Note:** Version bump only for package @availity/react-docs
