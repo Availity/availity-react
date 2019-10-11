@@ -14,14 +14,14 @@ storiesOf('Components|Link', module)
   })
   .add('with absolute url', () => (
     <div className="py-3">
-      <AvLink url="https://github.com/Availity" target="_blank">
+      <AvLink href="https://github.com/Availity" target="_blank">
         Availity Github
       </AvLink>
     </div>
   ))
   .add('with relative url', () => (
     <div className="py-3">
-      <AvLink url="/public/apps/my-app" target="_blank">
+      <AvLink href="/public/apps/my-app" target="_blank">
         My Application
       </AvLink>
     </div>

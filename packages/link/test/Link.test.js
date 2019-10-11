@@ -7,7 +7,7 @@ afterEach(cleanup);
 describe('AvLink', () => {
   test('should render absolute url', () => {
     const { getByTestId } = render(
-      <AvLink url="https://github.com/Availity">Vim</AvLink>
+      <AvLink href="https://github.com/Availity">Vim</AvLink>
     );
 
     const tag = getByTestId('av-link-tag');
@@ -17,7 +17,7 @@ describe('AvLink', () => {
 
   test('should render formatted url when url prop is relative', () => {
     const { getByTestId } = render(
-      <AvLink url="/public/apps/my-app">My App</AvLink>
+      <AvLink href="/public/apps/my-app">My App</AvLink>
     );
 
     const tag = getByTestId('av-link-tag');
@@ -29,7 +29,7 @@ describe('AvLink', () => {
 
   test('should render url prop as is when loadApp is false', () => {
     const { getByTestId } = render(
-      <AvLink loadApp={false} url="/public/apps/my-app">
+      <AvLink loadApp={false} href="/public/apps/my-app">
         My App
       </AvLink>
     );
@@ -44,7 +44,7 @@ describe('AvLink', () => {
     const onClick = jest.fn();
 
     const { getByTestId } = render(
-      <AvLink loadApp={false} url="/public/apps/my-app" onClick={onClick}>
+      <AvLink loadApp={false} href="/public/apps/my-app" onClick={onClick}>
         My App
       </AvLink>
     );
