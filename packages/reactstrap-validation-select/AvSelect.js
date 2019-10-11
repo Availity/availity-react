@@ -6,6 +6,7 @@ import Select, { components as reactSelectComponents } from 'react-select';
 import Creatable from 'react-select/creatable';
 import get from 'lodash.get';
 import isEqual from 'lodash.isequal';
+import isFunction from 'lodash.isfunction';
 
 import AsyncPaginate from 'react-select-async-paginate';
 
@@ -213,11 +214,17 @@ class AvSelect extends AvBaseInput {
 
             let val;
             if (typeof this.props.autofill === 'object') {
-              val = get(
-                rawValue,
-                `${this.props.autofill[fieldName]}`,
-                input.getDefaultValue()
-              );
+              if (isFunction(this.props.autofill[fieldName])) {
+                val = this.props.autofill[fieldName](rawValue);
+              } else if (typeof this.props.autofill[fieldName] === 'string') {
+                val = get(
+                  rawValue,
+                  `${this.props.autofill[fieldName]}`,
+                  input.getDefaultValue()
+                );
+              } else {
+                val = input.getDefaultValue();
+              }
             } else {
               val = get(rawValue, fieldName, input.getDefaultValue());
             }
