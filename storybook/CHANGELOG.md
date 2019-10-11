@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [9.0.4](https://github.com/Availity/availity-react/compare/@availity/react-storybook@9.0.3...@availity/react-storybook@9.0.4) (2019-10-11)
+
+
+### Bug Fixes
+
+* **docs:** fixed submitted state issue for avform ([a217124](https://github.com/Availity/availity-react/commit/a217124))
+
+
+
+
+
 ## [9.0.3](https://github.com/Availity/availity-react/compare/@availity/react-storybook@9.0.2...@availity/react-storybook@9.0.3) (2019-10-11)
 
 **Note:** Version bump only for package @availity/react-storybook

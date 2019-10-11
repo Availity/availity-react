@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [2.0.1](https://github.com/Availity/availity-react/compare/@availity/link@2.0.0...@availity/link@2.0.1) (2019-10-11)
+
+
+### Bug Fixes
+
+* **link:** removed required prop for url and changed to href ([9dcd0de](https://github.com/Availity/availity-react/commit/9dcd0de))
+
+
+
+
+
 # [2.0.0](https://github.com/Availity/availity-react/compare/@availity/link@1.3.1...@availity/link@2.0.0) (2019-10-11)
 
 
