@@ -5,30 +5,13 @@ import 'react-block-ui/style.css';
 import isFeatureEnabled from './isFeatureEnabled';
 
 class Feature extends Component {
-  static propTypes = {
-    features: PropTypes.oneOfType([
-      PropTypes.arrayOf(
-        PropTypes.oneOfType([
-          PropTypes.arrayOf(PropTypes.string),
-          PropTypes.string,
-        ])
-      ),
-      PropTypes.string,
-    ]).isRequired,
-    loader: PropTypes.oneOfType([PropTypes.bool, PropTypes.node]),
-    whenDisabled: PropTypes.node,
-    children: PropTypes.node,
-    negate: PropTypes.bool,
-  };
+  constructor(props) {
+    super(props);
 
-  static defaultProps = {
-    whenDisabled: null,
-    children: null,
-  };
-
-  state = {
-    loading: false,
-  };
+    this.state = {
+      loading: false,
+    };
+  }
 
   async checkFeatures() {
     const { loading } = this.state;
@@ -83,5 +66,26 @@ class Feature extends Component {
     return whenDisabled;
   }
 }
+
+Feature.propTypes = {
+  features: PropTypes.oneOfType([
+    PropTypes.arrayOf(
+      PropTypes.oneOfType([
+        PropTypes.arrayOf(PropTypes.string),
+        PropTypes.string,
+      ])
+    ),
+    PropTypes.string,
+  ]).isRequired,
+  loader: PropTypes.oneOfType([PropTypes.bool, PropTypes.node]),
+  whenDisabled: PropTypes.node,
+  children: PropTypes.node,
+  negate: PropTypes.bool,
+};
+
+Feature.defaultProps = {
+  whenDisabled: null,
+  children: null,
+};
 
 export default Feature;

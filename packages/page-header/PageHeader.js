@@ -83,7 +83,7 @@ const PageHeader = ({
   );
 
   return (
-    <React.Fragment>
+    <>
       <div className="d-flex align-items-start">
         {React.isValidElement(crumbs) ? (
           crumbs
@@ -141,7 +141,7 @@ const PageHeader = ({
           />
         )}
       </div>
-    </React.Fragment>
+    </>
   );
 };
 

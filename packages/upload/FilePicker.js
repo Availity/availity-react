@@ -6,7 +6,11 @@ const htmlValidationAttrs = ['min', 'max', 'required'];
 
 let id = 0;
 class FilePicker extends Component {
-  state = {};
+  constructor(props) {
+    super(props);
+
+    this.state = {};
+  }
 
   id = `filePicker-${(id += 1)}`;
 
@@ -34,7 +38,7 @@ class FilePicker extends Component {
   }
 
   updateValidations(props = this.props) {
-    this.validations = Object.assign({}, props.validate);
+    this.validations = { ...props.validate };
 
     Object.keys(props)
       .filter(val => htmlValidationAttrs.indexOf(val) > -1)

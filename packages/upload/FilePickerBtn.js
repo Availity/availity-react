@@ -1,4 +1,4 @@
-import React, { useRef, Fragment } from 'react';
+import React, { useRef } from 'react';
 import PropTypes from 'prop-types';
 import { Button, Input } from 'reactstrap';
 import FilePicker from './FilePicker';
@@ -25,7 +25,7 @@ const FilePickerBtn = ({
   };
 
   return (
-    <Fragment>
+    <>
       <div className="d-none">
         <FilePicker
           tag={Input}
@@ -39,7 +39,7 @@ const FilePickerBtn = ({
         />
       </div>
       <Button {...rest} onClick={onBtnClick} />
-    </Fragment>
+    </>
   );
 };
 

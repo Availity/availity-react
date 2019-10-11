@@ -12,7 +12,7 @@ export const getUrl = (url = '', loadApp) => {
 
 const AvLink = ({
   tag: Tag,
-  url,
+  href: url,
   target,
   children,
   onClick,
@@ -40,6 +40,7 @@ AvLink.propTypes = {
   target: PropTypes.string,
   tag: PropTypes.oneOfType([PropTypes.func, PropTypes.string]),
   children: PropTypes.node,
+  href: PropTypes.string,
   onClick: PropTypes.func,
   loadApp: PropTypes.bool,
 };

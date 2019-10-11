@@ -1,4 +1,4 @@
-import React, { Fragment } from 'react';
+import React from 'react';
 import PropTypes from 'prop-types';
 import { Util, Button } from 'reactstrap';
 import InfiniteScroll from 'react-infinite-scroll-component';
@@ -54,10 +54,10 @@ const PaginationContent = ({
             if (indexOfItemToReference === key) {
               const ComponentWithRef = React.forwardRef((props, innerRef) => {
                 return (
-                  <Fragment>
+                  <>
                     <span className="sr-only" ref={innerRef} />
                     <Component {...props} />
-                  </Fragment>
+                  </>
                 );
               });
 

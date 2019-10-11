@@ -2,8 +2,6 @@ import React, { Component } from 'react';
 import { AvForm } from 'availity-reactstrap-validation';
 
 class AvFormResult extends Component {
-  state = {};
-
   onSubmit = (event, errors, values) => {
     this.setState({
       submitted: new Date().toJSON(),
@@ -15,7 +13,7 @@ class AvFormResult extends Component {
   render() {
     const { submitted, errors, values } = this.state;
     return (
-      <React.Fragment>
+      <>
         <AvForm
           {...this.props}
           onSubmit={this.onSubmit}
@@ -32,7 +30,7 @@ class AvFormResult extends Component {
             </div>
           </div>
         )}
-      </React.Fragment>
+      </>
     );
   }
 }
