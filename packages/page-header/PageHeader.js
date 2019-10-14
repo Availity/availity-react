@@ -75,7 +75,9 @@ const PageHeader = ({
     () => (
       <Feedback
         appName={appName}
-        className={`float-md-right d-inline-block ${payerId ? 'mx-3' : ''}`}
+        className={`float-md-right d-flex align-self-end ${
+          appName || payerId ? 'mx-3' : ''
+        }`}
         {...feedbackProps}
       />
     ),
@@ -127,12 +129,10 @@ const PageHeader = ({
             </AppIcon>
           )}
           {children || <h1 className="mb-0">{appName}</h1>}
+          {showFeedback && feedback}
         </Tag>
         {!RenderRightContent ? (
-          <div className="page-header-left">
-            {payerLogo}
-            {showFeedback && feedback}
-          </div>
+          <div className="page-header-left">{payerLogo}</div>
         ) : (
           <RenderRightContent
             className="page-header-left"
