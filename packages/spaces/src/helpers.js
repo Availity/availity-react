@@ -41,3 +41,5 @@ export const sanitizeSpaces = spaces => {
     return accum;
   }, []);
 };
+
+export const isFunction = obj => typeof obj === 'function';

@@ -2,7 +2,12 @@ import React, { createContext, useContext, useMemo, useReducer } from 'react';
 import PropTypes from 'prop-types';
 import { avSlotMachineApi } from '@availity/api-axios';
 import { useEffectAsync } from '@availity/hooks';
-import { spacesReducer, INITIAL_STATE, sanitizeSpaces } from './helpers';
+import {
+  spacesReducer,
+  INITIAL_STATE,
+  sanitizeSpaces,
+  isFunction,
+} from './helpers';
 
 export const getAllSpaces = async (
   query,
@@ -122,7 +127,9 @@ const Spaces = ({
     <SpacesContext.Provider
       value={{ spaces: spacesForProvider, loading, error }}
     >
-      {children}
+      {isFunction(children)
+        ? (() => children({ spaces: spacesForProvider, loading, error }))()
+        : children}
     </SpacesContext.Provider>
   );
 };
