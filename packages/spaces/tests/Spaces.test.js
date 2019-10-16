@@ -8,7 +8,8 @@ import {
   fireEvent,
 } from '@testing-library/react';
 import { avSlotMachineApi } from '@availity/api-axios';
-import { getAllSpaces, sanitizeSpaces } from '../src/Spaces';
+import { getAllSpaces } from '../src/Spaces';
+import { sanitizeSpaces } from '../src/helpers';
 import Spaces, { useSpace, SpacesLogo } from '..';
 
 jest.mock('@availity/api-axios');

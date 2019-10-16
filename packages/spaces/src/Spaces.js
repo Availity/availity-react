@@ -2,6 +2,7 @@ import React, { createContext, useContext, useMemo, useReducer } from 'react';
 import PropTypes from 'prop-types';
 import { avSlotMachineApi } from '@availity/api-axios';
 import { useEffectAsync } from '@availity/hooks';
+import { spacesReducer, INITIAL_STATE, sanitizeSpaces } from './helpers';
 
 export const getAllSpaces = async (
   query,
@@ -36,50 +37,7 @@ export const getAllSpaces = async (
   return unionedSpaces;
 };
 
-export const sanitizeSpaces = spaces => {
-  // Normalize space pairs ( [{ name, value }} => { name: value } )
-  const pairFields = ['images', 'metadata', 'colors', 'icons', 'mapping'];
-  return spaces.reduce((accum, spc) => {
-    pairFields.forEach(field => {
-      if (spc[field] && Array.isArray(spc[field])) {
-        spc[field] = spc[field].reduce((_accum, { name, value }) => {
-          _accum[name] = value;
-          return _accum;
-        }, {});
-      }
-    });
-
-    accum.push(spc);
-    return accum;
-  }, []);
-};
-
 export const SpacesContext = createContext();
-
-const INITIAL_STATE = {
-  spaces: [],
-  loading: true,
-  error: null,
-};
-
-const actions = {
-  SPACES: (_, { spaces }) => ({
-    spaces: spaces || [],
-    error: null,
-    loading: false,
-  }),
-  ERROR: (state, { error }) => ({
-    ...state,
-    loading: false,
-    error,
-  }),
-  LOADING: (state, { loading }) => ({
-    ...state,
-    loading: loading !== undefined ? loading : !state.loading,
-  }),
-};
-
-const spacesReducer = (state, action) => actions[action.type](state, action);
 
 const Spaces = ({
   query,
