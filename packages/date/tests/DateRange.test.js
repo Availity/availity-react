@@ -292,19 +292,32 @@ describe('DateRange', () => {
         }}
         onSubmit={onSubmit}
       >
-        <DateRange id="dateRange" name="dateRange" range />
+        <DateRange id="dateRange" name="dateRange" ranges />
         <Button type="submit">Submit</Button>
       </Form>
     );
 
     container.querySelector('.DateRangePickerInput_calendarIcon').click();
 
-    setTimeout(() => {
+    await wait(() => {
       expect(
         container.querySelector(
           '.DayPicker_calendarInfo__horizontal DayPicker_calendarInfo__horizontal_1'
         )
-      ).toBeTruthy();
-    }, 3000);
+      ).toBeDefined();
+    });
+
+    // Simulate User hitting the 'Today' pre-set
+    container.querySelectorAll('.btn-default')[0].click();
+
+    const date = new Date();
+
+    expect(
+      container.querySelectorAll('.DateInput_input.DateInput_input_1')[0].value
+    ).toEqual(`${date.getMonth() + 1}/${date.getDate()}/${date.getFullYear()}`);
+
+    expect(
+      container.querySelectorAll('.DateInput_input.DateInput_input_1')[1].value
+    ).toEqual(`${date.getMonth() + 1}/${date.getDate()}/${date.getFullYear()}`);
   });
 });

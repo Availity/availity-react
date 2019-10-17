@@ -246,6 +246,7 @@ storiesOf('Formik|Date', module)
           label="Date of Service"
           disabled={boolean('Disabled', false)}
           datepicker={boolean('Has datepicker', true)}
+          ranges={boolean('ranges', false)}
           format={dateFormat}
           min={min && minDate}
           max={max && maxDate}
