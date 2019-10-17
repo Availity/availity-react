@@ -30,6 +30,6 @@ Array of spaceIds the Spaces provider should fetch the spaces for. Any `spaceIds
 
 Array of payerIds the Spaces provider should fetch the spaces for. Any `payerIds` already included in `spaces` will not be fetched again.
 
-### `children?: React.ReactNode | (props: FormikProps<Values>) => ReactNode`
+### `children?: React.ReactNode | (spacesContext: SpacesContext) => ReactNode`
 
 Children can be a react child or render prop.
