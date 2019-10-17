@@ -1,6 +1,6 @@
 {
   "name": "@availity/date",
-  "version": "0.3.8",
+  "version": "0.3.9",
   "description": "Wrapper for react-dates to work with formik",
   "main": "index.js",
   "typings": "typings/index.d.ts",
