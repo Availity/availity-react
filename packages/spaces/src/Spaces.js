@@ -184,7 +184,7 @@ export const useSpace = id => {
 
 Spaces.propTypes = {
   clientId: PropTypes.string.isRequired,
-  children: PropTypes.node,
+  children: PropTypes.oneOfType([PropTypes.node, PropTypes.func]),
   query: PropTypes.string,
   variables: PropTypes.object,
   spaceIds: PropTypes.arrayOf(PropTypes.string),
