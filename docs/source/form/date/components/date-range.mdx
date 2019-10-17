@@ -59,54 +59,78 @@ import moment from 'moment';
 See [react-dates](https://github.com/airbnb/react-dates#daterangepicker) for additional props
 
 ### `name: string`
+
 The name of the field. Will be the key of the selected dates that come through in the values of the `onSubmit` callback.
 
 ### `startKey: string`
+
 Key to return start date as on form submit. Should match the yup schema `startKey`.
 
 ### `endKey: string`
+
 Key to return end date as on form submit. Should match the yup schema `endKey`.
 
 ### `min?: string | LimitType`
+
 Used in conjunction with `max` to derive `isOutsideRange` prop from `react-dates`. Dates outside the allowed range will not be clickable in datepicker.
 
 ```json hideCopy=true
-{ // LimitType
+{
+  // LimitType
   "value": "12",
   "units": "day"
 }
 ```
 
 ### `max?: string | LimitType`
+
 Used in conjunction with `min` to derive `isOutsideRange` prop from `react-dates`. Dates outside the allowed range will not be clickable in datepicker.
 
 ```json hideCopy=true
-{ // LimitType
+{
+  // LimitType
   "value": "12",
   "units": "day"
 }
 ```
 
 ### `disabled?: boolean`
+
 Whether the date range is disabled.
 
 ### `onPickerFocusChange?: ({ focusedInput: string }) => void`
+
 Function to be run when focus on the input changes. `focusedInput` contains the `id` of the focused field.
 
-
 **Possible Values**:
+
 - `startId` - the id of the start field. `"<name>-start"`
 - `endId` - the id of the end field. `"<name>-end"`
 - `undefined` - the date range was unfocused
 
 ### `calendarIcon?: ReactNode`
+
 Override the default icon that appears. Default: `<Icon name="calendar" />
 
 ### `format?: string`
+
 How to format date value in `onSubmit` callback. Must be a format recognized by [moment](https://momentjs.com/docs/#/displaying/format/). **Default: `MM/DD/YYYY`**
 
 ### `datepicker?: boolean`
+
 Toggle whether the calendar is shown.
 
 ### `datePickerProps?: SingleDatePickerShape`
+
 Props to be spread onto the datepicker component from [react-dates](https://github.com/airbnb/react-dates#singledatepicker).
+
+### `ranges?: boolean | string[] | {[key:string]:MomentDateRange}`
+
+Show preset date ranges when calendar is visible. Accepts `boolean` to display default ranges. If `string[]` will strip subset of ranges off defaults. If `object` will overwrite the default ranges.
+
+```ts hideCopy=true
+interface MomentDateRange {
+  startDate: (moment: Moment) => Moment;
+  endDate: (moment: Moment) => Moment;
+}
+```
