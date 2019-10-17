@@ -42,7 +42,7 @@ const PageHeader = ({
     const logoAttrs = {
       spaceId,
       payerId,
-      className: 'float-md-right d-inline-block',
+      className: 'd-inline-flex',
       skeletonProps: {
         width: 180,
         height: '100%',
@@ -75,7 +75,7 @@ const PageHeader = ({
     () => (
       <Feedback
         appName={appName}
-        className={`float-md-right d-flex align-self-end ${
+        className={`d-inline-flex flex-shrink-0 ${
           appName || payerId ? 'mx-3' : ''
         }`}
         {...feedbackProps}
@@ -129,10 +129,12 @@ const PageHeader = ({
             </AppIcon>
           )}
           {children || <h1 className="mb-0">{appName}</h1>}
-          {showFeedback && feedback}
         </Tag>
         {!RenderRightContent ? (
-          <div className="page-header-left">{payerLogo}</div>
+          <div className="page-header-left d-flex flex-xs-wrap flex-md-nowrap flex-grow align-items-end justify-content-end">
+            {showFeedback && feedback}
+            {payerLogo}
+          </div>
         ) : (
           <RenderRightContent
             className="page-header-left"
