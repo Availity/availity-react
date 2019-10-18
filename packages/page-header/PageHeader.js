@@ -75,9 +75,7 @@ const PageHeader = ({
     () => (
       <Feedback
         appName={appName}
-        className={`d-inline-flex flex-shrink-0 ${
-          appName || payerId ? 'mx-3' : ''
-        }`}
+        className={`d-inline-flex flex-shrink-0 ${payerId ? 'mx-3' : ''}`}
         {...feedbackProps}
       />
     ),
