@@ -10,7 +10,7 @@ const FeedbackModal = ({ isOpen, toggle, ...formOptions }) => (
     data-testid="feedbackModal"
     tabIndex="-1"
     role="dialog"
-    aria-labelledby="feedbackModalLabel"
+    aria-labelledby="feedback-form-header"
     aria-hidden="true"
     isOpen={isOpen}
     toggle={toggle}
