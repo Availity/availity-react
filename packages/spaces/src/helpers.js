@@ -25,7 +25,7 @@ export const spacesReducer = (state, action) =>
   actions[action.type](state, action);
 
 export const sanitizeSpaces = spaces => {
-  // Normalize space pairs ( [{ name, value }} => { name: value } )
+  // Normalize space pairs ( [{ name, value }] => { name: value } )
   const pairFields = ['images', 'metadata', 'colors', 'icons', 'mapping'];
   return spaces.reduce((accum, spc) => {
     pairFields.forEach(field => {
