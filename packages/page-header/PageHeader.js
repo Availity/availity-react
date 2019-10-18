@@ -20,6 +20,7 @@ const PageHeader = ({
   feedbackProps,
   titleProps: { className: titleClassName, ...restTitleProps },
   renderRightContent: RenderRightContent,
+  renderRightClassName,
   component,
   tag: Tag,
   clientId,
@@ -75,9 +76,7 @@ const PageHeader = ({
     () => (
       <Feedback
         appName={appName}
-        className={`d-inline-flex flex-shrink-0 ${
-          appName || payerId ? 'mx-3' : ''
-        }`}
+        className={`d-inline-flex flex-shrink-0 ${payerId ? 'mx-3' : ''}`}
         {...feedbackProps}
       />
     ),
@@ -137,7 +136,7 @@ const PageHeader = ({
           </div>
         ) : (
           <RenderRightContent
-            className="page-header-left"
+            className={renderRightClassName}
             payerLogo={payerLogo}
             feedback={feedback}
           />
@@ -173,6 +172,7 @@ PageHeader.propTypes = {
   ]),
   tag: PropTypes.oneOfType([PropTypes.func, PropTypes.string]),
   renderRightContent: PropTypes.func,
+  renderRightClassName: PropTypes.string,
   homeUrl: PropTypes.string,
   clientId: PropTypes.string,
   iconSrc: PropTypes.string,
@@ -187,6 +187,8 @@ PageHeader.defaultProps = {
   payerId: null,
   homeUrl: '/public/apps/dashboard',
   titleProps: {},
+  renderRightClassName:
+    'page-header-left d-flex flex-xs-wrap flex-md-nowrap flex-grow align-items-end justify-content-end',
 };
 
 export default PageHeader;
