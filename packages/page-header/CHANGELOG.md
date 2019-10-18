@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [8.2.0](https://github.com/Availity/availity-react/compare/@availity/page-header@8.1.10...@availity/page-header@8.2.0) (2019-10-18)
+
+
+### Features
+
+* **page-header:** add renderRightClassName props and defaults ([c8403fe](https://github.com/Availity/availity-react/commit/c8403fe))
+
+
+
+
+
 ## [8.1.10](https://github.com/Availity/availity-react/compare/@availity/page-header@8.1.9...@availity/page-header@8.1.10) (2019-10-18)
 
 **Note:** Version bump only for package @availity/page-header
