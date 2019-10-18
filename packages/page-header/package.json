@@ -1,6 +1,6 @@
 {
   "name": "@availity/page-header",
-  "version": "8.1.9",
+  "version": "8.1.10",
   "author": "Evan Sharp <evan.sharp@availity.com>",
   "description": "The standard page header for Availity Portal Applications",
   "main": "index.js",
@@ -32,7 +32,7 @@
     "@availity/api-axios": "^5.4.0",
     "@availity/api-core": "^5.4.0",
     "@availity/localstorage-core": "^2.6.1",
-    "@availity/spaces": "^3.2.2",
+    "@availity/spaces": "^3.2.3",
     "axios": "^0.18.0",
     "formik": "^2.0.1-rc.12",
     "react": "^16.8.3",
