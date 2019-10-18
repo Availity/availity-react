@@ -3,6 +3,7 @@ import SpacesImage from './src/SpacesImage';
 import SpacesDisclaimer from './src/SpacesDisclaimer';
 import SpacesAgreement from './src/SpacesAgreement';
 import SpacesGhostText from './src/SpacesGhostText';
+import { sanitizeSpaces } from './src/helpers';
 
 const SpacesLogo = SpacesImage.create({
   imageType: 'images.logo',
@@ -28,4 +29,5 @@ export {
   SpacesGhostText,
   useSpace,
   SpacesContext,
+  sanitizeSpaces,
 };

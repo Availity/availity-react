@@ -8,7 +8,8 @@ import {
   fireEvent,
 } from '@testing-library/react';
 import { avSlotMachineApi } from '@availity/api-axios';
-import { getAllSpaces, sanitizeSpaces } from '../src/Spaces';
+import { getAllSpaces } from '../src/Spaces';
+import { sanitizeSpaces } from '../src/helpers';
 import Spaces, { useSpace, SpacesLogo } from '..';
 
 jest.mock('@availity/api-axios');
@@ -358,5 +359,30 @@ describe('Spaces', () => {
     await waitForElement(() => getByText('No Space'));
 
     expect(fn.mock.calls[0][1]).toBe('clientId is required');
+  });
+
+  test('works with render props', async () => {
+    avSlotMachineApi.create.mockResolvedValueOnce({
+      data: {
+        data: {
+          spaces: {
+            totalCount: 2,
+            page: 1,
+            perPage: 2,
+            spaces: [{ id: '1' }, { id: '2' }],
+          },
+        },
+      },
+    });
+
+    console.warn = jest.fn();
+
+    const { getByText } = render(
+      <Spaces spaceIds={['1', '2']} clientId="test-client-id">
+        {({ spaces = [] }) => <div>{spaces.map(space => space.id)}</div>}
+      </Spaces>
+    );
+
+    await waitForElement(() => getByText('12'));
   });
 });
