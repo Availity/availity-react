@@ -22,6 +22,7 @@
     "clean": "gatsby clean"
   },
   "dependencies": {
+    "@availity/analytics": "^1.0.0",
     "@availity/api-axios": "^5.4.0",
     "@availity/api-core": "^5.4.0",
     "@availity/app-icon": "^1.3.1",

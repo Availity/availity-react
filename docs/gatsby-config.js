@@ -66,6 +66,13 @@ module.exports = {
             },
           ],
           'Portal Components': [
+            {
+              resolve: 'components/analytics/index',
+              pages: [
+                'components/analytics/analytics',
+                'components/analytics/hook',
+              ],
+            },
             'components/authorize',
             'components/avatar',
             {
