@@ -176,7 +176,11 @@ const FeedbackForm = ({
 
         <ModalFooter>
           {onClose ? (
-            <Button onClick={onClose} color="secondary">
+            <Button
+              onClick={onClose}
+              color="secondary"
+              onKeyDown={({ keyCode }) => keyCode === 13 && onClose()}
+            >
               Close
             </Button>
           ) : null}
