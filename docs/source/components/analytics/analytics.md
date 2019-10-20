@@ -29,7 +29,7 @@ const plugin = {
 
 ### `plugins?: AnalyticsPlugin[]`
 
-Array of plugins to call when an event is tracked. See [@availity/analytics-core](/sdk-js) for list of prebuilt plugins.
+Array of plugins to call when an event is tracked. See [@availity/analytics-core](/sdk-js/features/analytics/) for list of prebuilt plugins.
 
 ### `pageTracking?: boolean`
 
