@@ -14,7 +14,7 @@ import { useSpaces } from '@availity/spaces';
 
 const SpacesComponent = () => {
   // ids can be space ids or payer ids
-  const [space1, space2, space3] = useSpaces(['1', '2', 3']);
+  const [space1, space2, space3] = useSpaces('1', '2', '3');
 };
 ```
 

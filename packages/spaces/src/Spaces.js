@@ -145,7 +145,7 @@ export const useSpace = id => {
   return { space, isGhost, loading, error };
 };
 
-export const useSpaces = ids => {
+export const useSpaces = (...ids) => {
   const { spaces = [] } = useContext(SpacesContext) || {};
 
   if (!ids || ids.length === 0) {

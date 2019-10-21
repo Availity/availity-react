@@ -401,8 +401,8 @@ describe('Spaces', () => {
     });
 
     // Create a spaces component that renders ids passed in
-    const SpacesComponent = ({ ids }) => {
-      const spaces = useSpaces(ids);
+    const SpacesComponent = ({ ids = [] }) => {
+      const spaces = useSpaces(...ids);
 
       const dataTestIdSuffix =
         ids && ids.length > 0 ? ids.join('-') : 'all-spaces';
