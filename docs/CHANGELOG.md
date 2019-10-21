@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [3.2.0](https://github.com/Availity/availity-react/compare/@availity/react-docs@3.1.8...@availity/react-docs@3.2.0) (2019-10-21)
+
+
+### Features
+
+* **analytics:** added analytics package ([10b4fb3](https://github.com/Availity/availity-react/commit/10b4fb3))
+
+
+
+
+
 ## [3.1.8](https://github.com/Availity/availity-react/compare/@availity/react-docs@3.1.7...@availity/react-docs@3.1.8) (2019-10-18)
 
 **Note:** Version bump only for package @availity/react-docs

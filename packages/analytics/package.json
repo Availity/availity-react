@@ -1,6 +1,6 @@
 {
   "name": "@availity/analytics",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "author": "Kyle Gray <kyle.gray@gmail.com>",
   "description": "Track click and page view events for the user.",
   "main": "index.js",

@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [9.1.0](https://github.com/Availity/availity-react/compare/@availity/react-storybook@9.0.11...@availity/react-storybook@9.1.0) (2019-10-21)
+
+
+### Features
+
+* **analytics:** added analytics package ([10b4fb3](https://github.com/Availity/availity-react/commit/10b4fb3))
+
+
+
+
+
 ## [9.0.11](https://github.com/Availity/availity-react/compare/@availity/react-storybook@9.0.10...@availity/react-storybook@9.0.11) (2019-10-18)
 
 **Note:** Version bump only for package @availity/react-storybook
