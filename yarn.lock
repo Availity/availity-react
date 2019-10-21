@@ -20,9 +20,9 @@
     merge-options-es5 "^1.0.0"
 
 "@availity/api-core@^5.4.0":
-  version "5.4.0"
-  resolved "https://registry.yarnpkg.com/@availity/api-core/-/api-core-5.4.0.tgz#42375b1d6b7157b09af207b678a4adcefa7d82ea"
-  integrity sha512-Vv2kLMaGPH6pyz2oI1sxRFy4034+V7wtcpD8ykU8GuZFyT2HMBw9JF6daJ/V04Xcq7NYWq9IO+9E0TSVfmaMPA==
+  version "5.4.1"
+  resolved "https://registry.yarnpkg.com/@availity/api-core/-/api-core-5.4.1.tgz#493150e1915db6496ccd61c60b55b607d0921227"
+  integrity sha512-JC4N5t09Wu6/G3dOjRO5AHEIAePyN5wA2iDHS74TgfWUhF65yzMz++iGCEpSfRx1mO0d7UptlpnGYvSC9bCM1Q==
   dependencies:
     "@availity/resolve-url" "^1.1.0"
     qs "^6.5.2"
