@@ -14,11 +14,13 @@ const Feature = ({ features, loader, whenDisabled, children, negate }) => {
     const _enabled = await isFeatureEnabled(features);
 
     setEnabled(_enabled);
+
+    setLoading(false);
   };
 
   useEffect(() => {
     checkFeatures();
-  });
+  }, [checkFeatures, features]);
 
   if (loading) {
     if (loader) return loader === true ? <BlockUi blocking /> : loader;
