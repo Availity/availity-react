@@ -4,7 +4,11 @@ import classNames from 'classnames';
 import Breadcrumbs from '@availity/breadcrumbs';
 import AppIcon from '@availity/app-icon';
 import Feedback from '@availity/feedback';
-import Spaces, { SpacesLogo, useSpace } from '@availity/spaces';
+import Spaces, {
+  SpacesLogo,
+  useSpaces,
+  useSpacesContext,
+} from '@availity/spaces';
 
 const PageHeader = ({
   payerId,
@@ -31,10 +35,8 @@ const PageHeader = ({
   className,
   ...props
 }) => {
-  const { space: spaceForSpaceID } = useSpace(spaceId);
-  const { space: spaceForPayerID, loading: spaceForPayerIDLoading } = useSpace(
-    payerId
-  );
+  const [spaceForSpaceID, spaceForPayerID] = useSpaces(spaceId, payerId);
+  const { loading } = useSpacesContext();
 
   const _space = spaceForSpaceID || spaceForPayerID;
 
@@ -50,7 +52,7 @@ const PageHeader = ({
       },
     };
     payerLogo =
-      spaceForPayerID || spaceForPayerIDLoading ? (
+      spaceForPayerID || loading ? (
         <SpacesLogo {...logoAttrs} />
       ) : (
         <Spaces

@@ -17,16 +17,15 @@ export interface SpacesProps {
 export interface SpaceType {
   error?: string;
   space: object;
-  isGhost: boolean;
   loading: boolean;
 }
 
-declare function useSpace(id?: string): SpaceType;
-
 declare function useSpaces(ids?: string[]): object[];
+
+declare function useSpacesContext(): SpacesContext;
 
 declare const Spaces: React.FunctionComponent<SpacesProps>;
 
-export { useSpace };
+export { useSpaces, useSpacesContext };
 
 export default Spaces;

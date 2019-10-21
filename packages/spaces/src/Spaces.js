@@ -7,8 +7,6 @@ import {
   INITIAL_STATE,
   sanitizeSpaces,
   isFunction,
-  getSpace,
-  getIsGhost,
 } from './helpers';
 
 export const getAllSpaces = async (
@@ -45,6 +43,8 @@ export const getAllSpaces = async (
 };
 
 export const SpacesContext = createContext();
+
+export const useSpacesContext = () => useContext(SpacesContext) || {};
 
 const Spaces = ({
   query,
@@ -136,23 +136,33 @@ const Spaces = ({
   );
 };
 
-export const useSpace = id => {
-  const { spaces = [], loading, error } = useContext(SpacesContext) || {};
-
-  const space = getSpace(spaces, id);
-  const isGhost = getIsGhost(space);
-
-  return { space, isGhost, loading, error };
-};
-
 export const useSpaces = (...ids) => {
   const { spaces = [] } = useContext(SpacesContext) || {};
 
-  if (!ids || ids.length === 0) {
+  const idsIsEmpty = !ids || ids.length === 0;
+  const callerIsExpectingFirstSpace = ids.length === 1 && ids[0] === undefined;
+
+  if (callerIsExpectingFirstSpace && spaces.length > 0) {
+    // eslint-disable-next-line no-console
+    console.warn(
+      `You did not pass an ID in to find a space, and there is more than 1 space in the space array. Returning all.`
+    );
+  }
+
+  const shouldReturnAllSpaces = idsIsEmpty || callerIsExpectingFirstSpace;
+  if (shouldReturnAllSpaces) {
     return spaces;
   }
 
-  const filteredSpaces = ids.map(id => getSpace(spaces, id));
+  // Try to match by space id first, else match by payer id
+  const filteredSpaces = ids.map(id => {
+    let [spc] = spaces.filter(s => s.id === id);
+
+    if (!spc) {
+      [spc] = spaces.filter(s => (s.payerIDs || []).some(p => p === id));
+    }
+    return spc;
+  });
   return filteredSpaces;
 };
 

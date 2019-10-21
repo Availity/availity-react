@@ -1,4 +1,8 @@
-import Spaces, { useSpace, useSpaces, SpacesContext } from './src/Spaces';
+import Spaces, {
+  useSpaces,
+  useSpacesContext,
+  SpacesContext,
+} from './src/Spaces';
 import SpacesImage from './src/SpacesImage';
 import SpacesDisclaimer from './src/SpacesDisclaimer';
 import SpacesAgreement from './src/SpacesAgreement';
@@ -27,8 +31,8 @@ export {
   SpacesDisclaimer,
   SpacesAgreement,
   SpacesGhostText,
-  useSpace,
   useSpaces,
+  useSpacesContext,
   SpacesContext,
   sanitizeSpaces,
 };

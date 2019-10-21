@@ -10,7 +10,7 @@ import {
 import { avSlotMachineApi } from '@availity/api-axios';
 import { getAllSpaces } from '../src/Spaces';
 import { sanitizeSpaces } from '../src/helpers';
-import Spaces, { useSpace, useSpaces, SpacesLogo } from '..';
+import Spaces, { useSpaces, useSpacesContext, SpacesLogo } from '..';
 
 jest.mock('@availity/api-axios');
 
@@ -49,7 +49,7 @@ describe('Spaces', () => {
 
     // Create a space component that renders "Space <id-here> is in provider" if the space is in the provider and "Space <id-here> is not in provider" if it is not the provider
     const SpaceComponent = ({ spaceId }) => {
-      const { space } = useSpace(spaceId);
+      const [space] = useSpaces(spaceId);
 
       return (
         <div>
@@ -157,7 +157,8 @@ describe('Spaces', () => {
     const fn = jest.fn(() => {});
     // Create component to call mock function
     const SpaceComponent = ({ spaceId }) => {
-      const { loading, space, error } = useSpace(spaceId);
+      const [space] = useSpaces(spaceId);
+      const { loading, error } = useSpacesContext(spaceId);
 
       // Should be called when async effect to fetch spaces from slotmachine gets executed
       if (space && !loading) fn(space, error);
@@ -267,79 +268,13 @@ describe('Spaces', () => {
     });
   });
 
-  describe('Single Space', () => {
-    it('returns first payer space with when no spaceId passed', async () => {
-      avSlotMachineApi.create.mockResolvedValueOnce({
-        data: {
-          data: {
-            spaces: {
-              totalCount: 1,
-              page: 1,
-              perPage: 1,
-              spaces: [{ id: '1', name: 'hello world' }],
-            },
-          },
-        },
-      });
-
-      // Create component that renders a SpaceComponent for the current space id
-      const SpaceComponent = () => {
-        const { space = {} } = useSpace();
-
-        return (
-          <div data-testid={`space-${space.id}`}>
-            <span>{space.name}</span>
-          </div>
-        );
-      };
-
-      const { getByTestId, getByText } = render(
-        <Spaces spaceIds={['1']} clientId="my-client-id">
-          <SpaceComponent />
-        </Spaces>
-      );
-
-      await waitForElement(() => getByTestId('space-1'));
-
-      await waitForElement(() => getByText('hello world'));
-    });
-  });
-
-  test('renders with warning', async () => {
-    avSlotMachineApi.create.mockResolvedValueOnce({
-      data: {
-        data: {
-          spaces: {
-            totalCount: 2,
-            page: 1,
-            perPage: 2,
-            spaces: [{ id: '1' }, { id: '2' }],
-          },
-        },
-      },
-    });
-
-    console.warn = jest.fn();
-
-    const { getByTestId } = render(
-      <Spaces spaceIds={['1', '2']} clientId="test-client-id">
-        <SpacesLogo data-testid="spaces-logo-1" />
-      </Spaces>
-    );
-
-    await waitForElement(() => getByTestId('spaces-logo-1'));
-
-    expect(console.warn.mock.calls[0][0]).toBe(
-      'You did not pass an ID in to find a space, and there is more than 1 space in the space array. Returning the first.'
-    );
-  });
-
   it('returns error when missing clientId', async () => {
     // Create component that renders a SpaceComponent for the current space id
     const fn = jest.fn(() => {});
     // Create component to call mock function
     const SpaceComponent = ({ spaceId }) => {
-      const { loading, space, error } = useSpace(spaceId);
+      const [space] = useSpaces(spaceId);
+      const { loading, error } = useSpacesContext(spaceId);
 
       // Should be called when async effect to fetch spaces from slotmachine gets executed
       if (!loading) fn(space, error);
@@ -440,4 +375,69 @@ describe('Spaces', () => {
     );
     expect(specificSpaces.textContent).toBe('Id: 2 Id: 3 ');
   });
+
+  it('returns first payer space with when no spaceId passed', async () => {
+    avSlotMachineApi.create.mockResolvedValueOnce({
+      data: {
+        data: {
+          spaces: {
+            totalCount: 1,
+            page: 1,
+            perPage: 1,
+            spaces: [{ id: '1', name: 'hello world' }],
+          },
+        },
+      },
+    });
+
+    // Create component that renders a SpaceComponent for the current space id
+    const SpaceComponent = () => {
+      const [space = {}] = useSpaces();
+
+      return (
+        <div data-testid={`space-${space.id}`}>
+          <span>{space.name}</span>
+        </div>
+      );
+    };
+
+    const { getByTestId, getByText } = render(
+      <Spaces spaceIds={['1']} clientId="my-client-id">
+        <SpaceComponent />
+      </Spaces>
+    );
+
+    await waitForElement(() => getByTestId('space-1'));
+
+    await waitForElement(() => getByText('hello world'));
+  });
+});
+
+test('renders with warning', async () => {
+  avSlotMachineApi.create.mockResolvedValueOnce({
+    data: {
+      data: {
+        spaces: {
+          totalCount: 2,
+          page: 1,
+          perPage: 2,
+          spaces: [{ id: '1' }, { id: '2' }],
+        },
+      },
+    },
+  });
+
+  console.warn = jest.fn();
+
+  const { getByTestId } = render(
+    <Spaces spaceIds={['1', '2']} clientId="test-client-id">
+      <SpacesLogo data-testid="spaces-logo-1" />
+    </Spaces>
+  );
+
+  await waitForElement(() => getByTestId('spaces-logo-1'));
+
+  expect(console.warn.mock.calls[0][0]).toBe(
+    'You did not pass an ID in to find a space, and there is more than 1 space in the space array. Returning all.'
+  );
 });

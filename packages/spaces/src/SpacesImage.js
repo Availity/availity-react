@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import Skeleton from 'react-loading-skeleton';
 import Img from 'react-image';
 import get from 'lodash.get';
-import { useSpace } from './Spaces';
+import { useSpaces, useSpacesContext } from './Spaces';
 
 const skeletonPropType = PropTypes.shape({
   width: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
@@ -32,7 +32,8 @@ const SpacesImage = ({
   skeletonProps,
   ...props
 }) => {
-  const { space = {}, loading } = useSpace(spaceId || payerId);
+  const [space = {}] = useSpaces(spaceId || payerId);
+  const { loading } = useSpacesContext();
 
   const id = spaceId || payerId || space.id;
   let url = get(space, imageType);
