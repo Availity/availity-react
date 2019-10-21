@@ -7,6 +7,11 @@
   resolved "https://registry.yarnpkg.com/@availity/analytics-core/-/analytics-core-2.7.2.tgz#92f039fe451ed5bb4a5f8191c41f6ec68e4e1196"
   integrity sha512-2R5k7du/pDX8j8l93XBYPbRMp7gYA36RRbQj4KOn5OF0iUHrOnnW7uzcxfmH9GalQ7HOUsXsyP85FRjWgaGIUw==
 
+"@availity/analytics-core@^2.8.0":
+  version "2.8.0"
+  resolved "https://registry.yarnpkg.com/@availity/analytics-core/-/analytics-core-2.8.0.tgz#cb2109c042d4192362abde4130920b81e5d2f5d7"
+  integrity sha512-VDXQHwofOSEn/AT5masBx/TKd+TWam1LlbT9cdw7+uzD0X8cdxwqzbXWfgbehD23R9ulDVDXBsjeLAImiMbAOg==
+
 "@availity/api-axios@^5.4.0":
   version "5.4.1"
   resolved "https://registry.yarnpkg.com/@availity/api-axios/-/api-axios-5.4.1.tgz#c7b1b486c369787860b7075fdec70c875fb38bfd"
