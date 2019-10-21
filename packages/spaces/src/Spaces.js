@@ -140,9 +140,10 @@ export const useSpaces = (...ids) => {
   const { spaces = [] } = useContext(SpacesContext) || {};
 
   const idsIsEmpty = !ids || ids.length === 0;
-  const callerIsExpectingFirstSpace = ids.length === 1 && ids[0] === undefined;
+  const callerIsExpectingFirstSpace =
+    ids && ids.length === 1 && ids[0] === undefined;
 
-  if (callerIsExpectingFirstSpace && spaces.length > 0) {
+  if (callerIsExpectingFirstSpace && spaces.length > 1) {
     // eslint-disable-next-line no-console
     console.warn(
       `You did not pass an ID in to find a space, and there is more than 1 space in the space array. Returning all.`
