@@ -1,3 +1,3 @@
-import Analytics from './src/Analytics';
+import Analytics from './types/Analytics';
 
 export default Analytics;
