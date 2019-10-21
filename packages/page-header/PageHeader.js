@@ -85,7 +85,7 @@ const PageHeader = ({
 
   return (
     <>
-      <div className="d-flex align-items-start">
+      <div className="d-flex align-items-start flex-shrink-0">
         {React.isValidElement(crumbs) ? (
           crumbs
         ) : (
