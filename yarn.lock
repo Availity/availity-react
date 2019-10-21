@@ -2545,14 +2545,14 @@
     global "^4.3.2"
 
 "@storybook/addon-info@^5.2.1":
-  version "5.2.1"
-  resolved "https://registry.yarnpkg.com/@storybook/addon-info/-/addon-info-5.2.1.tgz#d3534ae6cb6ef2d0036522d5eb01aedf68751d40"
-  integrity sha512-/BLUXZT5UCayKaeglRZvkMiRzDrypUoWvDzYFDSBgYXfa9b2LJFYVEcwc6cC8Xtl5F225qXBPNnSNRnz7hDAeg==
+  version "5.2.4"
+  resolved "https://registry.yarnpkg.com/@storybook/addon-info/-/addon-info-5.2.4.tgz#9484c0b20feabe8971112f7c55398ba090cb130e"
+  integrity sha512-/uDYPRGN822M+8O0ZUTnmySG3aoUPOMTyUrIvF+Qb2pqTe1iCkMVgMtr4GwaJaPo5dZ9mAhSApQgMKhN6Qck8w==
   dependencies:
-    "@storybook/addons" "5.2.1"
-    "@storybook/client-logger" "5.2.1"
-    "@storybook/components" "5.2.1"
-    "@storybook/theming" "5.2.1"
+    "@storybook/addons" "5.2.4"
+    "@storybook/client-logger" "5.2.4"
+    "@storybook/components" "5.2.4"
+    "@storybook/theming" "5.2.4"
     core-js "^3.0.1"
     global "^4.3.2"
     jsx-to-string "^1.4.0"
