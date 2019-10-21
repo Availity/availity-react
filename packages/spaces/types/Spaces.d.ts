@@ -23,6 +23,8 @@ export interface SpaceType {
 
 declare function useSpace(id?: string): SpaceType;
 
+declare function useSpaces(ids?: string[]): object[];
+
 declare const Spaces: React.FunctionComponent<SpacesProps>;
 
 export { useSpace };

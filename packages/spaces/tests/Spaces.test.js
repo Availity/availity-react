@@ -10,7 +10,7 @@ import {
 import { avSlotMachineApi } from '@availity/api-axios';
 import { getAllSpaces } from '../src/Spaces';
 import { sanitizeSpaces } from '../src/helpers';
-import Spaces, { useSpace, SpacesLogo } from '..';
+import Spaces, { useSpace, useSpaces, SpacesLogo } from '..';
 
 jest.mock('@availity/api-axios');
 
@@ -384,5 +384,60 @@ describe('Spaces', () => {
     );
 
     await waitForElement(() => getByText('12'));
+  });
+
+  test('useSpaces hook works', async () => {
+    avSlotMachineApi.create.mockResolvedValue({
+      data: {
+        data: {
+          spaces: {
+            totalCount: 3,
+            page: 1,
+            perPage: 3,
+            spaces: [{ id: '1' }, { id: '2' }, { id: '3' }],
+          },
+        },
+      },
+    });
+
+    // Create a spaces component that renders ids passed in
+    const SpacesComponent = ({ ids }) => {
+      const spaces = useSpaces(ids);
+
+      const dataTestIdSuffix =
+        ids && ids.length > 0 ? ids.join('-') : 'all-spaces';
+      return (
+        <div>
+          <span data-testid={`spaces-for-${dataTestIdSuffix}`}>
+            {spaces.map(spc => `Id: ${spc && spc.id} `)}
+          </span>
+        </div>
+      );
+    };
+
+    const { getByTestId } = render(
+      <Spaces spaceIds={['1', '2', '3']} clientId="test-client-id">
+        <SpacesComponent />
+        <SpacesComponent ids={['2', '3']} />
+      </Spaces>
+    );
+
+    expect(avSlotMachineApi.create.mock.calls[0][0].variables.ids).toEqual([
+      '1',
+      '2',
+      '3',
+    ]);
+
+    // Check that all spaces get returned when no ids get passed to useSpaces hook
+    const allSpaces = await waitForElement(() =>
+      getByTestId('spaces-for-all-spaces')
+    );
+    expect(allSpaces.textContent).toBe('Id: 1 Id: 2 Id: 3 ');
+
+    // Check that spaces for ids get returned when ids passed to useSpaces hook
+    const specificSpaces = await waitForElement(() =>
+      getByTestId('spaces-for-2-3')
+    );
+    expect(specificSpaces.textContent).toBe('Id: 2 Id: 3 ');
   });
 });
