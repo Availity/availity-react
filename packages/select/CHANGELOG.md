@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.6.0](https://github.com/Availity/availity-react/compare/@availity/select@0.5.0...@availity/select@0.6.0) (2019-10-22)
+
+
+### Features
+
+* **select:** make disabled state match availity/form components and 508 compliant ([c4e8b25](https://github.com/Availity/availity-react/commit/c4e8b25))
+
+
+
+
+
 # [0.5.0](https://github.com/Availity/availity-react/compare/@availity/select@0.4.15...@availity/select@0.5.0) (2019-10-11)
 
 
