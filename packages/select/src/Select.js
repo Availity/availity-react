@@ -238,14 +238,11 @@ const Select = ({
           ...provided,
           width: '90%',
         }),
-        singleValue: (provided, state) => {
-          if (state.isDisabled) {
-            return {
-              ...provided,
-              color: '#495057',
-            };
-          }
-          return { ...provided };
+        singleValue: provided => {
+          return {
+            ...provided,
+            color: '#495057',
+          };
         },
         control: (provided, state) => {
           if (state.isDisabled) {
