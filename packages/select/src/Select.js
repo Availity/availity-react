@@ -224,7 +224,7 @@ const Select = ({
         ...styles,
         placeholder: (provided, state) => {
           if (state.isDisabled) {
-            return { ...provided };
+            return provided;
           }
           const showError = touched && hasError && !state.focused;
 
@@ -276,7 +276,7 @@ const Select = ({
         }),
         dropdownIndicator: (provided, state) => {
           if (state.isDisabled) {
-            return { ...provided };
+            return provided;
           }
           const showError = touched && hasError && !state.focused;
 
