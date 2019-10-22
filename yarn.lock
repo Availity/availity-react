@@ -88,10 +88,36 @@
   resolved "https://registry.yarnpkg.com/@availity/message-core/-/message-core-4.0.2.tgz#b61e084da32199eacbb50081c072872d4120ea03"
   integrity sha512-AKYg/MWSRPks9fP2JfBLiLe24tdseCYeyhlpDyBPjhJfCxSI+UiAlS4BRPXlQ4yi+InXhtg8SHikbDoAuIaVtg==
 
+"@availity/page-header@^8.0.2":
+  version "8.2.0"
+  resolved "https://registry.npmjs.org/@availity/page-header/-/page-header-8.2.0.tgz#19ad824a9be00ca7428fc081dae81cad146f673b"
+  integrity sha512-jree6lx/8IBJ2m48CSRhBZNt1OBEdTrIdfKRKolU4n5h+vqWh31PSXPynD1MLetzRcV4VNg1+nn/AI9evwZ77g==
+  dependencies:
+    "@availity/app-icon" "^1.3.1"
+    "@availity/breadcrumbs" "^3.1.4"
+    "@availity/feedback" "^5.1.19"
+    "@availity/payer-logo" "^4.0.4"
+    "@availity/training-link" "^1.2.1"
+    classnames "^2.2.6"
+    prop-types "^15.5.8"
+
 "@availity/resolve-url@^1.1.0":
   version "1.1.0"
   resolved "https://registry.yarnpkg.com/@availity/resolve-url/-/resolve-url-1.1.0.tgz#4021f42a678371433b3f23f90a64b9fcb65aafc5"
   integrity sha512-CrA3qQbMPwhwiBFnCtF9MAzkRbrjUZnnLmRp0daLhyxNZXrOaKzE1t24qv7uONOaOIxTYy8xqI8YnJNeekMlRg==
+
+"@availity/spaces@^3.1.0":
+  version "3.2.3"
+  resolved "https://registry.npmjs.org/@availity/spaces/-/spaces-3.2.3.tgz#d1320d608632d3b3d4e40cc6719517a5f78642e4"
+  integrity sha512-b0QiGHQzSkpe5Eg1pHC1nrBNitqPWhZ94bgVaoWtMu2NiuYWPI1vpYMXVlZF73IkR/mEFHvf6CeTTBNPfMGzJQ==
+  dependencies:
+    "@availity/hooks" "^1.6.3"
+    "@availity/typography" "^1.2.1"
+    lodash.get "^4.4.2"
+    prop-types "^15.5.8"
+    react-image "^2.1.3"
+    react-loading-skeleton "^1.1.2"
+    react-markdown "^4.0.8"
 
 "@availity/upload-core@^3.0.4":
   version "3.0.8"
