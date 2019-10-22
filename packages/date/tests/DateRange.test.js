@@ -83,6 +83,38 @@ describe('DateRange', () => {
     });
   });
 
+  test('autofill updates end value', async () => {
+    const onSubmit = jest.fn();
+
+    const { container } = render(
+      <Form
+        initialValues={{
+          dateRange: undefined,
+        }}
+        onSubmit={onSubmit}
+      >
+        <DateRange id="dateRange" name="dateRange" autofill />
+        <Button type="submit">Submit</Button>
+      </Form>
+    );
+
+    // Simulate user entering start date
+    const start = container.querySelector('#dateRange-start');
+
+    fireEvent.focus(start);
+
+    fireEvent.change(start, {
+      target: {
+        value: '01/04/1997',
+      },
+    });
+
+    const end = container.querySelector('#dateRange-end');
+    fireEvent.focus(end);
+
+    expect(end.value).toEqual(start.value);
+  });
+
   test('works with text input', async () => {
     const onSubmit = jest.fn();
 

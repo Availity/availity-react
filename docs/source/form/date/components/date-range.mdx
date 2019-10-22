@@ -110,3 +110,6 @@ Toggle whether the calendar is shown.
 
 ### `datePickerProps?: SingleDatePickerShape`
 Props to be spread onto the datepicker component from [react-dates](https://github.com/airbnb/react-dates#singledatepicker).
+
+### `autofill?: boolean`
+Toggle whether the other date should be filled when focus changes. Autofill will trigger on focus change when the start date is after the end date, the end date is before the start date, or one of the fields is empty.
