@@ -303,7 +303,7 @@ class AvSelect extends AvBaseInput {
           ...styles,
           placeholder: (provided, state) => {
             if (state.isDisabled) {
-              return { ...provided };
+              return provided;
             }
             const showError = touched && hasError && !state.focused;
 
@@ -355,7 +355,7 @@ class AvSelect extends AvBaseInput {
           }),
           dropdownIndicator: (provided, state) => {
             if (state.isDisabled) {
-              return { ...provided };
+              return provided;
             }
             const showError = touched && hasError && !state.focused;
 
