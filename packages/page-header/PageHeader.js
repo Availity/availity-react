@@ -36,7 +36,7 @@ const PageHeader = ({
   ...props
 }) => {
   const [spaceForSpaceID, spaceForPayerID] = useSpaces(spaceId, payerId);
-  const { loading } = useSpacesContext();
+  const { loading: spacesIsLoading } = useSpacesContext() || {};
 
   const _space = spaceForSpaceID || spaceForPayerID;
 
@@ -52,7 +52,7 @@ const PageHeader = ({
       },
     };
     payerLogo =
-      spaceForPayerID || loading ? (
+      spaceForPayerID || spacesIsLoading ? (
         <SpacesLogo {...logoAttrs} />
       ) : (
         <Spaces

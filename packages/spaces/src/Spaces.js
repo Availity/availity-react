@@ -44,7 +44,7 @@ export const getAllSpaces = async (
 
 export const SpacesContext = createContext();
 
-export const useSpacesContext = () => useContext(SpacesContext) || {};
+export const useSpacesContext = () => useContext(SpacesContext);
 
 const Spaces = ({
   query,
