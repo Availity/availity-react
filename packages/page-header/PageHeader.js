@@ -132,7 +132,7 @@ const PageHeader = ({
           {children || <h1 className="mb-0">{appName}</h1>}
         </Tag>
         {!RenderRightContent ? (
-          <div className="page-header-left d-flex flex-xs-wrap flex-md-nowrap flex-grow align-items-end justify-content-end">
+          <div className="page-header-left d-flex flex-wrap flex-md-nowrap flex-grow align-items-end justify-content-end">
             {showFeedback && feedback}
             {payerLogo}
           </div>
@@ -190,7 +190,7 @@ PageHeader.defaultProps = {
   homeUrl: '/public/apps/dashboard',
   titleProps: {},
   renderRightClassName:
-    'page-header-left d-flex flex-xs-wrap flex-md-nowrap flex-grow align-items-end justify-content-end',
+    'page-header-left d-flex flex-wrap flex-md-nowrap flex-grow align-items-end justify-content-end',
 };
 
 export default PageHeader;

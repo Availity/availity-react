@@ -238,9 +238,20 @@ const Select = ({
           ...provided,
           width: '90%',
         }),
+        singleValue: provided => {
+          return {
+            ...provided,
+            color: '#495057',
+          };
+        },
         control: (provided, state) => {
           if (state.isDisabled) {
-            return provided;
+            return {
+              ...provided,
+              borderRadius: '.25em',
+              borderColor: '#ced4da',
+              backgroundColor: '#e9ecef',
+            };
           }
           const showError = touched && hasError && !state.focused;
 
