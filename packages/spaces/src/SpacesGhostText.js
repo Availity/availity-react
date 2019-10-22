@@ -1,12 +1,12 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-import { useSpace } from './Spaces';
+import { useSpaces } from './Spaces';
 
 const SpacesGhostText = ({ spaceId, ...props }) => {
-  const { space, isGhost } = useSpace(spaceId);
+  const [space = {}] = useSpaces(spaceId);
 
-  if (isGhost) {
+  if (space.isGhost) {
     return (
       <small className="ghost-text" data-testid="spaces-ghost-text" {...props}>
         <em>{space.metadata.ghostText}</em>

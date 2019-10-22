@@ -3,10 +3,10 @@ import PropTypes from 'prop-types';
 import { Disclaimer } from '@availity/typography';
 import ReactMarkdown from 'react-markdown';
 
-import { useSpace } from './Spaces';
+import { useSpaces } from './Spaces';
 
 const SpacesDisclaimer = ({ styled, spaceId, markdown, ...props }) => {
-  const { space = {} } = useSpace(spaceId);
+  const [space = {}] = useSpaces(spaceId);
   const { description: disclaimer } = space;
 
   if (disclaimer) {

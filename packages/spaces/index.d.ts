@@ -1,4 +1,4 @@
-import Spaces, { useSpace, SpacesContext } from './types/Spaces';
+import Spaces, { useSpaces, useSpacesContext, SpacesContext } from './types/Spaces';
 import SpacesImage from './types/SpacesImage';
 import SpacesDisclaimer from './types/SpacesDisclaimer';
 import SpacesAgreement from './types/SpacesAgreement';
@@ -13,7 +13,8 @@ export {
   SpacesImage as SpacesTile,
   SpacesDisclaimer,
   SpacesAgreement,
-  useSpace,
+  useSpaces,
+  useSpacesContext,
   sanitizeSpaces,
   SpacesContext,
 };

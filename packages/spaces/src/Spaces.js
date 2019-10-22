@@ -1,4 +1,4 @@
-import React, { createContext, useContext, useMemo, useReducer } from 'react';
+import React, { createContext, useContext, useReducer } from 'react';
 import PropTypes from 'prop-types';
 import { avSlotMachineApi } from '@availity/api-axios';
 import { useEffectAsync } from '@availity/hooks';
@@ -43,6 +43,8 @@ export const getAllSpaces = async (
 };
 
 export const SpacesContext = createContext();
+
+export const useSpacesContext = () => useContext(SpacesContext);
 
 const Spaces = ({
   query,
@@ -134,52 +136,35 @@ const Spaces = ({
   );
 };
 
-export const useSpace = id => {
-  const { spaces = [], loading, error } = useContext(SpacesContext) || {};
+export const useSpaces = (...ids) => {
+  const { spaces = [] } = useContext(SpacesContext) || {};
+
+  const idsIsEmpty = !ids || ids.length === 0;
+  const callerIsExpectingFirstSpace =
+    ids && ids.length === 1 && ids[0] === undefined;
+
+  if (callerIsExpectingFirstSpace && spaces.length > 1) {
+    // eslint-disable-next-line no-console
+    console.warn(
+      `You did not pass an ID in to find a space, and there is more than 1 space in the space array. Returning all.`
+    );
+  }
+
+  const shouldReturnAllSpaces = idsIsEmpty || callerIsExpectingFirstSpace;
+  if (shouldReturnAllSpaces) {
+    return spaces;
+  }
 
   // Try to match by space id first, else match by payer id
-  // eslint-disable-next-line react-hooks/exhaustive-deps
-  const space = useMemo(() => {
-    // If we don't pass a spaceId in then we will get the first space in the array. If there is more than one space we will raise a
-    // warning because it should only be expected that we use no spaceId if the app only is using a single space in the provider.
-    if (id === undefined) {
-      if (spaces.length > 1) {
-        // eslint-disable-next-line no-console
-        console.warn(
-          `You did not pass an ID in to find a space, and there is more than 1 space in the space array. Returning the first.`
-        );
-      }
-
-      return spaces[0];
-    }
-
+  const filteredSpaces = ids.map(id => {
     let [spc] = spaces.filter(s => s.id === id);
 
     if (!spc) {
       [spc] = spaces.filter(s => (s.payerIDs || []).some(p => p === id));
     }
-
     return spc;
   });
-
-  // eslint-disable-next-line react-hooks/exhaustive-deps
-  const isGhost = useMemo(() => {
-    if (!space || !space.metadata || !space.parentIDs) return false;
-    const { metadata, parentIDs } = space;
-
-    return (
-      metadata.ghostText &&
-      metadata.ghostParents &&
-      metadata.ghostParents
-        .split(',')
-        .map(ghostParent => (ghostParent || '').trim())
-        .some(ghostParent =>
-          parentIDs.some(parentID => parentID === ghostParent)
-        )
-    );
-  });
-
-  return { space, isGhost, loading, error };
+  return filteredSpaces;
 };
 
 Spaces.propTypes = {
