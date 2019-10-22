@@ -20,7 +20,7 @@ export interface SpaceType {
   loading: boolean;
 }
 
-declare function useSpaces(ids?: string[]): object[];
+declare function useSpaces(...ids: string[]): object[];
 
 declare function useSpacesContext(): SpacesContext;
 
