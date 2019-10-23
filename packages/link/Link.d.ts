@@ -1,9 +1,7 @@
-export interface AvLinkProps {
-    url: string;
-    target?: string;
+import * as React from 'react';
+
+export interface AvLinkProps extends React.AnchorHTMLAttributes<HTMLAnchorElement> {
     tag?: React.ReactType | string;
-    children?: any;
-    onClick?: Function;
     loadApp?: boolean;
 }
 

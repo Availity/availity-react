@@ -3,6 +3,57 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.3.9](https://github.com/Availity/availity-react/compare/@availity/date@0.3.8...@availity/date@0.3.9) (2019-10-17)
+
+**Note:** Version bump only for package @availity/date
+
+
+
+
+
+## [0.3.8](https://github.com/Availity/availity-react/compare/@availity/date@0.3.7...@availity/date@0.3.8) (2019-10-11)
+
+**Note:** Version bump only for package @availity/date
+
+
+
+
+
+## [0.3.7](https://github.com/Availity/availity-react/compare/@availity/date@0.3.6...@availity/date@0.3.7) (2019-10-11)
+
+**Note:** Version bump only for package @availity/date
+
+
+
+
+
+## [0.3.6](https://github.com/Availity/availity-react/compare/@availity/date@0.3.5...@availity/date@0.3.6) (2019-10-11)
+
+**Note:** Version bump only for package @availity/date
+
+
+
+
+
+## [0.3.5](https://github.com/Availity/availity-react/compare/@availity/date@0.3.4...@availity/date@0.3.5) (2019-10-10)
+
+
+### Bug Fixes
+
+* **date:** made name required, and passed id to DateRange to fix a warning from prop-types ([0872c14](https://github.com/Availity/availity-react/commit/0872c14))
+
+
+
+
+
+## [0.3.4](https://github.com/Availity/availity-react/compare/@availity/date@0.3.3...@availity/date@0.3.4) (2019-10-09)
+
+**Note:** Version bump only for package @availity/date
+
+
+
+
+
 ## [0.3.3](https://github.com/Availity/availity-react/compare/@availity/date@0.3.2...@availity/date@0.3.3) (2019-10-04)
 
 **Note:** Version bump only for package @availity/date

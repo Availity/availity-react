@@ -1,7 +1,12 @@
 import React from 'react';
 import { render, waitForElement, cleanup } from '@testing-library/react';
 import { avSlotMachineApi } from '@availity/api-axios';
-import Spaces, { SpacesLogo, SpacesTile, SpacesBillboard } from '..';
+import Spaces, {
+  SpacesLogo,
+  SpacesTile,
+  SpacesBillboard,
+  SpacesImage,
+} from '..';
 
 jest.mock('@availity/api-axios');
 
@@ -17,7 +22,7 @@ describe('SpacesImage', () => {
         data: {
           data: {
             spaces: {
-              totalCount: 2,
+              totalCount: 3,
               page: 1,
               perPage: 50,
               spaces: [
@@ -43,6 +48,10 @@ describe('SpacesImage', () => {
                       value: '/static/spaces/2/billboard.png',
                     },
                   ],
+                },
+                {
+                  id: '3',
+                  url: '/some/path/to/a/image.png',
                 },
               ],
             },
@@ -78,7 +87,7 @@ describe('SpacesImage', () => {
       });
     const MyComponent = () => (
       <Spaces
-        spaceIds={['1', '1', '2', '2']}
+        spaceIds={['1', '1', '2', '2', '3']}
         payerIds={['payer1', 'payer1']}
         clientId="my-client-id"
       >
@@ -88,24 +97,29 @@ describe('SpacesImage', () => {
         <SpacesLogo spaceId="1" />
         <SpacesTile payerId="payer1" />
         <SpacesBillboard spaceId="2" />
+        <SpacesImage spaceId="3" />
       </Spaces>
     );
     const { getAllByTestId } = render(<MyComponent />);
 
     // Check logo rendered
-    await waitForElement(() => getAllByTestId('space-logo-1'));
+    await waitForElement(() => getAllByTestId('space-images.logo-1'));
 
     // Check tile rendered
-    await waitForElement(() => getAllByTestId('space-tile-payer1'));
+    await waitForElement(() => getAllByTestId('space-images.tile-payer1'));
 
     // Check billboard rendered
-    await waitForElement(() => getAllByTestId('space-billboard-2'));
+    await waitForElement(() => getAllByTestId('space-images.billboard-2'));
+
+    // Check spaces file rendered
+    await waitForElement(() => getAllByTestId('space-url-3'));
 
     // Check that we did not query for duplicate ids
     expect(avSlotMachineApi.create).toHaveBeenCalledTimes(2);
     expect(avSlotMachineApi.create.mock.calls[0][0].variables.ids).toEqual([
       '1',
       '2',
+      '3',
     ]);
     expect(avSlotMachineApi.create.mock.calls[1][0].variables.payerIDs).toEqual(
       ['payer1']
@@ -141,7 +155,7 @@ describe('SpacesImage', () => {
       </Spaces>
     );
 
-    await waitForElement(() => getByTestId('space-logo-1'));
+    await waitForElement(() => getByTestId('space-images.logo-1'));
   });
 
   it('renders fallback image', async () => {
@@ -175,6 +189,6 @@ describe('SpacesImage', () => {
     );
 
     // Would be empty if no fallback
-    await waitForElement(() => getByTestId('space-logo-3'));
+    await waitForElement(() => getByTestId('space-images.logo-3'));
   });
 });

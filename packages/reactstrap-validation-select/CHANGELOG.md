@@ -3,6 +3,39 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [5.2.0](https://github.com/Availity/availity-react/compare/@availity/reactstrap-validation-select@5.1.0...@availity/reactstrap-validation-select@5.2.0) (2019-10-22)
+
+
+### Features
+
+* **reactstrap-validation-select:** make disabled state match availity/form components and 508 compliant ([7d43da4](https://github.com/Availity/availity-react/commit/7d43da4))
+
+
+
+
+
+# [5.1.0](https://github.com/Availity/availity-react/compare/@availity/reactstrap-validation-select@5.0.6...@availity/reactstrap-validation-select@5.1.0) (2019-10-11)
+
+
+### Features
+
+* **reactstrap-validation-select:** handle AutoFillType function values ([e320080](https://github.com/Availity/availity-react/commit/e320080))
+
+
+
+
+
+## [5.0.6](https://github.com/Availity/availity-react/compare/@availity/reactstrap-validation-select@5.0.5...@availity/reactstrap-validation-select@5.0.6) (2019-10-11)
+
+
+### Bug Fixes
+
+* eslint issues ([bc4d8e9](https://github.com/Availity/availity-react/commit/bc4d8e9))
+
+
+
+
+
 ## [5.0.5](https://github.com/Availity/availity-react/compare/@availity/reactstrap-validation-select@5.0.4...@availity/reactstrap-validation-select@5.0.5) (2019-10-04)
 
 

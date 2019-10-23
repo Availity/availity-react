@@ -3,6 +3,63 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.6.0](https://github.com/Availity/availity-react/compare/@availity/select@0.5.0...@availity/select@0.6.0) (2019-10-22)
+
+
+### Features
+
+* **select:** make disabled state match availity/form components and 508 compliant ([c4e8b25](https://github.com/Availity/availity-react/commit/c4e8b25))
+
+
+
+
+
+# [0.5.0](https://github.com/Availity/availity-react/compare/@availity/select@0.4.15...@availity/select@0.5.0) (2019-10-11)
+
+
+### Features
+
+* **select:** handle AutoFillType function values ([c9d5540](https://github.com/Availity/availity-react/commit/c9d5540))
+
+
+
+
+
+## [0.4.15](https://github.com/Availity/availity-react/compare/@availity/select@0.4.14...@availity/select@0.4.15) (2019-10-11)
+
+**Note:** Version bump only for package @availity/select
+
+
+
+
+
+## [0.4.14](https://github.com/Availity/availity-react/compare/@availity/select@0.4.13...@availity/select@0.4.14) (2019-10-11)
+
+**Note:** Version bump only for package @availity/select
+
+
+
+
+
+## [0.4.13](https://github.com/Availity/availity-react/compare/@availity/select@0.4.12...@availity/select@0.4.13) (2019-10-11)
+
+
+### Bug Fixes
+
+* eslint issues ([bc4d8e9](https://github.com/Availity/availity-react/commit/bc4d8e9))
+
+
+
+
+
+## [0.4.12](https://github.com/Availity/availity-react/compare/@availity/select@0.4.11...@availity/select@0.4.12) (2019-10-09)
+
+**Note:** Version bump only for package @availity/select
+
+
+
+
+
 ## [0.4.11](https://github.com/Availity/availity-react/compare/@availity/select@0.4.10...@availity/select@0.4.11) (2019-10-04)
 
 

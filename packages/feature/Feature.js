@@ -54,4 +54,5 @@ Feature.defaultProps = {
   whenDisabled: null,
   children: null,
 };
+
 export default Feature;

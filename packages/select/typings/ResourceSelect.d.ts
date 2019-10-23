@@ -1,16 +1,16 @@
 import * as React from 'react';
 import { SelectFieldProps } from './SelectField';
 
-type ResourceType = {
+interface ResourceType {
   postGet?: Function;
   post?: Function;
   getResult?: string | Function;
-};
+}
 
-type GraphQLConfigType = {
+interface GraphQLConfigType {
   type?: string;
   query?: string;
-};
+}
 
 export interface ResourceSelectProps extends SelectFieldProps {
   requestConfig?: object;
@@ -23,8 +23,8 @@ export interface ResourceSelectProps extends SelectFieldProps {
   parameters?: object;
   itemsPerPage?: number;
   onPageChange?: Function;
-  requiredParams?: Array<any>;
-  watchParams?: Array<any>;
+  requiredParams?: any[];
+  watchParams?: any[];
   cacheUniq?: any;
   additional?: object;
   graphqlConfig?: GraphQLConfigType;
@@ -32,7 +32,7 @@ export interface ResourceSelectProps extends SelectFieldProps {
 }
 
 declare class ResourceSelect extends React.Component<ResourceSelectProps> {
-    static create(defaults: ResourceSelectProps): ResourceSelect;
+    public static create(defaults: ResourceSelectProps): ResourceSelect;
 }
 
 

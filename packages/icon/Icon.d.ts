@@ -1,4 +1,4 @@
-export interface IconProps {
+export interface IconProps extends React.HTMLAttributes<HTMLElement> {
     name: string;
     size?: string;
 }

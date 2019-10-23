@@ -1,6 +1,6 @@
 {
   "name": "@availity/reactstrap-validation-select",
-  "version": "5.0.5",
+  "version": "5.2.0",
   "description": "Wrapper for react-select to work with availity-reactstrap-validation",
   "main": "index.js",
   "scripts": {
@@ -46,6 +46,7 @@
     "classnames": "^2.2.5",
     "lodash.get": "^4.4.2",
     "lodash.isequal": "^4.5.0",
+    "lodash.isfunction": "^3.0.9",
     "prop-types": "^15.5.8",
     "qs": "^6.5.2",
     "react-select": "^3.0.3",

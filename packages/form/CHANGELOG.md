@@ -3,6 +3,38 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.4.8](https://github.com/Availity/availity-react/compare/@availity/form@0.4.7...@availity/form@0.4.8) (2019-10-11)
+
+**Note:** Version bump only for package @availity/form
+
+
+
+
+
+## [0.4.7](https://github.com/Availity/availity-react/compare/@availity/form@0.4.6...@availity/form@0.4.7) (2019-10-11)
+
+**Note:** Version bump only for package @availity/form
+
+
+
+
+
+## [0.4.6](https://github.com/Availity/availity-react/compare/@availity/form@0.4.5...@availity/form@0.4.6) (2019-10-11)
+
+**Note:** Version bump only for package @availity/form
+
+
+
+
+
+## [0.4.5](https://github.com/Availity/availity-react/compare/@availity/form@0.4.4...@availity/form@0.4.5) (2019-10-09)
+
+**Note:** Version bump only for package @availity/form
+
+
+
+
+
 ## [0.4.4](https://github.com/Availity/availity-react/compare/@availity/form@0.4.3...@availity/form@0.4.4) (2019-10-01)
 
 

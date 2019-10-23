@@ -3,10 +3,10 @@ import PropTypes from 'prop-types';
 import { Agreement } from '@availity/typography';
 import ReactMarkdown from 'react-markdown';
 
-import { useSpace } from './Spaces';
+import { useSpaces } from './Spaces';
 
 const SpacesAgreement = ({ spaceId, markdown, ...props }) => {
-  const { space = {} } = useSpace(spaceId);
+  const [space = {}] = useSpaces(spaceId);
   const { description: agreement } = space;
 
   if (agreement) {

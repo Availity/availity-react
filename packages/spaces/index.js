@@ -1,19 +1,24 @@
-import Spaces, { useSpace, SpacesContext } from './src/Spaces';
+import Spaces, {
+  useSpaces,
+  useSpacesContext,
+  SpacesContext,
+} from './src/Spaces';
 import SpacesImage from './src/SpacesImage';
 import SpacesDisclaimer from './src/SpacesDisclaimer';
 import SpacesAgreement from './src/SpacesAgreement';
 import SpacesGhostText from './src/SpacesGhostText';
+import { sanitizeSpaces } from './src/helpers';
 
 const SpacesLogo = SpacesImage.create({
-  imageType: 'logo',
+  imageType: 'images.logo',
 });
 
 const SpacesTile = SpacesImage.create({
-  imageType: 'tile',
+  imageType: 'images.tile',
 });
 
 const SpacesBillboard = SpacesImage.create({
-  imageType: 'billboard',
+  imageType: 'images.billboard',
 });
 
 export default Spaces;
@@ -22,9 +27,12 @@ export {
   SpacesLogo,
   SpacesTile,
   SpacesBillboard,
+  SpacesImage,
   SpacesDisclaimer,
   SpacesAgreement,
   SpacesGhostText,
-  useSpace,
+  useSpaces,
+  useSpacesContext,
   SpacesContext,
+  sanitizeSpaces,
 };

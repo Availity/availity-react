@@ -13,11 +13,11 @@ import {
 } from 'reactstrap';
 
 class UploadProgressBar extends Component {
-  state = {};
-
   constructor(props) {
     super(props);
-    this.state.percentage = props.upload.percentage || 0;
+    this.state = {
+      percentage: props.upload.percentage || 0,
+    };
     props.upload.onProgress.push(this.onProgress);
     props.upload.onSuccess.push(this.onSuccess);
     props.upload.onError.push(this.onError);
@@ -61,15 +61,20 @@ class UploadProgressBar extends Component {
     const { upload, ...rest } = this.props;
     const { percentage, error, modalOpen } = this.state;
     return upload.errorMessage ? (
-      <React.Fragment>
-        <span data-testid="upload-error-message" className="text-danger">{upload.errorMessage}</span>
+      <>
+        <span data-testid="upload-error-message" className="text-danger">
+          {upload.errorMessage}
+        </span>
         {upload.status === 'encrypted' && (
           <div className="pwRequired" data-testid="password-form-encrypted">
             <Button size="sm" color="primary" onClick={this.toggleModal}>
               Enter password
             </Button>
             <Modal isOpen={modalOpen} toggle={this.toggleModal}>
-              <form onSubmit={this.verifyPassword} data-testid="password-form-modal">
+              <form
+                onSubmit={this.verifyPassword}
+                data-testid="password-form-modal"
+              >
                 <ModalHeader toggle={this.toggleModal}>
                   Enter Password
                 </ModalHeader>
@@ -89,7 +94,7 @@ class UploadProgressBar extends Component {
             </Modal>
           </div>
         )}
-      </React.Fragment>
+      </>
     ) : (
       <Progress
         data-testid="upload-progress"
@@ -98,13 +103,11 @@ class UploadProgressBar extends Component {
         color={error ? 'danger' : 'success'}
         {...rest}
       >
-      <span className="sr-only">{percentage}% Complete</span>
+        <span className="sr-only">{percentage}% Complete</span>
       </Progress>
-  
     );
   }
 }
-
 
 UploadProgressBar.propTypes = {
   upload: PropTypes.shape({
@@ -122,7 +125,7 @@ UploadProgressBar.propTypes = {
   onError: PropTypes.func,
   animated: PropTypes.bool,
   className: PropTypes.string,
-  striped: PropTypes.bool
+  striped: PropTypes.bool,
 };
 
 UploadProgressBar.defaultProps = {};

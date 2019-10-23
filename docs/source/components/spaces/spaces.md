@@ -16,7 +16,7 @@ Override the default slotmachine query
 
 ### `variables?: object`
 
-Override the default variables used in the slotmachine query.
+Override the default variables used in the slotmachine query. Default: `{ types: ['space'] }`. If the spaces provider should contain spaces of a type other than `space`, you _must_ override this prop.
 
 ### `spaces?: Array<Object>`
 
@@ -29,3 +29,7 @@ Array of spaceIds the Spaces provider should fetch the spaces for. Any `spaceIds
 ### `payerIds?: Array<string>`
 
 Array of payerIds the Spaces provider should fetch the spaces for. Any `payerIds` already included in `spaces` will not be fetched again.
+
+### `children?: React.ReactNode | (spacesContext: SpacesContext) => ReactNode`
+
+Children can be a react child or render prop.

@@ -11,11 +11,11 @@ const FavoriteHeart = ({ id, onChange, onMouseDown, ...props }) => {
   const [loading, toggleLoading] = useToggle(true);
 
   const icon = useMemo(() => {
-    const onChangeHandler = () => {
+    const onChangeHandler = e => {
       toggleFavorite();
 
       if (onChange) {
-        onChange(isFavorite);
+        onChange(!isFavorite, e);
       }
     };
 
@@ -34,7 +34,7 @@ const FavoriteHeart = ({ id, onChange, onMouseDown, ...props }) => {
             onMouseDown(e);
           }
         }}
-        onKeyPress={({ charCode }) => charCode === 13 && onChangeHandler()}
+        onKeyPress={e => e.charCode === 13 && onChangeHandler(e)}
         onClick={onChangeHandler}
       >
         <span className="sr-only">Favorite</span>
@@ -64,7 +64,7 @@ const FavoriteHeart = ({ id, onChange, onMouseDown, ...props }) => {
           placement="top"
           trigger="hover"
           delay={{
-            show: 2000,
+            show: 1500,
             hide: 0,
           }}
           target={`av-favorite-heart-${id}`}

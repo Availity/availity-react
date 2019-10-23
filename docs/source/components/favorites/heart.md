@@ -21,6 +21,6 @@ import '@availity/favorites/style.scss';
 
 The unique id of the favorite item to be fetched from API.
 
-### `onChange?: (event?: Event) => void`
+### `onChange?: (isFavorited: boolean, event?: Event) => void`
 
 Called once the favorite heart has been clicked and updated.

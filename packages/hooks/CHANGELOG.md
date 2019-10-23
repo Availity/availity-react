@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.6.3](https://github.com/Availity/availity-react/compare/@availity/hooks@1.6.2...@availity/hooks@1.6.3) (2019-10-11)
+
+
+### Bug Fixes
+
+* eslint issues ([bc4d8e9](https://github.com/Availity/availity-react/commit/bc4d8e9))
+
+
+
+
+
 ## [1.6.2](https://github.com/Availity/availity-react/compare/@availity/hooks@1.6.1...@availity/hooks@1.6.2) (2019-09-26)
 
 

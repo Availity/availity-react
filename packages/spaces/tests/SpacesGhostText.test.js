@@ -17,6 +17,7 @@ avSlotMachineApi.create.mockResolvedValue({
             id: '1',
             description: 'foo',
             parentIDs: ['pid1', 'pid2', 'pid3'],
+            isGhost: true,
             metadata: [
               {
                 name: 'ghostText',
@@ -62,6 +63,5 @@ describe('SpacesGhostText', () => {
     const ghost = await waitForElement(() => getByTestId('spaces-ghost-text'));
 
     expect(ghost.textContent).toBe('foo');
-  })
+  });
 });
-

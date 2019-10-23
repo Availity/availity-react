@@ -3,6 +3,85 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [4.0.0](https://github.com/Availity/availity-react/compare/@availity/spaces@3.2.3...@availity/spaces@4.0.0) (2019-10-22)
+
+
+### Code Refactoring
+
+* **spaces:** remove useSpace hook in favor of useSpaces ([8a6a932](https://github.com/Availity/availity-react/commit/8a6a932))
+
+
+### Features
+
+* **spaces:** add useSpaces hook ([b631946](https://github.com/Availity/availity-react/commit/b631946))
+
+
+### BREAKING CHANGES
+
+* **spaces:** `useSpace` is no longer available. Use `useSpaces`
+instead. Additionally, `isGhost` is no longer exported as that property is computed server side and assigned to the space asset
+
+*Before:*
+```js
+import { useSpace } from '@availity/spaces';
+
+// ...
+const { space: space1, loading, error, isGhost } = useSpace('1');
+const { space: space2 } = useSpace('2');
+const { space: space3 } = useSpace('3');
+```
+
+*After:*
+```js
+import { useSpaces, useSpacesContext } from '@availity/spaces';
+
+// ...
+const [space1, space2, space3] = useSpaces('1', '2', '3');
+const { loading, error } = useSpacesContext();
+```
+
+
+
+
+
+## [3.2.3](https://github.com/Availity/availity-react/compare/@availity/spaces@3.2.2...@availity/spaces@3.2.3) (2019-10-18)
+
+**Note:** Version bump only for package @availity/spaces
+
+
+
+
+
+## [3.2.2](https://github.com/Availity/availity-react/compare/@availity/spaces@3.2.1...@availity/spaces@3.2.2) (2019-10-11)
+
+
+### Bug Fixes
+
+* eslint issues ([bc4d8e9](https://github.com/Availity/availity-react/commit/bc4d8e9))
+
+
+
+
+
+## [3.2.1](https://github.com/Availity/availity-react/compare/@availity/spaces@3.2.0...@availity/spaces@3.2.1) (2019-10-08)
+
+**Note:** Version bump only for package @availity/spaces
+
+
+
+
+
+# [3.2.0](https://github.com/Availity/availity-react/compare/@availity/spaces@3.1.3...@availity/spaces@3.2.0) (2019-10-07)
+
+
+### Features
+
+* **spaces:** add SpacesFile component ([d0d95a9](https://github.com/Availity/availity-react/commit/d0d95a9))
+
+
+
+
+
 ## [3.1.3](https://github.com/Availity/availity-react/compare/@availity/spaces@3.1.2...@availity/spaces@3.1.3) (2019-10-01)
 
 **Note:** Version bump only for package @availity/spaces
