@@ -18,7 +18,15 @@ const Input = ({ tag: Tag, className, name, ...rest }) => {
       'was-validated'
   );
 
-  return <Tag className={classes} name={name} {...field} {...rest} />;
+  const extraProps = {};
+
+  if (rest.type === 'checkbox') {
+    extraProps.checked = !!field.value;
+  }
+
+  return (
+    <Tag className={classes} name={name} {...field} {...extraProps} {...rest} />
+  );
 };
 
 Input.propTypes = {
