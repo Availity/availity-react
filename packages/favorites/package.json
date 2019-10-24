@@ -1,6 +1,6 @@
 {
   "name": "@availity/favorites",
-  "version": "2.1.5",
+  "version": "2.1.6",
   "author": "Kyle Gray <kyle.gray@availity.com>",
   "description": "Favorite Heart for favoriting items such as links/resources etc.",
   "main": "index.js",
