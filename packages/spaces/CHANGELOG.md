@@ -3,6 +3,14 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [4.0.1](https://github.com/Availity/availity-react/compare/@availity/spaces@4.0.0...@availity/spaces@4.0.1) (2019-10-24)
+
+**Note:** Version bump only for package @availity/spaces
+
+
+
+
+
 # [4.0.0](https://github.com/Availity/availity-react/compare/@availity/spaces@3.2.3...@availity/spaces@4.0.0) (2019-10-22)
 
 
