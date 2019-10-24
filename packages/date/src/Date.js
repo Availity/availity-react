@@ -73,7 +73,9 @@ const AvDate = ({
       val = val.format(isoDateFormat);
     }
 
-    await setFieldValue(name, val, false);
+    await setFieldValue(name, val, true);
+
+    await setFieldTouched(name, true);
 
     if (onChange) {
       onChange(val);
