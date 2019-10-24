@@ -1,7 +1,7 @@
-import { MouseEventHandler } from 'react-select/src/types';
-
-interface FavoriteHeartProps extends React.HTMLAttributes<HTMLSpanElement> {
+interface FavoriteHeartProps {
+  [key: string]: any;
   id: string;
+  onChange?: (isFavorited: boolean, event: React.MouseEvent<any>) => void;
 }
 declare const FavoriteHeart: React.FunctionComponent<FavoriteHeartProps>;
 
