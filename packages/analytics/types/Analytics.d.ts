@@ -10,17 +10,13 @@ export interface AnalyticsPlugin {
   trackPageView: (url: string) => void;
 }
 
-interface AdditionalOptions {
-  recursive?: boolean;
-  attributePrefix?: string;
-}
-
 export interface AnalyticsProps {
-  children?: React.ReactType;
+  children?: React.ReactNode;
   plugins?: AnalyticsPlugin[];
   pageTracking?: boolean;
   autoTrack?: boolean;
-  options?: AdditionalOptions;
+  recursive?: boolean;
+  attributePrefix?: string;
 }
 
 declare const Analytics: React.FunctionComponent<AnalyticsProps>;
