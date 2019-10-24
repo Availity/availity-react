@@ -12,7 +12,7 @@ export interface ProviderContextValues {
 }
 
 interface FavoritesProps {
-  children?: React.ReactType;
+  children?: React.ReactNode;
 }
 
 export type FavoritesContext = React.Context<ProviderContextValues>;
