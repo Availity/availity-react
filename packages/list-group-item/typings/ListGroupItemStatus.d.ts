@@ -1,11 +1,11 @@
+import { ListGroupItemProps } from "./ListGroupItem";
+
 type BadgeType = {
     color?:string;
     text?: string;
 }
-export interface ListGroupItemStatusProps {
+export interface ListGroupItemStatusProps extends ListGroupItemProps {
     titleContent?: React.ReactType;
-    children?: React.ReactType;
-    color?: boolean | string;
     badge?: boolean | string | BadgeType;
 }
 

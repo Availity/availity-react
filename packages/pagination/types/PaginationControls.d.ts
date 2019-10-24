@@ -1,6 +1,8 @@
-export interface PaginationControlsProps {
-    directionLinks?: Boolean;
-    autoHide?: Boolean;
+import { PaginationProps } from "reactstrap";
+
+export interface PaginationControlsProps extends PaginationProps {
+    directionLinks?: boolean;
+    autoHide?: boolean;
     marginPages?: number;
     pageRange?: number;
 }

@@ -1,6 +1,7 @@
-export interface ListGroupItemProps {
+import { ListGroupItemProps as RsListGroupItemProps } from 'reactstrap';
+
+export interface ListGroupItemProps extends RsListGroupItemProps {
     borderColor?: string;
-    className?: string;
 }
 
 declare const ListGroupItem: React.FunctionComponent<ListGroupItemProps>;

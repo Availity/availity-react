@@ -10,9 +10,9 @@ type AboutOption = {
 
 export interface FeedBackFormProps {
     name: string;
-    onFeedbackSent?: Function;
-    faceOptions?: Array<FaceOption>;
-    aboutOptions?: Array<AboutOption>;
+    onFeedbackSent?: (feedback?: {[key:string]:any}) => void;
+    faceOptions?: FaceOption[];
+    aboutOptions?: AboutOption[];
     prompt?: string;
     staticFields?: object;
 }
