@@ -10,9 +10,12 @@ import Spaces, {
   SpacesDisclaimer,
   SpacesGhostText,
   SpacesAgreement,
+  SpacesLink,
 } from '@availity/spaces';
+import '@availity/spaces/styles.scss';
 import README from '@availity/spaces/README.md';
 import '@availity/mock';
+import { select } from '@storybook/addon-knobs';
 
 storiesOf('Components|Spaces', module)
   .addParameters({
@@ -94,4 +97,27 @@ storiesOf('Components|Spaces', module)
         <SpacesGhostText spaceId="space1" />
       </Spaces>
     </div>
-  ));
+  ))
+  .add('SpacesLink', () => {
+    const spaceId = select(
+      'Link Type',
+      {
+        Sso: 'ssoSpace',
+        Disclaimer: 'disclaimerSpace',
+        'Multi Payer': 'multiPayerApp',
+      },
+      'disclaimerSpace'
+    );
+
+    console.log('selected id', spaceId);
+
+    return (
+      <div>
+        <Spaces spaceIds={[spaceId]} clientId="my-client-id">
+          <div>
+            <SpacesLink spaceId={spaceId} />
+          </div>
+        </Spaces>
+      </div>
+    );
+  });

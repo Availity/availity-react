@@ -1,0 +1,20 @@
+
+$optionPadding: 15px;
+$imgSize: 75px;
+
+.link-payer-option {
+  padding: $optionPadding;
+  width: $imgSize + (2 * $optionPadding);
+  margin-left: auto;
+  margin-right: auto;
+  &:hover {
+    background-color: #f8f8f8;
+  }
+
+  &.active {
+    border-style: solid;
+    border-width: 1px;
+    border-color: #ccc;
+    padding: 14px;
+  }
+}

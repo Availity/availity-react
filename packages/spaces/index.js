@@ -4,6 +4,7 @@ import Spaces, {
   SpacesContext,
 } from './src/Spaces';
 import SpacesImage from './src/SpacesImage';
+import SpacesLink, { useLink } from './src/SpacesLink';
 import SpacesDisclaimer from './src/SpacesDisclaimer';
 import SpacesAgreement from './src/SpacesAgreement';
 import SpacesGhostText from './src/SpacesGhostText';
@@ -35,4 +36,6 @@ export {
   useSpacesContext,
   SpacesContext,
   sanitizeSpaces,
+  SpacesLink,
+  useLink,
 };

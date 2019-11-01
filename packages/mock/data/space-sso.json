@@ -1,0 +1,23 @@
+{
+    "data": {
+      "spaces": {
+        "spaces": [
+          {
+            "id":"ssoSpace",
+            "name":"Sso Space",
+            "link": {
+                "url":"https://google.com",
+                "target": "_blank"
+            },
+            "metadata": [
+                {
+                    "name": "ssoId",
+                    "value":"some-ssoId"
+                }
+            ]
+          }
+        ]
+      }
+    }
+  }
+  

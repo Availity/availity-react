@@ -33,3 +33,7 @@ Array of payerIds the Spaces provider should fetch the spaces for. Any `payerIds
 ### `children?: React.ReactNode | (spacesContext: SpacesContext) => ReactNode`
 
 Children can be a react child or render prop.
+
+### `legacy?: boolean`
+
+Legacy flag for rendering links on old spaces. This is temporary and should be used with caution. Unless you know what you are doing, don't use this.

@@ -1,22 +1,52 @@
-import React, { createContext, useContext, useReducer } from 'react';
+import React, { createContext, useContext, useReducer, useMemo } from 'react';
 import PropTypes from 'prop-types';
-import { avSlotMachineApi } from '@availity/api-axios';
+import { avSlotMachineApi, avRegionsApi } from '@availity/api-axios';
 import { useEffectAsync } from '@availity/hooks';
 import {
   spacesReducer,
-  INITIAL_STATE,
+  SPACES_INITIAL_STATE,
   sanitizeSpaces,
   isFunction,
+  SpacesFragment,
 } from './helpers';
+import ModalProvider from './modals/ModalProvider';
+
+const getRegion = async () => {
+  const resp = await avRegionsApi.getCurrentRegion();
+  return (
+    (resp &&
+      resp.data &&
+      resp.data.regions &&
+      resp.data.regions[0] &&
+      resp.data.regions[0].id) ||
+    undefined
+  );
+};
 
 export const getAllSpaces = async (
   query,
   clientId,
   variables,
-  _spaces = []
+  _spaces = [],
+  legacy
 ) => {
   if (!clientId) {
     throw new Error('clientId is required');
+  }
+
+  // LEGACY LOGIC. Not Documented because its going to be removed soon
+  // Add current region to payer spaces query. If it doesn't exist we have to fetch it first
+  // We can assume if you are using the legacy flag, you are also not touching the query. If you are,
+  // you must be Kyle or someone that knows what they are doing...
+  if (legacy) {
+    if (variables.region) {
+      variables.payerSpaceRegion = variables.region;
+    } else {
+      const currentRegion = await getRegion();
+      variables.payerSpaceRegion = currentRegion;
+    }
+
+    variables.includeParents = true;
   }
 
   const {
@@ -32,7 +62,7 @@ export const getAllSpaces = async (
   );
 
   const { totalCount, page, perPage } = spaces;
-  const unionedSpaces = _spaces.concat(spaces.spaces);
+  const unionedSpaces = _spaces.concat(spaces.spaces, spaces.payerSpaces || []);
 
   if (totalCount > page * perPage) {
     const vars = { ...variables, page: page + 1 };
@@ -54,11 +84,14 @@ const Spaces = ({
   payerIds,
   children,
   spaces: spacesFromProps,
+  legacy,
 }) => {
-  const [{ spaces, loading, error }, dispatch] = useReducer(
-    spacesReducer,
-    INITIAL_STATE
-  );
+  const { spaces: parentSpacesProviderSpaces } = useSpacesContext() || {};
+  const hasParentSpacesProvider = parentSpacesProviderSpaces !== undefined;
+  const [{ spaces, loading, error }, dispatch] = useReducer(spacesReducer, {
+    ...SPACES_INITIAL_STATE,
+    spaces: parentSpacesProviderSpaces || [],
+  });
 
   // NOTE: we do not want to query slotmachine by payerIDs and spaceIDs at the same time
   // because slotmachine does an AND on those conditions. We want OR
@@ -96,9 +129,16 @@ const Spaces = ({
           query,
           clientId,
           vars,
-          spaces
+          spaces,
+          legacy
         );
-        _spaces = _spaces.concat(spacesBySpaceIDs);
+        _spaces = _spaces.concat(
+          // Filter all payer spaces that are already here
+          spacesBySpaceIDs.filter(
+            ({ id: spaceId, type }) =>
+              type !== 'space' || !_spaces.some(({ id }) => id === spaceId)
+          )
+        );
       }
 
       if (filteredPayerIDs.length > 0) {
@@ -107,9 +147,16 @@ const Spaces = ({
           query,
           clientId,
           vars,
-          spaces
+          spaces,
+          legacy
         );
-        _spaces = _spaces.concat(spacesByPayerIDs);
+        _spaces = _spaces.concat(
+          // Filter all payer spaces that are already here
+          spacesByPayerIDs.filter(
+            ({ id: spaceId, type }) =>
+              type !== 'space' || !_spaces.some(({ id }) => id === spaceId)
+          )
+        );
       }
 
       dispatch({
@@ -124,14 +171,25 @@ const Spaces = ({
     }
   }, [payerIds, spaceIds]);
 
-  const spacesForProvider = sanitizeSpaces(spaces.concat(spacesFromProps));
+  const spacesForProvider = useMemo(
+    () => sanitizeSpaces(spaces.concat(spacesFromProps)),
+    [spaces, spacesFromProps]
+  );
+
+  const renderChildren = () =>
+    isFunction(children)
+      ? (() => children({ spaces: spacesForProvider, loading, error }))()
+      : children;
+
   return (
     <SpacesContext.Provider
-      value={{ spaces: spacesForProvider, loading, error }}
+      value={{ spaces: spacesForProvider, loading, error, clientId }}
     >
-      {isFunction(children)
-        ? (() => children({ spaces: spacesForProvider, loading, error }))()
-        : children}
+      {hasParentSpacesProvider ? (
+        renderChildren()
+      ) : (
+        <ModalProvider>{renderChildren()}</ModalProvider>
+      )}
     </SpacesContext.Provider>
   );
 };
@@ -175,41 +233,26 @@ Spaces.propTypes = {
   spaceIds: PropTypes.arrayOf(PropTypes.string),
   payerIds: PropTypes.arrayOf(PropTypes.string),
   spaces: PropTypes.arrayOf(PropTypes.object),
+  legacy: PropTypes.bool,
 };
 
 Spaces.defaultProps = {
   query: `
-    query($ids: [String!], $payerIDs: [String!], $types: [String!], $page: Int){
-      spaces(ids: $ids, payerIDs: $payerIDs, types: $types, page: $page){
-        totalCount
-        perPage
-        page
-        spaces{
-          id
-          name
-          description
-          link {
-            url
-          }
-          payerIDs
-          parentIDs
-          metadata{
-            name
-            value
-          }
-          images{
-            name
-            value
-          }
-          url
-        }
+    query($ids: [String!], $payerIDs: [String!], $types: [String!], $page: Int, $region: String, $payerSpaceRegion: String, $includeParents: Boolean!){
+      spaces: spaces(ids: $ids, payerIDs: $payerIDs, types: $types, page: $page, region: $region){
+        ... SpaceFragment
+      }
+      payerSpaces: spaces(ids: $ids, payerIDs: $payerIDs, types: $types, page: $page, region: $payerSpaceRegion) @include(if:$includeParents){
+        ... SpaceFragment    
       }
     }
+    ${SpacesFragment}
   `,
-  variables: { types: ['space'] },
+  variables: { types: ['space'], includeParents: false },
   spaceIds: [],
   payerIds: [],
   spaces: [],
+  legacy: false,
 };
 
 export default Spaces;

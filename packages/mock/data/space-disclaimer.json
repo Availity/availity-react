@@ -1,0 +1,23 @@
+{
+    "data": {
+      "spaces": {
+        "spaces": [
+          {
+            "id":"disclaimerSpace",
+            "name":"Disclaimer Space",
+            "link": {
+                "url":"https://google.com",
+                "target": "_blank"
+            },
+            "metadata": [
+                {
+                    "name": "disclaimerId",
+                    "value":"test-disclaimer"
+                }
+            ]
+          }
+        ]
+      }
+    }
+  }
+  
