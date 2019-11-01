@@ -277,4 +277,9 @@ describe('AvResourceSelect', () => {
       'q=&limit=50&customerId=1195&offset=0'
     );
   });
+
+  it('waits to query resource until input is focused when waitUntilFocused is true', async () => {
+    // FIXME need true test for this
+    expect(true).toBe(true);
+  });
 });

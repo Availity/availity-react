@@ -11,11 +11,15 @@ class AvResourceSelect extends Component {
     super(props);
     this.state = {};
     this.state.previousOptions = [];
+    this.state.dropdownHasBeenFocused = false;
   }
 
   select = createRef();
 
   loadOptions = (...args) => {
+    if (this.props.waitUntilFocused && !this.state.dropdownHasBeenFocused) {
+      return { options: [], hasMore: false };
+    }
     const [inputValue, , additional = {}] = args;
     let { page } = additional;
 
@@ -164,6 +168,11 @@ class AvResourceSelect extends Component {
       .catch(() => ({ options: [], hasMore: false }));
   };
 
+  onFocusHandler = (...args) => {
+    this.setState({ dropdownHasBeenFocused: true });
+    if (this.props.onFocus) this.props.onFocus(...args);
+  };
+
   render() {
     const Tag = this.props.label ? AvSelectField : AvSelect;
     const {
@@ -184,6 +193,7 @@ class AvResourceSelect extends Component {
       };
       _cacheUniq = watchParams.map(watchParam => params[watchParam]).join(',');
     }
+    _cacheUniq = `${_cacheUniq}${this.state.dropdownHasBeenFocused}`;
 
     return (
       <Tag
@@ -198,6 +208,7 @@ class AvResourceSelect extends Component {
           ...additional,
         }}
         {...rest}
+        onFocus={this.onFocusHandler}
       />
     );
   }
@@ -242,6 +253,8 @@ AvResourceSelect.propTypes = {
     query: PropTypes.string,
   }),
   minCharsToSearch: PropTypes.number,
+  onFocus: PropTypes.func,
+  waitUntilFocused: PropTypes.bool,
 };
 
 AvResourceSelect.defaultProps = {
