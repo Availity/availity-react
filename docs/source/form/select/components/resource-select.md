@@ -107,6 +107,10 @@ Object containing `type` (String) and `query` (String) properties. `type` is the
 
 The minimum number of characters the user must input before `ResourceSelect` makes the network request. If the user has not inputted any characters, the network request will still be made. Useful for relieving pressure on the api the `resource` is calling.
 
+### `waitUntilFocused?: boolean`
+
+When true, the network request is not made until the dropdown has been focused.
+
 ## Pre-made Resource Selects
 
 The following components can be imported by name from `@availity/select/resources`

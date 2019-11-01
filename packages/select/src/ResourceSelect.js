@@ -18,12 +18,15 @@ const ResourceSelect = ({
   hasMore,
   graphqlConfig,
   minCharsToSearch,
+  onFocus,
+  waitUntilFocused,
   ...rest
 }) => {
   let _cacheUniq = cacheUniq;
 
   const selectRef = useRef();
   const [previousOptions, setPreviousOptions] = useState([]);
+  const [dropdownHasBeenFocused, setDropdownHasBeenFocused] = useState(false);
 
   if (_cacheUniq === undefined && watchParams) {
     const params = {
@@ -32,8 +35,17 @@ const ResourceSelect = ({
     };
     _cacheUniq = watchParams.map(watchParam => params[watchParam]).join(',');
   }
+  _cacheUniq = `${_cacheUniq}${dropdownHasBeenFocused}`;
+
+  const onFocusHandler = (...args) => {
+    setDropdownHasBeenFocused(true);
+    if (onFocus) onFocus(...args);
+  };
 
   const loadOptions = (...args) => {
+    if (waitUntilFocused && !dropdownHasBeenFocused) {
+      return { options: [], hasMore: false };
+    }
     const [inputValue, , additional = {}] = args;
     let { page } = additional;
 
@@ -193,6 +205,7 @@ const ResourceSelect = ({
         ...additional,
       }}
       {...rest}
+      onFocus={onFocusHandler}
     />
   );
 };
@@ -224,6 +237,8 @@ ResourceSelect.propTypes = {
     type: PropTypes.string,
     query: PropTypes.string,
   }),
+  onFocus: PropTypes.func,
+  waitUntilFocused: PropTypes.bool,
 };
 
 ResourceSelect.defaultProps = {
