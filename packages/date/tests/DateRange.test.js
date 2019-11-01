@@ -310,14 +310,14 @@ describe('DateRange', () => {
     // Simulate User hitting the 'Today' pre-set
     container.querySelectorAll('.btn-default')[0].click();
 
-    const date = new Date();
+    const today = moment().format('MM/DD/YYYY');
 
     expect(
       container.querySelectorAll('.DateInput_input.DateInput_input_1')[0].value
-    ).toEqual(`${date.getMonth() + 1}/${date.getDate()}/${date.getFullYear()}`);
+    ).toEqual(today);
 
     expect(
       container.querySelectorAll('.DateInput_input.DateInput_input_1')[1].value
-    ).toEqual(`${date.getMonth() + 1}/${date.getDate()}/${date.getFullYear()}`);
+    ).toEqual(today);
   });
 });
