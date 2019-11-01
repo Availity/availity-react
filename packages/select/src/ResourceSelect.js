@@ -43,9 +43,6 @@ const ResourceSelect = ({
   };
 
   const loadOptions = (...args) => {
-    if (waitUntilFocused && !dropdownHasBeenFocused) {
-      return { options: [], hasMore: false };
-    }
     const [inputValue, , additional = {}] = args;
     let { page } = additional;
 
@@ -110,7 +107,11 @@ const ResourceSelect = ({
         requiredSatisfied = rest.requiredParams.every(param => params[param]);
       }
     }
-    if (rest.isDisabled || !requiredSatisfied) {
+    if (
+      rest.isDisabled ||
+      !requiredSatisfied ||
+      (waitUntilFocused && !dropdownHasBeenFocused)
+    ) {
       return {
         options: [],
         hasMore: false,
