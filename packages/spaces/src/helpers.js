@@ -75,6 +75,8 @@ fragment SpaceFragment on SpaceResponse {
     type
     description
     link {
+      text
+      target
       url
     }
     childIDs
@@ -160,7 +162,7 @@ export const updateTopApps = async (spaceId, type) => {
     const { id: userId } = await avUserApi.me();
 
     // Grab the current top apps from localstorage
-    const values = await getLocalStorageTopApps(userId);
+    const values = await getLocalStorageTopApps(userId) || {};
 
     // Update the last updated date. For use in top nav to actually sync with settings api
     localStorageCore.set(

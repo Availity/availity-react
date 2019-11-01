@@ -28,7 +28,7 @@ export const getAllSpaces = async (
   clientId,
   variables,
   _spaces = [],
-  legacy
+  mutliPayerRequired
 ) => {
   if (!clientId) {
     throw new Error('clientId is required');
@@ -38,20 +38,19 @@ export const getAllSpaces = async (
   // Add current region to payer spaces query. If it doesn't exist we have to fetch it first
   // We can assume if you are using the legacy flag, you are also not touching the query. If you are,
   // you must be Kyle or someone that knows what they are doing...
-  if (legacy) {
+
+  if (mutliPayerRequired) {
     if (variables.region) {
       variables.payerSpaceRegion = variables.region;
     } else {
       const currentRegion = await getRegion();
       variables.payerSpaceRegion = currentRegion;
     }
-
-    variables.includeParents = true;
   }
 
   const {
     data: {
-      data: { spaces },
+      data: { spaces, payerSpaces = {} },
     },
   } = await avSlotMachineApi.create(
     {
@@ -62,10 +61,10 @@ export const getAllSpaces = async (
   );
 
   const { totalCount, page, perPage } = spaces;
-  const unionedSpaces = _spaces.concat(spaces.spaces, spaces.payerSpaces || []);
+  const unionedSpaces = _spaces.concat(spaces.spaces, payerSpaces.spaces || []);
 
   if (totalCount > page * perPage) {
-    const vars = { ...variables, page: page + 1 };
+    const vars = { ...variables, page: page + 1, includeParents: mutliPayerRequired };
     return getAllSpaces(query, clientId, vars, unionedSpaces);
   }
 
@@ -84,7 +83,7 @@ const Spaces = ({
   payerIds,
   children,
   spaces: spacesFromProps,
-  legacy,
+  mutliPayerRequired,
 }) => {
   const { spaces: parentSpacesProviderSpaces } = useSpacesContext() || {};
   const hasParentSpacesProvider = parentSpacesProviderSpaces !== undefined;
@@ -124,14 +123,16 @@ const Spaces = ({
 
       let _spaces = [];
       if (filteredSpaceIDs.length > 0) {
-        const vars = { ...variables, ids: filteredSpaceIDs };
+        const vars = { ...variables, ids: filteredSpaceIDs, includeParents: mutliPayerRequired };
         const spacesBySpaceIDs = await getAllSpaces(
           query,
           clientId,
           vars,
           spaces,
-          legacy
+          mutliPayerRequired
         );
+
+        console.log("spacesBySpaceIDs",spacesBySpaceIDs);
         _spaces = _spaces.concat(
           // Filter all payer spaces that are already here
           spacesBySpaceIDs.filter(
@@ -142,13 +143,13 @@ const Spaces = ({
       }
 
       if (filteredPayerIDs.length > 0) {
-        const vars = { ...variables, payerIDs: filteredPayerIDs };
+        const vars = { ...variables, payerIDs: filteredPayerIDs, includeParents: mutliPayerRequired };
         const spacesByPayerIDs = await getAllSpaces(
           query,
           clientId,
           vars,
           spaces,
-          legacy
+          mutliPayerRequired
         );
         _spaces = _spaces.concat(
           // Filter all payer spaces that are already here
@@ -233,7 +234,7 @@ Spaces.propTypes = {
   spaceIds: PropTypes.arrayOf(PropTypes.string),
   payerIds: PropTypes.arrayOf(PropTypes.string),
   spaces: PropTypes.arrayOf(PropTypes.object),
-  legacy: PropTypes.bool,
+  mutliPayerRequired: PropTypes.bool,
 };
 
 Spaces.defaultProps = {
@@ -242,7 +243,7 @@ Spaces.defaultProps = {
       spaces: spaces(ids: $ids, payerIDs: $payerIDs, types: $types, page: $page, region: $region){
         ... SpaceFragment
       }
-      payerSpaces: spaces(ids: $ids, payerIDs: $payerIDs, types: $types, page: $page, region: $payerSpaceRegion) @include(if:$includeParents){
+      payerSpaces: spaces(childIDs: $ids, payerIDs: $payerIDs, types: ["space"], page: $page, region: $payerSpaceRegion) @include(if:$includeParents){
         ... SpaceFragment    
       }
     }
@@ -252,7 +253,7 @@ Spaces.defaultProps = {
   spaceIds: [],
   payerIds: [],
   spaces: [],
-  legacy: false,
+  mutliPayerRequired: false,
 };
 
 export default Spaces;

@@ -1,6 +1,10 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import nativeForm from '@availity/native-form';
+import { Card, CardLink, CardBody, Media, CardText, CardTitle, Badge } from 'reactstrap';
+import dayjs from 'dayjs';
+import AppIcon from '@availity/app-icon';
+import Icon from '@availity/icon';
 import { useSpaces, useSpacesContext } from './Spaces';
 import { updateUrl, updateTopApps } from './helpers';
 import { useModal } from './modals/ModalProvider';
@@ -9,18 +13,7 @@ export const useLink = spaceId => {
   const { clientId } = useSpacesContext();
   const openModal = useModal();
 
-  const [
-    {
-      id,
-      type,
-      name,
-      description,
-      parents = [],
-      metadata = {},
-      link,
-      ...space
-    } = {},
-  ] = useSpaces(spaceId);
+  const [{ id, type, name, description, parents = [], metadata = {}, link, ...space } = {}] = useSpaces(spaceId);
 
   const parentPayerSpaces = parents.filter(p => p.type === 'space');
 
@@ -44,10 +37,7 @@ export const useLink = spaceId => {
 
       const attributes = {
         X_Client_ID: clientId,
-        X_XSRF_TOKEN: document.cookie.replace(
-          /(?:(?:^|.*;\s*)XSRF-TOKEN\s*=\s*([^;]*).*$)|^.*$/,
-          '$1'
-        ),
+        X_XSRF_TOKEN: document.cookie.replace(/(?:(?:^|.*;\s*)XSRF-TOKEN\s*=\s*([^;]*).*$)|^.*$/, '$1'),
         spaceId,
       };
 
@@ -80,12 +70,7 @@ export const useLink = spaceId => {
   } else {
     mediaProps.onClick = () => {
       updateTopApps(id, type);
-      window.open(
-        link.url[0] === '/'
-          ? updateUrl(link.url, 'spaceId', spaceId)
-          : link.url,
-        link.target
-      );
+      window.open(link.url[0] === '/' ? updateUrl(link.url, 'spaceId', spaceId) : link.url, link.target);
     };
   }
 
@@ -101,16 +86,46 @@ export const useLink = spaceId => {
   ];
 };
 
-const Link = ({ spaceId, children }) => {
-  const [space, props = {}] = useLink(spaceId);
+const Link = ({ spaceId, children, ...rest }) => {
+  const { loading } = useSpacesContext();
+  const [{ name, parents, metadata, description, activeDate } = {}, props = {}] = useLink(spaceId);
+  if(loading) return null;
 
-  return <span {...props}>{space && space.name ? space.name : children}</span>;
+  const isNew = activeDate => dayjs().diff(activeDate,'day') < 30
+  return (
+    <Card title={name} className="mb-4 application" tabIndex={0} tag={CardLink} {...props} {...rest} aria-label={name}>
+      <CardBody className="card-block d-flex">
+        <span className="d-table-cell align-middle pr-2">
+          {/* <FavoriteHeart id={id} onChange={(_, e) => e.stopPropagation()} /> */}
+        </span>
+        <AppIcon className="d-table-cell align-middle mr-2">AI</AppIcon>
+        <Media body id={`application-${spaceId}`} className="text-dark mb-4">
+          <CardTitle id={`app-title-${spaceId}`} tag="h4" className="h5">
+            {name}
+          </CardTitle>
+          <CardText>{description}</CardText>
+        </Media>
+        {isNew(activeDate) && (
+          <Media right>
+            <Badge tabIndex={0}>New!</Badge>
+          </Media>
+        )}
+      </CardBody>
+    </Card>
+  );
 };
 
 Link.propTypes = {
   spaceId: PropTypes.string,
   children: PropTypes.node,
   tag: PropTypes.oneOfType([PropTypes.func, PropTypes.string]),
+  bordered: PropTypes.bool,
+  icon: PropTypes.bool,
+  description: PropTypes.oneOfType([PropTypes.string, PropTypes.node]),
+  isNew: PropTypes.bool,
+  showDate: PropTypes.bool,
+  stacked: PropTypes.bool,
+  allowFavorite: PropTypes.bool,
 };
 
 Link.defeaultProps = {

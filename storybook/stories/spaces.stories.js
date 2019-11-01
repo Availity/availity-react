@@ -109,11 +109,13 @@ storiesOf('Components|Spaces', module)
       'disclaimerSpace'
     );
 
-    console.log('selected id', spaceId);
-
     return (
       <div>
-        <Spaces spaceIds={[spaceId]} clientId="my-client-id">
+        <Spaces
+          spaceIds={[spaceId]}
+          clientId="my-client-id"
+          mutliPayerRequired={spaceId === 'multiPayerApp'}
+        >
           <div>
             <SpacesLink spaceId={spaceId} />
           </div>
