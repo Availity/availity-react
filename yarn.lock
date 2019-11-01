@@ -88,6 +88,16 @@
   resolved "https://registry.yarnpkg.com/@availity/message-core/-/message-core-4.0.2.tgz#b61e084da32199eacbb50081c072872d4120ea03"
   integrity sha512-AKYg/MWSRPks9fP2JfBLiLe24tdseCYeyhlpDyBPjhJfCxSI+UiAlS4BRPXlQ4yi+InXhtg8SHikbDoAuIaVtg==
 
+"@availity/message-core@^4.0.3":
+  version "4.0.3"
+  resolved "https://registry.yarnpkg.com/@availity/message-core/-/message-core-4.0.3.tgz#6a63031e6709816c553caa60aaf16f09816429bb"
+  integrity sha512-13tEZDKhP74vNeB8HuyIpI0UmSstLLsfwiL4l9CnjrrCg0DKn52dt0S1N3OaskNc/cQCU1QT/6GoutsBm882Sg==
+
+"@availity/native-form@^2.8.4":
+  version "2.8.4"
+  resolved "https://registry.yarnpkg.com/@availity/native-form/-/native-form-2.8.4.tgz#25210175e54a082d96e24830c223f2ba3ed0f309"
+  integrity sha512-XnbuFK2koC8cZAURT8Py/+j/OBy/yzEROOrim9YfnTpgPTybmey6ZnNHGAQm96lofQ2+h8H63mrtWN0AEZbe9w==
+
 "@availity/page-header@^8.0.2":
   version "8.2.0"
   resolved "https://registry.npmjs.org/@availity/page-header/-/page-header-8.2.0.tgz#19ad824a9be00ca7428fc081dae81cad146f673b"
@@ -7377,7 +7387,7 @@ dateformat@^3.0.0:
   resolved "https://registry.yarnpkg.com/dateformat/-/dateformat-3.0.3.tgz#a6e37499a4d9a9cf85ef5872044d62901c9889ae"
   integrity sha512-jyCETtSl3VMZMWeRo7iY1FL19ges1t55hMo5yaam4Jrsm5EPL89UQkoQRyiI+Yf4k8r2ZpdngkV8hr1lIdjb3Q==
 
-dayjs@^1.8.13:
+dayjs@^1.8.13, dayjs@^1.8.16:
   version "1.8.16"
   resolved "https://registry.yarnpkg.com/dayjs/-/dayjs-1.8.16.tgz#2a3771de537255191b947957af2fd90012e71e64"
   integrity sha512-XPmqzWz/EJiaRHjBqSJ2s6hE/BUoCIHKgdS2QPtTQtKcS9E4/Qn0WomoH1lXanWCzri+g7zPcuNV4aTZ8PMORQ==
@@ -17193,7 +17203,7 @@ react-loading-skeleton@^1.1.2:
   dependencies:
     emotion "^9.2.8"
 
-react-markdown@^4.0.8:
+react-markdown@^4.0.8, react-markdown@^4.2.2:
   version "4.2.2"
   resolved "https://registry.yarnpkg.com/react-markdown/-/react-markdown-4.2.2.tgz#b378774fcffb354653db8749153fc8740f9ed2f1"
   integrity sha512-/STJiRFmJuAIUdeBPp/VyO5bcenTIqP3LXuC3gYvregmYGKjnszGiFc2Ph0LsWC17Un3y/CT8TfxnwJT7v9EJw==

@@ -302,7 +302,7 @@ describe('DateRange', () => {
     await wait(() => {
       expect(
         container.querySelector(
-          '.DayPicker_calendarInfo__horizontal DayPicker_calendarInfo__horizontal_1'
+          '.DayPicker_calendarInfo__horizontal .DayPicker_calendarInfo__horizontal_1'
         )
       ).toBeDefined();
     });
@@ -310,14 +310,14 @@ describe('DateRange', () => {
     // Simulate User hitting the 'Today' pre-set
     container.querySelectorAll('.btn-default')[0].click();
 
-    const date = new Date();
+    const date = moment();
 
     expect(
       container.querySelectorAll('.DateInput_input.DateInput_input_1')[0].value
-    ).toEqual(`${date.getMonth() + 1}/${date.getDate()}/${date.getFullYear()}`);
+    ).toEqual(date.format('MM/DD/YYYY'));
 
     expect(
       container.querySelectorAll('.DateInput_input.DateInput_input_1')[1].value
-    ).toEqual(`${date.getMonth() + 1}/${date.getDate()}/${date.getFullYear()}`);
+    ).toEqual(date.format('MM/DD/YYYY'));
   });
 });

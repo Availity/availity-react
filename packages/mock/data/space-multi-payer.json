@@ -1,0 +1,43 @@
+{
+    "data": {
+      "spaces": {
+        "spaces": [
+          {
+            "id":"multiPayerApp",
+            "name":"Multi Payer App",
+            "type": "application",
+            "link": {
+                "url":"https://google.com",
+                "target": "_blank"
+            },
+            "parentIDs":["parentSpace1","parentSpace2"]
+          }
+        ],
+        "payerSpaces":[
+            {
+                "id":"parentSpace1",
+                "type":"space",
+                "childIDs":["multiPayerApp"],
+                "images": [
+                    {
+                        "name":"tile",
+                        "value":"/parent-space-tile-1"
+                    }
+                ]
+            },
+            {
+                "id":"parentSpace2",
+                "type":"space",
+                "childIDs":["multiPayerApp"],
+                "images": [
+                    {
+                        "name":"tile",
+                        "value":"/parent-space-tile-2"
+                    }
+                ]
+            }
+        ]
+      }
+    }
+  }
+  
