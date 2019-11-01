@@ -17,9 +17,6 @@ class AvResourceSelect extends Component {
   select = createRef();
 
   loadOptions = (...args) => {
-    if (this.props.waitUntilFocused && !this.state.dropdownHasBeenFocused) {
-      return { options: [], hasMore: false };
-    }
     const [inputValue, , additional = {}] = args;
     let { page } = additional;
 
@@ -88,7 +85,11 @@ class AvResourceSelect extends Component {
         );
       }
     }
-    if (this.props.isDisabled || !requiredSatisfied) {
+    if (
+      this.props.isDisabled ||
+      !requiredSatisfied ||
+      (this.props.waitUntilFocused && !this.state.dropdownHasBeenFocused)
+    ) {
       return {
         options: [],
         hasMore: false,
