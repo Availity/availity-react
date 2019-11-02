@@ -27,6 +27,15 @@
     "@availity/resolve-url" "^1.1.0"
     qs "^6.5.2"
 
+"@availity/api-core@^6.0.0":
+  version "6.0.0"
+  resolved "https://registry.yarnpkg.com/@availity/api-core/-/api-core-6.0.0.tgz#c176ee27e9aa81085c411e1d25270c3319f5ce09"
+  integrity sha512-15klr+VxrePsDcG+POe7j7AeI/dum4c0pbrnwlsijqgGXOHIe3PYMib2ZPYrw7uHRswQIb+W9A2qxm7EMArLqQ==
+  dependencies:
+    "@availity/localstorage-core" "^3.0.0"
+    "@availity/resolve-url" "^1.1.1"
+    qs "^6.5.2"
+
 "@availity/gatsby-theme-core@^2.0.0":
   version "2.0.0"
   resolved "https://registry.yarnpkg.com/@availity/gatsby-theme-core/-/gatsby-theme-core-2.0.0.tgz#476059e2ad3a5a8f613e3a9bb4d63ba76489b029"
@@ -83,6 +92,11 @@
   resolved "https://registry.yarnpkg.com/@availity/localstorage-core/-/localstorage-core-2.6.1.tgz#caf7db0feca9a93735e3a8e005ed180ce8a23906"
   integrity sha512-Vkgy7qvwiPvqaYf73uZIP1fISKprlMVQHbMB5qEvNX93HkZq9SqxTbo6UE4/yqLRoyqG1Myn45SvXpHvMQ7Bfw==
 
+"@availity/localstorage-core@^3.0.0":
+  version "3.0.0"
+  resolved "https://registry.yarnpkg.com/@availity/localstorage-core/-/localstorage-core-3.0.0.tgz#3c8f7fbb84338562d117569b59a4cec415d8aa1f"
+  integrity sha512-3N0fHI7DuHksvnhdtvZcnnFpKYY4BmCcL1nc3jb9U9sPEIhw/9q4203yhd9MEsYcICLbpA6I03p7/vbo048ayA==
+
 "@availity/message-core@^4.0.1":
   version "4.0.2"
   resolved "https://registry.yarnpkg.com/@availity/message-core/-/message-core-4.0.2.tgz#b61e084da32199eacbb50081c072872d4120ea03"
@@ -101,10 +115,10 @@
     classnames "^2.2.6"
     prop-types "^15.5.8"
 
-"@availity/resolve-url@^1.1.0":
-  version "1.1.0"
-  resolved "https://registry.yarnpkg.com/@availity/resolve-url/-/resolve-url-1.1.0.tgz#4021f42a678371433b3f23f90a64b9fcb65aafc5"
-  integrity sha512-CrA3qQbMPwhwiBFnCtF9MAzkRbrjUZnnLmRp0daLhyxNZXrOaKzE1t24qv7uONOaOIxTYy8xqI8YnJNeekMlRg==
+"@availity/resolve-url@^1.1.0", "@availity/resolve-url@^1.1.1":
+  version "1.1.1"
+  resolved "https://registry.yarnpkg.com/@availity/resolve-url/-/resolve-url-1.1.1.tgz#f775c7b4d10dcc5fe8fd1be386929bdb7d76df0a"
+  integrity sha512-IDvRpZlH8p65i7cUdaq3HM+0iynrPvPbjhgYIrTcR5MM1FjZASzokxwnnoF4c2t1f8rBGaVqmkcK3EpCkt9NiA==
 
 "@availity/spaces@^3.1.0":
   version "3.2.3"
