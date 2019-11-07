@@ -83,7 +83,7 @@ describe('DateRange', () => {
     });
   });
 
-  test('autosync updates other value', async () => {
+  test('autoSync updates other value', async () => {
     const onSubmit = jest.fn();
 
     const { container } = render(
@@ -93,7 +93,7 @@ describe('DateRange', () => {
         }}
         onSubmit={onSubmit}
       >
-        <DateRange id="dateRange" name="dateRange" autosync />
+        <DateRange id="dateRange" name="dateRange" autoSync />
         <Button type="submit">Submit</Button>
       </Form>
     );
@@ -115,7 +115,7 @@ describe('DateRange', () => {
     // Store the state of the end value
     const endValue = end.value;
 
-    // Check that end date was autosynced
+    // Check that end date was auto synced
     expect(endValue).toEqual(start.value);
 
     // Simulate user clearing start date
@@ -131,7 +131,7 @@ describe('DateRange', () => {
     const endDt = container.querySelector('#dateRange-end');
     fireEvent.focus(endDt);
 
-    // Check that end date was not autosynced
+    // Check that end date was not auto synced
     expect(startDt.value).toBe('11/10/1993');
     expect(endDt.value).toBe(endValue);
   });

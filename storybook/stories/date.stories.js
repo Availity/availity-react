@@ -174,7 +174,7 @@ storiesOf('Formik|Date', module)
           name="dateOfService"
           disabled={boolean('Disabled', false)}
           datepicker={boolean('Has datepicker', true)}
-          autosync={boolean('Autosync', false)}
+          autoSync={boolean('Auto Sync', false)}
           ranges={boolean('ranges', false)}
           min={min && minDate}
           max={max && maxDate}
@@ -247,7 +247,7 @@ storiesOf('Formik|Date', module)
           label="Date of Service"
           disabled={boolean('Disabled', false)}
           datepicker={boolean('Has datepicker', true)}
-          autosync={boolean('Autosync', false)}
+          autoSync={boolean('Auto sync', false)}
           ranges={boolean('ranges', false)}
           format={dateFormat}
           min={min && minDate}
