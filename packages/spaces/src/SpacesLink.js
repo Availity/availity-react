@@ -16,22 +16,22 @@ import Tiles from './Tiles';
 //     map(take(words(name.replace(/[^A-Za-z0-9 ]/g, '')), 2), word => truncate(word, { length: 1, omission: '' }))
 //   ).replace(/,/g, '');
 
-export const useLink = spaceId => {
-  const { clientId } = useSpacesContext();
+export const useLink = (spaceOrSpaceId, { clientId: propsClientId }) => {
+  const { clientId = propsClientId } = useSpacesContext() || {};
   const openModal = useModal();
 
-  const [
-    {
-      id,
-      type,
-      name,
-      description,
-      parents = [],
-      metadata = {},
-      link,
-      ...space
-    } = {},
-  ] = useSpaces(spaceId);
+  const [spaceFromSpacesProvider] = useSpaces(spaceOrSpaceId);
+
+  const {
+    metadata = {},
+    parents = [],
+    name,
+    type,
+    id,
+    description,
+    link,
+    ...space
+  } = spaceFromSpacesProvider || spaceOrSpaceId || {};
 
   const parentPayerSpaces = parents.filter(p => p.type === 'space');
 
@@ -59,7 +59,7 @@ export const useLink = spaceId => {
           /(?:(?:^|.*;\s*)XSRF-TOKEN\s*=\s*([^;]*).*$)|^.*$/,
           '$1'
         ),
-        spaceId,
+        spaceId: id,
       };
 
       updateTopApps(id, type);
@@ -84,7 +84,7 @@ export const useLink = spaceId => {
   const openLink = () => {
     updateTopApps(id, type);
     window.open(
-      link.url[0] === '/' ? updateUrl(link.url, 'spaceId', spaceId) : link.url,
+      link.url[0] === '/' ? updateUrl(link.url, 'spaceId', id) : link.url,
       link.target
     );
   };
@@ -124,6 +124,7 @@ const getDisplayDate = date => dayjs(date).format('MM/DD/YYYY');
 
 const Link = ({
   spaceId,
+  space: propSpace,
   children,
   appIcon,
   favorite,
@@ -136,9 +137,11 @@ const Link = ({
   tag: Tag,
   card,
   size,
+  loading: propsLoading,
+  clientId: propsClientId,
   ...rest
 }) => {
-  const { loading } = useSpacesContext();
+  const { loading = propsLoading } = useSpacesContext() || {};
   const [
     {
       name,
@@ -154,7 +157,9 @@ const Link = ({
       ...restLink
     } = {},
     props = {},
-  ] = useLink(spaceId);
+  ] = useLink(propSpace || spaceId, {
+    clientId: propsClientId,
+  });
   if (loading) return null;
 
   const getIconTitle = () => {
@@ -266,6 +271,7 @@ const Link = ({
 
 Link.propTypes = {
   spaceId: PropTypes.string,
+  space: PropTypes.object,
   children: PropTypes.node,
   tag: PropTypes.oneOfType([PropTypes.func, PropTypes.string]),
   bordered: PropTypes.bool,
@@ -282,6 +288,8 @@ Link.propTypes = {
   stacked: PropTypes.bool,
   allowFavorite: PropTypes.bool,
   showDescription: PropTypes.bool,
+  loading: PropTypes.bool,
+  clientId: PropTypes.string,
 };
 
 Link.defaultProps = {
