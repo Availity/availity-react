@@ -1,7 +1,12 @@
-import React, { createContext, useContext, useReducer, useMemo } from 'react';
+import React, {
+  createContext,
+  useContext,
+  useReducer,
+  useMemo,
+  useEffect,
+} from 'react';
 import PropTypes from 'prop-types';
 import { avSlotMachineApi, avRegionsApi } from '@availity/api-axios';
-import { useEffectAsync } from '@availity/hooks';
 import {
   spacesReducer,
   SPACES_INITIAL_STATE,
@@ -69,7 +74,13 @@ export const getAllSpaces = async (
       page: page + 1,
       includeParents: multiPayerRequired,
     };
-    return getAllSpaces(query, clientId, vars, unionedSpaces);
+    return getAllSpaces(
+      query,
+      clientId,
+      vars,
+      unionedSpaces,
+      multiPayerRequired
+    );
   }
 
   return unionedSpaces;
@@ -98,89 +109,96 @@ const Spaces = ({
 
   // NOTE: we do not want to query slotmachine by payerIDs and spaceIDs at the same time
   // because slotmachine does an AND on those conditions. We want OR
-  useEffectAsync(async () => {
-    try {
-      dispatch({
-        type: 'LOADING',
-        loading: true,
-      });
-      // Filter out dupes and ids that we already have the space for
-      const filteredSpaceIDs = spaceIds
-        .filter((id, i) => spaceIds.indexOf(id) === i)
-        .filter(id => !spaces.some(spc => spc && spc.id === id))
-        .filter(id => !spacesFromProps.some(spc => spc && spc.id === id));
+  useEffect(() => {
+    // eslint-disable-next-line unicorn/consistent-function-scoping
+    const fetchSpaces = async () => {
+      try {
+        dispatch({
+          type: 'LOADING',
+          loading: true,
+        });
+        // Filter out dupes and ids that we already have the space for
+        const filteredSpaceIDs = spaceIds
+          .filter((id, i) => spaceIds.indexOf(id) === i)
+          .filter(id => !spaces.some(spc => spc && spc.id === id))
+          .filter(id => !spacesFromProps.some(spc => spc && spc.id === id));
 
-      const filteredPayerIDs = payerIds
-        .filter((id, i) => payerIds.indexOf(id) === i)
-        .filter(
-          id =>
-            !spaces.some(
-              spc => spc && spc.payerIDs && spc.payerIDs.some(pId => pId === id)
-            )
-        )
-        .filter(
-          id =>
-            !spacesFromProps.some(
-              spc => spc && spc.payerIDs && spc.payerIDs.some(pId => pId === id)
-            )
-        );
-
-      let _spaces = [];
-      if (filteredSpaceIDs.length > 0) {
-        const vars = {
-          ...variables,
-          ids: filteredSpaceIDs,
-          includeParents: multiPayerRequired,
-        };
-        const spacesBySpaceIDs = await getAllSpaces(
-          query,
-          clientId,
-          vars,
-          spaces,
-          multiPayerRequired
-        );
-
-        _spaces = _spaces.concat(
-          // Filter all payer spaces that are already here
-          spacesBySpaceIDs.filter(
-            ({ id: spaceId, type }) =>
-              type !== 'space' || !_spaces.some(({ id }) => id === spaceId)
+        const filteredPayerIDs = payerIds
+          .filter((id, i) => payerIds.indexOf(id) === i)
+          .filter(
+            id =>
+              !spaces.some(
+                spc =>
+                  spc && spc.payerIDs && spc.payerIDs.some(pId => pId === id)
+              )
           )
-        );
-      }
+          .filter(
+            id =>
+              !spacesFromProps.some(
+                spc =>
+                  spc && spc.payerIDs && spc.payerIDs.some(pId => pId === id)
+              )
+          );
 
-      if (filteredPayerIDs.length > 0) {
-        const vars = {
-          ...variables,
-          payerIDs: filteredPayerIDs,
-          includeParents: multiPayerRequired,
-        };
-        const spacesByPayerIDs = await getAllSpaces(
-          query,
-          clientId,
-          vars,
-          spaces,
-          multiPayerRequired
-        );
-        _spaces = _spaces.concat(
-          // Filter all payer spaces that are already here
-          spacesByPayerIDs.filter(
-            ({ id: spaceId, type }) =>
-              type !== 'space' || !_spaces.some(({ id }) => id === spaceId)
-          )
-        );
-      }
+        let _spaces = spaces;
+        if (filteredSpaceIDs.length > 0) {
+          const vars = {
+            ...variables,
+            ids: filteredSpaceIDs,
+            includeParents: multiPayerRequired,
+          };
+          const spacesBySpaceIDs = await getAllSpaces(
+            query,
+            clientId,
+            vars,
+            spaces,
+            multiPayerRequired
+          );
 
-      dispatch({
-        type: 'SPACES',
-        spaces: _spaces,
-      });
-    } catch (error_) {
-      dispatch({
-        type: 'ERROR',
-        error: error_.message,
-      });
-    }
+          _spaces = _spaces.concat(
+            // Filter all payer spaces that are already here
+            spacesBySpaceIDs.filter(
+              ({ id: spaceId, type }) =>
+                type !== 'space' || !_spaces.some(({ id }) => id === spaceId)
+            )
+          );
+        }
+
+        if (filteredPayerIDs.length > 0) {
+          const vars = {
+            ...variables,
+            payerIDs: filteredPayerIDs,
+            includeParents: multiPayerRequired,
+          };
+          const spacesByPayerIDs = await getAllSpaces(
+            query,
+            clientId,
+            vars,
+            spaces,
+            multiPayerRequired
+          );
+          _spaces = _spaces.concat(
+            // Filter all payer spaces that are already here
+            spacesByPayerIDs.filter(
+              ({ id: spaceId, type }) =>
+                type !== 'space' || !_spaces.some(({ id }) => id === spaceId)
+            )
+          );
+        }
+
+        dispatch({
+          type: 'SPACES',
+          spaces: _spaces,
+        });
+      } catch (error_) {
+        dispatch({
+          type: 'ERROR',
+          error: error_.message,
+        });
+      }
+    };
+    fetchSpaces();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [payerIds, spaceIds]);
 
   const spacesForProvider = useMemo(

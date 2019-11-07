@@ -1,15 +1,41 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import Icon from '@availity/icon';
 import AppIcon from '@availity/app-icon';
-import PropTypes from 'prop-types';
+import classNames from 'classnames';
 import { useSpacesContext } from './Spaces';
-import { useLink } from './SpacesLink';
+import useLink from './useLink';
 import Tiles from './Tiles';
+import Loader, { skeletonPropType } from './Loader';
 
-const SpacesIcon = ({ spaceId, stacked }) => {
+const SpacesIcon = ({
+  spaceId,
+  stacked,
+  loading: propsLoading,
+  space: propSpace,
+  skeletonProps,
+  clientId,
+  style,
+  className,
+  ...rest
+}) => {
   const { loading } = useSpacesContext();
-  const [{ shortName, parents, icons = {} } = {}] = useLink(spaceId);
-  if (loading) return null;
+  const isLoading = loading || propsLoading;
+  const [{ shortName, parents, icons = {}, link } = {}, linkProps] = useLink(
+    spaceId || propSpace,
+    {
+      clientId,
+    }
+  );
+
+  if (isLoading)
+    return (
+      <Loader
+        data-testid={`space-icon-${spaceId}-loading`}
+        skeletonProps={skeletonProps}
+        {...rest}
+      />
+    );
 
   if (parents && parents.length === 1) {
     return (
@@ -35,7 +61,19 @@ const SpacesIcon = ({ spaceId, stacked }) => {
   };
 
   return (
-    <AppIcon className={`d-table-cell align-middle mr-2 ${icons.navigation}`}>
+    <AppIcon
+      {...linkProps}
+      style={{
+        ...style,
+        cursor: link.url ? 'pointer' : '',
+      }}
+      className={classNames(
+        'd-table-cell align-middle',
+        icons.navigation,
+        className
+      )}
+      {...rest}
+    >
       {getIconTitle()}
     </AppIcon>
   );
@@ -43,7 +81,13 @@ const SpacesIcon = ({ spaceId, stacked }) => {
 
 SpacesIcon.propTypes = {
   spaceId: PropTypes.string,
+  space: PropTypes.object,
+  clientId: PropTypes.string,
+  loading: PropTypes.bool,
   stacked: PropTypes.bool,
+  skeletonProps: skeletonPropType,
+  className: PropTypes.string,
+  style: PropTypes.object,
 };
 
 export default SpacesIcon;

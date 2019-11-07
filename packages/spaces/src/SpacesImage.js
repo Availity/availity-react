@@ -1,28 +1,9 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import Skeleton from 'react-loading-skeleton';
 import Img from 'react-image';
 import get from 'lodash.get';
 import { useSpaces, useSpacesContext } from './Spaces';
-
-const skeletonPropType = PropTypes.shape({
-  width: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
-  height: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
-});
-
-const Loader = ({ skeletonProps, ...rest }) => (
-  <span {...rest}>
-    <Skeleton {...skeletonProps} />
-  </span>
-);
-Loader.propTypes = {
-  skeletonProps: skeletonPropType,
-};
-Loader.defaultProps = {
-  skeletonProps: {
-    height: '100%',
-  },
-};
+import Loader, { skeletonPropType } from './Loader';
 
 const SpacesImage = ({
   spaceId,

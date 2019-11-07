@@ -5,6 +5,7 @@
           {
             "id":"ssoSpace",
             "name":"Sso Space",
+            "type": "resource",
             "link": {
                 "url":"https://google.com",
                 "target": "_blank"

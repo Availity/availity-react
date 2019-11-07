@@ -100,6 +100,7 @@ module.exports = {
                 'components/spaces/use-spaces',
                 'components/spaces/use-spaces-context',
                 'components/spaces/context',
+                'components/spaces/link',
                 'components/spaces/images',
                 'components/spaces/disclaimer',
                 'components/spaces/agreement',

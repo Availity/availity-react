@@ -1,149 +1,75 @@
-import React from 'react';
+import React, { useMemo, useCallback } from 'react';
 import PropTypes from 'prop-types';
-import nativeForm from '@availity/native-form';
+import classNames from 'classnames';
+import clone from 'lodash.clone';
+import take from 'lodash.take';
+import truncate from 'lodash.truncate';
+import words from 'lodash.words';
+import ReactMarkdown from 'react-markdown';
 import { FavoriteHeart } from '@availity/favorites';
 import { Card, CardBody, Media, CardText, CardTitle, Badge } from 'reactstrap';
+import ListGroupItem from '@availity/list-group-item';
 import dayjs from 'dayjs';
 import AppIcon from '@availity/app-icon';
 import Icon from '@availity/icon';
-import { useSpaces, useSpacesContext } from './Spaces';
-import { updateUrl, updateTopApps, isFunction } from './helpers';
-import { useModal } from './modals/ModalProvider';
-import Tiles from './Tiles';
+import { useSpacesContext } from './Spaces';
+import { isFunction } from './helpers';
+import useLink from './useLink';
+import IconTiles from './Tiles';
+import Loader, { skeletonPropType } from './Loader';
 
-// export const generateShortName = name =>
-//   toString(
-//     map(take(words(name.replace(/[^A-Za-z0-9 ]/g, '')), 2), word => truncate(word, { length: 1, omission: '' }))
-//   ).replace(/,/g, '');
+export const generateShortName = name =>
+  toString(
+    take(words(name.replace(/[^A-Za-z0-9 ]/g, '')), 2).map(word =>
+      truncate(word, { length: 1, omission: '' })
+    )
+  ).replace(/,/g, '');
 
-export const useLink = (spaceOrSpaceId, { clientId: propsClientId }) => {
-  const { clientId = propsClientId } = useSpacesContext() || {};
-  const openModal = useModal();
-
-  const [spaceFromSpacesProvider] = useSpaces(spaceOrSpaceId);
-
-  const {
-    metadata = {},
-    parents = [],
-    name,
-    type,
-    id,
-    description,
-    link,
-    ...space
-  } = spaceFromSpacesProvider || spaceOrSpaceId || {};
-
-  const parentPayerSpaces = parents.filter(p => p.type === 'space');
-
-  // TODO Abstract this
-  const legacySso = () => {
-    openModal('DISCLAIMER_MODAL', {
-      disclaimerId: metadata.disclaimerId,
-      name,
-      spaceType: type,
-      id,
-      title: name,
-      description,
-      link,
-    });
-  };
-
-  const linkSso = event => {
-    if (metadata && metadata.ssoId) {
-      event.preventDefault();
-      const options = link.target ? { target: link.target } : undefined;
-
-      const attributes = {
-        X_Client_ID: clientId,
-        X_XSRF_TOKEN: document.cookie.replace(
-          /(?:(?:^|.*;\s*)XSRF-TOKEN\s*=\s*([^;]*).*$)|^.*$/,
-          '$1'
-        ),
-        spaceId: id,
-      };
-
-      updateTopApps(id, type);
-
-      nativeForm(metadata.ssoId, attributes, options);
-      return false;
-    }
-    return false;
-  };
-
-  const openMultiPayerModal = () =>
-    openModal('MULTI_PAYER_MODAL', {
-      title: 'Open Link as Payer',
-      name,
-      parentPayerSpaces,
-      link,
-      id,
-      spaceType: type,
-      metadata,
-    });
-
-  const openLink = () => {
-    updateTopApps(id, type);
-    window.open(
-      link.url[0] === '/' ? updateUrl(link.url, 'spaceId', id) : link.url,
-      link.target
-    );
-  };
-
-  const mediaProps = {
-    role: 'link',
-  };
-
-  if (metadata.ssoId) {
-    mediaProps.onClick = linkSso;
-    mediaProps.onKeyPress = e => e.charCode === 13 && linkSso(e);
-  } else if (metadata.disclaimerId) {
-    mediaProps.onClick = legacySso;
-    mediaProps.onKeyPress = e => e.charCode === 13 && legacySso(e);
-  } else if (parentPayerSpaces.length > 1) {
-    mediaProps.onClick = openMultiPayerModal;
-    mediaProps.onKeyPress = e => e.charCode === 13 && openMultiPayerModal(e);
-  } else {
-    mediaProps.onClick = openLink;
-    mediaProps.onKeyPress = e => e.charCode === 13 && openLink(e);
-  }
-
-  return [
-    {
-      ...space,
-      name,
-      description,
-      metadata,
-      link,
-      parents: parentPayerSpaces,
-    },
-    mediaProps,
-  ];
-};
 const isNew = activeDate => dayjs().diff(activeDate, 'day') < 30;
 const getDisplayDate = date => dayjs(date).format('MM/DD/YYYY');
+
+const getContainerTag = (propTag = 'div', linkStyle) =>
+  ({
+    card: Card,
+    list: ListGroupItem,
+  }[linkStyle] || propTag);
+
+const getBodyTag = (propTag = 'div', linkStyle) =>
+  ({
+    card: CardBody,
+    list: 'div',
+  }[linkStyle] || propTag);
 
 const Link = ({
   spaceId,
   space: propSpace,
+  className,
   children,
-  appIcon,
+  appIcon: showAppIcon,
   favorite,
   icon,
   showNew,
   showDate,
   stacked,
   body,
-  showDescription,
+  description: showDescription,
   tag: Tag,
-  card,
+  bodyTag: BodyTag,
+  linkStyle,
   size,
   loading: propsLoading,
   clientId: propsClientId,
+  maxDescriptionLength,
+  style,
+  skeletonProps,
   ...rest
 }) => {
-  const { loading = propsLoading } = useSpacesContext() || {};
+  const { loading } = useSpacesContext() || {};
+  const isLoading = loading || propsLoading;
+
   const [
     {
+      id,
       name,
       shortName,
       type,
@@ -154,27 +80,36 @@ const Link = ({
       icons = {},
       images = {},
       colors = {},
+      link,
       ...restLink
     } = {},
     props = {},
   ] = useLink(propSpace || spaceId, {
     clientId: propsClientId,
   });
-  if (loading) return null;
 
-  const getIconTitle = () => {
+  const getIconTitle = useCallback(() => {
     if (shortName) return shortName;
 
     // We have to pass `name` as `className` bc of how its stored in spaces
     if (icons.navigation) return <Icon className={icons.navigation} />;
 
     return <Icon name="desktop" />;
-  };
+  }, [icons.navigation, shortName]);
 
-  const getAppIcon = () => {
+  const appIcon = useMemo(() => {
+    if (!showAppIcon) return null;
+
     if (parents && parents.length > 1) {
-      return <Tiles parents={parents} stacked={stacked} className="mx-2" />;
+      return (
+        <IconTiles
+          parents={clone(parents)}
+          stacked={stacked}
+          className="mx-2"
+        />
+      );
     }
+
     if (parents && parents.length === 1) {
       return (
         <img
@@ -188,21 +123,73 @@ const Link = ({
 
     return (
       <AppIcon
-        className={`d-table-cell align-middle mx-2 ${icons.navigation}`}
+        className={classNames(
+          'd-table-cell align-middle mx-2',
+          icons.navigation
+        )}
+        style={{
+          top: showDescription && description ? -5 : 0,
+        }}
         size={size}
       >
         {getIconTitle()}
       </AppIcon>
     );
-  };
+  }, [
+    description,
+    getIconTitle,
+    icons.navigation,
+    parents,
+    showAppIcon,
+    showDescription,
+    size,
+    stacked,
+  ]);
 
-  Tag = card ? Card : Tag;
-  const BodyTag = card ? CardBody : 'div';
+  const favoriteIcon = useMemo(
+    () =>
+      id &&
+      favorite && (
+        <span className="d-table-cell align-middle">
+          <FavoriteHeart id={id} onChange={(_, e) => e.stopPropagation()} />
+        </span>
+      ),
+    [favorite, id]
+  );
+
+  const dateInfo = useMemo(
+    () =>
+      (showNew || showDate) && (
+        <div
+          className={classNames({
+            'text-center': stacked,
+            'media media-right': !stacked,
+          })}
+        >
+          {showNew && isNew(activeDate) && <Badge tabIndex={0}>New!</Badge>}
+          {showDate && <small>{getDisplayDate(activeDate)}</small>}
+        </div>
+      ),
+    [activeDate, showDate, showNew, stacked]
+  );
+
+  if (isLoading)
+    return (
+      <Loader
+        data-testid={`space-${linkStyle}-${spaceId}-loading`}
+        skeletonProps={skeletonProps}
+        {...rest}
+      />
+    );
+
+  Tag = getContainerTag(Tag, linkStyle);
+  BodyTag = getBodyTag(BodyTag, linkStyle);
 
   const renderChildren = () =>
     isFunction(children)
       ? (() =>
           children({
+            id,
             name,
             shortName,
             type,
@@ -221,28 +208,30 @@ const Link = ({
   return (
     <Tag
       title={name}
-      className={`mb-4 application spaces-hook-link hoverable ${
-        card ? '' : 'p-2'
-      }`}
+      className={classNames(
+        'spaces-hook-link',
+        className,
+        `spaces-${linkStyle}-link`,
+        {
+          'p-2': linkStyle === 'default',
+        }
+      )}
       tabIndex={0}
+      style={{
+        ...style,
+        cursor: link.url ? 'pointer' : 'not-allowed',
+      }}
       {...props}
       {...rest}
       aria-label={name}
     >
       <BodyTag
-        className={`card-block d-flex ${
-          stacked ? 'flex-column' : ''
-        } align-items-${showDescription ? 'start' : 'center'} p-2`}
+        className={classNames('d-flex', `align-items-center`, {
+          'flex-column': stacked,
+        })}
       >
-        {favorite && (
-          <span className="d-table-cell align-middle pr-2">
-            <FavoriteHeart
-              id={spaceId}
-              onChange={(_, e) => e.stopPropagation()}
-            />
-          </span>
-        )}
-        {appIcon && getAppIcon()}
+        {!stacked && favoriteIcon}
+        {appIcon}
         {icon && <Icon name={icons.navigation} />}
         {children
           ? renderChildren()
@@ -251,19 +240,33 @@ const Link = ({
                 <CardTitle
                   id={`app-title-${spaceId}`}
                   tag="h4"
-                  className="h5 mb-0"
+                  className={classNames('h5 mb-0', {
+                    'mb-0': !showDescription || !description,
+                    'pt-3': stacked,
+                  })}
                 >
                   {name}
                 </CardTitle>
-                {showDescription && <CardText>{description}</CardText>}
+                {stacked && dateInfo}
+                {showDescription && description && (
+                  <CardText className="mt-1">
+                    <ReactMarkdown
+                      className="Card-text"
+                      source={
+                        maxDescriptionLength &&
+                        description.length > maxDescriptionLength
+                          ? truncate(description, {
+                              length: maxDescriptionLength,
+                              separator: ' ',
+                            })
+                          : description
+                      }
+                    />
+                  </CardText>
+                )}
               </Media>
             )}
-        {showNew || showDate ? (
-          <Media right>
-            {showNew && isNew(activeDate) && <Badge tabIndex={0}>New!</Badge>}
-            {showDate && <small>{getDisplayDate(activeDate)}</small>}
-          </Media>
-        ) : null}
+        {!stacked && dateInfo}
       </BodyTag>
     </Tag>
   );
@@ -274,11 +277,11 @@ Link.propTypes = {
   space: PropTypes.object,
   children: PropTypes.node,
   tag: PropTypes.oneOfType([PropTypes.func, PropTypes.string]),
-  bordered: PropTypes.bool,
-  icon: PropTypes.bool,
-  description: PropTypes.oneOfType([PropTypes.string, PropTypes.node]),
-  isNew: PropTypes.bool,
+  bodyTag: PropTypes.oneOfType([PropTypes.func, PropTypes.string]),
   card: PropTypes.bool,
+  icon: PropTypes.bool,
+  description: PropTypes.bool,
+  linkStyle: PropTypes.string,
   appIcon: PropTypes.bool,
   favorite: PropTypes.bool,
   body: PropTypes.bool,
@@ -286,15 +289,17 @@ Link.propTypes = {
   showNew: PropTypes.bool,
   size: PropTypes.string,
   stacked: PropTypes.bool,
-  allowFavorite: PropTypes.bool,
-  showDescription: PropTypes.bool,
   loading: PropTypes.bool,
   clientId: PropTypes.string,
+  style: PropTypes.object,
+  className: PropTypes.string,
+  skeletonProps: skeletonPropType,
+  maxDescriptionLength: PropTypes.number,
 };
 
 Link.defaultProps = {
-  tag: 'div',
-  showDescription: false,
+  linkStyle: 'default',
+  body: true,
 };
 
 export default Link;

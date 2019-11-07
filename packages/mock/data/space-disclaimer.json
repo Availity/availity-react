@@ -1,23 +1,31 @@
 {
-    "data": {
-      "spaces": {
-        "spaces": [
-          {
-            "id":"disclaimerSpace",
-            "name":"Disclaimer Space",
-            "link": {
-                "url":"https://google.com",
-                "target": "_blank"
-            },
-            "metadata": [
-                {
-                    "name": "disclaimerId",
-                    "value":"test-disclaimer"
-                }
-            ]
-          }
-        ]
-      }
+  "data": {
+    "spaces": {
+      "spaces": [
+        {
+          "id": "disclaimerSpace",
+          "name": "Disclaimer Space",
+          "shortName": "DS",
+          "type": "navigation",
+          "description": "This is a test description for the Disclaimer Space. Lorem ipsum is pretty awesome.",
+          "link": {
+            "url": "https://google.com",
+            "target": "_blank"
+          },
+          "icons": [
+            {
+              "name":"navigation",
+              "value": "app-icon-orange"
+            }
+          ],
+          "metadata": [
+            {
+              "name": "disclaimerId",
+              "value": "test-disclaimer"
+            }
+          ]
+        }
+      ]
     }
   }
-  
+}

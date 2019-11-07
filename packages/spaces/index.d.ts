@@ -20,5 +20,6 @@ export {
   sanitizeSpaces,
   SpacesContext,
   SpacesLink,
+  SpacesIcon,
   useLink
 };

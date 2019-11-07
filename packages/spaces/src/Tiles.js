@@ -1,12 +1,12 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-const Tiles = ({ parents, stacked, className }) => {
+const IconTiles = ({ parents, stacked, className }) => {
   const splicedParents = parents.length > 4 ? parents.slice(0, 3) : parents;
 
   return stacked ? (
     <div className={`tile-container ${className}`}>
-      {splicedParents.map(({ images }) => (
+      {splicedParents.map(({ images = {} }) => (
         <div className="parent-tile">
           <span key={images.tile} className="nav-image">
             <img
@@ -26,7 +26,7 @@ const Tiles = ({ parents, stacked, className }) => {
         maxHeight: 45,
       }}
     >
-      {splicedParents.map(({ id, images }) => (
+      {splicedParents.map(({ id, images = {} }) => (
         <img
           key={id}
           style={{
@@ -42,10 +42,10 @@ const Tiles = ({ parents, stacked, className }) => {
   );
 };
 
-Tiles.propTypes = {
+IconTiles.propTypes = {
   parents: PropTypes.array,
   stacked: PropTypes.bool,
   className: PropTypes.string,
 };
 
-export default Tiles;
+export default IconTiles;
