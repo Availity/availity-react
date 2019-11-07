@@ -4,6 +4,7 @@ import {
   waitForElement,
   render,
   cleanup,
+  wait,
 } from '@testing-library/react';
 import { avRegionsApi, avWebQLApi, avProvidersApi } from '@availity/api-axios';
 import { AvForm } from 'availity-reactstrap-validation';
@@ -44,6 +45,9 @@ describe('AvResourceSelect', () => {
       valueKey: 'id',
       classNamePrefix: 'test__regions',
       getResult: 'regions',
+    });
+    await wait(() => {
+      expect(avRegionsApi.postGet).toHaveBeenCalled();
     });
 
     const regionsSelect = container.querySelector('.test__regions__control');
@@ -279,7 +283,53 @@ describe('AvResourceSelect', () => {
   });
 
   it('waits to query resource until input is focused when waitUntilFocused is true', async () => {
-    // FIXME need true test for this
-    expect(true).toBe(true);
+    avRegionsApi.postGet.mockResolvedValue({
+      data: {
+        regions: [
+          {
+            id: 'FL',
+            value: 'Florida',
+          },
+        ],
+      },
+    });
+
+    const { container, getByText } = renderSelect({
+      resource: avRegionsApi,
+      labelKey: 'value',
+      valueKey: 'id',
+      classNamePrefix: 'test__regions',
+      getResult: 'regions',
+      waitUntilFocused: true,
+    });
+
+    // Check the resource is not called on mount
+    await wait(() => {
+      expect(avRegionsApi.postGet).not.toHaveBeenCalled();
+    });
+
+    const regionsSelect = container.querySelector('.test__regions__control');
+    const input = container.querySelector('input');
+    fireEvent.focus(input);
+    fireEvent.keyDown(regionsSelect, { key: 'ArrowDown', keyCode: 40 });
+    fireEvent.keyDown(regionsSelect, { key: 'Enter', keyCode: 13 });
+
+    // Check the resource is called only after the input has been focused
+    await wait(() => {
+      expect(avRegionsApi.postGet).toHaveBeenCalledTimes(1);
+    });
+
+    const regionsOption = await waitForElement(() => getByText('Florida'));
+
+    expect(regionsOption).toBeDefined();
+
+    fireEvent.click(regionsOption);
+
+    expect(
+      container.querySelector('.test__regions__option--is-selected')
+    ).toBeDefined();
+    expect(regionsSelect.querySelector('.test__regions__placeholder')).toBe(
+      null
+    );
   });
 });
