@@ -150,11 +150,13 @@ const Link = ({
     () =>
       id &&
       favorite && (
-        <span className="d-table-cell align-middle">
+        <span className={classNames("d-table-cell align-middle",{
+          'pr-2': !showAppIcon
+        })}>
           <FavoriteHeart id={id} onChange={(_, e) => e.stopPropagation()} />
         </span>
       ),
-    [favorite, id]
+    [favorite, id, showAppIcon]
   );
 
   const dateInfo = useMemo(
@@ -226,7 +228,7 @@ const Link = ({
       aria-label={name}
     >
       <BodyTag
-        className={classNames('d-flex', `align-items-center`, {
+        className={classNames('d-flex',`align-items-${!showDescription || stacked ? 'center':'start'}`, {
           'flex-column': stacked,
         })}
       >
@@ -241,7 +243,7 @@ const Link = ({
                   id={`app-title-${spaceId}`}
                   tag="h4"
                   className={classNames('h5 mb-0', {
-                    'mb-0': !showDescription || !description,
+                    'mb-0': !showDescription,
                     'pt-3': stacked,
                   })}
                 >
