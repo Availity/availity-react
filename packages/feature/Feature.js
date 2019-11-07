@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useCallback } from 'react';
 import PropTypes from 'prop-types';
 import BlockUi from 'react-block-ui';
 import 'react-block-ui/style.css';
@@ -8,7 +8,7 @@ const Feature = ({ features, loader, whenDisabled, children, negate }) => {
   const [loading, setLoading] = useState(false);
   const [enabled, setEnabled] = useState(null);
 
-  const checkFeatures = async () => {
+  const checkFeatures = useCallback(async () => {
     if (!loading) setLoading(true);
 
     const _enabled = await isFeatureEnabled(features);
@@ -16,7 +16,7 @@ const Feature = ({ features, loader, whenDisabled, children, negate }) => {
     setEnabled(_enabled);
 
     setLoading(false);
-  };
+  }, [loading, features]);
 
   useEffect(() => {
     checkFeatures();
