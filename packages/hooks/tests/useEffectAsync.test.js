@@ -16,11 +16,11 @@ const Component = ({ asyncFunc }) => {
 
   return <div data-testid="effect-test">{state}</div>;
 };
+const asyncFunc = () => Promise.resolve('World');
 
 describe('useEffectAsync', () => {
   test('should render "Hello" then "World"', async () => {
     // Create Async Method
-    const asyncFunc = () => Promise.resolve('World');
     // Render
     const { getByTestId } = render(<Component asyncFunc={asyncFunc} />);
 

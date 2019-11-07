@@ -97,53 +97,49 @@ const PaginationControls = ({
     return items;
   };
 
-  return (
-    <React.Fragment>
-      {pageCount > 1 || !autoHide ? (
-        <Pagination data-testid="pagination-controls-con" {...rest}>
-          {directionLinks ? (
-            <PaginationItem
-              disabled={currentPage === 1}
-              data-testid="pagination-control-previous"
-            >
-              <PaginationLink
-                onClick={() =>
-                  currentPage === 1 ? null : setPage(currentPage - 1)
-                }
-                type="button"
-                previous
-              >
-                {leftCaret} Prev
-              </PaginationLink>
-            </PaginationItem>
-          ) : (
-            ''
-          )}
-          {paginate()}
-          {directionLinks ? (
-            <PaginationItem
-              disabled={currentPage === pageCount}
-              data-testid="pagination-control-next"
-            >
-              <PaginationLink
-                data-testid="pagination-control-next-link"
-                onClick={() =>
-                  currentPage === pageCount ? null : setPage(currentPage + 1)
-                }
-                type="button"
-                next
-              >
-                Next {rightCaret}
-              </PaginationLink>
-            </PaginationItem>
-          ) : (
-            ''
-          )}
-        </Pagination>
+  return pageCount > 1 || !autoHide ? (
+    <Pagination data-testid="pagination-controls-con" {...rest}>
+      {directionLinks ? (
+        <PaginationItem
+          disabled={currentPage === 1}
+          data-testid="pagination-control-previous"
+        >
+          <PaginationLink
+            onClick={() =>
+              currentPage === 1 ? null : setPage(currentPage - 1)
+            }
+            type="button"
+            previous
+          >
+            {leftCaret} Prev
+          </PaginationLink>
+        </PaginationItem>
       ) : (
         ''
       )}
-    </React.Fragment>
+      {paginate()}
+      {directionLinks ? (
+        <PaginationItem
+          disabled={currentPage === pageCount}
+          data-testid="pagination-control-next"
+        >
+          <PaginationLink
+            data-testid="pagination-control-next-link"
+            onClick={() =>
+              currentPage === pageCount ? null : setPage(currentPage + 1)
+            }
+            type="button"
+            next
+          >
+            Next {rightCaret}
+          </PaginationLink>
+        </PaginationItem>
+      ) : (
+        ''
+      )}
+    </Pagination>
+  ) : (
+    ''
   );
 };
 

@@ -1,8 +1,8 @@
-type CurrentRegionType = {
+export type CurrentRegionType = {
     code: string;
     value: string;
 };
 
-declare function useCurrentRegion(): [CurrentRegionType | undefined, boolean];
+declare function useCurrentRegion(): [CurrentRegionType,boolean, object];
 
 export default useCurrentRegion;

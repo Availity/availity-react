@@ -1,6 +1,6 @@
 {
   "name": "@availity/reactstrap-validation-date",
-  "version": "3.1.5",
+  "version": "3.1.6",
   "description": "Wrapper for react-date-range to work with availity-reactstrap-validation",
   "main": "index.js",
   "scripts": {
@@ -36,7 +36,7 @@
     "reactstrap": "^8.0.0 || ^7.0.0 || ^6.0.0"
   },
   "dependencies": {
-    "@availity/icon": "^0.6.1",
+    "@availity/icon": "^0.6.2",
     "classnames": "^2.2.6",
     "lodash.pick": "^4.4.0",
     "moment": "^2.24.0",

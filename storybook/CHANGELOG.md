@@ -3,6 +3,201 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [9.1.9](https://github.com/Availity/availity-react/compare/@availity/react-storybook@9.1.8...@availity/react-storybook@9.1.9) (2019-11-01)
+
+**Note:** Version bump only for package @availity/react-storybook
+
+
+
+
+
+## [9.1.8](https://github.com/Availity/availity-react/compare/@availity/react-storybook@9.1.7...@availity/react-storybook@9.1.8) (2019-10-24)
+
+**Note:** Version bump only for package @availity/react-storybook
+
+
+
+
+
+## [9.1.7](https://github.com/Availity/availity-react/compare/@availity/react-storybook@9.1.6...@availity/react-storybook@9.1.7) (2019-10-24)
+
+**Note:** Version bump only for package @availity/react-storybook
+
+
+
+
+
+## [9.1.6](https://github.com/Availity/availity-react/compare/@availity/react-storybook@9.1.5...@availity/react-storybook@9.1.6) (2019-10-24)
+
+**Note:** Version bump only for package @availity/react-storybook
+
+
+
+
+
+## [9.1.5](https://github.com/Availity/availity-react/compare/@availity/react-storybook@9.1.4...@availity/react-storybook@9.1.5) (2019-10-24)
+
+**Note:** Version bump only for package @availity/react-storybook
+
+
+
+
+
+## [9.1.4](https://github.com/Availity/availity-react/compare/@availity/react-storybook@9.1.3...@availity/react-storybook@9.1.4) (2019-10-23)
+
+**Note:** Version bump only for package @availity/react-storybook
+
+
+
+
+
+## [9.1.3](https://github.com/Availity/availity-react/compare/@availity/react-storybook@9.1.2...@availity/react-storybook@9.1.3) (2019-10-22)
+
+**Note:** Version bump only for package @availity/react-storybook
+
+
+
+
+
+## [9.1.2](https://github.com/Availity/availity-react/compare/@availity/react-storybook@9.1.1...@availity/react-storybook@9.1.2) (2019-10-22)
+
+**Note:** Version bump only for package @availity/react-storybook
+
+
+
+
+
+## [9.1.1](https://github.com/Availity/availity-react/compare/@availity/react-storybook@9.1.0...@availity/react-storybook@9.1.1) (2019-10-22)
+
+**Note:** Version bump only for package @availity/react-storybook
+
+
+
+
+
+# [9.1.0](https://github.com/Availity/availity-react/compare/@availity/react-storybook@9.0.11...@availity/react-storybook@9.1.0) (2019-10-21)
+
+
+### Features
+
+* **analytics:** added analytics package ([10b4fb3](https://github.com/Availity/availity-react/commit/10b4fb3))
+
+
+
+
+
+## [9.0.11](https://github.com/Availity/availity-react/compare/@availity/react-storybook@9.0.10...@availity/react-storybook@9.0.11) (2019-10-18)
+
+**Note:** Version bump only for package @availity/react-storybook
+
+
+
+
+
+## [9.0.10](https://github.com/Availity/availity-react/compare/@availity/react-storybook@9.0.9...@availity/react-storybook@9.0.10) (2019-10-18)
+
+**Note:** Version bump only for package @availity/react-storybook
+
+
+
+
+
+## [9.0.9](https://github.com/Availity/availity-react/compare/@availity/react-storybook@9.0.8...@availity/react-storybook@9.0.9) (2019-10-18)
+
+**Note:** Version bump only for package @availity/react-storybook
+
+
+
+
+
+## [9.0.8](https://github.com/Availity/availity-react/compare/@availity/react-storybook@9.0.7...@availity/react-storybook@9.0.8) (2019-10-18)
+
+**Note:** Version bump only for package @availity/react-storybook
+
+
+
+
+
+## [9.0.7](https://github.com/Availity/availity-react/compare/@availity/react-storybook@9.0.6...@availity/react-storybook@9.0.7) (2019-10-18)
+
+**Note:** Version bump only for package @availity/react-storybook
+
+
+
+
+
+## [9.0.6](https://github.com/Availity/availity-react/compare/@availity/react-storybook@9.0.5...@availity/react-storybook@9.0.6) (2019-10-17)
+
+**Note:** Version bump only for package @availity/react-storybook
+
+
+
+
+
+## [9.0.5](https://github.com/Availity/availity-react/compare/@availity/react-storybook@9.0.4...@availity/react-storybook@9.0.5) (2019-10-15)
+
+**Note:** Version bump only for package @availity/react-storybook
+
+
+
+
+
+## [9.0.4](https://github.com/Availity/availity-react/compare/@availity/react-storybook@9.0.3...@availity/react-storybook@9.0.4) (2019-10-11)
+
+
+### Bug Fixes
+
+* **docs:** fixed submitted state issue for avform ([a217124](https://github.com/Availity/availity-react/commit/a217124))
+
+
+
+
+
+## [9.0.3](https://github.com/Availity/availity-react/compare/@availity/react-storybook@9.0.2...@availity/react-storybook@9.0.3) (2019-10-11)
+
+**Note:** Version bump only for package @availity/react-storybook
+
+
+
+
+
+## [9.0.2](https://github.com/Availity/availity-react/compare/@availity/react-storybook@9.0.1...@availity/react-storybook@9.0.2) (2019-10-11)
+
+**Note:** Version bump only for package @availity/react-storybook
+
+
+
+
+
+## [9.0.1](https://github.com/Availity/availity-react/compare/@availity/react-storybook@9.0.0...@availity/react-storybook@9.0.1) (2019-10-11)
+
+**Note:** Version bump only for package @availity/react-storybook
+
+
+
+
+
+# [9.0.0](https://github.com/Availity/availity-react/compare/@availity/react-storybook@8.0.15...@availity/react-storybook@9.0.0) (2019-10-11)
+
+
+### Bug Fixes
+
+* eslint issues ([bc4d8e9](https://github.com/Availity/availity-react/commit/bc4d8e9))
+
+
+### Code Refactoring
+
+* **link:** made link extends anchor tag ([ccc370a](https://github.com/Availity/availity-react/commit/ccc370a))
+
+
+### BREAKING CHANGES
+
+* **link:** url prop has been renamed to href to align with that standard anchor elements
+
+
+
+
+
 ## [8.0.15](https://github.com/Availity/availity-react/compare/@availity/react-storybook@8.0.14...@availity/react-storybook@8.0.15) (2019-10-10)
 
 **Note:** Version bump only for package @availity/react-storybook

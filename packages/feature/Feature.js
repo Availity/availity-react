@@ -1,87 +1,58 @@
-import React, { Component } from 'react';
+import React, { useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
 import BlockUi from 'react-block-ui';
 import 'react-block-ui/style.css';
 import isFeatureEnabled from './isFeatureEnabled';
 
-class Feature extends Component {
-  static propTypes = {
-    features: PropTypes.oneOfType([
-      PropTypes.arrayOf(
-        PropTypes.oneOfType([
-          PropTypes.arrayOf(PropTypes.string),
-          PropTypes.string,
-        ])
-      ),
-      PropTypes.string,
-    ]).isRequired,
-    loader: PropTypes.oneOfType([PropTypes.bool, PropTypes.node]),
-    whenDisabled: PropTypes.node,
-    children: PropTypes.node,
-    negate: PropTypes.bool,
+const Feature = ({ features, loader, whenDisabled, children, negate }) => {
+  const [loading, setLoading] = useState(false);
+  const [enabled, setEnabled] = useState(null);
+
+  const checkFeatures = async () => {
+    if (!loading) setLoading(true);
+
+    const _enabled = await isFeatureEnabled(features);
+
+    setEnabled(_enabled);
+
+    setLoading(false);
   };
 
-  static defaultProps = {
-    whenDisabled: null,
-    children: null,
-  };
+  useEffect(() => {
+    checkFeatures();
+  }, [checkFeatures, features]);
 
-  state = {
-    loading: false,
-  };
-
-  async checkFeatures() {
-    const { loading } = this.state;
-    const { features } = this.props;
-
-    if (!loading) this.setState({ loading: true });
-
-    const enabled = await isFeatureEnabled(features);
-
-    this.setState({ enabled, loading: false });
+  if (loading) {
+    if (loader) return loader === true ? <BlockUi blocking /> : loader;
+    return null;
+  }
+  const showChildren = enabled ^ negate; // eslint-disable-line no-bitwise
+  if (showChildren) {
+    return children;
   }
 
-  componentDidMount() {
-    this.checkFeatures();
-  }
+  return whenDisabled;
+};
 
-  componentDidUpdate(prevProps) {
-    const { features } = this.props;
+Feature.propTypes = {
+  features: PropTypes.oneOfType([
+    PropTypes.arrayOf(
+      PropTypes.oneOfType([
+        PropTypes.arrayOf(PropTypes.string),
+        PropTypes.string,
+      ])
+    ),
+    PropTypes.string,
+  ]).isRequired,
+  loader: PropTypes.oneOfType([PropTypes.bool, PropTypes.node]),
+  whenDisabled: PropTypes.node,
+  children: PropTypes.node,
+  negate: PropTypes.bool,
+};
 
-    if (prevProps.features !== features) {
-      if (
-        typeof prevProps.features === 'string' ||
-        typeof features === 'string'
-      ) {
-        this.checkFeatures();
-      } else {
-        const prevFeatures = [].concat(...prevProps.features);
-        const currentFeatures = [].concat(...features);
-        if (
-          prevFeatures.length !== currentFeatures.length ||
-          prevFeatures.join() !== currentFeatures.join()
-        ) {
-          this.checkFeatures();
-        }
-      }
-    }
-  }
-
-  render() {
-    const { loader, children, whenDisabled, negate } = this.props;
-    const { loading, enabled } = this.state;
-
-    if (loading) {
-      if (loader) return loader === true ? <BlockUi blocking /> : loader;
-      return null;
-    }
-    const showChildren = enabled ^ negate; // eslint-disable-line no-bitwise
-    if (showChildren) {
-      return children;
-    }
-
-    return whenDisabled;
-  }
-}
+Feature.defaultProps = {
+  whenDisabled: null,
+  children: null,
+};
 
 export default Feature;

@@ -6,6 +6,7 @@ import Checkbox from './Checkbox';
 import CheckboxGroup from './CheckboxGroup';
 import Radio from './Radio';
 import RadioGroup from './RadioGroup';
+import Feedback from './Feedback';
 
 export {
   Form,
@@ -16,4 +17,5 @@ export {
   CheckboxGroup,
   Radio,
   RadioGroup,
+  Feedback
 };

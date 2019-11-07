@@ -23,6 +23,55 @@ const AV_INTERNAL_GLOBALS = {
 
 export const FavoritesContext = createContext();
 
+const validatedFavorites = input => {
+  const validFavorites = reduce(
+    input,
+    (result, favorite) => {
+      if (
+        !isUndefined(favorite.id) &&
+        !isUndefined(favorite.pos) &&
+        isNumber(favorite.pos)
+      ) {
+        result.push(favorite);
+      }
+      return result;
+    },
+    []
+  );
+  sortBy(validFavorites, 'pos').forEach((favorite, index) => {
+    favorite.pos = index;
+  });
+
+  return validFavorites;
+};
+
+const submitFavorites = async newfavorites => {
+  const favorites = validatedFavorites(newfavorites);
+
+  return avSettingsApi.setApplication(NAV_APP_ID, {
+    favorites,
+  });
+};
+
+const sendUpdate = faves => {
+  avMessages.send({
+    favorites: faves,
+    event: AV_INTERNAL_GLOBALS.FAVORITES_UPDATE,
+  });
+};
+
+const openMaxModal = () => {
+  const atMaxLog = {
+    category: 'favorites',
+    label: 'max-favorites-modal',
+    event: 'modal-open',
+  };
+
+  avLogMessagesApi.info(atMaxLog);
+
+  avMessages.send(AV_INTERNAL_GLOBALS.MAX_FAVORITES);
+};
+
 const Favorites = ({ children }) => {
   const [favorites, setFavorites] = useState([]);
 
@@ -50,43 +99,6 @@ const Favorites = ({ children }) => {
     return () => avMessages.unsubscribe(AV_INTERNAL_GLOBALS.FAVORITES_UPDATE);
   }, []);
 
-  const validatedFavorites = input => {
-    const validFavorites = reduce(
-      input,
-      (result, favorite) => {
-        if (
-          !isUndefined(favorite.id) &&
-          !isUndefined(favorite.pos) &&
-          isNumber(favorite.pos)
-        ) {
-          result.push(favorite);
-        }
-        return result;
-      },
-      []
-    );
-    sortBy(validFavorites, 'pos').forEach((favorite, index) => {
-      favorite.pos = index;
-    });
-
-    return validFavorites;
-  };
-
-  const submitFavorites = async newfavorites => {
-    const favorites = validatedFavorites(newfavorites);
-
-    return avSettingsApi.setApplication(NAV_APP_ID, {
-      favorites,
-    });
-  };
-
-  const sendUpdate = faves => {
-    avMessages.send({
-      favorites: faves,
-      event: AV_INTERNAL_GLOBALS.FAVORITES_UPDATE,
-    });
-  };
-
   const deleteFavorite = async id => {
     const result = await submitFavorites(
       clone(favorites).filter(favorite => favorite.id !== id)
@@ -96,18 +108,6 @@ const Favorites = ({ children }) => {
     setFavorites(newFavorites);
 
     sendUpdate(newFavorites);
-  };
-
-  const openMaxModal = () => {
-    const atMaxLog = {
-      category: 'favorites',
-      label: 'max-favorites-modal',
-      event: 'modal-open',
-    };
-
-    avLogMessagesApi.info(atMaxLog);
-
-    avMessages.send(AV_INTERNAL_GLOBALS.MAX_FAVORITES);
   };
 
   const addFavorite = async id => {

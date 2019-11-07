@@ -7,3 +7,4 @@ rules:
   react/no-access-state-in-setstate: 0
   guard-for-in: 0
   no-restricted-syntax: 0
+  react/prefer-stateless-function: 0

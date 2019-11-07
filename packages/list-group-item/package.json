@@ -1,6 +1,6 @@
 {
   "name": "@availity/list-group-item",
-  "version": "1.2.1",
+  "version": "1.2.2",
   "author": "Evan Sharp <evan.sharp@availity.com>",
   "description": "List Group Item with some Availity flair",
   "main": "index.js",

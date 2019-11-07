@@ -3,6 +3,237 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [4.0.9](https://github.com/Availity/availity-react/compare/@availity/react-docs@4.0.8...@availity/react-docs@4.0.9) (2019-11-01)
+
+**Note:** Version bump only for package @availity/react-docs
+
+
+
+
+
+## [4.0.8](https://github.com/Availity/availity-react/compare/@availity/react-docs@4.0.7...@availity/react-docs@4.0.8) (2019-10-24)
+
+**Note:** Version bump only for package @availity/react-docs
+
+
+
+
+
+## [4.0.7](https://github.com/Availity/availity-react/compare/@availity/react-docs@4.0.6...@availity/react-docs@4.0.7) (2019-10-24)
+
+**Note:** Version bump only for package @availity/react-docs
+
+
+
+
+
+## [4.0.6](https://github.com/Availity/availity-react/compare/@availity/react-docs@4.0.5...@availity/react-docs@4.0.6) (2019-10-24)
+
+**Note:** Version bump only for package @availity/react-docs
+
+
+
+
+
+## [4.0.5](https://github.com/Availity/availity-react/compare/@availity/react-docs@4.0.4...@availity/react-docs@4.0.5) (2019-10-24)
+
+**Note:** Version bump only for package @availity/react-docs
+
+
+
+
+
+## [4.0.4](https://github.com/Availity/availity-react/compare/@availity/react-docs@4.0.3...@availity/react-docs@4.0.4) (2019-10-23)
+
+**Note:** Version bump only for package @availity/react-docs
+
+
+
+
+
+## [4.0.3](https://github.com/Availity/availity-react/compare/@availity/react-docs@4.0.2...@availity/react-docs@4.0.3) (2019-10-22)
+
+**Note:** Version bump only for package @availity/react-docs
+
+
+
+
+
+## [4.0.2](https://github.com/Availity/availity-react/compare/@availity/react-docs@4.0.1...@availity/react-docs@4.0.2) (2019-10-22)
+
+**Note:** Version bump only for package @availity/react-docs
+
+
+
+
+
+## [4.0.1](https://github.com/Availity/availity-react/compare/@availity/react-docs@4.0.0...@availity/react-docs@4.0.1) (2019-10-22)
+
+**Note:** Version bump only for package @availity/react-docs
+
+
+
+
+
+# [4.0.0](https://github.com/Availity/availity-react/compare/@availity/react-docs@3.2.0...@availity/react-docs@4.0.0) (2019-10-22)
+
+
+### Code Refactoring
+
+* **spaces:** remove useSpace hook in favor of useSpaces ([8a6a932](https://github.com/Availity/availity-react/commit/8a6a932))
+
+
+### Features
+
+* **spaces:** add useSpaces hook ([b631946](https://github.com/Availity/availity-react/commit/b631946))
+
+
+### BREAKING CHANGES
+
+* **spaces:** `useSpace` is no longer available. Use `useSpaces`
+instead. Additionally, `isGhost` is no longer exported as that property is computed server side and assigned to the space asset
+
+*Before:*
+```js
+import { useSpace } from '@availity/spaces';
+
+// ...
+const { space: space1, loading, error, isGhost } = useSpace('1');
+const { space: space2 } = useSpace('2');
+const { space: space3 } = useSpace('3');
+```
+
+*After:*
+```js
+import { useSpaces, useSpacesContext } from '@availity/spaces';
+
+// ...
+const [space1, space2, space3] = useSpaces('1', '2', '3');
+const { loading, error } = useSpacesContext();
+```
+
+
+
+
+
+# [3.2.0](https://github.com/Availity/availity-react/compare/@availity/react-docs@3.1.8...@availity/react-docs@3.2.0) (2019-10-21)
+
+
+### Features
+
+* **analytics:** added analytics package ([10b4fb3](https://github.com/Availity/availity-react/commit/10b4fb3))
+
+
+
+
+
+## [3.1.8](https://github.com/Availity/availity-react/compare/@availity/react-docs@3.1.7...@availity/react-docs@3.1.8) (2019-10-18)
+
+**Note:** Version bump only for package @availity/react-docs
+
+
+
+
+
+## [3.1.7](https://github.com/Availity/availity-react/compare/@availity/react-docs@3.1.6...@availity/react-docs@3.1.7) (2019-10-18)
+
+**Note:** Version bump only for package @availity/react-docs
+
+
+
+
+
+## [3.1.6](https://github.com/Availity/availity-react/compare/@availity/react-docs@3.1.5...@availity/react-docs@3.1.6) (2019-10-18)
+
+**Note:** Version bump only for package @availity/react-docs
+
+
+
+
+
+## [3.1.5](https://github.com/Availity/availity-react/compare/@availity/react-docs@3.1.4...@availity/react-docs@3.1.5) (2019-10-18)
+
+**Note:** Version bump only for package @availity/react-docs
+
+
+
+
+
+## [3.1.4](https://github.com/Availity/availity-react/compare/@availity/react-docs@3.1.3...@availity/react-docs@3.1.4) (2019-10-18)
+
+**Note:** Version bump only for package @availity/react-docs
+
+
+
+
+
+## [3.1.3](https://github.com/Availity/availity-react/compare/@availity/react-docs@3.1.2...@availity/react-docs@3.1.3) (2019-10-17)
+
+**Note:** Version bump only for package @availity/react-docs
+
+
+
+
+
+## [3.1.2](https://github.com/Availity/availity-react/compare/@availity/react-docs@3.1.1...@availity/react-docs@3.1.2) (2019-10-15)
+
+**Note:** Version bump only for package @availity/react-docs
+
+
+
+
+
+## [3.1.1](https://github.com/Availity/availity-react/compare/@availity/react-docs@3.1.0...@availity/react-docs@3.1.1) (2019-10-11)
+
+**Note:** Version bump only for package @availity/react-docs
+
+
+
+
+
+# [3.1.0](https://github.com/Availity/availity-react/compare/@availity/react-docs@3.0.2...@availity/react-docs@3.1.0) (2019-10-11)
+
+
+### Features
+
+* **select:** handle AutoFillType function values ([c9d5540](https://github.com/Availity/availity-react/commit/c9d5540))
+
+
+
+
+
+## [3.0.2](https://github.com/Availity/availity-react/compare/@availity/react-docs@3.0.1...@availity/react-docs@3.0.2) (2019-10-11)
+
+**Note:** Version bump only for package @availity/react-docs
+
+
+
+
+
+## [3.0.1](https://github.com/Availity/availity-react/compare/@availity/react-docs@3.0.0...@availity/react-docs@3.0.1) (2019-10-11)
+
+**Note:** Version bump only for package @availity/react-docs
+
+
+
+
+
+# [3.0.0](https://github.com/Availity/availity-react/compare/@availity/react-docs@2.3.3...@availity/react-docs@3.0.0) (2019-10-11)
+
+
+### Code Refactoring
+
+* **link:** made link extends anchor tag ([ccc370a](https://github.com/Availity/availity-react/commit/ccc370a))
+
+
+### BREAKING CHANGES
+
+* **link:** url prop has been renamed to href to align with that standard anchor elements
+
+
+
+
+
 ## [2.3.3](https://github.com/Availity/availity-react/compare/@availity/react-docs@2.3.2...@availity/react-docs@2.3.3) (2019-10-10)
 
 **Note:** Version bump only for package @availity/react-docs

@@ -1,18 +1,46 @@
-import React, { useState } from 'react';
+import React, { useState, useRef } from 'react';
 import PropTypes from 'prop-types';
 import Icon from '@availity/icon';
-import { InputGroup, Input } from 'reactstrap';
+import { InputGroup, Input, Button } from 'reactstrap';
 import { DateRangePicker } from 'react-dates';
 import classNames from 'classnames';
 import { useField, useFormikContext } from 'formik';
 import get from 'lodash.get';
+import pick from 'lodash.pick';
 import moment from 'moment';
 
-import { isOutsideRange, limitPropType } from './utils';
+import { isOutsideRange, limitPropType, isSameDay } from './utils';
 
 const isoDateFormat = 'YYYY-MM-DD';
 
-const AvDateRange = ({
+const relativeRanges = {
+  Today: {
+    startDate: now => now,
+    endDate: now => now,
+  },
+  'Last 7 Days': {
+    startDate: now => now.add(-6, 'd'),
+    endDate: now => now,
+  },
+  'Last 30 Days': {
+    startDate: now => now.add(-29, 'd'),
+    endDate: now => now,
+  },
+  'Last 120 Days': {
+    startDate: now => now.add(-119, 'd'),
+    endDate: now => now,
+  },
+  'Last 6 Months': {
+    startDate: now => now.add(-6, 'M'),
+    endDate: now => now,
+  },
+  'Last 12 Months': {
+    startDate: now => now.add(-12, 'M'),
+    endDate: now => now,
+  },
+};
+
+const DateRange = ({
   id,
   min,
   max,
@@ -29,11 +57,14 @@ const AvDateRange = ({
   'data-testid': dataTestId,
   datepicker,
   autosync,
+  ranges: propsRanges,
   ...attributes
 }) => {
   const { setFieldValue, setFieldTouched } = useFormikContext();
   const [{ value = {} }, metadata] = useField(name);
   const [focusedInput, setFocusedInput] = useState(null);
+
+  const calendarIconRef = useRef();
 
   const startId = `${(id || name).replace(/[^a-zA-Z0-9]/gi, '')}-start`;
 
@@ -142,6 +173,69 @@ const AvDateRange = ({
     return null;
   };
 
+  const renderDateRanges = () => {
+    let ranges;
+    if (typeof propsRanges === 'boolean' && propsRanges) {
+      ranges = relativeRanges;
+    } else if (propsRanges) {
+      ranges = Array.isArray(propsRanges)
+        ? pick(relativeRanges, propsRanges)
+        : propsRanges;
+    }
+
+    return ranges ? (
+      <div className="d-flex flex-column ml-2 mt-2">
+        {Object.keys(ranges).map(text => {
+          const { startDate: startDateFunc, endDate: endDateFunc } = ranges[
+            text
+          ];
+
+          const presetStartDate = startDateFunc(moment());
+          const presetEndDate = endDateFunc(moment());
+
+          const isSelected =
+            isSameDay(
+              presetStartDate,
+              moment(startValue, [
+                isoDateFormat,
+                format,
+                'MMDDYYYY',
+                'YYYYMMDD',
+              ])
+            ) &&
+            isSameDay(
+              presetEndDate,
+              moment(endValue, [isoDateFormat, format, 'MMDDYYYY', 'YYYYMMDD'])
+            );
+          return (
+            <Button
+              key={text}
+              className="mt-1 mb-1"
+              color={isSelected ? 'primary' : 'default'}
+              size="sm"
+              onClick={() => {
+                onDatesChange({
+                  startDate: presetStartDate,
+                  endDate: presetEndDate,
+                });
+
+                setFocusedInput(undefined);
+                setFieldTouched(startKey, true);
+                setFieldTouched(endKey, true);
+
+                // // Focucs the calendar icon once clicked because we don't
+                // // want to get back in the loop of opening the calendar
+                calendarIconRef.current.parentElement.focus();
+              }}
+            >
+              {text}
+            </Button>
+          );
+        })}
+      </div>
+    ) : null;
+  };
+
   return (
     <>
       <Input name={name} style={{ display: 'none' }} className={classes} />
@@ -160,15 +254,29 @@ const AvDateRange = ({
           {...datepickerProps}
           startDate={getDateValue(startValue)}
           startDateId={startId}
+          enableOutsideDays
           endDate={getDateValue(endValue)}
           endDateId={endId}
+          calendarInfoPosition="before"
           onDatesChange={onDatesChange}
           focusedInput={focusedInput}
           disabled={attributes.disabled}
           onFocusChange={onFocusChange}
+          renderCalendarInfo={renderDateRanges}
           customArrowIcon="-"
           isOutsideRange={isOutsideRange(min, max, format)}
-          customInputIcon={datepicker ? calendarIcon : undefined}
+          customInputIcon={
+            datepicker
+              ? React.cloneElement(calendarIcon, {
+                  ref: calendarIconRef,
+                  onClick: () => {
+                    if (focusedInput) {
+                      setFocusedInput(undefined);
+                    }
+                  },
+                })
+              : undefined
+          }
           showDefaultInputIcon={datepicker}
           inputIconPosition="after"
           numberOfMonths={2}
@@ -178,7 +286,7 @@ const AvDateRange = ({
   );
 };
 
-AvDateRange.propTypes = {
+DateRange.propTypes = {
   id: PropTypes.string.isRequired,
   name: PropTypes.string.isRequired,
   min: limitPropType,
@@ -196,14 +304,19 @@ AvDateRange.propTypes = {
   endKey: PropTypes.string,
   'data-testid': PropTypes.string,
   autosync: PropTypes.bool,
+  ranges: PropTypes.oneOfType([
+    PropTypes.bool,
+    PropTypes.array,
+    PropTypes.object,
+  ]),
 };
 
-AvDateRange.defaultProps = {
-  calendarIcon: <Icon name="calendar" />,
+DateRange.defaultProps = {
+  calendarIcon: <Icon name="calendar" data-testid="calendar-icon" />,
   format: isoDateFormat,
   startKey: 'startDate',
   endKey: 'endDate',
   datepicker: true,
 };
 
-export default AvDateRange;
+export default DateRange;

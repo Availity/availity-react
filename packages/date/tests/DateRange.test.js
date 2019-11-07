@@ -334,4 +334,43 @@ describe('DateRange', () => {
       );
     });
   });
+
+  test('pre-selected date ranges appear', async () => {
+    const onSubmit = jest.fn();
+
+    const { container } = render(
+      <Form
+        initialValues={{
+          dateRange: undefined,
+        }}
+        onSubmit={onSubmit}
+      >
+        <DateRange id="dateRange" name="dateRange" ranges />
+        <Button type="submit">Submit</Button>
+      </Form>
+    );
+
+    container.querySelector('.DateRangePickerInput_calendarIcon').click();
+
+    await wait(() => {
+      expect(
+        container.querySelector(
+          '.DayPicker_calendarInfo__horizontal DayPicker_calendarInfo__horizontal_1'
+        )
+      ).toBeDefined();
+    });
+
+    // Simulate User hitting the 'Today' pre-set
+    container.querySelectorAll('.btn-default')[0].click();
+
+    const today = moment().format('MM/DD/YYYY');
+
+    expect(
+      container.querySelectorAll('.DateInput_input.DateInput_input_1')[0].value
+    ).toEqual(today);
+
+    expect(
+      container.querySelectorAll('.DateInput_input.DateInput_input_1')[1].value
+    ).toEqual(today);
+  });
 });

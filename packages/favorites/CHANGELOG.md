@@ -3,6 +3,49 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [2.1.8](https://github.com/Availity/availity-react/compare/@availity/favorites@2.1.7...@availity/favorites@2.1.8) (2019-10-24)
+
+**Note:** Version bump only for package @availity/favorites
+
+
+
+
+
+## [2.1.7](https://github.com/Availity/availity-react/compare/@availity/favorites@2.1.6...@availity/favorites@2.1.7) (2019-10-24)
+
+**Note:** Version bump only for package @availity/favorites
+
+
+
+
+
+## [2.1.6](https://github.com/Availity/availity-react/compare/@availity/favorites@2.1.5...@availity/favorites@2.1.6) (2019-10-24)
+
+**Note:** Version bump only for package @availity/favorites
+
+
+
+
+
+## [2.1.5](https://github.com/Availity/availity-react/compare/@availity/favorites@2.1.4...@availity/favorites@2.1.5) (2019-10-15)
+
+**Note:** Version bump only for package @availity/favorites
+
+
+
+
+
+## [2.1.4](https://github.com/Availity/availity-react/compare/@availity/favorites@2.1.3...@availity/favorites@2.1.4) (2019-10-11)
+
+
+### Bug Fixes
+
+* eslint issues ([bc4d8e9](https://github.com/Availity/availity-react/commit/bc4d8e9))
+
+
+
+
+
 ## [2.1.3](https://github.com/Availity/availity-react/compare/@availity/favorites@2.1.2...@availity/favorites@2.1.3) (2019-10-04)
 
 **Note:** Version bump only for package @availity/favorites

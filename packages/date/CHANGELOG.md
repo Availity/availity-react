@@ -3,6 +3,62 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.3.12](https://github.com/Availity/availity-react/compare/@availity/date@0.3.11...@availity/date@0.3.12) (2019-11-01)
+
+**Note:** Version bump only for package @availity/date
+
+
+
+
+
+## [0.3.11](https://github.com/Availity/availity-react/compare/@availity/date@0.3.10...@availity/date@0.3.11) (2019-10-24)
+
+**Note:** Version bump only for package @availity/date
+
+
+
+
+
+## [0.3.10](https://github.com/Availity/availity-react/compare/@availity/date@0.3.9...@availity/date@0.3.10) (2019-10-23)
+
+**Note:** Version bump only for package @availity/date
+
+
+
+
+
+## [0.3.9](https://github.com/Availity/availity-react/compare/@availity/date@0.3.8...@availity/date@0.3.9) (2019-10-17)
+
+**Note:** Version bump only for package @availity/date
+
+
+
+
+
+## [0.3.8](https://github.com/Availity/availity-react/compare/@availity/date@0.3.7...@availity/date@0.3.8) (2019-10-11)
+
+**Note:** Version bump only for package @availity/date
+
+
+
+
+
+## [0.3.7](https://github.com/Availity/availity-react/compare/@availity/date@0.3.6...@availity/date@0.3.7) (2019-10-11)
+
+**Note:** Version bump only for package @availity/date
+
+
+
+
+
+## [0.3.6](https://github.com/Availity/availity-react/compare/@availity/date@0.3.5...@availity/date@0.3.6) (2019-10-11)
+
+**Note:** Version bump only for package @availity/date
+
+
+
+
+
 ## [0.3.5](https://github.com/Availity/availity-react/compare/@availity/date@0.3.4...@availity/date@0.3.5) (2019-10-10)
 
 

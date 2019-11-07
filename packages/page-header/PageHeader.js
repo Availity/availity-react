@@ -4,7 +4,11 @@ import classNames from 'classnames';
 import Breadcrumbs from '@availity/breadcrumbs';
 import AppIcon from '@availity/app-icon';
 import Feedback from '@availity/feedback';
-import Spaces, { SpacesLogo, useSpace } from '@availity/spaces';
+import Spaces, {
+  SpacesLogo,
+  useSpaces,
+  useSpacesContext,
+} from '@availity/spaces';
 
 const PageHeader = ({
   payerId,
@@ -20,6 +24,7 @@ const PageHeader = ({
   feedbackProps,
   titleProps: { className: titleClassName, ...restTitleProps },
   renderRightContent: RenderRightContent,
+  renderRightClassName,
   component,
   tag: Tag,
   clientId,
@@ -30,10 +35,8 @@ const PageHeader = ({
   className,
   ...props
 }) => {
-  const { space: spaceForSpaceID } = useSpace(spaceId);
-  const { space: spaceForPayerID, loading: spaceForPayerIDLoading } = useSpace(
-    payerId
-  );
+  const [spaceForSpaceID, spaceForPayerID] = useSpaces(spaceId, payerId);
+  const { loading: spacesIsLoading } = useSpacesContext() || {};
 
   const _space = spaceForSpaceID || spaceForPayerID;
 
@@ -42,14 +45,14 @@ const PageHeader = ({
     const logoAttrs = {
       spaceId,
       payerId,
-      className: 'float-md-right d-inline-block',
+      className: 'd-inline-flex',
       skeletonProps: {
         width: 180,
         height: '100%',
       },
     };
     payerLogo =
-      spaceForPayerID || spaceForPayerIDLoading ? (
+      spaceForPayerID || spacesIsLoading ? (
         <SpacesLogo {...logoAttrs} />
       ) : (
         <Spaces
@@ -75,7 +78,7 @@ const PageHeader = ({
     () => (
       <Feedback
         appName={appName}
-        className={`float-md-right d-inline-block ${payerId ? 'mx-3' : ''}`}
+        className={`d-inline-flex flex-shrink-0 ${payerId ? 'mx-3' : ''}`}
         {...feedbackProps}
       />
     ),
@@ -83,8 +86,8 @@ const PageHeader = ({
   );
 
   return (
-    <React.Fragment>
-      <div className="d-flex align-items-start">
+    <>
+      <div className="d-flex align-items-start flex-shrink-0">
         {React.isValidElement(crumbs) ? (
           crumbs
         ) : (
@@ -129,19 +132,19 @@ const PageHeader = ({
           {children || <h1 className="mb-0">{appName}</h1>}
         </Tag>
         {!RenderRightContent ? (
-          <div className="page-header-left">
-            {payerLogo}
+          <div className="page-header-left d-flex flex-wrap flex-md-nowrap flex-grow align-items-end justify-content-end">
             {showFeedback && feedback}
+            {payerLogo}
           </div>
         ) : (
           <RenderRightContent
-            className="page-header-left"
+            className={renderRightClassName}
             payerLogo={payerLogo}
             feedback={feedback}
           />
         )}
       </div>
-    </React.Fragment>
+    </>
   );
 };
 
@@ -171,6 +174,7 @@ PageHeader.propTypes = {
   ]),
   tag: PropTypes.oneOfType([PropTypes.func, PropTypes.string]),
   renderRightContent: PropTypes.func,
+  renderRightClassName: PropTypes.string,
   homeUrl: PropTypes.string,
   clientId: PropTypes.string,
   iconSrc: PropTypes.string,
@@ -185,6 +189,8 @@ PageHeader.defaultProps = {
   payerId: null,
   homeUrl: '/public/apps/dashboard',
   titleProps: {},
+  renderRightClassName:
+    'page-header-left d-flex flex-wrap flex-md-nowrap flex-grow align-items-end justify-content-end',
 };
 
 export default PageHeader;

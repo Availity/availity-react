@@ -102,4 +102,26 @@ describe('Input', () => {
       expect(input.className).toContain('was-validated');
     });
   });
+
+  test('checkbox renders initial checked of true', () => {
+    const { getByTestId } = render(
+      <Form
+        initialValues={{
+          hello: true,
+        }}
+        validationSchema={yup.object().shape({
+          hello: yup.boolean().required(),
+        })}
+        onSubmit={() => {}}
+      >
+        <Input name="hello" data-testid="hello-input" type="checkbox" />
+        <Button type="submit">Submit</Button>
+      </Form>
+    );
+
+    const input = getByTestId('hello-input');
+
+    expect(input.getAttribute('value')).toBe('true');
+    expect(input.getAttribute('checked')).toBe(''); // null would mean its not checked...
+  });
 });
