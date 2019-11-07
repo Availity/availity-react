@@ -28,7 +28,7 @@ const AvDateRange = ({
   datepickerProps,
   'data-testid': dataTestId,
   datepicker,
-  autofill,
+  autosync,
   ...attributes
 }) => {
   const { setFieldValue, setFieldTouched } = useFormikContext();
@@ -102,31 +102,31 @@ const AvDateRange = ({
     }
   };
 
-  const syncDates = async input => {
-    let value;
+  const syncDates = async () => {
+    if (!metadata.touched) {
+      let value;
 
-    if (input !== startKey) {
-      if (moment(startValue).isAfter(endValue) || (!endValue && startValue)) {
-        value = startValue;
+      if (!startValue || !endValue) {
+        value = startValue || endValue;
       }
-    }
-    if (input !== endKey || !startValue) {
-      if (moment(endValue).isBefore(startValue)) {
-        value = endValue;
+
+      if (value) {
+        await setFieldValue(
+          name,
+          {
+            [startKey]: value,
+            [endKey]: value,
+          },
+          true
+        );
+        await setFieldTouched(name, true);
       }
-    }
-    if (value) {
-      await setFieldValue(
-        name,
-        { [startKey]: value, [endKey]: value },
-        input === endKey
-      );
     }
   };
 
   const onFocusChange = async input => {
     if (!input) await setFieldTouched(name, true);
-    if (autofill) await syncDates(input);
+    if (autosync) await syncDates();
     setFocusedInput(input);
     if (onPickerFocusChange) onPickerFocusChange({ focusedInput: input });
   };
@@ -195,7 +195,7 @@ AvDateRange.propTypes = {
   startKey: PropTypes.string,
   endKey: PropTypes.string,
   'data-testid': PropTypes.string,
-  autofill: PropTypes.bool,
+  autosync: PropTypes.bool,
 };
 
 AvDateRange.defaultProps = {
