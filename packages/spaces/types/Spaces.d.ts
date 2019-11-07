@@ -70,8 +70,13 @@ export interface Space {
   isGhost?: boolean;
 }
 
+export interface SanitizedSpace extends Space {
+  children: SanitizedSpace[];
+  parents: SanitizedSpace[];
+}
+
 export interface SpacesContext {
-  spaces?: Space[];
+  spaces?: SanitizedSpace[];
   loading: boolean;
   error?: string;
 }
@@ -84,9 +89,10 @@ export interface SpacesProps {
   spaceIds?: string[];
   payerIds?: string[];
   spaces?: string[];
+  multiPayerRequired?: boolean;
 }
 
-declare function useSpaces(...ids: string[]): Space[];
+declare function useSpaces(...ids: string[]): SanitizedSpace[];
 
 declare function useSpacesContext(): SpacesContext;
 

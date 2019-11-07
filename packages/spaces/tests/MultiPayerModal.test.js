@@ -96,7 +96,7 @@ describe('Spaces', () => {
 
     const { getByText, getByTestId } = render(
       <Spaces spaceIds={['1']} clientId="tst" legacy>
-        <SpacesLink spaceId="1">Some Link</SpacesLink>
+        <SpacesLink spaceId="1" body />
       </Spaces>
     );
 

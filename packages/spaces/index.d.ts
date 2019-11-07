@@ -1,5 +1,6 @@
 import Spaces, { useSpaces, useSpacesContext, SpacesContext } from './types/Spaces';
 import SpacesLink, { useLink } from './types/SpacesLink';
+import SpacesIcon from './types/SpacesIcon';
 import SpacesImage from './types/SpacesImage';
 import SpacesDisclaimer from './types/SpacesDisclaimer';
 import SpacesAgreement from './types/SpacesAgreement';

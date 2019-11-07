@@ -114,7 +114,7 @@ storiesOf('Components|Spaces', module)
         <Spaces
           spaceIds={[spaceId]}
           clientId="my-client-id"
-          mutliPayerRequired={spaceId === 'multiPayerApp'}
+          multiPayerRequired={spaceId === 'multiPayerApp'}
         >
           <div>
             <SpacesLink spaceId={spaceId} />

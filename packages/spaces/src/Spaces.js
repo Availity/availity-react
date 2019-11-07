@@ -28,7 +28,7 @@ export const getAllSpaces = async (
   clientId,
   variables,
   _spaces = [],
-  mutliPayerRequired
+  multiPayerRequired
 ) => {
   if (!clientId) {
     throw new Error('clientId is required');
@@ -39,7 +39,7 @@ export const getAllSpaces = async (
   // We can assume if you are using the legacy flag, you are also not touching the query. If you are,
   // you must be Kyle or someone that knows what they are doing...
 
-  if (mutliPayerRequired) {
+  if (multiPayerRequired) {
     if (variables.region) {
       variables.payerSpaceRegion = variables.region;
     } else {
@@ -64,7 +64,11 @@ export const getAllSpaces = async (
   const unionedSpaces = _spaces.concat(spaces.spaces, payerSpaces.spaces || []);
 
   if (totalCount > page * perPage) {
-    const vars = { ...variables, page: page + 1, includeParents: mutliPayerRequired };
+    const vars = {
+      ...variables,
+      page: page + 1,
+      includeParents: multiPayerRequired,
+    };
     return getAllSpaces(query, clientId, vars, unionedSpaces);
   }
 
@@ -83,7 +87,7 @@ const Spaces = ({
   payerIds,
   children,
   spaces: spacesFromProps,
-  mutliPayerRequired,
+  multiPayerRequired,
 }) => {
   const { spaces: parentSpacesProviderSpaces } = useSpacesContext() || {};
   const hasParentSpacesProvider = parentSpacesProviderSpaces !== undefined;
@@ -123,16 +127,19 @@ const Spaces = ({
 
       let _spaces = [];
       if (filteredSpaceIDs.length > 0) {
-        const vars = { ...variables, ids: filteredSpaceIDs, includeParents: mutliPayerRequired };
+        const vars = {
+          ...variables,
+          ids: filteredSpaceIDs,
+          includeParents: multiPayerRequired,
+        };
         const spacesBySpaceIDs = await getAllSpaces(
           query,
           clientId,
           vars,
           spaces,
-          mutliPayerRequired
+          multiPayerRequired
         );
 
-        console.log("spacesBySpaceIDs",spacesBySpaceIDs);
         _spaces = _spaces.concat(
           // Filter all payer spaces that are already here
           spacesBySpaceIDs.filter(
@@ -143,13 +150,17 @@ const Spaces = ({
       }
 
       if (filteredPayerIDs.length > 0) {
-        const vars = { ...variables, payerIDs: filteredPayerIDs, includeParents: mutliPayerRequired };
+        const vars = {
+          ...variables,
+          payerIDs: filteredPayerIDs,
+          includeParents: multiPayerRequired,
+        };
         const spacesByPayerIDs = await getAllSpaces(
           query,
           clientId,
           vars,
           spaces,
-          mutliPayerRequired
+          multiPayerRequired
         );
         _spaces = _spaces.concat(
           // Filter all payer spaces that are already here
@@ -234,7 +245,7 @@ Spaces.propTypes = {
   spaceIds: PropTypes.arrayOf(PropTypes.string),
   payerIds: PropTypes.arrayOf(PropTypes.string),
   spaces: PropTypes.arrayOf(PropTypes.object),
-  mutliPayerRequired: PropTypes.bool,
+  multiPayerRequired: PropTypes.bool,
 };
 
 Spaces.defaultProps = {
@@ -253,7 +264,7 @@ Spaces.defaultProps = {
   spaceIds: [],
   payerIds: [],
   spaces: [],
-  mutliPayerRequired: false,
+  multiPayerRequired: false,
 };
 
 export default Spaces;

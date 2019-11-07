@@ -5,6 +5,7 @@ import Spaces, {
 } from './src/Spaces';
 import SpacesImage from './src/SpacesImage';
 import SpacesLink, { useLink } from './src/SpacesLink';
+import SpacesIcon from './src/SpacesIcon';
 import SpacesDisclaimer from './src/SpacesDisclaimer';
 import SpacesAgreement from './src/SpacesAgreement';
 import SpacesGhostText from './src/SpacesGhostText';
@@ -37,5 +38,6 @@ export {
   SpacesContext,
   sanitizeSpaces,
   SpacesLink,
+  SpacesIcon,
   useLink,
 };
