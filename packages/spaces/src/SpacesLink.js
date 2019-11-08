@@ -5,7 +5,16 @@ import clone from 'lodash.clone';
 import truncate from 'lodash.truncate';
 import ReactMarkdown from 'react-markdown';
 import { FavoriteHeart } from '@availity/favorites';
-import { Card, CardBody, Media, CardText, CardTitle, Badge } from 'reactstrap';
+import {
+  Card,
+  CardBody,
+  Media,
+  CardText,
+  CardTitle,
+  Badge,
+  ListGroupItemHeading,
+  ListGroupItemText,
+} from 'reactstrap';
 import ListGroupItem from '@availity/list-group-item';
 import dayjs from 'dayjs';
 import AppIcon from '@availity/app-icon';
@@ -31,6 +40,18 @@ const getBodyTag = (propTag = 'div', linkStyle) =>
     list: 'div',
   }[linkStyle] || propTag);
 
+const getTitleTag = (propTag = 'div', linkStyle) =>
+  ({
+    card: CardTitle,
+    list: ListGroupItemHeading,
+  }[linkStyle] || propTag);
+
+const getTextTag = (propTag = 'div', linkStyle) =>
+  ({
+    card: CardText,
+    list: ListGroupItemText,
+  }[linkStyle] || propTag);
+
 const Link = ({
   spaceId,
   space: propSpace,
@@ -46,6 +67,8 @@ const Link = ({
   description: showDescription,
   tag: Tag,
   bodyTag: BodyTag,
+  titleTag: TitleTag,
+  textTag: TextTag,
   linkStyle,
   size,
   loading: propsLoading,
@@ -170,10 +193,10 @@ const Link = ({
     [activeDate, showDate, showNew, stacked]
   );
 
-  if (isLoading){
+  if (isLoading) {
     return (
       <Loader
-        data-testid={`space-${linkStyle}-${spaceId}-loading`}
+        data-testid={`space-${linkStyle}-${id}-loading`}
         skeletonProps={skeletonProps}
         {...rest}
       />
@@ -182,6 +205,8 @@ const Link = ({
 
   Tag = getContainerTag(Tag, linkStyle);
   BodyTag = getBodyTag(BodyTag, linkStyle);
+  TitleTag = getTitleTag(TitleTag, linkStyle);
+  TextTag = getTextTag(TextTag, linkStyle);
 
   const renderChildren = () =>
     isFunction(children)
@@ -238,21 +263,21 @@ const Link = ({
         {children
           ? renderChildren()
           : body && (
-              <Media body id={`application-${spaceId}`} className="text-dark">
-                <CardTitle
-                  id={`app-title-${spaceId}`}
+              <Media body id={`${type}-${id}`} className="text-dark">
+                <TitleTag
+                  id={`app-title-${id}`}
                   tag="h4"
-                  className={classNames('h5 mb-0', {
-                    'mb-0': !showDescription,
+                  className={classNames('h5', {
+                    'mb-0': !showDescription || !description,
                     'pt-3': stacked,
                     'text-center': stacked,
                   })}
                 >
                   {name}
-                </CardTitle>
+                </TitleTag>
                 {stacked && dateInfo}
                 {showDescription && description && (
-                  <CardText
+                  <TextTag
                     className={classNames('mt-1', {
                       'text-center': stacked,
                     })}
@@ -269,7 +294,7 @@ const Link = ({
                           : description
                       }
                     />
-                  </CardText>
+                  </TextTag>
                 )}
               </Media>
             )}
@@ -285,6 +310,8 @@ Link.propTypes = {
   children: PropTypes.node,
   tag: PropTypes.oneOfType([PropTypes.func, PropTypes.string]),
   bodyTag: PropTypes.oneOfType([PropTypes.func, PropTypes.string]),
+  titleTag: PropTypes.oneOfType([PropTypes.func, PropTypes.string]),
+  textTag: PropTypes.oneOfType([PropTypes.func, PropTypes.string]),
   card: PropTypes.bool,
   icon: PropTypes.bool,
   description: PropTypes.bool,

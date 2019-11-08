@@ -17,7 +17,7 @@ export interface SsoAttributes {
 }
 
 export interface LinkProps extends React.HTMLAttributes<HTMLDivElement> {
-    spaceId: string;
+    spaceId?: string;
     space?: SanitizedSpace;
     children?: React.ReactNode | ((linkContext: LinkContext) => React.ReactNode);
     tag?: React.ComponentType | string;
@@ -36,7 +36,7 @@ export interface LinkProps extends React.HTMLAttributes<HTMLDivElement> {
     clientId?: string;
     skeletonProps?: SkeletonType;
     maxDescriptionLength?: number;
-    ssoAttributes?: SsoAttributes 
+    ssoAttributes?: SsoAttributes
 }
 
 declare const Link: React.FunctionComponent<LinkProps>;
