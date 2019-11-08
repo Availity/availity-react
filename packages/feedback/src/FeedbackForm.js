@@ -45,7 +45,7 @@ const FeedbackForm = ({
 
     await avLogMessagesApi.info({
       surveyId: `${name.replace(/\s/g, '_')}_Smile_Survey`,
-      smileLocation: `${name}`,
+      feedbackLocation: `${name}`,
       smile: `icon-${smileField.icon}`,
       url: window.location.href,
       region: response.data.regions[0] && response.data.regions[0].id,
@@ -103,7 +103,7 @@ const FeedbackForm = ({
           'face-options': undefined,
           additionalFeedback: undefined,
           feedback: undefined,
-          feedbackApp: undefined,
+          feed: undefined,
           smileField: undefined,
         }}
         validationSchema={yup.object().shape({
@@ -122,7 +122,7 @@ const FeedbackForm = ({
               placeholder: yup.string(),
             })
             .required('This field is required.'),
-          feedbackApp: yup
+          feed: yup
             .string()
             .isRequired(aboutOptions.length > 0, 'This field is required.'),
         })}
@@ -144,7 +144,7 @@ const FeedbackForm = ({
             <>
               {aboutOptions.length > 0 && (
                 <SelectField
-                  name="feedbackApp"
+                  name="feed"
                   id="about-options"
                   data-testid="about-options"
                   placeholder="This is about..."
