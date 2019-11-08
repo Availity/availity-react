@@ -1,6 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
+
 const IconTiles = ({ parents, stacked, className }) => {
   const splicedParents = parents.length > 4 ? parents.slice(0, 3) : parents;
 
@@ -26,18 +27,18 @@ const IconTiles = ({ parents, stacked, className }) => {
         maxHeight: 45,
       }}
     >
-      {splicedParents.map(({ id, images = {} }) => (
-        <img
-          key={id}
-          style={{
-            flexBasis: '50%',
-            width: 22.5,
-            height: 22.5,
-          }}
-          src={images.tile}
-          alt="tile"
-        />
-      ))}
+      {splicedParents.map(({ id, images = {} }) =>
+          <img
+            key={id}
+            style={{
+              flexBasis: '50%',
+              width: 22.5,
+              height: 22.5,
+            }}
+            src={images.tile}
+            alt="tile"
+          />
+      )}
     </div>
   );
 };

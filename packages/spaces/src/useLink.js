@@ -4,7 +4,10 @@ import { useSpaces, useSpacesContext } from './Spaces';
 import { updateUrl, updateTopApps } from './helpers';
 import { useModal } from './modals/ModalProvider';
 
-export default (spaceOrSpaceId, { clientId: propsClientId } = {}) => {
+export default (
+  spaceOrSpaceId,
+  { clientId: propsClientId, ssoAttributes } = {}
+) => {
   const { clientId = propsClientId } = useSpacesContext() || {};
   const openModal = useModal();
 
@@ -25,7 +28,6 @@ export default (spaceOrSpaceId, { clientId: propsClientId } = {}) => {
 
   const parentPayerSpaces = parents.filter(p => p.type === 'space');
 
-  // TODO Abstract this
   const legacySso = () => {
     openModal('DISCLAIMER_MODAL', {
       disclaimerId: metadata.disclaimerId,
@@ -49,7 +51,7 @@ export default (spaceOrSpaceId, { clientId: propsClientId } = {}) => {
           /(?:(?:^|.*;\s*)XSRF-TOKEN\s*=\s*([^;]*).*$)|^.*$/,
           '$1'
         ),
-        spaceId: id,
+        ...ssoAttributes,
       };
 
       updateTopApps(id, type);

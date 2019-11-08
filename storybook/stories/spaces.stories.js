@@ -104,75 +104,90 @@ storiesOf('Components|Spaces', module)
       {
         Sso: 'ssoSpace',
         Disclaimer: 'disclaimerSpace',
-        'Multi Payer': 'multiPayerApp',
+        'Multi Payer': 'multiPayerApp'
       },
-      'disclaimerSpace'
-    );
-
+      'ssoSpace'
+    )
     const showBody = boolean('Show Body', true);
 
     const maxWidth = number('Width', 500);
+
+    const showAppIcon = boolean('App Icon', true);
+
+    const linkStyle = select(
+      'Link Style',
+      {
+        Card: 'card',
+        List: 'list',
+        None: 'default',
+      },
+      'card'
+    );
+
+    const stacked = boolean('Stacked', false);
+    const description = boolean('Show Description', false);
+    const showDate = boolean('Show Date', true);
+    const showNew = boolean('Show New', true);
+    const favorite = boolean('Show Favorite', true);
+    const iconSize = select(
+      'Icon Size',
+      {
+        Small: 'sm',
+        Large: 'lg',
+        'Extra Large': 'xl',
+      },
+      'sm'
+    );
+
+    const skeletonHeight = number('Skeleton Height', 80);
+    const loading = boolean('Skeleton Loading', false);
+    const maxDescriptionLength = description ? number("Max Description Length",80): undefined;
 
     return (
       <div>
         <Spaces
           spaceIds={[spaceId]}
           clientId="my-client-id"
-          multiPayerRequired={spaceId === 'multiPayerApp'}
+          multiPayerRequired
         >
           <Favorites>
-            <SpacesLink
-              spaceId={spaceId}
-              appIcon={boolean('App Icon', true)}
-              linkStyle={select(
-                'Link Style',
-                {
-                  Card: 'card',
-                  List: 'list',
-                  None: 'default',
-                },
-                'card'
-              )}
-              style={{
-                maxWidth,
-              }}
-              stacked={boolean('Stacked', false)}
-              showDescription={boolean('Show Description', false)}
-              showDate={boolean('Show Date', true)}
-              showNew={boolean('Show New', true)}
-              body={showBody}
-              favorite={boolean('Show Favorite', true)}
-              size={select(
-                'Icon Size',
-                {
-                  Small: 'sm',
-                  Large: 'lg',
-                  'Extra Large': 'xl',
-                },
-                'sm'
-              )}
-              skeletonProps={{
-                width: maxWidth,
-                height: text('Skeleton Height', '100px'),
-                count: number('Skeleton Count', 1),
-              }}
-              loading={boolean('Skeleton Loading', false)}
-            />
+              <SpacesLink
+                spaceId={spaceId}
+                appIcon={showAppIcon}
+                linkStyle={linkStyle}
+                style={{
+                  maxWidth,
+                }}
+                stacked={stacked}
+                description={description}
+                showDate={showDate}
+                showNew={showNew}
+                body={showBody}
+                favorite={favorite}
+                size={iconSize}
+                skeletonProps={{
+                  width: maxWidth,
+                  height: skeletonHeight,
+                }}
+                loading={loading}
+                maxDescriptionLength={maxDescriptionLength}
+              />
           </Favorites>
         </Spaces>
       </div>
     );
   })
   .add('SpacesIcon', () => {
+
     const spaceId = select(
       'Link Type',
       {
         Sso: 'ssoSpace',
         Disclaimer: 'disclaimerSpace',
-        'Multi Payer': 'multiPayerApp',
+        'Multi Payer': 'multiPayerApp'
       },
-      'disclaimerSpace'
-    );
+      'ssoSpace'
+    )
 
     const size = select(
       'Icon Size',
@@ -193,32 +208,21 @@ storiesOf('Components|Spaces', module)
     const width = sizes[size];
     const height = sizes[size];
 
+    const stacked = boolean('Stacked', false);
+    const loading = boolean('Loading', false);
+
     return (
       <div>
         <Spaces
           spaceIds={[spaceId]}
           clientId="my-client-id"
-          multiPayerRequired={spaceId === 'multiPayerApp'}
+          multiPayerRequired
         >
           <SpacesIcon
             spaceId={spaceId}
-            stacked={boolean('Stacked', false)}
-            loading={boolean('Loading', false)}
-            size={select(
-              'Icon Size',
-              {
-                Small: 'sm',
-                Large: 'lg',
-                'Extra Large': 'xl',
-              },
-              'xl'
-            )}
-            style={
-              {
-                // width,
-                // height
-              }
-            }
+            stacked={stacked}
+            loading={loading}
+            size={size}
             skeletonProps={{
               width,
               height,

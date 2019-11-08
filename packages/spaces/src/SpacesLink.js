@@ -2,9 +2,7 @@ import React, { useMemo, useCallback } from 'react';
 import PropTypes from 'prop-types';
 import classNames from 'classnames';
 import clone from 'lodash.clone';
-import take from 'lodash.take';
 import truncate from 'lodash.truncate';
-import words from 'lodash.words';
 import ReactMarkdown from 'react-markdown';
 import { FavoriteHeart } from '@availity/favorites';
 import { Card, CardBody, Media, CardText, CardTitle, Badge } from 'reactstrap';
@@ -17,13 +15,6 @@ import { isFunction } from './helpers';
 import useLink from './useLink';
 import IconTiles from './Tiles';
 import Loader, { skeletonPropType } from './Loader';
-
-export const generateShortName = name =>
-  toString(
-    take(words(name.replace(/[^A-Za-z0-9 ]/g, '')), 2).map(word =>
-      truncate(word, { length: 1, omission: '' })
-    )
-  ).replace(/,/g, '');
 
 const isNew = activeDate => dayjs().diff(activeDate, 'day') < 30;
 const getDisplayDate = date => dayjs(date).format('MM/DD/YYYY');
@@ -62,6 +53,7 @@ const Link = ({
   maxDescriptionLength,
   style,
   skeletonProps,
+  ssoAttributes,
   ...rest
 }) => {
   const { loading } = useSpacesContext() || {};
@@ -86,6 +78,7 @@ const Link = ({
     props = {},
   ] = useLink(propSpace || spaceId, {
     clientId: propsClientId,
+    ssoAttributes,
   });
 
   const getIconTitle = useCallback(() => {
@@ -128,9 +121,9 @@ const Link = ({
           icons.navigation
         )}
         style={{
-          top: showDescription && description ? -5 : 0,
+          top: showDescription && description && !stacked ? -5 : 0,
         }}
-        size={size}
+        size={size === undefined || stacked ? 'lg' : size}
       >
         {getIconTitle()}
       </AppIcon>
@@ -150,9 +143,11 @@ const Link = ({
     () =>
       id &&
       favorite && (
-        <span className={classNames("d-table-cell align-middle",{
-          'pr-2': !showAppIcon
-        })}>
+        <span
+          className={classNames('d-table-cell align-middle', {
+            'pr-2': !showAppIcon,
+          })}
+        >
           <FavoriteHeart id={id} onChange={(_, e) => e.stopPropagation()} />
         </span>
       ),
@@ -175,7 +170,7 @@ const Link = ({
     [activeDate, showDate, showNew, stacked]
   );
 
-  if (isLoading)
+  if (isLoading){
     return (
       <Loader
         data-testid={`space-${linkStyle}-${spaceId}-loading`}
@@ -183,6 +178,7 @@ const Link = ({
         {...rest}
       />
     );
+  }
 
   Tag = getContainerTag(Tag, linkStyle);
   BodyTag = getBodyTag(BodyTag, linkStyle);
@@ -228,9 +224,13 @@ const Link = ({
       aria-label={name}
     >
       <BodyTag
-        className={classNames('d-flex',`align-items-${!showDescription || stacked ? 'center':'start'}`, {
-          'flex-column': stacked,
-        })}
+        className={classNames(
+          'd-flex',
+          `align-items-${!showDescription || stacked ? 'center' : 'start'}`,
+          {
+            'flex-column': stacked,
+          }
+        )}
       >
         {!stacked && favoriteIcon}
         {appIcon}
@@ -245,13 +245,18 @@ const Link = ({
                   className={classNames('h5 mb-0', {
                     'mb-0': !showDescription,
                     'pt-3': stacked,
+                    'text-center': stacked,
                   })}
                 >
                   {name}
                 </CardTitle>
                 {stacked && dateInfo}
                 {showDescription && description && (
-                  <CardText className="mt-1">
+                  <CardText
+                    className={classNames('mt-1', {
+                      'text-center': stacked,
+                    })}
+                  >
                     <ReactMarkdown
                       className="Card-text"
                       source={
@@ -297,6 +302,7 @@ Link.propTypes = {
   className: PropTypes.string,
   skeletonProps: skeletonPropType,
   maxDescriptionLength: PropTypes.number,
+  ssoAttributes: PropTypes.object,
 };
 
 Link.defaultProps = {

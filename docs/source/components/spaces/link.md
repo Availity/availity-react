@@ -79,3 +79,7 @@ Allows the description length to be truncated.
 ### `skeletonProps?: object`
 
 Dimensions passed to loader to show while the image is loading.
+
+### `ssoAttributes?: object`
+
+Additional attributes you may want to tack onto the `native-form` when submitting a SAML sso. i.e. `spaceId` or `sourceApplicationId`

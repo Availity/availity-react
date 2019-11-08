@@ -10,6 +10,12 @@ interface LinkContext extends SanitizedSpace, LinkPropsType {}
 
 declare function useLink(spaceId: string): [SanitizedSpace,LinkPropsType];
 
+export interface SsoAttributes {
+    [key: string]: any;
+    spaceId?: string;
+    sourceApplicationId?: string;
+}
+
 export interface LinkProps extends React.HTMLAttributes<HTMLDivElement> {
     spaceId: string;
     space?: SanitizedSpace;
@@ -30,6 +36,7 @@ export interface LinkProps extends React.HTMLAttributes<HTMLDivElement> {
     clientId?: string;
     skeletonProps?: SkeletonType;
     maxDescriptionLength?: number;
+    ssoAttributes?: SsoAttributes 
 }
 
 declare const Link: React.FunctionComponent<LinkProps>;

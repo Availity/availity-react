@@ -5,6 +5,8 @@
           {
             "id":"ssoSpace",
             "name":"Sso Space",
+            "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla vel urna eget enim fringilla condimentum ac at elit. Aenean sit amet neque augue. Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
+            "shortName":"SS",
             "type": "resource",
             "link": {
                 "url":"https://google.com",
@@ -15,6 +17,12 @@
                     "name": "ssoId",
                     "value":"some-ssoId"
                 }
+            ],
+            "icons": [
+              {
+                "name":"navigation",
+                "value": "app-icon-green"
+              }
             ]
           }
         ]

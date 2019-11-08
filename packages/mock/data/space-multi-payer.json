@@ -10,7 +10,7 @@
             "url": "https://google.com",
             "target": "_blank"
           },
-          "parentIDs": ["parentSpace1", "parentSpace2"]
+          "parentIDs": ["parentSpace1", "parentSpace2","parentSpace3","parentSpace4"]
         }
       ]
     },
@@ -18,24 +18,34 @@
       "spaces": [
         {
           "id": "parentSpace1",
+          "name": "First Parent Space",
           "type": "space",
           "childIDs": ["multiPayerApp"],
           "images": [
-            {
-              "name": "tile",
-              "value": "/parent-space-tile-1"
-            }
           ]
         },
         {
           "id": "parentSpace2",
+          "name": "Second Parent Space",
           "type": "space",
           "childIDs": ["multiPayerApp"],
           "images": [
-            {
-              "name": "tile",
-              "value": "/parent-space-tile-2"
-            }
+          ]
+        },
+        {
+          "id": "parentSpace3",
+          "name": "Third Parent Space",
+          "type": "space",
+          "childIDs": ["multiPayerApp"],
+          "images": [
+          ]
+        },
+        {
+          "id": "parentSpace4",
+          "name": "Fourth Parent Space",
+          "type": "space",
+          "childIDs": ["multiPayerApp"],
+          "images": [
           ]
         }
       ]
