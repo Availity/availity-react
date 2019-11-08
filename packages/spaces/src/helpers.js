@@ -180,11 +180,17 @@ export const updateTopApps = async (spaceId, type) => {
       today.format()
     );
 
+    const currentCount =
+      values[spaceId] && typeof values[spaceId].count === 'number'
+        ? values[spaceId].count
+        : 0;
+
     values[spaceId] = {
       ...values[spaceId],
-      count: (values[spaceId] || 0) + 1,
+      count: currentCount + 1,
       lastUse: today.format(),
     };
+
     localStorageCore.set(`${TOP_APPS.KEYS.VALUES}-${userId}`, values);
 
     avMessage.send(TOP_APPS.UPDATE_EVENT);
