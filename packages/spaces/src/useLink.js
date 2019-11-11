@@ -6,7 +6,7 @@ import { useModal } from './modals/ModalProvider';
 
 export default (
   spaceOrSpaceId,
-  { clientId: propsClientId, ssoAttributes } = {}
+  { clientId: propsClientId, linkAttributes = {} } = {}
 ) => {
   const { clientId = propsClientId } = useSpacesContext() || {};
   const openModal = useModal();
@@ -51,7 +51,7 @@ export default (
           /(?:(?:^|.*;\s*)XSRF-TOKEN\s*=\s*([^;]*).*$)|^.*$/,
           '$1'
         ),
-        ...ssoAttributes,
+        ...linkAttributes,
       };
 
       updateTopApps(id, type);
@@ -76,7 +76,9 @@ export default (
   const openLink = () => {
     updateTopApps(id, type);
     window.open(
-      link.url[0] === '/' ? updateUrl(link.url, 'spaceId', id) : link.url,
+      link.url[0] === '/'
+        ? updateUrl(link.url, 'spaceId', linkAttributes.spaceId)
+        : link.url,
       link.target
     );
   };

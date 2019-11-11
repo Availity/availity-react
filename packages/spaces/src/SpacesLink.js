@@ -76,7 +76,7 @@ const Link = ({
   maxDescriptionLength,
   style,
   skeletonProps,
-  ssoAttributes,
+  linkAttributes,
   ...rest
 }) => {
   const { loading } = useSpacesContext() || {};
@@ -101,7 +101,7 @@ const Link = ({
     props = {},
   ] = useLink(propSpace || spaceId, {
     clientId: propsClientId,
-    ssoAttributes,
+    linkAttributes,
   });
 
   const getIconTitle = useCallback(() => {
@@ -329,7 +329,7 @@ Link.propTypes = {
   className: PropTypes.string,
   skeletonProps: skeletonPropType,
   maxDescriptionLength: PropTypes.number,
-  ssoAttributes: PropTypes.object,
+  linkAttributes: PropTypes.object,
 };
 
 Link.defaultProps = {

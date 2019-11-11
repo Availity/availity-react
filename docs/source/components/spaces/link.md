@@ -80,6 +80,6 @@ Allows the description length to be truncated.
 
 Dimensions passed to loader to show while the image is loading.
 
-### `ssoAttributes?: object`
+### `linkAttributes?: object`
 
 Additional attributes you may want to tack onto the `native-form` when submitting a SAML sso. i.e. `spaceId` or `sourceApplicationId`
