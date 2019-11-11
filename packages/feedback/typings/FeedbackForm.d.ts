@@ -15,6 +15,7 @@ export interface FeedBackFormProps {
     aboutOptions?: AboutOption[];
     prompt?: string;
     staticFields?: object;
+    includeCurrentRegion?: boolean;
 }
 
 declare const FeedBackForm: React.FunctionComponent<FeedBackFormProps>;

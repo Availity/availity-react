@@ -35,20 +35,25 @@ const FeedbackForm = ({
   onFeedbackSent,
   prompt,
   additionalComments,
-  staticFields,
+  staticFields = {},
+  includeCurrentRegion,
 }) => {
   const [active, setActive] = useState(null);
   const [sent, setSent] = useState(null);
 
   const sendFeedback = async ({ smileField, ...values }) => {
-    const response = await avRegionsApi.getCurrentRegion();
+    let region;
+    if (includeCurrentRegion && !staticFields.region) {
+      const response = await avRegionsApi.getCurrentRegion();
+      region = response.data.regions[0] && response.data.regions[0].id;
+    }
 
     await avLogMessagesApi.info({
       surveyId: `${name.replace(/\s/g, '_')}_Smile_Survey`,
       feedbackLocation: `${name}`,
       smile: `icon-${smileField.icon}`,
       url: window.location.href,
-      region: response.data.regions[0] && response.data.regions[0].id,
+      region,
       userAgent: window.navigator.userAgent,
       submitTime: new Date(),
       ...values, // Spread the form values onto the logger
@@ -213,11 +218,13 @@ FeedbackForm.propTypes = {
   prompt: PropTypes.string,
   additionalComments: PropTypes.bool,
   staticFields: PropTypes.object,
+  includeCurrentRegion: PropTypes.bool,
 };
 
 FeedbackForm.defaultProps = {
   aboutOptions: [],
   additionalComments: false,
+  includeCurrentRegion: true,
 };
 
 export default FeedbackForm;
