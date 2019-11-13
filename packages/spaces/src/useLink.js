@@ -77,7 +77,11 @@ export default (
     updateTopApps(id, type);
     window.open(
       link.url[0] === '/'
-        ? updateUrl(link.url, 'spaceId', linkAttributes.spaceId)
+        ? updateUrl(
+            link.url,
+            'spaceId',
+            parents && parents[0] ? parents[0].id : linkAttributes.spaceId
+          )
         : link.url,
       link.target
     );

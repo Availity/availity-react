@@ -105,6 +105,8 @@ fragment SpaceFragment on SpaceResponse {
 }`;
 
 export const updateParams = (uri, key, value) => {
+  if (value === undefined) return uri;
+
   const re = new RegExp(`([?&])${key}=[^&]*`, 'i');
   const separator = uri.indexOf('?') !== -1 ? '&' : '?';
 
