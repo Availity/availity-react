@@ -52,7 +52,7 @@ class AvDate extends Component {
     const { getDefaultValue } = context.FormCtrl;
 
     if (getDefaultValue(props.name)) {
-      this.start.value = getDefaultValue(props.name);
+      this.state.value = getDefaultValue(props.name);
     }
   }
 
