@@ -34,7 +34,7 @@ class AvDate extends Component {
     return null;
   };
 
-  constructor(props) {
+  constructor(props, context) {
     super(props);
 
     this.state = {};
@@ -48,6 +48,12 @@ class AvDate extends Component {
     }
 
     this.state.focused = false;
+
+    const { getDefaultValue } = context.FormCtrl;
+
+    if (getDefaultValue(props.name)) {
+      this.start.value = getDefaultValue(props.name);
+    }
   }
 
   onFocusChange = ({ focused }) => {
