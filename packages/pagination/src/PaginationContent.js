@@ -6,17 +6,21 @@ import BlockUI from 'react-block-ui';
 import 'react-block-ui/style.css';
 import { usePagination } from './Pagination';
 
-const PaginationContent = ({
-  component: Component,
-  loadingMessage,
-  itemKey,
-  loader,
-  containerTag,
-  containerProps,
-  infiniteScroll,
-  infiniteScrollProps,
-  ...rest
-}) => {
+const PaginationContent = props => {
+  const {
+    component: Component,
+    loadingMessage,
+    itemKey,
+    loader,
+    containerTag,
+    containerProps,
+    infiniteScroll,
+    infiniteScrollProps,
+    render,
+    ...rest
+  } = props;
+
+  const pagination = usePagination();
   const {
     page,
     currentPage,
@@ -27,7 +31,7 @@ const PaginationContent = ({
     lower,
     ref,
     setDoFocusRefOnPageChange,
-  } = usePagination();
+  } = pagination;
 
   if (infiniteScroll) {
     const indexOfItemToReference = lower - 1;
@@ -41,40 +45,42 @@ const PaginationContent = ({
         hasMore={hasMore}
         dataLength={allPages.length}
       >
-        {allPages &&
-          allPages.map((value, key) => {
-            if (!value[itemKey]) {
-              // eslint-disable-next-line no-console
-              console.warn(
-                "Warning a Pagination Item doesn't have a key:",
-                value
-              );
-            }
-
-            if (indexOfItemToReference === key) {
-              const ComponentWithRef = React.forwardRef((props, innerRef) => {
-                return (
-                  <>
-                    <span className="sr-only" ref={innerRef} />
-                    <Component {...props} />
-                  </>
+        {render
+          ? render({ ...pagination, ...props })
+          : allPages &&
+            allPages.map((value, key) => {
+              if (!value[itemKey]) {
+                // eslint-disable-next-line no-console
+                console.warn(
+                  "Warning a Pagination Item doesn't have a key:",
+                  value
                 );
-              });
+              }
+
+              if (indexOfItemToReference === key) {
+                const ComponentWithRef = React.forwardRef((props, innerRef) => {
+                  return (
+                    <>
+                      <span className="sr-only" ref={innerRef} />
+                      <Component {...props} />
+                    </>
+                  );
+                });
+
+                return (
+                  <ComponentWithRef
+                    ref={ref}
+                    {...rest}
+                    key={value[itemKey] || key}
+                    {...value}
+                  />
+                );
+              }
 
               return (
-                <ComponentWithRef
-                  ref={ref}
-                  {...rest}
-                  key={value[itemKey] || key}
-                  {...value}
-                />
+                <Component {...rest} key={value[itemKey] || key} {...value} />
               );
-            }
-
-            return (
-              <Component {...rest} key={value[itemKey] || key} {...value} />
-            );
-          })}
+            })}
 
         <Button
           data-testid="sr-only-pagination-load-more-btn"
@@ -88,6 +94,10 @@ const PaginationContent = ({
         </Button>
       </InfiniteScroll>
     );
+  }
+
+  if (render) {
+    return render({ ...pagination, ...props });
   }
 
   return (
@@ -125,6 +135,7 @@ PaginationContent.propTypes = {
   containerTag: PropTypes.oneOfType([PropTypes.string, PropTypes.func]),
   infiniteScroll: PropTypes.bool,
   infiniteScrollProps: PropTypes.shape({ ...InfiniteScroll.propTypes }),
+  render: PropTypes.func,
 };
 
 PaginationContent.defaultProps = {

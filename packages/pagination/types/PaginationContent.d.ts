@@ -7,6 +7,7 @@ export interface PaginationContentProps {
     infiniteScroll?: boolean;
     infiniteScrollProps?: object;
     containerTag?: React.ComponentType | string;
+    render?: Function;
 }
 
 
