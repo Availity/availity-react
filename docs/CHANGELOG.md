@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [4.1.0](https://github.com/Availity/availity-react/compare/@availity/react-docs@4.0.11...@availity/react-docs@4.1.0) (2019-11-20)
+
+
+### Features
+
+* **pagination:** add render prop ([2db9e17](https://github.com/Availity/availity-react/commit/2db9e17aa7da17e824603583d77c2ecb047a73d0))
+
+
+
+
+
 ## [4.0.11](https://github.com/Availity/availity-react/compare/@availity/react-docs@4.0.10...@availity/react-docs@4.0.11) (2019-11-19)
 
 **Note:** Version bump only for package @availity/react-docs
