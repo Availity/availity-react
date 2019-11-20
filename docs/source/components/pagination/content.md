@@ -43,5 +43,5 @@ If `true`, renders pagination content inside an infinite scroll component
 ### `infiniteScrollProps?: InfiniteScrollProps`
 Only used when `infiniteScroll` is true. See [react-infinite-scroll-component](https://github.com/ankeetmaini/react-infinite-scroll-component#props)
 
-### `render?: ({ ...UsePaginationReturnType, ...PaginationContentProps }) => ReactNode`
-Customize the contents of what gets rendered. The `render` function accepts all of the `props` passed to the `<PaginationContent />` as well as all of the properties from the `usePagination` hook.
+### `children?: React.ReactNode | ({ items?: ReactNode }) => ReactNode`
+Customize the contents of what gets rendered. Children can be a react child or a function that accepts the pagination items

@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import { Util, Button } from 'reactstrap';
 import InfiniteScroll from 'react-infinite-scroll-component';
 import BlockUI from 'react-block-ui';
+import isFunction from 'lodash.isfunction';
 import 'react-block-ui/style.css';
 import { usePagination } from './Pagination';
 
@@ -16,7 +17,7 @@ const PaginationContent = props => {
     containerProps,
     infiniteScroll,
     infiniteScrollProps,
-    render,
+    children,
     ...rest
   } = props;
 
@@ -35,6 +36,42 @@ const PaginationContent = props => {
 
   if (infiniteScroll) {
     const indexOfItemToReference = lower - 1;
+    const items =
+      allPages &&
+      allPages.map((value, key) => {
+        if (!value[itemKey]) {
+          // eslint-disable-next-line no-console
+          console.warn("Warning a Pagination Item doesn't have a key:", value);
+        }
+
+        if (indexOfItemToReference === key) {
+          const ComponentWithRef = React.forwardRef((props, innerRef) => {
+            return (
+              <>
+                <span className="sr-only" ref={innerRef} />
+                <Component {...props} />
+              </>
+            );
+          });
+
+          return (
+            <ComponentWithRef
+              ref={ref}
+              {...rest}
+              key={value[itemKey] || key}
+              {...value}
+            />
+          );
+        }
+
+        return <Component {...rest} key={value[itemKey] || key} {...value} />;
+      });
+
+    let _children = items;
+    if (children) {
+      _children = isFunction(children) ? children({ items }) : children;
+    }
+
     return (
       <InfiniteScroll
         loader={loader && <div className="h3">{loadingMessage}</div>}
@@ -45,43 +82,7 @@ const PaginationContent = props => {
         hasMore={hasMore}
         dataLength={allPages.length}
       >
-        {render
-          ? render({ ...pagination, ...props })
-          : allPages &&
-            allPages.map((value, key) => {
-              if (!value[itemKey]) {
-                // eslint-disable-next-line no-console
-                console.warn(
-                  "Warning a Pagination Item doesn't have a key:",
-                  value
-                );
-              }
-
-              if (indexOfItemToReference === key) {
-                const ComponentWithRef = React.forwardRef((props, innerRef) => {
-                  return (
-                    <>
-                      <span className="sr-only" ref={innerRef} />
-                      <Component {...props} />
-                    </>
-                  );
-                });
-
-                return (
-                  <ComponentWithRef
-                    ref={ref}
-                    {...rest}
-                    key={value[itemKey] || key}
-                    {...value}
-                  />
-                );
-              }
-
-              return (
-                <Component {...rest} key={value[itemKey] || key} {...value} />
-              );
-            })}
-
+        {_children}
         <Button
           data-testid="sr-only-pagination-load-more-btn"
           className="sr-only"
@@ -96,8 +97,20 @@ const PaginationContent = props => {
     );
   }
 
-  if (render) {
-    return render({ ...pagination, ...props });
+  const items =
+    page &&
+    page.map((value, key) => {
+      if (!value[itemKey]) {
+        // eslint-disable-next-line no-console
+        console.warn("Warning a Pagination Item doesn't have a key:", value);
+      }
+
+      return <Component {...rest} key={value[itemKey] || key} {...value} />;
+    });
+
+  let _children = items;
+  if (children) {
+    _children = isFunction(children) ? children({ items }) : children;
   }
 
   return (
@@ -110,18 +123,7 @@ const PaginationContent = props => {
       blocking={loader && loading}
       message={loadingMessage}
     >
-      {page &&
-        page.map((value, key) => {
-          if (!value[itemKey]) {
-            // eslint-disable-next-line no-console
-            console.warn(
-              "Warning a Pagination Item doesn't have a key:",
-              value
-            );
-          }
-
-          return <Component {...rest} key={value[itemKey] || key} {...value} />;
-        })}
+      {_children}
     </BlockUI>
   );
 };
@@ -135,7 +137,7 @@ PaginationContent.propTypes = {
   containerTag: PropTypes.oneOfType([PropTypes.string, PropTypes.func]),
   infiniteScroll: PropTypes.bool,
   infiniteScrollProps: PropTypes.shape({ ...InfiniteScroll.propTypes }),
-  render: PropTypes.func,
+  children: PropTypes.oneOfType([PropTypes.node, PropTypes.func]),
 };
 
 PaginationContent.defaultProps = {

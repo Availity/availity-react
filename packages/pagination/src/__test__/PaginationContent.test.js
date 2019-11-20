@@ -1,6 +1,5 @@
 /* eslint-disable react/prop-types */
 import React from 'react';
-import BlockUI from 'react-block-ui';
 import {
   render,
   waitForElement,
@@ -83,7 +82,7 @@ describe('Pagination Content', () => {
     );
   });
 
-  test('should use custom render prop', async () => {
+  test('should use custom render children', async () => {
     const loadPage = () => ({
       totalCount: 3,
       items: [
@@ -101,52 +100,19 @@ describe('Pagination Content', () => {
           loadingMessage={
             <span data-testid="loading-message">Loading....</span>
           }
-          render={({
-            containerProps,
-            component: Component,
-            containerTag,
-            itemKey,
-            loader,
-            loading,
-            loadingMessage,
-            page,
-          }) => (
-            <BlockUI
-              data-testid="pagination-content-con"
-              role={containerProps.role || 'list'}
-              keepInView
-              {...containerProps}
-              tag={containerTag}
-              blocking={loader && loading}
-              message={loadingMessage}
-            >
-              <table data-testid="pagination-table">
-                <thead data-testid="pagination-table-header">
-                  <tr>
-                    <th>Value</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  {page &&
-                    page.map((value, key) => {
-                      if (!value[itemKey]) {
-                        // eslint-disable-next-line no-console
-                        console.warn(
-                          "Warning a Pagination Item doesn't have a key:",
-                          value
-                        );
-                      }
-
-                      return (
-                        <Component key={value[itemKey] || key} {...value} />
-                      );
-                    })}
-                </tbody>
-              </table>
-            </BlockUI>
-          )}
           loader
-        />
+        >
+          {({ items }) => (
+            <table data-testid="pagination-table">
+              <thead data-testid="pagination-table-header">
+                <tr>
+                  <th>Value</th>
+                </tr>
+              </thead>
+              <tbody>{items}</tbody>
+            </table>
+          )}
+        </PaginationContent>
       </Pagination>
     );
 
