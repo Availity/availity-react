@@ -7,21 +7,18 @@ import isFunction from 'lodash.isfunction';
 import 'react-block-ui/style.css';
 import { usePagination } from './Pagination';
 
-const PaginationContent = props => {
-  const {
-    component: Component,
-    loadingMessage,
-    itemKey,
-    loader,
-    containerTag,
-    containerProps,
-    infiniteScroll,
-    infiniteScrollProps,
-    children,
-    ...rest
-  } = props;
-
-  const pagination = usePagination();
+const PaginationContent = ({
+  component: Component,
+  loadingMessage,
+  itemKey,
+  loader,
+  containerTag,
+  containerProps,
+  infiniteScroll,
+  infiniteScrollProps,
+  children,
+  ...rest
+}) => {
   const {
     page,
     currentPage,
@@ -32,7 +29,7 @@ const PaginationContent = props => {
     lower,
     ref,
     setDoFocusRefOnPageChange,
-  } = pagination;
+  } = usePagination();
 
   if (infiniteScroll) {
     const indexOfItemToReference = lower - 1;
