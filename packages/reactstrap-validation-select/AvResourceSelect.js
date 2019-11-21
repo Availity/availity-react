@@ -189,7 +189,6 @@ class AvResourceSelect extends Component {
       };
       _cacheUniq = watchParams.map(watchParam => params[watchParam]).join(',');
     }
-    _cacheUniq = `${_cacheUniq}`;
 
     return (
       <Tag
