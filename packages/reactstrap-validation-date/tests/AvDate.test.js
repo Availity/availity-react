@@ -1,3 +1,4 @@
+/* eslint-disable react/prop-types */
 import React from 'react';
 import { render, cleanup, fireEvent, wait } from '@testing-library/react';
 import { AvForm } from 'availity-reactstrap-validation';
@@ -18,6 +19,7 @@ const Date = props => (
   <AvForm
     onInvalidSubmit={onInvalidSubmit}
     onSubmit={onSubmit}
+    model={props.model}
     onValidSubmit={onValidSubmit}
   >
     <AvDate {...props} />
@@ -74,6 +76,28 @@ describe('AvDate', () => {
         value: '01/04/1997',
       },
     });
+
+    fireEvent.click(getByText('Submit'));
+
+    await wait(() => {
+      expect(onValidSubmit).toHaveBeenCalledWith(
+        expect.anything(),
+        expect.objectContaining({
+          standAlone: '1997-01-04',
+        })
+      );
+    });
+  });
+
+  test('works with default value', async () => {
+    const { getByText } = render(
+      <Date
+        name="standAlone"
+        model={{
+          standAlone: '1997-01-04',
+        }}
+      />
+    );
 
     fireEvent.click(getByText('Submit'));
 

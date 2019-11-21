@@ -3,6 +3,22 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [2.6.0](https://github.com/Availity/availity-react/compare/@availity/pagination@2.5.3...@availity/pagination@2.6.0) (2019-11-20)
+
+
+### Features
+
+* **pagination:** add render prop ([2db9e17](https://github.com/Availity/availity-react/commit/2db9e17aa7da17e824603583d77c2ecb047a73d0))
+
+
+### Performance Improvements
+
+* **pagination:** memoize items in pagination content ([c97eca6](https://github.com/Availity/availity-react/commit/c97eca6842d986fc5021400eec82b82386496802))
+
+
+
+
+
 ## [2.5.3](https://github.com/Availity/availity-react/compare/@availity/pagination@2.5.2...@availity/pagination@2.5.3) (2019-10-24)
 
 **Note:** Version bump only for package @availity/pagination

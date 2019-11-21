@@ -7,6 +7,7 @@ export interface PaginationContentProps {
     infiniteScroll?: boolean;
     infiniteScrollProps?: object;
     containerTag?: React.ComponentType | string;
+    children?: React.ReactNode | ((args: { items?: React.ReactNode }) => React.ReactNode);
 }
 
 

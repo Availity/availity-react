@@ -15,6 +15,12 @@ const Component = ({ value }) => (
   <span data-testid={`item-${value}`}>Item {value}</span>
 );
 
+const TableRowComponent = ({ value }) => (
+  <tr data-testid={`item-tr-${value}`}>
+    <td data-testid={`item-td-${value}`}>Item {value}</td>
+  </tr>
+);
+
 describe('Pagination Content', () => {
   test('should provide a list of items', async () => {
     const items = [
@@ -74,5 +80,55 @@ describe('Pagination Content', () => {
     loadPage().items.forEach(item =>
       expect(getByTestId(`item-${item.value}`)).toBeDefined()
     );
+  });
+
+  test('should use custom render children', async () => {
+    const loadPage = () => ({
+      totalCount: 3,
+      items: [
+        { value: '1', key: 1 },
+        { value: '2', key: 2 },
+        { value: '3', key: 3 },
+      ],
+    });
+
+    const { getByTestId } = render(
+      <Pagination items={loadPage} itemsPerPage={3}>
+        <PaginationContent
+          itemKey="key"
+          component={TableRowComponent}
+          loadingMessage={
+            <span data-testid="loading-message">Loading....</span>
+          }
+          loader
+        >
+          {({ items }) => (
+            <table data-testid="pagination-table">
+              <thead data-testid="pagination-table-header">
+                <tr>
+                  <th>Value</th>
+                </tr>
+              </thead>
+              <tbody>{items}</tbody>
+            </table>
+          )}
+        </PaginationContent>
+      </Pagination>
+    );
+
+    expect(getByTestId('loading-message')).toBeDefined();
+
+    const paginationContent = await waitForDomChange(() =>
+      getByTestId('pagination-content-con')
+    );
+
+    expect(paginationContent).not.toBe(null);
+
+    expect(getByTestId('pagination-table')).toBeDefined();
+    expect(getByTestId('pagination-table-header')).toBeDefined();
+    loadPage().items.forEach(item => {
+      expect(getByTestId(`item-tr-${item.value}`)).toBeDefined();
+      expect(getByTestId(`item-td-${item.value}`)).toBeDefined();
+    });
   });
 });

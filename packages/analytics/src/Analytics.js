@@ -21,7 +21,15 @@ const Analytics = ({
 
   const cleanup = () => analytics.current.stopAutoTrack();
 
-  useEffect(() => cleanup, []);
+  useEffect(() => {
+    analytics.current.init();
+
+    if (pageTracking) {
+      analytics.current.trackPageView();
+    }
+
+    return cleanup;
+  }, [pageTracking]);
 
   return (
     <AnalyticsContext.Provider value={analytics.current}>
