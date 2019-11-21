@@ -11,7 +11,6 @@ class AvResourceSelect extends Component {
     super(props);
     this.state = {};
     this.state.previousOptions = [];
-    this.state.dropdownHasBeenFocused = false;
   }
 
   select = createRef();
@@ -85,11 +84,7 @@ class AvResourceSelect extends Component {
         );
       }
     }
-    if (
-      this.props.isDisabled ||
-      !requiredSatisfied ||
-      (this.props.waitUntilFocused && !this.state.dropdownHasBeenFocused)
-    ) {
+    if (this.props.isDisabled || !requiredSatisfied) {
       return {
         options: [],
         hasMore: false,
@@ -170,7 +165,6 @@ class AvResourceSelect extends Component {
   };
 
   onFocusHandler = (...args) => {
-    this.setState({ dropdownHasBeenFocused: true });
     if (this.props.onFocus) this.props.onFocus(...args);
   };
 
@@ -183,6 +177,7 @@ class AvResourceSelect extends Component {
       watchParams,
       cacheUniq,
       additional,
+      waitUntilFocused,
       ...rest
     } = this.props;
     let _cacheUniq = cacheUniq;
@@ -194,12 +189,13 @@ class AvResourceSelect extends Component {
       };
       _cacheUniq = watchParams.map(watchParam => params[watchParam]).join(',');
     }
-    _cacheUniq = `${_cacheUniq}${this.state.dropdownHasBeenFocused}`;
+    _cacheUniq = `${_cacheUniq}`;
 
     return (
       <Tag
         selectRef={this.select}
         loadOptions={this.loadOptions}
+        defaultOptions={waitUntilFocused ? [] : true}
         pagination
         raw
         debounceTimeout={debounceTimeout}

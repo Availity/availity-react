@@ -26,7 +26,6 @@ const ResourceSelect = ({
 
   const selectRef = useRef();
   const [previousOptions, setPreviousOptions] = useState([]);
-  const [dropdownHasBeenFocused, setDropdownHasBeenFocused] = useState(false);
 
   if (_cacheUniq === undefined && watchParams) {
     const params = {
@@ -35,10 +34,8 @@ const ResourceSelect = ({
     };
     _cacheUniq = watchParams.map(watchParam => params[watchParam]).join(',');
   }
-  _cacheUniq = `${_cacheUniq}${dropdownHasBeenFocused}`;
 
   const onFocusHandler = (...args) => {
-    setDropdownHasBeenFocused(true);
     if (onFocus) onFocus(...args);
   };
 
@@ -107,11 +104,7 @@ const ResourceSelect = ({
         requiredSatisfied = rest.requiredParams.every(param => params[param]);
       }
     }
-    if (
-      rest.isDisabled ||
-      !requiredSatisfied ||
-      (waitUntilFocused && !dropdownHasBeenFocused)
-    ) {
+    if (rest.isDisabled || !requiredSatisfied) {
       return {
         options: [],
         hasMore: false,
@@ -197,6 +190,7 @@ const ResourceSelect = ({
     <Tag
       selectRef={selectRef}
       loadOptions={loadOptions}
+      defaultOptions={waitUntilFocused ? [] : true}
       pagination
       raw
       debounceTimeout={debounceTimeout}
