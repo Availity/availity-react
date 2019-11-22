@@ -613,6 +613,7 @@ class AvDateRange extends Component {
             onClose={this.onClose}
             numberOfMonths={2}
             minimumNights={0}
+            {...attributes}
           />
         </InputGroup>
       </>
