@@ -18,6 +18,8 @@ const ResourceSelect = ({
   hasMore,
   graphqlConfig,
   minCharsToSearch,
+  onFocus,
+  waitUntilFocused,
   ...rest
 }) => {
   let _cacheUniq = cacheUniq;
@@ -32,6 +34,10 @@ const ResourceSelect = ({
     };
     _cacheUniq = watchParams.map(watchParam => params[watchParam]).join(',');
   }
+
+  const onFocusHandler = (...args) => {
+    if (onFocus) onFocus(...args);
+  };
 
   const loadOptions = (...args) => {
     const [inputValue, , additional = {}] = args;
@@ -184,6 +190,7 @@ const ResourceSelect = ({
     <Tag
       selectRef={selectRef}
       loadOptions={loadOptions}
+      defaultOptions={waitUntilFocused ? [] : true}
       pagination
       raw
       debounceTimeout={debounceTimeout}
@@ -193,6 +200,7 @@ const ResourceSelect = ({
         ...additional,
       }}
       {...rest}
+      onFocus={onFocusHandler}
     />
   );
 };
@@ -224,6 +232,8 @@ ResourceSelect.propTypes = {
     type: PropTypes.string,
     query: PropTypes.string,
   }),
+  onFocus: PropTypes.func,
+  waitUntilFocused: PropTypes.bool,
 };
 
 ResourceSelect.defaultProps = {

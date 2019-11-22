@@ -6,6 +6,7 @@ import RSelect, { components as reactSelectComponents } from 'react-select';
 import Creatable from 'react-select/creatable';
 import Async from 'react-select-async-paginate';
 import get from 'lodash.get';
+import isFunction from 'lodash.isfunction';
 
 const {
   DownChevron,
@@ -149,11 +150,17 @@ const Select = ({
           if (shouldAutofillField) {
             let val;
             if (typeof autofill === 'object') {
-              val = get(
-                rawValue,
-                `${autofill[fieldName]}`,
-                initialValues[fieldName]
-              );
+              if (isFunction(autofill[fieldName])) {
+                val = autofill[fieldName](rawValue);
+              } else if (typeof autofill[fieldName] === 'string') {
+                val = get(
+                  rawValue,
+                  `${autofill[fieldName]}`,
+                  initialValues[fieldName]
+                );
+              } else {
+                val = initialValues[fieldName];
+              }
             } else {
               val = get(rawValue, fieldName, initialValues[fieldName]);
             }
@@ -216,6 +223,9 @@ const Select = ({
       styles={{
         ...styles,
         placeholder: (provided, state) => {
+          if (state.isDisabled) {
+            return provided;
+          }
           const showError = touched && hasError && !state.focused;
 
           return {
@@ -228,8 +238,23 @@ const Select = ({
           ...provided,
           width: '90%',
         }),
+        singleValue: provided => {
+          return {
+            ...provided,
+            color: '#495057',
+          };
+        },
         control: (provided, state) => {
+          if (state.isDisabled) {
+            return {
+              ...provided,
+              borderRadius: '.25em',
+              borderColor: '#ced4da',
+              backgroundColor: '#e9ecef',
+            };
+          }
           const showError = touched && hasError && !state.focused;
+
           return {
             ...provided,
             borderRadius: '.25em',
@@ -247,6 +272,9 @@ const Select = ({
           maxWidth: '99%',
         }),
         dropdownIndicator: (provided, state) => {
+          if (state.isDisabled) {
+            return provided;
+          }
           const showError = touched && hasError && !state.focused;
 
           return {

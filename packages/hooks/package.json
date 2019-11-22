@@ -1,6 +1,6 @@
 {
   "name": "@availity/hooks",
-  "version": "1.6.0",
+  "version": "1.6.4",
   "author": "Kyle Gray <kyle.gray@availity.com>",
   "description": "A group of pre-built hooks that are common in most apps",
   "main": "index.js",

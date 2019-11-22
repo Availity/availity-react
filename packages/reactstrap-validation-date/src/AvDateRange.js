@@ -43,37 +43,7 @@ const relativeRanges = {
   },
 };
 
-export default class AvDateRange extends Component {
-  static propTypes = {
-    ...AvInput.propTypes,
-    start: PropTypes.shape(AvInput.propTypes),
-    end: PropTypes.shape(AvInput.propTypes),
-    onChange: PropTypes.func,
-    validate: PropTypes.object,
-    type: PropTypes.string,
-    disabled: PropTypes.bool,
-    max: limitPropType,
-    min: limitPropType,
-    distance: PropTypes.object,
-    ranges: PropTypes.oneOfType([
-      PropTypes.bool,
-      PropTypes.array,
-      PropTypes.object,
-    ]),
-    onPickerFocusChange: PropTypes.func,
-    defaultValues: PropTypes.object,
-    calendarIcon: PropTypes.node,
-    datepicker: PropTypes.bool,
-  };
-
-  static contextTypes = { FormCtrl: PropTypes.object.isRequired };
-
-  static defaultProps = {
-    type: 'text',
-    calendarIcon: <Icon name="calendar" />,
-    datepicker: true,
-  };
-
+class AvDateRange extends Component {
   calendarIconRef = React.createRef();
 
   constructor(props, context) {
@@ -649,3 +619,35 @@ export default class AvDateRange extends Component {
     );
   }
 }
+
+AvDateRange.propTypes = {
+  ...AvInput.propTypes,
+  start: PropTypes.shape(AvInput.propTypes),
+  end: PropTypes.shape(AvInput.propTypes),
+  onChange: PropTypes.func,
+  validate: PropTypes.object,
+  type: PropTypes.string,
+  disabled: PropTypes.bool,
+  max: limitPropType,
+  min: limitPropType,
+  distance: PropTypes.object,
+  ranges: PropTypes.oneOfType([
+    PropTypes.bool,
+    PropTypes.array,
+    PropTypes.object,
+  ]),
+  onPickerFocusChange: PropTypes.func,
+  defaultValues: PropTypes.object,
+  calendarIcon: PropTypes.node,
+  datepicker: PropTypes.bool,
+};
+
+AvDateRange.contextTypes = { FormCtrl: PropTypes.object.isRequired };
+
+AvDateRange.defaultProps = {
+  type: 'text',
+  calendarIcon: <Icon name="calendar" />,
+  datepicker: true,
+};
+
+export default AvDateRange;

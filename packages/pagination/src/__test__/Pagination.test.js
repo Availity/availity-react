@@ -189,7 +189,9 @@ describe('Pagination', () => {
               type="button"
               data-testid="hello-btn"
               onClick={() => setState('world')}
-            />
+            >
+              Toggle
+            </button>
             <SomeComponent />
           </Pagination>
         </>
@@ -222,24 +224,51 @@ describe('Pagination', () => {
             onClick={() => {
               setPage(2);
             }}
-          />
+          >
+            Toggle
+          </button>
           <span data-testid="current-page">{currentPage}</span>
         </div>
       );
     });
+
+    const firstItems = [];
+    const secondItems = [];
+    for (let i = 0; i < 6; i++) {
+      if (i <= 3) {
+        firstItems.push({ value: `${i}`, key: i });
+      } else {
+        secondItems.push({ value: `${i}`, key: i });
+      }
+    }
+
+    const items = jest
+      .fn()
+      .mockResolvedValueOnce({
+        items: firstItems,
+      })
+      .mockResolvedValueOnce({
+        items: secondItems,
+      })
+      .mockResolvedValueOnce({
+        items: firstItems,
+      });
 
     // Create component with button that changes resetParams
     const ComponentWrapper = () => {
       const [isToggled, toggle] = useToggle();
       return (
         <>
-          <Pagination resetParams={[isToggled]}>
+          <Pagination items={items} resetParams={[isToggled]}>
             <button
               type="button"
               data-testid="toggle-btn"
               onClick={() => toggle()}
-            />
+            >
+              Toggle
+            </button>
             <SomeComponent />
+            <PaginationJson />
           </Pagination>
         </>
       );
@@ -251,18 +280,41 @@ describe('Pagination', () => {
       getByTestId(`current-page`)
     );
 
+    let paginationCon = await waitForElement(() =>
+      getByTestId('pagination-con')
+    );
+
+    expect(paginationCon).toBeDefined();
+
     // Check current page is 1 on first render
     expect(currentPageButton.textContent).toBe('1');
+    expect(JSON.parse(paginationCon.textContent)).toEqual(
+      expect.objectContaining({
+        allPages: firstItems,
+      })
+    );
 
     // Check current page is 2 after set page button is called
     fireEvent.click(getByTestId('set-page-btn'));
     currentPageButton = await waitForElement(() => getByTestId(`current-page`));
+    paginationCon = await waitForElement(() => getByTestId('pagination-con'));
     expect(currentPageButton.textContent).toBe('2');
+    expect(JSON.parse(paginationCon.textContent)).toEqual(
+      expect.objectContaining({
+        allPages: [...firstItems, ...secondItems],
+      })
+    );
 
     // Check current page is 1 after resetParams changes
     fireEvent.click(getByTestId('toggle-btn'));
     currentPageButton = await waitForElement(() => getByTestId(`current-page`));
+    paginationCon = await waitForElement(() => getByTestId('pagination-con'));
     expect(currentPageButton.textContent).toBe('1');
+    expect(JSON.parse(paginationCon.textContent)).toEqual(
+      expect.objectContaining({
+        allPages: firstItems,
+      })
+    );
   });
 
   test('should reset page to 1 and refetch page data if resetParams updates, items is a function, and already on page 1', async () => {
@@ -306,7 +358,9 @@ describe('Pagination', () => {
               type="button"
               data-testid="toggle-btn"
               onClick={() => toggle()}
-            />
+            >
+              Toggle
+            </button>
             <SomeComponent />
             <PaginationJson />
           </Pagination>
@@ -333,6 +387,7 @@ describe('Pagination', () => {
     expect(JSON.parse(paginationCon.textContent)).toEqual(
       expect.objectContaining({
         page: firstItems,
+        allPages: firstItems,
       })
     );
 
@@ -353,6 +408,7 @@ describe('Pagination', () => {
     expect(JSON.parse(paginationCon.textContent)).toEqual(
       expect.objectContaining({
         page: secondItems,
+        allPages: [...firstItems, ...secondItems],
       })
     );
   });

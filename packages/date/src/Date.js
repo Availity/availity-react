@@ -1,14 +1,13 @@
-import React from 'react';
+import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 import classNames from 'classnames';
 import { useField, useFormikContext } from 'formik';
-import { useToggle } from '@availity/hooks';
 import 'react-dates/initialize';
 import { SingleDatePicker } from 'react-dates';
-import 'react-dates/lib/css/_datepicker.css';
 import Icon from '@availity/icon';
 import { InputGroup, Input } from 'reactstrap';
 import moment from 'moment';
+import '../styles.scss';
 
 import { isOutsideRange, limitPropType } from './utils';
 
@@ -31,7 +30,7 @@ const AvDate = ({
 }) => {
   const { setFieldValue, setFieldTouched } = useFormikContext();
   const [field, metadata] = useField(name);
-  const [isFocused, toggleIsFocused] = useToggle(false);
+  const [isFocused, setIsFocused] = useState(false);
   const classes = classNames(
     className,
     metadata.touched ? 'is-touched' : 'is-untouched',
@@ -46,19 +45,25 @@ const AvDate = ({
   )}-picker`;
 
   // For updating when we delete the current input
-  const onInputChange = async value=> {
+  const onInputChange = async value => {
     const date = moment(
       value,
       [isoDateFormat, format, 'MMDDYYYY', 'YYYYMMDD'],
       true
     );
 
-    await setFieldValue(name,date.isValid() ? date.format(isoDateFormat): '',metadata.touched);
+    await setFieldValue(
+      name,
+      date.isValid() ? date.format(isoDateFormat) : '',
+      metadata.touched
+    );
 
-    if(date.isValid()){
-      toggleIsFocused(false);
+    if (date.isValid()) {
+      if (isFocused !== false) {
+        setIsFocused(false);
+      }
     }
-  }
+  };
 
   const onPickerChange = async value => {
     if (value === null) return;
@@ -67,9 +72,10 @@ const AvDate = ({
     if (val instanceof Object && val.isValid()) {
       val = val.format(isoDateFormat);
     }
-    
 
-    await setFieldValue(name,val,false);
+    await setFieldValue(name, val, true);
+
+    await setFieldTouched(name, true);
 
     if (onChange) {
       onChange(val);
@@ -78,10 +84,12 @@ const AvDate = ({
 
   const onFocusChange = async ({ focused }) => {
     if (!focused) {
-      await setFieldTouched(name,true);
+      await setFieldTouched(name, true);
     }
 
-    toggleIsFocused(focused);
+    if (focused !== undefined && isFocused !== focused) {
+      setIsFocused(focused);
+    }
     if (onPickerFocusChange) onPickerFocusChange({ focused });
   };
 
@@ -90,7 +98,7 @@ const AvDate = ({
       field.value,
       [isoDateFormat, format, 'MMDDYYYY', 'YYYYMMDD'],
       true
-      );
+    );
     if (date.isValid()) return date;
 
     return null;
@@ -98,11 +106,7 @@ const AvDate = ({
 
   return (
     <>
-      <Input
-        name={name}
-        style={{ display: 'none' }}
-        className={classes}
-      />
+      <Input name={name} style={{ display: 'none' }} className={classes} />
       <InputGroup
         disabled={attributes.disabled}
         className={classes}
@@ -127,7 +131,7 @@ const AvDate = ({
           inputIconPosition="after"
         />
       </InputGroup>
-      </>
+    </>
   );
 };
 
@@ -144,13 +148,13 @@ AvDate.propTypes = {
   format: PropTypes.string,
   'data-testid': PropTypes.string,
   datepicker: PropTypes.bool,
-  datePickerProps: PropTypes.object
+  datePickerProps: PropTypes.object,
 };
 
 AvDate.defaultProps = {
   calendarIcon: <Icon name="calendar" />,
   format: 'MM/DD/YYYY',
-  datepicker: true
+  datepicker: true,
 };
 
 export default AvDate;

@@ -1,9 +1,14 @@
-import React from 'react';
+import React, { useMemo } from 'react';
 import PropTypes from 'prop-types';
+import classNames from 'classnames';
 import Breadcrumbs from '@availity/breadcrumbs';
 import AppIcon from '@availity/app-icon';
 import Feedback from '@availity/feedback';
-import Spaces, { SpacesLogo, useSpace } from '@availity/spaces';
+import Spaces, {
+  SpacesLogo,
+  useSpaces,
+  useSpacesContext,
+} from '@availity/spaces';
 
 const PageHeader = ({
   payerId,
@@ -15,19 +20,23 @@ const PageHeader = ({
   iconColor,
   branded,
   crumbs,
-  feedback,
+  feedback: showFeedback,
   feedbackProps,
+  titleProps: { className: titleClassName, ...restTitleProps },
+  renderRightContent: RenderRightContent,
+  renderRightClassName,
   component,
   tag: Tag,
   clientId,
   iconSrc,
   iconAlt,
+  homeUrl,
+  linkTag,
+  className,
   ...props
 }) => {
-  const { space: spaceForSpaceID } = useSpace(spaceId);
-  const { space: spaceForPayerID, loading: spaceForPayerIDLoading } = useSpace(
-    payerId
-  );
+  const [spaceForSpaceID, spaceForPayerID] = useSpaces(spaceId, payerId);
+  const { loading: spacesIsLoading } = useSpacesContext() || {};
 
   const _space = spaceForSpaceID || spaceForPayerID;
 
@@ -36,14 +45,14 @@ const PageHeader = ({
     const logoAttrs = {
       spaceId,
       payerId,
-      className: 'float-md-right d-inline-block',
+      className: 'd-inline-flex',
       skeletonProps: {
         width: 180,
         height: '100%',
       },
     };
     payerLogo =
-      spaceForPayerID || spaceForPayerIDLoading ? (
+      spaceForPayerID || spacesIsLoading ? (
         <SpacesLogo {...logoAttrs} />
       ) : (
         <Spaces
@@ -58,25 +67,59 @@ const PageHeader = ({
 
   const _spaceName = spaceName || (_space && _space.name);
   if (spaceId || spaceName) {
-    crumbs = [
-      { name: _spaceName, url: spaceId && `/web/spaces/spaces/#/${spaceId}` },
-    ];
+    const url =
+      spaceForSpaceID && spaceForSpaceID.link && spaceForSpaceID.link.url
+        ? spaceForSpaceID.link.url
+        : `/web/spaces/spaces/#/${spaceId}`;
+    crumbs = [{ name: _spaceName, url }];
   }
 
+  const feedback = useMemo(
+    () => (
+      <Feedback
+        appName={appName}
+        className={`d-inline-flex flex-shrink-0 ${payerId ? 'mx-3' : ''}`}
+        {...feedbackProps}
+      />
+    ),
+    [appName, feedbackProps, payerId]
+  );
+
   return (
-    <React.Fragment>
-      <div className="d-flex align-items-start">
+    <>
+      <div className="d-flex align-items-start flex-shrink-0">
         {React.isValidElement(crumbs) ? (
           crumbs
         ) : (
-          <Breadcrumbs crumbs={crumbs} active={appName || children} />
+          <Breadcrumbs
+            crumbs={crumbs}
+            active={appName || children}
+            homeUrl={homeUrl}
+            linkTag={linkTag}
+          />
         )}
         {component}
       </div>
-      <Tag className="page-header page-header-brand" {...props}>
-        <div className="page-header-title">
+      <div
+        className={classNames(
+          'page-header page-header-brand d-flex justify-content-between align-items-end',
+          className
+        )}
+        data-testid="page-header"
+        {...props}
+      >
+        <Tag
+          className={classNames(
+            'page-header-title page-header-left d-flex align-items-center mb-0',
+            titleClassName
+          )}
+          data-testid="page-header-title"
+          {...restTitleProps}
+        >
           {!payerId && appAbbr && (
             <AppIcon
+              className="mr-2"
+              data-testid="page-header-app-icon"
               color={iconColor}
               branded={branded}
               title={appName}
@@ -85,25 +128,28 @@ const PageHeader = ({
             >
               {appAbbr}
             </AppIcon>
-          )}{' '}
-          {children || appName}
-        </div>
-
-        {payerLogo}
-
-        {feedback && (
-          <Feedback
-            appName={appName}
-            className={`float-md-right d-inline-block ${payerId ? 'mx-3' : ''}`}
-            {...feedbackProps}
+          )}
+          {children || <h1 className="mb-0">{appName}</h1>}
+        </Tag>
+        {!RenderRightContent ? (
+          <div className="page-header-left d-flex flex-wrap flex-md-nowrap flex-grow align-items-end justify-content-end">
+            {showFeedback && feedback}
+            {payerLogo}
+          </div>
+        ) : (
+          <RenderRightContent
+            className={renderRightClassName}
+            payerLogo={payerLogo}
+            feedback={feedback}
           />
         )}
-      </Tag>
-    </React.Fragment>
+      </div>
+    </>
   );
 };
 
 PageHeader.propTypes = {
+  className: PropTypes.string,
   appName: PropTypes.string.isRequired,
   spaceName: PropTypes.string,
   spaceId: PropTypes.string,
@@ -114,7 +160,9 @@ PageHeader.propTypes = {
   component: PropTypes.element,
   feedback: PropTypes.bool,
   feedbackProps: PropTypes.shape({ ...Feedback.propTypes }),
+  titleProps: PropTypes.object,
   children: PropTypes.node,
+  linkTag: PropTypes.oneOfType([PropTypes.func, PropTypes.string]),
   crumbs: PropTypes.oneOfType([
     PropTypes.arrayOf(
       PropTypes.shape({
@@ -125,17 +173,24 @@ PageHeader.propTypes = {
     PropTypes.node,
   ]),
   tag: PropTypes.oneOfType([PropTypes.func, PropTypes.string]),
+  renderRightContent: PropTypes.func,
+  renderRightClassName: PropTypes.string,
+  homeUrl: PropTypes.string,
   clientId: PropTypes.string,
   iconSrc: PropTypes.string,
   iconAlt: PropTypes.string,
 };
 
 PageHeader.defaultProps = {
-  tag: 'h1',
+  tag: 'div',
   // SpaceId and payerId are defaulted to null to prevent `useSpace` from
   // returning a space we may not want
   spaceId: null,
   payerId: null,
+  homeUrl: '/public/apps/dashboard',
+  titleProps: {},
+  renderRightClassName:
+    'page-header-left d-flex flex-wrap flex-md-nowrap flex-grow align-items-end justify-content-end',
 };
 
 export default PageHeader;

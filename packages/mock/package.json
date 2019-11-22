@@ -1,0 +1,24 @@
+{
+  "name": "@availity/mock",
+  "version": "1.0.2",
+  "private": true,
+  "author": "Kyle Gray <kyle.gray@availity.com>",
+  "description": "Contains xhr mocks for storybook and gatsby docs",
+  "main": "index.js",
+  "keywords": [
+    "react",
+    "availity"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "git+ssh://git@github.com/Availity/availity-react.git"
+  },
+  "bugs": {
+    "url": "https://github.com/Availity/availity-react/issues"
+  },
+  "license": "MIT",
+  "dependencies": {
+    "lodash.get": "^4.4.2",
+    "xhr-mock": "^2.3.2"
+  }
+}

@@ -48,10 +48,21 @@ describe('Feedback', () => {
     // eslint-disable-next-line unicorn/prefer-query-selector
     expect(getByTestId('feedback-form')).toBeDefined();
 
-    fireEvent.click(getByText('Close'));
+    fireEvent.keyDown(getByText('Close'), {
+      key: 'Enter',
+      keyCode: 13,
+    });
 
     await wait(() => {
       expect(onClose).toHaveBeenCalledTimes(1);
+    });
+
+    fireEvent.click(getByText('Give Feedback'));
+
+    fireEvent.click(getByText('Close'));
+
+    await wait(() => {
+      expect(onClose).toHaveBeenCalledTimes(2);
     });
   });
 

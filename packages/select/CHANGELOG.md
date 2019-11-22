@@ -3,6 +3,125 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.7.0](https://github.com/Availity/availity-react/compare/@availity/select@0.6.2...@availity/select@0.7.0) (2019-11-21)
+
+
+### Features
+
+* **select:** add waitUntilFocused prop ([4d70c12](https://github.com/Availity/availity-react/commit/4d70c12bd10dea36cd2ed9333555661f1514b735))
+
+
+
+
+
+## [0.6.2](https://github.com/Availity/availity-react/compare/@availity/select@0.6.1...@availity/select@0.6.2) (2019-11-20)
+
+**Note:** Version bump only for package @availity/select
+
+
+
+
+
+## [0.6.1](https://github.com/Availity/availity-react/compare/@availity/select@0.6.0...@availity/select@0.6.1) (2019-10-23)
+
+**Note:** Version bump only for package @availity/select
+
+
+
+
+
+# [0.6.0](https://github.com/Availity/availity-react/compare/@availity/select@0.5.0...@availity/select@0.6.0) (2019-10-22)
+
+
+### Features
+
+* **select:** make disabled state match availity/form components and 508 compliant ([c4e8b25](https://github.com/Availity/availity-react/commit/c4e8b25))
+
+
+
+
+
+# [0.5.0](https://github.com/Availity/availity-react/compare/@availity/select@0.4.15...@availity/select@0.5.0) (2019-10-11)
+
+
+### Features
+
+* **select:** handle AutoFillType function values ([c9d5540](https://github.com/Availity/availity-react/commit/c9d5540))
+
+
+
+
+
+## [0.4.15](https://github.com/Availity/availity-react/compare/@availity/select@0.4.14...@availity/select@0.4.15) (2019-10-11)
+
+**Note:** Version bump only for package @availity/select
+
+
+
+
+
+## [0.4.14](https://github.com/Availity/availity-react/compare/@availity/select@0.4.13...@availity/select@0.4.14) (2019-10-11)
+
+**Note:** Version bump only for package @availity/select
+
+
+
+
+
+## [0.4.13](https://github.com/Availity/availity-react/compare/@availity/select@0.4.12...@availity/select@0.4.13) (2019-10-11)
+
+
+### Bug Fixes
+
+* eslint issues ([bc4d8e9](https://github.com/Availity/availity-react/commit/bc4d8e9))
+
+
+
+
+
+## [0.4.12](https://github.com/Availity/availity-react/compare/@availity/select@0.4.11...@availity/select@0.4.12) (2019-10-09)
+
+**Note:** Version bump only for package @availity/select
+
+
+
+
+
+## [0.4.11](https://github.com/Availity/availity-react/compare/@availity/select@0.4.10...@availity/select@0.4.11) (2019-10-04)
+
+
+### Bug Fixes
+
+* **select:** prevents the provided styles from react-select from being overridden by the styles applied in an error condition ([9ad49db](https://github.com/Availity/availity-react/commit/9ad49db))
+
+
+
+
+
+## [0.4.10](https://github.com/Availity/availity-react/compare/@availity/select@0.4.9...@availity/select@0.4.10) (2019-10-01)
+
+**Note:** Version bump only for package @availity/select
+
+
+
+
+
+## [0.4.9](https://github.com/Availity/availity-react/compare/@availity/select@0.4.8...@availity/select@0.4.9) (2019-09-25)
+
+**Note:** Version bump only for package @availity/select
+
+
+
+
+
+## [0.4.8](https://github.com/Availity/availity-react/compare/@availity/select@0.4.7...@availity/select@0.4.8) (2019-09-23)
+
+**Note:** Version bump only for package @availity/select
+
+
+
+
+
 ## [0.4.7](https://github.com/Availity/availity-react/compare/@availity/select@0.4.6...@availity/select@0.4.7) (2019-09-19)
 
 

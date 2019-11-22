@@ -13,40 +13,6 @@ class AvResourceSelect extends Component {
     this.state.previousOptions = [];
   }
 
-  static propTypes = {
-    requestConfig: PropTypes.object,
-    resource: PropTypes.shape({
-      postGet: PropTypes.func,
-      post: PropTypes.func,
-      getResult: PropTypes.oneOfType([PropTypes.string, PropTypes.func]),
-    }).isRequired,
-    getResult: PropTypes.oneOfType([PropTypes.string, PropTypes.func]),
-    hasMore: PropTypes.oneOfType([PropTypes.bool, PropTypes.func]),
-    delay: PropTypes.number,
-    debounceTimeout: PropTypes.number,
-    label: PropTypes.node,
-    customerId: PropTypes.string,
-    parameters: PropTypes.object,
-    itemsPerPage: PropTypes.number,
-    onPageChange: PropTypes.func,
-    isDisabled: PropTypes.bool,
-    requiredParams: PropTypes.array,
-    watchParams: PropTypes.array,
-    // eslint-disable-next-line react/forbid-prop-types
-    cacheUniq: PropTypes.any,
-    additional: PropTypes.object,
-    graphqlConfig: PropTypes.shape({
-      type: PropTypes.string,
-      query: PropTypes.string,
-    }),
-    minCharsToSearch: PropTypes.number,
-  };
-
-  static defaultProps = {
-    delay: 350,
-    itemsPerPage: 50,
-  };
-
   select = createRef();
 
   loadOptions = (...args) => {
@@ -198,6 +164,10 @@ class AvResourceSelect extends Component {
       .catch(() => ({ options: [], hasMore: false }));
   };
 
+  onFocusHandler = (...args) => {
+    if (this.props.onFocus) this.props.onFocus(...args);
+  };
+
   render() {
     const Tag = this.props.label ? AvSelectField : AvSelect;
     const {
@@ -207,6 +177,7 @@ class AvResourceSelect extends Component {
       watchParams,
       cacheUniq,
       additional,
+      waitUntilFocused,
       ...rest
     } = this.props;
     let _cacheUniq = cacheUniq;
@@ -223,6 +194,7 @@ class AvResourceSelect extends Component {
       <Tag
         selectRef={this.select}
         loadOptions={this.loadOptions}
+        defaultOptions={waitUntilFocused ? [] : true}
         pagination
         raw
         debounceTimeout={debounceTimeout}
@@ -232,6 +204,7 @@ class AvResourceSelect extends Component {
           ...additional,
         }}
         {...rest}
+        onFocus={this.onFocusHandler}
       />
     );
   }
@@ -247,6 +220,42 @@ AvResourceSelect.create = defaults => {
     defaults.resource.defaultConfig.name
   )}Select`;
   return SpecificAvResourceSelect;
+};
+
+AvResourceSelect.propTypes = {
+  requestConfig: PropTypes.object,
+  resource: PropTypes.shape({
+    postGet: PropTypes.func,
+    post: PropTypes.func,
+    getResult: PropTypes.oneOfType([PropTypes.string, PropTypes.func]),
+  }).isRequired,
+  getResult: PropTypes.oneOfType([PropTypes.string, PropTypes.func]),
+  hasMore: PropTypes.oneOfType([PropTypes.bool, PropTypes.func]),
+  delay: PropTypes.number,
+  debounceTimeout: PropTypes.number,
+  label: PropTypes.node,
+  customerId: PropTypes.string,
+  parameters: PropTypes.object,
+  itemsPerPage: PropTypes.number,
+  onPageChange: PropTypes.func,
+  isDisabled: PropTypes.bool,
+  requiredParams: PropTypes.array,
+  watchParams: PropTypes.array,
+  // eslint-disable-next-line react/forbid-prop-types
+  cacheUniq: PropTypes.any,
+  additional: PropTypes.object,
+  graphqlConfig: PropTypes.shape({
+    type: PropTypes.string,
+    query: PropTypes.string,
+  }),
+  minCharsToSearch: PropTypes.number,
+  onFocus: PropTypes.func,
+  waitUntilFocused: PropTypes.bool,
+};
+
+AvResourceSelect.defaultProps = {
+  delay: 350,
+  itemsPerPage: 50,
 };
 
 export default AvResourceSelect;

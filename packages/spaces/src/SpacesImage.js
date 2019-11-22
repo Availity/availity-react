@@ -2,7 +2,8 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import Skeleton from 'react-loading-skeleton';
 import Img from 'react-image';
-import { useSpace } from './Spaces';
+import get from 'lodash.get';
+import { useSpaces, useSpacesContext } from './Spaces';
 
 const skeletonPropType = PropTypes.shape({
   width: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
@@ -31,11 +32,11 @@ const SpacesImage = ({
   skeletonProps,
   ...props
 }) => {
-  const { space = {}, loading } = useSpace(spaceId || payerId);
+  const [space = {}] = useSpaces(spaceId || payerId);
+  const { loading } = useSpacesContext() || {};
 
   const id = spaceId || payerId || space.id;
-
-  let url = space.images && space.images[imageType];
+  let url = get(space, imageType);
 
   if (!url && loading) {
     return (
@@ -75,8 +76,12 @@ SpacesImage.propTypes = {
   spaceId: PropTypes.string,
   payerId: PropTypes.string,
   fallback: PropTypes.string,
-  imageType: PropTypes.string.isRequired,
+  imageType: PropTypes.string,
   skeletonProps: skeletonPropType,
+};
+
+SpacesImage.defaultProps = {
+  imageType: 'url',
 };
 
 // Adapted from https://github.com/Availity/availity-react/blob/master/packages/reactstrap-validation-select/AvResourceSelect.js

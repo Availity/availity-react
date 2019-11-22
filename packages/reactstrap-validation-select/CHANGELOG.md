@@ -3,6 +3,69 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [5.3.0](https://github.com/Availity/availity-react/compare/@availity/reactstrap-validation-select@5.2.0...@availity/reactstrap-validation-select@5.3.0) (2019-11-21)
+
+
+### Features
+
+* **reactstrap-validation-select:** add waitUntilFocused prop ([78fb844](https://github.com/Availity/availity-react/commit/78fb844ce9a126245ac28a62ffc0cebd94590e28))
+
+
+
+
+
+# [5.2.0](https://github.com/Availity/availity-react/compare/@availity/reactstrap-validation-select@5.1.0...@availity/reactstrap-validation-select@5.2.0) (2019-10-22)
+
+
+### Features
+
+* **reactstrap-validation-select:** make disabled state match availity/form components and 508 compliant ([7d43da4](https://github.com/Availity/availity-react/commit/7d43da4))
+
+
+
+
+
+# [5.1.0](https://github.com/Availity/availity-react/compare/@availity/reactstrap-validation-select@5.0.6...@availity/reactstrap-validation-select@5.1.0) (2019-10-11)
+
+
+### Features
+
+* **reactstrap-validation-select:** handle AutoFillType function values ([e320080](https://github.com/Availity/availity-react/commit/e320080))
+
+
+
+
+
+## [5.0.6](https://github.com/Availity/availity-react/compare/@availity/reactstrap-validation-select@5.0.5...@availity/reactstrap-validation-select@5.0.6) (2019-10-11)
+
+
+### Bug Fixes
+
+* eslint issues ([bc4d8e9](https://github.com/Availity/availity-react/commit/bc4d8e9))
+
+
+
+
+
+## [5.0.5](https://github.com/Availity/availity-react/compare/@availity/reactstrap-validation-select@5.0.4...@availity/reactstrap-validation-select@5.0.5) (2019-10-04)
+
+
+### Bug Fixes
+
+* **reactstrap-validation-select:** prevents the provided styles from react-select from being overridden by the styles applied in error conditions ([4acb8b0](https://github.com/Availity/availity-react/commit/4acb8b0))
+
+
+
+
+
+## [5.0.4](https://github.com/Availity/availity-react/compare/@availity/reactstrap-validation-select@5.0.3...@availity/reactstrap-validation-select@5.0.4) (2019-09-19)
+
+**Note:** Version bump only for package @availity/reactstrap-validation-select
+
+
+
+
+
 ## [5.0.3](https://github.com/Availity/availity-react/compare/@availity/reactstrap-validation-select@5.0.2...@availity/reactstrap-validation-select@5.0.3) (2019-09-19)
 
 

@@ -3,6 +3,41 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.2.4](https://github.com/Availity/availity-react/compare/@availity/feature@1.2.3...@availity/feature@1.2.4) (2019-11-20)
+
+**Note:** Version bump only for package @availity/feature
+
+
+
+
+
+## [1.2.3](https://github.com/Availity/availity-react/compare/@availity/feature@1.2.2...@availity/feature@1.2.3) (2019-10-23)
+
+**Note:** Version bump only for package @availity/feature
+
+
+
+
+
+## [1.2.2](https://github.com/Availity/availity-react/compare/@availity/feature@1.2.1...@availity/feature@1.2.2) (2019-10-11)
+
+
+### Bug Fixes
+
+* eslint issues ([bc4d8e9](https://github.com/Availity/availity-react/commit/bc4d8e9))
+
+
+
+
+
+## [1.2.1](https://github.com/Availity/availity-react/compare/@availity/feature@1.2.0...@availity/feature@1.2.1) (2019-09-25)
+
+**Note:** Version bump only for package @availity/feature
+
+
+
+
+
 # [1.2.0](https://github.com/Availity/availity-react/compare/@availity/feature@1.1.8...@availity/feature@1.2.0) (2019-09-04)
 
 

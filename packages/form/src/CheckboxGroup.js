@@ -69,7 +69,7 @@ const CheckboxGroup = ({
 CheckboxGroup.propTypes = {
   name: PropTypes.string,
   children: PropTypes.node,
-  label: PropTypes.string,
+  label: PropTypes.node,
   onChange: PropTypes.func,
 };
 

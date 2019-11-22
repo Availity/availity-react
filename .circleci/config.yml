@@ -1,4 +1,3 @@
-
 version: 2.1
 orbs:
   codecov: codecov/codecov@1.0.5
@@ -20,14 +19,14 @@ jobs:
       - run:
           name: Lint
           command: |
-            npm run lint
+            yarn lint
       - run: # Test
           name: Run Test
           command: |
-            npm run test:ci
+            yarn test:ci
       - run: # Coverage
           name: Coverage
-          command: npm run codecov:ci
+          command: yarn codecov:ci
   deploy:
     docker:
       - image: circleci/node:10
@@ -50,14 +49,17 @@ jobs:
             git config --global user.name $GITHUB_USER
       - run:
           command: |
-            npm run release:ci
-            npm run deploy:ci
+            yarn release:ci
+            yarn deploy:ci
 workflows:
   version: 2
   build_test_deploy:
     jobs:
       - build:
           context: availity-deploy
+          filters:
+            branches:
+              ignore: gh-pages
       - deploy:
           context: availity-deploy
           requires:

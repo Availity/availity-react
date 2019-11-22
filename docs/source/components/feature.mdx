@@ -1,0 +1,143 @@
+---
+title: Feature
+summary: Check environment features for the current environment to determine if a particular feature is enabled.
+---
+
+[![Version](https://img.shields.io/npm/v/@availity/feature.svg?style=for-the-badge)](https://www.npmjs.com/package/@availity/feature)
+
+Note: Only works with OpenShift deployed applications using the standard pipeline
+
+## Installation
+
+```bash
+npm install @availity/feature axios --save
+```
+
+## Example
+
+```jsx
+import React from 'react';
+import Feature from '@availity/feature';
+
+<Feature
+  features={[
+    'AV-1234',
+    'AV-2345',
+    ['AV-3456', 'AV-4567'],
+    ['AV-5678', 'AV-6789'],
+  ]}
+>
+  {/* stuff to render if the feature indicated above is enabled in the environment */}
+</Feature>;
+```
+
+Component which validates the environment's features to determine if children content should be shown.
+
+## Props
+
+### `features: string | Array<string | Array<string>>`
+
+Can either be a string, eg: `"AV-1234"` or an array containing feature ID strings as well as other arrays which contain feature ID strings, eg: `['AV-1234', 'AV-2345', ['AV-3456', 'AV-4567'], ['AV-5678', 'AV-6789']]`. The items in a nested array indicate feature IDs that must _all_ be enabled for a feature to be considered enabled (see `children`) - they act as "AND". The items in the top of the array act as "OR" - if _any_ are enabled, the feature is considered enabled. The example `['AV-1234', 'AV-2345', ['AV-3456', 'AV-4567'], ['AV-5678', 'AV-6789']]` is similar to `'AV-1234' OR 'AV-2345' OR ('AV-3456' && 'AV-4567') OR ('AV-5678' && 'AV-6789')`.
+
+### `loader?: boolean | ReactNode`
+
+When `true`, `BlockUi` is used when loading the features. When a `node`, that node is rendered instead of `BlockUi` when loading the features. When `false`, nothing is rendered when loading the features. **Default:** `true`.
+
+### `whenDisabled?: ReactNode`
+
+The content that renders when the features are disabled.
+
+### `children?: ReactNode`
+
+The content that renders when the features are enabled.
+
+### `negate?: boolean`
+
+Negate the feature. If the feature specified is enabled, it acts as if it were disabled (by rendering the `whenDisabled` prop content). If the feature specified is disabled, it acts as if it were enabled (by rendering the `children` prop content).
+
+## `isFeatureEnabled`
+
+Function that validates the environment's features to determine if children content should be shown.
+
+### Arguments
+
+- **`features`**: String, or an array containing strings. Required.
+  - **string**: The feature ID, eg: `'AV-1234'`
+  - **array**: The array can contain feature ID strings as well as other arrays which contain feature ID strings, eg: `['AV-1234', 'AV-2345', ['AV-3456', 'AV-4567'], ['AV-5678', 'AV-6789']]`. The items in a nested array indicate feature IDs that must _all_ be enabled for a feature to be considered enabled (see `children`) - they act as "AND". The items in the top of the array act as "OR" - if _any_ are enabled, the feature is considered enabled. The example `['AV-1234', 'AV-2345', ['AV-3456', 'AV-4567'], ['AV-5678', 'AV-6789']]` is similar to `'AV-1234' || 'AV-2345' || ('AV-3456' && 'AV-4567') || ('AV-5678' && 'AV-6789')`.
+
+### Returns
+
+A promise that can be awaited and resolves to `true` or `false` indicating whether the feature(s) are enabled or not.
+
+### Usage
+
+```javascript
+import { isFeatureEnabled } from '@availity/feature';
+
+async () => {
+  const enabled = await isFeatureEnabled('AV-1234');
+  if (!enabled) return;
+  // do stuff, this feature is enabled!
+};
+```
+
+## `generate-features-json (CLI)
+
+`generate-features-json` is a CLI tool that takes a `features.json` file and outputs environment specific `features.json` files to be used depending on which environment it's currently in. Note: This is where OpenShift comes into play. OpenShift ensures the right file (based on the ENV) is placed in the right location when the pod starts.
+
+### Arguments
+
+- **`path-to-features.json`**: Directory path or file location. Optional. Default: `project/config/features.json`. If a directory path, a `features.json` file must exist in the directory. If a file location, it must be a `.json` file. Note: Follow the example `features.json` file for what the contents of the file should be.
+- **`path-to-build-dist`**: Directory path. Optional. Default: if `NODE_ENV` is "production" `dist/features`, else `build/features`. The location to output the various environment specific JSON files. Note: OpenShift is looking for the `features` directory in the web root of the image, so if this value is changed, ensure that the resulting image has the `features` directory.
+
+### Usage
+
+```bash
+generate-features-json
+generate-features-json ./features.json
+generate-features-json other-path dist/features
+```
+
+### As npm script
+
+```json
+{
+  "scripts": {
+    "build": "av build && generate-features-json"
+  }
+}
+```
+
+with extra parameters
+
+```json
+{
+  "scripts": {
+    "build": "av build && generate-features-json ./features.json"
+  }
+}
+```
+
+## features.json
+
+The `features.json` file is a single file that details "features" and the environments that each feature is **disabled** in. Typically, the name of the feature is the JIRA ticket number that the feature was developed for. This helps identify what the feature does by just knowing the name.
+Possible `disabledEnvironments` values are `"DEV"`, `"STAGE"`, and `"PRD"`. These values line up with the `ENV` environment variable within OpenShift.
+
+```json
+[
+  {
+    "name": "PREC-4597",
+    "description": "https://jira.availity.com:8443/browse/PREC-4597",
+    "disabledEnvironments": ["PRD"]
+  },
+  {
+    "name": "CB-675",
+    "description": "https://jira.availity.com:8443/browse/PREC-4597",
+    "disabledEnvironments": ["STAGE", "PRD"]
+  }
+]
+```
+
+The environment specific `features.json` files that get generated are a simple array of disabled feature names. The above example produces a `PRD.json` with `["PREC-4597", "CB-675"]` and `STAGE.json` with `["CB-675"]`.
+
+Enabling and disabling features does require a deployment, but with the OpenShift CI/CD process, that _should_ be painless.

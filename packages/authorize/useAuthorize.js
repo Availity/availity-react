@@ -1,30 +1,26 @@
 import { useState, useEffect } from 'react';
 import { avUserPermissionsApi, avRegionsApi } from '@availity/api-axios';
 
-
 const warned = {};
 
 function warnOnce(message) {
-    if (!warned[message]) {
-      // eslint-disable-next-line no-console
-      if (typeof console !== 'undefined' && typeof console.error === 'function') {
-        console.error(message); // eslint-disable-line no-console
-      }
-      warned[message] = true;
+  if (!warned[message]) {
+    // eslint-disable-next-line no-console
+    if (typeof console !== 'undefined' && typeof console.error === 'function') {
+      console.error(message); // eslint-disable-line no-console
     }
+    warned[message] = true;
   }
+}
 
-  
-export default (permissions,{
-  organizationId,
-  customerId,
-  region = true,
-}= {}) => {
+export default (
+  permissions,
+  { organizationId, customerId, region = true } = {}
+) => {
   const [authorized, setAuthorized] = useState(false);
   const [loading, setLoading] = useState(true);
 
   const getRegion = async () => {
-
     if (region === true) {
       const resp = await avRegionsApi.getCurrentRegion();
       return (
@@ -110,5 +106,5 @@ export default (permissions,{
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [organizationId, region, customerId, permissions]);
 
-  return [authorized,loading];
+  return [authorized, loading];
 };

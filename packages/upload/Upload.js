@@ -1,4 +1,4 @@
-import React, { Component, createRef, Fragment } from 'react';
+import React, { Component, createRef } from 'react';
 import PropTypes from 'prop-types';
 import UploadCore from '@availity/upload-core';
 import { FormFeedback } from 'reactstrap';
@@ -11,37 +11,19 @@ import './styles.scss';
 const validationAttrs = ['min', 'max', 'required'];
 
 class Upload extends Component {
-  static propTypes = {
-    btnText: PropTypes.node,
-    bucketId: PropTypes.string.isRequired,
-    customerId: PropTypes.string.isRequired,
-    clientId: PropTypes.string.isRequired,
-    allowedFileNameCharacters: PropTypes.string,
-    allowedFileTypes: PropTypes.arrayOf(PropTypes.string),
-    onFileUpload: PropTypes.func,
-    onFileRemove: PropTypes.func,
-    maxSize: PropTypes.number,
-    max: PropTypes.number,
-    multiple: PropTypes.bool,
-    children: PropTypes.func,
-    name: PropTypes.string,
-    showFileDrop: PropTypes.bool,
-  };
+  constructor(props) {
+    super(props);
 
-  static defaultProps = {
-    multiple: true,
-    showFileDrop: false,
-  };
+    this.state = {
+      files: [],
+    };
+  }
 
   input = createRef();
 
   files = [];
 
   error = null;
-
-  state = {
-    files: [],
-  };
 
   removeFile = fileId => {
     this.error = null;
@@ -118,7 +100,7 @@ class Upload extends Component {
   }
 
   updateValidations(props = this.props) {
-    this.validations = Object.assign({}, props.validate);
+    this.validations = { ...props.validate };
 
     Object.keys(props)
       .filter(val => validationAttrs.indexOf(val) > -1)
@@ -166,10 +148,10 @@ class Upload extends Component {
 
     let fileAddArea;
     const text = btnText || (
-      <Fragment>
+      <>
         <i className="icon icon-plus-circle" title="Add File Icon" />
         {files.length === 0 ? 'Add File' : 'Add Another File Attachment'}
-      </Fragment>
+      </>
     );
 
     if (!max || files.length < max) {
@@ -226,5 +208,27 @@ class Upload extends Component {
     );
   }
 }
+
+Upload.propTypes = {
+  btnText: PropTypes.node,
+  bucketId: PropTypes.string.isRequired,
+  customerId: PropTypes.string.isRequired,
+  clientId: PropTypes.string.isRequired,
+  allowedFileNameCharacters: PropTypes.string,
+  allowedFileTypes: PropTypes.arrayOf(PropTypes.string),
+  onFileUpload: PropTypes.func,
+  onFileRemove: PropTypes.func,
+  maxSize: PropTypes.number,
+  max: PropTypes.number,
+  multiple: PropTypes.bool,
+  children: PropTypes.func,
+  name: PropTypes.string,
+  showFileDrop: PropTypes.bool,
+};
+
+Upload.defaultProps = {
+  multiple: true,
+  showFileDrop: false,
+};
 
 export default Upload;

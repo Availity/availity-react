@@ -3,6 +3,76 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [2.6.0](https://github.com/Availity/availity-react/compare/@availity/pagination@2.5.3...@availity/pagination@2.6.0) (2019-11-20)
+
+
+### Features
+
+* **pagination:** add render prop ([2db9e17](https://github.com/Availity/availity-react/commit/2db9e17aa7da17e824603583d77c2ecb047a73d0))
+
+
+### Performance Improvements
+
+* **pagination:** memoize items in pagination content ([c97eca6](https://github.com/Availity/availity-react/commit/c97eca6842d986fc5021400eec82b82386496802))
+
+
+
+
+
+## [2.5.3](https://github.com/Availity/availity-react/compare/@availity/pagination@2.5.2...@availity/pagination@2.5.3) (2019-10-24)
+
+**Note:** Version bump only for package @availity/pagination
+
+
+
+
+
+## [2.5.2](https://github.com/Availity/availity-react/compare/@availity/pagination@2.5.1...@availity/pagination@2.5.2) (2019-10-24)
+
+**Note:** Version bump only for package @availity/pagination
+
+
+
+
+
+## [2.5.1](https://github.com/Availity/availity-react/compare/@availity/pagination@2.5.0...@availity/pagination@2.5.1) (2019-10-11)
+
+
+### Bug Fixes
+
+* eslint issues ([bc4d8e9](https://github.com/Availity/availity-react/commit/bc4d8e9))
+
+
+
+
+
+# [2.5.0](https://github.com/Availity/availity-react/compare/@availity/pagination@2.4.2...@availity/pagination@2.5.0) (2019-10-04)
+
+
+### Features
+
+* **pagination:** add infinite scroll ([caf8202](https://github.com/Availity/availity-react/commit/caf8202))
+
+
+
+
+
+## [2.4.2](https://github.com/Availity/availity-react/compare/@availity/pagination@2.4.1...@availity/pagination@2.4.2) (2019-09-26)
+
+**Note:** Version bump only for package @availity/pagination
+
+
+
+
+
+## [2.4.1](https://github.com/Availity/availity-react/compare/@availity/pagination@2.4.0...@availity/pagination@2.4.1) (2019-09-25)
+
+**Note:** Version bump only for package @availity/pagination
+
+
+
+
+
 # [2.4.0](https://github.com/Availity/availity-react/compare/@availity/pagination@2.3.5...@availity/pagination@2.4.0) (2019-09-04)
 
 

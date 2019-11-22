@@ -132,4 +132,28 @@ describe('Radio', () => {
 
     getByText('Radio One');
   });
+
+  test('should generate uuid even when id is not added', () => {
+    const { container } = render(
+      <Form onSubmit={() => {}}>
+        <RadioGroup name="hello" label="Radio Group">
+          <Radio label="Radio One" value="uno" />
+        </RadioGroup>
+      </Form>
+    );
+
+    expect(container.querySelector('input').hasAttribute('id')).toBeTruthy();
+  });
+
+  test('should use id when passed in', () => {
+    const { container } = render(
+      <Form onSubmit={() => {}}>
+        <RadioGroup name="hello" label="Radio Group">
+          <Radio label="Radio One" value="uno" id="test" />
+        </RadioGroup>
+      </Form>
+    );
+
+    expect(container.querySelector('input').getAttribute('id')).toEqual('test');
+  });
 });

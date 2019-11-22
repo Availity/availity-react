@@ -1,6 +1,7 @@
-import React from 'react';
+import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 import { Label, Input } from 'reactstrap';
+import uuid from 'uuid/v4';
 import classNames from 'classnames';
 import { useCheckboxGroup } from './CheckboxGroup';
 import FormGroup from './FormGroup';
@@ -14,6 +15,8 @@ const Checkbox = ({
 }) => {
   const { value, toggle, metadata } = useCheckboxGroup(checkValue);
 
+  const [inputId] = useState(id || uuid());
+
   const classes = classNames(
     className,
     metadata.touched ? 'is-touched' : 'is-untouched',
@@ -21,10 +24,10 @@ const Checkbox = ({
   );
 
   return (
-    <FormGroup for={checkValue} check inline disabled={attributes.disabled}>
+    <FormGroup for={inputId} check inline disabled={attributes.disabled}>
       <Input
-        id={id || checkValue}
-        name={checkValue}
+        id={inputId}
+        name={inputId}
         className={classes}
         type="checkbox"
         {...attributes}
@@ -32,7 +35,7 @@ const Checkbox = ({
         checked={value}
         onChange={toggle}
       />
-      <Label check for={id || checkValue}>
+      <Label check for={inputId}>
         {label}
       </Label>
     </FormGroup>
@@ -42,7 +45,11 @@ const Checkbox = ({
 Checkbox.propTypes = {
   id: PropTypes.string,
   label: PropTypes.string,
-  value: PropTypes.object,
+  value: PropTypes.oneOfType([
+    PropTypes.string,
+    PropTypes.bool,
+    PropTypes.object,
+  ]),
   disabled: PropTypes.bool,
   className: PropTypes.string,
 };
