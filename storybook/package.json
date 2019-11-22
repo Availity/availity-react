@@ -1,6 +1,6 @@
 {
   "name": "@availity/react-storybook",
-  "version": "9.1.14",
+  "version": "9.1.15",
   "private": true,
   "author": "Robert McGuinness <rob.mcguinness@availity.com>",
   "description": "Storybook docs for availity-react",
@@ -49,7 +49,7 @@
     "@availity/pagination": "^2.6.0",
     "@availity/payer-logo": "^4.0.5",
     "@availity/progress": "^1.2.1",
-    "@availity/reactstrap-validation-date": "^3.1.7",
+    "@availity/reactstrap-validation-date": "^3.1.8",
     "@availity/reactstrap-validation-select": "^5.3.0",
     "@availity/select": "^0.7.0",
     "@availity/spaces": "^4.0.1",
