@@ -2,10 +2,15 @@
 # yarn lockfile v1
 
 
-"@availity/analytics-core@^2.6.0", "@availity/analytics-core@^2.8.0":
+"@availity/analytics-core@^2.6.0":
   version "2.8.1"
   resolved "https://registry.yarnpkg.com/@availity/analytics-core/-/analytics-core-2.8.1.tgz#e75446f289a1c60c67b90b86d1b385c6ec072876"
   integrity sha512-ol/4/BG9gBT9sDN4aaSvVeLS27degMHSKAAT3zw8YRZSB/hwR6MzxZ5QP/GXpiM9Stu3ZoIeRezfsgHAl5rOyg==
+
+"@availity/analytics-core@^2.8.2":
+  version "2.8.2"
+  resolved "https://registry.yarnpkg.com/@availity/analytics-core/-/analytics-core-2.8.2.tgz#87c47aaeaf4487a519e3bf9c89cadca9d8ccebfe"
+  integrity sha512-wCK9/Fc2AFnGlRY1IkDp6+CabPz6S5fxGlYjMDV7dg0IorgW2/tkGiV3hE1Nd+CGz+u+JuRm1+DvZWxJ8whG1A==
 
 "@availity/api-axios@^5.4.0", "@availity/api-axios@^5.4.4":
   version "5.4.4"
