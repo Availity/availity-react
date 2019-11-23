@@ -22,7 +22,7 @@
 	"homepage": "https://github.com/Availity/availity-react/tree/master/packages/reactstrap-validation-select#readme",
 	"devDependencies": {
 		"@availity/api-axios": "^5.4.0",
-		"@availity/api-core": "^5.4.0",
+		"@availity/api-core": "^6.0.1",
 		"@availity/form": "^0.4.9",
 		"@availity/localstorage-core": "^2.6.1",
 		"@types/react-select": "^3.0.0",

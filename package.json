@@ -42,7 +42,7 @@
   },
   "devDependencies": {
     "@availity/api-axios": "^5.4.0",
-    "@availity/api-core": "^5.4.0",
+    "@availity/api-core": "^6.0.1",
     "@availity/localstorage-core": "^2.6.1",
     "@babel/core": "^7.4.5",
     "@commitlint/cli": "^8.0.0",

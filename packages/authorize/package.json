@@ -25,7 +25,7 @@
   },
   "devDependencies": {
     "@availity/api-axios": "^5.4.0",
-    "@availity/api-core": "^5.4.0",
+    "@availity/api-core": "^6.0.1",
     "@availity/localstorage-core": "^2.6.1",
     "axios": "^0.18.0",
     "react": "^16.8.3",
