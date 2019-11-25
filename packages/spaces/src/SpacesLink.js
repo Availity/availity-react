@@ -146,7 +146,7 @@ const Link = ({
         style={{
           top: showDescription && description && !stacked ? -5 : 0,
         }}
-        size={size === undefined || stacked ? 'lg' : size}
+        size={size === undefined && stacked ? 'lg' : size}
       >
         {getIconTitle()}
       </AppIcon>

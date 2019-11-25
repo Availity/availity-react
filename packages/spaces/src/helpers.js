@@ -36,16 +36,21 @@ export const sanitizeSpaces = spaces => {
   const pairFields = ['images', 'metadata', 'colors', 'icons', 'mapping'];
   return spaces.reduce((accum, spc) => {
     // Store reference to children
-    spc.children = spaces.filter(
-      space =>
-        space.parentIDs && space.parentIDs.some(parentId => parentId === spc.id)
-    );
+    spc.children =
+      spc.children ||
+      spaces.filter(
+        space =>
+          space.parentIDs &&
+          space.parentIDs.some(parentId => parentId === spc.id)
+      );
 
     // Store reference to parents
-    spc.parents = spaces.filter(
-      space =>
-        space.childIDs && space.childIDs.some(childId => childId === spc.id)
-    );
+    spc.parents =
+      spc.parents ||
+      spaces.filter(
+        space =>
+          space.childIDs && space.childIDs.some(childId => childId === spc.id)
+      );
 
     // Tranform name/value fields ( pairFields )
     pairFields.forEach(field => {

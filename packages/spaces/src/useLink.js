@@ -26,7 +26,12 @@ export default (
     spaceFromSpacesProvider ||
     (typeof spaceOrSpaceId === 'object' ? spaceOrSpaceId : {});
 
-  const parentPayerSpaces = parents.filter(p => p.type === 'space');
+  const parentPayerSpaces = parents.filter(
+    p =>
+      p.type &&
+      (p.type.toLowerCase() === 'space' ||
+        p.type.toLowerCase() === 'payerspace') // no world stuff
+  );
 
   const legacySso = () => {
     openModal('DISCLAIMER_MODAL', {
