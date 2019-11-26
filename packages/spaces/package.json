@@ -29,7 +29,6 @@
     "@availity/typography": "^1.2.1",
     "classnames": "^2.2.6",
     "dayjs": "^1.8.16",
-    "lodash.clone": "^4.5.0",
     "lodash.get": "^4.4.2",
     "lodash.truncate": "^4.4.2",
     "prop-types": "^15.5.8",

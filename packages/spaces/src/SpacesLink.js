@@ -1,7 +1,6 @@
 import React, { useMemo, useCallback } from 'react';
 import PropTypes from 'prop-types';
 import classNames from 'classnames';
-import clone from 'lodash.clone';
 import truncate from 'lodash.truncate';
 import ReactMarkdown from 'react-markdown';
 import { FavoriteHeart } from '@availity/favorites';
@@ -119,7 +118,7 @@ const Link = ({
     if (parents && parents.length > 1) {
       return (
         <IconTiles
-          parents={clone(parents)}
+          parents={Object.assign([], parents)}
           stacked={stacked}
           className="mx-2"
         />
