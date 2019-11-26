@@ -4,11 +4,7 @@ import { useEffectAsync } from '@availity/hooks';
 import avMessages from '@availity/message-core';
 import get from 'lodash.get';
 import isUndefined from 'lodash.isundefined';
-import isNumber from 'lodash.isnumber';
-import sortBy from 'lodash.sortby';
-import reduce from 'lodash.reduce';
-import clone from 'lodash.clone';
-import findwhere from 'lodash.findwhere';
+import sortBy from 'array-sort';
 import { avSettingsApi, avLogMessagesApi } from '@availity/api-axios';
 
 const MAX_FAVORITES = 60;
@@ -24,20 +20,16 @@ const AV_INTERNAL_GLOBALS = {
 export const FavoritesContext = createContext();
 
 const validatedFavorites = input => {
-  const validFavorites = reduce(
-    input,
-    (result, favorite) => {
-      if (
-        !isUndefined(favorite.id) &&
-        !isUndefined(favorite.pos) &&
-        isNumber(favorite.pos)
-      ) {
-        result.push(favorite);
-      }
-      return result;
-    },
-    []
-  );
+  const validFavorites = input.reduce((result, favorite) => {
+    if (
+      !isUndefined(favorite.id) &&
+      !isUndefined(favorite.pos) &&
+      typeof favorite.pos === 'number'
+    ) {
+      result.push(favorite);
+    }
+    return result;
+  }, []);
   sortBy(validFavorites, 'pos').forEach((favorite, index) => {
     favorite.pos = index;
   });
@@ -101,7 +93,7 @@ const Favorites = ({ children }) => {
 
   const deleteFavorite = async id => {
     const result = await submitFavorites(
-      clone(favorites).filter(favorite => favorite.id !== id)
+      Object.assign([], favorites).filter(favorite => favorite.id !== id)
     );
 
     const newFavorites = get(result, 'data.favorites');
@@ -122,7 +114,7 @@ const Favorites = ({ children }) => {
       }
       return accum;
     }, null);
-    const newData = clone(favorites);
+    const newData = Object.assign([], favorites);
 
     newData.push({
       id,
@@ -136,7 +128,7 @@ const Favorites = ({ children }) => {
 
     sendUpdate(newFavorites);
 
-    const isFavorited = findwhere(newFavorites, { id });
+    const isFavorited = newFavorites.some(({ id: favId }) => favId === id);
 
     return !!isFavorited;
   };
@@ -159,10 +151,10 @@ export const useFavorites = id => {
     FavoritesContext
   );
 
-  const isFavorited = useMemo(() => !!findwhere(favorites, { id }), [
-    favorites,
-    id,
-  ]);
+  const isFavorited = useMemo(
+    () => favorites.some(({ id: favId }) => favId === id),
+    [favorites, id]
+  );
 
   const toggleFavorite = async () =>
     isFavorited ? deleteFavorite(id) : addFavorite(id);
