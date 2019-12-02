@@ -1,21 +1,9 @@
 import { useState, useEffect } from 'react';
 import { avUserPermissionsApi, avRegionsApi } from '@availity/api-axios';
 
-const warned = {};
-
-function warnOnce(message) {
-  if (!warned[message]) {
-    // eslint-disable-next-line no-console
-    if (typeof console !== 'undefined' && typeof console.error === 'function') {
-      console.error(message); // eslint-disable-line no-console
-    }
-    warned[message] = true;
-  }
-}
-
 export default (
   permissions,
-  { organizationId, customerId, region = true } = {}
+  { organizationId, customerId, region = true, resources } = {}
 ) => {
   const [authorized, setAuthorized] = useState(false);
   const [loading, setLoading] = useState(true);
@@ -40,29 +28,49 @@ export default (
 
   const checkPermission = permission => {
     if (!permission) return false;
+    let isAuthorizedForCustomerId = true;
+    let isAuthorizedForOrganizationId = true;
+    let isAuthorizedForResources = true;
 
     if (organizationId) {
-      if (customerId) {
-        warnOnce(
-          'You provided both `organizationId` and `customerId` to Authorize but both cannot be used together; `organizationId` will be used and `customerId` will be ignored. If you want to use `customerId` do not provide `organizationId`.'
-        );
-      }
-      return (
+      isAuthorizedForOrganizationId =
         permission.organizations.filter(
           ({ id: orgId }) => orgId === organizationId
-        ).length > 0
-      );
+        ).length > 0;
     }
 
     if (customerId) {
-      return (
+      isAuthorizedForCustomerId =
         permission.organizations.filter(
           ({ customerId: orgCustomerId }) => orgCustomerId === customerId
-        ).length > 0
-      );
+        ).length > 0;
     }
 
-    return true;
+    if (resources !== undefined) {
+      const resourceSets = Array.isArray(resources) ? resources : [resources];
+      isAuthorizedForResources =
+        resourceSets.length === 0 ||
+        resourceSets.some(resourceSet => {
+          if (Array.isArray(resourceSet)) {
+            return resourceSet.every(resource =>
+              permission.organizations.some(
+                ({ resources: orgResources = [] }) =>
+                  orgResources.some(({ id }) => `${id}` === `${resource}`)
+              )
+            );
+          }
+          return permission.organizations.some(
+            ({ resources: orgResources = [] }) =>
+              orgResources.some(({ id }) => `${id}` === `${resourceSet}`)
+          );
+        });
+    }
+
+    return (
+      isAuthorizedForCustomerId &&
+      isAuthorizedForOrganizationId &&
+      isAuthorizedForResources
+    );
   };
 
   // TODO: Move most of this logic to avUserPermissionsApi or something more common.

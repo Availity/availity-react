@@ -18,6 +18,17 @@ beforeEach(() => {
         {
           id: '1111',
           customerId: '1194',
+          resources: [
+            {
+              id: '1',
+            },
+            {
+              id: '2',
+            },
+            {
+              id: '3',
+            },
+          ],
         },
       ],
     },
@@ -127,6 +138,38 @@ describe('Authorize', () => {
         permissions="1234"
         customerId="1193"
         unauthorized="You do not have permission to see this"
+      >
+        You have permission to see this
+      </Authorize>
+    );
+
+    await waitForElement(() =>
+      getByText('You do not have permission to see this')
+    );
+  });
+
+  test('should render authorized with correct resources', async () => {
+    const { getByText } = render(
+      <Authorize
+        permissions="1234"
+        customerId="1194"
+        unauthorized="You do not have permission to see this"
+        resources="2"
+      >
+        You have permission to see this
+      </Authorize>
+    );
+
+    await waitForElement(() => getByText('You have permission to see this'));
+  });
+
+  test('should render unauthorized with incorrect resources', async () => {
+    const { getByText } = render(
+      <Authorize
+        permissions="1234"
+        customerId="1194"
+        unauthorized="You do not have permission to see this"
+        resources="5"
       >
         You have permission to see this
       </Authorize>
