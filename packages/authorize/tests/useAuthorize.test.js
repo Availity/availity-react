@@ -35,6 +35,17 @@ beforeEach(() => {
         {
           id: '1111',
           customerId: '1194',
+          resources: [
+            {
+              id: '1',
+            },
+            {
+              id: '2',
+            },
+            {
+              id: '3',
+            },
+          ],
         },
       ],
     },
@@ -113,28 +124,6 @@ describe('useAuthorize', () => {
     await waitForElement(() => getByText('You have permission to see this'));
   });
 
-  test('should render with console warning', async () => {
-    // eslint-disable-next-line no-console
-    console.error = jest.fn();
-
-    const { getByText } = render(
-      <Component
-        permissions="1234"
-        region="FL"
-        organizationId="1111"
-        customerId="1194"
-      >
-        You have permission to see this
-      </Component>
-    );
-
-    await waitForElement(() => getByText('You have permission to see this'));
-
-    // eslint-disable-next-line no-console
-    expect(console.error).toHaveBeenCalledWith(
-      'You provided both `organizationId` and `customerId` to Authorize but both cannot be used together; `organizationId` will be used and `customerId` will be ignored. If you want to use `customerId` do not provide `organizationId`.'
-    );
-  });
   test('should render authorized with region', async () => {
     const { getByText } = render(
       <Component permissions="1234" region="FL" organizationId="1111">
@@ -193,6 +182,94 @@ describe('useAuthorize', () => {
   test('should render unauthorized with incorrect customerId', async () => {
     const { getByText } = render(
       <Component permissions="1234" customerId="1193">
+        You have permission to see this
+      </Component>
+    );
+
+    await waitForElement(() =>
+      getByText('You do not have permission to see this')
+    );
+  });
+
+  test('should render authorized with correct resources as string', async () => {
+    const { getByText } = render(
+      <Component permissions="1234" customerId="1194" resources="1">
+        You have permission to see this
+      </Component>
+    );
+
+    await waitForElement(() => getByText('You have permission to see this'));
+  });
+
+  test('should render authorized with correct resources as number', async () => {
+    const { getByText } = render(
+      <Component permissions="1234" customerId="1194" resources={2}>
+        You have permission to see this
+      </Component>
+    );
+
+    await waitForElement(() => getByText('You have permission to see this'));
+  });
+
+  test('should render authorized with correct resources as array', async () => {
+    const { getByText } = render(
+      <Component permissions="1234" customerId="1194" resources={['1']}>
+        You have permission to see this
+      </Component>
+    );
+
+    await waitForElement(() => getByText('You have permission to see this'));
+  });
+
+  test('should render authorized with correct resources as nested array', async () => {
+    const { getByText } = render(
+      <Component permissions="1234" customerId="1194" resources={[['1', '2']]}>
+        You have permission to see this
+      </Component>
+    );
+
+    await waitForElement(() => getByText('You have permission to see this'));
+  });
+
+  test('should render unauthorized with incorrect resources as string', async () => {
+    const { getByText } = render(
+      <Component permissions="1234" customerId="1194" resources="5">
+        You have permission to see this
+      </Component>
+    );
+
+    await waitForElement(() =>
+      getByText('You do not have permission to see this')
+    );
+  });
+
+  test('should render unauthorized with incorrect resources as number', async () => {
+    const { getByText } = render(
+      <Component permissions="1234" customerId="1194" resources={6}>
+        You have permission to see this
+      </Component>
+    );
+
+    await waitForElement(() =>
+      getByText('You do not have permission to see this')
+    );
+  });
+
+  test('should render unauthorized with incorrect resources as array', async () => {
+    const { getByText } = render(
+      <Component permissions="1234" customerId="1194" resources={['5']}>
+        You have permission to see this
+      </Component>
+    );
+
+    await waitForElement(() =>
+      getByText('You do not have permission to see this')
+    );
+  });
+
+  test('should render unauthorized with incorrect resources as nested array', async () => {
+    const { getByText } = render(
+      <Component permissions="1234" customerId="1194" resources={[['1', '5']]}>
         You have permission to see this
       </Component>
     );

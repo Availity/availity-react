@@ -6,6 +6,7 @@ import useAuthorize from './useAuthorize';
 
 const Authorize = ({
   permissions,
+  resources,
   customerId,
   organizationId,
   region,
@@ -18,6 +19,7 @@ const Authorize = ({
     customerId,
     organizationId,
     region,
+    resources,
   });
 
   if (loading) {
@@ -46,6 +48,19 @@ Authorize.propTypes = {
     PropTypes.string,
     PropTypes.number,
   ]).isRequired,
+  resources: PropTypes.oneOfType([
+    PropTypes.arrayOf(
+      PropTypes.oneOfType([
+        PropTypes.arrayOf(
+          PropTypes.oneOfType([PropTypes.string, PropTypes.number])
+        ),
+        PropTypes.string,
+        PropTypes.number,
+      ])
+    ),
+    PropTypes.string,
+    PropTypes.number,
+  ]),
   region: PropTypes.oneOfType([PropTypes.bool, PropTypes.string]),
   loader: PropTypes.oneOfType([PropTypes.bool, PropTypes.node]),
   organizationId: PropTypes.string,
