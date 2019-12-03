@@ -27,10 +27,10 @@
     "@availity/resolve-url" "^1.1.0"
     qs "^6.5.2"
 
-"@availity/api-core@^6.0.1":
-  version "6.0.1"
-  resolved "https://registry.yarnpkg.com/@availity/api-core/-/api-core-6.0.1.tgz#076e47498721da0b2e5be0f96d34ac10e7833294"
-  integrity sha512-hH88KBmEly5gC3KYDiWF6NB44ustJWrC+vB6+nvs9+CMFZGQ45Ahvpx3wXpZgFX6DeQmcV29Sf4uUbAaPe5yEw==
+"@availity/api-core@^6.0.1", "@availity/api-core@^6.0.2":
+  version "6.0.2"
+  resolved "https://registry.yarnpkg.com/@availity/api-core/-/api-core-6.0.2.tgz#1d03950cd82fd814d303cf33f302c4c4ebbb66f4"
+  integrity sha512-M+B4acxhP86FARyvt9LnWWnsiM8kHAlGM5LMg3yoakSfqtF5ELc+55QXvEalRFOBJqbr4ZN29fZ7tZAZO6WM+g==
   dependencies:
     "@availity/localstorage-core" "^3.0.0"
     "@availity/resolve-url" "^1.1.1"
