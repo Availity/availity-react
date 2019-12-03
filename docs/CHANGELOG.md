@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [4.3.0](https://github.com/Availity/availity-react/compare/@availity/react-docs@4.2.2...@availity/react-docs@4.3.0) (2019-12-03)
+
+
+### Features
+
+* **authorize:** add resources filter ([e266abc](https://github.com/Availity/availity-react/commit/e266abc037fd5940ffe7f5e4ef5852bff36a39de))
+
+
+
+
+
 ## [4.2.2](https://github.com/Availity/availity-react/compare/@availity/react-docs@4.2.1...@availity/react-docs@4.2.2) (2019-11-23)
 
 **Note:** Version bump only for package @availity/react-docs
