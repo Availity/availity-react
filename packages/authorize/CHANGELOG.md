@@ -3,6 +3,14 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.4.1](https://github.com/Availity/availity-react/compare/@availity/authorize@1.4.0...@availity/authorize@1.4.1) (2019-12-04)
+
+**Note:** Version bump only for package @availity/authorize
+
+
+
+
+
 # [1.4.0](https://github.com/Availity/availity-react/compare/@availity/authorize@1.3.1...@availity/authorize@1.4.0) (2019-12-03)
 
 

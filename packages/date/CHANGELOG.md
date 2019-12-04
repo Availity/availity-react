@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.4.0](https://github.com/Availity/availity-react/compare/@availity/date@0.3.12...@availity/date@0.4.0) (2019-12-04)
+
+
+### Features
+
+* **date:** added autofill prop to allow for automatically filling daterange ([f8f7fe9](https://github.com/Availity/availity-react/commit/f8f7fe9043a623f8bab17081756e2ff32afc3fd9))
+
+
+
+
+
 ## [0.3.12](https://github.com/Availity/availity-react/compare/@availity/date@0.3.11...@availity/date@0.3.12) (2019-11-01)
 
 **Note:** Version bump only for package @availity/date
