@@ -3,6 +3,79 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [4.3.0](https://github.com/Availity/availity-react/compare/@availity/react-docs@4.2.2...@availity/react-docs@4.3.0) (2019-12-03)
+
+
+### Features
+
+* **authorize:** add resources filter ([e266abc](https://github.com/Availity/availity-react/commit/e266abc037fd5940ffe7f5e4ef5852bff36a39de))
+
+
+
+
+
+## [4.2.2](https://github.com/Availity/availity-react/compare/@availity/react-docs@4.2.1...@availity/react-docs@4.2.2) (2019-11-23)
+
+**Note:** Version bump only for package @availity/react-docs
+
+
+
+
+
+## [4.2.1](https://github.com/Availity/availity-react/compare/@availity/react-docs@4.2.0...@availity/react-docs@4.2.1) (2019-11-22)
+
+**Note:** Version bump only for package @availity/react-docs
+
+
+
+
+
+# [4.2.0](https://github.com/Availity/availity-react/compare/@availity/react-docs@4.1.1...@availity/react-docs@4.2.0) (2019-11-21)
+
+
+### Features
+
+* **select:** add waitUntilFocused prop ([4d70c12](https://github.com/Availity/availity-react/commit/4d70c12bd10dea36cd2ed9333555661f1514b735))
+
+
+
+
+
+## [4.1.1](https://github.com/Availity/availity-react/compare/@availity/react-docs@4.1.0...@availity/react-docs@4.1.1) (2019-11-20)
+
+**Note:** Version bump only for package @availity/react-docs
+
+
+
+
+
+# [4.1.0](https://github.com/Availity/availity-react/compare/@availity/react-docs@4.0.11...@availity/react-docs@4.1.0) (2019-11-20)
+
+
+### Features
+
+* **pagination:** add render prop ([2db9e17](https://github.com/Availity/availity-react/commit/2db9e17aa7da17e824603583d77c2ecb047a73d0))
+
+
+
+
+
+## [4.0.11](https://github.com/Availity/availity-react/compare/@availity/react-docs@4.0.10...@availity/react-docs@4.0.11) (2019-11-19)
+
+**Note:** Version bump only for package @availity/react-docs
+
+
+
+
+
+## [4.0.10](https://github.com/Availity/availity-react/compare/@availity/react-docs@4.0.9...@availity/react-docs@4.0.10) (2019-11-15)
+
+**Note:** Version bump only for package @availity/react-docs
+
+
+
+
+
 ## [4.0.9](https://github.com/Availity/availity-react/compare/@availity/react-docs@4.0.8...@availity/react-docs@4.0.9) (2019-11-01)
 
 **Note:** Version bump only for package @availity/react-docs

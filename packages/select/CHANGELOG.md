@@ -3,6 +3,25 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.7.0](https://github.com/Availity/availity-react/compare/@availity/select@0.6.2...@availity/select@0.7.0) (2019-11-21)
+
+
+### Features
+
+* **select:** add waitUntilFocused prop ([4d70c12](https://github.com/Availity/availity-react/commit/4d70c12bd10dea36cd2ed9333555661f1514b735))
+
+
+
+
+
+## [0.6.2](https://github.com/Availity/availity-react/compare/@availity/select@0.6.1...@availity/select@0.6.2) (2019-11-20)
+
+**Note:** Version bump only for package @availity/select
+
+
+
+
+
 ## [0.6.1](https://github.com/Availity/availity-react/compare/@availity/select@0.6.0...@availity/select@0.6.1) (2019-10-23)
 
 **Note:** Version bump only for package @availity/select

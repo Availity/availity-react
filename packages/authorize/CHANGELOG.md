@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [1.4.0](https://github.com/Availity/availity-react/compare/@availity/authorize@1.3.1...@availity/authorize@1.4.0) (2019-12-03)
+
+
+### Features
+
+* **authorize:** add resources filter ([e266abc](https://github.com/Availity/availity-react/commit/e266abc037fd5940ffe7f5e4ef5852bff36a39de))
+
+
+
+
+
 ## [1.3.1](https://github.com/Availity/availity-react/compare/@availity/authorize@1.3.0...@availity/authorize@1.3.1) (2019-09-25)
 
 **Note:** Version bump only for package @availity/authorize

@@ -199,6 +199,7 @@ Please refer to [react-select-async-paginate](https://github.com/vtaits/react-se
 *   **`graphqlConfig`**: Object{ type, query }. Optional. `type` String. is the type of asset returned. `query` String. is the GraphQL query to use in the request.
 *   **`creatable`**: boolean. Optional. Whether or not to allow new items to be created if not found.
 *   **`minCharsToSearch`**: Number. Optional. The minimum number of characters the user must input before `AvResourceSelect` makes the network request. If the user has not inputted any characters, the network request will still be made. Useful for relieving pressure on the api the `resource` is calling.
+*   **`waitUntilFocused`**: Boolean. Optional. When true, the network request is not made until the dropdown has been focused.
 *   **`autofill`**: Boolean or Object. Optional. Default: `false`. If `true`, when the value of the dropdown changes, if the `isMulti` prop is `false` _and_ the new value of the dropdown is an object, all fields on the form corresponding to the new value are auto-filled. In order for a field to be auto-filled, the `name` property on the field _must_ match the key inside the new value. 
 
 For example, if the new value is `{ "payer": "Availity" }`, in order for the payer input in the form to be auto-filled to "Availity", the `name` prop on the input must be "payer". 

@@ -3,6 +3,38 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [10.0.2](https://github.com/Availity/availity-react/compare/@availity/page-header@10.0.1...@availity/page-header@10.0.2) (2019-11-21)
+
+**Note:** Version bump only for package @availity/page-header
+
+
+
+
+
+## [10.0.1](https://github.com/Availity/availity-react/compare/@availity/page-header@10.0.0...@availity/page-header@10.0.1) (2019-11-20)
+
+**Note:** Version bump only for package @availity/page-header
+
+
+
+
+
+# [10.0.0](https://github.com/Availity/availity-react/compare/@availity/page-header@9.0.5...@availity/page-header@10.0.0) (2019-11-15)
+
+
+### Build System
+
+* **page-header:** update dependencies ([104ed57](https://github.com/Availity/availity-react/commit/104ed5781d92c4cf8563084eae4ae4cfcab579de))
+
+
+### BREAKING CHANGES
+
+* **page-header:** api-core and localstorage-core have been bumped to next major version
+
+
+
+
+
 ## [9.0.5](https://github.com/Availity/availity-react/compare/@availity/page-header@9.0.4...@availity/page-header@9.0.5) (2019-10-24)
 
 **Note:** Version bump only for package @availity/page-header

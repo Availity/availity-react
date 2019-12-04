@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [5.3.0](https://github.com/Availity/availity-react/compare/@availity/reactstrap-validation-select@5.2.0...@availity/reactstrap-validation-select@5.3.0) (2019-11-21)
+
+
+### Features
+
+* **reactstrap-validation-select:** add waitUntilFocused prop ([78fb844](https://github.com/Availity/availity-react/commit/78fb844ce9a126245ac28a62ffc0cebd94590e28))
+
+
+
+
+
 # [5.2.0](https://github.com/Availity/availity-react/compare/@availity/reactstrap-validation-select@5.1.0...@availity/reactstrap-validation-select@5.2.0) (2019-10-22)
 
 

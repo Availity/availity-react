@@ -164,6 +164,10 @@ class AvResourceSelect extends Component {
       .catch(() => ({ options: [], hasMore: false }));
   };
 
+  onFocusHandler = (...args) => {
+    if (this.props.onFocus) this.props.onFocus(...args);
+  };
+
   render() {
     const Tag = this.props.label ? AvSelectField : AvSelect;
     const {
@@ -173,6 +177,7 @@ class AvResourceSelect extends Component {
       watchParams,
       cacheUniq,
       additional,
+      waitUntilFocused,
       ...rest
     } = this.props;
     let _cacheUniq = cacheUniq;
@@ -189,6 +194,7 @@ class AvResourceSelect extends Component {
       <Tag
         selectRef={this.select}
         loadOptions={this.loadOptions}
+        defaultOptions={waitUntilFocused ? [] : true}
         pagination
         raw
         debounceTimeout={debounceTimeout}
@@ -198,6 +204,7 @@ class AvResourceSelect extends Component {
           ...additional,
         }}
         {...rest}
+        onFocus={this.onFocusHandler}
       />
     );
   }
@@ -242,6 +249,8 @@ AvResourceSelect.propTypes = {
     query: PropTypes.string,
   }),
   minCharsToSearch: PropTypes.number,
+  onFocus: PropTypes.func,
+  waitUntilFocused: PropTypes.bool,
 };
 
 AvResourceSelect.defaultProps = {
