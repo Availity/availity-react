@@ -56,6 +56,7 @@ const DateRange = ({
   datepickerProps,
   'data-testid': dataTestId,
   datepicker,
+  autoSync,
   ranges: propsRanges,
   ...attributes
 }) => {
@@ -132,10 +133,31 @@ const DateRange = ({
     }
   };
 
-  const onFocusChange = async input => {
-    if (!input) {
-      await setFieldTouched(name, true);
+  const syncDates = async () => {
+    if (!metadata.touched) {
+      let value;
+
+      if (!startValue || !endValue) {
+        value = startValue || endValue;
+      }
+
+      if (value) {
+        await setFieldValue(
+          name,
+          {
+            [startKey]: value,
+            [endKey]: value,
+          },
+          true
+        );
+        await setFieldTouched(name, true);
+      }
     }
+  };
+
+  const onFocusChange = async input => {
+    if (!input) await setFieldTouched(name, true);
+    if (autoSync) await syncDates();
     setFocusedInput(input);
     if (onPickerFocusChange) onPickerFocusChange({ focusedInput: input });
   };
@@ -281,6 +303,7 @@ DateRange.propTypes = {
   startKey: PropTypes.string,
   endKey: PropTypes.string,
   'data-testid': PropTypes.string,
+  autoSync: PropTypes.bool,
   ranges: PropTypes.oneOfType([
     PropTypes.bool,
     PropTypes.array,

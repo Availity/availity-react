@@ -79,10 +79,12 @@ export default (
       ? permissions
       : [permissions];
     const permissionsList = [].concat(...permissionsSets);
-    const newPermissions = (await avUserPermissionsApi.getPermissions(
-      permissionsList,
-      await getRegion()
-    )).reduce((prev, cur) => {
+    const newPermissions = (
+      await avUserPermissionsApi.getPermissions(
+        permissionsList,
+        await getRegion()
+      )
+    ).reduce((prev, cur) => {
       prev[cur.id] = cur;
       return prev;
     }, {});

@@ -83,6 +83,59 @@ describe('DateRange', () => {
     });
   });
 
+  test('autoSync updates other value', async () => {
+    const onSubmit = jest.fn();
+
+    const { container } = render(
+      <Form
+        initialValues={{
+          dateRange: undefined,
+        }}
+        onSubmit={onSubmit}
+      >
+        <DateRange id="dateRange" name="dateRange" autoSync />
+        <Button type="submit">Submit</Button>
+      </Form>
+    );
+
+    // Simulate user entering start date
+    const start = container.querySelector('#dateRange-start');
+
+    fireEvent.focus(start);
+
+    fireEvent.change(start, {
+      target: {
+        value: '01/04/1997',
+      },
+    });
+
+    const end = container.querySelector('#dateRange-end');
+    fireEvent.focus(end);
+
+    // Store the state of the end value
+    const endValue = end.value;
+
+    // Check that end date was auto synced
+    expect(endValue).toEqual(start.value);
+
+    // Simulate user clearing start date
+    const startDt = container.querySelector('#dateRange-start');
+    fireEvent.focus(startDt);
+
+    fireEvent.change(startDt, {
+      target: {
+        value: '11/10/1993',
+      },
+    });
+
+    const endDt = container.querySelector('#dateRange-end');
+    fireEvent.focus(endDt);
+
+    // Check that end date was not auto synced
+    expect(startDt.value).toBe('11/10/1993');
+    expect(endDt.value).toBe(endValue);
+  });
+
   test('works with text input', async () => {
     const onSubmit = jest.fn();
 

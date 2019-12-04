@@ -10,7 +10,7 @@ interface MomentDateRange {
 
 export interface DateRangeProps extends DateRangePicker,DateBaseProps {
     ranges?: boolean | string[] | {[key:string]:MomentDateRange};
-
+    autoSync?: boolean;
 }
 
 declare class DateRange extends React.Component<DateRangeProps> {}
