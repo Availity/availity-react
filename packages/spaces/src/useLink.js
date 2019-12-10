@@ -56,6 +56,7 @@ export default (
           /(?:(?:^|.*;\s*)XSRF-TOKEN\s*=\s*([^;]*).*$)|^.*$/,
           '$1'
         ),
+        spaceId: parents && parents[0] ? parents[0].id : linkAttributes.spaceId,
         ...linkAttributes,
       };
 
