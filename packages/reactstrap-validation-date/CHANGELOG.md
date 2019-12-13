@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [3.1.9](https://github.com/Availity/availity-react/compare/@availity/reactstrap-validation-date@3.1.8...@availity/reactstrap-validation-date@3.1.9) (2019-12-13)
+
+
+### Bug Fixes
+
+* **reactstrap-validation-date:** if max date parameter is a string with no time component, set time to EOD ([76220aa](https://github.com/Availity/availity-react/commit/76220aad8c480ffd1a7e37f033f64cea5cba5c86))
+
+
+
+
+
 ## [3.1.8](https://github.com/Availity/availity-react/compare/@availity/reactstrap-validation-date@3.1.7...@availity/reactstrap-validation-date@3.1.8) (2019-11-22)
 
 **Note:** Version bump only for package @availity/reactstrap-validation-date

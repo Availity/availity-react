@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.4.1](https://github.com/Availity/availity-react/compare/@availity/date@0.4.0...@availity/date@0.4.1) (2019-12-13)
+
+
+### Bug Fixes
+
+* **date:** if max date parameter is a string with no time component, set time to EOD - formik ([900d3ae](https://github.com/Availity/availity-react/commit/900d3ae8a3ddfce5d73a23ef1646b1b8b0e17207))
+
+
+
+
+
 # [0.4.0](https://github.com/Availity/availity-react/compare/@availity/date@0.3.12...@availity/date@0.4.0) (2019-12-04)
 
 
