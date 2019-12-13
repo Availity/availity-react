@@ -41,6 +41,14 @@ describe('utils', () => {
       expect(isOutside).toBe(true);
     });
 
+    it('returns false when date is same as max and max is string with no time parameter', () => {
+      const min = '2019-12-12';
+      const max = '2019-12-13';
+      const day = moment('2019-12-13T12:00:00.000');
+      const isOutside = UTILS.isOutsideRange(min, max)(day);
+      expect(isOutside).toBe(false);
+    });
+
     it('returns false when inside range and limits are of type object', () => {
       const min = { value: 1, units: 'days' };
       const max = { value: 1, units: 'days' };
