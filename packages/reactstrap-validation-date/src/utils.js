@@ -29,9 +29,18 @@ export const isOutsideRange = (min, max, format = 'MM/DD/YYYY') => day => {
     }
 
     if (typeof max === 'string') {
-      isOutsideMax = day.isAfter(
-        moment(max, [isoDateFormat, format, 'MMDDYYYY', 'YYYYMMDD'])
-      );
+      const maxMoment = moment(max, [
+        isoDateFormat,
+        format,
+        'MMDDYYYY',
+        'YYYYMMDD',
+      ]);
+      if (!maxMoment._f || maxMoment._f.indexOf('H') === -1) {
+        maxMoment.hour(23);
+        maxMoment.minute(59);
+        maxMoment.second(59);
+      }
+      isOutsideMax = day.isAfter(maxMoment);
     }
 
     if (max.value !== undefined && max.units) {
