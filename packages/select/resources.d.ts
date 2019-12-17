@@ -10,5 +10,4 @@ export {
   ResourceSelect as AvNavigationSelect,
   ResourceSelect as AvUserSelect,
   ResourceSelect as AvCodeSelect,
-  ResourceSelect as AvPatientSelect,
 };

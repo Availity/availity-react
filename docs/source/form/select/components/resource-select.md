@@ -126,7 +126,6 @@ The following components can be imported by name from `@availity/select/resource
 - AvNavigationSelect
 - AvUserSelect
 - AvCodeSelect
-- AvPatientSelect
 
 These components are `ResourceSelect` with pre-configured `resource`, `valueKey`, and `labelKey` to make it easy to use. All of the props for `ResourceSelect` can be provided to override the defaults of these pre-made components. For some of these components, you will want to provide the `customerId` prop.
 
@@ -144,7 +143,6 @@ import {
   AvNavigationSelect,
   AvUserSelect,
   AvCodeSelect,
-  AvPatientSelect,
 } from '@availity/select/resources';
 
 const schema = yup.object().shape({
@@ -203,12 +201,5 @@ const schema = yup.object().shape({
   />
   <AvUserSelect name="user" label="Select a User" customerId={customerId} />
   <AvCodeSelect name="code" label="Select a Code" />
-  <AvPatientSelect
-    name="patient"
-    label="Select a Patient"
-    parameters={{
-      customerId,
-    }}
-  />
 </Form>;
 ```
