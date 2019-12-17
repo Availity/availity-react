@@ -63,11 +63,11 @@ If present, the network request is not made until all of the required parameters
 
 When this prop changes, all cached options are cleared. (see [react-select-async-paginate](https://github.com/vtaits/react-select-async-paginate#cacheuniq))
 
-### `watchparams?: Array<string>`
+### `watchParams?: Array<string>`
 
 If present, the options reset when any of the parameters specified in the array change value. This is useful for when a customerId changes and you need to load a new list of options for the user to choose from. Used to derive `cacheUniq` if `cacheUniq` prop is not provided.
 
-### `resource: AxiosResoruce`
+### `resource: AxiosResource`
 
 Availity API resource (see [@availity/api-core](https://github.com/Availity/sdk-js/tree/master/packages/api-core) and [@availity/api-axios](https://github.com/Availity/sdk-js/tree/master/packages/api-axios)).
 
@@ -110,6 +110,10 @@ The minimum number of characters the user must input before `ResourceSelect` mak
 ### `waitUntilFocused?: boolean`
 
 When true, the network request is not made until the dropdown has been focused.
+
+### `defaultToOnlyOption?: boolean`
+
+When true, if the `resource` only returns one result the first time it is called, the value is defaulted to the single result. Note: if `waitUntilFocused` is `true`, this prop is ignored.
 
 ## Pre-made Resource Selects
 
