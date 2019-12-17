@@ -23,7 +23,7 @@
   },
   "dependencies": {
     "@availity/hooks": "^1.6.4",
-    "@availity/localstorage-core": "^2.6.1",
+    "@availity/localstorage-core": "^3.0.0",
     "lodash.isequal": "^4.5.0",
     "lodash.isfunction": "^3.0.9",
     "prop-types": "^15.5.8",

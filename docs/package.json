@@ -40,7 +40,7 @@
     "@availity/link": "^2.0.1",
     "@availity/list-group": "^1.2.1",
     "@availity/list-group-item": "^1.2.2",
-    "@availity/localstorage-core": "^2.6.1",
+    "@availity/localstorage-core": "^3.0.0",
     "@availity/page-header": "^10.0.3",
     "@availity/pagination": "^2.6.1",
     "@availity/payer-logo": "^4.0.5",
