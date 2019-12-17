@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [4.5.0](https://github.com/Availity/availity-react/compare/@availity/react-docs@4.4.1...@availity/react-docs@4.5.0) (2019-12-17)
+
+
+### Features
+
+* **select:** add defaultToOnlyOption prop ([a39d7de](https://github.com/Availity/availity-react/commit/a39d7de018437c51f41b3e3373af41d45db3c760))
+
+
+
+
+
 ## [4.4.1](https://github.com/Availity/availity-react/compare/@availity/react-docs@4.4.0...@availity/react-docs@4.4.1) (2019-12-13)
 
 **Note:** Version bump only for package @availity/react-docs
