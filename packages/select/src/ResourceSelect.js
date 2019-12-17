@@ -1,12 +1,14 @@
-import React, { useRef, useState } from 'react';
+import React, { useRef, useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
 import qs from 'qs';
 import get from 'lodash.get';
+import { useFormikContext } from 'formik';
 
 import Select from './Select';
 import SelectField from './SelectField';
 
 const ResourceSelect = ({
+  name,
   delay,
   debounceTimeout = delay,
   itemsPerPage,
@@ -20,12 +22,15 @@ const ResourceSelect = ({
   minCharsToSearch,
   onFocus,
   waitUntilFocused,
+  defaultToOnlyOption,
   ...rest
 }) => {
+  const { setFieldValue } = useFormikContext();
   let _cacheUniq = cacheUniq;
 
   const selectRef = useRef();
   const [previousOptions, setPreviousOptions] = useState([]);
+  const [numTimesResourceCalled, setNumTimesResourceCalled] = useState(0);
 
   if (_cacheUniq === undefined && watchParams) {
     const params = {
@@ -34,6 +39,10 @@ const ResourceSelect = ({
     };
     _cacheUniq = watchParams.map(watchParam => params[watchParam]).join(',');
   }
+
+  useEffect(() => {
+    setNumTimesResourceCalled(0);
+  }, [_cacheUniq]);
 
   const onFocusHandler = (...args) => {
     if (onFocus) onFocus(...args);
@@ -138,7 +147,7 @@ const ResourceSelect = ({
         );
     }
     return fetch()
-      .then(resp => {
+      .then(async resp => {
         if (!resp || !resp.data) {
           throw new Error(`API returned an invalid response.`);
         }
@@ -172,6 +181,23 @@ const ResourceSelect = ({
         }
         setPreviousOptions(items);
 
+        /*
+         * We only want to default to the first option under the following conditions:
+         * 1. defaultToOnlyOption is true
+         * 2. There is only one option
+         * 3. waitUntilFocused is false - Otherwise we would be defaulting the value when the user has the dropdown open to select a value
+         * 4. numTimesResourceCalled is 0 - This means this is the first time calling the resource. Again, otherwise we would be defaulting the value when the user has the dropdown open to select a value - keeping in mind numTimesResourceCalled resets to 0 any time cacheUniq changes
+         */
+        if (
+          defaultToOnlyOption &&
+          items.length === 1 &&
+          !waitUntilFocused &&
+          numTimesResourceCalled === 0
+        ) {
+          await setFieldValue(name, items[0]);
+        }
+        setNumTimesResourceCalled(numTimesResourceCalled + 1);
+
         return {
           options: items,
           hasMore,
@@ -188,6 +214,7 @@ const ResourceSelect = ({
 
   return (
     <Tag
+      name={name}
       selectRef={selectRef}
       loadOptions={loadOptions}
       defaultOptions={waitUntilFocused ? [] : true}
@@ -206,6 +233,7 @@ const ResourceSelect = ({
 };
 
 ResourceSelect.propTypes = {
+  name: PropTypes.string.isRequired,
   requestConfig: PropTypes.object,
   resource: PropTypes.shape({
     postGet: PropTypes.func,
@@ -234,11 +262,14 @@ ResourceSelect.propTypes = {
   }),
   onFocus: PropTypes.func,
   waitUntilFocused: PropTypes.bool,
+  defaultToOnlyOption: PropTypes.bool,
 };
 
 ResourceSelect.defaultProps = {
   delay: 350,
   itemsPerPage: 50,
+  waitUntilFocused: false,
+  defaultToOnlyOption: false,
 };
 
 const ucFirst = str => str && str.charAt(0).toUpperCase() + str.slice(1);
