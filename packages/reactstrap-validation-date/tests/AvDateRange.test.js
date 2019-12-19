@@ -411,6 +411,54 @@ describe('AvDateRange', () => {
     });
   });
 
+  test('autoSync updates other value', async () => {
+    const { container } = render(
+      <DateRange
+        name="dateRange"
+        start={{ name: 'date.start' }}
+        end={{ name: 'date.end' }}
+        autoSync
+      />
+    );
+
+    // Simulate user entering start date
+    const start = container.querySelector('#dateRange-start');
+
+    fireEvent.focus(start);
+
+    fireEvent.change(start, {
+      target: {
+        value: '01/04/1997',
+      },
+    });
+
+    const end = container.querySelector('#dateRange-end');
+    fireEvent.focus(end);
+
+    // Store the state of the end value
+    const endValue = end.value;
+
+    // Check that end date was auto synced
+    expect(endValue).toEqual(start.value);
+
+    // Simulate user clearing start date
+    const startDt = container.querySelector('#dateRange-start');
+    fireEvent.focus(startDt);
+
+    fireEvent.change(startDt, {
+      target: {
+        value: '11/10/1993',
+      },
+    });
+
+    const endDt = container.querySelector('#dateRange-end');
+    fireEvent.focus(endDt);
+
+    // Check that end date was not auto synced
+    expect(startDt.value).toBe('11/10/1993');
+    expect(endDt.value).toBe(endValue);
+  });
+
   test('datepicker works with default start and end dates', async () => {
     const defaultStartDate = moment()
       .add(-4, 'days')

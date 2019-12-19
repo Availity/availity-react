@@ -286,8 +286,29 @@ class AvDateRange extends Component {
     );
   };
 
+  syncDates = () => {
+    const { start, end } = this.props;
+    const startTouched = this.context.FormCtrl.isTouched(start.name);
+    const endTouched = this.context.FormCtrl.isTouched(end.name);
+
+    if (!startTouched || !endTouched) {
+      const { startValue, endValue } = this.state;
+      if (!startValue && endValue) {
+        this.setState({ startValue: endValue });
+        this.context.FormCtrl.setTouched(start.name);
+      } else if (startValue && !endValue) {
+        this.setState({ endValue: startValue });
+        this.context.FormCtrl.setTouched(end.name);
+      }
+    }
+  };
+
   onFocusChange = input => {
-    const { onPickerFocusChange, start, end } = this.props;
+    const { onPickerFocusChange, start, end, autoSync } = this.props;
+    if (autoSync) {
+      this.syncDates();
+    }
+
     if (input === 'endDate') {
       this.context.FormCtrl.setTouched(start.name);
     } else if (!input) {
@@ -641,6 +662,7 @@ AvDateRange.propTypes = {
   defaultValues: PropTypes.object,
   calendarIcon: PropTypes.node,
   datepicker: PropTypes.bool,
+  autoSync: PropTypes.bool,
 };
 
 AvDateRange.contextTypes = { FormCtrl: PropTypes.object.isRequired };
