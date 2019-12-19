@@ -458,3 +458,72 @@ describe('ResourceSelect', () => {
     });
   });
 });
+
+// -----
+const renderResourceSelect = props => {
+  const Component = () => {
+    const [cacheUniq, setCacheUniq] = useState(false);
+
+    return (
+      <Form
+        initialValues={{
+          'test-form-input': undefined,
+        }}
+        onSubmit={onSubmit}
+      >
+        <ResourceSelect
+          name="test-form-input"
+          cacheUniq={cacheUniq}
+          parameters={({ q, limit, offset }) => ({
+            testq: q,
+            testPage: offset / limit + 1,
+          })}
+          {...props}
+        />
+        <Button
+          type="button"
+          data-testid="btn-toggle-cacheUniq"
+          onClick={() => setCacheUniq(!cacheUniq)}
+        >
+          Toggle Cache Uniq Button
+        </Button>
+        <Button type="submit">Submit</Button>
+      </Form>
+    );
+  };
+  return render(<Component />);
+};
+
+it('Sends custom parameters to API', async () => {
+  avRegionsApi.postGet.mockResolvedValueOnce({
+    data: {
+      regions: [
+        {
+          id: 'FL',
+          value: 'Florida',
+        },
+      ],
+    },
+  });
+
+  const { container, getByText } = renderResourceSelect({
+    resource: avRegionsApi,
+    labelKey: 'value',
+    valueKey: 'id',
+    classNamePrefix: 'test__regions',
+    getResult: 'regions',
+    minCharsToSearch: 3,
+  });
+
+  const regionsSelect = container.querySelector('.test__regions__control');
+  fireEvent.keyDown(regionsSelect, { key: 'ArrowDown', keyCode: 40 });
+  fireEvent.keyDown(regionsSelect, { key: 'Enter', keyCode: 13 });
+
+  const regionsOption = await waitForElement(() => getByText('Florida'));
+  expect(regionsOption).toBeDefined();
+
+  expect(avRegionsApi.postGet).toHaveBeenCalledTimes(1);
+  expect(avRegionsApi.postGet.mock.calls[0][0]).toBe(
+    'q=&limit=50&testq=&testPage=1&offset=0'
+  );
+});

@@ -76,12 +76,10 @@ const ResourceSelect = ({
           perPage: itemsPerPage,
           filters: {
             q: encodeURIComponent(inputValue),
-            ...rest.parameters,
           },
         },
       };
-
-      if (typeof data.variables === 'function') {
+      if (typeof rest.parameters === 'function') {
         data = {
           ...data,
           ...data.variables(data.variables),
@@ -105,7 +103,7 @@ const ResourceSelect = ({
       };
     }
 
-    if (typeof params === 'function') {
+    if (typeof rest.parameters === 'function') {
       params = {
         ...params,
         ...rest.parameters(params),
@@ -120,8 +118,20 @@ const ResourceSelect = ({
     if (args.length === 3) {
       if (graphqlConfig) {
         data.variables.page = page;
+        if (typeof rest.parameters === 'function') {
+          data = {
+            ...data,
+            ...data.variables(data.variables),
+          };
+        }
       } else {
         params.offset = (page - 1) * itemsPerPage;
+        if (typeof rest.parameters === 'function') {
+          params = {
+            ...params,
+            ...rest.parameters(params),
+          };
+        }
       }
     } else {
       page = 1;
