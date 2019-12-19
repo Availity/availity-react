@@ -7,17 +7,24 @@ summary: The raw file picker button that masks the file input with a button.
 
 ```jsx
 import React from 'react';
-import { FilePickerBtn } from '@availity/upload';
+import { Form } from '@availity/form';
+import { FilePickerBtn } from '@availity/form-upload';
 
 handleFileSelection = event => {
   const { files } = event.target;
   // do something with the files.
 };
 
-<FilePickerBtn onChange={this.handleFileSelection} />;
+<Form initialValues={{ myFile: undefined }}>
+  <FilePickerBtn name="myFile" onChange={this.handleFileSelection} />;
+</Form>
 ```
 
 ## Props
+
+### `name: string`
+
+Identifies the field and matches the validation schema.
 
 ### `onClick?: (event: Event) => void`
 
