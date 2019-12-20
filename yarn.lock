@@ -9346,7 +9346,7 @@ formik@2.0.1-rc.12:
     tiny-warning "^1.0.2"
     tslib "^1.9.3"
 
-formik@^2.0.1-rc.12, formik@^2.0.4:
+formik@2.0.4, formik@^2.0.1-rc.12:
   version "2.0.4"
   resolved "https://registry.yarnpkg.com/formik/-/formik-2.0.4.tgz#0743a9a5c7ab0a247d3fa2c072d599f221fc8e75"
   integrity sha512-Y0mR8PGRtq/U072U4tkX1wnS/geDYs0n7uPlvmKtMTIJS4g8xCpaccAerQFWxEfClMK/JGpmEyG93zItAdASJA==

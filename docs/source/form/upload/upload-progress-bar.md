@@ -7,7 +7,7 @@ summary: The raw progress bar to be used when making your own.
 
 ```jsx
 import React from 'react';
-import { UploadProgressBar } from '@availity/upload';
+import { UploadProgressBar } from '@availity/form-upload';
 
 <UploadProgressBar upload={uploadInstance} animated />;
 ```

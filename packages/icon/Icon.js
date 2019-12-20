@@ -3,7 +3,18 @@ import PropTypes from 'prop-types';
 import classNames from 'classnames';
 
 const Icon = React.forwardRef(
-  ({ name, size, 'aria-label': ariaLabel, color, className, ...rest }, ref) => (
+  (
+    {
+      name,
+      size,
+      'aria-label': ariaLabel,
+      color,
+      className,
+      children,
+      ...rest
+    },
+    ref
+  ) => (
     <i
       ref={ref}
       aria-label={ariaLabel || name}
@@ -15,7 +26,9 @@ const Icon = React.forwardRef(
         className
       )}
       {...rest}
-    />
+    >
+      {children}
+    </i>
   )
 );
 
@@ -25,6 +38,7 @@ Icon.propTypes = {
   'aria-label': PropTypes.string,
   className: PropTypes.string,
   color: PropTypes.string,
+  children: PropTypes.node,
 };
 
 export default Icon;

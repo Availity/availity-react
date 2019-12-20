@@ -8,12 +8,19 @@ The default export is an all-in-one solution which handles uploads, encrypted fi
 
 ```jsx
 import React from 'react';
-import Upload from '@availity/upload';
+import Upload from '@availity/form-upload';
+import { Form } from '@availity/form';
 
-<Upload clientId="a" bucketId="b" customerId="c" />;
+<Form initialValues={{ myFile: undefined }}>
+  <Upload name="myFile" clientId="a" bucketId="b" customerId="c" />;
+</Form>
 ```
 
 ## Props
+
+### `name: string`
+
+Identifies the field and matches the validation schema.
 
 ### `btnText?: ReactNode`
 
@@ -67,30 +74,37 @@ Set as true to show a drag and drop file upload option instead of a button (file
 
 ```jsx
 import React from 'react';
-import Upload from '@availity/upload';
+import { Form } from '@availity/form';
+import Upload from '@availity/form-upload';
 
-<Upload
-  btnText="Upload a claim"
-  clientId="a"
-  bucketId="b"
-  customerId="c"
-  multiple={false}
-  max={1}
-/>;
+<Form initialValues={{ myFile: undefined }}>
+  <Upload
+    name="myFile"
+    btnText="Upload a claim"
+    clientId="a"
+    bucketId="b"
+    customerId="c"
+    multiple={false}
+    max={1}
+  />
+</Form>
 ```
 
 ### Callback Function Usage
 
 ```jsx
-<Upload
-  btnText="Upload a claim"
-  clientId="a"
-  bucketId="b"
-  customerId="c"
-  onFileUpload={onUpload} // <-- add file callback function
-  onFileRemove={onRemove} // <-- remove file callback function
-  max={1}
-/>
+<Form initialValues={{ myFile: undefined }}>
+  <Upload
+    name="myFile"
+    btnText="Upload a claim"
+    clientId="a"
+    bucketId="b"
+    customerId="c"
+    onFileUpload={onUpload} // <-- add file callback function
+    onFileRemove={onRemove} // <-- remove file callback function
+    max={1}
+  />
+</Form>
 
 // onUpload callback definition
 onUpload(upload) {
