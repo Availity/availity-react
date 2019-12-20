@@ -30,6 +30,7 @@
     "@availity/api-axios": "^5.4.0",
     "@availity/api-core": "^5.4.0",
     "@availity/localstorage-core": "^2.6.1",
+    "@types/reactstrap": "^8.2.0",
     "axios": "^0.18.0",
     "formik": "2.0.4",
     "react": "^16.8.3",
