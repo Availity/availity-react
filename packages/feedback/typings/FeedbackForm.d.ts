@@ -1,3 +1,5 @@
+import { ModalHeaderProps } from 'reactstrap';
+
 type FaceOption = {
     icon?: string;
     description?: string;
@@ -15,7 +17,7 @@ export interface FeedbackFormProps {
     aboutOptions?: AboutOption[];
     prompt?: string;
     staticFields?: object;
-    modalHeaderProps?: object;
+    modalHeaderProps?: ModalHeaderProps;
 }
 
 declare const FeedbackForm: React.FunctionComponent<FeedbackFormProps>;
