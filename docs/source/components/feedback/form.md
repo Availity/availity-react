@@ -40,3 +40,6 @@ If `true`, shows an optional comments field below.
 
 ### `staticFields?: object`
 Static (non-user-entered) key/value pairs to be sent in feedback submission.
+
+### `modalHeaderProps?: ModalHeaderProps`
+Props to be spread onto the `<ModalHeader />` rendered inside of the `<FeedbackForm />`. See [ModalHeader](https://github.com/reactstrap/reactstrap/blob/master/src/ModalHeader.js)
