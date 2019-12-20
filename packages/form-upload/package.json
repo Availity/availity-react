@@ -24,6 +24,7 @@
   "peerDependencies": {
     "@availity/form": "^0.4.9",
     "@availity/upload-core": "^3.0.4",
+    "formik": "^2.0.1",
     "react": "^16.8.0",
     "react-dom": "^16.8.0",
     "react-dropzone": "^10.0.0 ||^9.0.0 ||^8.0.0 ||^7.0.1",
