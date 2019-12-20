@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [9.3.0](https://github.com/Availity/availity-react/compare/@availity/react-storybook@9.2.2...@availity/react-storybook@9.3.0) (2019-12-19)
+
+
+### Features
+
+* **reactstrap-validation-date:** add autoSync prop ([d5c52f7](https://github.com/Availity/availity-react/commit/d5c52f71b0508a9bffee062de3df785148b504e1))
+
+
+
+
+
 ## [9.2.2](https://github.com/Availity/availity-react/compare/@availity/react-storybook@9.2.1...@availity/react-storybook@9.2.2) (2019-12-17)
 
 **Note:** Version bump only for package @availity/react-storybook

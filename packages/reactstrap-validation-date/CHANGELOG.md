@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [3.2.0](https://github.com/Availity/availity-react/compare/@availity/reactstrap-validation-date@3.1.9...@availity/reactstrap-validation-date@3.2.0) (2019-12-19)
+
+
+### Features
+
+* **reactstrap-validation-date:** add autoSync prop ([d5c52f7](https://github.com/Availity/availity-react/commit/d5c52f71b0508a9bffee062de3df785148b504e1))
+
+
+
+
+
 ## [3.1.9](https://github.com/Availity/availity-react/compare/@availity/reactstrap-validation-date@3.1.8...@availity/reactstrap-validation-date@3.1.9) (2019-12-13)
 
 
