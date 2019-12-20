@@ -3,6 +3,14 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.8.1](https://github.com/Availity/availity-react/compare/@availity/select@0.8.0...@availity/select@0.8.1) (2019-12-20)
+
+**Note:** Version bump only for package @availity/select
+
+
+
+
+
 # [0.8.0](https://github.com/Availity/availity-react/compare/@availity/select@0.7.0...@availity/select@0.8.0) (2019-12-17)
 
 
