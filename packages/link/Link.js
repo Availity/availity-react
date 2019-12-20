@@ -16,6 +16,17 @@ const getLocation = href => {
   return location;
 };
 
+const setRel = (url, target, absolute) => {
+  if (target === '_blank' && absolute) {
+    const dest = getLocation(url);
+    if (dest.hostname !== window.location.hostname) {
+      // default rel when linking to external destinations for performance and security
+      return 'noopener noreferrer';
+    }
+  }
+  return undefined;
+};
+
 const AvLink = ({
   tag: Tag,
   href,
@@ -23,20 +34,10 @@ const AvLink = ({
   children,
   onClick,
   loadApp,
-  rel,
   ...props
 }) => {
   const absolute = isAbsoluteUrl(href);
   const url = getUrl(href, loadApp, absolute);
-
-  // eslint-disable-next-line no-cond-assign
-  if ((target = '_blank') && !rel && absolute) {
-    const dest = getLocation(url);
-    if (dest.hostname !== window.location.hostname) {
-      // default rel when linking to external destinations for performance and security
-      rel = 'noopener noreferrer';
-    }
-  }
 
   return (
     <Tag
@@ -44,7 +45,7 @@ const AvLink = ({
       target={target}
       onClick={event => onClick && onClick(event, url)}
       data-testid="av-link-tag"
-      rel={rel}
+      rel={setRel(url, target, absolute)}
       {...props}
     >
       {children}
