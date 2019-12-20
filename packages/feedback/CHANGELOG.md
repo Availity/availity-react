@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [5.2.0](https://github.com/Availity/availity-react/compare/@availity/feedback@5.1.27...@availity/feedback@5.2.0) (2019-12-20)
+
+
+### Features
+
+* **feedback:** add modalHeaderProps ([5b5dc3c](https://github.com/Availity/availity-react/commit/5b5dc3c5808a3db2477af4c713f66b6dea6bee19))
+
+
+
+
+
 ## [5.1.27](https://github.com/Availity/availity-react/compare/@availity/feedback@5.1.26...@availity/feedback@5.1.27) (2019-12-20)
 
 **Note:** Version bump only for package @availity/feedback

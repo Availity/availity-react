@@ -3,6 +3,14 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [9.3.2](https://github.com/Availity/availity-react/compare/@availity/react-storybook@9.3.1...@availity/react-storybook@9.3.2) (2019-12-20)
+
+**Note:** Version bump only for package @availity/react-storybook
+
+
+
+
+
 ## [9.3.1](https://github.com/Availity/availity-react/compare/@availity/react-storybook@9.3.0...@availity/react-storybook@9.3.1) (2019-12-20)
 
 **Note:** Version bump only for package @availity/react-storybook
