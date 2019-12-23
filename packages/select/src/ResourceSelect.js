@@ -82,12 +82,12 @@ const ResourceSelect = ({
       if (typeof rest.parameters === 'function') {
         data = {
           ...data,
-          ...data.variables(data.variables),
+          ...rest.parameters(data.variables),
         };
       } else {
         data = {
           ...data,
-          ...data.variables,
+          ...rest.parameters,
         };
       }
 
@@ -121,7 +121,7 @@ const ResourceSelect = ({
         if (typeof rest.parameters === 'function') {
           data = {
             ...data,
-            ...data.variables(data.variables),
+            ...rest.parameters(data.variables),
           };
         }
       } else {
