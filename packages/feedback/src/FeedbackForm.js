@@ -115,10 +115,22 @@ const FeedbackForm = ({
         validationSchema={yup.object().shape({
           feedback: yup
             .string()
+            .trim()
+            .matches(
+              /^([^\W])[a-zA-Z0-9!?.'"\s]+$/,
+              'Additional Feedback must contain alphanumeric characters'
+            )
+            .min(5, 'Additional Feedback must exceed 5 characters.')
             .max(200, 'Additional Feedback cannot exceed 200 characters.')
             .required('This field is required.'),
           additionalFeedback: yup
             .string()
+            .trim()
+            .matches(
+              /^([^\W])[a-zA-Z0-9!?.'"\s]+$/,
+              'Additional Feedback must contain alphanumeric characters'
+            )
+            .min(5, 'Additional Feedback must exceed 5 characters.')
             .max(200, 'Additional Feedback cannot exceed 200 characters.'),
           smileField: yup
             .object()
