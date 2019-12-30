@@ -35,9 +35,9 @@ const FeedbackForm = ({
   onFeedbackSent,
   prompt,
   additionalComments,
-  validationSchema,
   staticFields,
   modalHeaderProps,
+  ...formProps
 }) => {
   const [active, setActive] = useState(null);
   const [sent, setSent] = useState(null);
@@ -105,7 +105,6 @@ const FeedbackForm = ({
         aria-describedby="feedback-form-header"
         role="form"
         data-testid="feedback-form"
-        onSubmit={values => sendFeedback(values)}
         initialValues={{
           'face-options': undefined,
           additionalFeedback: undefined,
@@ -113,29 +112,28 @@ const FeedbackForm = ({
           feedbackApp: undefined,
           smileField: undefined,
         }}
-        validationSchema={
-          validationSchema ||
-          yup.object().shape({
-            feedback: yup
-              .string()
-              .max(200, 'Additional Feedback cannot exceed 200 characters.')
-              .required('This field is required.'),
-            additionalFeedback: yup
-              .string()
-              .max(200, 'Additional Feedback cannot exceed 200 characters.'),
-            smileField: yup
-              .object()
-              .shape({
-                icon: yup.string().required(),
-                description: yup.string(),
-                placeholder: yup.string(),
-              })
-              .required('This field is required.'),
-            feedbackApp: yup
-              .string()
-              .isRequired(aboutOptions.length > 0, 'This field is required.'),
-          })
-        }
+        validationSchema={yup.object().shape({
+          feedback: yup
+            .string()
+            .max(200, 'Additional Feedback cannot exceed 200 characters.')
+            .required('This field is required.'),
+          additionalFeedback: yup
+            .string()
+            .max(200, 'Additional Feedback cannot exceed 200 characters.'),
+          smileField: yup
+            .object()
+            .shape({
+              icon: yup.string().required(),
+              description: yup.string(),
+              placeholder: yup.string(),
+            })
+            .required('This field is required.'),
+          feedbackApp: yup
+            .string()
+            .isRequired(aboutOptions.length > 0, 'This field is required.'),
+        })}
+        {...formProps}
+        onSubmit={values => sendFeedback(values)}
       >
         <ModalBody>
           <FormGroup
