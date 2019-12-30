@@ -221,7 +221,6 @@ FeedbackForm.propTypes = {
   prompt: PropTypes.string,
   additionalComments: PropTypes.bool,
   staticFields: PropTypes.object,
-  validationSchema: PropTypes.object,
   modalHeaderProps: PropTypes.shape({ ...ModalHeader.propTypes }),
 };
 
