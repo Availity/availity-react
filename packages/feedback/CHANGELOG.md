@@ -3,6 +3,24 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [5.3.0](https://github.com/Availity/availity-react/compare/@availity/feedback@5.2.0...@availity/feedback@5.3.0) (2019-12-31)
+
+
+### Bug Fixes
+
+* **feedback:** removed validationSchema addons and added validationSchema Prop in form ([bd68d3f](https://github.com/Availity/availity-react/commit/bd68d3f5c1230c138e7b4da394ddc708da47ea5f))
+* **feedback:** removed validationSchema and refactored form docs ([106b0b6](https://github.com/Availity/availity-react/commit/106b0b6546c767986027c791c85a95b58b09e37d))
+* **feedback:** spread formProps for more dev flexibility ([98bd160](https://github.com/Availity/availity-react/commit/98bd160ff6cdf8d9fddec7fdff206d75fe6b787e))
+
+
+### Features
+
+* **feedback:** trims whitespace, adds min length, and handles only special chars ([85d53b3](https://github.com/Availity/availity-react/commit/85d53b39552ee5c878391ce6a61b46058ed36c29))
+
+
+
+
+
 # [5.2.0](https://github.com/Availity/availity-react/compare/@availity/feedback@5.1.27...@availity/feedback@5.2.0) (2019-12-20)
 
 
