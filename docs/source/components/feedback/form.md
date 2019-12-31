@@ -43,3 +43,6 @@ Static (non-user-entered) key/value pairs to be sent in feedback submission.
 
 ### `modalHeaderProps?: ModalHeaderProps`
 Props to be spread onto the `<ModalHeader />` rendered inside of the `<FeedbackForm />`. See [ModalHeader](https://github.com/reactstrap/reactstrap/blob/master/src/ModalHeader.js)
+
+### `...rest`
+View full set of [Form Props](https://availity.github.io/availity-react/form/components/form/)
