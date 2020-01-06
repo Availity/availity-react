@@ -7,6 +7,7 @@ import Dropzone from 'react-dropzone';
 import Icon from '@availity/icon';
 import { useField, useFormikContext } from 'formik';
 import classNames from 'classnames';
+import uuid from 'uuid/v4';
 
 import FilePickerBtn from './FilePickerBtn';
 import FileList from './FileList';
@@ -69,6 +70,7 @@ const Upload = ({
           maxSize,
           allowedFileNameCharacters: rest.allowedFileNameCharacters,
         });
+        upload.id = `${upload.id}-${uuid()}`;
         upload.start();
         if (rest.onFileUpload) rest.onFileUpload(upload);
         return upload;
