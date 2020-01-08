@@ -264,7 +264,6 @@ import {
   AvPermissionSelect,
   AvNavigationSelect,
   AvUserSelect,
-  AvPatientSelect,
 } from '@availity/reactstrap-validation-select/resources';
 import '@availity/reactstrap-validation-select/styles.scss';
 // ...
@@ -305,13 +304,6 @@ import '@availity/reactstrap-validation-select/styles.scss';
         name="user"
         label="Select a User"
         customerId={customerId}
-    />
-    <AvPatientSelect
-        name="patient"
-        label="Select a Patient"
-        parameters={{
-          customerId,
-        }}
     />
 </AvForm>;
 ```

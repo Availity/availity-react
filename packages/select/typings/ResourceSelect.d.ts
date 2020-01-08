@@ -30,6 +30,7 @@ export interface ResourceSelectProps extends SelectFieldProps {
   graphqlConfig?: GraphQLConfigType;
   minCharsToSearch?: number;
   waitUntilFocused?: boolean;
+  defaultToOnlyOption?: boolean;
 }
 
 declare class ResourceSelect extends React.Component<ResourceSelectProps> {

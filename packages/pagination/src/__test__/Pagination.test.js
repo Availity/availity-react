@@ -454,4 +454,57 @@ describe('Pagination', () => {
       })
     );
   });
+
+  test('show correct page when given page from props', async () => {
+    const items = [
+      { value: '1', key: 1 },
+      { value: '2', key: 2 },
+      { value: '3', key: 3 },
+    ];
+
+    const Component = () => {
+      const [page, setPage] = useState(2);
+
+      return (
+        <Pagination
+          items={items}
+          itemsPerPage={1}
+          page={page}
+          onPageChange={newPage => setPage(newPage)}
+        >
+          <PaginationJson />
+          <PaginationControls directionLinks />
+        </Pagination>
+      );
+    };
+
+    const { getByTestId } = render(<Component />);
+
+    let paginationCon = await waitForElement(() =>
+      getByTestId('pagination-con')
+    );
+
+    expect(paginationCon).toBeDefined();
+
+    expect(JSON.parse(paginationCon.textContent)).toEqual(
+      expect.objectContaining({
+        page: [items[1]],
+      })
+    );
+
+    // Testing that clicking next still works with a defaultPage
+    fireEvent.click(getByTestId('pagination-control-next-link'));
+
+    // Wait for component to render nothing
+    waitForDomChange(() => getByTestId('pagination-con'));
+
+    // Get the component now with the new page data
+    paginationCon = await waitForElement(() => getByTestId('pagination-con'));
+
+    expect(JSON.parse(paginationCon.textContent)).toEqual(
+      expect.objectContaining({
+        page: [items[2]],
+      })
+    );
+  });
 });

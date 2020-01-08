@@ -3,6 +3,33 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.8.2](https://github.com/Availity/availity-react/compare/@availity/select@0.8.1...@availity/select@0.8.2) (2019-12-31)
+
+**Note:** Version bump only for package @availity/select
+
+
+
+
+
+## [0.8.1](https://github.com/Availity/availity-react/compare/@availity/select@0.8.0...@availity/select@0.8.1) (2019-12-20)
+
+**Note:** Version bump only for package @availity/select
+
+
+
+
+
+# [0.8.0](https://github.com/Availity/availity-react/compare/@availity/select@0.7.0...@availity/select@0.8.0) (2019-12-17)
+
+
+### Features
+
+* **select:** add defaultToOnlyOption prop ([a39d7de](https://github.com/Availity/availity-react/commit/a39d7de018437c51f41b3e3373af41d45db3c760))
+
+
+
+
+
 # [0.7.0](https://github.com/Availity/availity-react/compare/@availity/select@0.6.2...@availity/select@0.7.0) (2019-11-21)
 
 

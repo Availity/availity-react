@@ -21,6 +21,7 @@ export const usePagination = () => useContext(PaginationContext);
  */
 const Pagination = ({
   items: theItems,
+  page: propsCurrentPage,
   itemsPerPage,
   onPageChange,
   children,
@@ -29,7 +30,7 @@ const Pagination = ({
   defaultPage,
 }) => {
   const ref = React.useRef();
-  const [currentPage, setPage] = useState(defaultPage);
+  const [stateCurrentPage, setPage] = useState(defaultPage);
   const [doFocusRefOnPageChange, setDoFocusRefOnPageChange] = useState(false);
   const [pageData, setPageData] = useState({
     total: theItems != null && !isFunction(theItems) ? theItems.totalCount : 0,
@@ -40,6 +41,8 @@ const Pagination = ({
     upper: 0,
     hasMore: false,
   });
+
+  const currentPage = propsCurrentPage || stateCurrentPage;
 
   // create an abort controller for fetch to be able to cancel it
 
@@ -102,7 +105,11 @@ const Pagination = ({
   const updatePage = page => {
     if (page !== currentPage) {
       toggleLoading(true);
-      setPage(page);
+
+      // If pagination is controlling the state then set the page
+      if (!propsCurrentPage) {
+        setPage(page);
+      }
 
       if (onPageChange) {
         onPageChange(page);
@@ -154,6 +161,7 @@ Pagination.propTypes = {
   watchList: PropTypes.array,
   resetParams: PropTypes.array,
   defaultPage: PropTypes.number,
+  page: PropTypes.number,
 };
 
 Pagination.defaultProps = {

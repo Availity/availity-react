@@ -3,6 +3,22 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [2.1.0](https://github.com/Availity/availity-react/compare/@availity/link@2.0.1...@availity/link@2.1.0) (2019-12-23)
+
+
+### Bug Fixes
+
+* **link:** fixes assignment inside if statement. Extract rel logic into setRel function ([0f317fb](https://github.com/Availity/availity-react/commit/0f317fb79c97900781a62342518be8f2f37c71cd))
+
+
+### Features
+
+* **link:** default rel prop when linking to external sites ([b604701](https://github.com/Availity/availity-react/commit/b604701087360f47885580a8d426c97027b23cec))
+
+
+
+
+
 ## [2.0.1](https://github.com/Availity/availity-react/compare/@availity/link@2.0.0...@availity/link@2.0.1) (2019-10-11)
 
 

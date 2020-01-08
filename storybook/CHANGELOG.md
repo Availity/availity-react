@@ -3,6 +3,108 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [9.3.5](https://github.com/Availity/availity-react/compare/@availity/react-storybook@9.3.4...@availity/react-storybook@9.3.5) (2019-12-31)
+
+**Note:** Version bump only for package @availity/react-storybook
+
+
+
+
+
+## [9.3.4](https://github.com/Availity/availity-react/compare/@availity/react-storybook@9.3.3...@availity/react-storybook@9.3.4) (2019-12-31)
+
+**Note:** Version bump only for package @availity/react-storybook
+
+
+
+
+
+## [9.3.3](https://github.com/Availity/availity-react/compare/@availity/react-storybook@9.3.2...@availity/react-storybook@9.3.3) (2019-12-23)
+
+**Note:** Version bump only for package @availity/react-storybook
+
+
+
+
+
+## [9.3.2](https://github.com/Availity/availity-react/compare/@availity/react-storybook@9.3.1...@availity/react-storybook@9.3.2) (2019-12-20)
+
+**Note:** Version bump only for package @availity/react-storybook
+
+
+
+
+
+## [9.3.1](https://github.com/Availity/availity-react/compare/@availity/react-storybook@9.3.0...@availity/react-storybook@9.3.1) (2019-12-20)
+
+**Note:** Version bump only for package @availity/react-storybook
+
+
+
+
+
+# [9.3.0](https://github.com/Availity/availity-react/compare/@availity/react-storybook@9.2.2...@availity/react-storybook@9.3.0) (2019-12-19)
+
+
+### Features
+
+* **reactstrap-validation-date:** add autoSync prop ([d5c52f7](https://github.com/Availity/availity-react/commit/d5c52f71b0508a9bffee062de3df785148b504e1))
+
+
+
+
+
+## [9.2.2](https://github.com/Availity/availity-react/compare/@availity/react-storybook@9.2.1...@availity/react-storybook@9.2.2) (2019-12-17)
+
+**Note:** Version bump only for package @availity/react-storybook
+
+
+
+
+
+## [9.2.1](https://github.com/Availity/availity-react/compare/@availity/react-storybook@9.2.0...@availity/react-storybook@9.2.1) (2019-12-13)
+
+**Note:** Version bump only for package @availity/react-storybook
+
+
+
+
+
+# [9.2.0](https://github.com/Availity/availity-react/compare/@availity/react-storybook@9.1.17...@availity/react-storybook@9.2.0) (2019-12-04)
+
+
+### Features
+
+* **date:** added autofill prop to allow for automatically filling daterange ([f8f7fe9](https://github.com/Availity/availity-react/commit/f8f7fe9043a623f8bab17081756e2ff32afc3fd9))
+
+
+
+
+
+## [9.1.17](https://github.com/Availity/availity-react/compare/@availity/react-storybook@9.1.16...@availity/react-storybook@9.1.17) (2019-12-03)
+
+**Note:** Version bump only for package @availity/react-storybook
+
+
+
+
+
+## [9.1.16](https://github.com/Availity/availity-react/compare/@availity/react-storybook@9.1.15...@availity/react-storybook@9.1.16) (2019-11-23)
+
+**Note:** Version bump only for package @availity/react-storybook
+
+
+
+
+
+## [9.1.15](https://github.com/Availity/availity-react/compare/@availity/react-storybook@9.1.14...@availity/react-storybook@9.1.15) (2019-11-22)
+
+**Note:** Version bump only for package @availity/react-storybook
+
+
+
+
+
 ## [9.1.14](https://github.com/Availity/availity-react/compare/@availity/react-storybook@9.1.13...@availity/react-storybook@9.1.14) (2019-11-21)
 
 **Note:** Version bump only for package @availity/react-storybook

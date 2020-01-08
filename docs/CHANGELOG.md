@@ -3,6 +3,121 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [4.7.3](https://github.com/Availity/availity-react/compare/@availity/react-docs@4.7.2...@availity/react-docs@4.7.3) (2019-12-31)
+
+**Note:** Version bump only for package @availity/react-docs
+
+
+
+
+
+## [4.7.2](https://github.com/Availity/availity-react/compare/@availity/react-docs@4.7.1...@availity/react-docs@4.7.2) (2019-12-31)
+
+
+### Bug Fixes
+
+* **feedback:** removed validationSchema addons and added validationSchema Prop in form ([bd68d3f](https://github.com/Availity/availity-react/commit/bd68d3f5c1230c138e7b4da394ddc708da47ea5f))
+* **feedback:** removed validationSchema and refactored form docs ([106b0b6](https://github.com/Availity/availity-react/commit/106b0b6546c767986027c791c85a95b58b09e37d))
+
+
+
+
+
+## [4.7.1](https://github.com/Availity/availity-react/compare/@availity/react-docs@4.7.0...@availity/react-docs@4.7.1) (2019-12-23)
+
+**Note:** Version bump only for package @availity/react-docs
+
+
+
+
+
+# [4.7.0](https://github.com/Availity/availity-react/compare/@availity/react-docs@4.6.0...@availity/react-docs@4.7.0) (2019-12-20)
+
+
+### Features
+
+* **feedback:** add modalHeaderProps ([5b5dc3c](https://github.com/Availity/availity-react/commit/5b5dc3c5808a3db2477af4c713f66b6dea6bee19))
+
+
+
+
+
+# [4.6.0](https://github.com/Availity/availity-react/compare/@availity/react-docs@4.5.1...@availity/react-docs@4.6.0) (2019-12-20)
+
+
+### Features
+
+* **form-upload:** add form-upload package ([5ac7d46](https://github.com/Availity/availity-react/commit/5ac7d46cc45a00600bb08002ce075a0a70c5f06d))
+
+
+
+
+
+## [4.5.1](https://github.com/Availity/availity-react/compare/@availity/react-docs@4.5.0...@availity/react-docs@4.5.1) (2019-12-19)
+
+**Note:** Version bump only for package @availity/react-docs
+
+
+
+
+
+# [4.5.0](https://github.com/Availity/availity-react/compare/@availity/react-docs@4.4.1...@availity/react-docs@4.5.0) (2019-12-17)
+
+
+### Features
+
+* **select:** add defaultToOnlyOption prop ([a39d7de](https://github.com/Availity/availity-react/commit/a39d7de018437c51f41b3e3373af41d45db3c760))
+
+
+
+
+
+## [4.4.1](https://github.com/Availity/availity-react/compare/@availity/react-docs@4.4.0...@availity/react-docs@4.4.1) (2019-12-13)
+
+**Note:** Version bump only for package @availity/react-docs
+
+
+
+
+
+# [4.4.0](https://github.com/Availity/availity-react/compare/@availity/react-docs@4.3.0...@availity/react-docs@4.4.0) (2019-12-04)
+
+
+### Features
+
+* **date:** added autofill prop to allow for automatically filling daterange ([f8f7fe9](https://github.com/Availity/availity-react/commit/f8f7fe9043a623f8bab17081756e2ff32afc3fd9))
+
+
+
+
+
+# [4.3.0](https://github.com/Availity/availity-react/compare/@availity/react-docs@4.2.2...@availity/react-docs@4.3.0) (2019-12-03)
+
+
+### Features
+
+* **authorize:** add resources filter ([e266abc](https://github.com/Availity/availity-react/commit/e266abc037fd5940ffe7f5e4ef5852bff36a39de))
+
+
+
+
+
+## [4.2.2](https://github.com/Availity/availity-react/compare/@availity/react-docs@4.2.1...@availity/react-docs@4.2.2) (2019-11-23)
+
+**Note:** Version bump only for package @availity/react-docs
+
+
+
+
+
+## [4.2.1](https://github.com/Availity/availity-react/compare/@availity/react-docs@4.2.0...@availity/react-docs@4.2.1) (2019-11-22)
+
+**Note:** Version bump only for package @availity/react-docs
+
+
+
+
+
 # [4.2.0](https://github.com/Availity/availity-react/compare/@availity/react-docs@4.1.1...@availity/react-docs@4.2.0) (2019-11-21)
 
 

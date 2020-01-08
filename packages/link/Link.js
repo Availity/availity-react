@@ -3,32 +3,55 @@ import PropTypes from 'prop-types';
 import { isAbsoluteUrl } from '@availity/resolve-url';
 
 // if absolute or loadApp is disabled, return url. otherwise loadappify the url
-export const getUrl = (url = '', loadApp) => {
-  const absolute = isAbsoluteUrl(url);
+export const getUrl = (url = '', loadApp, absolute) => {
   if (absolute || !loadApp) return url;
 
   return `/public/apps/home/#!/loadApp?appUrl=${encodeURIComponent(url)}`;
 };
 
+// takes href and transforms it so that we can compare hostnames and other properties
+const getLocation = href => {
+  const location = document.createElement('a');
+  location.href = href;
+  return location;
+};
+
+const setRel = (url, target, absolute) => {
+  if (target === '_blank' && absolute) {
+    const dest = getLocation(url);
+    if (dest.hostname !== window.location.hostname) {
+      // default rel when linking to external destinations for performance and security
+      return 'noopener noreferrer';
+    }
+  }
+  return undefined;
+};
+
 const AvLink = ({
   tag: Tag,
-  href: url,
+  href,
   target,
   children,
   onClick,
   loadApp,
   ...props
-}) => (
-  <Tag
-    href={getUrl(url, loadApp)}
-    target={target}
-    onClick={event => onClick && onClick(event, getUrl(url, loadApp))}
-    data-testid="av-link-tag"
-    {...props}
-  >
-    {children}
-  </Tag>
-);
+}) => {
+  const absolute = isAbsoluteUrl(href);
+  const url = getUrl(href, loadApp, absolute);
+
+  return (
+    <Tag
+      href={url}
+      target={target}
+      onClick={event => onClick && onClick(event, url)}
+      data-testid="av-link-tag"
+      rel={setRel(url, target, absolute)}
+      {...props}
+    >
+      {children}
+    </Tag>
+  );
+};
 
 AvLink.defaultProps = {
   tag: 'a',
@@ -42,6 +65,7 @@ AvLink.propTypes = {
   href: PropTypes.string.isRequired,
   onClick: PropTypes.func,
   loadApp: PropTypes.bool,
+  rel: PropTypes.string,
 };
 
 export default AvLink;

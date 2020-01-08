@@ -8,7 +8,8 @@ The raw file picker which automatically resets the value of the input, allowing 
 
 ```jsx
 import React from 'react';
-import { FilePicker } from '@availity/upload';
+import { Form } from '@availity/form';
+import { FilePicker } from '@availity/form-upload';
 import { CustomInput } from 'reactstrap';
 
 handleFileSelection = event => {
@@ -16,10 +17,16 @@ handleFileSelection = event => {
   // do something with the files.
 };
 
-<FilePicker tag={CustomInput} onChange={this.handleFileSelection} />;
+<Form initialValues={{ myFile: undefined }}>
+  <FilePicker name="myFile" tag={CustomInput} onChange={this.handleFileSelection} />
+</Form>
 ```
 
 ## Props
+
+### `name: string`
+
+Identifies the field and matches the validation schema.
 
 ### `tag?: React.ComponentType | string`
 
