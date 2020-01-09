@@ -82,7 +82,7 @@ const ResourceSelect = ({
       if (typeof rest.parameters === 'function') {
         data = {
           ...data,
-          ...rest.parameters(data.variables),
+          ...rest.parameters(data),
         };
       } else {
         data = {
@@ -121,7 +121,7 @@ const ResourceSelect = ({
         if (typeof rest.parameters === 'function') {
           data = {
             ...data,
-            ...rest.parameters(data.variables),
+            ...rest.parameters(data),
           };
         }
       } else {
@@ -207,7 +207,7 @@ const ResourceSelect = ({
               totalCount > offset + limit;
           }
         }
-
+        console.log('Testing --->', items);
         hasMore = typeof hasMore === 'function' ? hasMore(resp.data) : hasMore;
 
         if (!Array.isArray(items)) {

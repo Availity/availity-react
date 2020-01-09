@@ -27,4 +27,23 @@ export default mock => {
       })
     )
   );
+
+  mock.post(/\/api\/v1\/my-graphql-resource/, (req, res) =>
+    res.status(200).body(
+      window.JSON.stringify({
+        regionPagination: {
+          count: 57,
+          pageInfo: {
+            hasNextPage: true,
+          },
+          items: [
+            {
+              id: 'UmVnaW9uOkFM',
+              value: 'New York',
+            },
+          ],
+        },
+      })
+    )
+  );
 };

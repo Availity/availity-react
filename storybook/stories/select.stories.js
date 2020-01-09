@@ -74,6 +74,8 @@ const multiValueSchema = (name, required, min, max) =>
 
 const avCustomResource = new AvApi({ name: 'my-custom-resource' });
 
+const avGraphqlResource = new AvApi({ name: 'my-graphql-resource' });
+
 // eslint-disable-next-line no-undef
 storiesOf('Formik|Select', module)
   .addParameters({
@@ -228,7 +230,57 @@ storiesOf('Formik|Select', module)
     const min = (isMulti && number('Min Selection', 2)) || undefined;
     const max = (isMulti && number('Max Selection', 3)) || undefined;
     const required = boolean('Required', false);
-    return (
+    const graphql = boolean('Graphql', false);
+
+    return graphql ? (
+      <FormikResults
+        initialValues={{
+          ResourceSelect: null,
+        }}
+        validationSchema={
+          isMulti
+            ? multiValueSchema('SelectField', required, min, max)
+            : singleValueSchema('SelectField', required)
+        }
+      >
+        <ResourceSelect
+          label={
+            <>
+              {text('Label', 'Custom Select')}
+              <span className="text-primary">*</span>
+            </>
+          }
+          name="ResourceSelect"
+          labelKey="value"
+          valueKey="id"
+          maxLength={max}
+          isMulti={isMulti}
+          required={required}
+          resource={avGraphqlResource}
+          creatable={boolean('Creatable', false)}
+          isDisabled={boolean('Disabled', false)}
+          graphqlConfig={{
+            type: 'region',
+            query: `
+    {
+   regionPagination{
+     count
+     pageInfo{
+       hasNextPage
+     }
+     items{
+       id
+       value
+     }
+   }
+ }
+ `,
+          }}
+          getResult={data => data.regionPagination.items}
+        />
+        <Button color="primary">Submit</Button>
+      </FormikResults>
+    ) : (
       <FormikResults
         initialValues={{
           ResourceSelect: null,
@@ -251,14 +303,71 @@ storiesOf('Formik|Select', module)
           maxLength={max}
           isMulti={isMulti}
           required={required}
-          resource={avCustomResource}
           creatable={boolean('Creatable', false)}
           isDisabled={boolean('Disabled', false)}
+          graphql={graphql}
+          resource={avCustomResource}
         />
         <Button color="primary">Submit</Button>
       </FormikResults>
     );
   });
+
+//   .add('GraphqlResourceSelect', () => {
+//     const isMulti = boolean('Multiple', false);
+//     const min = (isMulti && number('Min Selection', 2)) || undefined;
+//     const max = (isMulti && number('Max Selection', 3)) || undefined;
+//     const required = boolean('Required', false);
+//     return (
+//       <FormikResults
+//         initialValues={{
+//           ResourceSelect: null,
+//         }}
+//         validationSchema={
+//           isMulti
+//             ? multiValueSchema('SelectField', required, min, max)
+//             : singleValueSchema('SelectField', required)
+//         }
+//       >
+//         <ResourceSelect
+//           label={
+//             <>
+//               {text('Label', 'Custom Select')}
+//               <span className="text-primary">*</span>
+//             </>
+//           }
+//           name="ResourceSelect"
+//           labelKey="value"
+//           valueKey="id"
+//           maxLength={max}
+//           isMulti={isMulti}
+//           required={required}
+//           resource={avGraphqlResource}
+//           creatable={boolean('Creatable', false)}
+//           isDisabled={boolean('Disabled', false)}
+//           graphqlConfig={{
+//             type: 'region',
+//             query: `
+//    {
+//   regionPagination{
+//     count
+//     pageInfo{
+//       hasNextPage
+//     }
+//     items{
+//       id
+//       value
+//     }
+//   }
+// }
+// `,
+//           }}
+//           getResult={data => data.regionPagination.items}
+//         />
+//         <Button color="primary">Submit</Button>
+//       </FormikResults>
+//     );
+//   });
 
 // eslint-disable-next-line no-undef
 storiesOf('Formik|Select/resources', module)
