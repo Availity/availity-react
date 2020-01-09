@@ -36,6 +36,8 @@ const FeedbackForm = ({
   prompt,
   additionalComments,
   staticFields,
+  modalHeaderProps,
+  ...formProps
 }) => {
   const [active, setActive] = useState(null);
   const [sent, setSent] = useState(null);
@@ -85,12 +87,17 @@ const FeedbackForm = ({
       aria-live="assertive"
       tabIndex="0"
       className="d-flex justify-content-center"
+      {...modalHeaderProps}
     >
       Thank you for your feedback.
     </ModalHeader>
   ) : (
     <>
-      <ModalHeader aria-live="assertive" id="feedback-form-header">
+      <ModalHeader
+        aria-live="assertive"
+        id="feedback-form-header"
+        {...modalHeaderProps}
+      >
         {prompt || `Tell us what you think about ${name}`}
       </ModalHeader>
       <Form
@@ -98,7 +105,6 @@ const FeedbackForm = ({
         aria-describedby="feedback-form-header"
         role="form"
         data-testid="feedback-form"
-        onSubmit={values => sendFeedback(values)}
         initialValues={{
           'face-options': undefined,
           additionalFeedback: undefined,
@@ -126,6 +132,8 @@ const FeedbackForm = ({
             .string()
             .isRequired(aboutOptions.length > 0, 'This field is required.'),
         })}
+        {...formProps}
+        onSubmit={values => sendFeedback(values)}
       >
         <ModalBody>
           <FormGroup
@@ -213,11 +221,13 @@ FeedbackForm.propTypes = {
   prompt: PropTypes.string,
   additionalComments: PropTypes.bool,
   staticFields: PropTypes.object,
+  modalHeaderProps: PropTypes.shape({ ...ModalHeader.propTypes }),
 };
 
 FeedbackForm.defaultProps = {
   aboutOptions: [],
   additionalComments: false,
+  modalHeaderProps: {},
 };
 
 export default FeedbackForm;

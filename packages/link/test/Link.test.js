@@ -40,6 +40,41 @@ describe('AvLink', () => {
     expect(tag.getAttribute('href')).toBe(expected);
   });
 
+  test('should default rel prop if none provided when linking to external site', () => {
+    const { getByTestId } = render(
+      <AvLink
+        loadApp={false}
+        href="https://github.com/Availity"
+        target="_blank"
+      >
+        My App
+      </AvLink>
+    );
+
+    const tag = getByTestId('av-link-tag');
+    const expected = 'noopener noreferrer';
+
+    expect(tag.getAttribute('rel')).toBe(expected);
+  });
+
+  test('should respect rel prop if provided when linking to external site', () => {
+    const { getByTestId } = render(
+      <AvLink
+        loadApp={false}
+        href="https://github.com/Availity"
+        target="_blank"
+        rel="nofollow"
+      >
+        My App
+      </AvLink>
+    );
+
+    const tag = getByTestId('av-link-tag');
+    const expected = 'nofollow';
+
+    expect(tag.getAttribute('rel')).toBe(expected);
+  });
+
   test('should call onClick', () => {
     const onClick = jest.fn();
 

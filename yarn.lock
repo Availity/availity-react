@@ -3536,6 +3536,14 @@
     "@types/react" "*"
     popper.js "^1.14.1"
 
+"@types/reactstrap@^8.2.0":
+  version "8.2.0"
+  resolved "https://registry.yarnpkg.com/@types/reactstrap/-/reactstrap-8.2.0.tgz#f3dd969fcc653c03cb70995bb0d4067aa68eafd6"
+  integrity sha512-QDc1yBpyK2hesWoJzEIv79C/pcvNS2Jbiit0ghyFxu3qus51sPX27f1cxTlZwJQSM/T8ggsvtFTBJZ98PIWJUg==
+  dependencies:
+    "@types/react" "*"
+    popper.js "^1.14.1"
+
 "@types/semver@^6.0.1":
   version "6.2.0"
   resolved "https://registry.yarnpkg.com/@types/semver/-/semver-6.2.0.tgz#d688d574400d96c5b0114968705366f431831e1a"
@@ -9346,7 +9354,7 @@ formik@2.0.1-rc.12:
     tiny-warning "^1.0.2"
     tslib "^1.9.3"
 
-formik@^2.0.1-rc.12, formik@^2.0.4:
+formik@2.0.4, formik@^2.0.1-rc.12:
   version "2.0.4"
   resolved "https://registry.yarnpkg.com/formik/-/formik-2.0.4.tgz#0743a9a5c7ab0a247d3fa2c072d599f221fc8e75"
   integrity sha512-Y0mR8PGRtq/U072U4tkX1wnS/geDYs0n7uPlvmKtMTIJS4g8xCpaccAerQFWxEfClMK/JGpmEyG93zItAdASJA==

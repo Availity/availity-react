@@ -3,6 +3,80 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [4.7.5](https://github.com/Availity/availity-react/compare/@availity/react-docs@4.7.4...@availity/react-docs@4.7.5) (2020-01-09)
+
+**Note:** Version bump only for package @availity/react-docs
+
+
+
+
+
+## [4.7.4](https://github.com/Availity/availity-react/compare/@availity/react-docs@4.7.3...@availity/react-docs@4.7.4) (2020-01-08)
+
+**Note:** Version bump only for package @availity/react-docs
+
+
+
+
+
+## [4.7.3](https://github.com/Availity/availity-react/compare/@availity/react-docs@4.7.2...@availity/react-docs@4.7.3) (2019-12-31)
+
+**Note:** Version bump only for package @availity/react-docs
+
+
+
+
+
+## [4.7.2](https://github.com/Availity/availity-react/compare/@availity/react-docs@4.7.1...@availity/react-docs@4.7.2) (2019-12-31)
+
+
+### Bug Fixes
+
+* **feedback:** removed validationSchema addons and added validationSchema Prop in form ([bd68d3f](https://github.com/Availity/availity-react/commit/bd68d3f5c1230c138e7b4da394ddc708da47ea5f))
+* **feedback:** removed validationSchema and refactored form docs ([106b0b6](https://github.com/Availity/availity-react/commit/106b0b6546c767986027c791c85a95b58b09e37d))
+
+
+
+
+
+## [4.7.1](https://github.com/Availity/availity-react/compare/@availity/react-docs@4.7.0...@availity/react-docs@4.7.1) (2019-12-23)
+
+**Note:** Version bump only for package @availity/react-docs
+
+
+
+
+
+# [4.7.0](https://github.com/Availity/availity-react/compare/@availity/react-docs@4.6.0...@availity/react-docs@4.7.0) (2019-12-20)
+
+
+### Features
+
+* **feedback:** add modalHeaderProps ([5b5dc3c](https://github.com/Availity/availity-react/commit/5b5dc3c5808a3db2477af4c713f66b6dea6bee19))
+
+
+
+
+
+# [4.6.0](https://github.com/Availity/availity-react/compare/@availity/react-docs@4.5.1...@availity/react-docs@4.6.0) (2019-12-20)
+
+
+### Features
+
+* **form-upload:** add form-upload package ([5ac7d46](https://github.com/Availity/availity-react/commit/5ac7d46cc45a00600bb08002ce075a0a70c5f06d))
+
+
+
+
+
+## [4.5.1](https://github.com/Availity/availity-react/compare/@availity/react-docs@4.5.0...@availity/react-docs@4.5.1) (2019-12-19)
+
+**Note:** Version bump only for package @availity/react-docs
+
+
+
+
+
 # [4.5.0](https://github.com/Availity/availity-react/compare/@availity/react-docs@4.4.1...@availity/react-docs@4.5.0) (2019-12-17)
 
 

@@ -3,6 +3,28 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [2.2.1](https://github.com/Availity/availity-react/compare/@availity/upload@2.2.0...@availity/upload@2.2.1) (2020-01-09)
+
+
+### Bug Fixes
+
+* **upload:** ensure unique upload ids ([a574863](https://github.com/Availity/availity-react/commit/a57486324d5f9f17ed8b8fa93ec0001c4316175b))
+
+
+
+
+
+# [2.2.0](https://github.com/Availity/availity-react/compare/@availity/upload@2.1.3...@availity/upload@2.2.0) (2019-12-20)
+
+
+### Features
+
+* **form-upload:** add form-upload package ([5ac7d46](https://github.com/Availity/availity-react/commit/5ac7d46cc45a00600bb08002ce075a0a70c5f06d))
+
+
+
+
+
 ## [2.1.3](https://github.com/Availity/availity-react/compare/@availity/upload@2.1.2...@availity/upload@2.1.3) (2019-10-11)
 
 

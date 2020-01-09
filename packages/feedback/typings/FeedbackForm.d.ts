@@ -1,3 +1,5 @@
+import { ModalHeaderProps } from 'reactstrap';
+
 type FaceOption = {
     icon?: string;
     description?: string;
@@ -8,15 +10,16 @@ type AboutOption = {
     label?: React.ReactNode;
 };
 
-export interface FeedBackFormProps {
+export interface FeedbackFormProps {
     name: string;
     onFeedbackSent?: (feedback?: {[key:string]:any}) => void;
     faceOptions?: FaceOption[];
     aboutOptions?: AboutOption[];
     prompt?: string;
     staticFields?: object;
+    modalHeaderProps?: ModalHeaderProps;
 }
 
-declare const FeedBackForm: React.FunctionComponent<FeedBackFormProps>;
+declare const FeedbackForm: React.FunctionComponent<FeedbackFormProps>;
 
-export default FeedBackForm;
+export default FeedbackForm;

@@ -127,6 +127,7 @@ See availity-reactstrap-validation for additional props, such as `name`, `valida
    * boolean - `true` will render the [default ranges](./src/AvDateRange.js#L19-L45)
    * array<string> - Will pick only the selected date ranges by name. See above default ranges for list of names. ex. ["Today"]
    * object - list or object of ranges. structure is noted below
+*  **`autoSync`**: boolean. Optional. Toggle whether the other date should be automatically synced to the selected date when focus changes. Dates are only auto synced the first time the input is touched and if the date field to auto sync is empty
 
 ```js
 {
@@ -195,6 +196,7 @@ See availity-reactstrap-validation for additional props, such as `name`, `label`
 *   **`defaultValues`**: Object. Optional. Object containing the `start` and `end`, the prefilled start and end dates. See example below. Note that these values are relative to today's date, not the min/max props.
 *  **`min`**: string. Optional. Minimum date to allow the datepicker and input to take. You can either pass the `min` here or in the `validate` object if you want a custom error message with it.
 *  **`max`**: string. Optional. Max date to allow the datepicker and input to take. You can either pass the `max` here or in the `validate` object if you want a custom error message with it.
+*  **`autoSync`**: boolean. Optional. Toggle whether the other date should be automatically synced to the selected date when focus changes. Dates are only auto synced the first time the input is touched and if the date field to auto sync is empty
 
 Make sure to import the SCSS as well!
 
