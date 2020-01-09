@@ -527,3 +527,101 @@ it('Sends custom parameters to API', async () => {
     'q=&limit=50&testq=&testPage=1&offset=0'
   );
 });
+
+// ---
+
+// -----
+const renderGQLResourceSelect = props => {
+  const Component = () => {
+    const [cacheUniq, setCacheUniq] = useState(false);
+
+    return (
+      <Form
+        initialValues={{
+          'test-form-input': undefined,
+        }}
+        onSubmit={onSubmit}
+      >
+        <ResourceSelect
+          name="test-form-input"
+          cacheUniq={cacheUniq}
+          graphqlConfig={{
+            type: 'region',
+            query: `
+   {
+  regionPagination{
+    count
+    pageInfo{
+      hasNextPage
+    }
+    items{
+      id
+      value
+    }
+  }
+}
+`,
+          }}
+          parameters={({ q, limit, offset }) => ({
+            testq: q,
+            testPage: offset / limit + 1,
+          })}
+          {...props}
+        />
+        <Button
+          type="button"
+          data-testid="btn-toggle-cacheUniq"
+          onClick={() => setCacheUniq(!cacheUniq)}
+        >
+          Toggle Cache Uniq Button
+        </Button>
+        <Button type="submit">Submit</Button>
+      </Form>
+    );
+  };
+  return render(<Component />);
+};
+
+it('Queries using graphQl', async () => {
+  avRegionsApi.post.mockResolvedValueOnce({
+    data: {
+      regionPagination: {
+        count: 57,
+        pageInfo: {
+          hasNextPage: true,
+        },
+        items: [
+          {
+            id: 'UmVnaW9uOkFM',
+            value: 'New York',
+          },
+        ],
+      },
+    },
+  });
+
+  const { container, getByText } = renderGQLResourceSelect({
+    resource: avRegionsApi,
+    labelKey: 'value',
+    valueKey: 'id',
+    classNamePrefix: 'test__regions',
+    // getResult: 'regions',
+    minCharsToSearch: 3,
+    getResult: data => {
+      console.log(data);
+      return data.regionPagination.items;
+    },
+  });
+
+  const regionsSelect = container.querySelector('.test__regions__control');
+  fireEvent.keyDown(regionsSelect, { key: 'ArrowDown', keyCode: 40 });
+  fireEvent.keyDown(regionsSelect, { key: 'Enter', keyCode: 13 });
+
+  const regionsOption = await waitForElement(() => getByText('New York'));
+  expect(regionsOption).toBeDefined();
+
+  expect(avRegionsApi.postGet).toHaveBeenCalledTimes(1);
+  expect(avRegionsApi.postGet.mock.calls[0][0]).toBe(
+    'q=&limit=50&testq=&testPage=1&offset=0'
+  );
+});
