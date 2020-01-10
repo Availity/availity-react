@@ -76,10 +76,20 @@ const ResourceSelect = ({
           perPage: itemsPerPage,
           filters: {
             q: encodeURIComponent(inputValue),
-            ...rest.parameters,
           },
         },
       };
+      if (typeof rest.parameters === 'function') {
+        data = {
+          ...data,
+          ...rest.parameters(data),
+        };
+      } else {
+        data = {
+          ...data,
+          ...rest.parameters,
+        };
+      }
 
       if (graphqlConfig.query) {
         data.query = graphqlConfig.query;
@@ -92,15 +102,41 @@ const ResourceSelect = ({
         ...rest.parameters,
       };
     }
+
+    if (typeof rest.parameters === 'function') {
+      params = {
+        ...params,
+        ...rest.parameters(params),
+      };
+    } else {
+      params = {
+        ...params,
+        ...rest.parameters,
+      };
+    }
+
     if (args.length === 3) {
       if (graphqlConfig) {
         data.variables.page = page;
+        if (typeof rest.parameters === 'function') {
+          data = {
+            ...data,
+            ...rest.parameters(data),
+          };
+        }
       } else {
         params.offset = (page - 1) * itemsPerPage;
+        if (typeof rest.parameters === 'function') {
+          params = {
+            ...params,
+            ...rest.parameters(params),
+          };
+        }
       }
     } else {
       page = 1;
     }
+
     let requiredSatisfied =
       !rest.requiredParams || rest.requiredParams.length === 0;
 
@@ -246,7 +282,7 @@ ResourceSelect.propTypes = {
   debounceTimeout: PropTypes.number,
   label: PropTypes.node,
   customerId: PropTypes.string,
-  parameters: PropTypes.object,
+  parameters: PropTypes.oneOfType([PropTypes.object, PropTypes.func]),
   itemsPerPage: PropTypes.number,
   onPageChange: PropTypes.func,
   isDisabled: PropTypes.bool,
