@@ -38,8 +38,16 @@ export default mock => {
           },
           items: [
             {
-              id: 'UmVnaW9uOkFM',
+              id: 1,
               value: 'New York',
+            },
+            {
+              id: 2,
+              value: 'Florida',
+            },
+            {
+              id: 3,
+              value: 'Georgia',
             },
           ],
         },
