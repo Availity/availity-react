@@ -43,10 +43,21 @@ class AvResourceSelect extends Component {
           perPage: this.props.itemsPerPage,
           filters: {
             q: encodeURIComponent(inputValue),
-            ...this.props.parameters,
           },
         },
       };
+
+      if (typeof this.props.parameters === 'function') {
+        data = {
+          ...data,
+          ...this.props.parameters(data),
+        };
+      } else {
+        data = {
+          ...data,
+          ...this.props.parameters,
+        };
+      }
 
       if (this.props.graphqlConfig.query) {
         data.query = this.props.graphqlConfig.query;
@@ -60,11 +71,35 @@ class AvResourceSelect extends Component {
       };
     }
 
+    if (typeof this.props.parameters === 'function') {
+      params = {
+        ...params,
+        ...this.props.parameters(params),
+      };
+    } else {
+      params = {
+        ...params,
+        ...this.props.parameters,
+      };
+    }
+
     if (args.length === 3) {
       if (this.props.graphqlConfig) {
         data.variables.page = page;
+        if (typeof this.props.parameters === 'function') {
+          data = {
+            ...data,
+            ...this.props.parameters(data),
+          };
+        }
       } else {
         params.offset = (page - 1) * this.props.itemsPerPage;
+        if (typeof this.props.parameters === 'function') {
+          params = {
+            ...params,
+            ...this.props.parameters(params),
+          };
+        }
       }
     } else {
       page = 1;

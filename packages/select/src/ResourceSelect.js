@@ -207,7 +207,7 @@ const ResourceSelect = ({
               totalCount > offset + limit;
           }
         }
-        console.log('Testing --->', items);
+
         hasMore = typeof hasMore === 'function' ? hasMore(resp.data) : hasMore;
 
         if (!Array.isArray(items)) {
