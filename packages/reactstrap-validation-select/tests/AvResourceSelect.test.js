@@ -348,9 +348,13 @@ const renderResourceSelect = props =>
     <AvForm>
       <AvResourceSelect
         name="region-form-input"
-        parameters={({ q, limit, offset }) => ({
+        parameters={({ q, limit, offset, ...rest }) => ({
+          ...rest,
+          q,
+          limit,
           testq: q,
           testPage: offset / limit + 1,
+          offset,
         })}
         {...props}
       />
