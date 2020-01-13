@@ -9,6 +9,7 @@ import SelectField from './SelectField';
 
 const ResourceSelect = ({
   name,
+  method,
   delay,
   debounceTimeout = delay,
   itemsPerPage,
@@ -79,16 +80,16 @@ const ResourceSelect = ({
           },
         },
       };
-      if (typeof rest.parameters === 'function') {
-        data = {
-          ...data,
-          ...rest.parameters(data),
-        };
-      } else {
-        data = {
-          ...data,
-          ...rest.parameters,
-        };
+
+      if (args.length !== 3) {
+        if (typeof rest.parameters === 'function') {
+          data = rest.parameters(data);
+        } else {
+          data = {
+            ...data,
+            ...rest.parameters,
+          };
+        }
       }
 
       if (graphqlConfig.query) {
@@ -99,38 +100,30 @@ const ResourceSelect = ({
         q: encodeURIComponent(inputValue),
         limit: itemsPerPage,
         customerId: rest.customerId,
-        ...rest.parameters,
       };
-    }
 
-    if (typeof rest.parameters === 'function') {
-      params = {
-        ...params,
-        ...rest.parameters(params),
-      };
-    } else {
-      params = {
-        ...params,
-        ...rest.parameters,
-      };
+      if (args.length !== 3) {
+        if (typeof rest.parameters === 'function') {
+          params = rest.parameters(params);
+        } else {
+          params = {
+            ...params,
+            ...rest.parameters,
+          };
+        }
+      }
     }
 
     if (args.length === 3) {
       if (graphqlConfig) {
         data.variables.page = page;
         if (typeof rest.parameters === 'function') {
-          data = {
-            ...data,
-            ...rest.parameters(data),
-          };
+          data = rest.parameters(data);
         }
       } else {
         params.offset = (page - 1) * itemsPerPage;
         if (typeof rest.parameters === 'function') {
-          params = {
-            ...params,
-            ...rest.parameters(params),
-          };
+          params = rest.parameters(params);
         }
       }
     } else {
@@ -157,9 +150,9 @@ const ResourceSelect = ({
     }
     if (onPageChange) onPageChange(inputValue, page);
     let fetch;
-    if (graphqlConfig) {
+    if (graphqlConfig || method === 'POST') {
       fetch = () =>
-        resource.post(data, {
+        resource.post(data || params, {
           headers: {
             'Content-Type': 'application/json',
           },
@@ -271,6 +264,7 @@ const ResourceSelect = ({
 ResourceSelect.propTypes = {
   name: PropTypes.string.isRequired,
   requestConfig: PropTypes.object,
+  method: PropTypes.string,
   resource: PropTypes.shape({
     postGet: PropTypes.func,
     post: PropTypes.func,

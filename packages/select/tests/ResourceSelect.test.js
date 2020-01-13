@@ -474,9 +474,13 @@ const renderResourceSelect = props => {
         <ResourceSelect
           name="test-form-input"
           cacheUniq={cacheUniq}
-          parameters={({ q, limit, offset }) => ({
+          parameters={({ q, limit, offset = 0, ...rest }) => ({
+            q,
+            limit,
             testq: q,
             testPage: offset / limit + 1,
+            offset,
+            ...rest,
           })}
           {...props}
         />
@@ -526,6 +530,46 @@ it('Sends custom parameters to API', async () => {
   expect(avRegionsApi.postGet.mock.calls[0][0]).toBe(
     'q=&limit=50&testq=&testPage=1&offset=0'
   );
+});
+
+it('Sends custom parameters to API with method=POST', async () => {
+  avRegionsApi.post.mockResolvedValueOnce({
+    data: {
+      regions: [
+        {
+          id: 'FL',
+          value: 'Florida',
+        },
+      ],
+    },
+  });
+
+  const { container, getByText } = renderResourceSelect({
+    resource: avRegionsApi,
+    labelKey: 'value',
+    valueKey: 'id',
+    classNamePrefix: 'test__regions',
+    getResult: 'regions',
+    minCharsToSearch: 3,
+    method: 'POST',
+  });
+
+  const regionsSelect = container.querySelector('.test__regions__control');
+  fireEvent.keyDown(regionsSelect, { key: 'ArrowDown', keyCode: 40 });
+  fireEvent.keyDown(regionsSelect, { key: 'Enter', keyCode: 13 });
+
+  const regionsOption = await waitForElement(() => getByText('Florida'));
+  expect(regionsOption).toBeDefined();
+
+  expect(avRegionsApi.post).toHaveBeenCalledTimes(1);
+  expect(avRegionsApi.post.mock.calls[0][0]).toStrictEqual({
+    customerId: undefined,
+    q: '',
+    limit: 50,
+    testq: '',
+    testPage: 1,
+    offset: 0,
+  });
 });
 
 // ---

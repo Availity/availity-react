@@ -47,9 +47,13 @@ The name of the field. Will be the key of the selected date that comes through i
 
 Configuration object used in the query method on the resource. Useful for defining headers to be sent with the request.
 
-### `parameters?: object`
+### `parameters?: object | (params: any): any`
 
-Object used to create querystring parameters in the request.
+Object used to create querystring parameters in the request. If function, will return new object with params for request.
+
+### `method?: string`
+
+Override method to use `post` request on REST calls with `graphqlConfig`.
 
 ### `customerId?: string`
 
