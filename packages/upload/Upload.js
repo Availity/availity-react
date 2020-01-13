@@ -4,6 +4,7 @@ import UploadCore from '@availity/upload-core';
 import { FormFeedback } from 'reactstrap';
 import Dropzone from 'react-dropzone';
 import map from 'lodash.map';
+import uuid from 'uuid/v4';
 import FilePickerBtn from './FilePickerBtn';
 import FileList from './FileList';
 import './styles.scss';
@@ -65,6 +66,7 @@ class Upload extends Component {
           maxSize: this.props.maxSize,
           allowedFileNameCharacters: this.props.allowedFileNameCharacters,
         });
+        upload.id = `${upload.id}-${uuid()}`;
         upload.start();
         if (this.props.onFileUpload) this.props.onFileUpload(upload);
         return upload;
