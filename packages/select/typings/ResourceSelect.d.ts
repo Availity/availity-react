@@ -12,7 +12,7 @@ interface GraphQLConfigType {
   query?: string;
 }
 
-export interface ResourceSelectProps extends SelectFieldProps {
+export interface ResourceSelectProps<T> extends SelectFieldProps<T> {
   requestConfig?: object;
   resource: ResourceType;
   getResult?: string | Function;
@@ -20,7 +20,8 @@ export interface ResourceSelectProps extends SelectFieldProps {
   delay?: number;
   debounceTimeout?: number;
   customerId?: string;
-  parameters?: object;
+  parameters?: object | ((params: any) => void);
+  method?: 'POST';
   itemsPerPage?: number;
   onPageChange?: Function;
   requiredParams?: any[];
@@ -33,9 +34,10 @@ export interface ResourceSelectProps extends SelectFieldProps {
   defaultToOnlyOption?: boolean;
 }
 
-declare class ResourceSelect extends React.Component<ResourceSelectProps> {
-    public static create(defaults: ResourceSelectProps): ResourceSelect;
+declare class ResourceSelect<T> extends React.Component<
+  ResourceSelectProps<T>
+> {
+  public static create<T>(defaults: ResourceSelectProps<T>): ResourceSelect<T>;
 }
-
 
 export default ResourceSelect;
