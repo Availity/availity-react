@@ -25,9 +25,9 @@ const Form = ({
     validationSchema={validationSchema}
     validate={validate}
   >
-    <RsForm data-testid="form-container" tag={FForm} {...rest}>
-      {children}
-    </RsForm>
+    {props => <RsForm data-testid="form-container" tag={FForm} {...rest}>
+      {typeof children === 'function' ? children(props) : children}
+    </RsForm>}
   </Formik>
 );
 
