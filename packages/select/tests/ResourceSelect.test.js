@@ -6,7 +6,7 @@ import {
   wait,
   cleanup,
 } from '@testing-library/react';
-import { avRegionsApi, avProvidersApi } from '@availity/api-axios';
+import { avRegionsApi, avProvidersApi, avCodesApi } from '@availity/api-axios';
 import { Button } from 'reactstrap';
 import { Form } from '@availity/form';
 import { ResourceSelect } from '..';
@@ -457,6 +457,70 @@ describe('ResourceSelect', () => {
       });
     });
   });
+
+  it('waits to query until requiredParams are set', async () => {
+    const renderDropdown = ({ parameters = {}, ...props }) => {
+      const Component = () => {
+        const [listParameter, setListParameter] = useState(undefined);
+
+        return (
+          <Form
+            initialValues={{
+              'test-form-input': undefined,
+            }}
+            onSubmit={onSubmit}
+          >
+            <ResourceSelect
+              name="test-form-input"
+              parameters={{ ...parameters, list: listParameter }}
+              {...props}
+            />
+            <Button
+              type="button"
+              data-testid="btn-set-list"
+              onClick={() => setListParameter('foo')}
+            >
+              Set List Parameter
+            </Button>
+            <Button type="submit">Submit</Button>
+          </Form>
+        );
+      };
+      return render(<Component />);
+    };
+
+    avCodesApi.postGet.mockResolvedValue({
+      data: {
+        codes: [
+          {
+            id: 'code1',
+            value: 'value1',
+          },
+        ],
+      },
+    });
+
+    const { getByTestId } = renderDropdown({
+      resource: avCodesApi,
+      labelKey: 'value',
+      valueKey: 'id',
+      classNamePrefix: 'test__codes',
+      getResult: 'codes',
+      requiredParams: ['list'],
+    });
+
+    await wait(() => {
+      expect(avCodesApi.postGet).not.toHaveBeenCalled();
+    });
+
+    // Set required parameter list
+    fireEvent.click(getByTestId('btn-set-list'));
+
+    // Check that query was fired off after required parameter set
+    await wait(() => {
+      expect(avCodesApi.postGet).toHaveBeenCalledTimes(1);
+    });
+  });
 });
 
 // -----
@@ -592,19 +656,19 @@ const renderGQLResourceSelect = props => {
           graphqlConfig={{
             type: 'region',
             query: `
-   {
+  {
   regionPagination{
-    count
-    pageInfo{
-      hasNextPage
-    }
-    items{
-      id
-      value
-    }
+  count
+  pageInfo{
+  hasNextPage
   }
-}
-`,
+  items{
+  id
+  value
+  }
+  }
+  }
+  `,
           }}
           {...props}
         />
