@@ -123,7 +123,7 @@ class AvResourceSelect extends Component {
     }
     if (this.props.onPageChange) this.props.onPageChange(inputValue, page);
     let fetch;
-    if (this.props.graphqlConfig) {
+    if (this.props.graphqlConfig || this.props.method === 'POST') {
       fetch = () =>
         this.props.resource.post(data, {
           headers: {
