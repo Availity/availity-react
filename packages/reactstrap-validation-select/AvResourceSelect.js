@@ -90,6 +90,11 @@ class AvResourceSelect extends Component {
         params.offset = (page - 1) * this.props.itemsPerPage;
         if (typeof this.props.parameters === 'function') {
           params = this.props.parameters(params);
+        } else {
+          params = {
+            ...params,
+            ...this.props.parameters,
+          };
         }
       }
     } else {
