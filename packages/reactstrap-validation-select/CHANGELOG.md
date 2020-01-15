@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [5.3.4](https://github.com/Availity/availity-react/compare/@availity/reactstrap-validation-select@5.3.3...@availity/reactstrap-validation-select@5.3.4) (2020-01-15)
+
+
+### Bug Fixes
+
+* **reactstrap-validation-select:** fix parameters as props not being used ([3b79d00](https://github.com/Availity/availity-react/commit/3b79d00806593a88a6f1232595eb05786798bdf9))
+
+
+
+
+
 ## [5.3.3](https://github.com/Availity/availity-react/compare/@availity/reactstrap-validation-select@5.3.2...@availity/reactstrap-validation-select@5.3.3) (2020-01-13)
 
 **Note:** Version bump only for package @availity/reactstrap-validation-select

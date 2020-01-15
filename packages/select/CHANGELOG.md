@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.8.6](https://github.com/Availity/availity-react/compare/@availity/select@0.8.5...@availity/select@0.8.6) (2020-01-15)
+
+
+### Bug Fixes
+
+* **select:** fix props as parameters not being used ([13c5ab5](https://github.com/Availity/availity-react/commit/13c5ab5a7df1bd038f96c0b2fa4643e890515cfa))
+
+
+
+
+
 ## [0.8.5](https://github.com/Availity/availity-react/compare/@availity/select@0.8.4...@availity/select@0.8.5) (2020-01-13)
 
 **Note:** Version bump only for package @availity/select
