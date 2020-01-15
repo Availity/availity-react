@@ -267,7 +267,7 @@ AvResourceSelect.propTypes = {
   debounceTimeout: PropTypes.number,
   label: PropTypes.node,
   customerId: PropTypes.string,
-  parameters: PropTypes.object,
+  parameters: PropTypes.oneOfType([PropTypes.object, PropTypes.func]),
   itemsPerPage: PropTypes.number,
   onPageChange: PropTypes.func,
   isDisabled: PropTypes.bool,
