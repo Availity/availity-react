@@ -124,6 +124,11 @@ const ResourceSelect = ({
         params.offset = (page - 1) * itemsPerPage;
         if (typeof rest.parameters === 'function') {
           params = rest.parameters(params);
+        } else {
+          params = {
+            ...params,
+            ...rest.parameters,
+          };
         }
       }
     } else {
@@ -142,6 +147,7 @@ const ResourceSelect = ({
         requiredSatisfied = rest.requiredParams.every(param => params[param]);
       }
     }
+
     if (rest.isDisabled || !requiredSatisfied) {
       return {
         options: [],
