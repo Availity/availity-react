@@ -3,6 +3,14 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [5.3.6](https://github.com/Availity/availity-react/compare/@availity/reactstrap-validation-select@5.3.5...@availity/reactstrap-validation-select@5.3.6) (2020-01-15)
+
+**Note:** Version bump only for package @availity/reactstrap-validation-select
+
+
+
+
+
 ## [5.3.5](https://github.com/Availity/availity-react/compare/@availity/reactstrap-validation-select@5.3.4...@availity/reactstrap-validation-select@5.3.5) (2020-01-15)
 
 **Note:** Version bump only for package @availity/reactstrap-validation-select
