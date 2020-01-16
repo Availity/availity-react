@@ -125,7 +125,7 @@ class AvResourceSelect extends Component {
     let fetch;
     if (this.props.graphqlConfig || this.props.method === 'POST') {
       fetch = () =>
-        this.props.resource.post(data, {
+        this.props.resource.post(data || params, {
           headers: {
             'Content-Type': 'application/json',
           },
