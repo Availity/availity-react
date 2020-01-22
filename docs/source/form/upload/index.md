@@ -17,6 +17,6 @@ import { Form } from '@availity/form';
 import Upload from '@availity/form-upload';
 
 <Form initialValues={{ myFile: undefined }}>
-  <Upload name="myFile" clientId="a" bucketId="b" customerId="c" />;
+  <Upload name="myFile" clientId="a" bucketId="b" customerId="c" />
 </Form>
 ```

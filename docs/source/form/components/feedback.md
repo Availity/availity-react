@@ -25,7 +25,7 @@ import { Form, Input, Feedback as FormFeedback } from '@availity/form';
   <Button type="submit" color="primary">
     Submit
   </Button>
-</Form>;
+</Form>
 ```
 
 ## Props

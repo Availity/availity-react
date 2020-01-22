@@ -22,5 +22,5 @@ import Feedback from '@availity/feedback';
   >
     Provide Feedback
   </Feedback>
-</div>;
+</div>
 ```

@@ -22,7 +22,7 @@ import Spaces, {
   <SpacesBillboard payerId="PayerID" />
   <SpacesTile payerId="PayerID" />
   <SpacesImage payerId="PayerID" />
-</Spaces>;
+</Spaces>
 ```
 
 ## Props

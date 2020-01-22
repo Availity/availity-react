@@ -12,6 +12,6 @@ import { useSpacesContext } from '@availity/spaces';
 
 const SpacesComponent = () => {
   const { spaces, loading, error } = useSpacesContext();
-}
+};
 ```
 

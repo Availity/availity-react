@@ -37,7 +37,7 @@ import '@availity/yup';
   <Button className="mt-3" color="primary" type="submit">
     Submit
   </Button>
-</Form>;
+</Form>
 ```
 
 ## Props

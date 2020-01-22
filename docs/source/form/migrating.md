@@ -19,7 +19,7 @@ import { AvInput, AvForm } from 'availity-reactstrap-validation';
       },
     }}
   />
-</AvForm>;
+</AvForm>
 // ...
 ```
 
@@ -31,7 +31,7 @@ import { AvInput, AvForm } from 'availity-reactstrap-validation';
 // ...
 <AvForm>
   <AvInput name="myInput" type="text" required />
-</AvForm>;
+</AvForm>
 // ...
 ```
 
@@ -48,7 +48,7 @@ import { Input, Form } from '@availity/form';
   })}
 >
   <Input name="myInput" type="text" />
-</Form>;
+</Form>
 // ...
 ```
 
@@ -90,7 +90,7 @@ import * as yup from 'yup';
       },
     }}
   />
-</AvForm>;
+</AvForm>
 // ...
 ```
 
