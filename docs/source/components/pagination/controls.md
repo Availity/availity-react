@@ -9,7 +9,7 @@ summary: The controls for the pagination
 import React from 'react';
 import { PaginationControls } from '@availity/pagination';
 
-<PaginationControls directionLinks />;
+<PaginationControls directionLinks />
 ```
 
 ## Props

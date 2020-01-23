@@ -9,7 +9,7 @@ summary: The raw progress bar to be used when making your own.
 import React from 'react';
 import { UploadProgressBar } from '@availity/form-upload';
 
-<UploadProgressBar upload={uploadInstance} animated />;
+<UploadProgressBar upload={uploadInstance} animated />
 ```
 
 ## Props

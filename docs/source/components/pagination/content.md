@@ -14,7 +14,7 @@ import { PaginationContent } from '@availity/pagination';
   loadingMessage="loading"
   component={Component}
   itemkey="id"
-/>;
+/>
 ```
 
 ## Props

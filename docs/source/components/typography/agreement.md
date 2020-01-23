@@ -16,5 +16,5 @@ import { Agreement } from '@availity/typography';
     cupiditatereprehenderit quibusdam nam eveniet voluptatem quis soluta
     quamdelectus consequatur qui incidunt voluptatem consequuntur
   </p>
-</Agreement>;
+</Agreement>
 ```

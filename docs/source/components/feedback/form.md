@@ -11,7 +11,7 @@ import { FeedbackForm } from '@availity/feedback';
 
 <div className="w-100">
   <FeedbackForm name="Payer Space" />
-</div>;
+</div>
 ```
 
 
