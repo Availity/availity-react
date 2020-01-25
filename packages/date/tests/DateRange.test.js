@@ -196,7 +196,9 @@ describe('DateRange', () => {
     // Simulate user selecting today as start date
     const current = container.querySelector('.CalendarDay__today');
     const previous = current.previousSibling;
-    const next = current.nextSibling;
+    const next =
+      current.nextSibling ||
+      current.parentElement.nextSibling.firstElementChild;
 
     const isCurrentDayLastDayOfMonth =
       moment().dayOfYear() ===
