@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.8.7](https://github.com/Availity/availity-react/compare/@availity/select@0.8.6...@availity/select@0.8.7) (2020-01-31)
+
+
+### Bug Fixes
+
+* **select:** fixes case where validation messages do not appear due to inputId being different than name. Closes [#434](https://github.com/Availity/availity-react/issues/434) ([ea332fc](https://github.com/Availity/availity-react/commit/ea332fcb19bb37acbb558d6edda4c402b90e253c))
+
+
+
+
+
 ## [0.8.6](https://github.com/Availity/availity-react/compare/@availity/select@0.8.5...@availity/select@0.8.6) (2020-01-15)
 
 

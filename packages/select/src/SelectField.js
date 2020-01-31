@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import PropTypes from 'prop-types';
 import classNames from 'classnames';
 import { FormGroup, Feedback } from '@availity/form';
@@ -6,24 +6,26 @@ import { Label } from 'reactstrap';
 import Select from './Select';
 
 const SelectField = ({
-  label,
-  labelHidden,
-  name,
   feedbackClass,
   groupClass,
+  label,
   labelClass,
+  labelHidden,
+  name,
   ...attributes
 }) => {
+  useEffect(() => {
+    if (attributes.id && attributes.id === name) {
+      console.warn(
+        "Warning: Using an 'id' equivalent to 'name' will result in an orphaned label and break 508 compliance."
+      );
+    }
+  }, [attributes.id, name]);
+
   let thisLabel = false;
   if (label) {
-    let forLabel = name;
-    if (attributes.inputId) {
-      forLabel = attributes.inputId;
-    } else {
-      attributes.inputId = name;
-    }
     thisLabel = (
-      <Label for={forLabel} hidden={labelHidden} className={labelClass}>
+      <Label for={name} hidden={labelHidden} className={labelClass}>
         {label}
       </Label>
     );
@@ -39,12 +41,11 @@ const SelectField = ({
 };
 
 SelectField.propTypes = {
-  label: PropTypes.node,
-  labelHidden: PropTypes.bool,
-  id: PropTypes.string,
   feedbackClass: PropTypes.string,
   groupClass: PropTypes.string,
+  label: PropTypes.node,
   labelClass: PropTypes.string,
+  labelHidden: PropTypes.bool,
   name: PropTypes.string.isRequired,
 };
 export default SelectField;
