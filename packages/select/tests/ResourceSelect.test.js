@@ -10,7 +10,7 @@ import { avRegionsApi, avProvidersApi, avCodesApi } from '@availity/api-axios';
 import { Button } from 'reactstrap';
 import { Form } from '@availity/form';
 import { ResourceSelect } from '..';
-import { AvProviderSelect } from '../resources';
+import { AvProviderSelect, AvRegionSelect } from '../resources';
 
 jest.mock('@availity/api-axios');
 
@@ -777,4 +777,61 @@ it('Queries using graphQl', async () => {
   expect(avRegionsApi.postGet.mock.calls[0][0]).toBe(
     'q=&limit=50&testq=&testPage=1&offset=0'
   );
+});
+
+describe('Custom Resources', () => {
+  describe('AvRegionSelect', () => {
+    it('defaults to the user current region when defaultToCurrentRegion true', async () => {
+      avRegionsApi.getCurrentRegion.mockResolvedValue({
+        data: {
+          regions: [
+            {
+              id: 'FL',
+              value: 'Florida',
+              currentlySelected: true,
+            },
+          ],
+        },
+      });
+      // eslint-disable-next-line react/prop-types
+      const RegionComponent = ({ regionProps }) => {
+        return (
+          <Form
+            initialValues={{
+              'test-form-input': undefined,
+            }}
+            onSubmit={onSubmit}
+          >
+            <AvRegionSelect {...regionProps} />
+            <Button type="submit">Submit</Button>
+          </Form>
+        );
+      };
+
+      const regionProps = {
+        name: 'test-form-input',
+        classNamePrefix: 'test__region',
+        getResult: 'regions',
+        defaultToCurrentRegion: true,
+      };
+
+      const { getByText } = render(
+        <RegionComponent regionProps={regionProps} />
+      );
+
+      await fireEvent.click(getByText('Submit'));
+      await wait(() => {
+        expect(onSubmit).toHaveBeenCalledWith(
+          expect.objectContaining({
+            'test-form-input': {
+              id: 'FL',
+              value: 'Florida',
+              currentlySelected: true,
+            },
+          }),
+          expect.anything()
+        );
+      });
+    });
+  });
 });

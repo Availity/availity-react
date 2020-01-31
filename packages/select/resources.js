@@ -1,13 +1,13 @@
 import {
   avProvidersApi,
   avOrganizationsApi,
-  avRegionsApi,
   avPermissionsApi,
   avNavigationApi,
   avUserApi,
   avCodesApi,
 } from '@availity/api-axios';
 import { ResourceSelect } from '.';
+import AvRegionSelect from './custom-resources/AvRegionSelect';
 
 const AvProviderSelect = ResourceSelect.create({
   resource: avProvidersApi,
@@ -18,11 +18,6 @@ const AvProviderSelect = ResourceSelect.create({
 const AvOrganizationSelect = ResourceSelect.create({
   resource: avOrganizationsApi,
   labelKey: 'name',
-});
-const AvRegionSelect = ResourceSelect.create({
-  resource: avRegionsApi,
-  labelKey: 'value',
-  valueKey: 'id',
 });
 const AvPermissionSelect = ResourceSelect.create({
   resource: avPermissionsApi,

@@ -129,7 +129,6 @@ The following components can be imported by name from `@availity/select/resource
 
 - AvProviderSelect
 - AvOrganizationSelect
-- AvRegionSelect
 - AvPermissionSelect
 - AvNavigationSelect
 - AvUserSelect
@@ -146,7 +145,6 @@ import { Form } from '@availity/form';
 import {
   AvProviderSelect,
   AvOrganizationSelect,
-  AvRegionSelect,
   AvPermissionSelect,
   AvNavigationSelect,
   AvUserSelect,
@@ -193,7 +191,6 @@ const schema = yup.object().shape({
     label="Select a Organization"
     required
   />
-  <AvRegionSelect name="region" label="Select a Region" required />
   <AvPermissionSelect
     name="permissions"
     label="Select a provider"
