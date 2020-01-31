@@ -3,6 +3,18 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [4.8.0](https://github.com/Availity/availity-react/compare/@availity/react-docs@4.7.14...@availity/react-docs@4.8.0) (2020-01-31)
+
+
+### Features
+
+* **select:** add defaultToCurrentRegion prop to AvRegionSelect ([d7ec17e](https://github.com/Availity/availity-react/commit/d7ec17e231e3b20f0a98edbb6e6ddfaf6a1ddabd))
+* **select:** add shouldSearch prop ([9f49099](https://github.com/Availity/availity-react/commit/9f490992f4d32a514a95d10367ebd072f963eb8d))
+
+
+
+
+
 ## [4.7.14](https://github.com/Availity/availity-react/compare/@availity/react-docs@4.7.13...@availity/react-docs@4.7.14) (2020-01-31)
 
 
