@@ -4466,15 +4466,15 @@ autoprefixer@^9.4.9, autoprefixer@^9.7.1:
     postcss "^7.0.21"
     postcss-value-parser "^4.0.2"
 
-availity-reactstrap-validation@2.6.0, availity-reactstrap-validation@^2.0.0, availity-reactstrap-validation@^2.5.3:
-  version "2.6.0"
-  resolved "https://registry.yarnpkg.com/availity-reactstrap-validation/-/availity-reactstrap-validation-2.6.0.tgz#101fd2e8c196166d249f9fa24bfc7538640def0a"
-  integrity sha512-HgxsjJLFgzXF2Fjj9Bofey+pA1DXoJ54qdSWhd8ltJxPtWV7uUahfwC4Rs2iyj6hOrmsDlKVxpTpFmqE0Ipt3A==
+availity-reactstrap-validation@2.6.1, availity-reactstrap-validation@^2.0.0, availity-reactstrap-validation@^2.5.3:
+  version "2.6.1"
+  resolved "https://registry.yarnpkg.com/availity-reactstrap-validation/-/availity-reactstrap-validation-2.6.1.tgz#7a682322da18db63aeca10b9494cf0338688cf4c"
+  integrity sha512-Se9X7q1wV0jyOjCnieayUXltPPELNsQ2AdiETdH5yf1yyfcqDUsJ52rLhQ56LUIyoc1C3OjFqoi2YbfgnBqSFA==
   dependencies:
     babel-runtime "^6.26.0"
     classnames "^2.2.6"
-    dayjs "^1.8.13"
     lodash "^4.17.10"
+    moment "^2.22.2"
     prop-types "^15.6.2"
 
 availity-uikit@^3.0.0, availity-uikit@^3.2.0:
@@ -7289,11 +7289,6 @@ dateformat@^3.0.0:
   version "3.0.3"
   resolved "https://registry.yarnpkg.com/dateformat/-/dateformat-3.0.3.tgz#a6e37499a4d9a9cf85ef5872044d62901c9889ae"
   integrity sha512-jyCETtSl3VMZMWeRo7iY1FL19ges1t55hMo5yaam4Jrsm5EPL89UQkoQRyiI+Yf4k8r2ZpdngkV8hr1lIdjb3Q==
-
-dayjs@^1.8.13:
-  version "1.8.17"
-  resolved "https://registry.yarnpkg.com/dayjs/-/dayjs-1.8.17.tgz#53ec413f2a7b02afbea1846d61bb260fa8567cea"
-  integrity sha512-47VY/htqYqr9GHd7HW/h56PpQzRBSJcxIQFwqL3P20bMF/3az5c3PWdVY3LmPXFl6cQCYHL7c79b9ov+2bOBbw==
 
 debug@2, debug@2.6.9, debug@^2.2.0, debug@^2.3.3, debug@^2.6.0, debug@^2.6.3, debug@^2.6.6, debug@^2.6.8, debug@^2.6.9:
   version "2.6.9"
@@ -14347,7 +14342,7 @@ modify-values@^1.0.0:
   resolved "https://registry.yarnpkg.com/modify-values/-/modify-values-1.0.1.tgz#b3939fa605546474e3e3e3c63d64bd43b4ee6022"
   integrity sha512-xV2bxeN6F7oYjZWTe/YPAy6MN2M+sL4u/Rlm2AHCIVGfo2p1yGmBHQ6vHehl4bRTZBdHu3TSkWdYgkwpYzAGSw==
 
-moment@>=1.6.0, moment@>=2.17.1, moment@^2.10.6, moment@^2.24.0:
+moment@>=1.6.0, moment@>=2.17.1, moment@^2.10.6, moment@^2.22.2, moment@^2.24.0:
   version "2.24.0"
   resolved "https://registry.yarnpkg.com/moment/-/moment-2.24.0.tgz#0d055d53f5052aa653c9f6eb68bb5d12bf5c2b5b"
   integrity sha512-bV7f+6l2QigeBBZSM/6yTNq4P2fNpSWj/0e7jQcy87A8e7o2nAfP/34/2ky5Vw4B9S446EtIhodAzkFCcR4dQg==
