@@ -10,7 +10,7 @@ import { avRegionsApi, avProvidersApi, avCodesApi } from '@availity/api-axios';
 import { Button } from 'reactstrap';
 import { Form } from '@availity/form';
 import { ResourceSelect } from '..';
-import { AvProviderSelect } from '../resources';
+import { AvProviderSelect, AvRegionSelect } from '../resources';
 
 jest.mock('@availity/api-axios');
 
@@ -521,6 +521,59 @@ describe('ResourceSelect', () => {
       expect(avCodesApi.postGet).toHaveBeenCalledTimes(1);
     });
   });
+
+  it('waits to search until shouldSearch returns true', async () => {
+    avRegionsApi.postGet.mockResolvedValue({
+      data: {
+        regions: [
+          {
+            id: 'FL',
+            value: 'Florida',
+          },
+        ],
+      },
+    });
+
+    const { container, getByText } = renderSelect({
+      resource: avRegionsApi,
+      labelKey: 'value',
+      valueKey: 'id',
+      classNamePrefix: 'test__regions',
+      getResult: 'regions',
+      shouldSearch: inputValue => inputValue === 'flo',
+    });
+
+    expect(avRegionsApi.postGet).toHaveBeenCalledTimes(0);
+
+    let selectInput;
+
+    // Should skip network request
+    selectInput = container.querySelector('#test-form-input');
+    fireEvent.change(selectInput, {
+      target: { value: 'f' },
+    });
+    expect(avRegionsApi.postGet).toHaveBeenCalledTimes(0);
+
+    // Should skip network request
+    selectInput = container.querySelector('#test-form-input');
+    fireEvent.change(selectInput, {
+      target: { value: 'fl' },
+    });
+    expect(avRegionsApi.postGet).toHaveBeenCalledTimes(0);
+
+    // Should make network request because inputValue is equal to "flo"
+    selectInput = container.querySelector('#test-form-input');
+    fireEvent.change(selectInput, {
+      target: { value: 'flo' },
+    });
+    const regionsOption = await waitForElement(() => getByText('Florida'));
+    expect(regionsOption).toBeDefined();
+
+    expect(avRegionsApi.postGet).toHaveBeenCalledTimes(1);
+    expect(avRegionsApi.postGet.mock.calls[0][0]).toBe(
+      'q=flo&limit=50&offset=0'
+    );
+  });
 });
 
 // -----
@@ -724,4 +777,61 @@ it('Queries using graphQl', async () => {
   expect(avRegionsApi.postGet.mock.calls[0][0]).toBe(
     'q=&limit=50&testq=&testPage=1&offset=0'
   );
+});
+
+describe('Custom Resources', () => {
+  describe('AvRegionSelect', () => {
+    it('defaults to the user current region when defaultToCurrentRegion true', async () => {
+      avRegionsApi.getCurrentRegion.mockResolvedValue({
+        data: {
+          regions: [
+            {
+              id: 'FL',
+              value: 'Florida',
+              currentlySelected: true,
+            },
+          ],
+        },
+      });
+      // eslint-disable-next-line react/prop-types
+      const RegionComponent = ({ regionProps }) => {
+        return (
+          <Form
+            initialValues={{
+              'test-form-input': undefined,
+            }}
+            onSubmit={onSubmit}
+          >
+            <AvRegionSelect {...regionProps} />
+            <Button type="submit">Submit</Button>
+          </Form>
+        );
+      };
+
+      const regionProps = {
+        name: 'test-form-input',
+        classNamePrefix: 'test__region',
+        getResult: 'regions',
+        defaultToCurrentRegion: true,
+      };
+
+      const { getByText } = render(
+        <RegionComponent regionProps={regionProps} />
+      );
+
+      await fireEvent.click(getByText('Submit'));
+      await wait(() => {
+        expect(onSubmit).toHaveBeenCalledWith(
+          expect.objectContaining({
+            'test-form-input': {
+              id: 'FL',
+              value: 'Florida',
+              currentlySelected: true,
+            },
+          }),
+          expect.anything()
+        );
+      });
+    });
+  });
 });

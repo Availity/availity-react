@@ -24,6 +24,7 @@ const ResourceSelect = ({
   onFocus,
   waitUntilFocused,
   defaultToOnlyOption,
+  shouldSearch,
   ...rest
 }) => {
   const { setFieldValue } = useFormikContext();
@@ -148,7 +149,12 @@ const ResourceSelect = ({
       }
     }
 
-    if (rest.isDisabled || !requiredSatisfied) {
+    let _shouldSearch = shouldSearch;
+    if (typeof shouldSearch === 'function') {
+      _shouldSearch = shouldSearch(...args);
+    }
+
+    if (rest.isDisabled || !requiredSatisfied || !_shouldSearch) {
       return {
         options: [],
         hasMore: false,
@@ -299,6 +305,7 @@ ResourceSelect.propTypes = {
   onFocus: PropTypes.func,
   waitUntilFocused: PropTypes.bool,
   defaultToOnlyOption: PropTypes.bool,
+  shouldSearch: PropTypes.oneOfType([PropTypes.bool, PropTypes.func]),
 };
 
 ResourceSelect.defaultProps = {
@@ -306,6 +313,7 @@ ResourceSelect.defaultProps = {
   itemsPerPage: 50,
   waitUntilFocused: false,
   defaultToOnlyOption: false,
+  shouldSearch: true,
 };
 
 const ucFirst = str => str && str.charAt(0).toUpperCase() + str.slice(1);

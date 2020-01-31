@@ -12,6 +12,10 @@ interface GraphQLConfigType {
   query?: string;
 }
 
+export type OptionType = Record<string, any>;
+
+export type Additional = any;
+
 export interface ResourceSelectProps<T> extends SelectFieldProps<T> {
   requestConfig?: object;
   resource: ResourceType;
@@ -32,6 +36,7 @@ export interface ResourceSelectProps<T> extends SelectFieldProps<T> {
   minCharsToSearch?: number;
   waitUntilFocused?: boolean;
   defaultToOnlyOption?: boolean;
+  shouldSearch?: boolean | ((inputValue: string, prevOptions: OptionType[], additional: Additional) => boolean);
 }
 
 declare class ResourceSelect<T> extends React.Component<
