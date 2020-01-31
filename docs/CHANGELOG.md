@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [4.7.14](https://github.com/Availity/availity-react/compare/@availity/react-docs@4.7.13...@availity/react-docs@4.7.14) (2020-01-31)
+
+
+### Bug Fixes
+
+* **select:** fixes case where validation messages do not appear due to inputId being different than name. Closes [#434](https://github.com/Availity/availity-react/issues/434) ([ea332fc](https://github.com/Availity/availity-react/commit/ea332fcb19bb37acbb558d6edda4c402b90e253c))
+
+
+
+
+
 ## [4.7.13](https://github.com/Availity/availity-react/compare/@availity/react-docs@4.7.12...@availity/react-docs@4.7.13) (2020-01-25)
 
 **Note:** Version bump only for package @availity/react-docs
