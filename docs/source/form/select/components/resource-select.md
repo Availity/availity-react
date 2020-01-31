@@ -119,6 +119,10 @@ When true, the network request is not made until the dropdown has been focused.
 
 When true, if the `resource` only returns one result the first time it is called, the value is defaulted to the single result. Note: if `waitUntilFocused` is `true`, this prop is ignored.
 
+### `shouldSearch?: boolean | (inputValue: string, prevOptions: OptionType, additional: any) => boolean`
+
+When false or a function that returns false, the network request won't be made. Defaults to `true`. 
+
 ## Pre-made Resource Selects
 
 The following components can be imported by name from `@availity/select/resources`

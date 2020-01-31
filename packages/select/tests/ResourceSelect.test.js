@@ -521,6 +521,59 @@ describe('ResourceSelect', () => {
       expect(avCodesApi.postGet).toHaveBeenCalledTimes(1);
     });
   });
+
+  it('waits to search until shouldSearch returns true', async () => {
+    avRegionsApi.postGet.mockResolvedValue({
+      data: {
+        regions: [
+          {
+            id: 'FL',
+            value: 'Florida',
+          },
+        ],
+      },
+    });
+
+    const { container, getByText } = renderSelect({
+      resource: avRegionsApi,
+      labelKey: 'value',
+      valueKey: 'id',
+      classNamePrefix: 'test__regions',
+      getResult: 'regions',
+      shouldSearch: inputValue => inputValue === 'flo',
+    });
+
+    expect(avRegionsApi.postGet).toHaveBeenCalledTimes(0);
+
+    let selectInput;
+
+    // Should skip network request
+    selectInput = container.querySelector('#test-form-input');
+    fireEvent.change(selectInput, {
+      target: { value: 'f' },
+    });
+    expect(avRegionsApi.postGet).toHaveBeenCalledTimes(0);
+
+    // Should skip network request
+    selectInput = container.querySelector('#test-form-input');
+    fireEvent.change(selectInput, {
+      target: { value: 'fl' },
+    });
+    expect(avRegionsApi.postGet).toHaveBeenCalledTimes(0);
+
+    // Should make network request because inputValue is equal to "flo"
+    selectInput = container.querySelector('#test-form-input');
+    fireEvent.change(selectInput, {
+      target: { value: 'flo' },
+    });
+    const regionsOption = await waitForElement(() => getByText('Florida'));
+    expect(regionsOption).toBeDefined();
+
+    expect(avRegionsApi.postGet).toHaveBeenCalledTimes(1);
+    expect(avRegionsApi.postGet.mock.calls[0][0]).toBe(
+      'q=flo&limit=50&offset=0'
+    );
+  });
 });
 
 // -----
