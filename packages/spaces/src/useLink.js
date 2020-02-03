@@ -1,5 +1,6 @@
 import nativeForm from '@availity/native-form';
-
+import { getUrl, getTarget } from '@availity/link/Link';
+import { isAbsoluteUrl } from '@availity/resolve-url';
 import { useSpaces, useSpacesContext } from './Spaces';
 import { updateUrl, updateTopApps } from './helpers';
 import { useModal } from './modals/ModalProvider';
@@ -81,15 +82,18 @@ export default (
 
   const openLink = () => {
     updateTopApps(id, type);
+    const target = getTarget(link.target);
     window.open(
-      link.url[0] === '/'
-        ? updateUrl(
-            link.url,
-            'spaceId',
-            parents && parents[0] ? parents[0].id : linkAttributes.spaceId
+      !isAbsoluteUrl(link.url)
+        ? getUrl(
+            updateUrl(
+              link.url,
+              'spaceId',
+              parents && parents[0] ? parents[0].id : linkAttributes.spaceId
+            )
           )
         : link.url,
-      link.target
+      target
     );
   };
 

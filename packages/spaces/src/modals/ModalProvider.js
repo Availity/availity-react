@@ -1,5 +1,7 @@
 import React, { createContext, useContext, useReducer } from 'react';
 import PropTypes from 'prop-types';
+import { getUrl, getTarget } from '@availity/link/Link';
+import { isAbsoluteUrl } from '@availity/resolve-url';
 import { Modal, ModalHeader, ModalFooter, Button } from 'reactstrap';
 import DisclaimerModal from './DisclaimerModal';
 import MultiPayerModal from './MultiPayerModal';
@@ -42,11 +44,18 @@ export const MODAL_TYPES = {
         return;
       }
 
+      const target = getTarget(link.target);
+
       window.open(
-        link.url[0] === '/'
-          ? updateUrl(link.url, 'spaceId', modalState.selectedOption.id)
+        !isAbsoluteUrl(link.url)
+          ? getUrl(
+              updateUrl(link.url, 'spaceId', modalState.selectedOption.id),
+              false,
+              false,
+              target
+            )
           : link.url,
-        link.target
+        target
       );
     },
   },
