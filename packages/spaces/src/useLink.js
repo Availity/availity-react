@@ -90,7 +90,10 @@ export default (
               link.url,
               'spaceId',
               parents && parents[0] ? parents[0].id : linkAttributes.spaceId
-            )
+            ),
+            false,
+            false,
+            target
           )
         : link.url,
       target

@@ -78,6 +78,13 @@
     striptags "^3.1.1"
     yup "^0.27.0"
 
+"@availity/link@^2.1.0":
+  version "2.1.0"
+  resolved "https://registry.yarnpkg.com/@availity/link/-/link-2.1.0.tgz#156ccf8f40b57bed55504877547c6bdc73f8d732"
+  integrity sha512-wUJIeaxP7lSKS4qPzqt5eSn8Ho0hKwyl3Q4/Xc7AeEYqoamYrqkJpvfm+g+5bd/ELXttVSxmgW4YQE43gHCpbw==
+  dependencies:
+    "@availity/resolve-url" "^1.1.0"
+
 "@availity/localstorage-core@^2.6.1":
   version "2.6.1"
   resolved "https://registry.yarnpkg.com/@availity/localstorage-core/-/localstorage-core-2.6.1.tgz#caf7db0feca9a93735e3a8e005ed180ce8a23906"
@@ -115,6 +122,11 @@
   version "1.1.0"
   resolved "https://registry.yarnpkg.com/@availity/resolve-url/-/resolve-url-1.1.0.tgz#4021f42a678371433b3f23f90a64b9fcb65aafc5"
   integrity sha512-CrA3qQbMPwhwiBFnCtF9MAzkRbrjUZnnLmRp0daLhyxNZXrOaKzE1t24qv7uONOaOIxTYy8xqI8YnJNeekMlRg==
+
+"@availity/resolve-url@^1.1.4":
+  version "1.1.4"
+  resolved "https://registry.yarnpkg.com/@availity/resolve-url/-/resolve-url-1.1.4.tgz#afe3c80201bbe0b06f0753c4c0458f89e2fa4441"
+  integrity sha512-8fW2y2AeDQlb3pJfkPnTKQCBIKJxmMjRJEwLIDilWd03aS0TgkoLIFhYQ2DXHwZee9Wmyp01ohLfxqxNDCGGHQ==
 
 "@availity/spaces@^3.1.0":
   version "3.2.3"
@@ -13086,7 +13098,6 @@ lodash.camelcase@^4.3.0:
   version "4.3.0"
   resolved "https://registry.yarnpkg.com/lodash.camelcase/-/lodash.camelcase-4.3.0.tgz#b28aa6288a2b9fc651035c7711f65ab6190331a6"
   integrity sha1-soqmKIorn8ZRA1x3EfZathkDMaY=
-
 
 lodash.clonedeep@^4.5.0:
   version "4.5.0"
