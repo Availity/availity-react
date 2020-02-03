@@ -44,32 +44,38 @@ export const getTarget = target => {
   }
 };
 
-const AvLink = ({
-  tag: Tag,
-  href,
-  target: propsTarget,
-  children,
-  onClick,
-  loadApp,
-  ...props
-}) => {
-  const absolute = isAbsoluteUrl(href);
-  const target = getTarget(propsTarget);
-  const url = getUrl(href, loadApp, absolute, target);
+const AvLink = React.forwardRef(
+  (
+    {
+      tag: Tag,
+      href,
+      target: propsTarget,
+      children,
+      onClick,
+      loadApp,
+      ...props
+    },
+    ref
+  ) => {
+    const absolute = isAbsoluteUrl(href);
+    const target = getTarget(propsTarget);
+    const url = getUrl(href, loadApp, absolute, target);
 
-  return (
-    <Tag
-      href={url}
-      target={target}
-      onClick={event => onClick && onClick(event, url)}
-      data-testid="av-link-tag"
-      rel={setRel(url, target, absolute)}
-      {...props}
-    >
-      {children}
-    </Tag>
-  );
-};
+    return (
+      <Tag
+        href={url}
+        target={target}
+        onClick={event => onClick && onClick(event, url)}
+        data-testid="av-link-tag"
+        rel={setRel(url, target, absolute)}
+        ref={ref}
+        {...props}
+      >
+        {children}
+      </Tag>
+    );
+  }
+);
 
 AvLink.defaultProps = {
   tag: 'a',
