@@ -3,36 +3,77 @@ import PropTypes from 'prop-types';
 import { isAbsoluteUrl } from '@availity/resolve-url';
 
 // if absolute or loadApp is disabled, return url. otherwise loadappify the url
-export const getUrl = (url = '', loadApp) => {
-  const absolute = isAbsoluteUrl(url);
-  if (absolute || !loadApp) return url;
+export const getUrl = (url = '', loadApp, absolute, target) => {
+  if (absolute) return url;
 
-  return `/public/apps/home/#!/loadApp?appUrl=${encodeURIComponent(url)}`;
+  return target === '_blank' || loadApp
+    ? `/public/apps/home/#!/loadApp?appUrl=${encodeURIComponent(url)}`
+    : url;
+};
+
+// takes href and transforms it so that we can compare hostnames and other properties
+export const getLocation = href => {
+  const location = document.createElement('a');
+  location.href = href;
+  return location;
+};
+
+export const setRel = (url, target, absolute) => {
+  if (target === '_blank' && absolute) {
+    const dest = getLocation(url);
+    if (dest.hostname !== window.location.hostname) {
+      // default rel when linking to external destinations for performance and security
+      return 'noopener noreferrer';
+    }
+  }
+  return undefined;
+};
+
+export const getTarget = target => {
+  if (
+    !target ||
+    target === 'BODY' || // Thanos
+    target === 'newBody' || // hardcoded in spaces ( Bad practice )
+    target === '_self' // Actual way of doing it
+  ) {
+    return '_self';
+  }
+
+  if (target === 'TAB' || target === '_blank' || target === '_top') {
+    return '_blank';
+  }
 };
 
 const AvLink = ({
   tag: Tag,
-  href: url,
-  target,
+  href,
+  target: propsTarget,
   children,
   onClick,
   loadApp,
   ...props
-}) => (
-  <Tag
-    href={getUrl(url, loadApp)}
-    target={target}
-    onClick={event => onClick && onClick(event, getUrl(url, loadApp))}
-    data-testid="av-link-tag"
-    {...props}
-  >
-    {children}
-  </Tag>
-);
+}) => {
+  const absolute = isAbsoluteUrl(href);
+  const target = getTarget(propsTarget);
+  const url = getUrl(href, loadApp, absolute, target);
+
+  return (
+    <Tag
+      href={url}
+      target={target}
+      onClick={event => onClick && onClick(event, url)}
+      data-testid="av-link-tag"
+      rel={setRel(url, target, absolute)}
+      {...props}
+    >
+      {children}
+    </Tag>
+  );
+};
 
 AvLink.defaultProps = {
   tag: 'a',
-  loadApp: true,
+  loadApp: false,
 };
 
 AvLink.propTypes = {
@@ -42,6 +83,7 @@ AvLink.propTypes = {
   href: PropTypes.string.isRequired,
   onClick: PropTypes.func,
   loadApp: PropTypes.bool,
+  rel: PropTypes.string,
 };
 
 export default AvLink;
