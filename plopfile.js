@@ -3,20 +3,20 @@ const { execSync } = require('child_process');
 module.exports = plop => {
   plop.setHelper('userFullName', () => {
     const name = execSync(
-      'git config --global --includes user.name'
+      'git config --global --includes user.name'
     ).toString();
     return name.replace(/\n$/, '').trim();
   });
 
   plop.setHelper('userEmail', () => {
     const email = execSync(
-      'git config --global --includes user.email'
+      'git config --global --includes user.email'
     ).toString();
     return email.replace(/\n$/, '').trim();
   });
 
   plop.setActionType('bootstrap', () => {
-    execSync('npm run bootstrap');
+    execSync('npm run bootstrap');
   });
 
   plop.setGenerator('package', {
@@ -79,7 +79,7 @@ module.exports = plop => {
       },
       {
         type: 'add',
-        path: 'packages/storybook/stories/{{kebabCase packageName}}.stories.js',
+        path: 'storybook/stories/{{kebabCase packageName}}.stories.js',
         templateFile: 'plop-templates/package/stories.js.hbs',
       },
       {
@@ -89,7 +89,7 @@ module.exports = plop => {
       },
       {
         type: 'append',
-        path: 'packages/storybook/package.json',
+        path: 'storybook/package.json',
         pattern: '"devDependencies": {',
         template: '    "@availity/{{kebabCase packageName}}": "^1.0.0",',
       },
