@@ -18,12 +18,14 @@ const Phone = ({
   const { setTouched, setValue } = phoneHelpers;
 
   let ext = null;
-  let extColProps = null;
   if (showExtension) {
-    const { name, label, colProps, ...restExtProps } = extProps;
+    const { name, label, extColProps, ...restExtProps } = extProps;
 
-    ext = <Field name={name} label={label} {...restExtProps} />;
-    extColProps = colProps;
+    ext = (
+      <Col {...extColProps}>
+        <Field name={name} label={label} {...restExtProps} />
+      </Col>
+    );
   }
 
   const asYouFormat = phoneString => {
@@ -58,7 +60,7 @@ const Phone = ({
           {...restPhoneProps}
         />
       </Col>
-      <Col {...extColProps}>{ext}</Col>
+      {ext}
     </Row>
   );
 };
@@ -72,7 +74,7 @@ Phone.propTypes = {
   extProps: PropTypes.shape({
     name: PropTypes.string.isRequired,
     label: PropTypes.string,
-    colProps: PropTypes.object,
+    extColProps: PropTypes.object,
   }),
 };
 
