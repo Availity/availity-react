@@ -127,9 +127,9 @@ const Link = ({
 
     if (parents && parents.length === 1) {
       return (
-        <img
+        <AppIcon
           className="align-baseline mx-2"
-          style={{ maxWidth: 45 }}
+          size={size === undefined && stacked ? 'lg' : size}
           src={parents[0].images.tile}
           alt="tile"
         />
