@@ -11,7 +11,7 @@ import Spaces, { SpacesDisclaimer } from '@availity/spaces';
 
 <Spaces spaceIds={['73162546201441126239486200007187']} clientId="my-client-id">
   <SpacesDisclaimer markdown styled />
-</Spaces>;
+</Spaces>
 ```
 
 ## Props

@@ -3,6 +3,72 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.9.0](https://github.com/Availity/availity-react/compare/@availity/select@0.8.7...@availity/select@0.9.0) (2020-01-31)
+
+
+### Features
+
+* **select:** add defaultToCurrentRegion prop to AvRegionSelect ([d7ec17e](https://github.com/Availity/availity-react/commit/d7ec17e231e3b20f0a98edbb6e6ddfaf6a1ddabd))
+* **select:** add shouldSearch prop ([9f49099](https://github.com/Availity/availity-react/commit/9f490992f4d32a514a95d10367ebd072f963eb8d))
+
+
+
+
+
+## [0.8.7](https://github.com/Availity/availity-react/compare/@availity/select@0.8.6...@availity/select@0.8.7) (2020-01-31)
+
+
+### Bug Fixes
+
+* **select:** fixes case where validation messages do not appear due to inputId being different than name. Closes [#434](https://github.com/Availity/availity-react/issues/434) ([ea332fc](https://github.com/Availity/availity-react/commit/ea332fcb19bb37acbb558d6edda4c402b90e253c))
+
+
+
+
+
+## [0.8.6](https://github.com/Availity/availity-react/compare/@availity/select@0.8.5...@availity/select@0.8.6) (2020-01-15)
+
+
+### Bug Fixes
+
+* **select:** fix props as parameters not being used ([13c5ab5](https://github.com/Availity/availity-react/commit/13c5ab5a7df1bd038f96c0b2fa4643e890515cfa))
+
+
+
+
+
+## [0.8.5](https://github.com/Availity/availity-react/compare/@availity/select@0.8.4...@availity/select@0.8.5) (2020-01-13)
+
+**Note:** Version bump only for package @availity/select
+
+
+
+
+
+## [0.8.4](https://github.com/Availity/availity-react/compare/@availity/select@0.8.3...@availity/select@0.8.4) (2020-01-10)
+
+**Note:** Version bump only for package @availity/select
+
+
+
+
+
+## [0.8.3](https://github.com/Availity/availity-react/compare/@availity/select@0.8.2...@availity/select@0.8.3) (2020-01-08)
+
+**Note:** Version bump only for package @availity/select
+
+
+
+
+
+## [0.8.2](https://github.com/Availity/availity-react/compare/@availity/select@0.8.1...@availity/select@0.8.2) (2019-12-31)
+
+**Note:** Version bump only for package @availity/select
+
+
+
+
+
 ## [0.8.1](https://github.com/Availity/availity-react/compare/@availity/select@0.8.0...@availity/select@0.8.1) (2019-12-20)
 
 **Note:** Version bump only for package @availity/select

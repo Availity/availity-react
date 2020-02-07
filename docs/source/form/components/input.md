@@ -23,7 +23,7 @@ import { Button } from 'reacstrap';
   <Button type="submit" className="ml-1" color="primary">
     Submit
   </Button>
-</Form>;
+</Form>
 ```
 
 ## Props

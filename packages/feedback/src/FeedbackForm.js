@@ -37,6 +37,7 @@ const FeedbackForm = ({
   additionalComments,
   staticFields,
   modalHeaderProps,
+  ...formProps
 }) => {
   const [active, setActive] = useState(null);
   const [sent, setSent] = useState(null);
@@ -104,7 +105,6 @@ const FeedbackForm = ({
         aria-describedby="feedback-form-header"
         role="form"
         data-testid="feedback-form"
-        onSubmit={values => sendFeedback(values)}
         initialValues={{
           'face-options': undefined,
           additionalFeedback: undefined,
@@ -132,6 +132,8 @@ const FeedbackForm = ({
             .string()
             .isRequired(aboutOptions.length > 0, 'This field is required.'),
         })}
+        {...formProps}
+        onSubmit={values => sendFeedback(values)}
       >
         <ModalBody>
           <FormGroup

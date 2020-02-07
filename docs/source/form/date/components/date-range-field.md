@@ -52,7 +52,7 @@ import moment from 'moment';
       Submit
     </Button>
   </Form>
-</div>;
+</div>
 ```
 
 ## Props

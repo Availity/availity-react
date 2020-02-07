@@ -1,6 +1,6 @@
 {
   "name": "@availity/pagination",
-  "version": "2.6.1",
+  "version": "2.6.2",
   "description": "",
   "main": "index.js",
   "types": "index.d.ts",
@@ -22,7 +22,6 @@
     "url": "https://github.com/Availity/availity-react/issues"
   },
   "dependencies": {
-    "@availity/hooks": "^1.6.4",
     "@availity/localstorage-core": "^2.6.1",
     "lodash.isequal": "^4.5.0",
     "lodash.isfunction": "^3.0.9",

@@ -3,6 +3,57 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [5.3.7](https://github.com/Availity/availity-react/compare/@availity/reactstrap-validation-select@5.3.6...@availity/reactstrap-validation-select@5.3.7) (2020-01-16)
+
+**Note:** Version bump only for package @availity/reactstrap-validation-select
+
+
+
+
+
+## [5.3.6](https://github.com/Availity/availity-react/compare/@availity/reactstrap-validation-select@5.3.5...@availity/reactstrap-validation-select@5.3.6) (2020-01-15)
+
+**Note:** Version bump only for package @availity/reactstrap-validation-select
+
+
+
+
+
+## [5.3.5](https://github.com/Availity/availity-react/compare/@availity/reactstrap-validation-select@5.3.4...@availity/reactstrap-validation-select@5.3.5) (2020-01-15)
+
+**Note:** Version bump only for package @availity/reactstrap-validation-select
+
+
+
+
+
+## [5.3.4](https://github.com/Availity/availity-react/compare/@availity/reactstrap-validation-select@5.3.3...@availity/reactstrap-validation-select@5.3.4) (2020-01-15)
+
+
+### Bug Fixes
+
+* **reactstrap-validation-select:** fix parameters as props not being used ([3b79d00](https://github.com/Availity/availity-react/commit/3b79d00806593a88a6f1232595eb05786798bdf9))
+
+
+
+
+
+## [5.3.3](https://github.com/Availity/availity-react/compare/@availity/reactstrap-validation-select@5.3.2...@availity/reactstrap-validation-select@5.3.3) (2020-01-13)
+
+**Note:** Version bump only for package @availity/reactstrap-validation-select
+
+
+
+
+
+## [5.3.2](https://github.com/Availity/availity-react/compare/@availity/reactstrap-validation-select@5.3.1...@availity/reactstrap-validation-select@5.3.2) (2020-01-10)
+
+**Note:** Version bump only for package @availity/reactstrap-validation-select
+
+
+
+
+
 ## [5.3.1](https://github.com/Availity/availity-react/compare/@availity/reactstrap-validation-select@5.3.0...@availity/reactstrap-validation-select@5.3.1) (2019-12-17)
 
 **Note:** Version bump only for package @availity/reactstrap-validation-select

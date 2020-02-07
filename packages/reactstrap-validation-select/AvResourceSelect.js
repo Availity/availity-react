@@ -43,10 +43,20 @@ class AvResourceSelect extends Component {
           perPage: this.props.itemsPerPage,
           filters: {
             q: encodeURIComponent(inputValue),
-            ...this.props.parameters,
           },
         },
       };
+
+      if (args.length !== 3) {
+        if (typeof this.props.parameters === 'function') {
+          data = this.props.parameters(data);
+        } else {
+          data = {
+            ...data,
+            ...this.props.parameters,
+          };
+        }
+      }
 
       if (this.props.graphqlConfig.query) {
         data.query = this.props.graphqlConfig.query;
@@ -56,15 +66,36 @@ class AvResourceSelect extends Component {
         q: encodeURIComponent(inputValue),
         limit: this.props.itemsPerPage,
         customerId: this.props.customerId,
-        ...this.props.parameters,
       };
+    }
+
+    if (args.length !== 3) {
+      if (typeof this.props.parameters === 'function') {
+        params = this.props.parameters(params);
+      } else {
+        params = {
+          ...params,
+          ...this.props.parameters,
+        };
+      }
     }
 
     if (args.length === 3) {
       if (this.props.graphqlConfig) {
         data.variables.page = page;
+        if (typeof this.props.parameters === 'function') {
+          data = this.props.parameters(data);
+        }
       } else {
         params.offset = (page - 1) * this.props.itemsPerPage;
+        if (typeof this.props.parameters === 'function') {
+          params = this.props.parameters(params);
+        } else {
+          params = {
+            ...params,
+            ...this.props.parameters,
+          };
+        }
       }
     } else {
       page = 1;
@@ -92,9 +123,9 @@ class AvResourceSelect extends Component {
     }
     if (this.props.onPageChange) this.props.onPageChange(inputValue, page);
     let fetch;
-    if (this.props.graphqlConfig) {
+    if (this.props.graphqlConfig || this.props.method === 'POST') {
       fetch = () =>
-        this.props.resource.post(data, {
+        this.props.resource.post(data || params, {
           headers: {
             'Content-Type': 'application/json',
           },
@@ -224,6 +255,7 @@ AvResourceSelect.create = defaults => {
 
 AvResourceSelect.propTypes = {
   requestConfig: PropTypes.object,
+  method: PropTypes.string,
   resource: PropTypes.shape({
     postGet: PropTypes.func,
     post: PropTypes.func,
@@ -235,7 +267,7 @@ AvResourceSelect.propTypes = {
   debounceTimeout: PropTypes.number,
   label: PropTypes.node,
   customerId: PropTypes.string,
-  parameters: PropTypes.object,
+  parameters: PropTypes.oneOfType([PropTypes.object, PropTypes.func]),
   itemsPerPage: PropTypes.number,
   onPageChange: PropTypes.func,
   isDisabled: PropTypes.bool,

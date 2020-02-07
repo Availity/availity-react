@@ -23,5 +23,5 @@ import '@availity/favorites/style.scss';
       </FavoritesProvider>
     )}
   </Favorites>
-</div>;
+</div>
 ```

@@ -12,7 +12,7 @@ import Pagination from '@availity/pagination';
 // ...
 <Pagination itemsPerPage={25} items={this.state.items}>
   <Pagination.Content component={Component} />
-</Pagination>;
+</Pagination>
 ```
 
 ## Props

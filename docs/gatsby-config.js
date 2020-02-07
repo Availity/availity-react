@@ -62,6 +62,7 @@ module.exports = {
                 'form/select/components/select',
                 'form/select/components/select-field',
                 'form/select/components/resource-select',
+                'form/select/components/region-select',
               ],
             },
           ],

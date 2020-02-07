@@ -1,8 +1,8 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 import React, { useState, useContext, useEffect, useRef } from 'react';
 import PropTypes from 'prop-types';
 import isFunction from 'lodash.isfunction';
 import isEqual from 'lodash.isequal';
-import { useEffectAsync, useToggle } from '@availity/hooks';
 import AvLocalStorage from '@availity/localstorage-core';
 
 const avLocalStorage = new AvLocalStorage();
@@ -46,7 +46,9 @@ const Pagination = ({
 
   // create an abort controller for fetch to be able to cancel it
 
-  const [loading, toggleLoading] = useToggle(true);
+  const [loading, setLoading] = useState(true);
+  const toggleLoading = isLoading =>
+    setLoading(l => (isLoading !== undefined ? isLoading : !l));
 
   const getPageData = async () => {
     avLocalStorage.set('current-page', currentPage);
@@ -93,7 +95,7 @@ const Pagination = ({
     toggleLoading(false);
   };
 
-  useEffectAsync(async () => {
+  useEffect(() => {
     getPageData();
   }, [
     currentPage,

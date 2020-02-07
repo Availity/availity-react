@@ -32,7 +32,7 @@ import '@availity/yup';
   <Button color="primary" type="submit">
     Submit
   </Button>
-</Form>;
+</Form>
 ```
 
 ## Props
@@ -47,9 +47,13 @@ The name of the field. Will be the key of the selected date that comes through i
 
 Configuration object used in the query method on the resource. Useful for defining headers to be sent with the request.
 
-### `parameters?: object`
+### `parameters?: object | (params: any): any`
 
-Object used to create querystring parameters in the request.
+Object used to create querystring parameters in the request. If function, will return new object with params for request.
+
+### `method?: string`
+
+Override method to use `post` request on REST calls with `graphqlConfig`.
 
 ### `customerId?: string`
 
@@ -115,13 +119,16 @@ When true, the network request is not made until the dropdown has been focused.
 
 When true, if the `resource` only returns one result the first time it is called, the value is defaulted to the single result. Note: if `waitUntilFocused` is `true`, this prop is ignored.
 
+### `shouldSearch?: boolean | (inputValue: string, prevOptions: OptionType, additional: any) => boolean`
+
+When false or a function that returns false, the network request won't be made. Defaults to `true`. 
+
 ## Pre-made Resource Selects
 
 The following components can be imported by name from `@availity/select/resources`
 
 - AvProviderSelect
 - AvOrganizationSelect
-- AvRegionSelect
 - AvPermissionSelect
 - AvNavigationSelect
 - AvUserSelect
@@ -138,7 +145,6 @@ import { Form } from '@availity/form';
 import {
   AvProviderSelect,
   AvOrganizationSelect,
-  AvRegionSelect,
   AvPermissionSelect,
   AvNavigationSelect,
   AvUserSelect,
@@ -185,7 +191,6 @@ const schema = yup.object().shape({
     label="Select a Organization"
     required
   />
-  <AvRegionSelect name="region" label="Select a Region" required />
   <AvPermissionSelect
     name="permissions"
     label="Select a provider"
