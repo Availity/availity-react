@@ -7,5 +7,7 @@
 ## Installation
 
 ```bash
-npm install @availity/phone --save
+yarn add @availity/phone
 ```
+
+## [Documentation](https://availity.github.io/availity-react/form/phone/)

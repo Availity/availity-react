@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { Field } from '@availity/form';
-import { useField } from 'formik';
+import { useFormikContext } from 'formik';
 import { AsYouType } from 'libphonenumber-js';
 import { Row, Col } from 'reactstrap';
 
@@ -14,8 +14,7 @@ const Phone = ({
   phoneColProps,
   ...restPhoneProps
 }) => {
-  const phoneHelpers = useField(name)[2]; // [field, meta, helpers]
-  const { setTouched, setValue } = phoneHelpers;
+  const { setFieldValue, setFieldTouched } = useFormikContext();
 
   let ext = null;
   if (showExtension) {
@@ -36,18 +35,9 @@ const Phone = ({
     return asYouType.formattedOutput;
   };
 
-  const formatPhoneOnBlur = async ({ target: { value } }) => {
-    // Validation error can show up during onChange event, before blur, since formik values are updated
-    // AsYouType's formatter can correct a minor formatting error during the blur event
-    // There seems to be a problem with setTouched using stale values after setValue during validation
-    // https://github.com/jaredpalmer/formik/issues/2083
-    // https://github.com/jaredpalmer/formik/issues/2106
-    // https://github.com/jaredpalmer/formik/issues/1977
-    // https://github.com/facebook/react/issues/15344 ?
-    // TODO: Why does await solve this? setValue is not async. Dispatch async?
-
-    await setValue(asYouFormat(value));
-    setTouched(true);
+  const formatPhoneOnBlur = ({ target: { value } }) => {
+    setFieldValue(name, asYouFormat(value), true);
+    setFieldTouched(name, true, true);
   };
 
   return (
