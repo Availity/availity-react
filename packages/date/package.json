@@ -28,7 +28,7 @@
     "react": "^16.8.3",
     "react-dom": "^16.8.3",
     "reactstrap": "^8.0.0",
-    "yup": "^0.27.0"
+    "yup": "^0.28.1"
   },
   "peerDependencies": {
     "@availity/form": "^0.1.0",
@@ -44,7 +44,7 @@
     "lodash.pick": "^4.4.0",
     "moment": "^2.24.0",
     "prop-types": "^15.7.2",
-    "react-dates": "^20.2.5"
+    "react-dates": "^21.8.0"
   },
   "publishConfig": {
     "access": "public"
