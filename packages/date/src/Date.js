@@ -7,6 +7,7 @@ import { SingleDatePicker } from 'react-dates';
 import Icon from '@availity/icon';
 import { InputGroup, Input } from 'reactstrap';
 import moment from 'moment';
+import '../polyfills';
 import '../styles.scss';
 
 import { isOutsideRange, limitPropType } from './utils';

@@ -8,6 +8,7 @@ import { useField, useFormikContext } from 'formik';
 import get from 'lodash.get';
 import pick from 'lodash.pick';
 import moment from 'moment';
+import '../polyfills';
 
 import { isOutsideRange, limitPropType, isSameDay } from './utils';
 
