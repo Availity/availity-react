@@ -1,4 +1,5 @@
 import * as React from 'react';
+import { FieldValidator } from 'formik';
 
 export type InputType =
   | 'text'
@@ -31,6 +32,7 @@ export interface InputProps extends React.InputHTMLAttributes<HTMLInputElement> 
   [key: string]: any;
   type?: InputType;
   name: string;
+  validate?: FieldValidator; 
   tag?: Node | string;
 }
 
