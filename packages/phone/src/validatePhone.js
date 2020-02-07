@@ -1,4 +1,4 @@
-import { addMethod, number, string } from 'yup';
+import { addMethod, string } from 'yup';
 import { AsYouType } from 'libphonenumber-js';
 
 export default function validatePhone(msg, strict = false, country = 'US') {
@@ -6,7 +6,7 @@ export default function validatePhone(msg, strict = false, country = 'US') {
     name: 'validatePhone',
     exclusive: true,
     message: msg || 'This field is invalid.',
-    async test(phoneValue) {
+    test(phoneValue) {
       if (!phoneValue) return true;
 
       const asYouType = new AsYouType(country);
@@ -20,4 +20,3 @@ export default function validatePhone(msg, strict = false, country = 'US') {
 }
 
 addMethod(string, 'validatePhone', validatePhone);
-addMethod(number, 'validatePhone', validatePhone);
