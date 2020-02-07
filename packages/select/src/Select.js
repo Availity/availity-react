@@ -37,6 +37,7 @@ const createOption = (label, labelKey = 'label', valueKey = 'value') => ({
 
 const Select = ({
   name,
+  validate,
   className,
   options,
   selectRef,
@@ -50,7 +51,10 @@ const Select = ({
   const [
     { onChange, value: fieldValue, ...field },
     { touched, error: hasError },
-  ] = useField(name);
+  ] = useField({
+    name,
+    validate,
+  });
   const { values, setFieldValue, initialValues } = useFormikContext();
 
   const [newOptions, setNewOptions] = useState([]);
@@ -296,6 +300,7 @@ const Select = ({
 
 Select.propTypes = {
   name: PropTypes.string.isRequired,
+  validate: PropTypes.func,
   options: PropTypes.array,
   loadOptions: PropTypes.func,
   raw: PropTypes.bool,
