@@ -79,7 +79,7 @@
     "regenerator-runtime": "^0.13.2",
     "sass-loader": "^8.0.0",
     "ts-jest": "^24.0.0",
-    "typescript": "^3.6.4"
+    "typescript": "^3.7.5"
   },
   "license": "MIT",
   "lint-staged": {
