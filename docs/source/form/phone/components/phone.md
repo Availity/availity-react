@@ -44,8 +44,6 @@ import { Button } from 'reactstrap';
 </Form>;
 ```
 
-<https://github.com/catamphetamine/libphonenumber-js/blob/master/README.md>
-
 ## Props
 
 ### `name: string`
