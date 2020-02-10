@@ -1,12 +1,12 @@
 import React from 'react';
-import { Field } from '@availity/form/typings';
+import { FieldProps } from '@availity/form/typings/Field';
 
-interface ExtensionProps extends Field {
+interface ExtensionProps extends FieldProps {
   name: string;
   id?: string;
   extColProps?: object;
 }
-export interface PhoneProps extends Field {
+export interface PhoneProps extends FieldProps {
   name: string;
   id?: string;
   showExtension?: boolean | false;
