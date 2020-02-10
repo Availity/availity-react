@@ -26,7 +26,7 @@
 		"@availity/form": "^0.5.2",
 		"@availity/localstorage-core": "^2.6.1",
 		"@types/react-select": "^3.0.0",
-		"axios": "^0.18.0",
+		"axios": "^0.19.2",
 		"formik": "2.0.4",
 		"react": "^16.8.3",
 		"react-dom": "^16.8.3",
@@ -38,7 +38,7 @@
 		"@availity/api-core": "^3.0.0",
 		"@availity/form": "^0.2.0",
 		"@availity/localstorage-core": "^2.5.0",
-		"axios": "^0.18.0",
+		"axios": "^0.19.2",
 		"formik": "^2.0.1",
 		"react": "^16.8.3",
 		"reactstrap": "^8.0.0 || ^7.0.0 || ^6.0.0"

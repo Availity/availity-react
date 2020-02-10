@@ -57,7 +57,7 @@
     "@availity/yup": "^1.1.1",
     "@loadable/component": "^5.10.2",
     "availity-reactstrap-validation": "2.6.1",
-    "axios": "^0.18.0",
+    "axios": "^0.19.2",
     "formik": "^2.0.1-rc.12",
     "gatsby": "^2.19.12",
     "gatsby-plugin-compile-es6-packages": "^2.1.0",
