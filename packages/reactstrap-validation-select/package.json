@@ -27,7 +27,7 @@
     "@availity/api-core": "^5.4.0",
     "@availity/localstorage-core": "^2.6.1",
     "availity-reactstrap-validation": "^2.0.0",
-    "axios": "^0.18.0",
+    "axios": "^0.19.2",
     "react": "^16.8.3",
     "react-dom": "^16.8.3",
     "reactstrap": "^8.0.0"
@@ -38,7 +38,7 @@
     "@availity/localstorage-core": "^2.6.1",
     "availity-reactstrap-validation": "^2.0.0",
     "availity-uikit": "^3.0.0",
-    "axios": "^0.18.0",
+    "axios": "^0.19.2",
     "react": "^16.8.3",
     "reactstrap": "^8.0.0 || ^7.0.0 || ^6.0.0"
   },
