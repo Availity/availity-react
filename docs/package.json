@@ -34,7 +34,7 @@
     "@availity/feature": "^1.2.5",
     "@availity/feedback": "^5.3.10",
     "@availity/form": "^0.5.2",
-    "@availity/gatsby-theme-docs": "^2.0.3",
+    "@availity/gatsby-theme-docs": "^4.0.1",
     "@availity/hooks": "^1.6.5",
     "@availity/icon": "^0.7.0",
     "@availity/link": "^2.1.0",
