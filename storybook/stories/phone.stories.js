@@ -1,11 +1,16 @@
 import React from 'react';
 import { storiesOf } from '@storybook/react';
-import { withKnobs } from '@storybook/addon-knobs/react';
+import { withKnobs, boolean, text } from '@storybook/addon-knobs/react';
+
+import * as yup from 'yup';
+import '@availity/phone/src/validatePhone';
 
 import Phone from '@availity/phone';
 import README from '@availity/phone/README.md';
+import { Button } from 'reactstrap';
+import FormikResults from './mocks/FormikResults';
 
-storiesOf('TODO|Phone', module)
+storiesOf('Formik|Phone', module)
   .addParameters({
     readme: {
       // Show readme at the addons panel
@@ -15,8 +20,36 @@ storiesOf('TODO|Phone', module)
     },
   })
   .addDecorator(withKnobs)
-  .add('default', () => (
-    <div>
-      <Phone />
-    </div>
-  ));
+  .add('default', () => {
+    return (
+      <FormikResults
+        initialValues={{
+          phone: '',
+          ext: '',
+        }}
+        validationSchema={yup.object().shape({
+          phone: yup
+            .string()
+            .validatePhone()
+            .isRequired(boolean('Required', false), 'This field is required.'),
+          ext: yup.string(),
+        })}
+      >
+        <Phone
+          name="phone"
+          label="Phone"
+          country={text('Country', 'US')}
+          showExtension={boolean('Show Extension', true)}
+          phoneColProps={{ xs: { size: 9 } }}
+          extProps={{
+            name: 'ext',
+            label: 'Ext.',
+            extColProps: {
+              xs: { size: 3 },
+            },
+          }}
+        />
+        <Button type="submit">Submit</Button>
+      </FormikResults>
+    );
+  });

@@ -65,6 +65,13 @@ module.exports = {
                 'form/select/components/region-select',
               ],
             },
+            {
+              resolve: 'form/phone/index',
+              pages: [
+                'form/phone/components/phone',
+                'form/phone/components/validate-phone',
+              ],
+            },
           ],
           'Portal Components': [
             {

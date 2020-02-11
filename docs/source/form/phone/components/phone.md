@@ -109,3 +109,23 @@ extColProps: {
 ### `restPhoneProps` & `restExtProps`
 
 These are respectively spread onto the corresponding `@availity/form` `<Field />` components, so props like `grid` can be used on the phone and extension fields.
+
+## Lazy Loading and Suspense
+
+Because `libphonenumber-js` has a relatively large package size, it is recommended that [lazy loading and suspense](https://reactjs.org/docs/code-splitting.html#reactlazy) are utilized with this component. This will give your app the benefit of Code-Splitting, and the bundle containing `libphonenumber-js` and the `<Phone />` component will be loaded automatically when the component is first rendered. While the component is being loaded, a `fallback` component will be rendered to show the user some placeholder content in the meantime.
+
+```jsx
+import React, { Suspense } from 'react';
+
+const Phone = React.lazy(() => import('./Phone'));
+
+function MyApp() {
+  return (
+    <div>
+      <Suspense fallback={<div>Loading...</div>}>
+        <Phone />
+      </Suspense>
+    </div>
+  );
+}
+```
