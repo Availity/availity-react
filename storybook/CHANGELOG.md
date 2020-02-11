@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [9.4.0](https://github.com/Availity/availity-react/compare/@availity/react-storybook@9.3.20...@availity/react-storybook@9.4.0) (2020-02-11)
+
+
+### Features
+
+* **phone:** initial commit for phone package ([76b7227](https://github.com/Availity/availity-react/commit/76b7227adee750265daa4e65486606d102a1e5c2))
+
+
+
+
+
 ## [9.3.20](https://github.com/Availity/availity-react/compare/@availity/react-storybook@9.3.19...@availity/react-storybook@9.3.20) (2020-02-10)
 
 **Note:** Version bump only for package @availity/react-storybook

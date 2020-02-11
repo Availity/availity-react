@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [4.9.0](https://github.com/Availity/availity-react/compare/@availity/react-docs@4.8.6...@availity/react-docs@4.9.0) (2020-02-11)
+
+
+### Features
+
+* **phone:** initial commit for phone package ([76b7227](https://github.com/Availity/availity-react/commit/76b7227adee750265daa4e65486606d102a1e5c2))
+
+
+
+
+
 ## [4.8.6](https://github.com/Availity/availity-react/compare/@availity/react-docs@4.8.5...@availity/react-docs@4.8.6) (2020-02-10)
 
 **Note:** Version bump only for package @availity/react-docs

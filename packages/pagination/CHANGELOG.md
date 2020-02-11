@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [2.7.0](https://github.com/Availity/availity-react/compare/@availity/pagination@2.6.2...@availity/pagination@2.7.0) (2020-02-11)
+
+
+### Features
+
+* **pagination:** update avLocalStorage ([a1fa6e0](https://github.com/Availity/availity-react/commit/a1fa6e0ef203b63bd13d4e128db10d71368821bb))
+
+
+
+
+
 ## [2.6.2](https://github.com/Availity/availity-react/compare/@availity/pagination@2.6.1...@availity/pagination@2.6.2) (2020-01-25)
 
 **Note:** Version bump only for package @availity/pagination
