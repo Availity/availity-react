@@ -3,9 +3,7 @@ import React, { useState, useContext, useEffect, useRef } from 'react';
 import PropTypes from 'prop-types';
 import isFunction from 'lodash.isfunction';
 import isEqual from 'lodash.isequal';
-import AvLocalStorage from '@availity/localstorage-core';
-
-const avLocalStorage = new AvLocalStorage();
+import * as avLocalStorage from '@availity/localstorage-core';
 
 export const PaginationContext = React.createContext();
 

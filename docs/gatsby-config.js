@@ -66,6 +66,13 @@ module.exports = {
               ],
             },
             {
+              resolve: 'form/phone/index',
+              pages: [
+                'form/phone/components/phone',
+                'form/phone/components/validate-phone',
+              ],
+            },
+            {
               resolve: 'form/upload/index',
               pages: [
                 'form/upload/upload',

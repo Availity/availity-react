@@ -24,8 +24,8 @@
   "homepage": "https://github.com/Availity/availity-react/tree/master/packages/reactstrap-validation-select#readme",
   "devDependencies": {
     "@availity/api-axios": "^5.4.0",
-    "@availity/api-core": "^5.4.0",
-    "@availity/localstorage-core": "^2.6.1",
+    "@availity/api-core": "^6.1.3",
+    "@availity/localstorage-core": "^3.0.0",
     "availity-reactstrap-validation": "^2.0.0",
     "axios": "^0.19.2",
     "react": "^16.8.3",

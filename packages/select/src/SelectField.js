@@ -16,6 +16,7 @@ const SelectField = ({
 }) => {
   useEffect(() => {
     if (attributes.id && attributes.id === name) {
+      // eslint-disable-next-line no-console
       console.warn(
         "Warning: Using an 'id' equivalent to 'name' will result in an orphaned label and break 508 compliance."
       );
