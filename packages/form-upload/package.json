@@ -1,6 +1,6 @@
 {
   "name": "@availity/form-upload",
-  "version": "0.1.2",
+  "version": "0.1.3",
   "author": "Tyson Warner <tyson.warner@availity.com>",
   "description": "Availity upload component for uploading files, compatible with @availity/form",
   "main": "index.js",
@@ -38,7 +38,7 @@
     "uuid": "^3.3.3"
   },
   "devDependencies": {
-    "@availity/form": "^0.5.1",
+    "@availity/form": "^0.5.2",
     "@availity/upload-core": "^3.0.4",
     "formik": "2.0.4",
     "react": "^16.8.3",

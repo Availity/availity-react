@@ -1,6 +1,6 @@
 {
   "name": "@availity/reactstrap-validation-select",
-  "version": "5.3.7",
+  "version": "5.3.8",
   "description": "Wrapper for react-select to work with availity-reactstrap-validation",
   "main": "index.js",
   "scripts": {
@@ -38,7 +38,7 @@
     "@availity/localstorage-core": "^2.6.1",
     "availity-reactstrap-validation": "^2.0.0",
     "availity-uikit": "^3.0.0",
-    "axios": "^0.18.0",
+    "axios": "^0.19.2",
     "react": "^16.8.3",
     "reactstrap": "^8.0.0 || ^7.0.0 || ^6.0.0"
   },

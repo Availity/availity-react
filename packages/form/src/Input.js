@@ -4,8 +4,11 @@ import classNames from 'classnames';
 import { Input as RsInput } from 'reactstrap';
 import { useField } from 'formik';
 
-const Input = ({ tag: Tag, className, name, ...rest }) => {
-  const [field, metadata] = useField(name);
+const Input = ({ tag: Tag, className, name, validate, ...rest }) => {
+  const [field, metadata] = useField({
+    name,
+    validate,
+  });
 
   const classes = classNames(
     className,
@@ -33,6 +36,7 @@ Input.propTypes = {
   tag: PropTypes.oneOfType([PropTypes.func, PropTypes.string]),
   className: PropTypes.string,
   name: PropTypes.string.isRequired,
+  validate: PropTypes.func,
 };
 
 Input.defaultProps = {

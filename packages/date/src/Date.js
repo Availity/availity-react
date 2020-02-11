@@ -7,6 +7,7 @@ import { SingleDatePicker } from 'react-dates';
 import Icon from '@availity/icon';
 import { InputGroup, Input } from 'reactstrap';
 import moment from 'moment';
+import '../polyfills';
 import '../styles.scss';
 
 import { isOutsideRange, limitPropType } from './utils';
@@ -24,12 +25,16 @@ const AvDate = ({
   max,
   datepicker,
   format,
+  validate,
   datePickerProps,
   'data-testid': dataTestId,
   ...attributes
 }) => {
   const { setFieldValue, setFieldTouched } = useFormikContext();
-  const [field, metadata] = useField(name);
+  const [field, metadata] = useField({
+    name,
+    validate,
+  });
   const [isFocused, setIsFocused] = useState(false);
   const classes = classNames(
     className,
@@ -148,6 +153,7 @@ AvDate.propTypes = {
   format: PropTypes.string,
   'data-testid': PropTypes.string,
   datepicker: PropTypes.bool,
+  validate: PropTypes.func,
   datePickerProps: PropTypes.object,
 };
 

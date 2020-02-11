@@ -6,6 +6,7 @@ import { InputGroup } from 'reactstrap';
 import classNames from 'classnames';
 import moment from 'moment';
 import 'react-dates/initialize';
+import '../polyfills';
 
 import {
   inputType,
