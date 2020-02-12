@@ -3,6 +3,18 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [9.4.1](https://github.com/Availity/availity-react/compare/@availity/react-storybook@9.4.0...@availity/react-storybook@9.4.1) (2020-02-12)
+
+
+### Bug Fixes
+
+* updates @availity/yup to fix resolution issues. Fixes issue with Phone documentation not showing ([76d89e8](https://github.com/Availity/availity-react/commit/76d89e8143ba0d095cb2171c7128894f1d3a5a8d))
+* **react-docs:** fix typo ([bc75146](https://github.com/Availity/availity-react/commit/bc75146ebe6ae36de07812ce723f93eea4984c35))
+
+
+
+
+
 # [9.4.0](https://github.com/Availity/availity-react/compare/@availity/react-storybook@9.3.20...@availity/react-storybook@9.4.0) (2020-02-11)
 
 

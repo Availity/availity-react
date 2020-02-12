@@ -3,6 +3,27 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [1.0.0](https://github.com/Availity/availity-react/compare/@availity/date@0.4.7...@availity/date@1.0.0) (2020-02-12)
+
+
+### Bug Fixes
+
+* updates @availity/yup to fix resolution issues. Fixes issue with Phone documentation not showing ([76d89e8](https://github.com/Availity/availity-react/commit/76d89e8143ba0d095cb2171c7128894f1d3a5a8d))
+
+
+### Features
+
+* **date:** update DateSchema ([545df8e](https://github.com/Availity/availity-react/commit/545df8e407b29dfcc3493ad8ffac99e45c3ede94))
+
+
+### BREAKING CHANGES
+
+* **date:** the date package now uses the latest version of @availity/yup. 'yup.date()' has been replaced with 'yup.avDate()' due to resolution issues
+
+
+
+
+
 ## [0.4.7](https://github.com/Availity/availity-react/compare/@availity/date@0.4.6...@availity/date@0.4.7) (2020-02-11)
 
 **Note:** Version bump only for package @availity/date

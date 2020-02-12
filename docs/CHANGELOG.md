@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [4.9.2](https://github.com/Availity/availity-react/compare/@availity/react-docs@4.9.1...@availity/react-docs@4.9.2) (2020-02-12)
+
+
+### Bug Fixes
+
+* updates @availity/yup to fix resolution issues. Fixes issue with Phone documentation not showing ([76d89e8](https://github.com/Availity/availity-react/commit/76d89e8143ba0d095cb2171c7128894f1d3a5a8d))
+
+
+
+
+
 ## [4.9.1](https://github.com/Availity/availity-react/compare/@availity/react-docs@4.9.0...@availity/react-docs@4.9.1) (2020-02-12)
 
 **Note:** Version bump only for package @availity/react-docs
