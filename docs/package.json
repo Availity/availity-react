@@ -54,7 +54,7 @@
     "@availity/typography": "^1.2.1",
     "@availity/upload": "^2.2.1",
     "@availity/upload-core": "^3.0.4",
-    "@availity/yup": "^1.1.1",
+    "@availity/yup": "^2.0.0",
     "@loadable/component": "^5.10.2",
     "availity-reactstrap-validation": "2.6.1",
     "axios": "^0.19.2",
