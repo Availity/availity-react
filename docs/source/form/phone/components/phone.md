@@ -1,6 +1,6 @@
 ---
-title: phone
-summary: Availity Phone component using Formik and Yup
+title: <Phone />
+summary: Availity Phone component using Formik and Yup
 ---
 
 ## Example

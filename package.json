@@ -30,7 +30,7 @@
   "scripts": {
     "format": "prettier --write 'packages/*/*.js' 'packages/*/!(node_modules)/**/*.js' '!(storybook|docs)/**/*.js'",
     "lint": "eslint .",
-    "nuke": "npm run remove-locks && npm run clean",
+    "nuke": "yarn remove-locks && yarn clean",
     "bootstrap": "lerna bootstrap --use-workspaces",
     "lerna": "lerna",
     "codecov:ci": "codecov",
@@ -38,7 +38,7 @@
     "clean": "lerna clean --yes",
     "test": "jest",
     "test:ci": "jest --runInBand --collectCoverage",
-    "postinstall": "npm run bootstrap",
+    "postinstall": "yarn run bootstrap",
     "start": "yarn workspace @availity/react-storybook start",
     "start:docs": "yarn workspace @availity/react-docs start",
     "build:storybook": "yarn workspace @availity/react-storybook build",
@@ -52,7 +52,7 @@
     "deploy:ci": "yarn run build:deploy && yarn run publish:docs",
     "publish:docs": "gh-pages -d docs/public --message 'deployed docs [skip ci]'",
     "updated": "lerna updated",
-    "remove-locks": "find . -type f -name 'package-lock.json' -delete",
+    "remove-locks": "find . -type f -name 'yarn.lock' -delete",
     "check": "npm-check -u && lerna exec --bail false --concurrency 1 -- npm-check -u",
     "new": "plop"
   },

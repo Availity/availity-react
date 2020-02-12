@@ -2,6 +2,7 @@ import React from 'react';
 import { render, fireEvent, wait, cleanup } from '@testing-library/react';
 import { Button } from 'reactstrap';
 import { Form } from '@availity/form';
+import '@availity/yup/moment';
 import * as yup from 'yup';
 import moment from 'moment';
 import FormikDate from '..';
@@ -21,7 +22,9 @@ describe('Date', () => {
         }}
         onSubmit={onSubmit}
         validationSchema={yup.object().shape({
-          singleDate: yup.string().required('This field is required'),
+          singleDate: yup
+            .avDate({ format: 'MM/DD/YYYY' })
+            .required('This field is required'),
         })}
       >
         <FormikDate name="singleDate" data-testid="single-select" />

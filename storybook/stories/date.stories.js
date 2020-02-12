@@ -8,6 +8,7 @@ import {
   number,
 } from '@storybook/addon-knobs/react';
 import { Button } from 'reactstrap';
+import '@availity/yup/moment';
 import * as yup from 'yup';
 import FormikDate, {
   DateField,
@@ -15,7 +16,6 @@ import FormikDate, {
   DateRangeField,
 } from '@availity/date';
 import '@availity/date/styles.scss';
-import '@availity/yup/moment';
 import README from '@availity/date/README.md';
 import moment from 'moment';
 import FormikResults from './mocks/FormikResults';
@@ -42,7 +42,7 @@ storiesOf('Formik|Date', module)
 
     const schema = yup.object().shape({
       dateOfService: yup
-        .date({
+        .avDate({
           format: dateFormat,
         })
         .isRequired(required, 'This field is required.')
@@ -84,7 +84,7 @@ storiesOf('Formik|Date', module)
 
     const schema = yup.object().shape({
       dateOfService: yup
-        .date({
+        .avDate({
           format: dateFormat,
         })
         .isRequired(required, 'This field is required.')
