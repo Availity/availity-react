@@ -42,7 +42,7 @@ storiesOf('Formik|Date', module)
 
     const schema = yup.object().shape({
       dateOfService: yup
-        .adate({
+        .avDate({
           format: dateFormat,
         })
         .isRequired(required, 'This field is required.')
@@ -84,7 +84,7 @@ storiesOf('Formik|Date', module)
 
     const schema = yup.object().shape({
       dateOfService: yup
-        .adate({
+        .avDate({
           format: dateFormat,
         })
         .isRequired(required, 'This field is required.')
