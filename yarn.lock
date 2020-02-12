@@ -36,15 +36,6 @@
     "@availity/resolve-url" "^1.1.4"
     qs "^6.5.2"
 
-"@availity/form@^0.5.3":
-  version "0.5.3"
-  resolved "https://registry.yarnpkg.com/@availity/form/-/form-0.5.3.tgz#f9bfb6a9df0b8d381d7f705683e4e8c7308b58b8"
-  integrity sha512-f0ncpv15nhv4VIbYH9oVPyZzlse2+9+lc3b0l8GVDhWDY1R5zFKheKB0JhGszR94yItFXbTZRtOLsHJ9l8WRAw==
-  dependencies:
-    classnames "^2.2.6"
-    prop-types "^15.5.8"
-    uuid "^3.3.3"
-
 "@availity/gatsby-theme-core@^2.0.3":
   version "2.0.3"
   resolved "https://registry.yarnpkg.com/@availity/gatsby-theme-core/-/gatsby-theme-core-2.0.3.tgz#44864905ab381b98ec17c5c9d62aaf8ca8de255e"

@@ -1,16 +1,32 @@
 {
   "name": "@availity/availity-react",
   "private": true,
+  "description": "React components using Availity UIKit and Bootstrap 4",
+  "license": "MIT",
+  "homepage": "https://github.com/Availity/availity-react#readme",
+  "repository": {
+    "type": "git",
+    "url": "git+ssh://git@github.com/Availity/availity-react.git"
+  },
+  "contributors": [
+    "tyson warner (https://github.com/nylon22)",
+    "robert mcguinness (https://github.com/robmcguinness)"
+  ],
+  "bugs": {
+    "url": "https://github.com/Availity/availity-react/issues"
+  },
+  "author": "Robert McGuinness <rob.mcguinness@availity.com>",
+  "keywords": [
+    "availity",
+    "react",
+    "ui"
+  ],
+  "main": "index.js",
   "workspaces": [
     "packages/*",
     "docs",
     "storybook"
   ],
-  "description": "React components using Availity UIKit and Bootstrap 4",
-  "repository": {
-    "type": "git",
-    "url": "git+ssh://git@github.com/Availity/availity-react.git"
-  },
   "scripts": {
     "format": "prettier --write 'packages/*/*.js' 'packages/*/!(node_modules)/**/*.js' '!(storybook|docs)/**/*.js'",
     "lint": "eslint .",
@@ -39,6 +55,9 @@
     "remove-locks": "find . -type f -name 'yarn.lock' -delete",
     "check": "npm-check -u && lerna exec --bail false --concurrency 1 -- npm-check -u",
     "new": "plop"
+  },
+  "dependencies": {
+    "gh-pages": "^2.1.1"
   },
   "devDependencies": {
     "@availity/api-axios": "^5.4.0",
@@ -82,7 +101,19 @@
     "ts-jest": "^25.2.0",
     "typescript": "^3.7.5"
   },
-  "license": "MIT",
+  "jest": {
+    "testURL": "http://localhost/",
+    "transformIgnorePatterns": [
+      "<rootDir>.*(node_modules)(?!.*@availity.*).*$"
+    ],
+    "moduleNameMapper": {
+      ".+\\.(css|styl|less|sass|scss|png|jpg|ttf|woff|woff2)$": "identity-obj-proxy"
+    },
+    "setupFiles": [
+      "raf/polyfill"
+    ],
+    "testEnvironment": "jest-environment-jsdom-global"
+  },
   "lint-staged": {
     "*.js": [
       "eslint --fix",
@@ -106,41 +137,11 @@
     "singleQuote": true,
     "trailingComma": "es5"
   },
-  "jest": {
-    "testURL": "http://localhost/",
-    "transformIgnorePatterns": [
-      "<rootDir>.*(node_modules)(?!.*@availity.*).*$"
-    ],
-    "moduleNameMapper": {
-      ".+\\.(css|styl|less|sass|scss|png|jpg|ttf|woff|woff2)$": "identity-obj-proxy"
-    },
-    "setupFiles": [
-      "raf/polyfill"
-    ],
-    "testEnvironment": "jest-environment-jsdom-global"
-  },
-  "contributors": [
-    "tyson warner (https://github.com/nylon22)",
-    "robert mcguinness (https://github.com/robmcguinness)"
-  ],
-  "bugs": {
-    "url": "https://github.com/Availity/availity-react/issues"
-  },
-  "homepage": "https://github.com/Availity/availity-react#readme",
-  "main": "index.js",
-  "keywords": [
-    "availity",
-    "react",
-    "ui"
-  ],
-  "author": "Robert McGuinness <rob.mcguinness@availity.com>",
   "husky": {
     "hooks": {
       "commit-msg": "commitlint -e $HUSKY_GIT_PARAMS",
-      "pre-commit": "npm test && lint-staged"
+      "pre-commit": "lint-staged",
+      "pre-push": "yarn lint && yarn test"
     }
-  },
-  "dependencies": {
-    "gh-pages": "^2.1.1"
   }
 }
