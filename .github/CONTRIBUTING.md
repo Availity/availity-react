@@ -1,37 +1,37 @@
 ## Contributing
 
-This is a monorepo managed using [lerna](https://github.com/lerna/lerna) in independent mode (each packages is versioned and published individually).
+This is a monorepo managed using [lerna](https://github.com/lerna/lerna) in independent mode (each package is versioned and published individually).
 
-## Adding a New Package
+## Installation
 
-1. 
+Ensure [yarn](https://yarnpkg.com/lang/en/) is installed
+
 ```bash
-$ npm run new
+npm install -g yarn
 ```
 
-2. Add link to new package in README
-
-## Installing
-We use [yarn](https://yarnpkg.com/lang/en/) workspaces for developing. If you don't have [yarn](https://yarnpkg.com/lang/en/) you can install it by running
-`npm install -g yarn`. Otherwise you can run the below to install all the dependencies.
+Install the dependencies
 
 ```bash
 yarn install
 ```
 
-All subsequent installs should be quick after the first initial one.
+All subsequent installs should be quick after the first one.
 
-### Commits
-Commits should use the [Angular Commit Format](https://github.com/angular/angular/blob/master/CONTRIBUTING.md#type). Scope should one of un-prefixed name of the packages under ./packages/. If a commit applies to multiple packages, leave out the scope.
+## Adding a New Package
 
-### Releasing
-Make sure when you publish that there are no spooky things going on with the version bumps. Lerna will auto detect the changes up to the last commit and auto bump all the required packages accordingly.
 ```bash
-lerna publish
+yarn new
 ```
 
-### Canary Relases
-You can alternatively run a canary release that will not impact the current `latest` tag version and can be used to test out changes.
+## Commits
+
+Commits should use the [Angular Commit Format](https://github.com/angular/angular/blob/master/CONTRIBUTING.md#type). Scope should one of un-prefixed names of the packages under `./packages/`. If a commit applies to multiple packages, leave out the scope.
+
+## Canary Releases
+
+Useful for testing out changes. Canary releases do not impact the current `latest` tag version.
+
 ```bash
 lerna publish -c
 ```
