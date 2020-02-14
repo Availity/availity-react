@@ -3,6 +3,18 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [9.4.2](https://github.com/Availity/availity-react/compare/@availity/react-storybook@9.4.1...@availity/react-storybook@9.4.2) (2020-02-14)
+
+
+### Bug Fixes
+
+* **react-storybook:** fix story imports, add config options for phone ([8984ebe](https://github.com/Availity/availity-react/commit/8984ebe378320fe025861abee3a0031e3154ccf3))
+* **react-storybook:** remove axios resolution, console log ([f840830](https://github.com/Availity/availity-react/commit/f84083059d6e3f75924f936a4e0259366a8c8be6))
+
+
+
+
+
 ## [9.4.1](https://github.com/Availity/availity-react/compare/@availity/react-storybook@9.4.0...@availity/react-storybook@9.4.1) (2020-02-12)
 
 
