@@ -8,3 +8,4 @@ rules:
   guard-for-in: 0
   no-restricted-syntax: 0
   react/prefer-stateless-function: 0
+  import/extensions: 0
