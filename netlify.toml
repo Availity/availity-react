@@ -3,4 +3,4 @@
   command = "yarn run build:netlify"
 
 [build.environment]
-  NODE_VERSION = "10"
+  NODE_VERSION = "12"
