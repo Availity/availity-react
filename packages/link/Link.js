@@ -1,6 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { isAbsoluteUrl } from '@availity/resolve-url';
+import { Button } from 'reactstrap';
 
 // if absolute or loadApp is disabled, return url. otherwise loadappify the url
 export const getUrl = (url = '', loadApp, absolute, target) => {
@@ -57,17 +58,27 @@ const AvLink = React.forwardRef(
     },
     ref
   ) => {
+    let url;
+
+  let linkProps ={}
+
+  if(href){
     const absolute = isAbsoluteUrl(href);
     const target = getTarget(propsTarget);
-    const url = getUrl(href, loadApp, absolute, target);
+    url = getUrl(href, loadApp, absolute, target);
+    linkProps = {
+      target,
+      href: url,
+      rel: setRel(url, target, absolute),
+    }
+  }
 
     return (
       <Tag
-        href={url}
-        target={target}
+        {...linkProps}
         onClick={event => onClick && onClick(event, url)}
         data-testid="av-link-tag"
-        rel={setRel(url, target, absolute)}
+        tabIndex={0}
         ref={ref}
         {...props}
       >
