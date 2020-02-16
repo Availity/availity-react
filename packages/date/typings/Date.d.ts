@@ -1,10 +1,9 @@
 import * as React from 'react';
 import { SingleDatePickerShape } from 'react-dates';
-import { FieldValidator } from 'formik';
 
 export type limitType = {
   value?: number;
-  units?: string;
+  units?: String;
 };
 
 export type limitTypeAlt = {
@@ -13,18 +12,18 @@ export type limitTypeAlt = {
 };
 
 export interface DateBaseProps {
+  id?: string;
   name: string;
-  validate?: FieldValidator;
   disabled?: boolean | false;
-  className: string;
+  className?: string;
   min?: string | limitType | limitTypeAlt;
   max?: string | limitType | limitTypeAlt;
-  calendarIcon?: Node;
+  calendarIcon?: React.ReactNode;
   onChange?: Function;
   onPickerFocusChange?: Function;
   innerRef?: Function | string;
-  datePickerProps: object;
-  format: string;
+  datePickerProps?: object;
+  format?: string;
 }
 
 export interface DateProps extends SingleDatePickerShape, DateBaseProps {}
