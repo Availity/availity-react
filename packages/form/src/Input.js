@@ -4,11 +4,14 @@ import classNames from 'classnames';
 import { Input as RsInput } from 'reactstrap';
 import { useField } from 'formik';
 
-const Input = ({ tag: Tag, className, name, validate, ...rest }) => {
-  const [field, metadata] = useField({
-    name,
-    validate,
-  });
+const Input = ({
+  tag: Tag,
+  className,
+  onChange: propsOnChange,
+  name,
+  ...rest
+}) => {
+  const [{ onChange, ...field }, metadata] = useField(name);
 
   const classes = classNames(
     className,
@@ -28,7 +31,19 @@ const Input = ({ tag: Tag, className, name, validate, ...rest }) => {
   }
 
   return (
-    <Tag className={classes} name={name} {...field} {...extraProps} {...rest} />
+    <Tag
+      className={classes}
+      onChange={e => {
+        onChange(e);
+        if (propsOnChange) {
+          propsOnChange(e);
+        }
+      }}
+      name={name}
+      {...field}
+      {...extraProps}
+      {...rest}
+    />
   );
 };
 
@@ -36,7 +51,7 @@ Input.propTypes = {
   tag: PropTypes.oneOfType([PropTypes.func, PropTypes.string]),
   className: PropTypes.string,
   name: PropTypes.string.isRequired,
-  validate: PropTypes.func,
+  onChange: PropTypes.func,
 };
 
 Input.defaultProps = {
