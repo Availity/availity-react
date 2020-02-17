@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.5.5](https://github.com/Availity/availity-react/compare/@availity/form@0.5.4...@availity/form@0.5.5) (2020-02-17)
+
+
+### Bug Fixes
+
+* **form:** accidentally removed validate fn handler ([4d4154b](https://github.com/Availity/availity-react/commit/4d4154b6d076bf370fe7f9be3f1022930cbf2a5e))
+
+
+
+
+
 ## [0.5.4](https://github.com/Availity/availity-react/compare/@availity/form@0.5.3...@availity/form@0.5.4) (2020-02-16)
 
 **Note:** Version bump only for package @availity/form
