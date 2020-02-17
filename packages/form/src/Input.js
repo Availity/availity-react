@@ -8,10 +8,14 @@ const Input = ({
   tag: Tag,
   className,
   onChange: propsOnChange,
+  validate,
   name,
   ...rest
 }) => {
-  const [{ onChange, ...field }, metadata] = useField(name);
+  const [{ onChange, ...field }, metadata] = useField({
+    name,
+    validate,
+  });
 
   const classes = classNames(
     className,
@@ -50,6 +54,7 @@ const Input = ({
 Input.propTypes = {
   tag: PropTypes.oneOfType([PropTypes.func, PropTypes.string]),
   className: PropTypes.string,
+  validate: PropTypes.func,
   name: PropTypes.string.isRequired,
   onChange: PropTypes.func,
 };
