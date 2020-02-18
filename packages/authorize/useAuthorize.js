@@ -81,6 +81,7 @@ export default (
       : [permissions];
     const permissionsList = [].concat(...permissionsSets);
     const currentRegion = await getRegion();
+    setCurrentRegion(currentRegion);
     const newPermissions = (
       await avUserPermissionsApi.getPermissions(permissionsList, currentRegion)
     ).reduce((prev, cur) => {
@@ -104,7 +105,6 @@ export default (
     ) {
       setLoading(false);
       setAuthorized(authorized);
-      setCurrentRegion(currentRegion);
     }
   };
 
