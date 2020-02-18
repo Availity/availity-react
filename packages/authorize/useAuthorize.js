@@ -111,7 +111,11 @@ export default (
   useEffect(() => {
     if (!loading) setLoading(true);
 
-    if (permissions) checkPermissions();
+    if (permissions) {
+      checkPermissions();
+    } else {
+      setLoading(false);
+    }
     // todo - optimize this so we only have a permissions effect for fetching
     // and the others are just filters
     // eslint-disable-next-line react-hooks/exhaustive-deps
