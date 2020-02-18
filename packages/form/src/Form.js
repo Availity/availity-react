@@ -25,9 +25,9 @@ const Form = ({
     validationSchema={validationSchema}
     validate={validate}
   >
-    <RsForm data-testid="form-container" tag={FForm} {...rest}>
-      {children}
-    </RsForm>
+    {props => <RsForm data-testid="form-container" tag={FForm} {...rest}>
+      {typeof children === 'function' ? children(props) : children}
+    </RsForm>}
   </Formik>
 );
 
@@ -41,7 +41,7 @@ Form.propTypes = {
   initialTouched: PropTypes.object,
   validationSchema: PropTypes.object,
   validate: PropTypes.func,
-  children: PropTypes.node,
+  children: PropTypes.oneOf([PropTypes.func, PropTypes.node]),
 };
 
 Form.defaultProps = {
