@@ -41,7 +41,7 @@ Form.propTypes = {
   initialTouched: PropTypes.object,
   validationSchema: PropTypes.object,
   validate: PropTypes.func,
-  children: PropTypes.node,
+  children: PropTypes.oneOf([PropTypes.func, PropTypes.node]),
 };
 
 Form.defaultProps = {
