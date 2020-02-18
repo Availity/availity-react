@@ -7,6 +7,7 @@ export default (
 ) => {
   const [authorized, setAuthorized] = useState(false);
   const [loading, setLoading] = useState(true);
+  const [currentRegion, setCurrentRegion] = useState('');
 
   const getRegion = async () => {
     if (region === true) {
@@ -79,11 +80,9 @@ export default (
       ? permissions
       : [permissions];
     const permissionsList = [].concat(...permissionsSets);
+    const currentRegion = await getRegion();
     const newPermissions = (
-      await avUserPermissionsApi.getPermissions(
-        permissionsList,
-        await getRegion()
-      )
+      await avUserPermissionsApi.getPermissions(permissionsList, currentRegion)
     ).reduce((prev, cur) => {
       prev[cur.id] = cur;
       return prev;
@@ -105,6 +104,7 @@ export default (
     ) {
       setLoading(false);
       setAuthorized(authorized);
+      setCurrentRegion(currentRegion);
     }
   };
 
@@ -116,5 +116,5 @@ export default (
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [organizationId, region, customerId, permissions]);
 
-  return [authorized, loading];
+  return [authorized, loading, currentRegion];
 };
