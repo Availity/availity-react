@@ -7,6 +7,7 @@ export default (
 ) => {
   const [authorized, setAuthorized] = useState(false);
   const [loading, setLoading] = useState(true);
+  const [currentRegion, setCurrentRegion] = useState('');
 
   const getRegion = async () => {
     if (region === true) {
@@ -79,11 +80,10 @@ export default (
       ? permissions
       : [permissions];
     const permissionsList = [].concat(...permissionsSets);
+    const currentRegion = await getRegion();
+    setCurrentRegion(currentRegion);
     const newPermissions = (
-      await avUserPermissionsApi.getPermissions(
-        permissionsList,
-        await getRegion()
-      )
+      await avUserPermissionsApi.getPermissions(permissionsList, currentRegion)
     ).reduce((prev, cur) => {
       prev[cur.id] = cur;
       return prev;
@@ -110,11 +110,16 @@ export default (
 
   useEffect(() => {
     if (!loading) setLoading(true);
-    checkPermissions();
+
+    if (permissions) {
+      checkPermissions();
+    } else {
+      setLoading(false);
+    }
     // todo - optimize this so we only have a permissions effect for fetching
     // and the others are just filters
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [organizationId, region, customerId, permissions]);
 
-  return [authorized, loading];
+  return [authorized, loading, currentRegion];
 };

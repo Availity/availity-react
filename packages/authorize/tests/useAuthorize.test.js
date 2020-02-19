@@ -1,6 +1,6 @@
 import React from 'react';
-import { render, cleanup, waitForElement } from '@testing-library/react';
-import { avUserPermissionsApi } from '@availity/api-axios';
+import { render, cleanup, waitForElement, wait } from '@testing-library/react';
+import { avUserPermissionsApi, avRegionsApi } from '@availity/api-axios';
 import { useAuthorize } from '..';
 
 jest.mock('@availity/api-axios');
@@ -20,6 +20,26 @@ const Component = ({ permissions, children, ...options }) => {
 
   return authorized ? (
     children
+  ) : (
+    <span data-testid="component-content">
+      You do not have permission to see this
+    </span>
+  );
+};
+
+// eslint-disable-next-line react/prop-types
+const RegionComponent = ({ permissions, ...options }) => {
+  const [authorized, loading, currentRegion] = useAuthorize(
+    permissions,
+    options
+  );
+
+  if (loading) {
+    return <span data-testid="component-loading">Loading</span>;
+  }
+
+  return authorized ? (
+    <span data-testid="component-region">{currentRegion}</span>
   ) : (
     <span data-testid="component-content">
       You do not have permission to see this
@@ -50,6 +70,18 @@ beforeEach(() => {
       ],
     },
   ]);
+
+  avRegionsApi.getCurrentRegion.mockResolvedValue({
+    data: {
+      regions: [
+        {
+          id: 'WA',
+          value: 'Washington',
+          currentlySelected: true,
+        },
+      ],
+    },
+  });
 });
 
 describe('useAuthorize', () => {
@@ -277,5 +309,31 @@ describe('useAuthorize', () => {
     await waitForElement(() =>
       getByText('You do not have permission to see this')
     );
+  });
+
+  test('should get current region back from useAuthorize hook', async () => {
+    const { getByText } = await render(
+      <RegionComponent permissions="1234">
+        You have permission to see this
+      </RegionComponent>
+    );
+
+    await wait(() => {
+      expect(avUserPermissionsApi.getPermissions).toHaveBeenCalled();
+      expect(avRegionsApi.getCurrentRegion).toHaveBeenCalled();
+      expect(getByText('WA')).toBeDefined();
+    });
+  });
+
+  test('should not call permissions api if no permissions are passed', async () => {
+    const { getByText } = await render(
+      <RegionComponent>You have permission to see this</RegionComponent>
+    );
+
+    await wait(() => {
+      expect(avUserPermissionsApi.getPermissions).not.toHaveBeenCalled();
+      expect(avRegionsApi.getCurrentRegion).not.toHaveBeenCalled();
+      expect(getByText('You do not have permission to see this')).toBeDefined();
+    });
   });
 });
