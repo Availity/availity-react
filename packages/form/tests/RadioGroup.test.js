@@ -7,6 +7,32 @@ import { Form, Radio, RadioGroup } from '..';
 afterEach(cleanup);
 
 describe('RadioGroup', () => {
+  test('renders with group class name', async () => {
+    const { getByTestId } = render(
+      <Form
+        initialValues={{
+          hello: '',
+        }}
+        onSubmit={() => {}}
+        validationSchema={yup.object().shape({
+          hello: yup.string().required('This field is required'),
+        })}
+      >
+        <RadioGroup
+          name="hello"
+          label="Radio Group"
+          groupClassName="some-group"
+        >
+          <Radio label="Radio One" value="uno" />
+        </RadioGroup>
+        <Button type="submit">Submit</Button>
+      </Form>
+    );
+
+    const formControl = getByTestId('radio-items-hello');
+    expect(formControl.className).toContain('some-group');
+  });
+
   test('renders danger className when invalid form', async () => {
     const { getByText, getByTestId } = render(
       <Form
