@@ -39,7 +39,7 @@ const RegionComponent = ({ permissions, ...options }) => {
   }
 
   return authorized ? (
-    <span data-testid="component-region">{currentRegion}</span>
+    <span data-testid="component-region">{currentRegion.value}</span>
   ) : (
     <span data-testid="component-content">
       You do not have permission to see this
@@ -321,7 +321,7 @@ describe('useAuthorize', () => {
     await wait(() => {
       expect(avUserPermissionsApi.getPermissions).toHaveBeenCalled();
       expect(avRegionsApi.getCurrentRegion).toHaveBeenCalled();
-      expect(getByText('WA')).toBeDefined();
+      expect(getByText('Washington')).toBeDefined();
     });
   });
 

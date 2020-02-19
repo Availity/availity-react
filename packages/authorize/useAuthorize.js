@@ -12,14 +12,13 @@ export default (
   const getRegion = async () => {
     if (region === true) {
       const resp = await avRegionsApi.getCurrentRegion();
-      return (
-        (resp &&
-          resp.data &&
-          resp.data.regions &&
-          resp.data.regions[0] &&
-          resp.data.regions[0].id) ||
-        undefined
-      );
+      const currentRegion =
+        (resp && resp.data && resp.data.regions && resp.data.regions[0]) ||
+        undefined;
+
+      setCurrentRegion(currentRegion);
+
+      return (currentRegion && currentRegion.id) || undefined;
     }
     if (region) {
       return region;
@@ -80,10 +79,11 @@ export default (
       ? permissions
       : [permissions];
     const permissionsList = [].concat(...permissionsSets);
-    const currentRegion = await getRegion();
-    setCurrentRegion(currentRegion);
     const newPermissions = (
-      await avUserPermissionsApi.getPermissions(permissionsList, currentRegion)
+      await avUserPermissionsApi.getPermissions(
+        permissionsList,
+        await getRegion()
+      )
     ).reduce((prev, cur) => {
       prev[cur.id] = cur;
       return prev;
