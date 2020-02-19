@@ -7,6 +7,34 @@ import { Form, Checkbox, CheckboxGroup } from '..';
 afterEach(cleanup);
 
 describe('CheckboxGroup', () => {
+  test('renders with group class name', async () => {
+    const { getByTestId } = render(
+      <Form
+        initialValues={{
+          hello: [],
+        }}
+        onSubmit={() => {}}
+        // eslint-disable-next-line no-undef
+        validationSchema={yup.object().shape({
+          hello: yup.array().required('At least one checkbox is required'),
+        })}
+      >
+        <CheckboxGroup
+          name="hello"
+          label="Checkbox Group"
+          groupClassName="some-group"
+        >
+          <Checkbox label="Chcek One" value="uno" />
+        </CheckboxGroup>
+        <Button type="submit">Submit</Button>
+      </Form>
+    );
+
+    const formControl = getByTestId('check-items-hello');
+
+    expect(formControl.className).toContain('some-group');
+  });
+
   test('renders danger className when invalid form', async () => {
     const { getByText, getByTestId } = render(
       <Form

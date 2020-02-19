@@ -27,13 +27,21 @@ summary: Inputs of type radio. Radios should be wrapped in a RadioGroup.
 ## Props
 
 ### `id?: string`
+
 Should match `<RadioGroup />` name for validation.
 
 ### `label?: ReactNode`
+
 Label for the checkbox.
 
 ### `value?: string`
+
 Value of the checkbox.
 
 ### `disabled?: boolean`
+
 Disables the checkbox.
+
+### `inline?: boolean`
+
+Will render the checkbox inline with other checkboxes.
