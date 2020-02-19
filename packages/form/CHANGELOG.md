@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.5.7](https://github.com/Availity/availity-react/compare/@availity/form@0.5.6...@availity/form@0.5.7) (2020-02-19)
+
+
+### Bug Fixes
+
+* **form:** fixes incorrect PropType for children on Form ([4720cd0](https://github.com/Availity/availity-react/commit/4720cd0ef5537936e59cf27262e0327270854596))
+
+
+
+
+
 ## [0.5.6](https://github.com/Availity/availity-react/compare/@availity/form@0.5.5...@availity/form@0.5.6) (2020-02-18)
 
 **Note:** Version bump only for package @availity/form
