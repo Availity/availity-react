@@ -3,6 +3,23 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [1.5.0](https://github.com/Availity/availity-react/compare/@availity/authorize@1.4.3...@availity/authorize@1.5.0) (2020-02-19)
+
+
+### Features
+
+* **authorize:** adds currentRegion to values returned from useAuthorize() ([245dd2c](https://github.com/Availity/availity-react/commit/245dd2c7015ed77870247b0ecfaccd5922983a6d))
+* **authorize:** update type definition ([7a415c7](https://github.com/Availity/availity-react/commit/7a415c77fa042f60ba17b975a7c45eb4ab1e23a8))
+
+
+### Performance Improvements
+
+* **authorize:** dont need to check undefined permissions ([cb8fabe](https://github.com/Availity/availity-react/commit/cb8fabe6ab2e05e2b648b440dde414df37aa837c))
+
+
+
+
+
 ## [1.4.3](https://github.com/Availity/availity-react/compare/@availity/authorize@1.4.2...@availity/authorize@1.4.3) (2020-02-11)
 
 **Note:** Version bump only for package @availity/authorize

@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [4.10.0](https://github.com/Availity/availity-react/compare/@availity/react-docs@4.9.6...@availity/react-docs@4.10.0) (2020-02-19)
+
+
+### Features
+
+* **authorize:** adds currentRegion to values returned from useAuthorize() ([245dd2c](https://github.com/Availity/availity-react/commit/245dd2c7015ed77870247b0ecfaccd5922983a6d))
+
+
+
+
+
 ## [4.9.6](https://github.com/Availity/availity-react/compare/@availity/react-docs@4.9.5...@availity/react-docs@4.9.6) (2020-02-18)
 
 **Note:** Version bump only for package @availity/react-docs
