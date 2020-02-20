@@ -185,7 +185,16 @@ const Link = ({
             'media media-right': !stacked,
           })}
         >
-          {showNew && isNew(activeDate) && <Badge tabIndex={0}>New!</Badge>}
+          {showNew && isNew(activeDate) && (
+            <Badge
+              tabIndex={0}
+              className={classNames({
+                'mr-2': showDate,
+              })}
+            >
+              New!
+            </Badge>
+          )}
           {showDate && <small>{getDisplayDate(activeDate)}</small>}
         </div>
       ),
