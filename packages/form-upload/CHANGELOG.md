@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.2.0](https://github.com/Availity/availity-react/compare/@availity/form-upload@0.1.8...@availity/form-upload@0.2.0) (2020-02-20)
+
+
+### Features
+
+* **form-upload:** pass id of file removed in onFileRemove callback ([1e6e63c](https://github.com/Availity/availity-react/commit/1e6e63cd402e31f8fc9015364f9f20fc06af0f82))
+
+
+
+
+
 ## [0.1.8](https://github.com/Availity/availity-react/compare/@availity/form-upload@0.1.7...@availity/form-upload@0.1.8) (2020-02-19)
 
 **Note:** Version bump only for package @availity/form-upload

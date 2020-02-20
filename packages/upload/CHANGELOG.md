@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [2.3.0](https://github.com/Availity/availity-react/compare/@availity/upload@2.2.1...@availity/upload@2.3.0) (2020-02-20)
+
+
+### Features
+
+* **upload:** pass id of file removed in onFileRemove callback ([376eb43](https://github.com/Availity/availity-react/commit/376eb43a5081fd7f541657b1ccc7d67971a4d51c))
+
+
+
+
+
 ## [2.2.1](https://github.com/Availity/availity-react/compare/@availity/upload@2.2.0...@availity/upload@2.2.1) (2020-01-09)
 
 
