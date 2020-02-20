@@ -49,11 +49,11 @@ Restrict the file types allowed to be uploaded to. eg: `['.jpeg', '.jpg']`.
 
 ### `onFileUpload?: (upload: UploadCore) => void`
 
-Callback called when file is uploaded. The callback will be provided the `Upload` instance from upload-core SDK. Use this callback to track which files have been uploaded (to get references returned by the API).
+Callback called when file is uploaded. The callback is provided the `Upload` instance from upload-core SDK. Use this callback to track which files have been uploaded (to get references returned by the API).
 
-### `onFileRemove?: (files: Array<File>) => void`
+### `onFileRemove?: (files: Array<File>, fileId: String) => void`
 
-Callback called when file is removed. The callback will be provided the `Upload` instance from upload-core SDK.
+Callback called when file is removed. The callback is provided two arguments. 1. the updated files and 2. the id of the file that was removed
 
 ### `maxSize?: number`
 

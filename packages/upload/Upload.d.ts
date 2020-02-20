@@ -4,7 +4,7 @@ export interface UploadProps {
     customerId: string;
     clientId: string;
     allowedFileNameCharacters?: string;
-    allowedFileTypes?: Array<string>;
+    allowedFileTypes?: string[];
     onFileUpload?: Function;
     onFileRemove?: Function;
     maxSize?: number;

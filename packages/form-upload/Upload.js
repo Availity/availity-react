@@ -43,7 +43,7 @@ const Upload = ({
     if (newFiles.length !== fieldValue.length) {
       setFieldValue(name, newFiles, true);
 
-      if (rest.onFileRemove) rest.onFileRemove(newFiles);
+      if (rest.onFileRemove) rest.onFileRemove(newFiles, fileId);
     }
   };
 
