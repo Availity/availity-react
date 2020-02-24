@@ -3,6 +3,14 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [10.0.22](https://github.com/Availity/availity-react/compare/@availity/page-header@10.0.21...@availity/page-header@10.0.22) (2020-02-24)
+
+**Note:** Version bump only for package @availity/page-header
+
+
+
+
+
 ## [10.0.21](https://github.com/Availity/availity-react/compare/@availity/page-header@10.0.20...@availity/page-header@10.0.21) (2020-02-19)
 
 **Note:** Version bump only for package @availity/page-header
