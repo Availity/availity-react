@@ -3,10 +3,10 @@ import PropTypes from 'prop-types';
 import { isAbsoluteUrl } from '@availity/resolve-url';
 
 // if absolute or loadApp is disabled, return url. otherwise loadappify the url
-export const getUrl = (url = '', loadApp, absolute, target) => {
+export const getUrl = (url = '', loadApp, absolute) => {
   if (absolute) return url;
 
-  return target === '_blank' || loadApp
+  return loadApp
     ? `/public/apps/home/#!/loadApp?appUrl=${encodeURIComponent(url)}`
     : url;
 };
