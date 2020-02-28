@@ -19,6 +19,18 @@ export interface AnalyticsProps {
   attributePrefix?: string;
 }
 
+export interface TrackEventOptions<T> {
+  [key: keyof T]: T;
+  level: string;
+}
+export interface AnalyticsContext {
+  trackEvent<T>(trackEventOptions: TrackEventOptions<T>): Promise<void>;
+}
+
 declare const Analytics: React.FunctionComponent<AnalyticsProps>;
+
+declare const useAnalytics: () => AnalyticsContext;
+
+export { useAnalytics };
 
 export default Analytics;
