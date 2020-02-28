@@ -1,6 +1,7 @@
 import AvLocalStorage from '@availity/localstorage-core';
 import avMessage from '@availity/message-core';
 import { avUserApi } from '@availity/api-axios';
+import qs from 'query-string';
 import dayjs from 'dayjs';
 
 const localStorageCore = new AvLocalStorage();
@@ -127,13 +128,14 @@ export const updateParams = (uri, key, value) => {
 //    - http://www.example.com?foo=bar
 //
 export const updateUrl = (url, key, value) => {
-  const splitURL = url.split('#');
-  const hash = splitURL[1];
-  const uri = updateParams(splitURL[0], key, value);
+  const [uri, queryString] = url.split('?');
+  const currentParams = qs.parse(queryString);
+  const newParams = qs.stringify({
+    ...currentParams,
+    [key]: value,
+  });
 
-  const result = hash === undefined ? uri : `${uri}#${hash}`;
-
-  return result;
+  return `${uri}?${newParams}`;
 };
 
 /**
