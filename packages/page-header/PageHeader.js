@@ -12,6 +12,7 @@ import Spaces, {
 
 const PageHeader = ({
   payerId,
+  logo,
   spaceName,
   spaceId,
   children,
@@ -41,7 +42,7 @@ const PageHeader = ({
   const _space = spaceForSpaceID || spaceForPayerID;
 
   let payerLogo = null;
-  if (payerId) {
+  if (payerId || logo) {
     const logoAttrs = {
       spaceId,
       payerId,
@@ -52,7 +53,7 @@ const PageHeader = ({
       },
     };
     payerLogo =
-      spaceForPayerID || spacesIsLoading ? (
+      spaceForPayerID || (logo && spaceForSpaceID) || spacesIsLoading ? (
         <SpacesLogo {...logoAttrs} />
       ) : (
         <Spaces
@@ -172,6 +173,7 @@ PageHeader.propTypes = {
     ),
     PropTypes.node,
   ]),
+  logo: PropTypes.bool,
   tag: PropTypes.oneOfType([PropTypes.func, PropTypes.string]),
   renderRightContent: PropTypes.func,
   renderRightClassName: PropTypes.string,

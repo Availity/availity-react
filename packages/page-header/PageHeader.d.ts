@@ -19,11 +19,14 @@ export interface PageHeaderProps extends React.HTMLAttributes<HTMLDivElement> {
   component?: React.ReactType;
   feedback?: boolean;
   feedbackProps?: any;
-  linkTag?: React.ComponentType<React.HTMLAttributes<HTMLAnchorElement>> | string;
+  logo?: boolean;
+  linkTag?:
+    | React.ComponentType<React.HTMLAttributes<HTMLAnchorElement>>
+    | string;
   titleProps?: React.HTMLAttributes<HTMLDivElement>;
   renderRightContent?: React.FunctionComponent<RightContentProps>;
   children?: React.ReactType;
-  crumbs?: Array<CrumbType> | React.ReactType;
+  crumbs?: CrumbType[] | React.ReactType;
   iconSrc?: string;
   iconAlt?: string;
   clientId?: string;
