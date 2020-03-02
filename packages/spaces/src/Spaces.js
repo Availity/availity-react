@@ -89,6 +89,14 @@ const Spaces = ({
             )
         );
 
+      if (filteredSpaceIDs.length === 0 && filteredPayerIDs.length === 0) {
+        dispatch({
+          type: 'LOADING',
+          loading: false,
+        });
+        return;
+      }
+
       let _spaces = [];
       if (filteredSpaceIDs.length > 0) {
         const vars = { ...variables, ids: filteredSpaceIDs };
