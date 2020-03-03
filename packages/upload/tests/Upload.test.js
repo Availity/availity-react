@@ -1,5 +1,5 @@
 import React from 'react';
-import { render, fireEvent, cleanup } from '@testing-library/react';
+import { render, fireEvent, cleanup, wait } from '@testing-library/react';
 import Upload from '..';
 
 afterEach(cleanup);
@@ -96,5 +96,62 @@ describe('Upload', () => {
     fireEvent.drop(inputNode, fileEvent);
 
     expect(inputNode.files.length).toBe(1);
+  });
+
+  test('uses default drop rejection message', async () => {
+    const { getByTestId, getByText } = render(
+      <Upload
+        clientId="a"
+        bucketId="b"
+        customerId="c"
+        showFileDrop
+        maxSize={10}
+      />
+    );
+    const file = new Buffer.from('hello world'.split('')); // eslint-disable-line new-cap
+    file.name = 'fileName.png';
+    file.size = 11;
+
+    const inputNode = getByTestId('file-picker');
+    const fileEvent = { target: { files: [file] } };
+
+    fireEvent.drop(inputNode, fileEvent);
+
+    expect(inputNode.files.length).toBe(1);
+    await wait(() => {
+      expect(getByText('File is too large')).toBeDefined();
+    });
+  });
+
+  test('uses custom drop rejection message', async () => {
+    const getDropRejectionMessage = code => {
+      if (code === 'file-too-large') {
+        return 'my custom error message';
+      }
+      return 'this file is no good';
+    };
+    const { getByTestId, getByText } = render(
+      <Upload
+        clientId="a"
+        bucketId="b"
+        customerId="c"
+        showFileDrop
+        maxSize={10}
+        getDropRejectionMessage={getDropRejectionMessage}
+      />
+    );
+    const file = new Buffer.from('hello world'.split('')); // eslint-disable-line new-cap
+    file.name = 'fileName.png';
+    file.size = 11;
+
+    const inputNode = getByTestId('file-picker');
+    const fileEvent = { target: { files: [file] } };
+
+    fireEvent.drop(inputNode, fileEvent);
+
+    expect(inputNode.files.length).toBe(1);
+    await wait(() => {
+      expect(getByText('my custom error message')).toBeDefined();
+    });
   });
 });

@@ -13,6 +13,7 @@ export interface UploadProps {
     children?: Function;
     name?: string;
     showFileDrop?: boolean;
+    getDropRejectionMessage?: ((errorCode: string, file: File) => string);
 }
 
 declare const Upload: React.ComponentType<UploadProps>;
