@@ -13,7 +13,7 @@ import { PaginationContent } from '@availity/pagination';
 <PaginationContent
   loadingMessage="loading"
   component={Component}
-  itemkey="id"
+  itemKey="id"
 />
 ```
 
@@ -22,7 +22,7 @@ import { PaginationContent } from '@availity/pagination';
 ### `component? React.ComponentType`
 The component to render when iterating through the current page of items. The contents of the item will be spread on the props of the component when rendered.
 
-### `itemkey: string`
+### `itemKey: string`
 The key of the object rendered in the component to be used during mapping.
 
 ### `loadingMessage?: string`
