@@ -22,7 +22,7 @@ import { PaginationContent } from '@availity/pagination';
 ### `component? React.ComponentType`
 The component to render when iterating through the current page of items. The contents of the item will be spread on the props of the component when rendered.
 
-### `itemKey: string`
+### `itemkey: string`
 The key of the object rendered in the component to be used during mapping.
 
 ### `loadingMessage?: string`
