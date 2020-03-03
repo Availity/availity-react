@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import UploadCore from '@availity/upload-core';
 import { Input, InputGroup } from 'reactstrap';
 import { FormGroup, Feedback } from '@availity/form';
-import Dropzone from 'react-dropzone';
+import Dropzone from '@twarner/react-dropzone';
 import Icon from '@availity/icon';
 import { useField, useFormikContext } from 'formik';
 import classNames from 'classnames';
@@ -28,7 +28,7 @@ const Upload = ({
 }) => {
   const input = useRef(null);
   const [field, metadata] = useField(name);
-  const { setFieldValue, setFieldError } = useFormikContext();
+  const { setFieldValue } = useFormikContext();
   const classes = classNames(
     className,
     metadata.touched ? 'is-touched' : 'is-untouched',
@@ -38,7 +38,6 @@ const Upload = ({
   const fieldValue = Array.isArray(field.value) ? field.value : [];
 
   const removeFile = fileId => {
-    setFieldError(name, null);
     const newFiles = fieldValue.filter(file => file.id !== fileId);
     if (newFiles.length !== fieldValue.length) {
       setFieldValue(name, newFiles, true);
@@ -71,13 +70,16 @@ const Upload = ({
           allowedFileNameCharacters: rest.allowedFileNameCharacters,
         });
         upload.id = `${upload.id}-${uuid()}`;
-        upload.start();
+        if (file.dropRejectionMessage) {
+          upload.errorMessage = file.dropRejectionMessage;
+        } else {
+          upload.start();
+        }
         if (rest.onFileUpload) rest.onFileUpload(upload);
         return upload;
       })
     );
 
-    setFieldError(name, null);
     setFieldValue(name, newFiles, true);
   };
 
@@ -85,15 +87,27 @@ const Upload = ({
     setFiles(event.target.files);
   };
 
-  const onDrop = (acceptedFiles, rejectedFiles) => {
-    if (rejectedFiles && rejectedFiles.length > 0) {
-      const fileNames = rejectedFiles.map(
-        rejectedFile => rejectedFile && rejectedFile.name
-      );
-      setFieldError(name, `Could not attach ${fileNames.slice().join(', ')}`);
-    }
+  // eslint-disable-next-line unicorn/consistent-function-scoping
+  const getDropRejectionMessage = code => {
+    if (code === 'file-too-large') return 'File is too large';
+    if (code === 'file-too-small') return 'File is too small';
+    if (code === 'file-invalid-type') return 'File is an invalid type';
+    if (code === 'file-excessive')
+      return 'File exceeds maximum number of files';
 
-    setFiles(acceptedFiles);
+    return 'File was rejected';
+  };
+
+  const onDrop = (acceptedFiles, rejectedFiles, event, rejectReasons) => {
+    const rejectedFilesToDrop = rejectReasons.map(({ file, code }) => {
+      const dropRejectionMessage = rest.getDropRejectionMessage
+        ? rest.getDropRejectionMessage(code, file)
+        : getDropRejectionMessage(code);
+
+      file.dropRejectionMessage = dropRejectionMessage;
+      return file;
+    });
+    setFiles([...acceptedFiles, ...rejectedFilesToDrop]);
   };
 
   let fileAddArea;
@@ -116,6 +130,7 @@ const Upload = ({
               maxSize={maxSize}
               className="file-drop"
               activeClassName="file-drop-active"
+              accept={allowedFileTypes}
             >
               {({ getRootProps, getInputProps }) => (
                 <section>
