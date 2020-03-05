@@ -91,9 +91,9 @@
     tus-js-client "1.7.1"
 
 "@availity/yup@^2.0.0":
-  version "2.0.8"
-  resolved "https://registry.yarnpkg.com/@availity/yup/-/yup-2.0.8.tgz#ab407970308ab181bf55dd18c0c1111880b3f36d"
-  integrity sha512-ohQRAtOzrcSagjg7QrH598jrf1rzl/7Zdzgy+HVirVeM0VzyG75V6CBNNXoz8OTJd9+L6QgriNnwYJs7mq0p6g==
+  version "2.0.9"
+  resolved "https://registry.yarnpkg.com/@availity/yup/-/yup-2.0.9.tgz#1ed55e64bc1178028b10821d95f3582d9efff9d5"
+  integrity sha512-fp/KEiS+V8qZ5+yaoDVL5J4RmJSlZSkEfYurC+A1Wv0poaNH1rfR2BmoPxo39pXvJHCCm91uorzTH0QNUdWbHw==
   dependencies:
     lodash.get "^4.4.2"
     merge-options-es5 "^1.0.0"
