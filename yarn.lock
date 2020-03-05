@@ -8,9 +8,9 @@
   integrity sha512-0LftYsC+6AR+unvut0MTquw/fwk57yEEd3l+iILBskP5tR6x1WdHN0T+EdsbBNkbFceJ/4T3jQHjxpICWtOQbw==
 
 "@availity/api-axios@^5.4.0", "@availity/api-axios@^5.4.4":
-  version "5.4.21"
-  resolved "https://registry.yarnpkg.com/@availity/api-axios/-/api-axios-5.4.21.tgz#51fc1b383ddf41038738d748edd84b7eab2c4990"
-  integrity sha512-9ttA71jsaRdgD16+5bBDrUrFjdGVgWVnIiji87rb8pdh1PZ5B5lyWF/dPj9XFLBRMN7xXkBo0Sl5oheVEtLBmQ==
+  version "5.4.22"
+  resolved "https://registry.yarnpkg.com/@availity/api-axios/-/api-axios-5.4.22.tgz#d474798822847766c956d877cd7dfff8084ea8dd"
+  integrity sha512-rQqx28pA9LtSyRLx7/StOsLcOy21uFCoh2J+z7j+qumU3rzXi35gWSfyOi6ytQT1lJ1I6H4QcmYIK9IUWex5Vg==
   dependencies:
     merge-options-es5 "^1.0.0"
 
