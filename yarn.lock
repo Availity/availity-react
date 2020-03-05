@@ -77,17 +77,18 @@
   resolved "https://registry.yarnpkg.com/@availity/message-core/-/message-core-4.0.13.tgz#b7bbaab9bced1595f4b413bac7218450eec23257"
   integrity sha512-Cc77q3G5Y8aYcOpfJ2LySMZbD2uJM1M+e8Z+FQGNaDMgAnyjpWC7jxxhiQCYP+wVuLejOeEKH2hHwcl8NijKWQ==
 
-"@availity/resolve-url@^1.1.0", "@availity/resolve-url@^1.1.1", "@availity/resolve-url@^1.1.13":
+"@availity/resolve-url@^1.1.0", "@availity/resolve-url@^1.1.1", "@availity/resolve-url@^1.1.13", "@availity/resolve-url@^1.1.5":
   version "1.1.13"
   resolved "https://registry.yarnpkg.com/@availity/resolve-url/-/resolve-url-1.1.13.tgz#97447f33588cd453fb7917fb9c962638cca5fa7d"
   integrity sha512-GNQJeKy015ecyPzZrkNUK0R5/Ll/j6E3RDF1s+j1DLta617lvCzuzCZUg97EmSI6u+Qtp8pOUBwJsdEDxCwu4Q==
 
 "@availity/upload-core@^3.0.4":
-  version "3.1.10"
-  resolved "https://registry.yarnpkg.com/@availity/upload-core/-/upload-core-3.1.10.tgz#f48c36fe17b9ab850d2f2384a42a2c2503e160d1"
-  integrity sha512-6He2kV5ltHRUvP/T6pSfIbI1xzhpan5rfPmLPjkSirx/VDvftGXCyt0Kam5SZxZ6ZbTaNFGdZHnUmL0vfA01Hw==
+  version "3.2.0"
+  resolved "https://registry.yarnpkg.com/@availity/upload-core/-/upload-core-3.2.0.tgz#97dfda7f243b12b03a7185a79f1ca573cbc7e86f"
+  integrity sha512-ZjAMvV4emGx94o6wLaqs1YrmHQHVpY5CtC3TcdLPNS7Y+sdHeugRRFDn3ztAGBmgN3JonFVC5u28C/mTdJ5w/A==
   dependencies:
-    "@availity/resolve-url" "^1.1.13"
+    "@availity/resolve-url" "^1.1.5"
+    tus-js-client "1.7.1"
 
 "@availity/yup@^2.0.0":
   version "2.0.8"
@@ -20960,6 +20961,17 @@ tunnel-agent@^0.6.0:
   integrity sha1-J6XeoGs2sEoKmWZ3SykIaPD8QP0=
   dependencies:
     safe-buffer "^5.0.1"
+
+tus-js-client@1.7.1:
+  version "1.7.1"
+  resolved "https://registry.yarnpkg.com/tus-js-client/-/tus-js-client-1.7.1.tgz#1485176052f9a360a957f475edf8e5076e339881"
+  integrity sha512-38NMOvjZm/HQTdmwLctXqctsUUsiuZsdUGBew6xn3/s1D7ofzjW/VBRAp+uAWrzN0ziAmo2WuiZ9FMP9UeU0UQ==
+  dependencies:
+    buffer-from "^0.1.1"
+    extend "^3.0.0"
+    js-base64 "^2.4.9"
+    lodash.throttle "^4.1.1"
+    url-parse "^1.4.3"
 
 tus-js-client@^1.5.1, tus-js-client@^1.7.1:
   version "1.8.0"
