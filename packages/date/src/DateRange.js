@@ -60,6 +60,7 @@ const DateRange = ({
   datepicker,
   autoSync,
   ranges: propsRanges,
+  customArrowIcon,
   ...attributes
 }) => {
   const { setFieldValue, setFieldTouched } = useFormikContext();
@@ -265,7 +266,7 @@ const DateRange = ({
           disabled={attributes.disabled}
           onFocusChange={onFocusChange}
           renderCalendarInfo={renderDateRanges}
-          customArrowIcon="-"
+          customArrowIcon={customArrowIcon}
           isOutsideRange={isOutsideRange(min, max, format)}
           customInputIcon={
             datepicker
@@ -312,6 +313,7 @@ DateRange.propTypes = {
     PropTypes.array,
     PropTypes.object,
   ]),
+  customArrowIcon: PropTypes.oneOfType([PropTypes.string, PropTypes.node]),
 };
 
 DateRange.defaultProps = {
