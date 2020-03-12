@@ -162,7 +162,9 @@
 .is-invalid {
   .SingleDatePicker input.DateInput_input,
   .DateRangePickerInput .DateRangePickerInput_arrow,
-  .DateRangePickerInput input.DateInput_input {
+  .DateRangePickerInput input.DateInput_input,
+  .DateRangePickerInput_calendarIcon,
+  .SingleDatePickerInput_calendarIcon {
     border-color: #dc3545;
   }
   .DateRangePickerInput .DateInput:nth-of-type(1) input.DateInput_input {
