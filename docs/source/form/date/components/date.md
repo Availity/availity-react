@@ -38,7 +38,7 @@ import moment from 'moment';
       Submit
     </Button>
   </Form>
-</div>;
+</div>
 ```
 
 ## Props
@@ -96,3 +96,20 @@ Toggle whether the calendar is shown.
 ### `datePickerProps?: SingleDatePickerShape`
 
 Props to be spread onto the datepicker component from [react-dates](https://github.com/airbnb/react-dates#singledatepicker).
+
+### `yearPickerProps?: object`
+
+Props to passed to the `renderMonthElement` function for `SingleDatePicker`. `renderMonthElement` will render both month and year pickers to help speed up selection of dates.
+
+```js
+yearPickerProps: {
+  minYear: 1999,
+  maxYear: 2020,
+}
+```
+
+**Defaults:
+
+`minYear: moment().year() - 100`
+
+`maxYear: moment().year()`

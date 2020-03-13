@@ -1,5 +1,11 @@
 import React from 'react';
-import { render, fireEvent, wait, cleanup } from '@testing-library/react';
+import {
+  render,
+  fireEvent,
+  wait,
+  cleanup,
+  within,
+} from '@testing-library/react';
 import { Button } from 'reactstrap';
 import { Form } from '@availity/form';
 import '@availity/yup/moment';
@@ -140,5 +146,132 @@ describe('Date', () => {
         expect.anything()
       );
     });
+  });
+
+  test('renders month picker', async () => {
+    const { container, getAllByTestId } = render(
+      <Form
+        initialValues={{
+          singleDate: '',
+        }}
+      >
+        <FormikDate name="singleDate" />
+      </Form>
+    );
+
+    const input = container.querySelector('.DateInput_input');
+
+    fireEvent.focus(input);
+
+    // There will be multiple pickers because react-dates renders hidden prev/next CalendarMonthGrids
+    const monthPickers = getAllByTestId('monthPicker');
+    expect(monthPickers.length).toBe(3);
+
+    const currentGridMonthPicker = monthPickers[1];
+    expect(currentGridMonthPicker.children.length).toBe(12); // 12 options -> 12 months of year
+
+    const jan = within(currentGridMonthPicker).getByText('January');
+    expect(jan).toBeDefined();
+  });
+
+  test('renders year picker with given range', async () => {
+    const minYear = 1919;
+    const maxYear = 2020;
+    const someYear = '1947';
+
+    const { container, getAllByTestId } = render(
+      <Form
+        initialValues={{
+          singleDate: '',
+        }}
+      >
+        <FormikDate
+          name="singleDate"
+          yearPickerProps={{
+            minYear,
+            maxYear,
+          }}
+        />
+      </Form>
+    );
+
+    const input = container.querySelector('.DateInput_input');
+
+    fireEvent.focus(input);
+
+    // There will be multiple pickers because react-dates renders hidden prev/next CalendarMonthGrids
+    const yearPickers = getAllByTestId('yearPicker');
+    expect(yearPickers.length).toBe(3);
+
+    const currentGridYearPicker = yearPickers[1];
+    expect(currentGridYearPicker.children.length).toBe(maxYear - minYear + 1);
+
+    const pickedYear = within(currentGridYearPicker).getByText(someYear);
+    expect(pickedYear).toBeDefined();
+  });
+
+  test('renders new year option when navigating past initial range', async () => {
+    const onChange = jest.fn();
+
+    const minYear = 2019;
+    const maxYear = 2020;
+    const newYear = `${maxYear + 1}`;
+
+    const { container, getAllByTestId } = render(
+      <Form
+        initialValues={{
+          singleDate: '',
+        }}
+      >
+        <FormikDate
+          name="singleDate"
+          yearPickerProps={{
+            minYear,
+            maxYear,
+          }}
+          onChange={onChange}
+        />
+      </Form>
+    );
+
+    const input = container.querySelector('.DateInput_input');
+
+    fireEvent.focus(input);
+
+    // There will be multiple pickers because react-dates renders hidden prev/next CalendarMonthGrids
+    let yearPickers = getAllByTestId('yearPicker');
+    expect(yearPickers.length).toBe(3);
+
+    let currentGridYearPicker = yearPickers[1];
+    let nextGridYearPicker = yearPickers[2]; // next in this context refers to the next CalendarMonthGrid to be rendered
+
+    // Expect year options to have same length as range of initial options
+    expect(currentGridYearPicker.children.length).toBe(maxYear - minYear + 1);
+    expect(nextGridYearPicker.children.length).toBe(maxYear - minYear + 1);
+
+    fireEvent.change(input, {
+      target: {
+        value: `12/25/${maxYear}`,
+      },
+    });
+
+    await wait(() => {
+      expect(onChange.mock.calls[0][0]).toBe(`${maxYear}-12-25`);
+    });
+
+    fireEvent.focus(input);
+
+    // re-query to grab updated values and reassign
+    yearPickers = getAllByTestId('yearPicker');
+    currentGridYearPicker = yearPickers[1];
+    nextGridYearPicker = yearPickers[2];
+
+    // Expect current MonthGrid to have same number of options, it is still December of maxYear
+    // Expect next MonthGrid (January) to have new year option created
+    expect(currentGridYearPicker.children.length).toBe(maxYear - minYear + 1);
+    expect(nextGridYearPicker.children.length).toBe(maxYear - minYear + 2);
+
+    const pickedYear = within(nextGridYearPicker).getByText(newYear);
+    expect(pickedYear).toBeDefined();
   });
 });

@@ -1,5 +1,11 @@
 import React from 'react';
-import { render, fireEvent, wait, cleanup } from '@testing-library/react';
+import {
+  render,
+  fireEvent,
+  wait,
+  cleanup,
+  within,
+} from '@testing-library/react';
 import { Button } from 'reactstrap';
 import { Form } from '@availity/form';
 import '@availity/yup/moment';
@@ -374,5 +380,152 @@ describe('DateRange', () => {
     expect(
       container.querySelectorAll('.DateInput_input.DateInput_input_1')[1].value
     ).toEqual(today);
+  });
+
+  test('renders month picker', async () => {
+    const { container, getAllByTestId } = render(
+      <Form
+        initialValues={{
+          dateRange: '',
+        }}
+      >
+        <DateRange name="dateRange" />
+      </Form>
+    );
+
+    // Simulate user entering start date
+    const start = container.querySelector('#dateRange-start');
+
+    fireEvent.focus(start);
+
+    // There will be multiple pickers because react-dates renders hidden prev/next CalendarMonthGrids
+    const monthPickers = getAllByTestId('monthPicker');
+    expect(monthPickers.length).toBe(4);
+
+    const currentGridMonthPicker = monthPickers[1];
+    expect(currentGridMonthPicker.children.length).toBe(12); // 12 options -> 12 months of year
+
+    const jan = within(currentGridMonthPicker).getByText('January');
+    expect(jan).toBeDefined();
+  });
+
+  test('renders year picker with given range', async () => {
+    const minYear = 1919;
+    const maxYear = 2020;
+    const someYear = '1947';
+
+    const { container, getAllByTestId } = render(
+      <Form
+        initialValues={{
+          dateRange: '',
+        }}
+      >
+        <DateRange
+          name="dateRange"
+          yearPickerProps={{
+            minYear,
+            maxYear,
+          }}
+        />
+      </Form>
+    );
+
+    // Simulate user entering start date
+    const start = container.querySelector('#dateRange-start');
+
+    fireEvent.focus(start);
+
+    // There will be multiple pickers because react-dates renders hidden prev/next CalendarMonthGrids
+    const yearPickers = getAllByTestId('yearPicker');
+    expect(yearPickers.length).toBe(4);
+
+    const currentGridYearPicker = yearPickers[1];
+    expect(currentGridYearPicker.children.length).toBe(maxYear - minYear + 1);
+
+    const pickedYear = within(currentGridYearPicker).getByText(someYear);
+    expect(pickedYear).toBeDefined();
+  });
+
+  test('renders new year option when navigating past initial range', async () => {
+    const onChange = jest.fn();
+
+    const minYear = 2019;
+    const maxYear = 2020;
+    const newYear = `${maxYear + 1}`;
+
+    const { container, getAllByTestId } = render(
+      <Form
+        initialValues={{
+          dateRange: '',
+        }}
+      >
+        <DateRange
+          name="dateRange"
+          yearPickerProps={{
+            minYear,
+            maxYear,
+          }}
+          onChange={onChange}
+        />
+      </Form>
+    );
+
+    // Simulate user entering start date
+    const start = container.querySelector('#dateRange-start');
+    const end = container.querySelector('#dateRange-end');
+
+    fireEvent.focus(start);
+
+    // There will be multiple pickers because react-dates renders hidden prev/next CalendarMonthGrids
+    let yearPickers = getAllByTestId('yearPicker');
+    expect(yearPickers.length).toBe(4);
+
+    let currentGridYearPicker = yearPickers[1];
+    let nextGridYearPicker = yearPickers[2]; // next in this context refers to the next CalendarMonthGrid to be rendered
+
+    // Expect year options to have same length as range of initial options
+    expect(currentGridYearPicker.children.length).toBe(maxYear - minYear + 1);
+    expect(nextGridYearPicker.children.length).toBe(maxYear - minYear + 1);
+
+    fireEvent.change(start, {
+      target: {
+        value: `12/25/${maxYear}`,
+      },
+    });
+
+    fireEvent.focus(end);
+
+    fireEvent.change(end, {
+      target: {
+        value: `12/26/${maxYear}`,
+      },
+    });
+
+    await wait(() => {
+      expect(onChange.mock.calls[0][0]).toStrictEqual({
+        endDate: undefined,
+        startDate: `${maxYear}-12-25`,
+      });
+
+      expect(onChange.mock.calls[1][0]).toStrictEqual({
+        endDate: `${maxYear}-12-26`,
+        startDate: `${maxYear}-12-25`,
+      });
+    });
+
+    fireEvent.focus(start);
+
+    // re-query to grab updated values and reassign
+    yearPickers = getAllByTestId('yearPicker');
+    currentGridYearPicker = yearPickers[1];
+    nextGridYearPicker = yearPickers[3];
+
+    // Expect current MonthGrid to have same number of options, it is still December of maxYear
+    // Expect next MonthGrid (January) to have new year option created
+    expect(currentGridYearPicker.children.length).toBe(maxYear - minYear + 1);
+    expect(nextGridYearPicker.children.length).toBe(maxYear - minYear + 2);
+
+    const pickedYear = within(nextGridYearPicker).getByText(newYear);
+    expect(pickedYear).toBeDefined();
   });
 });

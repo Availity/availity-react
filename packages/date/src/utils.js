@@ -65,3 +65,26 @@ export const isSameDay = (a, b) => {
     a.date() === b.date() && a.month() === b.month() && a.year() === b.year()
   );
 };
+
+export const buildYearPickerOptions = (minYear, maxYear, month) => {
+  // As user scrolls forwards or backwards (or inputs date on their own), it's possible for them to end up
+  // with a year outside the min or max range. To avoid displaying incorrect year values in <select/> , we should
+  // compare month.year() to minYear and maxYear and use the appropriate value for min/max
+  const yearPickerOptions = [];
+
+  let min = minYear;
+  let max = maxYear;
+  if (month.year() > maxYear) {
+    max = month.year();
+  } else if (month.year() < minYear) {
+    min = month.year();
+  }
+
+  for (let year = min; year <= max; year++) {
+    yearPickerOptions.push({
+      value: year,
+      label: `${year}`,
+    });
+  }
+  return yearPickerOptions;
+};

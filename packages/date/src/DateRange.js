@@ -1,7 +1,7 @@
 import React, { useState, useRef } from 'react';
 import PropTypes from 'prop-types';
 import Icon from '@availity/icon';
-import { InputGroup, Input, Button } from 'reactstrap';
+import { InputGroup, Input, Button, Row, Col } from 'reactstrap';
 import { DateRangePicker } from 'react-dates';
 import classNames from 'classnames';
 import { useField, useFormikContext } from 'formik';
@@ -10,7 +10,12 @@ import pick from 'lodash.pick';
 import moment from 'moment';
 import '../polyfills';
 
-import { isOutsideRange, limitPropType, isSameDay } from './utils';
+import {
+  isOutsideRange,
+  limitPropType,
+  isSameDay,
+  buildYearPickerOptions,
+} from './utils';
 
 const isoDateFormat = 'YYYY-MM-DD';
 
@@ -61,6 +66,7 @@ const DateRange = ({
   autoSync,
   ranges: propsRanges,
   customArrowIcon,
+  yearPickerProps,
   ...attributes
 }) => {
   const { setFieldValue, setFieldTouched } = useFormikContext();
@@ -239,6 +245,55 @@ const DateRange = ({
     ) : null;
   };
 
+  const renderMonthElement = ({ month, onMonthSelect, onYearSelect }) => {
+    const { minYear, maxYear } = yearPickerProps;
+    // TODO: optimize call to buildYearPickerOptions
+    const yearPickerOptions = buildYearPickerOptions(minYear, maxYear, month);
+    return (
+      <Row>
+        <Col>
+          <select
+            data-testid="monthPicker"
+            value={month.month()}
+            onChange={e => {
+              onMonthSelect(month, e.target.value);
+            }}
+          >
+            {moment.months().map((label, value) => (
+              <option key={label} value={value}>
+                {label}
+              </option>
+            ))}
+          </select>
+        </Col>
+        <Col>
+          <select
+            data-testid="yearPicker"
+            style={{
+              minWidth: '100%', // 4 digit years not wide enough to fill column
+            }}
+            value={month.year()}
+            onChange={e => {
+              onYearSelect(month, e.target.value);
+            }}
+          >
+            {yearPickerOptions.map(({ value, label }) => (
+              <option key={label} value={value}>
+                {label}
+              </option>
+            ))}
+          </select>
+        </Col>
+      </Row>
+    );
+  };
+
+  renderMonthElement.propTypes = {
+    month: PropTypes.instanceOf(moment),
+    onMonthSelect: PropTypes.func,
+    onYearSelect: PropTypes.func,
+  };
+
   return (
     <>
       <Input name={name} style={{ display: 'none' }} className={classes} />
@@ -253,6 +308,7 @@ const DateRange = ({
         }}
       >
         <DateRangePicker
+          renderMonthElement={renderMonthElement}
           minimumNights={0}
           {...datepickerProps}
           startDate={getDateValue(startValue)}
@@ -314,6 +370,7 @@ DateRange.propTypes = {
     PropTypes.object,
   ]),
   customArrowIcon: PropTypes.oneOfType([PropTypes.string, PropTypes.node]),
+  yearPickerProps: PropTypes.object,
 };
 
 DateRange.defaultProps = {
@@ -322,6 +379,10 @@ DateRange.defaultProps = {
   startKey: 'startDate',
   endKey: 'endDate',
   datepicker: true,
+  yearPickerProps: {
+    minYear: moment().year() - 10,
+    maxYear: moment().year(),
+  },
 };
 
 export default DateRange;

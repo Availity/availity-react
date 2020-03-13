@@ -5,12 +5,12 @@ import { useField, useFormikContext } from 'formik';
 import 'react-dates/initialize';
 import { SingleDatePicker } from 'react-dates';
 import Icon from '@availity/icon';
-import { InputGroup, Input } from 'reactstrap';
+import { InputGroup, Input, Row, Col } from 'reactstrap';
 import moment from 'moment';
 import '../polyfills';
 import '../styles.scss';
 
-import { isOutsideRange, limitPropType } from './utils';
+import { isOutsideRange, limitPropType, buildYearPickerOptions } from './utils';
 
 export const isoDateFormat = 'YYYY-MM-DD';
 
@@ -27,6 +27,7 @@ const AvDate = ({
   format,
   validate,
   datePickerProps,
+  yearPickerProps,
   'data-testid': dataTestId,
   ...attributes
 }) => {
@@ -109,6 +110,55 @@ const AvDate = ({
     return null;
   };
 
+  const renderMonthElement = ({ month, onMonthSelect, onYearSelect }) => {
+    const { minYear, maxYear } = yearPickerProps;
+    // TODO: optimize call to buildYearPickerOptions
+    const yearPickerOptions = buildYearPickerOptions(minYear, maxYear, month);
+    return (
+      <Row>
+        <Col>
+          <select
+            data-testid="monthPicker"
+            value={month.month()}
+            onChange={e => {
+              onMonthSelect(month, e.target.value);
+            }}
+          >
+            {moment.months().map((label, value) => (
+              <option key={label} value={value}>
+                {label}
+              </option>
+            ))}
+          </select>
+        </Col>
+        <Col>
+          <select
+            data-testid="yearPicker"
+            style={{
+              minWidth: '100%', // 4 digit years not wide enough to fill column
+            }}
+            value={month.year()}
+            onChange={e => {
+              onYearSelect(month, e.target.value);
+            }}
+          >
+            {yearPickerOptions.map(({ value, label }) => (
+              <option key={label} value={value}>
+                {label}
+              </option>
+            ))}
+          </select>
+        </Col>
+      </Row>
+    );
+  };
+
+  renderMonthElement.propTypes = {
+    month: PropTypes.instanceOf(moment),
+    onMonthSelect: PropTypes.func,
+    onYearSelect: PropTypes.func,
+  };
+
   return (
     <>
       <Input name={name} style={{ display: 'none' }} className={classes} />
@@ -121,6 +171,7 @@ const AvDate = ({
         data-testid={`date-input-group-${name}`}
       >
         <SingleDatePicker
+          renderMonthElement={renderMonthElement}
           {...datePickerProps}
           disabled={attributes.disabled}
           id={pickerId}
@@ -134,6 +185,7 @@ const AvDate = ({
           customInputIcon={datepicker ? calendarIcon : undefined}
           showDefaultInputIcon={datepicker}
           inputIconPosition="after"
+          navPosition="navPositionBottom"
         />
       </InputGroup>
     </>
@@ -155,12 +207,17 @@ AvDate.propTypes = {
   datepicker: PropTypes.bool,
   validate: PropTypes.func,
   datePickerProps: PropTypes.object,
+  yearPickerProps: PropTypes.object,
 };
 
 AvDate.defaultProps = {
   calendarIcon: <Icon name="calendar" />,
   format: 'MM/DD/YYYY',
   datepicker: true,
+  yearPickerProps: {
+    minYear: moment().year() - 100,
+    maxYear: moment().year(),
+  },
 };
 
 export default AvDate;

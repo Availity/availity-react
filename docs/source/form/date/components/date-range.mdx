@@ -138,3 +138,20 @@ interface MomentDateRange {
   endDate: (moment: Moment) => Moment;
 }
 ```
+
+### `yearPickerProps?: object`
+
+Props to passed to the `renderMonthElement` function for `SingleDatePicker`. `renderMonthElement` will render both month and year pickers to help speed up selection of dates.
+
+```js
+yearPickerProps: {
+  minYear: 1999,
+  maxYear: 2020,
+}
+```
+
+**Defaults:
+
+`minYear: moment().year() - 100`
+
+`maxYear: moment().year()`

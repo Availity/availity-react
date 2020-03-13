@@ -76,4 +76,40 @@ describe('utils', () => {
       expect(isOutside).toBe(false);
     });
   });
+
+  describe('buildYearPickerOptions', () => {
+    it('renders correct options based on minYear and maxYear', () => {
+      const month = moment();
+      const minYear = 2019;
+      const maxYear = 2020;
+
+      const yearPicker = UTILS.buildYearPickerOptions(minYear, maxYear, month);
+
+      expect(yearPicker.length).toBe(maxYear - minYear + 1);
+    });
+
+    it('renders correct options when current month.year() > maxYear', () => {
+      const month = moment().add(2, 'years');
+      const minYear = 2019;
+      const maxYear = 2020;
+
+      const yearPicker = UTILS.buildYearPickerOptions(minYear, maxYear, month);
+
+      expect(yearPicker.length).toBe(month.year() - minYear + 1);
+      expect(yearPicker.length).not.toBe(maxYear - minYear + 1);
+      expect(yearPicker[yearPicker.length - 1].value).toBe(month.year());
+    });
+
+    it('renders correct options current month.year() < minYear', () => {
+      const month = moment().subtract(2, 'years');
+      const minYear = 2019;
+      const maxYear = 2020;
+
+      const yearPicker = UTILS.buildYearPickerOptions(minYear, maxYear, month);
+
+      expect(yearPicker.length).toBe(maxYear - month.year() + 1);
+      expect(yearPicker.length).not.toBe(maxYear - minYear + 1);
+      expect(yearPicker[0].value).toBe(month.year());
+    });
+  });
 });
