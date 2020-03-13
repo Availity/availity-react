@@ -15,7 +15,7 @@ import { PaginationControls } from '@availity/pagination';
 ## Props
 
 ### `directionLinks?: boolean`
-If enabled, shows next and previous aroos on the "Next" and "Back" buttons.
+If enabled, shows next and previous arrows on the "Next" and "Back" buttons.
 
 ### `autoHide?: boolean`
 If enabled and there are no items, the component is hidden.
