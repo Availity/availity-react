@@ -339,6 +339,7 @@ const DateRange = ({
           showDefaultInputIcon={datepicker}
           inputIconPosition="after"
           numberOfMonths={2}
+          navPosition="navPositionBottom"
         />
       </InputGroup>
     </>
