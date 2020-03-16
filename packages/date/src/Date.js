@@ -116,13 +116,14 @@ const AvDate = ({
         <Col>
           <select
             data-testid="monthPicker"
+            aria-label="month picker"
             value={month.month()}
             onChange={e => {
               onMonthSelect(month, e.target.value);
             }}
           >
             {moment.months().map((label, value) => (
-              <option key={label} value={value}>
+              <option key={label} value={value} aria-label={label}>
                 {label}
               </option>
             ))}
@@ -131,6 +132,7 @@ const AvDate = ({
         <Col>
           <select
             data-testid="yearPicker"
+            aria-label="year picker"
             style={{
               minWidth: '100%', // 4 digit years not wide enough to fill column
             }}
@@ -140,7 +142,7 @@ const AvDate = ({
             }}
           >
             {yearPickerOptions.map(({ value, label }) => (
-              <option key={label} value={value}>
+              <option key={label} value={value} aria-label={label}>
                 {label}
               </option>
             ))}
