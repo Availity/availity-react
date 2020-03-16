@@ -175,8 +175,8 @@ describe('Date', () => {
   });
 
   test('renders year picker with given range', async () => {
-    const minYear = 1919;
-    const maxYear = 2020;
+    const min = moment().subtract(101, 'years');
+    const max = moment();
     const someYear = '1947';
 
     const { container, getAllByTestId } = render(
@@ -185,13 +185,7 @@ describe('Date', () => {
           singleDate: '',
         }}
       >
-        <FormikDate
-          name="singleDate"
-          yearPickerProps={{
-            minYear,
-            maxYear,
-          }}
-        />
+        <FormikDate name="singleDate" min={min} max={max} />
       </Form>
     );
 
@@ -204,7 +198,9 @@ describe('Date', () => {
     expect(yearPickers.length).toBe(3);
 
     const currentGridYearPicker = yearPickers[1];
-    expect(currentGridYearPicker.children.length).toBe(maxYear - minYear + 1);
+    expect(currentGridYearPicker.children.length).toBe(
+      max.year() - min.year() + 1
+    );
 
     const pickedYear = within(currentGridYearPicker).getByText(someYear);
     expect(pickedYear).toBeDefined();
@@ -213,9 +209,9 @@ describe('Date', () => {
   test('renders new year option when navigating past initial range', async () => {
     const onChange = jest.fn();
 
-    const minYear = 2019;
-    const maxYear = 2020;
-    const newYear = `${maxYear + 1}`;
+    const min = moment().subtract(1, 'years');
+    const max = moment('12/31/2020');
+    const newYear = `${max.year() + 1}`;
 
     const { container, getAllByTestId } = render(
       <Form
@@ -223,14 +219,7 @@ describe('Date', () => {
           singleDate: '',
         }}
       >
-        <FormikDate
-          name="singleDate"
-          yearPickerProps={{
-            minYear,
-            maxYear,
-          }}
-          onChange={onChange}
-        />
+        <FormikDate name="singleDate" min={min} max={max} onChange={onChange} />
       </Form>
     );
 
@@ -246,17 +235,21 @@ describe('Date', () => {
     let nextGridYearPicker = yearPickers[2]; // next in this context refers to the next CalendarMonthGrid to be rendered
 
     // Expect year options to have same length as range of initial options
-    expect(currentGridYearPicker.children.length).toBe(maxYear - minYear + 1);
-    expect(nextGridYearPicker.children.length).toBe(maxYear - minYear + 1);
+    expect(currentGridYearPicker.children.length).toBe(
+      max.year() - min.year() + 1
+    );
+    expect(nextGridYearPicker.children.length).toBe(
+      max.year() - min.year() + 1
+    );
 
     fireEvent.change(input, {
       target: {
-        value: `12/25/${maxYear}`,
+        value: `12/25/${max.year()}`,
       },
     });
 
     await wait(() => {
-      expect(onChange.mock.calls[0][0]).toBe(`${maxYear}-12-25`);
+      expect(onChange.mock.calls[0][0]).toBe(`${max.year()}-12-25`);
     });
 
     fireEvent.focus(input);
@@ -266,10 +259,14 @@ describe('Date', () => {
     currentGridYearPicker = yearPickers[1];
     nextGridYearPicker = yearPickers[2];
 
-    // Expect current MonthGrid to have same number of options, it is still December of maxYear
+    // Expect current MonthGrid to have same number of options, it is still December of max
     // Expect next MonthGrid (January) to have new year option created
-    expect(currentGridYearPicker.children.length).toBe(maxYear - minYear + 1);
-    expect(nextGridYearPicker.children.length).toBe(maxYear - minYear + 2);
+    expect(currentGridYearPicker.children.length).toBe(
+      max.year() - min.year() + 1
+    );
+    expect(nextGridYearPicker.children.length).toBe(
+      max.year() - min.year() + 2
+    );
 
     const pickedYear = within(nextGridYearPicker).getByText(newYear);
     expect(pickedYear).toBeDefined();

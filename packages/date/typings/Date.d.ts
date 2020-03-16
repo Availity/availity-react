@@ -11,11 +11,6 @@ export type limitTypeAlt = {
   _isValid?: Function;
 };
 
-type yearPickerProps = {
-  minYear?: number;
-  maxYear?: number;
-};
-
 export interface DateBaseProps {
   id: string;
   name: string;
@@ -29,7 +24,6 @@ export interface DateBaseProps {
   innerRef?: Function | string;
   datePickerProps?: object;
   format?: string;
-  yearPickerProps?: yearPickerProps;
 }
 
 export interface DateProps extends SingleDatePickerShape, DateBaseProps {}

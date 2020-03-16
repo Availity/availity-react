@@ -55,7 +55,7 @@ Whether the date is disabled.
 
 ### `min?: string | LimitType`
 
-Used in conjunction with `max` to derive `isOutsideRange` prop from `react-dates`. Dates outside the allowed range will not be clickable in datepicker.
+Used in conjunction with `max` to derive `isOutsideRange` prop from `react-dates` and selectable year options in datepicker. Dates outside the allowed range will not be clickable in datepicker.
 
 ```json hideCopy=true
 {
@@ -67,7 +67,7 @@ Used in conjunction with `max` to derive `isOutsideRange` prop from `react-dates
 
 ### `max?: string | LimitType`
 
-Used in conjunction with `min` to derive `isOutsideRange` prop from `react-dates`. Dates outside the allowed range will not be clickable in datepicker.
+Used in conjunction with `min` to derive `isOutsideRange` prop from `react-dates` and selectable year options in datepicker. Dates outside the allowed range will not be clickable in datepicker.
 
 ```json hideCopy=true
 {
@@ -96,20 +96,3 @@ Toggle whether the calendar is shown.
 ### `datePickerProps?: SingleDatePickerShape`
 
 Props to be spread onto the datepicker component from [react-dates](https://github.com/airbnb/react-dates#singledatepicker).
-
-### `yearPickerProps?: object`
-
-Props to passed to the `renderMonthElement` function for `SingleDatePicker`. `renderMonthElement` will render both month and year pickers to help speed up selection of dates.
-
-```js
-yearPickerProps: {
-  minYear: 1999,
-  maxYear: 2020,
-}
-```
-
-**Defaults:
-
-`minYear: moment().year() - 100`
-
-`maxYear: moment().year()`

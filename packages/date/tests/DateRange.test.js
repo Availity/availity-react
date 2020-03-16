@@ -410,8 +410,8 @@ describe('DateRange', () => {
   });
 
   test('renders year picker with given range', async () => {
-    const minYear = 1919;
-    const maxYear = 2020;
+    const min = moment().subtract(101, 'years');
+    const max = moment();
     const someYear = '1947';
 
     const { container, getAllByTestId } = render(
@@ -420,13 +420,7 @@ describe('DateRange', () => {
           dateRange: '',
         }}
       >
-        <DateRange
-          name="dateRange"
-          yearPickerProps={{
-            minYear,
-            maxYear,
-          }}
-        />
+        <DateRange name="dateRange" min={min} max={max} />
       </Form>
     );
 
@@ -440,7 +434,9 @@ describe('DateRange', () => {
     expect(yearPickers.length).toBe(4);
 
     const currentGridYearPicker = yearPickers[1];
-    expect(currentGridYearPicker.children.length).toBe(maxYear - minYear + 1);
+    expect(currentGridYearPicker.children.length).toBe(
+      max.year() - min.year() + 1
+    );
 
     const pickedYear = within(currentGridYearPicker).getByText(someYear);
     expect(pickedYear).toBeDefined();
@@ -449,9 +445,9 @@ describe('DateRange', () => {
   test('renders new year option when navigating past initial range', async () => {
     const onChange = jest.fn();
 
-    const minYear = 2019;
-    const maxYear = 2020;
-    const newYear = `${maxYear + 1}`;
+    const min = moment().subtract(1, 'years');
+    const max = moment('12/31/2020');
+    const newYear = `${max.year() + 1}`;
 
     const { container, getAllByTestId } = render(
       <Form
@@ -459,14 +455,7 @@ describe('DateRange', () => {
           dateRange: '',
         }}
       >
-        <DateRange
-          name="dateRange"
-          yearPickerProps={{
-            minYear,
-            maxYear,
-          }}
-          onChange={onChange}
-        />
+        <DateRange name="dateRange" min={min} max={max} onChange={onChange} />
       </Form>
     );
 
@@ -484,12 +473,16 @@ describe('DateRange', () => {
     let nextGridYearPicker = yearPickers[2]; // next in this context refers to the next CalendarMonthGrid to be rendered
 
     // Expect year options to have same length as range of initial options
-    expect(currentGridYearPicker.children.length).toBe(maxYear - minYear + 1);
-    expect(nextGridYearPicker.children.length).toBe(maxYear - minYear + 1);
+    expect(currentGridYearPicker.children.length).toBe(
+      max.year() - min.year() + 1
+    );
+    expect(nextGridYearPicker.children.length).toBe(
+      max.year() - min.year() + 1
+    );
 
     fireEvent.change(start, {
       target: {
-        value: `12/25/${maxYear}`,
+        value: `12/25/${max.year()}`,
       },
     });
 
@@ -497,19 +490,19 @@ describe('DateRange', () => {
 
     fireEvent.change(end, {
       target: {
-        value: `12/26/${maxYear}`,
+        value: `12/26/${max.year()}`,
       },
     });
 
     await wait(() => {
       expect(onChange.mock.calls[0][0]).toStrictEqual({
         endDate: undefined,
-        startDate: `${maxYear}-12-25`,
+        startDate: `${max.year()}-12-25`,
       });
 
       expect(onChange.mock.calls[1][0]).toStrictEqual({
-        endDate: `${maxYear}-12-26`,
-        startDate: `${maxYear}-12-25`,
+        endDate: `${max.year()}-12-26`,
+        startDate: `${max.year()}-12-25`,
       });
     });
 
@@ -520,10 +513,14 @@ describe('DateRange', () => {
     currentGridYearPicker = yearPickers[1];
     nextGridYearPicker = yearPickers[3];
 
-    // Expect current MonthGrid to have same number of options, it is still December of maxYear
+    // Expect current MonthGrid to have same number of options, it is still December of max
     // Expect next MonthGrid (January) to have new year option created
-    expect(currentGridYearPicker.children.length).toBe(maxYear - minYear + 1);
-    expect(nextGridYearPicker.children.length).toBe(maxYear - minYear + 2);
+    expect(currentGridYearPicker.children.length).toBe(
+      max.year() - min.year() + 1
+    );
+    expect(nextGridYearPicker.children.length).toBe(
+      max.year() - min.year() + 2
+    );
 
     const pickedYear = within(nextGridYearPicker).getByText(newYear);
     expect(pickedYear).toBeDefined();

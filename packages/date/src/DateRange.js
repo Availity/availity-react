@@ -66,7 +66,6 @@ const DateRange = ({
   autoSync,
   ranges: propsRanges,
   customArrowIcon,
-  yearPickerProps,
   ...attributes
 }) => {
   const { setFieldValue, setFieldTouched } = useFormikContext();
@@ -232,8 +231,8 @@ const DateRange = ({
                 setFieldTouched(startKey, true);
                 setFieldTouched(endKey, true);
 
-                // // Focucs the calendar icon once clicked because we don't
-                // // want to get back in the loop of opening the calendar
+                // Focus the calendar icon once clicked because we don't
+                // want to get back in the loop of opening the calendar
                 calendarIconRef.current.parentElement.focus();
               }}
             >
@@ -246,9 +245,7 @@ const DateRange = ({
   };
 
   const renderMonthElement = ({ month, onMonthSelect, onYearSelect }) => {
-    const { minYear, maxYear } = yearPickerProps;
-    // TODO: optimize call to buildYearPickerOptions
-    const yearPickerOptions = buildYearPickerOptions(minYear, maxYear, month);
+    const yearPickerOptions = buildYearPickerOptions(min, max, month, format);
     return (
       <Row>
         <Col>
@@ -371,7 +368,6 @@ DateRange.propTypes = {
     PropTypes.object,
   ]),
   customArrowIcon: PropTypes.oneOfType([PropTypes.string, PropTypes.node]),
-  yearPickerProps: PropTypes.object,
 };
 
 DateRange.defaultProps = {
@@ -380,10 +376,6 @@ DateRange.defaultProps = {
   startKey: 'startDate',
   endKey: 'endDate',
   datepicker: true,
-  yearPickerProps: {
-    minYear: moment().year() - 10,
-    maxYear: moment().year(),
-  },
 };
 
 export default DateRange;

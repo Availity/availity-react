@@ -27,7 +27,6 @@ const AvDate = ({
   format,
   validate,
   datePickerProps,
-  yearPickerProps,
   'data-testid': dataTestId,
   ...attributes
 }) => {
@@ -111,9 +110,7 @@ const AvDate = ({
   };
 
   const renderMonthElement = ({ month, onMonthSelect, onYearSelect }) => {
-    const { minYear, maxYear } = yearPickerProps;
-    // TODO: optimize call to buildYearPickerOptions
-    const yearPickerOptions = buildYearPickerOptions(minYear, maxYear, month);
+    const yearPickerOptions = buildYearPickerOptions(min, max, month, format);
     return (
       <Row>
         <Col>
@@ -207,17 +204,12 @@ AvDate.propTypes = {
   datepicker: PropTypes.bool,
   validate: PropTypes.func,
   datePickerProps: PropTypes.object,
-  yearPickerProps: PropTypes.object,
 };
 
 AvDate.defaultProps = {
   calendarIcon: <Icon name="calendar" />,
   format: 'MM/DD/YYYY',
   datepicker: true,
-  yearPickerProps: {
-    minYear: moment().year() - 100,
-    maxYear: moment().year(),
-  },
 };
 
 export default AvDate;
