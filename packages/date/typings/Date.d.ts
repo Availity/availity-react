@@ -3,7 +3,7 @@ import { SingleDatePickerShape } from 'react-dates';
 
 export type limitType = {
   value?: number;
-  units?: String;
+  units?: string;
 };
 
 export type limitTypeAlt = {
@@ -12,7 +12,7 @@ export type limitTypeAlt = {
 };
 
 export interface DateBaseProps {
-  id?: string;
+  id: string;
   name: string;
   disabled?: boolean | false;
   className?: string;

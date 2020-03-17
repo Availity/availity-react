@@ -1,7 +1,7 @@
 import React, { useState, useRef } from 'react';
 import PropTypes from 'prop-types';
 import Icon from '@availity/icon';
-import { InputGroup, Input, Button } from 'reactstrap';
+import { InputGroup, Input, Button, Row, Col } from 'reactstrap';
 import { DateRangePicker } from 'react-dates';
 import classNames from 'classnames';
 import { useField, useFormikContext } from 'formik';
@@ -10,7 +10,12 @@ import pick from 'lodash.pick';
 import moment from 'moment';
 import '../polyfills';
 
-import { isOutsideRange, limitPropType, isSameDay } from './utils';
+import {
+  isOutsideRange,
+  limitPropType,
+  isSameDay,
+  buildYearPickerOptions,
+} from './utils';
 
 const isoDateFormat = 'YYYY-MM-DD';
 
@@ -60,6 +65,7 @@ const DateRange = ({
   datepicker,
   autoSync,
   ranges: propsRanges,
+  customArrowIcon,
   ...attributes
 }) => {
   const { setFieldValue, setFieldTouched } = useFormikContext();
@@ -225,8 +231,8 @@ const DateRange = ({
                 setFieldTouched(startKey, true);
                 setFieldTouched(endKey, true);
 
-                // // Focucs the calendar icon once clicked because we don't
-                // // want to get back in the loop of opening the calendar
+                // Focus the calendar icon once clicked because we don't
+                // want to get back in the loop of opening the calendar
                 calendarIconRef.current.parentElement.focus();
               }}
             >
@@ -236,6 +242,55 @@ const DateRange = ({
         })}
       </div>
     ) : null;
+  };
+
+  const renderMonthElement = ({ month, onMonthSelect, onYearSelect }) => {
+    const yearPickerOptions = buildYearPickerOptions(min, max, month, format);
+    return (
+      <Row>
+        <Col>
+          <select
+            data-testid="monthPicker"
+            aria-label="month picker"
+            value={month.month()}
+            onChange={e => {
+              onMonthSelect(month, e.target.value);
+            }}
+          >
+            {moment.months().map((label, value) => (
+              <option key={label} value={value} aria-label={label}>
+                {label}
+              </option>
+            ))}
+          </select>
+        </Col>
+        <Col>
+          <select
+            data-testid="yearPicker"
+            aria-label="year picker"
+            style={{
+              minWidth: '100%', // 4 digit years not wide enough to fill column
+            }}
+            value={month.year()}
+            onChange={e => {
+              onYearSelect(month, e.target.value);
+            }}
+          >
+            {yearPickerOptions.map(({ value, label }) => (
+              <option key={label} value={value} aria-label={label}>
+                {label}
+              </option>
+            ))}
+          </select>
+        </Col>
+      </Row>
+    );
+  };
+
+  renderMonthElement.propTypes = {
+    month: PropTypes.instanceOf(moment),
+    onMonthSelect: PropTypes.func,
+    onYearSelect: PropTypes.func,
   };
 
   return (
@@ -252,6 +307,7 @@ const DateRange = ({
         }}
       >
         <DateRangePicker
+          renderMonthElement={renderMonthElement}
           minimumNights={0}
           {...datepickerProps}
           startDate={getDateValue(startValue)}
@@ -265,7 +321,7 @@ const DateRange = ({
           disabled={attributes.disabled}
           onFocusChange={onFocusChange}
           renderCalendarInfo={renderDateRanges}
-          customArrowIcon="-"
+          customArrowIcon={customArrowIcon}
           isOutsideRange={isOutsideRange(min, max, format)}
           customInputIcon={
             datepicker
@@ -282,6 +338,7 @@ const DateRange = ({
           showDefaultInputIcon={datepicker}
           inputIconPosition="after"
           numberOfMonths={2}
+          navPosition="navPositionBottom"
         />
       </InputGroup>
     </>
@@ -312,6 +369,7 @@ DateRange.propTypes = {
     PropTypes.array,
     PropTypes.object,
   ]),
+  customArrowIcon: PropTypes.oneOfType([PropTypes.string, PropTypes.node]),
 };
 
 DateRange.defaultProps = {

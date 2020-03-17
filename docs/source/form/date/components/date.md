@@ -38,7 +38,7 @@ import moment from 'moment';
       Submit
     </Button>
   </Form>
-</div>;
+</div>
 ```
 
 ## Props
@@ -55,7 +55,7 @@ Whether the date is disabled.
 
 ### `min?: string | LimitType`
 
-Used in conjunction with `max` to derive `isOutsideRange` prop from `react-dates`. Dates outside the allowed range will not be clickable in datepicker.
+Used in conjunction with `max` to derive `isOutsideRange` prop from `react-dates` and selectable year options in datepicker. Dates outside the allowed range will not be clickable in datepicker.
 
 ```json hideCopy=true
 {
@@ -67,7 +67,7 @@ Used in conjunction with `max` to derive `isOutsideRange` prop from `react-dates
 
 ### `max?: string | LimitType`
 
-Used in conjunction with `min` to derive `isOutsideRange` prop from `react-dates`. Dates outside the allowed range will not be clickable in datepicker.
+Used in conjunction with `min` to derive `isOutsideRange` prop from `react-dates` and selectable year options in datepicker. Dates outside the allowed range will not be clickable in datepicker.
 
 ```json hideCopy=true
 {

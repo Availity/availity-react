@@ -76,4 +76,82 @@ describe('utils', () => {
       expect(isOutside).toBe(false);
     });
   });
+
+  describe('buildYearPickerOptions', () => {
+    it('renders correct options when min and max are moments', () => {
+      const month = moment();
+      const min = moment().subtract(2, 'years');
+      const max = moment().add(2, 'years');
+
+      const yearPicker = UTILS.buildYearPickerOptions(min, max, month);
+
+      expect(yearPicker.length).toBe(max.year() - min.year() + 1);
+    });
+
+    it('renders correct options when min and max are objects with values and units', () => {
+      const month = moment();
+      const min = { value: 3, units: 'years' };
+      const max = { value: 1, units: 'years' };
+
+      const yearPicker = UTILS.buildYearPickerOptions(min, max, month);
+
+      expect(yearPicker.length).toBe(
+        moment()
+          .add(max.value, max.units)
+          .year() -
+          moment()
+            .subtract(min.value, min.units)
+            .year() +
+          1
+      );
+    });
+
+    it('renders correct options when min and max are strings', () => {
+      const month = moment();
+      const min = '01/01/1999';
+      const max = '12/31/2020';
+
+      const minMoment = moment(min, [
+        'YYYY-MM-DD',
+        'MM/DD/YYYY',
+        'MMDDYYYY',
+        'YYYYMMDD',
+      ]);
+
+      const maxMoment = moment(max, [
+        'YYYY-MM-DD',
+        'MM/DD/YYYY',
+        'MMDDYYYY',
+        'YYYYMMDD',
+      ]);
+
+      const yearPicker = UTILS.buildYearPickerOptions(min, max, month);
+
+      expect(yearPicker.length).toBe(maxMoment.year() - minMoment.year() + 1);
+    });
+
+    it('renders correct options when current month.year() > max', () => {
+      const month = moment().add(2, 'years');
+      const min = moment().subtract(1, 'years');
+      const max = moment().add(1, 'years');
+
+      const yearPicker = UTILS.buildYearPickerOptions(min, max, month);
+
+      expect(yearPicker.length).toBe(month.year() - min.year() + 1);
+      expect(yearPicker.length).not.toBe(max.year() - min.year() + 1);
+      expect(yearPicker[yearPicker.length - 1].value).toBe(month.year());
+    });
+
+    it('renders correct options current month.year() < min', () => {
+      const month = moment().subtract(2, 'years');
+      const min = moment().subtract(1, 'years');
+      const max = moment().add(1, 'years');
+
+      const yearPicker = UTILS.buildYearPickerOptions(min, max, month);
+
+      expect(yearPicker.length).toBe(max.year() - month.year() + 1);
+      expect(yearPicker.length).not.toBe(max.year() - min.year() + 1);
+      expect(yearPicker[0].value).toBe(month.year());
+    });
+  });
 });
