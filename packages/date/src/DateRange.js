@@ -69,6 +69,7 @@ const DateRange = ({
   const calendarIconRef = useRef();
 
   const startId = `${(id || name).replace(/[^a-zA-Z0-9]/gi, '')}-start`;
+
   const endId = `${(id || name).replace(/[^a-zA-Z0-9]/gi, '')}-end`;
 
   const startValue = get(value, startKey);
