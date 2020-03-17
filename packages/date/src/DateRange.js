@@ -67,7 +67,6 @@ const DateRange = ({
   const [focusedInput, setFocusedInput] = useState(null);
 
   const calendarIconRef = useRef();
-
   const startId = `${(id || name).replace(/[^a-zA-Z0-9]/gi, '')}-start`;
 
   const endId = `${(id || name).replace(/[^a-zA-Z0-9]/gi, '')}-end`;
@@ -159,7 +158,7 @@ const DateRange = ({
 
   const onFocusChange = async input => {
     if (!input) await setFieldTouched(name, true);
-    if (autoSync) await syncDates();
+    if (autoSync && !endValue) await syncDates();
     setFocusedInput(input);
     if (onPickerFocusChange) onPickerFocusChange({ focusedInput: input });
   };
