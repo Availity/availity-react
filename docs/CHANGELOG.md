@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [4.12.0](https://github.com/Availity/availity-react/compare/@availity/react-docs@4.11.9...@availity/react-docs@4.12.0) (2020-03-17)
+
+
+### Features
+
+* **date:** add yearPickerProps, allow users to select month and year values from dropdowns ([89cc059](https://github.com/Availity/availity-react/commit/89cc059cc8c8ad80183605a39eee78e9351b5d26))
+
+
+
+
+
 ## [4.11.9](https://github.com/Availity/availity-react/compare/@availity/react-docs@4.11.8...@availity/react-docs@4.11.9) (2020-03-03)
 
 **Note:** Version bump only for package @availity/react-docs

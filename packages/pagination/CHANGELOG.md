@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [2.7.1](https://github.com/Availity/availity-react/compare/@availity/pagination@2.7.0...@availity/pagination@2.7.1) (2020-03-17)
+
+
+### Bug Fixes
+
+* **pagination:** set zIndex to 'auto' to avoid creating new stacking context ([15f4fb1](https://github.com/Availity/availity-react/commit/15f4fb13107f34dc7002849b05b24cd1cecab00a))
+
+
+
+
+
 # [2.7.0](https://github.com/Availity/availity-react/compare/@availity/pagination@2.6.2...@availity/pagination@2.7.0) (2020-02-11)
 
 

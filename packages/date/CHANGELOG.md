@@ -3,6 +3,18 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [1.1.0](https://github.com/Availity/availity-react/compare/@availity/date@1.0.5...@availity/date@1.1.0) (2020-03-17)
+
+
+### Features
+
+* **date:** add yearPickerProps, allow users to select month and year values from dropdowns ([89cc059](https://github.com/Availity/availity-react/commit/89cc059cc8c8ad80183605a39eee78e9351b5d26))
+* **date:** allow user to specify customArrowIcon ([bc39ed9](https://github.com/Availity/availity-react/commit/bc39ed94e6db7c41111d5f86570967b364c7712a))
+
+
+
+
+
 ## [1.0.5](https://github.com/Availity/availity-react/compare/@availity/date@1.0.4...@availity/date@1.0.5) (2020-02-24)
 
 **Note:** Version bump only for package @availity/date
