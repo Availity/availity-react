@@ -158,9 +158,9 @@ const DateRange = ({
   };
 
   const onFocusChange = async input => {
-    if (!autoSync && !input) await setFieldTouched(name, true);
-    if (autoSync && focusedInput === input) await syncDates();
-    setFocusedInput(input);
+    if (!input) await setFieldTouched(name, true);
+    if (autoSync) await syncDates();
+    if (focusedInput !== input) setFocusedInput(input);
     if (onPickerFocusChange) onPickerFocusChange({ focusedInput: input });
   };
 
