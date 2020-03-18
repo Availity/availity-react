@@ -92,7 +92,7 @@ const DateRange = ({
 
   // For updating when we delete the current input
   const onInputChange = val => {
-    const isStart = focusedInput === 'startDate';
+    const isStart = focusedInput === startKey;
     const date = moment(
       val,
       [isoDateFormat, format, 'MMDDYYYY', 'YYYYMMDD'],
@@ -111,7 +111,7 @@ const DateRange = ({
     );
 
     if (focusedInput && isStart && date.isValid()) {
-      setFocusedInput('endDate');
+      setFocusedInput(endKey);
     } else if (focusedInput && !isStart && date.isValid()) {
       setFocusedInput();
     }
