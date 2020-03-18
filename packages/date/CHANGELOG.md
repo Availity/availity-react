@@ -3,6 +3,22 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.1.1](https://github.com/Availity/availity-react/compare/@availity/date@1.1.0...@availity/date@1.1.1) (2020-03-18)
+
+
+### Bug Fixes
+
+* **date:** autosync infinite loop ([88ed321](https://github.com/Availity/availity-react/commit/88ed321da7640391d09adb9c18d5f03c482584aa))
+* **date:** autosync infinite loop ([3ad0b07](https://github.com/Availity/availity-react/commit/3ad0b07957589b1f8e7de3db0685094391254a15))
+* **date:** autosync infinite loop ([27c6a2a](https://github.com/Availity/availity-react/commit/27c6a2a42edd0fdbae1b8c3bdf9e1374e7715d7b))
+* **date:** edited condition for clarity ([3abce16](https://github.com/Availity/availity-react/commit/3abce1699090e85156192b0a3d468d16e9c0e7e6))
+* **date:** narrowed down conditions ([e2d56fc](https://github.com/Availity/availity-react/commit/e2d56fccecfd2ae63474838fbad455dcb22dcc4e))
+* **date:** removed infinite loop for setting date without messing up endDate to startDate sync ([da0acda](https://github.com/Availity/availity-react/commit/da0acdaeb2fc7c94bd11f6aa3f9b26fdb46ed1aa))
+
+
+
+
+
 # [1.1.0](https://github.com/Availity/availity-react/compare/@availity/date@1.0.5...@availity/date@1.1.0) (2020-03-17)
 
 
