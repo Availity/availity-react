@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.1.2](https://github.com/Availity/availity-react/compare/@availity/date@1.1.1...@availity/date@1.1.2) (2020-03-18)
+
+
+### Bug Fixes
+
+* **date:** onFocusChange should only call setFieldTouched once ([49d84ee](https://github.com/Availity/availity-react/commit/49d84eedd397a3dc9184ec78334b63ad5605fb0b))
+
+
+
+
+
 ## [1.1.1](https://github.com/Availity/availity-react/compare/@availity/date@1.1.0...@availity/date@1.1.1) (2020-03-18)
 
 
