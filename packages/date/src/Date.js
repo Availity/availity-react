@@ -50,14 +50,14 @@ const AvDate = ({
   )}-picker`;
 
   // For updating when we delete the current input
-  const onInputChange = async value => {
+  const onInputChange = value => {
     const date = moment(
       value,
       [isoDateFormat, format, 'MMDDYYYY', 'YYYYMMDD'],
       true
     );
 
-    await setFieldValue(
+    setFieldValue(
       name,
       date.isValid() ? date.format(isoDateFormat) : '',
       metadata.touched
@@ -70,7 +70,7 @@ const AvDate = ({
     }
   };
 
-  const onPickerChange = async value => {
+  const onPickerChange = value => {
     if (value === null) return;
 
     let val = value;
@@ -78,18 +78,18 @@ const AvDate = ({
       val = val.format(isoDateFormat);
     }
 
-    await setFieldValue(name, val, true);
+    setFieldValue(name, val, true);
 
-    await setFieldTouched(name, true);
+    setFieldTouched(name, true);
 
     if (onChange) {
       onChange(val);
     }
   };
 
-  const onFocusChange = async ({ focused }) => {
+  const onFocusChange = ({ focused }) => {
     if (!focused) {
-      await setFieldTouched(name, true);
+      setFieldTouched(name, true);
     }
 
     if (focused !== undefined && isFocused !== focused) {

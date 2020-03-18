@@ -91,7 +91,7 @@ const DateRange = ({
   );
 
   // For updating when we delete the current input
-  const onInputChange = async val => {
+  const onInputChange = val => {
     const isStart = focusedInput === 'startDate';
     const date = moment(
       val,
@@ -101,7 +101,7 @@ const DateRange = ({
 
     const valueToSet = date.isValid() ? date.format(format) : null;
 
-    await setFieldValue(
+    setFieldValue(
       name,
       {
         [startKey]: isStart ? valueToSet : startValue,
@@ -117,10 +117,10 @@ const DateRange = ({
     }
   };
 
-  const onDatesChange = async ({ startDate, endDate }) => {
+  const onDatesChange = ({ startDate, endDate }) => {
     const _startDate = (startDate && startDate.format(format)) || startValue;
     const _endDate = (endDate && endDate.format(format)) || endValue;
-    await setFieldValue(
+    setFieldValue(
       name,
       {
         [startKey]: _startDate,
@@ -130,7 +130,7 @@ const DateRange = ({
     );
 
     if (_startDate && _endDate) {
-      await setFieldTouched(name, true);
+      setFieldTouched(name, true);
     }
 
     if (onChange) {
@@ -141,7 +141,7 @@ const DateRange = ({
     }
   };
 
-  const syncDates = async () => {
+  const syncDates = () => {
     if (!metadata.touched) {
       let value;
 
@@ -150,7 +150,7 @@ const DateRange = ({
       }
 
       if (value) {
-        await setFieldValue(
+        setFieldValue(
           name,
           {
             [startKey]: value,
@@ -158,14 +158,14 @@ const DateRange = ({
           },
           true
         );
-        await setFieldTouched(name, true);
+        setFieldTouched(name, true);
       }
     }
   };
 
-  const onFocusChange = async input => {
-    if (!input && !autoSync) await setFieldTouched(name, true);
-    if (autoSync) await syncDates();
+  const onFocusChange = input => {
+    if (!input && !autoSync) setFieldTouched(name, true);
+    if (autoSync) syncDates();
     if (focusedInput !== input) setFocusedInput(input);
     if (onPickerFocusChange) onPickerFocusChange({ focusedInput: input });
   };
