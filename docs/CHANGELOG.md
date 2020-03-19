@@ -3,6 +3,18 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [4.13.0](https://github.com/Availity/availity-react/compare/@availity/react-docs@4.12.2...@availity/react-docs@4.13.0) (2020-03-19)
+
+
+### Features
+
+* **pagination:** add debounceTimeout prop ([23a0a6c](https://github.com/Availity/availity-react/commit/23a0a6cc91193546b4f151154555cbc88aa771c6))
+* **pagination:** add shouldGetPageData prop ([7e3a83f](https://github.com/Availity/availity-react/commit/7e3a83f1c72a3a36de4103acc4fbe6bd18cb80ac))
+
+
+
+
+
 ## [4.12.2](https://github.com/Availity/availity-react/compare/@availity/react-docs@4.12.1...@availity/react-docs@4.12.2) (2020-03-18)
 
 **Note:** Version bump only for package @availity/react-docs
