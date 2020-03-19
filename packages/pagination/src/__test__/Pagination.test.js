@@ -513,7 +513,7 @@ describe('Pagination', () => {
     );
   });
 
-  it('does not fetch page data when shouldGetPageData is false', async () => {
+  it('does not fetch page data when shouldReturnPrevious is true', async () => {
     const getItems = jest.fn().mockResolvedValue({
       totalCount: 3,
       items: [
@@ -524,14 +524,17 @@ describe('Pagination', () => {
     });
 
     const ComponentWrapper = () => {
-      const [shouldGetPageData, setShouldGetPageData] = useState(false);
+      const [shouldReturnPrevious, setShouldReturnPrevious] = useState(true);
       return (
         <>
-          <Pagination items={getItems} shouldGetPageData={shouldGetPageData}>
+          <Pagination
+            items={getItems}
+            shouldReturnPrevious={shouldReturnPrevious}
+          >
             <button
               type="button"
-              data-testid="toggle-get-page-data-btn"
-              onClick={() => setShouldGetPageData(!shouldGetPageData)}
+              data-testid="toggle-return-previous-btn"
+              onClick={() => setShouldReturnPrevious(!shouldReturnPrevious)}
             >
               Toggle
             </button>
@@ -544,24 +547,24 @@ describe('Pagination', () => {
 
     expect(getItems).not.toHaveBeenCalled();
 
-    // Set shouldGetPageData to true
-    fireEvent.click(getByTestId('toggle-get-page-data-btn'));
+    // Set shouldReturnPrevious to true
+    fireEvent.click(getByTestId('toggle-return-previous-btn'));
 
     // Check getItems was called
     await wait(() => {
       expect(getItems).toHaveBeenCalledTimes(1);
     });
 
-    // Set shouldGetPageData to false
-    fireEvent.click(getByTestId('toggle-get-page-data-btn'));
+    // Set shouldReturnPrevious to false
+    fireEvent.click(getByTestId('toggle-return-previous-btn'));
 
     // Check getItems has still only been called one time
     await wait(() => {
       expect(getItems).toHaveBeenCalledTimes(1);
     });
 
-    // Set shouldGetPageData to true
-    fireEvent.click(getByTestId('toggle-get-page-data-btn'));
+    // Set shouldReturnPrevious to true
+    fireEvent.click(getByTestId('toggle-return-previous-btn'));
 
     // Check getItems has still only been called one time
     await wait(() => {

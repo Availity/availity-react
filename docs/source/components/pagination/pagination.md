@@ -49,6 +49,6 @@ The starting page to use when the component mounts. **Default:** `1`.
 
 The amount of time (in milliseconds) to delay fetching page data since the last time page data was fetched (debounced input). Useful for when `items` is a function that's calling an api that you want to relieve pressure on. **Default**: `0`
 
-### `shouldGetPageData?: boolean`
+### `shouldReturnPrevious?: boolean`
 
-If `false`, the page data is not fetched. Useful for when `items` is a function and the page data should not be fetched until certain criteria is met. **Default:** `true`.
+If `true`, the previous results are returned. Note: if no results have been fetched thus far, an empty array is returned. Useful for when `items` is a function and new results should not be fetched until certain criteria is met. **Default:** `false`.
