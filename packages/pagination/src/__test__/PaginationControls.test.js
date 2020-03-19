@@ -1,5 +1,5 @@
 import React from 'react';
-import { render, waitForElement, cleanup } from '@testing-library/react';
+import { render, wait, waitForElement, cleanup } from '@testing-library/react';
 import Pagination from '../Pagination';
 import PaginationControls from '../PaginationControls';
 
@@ -111,12 +111,13 @@ describe('Pagination Controls', () => {
       </Pagination>
     );
 
-    const previous = getByTestId('pagination-control-previous');
+    await wait(() => {
+      const previous = getByTestId('pagination-control-previous');
 
-    expect(previous.firstChild.textContent).toMatch('‹ Prev');
+      expect(previous.firstChild.textContent).toMatch('‹ Prev');
+      const next = getByTestId('pagination-control-next');
 
-    const next = getByTestId('pagination-control-next');
-
-    expect(next.firstChild.textContent).toContain('Next ›');
+      expect(next.firstChild.textContent).toContain('Next ›');
+    });
   });
 });
