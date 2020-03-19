@@ -14,6 +14,10 @@ import { isOutsideRange, limitPropType, buildYearPickerOptions } from './utils';
 
 export const isoDateFormat = 'YYYY-MM-DD';
 
+const yearPickerStyles = {
+  minWidth: '100%', // 4 digit years not wide enough to fill column
+};
+
 const AvDate = ({
   className,
   name,
@@ -133,9 +137,7 @@ const AvDate = ({
           <select
             data-testid="yearPicker"
             aria-label="year picker"
-            style={{
-              minWidth: '100%', // 4 digit years not wide enough to fill column
-            }}
+            style={yearPickerStyles}
             value={month.year()}
             onChange={e => {
               onYearSelect(month, e.target.value);

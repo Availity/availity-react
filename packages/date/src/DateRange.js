@@ -46,6 +46,14 @@ const relativeRanges = {
   },
 };
 
+const yearPickerStyles = {
+  minWidth: '100%', // 4 digit years not wide enough to fill column
+};
+
+const hiddenInputStyles = {
+  display: 'none',
+};
+
 const DateRange = ({
   id,
   min,
@@ -268,9 +276,7 @@ const DateRange = ({
           <select
             data-testid="yearPicker"
             aria-label="year picker"
-            style={{
-              minWidth: '100%', // 4 digit years not wide enough to fill column
-            }}
+            style={yearPickerStyles}
             value={month.year()}
             onChange={e => {
               onYearSelect(month, e.target.value);
@@ -295,7 +301,7 @@ const DateRange = ({
 
   return (
     <>
-      <Input name={name} style={{ display: 'none' }} className={classes} />
+      <Input name={name} style={hiddenInputStyles} className={classes} />
       <InputGroup
         disabled={attributes.disabled}
         className={classes}
