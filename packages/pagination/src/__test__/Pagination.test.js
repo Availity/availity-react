@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { useToggle } from '@availity/hooks';
 import {
   render,
+  wait,
   waitForElement,
   waitForDomChange,
   fireEvent,
@@ -203,12 +204,16 @@ describe('Pagination', () => {
     await waitForElement(() => getByTestId(`current-page`));
 
     // Called once after the pagination has loaded
-    expect(mockFunc).toHaveBeenCalledTimes(1);
+    await wait(() => {
+      expect(mockFunc).toHaveBeenCalledTimes(1);
+    });
 
     // Clicking the button will trigger a state update
     fireEvent.click(getByTestId('hello-btn'));
 
-    expect(mockFunc).toHaveBeenCalledTimes(3);
+    await wait(() => {
+      expect(mockFunc).toHaveBeenCalledTimes(3);
+    });
   });
 
   test('should reset page to 1 if resetParams updates', async () => {

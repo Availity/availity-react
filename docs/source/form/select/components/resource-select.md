@@ -79,9 +79,9 @@ Availity API resource (see [@availity/api-core](https://github.com/Availity/sdk-
 
 When a function, the function is called with the response body from the API call and is expected to return an array. When a string, the string is expected to be a simple key used to get the value from the response. ("simple" means dot notation is not supported for grabbing values from nested objects. If your result is deeply nested, provide a function.)
 
-### `debounceTimeOut?: number`
+### `debounceTimeout?: number`
 
-The amount of time (in milliseconds) to wait after the user has stopped typing ebfore making the network request ( debounced input). **Default**: `350`
+The amount of time (in milliseconds) to wait after the user has stopped typing before making the network request (debounced input). **Default**: `350`
 
 ### `delay?: number`
 

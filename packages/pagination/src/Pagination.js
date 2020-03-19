@@ -4,6 +4,7 @@ import PropTypes from 'prop-types';
 import isFunction from 'lodash.isfunction';
 import isEqual from 'lodash.isequal';
 import * as avLocalStorage from '@availity/localstorage-core';
+import { useDebounce } from 'react-use';
 
 export const PaginationContext = React.createContext();
 
@@ -26,6 +27,7 @@ const Pagination = ({
   watchList,
   resetParams,
   defaultPage,
+  debounceTimeout,
 }) => {
   const ref = React.useRef();
   const [stateCurrentPage, setPage] = useState(defaultPage);
@@ -93,14 +95,18 @@ const Pagination = ({
     toggleLoading(false);
   };
 
-  useEffect(() => {
-    getPageData();
-  }, [
-    currentPage,
-    itemsPerPage,
-    isFunction(theItems) ? null : theItems,
-    ...watchList,
-  ]);
+  useDebounce(
+    () => {
+      getPageData();
+    },
+    debounceTimeout,
+    [
+      currentPage,
+      itemsPerPage,
+      isFunction(theItems) ? null : theItems,
+      ...watchList,
+    ]
+  );
 
   const updatePage = page => {
     if (page !== currentPage) {
@@ -132,7 +138,6 @@ const Pagination = ({
         getPageData();
       }
     }
-    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [...resetParams]);
 
   // boom roasted
@@ -162,6 +167,7 @@ Pagination.propTypes = {
   resetParams: PropTypes.array,
   defaultPage: PropTypes.number,
   page: PropTypes.number,
+  debounceTimeout: PropTypes.number,
 };
 
 Pagination.defaultProps = {
@@ -170,6 +176,7 @@ Pagination.defaultProps = {
   watchList: [],
   resetParams: [],
   defaultPage: 1,
+  debounceTimeout: 0,
 };
 
 export default Pagination;
