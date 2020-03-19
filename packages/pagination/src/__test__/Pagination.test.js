@@ -512,4 +512,60 @@ describe('Pagination', () => {
       })
     );
   });
+
+  it('does not fetch page data when shouldGetPageData is false', async () => {
+    const getItems = jest.fn().mockResolvedValue({
+      totalCount: 3,
+      items: [
+        { value: '1', key: 1 },
+        { value: '2', key: 2 },
+        { value: '3', key: 3 },
+      ],
+    });
+
+    const ComponentWrapper = () => {
+      const [shouldGetPageData, setShouldGetPageData] = useState(false);
+      return (
+        <>
+          <Pagination items={getItems} shouldGetPageData={shouldGetPageData}>
+            <button
+              type="button"
+              data-testid="toggle-get-page-data-btn"
+              onClick={() => setShouldGetPageData(!shouldGetPageData)}
+            >
+              Toggle
+            </button>
+          </Pagination>
+        </>
+      );
+    };
+
+    const { getByTestId } = render(<ComponentWrapper />);
+
+    expect(getItems).not.toHaveBeenCalled();
+
+    // Set shouldGetPageData to true
+    fireEvent.click(getByTestId('toggle-get-page-data-btn'));
+
+    // Check getItems was called
+    await wait(() => {
+      expect(getItems).toHaveBeenCalledTimes(1);
+    });
+
+    // Set shouldGetPageData to false
+    fireEvent.click(getByTestId('toggle-get-page-data-btn'));
+
+    // Check getItems has still only been called one time
+    await wait(() => {
+      expect(getItems).toHaveBeenCalledTimes(1);
+    });
+
+    // Set shouldGetPageData to true
+    fireEvent.click(getByTestId('toggle-get-page-data-btn'));
+
+    // Check getItems has still only been called one time
+    await wait(() => {
+      expect(getItems).toHaveBeenCalledTimes(2);
+    });
+  });
 });

@@ -28,6 +28,7 @@ const Pagination = ({
   resetParams,
   defaultPage,
   debounceTimeout,
+  shouldGetPageData,
 }) => {
   const ref = React.useRef();
   const [stateCurrentPage, setPage] = useState(defaultPage);
@@ -97,13 +98,16 @@ const Pagination = ({
 
   useDebounce(
     () => {
-      getPageData();
+      if (shouldGetPageData) {
+        getPageData();
+      }
     },
     debounceTimeout,
     [
       currentPage,
       itemsPerPage,
       isFunction(theItems) ? null : theItems,
+      shouldGetPageData,
       ...watchList,
     ]
   );
@@ -168,6 +172,7 @@ Pagination.propTypes = {
   defaultPage: PropTypes.number,
   page: PropTypes.number,
   debounceTimeout: PropTypes.number,
+  shouldGetPageData: PropTypes.bool,
 };
 
 Pagination.defaultProps = {
@@ -177,6 +182,7 @@ Pagination.defaultProps = {
   resetParams: [],
   defaultPage: 1,
   debounceTimeout: 0,
+  shouldGetPageData: true,
 };
 
 export default Pagination;
