@@ -1,4 +1,4 @@
-import React, { useState, useRef } from 'react';
+import React, { useMemo, useRef, useState } from 'react';
 import PropTypes from 'prop-types';
 import Icon from '@availity/icon';
 import { InputGroup, Input, Button, Row, Col } from 'reactstrap';
@@ -10,39 +10,34 @@ import pick from 'lodash.pick';
 import moment from 'moment';
 import '../polyfills';
 
-import {
-  isOutsideRange,
-  limitPropType,
-  isSameDay,
-  buildYearPickerOptions,
-} from './utils';
+import { isOutsideRange, limitPropType, buildYearPickerOptions } from './utils';
 
 const isoDateFormat = 'YYYY-MM-DD';
 
 const relativeRanges = {
   Today: {
-    startDate: now => now,
-    endDate: now => now,
+    startDate: moment({ hour: 0 }), // today, 0:00:00.000
+    endDate: moment({ hour: 0 }),
   },
   'Last 7 Days': {
-    startDate: now => now.add(-6, 'd'),
-    endDate: now => now,
+    startDate: moment({ hour: 0 }).subtract(6, 'days'),
+    endDate: moment({ hour: 0 }),
   },
   'Last 30 Days': {
-    startDate: now => now.add(-29, 'd'),
-    endDate: now => now,
+    startDate: moment({ hour: 0 }).subtract(29, 'days'),
+    endDate: moment({ hour: 0 }),
   },
   'Last 120 Days': {
-    startDate: now => now.add(-119, 'd'),
-    endDate: now => now,
+    startDate: moment({ hour: 0 }).subtract(119, 'days'),
+    endDate: moment({ hour: 0 }),
   },
   'Last 6 Months': {
-    startDate: now => now.add(-6, 'M'),
-    endDate: now => now,
+    startDate: moment({ hour: 0 }).subtract(6, 'months'),
+    endDate: moment({ hour: 0 }),
   },
   'Last 12 Months': {
-    startDate: now => now.add(-12, 'M'),
-    endDate: now => now,
+    startDate: moment({ hour: 0 }).subtract(12, 'months'),
+    endDate: moment({ hour: 0 }),
   },
 };
 
@@ -83,11 +78,20 @@ const DateRange = ({
   const calendarIconRef = useRef();
 
   const startId = `${(id || name).replace(/[^a-zA-Z0-9]/gi, '')}-start`;
-
   const endId = `${(id || name).replace(/[^a-zA-Z0-9]/gi, '')}-end`;
 
   const startValue = get(value, startKey);
   const endValue = get(value, endKey);
+
+  const startValueMoment = useMemo(
+    () => moment(startValue, [isoDateFormat, format, 'MMDDYYYY', 'YYYYMMDD']),
+    [startValue, format]
+  );
+
+  const endValueMoment = useMemo(
+    () => moment(endValue, [isoDateFormat, format, 'MMDDYYYY', 'YYYYMMDD']),
+    [endValue, format]
+  );
 
   const classes = classNames(
     'input-group-date-range',
@@ -201,50 +205,34 @@ const DateRange = ({
 
     return ranges ? (
       <div className="d-flex flex-column ml-2 mt-2">
-        {Object.keys(ranges).map(text => {
-          const { startDate: startDateFunc, endDate: endDateFunc } = ranges[
-            text
-          ];
+        {Object.keys(ranges).map(relativeRange => {
+          const { startDate, endDate } = ranges[relativeRange];
 
-          const presetStartDate = startDateFunc(moment());
-          const presetEndDate = endDateFunc(moment());
-
+          // Comparing moments with unit as 'millisecond' avoids moment cloning
           const isSelected =
-            isSameDay(
-              presetStartDate,
-              moment(startValue, [
-                isoDateFormat,
-                format,
-                'MMDDYYYY',
-                'YYYYMMDD',
-              ])
-            ) &&
-            isSameDay(
-              presetEndDate,
-              moment(endValue, [isoDateFormat, format, 'MMDDYYYY', 'YYYYMMDD'])
-            );
+            startDate.isSame(startValueMoment, 'millisecond') &&
+            endDate.isSame(endValueMoment, 'millisecond');
+
           return (
             <Button
-              key={text}
-              className="mt-1 mb-1"
+              key={relativeRange}
+              className="my-1"
               color={isSelected ? 'primary' : 'default'}
               size="sm"
               onClick={() => {
                 onDatesChange({
-                  startDate: presetStartDate,
-                  endDate: presetEndDate,
+                  startDate,
+                  endDate,
                 });
 
-                setFocusedInput(undefined);
-                setFieldTouched(startKey, true);
-                setFieldTouched(endKey, true);
+                setFocusedInput(null);
 
                 // Focus the calendar icon once clicked because we don't
                 // want to get back in the loop of opening the calendar
                 calendarIconRef.current.parentElement.focus();
               }}
             >
-              {text}
+              {relativeRange}
             </Button>
           );
         })}
