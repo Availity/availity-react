@@ -1,4 +1,4 @@
-import React, { useMemo, useRef, useState } from 'react';
+import React, { useEffect, useMemo, useRef, useState } from 'react';
 import PropTypes from 'prop-types';
 import Icon from '@availity/icon';
 import { InputGroup, Input, Button, Row, Col } from 'reactstrap';
@@ -71,7 +71,7 @@ const DateRange = ({
   customArrowIcon,
   ...attributes
 }) => {
-  const { setFieldValue, setFieldTouched } = useFormikContext();
+  const { setFieldValue, setFieldTouched, validateField } = useFormikContext();
   const [{ value = {} }, metadata] = useField({ name, validate });
   const [focusedInput, setFocusedInput] = useState(null);
 
@@ -102,6 +102,15 @@ const DateRange = ({
     datepicker && 'av-calendar-show'
   );
 
+  // Should only run validation once per real change to component, instead of each time setFieldValue/Touched is called.
+  // By batching multiple calls for validation we can avoid multiple moment comparisons of the same values
+  // and stale values can be avoided without resorting to async/await: https://github.com/jaredpalmer/formik/issues/2083#issuecomment-571259235
+  useEffect(() => {
+    if (metadata.touched || startValue || endValue) {
+      validateField(name);
+    }
+  }, [metadata.touched, startValue, endValue, name, validateField]);
+
   // For updating when we delete the current input
   const onInputChange = val => {
     const isStart = focusedInput === startKey;
@@ -119,7 +128,7 @@ const DateRange = ({
         [startKey]: isStart ? valueToSet : startValue,
         [endKey]: !isStart ? valueToSet : endValue,
       },
-      metadata.touched
+      false
     );
 
     if (focusedInput && isStart && date.isValid()) {
@@ -138,11 +147,11 @@ const DateRange = ({
         [startKey]: _startDate,
         [endKey]: _endDate,
       },
-      _startDate && _endDate
+      false
     );
 
     if (_startDate && _endDate) {
-      setFieldTouched(name, true);
+      setFieldTouched(name, true, false);
     }
 
     if (onChange) {
@@ -168,15 +177,15 @@ const DateRange = ({
             [startKey]: value,
             [endKey]: value,
           },
-          true
+          false
         );
-        setFieldTouched(name, true);
+        setFieldTouched(name, true, false);
       }
     }
   };
 
   const onFocusChange = input => {
-    if (!input && !autoSync) setFieldTouched(name, true);
+    if (!input && !autoSync) setFieldTouched(name, true, false);
     if (autoSync) syncDates();
     if (focusedInput !== input) setFocusedInput(input);
     if (onPickerFocusChange) onPickerFocusChange({ focusedInput: input });
