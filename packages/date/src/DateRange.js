@@ -5,7 +5,6 @@ import { InputGroup, Input, Button, Row, Col } from 'reactstrap';
 import { DateRangePicker } from 'react-dates';
 import classNames from 'classnames';
 import { useField, useFormikContext } from 'formik';
-import get from 'lodash.get';
 import pick from 'lodash.pick';
 import moment from 'moment';
 import '../polyfills';
@@ -80,8 +79,8 @@ const DateRange = ({
   const startId = `${(id || name).replace(/[^a-zA-Z0-9]/gi, '')}-start`;
   const endId = `${(id || name).replace(/[^a-zA-Z0-9]/gi, '')}-end`;
 
-  const startValue = get(value, startKey);
-  const endValue = get(value, endKey);
+  const startValue = value[startKey] || '';
+  const endValue = value[endKey] || '';
 
   const startValueMoment = useMemo(
     () => moment(startValue, [isoDateFormat, format, 'MMDDYYYY', 'YYYYMMDD']),
