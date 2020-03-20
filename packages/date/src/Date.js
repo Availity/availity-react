@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import PropTypes from 'prop-types';
 import classNames from 'classnames';
 import { useField, useFormikContext } from 'formik';
@@ -34,7 +34,7 @@ const AvDate = ({
   'data-testid': dataTestId,
   ...attributes
 }) => {
-  const { setFieldValue, setFieldTouched } = useFormikContext();
+  const { setFieldValue, setFieldTouched, validateField } = useFormikContext();
   const [field, metadata] = useField({
     name,
     validate,
@@ -53,6 +53,15 @@ const AvDate = ({
     ''
   )}-picker`;
 
+  // Should only run validation once per real change to component, instead of each time setFieldValue/Touched is called.
+  // By batching multiple calls for validation we can avoid multiple moment comparisons of the same values
+  // and stale values can be avoided without resorting to async/await: https://github.com/jaredpalmer/formik/issues/2083#issuecomment-571259235
+  useEffect(() => {
+    if (field.value || metadata.touched) {
+      validateField(name);
+    }
+  }, [field.value, metadata.touched, name, validateField]);
+
   // For updating when we delete the current input
   const onInputChange = value => {
     const date = moment(
@@ -64,7 +73,7 @@ const AvDate = ({
     setFieldValue(
       name,
       date.isValid() ? date.format(isoDateFormat) : '',
-      metadata.touched
+      false
     );
 
     if (date.isValid()) {
@@ -82,9 +91,8 @@ const AvDate = ({
       val = val.format(isoDateFormat);
     }
 
-    setFieldValue(name, val, true);
-
-    setFieldTouched(name, true);
+    setFieldValue(name, val, false);
+    setFieldTouched(name, true, false);
 
     if (onChange) {
       onChange(val);
@@ -93,13 +101,15 @@ const AvDate = ({
 
   const onFocusChange = ({ focused }) => {
     if (!focused) {
-      setFieldTouched(name, true);
+      setFieldTouched(name, true, false);
     }
 
     if (focused !== undefined && isFocused !== focused) {
       setIsFocused(focused);
     }
-    if (onPickerFocusChange) onPickerFocusChange({ focused });
+    if (onPickerFocusChange) {
+      onPickerFocusChange({ focused });
+    }
   };
 
   const getDateValue = () => {
