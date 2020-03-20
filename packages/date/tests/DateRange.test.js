@@ -496,7 +496,7 @@ describe('DateRange', () => {
 
     await wait(() => {
       expect(onChange.mock.calls[0][0]).toStrictEqual({
-        endDate: undefined,
+        endDate: '',
         startDate: `${max.year()}-12-25`,
       });
 
