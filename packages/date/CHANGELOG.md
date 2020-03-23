@@ -3,6 +3,26 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.1.3](https://github.com/Availity/availity-react/compare/@availity/date@1.1.2...@availity/date@1.1.3) (2020-03-23)
+
+
+### Bug Fixes
+
+* **date:** use startKey and endKey to set focusedInput ([6e1f470](https://github.com/Availity/availity-react/commit/6e1f470e93be672cd5cffe9a520690fc1d2c4832))
+
+
+### Performance Improvements
+
+* **date:** refactor relative ranges for faster comparisons, use moment.isSame(), remove utils.isSameDay() ([6fa46c9](https://github.com/Availity/availity-react/commit/6fa46c98d3973f5cddda09c56be50e79fde82437))
+* **date:** remove async/await from synchronous functions ([e7913bc](https://github.com/Availity/availity-react/commit/e7913bc9f6178db14b55e88917bb10cc49310417))
+* **date:** run validation only once after all handlers are finished with updates ([e156d15](https://github.com/Availity/availity-react/commit/e156d1545f843dbb09a82fe087ae907973b00e88))
+* **date:** run validation only once after all handlers are finished with updates ([d280e2d](https://github.com/Availity/availity-react/commit/d280e2de20f7657dc90ec212089e5f4a379570fe))
+* **date:** use style objects to avoid change on every render ([2154320](https://github.com/Availity/availity-react/commit/21543205d0ab9ae4c966135315de443e3df5bff7))
+
+
+
+
+
 ## [1.1.2](https://github.com/Availity/availity-react/compare/@availity/date@1.1.1...@availity/date@1.1.2) (2020-03-18)
 
 
