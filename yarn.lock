@@ -3684,9 +3684,9 @@
     "@types/react" "*"
 
 "@types/react-dates@^17.1.5":
-  version "17.1.9"
-  resolved "https://registry.yarnpkg.com/@types/react-dates/-/react-dates-17.1.9.tgz#6f7b7090ffbd078acef76ffb3e2f3866cd5d4fd3"
-  integrity sha512-bUUZnuhu3UVgIeU5WdT8dX93L5EhNqdokHsSwcFklfsfOGPUz9mbLPc0KWs2NfNEhVXuyuSK2S4rTMtlDDik9A==
+  version "17.1.10"
+  resolved "https://registry.yarnpkg.com/@types/react-dates/-/react-dates-17.1.10.tgz#e85cafa41b16762ef386a1b30fc0928bccebd616"
+  integrity sha512-vMMO4bw88PJ5yLfeo1WR0peR7hkYIsso1wGLiO5Xkpcb/B86LK2P1l3YbNWXD1M7BqFekezkuWaO1qKGf8uX4Q==
   dependencies:
     "@types/react" "*"
     moment ">=2.17.1"
