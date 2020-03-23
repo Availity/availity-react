@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import PropTypes from 'prop-types';
 import classNames from 'classnames';
 import { useField, useFormikContext } from 'formik';
@@ -13,6 +13,10 @@ import '../styles.scss';
 import { isOutsideRange, limitPropType, buildYearPickerOptions } from './utils';
 
 export const isoDateFormat = 'YYYY-MM-DD';
+
+const yearPickerStyles = {
+  minWidth: '100%', // 4 digit years not wide enough to fill column
+};
 
 const AvDate = ({
   className,
@@ -30,7 +34,7 @@ const AvDate = ({
   'data-testid': dataTestId,
   ...attributes
 }) => {
-  const { setFieldValue, setFieldTouched } = useFormikContext();
+  const { setFieldValue, setFieldTouched, validateField } = useFormikContext();
   const [field, metadata] = useField({
     name,
     validate,
@@ -49,18 +53,27 @@ const AvDate = ({
     ''
   )}-picker`;
 
+  // Should only run validation once per real change to component, instead of each time setFieldValue/Touched is called.
+  // By batching multiple calls for validation we can avoid multiple moment comparisons of the same values
+  // and stale values can be avoided without resorting to async/await: https://github.com/jaredpalmer/formik/issues/2083#issuecomment-571259235
+  useEffect(() => {
+    if (field.value || metadata.touched) {
+      validateField(name);
+    }
+  }, [field.value, metadata.touched, name, validateField]);
+
   // For updating when we delete the current input
-  const onInputChange = async value => {
+  const onInputChange = value => {
     const date = moment(
       value,
       [isoDateFormat, format, 'MMDDYYYY', 'YYYYMMDD'],
       true
     );
 
-    await setFieldValue(
+    setFieldValue(
       name,
       date.isValid() ? date.format(isoDateFormat) : '',
-      metadata.touched
+      false
     );
 
     if (date.isValid()) {
@@ -70,7 +83,7 @@ const AvDate = ({
     }
   };
 
-  const onPickerChange = async value => {
+  const onPickerChange = value => {
     if (value === null) return;
 
     let val = value;
@@ -78,24 +91,25 @@ const AvDate = ({
       val = val.format(isoDateFormat);
     }
 
-    await setFieldValue(name, val, true);
-
-    await setFieldTouched(name, true);
+    setFieldValue(name, val, false);
+    setFieldTouched(name, true, false);
 
     if (onChange) {
       onChange(val);
     }
   };
 
-  const onFocusChange = async ({ focused }) => {
+  const onFocusChange = ({ focused }) => {
     if (!focused) {
-      await setFieldTouched(name, true);
+      setFieldTouched(name, true, false);
     }
 
     if (focused !== undefined && isFocused !== focused) {
       setIsFocused(focused);
     }
-    if (onPickerFocusChange) onPickerFocusChange({ focused });
+    if (onPickerFocusChange) {
+      onPickerFocusChange({ focused });
+    }
   };
 
   const getDateValue = () => {
@@ -133,9 +147,7 @@ const AvDate = ({
           <select
             data-testid="yearPicker"
             aria-label="year picker"
-            style={{
-              minWidth: '100%', // 4 digit years not wide enough to fill column
-            }}
+            style={yearPickerStyles}
             value={month.year()}
             onChange={e => {
               onYearSelect(month, e.target.value);

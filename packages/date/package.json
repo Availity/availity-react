@@ -42,7 +42,6 @@
     "@availity/icon": "^0.7.0",
     "@availity/yup": "^2.0.0",
     "classnames": "^2.2.6",
-    "lodash.get": "^4.4.2",
     "lodash.pick": "^4.4.0",
     "moment": "^2.24.0",
     "prop-types": "^15.7.2",
