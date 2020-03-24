@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [2.8.1](https://github.com/Availity/availity-react/compare/@availity/pagination@2.8.0...@availity/pagination@2.8.1) (2020-03-24)
+
+
+### Bug Fixes
+
+* **pagination:** allow custom getResult for AvResourcePagination ([0bb1cbf](https://github.com/Availity/availity-react/commit/0bb1cbfcc3672571458e2a80a31e5c1618d0348d))
+
+
+
+
+
 # [2.8.0](https://github.com/Availity/availity-react/compare/@availity/pagination@2.7.1...@availity/pagination@2.8.0) (2020-03-19)
 
 
