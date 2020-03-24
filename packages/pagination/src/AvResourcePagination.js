@@ -28,7 +28,7 @@ const AvResourcePagination = ({
 
     const resp = await resource.postGet(params, parameters || {});
 
-    const useGetResult = resource.getResult || getResult;
+    const useGetResult = getResult || resource.getResult;
 
     const items =
       (typeof useGetResult === 'function'
