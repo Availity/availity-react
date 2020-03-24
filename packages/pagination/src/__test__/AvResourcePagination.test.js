@@ -189,4 +189,32 @@ describe('AvResourcePagination', () => {
       );
     }); */
   });
+
+  test('should use custom getResult when provided', async () => {
+    const { getByTestId } = render(
+      <AvResourcePagination
+        resource={resource}
+        itemsPerPage={50}
+        getResult={data => {
+          return data.notifications.filter(
+            notification => notification.id === paginationData[0].id
+          );
+        }}
+      >
+        <PaginationJson />
+      </AvResourcePagination>
+    );
+
+    const paginationCon = await waitForElement(() =>
+      getByTestId('pagination-con')
+    );
+
+    expect(paginationCon).toBeDefined();
+
+    expect(JSON.parse(paginationCon.textContent)).toEqual(
+      expect.objectContaining({
+        page: data.slice(0, 1),
+      })
+    );
+  });
 });
