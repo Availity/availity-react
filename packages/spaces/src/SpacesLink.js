@@ -250,7 +250,7 @@ const Link = ({
       tabIndex={0}
       style={{
         ...style,
-        cursor: link.url ? 'pointer' : 'not-allowed',
+        cursor: link && link.url ? 'pointer' : 'not-allowed',
       }}
       {...props}
       {...rest}
