@@ -81,6 +81,10 @@ export default (
     });
 
   const openLink = () => {
+    if (!link.url) {
+      return;
+    }
+
     updateTopApps(id, type);
     const target = getTarget(link.target);
     window.open(
