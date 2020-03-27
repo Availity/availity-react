@@ -139,6 +139,7 @@ const Pagination = ({
       updatePage(1);
       // If the current page was already 1 and theItems is a function, re-fetch the page data
       if (current === 1 && isFunction(theItems)) {
+        toggleLoading(true);
         getPageData();
       }
     }
