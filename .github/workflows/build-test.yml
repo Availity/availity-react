@@ -5,11 +5,10 @@ name: Node.js CI
 
 on:
   pull_request:
-    branches: [ master ]
+    branches: [master]
 
 jobs:
-  build/test:
-
+  build:
     runs-on: ubuntu-latest
 
     steps:
