@@ -34,5 +34,7 @@ jobs:
           file: ./coverage/coverage-final.json
           token: ${{ secrets.CODECOV_TOKEN }}
       - run: echo "//registry.npmjs.org/:_authToken=${{ secrets.NPM_TOKEN }}" >> ~/.npmrc
+      - run: git config --global user.email ${{ secrets.GH_EMAIL }}
+      - run: git config --global user.name ${{ secrets.GH_USER }}
       - run: yarn release:ci
       - run: yarn deploy:ci
