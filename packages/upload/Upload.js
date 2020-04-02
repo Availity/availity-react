@@ -146,6 +146,7 @@ class Upload extends Component {
       maxSize,
       children,
       showFileDrop,
+      isDisabled,
     } = this.props;
     const { files } = this.state;
 
@@ -194,6 +195,7 @@ class Upload extends Component {
             multiple={multiple}
             allowedFileTypes={allowedFileTypes}
             maxSize={maxSize}
+            isDisabled={isDisabled}
           >
             {text}
           </FilePickerBtn>
@@ -227,6 +229,7 @@ Upload.propTypes = {
   children: PropTypes.func,
   name: PropTypes.string,
   showFileDrop: PropTypes.bool,
+  isDisabled: PropTypes.bool,
 };
 
 Upload.defaultProps = {

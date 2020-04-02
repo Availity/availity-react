@@ -8,6 +8,7 @@ export interface FilePickerBtnProps {
     allowedFileTypes?: Array<string>;
     maxSize?: number;
     'data-testid'?:string;
+    isDisabled: boolean;
 }
 
 declare const FilePickerBtn: React.ComponentType<FilePickerBtnProps>;

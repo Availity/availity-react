@@ -145,6 +145,24 @@ storiesOf('Components|Upload', module)
       />
     </div>
   ))
+  .add('disabled button', () => (
+    <div className="py-3">
+      <Upload
+        clientId="a"
+        bucketId="b"
+        customerId="c"
+        multiple={boolean('Multiple File Select', Upload.defaultProps.multiple)}
+        max={number('Max number of files', 0)}
+        allowedFileTypes={array(
+          'Allowed File Types',
+          ['.jpg', '.jpeg', '.doc', '.docx'],
+          ','
+        )}
+        isDisabled
+        maxSize={number('Max File Size', 0, { min: 0 }) || undefined}
+      />
+    </div>
+  ))
   .add('restrict file name', () => (
     <div className="py-3">
       <p>

@@ -11,6 +11,7 @@ const FilePickerBtn = ({
   allowedFileTypes,
   maxSize,
   'data-testid': testId,
+  isDisabled,
   ...rest
 }) => {
   const input = useRef(null);
@@ -38,7 +39,7 @@ const FilePickerBtn = ({
           data-testid={testId}
         />
       </div>
-      <Button {...rest} onClick={onBtnClick} />
+      <Button {...rest} disabled={isDisabled} onClick={onBtnClick} />
     </>
   );
 };
@@ -53,6 +54,7 @@ FilePickerBtn.propTypes = {
   allowedFileTypes: PropTypes.arrayOf(PropTypes.string),
   maxSize: PropTypes.number,
   'data-testid': PropTypes.string,
+  isDisabled: PropTypes.bool,
 };
 
 FilePickerBtn.defaultProps = {
