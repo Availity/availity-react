@@ -1,14 +1,15 @@
 # This workflow will do a clean install of node dependencies, build the source code and run tests across different versions of node
 # For more information see: https://help.github.com/actions/language-and-framework-guides/using-nodejs-with-github-actions
 
-name: Node.js CI
+name: Publish Release
 
 on:
-  pull_request:
+  push:
     branches: [master]
 
 jobs:
-  build:
+  deploy:
+    if: "!contains(github.event.head_commit.message, 'skip ci')"
     runs-on: ubuntu-latest
 
     steps:
@@ -32,3 +33,6 @@ jobs:
         with:
           file: ./coverage/coverage-final.json
           token: ${{ secrets.CODECOV_TOKEN }}
+      - run: echo "//registry.npmjs.org/:_authToken=${{ secrets.NPM_TOKEN }}" >> ~/.npmrc
+      - run: yarn release:ci
+      - run: yarn deploy:ci
