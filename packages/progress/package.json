@@ -1,6 +1,6 @@
 {
   "name": "@availity/progress",
-  "version": "1.2.1",
+  "version": "1.2.2",
   "author": "Tyson Warner <tyson.warner@availity.com>",
   "description": "Availity progress bar",
   "main": "index.js",
