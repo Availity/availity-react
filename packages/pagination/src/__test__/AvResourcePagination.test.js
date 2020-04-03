@@ -108,6 +108,49 @@ describe('AvResourcePagination', () => {
     );
   });
 
+  test('show loading on resetParam changed', async () => {
+    const { getByTestId, rerender } = render(
+      <AvResourcePagination
+        resource={resource}
+        itemsPerPage={2}
+        resetParams="test"
+      >
+        <PaginationJson />
+        <PaginationControls directionLinks />
+      </AvResourcePagination>
+    );
+
+    let paginationCon = await waitForElement(() =>
+      getByTestId('pagination-con')
+    );
+
+    // fireEvent.click(getByTestId('pagination-control-next-link'));
+    rerender(
+      <AvResourcePagination
+        resource={resource}
+        itemsPerPage={2}
+        resetParams="changed"
+      >
+        <PaginationJson />
+        <PaginationControls directionLinks />
+      </AvResourcePagination>
+    );
+
+    // First wait for dom update on pagination con to disappear due to loading
+    await waitForDomChange(() => getByTestId('pagination-con'));
+
+    // Wait for pagination-con to re-render aftering loading prop is toggled
+    paginationCon = await waitForElement(() => getByTestId('pagination-con'));
+
+    expect(mockResponse.postGet).toHaveBeenCalledTimes(2);
+
+    expect(JSON.parse(paginationCon.textContent)).toEqual(
+      expect.objectContaining({
+        page: data.slice(0, 2),
+      })
+    );
+  });
+
   test('show new page of items when infiniteScroll and user scrolls to bottom', async () => {
     // eslint-disable-next-line react/prop-types
     const Component = ({ id }) => <div data-testid={id}>{id}</div>;

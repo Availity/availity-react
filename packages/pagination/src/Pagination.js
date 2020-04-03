@@ -52,9 +52,10 @@ const Pagination = ({
     setLoading(l => (isLoading !== undefined ? isLoading : !l));
 
   const getPageData = async () => {
+    toggleLoading(true);
     avLocalStorage.set('current-page', currentPage);
 
-    // If the items is a function then await the resposne in case of async actions
+    // If the items is a function then await the response in case of async actions
     const { items, totalCount } = isFunction(theItems)
       ? await theItems(currentPage, itemsPerPage)
       : { items: theItems };
@@ -139,7 +140,6 @@ const Pagination = ({
       updatePage(1);
       // If the current page was already 1 and theItems is a function, re-fetch the page data
       if (current === 1 && isFunction(theItems)) {
-        toggleLoading(true);
         getPageData();
       }
     }
