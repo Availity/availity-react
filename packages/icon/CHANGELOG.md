@@ -3,6 +3,22 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## 0.7.2 (2020-04-02)
+
+**Note:** Version bump only for package @availity/icon
+
+
+
+
+
+## 0.7.1 (2020-04-02)
+
+**Note:** Version bump only for package @availity/icon
+
+
+
+
+
 # [0.7.0](https://github.com/Availity/availity-react/compare/@availity/icon@0.6.2...@availity/icon@0.7.0) (2019-12-20)
 
 

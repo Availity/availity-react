@@ -3,6 +3,22 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## 3.1.7 (2020-04-02)
+
+**Note:** Version bump only for package @availity/breadcrumbs
+
+
+
+
+
+## 3.1.6 (2020-04-02)
+
+**Note:** Version bump only for package @availity/breadcrumbs
+
+
+
+
+
 ## [3.1.5](https://github.com/Availity/availity-react/compare/@availity/breadcrumbs@3.1.4...@availity/breadcrumbs@3.1.5) (2019-10-24)
 
 **Note:** Version bump only for package @availity/breadcrumbs
