@@ -3,6 +3,30 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## 5.3.24 (2020-04-06)
+
+**Note:** Version bump only for package @availity/feedback
+
+
+
+
+
+## 5.3.23 (2020-04-06)
+
+**Note:** Version bump only for package @availity/feedback
+
+
+
+
+
+## 5.3.22 (2020-04-03)
+
+**Note:** Version bump only for package @availity/feedback
+
+
+
+
+
 ## 5.3.21 (2020-04-03)
 
 **Note:** Version bump only for package @availity/feedback

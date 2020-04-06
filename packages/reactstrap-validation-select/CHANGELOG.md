@@ -3,6 +3,30 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## 5.3.15 (2020-04-06)
+
+**Note:** Version bump only for package @availity/reactstrap-validation-select
+
+
+
+
+
+## 5.3.14 (2020-04-06)
+
+**Note:** Version bump only for package @availity/reactstrap-validation-select
+
+
+
+
+
+## 5.3.13 (2020-04-03)
+
+**Note:** Version bump only for package @availity/reactstrap-validation-select
+
+
+
+
+
 ## 5.3.12 (2020-04-03)
 
 **Note:** Version bump only for package @availity/reactstrap-validation-select

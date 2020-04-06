@@ -11,11 +11,9 @@ import '@availity/date/styles.scss';
 ```jsx live=true viewCode=true
 import { Form } from '@availity/form';
 import { Button } from 'reactstrap';
+import { avDate } from '@availity/yup';
+import { object } from 'yup';
 import Date from '@availity/date';
-
-import * as yup from 'yup';
-import '@availity/yup';
-import '@availity/yup/moment';
 import moment from 'moment';
 
 <div className="w-100 d-flex flex-row justify-content-around align-items-center">
@@ -24,8 +22,8 @@ import moment from 'moment';
       dateOfService: '',
     }}
     onSubmit={values => console.log(values)}
-    validationSchema={yup.object().shape({
-      dateOfService: yup.avDate().required(),
+    validationSchema={object().shape({
+      dateOfService: avDate().required(),
     })}
   >
     <Date

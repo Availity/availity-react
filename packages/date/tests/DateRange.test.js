@@ -8,8 +8,8 @@ import {
 } from '@testing-library/react';
 import { Button } from 'reactstrap';
 import { Form } from '@availity/form';
-import '@availity/yup/moment';
-import * as yup from 'yup';
+import { dateRange } from '@availity/yup';
+import { object, string } from 'yup';
 import moment from 'moment';
 import { DateRange } from '..';
 
@@ -27,8 +27,8 @@ describe('DateRange', () => {
           dateRange: undefined,
         }}
         onSubmit={onSubmit}
-        validationSchema={yup.object().shape({
-          dateRange: yup.string().required('This field is required'),
+        validationSchema={object().shape({
+          dateRange: string().required('This field is required'),
         })}
       >
         <DateRange id="dateRange" name="dateRange" />
@@ -283,8 +283,8 @@ describe('DateRange', () => {
 
   test('works with custom start/end keys', async () => {
     const onSubmit = jest.fn();
-    const schema = yup.object().shape({
-      dateRange: yup.dateRange({
+    const schema = object().shape({
+      dateRange: dateRange({
         startKey: 'customStartKey',
         endKey: 'customEndKey',
       }),

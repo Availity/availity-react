@@ -1,6 +1,6 @@
 {
   "name": "@availity/mock",
-  "version": "1.0.6",
+  "version": "1.0.9",
   "private": true,
   "author": "Kyle Gray <kyle.gray@availity.com>",
   "description": "Contains xhr mocks for storybook and gatsby docs",

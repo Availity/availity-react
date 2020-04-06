@@ -1,6 +1,6 @@
 {
   "name": "@availity/pagination",
-  "version": "2.8.4",
+  "version": "2.8.7",
   "description": "",
   "main": "index.js",
   "types": "index.d.ts",
