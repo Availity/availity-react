@@ -40,7 +40,6 @@
   },
   "dependencies": {
     "@availity/icon": "^0.7.5",
-    "@availity/yup": "^3.0.2",
     "classnames": "^2.2.6",
     "lodash.pick": "^4.4.0",
     "moment": "^2.24.0",
