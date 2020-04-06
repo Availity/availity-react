@@ -41,3 +41,12 @@ jobs:
       - run: git config --global user.name ${{ secrets.GH_USER }}
       - run: yarn release:ci
       - run: yarn deploy:ci
+      - uses: crazy-max/ghaction-github-pages@v1
+        with:
+          target_branch: gh-pages
+          build_dir: docs/public
+          commit_message: deployed docs [skip ci]
+          committer_name: ${{ secrets.GH_USER }}
+          committer_email: ${{ secrets.GH_EMAIL }}
+        env:
+          GITHUB_TOKEN: ${{ secrets.BOT_TOKEN }}
