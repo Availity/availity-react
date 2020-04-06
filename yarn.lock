@@ -90,10 +90,10 @@
     "@availity/resolve-url" "^1.1.5"
     tus-js-client "1.7.1"
 
-"@availity/yup@^2.0.0":
-  version "2.0.9"
-  resolved "https://registry.yarnpkg.com/@availity/yup/-/yup-2.0.9.tgz#1ed55e64bc1178028b10821d95f3582d9efff9d5"
-  integrity sha512-fp/KEiS+V8qZ5+yaoDVL5J4RmJSlZSkEfYurC+A1Wv0poaNH1rfR2BmoPxo39pXvJHCCm91uorzTH0QNUdWbHw==
+"@availity/yup@^3.0.2":
+  version "3.0.2"
+  resolved "https://registry.yarnpkg.com/@availity/yup/-/yup-3.0.2.tgz#b186a3abd545246c5950ba1c85caa5df57130e64"
+  integrity sha512-0eDhwvOF8JRag27nknIk58HZUpm5RoJxs+B6ISpKrK1AbJazThbk0XKcF3RLTonkAbUOZk0y6wyB6PfwZcICzg==
   dependencies:
     lodash.get "^4.4.2"
     merge-options-es5 "^1.0.0"

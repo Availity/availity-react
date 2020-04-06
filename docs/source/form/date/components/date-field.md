@@ -9,8 +9,8 @@ The same as `FormikDate` but with a `Label` that appears above input and a `Feed
 ```jsx live=true viewCode=true
 import { Form } from '@availity/form';
 import FormikDate from '@availity/date';
-import * as yup from 'yup';
-import '@availity/yup/moment';
+import { object } from 'yup';
+import { avDate } from '@availity/yup';
 
 <div className="w-100 d-flex flex-row justify-content-around align-items-center">
   <Form
@@ -18,8 +18,8 @@ import '@availity/yup/moment';
       dateOfService: '',
     }}
     onSubmit={values => console.log(values)}
-    validationSchema={yup.object().shape({
-      dateOfService: yup.avDate().required(),
+    validationSchema={object().shape({
+      dateOfService: avDate().required(),
     })}
   >
     <DateField
@@ -33,7 +33,7 @@ import '@availity/yup/moment';
       Submit
     </Button>
   </Form>
-</div>;
+</div>
 ```
 
 ## Props
@@ -58,4 +58,4 @@ Used to control if the label is displayed. When set to `true`, the label in the 
 
 ### `labelAttrs?: React.HTMLAttributes<HTMLLabelElement>`
 
-Pass additonal attributes to the label
+Pass additional attributes to the label

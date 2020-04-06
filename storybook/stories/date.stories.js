@@ -8,8 +8,8 @@ import {
   number,
 } from '@storybook/addon-knobs/react';
 import { Button } from 'reactstrap';
-import '@availity/yup/moment';
-import * as yup from 'yup';
+import { avDate, dateRange } from '@availity/yup';
+import { object } from 'yup';
 import FormikDate, {
   DateField,
   DateRange,
@@ -40,11 +40,10 @@ storiesOf('Formik|Date', module)
 
     const required = boolean('Required', false);
 
-    const schema = yup.object().shape({
-      dateOfService: yup
-        .avDate({
-          format: dateFormat,
-        })
+    const schema = object().shape({
+      dateOfService: avDate({
+        format: dateFormat,
+      })
         .isRequired(required, 'This field is required.')
         .min(min && !max && minDate)
         .max(!min && max && maxDate)
@@ -82,11 +81,10 @@ storiesOf('Formik|Date', module)
 
     const required = boolean('Required', false);
 
-    const schema = yup.object().shape({
-      dateOfService: yup
-        .avDate({
-          format: dateFormat,
-        })
+    const schema = object().shape({
+      dateOfService: avDate({
+        format: dateFormat,
+      })
         .isRequired(required, 'This field is required.')
         .min(min && !max && minDate)
         .max(!min && max && maxDate)
@@ -139,13 +137,12 @@ storiesOf('Formik|Date', module)
       maxDistanceUnits = select('Max Distance Units', distanceUnits, 'day');
     }
 
-    const schema = yup.object().shape({
-      dateOfService: yup
-        .dateRange({
-          startKey: 'startDate',
-          endKey: 'endDate',
-          format: dateFormat,
-        })
+    const schema = object().shape({
+      dateOfService: dateRange({
+        startKey: 'startDate',
+        endKey: 'endDate',
+        format: dateFormat,
+      })
         .min(min && !max && minDate)
         .max(!min && max && maxDate)
         .between(min && max && minDate, maxDate)
@@ -209,11 +206,10 @@ storiesOf('Formik|Date', module)
       maxDistanceUnits = select('Max Distance Units', distanceUnits, 'day');
     }
 
-    const schema = yup.object().shape({
-      dateOfService: yup
-        .dateRange({
-          format: dateFormat,
-        })
+    const schema = object().shape({
+      dateOfService: dateRange({
+        format: dateFormat,
+      })
         // .typeError()
         .min(min && !max && minDate)
         .max(!min && max && maxDate)
