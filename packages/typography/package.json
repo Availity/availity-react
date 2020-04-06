@@ -18,8 +18,7 @@
   },
   "license": "MIT",
   "publishConfig": {
-    "access": "public",
-    "registry": "https://npm.pkg.github.com/"
+    "access": "public"
   },
   "devDependencies": {
     "prop-types": "^15.5.8",
