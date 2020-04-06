@@ -1,6 +1,6 @@
 {
   "name": "@availity/form",
-  "version": "0.5.12",
+  "version": "0.5.13",
   "author": "Kyle Gray <kyle.gray@availity.com>",
   "description": "Form Wrapper around formik using reactstrap components",
   "main": "index.js",

@@ -3,6 +3,14 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## 0.5.13 (2020-04-06)
+
+**Note:** Version bump only for package @availity/form
+
+
+
+
+
 ## 0.5.12 (2020-04-03)
 
 **Note:** Version bump only for package @availity/form
