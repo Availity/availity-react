@@ -1,6 +1,6 @@
 {
   "name": "@availity/upload",
-  "version": "2.3.6",
+  "version": "2.3.7",
   "author": "Evan Sharp <evan.sharp@availity.com>",
   "description": "Availity upload component for uploading files",
   "main": "index.js",
@@ -31,7 +31,7 @@
     "tus-js-client": "1.5.1"
   },
   "dependencies": {
-    "@availity/progress": "^1.2.7",
+    "@availity/progress": "^1.2.8",
     "prop-types": "^15.5.8",
     "uuid": "^3.3.3"
   },
