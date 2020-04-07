@@ -1,11 +1,10 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 import React, { useState, useContext, useEffect, useRef } from 'react';
 import PropTypes from 'prop-types';
 import isFunction from 'lodash.isfunction';
 import isEqual from 'lodash.isequal';
-import { useEffectAsync, useToggle } from '@availity/hooks';
-import AvLocalStorage from '@availity/localstorage-core';
-
-const avLocalStorage = new AvLocalStorage();
+import * as avLocalStorage from '@availity/localstorage-core';
+import { useDebounce } from 'react-use';
 
 export const PaginationContext = React.createContext();
 
@@ -28,6 +27,8 @@ const Pagination = ({
   watchList,
   resetParams,
   defaultPage,
+  debounceTimeout,
+  shouldReturnPrevious,
 }) => {
   const ref = React.useRef();
   const [stateCurrentPage, setPage] = useState(defaultPage);
@@ -46,12 +47,15 @@ const Pagination = ({
 
   // create an abort controller for fetch to be able to cancel it
 
-  const [loading, toggleLoading] = useToggle(true);
+  const [loading, setLoading] = useState(true);
+  const toggleLoading = isLoading =>
+    setLoading(l => (isLoading !== undefined ? isLoading : !l));
 
   const getPageData = async () => {
+    toggleLoading(true);
     avLocalStorage.set('current-page', currentPage);
 
-    // If the items is a function then await the resposne in case of async actions
+    // If the items is a function then await the response in case of async actions
     const { items, totalCount } = isFunction(theItems)
       ? await theItems(currentPage, itemsPerPage)
       : { items: theItems };
@@ -93,14 +97,21 @@ const Pagination = ({
     toggleLoading(false);
   };
 
-  useEffectAsync(async () => {
-    getPageData();
-  }, [
-    currentPage,
-    itemsPerPage,
-    isFunction(theItems) ? null : theItems,
-    ...watchList,
-  ]);
+  useDebounce(
+    () => {
+      if (!shouldReturnPrevious) {
+        getPageData();
+      }
+    },
+    debounceTimeout,
+    [
+      currentPage,
+      itemsPerPage,
+      isFunction(theItems) ? null : theItems,
+      shouldReturnPrevious,
+      ...watchList,
+    ]
+  );
 
   const updatePage = page => {
     if (page !== currentPage) {
@@ -132,7 +143,6 @@ const Pagination = ({
         getPageData();
       }
     }
-    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [...resetParams]);
 
   // boom roasted
@@ -162,6 +172,8 @@ Pagination.propTypes = {
   resetParams: PropTypes.array,
   defaultPage: PropTypes.number,
   page: PropTypes.number,
+  debounceTimeout: PropTypes.number,
+  shouldReturnPrevious: PropTypes.bool,
 };
 
 Pagination.defaultProps = {
@@ -170,6 +182,8 @@ Pagination.defaultProps = {
   watchList: [],
   resetParams: [],
   defaultPage: 1,
+  debounceTimeout: 0,
+  shouldReturnPrevious: false,
 };
 
 export default Pagination;

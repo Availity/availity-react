@@ -10,6 +10,6 @@ export interface AuthorizeOpts {
 declare function useAuthorize(
   permissions: string | number | Permission[],
   options?: AuthorizeOpts
-): [boolean,boolean];
+): [boolean, boolean, string];
 
 export default useAuthorize;

@@ -78,6 +78,25 @@ describe('Checkbox', () => {
     getByText('Check One');
   });
 
+  test('renders without inline applied', async () => {
+    const { getByText } = render(
+      <Form
+        initialValues={{
+          hello: '',
+        }}
+        onSubmit={() => {}}
+      >
+        <CheckboxGroup name="hello" label="Checkbox Group">
+          <Checkbox label="Check One" value="uno" inline={false} />
+        </CheckboxGroup>
+      </Form>
+    );
+
+    const checkbox = getByText('Check One').parentElement;
+
+    expect(checkbox.className).not.toContain('form-check-inline');
+  });
+
   test('should generate uuid even when id is not added', () => {
     const { container } = render(
       <Form onSubmit={() => {}}>

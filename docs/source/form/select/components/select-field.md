@@ -24,7 +24,6 @@ import '@availity/yup';
 >
   <SelectField
     label="Just The Input"
-    id="justTheInput"
     name="justTheInput"
     isMulti={false}
     options={[
@@ -37,7 +36,7 @@ import '@availity/yup';
   <Button className="mt-3" color="primary" type="submit">
     Submit
   </Button>
-</Form>;
+</Form>
 ```
 
 ## Props
@@ -45,7 +44,7 @@ import '@availity/yup';
 Extends [Select Props](/form/select/components/select/#props).
 
 ### `name: string`
-The name of the field. Will be the key of the selected date that comes through in the values of the `onSubmit` callback.
+The name of the field and name of the HTML Input. Without this, no input will be rendered. Will be the key of the selected option(s) that come through in the values of the `onSubmit` callback of the form.
 
 ### `label?: ReactNode`
 The label to render above the `Select` input.
@@ -61,3 +60,7 @@ Class names to pass to the `Feedback`.
 
 ### `groupClass?: string`
 Class names to pass to the `FormGroup`.
+
+## 508 Compliance
+
+`<SelectField />` will automatically associate the `FormGroup` and `Label` based on its `name` prop, not an `id` prop. Using an `id` prop that is the same as `name` on this component will result in an orphaned form label and break 508 compliance.

@@ -3,6 +3,86 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## 1.3.11 (2020-04-07)
+
+**Note:** Version bump only for package @availity/step-wizard
+
+
+
+
+
+## 1.3.10 (2020-04-07)
+
+**Note:** Version bump only for package @availity/step-wizard
+
+
+
+
+
+## 1.3.9 (2020-04-06)
+
+**Note:** Version bump only for package @availity/step-wizard
+
+
+
+
+
+## 1.3.8 (2020-04-06)
+
+**Note:** Version bump only for package @availity/step-wizard
+
+
+
+
+
+## 1.3.7 (2020-04-06)
+
+**Note:** Version bump only for package @availity/step-wizard
+
+
+
+
+
+## 1.3.6 (2020-04-06)
+
+**Note:** Version bump only for package @availity/step-wizard
+
+
+
+
+
+## 1.3.5 (2020-04-03)
+
+**Note:** Version bump only for package @availity/step-wizard
+
+
+
+
+
+## 1.3.4 (2020-04-03)
+
+**Note:** Version bump only for package @availity/step-wizard
+
+
+
+
+
+## 1.3.3 (2020-04-02)
+
+**Note:** Version bump only for package @availity/step-wizard
+
+
+
+
+
+## 1.3.2 (2020-04-02)
+
+**Note:** Version bump only for package @availity/step-wizard
+
+
+
+
+
 ## [1.3.1](https://github.com/Availity/availity-react/compare/@availity/step-wizard@1.3.0...@availity/step-wizard@1.3.1) (2019-09-25)
 
 **Note:** Version bump only for package @availity/step-wizard

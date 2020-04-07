@@ -3,6 +3,127 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## 1.5.11 (2020-04-07)
+
+**Note:** Version bump only for package @availity/authorize
+
+
+
+
+
+## 1.5.10 (2020-04-07)
+
+**Note:** Version bump only for package @availity/authorize
+
+
+
+
+
+## 1.5.9 (2020-04-06)
+
+**Note:** Version bump only for package @availity/authorize
+
+
+
+
+
+## 1.5.8 (2020-04-06)
+
+**Note:** Version bump only for package @availity/authorize
+
+
+
+
+
+## 1.5.7 (2020-04-06)
+
+**Note:** Version bump only for package @availity/authorize
+
+
+
+
+
+## 1.5.6 (2020-04-06)
+
+**Note:** Version bump only for package @availity/authorize
+
+
+
+
+
+## 1.5.5 (2020-04-03)
+
+**Note:** Version bump only for package @availity/authorize
+
+
+
+
+
+## 1.5.4 (2020-04-03)
+
+**Note:** Version bump only for package @availity/authorize
+
+
+
+
+
+## 1.5.3 (2020-04-02)
+
+**Note:** Version bump only for package @availity/authorize
+
+
+
+
+
+## 1.5.2 (2020-04-02)
+
+**Note:** Version bump only for package @availity/authorize
+
+
+
+
+
+## [1.5.1](https://github.com/Availity/availity-react/compare/@availity/authorize@1.5.0...@availity/authorize@1.5.1) (2020-02-19)
+
+**Note:** Version bump only for package @availity/authorize
+
+
+
+
+
+# [1.5.0](https://github.com/Availity/availity-react/compare/@availity/authorize@1.4.3...@availity/authorize@1.5.0) (2020-02-19)
+
+
+### Features
+
+* **authorize:** adds currentRegion to values returned from useAuthorize() ([245dd2c](https://github.com/Availity/availity-react/commit/245dd2c7015ed77870247b0ecfaccd5922983a6d))
+* **authorize:** update type definition ([7a415c7](https://github.com/Availity/availity-react/commit/7a415c77fa042f60ba17b975a7c45eb4ab1e23a8))
+
+
+### Performance Improvements
+
+* **authorize:** dont need to check undefined permissions ([cb8fabe](https://github.com/Availity/availity-react/commit/cb8fabe6ab2e05e2b648b440dde414df37aa837c))
+
+
+
+
+
+## [1.4.3](https://github.com/Availity/availity-react/compare/@availity/authorize@1.4.2...@availity/authorize@1.4.3) (2020-02-11)
+
+**Note:** Version bump only for package @availity/authorize
+
+
+
+
+
+## [1.4.2](https://github.com/Availity/availity-react/compare/@availity/authorize@1.4.1...@availity/authorize@1.4.2) (2020-02-10)
+
+**Note:** Version bump only for package @availity/authorize
+
+
+
+
+
 ## [1.4.1](https://github.com/Availity/availity-react/compare/@availity/authorize@1.4.0...@availity/authorize@1.4.1) (2019-12-04)
 
 **Note:** Version bump only for package @availity/authorize

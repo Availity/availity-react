@@ -38,12 +38,14 @@ const CheckboxGroup = ({
   name,
   children,
   onChange: groupOnChange,
+  groupClassName,
   label,
   ...rest
 }) => {
   const [field, metadata] = useField(name);
 
   const classes = classNames(
+    groupClassName,
     'form-control border-0 p-0 h-auto',
     metadata.touched ? 'is-touched' : 'is-untouched',
     metadata.touched && metadata.error && 'is-invalid'
@@ -71,6 +73,7 @@ CheckboxGroup.propTypes = {
   children: PropTypes.node,
   label: PropTypes.node,
   onChange: PropTypes.func,
+  groupClassName: PropTypes.string,
 };
 
 export default CheckboxGroup;

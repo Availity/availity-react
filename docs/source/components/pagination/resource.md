@@ -13,7 +13,7 @@ import { avOrganizationsApi } from '@availity/api-axios';
 
 <AvResourcePagination resource={avOrganizationsApi} itemsPerPage={25}>
   <PaginationControls />
-</AvResourcePagination>;
+</AvResourcePagination>
 ```
 
 ## Props

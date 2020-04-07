@@ -3,6 +3,440 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## 4.13.12 (2020-04-07)
+
+**Note:** Version bump only for package @availity/react-docs
+
+
+
+
+
+## 4.13.11 (2020-04-07)
+
+**Note:** Version bump only for package @availity/react-docs
+
+
+
+
+
+## 4.13.10 (2020-04-06)
+
+**Note:** Version bump only for package @availity/react-docs
+
+
+
+
+
+## 4.13.9 (2020-04-06)
+
+**Note:** Version bump only for package @availity/react-docs
+
+
+
+
+
+## 4.13.8 (2020-04-06)
+
+**Note:** Version bump only for package @availity/react-docs
+
+
+
+
+
+## 4.13.7 (2020-04-06)
+
+**Note:** Version bump only for package @availity/react-docs
+
+
+
+
+
+## 4.13.6 (2020-04-03)
+
+**Note:** Version bump only for package @availity/react-docs
+
+
+
+
+
+## 4.13.5 (2020-04-03)
+
+**Note:** Version bump only for package @availity/react-docs
+
+
+
+
+
+## 4.13.4 (2020-04-02)
+
+**Note:** Version bump only for package @availity/react-docs
+
+
+
+
+
+## 4.13.3 (2020-04-02)
+
+**Note:** Version bump only for package @availity/react-docs
+
+
+
+
+
+## [4.13.2](https://github.com/Availity/availity-react/compare/@availity/react-docs@4.13.1...@availity/react-docs@4.13.2) (2020-03-24)
+
+**Note:** Version bump only for package @availity/react-docs
+
+
+
+
+
+## [4.13.1](https://github.com/Availity/availity-react/compare/@availity/react-docs@4.13.0...@availity/react-docs@4.13.1) (2020-03-23)
+
+**Note:** Version bump only for package @availity/react-docs
+
+
+
+
+
+# [4.13.0](https://github.com/Availity/availity-react/compare/@availity/react-docs@4.12.2...@availity/react-docs@4.13.0) (2020-03-19)
+
+
+### Features
+
+* **pagination:** add debounceTimeout prop ([23a0a6c](https://github.com/Availity/availity-react/commit/23a0a6cc91193546b4f151154555cbc88aa771c6))
+* **pagination:** add shouldGetPageData prop ([7e3a83f](https://github.com/Availity/availity-react/commit/7e3a83f1c72a3a36de4103acc4fbe6bd18cb80ac))
+
+
+
+
+
+## [4.12.2](https://github.com/Availity/availity-react/compare/@availity/react-docs@4.12.1...@availity/react-docs@4.12.2) (2020-03-18)
+
+**Note:** Version bump only for package @availity/react-docs
+
+
+
+
+
+## [4.12.1](https://github.com/Availity/availity-react/compare/@availity/react-docs@4.12.0...@availity/react-docs@4.12.1) (2020-03-18)
+
+**Note:** Version bump only for package @availity/react-docs
+
+
+
+
+
+# [4.12.0](https://github.com/Availity/availity-react/compare/@availity/react-docs@4.11.9...@availity/react-docs@4.12.0) (2020-03-17)
+
+
+### Features
+
+* **date:** add yearPickerProps, allow users to select month and year values from dropdowns ([89cc059](https://github.com/Availity/availity-react/commit/89cc059cc8c8ad80183605a39eee78e9351b5d26))
+
+
+
+
+
+## [4.11.9](https://github.com/Availity/availity-react/compare/@availity/react-docs@4.11.8...@availity/react-docs@4.11.9) (2020-03-03)
+
+**Note:** Version bump only for package @availity/react-docs
+
+
+
+
+
+## [4.11.8](https://github.com/Availity/availity-react/compare/@availity/react-docs@4.11.7...@availity/react-docs@4.11.8) (2020-03-03)
+
+**Note:** Version bump only for package @availity/react-docs
+
+
+
+
+
+## [4.11.7](https://github.com/Availity/availity-react/compare/@availity/react-docs@4.11.6...@availity/react-docs@4.11.7) (2020-03-02)
+
+**Note:** Version bump only for package @availity/react-docs
+
+
+
+
+
+## [4.11.6](https://github.com/Availity/availity-react/compare/@availity/react-docs@4.11.5...@availity/react-docs@4.11.6) (2020-02-28)
+
+**Note:** Version bump only for package @availity/react-docs
+
+
+
+
+
+## [4.11.5](https://github.com/Availity/availity-react/compare/@availity/react-docs@4.11.4...@availity/react-docs@4.11.5) (2020-02-28)
+
+**Note:** Version bump only for package @availity/react-docs
+
+
+
+
+
+## [4.11.4](https://github.com/Availity/availity-react/compare/@availity/react-docs@4.11.3...@availity/react-docs@4.11.4) (2020-02-28)
+
+**Note:** Version bump only for package @availity/react-docs
+
+
+
+
+
+## [4.11.3](https://github.com/Availity/availity-react/compare/@availity/react-docs@4.11.2...@availity/react-docs@4.11.3) (2020-02-26)
+
+**Note:** Version bump only for package @availity/react-docs
+
+
+
+
+
+## [4.11.2](https://github.com/Availity/availity-react/compare/@availity/react-docs@4.11.1...@availity/react-docs@4.11.2) (2020-02-26)
+
+**Note:** Version bump only for package @availity/react-docs
+
+
+
+
+
+## [4.11.1](https://github.com/Availity/availity-react/compare/@availity/react-docs@4.11.0...@availity/react-docs@4.11.1) (2020-02-24)
+
+**Note:** Version bump only for package @availity/react-docs
+
+
+
+
+
+# [4.11.0](https://github.com/Availity/availity-react/compare/@availity/react-docs@4.10.2...@availity/react-docs@4.11.0) (2020-02-20)
+
+
+### Features
+
+* **form-upload:** pass id of file removed in onFileRemove callback ([1e6e63c](https://github.com/Availity/availity-react/commit/1e6e63cd402e31f8fc9015364f9f20fc06af0f82))
+
+
+
+
+
+## [4.10.2](https://github.com/Availity/availity-react/compare/@availity/react-docs@4.10.1...@availity/react-docs@4.10.2) (2020-02-19)
+
+**Note:** Version bump only for package @availity/react-docs
+
+
+
+
+
+## [4.10.1](https://github.com/Availity/availity-react/compare/@availity/react-docs@4.10.0...@availity/react-docs@4.10.1) (2020-02-19)
+
+**Note:** Version bump only for package @availity/react-docs
+
+
+
+
+
+# [4.10.0](https://github.com/Availity/availity-react/compare/@availity/react-docs@4.9.6...@availity/react-docs@4.10.0) (2020-02-19)
+
+
+### Features
+
+* **authorize:** adds currentRegion to values returned from useAuthorize() ([245dd2c](https://github.com/Availity/availity-react/commit/245dd2c7015ed77870247b0ecfaccd5922983a6d))
+
+
+
+
+
+## [4.9.6](https://github.com/Availity/availity-react/compare/@availity/react-docs@4.9.5...@availity/react-docs@4.9.6) (2020-02-18)
+
+**Note:** Version bump only for package @availity/react-docs
+
+
+
+
+
+## [4.9.5](https://github.com/Availity/availity-react/compare/@availity/react-docs@4.9.4...@availity/react-docs@4.9.5) (2020-02-17)
+
+**Note:** Version bump only for package @availity/react-docs
+
+
+
+
+
+## [4.9.4](https://github.com/Availity/availity-react/compare/@availity/react-docs@4.9.3...@availity/react-docs@4.9.4) (2020-02-16)
+
+**Note:** Version bump only for package @availity/react-docs
+
+
+
+
+
+## [4.9.3](https://github.com/Availity/availity-react/compare/@availity/react-docs@4.9.2...@availity/react-docs@4.9.3) (2020-02-14)
+
+**Note:** Version bump only for package @availity/react-docs
+
+
+
+
+
+## [4.9.2](https://github.com/Availity/availity-react/compare/@availity/react-docs@4.9.1...@availity/react-docs@4.9.2) (2020-02-12)
+
+
+### Bug Fixes
+
+* updates @availity/yup to fix resolution issues. Fixes issue with Phone documentation not showing ([76d89e8](https://github.com/Availity/availity-react/commit/76d89e8143ba0d095cb2171c7128894f1d3a5a8d))
+
+
+
+
+
+## [4.9.1](https://github.com/Availity/availity-react/compare/@availity/react-docs@4.9.0...@availity/react-docs@4.9.1) (2020-02-12)
+
+**Note:** Version bump only for package @availity/react-docs
+
+
+
+
+
+# [4.9.0](https://github.com/Availity/availity-react/compare/@availity/react-docs@4.8.6...@availity/react-docs@4.9.0) (2020-02-11)
+
+
+### Features
+
+* **phone:** initial commit for phone package ([76b7227](https://github.com/Availity/availity-react/commit/76b7227adee750265daa4e65486606d102a1e5c2))
+
+
+
+
+
+## [4.8.6](https://github.com/Availity/availity-react/compare/@availity/react-docs@4.8.5...@availity/react-docs@4.8.6) (2020-02-10)
+
+**Note:** Version bump only for package @availity/react-docs
+
+
+
+
+
+## [4.8.5](https://github.com/Availity/availity-react/compare/@availity/react-docs@4.8.4...@availity/react-docs@4.8.5) (2020-02-10)
+
+**Note:** Version bump only for package @availity/react-docs
+
+
+
+
+
+## [4.8.4](https://github.com/Availity/availity-react/compare/@availity/react-docs@4.8.3...@availity/react-docs@4.8.4) (2020-02-09)
+
+**Note:** Version bump only for package @availity/react-docs
+
+
+
+
+
+## [4.8.3](https://github.com/Availity/availity-react/compare/@availity/react-docs@4.8.2...@availity/react-docs@4.8.3) (2020-02-08)
+
+**Note:** Version bump only for package @availity/react-docs
+
+
+
+
+
+## [4.8.2](https://github.com/Availity/availity-react/compare/@availity/react-docs@4.8.1...@availity/react-docs@4.8.2) (2020-02-07)
+
+**Note:** Version bump only for package @availity/react-docs
+
+
+
+
+
+## [4.8.1](https://github.com/Availity/availity-react/compare/@availity/react-docs@4.8.0...@availity/react-docs@4.8.1) (2020-02-07)
+
+**Note:** Version bump only for package @availity/react-docs
+
+
+
+
+
+# [4.8.0](https://github.com/Availity/availity-react/compare/@availity/react-docs@4.7.14...@availity/react-docs@4.8.0) (2020-01-31)
+
+
+### Features
+
+* **select:** add defaultToCurrentRegion prop to AvRegionSelect ([d7ec17e](https://github.com/Availity/availity-react/commit/d7ec17e231e3b20f0a98edbb6e6ddfaf6a1ddabd))
+* **select:** add shouldSearch prop ([9f49099](https://github.com/Availity/availity-react/commit/9f490992f4d32a514a95d10367ebd072f963eb8d))
+
+
+
+
+
+## [4.7.14](https://github.com/Availity/availity-react/compare/@availity/react-docs@4.7.13...@availity/react-docs@4.7.14) (2020-01-31)
+
+
+### Bug Fixes
+
+* **select:** fixes case where validation messages do not appear due to inputId being different than name. Closes [#434](https://github.com/Availity/availity-react/issues/434) ([ea332fc](https://github.com/Availity/availity-react/commit/ea332fcb19bb37acbb558d6edda4c402b90e253c))
+
+
+
+
+
+## [4.7.13](https://github.com/Availity/availity-react/compare/@availity/react-docs@4.7.12...@availity/react-docs@4.7.13) (2020-01-25)
+
+**Note:** Version bump only for package @availity/react-docs
+
+
+
+
+
+## [4.7.12](https://github.com/Availity/availity-react/compare/@availity/react-docs@4.7.11...@availity/react-docs@4.7.12) (2020-01-23)
+
+**Note:** Version bump only for package @availity/react-docs
+
+
+
+
+
+## [4.7.11](https://github.com/Availity/availity-react/compare/@availity/react-docs@4.7.10...@availity/react-docs@4.7.11) (2020-01-16)
+
+**Note:** Version bump only for package @availity/react-docs
+
+
+
+
+
+## [4.7.10](https://github.com/Availity/availity-react/compare/@availity/react-docs@4.7.9...@availity/react-docs@4.7.10) (2020-01-15)
+
+**Note:** Version bump only for package @availity/react-docs
+
+
+
+
+
+## [4.7.9](https://github.com/Availity/availity-react/compare/@availity/react-docs@4.7.8...@availity/react-docs@4.7.9) (2020-01-15)
+
+**Note:** Version bump only for package @availity/react-docs
+
+
+
+
+
+## [4.7.8](https://github.com/Availity/availity-react/compare/@availity/react-docs@4.7.7...@availity/react-docs@4.7.8) (2020-01-15)
+
+**Note:** Version bump only for package @availity/react-docs
+
+
+
+
+
+## [4.7.7](https://github.com/Availity/availity-react/compare/@availity/react-docs@4.7.6...@availity/react-docs@4.7.7) (2020-01-13)
+
+**Note:** Version bump only for package @availity/react-docs
+
+
+
+
+
 ## [4.7.6](https://github.com/Availity/availity-react/compare/@availity/react-docs@4.7.5...@availity/react-docs@4.7.6) (2020-01-10)
 
 **Note:** Version bump only for package @availity/react-docs

@@ -15,7 +15,7 @@ import { Disclaimer } from '@availity/typography';
   necessary legal authority to bind this organization. I further attest and
   certify my organization&apos;s designation as a Covered Entity under HIPAA, as
   more fully described in 45 CFR § 160.103.
-</Disclaimer>;
+</Disclaimer>
 ```
 
 ### Props

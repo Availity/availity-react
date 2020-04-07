@@ -3,6 +3,86 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## 2.1.10 (2020-04-07)
+
+**Note:** Version bump only for package @availity/link
+
+
+
+
+
+## 2.1.9 (2020-04-07)
+
+**Note:** Version bump only for package @availity/link
+
+
+
+
+
+## 2.1.8 (2020-04-06)
+
+**Note:** Version bump only for package @availity/link
+
+
+
+
+
+## 2.1.7 (2020-04-06)
+
+**Note:** Version bump only for package @availity/link
+
+
+
+
+
+## 2.1.6 (2020-04-06)
+
+**Note:** Version bump only for package @availity/link
+
+
+
+
+
+## 2.1.5 (2020-04-06)
+
+**Note:** Version bump only for package @availity/link
+
+
+
+
+
+## 2.1.4 (2020-04-03)
+
+**Note:** Version bump only for package @availity/link
+
+
+
+
+
+## 2.1.3 (2020-04-03)
+
+**Note:** Version bump only for package @availity/link
+
+
+
+
+
+## 2.1.2 (2020-04-02)
+
+**Note:** Version bump only for package @availity/link
+
+
+
+
+
+## 2.1.1 (2020-04-02)
+
+**Note:** Version bump only for package @availity/link
+
+
+
+
+
 # [2.1.0](https://github.com/Availity/availity-react/compare/@availity/link@2.0.1...@availity/link@2.1.0) (2019-12-23)
 
 

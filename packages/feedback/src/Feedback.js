@@ -1,6 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { Dropdown, DropdownToggle } from 'reactstrap';
+import { avLogMessagesApi } from '@availity/api-axios';
 import { useToggle } from '@availity/hooks';
 import FeedbackDropdown from './FeedbackDropdown';
 import FeedbackModal from './FeedbackModal';
@@ -9,6 +10,7 @@ const Feedback = ({
   appName,
   modal,
   children,
+  analytics,
   className,
   outline,
   color,
@@ -36,12 +38,14 @@ const Feedback = ({
           isOpen={isOpen}
           toggle={() => toggle()}
           name={appName}
+          analytics={analytics}
           {...formProps}
         />
       ) : (
         <FeedbackDropdown
           onFeedbackSent={onFeedbackSent}
           prompt={prompt}
+          analytics={analytics}
           toggle={() => toggle()}
           name={appName}
           {...formProps}
@@ -61,11 +65,15 @@ Feedback.propTypes = {
   formProps: PropTypes.object,
   prompt: PropTypes.string,
   onFeedbackSent: PropTypes.func,
+  analytics: PropTypes.shape({
+    info: PropTypes.func.isRequired,
+  }),
 };
 
 Feedback.defaultProps = {
   modal: false,
   color: 'light',
+  analytics: avLogMessagesApi,
 };
 
 export default Feedback;

@@ -9,6 +9,7 @@ import SelectField from './SelectField';
 
 const ResourceSelect = ({
   name,
+  method,
   delay,
   debounceTimeout = delay,
   itemsPerPage,
@@ -23,6 +24,7 @@ const ResourceSelect = ({
   onFocus,
   waitUntilFocused,
   defaultToOnlyOption,
+  shouldSearch,
   ...rest
 }) => {
   const { setFieldValue } = useFormikContext();
@@ -79,16 +81,16 @@ const ResourceSelect = ({
           },
         },
       };
-      if (typeof rest.parameters === 'function') {
-        data = {
-          ...data,
-          ...rest.parameters(data),
-        };
-      } else {
-        data = {
-          ...data,
-          ...rest.parameters,
-        };
+
+      if (args.length !== 3) {
+        if (typeof rest.parameters === 'function') {
+          data = rest.parameters(data);
+        } else {
+          data = {
+            ...data,
+            ...rest.parameters,
+          };
+        }
       }
 
       if (graphqlConfig.query) {
@@ -99,37 +101,34 @@ const ResourceSelect = ({
         q: encodeURIComponent(inputValue),
         limit: itemsPerPage,
         customerId: rest.customerId,
-        ...rest.parameters,
       };
-    }
 
-    if (typeof rest.parameters === 'function') {
-      params = {
-        ...params,
-        ...rest.parameters(params),
-      };
-    } else {
-      params = {
-        ...params,
-        ...rest.parameters,
-      };
+      if (args.length !== 3) {
+        if (typeof rest.parameters === 'function') {
+          params = rest.parameters(params);
+        } else {
+          params = {
+            ...params,
+            ...rest.parameters,
+          };
+        }
+      }
     }
 
     if (args.length === 3) {
       if (graphqlConfig) {
         data.variables.page = page;
         if (typeof rest.parameters === 'function') {
-          data = {
-            ...data,
-            ...rest.parameters(data),
-          };
+          data = rest.parameters(data);
         }
       } else {
         params.offset = (page - 1) * itemsPerPage;
         if (typeof rest.parameters === 'function') {
+          params = rest.parameters(params);
+        } else {
           params = {
             ...params,
-            ...rest.parameters(params),
+            ...rest.parameters,
           };
         }
       }
@@ -149,7 +148,13 @@ const ResourceSelect = ({
         requiredSatisfied = rest.requiredParams.every(param => params[param]);
       }
     }
-    if (rest.isDisabled || !requiredSatisfied) {
+
+    let _shouldSearch = shouldSearch;
+    if (typeof shouldSearch === 'function') {
+      _shouldSearch = shouldSearch(...args);
+    }
+
+    if (rest.isDisabled || !requiredSatisfied || !_shouldSearch) {
       return {
         options: [],
         hasMore: false,
@@ -157,9 +162,9 @@ const ResourceSelect = ({
     }
     if (onPageChange) onPageChange(inputValue, page);
     let fetch;
-    if (graphqlConfig) {
+    if (graphqlConfig || method === 'POST') {
       fetch = () =>
-        resource.post(data, {
+        resource.post(data || params, {
           headers: {
             'Content-Type': 'application/json',
           },
@@ -271,6 +276,7 @@ const ResourceSelect = ({
 ResourceSelect.propTypes = {
   name: PropTypes.string.isRequired,
   requestConfig: PropTypes.object,
+  method: PropTypes.string,
   resource: PropTypes.shape({
     postGet: PropTypes.func,
     post: PropTypes.func,
@@ -299,6 +305,7 @@ ResourceSelect.propTypes = {
   onFocus: PropTypes.func,
   waitUntilFocused: PropTypes.bool,
   defaultToOnlyOption: PropTypes.bool,
+  shouldSearch: PropTypes.oneOfType([PropTypes.bool, PropTypes.func]),
 };
 
 ResourceSelect.defaultProps = {
@@ -306,6 +313,7 @@ ResourceSelect.defaultProps = {
   itemsPerPage: 50,
   waitUntilFocused: false,
   defaultToOnlyOption: false,
+  shouldSearch: true,
 };
 
 const ucFirst = str => str && str.charAt(0).toUpperCase() + str.slice(1);

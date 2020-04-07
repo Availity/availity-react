@@ -28,12 +28,14 @@ const RadioGroup = ({
   children,
   label,
   onChange: groupOnChange,
+  groupClassName,
   inline = false,
   ...rest
 }) => {
   const [field, metadata] = useField(name);
 
   const classes = classNames(
+    groupClassName,
     'form-control border-0 p-0 h-auto',
     metadata.touched ? 'is-touched' : 'is-untouched',
     metadata.touched && metadata.error && 'is-invalid'
@@ -62,6 +64,7 @@ RadioGroup.propTypes = {
   label: PropTypes.node,
   onChange: PropTypes.func,
   inline: PropTypes.bool,
+  groupClassName: PropTypes.string,
 };
 
 export default RadioGroup;

@@ -3,6 +3,110 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## 2.1.21 (2020-04-07)
+
+**Note:** Version bump only for package @availity/favorites
+
+
+
+
+
+## 2.1.20 (2020-04-07)
+
+**Note:** Version bump only for package @availity/favorites
+
+
+
+
+
+## 2.1.19 (2020-04-06)
+
+**Note:** Version bump only for package @availity/favorites
+
+
+
+
+
+## 2.1.18 (2020-04-06)
+
+**Note:** Version bump only for package @availity/favorites
+
+
+
+
+
+## 2.1.17 (2020-04-06)
+
+**Note:** Version bump only for package @availity/favorites
+
+
+
+
+
+## 2.1.16 (2020-04-06)
+
+**Note:** Version bump only for package @availity/favorites
+
+
+
+
+
+## 2.1.15 (2020-04-03)
+
+**Note:** Version bump only for package @availity/favorites
+
+
+
+
+
+## 2.1.14 (2020-04-03)
+
+**Note:** Version bump only for package @availity/favorites
+
+
+
+
+
+## 2.1.13 (2020-04-02)
+
+**Note:** Version bump only for package @availity/favorites
+
+
+
+
+
+## 2.1.12 (2020-04-02)
+
+**Note:** Version bump only for package @availity/favorites
+
+
+
+
+
+## [2.1.11](https://github.com/Availity/availity-react/compare/@availity/favorites@2.1.10...@availity/favorites@2.1.11) (2020-02-14)
+
+**Note:** Version bump only for package @availity/favorites
+
+
+
+
+
+## [2.1.10](https://github.com/Availity/availity-react/compare/@availity/favorites@2.1.9...@availity/favorites@2.1.10) (2020-02-11)
+
+**Note:** Version bump only for package @availity/favorites
+
+
+
+
+
+## [2.1.9](https://github.com/Availity/availity-react/compare/@availity/favorites@2.1.8...@availity/favorites@2.1.9) (2020-02-10)
+
+**Note:** Version bump only for package @availity/favorites
+
+
+
+
+
 ## [2.1.8](https://github.com/Availity/availity-react/compare/@availity/favorites@2.1.7...@availity/favorites@2.1.8) (2019-10-24)
 
 **Note:** Version bump only for package @availity/favorites

@@ -7,6 +7,8 @@ export interface PaginationProps {
   watchList?: any[];
   resetParams?: any[];
   defaultPage?: number;
+  debounceTimeout?: number;
+  shouldReturnPrevious?: boolean;
 }
 
 export interface PaginationContext<Item> {

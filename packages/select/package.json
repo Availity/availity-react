@@ -1,7 +1,7 @@
 {
 	"name": "@availity/select",
-	"version": "0.8.4",
-	"description": "Wrapper for react-select to work with availity-reactstrap-validation",
+	"version": "0.9.20",
+	"description": "Wrapper for react-select to work with formik",
 	"main": "index.js",
 	"typings": "typings/index.d.ts",
 	"keywords": [
@@ -19,26 +19,26 @@
 	"bugs": {
 		"url": "https://github.com/Availity/availity-react/issues"
 	},
-	"homepage": "https://github.com/Availity/availity-react/tree/master/packages/reactstrap-validation-select#readme",
+	"homepage": "https://github.com/Availity/availity-react/tree/master/packages/select#readme",
 	"devDependencies": {
 		"@availity/api-axios": "^5.4.0",
-		"@availity/api-core": "^5.4.0",
-		"@availity/form": "^0.5.1",
-		"@availity/localstorage-core": "^2.6.1",
+		"@availity/api-core": "^6.1.3",
+		"@availity/form": "^0.5.18",
+		"@availity/localstorage-core": "^3.0.0",
 		"@types/react-select": "^3.0.0",
-		"axios": "^0.18.0",
-		"formik": "2.0.4",
+		"axios": "^0.19.2",
+		"formik": "2.1.4",
 		"react": "^16.8.3",
 		"react-dom": "^16.8.3",
 		"reactstrap": "^8.0.0",
-		"yup": "^0.27.0"
+		"yup": "^0.28.1"
 	},
 	"peerDependencies": {
 		"@availity/api-axios": "^3.0.1",
 		"@availity/api-core": "^3.0.0",
 		"@availity/form": "^0.2.0",
 		"@availity/localstorage-core": "^2.5.0",
-		"axios": "^0.18.0",
+		"axios": "^0.19.2",
 		"formik": "^2.0.1",
 		"react": "^16.8.3",
 		"reactstrap": "^8.0.0 || ^7.0.0 || ^6.0.0"

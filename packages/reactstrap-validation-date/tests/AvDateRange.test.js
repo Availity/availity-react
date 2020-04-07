@@ -311,7 +311,9 @@ describe('AvDateRange', () => {
     fireEvent.click(start);
 
     // Simulate user selecting tomorrow as end date
-    const end = container.querySelector('.CalendarDay__today').nextSibling;
+    const dt = container.querySelector('.CalendarDay__today');
+    const end =
+      dt.nextSibling || dt.parentElement.nextSibling.firstElementChild;
     fireEvent.click(end);
 
     fireEvent.click(getByText('Submit'));
@@ -476,12 +478,16 @@ describe('AvDateRange', () => {
 
     fireEvent.focus(input);
 
+    const current = container.querySelector('.CalendarDay__today');
+
     // Simulate user selecting today as start date
-    const start = container.querySelector('.CalendarDay__today');
+    const start = current;
     fireEvent.click(start);
 
     // Simulate user selecting tomorrow as end date
-    const end = container.querySelector('.CalendarDay__today').nextSibling;
+    const end =
+      current.nextSibling ||
+      current.parentElement.nextSibling.firstElementChild;
     fireEvent.click(end);
 
     fireEvent.click(getByText('Submit'));

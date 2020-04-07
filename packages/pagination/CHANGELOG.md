@@ -3,6 +3,139 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## 2.8.11 (2020-04-07)
+
+**Note:** Version bump only for package @availity/pagination
+
+
+
+
+
+## 2.8.10 (2020-04-07)
+
+**Note:** Version bump only for package @availity/pagination
+
+
+
+
+
+## 2.8.9 (2020-04-06)
+
+**Note:** Version bump only for package @availity/pagination
+
+
+
+
+
+## 2.8.8 (2020-04-06)
+
+**Note:** Version bump only for package @availity/pagination
+
+
+
+
+
+## 2.8.7 (2020-04-06)
+
+**Note:** Version bump only for package @availity/pagination
+
+
+
+
+
+## 2.8.6 (2020-04-06)
+
+**Note:** Version bump only for package @availity/pagination
+
+
+
+
+
+## 2.8.5 (2020-04-03)
+
+**Note:** Version bump only for package @availity/pagination
+
+
+
+
+
+## 2.8.4 (2020-04-03)
+
+**Note:** Version bump only for package @availity/pagination
+
+
+
+
+
+## 2.8.3 (2020-04-02)
+
+**Note:** Version bump only for package @availity/pagination
+
+
+
+
+
+## 2.8.2 (2020-04-02)
+
+**Note:** Version bump only for package @availity/pagination
+
+
+
+
+
+## [2.8.1](https://github.com/Availity/availity-react/compare/@availity/pagination@2.8.0...@availity/pagination@2.8.1) (2020-03-24)
+
+
+### Bug Fixes
+
+* **pagination:** allow custom getResult for AvResourcePagination ([0bb1cbf](https://github.com/Availity/availity-react/commit/0bb1cbfcc3672571458e2a80a31e5c1618d0348d))
+
+
+
+
+
+# [2.8.0](https://github.com/Availity/availity-react/compare/@availity/pagination@2.7.1...@availity/pagination@2.8.0) (2020-03-19)
+
+
+### Features
+
+* **pagination:** add debounceTimeout prop ([23a0a6c](https://github.com/Availity/availity-react/commit/23a0a6cc91193546b4f151154555cbc88aa771c6))
+* **pagination:** add shouldGetPageData prop ([7e3a83f](https://github.com/Availity/availity-react/commit/7e3a83f1c72a3a36de4103acc4fbe6bd18cb80ac))
+
+
+
+
+
+## [2.7.1](https://github.com/Availity/availity-react/compare/@availity/pagination@2.7.0...@availity/pagination@2.7.1) (2020-03-17)
+
+
+### Bug Fixes
+
+* **pagination:** set zIndex to 'auto' to avoid creating new stacking context ([15f4fb1](https://github.com/Availity/availity-react/commit/15f4fb13107f34dc7002849b05b24cd1cecab00a))
+
+
+
+
+
+# [2.7.0](https://github.com/Availity/availity-react/compare/@availity/pagination@2.6.2...@availity/pagination@2.7.0) (2020-02-11)
+
+
+### Features
+
+* **pagination:** update avLocalStorage ([a1fa6e0](https://github.com/Availity/availity-react/commit/a1fa6e0ef203b63bd13d4e128db10d71368821bb))
+
+
+
+
+
+## [2.6.2](https://github.com/Availity/availity-react/compare/@availity/pagination@2.6.1...@availity/pagination@2.6.2) (2020-01-25)
+
+**Note:** Version bump only for package @availity/pagination
+
+
+
+
+
 ## [2.6.1](https://github.com/Availity/availity-react/compare/@availity/pagination@2.6.0...@availity/pagination@2.6.1) (2019-12-13)
 
 **Note:** Version bump only for package @availity/pagination

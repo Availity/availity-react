@@ -50,6 +50,10 @@ Triggers the app icon's "branded" styles. Only used if the app icon should appea
 
 The ID of the payer the application is for. If provided, the payer logo appears and not the app icon.
 
+### `logo?: boolean`
+
+If `true` will fetch the payer logo using the `spaceId` or `payerId`.
+
 ### `component?: ReactNode`
 
 Allow rendering of an optional component in the top right of the header.
@@ -99,4 +103,5 @@ Additional props passed to the `page-header-title`.
 Used to customize the contents of the right side of the page header where the feedback and payer logo get rendered. Accepts the rendered `payerLogo` and `feedback` as props
 
 ### `linkTag?: React.ComponentType<React.HTMLAttributes<HTMLAnchorElement>> | string`
+
 Custom link tag for the links. **Default:** `<a>`

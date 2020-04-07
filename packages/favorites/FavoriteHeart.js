@@ -81,6 +81,7 @@ const FavoriteHeart = ({ id, onChange, onMouseDown, ...props }) => {
 FavoriteHeart.propTypes = {
   id: PropTypes.string.isRequired,
   onChange: PropTypes.func,
+  onMouseDown: PropTypes.func,
 };
 
 export default FavoriteHeart;

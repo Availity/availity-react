@@ -79,14 +79,16 @@ export interface SpacesContext {
 export interface SpacesProps {
   clientId: string;
   query?: string;
-  children?: React.ReactNode | ((spacesContext: SpacesContext) => React.ReactNode);
+  children?:
+    | React.ReactNode
+    | ((spacesContext: SpacesContext) => React.ReactNode);
   variables?: Record<string, any>;
   spaceIds?: string[];
   payerIds?: string[];
   spaces?: string[];
 }
 
-declare function useSpaces(...ids: string[]): Space[];
+declare function useSpaces(...ids: (string | undefined | null)[]): Space[];
 
 declare function useSpacesContext(): SpacesContext;
 

@@ -11,6 +11,7 @@ const Checkbox = ({
   value: checkValue,
   className,
   id,
+  inline,
   ...attributes
 }) => {
   const { value, toggle, metadata } = useCheckboxGroup(checkValue);
@@ -24,7 +25,12 @@ const Checkbox = ({
   );
 
   return (
-    <FormGroup for={inputId} check inline disabled={attributes.disabled}>
+    <FormGroup
+      for={inputId}
+      check
+      inline={inline}
+      disabled={attributes.disabled}
+    >
       <Input
         id={inputId}
         name={inputId}
@@ -50,8 +56,13 @@ Checkbox.propTypes = {
     PropTypes.bool,
     PropTypes.object,
   ]),
+  inline: PropTypes.bool,
   disabled: PropTypes.bool,
   className: PropTypes.string,
+};
+
+Checkbox.defaultProps = {
+  inline: true,
 };
 
 export default Checkbox;

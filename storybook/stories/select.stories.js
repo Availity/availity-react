@@ -9,7 +9,6 @@ import Select, { SelectField, ResourceSelect } from '@availity/select';
 import {
   AvProviderSelect,
   AvOrganizationSelect,
-  AvPatientSelect,
 } from '@availity/select/resources';
 
 import { Feedback, FormGroup, Field } from '@availity/form';
@@ -387,55 +386,6 @@ storiesOf('Formik|Select/resources', module)
           isDisabled={boolean('Disabled', false)}
         />
         <Button color="primary">Submit</Button>
-      </FormikResults>
-    );
-  })
-  .add('AvPatientSelect', () => {
-    const isMulti = boolean('Multiple', false);
-    const min = (isMulti && number('Min Selection', 2)) || undefined;
-    const max = (isMulti && number('Max Selection', 3)) || undefined;
-    const required = boolean('Required', false);
-    const autofill = boolean('Autofill', false);
-    return (
-      <FormikResults
-        initialValues={{
-          AvPatientSelect: null,
-          firstName: '',
-          lastName: '',
-        }}
-        validationSchema={singleValueSchema('AvPatientSelect')}
-      >
-        <AvPatientSelect
-          autofill={autofill}
-          label={text('Label', 'Select Patient')}
-          name="AvPatientSelect"
-          creatable={boolean('Creatable', false)}
-          minLength={min}
-          maxLength={max}
-          isMulti={isMulti}
-          required={required}
-          parameters={{ customerId: '1194' }}
-          errorMessage={text('Generic Error Message', 'This field is invalid')}
-          validate={{
-            required: {
-              value: required,
-              errorMessage:
-                required &&
-                text('Required Error Message', 'This field is required'),
-            },
-          }}
-          isDisabled={boolean('Disabled', false)}
-        />
-        {autofill && (
-          <Field name="firstName" type="text" label="Patient First Name" />
-        )}
-
-        {autofill && (
-          <Field name="lastName" type="text" label="Patient Last Name" />
-        )}
-        <Button type="submit" color="primary">
-          Submit
-        </Button>
       </FormikResults>
     );
   });

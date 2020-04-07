@@ -12,7 +12,7 @@ import '@availity/favorites/style.scss';
   <Favorites>
     <FavoriteHeart id="12345" />
   </Favorites>
-</div>;
+</div>
 ```
 
 ## Props

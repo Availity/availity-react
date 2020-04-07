@@ -13,6 +13,7 @@ import 'react-dates/initialize';
 import classNames from 'classnames';
 import Icon from '@availity/icon';
 import { isOutsideRange, limitPropType, isSameDay } from './utils';
+import '../polyfills';
 
 let count = 0;
 

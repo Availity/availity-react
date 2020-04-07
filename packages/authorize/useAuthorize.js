@@ -7,18 +7,18 @@ export default (
 ) => {
   const [authorized, setAuthorized] = useState(false);
   const [loading, setLoading] = useState(true);
+  const [currentRegion, setCurrentRegion] = useState('');
 
   const getRegion = async () => {
     if (region === true) {
       const resp = await avRegionsApi.getCurrentRegion();
-      return (
-        (resp &&
-          resp.data &&
-          resp.data.regions &&
-          resp.data.regions[0] &&
-          resp.data.regions[0].id) ||
-        undefined
-      );
+      const currentRegion =
+        (resp && resp.data && resp.data.regions && resp.data.regions[0]) ||
+        undefined;
+
+      setCurrentRegion(currentRegion);
+
+      return (currentRegion && currentRegion.id) || undefined;
     }
     if (region) {
       return region;
@@ -110,11 +110,16 @@ export default (
 
   useEffect(() => {
     if (!loading) setLoading(true);
-    checkPermissions();
+
+    if (permissions) {
+      checkPermissions();
+    } else {
+      setLoading(false);
+    }
     // todo - optimize this so we only have a permissions effect for fetching
     // and the others are just filters
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [organizationId, region, customerId, permissions]);
 
-  return [authorized, loading];
+  return [authorized, loading, currentRegion];
 };

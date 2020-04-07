@@ -9,8 +9,6 @@ module.exports = ({ config: defaultConfig }) => {
   defaultConfig.devtool = 'source-maps';
 
   // https://github.com/storybooks/storybook/issues/6204#issuecomment-478998529
-  console.log(defaultConfig.resolve.alias);
-
   delete defaultConfig.resolve.alias['core-js'];
 
   defaultConfig.plugins.push(new DuplicatePackageCheckerPlugin());
@@ -39,9 +37,6 @@ module.exports = ({ config: defaultConfig }) => {
   });
 
   defaultConfig.resolve.extensions = ['.js', '.jsx', '.scss', '.css'];
-  defaultConfig.resolve.alias['axios'] = path.resolve(
-    path.join(__dirname, '../node_modules', 'axios')
-  );
   // Return the altered config
   return defaultConfig;
 };

@@ -33,7 +33,8 @@ class Upload extends Component {
       if (newFiles.length !== files.length) {
         this.files = newFiles;
 
-        if (this.props.onFileRemove) this.props.onFileRemove(this.files);
+        if (this.props.onFileRemove)
+          this.props.onFileRemove(this.files, fileId);
         return {
           files: newFiles,
         };

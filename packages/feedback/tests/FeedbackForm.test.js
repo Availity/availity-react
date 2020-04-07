@@ -82,6 +82,39 @@ describe('FeedbackForm', () => {
     );
   });
 
+  test('should submit with custom analytics', async () => {
+    const infoFn = jest.fn();
+    const onFeedbackSent = jest.fn();
+
+    const { getByPlaceholderText, getByText } = render(
+      <FeedbackForm
+        onFeedbackSent={onFeedbackSent}
+        name="Payer Space"
+        analytics={{
+          info: infoFn,
+        }}
+      />
+    );
+
+    // Simulate the Click
+    fireEvent.click(getByText('Smiley face'));
+
+    // Get the Input Node for the Feedback
+    const feedbackNode = getByPlaceholderText('What do you like?');
+
+    // Simulate a user typing the value below into the field
+    fireEvent.change(feedbackNode, {
+      target: { value: 'some good text here' },
+    });
+
+    // Check if the Input Got Updated
+    expect(feedbackNode.value).toEqual('some good text here');
+
+    fireEvent.click(getByText('Send Feedback'));
+
+    await wait(() => expect(infoFn).toHaveBeenCalledTimes(1));
+  });
+
   test('should render custom face icons', () => {
     const faceOptions = [
       {

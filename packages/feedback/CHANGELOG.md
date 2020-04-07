@@ -3,6 +3,206 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## 5.3.28 (2020-04-07)
+
+**Note:** Version bump only for package @availity/feedback
+
+
+
+
+
+## 5.3.27 (2020-04-07)
+
+**Note:** Version bump only for package @availity/feedback
+
+
+
+
+
+## 5.3.26 (2020-04-06)
+
+**Note:** Version bump only for package @availity/feedback
+
+
+
+
+
+## 5.3.25 (2020-04-06)
+
+**Note:** Version bump only for package @availity/feedback
+
+
+
+
+
+## 5.3.24 (2020-04-06)
+
+**Note:** Version bump only for package @availity/feedback
+
+
+
+
+
+## 5.3.23 (2020-04-06)
+
+**Note:** Version bump only for package @availity/feedback
+
+
+
+
+
+## 5.3.22 (2020-04-03)
+
+**Note:** Version bump only for package @availity/feedback
+
+
+
+
+
+## 5.3.21 (2020-04-03)
+
+**Note:** Version bump only for package @availity/feedback
+
+
+
+
+
+## 5.3.20 (2020-04-02)
+
+**Note:** Version bump only for package @availity/feedback
+
+
+
+
+
+## 5.3.19 (2020-04-02)
+
+**Note:** Version bump only for package @availity/feedback
+
+
+
+
+
+## [5.3.18](https://github.com/Availity/availity-react/compare/@availity/feedback@5.3.17...@availity/feedback@5.3.18) (2020-03-03)
+
+**Note:** Version bump only for package @availity/feedback
+
+
+
+
+
+## [5.3.17](https://github.com/Availity/availity-react/compare/@availity/feedback@5.3.16...@availity/feedback@5.3.17) (2020-02-28)
+
+**Note:** Version bump only for package @availity/feedback
+
+
+
+
+
+## [5.3.16](https://github.com/Availity/availity-react/compare/@availity/feedback@5.3.15...@availity/feedback@5.3.16) (2020-02-24)
+
+**Note:** Version bump only for package @availity/feedback
+
+
+
+
+
+## [5.3.15](https://github.com/Availity/availity-react/compare/@availity/feedback@5.3.14...@availity/feedback@5.3.15) (2020-02-19)
+
+**Note:** Version bump only for package @availity/feedback
+
+
+
+
+
+## [5.3.14](https://github.com/Availity/availity-react/compare/@availity/feedback@5.3.13...@availity/feedback@5.3.14) (2020-02-18)
+
+**Note:** Version bump only for package @availity/feedback
+
+
+
+
+
+## [5.3.13](https://github.com/Availity/availity-react/compare/@availity/feedback@5.3.12...@availity/feedback@5.3.13) (2020-02-17)
+
+**Note:** Version bump only for package @availity/feedback
+
+
+
+
+
+## [5.3.12](https://github.com/Availity/availity-react/compare/@availity/feedback@5.3.11...@availity/feedback@5.3.12) (2020-02-16)
+
+**Note:** Version bump only for package @availity/feedback
+
+
+
+
+
+## [5.3.11](https://github.com/Availity/availity-react/compare/@availity/feedback@5.3.10...@availity/feedback@5.3.11) (2020-02-11)
+
+**Note:** Version bump only for package @availity/feedback
+
+
+
+
+
+## [5.3.10](https://github.com/Availity/availity-react/compare/@availity/feedback@5.3.9...@availity/feedback@5.3.10) (2020-02-10)
+
+**Note:** Version bump only for package @availity/feedback
+
+
+
+
+
+## [5.3.9](https://github.com/Availity/availity-react/compare/@availity/feedback@5.3.8...@availity/feedback@5.3.9) (2020-02-09)
+
+**Note:** Version bump only for package @availity/feedback
+
+
+
+
+
+## [5.3.8](https://github.com/Availity/availity-react/compare/@availity/feedback@5.3.7...@availity/feedback@5.3.8) (2020-02-08)
+
+**Note:** Version bump only for package @availity/feedback
+
+
+
+
+
+## [5.3.7](https://github.com/Availity/availity-react/compare/@availity/feedback@5.3.6...@availity/feedback@5.3.7) (2020-01-31)
+
+**Note:** Version bump only for package @availity/feedback
+
+
+
+
+
+## [5.3.6](https://github.com/Availity/availity-react/compare/@availity/feedback@5.3.5...@availity/feedback@5.3.6) (2020-01-31)
+
+**Note:** Version bump only for package @availity/feedback
+
+
+
+
+
+## [5.3.5](https://github.com/Availity/availity-react/compare/@availity/feedback@5.3.4...@availity/feedback@5.3.5) (2020-01-15)
+
+**Note:** Version bump only for package @availity/feedback
+
+
+
+
+
+## [5.3.4](https://github.com/Availity/availity-react/compare/@availity/feedback@5.3.3...@availity/feedback@5.3.4) (2020-01-13)
+
+**Note:** Version bump only for package @availity/feedback
+
+
+
+
+
 ## [5.3.3](https://github.com/Availity/availity-react/compare/@availity/feedback@5.3.2...@availity/feedback@5.3.3) (2020-01-10)
 
 **Note:** Version bump only for package @availity/feedback

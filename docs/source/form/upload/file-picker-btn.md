@@ -16,7 +16,7 @@ handleFileSelection = event => {
 };
 
 <Form initialValues={{ myFile: undefined }}>
-  <FilePickerBtn name="myFile" onChange={this.handleFileSelection} />;
+  <FilePickerBtn name="myFile" onChange={this.handleFileSelection} />
 </Form>
 ```
 

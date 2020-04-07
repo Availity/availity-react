@@ -13,8 +13,8 @@ import { PaginationContent } from '@availity/pagination';
 <PaginationContent
   loadingMessage="loading"
   component={Component}
-  itemkey="id"
-/>;
+  itemKey="id"
+/>
 ```
 
 ## Props

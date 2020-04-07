@@ -1,6 +1,6 @@
 {
   "name": "@availity/form",
-  "version": "0.5.1",
+  "version": "0.5.18",
   "author": "Kyle Gray <kyle.gray@availity.com>",
   "description": "Form Wrapper around formik using reactstrap components",
   "main": "index.js",
@@ -26,11 +26,11 @@
     "uuid": "^3.3.3"
   },
   "devDependencies": {
-    "formik": "2.0.4",
+    "formik": "2.1.4",
     "react": "^16.8.3",
     "react-dom": "^16.8.3",
     "reactstrap": "^8.0.0",
-    "yup": "^0.27.0"
+    "yup": "^0.28.1"
   },
   "peerDependencies": {
     "formik": "^2.0.1",

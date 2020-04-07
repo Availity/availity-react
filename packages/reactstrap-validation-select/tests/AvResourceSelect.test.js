@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import {
   fireEvent,
   waitForElement,
@@ -6,8 +6,9 @@ import {
   cleanup,
   wait,
 } from '@testing-library/react';
-import { avRegionsApi, avProvidersApi } from '@availity/api-axios';
+import { avRegionsApi, avProvidersApi, avCodesApi } from '@availity/api-axios';
 import { AvForm } from 'availity-reactstrap-validation';
+import { Button } from 'reactstrap';
 
 import { AvResourceSelect } from '..';
 import { AvProviderSelect } from '../resources';
@@ -275,6 +276,64 @@ describe('AvResourceSelect', () => {
       null
     );
   });
+  it('waits to query until requiredParams are set', async () => {
+    const renderDropdown = ({ parameters = {}, ...props }) => {
+      const Component = () => {
+        const [listParameter, setListParameter] = useState(undefined);
+
+        return (
+          <AvForm>
+            <AvResourceSelect
+              name="test-form-input"
+              parameters={{ ...parameters, list: listParameter }}
+              {...props}
+            />
+            <Button
+              type="button"
+              data-testid="btn-set-list"
+              onClick={() => setListParameter('foo')}
+            >
+              Set List Parameter
+            </Button>
+            <Button type="submit">Submit</Button>
+          </AvForm>
+        );
+      };
+      return render(<Component />);
+    };
+
+    avCodesApi.postGet.mockResolvedValue({
+      data: {
+        codes: [
+          {
+            id: 'code1',
+            value: 'value1',
+          },
+        ],
+      },
+    });
+
+    const { getByTestId } = renderDropdown({
+      resource: avCodesApi,
+      labelKey: 'value',
+      valueKey: 'id',
+      classNamePrefix: 'test__codes',
+      getResult: 'codes',
+      requiredParams: ['list'],
+    });
+
+    await wait(() => {
+      expect(avCodesApi.postGet).not.toHaveBeenCalled();
+    });
+
+    // Set required parameter list
+    fireEvent.click(getByTestId('btn-set-list'));
+
+    // Check that query was fired off after required parameter set
+    await wait(() => {
+      expect(avCodesApi.postGet).toHaveBeenCalledTimes(1);
+    });
+  });
 });
 
 // ----
@@ -348,9 +407,13 @@ const renderResourceSelect = props =>
     <AvForm>
       <AvResourceSelect
         name="region-form-input"
-        parameters={({ q, limit, offset }) => ({
+        parameters={({ q, limit, offset, ...rest }) => ({
+          ...rest,
+          q,
+          limit,
           testq: q,
           testPage: offset / limit + 1,
+          offset,
         })}
         {...props}
       />

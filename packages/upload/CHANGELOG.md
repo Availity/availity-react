@@ -3,6 +3,97 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## 2.3.10 (2020-04-07)
+
+**Note:** Version bump only for package @availity/upload
+
+
+
+
+
+## 2.3.9 (2020-04-07)
+
+**Note:** Version bump only for package @availity/upload
+
+
+
+
+
+## 2.3.8 (2020-04-06)
+
+**Note:** Version bump only for package @availity/upload
+
+
+
+
+
+## 2.3.7 (2020-04-06)
+
+**Note:** Version bump only for package @availity/upload
+
+
+
+
+
+## 2.3.6 (2020-04-06)
+
+**Note:** Version bump only for package @availity/upload
+
+
+
+
+
+## 2.3.5 (2020-04-06)
+
+**Note:** Version bump only for package @availity/upload
+
+
+
+
+
+## 2.3.4 (2020-04-03)
+
+**Note:** Version bump only for package @availity/upload
+
+
+
+
+
+## 2.3.3 (2020-04-03)
+
+**Note:** Version bump only for package @availity/upload
+
+
+
+
+
+## 2.3.2 (2020-04-02)
+
+**Note:** Version bump only for package @availity/upload
+
+
+
+
+
+## 2.3.1 (2020-04-02)
+
+**Note:** Version bump only for package @availity/upload
+
+
+
+
+
+# [2.3.0](https://github.com/Availity/availity-react/compare/@availity/upload@2.2.1...@availity/upload@2.3.0) (2020-02-20)
+
+
+### Features
+
+* **upload:** pass id of file removed in onFileRemove callback ([376eb43](https://github.com/Availity/availity-react/commit/376eb43a5081fd7f541657b1ccc7d67971a4d51c))
+
+
+
+
+
 ## [2.2.1](https://github.com/Availity/availity-react/compare/@availity/upload@2.2.0...@availity/upload@2.2.1) (2020-01-09)
 
 

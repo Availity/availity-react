@@ -3,6 +3,102 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## 1.6.16 (2020-04-07)
+
+**Note:** Version bump only for package @availity/hooks
+
+
+
+
+
+## 1.6.15 (2020-04-07)
+
+**Note:** Version bump only for package @availity/hooks
+
+
+
+
+
+## 1.6.14 (2020-04-06)
+
+**Note:** Version bump only for package @availity/hooks
+
+
+
+
+
+## 1.6.13 (2020-04-06)
+
+**Note:** Version bump only for package @availity/hooks
+
+
+
+
+
+## 1.6.12 (2020-04-06)
+
+**Note:** Version bump only for package @availity/hooks
+
+
+
+
+
+## 1.6.11 (2020-04-06)
+
+**Note:** Version bump only for package @availity/hooks
+
+
+
+
+
+## 1.6.10 (2020-04-03)
+
+**Note:** Version bump only for package @availity/hooks
+
+
+
+
+
+## 1.6.9 (2020-04-03)
+
+**Note:** Version bump only for package @availity/hooks
+
+
+
+
+
+## 1.6.8 (2020-04-02)
+
+**Note:** Version bump only for package @availity/hooks
+
+
+
+
+
+## 1.6.7 (2020-04-02)
+
+**Note:** Version bump only for package @availity/hooks
+
+
+
+
+
+## [1.6.6](https://github.com/Availity/availity-react/compare/@availity/hooks@1.6.5...@availity/hooks@1.6.6) (2020-02-11)
+
+**Note:** Version bump only for package @availity/hooks
+
+
+
+
+
+## [1.6.5](https://github.com/Availity/availity-react/compare/@availity/hooks@1.6.4...@availity/hooks@1.6.5) (2020-02-10)
+
+**Note:** Version bump only for package @availity/hooks
+
+
+
+
+
 ## [1.6.4](https://github.com/Availity/availity-react/compare/@availity/hooks@1.6.3...@availity/hooks@1.6.4) (2019-10-24)
 
 **Note:** Version bump only for package @availity/hooks

@@ -19,12 +19,12 @@ import Authorize from '@availity/authorize';
 
 <Authorize permissions="1234">
   {/* stuff to render if the user is authorized with permission indicated above */}
-</Authorize>;
+</Authorize>
 ```
 
 ## Props
 
-### `permissions: string | number | Array<string | number | Array<string | number>>` 
+### `permissions: string | number | Array<string | number | Array<string | number>>`
 
 Can either be a string, eg: `"1234"`, a number, eg: `1234`, or an array, which can contain permission ID strings/numbers as well as other arrays which contain permission ID strings/numbers, eg: `['1234', '2345', ['3456', '4567'], ['5678', '6789']]`. The items in a nested array indicate permission IDs that must _all_ be granted to the user to be considered authorized - they act as "AND". The items in the top of the array act as "OR" - if _any_ are granted, the user is considered authorized. The example `['1234', '2345', ['3456', '4567'], ['5678', '6789']]` is similar to `'1234' OR '2345' OR ('3456' && '4567') OR ('5678' && '6789')`.
 
@@ -49,18 +49,28 @@ When present, the permission is validated to ensure it is assigned to the custom
 When a string, the permission is validated to ensure it is assigned in the provided region. When true, the permission is validated to ensure it is assigned in the current region. **Default:** `true`.
 
 ### `unauthorized?: ReactNode`
+
 The content that renders when the user _does not_ have the permissions required.
 
 ### `children: ReactNode`
+
 The content that renders when the user _does_ have the permissions required.
 
 ### `negate?: boolean`
-Negate the authorization. If the user _does_ have the permissions specified, they are considered "unauthorized" (shown the `unauthorized` prop content). If the user _does not_ have the permissions specified, they are considered "authorized" (shown the `children` prop content)
 
+Negate the authorization. If the user _does_ have the permissions specified, they are considered "unauthorized" (shown the `unauthorized` prop content). If the user _does not_ have the permissions specified, they are considered "authorized" (shown the `children` prop content)
 
 ## useAuthorize
 
-Hook which validates the user's permissions and returns whether the user is authorized.
+Hook which validates the user's permissions.
+
+Returns `[authorized, loading, currentRegion]`
+
+- `authorized` : Whether the user is authorized to see the content.
+
+- `loading` : Whether the component is loading/checking permissions.
+
+- `currentRegion` : The current region of the user. Useful for avoiding extra API calls if code downstream depends on current region.
 
 ### Arguments
 
@@ -86,7 +96,7 @@ export default () => {
     region: 'FL',
   });
 
-  return authorized && <SomeAuthorizedComponent />;
+  return authorized && <SomeAuthorizedComponent />
 };
 // ...
 ```

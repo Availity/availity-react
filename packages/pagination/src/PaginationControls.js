@@ -26,7 +26,11 @@ const PaginationControls = ({
       aria-current={currentPage === pageNumber}
       data-testid={`control-page-${pageNumber}`}
     >
-      <PaginationLink onClick={() => setPage(pageNumber)} type="button">
+      <PaginationLink
+        style={{ zIndex: 'auto' }}
+        onClick={() => setPage(pageNumber)}
+        type="button"
+      >
         {pageNumber}
       </PaginationLink>
     </PaginationItem>

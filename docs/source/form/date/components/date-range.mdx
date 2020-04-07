@@ -9,8 +9,8 @@ A date range, consisting of 2 fields, a start date and an end date, without a `L
 ```jsx live=true viewCode=true
 import { Form } from '@availity/form';
 import { DateRange } from '@availity/date';
-import * as yup from 'yup';
-import '@availity/yup/moment';
+import { object } from 'yup';
+import { dateRange } from '@availity/yup';
 import moment from 'moment';
 
 <div className="w-100 d-flex flex-row justify-content-around align-items-center">
@@ -19,9 +19,8 @@ import moment from 'moment';
       dateOfService: undefined,
     }}
     onSubmit={values => console.log(values)}
-    validationSchema={yup.object().shape({
-      dateOfService: yup
-        .dateRange(
+    validationSchema={object().shape({
+      dateOfService: dateRange(
           {
             min: moment()
               .subtract(7, 'day')
@@ -51,7 +50,7 @@ import moment from 'moment';
       Submit
     </Button>
   </Form>
-</div>;
+</div>
 ```
 
 ## Props
@@ -72,7 +71,8 @@ Key to return end date as on form submit. Should match the yup schema `endKey`.
 
 ### `min?: string | LimitType`
 
-Used in conjunction with `max` to derive `isOutsideRange` prop from `react-dates`. Dates outside the allowed range will not be clickable in datepicker.
+Used in conjunction with `max` to derive `isOutsideRange` prop from `react-dates` and selectable year options in datepicker. Dates outside the allowed range will not be clickable in datepicker.
+
 
 ```json hideCopy=true
 {
@@ -84,7 +84,7 @@ Used in conjunction with `max` to derive `isOutsideRange` prop from `react-dates
 
 ### `max?: string | LimitType`
 
-Used in conjunction with `min` to derive `isOutsideRange` prop from `react-dates`. Dates outside the allowed range will not be clickable in datepicker.
+Used in conjunction with `min` to derive `isOutsideRange` prop from `react-dates` and selectable year options in datepicker. Dates outside the allowed range will not be clickable in datepicker.
 
 ```json hideCopy=true
 {

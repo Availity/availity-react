@@ -3,6 +3,102 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## 1.2.13 (2020-04-07)
+
+**Note:** Version bump only for package @availity/list-group
+
+
+
+
+
+## 1.2.12 (2020-04-07)
+
+**Note:** Version bump only for package @availity/list-group
+
+
+
+
+
+## 1.2.11 (2020-04-06)
+
+**Note:** Version bump only for package @availity/list-group
+
+
+
+
+
+## 1.2.10 (2020-04-06)
+
+**Note:** Version bump only for package @availity/list-group
+
+
+
+
+
+## 1.2.9 (2020-04-06)
+
+**Note:** Version bump only for package @availity/list-group
+
+
+
+
+
+## 1.2.8 (2020-04-06)
+
+**Note:** Version bump only for package @availity/list-group
+
+
+
+
+
+## 1.2.7 (2020-04-03)
+
+**Note:** Version bump only for package @availity/list-group
+
+
+
+
+
+## 1.2.6 (2020-04-03)
+
+**Note:** Version bump only for package @availity/list-group
+
+
+
+
+
+## 1.2.5 (2020-04-02)
+
+**Note:** Version bump only for package @availity/list-group
+
+
+
+
+
+## 1.2.4 (2020-04-02)
+
+**Note:** Version bump only for package @availity/list-group
+
+
+
+
+
+## [1.2.3](https://github.com/Availity/availity-react/compare/@availity/list-group@1.2.2...@availity/list-group@1.2.3) (2020-02-26)
+
+**Note:** Version bump only for package @availity/list-group
+
+
+
+
+
+## [1.2.2](https://github.com/Availity/availity-react/compare/@availity/list-group@1.2.1...@availity/list-group@1.2.2) (2020-02-26)
+
+**Note:** Version bump only for package @availity/list-group
+
+
+
+
+
 ## [1.2.1](https://github.com/Availity/availity-react/compare/@availity/list-group@1.2.0...@availity/list-group@1.2.1) (2019-09-25)
 
 **Note:** Version bump only for package @availity/list-group

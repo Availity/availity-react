@@ -62,6 +62,23 @@ module.exports = {
                 'form/select/components/select',
                 'form/select/components/select-field',
                 'form/select/components/resource-select',
+                'form/select/components/region-select',
+              ],
+            },
+            {
+              resolve: 'form/phone/index',
+              pages: [
+                'form/phone/components/phone',
+                'form/phone/components/validate-phone',
+              ],
+            },
+            {
+              resolve: 'form/upload/index',
+              pages: [
+                'form/upload/upload',
+                'form/upload/file-picker',
+                'form/upload/file-picker-btn',
+                'form/upload/upload-progress-bar',
               ],
             },
           ],
@@ -107,15 +124,6 @@ module.exports = {
               ],
             },
             'components/training-link',
-            {
-              resolve: 'components/upload/index',
-              pages: [
-                'components/upload/upload',
-                'components/upload/file-picker',
-                'components/upload/file-picker-btn',
-                'components/upload/upload-progress-bar',
-              ],
-            },
           ],
           'UI Kit Components': [
             'components/app-icon',

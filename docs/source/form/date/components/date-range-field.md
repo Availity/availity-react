@@ -9,8 +9,8 @@ The same as `DateRange` but with a `Label` that appears above the input and a `F
 ```jsx live=true viewCode=true
 import { Form } from '@availity/form';
 import { DateRange } from '@availity/date';
-import * as yup from 'yup';
-import '@availity/yup/moment';
+import { object } from 'yup';
+import { dateRange } from '@availity/yup';
 import moment from 'moment';
 
 <div className="w-100 d-flex flex-row justify-content-around align-items-center">
@@ -19,9 +19,8 @@ import moment from 'moment';
       dateOfService: '',
     }}
     onSubmit={values => console.log(values)}
-    validationSchema={yup.object().shape({
-      dateOfService: yup
-        .dateRange(
+    validationSchema={object().shape({
+      dateOfService: dateRange(
           {
             min: moment()
               .subtract(7, 'day')
@@ -52,7 +51,7 @@ import moment from 'moment';
       Submit
     </Button>
   </Form>
-</div>;
+</div>
 ```
 
 ## Props

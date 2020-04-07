@@ -36,6 +36,7 @@ const FeedbackForm = ({
   prompt,
   additionalComments,
   staticFields,
+  analytics,
   modalHeaderProps,
   ...formProps
 }) => {
@@ -45,7 +46,7 @@ const FeedbackForm = ({
   const sendFeedback = async ({ smileField, ...values }) => {
     const response = await avRegionsApi.getCurrentRegion();
 
-    await avLogMessagesApi.info({
+    await analytics.info({
       surveyId: `${name.replace(/\s/g, '_')}_Smile_Survey`,
       smileLocation: `${name}`,
       smile: `icon-${smileField.icon}`,
@@ -222,12 +223,16 @@ FeedbackForm.propTypes = {
   additionalComments: PropTypes.bool,
   staticFields: PropTypes.object,
   modalHeaderProps: PropTypes.shape({ ...ModalHeader.propTypes }),
+  analytics: PropTypes.shape({
+    info: PropTypes.func.isRequired,
+  }),
 };
 
 FeedbackForm.defaultProps = {
   aboutOptions: [],
   additionalComments: false,
   modalHeaderProps: {},
+  analytics: avLogMessagesApi,
 };
 
 export default FeedbackForm;

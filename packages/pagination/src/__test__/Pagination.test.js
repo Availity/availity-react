@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { useToggle } from '@availity/hooks';
 import {
   render,
+  wait,
   waitForElement,
   waitForDomChange,
   fireEvent,
@@ -203,12 +204,16 @@ describe('Pagination', () => {
     await waitForElement(() => getByTestId(`current-page`));
 
     // Called once after the pagination has loaded
-    expect(mockFunc).toHaveBeenCalledTimes(1);
+    await wait(() => {
+      expect(mockFunc).toHaveBeenCalledTimes(1);
+    });
 
     // Clicking the button will trigger a state update
     fireEvent.click(getByTestId('hello-btn'));
 
-    expect(mockFunc).toHaveBeenCalledTimes(3);
+    await wait(() => {
+      expect(mockFunc).toHaveBeenCalledTimes(3);
+    });
   });
 
   test('should reset page to 1 if resetParams updates', async () => {
@@ -506,5 +511,64 @@ describe('Pagination', () => {
         page: [items[2]],
       })
     );
+  });
+
+  it('does not fetch page data when shouldReturnPrevious is true', async () => {
+    const getItems = jest.fn().mockResolvedValue({
+      totalCount: 3,
+      items: [
+        { value: '1', key: 1 },
+        { value: '2', key: 2 },
+        { value: '3', key: 3 },
+      ],
+    });
+
+    const ComponentWrapper = () => {
+      const [shouldReturnPrevious, setShouldReturnPrevious] = useState(true);
+      return (
+        <>
+          <Pagination
+            items={getItems}
+            shouldReturnPrevious={shouldReturnPrevious}
+          >
+            <button
+              type="button"
+              data-testid="toggle-return-previous-btn"
+              onClick={() => setShouldReturnPrevious(!shouldReturnPrevious)}
+            >
+              Toggle
+            </button>
+          </Pagination>
+        </>
+      );
+    };
+
+    const { getByTestId } = render(<ComponentWrapper />);
+
+    expect(getItems).not.toHaveBeenCalled();
+
+    // Set shouldReturnPrevious to true
+    fireEvent.click(getByTestId('toggle-return-previous-btn'));
+
+    // Check getItems was called
+    await wait(() => {
+      expect(getItems).toHaveBeenCalledTimes(1);
+    });
+
+    // Set shouldReturnPrevious to false
+    fireEvent.click(getByTestId('toggle-return-previous-btn'));
+
+    // Check getItems has still only been called one time
+    await wait(() => {
+      expect(getItems).toHaveBeenCalledTimes(1);
+    });
+
+    // Set shouldReturnPrevious to true
+    fireEvent.click(getByTestId('toggle-return-previous-btn'));
+
+    // Check getItems has still only been called one time
+    await wait(() => {
+      expect(getItems).toHaveBeenCalledTimes(2);
+    });
   });
 });

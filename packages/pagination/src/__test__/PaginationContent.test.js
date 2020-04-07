@@ -4,6 +4,7 @@ import {
   render,
   waitForElement,
   waitForDomChange,
+  wait,
   cleanup,
 } from '@testing-library/react';
 import Pagination from '../Pagination';
@@ -41,9 +42,11 @@ describe('Pagination Content', () => {
 
     expect(paginationContent).not.toBe(null);
 
-    items.forEach(item =>
-      expect(getByTestId(`item-${item.value}`)).toBeDefined()
-    );
+    items.forEach(async item => {
+      await wait(() => {
+        expect(getByTestId(`item-${item.value}`)).toBeDefined();
+      });
+    });
   });
 
   test('should render loading message', async () => {

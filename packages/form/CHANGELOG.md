@@ -3,6 +3,148 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## 0.5.18 (2020-04-07)
+
+**Note:** Version bump only for package @availity/form
+
+
+
+
+
+## 0.5.17 (2020-04-07)
+
+**Note:** Version bump only for package @availity/form
+
+
+
+
+
+## 0.5.16 (2020-04-06)
+
+**Note:** Version bump only for package @availity/form
+
+
+
+
+
+## 0.5.15 (2020-04-06)
+
+**Note:** Version bump only for package @availity/form
+
+
+
+
+
+## 0.5.14 (2020-04-06)
+
+**Note:** Version bump only for package @availity/form
+
+
+
+
+
+## 0.5.13 (2020-04-06)
+
+**Note:** Version bump only for package @availity/form
+
+
+
+
+
+## 0.5.12 (2020-04-03)
+
+**Note:** Version bump only for package @availity/form
+
+
+
+
+
+## 0.5.11 (2020-04-03)
+
+**Note:** Version bump only for package @availity/form
+
+
+
+
+
+## 0.5.10 (2020-04-02)
+
+**Note:** Version bump only for package @availity/form
+
+
+
+
+
+## 0.5.9 (2020-04-02)
+
+**Note:** Version bump only for package @availity/form
+
+
+
+
+
+## [0.5.8](https://github.com/Availity/availity-react/compare/@availity/form@0.5.7...@availity/form@0.5.8) (2020-02-24)
+
+**Note:** Version bump only for package @availity/form
+
+
+
+
+
+## [0.5.7](https://github.com/Availity/availity-react/compare/@availity/form@0.5.6...@availity/form@0.5.7) (2020-02-19)
+
+
+### Bug Fixes
+
+* **form:** fixes incorrect PropType for children on Form ([4720cd0](https://github.com/Availity/availity-react/commit/4720cd0ef5537936e59cf27262e0327270854596))
+
+
+
+
+
+## [0.5.6](https://github.com/Availity/availity-react/compare/@availity/form@0.5.5...@availity/form@0.5.6) (2020-02-18)
+
+**Note:** Version bump only for package @availity/form
+
+
+
+
+
+## [0.5.5](https://github.com/Availity/availity-react/compare/@availity/form@0.5.4...@availity/form@0.5.5) (2020-02-17)
+
+
+### Bug Fixes
+
+* **form:** accidentally removed validate fn handler ([4d4154b](https://github.com/Availity/availity-react/commit/4d4154b6d076bf370fe7f9be3f1022930cbf2a5e))
+
+
+
+
+
+## [0.5.4](https://github.com/Availity/availity-react/compare/@availity/form@0.5.3...@availity/form@0.5.4) (2020-02-16)
+
+**Note:** Version bump only for package @availity/form
+
+
+
+
+
+## [0.5.3](https://github.com/Availity/availity-react/compare/@availity/form@0.5.2...@availity/form@0.5.3) (2020-02-11)
+
+**Note:** Version bump only for package @availity/form
+
+
+
+
+
+## [0.5.2](https://github.com/Availity/availity-react/compare/@availity/form@0.5.1...@availity/form@0.5.2) (2020-02-08)
+
+**Note:** Version bump only for package @availity/form
+
+
+
+
+
 ## [0.5.1](https://github.com/Availity/availity-react/compare/@availity/form@0.5.0...@availity/form@0.5.1) (2019-12-31)
 
 **Note:** Version bump only for package @availity/form

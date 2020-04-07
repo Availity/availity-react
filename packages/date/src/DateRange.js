@@ -1,43 +1,51 @@
-import React, { useState, useRef } from 'react';
+import React, { useEffect, useMemo, useRef, useState } from 'react';
 import PropTypes from 'prop-types';
 import Icon from '@availity/icon';
-import { InputGroup, Input, Button } from 'reactstrap';
+import { InputGroup, Input, Button, Row, Col } from 'reactstrap';
 import { DateRangePicker } from 'react-dates';
 import classNames from 'classnames';
 import { useField, useFormikContext } from 'formik';
-import get from 'lodash.get';
 import pick from 'lodash.pick';
 import moment from 'moment';
+import '../polyfills';
 
-import { isOutsideRange, limitPropType, isSameDay } from './utils';
+import { isOutsideRange, limitPropType, buildYearPickerOptions } from './utils';
 
 const isoDateFormat = 'YYYY-MM-DD';
 
 const relativeRanges = {
   Today: {
-    startDate: now => now,
-    endDate: now => now,
+    startDate: moment({ hour: 0 }), // today, 0:00:00.000
+    endDate: moment({ hour: 0 }),
   },
   'Last 7 Days': {
-    startDate: now => now.add(-6, 'd'),
-    endDate: now => now,
+    startDate: moment({ hour: 0 }).subtract(6, 'days'),
+    endDate: moment({ hour: 0 }),
   },
   'Last 30 Days': {
-    startDate: now => now.add(-29, 'd'),
-    endDate: now => now,
+    startDate: moment({ hour: 0 }).subtract(29, 'days'),
+    endDate: moment({ hour: 0 }),
   },
   'Last 120 Days': {
-    startDate: now => now.add(-119, 'd'),
-    endDate: now => now,
+    startDate: moment({ hour: 0 }).subtract(119, 'days'),
+    endDate: moment({ hour: 0 }),
   },
   'Last 6 Months': {
-    startDate: now => now.add(-6, 'M'),
-    endDate: now => now,
+    startDate: moment({ hour: 0 }).subtract(6, 'months'),
+    endDate: moment({ hour: 0 }),
   },
   'Last 12 Months': {
-    startDate: now => now.add(-12, 'M'),
-    endDate: now => now,
+    startDate: moment({ hour: 0 }).subtract(12, 'months'),
+    endDate: moment({ hour: 0 }),
   },
+};
+
+const yearPickerStyles = {
+  minWidth: '100%', // 4 digit years not wide enough to fill column
+};
+
+const hiddenInputStyles = {
+  display: 'none',
 };
 
 const DateRange = ({
@@ -45,6 +53,7 @@ const DateRange = ({
   min,
   max,
   name,
+  validate,
   onChange,
   onPickerFocusChange,
   innerRef,
@@ -58,20 +67,30 @@ const DateRange = ({
   datepicker,
   autoSync,
   ranges: propsRanges,
+  customArrowIcon,
   ...attributes
 }) => {
-  const { setFieldValue, setFieldTouched } = useFormikContext();
-  const [{ value = {} }, metadata] = useField(name);
+  const { setFieldValue, setFieldTouched, validateField } = useFormikContext();
+  const [{ value = {} }, metadata] = useField({ name, validate });
   const [focusedInput, setFocusedInput] = useState(null);
 
   const calendarIconRef = useRef();
 
   const startId = `${(id || name).replace(/[^a-zA-Z0-9]/gi, '')}-start`;
-
   const endId = `${(id || name).replace(/[^a-zA-Z0-9]/gi, '')}-end`;
 
-  const startValue = get(value, startKey);
-  const endValue = get(value, endKey);
+  const startValue = value[startKey] || '';
+  const endValue = value[endKey] || '';
+
+  const startValueMoment = useMemo(
+    () => moment(startValue, [isoDateFormat, format, 'MMDDYYYY', 'YYYYMMDD']),
+    [startValue, format]
+  );
+
+  const endValueMoment = useMemo(
+    () => moment(endValue, [isoDateFormat, format, 'MMDDYYYY', 'YYYYMMDD']),
+    [endValue, format]
+  );
 
   const classes = classNames(
     'input-group-date-range',
@@ -82,9 +101,18 @@ const DateRange = ({
     datepicker && 'av-calendar-show'
   );
 
+  // Should only run validation once per real change to component, instead of each time setFieldValue/Touched is called.
+  // By batching multiple calls for validation we can avoid multiple moment comparisons of the same values
+  // and stale values can be avoided without resorting to async/await: https://github.com/jaredpalmer/formik/issues/2083#issuecomment-571259235
+  useEffect(() => {
+    if (metadata.touched || startValue || endValue) {
+      validateField(name);
+    }
+  }, [metadata.touched, startValue, endValue, name, validateField]);
+
   // For updating when we delete the current input
-  const onInputChange = async val => {
-    const isStart = focusedInput === 'startDate';
+  const onInputChange = val => {
+    const isStart = focusedInput === startKey;
     const date = moment(
       val,
       [isoDateFormat, format, 'MMDDYYYY', 'YYYYMMDD'],
@@ -93,36 +121,36 @@ const DateRange = ({
 
     const valueToSet = date.isValid() ? date.format(format) : null;
 
-    await setFieldValue(
+    setFieldValue(
       name,
       {
         [startKey]: isStart ? valueToSet : startValue,
         [endKey]: !isStart ? valueToSet : endValue,
       },
-      metadata.touched
+      false
     );
 
     if (focusedInput && isStart && date.isValid()) {
-      setFocusedInput('endDate');
+      setFocusedInput(endKey);
     } else if (focusedInput && !isStart && date.isValid()) {
       setFocusedInput();
     }
   };
 
-  const onDatesChange = async ({ startDate, endDate }) => {
+  const onDatesChange = ({ startDate, endDate }) => {
     const _startDate = (startDate && startDate.format(format)) || startValue;
     const _endDate = (endDate && endDate.format(format)) || endValue;
-    await setFieldValue(
+    setFieldValue(
       name,
       {
         [startKey]: _startDate,
         [endKey]: _endDate,
       },
-      _startDate && _endDate
+      false
     );
 
     if (_startDate && _endDate) {
-      await setFieldTouched(name, true);
+      setFieldTouched(name, true, false);
     }
 
     if (onChange) {
@@ -133,7 +161,7 @@ const DateRange = ({
     }
   };
 
-  const syncDates = async () => {
+  const syncDates = () => {
     if (!metadata.touched) {
       let value;
 
@@ -142,23 +170,23 @@ const DateRange = ({
       }
 
       if (value) {
-        await setFieldValue(
+        setFieldValue(
           name,
           {
             [startKey]: value,
             [endKey]: value,
           },
-          true
+          false
         );
-        await setFieldTouched(name, true);
+        setFieldTouched(name, true, false);
       }
     }
   };
 
-  const onFocusChange = async input => {
-    if (!input) await setFieldTouched(name, true);
-    if (autoSync) await syncDates();
-    setFocusedInput(input);
+  const onFocusChange = input => {
+    if (!input && !autoSync) setFieldTouched(name, true, false);
+    if (autoSync) syncDates();
+    if (focusedInput !== input) setFocusedInput(input);
     if (onPickerFocusChange) onPickerFocusChange({ focusedInput: input });
   };
 
@@ -185,50 +213,34 @@ const DateRange = ({
 
     return ranges ? (
       <div className="d-flex flex-column ml-2 mt-2">
-        {Object.keys(ranges).map(text => {
-          const { startDate: startDateFunc, endDate: endDateFunc } = ranges[
-            text
-          ];
+        {Object.keys(ranges).map(relativeRange => {
+          const { startDate, endDate } = ranges[relativeRange];
 
-          const presetStartDate = startDateFunc(moment());
-          const presetEndDate = endDateFunc(moment());
-
+          // Comparing moments with unit as 'millisecond' avoids moment cloning
           const isSelected =
-            isSameDay(
-              presetStartDate,
-              moment(startValue, [
-                isoDateFormat,
-                format,
-                'MMDDYYYY',
-                'YYYYMMDD',
-              ])
-            ) &&
-            isSameDay(
-              presetEndDate,
-              moment(endValue, [isoDateFormat, format, 'MMDDYYYY', 'YYYYMMDD'])
-            );
+            startDate.isSame(startValueMoment, 'millisecond') &&
+            endDate.isSame(endValueMoment, 'millisecond');
+
           return (
             <Button
-              key={text}
-              className="mt-1 mb-1"
+              key={relativeRange}
+              className="my-1"
               color={isSelected ? 'primary' : 'default'}
               size="sm"
               onClick={() => {
                 onDatesChange({
-                  startDate: presetStartDate,
-                  endDate: presetEndDate,
+                  startDate,
+                  endDate,
                 });
 
-                setFocusedInput(undefined);
-                setFieldTouched(startKey, true);
-                setFieldTouched(endKey, true);
+                setFocusedInput(null);
 
-                // // Focucs the calendar icon once clicked because we don't
-                // // want to get back in the loop of opening the calendar
+                // Focus the calendar icon once clicked because we don't
+                // want to get back in the loop of opening the calendar
                 calendarIconRef.current.parentElement.focus();
               }}
             >
-              {text}
+              {relativeRange}
             </Button>
           );
         })}
@@ -236,9 +248,56 @@ const DateRange = ({
     ) : null;
   };
 
+  const renderMonthElement = ({ month, onMonthSelect, onYearSelect }) => {
+    const yearPickerOptions = buildYearPickerOptions(min, max, month, format);
+    return (
+      <Row>
+        <Col>
+          <select
+            data-testid="monthPicker"
+            aria-label="month picker"
+            value={month.month()}
+            onChange={e => {
+              onMonthSelect(month, e.target.value);
+            }}
+          >
+            {moment.months().map((label, value) => (
+              <option key={label} value={value} aria-label={label}>
+                {label}
+              </option>
+            ))}
+          </select>
+        </Col>
+        <Col>
+          <select
+            data-testid="yearPicker"
+            aria-label="year picker"
+            style={yearPickerStyles}
+            value={month.year()}
+            onChange={e => {
+              onYearSelect(month, e.target.value);
+            }}
+          >
+            {yearPickerOptions.map(({ value, label }) => (
+              <option key={label} value={value} aria-label={label}>
+                {label}
+              </option>
+            ))}
+          </select>
+        </Col>
+      </Row>
+    );
+  };
+
+  renderMonthElement.propTypes = {
+    month: PropTypes.instanceOf(moment),
+    onMonthSelect: PropTypes.func,
+    onYearSelect: PropTypes.func,
+  };
+
   return (
     <>
-      <Input name={name} style={{ display: 'none' }} className={classes} />
+      <Input name={name} style={hiddenInputStyles} className={classes} />
       <InputGroup
         disabled={attributes.disabled}
         className={classes}
@@ -250,6 +309,7 @@ const DateRange = ({
         }}
       >
         <DateRangePicker
+          renderMonthElement={renderMonthElement}
           minimumNights={0}
           {...datepickerProps}
           startDate={getDateValue(startValue)}
@@ -263,7 +323,7 @@ const DateRange = ({
           disabled={attributes.disabled}
           onFocusChange={onFocusChange}
           renderCalendarInfo={renderDateRanges}
-          customArrowIcon="-"
+          customArrowIcon={customArrowIcon}
           isOutsideRange={isOutsideRange(min, max, format)}
           customInputIcon={
             datepicker
@@ -280,6 +340,7 @@ const DateRange = ({
           showDefaultInputIcon={datepicker}
           inputIconPosition="after"
           numberOfMonths={2}
+          navPosition="navPositionBottom"
         />
       </InputGroup>
     </>
@@ -289,6 +350,7 @@ const DateRange = ({
 DateRange.propTypes = {
   id: PropTypes.string.isRequired,
   name: PropTypes.string.isRequired,
+  validate: PropTypes.func,
   min: limitPropType,
   max: limitPropType,
   className: PropTypes.string,
@@ -309,6 +371,7 @@ DateRange.propTypes = {
     PropTypes.array,
     PropTypes.object,
   ]),
+  customArrowIcon: PropTypes.oneOfType([PropTypes.string, PropTypes.node]),
 };
 
 DateRange.defaultProps = {
