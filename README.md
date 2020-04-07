@@ -4,7 +4,7 @@
 
 [![License](https://img.shields.io/badge/license-MIT-blue.svg?style=for-the-badge&logo=MIT)](http://opensource.org/licenses/MIT)
 [![Dependency Status](https://img.shields.io/david/dev/Availity/availity-react.svg?style=for-the-badge)](https://david-dm.org/Availity/availity-react)
-[![Build](https://img.shields.io/circleci/build/github/Availity/availity-react?style=for-the-badge)](https://circleci.com/gh/Availity/availity-react)
+[![GitHub Workflow Status](https://img.shields.io/github/workflow/status/availity/availity-react/Publish%20Release?style=for-the-badge)](https://github.com/Availity/availity-react/actions?query=workflow%3A%22Publish+Release%22)
 [![Coverage](https://img.shields.io/codecov/c/github/Availity/availity-react?style=for-the-badge)](https://codecov.io/gh/Availity/availity-react)
 
 ## Supported Browsers
