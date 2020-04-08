@@ -20,7 +20,7 @@
     "access": "public"
   },
   "dependencies": {
-    "@availity/analytics-core": "^2.8.2",
+    "@availity/analytics-core": "^2.8.17",
     "prop-types": "^15.5.8"
   },
   "devDependencies": {
