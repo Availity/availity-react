@@ -70,7 +70,7 @@ export const buildYearPickerOptions = (
   if (min) {
     if (moment.isMoment(min)) {
       minYear = min.year();
-    } else if (min.value && min.units) {
+    } else if (min.value !== undefined && min.units) {
       minYear = moment()
         .subtract(min.value, min.units)
         .year();
@@ -91,7 +91,7 @@ export const buildYearPickerOptions = (
   if (max) {
     if (moment.isMoment(max)) {
       maxYear = max.year();
-    } else if (max.value && max.units) {
+    } else if (max.value !== undefined && max.units) {
       maxYear = moment()
         .add(max.value, max.units)
         .year();
