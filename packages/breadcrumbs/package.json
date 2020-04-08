@@ -1,6 +1,6 @@
 {
   "name": "@availity/breadcrumbs",
-  "version": "3.1.16",
+  "version": "3.1.17",
   "author": "Evan Sharp <evan.sharp@availity.com>",
   "description": "Availity breadcrumbs",
   "main": "index.js",
