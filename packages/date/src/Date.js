@@ -69,16 +69,20 @@ const AvDate = ({
       [isoDateFormat, format, 'MMDDYYYY', 'YYYYMMDD'],
       true
     );
-
+    const isoFormatted = date.format(isoDateFormat);
     setFieldValue(
       name,
-      date.isValid() ? date.format(isoDateFormat) : '',
+      date.isValid() ? isoFormatted : '',
       false
     );
+    setFieldTouched(name, true, false);
 
     if (date.isValid()) {
       if (isFocused !== false) {
         setIsFocused(false);
+      }
+      if (onChange) {
+        onChange(isoFormatted);
       }
     }
   };
