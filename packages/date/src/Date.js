@@ -75,9 +75,9 @@ const AvDate = ({
       date.isValid() ? isoFormatted : '',
       false
     );
+    setFieldTouched(name, true, false);
 
     if (date.isValid()) {
-      setFieldTouched(name, true, false);
       if (isFocused !== false) {
         setIsFocused(false);
       }
