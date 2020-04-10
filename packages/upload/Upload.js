@@ -45,6 +45,7 @@ class Upload extends Component {
 
   setFiles = files => {
     let selectedFiles = [];
+    const id = uuid();
     for (let i = 0; i < files.length; i++) {
       selectedFiles[i] = files[i];
     }
@@ -67,7 +68,7 @@ class Upload extends Component {
           maxSize: this.props.maxSize,
           allowedFileNameCharacters: this.props.allowedFileNameCharacters,
         });
-        upload.id = `${upload.id}-${uuid()}`;
+        upload.id = `${upload.id}-${id}`;
         upload.start();
         if (this.props.onFileUpload) this.props.onFileUpload(upload);
         return upload;
