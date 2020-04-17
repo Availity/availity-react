@@ -9,8 +9,8 @@ The same as `FormikDate` but with a `Label` that appears above input and a `Feed
 ```jsx live=true viewCode=true
 import { Form } from '@availity/form';
 import FormikDate from '@availity/date';
-import { object } from 'yup';
 import { avDate } from '@availity/yup';
+import * as yup from 'yup';
 
 <div className="w-100 d-flex flex-row justify-content-around align-items-center">
   <Form
@@ -18,7 +18,7 @@ import { avDate } from '@availity/yup';
       dateOfService: '',
     }}
     onSubmit={values => console.log(values)}
-    validationSchema={object().shape({
+    validationSchema={yup.object().shape({
       dateOfService: avDate().required(),
     })}
   >

@@ -33,7 +33,7 @@ import { Disclaimer, Agreement } from '@availity/typography';
 import * as yup from 'yup';
 import moment from 'moment';
 import '@availity/favorites/style.scss';
-import '@availity/yup';
+import { avDate, dateRange } from '@availity/yup';
 import { Phone, validatePhone } from '@availity/phone';
 
 const scopes = {
@@ -77,6 +77,8 @@ const scopes = {
   Input,
   Field,
   yup,
+  avDate,
+  dateRange,
   moment,
   Phone,
   validatePhone,

@@ -4,17 +4,17 @@ title: <Date /> ( Default Export )
 
 Date picker without a `Label` or `Feedback`
 
-## Example
+If `initialValues` need to be specified for a Date or DateRange, they should be in the format `"YYYY-MM-DD"` or `moment().format("YYYY-MM-DD")`, even though dates are displayed to the user as `MM/DD/YYYY`
 
-import '@availity/date/styles.scss';
+## Example
 
 ```jsx live=true viewCode=true
 import { Form } from '@availity/form';
-import { Button } from 'reactstrap';
 import { avDate } from '@availity/yup';
-import { object } from 'yup';
+import { Button } from 'reactstrap';
 import Date from '@availity/date';
 import moment from 'moment';
+import * as yup from 'yup';
 
 <div className="w-100 d-flex flex-row justify-content-around align-items-center">
   <Form
@@ -22,7 +22,7 @@ import moment from 'moment';
       dateOfService: '',
     }}
     onSubmit={values => console.log(values)}
-    validationSchema={object().shape({
+    validationSchema={yup.object().shape({
       dateOfService: avDate().required(),
     })}
   >

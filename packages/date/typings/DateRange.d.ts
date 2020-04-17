@@ -4,8 +4,8 @@ import { Moment } from 'moment';
 import { limitType, limitTypeAlt, DateBaseProps } from './Date';
 
 interface MomentDateRange {
-  startDate: (moment: Moment) => Moment;
-  endDate: (moment: Moment) => Moment;
+  startDate: Moment;
+  endDate: Moment;
 }
 
 export interface DateRangeProps extends DateRangePicker, DateBaseProps {
