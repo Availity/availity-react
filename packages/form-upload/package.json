@@ -27,6 +27,7 @@
     "formik": "^2.0.1",
     "react": "^16.8.0",
     "react-dom": "^16.8.0",
+    "react-dropzone": "^11.0.0",
     "reactstrap": "^8.0.0 || ^7.0.0 || ^6.0.0",
     "tus-js-client": "1.5.1"
   },
@@ -42,7 +43,7 @@
     "formik": "2.1.4",
     "react": "^16.8.3",
     "react-dom": "^16.8.3",
-    "react-dropzone": "^11.0.1",
+    "react-dropzone": "^11.0.0",
     "reactstrap": "^8.0.0",
     "tus-js-client": "^1.7.1"
   }
