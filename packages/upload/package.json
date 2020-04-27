@@ -23,7 +23,6 @@
   },
   "peerDependencies": {
     "@availity/upload-core": "^3.0.4",
-    "@twarner/react-dropzone": "^0.0.0-pr-938",
     "react": "^16.8.0",
     "react-dom": "^16.8.0",
     "reactstrap": "^8.0.0 || ^7.0.0 || ^6.0.0",
@@ -39,7 +38,7 @@
     "lodash.map": "^4.6.0",
     "react": "^16.8.3",
     "react-dom": "^16.8.3",
-    "@twarner/react-dropzone": "^0.0.0-pr-938",
+    "react-dropzone": "^11.0.1",
     "reactstrap": "^8.0.0",
     "tus-js-client": "^1.7.1"
   }

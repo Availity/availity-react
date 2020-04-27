@@ -1,7 +1,7 @@
 import React, { Component, createRef } from 'react';
 import PropTypes from 'prop-types';
 import UploadCore from '@availity/upload-core';
-import Dropzone from '@twarner/react-dropzone';
+import Dropzone from 'react-dropzone';
 import uuid from 'uuid/v4';
 import FilePickerBtn from './FilePickerBtn';
 import FileList from './FileList';
@@ -79,21 +79,11 @@ class Upload extends Component {
     this.setFiles(event.target.files);
   };
 
-  getDropRejectionMessage = code => {
-    if (code === 'file-too-large') return 'File is too large';
-    if (code === 'file-too-small') return 'File is too small';
-    if (code === 'file-invalid-type') return 'File is an invalid type';
-    if (code === 'file-excessive')
-      return 'File exceeds maximum number of files';
-
-    return 'File was rejected';
-  };
-
-  onDrop = (acceptedFiles, rejectedFiles, event, rejectReasons) => {
-    const rejectedFilesToDrop = rejectReasons.map(({ file, code }) => {
+  onDrop = (acceptedFiles, fileRejections) => {
+    const rejectedFilesToDrop = fileRejections.map(({ file, errors }) => {
       const dropRejectionMessage = this.props.getDropRejectionMessage
-        ? this.props.getDropRejectionMessage(code, file)
-        : this.getDropRejectionMessage(code);
+        ? this.props.getDropRejectionMessage(errors, file)
+        : errors.map(error => error.message).join(', ');
 
       file.dropRejectionMessage = dropRejectionMessage;
       return file;
