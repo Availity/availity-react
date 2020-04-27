@@ -24,7 +24,6 @@
   "peerDependencies": {
     "@availity/form": "^0.4.9",
     "@availity/upload-core": "^3.0.4",
-    "@twarner/react-dropzone": "^0.0.0-pr-938",
     "formik": "^2.0.1",
     "react": "^16.8.0",
     "react-dom": "^16.8.0",
@@ -40,10 +39,10 @@
   "devDependencies": {
     "@availity/form": "^0.5.8",
     "@availity/upload-core": "^3.0.4",
-    "@twarner/react-dropzone": "^0.0.0-pr-938",
     "formik": "2.1.4",
     "react": "^16.8.3",
     "react-dom": "^16.8.3",
+    "react-dropzone": "^11.0.1",
     "reactstrap": "^8.0.0",
     "tus-js-client": "^1.7.1"
   }

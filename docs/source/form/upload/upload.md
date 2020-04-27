@@ -70,7 +70,7 @@ Indicates that the user will be allowed to select multiple files when selecting 
 
 Set as true to show a drag and drop file upload option instead of a button (file explorer still available on click).
 
-### `getDropRejectionMessage?: (errorCode: String, file: File) => String`
+### `getDropRejectionMessage?: (errors: Array<FileError>, file: File) => String`
 
 Override the default error message for files rejected when `showFileDrop` is `true`.
 

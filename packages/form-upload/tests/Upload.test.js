@@ -149,17 +149,22 @@ describe('Upload', () => {
 
     expect(inputNode.files.length).toBe(1);
     await wait(() => {
-      expect(getByText('File is too large')).toBeDefined();
+      expect(getByText('File is larger than 10 bytes')).toBeDefined();
     });
   });
 
   test('uses custom drop rejection message', async () => {
     // eslint-disable-next-line unicorn/consistent-function-scoping
-    const getDropRejectionMessage = code => {
-      if (code === 'file-too-large') {
-        return 'my custom error message';
-      }
-      return 'this file is no good';
+    const getDropRejectionMessage = errors => {
+      let msg = '';
+      errors.forEach(error => {
+        if (error.code === 'file-too-large') {
+          msg += 'my custom error message';
+        } else {
+          msg += 'this file is no good';
+        }
+      });
+      return msg;
     };
 
     const { getByTestId, getByText } = renderUpload(
