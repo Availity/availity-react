@@ -38,6 +38,10 @@ Callback when the user has selected a file or multiple files.
 
 Indicates that the user will be allowed to select multiple files when selecting files from the OS prompt.
 
+### `disabled?: boolean`
+
+Disable the file input **Default:** `false`.
+
 ### `allowedFileTypes?: Array<string>`
 
 The file types you want to restrict uploading to. eg: `['.jpeg', '.jpg']`.
@@ -45,3 +49,4 @@ The file types you want to restrict uploading to. eg: `['.jpeg', '.jpg']`.
 ### `maxSize?: number`
 
 The maximum file size (in bytes) for a file to be uploaded.
+
