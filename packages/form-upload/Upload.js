@@ -150,6 +150,7 @@ const Upload = ({
           allowedFileTypes={allowedFileTypes}
           maxSize={maxSize}
           name={name}
+          disabled={rest.disabled}
         >
           {text}
         </FilePickerBtn>
@@ -184,10 +185,12 @@ Upload.propTypes = {
   showFileDrop: PropTypes.bool,
   feedbackClass: PropTypes.string,
   className: PropTypes.string,
+  disabled: PropTypes.bool,
 };
 
 Upload.defaultProps = {
   multiple: true,
+  disabled: false,
   showFileDrop: false,
 };
 
