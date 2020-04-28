@@ -2,6 +2,7 @@ import React, { Component, createRef } from 'react';
 import PropTypes from 'prop-types';
 import UploadCore from '@availity/upload-core';
 import Dropzone from 'react-dropzone';
+import { InputGroup } from 'reactstrap';
 import uuid from 'uuid/v4';
 import FilePickerBtn from './FilePickerBtn';
 import FileList from './FileList';
@@ -146,6 +147,7 @@ class Upload extends Component {
       maxSize,
       children,
       showFileDrop,
+      disabled,
     } = this.props;
     const { files } = this.state;
 
@@ -161,26 +163,28 @@ class Upload extends Component {
       if (showFileDrop) {
         fileAddArea = (
           <div>
-            <Dropzone
-              onDrop={this.onDrop}
-              multiple={multiple}
-              maxSize={maxSize}
-              className="file-drop"
-              activeClassName="file-drop-active"
-              accept={allowedFileTypes}
-            >
-              {({ getRootProps, getInputProps }) => (
-                <section>
-                  <div {...getRootProps()}>
-                    <input data-testid="file-picker" {...getInputProps()} />
-                    <p>
-                      <strong>Drag and Drop</strong>
-                    </p>
-                    {text}
-                  </div>
-                </section>
-              )}
-            </Dropzone>
+            <InputGroup disabled={disabled}>
+              <Dropzone
+                onDrop={this.onDrop}
+                multiple={multiple}
+                maxSize={maxSize}
+                className="file-drop"
+                activeClassName="file-drop-active"
+                accept={allowedFileTypes}
+              >
+                {({ getRootProps, getInputProps }) => (
+                  <section>
+                    <div {...getRootProps()}>
+                      <input data-testid="file-picker" {...getInputProps()} />
+                      <p>
+                        <strong>Drag and Drop</strong>
+                      </p>
+                      {text}
+                    </div>
+                  </section>
+                )}
+              </Dropzone>
+            </InputGroup>
           </div>
         );
       } else {
@@ -192,6 +196,7 @@ class Upload extends Component {
             multiple={multiple}
             allowedFileTypes={allowedFileTypes}
             maxSize={maxSize}
+            disabled={disabled}
           >
             {text}
           </FilePickerBtn>
@@ -226,11 +231,13 @@ Upload.propTypes = {
   name: PropTypes.string,
   showFileDrop: PropTypes.bool,
   getDropRejectionMessage: PropTypes.func,
+  disabled: PropTypes.bool,
 };
 
 Upload.defaultProps = {
   multiple: true,
   showFileDrop: false,
+  disabled: false,
 };
 
 export default Upload;
