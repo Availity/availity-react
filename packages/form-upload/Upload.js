@@ -28,7 +28,7 @@ const Upload = ({
 }) => {
   const input = useRef(null);
   const [field, metadata] = useField(name);
-  const { setFieldValue, setFieldError } = useFormikContext();
+  const { setFieldValue } = useFormikContext();
   const classes = classNames(
     className,
     metadata.touched ? 'is-touched' : 'is-untouched',
@@ -38,7 +38,6 @@ const Upload = ({
   const fieldValue = Array.isArray(field.value) ? field.value : [];
 
   const removeFile = fileId => {
-    setFieldError(name, null);
     const newFiles = fieldValue.filter(file => file.id !== fileId);
     if (newFiles.length !== fieldValue.length) {
       setFieldValue(name, newFiles, true);
@@ -71,13 +70,16 @@ const Upload = ({
           allowedFileNameCharacters: rest.allowedFileNameCharacters,
         });
         upload.id = `${upload.id}-${uuid()}`;
-        upload.start();
+        if (file.dropRejectionMessage) {
+          upload.errorMessage = file.dropRejectionMessage;
+        } else {
+          upload.start();
+        }
         if (rest.onFileUpload) rest.onFileUpload(upload);
         return upload;
       })
     );
 
-    setFieldError(name, null);
     setFieldValue(name, newFiles, true);
   };
 
@@ -85,15 +87,16 @@ const Upload = ({
     setFiles(event.target.files);
   };
 
-  const onDrop = (acceptedFiles, rejectedFiles) => {
-    if (rejectedFiles && rejectedFiles.length > 0) {
-      const fileNames = rejectedFiles.map(
-        rejectedFile => rejectedFile && rejectedFile.name
-      );
-      setFieldError(name, `Could not attach ${fileNames.slice().join(', ')}`);
-    }
+  const onDrop = (acceptedFiles, fileRejections) => {
+    const rejectedFilesToDrop = fileRejections.map(({ file, errors }) => {
+      const dropRejectionMessage = rest.getDropRejectionMessage
+        ? rest.getDropRejectionMessage(errors, file)
+        : errors.map(error => error.message).join(', ');
 
-    setFiles(acceptedFiles);
+      file.dropRejectionMessage = dropRejectionMessage;
+      return file;
+    });
+    setFiles([...acceptedFiles, ...rejectedFilesToDrop]);
   };
 
   let fileAddArea;
@@ -116,6 +119,7 @@ const Upload = ({
               maxSize={maxSize}
               className="file-drop"
               activeClassName="file-drop-active"
+              accept={allowedFileTypes}
             >
               {({ getRootProps, getInputProps }) => (
                 <section>

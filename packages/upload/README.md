@@ -67,9 +67,13 @@ The maximum number of files allowed to be uploaded. `0` (or a falsey value) mean
 
 Indicates that the user will be allowed to select multiple files when selecting files from the OS prompt. **Default:** `true`.
 
-### `showFileDropdown?: boolean`
+### `showFileDrop?: boolean`
 
 Set as true to show a drag and drop file upload option instead of a button (file explorer still available on click).
+
+### `getDropRejectionMessage?: (errors: Array<FileError>, file: File) => String`
+
+Override the default error message for files rejected when `showFileDrop` is `true`.
 
 ### Example
 
