@@ -11,11 +11,13 @@ const Analytics = ({
   autoTrack,
   recursive,
   attributePrefix,
+  eventModifiers,
 }) => {
   const analytics = useRef(
     new AvAnalytics(plugins, Promise, pageTracking, autoTrack, {
       recursive,
       attributePrefix,
+      eventModifiers,
     })
   );
 
@@ -47,6 +49,7 @@ Analytics.propTypes = {
   autoTrack: PropTypes.bool,
   recursive: PropTypes.bool,
   attributePrefix: PropTypes.string,
+  eventModifiers: PropTypes.array,
 };
 
 Analytics.defaultProps = {
@@ -54,6 +57,7 @@ Analytics.defaultProps = {
   pageTracking: true,
   recursive: true,
   attributePrefix: 'data-analytics',
+  eventModifiers: ['action'],
 };
 
 export default Analytics;
