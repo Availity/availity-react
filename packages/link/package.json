@@ -1,6 +1,6 @@
 {
   "name": "@availity/link",
-  "version": "2.1.16",
+  "version": "2.1.17",
   "author": "Tyson Warner <tyson.warner@availity.com>",
   "description": "React component that renders an a tag with the `href` formatted to leverage loadApp",
   "main": "index.js",

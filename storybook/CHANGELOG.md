@@ -3,6 +3,14 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## 9.4.40 (2020-04-30)
+
+**Note:** Version bump only for package @availity/react-storybook
+
+
+
+
+
 ## 9.4.39 (2020-04-30)
 
 **Note:** Version bump only for package @availity/react-storybook

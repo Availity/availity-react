@@ -1,6 +1,6 @@
 {
   "name": "@availity/authorize",
-  "version": "1.5.17",
+  "version": "1.5.18",
   "author": "Evan Sharp <evan.sharp@gmail.com>",
   "description": "Check user permissions to see if the current user is authorized to see your content.",
   "main": "index.js",
