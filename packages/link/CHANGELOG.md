@@ -3,6 +3,14 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## 2.1.16 (2020-04-30)
+
+**Note:** Version bump only for package @availity/link
+
+
+
+
+
 ## 2.1.15 (2020-04-28)
 
 **Note:** Version bump only for package @availity/link
