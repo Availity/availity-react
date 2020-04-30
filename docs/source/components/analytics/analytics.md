@@ -20,6 +20,7 @@ const plugin = {
     plugins={[plugin]}
     recurisve
     attributePrefix="data-av-analytics"
+    eventModifiers="action"
 >
   <Button type="button" data-av-analytics-action="click" id="button">Click Me</Button>
 </Analytics>
@@ -46,3 +47,7 @@ When an event is created, if `true`, will traverse up the DOM tree from the give
 ### `attributePrefix?: string`
 
 Prefix to apply on event attributes you want to stripe off components on click. **Default:** `data-analytics`
+
+### `eventModifiers?: string | string[]`
+
+Array of event modifiers enabling you to use other keywords for `action` instead of `click` for event type matching. **Default:** `['action']`
