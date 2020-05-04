@@ -78,9 +78,9 @@
   integrity sha512-3N0fHI7DuHksvnhdtvZcnnFpKYY4BmCcL1nc3jb9U9sPEIhw/9q4203yhd9MEsYcICLbpA6I03p7/vbo048ayA==
 
 "@availity/message-core@^4.0.1":
-  version "4.0.13"
-  resolved "https://registry.yarnpkg.com/@availity/message-core/-/message-core-4.0.13.tgz#b7bbaab9bced1595f4b413bac7218450eec23257"
-  integrity sha512-Cc77q3G5Y8aYcOpfJ2LySMZbD2uJM1M+e8Z+FQGNaDMgAnyjpWC7jxxhiQCYP+wVuLejOeEKH2hHwcl8NijKWQ==
+  version "4.0.19"
+  resolved "https://registry.yarnpkg.com/@availity/message-core/-/message-core-4.0.19.tgz#c35745cefc5f6d19019eefe84c021d8258c42e4e"
+  integrity sha512-ibzjlbIcSbxzrUxEZ0xNkmUccbjErdcJm4mJnIX/gb3c2y0n5so3gZHymq6Wek+WI68kMRWWQgbqSZ8i1zx9oA==
 
 "@availity/resolve-url@^1.1.0", "@availity/resolve-url@^1.1.1", "@availity/resolve-url@^1.1.13", "@availity/resolve-url@^1.1.5":
   version "1.1.13"
