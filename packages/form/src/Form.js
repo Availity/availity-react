@@ -12,6 +12,7 @@ const Form = ({
   onReset,
   validationSchema,
   validate,
+  innerRef,
   children,
   ...rest
 }) => (
@@ -24,6 +25,7 @@ const Form = ({
     initialTouched={initialTouched}
     validationSchema={validationSchema}
     validate={validate}
+    innerRef={innerRef}
   >
     {props => (
       <RsForm data-testid="form-container" tag={FForm} {...rest}>
@@ -43,6 +45,8 @@ Form.propTypes = {
   initialTouched: PropTypes.object,
   validationSchema: PropTypes.object,
   validate: PropTypes.func,
+  // eslint-disable-next-line react/forbid-prop-types
+  innerRef: PropTypes.any,
   children: PropTypes.oneOfType([PropTypes.func, PropTypes.node]),
 };
 
