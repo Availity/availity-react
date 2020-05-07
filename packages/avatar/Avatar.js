@@ -1,33 +1,14 @@
-import React, { useState } from 'react';
+import React, { createContext, useContext, useState } from 'react';
 import PropTypes from 'prop-types';
-import Skeleton from 'react-loading-skeleton';
-import Img from 'react-image';
-import { useEffectAsync } from '@availity/hooks';
-import { avSettingsApi } from '@availity/api-axios';
 import get from 'lodash.get';
+import { avSettingsApi } from '@availity/api-axios';
+import { useEffectAsync } from '@availity/hooks';
 
-const skeletonPropType = PropTypes.shape({
-  width: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
-  height: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
-});
+export const AvatarContext = createContext();
 
-const Loader = ({ skeletonProps, ...rest }) => (
-  <span {...rest}>
-    <Skeleton {...skeletonProps} />
-  </span>
-);
+export const useAvatarContext = () => useContext(AvatarContext);
 
-Loader.propTypes = {
-  skeletonProps: skeletonPropType,
-};
-
-Loader.defaultProps = {
-  skeletonProps: {
-    height: '100%',
-  },
-};
-
-const Avatar = ({ fallback, skeletonProps, ...props }) => {
+const Avatar = ({ children, fallback }) => {
   const [avatar, setAvatar] = useState(fallback);
   const [loading, setLoading] = useState(true);
 
@@ -41,36 +22,16 @@ const Avatar = ({ fallback, skeletonProps, ...props }) => {
     setLoading(false);
   }, []);
 
-  if (loading) {
-    return (
-      <Loader
-        data-testid="avatar-img-loader"
-        skeletonProps={skeletonProps}
-        {...props}
-      />
-    );
-  }
-
   return (
-    <Img
-      data-testid="avatar-img"
-      src={avatar}
-      alt="Avatar"
-      loader={
-        <Loader
-          data-testid="avatar-img"
-          skeletonProps={skeletonProps}
-          {...props}
-        />
-      }
-      {...props}
-    />
+    <AvatarContext.Provider value={{ avatar, loading }}>
+      {children}
+    </AvatarContext.Provider>
   );
 };
 
 Avatar.propTypes = {
+  children: PropTypes.node,
   fallback: PropTypes.string,
-  skeletonProps: skeletonPropType,
 };
 
 Avatar.defaultProps = {

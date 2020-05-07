@@ -1,36 +1,36 @@
-import React from 'react';
-import { render, cleanup, waitForElement } from '@testing-library/react';
-import { avSettingsApi } from '@availity/api-axios';
-import Avatar from '..';
+// import React from 'react';
+// import { render, cleanup, waitForElement } from '@testing-library/react';
+// import { avSettingsApi } from '@availity/api-axios';
+// import Avatar from '..';
 
-jest.mock('@availity/api-axios');
+// jest.mock('@availity/api-axios');
 
-afterEach(cleanup);
+// afterEach(cleanup);
 
-describe('Avatar', () => {
-  afterEach(() => {
-    jest.clearAllMocks();
-    cleanup();
-  });
+// describe('Avatar', () => {
+//   afterEach(() => {
+//     jest.clearAllMocks();
+//     cleanup();
+//   });
 
-  it('should render user selected avatar from settings', async () => {
-    avSettingsApi.getApplication.mockResolvedValue({
-      data: {
-        settings: [
-          {
-            avatar: '/public/apps/my-profile/Avatars-22.png',
-          },
-        ],
-      },
-    });
+// it('should render user selected avatar from settings', async () => {
+//   avSettingsApi.getApplication.mockResolvedValue({
+//     data: {
+//       settings: [
+//         {
+//           avatar: '/public/apps/my-profile/Avatars-22.png',
+//         },
+//       ],
+//     },
+//   });
 
-    const { getByTestId } = render(<Avatar />);
+//   const { getByTestId } = render(<Avatar />);
 
-    // Check that loader renders
-    await waitForElement(() => getByTestId('avatar-img-loader'));
+//   // Check that loader renders
+//   await waitForElement(() => getByTestId('avatar-img-loader'));
 
-    // Check that image renders
-    await waitForElement(() => getByTestId('avatar-img'));
-    expect(avSettingsApi.getApplication).toHaveBeenCalledTimes(1);
-  });
-});
+//   // Check that image renders
+//   await waitForElement(() => getByTestId('avatar-img'));
+//   expect(avSettingsApi.getApplication).toHaveBeenCalledTimes(1);
+// });
+// });
