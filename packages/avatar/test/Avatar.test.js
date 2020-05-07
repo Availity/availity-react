@@ -1,36 +1,54 @@
-// import React from 'react';
-// import { render, cleanup, waitForElement } from '@testing-library/react';
-// import { avSettingsApi } from '@availity/api-axios';
-// import Avatar from '..';
+import React from 'react';
+import { render, cleanup, waitForElement } from '@testing-library/react';
+import { avSettingsApi } from '@availity/api-axios';
+import Avatar, { useAvatarContext } from '..';
 
-// jest.mock('@availity/api-axios');
+jest.mock('@availity/api-axios');
 
-// afterEach(cleanup);
+afterEach(cleanup);
 
-// describe('Avatar', () => {
-//   afterEach(() => {
-//     jest.clearAllMocks();
-//     cleanup();
-//   });
+describe('Avatar', () => {
+  afterEach(() => {
+    jest.clearAllMocks();
+    cleanup();
+  });
 
-// it('should render user selected avatar from settings', async () => {
-//   avSettingsApi.getApplication.mockResolvedValue({
-//     data: {
-//       settings: [
-//         {
-//           avatar: '/public/apps/my-profile/Avatars-22.png',
-//         },
-//       ],
-//     },
-//   });
+  it('toggles whether the avatar provider is loading', async () => {
+    avSettingsApi.getApplication.mockResolvedValue({
+      data: {
+        settings: [
+          {
+            avatar: '/public/apps/my-profile/Avatars-22.png',
+          },
+        ],
+      },
+    });
 
-//   const { getByTestId } = render(<Avatar />);
+    const fn = jest.fn(() => {});
 
-//   // Check that loader renders
-//   await waitForElement(() => getByTestId('avatar-img-loader'));
+    const AvatarComponent = () => {
+      const { avatar, loading } = useAvatarContext();
 
-//   // Check that image renders
-//   await waitForElement(() => getByTestId('avatar-img'));
-//   expect(avSettingsApi.getApplication).toHaveBeenCalledTimes(1);
-// });
-// });
+      if (avatar && !loading) fn(avatar);
+      return loading ? null : (
+        <span data-testid="avatar-img">
+          {avatar ? `Avatar ${avatar}` : 'No Avatar '}
+        </span>
+      );
+    };
+
+    const MyComponent = () => {
+      return (
+        <Avatar>
+          <AvatarComponent />
+        </Avatar>
+      );
+    };
+
+    const { getByTestId } = render(<MyComponent />);
+
+    await waitForElement(() => getByTestId('avatar-img'));
+
+    expect(fn).toHaveBeenCalledTimes(1);
+  });
+});

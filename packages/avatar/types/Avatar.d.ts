@@ -4,9 +4,7 @@ export interface AvatarContext {
 }
 
 export interface AvatarProps {
-  children?:
-    | React.ReactNode
-    | ((avatarContext: AvatarContext) => React.ReactNode);
+  children?: React.ReactNode;
   fallback?: string;
 }
 

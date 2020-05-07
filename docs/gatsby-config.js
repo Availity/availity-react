@@ -91,7 +91,14 @@ module.exports = {
               ],
             },
             'components/authorize',
-            'components/avatar',
+            {
+              resolve: 'components/avatar/index',
+              pages: [
+                'components/avatar/avatar',
+                'components/avatar/avatar-image',
+                'components/avatar/use-avatar-context',
+              ],
+            },
             {
               resolve: 'components/favorites/index',
               pages: [

@@ -1,5 +1,5 @@
-import Avatar, { useAvatarContext, AvatarContext } from './Avatar';
-import AvatarImage from './AvatarImage';
+import Avatar, { useAvatarContext, AvatarContext } from './src/Avatar';
+import AvatarImage from './src/AvatarImage';
 
 export default Avatar;
 
