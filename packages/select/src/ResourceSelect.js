@@ -25,6 +25,7 @@ const ResourceSelect = ({
   waitUntilFocused,
   defaultToOnlyOption,
   shouldSearch,
+  additionalPostGetArgs,
   ...rest
 }) => {
   const { setFieldValue } = useFormikContext();
@@ -173,12 +174,20 @@ const ResourceSelect = ({
     } else {
       fetch = () =>
         resource.postGet(
-          qs.stringify(params, {
-            encode: false,
-            arrayFormat: 'repeat',
-            indices: false,
-            allowDots: true,
-          }),
+          // query-string does not support nesting values, convert additionalPostGetArgs
+          // to JSON string to be parsed by API
+          qs.stringify(
+            {
+              ...params,
+              additionalPostGetArgs: JSON.stringify(additionalPostGetArgs),
+            },
+            {
+              encode: false,
+              arrayFormat: 'repeat',
+              indices: false,
+              allowDots: true,
+            }
+          ),
           {
             headers: {
               'Content-Type': 'application/x-www-form-urlencoded',
@@ -306,6 +315,7 @@ ResourceSelect.propTypes = {
   waitUntilFocused: PropTypes.bool,
   defaultToOnlyOption: PropTypes.bool,
   shouldSearch: PropTypes.oneOfType([PropTypes.bool, PropTypes.func]),
+  additionalPostGetArgs: PropTypes.object,
 };
 
 ResourceSelect.defaultProps = {
