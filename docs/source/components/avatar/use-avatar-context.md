@@ -8,7 +8,7 @@ If you are using a function component, you can subscribe to an avatar url by usi
 
 ```jsx
 import React from 'react';
-import { useAvatarContext } from '@availity/Avatar';
+import { useAvatarContext } from '@availity/avatar';
 
 const AvatarComponent = () => {
   const { avatar, loading } = useAvatarContext();
