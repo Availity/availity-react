@@ -32,7 +32,7 @@ import '@availity/yup';
   <Button color="primary" type="submit">
     Submit
   </Button>
-</Form>
+</Form>;
 ```
 
 ## Props
@@ -121,7 +121,32 @@ When true, if the `resource` only returns one result the first time it is called
 
 ### `shouldSearch?: boolean | (inputValue: string, prevOptions: OptionType, additional: any) => boolean`
 
-When false or a function that returns false, the network request won't be made. Defaults to `true`. 
+When false or a function that returns false, the network request won't be made. Defaults to `true`.
+
+### `additionalPostGetArgs?: object`
+
+This object can be used to pass additional arguments to a resource's `postGet` call. These additional arguments are separate from the `parameters` that are supported by an API and may be used for filtering or other methods called inside a resource's `postGet` method. Example for the `organizations` resource that supports `additionalPostGetArgs`:
+
+```jsx
+async postGet(data, config, additionalPostGetArgs) {
+
+    if (additionalPostGetArgs) {
+      const { data: organizationsData } = await super.postGet(
+        data,
+        config
+      );
+
+      return this.getFilteredOrganizations(
+        organizationsData,
+        additionalPostGetArgs,
+        data
+      );
+    }
+
+    // Else return normal organizations call
+    return super.postGet(data, config);
+  }
+```
 
 ## Pre-made Resource Selects
 
