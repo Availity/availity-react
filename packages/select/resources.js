@@ -1,12 +1,12 @@
 import {
   avProvidersApi,
-  avOrganizationsApi,
   avPermissionsApi,
   avNavigationApi,
   avUserApi,
   avCodesApi,
 } from '@availity/api-axios';
 import { ResourceSelect } from '.';
+import AvOrganizationSelect from './custom-resources/AvOrganizationSelect';
 import AvRegionSelect from './custom-resources/AvRegionSelect';
 
 const AvProviderSelect = ResourceSelect.create({
@@ -14,10 +14,6 @@ const AvProviderSelect = ResourceSelect.create({
   labelKey: 'uiDisplayName',
   requiredParams: ['customerId'],
   watchParams: ['customerId'],
-});
-const AvOrganizationSelect = ResourceSelect.create({
-  resource: avOrganizationsApi,
-  labelKey: 'name',
 });
 const AvPermissionSelect = ResourceSelect.create({
   resource: avPermissionsApi,
