@@ -39,6 +39,7 @@ const ResourceSelect = ({
     const params = {
       customerId: rest.customerId,
       ...rest.parameters,
+      ...(additionalPostGetArgs || ''),
     };
     _cacheUniq = watchParams.map(watchParam => params[watchParam]).join(',');
   }
@@ -174,13 +175,8 @@ const ResourceSelect = ({
     } else {
       fetch = () =>
         resource.postGet(
-          // query-string does not support nesting values, convert additionalPostGetArgs
-          // to JSON string to be parsed by API
           qs.stringify(
-            {
-              ...params,
-              additionalPostGetArgs: JSON.stringify(additionalPostGetArgs),
-            },
+            { ...params },
             {
               encode: false,
               arrayFormat: 'repeat',
@@ -193,7 +189,8 @@ const ResourceSelect = ({
               'Content-Type': 'application/x-www-form-urlencoded',
             },
             ...rest.requestConfig,
-          }
+          },
+          additionalPostGetArgs
         );
     }
     return fetch()
