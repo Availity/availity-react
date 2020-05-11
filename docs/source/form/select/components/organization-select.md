@@ -21,21 +21,21 @@ import '@availity/yup';
   })}
 >
   <AvOrganizationSelect
-    id="organization"
-    name="organization"
+    id="organizations"
+    name="organizations"
     parameters={{
-      permissionId:['1111', '2222'],
-      regionId: 'FL'
+      permissionId: ['1111', '2222'],
+      regionId: 'FL',
     }}
     additionalPostGetArgs={{
-      resourceIds: ['1234', '4321']
+      resourceIds: ['1234', '4321'],
     }}
   />
 
   <Button color="primary" type="submit">
     Submit
   </Button>
-</Form>
+</Form>;
 ```
 
 ## Props
