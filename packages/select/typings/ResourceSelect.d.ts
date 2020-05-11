@@ -36,7 +36,14 @@ export interface ResourceSelectProps<T> extends SelectFieldProps<T> {
   minCharsToSearch?: number;
   waitUntilFocused?: boolean;
   defaultToOnlyOption?: boolean;
-  shouldSearch?: boolean | ((inputValue: string, prevOptions: OptionType[], additional: Additional) => boolean);
+  shouldSearch?:
+    | boolean
+    | ((
+        inputValue: string,
+        prevOptions: OptionType[],
+        additional: Additional
+      ) => boolean);
+  additionalPostGetArgs?: object;
 }
 
 declare class ResourceSelect<T> extends React.Component<

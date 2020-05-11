@@ -25,6 +25,7 @@ const ResourceSelect = ({
   waitUntilFocused,
   defaultToOnlyOption,
   shouldSearch,
+  additionalPostGetArgs,
   ...rest
 }) => {
   const { setFieldValue } = useFormikContext();
@@ -38,6 +39,7 @@ const ResourceSelect = ({
     const params = {
       customerId: rest.customerId,
       ...rest.parameters,
+      ...(additionalPostGetArgs || ''),
     };
     _cacheUniq = watchParams.map(watchParam => params[watchParam]).join(',');
   }
@@ -184,7 +186,8 @@ const ResourceSelect = ({
               'Content-Type': 'application/x-www-form-urlencoded',
             },
             ...rest.requestConfig,
-          }
+          },
+          additionalPostGetArgs
         );
     }
     return fetch()
@@ -306,6 +309,7 @@ ResourceSelect.propTypes = {
   waitUntilFocused: PropTypes.bool,
   defaultToOnlyOption: PropTypes.bool,
   shouldSearch: PropTypes.oneOfType([PropTypes.bool, PropTypes.func]),
+  additionalPostGetArgs: PropTypes.object,
 };
 
 ResourceSelect.defaultProps = {

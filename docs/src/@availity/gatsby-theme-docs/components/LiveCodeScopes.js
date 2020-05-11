@@ -17,6 +17,10 @@ import {
   CheckboxGroup,
 } from '@availity/form';
 import Select, { SelectField, ResourceSelect } from '@availity/select';
+import {
+  AvOrganizationSelect,
+  AvRegionSelect,
+} from '@availity/select/resources';
 import Feedback, { FeedbackForm } from '@availity/feedback';
 import Icon from '@availity/icon';
 import AvLink from '@availity/link';
@@ -51,6 +55,8 @@ const scopes = {
   Select,
   SelectField,
   ResourceSelect,
+  AvOrganizationSelect,
+  AvRegionSelect,
   PageHeader: loadable(() => import('@availity/page-header')),
   Feedback,
   FeedbackForm,
