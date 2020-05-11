@@ -175,15 +175,12 @@ const ResourceSelect = ({
     } else {
       fetch = () =>
         resource.postGet(
-          qs.stringify(
-            { ...params },
-            {
-              encode: false,
-              arrayFormat: 'repeat',
-              indices: false,
-              allowDots: true,
-            }
-          ),
+          qs.stringify(params, {
+            encode: false,
+            arrayFormat: 'repeat',
+            indices: false,
+            allowDots: true,
+          }),
           {
             headers: {
               'Content-Type': 'application/x-www-form-urlencoded',
