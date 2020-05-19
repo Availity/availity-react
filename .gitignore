@@ -1,0 +1,13 @@
+*.log
+/dist
+/node_modules
+.tmp
+/lib
+/.vscode
+/storybook-docs
+**/**/node_modules
+.DS_Store
+/.history
+package-lock.json
+coverage/
+yarn-error.log

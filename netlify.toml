@@ -1,0 +1,6 @@
+[build]
+  publish = "docs/public"
+  command = "yarn run build:netlify"
+
+[build.environment]
+  NODE_VERSION = "12"

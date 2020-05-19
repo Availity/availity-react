@@ -1,0 +1,43 @@
+{
+  "name": "@availity/feature",
+  "version": "1.2.18",
+  "author": "Evan Sharp <evan.sharp@gmail.com>",
+  "description": "Check if a feature is enabled or disabled before doing something.",
+  "main": "index.js",
+  "bin": {
+    "generate-features-json": "bin.js"
+  },
+  "scripts": {
+    "feature": "generate-features-json . path-to-dist"
+  },
+  "keywords": [
+    "react",
+    "availity"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Availity/availity-react.git"
+  },
+  "bugs": {
+    "url": "https://github.com/Availity/availity-react/issues"
+  },
+  "license": "MIT",
+  "publishConfig": {
+    "access": "public"
+  },
+  "dependencies": {
+    "fs-extra": "^8.0.1",
+    "prop-types": "^15.5.8",
+    "react-block-ui": "^1.1.1"
+  },
+  "devDependencies": {
+    "axios": "^0.19.2",
+    "axios-mock-adapter": "^1.15.0",
+    "react": "^16.8.3",
+    "react-dom": "^16.8.3"
+  },
+  "peerDependencies": {
+    "axios": "^0.19.2",
+    "react": "^16.3.0"
+  }
+}

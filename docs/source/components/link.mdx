@@ -1,0 +1,83 @@
+---
+title: Link
+---
+Simple link component that renders an `<a>` tag with the `href` formatted to leverage 
+loadApp so that when the link is opened in a new tab, it gets loaded inside the home page's iframe
+
+## Implementation
+
+### Installation
+
+```bash
+npm install @availity/link --save
+```
+
+### Example
+
+```jsx live=true viewCode=true
+import AvLink from '@availity/link';
+
+<div className="w-100 d-flex flex-row justify-content-around align-items-center">
+  <AvLink href="/public/apps/my-app" target="newBody">
+    My Application
+  </AvLink>
+</div>
+```
+
+### Props
+
+#### `href: string`
+
+The url of the page the link goes to.
+
+#### `target?: string`
+
+Where to open the linked document.
+
+#### `tag?: React.ComponentType | string`
+
+The tag to use in the link that gets rendered. **Default:** `<a>`.
+
+#### `onClick: (event: Event, url: string) => void`
+Function to run onClick of the link. The first argument passed to `onClick` is the event. The second argument is the processed `url`.
+
+#### `loadApp?: boolean`
+When `false`, the `url` prop to `AvLink` is _not_ formatted to leverage loadApp. **Default:** `true`.
+
+
+## Usage and Behavior
+
+### Default Links
+
+Links are used to help users take action or navigate throughout our various applications. The Availity link component 
+follows a uniform design to meet 508 compliance. 
+
+<div class="disclaimer">
+ Do not style links differently from the basic Availity standard. Links cannot change colors, and underlines 
+ cannot be removed. If you have a need or request to change a link color or style speak with a member of the 
+ Availity user experience team. 
+</div>
+
+```jsx live=true viewCode=false
+import AvLink from '@availity/link';
+
+<div className="w-100 d-flex flex-row justify-content-around align-items-center">
+  <AvLink href="/public/apps/my-app" target="newBody">
+    Custom Link Text
+  </AvLink>
+</div>
+```
+
+
+
+##  Accessibility
+
+Availity is working towards creating a 508 compliant portal experience. This is an extensive undertaking that takes time. 
+If at any time you find or question a component in this library to be out of 508 compliance please notify a member of the
+User experience team.
+
+<div class="disclaimer">
+  This component meets WCAG 2.0 AA 508 compliance by way of WAVE, AXE, and SortSite accessibility tools.
+</div>
+
+

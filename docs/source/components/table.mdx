@@ -1,0 +1,253 @@
+---
+title: Table
+---
+
+Tables allow for compact information presentation, allowing users to quickly read through related data.
+
+## Implementation 
+
+### Installation
+
+???
+
+### Example
+
+```jsx live=true viewCode=true
+<div className="w-100 d-flex flex-row justify-content-around align-items-center">
+  <table class="table">
+    <caption>Optional table caption.</caption>
+    <thead>
+      <tr>
+        <th>#</th>
+        <th>First Name</th>
+        <th>Last Name</th>
+        <th>Username</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>1</td>
+        <td>Mark</td>
+        <td>Otto</td>
+        <td>@mdo</td>
+      </tr>
+      <tr>
+        <td>2</td>
+        <td>Jacob</td>
+        <td>Thornton</td>
+        <td>@fat</td>
+      </tr>
+      <tr>
+        <td>3</td>
+        <td>Larry</td>
+        <td>the Bird</td>
+        <td>@twitter</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+```
+
+### Props
+
+#### `size? string`
+Potential values: `"lg"`, `"xl"`
+
+## Usage and Behavior
+
+### Default Table
+
+Default tables are used for results, and comparing information.
+If you have additional questions speak with a member of the Availity user experience team.
+
+<div class="disclaimer">
+ Do not use tables to control page structure. Do not override default table styles.
+</div>
+
+```jsx live=true viewCode=false
+<div className="w-100 d-flex flex-row justify-content-around align-items-center">
+  <table class="table">
+    <caption>Optional table caption.</caption>
+    <thead>
+      <tr>
+        <th>#</th>
+        <th>First Name</th>
+        <th>Last Name</th>
+        <th>Username</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>1</td>
+        <td>Mark</td>
+        <td>Otto</td>
+        <td>@mdo</td>
+      </tr>
+      <tr>
+        <td>2</td>
+        <td>Jacob</td>
+        <td>Thornton</td>
+        <td>@fat</td>
+      </tr>
+      <tr>
+        <td>3</td>
+        <td>Larry</td>
+        <td>the Bird</td>
+        <td>@twitter</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+```
+
+### Fixed Table
+
+Fixed tables allow for evenly spaces columns of data. Leverage this style when the information
+being present to the user is all relatively the same length. Truncating cell data is generally 
+frowned upon as is causes confusion for the user. There are rare exceptions but generally wrap text
+to the next line.
+
+<div class="disclaimer">
+    If you have additional questions speak with a member of the Availity user experience team.
+</div>
+
+```jsx live=true viewCode=false
+<div className="w-100 d-flex flex-row justify-content-around align-items-center">
+  <table class="table table-fixed">
+    <thead>
+    <tr>
+      <th class="col-md-1">#</th>
+      <th class="col-md-3">Haiku</th>
+      <th class="col-md-2">Last Name</th>
+      <th class="col-md-5">Username</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr>
+      <td>1</td>
+      <td class="text-truncate">Haikus are easy; but sometimes they don't make sense; refrigerator</td>
+      <td>Otto</td>
+      <td>@mdo</td>
+    </tr>
+    <tr>
+      <td>2</td>
+      <td>Jacob</td>
+      <td>Thornton</td>
+      <td>@fat</td>
+    </tr>
+    <tr>
+      <td>3</td>
+      <td>Larry</td>
+      <td>the Bird</td>
+      <td>@twitter</td>
+    </tr>
+    </tbody>
+  </table>
+</div>
+```
+
+### Hover Table
+
+Hover tables are generally used in selection cases where then entire row can be clicked on. Hover
+tables are great in any circustance where lots of information is being returned, they really help the 
+readability of data dense user interfaces. 
+
+<div class="disclaimer">
+    If you have additional questions speak with a member of the Availity user experience team.
+</div>
+
+```jsx live=true viewCode=false
+<div className="w-100 d-flex flex-row justify-content-around align-items-center">
+  <table class="table table-hover">
+    <thead>
+      <tr>
+        <th>#</th>
+        <th>First Name</th>
+        <th>Last Name</th>
+        <th>Username</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>1</td>
+        <td>Mark</td>
+        <td>Otto</td>
+        <td>@mdo</td>
+      </tr>
+      <tr>
+        <td>2</td>
+        <td>Jacob</td>
+        <td>Thornton</td>
+        <td>@fat</td>
+      </tr>
+      <tr>
+        <td>3</td>
+        <td>Larry</td>
+        <td>The Bird</td>
+        <td>@twitter</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+```
+
+### Striped Table
+
+Striped tables are not used very often anymore but are kept as part of the uikit offering. While they
+can aid in the readabilkity of a table for the user we've found through testing users find the stiping
+undesireable. We would recommnd going with a hover table in most cases. See above. 
+
+<div class="disclaimer">
+    If you have additional questions speak with a member of the Availity user experience team.
+</div>
+
+```jsx live=true viewCode=false
+<div className="w-100 d-flex flex-row justify-content-around align-items-center">
+ <table class="table table-striped">
+    <thead>
+    <tr>
+      <th>#</th>
+      <th>First Name</th>
+      <th>Last Name</th>
+      <th>Health Plan</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr>
+      <td>1</td>
+      <td>Lance</td>
+      <td>Gutin</td>
+      <td>Cigna</td>
+    </tr>
+    <tr>
+      <td>2</td>
+      <td>Elliott</td>
+      <td>Muñoz</td>
+      <td>Florida Blue</td>
+    </tr>
+    <tr>
+      <td>3</td>
+      <td>Kevin</td>
+      <td>Vigneault</td>
+      <td>Humana</td>
+    </tr>
+    <tr>
+      <td>4</td>
+      <td>Todd</td>
+      <td>Moy</td>
+      <td>Wellpoint</td>
+    </tr>
+    </tbody>
+  </table>
+</div>
+```
+
+##  Accessibility
+
+Availity is working towards creating a 508 compliant portal experience. This is an extensive undertaking that takes time. 
+If at any time you find or question a component in this library to be out of 508 compliance please notify a member of the
+User experience team.
+
+<div class="disclaimer">
+  This component meets WCAG 2.0 AA 508 compliance by way of WAVE, AXE, and SortSite accessibility tools.
+</div>

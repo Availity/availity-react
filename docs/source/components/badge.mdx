@@ -1,0 +1,119 @@
+---
+title: Badge
+---
+
+Badges provide contextual labels for small counts, statuses, and applied filters. 
+
+## Implementation
+
+### Installation
+
+This component comes in natively with reactstrap. 
+
+### Example
+
+```html live=true viewCode=true
+<p>
+  <span class="badge badge-success">Success</span>
+  <span class="badge badge-info">Info</span>
+  <span class="badge badge-warning">Warning</span>
+  <span class="badge badge-danger">Danger</span>
+  <span class="badge badge-unstyled">0</span>
+  <span class="badge badge-primary">1</span>
+  <span class="badge badge-secondary">2</span>
+  <span class="badge badge-success">3</span>
+</p>
+```
+
+
+## Usage & Behavior
+
+Badges are available for limited lengths of text, as well as including an optional dismissible applications. 
+Today they are primary used as counters and as additional identifiers for transaction statuses. Additional 
+use cases can found but we are working to limit thier diverity. 
+
+
+### Availible Classes
+
+Add any of the below mentioned modifier classes to change the appearance of a badge.
+
+<div class="disclaimer">
+  Do not use any other colors than those provided to you by our helper classes. If you have a need to change or add a new color consult a member of the user experience team.
+</div>
+
+
+```html live=true viewCode=false
+<p>
+  <span class="badge badge-unstyled">Unstyled</span>
+  <span class="badge badge-primary">Primary</span>
+  <span class="badge badge-secondary">Secondary</span>
+  <span class="badge badge-success">Success</span>
+  <span class="badge badge-info">Info</span>
+  <span class="badge badge-warning">Warning</span>
+  <span class="badge badge-danger">Danger</span>
+  <span class="badge badge-brand">Brand</span>
+  <span class="badge badge-extra">Extra</span>
+  <span class="badge badge-light">Light</span>
+  <span class="badge badge-dark">Dark</span>
+</p>
+```
+
+
+### Linkable Badges
+
+Using the contextual .badge-* classes on an `<a>` element can quickly provide interactivity and style.
+
+<div class="disclaimer">
+  Generally linkable badges are resved for use with search filters.
+</div>
+
+```html live=true viewCode=false
+<p>
+  <a href="#" class="badge badge-primary">Click Me</a>
+</p>
+```
+
+
+### Removable Badges
+
+Using badges in a removable/dismissible context is reserved for removing applied filters.
+
+<div class="disclaimer">
+  Do not use any custom badges; if you have a question or concern about how or when to use one of the following classes
+  please consult a member of the user experience team. 
+</div>
+
+```html live=true viewCode=false
+<p>
+  <span class="badge badge-unstyled badge-remove"><a href="#" aria-label="Remove"><i class="icon icon-cancel"></i></a> Unstyled</span>
+  <span class="badge badge-primary badge-remove"><a href="#" aria-label="Remove"><i class="icon icon-cancel"></i></a> Primary</span>
+</p>
+```
+
+
+### Badges for Notifications
+Using badges for notifications is reserved to displaying counts only.
+
+<div class="disclaimer">
+  Use counters sparingly, if you have a question or concern about how or when to use one of the following classes
+  please consult a member of the user experience team. 
+</div>
+
+```html live=true viewCode=false
+<button class="btn">
+  Notifications <span class="badge badge-secondary">4</span>
+  <span class="sr-only">unread messages</span>
+</button>
+```
+
+
+## Acessibility
+
+Availity is working towards creating a 508 compliant portal experience. This is an extensive undertaking that takes time. 
+If at any time you find or question a component in this library to be out of 508 compliance please notify a member of the
+User experience team.
+
+<div class="disclaimer">
+  This component meets WCAG 2.0 AA 508 compliance by way of WAVE, AXE, and SortSite accessibility tools.
+</div>
+

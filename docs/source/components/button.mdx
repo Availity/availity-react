@@ -1,0 +1,123 @@
+---
+title: Button
+---
+Buttons provide touch targets for user actions. Availity's UI Kit includes several predefined 
+button styles, each serving its own semantic purpose.
+
+## Implementation
+
+### Installation
+This component comes natively with Availity reactstrap. 
+
+### Example
+
+```html live=true viewCode=true
+<p>
+  <button type="button" class="btn btn-primary">Primary</button>
+  <button type="button" class="btn btn-default">Secondary</button>
+</p>
+```
+
+## Usage & Behavior
+Buttons are clickable page elements that allow a user to perform an action.
+
+### Default Buttons
+Default buttons are displayed to help draw attention to the users available actions given certain context. 
+There should be no more than one primary button on a view at a time to allow the user to distinguish the primary 
+task at hand. 
+
+```html live=true viewCode=false
+<p>
+  <button type="button" class="btn btn-primary">Primary</button>
+  <button type="button" class="btn btn-default">Secondary</button>
+  <button type="button" class="btn btn-success">Success</button>
+  <button type="button" class="btn btn-info">Info</button>
+  <button type="button" class="btn btn-warning">Warning</button>
+  <button type="button" class="btn btn-danger">Danger</button>
+  <button type="button" class="btn btn-dark">Dark</button>
+</p>
+```
+
+### Disabled Buttons
+When a button is in a disabled state it is expected to take on disabled properties such as
+dropping its opacity to 65% of its original value, and not showing any on hover style changes. 
+When a button is in a disabled state no action should fire when clicked.
+
+```html live=true viewCode=false
+<p>
+  <button type="button" disabled="disabled" class="btn btn-primary">Primary</button>
+  <button type="button" disabled="disabled" class="btn btn-default">Secondary</button>
+  <button type="button" disabled="disabled" class="btn btn-success">Success</button>
+  <button type="button" disabled="disabled" class="btn btn-info">Info</button>
+  <button type="button" disabled="disabled" class="btn btn-warning">Warning</button>
+  <button type="button" disabled="disabled" class="btn btn-danger">Danger</button>
+  <button type="button" disabled="disabled" class="btn btn-dark">Dark</button>
+</p>
+```
+
+### Buttons with icons
+when using an icon in junction with a button the icon is expected to proceed the button label. Generally
+using icons with buttons is discouraged but when there is a group of buttons or a need for a unique identifier
+such as an add or upload case we recommend that you use an icon to help distinguish the action for the user.
+
+```html live=true viewCode=false
+<div>
+  <span class="btn btn-default btn-file">
+    <i class="icon icon-plus-circle"></i>
+    <span>Add files...</span>
+    <input type="file" name="files[]" multiple aria-label="upload files" />
+  </span>
+  <span class="btn btn-primary btn-file">
+    <i class="icon icon-plus-circle"></i>
+    <span>Add files...</span>
+    <input type="file" name="files[]" multiple aria-label="upload files" />
+  </span>
+  <span class="btn btn-success btn-file">
+    <i class="icon icon-plus-circle"></i>
+    <span>Add files...</span>
+    <input type="file" name="files[]" multiple aria-label="upload files" />
+  </span>
+</div>
+```
+
+### Group
+Button groups are intended to act as a toggle switch of sorts, with more than two potential options. 
+They can be thought of as a series of radio buttons with only one active state at a time.
+
+```html live=true viewCode=false
+<div class="btn-group">
+  <button type="button" class="btn btn-default">Left</button>
+  <button type="button" class="btn btn-default">Middle</button>
+  <button type="button" class="btn btn-default">Right</button>
+</div>
+```
+
+### Outline
+In need of a button, but not the hefty background colors they bring? Replace the default modifier classes 
+with the .btn-outline-* ones to remove all background images and colors on any button. While this is an option
+we keep in the UI Kit we tend to discourage its usage.
+
+```html live=true viewCode=false
+<p>
+  <button type="button" class="btn btn-outline-default">Default</button>
+  <button type="button" class="btn btn-outline-primary">Primary</button>
+  <button type="button" class="btn btn-outline-success">Success</button>
+  <button type="button" class="btn btn-outline-info">Info</button>
+  <button type="button" class="btn btn-outline-warning">Warning</button>
+  <button type="button" class="btn btn-outline-danger">Danger</button>
+  <button type="button" class="btn btn-outline-dark">Dark</button>
+</p>
+```
+
+## Accessibility
+<div class="disclaimer">
+  This component meets WCAG 2.0 AA 508 compliance by way of WAVE, AXE, 
+  and SortSite accessibility tools.
+</div>
+
+<strong>Conveying meaning to assistive technologies</strong>  
+
+Using color to add meaning only provides a visual indication, which will not be 
+conveyed to users of assistive technologies – such as screen readers. Ensure that 
+information denoted by the color is either obvious from the content itself (e.g. 
+the visible text), or is included through alternative means.

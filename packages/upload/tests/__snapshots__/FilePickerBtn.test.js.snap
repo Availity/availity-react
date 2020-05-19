@@ -1,0 +1,22 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Upload should render 1`] = `
+<div>
+  <div
+    class="d-none"
+  >
+    <input
+      class="form-control-file"
+      id="filePicker-1"
+      type="file"
+      value=""
+    />
+  </div>
+  <button
+    class="btn btn-primary"
+    type="button"
+  >
+    Select File
+  </button>
+</div>
+`;

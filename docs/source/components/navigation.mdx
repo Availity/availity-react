@@ -1,0 +1,149 @@
+---
+title: Navigation
+---
+
+This component allows users to navigate within an Availity portal application.
+
+## Implementation 
+
+### Installation
+This component comes natively with Availity reactstrap. 
+
+### Example
+
+```jsx live=true viewCode=true
+  <div className="w-100 d-flex flex-row justify-content-around align-items-center">
+
+    <div role="tabpanel">
+      <ul class="nav nav-tabs" role="tablist">
+        <li class="nav-item">
+          <a class="nav-link active" href="#home1" role="tab" data-toggle="tab">Home</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#profile1" role="tab" data-toggle="tab">Profile</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#messages10" role="tab" data-toggle="tab">Messages</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#settings1" role="tab" data-toggle="tab">Settings</a>
+        </li>
+      </ul>
+      <div class="tab-content tab-bump">
+        <div role="tabpanel" class="tab-pane active" id="home1">
+          <p class="lead">Home</p>
+        </div>
+        <div role="tabpanel" class="tab-pane" id="profile1">
+          <p class="lead">Profile</p>
+        </div>
+        <div role="tabpanel" class="tab-pane" id="messages10">
+          <p class="lead">Messages</p>
+        </div>
+        <div role="tabpanel" class="tab-pane" id="settings1">
+          <p class="lead">Settings</p>
+        </div>
+      </div>
+    </div>
+  </div>
+```
+
+## Usage and Behavior
+
+### Navigation: Pills
+
+The pills style navigation is an alternative style to the default recommended tabs seen above. 
+
+<div class="disclaimer">
+  If you have additional questions of when to use this component speak with a member of the 
+  Availity user experience team.
+</div>
+
+```jsx live=true viewCode=false
+<div className="w-100 d-flex flex-row justify-content-around align-items-center">
+  <div role="tabpanel">
+    <ul class="nav nav-pills" role="tablist">
+      <li class="nav-item">
+        <a class="nav-link active" href="#home6" role="tab" data-toggle="tab">Home</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="#profile6" role="tab" data-toggle="tab">Profile</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="#messages6" role="tab" data-toggle="tab">Messages</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="#settings6" role="tab" data-toggle="tab">Settings</a>
+      </li>
+    </ul>
+    <div class="tab-content tab-bump">
+      <div role="tabpanel" class="tab-pane active" id="home6">
+        <p class="lead">Home</p>
+      </div>
+      <div role="tabpanel" class="tab-pane" id="profile6">
+        <p class="lead">Profile</p>
+      </div>
+      <div role="tabpanel" class="tab-pane" id="messages6">
+        <p class="lead">Messages</p>
+      </div>
+      <div role="tabpanel" class="tab-pane" id="settings6">
+        <p class="lead">Settings</p>
+      </div>
+    </div>
+  </div>
+</div>
+```
+
+### Navigation: Underlined Tabs
+
+The underlined tabs style navigation is an alternative style to the default recommended tabs seen above. 
+
+<div class="disclaimer">
+  If you have additional questions of when to use this component speak with a member of the 
+  Availity user experience team.
+</div>
+
+```jsx live=true viewCode=false
+<div className="w-100 d-flex flex-row justify-content-around align-items-center">
+  <div role="tabpanel">
+    <ul class="nav nav-pills-secondary" role="tablist">
+      <li class="nav-item">
+        <a class="nav-link active" href="#home2" role="tab" data-toggle="tab">Home</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="#profile2" role="tab" data-toggle="tab">Profile</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="#messages2" role="tab" data-toggle="tab">Messages</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="#settings2" role="tab" data-toggle="tab">Settings</a>
+      </li>
+    </ul>
+    <div class="tab-content tab-bump">
+      <div role="tabpanel" class="tab-pane active" id="home2">
+        <p class="lead">Home</p>
+      </div>
+      <div role="tabpanel" class="tab-pane" id="profile2">
+        <p class="lead">Profile</p>
+      </div>
+      <div role="tabpanel" class="tab-pane" id="messages2">
+        <p class="lead">Messages</p>
+      </div>
+      <div role="tabpanel" class="tab-pane" id="settings2">
+        <p class="lead">Settings</p>
+      </div>
+    </div>
+  </div>
+</div>
+```
+
+
+##  Accessibility
+
+Availity is working towards creating a 508 compliant portal experience. This is an extensive undertaking that takes time. 
+If at any time you find or question a component in this library to be out of 508 compliance please notify a member of the
+User experience team.
+
+<div class="disclaimer">
+  This component meets WCAG 2.0 AA 508 compliance by way of WAVE, AXE, and SortSite accessibility tools.
+</div>

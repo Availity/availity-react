@@ -1,0 +1,128 @@
+---
+title: Icon
+---
+
+Icons are used to decoratively or functionally to draw attention to interface elements or actions to be performed.
+
+Simple icon component that is a wrapper for the icons in the availity uikit. 
+**[Icon List](http://availity.github.io/availity-uikit/v3/icons)**
+
+
+## Implementation 
+
+### Installation
+
+```bash
+npm install @availity/icon --save
+```
+
+### Example
+
+```jsx live=true viewCode=true
+import Icon from '@availity/icon';
+
+<div className="w-100 d-flex flex-row justify-content-around align-items-center">
+  <Icon name="home" size="3x"/>
+</div>
+```
+
+### Props
+
+#### `name: string`
+
+The name of the icon. **[Icon List](http://availity.github.io/availity-uikit/v3/icons)**
+
+#### `size?: string`
+
+The size of the icon. Potential values: `"lg"`, `"xl"`, `"2x"`, `"3x"`, `"4x"`, `"5x"`
+
+#### `color?: string`
+
+The text color of the icon. Uses Availity UI Kit variants.
+
+#### `aria-label?: string`
+
+See: [aria-label](https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/ARIA_Techniques/Using_the_aria-label_attribute). **Default:** `name`
+
+## Usage and Behavior
+
+### Default Icon
+
+Use icons sparingly, they should be used only when nessesary to draw extra attention or when additional
+information can be conveyed to the user through symbolism. 
+
+<div class="disclaimer">
+ Do not use icons for everything. Do not use icons in your navigation if you can help it. 
+ If you have additional questions speak with a member of the Availity user experience team.
+</div>
+
+```jsx live=true viewCode=false
+import Icon from '@availity/icon';
+
+<div className="w-100 d-flex flex-row justify-content-around align-items-center">
+  <Icon name="home" size="3x" />
+</div>
+```
+
+### Icon sizes
+
+Icons can leverage many sizes; generally speaking, we try to keep interface icons down in the "lg" to "xl" range
+as we tend to use them alongside labels. Rarely are icons used away from labels but when they are used 
+decoratively there are a series of sizes that can be called to fit the desired presentation. 
+
+<div class="disclaimer">
+ Do not use large icons to draw attention to interface elements that are grouped together. Do not leverage size classes 
+ that are inappropriate for their use case; too small or too big. If you have additional questions speak with a member of the Availity user experience team.
+</div>
+
+```jsx live=true viewCode=false
+import Icon from '@availity/icon';
+
+<div className="w-100 d-flex flex-row justify-content-around align-items-center">
+    <Icon name="home" size="lg" />
+    <Icon name="home" size="xl" />
+    <Icon name="home" size="2x" />
+    <Icon name="home" size="3x" />
+    <Icon name="home" size="4x" />
+    <Icon name="home" size="5x" />
+</div>
+```
+
+### Icon colors
+
+Icons can make use of our base class names used throughout our ui kit; see the buttons component for the
+complete listing of classes. Icons are primary black with the exception of a few colors. 
+
+- Primary blue when paired with links
+- White when used on primary buttons
+- Success green when paired with success responses
+- Danger red when paired with only some delete actions
+
+<div class="disclaimer">
+  Do not change icon colors to differentiate between different interface elements loosely. The colors have meaning
+  throughout the portal and across various component types. Do not change any of the default color values.
+  Do not stray away from the supplied class names. 
+  If you have additional questions speak with a member of the Availity user experience team.
+</div>
+
+```jsx live=true viewCode=false
+import Icon from '@availity/icon';
+
+<div className="w-100 d-flex flex-row justify-content-around align-items-center">
+  <Icon name="home" size="3x" color="primary" />
+  <Icon name="home" size="3x" color="default" />
+  <Icon name="home" size="3x" color="danger" />
+  <Icon name="home" size="3x" color="success" />
+</div>
+```
+
+
+##  Accessibility
+
+Availity is working towards creating a 508 compliant portal experience. This is an extensive undertaking that takes time. 
+If at any time you find or question a component in this library to be out of 508 compliance please notify a member of the
+User experience team.
+
+<div class="disclaimer">
+  This component meets WCAG 2.0 AA 508 compliance by way of WAVE, AXE, and SortSite accessibility tools.
+</div>

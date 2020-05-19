@@ -1,0 +1,37 @@
+{
+  "name": "@availity/breadcrumbs",
+  "version": "3.1.18",
+  "author": "Evan Sharp <evan.sharp@availity.com>",
+  "description": "Availity breadcrumbs",
+  "main": "index.js",
+  "keywords": [
+    "react",
+    "availity"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Availity/availity-react.git"
+  },
+  "bugs": {
+    "url": "https://github.com/Availity/availity-react/issues"
+  },
+  "license": "MIT",
+  "publishConfig": {
+    "access": "public"
+  },
+  "dependencies": {
+    "prop-types": "^15.5.8"
+  },
+  "devDependencies": {
+    "history": "^4.7.2",
+    "react": "^16.8.3",
+    "react-dom": "^16.8.3",
+    "react-router": "^5.0.0",
+    "react-router-dom": "^5.0.0",
+    "reactstrap": "^8.0.0"
+  },
+  "peerDependencies": {
+    "react": "^16.3.0",
+    "reactstrap": "^8.0.0 || ^7.0.0 || ^6.0.0"
+  }
+}

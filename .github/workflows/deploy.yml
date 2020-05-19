@@ -1,0 +1,52 @@
+# This workflow will do a clean install of node dependencies, build the source code and run tests across different versions of node
+# For more information see: https://help.github.com/actions/language-and-framework-guides/using-nodejs-with-github-actions
+
+name: Publish Release
+
+on:
+  push:
+    branches: [master]
+
+jobs:
+  deploy:
+    if: "!contains(github.event.head_commit.message, 'skip ci')"
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v2
+        with:
+          token: ${{ secrets.BOT_TOKEN }}
+      - uses: actions/setup-node@v1
+        with:
+          node-version: 12
+      - name: Get yarn cache directory path
+        id: yarn-cache-dir-path
+        run: echo "::set-output name=dir::$(yarn cache dir)"
+      - uses: actions/cache@v1
+        id: yarn-cache
+        with:
+          path: ${{ steps.yarn-cache-dir-path.outputs.dir }}
+          key: ${{ runner.os }}-yarn-${{ hashFiles('**/yarn.lock') }}
+          restore-keys: |
+            ${{ runner.os }}-yarn-
+      - run: yarn install
+      - run: yarn lint
+      - run: yarn test:ci
+      - uses: codecov/codecov-action@v1.0.6
+        with:
+          file: ./coverage/coverage-final.json
+          token: ${{ secrets.CODECOV_TOKEN }}
+      - run: echo "//registry.npmjs.org/:_authToken=${{ secrets.NPM_TOKEN }}" >> ~/.npmrc
+      - run: git config --global user.email ${{ secrets.GH_EMAIL }}
+      - run: git config --global user.name ${{ secrets.GH_USER }}
+      - run: yarn release:ci
+      - run: yarn deploy:ci
+      - uses: crazy-max/ghaction-github-pages@v1
+        with:
+          target_branch: gh-pages
+          build_dir: docs/public
+          commit_message: deployed docs [skip ci]
+          committer_name: ${{ secrets.GH_USER }}
+          committer_email: ${{ secrets.GH_EMAIL }}
+        env:
+          GITHUB_TOKEN: ${{ secrets.BOT_TOKEN }}

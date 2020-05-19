@@ -1,0 +1,73 @@
+{
+  "private": true,
+  "name": "@availity/react-docs",
+  "version": "4.13.15",
+  "license": "MIT",
+  "keywords": [
+    "react",
+    "availity"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "git+ssh://git@github.com/Availity/availity-react.git"
+  },
+  "bugs": {
+    "url": "https://github.com/Availity/availity-react/issues"
+  },
+  "scripts": {
+    "build": "gatsby build",
+    "build:deploy": "rm -rf .cache && gatsby build --prefix-paths",
+    "start": "gatsby develop",
+    "develop": "gatsby develop",
+    "clean": "gatsby clean"
+  },
+  "dependencies": {
+    "@availity/analytics": "^1.1.19",
+    "@availity/api-axios": "^5.4.0",
+    "@availity/api-core": "^6.1.3",
+    "@availity/app-icon": "^1.3.14",
+    "@availity/authorize": "^1.5.14",
+    "@availity/avatar": "^0.3.20",
+    "@availity/breadcrumbs": "^3.1.18",
+    "@availity/date": "^1.1.16",
+    "@availity/favorites": "^2.1.24",
+    "@availity/feature": "^1.2.18",
+    "@availity/feedback": "^5.3.31",
+    "@availity/form": "^0.5.21",
+    "@availity/gatsby-theme-docs": "^4.0.1",
+    "@availity/hooks": "^1.6.19",
+    "@availity/icon": "^0.7.13",
+    "@availity/link": "^2.1.13",
+    "@availity/list-group": "^1.2.16",
+    "@availity/list-group-item": "^1.2.15",
+    "@availity/localstorage-core": "^3.0.0",
+    "@availity/page-header": "^10.0.39",
+    "@availity/pagination": "^2.8.14",
+    "@availity/payer-logo": "^4.0.20",
+    "@availity/progress": "^1.2.14",
+    "@availity/reactstrap-validation-date": "^3.2.17",
+    "@availity/reactstrap-validation-select": "^5.3.22",
+    "@availity/select": "^0.9.23",
+    "@availity/spaces": "^4.0.19",
+    "@availity/step-wizard": "^1.3.14",
+    "@availity/training-link": "^1.2.14",
+    "@availity/typography": "^1.2.14",
+    "@availity/upload": "^2.3.13",
+    "@availity/upload-core": "^3.0.4",
+    "@availity/yup": "^3.0.2",
+    "@loadable/component": "^5.10.2",
+    "availity-reactstrap-validation": "2.6.1",
+    "axios": "^0.19.2",
+    "formik": "^2.0.4",
+    "gatsby": "^2.19.12",
+    "gatsby-plugin-compile-es6-packages": "^2.1.0",
+    "moment": "^2.24.0",
+    "react": "^16.8.3",
+    "react-dom": "^16.8.3",
+    "reactstrap": "^8.0.1",
+    "yup": "^0.28.1"
+  },
+  "devDependencies": {
+    "gatsby-plugin-compile-es6-packages": "^2.1.0"
+  }
+}

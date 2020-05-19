@@ -1,0 +1,149 @@
+---
+title: App Icon
+---
+A component is used in junction with a label to help identify and application in navigation and branding scenarios.
+
+## Implementation 
+
+### Installation
+
+```bash
+npm install @availity/app-icon --save
+```
+
+### Example
+
+```jsx live=true viewCode=true
+import AppIcon from '@availity/app-icon';
+
+<div className="w-100 d-flex flex-row justify-content-around align-items-center">
+<AppIcon title="Payer Space" color="blue" size="lg">
+  AV
+</AppIcon>
+</div>
+```
+
+### Props
+
+#### `size? string`
+Potential values: `"lg"`, `"xl"`
+
+#### `color?: string`
+Potential values: `"black"`, `"blue"`, `"green"`, `"orange"`, `"red"`. **Default:** `"black"`
+
+#### `branded?: boolean`
+Triggers "branded" styles
+
+#### `src?: string`
+If image source is provided, it will render this instead of children.
+
+#### `alt?: string`
+For `src` prop. the alt property for your image source is not found or is loading.
+
+
+## Usage and Behavior
+
+### Types of App Icons
+
+Availity makes use of two types of app icons; solid and outline. A solid app icon is used 
+when the application is located within the Availity portal; an Availity product.
+Outlined app icons are used when the icon is used in junction with an application that is 
+developed and managed outside of Availity by one of our partners. 
+
+<div class="disclaimer">
+  Do not use outlined icons to represent internal applications and vice versa do not use solid icons to
+  represent external applications. 
+</div>
+
+```jsx live=true viewCode=false
+import AppIcon from '@availity/app-icon';
+
+<div className="w-100 d-flex flex-row justify-content-around align-items-center">
+  <AppIcon title="Payer Space" color="blue" size="lg">
+  AV
+</AppIcon>
+<AppIcon title="Payer Space" color="blue" branded size="lg">
+  AV
+</AppIcon>
+</div>
+```
+
+
+### Sizes of App Icons
+
+App icons come in three sizes default, large, and extra-large. Default icons are used when representing 
+your application in a search result, navigation menu, or application listing such as a dashboard view where
+other applications may be listed. Large icons are not currently being used but are reserved for future potential.
+Extra-large icons are used when the icon itself requires more affordance such as the tiles for my top applications
+on the portal homepage. 
+
+<div class="disclaimer">
+  Do not modify the use cases presented above.
+</div>
+
+```jsx live=true viewCode=false
+import AppIcon from '@availity/app-icon';
+
+<div className="w-100 d-flex flex-row justify-content-around align-items-center">
+  <AppIcon title="Payer Space" color="blue">
+  AV
+</AppIcon>
+<AppIcon title="Payer Space" color="blue" size="lg">
+  AV
+</AppIcon>
+<AppIcon title="Payer Space" color="blue" size="xl">
+  AV
+</AppIcon>
+</div>
+```
+
+
+
+### Colors of App Icons
+
+Availity makes use for 5 colors to help keep our applications and users more organized. 
+
+* Red - Currently Unused; reserved until further notice. 
+* Orange - Portal Registration Applications
+* Green - Claims and Payment Applications
+* Blue - Transaction Research
+* Black - My Provider Applications, Reporting tools, and Internal Links
+
+<div class="disclaimer">
+  Do not override these colors as they have been chosen to meet brand guidelines, and follow color contrast rules for 508 compliance. 
+</div>
+
+```jsx live=true viewCode=false
+import AppIcon from '@availity/app-icon';
+
+<div className="w-100 d-flex flex-row justify-content-around align-items-center">
+<AppIcon title="Payer Space" color="red" size="lg">
+  AV
+</AppIcon>
+<AppIcon title="Payer Space" color="orange" size="lg">
+  AV
+</AppIcon>
+<AppIcon title="Payer Space" color="green" size="lg">
+  AV
+</AppIcon>
+<AppIcon title="Payer Space" color="blue" size="lg">
+  AV
+</AppIcon>
+<AppIcon title="Payer Space" color="black" size="lg">
+  AV
+</AppIcon>
+</div>
+```
+
+
+
+##  Accessibility
+
+Availity is working towards creating a 508 compliant portal experience. This is an extensive undertaking that takes time. 
+If at any time you find or question a component in this library to be out of 508 compliance please notify a member of the
+User experience team.
+
+<div class="disclaimer">
+  This component meets WCAG 2.0 AA 508 compliance by way of WAVE, AXE, and SortSite accessibility tools.
+</div>
+

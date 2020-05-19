@@ -1,0 +1,152 @@
+---
+title: Card
+---
+
+Cards are used to help group like information and actions. They are used as stand-alone interface elements
+and result cards alike.
+
+## Implementation 
+
+### Installation
+
+This component comes natively with Availity reactstrap. 
+
+### Example
+
+```jsx live=true viewCode=true
+<div className="w-100 d-flex flex-row justify-content-around align-items-center">
+    <div class="card">
+        <img class="card-img-top" src="https://via.placeholder.com/550x150?text=Image" alt="Card image cap" />
+        <div class="card-body">
+            <h5 class="card-title">Card title</h5>
+            <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+            <a href="#" class="btn btn-primary">Go somewhere</a>
+        </div>
+    </div>
+</div>
+```
+
+## Usage and Behavior
+
+### Default Card
+
+Cards are used in many ways; the default card can provide you with a way to group interface elements.
+
+<div class="disclaimer">
+    If you have additional questions speak with a member of the Availity user experience team.
+</div>
+
+```jsx live=true viewCode=false
+<div className="w-100 d-flex flex-row justify-content-around align-items-center">
+    <div class="card">
+        <div class="card-body">
+            This is some text within a card body.
+        </div>
+    </div>
+</div>
+```
+
+### Card with links
+
+Cards can be used as large touch targets themselves or they can contain additional actions related to their
+content. 
+
+<div class="disclaimer">
+ Do not create actions inside of cards that are clickable. Do not put more than 3 actions in a card. 
+ If you have additional questions speak with a member of the Availity user experience team.
+</div>
+
+```jsx live=true viewCode=false
+<div className="w-100 d-flex flex-row justify-content-around align-items-center">
+    <div class="card">
+        <div class="card-body">
+            <h5 class="card-title">Card title</h5>
+            <h6 class="card-subtitle mb-2 text-muted">Card subtitle</h6>
+            <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+            <a href="#" class="card-link">Card link</a>
+            <a href="#" class="card-link">Another link</a>
+        </div>
+    </div>
+</div>
+```
+
+### Card with images
+
+Images can be used to help draw attention to related content. We do not use these cards in the portal today
+but we leave them open as a potential future use case.
+
+<div class="disclaimer">
+ Do not use these today without first consulting a member of the Availity user experience team.
+</div>
+
+```jsx live=true viewCode=false
+<div className="w-100 d-flex flex-row justify-content-around align-items-center">
+    <div class="card">
+        <img class="card-img-top" src="https://via.placeholder.com/500x100?text=Image" alt="Card image cap" />
+        <div class="card-body">
+            <h5 class="card-title">Card title</h5>
+            <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+            <a href="#" class="btn btn-primary">Go somewhere</a>
+        </div>
+    </div>
+</div>
+```
+
+### Card with header
+
+Headers can be helpful by providing a space for a label regarding the information grouped within the card.
+
+<div class="disclaimer">
+ Do not put full sentences in the header. They are expected to be used as short simple labels or action containers.
+ Do not put any action other than close/cancel/delete in a card header. 
+ If you have additional questions speak with a member of the Availity user experience team.
+</div>
+
+```jsx live=true viewCode=false
+<div className="w-100 d-flex flex-row justify-content-around align-items-center">
+    <div class="card">
+        <div class="card-header">
+            Featured
+        </div>
+        <div class="card-body">
+            <h5 class="card-title">Special title treatment</h5>
+            <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
+            <a href="#" class="btn btn-primary">Go somewhere</a>
+        </div>
+    </div>
+</div>
+```
+
+### Card with footer
+
+Footers are rarely used on cards; today they are only used to denote date/time of the information within
+the card itself. If you have an additional use case please speak to a member to the user experience team.
+
+<div class="disclaimer">
+    If you have additional questions speak with a member of the Availity user experience team.
+</div>
+
+```jsx live=true viewCode=false
+<div className="w-100 d-flex flex-row justify-content-around align-items-center">
+    <div class="card">
+        <div class="card-body">
+            <h5 class="card-title">Special title treatment</h5>
+            <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
+            <a href="#" class="btn btn-primary">Go somewhere</a>
+        </div>
+        <div class="card-footer">
+            2 Days ago
+        </div>
+    </div>
+</div>
+```
+
+##  Accessibility
+
+Availity is working towards creating a 508 compliant portal experience. This is an extensive undertaking that takes time. 
+If at any time you find or question a component in this library to be out of 508 compliance please notify a member of the
+User experience team.
+
+<div class="disclaimer">
+  This component meets WCAG 2.0 AA 508 compliance by way of WAVE, AXE, and SortSite accessibility tools.
+</div>

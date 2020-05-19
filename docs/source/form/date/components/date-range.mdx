@@ -1,0 +1,140 @@
+---
+title: <DateRange />
+---
+
+A date range, consisting of 2 fields, a start date and an end date, without a `Label` or `Feedback`
+
+## Example
+
+```jsx live=true viewCode=true
+import { Form } from '@availity/form';
+import { DateRange } from '@availity/date';
+import { object } from 'yup';
+import { dateRange } from '@availity/yup';
+import moment from 'moment';
+
+<div className="w-100 d-flex flex-row justify-content-around align-items-center">
+  <Form
+    initialValues={{
+      dateOfService: undefined,
+    }}
+    onSubmit={values => console.log(values)}
+    validationSchema={object().shape({
+      dateOfService: dateRange(
+          {
+            min: moment()
+              .subtract(7, 'day')
+              .format('MM/DD/YYYY'),
+            max: moment()
+              .add(7, 'day')
+              .format('MM/DD/YYYY'),
+            format: 'MM/DD/YYYY',
+          },
+          `Date must be between ${moment()
+            .subtract(7, 'day')
+            .format('MM/DD/YYYY')} and ${moment()
+            .add(7, 'day')
+            .format('MM/DD/YYYY')}`
+        )
+        .typeError('This field is invalid.')
+        .required('This field is required.'),
+    })}
+  >
+    <DateRange
+      id="dateOfService"
+      name="dateOfService"
+      min={{ value: 7, units: 'day' }}
+      max={{ value: 7, units: 'day' }}
+    />
+    <Button color="primary" type="submit">
+      Submit
+    </Button>
+  </Form>
+</div>
+```
+
+## Props
+
+See [react-dates](https://github.com/airbnb/react-dates#daterangepicker) for additional props
+
+### `name: string`
+
+The name of the field. Will be the key of the selected dates that come through in the values of the `onSubmit` callback.
+
+### `startKey: string`
+
+Key to return start date as on form submit. Should match the yup schema `startKey`.
+
+### `endKey: string`
+
+Key to return end date as on form submit. Should match the yup schema `endKey`.
+
+### `min?: string | LimitType`
+
+Used in conjunction with `max` to derive `isOutsideRange` prop from `react-dates` and selectable year options in datepicker. Dates outside the allowed range will not be clickable in datepicker.
+
+
+```json hideCopy=true
+{
+  // LimitType
+  "value": "12",
+  "units": "day"
+}
+```
+
+### `max?: string | LimitType`
+
+Used in conjunction with `min` to derive `isOutsideRange` prop from `react-dates` and selectable year options in datepicker. Dates outside the allowed range will not be clickable in datepicker.
+
+```json hideCopy=true
+{
+  // LimitType
+  "value": "12",
+  "units": "day"
+}
+```
+
+### `disabled?: boolean`
+
+Whether the date range is disabled.
+
+### `onPickerFocusChange?: ({ focusedInput: string }) => void`
+
+Function to be run when focus on the input changes. `focusedInput` contains the `id` of the focused field.
+
+**Possible Values**:
+
+- `startId` - the id of the start field. `"<name>-start"`
+- `endId` - the id of the end field. `"<name>-end"`
+- `undefined` - the date range was unfocused
+
+### `calendarIcon?: ReactNode`
+
+Override the default icon that appears. Default: `<Icon name="calendar" />
+
+### `format?: string`
+
+How to format date value in `onSubmit` callback. Must be a format recognized by [moment](https://momentjs.com/docs/#/displaying/format/). **Default: `MM/DD/YYYY`**
+
+### `datepicker?: boolean`
+
+Toggle whether the calendar is shown.
+
+### `datePickerProps?: SingleDatePickerShape`
+Props to be spread onto the datepicker component from [react-dates](https://github.com/airbnb/react-dates#singledatepicker).
+
+### `autoSync?: boolean`
+Toggle whether the other date should be automatically synced to the selected date when focus changes. Dates are only auto synced the first time the input is touched and if the date field to auto sync is empty
+
+Props to be spread onto the datepicker component from [react-dates](https://github.com/airbnb/react-dates#singledatepicker).
+
+### `ranges?: boolean | string[] | {[key:string]:MomentDateRange}`
+
+Show preset date ranges when calendar is visible. Accepts `boolean` to display default ranges. If `string[]` will strip subset of ranges off defaults. If `object` will overwrite the default ranges.
+
+```ts hideCopy=true
+interface MomentDateRange {
+  startDate: (moment: Moment) => Moment;
+  endDate: (moment: Moment) => Moment;
+}
+```
