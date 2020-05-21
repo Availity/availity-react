@@ -26,6 +26,7 @@ const ResourceSelect = ({
   defaultToOnlyOption,
   shouldSearch,
   additionalPostGetArgs,
+  shouldFilterByAllOptions,
   ...rest
 }) => {
   const { setFieldValue } = useFormikContext();
@@ -163,8 +164,29 @@ const ResourceSelect = ({
       };
     }
     if (onPageChange) onPageChange(inputValue, page);
+
+    // if the UI is filtering, all the options should be present already
+    if (
+      shouldFilterByAllOptions &&
+      !hasMore &&
+      inputValue.length > 0 &&
+      (inputValue.length >= minCharsToSearch || minCharsToSearch === undefined)
+    ) {
+      return {
+        options: previousOptions.filter(
+          option =>
+            option[rest.labelKey || rest.label]
+              .toLowerCase()
+              .indexOf(inputValue.toLowerCase()) >= 0
+        ),
+        hasMore: false,
+      };
+    }
+
     let fetch;
-    if (graphqlConfig || method === 'POST') {
+    if (shouldFilterByAllOptions && hasMore === undefined && resource.all) {
+      fetch = () => resource.all();
+    } else if (graphqlConfig || method === 'POST') {
       fetch = () =>
         resource.post(data || params, {
           headers: {
@@ -192,15 +214,23 @@ const ResourceSelect = ({
     }
     return fetch()
       .then(async resp => {
-        if (!resp || !resp.data) {
+        if (
+          (!shouldFilterByAllOptions && !resp?.data) ||
+          (shouldFilterByAllOptions && !resp)
+        ) {
           throw new Error(`API returned an invalid response.`);
         }
         const getResult = rest.getResult || resource.getResult;
 
-        const items =
-          typeof getResult === 'function'
-            ? getResult.call(resource, resp.data)
-            : resp.data[getResult];
+        let items = [];
+        if (shouldFilterByAllOptions) {
+          items = resp;
+        } else {
+          items =
+            typeof getResult === 'function'
+              ? getResult.call(resource, resp?.data)
+              : resp?.data[getResult];
+        }
 
         if (hasMore === undefined) {
           if (graphqlConfig) {
@@ -210,6 +240,8 @@ const ResourceSelect = ({
                 `${graphqlConfig.type}Pagination.pageInfo.hasNextPage`,
                 false
               );
+          } else if (shouldFilterByAllOptions) {
+            hasMore = false;
           } else {
             hasMore = ({ totalCount, limit, offset }) =>
               totalCount > offset + limit;
@@ -284,6 +316,7 @@ ResourceSelect.propTypes = {
     postGet: PropTypes.func,
     post: PropTypes.func,
     getResult: PropTypes.oneOfType([PropTypes.string, PropTypes.func]),
+    all: PropTypes.func,
   }).isRequired,
   getResult: PropTypes.oneOfType([PropTypes.string, PropTypes.func]),
   hasMore: PropTypes.oneOfType([PropTypes.bool, PropTypes.func]),
@@ -310,6 +343,7 @@ ResourceSelect.propTypes = {
   defaultToOnlyOption: PropTypes.bool,
   shouldSearch: PropTypes.oneOfType([PropTypes.bool, PropTypes.func]),
   additionalPostGetArgs: PropTypes.object,
+  shouldFilterByAllOptions: PropTypes.bool,
 };
 
 ResourceSelect.defaultProps = {
@@ -318,6 +352,7 @@ ResourceSelect.defaultProps = {
   waitUntilFocused: false,
   defaultToOnlyOption: false,
   shouldSearch: true,
+  shouldFilterByAllOptions: false,
 };
 
 const ucFirst = str => str && str.charAt(0).toUpperCase() + str.slice(1);

@@ -32,7 +32,14 @@ const AvRegionSelect = ({ defaultToCurrentRegion, name, ...props }) => {
     defaultRegion();
   }, [defaultRegion]);
 
-  return <RegionSelect name={name} {...props} />;
+  return (
+    <RegionSelect
+      name={name}
+      shouldFilterByAllOptions
+      debounceTimeout={0}
+      {...props}
+    />
+  );
 };
 
 AvRegionSelect.propTypes = {
