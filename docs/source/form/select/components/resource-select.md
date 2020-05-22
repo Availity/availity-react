@@ -123,9 +123,9 @@ When true, if the `resource` only returns one result the first time it is called
 
 When false or a function that returns false, the network request won't be made. Defaults to `true`.
 
-### `shouldFilterByAllOptions: boolean`
+### `pageAll: boolean`
 
-When true, `resource.all()` is called to fetch all the results, and search strings will filter by the label values instead of making another network call. **This should only be used for resources with a consistently small result set and no api search params**
+When true, `resource.all()` is called to fetch all the results, and search strings will filter by the label values instead of making another network call. DebounceTimeout is set to zero in this case. **This should only be used for resources with a consistently small result set and no api search params**
 
 Example: AvRegionsSelect has a limited number of results and no api search param
 
