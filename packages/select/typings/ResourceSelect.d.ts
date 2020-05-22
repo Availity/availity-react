@@ -44,6 +44,7 @@ export interface ResourceSelectProps<T> extends SelectFieldProps<T> {
         additional: Additional
       ) => boolean);
   additionalPostGetArgs?: object;
+  pageAll?: boolean;
 }
 
 declare class ResourceSelect<T> extends React.Component<
