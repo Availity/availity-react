@@ -3,6 +3,23 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.11.0](https://github.com/Availity/availity-react/compare/@availity/select@0.10.0...@availity/select@0.11.0) (2020-05-22)
+
+
+### Bug Fixes
+
+* **select:** add pageAll to ts ([72e3c24](https://github.com/Availity/availity-react/commit/72e3c240b01fd40f193664759463c41b200e4a67))
+* **select:** rename to pageAll ([83f9b39](https://github.com/Availity/availity-react/commit/83f9b3978c8e87270a1d1d3a495e728837e20e9b))
+
+
+### Features
+
+* **select:** add shouldFilterByAllOptions param for client side filtering on regions ([fc58730](https://github.com/Availity/availity-react/commit/fc587300f4e0f27013d337c85ad4c3211df23d45))
+
+
+
+
+
 # [0.10.0](https://github.com/Availity/availity-react/compare/@availity/select@0.9.28...@availity/select@0.10.0) (2020-05-11)
 
 

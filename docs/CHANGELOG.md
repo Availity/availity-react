@@ -3,6 +3,22 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [4.14.0](https://github.com/Availity/availity-react/compare/@availity/react-docs@4.13.21...@availity/react-docs@4.14.0) (2020-05-22)
+
+
+### Bug Fixes
+
+* **select:** rename to pageAll ([83f9b39](https://github.com/Availity/availity-react/commit/83f9b3978c8e87270a1d1d3a495e728837e20e9b))
+
+
+### Features
+
+* **select:** add shouldFilterByAllOptions param for client side filtering on regions ([fc58730](https://github.com/Availity/availity-react/commit/fc587300f4e0f27013d337c85ad4c3211df23d45))
+
+
+
+
+
 ## [4.13.21](https://github.com/Availity/availity-react/compare/@availity/react-docs@4.13.20...@availity/react-docs@4.13.21) (2020-05-11)
 
 **Note:** Version bump only for package @availity/react-docs
