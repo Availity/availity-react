@@ -32,7 +32,7 @@ const AvRegionSelect = ({ defaultToCurrentRegion, name, ...props }) => {
     defaultRegion();
   }, [defaultRegion]);
 
-  return <RegionSelect name={name} {...props} />;
+  return <RegionSelect name={name} pageAll {...props} />;
 };
 
 AvRegionSelect.propTypes = {

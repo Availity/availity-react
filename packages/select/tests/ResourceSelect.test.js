@@ -833,5 +833,122 @@ describe('Custom Resources', () => {
         );
       });
     });
+
+    it('calls avRegionsApi.all', async () => {
+      avRegionsApi.all.mockResolvedValue([
+        {
+          id: 'FL',
+          value: 'Florida',
+        },
+        {
+          id: 'TX',
+          value: 'Texas',
+        },
+        {
+          id: 'WA',
+          value: 'Washington',
+        },
+      ]);
+      // eslint-disable-next-line react/prop-types
+      const RegionComponent = ({ regionProps }) => {
+        return (
+          <Form
+            initialValues={{
+              'test-form-input': undefined,
+            }}
+            onSubmit={onSubmit}
+          >
+            <AvRegionSelect {...regionProps} />
+            <Button type="submit">Submit</Button>
+          </Form>
+        );
+      };
+
+      const regionProps = {
+        name: 'test-form-input',
+        classNamePrefix: 'test__region',
+        getResult: 'regions',
+        defaultToCurrentRegion: true,
+      };
+
+      render(<RegionComponent regionProps={regionProps} />);
+
+      expect(avRegionsApi.all).toHaveBeenCalledTimes(1);
+    });
+
+    it('filters when a search value is typed', async () => {
+      avRegionsApi.all.mockResolvedValue([
+        {
+          id: 'FL',
+          value: 'Florida',
+        },
+        {
+          id: 'TX',
+          value: 'Texas',
+        },
+        {
+          id: 'WA',
+          value: 'Washington',
+        },
+      ]);
+      // eslint-disable-next-line react/prop-types
+      const RegionComponent = ({ regionProps }) => {
+        return (
+          <Form
+            initialValues={{
+              'test-form-input': undefined,
+            }}
+            onSubmit={onSubmit}
+          >
+            <AvRegionSelect {...regionProps} />
+            <Button type="submit">Submit</Button>
+          </Form>
+        );
+      };
+
+      const regionProps = {
+        name: 'test-form-input',
+        classNamePrefix: 'test__region',
+        getResult: 'regions',
+        defaultToCurrentRegion: true,
+      };
+
+      const { container, getByText, queryByText } = render(
+        <RegionComponent regionProps={regionProps} />
+      );
+
+      expect(avRegionsApi.all).toHaveBeenCalled();
+
+      const regionComp = container.querySelector('.test__region__control');
+      const regionInput = container.querySelector('.test__region__input');
+      fireEvent.keyDown(regionComp, { key: 'ArrowDown', keyCode: 40 });
+      fireEvent.keyDown(regionComp, { key: 'Enter', keyCode: 13 });
+
+      await waitForElement(() => getByText('Washington'));
+
+      fireEvent.keyDown(regionInput, {
+        key: 'w',
+        keyCode: 87,
+      });
+      const regionOptionWA = await waitForElement(() =>
+        getByText('Washington')
+      );
+      fireEvent.click(regionOptionWA);
+      expect(queryByText('Florida')).toBeNull();
+
+      fireEvent.click(getByText('Submit'));
+
+      await wait(() => {
+        expect(onSubmit).toHaveBeenCalledWith(
+          expect.objectContaining({
+            'test-form-input': {
+              id: 'WA',
+              value: 'Washington',
+            },
+          }),
+          expect.anything()
+        );
+      });
+    });
   });
 });
