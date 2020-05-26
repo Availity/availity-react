@@ -571,4 +571,49 @@ describe('Pagination', () => {
       expect(getItems).toHaveBeenCalledTimes(2);
     });
   });
+
+  test('show error when page data fetch fails', async () => {
+    const ErrorComponent = () => {
+      const { error, setError } = usePagination();
+
+      return (
+        <>
+          <div data-testid="pagination-error-container">
+            {error ? error.message : 'no error'}
+          </div>
+          <button
+            type="button"
+            data-testid="clear-error-btn"
+            onClick={() => setError(null)}
+          >
+            Clear error
+          </button>
+        </>
+      );
+    };
+
+    const getItems = jest.fn().mockRejectedValue(new Error('Async error'));
+
+    const { getByTestId } = render(
+      <Pagination items={getItems}>
+        <ErrorComponent />
+      </Pagination>
+    );
+
+    await wait(() => {
+      expect(getItems).toHaveBeenCalledTimes(1);
+    });
+
+    expect(getByTestId('pagination-error-container').textContent).toBe(
+      'Async error'
+    );
+
+    // Clear the error
+    fireEvent.click(getByTestId('clear-error-btn'));
+
+    // Check the error was cleared
+    expect(getByTestId('pagination-error-container').textContent).toBe(
+      'no error'
+    );
+  });
 });

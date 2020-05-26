@@ -22,6 +22,8 @@ export interface PaginationContext<Item> {
   setPage: (page: number) => void;
   currentPage: number;
   loading: boolean;
+  error: any;
+  setError: (error: any) => void;
   itemsPerPage: number;
   ref: React.MutableRefObject<any>;
   setDoFocusRefOnPageChange: (doFocus: boolean) => void;
