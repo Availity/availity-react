@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [4.14.1](https://github.com/Availity/availity-react/compare/@availity/react-docs@4.14.0...@availity/react-docs@4.14.1) (2020-05-27)
+
+
+### Bug Fixes
+
+* **select:** fixes additionalPostGetArgs object always being created, removes extra comma in docs ([4201222](https://github.com/Availity/availity-react/commit/4201222a5759767ec84970874d54b8be472993ee))
+
+
+
+
+
 # [4.14.0](https://github.com/Availity/availity-react/compare/@availity/react-docs@4.13.21...@availity/react-docs@4.14.0) (2020-05-22)
 
 
