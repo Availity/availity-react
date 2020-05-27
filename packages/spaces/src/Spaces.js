@@ -168,6 +168,13 @@ export const useSpaces = (...ids) => {
     let [spc] = spaces.filter(s => s.id === id);
 
     if (!spc) {
+      [spc] = spaces.filter(s => {
+        if (s.payerIDs && s.payerIDs.length > 0) return s.payerIDs[0] === id;
+        return false;
+      });
+    }
+
+    if (!spc) {
       [spc] = spaces.filter(s => (s.payerIDs || []).some(p => p === id));
     }
     return spc;
