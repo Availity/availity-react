@@ -17,7 +17,11 @@ const AvOrganizationSelect = ({
   return (
     <OrganizationSelect
       name={name}
-      additionalPostGetArgs={{ resourceIds, permissionIds }}
+      additionalPostGetArgs={
+        resourceIds || permissionIds
+          ? { resourceIds, permissionIds }
+          : undefined
+      }
       {...props}
     />
   );

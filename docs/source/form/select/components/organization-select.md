@@ -25,6 +25,8 @@ import '@availity/yup';
     name="organizations"
     parameters={{
       regionId: 'FL',
+      // permissionId can still be used here if the additionalPostGetArgs logic is not being used
+      permissionId: ['1111', '2222'],
     }}
     // permission 1111 with resource 1234 OR permission 2222 with resource 4321 is required
     permissionIds={['1111', '2222']}
