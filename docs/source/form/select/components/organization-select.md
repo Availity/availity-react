@@ -27,13 +27,13 @@ import '@availity/yup';
       permissionId: ['1111', '2222'],
       regionId: 'FL',
     }}
-    resourceIds={['1234', '4321']},
+    resourceIds={['1234', '4321']}
   />
 
   <Button color="primary" type="submit">
     Submit
   </Button>
-</Form>;
+</Form>
 ```
 
 ## Props
