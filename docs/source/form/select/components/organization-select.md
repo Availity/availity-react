@@ -24,16 +24,16 @@ import '@availity/yup';
     id="organizations"
     name="organizations"
     parameters={{
-      permissionId: ['1111', '2222'],
       regionId: 'FL',
     }}
+    permissionIds={['1111', '2222']}
     resourceIds={['1234', '4321']}
   />
 
   <Button color="primary" type="submit">
     Submit
   </Button>
-</Form>
+</Form>;
 ```
 
 ## Props
@@ -42,4 +42,4 @@ Extends [ResourceSelect Props](/form/select/components/resource-select/#props).
 
 ### `resourceIds?: string | Array<string>`
 
-The `organizations` API from `sdk-js` accepts a `resourceIds` prop inside of `additionalPostGetArgs` that can be either a string or an array of strings. When `AvOrganizationSelect` has a `resourceIds` prop, and the `parameters` object contains one or many permissions in `permissionId`, then the results of the `postGet` call to `organizations` will be filtered, containing only organizations that have the specified permissions and resources. This is useful when a payer space app is restricted to permission `A` and resource `B`, a user can pass `A` and `B` as `permissionId` and `resourceIds` into `AvOrganizationSelect` and expect the dropdown to only contain authorized organizations for that user in that app, instead of all the organizations that user belongs to.
+The `organizations` API from `sdk-js` accepts `permissionIds` and `resourceIds` props inside of `additionalPostGetArgs` that can be either a string or nested array of strings. When `AvOrganizationSelect` has a `resourceIds` prop, then the results of the `postGet` call to `organizations` will be filtered, containing only organizations that have the specified permissions and resources. If `additionalPostGetArgs.permissionsIds` exists, these values will be used over `parameters.permissionId`. This is useful when a payer space app is restricted to permission `A` and resource `B`, a user can pass `A` and `B` as `permissionIds` and `resourceIds` into `AvOrganizationSelect` and expect the dropdown to only contain authorized organizations for that user in that app, instead of all the organizations that user belongs to.
