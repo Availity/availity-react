@@ -30,13 +30,19 @@ const AvOrganizationSelect = ({
 AvOrganizationSelect.propTypes = {
   resourceIds: PropTypes.oneOfType([
     PropTypes.string,
+    PropTypes.number,
     PropTypes.arrayOf(PropTypes.string),
+    PropTypes.arrayOf(PropTypes.number),
     PropTypes.arrayOf(PropTypes.arrayOf(PropTypes.string)),
+    PropTypes.arrayOf(PropTypes.arrayOf(PropTypes.number)),
   ]),
   permissionIds: PropTypes.oneOfType([
     PropTypes.string,
+    PropTypes.number,
     PropTypes.arrayOf(PropTypes.string),
+    PropTypes.arrayOf(PropTypes.number),
     PropTypes.arrayOf(PropTypes.arrayOf(PropTypes.string)),
+    PropTypes.arrayOf(PropTypes.arrayOf(PropTypes.number)),
   ]),
   name: PropTypes.string.isRequired,
 };
