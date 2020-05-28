@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## 4.0.24 (2020-05-28)
+
+
+### Bug Fixes
+
+* **spaces:** look at first space payer id before searching all ([a969b20](https://github.com/Availity/availity-react/commit/a969b202a6bdab7b0cd6fa8697108b4cfa1b667b))
+
+
+
+
+
 ## 4.0.23 (2020-04-30)
 
 **Note:** Version bump only for package @availity/spaces
