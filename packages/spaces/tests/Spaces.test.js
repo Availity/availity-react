@@ -329,7 +329,11 @@ describe('Spaces', () => {
             totalCount: 3,
             page: 1,
             perPage: 3,
-            spaces: [{ id: '1' }, { id: '2' }, { id: '3' }],
+            spaces: [
+              { id: '1', payerIDs: ['a', 'b', 'c'] },
+              { id: '2', payerIDs: ['b', 'c'] },
+              { id: '3', payerIDs: ['d', 'c'] },
+            ],
           },
         },
       },
@@ -350,10 +354,17 @@ describe('Spaces', () => {
       );
     };
 
-    const { getByTestId } = render(
+    const testById = render(
       <Spaces spaceIds={['1', '2', '3']} clientId="test-client-id">
         <SpacesComponent />
         <SpacesComponent ids={['2', '3']} />
+      </Spaces>
+    );
+
+    const testByPayerId = render(
+      <Spaces payerIds={['a', 'b', 'c']} clientId="test-client-id">
+        <SpacesComponent ids={['b']} />
+        <SpacesComponent ids={['c']} />
       </Spaces>
     );
 
@@ -365,15 +376,25 @@ describe('Spaces', () => {
 
     // Check that all spaces get returned when no ids get passed to useSpaces hook
     const allSpaces = await waitForElement(() =>
-      getByTestId('spaces-for-all-spaces')
+      testById.getByTestId('spaces-for-all-spaces')
     );
     expect(allSpaces.textContent).toBe('Id: 1 Id: 2 Id: 3 ');
 
     // Check that spaces for ids get returned when ids passed to useSpaces hook
     const specificSpaces = await waitForElement(() =>
-      getByTestId('spaces-for-2-3')
+      testById.getByTestId('spaces-for-2-3')
     );
     expect(specificSpaces.textContent).toBe('Id: 2 Id: 3 ');
+
+    // Check that spaces for payer ids get returned when ids passed to useSpaces hook
+    const payerSpecificSpaces = await waitForElement(() =>
+      testByPayerId.getByTestId('spaces-for-b')
+    );
+    expect(payerSpecificSpaces.textContent).toBe('Id: 2 ');
+    const payerSpecificSpaces2 = await waitForElement(() =>
+      testByPayerId.getByTestId('spaces-for-c')
+    );
+    expect(payerSpecificSpaces2.textContent).toBe('Id: 1 ');
   });
 
   it('returns first payer space with when no spaceId passed', async () => {
