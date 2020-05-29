@@ -1,4 +1,3 @@
-/* eslint-disable react-hooks/exhaustive-deps */
 import React, { useState, useContext, useEffect, useRef } from 'react';
 import PropTypes from 'prop-types';
 import isFunction from 'lodash.isfunction';
@@ -29,6 +28,7 @@ const Pagination = ({
   defaultPage,
   debounceTimeout,
   shouldReturnPrevious,
+  onError,
 }) => {
   const ref = React.useRef();
   const [stateCurrentPage, setPage] = useState(defaultPage);
@@ -48,53 +48,64 @@ const Pagination = ({
   // create an abort controller for fetch to be able to cancel it
 
   const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(null);
   const toggleLoading = isLoading =>
     setLoading(l => (isLoading !== undefined ? isLoading : !l));
 
+  useEffect(() => {
+    if (onError && error) onError(error);
+  }, [error, onError]);
+
+  // eslint-disable-next-line unicorn/consistent-function-scoping
   const getPageData = async () => {
-    toggleLoading(true);
-    avLocalStorage.set('current-page', currentPage);
+    try {
+      toggleLoading(true);
+      avLocalStorage.set('current-page', currentPage);
 
-    // If the items is a function then await the response in case of async actions
-    const { items, totalCount } = isFunction(theItems)
-      ? await theItems(currentPage, itemsPerPage)
-      : { items: theItems };
+      // If the items is a function then await the response in case of async actions
+      const { items, totalCount } = isFunction(theItems)
+        ? await theItems(currentPage, itemsPerPage)
+        : { items: theItems };
 
-    // Get index of item at the start of the currentPage
-    const lower = currentPage === 1 ? 1 : (currentPage - 1) * itemsPerPage + 1;
+      // Get index of item at the start of the currentPage
+      const lower =
+        currentPage === 1 ? 1 : (currentPage - 1) * itemsPerPage + 1;
 
-    // Get the index of the item at the cut-off of the itemPerPage Count
-    const upper =
-      items.length - currentPage * itemsPerPage > 0
-        ? itemsPerPage * currentPage
-        : items.length;
+      // Get the index of the item at the cut-off of the itemPerPage Count
+      const upper =
+        items.length - currentPage * itemsPerPage > 0
+          ? itemsPerPage * currentPage
+          : items.length;
 
-    // Slice that data if it was NOT given from a function since we don't know if its returning all items or not for now.
-    // todo - add prop if needed to handle this
-    const page = isFunction(theItems) ? items : items.slice(lower - 1, upper);
+      // Slice that data if it was NOT given from a function since we don't know if its returning all items or not for now.
+      // todo - add prop if needed to handle this
+      const page = isFunction(theItems) ? items : items.slice(lower - 1, upper);
 
-    const pageCount = Math.ceil((totalCount || items.length) / itemsPerPage);
+      const pageCount = Math.ceil((totalCount || items.length) / itemsPerPage);
 
-    if (!isEqual(avLocalStorage.get('current-page'), currentPage)) {
-      return;
+      if (!isEqual(avLocalStorage.get('current-page'), currentPage)) {
+        return;
+      }
+
+      setPageData({
+        total: totalCount || items.length,
+        pageCount,
+        page,
+        allPages: [...pageData.allPages, ...page],
+        lower,
+        upper,
+        hasMore: currentPage < pageCount,
+      });
+
+      if (doFocusRefOnPageChange && ref.current && ref.current.nextSibling) {
+        ref.current.nextSibling.focus();
+        setDoFocusRefOnPageChange(false);
+      }
+    } catch (error_) {
+      setError(error_);
+    } finally {
+      toggleLoading(false);
     }
-
-    setPageData({
-      total: totalCount || items.length,
-      pageCount,
-      page,
-      allPages: [...pageData.allPages, ...page],
-      lower,
-      upper,
-      hasMore: currentPage < pageCount,
-    });
-
-    if (doFocusRefOnPageChange && ref.current && ref.current.nextSibling) {
-      ref.current.nextSibling.focus();
-      setDoFocusRefOnPageChange(false);
-    }
-
-    toggleLoading(false);
   };
 
   useDebounce(
@@ -143,6 +154,7 @@ const Pagination = ({
         getPageData();
       }
     }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [...resetParams]);
 
   // boom roasted
@@ -153,6 +165,8 @@ const Pagination = ({
         setPage: updatePage,
         currentPage,
         loading,
+        error,
+        setError,
         itemsPerPage,
         ref,
         setDoFocusRefOnPageChange,
@@ -174,6 +188,7 @@ Pagination.propTypes = {
   page: PropTypes.number,
   debounceTimeout: PropTypes.number,
   shouldReturnPrevious: PropTypes.bool,
+  onError: PropTypes.func,
 };
 
 Pagination.defaultProps = {
