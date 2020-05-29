@@ -1,4 +1,3 @@
-/* eslint-disable react-hooks/exhaustive-deps */
 import React, { useState, useContext, useEffect, useRef } from 'react';
 import PropTypes from 'prop-types';
 import isFunction from 'lodash.isfunction';
@@ -29,6 +28,7 @@ const Pagination = ({
   defaultPage,
   debounceTimeout,
   shouldReturnPrevious,
+  onError,
 }) => {
   const ref = React.useRef();
   const [stateCurrentPage, setPage] = useState(defaultPage);
@@ -51,6 +51,10 @@ const Pagination = ({
   const [error, setError] = useState(null);
   const toggleLoading = isLoading =>
     setLoading(l => (isLoading !== undefined ? isLoading : !l));
+
+  useEffect(() => {
+    if (onError && error) onError(error);
+  }, [error, onError]);
 
   // eslint-disable-next-line unicorn/consistent-function-scoping
   const getPageData = async () => {
@@ -150,6 +154,7 @@ const Pagination = ({
         getPageData();
       }
     }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [...resetParams]);
 
   // boom roasted
@@ -183,6 +188,7 @@ Pagination.propTypes = {
   page: PropTypes.number,
   debounceTimeout: PropTypes.number,
   shouldReturnPrevious: PropTypes.bool,
+  onError: PropTypes.func,
 };
 
 Pagination.defaultProps = {

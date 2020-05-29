@@ -9,6 +9,7 @@ export interface PaginationProps {
   defaultPage?: number;
   debounceTimeout?: number;
   shouldReturnPrevious?: boolean;
+  onError?: (error: Error) => void;
 }
 
 export interface PaginationContext<Item> {

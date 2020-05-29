@@ -594,8 +594,10 @@ describe('Pagination', () => {
 
     const getItems = jest.fn().mockRejectedValue(new Error('Async error'));
 
+    const onError = jest.fn();
+
     const { getByTestId } = render(
-      <Pagination items={getItems}>
+      <Pagination onError={onError} items={getItems}>
         <ErrorComponent />
       </Pagination>
     );
@@ -615,5 +617,9 @@ describe('Pagination', () => {
     expect(getByTestId('pagination-error-container').textContent).toBe(
       'no error'
     );
+
+    // Check onError cb was called
+    expect(onError).toHaveBeenCalledTimes(1);
+    expect(onError.mock.calls[0][0].message).toBe('Async error');
   });
 });

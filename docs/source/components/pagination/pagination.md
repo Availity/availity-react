@@ -52,3 +52,7 @@ The amount of time (in milliseconds) to delay fetching page data since the last 
 ### `shouldReturnPrevious?: boolean`
 
 If `true`, the previous results are returned. Note: if no results have been fetched thus far, an empty array is returned. Useful for when `items` is a function and new results should not be fetched until certain criteria is met. **Default:** `false`.
+
+### `onError?: (error: Error) => void`
+
+Function to call when an error occurs
