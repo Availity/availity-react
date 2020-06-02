@@ -8,6 +8,7 @@ export interface AnalyticsType {
 export interface FeedbackProps extends DropdownProps {
   appName?: string;
   modal?: boolean;
+  zIndex?: number | string;
   outline?: boolean;
   color?: string;
   analytics?: AnalyticsType;

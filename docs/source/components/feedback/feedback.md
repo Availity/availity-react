@@ -52,6 +52,10 @@ Callback for when the feedback is submitted. It is called with the feedback obje
 
 Whether to open the `FeedbackForm` in a modal
 
+### `zIndex?: number | string`
+
+Allows for overriding the `z-index`value from react-strap `Modal`component.
+
 ### `analytics?: AnalyticsType`
 
 Override the analytics instance that is passed in. **Default** [avLogMessagesApi](https://availity.github.io/sdk-js/api/definitions/logs/)
