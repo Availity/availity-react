@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import { Modal } from 'reactstrap';
 import FeedbackForm from './FeedbackForm';
 
-const FeedbackModal = ({ isOpen, toggle, ...formOptions }) => (
+const FeedbackModal = ({ isOpen, toggle, zIndex, ...formOptions }) => (
   <Modal
     fade
     id="feedbackModal"
@@ -14,6 +14,7 @@ const FeedbackModal = ({ isOpen, toggle, ...formOptions }) => (
     aria-hidden="true"
     isOpen={isOpen}
     toggle={toggle}
+    zIndex={zIndex}
   >
     <FeedbackForm onClose={toggle} {...formOptions} />
   </Modal>
@@ -22,6 +23,7 @@ const FeedbackModal = ({ isOpen, toggle, ...formOptions }) => (
 FeedbackModal.propTypes = {
   isOpen: PropTypes.bool.isRequired,
   toggle: PropTypes.func.isRequired,
+  zIndex: PropTypes.oneOfType([PropTypes.number, PropTypes.string]),
 };
 
 export default FeedbackModal;
