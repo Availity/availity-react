@@ -32,13 +32,7 @@ AvOrganizationSelect.propTypes = {
     PropTypes.arrayOf(
       PropTypes.oneOfType([
         PropTypes.arrayOf(
-          PropTypes.oneOfType([
-            PropTypes.arrayOf(
-              PropTypes.oneOfType([PropTypes.string, PropTypes.number])
-            ),
-            PropTypes.string,
-            PropTypes.number,
-          ])
+          PropTypes.oneOfType([PropTypes.string, PropTypes.number])
         ),
         PropTypes.string,
         PropTypes.number,
