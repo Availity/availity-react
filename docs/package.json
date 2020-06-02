@@ -1,7 +1,7 @@
 {
   "private": true,
   "name": "@availity/react-docs",
-  "version": "4.15.0",
+  "version": "4.16.0",
   "license": "MIT",
   "keywords": [
     "react",
@@ -32,7 +32,7 @@
     "@availity/date": "^1.1.21",
     "@availity/favorites": "^2.1.28",
     "@availity/feature": "^1.2.22",
-    "@availity/feedback": "^5.3.39",
+    "@availity/feedback": "^5.4.0",
     "@availity/form": "^0.5.26",
     "@availity/gatsby-theme-docs": "^4.0.1",
     "@availity/hooks": "^1.6.23",
@@ -41,7 +41,7 @@
     "@availity/list-group": "^1.2.20",
     "@availity/list-group-item": "^1.2.19",
     "@availity/localstorage-core": "^3.0.0",
-    "@availity/page-header": "^10.0.48",
+    "@availity/page-header": "^10.0.49",
     "@availity/pagination": "^2.9.0",
     "@availity/payer-logo": "^4.0.24",
     "@availity/progress": "^1.2.18",

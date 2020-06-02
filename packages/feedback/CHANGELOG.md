@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# 5.4.0 (2020-06-02)
+
+
+### Features
+
+* **feedback:** allow for overriding zindex value ([2274e24](https://github.com/Availity/availity-react/commit/2274e2417b8b818420e7acc33d328043e8a625b8))
+
+
+
+
+
 ## [5.3.39](https://github.com/Availity/availity-react/compare/@availity/feedback@5.3.38...@availity/feedback@5.3.39) (2020-05-27)
 
 **Note:** Version bump only for package @availity/feedback
