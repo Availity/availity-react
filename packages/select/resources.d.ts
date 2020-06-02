@@ -12,9 +12,11 @@ declare class AvRegionSelect<T> extends React.Component<
   public static create<T>(defaults: AvRegionSelectProps<T>): AvRegionSelect<T>;
 }
 
+export type StringOrNumber = string | number;
+
 export interface AvOrganizationSelectProps<T> extends ResourceSelectProps<T> {
-  resourceIds?: [[string | number] | string | number] | string | number;
-  permissionIds?: [[string | number] | string | number] | string | number;
+  resourceIds?: [[StringOrNumber] | StringOrNumber] | StringOrNumber;
+  permissionIds?: [[StringOrNumber] | StringOrNumber] | StringOrNumber;
 }
 
 declare class AvOrganizationSelect<T> extends React.Component<
