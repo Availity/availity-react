@@ -3,6 +3,25 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.12.0](https://github.com/Availity/availity-react/compare/@availity/select@0.11.1...@availity/select@0.12.0) (2020-06-03)
+
+
+### Bug Fixes
+
+* **select:** update orgSelect ts ([391add7](https://github.com/Availity/availity-react/commit/391add716450be30c7410cf81d0ac6696511dbb7))
+
+
+### Features
+
+* **select:** add permissionsIds to organizationSelect postGetArgs ([28ea098](https://github.com/Availity/availity-react/commit/28ea098a6c6985dcad58a0c0330f35ef45025cef))
+* **select:** add ts props to orgSelect ([c2f44ba](https://github.com/Availity/availity-react/commit/c2f44baedabf190aae37804365f53b2c96552278))
+* **select:** allow numbers for org select ([035b735](https://github.com/Availity/availity-react/commit/035b73590a5e5964786fc2f95b328fc146755876))
+* **select:** keep permissionId param in doc organizationSelect, undefined check ([07764f1](https://github.com/Availity/availity-react/commit/07764f1393f8ad0a7c0b64f7817c98318595fa13))
+
+
+
+
+
 ## [0.11.1](https://github.com/Availity/availity-react/compare/@availity/select@0.11.0...@availity/select@0.11.1) (2020-05-27)
 
 

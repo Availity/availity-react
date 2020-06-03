@@ -3,6 +3,18 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [4.17.0](https://github.com/Availity/availity-react/compare/@availity/react-docs@4.16.0...@availity/react-docs@4.17.0) (2020-06-03)
+
+
+### Features
+
+* **select:** add permissionsIds to organizationSelect postGetArgs ([28ea098](https://github.com/Availity/availity-react/commit/28ea098a6c6985dcad58a0c0330f35ef45025cef))
+* **select:** keep permissionId param in doc organizationSelect, undefined check ([07764f1](https://github.com/Availity/availity-react/commit/07764f1393f8ad0a7c0b64f7817c98318595fa13))
+
+
+
+
+
 # [4.16.0](https://github.com/Availity/availity-react/compare/@availity/react-docs@4.15.0...@availity/react-docs@4.16.0) (2020-06-02)
 
 
