@@ -129,6 +129,10 @@ When true, `resource.all()` is called to fetch all the results, and search strin
 
 Example: AvRegionsSelect has a limited number of results and no api search param
 
+### `onError: (error: object) => void`
+
+Function that is called when the api call returned an error. The error is returned in the callback
+
 ### `additionalPostGetArgs?: object`
 
 This object can be used to pass additional arguments to a resource's `postGet` call. These additional arguments are separate from the `parameters` that are supported by an API and may be used for filtering or other methods called inside a resource's `postGet` method. Example for the `organizations` resource that supports `additionalPostGetArgs`:
