@@ -129,7 +129,7 @@ When true, `resource.all()` is called to fetch all the results, and search strin
 
 Example: AvRegionsSelect has a limited number of results and no api search param
 
-### `onError: (error: object) => void`
+### `onError: (error: Error) => void`
 
 Function that is called when the api call returned an error. The error is returned in the callback
 

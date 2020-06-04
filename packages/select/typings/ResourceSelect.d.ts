@@ -45,7 +45,7 @@ export interface ResourceSelectProps<T> extends SelectFieldProps<T> {
       ) => boolean);
   additionalPostGetArgs?: object;
   pageAll?: boolean;
-  onError?: Function;
+  onError?: (error: Error) => void;
 }
 
 declare class ResourceSelect<T> extends React.Component<
