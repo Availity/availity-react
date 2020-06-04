@@ -8,11 +8,20 @@ const OrganizationSelect = ResourceSelect.create({
   labelKey: 'name',
 });
 
-const AvOrganizationSelect = ({ name, resourceIds, ...props }) => {
+const AvOrganizationSelect = ({
+  name,
+  resourceIds,
+  permissionIds,
+  ...props
+}) => {
   return (
     <OrganizationSelect
       name={name}
-      additionalPostGetArgs={resourceIds ? { resourceIds } : undefined}
+      additionalPostGetArgs={
+        resourceIds || permissionIds
+          ? { resourceIds, permissionIds }
+          : undefined
+      }
       {...props}
     />
   );
@@ -20,8 +29,30 @@ const AvOrganizationSelect = ({ name, resourceIds, ...props }) => {
 
 AvOrganizationSelect.propTypes = {
   resourceIds: PropTypes.oneOfType([
+    PropTypes.arrayOf(
+      PropTypes.oneOfType([
+        PropTypes.arrayOf(
+          PropTypes.oneOfType([PropTypes.string, PropTypes.number])
+        ),
+        PropTypes.string,
+        PropTypes.number,
+      ])
+    ),
     PropTypes.string,
-    PropTypes.arrayOf(PropTypes.string),
+    PropTypes.number,
+  ]),
+  permissionIds: PropTypes.oneOfType([
+    PropTypes.arrayOf(
+      PropTypes.oneOfType([
+        PropTypes.arrayOf(
+          PropTypes.oneOfType([PropTypes.string, PropTypes.number])
+        ),
+        PropTypes.string,
+        PropTypes.number,
+      ])
+    ),
+    PropTypes.string,
+    PropTypes.number,
   ]),
   name: PropTypes.string.isRequired,
 };
