@@ -314,60 +314,6 @@ describe('ResourceSelect', () => {
     });
   });
 
-  it('calls onError if api returned an error', async () => {
-    avRegionsApi.postGet = () => Promise.reject();
-
-    const onError = jest.fn();
-
-    renderSelect({
-      resource: avRegionsApi,
-      labelKey: 'value',
-      valueKey: 'id',
-      classNamePrefix: 'test__regions',
-      getResult: 'regions',
-      waitUntilFocused: true,
-      onError: error => onError(error),
-    });
-
-    await wait(() => {
-      expect(onError).toHaveBeenCalledWith(
-        expect.objectContaining({
-          message: expect.anything(),
-        }),
-        expect.anything()
-      );
-    });
-  });
-
-  it('does not call onError if api response is valid', async () => {
-    avRegionsApi.postGet.mockResolvedValue({
-      data: {
-        regions: [
-          {
-            id: 'FL',
-            value: 'Florida',
-          },
-        ],
-      },
-    });
-    const onError = jest.fn();
-
-    renderSelect({
-      resource: avRegionsApi,
-      labelKey: 'value',
-      valueKey: 'id',
-      classNamePrefix: 'test__regions',
-      getResult: 'regions',
-      waitUntilFocused: true,
-      onError: error => onError(error),
-    });
-
-    await wait(() => {
-      expect(avRegionsApi.postGet).toHaveBeenCalled();
-      expect(onError).not.toHaveBeenCalled();
-    });
-  });
-
   describe('defaultToOnlyOption', () => {
     it('defaults to only option', async () => {
       avRegionsApi.postGet.mockResolvedValue({
@@ -763,19 +709,19 @@ const renderGQLResourceSelect = props => {
           graphqlConfig={{
             type: 'region',
             query: `
-    {
-    regionPagination{
-    count
-    pageInfo{
-    hasNextPage
-    }
-    items{
-    id
-    value
-    }
-    }
-    }
-    `,
+  {
+  regionPagination{
+  count
+  pageInfo{
+  hasNextPage
+  }
+  items{
+  id
+  value
+  }
+  }
+  }
+  `,
           }}
           {...props}
         />
