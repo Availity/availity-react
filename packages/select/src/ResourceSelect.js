@@ -278,7 +278,12 @@ const ResourceSelect = ({
           },
         };
       })
-      .catch(() => ({ options: [], hasMore: false }));
+      .catch(error => {
+        if (rest.onError && typeof rest.onError === 'function') {
+          rest.onError(error);
+        }
+        return { options: [], hasMore: false };
+      });
   };
 
   const Tag = rest.label ? SelectField : Select;
@@ -339,6 +344,7 @@ ResourceSelect.propTypes = {
   shouldSearch: PropTypes.oneOfType([PropTypes.bool, PropTypes.func]),
   additionalPostGetArgs: PropTypes.object,
   pageAll: PropTypes.bool,
+  onError: PropTypes.func,
 };
 
 ResourceSelect.defaultProps = {

@@ -950,5 +950,54 @@ describe('Custom Resources', () => {
         );
       });
     });
+
+    it('calls onError when api returns an error', async () => {
+      avRegionsApi.postGet.mockRejectedValue(new Error('test'));
+
+      const onError = jest.fn();
+
+      renderSelect({
+        resource: avRegionsApi,
+        labelKey: 'value',
+        valueKey: 'id',
+        classNamePrefix: 'test__regions',
+        getResult: 'regions',
+        onError,
+      });
+
+      await wait(() => {
+        expect(avRegionsApi.postGet).toHaveBeenCalled();
+        expect(onError).toHaveBeenCalled();
+      });
+    });
+
+    it('does not call onError when api returns successfully', async () => {
+      avRegionsApi.postGet.mockResolvedValue({
+        data: {
+          regions: [
+            {
+              id: 'FL',
+              value: 'Florida',
+            },
+          ],
+        },
+      });
+
+      const onError = jest.fn();
+
+      renderSelect({
+        resource: avRegionsApi,
+        labelKey: 'value',
+        valueKey: 'id',
+        classNamePrefix: 'test__regions',
+        getResult: 'regions',
+        onError,
+      });
+
+      await wait(() => {
+        expect(avRegionsApi.postGet).toHaveBeenCalled();
+        expect(onError).not.toHaveBeenCalled();
+      });
+    });
   });
 });
