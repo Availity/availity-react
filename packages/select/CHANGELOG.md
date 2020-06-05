@@ -3,6 +3,22 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.13.0](https://github.com/Availity/availity-react/compare/@availity/select@0.12.0...@availity/select@0.13.0) (2020-06-05)
+
+
+### Features
+
+* **select:** add onError prop for api errors ([eadc10e](https://github.com/Availity/availity-react/commit/eadc10efb0c9a67071656f2c0b1b8a556cad281e))
+
+
+### Reverts
+
+* Revert "test(select): onError test" ([972a58c](https://github.com/Availity/availity-react/commit/972a58c44aaf76666bee74fe77837668ce4b5ba1))
+
+
+
+
+
 # [0.12.0](https://github.com/Availity/availity-react/compare/@availity/select@0.11.1...@availity/select@0.12.0) (2020-06-03)
 
 
