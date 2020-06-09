@@ -89,7 +89,8 @@ export const useHelp = ({ type, id }) => {
       help.removeHelp({
         id,
       });
-  }, [help, id, type]);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [id, type]);
 
   return help;
 };

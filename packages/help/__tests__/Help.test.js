@@ -1,9 +1,14 @@
 import React from 'react';
-import { render } from '@testing-library/react';
+import { render, cleanup } from '@testing-library/react';
 import avMessageMock from '@availity/message-core';
-import HelpProvider, { Help, constants } from '../Help';
+import HelpProvider, { Help, constants } from '../index';
 
 jest.mock('@availity/message-core');
+
+afterEach(() => {
+  cleanup();
+  jest.clearAllMocks();
+});
 
 describe('Help', () => {
   test('it renders', () => {
