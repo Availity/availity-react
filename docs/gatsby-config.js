@@ -109,6 +109,7 @@ module.exports = {
                 'components/feedback/form',
               ],
             },
+            'components/help',
             'components/link',
             'components/page-header',
             {
