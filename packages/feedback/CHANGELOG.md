@@ -3,6 +3,14 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [5.4.3](https://github.com/Availity/availity-react/compare/@availity/feedback@5.4.2...@availity/feedback@5.4.3) (2020-06-12)
+
+**Note:** Version bump only for package @availity/feedback
+
+
+
+
+
 ## [5.4.2](https://github.com/Availity/availity-react/compare/@availity/feedback@5.4.1...@availity/feedback@5.4.2) (2020-06-05)
 
 **Note:** Version bump only for package @availity/feedback

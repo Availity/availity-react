@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [4.18.0](https://github.com/Availity/availity-react/compare/@availity/react-docs@4.17.1...@availity/react-docs@4.18.0) (2020-06-12)
+
+
+### Features
+
+* **hooks:** add usePermissions, useOrganizations, useProviders hook ([458f5e5](https://github.com/Availity/availity-react/commit/458f5e50038c4fdc5a23919daec918a87cdb08e9))
+
+
+
+
+
 ## [4.17.1](https://github.com/Availity/availity-react/compare/@availity/react-docs@4.17.0...@availity/react-docs@4.17.1) (2020-06-05)
 
 **Note:** Version bump only for package @availity/react-docs

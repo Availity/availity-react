@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# 1.7.0 (2020-06-12)
+
+
+### Features
+
+* **hooks:** add usePermissions, useOrganizations, useProviders hook ([458f5e5](https://github.com/Availity/availity-react/commit/458f5e50038c4fdc5a23919daec918a87cdb08e9))
+
+
+
+
+
 ## 1.6.23 (2020-04-30)
 
 **Note:** Version bump only for package @availity/hooks
