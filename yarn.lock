@@ -24,6 +24,11 @@
     "@availity/resolve-url" "^1.1.19"
     qs "^6.5.2"
 
+"@availity/env-var@^1.11.0":
+  version "1.11.0"
+  resolved "https://registry.yarnpkg.com/@availity/env-var/-/env-var-1.11.0.tgz#f52645db3bc67825b4e63093c012e5289cb7f7c0"
+  integrity sha512-t0J0oIZK0D6OBNco/xB1AR8Vby4r8C3uZ6ofm7vNaWQwoWj4jZkuB0E/IiT3TTDvfm8ooqthCn15KtNY8Z8A6A==
+
 "@availity/gatsby-theme-core@^2.0.4":
   version "2.0.4"
   resolved "https://registry.yarnpkg.com/@availity/gatsby-theme-core/-/gatsby-theme-core-2.0.4.tgz#b399d9815fff6a8df322980a4a25fba6f8f84ff5"
