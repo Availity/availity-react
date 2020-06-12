@@ -20,7 +20,8 @@
     "access": "public"
   },
   "dependencies": {
-    "prop-types": "^15.5.8"
+    "prop-types": "^15.5.8",
+    "react-query": "^1.5.7"
   },
   "devDependencies": {
     "@availity/api-axios": "^5.4.0",

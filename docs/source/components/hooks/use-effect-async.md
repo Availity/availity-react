@@ -25,7 +25,9 @@ const Component = ({ asyncFunction }) => {
 ## Props
 
 ### `effect: React.useEffect`
+
 The effect to call -= just like the function given to `useEffect`.
 
 ### `inputs: Array<any>`
-The watch params for the effect  - just like the second arg in `useEffect`.
+
+The watch params for the effect - just like the second arg in `useEffect`.
