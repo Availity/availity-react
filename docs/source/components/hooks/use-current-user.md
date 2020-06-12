@@ -10,9 +10,9 @@ import React, { useState } from 'react';
 import { useCurrentUser } from '@availity/hooks';
 // ...
 const Component = () => {
-  const [user = {}, loading] = useCurrentUser();
+  const { data: user, status, error } = useCurrentUser();
 
-  return <div>{loading ? 'Loading...' : user.id}</div>;
+  return <div>{status === 'loading' ? 'Loading...' : user.id}</div>;
 };
 // ...
 ```

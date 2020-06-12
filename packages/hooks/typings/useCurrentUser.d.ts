@@ -9,9 +9,13 @@ export type CurrentUser = {
   jobTitle: string;
   userHasSecurityException: boolean;
   userId: string;
-  userValidated: boolean
+  userValidated: boolean;
 };
 
-declare function useCurrentUser(): [CurrentUser, boolean, object];
+declare function useCurrentUser(): {
+  data: CurrentUser;
+  Status: string;
+  Error: object;
+};
 
 export default useCurrentUser;
