@@ -109,6 +109,20 @@ module.exports = {
                 'components/feedback/form',
               ],
             },
+            {
+              resolve: 'components/hooks/index',
+              pages: [
+                'components/hooks/use-current-user',
+                'components/hooks/use-effect-async',
+                'components/hooks/use-mount',
+                'components/hooks/use-region',
+                'components/hooks/use-timeout',
+                'components/hooks/use-toggle',
+                'components/hooks/use-permissions',
+                'components/hooks/use-organizations',
+                'components/hooks/use-providers',
+              ],
+            },
             'components/link',
             'components/page-header',
             {
@@ -124,6 +138,7 @@ module.exports = {
                 'components/spaces/ghost-text',
               ],
             },
+
             'components/training-link',
           ],
           'UI Kit Components': [
@@ -138,17 +153,7 @@ module.exports = {
                 'components/list-group-item/list-group-item-status',
               ],
             },
-            {
-              resolve: 'components/hooks/index',
-              pages: [
-                'components/hooks/use-current-user',
-                'components/hooks/use-effect-async',
-                'components/hooks/use-mount',
-                'components/hooks/use-region',
-                'components/hooks/use-timeout',
-                'components/hooks/use-toggle',
-              ],
-            },
+
             {
               resolve: 'components/pagination/index',
               pages: [
