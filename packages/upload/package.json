@@ -32,7 +32,7 @@
   "dependencies": {
     "@availity/progress": "^1.2.18",
     "prop-types": "^15.5.8",
-    "uuid": "^3.3.3"
+    "uuid": "^8.1.0"
   },
   "devDependencies": {
     "@availity/upload-core": "^3.0.4",
