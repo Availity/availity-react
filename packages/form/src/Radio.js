@@ -11,6 +11,7 @@ const Radio = ({
   id,
   value: checkValue,
   className,
+  groupClassName,
   children,
   ...attributes
 }) => {
@@ -28,6 +29,7 @@ const Radio = ({
     <FormGroup
       for={inputId}
       check
+      className={groupClassName}
       inline={inline}
       disabled={attributes.disabled}
     >
@@ -58,6 +60,7 @@ Radio.propTypes = {
   ]),
   disabled: PropTypes.bool,
   className: PropTypes.string,
+  groupClassName: PropTypes.string,
   children: PropTypes.node,
 };
 
