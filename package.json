@@ -55,6 +55,8 @@
     "updated": "lerna updated",
     "remove-locks": "find . -type f -name 'yarn.lock' -delete",
     "check": "npm-check -u && lerna exec --bail false --concurrency 1 -- npm-check -u",
+    "check:packages": "sh ./scripts/artifactory-check.sh",
+    "check:dependencies": "node scripts/check-missing-deps.js",
     "new": "plop"
   },
   "devDependencies": {
@@ -80,6 +82,7 @@
     "conventional-changelog-cli": "^2.0.11",
     "conventional-recommended-bump": "^6.0.0",
     "core-js": "^3.1.2",
+    "dependency-check": "^4.1.0",
     "eslint-config-availity": "^5.2.1",
     "husky": "^4.2.1",
     "identity-obj-proxy": "^3.0.0",
@@ -139,7 +142,7 @@
     "hooks": {
       "commit-msg": "commitlint -e $HUSKY_GIT_PARAMS",
       "pre-commit": "lint-staged",
-      "pre-push": "yarn test"
+      "pre-push": "yarn test && yarn check:dependencies && yarn check:packages"
     }
   }
 }
