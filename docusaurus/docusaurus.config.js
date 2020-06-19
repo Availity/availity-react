@@ -22,8 +22,8 @@ module.exports = {
           position: 'left',
         },
         {
-          href: 'https://github.com/availity/availity-react',
-          activeBasePath: 'docs',
+          href:
+            'https://availity.github.io/availity-react/storybook/?path=/story/components-analytics--default', // The target URL (string).
           label: 'Storybook',
           position: 'left',
         },
