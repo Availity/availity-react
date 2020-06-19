@@ -1,0 +1,65 @@
+---
+title: Breadcrumbs
+summary: Availity breadcrumbs
+---
+
+## Installation
+
+```bash
+npm install @availity/breadcrumbs --save
+```
+
+## Example
+
+```jsx live=true viewCode=true
+import Breadcrumbs from '@availity/breadcrumbs';
+import { BreadcrumbItem } from 'reactstrap';
+
+<div className="w-100 d-flex flex-column justify-content-around align-items-start">
+  <div>
+    <h3>Basic Example</h3>
+    <Breadcrumbs active="Payer Space" />
+  </div>
+
+  <div>
+    <h3>Example with crumbs prop</h3>
+    <Breadcrumbs
+      active="Payer Space"
+      crumbs={[
+        { name: 'Grand Parent', url: '/grand-parent' },
+        { name: 'Parent', url: '/parent' },
+      ]}
+    />
+  </div>
+
+  <div>
+    <h3>Example with custom breadcrumb children</h3>
+    <Breadcrumbs active="Current Page">
+      <BreadcrumbItem>Custom Bread Crumb</BreadcrumbItem>
+    </Breadcrumbs>
+  </div>
+</div>
+```
+
+## Props
+
+### `active?: string`
+The name of the active page (the page the user is currently on).
+
+### `crumbs?: Array<object>`
+
+The ancestor pages. Objects in array contain `name` (String) and `url` (String) properties.
+
+### `emptyState?: string`
+
+The value to display when the active page or an ancestor does not have a value. **Default:** `"&hellip;"`
+
+### `children?: BreadcrumbItem | Array<BreadcrumbItem>`
+
+The children must be a reactstrap `BreadcrumbItem` components.
+
+### `homeUrl?: string`
+Url for the Home route. **Default:** `public/apps/dashboard`
+
+### `linkTag?: React.ComponentType<React.HTMLAttributes<HTMLAnchorElement>> | string`
+Custom link tag for the links. **Default:** `<a>`

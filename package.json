@@ -25,7 +25,8 @@
   "workspaces": [
     "packages/*",
     "docs",
-    "storybook"
+    "storybook",
+    "docusaurus"
   ],
   "scripts": {
     "format": "prettier --write 'packages/*/*.js' 'packages/*/!(node_modules)/**/*.js' '!(storybook|docs)/**/*.js'",
@@ -40,6 +41,7 @@
     "test:ci": "jest --runInBand --collectCoverage",
     "postinstall": "yarn run bootstrap",
     "start": "yarn workspace @availity/react-storybook start",
+    "start:dino": "yarn workspace @availity/dinosaurdocs start",
     "start:docs": "yarn workspace @availity/react-docs start",
     "build:storybook": "yarn workspace @availity/react-storybook build",
     "build:storybook:netlify": "yarn workspace @availity/react-storybook build:netlify",
