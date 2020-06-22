@@ -12,7 +12,7 @@
 # error out if something fails
 set -e
 
-if grep -R --exclude='*.sh' --exclude-dir='node_modules'  --include='yarn.lock' 'artifactory.availity' ./
+if grep -R --exclude='*.sh' --exclude-dir='node_modules'  --include='yarn.lock' -e 'artifactory.availity' -e 'packages.availity'  ./
 then
   printf "\n"
   printf "   (c).-.(c)    (c).-.(c)    (c).-.(c)    (c).-.(c)    (c).-.(c) \n"
