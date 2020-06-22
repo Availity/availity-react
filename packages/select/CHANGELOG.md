@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.13.3](https://github.com/Availity/availity-react/compare/@availity/select@0.13.2...@availity/select@0.13.3) (2020-06-22)
+
+
+### Bug Fixes
+
+* **select:** allow pageAll to call getResult for addtl filtering ([b1cef12](https://github.com/Availity/availity-react/commit/b1cef12afd37cf24b6885c7fadb990b55e36dda7))
+
+
+
+
+
 ## [0.13.2](https://github.com/Availity/availity-react/compare/@availity/select@0.13.1...@availity/select@0.13.2) (2020-06-18)
 
 **Note:** Version bump only for package @availity/select
