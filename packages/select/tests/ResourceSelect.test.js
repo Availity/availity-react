@@ -5,6 +5,7 @@ import {
   render,
   wait,
   cleanup,
+  waitForDomChange,
 } from '@testing-library/react';
 import { avRegionsApi, avProvidersApi, avCodesApi } from '@availity/api-axios';
 import { Button } from 'reactstrap';
@@ -782,7 +783,7 @@ it('Queries using graphQl', async () => {
 describe('Custom Resources', () => {
   describe('AvRegionSelect', () => {
     it('defaults to the user current region when defaultToCurrentRegion true', async () => {
-      avRegionsApi.getCurrentRegion.mockResolvedValue({
+      avRegionsApi.getCurrentRegion.mockResolvedValueOnce({
         data: {
           regions: [
             {
@@ -811,7 +812,6 @@ describe('Custom Resources', () => {
       const regionProps = {
         name: 'test-form-input',
         classNamePrefix: 'test__region',
-        getResult: 'regions',
         defaultToCurrentRegion: true,
       };
 
@@ -835,7 +835,7 @@ describe('Custom Resources', () => {
     });
 
     it('calls avRegionsApi.all', async () => {
-      avRegionsApi.all.mockResolvedValue([
+      avRegionsApi.all.mockResolvedValueOnce([
         {
           id: 'FL',
           value: 'Florida',
@@ -867,7 +867,6 @@ describe('Custom Resources', () => {
       const regionProps = {
         name: 'test-form-input',
         classNamePrefix: 'test__region',
-        getResult: 'regions',
         defaultToCurrentRegion: true,
       };
 
@@ -877,7 +876,7 @@ describe('Custom Resources', () => {
     });
 
     it('filters when a search value is typed', async () => {
-      avRegionsApi.all.mockResolvedValue([
+      avRegionsApi.all.mockResolvedValueOnce([
         {
           id: 'FL',
           value: 'Florida',
@@ -909,7 +908,6 @@ describe('Custom Resources', () => {
       const regionProps = {
         name: 'test-form-input',
         classNamePrefix: 'test__region',
-        getResult: 'regions',
         defaultToCurrentRegion: true,
       };
 
@@ -924,80 +922,84 @@ describe('Custom Resources', () => {
       fireEvent.keyDown(regionComp, { key: 'ArrowDown', keyCode: 40 });
       fireEvent.keyDown(regionComp, { key: 'Enter', keyCode: 13 });
 
-      await waitForElement(() => getByText('Washington'));
+      await waitForDomChange(() => expect(getByText('Texas')).toBeDefined());
 
       fireEvent.keyDown(regionInput, {
         key: 'w',
         keyCode: 87,
       });
-      const regionOptionWA = await waitForElement(() =>
-        getByText('Washington')
-      );
-      fireEvent.click(regionOptionWA);
-      expect(queryByText('Florida')).toBeNull();
 
-      fireEvent.click(getByText('Submit'));
+      waitForDomChange(async () => {
+        const regionOptionWA = getByText('Washington');
+        fireEvent.click(regionOptionWA);
+        expect(queryByText('Florida')).toBeNull();
 
-      await wait(() => {
-        expect(onSubmit).toHaveBeenCalledWith(
-          expect.objectContaining({
-            'test-form-input': {
-              id: 'WA',
-              value: 'Washington',
-            },
-          }),
-          expect.anything()
-        );
+        fireEvent.click(getByText('Submit'));
+
+        await wait(() => {
+          expect(onSubmit).toHaveBeenCalledWith(
+            expect.objectContaining({
+              'test-form-input': {
+                id: 'WA',
+                value: 'Washington',
+              },
+            }),
+            expect.anything()
+          );
+        });
       });
     });
 
-    it('calls onError when api returns an error', async () => {
-      avRegionsApi.postGet.mockRejectedValue(new Error('test'));
-
-      const onError = jest.fn();
-
-      renderSelect({
-        resource: avRegionsApi,
-        labelKey: 'value',
-        valueKey: 'id',
-        classNamePrefix: 'test__regions',
-        getResult: 'regions',
-        onError,
-      });
-
-      await wait(() => {
-        expect(avRegionsApi.postGet).toHaveBeenCalled();
-        expect(onError).toHaveBeenCalled();
-      });
-    });
-
-    it('does not call onError when api returns successfully', async () => {
-      avRegionsApi.postGet.mockResolvedValue({
-        data: {
-          regions: [
-            {
-              id: 'FL',
-              value: 'Florida',
-            },
-          ],
+    it('uses getResult', async () => {
+      avRegionsApi.all.mockResolvedValueOnce([
+        {
+          id: 'FL',
+          value: 'Florida',
         },
-      });
+        {
+          id: 'TX',
+          value: 'Texas',
+        },
+        {
+          id: 'WA',
+          value: 'Washington',
+        },
+      ]);
+      // eslint-disable-next-line react/prop-types
+      const RegionComponent = ({ regionProps }) => {
+        return (
+          <Form
+            initialValues={{
+              'test-form-input': undefined,
+            }}
+            onSubmit={onSubmit}
+          >
+            <AvRegionSelect {...regionProps} />
+            <Button type="submit">Submit</Button>
+          </Form>
+        );
+      };
 
-      const onError = jest.fn();
+      const regionProps = {
+        name: 'test-form-input',
+        classNamePrefix: 'test__region',
+        getResult: data => data.filter(region => region.id === 'FL'),
+        defaultToCurrentRegion: true,
+      };
 
-      renderSelect({
-        resource: avRegionsApi,
-        labelKey: 'value',
-        valueKey: 'id',
-        classNamePrefix: 'test__regions',
-        getResult: 'regions',
-        onError,
-      });
+      const { container, getAllByText, queryByText } = render(
+        <RegionComponent regionProps={regionProps} />
+      );
 
-      await wait(() => {
-        expect(avRegionsApi.postGet).toHaveBeenCalled();
-        expect(onError).not.toHaveBeenCalled();
-      });
+      expect(avRegionsApi.all).toHaveBeenCalled();
+
+      const regionComp = container.querySelector('.test__region__control');
+      fireEvent.keyDown(regionComp, { key: 'ArrowDown', keyCode: 40 });
+      await waitForElement(() => getAllByText('Florida'));
+
+      expect(getAllByText('Florida')).toBeDefined();
+      expect(queryByText('Texas')).toBeNull();
+      expect(queryByText('Washington')).toBeNull();
     });
   });
 });
