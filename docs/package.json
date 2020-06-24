@@ -1,7 +1,7 @@
 {
   "private": true,
   "name": "@availity/react-docs",
-  "version": "4.18.3",
+  "version": "4.18.4",
   "license": "MIT",
   "keywords": [
     "react",
@@ -45,7 +45,7 @@
     "@availity/pagination": "^2.9.0",
     "@availity/payer-logo": "^4.0.25",
     "@availity/progress": "^1.2.18",
-    "@availity/reactstrap-validation-date": "^3.2.21",
+    "@availity/reactstrap-validation-date": "^3.2.22",
     "@availity/reactstrap-validation-select": "^5.3.27",
     "@availity/select": "^0.13.3",
     "@availity/spaces": "^4.0.25",
