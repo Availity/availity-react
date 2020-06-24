@@ -81,6 +81,7 @@ class AvDate extends Component {
     this.context.FormCtrl.getInput(name)
       .getValidatorProps()
       .onChange(value);
+    const isoFormatted = date.format(isoDateFormat);
 
     this.setState({ value }, () => {
       if (date.isValid()) {
@@ -88,7 +89,7 @@ class AvDate extends Component {
           focused: false,
         });
         this.context.FormCtrl.setTouched(name);
-        if (onChange) onChange(value);
+        if (onChange) onChange(isoFormatted);
       }
     });
   };
