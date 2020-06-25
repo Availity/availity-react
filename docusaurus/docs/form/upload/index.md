@@ -1,5 +1,5 @@
 ---
-title: Upload
+title: Getting Started
 summary: Availity component for uploading files, compatible with @availity/form
 ---
 
@@ -18,5 +18,5 @@ import Upload from '@availity/form-upload';
 
 <Form initialValues={{ myFile: undefined }}>
   <Upload name="myFile" clientId="a" bucketId="b" customerId="c" />
-</Form>
+</Form>;
 ```

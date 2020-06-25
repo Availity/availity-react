@@ -1,8 +1,8 @@
-import { delay } from 'xhr-mock';
-import qs from 'qs';
-import paginationData from '../data/pagination.json';
+const { delay } = require('xhr-mock');
+const qs = require('qs');
+const paginationData = require('../data/pagination.json');
 
-export default mock => {
+module.exports = mock => {
   mock.post(
     /\/api\/v1\/notifications\??.*/,
     delay((req, res) => {

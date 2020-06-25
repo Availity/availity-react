@@ -1,20 +1,21 @@
-import mock, { proxy } from 'xhr-mock';
-import features from './features';
-import regions from './regions';
-import notifications from './notifications';
-import axiUserPermissions from './axi-user-permissions';
-import appeals from './appeals';
-import slotmachine from './slotmachine';
-import me from './me';
-import settings from './settings';
-import disclaimers from './disclaimers';
-import webQL from './webQL';
-import resourceSelect from './resource-select';
-import logMessages from './LogMessages';
-import organizations from './organizations';
-import providers from './providers';
+const { proxy } = require('xhr-mock');
+const mock = require('xhr-mock').default;
+const features = require('./features');
+const regions = require('./regions');
+const notifications = require('./notifications');
+const axiUserPermissions = require('./axi-user-permissions');
+const appeals = require('./appeals');
+const slotmachine = require('./slotmachine');
+const me = require('./me');
+const settings = require('./settings');
+const disclaimers = require('./disclaimers');
+const webQL = require('./webQL');
+const resourceSelect = require('./resource-select');
+const logMessages = require('./LogMessages');
+const organizations = require('./organizations');
+const providers = require('./providers');
 
-export default () => {
+module.exports = () => {
   mock.setup();
 
   features(mock);

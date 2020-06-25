@@ -1,5 +1,5 @@
 ---
-title: Favorites
+title: Getting Started
 summary: Favorite Heart for favoriting items such as resources/applications etc.
 ---
 
@@ -23,5 +23,5 @@ import '@availity/favorites/style.scss';
       </FavoritesProvider>
     )}
   </Favorites>
-</div>
+</div>;
 ```

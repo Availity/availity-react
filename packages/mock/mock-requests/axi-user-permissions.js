@@ -1,6 +1,6 @@
-import axiUserPermissions from '../data/legacy-permissions.json';
+const axiUserPermissions = require('../data/legacy-permissions.json');
 
-export default mock => {
+module.exports = mock => {
   mock.get(/\/api\/internal\/v1\/axi-user-permissions.*/, (req, res) => {
     const { query } = req.url();
     const offset = parseInt(query.offset, 10) || 0;

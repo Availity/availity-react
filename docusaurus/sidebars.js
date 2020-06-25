@@ -23,7 +23,6 @@ module.exports = {
           'form/components/field',
           'form/components/form-group',
           'form/components/form',
-          'form/components/index',
           'form/components/input',
           'form/components/radio-group',
           'form/components/radio',
@@ -110,7 +109,6 @@ module.exports = {
         type: 'category',
         label: 'Hooks',
         items: [
-          'components/hooks/index',
           'components/hooks/use-current-user',
           'components/hooks/use-effect-async',
           'components/hooks/use-mount',

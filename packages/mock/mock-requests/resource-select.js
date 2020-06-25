@@ -1,4 +1,4 @@
-export default mock => {
+module.exports = mock => {
   // this path is ridiculously long
   mock.post(/\/api\/v1\/my-custom-resource/, (req, res) =>
     res.status(200).body(

@@ -1,5 +1,5 @@
 ---
-title: Step Wizard
+title: Getting Started
 summary: Step Wizard - the Availity Way
 ---
 
@@ -12,7 +12,11 @@ npm install @availity/step-wizard --save
 ## Example
 
 ```jsx live=true
-import Wizard, { WizardStep, WizardStepBadge, WizardStepTitle } from '@availity/step-wizard';
+import Wizard, {
+  WizardStep,
+  WizardStepBadge,
+  WizardStepTitle,
+} from '@availity/step-wizard';
 
 <Wizard bar>
   <WizardStep complete href="#step-1">
@@ -32,7 +36,9 @@ import Wizard, { WizardStep, WizardStepBadge, WizardStepTitle } from '@availity/
 
   <WizardStep disabled href="#step-4">
     <WizardStepBadge>4</WizardStepBadge>
-    <WizardStepTitle>Fourth with some really really really long text</WizardStepTitle>
+    <WizardStepTitle>
+      Fourth with some really really really long text
+    </WizardStepTitle>
   </WizardStep>
 
   <WizardStep>
@@ -44,5 +50,5 @@ import Wizard, { WizardStep, WizardStepBadge, WizardStepTitle } from '@availity/
     <WizardStepBadge>6</WizardStepBadge>
     <WizardStepTitle>Sixth without link but clickable</WizardStepTitle>
   </WizardStep>
-</Wizard>
+</Wizard>;
 ```

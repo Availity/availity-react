@@ -1,5 +1,5 @@
 ---
-title: Feedback
+title: Getting Started
 summary: Availity feedback with smiley faces react component.
 ---
 
@@ -22,5 +22,5 @@ import Feedback from '@availity/feedback';
   >
     Provide Feedback
   </Feedback>
-</div>
+</div>;
 ```

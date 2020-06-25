@@ -1,6 +1,6 @@
-import search from './search';
+const search = require('./search');
 
-export default mock => (url, key, fields, data) => {
+module.exports = mock => (url, key, fields, data) => {
   const find = search(fields, data);
 
   mock.post(url, (req, res) => {

@@ -1,6 +1,6 @@
-import { get } from 'lodash.get';
+const { get } = require('lodash.get');
 
-export default (fields, data) => q =>
+module.exports = (fields, data) => q =>
   !q
     ? data
     : data.filter(

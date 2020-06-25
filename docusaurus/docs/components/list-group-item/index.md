@@ -1,5 +1,5 @@
 ---
-title: List Group Item
+title: Getting Started
 summary: List Group Item with some Availity flair
 ---
 
@@ -20,5 +20,5 @@ import ListGroupItem, { ListGroupItemStatus } from '@availity/list-group-item';
     <ListGroupItem>Item</ListGroupItem>
     <ListGroupItemStatus>Item2</ListGroupItemStatus>
   </ListGroup>
-</div>
+</div>;
 ```

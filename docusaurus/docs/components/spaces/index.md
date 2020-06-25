@@ -1,5 +1,5 @@
 ---
-title: Spaces
+title: Getting Started
 summary: Easy to use spaces components
 ---
 

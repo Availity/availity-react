@@ -1,4 +1,9 @@
 module.exports = {
+  plugins: ['sass-plugin', 'babel-plugin', 'mock-plugin'],
+  themes: [
+    '@docusaurus/theme-live-codeblock',
+    '@docusaurus/theme-search-algolia',
+  ],
   title: 'Availity React Docs',
   tagline: 'React components using Availity UIKit and Bootstrap 4',
   url: 'https://your-docusaurus-test-site.com',
@@ -7,6 +12,11 @@ module.exports = {
   organizationName: 'availity', // Usually your GitHub org/user name.
   projectName: 'availity-react', // Usually your repo name.
   themeConfig: {
+    disableDarkMode: true,
+    algolia: {
+      apiKey: 'eec0154a008662c32d440b7de7982cd2',
+      indexName: 'availity',
+    },
     defaultDarkMode: true,
     navbar: {
       title: 'Availity-React',
@@ -34,43 +44,6 @@ module.exports = {
           position: 'right',
         },
       ],
-    },
-    footer: {
-      style: 'dark',
-      links: [
-        {
-          title: 'Docs',
-          items: [
-            {
-              label: 'Introduction',
-              to: 'docs/',
-            },
-            {
-              label: 'Contributing',
-              to: 'docs/contributing/',
-            },
-          ],
-        },
-        {
-          title: 'Community',
-          items: [
-            {
-              label: 'Github Issues',
-              href: 'https://github.com/Availity/availity-react/issues',
-            },
-          ],
-        },
-        {
-          title: 'More',
-          items: [
-            {
-              label: 'GitHub',
-              href: 'https://github.com/availity/availity-react',
-            },
-          ],
-        },
-      ],
-      copyright: `Copyright © ${new Date().getFullYear()} Availity - Built with Docusaurus.`,
     },
   },
   presets: [

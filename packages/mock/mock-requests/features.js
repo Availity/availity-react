@@ -1,6 +1,6 @@
-import features from '../data/features.json';
+const features = require('../data/features.json');
 
-export default mock => {
+module.exports = mock => {
   mock.get('features.json', (req, res) =>
     res.status(200).body(window.JSON.stringify(features))
   );

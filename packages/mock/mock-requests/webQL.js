@@ -1,6 +1,6 @@
-import patients from '../data/patients.json';
+const patients = require('../data/patients.json');
 
-export default mock => {
+module.exports = mock => {
   mock.post('/ms/api/availity/internal/spc/web/graphql', (req, res) => {
     let resp = {};
     const body = JSON.parse(req._body);

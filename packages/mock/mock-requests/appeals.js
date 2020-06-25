@@ -1,8 +1,8 @@
-import verify from '../data/verify.json';
-import appeals from '../data/appeals.json';
-import routing from '../data/routing.json';
+const verify = require('../data/verify.json');
+const appeals = require('../data/appeals.json');
+const routing = require('../data/routing.json');
 
-export default mock => {
+module.exports = mock => {
   // this path is ridiculously long
   mock.post(
     /\/ms\/api\/availity\/internal\/overpayments-appeals\/cable\/appeals\/v1\/verify\/\d*\/\d*/,

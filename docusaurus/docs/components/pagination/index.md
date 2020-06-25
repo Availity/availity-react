@@ -1,5 +1,5 @@
 ---
-title: Pagination
+title: Getting Started
 summary: Pagination, the Availity way.
 ---
 

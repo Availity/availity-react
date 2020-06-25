@@ -1,5 +1,5 @@
 ---
-title: Analytics
+title: Getting Started
 summary: Track page events and user clicks.
 ---
 
