@@ -19,6 +19,7 @@
   "license": "MIT",
   "dependencies": {
     "lodash.get": "^4.4.2",
+    "qs": "^6.9.4",
     "xhr-mock": "^2.3.2"
   }
 }
