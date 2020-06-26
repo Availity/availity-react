@@ -63,7 +63,9 @@ const Select = ({
     if (option.__isNew__) {
       return option.label;
     }
-
+    if (typeof attributes.labelKey === 'function') {
+      return attributes.labelKey(option);
+    }
     return option[get(attributes, 'labelKey', 'label')];
   };
 
@@ -180,6 +182,9 @@ const Select = ({
   };
 
   const handleCreate = value => {
+    if (typeof attributes.labelKey === 'function') {
+      attributes.labelKey = attributes.labelKey(value);
+    }
     const newOpt = createOption(
       value,
       get(attributes, 'labelKey', 'label'),

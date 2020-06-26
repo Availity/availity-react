@@ -4,6 +4,7 @@ import {
   wait,
   fireEvent,
   waitForElement,
+  waitForDomChange,
   cleanup,
 } from '@testing-library/react';
 import { Button } from 'reactstrap';
@@ -433,6 +434,88 @@ describe('Select', () => {
       const payload = onSubmit.mock.calls[0][0];
       expect(payload.singleSelectCreatable.labelKeyTest).toBe('HelloWorld');
       expect(payload.singleSelectCreatable.valueKeyTest).toBe('helloworld');
+    });
+  });
+
+  test('creatable labelKey function', async () => {
+    const opts = [
+      {
+        labelKeyTest: 'Doe, John',
+        valueKeyTest: {
+          name: {
+            first: 'John',
+            last: 'Doe',
+          },
+        },
+      },
+      {
+        labelKeyTest: 'Doe, Jane',
+        valueKeyTest: {
+          name: {
+            first: 'Jane',
+            last: 'Doe',
+          },
+        },
+      },
+    ];
+
+    const onSubmit = jest.fn();
+    const { container, getByText } = render(
+      <Form
+        initialValues={{
+          singleSelectCreatable: undefined,
+        }}
+        onSubmit={onSubmit}
+      >
+        <Select
+          name="singleSelectCreatable"
+          options={opts}
+          valueKey="valueKeyTest"
+          labelKey={option => `${option.labelKeyTest} create`}
+          creatable
+          raw
+        />
+        <Button>Submit</Button>
+      </Form>
+    );
+
+    // Simulate the user selecting "Doe, John"
+    const select = container.querySelector('.av__control');
+    fireEvent.keyDown(select, { key: 'ArrowDown', keyCode: 40 });
+
+    fireEvent.change(container.querySelector('#singleSelectCreatable'), {
+      target: {
+        value: 'HelloWorld',
+      },
+    });
+
+    await selectItem(container, getByText, 'Create "HelloWorld"');
+    waitForDomChange(() => {
+      expect(getByText(`${opts[0].labelKeyTest} test`)).toBeDefined();
+    });
+  });
+
+  test('renders labelKey if its a function', async () => {
+    const { getByText } = render(
+      <Form
+        initialValues={{
+          singleSelect: undefined,
+        }}
+        validationSchema={singleValueSchema('singleSelect')}
+      >
+        <Select
+          name="singleSelect"
+          options={options}
+          labelKey={option => `${option.label} - test`}
+          data-testid="single-select"
+        />
+        <Button type="submit">Submit</Button>
+      </Form>
+    );
+
+    waitForDomChange(() => {
+      expect(getByText('Option 1 - test')).toBeDefined();
+      expect(getByText('Option 2 - test')).toBeDefined();
     });
   });
 });
