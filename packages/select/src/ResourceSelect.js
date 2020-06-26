@@ -171,12 +171,16 @@ const ResourceSelect = ({
     // if the UI is filtering, all the options should be present already
     if (pageAll && !hasMore && inputValue.length > 0) {
       return {
-        options: previousOptions.filter(
-          option =>
+        options: previousOptions.filter(option => {
+          if (typeof rest.labelKey === 'function') {
+            rest.labelKey = rest.labelKey(option);
+          }
+          return (
             option[rest.labelKey || rest.label]
               .toLowerCase()
               .indexOf(inputValue.toLowerCase()) >= 0
-        ),
+          );
+        }),
         hasMore: false,
       };
     }
