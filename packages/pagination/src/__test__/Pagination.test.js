@@ -217,6 +217,7 @@ describe('Pagination', () => {
   });
 
   test('should reset page to 1 if resetParams updates', async () => {
+    jest.useFakeTimers();
     // Create component with button that explicitly sets the current page to 2
     const SomeComponent = React.memo(() => {
       const { loading, currentPage, setPage } = usePagination();
@@ -281,6 +282,8 @@ describe('Pagination', () => {
 
     const { getByTestId } = render(<ComponentWrapper />);
 
+    jest.advanceTimersByTime(10);
+
     let currentPageButton = await waitForElement(() =>
       getByTestId(`current-page`)
     );
@@ -301,6 +304,7 @@ describe('Pagination', () => {
 
     // Check current page is 2 after set page button is called
     fireEvent.click(getByTestId('set-page-btn'));
+    jest.advanceTimersByTime(10);
     currentPageButton = await waitForElement(() => getByTestId(`current-page`));
     paginationCon = await waitForElement(() => getByTestId('pagination-con'));
     expect(currentPageButton.textContent).toBe('2');
@@ -312,6 +316,7 @@ describe('Pagination', () => {
 
     // Check current page is 1 after resetParams changes
     fireEvent.click(getByTestId('toggle-btn'));
+    jest.advanceTimersByTime(10);
     currentPageButton = await waitForElement(() => getByTestId(`current-page`));
     paginationCon = await waitForElement(() => getByTestId('pagination-con'));
     expect(currentPageButton.textContent).toBe('1');
@@ -375,6 +380,7 @@ describe('Pagination', () => {
 
     const { getByTestId } = render(<ComponentWrapper />);
 
+    jest.advanceTimersByTime(10);
     let currentPageButton = await waitForElement(() =>
       getByTestId(`current-page`)
     );
@@ -401,6 +407,7 @@ describe('Pagination', () => {
 
     // Check items function was called again when reset params change, items is a function, and already on page 1
     fireEvent.click(getByTestId('toggle-btn'));
+    jest.advanceTimersByTime(10);
     currentPageButton = await waitForElement(() => getByTestId(`current-page`));
     expect(currentPageButton.textContent).toBe('1');
     expect(items).toHaveBeenCalledTimes(2);
@@ -432,6 +439,7 @@ describe('Pagination', () => {
       </Pagination>
     );
 
+    jest.advanceTimersByTime(10);
     let paginationCon = await waitForElement(() =>
       getByTestId('pagination-con')
     );
@@ -450,6 +458,7 @@ describe('Pagination', () => {
     // Wait for component to render nothing
     waitForDomChange(() => getByTestId('pagination-con'));
 
+    jest.advanceTimersByTime(10);
     // Get the component now with the new page data
     paginationCon = await waitForElement(() => getByTestId('pagination-con'));
 
@@ -485,6 +494,7 @@ describe('Pagination', () => {
 
     const { getByTestId } = render(<Component />);
 
+    jest.advanceTimersByTime(10);
     let paginationCon = await waitForElement(() =>
       getByTestId('pagination-con')
     );
@@ -503,6 +513,7 @@ describe('Pagination', () => {
     // Wait for component to render nothing
     waitForDomChange(() => getByTestId('pagination-con'));
 
+    jest.advanceTimersByTime(10);
     // Get the component now with the new page data
     paginationCon = await waitForElement(() => getByTestId('pagination-con'));
 
@@ -550,6 +561,7 @@ describe('Pagination', () => {
     // Set shouldReturnPrevious to true
     fireEvent.click(getByTestId('toggle-return-previous-btn'));
 
+    jest.advanceTimersByTime(10);
     // Check getItems was called
     await wait(() => {
       expect(getItems).toHaveBeenCalledTimes(1);
@@ -566,7 +578,7 @@ describe('Pagination', () => {
     // Set shouldReturnPrevious to true
     fireEvent.click(getByTestId('toggle-return-previous-btn'));
 
-    // Check getItems has still only been called one time
+    jest.advanceTimersByTime(10);
     await wait(() => {
       expect(getItems).toHaveBeenCalledTimes(2);
     });
@@ -602,6 +614,7 @@ describe('Pagination', () => {
       </Pagination>
     );
 
+    jest.advanceTimersByTime(10);
     await wait(() => {
       expect(getItems).toHaveBeenCalledTimes(1);
     });
