@@ -35,3 +35,12 @@ jobs:
         with:
           file: ./coverage/coverage-final.json
           token: ${{ secrets.CODECOV_TOKEN }}
+      - name: Deploy draft to Netlify
+        uses: South-Paw/action-netlify-deploy@v1.0.4
+        with:
+          github-token: ${{ secrets.BOT_TOKEN }}
+          netlify-auth-token: ${{ secrets.NETLIFY_DEPLOY_KEY }}
+          netlify-site-id: ${{ secrets.NETLIFY_SITE_API_ID }}
+          build-dir: './docusaurus/build'
+          draft: true
+          comment-on-commit: true
