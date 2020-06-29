@@ -9,6 +9,7 @@ import FormGroup from './FormGroup';
 const Checkbox = ({
   label,
   value: checkValue,
+  groupClassName,
   className,
   id,
   inline,
@@ -27,6 +28,7 @@ const Checkbox = ({
   return (
     <FormGroup
       for={inputId}
+      className={groupClassName}
       check
       inline={inline}
       disabled={attributes.disabled}
@@ -59,6 +61,7 @@ Checkbox.propTypes = {
   inline: PropTypes.bool,
   disabled: PropTypes.bool,
   className: PropTypes.string,
+  groupClassName: PropTypes.string,
 };
 
 Checkbox.defaultProps = {

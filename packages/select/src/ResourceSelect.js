@@ -220,6 +220,11 @@ const ResourceSelect = ({
         let items = [];
         if (pageAll) {
           items = resp;
+          if (getResult)
+            items =
+              typeof getResult === 'function'
+                ? getResult.call(resource, items)
+                : items[getResult];
         } else {
           items =
             typeof getResult === 'function'

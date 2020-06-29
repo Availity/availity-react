@@ -3,6 +3,18 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## 3.2.22 (2020-06-24)
+
+
+### Bug Fixes
+
+* **reactstrap-validation-date:** add isodateformat ([64be7b9](https://github.com/Availity/availity-react/commit/64be7b99333727cfbd03f6dda70725527715c43c))
+* **reactstrap-validation-date:** avDate onchange triggered if date valid ([f8a587a](https://github.com/Availity/availity-react/commit/f8a587a1f99edc5fdd14f41d17b3dec3975ac63c))
+
+
+
+
+
 ## 3.2.21 (2020-04-30)
 
 **Note:** Version bump only for package @availity/reactstrap-validation-date

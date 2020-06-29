@@ -3,6 +3,14 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## 4.0.25 (2020-06-12)
+
+**Note:** Version bump only for package @availity/payer-logo
+
+
+
+
+
 ## 4.0.24 (2020-04-30)
 
 **Note:** Version bump only for package @availity/payer-logo
