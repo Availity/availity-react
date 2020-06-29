@@ -4,9 +4,8 @@ import loadable from '@loadable/component';
 import AppIcon from '@availity/app-icon';
 import Authorize from '@availity/authorize';
 import Breadcrumbs from '@availity/breadcrumbs';
-import './index.scss';
+// import './index.scss';
 import '@availity/mock';
-import Date, { DateField, DateRange, DateRangeField } from '@availity/date';
 import {
   Form,
   FormGroup,
@@ -38,22 +37,26 @@ import TrainingLink from '@availity/training-link';
 import { Disclaimer, Agreement } from '@availity/typography';
 import * as yup from 'yup';
 import moment from 'moment';
-import '@availity/favorites/style.scss';
+// import '@availity/favorites/style.scss';
 import { avDate, dateRange } from '@availity/yup';
 import { Phone, validatePhone } from '@availity/phone';
 import MockData from '../MockData';
 
 const scopes = {
+  Wrapper: loadable(() => import('./Wrapper')),
   ...Reactstrap,
   AppIcon,
   Authorize,
   MockData,
   Avatar: loadable(() => import('@availity/avatar')),
   Breadcrumbs,
-  Date,
-  DateField,
-  DateRange,
-  DateRangeField,
+  Date: loadable(() => import('@availity/date')),
+  DateField: loadable(() => import('@availity/date')),
+  DateRangeField: loadable(() => import('@availity/date')),
+  DateRange: loadable(() => import('@availity/date')),
+  // DateField,
+  // DateRange,
+  // DateRangeField,
   Favorites: loadable.lib(() => import('@availity/favorites')),
   FormFeedback,
   Select,

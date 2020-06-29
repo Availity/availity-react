@@ -1,21 +1,44 @@
-module.exports = () => {
+module.exports = function(_, options) {
   return {
     name: 'sass-plugin',
-    configureWebpack() {
+    configureWebpack(_, isServer, utils) {
+      const { getStyleLoaders } = utils;
+      const isProd = process.env.NODE_ENV === 'production';
       return {
         module: {
           rules: [
             {
-              test: /\.(scss|sass)$/,
-              use: ['style-loader', 'css-loader', 'sass-loader'],
-            },
-            {
-              test: /font\.(otf|ttf|woff2?|eot|svg)(\?.+)?$/,
-              use: ['file-loader?name=fonts/[name].[ext]'],
-            },
-            {
-              test: /\.(jpe?g|png|gif|svg)$/i,
-              use: ['url-loader?name=images/[name].[ext]&limit=10000'],
+              test: /\.s[ca]ss$/,
+              oneOf: [
+                {
+                  test: /\.module\.s[ca]ss$/,
+                  use: [
+                    ...getStyleLoaders(isServer, {
+                      modules: {
+                        localIdentName: isProd
+                          ? `[local]_[hash:base64:4]`
+                          : `[local]_[path]`,
+                      },
+                      importLoaders: 1,
+                      sourceMap: !isProd,
+                      onlyLocals: isServer,
+                    }),
+                    {
+                      loader: 'sass-loader',
+                      options: options || {},
+                    },
+                  ],
+                },
+                {
+                  use: [
+                    ...getStyleLoaders(isServer),
+                    {
+                      loader: 'sass-loader',
+                      options: options || {},
+                    },
+                  ],
+                },
+              ],
             },
           ],
         },

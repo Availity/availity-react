@@ -13,6 +13,8 @@ import CodeBlock from '@theme/CodeBlock';
 import Heading from '@theme/Heading';
 import scopes from '../ReactLiveScope';
 import styles from './styles.module.css';
+import loadable from '@loadable/component';
+import Wrapper from '../ReactLiveScope/Wrapper';
 // import MockData from '../MockData';
 
 export default {
@@ -35,7 +37,7 @@ export default {
     return <Link {...props} />;
   },
   pre: props => <div className={styles.mdxCodeBlock} {...props} />,
-  h1: Heading('h1'),
+  h1: Wrapper,
   h2: Heading('h2'),
   h3: Heading('h3'),
   h4: Heading('h4'),

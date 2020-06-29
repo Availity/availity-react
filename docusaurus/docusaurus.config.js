@@ -1,5 +1,5 @@
 module.exports = {
-  plugins: ['sass-plugin', 'babel-plugin', 'mock-plugin'],
+  plugins: ['sass-plugin', 'babel-plugin', 'mock-plugin', 'url-plugin'],
   themes: [
     '@docusaurus/theme-live-codeblock',
     '@docusaurus/theme-search-algolia',
@@ -60,7 +60,7 @@ module.exports = {
         },
 
         theme: {
-          customCss: require.resolve('./src/css/custom.css'),
+          customCss: require.resolve('./src/theme/ReactLiveScope/index.scss'),
         },
       },
     ],

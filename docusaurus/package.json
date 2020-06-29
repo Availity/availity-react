@@ -56,6 +56,7 @@
     "docusaurus-plugin-sass": "^0.1.9",
     "file-loader": "^4.1.0",
     "formik": "^2.0.4",
+    "mock-plugin": "file:plugins/mock-plugin",
     "moment": "^2.24.0",
     "node-sass": "^4.14.1",
     "react": "^16.8.4",
@@ -63,7 +64,7 @@
     "reactstrap": "^8.0.1",
     "sass-loader": "^7.0.1",
     "sass-plugin": "file:plugins/sass-plugin",
-    "mock-plugin": "file:plugins/mock-plugin",
+    "url-plugin": "file:plugins/url-plugin",
     "style-loader": "^1.2.1",
     "url-loader": "^2.2.0",
     "yup": "^0.28.1"
