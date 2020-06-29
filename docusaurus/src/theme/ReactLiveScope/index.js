@@ -43,7 +43,6 @@ import { Phone, validatePhone } from '@availity/phone';
 import MockData from '../MockData';
 
 const scopes = {
-  Wrapper: loadable(() => import('./Wrapper')),
   ...Reactstrap,
   AppIcon,
   Authorize,

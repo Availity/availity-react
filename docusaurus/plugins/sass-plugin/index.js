@@ -1,4 +1,4 @@
-module.exports = function(_, options) {
+module.exports = (_, options) => {
   return {
     name: 'sass-plugin',
     configureWebpack(_, isServer, utils) {
