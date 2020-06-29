@@ -141,21 +141,25 @@ const Pagination = ({
 
   // We don't want to reset the page on the first render
   const firstUpdate = useRef(true);
-  useEffect(() => {
-    if (firstUpdate.current) {
-      firstUpdate.current = false;
-    } else {
-      // Reset allPages
-      setPageData({ ...pageData, allPages: [] });
-      const current = currentPage;
-      updatePage(1);
-      // If the current page was already 1 and theItems is a function, re-fetch the page data
-      if (current === 1 && isFunction(theItems)) {
-        getPageData();
+  useDebounce(
+    () => {
+      if (firstUpdate.current) {
+        firstUpdate.current = false;
+      } else {
+        // Reset allPages
+        setPageData({ ...pageData, allPages: [] });
+        const current = currentPage;
+        updatePage(1);
+        // If the current page was already 1 and theItems is a function, re-fetch the page data
+        if (current === 1 && isFunction(theItems)) {
+          getPageData();
+        }
       }
-    }
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [...resetParams]);
+      // eslint-disable-next-line react-hooks/exhaustive-deps
+    },
+    debounceTimeout,
+    [...resetParams]
+  );
 
   // boom roasted
   return (
