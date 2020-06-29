@@ -28,6 +28,9 @@
     "storybook",
     "docusaurus"
   ],
+  "resolutions": {
+    "eslint-plugin-react": "7.20.0"
+  },
   "scripts": {
     "format": "prettier --write 'packages/*/*.js' 'packages/*/!(node_modules)/**/*.js' '!(storybook|docs)/**/*.js'",
     "lint": "eslint .",
