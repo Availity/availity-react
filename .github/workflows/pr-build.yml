@@ -35,6 +35,7 @@ jobs:
         with:
           file: ./coverage/coverage-final.json
           token: ${{ secrets.CODECOV_TOKEN }}
+      - run: yarn build:dino
       - name: Deploy draft to Netlify
         uses: South-Paw/action-netlify-deploy@v1.0.4
         with:
