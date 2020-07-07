@@ -3,6 +3,18 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [4.19.0](https://github.com/Availity/availity-react/compare/@availity/react-docs@4.18.5...@availity/react-docs@4.19.0) (2020-07-07)
+
+
+### Features
+
+* **help:** added new help for oxygen ([08cc605](https://github.com/Availity/availity-react/commit/08cc605669f7a256eb1b9759ff8c103035ee9acf))
+* **help:** added new provider element for oxygen docs in top nav PF-739 ([b4a536f](https://github.com/Availity/availity-react/commit/b4a536f50fb768e0e900b0a95cf452c86b0c06a4))
+
+
+
+
+
 ## [4.18.5](https://github.com/Availity/availity-react/compare/@availity/react-docs@4.18.4...@availity/react-docs@4.18.5) (2020-06-29)
 
 **Note:** Version bump only for package @availity/react-docs
