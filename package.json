@@ -86,7 +86,7 @@
     "husky": "^4.2.1",
     "identity-obj-proxy": "^3.0.0",
     "jest": "^25.1.0",
-    "jest-environment-jsdom-global": "^1.1.0",
+    "jest-environment-jsdom-global": "^2.0.4",
     "lerna": "^3.6.0",
     "lint-staged": "^10.0.7",
     "node-sass": "^4.12.0",
