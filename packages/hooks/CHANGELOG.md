@@ -3,6 +3,18 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# 1.8.0 (2020-07-08)
+
+
+### Features
+
+* allow for options to be passed in ([1d99a8b](https://github.com/Availity/availity-react/commit/1d99a8b942267c5be69711576ef4f64b8e36bacb))
+* update to use react-query ([d762643](https://github.com/Availity/availity-react/commit/d762643e49da3de41922021833ab5bd209d2cbf9))
+
+
+
+
+
 # 1.7.0 (2020-06-12)
 
 
