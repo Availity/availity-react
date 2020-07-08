@@ -3,6 +3,6 @@ export type CurrentRegionType = {
     value: string;
 };
 
-declare function useCurrentRegion(): [CurrentRegionType,boolean, object];
+declare function useCurrentRegion(): [CurrentRegionType, boolean, object];
 
 export default useCurrentRegion;

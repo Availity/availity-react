@@ -1,3 +1,5 @@
+import { QueryOptions } from 'react-query';
+
 export type CurrentUser = {
   akaname: string;
   createDate: string;
@@ -12,7 +14,9 @@ export type CurrentUser = {
   userValidated: boolean;
 };
 
-declare function useCurrentUser(): {
+declare function useCurrentUser(
+  options: QueryOptions<CurrentUser, object>
+): {
   data: CurrentUser;
   Status: string;
   Error: object;
