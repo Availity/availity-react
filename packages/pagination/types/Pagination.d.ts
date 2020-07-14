@@ -9,10 +9,7 @@ export interface PaginationProps {
   defaultPage?: number;
   debounceTimeout?: number;
   shouldReturnPrevious?: boolean;
-<<<<<<< HEAD
-=======
   onError?: (error: Error) => void;
->>>>>>> 07afecc0c1d28bb24d1a4492fbc28db120c85ebc
 }
 
 export interface PaginationContext<Item> {
@@ -26,11 +23,8 @@ export interface PaginationContext<Item> {
   setPage: (page: number) => void;
   currentPage: number;
   loading: boolean;
-<<<<<<< HEAD
-=======
   error: any;
   setError: (error: any) => void;
->>>>>>> 07afecc0c1d28bb24d1a4492fbc28db120c85ebc
   itemsPerPage: number;
   ref: React.MutableRefObject<any>;
   setDoFocusRefOnPageChange: (doFocus: boolean) => void;

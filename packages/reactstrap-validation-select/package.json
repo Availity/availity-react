@@ -1,10 +1,6 @@
 {
   "name": "@availity/reactstrap-validation-select",
-<<<<<<< HEAD
-  "version": "5.3.22",
-=======
   "version": "5.3.27",
->>>>>>> 07afecc0c1d28bb24d1a4492fbc28db120c85ebc
   "description": "Wrapper for react-select to work with availity-reactstrap-validation",
   "main": "index.js",
   "scripts": {
@@ -47,10 +43,7 @@
     "reactstrap": "^8.0.0 || ^7.0.0 || ^6.0.0"
   },
   "dependencies": {
-<<<<<<< HEAD
-=======
     "@availity/env-var": "^1.11.0",
->>>>>>> 07afecc0c1d28bb24d1a4492fbc28db120c85ebc
     "classnames": "^2.2.5",
     "lodash.get": "^4.4.2",
     "lodash.isequal": "^4.5.0",

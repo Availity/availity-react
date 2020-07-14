@@ -9,15 +9,9 @@ A date range, consisting of 2 fields, a start date and an end date, without a `L
 ```jsx live=true viewCode=true
 import { Form } from '@availity/form';
 import { DateRange } from '@availity/date';
-<<<<<<< HEAD
-import { object } from 'yup';
-import { dateRange } from '@availity/yup';
-import moment from 'moment';
-=======
 import { dateRange } from '@availity/yup';
 import moment from 'moment';
 import * as yup from 'yup';
->>>>>>> 07afecc0c1d28bb24d1a4492fbc28db120c85ebc
 
 <div className="w-100 d-flex flex-row justify-content-around align-items-center">
   <Form
@@ -25,25 +19,6 @@ import * as yup from 'yup';
       dateOfService: undefined,
     }}
     onSubmit={values => console.log(values)}
-<<<<<<< HEAD
-    validationSchema={object().shape({
-      dateOfService: dateRange(
-          {
-            min: moment()
-              .subtract(7, 'day')
-              .format('MM/DD/YYYY'),
-            max: moment()
-              .add(7, 'day')
-              .format('MM/DD/YYYY'),
-            format: 'MM/DD/YYYY',
-          },
-          `Date must be between ${moment()
-            .subtract(7, 'day')
-            .format('MM/DD/YYYY')} and ${moment()
-            .add(7, 'day')
-            .format('MM/DD/YYYY')}`
-        )
-=======
     validationSchema={yup.object().shape({
       dateOfService: dateRange(
         {
@@ -61,7 +36,6 @@ import * as yup from 'yup';
           .add(7, 'day')
           .format('MM/DD/YYYY')}`
       )
->>>>>>> 07afecc0c1d28bb24d1a4492fbc28db120c85ebc
         .typeError('This field is invalid.')
         .required('This field is required.'),
     })}
@@ -99,10 +73,6 @@ Key to return end date as on form submit. Should match the yup schema `endKey`.
 
 Used in conjunction with `max` to derive `isOutsideRange` prop from `react-dates` and selectable year options in datepicker. Dates outside the allowed range will not be clickable in datepicker.
 
-<<<<<<< HEAD
-
-=======
->>>>>>> 07afecc0c1d28bb24d1a4492fbc28db120c85ebc
 ```json hideCopy=true
 {
   // LimitType
@@ -149,19 +119,12 @@ How to format date value in `onSubmit` callback. Must be a format recognized by 
 
 Toggle whether the calendar is shown.
 
-<<<<<<< HEAD
-### `datePickerProps?: SingleDatePickerShape`
-Props to be spread onto the datepicker component from [react-dates](https://github.com/airbnb/react-dates#singledatepicker).
-
-### `autoSync?: boolean`
-=======
 ### `datepickerProps?: SingleDatePickerShape`
 
 Props to be spread onto the datepicker component from [react-dates](https://github.com/airbnb/react-dates#singledatepicker).
 
 ### `autoSync?: boolean`
 
->>>>>>> 07afecc0c1d28bb24d1a4492fbc28db120c85ebc
 Toggle whether the other date should be automatically synced to the selected date when focus changes. Dates are only auto synced the first time the input is touched and if the date field to auto sync is empty
 
 Props to be spread onto the datepicker component from [react-dates](https://github.com/airbnb/react-dates#singledatepicker).
@@ -172,12 +135,7 @@ Show preset date ranges when calendar is visible. Accepts `boolean` to display d
 
 ```ts hideCopy=true
 interface MomentDateRange {
-<<<<<<< HEAD
-  startDate: (moment: Moment) => Moment;
-  endDate: (moment: Moment) => Moment;
-=======
   startDate: Moment;
   endDate: Moment;
->>>>>>> 07afecc0c1d28bb24d1a4492fbc28db120c85ebc
 }
 ```

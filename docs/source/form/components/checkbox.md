@@ -1,5 +1,4 @@
 ---
-<<<<<<< HEAD
 title: Checkbox
 ---
 Input of type checkbox. 
@@ -8,13 +7,6 @@ Input of type checkbox.
 This component comes in natively with Availity reactstrap. 
 
 ### Example
-=======
-title: <Checkbox />
-summary: Inputs of type checkbox. Checkboxes should be wrapped in a CheckboxGroup.
----
-
-## Example
->>>>>>> 07afecc0c1d28bb24d1a4492fbc28db120c85ebc
 
 ```jsx live=true viewCode=true
 <Form
@@ -26,17 +18,10 @@ summary: Inputs of type checkbox. Checkboxes should be wrapped in a CheckboxGrou
     hello: yup.array().required('At least one checkbox is required'),
   })}
 >
-<<<<<<< HEAD
-  <CheckboxGroup name="hello">
-    <Checkbox label="Option One" value="uno" />
-    <Checkbox label="Option Two" value="dos" />
-    <Checkbox label="Option Three" value="tres" />
-=======
   <CheckboxGroup name="hello" label="Checkbox Group">
     <Checkbox label="Check One" value="uno" />
     <Checkbox label="Check Two" value="dos" />
     <Checkbox label="Check Three" value="tres" />
->>>>>>> 07afecc0c1d28bb24d1a4492fbc28db120c85ebc
   </CheckboxGroup>
   <Button type="submit" color="primary">
     Submit
@@ -44,7 +29,6 @@ summary: Inputs of type checkbox. Checkboxes should be wrapped in a CheckboxGrou
 </Form>
 ```
 
-<<<<<<< HEAD
 ### Props
 
 #### `id?: string`
@@ -101,26 +85,3 @@ User experience team.
 <div class="disclaimer">
   This component meets WCAG 2.0 AA 508 compliance by way of WAVE, AXE, and SortSite accessibility tools.
 </div>
-=======
-## Props
-
-### `id?: string`
-
-Should match `<CheckboxGroup />` name for validation.
-
-### `label?: ReactNode`
-
-Label for the checkbox.
-
-### `value?: string`
-
-Value of the checkbox.
-
-### `disabled?: boolean`
-
-Disables the checkbox.
-
-### `inline?: boolean`
-
-Will render the checkbox inline with other checkboxes. **Default:** true.
->>>>>>> 07afecc0c1d28bb24d1a4492fbc28db120c85ebc

@@ -63,10 +63,7 @@ module.exports = {
                 'form/select/components/select-field',
                 'form/select/components/resource-select',
                 'form/select/components/region-select',
-<<<<<<< HEAD
-=======
                 'form/select/components/organization-select',
->>>>>>> 07afecc0c1d28bb24d1a4492fbc28db120c85ebc
               ],
             },
             {
@@ -112,8 +109,6 @@ module.exports = {
                 'components/feedback/form',
               ],
             },
-<<<<<<< HEAD
-=======
             {
               resolve: 'components/hooks/index',
               pages: [
@@ -129,7 +124,6 @@ module.exports = {
               ],
             },
             'components/help',
->>>>>>> 07afecc0c1d28bb24d1a4492fbc28db120c85ebc
             'components/link',
             'components/page-header',
             {
@@ -145,10 +139,6 @@ module.exports = {
                 'components/spaces/ghost-text',
               ],
             },
-<<<<<<< HEAD
-=======
-
->>>>>>> 07afecc0c1d28bb24d1a4492fbc28db120c85ebc
             'components/training-link',
           ],
           'UI Kit Components': [
@@ -163,21 +153,6 @@ module.exports = {
                 'components/list-group-item/list-group-item-status',
               ],
             },
-<<<<<<< HEAD
-            {
-              resolve: 'components/hooks/index',
-              pages: [
-                'components/hooks/use-current-user',
-                'components/hooks/use-effect-async',
-                'components/hooks/use-mount',
-                'components/hooks/use-region',
-                'components/hooks/use-timeout',
-                'components/hooks/use-toggle',
-              ],
-            },
-=======
-
->>>>>>> 07afecc0c1d28bb24d1a4492fbc28db120c85ebc
             {
               resolve: 'components/pagination/index',
               pages: [
@@ -202,7 +177,6 @@ module.exports = {
               pages: [
                 'components/typography/disclaimer',
                 'components/typography/agreement',
-<<<<<<< HEAD
                 'components/typography/font',
               ],
             },
@@ -217,11 +191,6 @@ module.exports = {
           'Icon Library': [
             'icon-library/index',
           ],
-=======
-              ],
-            },
-          ],
->>>>>>> 07afecc0c1d28bb24d1a4492fbc28db120c85ebc
         },
       },
     },

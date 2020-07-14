@@ -3,8 +3,6 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
-<<<<<<< HEAD
-=======
 ## 0.3.26 (2020-07-08)
 
 **Note:** Version bump only for package @availity/avatar
@@ -53,7 +51,6 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 
 
 
->>>>>>> 07afecc0c1d28bb24d1a4492fbc28db120c85ebc
 ## 0.3.20 (2020-04-09)
 
 **Note:** Version bump only for package @availity/avatar

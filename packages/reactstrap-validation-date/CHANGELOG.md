@@ -3,8 +3,6 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
-<<<<<<< HEAD
-=======
 ## 3.2.22 (2020-06-24)
 
 
@@ -49,7 +47,6 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 
 
 
->>>>>>> 07afecc0c1d28bb24d1a4492fbc28db120c85ebc
 ## 3.2.17 (2020-04-09)
 
 **Note:** Version bump only for package @availity/reactstrap-validation-date

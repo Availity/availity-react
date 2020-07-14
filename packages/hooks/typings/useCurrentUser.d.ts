@@ -1,8 +1,5 @@
-<<<<<<< HEAD
-=======
 import { QueryOptions } from 'react-query';
 
->>>>>>> 07afecc0c1d28bb24d1a4492fbc28db120c85ebc
 export type CurrentUser = {
   akaname: string;
   createDate: string;
@@ -14,14 +11,6 @@ export type CurrentUser = {
   jobTitle: string;
   userHasSecurityException: boolean;
   userId: string;
-<<<<<<< HEAD
-  userValidated: boolean
-};
-
-declare function useCurrentUser(): [CurrentUser, boolean, object];
-
-export default useCurrentUser;
-=======
   userValidated: boolean;
 };
 
@@ -34,4 +23,3 @@ declare function useCurrentUser(
 };
 
 export default useCurrentUser;
->>>>>>> 07afecc0c1d28bb24d1a4492fbc28db120c85ebc

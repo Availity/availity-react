@@ -17,10 +17,7 @@ export interface AnalyticsProps {
   autoTrack?: boolean;
   recursive?: boolean;
   attributePrefix?: string;
-<<<<<<< HEAD
-=======
   eventModifiers?: string | string[];
->>>>>>> 07afecc0c1d28bb24d1a4492fbc28db120c85ebc
 }
 
 export interface TrackEventOptions {

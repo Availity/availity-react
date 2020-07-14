@@ -1,9 +1,5 @@
 ---
-<<<<<<< HEAD
 title: RadioGroup
-=======
-title: <RadioGroup />
->>>>>>> 07afecc0c1d28bb24d1a4492fbc28db120c85ebc
 ---
 
 ## Props

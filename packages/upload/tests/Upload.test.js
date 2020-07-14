@@ -1,9 +1,5 @@
 import React from 'react';
-<<<<<<< HEAD
-import { render, fireEvent, cleanup } from '@testing-library/react';
-=======
 import { render, fireEvent, cleanup, wait } from '@testing-library/react';
->>>>>>> 07afecc0c1d28bb24d1a4492fbc28db120c85ebc
 import Upload from '..';
 
 afterEach(cleanup);
@@ -101,8 +97,6 @@ describe('Upload', () => {
 
     expect(inputNode.files.length).toBe(1);
   });
-<<<<<<< HEAD
-=======
 
   test('uses default drop rejection message', async () => {
     const { getByTestId, getByText } = render(
@@ -166,5 +160,4 @@ describe('Upload', () => {
       expect(getByText('my custom error message')).toBeDefined();
     });
   });
->>>>>>> 07afecc0c1d28bb24d1a4492fbc28db120c85ebc
 });

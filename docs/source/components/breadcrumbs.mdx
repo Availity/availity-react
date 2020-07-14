@@ -1,6 +1,5 @@
 ---
 title: Breadcrumbs
-<<<<<<< HEAD
 ---
 Breadcrumbs are used as a navigational component; to help the user understand where they are
 in the application as well as provide a quick way back to the previous view.
@@ -8,22 +7,12 @@ in the application as well as provide a quick way back to the previous view.
 ## Implementation
 
 ### Installation
-=======
-summary: Availity breadcrumbs
----
-
-## Installation
->>>>>>> 07afecc0c1d28bb24d1a4492fbc28db120c85ebc
 
 ```bash
 npm install @availity/breadcrumbs --save
 ```
 
-<<<<<<< HEAD
 ### Example
-=======
-## Example
->>>>>>> 07afecc0c1d28bb24d1a4492fbc28db120c85ebc
 
 ```jsx live=true viewCode=true
 import Breadcrumbs from '@availity/breadcrumbs';
@@ -55,7 +44,6 @@ import { BreadcrumbItem } from 'reactstrap';
 </div>
 ```
 
-<<<<<<< HEAD
 ### Props
 
 #### `active?: string`
@@ -117,27 +105,3 @@ User experience team.
 <div class="disclaimer">
   This component meets WCAG 2.0 AA 508 compliance by way of WAVE, AXE, and SortSite accessibility tools.
 </div>
-=======
-## Props
-
-### `active?: string`
-The name of the active page (the page the user is currently on).
-
-### `crumbs?: Array<object>`
-
-The ancestor pages. Objects in array contain `name` (String) and `url` (String) properties.
-
-### `emptyState?: string`
-
-The value to display when the active page or an ancestor does not have a value. **Default:** `"&hellip;"`
-
-### `children?: BreadcrumbItem | Array<BreadcrumbItem>`
-
-The children must be a reactstrap `BreadcrumbItem` components.
-
-### `homeUrl?: string`
-Url for the Home route. **Default:** `public/apps/dashboard`
-
-### `linkTag?: React.ComponentType<React.HTMLAttributes<HTMLAnchorElement>> | string`
-Custom link tag for the links. **Default:** `<a>`
->>>>>>> 07afecc0c1d28bb24d1a4492fbc28db120c85ebc

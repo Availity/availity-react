@@ -16,11 +16,8 @@ jobs:
       - uses: actions/checkout@v2
         with:
           token: ${{ secrets.BOT_TOKEN }}
-<<<<<<< HEAD
-=======
           fetch-depth: 0
       - run: git fetch --depth=1 origin +refs/tags/*:refs/tags/*
->>>>>>> 07afecc0c1d28bb24d1a4492fbc28db120c85ebc
       - uses: actions/setup-node@v1
         with:
           node-version: 12

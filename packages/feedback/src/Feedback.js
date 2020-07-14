@@ -9,10 +9,7 @@ import FeedbackModal from './FeedbackModal';
 const Feedback = ({
   appName,
   modal,
-<<<<<<< HEAD
-=======
   zIndex,
->>>>>>> 07afecc0c1d28bb24d1a4492fbc28db120c85ebc
   children,
   analytics,
   className,
@@ -40,10 +37,7 @@ const Feedback = ({
           onFeedbackSent={onFeedbackSent}
           prompt={prompt}
           isOpen={isOpen}
-<<<<<<< HEAD
-=======
           zIndex={zIndex}
->>>>>>> 07afecc0c1d28bb24d1a4492fbc28db120c85ebc
           toggle={() => toggle()}
           name={appName}
           analytics={analytics}
@@ -66,10 +60,7 @@ const Feedback = ({
 Feedback.propTypes = {
   appName: PropTypes.string,
   modal: PropTypes.bool,
-<<<<<<< HEAD
-=======
   zIndex: PropTypes.oneOfType([PropTypes.number, PropTypes.string]),
->>>>>>> 07afecc0c1d28bb24d1a4492fbc28db120c85ebc
   children: PropTypes.node,
   className: PropTypes.string,
   outline: PropTypes.bool,

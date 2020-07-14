@@ -119,15 +119,5 @@ describe('isFeatureEnabled', () => {
     test('should return an awaitable promise', () => {
       expect(getFeatureCache().then).toBeInstanceOf(Function);
     });
-<<<<<<< HEAD
-
-    describe('returned awaitable promise', () => {
-      test('should result in a the network request containing data with list of disabled features', async cb => {
-        expect((await getFeatureCache()).data).toBe(features);
-        cb();
-      });
-    });
-=======
->>>>>>> 07afecc0c1d28bb24d1a4492fbc28db120c85ebc
   });
 });

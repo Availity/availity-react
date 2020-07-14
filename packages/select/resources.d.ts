@@ -12,8 +12,6 @@ declare class AvRegionSelect<T> extends React.Component<
   public static create<T>(defaults: AvRegionSelectProps<T>): AvRegionSelect<T>;
 }
 
-<<<<<<< HEAD
-=======
 type StringOrNumber = string | number;
 
 export interface AvOrganizationSelectProps<T> extends ResourceSelectProps<T> {
@@ -29,7 +27,6 @@ declare class AvOrganizationSelect<T> extends React.Component<
   ): AvOrganizationSelect<T>;
 }
 
->>>>>>> 07afecc0c1d28bb24d1a4492fbc28db120c85ebc
 interface PrebuiltSelectProps<T>
   extends Omit<ResourceSelectProps<T>, 'resource'> {}
 
@@ -39,11 +36,7 @@ export default ResourceSelect;
 
 export {
   PrebuiltSelect as AvProviderSelect,
-<<<<<<< HEAD
-  PrebuiltSelect as AvOrganizationSelect,
-=======
   AvOrganizationSelect,
->>>>>>> 07afecc0c1d28bb24d1a4492fbc28db120c85ebc
   PrebuiltSelect as AvPermissionSelect,
   PrebuiltSelect as AvNavigationSelect,
   PrebuiltSelect as AvUserSelect,

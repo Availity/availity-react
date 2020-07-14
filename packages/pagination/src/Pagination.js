@@ -1,7 +1,3 @@
-<<<<<<< HEAD
-/* eslint-disable react-hooks/exhaustive-deps */
-=======
->>>>>>> 07afecc0c1d28bb24d1a4492fbc28db120c85ebc
 import React, { useState, useContext, useEffect, useRef } from 'react';
 import PropTypes from 'prop-types';
 import isFunction from 'lodash.isfunction';
@@ -32,10 +28,7 @@ const Pagination = ({
   defaultPage,
   debounceTimeout,
   shouldReturnPrevious,
-<<<<<<< HEAD
-=======
   onError,
->>>>>>> 07afecc0c1d28bb24d1a4492fbc28db120c85ebc
 }) => {
   const ref = React.useRef();
   const [stateCurrentPage, setPage] = useState(defaultPage);
@@ -55,55 +48,6 @@ const Pagination = ({
   // create an abort controller for fetch to be able to cancel it
 
   const [loading, setLoading] = useState(true);
-<<<<<<< HEAD
-  const toggleLoading = isLoading =>
-    setLoading(l => (isLoading !== undefined ? isLoading : !l));
-
-  const getPageData = async () => {
-    toggleLoading(true);
-    avLocalStorage.set('current-page', currentPage);
-
-    // If the items is a function then await the response in case of async actions
-    const { items, totalCount } = isFunction(theItems)
-      ? await theItems(currentPage, itemsPerPage)
-      : { items: theItems };
-
-    // Get index of item at the start of the currentPage
-    const lower = currentPage === 1 ? 1 : (currentPage - 1) * itemsPerPage + 1;
-
-    // Get the index of the item at the cut-off of the itemPerPage Count
-    const upper =
-      items.length - currentPage * itemsPerPage > 0
-        ? itemsPerPage * currentPage
-        : items.length;
-
-    // Slice that data if it was NOT given from a function since we don't know if its returning all items or not for now.
-    // todo - add prop if needed to handle this
-    const page = isFunction(theItems) ? items : items.slice(lower - 1, upper);
-
-    const pageCount = Math.ceil((totalCount || items.length) / itemsPerPage);
-
-    if (!isEqual(avLocalStorage.get('current-page'), currentPage)) {
-      return;
-    }
-
-    setPageData({
-      total: totalCount || items.length,
-      pageCount,
-      page,
-      allPages: [...pageData.allPages, ...page],
-      lower,
-      upper,
-      hasMore: currentPage < pageCount,
-    });
-
-    if (doFocusRefOnPageChange && ref.current && ref.current.nextSibling) {
-      ref.current.nextSibling.focus();
-      setDoFocusRefOnPageChange(false);
-    }
-
-    toggleLoading(false);
-=======
   const [error, setError] = useState(null);
   const toggleLoading = isLoading =>
     setLoading(l => (isLoading !== undefined ? isLoading : !l));
@@ -162,7 +106,6 @@ const Pagination = ({
     } finally {
       toggleLoading(false);
     }
->>>>>>> 07afecc0c1d28bb24d1a4492fbc28db120c85ebc
   };
 
   useDebounce(
@@ -198,22 +141,6 @@ const Pagination = ({
 
   // We don't want to reset the page on the first render
   const firstUpdate = useRef(true);
-<<<<<<< HEAD
-  useEffect(() => {
-    if (firstUpdate.current) {
-      firstUpdate.current = false;
-    } else {
-      // Reset allPages
-      setPageData({ ...pageData, allPages: [] });
-      const current = currentPage;
-      updatePage(1);
-      // If the current page was already 1 and theItems is a function, re-fetch the page data
-      if (current === 1 && isFunction(theItems)) {
-        getPageData();
-      }
-    }
-  }, [...resetParams]);
-=======
   useDebounce(
     () => {
       if (firstUpdate.current) {
@@ -233,7 +160,6 @@ const Pagination = ({
     debounceTimeout,
     [...resetParams]
   );
->>>>>>> 07afecc0c1d28bb24d1a4492fbc28db120c85ebc
 
   // boom roasted
   return (
@@ -243,11 +169,8 @@ const Pagination = ({
         setPage: updatePage,
         currentPage,
         loading,
-<<<<<<< HEAD
-=======
         error,
         setError,
->>>>>>> 07afecc0c1d28bb24d1a4492fbc28db120c85ebc
         itemsPerPage,
         ref,
         setDoFocusRefOnPageChange,
@@ -269,10 +192,7 @@ Pagination.propTypes = {
   page: PropTypes.number,
   debounceTimeout: PropTypes.number,
   shouldReturnPrevious: PropTypes.bool,
-<<<<<<< HEAD
-=======
   onError: PropTypes.func,
->>>>>>> 07afecc0c1d28bb24d1a4492fbc28db120c85ebc
 };
 
 Pagination.defaultProps = {

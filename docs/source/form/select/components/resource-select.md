@@ -32,11 +32,7 @@ import '@availity/yup';
   <Button color="primary" type="submit">
     Submit
   </Button>
-<<<<<<< HEAD
-</Form>
-=======
 </Form>;
->>>>>>> 07afecc0c1d28bb24d1a4492fbc28db120c85ebc
 ```
 
 ## Props
@@ -125,9 +121,6 @@ When true, if the `resource` only returns one result the first time it is called
 
 ### `shouldSearch?: boolean | (inputValue: string, prevOptions: OptionType, additional: any) => boolean`
 
-<<<<<<< HEAD
-When false or a function that returns false, the network request won't be made. Defaults to `true`. 
-=======
 When false or a function that returns false, the network request won't be made. Defaults to `true`.
 
 ### `pageAll: boolean`
@@ -164,7 +157,6 @@ async postGet(data, config, additionalPostGetArgs) {
     return super.postGet(data, config);
   }
 ```
->>>>>>> 07afecc0c1d28bb24d1a4492fbc28db120c85ebc
 
 ## Pre-made Resource Selects
 

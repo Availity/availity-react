@@ -1,10 +1,6 @@
 {
   "name": "@availity/app-icon",
-<<<<<<< HEAD
-  "version": "1.3.14",
-=======
   "version": "1.3.18",
->>>>>>> 07afecc0c1d28bb24d1a4492fbc28db120c85ebc
   "author": "Evan Sharp <evan.sharp@availity.com>",
   "description": "Availity UI Kit application icon react component.",
   "main": "index.js",

@@ -3,8 +3,6 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
-<<<<<<< HEAD
-=======
 ## 1.3.18 (2020-04-30)
 
 **Note:** Version bump only for package @availity/app-icon
@@ -37,7 +35,6 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 
 
 
->>>>>>> 07afecc0c1d28bb24d1a4492fbc28db120c85ebc
 ## 1.3.14 (2020-04-09)
 
 **Note:** Version bump only for package @availity/app-icon

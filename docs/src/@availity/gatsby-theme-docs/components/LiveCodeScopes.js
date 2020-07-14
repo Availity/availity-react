@@ -17,13 +17,10 @@ import {
   CheckboxGroup,
 } from '@availity/form';
 import Select, { SelectField, ResourceSelect } from '@availity/select';
-<<<<<<< HEAD
-=======
 import {
   AvOrganizationSelect,
   AvRegionSelect,
 } from '@availity/select/resources';
->>>>>>> 07afecc0c1d28bb24d1a4492fbc28db120c85ebc
 import Feedback, { FeedbackForm } from '@availity/feedback';
 import Icon from '@availity/icon';
 import AvLink from '@availity/link';
@@ -40,11 +37,7 @@ import { Disclaimer, Agreement } from '@availity/typography';
 import * as yup from 'yup';
 import moment from 'moment';
 import '@availity/favorites/style.scss';
-<<<<<<< HEAD
-import '@availity/yup';
-=======
 import { avDate, dateRange } from '@availity/yup';
->>>>>>> 07afecc0c1d28bb24d1a4492fbc28db120c85ebc
 import { Phone, validatePhone } from '@availity/phone';
 
 const scopes = {
@@ -62,11 +55,8 @@ const scopes = {
   Select,
   SelectField,
   ResourceSelect,
-<<<<<<< HEAD
-=======
   AvOrganizationSelect,
   AvRegionSelect,
->>>>>>> 07afecc0c1d28bb24d1a4492fbc28db120c85ebc
   PageHeader: loadable(() => import('@availity/page-header')),
   Feedback,
   FeedbackForm,
@@ -93,11 +83,8 @@ const scopes = {
   Input,
   Field,
   yup,
-<<<<<<< HEAD
-=======
   avDate,
   dateRange,
->>>>>>> 07afecc0c1d28bb24d1a4492fbc28db120c85ebc
   moment,
   Phone,
   validatePhone,

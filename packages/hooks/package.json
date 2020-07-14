@@ -1,10 +1,6 @@
 {
   "name": "@availity/hooks",
-<<<<<<< HEAD
-  "version": "1.6.19",
-=======
   "version": "1.8.0",
->>>>>>> 07afecc0c1d28bb24d1a4492fbc28db120c85ebc
   "author": "Kyle Gray <kyle.gray@availity.com>",
   "description": "A group of pre-built hooks that are common in most apps",
   "main": "index.js",
@@ -24,12 +20,8 @@
     "access": "public"
   },
   "dependencies": {
-<<<<<<< HEAD
-    "prop-types": "^15.5.8"
-=======
     "prop-types": "^15.5.8",
     "react-query": "^1.5.7"
->>>>>>> 07afecc0c1d28bb24d1a4492fbc28db120c85ebc
   },
   "devDependencies": {
     "@availity/api-axios": "^5.4.0",

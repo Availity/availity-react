@@ -81,25 +81,15 @@ class AvDate extends Component {
     this.context.FormCtrl.getInput(name)
       .getValidatorProps()
       .onChange(value);
-<<<<<<< HEAD
-
-    this.setState({ value }, () => {
-      if (onChange) onChange(value);
-
-=======
     const isoFormatted = date.format(isoDateFormat);
 
     this.setState({ value }, () => {
->>>>>>> 07afecc0c1d28bb24d1a4492fbc28db120c85ebc
       if (date.isValid()) {
         this.setState({
           focused: false,
         });
         this.context.FormCtrl.setTouched(name);
-<<<<<<< HEAD
-=======
         if (onChange) onChange(isoFormatted);
->>>>>>> 07afecc0c1d28bb24d1a4492fbc28db120c85ebc
       }
     });
   };

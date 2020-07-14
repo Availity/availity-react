@@ -329,15 +329,11 @@ describe('Spaces', () => {
             totalCount: 3,
             page: 1,
             perPage: 3,
-<<<<<<< HEAD
-            spaces: [{ id: '1' }, { id: '2' }, { id: '3' }],
-=======
             spaces: [
               { id: '1', payerIDs: ['a', 'b', 'c'] },
               { id: '2', payerIDs: ['b', 'c'] },
               { id: '3', payerIDs: ['d', 'c'] },
             ],
->>>>>>> 07afecc0c1d28bb24d1a4492fbc28db120c85ebc
           },
         },
       },
@@ -358,19 +354,13 @@ describe('Spaces', () => {
       );
     };
 
-<<<<<<< HEAD
-    const { getByTestId } = render(
-=======
     const testById = render(
->>>>>>> 07afecc0c1d28bb24d1a4492fbc28db120c85ebc
       <Spaces spaceIds={['1', '2', '3']} clientId="test-client-id">
         <SpacesComponent />
         <SpacesComponent ids={['2', '3']} />
       </Spaces>
     );
 
-<<<<<<< HEAD
-=======
     const testByPayerId = render(
       <Spaces payerIds={['a', 'b', 'c']} clientId="test-client-id">
         <SpacesComponent ids={['b']} />
@@ -378,7 +368,6 @@ describe('Spaces', () => {
       </Spaces>
     );
 
->>>>>>> 07afecc0c1d28bb24d1a4492fbc28db120c85ebc
     expect(avSlotMachineApi.create.mock.calls[0][0].variables.ids).toEqual([
       '1',
       '2',
@@ -387,21 +376,12 @@ describe('Spaces', () => {
 
     // Check that all spaces get returned when no ids get passed to useSpaces hook
     const allSpaces = await waitForElement(() =>
-<<<<<<< HEAD
-      getByTestId('spaces-for-all-spaces')
-=======
       testById.getByTestId('spaces-for-all-spaces')
->>>>>>> 07afecc0c1d28bb24d1a4492fbc28db120c85ebc
     );
     expect(allSpaces.textContent).toBe('Id: 1 Id: 2 Id: 3 ');
 
     // Check that spaces for ids get returned when ids passed to useSpaces hook
     const specificSpaces = await waitForElement(() =>
-<<<<<<< HEAD
-      getByTestId('spaces-for-2-3')
-    );
-    expect(specificSpaces.textContent).toBe('Id: 2 Id: 3 ');
-=======
       testById.getByTestId('spaces-for-2-3')
     );
     expect(specificSpaces.textContent).toBe('Id: 2 Id: 3 ');
@@ -415,7 +395,6 @@ describe('Spaces', () => {
       testByPayerId.getByTestId('spaces-for-c')
     );
     expect(payerSpecificSpaces2.textContent).toBe('Id: 1 ');
->>>>>>> 07afecc0c1d28bb24d1a4492fbc28db120c85ebc
   });
 
   it('returns first payer space with when no spaceId passed', async () => {

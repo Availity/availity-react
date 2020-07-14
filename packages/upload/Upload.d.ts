@@ -1,8 +1,5 @@
-<<<<<<< HEAD
-=======
 import { FileError } from 'react-dropzone/typings/react-dropzone';
 
->>>>>>> 07afecc0c1d28bb24d1a4492fbc28db120c85ebc
 export interface UploadProps {
     btnText?: React.ReactType;
     bucketId: string;
@@ -18,10 +15,7 @@ export interface UploadProps {
     children?: Function;
     name?: string;
     showFileDrop?: boolean;
-<<<<<<< HEAD
-=======
     getDropRejectionMessage?: ((errors: FileError[], file: File) => string);
->>>>>>> 07afecc0c1d28bb24d1a4492fbc28db120c85ebc
 }
 
 declare const Upload: React.ComponentType<UploadProps>;

@@ -5,10 +5,7 @@ import {
   render,
   wait,
   cleanup,
-<<<<<<< HEAD
-=======
   waitForDomChange,
->>>>>>> 07afecc0c1d28bb24d1a4492fbc28db120c85ebc
 } from '@testing-library/react';
 import { avRegionsApi, avProvidersApi, avCodesApi } from '@availity/api-axios';
 import { Button } from 'reactstrap';
@@ -786,11 +783,7 @@ it('Queries using graphQl', async () => {
 describe('Custom Resources', () => {
   describe('AvRegionSelect', () => {
     it('defaults to the user current region when defaultToCurrentRegion true', async () => {
-<<<<<<< HEAD
-      avRegionsApi.getCurrentRegion.mockResolvedValue({
-=======
       avRegionsApi.getCurrentRegion.mockResolvedValueOnce({
->>>>>>> 07afecc0c1d28bb24d1a4492fbc28db120c85ebc
         data: {
           regions: [
             {
@@ -819,10 +812,6 @@ describe('Custom Resources', () => {
       const regionProps = {
         name: 'test-form-input',
         classNamePrefix: 'test__region',
-<<<<<<< HEAD
-        getResult: 'regions',
-=======
->>>>>>> 07afecc0c1d28bb24d1a4492fbc28db120c85ebc
         defaultToCurrentRegion: true,
       };
 
@@ -844,8 +833,6 @@ describe('Custom Resources', () => {
         );
       });
     });
-<<<<<<< HEAD
-=======
 
     it('calls avRegionsApi.all', async () => {
       avRegionsApi.all.mockResolvedValueOnce([
@@ -1014,6 +1001,5 @@ describe('Custom Resources', () => {
       expect(queryByText('Texas')).toBeNull();
       expect(queryByText('Washington')).toBeNull();
     });
->>>>>>> 07afecc0c1d28bb24d1a4492fbc28db120c85ebc
   });
 });

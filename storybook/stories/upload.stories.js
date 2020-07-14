@@ -89,10 +89,7 @@ storiesOf('Components|Upload', module)
         bucketId="b"
         customerId="c"
         multiple={boolean('Multiple File Select', Upload.defaultProps.multiple)}
-<<<<<<< HEAD
-=======
         disabled={boolean('Disabled', Upload.defaultProps.disabled)}
->>>>>>> 07afecc0c1d28bb24d1a4492fbc28db120c85ebc
         max={number('Max number of files', 0)}
         allowedFileTypes={array(
           'Allowed File Types',
@@ -106,23 +103,14 @@ storiesOf('Components|Upload', module)
   .add('picker button', () => (
     <div className="py-3">
       <p>
-<<<<<<< HEAD
-        This component does not do much out-of-the-box, it mostly just button
-        that triggers a file input which ensures the value gets reset after a
-        file is chosen so that the user can chose the same file again.
-=======
         This component does not do much out-of-the-box, it is mostly just a
         button that triggers a file input which ensures the value gets reset
         after a file is chosen so that the user can choose the same file again.
->>>>>>> 07afecc0c1d28bb24d1a4492fbc28db120c85ebc
       </p>
       <FilePickerBtn
         allowedFileTypes={array('Allowed File Types', [], ',')}
         maxSize={number('Max File Size', 0, { min: 0 }) || undefined}
-<<<<<<< HEAD
-=======
         disabled={boolean('Disabled', Upload.defaultProps.disabled)}
->>>>>>> 07afecc0c1d28bb24d1a4492fbc28db120c85ebc
       />
     </div>
   ))
@@ -149,10 +137,7 @@ storiesOf('Components|Upload', module)
         bucketId="b"
         customerId="c"
         multiple={boolean('Multiple File Select', Upload.defaultProps.multiple)}
-<<<<<<< HEAD
-=======
         disabled={boolean('Disabled', Upload.defaultProps.disabled)}
->>>>>>> 07afecc0c1d28bb24d1a4492fbc28db120c85ebc
         max={number('Max number of files', 0)}
         allowedFileTypes={array(
           'Allowed File Types',
@@ -178,10 +163,7 @@ storiesOf('Components|Upload', module)
         bucketId="b"
         customerId="c"
         allowedFileNameCharacters={text('REGEX', '-_a-zA-z0-9')}
-<<<<<<< HEAD
-=======
         disabled={boolean('Disabled', Upload.defaultProps.disabled)}
->>>>>>> 07afecc0c1d28bb24d1a4492fbc28db120c85ebc
       />
     </div>
   ))

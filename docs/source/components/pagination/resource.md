@@ -1,9 +1,5 @@
 ---
-<<<<<<< HEAD
 title: AvResourcePagination
-=======
-title: <AvResourcePagination />
->>>>>>> 07afecc0c1d28bb24d1a4492fbc28db120c85ebc
 ---
 
 This is a wrapper around the `Pagination` Component that can be used for paginating `@availity/api-axios` resources.

@@ -1,10 +1,6 @@
 {
   "name": "@availity/pagination",
-<<<<<<< HEAD
-  "version": "2.8.14",
-=======
   "version": "2.9.1",
->>>>>>> 07afecc0c1d28bb24d1a4492fbc28db120c85ebc
   "description": "",
   "main": "index.js",
   "types": "index.d.ts",

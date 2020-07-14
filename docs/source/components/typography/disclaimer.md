@@ -1,7 +1,6 @@
 ---
 title: Disclaimer
 ---
-<<<<<<< HEAD
 The disclaimer component is used to draw attention to a particular block of text.
 
 ## Implementation
@@ -11,10 +10,6 @@ The disclaimer component is used to draw attention to a particular block of text
 This component comes natively with Availity reactstrap. 
 
 ### Example
-=======
-
-## Example
->>>>>>> 07afecc0c1d28bb24d1a4492fbc28db120c85ebc
 
 ```jsx live=true
 import { Disclaimer } from '@availity/typography';
@@ -35,7 +30,6 @@ import { Disclaimer } from '@availity/typography';
 | Prop Name    | Types   | Required | Default | Description                                                          |
 | ------------ | ------- | -------- | ------- | -------------------------------------------------------------------- |
 | **`styled`** | Boolean | false    | `true`  | When true, a vertical bar is displayed to the left of the disclaimer |
-<<<<<<< HEAD
 
 
 ## Usage and Behavior
@@ -69,5 +63,3 @@ User experience team.
 </div>
 
 
-=======
->>>>>>> 07afecc0c1d28bb24d1a4492fbc28db120c85ebc
