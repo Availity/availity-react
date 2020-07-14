@@ -25,6 +25,11 @@ const ResourceSelect = ({
   waitUntilFocused,
   defaultToOnlyOption,
   shouldSearch,
+<<<<<<< HEAD
+=======
+  additionalPostGetArgs,
+  pageAll,
+>>>>>>> 07afecc0c1d28bb24d1a4492fbc28db120c85ebc
   ...rest
 }) => {
   const { setFieldValue } = useFormikContext();
@@ -38,9 +43,19 @@ const ResourceSelect = ({
     const params = {
       customerId: rest.customerId,
       ...rest.parameters,
+<<<<<<< HEAD
     };
     _cacheUniq = watchParams.map(watchParam => params[watchParam]).join(',');
   }
+=======
+      ...(additionalPostGetArgs || ''),
+    };
+    _cacheUniq = watchParams.map(watchParam => params[watchParam]).join(',');
+  }
+  if (pageAll) {
+    debounceTimeout = 0;
+  }
+>>>>>>> 07afecc0c1d28bb24d1a4492fbc28db120c85ebc
 
   useEffect(() => {
     setNumTimesResourceCalled(0);
@@ -161,8 +176,29 @@ const ResourceSelect = ({
       };
     }
     if (onPageChange) onPageChange(inputValue, page);
+<<<<<<< HEAD
     let fetch;
     if (graphqlConfig || method === 'POST') {
+=======
+
+    // if the UI is filtering, all the options should be present already
+    if (pageAll && !hasMore && inputValue.length > 0) {
+      return {
+        options: previousOptions.filter(
+          option =>
+            option[rest.labelKey || rest.label]
+              .toLowerCase()
+              .indexOf(inputValue.toLowerCase()) >= 0
+        ),
+        hasMore: false,
+      };
+    }
+
+    let fetch;
+    if (pageAll && hasMore === undefined && resource.all) {
+      fetch = () => resource.all();
+    } else if (graphqlConfig || method === 'POST') {
+>>>>>>> 07afecc0c1d28bb24d1a4492fbc28db120c85ebc
       fetch = () =>
         resource.post(data || params, {
           headers: {
@@ -184,20 +220,46 @@ const ResourceSelect = ({
               'Content-Type': 'application/x-www-form-urlencoded',
             },
             ...rest.requestConfig,
+<<<<<<< HEAD
           }
+=======
+          },
+          additionalPostGetArgs
+>>>>>>> 07afecc0c1d28bb24d1a4492fbc28db120c85ebc
         );
     }
     return fetch()
       .then(async resp => {
+<<<<<<< HEAD
         if (!resp || !resp.data) {
+=======
+        if ((!pageAll && !(resp || resp.data)) || (pageAll && !resp)) {
+>>>>>>> 07afecc0c1d28bb24d1a4492fbc28db120c85ebc
           throw new Error(`API returned an invalid response.`);
         }
         const getResult = rest.getResult || resource.getResult;
 
+<<<<<<< HEAD
         const items =
           typeof getResult === 'function'
             ? getResult.call(resource, resp.data)
             : resp.data[getResult];
+=======
+        let items = [];
+        if (pageAll) {
+          items = resp;
+          if (getResult)
+            items =
+              typeof getResult === 'function'
+                ? getResult.call(resource, items)
+                : items[getResult];
+        } else {
+          items =
+            typeof getResult === 'function'
+              ? getResult.call(resource, resp.data)
+              : resp.data[getResult];
+        }
+>>>>>>> 07afecc0c1d28bb24d1a4492fbc28db120c85ebc
 
         if (hasMore === undefined) {
           if (graphqlConfig) {
@@ -207,6 +269,11 @@ const ResourceSelect = ({
                 `${graphqlConfig.type}Pagination.pageInfo.hasNextPage`,
                 false
               );
+<<<<<<< HEAD
+=======
+          } else if (pageAll) {
+            hasMore = false;
+>>>>>>> 07afecc0c1d28bb24d1a4492fbc28db120c85ebc
           } else {
             hasMore = ({ totalCount, limit, offset }) =>
               totalCount > offset + limit;
@@ -248,7 +315,16 @@ const ResourceSelect = ({
           },
         };
       })
+<<<<<<< HEAD
       .catch(() => ({ options: [], hasMore: false }));
+=======
+      .catch(error => {
+        if (rest.onError && typeof rest.onError === 'function') {
+          rest.onError(error);
+        }
+        return { options: [], hasMore: false };
+      });
+>>>>>>> 07afecc0c1d28bb24d1a4492fbc28db120c85ebc
   };
 
   const Tag = rest.label ? SelectField : Select;
@@ -281,6 +357,10 @@ ResourceSelect.propTypes = {
     postGet: PropTypes.func,
     post: PropTypes.func,
     getResult: PropTypes.oneOfType([PropTypes.string, PropTypes.func]),
+<<<<<<< HEAD
+=======
+    all: PropTypes.func,
+>>>>>>> 07afecc0c1d28bb24d1a4492fbc28db120c85ebc
   }).isRequired,
   getResult: PropTypes.oneOfType([PropTypes.string, PropTypes.func]),
   hasMore: PropTypes.oneOfType([PropTypes.bool, PropTypes.func]),
@@ -306,6 +386,12 @@ ResourceSelect.propTypes = {
   waitUntilFocused: PropTypes.bool,
   defaultToOnlyOption: PropTypes.bool,
   shouldSearch: PropTypes.oneOfType([PropTypes.bool, PropTypes.func]),
+<<<<<<< HEAD
+=======
+  additionalPostGetArgs: PropTypes.object,
+  pageAll: PropTypes.bool,
+  onError: PropTypes.func,
+>>>>>>> 07afecc0c1d28bb24d1a4492fbc28db120c85ebc
 };
 
 ResourceSelect.defaultProps = {
@@ -314,6 +400,10 @@ ResourceSelect.defaultProps = {
   waitUntilFocused: false,
   defaultToOnlyOption: false,
   shouldSearch: true,
+<<<<<<< HEAD
+=======
+  pageAll: false,
+>>>>>>> 07afecc0c1d28bb24d1a4492fbc28db120c85ebc
 };
 
 const ucFirst = str => str && str.charAt(0).toUpperCase() + str.slice(1);

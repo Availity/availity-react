@@ -53,6 +53,11 @@
     "updated": "lerna updated",
     "remove-locks": "find . -type f -name 'yarn.lock' -delete",
     "check": "npm-check -u && lerna exec --bail false --concurrency 1 -- npm-check -u",
+<<<<<<< HEAD
+=======
+    "check:packages": "sh ./scripts/artifactory-check.sh",
+    "check:dependencies": "node scripts/check-missing-deps.js",
+>>>>>>> 07afecc0c1d28bb24d1a4492fbc28db120c85ebc
     "new": "plop"
   },
   "devDependencies": {
@@ -60,6 +65,10 @@
     "@availity/api-core": "^6.1.3",
     "@availity/localstorage-core": "^3.0.0",
     "@babel/core": "^7.4.5",
+<<<<<<< HEAD
+=======
+    "@babel/helper-call-delegate": "^7.10.1",
+>>>>>>> 07afecc0c1d28bb24d1a4492fbc28db120c85ebc
     "@babel/runtime": "^7.8.4",
     "@commitlint/cli": "^8.0.0",
     "@commitlint/config-conventional": "^8.1.0",
@@ -78,6 +87,10 @@
     "conventional-changelog-cli": "^2.0.11",
     "conventional-recommended-bump": "^6.0.0",
     "core-js": "^3.1.2",
+<<<<<<< HEAD
+=======
+    "dependency-check": "^4.1.0",
+>>>>>>> 07afecc0c1d28bb24d1a4492fbc28db120c85ebc
     "eslint-config-availity": "^5.2.1",
     "husky": "^4.2.1",
     "identity-obj-proxy": "^3.0.0",
@@ -137,7 +150,11 @@
     "hooks": {
       "commit-msg": "commitlint -e $HUSKY_GIT_PARAMS",
       "pre-commit": "lint-staged",
+<<<<<<< HEAD
       "pre-push": "yarn lint && yarn test"
+=======
+      "pre-push": "yarn test && yarn check:dependencies && yarn check:packages"
+>>>>>>> 07afecc0c1d28bb24d1a4492fbc28db120c85ebc
     }
   }
 }

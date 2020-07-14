@@ -3,6 +3,205 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+<<<<<<< HEAD
+=======
+## [4.19.1](https://github.com/Availity/availity-react/compare/@availity/react-docs@4.19.0...@availity/react-docs@4.19.1) (2020-07-08)
+
+**Note:** Version bump only for package @availity/react-docs
+
+
+
+
+
+# [4.19.0](https://github.com/Availity/availity-react/compare/@availity/react-docs@4.18.5...@availity/react-docs@4.19.0) (2020-07-07)
+
+
+### Features
+
+* **help:** added new help for oxygen ([08cc605](https://github.com/Availity/availity-react/commit/08cc605669f7a256eb1b9759ff8c103035ee9acf))
+* **help:** added new provider element for oxygen docs in top nav PF-739 ([b4a536f](https://github.com/Availity/availity-react/commit/b4a536f50fb768e0e900b0a95cf452c86b0c06a4))
+
+
+
+
+
+## [4.18.5](https://github.com/Availity/availity-react/compare/@availity/react-docs@4.18.4...@availity/react-docs@4.18.5) (2020-06-29)
+
+**Note:** Version bump only for package @availity/react-docs
+
+
+
+
+
+## [4.18.4](https://github.com/Availity/availity-react/compare/@availity/react-docs@4.18.3...@availity/react-docs@4.18.4) (2020-06-24)
+
+**Note:** Version bump only for package @availity/react-docs
+
+
+
+
+
+## [4.18.3](https://github.com/Availity/availity-react/compare/@availity/react-docs@4.18.2...@availity/react-docs@4.18.3) (2020-06-22)
+
+**Note:** Version bump only for package @availity/react-docs
+
+
+
+
+
+## [4.18.2](https://github.com/Availity/availity-react/compare/@availity/react-docs@4.18.1...@availity/react-docs@4.18.2) (2020-06-18)
+
+**Note:** Version bump only for package @availity/react-docs
+
+
+
+
+
+## [4.18.1](https://github.com/Availity/availity-react/compare/@availity/react-docs@4.18.0...@availity/react-docs@4.18.1) (2020-06-18)
+
+**Note:** Version bump only for package @availity/react-docs
+
+
+
+
+
+# [4.18.0](https://github.com/Availity/availity-react/compare/@availity/react-docs@4.17.1...@availity/react-docs@4.18.0) (2020-06-12)
+
+
+### Features
+
+* **hooks:** add usePermissions, useOrganizations, useProviders hook ([458f5e5](https://github.com/Availity/availity-react/commit/458f5e50038c4fdc5a23919daec918a87cdb08e9))
+
+
+
+
+
+## [4.17.1](https://github.com/Availity/availity-react/compare/@availity/react-docs@4.17.0...@availity/react-docs@4.17.1) (2020-06-05)
+
+**Note:** Version bump only for package @availity/react-docs
+
+
+
+
+
+# [4.17.0](https://github.com/Availity/availity-react/compare/@availity/react-docs@4.16.0...@availity/react-docs@4.17.0) (2020-06-03)
+
+
+### Features
+
+* **select:** add permissionsIds to organizationSelect postGetArgs ([28ea098](https://github.com/Availity/availity-react/commit/28ea098a6c6985dcad58a0c0330f35ef45025cef))
+* **select:** keep permissionId param in doc organizationSelect, undefined check ([07764f1](https://github.com/Availity/availity-react/commit/07764f1393f8ad0a7c0b64f7817c98318595fa13))
+
+
+
+
+
+# [4.16.0](https://github.com/Availity/availity-react/compare/@availity/react-docs@4.15.0...@availity/react-docs@4.16.0) (2020-06-02)
+
+
+### Features
+
+* **react-docs:** updating feedback ([27d9367](https://github.com/Availity/availity-react/commit/27d93678e49d7fc48a2c30bd87eaf33e219cb21e))
+
+
+
+
+
+# [4.15.0](https://github.com/Availity/availity-react/compare/@availity/react-docs@4.14.2...@availity/react-docs@4.15.0) (2020-05-29)
+
+
+### Features
+
+* **pagination:** add error, setError to usePagination ([3d47be2](https://github.com/Availity/availity-react/commit/3d47be2e84934878b83139d7b5de6f5dcc272c22))
+
+
+
+
+
+## [4.14.2](https://github.com/Availity/availity-react/compare/@availity/react-docs@4.14.1...@availity/react-docs@4.14.2) (2020-05-28)
+
+**Note:** Version bump only for package @availity/react-docs
+
+
+
+
+
+## [4.14.1](https://github.com/Availity/availity-react/compare/@availity/react-docs@4.14.0...@availity/react-docs@4.14.1) (2020-05-27)
+
+
+### Bug Fixes
+
+* **select:** fixes additionalPostGetArgs object always being created, removes extra comma in docs ([4201222](https://github.com/Availity/availity-react/commit/4201222a5759767ec84970874d54b8be472993ee))
+
+
+
+
+
+# [4.14.0](https://github.com/Availity/availity-react/compare/@availity/react-docs@4.13.21...@availity/react-docs@4.14.0) (2020-05-22)
+
+
+### Bug Fixes
+
+* **select:** rename to pageAll ([83f9b39](https://github.com/Availity/availity-react/commit/83f9b3978c8e87270a1d1d3a495e728837e20e9b))
+
+
+### Features
+
+* **select:** add shouldFilterByAllOptions param for client side filtering on regions ([fc58730](https://github.com/Availity/availity-react/commit/fc587300f4e0f27013d337c85ad4c3211df23d45))
+
+
+
+
+
+## [4.13.21](https://github.com/Availity/availity-react/compare/@availity/react-docs@4.13.20...@availity/react-docs@4.13.21) (2020-05-11)
+
+**Note:** Version bump only for package @availity/react-docs
+
+
+
+
+
+## [4.13.20](https://github.com/Availity/availity-react/compare/@availity/react-docs@4.13.19...@availity/react-docs@4.13.20) (2020-05-05)
+
+**Note:** Version bump only for package @availity/react-docs
+
+
+
+
+
+## 4.13.19 (2020-04-30)
+
+**Note:** Version bump only for package @availity/react-docs
+
+
+
+
+
+## 4.13.18 (2020-04-30)
+
+**Note:** Version bump only for package @availity/react-docs
+
+
+
+
+
+## 4.13.17 (2020-04-28)
+
+**Note:** Version bump only for package @availity/react-docs
+
+
+
+
+
+## 4.13.16 (2020-04-17)
+
+**Note:** Version bump only for package @availity/react-docs
+
+
+
+
+
+>>>>>>> 07afecc0c1d28bb24d1a4492fbc28db120c85ebc
 ## 4.13.15 (2020-04-09)
 
 **Note:** Version bump only for package @availity/react-docs

@@ -3,6 +3,49 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+<<<<<<< HEAD
+=======
+## 1.2.23 (2020-06-12)
+
+**Note:** Version bump only for package @availity/feature
+
+
+
+
+
+## 1.2.22 (2020-04-30)
+
+**Note:** Version bump only for package @availity/feature
+
+
+
+
+
+## 1.2.21 (2020-04-30)
+
+**Note:** Version bump only for package @availity/feature
+
+
+
+
+
+## 1.2.20 (2020-04-28)
+
+**Note:** Version bump only for package @availity/feature
+
+
+
+
+
+## 1.2.19 (2020-04-17)
+
+**Note:** Version bump only for package @availity/feature
+
+
+
+
+
+>>>>>>> 07afecc0c1d28bb24d1a4492fbc28db120c85ebc
 ## 1.2.18 (2020-04-09)
 
 **Note:** Version bump only for package @availity/feature

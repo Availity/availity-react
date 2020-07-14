@@ -1,5 +1,9 @@
 import React from 'react';
+<<<<<<< HEAD
 import { render, fireEvent, cleanup } from '@testing-library/react';
+=======
+import { render, fireEvent, cleanup, wait } from '@testing-library/react';
+>>>>>>> 07afecc0c1d28bb24d1a4492fbc28db120c85ebc
 import { Form } from '@availity/form';
 import Upload from '..';
 
@@ -124,4 +128,76 @@ describe('Upload', () => {
 
     expect(inputNode.files.length).toBe(1);
   });
+<<<<<<< HEAD
+=======
+
+  test('uses default drop rejection message', async () => {
+    const { getByTestId, getByText } = renderUpload(
+      { initialValues: { upload: null } },
+      {
+        name: 'upload',
+        clientId: 'a',
+        bucketId: 'b',
+        customerId: 'c',
+        showFileDrop: true,
+        maxSize: 10,
+      }
+    );
+
+    const file = new Buffer.from('hello world'.split('')); // eslint-disable-line new-cap
+    file.name = 'fileName.png';
+    file.size = 11;
+
+    const inputNode = getByTestId('file-picker');
+    const fileEvent = { target: { files: [file] } };
+
+    fireEvent.drop(inputNode, fileEvent);
+
+    expect(inputNode.files.length).toBe(1);
+    await wait(() => {
+      expect(getByText('File is larger than 10 bytes')).toBeDefined();
+    });
+  });
+
+  test('uses custom drop rejection message', async () => {
+    // eslint-disable-next-line unicorn/consistent-function-scoping
+    const getDropRejectionMessage = errors => {
+      let msg = '';
+      errors.forEach(error => {
+        if (error.code === 'file-too-large') {
+          msg += 'my custom error message';
+        } else {
+          msg += 'this file is no good';
+        }
+      });
+      return msg;
+    };
+
+    const { getByTestId, getByText } = renderUpload(
+      { initialValues: { upload: null } },
+      {
+        name: 'upload',
+        clientId: 'a',
+        bucketId: 'b',
+        customerId: 'c',
+        showFileDrop: true,
+        maxSize: 10,
+        getDropRejectionMessage,
+      }
+    );
+    const file = new Buffer.from('hello world'.split('')); // eslint-disable-line new-cap
+    file.name = 'fileName.png';
+    file.size = 11;
+
+    const inputNode = getByTestId('file-picker');
+    const fileEvent = { target: { files: [file] } };
+
+    fireEvent.drop(inputNode, fileEvent);
+
+    expect(inputNode.files.length).toBe(1);
+    await wait(() => {
+      expect(getByText('my custom error message')).toBeDefined();
+    });
+  });
+>>>>>>> 07afecc0c1d28bb24d1a4492fbc28db120c85ebc
 });

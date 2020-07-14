@@ -3,6 +3,57 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+<<<<<<< HEAD
+=======
+## 2.1.30 (2020-07-08)
+
+**Note:** Version bump only for package @availity/favorites
+
+
+
+
+
+## 2.1.29 (2020-06-12)
+
+**Note:** Version bump only for package @availity/favorites
+
+
+
+
+
+## 2.1.28 (2020-04-30)
+
+**Note:** Version bump only for package @availity/favorites
+
+
+
+
+
+## 2.1.27 (2020-04-30)
+
+**Note:** Version bump only for package @availity/favorites
+
+
+
+
+
+## 2.1.26 (2020-04-28)
+
+**Note:** Version bump only for package @availity/favorites
+
+
+
+
+
+## 2.1.25 (2020-04-17)
+
+**Note:** Version bump only for package @availity/favorites
+
+
+
+
+
+>>>>>>> 07afecc0c1d28bb24d1a4492fbc28db120c85ebc
 ## 2.1.24 (2020-04-09)
 
 **Note:** Version bump only for package @availity/favorites

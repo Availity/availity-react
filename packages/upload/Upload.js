@@ -1,9 +1,14 @@
 import React, { Component, createRef } from 'react';
 import PropTypes from 'prop-types';
 import UploadCore from '@availity/upload-core';
+<<<<<<< HEAD
 import { FormFeedback } from 'reactstrap';
 import Dropzone from 'react-dropzone';
 import map from 'lodash.map';
+=======
+import Dropzone from 'react-dropzone';
+import { InputGroup } from 'reactstrap';
+>>>>>>> 07afecc0c1d28bb24d1a4492fbc28db120c85ebc
 import uuid from 'uuid/v4';
 import FilePickerBtn from './FilePickerBtn';
 import FileList from './FileList';
@@ -24,10 +29,14 @@ class Upload extends Component {
 
   files = [];
 
+<<<<<<< HEAD
   error = null;
 
   removeFile = fileId => {
     this.error = null;
+=======
+  removeFile = fileId => {
+>>>>>>> 07afecc0c1d28bb24d1a4492fbc28db120c85ebc
     this.setState(({ files }) => {
       const newFiles = files.filter(file => file.id !== fileId);
       if (newFiles.length !== files.length) {
@@ -68,12 +77,23 @@ class Upload extends Component {
           allowedFileNameCharacters: this.props.allowedFileNameCharacters,
         });
         upload.id = `${upload.id}-${uuid()}`;
+<<<<<<< HEAD
         upload.start();
+=======
+        if (file.dropRejectionMessage) {
+          upload.errorMessage = file.dropRejectionMessage;
+        } else {
+          upload.start();
+        }
+>>>>>>> 07afecc0c1d28bb24d1a4492fbc28db120c85ebc
         if (this.props.onFileUpload) this.props.onFileUpload(upload);
         return upload;
       })
     );
+<<<<<<< HEAD
     this.error = null;
+=======
+>>>>>>> 07afecc0c1d28bb24d1a4492fbc28db120c85ebc
     this.setState({ files: this.files });
   };
 
@@ -81,6 +101,7 @@ class Upload extends Component {
     this.setFiles(event.target.files);
   };
 
+<<<<<<< HEAD
   onDrop = (acceptedFiles, rejectedFiles) => {
     if (rejectedFiles && rejectedFiles.length > 0) {
       const fileNames = map(rejectedFiles, 'name');
@@ -88,12 +109,27 @@ class Upload extends Component {
     }
 
     this.setFiles(acceptedFiles);
+=======
+  onDrop = (acceptedFiles, fileRejections) => {
+    const rejectedFilesToDrop = fileRejections.map(({ file, errors }) => {
+      const dropRejectionMessage = this.props.getDropRejectionMessage
+        ? this.props.getDropRejectionMessage(errors, file)
+        : errors.map(error => error.message).join(', ');
+
+      file.dropRejectionMessage = dropRejectionMessage;
+      return file;
+    });
+    this.setFiles([...acceptedFiles, ...rejectedFilesToDrop]);
+>>>>>>> 07afecc0c1d28bb24d1a4492fbc28db120c85ebc
   };
 
   reset = () => {
     this.files = [];
     this.setState({ files: [] });
+<<<<<<< HEAD
     this.error = null;
+=======
+>>>>>>> 07afecc0c1d28bb24d1a4492fbc28db120c85ebc
   };
 
   componentDidMount() {
@@ -146,6 +182,10 @@ class Upload extends Component {
       maxSize,
       children,
       showFileDrop,
+<<<<<<< HEAD
+=======
+      disabled,
+>>>>>>> 07afecc0c1d28bb24d1a4492fbc28db120c85ebc
     } = this.props;
     const { files } = this.state;
 
@@ -161,6 +201,7 @@ class Upload extends Component {
       if (showFileDrop) {
         fileAddArea = (
           <div>
+<<<<<<< HEAD
             <Dropzone
               onDrop={this.onDrop}
               multiple={multiple}
@@ -183,6 +224,30 @@ class Upload extends Component {
             <FormFeedback valid={!this.error} className="d-block">
               {this.error}
             </FormFeedback>
+=======
+            <InputGroup disabled={disabled}>
+              <Dropzone
+                onDrop={this.onDrop}
+                multiple={multiple}
+                maxSize={maxSize}
+                className="file-drop"
+                activeClassName="file-drop-active"
+                accept={allowedFileTypes}
+              >
+                {({ getRootProps, getInputProps }) => (
+                  <section>
+                    <div {...getRootProps()}>
+                      <input data-testid="file-picker" {...getInputProps()} />
+                      <p>
+                        <strong>Drag and Drop</strong>
+                      </p>
+                      {text}
+                    </div>
+                  </section>
+                )}
+              </Dropzone>
+            </InputGroup>
+>>>>>>> 07afecc0c1d28bb24d1a4492fbc28db120c85ebc
           </div>
         );
       } else {
@@ -194,6 +259,10 @@ class Upload extends Component {
             multiple={multiple}
             allowedFileTypes={allowedFileTypes}
             maxSize={maxSize}
+<<<<<<< HEAD
+=======
+            disabled={disabled}
+>>>>>>> 07afecc0c1d28bb24d1a4492fbc28db120c85ebc
           >
             {text}
           </FilePickerBtn>
@@ -227,11 +296,20 @@ Upload.propTypes = {
   children: PropTypes.func,
   name: PropTypes.string,
   showFileDrop: PropTypes.bool,
+<<<<<<< HEAD
+=======
+  getDropRejectionMessage: PropTypes.func,
+  disabled: PropTypes.bool,
+>>>>>>> 07afecc0c1d28bb24d1a4492fbc28db120c85ebc
 };
 
 Upload.defaultProps = {
   multiple: true,
   showFileDrop: false,
+<<<<<<< HEAD
+=======
+  disabled: false,
+>>>>>>> 07afecc0c1d28bb24d1a4492fbc28db120c85ebc
 };
 
 export default Upload;

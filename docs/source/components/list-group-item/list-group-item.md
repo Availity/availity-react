@@ -1,5 +1,9 @@
 ---
+<<<<<<< HEAD
 title: ListGroupItem Default Export
+=======
+title: <ListGroupItem /> ( Default Export )
+>>>>>>> 07afecc0c1d28bb24d1a4492fbc28db120c85ebc
 summary: Availity's ListGroup, which can feature Cards and Selectable items
 ---
 

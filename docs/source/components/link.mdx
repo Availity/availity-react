@@ -1,5 +1,6 @@
 ---
 title: Link
+<<<<<<< HEAD
 ---
 Simple link component that renders an `<a>` tag with the `href` formatted to leverage 
 loadApp so that when the link is opened in a new tab, it gets loaded inside the home page's iframe
@@ -7,12 +8,22 @@ loadApp so that when the link is opened in a new tab, it gets loaded inside the 
 ## Implementation
 
 ### Installation
+=======
+summary: Simple link component that renders an `<a>` tag with the `href` formatted to leverage loadApp so that when the link is opened in a new tab, it gets loaded inside the home page's iframe
+---
+
+## Installation
+>>>>>>> 07afecc0c1d28bb24d1a4492fbc28db120c85ebc
 
 ```bash
 npm install @availity/link --save
 ```
 
+<<<<<<< HEAD
 ### Example
+=======
+## Example
+>>>>>>> 07afecc0c1d28bb24d1a4492fbc28db120c85ebc
 
 ```jsx live=true viewCode=true
 import AvLink from '@availity/link';
@@ -24,6 +35,7 @@ import AvLink from '@availity/link';
 </div>
 ```
 
+<<<<<<< HEAD
 ### Props
 
 #### `href: string`
@@ -81,3 +93,24 @@ User experience team.
 </div>
 
 
+=======
+## Props
+
+### `href: string`
+
+The url of the page the link goes to.
+
+### `target?: string`
+
+Where to open the linked document.
+
+### `tag?: React.ComponentType | string`
+
+The tag to use in the link that gets rendered. **Default:** `<a>`.
+
+### `onClick: (event: Event, url: string) => void`
+Function to run onClick of the link. The first argument passed to `onClick` is the event. The second argument is the processed `url`.
+
+### `loadApp?: boolean`
+When `false`, the `url` prop to `AvLink` is _not_ formatted to leverage loadApp. **Default:** `true`.
+>>>>>>> 07afecc0c1d28bb24d1a4492fbc28db120c85ebc

@@ -5,6 +5,10 @@ import {
   render,
   wait,
   cleanup,
+<<<<<<< HEAD
+=======
+  waitForDomChange,
+>>>>>>> 07afecc0c1d28bb24d1a4492fbc28db120c85ebc
 } from '@testing-library/react';
 import { avRegionsApi, avProvidersApi, avCodesApi } from '@availity/api-axios';
 import { Button } from 'reactstrap';
@@ -782,7 +786,11 @@ it('Queries using graphQl', async () => {
 describe('Custom Resources', () => {
   describe('AvRegionSelect', () => {
     it('defaults to the user current region when defaultToCurrentRegion true', async () => {
+<<<<<<< HEAD
       avRegionsApi.getCurrentRegion.mockResolvedValue({
+=======
+      avRegionsApi.getCurrentRegion.mockResolvedValueOnce({
+>>>>>>> 07afecc0c1d28bb24d1a4492fbc28db120c85ebc
         data: {
           regions: [
             {
@@ -811,7 +819,10 @@ describe('Custom Resources', () => {
       const regionProps = {
         name: 'test-form-input',
         classNamePrefix: 'test__region',
+<<<<<<< HEAD
         getResult: 'regions',
+=======
+>>>>>>> 07afecc0c1d28bb24d1a4492fbc28db120c85ebc
         defaultToCurrentRegion: true,
       };
 
@@ -833,5 +844,176 @@ describe('Custom Resources', () => {
         );
       });
     });
+<<<<<<< HEAD
+=======
+
+    it('calls avRegionsApi.all', async () => {
+      avRegionsApi.all.mockResolvedValueOnce([
+        {
+          id: 'FL',
+          value: 'Florida',
+        },
+        {
+          id: 'TX',
+          value: 'Texas',
+        },
+        {
+          id: 'WA',
+          value: 'Washington',
+        },
+      ]);
+      // eslint-disable-next-line react/prop-types
+      const RegionComponent = ({ regionProps }) => {
+        return (
+          <Form
+            initialValues={{
+              'test-form-input': undefined,
+            }}
+            onSubmit={onSubmit}
+          >
+            <AvRegionSelect {...regionProps} />
+            <Button type="submit">Submit</Button>
+          </Form>
+        );
+      };
+
+      const regionProps = {
+        name: 'test-form-input',
+        classNamePrefix: 'test__region',
+        defaultToCurrentRegion: true,
+      };
+
+      render(<RegionComponent regionProps={regionProps} />);
+
+      expect(avRegionsApi.all).toHaveBeenCalledTimes(1);
+    });
+
+    it('filters when a search value is typed', async () => {
+      avRegionsApi.all.mockResolvedValueOnce([
+        {
+          id: 'FL',
+          value: 'Florida',
+        },
+        {
+          id: 'TX',
+          value: 'Texas',
+        },
+        {
+          id: 'WA',
+          value: 'Washington',
+        },
+      ]);
+      // eslint-disable-next-line react/prop-types
+      const RegionComponent = ({ regionProps }) => {
+        return (
+          <Form
+            initialValues={{
+              'test-form-input': undefined,
+            }}
+            onSubmit={onSubmit}
+          >
+            <AvRegionSelect {...regionProps} />
+            <Button type="submit">Submit</Button>
+          </Form>
+        );
+      };
+
+      const regionProps = {
+        name: 'test-form-input',
+        classNamePrefix: 'test__region',
+        defaultToCurrentRegion: true,
+      };
+
+      const { container, getByText, queryByText } = render(
+        <RegionComponent regionProps={regionProps} />
+      );
+
+      expect(avRegionsApi.all).toHaveBeenCalled();
+
+      const regionComp = container.querySelector('.test__region__control');
+      const regionInput = container.querySelector('.test__region__input');
+      fireEvent.keyDown(regionComp, { key: 'ArrowDown', keyCode: 40 });
+      fireEvent.keyDown(regionComp, { key: 'Enter', keyCode: 13 });
+
+      await waitForDomChange(() => expect(getByText('Texas')).toBeDefined());
+
+      fireEvent.keyDown(regionInput, {
+        key: 'w',
+        keyCode: 87,
+      });
+
+      waitForDomChange(async () => {
+        const regionOptionWA = getByText('Washington');
+        fireEvent.click(regionOptionWA);
+        expect(queryByText('Florida')).toBeNull();
+
+        fireEvent.click(getByText('Submit'));
+
+        await wait(() => {
+          expect(onSubmit).toHaveBeenCalledWith(
+            expect.objectContaining({
+              'test-form-input': {
+                id: 'WA',
+                value: 'Washington',
+              },
+            }),
+            expect.anything()
+          );
+        });
+      });
+    });
+
+    it('uses getResult', async () => {
+      avRegionsApi.all.mockResolvedValueOnce([
+        {
+          id: 'FL',
+          value: 'Florida',
+        },
+        {
+          id: 'TX',
+          value: 'Texas',
+        },
+        {
+          id: 'WA',
+          value: 'Washington',
+        },
+      ]);
+      // eslint-disable-next-line react/prop-types
+      const RegionComponent = ({ regionProps }) => {
+        return (
+          <Form
+            initialValues={{
+              'test-form-input': undefined,
+            }}
+            onSubmit={onSubmit}
+          >
+            <AvRegionSelect {...regionProps} />
+            <Button type="submit">Submit</Button>
+          </Form>
+        );
+      };
+
+      const regionProps = {
+        name: 'test-form-input',
+        classNamePrefix: 'test__region',
+        getResult: data => data.filter(region => region.id === 'FL'),
+        defaultToCurrentRegion: true,
+      };
+
+      const { container, getAllByText, queryByText } = render(
+        <RegionComponent regionProps={regionProps} />
+      );
+
+      expect(avRegionsApi.all).toHaveBeenCalled();
+
+      const regionComp = container.querySelector('.test__region__control');
+      fireEvent.keyDown(regionComp, { key: 'ArrowDown', keyCode: 40 });
+      await waitForElement(() => getAllByText('Florida'));
+
+      expect(getAllByText('Florida')).toBeDefined();
+      expect(queryByText('Texas')).toBeNull();
+      expect(queryByText('Washington')).toBeNull();
+    });
+>>>>>>> 07afecc0c1d28bb24d1a4492fbc28db120c85ebc
   });
 });

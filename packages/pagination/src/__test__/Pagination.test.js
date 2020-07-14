@@ -217,6 +217,10 @@ describe('Pagination', () => {
   });
 
   test('should reset page to 1 if resetParams updates', async () => {
+<<<<<<< HEAD
+=======
+    jest.useFakeTimers();
+>>>>>>> 07afecc0c1d28bb24d1a4492fbc28db120c85ebc
     // Create component with button that explicitly sets the current page to 2
     const SomeComponent = React.memo(() => {
       const { loading, currentPage, setPage } = usePagination();
@@ -281,6 +285,11 @@ describe('Pagination', () => {
 
     const { getByTestId } = render(<ComponentWrapper />);
 
+<<<<<<< HEAD
+=======
+    jest.advanceTimersByTime(10);
+
+>>>>>>> 07afecc0c1d28bb24d1a4492fbc28db120c85ebc
     let currentPageButton = await waitForElement(() =>
       getByTestId(`current-page`)
     );
@@ -301,6 +310,10 @@ describe('Pagination', () => {
 
     // Check current page is 2 after set page button is called
     fireEvent.click(getByTestId('set-page-btn'));
+<<<<<<< HEAD
+=======
+    jest.advanceTimersByTime(10);
+>>>>>>> 07afecc0c1d28bb24d1a4492fbc28db120c85ebc
     currentPageButton = await waitForElement(() => getByTestId(`current-page`));
     paginationCon = await waitForElement(() => getByTestId('pagination-con'));
     expect(currentPageButton.textContent).toBe('2');
@@ -312,6 +325,10 @@ describe('Pagination', () => {
 
     // Check current page is 1 after resetParams changes
     fireEvent.click(getByTestId('toggle-btn'));
+<<<<<<< HEAD
+=======
+    jest.advanceTimersByTime(10);
+>>>>>>> 07afecc0c1d28bb24d1a4492fbc28db120c85ebc
     currentPageButton = await waitForElement(() => getByTestId(`current-page`));
     paginationCon = await waitForElement(() => getByTestId('pagination-con'));
     expect(currentPageButton.textContent).toBe('1');
@@ -375,6 +392,10 @@ describe('Pagination', () => {
 
     const { getByTestId } = render(<ComponentWrapper />);
 
+<<<<<<< HEAD
+=======
+    jest.advanceTimersByTime(10);
+>>>>>>> 07afecc0c1d28bb24d1a4492fbc28db120c85ebc
     let currentPageButton = await waitForElement(() =>
       getByTestId(`current-page`)
     );
@@ -401,6 +422,10 @@ describe('Pagination', () => {
 
     // Check items function was called again when reset params change, items is a function, and already on page 1
     fireEvent.click(getByTestId('toggle-btn'));
+<<<<<<< HEAD
+=======
+    jest.advanceTimersByTime(10);
+>>>>>>> 07afecc0c1d28bb24d1a4492fbc28db120c85ebc
     currentPageButton = await waitForElement(() => getByTestId(`current-page`));
     expect(currentPageButton.textContent).toBe('1');
     expect(items).toHaveBeenCalledTimes(2);
@@ -432,6 +457,10 @@ describe('Pagination', () => {
       </Pagination>
     );
 
+<<<<<<< HEAD
+=======
+    jest.advanceTimersByTime(10);
+>>>>>>> 07afecc0c1d28bb24d1a4492fbc28db120c85ebc
     let paginationCon = await waitForElement(() =>
       getByTestId('pagination-con')
     );
@@ -450,6 +479,10 @@ describe('Pagination', () => {
     // Wait for component to render nothing
     waitForDomChange(() => getByTestId('pagination-con'));
 
+<<<<<<< HEAD
+=======
+    jest.advanceTimersByTime(10);
+>>>>>>> 07afecc0c1d28bb24d1a4492fbc28db120c85ebc
     // Get the component now with the new page data
     paginationCon = await waitForElement(() => getByTestId('pagination-con'));
 
@@ -485,6 +518,10 @@ describe('Pagination', () => {
 
     const { getByTestId } = render(<Component />);
 
+<<<<<<< HEAD
+=======
+    jest.advanceTimersByTime(10);
+>>>>>>> 07afecc0c1d28bb24d1a4492fbc28db120c85ebc
     let paginationCon = await waitForElement(() =>
       getByTestId('pagination-con')
     );
@@ -503,6 +540,10 @@ describe('Pagination', () => {
     // Wait for component to render nothing
     waitForDomChange(() => getByTestId('pagination-con'));
 
+<<<<<<< HEAD
+=======
+    jest.advanceTimersByTime(10);
+>>>>>>> 07afecc0c1d28bb24d1a4492fbc28db120c85ebc
     // Get the component now with the new page data
     paginationCon = await waitForElement(() => getByTestId('pagination-con'));
 
@@ -550,6 +591,10 @@ describe('Pagination', () => {
     // Set shouldReturnPrevious to true
     fireEvent.click(getByTestId('toggle-return-previous-btn'));
 
+<<<<<<< HEAD
+=======
+    jest.advanceTimersByTime(10);
+>>>>>>> 07afecc0c1d28bb24d1a4492fbc28db120c85ebc
     // Check getItems was called
     await wait(() => {
       expect(getItems).toHaveBeenCalledTimes(1);
@@ -566,9 +611,68 @@ describe('Pagination', () => {
     // Set shouldReturnPrevious to true
     fireEvent.click(getByTestId('toggle-return-previous-btn'));
 
+<<<<<<< HEAD
     // Check getItems has still only been called one time
+=======
+    jest.advanceTimersByTime(10);
+>>>>>>> 07afecc0c1d28bb24d1a4492fbc28db120c85ebc
     await wait(() => {
       expect(getItems).toHaveBeenCalledTimes(2);
     });
   });
+<<<<<<< HEAD
+=======
+
+  test('show error when page data fetch fails', async () => {
+    const ErrorComponent = () => {
+      const { error, setError } = usePagination();
+
+      return (
+        <>
+          <div data-testid="pagination-error-container">
+            {error ? error.message : 'no error'}
+          </div>
+          <button
+            type="button"
+            data-testid="clear-error-btn"
+            onClick={() => setError(null)}
+          >
+            Clear error
+          </button>
+        </>
+      );
+    };
+
+    const getItems = jest.fn().mockRejectedValue(new Error('Async error'));
+
+    const onError = jest.fn();
+
+    const { getByTestId } = render(
+      <Pagination onError={onError} items={getItems}>
+        <ErrorComponent />
+      </Pagination>
+    );
+
+    jest.advanceTimersByTime(10);
+    await wait(() => {
+      expect(getItems).toHaveBeenCalledTimes(1);
+    });
+
+    expect(getByTestId('pagination-error-container').textContent).toBe(
+      'Async error'
+    );
+
+    // Clear the error
+    fireEvent.click(getByTestId('clear-error-btn'));
+
+    // Check the error was cleared
+    expect(getByTestId('pagination-error-container').textContent).toBe(
+      'no error'
+    );
+
+    // Check onError cb was called
+    expect(onError).toHaveBeenCalledTimes(1);
+    expect(onError.mock.calls[0][0].message).toBe('Async error');
+  });
+>>>>>>> 07afecc0c1d28bb24d1a4492fbc28db120c85ebc
 });

@@ -3,6 +3,41 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+<<<<<<< HEAD
+=======
+## 0.7.17 (2020-04-30)
+
+**Note:** Version bump only for package @availity/icon
+
+
+
+
+
+## 0.7.16 (2020-04-30)
+
+**Note:** Version bump only for package @availity/icon
+
+
+
+
+
+## 0.7.15 (2020-04-28)
+
+**Note:** Version bump only for package @availity/icon
+
+
+
+
+
+## 0.7.14 (2020-04-17)
+
+**Note:** Version bump only for package @availity/icon
+
+
+
+
+
+>>>>>>> 07afecc0c1d28bb24d1a4492fbc28db120c85ebc
 ## 0.7.13 (2020-04-09)
 
 **Note:** Version bump only for package @availity/icon

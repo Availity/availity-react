@@ -33,7 +33,14 @@ const PageSetter = () => {
     currentPage: Number,
     lower: Number,
     upper: Number,
+<<<<<<< HEAD
     setPage: Function,
     loading: Boolean
+=======
+    setPage: (page: number) => void,
+    loading: Boolean,
+    error: Any,
+    setError: (error: any) => void
+>>>>>>> 07afecc0c1d28bb24d1a4492fbc28db120c85ebc
 }
 ```

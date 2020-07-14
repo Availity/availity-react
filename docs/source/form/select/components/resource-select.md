@@ -32,7 +32,11 @@ import '@availity/yup';
   <Button color="primary" type="submit">
     Submit
   </Button>
+<<<<<<< HEAD
 </Form>
+=======
+</Form>;
+>>>>>>> 07afecc0c1d28bb24d1a4492fbc28db120c85ebc
 ```
 
 ## Props
@@ -121,7 +125,46 @@ When true, if the `resource` only returns one result the first time it is called
 
 ### `shouldSearch?: boolean | (inputValue: string, prevOptions: OptionType, additional: any) => boolean`
 
+<<<<<<< HEAD
 When false or a function that returns false, the network request won't be made. Defaults to `true`. 
+=======
+When false or a function that returns false, the network request won't be made. Defaults to `true`.
+
+### `pageAll: boolean`
+
+When true, `resource.all()` is called to fetch all the results, and search strings will filter by the label values instead of making another network call. DebounceTimeout is set to zero in this case. **This should only be used for resources with a consistently small result set and no api search params**
+
+Example: AvRegionsSelect has a limited number of results and no api search param
+
+### `onError: (error: Error) => void`
+
+Function that is called when the api call returned an error. The error is returned in the callback
+
+### `additionalPostGetArgs?: object`
+
+This object can be used to pass additional arguments to a resource's `postGet` call. These additional arguments are separate from the `parameters` that are supported by an API and may be used for filtering or other methods called inside a resource's `postGet` method. Example for the `organizations` resource that supports `additionalPostGetArgs`:
+
+```jsx
+async postGet(data, config, additionalPostGetArgs) {
+
+    if (additionalPostGetArgs) {
+      const { data: organizationsData } = await super.postGet(
+        data,
+        config
+      );
+
+      return this.getFilteredOrganizations(
+        organizationsData,
+        additionalPostGetArgs,
+        data
+      );
+    }
+
+    // Else return normal organizations call
+    return super.postGet(data, config);
+  }
+```
+>>>>>>> 07afecc0c1d28bb24d1a4492fbc28db120c85ebc
 
 ## Pre-made Resource Selects
 

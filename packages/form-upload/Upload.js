@@ -28,7 +28,11 @@ const Upload = ({
 }) => {
   const input = useRef(null);
   const [field, metadata] = useField(name);
+<<<<<<< HEAD
   const { setFieldValue, setFieldError } = useFormikContext();
+=======
+  const { setFieldValue } = useFormikContext();
+>>>>>>> 07afecc0c1d28bb24d1a4492fbc28db120c85ebc
   const classes = classNames(
     className,
     metadata.touched ? 'is-touched' : 'is-untouched',
@@ -38,7 +42,10 @@ const Upload = ({
   const fieldValue = Array.isArray(field.value) ? field.value : [];
 
   const removeFile = fileId => {
+<<<<<<< HEAD
     setFieldError(name, null);
+=======
+>>>>>>> 07afecc0c1d28bb24d1a4492fbc28db120c85ebc
     const newFiles = fieldValue.filter(file => file.id !== fileId);
     if (newFiles.length !== fieldValue.length) {
       setFieldValue(name, newFiles, true);
@@ -71,13 +78,24 @@ const Upload = ({
           allowedFileNameCharacters: rest.allowedFileNameCharacters,
         });
         upload.id = `${upload.id}-${uuid()}`;
+<<<<<<< HEAD
         upload.start();
+=======
+        if (file.dropRejectionMessage) {
+          upload.errorMessage = file.dropRejectionMessage;
+        } else {
+          upload.start();
+        }
+>>>>>>> 07afecc0c1d28bb24d1a4492fbc28db120c85ebc
         if (rest.onFileUpload) rest.onFileUpload(upload);
         return upload;
       })
     );
 
+<<<<<<< HEAD
     setFieldError(name, null);
+=======
+>>>>>>> 07afecc0c1d28bb24d1a4492fbc28db120c85ebc
     setFieldValue(name, newFiles, true);
   };
 
@@ -85,6 +103,7 @@ const Upload = ({
     setFiles(event.target.files);
   };
 
+<<<<<<< HEAD
   const onDrop = (acceptedFiles, rejectedFiles) => {
     if (rejectedFiles && rejectedFiles.length > 0) {
       const fileNames = rejectedFiles.map(
@@ -94,6 +113,18 @@ const Upload = ({
     }
 
     setFiles(acceptedFiles);
+=======
+  const onDrop = (acceptedFiles, fileRejections) => {
+    const rejectedFilesToDrop = fileRejections.map(({ file, errors }) => {
+      const dropRejectionMessage = rest.getDropRejectionMessage
+        ? rest.getDropRejectionMessage(errors, file)
+        : errors.map(error => error.message).join(', ');
+
+      file.dropRejectionMessage = dropRejectionMessage;
+      return file;
+    });
+    setFiles([...acceptedFiles, ...rejectedFilesToDrop]);
+>>>>>>> 07afecc0c1d28bb24d1a4492fbc28db120c85ebc
   };
 
   let fileAddArea;
@@ -116,6 +147,10 @@ const Upload = ({
               maxSize={maxSize}
               className="file-drop"
               activeClassName="file-drop-active"
+<<<<<<< HEAD
+=======
+              accept={allowedFileTypes}
+>>>>>>> 07afecc0c1d28bb24d1a4492fbc28db120c85ebc
             >
               {({ getRootProps, getInputProps }) => (
                 <section>
@@ -146,6 +181,10 @@ const Upload = ({
           allowedFileTypes={allowedFileTypes}
           maxSize={maxSize}
           name={name}
+<<<<<<< HEAD
+=======
+          disabled={rest.disabled}
+>>>>>>> 07afecc0c1d28bb24d1a4492fbc28db120c85ebc
         >
           {text}
         </FilePickerBtn>
@@ -180,10 +219,18 @@ Upload.propTypes = {
   showFileDrop: PropTypes.bool,
   feedbackClass: PropTypes.string,
   className: PropTypes.string,
+<<<<<<< HEAD
+=======
+  disabled: PropTypes.bool,
+>>>>>>> 07afecc0c1d28bb24d1a4492fbc28db120c85ebc
 };
 
 Upload.defaultProps = {
   multiple: true,
+<<<<<<< HEAD
+=======
+  disabled: false,
+>>>>>>> 07afecc0c1d28bb24d1a4492fbc28db120c85ebc
   showFileDrop: false,
 };
 

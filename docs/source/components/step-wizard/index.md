@@ -1,5 +1,6 @@
 ---
 title: Step Wizard
+<<<<<<< HEAD
 ---
 
 An indicator to show end users what step of a process they are on. 
@@ -7,12 +8,22 @@ An indicator to show end users what step of a process they are on.
 ## Implementation 
 
 ### Installation
+=======
+summary: Step Wizard - the Availity Way
+---
+
+## Installation
+>>>>>>> 07afecc0c1d28bb24d1a4492fbc28db120c85ebc
 
 ```bash
 npm install @availity/step-wizard --save
 ```
 
+<<<<<<< HEAD
 ### Example
+=======
+## Example
+>>>>>>> 07afecc0c1d28bb24d1a4492fbc28db120c85ebc
 
 ```jsx live=true
 import Wizard, { WizardStep, WizardStepBadge, WizardStepTitle } from '@availity/step-wizard';

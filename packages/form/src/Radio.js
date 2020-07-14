@@ -11,6 +11,10 @@ const Radio = ({
   id,
   value: checkValue,
   className,
+<<<<<<< HEAD
+=======
+  groupClassName,
+>>>>>>> 07afecc0c1d28bb24d1a4492fbc28db120c85ebc
   children,
   ...attributes
 }) => {
@@ -28,6 +32,10 @@ const Radio = ({
     <FormGroup
       for={inputId}
       check
+<<<<<<< HEAD
+=======
+      className={groupClassName}
+>>>>>>> 07afecc0c1d28bb24d1a4492fbc28db120c85ebc
       inline={inline}
       disabled={attributes.disabled}
     >
@@ -58,6 +66,10 @@ Radio.propTypes = {
   ]),
   disabled: PropTypes.bool,
   className: PropTypes.string,
+<<<<<<< HEAD
+=======
+  groupClassName: PropTypes.string,
+>>>>>>> 07afecc0c1d28bb24d1a4492fbc28db120c85ebc
   children: PropTypes.node,
 };
 

@@ -1,4 +1,5 @@
 ---
+<<<<<<< HEAD
 title: Wizard 
 ---
 
@@ -7,6 +8,13 @@ Container for the step wizard.
 ## Implementation
 
 ### Example
+=======
+title: <Wizard /> ( Default Export )
+summary: Container for the step wizard.
+---
+
+## Example
+>>>>>>> 07afecc0c1d28bb24d1a4492fbc28db120c85ebc
 
 ```jsx live=true viewCode=true
 import Wizard, { WizardStep, WizardStepTitle } from '@availity/step-wizard';
@@ -24,6 +32,7 @@ import Wizard, { WizardStep, WizardStepTitle } from '@availity/step-wizard';
 </Wizard>
 ```
 
+<<<<<<< HEAD
 ### Props
 
 #### `bar?: boolean`
@@ -204,3 +213,18 @@ User experience team.
 <div class="disclaimer">
   This component meets WCAG 2.0 AA 508 compliance by way of WAVE, AXE, and SortSite accessibility tools.
 </div>
+=======
+## Props
+
+### `bar?: boolean`
+
+Triggers the "bar" style in the stepwizard.
+
+### `stacked?: boolean`
+
+Triggers the "stacked" style in the step wizard. If true, wizard steps will display vertically rather than horizontally.
+
+### `progress?: boolean`
+
+Triggers the "progress" style in the step wizard.
+>>>>>>> 07afecc0c1d28bb24d1a4492fbc28db120c85ebc

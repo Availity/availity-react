@@ -9,6 +9,10 @@ import FormGroup from './FormGroup';
 const Checkbox = ({
   label,
   value: checkValue,
+<<<<<<< HEAD
+=======
+  groupClassName,
+>>>>>>> 07afecc0c1d28bb24d1a4492fbc28db120c85ebc
   className,
   id,
   inline,
@@ -27,6 +31,10 @@ const Checkbox = ({
   return (
     <FormGroup
       for={inputId}
+<<<<<<< HEAD
+=======
+      className={groupClassName}
+>>>>>>> 07afecc0c1d28bb24d1a4492fbc28db120c85ebc
       check
       inline={inline}
       disabled={attributes.disabled}
@@ -59,6 +67,10 @@ Checkbox.propTypes = {
   inline: PropTypes.bool,
   disabled: PropTypes.bool,
   className: PropTypes.string,
+<<<<<<< HEAD
+=======
+  groupClassName: PropTypes.string,
+>>>>>>> 07afecc0c1d28bb24d1a4492fbc28db120c85ebc
 };
 
 Checkbox.defaultProps = {

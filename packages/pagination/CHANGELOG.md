@@ -3,6 +3,60 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+<<<<<<< HEAD
+=======
+## 2.9.1 (2020-06-29)
+
+**Note:** Version bump only for package @availity/pagination
+
+
+
+
+
+# 2.9.0 (2020-05-29)
+
+
+### Features
+
+* **pagination:** add error, setError to usePagination ([3d47be2](https://github.com/Availity/availity-react/commit/3d47be2e84934878b83139d7b5de6f5dcc272c22))
+
+
+
+
+
+## 2.8.18 (2020-04-30)
+
+**Note:** Version bump only for package @availity/pagination
+
+
+
+
+
+## 2.8.17 (2020-04-30)
+
+**Note:** Version bump only for package @availity/pagination
+
+
+
+
+
+## 2.8.16 (2020-04-28)
+
+**Note:** Version bump only for package @availity/pagination
+
+
+
+
+
+## 2.8.15 (2020-04-17)
+
+**Note:** Version bump only for package @availity/pagination
+
+
+
+
+
+>>>>>>> 07afecc0c1d28bb24d1a4492fbc28db120c85ebc
 ## 2.8.14 (2020-04-09)
 
 **Note:** Version bump only for package @availity/pagination

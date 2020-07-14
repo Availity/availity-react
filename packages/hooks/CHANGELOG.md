@@ -3,6 +3,64 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+<<<<<<< HEAD
+=======
+# 1.8.0 (2020-07-08)
+
+
+### Features
+
+* allow for options to be passed in ([1d99a8b](https://github.com/Availity/availity-react/commit/1d99a8b942267c5be69711576ef4f64b8e36bacb))
+* update to use react-query ([d762643](https://github.com/Availity/availity-react/commit/d762643e49da3de41922021833ab5bd209d2cbf9))
+
+
+
+
+
+# 1.7.0 (2020-06-12)
+
+
+### Features
+
+* **hooks:** add usePermissions, useOrganizations, useProviders hook ([458f5e5](https://github.com/Availity/availity-react/commit/458f5e50038c4fdc5a23919daec918a87cdb08e9))
+
+
+
+
+
+## 1.6.23 (2020-04-30)
+
+**Note:** Version bump only for package @availity/hooks
+
+
+
+
+
+## 1.6.22 (2020-04-30)
+
+**Note:** Version bump only for package @availity/hooks
+
+
+
+
+
+## 1.6.21 (2020-04-28)
+
+**Note:** Version bump only for package @availity/hooks
+
+
+
+
+
+## 1.6.20 (2020-04-17)
+
+**Note:** Version bump only for package @availity/hooks
+
+
+
+
+
+>>>>>>> 07afecc0c1d28bb24d1a4492fbc28db120c85ebc
 ## 1.6.19 (2020-04-09)
 
 **Note:** Version bump only for package @availity/hooks

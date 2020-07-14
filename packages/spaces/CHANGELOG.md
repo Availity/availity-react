@@ -3,6 +3,68 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+<<<<<<< HEAD
+=======
+## 4.0.26 (2020-07-08)
+
+**Note:** Version bump only for package @availity/spaces
+
+
+
+
+
+## 4.0.25 (2020-06-12)
+
+**Note:** Version bump only for package @availity/spaces
+
+
+
+
+
+## 4.0.24 (2020-05-28)
+
+
+### Bug Fixes
+
+* **spaces:** look at first space payer id before searching all ([a969b20](https://github.com/Availity/availity-react/commit/a969b202a6bdab7b0cd6fa8697108b4cfa1b667b))
+
+
+
+
+
+## 4.0.23 (2020-04-30)
+
+**Note:** Version bump only for package @availity/spaces
+
+
+
+
+
+## 4.0.22 (2020-04-30)
+
+**Note:** Version bump only for package @availity/spaces
+
+
+
+
+
+## 4.0.21 (2020-04-28)
+
+**Note:** Version bump only for package @availity/spaces
+
+
+
+
+
+## 4.0.20 (2020-04-17)
+
+**Note:** Version bump only for package @availity/spaces
+
+
+
+
+
+>>>>>>> 07afecc0c1d28bb24d1a4492fbc28db120c85ebc
 ## 4.0.19 (2020-04-09)
 
 **Note:** Version bump only for package @availity/spaces

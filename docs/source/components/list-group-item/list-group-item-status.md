@@ -1,5 +1,9 @@
 ---
+<<<<<<< HEAD
 title: ListGroupItemStatus
+=======
+title: <ListGroupItemStatus />
+>>>>>>> 07afecc0c1d28bb24d1a4492fbc28db120c85ebc
 summary: ListGroupItem with an optional status badge and colors for the card and badge.
 ---
 

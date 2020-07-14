@@ -1,4 +1,5 @@
 ---
+<<<<<<< HEAD
 title: Radio
 ---
 Input of type radio. 
@@ -8,6 +9,13 @@ Input of type radio.
 This component comes in natively with Availity reactstrap. 
 
 ### Example
+=======
+title: <Radio />
+summary: Inputs of type radio. Radios should be wrapped in a RadioGroup.
+---
+
+## Example
+>>>>>>> 07afecc0c1d28bb24d1a4492fbc28db120c85ebc
 
 ```jsx live=true viewCode=true
 <Form
@@ -28,6 +36,7 @@ This component comes in natively with Availity reactstrap.
 </Form>
 ```
 
+<<<<<<< HEAD
 ### Props
 
 #### `id?: string`
@@ -87,3 +96,26 @@ User experience team.
 <div class="disclaimer">
   This component meets WCAG 2.0 AA 508 compliance by way of WAVE, AXE, and SortSite accessibility tools.
 </div>
+=======
+## Props
+
+### `id?: string`
+
+Should match `<RadioGroup />` name for validation.
+
+### `label?: ReactNode`
+
+Label for the checkbox.
+
+### `value?: string`
+
+Value of the checkbox.
+
+### `disabled?: boolean`
+
+Disables the checkbox.
+
+### `inline?: boolean`
+
+Will render the checkbox inline with other checkboxes.
+>>>>>>> 07afecc0c1d28bb24d1a4492fbc28db120c85ebc

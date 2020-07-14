@@ -1,4 +1,5 @@
 ---
+<<<<<<< HEAD
 title: Agreement
 ---
 The agreement component is used to draw attention to a particular block of text.
@@ -10,6 +11,12 @@ The agreement component is used to draw attention to a particular block of text.
 This component comes natively with Availity reactstrap. 
 
 ### Example
+=======
+title: <Agreement />
+---
+
+## Example
+>>>>>>> 07afecc0c1d28bb24d1a4492fbc28db120c85ebc
 
 ```jsx live=true
 import { Agreement } from '@availity/typography';
@@ -25,6 +32,7 @@ import { Agreement } from '@availity/typography';
   </p>
 </Agreement>
 ```
+<<<<<<< HEAD
 
 ## Usage and Behavior
 
@@ -57,3 +65,5 @@ User experience team.
 </div>
 
 
+=======
+>>>>>>> 07afecc0c1d28bb24d1a4492fbc28db120c85ebc
