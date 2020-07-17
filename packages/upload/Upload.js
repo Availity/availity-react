@@ -1,4 +1,4 @@
-import React, { Component, createRef, useMemo } from 'react';
+import React, { Component, createRef } from 'react';
 import PropTypes from 'prop-types';
 import UploadCore from '@availity/upload-core';
 import Dropzone from 'react-dropzone';
