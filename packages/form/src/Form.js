@@ -29,7 +29,7 @@ const Form = ({
     validate={validate}
     innerRef={innerRef}
   >
-    {(props) => (
+    {props => (
       <RsForm data-testid="form-container" tag={FForm} {...rest}>
         {typeof children === 'function' ? children(props) : children}
       </RsForm>
