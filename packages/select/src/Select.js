@@ -7,6 +7,7 @@ import Creatable from 'react-select/creatable';
 import Async from 'react-select-async-paginate';
 import get from 'lodash.get';
 import isFunction from 'lodash.isfunction';
+import isEqual from 'lodash.isequal';
 
 const {
   DownChevron,
@@ -34,6 +35,10 @@ const createOption = (label, labelKey = 'label', valueKey = 'value') => ({
   [labelKey]: label,
   [valueKey]: label.toLowerCase().replace(/\W/g, ''),
 });
+
+const areValueAndOptionValueEqual = (value, optionValue) => {
+  return isEqual(value, optionValue);
+};
 
 const Select = ({
   name,
@@ -87,8 +92,8 @@ const Select = ({
 
   const findOptionFromValue = (value, options) =>
     Array.isArray(options) &&
-    [...options, ...newOptions].filter(
-      option => getOptionValue(option) === value
+    [...options, ...newOptions].filter(option =>
+      areValueAndOptionValueEqual(value, getOptionValue(option))
     )[0];
 
   const getViewValue = () => {
