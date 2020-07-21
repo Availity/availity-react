@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.13.5](https://github.com/Availity/availity-react/compare/@availity/select@0.13.4...@availity/select@0.13.5) (2020-07-21)
+
+
+### Bug Fixes
+
+* **select:** fixes raw option being returned from getViewValue by doing a deep comparison ([27a6c8f](https://github.com/Availity/availity-react/commit/27a6c8fef7c943d1207b4e62195f09b3c0826a3d))
+
+
+
+
+
 ## 0.13.4 (2020-07-20)
 
 **Note:** Version bump only for package @availity/select
