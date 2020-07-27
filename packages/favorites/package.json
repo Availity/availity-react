@@ -22,7 +22,7 @@
   "dependencies": {
     "@availity/analytics-core": "^2.6.0",
     "@availity/hooks": "^1.6.4",
-    "@availity/message-core": "^4.0.1",
+    "@availity/message-core": "4.0.21-alpha.4",
     "array-sort": "^1.0.0",
     "lodash.get": "^4.4.2",
     "lodash.isundefined": "^3.0.1",

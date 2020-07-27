@@ -27,6 +27,11 @@
     "@availity/resolve-url" "^1.1.0"
     qs "^6.5.2"
 
+"@availity/env-var@^1.11.1-alpha.16+463e932":
+  version "1.11.1-alpha.16"
+  resolved "https://packages.availity.com/artifactory/api/npm/availity-npm-all/@availity/env-var/-/env-var-1.11.1-alpha.16.tgz#cd69ff3e75a52a4a7eef8cfd53996cc3cb0b1b60"
+  integrity sha1-zWn/PnWlKkp+74z9U5lsw8sLG2A=
+
 "@availity/gatsby-theme-core@^2.0.0":
   version "2.0.0"
   resolved "https://registry.yarnpkg.com/@availity/gatsby-theme-core/-/gatsby-theme-core-2.0.0.tgz#476059e2ad3a5a8f613e3a9bb4d63ba76489b029"
@@ -78,22 +83,18 @@
     striptags "^3.1.1"
     yup "^0.27.0"
 
-"@availity/link@^2.1.0":
-  version "2.1.0"
-  resolved "https://registry.yarnpkg.com/@availity/link/-/link-2.1.0.tgz#156ccf8f40b57bed55504877547c6bdc73f8d732"
-  integrity sha512-wUJIeaxP7lSKS4qPzqt5eSn8Ho0hKwyl3Q4/Xc7AeEYqoamYrqkJpvfm+g+5bd/ELXttVSxmgW4YQE43gHCpbw==
-  dependencies:
-    "@availity/resolve-url" "^1.1.0"
-
 "@availity/localstorage-core@^2.6.1":
   version "2.6.1"
   resolved "https://registry.yarnpkg.com/@availity/localstorage-core/-/localstorage-core-2.6.1.tgz#caf7db0feca9a93735e3a8e005ed180ce8a23906"
   integrity sha512-Vkgy7qvwiPvqaYf73uZIP1fISKprlMVQHbMB5qEvNX93HkZq9SqxTbo6UE4/yqLRoyqG1Myn45SvXpHvMQ7Bfw==
 
-"@availity/message-core@^4.0.1":
-  version "4.0.2"
-  resolved "https://registry.yarnpkg.com/@availity/message-core/-/message-core-4.0.2.tgz#b61e084da32199eacbb50081c072872d4120ea03"
-  integrity sha512-AKYg/MWSRPks9fP2JfBLiLe24tdseCYeyhlpDyBPjhJfCxSI+UiAlS4BRPXlQ4yi+InXhtg8SHikbDoAuIaVtg==
+"@availity/message-core@4.0.21-alpha.4":
+  version "4.0.21-alpha.4"
+  resolved "https://packages.availity.com/artifactory/api/npm/availity-npm-all/@availity/message-core/-/message-core-4.0.21-alpha.4.tgz#6abbaf55e68f7fb439c83f1bd5e576ffe88325aa"
+  integrity sha1-aruvVeaPf7Q5yD8b1eV2/+iDJao=
+  dependencies:
+    "@availity/env-var" "^1.11.1-alpha.16+463e932"
+    "@babel/runtime" "^7.10.2"
 
 "@availity/message-core@^4.0.3":
   version "4.0.3"
@@ -1046,6 +1047,13 @@
   integrity sha512-EXxN64agfUqqIGeEjI5dL5z0Sw0ZwWo1mLTi4mQowCZ42O59b7DRpZAnTC6OqdF28wMBMFKNb/4uFGrVaigSpg==
   dependencies:
     regenerator-runtime "^0.13.2"
+
+"@babel/runtime@^7.10.2":
+  version "7.10.5"
+  resolved "https://packages.availity.com/artifactory/api/npm/availity-npm-all/@babel/runtime/-/runtime-7.10.5.tgz#303d8bd440ecd5a491eae6117fd3367698674c5c"
+  integrity sha1-MD2L1EDs1aSR6uYRf9M2dphnTFw=
+  dependencies:
+    regenerator-runtime "^0.13.4"
 
 "@babel/template@^7.1.0", "@babel/template@^7.4.0", "@babel/template@^7.4.4", "@babel/template@^7.6.0":
   version "7.6.0"
@@ -17538,6 +17546,11 @@ regenerator-runtime@^0.13.2:
   version "0.13.3"
   resolved "https://registry.yarnpkg.com/regenerator-runtime/-/regenerator-runtime-0.13.3.tgz#7cf6a77d8f5c6f60eb73c5fc1955b2ceb01e6bf5"
   integrity sha512-naKIZz2GQ8JWh///G7L3X6LaQUAMp2lvb1rvwwsURe/VXwD6VMfr+/1NuNw3ag8v2kY1aQ/go5SNn79O9JU7yw==
+
+regenerator-runtime@^0.13.4:
+  version "0.13.7"
+  resolved "https://packages.availity.com/artifactory/api/npm/availity-npm-all/regenerator-runtime/-/regenerator-runtime-0.13.7.tgz#cac2dacc8a1ea675feaabaeb8ae833898ae46f55"
+  integrity sha1-ysLazIoepnX+qrrriugziYrkb1U=
 
 regenerator-transform@^0.14.0:
   version "0.14.1"
