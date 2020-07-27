@@ -1,6 +1,6 @@
 {
   "name": "@availity/breadcrumbs",
-  "version": "3.1.5",
+  "version": "3.1.6-alpha.38+2035e30d",
   "author": "Evan Sharp <evan.sharp@availity.com>",
   "description": "Availity breadcrumbs",
   "main": "index.js",
@@ -33,5 +33,6 @@
   "peerDependencies": {
     "react": "^16.3.0",
     "reactstrap": "^8.0.0 || ^7.0.0 || ^6.0.0"
-  }
+  },
+  "gitHead": "2035e30decfb44830e58ea81576e08d23d04ea5e"
 }

@@ -1,6 +1,6 @@
 {
   "name": "@availity/feature",
-  "version": "1.2.3",
+  "version": "1.2.4-alpha.40+2035e30d",
   "author": "Evan Sharp <evan.sharp@gmail.com>",
   "description": "Check if a feature is enabled or disabled before doing something.",
   "main": "index.js",
@@ -39,5 +39,6 @@
   "peerDependencies": {
     "axios": "^0.18.0",
     "react": "^16.3.0"
-  }
+  },
+  "gitHead": "2035e30decfb44830e58ea81576e08d23d04ea5e"
 }

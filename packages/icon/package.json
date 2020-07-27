@@ -1,6 +1,6 @@
 {
   "name": "@availity/icon",
-  "version": "0.6.2",
+  "version": "0.6.3-alpha.85+2035e30d",
   "author": "Kyle Gray <kyle.gray@availity.com>",
   "description": "Simple Icon Component that uses classes from availity uikit",
   "main": "index.js",
@@ -29,5 +29,6 @@
   },
   "dependencies": {
     "classnames": "^2.2.6"
-  }
+  },
+  "gitHead": "2035e30decfb44830e58ea81576e08d23d04ea5e"
 }
