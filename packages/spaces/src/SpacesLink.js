@@ -286,6 +286,7 @@ const Link = ({
                 {stacked && dateInfo}
                 {showDescription && description && (
                   <TextTag
+                    tag="div"
                     className={classNames('mt-1', {
                       'text-center': stacked,
                     })}
