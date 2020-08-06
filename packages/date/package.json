@@ -1,6 +1,6 @@
 {
   "name": "@availity/date",
-  "version": "0.3.12-alpha.31+2035e30d",
+  "version": "0.3.12-alpha.34+e76cd3d7",
   "description": "Wrapper for react-dates to work with formik",
   "main": "index.js",
   "typings": "typings/index.d.ts",
@@ -21,7 +21,7 @@
   },
   "homepage": "https://github.com/Availity/availity-react/tree/master/packages/date#readme",
   "devDependencies": {
-    "@availity/form": "^0.4.10-alpha.40+2035e30d",
+    "@availity/form": "^0.4.10-alpha.43+e76cd3d7",
     "@availity/yup": "^1.1.1",
     "@types/react-dates": "^17.1.5",
     "formik": "^2.0.1-rc.12",
@@ -38,7 +38,7 @@
     "yup": "^0.27.0"
   },
   "dependencies": {
-    "@availity/icon": "^0.6.3-alpha.85+2035e30d",
+    "@availity/icon": "^0.6.3-alpha.88+e76cd3d7",
     "classnames": "^2.2.6",
     "lodash.get": "^4.4.2",
     "lodash.pick": "^4.4.0",
@@ -49,5 +49,5 @@
   "publishConfig": {
     "access": "public"
   },
-  "gitHead": "2035e30decfb44830e58ea81576e08d23d04ea5e"
+  "gitHead": "e76cd3d7855a02c09dcf0f4711dd783b4a24e967"
 }
