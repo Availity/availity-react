@@ -32,7 +32,7 @@
   },
   "devDependencies": {
     "axios": "^0.18.0",
-    "axios-mock-adapter": "^1.15.0",
+    "axios-mock-adapter": "1.15.0",
     "react": "^16.8.3",
     "react-dom": "^16.8.3"
   },
