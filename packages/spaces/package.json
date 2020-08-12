@@ -1,6 +1,6 @@
 {
   "name": "@availity/spaces",
-  "version": "4.0.2-alpha.31+2035e30d",
+  "version": "4.0.2-alpha.34+e76cd3d7",
   "author": "Tyson Warner <tyson.warner@availity.com>",
   "description": "Easy to use spaces components",
   "main": "index.js",
@@ -20,15 +20,15 @@
     "access": "public"
   },
   "dependencies": {
-    "@availity/app-icon": "^1.3.2-alpha.139+2035e30d",
-    "@availity/hooks": "^1.6.5-alpha.31+2035e30d",
-    "@availity/icon": "^0.6.3-alpha.85+2035e30d",
-    "@availity/link": "^2.0.2-alpha.76+2035e30d",
-    "@availity/list-group-item": "^1.2.3-alpha.38+2035e30d",
+    "@availity/app-icon": "^1.3.2-alpha.142+e76cd3d7",
+    "@availity/hooks": "^1.6.5-alpha.34+e76cd3d7",
+    "@availity/icon": "^0.6.3-alpha.88+e76cd3d7",
+    "@availity/link": "^2.0.2-alpha.79+e76cd3d7",
+    "@availity/list-group-item": "^1.2.3-alpha.41+e76cd3d7",
     "@availity/message-core": "^4.0.3",
     "@availity/native-form": "^2.8.4",
     "@availity/resolve-url": "^1.1.4",
-    "@availity/typography": "^1.2.2-alpha.139+2035e30d",
+    "@availity/typography": "^1.2.2-alpha.142+e76cd3d7",
     "classnames": "^2.2.6",
     "dayjs": "^1.8.16",
     "lodash.get": "^4.4.2",
@@ -42,7 +42,7 @@
   "devDependencies": {
     "@availity/api-axios": "^5.4.0",
     "@availity/api-core": "^5.4.0",
-    "@availity/favorites": "^2.1.9-alpha.31+2035e30d",
+    "@availity/favorites": "^2.1.9-alpha.34+e76cd3d7",
     "@availity/localstorage-core": "^2.6.1",
     "axios": "^0.18.0",
     "react-dom": "^16.8.6",
@@ -57,5 +57,5 @@
     "react": "^16.8.6",
     "reactstrap": ">=8.0.0"
   },
-  "gitHead": "2035e30decfb44830e58ea81576e08d23d04ea5e"
+  "gitHead": "e76cd3d7855a02c09dcf0f4711dd783b4a24e967"
 }

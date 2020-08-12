@@ -1,6 +1,6 @@
 {
   "name": "@availity/list-group-item",
-  "version": "1.2.3-alpha.38+2035e30d",
+  "version": "1.2.3-alpha.41+e76cd3d7",
   "author": "Evan Sharp <evan.sharp@availity.com>",
   "description": "List Group Item with some Availity flair",
   "main": "index.js",
@@ -31,5 +31,5 @@
     "react-dom": "^16.8.3",
     "reactstrap": "^8.0.0"
   },
-  "gitHead": "2035e30decfb44830e58ea81576e08d23d04ea5e"
+  "gitHead": "e76cd3d7855a02c09dcf0f4711dd783b4a24e967"
 }
