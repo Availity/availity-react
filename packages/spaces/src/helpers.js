@@ -1,10 +1,31 @@
 import AvLocalStorage from '@availity/localstorage-core';
 import avMessage from '@availity/message-core';
 import { avUserApi } from '@availity/api-axios';
+import { getSpecificEnv } from '@availity/env-var';
 import qs from 'query-string';
 import dayjs from 'dayjs';
 
 const localStorageCore = new AvLocalStorage();
+
+export const buildUrlForLink = link => {
+  // Don't mess with it if it's not there
+  if (!link) return link;
+
+  // Don't mess with full URLs
+  if (/^https?:\/\/.*/.test(link)) return link;
+
+  const normalized = link.startsWith('/') ? link : `/${link}`;
+
+  const env = getSpecificEnv();
+  switch (env) {
+    case 'local':
+      return normalized;
+    case 'prod':
+      return `https://apps.availity.com${normalized}`;
+    default:
+      return `https://${env}-apps.availity.com${normalized}`;
+  }
+};
 
 export const SPACES_INITIAL_STATE = {
   spaces: [],

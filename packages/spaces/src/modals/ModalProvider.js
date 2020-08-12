@@ -5,7 +5,7 @@ import { isAbsoluteUrl } from '@availity/resolve-url';
 import { Modal, ModalHeader, ModalFooter, Button } from 'reactstrap';
 import DisclaimerModal from './DisclaimerModal';
 import MultiPayerModal from './MultiPayerModal';
-import { updateUrl, updateTopApps } from '../helpers';
+import { updateUrl, updateTopApps, buildUrlForLink } from '../helpers';
 
 export const ModalContext = createContext();
 
@@ -20,7 +20,7 @@ export const MODAL_TYPES = {
     onSubmit: ({ link, id: spaceId }) => {
       window.open(
         link.url[0] === '/'
-          ? updateUrl(link.url, 'spaceId', spaceId)
+          ? buildUrlForLink(updateUrl(link.url, 'spaceId', spaceId))
           : link.url,
         link.target
       );
@@ -48,11 +48,13 @@ export const MODAL_TYPES = {
 
       window.open(
         !isAbsoluteUrl(link.url)
-          ? getUrl(
-              updateUrl(link.url, 'spaceId', modalState.selectedOption.id),
-              false,
-              false,
-              target
+          ? buildUrlForLink(
+              getUrl(
+                updateUrl(link.url, 'spaceId', modalState.selectedOption.id),
+                false,
+                false,
+                target
+              )
             )
           : link.url,
         target

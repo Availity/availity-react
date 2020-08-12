@@ -2,7 +2,7 @@ import nativeForm from '@availity/native-form';
 import { getUrl, getTarget } from '@availity/link/Link';
 import { isAbsoluteUrl } from '@availity/resolve-url';
 import { useSpaces, useSpacesContext } from './Spaces';
-import { updateUrl, updateTopApps } from './helpers';
+import { updateUrl, updateTopApps, buildUrlForLink } from './helpers';
 import { useModal } from './modals/ModalProvider';
 
 export default (
@@ -49,8 +49,6 @@ export default (
   const linkSso = event => {
     if (metadata && metadata.ssoId) {
       event.preventDefault();
-      const options = link.target ? { target: link.target } : undefined;
-
       const attributes = {
         X_Client_ID: clientId,
         X_XSRF_TOKEN: document.cookie.replace(
@@ -60,6 +58,11 @@ export default (
         spaceId: parents && parents[0] ? parents[0].id : linkAttributes.spaceId,
         ...linkAttributes,
       };
+
+      const options = link.target ? { target: link.target } : undefined;
+      options.action = buildUrlForLink(
+        `/ms/api/availity/internal/spc/magneto/sso/v1/saml/${metadata.ssoId}`
+      );
 
       updateTopApps(id, type);
 
@@ -89,15 +92,17 @@ export default (
     const target = getTarget(link.target);
     window.open(
       !isAbsoluteUrl(link.url)
-        ? getUrl(
-            updateUrl(
-              link.url,
-              'spaceId',
-              parents && parents[0] ? parents[0].id : linkAttributes.spaceId
-            ),
-            false,
-            false,
-            target
+        ? buildUrlForLink(
+            getUrl(
+              updateUrl(
+                link.url,
+                'spaceId',
+                parents && parents[0] ? parents[0].id : linkAttributes.spaceId
+              ),
+              false,
+              false,
+              target
+            )
           )
         : link.url,
       target
