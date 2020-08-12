@@ -1,6 +1,6 @@
 {
   "name": "@availity/form",
-  "version": "0.4.10-alpha.43+e76cd3d7",
+  "version": "0.4.10-alpha.46+2523a5b9",
   "author": "Kyle Gray <kyle.gray@availity.com>",
   "description": "Form Wrapper around formik using reactstrap components",
   "main": "index.js",
@@ -38,5 +38,5 @@
     "reactstrap": "^8.0.0",
     "yup": "^0.27.0"
   },
-  "gitHead": "e76cd3d7855a02c09dcf0f4711dd783b4a24e967"
+  "gitHead": "2523a5b9362a3e35f80dc4fadc9ae6ed880ab129"
 }

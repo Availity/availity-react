@@ -1,6 +1,6 @@
 {
   "name": "@availity/list-group",
-  "version": "1.2.2-alpha.142+e76cd3d7",
+  "version": "1.2.2-alpha.145+2523a5b9",
   "author": "Evan Sharp <evan.sharp@availity.com>",
   "description": "List Group with some Availity flair",
   "main": "index.js",
@@ -31,5 +31,5 @@
     "react-dom": "^16.8.3",
     "reactstrap": "^8.0.0"
   },
-  "gitHead": "e76cd3d7855a02c09dcf0f4711dd783b4a24e967"
+  "gitHead": "2523a5b9362a3e35f80dc4fadc9ae6ed880ab129"
 }

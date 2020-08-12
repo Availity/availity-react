@@ -1,6 +1,6 @@
 {
   "name": "@availity/link",
-  "version": "2.0.2-alpha.79+e76cd3d7",
+  "version": "2.0.2-alpha.82+2523a5b9",
   "author": "Tyson Warner <tyson.warner@availity.com>",
   "description": "React component that renders an a tag with the `href` formatted to leverage loadApp",
   "main": "index.js",
@@ -30,5 +30,5 @@
   "dependencies": {
     "@availity/resolve-url": "^1.1.0"
   },
-  "gitHead": "e76cd3d7855a02c09dcf0f4711dd783b4a24e967"
+  "gitHead": "2523a5b9362a3e35f80dc4fadc9ae6ed880ab129"
 }

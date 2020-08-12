@@ -1,6 +1,6 @@
 {
   "name": "@availity/hooks",
-  "version": "1.6.5-alpha.34+e76cd3d7",
+  "version": "1.6.5-alpha.37+2523a5b9",
   "author": "Kyle Gray <kyle.gray@availity.com>",
   "description": "A group of pre-built hooks that are common in most apps",
   "main": "index.js",
@@ -37,5 +37,5 @@
     "axios": "^0.16.0 || ^0.17.0 || ^0.18.0 || ^0.19.0",
     "react": "^16.8.0"
   },
-  "gitHead": "e76cd3d7855a02c09dcf0f4711dd783b4a24e967"
+  "gitHead": "2523a5b9362a3e35f80dc4fadc9ae6ed880ab129"
 }
