@@ -140,7 +140,6 @@ PaginationContent.propTypes = {
   containerProps: PropTypes.object,
   containerTag: PropTypes.oneOfType([
     PropTypes.string,
-    PropTypes.func,
     PropTypes.elementType,
   ]),
   infiniteScroll: PropTypes.bool,
