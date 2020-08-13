@@ -1,6 +1,6 @@
 {
   "name": "@availity/training-link",
-  "version": "1.2.2-alpha.145+2523a5b9",
+  "version": "1.2.2-alpha.147+d60fca6e",
   "author": "Andrew Bauer <andrew.bauer@availity.com>",
   "description": "Component for allowing link out to training in the Header component",
   "main": "index.js",
@@ -29,5 +29,5 @@
   "peerDependencies": {
     "react": "^16.3.0"
   },
-  "gitHead": "2523a5b9362a3e35f80dc4fadc9ae6ed880ab129"
+  "gitHead": "d60fca6e25ae96a486c23469cebbbcdc1a3a5ed9"
 }
