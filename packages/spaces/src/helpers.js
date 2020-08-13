@@ -14,7 +14,7 @@ export const buildUrlForLink = link => {
   // Don't mess with full URLs
   if (/^https?:\/\/.*/.test(link)) return link;
 
-  const normalized = link.startsWith('/') ? link : `/${link}`;
+  const normalized = link.length > 0 && link[0] === '/' ? link : `/${link}`;
 
   const env = getSpecificEnv();
   switch (env) {
