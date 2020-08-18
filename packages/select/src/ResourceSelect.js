@@ -57,7 +57,7 @@ const ResourceSelect = ({
     if (onFocus) onFocus(...args);
   };
 
-  const loadOptions = (...args) => {
+  const loadOptions = async (...args) => {
     const [inputValue, , additional = {}] = args;
     let { page } = additional;
 
@@ -172,7 +172,7 @@ const ResourceSelect = ({
     // if the UI is filtering, all the options should be present already
     if (pageAll && !hasMore && inputValue.length > 0) {
       if (pageAllSearchBy && typeof pageAllSearchBy === 'function') {
-        const options = pageAllSearchBy(previousOptions, inputValue);
+        const options = await pageAllSearchBy(previousOptions, inputValue);
         return { options, hasMore: false };
       }
       return {
