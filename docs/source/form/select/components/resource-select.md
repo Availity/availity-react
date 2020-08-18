@@ -129,6 +129,10 @@ When true, `resource.all()` is called to fetch all the results, and search strin
 
 Example: AvRegionsSelect has a limited number of results and no api search param
 
+### `pageAllSearchBy: (previousOptions: any[], inputValue: string) => any[]`
+
+A method to specify what to filter the results by when `pageAll` is true. The list of options and search string is passed in, and an array of similar options is expected to be returned.
+
 ### `onError: (error: Error) => void`
 
 Function that is called when the api call returned an error. The error is returned in the callback
