@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [4.20.0](https://github.com/Availity/availity-react/compare/@availity/react-docs@4.19.5...@availity/react-docs@4.20.0) (2020-08-18)
+
+
+### Features
+
+* **select:** add pageAllSearchBy and add to regionSelect ([f72a83c](https://github.com/Availity/availity-react/commit/f72a83c30ed88b10edf8865f7e5d296c66369359))
+
+
+
+
+
 ## [4.19.5](https://github.com/Availity/availity-react/compare/@availity/react-docs@4.19.4...@availity/react-docs@4.19.5) (2020-08-13)
 
 **Note:** Version bump only for package @availity/react-docs

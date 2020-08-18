@@ -3,6 +3,18 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# 0.14.0 (2020-08-18)
+
+
+### Features
+
+* **select:** add pageAllSearchBy and add to regionSelect ([f72a83c](https://github.com/Availity/availity-react/commit/f72a83c30ed88b10edf8865f7e5d296c66369359))
+* **select:** add pageAllSearchBy to tst ([9377f80](https://github.com/Availity/availity-react/commit/9377f807dab720e85391f5616294068b802b14c8))
+
+
+
+
+
 ## [0.13.6](https://github.com/Availity/availity-react/compare/@availity/select@0.13.5...@availity/select@0.13.6) (2020-07-30)
 
 **Note:** Version bump only for package @availity/select
