@@ -188,7 +188,7 @@ const ResourceSelect = ({
 
     let fetch;
     if (pageAll && hasMore === undefined && resource.all) {
-      fetch = () => resource.all();
+      fetch = () => resource.all(data || params);
     } else if (graphqlConfig || method === 'POST') {
       fetch = () =>
         resource.post(data || params, {
@@ -224,7 +224,7 @@ const ResourceSelect = ({
 
         let items = [];
         if (pageAll) {
-          items = resp;
+          items = resp.data ? resp.data : resp;
           if (getResult)
             items =
               typeof getResult === 'function'
