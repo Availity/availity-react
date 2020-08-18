@@ -45,6 +45,7 @@ export interface ResourceSelectProps<T> extends SelectFieldProps<T> {
       ) => boolean);
   additionalPostGetArgs?: object;
   pageAll?: boolean;
+  pageAllSearchBy?: (previousOptions: any[], inputValue: string) => any[];
   onError?: (error: Error) => void;
 }
 

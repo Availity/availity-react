@@ -886,6 +886,10 @@ describe('Custom Resources', () => {
           value: 'Texas',
         },
         {
+          id: 'TN',
+          value: 'Tennessee',
+        },
+        {
           id: 'WA',
           value: 'Washington',
         },
@@ -944,6 +948,141 @@ describe('Custom Resources', () => {
                 value: 'Washington',
               },
             }),
+            expect.anything()
+          );
+        });
+      });
+
+      // uses the new filter to search by id
+      fireEvent.keyDown(regionInput, {
+        key: 't',
+        keyCode: 84,
+      });
+      fireEvent.keyDown(regionInput, {
+        key: 'x',
+        keyCode: 88,
+      });
+
+      waitForDomChange(async () => {
+        const regionOptionTX = getByText('Texas');
+        fireEvent.click(regionOptionTX);
+        expect(queryByText('Florida')).toBeNull();
+
+        fireEvent.click(getByText('Submit'));
+
+        await wait(() => {
+          expect(onSubmit).toHaveBeenCalledWith(
+            expect.objectContaining({
+              'test-form-input': {
+                id: 'TX',
+                value: 'Texas',
+              },
+            }),
+            expect.anything()
+          );
+        });
+      });
+    });
+
+    it('filters using the default search when a search value is typed', async () => {
+      avRegionsApi.all.mockResolvedValueOnce([
+        {
+          id: 'FL',
+          value: 'Florida',
+        },
+        {
+          id: 'TX',
+          value: 'Texas',
+        },
+        {
+          id: 'TN',
+          value: 'Tennessee',
+        },
+        {
+          id: 'WA',
+          value: 'Washington',
+        },
+      ]);
+      // eslint-disable-next-line react/prop-types
+      const RegionComponent = ({ regionProps }) => {
+        return (
+          <Form
+            initialValues={{
+              'test-form-input': undefined,
+            }}
+            onSubmit={onSubmit}
+          >
+            <AvRegionSelect {...regionProps} />
+            <Button type="submit">Submit</Button>
+          </Form>
+        );
+      };
+
+      const regionProps = {
+        name: 'test-form-input',
+        classNamePrefix: 'test__region',
+        defaultToCurrentRegion: true,
+        pageAllSearchBy: 'not a method',
+      };
+
+      const { container, getByText, queryByText } = render(
+        <RegionComponent regionProps={regionProps} />
+      );
+
+      expect(avRegionsApi.all).toHaveBeenCalled();
+
+      const regionComp = container.querySelector('.test__region__control');
+      const regionInput = container.querySelector('.test__region__input');
+      fireEvent.keyDown(regionComp, { key: 'ArrowDown', keyCode: 40 });
+      fireEvent.keyDown(regionComp, { key: 'Enter', keyCode: 13 });
+
+      await waitForDomChange(() => expect(getByText('Texas')).toBeDefined());
+
+      fireEvent.keyDown(regionInput, {
+        key: 'w',
+        keyCode: 87,
+      });
+
+      waitForDomChange(async () => {
+        const regionOptionWA = getByText('Washington');
+        fireEvent.click(regionOptionWA);
+        expect(queryByText('Florida')).toBeNull();
+
+        fireEvent.click(getByText('Submit'));
+
+        await wait(() => {
+          expect(onSubmit).toHaveBeenCalledWith(
+            expect.objectContaining({
+              'test-form-input': {
+                id: 'WA',
+                value: 'Washington',
+              },
+            }),
+            expect.anything()
+          );
+        });
+      });
+
+      // does not use the new filter to search by id
+      fireEvent.keyDown(regionInput, {
+        key: 't',
+        keyCode: 84,
+      });
+      fireEvent.keyDown(regionInput, {
+        key: 'x',
+        keyCode: 88,
+      });
+
+      waitForDomChange(async () => {
+        const regionOptionTX = getByText('Texas');
+        fireEvent.click(regionOptionTX);
+        expect(queryByText('Florida')).toBeNull();
+
+        fireEvent.click(getByText('Submit'));
+
+        await wait(() => {
+          expect(onSubmit).toHaveBeenCalledWith(
+            expect.objectContaining({}),
             expect.anything()
           );
         });

@@ -27,6 +27,7 @@ const ResourceSelect = ({
   shouldSearch,
   additionalPostGetArgs,
   pageAll,
+  pageAllSearchBy,
   ...rest
 }) => {
   const { setFieldValue } = useFormikContext();
@@ -56,7 +57,7 @@ const ResourceSelect = ({
     if (onFocus) onFocus(...args);
   };
 
-  const loadOptions = (...args) => {
+  const loadOptions = async (...args) => {
     const [inputValue, , additional = {}] = args;
     let { page } = additional;
 
@@ -170,6 +171,10 @@ const ResourceSelect = ({
 
     // if the UI is filtering, all the options should be present already
     if (pageAll && !hasMore && inputValue.length > 0) {
+      if (pageAllSearchBy && typeof pageAllSearchBy === 'function') {
+        const options = await pageAllSearchBy(previousOptions, inputValue);
+        return { options, hasMore: false };
+      }
       return {
         options: previousOptions.filter(
           option =>
@@ -349,6 +354,7 @@ ResourceSelect.propTypes = {
   shouldSearch: PropTypes.oneOfType([PropTypes.bool, PropTypes.func]),
   additionalPostGetArgs: PropTypes.object,
   pageAll: PropTypes.bool,
+  pageAllSearchBy: PropTypes.func,
   onError: PropTypes.func,
 };
 
