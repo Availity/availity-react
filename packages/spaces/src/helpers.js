@@ -7,6 +7,18 @@ import dayjs from 'dayjs';
 
 const localStorageCore = new AvLocalStorage();
 
+const getPortalSpecificEnv = currentEnv => {
+  // TODO: Extract to a shared function.
+  switch (currentEnv) {
+    case 'prd':
+      return 'prod';
+    case 'qua':
+      return 'qa';
+    default:
+      return currentEnv;
+  }
+};
+
 export const buildUrlForLink = link => {
   // Don't mess with it if it's not there
   if (!link) return link;
@@ -16,7 +28,7 @@ export const buildUrlForLink = link => {
 
   const normalized = link.length > 0 && link[0] === '/' ? link : `/${link}`;
 
-  const env = getSpecificEnv();
+  const env = getPortalSpecificEnv(getSpecificEnv());
   switch (env) {
     case 'local':
       return normalized;
