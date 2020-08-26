@@ -1,6 +1,6 @@
 {
   "name": "@availity/reactstrap-validation-select",
-  "version": "5.2.1-alpha.58+d60fca6e",
+  "version": "5.2.1-alpha.61+4de6cec5",
   "description": "Wrapper for react-select to work with availity-reactstrap-validation",
   "main": "index.js",
   "scripts": {
@@ -55,5 +55,5 @@
   "publishConfig": {
     "access": "public"
   },
-  "gitHead": "d60fca6e25ae96a486c23469cebbbcdc1a3a5ed9"
+  "gitHead": "4de6cec5d043e050c35e79b15739dc21e34d7c17"
 }
