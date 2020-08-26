@@ -1,6 +1,6 @@
 {
   "name": "@availity/feedback",
-  "version": "5.1.24-alpha.39+d60fca6e",
+  "version": "5.1.24-alpha.42+4de6cec5",
   "author": "Evan Sharp <evan.sharp@availity.com>",
   "description": "Availity feedback with simley faces react component.",
   "main": "index.js",
@@ -20,10 +20,10 @@
     "access": "public"
   },
   "dependencies": {
-    "@availity/form": "^0.4.10-alpha.48+d60fca6e",
-    "@availity/hooks": "^1.6.5-alpha.39+d60fca6e",
-    "@availity/icon": "^0.6.3-alpha.93+d60fca6e",
-    "@availity/select": "^0.6.2-alpha.48+d60fca6e",
+    "@availity/form": "^0.4.10-alpha.51+4de6cec5",
+    "@availity/hooks": "^1.6.5-alpha.42+4de6cec5",
+    "@availity/icon": "^0.6.3-alpha.96+4de6cec5",
+    "@availity/select": "^0.6.2-alpha.51+4de6cec5",
     "prop-types": "^15.5.8"
   },
   "devDependencies": {
@@ -47,5 +47,5 @@
     "reactstrap": "^8.0.0 || ^7.0.0 || ^6.0.0",
     "yup": "^0.27.0"
   },
-  "gitHead": "d60fca6e25ae96a486c23469cebbbcdc1a3a5ed9"
+  "gitHead": "4de6cec5d043e050c35e79b15739dc21e34d7c17"
 }
