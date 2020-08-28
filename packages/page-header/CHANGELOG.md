@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [10.0.62](https://github.com/Availity/availity-react/compare/@availity/page-header@10.0.61...@availity/page-header@10.0.62) (2020-08-28)
+
+
+### Bug Fixes
+
+* **page-header:** update types ReactNode ([23292dd](https://github.com/Availity/availity-react/commit/23292dd5a0fa4193f55723de9c3205934292199d))
+
+
+
+
+
 ## [10.0.61](https://github.com/Availity/availity-react/compare/@availity/page-header@10.0.60...@availity/page-header@10.0.61) (2020-08-18)
 
 **Note:** Version bump only for package @availity/page-header
