@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [10.0.63](https://github.com/Availity/availity-react/compare/@availity/page-header@10.0.62...@availity/page-header@10.0.63) (2020-09-01)
+
+
+### Bug Fixes
+
+* **page-header:** honor custom crumbs passed in ([d28e188](https://github.com/Availity/availity-react/commit/d28e188050230c3ab1c44b68e13748fb1a7cbf8a))
+
+
+
+
+
 ## [10.0.62](https://github.com/Availity/availity-react/compare/@availity/page-header@10.0.61...@availity/page-header@10.0.62) (2020-08-28)
 
 
