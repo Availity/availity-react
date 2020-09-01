@@ -67,7 +67,7 @@ const PageHeader = ({
   }
 
   const _spaceName = spaceName || (_space && _space.name);
-  if (spaceId || spaceName) {
+  if ((spaceId || _spaceName) && !crumbs) {
     const url =
       spaceForSpaceID && spaceForSpaceID.link && spaceForSpaceID.link.url
         ? spaceForSpaceID.link.url
