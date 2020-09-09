@@ -59,7 +59,9 @@ export default (
         ...linkAttributes,
       };
 
-      const options = link.target ? { target: link.target } : undefined;
+      const options = link.target
+        ? { target: getTarget(link.target) }
+        : undefined;
       options.action = buildUrlForLink(
         `/ms/api/availity/internal/spc/magneto/sso/v1/saml/${metadata.ssoId}`
       );
