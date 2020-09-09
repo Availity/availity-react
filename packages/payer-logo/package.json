@@ -1,6 +1,6 @@
 {
   "name": "@availity/payer-logo",
-  "version": "4.0.6-alpha.42+4de6cec5",
+  "version": "4.0.6-alpha.45+a0c250fd",
   "author": "Evan Sharp <evan.sharp@availity.com>",
   "description": "Easy to use component to display the payer&#x27;s logo given the payer&#x27;s ID",
   "main": "index.js",
@@ -20,7 +20,7 @@
     "access": "public"
   },
   "dependencies": {
-    "@availity/hooks": "^1.6.5-alpha.42+4de6cec5",
+    "@availity/hooks": "^1.6.5-alpha.45+a0c250fd",
     "lodash.get": "^4.4.2",
     "prop-types": "^15.5.8"
   },
@@ -39,5 +39,5 @@
     "axios": "^0.18.0",
     "react": "^16.8.3"
   },
-  "gitHead": "4de6cec5d043e050c35e79b15739dc21e34d7c17"
+  "gitHead": "a0c250fd8b4a0ccdc5c99b4355918e47c783017a"
 }

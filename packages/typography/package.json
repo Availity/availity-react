@@ -1,6 +1,6 @@
 {
   "name": "@availity/typography",
-  "version": "1.2.2-alpha.150+4de6cec5",
+  "version": "1.2.2-alpha.153+a0c250fd",
   "author": "Tyson Warner <tyson.warner@availity.com>",
   "description": "Availity typography components",
   "main": "index.js",
@@ -31,5 +31,5 @@
   "dependencies": {
     "classnames": "^2.2.6"
   },
-  "gitHead": "4de6cec5d043e050c35e79b15739dc21e34d7c17"
+  "gitHead": "a0c250fd8b4a0ccdc5c99b4355918e47c783017a"
 }

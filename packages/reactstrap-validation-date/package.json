@@ -1,6 +1,6 @@
 {
   "name": "@availity/reactstrap-validation-date",
-  "version": "3.1.7-alpha.96+4de6cec5",
+  "version": "3.1.7-alpha.99+a0c250fd",
   "description": "Wrapper for react-date-range to work with availity-reactstrap-validation",
   "main": "index.js",
   "scripts": {
@@ -36,7 +36,7 @@
     "reactstrap": "^8.0.0 || ^7.0.0 || ^6.0.0"
   },
   "dependencies": {
-    "@availity/icon": "^0.6.3-alpha.96+4de6cec5",
+    "@availity/icon": "^0.6.3-alpha.99+a0c250fd",
     "classnames": "^2.2.6",
     "lodash.pick": "^4.4.0",
     "moment": "^2.24.0",
@@ -47,5 +47,5 @@
   "publishConfig": {
     "access": "public"
   },
-  "gitHead": "4de6cec5d043e050c35e79b15739dc21e34d7c17"
+  "gitHead": "a0c250fd8b4a0ccdc5c99b4355918e47c783017a"
 }

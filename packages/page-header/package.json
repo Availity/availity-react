@@ -1,6 +1,6 @@
 {
   "name": "@availity/page-header",
-  "version": "9.0.6-alpha.42+4de6cec5",
+  "version": "9.0.6-alpha.45+a0c250fd",
   "author": "Evan Sharp <evan.sharp@availity.com>",
   "description": "The standard page header for Availity Portal Applications",
   "main": "index.js",
@@ -20,11 +20,11 @@
     "access": "public"
   },
   "dependencies": {
-    "@availity/app-icon": "^1.3.2-alpha.150+4de6cec5",
-    "@availity/breadcrumbs": "^3.1.6-alpha.49+4de6cec5",
-    "@availity/feedback": "^5.1.24-alpha.42+4de6cec5",
-    "@availity/payer-logo": "^4.0.6-alpha.42+4de6cec5",
-    "@availity/training-link": "^1.2.2-alpha.150+4de6cec5",
+    "@availity/app-icon": "^1.3.2-alpha.153+a0c250fd",
+    "@availity/breadcrumbs": "^3.1.6-alpha.52+a0c250fd",
+    "@availity/feedback": "^5.1.24-alpha.45+a0c250fd",
+    "@availity/payer-logo": "^4.0.6-alpha.45+a0c250fd",
+    "@availity/training-link": "^1.2.2-alpha.153+a0c250fd",
     "classnames": "^2.2.6",
     "prop-types": "^15.5.8"
   },
@@ -32,7 +32,7 @@
     "@availity/api-axios": "^5.4.0",
     "@availity/api-core": "^5.4.0",
     "@availity/localstorage-core": "^2.6.1",
-    "@availity/spaces": "^4.0.2-alpha.42+4de6cec5",
+    "@availity/spaces": "^4.0.2-alpha.45+a0c250fd",
     "axios": "^0.18.0",
     "formik": "^2.0.1-rc.12",
     "react": "^16.8.3",
@@ -50,5 +50,5 @@
     "react-dom": "^16.8.3",
     "yup": "^0.27.0"
   },
-  "gitHead": "4de6cec5d043e050c35e79b15739dc21e34d7c17"
+  "gitHead": "a0c250fd8b4a0ccdc5c99b4355918e47c783017a"
 }

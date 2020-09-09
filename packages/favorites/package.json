@@ -1,6 +1,6 @@
 {
   "name": "@availity/favorites",
-  "version": "2.1.9-alpha.42+4de6cec5",
+  "version": "2.1.9-alpha.45+a0c250fd",
   "author": "Kyle Gray <kyle.gray@availity.com>",
   "description": "Favorite Heart for favoriting items such as links/resources etc.",
   "main": "index.js",
@@ -21,7 +21,7 @@
   },
   "dependencies": {
     "@availity/analytics-core": "^2.6.0",
-    "@availity/hooks": "^1.6.5-alpha.42+4de6cec5",
+    "@availity/hooks": "^1.6.5-alpha.45+a0c250fd",
     "@availity/message-core": "4.0.21-alpha.4",
     "array-sort": "^1.0.0",
     "lodash.get": "^4.4.2",
@@ -45,5 +45,5 @@
     "react": "^16.8.0",
     "reactstrap": "^8.0.0 || ^7.1.0"
   },
-  "gitHead": "4de6cec5d043e050c35e79b15739dc21e34d7c17"
+  "gitHead": "a0c250fd8b4a0ccdc5c99b4355918e47c783017a"
 }
