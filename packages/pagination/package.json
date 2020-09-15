@@ -27,7 +27,7 @@
     "lodash.isfunction": "^3.0.9",
     "prop-types": "^15.5.8",
     "react-block-ui": "^1.1.3",
-    "react-infinite-scroll-component": "^4.5.3",
+    "react-infinite-scroll-component": "^5.1.0",
     "react-use": "^13.27.0"
   },
   "devDependencies": {
