@@ -89,4 +89,16 @@ describe('AvLink', () => {
 
     expect(onClick.mock.calls[0][1]).toBe('/public/apps/my-app');
   });
+
+  test('should do getTarget transformation', () => {
+    const { getByTestId } = render(
+      <AvLink loadApp={false} href="https://github.com/Availity" target="TAB">
+        My App
+      </AvLink>
+    );
+
+    const tag = getByTestId('av-link-tag');
+
+    expect(tag.getAttribute('target')).toBe('_blank');
+  });
 });
