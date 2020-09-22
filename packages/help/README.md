@@ -51,4 +51,4 @@ The bootstrap 3 color of the icon. **Default:**`primary`
 
 ### `size?: string`
 
-The tag to use in the link that gets rendered. **Default:** `1x`
+The size of the icon. **Default:** `1x`
