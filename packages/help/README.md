@@ -29,7 +29,7 @@ import HelpProvider, { Help } from '@availity/help';
 ```jsx viewCode=true
 import { FieldHelpIcon } from '@availity/help';
 <div>
-  Select A Provider <FieldLevelIcon id="Express_Entry_Fields" />
+  Select A Provider <FieldHelpIcon id="Express_Entry_Fields" />
 </div>;
 ```
 
