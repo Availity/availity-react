@@ -5,12 +5,6 @@
 
 [![Version](https://img.shields.io/npm/v/@availity/favorites.svg?style=for-the-badge)](https://www.npmjs.com/package/@availity/help)
 
-## <!-- ## [Documentation](https://availity.github.io/availity-react/components/help) -->
-
-title: Help
-summary: Help Wrapper for Oxygen Learning Docs on the Portal, Field Level support Icon
-
----
 
 ## Installation
 
