@@ -112,7 +112,7 @@ export const triggerFieldHelp = id => {
 export const FieldHelpIcon = ({ color, size, id }) => {
   return (
     <Icon
-      data-testid="test"
+      data-testid="field-help-icon"
       name="help-circle"
       size={size}
       color={color}

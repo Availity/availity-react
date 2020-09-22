@@ -55,7 +55,7 @@ describe('Field Help', () => {
   test('expects message to be sent on click', () => {
     const { getByTestId } = render(<FieldHelpIcon id="Express_Entry_Fields" />);
 
-    const node = getByTestId('test');
+    const node = getByTestId('field-help-icon');
     fireEvent.click(node);
     expect(avMessageMock.send).toHaveBeenCalledWith({
       event: constants.OPEN_FIELD_HELP,
