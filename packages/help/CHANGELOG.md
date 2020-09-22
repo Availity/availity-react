@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [1.3.0](https://github.com/Availity/availity-react/compare/@availity/help@1.2.1...@availity/help@1.3.0) (2020-09-22)
+
+
+### Features
+
+* **help:** update help readme prop description ([1e9b6d0](https://github.com/Availity/availity-react/commit/1e9b6d08fb12bab3fd82240f94e25e0b12fecf6b))
+
+
+
+
+
 ## [1.2.1](https://github.com/Availity/availity-react/compare/@availity/help@1.2.0...@availity/help@1.2.1) (2020-09-22)
 
 **Note:** Version bump only for package @availity/help
