@@ -7,12 +7,14 @@ import React, {
 } from 'react';
 import PropTypes from 'prop-types';
 import avMessages from '@availity/message-core';
+import Icon from '@availity/icon';
 
 const HelpContext = createContext();
 
 export const constants = {
   SET_HELP: 'nav:help:set',
   RESET_HELP: 'nav:help:reset',
+  OPEN_FIELD_HELP: 'nav:help:field',
 };
 
 const HelpProvider = ({ children }) => {
@@ -100,7 +102,34 @@ export const Help = ({ type, id, children }) => {
 
   return children;
 };
+export const triggerFieldHelp = id => {
+  avMessages.send({
+    event: constants.OPEN_FIELD_HELP,
+    id,
+  });
+};
 
+export const FieldHelpIcon = ({ color, size, id }) => {
+  return (
+    <Icon
+      name="help-circle"
+      size={size}
+      color={color}
+      onClick={() => triggerFieldHelp(id)}
+    />
+  );
+};
+
+FieldHelpIcon.propTypes = {
+  color: PropTypes.string,
+  size: PropTypes.string,
+  id: PropTypes.string.isRequired,
+};
+
+FieldHelpIcon.defaultProps = {
+  size: '1x',
+  color: 'primary',
+};
 Help.propTypes = {
   type: PropTypes.string,
   id: PropTypes.string.isRequired,
