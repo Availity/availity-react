@@ -1,7 +1,7 @@
 import React from 'react';
-import { render, cleanup } from '@testing-library/react';
+import { render, cleanup, fireEvent } from '@testing-library/react';
 import avMessageMock from '@availity/message-core';
-import HelpProvider, { Help, constants } from '../index';
+import HelpProvider, { Help, constants, FieldHelpIcon } from '../index';
 
 jest.mock('@availity/message-core');
 
@@ -43,6 +43,23 @@ describe('Help', () => {
     expect(avMessageMock.send).toHaveBeenCalledWith({
       event: constants.RESET_HELP,
       id: 'some-id',
+    });
+  });
+});
+
+describe('Field Help', () => {
+  test('it renders help Icon', () => {
+    render(<FieldHelpIcon id="Express_Entry_Fields" />);
+  });
+
+  test('expects message to be sent on click', () => {
+    const { getByTestId } = render(<FieldHelpIcon id="Express_Entry_Fields" />);
+
+    const node = getByTestId('field-help-icon');
+    fireEvent.click(node);
+    expect(avMessageMock.send).toHaveBeenCalledWith({
+      event: constants.OPEN_FIELD_HELP,
+      id: 'Express_Entry_Fields',
     });
   });
 });
