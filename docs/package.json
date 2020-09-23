@@ -1,7 +1,7 @@
 {
   "private": true,
   "name": "@availity/react-docs",
-  "version": "4.20.3",
+  "version": "4.20.4",
   "license": "MIT",
   "keywords": [
     "react",
@@ -37,7 +37,7 @@
     "@availity/gatsby-theme-docs": "^4.0.1",
     "@availity/hooks": "^1.8.0",
     "@availity/icon": "^0.7.17",
-    "@availity/link": "^2.1.17",
+    "@availity/link": "^2.2.0",
     "@availity/list-group": "^1.2.20",
     "@availity/list-group-item": "^1.2.19",
     "@availity/localstorage-core": "^3.0.0",
