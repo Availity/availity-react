@@ -120,6 +120,46 @@ describe('Select', () => {
     });
   });
 
+  test('select all submits', async () => {
+    const onSubmit = jest.fn();
+    const { container, getByText } = render(
+      <Form
+        initialValues={{
+          selectAll: undefined,
+        }}
+        onSubmit={onSubmit}
+        validationSchema={multiValueSchema('selectAll', true, 1, 4)}
+      >
+        <Select
+          name="selectAll"
+          isMulti
+          options={options}
+          data-testid="single-select"
+          allowSelectAll
+        />
+        <Button type="submit">Submit</Button>
+      </Form>
+    );
+
+    await selectItem(container, getByText, 'Select all');
+
+    await fireEvent.click(getByText('Submit'));
+
+    await wait(() => {
+      expect(onSubmit).toHaveBeenCalledWith(
+        expect.objectContaining({
+          selectAll: [
+            'value for option 1',
+            'value for option 2',
+            'value for option 3',
+            'value for option 4',
+          ],
+        }),
+        expect.anything()
+      );
+    });
+  });
+
   test('renders error class with invalid', async () => {
     const { container, getByText } = render(
       <Form
