@@ -72,7 +72,7 @@ Allow new items to be created if not found. **Default:** `false`.
 
 ### `allowSelectAll?: boolean`
 
-Adds a `Select all` option ( when `isMulti` is `true`).
+Adds a `Select all` option ( when `isMulti` is `true`). Note: allowSelectAll does not support use of the `loadOptions` prop.
 
 ### `autofill?: boolean | AutoFillType`
 

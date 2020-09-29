@@ -45,6 +45,17 @@ const selectAllOption = {
   value: '*',
 };
 
+const validateSelectAllOptions = options => {
+  const filtered = options.filter(
+    option => option.value === selectAllOption.value
+  );
+  if (filtered.length > 0) {
+    console.warn(
+      `An option contains the value: ${selectAllOption.value}. This value is used by the Select All option.`
+    );
+  }
+};
+
 const Select = ({
   name,
   validate,
@@ -222,6 +233,7 @@ const Select = ({
         values[name] === undefined ||
         values[name].length < [...options, ...newOptions].length
       ) {
+        validateSelectAllOptions([...options, ...newOptions]);
         selectOptions = [selectAllOption, ...options, ...newOptions];
       } else {
         selectOptions = [...options, ...newOptions];
@@ -229,6 +241,12 @@ const Select = ({
     } else {
       selectOptions = [...options, ...newOptions];
     }
+  }
+
+  if (attributes.loadOptions && allowSelectAll) {
+    console.warn(
+      'Select all is not supported when loading options asynchronously'
+    );
   }
 
   return (
