@@ -50,6 +50,7 @@ const validateSelectAllOptions = options => {
     option => option.value === selectAllOption.value
   );
   if (filtered.length > 0) {
+    // eslint-disable-next-line no-console
     console.warn(
       `An option contains the value: ${selectAllOption.value}. This value is used by the Select All option.`
     );
@@ -244,9 +245,8 @@ const Select = ({
   }
 
   if (attributes.loadOptions && allowSelectAll) {
-    console.warn(
-      'Select all is not supported when loading options asynchronously'
-    );
+    // eslint-disable-next-line no-console
+    console.warn('allowSelectAll is ignored when loadOptions is defined.');
   }
 
   return (
