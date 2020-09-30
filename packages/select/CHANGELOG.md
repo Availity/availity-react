@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# 0.16.0 (2020-09-30)
+
+
+### Features
+
+* **select:** add allowSelectAll option when isMulti is true ([21953a9](https://github.com/Availity/availity-react/commit/21953a91e631291f470daf7f256a016934936ae2))
+
+
+
+
+
 # [0.15.0](https://github.com/Availity/availity-react/compare/@availity/select@0.14.0...@availity/select@0.15.0) (2020-08-18)
 
 

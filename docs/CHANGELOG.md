@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [4.21.0](https://github.com/Availity/availity-react/compare/@availity/react-docs@4.20.4...@availity/react-docs@4.21.0) (2020-09-30)
+
+
+### Features
+
+* **select:** add allowSelectAll option when isMulti is true ([21953a9](https://github.com/Availity/availity-react/commit/21953a91e631291f470daf7f256a016934936ae2))
+
+
+
+
+
 ## [4.20.4](https://github.com/Availity/availity-react/compare/@availity/react-docs@4.20.3...@availity/react-docs@4.20.4) (2020-09-23)
 
 **Note:** Version bump only for package @availity/react-docs
