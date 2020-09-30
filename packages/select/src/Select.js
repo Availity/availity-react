@@ -40,6 +40,23 @@ const areValueAndOptionValueEqual = (value, optionValue) => {
   return isEqual(value, optionValue);
 };
 
+const selectAllOption = {
+  label: 'Select all',
+  value: '*',
+};
+
+const validateSelectAllOptions = options => {
+  const filtered = options.filter(
+    option => option.value === selectAllOption.value
+  );
+  if (filtered.length > 0) {
+    // eslint-disable-next-line no-console
+    console.warn(
+      `An option contains the value: ${selectAllOption.value}. This value is used by the Select All option.`
+    );
+  }
+};
+
 const Select = ({
   name,
   validate,
@@ -51,6 +68,7 @@ const Select = ({
   onChange: onChangeCallback,
   autofill,
   creatable,
+  allowSelectAll,
   ...attributes
 }) => {
   const [
@@ -117,6 +135,13 @@ const Select = ({
   }
 
   const onChangeHandler = async newValue => {
+    if (
+      newValue.length > 0 &&
+      newValue[newValue.length - 1].value === selectAllOption.value
+    ) {
+      newValue = options;
+    }
+
     const newVal = prepValue(newValue);
     const isOverMax =
       maxLength &&
@@ -202,6 +227,28 @@ const Select = ({
     }
   };
 
+  let selectOptions;
+  if (!attributes.loadOptions) {
+    if (allowSelectAll && attributes.isMulti) {
+      if (
+        values[name] === undefined ||
+        values[name].length < [...options, ...newOptions].length
+      ) {
+        validateSelectAllOptions([...options, ...newOptions]);
+        selectOptions = [selectAllOption, ...options, ...newOptions];
+      } else {
+        selectOptions = [...options, ...newOptions];
+      }
+    } else {
+      selectOptions = [...options, ...newOptions];
+    }
+  }
+
+  if (attributes.loadOptions && allowSelectAll) {
+    // eslint-disable-next-line no-console
+    console.warn('allowSelectAll is ignored when loadOptions is defined.');
+  }
+
   return (
     <Tag
       {...field}
@@ -225,9 +272,7 @@ const Select = ({
       getOptionValue={getOptionValue}
       closeMenuOnSelect={!attributes.isMulti}
       components={components}
-      options={
-        !attributes.loadOptions ? [...options, ...newOptions] : undefined
-      }
+      options={selectOptions}
       defaultOptions
       styles={{
         ...styles,
@@ -316,6 +361,7 @@ Select.propTypes = {
   onChange: PropTypes.func,
   creatable: PropTypes.bool,
   autofill: PropTypes.oneOfType([PropTypes.bool, PropTypes.object]),
+  allowSelectAll: PropTypes.bool,
 };
 
 export default Select;
