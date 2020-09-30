@@ -12,17 +12,27 @@
 npm install @availity/help --save
 ```
 
-## Provider Example
+## Page Level Help Example
 
 ```jsx viewCode=true
 import HelpProvider, { Help } from '@availity/help';
 
 <HelpProvider>
-  <Help type="vendor" id="some-id-for-top-nav-context">
+  <Help type="provider" id="1234-5678-9101-1213">
     Some Content You May need documentation for.
   </Help>
 </HelpProvider>;
 ```
+## Page Level Help Props
+
+### `id: string`
+
+The page level help ID **Required**
+
+### `type: string`
+
+The page level type: ie.: provider, vendor, payer, insight.
+
 
 ## Field Level Help Icon Example
 
