@@ -31,7 +31,7 @@ The page level help ID **Required**
 
 ### `type: string`
 
-The page level type: ie.: provider, vendor, payer, insight.
+The page level help type: ie.: provider | vendor | payer | insight. **Required**
 
 
 ## Field Level Help Icon Example
