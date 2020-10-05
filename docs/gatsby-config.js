@@ -20,7 +20,7 @@ module.exports = {
         subtitle: 'React Components',
         contentDir: 'docs/source',
         description: 'Documentation for React Components',
-        gitRepo: 'availity/availity-react',
+        githubRepo: 'availity/availity-react',
         sidebarCategories: {
           null: [
             'index',
