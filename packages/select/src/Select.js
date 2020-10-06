@@ -231,8 +231,9 @@ const Select = ({
   if (!attributes.loadOptions) {
     if (allowSelectAll && attributes.isMulti) {
       if (
-        values[name] === undefined ||
-        values[name].length < [...options, ...newOptions].length
+        [...options, ...newOptions].length > 0 &&
+        (values[name] === undefined ||
+          values[name].length < [...options, ...newOptions].length)
       ) {
         validateSelectAllOptions([...options, ...newOptions]);
         selectOptions = [selectAllOption, ...options, ...newOptions];
