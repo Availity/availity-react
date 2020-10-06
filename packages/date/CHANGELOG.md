@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## 1.1.26 (2020-10-06)
+
+
+### Bug Fixes
+
+* **date:** setFieldValue even when value is not valid as a date/moment, in order for validation to work ([da76d6e](https://github.com/Availity/availity-react/commit/da76d6e0c0718ded0cd718b568fcc51deda1ed31))
+
+
+
+
+
 ## 1.1.25 (2020-07-30)
 
 **Note:** Version bump only for package @availity/date

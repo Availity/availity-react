@@ -3,6 +3,14 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [4.21.2](https://github.com/Availity/availity-react/compare/@availity/react-docs@4.21.1...@availity/react-docs@4.21.2) (2020-10-06)
+
+**Note:** Version bump only for package @availity/react-docs
+
+
+
+
+
 ## 4.21.1 (2020-10-06)
 
 **Note:** Version bump only for package @availity/react-docs
