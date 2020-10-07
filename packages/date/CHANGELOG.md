@@ -3,6 +3,22 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [2.0.0](https://github.com/Availity/availity-react/compare/@availity/date@1.1.26...@availity/date@2.0.0) (2020-10-07)
+
+
+### Bug Fixes
+
+* **date:** removing custom keys for date range ([ea8a774](https://github.com/Availity/availity-react/commit/ea8a7743872805791e677bcafa6efc5de83033fc))
+
+
+### BREAKING CHANGES
+
+* **date:** custom keys for start and end dates are no longer supported
+
+
+
+
+
 ## 1.1.26 (2020-10-06)
 
 
