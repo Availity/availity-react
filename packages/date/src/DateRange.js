@@ -60,8 +60,6 @@ const DateRange = ({
   className,
   format,
   calendarIcon,
-  startKey,
-  endKey,
   datepickerProps,
   'data-testid': dataTestId,
   datepicker,
@@ -79,8 +77,8 @@ const DateRange = ({
   const startId = `${(id || name).replace(/[^a-zA-Z0-9]/gi, '')}-start`;
   const endId = `${(id || name).replace(/[^a-zA-Z0-9]/gi, '')}-end`;
 
-  const startValue = value[startKey] || '';
-  const endValue = value[endKey] || '';
+  const startValue = value.startDate || '';
+  const endValue = value.endDate || '';
 
   const startValueMoment = useMemo(
     () => moment(startValue, [isoDateFormat, format, 'MMDDYYYY', 'YYYYMMDD']),
@@ -112,7 +110,7 @@ const DateRange = ({
 
   // For updating when we delete the current input
   const onInputChange = val => {
-    const isStart = focusedInput === startKey;
+    const isStart = focusedInput === 'startDate';
     const date = moment(
       val,
       [isoDateFormat, format, 'MMDDYYYY', 'YYYYMMDD'],
@@ -124,14 +122,14 @@ const DateRange = ({
     setFieldValue(
       name,
       {
-        [startKey]: isStart ? valueToSet : startValue,
-        [endKey]: !isStart ? valueToSet : endValue,
+        startDate: isStart ? valueToSet : startValue,
+        endDate: !isStart ? valueToSet : endValue,
       },
       false
     );
 
     if (focusedInput && isStart && date.isValid()) {
-      setFocusedInput(endKey);
+      setFocusedInput('endDate');
     } else if (focusedInput && !isStart && date.isValid()) {
       setFocusedInput();
     }
@@ -143,8 +141,8 @@ const DateRange = ({
     setFieldValue(
       name,
       {
-        [startKey]: _startDate,
-        [endKey]: _endDate,
+        startDate: _startDate,
+        endDate: _endDate,
       },
       false
     );
@@ -155,8 +153,8 @@ const DateRange = ({
 
     if (onChange) {
       onChange({
-        [startKey]: _startDate,
-        [endKey]: _endDate,
+        startDate: _startDate,
+        endDate: _endDate,
       });
     }
   };
@@ -173,8 +171,8 @@ const DateRange = ({
         setFieldValue(
           name,
           {
-            [startKey]: value,
-            [endKey]: value,
+            startDate: value,
+            endDate: value,
           },
           false
         );
@@ -362,8 +360,6 @@ DateRange.propTypes = {
   format: PropTypes.string,
   datepicker: PropTypes.bool,
   datepickerProps: PropTypes.object,
-  startKey: PropTypes.string,
-  endKey: PropTypes.string,
   'data-testid': PropTypes.string,
   autoSync: PropTypes.bool,
   ranges: PropTypes.oneOfType([
@@ -377,8 +373,6 @@ DateRange.propTypes = {
 DateRange.defaultProps = {
   calendarIcon: <Icon name="calendar" data-testid="calendar-icon" />,
   format: isoDateFormat,
-  startKey: 'startDate',
-  endKey: 'endDate',
   datepicker: true,
 };
 
