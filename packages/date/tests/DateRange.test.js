@@ -8,7 +8,6 @@ import {
 } from '@testing-library/react';
 import { Button } from 'reactstrap';
 import { Form } from '@availity/form';
-import { dateRange } from '@availity/yup';
 import { object, string } from 'yup';
 import moment from 'moment';
 import { DateRange } from '..';
@@ -274,68 +273,6 @@ describe('DateRange', () => {
           dateRange: {
             startDate: moment().format('YYYY-MM-DD'),
             endDate: moment().format('YYYY-MM-DD'),
-          },
-        }),
-        expect.anything()
-      );
-    });
-  });
-
-  test('works with custom start/end keys', async () => {
-    const onSubmit = jest.fn();
-    const schema = object().shape({
-      dateRange: dateRange({
-        startKey: 'customStartKey',
-        endKey: 'customEndKey',
-      }),
-    });
-
-    const { container, getByText } = render(
-      <Form
-        initialValues={{
-          dateRange: undefined,
-        }}
-        onSubmit={onSubmit}
-        validationSchema={schema}
-      >
-        <DateRange
-          id="dateRange"
-          name="dateRange"
-          startKey="customStartKey"
-          endKey="customEndKey"
-        />
-        <Button type="submit">Submit</Button>
-      </Form>
-    );
-
-    // Simulate user entering start date
-    const start = container.querySelector('#dateRange-start');
-
-    fireEvent.focus(start);
-
-    fireEvent.change(start, {
-      target: {
-        value: '01/04/1997',
-      },
-    });
-
-    // Simulate user entering end date
-    const end = container.querySelector('#dateRange-end');
-
-    fireEvent.change(end, {
-      target: {
-        value: '01/05/1997',
-      },
-    });
-
-    fireEvent.click(getByText('Submit'));
-
-    await wait(() => {
-      expect(onSubmit).toHaveBeenCalledWith(
-        expect.objectContaining({
-          dateRange: {
-            customStartKey: '1997-01-04',
-            customEndKey: '1997-01-05',
           },
         }),
         expect.anything()
