@@ -1,6 +1,7 @@
 import React, { useRef } from 'react';
 import PropTypes from 'prop-types';
 import UploadCore from '@availity/upload-core';
+import { avFilesDeliveryApi } from '@availity/api-axios';
 import { Input, InputGroup } from 'reactstrap';
 import { FormGroup, Feedback } from '@availity/form';
 import Dropzone from 'react-dropzone';
@@ -59,6 +60,16 @@ const Upload = ({
       );
     }
 
+    // eslint-disable-next-line unicorn/consistent-function-scoping
+    const fileDeliveryOnUpload = (data, config, upload) => {
+      data.deliveries[0].fileURI = upload.fileURI;
+      try {
+        avFilesDeliveryApi.uploadFilesDelivery(data, config);
+      } catch (error) {
+        console.warn('File delivery was not complete', error);
+      }
+    };
+
     const newFiles = fieldValue.concat(
       selectedFiles.map(file => {
         const upload = new UploadCore(file, {
@@ -76,6 +87,8 @@ const Upload = ({
           upload.start();
         }
         if (rest.onFileUpload) rest.onFileUpload(upload);
+        if (rest.fileDeliveryOnUpload)
+          fileDeliveryOnUpload(rest.data, rest.config, upload);
         return upload;
       })
     );
@@ -121,11 +134,13 @@ const Upload = ({
             >
               {({ getRootProps, getInputProps, isDragActive }) => (
                 <section>
-                  <div {...getRootProps({
-                        className: isDragActive
-                          ? 'file-drop-active'
-                          : 'file-drop',
-                      })}>
+                  <div
+                    {...getRootProps({
+                      className: isDragActive
+                        ? 'file-drop-active'
+                        : 'file-drop',
+                    })}
+                  >
                     <input data-testid="file-picker" {...getInputProps()} />
                     <p>
                       <strong>Drag and Drop</strong>
