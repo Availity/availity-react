@@ -70,7 +70,7 @@ module.exports = {
         },
 
         theme: {
-          // customCss: require.resolve('./src/theme/ReactLiveScope/index.scss'),
+          customCss: require.resolve('./src/theme/ReactLiveScope/index.scss'),
         },
       },
     ],
