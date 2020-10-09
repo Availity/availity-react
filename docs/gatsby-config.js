@@ -123,6 +123,7 @@ module.exports = {
                 'components/hooks/use-providers',
               ],
             },
+            'components/help',
             'components/link',
             'components/page-header',
             {

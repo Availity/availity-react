@@ -1,38 +1,21 @@
-import { useState, useEffect } from 'react';
+import { useQuery } from 'react-query';
 import { avRegionsApi } from '@availity/api-axios';
 
-export default () => {
-  const [currentRegion, setCurrentRegion] = useState();
-  const [loading, setLoading] = useState(true);
-  const [error, setError] = useState();
+async function fetchRegion() {
+  const response = await avRegionsApi.getCurrentRegion();
 
-  useEffect(() => {
-    let ignore = false;
+  return {
+    code: response.data.regions[0].id,
+    value: response.data.regions[0].value,
+  };
+}
 
-    const fetchCurrentRegion = async () => {
-      setLoading(true);
-      try {
-        const response = await avRegionsApi.getCurrentRegion();
+export default function useCurrentRegion(options) {
+  const { data = null, isFetching, error } = useQuery(
+    ['region'],
+    fetchRegion,
+    options
+  );
 
-        if (!ignore) {
-          setCurrentRegion({
-            code: response.data.regions[0].id,
-            value: response.data.regions[0].value,
-          });
-        }
-      } catch (error_) {
-        if (!ignore) setError(error_);
-      }
-
-      setLoading(false);
-    };
-
-    fetchCurrentRegion();
-
-    return () => {
-      ignore = true;
-    };
-  }, []);
-
-  return [currentRegion, loading, error];
-};
+  return [data, isFetching, error];
+}

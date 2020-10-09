@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# 2.2.0 (2020-09-23)
+
+
+### Features
+
+* **link:** migrating from spaces link branch ([e923de3](https://github.com/Availity/availity-react/commit/e923de36978b51e3f4c2bd0d49e3975b72922eb3))
+
+
+
+
+
 ## 2.1.17 (2020-04-30)
 
 **Note:** Version bump only for package @availity/link

@@ -248,4 +248,39 @@ describe('PageHeader', () => {
 
     expect(spaceBreadcrumb.getAttribute('href')).toEqual('/custom-link');
   });
+
+  test('should render custom crumbs', async () => {
+    avSlotMachineApi.create.mockResolvedValue({
+      data: {
+        data: {
+          spaces: {
+            totalCount: 1,
+            page: 1,
+            perPage: 1,
+            spaces: [
+              { id: '1', name: 'My Space', link: { url: '/custom-link' } },
+            ],
+          },
+        },
+      },
+    });
+
+    const { getByText } = render(
+      <Spaces spaceIds={['1']} clientId="my-client-id">
+        <PageHeader
+          appName="Payer Space"
+          spaceId="1"
+          crumbs={[{ name: 'Custom Crumb', url: '/my-custom-crumb' }]}
+        />
+      </Spaces>
+    );
+
+    const spaceBreadcrumb = await waitForElement(() =>
+      getByText('Custom Crumb')
+    );
+
+    expect(spaceBreadcrumb.tagName.toLowerCase()).toBe('a');
+
+    expect(spaceBreadcrumb.getAttribute('href')).toEqual('/my-custom-crumb');
+  });
 });

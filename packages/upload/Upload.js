@@ -168,13 +168,17 @@ class Upload extends Component {
                 onDrop={this.onDrop}
                 multiple={multiple}
                 maxSize={maxSize}
-                className="file-drop"
-                activeClassName="file-drop-active"
                 accept={allowedFileTypes}
               >
-                {({ getRootProps, getInputProps }) => (
+                {({ getRootProps, getInputProps, isDragActive }) => (
                   <section>
-                    <div {...getRootProps()}>
+                    <div
+                      {...getRootProps({
+                        className: isDragActive
+                          ? 'file-drop-active'
+                          : 'file-drop',
+                      })}
+                    >
                       <input data-testid="file-picker" {...getInputProps()} />
                       <p>
                         <strong>Drag and Drop</strong>

@@ -9,6 +9,22 @@ export const getUrl = (url = '', loadApp, absolute) => {
   return `/public/apps/home/#!/loadApp?appUrl=${encodeURIComponent(url)}`;
 };
 
+export const getTarget = target => {
+  if (
+    !target ||
+    target === 'BODY' || // Thanos
+    target === 'newBody' || // hardcoded in spaces ( Bad practice )
+    target === '_self' // Actual way of doing it
+  ) {
+    return '_self';
+  }
+
+  if (target === 'TAB' || target === '_blank' || target === '_top') {
+    return '_blank';
+  }
+  return null;
+};
+
 // takes href and transforms it so that we can compare hostnames and other properties
 const getLocation = href => {
   const location = document.createElement('a');
@@ -38,6 +54,7 @@ const AvLink = ({
 }) => {
   const absolute = isAbsoluteUrl(href);
   const url = getUrl(href, loadApp, absolute);
+  target = getTarget(target);
 
   return (
     <Tag

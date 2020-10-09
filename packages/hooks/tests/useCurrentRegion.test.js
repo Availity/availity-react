@@ -24,7 +24,7 @@ const mockRegionApi = type => {
   } else if (type === 'invalid') {
     body = {
       config: { polling: false },
-      status: 200,
+      status: 400,
       statusText: 'Ok',
     };
   }
@@ -37,7 +37,7 @@ afterEach(() => {
 });
 
 const Component = () => {
-  const [region, loading, error] = useCurrentRegion();
+  const [region, loading, error] = useCurrentRegion({ retry: false });
 
   if (error) return <span data-testid="error">An error occurred.</span>;
 

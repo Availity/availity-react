@@ -3,6 +3,49 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [2.0.0](https://github.com/Availity/availity-react/compare/@availity/date@1.1.26...@availity/date@2.0.0) (2020-10-07)
+
+
+### Bug Fixes
+
+* **date:** removing custom keys for date range ([ea8a774](https://github.com/Availity/availity-react/commit/ea8a7743872805791e677bcafa6efc5de83033fc))
+
+
+### BREAKING CHANGES
+
+* **date:** custom keys for start and end dates are no longer supported
+
+
+
+
+
+## 1.1.26 (2020-10-06)
+
+
+### Bug Fixes
+
+* **date:** setFieldValue even when value is not valid as a date/moment, in order for validation to work ([da76d6e](https://github.com/Availity/availity-react/commit/da76d6e0c0718ded0cd718b568fcc51deda1ed31))
+
+
+
+
+
+## 1.1.25 (2020-07-30)
+
+**Note:** Version bump only for package @availity/date
+
+
+
+
+
+## 1.1.24 (2020-07-20)
+
+**Note:** Version bump only for package @availity/date
+
+
+
+
+
 ## [1.1.23](https://github.com/Availity/availity-react/compare/@availity/date@1.1.22...@availity/date@1.1.23) (2020-06-18)
 
 **Note:** Version bump only for package @availity/date

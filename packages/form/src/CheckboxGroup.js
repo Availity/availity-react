@@ -31,7 +31,7 @@ export const useCheckboxGroup = name => {
     }
   };
 
-  return { toggle, value: value.includes(name), ...rest };
+  return { toggle, value: value.indexOf(name) > -1, ...rest };
 };
 
 const CheckboxGroup = ({

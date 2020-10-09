@@ -5,6 +5,7 @@ import { Formik, Form as FForm } from 'formik';
 
 const Form = ({
   initialValues,
+  enableReinitialize,
   onSubmit,
   initialStatus,
   initialErrors,
@@ -18,6 +19,7 @@ const Form = ({
 }) => (
   <Formik
     initialValues={initialValues}
+    enableReinitialize={enableReinitialize}
     onSubmit={onSubmit}
     onReset={onReset}
     initialStatus={initialStatus}
@@ -37,6 +39,7 @@ const Form = ({
 
 Form.propTypes = {
   initialValues: PropTypes.object.isRequired,
+  enableReinitialize: PropTypes.bool,
   onSubmit: PropTypes.func,
   onReset: PropTypes.func,
   // eslint-disable-next-line react/forbid-prop-types

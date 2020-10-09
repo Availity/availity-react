@@ -16,7 +16,7 @@ export interface PageHeaderProps extends React.HTMLAttributes<HTMLDivElement> {
   iconColor?: string;
   branded?: boolean;
   payerId?: string;
-  component?: React.ReactType;
+  component?: React.ReactNode;
   feedback?: boolean;
   feedbackProps?: any;
   logo?: boolean;
@@ -25,8 +25,8 @@ export interface PageHeaderProps extends React.HTMLAttributes<HTMLDivElement> {
     | string;
   titleProps?: React.HTMLAttributes<HTMLDivElement>;
   renderRightContent?: React.FunctionComponent<RightContentProps>;
-  children?: React.ReactType;
-  crumbs?: CrumbType[] | React.ReactType;
+  children?: React.ReactNode;
+  crumbs?: CrumbType[] | React.ReactNode;
   iconSrc?: string;
   iconAlt?: string;
   clientId?: string;

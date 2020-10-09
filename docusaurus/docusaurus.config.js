@@ -1,8 +1,13 @@
 module.exports = {
-  plugins: ['sass-plugin', 'babel-plugin', 'mock-plugin', 'url-plugin'],
+  plugins: [
+    ['sass-plugin', { id: 'plugin-2' }],
+    'babel-plugin',
+    'mock-plugin',
+    'url-plugin',
+  ],
   themes: [
     '@docusaurus/theme-live-codeblock',
-    '@docusaurus/theme-search-algolia',
+    ['@docusaurus/theme-search-algolia', { id: '23' }],
   ],
   title: 'Availity React Docs',
   tagline: 'React components using Availity UIKit and Bootstrap 4',
@@ -12,19 +17,24 @@ module.exports = {
   organizationName: 'availity', // Usually your GitHub org/user name.
   projectName: 'availity-react', // Usually your repo name.
   themeConfig: {
-    disableDarkMode: true,
     algolia: {
       apiKey: 'eec0154a008662c32d440b7de7982cd2',
       indexName: 'availity',
     },
-    defaultDarkMode: true,
+    announcementBar: {
+      id: 'supportus',
+      content:
+        '⭐️ If you like Availity-React, give it a star on <a target="_blank" rel="noopener noreferrer" href="https://github.com/availity/availity-react">GitHub</a>! ⭐️',
+    },
+    colorMode: { defaultMode: 'dark', respectPrefersColorScheme: true },
+
     navbar: {
       title: 'Availity-React',
       logo: {
         alt: 'Availity Logo',
         src: 'img/favicon.ico',
       },
-      links: [
+      items: [
         {
           to: '/',
           activeBasePath: 'docs',
@@ -60,7 +70,7 @@ module.exports = {
         },
 
         theme: {
-          customCss: require.resolve('./src/theme/ReactLiveScope/index.scss'),
+          // customCss: require.resolve('./src/theme/ReactLiveScope/index.scss'),
         },
       },
     ],

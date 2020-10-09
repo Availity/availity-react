@@ -3,6 +3,81 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## 0.16.1 (2020-10-06)
+
+**Note:** Version bump only for package @availity/select
+
+
+
+
+
+# 0.16.0 (2020-09-30)
+
+
+### Features
+
+* **select:** add allowSelectAll option when isMulti is true ([21953a9](https://github.com/Availity/availity-react/commit/21953a91e631291f470daf7f256a016934936ae2))
+
+
+
+
+
+# [0.15.0](https://github.com/Availity/availity-react/compare/@availity/select@0.14.0...@availity/select@0.15.0) (2020-08-18)
+
+
+### Bug Fixes
+
+* **select:** pass params to all and check pageAll resp for data ([1f32afe](https://github.com/Availity/availity-react/commit/1f32afe5086f5bbd7e500a0c7e00adf8201571e9))
+
+
+### Features
+
+* **select:** add pageAllSearchBy and add to regionSelect ([f72a83c](https://github.com/Availity/availity-react/commit/f72a83c30ed88b10edf8865f7e5d296c66369359))
+* **select:** add pageAllSearchBy to tst ([9377f80](https://github.com/Availity/availity-react/commit/9377f807dab720e85391f5616294068b802b14c8))
+
+
+
+
+
+# 0.14.0 (2020-08-18)
+
+
+### Features
+
+* **select:** add pageAllSearchBy and add to regionSelect ([f72a83c](https://github.com/Availity/availity-react/commit/f72a83c30ed88b10edf8865f7e5d296c66369359))
+* **select:** add pageAllSearchBy to tst ([9377f80](https://github.com/Availity/availity-react/commit/9377f807dab720e85391f5616294068b802b14c8))
+
+
+
+
+
+## [0.13.6](https://github.com/Availity/availity-react/compare/@availity/select@0.13.5...@availity/select@0.13.6) (2020-07-30)
+
+**Note:** Version bump only for package @availity/select
+
+
+
+
+
+## [0.13.5](https://github.com/Availity/availity-react/compare/@availity/select@0.13.4...@availity/select@0.13.5) (2020-07-21)
+
+
+### Bug Fixes
+
+* **select:** fixes raw option being returned from getViewValue by doing a deep comparison ([27a6c8f](https://github.com/Availity/availity-react/commit/27a6c8fef7c943d1207b4e62195f09b3c0826a3d))
+
+
+
+
+
+## 0.13.4 (2020-07-20)
+
+**Note:** Version bump only for package @availity/select
+
+
+
+
+
 ## [0.13.3](https://github.com/Availity/availity-react/compare/@availity/select@0.13.2...@availity/select@0.13.3) (2020-06-22)
 
 

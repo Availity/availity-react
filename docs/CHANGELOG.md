@@ -3,6 +3,144 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [4.21.3](https://github.com/Availity/availity-react/compare/@availity/react-docs@4.21.2...@availity/react-docs@4.21.3) (2020-10-07)
+
+**Note:** Version bump only for package @availity/react-docs
+
+
+
+
+
+## [4.21.2](https://github.com/Availity/availity-react/compare/@availity/react-docs@4.21.1...@availity/react-docs@4.21.2) (2020-10-06)
+
+**Note:** Version bump only for package @availity/react-docs
+
+
+
+
+
+## 4.21.1 (2020-10-06)
+
+**Note:** Version bump only for package @availity/react-docs
+
+
+
+
+
+# [4.21.0](https://github.com/Availity/availity-react/compare/@availity/react-docs@4.20.4...@availity/react-docs@4.21.0) (2020-09-30)
+
+
+### Features
+
+* **select:** add allowSelectAll option when isMulti is true ([21953a9](https://github.com/Availity/availity-react/commit/21953a91e631291f470daf7f256a016934936ae2))
+
+
+
+
+
+## [4.20.4](https://github.com/Availity/availity-react/compare/@availity/react-docs@4.20.3...@availity/react-docs@4.20.4) (2020-09-23)
+
+**Note:** Version bump only for package @availity/react-docs
+
+
+
+
+
+## [4.20.3](https://github.com/Availity/availity-react/compare/@availity/react-docs@4.20.2...@availity/react-docs@4.20.3) (2020-09-01)
+
+**Note:** Version bump only for package @availity/react-docs
+
+
+
+
+
+## [4.20.2](https://github.com/Availity/availity-react/compare/@availity/react-docs@4.20.1...@availity/react-docs@4.20.2) (2020-08-28)
+
+**Note:** Version bump only for package @availity/react-docs
+
+
+
+
+
+## [4.20.1](https://github.com/Availity/availity-react/compare/@availity/react-docs@4.20.0...@availity/react-docs@4.20.1) (2020-08-18)
+
+**Note:** Version bump only for package @availity/react-docs
+
+
+
+
+
+# [4.20.0](https://github.com/Availity/availity-react/compare/@availity/react-docs@4.19.5...@availity/react-docs@4.20.0) (2020-08-18)
+
+
+### Features
+
+* **select:** add pageAllSearchBy and add to regionSelect ([f72a83c](https://github.com/Availity/availity-react/commit/f72a83c30ed88b10edf8865f7e5d296c66369359))
+
+
+
+
+
+## [4.19.5](https://github.com/Availity/availity-react/compare/@availity/react-docs@4.19.4...@availity/react-docs@4.19.5) (2020-08-13)
+
+**Note:** Version bump only for package @availity/react-docs
+
+
+
+
+
+## [4.19.4](https://github.com/Availity/availity-react/compare/@availity/react-docs@4.19.3...@availity/react-docs@4.19.4) (2020-07-30)
+
+**Note:** Version bump only for package @availity/react-docs
+
+
+
+
+
+## [4.19.3](https://github.com/Availity/availity-react/compare/@availity/react-docs@4.19.2...@availity/react-docs@4.19.3) (2020-07-21)
+
+**Note:** Version bump only for package @availity/react-docs
+
+
+
+
+
+## [4.19.2](https://github.com/Availity/availity-react/compare/@availity/react-docs@4.19.1...@availity/react-docs@4.19.2) (2020-07-20)
+
+**Note:** Version bump only for package @availity/react-docs
+
+
+
+
+
+## [4.19.1](https://github.com/Availity/availity-react/compare/@availity/react-docs@4.19.0...@availity/react-docs@4.19.1) (2020-07-08)
+
+**Note:** Version bump only for package @availity/react-docs
+
+
+
+
+
+# [4.19.0](https://github.com/Availity/availity-react/compare/@availity/react-docs@4.18.5...@availity/react-docs@4.19.0) (2020-07-07)
+
+
+### Features
+
+* **help:** added new help for oxygen ([08cc605](https://github.com/Availity/availity-react/commit/08cc605669f7a256eb1b9759ff8c103035ee9acf))
+* **help:** added new provider element for oxygen docs in top nav PF-739 ([b4a536f](https://github.com/Availity/availity-react/commit/b4a536f50fb768e0e900b0a95cf452c86b0c06a4))
+
+
+
+
+
+## [4.18.5](https://github.com/Availity/availity-react/compare/@availity/react-docs@4.18.4...@availity/react-docs@4.18.5) (2020-06-29)
+
+**Note:** Version bump only for package @availity/react-docs
+
+
+
+
+
 ## [4.18.4](https://github.com/Availity/availity-react/compare/@availity/react-docs@4.18.3...@availity/react-docs@4.18.4) (2020-06-24)
 
 **Note:** Version bump only for package @availity/react-docs

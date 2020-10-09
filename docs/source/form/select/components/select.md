@@ -35,7 +35,7 @@ import '@availity/yup';
   <Button className="mt-3" color="primary" type="submit">
     Submit
   </Button>
-</Form>
+</Form>;
 ```
 
 ## Props
@@ -70,11 +70,15 @@ Ref passed to `react-select-async-paginate` component if in async mode.
 
 Allow new items to be created if not found. **Default:** `false`.
 
+### `allowSelectAll?: boolean`
+
+Adds a `Select all` option ( when `isMulti` is `true`). Note: `allowSelectAll` is ignored when `loadOptions` is defined.
+
 ### `autofill?: boolean | AutoFillType`
 
-If `true`, when the value of the dropdown changes, if the `isMulti` prop is `false` _and_ the new value of the dropdown is an object, all fields on the form corresponding to the new value are auto-filled. In order for a field to be auto-filled, the `name` property on the field _must_ match the key inside the new value. 
+If `true`, when the value of the dropdown changes, if the `isMulti` prop is `false` _and_ the new value of the dropdown is an object, all fields on the form corresponding to the new value are auto-filled. In order for a field to be auto-filled, the `name` property on the field _must_ match the key inside the new value.
 
-For example, if the new value is `{ "payer": "Availity" }`, in order for the payer input in the form to be auto-filled to "Availity", the `name` prop on the input must be "payer". 
+For example, if the new value is `{ "payer": "Availity" }`, in order for the payer input in the form to be auto-filled to "Availity", the `name` prop on the input must be "payer".
 
 If `autofill` is an object, when the value of the dropdown changes, if the `isMulti` prop is `false` _and_ the new value of the dropdown is an object, all fields on the form corresponding to the keys in the `autofill` prop will be auto-filled.
 
