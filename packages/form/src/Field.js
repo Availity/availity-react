@@ -10,7 +10,7 @@ import {
   InputGroupAddon,
 } from 'reactstrap';
 import uuid from 'uuid/v4';
-import { Feedback, FormGroup, Input } from '@availity/form';
+import { Feedback, FormGroup, Input } from './';
 
 const colSizes = ['xs', 'sm', 'md', 'lg', 'xl'];
 
