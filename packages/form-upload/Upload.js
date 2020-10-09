@@ -1,4 +1,4 @@
-import React, { useRef } from 'react';
+import React, { useRef, useState } from 'react';
 import PropTypes from 'prop-types';
 import UploadCore from '@availity/upload-core';
 import { avFilesDeliveryApi } from '@availity/api-axios';
@@ -13,6 +13,15 @@ import uuid from 'uuid/v4';
 import FilePickerBtn from './FilePickerBtn';
 import FileList from './FileList';
 import './styles.scss';
+
+const fileDeliveryOnUpload = (data, config, upload) => {
+  data.deliveries[0].fileURI = upload.references[0];
+  try {
+    avFilesDeliveryApi.uploadFilesDelivery(data, config);
+  } catch (error) {
+    console.warn('File delivery was not complete', error);
+  }
+};
 
 const Upload = ({
   feedbackClass,
@@ -29,6 +38,7 @@ const Upload = ({
 }) => {
   const input = useRef(null);
   const [field, metadata] = useField(name);
+  const [upload, setUpload] = useState(null);
   const { setFieldValue } = useFormikContext();
   const classes = classNames(
     className,
@@ -60,16 +70,6 @@ const Upload = ({
       );
     }
 
-    // eslint-disable-next-line unicorn/consistent-function-scoping
-    const fileDeliveryOnUpload = (data, config, upload) => {
-      data.deliveries[0].fileURI = upload.fileURI;
-      try {
-        avFilesDeliveryApi.uploadFilesDelivery(data, config);
-      } catch (error) {
-        console.warn('File delivery was not complete', error);
-      }
-    };
-
     const newFiles = fieldValue.concat(
       selectedFiles.map(file => {
         const upload = new UploadCore(file, {
@@ -87,17 +87,21 @@ const Upload = ({
           upload.start();
         }
         if (rest.onFileUpload) rest.onFileUpload(upload);
-        if (rest.fileDeliveryOnUpload)
-          fileDeliveryOnUpload(rest.data, rest.config, upload);
+
         return upload;
       })
     );
 
+    setUpload(newFiles);
     setFieldValue(name, newFiles, true);
   };
 
   const handleFileInputChange = event => {
     setFiles(event.target.files);
+
+    if (rest.fileDeliveryOnUpload) {
+      fileDeliveryOnUpload(rest.data, rest.config, upload);
+    }
   };
 
   const onDrop = (acceptedFiles, fileRejections) => {
@@ -194,6 +198,9 @@ Upload.propTypes = {
   allowedFileTypes: PropTypes.arrayOf(PropTypes.string),
   onFileUpload: PropTypes.func,
   onFileRemove: PropTypes.func,
+  fileDeliveryOnUpload: PropTypes.bool,
+  data: PropTypes.object,
+  config: PropTypes.object,
   maxSize: PropTypes.number,
   max: PropTypes.number,
   multiple: PropTypes.bool,
@@ -209,6 +216,7 @@ Upload.defaultProps = {
   multiple: true,
   disabled: false,
   showFileDrop: false,
+  fileDeliveryOnUpload: false,
 };
 
 export default Upload;
