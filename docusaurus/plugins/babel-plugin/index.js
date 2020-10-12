@@ -1,6 +1,6 @@
 module.exports = () => {
   return {
-    name: 'sass-plugin',
+    name: 'babel-plugin',
     configureWebpack() {
       return {
         module: {

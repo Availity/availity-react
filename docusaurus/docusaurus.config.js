@@ -1,13 +1,14 @@
 module.exports = {
   plugins: [
-    ['sass-plugin', { id: 'plugin-2' }],
+    'docusaurus-plugin-sass',
+    // ['sass-plugin', { id: 'plugin-2' }],
     'babel-plugin',
     'mock-plugin',
     'url-plugin',
   ],
   themes: [
     '@docusaurus/theme-live-codeblock',
-    ['@docusaurus/theme-search-algolia', { id: '23' }],
+    ['@docusaurus/theme-search-algolia', { id: '01' }],
   ],
   title: 'Availity React Docs',
   tagline: 'React components using Availity UIKit and Bootstrap 4',
@@ -23,6 +24,8 @@ module.exports = {
     },
     announcementBar: {
       id: 'supportus',
+      backgroundColor: 'orange',
+      textColor: 'black',
       content:
         '⭐️ If you like Availity-React, give it a star on <a target="_blank" rel="noopener noreferrer" href="https://github.com/availity/availity-react">GitHub</a>! ⭐️',
     },
