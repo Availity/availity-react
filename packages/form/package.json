@@ -23,7 +23,7 @@
   "dependencies": {
     "classnames": "^2.2.6",
     "prop-types": "^15.5.8",
-    "uuid": "^3.3.3"
+    "uuid": "^8.3.1"
   },
   "devDependencies": {
     "formik": "2.1.4",
