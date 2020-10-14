@@ -12,7 +12,7 @@
           {
             "type": "link",
             "label": "Introduction",
-            "href": "/intro"
+            "href": "/"
           },
           {
             "type": "link",
@@ -659,6 +659,6 @@
     "/form/upload/index": "someSidebar",
     "/form/upload/upload": "someSidebar",
     "/form/upload/upload-progress-bar": "someSidebar",
-    "/intro": "someSidebar"
+    "/": "someSidebar"
   }
 }

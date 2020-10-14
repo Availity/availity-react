@@ -581,7 +581,7 @@
             "/form/upload/index": "someSidebar",
             "/form/upload/upload": "someSidebar",
             "/form/upload/upload-progress-bar": "someSidebar",
-            "/intro": "someSidebar"
+            "/": "someSidebar"
           },
           "docs": [
             {
@@ -1761,7 +1761,7 @@
               "sidebar": "someSidebar",
               "previous": {
                 "title": "Introduction",
-                "permalink": "/intro"
+                "permalink": "/"
               },
               "next": {
                 "title": "Getting Started",
@@ -2401,12 +2401,12 @@
             {
               "unversionedId": "intro",
               "id": "intro",
-              "isDocsHomePage": false,
+              "isDocsHomePage": true,
               "title": "Introduction",
               "description": "React components using Availity UIKit and Bootstrap 4",
               "source": "@site/docs/intro.md",
-              "slug": "/intro",
-              "permalink": "/intro",
+              "slug": "/",
+              "permalink": "/",
               "editUrl": "https://github.com/avaiity/availity-react/edit/master/docs/intro.md",
               "version": "current",
               "sidebar": "someSidebar",
@@ -2424,13 +2424,7 @@
     "default": null
   },
   "docusaurus-plugin-content-pages": {
-    "default": [
-      {
-        "type": "jsx",
-        "permalink": "/",
-        "source": "@site/src/pages/index.js"
-      }
-    ]
+    "default": []
   },
   "docusaurus-plugin-debug": {
     "default": null
