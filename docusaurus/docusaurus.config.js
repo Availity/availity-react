@@ -2,15 +2,10 @@ module.exports = {
   plugins: [
     // 'docusaurus-plugin-sass',
     // ['sass-plugin', { id: 'plugin-2' }],
-
-
     // 'url-plugin',
   ],
-  themes: [
-
-    ['@docusaurus/theme-search-algolia', { id: '01' }],
-  ],
-  onBrokenLinks: 'ignore',
+  themes: [['@docusaurus/theme-search-algolia', { id: '01' }]],
+  onBrokenLinks: 'log',
   title: 'Availity React Docs',
   tagline: 'React components using Availity UIKit and Bootstrap 4',
   url: 'https://your-docusaurus-test-site.com',
