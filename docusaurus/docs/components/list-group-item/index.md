@@ -11,7 +11,7 @@ npm install @availity/list-group-item --save
 
 ## Example
 
-```jsx live=true viewCode=true
+```jsx  viewCode=true
 import ListGroup from '@availity/list-group';
 import ListGroupItem, { ListGroupItemStatus } from '@availity/list-group-item';
 

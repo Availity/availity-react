@@ -1,0 +1,21 @@
+{
+  "unversionedId": "components/typography/disclaimer",
+  "id": "components/typography/disclaimer",
+  "isDocsHomePage": false,
+  "title": "Disclaimer",
+  "description": "Example",
+  "source": "@site/docs/components/typography/disclaimer.md",
+  "slug": "/components/typography/disclaimer",
+  "permalink": "/components/typography/disclaimer",
+  "editUrl": "https://github.com/avaiity/availity-react/edit/master/docs/components/typography/disclaimer.md",
+  "version": "current",
+  "sidebar": "someSidebar",
+  "previous": {
+    "title": "Getting Started",
+    "permalink": "/components/typography/index"
+  },
+  "next": {
+    "title": "<Agreement />",
+    "permalink": "/components/typography/agreement"
+  }
+}

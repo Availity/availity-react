@@ -5,7 +5,7 @@ summary: Inputs of type checkbox. Checkboxes should be wrapped in a CheckboxGrou
 
 ## Example
 
-```jsx live=true viewCode=true
+```jsx  viewCode=true
 <Form
   initialValues={{
     hello: [],

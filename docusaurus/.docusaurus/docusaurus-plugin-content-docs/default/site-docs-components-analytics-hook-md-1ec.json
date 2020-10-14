@@ -1,0 +1,21 @@
+{
+  "unversionedId": "components/analytics/hook",
+  "id": "components/analytics/hook",
+  "isDocsHomePage": false,
+  "title": "useAnalytics",
+  "description": "Hook giving you access to the instance of @availity/analytics-core for manually tracking events, and changing different variables.",
+  "source": "@site/docs/components/analytics/hook.md",
+  "slug": "/components/analytics/hook",
+  "permalink": "/components/analytics/hook",
+  "editUrl": "https://github.com/avaiity/availity-react/edit/master/docs/components/analytics/hook.md",
+  "version": "current",
+  "sidebar": "someSidebar",
+  "previous": {
+    "title": "<Analytics /> ( Default Export )",
+    "permalink": "/components/analytics/analytics"
+  },
+  "next": {
+    "title": "Authorize",
+    "permalink": "/components/authorize"
+  }
+}

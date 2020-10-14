@@ -1,0 +1,21 @@
+{
+  "unversionedId": "components/feedback/form",
+  "id": "components/feedback/form",
+  "isDocsHomePage": false,
+  "title": "<FeedbackForm />",
+  "description": "This is the underlying form, which is exposed in case you need to gather feedback inline.",
+  "source": "@site/docs/components/feedback/form.md",
+  "slug": "/components/feedback/form",
+  "permalink": "/components/feedback/form",
+  "editUrl": "https://github.com/avaiity/availity-react/edit/master/docs/components/feedback/form.md",
+  "version": "current",
+  "sidebar": "someSidebar",
+  "previous": {
+    "title": "<Feedback /> ( Default Export )",
+    "permalink": "/components/feedback/feedback"
+  },
+  "next": {
+    "title": "useCurrentUser",
+    "permalink": "/components/hooks/use-current-user"
+  }
+}

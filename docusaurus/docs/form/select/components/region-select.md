@@ -5,7 +5,7 @@ summary: A select list that automatically loads and pages through regions when t
 
 ## Example
 
-```jsx live=true viewCode=true
+```jsx viewCode=true
 import { Form } from '@availity/form';
 import { AvRegionSelect } from '@availity/select/resources';
 import * as yup from 'yup';
@@ -20,16 +20,12 @@ import '@availity/yup';
     region: yup.string().isRequired('This field is required.'),
   })}
 >
-  <AvRegionSelect
-    id="region"
-    name="region"
-    defaultToCurrentRegion
-  />
+  <AvRegionSelect id="region" name="region" defaultToCurrentRegion />
 
   <Button color="primary" type="submit">
     Submit
   </Button>
-</Form>
+</Form>;
 ```
 
 ## Props

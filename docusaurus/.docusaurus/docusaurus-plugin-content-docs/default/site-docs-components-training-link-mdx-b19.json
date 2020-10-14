@@ -1,0 +1,21 @@
+{
+  "unversionedId": "components/training-link",
+  "id": "components/training-link",
+  "isDocsHomePage": false,
+  "title": "Training Link",
+  "description": "Provide a link for training videos for your app",
+  "source": "@site/docs/components/training-link.mdx",
+  "slug": "/components/training-link",
+  "permalink": "/components/training-link",
+  "editUrl": "https://github.com/avaiity/availity-react/edit/master/docs/components/training-link.mdx",
+  "version": "current",
+  "sidebar": "someSidebar",
+  "previous": {
+    "title": "<SpacesGhostText />",
+    "permalink": "/components/spaces/ghost-text"
+  },
+  "next": {
+    "title": "App Icon",
+    "permalink": "/components/app-icon"
+  }
+}

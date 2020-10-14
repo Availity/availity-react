@@ -1,0 +1,12 @@
+{
+  "unversionedId": "components/hooks",
+  "id": "components/hooks",
+  "isDocsHomePage": false,
+  "title": "Hooks",
+  "description": "Installation",
+  "source": "@site/docs/components/hooks.mdx",
+  "slug": "/components/hooks",
+  "permalink": "/components/hooks",
+  "editUrl": "https://github.com/avaiity/availity-react/edit/master/docs/components/hooks.mdx",
+  "version": "current"
+}

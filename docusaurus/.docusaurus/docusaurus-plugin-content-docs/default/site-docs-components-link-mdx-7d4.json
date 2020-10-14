@@ -1,0 +1,21 @@
+{
+  "unversionedId": "components/link",
+  "id": "components/link",
+  "isDocsHomePage": false,
+  "title": "Link",
+  "description": "Installation",
+  "source": "@site/docs/components/link.mdx",
+  "slug": "/components/link",
+  "permalink": "/components/link",
+  "editUrl": "https://github.com/avaiity/availity-react/edit/master/docs/components/link.mdx",
+  "version": "current",
+  "sidebar": "someSidebar",
+  "previous": {
+    "title": "useProviders",
+    "permalink": "/components/hooks/use-providers"
+  },
+  "next": {
+    "title": "Page Header",
+    "permalink": "/components/page-header"
+  }
+}

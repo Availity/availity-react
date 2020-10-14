@@ -1,0 +1,21 @@
+{
+  "unversionedId": "components/pagination/resource",
+  "id": "components/pagination/resource",
+  "isDocsHomePage": false,
+  "title": "<AvResourcePagination />",
+  "description": "This is a wrapper around the Pagination Component that can be used for paginating @availity/api-axios resources.",
+  "source": "@site/docs/components/pagination/resource.md",
+  "slug": "/components/pagination/resource",
+  "permalink": "/components/pagination/resource",
+  "editUrl": "https://github.com/avaiity/availity-react/edit/master/docs/components/pagination/resource.md",
+  "version": "current",
+  "sidebar": "someSidebar",
+  "previous": {
+    "title": "<PaginationContent />",
+    "permalink": "/components/pagination/content"
+  },
+  "next": {
+    "title": "usePagination",
+    "permalink": "/components/pagination/hook"
+  }
+}

@@ -1,0 +1,21 @@
+{
+  "unversionedId": "form/components/radio",
+  "id": "form/components/radio",
+  "isDocsHomePage": false,
+  "title": "<Radio />",
+  "description": "Example",
+  "source": "@site/docs/form/components/radio.md",
+  "slug": "/form/components/radio",
+  "permalink": "/form/components/radio",
+  "editUrl": "https://github.com/avaiity/availity-react/edit/master/docs/form/components/radio.md",
+  "version": "current",
+  "sidebar": "someSidebar",
+  "previous": {
+    "title": "<RadioGroup />",
+    "permalink": "/form/components/radio-group"
+  },
+  "next": {
+    "title": "Getting Started",
+    "permalink": "/form/date/index"
+  }
+}

@@ -1,0 +1,21 @@
+{
+  "unversionedId": "components/favorites/favorites",
+  "id": "components/favorites/favorites",
+  "isDocsHomePage": false,
+  "title": "<Favorites /> ( Default Export )",
+  "description": "The Provider Component that stores all of the user's favorites for use in the favorite components.",
+  "source": "@site/docs/components/favorites/favorites.md",
+  "slug": "/components/favorites/favorites",
+  "permalink": "/components/favorites/favorites",
+  "editUrl": "https://github.com/avaiity/availity-react/edit/master/docs/components/favorites/favorites.md",
+  "version": "current",
+  "sidebar": "someSidebar",
+  "previous": {
+    "title": "Getting Started",
+    "permalink": "/components/favorites/index"
+  },
+  "next": {
+    "title": "<FavoriteHeart />",
+    "permalink": "/components/favorites/heart"
+  }
+}

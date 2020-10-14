@@ -1,0 +1,21 @@
+{
+  "unversionedId": "form/components/input",
+  "id": "form/components/input",
+  "isDocsHomePage": false,
+  "title": "<Input />",
+  "description": "Example",
+  "source": "@site/docs/form/components/input.md",
+  "slug": "/form/components/input",
+  "permalink": "/form/components/input",
+  "editUrl": "https://github.com/avaiity/availity-react/edit/master/docs/form/components/input.md",
+  "version": "current",
+  "sidebar": "someSidebar",
+  "previous": {
+    "title": "<Form />",
+    "permalink": "/form/components/form"
+  },
+  "next": {
+    "title": "<RadioGroup />",
+    "permalink": "/form/components/radio-group"
+  }
+}

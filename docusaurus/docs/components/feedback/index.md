@@ -11,7 +11,7 @@ npx install-peerdeps @availity/feedback --save
 
 ## Example
 
-```jsx live=true
+```jsx
 import Feedback from '@availity/feedback';
 
 <div className="w-100 d-flex flex-column justify-content-around align-items-start">

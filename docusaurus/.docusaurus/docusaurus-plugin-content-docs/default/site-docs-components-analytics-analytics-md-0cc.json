@@ -1,0 +1,21 @@
+{
+  "unversionedId": "components/analytics/analytics",
+  "id": "components/analytics/analytics",
+  "isDocsHomePage": false,
+  "title": "<Analytics /> ( Default Export )",
+  "description": "Example",
+  "source": "@site/docs/components/analytics/analytics.md",
+  "slug": "/components/analytics/analytics",
+  "permalink": "/components/analytics/analytics",
+  "editUrl": "https://github.com/avaiity/availity-react/edit/master/docs/components/analytics/analytics.md",
+  "version": "current",
+  "sidebar": "someSidebar",
+  "previous": {
+    "title": "Getting Started",
+    "permalink": "/components/analytics/index"
+  },
+  "next": {
+    "title": "useAnalytics",
+    "permalink": "/components/analytics/hook"
+  }
+}

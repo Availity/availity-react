@@ -1,0 +1,21 @@
+{
+  "unversionedId": "form/phone/components/phone",
+  "id": "form/phone/components/phone",
+  "isDocsHomePage": false,
+  "title": "<Phone />",
+  "description": "Example",
+  "source": "@site/docs/form/phone/components/phone.md",
+  "slug": "/form/phone/components/phone",
+  "permalink": "/form/phone/components/phone",
+  "editUrl": "https://github.com/avaiity/availity-react/edit/master/docs/form/phone/components/phone.md",
+  "version": "current",
+  "sidebar": "someSidebar",
+  "previous": {
+    "title": "Getting Started",
+    "permalink": "/form/phone/index"
+  },
+  "next": {
+    "title": "validatePhone",
+    "permalink": "/form/phone/components/validate-phone"
+  }
+}

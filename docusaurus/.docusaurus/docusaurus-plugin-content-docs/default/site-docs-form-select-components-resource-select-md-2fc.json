@@ -1,0 +1,21 @@
+{
+  "unversionedId": "form/select/components/resource-select",
+  "id": "form/select/components/resource-select",
+  "isDocsHomePage": false,
+  "title": "<ResourceSelect />",
+  "description": "Example",
+  "source": "@site/docs/form/select/components/resource-select.md",
+  "slug": "/form/select/components/resource-select",
+  "permalink": "/form/select/components/resource-select",
+  "editUrl": "https://github.com/avaiity/availity-react/edit/master/docs/form/select/components/resource-select.md",
+  "version": "current",
+  "sidebar": "someSidebar",
+  "previous": {
+    "title": "<SelectField />",
+    "permalink": "/form/select/components/select-field"
+  },
+  "next": {
+    "title": "<AvRegionSelect />",
+    "permalink": "/form/select/components/region-select"
+  }
+}

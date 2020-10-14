@@ -1,0 +1,21 @@
+{
+  "unversionedId": "components/avatar",
+  "id": "components/avatar",
+  "isDocsHomePage": false,
+  "title": "Avatar",
+  "description": "Installation",
+  "source": "@site/docs/components/avatar.mdx",
+  "slug": "/components/avatar",
+  "permalink": "/components/avatar",
+  "editUrl": "https://github.com/avaiity/availity-react/edit/master/docs/components/avatar.mdx",
+  "version": "current",
+  "sidebar": "someSidebar",
+  "previous": {
+    "title": "Authorize",
+    "permalink": "/components/authorize"
+  },
+  "next": {
+    "title": "Getting Started",
+    "permalink": "/components/favorites/index"
+  }
+}

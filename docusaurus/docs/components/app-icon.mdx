@@ -2,6 +2,7 @@
 title: App Icon
 summary: Availity UI Kit application icon react component.
 ---
+
 A component which outputs one of the "App Icons" from [Availity UI Kit](http://availity.github.io/availity-uikit/v3/components#App-Icons)
 
 ## Installation
@@ -12,36 +13,40 @@ npm install @availity/app-icon --save
 
 ## Example
 
-```jsx live=true viewCode=true
+```jsx  viewCode=true
 import AppIcon from '@availity/app-icon';
 
-
 <div className="w-100 d-flex flex-row justify-content-around align-items-center">
-<AppIcon title="Payer Space" color="blue" branded size="xl">
-  PS
-</AppIcon>
-<AppIcon title="Payer Space" color="red" size="xl">
-  PS
-</AppIcon>
-<AppIcon title="Payer Space" color="orange">
-  PS
-</AppIcon>
-</div>
+  <AppIcon title="Payer Space" color="blue" branded size="xl">
+    PS
+  </AppIcon>
+  <AppIcon title="Payer Space" color="red" size="xl">
+    PS
+  </AppIcon>
+  <AppIcon title="Payer Space" color="orange">
+    PS
+  </AppIcon>
+</div>;
 ```
 
 ## Props
 
 ### `size? string`
+
 Potential values: `"lg"`, `"xl"`
 
 ### `color?: string`
+
 Potential values: `"black"`, `"blue"`, `"green"`, `"orange"`, `"red"`. **Default:** `"black"`
 
 ### `branded?: boolean`
+
 Triggers "branded" styles
 
 ### `src?: string`
+
 If image source is provided, it will render this instead of children.
 
 ### `alt?: string`
+
 For `src` prop. the alt property for your image source is not found or is loading.

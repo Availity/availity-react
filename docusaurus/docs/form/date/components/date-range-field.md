@@ -6,7 +6,7 @@ The same as `DateRange` but with a `Label` that appears above the input and a `F
 
 ## Example
 
-```jsx live=true viewCode=true
+```jsx  viewCode=true
 import { Form } from '@availity/form';
 import { DateRange } from '@availity/date';
 import { dateRange } from '@availity/yup';
@@ -18,27 +18,27 @@ import * as yup from 'yup';
     initialValues={{
       dateOfService: {
         startDate: moment().format('YYYY-MM-DD'),
-        endDate: moment().format('YYYY-MM-DD')
+        endDate: moment().format('YYYY-MM-DD'),
       },
     }}
     onSubmit={values => console.log(values)}
     validationSchema={yup.object().shape({
       dateOfService: dateRange(
-          {
-            min: moment()
-              .subtract(7, 'day')
-              .format('MM/DD/YYYY'),
-            max: moment()
-              .add(7, 'day')
-              .format('MM/DD/YYYY'),
-            format: 'MM/DD/YYYY',
-          },
-          `Date must be between ${moment()
+        {
+          min: moment()
             .subtract(7, 'day')
-            .format('MM/DD/YYYY')} and ${moment()
+            .format('MM/DD/YYYY'),
+          max: moment()
             .add(7, 'day')
-            .format('MM/DD/YYYY')}`
-        )
+            .format('MM/DD/YYYY'),
+          format: 'MM/DD/YYYY',
+        },
+        `Date must be between ${moment()
+          .subtract(7, 'day')
+          .format('MM/DD/YYYY')} and ${moment()
+          .add(7, 'day')
+          .format('MM/DD/YYYY')}`
+      )
         .typeError('This field is invalid.')
         .required('This field is required.'),
     })}
@@ -54,7 +54,7 @@ import * as yup from 'yup';
       Submit
     </Button>
   </Form>
-</div>
+</div>;
 ```
 
 ## Props
@@ -78,10 +78,13 @@ Key to return end date as on form submit. Should match the yup schema `endKey`.
 The text that renders inside the `Label` above the input.
 
 ### `labelClass?: string`
+
 The name of the class for the label. Will be passed to the `className` prop of the label in the field.
 
 ### `labelHidden?: boolean`
+
 Used to control if the label is displayed. When set to `true`, the label in the field won't be visible.
 
 ### `labelAttrs?: React.HTMLAttributes<HTMLLabelElement>`
+
 Pass additonal attributes to the label

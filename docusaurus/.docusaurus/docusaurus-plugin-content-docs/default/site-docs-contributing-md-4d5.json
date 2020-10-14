@@ -1,0 +1,21 @@
+{
+  "unversionedId": "contributing",
+  "id": "contributing",
+  "isDocsHomePage": false,
+  "title": "Contributing",
+  "description": "This is a monorepo managed using lerna in independent mode (each package is versioned and published individually).",
+  "source": "@site/docs/contributing.md",
+  "slug": "/contributing",
+  "permalink": "/contributing",
+  "editUrl": "https://github.com/avaiity/availity-react/edit/master/docs/contributing.md",
+  "version": "current",
+  "sidebar": "someSidebar",
+  "previous": {
+    "title": "Introduction",
+    "permalink": "/intro"
+  },
+  "next": {
+    "title": "Getting Started",
+    "permalink": "/form/index"
+  }
+}

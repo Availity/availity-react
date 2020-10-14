@@ -1,0 +1,21 @@
+{
+  "unversionedId": "components/list-group-item/index",
+  "id": "components/list-group-item/index",
+  "isDocsHomePage": false,
+  "title": "Getting Started",
+  "description": "Installation",
+  "source": "@site/docs/components/list-group-item/index.md",
+  "slug": "/components/list-group-item/index",
+  "permalink": "/components/list-group-item/index",
+  "editUrl": "https://github.com/avaiity/availity-react/edit/master/docs/components/list-group-item/index.md",
+  "version": "current",
+  "sidebar": "someSidebar",
+  "previous": {
+    "title": "List Group",
+    "permalink": "/components/list-group"
+  },
+  "next": {
+    "title": "<ListGroupItem /> ( Default Export )",
+    "permalink": "/components/list-group-item/list-group-item"
+  }
+}

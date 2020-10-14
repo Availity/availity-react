@@ -1,0 +1,21 @@
+{
+  "unversionedId": "components/analytics/index",
+  "id": "components/analytics/index",
+  "isDocsHomePage": false,
+  "title": "Getting Started",
+  "description": "Version",
+  "source": "@site/docs/components/analytics/index.md",
+  "slug": "/components/analytics/index",
+  "permalink": "/components/analytics/index",
+  "editUrl": "https://github.com/avaiity/availity-react/edit/master/docs/components/analytics/index.md",
+  "version": "current",
+  "sidebar": "someSidebar",
+  "previous": {
+    "title": "<UploadProgressBar />",
+    "permalink": "/form/upload/upload-progress-bar"
+  },
+  "next": {
+    "title": "<Analytics /> ( Default Export )",
+    "permalink": "/components/analytics/analytics"
+  }
+}

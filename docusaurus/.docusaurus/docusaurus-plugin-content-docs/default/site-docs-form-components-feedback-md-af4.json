@@ -1,0 +1,21 @@
+{
+  "unversionedId": "form/components/feedback",
+  "id": "form/components/feedback",
+  "isDocsHomePage": false,
+  "title": "<Feedback />",
+  "description": "Example",
+  "source": "@site/docs/form/components/feedback.md",
+  "slug": "/form/components/feedback",
+  "permalink": "/form/components/feedback",
+  "editUrl": "https://github.com/avaiity/availity-react/edit/master/docs/form/components/feedback.md",
+  "version": "current",
+  "sidebar": "someSidebar",
+  "previous": {
+    "title": "<Checkbox />",
+    "permalink": "/form/components/checkbox"
+  },
+  "next": {
+    "title": "<Field />",
+    "permalink": "/form/components/field"
+  }
+}

@@ -1,0 +1,21 @@
+{
+  "unversionedId": "form/components/form",
+  "id": "form/components/form",
+  "isDocsHomePage": false,
+  "title": "<Form />",
+  "description": "Example",
+  "source": "@site/docs/form/components/form.md",
+  "slug": "/form/components/form",
+  "permalink": "/form/components/form",
+  "editUrl": "https://github.com/avaiity/availity-react/edit/master/docs/form/components/form.md",
+  "version": "current",
+  "sidebar": "someSidebar",
+  "previous": {
+    "title": "<FormGroup />",
+    "permalink": "/form/components/form-group"
+  },
+  "next": {
+    "title": "<Input />",
+    "permalink": "/form/components/input"
+  }
+}

@@ -1,0 +1,21 @@
+{
+  "unversionedId": "components/hooks/use-providers",
+  "id": "components/hooks/use-providers",
+  "isDocsHomePage": false,
+  "title": "useProviders",
+  "description": "Example",
+  "source": "@site/docs/components/hooks/use-providers.md",
+  "slug": "/components/hooks/use-providers",
+  "permalink": "/components/hooks/use-providers",
+  "editUrl": "https://github.com/avaiity/availity-react/edit/master/docs/components/hooks/use-providers.md",
+  "version": "current",
+  "sidebar": "someSidebar",
+  "previous": {
+    "title": "useOrganizations",
+    "permalink": "/components/hooks/use-organizations"
+  },
+  "next": {
+    "title": "Link",
+    "permalink": "/components/link"
+  }
+}

@@ -11,7 +11,7 @@ npx install-peerdeps @availity/favorites --save
 
 ## Example
 
-```jsx live=true
+```jsx
 import Favorites from '@availity/favorites';
 import '@availity/favorites/style.scss';
 

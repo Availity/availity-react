@@ -1,0 +1,21 @@
+{
+  "unversionedId": "components/step-wizard/index",
+  "id": "components/step-wizard/index",
+  "isDocsHomePage": false,
+  "title": "Getting Started",
+  "description": "Installation",
+  "source": "@site/docs/components/step-wizard/index.md",
+  "slug": "/components/step-wizard/index",
+  "permalink": "/components/step-wizard/index",
+  "editUrl": "https://github.com/avaiity/availity-react/edit/master/docs/components/step-wizard/index.md",
+  "version": "current",
+  "sidebar": "someSidebar",
+  "previous": {
+    "title": "Progress",
+    "permalink": "/components/progress"
+  },
+  "next": {
+    "title": "<Wizard /> ( Default Export )",
+    "permalink": "/components/step-wizard/wizard"
+  }
+}

@@ -1,0 +1,21 @@
+{
+  "unversionedId": "components/breadcrumbs",
+  "id": "components/breadcrumbs",
+  "isDocsHomePage": false,
+  "title": "Breadcrumbs",
+  "description": "Installation",
+  "source": "@site/docs/components/breadcrumbs.mdx",
+  "slug": "/components/breadcrumbs",
+  "permalink": "/components/breadcrumbs",
+  "editUrl": "https://github.com/avaiity/availity-react/edit/master/docs/components/breadcrumbs.mdx",
+  "version": "current",
+  "sidebar": "someSidebar",
+  "previous": {
+    "title": "App Icon",
+    "permalink": "/components/app-icon"
+  },
+  "next": {
+    "title": "icon",
+    "permalink": "/components/icon"
+  }
+}

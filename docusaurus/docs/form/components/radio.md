@@ -5,7 +5,7 @@ summary: Inputs of type radio. Radios should be wrapped in a RadioGroup.
 
 ## Example
 
-```jsx live=true viewCode=true
+```jsx  viewCode=true
 <Form
   initialValues={{
     hello: '',

@@ -5,7 +5,8 @@
   "packages": [
     "packages/*",
     "docs",
-    "storybook"
+    "storybook",
+    "docusaurus"
   ],
   "message": "chore: publish release [skip ci]",
   "command": {

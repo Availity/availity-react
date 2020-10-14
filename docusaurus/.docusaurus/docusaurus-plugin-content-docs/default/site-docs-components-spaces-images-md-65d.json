@@ -1,0 +1,21 @@
+{
+  "unversionedId": "components/spaces/images",
+  "id": "components/spaces/images",
+  "isDocsHomePage": false,
+  "title": "<SpacesImage />",
+  "description": "Example",
+  "source": "@site/docs/components/spaces/images.md",
+  "slug": "/components/spaces/images",
+  "permalink": "/components/spaces/images",
+  "editUrl": "https://github.com/avaiity/availity-react/edit/master/docs/components/spaces/images.md",
+  "version": "current",
+  "sidebar": "someSidebar",
+  "previous": {
+    "title": "SpacesContext",
+    "permalink": "/components/spaces/context"
+  },
+  "next": {
+    "title": "<SpacesDisclaimer />",
+    "permalink": "/components/spaces/disclaimer"
+  }
+}

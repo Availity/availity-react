@@ -1,0 +1,21 @@
+{
+  "unversionedId": "components/pagination/content",
+  "id": "components/pagination/content",
+  "isDocsHomePage": false,
+  "title": "<PaginationContent />",
+  "description": "This is the container of all the items rendered to the DOM when the Pagination provider receives items. Must be /nested inside a Pagination component.",
+  "source": "@site/docs/components/pagination/content.md",
+  "slug": "/components/pagination/content",
+  "permalink": "/components/pagination/content",
+  "editUrl": "https://github.com/avaiity/availity-react/edit/master/docs/components/pagination/content.md",
+  "version": "current",
+  "sidebar": "someSidebar",
+  "previous": {
+    "title": "<PaginationControls />",
+    "permalink": "/components/pagination/controls"
+  },
+  "next": {
+    "title": "<AvResourcePagination />",
+    "permalink": "/components/pagination/resource"
+  }
+}

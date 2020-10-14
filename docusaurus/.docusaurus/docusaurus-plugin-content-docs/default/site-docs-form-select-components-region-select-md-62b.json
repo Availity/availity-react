@@ -1,0 +1,21 @@
+{
+  "unversionedId": "form/select/components/region-select",
+  "id": "form/select/components/region-select",
+  "isDocsHomePage": false,
+  "title": "<AvRegionSelect />",
+  "description": "Example",
+  "source": "@site/docs/form/select/components/region-select.md",
+  "slug": "/form/select/components/region-select",
+  "permalink": "/form/select/components/region-select",
+  "editUrl": "https://github.com/avaiity/availity-react/edit/master/docs/form/select/components/region-select.md",
+  "version": "current",
+  "sidebar": "someSidebar",
+  "previous": {
+    "title": "<ResourceSelect />",
+    "permalink": "/form/select/components/resource-select"
+  },
+  "next": {
+    "title": "<AvOrganizationSelect />",
+    "permalink": "/form/select/components/organization-select"
+  }
+}

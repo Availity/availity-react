@@ -1,0 +1,2445 @@
+{
+  "docusaurus-plugin-content-docs": {
+    "default": {
+      "loadedVersions": [
+        {
+          "versionName": "current",
+          "versionLabel": "Next",
+          "versionPath": "/",
+          "isLast": true,
+          "routePriority": -1,
+          "sidebarFilePath": "/Users/brobinson/Workspaces/availity-react/docusaurus/sidebars.js",
+          "docsDirPath": "/Users/brobinson/Workspaces/availity-react/docusaurus/docs",
+          "mainDocId": "intro",
+          "sidebars": {
+            "someSidebar": [
+              {
+                "collapsed": true,
+                "type": "category",
+                "label": "Docs",
+                "items": [
+                  {
+                    "type": "doc",
+                    "id": "intro"
+                  },
+                  {
+                    "type": "doc",
+                    "id": "contributing"
+                  },
+                  {
+                    "type": "link",
+                    "label": "Storybook",
+                    "href": "https://availity.github.io/availity-react/storybook/?path=/story/components-analytics--default"
+                  }
+                ]
+              },
+              {
+                "collapsed": true,
+                "type": "category",
+                "label": "ReactStrap Form",
+                "items": [
+                  {
+                    "type": "doc",
+                    "id": "form/index"
+                  },
+                  {
+                    "type": "doc",
+                    "id": "form/migrating"
+                  },
+                  {
+                    "collapsed": true,
+                    "type": "category",
+                    "label": "Components",
+                    "items": [
+                      {
+                        "type": "doc",
+                        "id": "form/components/checkbox-group"
+                      },
+                      {
+                        "type": "doc",
+                        "id": "form/components/checkbox"
+                      },
+                      {
+                        "type": "doc",
+                        "id": "form/components/feedback"
+                      },
+                      {
+                        "type": "doc",
+                        "id": "form/components/field"
+                      },
+                      {
+                        "type": "doc",
+                        "id": "form/components/form-group"
+                      },
+                      {
+                        "type": "doc",
+                        "id": "form/components/form"
+                      },
+                      {
+                        "type": "doc",
+                        "id": "form/components/input"
+                      },
+                      {
+                        "type": "doc",
+                        "id": "form/components/radio-group"
+                      },
+                      {
+                        "type": "doc",
+                        "id": "form/components/radio"
+                      }
+                    ]
+                  },
+                  {
+                    "collapsed": true,
+                    "type": "category",
+                    "label": "Date",
+                    "items": [
+                      {
+                        "type": "doc",
+                        "id": "form/date/index"
+                      },
+                      {
+                        "type": "doc",
+                        "id": "form/date/components/date-field"
+                      },
+                      {
+                        "type": "doc",
+                        "id": "form/date/components/date-range-field"
+                      },
+                      {
+                        "type": "doc",
+                        "id": "form/date/components/date-range"
+                      },
+                      {
+                        "type": "doc",
+                        "id": "form/date/components/date"
+                      }
+                    ]
+                  },
+                  {
+                    "collapsed": true,
+                    "type": "category",
+                    "label": "Phone",
+                    "items": [
+                      {
+                        "type": "doc",
+                        "id": "form/phone/index"
+                      },
+                      {
+                        "type": "doc",
+                        "id": "form/phone/components/phone"
+                      },
+                      {
+                        "type": "doc",
+                        "id": "form/phone/components/validate-phone"
+                      }
+                    ]
+                  },
+                  {
+                    "collapsed": true,
+                    "type": "category",
+                    "label": "Select",
+                    "items": [
+                      {
+                        "type": "doc",
+                        "id": "form/select/index"
+                      },
+                      {
+                        "type": "doc",
+                        "id": "form/select/components/select"
+                      },
+                      {
+                        "type": "doc",
+                        "id": "form/select/components/select-field"
+                      },
+                      {
+                        "type": "doc",
+                        "id": "form/select/components/resource-select"
+                      },
+                      {
+                        "type": "doc",
+                        "id": "form/select/components/region-select"
+                      },
+                      {
+                        "type": "doc",
+                        "id": "form/select/components/organization-select"
+                      }
+                    ]
+                  },
+                  {
+                    "collapsed": true,
+                    "type": "category",
+                    "label": "Upload",
+                    "items": [
+                      {
+                        "type": "doc",
+                        "id": "form/upload/index"
+                      },
+                      {
+                        "type": "doc",
+                        "id": "form/upload/upload"
+                      },
+                      {
+                        "type": "doc",
+                        "id": "form/upload/file-picker"
+                      },
+                      {
+                        "type": "doc",
+                        "id": "form/upload/file-picker-btn"
+                      },
+                      {
+                        "type": "doc",
+                        "id": "form/upload/upload-progress-bar"
+                      }
+                    ]
+                  }
+                ]
+              },
+              {
+                "collapsed": true,
+                "type": "category",
+                "label": "Portal Components",
+                "items": [
+                  {
+                    "collapsed": true,
+                    "type": "category",
+                    "label": "Analytics",
+                    "items": [
+                      {
+                        "type": "doc",
+                        "id": "components/analytics/index"
+                      },
+                      {
+                        "type": "doc",
+                        "id": "components/analytics/analytics"
+                      },
+                      {
+                        "type": "doc",
+                        "id": "components/analytics/hook"
+                      }
+                    ]
+                  },
+                  {
+                    "type": "doc",
+                    "id": "components/authorize"
+                  },
+                  {
+                    "type": "doc",
+                    "id": "components/avatar"
+                  },
+                  {
+                    "collapsed": true,
+                    "type": "category",
+                    "label": "Favorites",
+                    "items": [
+                      {
+                        "type": "doc",
+                        "id": "components/favorites/index"
+                      },
+                      {
+                        "type": "doc",
+                        "id": "components/favorites/favorites"
+                      },
+                      {
+                        "type": "doc",
+                        "id": "components/favorites/heart"
+                      },
+                      {
+                        "type": "doc",
+                        "id": "components/favorites/hook"
+                      }
+                    ]
+                  },
+                  {
+                    "type": "doc",
+                    "id": "components/feature"
+                  },
+                  {
+                    "collapsed": true,
+                    "type": "category",
+                    "label": "Feedback",
+                    "items": [
+                      {
+                        "type": "doc",
+                        "id": "components/feedback/index"
+                      },
+                      {
+                        "type": "doc",
+                        "id": "components/feedback/feedback"
+                      },
+                      {
+                        "type": "doc",
+                        "id": "components/feedback/form"
+                      }
+                    ]
+                  },
+                  {
+                    "collapsed": true,
+                    "type": "category",
+                    "label": "Hooks",
+                    "items": [
+                      {
+                        "type": "doc",
+                        "id": "components/hooks/use-current-user"
+                      },
+                      {
+                        "type": "doc",
+                        "id": "components/hooks/use-effect-async"
+                      },
+                      {
+                        "type": "doc",
+                        "id": "components/hooks/use-mount"
+                      },
+                      {
+                        "type": "doc",
+                        "id": "components/hooks/use-region"
+                      },
+                      {
+                        "type": "doc",
+                        "id": "components/hooks/use-timeout"
+                      },
+                      {
+                        "type": "doc",
+                        "id": "components/hooks/use-toggle"
+                      },
+                      {
+                        "type": "doc",
+                        "id": "components/hooks/use-permissions"
+                      },
+                      {
+                        "type": "doc",
+                        "id": "components/hooks/use-organizations"
+                      },
+                      {
+                        "type": "doc",
+                        "id": "components/hooks/use-providers"
+                      }
+                    ]
+                  },
+                  {
+                    "type": "doc",
+                    "id": "components/link"
+                  },
+                  {
+                    "type": "doc",
+                    "id": "components/page-header"
+                  },
+                  {
+                    "collapsed": true,
+                    "type": "category",
+                    "label": "Spaces",
+                    "items": [
+                      {
+                        "type": "doc",
+                        "id": "components/spaces/index"
+                      },
+                      {
+                        "type": "doc",
+                        "id": "components/spaces/spaces"
+                      },
+                      {
+                        "type": "doc",
+                        "id": "components/spaces/use-spaces"
+                      },
+                      {
+                        "type": "doc",
+                        "id": "components/spaces/use-spaces-context"
+                      },
+                      {
+                        "type": "doc",
+                        "id": "components/spaces/context"
+                      },
+                      {
+                        "type": "doc",
+                        "id": "components/spaces/images"
+                      },
+                      {
+                        "type": "doc",
+                        "id": "components/spaces/disclaimer"
+                      },
+                      {
+                        "type": "doc",
+                        "id": "components/spaces/agreement"
+                      },
+                      {
+                        "type": "doc",
+                        "id": "components/spaces/ghost-text"
+                      }
+                    ]
+                  },
+                  {
+                    "type": "doc",
+                    "id": "components/training-link"
+                  }
+                ]
+              },
+              {
+                "collapsed": true,
+                "type": "category",
+                "label": "UI Kit Components",
+                "items": [
+                  {
+                    "type": "doc",
+                    "id": "components/app-icon"
+                  },
+                  {
+                    "type": "doc",
+                    "id": "components/breadcrumbs"
+                  },
+                  {
+                    "type": "doc",
+                    "id": "components/icon"
+                  },
+                  {
+                    "type": "doc",
+                    "id": "components/list-group"
+                  },
+                  {
+                    "collapsed": true,
+                    "type": "category",
+                    "label": "List Group Item",
+                    "items": [
+                      {
+                        "type": "doc",
+                        "id": "components/list-group-item/index"
+                      },
+                      {
+                        "type": "doc",
+                        "id": "components/list-group-item/list-group-item"
+                      },
+                      {
+                        "type": "doc",
+                        "id": "components/list-group-item/list-group-item-status"
+                      }
+                    ]
+                  },
+                  {
+                    "collapsed": true,
+                    "type": "category",
+                    "label": "Pagination",
+                    "items": [
+                      {
+                        "type": "doc",
+                        "id": "components/pagination/index"
+                      },
+                      {
+                        "type": "doc",
+                        "id": "components/pagination/pagination"
+                      },
+                      {
+                        "type": "doc",
+                        "id": "components/pagination/controls"
+                      },
+                      {
+                        "type": "doc",
+                        "id": "components/pagination/content"
+                      },
+                      {
+                        "type": "doc",
+                        "id": "components/pagination/resource"
+                      },
+                      {
+                        "type": "doc",
+                        "id": "components/pagination/hook"
+                      },
+                      {
+                        "type": "doc",
+                        "id": "components/pagination/context"
+                      }
+                    ]
+                  },
+                  {
+                    "type": "doc",
+                    "id": "components/progress"
+                  },
+                  {
+                    "collapsed": true,
+                    "type": "category",
+                    "label": "Step Wizard",
+                    "items": [
+                      {
+                        "type": "doc",
+                        "id": "components/step-wizard/index"
+                      },
+                      {
+                        "type": "doc",
+                        "id": "components/step-wizard/wizard"
+                      },
+                      {
+                        "type": "doc",
+                        "id": "components/step-wizard/wizard-step"
+                      }
+                    ]
+                  },
+                  {
+                    "collapsed": true,
+                    "type": "category",
+                    "label": "Typography",
+                    "items": [
+                      {
+                        "type": "doc",
+                        "id": "components/typography/index"
+                      },
+                      {
+                        "type": "doc",
+                        "id": "components/typography/disclaimer"
+                      },
+                      {
+                        "type": "doc",
+                        "id": "components/typography/agreement"
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          },
+          "permalinkToSidebar": {
+            "/components/analytics/analytics": "someSidebar",
+            "/components/analytics/hook": "someSidebar",
+            "/components/analytics/index": "someSidebar",
+            "/components/app-icon": "someSidebar",
+            "/components/authorize": "someSidebar",
+            "/components/avatar": "someSidebar",
+            "/components/breadcrumbs": "someSidebar",
+            "/components/favorites/favorites": "someSidebar",
+            "/components/favorites/heart": "someSidebar",
+            "/components/favorites/hook": "someSidebar",
+            "/components/favorites/index": "someSidebar",
+            "/components/feature": "someSidebar",
+            "/components/feedback/feedback": "someSidebar",
+            "/components/feedback/form": "someSidebar",
+            "/components/feedback/index": "someSidebar",
+            "/components/hooks/use-current-user": "someSidebar",
+            "/components/hooks/use-effect-async": "someSidebar",
+            "/components/hooks/use-mount": "someSidebar",
+            "/components/hooks/use-organizations": "someSidebar",
+            "/components/hooks/use-permissions": "someSidebar",
+            "/components/hooks/use-providers": "someSidebar",
+            "/components/hooks/use-region": "someSidebar",
+            "/components/hooks/use-timeout": "someSidebar",
+            "/components/hooks/use-toggle": "someSidebar",
+            "/components/icon": "someSidebar",
+            "/components/link": "someSidebar",
+            "/components/list-group": "someSidebar",
+            "/components/list-group-item/index": "someSidebar",
+            "/components/list-group-item/list-group-item": "someSidebar",
+            "/components/list-group-item/list-group-item-status": "someSidebar",
+            "/components/page-header": "someSidebar",
+            "/components/pagination/content": "someSidebar",
+            "/components/pagination/context": "someSidebar",
+            "/components/pagination/controls": "someSidebar",
+            "/components/pagination/hook": "someSidebar",
+            "/components/pagination/index": "someSidebar",
+            "/components/pagination/pagination": "someSidebar",
+            "/components/pagination/resource": "someSidebar",
+            "/components/progress": "someSidebar",
+            "/components/spaces/agreement": "someSidebar",
+            "/components/spaces/context": "someSidebar",
+            "/components/spaces/disclaimer": "someSidebar",
+            "/components/spaces/ghost-text": "someSidebar",
+            "/components/spaces/images": "someSidebar",
+            "/components/spaces/index": "someSidebar",
+            "/components/spaces/spaces": "someSidebar",
+            "/components/spaces/use-spaces": "someSidebar",
+            "/components/spaces/use-spaces-context": "someSidebar",
+            "/components/step-wizard/index": "someSidebar",
+            "/components/step-wizard/wizard": "someSidebar",
+            "/components/step-wizard/wizard-step": "someSidebar",
+            "/components/training-link": "someSidebar",
+            "/components/typography/agreement": "someSidebar",
+            "/components/typography/disclaimer": "someSidebar",
+            "/components/typography/index": "someSidebar",
+            "/contributing": "someSidebar",
+            "/form/components/checkbox": "someSidebar",
+            "/form/components/checkbox-group": "someSidebar",
+            "/form/components/feedback": "someSidebar",
+            "/form/components/field": "someSidebar",
+            "/form/components/form": "someSidebar",
+            "/form/components/form-group": "someSidebar",
+            "/form/components/input": "someSidebar",
+            "/form/components/radio": "someSidebar",
+            "/form/components/radio-group": "someSidebar",
+            "/form/date/components/date": "someSidebar",
+            "/form/date/components/date-field": "someSidebar",
+            "/form/date/components/date-range": "someSidebar",
+            "/form/date/components/date-range-field": "someSidebar",
+            "/form/date/index": "someSidebar",
+            "/form/index": "someSidebar",
+            "/form/migrating": "someSidebar",
+            "/form/phone/components/phone": "someSidebar",
+            "/form/phone/components/validate-phone": "someSidebar",
+            "/form/phone/index": "someSidebar",
+            "/form/select/components/organization-select": "someSidebar",
+            "/form/select/components/region-select": "someSidebar",
+            "/form/select/components/resource-select": "someSidebar",
+            "/form/select/components/select": "someSidebar",
+            "/form/select/components/select-field": "someSidebar",
+            "/form/select/index": "someSidebar",
+            "/form/upload/file-picker": "someSidebar",
+            "/form/upload/file-picker-btn": "someSidebar",
+            "/form/upload/index": "someSidebar",
+            "/form/upload/upload": "someSidebar",
+            "/form/upload/upload-progress-bar": "someSidebar",
+            "/intro": "someSidebar"
+          },
+          "docs": [
+            {
+              "unversionedId": "components/analytics/analytics",
+              "id": "components/analytics/analytics",
+              "isDocsHomePage": false,
+              "title": "<Analytics /> ( Default Export )",
+              "description": "Example",
+              "source": "@site/docs/components/analytics/analytics.md",
+              "slug": "/components/analytics/analytics",
+              "permalink": "/components/analytics/analytics",
+              "editUrl": "https://github.com/avaiity/availity-react/edit/master/docs/components/analytics/analytics.md",
+              "version": "current",
+              "sidebar": "someSidebar",
+              "previous": {
+                "title": "Getting Started",
+                "permalink": "/components/analytics/index"
+              },
+              "next": {
+                "title": "useAnalytics",
+                "permalink": "/components/analytics/hook"
+              }
+            },
+            {
+              "unversionedId": "components/analytics/hook",
+              "id": "components/analytics/hook",
+              "isDocsHomePage": false,
+              "title": "useAnalytics",
+              "description": "Hook giving you access to the instance of @availity/analytics-core for manually tracking events, and changing different variables.",
+              "source": "@site/docs/components/analytics/hook.md",
+              "slug": "/components/analytics/hook",
+              "permalink": "/components/analytics/hook",
+              "editUrl": "https://github.com/avaiity/availity-react/edit/master/docs/components/analytics/hook.md",
+              "version": "current",
+              "sidebar": "someSidebar",
+              "previous": {
+                "title": "<Analytics /> ( Default Export )",
+                "permalink": "/components/analytics/analytics"
+              },
+              "next": {
+                "title": "Authorize",
+                "permalink": "/components/authorize"
+              }
+            },
+            {
+              "unversionedId": "components/analytics/index",
+              "id": "components/analytics/index",
+              "isDocsHomePage": false,
+              "title": "Getting Started",
+              "description": "Version",
+              "source": "@site/docs/components/analytics/index.md",
+              "slug": "/components/analytics/index",
+              "permalink": "/components/analytics/index",
+              "editUrl": "https://github.com/avaiity/availity-react/edit/master/docs/components/analytics/index.md",
+              "version": "current",
+              "sidebar": "someSidebar",
+              "previous": {
+                "title": "<UploadProgressBar />",
+                "permalink": "/form/upload/upload-progress-bar"
+              },
+              "next": {
+                "title": "<Analytics /> ( Default Export )",
+                "permalink": "/components/analytics/analytics"
+              }
+            },
+            {
+              "unversionedId": "components/app-icon",
+              "id": "components/app-icon",
+              "isDocsHomePage": false,
+              "title": "App Icon",
+              "description": "A component which outputs one of the \"App Icons\" from Availity UI Kit",
+              "source": "@site/docs/components/app-icon.mdx",
+              "slug": "/components/app-icon",
+              "permalink": "/components/app-icon",
+              "editUrl": "https://github.com/avaiity/availity-react/edit/master/docs/components/app-icon.mdx",
+              "version": "current",
+              "sidebar": "someSidebar",
+              "previous": {
+                "title": "Training Link",
+                "permalink": "/components/training-link"
+              },
+              "next": {
+                "title": "Breadcrumbs",
+                "permalink": "/components/breadcrumbs"
+              }
+            },
+            {
+              "unversionedId": "components/authorize",
+              "id": "components/authorize",
+              "isDocsHomePage": false,
+              "title": "Authorize",
+              "description": "Version",
+              "source": "@site/docs/components/authorize.mdx",
+              "slug": "/components/authorize",
+              "permalink": "/components/authorize",
+              "editUrl": "https://github.com/avaiity/availity-react/edit/master/docs/components/authorize.mdx",
+              "version": "current",
+              "sidebar": "someSidebar",
+              "previous": {
+                "title": "useAnalytics",
+                "permalink": "/components/analytics/hook"
+              },
+              "next": {
+                "title": "Avatar",
+                "permalink": "/components/avatar"
+              }
+            },
+            {
+              "unversionedId": "components/avatar",
+              "id": "components/avatar",
+              "isDocsHomePage": false,
+              "title": "Avatar",
+              "description": "Installation",
+              "source": "@site/docs/components/avatar.mdx",
+              "slug": "/components/avatar",
+              "permalink": "/components/avatar",
+              "editUrl": "https://github.com/avaiity/availity-react/edit/master/docs/components/avatar.mdx",
+              "version": "current",
+              "sidebar": "someSidebar",
+              "previous": {
+                "title": "Authorize",
+                "permalink": "/components/authorize"
+              },
+              "next": {
+                "title": "Getting Started",
+                "permalink": "/components/favorites/index"
+              }
+            },
+            {
+              "unversionedId": "components/breadcrumbs",
+              "id": "components/breadcrumbs",
+              "isDocsHomePage": false,
+              "title": "Breadcrumbs",
+              "description": "Installation",
+              "source": "@site/docs/components/breadcrumbs.mdx",
+              "slug": "/components/breadcrumbs",
+              "permalink": "/components/breadcrumbs",
+              "editUrl": "https://github.com/avaiity/availity-react/edit/master/docs/components/breadcrumbs.mdx",
+              "version": "current",
+              "sidebar": "someSidebar",
+              "previous": {
+                "title": "App Icon",
+                "permalink": "/components/app-icon"
+              },
+              "next": {
+                "title": "icon",
+                "permalink": "/components/icon"
+              }
+            },
+            {
+              "unversionedId": "components/favorites/favorites",
+              "id": "components/favorites/favorites",
+              "isDocsHomePage": false,
+              "title": "<Favorites /> ( Default Export )",
+              "description": "The Provider Component that stores all of the user's favorites for use in the favorite components.",
+              "source": "@site/docs/components/favorites/favorites.md",
+              "slug": "/components/favorites/favorites",
+              "permalink": "/components/favorites/favorites",
+              "editUrl": "https://github.com/avaiity/availity-react/edit/master/docs/components/favorites/favorites.md",
+              "version": "current",
+              "sidebar": "someSidebar",
+              "previous": {
+                "title": "Getting Started",
+                "permalink": "/components/favorites/index"
+              },
+              "next": {
+                "title": "<FavoriteHeart />",
+                "permalink": "/components/favorites/heart"
+              }
+            },
+            {
+              "unversionedId": "components/favorites/heart",
+              "id": "components/favorites/heart",
+              "isDocsHomePage": false,
+              "title": "<FavoriteHeart />",
+              "description": "The default Favorite Icon that can be used to store a favorited item. Can only be used inside of a `` Provider.",
+              "source": "@site/docs/components/favorites/heart.md",
+              "slug": "/components/favorites/heart",
+              "permalink": "/components/favorites/heart",
+              "editUrl": "https://github.com/avaiity/availity-react/edit/master/docs/components/favorites/heart.md",
+              "version": "current",
+              "sidebar": "someSidebar",
+              "previous": {
+                "title": "<Favorites /> ( Default Export )",
+                "permalink": "/components/favorites/favorites"
+              },
+              "next": {
+                "title": "hook",
+                "permalink": "/components/favorites/hook"
+              }
+            },
+            {
+              "unversionedId": "components/favorites/hook",
+              "id": "components/favorites/hook",
+              "isDocsHomePage": false,
+              "title": "hook",
+              "description": "<!-- ---",
+              "source": "@site/docs/components/favorites/hook.md",
+              "slug": "/components/favorites/hook",
+              "permalink": "/components/favorites/hook",
+              "editUrl": "https://github.com/avaiity/availity-react/edit/master/docs/components/favorites/hook.md",
+              "version": "current",
+              "sidebar": "someSidebar",
+              "previous": {
+                "title": "<FavoriteHeart />",
+                "permalink": "/components/favorites/heart"
+              },
+              "next": {
+                "title": "Feature",
+                "permalink": "/components/feature"
+              }
+            },
+            {
+              "unversionedId": "components/favorites/index",
+              "id": "components/favorites/index",
+              "isDocsHomePage": false,
+              "title": "Getting Started",
+              "description": "Installation",
+              "source": "@site/docs/components/favorites/index.md",
+              "slug": "/components/favorites/index",
+              "permalink": "/components/favorites/index",
+              "editUrl": "https://github.com/avaiity/availity-react/edit/master/docs/components/favorites/index.md",
+              "version": "current",
+              "sidebar": "someSidebar",
+              "previous": {
+                "title": "Avatar",
+                "permalink": "/components/avatar"
+              },
+              "next": {
+                "title": "<Favorites /> ( Default Export )",
+                "permalink": "/components/favorites/favorites"
+              }
+            },
+            {
+              "unversionedId": "components/feature",
+              "id": "components/feature",
+              "isDocsHomePage": false,
+              "title": "Feature",
+              "description": "Version",
+              "source": "@site/docs/components/feature.mdx",
+              "slug": "/components/feature",
+              "permalink": "/components/feature",
+              "editUrl": "https://github.com/avaiity/availity-react/edit/master/docs/components/feature.mdx",
+              "version": "current",
+              "sidebar": "someSidebar",
+              "previous": {
+                "title": "hook",
+                "permalink": "/components/favorites/hook"
+              },
+              "next": {
+                "title": "Getting Started",
+                "permalink": "/components/feedback/index"
+              }
+            },
+            {
+              "unversionedId": "components/feedback/feedback",
+              "id": "components/feedback/feedback",
+              "isDocsHomePage": false,
+              "title": "<Feedback /> ( Default Export )",
+              "description": "Example",
+              "source": "@site/docs/components/feedback/feedback.md",
+              "slug": "/components/feedback/feedback",
+              "permalink": "/components/feedback/feedback",
+              "editUrl": "https://github.com/avaiity/availity-react/edit/master/docs/components/feedback/feedback.md",
+              "version": "current",
+              "sidebar": "someSidebar",
+              "previous": {
+                "title": "Getting Started",
+                "permalink": "/components/feedback/index"
+              },
+              "next": {
+                "title": "<FeedbackForm />",
+                "permalink": "/components/feedback/form"
+              }
+            },
+            {
+              "unversionedId": "components/feedback/form",
+              "id": "components/feedback/form",
+              "isDocsHomePage": false,
+              "title": "<FeedbackForm />",
+              "description": "This is the underlying form, which is exposed in case you need to gather feedback inline.",
+              "source": "@site/docs/components/feedback/form.md",
+              "slug": "/components/feedback/form",
+              "permalink": "/components/feedback/form",
+              "editUrl": "https://github.com/avaiity/availity-react/edit/master/docs/components/feedback/form.md",
+              "version": "current",
+              "sidebar": "someSidebar",
+              "previous": {
+                "title": "<Feedback /> ( Default Export )",
+                "permalink": "/components/feedback/feedback"
+              },
+              "next": {
+                "title": "useCurrentUser",
+                "permalink": "/components/hooks/use-current-user"
+              }
+            },
+            {
+              "unversionedId": "components/feedback/index",
+              "id": "components/feedback/index",
+              "isDocsHomePage": false,
+              "title": "Getting Started",
+              "description": "Installation",
+              "source": "@site/docs/components/feedback/index.md",
+              "slug": "/components/feedback/index",
+              "permalink": "/components/feedback/index",
+              "editUrl": "https://github.com/avaiity/availity-react/edit/master/docs/components/feedback/index.md",
+              "version": "current",
+              "sidebar": "someSidebar",
+              "previous": {
+                "title": "Feature",
+                "permalink": "/components/feature"
+              },
+              "next": {
+                "title": "<Feedback /> ( Default Export )",
+                "permalink": "/components/feedback/feedback"
+              }
+            },
+            {
+              "unversionedId": "components/hooks",
+              "id": "components/hooks",
+              "isDocsHomePage": false,
+              "title": "Hooks",
+              "description": "Installation",
+              "source": "@site/docs/components/hooks.mdx",
+              "slug": "/components/hooks",
+              "permalink": "/components/hooks",
+              "editUrl": "https://github.com/avaiity/availity-react/edit/master/docs/components/hooks.mdx",
+              "version": "current"
+            },
+            {
+              "unversionedId": "components/hooks/use-current-user",
+              "id": "components/hooks/use-current-user",
+              "isDocsHomePage": false,
+              "title": "useCurrentUser",
+              "description": "Example",
+              "source": "@site/docs/components/hooks/use-current-user.md",
+              "slug": "/components/hooks/use-current-user",
+              "permalink": "/components/hooks/use-current-user",
+              "editUrl": "https://github.com/avaiity/availity-react/edit/master/docs/components/hooks/use-current-user.md",
+              "version": "current",
+              "sidebar": "someSidebar",
+              "previous": {
+                "title": "<FeedbackForm />",
+                "permalink": "/components/feedback/form"
+              },
+              "next": {
+                "title": "useEffectAsync",
+                "permalink": "/components/hooks/use-effect-async"
+              }
+            },
+            {
+              "unversionedId": "components/hooks/use-effect-async",
+              "id": "components/hooks/use-effect-async",
+              "isDocsHomePage": false,
+              "title": "useEffectAsync",
+              "description": "Example",
+              "source": "@site/docs/components/hooks/use-effect-async.md",
+              "slug": "/components/hooks/use-effect-async",
+              "permalink": "/components/hooks/use-effect-async",
+              "editUrl": "https://github.com/avaiity/availity-react/edit/master/docs/components/hooks/use-effect-async.md",
+              "version": "current",
+              "sidebar": "someSidebar",
+              "previous": {
+                "title": "useCurrentUser",
+                "permalink": "/components/hooks/use-current-user"
+              },
+              "next": {
+                "title": "useMount",
+                "permalink": "/components/hooks/use-mount"
+              }
+            },
+            {
+              "unversionedId": "components/hooks/use-mount",
+              "id": "components/hooks/use-mount",
+              "isDocsHomePage": false,
+              "title": "useMount",
+              "description": "Example",
+              "source": "@site/docs/components/hooks/use-mount.md",
+              "slug": "/components/hooks/use-mount",
+              "permalink": "/components/hooks/use-mount",
+              "editUrl": "https://github.com/avaiity/availity-react/edit/master/docs/components/hooks/use-mount.md",
+              "version": "current",
+              "sidebar": "someSidebar",
+              "previous": {
+                "title": "useEffectAsync",
+                "permalink": "/components/hooks/use-effect-async"
+              },
+              "next": {
+                "title": "useCurrentRegion",
+                "permalink": "/components/hooks/use-region"
+              }
+            },
+            {
+              "unversionedId": "components/hooks/use-organizations",
+              "id": "components/hooks/use-organizations",
+              "isDocsHomePage": false,
+              "title": "useOrganizations",
+              "description": "Example",
+              "source": "@site/docs/components/hooks/use-organizations.md",
+              "slug": "/components/hooks/use-organizations",
+              "permalink": "/components/hooks/use-organizations",
+              "editUrl": "https://github.com/avaiity/availity-react/edit/master/docs/components/hooks/use-organizations.md",
+              "version": "current",
+              "sidebar": "someSidebar",
+              "previous": {
+                "title": "usePermissions",
+                "permalink": "/components/hooks/use-permissions"
+              },
+              "next": {
+                "title": "useProviders",
+                "permalink": "/components/hooks/use-providers"
+              }
+            },
+            {
+              "unversionedId": "components/hooks/use-permissions",
+              "id": "components/hooks/use-permissions",
+              "isDocsHomePage": false,
+              "title": "usePermissions",
+              "description": "Example",
+              "source": "@site/docs/components/hooks/use-permissions.md",
+              "slug": "/components/hooks/use-permissions",
+              "permalink": "/components/hooks/use-permissions",
+              "editUrl": "https://github.com/avaiity/availity-react/edit/master/docs/components/hooks/use-permissions.md",
+              "version": "current",
+              "sidebar": "someSidebar",
+              "previous": {
+                "title": "useToggle",
+                "permalink": "/components/hooks/use-toggle"
+              },
+              "next": {
+                "title": "useOrganizations",
+                "permalink": "/components/hooks/use-organizations"
+              }
+            },
+            {
+              "unversionedId": "components/hooks/use-providers",
+              "id": "components/hooks/use-providers",
+              "isDocsHomePage": false,
+              "title": "useProviders",
+              "description": "Example",
+              "source": "@site/docs/components/hooks/use-providers.md",
+              "slug": "/components/hooks/use-providers",
+              "permalink": "/components/hooks/use-providers",
+              "editUrl": "https://github.com/avaiity/availity-react/edit/master/docs/components/hooks/use-providers.md",
+              "version": "current",
+              "sidebar": "someSidebar",
+              "previous": {
+                "title": "useOrganizations",
+                "permalink": "/components/hooks/use-organizations"
+              },
+              "next": {
+                "title": "Link",
+                "permalink": "/components/link"
+              }
+            },
+            {
+              "unversionedId": "components/hooks/use-region",
+              "id": "components/hooks/use-region",
+              "isDocsHomePage": false,
+              "title": "useCurrentRegion",
+              "description": "Example",
+              "source": "@site/docs/components/hooks/use-region.md",
+              "slug": "/components/hooks/use-region",
+              "permalink": "/components/hooks/use-region",
+              "editUrl": "https://github.com/avaiity/availity-react/edit/master/docs/components/hooks/use-region.md",
+              "version": "current",
+              "sidebar": "someSidebar",
+              "previous": {
+                "title": "useMount",
+                "permalink": "/components/hooks/use-mount"
+              },
+              "next": {
+                "title": "useTimeout",
+                "permalink": "/components/hooks/use-timeout"
+              }
+            },
+            {
+              "unversionedId": "components/hooks/use-timeout",
+              "id": "components/hooks/use-timeout",
+              "isDocsHomePage": false,
+              "title": "useTimeout",
+              "description": "Example",
+              "source": "@site/docs/components/hooks/use-timeout.md",
+              "slug": "/components/hooks/use-timeout",
+              "permalink": "/components/hooks/use-timeout",
+              "editUrl": "https://github.com/avaiity/availity-react/edit/master/docs/components/hooks/use-timeout.md",
+              "version": "current",
+              "sidebar": "someSidebar",
+              "previous": {
+                "title": "useCurrentRegion",
+                "permalink": "/components/hooks/use-region"
+              },
+              "next": {
+                "title": "useToggle",
+                "permalink": "/components/hooks/use-toggle"
+              }
+            },
+            {
+              "unversionedId": "components/hooks/use-toggle",
+              "id": "components/hooks/use-toggle",
+              "isDocsHomePage": false,
+              "title": "useToggle",
+              "description": "Example",
+              "source": "@site/docs/components/hooks/use-toggle.md",
+              "slug": "/components/hooks/use-toggle",
+              "permalink": "/components/hooks/use-toggle",
+              "editUrl": "https://github.com/avaiity/availity-react/edit/master/docs/components/hooks/use-toggle.md",
+              "version": "current",
+              "sidebar": "someSidebar",
+              "previous": {
+                "title": "useTimeout",
+                "permalink": "/components/hooks/use-timeout"
+              },
+              "next": {
+                "title": "usePermissions",
+                "permalink": "/components/hooks/use-permissions"
+              }
+            },
+            {
+              "unversionedId": "components/icon",
+              "id": "components/icon",
+              "isDocsHomePage": false,
+              "title": "icon",
+              "description": "<!-- ---",
+              "source": "@site/docs/components/icon.mdx",
+              "slug": "/components/icon",
+              "permalink": "/components/icon",
+              "editUrl": "https://github.com/avaiity/availity-react/edit/master/docs/components/icon.mdx",
+              "version": "current",
+              "sidebar": "someSidebar",
+              "previous": {
+                "title": "Breadcrumbs",
+                "permalink": "/components/breadcrumbs"
+              },
+              "next": {
+                "title": "List Group",
+                "permalink": "/components/list-group"
+              }
+            },
+            {
+              "unversionedId": "components/link",
+              "id": "components/link",
+              "isDocsHomePage": false,
+              "title": "Link",
+              "description": "Installation",
+              "source": "@site/docs/components/link.mdx",
+              "slug": "/components/link",
+              "permalink": "/components/link",
+              "editUrl": "https://github.com/avaiity/availity-react/edit/master/docs/components/link.mdx",
+              "version": "current",
+              "sidebar": "someSidebar",
+              "previous": {
+                "title": "useProviders",
+                "permalink": "/components/hooks/use-providers"
+              },
+              "next": {
+                "title": "Page Header",
+                "permalink": "/components/page-header"
+              }
+            },
+            {
+              "unversionedId": "components/list-group",
+              "id": "components/list-group",
+              "isDocsHomePage": false,
+              "title": "List Group",
+              "description": "Installation",
+              "source": "@site/docs/components/list-group.mdx",
+              "slug": "/components/list-group",
+              "permalink": "/components/list-group",
+              "editUrl": "https://github.com/avaiity/availity-react/edit/master/docs/components/list-group.mdx",
+              "version": "current",
+              "sidebar": "someSidebar",
+              "previous": {
+                "title": "icon",
+                "permalink": "/components/icon"
+              },
+              "next": {
+                "title": "Getting Started",
+                "permalink": "/components/list-group-item/index"
+              }
+            },
+            {
+              "unversionedId": "components/list-group-item/index",
+              "id": "components/list-group-item/index",
+              "isDocsHomePage": false,
+              "title": "Getting Started",
+              "description": "Installation",
+              "source": "@site/docs/components/list-group-item/index.md",
+              "slug": "/components/list-group-item/index",
+              "permalink": "/components/list-group-item/index",
+              "editUrl": "https://github.com/avaiity/availity-react/edit/master/docs/components/list-group-item/index.md",
+              "version": "current",
+              "sidebar": "someSidebar",
+              "previous": {
+                "title": "List Group",
+                "permalink": "/components/list-group"
+              },
+              "next": {
+                "title": "<ListGroupItem /> ( Default Export )",
+                "permalink": "/components/list-group-item/list-group-item"
+              }
+            },
+            {
+              "unversionedId": "components/list-group-item/list-group-item",
+              "id": "components/list-group-item/list-group-item",
+              "isDocsHomePage": false,
+              "title": "<ListGroupItem /> ( Default Export )",
+              "description": "Example",
+              "source": "@site/docs/components/list-group-item/list-group-item.md",
+              "slug": "/components/list-group-item/list-group-item",
+              "permalink": "/components/list-group-item/list-group-item",
+              "editUrl": "https://github.com/avaiity/availity-react/edit/master/docs/components/list-group-item/list-group-item.md",
+              "version": "current",
+              "sidebar": "someSidebar",
+              "previous": {
+                "title": "Getting Started",
+                "permalink": "/components/list-group-item/index"
+              },
+              "next": {
+                "title": "<ListGroupItemStatus />",
+                "permalink": "/components/list-group-item/list-group-item-status"
+              }
+            },
+            {
+              "unversionedId": "components/list-group-item/list-group-item-status",
+              "id": "components/list-group-item/list-group-item-status",
+              "isDocsHomePage": false,
+              "title": "<ListGroupItemStatus />",
+              "description": "Example",
+              "source": "@site/docs/components/list-group-item/list-group-item-status.md",
+              "slug": "/components/list-group-item/list-group-item-status",
+              "permalink": "/components/list-group-item/list-group-item-status",
+              "editUrl": "https://github.com/avaiity/availity-react/edit/master/docs/components/list-group-item/list-group-item-status.md",
+              "version": "current",
+              "sidebar": "someSidebar",
+              "previous": {
+                "title": "<ListGroupItem /> ( Default Export )",
+                "permalink": "/components/list-group-item/list-group-item"
+              },
+              "next": {
+                "title": "Getting Started",
+                "permalink": "/components/pagination/index"
+              }
+            },
+            {
+              "unversionedId": "components/page-header",
+              "id": "components/page-header",
+              "isDocsHomePage": false,
+              "title": "Page Header",
+              "description": "The standard Availity application header that appears at the top of the page. It can include an app icon, payer logo, and/or the feedback loop.",
+              "source": "@site/docs/components/page-header.mdx",
+              "slug": "/components/page-header",
+              "permalink": "/components/page-header",
+              "editUrl": "https://github.com/avaiity/availity-react/edit/master/docs/components/page-header.mdx",
+              "version": "current",
+              "sidebar": "someSidebar",
+              "previous": {
+                "title": "Link",
+                "permalink": "/components/link"
+              },
+              "next": {
+                "title": "Getting Started",
+                "permalink": "/components/spaces/index"
+              }
+            },
+            {
+              "unversionedId": "components/pagination/content",
+              "id": "components/pagination/content",
+              "isDocsHomePage": false,
+              "title": "<PaginationContent />",
+              "description": "This is the container of all the items rendered to the DOM when the Pagination provider receives items. Must be /nested inside a Pagination component.",
+              "source": "@site/docs/components/pagination/content.md",
+              "slug": "/components/pagination/content",
+              "permalink": "/components/pagination/content",
+              "editUrl": "https://github.com/avaiity/availity-react/edit/master/docs/components/pagination/content.md",
+              "version": "current",
+              "sidebar": "someSidebar",
+              "previous": {
+                "title": "<PaginationControls />",
+                "permalink": "/components/pagination/controls"
+              },
+              "next": {
+                "title": "<AvResourcePagination />",
+                "permalink": "/components/pagination/resource"
+              }
+            },
+            {
+              "unversionedId": "components/pagination/context",
+              "id": "components/pagination/context",
+              "isDocsHomePage": false,
+              "title": "PaginationContext",
+              "description": "If you are using a class component, you can subscribe to the pagination by using this context.",
+              "source": "@site/docs/components/pagination/context.md",
+              "slug": "/components/pagination/context",
+              "permalink": "/components/pagination/context",
+              "editUrl": "https://github.com/avaiity/availity-react/edit/master/docs/components/pagination/context.md",
+              "version": "current",
+              "sidebar": "someSidebar",
+              "previous": {
+                "title": "usePagination",
+                "permalink": "/components/pagination/hook"
+              },
+              "next": {
+                "title": "Progress",
+                "permalink": "/components/progress"
+              }
+            },
+            {
+              "unversionedId": "components/pagination/controls",
+              "id": "components/pagination/controls",
+              "isDocsHomePage": false,
+              "title": "<PaginationControls />",
+              "description": "Example",
+              "source": "@site/docs/components/pagination/controls.md",
+              "slug": "/components/pagination/controls",
+              "permalink": "/components/pagination/controls",
+              "editUrl": "https://github.com/avaiity/availity-react/edit/master/docs/components/pagination/controls.md",
+              "version": "current",
+              "sidebar": "someSidebar",
+              "previous": {
+                "title": "<Pagination /> ( Default Export )",
+                "permalink": "/components/pagination/pagination"
+              },
+              "next": {
+                "title": "<PaginationContent />",
+                "permalink": "/components/pagination/content"
+              }
+            },
+            {
+              "unversionedId": "components/pagination/hook",
+              "id": "components/pagination/hook",
+              "isDocsHomePage": false,
+              "title": "usePagination",
+              "description": "This is a custom hook for grabbing any Pagination Data you may need from the Pagination provider.",
+              "source": "@site/docs/components/pagination/hook.md",
+              "slug": "/components/pagination/hook",
+              "permalink": "/components/pagination/hook",
+              "editUrl": "https://github.com/avaiity/availity-react/edit/master/docs/components/pagination/hook.md",
+              "version": "current",
+              "sidebar": "someSidebar",
+              "previous": {
+                "title": "<AvResourcePagination />",
+                "permalink": "/components/pagination/resource"
+              },
+              "next": {
+                "title": "PaginationContext",
+                "permalink": "/components/pagination/context"
+              }
+            },
+            {
+              "unversionedId": "components/pagination/index",
+              "id": "components/pagination/index",
+              "isDocsHomePage": false,
+              "title": "Getting Started",
+              "description": "Installation",
+              "source": "@site/docs/components/pagination/index.md",
+              "slug": "/components/pagination/index",
+              "permalink": "/components/pagination/index",
+              "editUrl": "https://github.com/avaiity/availity-react/edit/master/docs/components/pagination/index.md",
+              "version": "current",
+              "sidebar": "someSidebar",
+              "previous": {
+                "title": "<ListGroupItemStatus />",
+                "permalink": "/components/list-group-item/list-group-item-status"
+              },
+              "next": {
+                "title": "<Pagination /> ( Default Export )",
+                "permalink": "/components/pagination/pagination"
+              }
+            },
+            {
+              "unversionedId": "components/pagination/pagination",
+              "id": "components/pagination/pagination",
+              "isDocsHomePage": false,
+              "title": "<Pagination /> ( Default Export )",
+              "description": "This is the provider component needed for @availity/pagination components to work. All @availity/pagination components must be children of a Pagination provider.",
+              "source": "@site/docs/components/pagination/pagination.md",
+              "slug": "/components/pagination/pagination",
+              "permalink": "/components/pagination/pagination",
+              "editUrl": "https://github.com/avaiity/availity-react/edit/master/docs/components/pagination/pagination.md",
+              "version": "current",
+              "sidebar": "someSidebar",
+              "previous": {
+                "title": "Getting Started",
+                "permalink": "/components/pagination/index"
+              },
+              "next": {
+                "title": "<PaginationControls />",
+                "permalink": "/components/pagination/controls"
+              }
+            },
+            {
+              "unversionedId": "components/pagination/resource",
+              "id": "components/pagination/resource",
+              "isDocsHomePage": false,
+              "title": "<AvResourcePagination />",
+              "description": "This is a wrapper around the Pagination Component that can be used for paginating @availity/api-axios resources.",
+              "source": "@site/docs/components/pagination/resource.md",
+              "slug": "/components/pagination/resource",
+              "permalink": "/components/pagination/resource",
+              "editUrl": "https://github.com/avaiity/availity-react/edit/master/docs/components/pagination/resource.md",
+              "version": "current",
+              "sidebar": "someSidebar",
+              "previous": {
+                "title": "<PaginationContent />",
+                "permalink": "/components/pagination/content"
+              },
+              "next": {
+                "title": "usePagination",
+                "permalink": "/components/pagination/hook"
+              }
+            },
+            {
+              "unversionedId": "components/progress",
+              "id": "components/progress",
+              "isDocsHomePage": false,
+              "title": "Progress",
+              "description": "Installation",
+              "source": "@site/docs/components/progress.mdx",
+              "slug": "/components/progress",
+              "permalink": "/components/progress",
+              "editUrl": "https://github.com/avaiity/availity-react/edit/master/docs/components/progress.mdx",
+              "version": "current",
+              "sidebar": "someSidebar",
+              "previous": {
+                "title": "PaginationContext",
+                "permalink": "/components/pagination/context"
+              },
+              "next": {
+                "title": "Getting Started",
+                "permalink": "/components/step-wizard/index"
+              }
+            },
+            {
+              "unversionedId": "components/spaces/agreement",
+              "id": "components/spaces/agreement",
+              "isDocsHomePage": false,
+              "title": "<SpacesAgreement />",
+              "description": "Example",
+              "source": "@site/docs/components/spaces/agreement.md",
+              "slug": "/components/spaces/agreement",
+              "permalink": "/components/spaces/agreement",
+              "editUrl": "https://github.com/avaiity/availity-react/edit/master/docs/components/spaces/agreement.md",
+              "version": "current",
+              "sidebar": "someSidebar",
+              "previous": {
+                "title": "<SpacesDisclaimer />",
+                "permalink": "/components/spaces/disclaimer"
+              },
+              "next": {
+                "title": "<SpacesGhostText />",
+                "permalink": "/components/spaces/ghost-text"
+              }
+            },
+            {
+              "unversionedId": "components/spaces/context",
+              "id": "components/spaces/context",
+              "isDocsHomePage": false,
+              "title": "SpacesContext",
+              "description": "If you are using a class component, you can subscribe to the spaces by using this context.",
+              "source": "@site/docs/components/spaces/context.md",
+              "slug": "/components/spaces/context",
+              "permalink": "/components/spaces/context",
+              "editUrl": "https://github.com/avaiity/availity-react/edit/master/docs/components/spaces/context.md",
+              "version": "current",
+              "sidebar": "someSidebar",
+              "previous": {
+                "title": "useSpacesContext",
+                "permalink": "/components/spaces/use-spaces-context"
+              },
+              "next": {
+                "title": "<SpacesImage />",
+                "permalink": "/components/spaces/images"
+              }
+            },
+            {
+              "unversionedId": "components/spaces/disclaimer",
+              "id": "components/spaces/disclaimer",
+              "isDocsHomePage": false,
+              "title": "<SpacesDisclaimer />",
+              "description": "Example",
+              "source": "@site/docs/components/spaces/disclaimer.md",
+              "slug": "/components/spaces/disclaimer",
+              "permalink": "/components/spaces/disclaimer",
+              "editUrl": "https://github.com/avaiity/availity-react/edit/master/docs/components/spaces/disclaimer.md",
+              "version": "current",
+              "sidebar": "someSidebar",
+              "previous": {
+                "title": "<SpacesImage />",
+                "permalink": "/components/spaces/images"
+              },
+              "next": {
+                "title": "<SpacesAgreement />",
+                "permalink": "/components/spaces/agreement"
+              }
+            },
+            {
+              "unversionedId": "components/spaces/ghost-text",
+              "id": "components/spaces/ghost-text",
+              "isDocsHomePage": false,
+              "title": "<SpacesGhostText />",
+              "description": "Display the ghost text for a given space. Renders null if the ghost text should not display.",
+              "source": "@site/docs/components/spaces/ghost-text.md",
+              "slug": "/components/spaces/ghost-text",
+              "permalink": "/components/spaces/ghost-text",
+              "editUrl": "https://github.com/avaiity/availity-react/edit/master/docs/components/spaces/ghost-text.md",
+              "version": "current",
+              "sidebar": "someSidebar",
+              "previous": {
+                "title": "<SpacesAgreement />",
+                "permalink": "/components/spaces/agreement"
+              },
+              "next": {
+                "title": "Training Link",
+                "permalink": "/components/training-link"
+              }
+            },
+            {
+              "unversionedId": "components/spaces/images",
+              "id": "components/spaces/images",
+              "isDocsHomePage": false,
+              "title": "<SpacesImage />",
+              "description": "Example",
+              "source": "@site/docs/components/spaces/images.md",
+              "slug": "/components/spaces/images",
+              "permalink": "/components/spaces/images",
+              "editUrl": "https://github.com/avaiity/availity-react/edit/master/docs/components/spaces/images.md",
+              "version": "current",
+              "sidebar": "someSidebar",
+              "previous": {
+                "title": "SpacesContext",
+                "permalink": "/components/spaces/context"
+              },
+              "next": {
+                "title": "<SpacesDisclaimer />",
+                "permalink": "/components/spaces/disclaimer"
+              }
+            },
+            {
+              "unversionedId": "components/spaces/index",
+              "id": "components/spaces/index",
+              "isDocsHomePage": false,
+              "title": "Getting Started",
+              "description": "Installation",
+              "source": "@site/docs/components/spaces/index.md",
+              "slug": "/components/spaces/index",
+              "permalink": "/components/spaces/index",
+              "editUrl": "https://github.com/avaiity/availity-react/edit/master/docs/components/spaces/index.md",
+              "version": "current",
+              "sidebar": "someSidebar",
+              "previous": {
+                "title": "Page Header",
+                "permalink": "/components/page-header"
+              },
+              "next": {
+                "title": "<Space /> ( Default Export )",
+                "permalink": "/components/spaces/spaces"
+              }
+            },
+            {
+              "unversionedId": "components/spaces/spaces",
+              "id": "components/spaces/spaces",
+              "isDocsHomePage": false,
+              "title": "<Space /> ( Default Export )",
+              "description": "This is the provider component needed for @availity/spaces components to work. All @availity/spaces components must be children of a Spaces provider.",
+              "source": "@site/docs/components/spaces/spaces.md",
+              "slug": "/components/spaces/spaces",
+              "permalink": "/components/spaces/spaces",
+              "editUrl": "https://github.com/avaiity/availity-react/edit/master/docs/components/spaces/spaces.md",
+              "version": "current",
+              "sidebar": "someSidebar",
+              "previous": {
+                "title": "Getting Started",
+                "permalink": "/components/spaces/index"
+              },
+              "next": {
+                "title": "useSpaces",
+                "permalink": "/components/spaces/use-spaces"
+              }
+            },
+            {
+              "unversionedId": "components/spaces/use-spaces",
+              "id": "components/spaces/use-spaces",
+              "isDocsHomePage": false,
+              "title": "useSpaces",
+              "description": "This is a custom hook for grabbing spaces from the Spaces provider.",
+              "source": "@site/docs/components/spaces/use-spaces.md",
+              "slug": "/components/spaces/use-spaces",
+              "permalink": "/components/spaces/use-spaces",
+              "editUrl": "https://github.com/avaiity/availity-react/edit/master/docs/components/spaces/use-spaces.md",
+              "version": "current",
+              "sidebar": "someSidebar",
+              "previous": {
+                "title": "<Space /> ( Default Export )",
+                "permalink": "/components/spaces/spaces"
+              },
+              "next": {
+                "title": "useSpacesContext",
+                "permalink": "/components/spaces/use-spaces-context"
+              }
+            },
+            {
+              "unversionedId": "components/spaces/use-spaces-context",
+              "id": "components/spaces/use-spaces-context",
+              "isDocsHomePage": false,
+              "title": "useSpacesContext",
+              "description": "If you are using a function component, you can subscribe to the spaces by using this hook.",
+              "source": "@site/docs/components/spaces/use-spaces-context.md",
+              "slug": "/components/spaces/use-spaces-context",
+              "permalink": "/components/spaces/use-spaces-context",
+              "editUrl": "https://github.com/avaiity/availity-react/edit/master/docs/components/spaces/use-spaces-context.md",
+              "version": "current",
+              "sidebar": "someSidebar",
+              "previous": {
+                "title": "useSpaces",
+                "permalink": "/components/spaces/use-spaces"
+              },
+              "next": {
+                "title": "SpacesContext",
+                "permalink": "/components/spaces/context"
+              }
+            },
+            {
+              "unversionedId": "components/step-wizard/index",
+              "id": "components/step-wizard/index",
+              "isDocsHomePage": false,
+              "title": "Getting Started",
+              "description": "Installation",
+              "source": "@site/docs/components/step-wizard/index.md",
+              "slug": "/components/step-wizard/index",
+              "permalink": "/components/step-wizard/index",
+              "editUrl": "https://github.com/avaiity/availity-react/edit/master/docs/components/step-wizard/index.md",
+              "version": "current",
+              "sidebar": "someSidebar",
+              "previous": {
+                "title": "Progress",
+                "permalink": "/components/progress"
+              },
+              "next": {
+                "title": "<Wizard /> ( Default Export )",
+                "permalink": "/components/step-wizard/wizard"
+              }
+            },
+            {
+              "unversionedId": "components/step-wizard/wizard",
+              "id": "components/step-wizard/wizard",
+              "isDocsHomePage": false,
+              "title": "<Wizard /> ( Default Export )",
+              "description": "Example",
+              "source": "@site/docs/components/step-wizard/wizard.md",
+              "slug": "/components/step-wizard/wizard",
+              "permalink": "/components/step-wizard/wizard",
+              "editUrl": "https://github.com/avaiity/availity-react/edit/master/docs/components/step-wizard/wizard.md",
+              "version": "current",
+              "sidebar": "someSidebar",
+              "previous": {
+                "title": "Getting Started",
+                "permalink": "/components/step-wizard/index"
+              },
+              "next": {
+                "title": "<WizardStep />",
+                "permalink": "/components/step-wizard/wizard-step"
+              }
+            },
+            {
+              "unversionedId": "components/step-wizard/wizard-step",
+              "id": "components/step-wizard/wizard-step",
+              "isDocsHomePage": false,
+              "title": "<WizardStep />",
+              "description": "Example",
+              "source": "@site/docs/components/step-wizard/wizard-step.md",
+              "slug": "/components/step-wizard/wizard-step",
+              "permalink": "/components/step-wizard/wizard-step",
+              "editUrl": "https://github.com/avaiity/availity-react/edit/master/docs/components/step-wizard/wizard-step.md",
+              "version": "current",
+              "sidebar": "someSidebar",
+              "previous": {
+                "title": "<Wizard /> ( Default Export )",
+                "permalink": "/components/step-wizard/wizard"
+              },
+              "next": {
+                "title": "Getting Started",
+                "permalink": "/components/typography/index"
+              }
+            },
+            {
+              "unversionedId": "components/training-link",
+              "id": "components/training-link",
+              "isDocsHomePage": false,
+              "title": "Training Link",
+              "description": "Provide a link for training videos for your app",
+              "source": "@site/docs/components/training-link.mdx",
+              "slug": "/components/training-link",
+              "permalink": "/components/training-link",
+              "editUrl": "https://github.com/avaiity/availity-react/edit/master/docs/components/training-link.mdx",
+              "version": "current",
+              "sidebar": "someSidebar",
+              "previous": {
+                "title": "<SpacesGhostText />",
+                "permalink": "/components/spaces/ghost-text"
+              },
+              "next": {
+                "title": "App Icon",
+                "permalink": "/components/app-icon"
+              }
+            },
+            {
+              "unversionedId": "components/typography/agreement",
+              "id": "components/typography/agreement",
+              "isDocsHomePage": false,
+              "title": "<Agreement />",
+              "description": "Example",
+              "source": "@site/docs/components/typography/agreement.md",
+              "slug": "/components/typography/agreement",
+              "permalink": "/components/typography/agreement",
+              "editUrl": "https://github.com/avaiity/availity-react/edit/master/docs/components/typography/agreement.md",
+              "version": "current",
+              "sidebar": "someSidebar",
+              "previous": {
+                "title": "Disclaimer",
+                "permalink": "/components/typography/disclaimer"
+              }
+            },
+            {
+              "unversionedId": "components/typography/disclaimer",
+              "id": "components/typography/disclaimer",
+              "isDocsHomePage": false,
+              "title": "Disclaimer",
+              "description": "Example",
+              "source": "@site/docs/components/typography/disclaimer.md",
+              "slug": "/components/typography/disclaimer",
+              "permalink": "/components/typography/disclaimer",
+              "editUrl": "https://github.com/avaiity/availity-react/edit/master/docs/components/typography/disclaimer.md",
+              "version": "current",
+              "sidebar": "someSidebar",
+              "previous": {
+                "title": "Getting Started",
+                "permalink": "/components/typography/index"
+              },
+              "next": {
+                "title": "<Agreement />",
+                "permalink": "/components/typography/agreement"
+              }
+            },
+            {
+              "unversionedId": "components/typography/index",
+              "id": "components/typography/index",
+              "isDocsHomePage": false,
+              "title": "Getting Started",
+              "description": "Installation",
+              "source": "@site/docs/components/typography/index.md",
+              "slug": "/components/typography/index",
+              "permalink": "/components/typography/index",
+              "editUrl": "https://github.com/avaiity/availity-react/edit/master/docs/components/typography/index.md",
+              "version": "current",
+              "sidebar": "someSidebar",
+              "previous": {
+                "title": "<WizardStep />",
+                "permalink": "/components/step-wizard/wizard-step"
+              },
+              "next": {
+                "title": "Disclaimer",
+                "permalink": "/components/typography/disclaimer"
+              }
+            },
+            {
+              "unversionedId": "contributing",
+              "id": "contributing",
+              "isDocsHomePage": false,
+              "title": "Contributing",
+              "description": "This is a monorepo managed using lerna in independent mode (each package is versioned and published individually).",
+              "source": "@site/docs/contributing.md",
+              "slug": "/contributing",
+              "permalink": "/contributing",
+              "editUrl": "https://github.com/avaiity/availity-react/edit/master/docs/contributing.md",
+              "version": "current",
+              "sidebar": "someSidebar",
+              "previous": {
+                "title": "Introduction",
+                "permalink": "/intro"
+              },
+              "next": {
+                "title": "Getting Started",
+                "permalink": "/form/index"
+              }
+            },
+            {
+              "unversionedId": "form/components/checkbox",
+              "id": "form/components/checkbox",
+              "isDocsHomePage": false,
+              "title": "<Checkbox />",
+              "description": "Example",
+              "source": "@site/docs/form/components/checkbox.md",
+              "slug": "/form/components/checkbox",
+              "permalink": "/form/components/checkbox",
+              "editUrl": "https://github.com/avaiity/availity-react/edit/master/docs/form/components/checkbox.md",
+              "version": "current",
+              "sidebar": "someSidebar",
+              "previous": {
+                "title": "<CheckboxGroup />",
+                "permalink": "/form/components/checkbox-group"
+              },
+              "next": {
+                "title": "<Feedback />",
+                "permalink": "/form/components/feedback"
+              }
+            },
+            {
+              "unversionedId": "form/components/checkbox-group",
+              "id": "form/components/checkbox-group",
+              "isDocsHomePage": false,
+              "title": "<CheckboxGroup />",
+              "description": "Props",
+              "source": "@site/docs/form/components/checkbox-group.md",
+              "slug": "/form/components/checkbox-group",
+              "permalink": "/form/components/checkbox-group",
+              "editUrl": "https://github.com/avaiity/availity-react/edit/master/docs/form/components/checkbox-group.md",
+              "version": "current",
+              "sidebar": "someSidebar",
+              "previous": {
+                "title": "Migrating from reactstrap validation",
+                "permalink": "/form/migrating"
+              },
+              "next": {
+                "title": "<Checkbox />",
+                "permalink": "/form/components/checkbox"
+              }
+            },
+            {
+              "unversionedId": "form/components/feedback",
+              "id": "form/components/feedback",
+              "isDocsHomePage": false,
+              "title": "<Feedback />",
+              "description": "Example",
+              "source": "@site/docs/form/components/feedback.md",
+              "slug": "/form/components/feedback",
+              "permalink": "/form/components/feedback",
+              "editUrl": "https://github.com/avaiity/availity-react/edit/master/docs/form/components/feedback.md",
+              "version": "current",
+              "sidebar": "someSidebar",
+              "previous": {
+                "title": "<Checkbox />",
+                "permalink": "/form/components/checkbox"
+              },
+              "next": {
+                "title": "<Field />",
+                "permalink": "/form/components/field"
+              }
+            },
+            {
+              "unversionedId": "form/components/field",
+              "id": "form/components/field",
+              "isDocsHomePage": false,
+              "title": "<Field />",
+              "description": "Example",
+              "source": "@site/docs/form/components/field.md",
+              "slug": "/form/components/field",
+              "permalink": "/form/components/field",
+              "editUrl": "https://github.com/avaiity/availity-react/edit/master/docs/form/components/field.md",
+              "version": "current",
+              "sidebar": "someSidebar",
+              "previous": {
+                "title": "<Feedback />",
+                "permalink": "/form/components/feedback"
+              },
+              "next": {
+                "title": "<FormGroup />",
+                "permalink": "/form/components/form-group"
+              }
+            },
+            {
+              "unversionedId": "form/components/form",
+              "id": "form/components/form",
+              "isDocsHomePage": false,
+              "title": "<Form />",
+              "description": "Example",
+              "source": "@site/docs/form/components/form.md",
+              "slug": "/form/components/form",
+              "permalink": "/form/components/form",
+              "editUrl": "https://github.com/avaiity/availity-react/edit/master/docs/form/components/form.md",
+              "version": "current",
+              "sidebar": "someSidebar",
+              "previous": {
+                "title": "<FormGroup />",
+                "permalink": "/form/components/form-group"
+              },
+              "next": {
+                "title": "<Input />",
+                "permalink": "/form/components/input"
+              }
+            },
+            {
+              "unversionedId": "form/components/form-group",
+              "id": "form/components/form-group",
+              "isDocsHomePage": false,
+              "title": "<FormGroup />",
+              "description": "Example",
+              "source": "@site/docs/form/components/form-group.md",
+              "slug": "/form/components/form-group",
+              "permalink": "/form/components/form-group",
+              "editUrl": "https://github.com/avaiity/availity-react/edit/master/docs/form/components/form-group.md",
+              "version": "current",
+              "sidebar": "someSidebar",
+              "previous": {
+                "title": "<Field />",
+                "permalink": "/form/components/field"
+              },
+              "next": {
+                "title": "<Form />",
+                "permalink": "/form/components/form"
+              }
+            },
+            {
+              "unversionedId": "form/components/input",
+              "id": "form/components/input",
+              "isDocsHomePage": false,
+              "title": "<Input />",
+              "description": "Example",
+              "source": "@site/docs/form/components/input.md",
+              "slug": "/form/components/input",
+              "permalink": "/form/components/input",
+              "editUrl": "https://github.com/avaiity/availity-react/edit/master/docs/form/components/input.md",
+              "version": "current",
+              "sidebar": "someSidebar",
+              "previous": {
+                "title": "<Form />",
+                "permalink": "/form/components/form"
+              },
+              "next": {
+                "title": "<RadioGroup />",
+                "permalink": "/form/components/radio-group"
+              }
+            },
+            {
+              "unversionedId": "form/components/radio",
+              "id": "form/components/radio",
+              "isDocsHomePage": false,
+              "title": "<Radio />",
+              "description": "Example",
+              "source": "@site/docs/form/components/radio.md",
+              "slug": "/form/components/radio",
+              "permalink": "/form/components/radio",
+              "editUrl": "https://github.com/avaiity/availity-react/edit/master/docs/form/components/radio.md",
+              "version": "current",
+              "sidebar": "someSidebar",
+              "previous": {
+                "title": "<RadioGroup />",
+                "permalink": "/form/components/radio-group"
+              },
+              "next": {
+                "title": "Getting Started",
+                "permalink": "/form/date/index"
+              }
+            },
+            {
+              "unversionedId": "form/components/radio-group",
+              "id": "form/components/radio-group",
+              "isDocsHomePage": false,
+              "title": "<RadioGroup />",
+              "description": "Props",
+              "source": "@site/docs/form/components/radio-group.md",
+              "slug": "/form/components/radio-group",
+              "permalink": "/form/components/radio-group",
+              "editUrl": "https://github.com/avaiity/availity-react/edit/master/docs/form/components/radio-group.md",
+              "version": "current",
+              "sidebar": "someSidebar",
+              "previous": {
+                "title": "<Input />",
+                "permalink": "/form/components/input"
+              },
+              "next": {
+                "title": "<Radio />",
+                "permalink": "/form/components/radio"
+              }
+            },
+            {
+              "unversionedId": "form/date/components/date",
+              "id": "form/date/components/date",
+              "isDocsHomePage": false,
+              "title": "<Date /> ( Default Export )",
+              "description": "Date picker without a Label or Feedback",
+              "source": "@site/docs/form/date/components/date.md",
+              "slug": "/form/date/components/date",
+              "permalink": "/form/date/components/date",
+              "editUrl": "https://github.com/avaiity/availity-react/edit/master/docs/form/date/components/date.md",
+              "version": "current",
+              "sidebar": "someSidebar",
+              "previous": {
+                "title": "<DateRange />",
+                "permalink": "/form/date/components/date-range"
+              },
+              "next": {
+                "title": "Getting Started",
+                "permalink": "/form/phone/index"
+              }
+            },
+            {
+              "unversionedId": "form/date/components/date-field",
+              "id": "form/date/components/date-field",
+              "isDocsHomePage": false,
+              "title": "<DateField />",
+              "description": "The same as FormikDate but with a Label that appears above input and a Feedback that appears below the input.",
+              "source": "@site/docs/form/date/components/date-field.md",
+              "slug": "/form/date/components/date-field",
+              "permalink": "/form/date/components/date-field",
+              "editUrl": "https://github.com/avaiity/availity-react/edit/master/docs/form/date/components/date-field.md",
+              "version": "current",
+              "sidebar": "someSidebar",
+              "previous": {
+                "title": "Getting Started",
+                "permalink": "/form/date/index"
+              },
+              "next": {
+                "title": "<DateRangeField />",
+                "permalink": "/form/date/components/date-range-field"
+              }
+            },
+            {
+              "unversionedId": "form/date/components/date-range",
+              "id": "form/date/components/date-range",
+              "isDocsHomePage": false,
+              "title": "<DateRange />",
+              "description": "A date range, consisting of 2 fields, a start date and an end date, without a Label or Feedback",
+              "source": "@site/docs/form/date/components/date-range.mdx",
+              "slug": "/form/date/components/date-range",
+              "permalink": "/form/date/components/date-range",
+              "editUrl": "https://github.com/avaiity/availity-react/edit/master/docs/form/date/components/date-range.mdx",
+              "version": "current",
+              "sidebar": "someSidebar",
+              "previous": {
+                "title": "<DateRangeField />",
+                "permalink": "/form/date/components/date-range-field"
+              },
+              "next": {
+                "title": "<Date /> ( Default Export )",
+                "permalink": "/form/date/components/date"
+              }
+            },
+            {
+              "unversionedId": "form/date/components/date-range-field",
+              "id": "form/date/components/date-range-field",
+              "isDocsHomePage": false,
+              "title": "<DateRangeField />",
+              "description": "The same as DateRange but with a Label that appears above the input and a Feedback that appears below the input.",
+              "source": "@site/docs/form/date/components/date-range-field.md",
+              "slug": "/form/date/components/date-range-field",
+              "permalink": "/form/date/components/date-range-field",
+              "editUrl": "https://github.com/avaiity/availity-react/edit/master/docs/form/date/components/date-range-field.md",
+              "version": "current",
+              "sidebar": "someSidebar",
+              "previous": {
+                "title": "<DateField />",
+                "permalink": "/form/date/components/date-field"
+              },
+              "next": {
+                "title": "<DateRange />",
+                "permalink": "/form/date/components/date-range"
+              }
+            },
+            {
+              "unversionedId": "form/date/index",
+              "id": "form/date/index",
+              "isDocsHomePage": false,
+              "title": "Getting Started",
+              "description": "Installation",
+              "source": "@site/docs/form/date/index.mdx",
+              "slug": "/form/date/index",
+              "permalink": "/form/date/index",
+              "editUrl": "https://github.com/avaiity/availity-react/edit/master/docs/form/date/index.mdx",
+              "version": "current",
+              "sidebar": "someSidebar",
+              "previous": {
+                "title": "<Radio />",
+                "permalink": "/form/components/radio"
+              },
+              "next": {
+                "title": "<DateField />",
+                "permalink": "/form/date/components/date-field"
+              }
+            },
+            {
+              "unversionedId": "form/index",
+              "id": "form/index",
+              "isDocsHomePage": false,
+              "title": "Getting Started",
+              "description": "Version",
+              "source": "@site/docs/form/index.mdx",
+              "slug": "/form/index",
+              "permalink": "/form/index",
+              "editUrl": "https://github.com/avaiity/availity-react/edit/master/docs/form/index.mdx",
+              "version": "current",
+              "sidebar": "someSidebar",
+              "previous": {
+                "title": "Contributing",
+                "permalink": "/contributing"
+              },
+              "next": {
+                "title": "Migrating from reactstrap validation",
+                "permalink": "/form/migrating"
+              }
+            },
+            {
+              "unversionedId": "form/migrating",
+              "id": "form/migrating",
+              "isDocsHomePage": false,
+              "title": "Migrating from reactstrap validation",
+              "description": "The primary difference in developing with availity-reactstrap-validation and @availity/form is validation. With availity-reactstrap-validation, we define validation schemas on the input components in the form with the validate prop, like so:",
+              "source": "@site/docs/form/migrating.md",
+              "slug": "/form/migrating",
+              "permalink": "/form/migrating",
+              "editUrl": "https://github.com/avaiity/availity-react/edit/master/docs/form/migrating.md",
+              "version": "current",
+              "sidebar": "someSidebar",
+              "previous": {
+                "title": "Getting Started",
+                "permalink": "/form/index"
+              },
+              "next": {
+                "title": "<CheckboxGroup />",
+                "permalink": "/form/components/checkbox-group"
+              }
+            },
+            {
+              "unversionedId": "form/phone/components/phone",
+              "id": "form/phone/components/phone",
+              "isDocsHomePage": false,
+              "title": "<Phone />",
+              "description": "Example",
+              "source": "@site/docs/form/phone/components/phone.md",
+              "slug": "/form/phone/components/phone",
+              "permalink": "/form/phone/components/phone",
+              "editUrl": "https://github.com/avaiity/availity-react/edit/master/docs/form/phone/components/phone.md",
+              "version": "current",
+              "sidebar": "someSidebar",
+              "previous": {
+                "title": "Getting Started",
+                "permalink": "/form/phone/index"
+              },
+              "next": {
+                "title": "validatePhone",
+                "permalink": "/form/phone/components/validate-phone"
+              }
+            },
+            {
+              "unversionedId": "form/phone/components/validate-phone",
+              "id": "form/phone/components/validate-phone",
+              "isDocsHomePage": false,
+              "title": "validatePhone",
+              "description": "Version",
+              "source": "@site/docs/form/phone/components/validate-phone.md",
+              "slug": "/form/phone/components/validate-phone",
+              "permalink": "/form/phone/components/validate-phone",
+              "editUrl": "https://github.com/avaiity/availity-react/edit/master/docs/form/phone/components/validate-phone.md",
+              "version": "current",
+              "sidebar": "someSidebar",
+              "previous": {
+                "title": "<Phone />",
+                "permalink": "/form/phone/components/phone"
+              },
+              "next": {
+                "title": "Getting Started",
+                "permalink": "/form/select/index"
+              }
+            },
+            {
+              "unversionedId": "form/phone/index",
+              "id": "form/phone/index",
+              "isDocsHomePage": false,
+              "title": "Getting Started",
+              "description": "Installation",
+              "source": "@site/docs/form/phone/index.mdx",
+              "slug": "/form/phone/index",
+              "permalink": "/form/phone/index",
+              "editUrl": "https://github.com/avaiity/availity-react/edit/master/docs/form/phone/index.mdx",
+              "version": "current",
+              "sidebar": "someSidebar",
+              "previous": {
+                "title": "<Date /> ( Default Export )",
+                "permalink": "/form/date/components/date"
+              },
+              "next": {
+                "title": "<Phone />",
+                "permalink": "/form/phone/components/phone"
+              }
+            },
+            {
+              "unversionedId": "form/select/components/organization-select",
+              "id": "form/select/components/organization-select",
+              "isDocsHomePage": false,
+              "title": "<AvOrganizationSelect />",
+              "description": "Example",
+              "source": "@site/docs/form/select/components/organization-select.mdx",
+              "slug": "/form/select/components/organization-select",
+              "permalink": "/form/select/components/organization-select",
+              "editUrl": "https://github.com/avaiity/availity-react/edit/master/docs/form/select/components/organization-select.mdx",
+              "version": "current",
+              "sidebar": "someSidebar",
+              "previous": {
+                "title": "<AvRegionSelect />",
+                "permalink": "/form/select/components/region-select"
+              },
+              "next": {
+                "title": "Getting Started",
+                "permalink": "/form/upload/index"
+              }
+            },
+            {
+              "unversionedId": "form/select/components/region-select",
+              "id": "form/select/components/region-select",
+              "isDocsHomePage": false,
+              "title": "<AvRegionSelect />",
+              "description": "Example",
+              "source": "@site/docs/form/select/components/region-select.md",
+              "slug": "/form/select/components/region-select",
+              "permalink": "/form/select/components/region-select",
+              "editUrl": "https://github.com/avaiity/availity-react/edit/master/docs/form/select/components/region-select.md",
+              "version": "current",
+              "sidebar": "someSidebar",
+              "previous": {
+                "title": "<ResourceSelect />",
+                "permalink": "/form/select/components/resource-select"
+              },
+              "next": {
+                "title": "<AvOrganizationSelect />",
+                "permalink": "/form/select/components/organization-select"
+              }
+            },
+            {
+              "unversionedId": "form/select/components/resource-select",
+              "id": "form/select/components/resource-select",
+              "isDocsHomePage": false,
+              "title": "<ResourceSelect />",
+              "description": "Example",
+              "source": "@site/docs/form/select/components/resource-select.md",
+              "slug": "/form/select/components/resource-select",
+              "permalink": "/form/select/components/resource-select",
+              "editUrl": "https://github.com/avaiity/availity-react/edit/master/docs/form/select/components/resource-select.md",
+              "version": "current",
+              "sidebar": "someSidebar",
+              "previous": {
+                "title": "<SelectField />",
+                "permalink": "/form/select/components/select-field"
+              },
+              "next": {
+                "title": "<AvRegionSelect />",
+                "permalink": "/form/select/components/region-select"
+              }
+            },
+            {
+              "unversionedId": "form/select/components/select",
+              "id": "form/select/components/select",
+              "isDocsHomePage": false,
+              "title": "<Select /> ( Default Export )",
+              "description": "Example",
+              "source": "@site/docs/form/select/components/select.md",
+              "slug": "/form/select/components/select",
+              "permalink": "/form/select/components/select",
+              "editUrl": "https://github.com/avaiity/availity-react/edit/master/docs/form/select/components/select.md",
+              "version": "current",
+              "sidebar": "someSidebar",
+              "previous": {
+                "title": "Getting Started",
+                "permalink": "/form/select/index"
+              },
+              "next": {
+                "title": "<SelectField />",
+                "permalink": "/form/select/components/select-field"
+              }
+            },
+            {
+              "unversionedId": "form/select/components/select-field",
+              "id": "form/select/components/select-field",
+              "isDocsHomePage": false,
+              "title": "<SelectField />",
+              "description": "The same as Select but with a Label that appears above the input and a Feedback that appears below the input.",
+              "source": "@site/docs/form/select/components/select-field.md",
+              "slug": "/form/select/components/select-field",
+              "permalink": "/form/select/components/select-field",
+              "editUrl": "https://github.com/avaiity/availity-react/edit/master/docs/form/select/components/select-field.md",
+              "version": "current",
+              "sidebar": "someSidebar",
+              "previous": {
+                "title": "<Select /> ( Default Export )",
+                "permalink": "/form/select/components/select"
+              },
+              "next": {
+                "title": "<ResourceSelect />",
+                "permalink": "/form/select/components/resource-select"
+              }
+            },
+            {
+              "unversionedId": "form/select/index",
+              "id": "form/select/index",
+              "isDocsHomePage": false,
+              "title": "Getting Started",
+              "description": "Installation",
+              "source": "@site/docs/form/select/index.mdx",
+              "slug": "/form/select/index",
+              "permalink": "/form/select/index",
+              "editUrl": "https://github.com/avaiity/availity-react/edit/master/docs/form/select/index.mdx",
+              "version": "current",
+              "sidebar": "someSidebar",
+              "previous": {
+                "title": "validatePhone",
+                "permalink": "/form/phone/components/validate-phone"
+              },
+              "next": {
+                "title": "<Select /> ( Default Export )",
+                "permalink": "/form/select/components/select"
+              }
+            },
+            {
+              "unversionedId": "form/upload/file-picker",
+              "id": "form/upload/file-picker",
+              "isDocsHomePage": false,
+              "title": "<FilePicker />",
+              "description": "The raw file picker which automatically resets the value of the input, allowing the same file to be selected multiple consecutive files.",
+              "source": "@site/docs/form/upload/file-picker.md",
+              "slug": "/form/upload/file-picker",
+              "permalink": "/form/upload/file-picker",
+              "editUrl": "https://github.com/avaiity/availity-react/edit/master/docs/form/upload/file-picker.md",
+              "version": "current",
+              "sidebar": "someSidebar",
+              "previous": {
+                "title": "<Upload /> ( Default Export )",
+                "permalink": "/form/upload/upload"
+              },
+              "next": {
+                "title": "<FilePickerBtn />",
+                "permalink": "/form/upload/file-picker-btn"
+              }
+            },
+            {
+              "unversionedId": "form/upload/file-picker-btn",
+              "id": "form/upload/file-picker-btn",
+              "isDocsHomePage": false,
+              "title": "<FilePickerBtn />",
+              "description": "Example",
+              "source": "@site/docs/form/upload/file-picker-btn.md",
+              "slug": "/form/upload/file-picker-btn",
+              "permalink": "/form/upload/file-picker-btn",
+              "editUrl": "https://github.com/avaiity/availity-react/edit/master/docs/form/upload/file-picker-btn.md",
+              "version": "current",
+              "sidebar": "someSidebar",
+              "previous": {
+                "title": "<FilePicker />",
+                "permalink": "/form/upload/file-picker"
+              },
+              "next": {
+                "title": "<UploadProgressBar />",
+                "permalink": "/form/upload/upload-progress-bar"
+              }
+            },
+            {
+              "unversionedId": "form/upload/index",
+              "id": "form/upload/index",
+              "isDocsHomePage": false,
+              "title": "Getting Started",
+              "description": "Installation",
+              "source": "@site/docs/form/upload/index.md",
+              "slug": "/form/upload/index",
+              "permalink": "/form/upload/index",
+              "editUrl": "https://github.com/avaiity/availity-react/edit/master/docs/form/upload/index.md",
+              "version": "current",
+              "sidebar": "someSidebar",
+              "previous": {
+                "title": "<AvOrganizationSelect />",
+                "permalink": "/form/select/components/organization-select"
+              },
+              "next": {
+                "title": "<Upload /> ( Default Export )",
+                "permalink": "/form/upload/upload"
+              }
+            },
+            {
+              "unversionedId": "form/upload/upload",
+              "id": "form/upload/upload",
+              "isDocsHomePage": false,
+              "title": "<Upload /> ( Default Export )",
+              "description": "The default export is an all-in-one solution which handles uploads, encrypted file password requests and file state management for you.",
+              "source": "@site/docs/form/upload/upload.md",
+              "slug": "/form/upload/upload",
+              "permalink": "/form/upload/upload",
+              "editUrl": "https://github.com/avaiity/availity-react/edit/master/docs/form/upload/upload.md",
+              "version": "current",
+              "sidebar": "someSidebar",
+              "previous": {
+                "title": "Getting Started",
+                "permalink": "/form/upload/index"
+              },
+              "next": {
+                "title": "<FilePicker />",
+                "permalink": "/form/upload/file-picker"
+              }
+            },
+            {
+              "unversionedId": "form/upload/upload-progress-bar",
+              "id": "form/upload/upload-progress-bar",
+              "isDocsHomePage": false,
+              "title": "<UploadProgressBar />",
+              "description": "Example",
+              "source": "@site/docs/form/upload/upload-progress-bar.md",
+              "slug": "/form/upload/upload-progress-bar",
+              "permalink": "/form/upload/upload-progress-bar",
+              "editUrl": "https://github.com/avaiity/availity-react/edit/master/docs/form/upload/upload-progress-bar.md",
+              "version": "current",
+              "sidebar": "someSidebar",
+              "previous": {
+                "title": "<FilePickerBtn />",
+                "permalink": "/form/upload/file-picker-btn"
+              },
+              "next": {
+                "title": "Getting Started",
+                "permalink": "/components/analytics/index"
+              }
+            },
+            {
+              "unversionedId": "intro",
+              "id": "intro",
+              "isDocsHomePage": false,
+              "title": "Introduction",
+              "description": "React components using Availity UIKit and Bootstrap 4",
+              "source": "@site/docs/intro.md",
+              "slug": "/intro",
+              "permalink": "/intro",
+              "editUrl": "https://github.com/avaiity/availity-react/edit/master/docs/intro.md",
+              "version": "current",
+              "sidebar": "someSidebar",
+              "next": {
+                "title": "Contributing",
+                "permalink": "/contributing"
+              }
+            }
+          ]
+        }
+      ]
+    }
+  },
+  "docusaurus-plugin-content-blog": {
+    "default": null
+  },
+  "docusaurus-plugin-content-pages": {
+    "default": [
+      {
+        "type": "jsx",
+        "permalink": "/",
+        "source": "@site/src/pages/index.js"
+      }
+    ]
+  },
+  "docusaurus-plugin-debug": {
+    "default": null
+  },
+  "docusaurus-theme-classic": {
+    "default": null
+  },
+  "docusaurus-theme-search-algolia": {
+    "default": null,
+    "01": null
+  }
+}

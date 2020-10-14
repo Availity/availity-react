@@ -1,0 +1,21 @@
+{
+  "unversionedId": "components/pagination/hook",
+  "id": "components/pagination/hook",
+  "isDocsHomePage": false,
+  "title": "usePagination",
+  "description": "This is a custom hook for grabbing any Pagination Data you may need from the Pagination provider.",
+  "source": "@site/docs/components/pagination/hook.md",
+  "slug": "/components/pagination/hook",
+  "permalink": "/components/pagination/hook",
+  "editUrl": "https://github.com/avaiity/availity-react/edit/master/docs/components/pagination/hook.md",
+  "version": "current",
+  "sidebar": "someSidebar",
+  "previous": {
+    "title": "<AvResourcePagination />",
+    "permalink": "/components/pagination/resource"
+  },
+  "next": {
+    "title": "PaginationContext",
+    "permalink": "/components/pagination/context"
+  }
+}

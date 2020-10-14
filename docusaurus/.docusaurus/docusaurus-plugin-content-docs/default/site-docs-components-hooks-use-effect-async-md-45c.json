@@ -1,0 +1,21 @@
+{
+  "unversionedId": "components/hooks/use-effect-async",
+  "id": "components/hooks/use-effect-async",
+  "isDocsHomePage": false,
+  "title": "useEffectAsync",
+  "description": "Example",
+  "source": "@site/docs/components/hooks/use-effect-async.md",
+  "slug": "/components/hooks/use-effect-async",
+  "permalink": "/components/hooks/use-effect-async",
+  "editUrl": "https://github.com/avaiity/availity-react/edit/master/docs/components/hooks/use-effect-async.md",
+  "version": "current",
+  "sidebar": "someSidebar",
+  "previous": {
+    "title": "useCurrentUser",
+    "permalink": "/components/hooks/use-current-user"
+  },
+  "next": {
+    "title": "useMount",
+    "permalink": "/components/hooks/use-mount"
+  }
+}

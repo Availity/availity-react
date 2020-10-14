@@ -1,0 +1,21 @@
+{
+  "unversionedId": "components/feedback/feedback",
+  "id": "components/feedback/feedback",
+  "isDocsHomePage": false,
+  "title": "<Feedback /> ( Default Export )",
+  "description": "Example",
+  "source": "@site/docs/components/feedback/feedback.md",
+  "slug": "/components/feedback/feedback",
+  "permalink": "/components/feedback/feedback",
+  "editUrl": "https://github.com/avaiity/availity-react/edit/master/docs/components/feedback/feedback.md",
+  "version": "current",
+  "sidebar": "someSidebar",
+  "previous": {
+    "title": "Getting Started",
+    "permalink": "/components/feedback/index"
+  },
+  "next": {
+    "title": "<FeedbackForm />",
+    "permalink": "/components/feedback/form"
+  }
+}

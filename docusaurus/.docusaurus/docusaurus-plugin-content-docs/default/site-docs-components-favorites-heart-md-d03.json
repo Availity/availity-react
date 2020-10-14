@@ -1,0 +1,21 @@
+{
+  "unversionedId": "components/favorites/heart",
+  "id": "components/favorites/heart",
+  "isDocsHomePage": false,
+  "title": "<FavoriteHeart />",
+  "description": "The default Favorite Icon that can be used to store a favorited item. Can only be used inside of a `` Provider.",
+  "source": "@site/docs/components/favorites/heart.md",
+  "slug": "/components/favorites/heart",
+  "permalink": "/components/favorites/heart",
+  "editUrl": "https://github.com/avaiity/availity-react/edit/master/docs/components/favorites/heart.md",
+  "version": "current",
+  "sidebar": "someSidebar",
+  "previous": {
+    "title": "<Favorites /> ( Default Export )",
+    "permalink": "/components/favorites/favorites"
+  },
+  "next": {
+    "title": "hook",
+    "permalink": "/components/favorites/hook"
+  }
+}

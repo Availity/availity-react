@@ -11,7 +11,7 @@ npm install @availity/step-wizard --save
 
 ## Example
 
-```jsx live=true
+```jsx
 import Wizard, {
   WizardStep,
   WizardStepBadge,

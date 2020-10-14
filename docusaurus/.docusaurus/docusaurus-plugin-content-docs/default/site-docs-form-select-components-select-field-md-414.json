@@ -1,0 +1,21 @@
+{
+  "unversionedId": "form/select/components/select-field",
+  "id": "form/select/components/select-field",
+  "isDocsHomePage": false,
+  "title": "<SelectField />",
+  "description": "The same as Select but with a Label that appears above the input and a Feedback that appears below the input.",
+  "source": "@site/docs/form/select/components/select-field.md",
+  "slug": "/form/select/components/select-field",
+  "permalink": "/form/select/components/select-field",
+  "editUrl": "https://github.com/avaiity/availity-react/edit/master/docs/form/select/components/select-field.md",
+  "version": "current",
+  "sidebar": "someSidebar",
+  "previous": {
+    "title": "<Select /> ( Default Export )",
+    "permalink": "/form/select/components/select"
+  },
+  "next": {
+    "title": "<ResourceSelect />",
+    "permalink": "/form/select/components/resource-select"
+  }
+}

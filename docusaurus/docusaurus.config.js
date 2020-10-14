@@ -1,15 +1,16 @@
 module.exports = {
   plugins: [
-    'docusaurus-plugin-sass',
+    // 'docusaurus-plugin-sass',
     // ['sass-plugin', { id: 'plugin-2' }],
-    'babel-plugin',
-    'mock-plugin',
-    'url-plugin',
+
+
+    // 'url-plugin',
   ],
   themes: [
-    '@docusaurus/theme-live-codeblock',
+
     ['@docusaurus/theme-search-algolia', { id: '01' }],
   ],
+  onBrokenLinks: 'ignore',
   title: 'Availity React Docs',
   tagline: 'React components using Availity UIKit and Bootstrap 4',
   url: 'https://your-docusaurus-test-site.com',
@@ -66,14 +67,14 @@ module.exports = {
         docs: {
           // It is recommended to set document id as docs home page (`docs/` path).
           routeBasePath: '/',
-          homePageId: 'intro',
+          // homePageId: 'intro',
           sidebarPath: require.resolve('./sidebars.js'),
           // Please change this to your repo.
           editUrl: 'https://github.com/avaiity/availity-react/edit/master/',
         },
 
         theme: {
-          customCss: require.resolve('./src/theme/ReactLiveScope/index.scss'),
+          //   customCss: require.resolve('./src/theme/ReactLiveScope/index.scss'),
         },
       },
     ],

@@ -1,0 +1,21 @@
+{
+  "unversionedId": "components/spaces/index",
+  "id": "components/spaces/index",
+  "isDocsHomePage": false,
+  "title": "Getting Started",
+  "description": "Installation",
+  "source": "@site/docs/components/spaces/index.md",
+  "slug": "/components/spaces/index",
+  "permalink": "/components/spaces/index",
+  "editUrl": "https://github.com/avaiity/availity-react/edit/master/docs/components/spaces/index.md",
+  "version": "current",
+  "sidebar": "someSidebar",
+  "previous": {
+    "title": "Page Header",
+    "permalink": "/components/page-header"
+  },
+  "next": {
+    "title": "<Space /> ( Default Export )",
+    "permalink": "/components/spaces/spaces"
+  }
+}

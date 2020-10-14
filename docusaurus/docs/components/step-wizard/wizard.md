@@ -5,7 +5,7 @@ summary: Container for the step wizard.
 
 ## Example
 
-```jsx live=true viewCode=true
+```jsx  viewCode=true
 import Wizard, { WizardStep, WizardStepTitle } from '@availity/step-wizard';
 
 <Wizard bar>
@@ -18,7 +18,7 @@ import Wizard, { WizardStep, WizardStepTitle } from '@availity/step-wizard';
     <WizardStepBadge>2</WizardStepBadge>
     <WizardStepTitle>Second with some long text</WizardStepTitle>
   </WizardStep>
-</Wizard>
+</Wizard>;
 ```
 
 ## Props

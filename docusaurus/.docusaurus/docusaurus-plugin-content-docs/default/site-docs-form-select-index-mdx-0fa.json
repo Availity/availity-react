@@ -1,0 +1,21 @@
+{
+  "unversionedId": "form/select/index",
+  "id": "form/select/index",
+  "isDocsHomePage": false,
+  "title": "Getting Started",
+  "description": "Installation",
+  "source": "@site/docs/form/select/index.mdx",
+  "slug": "/form/select/index",
+  "permalink": "/form/select/index",
+  "editUrl": "https://github.com/avaiity/availity-react/edit/master/docs/form/select/index.mdx",
+  "version": "current",
+  "sidebar": "someSidebar",
+  "previous": {
+    "title": "validatePhone",
+    "permalink": "/form/phone/components/validate-phone"
+  },
+  "next": {
+    "title": "<Select /> ( Default Export )",
+    "permalink": "/form/select/components/select"
+  }
+}

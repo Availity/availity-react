@@ -1,0 +1,21 @@
+{
+  "unversionedId": "components/hooks/use-region",
+  "id": "components/hooks/use-region",
+  "isDocsHomePage": false,
+  "title": "useCurrentRegion",
+  "description": "Example",
+  "source": "@site/docs/components/hooks/use-region.md",
+  "slug": "/components/hooks/use-region",
+  "permalink": "/components/hooks/use-region",
+  "editUrl": "https://github.com/avaiity/availity-react/edit/master/docs/components/hooks/use-region.md",
+  "version": "current",
+  "sidebar": "someSidebar",
+  "previous": {
+    "title": "useMount",
+    "permalink": "/components/hooks/use-mount"
+  },
+  "next": {
+    "title": "useTimeout",
+    "permalink": "/components/hooks/use-timeout"
+  }
+}

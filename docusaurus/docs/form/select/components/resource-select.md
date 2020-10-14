@@ -5,7 +5,7 @@ summary: A select list that automatically loads and pages through a resource whe
 
 ## Example
 
-```jsx live=true viewCode=true
+```jsx viewCode=true
 import { Form } from '@availity/form';
 import { ResourceSelect } from '@availity/select';
 import * as yup from 'yup';

@@ -1,0 +1,21 @@
+{
+  "unversionedId": "form/components/checkbox-group",
+  "id": "form/components/checkbox-group",
+  "isDocsHomePage": false,
+  "title": "<CheckboxGroup />",
+  "description": "Props",
+  "source": "@site/docs/form/components/checkbox-group.md",
+  "slug": "/form/components/checkbox-group",
+  "permalink": "/form/components/checkbox-group",
+  "editUrl": "https://github.com/avaiity/availity-react/edit/master/docs/form/components/checkbox-group.md",
+  "version": "current",
+  "sidebar": "someSidebar",
+  "previous": {
+    "title": "Migrating from reactstrap validation",
+    "permalink": "/form/migrating"
+  },
+  "next": {
+    "title": "<Checkbox />",
+    "permalink": "/form/components/checkbox"
+  }
+}

@@ -11,7 +11,7 @@ npm install @availity/breadcrumbs --save
 
 ## Example
 
-```jsx live=true viewCode=true
+```jsx  viewCode=true
 import Breadcrumbs from '@availity/breadcrumbs';
 import { BreadcrumbItem } from 'reactstrap';
 
@@ -38,12 +38,13 @@ import { BreadcrumbItem } from 'reactstrap';
       <BreadcrumbItem>Custom Bread Crumb</BreadcrumbItem>
     </Breadcrumbs>
   </div>
-</div>
+</div>;
 ```
 
 ## Props
 
 ### `active?: string`
+
 The name of the active page (the page the user is currently on).
 
 ### `crumbs?: Array<object>`
@@ -59,7 +60,9 @@ The value to display when the active page or an ancestor does not have a value. 
 The children must be a reactstrap `BreadcrumbItem` components.
 
 ### `homeUrl?: string`
+
 Url for the Home route. **Default:** `public/apps/dashboard`
 
 ### `linkTag?: React.ComponentType<React.HTMLAttributes<HTMLAnchorElement>> | string`
+
 Custom link tag for the links. **Default:** `<a>`

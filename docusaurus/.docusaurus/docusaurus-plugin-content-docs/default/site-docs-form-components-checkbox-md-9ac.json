@@ -1,0 +1,21 @@
+{
+  "unversionedId": "form/components/checkbox",
+  "id": "form/components/checkbox",
+  "isDocsHomePage": false,
+  "title": "<Checkbox />",
+  "description": "Example",
+  "source": "@site/docs/form/components/checkbox.md",
+  "slug": "/form/components/checkbox",
+  "permalink": "/form/components/checkbox",
+  "editUrl": "https://github.com/avaiity/availity-react/edit/master/docs/form/components/checkbox.md",
+  "version": "current",
+  "sidebar": "someSidebar",
+  "previous": {
+    "title": "<CheckboxGroup />",
+    "permalink": "/form/components/checkbox-group"
+  },
+  "next": {
+    "title": "<Feedback />",
+    "permalink": "/form/components/feedback"
+  }
+}

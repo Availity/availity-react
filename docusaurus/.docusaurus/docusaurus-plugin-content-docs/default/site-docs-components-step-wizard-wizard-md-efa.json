@@ -1,0 +1,21 @@
+{
+  "unversionedId": "components/step-wizard/wizard",
+  "id": "components/step-wizard/wizard",
+  "isDocsHomePage": false,
+  "title": "<Wizard /> ( Default Export )",
+  "description": "Example",
+  "source": "@site/docs/components/step-wizard/wizard.md",
+  "slug": "/components/step-wizard/wizard",
+  "permalink": "/components/step-wizard/wizard",
+  "editUrl": "https://github.com/avaiity/availity-react/edit/master/docs/components/step-wizard/wizard.md",
+  "version": "current",
+  "sidebar": "someSidebar",
+  "previous": {
+    "title": "Getting Started",
+    "permalink": "/components/step-wizard/index"
+  },
+  "next": {
+    "title": "<WizardStep />",
+    "permalink": "/components/step-wizard/wizard-step"
+  }
+}

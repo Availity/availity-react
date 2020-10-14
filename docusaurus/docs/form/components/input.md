@@ -5,7 +5,7 @@ summary: Basic Input field that utilizes the Form validation
 
 ## Example
 
-```jsx live=true viewCode=true
+```jsx viewCode=true
 import { Form, Input } from '@availity/form';
 import { Button } from 'reacstrap';
 
@@ -23,7 +23,7 @@ import { Button } from 'reacstrap';
   <Button type="submit" className="ml-1" color="primary">
     Submit
   </Button>
-</Form>
+</Form>;
 ```
 
 ## Props

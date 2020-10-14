@@ -1,0 +1,21 @@
+{
+  "unversionedId": "components/authorize",
+  "id": "components/authorize",
+  "isDocsHomePage": false,
+  "title": "Authorize",
+  "description": "Version",
+  "source": "@site/docs/components/authorize.mdx",
+  "slug": "/components/authorize",
+  "permalink": "/components/authorize",
+  "editUrl": "https://github.com/avaiity/availity-react/edit/master/docs/components/authorize.mdx",
+  "version": "current",
+  "sidebar": "someSidebar",
+  "previous": {
+    "title": "useAnalytics",
+    "permalink": "/components/analytics/hook"
+  },
+  "next": {
+    "title": "Avatar",
+    "permalink": "/components/avatar"
+  }
+}

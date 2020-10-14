@@ -1,0 +1,21 @@
+{
+  "unversionedId": "components/spaces/context",
+  "id": "components/spaces/context",
+  "isDocsHomePage": false,
+  "title": "SpacesContext",
+  "description": "If you are using a class component, you can subscribe to the spaces by using this context.",
+  "source": "@site/docs/components/spaces/context.md",
+  "slug": "/components/spaces/context",
+  "permalink": "/components/spaces/context",
+  "editUrl": "https://github.com/avaiity/availity-react/edit/master/docs/components/spaces/context.md",
+  "version": "current",
+  "sidebar": "someSidebar",
+  "previous": {
+    "title": "useSpacesContext",
+    "permalink": "/components/spaces/use-spaces-context"
+  },
+  "next": {
+    "title": "<SpacesImage />",
+    "permalink": "/components/spaces/images"
+  }
+}

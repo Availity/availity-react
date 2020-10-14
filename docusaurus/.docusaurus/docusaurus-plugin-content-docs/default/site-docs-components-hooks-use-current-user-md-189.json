@@ -1,0 +1,21 @@
+{
+  "unversionedId": "components/hooks/use-current-user",
+  "id": "components/hooks/use-current-user",
+  "isDocsHomePage": false,
+  "title": "useCurrentUser",
+  "description": "Example",
+  "source": "@site/docs/components/hooks/use-current-user.md",
+  "slug": "/components/hooks/use-current-user",
+  "permalink": "/components/hooks/use-current-user",
+  "editUrl": "https://github.com/avaiity/availity-react/edit/master/docs/components/hooks/use-current-user.md",
+  "version": "current",
+  "sidebar": "someSidebar",
+  "previous": {
+    "title": "<FeedbackForm />",
+    "permalink": "/components/feedback/form"
+  },
+  "next": {
+    "title": "useEffectAsync",
+    "permalink": "/components/hooks/use-effect-async"
+  }
+}

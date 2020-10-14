@@ -1,0 +1,21 @@
+{
+  "unversionedId": "components/pagination/index",
+  "id": "components/pagination/index",
+  "isDocsHomePage": false,
+  "title": "Getting Started",
+  "description": "Installation",
+  "source": "@site/docs/components/pagination/index.md",
+  "slug": "/components/pagination/index",
+  "permalink": "/components/pagination/index",
+  "editUrl": "https://github.com/avaiity/availity-react/edit/master/docs/components/pagination/index.md",
+  "version": "current",
+  "sidebar": "someSidebar",
+  "previous": {
+    "title": "<ListGroupItemStatus />",
+    "permalink": "/components/list-group-item/list-group-item-status"
+  },
+  "next": {
+    "title": "<Pagination /> ( Default Export )",
+    "permalink": "/components/pagination/pagination"
+  }
+}

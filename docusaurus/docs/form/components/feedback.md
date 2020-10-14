@@ -5,7 +5,7 @@ summary: Error message container for an input
 
 ## Example
 
-```jsx live=true viewCode=true
+```jsx  viewCode=true
 import { Form, Input, Feedback as FormFeedback } from '@availity/form';
 
 <Form
@@ -25,7 +25,7 @@ import { Form, Input, Feedback as FormFeedback } from '@availity/form';
   <Button type="submit" color="primary">
     Submit
   </Button>
-</Form>
+</Form>;
 ```
 
 ## Props

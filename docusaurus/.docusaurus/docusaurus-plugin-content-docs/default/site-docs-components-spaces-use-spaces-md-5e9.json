@@ -1,0 +1,21 @@
+{
+  "unversionedId": "components/spaces/use-spaces",
+  "id": "components/spaces/use-spaces",
+  "isDocsHomePage": false,
+  "title": "useSpaces",
+  "description": "This is a custom hook for grabbing spaces from the Spaces provider.",
+  "source": "@site/docs/components/spaces/use-spaces.md",
+  "slug": "/components/spaces/use-spaces",
+  "permalink": "/components/spaces/use-spaces",
+  "editUrl": "https://github.com/avaiity/availity-react/edit/master/docs/components/spaces/use-spaces.md",
+  "version": "current",
+  "sidebar": "someSidebar",
+  "previous": {
+    "title": "<Space /> ( Default Export )",
+    "permalink": "/components/spaces/spaces"
+  },
+  "next": {
+    "title": "useSpacesContext",
+    "permalink": "/components/spaces/use-spaces-context"
+  }
+}

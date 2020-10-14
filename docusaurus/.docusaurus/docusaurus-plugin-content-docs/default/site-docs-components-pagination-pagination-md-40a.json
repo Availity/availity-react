@@ -1,0 +1,21 @@
+{
+  "unversionedId": "components/pagination/pagination",
+  "id": "components/pagination/pagination",
+  "isDocsHomePage": false,
+  "title": "<Pagination /> ( Default Export )",
+  "description": "This is the provider component needed for @availity/pagination components to work. All @availity/pagination components must be children of a Pagination provider.",
+  "source": "@site/docs/components/pagination/pagination.md",
+  "slug": "/components/pagination/pagination",
+  "permalink": "/components/pagination/pagination",
+  "editUrl": "https://github.com/avaiity/availity-react/edit/master/docs/components/pagination/pagination.md",
+  "version": "current",
+  "sidebar": "someSidebar",
+  "previous": {
+    "title": "Getting Started",
+    "permalink": "/components/pagination/index"
+  },
+  "next": {
+    "title": "<PaginationControls />",
+    "permalink": "/components/pagination/controls"
+  }
+}

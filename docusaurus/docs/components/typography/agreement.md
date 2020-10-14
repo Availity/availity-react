@@ -4,7 +4,7 @@ title: <Agreement />
 
 ## Example
 
-```jsx live=true
+```jsx
 import { Agreement } from '@availity/typography';
 
 <Agreement>
@@ -16,5 +16,5 @@ import { Agreement } from '@availity/typography';
     cupiditatereprehenderit quibusdam nam eveniet voluptatem quis soluta
     quamdelectus consequatur qui incidunt voluptatem consequuntur
   </p>
-</Agreement>
+</Agreement>;
 ```

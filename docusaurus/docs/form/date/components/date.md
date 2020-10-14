@@ -8,7 +8,7 @@ If `initialValues` need to be specified for a Date or DateRange, they should be 
 
 ## Example
 
-```jsx live=true viewCode=true
+```jsx  viewCode=true
 import { Form } from '@availity/form';
 import { avDate } from '@availity/yup';
 import { Button } from 'reactstrap';
@@ -36,7 +36,7 @@ import * as yup from 'yup';
       Submit
     </Button>
   </Form>
-</div>
+</div>;
 ```
 
 ## Props

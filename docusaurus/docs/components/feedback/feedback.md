@@ -4,7 +4,7 @@ title: <Feedback /> ( Default Export )
 
 ## Example
 
-```jsx live=true viewCode=true
+```jsx viewCode=true
 import Feedback from '@availity/feedback';
 
 <div className="w-100 d-flex flex-column justify-content-around align-items-start">

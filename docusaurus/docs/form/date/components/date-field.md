@@ -6,7 +6,7 @@ The same as `FormikDate` but with a `Label` that appears above input and a `Feed
 
 ## Example
 
-```jsx live=true viewCode=true
+```jsx  viewCode=true
 import { Form } from '@availity/form';
 import FormikDate from '@availity/date';
 import { avDate } from '@availity/yup';
@@ -33,7 +33,7 @@ import * as yup from 'yup';
       Submit
     </Button>
   </Form>
-</div>
+</div>;
 ```
 
 ## Props

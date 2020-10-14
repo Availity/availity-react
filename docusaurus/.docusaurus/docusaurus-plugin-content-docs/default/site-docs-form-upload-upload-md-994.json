@@ -1,0 +1,21 @@
+{
+  "unversionedId": "form/upload/upload",
+  "id": "form/upload/upload",
+  "isDocsHomePage": false,
+  "title": "<Upload /> ( Default Export )",
+  "description": "The default export is an all-in-one solution which handles uploads, encrypted file password requests and file state management for you.",
+  "source": "@site/docs/form/upload/upload.md",
+  "slug": "/form/upload/upload",
+  "permalink": "/form/upload/upload",
+  "editUrl": "https://github.com/avaiity/availity-react/edit/master/docs/form/upload/upload.md",
+  "version": "current",
+  "sidebar": "someSidebar",
+  "previous": {
+    "title": "Getting Started",
+    "permalink": "/form/upload/index"
+  },
+  "next": {
+    "title": "<FilePicker />",
+    "permalink": "/form/upload/file-picker"
+  }
+}

@@ -1,0 +1,21 @@
+{
+  "unversionedId": "components/page-header",
+  "id": "components/page-header",
+  "isDocsHomePage": false,
+  "title": "Page Header",
+  "description": "The standard Availity application header that appears at the top of the page. It can include an app icon, payer logo, and/or the feedback loop.",
+  "source": "@site/docs/components/page-header.mdx",
+  "slug": "/components/page-header",
+  "permalink": "/components/page-header",
+  "editUrl": "https://github.com/avaiity/availity-react/edit/master/docs/components/page-header.mdx",
+  "version": "current",
+  "sidebar": "someSidebar",
+  "previous": {
+    "title": "Link",
+    "permalink": "/components/link"
+  },
+  "next": {
+    "title": "Getting Started",
+    "permalink": "/components/spaces/index"
+  }
+}

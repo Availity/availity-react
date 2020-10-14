@@ -1,0 +1,21 @@
+{
+  "unversionedId": "components/spaces/ghost-text",
+  "id": "components/spaces/ghost-text",
+  "isDocsHomePage": false,
+  "title": "<SpacesGhostText />",
+  "description": "Display the ghost text for a given space. Renders null if the ghost text should not display.",
+  "source": "@site/docs/components/spaces/ghost-text.md",
+  "slug": "/components/spaces/ghost-text",
+  "permalink": "/components/spaces/ghost-text",
+  "editUrl": "https://github.com/avaiity/availity-react/edit/master/docs/components/spaces/ghost-text.md",
+  "version": "current",
+  "sidebar": "someSidebar",
+  "previous": {
+    "title": "<SpacesAgreement />",
+    "permalink": "/components/spaces/agreement"
+  },
+  "next": {
+    "title": "Training Link",
+    "permalink": "/components/training-link"
+  }
+}

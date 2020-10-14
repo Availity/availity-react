@@ -5,7 +5,7 @@ summary: Availity Phone component using Formik and Yup
 
 ## Example
 
-```jsx live=true viewCode=true
+```jsx  viewCode=true
 import { Form } from '@availity/form';
 import { Phone, validatePhone } from '@availity/phone';
 import { Button } from 'reactstrap';

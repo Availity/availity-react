@@ -5,7 +5,7 @@ summary: Wrapper for an Input field. Uses reactstrap FormGroup.
 
 ## Example
 
-```jsx live=true viewCode=true
+```jsx  viewCode=true
 <Form
   initialValues={{
     hello: '',
@@ -16,7 +16,7 @@ summary: Wrapper for an Input field. Uses reactstrap FormGroup.
   })}
 >
   <FormGroup for="hello">
-    <Label for='hello'>Hello Field</Label>
+    <Label for="hello">Hello Field</Label>
     <Input name="hello" />
   </FormGroup>
 </Form>
@@ -25,4 +25,5 @@ summary: Wrapper for an Input field. Uses reactstrap FormGroup.
 ## Props
 
 ### `for: string`
+
 Used to match the wrapped input. Must be the same name given to the input field.

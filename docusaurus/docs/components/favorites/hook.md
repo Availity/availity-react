@@ -1,4 +1,4 @@
----
+<!-- ---
 title: useFavorites
 ---
 
@@ -24,4 +24,4 @@ const Component = () => {
     />
   );
 };
-```
+``` -->

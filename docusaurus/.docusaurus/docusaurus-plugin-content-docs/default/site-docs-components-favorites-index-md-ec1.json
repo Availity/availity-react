@@ -1,0 +1,21 @@
+{
+  "unversionedId": "components/favorites/index",
+  "id": "components/favorites/index",
+  "isDocsHomePage": false,
+  "title": "Getting Started",
+  "description": "Installation",
+  "source": "@site/docs/components/favorites/index.md",
+  "slug": "/components/favorites/index",
+  "permalink": "/components/favorites/index",
+  "editUrl": "https://github.com/avaiity/availity-react/edit/master/docs/components/favorites/index.md",
+  "version": "current",
+  "sidebar": "someSidebar",
+  "previous": {
+    "title": "Avatar",
+    "permalink": "/components/avatar"
+  },
+  "next": {
+    "title": "<Favorites /> ( Default Export )",
+    "permalink": "/components/favorites/favorites"
+  }
+}

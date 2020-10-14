@@ -1,0 +1,21 @@
+{
+  "unversionedId": "form/date/components/date-range-field",
+  "id": "form/date/components/date-range-field",
+  "isDocsHomePage": false,
+  "title": "<DateRangeField />",
+  "description": "The same as DateRange but with a Label that appears above the input and a Feedback that appears below the input.",
+  "source": "@site/docs/form/date/components/date-range-field.md",
+  "slug": "/form/date/components/date-range-field",
+  "permalink": "/form/date/components/date-range-field",
+  "editUrl": "https://github.com/avaiity/availity-react/edit/master/docs/form/date/components/date-range-field.md",
+  "version": "current",
+  "sidebar": "someSidebar",
+  "previous": {
+    "title": "<DateField />",
+    "permalink": "/form/date/components/date-field"
+  },
+  "next": {
+    "title": "<DateRange />",
+    "permalink": "/form/date/components/date-range"
+  }
+}

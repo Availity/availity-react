@@ -1,0 +1,21 @@
+{
+  "unversionedId": "form/select/components/select",
+  "id": "form/select/components/select",
+  "isDocsHomePage": false,
+  "title": "<Select /> ( Default Export )",
+  "description": "Example",
+  "source": "@site/docs/form/select/components/select.md",
+  "slug": "/form/select/components/select",
+  "permalink": "/form/select/components/select",
+  "editUrl": "https://github.com/avaiity/availity-react/edit/master/docs/form/select/components/select.md",
+  "version": "current",
+  "sidebar": "someSidebar",
+  "previous": {
+    "title": "Getting Started",
+    "permalink": "/form/select/index"
+  },
+  "next": {
+    "title": "<SelectField />",
+    "permalink": "/form/select/components/select-field"
+  }
+}
