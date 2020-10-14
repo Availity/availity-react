@@ -22,14 +22,13 @@
     "ui"
   ],
   "main": "index.js",
-  "workspaces": [
-    "packages/*",
-    "docs",
-    "storybook",
-    "docusaurus"
-  ],
-  "resolutions": {
-    "eslint-plugin-react": "7.20.0"
+  "workspaces": {
+    "packages": [
+      "packages/*",
+      "docs",
+      "storybook",
+      "docusaurus"
+    ]
   },
   "scripts": {
     "format": "prettier --write 'packages/*/*.js' 'packages/*/!(node_modules)/**/*.js' '!(storybook|docs)/**/*.js'",
