@@ -23,6 +23,7 @@ const highlightLinesRangeRegex = /{([\d,-]+)}/;
 
 export default ({
   children,
+  scope,
   className: languageClassName,
   live,
   metastring,
@@ -62,7 +63,7 @@ export default ({
   if (live) {
     return (
       <Playground
-        scope={{ ...React }}
+        scope={scope}
         code={children.trim()}
         theme={prism.theme || defaultTheme}
         {...props}

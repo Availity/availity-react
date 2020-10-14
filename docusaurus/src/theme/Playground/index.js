@@ -12,19 +12,11 @@ import classnames from 'classnames';
 
 import styles from './styles.module.css';
 
-function Playground({ children, theme, transformCode, ...props }) {
+function Playground({ code, theme, transformCode, ...props }) {
   return (
     <LiveProvider
-      code={children}
-      transformCode={
-        transformCode ||
-        (code => {
-          return code
-            .split('\n')
-            .filter(code => !code.startsWith('import'))
-            .join('\n');
-        })
-      }
+      code={code}
+      transformCode={transformCode || (code => `${code};`)}
       theme={theme}
       {...props}
     >

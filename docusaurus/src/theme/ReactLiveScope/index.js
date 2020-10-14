@@ -40,13 +40,14 @@ import moment from 'moment';
 // import '@availity/favorites/style.scss';
 import { avDate, dateRange } from '@availity/yup';
 import { Phone, validatePhone } from '@availity/phone';
-import MockData from '../MockData';
+// import MockData from '../MockData';
 
 const scopes = {
   ...Reactstrap,
+
   AppIcon,
   Authorize,
-  MockData,
+  // MockData,
   Avatar: loadable(() => import('@availity/avatar')),
   Breadcrumbs,
   Date: loadable(() => import('@availity/date')),
