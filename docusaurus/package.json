@@ -1,6 +1,5 @@
 {
   "name": "@availity/dinosaurdocs",
-
   "version": "1.0.0",
   "private": true,
   "scripts": {
@@ -10,6 +9,11 @@
     "swizzle": "docusaurus swizzle",
     "deploy": "docusaurus deploy",
     "serve": "docusaurus serve"
+  },
+  "workspaces": {
+    "nohoist": [
+      "**"
+    ]
   },
   "dependencies": {
     "@docusaurus/core": "2.0.0-alpha.65",
