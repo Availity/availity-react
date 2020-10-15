@@ -24,10 +24,10 @@ module.exports = {
     colorMode: { defaultMode: 'dark' },
 
     navbar: {
-      title: 'Availity-React',
+      title: 'Availity Docs',
       logo: {
-        alt: 'Availity Logo',
-        src: 'img/favicon.ico',
+        alt: 'Availity Docs Logo',
+        src: 'img/icon.png',
       },
       items: [
         {
