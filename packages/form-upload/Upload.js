@@ -1,4 +1,4 @@
-import React, { useRef, useState } from 'react';
+import React, { useRef } from 'react';
 import PropTypes from 'prop-types';
 import UploadCore from '@availity/upload-core';
 import { avFilesDeliveryApi } from '@availity/api-axios';
@@ -38,7 +38,6 @@ const Upload = ({
 }) => {
   const input = useRef(null);
   const [field, metadata] = useField(name);
-  const [upload, setUpload] = useState(null);
   const { setFieldValue } = useFormikContext();
   const classes = classNames(
     className,
@@ -86,22 +85,28 @@ const Upload = ({
         } else {
           upload.start();
         }
-        if (rest.onFileUpload) rest.onFileUpload(upload);
+
+        if (upload && rest.fileDeliveryProps) {
+          upload.onSuccess.push(async () => {
+            fileDeliveryOnUpload(
+              rest.fileDeliveryProps,
+              { clientId: rest.clientId, customerId: rest.customerId },
+              upload
+            );
+          });
+        } else if (rest.onFileUpload) {
+          rest.onFileUpload(upload);
+        }
 
         return upload;
       })
     );
 
-    setUpload(newFiles);
     setFieldValue(name, newFiles, true);
   };
 
   const handleFileInputChange = event => {
     setFiles(event.target.files);
-
-    if (rest.fileDeliveryOnUpload) {
-      fileDeliveryOnUpload(rest.data, rest.config, upload);
-    }
   };
 
   const onDrop = (acceptedFiles, fileRejections) => {
@@ -198,9 +203,7 @@ Upload.propTypes = {
   allowedFileTypes: PropTypes.arrayOf(PropTypes.string),
   onFileUpload: PropTypes.func,
   onFileRemove: PropTypes.func,
-  fileDeliveryOnUpload: PropTypes.bool,
-  data: PropTypes.object,
-  config: PropTypes.object,
+  fileDeliveryProps: PropTypes.object,
   maxSize: PropTypes.number,
   max: PropTypes.number,
   multiple: PropTypes.bool,
@@ -216,7 +219,6 @@ Upload.defaultProps = {
   multiple: true,
   disabled: false,
   showFileDrop: false,
-  fileDeliveryOnUpload: false,
 };
 
 export default Upload;
