@@ -21,7 +21,7 @@ module.exports = {
       content:
         '⭐️ If you like Availity-React, give it a star on <a target="_blank" rel="noopener noreferrer" href="https://github.com/availity/availity-react">GitHub</a>! ⭐️',
     },
-    colorMode: { defaultMode: 'dark', respectPrefersColorScheme: true },
+    colorMode: { defaultMode: 'dark' },
 
     navbar: {
       title: 'Availity-React',
