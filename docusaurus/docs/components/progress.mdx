@@ -1,15 +1,15 @@
 ---
-title: Progress
-summary: Availity Progress Bar
----
 
-## Installation
+title: Progress
+---#### Availity Progress Bar
+
+### Installation
 
 ```bash
 npm install @availity/progress --save
 ```
 
-## Example
+### Example
 
 ```jsx
 import Progress from '@availity/progress';
@@ -20,32 +20,34 @@ import Progress from '@availity/progress';
 </div>;
 ```
 
-## Props
+#### Live example: <a href="https://availity.github.io/availity-react/storybook/?path=/story/components-progress--default"> Storybook</a>
 
-### `tag?: React.ComponentType | string`
+### Props
+
+#### `tag?: React.ComponentType | string`
 
 The tag to render the progress bar as. **Default:** `<div>`.
 
-### `animated?: boolean`
+#### `animated?: boolean`
 
 Triggers the "animated" style in the progress bar.
 
-### `striped?: boolean`
+#### `striped?: boolean`
 
 Triggers the "striped" style in the progress bar.
 
-### `complete?: boolean`
+#### `complete?: boolean`
 
 Triggers the "complete" style in the progress bar. When true, a checkmark appears at the end of the progress bar
 
-### `value?: number`
+#### `value?: number`
 
 The amount of the progress bar that should be filled (relative to the `max`) **Default:** `0`.
 
-### `max? number`
+#### `max? number`
 
 The maximum amount of the progress bar. **Default:** `100`.
 
-### `color?: string`
+#### `color?: string`
 
 The color of the progress bar. **Default:** `success`.
