@@ -39,6 +39,10 @@ import * as yup from 'yup';
 </div>;
 ```
 
+<iframe
+  src="https://availity.github.io/availity-react/storybook/iframe.html?id=formik-date--date"
+  style={{width:'100%', height: '200px', border: 'none'}}
+></iframe>
 ## Props
 
 See [react-dates](https://github.com/airbnb/react-dates#singledatepicker) for additional props
