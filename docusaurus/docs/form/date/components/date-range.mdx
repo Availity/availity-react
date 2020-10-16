@@ -63,7 +63,7 @@ See [react-dates](https://github.com/airbnb/react-dates#daterangepicker) for add
 
 The name of the field. Will be the key of the selected dates that come through in the values of the `onSubmit` callback.
 
-### `min?: string | LimitType`
+#### `min?: string | LimitType`
 
 Used in conjunction with `max` to derive `isOutsideRange` prop from `react-dates` and selectable year options in datepicker. Dates outside the allowed range will not be clickable in datepicker.
 
@@ -75,7 +75,7 @@ Used in conjunction with `max` to derive `isOutsideRange` prop from `react-dates
 }
 ```
 
-### `max?: string | LimitType`
+#### `max?: string | LimitType`
 
 Used in conjunction with `min` to derive `isOutsideRange` prop from `react-dates` and selectable year options in datepicker. Dates outside the allowed range will not be clickable in datepicker.
 
@@ -87,11 +87,11 @@ Used in conjunction with `min` to derive `isOutsideRange` prop from `react-dates
 }
 ```
 
-### `disabled?: boolean`
+#### `disabled?: boolean`
 
 Whether the date range is disabled.
 
-### `onPickerFocusChange?: ({ focusedInput: string }) => void`
+#### `onPickerFocusChange?: ({ focusedInput: string }) => void`
 
 Function to be run when focus on the input changes. `focusedInput` contains the `id` of the focused field.
 
@@ -101,29 +101,29 @@ Function to be run when focus on the input changes. `focusedInput` contains the 
 - `endId` - the id of the end field. `"<name>-end"`
 - `undefined` - the date range was unfocused
 
-### `calendarIcon?: ReactNode`
+#### `calendarIcon?: ReactNode`
 
 Override the default icon that appears. Default: `<Icon name="calendar" />
 
-### `format?: string`
+#### `format?: string`
 
 How to format date value in `onSubmit` callback. Must be a format recognized by [moment](https://momentjs.com/docs/#/displaying/format/). **Default: `MM/DD/YYYY`**
 
-### `datepicker?: boolean`
+#### `datepicker?: boolean`
 
 Toggle whether the calendar is shown.
 
-### `datepickerProps?: SingleDatePickerShape`
+#### `datepickerProps?: SingleDatePickerShape`
 
 Props to be spread onto the datepicker component from [react-dates](https://github.com/airbnb/react-dates#singledatepicker).
 
-### `autoSync?: boolean`
+#### `autoSync?: boolean`
 
 Toggle whether the other date should be automatically synced to the selected date when focus changes. Dates are only auto synced the first time the input is touched and if the date field to auto sync is empty
 
 Props to be spread onto the datepicker component from [react-dates](https://github.com/airbnb/react-dates#singledatepicker).
 
-### `ranges?: boolean | string[] | {[key:string]:MomentDateRange}`
+#### `ranges?: boolean | string[] | {[key:string]:MomentDateRange}`
 
 Show preset date ranges when calendar is visible. Accepts `boolean` to display default ranges. If `string[]` will strip subset of ranges off defaults. If `object` will overwrite the default ranges.
 
