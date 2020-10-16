@@ -1,11 +1,12 @@
 ---
 title: <Checkbox />
-summary: Inputs of type checkbox. Checkboxes should be wrapped in a CheckboxGroup.
 ---
 
-## Example
+Inputs of type checkbox. Checkboxes should be wrapped in a CheckboxGroup.
 
-```jsx  viewCode=true
+### Example
+
+```jsx live=true viewCode=true
 <Form
   initialValues={{
     hello: [],
@@ -26,24 +27,26 @@ summary: Inputs of type checkbox. Checkboxes should be wrapped in a CheckboxGrou
 </Form>
 ```
 
-## Props
+#### Live example: <a href="https://availity.github.io/availity-react/storybook/?path=/story/formik-form--checkbox"> Storybook</a>
 
-### `id?: string`
+### Props
+
+#### `id?: string`
 
 Should match `<CheckboxGroup />` name for validation.
 
-### `label?: ReactNode`
+#### `label?: ReactNode`
 
 Label for the checkbox.
 
-### `value?: string`
+#### `value?: string`
 
 Value of the checkbox.
 
-### `disabled?: boolean`
+#### `disabled?: boolean`
 
 Disables the checkbox.
 
-### `inline?: boolean`
+#### `inline?: boolean`
 
 Will render the checkbox inline with other checkboxes. **Default:** true.

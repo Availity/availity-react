@@ -1,11 +1,12 @@
 ---
 title: <ListGroupItemStatus />
-summary: ListGroupItem with an optional status badge and colors for the card and badge.
 ---
 
-## Example
+summary: ListGroupItem with an optional status badge and colors for the card and badge.
 
-```jsx  viewCode=true
+### Example
+
+```jsx live=true viewCode=true
 import ListGroup from '@availity/list-group';
 import { ListGroupItemStatus } from '@availity/list-group-item';
 
@@ -26,16 +27,18 @@ import { ListGroupItemStatus } from '@availity/list-group-item';
 </div>;
 ```
 
-## Props
+#### Live example: <a href="https://availity.github.io/availity-react/storybook/?path=/story/components-list-group-item--status"> Storybook</a>
 
-### `titleContent?: ReactNode`
+### Props
+
+#### `titleContent?: ReactNode`
 
 When present, adds a title on the same level as the badge. If of type `string` then defaults to using `<span>` tag.
 
-### `color?: string`
+#### `color?: string`
 
 Set the color for the border and the badge. **Default:** `"info"`.
 
-### `badge?: ReactNode`
+#### `badge?: ReactNode`
 
 If a String, the text to render inside of the `<Badge />`. If an Object, expects `text` (String) and `color` (String) properties. `text` is the text to render inside the badge. `color` is the color of the badge.

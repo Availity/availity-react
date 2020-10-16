@@ -2,7 +2,7 @@
 title: <SpacesImage />
 ---
 
-## Example
+### Example
 
 ```jsx
 import React from 'react';
@@ -22,27 +22,29 @@ import Spaces, {
   <SpacesBillboard payerId="PayerID" />
   <SpacesTile payerId="PayerID" />
   <SpacesImage payerId="PayerID" />
-</Spaces>
+</Spaces>;
 ```
 
-## Props
+#### Live example: <a href="https://availity.github.io/availity-react/storybook/?path=/story/components-spaces--images"> Storybook</a>
 
-### `spaceId?: string`
+### Props
+
+#### `spaceId?: string`
 
 Required if `payerId` is not provided. The payer spaces ID of the payer to render the image for. If no `spaceId` or `payerId` is provided, the first space in the `spaces` array is used. Note: This is only to be used when the Spaces provider should only ever contain a single space.
 
-### `payerId?: string`
+#### `payerId?: string`
 
 Required if `spaceId` is not provided. The payer ID of the payer to render the image for. If no `spaceId` or `payerId` is provided, the first space in the `spaces` array is used. Note: This is only to be used when the Spaces provider should only ever contain a single space.
 
-### `skeletonProps?: object`
+#### `skeletonProps?: object`
 
 Dimensions passed to loader to show while the image is loading.
 
-### `fallback?: string`
+#### `fallback?: string`
 
 The fallback image url to render if the url for the spaces image is not valid or not found
 
-### `imageType?: string`
+#### `imageType?: string`
 
-The path on the space containing the image reference. Defaults to: `"url"`. 
+The path on the space containing the image reference. Defaults to: `"url"`.

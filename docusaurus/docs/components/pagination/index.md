@@ -1,9 +1,10 @@
 ---
 title: Getting Started
-summary: Pagination, the Availity way.
 ---
 
-## Installation
+Pagination, the Availity way.
+
+### Installation
 
 ```bash
 npm install @availity/pagination --save

@@ -1,17 +1,18 @@
 ---
 title: Getting Started
-summary: Step Wizard - the Availity Way
 ---
 
-## Installation
+Step Wizard - the Availity Way
+
+### Installation
 
 ```bash
 npm install @availity/step-wizard --save
 ```
 
-## Example
+### Example
 
-```jsx
+```jsx live=true
 import Wizard, {
   WizardStep,
   WizardStepBadge,

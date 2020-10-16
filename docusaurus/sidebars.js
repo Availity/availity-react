@@ -107,6 +107,11 @@ module.exports = {
       },
       {
         type: 'category',
+        label: 'Help',
+        items: ['components/help/index'],
+      },
+      {
+        type: 'category',
         label: 'Hooks',
         items: [
           'components/hooks/use-current-user',

@@ -4,7 +4,7 @@ title: PaginationContext
 
 If you are using a class component, you can subscribe to the pagination by using this context.
 
-## Example
+### Example
 
 ```jsx
 import React from 'react';

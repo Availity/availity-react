@@ -4,9 +4,9 @@ title: <DateRangeField />
 
 The same as `DateRange` but with a `Label` that appears above the input and a `Feedback` that appears below the input.
 
-## Example
+### Example
 
-```jsx  viewCode=true
+```jsx live=true viewCode=true
 import { Form } from '@availity/form';
 import { DateRange } from '@availity/date';
 import { dateRange } from '@availity/yup';
@@ -57,34 +57,28 @@ import * as yup from 'yup';
 </div>;
 ```
 
-## Props
+#### Live example: <a href="https://availity.github.io/availity-react/storybook/?path=/story/formik-date--daterangefield"> Storybook</a>
+
+### Props
 
 Extends [DateRange Props](/form/date/components/date-range/#props).
 
-### `name: string`
+#### `name: string`
 
 The name of the field. Will be the key of the selected date that comes through in the values of the `onSubmit` callback.
 
-### `startKey: string`
-
-Key to return start date as on form submit. Should match the yup schema `startKey`.
-
-### `endKey: string`
-
-Key to return end date as on form submit. Should match the yup schema `endKey`.
-
-### `label?: string`
+#### `label?: string`
 
 The text that renders inside the `Label` above the input.
 
-### `labelClass?: string`
+#### `labelClass?: string`
 
 The name of the class for the label. Will be passed to the `className` prop of the label in the field.
 
-### `labelHidden?: boolean`
+#### `labelHidden?: boolean`
 
 Used to control if the label is displayed. When set to `true`, the label in the field won't be visible.
 
-### `labelAttrs?: React.HTMLAttributes<HTMLLabelElement>`
+#### `labelAttrs?: React.HTMLAttributes<HTMLLabelElement>`
 
 Pass additonal attributes to the label

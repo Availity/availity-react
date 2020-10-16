@@ -2,9 +2,9 @@
 title: Disclaimer
 ---
 
-## Example
+### Example
 
-```jsx
+```jsx live=true
 import { Disclaimer } from '@availity/typography';
 
 <Disclaimer styled>

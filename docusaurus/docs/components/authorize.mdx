@@ -1,17 +1,18 @@
 ---
 title: Authorize
-summary: Check user permissions to see if the current user is authorized to see your content.
 ---
+
+Check user permissions to see if the current user is authorized to see your content.
 
 [![Version](https://img.shields.io/npm/v/@availity/authorize.svg?style=for-the-badge)](https://www.npmjs.com/package/@availity/authorize)
 
-## Installation
+### Installation
 
 ```bash
 npm install @availity/authorize @availity/api-axios @availity/api-core axios --save
 ```
 
-## Example
+### Example
 
 ```jsx
 import React from 'react';
@@ -19,48 +20,50 @@ import Authorize from '@availity/authorize';
 
 <Authorize permissions="1234">
   {/* stuff to render if the user is authorized with permission indicated above */}
-</Authorize>
+</Authorize>;
 ```
 
-## Props
+#### Live example: <a href="https://availity.github.io/availity-react/storybook/?path=/story/components-authorize--default"> Storybook</a>
 
-### `permissions: string | number | Array<string | number | Array<string | number>>`
+### Props
+
+#### `permissions: string | number | Array<string | number | Array<string | number>>`
 
 Can either be a string, eg: `"1234"`, a number, eg: `1234`, or an array, which can contain permission ID strings/numbers as well as other arrays which contain permission ID strings/numbers, eg: `['1234', '2345', ['3456', '4567'], ['5678', '6789']]`. The items in a nested array indicate permission IDs that must _all_ be granted to the user to be considered authorized - they act as "AND". The items in the top of the array act as "OR" - if _any_ are granted, the user is considered authorized. The example `['1234', '2345', ['3456', '4567'], ['5678', '6789']]` is similar to `'1234' OR '2345' OR ('3456' && '4567') OR ('5678' && '6789')`.
 
-### `resources?: string | number | Array<string | number | Array<string | number>>`
+#### `resources?: string | number | Array<string | number | Array<string | number>>`
 
 When present, the permission is validated to ensure it contains the resource(s). Can either be a string, eg: `"12345"`, a number, eg: `12345`, or an array, which can contain resource ID strings/numbers as well as other arrays which contain resource ID strings/numbers, eg: `['12345', '23456', ['34567', '45678'], ['56789', '67890']]`. The items in a nested array indicate resource IDs that must _all_ be granted to the user to be considered authorized - they act as "AND". The items in the top of the array act as "OR" - if _any_ are granted, the user is considered authorized. The example `['12345', '23456', ['34567', '45678'], ['56789', '67890']]` is similar to `'12345' OR '23456' OR ('34567' && '45678') OR ('56789' && '67890')`.
 
-### `loader?: boolean | ReactNode`
+#### `loader?: boolean | ReactNode`
 
 When `true`, `BlockUi` is used when loading the permissions. When a `node`, that node is rendered instead of `BlockUi` when loading the permissions. When `false`, nothing is rendered when loading the permissions. **Default:** `true`.
 
-### `organizationId?: string`
+#### `organizationId?: string`
 
 When present, the permission is validated to ensure it is assigned to the organization.
 
-### `customerId?: string`
+#### `customerId?: string`
 
 When present, the permission is validated to ensure it is assigned to the customer.
 
-### `region?: string | boolean`
+#### `region?: string | boolean`
 
 When a string, the permission is validated to ensure it is assigned in the provided region. When true, the permission is validated to ensure it is assigned in the current region. **Default:** `true`.
 
-### `unauthorized?: ReactNode`
+#### `unauthorized?: ReactNode`
 
 The content that renders when the user _does not_ have the permissions required.
 
-### `children: ReactNode`
+#### `children: ReactNode`
 
 The content that renders when the user _does_ have the permissions required.
 
-### `negate?: boolean`
+#### `negate?: boolean`
 
 Negate the authorization. If the user _does_ have the permissions specified, they are considered "unauthorized" (shown the `unauthorized` prop content). If the user _does not_ have the permissions specified, they are considered "authorized" (shown the `children` prop content)
 
-## useAuthorize
+### useAuthorize
 
 Hook which validates the user's permissions.
 
@@ -72,7 +75,7 @@ Returns `[authorized, loading, currentRegion]`
 
 - `currentRegion` : The current region of the user. Useful for avoiding extra API calls if code downstream depends on current region.
 
-### Arguments
+#### Arguments
 
 - **`permissions`**: String,Number,Array<`String`,`Number`,Array<`String`,`Number`>>. Required.
   - **string/number**: The permission ID, eg: `'1234'` or `1234`
@@ -85,7 +88,7 @@ Returns `[authorized, loading, currentRegion]`
     - **string/number**: The resource ID, eg: `'12345'` or `12345`
     - **array**: The array can contain resource ID strings/numbers as well as other arrays which contain resource ID strings/numbers, eg: `['12345', '23456', ['34567', '45678'], ['56789', '67890']]`. The items in a nested array indicate resource IDs that must _all_ be granted to the user to be considered authorized - they act as "AND". The items in the top of the array act as "OR" - if _any_ are granted to the user, the user is considered authorized. The example `['12345', '23456', ['34567', '45678'], ['56789', '67890']]` is similar to `'12345' || '23456' || ('34567' && '45678') || ('56789' && '67890')`.
 
-### Usage
+#### Usage
 
 ```jsx
 import React from 'react';
@@ -96,7 +99,9 @@ export default () => {
     region: 'FL',
   });
 
-  return authorized && <SomeAuthorizedComponent />
+  return authorized && <SomeAuthorizedComponent />;
 };
 // ...
 ```
+
+#### Live example: <a href="https://availity.github.io/availity-react/storybook/?path=/story/components-authorize--useAuthorize"> Storybook</a>

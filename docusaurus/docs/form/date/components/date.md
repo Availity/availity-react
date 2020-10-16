@@ -6,9 +6,9 @@ Date picker without a `Label` or `Feedback`
 
 If `initialValues` need to be specified for a Date or DateRange, they should be in the format `"YYYY-MM-DD"` or `moment().format("YYYY-MM-DD")`, even though dates are displayed to the user as `MM/DD/YYYY`
 
-## Example
+### Example
 
-```jsx  viewCode=true
+```jsx live=true viewCode=true
 import { Form } from '@availity/form';
 import { avDate } from '@availity/yup';
 import { Button } from 'reactstrap';
@@ -39,19 +39,21 @@ import * as yup from 'yup';
 </div>;
 ```
 
-## Props
+#### Live example: <a href="https://availity.github.io/availity-react/storybook/?path=/story/formik-date--date"> Storybook</a>
+
+### Props
 
 See [react-dates](https://github.com/airbnb/react-dates#singledatepicker) for additional props
 
-### `name: string`
+#### `name: string`
 
 The name of the field. Will be the key of the selected date that comes through in the values of the `onSubmit` callback.
 
-### `disabled?: boolean`
+#### `disabled?: boolean`
 
 Whether the date is disabled.
 
-### `min?: string | LimitType`
+#### `min?: string | LimitType`
 
 Used in conjunction with `max` to derive `isOutsideRange` prop from `react-dates` and selectable year options in datepicker. Dates outside the allowed range will not be clickable in datepicker.
 
@@ -63,7 +65,7 @@ Used in conjunction with `max` to derive `isOutsideRange` prop from `react-dates
 }
 ```
 
-### `max?: string | LimitType`
+#### `max?: string | LimitType`
 
 Used in conjunction with `min` to derive `isOutsideRange` prop from `react-dates` and selectable year options in datepicker. Dates outside the allowed range will not be clickable in datepicker.
 
@@ -75,22 +77,22 @@ Used in conjunction with `min` to derive `isOutsideRange` prop from `react-dates
 }
 ```
 
-### `calendarIcon?: ReactNode`
+#### `calendarIcon?: ReactNode`
 
 Override the default icon that appears. Default: `<Icon name="calendar" />
 
-### `onPickerFocusChange?: ({ focused: boolean }) => void`
+#### `onPickerFocusChange?: ({ focused: boolean }) => void`
 
 Function to be run when focus on the input changes.
 
-### `format?: string`
+#### `format?: string`
 
 How to format date value in `onSubmit` callback. Must be a format recognized by [moment](https://momentjs.com/docs/#/displaying/format/). **Default: `MM/DD/YYYY`**
 
-### `datepicker?: boolean`
+#### `datepicker?: boolean`
 
 Toggle whether the calendar is shown.
 
-### `datePickerProps?: SingleDatePickerShape`
+#### `datePickerProps?: SingleDatePickerShape`
 
 Props to be spread onto the datepicker component from [react-dates](https://github.com/airbnb/react-dates#singledatepicker).

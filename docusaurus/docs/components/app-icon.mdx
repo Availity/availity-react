@@ -5,15 +5,15 @@ summary: Availity UI Kit application icon react component.
 
 A component which outputs one of the "App Icons" from [Availity UI Kit](http://availity.github.io/availity-uikit/v3/components#App-Icons)
 
-## Installation
+### Installation
 
 ```bash
 npm install @availity/app-icon --save
 ```
 
-## Example
+### Example
 
-```jsx  viewCode=true
+```jsx live=true viewCode=true
 import AppIcon from '@availity/app-icon';
 
 <div className="w-100 d-flex flex-row justify-content-around align-items-center">
@@ -29,24 +29,26 @@ import AppIcon from '@availity/app-icon';
 </div>;
 ```
 
-## Props
+#### Live example: <a href="https://availity.github.io/availity-react/storybook/?path=/story/icons-app--default"> Storybook</a>
 
-### `size? string`
+### Props
+
+#### `size? string`
 
 Potential values: `"lg"`, `"xl"`
 
-### `color?: string`
+#### `color?: string`
 
 Potential values: `"black"`, `"blue"`, `"green"`, `"orange"`, `"red"`. **Default:** `"black"`
 
-### `branded?: boolean`
+#### `branded?: boolean`
 
 Triggers "branded" styles
 
-### `src?: string`
+#### `src?: string`
 
 If image source is provided, it will render this instead of children.
 
-### `alt?: string`
+#### `alt?: string`
 
 For `src` prop. the alt property for your image source is not found or is loading.

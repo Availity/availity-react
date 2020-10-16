@@ -25,6 +25,7 @@ module.exports = {
 
     navbar: {
       title: 'Availity Docs',
+      // hideOnScroll: true,
       logo: {
         alt: 'Availity Docs Logo',
         src: 'img/icon.png',
@@ -42,18 +43,13 @@ module.exports = {
           label: 'Storybook',
           position: 'left',
         },
-        // { to: 'blog', label: 'Blog', position: 'left' },
+
         {
           href: 'https://github.com/availity/availity-react',
           position: 'right',
           className: 'header-github-link',
           'aria-label': 'GitHub repository',
         },
-        // {
-        //   href: 'https://github.com/availity/availity-react',
-        //   label: 'GitHub',
-        //   position: 'right',
-        // },
       ],
     },
   },

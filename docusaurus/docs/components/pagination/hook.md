@@ -4,7 +4,7 @@ title: usePagination
 
 This is a custom hook for grabbing any Pagination Data you may need from the `Pagination` provider.
 
-## Example
+### Example
 
 ```jsx
 import React from 'react';
@@ -23,7 +23,7 @@ const PageSetter = () => {
 };
 ```
 
-## Returns
+### Returns
 
 ```js
 {

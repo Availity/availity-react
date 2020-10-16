@@ -1,11 +1,12 @@
 ---
 title: <Phone />
-summary: Availity Phone component using Formik and Yup
 ---
 
-## Example
+Availity Phone component using Formik and Yup
 
-```jsx  viewCode=true
+### Example
+
+```jsx live=true viewCode=true
 import { Form } from '@availity/form';
 import { Phone, validatePhone } from '@availity/phone';
 import { Button } from 'reactstrap';
@@ -44,25 +45,27 @@ import { Button } from 'reactstrap';
 </Form>;
 ```
 
-## Props
+#### Live example: <a href="https://availity.github.io/availity-react/storybook/?path=/story/formik-phone--default"> Storybook</a>
 
-### `name: string`
+### Props
+
+#### `name: string`
 
 Identifies the field and matches the validation schema.
 
-### `label?: string`
+#### `label?: string`
 
 Displays a Reactstrap `<Label />` for the field.
 
-### `country?: string`
+#### `country?: string`
 
 Default country for parsing national numbers. This is the [two letter ISO country code](https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2). If no code is provided, the default is `'US'`.
 
-### `showExtension?: boolean`
+#### `showExtension?: boolean`
 
 Enable the phone extension field. This is `false` by default.
 
-### `extProps?: object`
+#### `extProps?: object`
 
 Used to pass props to the extension field when it is enabled.
 
@@ -74,7 +77,7 @@ extProps: {
 }
 ```
 
-### `phoneColProps?: object`
+#### `phoneColProps?: object`
 
 Used to control props on the `<Col />` for the phone field, if needed. The phone column defaults to `xs: { size: 12 }` when not rendering an extension field, and defaults to `xs: { size: 10 }` when rendering an extension field.
 
@@ -90,7 +93,7 @@ phoneColProps: {
 }
 ```
 
-### `extColProps?: object`
+#### `extColProps?: object`
 
 Used to control props on `<Col />` for the extension field, if needed. The extension column has no default size value, so it's default will effectively be `size: { 12 - phoneColSize }` unless otherwise specified.
 
@@ -106,11 +109,11 @@ extColProps: {
 }
 ```
 
-### `restPhoneProps` & `restExtProps`
+#### `restPhoneProps` & `restExtProps`
 
 These are respectively spread onto the corresponding `@availity/form` `<Field />` components, so props like `grid` can be used on the phone and extension fields.
 
-## Lazy Loading and Suspense
+### Lazy Loading and Suspense
 
 Because `libphonenumber-js` has a relatively large package size, it is recommended that [lazy loading and suspense](https://reactjs.org/docs/code-splitting.html#reactlazy) are utilized with this component. This will give your app the benefit of Code-Splitting, and the bundle containing `libphonenumber-js` and the `<Phone />` component will be loaded automatically when the component is first rendered. While the component is being loaded, a `fallback` component will be rendered to show the user some placeholder content in the meantime.
 

@@ -1,9 +1,10 @@
 ---
 title: useMount
-summary: Hook that runs a function on mount and dismount if a function is returned.
 ---
 
-## Example
+Hook that runs a function on mount and dismount if a function is returned.
+
+### Example
 
 ```jsx
 import React, { useState } from 'react';
@@ -23,8 +24,8 @@ const Component = () => {
 // ...
 ```
 
-## Props
+### Props
 
-### `callback: () => void`
+#### `callback: () => void`
 
 Function to run when the component mounts.

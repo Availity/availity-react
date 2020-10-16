@@ -1,9 +1,10 @@
 ---
 title: useTimeout
-summary: Hook that returns true after the given amount of time in milliseconds.
 ---
 
-## Example
+Hook that returns true after the given amount of time in milliseconds.
+
+### Example
 
 ```jsx
 import React, { useState } from 'react';
@@ -17,7 +18,8 @@ const Component = () => {
 // ...
 ```
 
-## Props
+### Props
 
-### `milliseconds?: number`
+#### `milliseconds?: number`
+
 The number of milliseconds to wait before returning true.

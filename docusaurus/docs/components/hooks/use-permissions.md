@@ -1,9 +1,10 @@
 ---
 title: usePermissions
-summary: Hook that returns user permissions.
 ---
 
-## Example
+Hook that returns user permissions.
+
+### Example
 
 ```jsx
 import React from 'react';

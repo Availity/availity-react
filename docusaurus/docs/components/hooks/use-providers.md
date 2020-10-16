@@ -1,9 +1,10 @@
 ---
 title: useProviders
-summary: Hook that returns providers.
 ---
 
-## Example
+Hook that returns providers.
+
+### Example
 
 ```jsx
 import React from 'react';
@@ -21,8 +22,8 @@ const Component = () => {
 // ...
 ```
 
-## Props
+### Props
 
-### `config: {customerId: number}`
+#### `config: {customerId: number}`
 
 The customer id to retrieve the providers.

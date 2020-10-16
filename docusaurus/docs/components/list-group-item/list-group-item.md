@@ -1,11 +1,12 @@
 ---
 title: <ListGroupItem /> ( Default Export )
-summary: Availity's ListGroup, which can feature Cards and Selectable items
 ---
 
-## Example
+Availity's ListGroup, which can feature Cards and Selectable items
 
-```jsx  viewCode=true
+### Example
+
+```jsx live=true viewCode=true
 import ListGroup from '@availity/list-group';
 import ListGroupItem from '@availity/list-group-item';
 
@@ -24,16 +25,18 @@ import ListGroupItem from '@availity/list-group-item';
 </div>;
 ```
 
-## Props
+#### Live example: <a href="https://availity.github.io/availity-react/storybook/?path=/story/components-list-group-item--default"> Storybook</a>
 
-### `borderColor?: string`
+### Props
+
+#### `borderColor?: string`
 
 The border color to display on the left of the item. Uses Availity UI Kit variants. Must be used within a `ListGroup` from `@availity/list-group` with the `cards` prop set to `true`
 
-### `color?: string`
+#### `color?: string`
 
 Adds a contextual background color to the item. Uses Availity UI Kit variants.
 
-### `tag?: React.ComponentType | string`
+#### `tag?: React.ComponentType | string`
 
 The tag to use in the list group item. **Default:** `<li>`

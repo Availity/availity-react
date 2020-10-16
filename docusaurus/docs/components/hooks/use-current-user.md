@@ -1,9 +1,10 @@
 ---
 title: useCurrentUser
-summary: Hook that returns the current user.
 ---
 
-## Example
+Hook that returns the current user.
+
+### Example
 
 ```jsx
 import React, { useState } from 'react';

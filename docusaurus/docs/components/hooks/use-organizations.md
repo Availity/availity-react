@@ -1,9 +1,10 @@
 ---
 title: useOrganizations
-summary: Hook that returns organizations.
 ---
 
-## Example
+Hook that returns organizations.
+
+### Example
 
 ```jsx
 import React from 'react';

@@ -1,11 +1,10 @@
 ---
 title: <FormGroup />
-summary: Wrapper for an Input field. Uses reactstrap FormGroup.
----
+---Wrapper for an Input field. Uses reactstrap FormGroup.
 
-## Example
+### Example
 
-```jsx  viewCode=true
+```jsx live=true viewCode=true
 <Form
   initialValues={{
     hello: '',
@@ -22,8 +21,10 @@ summary: Wrapper for an Input field. Uses reactstrap FormGroup.
 </Form>
 ```
 
-## Props
+#### Live example: <a href="https://availity.github.io/availity-react/storybook/?path=/story/formik-form--form-group"> Storybook</a>
 
-### `for: string`
+### Props
+
+#### `for: string`
 
 Used to match the wrapped input. Must be the same name given to the input field.

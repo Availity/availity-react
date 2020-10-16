@@ -1,7 +1,8 @@
 ---
 title: Getting Started
-summary: Availity typography components
 ---
+
+Availity typography components
 
 ## Installation
 

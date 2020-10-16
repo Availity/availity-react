@@ -1,11 +1,12 @@
 ---
 title: <Input />
-summary: Basic Input field that utilizes the Form validation
 ---
 
-## Example
+Basic Input field that utilizes the Form validation
 
-```jsx viewCode=true
+### Example
+
+```jsx live=true viewCode=true
 import { Form, Input } from '@availity/form';
 import { Button } from 'reacstrap';
 
@@ -26,12 +27,14 @@ import { Button } from 'reacstrap';
 </Form>;
 ```
 
-## Props
+#### Live example: <a href="https://availity.github.io/availity-react/storybook/?path=/story/formik-form--input"> Storybook</a>
 
-### `name: string`
+### Props
+
+#### `name: string`
 
 Identifies the field and matches the validation
 
-### `tag?: React.ComponentType | string`
+#### `tag?: React.ComponentType | string`
 
 The Node or tag to substitute as the input field. Default is reactstrap `Input` tag.

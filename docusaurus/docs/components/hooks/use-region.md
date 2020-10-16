@@ -1,9 +1,10 @@
 ---
 title: useCurrentRegion
-summary: Hook that returns the user's current region.
 ---
 
-## Example
+Hook that returns the user's current region.
+
+### Example
 
 ```jsx
 import React, { useState } from 'react';

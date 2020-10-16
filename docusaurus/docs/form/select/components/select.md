@@ -1,11 +1,12 @@
 ---
 title: <Select /> ( Default Export )
-summary: Select dropdown without a Label or Feedback
 ---
 
-## Example
+Select dropdown without a Label or Feedback
 
-```jsx  viewCode=true
+### Example
+
+```jsx live=true viewCode=true
 import { Form } from '@availity/form';
 import Select, { SelectField } from '@availity/select';
 import { Button } from 'reactstrap';
@@ -38,39 +39,45 @@ import '@availity/yup';
 </Form>;
 ```
 
-## Props
+#### Live example: <a href="https://availity.github.io/availity-react/storybook/?path=/story/formik-select--default"> Storybook</a>
+
+### Props
 
 See [react-select](https://github.com/JedWatson/react-select) and [react-select-async-paginate](https://github.com/vtaits/react-select-async-paginate) for additional props.
 
-### `name: string`
+#### `name: string`
 
 The name of the field. Will be the key of the selected option(s) that come through in the values of the `onSubmit` callback of the form.
 
-### `raw?: boolean`
+#### `raw?: boolean`
 
 If `true`, the entire object of the selected value is returned as the value instead of the value for the `valueKey` within the object.
 
-### `valueKey?: string`
+#### `valueKey?: string`
 
 The key of the value to return when selected. **Default:** `"value"`
 
-### `labelKey?: string`
+#### `labelKey?: string`
 
 The key of the label to render in the dropdown for the user to see. **Default:** `"label"`
 
-### `maxLength?: number`
+#### `maxLength?: number`
 
 The maximum number of options that can be selected ( when `isMulti` is `true`)
 
-### `selectRef?: Ref`
+#### `selectRef?: Ref`
 
 Ref passed to `react-select-async-paginate` component if in async mode.
 
-### `createable?: boolean`
+#### `createable?: boolean`
 
 Allow new items to be created if not found. **Default:** `false`.
 
-### `autofill?: boolean | AutoFillType`
+#### `allowSelectAll?: boolean`
+
+Adds a `Select all` option ( when `isMulti` is `true`). Note: `allowSelectAll` is ignored when `loadOptions` is defined.
+
+#### `autofill?: boolean | AutoFillType`
 
 If `true`, when the value of the dropdown changes, if the `isMulti` prop is `false` _and_ the new value of the dropdown is an object, all fields on the form corresponding to the new value are auto-filled. In order for a field to be auto-filled, the `name` property on the field _must_ match the key inside the new value.
 

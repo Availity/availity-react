@@ -1,14 +1,14 @@
-<!-- ---
+---
 title: useFavorites
 ---
 
 Hook that allows you to "hook" into the favorites logic and create a custom component with the same logic. Can only be used inside of a `<Favorites />` Provider.
 
-## Arguments
+### Arguments
 
 - **`id`**: The id of the favorite you want to create/update.
 
-## Example
+### Example
 
 ```jsx
 import React, { useState } from 'react';
@@ -24,4 +24,4 @@ const Component = () => {
     />
   );
 };
-``` -->
+```

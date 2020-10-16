@@ -1,11 +1,12 @@
 ---
 title: <Radio />
-summary: Inputs of type radio. Radios should be wrapped in a RadioGroup.
 ---
 
-## Example
+Inputs of type radio. Radios should be wrapped in a RadioGroup.
 
-```jsx  viewCode=true
+### Example
+
+```jsx live=true viewCode=true
 <Form
   initialValues={{
     hello: '',
@@ -24,24 +25,26 @@ summary: Inputs of type radio. Radios should be wrapped in a RadioGroup.
 </Form>
 ```
 
-## Props
+#### Live example: <a href="https://availity.github.io/availity-react/storybook/?path=/story/formik-form--radio"> Storybook</a>
 
-### `id?: string`
+### Props
+
+#### `id?: string`
 
 Should match `<RadioGroup />` name for validation.
 
-### `label?: ReactNode`
+#### `label?: ReactNode`
 
 Label for the checkbox.
 
-### `value?: string`
+#### `value?: string`
 
 Value of the checkbox.
 
-### `disabled?: boolean`
+#### `disabled?: boolean`
 
 Disables the checkbox.
 
-### `inline?: boolean`
+#### `inline?: boolean`
 
 Will render the checkbox inline with other checkboxes.

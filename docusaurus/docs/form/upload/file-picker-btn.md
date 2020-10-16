@@ -1,9 +1,10 @@
 ---
 title: <FilePickerBtn />
-summary: The raw file picker button that masks the file input with a button.
 ---
 
-## Example
+The raw file picker button that masks the file input with a button.
+
+### Example
 
 ```jsx
 import React from 'react';
@@ -17,36 +18,37 @@ handleFileSelection = event => {
 
 <Form initialValues={{ myFile: undefined }}>
   <FilePickerBtn name="myFile" onChange={this.handleFileSelection} />
-</Form>
+</Form>;
 ```
 
-## Props
+#### Live example: <a href="https://availity.github.io/availity-react/storybook/?path=/story/components-upload--picker-button"> Storybook</a>
 
-### `name: string`
+### Props
+
+#### `name: string`
 
 Identifies the field and matches the validation schema.
 
-### `onClick?: (event: Event) => void`
+#### `onClick?: (event: Event) => void`
 
 Callback when the button is clicked.
 
-### `onChange?: (event: Event) => void`
+#### `onChange?: (event: Event) => void`
 
 Callback when the user has selected a file or multiple files.
 
-### `multiple?: boolean`
+#### `multiple?: boolean`
 
 Indicates that the user will be allowed to select multiple files when selecting files from the OS prompt.
 
-### `disabled?: boolean`
+#### `disabled?: boolean`
 
 Disable the file input **Default:** `false`.
 
-### `allowedFileTypes?: Array<string>`
+#### `allowedFileTypes?: Array<string>`
 
 The file types you want to restrict uploading to. eg: `['.jpeg', '.jpg']`.
 
-### `maxSize?: number`
+#### `maxSize?: number`
 
 The maximum file size (in bytes) for a file to be uploaded.
-

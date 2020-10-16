@@ -1,11 +1,12 @@
 ---
 title: <Feedback />
-summary: Error message container for an input
 ---
 
-## Example
+Error message container for an input
 
-```jsx  viewCode=true
+### Example
+
+```jsx live=true viewCode=true
 import { Form, Input, Feedback as FormFeedback } from '@availity/form';
 
 <Form
@@ -28,8 +29,8 @@ import { Form, Input, Feedback as FormFeedback } from '@availity/form';
 </Form>;
 ```
 
-## Props
+### Props
 
-### `name: string`
+#### `name: string`
 
 Name used to match the validation schema to the message.

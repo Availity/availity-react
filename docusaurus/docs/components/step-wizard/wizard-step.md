@@ -1,11 +1,12 @@
 ---
 title: <WizardStep />
-summary: A step in the <Wizard />
 ---
 
-## Example
+A step in the `<Wizard />`
 
-```jsx viewCode=true
+### Example
+
+```jsx live=true viewCode=true
 import Wizard, { WizardStep, WizardStepTitle } from '@availity/step-wizard';
 
 <Wizard bar>
@@ -21,24 +22,26 @@ import Wizard, { WizardStep, WizardStepTitle } from '@availity/step-wizard';
 </Wizard>;
 ```
 
-## Props
+#### Live example: <a href="https://availity.github.io/availity-react/storybook/?path=/story/components-stepwizard--default"> Storybook</a>
 
-### `complete?: boolean`
+### Props
+
+#### `complete?: boolean`
 
 Triggers the "complete" style in the step.
 
-### `active?: boolean`
+#### `active?: boolean`
 
 Triggers the "active" style in the step.
 
-### `disabled?: boolean`
+#### `disabled?: boolean`
 
 Triggers the "disabled" style in the step.
 
-### `clickable?: boolean`
+#### `clickable?: boolean`
 
 Triggers the "clickable" style in the step.
 
-### `href?: string`
+#### `href?: string`
 
 Specifies the URL of the page the link goes to. When provided, an anchor tag will be rendered for the step

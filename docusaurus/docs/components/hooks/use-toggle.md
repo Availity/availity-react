@@ -1,9 +1,10 @@
 ---
 title: useToggle
-summary: Returns a boolean that can easily be toggled. Useful for loaders, and toggle components.
 ---
 
-## Example
+Returns a boolean that can easily be toggled. Useful for loaders, and toggle components.
+
+### Example
 
 ```jsx
 import React from 'react';
@@ -30,8 +31,8 @@ const Component = () => {
 };
 ```
 
-## Props
+### Props
 
-### `initialState?: boolean`
+#### `initialState?: boolean`
 
 The intital state of the toggle. **Default:** `false`

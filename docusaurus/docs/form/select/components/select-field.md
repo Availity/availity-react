@@ -4,9 +4,9 @@ title: <SelectField />
 
 The same as `Select` but with a `Label` that appears above the input and a `Feedback` that appears below the input.
 
-## Example
+### Example
 
-```jsx  viewCode=true
+```jsx live=true viewCode=true
 import { Form } from '@availity/form';
 import { SelectField } from '@availity/select';
 import { Button } from 'reactstrap';
@@ -39,34 +39,36 @@ import '@availity/yup';
 </Form>;
 ```
 
-## Props
+#### Live example: <a href="https://availity.github.io/availity-react/storybook/?path=/story/formik-select--selectfield"> Storybook</a>
+
+### Props
 
 Extends [Select Props](/form/select/components/select/#props).
 
-### `name: string`
+#### `name: string`
 
 The name of the field and name of the HTML Input. Without this, no input will be rendered. Will be the key of the selected option(s) that come through in the values of the `onSubmit` callback of the form.
 
-### `label?: ReactNode`
+#### `label?: ReactNode`
 
 The label to render above the `Select` input.
 
-### `labelHidden?: boolean`
+#### `labelHidden?: boolean`
 
 Whether the `label` should be hidden.
 
-### `labelClass?: string`
+#### `labelClass?: string`
 
 Class names to pass to the `Label`.
 
-### `feedbackClass?: string`
+#### `feedbackClass?: string`
 
 Class names to pass to the `Feedback`.
 
-### `groupClass?: string`
+#### `groupClass?: string`
 
 Class names to pass to the `FormGroup`.
 
-## 508 Compliance
+### 508 Compliance
 
 `<SelectField />` will automatically associate the `FormGroup` and `Label` based on its `name` prop, not an `id` prop. Using an `id` prop that is the same as `name` on this component will result in an orphaned form label and break 508 compliance.

@@ -4,7 +4,7 @@ title: useAnalytics
 
 Hook giving you access to the instance of `@availity/analytics-core` for manually tracking events, and changing different variables.
 
-## Example
+### Example
 
 ```jsx
 import React from 'react';

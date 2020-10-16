@@ -4,9 +4,9 @@ title: <DateRange />
 
 A date range, consisting of 2 fields, a start date and an end date, without a `Label` or `Feedback`
 
-## Example
+### Example
 
-```jsx  viewCode=true
+```jsx live=true viewCode=true
 import { Form } from '@availity/form';
 import { DateRange } from '@availity/date';
 import { dateRange } from '@availity/yup';
@@ -53,21 +53,15 @@ import * as yup from 'yup';
 </div>;
 ```
 
-## Props
+#### Live example: <a href="https://availity.github.io/availity-react/storybook/?path=/story/formik-date--daterange"> Storybook</a>
+
+### Props
 
 See [react-dates](https://github.com/airbnb/react-dates#daterangepicker) for additional props
 
-### `name: string`
+#### `name: string`
 
 The name of the field. Will be the key of the selected dates that come through in the values of the `onSubmit` callback.
-
-### `startKey: string`
-
-Key to return start date as on form submit. Should match the yup schema `startKey`.
-
-### `endKey: string`
-
-Key to return end date as on form submit. Should match the yup schema `endKey`.
 
 ### `min?: string | LimitType`
 

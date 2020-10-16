@@ -1,11 +1,12 @@
 ---
 title: <Form />
-summary: Reactstrap Form component wrapped in Formik
 ---
 
-## Example
+Reactstrap Form component wrapped in Formik
 
-```jsx header=Form.js viewCode=true
+### Example
+
+```jsx live=true header=Form.js viewCode=true
 import React from 'react';
 import { Form, Field } from '@availity/form';
 
@@ -22,16 +23,18 @@ import { Form, Field } from '@availity/form';
 </Form>;
 ```
 
-## Props
+#### Live example: <a href="https://availity.github.io/availity-react/storybook/?path=/story/formik-form--default"> Storybook</a>
 
-### `initialValues: Formik.Values`
+### Props
+
+#### `initialValues: Formik.Values`
 
 Object of values to initialize the form components with by name.
 
-### `onSubmit?: (values: Values, formikBag: FormikBag) => void`
+#### `onSubmit?: (values: Values, formikBag: FormikBag) => void`
 
 Action to perform on submit.
 
-### `...rest`
+#### `...rest`
 
 View full set of [Formik Form Props](https://jaredpalmer.com/formik/docs/api/formik#props)

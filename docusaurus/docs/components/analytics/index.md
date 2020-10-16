@@ -1,17 +1,18 @@
 ---
 title: Getting Started
-summary: Track page events and user clicks.
 ---
+
+Track page events and user clicks.
 
 [![Version](https://img.shields.io/npm/v/@availity/analytics.svg?style=for-the-badge)](https://www.npmjs.com/package/@availity/analytics)
 
-## Installation
+### Installation
 
 ```bash
 npm install @availity/analytics --save
 ```
 
-## Example
+### Example
 
 ```jsx
 import React from 'react';
@@ -24,10 +25,7 @@ const plugin = {
     }
 }
 
-<Analytics
-    plugins={[plugin]}
-    attributePrefix="data-av-analytics"
->
-  <Button type="button" data-av-analytics-action="click" id="button">Click Me</Button>
+<Analytics  plugins={[plugin]} attributePrefix="data-av-analytics">
+<Button type="button" data-av-analytics-action="click" id="button">Click Me</Button>
 </Analytics>
 ```

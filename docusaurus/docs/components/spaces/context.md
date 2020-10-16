@@ -4,7 +4,7 @@ title: SpacesContext
 
 If you are using a class component, you can subscribe to the spaces by using this context.
 
-## Example
+### Example
 
 ```jsx
 import React from 'react';

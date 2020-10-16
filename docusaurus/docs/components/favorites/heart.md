@@ -12,15 +12,15 @@ import '@availity/favorites/style.scss';
   <Favorites>
     <FavoriteHeart id="12345" />
   </Favorites>
-</div>
+</div>;
 ```
 
-## Props
+### Props
 
-### `id: string`
+#### `id: string`
 
 The unique id of the favorite item to be fetched from API.
 
-### `onChange?: (isFavorited: boolean, event?: Event) => void`
+#### `onChange?: (isFavorited: boolean, event?: Event) => void`
 
 Called once the favorite heart has been clicked and updated.

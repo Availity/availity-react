@@ -1,11 +1,12 @@
 ---
 title: <Wizard /> ( Default Export )
-summary: Container for the step wizard.
 ---
 
-## Example
+Container for the step wizard.
 
-```jsx  viewCode=true
+### Example
+
+```jsx live=true viewCode=true
 import Wizard, { WizardStep, WizardStepTitle } from '@availity/step-wizard';
 
 <Wizard bar>
@@ -21,16 +22,18 @@ import Wizard, { WizardStep, WizardStepTitle } from '@availity/step-wizard';
 </Wizard>;
 ```
 
-## Props
+#### Live example: <a href="https://availity.github.io/availity-react/storybook/?path=/story/components-stepwizard--default"> Storybook</a>
 
-### `bar?: boolean`
+### Props
+
+#### `bar?: boolean`
 
 Triggers the "bar" style in the stepwizard.
 
-### `stacked?: boolean`
+#### `stacked?: boolean`
 
 Triggers the "stacked" style in the step wizard. If true, wizard steps will display vertically rather than horizontally.
 
-### `progress?: boolean`
+#### `progress?: boolean`
 
 Triggers the "progress" style in the step wizard.

@@ -1,9 +1,10 @@
 ---
 title: useEffectAsync
-summary: Hook that allows asynchronous functions to be called in the standard useEffect hook.
 ---
 
-## Example
+Hook that allows asynchronous functions to be called in the standard useEffect hook.
+
+### Example
 
 ```jsx
 import React, { useState } from 'react';
@@ -22,12 +23,12 @@ const Component = ({ asyncFunction }) => {
 // ...
 ```
 
-## Props
+### Props
 
-### `effect: React.useEffect`
+#### `effect: React.useEffect`
 
 The effect to call -= just like the function given to `useEffect`.
 
-### `inputs: Array<any>`
+#### `inputs: Array<any>`
 
 The watch params for the effect - just like the second arg in `useEffect`.

@@ -1,11 +1,12 @@
 ---
 title: <AvRegionSelect />
-summary: A select list that automatically loads and pages through regions when the user scrolls down.
 ---
 
-## Example
+A select list that automatically loads and pages through regions when the user scrolls down.
 
-```jsx viewCode=true
+### Example
+
+```jsx live=true viewCode=true
 import { Form } from '@availity/form';
 import { AvRegionSelect } from '@availity/select/resources';
 import * as yup from 'yup';
@@ -28,10 +29,12 @@ import '@availity/yup';
 </Form>;
 ```
 
-## Props
+#### Live example: <a href="https://availity.github.io/availity-react/storybook/?path=/story/components-avselect-resources--avregionselect"> Storybook</a>
+
+### Props
 
 Extends [ResourceSelect Props](/form/select/components/resource-select/#props).
 
-### `defaultToCurrentRegion: boolean`
+#### `defaultToCurrentRegion: boolean`
 
 When `true`, the input will be defaulted to the user's currently selected region. Defaults to `false`

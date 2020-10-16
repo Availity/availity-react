@@ -1,17 +1,18 @@
 ---
 title: Getting Started
-summary: Favorite Heart for favoriting items such as resources/applications etc.
 ---
 
-## Installation
+Favorite Heart for favoriting items such as resources/applications etc.
+
+### Installation
 
 ```bash
 npx install-peerdeps @availity/favorites --save
 ```
 
-## Example
+### Example
 
-```jsx
+```jsx live=true
 import Favorites from '@availity/favorites';
 import '@availity/favorites/style.scss';
 

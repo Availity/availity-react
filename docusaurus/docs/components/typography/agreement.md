@@ -2,9 +2,9 @@
 title: <Agreement />
 ---
 
-## Example
+### Example
 
-```jsx
+```jsx live=true
 import { Agreement } from '@availity/typography';
 
 <Agreement>

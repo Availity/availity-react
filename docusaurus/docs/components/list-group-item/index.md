@@ -1,17 +1,18 @@
 ---
 title: Getting Started
-summary: List Group Item with some Availity flair
 ---
 
-## Installation
+List Group Item with some Availity flair
+
+### Installation
 
 ```bash
 npm install @availity/list-group-item --save
 ```
 
-## Example
+### Example
 
-```jsx  viewCode=true
+```jsx live=true viewCode=true
 import ListGroup from '@availity/list-group';
 import ListGroupItem, { ListGroupItemStatus } from '@availity/list-group-item';
 
