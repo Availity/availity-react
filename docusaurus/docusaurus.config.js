@@ -63,7 +63,8 @@ module.exports = {
           homePageId: 'intro',
           sidebarPath: require.resolve('./sidebars.js'),
           // Please change this to your repo.
-          editUrl: 'https://github.com/avaiity/availity-react/edit/master/',
+          editUrl:
+            'https://github.com/availity/availity-react/edit/feat/docusaurus-docs/docusaurus/',
         },
 
         theme: {
