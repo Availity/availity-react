@@ -1,4 +1,4 @@
-import React, { useRef } from 'react';
+import React, { useRef, useEffect } from 'react';
 import PropTypes from 'prop-types';
 import UploadCore from '@availity/upload-core';
 import { avFilesDeliveryApi } from '@availity/api-axios';
@@ -23,6 +23,17 @@ const fileDeliveryOnUpload = (data, config, upload) => {
   }
 };
 
+const fileDeliveryOnSubmit = (data, config, uploads) => {
+  uploads.forEach(upload => {
+    data.deliveries[0].fileURI = upload.references[0];
+    try {
+      avFilesDeliveryApi.uploadFilesDelivery(data, config);
+    } catch (error) {
+      console.warn('File delivery was not complete', error);
+    }
+  });
+};
+
 const Upload = ({
   feedbackClass,
   btnText,
@@ -38,7 +49,7 @@ const Upload = ({
 }) => {
   const input = useRef(null);
   const [field, metadata] = useField(name);
-  const { setFieldValue } = useFormikContext();
+  const { setFieldValue, isSubmitting } = useFormikContext();
   const classes = classNames(
     className,
     metadata.touched ? 'is-touched' : 'is-untouched',
@@ -46,6 +57,23 @@ const Upload = ({
   );
 
   const fieldValue = Array.isArray(field.value) ? field.value : [];
+
+  useEffect(() => {
+    if (rest.fileDeliveryOnSubmit && isSubmitting === true) {
+      fileDeliveryOnSubmit(
+        rest.fileDeliveryProps,
+        { clientId: rest.clientId, customerId: rest.customerId },
+        fieldValue
+      );
+    }
+  }, [
+    fieldValue,
+    isSubmitting,
+    rest.clientId,
+    rest.customerId,
+    rest.fileDeliveryOnSubmit,
+    rest.fileDeliveryProps,
+  ]);
 
   const removeFile = fileId => {
     const newFiles = fieldValue.filter(file => file.id !== fileId);
@@ -86,8 +114,12 @@ const Upload = ({
           upload.start();
         }
 
-        if (upload && rest.fileDeliveryProps) {
-          upload.onSuccess.push(async () => {
+        if (
+          upload &&
+          rest.fileDeliveryProps &&
+          rest.fileDeliveryOnSubmit === false
+        ) {
+          upload.onSuccess.push(() => {
             fileDeliveryOnUpload(
               rest.fileDeliveryProps,
               { clientId: rest.clientId, customerId: rest.customerId },
@@ -213,12 +245,14 @@ Upload.propTypes = {
   feedbackClass: PropTypes.string,
   className: PropTypes.string,
   disabled: PropTypes.bool,
+  fileDeliveryOnSubmit: PropTypes.bool,
 };
 
 Upload.defaultProps = {
   multiple: true,
   disabled: false,
   showFileDrop: false,
+  fileDeliveryOnSubmit: false,
 };
 
 export default Upload;
