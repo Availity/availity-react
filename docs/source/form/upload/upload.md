@@ -54,6 +54,14 @@ Callback called when file is uploaded. The callback is provided the `Upload` ins
 
 Callback called when file is removed. The callback is provided two arguments. 1. the updated files and 2. the id of the file that was removed
 
+### `fileDeliveryProps?: object`
+
+This prop will list all necessary information needed to complete uploads to `fileDeliveryApi`. By using this prop, the files will be delivered upon upload and not upon submission of form.
+
+### `fileDeliveryOnSubmit?: boolean`
+
+This prop is used in tandem with the `fileDeliveryProps` so that your files will only get delivered to `fileDeliveryApi` when the form is being submitted. **Default:** `false`
+
 ### `maxSize?: number`
 
 The maximum file size (in bytes) for a file to be uploaded.
@@ -108,11 +116,28 @@ import Upload from '@availity/form-upload';
     clientId="a"
     bucketId="b"
     customerId="c"
+    fileDeliveryProps={data}
     onFileUpload={onUpload} // <-- add file callback function
     onFileRemove={onRemove} // <-- remove file callback function
     max={1}
   />
 </Form>
+
+// setting up necessary file delivery data, this will be payer specific. fileURI will be automatically configured for you and config will be automatically configured from clientId and customerId props.
+const data = {
+  deliveries: [
+    {
+      deliveryChannel: 'DEMO',
+      metadata: {
+        requestId: '12345',
+        patientLastName: 'strange',
+        patientFirstName: 'dr',
+      },
+    },
+  ],
+};
+
+
 
 // onUpload callback definition
 onUpload(upload) {
