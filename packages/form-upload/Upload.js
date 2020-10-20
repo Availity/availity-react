@@ -14,26 +14,6 @@ import FilePickerBtn from './FilePickerBtn';
 import FileList from './FileList';
 import './styles.scss';
 
-const fileDeliveryOnUpload = (data, config, upload) => {
-  data.deliveries[0].fileURI = upload.references[0];
-  try {
-    avFilesDeliveryApi.uploadFilesDelivery(data, config);
-  } catch (error) {
-    console.warn('File delivery was not complete', error);
-  }
-};
-
-const fileDeliveryOnSubmit = (data, config, uploads) => {
-  uploads.forEach(upload => {
-    data.deliveries[0].fileURI = upload.references[0];
-    try {
-      avFilesDeliveryApi.uploadFilesDelivery(data, config);
-    } catch (error) {
-      console.warn('File delivery was not complete', error);
-    }
-  });
-};
-
 const Upload = ({
   feedbackClass,
   btnText,
@@ -49,7 +29,7 @@ const Upload = ({
 }) => {
   const input = useRef(null);
   const [field, metadata] = useField(name);
-  const { setFieldValue, isSubmitting } = useFormikContext();
+  const { setFieldValue, isSubmitting, setFieldError } = useFormikContext();
   const classes = classNames(
     className,
     metadata.touched ? 'is-touched' : 'is-untouched',
@@ -58,22 +38,39 @@ const Upload = ({
 
   const fieldValue = Array.isArray(field.value) ? field.value : [];
 
+  const fileDeliveryProps =
+    rest.deliveryChannel && rest.metadata
+      ? {
+          deliveries: [
+            {
+              deliveryChannel: rest.deliveryChannel,
+              metadata: rest.metadata,
+            },
+          ],
+        }
+      : undefined;
+
+  const callFileDelivery = (data, config, upload) => {
+    if (!Array.isArray(upload)) upload = [upload];
+    upload.forEach(upload => {
+      data.deliveries[0].fileURI = upload.references[0];
+      try {
+        avFilesDeliveryApi.uploadFilesDelivery(data, config);
+      } catch (error) {
+        setFieldError(error);
+      }
+    });
+  };
+
   useEffect(() => {
-    if (rest.fileDeliveryOnSubmit && isSubmitting === true) {
-      fileDeliveryOnSubmit(
-        rest.fileDeliveryProps,
+    if (rest.deliverFileOnSubmit && isSubmitting === true) {
+      callFileDelivery(
+        fileDeliveryProps,
         { clientId: rest.clientId, customerId: rest.customerId },
         fieldValue
       );
     }
-  }, [
-    fieldValue,
-    isSubmitting,
-    rest.clientId,
-    rest.customerId,
-    rest.fileDeliveryOnSubmit,
-    rest.fileDeliveryProps,
-  ]);
+  }, [isSubmitting]);
 
   const removeFile = fileId => {
     const newFiles = fieldValue.filter(file => file.id !== fileId);
@@ -114,14 +111,10 @@ const Upload = ({
           upload.start();
         }
 
-        if (
-          upload &&
-          rest.fileDeliveryProps &&
-          rest.fileDeliveryOnSubmit === false
-        ) {
+        if (upload && fileDeliveryProps && rest.deliverFileOnSubmit === false) {
           upload.onSuccess.push(() => {
-            fileDeliveryOnUpload(
-              rest.fileDeliveryProps,
+            callFileDelivery(
+              fileDeliveryProps,
               { clientId: rest.clientId, customerId: rest.customerId },
               upload
             );
@@ -245,14 +238,14 @@ Upload.propTypes = {
   feedbackClass: PropTypes.string,
   className: PropTypes.string,
   disabled: PropTypes.bool,
-  fileDeliveryOnSubmit: PropTypes.bool,
+  deliverFileOnSubmit: PropTypes.bool,
 };
 
 Upload.defaultProps = {
   multiple: true,
   disabled: false,
   showFileDrop: false,
-  fileDeliveryOnSubmit: false,
+  deliverFileOnSubmit: false,
 };
 
 export default Upload;

@@ -9,7 +9,7 @@ export interface UploadProps {
   allowedFileTypes?: string[];
   onFileUpload?: Function;
   onFileRemove?: Function;
-  fileDeliveryOnSubmit?: boolean;
+  deliverFileOnSubmit?: boolean;
   fileDeliveryProps?: object;
   maxSize?: number;
   max?: number;
