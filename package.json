@@ -98,7 +98,7 @@
     "react-dom": "^16.8.3",
     "regenerator-runtime": "^0.13.2",
     "sass-loader": "^8.0.0",
-    "ts-jest": "^25.2.0",
+    "ts-jest": "^26.4.1",
     "typescript": "^3.7.5"
   },
   "jest": {
