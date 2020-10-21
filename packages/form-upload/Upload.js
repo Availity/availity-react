@@ -1,4 +1,4 @@
-import React, { useRef, useEffect } from 'react';
+import React, { useRef, useEffect, useCallback } from 'react';
 import PropTypes from 'prop-types';
 import UploadCore from '@availity/upload-core';
 import { avFilesDeliveryApi } from '@availity/api-axios';
@@ -39,7 +39,12 @@ const Upload = ({
 }) => {
   const input = useRef(null);
   const [field, metadata] = useField(name);
-  const { setFieldValue, isSubmitting, setFieldError } = useFormikContext();
+  const {
+    isSubmitting,
+    isValidating,
+    setFieldError,
+    setFieldValue,
+  } = useFormikContext();
   const classes = classNames(
     className,
     metadata.touched ? 'is-touched' : 'is-untouched',
@@ -48,36 +53,61 @@ const Upload = ({
 
   const fieldValue = Array.isArray(field.value) ? field.value : [];
 
-  const fileDeliveryProps =
-    deliveryChannel && fileDeliveryMetadata
-      ? {
+  const callFileDelivery = useCallback(
+    async upload => {
+      if (!Array.isArray(upload)) upload = [upload];
+      for (const u of upload) {
+        const data = {
           deliveries: [
             {
               deliveryChannel,
+              fileURI: u.references[0],
               metadata: fileDeliveryMetadata,
             },
           ],
-        }
-      : undefined;
+        };
 
-  const callFileDelivery = (data, config, upload) => {
-    if (!Array.isArray(upload)) upload = [upload];
-    upload.forEach(upload => {
-      data.deliveries[0].fileURI = upload.references[0];
-      try {
-        avFilesDeliveryApi.uploadFilesDelivery(data, config);
-      } catch {
-        setFieldError('An error occurred while uploading files.');
+        try {
+          // eslint-disable-next-line no-await-in-loop
+          await avFilesDeliveryApi.uploadFilesDelivery(data, {
+            clientId,
+            customerId,
+          });
+        } catch {
+          setFieldError('An error occurred while uploading files.');
+        }
       }
-    });
-  };
+    },
+    [clientId, customerId, deliveryChannel, fileDeliveryMetadata, setFieldError]
+  );
 
   useEffect(() => {
-    // TODO: add all scenarios
-    if (deliverFileOnSubmit && isSubmitting === true) {
-      callFileDelivery(fileDeliveryProps, { clientId, customerId }, fieldValue);
+    // TODO: naming is hard
+    // eslint-disable-next-line unicorn/consistent-function-scoping
+    async function validateFormAndCallFileDelivery() {
+      await callFileDelivery(fieldValue);
     }
-  }, [isSubmitting]);
+    // TODO: add all formik scenarios
+    if (
+      isSubmitting === true &&
+      isValidating === false &&
+      deliverFileOnSubmit &&
+      deliveryChannel &&
+      fileDeliveryMetadata
+    ) {
+      validateFormAndCallFileDelivery();
+    }
+  }, [
+    isSubmitting,
+    deliverFileOnSubmit,
+    callFileDelivery,
+    clientId,
+    customerId,
+    fieldValue,
+    deliveryChannel,
+    fileDeliveryMetadata,
+    isValidating,
+  ]);
 
   const removeFile = fileId => {
     const newFiles = fieldValue.filter(file => file.id !== fileId);
@@ -118,17 +148,16 @@ const Upload = ({
           upload.start();
         }
 
-        if (fileDeliveryProps && deliverFileOnSubmit === false) {
-          upload.onSuccess.push(() => {
-            callFileDelivery(
-              fileDeliveryProps,
-              { clientId, customerId },
-              upload
-            );
-          });
-        } else if (onFileUpload) {
-          // TODO: make first conditional statement?
+        if (onFileUpload) {
           onFileUpload(upload);
+        } else if (
+          !deliverFileOnSubmit &&
+          deliveryChannel &&
+          fileDeliveryMetadata
+        ) {
+          upload.onSuccess.push(() => {
+            callFileDelivery(upload);
+          });
         }
 
         return upload;
