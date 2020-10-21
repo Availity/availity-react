@@ -29,7 +29,12 @@ const Upload = ({
 }) => {
   const input = useRef(null);
   const [field, metadata] = useField(name);
-  const { setFieldValue, isSubmitting, setFieldError } = useFormikContext();
+  const {
+    setFieldValue,
+    isSubmitting,
+    setFieldError,
+    isValidating,
+  } = useFormikContext();
   const classes = classNames(
     className,
     metadata.touched ? 'is-touched' : 'is-untouched',
@@ -63,14 +68,16 @@ const Upload = ({
   };
 
   useEffect(() => {
-    if (rest.deliverFileOnSubmit && isSubmitting === true) {
-      callFileDelivery(
-        fileDeliveryProps,
-        { clientId: rest.clientId, customerId: rest.customerId },
-        fieldValue
-      );
+    if (rest.deliverFileOnSubmit && !isValidating) {
+      if (isSubmitting === true) {
+        callFileDelivery(
+          fileDeliveryProps,
+          { clientId: rest.clientId, customerId: rest.customerId },
+          fieldValue
+        );
+      }
     }
-  }, [isSubmitting]);
+  }, [isSubmitting, isValidating]);
 
   const removeFile = fileId => {
     const newFiles = fieldValue.filter(file => file.id !== fileId);
