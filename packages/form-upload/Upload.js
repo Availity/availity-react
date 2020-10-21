@@ -15,17 +15,27 @@ import FileList from './FileList';
 import './styles.scss';
 
 const Upload = ({
-  feedbackClass,
-  btnText,
-  max,
-  multiple,
+  allowedFileNameCharacters,
   allowedFileTypes,
-  maxSize,
+  btnText,
+  bucketId,
   children,
-  showFileDrop,
-  name,
   className,
-  ...rest
+  clientId,
+  customerId,
+  deliverFileOnSubmit = false,
+  deliveryChannel,
+  disabled = false,
+  feedbackClass,
+  fileDeliveryMetadata,
+  getDropRejectionMessage,
+  max,
+  maxSize,
+  multiple = true,
+  name,
+  onFileRemove,
+  onFileUpload,
+  showFileDrop = false,
 }) => {
   const input = useRef(null);
   const [field, metadata] = useField(name);
@@ -39,12 +49,12 @@ const Upload = ({
   const fieldValue = Array.isArray(field.value) ? field.value : [];
 
   const fileDeliveryProps =
-    rest.deliveryChannel && rest.metadata
+    deliveryChannel && fileDeliveryMetadata
       ? {
           deliveries: [
             {
-              deliveryChannel: rest.deliveryChannel,
-              metadata: rest.metadata,
+              deliveryChannel,
+              metadata: fileDeliveryMetadata,
             },
           ],
         }
@@ -56,19 +66,16 @@ const Upload = ({
       data.deliveries[0].fileURI = upload.references[0];
       try {
         avFilesDeliveryApi.uploadFilesDelivery(data, config);
-      } catch (error) {
-        setFieldError(error);
+      } catch {
+        setFieldError('An error occurred while uploading files.');
       }
     });
   };
 
   useEffect(() => {
-    if (rest.deliverFileOnSubmit && isSubmitting === true) {
-      callFileDelivery(
-        fileDeliveryProps,
-        { clientId: rest.clientId, customerId: rest.customerId },
-        fieldValue
-      );
+    // TODO: add all scenarios
+    if (deliverFileOnSubmit && isSubmitting === true) {
+      callFileDelivery(fileDeliveryProps, { clientId, customerId }, fieldValue);
     }
   }, [isSubmitting]);
 
@@ -77,7 +84,7 @@ const Upload = ({
     if (newFiles.length !== fieldValue.length) {
       setFieldValue(name, newFiles, true);
 
-      if (rest.onFileRemove) rest.onFileRemove(newFiles, fileId);
+      if (onFileRemove) onFileRemove(newFiles, fileId);
     }
   };
 
@@ -97,12 +104,12 @@ const Upload = ({
     const newFiles = fieldValue.concat(
       selectedFiles.map(file => {
         const upload = new UploadCore(file, {
-          bucketId: rest.bucketId,
-          customerId: rest.customerId,
-          clientId: rest.clientId,
+          bucketId,
+          customerId,
+          clientId,
           fileTypes: allowedFileTypes,
           maxSize,
-          allowedFileNameCharacters: rest.allowedFileNameCharacters,
+          allowedFileNameCharacters,
         });
         upload.id = `${upload.id}-${uuid()}`;
         if (file.dropRejectionMessage) {
@@ -111,16 +118,17 @@ const Upload = ({
           upload.start();
         }
 
-        if (upload && fileDeliveryProps && rest.deliverFileOnSubmit === false) {
+        if (fileDeliveryProps && deliverFileOnSubmit === false) {
           upload.onSuccess.push(() => {
             callFileDelivery(
               fileDeliveryProps,
-              { clientId: rest.clientId, customerId: rest.customerId },
+              { clientId, customerId },
               upload
             );
           });
-        } else if (rest.onFileUpload) {
-          rest.onFileUpload(upload);
+        } else if (onFileUpload) {
+          // TODO: make first conditional statement?
+          onFileUpload(upload);
         }
 
         return upload;
@@ -136,8 +144,8 @@ const Upload = ({
 
   const onDrop = (acceptedFiles, fileRejections) => {
     const rejectedFilesToDrop = fileRejections.map(({ file, errors }) => {
-      const dropRejectionMessage = rest.getDropRejectionMessage
-        ? rest.getDropRejectionMessage(errors, file)
+      const dropRejectionMessage = getDropRejectionMessage
+        ? getDropRejectionMessage(errors, file)
         : errors.map(error => error.message).join(', ');
 
       file.dropRejectionMessage = dropRejectionMessage;
@@ -159,7 +167,7 @@ const Upload = ({
       fileAddArea = (
         <FormGroup for={name}>
           <Input name={name} style={{ display: 'none' }} />
-          <InputGroup disabled={rest.disabled} className={classes}>
+          <InputGroup disabled={disabled} className={classes}>
             <Dropzone
               onDrop={onDrop}
               multiple={multiple}
@@ -201,7 +209,7 @@ const Upload = ({
           allowedFileTypes={allowedFileTypes}
           maxSize={maxSize}
           name={name}
-          disabled={rest.disabled}
+          disabled={disabled}
         >
           {text}
         </FilePickerBtn>
@@ -220,33 +228,27 @@ const Upload = ({
 };
 
 Upload.propTypes = {
-  btnText: PropTypes.node,
-  bucketId: PropTypes.string.isRequired,
-  customerId: PropTypes.string.isRequired,
-  clientId: PropTypes.string.isRequired,
   allowedFileNameCharacters: PropTypes.string,
   allowedFileTypes: PropTypes.arrayOf(PropTypes.string),
-  onFileUpload: PropTypes.func,
-  onFileRemove: PropTypes.func,
-  deliveryChannel: PropTypes.string,
-  metadata: PropTypes.object,
-  maxSize: PropTypes.number,
-  max: PropTypes.number,
-  multiple: PropTypes.bool,
+  btnText: PropTypes.node,
+  bucketId: PropTypes.string.isRequired,
   children: PropTypes.func,
-  name: PropTypes.string.isRequired,
-  showFileDrop: PropTypes.bool,
-  feedbackClass: PropTypes.string,
   className: PropTypes.string,
-  disabled: PropTypes.bool,
+  clientId: PropTypes.string.isRequired,
+  customerId: PropTypes.string.isRequired,
   deliverFileOnSubmit: PropTypes.bool,
-};
-
-Upload.defaultProps = {
-  multiple: true,
-  disabled: false,
-  showFileDrop: false,
-  deliverFileOnSubmit: false,
+  deliveryChannel: PropTypes.string,
+  disabled: PropTypes.bool,
+  feedbackClass: PropTypes.string,
+  fileDeliveryMetadata: PropTypes.object,
+  getDropRejectionMessage: PropTypes.func,
+  max: PropTypes.number,
+  maxSize: PropTypes.number,
+  multiple: PropTypes.bool,
+  name: PropTypes.string.isRequired,
+  onFileRemove: PropTypes.func,
+  onFileUpload: PropTypes.func,
+  showFileDrop: PropTypes.bool,
 };
 
 export default Upload;
