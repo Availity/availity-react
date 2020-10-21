@@ -54,9 +54,13 @@ Callback called when file is uploaded. The callback is provided the `Upload` ins
 
 Callback called when file is removed. The callback is provided two arguments. 1. the updated files and 2. the id of the file that was removed
 
-### `fileDeliveryProps?: object`
+### `metadata?: object`
 
-This prop will list all necessary information needed to complete uploads to `fileDeliveryApi`. By using this prop, the files will be delivered upon upload and not upon submission of form.
+The metadata properties that have been configured for the delivery channel you are trying to reach with `avFileDeliveryApi`.
+
+### `deliveryChannel?: string`
+
+The name of the delivery channel that is unique to where you will deliver files via the `avFileDeliveryApi`.
 
 ### `fileDeliveryOnSubmit?: boolean`
 
