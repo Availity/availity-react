@@ -40,10 +40,11 @@ const Upload = ({
   const input = useRef(null);
   const [field, metadata] = useField(name);
   const {
-    setFieldValue,
+    errors,
     isSubmitting,
-    setFieldError,
     isValidating,
+    setFieldError,
+    setFieldValue,
   } = useFormikContext();
   const classes = classNames(
     className,
@@ -56,59 +57,78 @@ const Upload = ({
   const callFileDelivery = useCallback(
     async upload => {
       if (!Array.isArray(upload)) upload = [upload];
-      for (const u of upload) {
-        const data = {
-          deliveries: [
-            {
-              deliveryChannel,
-              fileURI: u.references[0],
-              metadata: fileDeliveryMetadata,
-            },
-          ],
-        };
+      const uploadResults = [];
+      try {
+        for (const u of upload) {
+          const data = {
+            deliveries: [
+              {
+                deliveryChannel,
+                fileURI: u.references[0],
+                metadata: fileDeliveryMetadata,
+              },
+            ],
+          };
 
-        try {
-          // eslint-disable-next-line no-await-in-loop
-          await avFilesDeliveryApi.uploadFilesDelivery(data, {
-            clientId,
-            customerId,
-          });
-        } catch {
-          setFieldError('An error occurred while uploading files.');
+          uploadResults.push(
+            avFilesDeliveryApi.uploadFilesDelivery(data, {
+              clientId,
+              customerId,
+            })
+          );
         }
+
+        await Promise.all(uploadResults);
+      } catch (error) {
+        setFieldError(name, 'An error occurred while uploading files.');
+        // TODO: handle success/error states for avFilesDeliveryApi
+        // Example response
+        // { "id": "123456", // batchId "status": "COMPLETE", // COMPLETE/INPROGRESS
+        //   "deliveries": [ { "id": "56789", // deliveryId "deliveryBatchId": "123456",
+        //   "fileURI":
+        //    <fileUri>,
+        //       "deliveryChannel": "DEMO", "deliveryStatus": "ERRORED", //
+        //       INPROGRESS/REJECTED/ERRORED/DELIVERED "errors": [ { "message": "error
+        //       message", "subject": "subject of error" } ], "metadata": { payerId:
+        //       "PAYERID", requestId: "123", patientLastName: "lastName", patientFirstName:
+        //       "firstName" } } ] }
+        //    </fileUri >
       }
     },
-    [clientId, customerId, deliveryChannel, fileDeliveryMetadata, setFieldError]
+    [
+      clientId,
+      customerId,
+      deliveryChannel,
+      fileDeliveryMetadata,
+      name,
+      setFieldError,
+    ]
   );
 
-  useEffect(() => {
-    if (deliverFileOnSubmit && !isValidating) {
-      if (isSubmitting === true) {
-        callFileDelivery(
-          deliveryChannel,
-          fileDeliveryMetadata,
-          { clientId, customerId },
-          fieldValue
-        );
-      }
+  async function checkValidFormAndCallFileDelivery() {
+    if (Object.keys(errors).length === 0) {
+      await callFileDelivery(fieldValue);
     }
-  }, [
-    callFileDelivery,
-    clientId,
-    customerId,
-    deliverFileOnSubmit,
-    deliveryChannel,
-    fieldValue,
-    fileDeliveryMetadata,
-    isSubmitting,
-    isValidating,
-  ]);
+  }
+
+  useEffect(() => {
+    if (
+      isSubmitting === true &&
+      isValidating === false &&
+      deliverFileOnSubmit &&
+      deliveryChannel &&
+      fileDeliveryMetadata
+    ) {
+      checkValidFormAndCallFileDelivery();
+    }
+    // FIXME: add all dependencies to the array and add logic to only submit upload once
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [isSubmitting, isValidating]);
 
   const removeFile = fileId => {
     const newFiles = fieldValue.filter(file => file.id !== fileId);
     if (newFiles.length !== fieldValue.length) {
       setFieldValue(name, newFiles, true);
-
       if (onFileRemove) onFileRemove(newFiles, fileId);
     }
   };
