@@ -65,7 +65,10 @@ const Upload = ({
               {
                 deliveryChannel,
                 fileURI: u.references[0],
-                metadata: fileDeliveryMetadata,
+                metadata:
+                  typeof fileDeliveryMetadata === 'function'
+                    ? fileDeliveryMetadata(u)
+                    : fileDeliveryMetadata,
               },
             ],
           };
@@ -81,18 +84,6 @@ const Upload = ({
         await Promise.all(uploadResults);
       } catch (error) {
         setFieldError(name, 'An error occurred while uploading files.');
-        // TODO: handle success/error states for avFilesDeliveryApi
-        // Example response
-        // { "id": "123456", // batchId "status": "COMPLETE", // COMPLETE/INPROGRESS
-        //   "deliveries": [ { "id": "56789", // deliveryId "deliveryBatchId": "123456",
-        //   "fileURI":
-        //    <fileUri>,
-        //       "deliveryChannel": "DEMO", "deliveryStatus": "ERRORED", //
-        //       INPROGRESS/REJECTED/ERRORED/DELIVERED "errors": [ { "message": "error
-        //       message", "subject": "subject of error" } ], "metadata": { payerId:
-        //       "PAYERID", requestId: "123", patientLastName: "lastName", patientFirstName:
-        //       "firstName" } } ] }
-        //    </fileUri >
       }
     },
     [
@@ -113,6 +104,7 @@ const Upload = ({
 
   useEffect(() => {
     if (
+      !onFileUpload &&
       isSubmitting === true &&
       isValidating === false &&
       deliverFileOnSubmit &&
@@ -123,7 +115,7 @@ const Upload = ({
     }
     // FIXME: add all dependencies to the array and add logic to only submit upload once
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [isSubmitting, isValidating]);
+  }, [deliverFileOnSubmit, isSubmitting, isValidating, onFileUpload]);
 
   const removeFile = fileId => {
     const newFiles = fieldValue.filter(file => file.id !== fileId);
@@ -284,7 +276,7 @@ Upload.propTypes = {
   deliveryChannel: PropTypes.string,
   disabled: PropTypes.bool,
   feedbackClass: PropTypes.string,
-  fileDeliveryMetadata: PropTypes.object,
+  fileDeliveryMetadata: PropTypes.oneOfType([PropTypes.object, PropTypes.func]),
   getDropRejectionMessage: PropTypes.func,
   max: PropTypes.number,
   maxSize: PropTypes.number,

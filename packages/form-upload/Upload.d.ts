@@ -11,7 +11,7 @@ export interface UploadProps {
   onFileRemove?: Function;
   deliverFileOnSubmit?: boolean;
   deliveryChannel?: string;
-  metadata?: object;
+  fileDeliveryMetadata?: object | Function;
   maxSize?: number;
   max?: number;
   multiple?: boolean;
