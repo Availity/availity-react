@@ -13,7 +13,7 @@ import { Form } from '@availity/form';
 
 <Form initialValues={{ myFile: undefined }}>
   <Upload name="myFile" clientId="a" bucketId="b" customerId="c" />;
-</Form>
+</Form>;
 ```
 
 ## Props
@@ -48,23 +48,33 @@ Restrict the file types allowed to be uploaded to. eg: `['.jpeg', '.jpg']`.
 
 ### `onFileUpload?: (upload: UploadCore) => void`
 
-Callback called when file is uploaded. The callback is provided the `Upload` instance from upload-core SDK. Use this callback to track which files have been uploaded (to get references returned by the API).
+Callback to be executed when file is uploaded. The callback is provided the `Upload` instance from upload-core SDK. Use this callback to hook into the `upload.onSuccess` and `upload.onError` events and track which files have been uploaded and get references returned by the API if needed. See [example callback function below](###Callback-Function-Usage)
+
+#### The `onFileUpload` callback takes precedence over the combination of `fileDeliveryMetadata`, `deliveryChannel`, and `deliverFileSubmit`. If all four properties are defined, only `onFileUpload` will be used.
 
 ### `onFileRemove?: (files: Array<File>, fileId: String) => void`
 
 Callback called when file is removed. The callback is provided two arguments. 1. the updated files and 2. the id of the file that was removed
 
-### `metadata?: object`
+### `fileDeliveryMetadata?: object | (upload: UploadCore) => object`
 
-The metadata properties that have been configured for the delivery channel you are trying to reach with `avFileDeliveryApi`.
+The metadata properties that have been configured for the delivery channel you are trying to reach with `avFilesDeliveryApi`.
+
+#### Use this prop together with `deliveryChannel` and `deliverFileOnSubmit` to have uploads automatically sent to the file delivery API with the proper configuration, without the need to define a custom `onFileUpload` function.
+
+If you have a use case where some of your metadata is dependent on information from the upload, you can define `fileDeliveryMetadata` as a function that accepts an upload variable. The upload will be passed to your function before the file delivery API call, and you can assign any dynamic props that you need to before returning the metadata object. See [example File Delivery Metadata Function Usage below](###File-Delivery-Metadata-Function-Usage)
 
 ### `deliveryChannel?: string`
 
 The name of the delivery channel that is unique to where you will deliver files via the `avFileDeliveryApi`.
 
-### `fileDeliveryOnSubmit?: boolean`
+#### Use this prop together with `fileDeliveryMetadata` and `deliverFileOnSubmit` to have uploads automatically sent to the file delivery API with the proper configuration, without the need to define a custom `onFileUpload` function.
 
-This prop is used in tandem with the `fileDeliveryProps` so that your files will only get delivered to `fileDeliveryApi` when the form is being submitted. **Default:** `false`
+### `deliverFileOnSubmit?: boolean`
+
+This prop is used in tandem with `deliveryChannel` and `fileDeliveryMetadata` so that your files will only get delivered to `fileDeliveryApi` when the form is being submitted. **Default:** `false`
+
+#### Use this prop together with `fileDeliveryMetadata` and `deliveryChannel` to have uploads automatically sent to the file delivery API with the proper configuration, without the need to define a custom `onFileUpload` function.
 
 ### `maxSize?: number`
 
@@ -107,7 +117,7 @@ import Upload from '@availity/form-upload';
     multiple={false}
     max={1}
   />
-</Form>
+</Form>;
 ```
 
 ### Callback Function Usage
@@ -120,28 +130,11 @@ import Upload from '@availity/form-upload';
     clientId="a"
     bucketId="b"
     customerId="c"
-    fileDeliveryProps={data}
     onFileUpload={onUpload} // <-- add file callback function
     onFileRemove={onRemove} // <-- remove file callback function
     max={1}
   />
 </Form>
-
-// setting up necessary file delivery data, this will be payer specific. fileURI will be automatically configured for you and config will be automatically configured from clientId and customerId props.
-const data = {
-  deliveries: [
-    {
-      deliveryChannel: 'DEMO',
-      metadata: {
-        requestId: '12345',
-        patientLastName: 'strange',
-        patientFirstName: 'dr',
-      },
-    },
-  ],
-};
-
-
 
 // onUpload callback definition
 onUpload(upload) {
@@ -154,10 +147,37 @@ onUpload(upload) {
       });
     }
   }
+
 // ...
 
 // onRemove callback definition
 onRemove(file) {
   // remove action
 }
+```
+
+### File Delivery Metadata Function Usage
+
+```jsx
+<Form initialValues={{ myFile: undefined }}>
+  <Upload
+    name="myFile"
+    btnText="Upload a claim"
+    clientId="a"
+    bucketId="b"
+    customerId="c"
+    max={1}
+    deliverFileOnSubmit={false} // can be true or false
+    deliveryChannel="test"
+    fileDeliveryMetadata={upload => {
+      // execute any logic needed
+      // return metadata object with your needed properties
+      return {
+        payerId: 'testPayer',
+        dynamicNameBasedOnUpload: upload.id,
+        filetype: upload.file.type,
+      };
+    }}
+  />
+</Form>
 ```
