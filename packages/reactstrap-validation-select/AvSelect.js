@@ -5,6 +5,7 @@ import { AvBaseInput } from 'availity-reactstrap-validation';
 import Select, { components as reactSelectComponents } from 'react-select';
 import Creatable from 'react-select/creatable';
 import get from 'lodash.get';
+import has from 'lodash.has';
 import isEqual from 'lodash.isequal';
 import isFunction from 'lodash.isfunction';
 
@@ -173,8 +174,26 @@ class AvSelect extends AvBaseInput {
       typeof inputValue === 'object';
 
     if (shouldAutofill) {
-      const formValues = this.context.FormCtrl.getValues();
-      Object.keys(formValues)
+      const formInputs = this.context.FormCtrl.getInputs();
+      const formValues = Object.keys(formInputs).reduce((accum, key) => {
+        accum[key] = formInputs[key].value;
+        return accum;
+      }, {});
+
+      let formValuesForAutofill = formValues;
+      if (typeof this.props.autofill === 'object') {
+        formValuesForAutofill = Object.keys(this.props.autofill).reduce(
+          (accum, key) => {
+            if (has(formValues, key)) {
+              accum[key] = get(formValues, key);
+            }
+            return accum;
+          },
+          {}
+        );
+      }
+
+      Object.keys(formValuesForAutofill)
         // Filter out the input that the onChangeHandler is being called for
         .filter(fieldName => fieldName !== name)
         .forEach(fieldName => {
@@ -191,10 +210,7 @@ class AvSelect extends AvBaseInput {
           if (typeof this.props.autofill === 'object') {
             shouldAutofillField = this.props.autofill[fieldName];
           } else {
-            shouldAutofillField = Object.prototype.hasOwnProperty.call(
-              rawValue,
-              fieldName
-            );
+            shouldAutofillField = has(rawValue, fieldName);
           }
 
           if (shouldAutofillField) {

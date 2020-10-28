@@ -127,6 +127,9 @@ describe('AvSelect', () => {
         value: {
           firstName: 'John',
           lastName: 'Doe',
+          full: {
+            name: 'John Doe',
+          },
         },
       },
       {
@@ -134,6 +137,9 @@ describe('AvSelect', () => {
         value: {
           firstName: 'Jane',
           lastName: 'Doe',
+          full: {
+            name: 'Jane Doe',
+          },
         },
       },
     ];
@@ -150,6 +156,7 @@ describe('AvSelect', () => {
         />
         <AvInput data-testid="first-input" name="firstName" />
         <AvInput data-testid="last-input" name="lastName" />
+        <AvInput data-testid="full-input" name="full.name" />
 
         <Button>Submit</Button>
       </AvForm>
@@ -178,6 +185,7 @@ describe('AvSelect', () => {
       const payload = onSubmit.mock.calls[0][2];
       expect(payload.firstName).toBe('John');
       expect(payload.lastName).toBe('Doe');
+      expect(payload.full.name).toBe('John Doe');
     });
   });
 
@@ -214,12 +222,14 @@ describe('AvSelect', () => {
           autofill={{
             firstName: 'name.first',
             lastName: 'name.last',
-            fullName: opt => `${opt.name.first} ${opt.name.last}`,
+            'full.name': opt => `${opt.name.first} ${opt.name.last}`,
+            fullReversed: opt => `${opt.name.last} ${opt.name.first}`,
           }}
         />
         <AvInput data-testid="first-input" name="firstName" />
         <AvInput data-testid="last-input" name="lastName" />
-        <AvInput data-testid="full-input" name="fullName" />
+        <AvInput data-testid="full-input" name="full.name" />
+        <AvInput data-testid="full-reversed-input" name="fullReversed" />
 
         <Button>Submit</Button>
       </AvForm>
@@ -248,7 +258,8 @@ describe('AvSelect', () => {
       const payload = onSubmit.mock.calls[0][2];
       expect(payload.firstName).toBe('John');
       expect(payload.lastName).toBe('Doe');
-      expect(payload.fullName).toBe('John Doe');
+      expect(payload.full.name).toBe('John Doe');
+      expect(payload.fullReversed).toBe('Doe John');
     });
   });
 });

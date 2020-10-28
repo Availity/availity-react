@@ -35,10 +35,8 @@ describe('AvSelect', () => {
       getResult: 'regions',
       label: 'Hello World',
     });
-
     getByText('Hello World');
   });
-
   test('works with error message', async () => {
     const { getByText } = renderSelect({
       options,
@@ -51,9 +49,7 @@ describe('AvSelect', () => {
         },
       },
     });
-
     fireEvent.click(getByText('Submit'));
-
     await waitForElement(() => getByText('This field is wrong.'));
   });
 });
