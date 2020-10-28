@@ -28,7 +28,7 @@ const PaginationJson = () => {
 const mockResponse = {
   postGet: jest.fn(
     async (params = {}, config = {}) =>
-      new Promise(resolve =>
+      new Promise((resolve) =>
         setTimeout(() => {
           const { offset = 0, limit = 50 } = params;
           const notifications = data.slice(offset, offset + limit);
@@ -238,9 +238,9 @@ describe('AvResourcePagination', () => {
       <AvResourcePagination
         resource={resource}
         itemsPerPage={50}
-        getResult={data => {
+        getResult={(data) => {
           return data.notifications.filter(
-            notification => notification.id === paginationData[0].id
+            (notification) => notification.id === paginationData[0].id
           );
         }}
       >

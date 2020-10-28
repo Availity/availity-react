@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 
 const isoDateFormat = 'YYYY-MM-DD';
 
-export const isOutsideRange = (min, max, format = 'MM/DD/YYYY') => day => {
+export const isOutsideRange = (min, max, format = 'MM/DD/YYYY') => (day) => {
   let isOutsideMax = false;
   let isOutsideMin = false;
 
@@ -71,9 +71,7 @@ export const buildYearPickerOptions = (
     if (moment.isMoment(min)) {
       minYear = min.year();
     } else if (min.value !== undefined && min.units) {
-      minYear = moment()
-        .subtract(min.value, min.units)
-        .year();
+      minYear = moment().subtract(min.value, min.units).year();
     } else if (typeof min === 'string') {
       const minMoment = moment(min, [
         isoDateFormat,
@@ -92,9 +90,7 @@ export const buildYearPickerOptions = (
     if (moment.isMoment(max)) {
       maxYear = max.year();
     } else if (max.value !== undefined && max.units) {
-      maxYear = moment()
-        .add(max.value, max.units)
-        .year();
+      maxYear = moment().add(max.value, max.units).year();
     } else if (typeof max === 'string') {
       const maxMoment = moment(max, [
         isoDateFormat,

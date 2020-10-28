@@ -19,7 +19,7 @@ const options = [
   { label: 'Option 4', value: 'value for option 4' },
 ];
 
-const renderSelect = props =>
+const renderSelect = (props) =>
   render(
     <AvForm>
       <AvSelectField name="test-form-input" {...props} />

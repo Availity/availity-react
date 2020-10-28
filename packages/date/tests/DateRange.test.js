@@ -206,10 +206,7 @@ describe('DateRange', () => {
       current.parentElement.nextSibling.firstElementChild;
 
     const isCurrentDayLastDayOfMonth =
-      moment().dayOfYear() ===
-      moment()
-        .endOf('month')
-        .dayOfYear();
+      moment().dayOfYear() === moment().endOf('month').dayOfYear();
 
     let expectedStartDate = moment();
     let expectedEndDate = moment().add(1, 'day');

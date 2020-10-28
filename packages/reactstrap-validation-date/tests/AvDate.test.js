@@ -15,7 +15,7 @@ afterEach(() => {
   cleanup();
 });
 
-const Date = props => (
+const Date = (props) => (
   <AvForm
     onInvalidSubmit={onInvalidSubmit}
     onSubmit={onSubmit}

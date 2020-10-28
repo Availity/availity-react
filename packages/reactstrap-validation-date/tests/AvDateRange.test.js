@@ -132,12 +132,8 @@ describe('AvDateRange', () => {
         expect.anything(),
         expect.objectContaining({
           date: {
-            start: moment()
-              .add(1, 'day')
-              .format('YYYY-MM-DD'),
-            end: moment()
-              .add(3, 'day')
-              .format('YYYY-MM-DD'),
+            start: moment().add(1, 'day').format('YYYY-MM-DD'),
+            end: moment().add(3, 'day').format('YYYY-MM-DD'),
           },
         })
       );
@@ -324,9 +320,7 @@ describe('AvDateRange', () => {
         expect.objectContaining({
           date: {
             start: moment().format('YYYY-MM-DD'),
-            end: moment()
-              .add(1, 'day')
-              .format('YYYY-MM-DD'),
+            end: moment().add(1, 'day').format('YYYY-MM-DD'),
           },
         })
       );
@@ -462,9 +456,7 @@ describe('AvDateRange', () => {
   });
 
   test('datepicker works with default start and end dates', async () => {
-    const defaultStartDate = moment()
-      .add(-4, 'days')
-      .format('YYYY-MM-DD');
+    const defaultStartDate = moment().add(-4, 'days').format('YYYY-MM-DD');
     const defaultEndDate = moment('12/31/2022').format('YYYY-MM-DD');
     const { container, getByText } = render(
       <DateRange
@@ -498,9 +490,7 @@ describe('AvDateRange', () => {
         expect.objectContaining({
           date: {
             start: moment().format('YYYY-MM-DD'),
-            end: moment()
-              .add(1, 'day')
-              .format('YYYY-MM-DD'),
+            end: moment().add(1, 'day').format('YYYY-MM-DD'),
           },
         })
       );

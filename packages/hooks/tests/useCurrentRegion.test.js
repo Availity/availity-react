@@ -5,7 +5,7 @@ import { useCurrentRegion } from '..';
 
 jest.mock('@availity/api-axios');
 
-const mockRegionApi = type => {
+const mockRegionApi = (type) => {
   let body = {};
   if (type === 'valid') {
     body = {

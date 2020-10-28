@@ -14,7 +14,7 @@ class FilePicker extends Component {
 
   id = `filePicker-${(id += 1)}`;
 
-  onChange = event => {
+  onChange = (event) => {
     const { files } = event.target;
     const { onChange } = this.props;
     this.value = [];
@@ -41,8 +41,8 @@ class FilePicker extends Component {
     this.validations = { ...props.validate };
 
     Object.keys(props)
-      .filter(val => htmlValidationAttrs.indexOf(val) > -1)
-      .forEach(attr => {
+      .filter((val) => htmlValidationAttrs.indexOf(val) > -1)
+      .forEach((attr) => {
         if (props[attr]) {
           this.validations[attr] = this.validations[attr] || {
             value: props[attr],

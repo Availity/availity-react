@@ -126,7 +126,7 @@ describe('Pagination', () => {
       { value: '3', key: 3 },
     ];
 
-    const mockOnPageChange = jest.fn(page => page);
+    const mockOnPageChange = jest.fn((page) => page);
 
     const { getByTestId } = render(
       <Pagination
@@ -484,7 +484,7 @@ describe('Pagination', () => {
           items={items}
           itemsPerPage={1}
           page={page}
-          onPageChange={newPage => setPage(newPage)}
+          onPageChange={(newPage) => setPage(newPage)}
         >
           <PaginationJson />
           <PaginationControls directionLinks />

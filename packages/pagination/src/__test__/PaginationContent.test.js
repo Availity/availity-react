@@ -42,7 +42,7 @@ describe('Pagination Content', () => {
 
     expect(paginationContent).not.toBe(null);
 
-    items.forEach(async item => {
+    items.forEach(async (item) => {
       await wait(() => {
         expect(getByTestId(`item-${item.value}`)).toBeDefined();
       });
@@ -80,7 +80,7 @@ describe('Pagination Content', () => {
 
     expect(paginationContent).not.toBe(null);
 
-    loadPage().items.forEach(item =>
+    loadPage().items.forEach((item) =>
       expect(getByTestId(`item-${item.value}`)).toBeDefined()
     );
   });
@@ -129,7 +129,7 @@ describe('Pagination Content', () => {
 
     expect(getByTestId('pagination-table')).toBeDefined();
     expect(getByTestId('pagination-table-header')).toBeDefined();
-    loadPage().items.forEach(item => {
+    loadPage().items.forEach((item) => {
       expect(getByTestId(`item-tr-${item.value}`)).toBeDefined();
       expect(getByTestId(`item-td-${item.value}`)).toBeDefined();
     });

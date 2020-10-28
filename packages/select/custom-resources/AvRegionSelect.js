@@ -12,7 +12,7 @@ const RegionSelect = ResourceSelect.create({
 
 const searchBy = (prevOptions, inputValue) => {
   return prevOptions.filter(
-    option =>
+    (option) =>
       option.value.toLowerCase().indexOf(inputValue.toLowerCase()) >= 0 ||
       option.id.toLowerCase().indexOf(inputValue.toLowerCase()) >= 0
   );

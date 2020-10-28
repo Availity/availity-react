@@ -61,7 +61,11 @@ describe('Date', () => {
         }}
         onSubmit={onSubmit}
       >
-        <DateRangeField name="dateRange" label="My Date Field" labelAttrs={{tag: "h3"}} />
+        <DateRangeField
+          name="dateRange"
+          label="My Date Field"
+          labelAttrs={{ tag: 'h3' }}
+        />
         <Button type="submit">Submit</Button>
       </Form>
     );

@@ -121,9 +121,9 @@ describe('SpacesImage', () => {
       '2',
       '3',
     ]);
-    expect(avSlotMachineApi.create.mock.calls[1][0].variables.payerIDs).toEqual(
-      ['payer1']
-    );
+    expect(
+      avSlotMachineApi.create.mock.calls[1][0].variables.payerIDs
+    ).toEqual(['payer1']);
   });
 
   it('renders spaces image from single space', async () => {

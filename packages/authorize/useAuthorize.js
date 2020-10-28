@@ -26,7 +26,7 @@ export default (
     return undefined;
   };
 
-  const checkPermission = permission => {
+  const checkPermission = (permission) => {
     if (!permission) return false;
     let isAuthorizedForCustomerId = true;
     let isAuthorizedForOrganizationId = true;
@@ -50,9 +50,9 @@ export default (
       const resourceSets = Array.isArray(resources) ? resources : [resources];
       isAuthorizedForResources =
         resourceSets.length === 0 ||
-        resourceSets.some(resourceSet => {
+        resourceSets.some((resourceSet) => {
           if (Array.isArray(resourceSet)) {
-            return resourceSet.every(resource =>
+            return resourceSet.every((resource) =>
               permission.organizations.some(
                 ({ resources: orgResources = [] }) =>
                   orgResources.some(({ id }) => `${id}` === `${resource}`)
@@ -89,9 +89,9 @@ export default (
       return prev;
     }, {});
 
-    const authorized = permissionsSets.some(permissionSet => {
+    const authorized = permissionsSets.some((permissionSet) => {
       if (Array.isArray(permissionSet)) {
-        return permissionSet.every(permission =>
+        return permissionSet.every((permission) =>
           checkPermission(newPermissions[permission])
         );
       }

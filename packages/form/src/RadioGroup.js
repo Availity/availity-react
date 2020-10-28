@@ -7,7 +7,7 @@ import FormGroup from './FormGroup';
 
 export const RadioGroupContext = createContext();
 
-export const useRadioGroup = radioValue => {
+export const useRadioGroup = (radioValue) => {
   const { setFieldValue } = useFormikContext();
   const { name: groupName, value = '', groupOnChange, ...rest } = useContext(
     RadioGroupContext

@@ -25,7 +25,7 @@ describe('Pagination Controls', () => {
 
     expect(paginationControls).not.toBe(null);
 
-    items.forEach(item =>
+    items.forEach((item) =>
       expect(getByTestId(`control-page-${item.value}`)).toBeDefined()
     );
   });

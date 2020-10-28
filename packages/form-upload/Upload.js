@@ -37,8 +37,8 @@ const Upload = ({
 
   const fieldValue = Array.isArray(field.value) ? field.value : [];
 
-  const removeFile = fileId => {
-    const newFiles = fieldValue.filter(file => file.id !== fileId);
+  const removeFile = (fileId) => {
+    const newFiles = fieldValue.filter((file) => file.id !== fileId);
     if (newFiles.length !== fieldValue.length) {
       setFieldValue(name, newFiles, true);
 
@@ -46,7 +46,7 @@ const Upload = ({
     }
   };
 
-  const setFiles = files => {
+  const setFiles = (files) => {
     let selectedFiles = [];
     for (let i = 0; i < files.length; i++) {
       selectedFiles[i] = files[i];
@@ -60,7 +60,7 @@ const Upload = ({
     }
 
     const newFiles = fieldValue.concat(
-      selectedFiles.map(file => {
+      selectedFiles.map((file) => {
         const upload = new UploadCore(file, {
           bucketId: rest.bucketId,
           customerId: rest.customerId,
@@ -83,7 +83,7 @@ const Upload = ({
     setFieldValue(name, newFiles, true);
   };
 
-  const handleFileInputChange = event => {
+  const handleFileInputChange = (event) => {
     setFiles(event.target.files);
   };
 
@@ -91,7 +91,7 @@ const Upload = ({
     const rejectedFilesToDrop = fileRejections.map(({ file, errors }) => {
       const dropRejectionMessage = rest.getDropRejectionMessage
         ? rest.getDropRejectionMessage(errors, file)
-        : errors.map(error => error.message).join(', ');
+        : errors.map((error) => error.message).join(', ');
 
       file.dropRejectionMessage = dropRejectionMessage;
       return file;
@@ -121,11 +121,13 @@ const Upload = ({
             >
               {({ getRootProps, getInputProps, isDragActive }) => (
                 <section>
-                  <div {...getRootProps({
-                        className: isDragActive
-                          ? 'file-drop-active'
-                          : 'file-drop',
-                      })}>
+                  <div
+                    {...getRootProps({
+                      className: isDragActive
+                        ? 'file-drop-active'
+                        : 'file-drop',
+                    })}
+                  >
                     <input data-testid="file-picker" {...getInputProps()} />
                     <p>
                       <strong>Drag and Drop</strong>

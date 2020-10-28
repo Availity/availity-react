@@ -38,7 +38,7 @@ const domain = () => {
 };
 
 avMessages.subscribe = jest.fn((event, fn) => {
-  window.addEventListener('message', event => {
+  window.addEventListener('message', (event) => {
     if (!event || !event.data) {
       // check origin as trusted domain
       return;

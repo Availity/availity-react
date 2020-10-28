@@ -44,7 +44,7 @@ class AvDateField extends Component {
     } = this.props;
 
     if (grid) {
-      colSizes.forEach(colSize => {
+      colSizes.forEach((colSize) => {
         if (grid[colSize]) {
           row = true;
           const sizeNum = parseInt(grid[colSize], 10);

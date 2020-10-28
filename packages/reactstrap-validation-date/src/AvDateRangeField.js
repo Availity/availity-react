@@ -12,7 +12,7 @@ class AvDateRangeField extends Component {
     this.FormCtrl = { ...this.context.FormCtrl };
     const registerValidator = this.FormCtrl.register;
     const { getInputState } = this.FormCtrl;
-    this.FormCtrl.getInputState = inputName => {
+    this.FormCtrl.getInputState = (inputName) => {
       if (
         inputName === this.props.start.name ||
         inputName === this.props.end.name
@@ -65,7 +65,7 @@ class AvDateRangeField extends Component {
     } = this.props;
 
     if (grid) {
-      colSizes.forEach(colSize => {
+      colSizes.forEach((colSize) => {
         if (grid[colSize]) {
           row = true;
           const sizeNum = parseInt(grid[colSize], 10);

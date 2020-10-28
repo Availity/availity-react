@@ -13,7 +13,7 @@ import Select from '..';
 
 afterEach(cleanup);
 
-const singleValueSchema = name =>
+const singleValueSchema = (name) =>
   yup.object().shape({
     [name]: yup.string().required('This field is required.'),
   });
@@ -380,8 +380,8 @@ describe('Select', () => {
           autofill={{
             firstName: 'name.first',
             lastName: 'name.last',
-            'full.name': opt => `${opt.name.first} ${opt.name.last}`,
-            fullReversed: opt => `${opt.name.last} ${opt.name.first}`,
+            'full.name': (opt) => `${opt.name.first} ${opt.name.last}`,
+            fullReversed: (opt) => `${opt.name.last} ${opt.name.first}`,
           }}
         />
         <Input data-testid="first-input" name="firstName" />

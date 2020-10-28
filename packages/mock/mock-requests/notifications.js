@@ -2,7 +2,7 @@ import { delay } from 'xhr-mock';
 import qs from 'qs';
 import paginationData from '../data/pagination.json';
 
-export default mock => {
+export default (mock) => {
   mock.post(
     /\/api\/v1\/notifications\??.*/,
     delay((req, res) => {

@@ -15,7 +15,7 @@ import { AvProviderSelect } from '../resources';
 
 jest.mock('@availity/api-axios');
 
-const renderSelect = props =>
+const renderSelect = (props) =>
   render(
     <AvForm>
       <AvResourceSelect name="test-form-input" {...props} />
@@ -337,7 +337,7 @@ describe('AvResourceSelect', () => {
 });
 
 // ----
-const renderGQLSelect = props =>
+const renderGQLSelect = (props) =>
   render(
     <AvForm>
       <AvResourceSelect
@@ -387,7 +387,7 @@ it('Queries using graphQl', async () => {
     labelKey: 'value',
     valueKey: 'id',
     classNamePrefix: 'test__regions',
-    getResult: data => data.regionPagination.items,
+    getResult: (data) => data.regionPagination.items,
   });
 
   const regionsSelect = container.querySelector('.test__regions__control');
@@ -402,7 +402,7 @@ it('Queries using graphQl', async () => {
 
 // ---
 
-const renderResourceSelect = props =>
+const renderResourceSelect = (props) =>
   render(
     <AvForm>
       <AvResourceSelect

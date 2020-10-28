@@ -27,13 +27,13 @@ const AvNavigationSelect = ResourceSelect.create({
 });
 const AvUserSelect = ResourceSelect.create({
   resource: avUserApi,
-  getOptionLabel: option =>
+  getOptionLabel: (option) =>
     `${option.firstName} ${option.lastName} (${option.id}) - ${option.userId}`,
 });
 const AvCodeSelect = ResourceSelect.create({
   resource: avCodesApi,
   valueKey: 'code',
-  getOptionLabel: option => `${option.code} - ${option.value}`,
+  getOptionLabel: (option) => `${option.code} - ${option.value}`,
   requiredParams: ['list'],
   watchParams: ['list'],
 });

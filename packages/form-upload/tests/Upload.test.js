@@ -155,9 +155,9 @@ describe('Upload', () => {
 
   test('uses custom drop rejection message', async () => {
     // eslint-disable-next-line unicorn/consistent-function-scoping
-    const getDropRejectionMessage = errors => {
+    const getDropRejectionMessage = (errors) => {
       let msg = '';
-      errors.forEach(error => {
+      errors.forEach((error) => {
         if (error.code === 'file-too-large') {
           msg += 'my custom error message';
         } else {

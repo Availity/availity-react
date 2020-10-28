@@ -11,7 +11,7 @@ const FavoriteHeart = ({ id, onChange, onMouseDown, ...props }) => {
   const [loading, toggleLoading] = useToggle(true);
 
   const icon = useMemo(() => {
-    const onChangeHandler = e => {
+    const onChangeHandler = (e) => {
       toggleFavorite();
 
       if (onChange) {
@@ -28,13 +28,13 @@ const FavoriteHeart = ({ id, onChange, onMouseDown, ...props }) => {
         {...props}
         tabIndex="0"
         className={`favorite-heart pt-4 ${isFavorite && 'active'}`}
-        onMouseDown={e => {
+        onMouseDown={(e) => {
           e.preventDefault();
           if (onMouseDown) {
             onMouseDown(e);
           }
         }}
-        onKeyPress={e => e.charCode === 13 && onChangeHandler(e)}
+        onKeyPress={(e) => e.charCode === 13 && onChangeHandler(e)}
         onClick={onChangeHandler}
       >
         <span className="sr-only">Favorite</span>

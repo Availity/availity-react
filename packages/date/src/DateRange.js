@@ -109,7 +109,7 @@ const DateRange = ({
   }, [metadata.touched, startValue, endValue, name, validateField]);
 
   // For updating when we delete the current input
-  const onInputChange = val => {
+  const onInputChange = (val) => {
     const isStart = focusedInput === 'startDate';
     const date = moment(
       val,
@@ -181,14 +181,14 @@ const DateRange = ({
     }
   };
 
-  const onFocusChange = input => {
+  const onFocusChange = (input) => {
     if (!input && !autoSync) setFieldTouched(name, true, false);
     if (autoSync) syncDates();
     if (focusedInput !== input) setFocusedInput(input);
     if (onPickerFocusChange) onPickerFocusChange({ focusedInput: input });
   };
 
-  const getDateValue = val => {
+  const getDateValue = (val) => {
     const date = moment(
       val,
       [isoDateFormat, format, 'MMDDYYYY', 'YYYYMMDD'],
@@ -211,7 +211,7 @@ const DateRange = ({
 
     return ranges ? (
       <div className="d-flex flex-column ml-2 mt-2">
-        {Object.keys(ranges).map(relativeRange => {
+        {Object.keys(ranges).map((relativeRange) => {
           const { startDate, endDate } = ranges[relativeRange];
 
           // Comparing moments with unit as 'millisecond' avoids moment cloning
@@ -255,7 +255,7 @@ const DateRange = ({
             data-testid="monthPicker"
             aria-label="month picker"
             value={month.month()}
-            onChange={e => {
+            onChange={(e) => {
               onMonthSelect(month, e.target.value);
             }}
           >
@@ -272,7 +272,7 @@ const DateRange = ({
             aria-label="year picker"
             style={yearPickerStyles}
             value={month.year()}
-            onChange={e => {
+            onChange={(e) => {
               onYearSelect(month, e.target.value);
             }}
           >

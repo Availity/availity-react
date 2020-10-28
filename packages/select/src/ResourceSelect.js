@@ -43,7 +43,7 @@ const ResourceSelect = ({
       ...rest.parameters,
       ...(additionalPostGetArgs || ''),
     };
-    _cacheUniq = watchParams.map(watchParam => params[watchParam]).join(',');
+    _cacheUniq = watchParams.map((watchParam) => params[watchParam]).join(',');
   }
   if (pageAll) {
     debounceTimeout = 0;
@@ -148,11 +148,11 @@ const ResourceSelect = ({
 
     if (!requiredSatisfied) {
       if (graphqlConfig) {
-        requiredSatisfied = rest.requiredParams.every(param =>
+        requiredSatisfied = rest.requiredParams.every((param) =>
           get(data, `variables.filters.${param}`)
         );
       } else {
-        requiredSatisfied = rest.requiredParams.every(param => params[param]);
+        requiredSatisfied = rest.requiredParams.every((param) => params[param]);
       }
     }
 
@@ -177,7 +177,7 @@ const ResourceSelect = ({
       }
       return {
         options: previousOptions.filter(
-          option =>
+          (option) =>
             option[rest.labelKey || rest.label]
               .toLowerCase()
               .indexOf(inputValue.toLowerCase()) >= 0
@@ -216,7 +216,7 @@ const ResourceSelect = ({
         );
     }
     return fetch()
-      .then(async resp => {
+      .then(async (resp) => {
         if ((!pageAll && !(resp || resp.data)) || (pageAll && !resp)) {
           throw new Error(`API returned an invalid response.`);
         }
@@ -239,7 +239,7 @@ const ResourceSelect = ({
 
         if (hasMore === undefined) {
           if (graphqlConfig) {
-            hasMore = data =>
+            hasMore = (data) =>
               get(
                 data.data,
                 `${graphqlConfig.type}Pagination.pageInfo.hasNextPage`,
@@ -288,7 +288,7 @@ const ResourceSelect = ({
           },
         };
       })
-      .catch(error => {
+      .catch((error) => {
         if (rest.onError && typeof rest.onError === 'function') {
           rest.onError(error);
         }
@@ -367,10 +367,10 @@ ResourceSelect.defaultProps = {
   pageAll: false,
 };
 
-const ucFirst = str => str && str.charAt(0).toUpperCase() + str.slice(1);
+const ucFirst = (str) => str && str.charAt(0).toUpperCase() + str.slice(1);
 
-ResourceSelect.create = defaults => {
-  const SpecificResourceSelect = props => (
+ResourceSelect.create = (defaults) => {
+  const SpecificResourceSelect = (props) => (
     <ResourceSelect {...defaults} {...props} />
   );
   SpecificResourceSelect.displayName = `${ucFirst(

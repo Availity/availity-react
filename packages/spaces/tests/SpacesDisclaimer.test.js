@@ -16,7 +16,7 @@ avSlotMachineApi.create.mockResolvedValue({
           {
             id: '1',
             description: 'foo',
-          }
+          },
         ],
       },
     },

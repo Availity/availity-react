@@ -1,6 +1,6 @@
 import search from './search';
 
-export default mock => (url, key, fields, data) => {
+export default (mock) => (url, key, fields, data) => {
   const find = search(fields, data);
 
   mock.post(url, (req, res) => {

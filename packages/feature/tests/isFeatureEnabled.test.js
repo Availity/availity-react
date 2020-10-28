@@ -19,13 +19,13 @@ describe('isFeatureEnabled', () => {
   });
 
   describe('returned awaitable promise', () => {
-    test('should result in a boolean value', async cb => {
+    test('should result in a boolean value', async (cb) => {
       expect(await isFeatureEnabled('AV-1234')).toBe(false);
       expect(await isFeatureEnabled('AV-12345')).toBe(true);
       cb();
     });
 
-    test('should result in true when the key is not in the disabled features array', async cb => {
+    test('should result in true when the key is not in the disabled features array', async (cb) => {
       expect(await isFeatureEnabled('AV-9876')).toBe(true);
       expect(await isFeatureEnabled('AV-8765')).toBe(true);
       expect(await isFeatureEnabled('AV-7654')).toBe(true);
@@ -35,7 +35,7 @@ describe('isFeatureEnabled', () => {
       cb();
     });
 
-    test('should result in false when the feature is in the disabled features array', async cb => {
+    test('should result in false when the feature is in the disabled features array', async (cb) => {
       expect(await isFeatureEnabled('AV-1234')).toBe(false);
       expect(await isFeatureEnabled('AV-2345')).toBe(false);
       expect(await isFeatureEnabled('AV-3456')).toBe(false);
@@ -46,7 +46,7 @@ describe('isFeatureEnabled', () => {
     });
   });
 
-  test('should treat an array as "or", requiring only one of the features to be enabled to be true', async cb => {
+  test('should treat an array as "or", requiring only one of the features to be enabled to be true', async (cb) => {
     expect(await isFeatureEnabled(['AV-9876'])).toBe(true);
     expect(await isFeatureEnabled(['AV-8765', 'AV-9876'])).toBe(true);
     expect(await isFeatureEnabled(['AV-7654', 'AV-8765', 'AV-9876'])).toBe(
@@ -66,7 +66,7 @@ describe('isFeatureEnabled', () => {
     cb();
   });
 
-  test('should treat nested array as "and", ensuring all features are enabled', async cb => {
+  test('should treat nested array as "and", ensuring all features are enabled', async (cb) => {
     expect(await isFeatureEnabled([['AV-9876']])).toBe(true);
     expect(await isFeatureEnabled([['AV-8765', 'AV-9876']])).toBe(true);
     expect(await isFeatureEnabled([['AV-7654', 'AV-8765', 'AV-9876']])).toBe(
@@ -85,7 +85,7 @@ describe('isFeatureEnabled', () => {
     cb();
   });
 
-  test('should be able to mix "and"s and "or"s', async cb => {
+  test('should be able to mix "and"s and "or"s', async (cb) => {
     expect(await isFeatureEnabled([['AV-1234'], ['AV-9876']])).toBe(true);
     expect(await isFeatureEnabled(['AV-1234', ['AV-9876']])).toBe(true);
     expect(await isFeatureEnabled(['AV-1234', ['AV-8765', 'AV-9876']])).toBe(

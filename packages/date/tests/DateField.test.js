@@ -73,7 +73,7 @@ describe('Date', () => {
           name="singleDate"
           data-testid="single-select"
           label="My Date Field"
-          labelAttrs={{tag: "h3"}}
+          labelAttrs={{ tag: 'h3' }}
         />
         <Button type="submit">Submit</Button>
       </Form>

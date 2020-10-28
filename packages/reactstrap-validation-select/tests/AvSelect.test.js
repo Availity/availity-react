@@ -25,7 +25,7 @@ const customOptions = [
   { customLabel: 'Option 2', customValue: 'value for option 2' },
 ];
 
-const renderSelect = props =>
+const renderSelect = (props) =>
   render(
     <AvForm>
       <AvSelect name="test-form-input" {...props} />
@@ -222,8 +222,8 @@ describe('AvSelect', () => {
           autofill={{
             firstName: 'name.first',
             lastName: 'name.last',
-            'full.name': opt => `${opt.name.first} ${opt.name.last}`,
-            fullReversed: opt => `${opt.name.last} ${opt.name.first}`,
+            'full.name': (opt) => `${opt.name.first} ${opt.name.last}`,
+            fullReversed: (opt) => `${opt.name.last} ${opt.name.first}`,
           }}
         />
         <AvInput data-testid="first-input" name="firstName" />

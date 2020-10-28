@@ -11,7 +11,7 @@ const Breadcrumbs = ({
   homeUrl,
   ...rest
 }) => {
-  const renderBreadCrumb = crumb => {
+  const renderBreadCrumb = (crumb) => {
     // default breadcrumbitem render
     let breadCrumbItemChildren = <span>{emptyState}</span>;
     // render static links

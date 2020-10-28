@@ -124,9 +124,9 @@ describe('Upload', () => {
   });
 
   test('uses custom drop rejection message', async () => {
-    const getDropRejectionMessage = errors => {
+    const getDropRejectionMessage = (errors) => {
       let msg = '';
-      errors.forEach(error => {
+      errors.forEach((error) => {
         if (error.code === 'file-too-large') {
           msg += 'my custom error message';
         } else {

@@ -106,12 +106,12 @@ class AvResourceSelect extends Component {
 
     if (!requiredSatisfied) {
       if (this.props.graphqlConfig) {
-        requiredSatisfied = this.props.requiredParams.every(param =>
+        requiredSatisfied = this.props.requiredParams.every((param) =>
           get(data, `variables.filters.${param}`)
         );
       } else {
         requiredSatisfied = this.props.requiredParams.every(
-          param => params[param]
+          (param) => params[param]
         );
       }
     }
@@ -149,7 +149,7 @@ class AvResourceSelect extends Component {
         );
     }
     return fetch()
-      .then(resp => {
+      .then((resp) => {
         if (!resp || !resp.data) {
           throw new Error(`API returned an invalid response.`);
         }
@@ -157,7 +157,7 @@ class AvResourceSelect extends Component {
         let { hasMore } = this.props;
         if (hasMore === undefined) {
           if (this.props.graphqlConfig) {
-            hasMore = data =>
+            hasMore = (data) =>
               get(
                 data.data,
                 `${this.props.graphqlConfig.type}Pagination.pageInfo.hasNextPage`,
@@ -218,7 +218,9 @@ class AvResourceSelect extends Component {
         customerId: this.props.customerId,
         ...this.props.parameters,
       };
-      _cacheUniq = watchParams.map(watchParam => params[watchParam]).join(',');
+      _cacheUniq = watchParams
+        .map((watchParam) => params[watchParam])
+        .join(',');
     }
 
     return (
@@ -241,10 +243,10 @@ class AvResourceSelect extends Component {
   }
 }
 
-const ucFirst = str => str && str.charAt(0).toUpperCase() + str.slice(1);
+const ucFirst = (str) => str && str.charAt(0).toUpperCase() + str.slice(1);
 
-AvResourceSelect.create = defaults => {
-  const SpecificAvResourceSelect = props => (
+AvResourceSelect.create = (defaults) => {
+  const SpecificAvResourceSelect = (props) => (
     <AvResourceSelect {...defaults} {...props} />
   );
   SpecificAvResourceSelect.displayName = `Av${ucFirst(

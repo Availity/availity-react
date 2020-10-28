@@ -63,7 +63,7 @@ const AvDate = ({
   }, [field.value, metadata.touched, name, validateField]);
 
   // For updating when we delete the current input
-  const onInputChange = value => {
+  const onInputChange = (value) => {
     const date = moment(
       value,
       [isoDateFormat, format, 'MMDDYYYY', 'YYYYMMDD'],
@@ -83,7 +83,7 @@ const AvDate = ({
     }
   };
 
-  const onPickerChange = value => {
+  const onPickerChange = (value) => {
     if (value === null) return;
 
     let val = value;
@@ -132,7 +132,7 @@ const AvDate = ({
             data-testid="monthPicker"
             aria-label="month picker"
             value={month.month()}
-            onChange={e => {
+            onChange={(e) => {
               onMonthSelect(month, e.target.value);
             }}
           >
@@ -149,7 +149,7 @@ const AvDate = ({
             aria-label="year picker"
             style={yearPickerStyles}
             value={month.year()}
-            onChange={e => {
+            onChange={(e) => {
               onYearSelect(month, e.target.value);
             }}
           >

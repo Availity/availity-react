@@ -17,7 +17,7 @@ jest.mock('@availity/api-axios');
 
 const onSubmit = jest.fn();
 
-const renderSelect = props => {
+const renderSelect = (props) => {
   const Component = () => {
     const [cacheUniq, setCacheUniq] = useState(false);
 
@@ -541,7 +541,7 @@ describe('ResourceSelect', () => {
       valueKey: 'id',
       classNamePrefix: 'test__regions',
       getResult: 'regions',
-      shouldSearch: inputValue => inputValue === 'flo',
+      shouldSearch: (inputValue) => inputValue === 'flo',
     });
 
     expect(avRegionsApi.postGet).toHaveBeenCalledTimes(0);
@@ -578,7 +578,7 @@ describe('ResourceSelect', () => {
 });
 
 // -----
-const renderResourceSelect = props => {
+const renderResourceSelect = (props) => {
   const Component = () => {
     const [cacheUniq, setCacheUniq] = useState(false);
 
@@ -693,7 +693,7 @@ it('Sends custom parameters to API with method=POST', async () => {
 // ---
 
 // -----
-const renderGQLResourceSelect = props => {
+const renderGQLResourceSelect = (props) => {
   const Component = () => {
     const [cacheUniq, setCacheUniq] = useState(false);
 
@@ -764,7 +764,7 @@ it('Queries using graphQl', async () => {
     valueKey: 'id',
     classNamePrefix: 'test__regions',
     // getResult: 'regions',
-    getResult: data => data.regionPagination.items,
+    getResult: (data) => data.regionPagination.items,
   });
 
   const regionsSelect = container.querySelector('.test__regions__control');
@@ -1122,7 +1122,7 @@ describe('Custom Resources', () => {
       const regionProps = {
         name: 'test-form-input',
         classNamePrefix: 'test__region',
-        getResult: data => data.filter(region => region.id === 'FL'),
+        getResult: (data) => data.filter((region) => region.id === 'FL'),
         defaultToCurrentRegion: true,
       };
 

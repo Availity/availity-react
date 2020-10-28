@@ -27,7 +27,7 @@ const Phone = ({
     );
   }
 
-  const asYouFormat = phoneString => {
+  const asYouFormat = (phoneString) => {
     // Use AsYouType instead of parsePhoneNumberFromString.format() so partial values can still be formatted
     const asYouType = new AsYouType(country);
     asYouType.input(phoneString);

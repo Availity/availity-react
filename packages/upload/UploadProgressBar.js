@@ -41,7 +41,7 @@ class UploadProgressBar extends Component {
     if (onError) onError(upload);
   };
 
-  verifyPassword = event => {
+  verifyPassword = (event) => {
     const { upload } = this.props;
     const { password } = this.state;
     event.preventDefault();
@@ -49,7 +49,7 @@ class UploadProgressBar extends Component {
     this.toggleModal();
   };
 
-  handlePasswordChange = event => {
+  handlePasswordChange = (event) => {
     this.setState({ password: event.target.value });
   };
 

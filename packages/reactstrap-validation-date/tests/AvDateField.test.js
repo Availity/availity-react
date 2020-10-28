@@ -13,7 +13,7 @@ afterEach(() => {
   cleanup();
 });
 
-const Date = props => (
+const Date = (props) => (
   <AvForm>
     <AvDateField {...props} />
     <Button type="submit">Submit</Button>

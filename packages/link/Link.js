@@ -9,7 +9,7 @@ export const getUrl = (url = '', loadApp, absolute) => {
   return `/public/apps/home/#!/loadApp?appUrl=${encodeURIComponent(url)}`;
 };
 
-export const getTarget = target => {
+export const getTarget = (target) => {
   if (
     !target ||
     target === 'BODY' || // Thanos
@@ -26,7 +26,7 @@ export const getTarget = target => {
 };
 
 // takes href and transforms it so that we can compare hostnames and other properties
-const getLocation = href => {
+const getLocation = (href) => {
   const location = document.createElement('a');
   location.href = href;
   return location;
@@ -60,7 +60,7 @@ const AvLink = ({
     <Tag
       href={url}
       target={target}
-      onClick={event => onClick && onClick(event, url)}
+      onClick={(event) => onClick && onClick(event, url)}
       data-testid="av-link-tag"
       rel={setRel(url, target, absolute)}
       {...props}

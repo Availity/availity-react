@@ -143,7 +143,7 @@ describe('FeedbackForm', () => {
 
     expect(faceOptionFields.childElementCount).toBe(4);
 
-    faceOptions.forEach(faceOption => {
+    faceOptions.forEach((faceOption) => {
       expect(
         faceOptionFields.getElementsByClassName(`icon-${faceOption.icon}`)
       ).not.toBe(null);

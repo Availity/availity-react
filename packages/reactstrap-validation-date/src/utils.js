@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 
 const isoDateFormat = 'YYYY-MM-DD';
 
-export const isOutsideRange = (min, max, format = 'MM/DD/YYYY') => day => {
+export const isOutsideRange = (min, max, format = 'MM/DD/YYYY') => (day) => {
   let isOutsideMax = false;
   let isOutsideMin = false;
 

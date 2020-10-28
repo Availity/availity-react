@@ -314,7 +314,7 @@ describe('Spaces', () => {
 
     const { getByText } = render(
       <Spaces spaceIds={['1', '2']} clientId="test-client-id">
-        {({ spaces = [] }) => <div>{spaces.map(space => space.id)}</div>}
+        {({ spaces = [] }) => <div>{spaces.map((space) => space.id)}</div>}
       </Spaces>
     );
 
@@ -348,7 +348,7 @@ describe('Spaces', () => {
       return (
         <div>
           <span data-testid={`spaces-for-${dataTestIdSuffix}`}>
-            {spaces.map(spc => `Id: ${spc && spc.id} `)}
+            {spaces.map((spc) => `Id: ${spc && spc.id} `)}
           </span>
         </div>
       );
