@@ -40,7 +40,7 @@
   "devDependencies": {
     "@availity/form": "^0.5.31",
     "@availity/upload-core": "^3.0.4",
-    "formik": "2.1.4",
+    "formik": "2.2.1",
     "react": "^16.8.3",
     "react-dom": "^16.8.3",
     "react-dropzone": "^11.0.0",

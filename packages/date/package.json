@@ -24,7 +24,7 @@
     "@availity/form": "^0.5.31",
     "@availity/yup": "^3.0.2",
     "@types/react-dates": "^17.1.5",
-    "formik": "2.1.4",
+    "formik": "2.2.1",
     "react": "^16.8.3",
     "react-dom": "^16.8.3",
     "reactstrap": "^8.0.0",

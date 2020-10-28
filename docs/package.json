@@ -56,7 +56,7 @@
     "@availity/upload-core": "^3.0.4",
     "@availity/yup": "^3.0.2",
     "@loadable/component": "^5.10.2",
-    "availity-reactstrap-validation": "2.6.1",
+    "availity-reactstrap-validation": "2.7.0",
     "axios": "^0.19.2",
     "formik": "^2.0.4",
     "gatsby": "^2.19.12",
