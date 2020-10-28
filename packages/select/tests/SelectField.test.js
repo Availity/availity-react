@@ -19,7 +19,6 @@ describe('Select', () => {
         <Button type="submit">Submit</Button>
       </Form>
     );
-
     getByText('Single Select Field');
   });
 });

@@ -6,6 +6,7 @@ import RSelect, { components as reactSelectComponents } from 'react-select';
 import Creatable from 'react-select/creatable';
 import Async from 'react-select-async-paginate';
 import get from 'lodash.get';
+import has from 'lodash.has';
 import isFunction from 'lodash.isfunction';
 import isEqual from 'lodash.isequal';
 
@@ -159,7 +160,17 @@ const Select = ({
       autofill && !attributes.isMulti && newValue && typeof newVal === 'object';
 
     if (shouldAutofill) {
-      Object.keys(values)
+      let formValuesForAutofill = values;
+      if (typeof autofill === 'object') {
+        formValuesForAutofill = Object.keys(autofill).reduce((accum, key) => {
+          if (has(values, key)) {
+            accum[key] = get(values, key);
+          }
+          return accum;
+        }, {});
+      }
+
+      Object.keys(formValuesForAutofill)
         .filter(fieldName => fieldName !== name)
         .forEach(async fieldName => {
           let rawValue = newValue;
@@ -175,10 +186,7 @@ const Select = ({
           if (typeof autofill === 'object') {
             shouldAutofillField = autofill[fieldName];
           } else {
-            shouldAutofillField = Object.prototype.hasOwnProperty.call(
-              rawValue,
-              fieldName
-            );
+            shouldAutofillField = has(rawValue, fieldName);
           }
 
           if (shouldAutofillField) {
@@ -199,6 +207,7 @@ const Select = ({
               val = get(rawValue, fieldName, initialValues[fieldName]);
             }
             valuesToSet[fieldName] = true;
+
             await setFieldValue(fieldName, val);
           }
         });

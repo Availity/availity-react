@@ -268,6 +268,9 @@ describe('Select', () => {
         value: {
           firstName: 'John',
           lastName: 'Doe',
+          full: {
+            name: 'John Doe',
+          },
         },
       },
       {
@@ -275,6 +278,9 @@ describe('Select', () => {
         value: {
           firstName: 'Jane',
           lastName: 'Doe',
+          full: {
+            name: 'Jane Doe',
+          },
         },
       },
     ];
@@ -286,6 +292,7 @@ describe('Select', () => {
           testFormInput: undefined,
           firstName: '',
           lastName: '',
+          'full.name': '',
         }}
         onSubmit={onSubmit}
       >
@@ -298,6 +305,7 @@ describe('Select', () => {
         />
         <Input data-testid="first-input" name="firstName" />
         <Input data-testid="last-input" name="lastName" />
+        <Input data-testid="full-input" name="full.name" />
 
         <Button>Submit</Button>
       </Form>
@@ -326,6 +334,7 @@ describe('Select', () => {
       const payload = onSubmit.mock.calls[0][0];
       expect(payload.firstName).toBe('John');
       expect(payload.lastName).toBe('Doe');
+      expect(payload.full.name).toBe('John Doe');
     });
   });
 
@@ -358,7 +367,8 @@ describe('Select', () => {
           testFormInput: undefined,
           firstName: '',
           lastName: '',
-          fullName: '',
+          'full.name': '',
+          fullReversed: '',
         }}
         onSubmit={onSubmit}
       >
@@ -370,12 +380,14 @@ describe('Select', () => {
           autofill={{
             firstName: 'name.first',
             lastName: 'name.last',
-            fullName: opt => `${opt.name.first} ${opt.name.last}`,
+            'full.name': opt => `${opt.name.first} ${opt.name.last}`,
+            fullReversed: opt => `${opt.name.last} ${opt.name.first}`,
           }}
         />
         <Input data-testid="first-input" name="firstName" />
         <Input data-testid="last-input" name="lastName" />
-        <Input data-testid="full-input" name="fullName" />
+        <Input data-testid="full-input" name="full.name" />
+        <Input data-testid="full-reversed-input" name="fullReversed" />
 
         <Button>Submit</Button>
       </Form>
@@ -404,7 +416,8 @@ describe('Select', () => {
       const payload = onSubmit.mock.calls[0][0];
       expect(payload.firstName).toBe('John');
       expect(payload.lastName).toBe('Doe');
-      expect(payload.fullName).toBe('John Doe');
+      expect(payload.full.name).toBe('John Doe');
+      expect(payload.fullReversed).toBe('Doe John');
     });
   });
 
