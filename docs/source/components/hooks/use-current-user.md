@@ -6,13 +6,13 @@ summary: Hook that returns the current user.
 ## Example
 
 ```jsx
-import React, { useState } from 'react';
+import React from 'react';
 import { useCurrentUser } from '@availity/hooks';
 
 const Component = () => {
   const { data: user, isFetching } = useCurrentUser();
 
-  return <div>{isFetching ? 'Loading...' : user.id}</div>;
+  return <div>{isFetching ? 'Loading...' : user?.id}</div>;
 };
 ```
 

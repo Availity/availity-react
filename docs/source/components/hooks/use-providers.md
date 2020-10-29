@@ -10,10 +10,14 @@ import React from 'react';
 import { useProviders } from '@availity/hooks';
 
 const Component = () => {
-  const { data, isFetching, error } = useProviders({ customerId: 01234 });
+  const { data, isFetching } = useProviders({ customerId: 01234 });
 
   return (
-    <div>{isFetching ? 'Loading...' : data.data.providers[0].lastName}</div>
+    <div>
+      {isFetching
+        ? 'Loading...'
+        : data?.data?.providers?.[0]?.lastName || 'Dr. Availity'}
+    </div>
   );
 };
 ```
