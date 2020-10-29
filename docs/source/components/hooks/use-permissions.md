@@ -14,7 +14,9 @@ const Component = () => {
 
   return (
     <div>
-      {isFetching ? 'Loading...' : data.data.permissions[0].description}
+      {isFetching
+        ? 'Loading...'
+        : data?.data?.permissions?.[0]?.description || '404'}
     </div>
   );
 };

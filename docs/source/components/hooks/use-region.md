@@ -12,7 +12,7 @@ import { useCurrentRegion } from '@availity/hooks';
 const Component = () => {
   const { data: region, isFetching } = useCurrentRegion();
 
-  return <div>{isFetching ? 'Loading...' : region.value}</div>;
+  return <div>{isFetching ? 'Loading...' : region?.value || 'Nowhere'}</div>;
 };
 ```
 

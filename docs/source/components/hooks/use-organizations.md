@@ -17,7 +17,11 @@ const Component = () => {
   );
 
   return (
-    <div>{isFetching ? 'Loading...' : data.data.organizations[0].name}</div>
+    <div>
+      {isFetching
+        ? 'Loading...'
+        : data?.data?.organizations?.[0]?.name || 'No organizations found'}
+    </div>
   );
 };
 ```
