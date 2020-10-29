@@ -5,22 +5,33 @@ import { useOrganizations } from '..';
 
 jest.mock('@availity/api-axios');
 
+let queryStates = [];
+beforeEach(() => {
+  queryStates = [];
+});
+
 afterEach(() => {
   jest.clearAllMocks();
   cleanup();
+  queryStates = [];
 });
 
 const Component = () => {
-  const { data, isFetching, error } = useOrganizations(
-    {},
-    { cacheTime: 0, retry: false }
+  // Mirror testing methods from react-query instead of relying on timing or booleans
+  // https://github.com/tannerlinsley/react-query/blob/master/src/react/tests/useQuery.test.tsx
+  const state = useOrganizations({}, { cacheTime: 0, retry: false });
+
+  // not directly used in assertions here, but useful for debugging purposes
+  queryStates.push(state);
+  const { data, error, status } = state;
+
+  return (
+    <div>
+      <h1>Status: {status}</h1>
+      <h1>Data: {JSON.stringify(data)}</h1>
+      <h1>Error: {error}</h1>
+    </div>
   );
-
-  if (isFetching) return <span data-testid="loading" />;
-  if (data) return <span data-testid="valid">{JSON.stringify(data)}</span>;
-  if (error) return <span data-testid="invalid">An error occurred</span>;
-
-  return null;
 };
 
 describe('useOrganizations', () => {
@@ -29,12 +40,13 @@ describe('useOrganizations', () => {
       'An error occurred'
     );
 
-    const { getByTestId } = render(<Component />);
+    const { getByText } = render(<Component />);
 
-    await waitForElement(() => getByTestId('invalid'));
+    await waitForElement(() => getByText('Status: error'));
+    await waitForElement(() => getByText('Error: An error occurred'));
   });
 
-  test('should return loading', () => {
+  test('should return loading', async () => {
     avOrganizationsApi.getOrganizations.mockResolvedValueOnce({
       data: {
         organizations: [
@@ -52,9 +64,10 @@ describe('useOrganizations', () => {
       },
     });
 
-    const { getByTestId } = render(<Component />);
+    const { getByText } = render(<Component />);
 
-    getByTestId('loading');
+    await getByText('Status: loading');
+    await waitForElement(() => getByText('Status: success'));
   });
 
   test('should return organizations', async () => {
@@ -79,7 +92,7 @@ describe('useOrganizations', () => {
 
     await waitForElement(() =>
       getByText(
-        JSON.stringify({
+        `Data: ${JSON.stringify({
           data: {
             organizations: [
               {
@@ -94,7 +107,7 @@ describe('useOrganizations', () => {
               },
             ],
           },
-        })
+        })}`
       )
     );
   });
