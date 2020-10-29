@@ -34,7 +34,7 @@ describe('useProviders', () => {
     await waitForElement(() => getByText('An error occurred'));
   });
 
-  test('should return loading', () => {
+  test('should return loading', async () => {
     avProvidersApi.getProviders.mockResolvedValueOnce({
       data: {
         providers: [
@@ -51,7 +51,7 @@ describe('useProviders', () => {
 
     const { getByTestId } = render(<Component />);
 
-    getByTestId('loading');
+    await waitForElement(() => getByTestId('loading'));
   });
 
   test('should return providers', async () => {

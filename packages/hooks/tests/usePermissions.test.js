@@ -24,15 +24,7 @@ const Component = () => {
 };
 
 describe('usePermissions', () => {
-  test('should set error on rejected promise', async () => {
-    avPermissionsApi.getPermissions.mockRejectedValueOnce('An error occurred');
-
-    const { getByTestId } = render(<Component />);
-
-    await waitForElement(() => getByTestId('invalid'));
-  });
-
-  test('should return loading', () => {
+  test('should return loading', async () => {
     avPermissionsApi.getPermissions.mockResolvedValueOnce({
       id: '44',
       description: 'test',
@@ -41,7 +33,15 @@ describe('usePermissions', () => {
 
     const { getByTestId } = render(<Component />);
 
-    getByTestId('loading');
+    await waitForElement(() => getByTestId('loading'));
+  });
+
+  test('should set error on rejected promise', async () => {
+    avPermissionsApi.getPermissions.mockRejectedValueOnce('An error occurred');
+
+    const { getByTestId } = render(<Component />);
+
+    await waitForElement(() => getByTestId('invalid'));
   });
 
   test('should return permissions', async () => {
