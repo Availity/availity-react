@@ -1,7 +1,6 @@
 import React from 'react';
 import { render, waitForElement, cleanup } from '@testing-library/react';
 import { avOrganizationsApi } from '@availity/api-axios';
-import { ReactQueryConfigProvider } from 'react-query';
 import { useOrganizations } from '..';
 
 jest.mock('@availity/api-axios');
@@ -12,17 +11,16 @@ afterEach(() => {
 });
 
 const Component = () => {
-  const { data: organizations, status, error } = useOrganizations();
-
-  return (
-    <ReactQueryConfigProvider config={{ cacheTime: 0, retry: false }}>
-      {status === 'loading' ? (
-        <span data-testid="loading" />
-      ) : (
-        JSON.stringify(organizations || error)
-      )}
-    </ReactQueryConfigProvider>
+  const { data, isFetching, error } = useOrganizations(
+    {},
+    { cacheTime: 0, retry: false }
   );
+
+  if (isFetching) return <span data-testid="loading" />;
+  if (data) return <span data-testid="valid">{JSON.stringify(data)}</span>;
+  if (error) return <span data-testid="invalid">An error occurred</span>;
+
+  return null;
 };
 
 describe('useOrganizations', () => {
@@ -31,10 +29,11 @@ describe('useOrganizations', () => {
       'An error occurred'
     );
 
-    const { getByText } = render(<Component />);
+    const { getByTestId } = render(<Component />);
 
-    await waitForElement(() => getByText('"An error occurred"'));
+    await waitForElement(() => getByTestId('invalid'));
   });
+
   test('should return loading', () => {
     avOrganizationsApi.getOrganizations.mockResolvedValueOnce({
       data: {
@@ -58,7 +57,7 @@ describe('useOrganizations', () => {
     getByTestId('loading');
   });
 
-  test('should return user', async () => {
+  test('should return organizations', async () => {
     avOrganizationsApi.getOrganizations.mockResolvedValueOnce({
       data: {
         organizations: [

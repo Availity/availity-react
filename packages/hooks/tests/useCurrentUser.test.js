@@ -1,7 +1,6 @@
 import React from 'react';
 import { render, waitForElement, cleanup } from '@testing-library/react';
 import { avUserApi } from '@availity/api-axios';
-import { ReactQueryConfigProvider } from 'react-query';
 import { useCurrentUser } from '..';
 
 jest.mock('@availity/api-axios');
@@ -12,27 +11,27 @@ afterEach(() => {
 });
 
 const Component = () => {
-  const { data: user, status, error } = useCurrentUser();
+  const { data, isFetching, error } = useCurrentUser({
+    cacheTime: 0,
+    retry: false,
+  });
 
-  return (
-    <ReactQueryConfigProvider config={{ cacheTime: 0, retry: false }}>
-      {status === 'loading' ? (
-        <span data-testid="loading" />
-      ) : (
-        JSON.stringify(error || user)
-      )}
-    </ReactQueryConfigProvider>
-  );
+  if (isFetching) return <span data-testid="loading" />;
+  if (data) return <span data-testid="valid">{JSON.stringify(data)}</span>;
+  if (error) return <span data-testid="invalid">An error occurred</span>;
+
+  return null;
 };
 
 describe('useCurrentUser', () => {
   test('should set error on rejected promise', async () => {
     avUserApi.me.mockRejectedValueOnce('An error occurred');
 
-    const { getByText } = render(<Component />);
+    const { getByTestId } = render(<Component />);
 
-    await waitForElement(() => getByText('"An error occurred"'));
+    await waitForElement(() => getByTestId('invalid'));
   });
+
   test('should return loading', () => {
     avUserApi.me.mockResolvedValueOnce({
       id: 'aka12345',

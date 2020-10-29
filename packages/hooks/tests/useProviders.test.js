@@ -1,7 +1,6 @@
 import React from 'react';
 import { render, waitForElement, cleanup } from '@testing-library/react';
 import { avProvidersApi } from '@availity/api-axios';
-import { ReactQueryConfigProvider } from 'react-query';
 import { useProviders } from '..';
 
 jest.mock('@availity/api-axios');
@@ -12,19 +11,18 @@ afterEach(() => {
 });
 
 const Component = () => {
-  const { data: providers, status, error } = useProviders({
-    customerId: 264330,
-  });
-
-  return (
-    <ReactQueryConfigProvider config={{ cacheTime: 0, retry: false }}>
-      {status === 'loading' ? (
-        <span data-testid="loading" />
-      ) : (
-        JSON.stringify(providers || error)
-      )}
-    </ReactQueryConfigProvider>
+  const { data, isFetching, error } = useProviders(
+    {
+      customerId: 264330,
+    },
+    { cacheTime: 0, retry: false }
   );
+
+  if (isFetching) return <span data-testid="loading" />;
+  if (data) return <span data-testid="valid">{JSON.stringify(data)}</span>;
+  if (error) return <span data-testid="invalid">An error occurred</span>;
+
+  return null;
 };
 
 describe('useProviders', () => {
@@ -33,8 +31,9 @@ describe('useProviders', () => {
 
     const { getByText } = render(<Component />);
 
-    await waitForElement(() => getByText('"An error occurred"'));
+    await waitForElement(() => getByText('An error occurred'));
   });
+
   test('should return loading', () => {
     avProvidersApi.getProviders.mockResolvedValueOnce({
       data: {
@@ -55,7 +54,7 @@ describe('useProviders', () => {
     getByTestId('loading');
   });
 
-  test('should return user', async () => {
+  test('should return providers', async () => {
     avProvidersApi.getProviders.mockResolvedValueOnce({
       data: {
         providers: [

@@ -1,7 +1,6 @@
 import React from 'react';
 import { render, waitForElement, cleanup } from '@testing-library/react';
 import { avPermissionsApi } from '@availity/api-axios';
-import { ReactQueryConfigProvider } from 'react-query';
 import { usePermissions } from '..';
 
 jest.mock('@availity/api-axios');
@@ -12,27 +11,27 @@ afterEach(() => {
 });
 
 const Component = () => {
-  const { data: permissions, status, error } = usePermissions();
-
-  return (
-    <ReactQueryConfigProvider config={{ cacheTime: 0, retry: false }}>
-      {status === 'loading' ? (
-        <span data-testid="loading" />
-      ) : (
-        JSON.stringify(permissions || error)
-      )}
-    </ReactQueryConfigProvider>
+  const { data, isFetching, error } = usePermissions(
+    {},
+    { cacheTime: 0, retry: false }
   );
+
+  if (isFetching) return <span data-testid="loading" />;
+  if (data) return <span data-testid="valid">{JSON.stringify(data)}</span>;
+  if (error) return <span data-testid="invalid">An error occurred</span>;
+
+  return null;
 };
 
 describe('usePermissions', () => {
   test('should set error on rejected promise', async () => {
     avPermissionsApi.getPermissions.mockRejectedValueOnce('An error occurred');
 
-    const { getByText } = render(<Component />);
+    const { getByTestId } = render(<Component />);
 
-    await waitForElement(() => getByText('"An error occurred"'));
+    await waitForElement(() => getByTestId('invalid'));
   });
+
   test('should return loading', () => {
     avPermissionsApi.getPermissions.mockResolvedValueOnce({
       id: '44',
@@ -45,7 +44,7 @@ describe('usePermissions', () => {
     getByTestId('loading');
   });
 
-  test('should return user', async () => {
+  test('should return permissions', async () => {
     avPermissionsApi.getPermissions.mockResolvedValueOnce({
       id: '44',
       description: 'test',

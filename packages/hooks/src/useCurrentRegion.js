@@ -11,11 +11,5 @@ async function fetchRegion() {
 }
 
 export default function useCurrentRegion(options) {
-  const { data = null, isFetching, error } = useQuery(
-    ['region'],
-    fetchRegion,
-    options
-  );
-
-  return [data, isFetching, error];
+  return useQuery(['region'], fetchRegion, options);
 }

@@ -1,6 +1,9 @@
 import { useQuery } from 'react-query';
 import { avProvidersApi } from '@availity/api-axios';
 
-const fetchProviders = async (_, config) =>
+const fetchProviders = async (_key, config) =>
   avProvidersApi.getProviders(config.customerId, config);
-export default config => useQuery(['providers', config], fetchProviders);
+
+export default function useProviders(config, options) {
+  return useQuery(['providers', config], fetchProviders, options);
+}

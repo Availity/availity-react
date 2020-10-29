@@ -7,16 +7,29 @@ summary: Hook that returns organizations.
 
 ```jsx
 import React from 'react';
-import { useOrganizations } from '@availity/hooks';
-// ...
+import { useCurrentUser, useOrganizations } from '@availity/hooks';
+
 const Component = () => {
-  const { data, status, error } = useOrganizations();
+  const { data: user } = useCurrentUser();
+  const { data, isFetching } = useOrganizations(
+    { params: { permissionId: ['5'], userId: user?.id } },
+    { enabled: !!user?.id }
+  );
 
   return (
-    <div>
-      {status === 'loading' ? 'Loading...' : data.data.organizations[0].name}
-    </div>
+    <div>{isFetching ? 'Loading...' : data.data.organizations[0].name}</div>
   );
 };
-// ...
 ```
+
+## Props
+
+## `config: AxiosRequestConfig`
+
+Config passed to the `getOrganizations` call from `@availity/api-axios`.
+
+### `options?: QueryConfig
+
+Options to be passed to the `useQuery` hook such as `enabled`, `retry`, and `onSuccess`.
+
+> More information on the options can be found [here](https://react-query.tanstack.com/docs/api/#usequery)
