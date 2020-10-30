@@ -31,6 +31,7 @@
     "react-use": "^13.27.0"
   },
   "devDependencies": {
+    "@availity/hooks": "^2.0.0",
     "react": "^16.8.3",
     "react-dom": "^16.8.3",
     "reactstrap": "^8.0.0"
