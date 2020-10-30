@@ -24,9 +24,11 @@ const Component = () => {
 
 ## Props
 
-### `config: {customerId: number} & AxiosRequestConfig`
+#### `config: {customerId: number} & AxiosRequestConfig`
 
 The Customer ID to retrieve the providers and other config options that can be passed to `getProviders` from `@availity/api-axios`
+
+> More information about this config can be found [here](https://availity.github.io/sdk-js/api/getting-started/#config-1)
 
 ### `options?: QueryConfig
 

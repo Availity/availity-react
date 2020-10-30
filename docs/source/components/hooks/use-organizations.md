@@ -28,9 +28,11 @@ const Component = () => {
 
 ## Props
 
-## `config: AxiosRequestConfig`
+### `config: AxiosRequestConfig`
 
 Config passed to the `getOrganizations` call from `@availity/api-axios`.
+
+> More information about this config can be found [here](https://availity.github.io/sdk-js/api/getting-started/#config-1)
 
 ### `options?: QueryConfig
 
