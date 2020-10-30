@@ -1,49 +1,60 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import { render, waitForElement, cleanup } from '@testing-library/react';
 import { avUserApi } from '@availity/api-axios';
+import { queryCache } from 'react-query';
 import { useCurrentUser } from '..';
 
 jest.mock('@availity/api-axios');
 
+let queryStates = [];
+beforeEach(() => {
+  queryStates = [];
+});
+
 afterEach(() => {
   jest.clearAllMocks();
   cleanup();
+  queryCache.clear();
+  queryStates = [];
 });
 
-const Component = () => {
-  const { data, isFetching, error } = useCurrentUser({
-    cacheTime: 0,
-    retry: false,
-  });
+const pushState = state => {
+  queryStates.push(state);
+};
 
-  if (isFetching) return <span data-testid="loading" />;
-  if (data) return <span data-testid="valid">{JSON.stringify(data)}</span>;
-  if (error) return <span data-testid="invalid">An error occurred</span>;
+const Component = ({ log }) => {
+  // Mirror testing methods from react-query instead of relying on timing or booleans
+  // https://github.com/tannerlinsley/react-query/blob/master/src/react/tests/useQuery.test.tsx
+  const state = useCurrentUser({ cacheTime: 0, retry: false });
 
-  return null;
+  // not directly used in assertions here, but useful for debugging purposes
+  if (log) log(state);
+
+  const { data, error, status } = state;
+
+  return (
+    <div>
+      <h1>Status: {status}</h1>
+      <h1>Data: {JSON.stringify(data)}</h1>
+      <h1>Error: {error}</h1>
+    </div>
+  );
+};
+
+Component.propTypes = {
+  log: PropTypes.func,
 };
 
 describe('useCurrentUser', () => {
   test('should set error on rejected promise', async () => {
     avUserApi.me.mockRejectedValueOnce('An error occurred');
 
-    const { getByTestId } = render(<Component />);
+    const { getByText } = render(<Component log={pushState} />);
 
-    await waitForElement(() => getByTestId('invalid'));
-  });
-
-  test('should return loading', () => {
-    avUserApi.me.mockResolvedValueOnce({
-      id: 'aka12345',
-      userId: 'testExample',
-      akaname: 'aka12345',
-      lastName: 'Last',
-      firstName: 'First',
-    });
-
-    const { getByTestId } = render(<Component />);
-
-    getByTestId('loading');
+    getByText('Status: loading');
+    await waitForElement(() => getByText('Status: error'));
+    await waitForElement(() => getByText('Error: An error occurred'));
   });
 
   test('should return user', async () => {
@@ -57,15 +68,16 @@ describe('useCurrentUser', () => {
 
     const { getByText } = render(<Component />);
 
+    getByText('Status: loading');
     await waitForElement(() =>
       getByText(
-        JSON.stringify({
+        `Data: ${JSON.stringify({
           id: 'aka12345',
           userId: 'testExample',
           akaname: 'aka12345',
           lastName: 'Last',
           firstName: 'First',
-        })
+        })}`
       )
     );
   });

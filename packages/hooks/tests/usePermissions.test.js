@@ -1,47 +1,60 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import { render, waitForElement, cleanup } from '@testing-library/react';
 import { avPermissionsApi } from '@availity/api-axios';
+import { queryCache } from 'react-query';
 import { usePermissions } from '..';
 
 jest.mock('@availity/api-axios');
 
+let queryStates = [];
+beforeEach(() => {
+  queryStates = [];
+});
+
 afterEach(() => {
   jest.clearAllMocks();
   cleanup();
+  queryCache.clear();
+  queryStates = [];
 });
 
-const Component = () => {
-  const { data, isFetching, error } = usePermissions(
-    {},
-    { cacheTime: 0, retry: false }
+const pushState = state => {
+  queryStates.push(state);
+};
+
+const Component = ({ log }) => {
+  // Mirror testing methods from react-query instead of relying on timing or booleans
+  // https://github.com/tannerlinsley/react-query/blob/master/src/react/tests/useQuery.test.tsx
+  const state = usePermissions({}, { cacheTime: 0, retry: false });
+
+  // not directly used in assertions here, but useful for debugging purposes
+  if (log) log(state);
+
+  const { data, error, status } = state;
+
+  return (
+    <div>
+      <h1>Status: {status}</h1>
+      <h1>Data: {JSON.stringify(data)}</h1>
+      <h1>Error: {error}</h1>
+    </div>
   );
+};
 
-  if (isFetching) return <span data-testid="loading" />;
-  if (data) return <span data-testid="valid">{JSON.stringify(data)}</span>;
-  if (error) return <span data-testid="invalid">An error occurred</span>;
-
-  return null;
+Component.propTypes = {
+  log: PropTypes.func,
 };
 
 describe('usePermissions', () => {
-  test('should return loading', async () => {
-    avPermissionsApi.getPermissions.mockResolvedValueOnce({
-      id: '44',
-      description: 'test',
-      links: { self: { href: 'test.com' } },
-    });
-
-    const { getByTestId } = render(<Component />);
-
-    await waitForElement(() => getByTestId('loading'));
-  });
-
-  test('should set error on rejected promise', async () => {
+  test('should return an error', async () => {
     avPermissionsApi.getPermissions.mockRejectedValueOnce('An error occurred');
 
-    const { getByTestId } = render(<Component />);
+    const { getByText } = render(<Component log={pushState} />);
 
-    await waitForElement(() => getByTestId('invalid'));
+    getByText('Status: loading');
+    await waitForElement(() => getByText('Status: error'));
+    await waitForElement(() => getByText('Error: An error occurred'));
   });
 
   test('should return permissions', async () => {
@@ -51,15 +64,16 @@ describe('usePermissions', () => {
       links: { self: { href: 'test.com' } },
     });
 
-    const { getByText } = render(<Component />);
+    const { getByText } = render(<Component log={pushState} />);
 
+    getByText('Status: loading');
     await waitForElement(() =>
       getByText(
-        JSON.stringify({
+        `Data: ${JSON.stringify({
           id: '44',
           description: 'test',
           links: { self: { href: 'test.com' } },
-        })
+        })}`
       )
     );
   });
