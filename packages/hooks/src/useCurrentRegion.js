@@ -5,8 +5,8 @@ async function fetchRegion() {
   const response = await avRegionsApi.getCurrentRegion();
 
   return {
-    code: response.data.regions[0].id,
-    value: response.data.regions[0].value,
+    code: response?.data?.regions?.[0]?.id || '',
+    value: response?.data?.regions?.[0]?.value || '',
   };
 }
 
