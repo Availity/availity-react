@@ -4953,10 +4953,21 @@ autoprefixer@^9.7.2, autoprefixer@^9.8.4:
     postcss "^7.0.32"
     postcss-value-parser "^4.1.0"
 
-availity-reactstrap-validation@2.6.1, availity-reactstrap-validation@^2.0.0, availity-reactstrap-validation@^2.5.3:
+availity-reactstrap-validation@2.6.1, availity-reactstrap-validation@^2.5.3:
   version "2.6.1"
   resolved "https://registry.yarnpkg.com/availity-reactstrap-validation/-/availity-reactstrap-validation-2.6.1.tgz#7a682322da18db63aeca10b9494cf0338688cf4c"
   integrity sha512-Se9X7q1wV0jyOjCnieayUXltPPELNsQ2AdiETdH5yf1yyfcqDUsJ52rLhQ56LUIyoc1C3OjFqoi2YbfgnBqSFA==
+  dependencies:
+    babel-runtime "^6.26.0"
+    classnames "^2.2.6"
+    lodash "^4.17.10"
+    moment "^2.22.2"
+    prop-types "^15.6.2"
+
+availity-reactstrap-validation@^2.7.0:
+  version "2.7.0"
+  resolved "https://registry.npmjs.org/availity-reactstrap-validation/-/availity-reactstrap-validation-2.7.0.tgz#b078701b98d8cbbe49782906d64f16067838293b"
+  integrity sha512-re1WL4fUk0x1V7yILhm29By5/FrZGt3gSUWBqkEObVoGwnedz385SWaoRkZ6U6cG99C6fExrPF2iN3o40XpMAg==
   dependencies:
     babel-runtime "^6.26.0"
     classnames "^2.2.6"
@@ -14106,6 +14117,11 @@ lodash.get@^4.4.2:
   version "4.4.2"
   resolved "https://registry.yarnpkg.com/lodash.get/-/lodash.get-4.4.2.tgz#2d177f652fa31e939b4438d5341499dfa3825e99"
   integrity sha1-LRd/ZS+jHpObRDjVNBSZ36OCXpk=
+
+lodash.has@^4.5.2:
+  version "4.5.2"
+  resolved "https://registry.npmjs.org/lodash.has/-/lodash.has-4.5.2.tgz#d19f4dc1095058cccbe2b0cdf4ee0fe4aa37c862"
+  integrity sha1-0Z9NwQlQWMzL4rDN9O4P5Ko3yGI=
 
 lodash.isarguments@^3.0.0:
   version "3.1.0"
