@@ -3,6 +3,27 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# 2.0.0 (2020-10-30)
+
+
+### Bug Fixes
+
+* **hooks:** use optional chaining ([ec54426](https://github.com/Availity/availity-react/commit/ec54426b81cb63f4e3ce14ba1fd1fb9c0f208d23))
+
+
+### Features
+
+* **hooks:** upgrade to react-query v2 ([2da4115](https://github.com/Availity/availity-react/commit/2da411548721cee86be33dd92cf62a99f80e86cf))
+
+
+### BREAKING CHANGES
+
+* **hooks:** the return shapes have changed for most async hooks
+
+
+
+
+
 # 1.8.0 (2020-07-08)
 
 
