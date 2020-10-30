@@ -24,7 +24,7 @@ const Component = () => {
 
 ## Props
 
-#### `config: {customerId: number} & AxiosRequestConfig`
+### `config: {customerId: number} & AxiosRequestConfig`
 
 The Customer ID to retrieve the providers and other config options that can be passed to `getProviders` from `@availity/api-axios`
 
