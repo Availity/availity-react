@@ -65,14 +65,6 @@ Extends [DateRange Props](/form/date/components/date-range/#props).
 
 The name of the field. Will be the key of the selected date that comes through in the values of the `onSubmit` callback.
 
-### `startKey: string`
-
-Key to return start date as on form submit. Should match the yup schema `startKey`.
-
-### `endKey: string`
-
-Key to return end date as on form submit. Should match the yup schema `endKey`.
-
 ### `label?: string`
 
 The text that renders inside the `Label` above the input.

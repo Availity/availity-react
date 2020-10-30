@@ -345,19 +345,19 @@ const renderGQLSelect = props =>
         graphqlConfig={{
           type: 'region',
           query: `
-   {
+  {
   regionPagination{
-    count
-    pageInfo{
-      hasNextPage
-    }
-    items{
-      id
-      value
-    }
+  count
+  pageInfo{
+  hasNextPage
   }
-}
-`,
+  items{
+  id
+  value
+  }
+  }
+  }
+  `,
         }}
         {...props}
       />
