@@ -8,21 +8,30 @@ summary: Hook that returns providers.
 ```jsx
 import React from 'react';
 import { useProviders } from '@availity/hooks';
-// ...
+
 const Component = () => {
-  const { data, status, error } = usePermissions({ customerId: 01234 });
+  const { data, isFetching } = useProviders({ customerId: 01234 });
 
   return (
     <div>
-      {status === 'loading' ? 'Loading...' : data.data.providers[0].lastName}
+      {isFetching
+        ? 'Loading...'
+        : data?.data?.providers?.[0]?.lastName || 'Dr. Availity'}
     </div>
   );
 };
-// ...
 ```
 
 ## Props
 
-### `config: {customerId: number}`
+### `config: {customerId: number} & AxiosRequestConfig`
 
-The customer id to retrieve the providers.
+The Customer ID to retrieve the providers and other config options that can be passed to `getProviders` from `@availity/api-axios`
+
+> More information about this config can be found [here](https://availity.github.io/sdk-js/api/getting-started/#config-1)
+
+### `options?: QueryConfig
+
+Options to be passed to the `useQuery` hook such as `enabled`, `retry`, and `onSuccess`.
+
+> More information on the options can be found [here](https://react-query.tanstack.com/docs/api/#usequery)

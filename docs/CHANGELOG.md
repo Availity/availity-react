@@ -3,6 +3,30 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [5.0.1](https://github.com/Availity/availity-react/compare/@availity/react-docs@5.0.0...@availity/react-docs@5.0.1) (2020-10-30)
+
+**Note:** Version bump only for package @availity/react-docs
+
+
+
+
+
+# [5.0.0](https://github.com/Availity/availity-react/compare/@availity/react-docs@4.21.4...@availity/react-docs@5.0.0) (2020-10-30)
+
+
+### Features
+
+* **hooks:** upgrade to react-query v2 ([2da4115](https://github.com/Availity/availity-react/commit/2da411548721cee86be33dd92cf62a99f80e86cf))
+
+
+### BREAKING CHANGES
+
+* **hooks:** the return shapes have changed for most async hooks
+
+
+
+
+
 ## [4.21.4](https://github.com/Availity/availity-react/compare/@availity/react-docs@4.21.3...@availity/react-docs@4.21.4) (2020-10-12)
 
 **Note:** Version bump only for package @availity/react-docs

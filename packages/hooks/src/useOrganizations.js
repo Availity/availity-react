@@ -1,7 +1,9 @@
 import { useQuery } from 'react-query';
 import { avOrganizationsApi } from '@availity/api-axios';
 
-const fetchOrganization = async (_, config) =>
+const fetchOrganization = async (_key, config) =>
   avOrganizationsApi.getOrganizations(config);
-export default (config) =>
-  useQuery(['organizations', config], fetchOrganization);
+
+export default function useOrganization(config, options) {
+  return useQuery(['organizations', config], fetchOrganization, options);
+}

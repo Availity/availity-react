@@ -1,6 +1,6 @@
 {
   "name": "@availity/pagination",
-  "version": "2.9.2",
+  "version": "2.9.3",
   "description": "",
   "main": "index.js",
   "types": "index.d.ts",
@@ -31,6 +31,7 @@
     "react-use": "^13.27.0"
   },
   "devDependencies": {
+    "@availity/hooks": "^2.0.0",
     "react": "^16.8.3",
     "react-dom": "^16.8.3",
     "reactstrap": "^8.0.0"
