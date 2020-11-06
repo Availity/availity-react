@@ -159,10 +159,7 @@ class AvDate extends Component {
     const minDate = validate && validate.min ? validate.min.value : min;
     const maxDate = validate && validate.max ? validate.max.value : max;
 
-    const pickerId = `${(this.props.id || name).replace(
-      /[^a-zA-Z0-9]/gi,
-      ''
-    )}-btn`;
+    const pickerId = `${(this.props.id || name).replace(/[^\da-z]/gi, '')}-btn`;
 
     const touched = this.context.FormCtrl.isTouched(name);
     const hasError = this.context.FormCtrl.hasError(name);

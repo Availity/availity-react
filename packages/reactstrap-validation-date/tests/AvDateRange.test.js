@@ -1,5 +1,5 @@
 import React from 'react';
-import { render, cleanup, fireEvent, wait } from '@testing-library/react';
+import { render, cleanup, fireEvent, waitFor } from '@testing-library/react';
 import { AvForm } from 'availity-reactstrap-validation';
 import { Button } from 'reactstrap';
 import moment from 'moment';
@@ -45,7 +45,7 @@ describe('AvDateRange', () => {
 
     fireEvent.click(getByText('Submit'));
 
-    await wait(() => {
+    await waitFor(() => {
       expect(onValidSubmit).toHaveBeenCalledWith(
         expect.anything(),
         expect.objectContaining({
@@ -89,7 +89,7 @@ describe('AvDateRange', () => {
 
     fireEvent.click(getByText('Submit'));
 
-    await wait(() => {
+    await waitFor(() => {
       expect(onValidSubmit).toHaveBeenCalledWith(
         expect.anything(),
         expect.objectContaining({
@@ -127,7 +127,7 @@ describe('AvDateRange', () => {
 
     fireEvent.click(getByText('Submit'));
 
-    await wait(() => {
+    await waitFor(() => {
       expect(onValidSubmit).toHaveBeenCalledWith(
         expect.anything(),
         expect.objectContaining({
@@ -159,7 +159,7 @@ describe('AvDateRange', () => {
 
     fireEvent.click(getByText('Submit'));
 
-    await wait(() => {
+    await waitFor(() => {
       expect(onValidSubmit).toHaveBeenCalledWith(
         expect.anything(),
         expect.objectContaining({
@@ -190,7 +190,7 @@ describe('AvDateRange', () => {
 
     fireEvent.click(getByText('Submit'));
 
-    await wait(() => {
+    await waitFor(() => {
       expect(onInvalidSubmit).toHaveBeenCalled();
     });
   });
@@ -213,7 +213,7 @@ describe('AvDateRange', () => {
 
     fireEvent.click(getByText('Submit'));
 
-    await wait(() => {
+    await waitFor(() => {
       expect(onInvalidSubmit).toHaveBeenCalled();
     });
   });
@@ -242,7 +242,7 @@ describe('AvDateRange', () => {
 
     fireEvent.click(getByText('Submit'));
 
-    await wait(() => {
+    await waitFor(() => {
       expect(onValidSubmit).toHaveBeenCalled();
     });
   });
@@ -276,7 +276,7 @@ describe('AvDateRange', () => {
 
     fireEvent.click(getByText('Submit'));
 
-    await wait(() => {
+    await waitFor(() => {
       expect(onValidSubmit).toHaveBeenCalledWith(
         expect.anything(),
         expect.objectContaining({
@@ -314,7 +314,7 @@ describe('AvDateRange', () => {
 
     fireEvent.click(getByText('Submit'));
 
-    await wait(() => {
+    await waitFor(() => {
       expect(onValidSubmit).toHaveBeenCalledWith(
         expect.anything(),
         expect.objectContaining({
@@ -350,7 +350,7 @@ describe('AvDateRange', () => {
 
     fireEvent.click(getByText('Submit'));
 
-    await wait(() => {
+    await waitFor(() => {
       expect(onValidSubmit).toHaveBeenCalledWith(
         expect.anything(),
         expect.objectContaining({
@@ -394,7 +394,7 @@ describe('AvDateRange', () => {
 
     fireEvent.click(getByText('Submit'));
 
-    await wait(() => {
+    await waitFor(() => {
       expect(onValidSubmit).toHaveBeenCalledWith(
         expect.anything(),
         expect.objectContaining({
@@ -484,7 +484,7 @@ describe('AvDateRange', () => {
 
     fireEvent.click(getByText('Submit'));
 
-    await wait(() => {
+    await waitFor(() => {
       expect(onValidSubmit).toHaveBeenCalledWith(
         expect.anything(),
         expect.objectContaining({
