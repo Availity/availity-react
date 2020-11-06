@@ -178,7 +178,7 @@ describe('filesDelivery upload', () => {
     );
   });
 
-  test('does not call avFilesDeliveryApi when onFileUpload is defined', async () => {
+  test('does not call avFilesDeliveryApi when onFileUpload is defined', async done => {
     const mockFunc = jest.fn();
     avFilesDeliveryApi.uploadFilesDelivery.mockResolvedValue({
       id: '123456',
@@ -208,6 +208,9 @@ describe('filesDelivery upload', () => {
         files: [file],
       },
     };
+
+    const upload = createTestExtendingUpload(file, done);
+    upload.start();
 
     fireEvent.change(inputNode, fileEvent);
     expect(inputNode.files.length).toBe(1);
