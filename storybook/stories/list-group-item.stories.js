@@ -1,6 +1,6 @@
 import React from 'react';
 import { storiesOf } from '@storybook/react';
-import { withKnobs, boolean, select, text } from '@storybook/addon-knobs/react';
+import { withKnobs, boolean, select, text } from '@storybook/addon-knobs';
 
 import ListGroup from '@availity/list-group';
 import ListGroupItem, { ListGroupItemStatus } from '@availity/list-group-item';
@@ -67,7 +67,7 @@ storiesOf('Components|List Group Item', module)
     const title = <h5>Item Title</h5>;
     const content = 'item';
 
-    const itemProps = number => ({
+    const itemProps = (number) => ({
       color: select(`Item ${number} Color`, colorOptions, '', 'Card'),
       badge: {
         text: text(`Item ${number} Badge`, ''),

@@ -74,8 +74,8 @@ const DateRange = ({
 
   const calendarIconRef = useRef();
 
-  const startId = `${(id || name).replace(/[^a-zA-Z0-9]/gi, '')}-start`;
-  const endId = `${(id || name).replace(/[^a-zA-Z0-9]/gi, '')}-end`;
+  const startId = `${(id || name).replace(/[^\da-z]/gi, '')}-start`;
+  const endId = `${(id || name).replace(/[^\da-z]/gi, '')}-end`;
 
   const startValue = value.startDate || '';
   const endValue = value.endDate || '';
@@ -329,7 +329,7 @@ const DateRange = ({
                   ref: calendarIconRef,
                   onClick: () => {
                     if (focusedInput) {
-                      setFocusedInput(undefined);
+                      setFocusedInput();
                     }
                   },
                 })

@@ -1,5 +1,5 @@
 import React from 'react';
-import { render, waitForElement, cleanup } from '@testing-library/react';
+import { render, waitFor, cleanup } from '@testing-library/react';
 import { avSlotMachineApi } from '@availity/api-axios';
 import Spaces, { SpacesAgreement } from '..';
 
@@ -36,9 +36,7 @@ describe('SpacesAgreement', () => {
       </Spaces>
     );
 
-    const agreement = await waitForElement(() =>
-      getByTestId('spaces-agreement-1')
-    );
+    const agreement = await waitFor(() => getByTestId('spaces-agreement-1'));
 
     expect(agreement.textContent).toBe('foo');
   });
@@ -50,9 +48,7 @@ describe('SpacesAgreement', () => {
       </Spaces>
     );
 
-    const agreement = await waitForElement(() =>
-      getByTestId('spaces-agreement-1')
-    );
+    const agreement = await waitFor(() => getByTestId('spaces-agreement-1'));
 
     expect(agreement.textContent).toBe('foo');
   });

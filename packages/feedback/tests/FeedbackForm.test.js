@@ -1,10 +1,12 @@
 /* eslint-disable unicorn/prefer-query-selector */
 import React from 'react';
-import { render, fireEvent, wait, cleanup } from '@testing-library/react';
+import { render, fireEvent, waitFor, cleanup } from '@testing-library/react';
 import { avLogMessagesApi, avRegionsApi } from '@availity/api-axios';
 import { FeedbackForm } from '..';
 
 jest.mock('@availity/api-axios');
+
+jest.useFakeTimers();
 
 avLogMessagesApi.info = jest.fn(() => Promise.resolve());
 
@@ -72,7 +74,9 @@ describe('FeedbackForm', () => {
 
     fireEvent.click(getByText('Send Feedback'));
 
-    await wait(() =>
+    jest.advanceTimersByTime(1000);
+
+    await waitFor(() =>
       expect(onFeedbackSent).toHaveBeenCalledWith(
         expect.objectContaining({
           active: 'smile',
@@ -112,7 +116,7 @@ describe('FeedbackForm', () => {
 
     fireEvent.click(getByText('Send Feedback'));
 
-    await wait(() => expect(infoFn).toHaveBeenCalledTimes(1));
+    await waitFor(() => expect(infoFn).toHaveBeenCalledTimes(1));
   });
 
   test('should render custom face icons', () => {

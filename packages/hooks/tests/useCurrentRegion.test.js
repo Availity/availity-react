@@ -52,8 +52,14 @@ describe('useCurrentRegion', () => {
     const { getByText } = render(<Component log={pushState} />);
 
     getByText('Status: loading');
-    await waitFor(() => getByText('Status: error'));
-    await waitFor(() => getByText('Error: An error occurred'));
+    await waitFor(() => {
+      const el = getByText('Status: error');
+      expect(el).toBeDefined();
+    });
+    await waitFor(() => {
+      const el = getByText('Error: An error occurred');
+      expect(el).toBeDefined();
+    });
   });
 
   test('handle success', async () => {
@@ -74,13 +80,14 @@ describe('useCurrentRegion', () => {
     const { getByText } = render(<Component log={pushState} />);
 
     getByText('Status: loading');
-    await waitFor(() =>
-      getByText(
+    await waitFor(() => {
+      const el = getByText(
         `Data: ${JSON.stringify({
           code: 'FL',
           value: 'Florida',
         })}`
-      )
-    );
+      );
+      expect(el).toBeDefined();
+    });
   });
 });

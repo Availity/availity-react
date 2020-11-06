@@ -29,7 +29,7 @@ const HelpProvider = ({ children }) => {
   };
 
   const removeHelp = (id) => {
-    setHelp(undefined);
+    setHelp();
     avMessages.send({
       event: constants.RESET_HELP,
       id,

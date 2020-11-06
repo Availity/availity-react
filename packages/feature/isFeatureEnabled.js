@@ -10,7 +10,7 @@ async function isFeatureEnabled(features) {
   let envFeatures;
   try {
     envFeatures = (await featureCache).data || [];
-  } catch (error) {
+  } catch {
     return true;
   }
   // eslint-disable-next-line unicorn/explicit-length-check

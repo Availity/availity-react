@@ -23,6 +23,7 @@ export default (
     if (region) {
       return region;
     }
+    // eslint-disable-next-line unicorn/no-useless-undefined
     return undefined;
   };
 

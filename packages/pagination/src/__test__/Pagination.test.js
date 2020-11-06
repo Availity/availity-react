@@ -1,13 +1,6 @@
 import React, { useState } from 'react';
 import { useToggle } from '@availity/hooks';
-import {
-  render,
-  wait,
-  waitForElement,
-  waitForDomChange,
-  fireEvent,
-  cleanup,
-} from '@testing-library/react';
+import { render, waitFor, fireEvent, cleanup } from '@testing-library/react';
 import Pagination, { usePagination } from '../Pagination';
 import PaginationControls from '../PaginationControls';
 
@@ -36,9 +29,7 @@ describe('Pagination', () => {
       </Pagination>
     );
 
-    const paginationCon = await waitForElement(() =>
-      getByTestId('pagination-con')
-    );
+    const paginationCon = await waitFor(() => getByTestId('pagination-con'));
 
     expect(paginationCon).toBeDefined();
 
@@ -65,9 +56,7 @@ describe('Pagination', () => {
       </Pagination>
     );
 
-    const paginationCon = await waitForElement(() =>
-      getByTestId('pagination-con')
-    );
+    const paginationCon = await waitFor(() => getByTestId('pagination-con'));
 
     expect(paginationCon).toBeDefined();
 
@@ -92,9 +81,7 @@ describe('Pagination', () => {
       </Pagination>
     );
 
-    let paginationCon = await waitForElement(() =>
-      getByTestId('pagination-con')
-    );
+    let paginationCon = await waitFor(() => getByTestId('pagination-con'));
 
     expect(paginationCon).toBeDefined();
 
@@ -107,10 +94,10 @@ describe('Pagination', () => {
     fireEvent.click(getByTestId('pagination-control-next-link'));
 
     // Wait for component to render nothing
-    waitForDomChange(() => getByTestId('pagination-con'));
+    waitFor(() => expect(getByTestId('pagination-con')).toBeDefined());
 
     // Get the component now with the new page data
-    paginationCon = await waitForElement(() => getByTestId('pagination-con'));
+    paginationCon = await waitFor(() => getByTestId('pagination-con'));
 
     expect(JSON.parse(paginationCon.textContent)).toEqual(
       expect.objectContaining({
@@ -139,9 +126,7 @@ describe('Pagination', () => {
       </Pagination>
     );
 
-    let paginationCon = await waitForElement(() =>
-      getByTestId('pagination-con')
-    );
+    let paginationCon = await waitFor(() => getByTestId('pagination-con'));
 
     expect(paginationCon).toBeDefined();
 
@@ -154,10 +139,10 @@ describe('Pagination', () => {
     fireEvent.click(getByTestId('pagination-control-next-link'));
 
     // Wait for component to render nothing
-    waitForDomChange(() => getByTestId('pagination-con'));
+    waitFor(() => expect(getByTestId('pagination-con')).toBeDefined());
 
     // Get the component now with the new page data
-    paginationCon = await waitForElement(() => getByTestId('pagination-con'));
+    paginationCon = await waitFor(() => getByTestId('pagination-con'));
 
     expect(mockOnPageChange).toHaveBeenCalledTimes(1);
   });
@@ -201,17 +186,17 @@ describe('Pagination', () => {
 
     const { getByTestId } = render(<ComponentWrapper />);
 
-    await waitForElement(() => getByTestId(`current-page`));
+    await waitFor(() => getByTestId(`current-page`));
 
     // Called once after the pagination has loaded
-    await wait(() => {
+    await waitFor(() => {
       expect(mockFunc).toHaveBeenCalledTimes(1);
     });
 
     // Clicking the button will trigger a state update
     fireEvent.click(getByTestId('hello-btn'));
 
-    await wait(() => {
+    await waitFor(() => {
       expect(mockFunc).toHaveBeenCalledTimes(3);
     });
   });
@@ -284,13 +269,9 @@ describe('Pagination', () => {
 
     jest.advanceTimersByTime(10);
 
-    let currentPageButton = await waitForElement(() =>
-      getByTestId(`current-page`)
-    );
+    let currentPageButton = await waitFor(() => getByTestId(`current-page`));
 
-    let paginationCon = await waitForElement(() =>
-      getByTestId('pagination-con')
-    );
+    let paginationCon = await waitFor(() => getByTestId('pagination-con'));
 
     expect(paginationCon).toBeDefined();
 
@@ -305,8 +286,8 @@ describe('Pagination', () => {
     // Check current page is 2 after set page button is called
     fireEvent.click(getByTestId('set-page-btn'));
     jest.advanceTimersByTime(10);
-    currentPageButton = await waitForElement(() => getByTestId(`current-page`));
-    paginationCon = await waitForElement(() => getByTestId('pagination-con'));
+    currentPageButton = await waitFor(() => getByTestId(`current-page`));
+    paginationCon = await waitFor(() => getByTestId('pagination-con'));
     expect(currentPageButton.textContent).toBe('2');
     expect(JSON.parse(paginationCon.textContent)).toEqual(
       expect.objectContaining({
@@ -317,13 +298,12 @@ describe('Pagination', () => {
     // Check current page is 1 after resetParams changes
     fireEvent.click(getByTestId('toggle-btn'));
     jest.advanceTimersByTime(10);
-    currentPageButton = await waitForElement(() => getByTestId(`current-page`));
-    paginationCon = await waitForElement(() => getByTestId('pagination-con'));
+    currentPageButton = await waitFor(() => getByTestId(`current-page`));
+    paginationCon = await waitFor(() => getByTestId('pagination-con'));
     expect(currentPageButton.textContent).toBe('1');
-    expect(JSON.parse(paginationCon.textContent)).toEqual(
-      expect.objectContaining({
-        allPages: firstItems,
-      })
+
+    expect(JSON.stringify(JSON.parse(paginationCon.textContent).allPages)).toBe(
+      JSON.stringify(firstItems)
     );
   });
 
@@ -381,17 +361,13 @@ describe('Pagination', () => {
     const { getByTestId } = render(<ComponentWrapper />);
 
     jest.advanceTimersByTime(10);
-    let currentPageButton = await waitForElement(() =>
-      getByTestId(`current-page`)
-    );
+    let currentPageButton = await waitFor(() => getByTestId(`current-page`));
 
     // Check current page is 1 on first render
     expect(currentPageButton.textContent).toBe('1');
 
     // Check correct items render
-    let paginationCon = await waitForElement(() =>
-      getByTestId('pagination-con')
-    );
+    let paginationCon = await waitFor(() => getByTestId('pagination-con'));
 
     expect(paginationCon).toBeDefined();
 
@@ -408,12 +384,12 @@ describe('Pagination', () => {
     // Check items function was called again when reset params change, items is a function, and already on page 1
     fireEvent.click(getByTestId('toggle-btn'));
     jest.advanceTimersByTime(10);
-    currentPageButton = await waitForElement(() => getByTestId(`current-page`));
+    currentPageButton = await waitFor(() => getByTestId(`current-page`));
     expect(currentPageButton.textContent).toBe('1');
     expect(items).toHaveBeenCalledTimes(2);
 
     // Check correct items render
-    paginationCon = await waitForElement(() => getByTestId('pagination-con'));
+    paginationCon = await waitFor(() => getByTestId('pagination-con'));
 
     expect(paginationCon).toBeDefined();
 
@@ -440,9 +416,7 @@ describe('Pagination', () => {
     );
 
     jest.advanceTimersByTime(10);
-    let paginationCon = await waitForElement(() =>
-      getByTestId('pagination-con')
-    );
+    let paginationCon = await waitFor(() => getByTestId('pagination-con'));
 
     expect(paginationCon).toBeDefined();
 
@@ -456,11 +430,11 @@ describe('Pagination', () => {
     fireEvent.click(getByTestId('pagination-control-next-link'));
 
     // Wait for component to render nothing
-    waitForDomChange(() => getByTestId('pagination-con'));
+    waitFor(() => expect(getByTestId('pagination-con')).toBeDefined());
 
     jest.advanceTimersByTime(10);
     // Get the component now with the new page data
-    paginationCon = await waitForElement(() => getByTestId('pagination-con'));
+    paginationCon = await waitFor(() => getByTestId('pagination-con'));
 
     expect(JSON.parse(paginationCon.textContent)).toEqual(
       expect.objectContaining({
@@ -495,9 +469,7 @@ describe('Pagination', () => {
     const { getByTestId } = render(<Component />);
 
     jest.advanceTimersByTime(10);
-    let paginationCon = await waitForElement(() =>
-      getByTestId('pagination-con')
-    );
+    let paginationCon = await waitFor(() => getByTestId('pagination-con'));
 
     expect(paginationCon).toBeDefined();
 
@@ -511,11 +483,11 @@ describe('Pagination', () => {
     fireEvent.click(getByTestId('pagination-control-next-link'));
 
     // Wait for component to render nothing
-    waitForDomChange(() => getByTestId('pagination-con'));
+    waitFor(() => expect(getByTestId('pagination-con')).toBeDefined());
 
     jest.advanceTimersByTime(10);
     // Get the component now with the new page data
-    paginationCon = await waitForElement(() => getByTestId('pagination-con'));
+    paginationCon = await waitFor(() => getByTestId('pagination-con'));
 
     expect(JSON.parse(paginationCon.textContent)).toEqual(
       expect.objectContaining({
@@ -563,7 +535,7 @@ describe('Pagination', () => {
 
     jest.advanceTimersByTime(10);
     // Check getItems was called
-    await wait(() => {
+    await waitFor(() => {
       expect(getItems).toHaveBeenCalledTimes(1);
     });
 
@@ -571,7 +543,7 @@ describe('Pagination', () => {
     fireEvent.click(getByTestId('toggle-return-previous-btn'));
 
     // Check getItems has still only been called one time
-    await wait(() => {
+    await waitFor(() => {
       expect(getItems).toHaveBeenCalledTimes(1);
     });
 
@@ -579,7 +551,7 @@ describe('Pagination', () => {
     fireEvent.click(getByTestId('toggle-return-previous-btn'));
 
     jest.advanceTimersByTime(10);
-    await wait(() => {
+    await waitFor(() => {
       expect(getItems).toHaveBeenCalledTimes(2);
     });
   });
@@ -615,7 +587,7 @@ describe('Pagination', () => {
     );
 
     jest.advanceTimersByTime(10);
-    await wait(() => {
+    await waitFor(() => {
       expect(getItems).toHaveBeenCalledTimes(1);
     });
 

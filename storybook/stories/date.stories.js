@@ -6,7 +6,7 @@ import {
   text,
   select,
   number,
-} from '@storybook/addon-knobs/react';
+} from '@storybook/addon-knobs';
 import { Button } from 'reactstrap';
 import { avDate, dateRange } from '@availity/yup';
 import { object } from 'yup';
@@ -123,8 +123,8 @@ storiesOf('Formik|Date', module)
 
     const required = boolean('Required', false);
 
-    const minDistance = number('Min Distance', undefined);
-    const maxDistance = number('Max Distance', undefined);
+    const minDistance = number('Min Distance');
+    const maxDistance = number('Max Distance');
 
     const distanceUnits = ['day', 'month'];
 

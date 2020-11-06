@@ -307,7 +307,7 @@ const ResourceSelect = ({
       pagination
       raw
       debounceTimeout={debounceTimeout}
-      cacheUniq={_cacheUniq}
+      cacheUniqs={_cacheUniq}
       additional={{
         page: 1,
         ...additional,

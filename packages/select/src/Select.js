@@ -4,7 +4,7 @@ import classNames from 'classnames';
 import { useField, useFormikContext } from 'formik';
 import RSelect, { components as reactSelectComponents } from 'react-select';
 import Creatable from 'react-select/creatable';
-import Async from 'react-select-async-paginate';
+import { AsyncPaginate as Async } from 'react-select-async-paginate';
 import get from 'lodash.get';
 import has from 'lodash.has';
 import isFunction from 'lodash.isfunction';
@@ -100,7 +100,7 @@ const Select = ({
 
   const prepValue = (value, digIfMulti = true) => {
     if (attributes.isMulti && digIfMulti && Array.isArray(value)) {
-      return value.map(prepValue, false);
+      return value.map((val) => prepValue(val), false);
     }
     if (attributes.raw || attributes.loadOptions) {
       return value;

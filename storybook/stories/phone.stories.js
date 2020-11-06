@@ -1,6 +1,6 @@
 import React from 'react';
 import { storiesOf } from '@storybook/react';
-import { withKnobs, boolean, object, text } from '@storybook/addon-knobs/react';
+import { withKnobs, boolean, object, text } from '@storybook/addon-knobs';
 
 import * as yup from 'yup';
 import '@availity/phone/src/validatePhone';

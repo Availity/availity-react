@@ -1,5 +1,5 @@
 import React from 'react';
-import { render, fireEvent, cleanup, wait } from '@testing-library/react';
+import { render, fireEvent, cleanup, waitFor } from '@testing-library/react';
 import { Form } from '@availity/form';
 import Upload from '..';
 
@@ -148,7 +148,7 @@ describe('Upload', () => {
     fireEvent.drop(inputNode, fileEvent);
 
     expect(inputNode.files.length).toBe(1);
-    await wait(() => {
+    await waitFor(() => {
       expect(getByText('File is larger than 10 bytes')).toBeDefined();
     });
   });
@@ -189,7 +189,7 @@ describe('Upload', () => {
     fireEvent.drop(inputNode, fileEvent);
 
     expect(inputNode.files.length).toBe(1);
-    await wait(() => {
+    await waitFor(() => {
       expect(getByText('my custom error message')).toBeDefined();
     });
   });

@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import UploadCore from '@availity/upload-core';
 import Dropzone from 'react-dropzone';
 import { InputGroup } from 'reactstrap';
-import uuid from 'uuid/v4';
+import { v4 as uuid } from 'uuid';
 import FilePickerBtn from './FilePickerBtn';
 import FileList from './FileList';
 import './styles.scss';

@@ -7,7 +7,7 @@ import Dropzone from 'react-dropzone';
 import Icon from '@availity/icon';
 import { useField, useFormikContext } from 'formik';
 import classNames from 'classnames';
-import uuid from 'uuid/v4';
+import { v4 as uuid } from 'uuid';
 
 import FilePickerBtn from './FilePickerBtn';
 import FileList from './FileList';

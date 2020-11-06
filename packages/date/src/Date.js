@@ -49,7 +49,7 @@ const AvDate = ({
   );
 
   const pickerId = `${(attributes.id || name).replace(
-    /[^a-zA-Z0-9]/gi,
+    /[^\da-z]/gi,
     ''
   )}-picker`;
 

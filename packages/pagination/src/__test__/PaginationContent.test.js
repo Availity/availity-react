@@ -2,9 +2,8 @@
 import React from 'react';
 import {
   render,
-  waitForElement,
-  waitForDomChange,
-  wait,
+  waitFor,
+  waitForElementToBeRemoved,
   cleanup,
 } from '@testing-library/react';
 import Pagination from '../Pagination';
@@ -36,14 +35,14 @@ describe('Pagination Content', () => {
       </Pagination>
     );
 
-    const paginationContent = await waitForElement(() =>
+    const paginationContent = await waitFor(() =>
       getByTestId('pagination-content-con')
     );
 
     expect(paginationContent).not.toBe(null);
 
     items.forEach(async (item) => {
-      await wait(() => {
+      await waitFor(() => {
         expect(getByTestId(`item-${item.value}`)).toBeDefined();
       });
     });
@@ -74,11 +73,13 @@ describe('Pagination Content', () => {
 
     expect(getByTestId('loading-message')).toBeDefined();
 
-    const paginationContent = await waitForDomChange(() =>
+    const paginationContent = await waitFor(() =>
       getByTestId('pagination-content-con')
     );
 
     expect(paginationContent).not.toBe(null);
+
+    await waitForElementToBeRemoved(() => getByTestId('loading-message'));
 
     loadPage().items.forEach((item) =>
       expect(getByTestId(`item-${item.value}`)).toBeDefined()
@@ -121,7 +122,7 @@ describe('Pagination Content', () => {
 
     expect(getByTestId('loading-message')).toBeDefined();
 
-    const paginationContent = await waitForDomChange(() =>
+    const paginationContent = await waitFor(() =>
       getByTestId('pagination-content-con')
     );
 
@@ -129,6 +130,7 @@ describe('Pagination Content', () => {
 
     expect(getByTestId('pagination-table')).toBeDefined();
     expect(getByTestId('pagination-table-header')).toBeDefined();
+
     loadPage().items.forEach((item) => {
       expect(getByTestId(`item-tr-${item.value}`)).toBeDefined();
       expect(getByTestId(`item-td-${item.value}`)).toBeDefined();

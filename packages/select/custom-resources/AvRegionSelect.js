@@ -29,7 +29,7 @@ const AvRegionSelect = ({ defaultToCurrentRegion, name, ...props }) => {
         const value = response.data.regions[0];
 
         setFieldValue(name, value);
-      } catch (error) {
+      } catch {
         // eslint-disable-next-line no-console
         console.warn('AvRegionSelect failed to load the current region');
       }

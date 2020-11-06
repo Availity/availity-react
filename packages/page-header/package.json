@@ -32,12 +32,12 @@
     "@availity/api-axios": "^5.4.4",
     "@availity/api-core": "^6.0.1",
     "@availity/localstorage-core": "^3.0.0",
-    "@availity/spaces": "^4.0.27",
-    "axios": "^0.19.0",
+    "@availity/spaces": "^4.0.26",
+    "axios": "^0.21.0",
     "formik": "2.2.1",
-    "react": "^16.11.0",
-    "react-dom": "^16.11.0",
-    "yup": "^0.28.1"
+    "react": "^17.0.1",
+    "react-dom": "^17.0.1",
+    "yup": "^0.29.3"
   },
   "peerDependencies": {
     "@availity/api-axios": "^5.4.4",
@@ -46,8 +46,8 @@
     "@availity/spaces": "^4.0.1",
     "axios": "^0.19.0",
     "formik": "^2.0.1",
-    "react": "^16.11.0",
-    "react-dom": "^16.11.0",
+    "react": ">=16.11.0",
+    "react-dom": ">=16.11.0",
     "yup": "^0.27.0"
   }
 }

@@ -40,6 +40,7 @@ const setRel = (url, target, absolute) => {
       return 'noopener noreferrer';
     }
   }
+  // eslint-disable-next-line unicorn/no-useless-undefined
   return undefined;
 };
 

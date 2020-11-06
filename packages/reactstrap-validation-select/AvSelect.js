@@ -9,7 +9,7 @@ import has from 'lodash.has';
 import isEqual from 'lodash.isequal';
 import isFunction from 'lodash.isfunction';
 
-import AsyncPaginate from 'react-select-async-paginate';
+import { AsyncPaginate } from 'react-select-async-paginate';
 
 const {
   DownChevron,
@@ -126,7 +126,7 @@ class AvSelect extends AvBaseInput {
 
   prepValue = (value, digIfMulti = true) => {
     if (this.props.isMulti && digIfMulti && Array.isArray(value)) {
-      return value.map(this.prepValue, false);
+      return value.map((val) => this.prepValue(val), false);
     }
     if (this.props.raw || this.props.loadOptions) {
       return value;

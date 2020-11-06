@@ -1,6 +1,6 @@
 import React from 'react';
 import { storiesOf } from '@storybook/react';
-import { withKnobs, boolean } from '@storybook/addon-knobs/react';
+import { withKnobs, boolean } from '@storybook/addon-knobs';
 import { ListGroupItem } from 'reactstrap';
 
 import ListGroup from '@availity/list-group';

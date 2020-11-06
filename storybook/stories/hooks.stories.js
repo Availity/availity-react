@@ -1,8 +1,7 @@
 /* eslint-disable react/prop-types */
 import React, { useState, useEffect } from 'react';
 import { storiesOf } from '@storybook/react';
-import { text, number } from '@storybook/addon-knobs/react';
-import { withKnobs } from '@storybook/addon-knobs';
+import { text, number, withKnobs } from '@storybook/addon-knobs';
 import {
   useToggle,
   useEffectAsync,
@@ -16,8 +15,8 @@ import '@availity/mock';
 
 import README from '@availity/hooks/README.md';
 
-const asyncFunction = data =>
-  new Promise(resolve => setInterval(() => resolve(data), 1000));
+const asyncFunction = (data) =>
+  new Promise((resolve) => setInterval(() => resolve(data), 1000));
 
 const Component = ({ initialValue = false }) => {
   const [isToggled, toggle] = useToggle(initialValue);

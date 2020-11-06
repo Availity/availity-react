@@ -1,11 +1,5 @@
 import React from 'react';
-import {
-  render,
-  wait,
-  fireEvent,
-  waitForElement,
-  cleanup,
-} from '@testing-library/react';
+import { render, fireEvent, waitFor, cleanup } from '@testing-library/react';
 import { Button } from 'reactstrap';
 import * as yup from 'yup';
 import { Form, Input } from '@availity/form';
@@ -41,7 +35,7 @@ const selectItem = async (container, getByText, name) => {
   const select = container.querySelector('.av__control');
   fireEvent.keyDown(select, { key: 'ArrowDown', keyCode: 40 });
 
-  const selectOption = await waitForElement(() => getByText(name));
+  const selectOption = await waitFor(() => getByText(name));
 
   expect(selectOption).toBeDefined();
 
@@ -75,7 +69,7 @@ describe('Select', () => {
 
     await fireEvent.click(getByText('Submit'));
 
-    await wait(() => {
+    await waitFor(() => {
       expect(onSubmit).toHaveBeenCalledWith(
         expect.objectContaining({
           singleSelect: 'value for option 1',
@@ -110,7 +104,7 @@ describe('Select', () => {
 
     await fireEvent.click(getByText('Submit'));
 
-    await wait(() => {
+    await waitFor(() => {
       expect(onSubmit).toHaveBeenCalledWith(
         expect.objectContaining({
           multiSelect: ['value for option 1', 'value for option 2'],
@@ -145,7 +139,7 @@ describe('Select', () => {
 
     await fireEvent.click(getByText('Submit'));
 
-    await wait(() => {
+    await waitFor(() => {
       expect(onSubmit).toHaveBeenCalledWith(
         expect.objectContaining({
           selectAll: [
@@ -180,7 +174,7 @@ describe('Select', () => {
 
     await fireEvent.click(getByText('Submit'));
 
-    await wait(() => {
+    await waitFor(() => {
       const select = container.querySelector('.av-select');
 
       expect(select.className).toContain('is-touched');
@@ -217,7 +211,7 @@ describe('Select', () => {
 
     await fireEvent.click(getByText('Submit'));
 
-    await wait(() => {
+    await waitFor(() => {
       expect(onSubmit).toHaveBeenCalledWith(
         expect.objectContaining({
           multiSelect: ['value for option 1', 'value for option 2'],
@@ -251,7 +245,7 @@ describe('Select', () => {
 
     await fireEvent.click(getByText('Submit'));
 
-    await wait(() => {
+    await waitFor(() => {
       expect(onSubmit).toHaveBeenCalledWith(
         expect.objectContaining({
           singleSelect: { label: 'Option 1', value: 'value for option 1' },
@@ -316,7 +310,7 @@ describe('Select', () => {
     fireEvent.keyDown(select, { key: 'ArrowDown', keyCode: 40 });
     fireEvent.keyDown(select, { key: 'Enter', keyCode: 13 });
 
-    const option = await waitForElement(() => getByText('Doe, John'));
+    const option = await waitFor(() => getByText('Doe, John'));
 
     expect(option).toBeDefined();
 
@@ -329,7 +323,7 @@ describe('Select', () => {
     await fireEvent.click(submitButton);
 
     // Check that values got autofilled
-    await wait(() => {
+    await waitFor(() => {
       expect(onSubmit).toHaveBeenCalledTimes(1);
       const payload = onSubmit.mock.calls[0][0];
       expect(payload.firstName).toBe('John');
@@ -398,7 +392,7 @@ describe('Select', () => {
     fireEvent.keyDown(select, { key: 'ArrowDown', keyCode: 40 });
     fireEvent.keyDown(select, { key: 'Enter', keyCode: 13 });
 
-    const option = await waitForElement(() => getByText('Doe, John'));
+    const option = await waitFor(() => getByText('Doe, John'));
 
     expect(option).toBeDefined();
 
@@ -411,7 +405,7 @@ describe('Select', () => {
     await fireEvent.click(submitButton);
 
     // Check that values got autofilled
-    await wait(() => {
+    await waitFor(() => {
       expect(onSubmit).toHaveBeenCalledTimes(1);
       const payload = onSubmit.mock.calls[0][0];
       expect(payload.firstName).toBe('John');
@@ -481,7 +475,7 @@ describe('Select', () => {
 
     await fireEvent.click(submitButton);
 
-    await wait(() => {
+    await waitFor(() => {
       expect(onSubmit).toHaveBeenCalledTimes(1);
       const payload = onSubmit.mock.calls[0][0];
       expect(payload.singleSelectCreatable.labelKeyTest).toBe('HelloWorld');

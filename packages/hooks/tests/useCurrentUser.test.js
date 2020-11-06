@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { render, waitForElement, cleanup } from '@testing-library/react';
+import { render, waitFor, cleanup } from '@testing-library/react';
 import { avUserApi } from '@availity/api-axios';
 import { queryCache } from 'react-query';
 import { useCurrentUser } from '..';
@@ -53,8 +53,14 @@ describe('useCurrentUser', () => {
     const { getByText } = render(<Component log={pushState} />);
 
     getByText('Status: loading');
-    await waitForElement(() => getByText('Status: error'));
-    await waitForElement(() => getByText('Error: An error occurred'));
+    await waitFor(() => {
+      const el = getByText('Status: error');
+      expect(el).toBeDefined();
+    });
+    await waitFor(() => {
+      const el = getByText('Error: An error occurred');
+      expect(el).toBeDefined();
+    });
   });
 
   test('should return user', async () => {
@@ -69,8 +75,8 @@ describe('useCurrentUser', () => {
     const { getByText } = render(<Component />);
 
     getByText('Status: loading');
-    await waitForElement(() =>
-      getByText(
+    await waitFor(() => {
+      const el = getByText(
         `Data: ${JSON.stringify({
           id: 'aka12345',
           userId: 'testExample',
@@ -78,7 +84,8 @@ describe('useCurrentUser', () => {
           lastName: 'Last',
           firstName: 'First',
         })}`
-      )
-    );
+      );
+      expect(el).toBeDefined();
+    });
   });
 });
