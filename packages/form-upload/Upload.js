@@ -96,13 +96,13 @@ const Upload = ({
     ]
   );
 
-  async function checkValidFormAndCallFileDelivery() {
-    if (Object.keys(errors).length === 0) {
-      await callFileDelivery(fieldValue);
-    }
-  }
-
   useEffect(() => {
+    // eslint-disable-next-line unicorn/consistent-function-scoping
+    async function checkValidFormAndCallFileDelivery() {
+      if (Object.keys(errors).length === 0) {
+        await callFileDelivery(fieldValue);
+      }
+    }
     if (
       !onFileUpload &&
       isSubmitting === true &&
@@ -113,9 +113,17 @@ const Upload = ({
     ) {
       checkValidFormAndCallFileDelivery();
     }
-    // FIXME: add all dependencies to the array and add logic to only submit upload once
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [deliverFileOnSubmit, isSubmitting, isValidating, onFileUpload]);
+  }, [
+    callFileDelivery,
+    deliverFileOnSubmit,
+    deliveryChannel,
+    errors,
+    fieldValue,
+    fileDeliveryMetadata,
+    isSubmitting,
+    isValidating,
+    onFileUpload,
+  ]);
 
   const removeFile = fileId => {
     const newFiles = fieldValue.filter(file => file.id !== fileId);

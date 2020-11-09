@@ -131,7 +131,7 @@ describe('filesDelivery upload', () => {
     expect(inputNode.files.length).toBe(1);
 
     await wait(() =>
-      expect(avFilesDeliveryApi.uploadFilesDelivery).toHaveBeenCalled()
+      expect(avFilesDeliveryApi.uploadFilesDelivery).toHaveBeenCalledTimes(1)
     );
   });
 
@@ -174,7 +174,7 @@ describe('filesDelivery upload', () => {
     fireEvent.click(getByText('Submit'));
     await wait(() => expect(onSubmit).toHaveBeenCalled());
     await wait(() =>
-      expect(avFilesDeliveryApi.uploadFilesDelivery).toHaveBeenCalled()
+      expect(avFilesDeliveryApi.uploadFilesDelivery).toHaveBeenCalledTimes(1)
     );
   });
 
