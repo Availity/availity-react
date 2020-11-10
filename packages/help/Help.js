@@ -102,6 +102,7 @@ export const Help = ({ type, id, children }) => {
 
   return children;
 };
+
 export const triggerFieldHelp = id => {
   avMessages.send({
     event: constants.OPEN_FIELD_HELP,
@@ -131,6 +132,7 @@ FieldHelpIcon.defaultProps = {
   size: '1x',
   color: 'primary',
 };
+
 Help.propTypes = {
   type: PropTypes.string,
   id: PropTypes.string.isRequired,
