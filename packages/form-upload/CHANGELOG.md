@@ -3,6 +3,21 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# 0.3.0 (2020-11-10)
+
+
+### Features
+
+* **form-upload:** adding options for file delivery on upload ([00986fb](https://github.com/Availity/availity-react/commit/00986fb2f960ba962cff9a6332b183e1721496ef))
+* **form-upload:** allow fileDeliveryMetadata to be a function ([8d0c994](https://github.com/Availity/availity-react/commit/8d0c9942d9f53933a73e1364fe52daa2bd4a4704))
+* **form-upload:** file delivery on submit ([579067d](https://github.com/Availity/availity-react/commit/579067dc67093bb31f75ce459860949f7c54464c))
+* **form-upload:** file delivery on upload ([f2e893e](https://github.com/Availity/availity-react/commit/f2e893ead990d2494bb66237662c2e7e172040ab))
+* **form-upload:** refereneces still undefined ([99eab12](https://github.com/Availity/availity-react/commit/99eab124623ebb4cbf47851a1b02d4faf9cc2b71))
+
+
+
+
+
 ## 0.2.24 (2020-10-12)
 
 **Note:** Version bump only for package @availity/form-upload
