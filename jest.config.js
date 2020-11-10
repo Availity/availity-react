@@ -25,4 +25,8 @@ module.exports = {
     '^(?!.*\\.(js|jsx|css|json)$)': `${require.resolve('./jest/file.js')}`,
   },
   roots: ['packages/'],
+  testEnvironment: 'jest-environment-jsdom-global',
+  globals: {
+    jsdom: true,
+  },
 };

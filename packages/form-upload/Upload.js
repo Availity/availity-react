@@ -1,6 +1,7 @@
-import React, { useRef } from 'react';
+import React, { useRef, useEffect, useCallback } from 'react';
 import PropTypes from 'prop-types';
 import UploadCore from '@availity/upload-core';
+import { avFilesDeliveryApi } from '@availity/api-axios';
 import { Input, InputGroup } from 'reactstrap';
 import { FormGroup, Feedback } from '@availity/form';
 import Dropzone from 'react-dropzone';
@@ -14,21 +15,37 @@ import FileList from './FileList';
 import './styles.scss';
 
 const Upload = ({
-  feedbackClass,
-  btnText,
-  max,
-  multiple,
+  allowedFileNameCharacters,
   allowedFileTypes,
-  maxSize,
+  btnText,
+  bucketId,
   children,
-  showFileDrop,
-  name,
   className,
-  ...rest
+  clientId,
+  customerId,
+  deliverFileOnSubmit = false,
+  deliveryChannel,
+  disabled = false,
+  feedbackClass,
+  fileDeliveryMetadata,
+  getDropRejectionMessage,
+  max,
+  maxSize,
+  multiple = true,
+  name,
+  onFileRemove,
+  onFileUpload,
+  showFileDrop = false,
 }) => {
   const input = useRef(null);
   const [field, metadata] = useField(name);
-  const { setFieldValue } = useFormikContext();
+  const {
+    errors,
+    isSubmitting,
+    isValidating,
+    setFieldError,
+    setFieldValue,
+  } = useFormikContext();
   const classes = classNames(
     className,
     metadata.touched ? 'is-touched' : 'is-untouched',
@@ -37,12 +54,82 @@ const Upload = ({
 
   const fieldValue = Array.isArray(field.value) ? field.value : [];
 
+  const callFileDelivery = useCallback(
+    async upload => {
+      if (!Array.isArray(upload)) upload = [upload];
+      const uploadResults = [];
+      try {
+        for (const u of upload) {
+          const data = {
+            deliveries: [
+              {
+                deliveryChannel,
+                fileURI: u.references[0],
+                metadata:
+                  typeof fileDeliveryMetadata === 'function'
+                    ? fileDeliveryMetadata(u)
+                    : fileDeliveryMetadata,
+              },
+            ],
+          };
+
+          uploadResults.push(
+            avFilesDeliveryApi.uploadFilesDelivery(data, {
+              clientId,
+              customerId,
+            })
+          );
+        }
+
+        await Promise.all(uploadResults);
+      } catch (error) {
+        setFieldError(name, 'An error occurred while uploading files.');
+      }
+    },
+    [
+      clientId,
+      customerId,
+      deliveryChannel,
+      fileDeliveryMetadata,
+      name,
+      setFieldError,
+    ]
+  );
+
+  useEffect(() => {
+    // eslint-disable-next-line unicorn/consistent-function-scoping
+    async function checkValidFormAndCallFileDelivery() {
+      if (Object.keys(errors).length === 0) {
+        await callFileDelivery(fieldValue);
+      }
+    }
+    if (
+      !onFileUpload &&
+      isSubmitting === true &&
+      isValidating === false &&
+      deliverFileOnSubmit &&
+      deliveryChannel &&
+      fileDeliveryMetadata
+    ) {
+      checkValidFormAndCallFileDelivery();
+    }
+  }, [
+    callFileDelivery,
+    deliverFileOnSubmit,
+    deliveryChannel,
+    errors,
+    fieldValue,
+    fileDeliveryMetadata,
+    isSubmitting,
+    isValidating,
+    onFileUpload,
+  ]);
+
   const removeFile = fileId => {
     const newFiles = fieldValue.filter(file => file.id !== fileId);
     if (newFiles.length !== fieldValue.length) {
       setFieldValue(name, newFiles, true);
-
-      if (rest.onFileRemove) rest.onFileRemove(newFiles, fileId);
+      if (onFileRemove) onFileRemove(newFiles, fileId);
     }
   };
 
@@ -62,12 +149,12 @@ const Upload = ({
     const newFiles = fieldValue.concat(
       selectedFiles.map(file => {
         const upload = new UploadCore(file, {
-          bucketId: rest.bucketId,
-          customerId: rest.customerId,
-          clientId: rest.clientId,
+          bucketId,
+          customerId,
+          clientId,
           fileTypes: allowedFileTypes,
           maxSize,
-          allowedFileNameCharacters: rest.allowedFileNameCharacters,
+          allowedFileNameCharacters,
         });
         upload.id = `${upload.id}-${uuid()}`;
         if (file.dropRejectionMessage) {
@@ -75,7 +162,19 @@ const Upload = ({
         } else {
           upload.start();
         }
-        if (rest.onFileUpload) rest.onFileUpload(upload);
+
+        if (onFileUpload) {
+          onFileUpload(upload);
+        } else if (
+          !deliverFileOnSubmit &&
+          deliveryChannel &&
+          fileDeliveryMetadata
+        ) {
+          upload.onSuccess.push(() => {
+            callFileDelivery(upload);
+          });
+        }
+
         return upload;
       })
     );
@@ -89,8 +188,8 @@ const Upload = ({
 
   const onDrop = (acceptedFiles, fileRejections) => {
     const rejectedFilesToDrop = fileRejections.map(({ file, errors }) => {
-      const dropRejectionMessage = rest.getDropRejectionMessage
-        ? rest.getDropRejectionMessage(errors, file)
+      const dropRejectionMessage = getDropRejectionMessage
+        ? getDropRejectionMessage(errors, file)
         : errors.map(error => error.message).join(', ');
 
       file.dropRejectionMessage = dropRejectionMessage;
@@ -112,7 +211,7 @@ const Upload = ({
       fileAddArea = (
         <FormGroup for={name}>
           <Input name={name} style={{ display: 'none' }} />
-          <InputGroup disabled={rest.disabled} className={classes}>
+          <InputGroup disabled={disabled} className={classes}>
             <Dropzone
               onDrop={onDrop}
               multiple={multiple}
@@ -121,11 +220,13 @@ const Upload = ({
             >
               {({ getRootProps, getInputProps, isDragActive }) => (
                 <section>
-                  <div {...getRootProps({
-                        className: isDragActive
-                          ? 'file-drop-active'
-                          : 'file-drop',
-                      })}>
+                  <div
+                    {...getRootProps({
+                      className: isDragActive
+                        ? 'file-drop-active'
+                        : 'file-drop',
+                    })}
+                  >
                     <input data-testid="file-picker" {...getInputProps()} />
                     <p>
                       <strong>Drag and Drop</strong>
@@ -152,7 +253,7 @@ const Upload = ({
           allowedFileTypes={allowedFileTypes}
           maxSize={maxSize}
           name={name}
-          disabled={rest.disabled}
+          disabled={disabled}
         >
           {text}
         </FilePickerBtn>
@@ -171,29 +272,27 @@ const Upload = ({
 };
 
 Upload.propTypes = {
-  btnText: PropTypes.node,
-  bucketId: PropTypes.string.isRequired,
-  customerId: PropTypes.string.isRequired,
-  clientId: PropTypes.string.isRequired,
   allowedFileNameCharacters: PropTypes.string,
   allowedFileTypes: PropTypes.arrayOf(PropTypes.string),
-  onFileUpload: PropTypes.func,
-  onFileRemove: PropTypes.func,
-  maxSize: PropTypes.number,
-  max: PropTypes.number,
-  multiple: PropTypes.bool,
+  btnText: PropTypes.node,
+  bucketId: PropTypes.string.isRequired,
   children: PropTypes.func,
-  name: PropTypes.string.isRequired,
-  showFileDrop: PropTypes.bool,
-  feedbackClass: PropTypes.string,
   className: PropTypes.string,
+  clientId: PropTypes.string.isRequired,
+  customerId: PropTypes.string.isRequired,
+  deliverFileOnSubmit: PropTypes.bool,
+  deliveryChannel: PropTypes.string,
   disabled: PropTypes.bool,
-};
-
-Upload.defaultProps = {
-  multiple: true,
-  disabled: false,
-  showFileDrop: false,
+  feedbackClass: PropTypes.string,
+  fileDeliveryMetadata: PropTypes.oneOfType([PropTypes.object, PropTypes.func]),
+  getDropRejectionMessage: PropTypes.func,
+  max: PropTypes.number,
+  maxSize: PropTypes.number,
+  multiple: PropTypes.bool,
+  name: PropTypes.string.isRequired,
+  onFileRemove: PropTypes.func,
+  onFileUpload: PropTypes.func,
+  showFileDrop: PropTypes.bool,
 };
 
 export default Upload;
