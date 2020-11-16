@@ -74,6 +74,10 @@ Allow new items to be created if not found. **Default:** `false`.
 
 Adds a `Select all` option ( when `isMulti` is `true`). Note: `allowSelectAll` is ignored when `loadOptions` is defined.
 
+### `waitUntilFocused?: boolean`
+
+When true, the network request is not made until the dropdown has been focused. Defaults to `false`.
+
 ### `autofill?: boolean | AutoFillType`
 
 If `true`, when the value of the dropdown changes, if the `isMulti` prop is `false` _and_ the new value of the dropdown is an object, all fields on the form corresponding to the new value are auto-filled. In order for a field to be auto-filled, the `name` property on the field _must_ match the key inside the new value.
