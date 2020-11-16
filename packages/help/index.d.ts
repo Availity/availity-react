@@ -16,12 +16,20 @@ export interface HelpContext {
 
 declare const constants: TopNavConstants;
 
-declare const HelpProvider: React.Provider<HelpContext>;
+declare const HelpProvider: React.FC;
 
 declare const Help: React.StatelessComponent<HelpObj>;
 
+declare const FieldHelpIcon: (props: {
+  color: string;
+  size: string;
+  id: string;
+}) => JSX.Element;
+
 declare function useHelp(data: HelpObj): HelpContext;
 
-export { Help, useHelp, constants };
+declare function triggerFieldHelp(id: string): void;
+
+export { constants, FieldHelpIcon, Help, triggerFieldHelp, useHelp };
 
 export default HelpProvider;
