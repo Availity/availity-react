@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# 0.17.0 (2020-11-16)
+
+
+### Features
+
+* **select:** add ability to waitUntilFocused to loadOptions ([d975506](https://github.com/Availity/availity-react/commit/d97550667aa8d6823327417c60028fc0312f1599))
+
+
+
+
+
 ## [0.16.3](https://github.com/Availity/availity-react/compare/@availity/select@0.16.2...@availity/select@0.16.3) (2020-10-30)
 
 
