@@ -25,7 +25,6 @@
   "workspaces": {
     "packages": [
       "packages/*",
-      "docs",
       "storybook",
       "docusaurus"
     ]
@@ -43,13 +42,11 @@
     "test:ci": "jest --runInBand --collectCoverage",
     "postinstall": "yarn run bootstrap",
     "start": "yarn workspace @availity/react-storybook start",
-    "start:dino": "yarn workspace @availity/dinosaurdocs start",
-    "start:docs": "yarn workspace @availity/react-docs start",
+    "start:docs": "yarn workspace @availity/dinosaurdocs start",
     "build:storybook": "yarn workspace @availity/react-storybook build",
     "build:storybook:netlify": "yarn workspace @availity/react-storybook build:netlify",
     "build:netlify": "yarn workspace @availity/dinosaurdocs build && yarn run build:storybook:netlify",
-    "build:docs": "yarn workspace @availity/react-docs build:deploy",
-    "build:dino": "yarn workspace @availity/dinosaurdocs build",
+    "build:docs": "yarn workspace @availity/dinosaurdocs build",
     "build:deploy": "yarn run build:docs && yarn run build:storybook:netlify",
     "release": "lerna publish",
     "release:ci": "lerna publish --yes",

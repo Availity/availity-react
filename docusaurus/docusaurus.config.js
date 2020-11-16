@@ -4,7 +4,7 @@ module.exports = {
   onBrokenLinks: 'log',
   title: 'Availity React Docs',
   tagline: 'React components using Availity UIKit and Bootstrap 4',
-  url: 'https://your-docusaurus-test-site.com',
+  url: 'https://availity.github.io/react',
   baseUrl: '/',
   favicon: 'img/favicon.ico',
   organizationName: 'availity', // Usually your GitHub org/user name.
@@ -14,13 +14,13 @@ module.exports = {
       apiKey: 'eec0154a008662c32d440b7de7982cd2',
       indexName: 'availity',
     },
-    announcementBar: {
-      id: 'supportus',
-      backgroundColor: '#e29f0d',
-      textColor: 'black',
-      content:
-        '⭐️ If you like Availity-React, give it a star on <a target="_blank" rel="noopener noreferrer" href="https://github.com/availity/availity-react">GitHub</a>! ⭐️',
-    },
+    // announcementBar: {
+    //   id: 'supportus',
+    //   backgroundColor: '#e29f0d',
+    //   textColor: 'black',
+    //   content:
+    //     '⭐️ If you like Availity-React, give it a star on <a target="_blank" rel="noopener noreferrer" href="https://github.com/availity/availity-react">GitHub</a>! ⭐️',
+    // },
     colorMode: { defaultMode: 'dark' },
 
     navbar: {
@@ -32,16 +32,21 @@ module.exports = {
       },
       items: [
         {
-          to: '/',
-          activeBasePath: 'docs',
-          label: 'Docs',
-          position: 'left',
+          to: 'http://localhost:3000', // needs to be updated once deployed
+          label: 'CLI',
+          position: 'right',
         },
         {
-          href:
-            'https://availity.github.io/availity-react/storybook/?path=/story/components-analytics--default', // The target URL (string).
-          label: 'Storybook',
-          position: 'left',
+          to: 'http://localhost:3001', // needs to be updated once deployed
+          label: 'SDK',
+          position: 'right',
+        },
+        {
+          to:
+            'https://deploy-preview-571--condescending-leavitt-66e607.netlify.app/', // The target URL (string).
+          class: 'active',
+          label: 'React',
+          position: 'right',
         },
 
         {
@@ -60,7 +65,7 @@ module.exports = {
         docs: {
           // It is recommended to set document id as docs home page (`docs/` path).
           routeBasePath: '/',
-          homePageId: 'intro',
+
           sidebarPath: require.resolve('./sidebars.js'),
           // Please change this to your repo.
           editUrl:
