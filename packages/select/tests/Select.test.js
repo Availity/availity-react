@@ -488,4 +488,62 @@ describe('Select', () => {
       expect(payload.singleSelectCreatable.valueKeyTest).toBe('helloworld');
     });
   });
+  test('waits to query resource until input is focused when waitUntilFocused is true', async () => {
+    const loadOptions = jest.fn();
+
+    loadOptions.mockResolvedValue({
+      options: [
+        {
+          id: 'FL',
+          value: 'Florida',
+        },
+      ],
+      hasMore: false,
+      additional: {
+        page: 2,
+      },
+    });
+
+    const onSubmit = jest.fn();
+    const { container } = render(
+      <Form
+        initialValues={{
+          singleSelect: undefined,
+        }}
+        onSubmit={onSubmit}
+        validationSchema={singleValueSchema('singleSelect')}
+      >
+        <Select
+          name="singleSelect-wait"
+          classNamePrefix="test__wait"
+          loadOptions={loadOptions}
+          waitUntilFocused
+          data-testid="single-select-wait"
+          additional={{
+            page: 1,
+            perPage: 50,
+          }}
+        />
+        <Button type="submit">Submit</Button>
+      </Form>
+    );
+
+    // Check the loadOptions is not called on mount
+    await wait(() => {
+      expect(loadOptions).not.toHaveBeenCalled();
+    });
+
+    const waitUntilFocusSelect = container.querySelector(
+      '.test__wait__control'
+    );
+    const input = container.querySelector('input');
+    fireEvent.focus(input);
+    fireEvent.keyDown(waitUntilFocusSelect, { key: 'ArrowDown', keyCode: 40 });
+    fireEvent.keyDown(waitUntilFocusSelect, { key: 'Enter', keyCode: 13 });
+
+    // Check the loadOptions is called only after the input has been focused
+    await wait(() => {
+      expect(loadOptions).toHaveBeenCalledTimes(1);
+    });
+  });
 });

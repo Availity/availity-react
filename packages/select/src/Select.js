@@ -70,6 +70,7 @@ const Select = ({
   autofill,
   creatable,
   allowSelectAll,
+  waitUntilFocused,
   ...attributes
 }) => {
   const [
@@ -283,7 +284,7 @@ const Select = ({
       closeMenuOnSelect={!attributes.isMulti}
       components={components}
       options={selectOptions}
-      defaultOptions
+      defaultOptions={waitUntilFocused ? [] : true}
       styles={{
         ...styles,
         placeholder: (provided, state) => {
@@ -358,6 +359,10 @@ const Select = ({
   );
 };
 
+Select.defaultTypes = {
+  waitUntilFocused: false,
+};
+
 Select.propTypes = {
   name: PropTypes.string.isRequired,
   validate: PropTypes.func,
@@ -372,6 +377,7 @@ Select.propTypes = {
   creatable: PropTypes.bool,
   autofill: PropTypes.oneOfType([PropTypes.bool, PropTypes.object]),
   allowSelectAll: PropTypes.bool,
+  waitUntilFocused: PropTypes.bool,
 };
 
 export default Select;
