@@ -1,6 +1,6 @@
 {
   "name": "@availity/typography",
-  "version": "1.2.18",
+  "version": "1.2.19",
   "author": "Tyson Warner <tyson.warner@availity.com>",
   "description": "Availity typography components",
   "main": "index.js",

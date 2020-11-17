@@ -3,6 +3,22 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# 0.4.0 (2020-11-17)
+
+
+### chore
+
+* **avatar:** upgrade dependencies ([78d3402](https://github.com/Availity/availity-react/commit/78d340299f3026f93a4da0a350613bd0624e47b0))
+
+
+### BREAKING CHANGES
+
+* **avatar:** react >= 16.8.0 is now required
+
+
+
+
+
 ## 0.3.27 (2020-10-30)
 
 **Note:** Version bump only for package @availity/avatar

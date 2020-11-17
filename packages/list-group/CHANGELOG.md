@@ -3,6 +3,14 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## 1.2.21 (2020-11-17)
+
+**Note:** Version bump only for package @availity/list-group
+
+
+
+
+
 ## 1.2.20 (2020-04-30)
 
 **Note:** Version bump only for package @availity/list-group
