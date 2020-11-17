@@ -523,7 +523,7 @@ describe('Select', () => {
     );
 
     // Check the loadOptions is not called on mount
-    await wait(() => {
+    await waitFor(() => {
       expect(loadOptions).not.toHaveBeenCalled();
     });
 
@@ -536,7 +536,7 @@ describe('Select', () => {
     fireEvent.keyDown(waitUntilFocusSelect, { key: 'Enter', keyCode: 13 });
 
     // Check the loadOptions is called only after the input has been focused
-    await wait(() => {
+    await waitFor(() => {
       expect(loadOptions).toHaveBeenCalledTimes(1);
     });
   });
