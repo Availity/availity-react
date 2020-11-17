@@ -37,7 +37,7 @@ const Input = ({
   return (
     <Tag
       className={classes}
-      onChange={e => {
+      onChange={(e) => {
         onChange(e);
         if (propsOnChange) {
           propsOnChange(e);

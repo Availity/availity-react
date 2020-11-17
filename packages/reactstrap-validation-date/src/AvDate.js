@@ -70,7 +70,7 @@ class AvDate extends Component {
   };
 
   // For updating when we delete the current input
-  onInputChange = async value => {
+  onInputChange = async (value) => {
     const { name, onChange } = this.props;
     const date = moment(
       value,
@@ -78,9 +78,7 @@ class AvDate extends Component {
       true
     );
 
-    this.context.FormCtrl.getInput(name)
-      .getValidatorProps()
-      .onChange(value);
+    this.context.FormCtrl.getInput(name).getValidatorProps().onChange(value);
     const isoFormatted = date.format(isoDateFormat);
 
     this.setState({ value }, () => {
@@ -94,7 +92,7 @@ class AvDate extends Component {
     });
   };
 
-  onPickerChange = async value => {
+  onPickerChange = async (value) => {
     if (value === null) return;
     const { format } = this.state;
     const { name, onChange } = this.props;
@@ -105,9 +103,7 @@ class AvDate extends Component {
       val = val.format(format);
     }
 
-    this.context.FormCtrl.getInput(name)
-      .getValidatorProps()
-      .onChange(val);
+    this.context.FormCtrl.getInput(name).getValidatorProps().onChange(val);
 
     this.setState({ value: val }, () => {
       if (onChange) onChange(val);
@@ -124,7 +120,7 @@ class AvDate extends Component {
     onBlur(date && date.format(format));
   };
 
-  valueParser = value => {
+  valueParser = (value) => {
     if (this.state.format === isoDateFormat) return value;
     const date = moment(
       value,
@@ -135,7 +131,7 @@ class AvDate extends Component {
     return value;
   };
 
-  valueFormatter = value => {
+  valueFormatter = (value) => {
     const date = moment(
       value,
       [isoDateFormat, this.state.format, 'MMDDYYYY', 'YYYYMMDD'],
@@ -163,10 +159,7 @@ class AvDate extends Component {
     const minDate = validate && validate.min ? validate.min.value : min;
     const maxDate = validate && validate.max ? validate.max.value : max;
 
-    const pickerId = `${(this.props.id || name).replace(
-      /[^a-zA-Z0-9]/gi,
-      ''
-    )}-btn`;
+    const pickerId = `${(this.props.id || name).replace(/[^\da-z]/gi, '')}-btn`;
 
     const touched = this.context.FormCtrl.isTouched(name);
     const hasError = this.context.FormCtrl.hasError(name);

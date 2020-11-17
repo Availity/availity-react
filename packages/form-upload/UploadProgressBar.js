@@ -42,13 +42,13 @@ const UploadProgressBar = ({ upload, ...rest }) => {
     setPassword('');
   };
 
-  const verifyPassword = event => {
+  const verifyPassword = (event) => {
     event.preventDefault();
     upload.sendPassword(password);
     toggleModal();
   };
 
-  const handlePasswordChange = event => {
+  const handlePasswordChange = (event) => {
     setPassword(event.target.value);
   };
 

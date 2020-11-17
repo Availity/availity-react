@@ -1,5 +1,5 @@
 import React from 'react';
-import { render, fireEvent, cleanup, wait } from '@testing-library/react';
+import { render, fireEvent, cleanup, waitFor } from '@testing-library/react';
 import Feedback from '..';
 
 global.document.createRange = () => ({
@@ -53,7 +53,7 @@ describe('Feedback', () => {
       keyCode: 13,
     });
 
-    await wait(() => {
+    await waitFor(() => {
       expect(onClose).toHaveBeenCalledTimes(1);
     });
 
@@ -61,7 +61,7 @@ describe('Feedback', () => {
 
     fireEvent.click(getByText('Close'));
 
-    await wait(() => {
+    await waitFor(() => {
       expect(onClose).toHaveBeenCalledTimes(2);
     });
   });
@@ -80,7 +80,7 @@ describe('Feedback', () => {
 
     fireEvent.click(getByText('Close'));
 
-    await wait(() => {
+    await waitFor(() => {
       expect(onClose).toHaveBeenCalledTimes(1);
     });
   });

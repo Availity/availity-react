@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { render, waitForElement, cleanup } from '@testing-library/react';
+import { render, waitFor, cleanup } from '@testing-library/react';
 import { avOrganizationsApi } from '@availity/api-axios';
 import { queryCache } from 'react-query';
 import { useOrganizations } from '..';
@@ -19,7 +19,7 @@ afterEach(() => {
   queryStates = [];
 });
 
-const pushState = state => {
+const pushState = (state) => {
   queryStates.push(state);
 };
 
@@ -55,8 +55,14 @@ describe('useOrganizations', () => {
     const { getByText } = render(<Component log={pushState} />);
 
     getByText('Status: loading');
-    await waitForElement(() => getByText('Status: error'));
-    await waitForElement(() => getByText('Error: An error occurred'));
+    await waitFor(() => {
+      const el = getByText('Status: error');
+      expect(el).toBeDefined();
+    });
+    await waitFor(() => {
+      const el = getByText('Error: An error occurred');
+      expect(el).toBeDefined();
+    });
   });
 
   test('should return organizations', async () => {
@@ -80,8 +86,8 @@ describe('useOrganizations', () => {
     const { getByText } = render(<Component log={pushState} />);
 
     getByText('Status: loading');
-    await waitForElement(() =>
-      getByText(
+    await waitFor(() => {
+      const el = getByText(
         `Data: ${JSON.stringify({
           data: {
             organizations: [
@@ -98,7 +104,8 @@ describe('useOrganizations', () => {
             ],
           },
         })}`
-      )
-    );
+      );
+      expect(el).toBeDefined();
+    });
   });
 });

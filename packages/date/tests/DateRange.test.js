@@ -2,7 +2,7 @@ import React from 'react';
 import {
   render,
   fireEvent,
-  wait,
+  waitFor,
   cleanup,
   within,
 } from '@testing-library/react';
@@ -37,7 +37,7 @@ describe('DateRange', () => {
 
     fireEvent.click(getByText('Submit'));
 
-    await wait(() => {
+    await waitFor(() => {
       const input = getByTestId('date-range-input-group-dateRange');
       expect(input.className).toContain('is-invalid');
       expect(input.className).toContain('is-touched');
@@ -80,7 +80,7 @@ describe('DateRange', () => {
       },
     });
 
-    await wait(() => {
+    await waitFor(() => {
       expect(onChange.mock.calls[1][0]).toStrictEqual({
         startDate: '1997-01-04',
         endDate: '1997-01-05',
@@ -177,6 +177,18 @@ describe('DateRange', () => {
     });
 
     fireEvent.click(getByText('Submit'));
+
+    await waitFor(() => {
+      expect(onSubmit).toHaveBeenCalledWith(
+        expect.objectContaining({
+          dateRange: {
+            startDate: '1997-01-04',
+            endDate: '1997-01-05',
+          },
+        }),
+        expect.anything()
+      );
+    });
   });
 
   test('works with date picker', async () => {
@@ -206,10 +218,7 @@ describe('DateRange', () => {
       current.parentElement.nextSibling.firstElementChild;
 
     const isCurrentDayLastDayOfMonth =
-      moment().dayOfYear() ===
-      moment()
-        .endOf('month')
-        .dayOfYear();
+      moment().dayOfYear() === moment().endOf('month').dayOfYear();
 
     let expectedStartDate = moment();
     let expectedEndDate = moment().add(1, 'day');
@@ -225,7 +234,7 @@ describe('DateRange', () => {
 
     fireEvent.click(getByText('Submit'));
 
-    await wait(() => {
+    await waitFor(() => {
       expect(onSubmit).toHaveBeenCalledWith(
         expect.objectContaining({
           dateRange: {
@@ -267,7 +276,7 @@ describe('DateRange', () => {
 
     fireEvent.click(getByText('Submit'));
 
-    await wait(() => {
+    await waitFor(() => {
       expect(onSubmit).toHaveBeenCalledWith(
         expect.objectContaining({
           dateRange: {
@@ -297,7 +306,7 @@ describe('DateRange', () => {
 
     container.querySelector('.DateRangePickerInput_calendarIcon').click();
 
-    await wait(() => {
+    await waitFor(() => {
       expect(
         container.querySelector(
           '.DayPicker_calendarInfo__horizontal DayPicker_calendarInfo__horizontal_1'
@@ -326,7 +335,7 @@ describe('DateRange', () => {
           dateRange: '',
         }}
       >
-        <DateRange name="dateRange" />
+        <DateRange id="dateRange" name="dateRange" />
       </Form>
     );
 
@@ -357,7 +366,7 @@ describe('DateRange', () => {
           dateRange: '',
         }}
       >
-        <DateRange name="dateRange" min={min} max={max} />
+        <DateRange id="dateRange" name="dateRange" min={min} max={max} />
       </Form>
     );
 
@@ -392,7 +401,13 @@ describe('DateRange', () => {
           dateRange: '',
         }}
       >
-        <DateRange name="dateRange" min={min} max={max} onChange={onChange} />
+        <DateRange
+          id="dateRange"
+          name="dateRange"
+          min={min}
+          max={max}
+          onChange={onChange}
+        />
       </Form>
     );
 
@@ -431,7 +446,7 @@ describe('DateRange', () => {
       },
     });
 
-    await wait(() => {
+    await waitFor(() => {
       expect(onChange.mock.calls[0][0]).toStrictEqual({
         endDate: '',
         startDate: `${max.year()}-12-25`,

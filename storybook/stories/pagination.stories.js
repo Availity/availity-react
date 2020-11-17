@@ -1,7 +1,6 @@
 /* eslint-disable react/prop-types */
 import React from 'react';
 import { storiesOf } from '@storybook/react';
-import { withKnobs } from '@storybook/addon-knobs/react';
 import {
   Pagination,
   PaginationContent,
@@ -10,8 +9,7 @@ import {
 } from '@availity/pagination';
 import { Card, CardBody, CardText, CardTitle, Col } from 'reactstrap';
 import README from '@availity/pagination/README.md';
-import { boolean, number } from '@storybook/addon-knobs';
-import { text } from '@storybook/addon-knobs/dist/deprecated';
+import { withKnobs, boolean, number, text } from '@storybook/addon-knobs';
 import paginationData from '@availity/mock/data/pagination.json';
 
 const Component = ({ name, address }) => (
@@ -31,7 +29,7 @@ const Component = ({ name, address }) => (
 
 const mockResponse = {
   postGet: async (params = {}, config = {}) =>
-    new Promise(resolve =>
+    new Promise((resolve) =>
       setTimeout(() => {
         const { offset = 0, limit = 50 } = params;
         const notifications = paginationData.slice(offset, offset + limit);

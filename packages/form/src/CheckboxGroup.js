@@ -7,7 +7,7 @@ import FormGroup from './FormGroup';
 
 export const CheckboxGroupContext = createContext();
 
-export const useCheckboxGroup = name => {
+export const useCheckboxGroup = (name) => {
   const { setFieldValue } = useFormikContext();
   const { name: groupName, groupOnChange, value = [], ...rest } = useContext(
     CheckboxGroupContext

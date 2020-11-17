@@ -19,28 +19,28 @@ let count = 0;
 
 const relativeRanges = {
   Today: {
-    startDate: now => now,
-    endDate: now => now,
+    startDate: (now) => now,
+    endDate: (now) => now,
   },
   'Last 7 Days': {
-    startDate: now => now.add(-6, 'd'),
-    endDate: now => now,
+    startDate: (now) => now.add(-6, 'd'),
+    endDate: (now) => now,
   },
   'Last 30 Days': {
-    startDate: now => now.add(-29, 'd'),
-    endDate: now => now,
+    startDate: (now) => now.add(-29, 'd'),
+    endDate: (now) => now,
   },
   'Last 120 Days': {
-    startDate: now => now.add(-119, 'd'),
-    endDate: now => now,
+    startDate: (now) => now.add(-119, 'd'),
+    endDate: (now) => now,
   },
   'Last 6 Months': {
-    startDate: now => now.add(-6, 'M'),
-    endDate: now => now,
+    startDate: (now) => now.add(-6, 'M'),
+    endDate: (now) => now,
   },
   'Last 12 Months': {
-    startDate: now => now.add(-12, 'M'),
-    endDate: now => now,
+    startDate: (now) => now.add(-12, 'M'),
+    endDate: (now) => now,
   },
 };
 
@@ -146,7 +146,7 @@ class AvDateRange extends Component {
     }
   };
 
-  getDateValue = value => {
+  getDateValue = (value) => {
     const { format } = this.state;
     const date = moment(
       value,
@@ -243,7 +243,7 @@ class AvDateRange extends Component {
   };
 
   // For updating when we delete the current input
-  onInputChange = async val => {
+  onInputChange = async (val) => {
     const { onChange, start, end } = this.props;
     const { focusedInput, format, startValue, endValue } = this.state;
     const isStart = focusedInput === 'startDate';
@@ -304,7 +304,7 @@ class AvDateRange extends Component {
     }
   };
 
-  onFocusChange = input => {
+  onFocusChange = (input) => {
     const { onPickerFocusChange, start, end, autoSync } = this.props;
     if (autoSync) {
       this.syncDates();
@@ -335,7 +335,7 @@ class AvDateRange extends Component {
     );
   };
 
-  valueParser = value => {
+  valueParser = (value) => {
     if (this.state.format === isoDateFormat) return value;
     const date = moment(
       value,
@@ -346,7 +346,7 @@ class AvDateRange extends Component {
     return value;
   };
 
-  valueFormatter = value => {
+  valueFormatter = (value) => {
     const date = moment(
       value,
       [isoDateFormat, this.state.format, 'MMDDYYYY', 'YYYYMMDD'],
@@ -449,7 +449,7 @@ class AvDateRange extends Component {
 
     return ranges ? (
       <div className="d-flex flex-column ml-2 mt-2">
-        {Object.keys(ranges).map(text => {
+        {Object.keys(ranges).map((text) => {
           const { startDate: startDateFunc, endDate: endDateFunc } = ranges[
             text
           ];
@@ -533,9 +533,9 @@ class AvDateRange extends Component {
     const minDate = validate && validate.min ? validate.min.value : min;
     const maxDate = validate && validate.max ? validate.max.value : max;
 
-    const startId = `${(id || name).replace(/[^a-zA-Z0-9]/gi, '')}-start`;
+    const startId = `${(id || name).replace(/[^\da-z]/gi, '')}-start`;
 
-    const endId = `${(id || name).replace(/[^a-zA-Z0-9]/gi, '')}-end`;
+    const endId = `${(id || name).replace(/[^\da-z]/gi, '')}-end`;
 
     const touched =
       this.context.FormCtrl.isTouched(this.props.start.name) &&

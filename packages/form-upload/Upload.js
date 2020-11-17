@@ -55,7 +55,7 @@ const Upload = ({
   const fieldValue = Array.isArray(field.value) ? field.value : [];
 
   const callFileDelivery = useCallback(
-    async upload => {
+    async (upload) => {
       if (!Array.isArray(upload)) upload = [upload];
       const uploadResults = [];
       try {
@@ -82,7 +82,7 @@ const Upload = ({
         }
 
         await Promise.all(uploadResults);
-      } catch (error) {
+      } catch {
         setFieldError(name, 'An error occurred while uploading files.');
       }
     },
@@ -125,15 +125,15 @@ const Upload = ({
     onFileUpload,
   ]);
 
-  const removeFile = fileId => {
-    const newFiles = fieldValue.filter(file => file.id !== fileId);
+  const removeFile = (fileId) => {
+    const newFiles = fieldValue.filter((file) => file.id !== fileId);
     if (newFiles.length !== fieldValue.length) {
       setFieldValue(name, newFiles, true);
       if (onFileRemove) onFileRemove(newFiles, fileId);
     }
   };
 
-  const setFiles = files => {
+  const setFiles = (files) => {
     let selectedFiles = [];
     for (let i = 0; i < files.length; i++) {
       selectedFiles[i] = files[i];
@@ -147,7 +147,7 @@ const Upload = ({
     }
 
     const newFiles = fieldValue.concat(
-      selectedFiles.map(file => {
+      selectedFiles.map((file) => {
         const upload = new UploadCore(file, {
           bucketId,
           customerId,
@@ -182,7 +182,7 @@ const Upload = ({
     setFieldValue(name, newFiles, true);
   };
 
-  const handleFileInputChange = event => {
+  const handleFileInputChange = (event) => {
     setFiles(event.target.files);
   };
 
@@ -190,7 +190,7 @@ const Upload = ({
     const rejectedFilesToDrop = fileRejections.map(({ file, errors }) => {
       const dropRejectionMessage = getDropRejectionMessage
         ? getDropRejectionMessage(errors, file)
-        : errors.map(error => error.message).join(', ');
+        : errors.map((error) => error.message).join(', ');
 
       file.dropRejectionMessage = dropRejectionMessage;
       return file;
@@ -207,58 +207,52 @@ const Upload = ({
   );
 
   if (!max || fieldValue.length < max) {
-    if (showFileDrop) {
-      fileAddArea = (
-        <FormGroup for={name}>
-          <Input name={name} style={{ display: 'none' }} />
-          <InputGroup disabled={disabled} className={classes}>
-            <Dropzone
-              onDrop={onDrop}
-              multiple={multiple}
-              maxSize={maxSize}
-              accept={allowedFileTypes}
-            >
-              {({ getRootProps, getInputProps, isDragActive }) => (
-                <section>
-                  <div
-                    {...getRootProps({
-                      className: isDragActive
-                        ? 'file-drop-active'
-                        : 'file-drop',
-                    })}
-                  >
-                    <input data-testid="file-picker" {...getInputProps()} />
-                    <p>
-                      <strong>Drag and Drop</strong>
-                    </p>
-                    {text}
-                  </div>
-                </section>
-              )}
-            </Dropzone>
-          </InputGroup>
-          <Feedback
-            className={classNames('d-block', feedbackClass)}
-            name={name}
-          />
-        </FormGroup>
-      );
-    } else {
-      fileAddArea = (
-        <FilePickerBtn
-          data-testid="file-picker"
-          onChange={handleFileInputChange}
-          color={fieldValue.length === 0 ? 'light' : 'link'}
-          multiple={multiple}
-          allowedFileTypes={allowedFileTypes}
-          maxSize={maxSize}
+    fileAddArea = showFileDrop ? (
+      <FormGroup for={name}>
+        <Input name={name} style={{ display: 'none' }} />
+        <InputGroup disabled={disabled} className={classes}>
+          <Dropzone
+            onDrop={onDrop}
+            multiple={multiple}
+            maxSize={maxSize}
+            accept={allowedFileTypes}
+          >
+            {({ getRootProps, getInputProps, isDragActive }) => (
+              <section>
+                <div
+                  {...getRootProps({
+                    className: isDragActive ? 'file-drop-active' : 'file-drop',
+                  })}
+                >
+                  <input data-testid="file-picker" {...getInputProps()} />
+                  <p>
+                    <strong>Drag and Drop</strong>
+                  </p>
+                  {text}
+                </div>
+              </section>
+            )}
+          </Dropzone>
+        </InputGroup>
+        <Feedback
+          className={classNames('d-block', feedbackClass)}
           name={name}
-          disabled={disabled}
-        >
-          {text}
-        </FilePickerBtn>
-      );
-    }
+        />
+      </FormGroup>
+    ) : (
+      <FilePickerBtn
+        data-testid="file-picker"
+        onChange={handleFileInputChange}
+        color={fieldValue.length === 0 ? 'light' : 'link'}
+        multiple={multiple}
+        allowedFileTypes={allowedFileTypes}
+        maxSize={maxSize}
+        name={name}
+        disabled={disabled}
+      >
+        {text}
+      </FilePickerBtn>
+    );
   }
 
   return (

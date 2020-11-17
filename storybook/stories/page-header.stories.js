@@ -1,6 +1,6 @@
 import React from 'react';
 import { storiesOf } from '@storybook/react';
-import { withKnobs, text, select } from '@storybook/addon-knobs/react';
+import { withKnobs, text, select } from '@storybook/addon-knobs';
 
 import PageHeader from '@availity/page-header';
 import README from '@availity/page-header/README.md';

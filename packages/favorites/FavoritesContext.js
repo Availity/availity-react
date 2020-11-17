@@ -23,7 +23,7 @@ const AV_INTERNAL_GLOBALS = {
 
 export const FavoritesContext = createContext();
 
-const validatedFavorites = input => {
+const validatedFavorites = (input) => {
   const validFavorites = reduce(
     input,
     (result, favorite) => {
@@ -45,7 +45,7 @@ const validatedFavorites = input => {
   return validFavorites;
 };
 
-const submitFavorites = async newfavorites => {
+const submitFavorites = async (newfavorites) => {
   const favorites = validatedFavorites(newfavorites);
 
   return avSettingsApi.setApplication(NAV_APP_ID, {
@@ -53,7 +53,7 @@ const submitFavorites = async newfavorites => {
   });
 };
 
-const sendUpdate = faves => {
+const sendUpdate = (faves) => {
   avMessages.send({
     favorites: faves,
     event: AV_INTERNAL_GLOBALS.FAVORITES_UPDATE,
@@ -82,7 +82,7 @@ const Favorites = ({ children }) => {
   };
 
   useEffectAsync(async () => {
-    avMessages.subscribe(AV_INTERNAL_GLOBALS.FAVORITES_CHANGED, data => {
+    avMessages.subscribe(AV_INTERNAL_GLOBALS.FAVORITES_CHANGED, (data) => {
       setFavorites(get(data, 'favorites') || []);
     });
 
@@ -92,16 +92,16 @@ const Favorites = ({ children }) => {
   }, []);
 
   useEffectAsync(async () => {
-    avMessages.subscribe(AV_INTERNAL_GLOBALS.FAVORITES_UPDATE, data => {
+    avMessages.subscribe(AV_INTERNAL_GLOBALS.FAVORITES_UPDATE, (data) => {
       setFavorites(get(data, 'favorites') || []);
     });
 
     return () => avMessages.unsubscribe(AV_INTERNAL_GLOBALS.FAVORITES_UPDATE);
   }, []);
 
-  const deleteFavorite = async id => {
+  const deleteFavorite = async (id) => {
     const result = await submitFavorites(
-      clone(favorites).filter(favorite => favorite.id !== id)
+      clone(favorites).filter((favorite) => favorite.id !== id)
     );
 
     const newFavorites = get(result, 'data.favorites');
@@ -110,7 +110,7 @@ const Favorites = ({ children }) => {
     sendUpdate(newFavorites);
   };
 
-  const addFavorite = async id => {
+  const addFavorite = async (id) => {
     if (favorites.length >= MAX_FAVORITES) {
       openMaxModal();
       return false;
@@ -154,7 +154,7 @@ Favorites.propTypes = {
   children: PropTypes.node,
 };
 
-export const useFavorites = id => {
+export const useFavorites = (id) => {
   const { favorites, deleteFavorite, addFavorite } = useContext(
     FavoritesContext
   );

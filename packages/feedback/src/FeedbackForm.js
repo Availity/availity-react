@@ -70,7 +70,7 @@ const FeedbackForm = ({
         }
         if (onFeedbackSent) {
           Object.keys(sent).forEach(
-            key => sent[key] === undefined && delete sent[key]
+            (key) => sent[key] === undefined && delete sent[key]
           );
 
           onFeedbackSent({
@@ -134,7 +134,7 @@ const FeedbackForm = ({
             .isRequired(aboutOptions.length > 0, 'This field is required.'),
         })}
         {...formProps}
-        onSubmit={values => sendFeedback(values)}
+        onSubmit={(values) => sendFeedback(values)}
       >
         <ModalBody>
           <FormGroup
@@ -146,7 +146,7 @@ const FeedbackForm = ({
             <SmileField
               options={faceOptions}
               name="smileField"
-              onChange={option => setActive(option)}
+              onChange={(option) => setActive(option)}
             />
           </FormGroup>
           {active ? (

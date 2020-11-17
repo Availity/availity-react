@@ -1,5 +1,5 @@
 import React from 'react';
-import { render, wait, fireEvent, cleanup } from '@testing-library/react';
+import { render, waitFor, fireEvent, cleanup } from '@testing-library/react';
 import { Button } from 'reactstrap';
 import * as yup from 'yup';
 import { Form, Radio, RadioGroup } from '..';
@@ -55,7 +55,7 @@ describe('RadioGroup', () => {
 
     await fireEvent.click(getByText('Submit'));
 
-    await wait(() => {
+    await waitFor(() => {
       const radioGroup = getByTestId('radio-items-hello');
 
       expect(radioGroup.className).toContain('is-touched');
@@ -89,7 +89,7 @@ describe('RadioGroup', () => {
 
     await fireEvent.click(getByText('Submit'));
 
-    await wait(() => {
+    await waitFor(() => {
       expect(onSubmit).toHaveBeenCalledWith(
         expect.objectContaining({
           hello: 'uno',
@@ -122,7 +122,7 @@ describe('RadioGroup', () => {
 
     await fireEvent.click(getByText('Radio One'));
 
-    await wait(() => {
+    await waitFor(() => {
       expect(onChange).toHaveBeenCalledWith('uno');
     });
   });

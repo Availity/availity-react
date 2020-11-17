@@ -56,16 +56,16 @@
     "@availity/upload-core": "^3.0.4",
     "@availity/yup": "^3.0.2",
     "@loadable/component": "^5.10.2",
-    "availity-reactstrap-validation": "2.6.1",
-    "axios": "^0.19.2",
-    "formik": "^2.0.4",
-    "gatsby": "^2.19.12",
+    "availity-reactstrap-validation": "2.7.0",
+    "axios": "^0.21.0",
+    "formik": "^2.2.2",
+    "gatsby": "^2.25.3",
     "gatsby-plugin-compile-es6-packages": "^2.1.0",
     "moment": "^2.24.0",
-    "react": "^16.8.3",
-    "react-dom": "^16.8.3",
-    "reactstrap": "^8.0.1",
-    "yup": "^0.28.1"
+    "react": "^17.0.1",
+    "react-dom": "^17.0.1",
+    "reactstrap": "^8.7.0",
+    "yup": "^0.29.3"
   },
   "devDependencies": {
     "gatsby-plugin-compile-es6-packages": "^2.1.0"

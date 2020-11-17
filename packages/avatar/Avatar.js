@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 import Skeleton from 'react-loading-skeleton';
-import Img from 'react-image';
+import { Img } from 'react-image';
 import { useEffectAsync } from '@availity/hooks';
 import { avSettingsApi } from '@availity/api-axios';
 import get from 'lodash.get';

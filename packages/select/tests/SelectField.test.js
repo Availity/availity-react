@@ -19,6 +19,7 @@ describe('Select', () => {
         <Button type="submit">Submit</Button>
       </Form>
     );
-    getByText('Single Select Field');
+    const field = getByText('Single Select Field');
+    expect(field).toBeDefined();
   });
 });

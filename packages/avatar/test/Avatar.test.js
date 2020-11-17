@@ -1,5 +1,5 @@
 import React from 'react';
-import { render, cleanup, waitForElement } from '@testing-library/react';
+import { render, cleanup, waitFor } from '@testing-library/react';
 import { avSettingsApi } from '@availity/api-axios';
 import Avatar from '..';
 
@@ -27,10 +27,10 @@ describe('Avatar', () => {
     const { getByTestId } = render(<Avatar />);
 
     // Check that loader renders
-    await waitForElement(() => getByTestId('avatar-img-loader'));
+    await waitFor(() => getByTestId('avatar-img-loader'));
 
     // Check that image renders
-    await waitForElement(() => getByTestId('avatar-img'));
+    await waitFor(() => getByTestId('avatar-img'));
     expect(avSettingsApi.getApplication).toHaveBeenCalledTimes(1);
   });
 });

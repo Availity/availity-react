@@ -1,5 +1,5 @@
 import React from 'react';
-import { render, fireEvent, wait, cleanup } from '@testing-library/react';
+import { render, fireEvent, waitFor, cleanup } from '@testing-library/react';
 import { Button, Label } from 'reactstrap';
 import { Form } from '@availity/form';
 import * as yup from 'yup';
@@ -31,7 +31,8 @@ describe('Date', () => {
 
     fireEvent.click(getByText('Submit'));
 
-    getByText('My Date Field');
+    const field = getByText('My Date Field');
+    expect(field).toBeDefined();
   });
 
   test('renders with a component label', async () => {
@@ -73,7 +74,7 @@ describe('Date', () => {
           name="singleDate"
           data-testid="single-select"
           label="My Date Field"
-          labelAttrs={{tag: "h3"}}
+          labelAttrs={{ tag: 'h3' }}
         />
         <Button type="submit">Submit</Button>
       </Form>
@@ -105,9 +106,11 @@ describe('Date', () => {
 
     fireEvent.click(getByText('Submit'));
 
-    await wait(() => {
-      getByTestId('date-input-group-singleDate');
-      getByText('This field is required');
+    await waitFor(() => {
+      const field = getByTestId('date-input-group-singleDate');
+      const error = getByText('This field is required');
+      expect(field).toBeDefined();
+      expect(error).toBeDefined();
     });
   });
 });

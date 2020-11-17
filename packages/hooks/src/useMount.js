@@ -1,5 +1,5 @@
 import { useEffect } from 'react';
 
-export default effect => {
+export default (effect) => {
   useEffect(effect, []);
 };

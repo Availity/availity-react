@@ -2,7 +2,7 @@ import React from 'react';
 import { storiesOf } from '@storybook/react';
 import README from '@availity/avatar/README.md';
 import Avatar from '@availity/avatar';
-import { withKnobs, text } from '@storybook/addon-knobs/react';
+import { withKnobs, text } from '@storybook/addon-knobs';
 
 storiesOf('Components|Avatar', module)
   .addParameters({

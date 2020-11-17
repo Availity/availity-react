@@ -1,10 +1,5 @@
 import React from 'react';
-import {
-  render,
-  fireEvent,
-  cleanup,
-  waitForElement,
-} from '@testing-library/react';
+import { render, fireEvent, cleanup, waitFor } from '@testing-library/react';
 import { AvForm } from 'availity-reactstrap-validation';
 import { Button } from 'reactstrap';
 
@@ -19,7 +14,7 @@ const options = [
   { label: 'Option 4', value: 'value for option 4' },
 ];
 
-const renderSelect = props =>
+const renderSelect = (props) =>
   render(
     <AvForm>
       <AvSelectField name="test-form-input" {...props} />
@@ -35,7 +30,8 @@ describe('AvSelect', () => {
       getResult: 'regions',
       label: 'Hello World',
     });
-    getByText('Hello World');
+    const select = getByText('Hello World');
+    expect(select).toBeDefined();
   });
   test('works with error message', async () => {
     const { getByText } = renderSelect({
@@ -50,6 +46,7 @@ describe('AvSelect', () => {
       },
     });
     fireEvent.click(getByText('Submit'));
-    await waitForElement(() => getByText('This field is wrong.'));
+    const err = await waitFor(() => getByText('This field is wrong.'));
+    expect(err).toBeDefined();
   });
 });

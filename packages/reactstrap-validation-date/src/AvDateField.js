@@ -44,10 +44,10 @@ class AvDateField extends Component {
     } = this.props;
 
     if (grid) {
-      colSizes.forEach(colSize => {
+      colSizes.forEach((colSize) => {
         if (grid[colSize]) {
           row = true;
-          const sizeNum = parseInt(grid[colSize], 10);
+          const sizeNum = Number.parseInt(grid[colSize], 10);
           col[colSize] = sizeNum;
           labelCol[colSize] = 12 - sizeNum;
         }

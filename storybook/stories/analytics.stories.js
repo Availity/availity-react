@@ -1,6 +1,6 @@
 import React from 'react';
 import { storiesOf } from '@storybook/react';
-import { withKnobs } from '@storybook/addon-knobs/react';
+import { withKnobs } from '@storybook/addon-knobs';
 import { Button } from 'reactstrap';
 import Analytics from '@availity/analytics';
 import README from '@availity/analytics/README.md';
@@ -19,7 +19,7 @@ storiesOf('Components|Analytics', module)
     const plugin = {
       isEnabled: () => true,
       init: () => {},
-      trackEvent: e => {
+      trackEvent: (e) => {
         alert(JSON.stringify(e));
       },
       trackPageView: () => {},

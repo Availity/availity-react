@@ -1,5 +1,5 @@
 import React from 'react';
-import { render, cleanup, wait } from '@testing-library/react';
+import { render, cleanup, waitFor } from '@testing-library/react';
 import { useTimeout } from '..';
 
 afterEach(cleanup);
@@ -21,7 +21,7 @@ describe('useTimeout', () => {
   test('should render "True"', async () => {
     const { getByTestId } = render(<Component />);
 
-    await wait(() => {
+    await waitFor(() => {
       expect(getByTestId('timeout-test').textContent).toEqual('True');
     });
   });

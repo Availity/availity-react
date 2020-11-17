@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import UploadCore from '@availity/upload-core';
 import Dropzone from 'react-dropzone';
 import { InputGroup } from 'reactstrap';
-import uuid from 'uuid/v4';
+import { v4 as uuid } from 'uuid';
 import FilePickerBtn from './FilePickerBtn';
 import FileList from './FileList';
 import './styles.scss';
@@ -23,9 +23,9 @@ class Upload extends Component {
 
   files = [];
 
-  removeFile = fileId => {
+  removeFile = (fileId) => {
     this.setState(({ files }) => {
-      const newFiles = files.filter(file => file.id !== fileId);
+      const newFiles = files.filter((file) => file.id !== fileId);
       if (newFiles.length !== files.length) {
         this.files = newFiles;
 
@@ -39,7 +39,7 @@ class Upload extends Component {
     });
   };
 
-  setFiles = files => {
+  setFiles = (files) => {
     let selectedFiles = [];
     for (let i = 0; i < files.length; i++) {
       selectedFiles[i] = files[i];
@@ -54,7 +54,7 @@ class Upload extends Component {
       );
     }
     this.files = this.files.concat(
-      selectedFiles.map(file => {
+      selectedFiles.map((file) => {
         const upload = new UploadCore(file, {
           bucketId: this.props.bucketId,
           customerId: this.props.customerId,
@@ -76,7 +76,7 @@ class Upload extends Component {
     this.setState({ files: this.files });
   };
 
-  handleFileInputChange = event => {
+  handleFileInputChange = (event) => {
     this.setFiles(event.target.files);
   };
 
@@ -84,7 +84,7 @@ class Upload extends Component {
     const rejectedFilesToDrop = fileRejections.map(({ file, errors }) => {
       const dropRejectionMessage = this.props.getDropRejectionMessage
         ? this.props.getDropRejectionMessage(errors, file)
-        : errors.map(error => error.message).join(', ');
+        : errors.map((error) => error.message).join(', ');
 
       file.dropRejectionMessage = dropRejectionMessage;
       return file;
@@ -107,8 +107,8 @@ class Upload extends Component {
     this.validations = { ...props.validate };
 
     Object.keys(props)
-      .filter(val => validationAttrs.indexOf(val) > -1)
-      .forEach(attr => {
+      .filter((val) => validationAttrs.indexOf(val) > -1)
+      .forEach((attr) => {
         if (props[attr]) {
           this.validations[attr] = this.validations[attr] || {
             value: props[attr],
@@ -160,52 +160,48 @@ class Upload extends Component {
     );
 
     if (!max || files.length < max) {
-      if (showFileDrop) {
-        fileAddArea = (
-          <div>
-            <InputGroup disabled={disabled}>
-              <Dropzone
-                onDrop={this.onDrop}
-                multiple={multiple}
-                maxSize={maxSize}
-                accept={allowedFileTypes}
-              >
-                {({ getRootProps, getInputProps, isDragActive }) => (
-                  <section>
-                    <div
-                      {...getRootProps({
-                        className: isDragActive
-                          ? 'file-drop-active'
-                          : 'file-drop',
-                      })}
-                    >
-                      <input data-testid="file-picker" {...getInputProps()} />
-                      <p>
-                        <strong>Drag and Drop</strong>
-                      </p>
-                      {text}
-                    </div>
-                  </section>
-                )}
-              </Dropzone>
-            </InputGroup>
-          </div>
-        );
-      } else {
-        fileAddArea = (
-          <FilePickerBtn
-            data-testid="file-picker"
-            onChange={this.handleFileInputChange}
-            color={files.length === 0 ? 'light' : 'link'}
-            multiple={multiple}
-            allowedFileTypes={allowedFileTypes}
-            maxSize={maxSize}
-            disabled={disabled}
-          >
-            {text}
-          </FilePickerBtn>
-        );
-      }
+      fileAddArea = showFileDrop ? (
+        <div>
+          <InputGroup disabled={disabled}>
+            <Dropzone
+              onDrop={this.onDrop}
+              multiple={multiple}
+              maxSize={maxSize}
+              accept={allowedFileTypes}
+            >
+              {({ getRootProps, getInputProps, isDragActive }) => (
+                <section>
+                  <div
+                    {...getRootProps({
+                      className: isDragActive
+                        ? 'file-drop-active'
+                        : 'file-drop',
+                    })}
+                  >
+                    <input data-testid="file-picker" {...getInputProps()} />
+                    <p>
+                      <strong>Drag and Drop</strong>
+                    </p>
+                    {text}
+                  </div>
+                </section>
+              )}
+            </Dropzone>
+          </InputGroup>
+        </div>
+      ) : (
+        <FilePickerBtn
+          data-testid="file-picker"
+          onChange={this.handleFileInputChange}
+          color={files.length === 0 ? 'light' : 'link'}
+          multiple={multiple}
+          allowedFileTypes={allowedFileTypes}
+          maxSize={maxSize}
+          disabled={disabled}
+        >
+          {text}
+        </FilePickerBtn>
+      );
     }
 
     return (

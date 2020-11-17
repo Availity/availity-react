@@ -1,5 +1,5 @@
 import React from 'react';
-import { render, cleanup, waitForElement } from '@testing-library/react';
+import { render, cleanup, waitFor } from '@testing-library/react';
 import { avUserPermissionsApi } from '@availity/api-axios';
 import Authorize from '..';
 
@@ -43,7 +43,11 @@ describe('Authorize', () => {
       </Authorize>
     );
 
-    await waitForElement(() => getByText('You have permission to see this'));
+    await waitFor(() => {
+      const el = getByText('You have permission to see this');
+      expect(el).toBeDefined();
+      return el;
+    });
   });
 
   test('should render unauthorized content', async () => {
@@ -54,9 +58,11 @@ describe('Authorize', () => {
       />
     );
 
-    await waitForElement(() =>
-      getByText('You do not have permission to see this')
-    );
+    await waitFor(() => {
+      const el = getByText('You do not have permission to see this');
+      expect(el).toBeDefined();
+      return el;
+    });
   });
 
   test('should render authorized with array of permissions', async () => {
@@ -69,7 +75,11 @@ describe('Authorize', () => {
       </Authorize>
     );
 
-    await waitForElement(() => getByText('You have permission to see this'));
+    await waitFor(() => {
+      const el = getByText('You have permission to see this');
+      expect(el).toBeDefined();
+      return el;
+    });
   });
 
   test('should render negate permissions', async () => {
@@ -83,9 +93,11 @@ describe('Authorize', () => {
       </Authorize>
     );
 
-    await waitForElement(() =>
-      getByText('You do not have permission to see this')
-    );
+    await waitFor(() => {
+      const el = getByText('You do not have permission to see this');
+      expect(el).toBeDefined();
+      return el;
+    });
   });
 
   test('should render authorized with correct organizationId', async () => {
@@ -99,7 +111,11 @@ describe('Authorize', () => {
       </Authorize>
     );
 
-    await waitForElement(() => getByText('You have permission to see this'));
+    await waitFor(() => {
+      const el = getByText('You have permission to see this');
+      expect(el).toBeDefined();
+      return el;
+    });
   });
 
   test('should render unauthorized with incorrect organizationId', async () => {
@@ -113,9 +129,11 @@ describe('Authorize', () => {
       </Authorize>
     );
 
-    await waitForElement(() =>
-      getByText('You do not have permission to see this')
-    );
+    await waitFor(() => {
+      const el = getByText('You do not have permission to see this');
+      expect(el).toBeDefined();
+      return el;
+    });
   });
 
   test('should render authorized with correct customerId', async () => {
@@ -129,7 +147,11 @@ describe('Authorize', () => {
       </Authorize>
     );
 
-    await waitForElement(() => getByText('You have permission to see this'));
+    await waitFor(() => {
+      const el = getByText('You have permission to see this');
+      expect(el).toBeDefined();
+      return el;
+    });
   });
 
   test('should render unauthorized with incorrect customerId', async () => {
@@ -143,9 +165,11 @@ describe('Authorize', () => {
       </Authorize>
     );
 
-    await waitForElement(() =>
-      getByText('You do not have permission to see this')
-    );
+    await waitFor(() => {
+      const el = getByText('You do not have permission to see this');
+      expect(el).toBeDefined();
+      return el;
+    });
   });
 
   test('should render authorized with correct resources', async () => {
@@ -160,7 +184,11 @@ describe('Authorize', () => {
       </Authorize>
     );
 
-    await waitForElement(() => getByText('You have permission to see this'));
+    await waitFor(() => {
+      const el = getByText('You have permission to see this');
+      expect(el).toBeDefined();
+      return el;
+    });
   });
 
   test('should render unauthorized with incorrect resources', async () => {
@@ -175,8 +203,10 @@ describe('Authorize', () => {
       </Authorize>
     );
 
-    await waitForElement(() =>
-      getByText('You do not have permission to see this')
-    );
+    await waitFor(() => {
+      const el = getByText('You do not have permission to see this');
+      expect(el).toBeDefined();
+      return el;
+    });
   });
 });

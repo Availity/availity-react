@@ -18,7 +18,7 @@ const PaginationControls = ({
 }) => {
   const { pageCount, currentPage, setPage } = usePagination();
 
-  const createItem = pageNumber => (
+  const createItem = (pageNumber) => (
     <PaginationItem
       key={pageNumber}
       active={currentPage === pageNumber}
@@ -47,11 +47,11 @@ const PaginationControls = ({
     return backwardJump < 1 ? 1 : backwardJump;
   };
 
-  const handleBreakClick = index => {
+  const handleBreakClick = (index) => {
     setPage(currentPage < index ? getForwardJump() : getBackwardJump());
   };
 
-  const createBreak = index => (
+  const createBreak = (index) => (
     <PaginationItem key={index} data-testid={`control-page-${index}`}>
       <PaginationLink onClick={() => handleBreakClick(index)} type="button">
         &hellip;

@@ -1,10 +1,5 @@
 import React from 'react';
-import {
-  render,
-  cleanup,
-  fireEvent,
-  waitForElement,
-} from '@testing-library/react';
+import { render, cleanup, fireEvent, waitFor } from '@testing-library/react';
 import { AvForm } from 'availity-reactstrap-validation';
 import { Button } from 'reactstrap';
 import { AvDateRangeField } from '..';
@@ -13,7 +8,7 @@ afterEach(() => {
   cleanup();
 });
 
-const DateRange = props => (
+const DateRange = (props) => (
   <AvForm>
     <AvDateRangeField {...props} />
     <Button type="submit">Submit</Button>
@@ -45,7 +40,8 @@ describe('AvDateRange', () => {
 
     fireEvent.click(getByText('Submit'));
 
-    await waitForElement(() => getByText('Date must come after value'));
+    const el = await waitFor(() => getByText('Date must come after value'));
+    expect(el).toBeDefined();
   });
 
   test('start date and no end date', async () => {
@@ -64,9 +60,10 @@ describe('AvDateRange', () => {
 
     fireEvent.click(getByText('Submit'));
 
-    await waitForElement(() =>
+    const el = await waitFor(() =>
       getByText('Both start and end date are required.')
     );
+    expect(el).toBeDefined();
   });
 
   test('end date after start date', async () => {
@@ -86,9 +83,10 @@ describe('AvDateRange', () => {
 
     fireEvent.click(getByText('Submit'));
 
-    await waitForElement(() =>
+    const el = await waitFor(() =>
       getByText('Start Date must come before End Date.')
     );
+    expect(el).toBeDefined();
   });
 
   test('end date and no start date', async () => {
@@ -107,9 +105,10 @@ describe('AvDateRange', () => {
 
     fireEvent.click(getByText('Submit'));
 
-    await waitForElement(() =>
+    const range = await waitFor(() =>
       getByText('Both start and end date are required.')
     );
+    expect(range).toBeDefined();
   });
 
   test('display label with grid', async () => {
