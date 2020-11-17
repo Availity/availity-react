@@ -90,14 +90,13 @@ const ResourceSelect = ({
       };
 
       if (args.length !== 3) {
-        if (typeof rest.parameters === 'function') {
-          data = rest.parameters(data);
-        } else {
-          data = {
-            ...data,
-            ...rest.parameters,
-          };
-        }
+        data =
+          typeof rest.parameters === 'function'
+            ? rest.parameters(data)
+            : {
+                ...data,
+                ...rest.parameters,
+              };
       }
 
       if (graphqlConfig.query) {
@@ -111,14 +110,13 @@ const ResourceSelect = ({
       };
 
       if (args.length !== 3) {
-        if (typeof rest.parameters === 'function') {
-          params = rest.parameters(params);
-        } else {
-          params = {
-            ...params,
-            ...rest.parameters,
-          };
-        }
+        params =
+          typeof rest.parameters === 'function'
+            ? rest.parameters(params)
+            : {
+                ...params,
+                ...rest.parameters,
+              };
       }
     }
 
@@ -130,14 +128,13 @@ const ResourceSelect = ({
         }
       } else {
         params.offset = (page - 1) * itemsPerPage;
-        if (typeof rest.parameters === 'function') {
-          params = rest.parameters(params);
-        } else {
-          params = {
-            ...params,
-            ...rest.parameters,
-          };
-        }
+        params =
+          typeof rest.parameters === 'function'
+            ? rest.parameters(params)
+            : {
+                ...params,
+                ...rest.parameters,
+              };
       }
     } else {
       page = 1;
@@ -147,13 +144,11 @@ const ResourceSelect = ({
       !rest.requiredParams || rest.requiredParams.length === 0;
 
     if (!requiredSatisfied) {
-      if (graphqlConfig) {
-        requiredSatisfied = rest.requiredParams.every((param) =>
-          get(data, `variables.filters.${param}`)
-        );
-      } else {
-        requiredSatisfied = rest.requiredParams.every((param) => params[param]);
-      }
+      requiredSatisfied = graphqlConfig
+        ? rest.requiredParams.every((param) =>
+            get(data, `variables.filters.${param}`)
+          )
+        : rest.requiredParams.every((param) => params[param]);
     }
 
     let _shouldSearch = shouldSearch;

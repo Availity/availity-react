@@ -207,58 +207,52 @@ const Upload = ({
   );
 
   if (!max || fieldValue.length < max) {
-    if (showFileDrop) {
-      fileAddArea = (
-        <FormGroup for={name}>
-          <Input name={name} style={{ display: 'none' }} />
-          <InputGroup disabled={disabled} className={classes}>
-            <Dropzone
-              onDrop={onDrop}
-              multiple={multiple}
-              maxSize={maxSize}
-              accept={allowedFileTypes}
-            >
-              {({ getRootProps, getInputProps, isDragActive }) => (
-                <section>
-                  <div
-                    {...getRootProps({
-                      className: isDragActive
-                        ? 'file-drop-active'
-                        : 'file-drop',
-                    })}
-                  >
-                    <input data-testid="file-picker" {...getInputProps()} />
-                    <p>
-                      <strong>Drag and Drop</strong>
-                    </p>
-                    {text}
-                  </div>
-                </section>
-              )}
-            </Dropzone>
-          </InputGroup>
-          <Feedback
-            className={classNames('d-block', feedbackClass)}
-            name={name}
-          />
-        </FormGroup>
-      );
-    } else {
-      fileAddArea = (
-        <FilePickerBtn
-          data-testid="file-picker"
-          onChange={handleFileInputChange}
-          color={fieldValue.length === 0 ? 'light' : 'link'}
-          multiple={multiple}
-          allowedFileTypes={allowedFileTypes}
-          maxSize={maxSize}
+    fileAddArea = showFileDrop ? (
+      <FormGroup for={name}>
+        <Input name={name} style={{ display: 'none' }} />
+        <InputGroup disabled={disabled} className={classes}>
+          <Dropzone
+            onDrop={onDrop}
+            multiple={multiple}
+            maxSize={maxSize}
+            accept={allowedFileTypes}
+          >
+            {({ getRootProps, getInputProps, isDragActive }) => (
+              <section>
+                <div
+                  {...getRootProps({
+                    className: isDragActive ? 'file-drop-active' : 'file-drop',
+                  })}
+                >
+                  <input data-testid="file-picker" {...getInputProps()} />
+                  <p>
+                    <strong>Drag and Drop</strong>
+                  </p>
+                  {text}
+                </div>
+              </section>
+            )}
+          </Dropzone>
+        </InputGroup>
+        <Feedback
+          className={classNames('d-block', feedbackClass)}
           name={name}
-          disabled={disabled}
-        >
-          {text}
-        </FilePickerBtn>
-      );
-    }
+        />
+      </FormGroup>
+    ) : (
+      <FilePickerBtn
+        data-testid="file-picker"
+        onChange={handleFileInputChange}
+        color={fieldValue.length === 0 ? 'light' : 'link'}
+        multiple={multiple}
+        allowedFileTypes={allowedFileTypes}
+        maxSize={maxSize}
+        name={name}
+        disabled={disabled}
+      >
+        {text}
+      </FilePickerBtn>
+    );
   }
 
   return (

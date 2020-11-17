@@ -160,52 +160,48 @@ class Upload extends Component {
     );
 
     if (!max || files.length < max) {
-      if (showFileDrop) {
-        fileAddArea = (
-          <div>
-            <InputGroup disabled={disabled}>
-              <Dropzone
-                onDrop={this.onDrop}
-                multiple={multiple}
-                maxSize={maxSize}
-                accept={allowedFileTypes}
-              >
-                {({ getRootProps, getInputProps, isDragActive }) => (
-                  <section>
-                    <div
-                      {...getRootProps({
-                        className: isDragActive
-                          ? 'file-drop-active'
-                          : 'file-drop',
-                      })}
-                    >
-                      <input data-testid="file-picker" {...getInputProps()} />
-                      <p>
-                        <strong>Drag and Drop</strong>
-                      </p>
-                      {text}
-                    </div>
-                  </section>
-                )}
-              </Dropzone>
-            </InputGroup>
-          </div>
-        );
-      } else {
-        fileAddArea = (
-          <FilePickerBtn
-            data-testid="file-picker"
-            onChange={this.handleFileInputChange}
-            color={files.length === 0 ? 'light' : 'link'}
-            multiple={multiple}
-            allowedFileTypes={allowedFileTypes}
-            maxSize={maxSize}
-            disabled={disabled}
-          >
-            {text}
-          </FilePickerBtn>
-        );
-      }
+      fileAddArea = showFileDrop ? (
+        <div>
+          <InputGroup disabled={disabled}>
+            <Dropzone
+              onDrop={this.onDrop}
+              multiple={multiple}
+              maxSize={maxSize}
+              accept={allowedFileTypes}
+            >
+              {({ getRootProps, getInputProps, isDragActive }) => (
+                <section>
+                  <div
+                    {...getRootProps({
+                      className: isDragActive
+                        ? 'file-drop-active'
+                        : 'file-drop',
+                    })}
+                  >
+                    <input data-testid="file-picker" {...getInputProps()} />
+                    <p>
+                      <strong>Drag and Drop</strong>
+                    </p>
+                    {text}
+                  </div>
+                </section>
+              )}
+            </Dropzone>
+          </InputGroup>
+        </div>
+      ) : (
+        <FilePickerBtn
+          data-testid="file-picker"
+          onChange={this.handleFileInputChange}
+          color={files.length === 0 ? 'light' : 'link'}
+          multiple={multiple}
+          allowedFileTypes={allowedFileTypes}
+          maxSize={maxSize}
+          disabled={disabled}
+        >
+          {text}
+        </FilePickerBtn>
+      );
     }
 
     return (

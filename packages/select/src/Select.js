@@ -183,11 +183,10 @@ const Select = ({
           }
 
           let shouldAutofillField = false;
-          if (typeof autofill === 'object') {
-            shouldAutofillField = autofill[fieldName];
-          } else {
-            shouldAutofillField = has(rawValue, fieldName);
-          }
+          shouldAutofillField =
+            typeof autofill === 'object'
+              ? autofill[fieldName]
+              : has(rawValue, fieldName);
 
           if (shouldAutofillField) {
             let val;

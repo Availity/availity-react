@@ -41,6 +41,7 @@ describe('Pagination', () => {
   });
 
   test('should provide a list given a function', async () => {
+    // eslint-disable-next-line unicorn/consistent-function-scoping
     const getItems = () => ({
       totalCount: 3,
       items: [

@@ -49,6 +49,7 @@ describe('Pagination Content', () => {
   });
 
   test('should render loading message', async () => {
+    // eslint-disable-next-line unicorn/consistent-function-scoping
     const loadPage = () => ({
       totalCount: 3,
       items: [
@@ -87,6 +88,7 @@ describe('Pagination Content', () => {
   });
 
   test('should use custom render children', async () => {
+    // eslint-disable-next-line unicorn/consistent-function-scoping
     const loadPage = () => ({
       totalCount: 3,
       items: [

@@ -158,11 +158,10 @@ describe('Upload', () => {
     const getDropRejectionMessage = (errors) => {
       let msg = '';
       errors.forEach((error) => {
-        if (error.code === 'file-too-large') {
-          msg += 'my custom error message';
-        } else {
-          msg += 'this file is no good';
-        }
+        msg +=
+          error.code === 'file-too-large'
+            ? 'my custom error message'
+            : 'this file is no good';
       });
       return msg;
     };

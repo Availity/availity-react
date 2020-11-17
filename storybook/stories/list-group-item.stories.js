@@ -67,6 +67,7 @@ storiesOf('Components|List Group Item', module)
     const title = <h5>Item Title</h5>;
     const content = 'item';
 
+    // eslint-disable-next-line unicorn/consistent-function-scoping
     const itemProps = (number) => ({
       color: select(`Item ${number} Color`, colorOptions, '', 'Card'),
       badge: {

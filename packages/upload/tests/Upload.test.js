@@ -124,14 +124,14 @@ describe('Upload', () => {
   });
 
   test('uses custom drop rejection message', async () => {
+    // eslint-disable-next-line unicorn/consistent-function-scoping
     const getDropRejectionMessage = (errors) => {
       let msg = '';
       errors.forEach((error) => {
-        if (error.code === 'file-too-large') {
-          msg += 'my custom error message';
-        } else {
-          msg += 'this file is no good';
-        }
+        msg +=
+          error.code === 'file-too-large'
+            ? 'my custom error message'
+            : 'this file is no good';
       });
       return msg;
     };
