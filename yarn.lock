@@ -17,7 +17,7 @@
     "@babel/runtime" "^7.10.2"
     yup "^0.28.4"
 
-"@availity/api-axios@^5.4.0", "@availity/api-axios@^5.4.4":
+"@availity/api-axios@>=5.5.9", "@availity/api-axios@^5.4.0", "@availity/api-axios@^5.4.4":
   version "5.5.9"
   resolved "https://registry.yarnpkg.com/@availity/api-axios/-/api-axios-5.5.9.tgz#c194a007276c4ff0a228afc3e52596a47d889a8e"
   integrity sha512-M7mbKP9cGZyjkB9vJU25UiOtE9WjDqLYpxQttTZ4uySuV3FDHp1lOX8XeYFozRVYhg0NBwXs/+c4fIQPoQ8sag==
@@ -25,7 +25,7 @@
     "@babel/runtime" "^7.10.2"
     merge-options-es5 "^1.0.0"
 
-"@availity/api-core@^6.0.1", "@availity/api-core@^6.1.3":
+"@availity/api-core@>=6.6.4", "@availity/api-core@^6.0.1", "@availity/api-core@^6.1.3":
   version "6.6.4"
   resolved "https://registry.yarnpkg.com/@availity/api-core/-/api-core-6.6.4.tgz#d75de15beb38156c644ccfa5368954b2d7a944f0"
   integrity sha512-AUqk6+b0OhM6Aov3jeZ02E7ggr8KJ6AbpBi2S68sqcp1w3VM+WeDEj5Dm5G6w5+QALQqpivSZljTQltH0MZCJA==
