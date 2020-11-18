@@ -12,4 +12,3 @@ rules:
   unicorn/no-reduce: 0
   # disabled to support older versions of workflow that do not polyfill Array.prototype.find (not supported in IE)
   unicorn/prefer-array-find: 0
-  unicorn/prefer-math-trunc: 0
