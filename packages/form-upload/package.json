@@ -22,6 +22,8 @@
     "access": "public"
   },
   "peerDependencies": {
+    "@availity/api-axios": ">=5.5.9",
+    "@availity/api-core": ">=6.6.4",
     "@availity/form": "^0.4.9",
     "@availity/upload-core": "^3.0.4",
     "formik": "^2.0.1",
