@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.3.2](https://github.com/Availity/availity-react/compare/@availity/form-upload@0.3.1...@availity/form-upload@0.3.2) (2020-11-19)
+
+
+### Bug Fixes
+
+* **form-upload:** add missing api-axios and api-core peer deps ([4a30e89](https://github.com/Availity/availity-react/commit/4a30e891e65943588568f1ba45f0b324fb7eb3fb))
+
+
+
+
+
 ## [0.3.1](https://github.com/Availity/availity-react/compare/@availity/form-upload@0.2.24...@availity/form-upload@0.3.1) (2020-11-17)
 
 **Note:** Version bump only for package @availity/form-upload
