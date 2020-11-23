@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.3.3](https://github.com/Availity/availity-react/compare/@availity/form-upload@0.3.2...@availity/form-upload@0.3.3) (2020-11-23)
+
+
+### Bug Fixes
+
+* **form-upload:** fix uuid import ([631f076](https://github.com/Availity/availity-react/commit/631f0763ef94311dfa722a42027d9995f40ad440))
+
+
+
+
+
 ## [0.3.2](https://github.com/Availity/availity-react/compare/@availity/form-upload@0.3.1...@availity/form-upload@0.3.2) (2020-11-19)
 
 
