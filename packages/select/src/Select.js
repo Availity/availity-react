@@ -259,10 +259,6 @@ const Select = ({
     console.warn('allowSelectAll is ignored when loadOptions is defined.');
   }
 
-  if (options) {
-    attributes.options = selectOptions;
-  }
-
   return (
     <Tag
       {...field}
