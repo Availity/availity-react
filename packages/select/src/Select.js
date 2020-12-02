@@ -241,7 +241,7 @@ const Select = ({
     if (allowSelectAll && attributes.isMulti) {
       if (
         [...options, ...newOptions].length > 0 &&
-        (values[name] === undefined ||
+        (!values[name] ||
           values[name].length < [...options, ...newOptions].length)
       ) {
         validateSelectAllOptions([...options, ...newOptions]);
@@ -257,6 +257,10 @@ const Select = ({
   if (attributes.loadOptions && allowSelectAll) {
     // eslint-disable-next-line no-console
     console.warn('allowSelectAll is ignored when loadOptions is defined.');
+  }
+
+  if (options) {
+    attributes.options = selectOptions;
   }
 
   return (
