@@ -4,7 +4,7 @@ import classNames from 'classnames';
 import { useField, useFormikContext } from 'formik';
 import RSelect, { components as reactSelectComponents } from 'react-select';
 import Creatable from 'react-select/creatable';
-import Async from 'react-select-async-paginate';
+import { AsyncPaginate as Async } from 'react-select-async-paginate';
 import get from 'lodash.get';
 import has from 'lodash.has';
 import isFunction from 'lodash.isfunction';
@@ -18,13 +18,13 @@ const {
 } = reactSelectComponents;
 
 const components = {
-  DropdownIndicator: props => (
+  DropdownIndicator: (props) => (
     <DropdownIndicator {...props}>
       <DownChevron />
       <span className="sr-only">Toggle Select Options</span>
     </DropdownIndicator>
   ),
-  ClearIndicator: props => (
+  ClearIndicator: (props) => (
     <ClearIndicator {...props}>
       <CrossIcon />
       <span className="sr-only">Clear all selections</span>
@@ -46,9 +46,9 @@ const selectAllOption = {
   value: '*',
 };
 
-const validateSelectAllOptions = options => {
+const validateSelectAllOptions = (options) => {
   const filtered = options.filter(
-    option => option.value === selectAllOption.value
+    (option) => option.value === selectAllOption.value
   );
   if (filtered.length > 0) {
     // eslint-disable-next-line no-console
@@ -70,6 +70,7 @@ const Select = ({
   autofill,
   creatable,
   allowSelectAll,
+  waitUntilFocused,
   ...attributes
 }) => {
   const [
@@ -83,7 +84,7 @@ const Select = ({
 
   const [newOptions, setNewOptions] = useState([]);
 
-  const getOptionLabel = option => {
+  const getOptionLabel = (option) => {
     if (option.__isNew__) {
       return option.label;
     }
@@ -93,14 +94,14 @@ const Select = ({
 
   const getValueKey = (attrs = attributes) => get(attrs, 'valueKey', 'value');
 
-  const getOptionValue = option =>
+  const getOptionValue = (option) =>
     attributes.raw && !attributes.valueKey
       ? option
       : get(option, getValueKey(attributes), option);
 
   const prepValue = (value, digIfMulti = true) => {
     if (attributes.isMulti && digIfMulti && Array.isArray(value)) {
-      return value.map(prepValue, false);
+      return value.map((val) => prepValue(val), false);
     }
     if (attributes.raw || attributes.loadOptions) {
       return value;
@@ -111,7 +112,7 @@ const Select = ({
 
   const findOptionFromValue = (value, options) =>
     Array.isArray(options) &&
-    [...options, ...newOptions].filter(option =>
+    [...options, ...newOptions].filter((option) =>
       areValueAndOptionValueEqual(value, getOptionValue(option))
     )[0];
 
@@ -119,7 +120,7 @@ const Select = ({
     if (attributes.raw || attributes.loadOptions || !options) return fieldValue;
     if (attributes.isMulti && Array.isArray(fieldValue)) {
       return fieldValue.map(
-        value => findOptionFromValue(value, options) || value
+        (value) => findOptionFromValue(value, options) || value
       );
     }
     return findOptionFromValue(fieldValue, options) || fieldValue;
@@ -135,7 +136,7 @@ const Select = ({
     attributes.inputId = name;
   }
 
-  const onChangeHandler = async newValue => {
+  const onChangeHandler = async (newValue) => {
     if (
       newValue.length > 0 &&
       newValue[newValue.length - 1].value === selectAllOption.value
@@ -171,8 +172,8 @@ const Select = ({
       }
 
       Object.keys(formValuesForAutofill)
-        .filter(fieldName => fieldName !== name)
-        .forEach(async fieldName => {
+        .filter((fieldName) => fieldName !== name)
+        .forEach(async (fieldName) => {
           let rawValue = newValue;
           if (
             !!newValue.label &&
@@ -183,11 +184,10 @@ const Select = ({
           }
 
           let shouldAutofillField = false;
-          if (typeof autofill === 'object') {
-            shouldAutofillField = autofill[fieldName];
-          } else {
-            shouldAutofillField = has(rawValue, fieldName);
-          }
+          shouldAutofillField =
+            typeof autofill === 'object'
+              ? autofill[fieldName]
+              : has(rawValue, fieldName);
 
           if (shouldAutofillField) {
             let val;
@@ -218,7 +218,7 @@ const Select = ({
     }
   };
 
-  const handleCreate = value => {
+  const handleCreate = (value) => {
     const newOpt = createOption(
       value,
       get(attributes, 'labelKey', 'label'),
@@ -283,7 +283,7 @@ const Select = ({
       closeMenuOnSelect={!attributes.isMulti}
       components={components}
       options={selectOptions}
-      defaultOptions
+      defaultOptions={waitUntilFocused ? [] : true}
       styles={{
         ...styles,
         placeholder: (provided, state) => {
@@ -298,11 +298,11 @@ const Select = ({
             maxWidth: '99%',
           };
         },
-        valueContainer: provided => ({
+        valueContainer: (provided) => ({
           ...provided,
           width: '90%',
         }),
-        singleValue: provided => {
+        singleValue: (provided) => {
           return {
             ...provided,
             color: '#495057',
@@ -327,11 +327,11 @@ const Select = ({
             zIndex: state.focused && '3',
           };
         },
-        multiValue: provided => ({
+        multiValue: (provided) => ({
           ...provided,
           width: 'auto',
         }),
-        input: provided => ({
+        input: (provided) => ({
           ...provided,
           maxWidth: '99%',
         }),
@@ -347,7 +347,7 @@ const Select = ({
             color: showError ? '#931b1d' : 'hsl(0,0%,80%)',
           };
         },
-        option: provided => ({
+        option: (provided) => ({
           ...provided,
           color: '#000',
         }),
@@ -356,6 +356,10 @@ const Select = ({
       value={getViewValue()}
     />
   );
+};
+
+Select.defaultTypes = {
+  waitUntilFocused: false,
 };
 
 Select.propTypes = {
@@ -372,6 +376,7 @@ Select.propTypes = {
   creatable: PropTypes.bool,
   autofill: PropTypes.oneOfType([PropTypes.bool, PropTypes.object]),
   allowSelectAll: PropTypes.bool,
+  waitUntilFocused: PropTypes.bool,
 };
 
 export default Select;

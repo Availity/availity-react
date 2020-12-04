@@ -10,7 +10,7 @@ async function isFeatureEnabled(features) {
   let envFeatures;
   try {
     envFeatures = (await featureCache).data || [];
-  } catch (error) {
+  } catch {
     return true;
   }
   // eslint-disable-next-line unicorn/explicit-length-check
@@ -20,9 +20,9 @@ async function isFeatureEnabled(features) {
 
   const featuresSets = Array.isArray(features) ? features : [features];
 
-  return featuresSets.some(featureSet => {
+  return featuresSets.some((featureSet) => {
     if (Array.isArray(featureSet)) {
-      return featureSet.every(feature => envFeatures.indexOf(feature) === -1);
+      return featureSet.every((feature) => envFeatures.indexOf(feature) === -1);
     }
     return envFeatures.indexOf(featureSet) === -1;
   });

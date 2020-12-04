@@ -13,14 +13,16 @@ describe('UploadProgressBar', () => {
   });
 
   test('should render', () => {
-    render(<UploadProgressBar upload={instance} />);
+    const el = render(<UploadProgressBar upload={instance} />);
+    expect(el).toBeDefined();
   });
 
   test('should render progress', () => {
     const { getByTestId } = render(<UploadProgressBar upload={instance} />);
     instance.progress(50);
 
-    getByTestId('upload-progress');
+    const el = getByTestId('upload-progress');
+    expect(el).toBeDefined();
   });
 
   test('should render success', () => {
@@ -36,14 +38,16 @@ describe('UploadProgressBar', () => {
     const { getByTestId } = render(<UploadProgressBar upload={instance} />);
     instance.error('File upload rejected');
 
-    getByTestId('upload-error-message');
+    const el = getByTestId('upload-error-message');
+    expect(el).toBeDefined();
   });
 
   test('should render password verification button', () => {
     const { getByTestId } = render(<UploadProgressBar upload={instance} />);
     instance.error('Encrypted files require a password', 'encrypted');
 
-    getByTestId('password-form-encrypted');
+    const el = getByTestId('password-form-encrypted');
+    expect(el).toBeDefined();
   });
 
   test('should render striped', () => {

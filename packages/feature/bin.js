@@ -22,17 +22,17 @@ const features = fs.readJsonSync(configFile);
 
 if (features && Array.isArray(features)) {
   const envs = {};
-  features.forEach(value => {
+  features.forEach((value) => {
     const disabledIn = Array.isArray(value.disabledEnvironments)
       ? value.disabledEnvironments
       : [value.disabledEnvironments];
-    disabledIn.forEach(env => {
+    disabledIn.forEach((env) => {
       envs[env] = envs[env] || [];
       envs[env].push(value.name);
     });
   });
 
-  Object.keys(envs).map(env =>
+  Object.keys(envs).map((env) =>
     fs.outputJsonSync(path.join(buildPath, `${env}.json`), envs[env])
   );
 }

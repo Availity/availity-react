@@ -30,10 +30,7 @@ const FileRow = ({ onRemove, children, file }) => {
 
   const progressBar = () => <UploadProgressBar upload={file} />;
 
-  const ext = file.file.name
-    .split('.')
-    .pop()
-    .toUpperCase();
+  const ext = file.file.name.split('.').pop().toUpperCase();
 
   const icon = fileTypeIconMap[ext.toLowerCase()] || 'doc';
 

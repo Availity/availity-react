@@ -1,5 +1,5 @@
 import React from 'react';
-import { render, waitForElement, cleanup } from '@testing-library/react';
+import { render, waitFor, cleanup } from '@testing-library/react';
 import { avSlotMachineApi } from '@availity/api-axios';
 import Spaces, { SpacesGhostText } from '..';
 
@@ -48,7 +48,7 @@ describe('SpacesGhostText', () => {
       </Spaces>
     );
 
-    const ghost = await waitForElement(() => getByTestId('spaces-ghost-text'));
+    const ghost = await waitFor(() => getByTestId('spaces-ghost-text'));
 
     expect(ghost.textContent).toBe('foo');
   });
@@ -60,7 +60,7 @@ describe('SpacesGhostText', () => {
       </Spaces>
     );
 
-    const ghost = await waitForElement(() => getByTestId('spaces-ghost-text'));
+    const ghost = await waitFor(() => getByTestId('spaces-ghost-text'));
 
     expect(ghost.textContent).toBe('foo');
   });

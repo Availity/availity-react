@@ -49,8 +49,8 @@ const Pagination = ({
 
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
-  const toggleLoading = isLoading =>
-    setLoading(l => (isLoading !== undefined ? isLoading : !l));
+  const toggleLoading = (isLoading) =>
+    setLoading((l) => (isLoading !== undefined ? isLoading : !l));
 
   useEffect(() => {
     if (onError && error) onError(error);
@@ -124,7 +124,7 @@ const Pagination = ({
     ]
   );
 
-  const updatePage = page => {
+  const updatePage = (page) => {
     if (page !== currentPage) {
       toggleLoading(true);
 

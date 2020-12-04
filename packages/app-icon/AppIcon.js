@@ -19,7 +19,7 @@ function AppIcon({
     size && `app-icon-${size}`,
     image && 'border-0',
   ]
-    .filter(a => a)
+    .filter((a) => a)
     .join(' ');
 
   return (

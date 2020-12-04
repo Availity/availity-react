@@ -1,6 +1,6 @@
 {
   "name": "@availity/list-group",
-  "version": "1.2.20",
+  "version": "1.2.21",
   "author": "Evan Sharp <evan.sharp@availity.com>",
   "description": "List Group with some Availity flair",
   "main": "index.js",
@@ -20,15 +20,15 @@
     "access": "public"
   },
   "peerDependencies": {
-    "react": "^16.3.0",
+    "react": ">=16.3.0",
     "reactstrap": "^8.0.0 || ^7.0.0 || ^6.0.0"
   },
   "dependencies": {
     "prop-types": "^15.5.8"
   },
   "devDependencies": {
-    "react": "^16.8.3",
-    "react-dom": "^16.8.3",
-    "reactstrap": "^8.0.0"
+    "react": "^17.0.1",
+    "react-dom": "^17.0.1",
+    "reactstrap": "^8.7.0"
   }
 }

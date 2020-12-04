@@ -1,5 +1,5 @@
 import React from 'react';
-import { render, wait, fireEvent, cleanup } from '@testing-library/react';
+import { render, waitFor, fireEvent, cleanup } from '@testing-library/react';
 import { Button } from 'reactstrap';
 import * as yup from 'yup';
 import { Form, Radio, RadioGroup } from '..';
@@ -36,7 +36,7 @@ describe('Radio', () => {
 
     fireEvent.click(getByText('Submit'));
 
-    await wait(() => {
+    await waitFor(() => {
       expect(onSubmit).toHaveBeenCalledWith(
         expect.objectContaining({
           greeting: 'hello',
@@ -78,7 +78,7 @@ describe('Radio', () => {
 
     fireEvent.click(getByText('Submit'));
 
-    await wait(() => {
+    await waitFor(() => {
       expect(onSubmit).toHaveBeenCalledWith(
         expect.objectContaining({
           greeting: 'goodbye',
@@ -108,7 +108,7 @@ describe('Radio', () => {
 
     await fireEvent.click(getByText('Submit'));
 
-    await wait(() => {
+    await waitFor(() => {
       const radio = getByTestId('hello-radio');
 
       expect(radio.className).toContain('is-touched');
@@ -130,12 +130,13 @@ describe('Radio', () => {
       </Form>
     );
 
-    getByText('Radio One');
+    const el = getByText('Radio One');
+    expect(el).toBeDefined();
   });
 
   test('should generate uuid even when id is not added', () => {
     const { container } = render(
-      <Form onSubmit={() => {}}>
+      <Form initialValues={{ name: 'John' }} onSubmit={() => {}}>
         <RadioGroup name="hello" label="Radio Group">
           <Radio label="Radio One" value="uno" />
         </RadioGroup>
@@ -147,7 +148,7 @@ describe('Radio', () => {
 
   test('should use id when passed in', () => {
     const { container } = render(
-      <Form onSubmit={() => {}}>
+      <Form initialValues={{ name: 'John' }} onSubmit={() => {}}>
         <RadioGroup name="hello" label="Radio Group">
           <Radio label="Radio One" value="uno" id="test" />
         </RadioGroup>

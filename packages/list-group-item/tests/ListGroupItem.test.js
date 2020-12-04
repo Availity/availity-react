@@ -8,7 +8,8 @@ describe('ListGroupItem', () => {
   test('should render', () => {
     const { getByTestId } = render(<ListGroupItem />);
 
-    getByTestId('list-group-item-id');
+    const el = getByTestId('list-group-item-id');
+    expect(el).toBeDefined();
   });
 
   test('should render color', () => {

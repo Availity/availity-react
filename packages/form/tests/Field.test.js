@@ -1,5 +1,5 @@
 import React from 'react';
-import { render, fireEvent, wait, cleanup } from '@testing-library/react';
+import { render, fireEvent, waitFor, cleanup } from '@testing-library/react';
 import { Button } from 'reactstrap';
 import * as yup from 'yup';
 
@@ -20,7 +20,8 @@ describe('Field', () => {
       </Form>
     );
 
-    getByText('Hello Label');
+    const el = getByText('Hello Label');
+    expect(el).toBeDefined();
   });
 
   test('renders with grid', () => {
@@ -60,7 +61,8 @@ describe('Field', () => {
       </Form>
     );
 
-    getByText('help text');
+    const el = getByText('help text');
+    expect(el).toBeDefined();
   });
 
   test('renders with initial value', () => {
@@ -97,7 +99,7 @@ describe('Field', () => {
     });
     fireEvent.click(getByText('Submit'));
 
-    await wait(() => {
+    await waitFor(() => {
       expect(container.querySelector('.invalid-feedback')).toBeDefined();
     });
   });
@@ -114,7 +116,7 @@ describe('Field', () => {
 
   test('should generate generated uuid when id is not provided', () => {
     const { container } = render(
-      <Form onSubmit={() => {}}>
+      <Form initialValues={{ name: 'John' }} onSubmit={() => {}}>
         <Field name="name" label="Greetings" />
       </Form>
     );
@@ -127,7 +129,7 @@ describe('Field', () => {
   test('label for attribute should point to field id attribute', () => {
     const inputId = 'test-input-id';
     const { container } = render(
-      <Form onSubmit={() => {}}>
+      <Form initialValues={{ name: 'John' }} onSubmit={() => {}}>
         <Field name="name" label="Greetings" id={inputId} />
       </Form>
     );
@@ -142,7 +144,7 @@ describe('Field', () => {
 
   test('should generate uuid even when label is not added', () => {
     const { container } = render(
-      <Form onSubmit={() => {}}>
+      <Form initialValues={{ name: 'John' }} onSubmit={() => {}}>
         <Field name="name" />
       </Form>
     );

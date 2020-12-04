@@ -1,11 +1,5 @@
 import React, { useState } from 'react';
-import {
-  fireEvent,
-  waitForElement,
-  render,
-  cleanup,
-  wait,
-} from '@testing-library/react';
+import { fireEvent, waitFor, render, cleanup } from '@testing-library/react';
 import { avRegionsApi, avProvidersApi, avCodesApi } from '@availity/api-axios';
 import { AvForm } from 'availity-reactstrap-validation';
 import { Button } from 'reactstrap';
@@ -15,7 +9,7 @@ import { AvProviderSelect } from '../resources';
 
 jest.mock('@availity/api-axios');
 
-const renderSelect = props =>
+const renderSelect = (props) =>
   render(
     <AvForm>
       <AvResourceSelect name="test-form-input" {...props} />
@@ -47,7 +41,7 @@ describe('AvResourceSelect', () => {
       classNamePrefix: 'test__regions',
       getResult: 'regions',
     });
-    await wait(() => {
+    await waitFor(() => {
       expect(avRegionsApi.postGet).toHaveBeenCalled();
     });
 
@@ -55,7 +49,7 @@ describe('AvResourceSelect', () => {
     fireEvent.keyDown(regionsSelect, { key: 'ArrowDown', keyCode: 40 });
     fireEvent.keyDown(regionsSelect, { key: 'Enter', keyCode: 13 });
 
-    const regionsOption = await waitForElement(() => getByText('Florida'));
+    const regionsOption = await waitFor(() => getByText('Florida'));
     expect(avRegionsApi.postGet).toHaveBeenCalledTimes(1);
 
     expect(regionsOption).toBeDefined();
@@ -106,7 +100,7 @@ describe('AvResourceSelect', () => {
     fireEvent.keyDown(regionsSelect, { key: 'ArrowDown', keyCode: 40 });
     fireEvent.keyDown(regionsSelect, { key: 'Enter', keyCode: 13 });
 
-    let regionsOption = await waitForElement(() => getByText('Florida'));
+    let regionsOption = await waitFor(() => getByText('Florida'));
     expect(regionsOption).toBeDefined();
 
     let selectInput;
@@ -116,7 +110,7 @@ describe('AvResourceSelect', () => {
     fireEvent.change(selectInput, {
       target: { value: 'g' },
     });
-    regionsOption = await waitForElement(() => getByText('Florida'));
+    regionsOption = await waitFor(() => getByText('Florida'));
     expect(regionsOption).toBeDefined();
 
     // Should skip network request
@@ -124,7 +118,7 @@ describe('AvResourceSelect', () => {
     fireEvent.change(selectInput, {
       target: { value: 'ge' },
     });
-    regionsOption = await waitForElement(() => getByText('Florida'));
+    regionsOption = await waitFor(() => getByText('Florida'));
     expect(regionsOption).toBeDefined();
 
     // Should make network request
@@ -132,7 +126,7 @@ describe('AvResourceSelect', () => {
     fireEvent.change(selectInput, {
       target: { value: 'geo' },
     });
-    regionsOption = await waitForElement(() => getByText('Georgia'));
+    regionsOption = await waitFor(() => getByText('Georgia'));
     expect(regionsOption).toBeDefined();
 
     expect(avRegionsApi.postGet).toHaveBeenCalledTimes(2);
@@ -195,7 +189,7 @@ describe('AvResourceSelect', () => {
     fireEvent.keyDown(providerSelect, { key: 'ArrowDown', keyCode: 40 });
     fireEvent.keyDown(providerSelect, { key: 'Enter', keyCode: 13 });
 
-    let providerOption = await waitForElement(() => getByText('ABC Hospital'));
+    let providerOption = await waitFor(() => getByText('ABC Hospital'));
 
     expect(providerOption).toBeDefined();
     expect(avProvidersApi.postGet).toHaveBeenCalledTimes(1);
@@ -217,7 +211,7 @@ describe('AvResourceSelect', () => {
     fireEvent.keyDown(providerSelect, { key: 'ArrowDown', keyCode: 40 });
     fireEvent.keyDown(providerSelect, { key: 'Enter', keyCode: 13 });
 
-    providerOption = await waitForElement(() => getByText('latipsoH CBA'));
+    providerOption = await waitFor(() => getByText('latipsoH CBA'));
 
     expect(providerOption).toBeDefined();
     expect(avProvidersApi.postGet).toHaveBeenCalledTimes(2);
@@ -248,7 +242,7 @@ describe('AvResourceSelect', () => {
     });
 
     // Check the resource is not called on mount
-    await wait(() => {
+    await waitFor(() => {
       expect(avRegionsApi.postGet).not.toHaveBeenCalled();
     });
 
@@ -259,11 +253,11 @@ describe('AvResourceSelect', () => {
     fireEvent.keyDown(regionsSelect, { key: 'Enter', keyCode: 13 });
 
     // Check the resource is called only after the input has been focused
-    await wait(() => {
+    await waitFor(() => {
       expect(avRegionsApi.postGet).toHaveBeenCalledTimes(1);
     });
 
-    const regionsOption = await waitForElement(() => getByText('Florida'));
+    const regionsOption = await waitFor(() => getByText('Florida'));
 
     expect(regionsOption).toBeDefined();
 
@@ -279,7 +273,7 @@ describe('AvResourceSelect', () => {
   it('waits to query until requiredParams are set', async () => {
     const renderDropdown = ({ parameters = {}, ...props }) => {
       const Component = () => {
-        const [listParameter, setListParameter] = useState(undefined);
+        const [listParameter, setListParameter] = useState();
 
         return (
           <AvForm>
@@ -322,7 +316,7 @@ describe('AvResourceSelect', () => {
       requiredParams: ['list'],
     });
 
-    await wait(() => {
+    await waitFor(() => {
       expect(avCodesApi.postGet).not.toHaveBeenCalled();
     });
 
@@ -330,14 +324,14 @@ describe('AvResourceSelect', () => {
     fireEvent.click(getByTestId('btn-set-list'));
 
     // Check that query was fired off after required parameter set
-    await wait(() => {
+    await waitFor(() => {
       expect(avCodesApi.postGet).toHaveBeenCalledTimes(1);
     });
   });
 });
 
 // ----
-const renderGQLSelect = props =>
+const renderGQLSelect = (props) =>
   render(
     <AvForm>
       <AvResourceSelect
@@ -387,14 +381,14 @@ it('Queries using graphQl', async () => {
     labelKey: 'value',
     valueKey: 'id',
     classNamePrefix: 'test__regions',
-    getResult: data => data.regionPagination.items,
+    getResult: (data) => data.regionPagination.items,
   });
 
   const regionsSelect = container.querySelector('.test__regions__control');
   fireEvent.keyDown(regionsSelect, { key: 'ArrowDown', keyCode: 40 });
   fireEvent.keyDown(regionsSelect, { key: 'Enter', keyCode: 13 });
 
-  const regionsOption = await waitForElement(() => getByText('New York'));
+  const regionsOption = await waitFor(() => getByText('New York'));
   expect(regionsOption).toBeDefined();
 
   expect(avRegionsApi.post).toHaveBeenCalledTimes(1);
@@ -402,7 +396,7 @@ it('Queries using graphQl', async () => {
 
 // ---
 
-const renderResourceSelect = props =>
+const renderResourceSelect = (props) =>
   render(
     <AvForm>
       <AvResourceSelect
@@ -445,7 +439,7 @@ it('Sends custom parameters to API', async () => {
   fireEvent.keyDown(regionsSelect, { key: 'ArrowDown', keyCode: 40 });
   fireEvent.keyDown(regionsSelect, { key: 'Enter', keyCode: 13 });
 
-  const regionsOption = await waitForElement(() => getByText('Florida'));
+  const regionsOption = await waitFor(() => getByText('Florida'));
   expect(regionsOption).toBeDefined();
 
   expect(avRegionsApi.postGet).toHaveBeenCalledTimes(1);

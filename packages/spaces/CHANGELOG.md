@@ -3,6 +3,14 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## 4.0.28 (2020-11-17)
+
+**Note:** Version bump only for package @availity/spaces
+
+
+
+
+
 ## 4.0.27 (2020-10-30)
 
 **Note:** Version bump only for package @availity/spaces

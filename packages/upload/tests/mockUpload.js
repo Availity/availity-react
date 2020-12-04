@@ -18,7 +18,7 @@ export default class MockUpload {
 
   onError = [];
 
-  sendPassword = password => {
+  sendPassword = (password) => {
     if (password) {
       this.success();
     } else {
@@ -29,9 +29,9 @@ export default class MockUpload {
   progress = (amount = 10) => {
     this.percentage = Math.min(Math.max(amount + this.percentage, 0), 100);
     this.errorMessage = null;
-    this.onProgress.forEach(a => a());
+    this.onProgress.forEach((a) => a());
     if (this.percentage === 100) {
-      this.onSuccess.forEach(a => a());
+      this.onSuccess.forEach((a) => a());
     }
   };
 
@@ -39,13 +39,13 @@ export default class MockUpload {
     this.percentage = 100;
     this.errorMessage = null;
     this.status = 'accepted';
-    this.onSuccess.forEach(a => a());
+    this.onSuccess.forEach((a) => a());
   };
 
   error = (message = null, status = 'rejected') => {
     this.errorMessage = message;
     this.status = status;
-    this.onError.forEach(a => a());
+    this.onError.forEach((a) => a());
   };
 
   reset = () => {

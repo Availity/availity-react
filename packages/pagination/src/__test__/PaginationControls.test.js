@@ -1,5 +1,5 @@
 import React from 'react';
-import { render, wait, waitForElement, cleanup } from '@testing-library/react';
+import { render, waitFor, cleanup } from '@testing-library/react';
 import Pagination from '../Pagination';
 import PaginationControls from '../PaginationControls';
 
@@ -19,13 +19,13 @@ describe('Pagination Controls', () => {
       </Pagination>
     );
 
-    const paginationControls = await waitForElement(() =>
+    const paginationControls = await waitFor(() =>
       getByTestId('pagination-controls-con')
     );
 
     expect(paginationControls).not.toBe(null);
 
-    items.forEach(item =>
+    items.forEach((item) =>
       expect(getByTestId(`control-page-${item.value}`)).toBeDefined()
     );
   });
@@ -43,7 +43,7 @@ describe('Pagination Controls', () => {
       </Pagination>
     );
 
-    const paginationControls = await waitForElement(() =>
+    const paginationControls = await waitFor(() =>
       getByTestId('pagination-controls-con')
     );
 
@@ -60,7 +60,7 @@ describe('Pagination Controls', () => {
       </Pagination>
     );
 
-    const paginationControls = await waitForElement(() =>
+    const paginationControls = await waitFor(() =>
       getByTestId('pagination-controls-con')
     );
 
@@ -82,7 +82,7 @@ describe('Pagination Controls', () => {
       </Pagination>
     );
 
-    const paginationControls = await waitForElement(() =>
+    const paginationControls = await waitFor(() =>
       getByTestId('pagination-controls-con')
     );
 
@@ -111,7 +111,7 @@ describe('Pagination Controls', () => {
       </Pagination>
     );
 
-    await wait(() => {
+    await waitFor(() => {
       const previous = getByTestId('pagination-control-previous');
 
       expect(previous.firstChild.textContent).toMatch('‹ Prev');

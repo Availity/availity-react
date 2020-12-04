@@ -3,6 +3,22 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# 4.0.0 (2020-11-17)
+
+
+### chore
+
+* **reactstrap-validation-date:** upgrade dependencies ([6475b28](https://github.com/Availity/availity-react/commit/6475b28c33443caeb7704153e3c9051ee91f53e5))
+
+
+### BREAKING CHANGES
+
+* **reactstrap-validation-date:** date-fns is now a peer dependency
+
+
+
+
+
 ## 3.2.22 (2020-06-24)
 
 

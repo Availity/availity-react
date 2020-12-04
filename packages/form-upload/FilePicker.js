@@ -25,7 +25,7 @@ const FilePicker = ({
     setStateId(`filePicker-${(id += 1)}`);
   });
 
-  const onChange = event => {
+  const onChange = (event) => {
     const { files } = event.target;
     const value = [];
     for (let i = 0; i < files.length; i++) {

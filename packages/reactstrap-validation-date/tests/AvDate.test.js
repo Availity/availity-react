@@ -1,6 +1,6 @@
 /* eslint-disable react/prop-types */
 import React from 'react';
-import { render, cleanup, fireEvent, wait } from '@testing-library/react';
+import { render, cleanup, fireEvent, waitFor } from '@testing-library/react';
 import { AvForm } from 'availity-reactstrap-validation';
 import { Button } from 'reactstrap';
 import moment from 'moment';
@@ -15,7 +15,7 @@ afterEach(() => {
   cleanup();
 });
 
-const Date = props => (
+const Date = (props) => (
   <AvForm
     onInvalidSubmit={onInvalidSubmit}
     onSubmit={onSubmit}
@@ -29,7 +29,8 @@ const Date = props => (
 
 describe('AvDate', () => {
   test('should render', () => {
-    render(<Date name="standAlone" />);
+    const dt = render(<Date name="standAlone" />);
+    expect(dt).toBeDefined();
   });
 
   test('render inital date', () => {
@@ -47,7 +48,7 @@ describe('AvDate', () => {
 
     fireEvent.click(getByText('Submit'));
 
-    await wait(() => {
+    await waitFor(() => {
       expect(onSubmit).toHaveBeenCalledTimes(1);
       expect(onInvalidSubmit).toHaveBeenCalledTimes(1);
     });
@@ -60,7 +61,7 @@ describe('AvDate', () => {
 
     fireEvent.click(getByText('Submit'));
 
-    await wait(() => {
+    await waitFor(() => {
       expect(onSubmit).toHaveBeenCalledTimes(1);
       expect(onInvalidSubmit).toHaveBeenCalledTimes(1);
     });
@@ -79,7 +80,7 @@ describe('AvDate', () => {
 
     fireEvent.click(getByText('Submit'));
 
-    await wait(() => {
+    await waitFor(() => {
       expect(onValidSubmit).toHaveBeenCalledWith(
         expect.anything(),
         expect.objectContaining({
@@ -101,7 +102,7 @@ describe('AvDate', () => {
 
     fireEvent.click(getByText('Submit'));
 
-    await wait(() => {
+    await waitFor(() => {
       expect(onValidSubmit).toHaveBeenCalledWith(
         expect.anything(),
         expect.objectContaining({
@@ -122,7 +123,7 @@ describe('AvDate', () => {
 
     fireEvent.click(getByText('Submit'));
 
-    await wait(() => {
+    await waitFor(() => {
       expect(onValidSubmit).toHaveBeenCalledWith(
         expect.anything(),
         expect.objectContaining({

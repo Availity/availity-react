@@ -49,7 +49,8 @@ describe('Help', () => {
 
 describe('Field Help', () => {
   test('it renders help Icon', () => {
-    render(<FieldHelpIcon id="Express_Entry_Fields" />);
+    const el = render(<FieldHelpIcon id="Express_Entry_Fields" />);
+    expect(el).toBeDefined();
   });
 
   test('expects message to be sent on click', () => {

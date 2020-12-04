@@ -11,15 +11,18 @@ describe('UploadProgressBar', () => {
     cleanup();
     jest.clearAllMocks();
   });
+
   test('should render', () => {
-    render(<UploadProgressBar upload={instance} />);
+    const bar = render(<UploadProgressBar upload={instance} />);
+    expect(bar).toBeDefined();
   });
 
   test('should render progress', () => {
     const { getByTestId } = render(<UploadProgressBar upload={instance} />);
     instance.progress(50);
 
-    getByTestId('upload-progress');
+    const progress = getByTestId('upload-progress');
+    expect(progress).toBeDefined();
   });
 
   test('should render success', () => {
@@ -35,14 +38,16 @@ describe('UploadProgressBar', () => {
     const { getByTestId } = render(<UploadProgressBar upload={instance} />);
     instance.error('File upload rejected');
 
-    getByTestId('upload-error-message');
+    const message = getByTestId('upload-error-message');
+    expect(message).toBeDefined();
   });
 
   test('should render password verification button', () => {
     const { getByTestId } = render(<UploadProgressBar upload={instance} />);
     instance.error('Encrypted files require a password', 'encrypted');
 
-    getByTestId('password-form-encrypted');
+    const btn = getByTestId('password-form-encrypted');
+    expect(btn).toBeDefined();
   });
 
   // 1 Test for striped and animated

@@ -1,8 +1,8 @@
 import { useState } from 'react';
 
-export default function(initialState = false) {
+export default function (initialState = false) {
   const [state, setState] = useState(initialState);
-  const toggle = newState => {
+  const toggle = (newState) => {
     if (newState !== undefined && newState !== state) {
       setState(newState);
     } else if (newState === undefined) {

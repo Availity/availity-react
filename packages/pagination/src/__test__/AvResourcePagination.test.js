@@ -1,11 +1,5 @@
 import React from 'react';
-import {
-  render,
-  waitForElement,
-  waitForDomChange,
-  fireEvent,
-  cleanup,
-} from '@testing-library/react';
+import { render, waitFor, fireEvent, cleanup } from '@testing-library/react';
 import PaginationControls from '../PaginationControls';
 import { usePagination } from '../Pagination';
 import AvResourcePagination from '../AvResourcePagination';
@@ -25,10 +19,12 @@ const PaginationJson = () => {
   ) : null;
 };
 
+jest.useFakeTimers();
+
 const mockResponse = {
   postGet: jest.fn(
     async (params = {}, config = {}) =>
-      new Promise(resolve =>
+      new Promise((resolve) =>
         setTimeout(() => {
           const { offset = 0, limit = 50 } = params;
           const notifications = data.slice(offset, offset + limit);
@@ -66,9 +62,7 @@ describe('AvResourcePagination', () => {
       </AvResourcePagination>
     );
 
-    const paginationCon = await waitForElement(() =>
-      getByTestId('pagination-con')
-    );
+    const paginationCon = await waitFor(() => getByTestId('pagination-con'));
 
     expect(paginationCon).toBeDefined();
 
@@ -87,17 +81,17 @@ describe('AvResourcePagination', () => {
       </AvResourcePagination>
     );
 
-    let paginationCon = await waitForElement(() =>
-      getByTestId('pagination-con')
-    );
+    let paginationCon = await waitFor(() => getByTestId('pagination-con'));
 
     fireEvent.click(getByTestId('pagination-control-next-link'));
 
     // First wait for dom update on pagination con to disappear due to loading
-    await waitForDomChange(() => getByTestId('pagination-con'));
+    await waitFor(() => expect(getByTestId('pagination-con')).toBeDefined());
 
     // Wait for pagination-con to re-render aftering loading prop is toggled
-    paginationCon = await waitForElement(() => getByTestId('pagination-con'));
+    paginationCon = await waitFor(() => getByTestId('pagination-con'));
+
+    jest.advanceTimersByTime(1000);
 
     expect(mockResponse.postGet).toHaveBeenCalledTimes(2);
 
@@ -113,23 +107,21 @@ describe('AvResourcePagination', () => {
       <AvResourcePagination
         resource={resource}
         itemsPerPage={2}
-        resetParams="test"
+        resetParams={['test']}
       >
         <PaginationJson />
         <PaginationControls directionLinks />
       </AvResourcePagination>
     );
 
-    let paginationCon = await waitForElement(() =>
-      getByTestId('pagination-con')
-    );
+    let paginationCon = await waitFor(() => getByTestId('pagination-con'));
 
     // fireEvent.click(getByTestId('pagination-control-next-link'));
     rerender(
       <AvResourcePagination
         resource={resource}
         itemsPerPage={2}
-        resetParams="changed"
+        resetParams={['changed']}
       >
         <PaginationJson />
         <PaginationControls directionLinks />
@@ -137,10 +129,12 @@ describe('AvResourcePagination', () => {
     );
 
     // First wait for dom update on pagination con to disappear due to loading
-    await waitForDomChange(() => getByTestId('pagination-con'));
+    await waitFor(() => expect(getByTestId('pagination-con')).toBeDefined());
 
     // Wait for pagination-con to re-render aftering loading prop is toggled
-    paginationCon = await waitForElement(() => getByTestId('pagination-con'));
+    paginationCon = await waitFor(() => getByTestId('pagination-con'));
+
+    jest.advanceTimersByTime(1);
 
     expect(mockResponse.postGet).toHaveBeenCalledTimes(2);
 
@@ -167,22 +161,40 @@ describe('AvResourcePagination', () => {
       </div>
     );
 
-    await waitForDomChange(() => getByTestId('infinite-scroll-container'));
+    await waitFor(() =>
+      expect(getByTestId('infinite-scroll-container')).toBeDefined()
+    );
 
     // Check that first page renders
-    expect(getByTestId('5af1e71f1a38311cd5afe2fe')).toBeDefined();
-    expect(getByTestId('5af1e71f3ef279b4188aeecd')).toBeDefined();
+    await waitFor(() =>
+      expect(getByTestId('5af1e71f1a38311cd5afe2fe')).toBeDefined()
+    );
+    await waitFor(() =>
+      expect(getByTestId('5af1e71f3ef279b4188aeecd')).toBeDefined()
+    );
 
     await fireEvent.scroll(window, { target: { scrollY: 1000 } });
 
     // Wait for pagination-con to re-render aftering loading prop is toggled
-    await waitForDomChange(() => getByTestId('infinite-scroll-container'));
+    await waitFor(() =>
+      expect(getByTestId('infinite-scroll-container')).toBeDefined()
+    );
+
+    jest.advanceTimersByTime(1000);
     expect(mockResponse.postGet).toHaveBeenCalledTimes(2);
     // Check that first and second page render
-    expect(getByTestId('5af1e71f1a38311cd5afe2fe')).toBeDefined();
-    expect(getByTestId('5af1e71f3ef279b4188aeecd')).toBeDefined();
-    expect(getByTestId('5af1e71fac54f0e9e6c5e976')).toBeDefined();
-    expect(getByTestId('5af1e71f6727bd6161e62720')).toBeDefined();
+    await waitFor(() =>
+      expect(getByTestId('5af1e71f1a38311cd5afe2fe')).toBeDefined()
+    );
+    await waitFor(() =>
+      expect(getByTestId('5af1e71f3ef279b4188aeecd')).toBeDefined()
+    );
+    await waitFor(() =>
+      expect(getByTestId('5af1e71fac54f0e9e6c5e976')).toBeDefined()
+    );
+    await waitFor(() =>
+      expect(getByTestId('5af1e71f6727bd6161e62720')).toBeDefined()
+    );
   });
 
   test('focuses first item in new page when sr-only load more button clicked', async () => {
@@ -205,25 +217,34 @@ describe('AvResourcePagination', () => {
       </div>
     );
 
-    await waitForDomChange(() => getByTestId('infinite-scroll-container'));
-
     // Check that first page renders
-    expect(getByTestId('5af1e71f1a38311cd5afe2fe')).toBeDefined();
-    expect(getByTestId('5af1e71f3ef279b4188aeecd')).toBeDefined();
+    await waitFor(() =>
+      expect(getByTestId('5af1e71f1a38311cd5afe2fe')).toBeDefined()
+    );
+    await waitFor(() =>
+      expect(getByTestId('5af1e71f3ef279b4188aeecd')).toBeDefined()
+    );
 
     const loadMoreButton = getByTestId('sr-only-pagination-load-more-btn');
 
     fireEvent.click(loadMoreButton);
 
     // Wait for pagination-con to re-render aftering loading prop is toggled
-    await waitForDomChange(() => getByTestId('infinite-scroll-container'));
-    expect(mockResponse.postGet).toHaveBeenCalledTimes(2);
+    await waitFor(() => expect(mockResponse.postGet).toHaveBeenCalledTimes(2));
 
     // Check that first and second page render
-    expect(getByTestId('5af1e71f1a38311cd5afe2fe')).toBeDefined();
-    expect(getByTestId('5af1e71f3ef279b4188aeecd')).toBeDefined();
-    expect(getByTestId('5af1e71fac54f0e9e6c5e976')).toBeDefined();
-    expect(getByTestId('5af1e71f6727bd6161e62720')).toBeDefined();
+    await waitFor(() =>
+      expect(getByTestId('5af1e71f1a38311cd5afe2fe')).toBeDefined()
+    );
+    await waitFor(() =>
+      expect(getByTestId('5af1e71f3ef279b4188aeecd')).toBeDefined()
+    );
+    await waitFor(() =>
+      expect(getByTestId('5af1e71fac54f0e9e6c5e976')).toBeDefined()
+    );
+    await waitFor(() =>
+      expect(getByTestId('5af1e71f6727bd6161e62720')).toBeDefined()
+    );
 
     // FIXME https://github.com/testing-library/react-testing-library/issues/276
     /* await wait(() => {
@@ -238,9 +259,9 @@ describe('AvResourcePagination', () => {
       <AvResourcePagination
         resource={resource}
         itemsPerPage={50}
-        getResult={data => {
+        getResult={(data) => {
           return data.notifications.filter(
-            notification => notification.id === paginationData[0].id
+            (notification) => notification.id === paginationData[0].id
           );
         }}
       >
@@ -248,9 +269,7 @@ describe('AvResourcePagination', () => {
       </AvResourcePagination>
     );
 
-    const paginationCon = await waitForElement(() =>
-      getByTestId('pagination-con')
-    );
+    const paginationCon = await waitFor(() => getByTestId('pagination-con'));
 
     expect(paginationCon).toBeDefined();
 

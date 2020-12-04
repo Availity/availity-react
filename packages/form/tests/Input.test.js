@@ -1,5 +1,5 @@
 import React from 'react';
-import { render, wait, fireEvent, cleanup } from '@testing-library/react';
+import { render, waitFor, fireEvent, cleanup } from '@testing-library/react';
 import { Button } from 'reactstrap';
 import * as yup from 'yup';
 import { Form, Input } from '..';
@@ -42,7 +42,7 @@ describe('Input', () => {
 
     await fireEvent.click(getByText('Submit'));
 
-    await wait(() => {
+    await waitFor(() => {
       const input = getByTestId('hello-input');
       expect(input.className).toContain('av-invalid');
       expect(input.className).toContain('is-touched');
@@ -69,7 +69,7 @@ describe('Input', () => {
 
     await fireEvent.blur(getByTestId('hello-input'));
 
-    await wait(() => {
+    await waitFor(() => {
       const input = getByTestId('hello-input');
       expect(input.className).toContain('is-invalid');
       expect(input.className).toContain('is-touched');
@@ -96,7 +96,7 @@ describe('Input', () => {
 
     await fireEvent.blur(getByTestId('hello-input'));
 
-    await wait(() => {
+    await waitFor(() => {
       const input = getByTestId('hello-input');
       expect(input.className).toContain('is-invalid');
       expect(input.className).toContain('was-validated');

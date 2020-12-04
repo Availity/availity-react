@@ -1,3 +1,4 @@
+/* eslint-disable jest/no-done-callback */
 import React from 'react';
 import { render, fireEvent, wait } from '@testing-library/react';
 import { avFilesDeliveryApi } from '@availity/api-axios';
@@ -89,7 +90,7 @@ describe('filesDelivery upload', () => {
     xhrMock.teardown();
   });
 
-  test('calls avFilesDeliveryApi when deliveryChannel and fileDeliveryMetadata are defined and deliverFileOnSubmit is false', async done => {
+  test('calls avFilesDeliveryApi when deliveryChannel and fileDeliveryMetadata are defined and deliverFileOnSubmit is false', async (done) => {
     avFilesDeliveryApi.uploadFilesDelivery.mockResolvedValue({
       id: '123456',
       status: 'COMPLETE',
@@ -135,7 +136,7 @@ describe('filesDelivery upload', () => {
     );
   });
 
-  test('calls avFilesDeliveryApi onSubmit when deliverFileOnSubmit is true and deliveryChannel and fileDeliveryMetadata are defined', async done => {
+  test('calls avFilesDeliveryApi onSubmit when deliverFileOnSubmit is true and deliveryChannel and fileDeliveryMetadata are defined', async (done) => {
     const onSubmit = jest.fn();
     avFilesDeliveryApi.uploadFilesDelivery.mockResolvedValue({
       id: '123456',
@@ -178,7 +179,7 @@ describe('filesDelivery upload', () => {
     );
   });
 
-  test('does not call avFilesDeliveryApi when onFileUpload is defined', async done => {
+  test('does not call avFilesDeliveryApi when onFileUpload is defined', async (done) => {
     const mockFunc = jest.fn();
     avFilesDeliveryApi.uploadFilesDelivery.mockResolvedValue({
       id: '123456',

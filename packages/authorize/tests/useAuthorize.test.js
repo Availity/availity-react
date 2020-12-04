@@ -1,5 +1,5 @@
 import React from 'react';
-import { render, cleanup, waitForElement, wait } from '@testing-library/react';
+import { render, cleanup, waitFor } from '@testing-library/react';
 import { avUserPermissionsApi, avRegionsApi } from '@availity/api-axios';
 import { useAuthorize } from '..';
 
@@ -90,15 +90,21 @@ describe('useAuthorize', () => {
       <Component permissions="1234">You have permission to see this</Component>
     );
 
-    await waitForElement(() => getByText('You have permission to see this'));
+    await waitFor(() => {
+      const el = getByText('You have permission to see this');
+      expect(el).toBeDefined();
+      return el;
+    });
   });
 
   test('should render unauthorized content', async () => {
     const { getByText } = render(<Component permissions="12345" />);
 
-    await waitForElement(() =>
-      getByText('You do not have permission to see this')
-    );
+    await waitFor(() => {
+      const el = getByText('You do not have permission to see this');
+      expect(el).toBeDefined();
+      return el;
+    });
   });
 
   test('should render authorized with array of permissions', async () => {
@@ -108,7 +114,11 @@ describe('useAuthorize', () => {
       </Component>
     );
 
-    await waitForElement(() => getByText('You have permission to see this'));
+    await waitFor(() => {
+      const el = getByText('You have permission to see this');
+      expect(el).toBeDefined();
+      return el;
+    });
   });
 
   test('should render authorized with correct organizationId', async () => {
@@ -118,7 +128,11 @@ describe('useAuthorize', () => {
       </Component>
     );
 
-    await waitForElement(() => getByText('You have permission to see this'));
+    await waitFor(() => {
+      const el = getByText('You have permission to see this');
+      expect(el).toBeDefined();
+      return el;
+    });
   });
 
   test('should render authorized with permissions set', async () => {
@@ -153,7 +167,11 @@ describe('useAuthorize', () => {
       </Component>
     );
 
-    await waitForElement(() => getByText('You have permission to see this'));
+    await waitFor(() => {
+      const el = getByText('You have permission to see this');
+      expect(el).toBeDefined();
+      return el;
+    });
   });
 
   test('should render authorized with region', async () => {
@@ -163,7 +181,11 @@ describe('useAuthorize', () => {
       </Component>
     );
 
-    await waitForElement(() => getByText('You have permission to see this'));
+    await waitFor(() => {
+      const el = getByText('You have permission to see this');
+      expect(el).toBeDefined();
+      return el;
+    });
   });
 
   test('should render authorized with no region', async () => {
@@ -173,7 +195,11 @@ describe('useAuthorize', () => {
       </Component>
     );
 
-    await waitForElement(() => getByText('You have permission to see this'));
+    await waitFor(() => {
+      const el = getByText('You have permission to see this');
+      expect(el).toBeDefined();
+      return el;
+    });
   });
 
   test('should render unauthorized with region', async () => {
@@ -184,9 +210,11 @@ describe('useAuthorize', () => {
       </Component>
     );
 
-    await waitForElement(() =>
-      getByText('You do not have permission to see this')
-    );
+    await waitFor(() => {
+      const el = getByText('You do not have permission to see this');
+      expect(el).toBeDefined();
+      return el;
+    });
   });
 
   test('should render unauthorized with incorrect organizationId', async () => {
@@ -196,9 +224,11 @@ describe('useAuthorize', () => {
       </Component>
     );
 
-    await waitForElement(() =>
-      getByText('You do not have permission to see this')
-    );
+    await waitFor(() => {
+      const el = getByText('You do not have permission to see this');
+      expect(el).toBeDefined();
+      return el;
+    });
   });
 
   test('should render authorized with correct customerId', async () => {
@@ -208,7 +238,11 @@ describe('useAuthorize', () => {
       </Component>
     );
 
-    await waitForElement(() => getByText('You have permission to see this'));
+    await waitFor(() => {
+      const el = getByText('You have permission to see this');
+      expect(el).toBeDefined();
+      return el;
+    });
   });
 
   test('should render unauthorized with incorrect customerId', async () => {
@@ -218,9 +252,11 @@ describe('useAuthorize', () => {
       </Component>
     );
 
-    await waitForElement(() =>
-      getByText('You do not have permission to see this')
-    );
+    await waitFor(() => {
+      const el = getByText('You do not have permission to see this');
+      expect(el).toBeDefined();
+      return el;
+    });
   });
 
   test('should render authorized with correct resources as string', async () => {
@@ -230,7 +266,11 @@ describe('useAuthorize', () => {
       </Component>
     );
 
-    await waitForElement(() => getByText('You have permission to see this'));
+    await waitFor(() => {
+      const el = getByText('You have permission to see this');
+      expect(el).toBeDefined();
+      return el;
+    });
   });
 
   test('should render authorized with correct resources as number', async () => {
@@ -240,7 +280,11 @@ describe('useAuthorize', () => {
       </Component>
     );
 
-    await waitForElement(() => getByText('You have permission to see this'));
+    await waitFor(() => {
+      const el = getByText('You have permission to see this');
+      expect(el).toBeDefined();
+      return el;
+    });
   });
 
   test('should render authorized with correct resources as array', async () => {
@@ -250,7 +294,11 @@ describe('useAuthorize', () => {
       </Component>
     );
 
-    await waitForElement(() => getByText('You have permission to see this'));
+    await waitFor(() => {
+      const el = getByText('You have permission to see this');
+      expect(el).toBeDefined();
+      return el;
+    });
   });
 
   test('should render authorized with correct resources as nested array', async () => {
@@ -260,7 +308,11 @@ describe('useAuthorize', () => {
       </Component>
     );
 
-    await waitForElement(() => getByText('You have permission to see this'));
+    await waitFor(() => {
+      const el = getByText('You have permission to see this');
+      expect(el).toBeDefined();
+      return el;
+    });
   });
 
   test('should render unauthorized with incorrect resources as string', async () => {
@@ -270,9 +322,11 @@ describe('useAuthorize', () => {
       </Component>
     );
 
-    await waitForElement(() =>
-      getByText('You do not have permission to see this')
-    );
+    await waitFor(() => {
+      const el = getByText('You do not have permission to see this');
+      expect(el).toBeDefined();
+      return el;
+    });
   });
 
   test('should render unauthorized with incorrect resources as number', async () => {
@@ -282,9 +336,11 @@ describe('useAuthorize', () => {
       </Component>
     );
 
-    await waitForElement(() =>
-      getByText('You do not have permission to see this')
-    );
+    await waitFor(() => {
+      const el = getByText('You do not have permission to see this');
+      expect(el).toBeDefined();
+      return el;
+    });
   });
 
   test('should render unauthorized with incorrect resources as array', async () => {
@@ -294,9 +350,11 @@ describe('useAuthorize', () => {
       </Component>
     );
 
-    await waitForElement(() =>
-      getByText('You do not have permission to see this')
-    );
+    await waitFor(() => {
+      const el = getByText('You do not have permission to see this');
+      expect(el).toBeDefined();
+      return el;
+    });
   });
 
   test('should render unauthorized with incorrect resources as nested array', async () => {
@@ -306,9 +364,11 @@ describe('useAuthorize', () => {
       </Component>
     );
 
-    await waitForElement(() =>
-      getByText('You do not have permission to see this')
-    );
+    await waitFor(() => {
+      const el = getByText('You do not have permission to see this');
+      expect(el).toBeDefined();
+      return el;
+    });
   });
 
   test('should get current region back from useAuthorize hook', async () => {
@@ -318,7 +378,7 @@ describe('useAuthorize', () => {
       </RegionComponent>
     );
 
-    await wait(() => {
+    await waitFor(() => {
       expect(avUserPermissionsApi.getPermissions).toHaveBeenCalled();
       expect(avRegionsApi.getCurrentRegion).toHaveBeenCalled();
       expect(getByText('Washington')).toBeDefined();
@@ -330,7 +390,7 @@ describe('useAuthorize', () => {
       <RegionComponent>You have permission to see this</RegionComponent>
     );
 
-    await wait(() => {
+    await waitFor(() => {
       expect(avUserPermissionsApi.getPermissions).not.toHaveBeenCalled();
       expect(avRegionsApi.getCurrentRegion).not.toHaveBeenCalled();
       expect(getByText('You do not have permission to see this')).toBeDefined();

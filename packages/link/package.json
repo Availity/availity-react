@@ -1,6 +1,6 @@
 {
   "name": "@availity/link",
-  "version": "2.2.0",
+  "version": "2.2.1",
   "author": "Tyson Warner <tyson.warner@availity.com>",
   "description": "React component that renders an a tag with the `href` formatted to leverage loadApp",
   "main": "index.js",
@@ -21,11 +21,11 @@
   },
   "devDependencies": {
     "prop-types": "^15.5.8",
-    "react": "^16.8.3",
-    "react-dom": "^16.8.3"
+    "react": "^17.0.1",
+    "react-dom": "^17.0.1"
   },
   "peerDependencies": {
-    "react": "^16.3.0"
+    "react": ">=16.3.0"
   },
   "dependencies": {
     "@availity/resolve-url": "^1.1.0"

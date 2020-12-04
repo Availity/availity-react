@@ -12,7 +12,7 @@ const RegionSelect = ResourceSelect.create({
 
 const searchBy = (prevOptions, inputValue) => {
   return prevOptions.filter(
-    option =>
+    (option) =>
       option.value.toLowerCase().indexOf(inputValue.toLowerCase()) >= 0 ||
       option.id.toLowerCase().indexOf(inputValue.toLowerCase()) >= 0
   );
@@ -29,7 +29,7 @@ const AvRegionSelect = ({ defaultToCurrentRegion, name, ...props }) => {
         const value = response.data.regions[0];
 
         setFieldValue(name, value);
-      } catch (error) {
+      } catch {
         // eslint-disable-next-line no-console
         console.warn('AvRegionSelect failed to load the current region');
       }

@@ -1,5 +1,5 @@
 import React from 'react';
-import { render, cleanup, fireEvent, wait } from '@testing-library/react';
+import { render, cleanup, fireEvent, waitFor } from '@testing-library/react';
 import { AvForm } from 'availity-reactstrap-validation';
 import { Button } from 'reactstrap';
 import moment from 'moment';
@@ -45,7 +45,7 @@ describe('AvDateRange', () => {
 
     fireEvent.click(getByText('Submit'));
 
-    await wait(() => {
+    await waitFor(() => {
       expect(onValidSubmit).toHaveBeenCalledWith(
         expect.anything(),
         expect.objectContaining({
@@ -89,7 +89,7 @@ describe('AvDateRange', () => {
 
     fireEvent.click(getByText('Submit'));
 
-    await wait(() => {
+    await waitFor(() => {
       expect(onValidSubmit).toHaveBeenCalledWith(
         expect.anything(),
         expect.objectContaining({
@@ -127,17 +127,13 @@ describe('AvDateRange', () => {
 
     fireEvent.click(getByText('Submit'));
 
-    await wait(() => {
+    await waitFor(() => {
       expect(onValidSubmit).toHaveBeenCalledWith(
         expect.anything(),
         expect.objectContaining({
           date: {
-            start: moment()
-              .add(1, 'day')
-              .format('YYYY-MM-DD'),
-            end: moment()
-              .add(3, 'day')
-              .format('YYYY-MM-DD'),
+            start: moment().add(1, 'day').format('YYYY-MM-DD'),
+            end: moment().add(3, 'day').format('YYYY-MM-DD'),
           },
         })
       );
@@ -163,7 +159,7 @@ describe('AvDateRange', () => {
 
     fireEvent.click(getByText('Submit'));
 
-    await wait(() => {
+    await waitFor(() => {
       expect(onValidSubmit).toHaveBeenCalledWith(
         expect.anything(),
         expect.objectContaining({
@@ -194,7 +190,7 @@ describe('AvDateRange', () => {
 
     fireEvent.click(getByText('Submit'));
 
-    await wait(() => {
+    await waitFor(() => {
       expect(onInvalidSubmit).toHaveBeenCalled();
     });
   });
@@ -217,7 +213,7 @@ describe('AvDateRange', () => {
 
     fireEvent.click(getByText('Submit'));
 
-    await wait(() => {
+    await waitFor(() => {
       expect(onInvalidSubmit).toHaveBeenCalled();
     });
   });
@@ -246,7 +242,7 @@ describe('AvDateRange', () => {
 
     fireEvent.click(getByText('Submit'));
 
-    await wait(() => {
+    await waitFor(() => {
       expect(onValidSubmit).toHaveBeenCalled();
     });
   });
@@ -280,7 +276,7 @@ describe('AvDateRange', () => {
 
     fireEvent.click(getByText('Submit'));
 
-    await wait(() => {
+    await waitFor(() => {
       expect(onValidSubmit).toHaveBeenCalledWith(
         expect.anything(),
         expect.objectContaining({
@@ -318,15 +314,13 @@ describe('AvDateRange', () => {
 
     fireEvent.click(getByText('Submit'));
 
-    await wait(() => {
+    await waitFor(() => {
       expect(onValidSubmit).toHaveBeenCalledWith(
         expect.anything(),
         expect.objectContaining({
           date: {
             start: moment().format('YYYY-MM-DD'),
-            end: moment()
-              .add(1, 'day')
-              .format('YYYY-MM-DD'),
+            end: moment().add(1, 'day').format('YYYY-MM-DD'),
           },
         })
       );
@@ -356,7 +350,7 @@ describe('AvDateRange', () => {
 
     fireEvent.click(getByText('Submit'));
 
-    await wait(() => {
+    await waitFor(() => {
       expect(onValidSubmit).toHaveBeenCalledWith(
         expect.anything(),
         expect.objectContaining({
@@ -400,7 +394,7 @@ describe('AvDateRange', () => {
 
     fireEvent.click(getByText('Submit'));
 
-    await wait(() => {
+    await waitFor(() => {
       expect(onValidSubmit).toHaveBeenCalledWith(
         expect.anything(),
         expect.objectContaining({
@@ -462,9 +456,7 @@ describe('AvDateRange', () => {
   });
 
   test('datepicker works with default start and end dates', async () => {
-    const defaultStartDate = moment()
-      .add(-4, 'days')
-      .format('YYYY-MM-DD');
+    const defaultStartDate = moment().add(-4, 'days').format('YYYY-MM-DD');
     const defaultEndDate = moment('12/31/2022').format('YYYY-MM-DD');
     const { container, getByText } = render(
       <DateRange
@@ -492,15 +484,13 @@ describe('AvDateRange', () => {
 
     fireEvent.click(getByText('Submit'));
 
-    await wait(() => {
+    await waitFor(() => {
       expect(onValidSubmit).toHaveBeenCalledWith(
         expect.anything(),
         expect.objectContaining({
           date: {
             start: moment().format('YYYY-MM-DD'),
-            end: moment()
-              .add(1, 'day')
-              .format('YYYY-MM-DD'),
+            end: moment().add(1, 'day').format('YYYY-MM-DD'),
           },
         })
       );

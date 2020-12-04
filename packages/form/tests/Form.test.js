@@ -1,5 +1,5 @@
 import React from 'react';
-import { render, fireEvent, wait, cleanup } from '@testing-library/react';
+import { render, fireEvent, waitFor, cleanup } from '@testing-library/react';
 import { Button } from 'reactstrap';
 import * as yup from 'yup';
 import { Form, Input } from '..';
@@ -12,7 +12,8 @@ describe('Form', () => {
       <Form initialValues={{}} onSubmit={() => {}} />
     );
 
-    getByTestId('form-container');
+    const el = getByTestId('form-container');
+    expect(el).toBeDefined();
   });
 
   test('validates properly', async () => {
@@ -39,7 +40,7 @@ describe('Form', () => {
 
     await fireEvent.click(getByText('Submit'));
 
-    await wait(() => {
+    await waitFor(() => {
       expect(onSubmit).toHaveBeenCalledWith(
         expect.objectContaining({
           hello: 'hello',

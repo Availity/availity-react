@@ -1,5 +1,5 @@
 import React from 'react';
-import { render, fireEvent, cleanup, wait } from '@testing-library/react';
+import { render, fireEvent, cleanup, waitFor } from '@testing-library/react';
 import { Form } from '@availity/form';
 import Upload from '..';
 
@@ -148,21 +148,20 @@ describe('Upload', () => {
     fireEvent.drop(inputNode, fileEvent);
 
     expect(inputNode.files.length).toBe(1);
-    await wait(() => {
+    await waitFor(() => {
       expect(getByText('File is larger than 10 bytes')).toBeDefined();
     });
   });
 
   test('uses custom drop rejection message', async () => {
     // eslint-disable-next-line unicorn/consistent-function-scoping
-    const getDropRejectionMessage = errors => {
+    const getDropRejectionMessage = (errors) => {
       let msg = '';
-      errors.forEach(error => {
-        if (error.code === 'file-too-large') {
-          msg += 'my custom error message';
-        } else {
-          msg += 'this file is no good';
-        }
+      errors.forEach((error) => {
+        msg +=
+          error.code === 'file-too-large'
+            ? 'my custom error message'
+            : 'this file is no good';
       });
       return msg;
     };
@@ -189,7 +188,7 @@ describe('Upload', () => {
     fireEvent.drop(inputNode, fileEvent);
 
     expect(inputNode.files.length).toBe(1);
-    await wait(() => {
+    await waitFor(() => {
       expect(getByText('my custom error message')).toBeDefined();
     });
   });

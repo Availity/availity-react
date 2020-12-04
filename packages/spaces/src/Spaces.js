@@ -71,21 +71,23 @@ const Spaces = ({
       // Filter out dupes and ids that we already have the space for
       const filteredSpaceIDs = spaceIds
         .filter((id, i) => spaceIds.indexOf(id) === i)
-        .filter(id => !spaces.some(spc => spc && spc.id === id))
-        .filter(id => !spacesFromProps.some(spc => spc && spc.id === id));
+        .filter((id) => !spaces.some((spc) => spc && spc.id === id))
+        .filter((id) => !spacesFromProps.some((spc) => spc && spc.id === id));
 
       const filteredPayerIDs = payerIds
         .filter((id, i) => payerIds.indexOf(id) === i)
         .filter(
-          id =>
+          (id) =>
             !spaces.some(
-              spc => spc && spc.payerIDs && spc.payerIDs.some(pId => pId === id)
+              (spc) =>
+                spc && spc.payerIDs && spc.payerIDs.some((pId) => pId === id)
             )
         )
         .filter(
-          id =>
+          (id) =>
             !spacesFromProps.some(
-              spc => spc && spc.payerIDs && spc.payerIDs.some(pId => pId === id)
+              (spc) =>
+                spc && spc.payerIDs && spc.payerIDs.some((pId) => pId === id)
             )
         );
 
@@ -164,18 +166,18 @@ export const useSpaces = (...ids) => {
   }
 
   // Try to match by space id first, else match by payer id
-  const filteredSpaces = ids.map(id => {
-    let [spc] = spaces.filter(s => s.id === id);
+  const filteredSpaces = ids.map((id) => {
+    let [spc] = spaces.filter((s) => s.id === id);
 
     if (!spc) {
-      [spc] = spaces.filter(s => {
+      [spc] = spaces.filter((s) => {
         if (s.payerIDs && s.payerIDs.length > 0) return s.payerIDs[0] === id;
         return false;
       });
     }
 
     if (!spc) {
-      [spc] = spaces.filter(s => (s.payerIDs || []).some(p => p === id));
+      [spc] = spaces.filter((s) => (s.payerIDs || []).some((p) => p === id));
     }
     return spc;
   });

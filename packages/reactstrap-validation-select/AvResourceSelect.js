@@ -48,14 +48,13 @@ class AvResourceSelect extends Component {
       };
 
       if (args.length !== 3) {
-        if (typeof this.props.parameters === 'function') {
-          data = this.props.parameters(data);
-        } else {
-          data = {
-            ...data,
-            ...this.props.parameters,
-          };
-        }
+        data =
+          typeof this.props.parameters === 'function'
+            ? this.props.parameters(data)
+            : {
+                ...data,
+                ...this.props.parameters,
+              };
       }
 
       if (this.props.graphqlConfig.query) {
@@ -70,14 +69,13 @@ class AvResourceSelect extends Component {
     }
 
     if (args.length !== 3) {
-      if (typeof this.props.parameters === 'function') {
-        params = this.props.parameters(params);
-      } else {
-        params = {
-          ...params,
-          ...this.props.parameters,
-        };
-      }
+      params =
+        typeof this.props.parameters === 'function'
+          ? this.props.parameters(params)
+          : {
+              ...params,
+              ...this.props.parameters,
+            };
     }
 
     if (args.length === 3) {
@@ -88,14 +86,13 @@ class AvResourceSelect extends Component {
         }
       } else {
         params.offset = (page - 1) * this.props.itemsPerPage;
-        if (typeof this.props.parameters === 'function') {
-          params = this.props.parameters(params);
-        } else {
-          params = {
-            ...params,
-            ...this.props.parameters,
-          };
-        }
+        params =
+          typeof this.props.parameters === 'function'
+            ? this.props.parameters(params)
+            : {
+                ...params,
+                ...this.props.parameters,
+              };
       }
     } else {
       page = 1;
@@ -105,15 +102,11 @@ class AvResourceSelect extends Component {
       !this.props.requiredParams || this.props.requiredParams.length === 0;
 
     if (!requiredSatisfied) {
-      if (this.props.graphqlConfig) {
-        requiredSatisfied = this.props.requiredParams.every(param =>
-          get(data, `variables.filters.${param}`)
-        );
-      } else {
-        requiredSatisfied = this.props.requiredParams.every(
-          param => params[param]
-        );
-      }
+      requiredSatisfied = this.props.graphqlConfig
+        ? this.props.requiredParams.every((param) =>
+            get(data, `variables.filters.${param}`)
+          )
+        : this.props.requiredParams.every((param) => params[param]);
     }
     if (this.props.isDisabled || !requiredSatisfied) {
       return {
@@ -122,51 +115,46 @@ class AvResourceSelect extends Component {
       };
     }
     if (this.props.onPageChange) this.props.onPageChange(inputValue, page);
-    let fetch;
-    if (this.props.graphqlConfig || this.props.method === 'POST') {
-      fetch = () =>
-        this.props.resource.post(data || params, {
-          headers: {
-            'Content-Type': 'application/json',
-          },
-          ...this.props.requestConfig,
-        });
-    } else {
-      fetch = () =>
-        this.props.resource.postGet(
-          qs.stringify(params, {
-            encode: false,
-            arrayFormat: 'repeat',
-            indices: false,
-            allowDots: true,
-          }),
-          {
-            headers: {
-              'Content-Type': 'application/x-www-form-urlencoded',
-            },
-            ...this.props.requestConfig,
-          }
-        );
-    }
+    const fetch =
+      this.props.graphqlConfig || this.props.method === 'POST'
+        ? () =>
+            this.props.resource.post(data || params, {
+              headers: {
+                'Content-Type': 'application/json',
+              },
+              ...this.props.requestConfig,
+            })
+        : () =>
+            this.props.resource.postGet(
+              qs.stringify(params, {
+                encode: false,
+                arrayFormat: 'repeat',
+                indices: false,
+                allowDots: true,
+              }),
+              {
+                headers: {
+                  'Content-Type': 'application/x-www-form-urlencoded',
+                },
+                ...this.props.requestConfig,
+              }
+            );
     return fetch()
-      .then(resp => {
+      .then((resp) => {
         if (!resp || !resp.data) {
           throw new Error(`API returned an invalid response.`);
         }
         const getResult = this.props.getResult || this.props.resource.getResult;
         let { hasMore } = this.props;
         if (hasMore === undefined) {
-          if (this.props.graphqlConfig) {
-            hasMore = data =>
-              get(
-                data.data,
-                `${this.props.graphqlConfig.type}Pagination.pageInfo.hasNextPage`,
-                false
-              );
-          } else {
-            hasMore = ({ totalCount, limit, offset }) =>
-              totalCount > offset + limit;
-          }
+          hasMore = this.props.graphqlConfig
+            ? (data) =>
+                get(
+                  data.data,
+                  `${this.props.graphqlConfig.type}Pagination.pageInfo.hasNextPage`,
+                  false
+                )
+            : ({ totalCount, limit, offset }) => totalCount > offset + limit;
         }
 
         const items =
@@ -218,7 +206,9 @@ class AvResourceSelect extends Component {
         customerId: this.props.customerId,
         ...this.props.parameters,
       };
-      _cacheUniq = watchParams.map(watchParam => params[watchParam]).join(',');
+      _cacheUniq = watchParams
+        .map((watchParam) => params[watchParam])
+        .join(',');
     }
 
     return (
@@ -229,7 +219,7 @@ class AvResourceSelect extends Component {
         pagination
         raw
         debounceTimeout={debounceTimeout}
-        cacheUniq={_cacheUniq}
+        cacheUniqs={_cacheUniq}
         additional={{
           page: 1,
           ...additional,
@@ -241,10 +231,10 @@ class AvResourceSelect extends Component {
   }
 }
 
-const ucFirst = str => str && str.charAt(0).toUpperCase() + str.slice(1);
+const ucFirst = (str) => str && str.charAt(0).toUpperCase() + str.slice(1);
 
-AvResourceSelect.create = defaults => {
-  const SpecificAvResourceSelect = props => (
+AvResourceSelect.create = (defaults) => {
+  const SpecificAvResourceSelect = (props) => (
     <AvResourceSelect {...defaults} {...props} />
   );
   SpecificAvResourceSelect.displayName = `Av${ucFirst(
