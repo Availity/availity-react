@@ -179,7 +179,7 @@ describe('Select', () => {
 
     await fireEvent.click(getByText('Submit'));
 
-    await wait(() => {
+    await waitFor(() => {
       expect(onSubmit).toHaveBeenCalledWith(
         expect.objectContaining({
           selectAll: [
@@ -219,7 +219,7 @@ describe('Select', () => {
 
     await fireEvent.click(getByText('Submit'));
 
-    await wait(() => {
+    await waitFor(() => {
       expect(onSubmit).toHaveBeenCalledWith(
         expect.objectContaining({
           selectAll: [
