@@ -242,6 +242,7 @@ const Select = ({
       if (
         [...options, ...newOptions].length > 0 &&
         (values[name] === undefined ||
+          values[name] === null ||
           values[name].length < [...options, ...newOptions].length)
       ) {
         validateSelectAllOptions([...options, ...newOptions]);

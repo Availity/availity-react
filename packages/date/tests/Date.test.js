@@ -209,8 +209,8 @@ describe('Date', () => {
   test('renders new year option when navigating past initial range', async () => {
     const onChange = jest.fn();
 
-    const min = moment().subtract(1, 'years');
-    const max = moment('12/31/2020');
+    const min = moment('12/01/2020').subtract(1, 'years');
+    const max = moment('12/31/2021');
     const newYear = `${max.year() + 1}`;
 
     const { container, getAllByTestId } = render(
