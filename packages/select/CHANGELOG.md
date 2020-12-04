@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## 0.17.2 (2020-12-04)
+
+
+### Bug Fixes
+
+* **select:** allowSelectAll account for null value ([3f47b7e](https://github.com/Availity/availity-react/commit/3f47b7e420407065c0491f8cb886178308223661))
+
+
+
+
+
 ## [0.17.1](https://github.com/Availity/availity-react/compare/@availity/select@0.17.0...@availity/select@0.17.1) (2020-11-17)
 
 
