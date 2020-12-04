@@ -110,11 +110,21 @@ const Select = ({
     return get(value, valueKey, value);
   };
 
-  const findOptionFromValue = (value, options) =>
-    Array.isArray(options) &&
-    [...options, ...newOptions].filter((option) =>
-      areValueAndOptionValueEqual(value, getOptionValue(option))
-    )[0];
+  const findOptionFromValue = (value, options) => {
+    if (Array.isArray(options)) {
+      const flattened = [...options, ...newOptions].reduce((prev, current) => {
+        if (current.options) {
+          return prev.concat(current.options);
+        }
+        return prev.concat(current);
+      }, []);
+      return flattened.filter((o) =>
+        areValueAndOptionValueEqual(value, getOptionValue(o))
+      )[0];
+    }
+
+    return null;
+  };
 
   const getViewValue = () => {
     if (attributes.raw || attributes.loadOptions || !options) return fieldValue;
