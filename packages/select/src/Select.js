@@ -113,7 +113,7 @@ const Select = ({
   const findOptionFromValue = (value, options) => {
     if (Array.isArray(options)) {
       const flattened = [...options, ...newOptions].reduce((prev, current) => {
-        if (current.options) {
+        if (current.type === 'group') {
           return prev.concat(current.options);
         }
         return prev.concat(current);
