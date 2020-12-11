@@ -29,6 +29,19 @@ const options = [
   { label: 'Option 4', value: 'value for option 4' },
 ];
 
+const groupedOptions = [
+  {
+    label: 'options',
+    options: [
+      { label: 'Option 1', value: 'value for option 1' },
+      { label: 'Option 2', value: 'value for option 2' },
+      { label: 'Option 3', value: 'value for option 3' },
+      { label: 'Option 4', value: 'value for option 4' },
+    ],
+    type: 'group',
+  },
+];
+
 // I know it's lame but this is the only way to test with react-select
 // https://stackoverflow.com/questions/55575843/how-to-test-react-select-with-react-testing-library
 const selectItem = async (container, getByText, name) => {
@@ -73,6 +86,73 @@ describe('Select', () => {
       expect(onSubmit).toHaveBeenCalledWith(
         expect.objectContaining({
           singleSelect: 'value for option 1',
+        }),
+        expect.anything()
+      );
+    });
+  });
+
+  test('single value grouped options submits', async () => {
+    const onSubmit = jest.fn();
+    const { container, getByText } = render(
+      <Form
+        initialValues={{
+          singleSelect: undefined,
+        }}
+        onSubmit={onSubmit}
+        validationSchema={singleValueSchema('singleSelect')}
+      >
+        <Select
+          name="singleSelect"
+          options={groupedOptions}
+          data-testid="single-select"
+        />
+        <Button type="submit">Submit</Button>
+      </Form>
+    );
+
+    await selectItem(container, getByText, 'Option 1');
+
+    await fireEvent.click(getByText('Submit'));
+
+    await waitFor(() => {
+      expect(onSubmit).toHaveBeenCalledWith(
+        expect.objectContaining({
+          singleSelect: 'value for option 1',
+        }),
+        expect.anything()
+      );
+    });
+  });
+
+  test('multi select grouped options submits', async () => {
+    const onSubmit = jest.fn();
+    const { container, getByText } = render(
+      <Form
+        initialValues={{
+          singleSelect: undefined,
+        }}
+        onSubmit={onSubmit}
+        validationSchema={singleValueSchema('singleSelect')}
+      >
+        <Select
+          isMulti
+          name="singleSelect"
+          options={groupedOptions}
+          data-testid="single-select"
+        />
+        <Button type="submit">Submit</Button>
+      </Form>
+    );
+
+    await selectItem(container, getByText, 'Option 1');
+
+    await fireEvent.click(getByText('Submit'));
+
+    await waitFor(() => {
+      expect(onSubmit).toHaveBeenCalledWith(
+        expect.objectContaining({
+          singleSelect: ['value for option 1'],
         }),
         expect.anything()
       );
