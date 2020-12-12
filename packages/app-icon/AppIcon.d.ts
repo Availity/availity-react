@@ -1,5 +1,5 @@
 export interface AppIconProps {
-    tag?: React.ReactType | string;
+    tag?: React.ReactElement | string;
     color?: string;
     size?: string;
     branded?: boolean;
