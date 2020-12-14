@@ -16,7 +16,7 @@ import '@availity/yup';
   initialValues={{
     justTheInput: undefined,
   }}
-  onSubmit={values => window.alert(JSON.stringify(values))}
+  onSubmit={(values) => window.alert(JSON.stringify(values))}
   validationSchema={yup.object().shape({
     justTheInput: yup.string().required('This field is required.'),
   })}
@@ -45,6 +45,25 @@ See [react-select](https://github.com/JedWatson/react-select) and [react-select-
 ### `name: string`
 
 The name of the field. Will be the key of the selected option(s) that come through in the values of the `onSubmit` callback of the form.
+
+### `options: Array<object> = []`
+
+Array of options that populate the select menu. Grouped options are also supported, but must include the property `type: 'group'`.
+
+```
+const groupedOptions = [
+  {
+    label: 'options',
+    options: [
+      { label: 'Option 1', value: 'value for option 1' },
+      { label: 'Option 2', value: 'value for option 2' },
+      { label: 'Option 3', value: 'value for option 3' },
+      { label: 'Option 4', value: 'value for option 4' },
+    ],
+    type: 'group',
+  },
+];
+```
 
 ### `raw?: boolean`
 
