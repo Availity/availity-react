@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.17.4](https://github.com/Availity/availity-react/compare/@availity/select@0.17.3...@availity/select@0.17.4) (2020-12-16)
+
+
+### Bug Fixes
+
+* clearable multiselects not getting cleared when clicking x on the value ([25f4e56](https://github.com/Availity/availity-react/commit/25f4e56718e40131f40fa9efd1d54ecbc8e87992))
+
+
+
+
+
 ## [0.17.3](https://github.com/Availity/availity-react/compare/@availity/select@0.17.2...@availity/select@0.17.3) (2020-12-14)
 
 **Note:** Version bump only for package @availity/select
