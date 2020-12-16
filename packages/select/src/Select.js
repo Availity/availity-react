@@ -148,6 +148,7 @@ const Select = ({
 
   const onChangeHandler = async (newValue) => {
     if (
+      newValue &&
       newValue.length > 0 &&
       newValue[newValue.length - 1].value === selectAllOption.value
     ) {
