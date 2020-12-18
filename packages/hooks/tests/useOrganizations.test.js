@@ -1,8 +1,9 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { render, waitFor, cleanup } from '@testing-library/react';
+import { waitFor, cleanup } from '@testing-library/react';
 import { avOrganizationsApi } from '@availity/api-axios';
-import { queryCache } from 'react-query';
+import { QueryClient } from 'react-query';
+import renderWithClient from './util';
 import { useOrganizations } from '..';
 
 jest.mock('@availity/api-axios');
@@ -12,10 +13,12 @@ beforeEach(() => {
   queryStates = [];
 });
 
+const queryClient = new QueryClient();
+
 afterEach(() => {
   jest.clearAllMocks();
   cleanup();
-  queryCache.clear();
+  queryClient.clear();
   queryStates = [];
 });
 
@@ -52,7 +55,10 @@ describe('useOrganizations', () => {
       'An error occurred'
     );
 
-    const { getByText } = render(<Component log={pushState} />);
+    const { getByText } = renderWithClient(
+      queryClient,
+      <Component log={pushState} />
+    );
 
     getByText('Status: loading');
     await waitFor(() => {
@@ -83,7 +89,10 @@ describe('useOrganizations', () => {
       },
     });
 
-    const { getByText } = render(<Component log={pushState} />);
+    const { getByText } = renderWithClient(
+      queryClient,
+      <Component log={pushState} />
+    );
 
     getByText('Status: loading');
     await waitFor(() => {

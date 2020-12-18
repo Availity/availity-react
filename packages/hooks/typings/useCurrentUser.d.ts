@@ -1,4 +1,4 @@
-import { QueryConfig, QueryResult } from 'react-query';
+import { UseQueryOptions, UseQueryResult } from 'react-query';
 
 export type CurrentUser = {
   akaname: string;
@@ -15,7 +15,7 @@ export type CurrentUser = {
 };
 
 declare function useCurrentUser(
-  options?: QueryConfig<CurrentUser, unknown>
-): QueryResult<CurrentUser, unknown>;
+  options?: UseQueryOptions<CurrentUser, unknown>
+): UseQueryResult<CurrentUser, unknown>;
 
 export default useCurrentUser;

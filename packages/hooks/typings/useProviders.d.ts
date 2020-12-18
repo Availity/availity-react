@@ -1,5 +1,5 @@
 import { AxiosRequestConfig } from 'axios';
-import { QueryConfig, QueryResult } from 'react-query';
+import { UseQueryOptions, UseQueryResult } from 'react-query';
 import { AriesHookBase } from './aries';
 
 interface ProvidersBase {
@@ -44,7 +44,7 @@ type AvConfig = { customerId: number } & AxiosRequestConfig;
 
 declare function useProviders(
   config: AvConfig,
-  options?: QueryConfig<Providers, unknown>
-): QueryResult<Providers, unknown>;
+  options?: UseQueryOptions<Providers, unknown>
+): UseQueryResult<Providers, unknown>;
 
 export default useProviders;

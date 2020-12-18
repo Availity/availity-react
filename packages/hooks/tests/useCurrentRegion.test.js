@@ -1,9 +1,10 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { render, waitFor, cleanup } from '@testing-library/react';
+import { waitFor, cleanup } from '@testing-library/react';
 import { avRegionsApi } from '@availity/api-axios';
-import { queryCache } from 'react-query';
+import { QueryClient } from 'react-query';
 import { useCurrentRegion } from '..';
+import renderWithClient from './util';
 
 jest.mock('@availity/api-axios');
 
@@ -12,10 +13,12 @@ beforeEach(() => {
   queryStates = [];
 });
 
+const queryClient = new QueryClient();
+
 afterEach(() => {
   jest.clearAllMocks();
   cleanup();
-  queryCache.clear();
+  queryClient.clear();
   queryStates = [];
 });
 
@@ -49,7 +52,10 @@ Component.propTypes = {
 describe('useCurrentRegion', () => {
   test('handle error', async () => {
     avRegionsApi.getCurrentRegion.mockRejectedValueOnce('An error occurred');
-    const { getByText } = render(<Component log={pushState} />);
+    const { getByText } = renderWithClient(
+      queryClient,
+      <Component log={pushState} />
+    );
 
     getByText('Status: loading');
     await waitFor(() => {
@@ -77,7 +83,10 @@ describe('useCurrentRegion', () => {
       statusText: 'Ok',
     });
 
-    const { getByText } = render(<Component log={pushState} />);
+    const { getByText } = renderWithClient(
+      queryClient,
+      <Component log={pushState} />
+    );
 
     getByText('Status: loading');
     await waitFor(() => {

@@ -1,8 +1,9 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { render, waitFor, cleanup } from '@testing-library/react';
+import { waitFor, cleanup } from '@testing-library/react';
 import { avPermissionsApi } from '@availity/api-axios';
-import { queryCache } from 'react-query';
+import { QueryClient } from 'react-query';
+import renderWithClient from './util';
 import { usePermissions } from '..';
 
 jest.mock('@availity/api-axios');
@@ -12,10 +13,12 @@ beforeEach(() => {
   queryStates = [];
 });
 
+const queryClient = new QueryClient();
+
 afterEach(() => {
   jest.clearAllMocks();
   cleanup();
-  queryCache.clear();
+  queryClient.clear();
   queryStates = [];
 });
 
@@ -50,7 +53,10 @@ describe('usePermissions', () => {
   test('should return an error', async () => {
     avPermissionsApi.getPermissions.mockRejectedValueOnce('An error occurred');
 
-    const { getByText } = render(<Component log={pushState} />);
+    const { getByText } = renderWithClient(
+      queryClient,
+      <Component log={pushState} />
+    );
 
     getByText('Status: loading');
     await waitFor(() => {
@@ -70,7 +76,10 @@ describe('usePermissions', () => {
       links: { self: { href: 'test.com' } },
     });
 
-    const { getByText } = render(<Component log={pushState} />);
+    const { getByText } = renderWithClient(
+      queryClient,
+      <Component log={pushState} />
+    );
 
     getByText('Status: loading');
     await waitFor(() => {
