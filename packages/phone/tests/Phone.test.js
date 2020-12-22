@@ -1,7 +1,7 @@
 import React from 'react';
 import * as yup from 'yup';
 import '../src/validatePhone';
-import { render, fireEvent, wait, cleanup } from '@testing-library/react';
+import { render, fireEvent, waitFor, cleanup } from '@testing-library/react';
 import { Form } from '@availity/form';
 import { Phone } from '..';
 
@@ -122,7 +122,7 @@ describe('Phone', () => {
 
     await fireEvent.blur(testPhoneInput);
 
-    await wait(() => {
+    await waitFor(() => {
       expect(testPhoneInput.className).toContain('is-touched');
       expect(testPhoneInput.className).toContain('is-invalid');
       expect(getByDisplayValue('(222) 333-4444')).toBeDefined();
@@ -143,7 +143,7 @@ describe('Phone', () => {
 
     await fireEvent.blur(testPhoneInput);
 
-    await wait(() => {
+    await waitFor(() => {
       expect(testPhoneInput.className).toContain('is-touched');
       expect(testPhoneInput.className).toContain('av-valid');
       expect(getByDisplayValue('(222) 333-4444')).toBeDefined();

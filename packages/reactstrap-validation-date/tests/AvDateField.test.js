@@ -1,10 +1,5 @@
 import React from 'react';
-import {
-  render,
-  cleanup,
-  fireEvent,
-  waitForElement,
-} from '@testing-library/react';
+import { render, cleanup, fireEvent, waitFor } from '@testing-library/react';
 import { AvForm } from 'availity-reactstrap-validation';
 import { Button } from 'reactstrap';
 import { AvDateField } from '..';
@@ -13,7 +8,7 @@ afterEach(() => {
   cleanup();
 });
 
-const Date = props => (
+const Date = (props) => (
   <AvForm>
     <AvDateField {...props} />
     <Button type="submit">Submit</Button>
@@ -22,7 +17,8 @@ const Date = props => (
 
 describe('AvDateField', () => {
   test('should render', () => {
-    render(<Date name="standAlone" />);
+    const dt = render(<Date name="standAlone" />);
+    expect(dt).toBeDefined();
   });
 
   test('render inital date', () => {
@@ -51,7 +47,10 @@ describe('AvDateField', () => {
 
     fireEvent.click(getByText('Submit'));
 
-    await waitForElement(() => getByText('value must come after this date'));
+    const el = await waitFor(() =>
+      getByText('value must come after this date')
+    );
+    expect(el).toBeDefined();
   });
 
   test('min date validation', async () => {
@@ -72,7 +71,11 @@ describe('AvDateField', () => {
 
     fireEvent.click(getByText('Submit'));
 
-    await waitForElement(() => getByText('value must come before this date'));
+    const el = await waitFor(() =>
+      getByText('value must come before this date')
+    );
+
+    expect(el).toBeDefined();
   });
 
   test('works with grid columns for label', async () => {

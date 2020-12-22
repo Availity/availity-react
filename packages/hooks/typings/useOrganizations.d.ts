@@ -1,6 +1,6 @@
-import { AriesHookBase } from './aries';
 import { AxiosRequestConfig } from 'axios';
-import { QueryResult } from 'react-query';
+import { QueryConfig, QueryResult } from 'react-query';
+import { AriesHookBase } from './aries';
 
 interface OrganizationsBase {
   data: {
@@ -49,9 +49,9 @@ interface OrganizationsBase {
           stateCode: string;
           zipCode: string;
         };
-        regions: Array<{ code: string; value: string }>;
-        npis: Array<{ number: string }>;
-        taxIds: Array<{ number: string; type: string }>;
+        regions: { code: string; value: string }[];
+        npis: { number: string }[];
+        taxIds: { number: string; type: string }[];
 
         phoneNumber: {
           areaCode: string;
@@ -67,6 +67,9 @@ interface OrganizationsBase {
 
 type Organizations = AriesHookBase & OrganizationsBase;
 
-export declare function useOrganizations(): QueryResult<Organizations>;
+export declare function useOrganizations(
+  config: AxiosRequestConfig,
+  options?: QueryConfig<Organizations, unknown>
+): QueryResult<Organizations, unknown>;
 
 export default useOrganizations;

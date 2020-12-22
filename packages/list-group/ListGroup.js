@@ -9,7 +9,7 @@ const ListGroup = React.forwardRef(
       cards && 'list-group-cards',
       selectable && 'list-group-selectable',
     ]
-      .filter(a => a)
+      .filter((a) => a)
       .join(' ');
     return <RsListGroup ref={ref} {...props} className={classname} />;
   }

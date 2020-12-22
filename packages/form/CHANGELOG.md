@@ -3,6 +3,14 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.5.32](https://github.com/Availity/availity-react/compare/@availity/form@0.5.31...@availity/form@0.5.32) (2020-11-17)
+
+**Note:** Version bump only for package @availity/form
+
+
+
+
+
 ## 0.5.31 (2020-10-12)
 
 **Note:** Version bump only for package @availity/form

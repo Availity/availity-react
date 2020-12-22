@@ -1,5 +1,5 @@
 import React from 'react';
-import { render, cleanup, fireEvent, wait } from '@testing-library/react';
+import { render, cleanup, fireEvent, waitFor } from '@testing-library/react';
 import Analytics from '..';
 import { useAnalytics } from '../src/Analytics';
 
@@ -34,7 +34,7 @@ describe('Analytics', () => {
 
     fireEvent.click(btn);
 
-    await wait(() => {
+    await waitFor(() => {
       expect(plugins[0].trackEvent).toHaveBeenCalledTimes(1);
     });
   });
@@ -68,7 +68,7 @@ describe('Analytics', () => {
 
     fireEvent.click(btn);
 
-    await wait(() => {
+    await waitFor(() => {
       expect(plugins[0].trackEvent).toHaveBeenCalledTimes(1);
     });
   });

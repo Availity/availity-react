@@ -3,6 +3,25 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## 1.3.20 (2020-12-12)
+
+
+### Bug Fixes
+
+* **app-icon:** adjust deprecated type ([5429d43](https://github.com/Availity/availity-react/commit/5429d431d57ebebfbf25ca38149840eb90a38649))
+
+
+
+
+
+## 1.3.19 (2020-11-17)
+
+**Note:** Version bump only for package @availity/app-icon
+
+
+
+
+
 ## 1.3.18 (2020-04-30)
 
 **Note:** Version bump only for package @availity/app-icon

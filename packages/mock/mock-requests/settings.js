@@ -1,4 +1,4 @@
-module.exports = mock => {
+export default (mock) => {
   // this path is ridiculously long
   mock.get(/\/api\/utils\/v1\/settings/, (req, res) =>
     res.status(200).body(

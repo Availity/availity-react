@@ -9,3 +9,6 @@ rules:
   no-restricted-syntax: 0
   react/prefer-stateless-function: 0
   import/extensions: 0
+  unicorn/no-reduce: 0
+  # disabled to support older versions of workflow that do not polyfill Array.prototype.find (not supported in IE)
+  unicorn/prefer-array-find: 0

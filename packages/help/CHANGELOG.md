@@ -3,6 +3,25 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.3.6](https://github.com/Availity/availity-react/compare/@availity/help@1.3.5...@availity/help@1.3.6) (2020-11-17)
+
+**Note:** Version bump only for package @availity/help
+
+
+
+
+
+## 1.3.5 (2020-11-11)
+
+
+### Bug Fixes
+
+* **help:** add FieldHelpIcon to export ([26da24c](https://github.com/Availity/availity-react/commit/26da24cace8828cc60d073fc26acbaab7b596a3a))
+
+
+
+
+
 ## [1.3.4](https://github.com/Availity/availity-react/compare/@availity/help@1.3.3...@availity/help@1.3.4) (2020-09-30)
 
 **Note:** Version bump only for package @availity/help

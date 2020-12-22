@@ -20,7 +20,7 @@ export const constants = {
 const HelpProvider = ({ children }) => {
   const [help, setHelp] = useState();
 
-  const addHelp = newHelp => {
+  const addHelp = (newHelp) => {
     setHelp(newHelp);
     avMessages.send({
       event: constants.SET_HELP,
@@ -28,8 +28,8 @@ const HelpProvider = ({ children }) => {
     });
   };
 
-  const removeHelp = id => {
-    setHelp(undefined);
+  const removeHelp = (id) => {
+    setHelp();
     avMessages.send({
       event: constants.RESET_HELP,
       id,
@@ -102,7 +102,8 @@ export const Help = ({ type, id, children }) => {
 
   return children;
 };
-export const triggerFieldHelp = id => {
+
+export const triggerFieldHelp = (id) => {
   avMessages.send({
     event: constants.OPEN_FIELD_HELP,
     id,
@@ -131,6 +132,7 @@ FieldHelpIcon.defaultProps = {
   size: '1x',
   color: 'primary',
 };
+
 Help.propTypes = {
   type: PropTypes.string,
   id: PropTypes.string.isRequired,

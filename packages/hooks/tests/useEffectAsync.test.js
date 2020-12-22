@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { render, waitForElement, act, cleanup } from '@testing-library/react';
+import { render, waitFor, act, cleanup } from '@testing-library/react';
 import { useEffectAsync } from '..';
 
 afterEach(cleanup);
@@ -28,7 +28,7 @@ describe('useEffectAsync', () => {
     expect(getByTestId('effect-test').textContent).toEqual('Hello');
 
     // Wait for the Async Function to be called after mounting
-    await waitForElement(() => getByTestId('effect-test'));
+    await waitFor(() => getByTestId('effect-test'));
 
     // Expect the component to render "World"
     expect(getByTestId('effect-test').textContent).toEqual('World');

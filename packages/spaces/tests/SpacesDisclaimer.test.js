@@ -1,5 +1,5 @@
 import React from 'react';
-import { render, waitForElement, cleanup } from '@testing-library/react';
+import { render, waitFor, cleanup } from '@testing-library/react';
 import { avSlotMachineApi } from '@availity/api-axios';
 import Spaces, { SpacesDisclaimer } from '..';
 
@@ -16,7 +16,7 @@ avSlotMachineApi.create.mockResolvedValue({
           {
             id: '1',
             description: 'foo',
-          }
+          },
         ],
       },
     },
@@ -36,9 +36,7 @@ describe('SpacesDisclaimer', () => {
       </Spaces>
     );
 
-    const disclaimer = await waitForElement(() =>
-      getByTestId('spaces-disclaimer-1')
-    );
+    const disclaimer = await waitFor(() => getByTestId('spaces-disclaimer-1'));
 
     expect(disclaimer.textContent).toBe('foo');
   });
@@ -50,9 +48,7 @@ describe('SpacesDisclaimer', () => {
       </Spaces>
     );
 
-    const disclaimer = await waitForElement(() =>
-      getByTestId('spaces-disclaimer-1')
-    );
+    const disclaimer = await waitFor(() => getByTestId('spaces-disclaimer-1'));
 
     expect(disclaimer.textContent).toBe('foo');
   });

@@ -1,5 +1,5 @@
 import React from 'react';
-import { render, wait, fireEvent, cleanup } from '@testing-library/react';
+import { render, waitFor, fireEvent, cleanup } from '@testing-library/react';
 import { Button } from 'reactstrap';
 import * as yup from 'yup';
 import { Form, Checkbox, CheckboxGroup } from '..';
@@ -58,7 +58,7 @@ describe('CheckboxGroup', () => {
 
     await fireEvent.click(getByText('Submit'));
 
-    await wait(() => {
+    await waitFor(() => {
       const checkboxGroup = getByTestId('check-items-hello');
 
       expect(checkboxGroup.className).toContain('is-touched');
@@ -93,7 +93,7 @@ describe('CheckboxGroup', () => {
 
     await fireEvent.click(getByText('Submit'));
 
-    await wait(() => {
+    await waitFor(() => {
       expect(onSubmit).toHaveBeenCalledWith(
         expect.objectContaining({
           hello: ['uno', 'dos'],
@@ -129,7 +129,7 @@ describe('CheckboxGroup', () => {
 
     await fireEvent.click(getByText('Submit'));
 
-    await wait(() => {
+    await waitFor(() => {
       expect(onSubmit).toHaveBeenCalledWith(
         expect.objectContaining({
           hello: [],
@@ -161,7 +161,7 @@ describe('CheckboxGroup', () => {
 
     await fireEvent.click(getByText('Check One'));
 
-    await wait(() => {
+    await waitFor(() => {
       expect(onChange.mock.calls[0][0][0]).toBe('uno');
     });
   });

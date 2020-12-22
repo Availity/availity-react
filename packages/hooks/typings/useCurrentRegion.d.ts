@@ -1,8 +1,12 @@
-export type CurrentRegionType = {
-    code: string;
-    value: string;
+import { QueryConfig, QueryResult } from 'react-query';
+
+export type CurrentRegion = {
+  code: string;
+  value: string;
 };
 
-declare function useCurrentRegion(): [CurrentRegionType, boolean, object];
+declare function useCurrentRegion(
+  options?: QueryConfig<CurrentRegion, unknown>
+): QueryResult<CurrentRegion, unknown>;
 
 export default useCurrentRegion;

@@ -1,5 +1,5 @@
 import React from 'react';
-import { render, waitForElement, cleanup } from '@testing-library/react';
+import { render, waitFor, cleanup } from '@testing-library/react';
 import { avSlotMachineApi } from '@availity/api-axios';
 import PayerLogo, { getLogo } from '../PayerLogo';
 
@@ -39,7 +39,7 @@ describe('PayerLogo', () => {
       <PayerLogo payerId="BCBSF" clientId="my-client-id" />
     );
 
-    await waitForElement(() =>
+    await waitFor(() =>
       container.querySelector(
         'img[src="/static/spaces/73162546201440710195134200002269/banner.png"]'
       )
@@ -63,7 +63,7 @@ describe('PayerLogo', () => {
       <PayerLogo payerId="00681" clientId="my-client-id" />
     );
 
-    await waitForElement(() =>
+    await waitFor(() =>
       container.querySelector(
         'img[src="/public/apps/eligibility/images/value-add-logos/00681.gif"]'
       )
@@ -96,7 +96,7 @@ describe('PayerLogo', () => {
       />
     );
 
-    await waitForElement(() =>
+    await waitFor(() =>
       container.querySelector(
         'img[src="/static/spaces/73162546201441126239486200007187/banner.png"]'
       )

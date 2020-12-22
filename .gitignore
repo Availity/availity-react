@@ -13,3 +13,7 @@ coverage/
 yarn-error.log
 /**/build
 /**/.docusaurus
+
+
+/docs/public
+/**/.cache

@@ -6,13 +6,18 @@ afterEach(cleanup);
 
 describe('ListGroupItem', () => {
   test('should render', () => {
-    const { getByTestId } = render(<ListGroupItemStatus />);
+    const { getByTestId } = render(
+      <ListGroupItemStatus>children</ListGroupItemStatus>
+    );
 
-    getByTestId('list-group-item-status-id');
+    const el = getByTestId('list-group-item-status-id');
+    expect(el).toBeDefined();
   });
 
   test('should render color', () => {
-    const { getByTestId } = render(<ListGroupItemStatus color="success" />);
+    const { getByTestId } = render(
+      <ListGroupItemStatus color="success">children</ListGroupItemStatus>
+    );
 
     const el = getByTestId('list-group-item-status-id');
     expect(el.className).toContain('success list-group-item');
@@ -20,7 +25,9 @@ describe('ListGroupItem', () => {
 
   test('should render titleContent', () => {
     const { getByTestId } = render(
-      <ListGroupItemStatus titleContent="Hello World" />
+      <ListGroupItemStatus titleContent="Hello World">
+        children
+      </ListGroupItemStatus>
     );
 
     const el = getByTestId('lgi-title-content');
@@ -29,7 +36,9 @@ describe('ListGroupItem', () => {
 
   test('should render Badge Text', () => {
     const { getByTestId } = render(
-      <ListGroupItemStatus borderColor="success" badge="Hello World" />
+      <ListGroupItemStatus borderColor="success" badge="Hello World">
+        children
+      </ListGroupItemStatus>
     );
 
     getByTestId('lgi-content-wrapper');
@@ -44,7 +53,9 @@ describe('ListGroupItem', () => {
           text: 'Hello World',
           color: 'primary',
         }}
-      />
+      >
+        children
+      </ListGroupItemStatus>
     );
 
     const badge = getByTestId('lgi-badge');

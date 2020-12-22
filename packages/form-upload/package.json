@@ -1,6 +1,6 @@
 {
   "name": "@availity/form-upload",
-  "version": "0.2.24",
+  "version": "0.3.3",
   "author": "Tyson Warner <tyson.warner@availity.com>",
   "description": "Availity upload component for uploading files, compatible with @availity/form",
   "main": "index.js",
@@ -22,29 +22,33 @@
     "access": "public"
   },
   "peerDependencies": {
+    "@availity/api-axios": ">=5.5.9",
+    "@availity/api-core": ">=6.6.4",
     "@availity/form": "^0.4.9",
     "@availity/upload-core": "^3.0.4",
     "formik": "^2.0.1",
-    "react": "^16.8.0",
-    "react-dom": "^16.8.0",
+    "react": ">=16.8.0",
+    "react-dom": ">=16.8.0",
     "react-dropzone": "^11.0.0",
     "reactstrap": "^8.0.0 || ^7.0.0 || ^6.0.0",
     "tus-js-client": "1.5.1"
   },
   "dependencies": {
-    "@availity/icon": "^0.7.17",
-    "@availity/progress": "^1.2.18",
+    "@availity/icon": "^0.7.18",
+    "@availity/progress": "^1.2.19",
     "prop-types": "^15.5.8",
-    "uuid": "^3.3.3"
+    "uuid": "^8.3.1"
   },
   "devDependencies": {
-    "@availity/form": "^0.5.31",
+    "@availity/form": "^0.5.32",
     "@availity/upload-core": "^3.0.4",
-    "formik": "2.1.4",
-    "react": "^16.8.3",
-    "react-dom": "^16.8.3",
+    "formik": "2.2.1",
+    "nock": "^13.0.4",
+    "react": "^17.0.1",
+    "react-dom": "^17.0.1",
     "react-dropzone": "^11.0.0",
-    "reactstrap": "^8.0.0",
-    "tus-js-client": "^1.7.1"
+    "reactstrap": "^8.7.0",
+    "tus-js-client": "^2.2.0",
+    "xhr-mock": "^2.5.1"
   }
 }

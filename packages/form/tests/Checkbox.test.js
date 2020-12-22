@@ -1,5 +1,5 @@
 import React from 'react';
-import { render, wait, fireEvent, cleanup } from '@testing-library/react';
+import { render, waitFor, fireEvent, cleanup } from '@testing-library/react';
 import { Button } from 'reactstrap';
 import * as yup from 'yup';
 import { Form, Checkbox, CheckboxGroup } from '..';
@@ -52,7 +52,7 @@ describe('Checkbox', () => {
 
     await fireEvent.click(getByText('Submit'));
 
-    await wait(() => {
+    await waitFor(() => {
       const checkbox = getByTestId('hello-check');
 
       expect(checkbox.className).toContain('is-touched');
@@ -75,7 +75,8 @@ describe('Checkbox', () => {
       </Form>
     );
 
-    getByText('Check One');
+    const el = getByText('Check One');
+    expect(el).toBeDefined();
   });
 
   test('renders without inline applied', async () => {
@@ -99,7 +100,7 @@ describe('Checkbox', () => {
 
   test('should generate uuid even when id is not added', () => {
     const { container } = render(
-      <Form onSubmit={() => {}}>
+      <Form initialValues={{ hello: '' }} onSubmit={() => {}}>
         <CheckboxGroup name="hello" label="Checkbox Group">
           <Checkbox label="Check One" value="uno" />
         </CheckboxGroup>
@@ -111,7 +112,7 @@ describe('Checkbox', () => {
 
   test('should use id when passed in', () => {
     const { container } = render(
-      <Form onSubmit={() => {}}>
+      <Form initialValues={{ hello: '' }} onSubmit={() => {}}>
         <CheckboxGroup name="hello" label="Checkbox Group">
           <Checkbox label="Check One" value="uno" id="test" />
         </CheckboxGroup>

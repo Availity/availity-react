@@ -3,6 +3,69 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.17.4](https://github.com/Availity/availity-react/compare/@availity/select@0.17.3...@availity/select@0.17.4) (2020-12-16)
+
+
+### Bug Fixes
+
+* clearable multiselects not getting cleared when clicking x on the value ([25f4e56](https://github.com/Availity/availity-react/commit/25f4e56718e40131f40fa9efd1d54ecbc8e87992))
+
+
+
+
+
+## [0.17.3](https://github.com/Availity/availity-react/compare/@availity/select@0.17.2...@availity/select@0.17.3) (2020-12-14)
+
+**Note:** Version bump only for package @availity/select
+
+
+
+
+
+## 0.17.2 (2020-12-04)
+
+
+### Bug Fixes
+
+* **select:** allowSelectAll account for null value ([3f47b7e](https://github.com/Availity/availity-react/commit/3f47b7e420407065c0491f8cb886178308223661))
+
+
+
+
+
+## [0.17.1](https://github.com/Availity/availity-react/compare/@availity/select@0.17.0...@availity/select@0.17.1) (2020-11-17)
+
+
+### Bug Fixes
+
+* **select:** allow fieldnames that use dot notation to be autofilled ([d89e10a](https://github.com/Availity/availity-react/commit/d89e10ade91e4d8b1da3c43ee6f1152cff6fc436))
+
+
+
+
+
+# 0.17.0 (2020-11-16)
+
+
+### Features
+
+* **select:** add ability to waitUntilFocused to loadOptions ([d975506](https://github.com/Availity/availity-react/commit/d97550667aa8d6823327417c60028fc0312f1599))
+
+
+
+
+
+## [0.16.3](https://github.com/Availity/availity-react/compare/@availity/select@0.16.2...@availity/select@0.16.3) (2020-10-30)
+
+
+### Bug Fixes
+
+* **select:** allow fieldnames that use dot notation to be autofilled ([d89e10a](https://github.com/Availity/availity-react/commit/d89e10ade91e4d8b1da3c43ee6f1152cff6fc436))
+
+
+
+
+
 ## 0.16.2 (2020-10-12)
 
 **Note:** Version bump only for package @availity/select

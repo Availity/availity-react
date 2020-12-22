@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 import { Label, Input } from 'reactstrap';
-import uuid from 'uuid/v4';
+import { v4 as uuid } from 'uuid';
 import classNames from 'classnames';
 import { useCheckboxGroup } from './CheckboxGroup';
 import FormGroup from './FormGroup';

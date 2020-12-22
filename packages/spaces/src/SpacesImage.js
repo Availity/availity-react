@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import Skeleton from 'react-loading-skeleton';
-import Img from 'react-image';
+import { Img } from 'react-image';
 import get from 'lodash.get';
 import { useSpaces, useSpacesContext } from './Spaces';
 
@@ -85,10 +85,12 @@ SpacesImage.defaultProps = {
 };
 
 // Adapted from https://github.com/Availity/availity-react/blob/master/packages/reactstrap-validation-select/AvResourceSelect.js
-const ucFirst = str => str && str.charAt(0).toUpperCase() + str.slice(1);
+const ucFirst = (str) => str && str.charAt(0).toUpperCase() + str.slice(1);
 
-SpacesImage.create = defaults => {
-  const SpecificSpacesImage = props => <SpacesImage {...defaults} {...props} />;
+SpacesImage.create = (defaults) => {
+  const SpecificSpacesImage = (props) => (
+    <SpacesImage {...defaults} {...props} />
+  );
 
   SpecificSpacesImage.displayName = `Spaces${ucFirst(defaults.imageType)}`;
   return SpecificSpacesImage;

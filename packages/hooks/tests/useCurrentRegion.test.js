@@ -1,14 +1,69 @@
 import React from 'react';
-import { render, waitForElement, cleanup } from '@testing-library/react';
+import PropTypes from 'prop-types';
+import { render, waitFor, cleanup } from '@testing-library/react';
 import { avRegionsApi } from '@availity/api-axios';
+import { queryCache } from 'react-query';
 import { useCurrentRegion } from '..';
 
 jest.mock('@availity/api-axios');
 
-const mockRegionApi = type => {
-  let body = {};
-  if (type === 'valid') {
-    body = {
+let queryStates = [];
+beforeEach(() => {
+  queryStates = [];
+});
+
+afterEach(() => {
+  jest.clearAllMocks();
+  cleanup();
+  queryCache.clear();
+  queryStates = [];
+});
+
+const pushState = (state) => {
+  queryStates.push(state);
+};
+
+const Component = ({ log }) => {
+  // Mirror testing methods from react-query instead of relying on timing or booleans
+  // https://github.com/tannerlinsley/react-query/blob/master/src/react/tests/useQuery.test.tsx
+  const state = useCurrentRegion({ cacheTime: 0, retry: false });
+
+  // not directly used in assertions here, but useful for debugging purposes
+  if (log) log(state);
+
+  const { data, error, status } = state;
+
+  return (
+    <div>
+      <h1>Status: {status}</h1>
+      <h1>Data: {JSON.stringify(data)}</h1>
+      <h1>Error: {error}</h1>
+    </div>
+  );
+};
+
+Component.propTypes = {
+  log: PropTypes.func,
+};
+
+describe('useCurrentRegion', () => {
+  test('handle error', async () => {
+    avRegionsApi.getCurrentRegion.mockRejectedValueOnce('An error occurred');
+    const { getByText } = render(<Component log={pushState} />);
+
+    getByText('Status: loading');
+    await waitFor(() => {
+      const el = getByText('Status: error');
+      expect(el).toBeDefined();
+    });
+    await waitFor(() => {
+      const el = getByText('Error: An error occurred');
+      expect(el).toBeDefined();
+    });
+  });
+
+  test('handle success', async () => {
+    avRegionsApi.getCurrentRegion.mockResolvedValueOnce({
       config: { polling: false },
       data: {
         regions: [
@@ -20,56 +75,19 @@ const mockRegionApi = type => {
       },
       status: 200,
       statusText: 'Ok',
-    };
-  } else if (type === 'invalid') {
-    body = {
-      config: { polling: false },
-      status: 400,
-      statusText: 'Ok',
-    };
-  }
-  avRegionsApi.getCurrentRegion.mockResolvedValue(body);
-};
+    });
 
-afterEach(() => {
-  jest.clearAllMocks();
-  cleanup();
-});
+    const { getByText } = render(<Component log={pushState} />);
 
-const Component = () => {
-  const [region, loading, error] = useCurrentRegion({ retry: false });
-
-  if (error) return <span data-testid="error">An error occurred.</span>;
-
-  return loading ? <span data-testid="loading" /> : JSON.stringify(region);
-};
-
-describe('useCurrentRegion', () => {
-  test('should return loading', () => {
-    mockRegionApi('valid');
-    const { getByTestId } = render(<Component />);
-
-    getByTestId('loading');
-  });
-
-  test('should return region', async () => {
-    mockRegionApi('valid');
-    const { getByText } = render(<Component />);
-
-    await waitForElement(() =>
-      getByText(
-        JSON.stringify({
+    getByText('Status: loading');
+    await waitFor(() => {
+      const el = getByText(
+        `Data: ${JSON.stringify({
           code: 'FL',
           value: 'Florida',
-        })
-      )
-    );
-  });
-
-  test('handles error', async () => {
-    mockRegionApi('invalid');
-    const { getByTestId } = render(<Component />);
-
-    await waitForElement(() => getByTestId('error'));
+        })}`
+      );
+      expect(el).toBeDefined();
+    });
   });
 });

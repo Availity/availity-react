@@ -16,7 +16,7 @@ const DateRangeField = ({
   <FormGroup for={name}>
     {label && (
       <Label
-        for={`${id.replace(/[^a-zA-Z0-9]/gi, '')}-start`}
+        for={`${id.replace(/[^\da-z]/gi, '')}-start`}
         className={labelClass}
         hidden={labelHidden}
         {...labelAttrs}

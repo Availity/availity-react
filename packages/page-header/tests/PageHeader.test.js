@@ -1,5 +1,5 @@
 import React from 'react';
-import { render, cleanup, waitForElement } from '@testing-library/react';
+import { render, cleanup, waitFor } from '@testing-library/react';
 import TrainingLink from '@availity/training-link';
 import { avSlotMachineApi } from '@availity/api-axios';
 import { NavLink } from 'reactstrap';
@@ -27,7 +27,8 @@ describe('PageHeader', () => {
       <PageHeader appName="Payer Space" appAbbr="PS" />
     );
 
-    getByText('PS');
+    const icon = getByText('PS');
+    expect(icon).toBeDefined();
   });
 
   test('should add custom class name', () => {
@@ -78,7 +79,8 @@ describe('PageHeader', () => {
       <PageHeader appName="Payer Space">this is cool</PageHeader>
     );
 
-    getByText('this is cool');
+    const children = getByText('this is cool');
+    expect(children).toBeDefined();
   });
 
   test('should render trainingLink', () => {
@@ -96,7 +98,8 @@ describe('PageHeader', () => {
       </PageHeader>
     );
 
-    getByText('Watch a demo');
+    const el = getByText('Watch a demo');
+    expect(el).toBeDefined();
   });
 
   describe('spaces', () => {
@@ -118,7 +121,7 @@ describe('PageHeader', () => {
           <PageHeader appName="Payer Space" spaceId="1" />
         </Spaces>
       );
-      const defaultSpace = await waitForElement(() => getByText('My Space'));
+      const defaultSpace = await waitFor(() => getByText('My Space'));
       expect(defaultSpace.getAttribute('href')).toEqual(
         '/web/spaces/spaces/#/1'
       );
@@ -156,7 +159,8 @@ describe('PageHeader', () => {
         </Spaces>
       );
 
-      await waitForElement(() => getByTestId('space-images.logo-payer1'));
+      const logo = await waitFor(() => getByTestId('space-images.logo-payer1'));
+      expect(logo).toBeDefined();
     });
   });
 
@@ -198,8 +202,10 @@ describe('PageHeader', () => {
       />
     );
 
-    getByText('Hello World');
-    getByText('Give Feedback');
+    const helloWorld = getByText('Hello World');
+    const giveFeedback = getByText('Give Feedback');
+    expect(helloWorld).toBeDefined();
+    expect(giveFeedback).toBeDefined();
   });
 
   test('should render custom link tag', () => {
@@ -242,7 +248,7 @@ describe('PageHeader', () => {
       </Spaces>
     );
 
-    const spaceBreadcrumb = await waitForElement(() => getByText('My Space'));
+    const spaceBreadcrumb = await waitFor(() => getByText('My Space'));
 
     expect(spaceBreadcrumb.tagName.toLowerCase()).toBe('a');
 
@@ -275,9 +281,7 @@ describe('PageHeader', () => {
       </Spaces>
     );
 
-    const spaceBreadcrumb = await waitForElement(() =>
-      getByText('Custom Crumb')
-    );
+    const spaceBreadcrumb = await waitFor(() => getByText('Custom Crumb'));
 
     expect(spaceBreadcrumb.tagName.toLowerCase()).toBe('a');
 

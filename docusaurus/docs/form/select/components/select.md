@@ -17,7 +17,7 @@ import '@availity/yup';
   initialValues={{
     justTheInput: undefined,
   }}
-  onSubmit={values => window.alert(JSON.stringify(values))}
+  onSubmit={(values) => window.alert(JSON.stringify(values))}
   validationSchema={yup.object().shape({
     justTheInput: yup.string().required('This field is required.'),
   })}
@@ -49,7 +49,26 @@ See [react-select](https://github.com/JedWatson/react-select) and [react-select-
 
 The name of the field. Will be the key of the selected option(s) that come through in the values of the `onSubmit` callback of the form.
 
-#### `raw?: boolean`
+### `options: Array<object> = []`
+
+Array of options that populate the select menu. Grouped options are also supported, but must include the property `type: 'group'`.
+
+```
+const groupedOptions = [
+  {
+    label: 'options',
+    options: [
+      { label: 'Option 1', value: 'value for option 1' },
+      { label: 'Option 2', value: 'value for option 2' },
+      { label: 'Option 3', value: 'value for option 3' },
+      { label: 'Option 4', value: 'value for option 4' },
+    ],
+    type: 'group',
+  },
+];
+```
+
+### `raw?: boolean`
 
 If `true`, the entire object of the selected value is returned as the value instead of the value for the `valueKey` within the object.
 
@@ -77,7 +96,11 @@ Allow new items to be created if not found. **Default:** `false`.
 
 Adds a `Select all` option ( when `isMulti` is `true`). Note: `allowSelectAll` is ignored when `loadOptions` is defined.
 
-#### `autofill?: boolean | AutoFillType`
+### `waitUntilFocused?: boolean`
+
+When true, the network request is not made until the dropdown has been focused. Defaults to `false`.
+
+### `autofill?: boolean | AutoFillType`
 
 If `true`, when the value of the dropdown changes, if the `isMulti` prop is `false` _and_ the new value of the dropdown is an object, all fields on the form corresponding to the new value are auto-filled. In order for a field to be auto-filled, the `name` property on the field _must_ match the key inside the new value.
 

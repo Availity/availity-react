@@ -24,11 +24,11 @@ export const actions = {
 export const spacesReducer = (state, action) =>
   actions[action.type](state, action);
 
-export const sanitizeSpaces = spaces => {
+export const sanitizeSpaces = (spaces) => {
   // Normalize space pairs ( [{ name, value }] => { name: value } )
   const pairFields = ['images', 'metadata', 'colors', 'icons', 'mapping'];
   return spaces.reduce((accum, spc) => {
-    pairFields.forEach(field => {
+    pairFields.forEach((field) => {
       if (spc[field] && Array.isArray(spc[field])) {
         spc[field] = spc[field].reduce((_accum, { name, value }) => {
           _accum[name] = value;
@@ -42,4 +42,4 @@ export const sanitizeSpaces = spaces => {
   }, []);
 };
 
-export const isFunction = obj => typeof obj === 'function';
+export const isFunction = (obj) => typeof obj === 'function';

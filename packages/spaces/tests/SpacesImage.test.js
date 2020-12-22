@@ -1,5 +1,5 @@
 import React from 'react';
-import { render, waitForElement, cleanup } from '@testing-library/react';
+import { render, waitFor, cleanup } from '@testing-library/react';
 import { avSlotMachineApi } from '@availity/api-axios';
 import Spaces, {
   SpacesLogo,
@@ -103,16 +103,16 @@ describe('SpacesImage', () => {
     const { getAllByTestId } = render(<MyComponent />);
 
     // Check logo rendered
-    await waitForElement(() => getAllByTestId('space-images.logo-1'));
+    await waitFor(() => getAllByTestId('space-images.logo-1'));
 
     // Check tile rendered
-    await waitForElement(() => getAllByTestId('space-images.tile-payer1'));
+    await waitFor(() => getAllByTestId('space-images.tile-payer1'));
 
     // Check billboard rendered
-    await waitForElement(() => getAllByTestId('space-images.billboard-2'));
+    await waitFor(() => getAllByTestId('space-images.billboard-2'));
 
     // Check spaces file rendered
-    await waitForElement(() => getAllByTestId('space-url-3'));
+    await waitFor(() => getAllByTestId('space-url-3'));
 
     // Check that we did not query for duplicate ids
     expect(avSlotMachineApi.create).toHaveBeenCalledTimes(2);
@@ -121,9 +121,9 @@ describe('SpacesImage', () => {
       '2',
       '3',
     ]);
-    expect(avSlotMachineApi.create.mock.calls[1][0].variables.payerIDs).toEqual(
-      ['payer1']
-    );
+    expect(
+      avSlotMachineApi.create.mock.calls[1][0].variables.payerIDs
+    ).toEqual(['payer1']);
   });
 
   it('renders spaces image from single space', async () => {
@@ -155,7 +155,8 @@ describe('SpacesImage', () => {
       </Spaces>
     );
 
-    await waitForElement(() => getByTestId('space-images.logo-1'));
+    const img = await waitFor(() => getByTestId('space-images.logo-1'));
+    expect(img).toBeDefined();
   });
 
   it('renders fallback image', async () => {
@@ -189,6 +190,7 @@ describe('SpacesImage', () => {
     );
 
     // Would be empty if no fallback
-    await waitForElement(() => getByTestId('space-images.logo-3'));
+    const img = await waitFor(() => getByTestId('space-images.logo-3'));
+    expect(img).toBeDefined();
   });
 });

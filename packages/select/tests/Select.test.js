@@ -1,11 +1,5 @@
 import React from 'react';
-import {
-  render,
-  wait,
-  fireEvent,
-  waitForElement,
-  cleanup,
-} from '@testing-library/react';
+import { render, fireEvent, waitFor, cleanup } from '@testing-library/react';
 import { Button } from 'reactstrap';
 import * as yup from 'yup';
 import { Form, Input } from '@availity/form';
@@ -13,7 +7,7 @@ import Select from '..';
 
 afterEach(cleanup);
 
-const singleValueSchema = name =>
+const singleValueSchema = (name) =>
   yup.object().shape({
     [name]: yup.string().required('This field is required.'),
   });
@@ -35,13 +29,26 @@ const options = [
   { label: 'Option 4', value: 'value for option 4' },
 ];
 
+const groupedOptions = [
+  {
+    label: 'options',
+    options: [
+      { label: 'Option 1', value: 'value for option 1' },
+      { label: 'Option 2', value: 'value for option 2' },
+      { label: 'Option 3', value: 'value for option 3' },
+      { label: 'Option 4', value: 'value for option 4' },
+    ],
+    type: 'group',
+  },
+];
+
 // I know it's lame but this is the only way to test with react-select
 // https://stackoverflow.com/questions/55575843/how-to-test-react-select-with-react-testing-library
 const selectItem = async (container, getByText, name) => {
   const select = container.querySelector('.av__control');
   fireEvent.keyDown(select, { key: 'ArrowDown', keyCode: 40 });
 
-  const selectOption = await waitForElement(() => getByText(name));
+  const selectOption = await waitFor(() => getByText(name));
 
   expect(selectOption).toBeDefined();
 
@@ -75,10 +82,77 @@ describe('Select', () => {
 
     await fireEvent.click(getByText('Submit'));
 
-    await wait(() => {
+    await waitFor(() => {
       expect(onSubmit).toHaveBeenCalledWith(
         expect.objectContaining({
           singleSelect: 'value for option 1',
+        }),
+        expect.anything()
+      );
+    });
+  });
+
+  test('single value grouped options submits', async () => {
+    const onSubmit = jest.fn();
+    const { container, getByText } = render(
+      <Form
+        initialValues={{
+          singleSelect: undefined,
+        }}
+        onSubmit={onSubmit}
+        validationSchema={singleValueSchema('singleSelect')}
+      >
+        <Select
+          name="singleSelect"
+          options={groupedOptions}
+          data-testid="single-select"
+        />
+        <Button type="submit">Submit</Button>
+      </Form>
+    );
+
+    await selectItem(container, getByText, 'Option 1');
+
+    await fireEvent.click(getByText('Submit'));
+
+    await waitFor(() => {
+      expect(onSubmit).toHaveBeenCalledWith(
+        expect.objectContaining({
+          singleSelect: 'value for option 1',
+        }),
+        expect.anything()
+      );
+    });
+  });
+
+  test('multi select grouped options submits', async () => {
+    const onSubmit = jest.fn();
+    const { container, getByText } = render(
+      <Form
+        initialValues={{
+          singleSelect: undefined,
+        }}
+        onSubmit={onSubmit}
+        validationSchema={singleValueSchema('singleSelect')}
+      >
+        <Select
+          isMulti
+          name="singleSelect"
+          options={groupedOptions}
+          data-testid="single-select"
+        />
+        <Button type="submit">Submit</Button>
+      </Form>
+    );
+
+    await selectItem(container, getByText, 'Option 1');
+
+    await fireEvent.click(getByText('Submit'));
+
+    await waitFor(() => {
+      expect(onSubmit).toHaveBeenCalledWith(
+        expect.objectContaining({
+          singleSelect: ['value for option 1'],
         }),
         expect.anything()
       );
@@ -110,7 +184,7 @@ describe('Select', () => {
 
     await fireEvent.click(getByText('Submit'));
 
-    await wait(() => {
+    await waitFor(() => {
       expect(onSubmit).toHaveBeenCalledWith(
         expect.objectContaining({
           multiSelect: ['value for option 1', 'value for option 2'],
@@ -145,7 +219,87 @@ describe('Select', () => {
 
     await fireEvent.click(getByText('Submit'));
 
-    await wait(() => {
+    await waitFor(() => {
+      expect(onSubmit).toHaveBeenCalledWith(
+        expect.objectContaining({
+          selectAll: [
+            'value for option 1',
+            'value for option 2',
+            'value for option 3',
+            'value for option 4',
+          ],
+        }),
+        expect.anything()
+      );
+    });
+  });
+
+  test('select all submits from null initial value', async () => {
+    const onSubmit = jest.fn();
+    const { container, getByText } = render(
+      <Form
+        initialValues={{
+          selectAll: null,
+        }}
+        onSubmit={onSubmit}
+        validationSchema={multiValueSchema('selectAll', true, 1, 4)}
+      >
+        <Select
+          name="selectAll"
+          isMulti
+          options={options}
+          data-testid="single-select"
+          allowSelectAll
+        />
+        <Button type="submit">Submit</Button>
+      </Form>
+    );
+
+    await selectItem(container, getByText, 'Select all');
+
+    await fireEvent.click(getByText('Submit'));
+
+    await waitFor(() => {
+      expect(onSubmit).toHaveBeenCalledWith(
+        expect.objectContaining({
+          selectAll: [
+            'value for option 1',
+            'value for option 2',
+            'value for option 3',
+            'value for option 4',
+          ],
+        }),
+        expect.anything()
+      );
+    });
+  });
+
+  test('select all submits with initialValue', async () => {
+    const onSubmit = jest.fn();
+    const { container, getByText } = render(
+      <Form
+        initialValues={{
+          selectAll: ['value for option 1'],
+        }}
+        onSubmit={onSubmit}
+        validationSchema={multiValueSchema('selectAll', true, 1, 4)}
+      >
+        <Select
+          name="selectAll"
+          isMulti
+          options={options}
+          data-testid="single-select"
+          allowSelectAll
+        />
+        <Button type="submit">Submit</Button>
+      </Form>
+    );
+
+    await selectItem(container, getByText, 'Select all');
+
+    await fireEvent.click(getByText('Submit'));
+
+    await waitFor(() => {
       expect(onSubmit).toHaveBeenCalledWith(
         expect.objectContaining({
           selectAll: [
@@ -180,7 +334,7 @@ describe('Select', () => {
 
     await fireEvent.click(getByText('Submit'));
 
-    await wait(() => {
+    await waitFor(() => {
       const select = container.querySelector('.av-select');
 
       expect(select.className).toContain('is-touched');
@@ -217,7 +371,7 @@ describe('Select', () => {
 
     await fireEvent.click(getByText('Submit'));
 
-    await wait(() => {
+    await waitFor(() => {
       expect(onSubmit).toHaveBeenCalledWith(
         expect.objectContaining({
           multiSelect: ['value for option 1', 'value for option 2'],
@@ -251,7 +405,7 @@ describe('Select', () => {
 
     await fireEvent.click(getByText('Submit'));
 
-    await wait(() => {
+    await waitFor(() => {
       expect(onSubmit).toHaveBeenCalledWith(
         expect.objectContaining({
           singleSelect: { label: 'Option 1', value: 'value for option 1' },
@@ -268,6 +422,9 @@ describe('Select', () => {
         value: {
           firstName: 'John',
           lastName: 'Doe',
+          full: {
+            name: 'John Doe',
+          },
         },
       },
       {
@@ -275,6 +432,9 @@ describe('Select', () => {
         value: {
           firstName: 'Jane',
           lastName: 'Doe',
+          full: {
+            name: 'Jane Doe',
+          },
         },
       },
     ];
@@ -286,6 +446,7 @@ describe('Select', () => {
           testFormInput: undefined,
           firstName: '',
           lastName: '',
+          'full.name': '',
         }}
         onSubmit={onSubmit}
       >
@@ -298,6 +459,7 @@ describe('Select', () => {
         />
         <Input data-testid="first-input" name="firstName" />
         <Input data-testid="last-input" name="lastName" />
+        <Input data-testid="full-input" name="full.name" />
 
         <Button>Submit</Button>
       </Form>
@@ -308,7 +470,7 @@ describe('Select', () => {
     fireEvent.keyDown(select, { key: 'ArrowDown', keyCode: 40 });
     fireEvent.keyDown(select, { key: 'Enter', keyCode: 13 });
 
-    const option = await waitForElement(() => getByText('Doe, John'));
+    const option = await waitFor(() => getByText('Doe, John'));
 
     expect(option).toBeDefined();
 
@@ -321,11 +483,12 @@ describe('Select', () => {
     await fireEvent.click(submitButton);
 
     // Check that values got autofilled
-    await wait(() => {
+    await waitFor(() => {
       expect(onSubmit).toHaveBeenCalledTimes(1);
       const payload = onSubmit.mock.calls[0][0];
       expect(payload.firstName).toBe('John');
       expect(payload.lastName).toBe('Doe');
+      expect(payload.full.name).toBe('John Doe');
     });
   });
 
@@ -358,7 +521,8 @@ describe('Select', () => {
           testFormInput: undefined,
           firstName: '',
           lastName: '',
-          fullName: '',
+          'full.name': '',
+          fullReversed: '',
         }}
         onSubmit={onSubmit}
       >
@@ -370,12 +534,14 @@ describe('Select', () => {
           autofill={{
             firstName: 'name.first',
             lastName: 'name.last',
-            fullName: opt => `${opt.name.first} ${opt.name.last}`,
+            'full.name': (opt) => `${opt.name.first} ${opt.name.last}`,
+            fullReversed: (opt) => `${opt.name.last} ${opt.name.first}`,
           }}
         />
         <Input data-testid="first-input" name="firstName" />
         <Input data-testid="last-input" name="lastName" />
-        <Input data-testid="full-input" name="fullName" />
+        <Input data-testid="full-input" name="full.name" />
+        <Input data-testid="full-reversed-input" name="fullReversed" />
 
         <Button>Submit</Button>
       </Form>
@@ -386,7 +552,7 @@ describe('Select', () => {
     fireEvent.keyDown(select, { key: 'ArrowDown', keyCode: 40 });
     fireEvent.keyDown(select, { key: 'Enter', keyCode: 13 });
 
-    const option = await waitForElement(() => getByText('Doe, John'));
+    const option = await waitFor(() => getByText('Doe, John'));
 
     expect(option).toBeDefined();
 
@@ -399,12 +565,13 @@ describe('Select', () => {
     await fireEvent.click(submitButton);
 
     // Check that values got autofilled
-    await wait(() => {
+    await waitFor(() => {
       expect(onSubmit).toHaveBeenCalledTimes(1);
       const payload = onSubmit.mock.calls[0][0];
       expect(payload.firstName).toBe('John');
       expect(payload.lastName).toBe('Doe');
-      expect(payload.fullName).toBe('John Doe');
+      expect(payload.full.name).toBe('John Doe');
+      expect(payload.fullReversed).toBe('Doe John');
     });
   });
 
@@ -468,11 +635,69 @@ describe('Select', () => {
 
     await fireEvent.click(submitButton);
 
-    await wait(() => {
+    await waitFor(() => {
       expect(onSubmit).toHaveBeenCalledTimes(1);
       const payload = onSubmit.mock.calls[0][0];
       expect(payload.singleSelectCreatable.labelKeyTest).toBe('HelloWorld');
       expect(payload.singleSelectCreatable.valueKeyTest).toBe('helloworld');
+    });
+  });
+  test('waits to query resource until input is focused when waitUntilFocused is true', async () => {
+    const loadOptions = jest.fn();
+
+    loadOptions.mockResolvedValue({
+      options: [
+        {
+          id: 'FL',
+          value: 'Florida',
+        },
+      ],
+      hasMore: false,
+      additional: {
+        page: 2,
+      },
+    });
+
+    const onSubmit = jest.fn();
+    const { container } = render(
+      <Form
+        initialValues={{
+          singleSelect: undefined,
+        }}
+        onSubmit={onSubmit}
+        validationSchema={singleValueSchema('singleSelect')}
+      >
+        <Select
+          name="singleSelect-wait"
+          classNamePrefix="test__wait"
+          loadOptions={loadOptions}
+          waitUntilFocused
+          data-testid="single-select-wait"
+          additional={{
+            page: 1,
+            perPage: 50,
+          }}
+        />
+        <Button type="submit">Submit</Button>
+      </Form>
+    );
+
+    // Check the loadOptions is not called on mount
+    await waitFor(() => {
+      expect(loadOptions).not.toHaveBeenCalled();
+    });
+
+    const waitUntilFocusSelect = container.querySelector(
+      '.test__wait__control'
+    );
+    const input = container.querySelector('input');
+    fireEvent.focus(input);
+    fireEvent.keyDown(waitUntilFocusSelect, { key: 'ArrowDown', keyCode: 40 });
+    fireEvent.keyDown(waitUntilFocusSelect, { key: 'Enter', keyCode: 13 });
+
+    // Check the loadOptions is called only after the input has been focused
+    await waitFor(() => {
+      expect(loadOptions).toHaveBeenCalledTimes(1);
     });
   });
 });

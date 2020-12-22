@@ -3,6 +3,38 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# 7.0.0 (2020-11-17)
+
+
+### Bug Fixes
+
+* **reactstrap-validation-select:** allow field names using dot notation to be autofilled ([914f792](https://github.com/Availity/availity-react/commit/914f792c8bb6e633809b85ada4e7602686d4b5da))
+
+
+### BREAKING CHANGES
+
+* **reactstrap-validation-select:** availity-reactstrap-validation peer dependency must be >= 2.7.0
+
+
+
+
+
+# 6.0.0 (2020-10-30)
+
+
+### Bug Fixes
+
+* **reactstrap-validation-select:** allow field names using dot notation to be autofilled ([914f792](https://github.com/Availity/availity-react/commit/914f792c8bb6e633809b85ada4e7602686d4b5da))
+
+
+### BREAKING CHANGES
+
+* **reactstrap-validation-select:** availity-reactstrap-validation peer dependency must be >= 2.7.0
+
+
+
+
+
 ## 5.3.27 (2020-06-12)
 
 **Note:** Version bump only for package @availity/reactstrap-validation-select

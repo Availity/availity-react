@@ -1,50 +1,66 @@
 import React from 'react';
-import { render, waitForElement, cleanup } from '@testing-library/react';
+import PropTypes from 'prop-types';
+import { render, waitFor, cleanup } from '@testing-library/react';
 import { avUserApi } from '@availity/api-axios';
-import { ReactQueryConfigProvider } from 'react-query';
+import { queryCache } from 'react-query';
 import { useCurrentUser } from '..';
 
 jest.mock('@availity/api-axios');
 
+let queryStates = [];
+beforeEach(() => {
+  queryStates = [];
+});
+
 afterEach(() => {
   jest.clearAllMocks();
   cleanup();
+  queryCache.clear();
+  queryStates = [];
 });
 
-const Component = () => {
-  const { data: user, status, error } = useCurrentUser();
+const pushState = (state) => {
+  queryStates.push(state);
+};
+
+const Component = ({ log }) => {
+  // Mirror testing methods from react-query instead of relying on timing or booleans
+  // https://github.com/tannerlinsley/react-query/blob/master/src/react/tests/useQuery.test.tsx
+  const state = useCurrentUser({ cacheTime: 0, retry: false });
+
+  // not directly used in assertions here, but useful for debugging purposes
+  if (log) log(state);
+
+  const { data, error, status } = state;
 
   return (
-    <ReactQueryConfigProvider config={{ cacheTime: 0, retry: false }}>
-      {status === 'loading' ? (
-        <span data-testid="loading" />
-      ) : (
-        JSON.stringify(error || user)
-      )}
-    </ReactQueryConfigProvider>
+    <div>
+      <h1>Status: {status}</h1>
+      <h1>Data: {JSON.stringify(data)}</h1>
+      <h1>Error: {error}</h1>
+    </div>
   );
+};
+
+Component.propTypes = {
+  log: PropTypes.func,
 };
 
 describe('useCurrentUser', () => {
   test('should set error on rejected promise', async () => {
     avUserApi.me.mockRejectedValueOnce('An error occurred');
 
-    const { getByText } = render(<Component />);
+    const { getByText } = render(<Component log={pushState} />);
 
-    await waitForElement(() => getByText('"An error occurred"'));
-  });
-  test('should return loading', () => {
-    avUserApi.me.mockResolvedValueOnce({
-      id: 'aka12345',
-      userId: 'testExample',
-      akaname: 'aka12345',
-      lastName: 'Last',
-      firstName: 'First',
+    getByText('Status: loading');
+    await waitFor(() => {
+      const el = getByText('Status: error');
+      expect(el).toBeDefined();
     });
-
-    const { getByTestId } = render(<Component />);
-
-    getByTestId('loading');
+    await waitFor(() => {
+      const el = getByText('Error: An error occurred');
+      expect(el).toBeDefined();
+    });
   });
 
   test('should return user', async () => {
@@ -58,16 +74,18 @@ describe('useCurrentUser', () => {
 
     const { getByText } = render(<Component />);
 
-    await waitForElement(() =>
-      getByText(
-        JSON.stringify({
+    getByText('Status: loading');
+    await waitFor(() => {
+      const el = getByText(
+        `Data: ${JSON.stringify({
           id: 'aka12345',
           userId: 'testExample',
           akaname: 'aka12345',
           lastName: 'Last',
           firstName: 'First',
-        })
-      )
-    );
+        })}`
+      );
+      expect(el).toBeDefined();
+    });
   });
 });

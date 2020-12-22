@@ -2,7 +2,7 @@ import React from 'react';
 import {
   render,
   fireEvent,
-  wait,
+  waitFor,
   cleanup,
   within,
 } from '@testing-library/react';
@@ -40,7 +40,7 @@ describe('Date', () => {
 
     fireEvent.click(getByText('Submit'));
 
-    await wait(() => {
+    await waitFor(() => {
       const input = getByTestId('date-input-group-singleDate');
       expect(input.className).toContain('is-invalid');
       expect(input.className).toContain('is-touched');
@@ -75,7 +75,7 @@ describe('Date', () => {
       },
     });
 
-    await wait(() => {
+    await waitFor(() => {
       expect(onChange.mock.calls[0][0]).toBe('1997-01-04');
     });
   });
@@ -105,7 +105,7 @@ describe('Date', () => {
 
     fireEvent.click(getByText('Submit'));
 
-    await wait(() => {
+    await waitFor(() => {
       expect(onSubmit).toHaveBeenCalledWith(
         expect.objectContaining({
           singleDate: '1997-01-04',
@@ -138,7 +138,7 @@ describe('Date', () => {
 
     fireEvent.click(getByText('Submit'));
 
-    await wait(() => {
+    await waitFor(() => {
       expect(onSubmit).toHaveBeenCalledWith(
         expect.objectContaining({
           singleDate: moment().format('YYYY-MM-DD'),
@@ -209,8 +209,8 @@ describe('Date', () => {
   test('renders new year option when navigating past initial range', async () => {
     const onChange = jest.fn();
 
-    const min = moment().subtract(1, 'years');
-    const max = moment('12/31/2020');
+    const min = moment('12/01/2020').subtract(1, 'years');
+    const max = moment('12/31/2021');
     const newYear = `${max.year() + 1}`;
 
     const { container, getAllByTestId } = render(
@@ -248,7 +248,7 @@ describe('Date', () => {
       },
     });
 
-    await wait(() => {
+    await waitFor(() => {
       expect(onChange.mock.calls[0][0]).toBe(`${max.year()}-12-25`);
     });
 

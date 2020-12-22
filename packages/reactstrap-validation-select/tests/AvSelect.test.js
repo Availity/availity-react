@@ -1,11 +1,5 @@
 import React from 'react';
-import {
-  render,
-  fireEvent,
-  waitForElement,
-  wait,
-  cleanup,
-} from '@testing-library/react';
+import { render, fireEvent, waitFor, cleanup } from '@testing-library/react';
 import { AvForm, AvInput } from 'availity-reactstrap-validation';
 import { Button } from 'reactstrap';
 
@@ -25,7 +19,7 @@ const customOptions = [
   { customLabel: 'Option 2', customValue: 'value for option 2' },
 ];
 
-const renderSelect = props =>
+const renderSelect = (props) =>
   render(
     <AvForm>
       <AvSelect name="test-form-input" {...props} />
@@ -44,7 +38,7 @@ describe('AvSelect', () => {
     fireEvent.keyDown(select, { key: 'ArrowDown', keyCode: 40 });
     fireEvent.keyDown(select, { key: 'Enter', keyCode: 13 });
 
-    const option = await waitForElement(() => getByText('Option 1'));
+    const option = await waitFor(() => getByText('Option 1'));
 
     expect(option).toBeDefined();
 
@@ -70,7 +64,7 @@ describe('AvSelect', () => {
     });
     fireEvent.keyDown(selectInput, { key: 'Enter', keyCode: 13 });
 
-    const selectOption = await waitForElement(() => getByText('Test'));
+    const selectOption = await waitFor(() => getByText('Test'));
 
     expect(selectOption).toBeDefined();
 
@@ -112,7 +106,7 @@ describe('AvSelect', () => {
     await fireEvent.click(submitButton);
 
     // Check for proper object format in payload
-    await wait(() => {
+    await waitFor(() => {
       expect(onSubmit).toHaveBeenCalledTimes(1);
       const payload = onSubmit.mock.calls[0][2];
       expect(payload.test_form_input.customLabel).toBe('New Option Test');
@@ -127,6 +121,9 @@ describe('AvSelect', () => {
         value: {
           firstName: 'John',
           lastName: 'Doe',
+          full: {
+            name: 'John Doe',
+          },
         },
       },
       {
@@ -134,6 +131,9 @@ describe('AvSelect', () => {
         value: {
           firstName: 'Jane',
           lastName: 'Doe',
+          full: {
+            name: 'Jane Doe',
+          },
         },
       },
     ];
@@ -150,6 +150,7 @@ describe('AvSelect', () => {
         />
         <AvInput data-testid="first-input" name="firstName" />
         <AvInput data-testid="last-input" name="lastName" />
+        <AvInput data-testid="full-input" name="full.name" />
 
         <Button>Submit</Button>
       </AvForm>
@@ -160,7 +161,7 @@ describe('AvSelect', () => {
     fireEvent.keyDown(select, { key: 'ArrowDown', keyCode: 40 });
     fireEvent.keyDown(select, { key: 'Enter', keyCode: 13 });
 
-    const option = await waitForElement(() => getByText('Doe, John'));
+    const option = await waitFor(() => getByText('Doe, John'));
 
     expect(option).toBeDefined();
 
@@ -173,11 +174,12 @@ describe('AvSelect', () => {
     await fireEvent.click(submitButton);
 
     // Check that values got autofilled
-    await wait(() => {
+    await waitFor(() => {
       expect(onSubmit).toHaveBeenCalledTimes(1);
       const payload = onSubmit.mock.calls[0][2];
       expect(payload.firstName).toBe('John');
       expect(payload.lastName).toBe('Doe');
+      expect(payload.full.name).toBe('John Doe');
     });
   });
 
@@ -214,12 +216,14 @@ describe('AvSelect', () => {
           autofill={{
             firstName: 'name.first',
             lastName: 'name.last',
-            fullName: opt => `${opt.name.first} ${opt.name.last}`,
+            'full.name': (opt) => `${opt.name.first} ${opt.name.last}`,
+            fullReversed: (opt) => `${opt.name.last} ${opt.name.first}`,
           }}
         />
         <AvInput data-testid="first-input" name="firstName" />
         <AvInput data-testid="last-input" name="lastName" />
-        <AvInput data-testid="full-input" name="fullName" />
+        <AvInput data-testid="full-input" name="full.name" />
+        <AvInput data-testid="full-reversed-input" name="fullReversed" />
 
         <Button>Submit</Button>
       </AvForm>
@@ -230,7 +234,7 @@ describe('AvSelect', () => {
     fireEvent.keyDown(select, { key: 'ArrowDown', keyCode: 40 });
     fireEvent.keyDown(select, { key: 'Enter', keyCode: 13 });
 
-    const option = await waitForElement(() => getByText('Doe, John'));
+    const option = await waitFor(() => getByText('Doe, John'));
 
     expect(option).toBeDefined();
 
@@ -243,12 +247,13 @@ describe('AvSelect', () => {
     await fireEvent.click(submitButton);
 
     // Check that values got autofilled
-    await wait(() => {
+    await waitFor(() => {
       expect(onSubmit).toHaveBeenCalledTimes(1);
       const payload = onSubmit.mock.calls[0][2];
       expect(payload.firstName).toBe('John');
       expect(payload.lastName).toBe('Doe');
-      expect(payload.fullName).toBe('John Doe');
+      expect(payload.full.name).toBe('John Doe');
+      expect(payload.fullReversed).toBe('Doe John');
     });
   });
 });

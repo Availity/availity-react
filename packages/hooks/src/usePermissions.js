@@ -1,6 +1,9 @@
 import { useQuery } from 'react-query';
 import { avPermissionsApi } from '@availity/api-axios';
 
-const fetchPermissions = async (_, config) =>
+const fetchPermissions = async (_key, config) =>
   avPermissionsApi.getPermissions(config);
-export default config => useQuery(['permissions', config], fetchPermissions);
+
+export default function usePermissions(config, options) {
+  return useQuery(['permissions', config], fetchPermissions, options);
+}

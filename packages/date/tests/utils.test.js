@@ -96,12 +96,8 @@ describe('utils', () => {
       const yearPicker = UTILS.buildYearPickerOptions(min, max, month);
 
       expect(yearPicker.length).toBe(
-        moment()
-          .add(max.value, max.units)
-          .year() -
-          moment()
-            .subtract(min.value, min.units)
-            .year() +
+        moment().add(max.value, max.units).year() -
+          moment().subtract(min.value, min.units).year() +
           1
       );
     });

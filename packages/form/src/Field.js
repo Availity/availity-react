@@ -9,7 +9,7 @@ import {
   InputGroupText,
   InputGroupAddon,
 } from 'reactstrap';
-import uuid from 'uuid/v4';
+import { v4 as uuid } from 'uuid';
 import Feedback from './Feedback';
 import FormGroup from './FormGroup';
 import Input from './Input';
@@ -40,10 +40,10 @@ const Field = ({
   const labelCol = {};
 
   if (grid) {
-    colSizes.forEach(colSize => {
+    colSizes.forEach((colSize) => {
       if (grid[colSize]) {
         row = true;
-        const sizeNum = parseInt(grid[colSize], 10);
+        const sizeNum = Number.parseInt(grid[colSize], 10);
         col[colSize] = sizeNum;
         labelCol[colSize] = 12 - sizeNum;
       }

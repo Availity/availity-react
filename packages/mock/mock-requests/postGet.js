@@ -1,6 +1,6 @@
 const search = require('./search');
 
-module.exports = mock => (url, key, fields, data) => {
+export default (mock) => (url, key, fields, data) => {
   const find = search(fields, data);
 
   mock.post(url, (req, res) => {
@@ -12,8 +12,8 @@ module.exports = mock => (url, key, fields, data) => {
         prev[key] = value;
         return prev;
       }, {});
-    const offset = parseInt(params.offset, 10) || 0;
-    const limit = parseInt(params.limit, 10) || 50;
+    const offset = Number.parseInt(params.offset, 10) || 0;
+    const limit = Number.parseInt(params.limit, 10) || 50;
     const list = find(params.q).slice(offset, offset + limit);
     return res.status(200).body(
       JSON.stringify({
