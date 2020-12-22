@@ -20,7 +20,7 @@ jobs:
       - run: git fetch --depth=1 origin +refs/tags/*:refs/tags/*
       - uses: actions/setup-node@v1
         with:
-          node-version: 12
+          node-version: 14
       - name: Get yarn cache directory path
         id: yarn-cache-dir-path
         run: echo "::set-output name=dir::$(yarn cache dir)"
@@ -46,9 +46,10 @@ jobs:
       - uses: crazy-max/ghaction-github-pages@v1
         with:
           target_branch: gh-pages
-          build_dir: docs/public
+          build_dir: docusaurus/build
           commit_message: deployed docs [skip ci]
           committer_name: ${{ secrets.GH_USER }}
           committer_email: ${{ secrets.GH_EMAIL }}
         env:
+          GIT_USER: ${{ secrets.GH_USER }}
           GITHUB_TOKEN: ${{ secrets.BOT_TOKEN }}

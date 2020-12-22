@@ -1,11 +1,11 @@
 module.exports = {
   plugins: [],
-  themes: [['@docusaurus/theme-search-algolia', { id: '01' }]],
+  themes: [['@docusaurus/theme-search-algolia', { id: '01' }]], // FIXME: duplicate search routes being created
   onBrokenLinks: 'log',
   title: 'Availity React Docs',
   tagline: 'React components using Availity UIKit and Bootstrap 4',
-  url: 'https://availity.github.io/react',
-  baseUrl: '/',
+  url: 'https://availity.github.io/availity-react',
+  baseUrl: '/availity-react/',
   favicon: 'img/favicon.ico',
   organizationName: 'availity', // Usually your GitHub org/user name.
   projectName: 'availity-react', // Usually your repo name.
@@ -29,26 +29,26 @@ module.exports = {
       logo: {
         alt: 'Availity Docs Logo',
         src: 'img/icon.png',
+        href: '..', // availity.github.io
       },
       items: [
         {
-          to: 'http://localhost:3000', // needs to be updated once deployed
-          label: 'CLI',
-          position: 'right',
-        },
-        {
-          to: 'http://localhost:3001', // needs to be updated once deployed
-          label: 'SDK',
-          position: 'right',
-        },
-        {
-          to:
-            'https://deploy-preview-571--condescending-leavitt-66e607.netlify.app/', // The target URL (string).
-          class: 'active',
+          // to:
+          //   'https://deploy-preview-571--condescending-leavitt-66e607.netlify.app/', // The target URL (string).
+          to: '../availity-react', // availity.github.io/availity-react, this repo
           label: 'React',
           position: 'right',
         },
-
+        {
+          to: '../sdk-js/', // availity.github.io/sdk-js
+          label: 'SDK-JS',
+          position: 'right',
+        },
+        {
+          to: '../availity-workflow/', // availity.github.io/availity-workflow
+          label: 'Workflow',
+          position: 'right',
+        },
         {
           href: 'https://github.com/availity/availity-react',
           position: 'right',
