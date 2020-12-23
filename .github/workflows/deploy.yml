@@ -43,10 +43,7 @@ jobs:
       - run: git config --global user.name ${{ secrets.GH_USER }}
       - run: yarn release:ci
       - name: Deploy docs
-        env:
-          GIT_USER: ${{ secrets.GH_USER }}
-          GITHUB_TOKEN: ${{ secrets.BOT_TOKEN }}
-        run: yarn deploy:ci
+        run: yarn build:deploy
       - uses: crazy-max/ghaction-github-pages@v1
         with:
           target_branch: gh-pages

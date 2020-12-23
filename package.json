@@ -48,7 +48,7 @@
     "build:storybook:netlify": "yarn workspace @availity/react-storybook build:netlify",
     "build:netlify": "yarn workspace @availity/dinosaurdocs build && yarn build:storybook:netlify",
     "build:docs": "yarn workspace @availity/dinosaurdocs build",
-    "build:deploy": "yarn deploy:docs && yarn build:storybook:netlify",
+    "build:deploy": "yarn build:docs && yarn build:storybook:netlify",
     "release": "lerna publish",
     "release:ci": "lerna publish --yes",
     "release:canary": "lerna publish -c",
