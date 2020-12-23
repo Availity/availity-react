@@ -1,3 +1,3 @@
-const mock = require('./mock-requests');
+import mock from './mock-requests';
 
 mock();
