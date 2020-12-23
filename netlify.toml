@@ -3,4 +3,4 @@
   command = "yarn run build:dino"
 
 [build.environment]
-  NODE_VERSION = "12"
+  NODE_VERSION = "14"
