@@ -45,6 +45,7 @@ jobs:
       - name: Deploy docs
         env:
           GIT_USER: ${{ secrets.GH_USER }}
+          GITHUB_TOKEN: ${{ secrets.BOT_TOKEN }}
         run: yarn deploy:ci
       - uses: crazy-max/ghaction-github-pages@v1
         with:
