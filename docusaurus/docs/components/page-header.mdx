@@ -1,0 +1,108 @@
+---
+title: Page Header
+---
+
+The standard Availity application header that appears at the top of the page. It can include an app icon, payer logo, and/or the feedback loop.
+
+### Installation
+
+```bash
+npx install-peerdeps @availity/page-header --save
+```
+
+### Example
+
+```jsx live=true viewCode=true
+import PageHeader from '@availity/page-header';
+<div className="w-100 d-flex flex-column justify-content-around align-items-start">
+  <PageHeader appName="Payer Space" appAbbr="PS" iconColor="blue" feedback />
+</div>;
+```
+
+#### Live example: <a href="https://availity.github.io/availity-react/storybook/?path=/story/components-header--default"> Storybook</a>
+
+### Props
+
+#### `appName: string`
+
+Name of the applicaiton
+
+#### `spaceName?: string`
+
+Payer Space Name of the space in which this page is under.
+
+#### `spaceId?: string`
+
+Payer Space ID of the space in which this page is under.
+
+#### `appAbbr?: string`
+
+If provided and payerId is not provided, the app icon will appear.
+
+#### `iconColor?: string`
+
+Potential values: `"black"`, `"blue"`, `"green"`, `"orange"`, `"red"`. Only used if the app icon should appear. **Default:** `"black"`.
+
+#### `branded?: boolean`
+
+Triggers the app icon's "branded" styles. Only used if the app icon should appear.
+
+#### `payerId?: string`
+
+The ID of the payer the application is for. If provided, the payer logo appears and not the app icon.
+
+#### `logo?: boolean`
+
+If `true` will fetch the payer logo using the `spaceId` or `payerId`.
+
+#### `component?: ReactNode`
+
+Allow rendering of an optional component in the top right of the header.
+
+#### `feedback?: boolean`
+
+If `true`, the feedback loop button appears.
+
+#### `feedbackProps?: FeedbackProps`
+
+See [Feedback](/components/feedback/feedback/#props). Props to send to `<Feedback />` component
+
+#### `children?: ReactNode`
+
+This value appears at the `h1` of the page. Overrides the `appName` to allow for custom elements (such as a "beta" tag). **Default:** `${appName}`.
+
+#### `crumbs?: Array<Object> | ReactNode`
+
+Array of Objects containing `name` (String) and `url` (String) properties. The ancestor pages which get passed to the `Breadcrumbs` component. See [Breadcrumbs](/components/breadcrumbs/#crumbs-arrayobject)
+
+#### `tag?: React.ComponentType`
+
+The tag to render the page header as. **Default:** `<h1>`.
+
+#### `clientId?: string`
+
+Client ID to use in [Spaces](/components/spaces/spaces/) to fetch the payer's logo
+
+#### `iconSrc?: string`
+
+Image source for `<AppIcon />` to be used instead of `appAbbr`.
+
+#### `iconAlt?: string`
+
+Required if `iconSrc` is used. Image alt property of `<AppIcon />`
+
+#### `homeUrl?: string`
+
+Url for the Home route. **Default:** `public/apps/dashboard`.
+
+#### `titleProps?: React.HTMLAttributes<HTMLSpanElement>`
+
+Additional props passed to the `page-header-title`.
+
+#### `renderRightContent: React.ComponentType<{ payerLogo: ReactNode, feedback: ReactNode, className: string }>`
+
+Used to customize the contents of the right side of the page header where the feedback and payer logo get rendered. Accepts the rendered `payerLogo` and `feedback` as props
+
+#### `linkTag?: React.ComponentType<React.HTMLAttributes<HTMLAnchorElement>> | string`
+
+Custom link tag for the links. **Default:** `<a>`

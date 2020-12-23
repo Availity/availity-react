@@ -1,0 +1,41 @@
+---
+title: Icon
+---
+
+Simple icon component that is a wrapper for the icons in the availity uikit. **[Icon List](http://availity.github.io/availity-uikit/v3/icons)**
+
+### Installation
+
+```bash
+npm install @availity/icon --save
+```
+
+### Example
+
+```jsx live=true viewCode=true
+import Icon from '@availity/icon';
+
+<div className="w-100 d-flex flex-row justify-content-around align-items-center">
+  <Icon name="home" size="3x" color="primary" />
+</div>;
+```
+
+#### Live example: <a href="https://availity.github.io/availity-react/storybook/?path=/story/icons-icon--default"> Storybook</a>
+
+### Props
+
+#### `name: string`
+
+The name of the icon. **[Icon List](http://availity.github.io/availity-uikit/v3/icons)**
+
+#### `size?: string`
+
+The size of the icon. Potential values: `"lg"`, `"xl"`, `"2x"`, `"3x"`, `"4x"`, `"5x"`
+
+#### `color?: string`
+
+The text color of the icon. Uses Availity UI Kit variants.
+
+#### `aria-label?: string`
+
+See: [aria-label](https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/ARIA_Techniques/Using_the_aria-label_attribute). **Default:** `name`

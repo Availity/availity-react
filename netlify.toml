@@ -1,6 +1,6 @@
 [build]
-  publish = "docs/public"
-  command = "yarn run build:netlify"
+  publish = "docusaurus/build"
+  command = "yarn run build:dino"
 
 [build.environment]
   NODE_VERSION = "12"

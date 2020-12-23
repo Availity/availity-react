@@ -1,0 +1,33 @@
+---
+title: Avatar
+---
+
+Availity user avatar component
+
+### Installation
+
+```bash
+npm install @availity/avatar --save
+```
+
+### Example
+
+```jsx live=true viewCode=true
+import Avatar from '@availity/avatar';
+
+<div className="w-100 d-flex flex-row justify-content-around align-items-center">
+  <Avatar style={{ width: 100 }} />
+</div>;
+```
+
+#### Live example: <a href="https://availity.github.io/availity-react/storybook/?path=/story/components-avatar--default"> Storybook</a>
+
+### Props
+
+#### `skeletonProps?: object`
+
+Dimensions passed to loader to show while the avatar is loading.
+
+#### `fallback?: string`
+
+Image url to render if the url for the avatar is not found. **Default:** `"/public/apps/my-profile/images/Avatars-00.png"`.
