@@ -1,5 +1,5 @@
 import { AxiosRequestConfig } from 'axios';
-import { QueryConfig, QueryResult } from 'react-query';
+import { UseQueryOptions, UseQueryResult } from 'react-query';
 import { AriesHookBase } from './aries';
 
 export interface PermissionsBase {
@@ -16,7 +16,7 @@ type Permissions = AriesHookBase & PermissionsBase;
 
 declare function usePermissions(
   config: AxiosRequestConfig,
-  options?: QueryConfig<Permissions, unknown>
-): QueryResult<Permissions, unknown>;
+  options?: UseQueryOptions<Permissions, unknown>
+): UseQueryResult<Permissions, unknown>;
 
 export default usePermissions;
