@@ -42,7 +42,10 @@ jobs:
       - run: git config --global user.email ${{ secrets.GH_EMAIL }}
       - run: git config --global user.name ${{ secrets.GH_USER }}
       - run: yarn release:ci
-      - run: yarn deploy:ci
+      - name: Deploy docs
+        env:
+          GIT_USER: ${{ secrets.GH_USER }}
+        run: yarn deploy:ci
       - uses: crazy-max/ghaction-github-pages@v1
         with:
           target_branch: gh-pages
@@ -51,5 +54,4 @@ jobs:
           committer_name: ${{ secrets.GH_USER }}
           committer_email: ${{ secrets.GH_EMAIL }}
         env:
-          GIT_USER: ${{ secrets.GH_USER }}
           GITHUB_TOKEN: ${{ secrets.BOT_TOKEN }}
