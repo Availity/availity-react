@@ -33,13 +33,13 @@ const plugin = {
 </Analytics>
 ```
 
-#### Live example: <a href="https://availity.github.io/availity-react/storybook/?path=/story/components-analytics--default"> Storybook</a>
+#### Live example: [Storybook](https://availity.github.io/availity-react/storybook/?path=/story/components-analytics--default)
 
 ### Props
 
 #### `plugins?: AnalyticsPlugin[]`
 
-Array of plugins to call when an event is tracked. See [@availity/analytics-core](/sdk-js/features/analytics/) for list of prebuilt plugins.
+Array of plugins to call when an event is tracked. See [@availity/analytics-core](https://availity.github.io/sdk-js/features/analytics/) for list of prebuilt plugins.
 
 #### `pageTracking?: boolean`
 

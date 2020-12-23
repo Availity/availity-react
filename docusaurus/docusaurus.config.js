@@ -29,23 +29,23 @@ module.exports = {
       logo: {
         alt: 'Availity Docs Logo',
         src: 'img/icon.png',
-        href: '..', // availity.github.io
+        href: 'https://availity.github.io',
       },
       items: [
         {
           // to:
           //   'https://deploy-preview-571--condescending-leavitt-66e607.netlify.app/', // The target URL (string).
-          to: '../availity-react', // availity.github.io/availity-react, this repo
+          to: '/', // availity.github.io/availity-react, this repo
           label: 'React',
           position: 'right',
         },
         {
-          to: '../sdk-js/', // availity.github.io/sdk-js
+          href: 'https://availity.github.io/sdk-js',
           label: 'SDK-JS',
           position: 'right',
         },
         {
-          to: '../availity-workflow/', // availity.github.io/availity-workflow
+          href: 'https://availity.github.io/availity-workflow',
           label: 'Workflow',
           position: 'right',
         },
@@ -57,6 +57,7 @@ module.exports = {
         },
       ],
     },
+    footer: {},
   },
   presets: [
     [
