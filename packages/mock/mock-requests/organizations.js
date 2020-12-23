@@ -1,5 +1,5 @@
-const postGet = require('./postGet');
-const data = require('../data/organizations-query.json');
+import postGet from './postGet';
+import data from '../data/organizations-query.json';
 
 const fields = ['customerId', 'name', 'dbaName'];
 

@@ -1,4 +1,4 @@
-const features = require('../data/features.json');
+import features from '../data/features.json';
 
 export default (mock) => {
   mock.get('features.json', (req, res) =>

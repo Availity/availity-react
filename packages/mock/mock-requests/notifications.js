@@ -1,6 +1,6 @@
-const { delay } = require('xhr-mock');
-const qs = require('qs');
-const paginationData = require('../data/pagination.json');
+import { delay } from 'xhr-mock';
+import qs from 'qs';
+import paginationData from '../data/pagination.json';
 
 export default (mock) => {
   mock.post(

@@ -1,5 +1,5 @@
-const postGet = require('./postGet');
-const data = require('../data/providers-query.json');
+import postGet from './postGet';
+import data from '../data/providers-query.json';
 
 const fields = ['businessName', 'uiDisplayName', 'npi'];
 
