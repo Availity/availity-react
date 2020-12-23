@@ -1,4 +1,4 @@
-import { QueryConfig, QueryResult } from 'react-query';
+import { UseQueryOptions, UseQueryResult } from 'react-query';
 
 export type CurrentRegion = {
   code: string;
@@ -6,7 +6,7 @@ export type CurrentRegion = {
 };
 
 declare function useCurrentRegion(
-  options?: QueryConfig<CurrentRegion, unknown>
-): QueryResult<CurrentRegion, unknown>;
+  options?: UseQueryOptions<CurrentRegion, unknown>
+): UseQueryResult<CurrentRegion, unknown>;
 
 export default useCurrentRegion;

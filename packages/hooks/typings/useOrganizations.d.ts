@@ -1,5 +1,5 @@
 import { AxiosRequestConfig } from 'axios';
-import { QueryConfig, QueryResult } from 'react-query';
+import { UseQueryOptions, UseQueryResult } from 'react-query';
 import { AriesHookBase } from './aries';
 
 interface OrganizationsBase {
@@ -69,7 +69,7 @@ type Organizations = AriesHookBase & OrganizationsBase;
 
 export declare function useOrganizations(
   config: AxiosRequestConfig,
-  options?: QueryConfig<Organizations, unknown>
-): QueryResult<Organizations, unknown>;
+  options?: UseQueryOptions<Organizations, unknown>
+): UseQueryResult<Organizations, unknown>;
 
 export default useOrganizations;
