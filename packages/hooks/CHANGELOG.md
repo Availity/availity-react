@@ -3,6 +3,22 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# 3.0.0 (2020-12-23)
+
+
+### Features
+
+* **hooks:** upgrade to react-query v3 ([351aeff](https://github.com/Availity/availity-react/commit/351aeff7bc6b2c14379b2113bc17624a956dfdd6))
+
+
+### BREAKING CHANGES
+
+* **hooks:** react-query ^3.0.0 is now required
+
+
+
+
+
 ## 2.0.1 (2020-11-17)
 
 **Note:** Version bump only for package @availity/hooks
