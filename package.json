@@ -110,7 +110,7 @@
     "typescript": "^4.0.5"
   },
   "resolutions": {
-    "typescript": "4.0.5"
+    "typescript": "4.1.3"
   },
   "jest": {
     "testURL": "http://localhost/",
