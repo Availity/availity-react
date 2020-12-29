@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## 1.1.1 (2020-12-29)
+
+
+### Bug Fixes
+
+* **dinosaurdocs:** availity docs should not open in new tab ([e5afd2d](https://github.com/Availity/availity-react/commit/e5afd2d649496c9dc34cbbdef7ebe111c3449252))
+
+
+
+
+
 # 1.1.0 (2020-12-23)
 
 
