@@ -30,22 +30,23 @@ module.exports = {
         alt: 'Availity Docs Logo',
         src: 'img/icon.png',
         href: 'https://availity.github.io',
+        target: '_self',
       },
       items: [
         {
-          // to:
-          //   'https://deploy-preview-571--condescending-leavitt-66e607.netlify.app/', // The target URL (string).
           to: '/', // availity.github.io/availity-react, this repo
           label: 'React',
           position: 'right',
         },
         {
           href: 'https://availity.github.io/sdk-js',
+          target: '_self',
           label: 'SDK-JS',
           position: 'right',
         },
         {
           href: 'https://availity.github.io/availity-workflow',
+          target: '_self',
           label: 'Workflow',
           position: 'right',
         },
