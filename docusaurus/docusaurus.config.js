@@ -21,7 +21,13 @@ module.exports = {
     //   content:
     //     '⭐️ If you like Availity-React, give it a star on <a target="_blank" rel="noopener noreferrer" href="https://github.com/availity/availity-react">GitHub</a>! ⭐️',
     // },
-    colorMode: { defaultMode: 'dark' },
+    colorMode: {
+      defaultMode: 'dark',
+
+      // Should we use the prefers-color-scheme media-query,
+      // using user system preferences, instead of the hardcoded defaultMode
+      respectPrefersColorScheme: true,
+    },
 
     navbar: {
       title: 'Availity Docs',
