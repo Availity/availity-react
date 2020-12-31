@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.1.4](https://github.com/Availity/availity-react/compare/@availity/dinosaurdocs@1.1.3...@availity/dinosaurdocs@1.1.4) (2020-12-31)
+
+
+### Bug Fixes
+
+* **dinosaurdocs:** fixes broken editUrl ([7cdc14d](https://github.com/Availity/availity-react/commit/7cdc14ddf5a069e9ef77ee9a32d0cac65b18a61e))
+
+
+
+
+
 ## [1.1.3](https://github.com/Availity/availity-react/compare/@availity/dinosaurdocs@1.1.2...@availity/dinosaurdocs@1.1.3) (2020-12-31)
 
 **Note:** Version bump only for package @availity/dinosaurdocs
