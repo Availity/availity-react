@@ -1,24 +1,33 @@
 ---
 title: <FormGroup />
----Wrapper for an Input field. Uses reactstrap FormGroup.
+---
+
+Wrapper for an Input field. Uses reactstrap FormGroup.
 
 ### Example
 
-```jsx live=true viewCode=true
-<Form
-  initialValues={{
-    hello: '',
-  }}
-  onSubmit={() => ({})}
-  validationSchema={yup.object().shape({
-    hello: yup.string().required(),
-  })}
->
-  <FormGroup for="hello">
-    <Label for="hello">Hello Field</Label>
-    <Input name="hello" />
-  </FormGroup>
-</Form>
+```jsx
+import React from 'react';
+import { Form } from '@availity/form';
+import { FormGroup, Input, Label } from 'reactstrap';
+import * as yup from 'yup';
+
+const Example = () => (
+  <Form
+    initialValues={{
+      hello: '',
+    }}
+    onSubmit={() => ({})}
+    validationSchema={yup.object().shape({
+      hello: yup.string().required(),
+    })}
+  >
+    <FormGroup for="hello">
+      <Label for="hello">Hello Field</Label>
+      <Input name="hello" />
+    </FormGroup>
+  </Form>
+);
 ```
 
 #### Live example: <a href="https://availity.github.io/availity-react/storybook/?path=/story/formik-form--form-group"> Storybook</a>

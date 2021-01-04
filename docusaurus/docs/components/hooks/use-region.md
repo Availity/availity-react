@@ -10,7 +10,7 @@ Hook that returns the user's current region.
 import React from 'react';
 import { useCurrentRegion } from '@availity/hooks';
 
-const Component = () => {
+const Example = () => {
   const { data: region, isFetching } = useCurrentRegion();
 
   return <div>{isFetching ? 'Loading...' : region?.value || 'Nowhere'}</div>;

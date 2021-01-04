@@ -10,7 +10,7 @@ Hook that returns providers.
 import React from 'react';
 import { useProviders } from '@availity/hooks';
 
-const Component = () => {
+const Example = () => {
   const { data, isFetching } = useProviders({ customerId: 01234 });
 
   return (

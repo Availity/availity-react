@@ -6,28 +6,26 @@ A date range, consisting of 2 fields, a start date and an end date, without a `L
 
 ### Example
 
-```jsx live=true viewCode=true
+```jsx
+import React from 'react';
 import { Form } from '@availity/form';
 import { DateRange } from '@availity/date';
 import { dateRange } from '@availity/yup';
+import { Button } from 'reactstrap';
 import moment from 'moment';
 import * as yup from 'yup';
 
-<div className="w-100 d-flex flex-row justify-content-around align-items-center">
+const Example = () => (
   <Form
     initialValues={{
       dateOfService: undefined,
     }}
-    onSubmit={values => console.log(values)}
+    onSubmit={(values) => console.log(values)}
     validationSchema={yup.object().shape({
       dateOfService: dateRange(
         {
-          min: moment()
-            .subtract(7, 'day')
-            .format('MM/DD/YYYY'),
-          max: moment()
-            .add(7, 'day')
-            .format('MM/DD/YYYY'),
+          min: moment().subtract(7, 'day').format('MM/DD/YYYY'),
+          max: moment().add(7, 'day').format('MM/DD/YYYY'),
           format: 'MM/DD/YYYY',
         },
         `Date must be between ${moment()
@@ -50,7 +48,7 @@ import * as yup from 'yup';
       Submit
     </Button>
   </Form>
-</div>;
+);
 ```
 
 #### Live example: <a href="https://availity.github.io/availity-react/storybook/?path=/story/formik-date--daterange"> Storybook</a>

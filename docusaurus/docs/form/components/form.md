@@ -6,21 +6,23 @@ Reactstrap Form component wrapped in Formik
 
 ### Example
 
-```jsx live=true header=Form.js viewCode=true
+```jsx
 import React from 'react';
 import { Form, Field } from '@availity/form';
 
-<Form
-  initialValues={{
-    hello: '',
-  }}
-  onSubmit={values => alert(JSON.stringify(values))}
-  validationSchema={yup.object().shape({
-    hello: yup.string().required(),
-  })}
->
-  <Field name="hello" type="text" label="Hello" />
-</Form>;
+const Example = () => (
+  <Form
+    initialValues={{
+      hello: '',
+    }}
+    onSubmit={(values) => alert(JSON.stringify(values))}
+    validationSchema={yup.object().shape({
+      hello: yup.string().required(),
+    })}
+  >
+    <Field name="hello" type="text" label="Hello" />
+  </Form>
+);
 ```
 
 #### Live example: <a href="https://availity.github.io/availity-react/storybook/?path=/story/formik-form--default"> Storybook</a>

@@ -20,7 +20,7 @@ The default export is an all-in-one solution which handles uploads, encrypted fi
 import React from 'react';
 import Upload from '@availity/upload';
 
-<Upload clientId="a" bucketId="b" customerId="c" />;
+const Example = () => <Upload clientId="a" bucketId="b" customerId="c" />;
 ```
 
 ## Props
@@ -85,31 +85,24 @@ Override the default error message for files rejected when `showFileDrop` is `tr
 import React from 'react';
 import Upload from '@availity/upload';
 
-<Upload
-  btnText="Upload a claim"
-  clientId="a"
-  bucketId="b"
-  customerId="c"
-  multiple={false}
-  max={1}
-/>;
+const Example = () => (
+  <Upload
+    btnText="Upload a claim"
+    clientId="a"
+    bucketId="b"
+    customerId="c"
+    multiple={false}
+    max={1}
+  />
+);
 ```
 
 #### Callback Function Usage
 
 ```jsx
-<Upload
-  btnText="Upload a claim"
-  clientId="a"
-  bucketId="b"
-  customerId="c"
-  onFileUpload={onUpload} // <-- add file callback function
-  onFileRemove={onRemove} // <-- remove file callback function
-  max={1}
-/>
-
-// onUpload callback definition
-onUpload(upload) {
+const Example = () => {
+  // onUpload callback definition
+  const onUpload = (upload) => {
     if (upload) {
       upload.onSuccess.push(async () => {
         // success action
@@ -118,15 +111,26 @@ onUpload(upload) {
         // error action
       });
     }
-  }
-// ...
+  };
 
-// onRemove callback definition
-onRemove(file) {
-  // remove action
-}
+  // onRemove callback definition
+  const onRemove = (file) => {
+    // remove action
+  };
+
+  return (
+    <Upload
+      btnText="Upload a claim"
+      clientId="a"
+      bucketId="b"
+      customerId="c"
+      onFileUpload={onUpload} // <-- add file callback function
+      onFileRemove={onRemove} // <-- remove file callback function
+      max={1}
+    />
+  );
+};
 ```
-
 
 ## FilePickerBtn (Named Export)
 
@@ -138,12 +142,14 @@ The raw file picker button that masks the file input with a button.
 import React from 'react';
 import { FilePickerBtn } from '@availity/upload';
 
-handleFileSelection = event => {
-  const { files } = event.target;
-  // do something with the files.
-};
+const Example = () => {
+  const handleFileSelection = (event) => {
+    const { files } = event.target;
+    // do something with the files.
+  };
 
-<FilePickerBtn onChange={this.handleFileSelection} />;
+  return <FilePicker onChange={handleFileSelection} />;
+};
 ```
 
 ## Props
@@ -172,7 +178,6 @@ The file types you want to restrict uploading to. eg: `['.jpeg', '.jpg']`.
 
 The maximum file size (in bytes) for a file to be uploaded.
 
-
 ## FilePicker (Named Export)
 
 The raw file picker which automatically resets the value of the input, allowing the same file to be selected multiple consecutive files.
@@ -184,12 +189,14 @@ import React from 'react';
 import { FilePicker } from '@availity/upload';
 import { CustomInput } from 'reactstrap';
 
-handleFileSelection = event => {
-  const { files } = event.target;
-  // do something with the files.
-};
+const Example = () => {
+  const handleFileSelection = (event) => {
+    const { files } = event.target;
+    // do something with the files.
+  };
 
-<FilePicker tag={CustomInput} onChange={this.handleFileSelection} />;
+  return <FilePicker tag={CustomInput} onChange={handleFileSelection} />;
+};
 ```
 
 ## Props
@@ -214,7 +221,6 @@ The file types you want to restrict uploading to. eg: `['.jpeg', '.jpg']`.
 
 The maximum file size (in bytes) for a file to be uploaded.
 
-
 ## UploadProgressBar
 
 The raw progress bar to be used when making your own.
@@ -225,31 +231,39 @@ The raw progress bar to be used when making your own.
 import React from 'react';
 import { UploadProgressBar } from '@availity/upload';
 
-<UploadProgressBar upload={uploadInstance} animated />;
+const Example = () => <UploadProgressBar upload={uploadInstance} animated />;
 ```
 
 ## Props
 
 ### `upload?: UploadCore`
+
 The upload instance returned by creating a `new Upload` via [upload-core](https://github.com/Availity/sdk-js/tree/master/packages/upload-core).
 
 ### `onProgress?: (upload: UploadCore) => void`
+
 Callback function to hook into the `onProgress` within the Upload instance provided in the `upload` prop.
 
 ### `onSuccess?: (upload: UploadCore) => void`
+
 Callback function to hook into the `onSuccess` within the Upload instance provided in the `upload` prop.
 
 ### `onError?: (upload: UploadCore) => void`
+
 Callback function to hook into the `onError` within the Upload instance provided in the `upload` prop.
 
 ### `complete?: boolean`
+
 Triggers the "complete" style in the progress bar. When true, a checkmark appears at the end of the progress bar.
 
 ### `striped?: boolean`
+
 Triggers the "striped" style in the progress bar.
 
 ### `animated?: boolean`
+
 When `true` the progress bar has animated stripes while uploading is in progress.
 
 ### `color?: string`
+
 Color of the progress bar. **Default:** `success`

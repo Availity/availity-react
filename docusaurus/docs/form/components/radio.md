@@ -6,23 +6,30 @@ Inputs of type radio. Radios should be wrapped in a RadioGroup.
 
 ### Example
 
-```jsx live=true viewCode=true
-<Form
-  initialValues={{
-    hello: '',
-  }}
-  onSubmit={() => {}}
-  validationSchema={yup.object().shape({
-    hello: yup.string().required('This field is required'),
-  })}
->
-  <RadioGroup name="hello" label="Radio Group">
-    <Radio label="Radio One" value="uno" />
-    <Radio label="Radio Two" value="dos" />
-    <Radio label="Radio Three" value="tres" />
-  </RadioGroup>
-  <Button type="submit">Submit</Button>
-</Form>
+```jsx
+import React from 'react';
+import { Form, Radio, RadioGroup } from '@availity/form';
+import { Button } from 'reactstrap';
+import * as yup from 'yup';
+
+const Example = () => (
+  <Form
+    initialValues={{
+      hello: '',
+    }}
+    onSubmit={() => {}}
+    validationSchema={yup.object().shape({
+      hello: yup.string().required('This field is required'),
+    })}
+  >
+    <RadioGroup name="hello" label="Radio Group">
+      <Radio label="Radio One" value="uno" />
+      <Radio label="Radio Two" value="dos" />
+      <Radio label="Radio Three" value="tres" />
+    </RadioGroup>
+    <Button type="submit">Submit</Button>
+  </Form>
+);
 ```
 
 #### Live example: <a href="https://availity.github.io/availity-react/storybook/?path=/story/formik-form--radio"> Storybook</a>

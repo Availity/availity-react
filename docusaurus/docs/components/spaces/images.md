@@ -13,16 +13,18 @@ import Spaces, {
   SpacesImage,
 } from '@availity/spaces';
 
-<Spaces
-  spaceIds={['73162546201441126239486200007187']}
-  payerIds={['PayerID']}
-  clientId="my-client-id"
->
-  <SpacesLogo spaceId="73162546201441126239486200007187" />
-  <SpacesBillboard payerId="PayerID" />
-  <SpacesTile payerId="PayerID" />
-  <SpacesImage payerId="PayerID" />
-</Spaces>;
+const Example = () => (
+  <Spaces
+    spaceIds={['73162546201441126239486200007187']}
+    payerIds={['PayerID']}
+    clientId="my-client-id"
+  >
+    <SpacesLogo spaceId="73162546201441126239486200007187" />
+    <SpacesBillboard payerId="PayerID" />
+    <SpacesTile payerId="PayerID" />
+    <SpacesImage payerId="PayerID" />
+  </Spaces>
+);
 ```
 
 #### Live example: <a href="https://availity.github.io/availity-react/storybook/?path=/story/components-spaces--images"> Storybook</a>

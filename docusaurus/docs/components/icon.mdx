@@ -4,20 +4,29 @@ title: Icon
 
 Simple icon component that is a wrapper for the icons in the availity uikit. **[Icon List](http://availity.github.io/availity-uikit/v3/icons)**
 
+[![Version](https://img.shields.io/npm/v/@availity/icon.svg?style=for-the-badge)](https://www.npmjs.com/package/@availity/icon)
+
 ### Installation
+
+npm
 
 ```bash
 npm install @availity/icon --save
 ```
 
+Yarn
+
+```bash
+yarn add @availity/icon
+```
+
 ### Example
 
-```jsx live=true viewCode=true
+```jsx
+import React from 'react';
 import Icon from '@availity/icon';
 
-<div className="w-100 d-flex flex-row justify-content-around align-items-center">
-  <Icon name="home" size="3x" color="primary" />
-</div>;
+const Example = () => <Icon name="home" size="3x" color="primary" />;
 ```
 
 #### Live example: <a href="https://availity.github.io/availity-react/storybook/?path=/story/icons-icon--default"> Storybook</a>

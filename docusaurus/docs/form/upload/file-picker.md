@@ -12,18 +12,22 @@ import { Form } from '@availity/form';
 import { FilePicker } from '@availity/form-upload';
 import { CustomInput } from 'reactstrap';
 
-handleFileSelection = event => {
-  const { files } = event.target;
-  // do something with the files.
-};
+const Example = () => {
+  const handleFileSelection = (event) => {
+    const { files } = event.target;
+    // do something with the files.
+  };
 
-<Form initialValues={{ myFile: undefined }}>
-  <FilePicker
-    name="myFile"
-    tag={CustomInput}
-    onChange={this.handleFileSelection}
-  />
-</Form>;
+  return (
+    <Form initialValues={{ myFile: undefined }}>
+      <FilePicker
+        name="myFile"
+        tag={CustomInput}
+        onChange={this.handleFileSelection}
+      />
+    </Form>
+  );
+};
 ```
 
 #### Live example: <a href="https://availity.github.io/availity-react/storybook/?path=/story/components-upload--picker-field"> Storybook</a>
@@ -46,7 +50,7 @@ Callback when the user has selected a file or multiple files.
 
 Indicates that the user will be allowed to select multiple files when selecting files from the OS prompt.
 
-#### `allowedFileTypes?: Array<string>`
+#### `allowedFileTypes?: string[]`
 
 The file types you want to restrict uploading to. eg: `['.jpeg', '.jpg']`.
 

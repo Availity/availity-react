@@ -10,7 +10,7 @@ Hook that returns the current user.
 import React from 'react';
 import { useCurrentUser } from '@availity/hooks';
 
-const Component = () => {
+const Example = () => {
   const { data: user, isFetching } = useCurrentUser();
 
   return <div>{isFetching ? 'Loading...' : user?.id}</div>;

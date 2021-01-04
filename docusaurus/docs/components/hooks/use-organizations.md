@@ -10,7 +10,7 @@ Hook that returns organizations.
 import React from 'react';
 import { useCurrentUser, useOrganizations } from '@availity/hooks';
 
-const Component = () => {
+const Example = () => {
   const { data: user } = useCurrentUser();
   const { data, isFetching } = useOrganizations(
     { params: { permissionId: ['5'], userId: user?.id } },

@@ -6,27 +6,30 @@ Error message container for an input
 
 ### Example
 
-```jsx live=true viewCode=true
+```jsx
+import React from 'react';
 import { Form, Input, Feedback as FormFeedback } from '@availity/form';
 
-<Form
-  initialValues={{
-    hello: '',
-  }}
-  onSubmit={() => ({})}
-  validationSchema={yup.object().shape({
-    hello: yup.string().required('Oops'),
-  })}
->
-  <FormGroup>
-    <Label>Hello Field</Label>
-    <Input name="hello" />
-    <FormFeedback name="hello" />
-  </FormGroup>
-  <Button type="submit" color="primary">
-    Submit
-  </Button>
-</Form>;
+const Example = () => (
+  <Form
+    initialValues={{
+      hello: '',
+    }}
+    onSubmit={() => ({})}
+    validationSchema={yup.object().shape({
+      hello: yup.string().required('Oops'),
+    })}
+  >
+    <FormGroup>
+      <Label>Hello Field</Label>
+      <Input name="hello" />
+      <FormFeedback name="hello" />
+    </FormGroup>
+    <Button type="submit" color="primary">
+      Submit
+    </Button>
+  </Form>
+);
 ```
 
 ### Props

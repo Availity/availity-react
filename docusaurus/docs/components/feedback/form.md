@@ -6,12 +6,11 @@ This is the underlying form, which is exposed in case you need to gather feedbac
 
 ### Example
 
-```jsx live=true viewCode=true
+```jsx
+import React from 'react';
 import { FeedbackForm } from '@availity/feedback';
 
-<div className="w-100">
-  <FeedbackForm name="Payer Space" />
-</div>;
+const Example = () => <FeedbackForm name="Payer Space" />;
 ```
 
 #### Live example: <a href="https://availity.github.io/availity-react/storybook/?path=/story/components-feedback--with-form"> Storybook</a>
@@ -26,11 +25,11 @@ The name of the application this feedback is for. It is used in the API request 
 
 Callback for when the feedback is submitted. It is called with the feedback object.
 
-#### `faceOptions?: Array<Object>`
+#### `faceOptions?: object[]`
 
 Array of Objects containing **`icon`** (String), **`description`** (String), and **`placeholder`** (String) properties. Allows you to override the smiley face options which appear. Default: Smiley Face, Meh Face, and Frowny Face.
 
-#### `aboutOptions?: Array<Object>`
+#### `aboutOptions?: object[]`
 
 Array of Objects containing **`value`** (String,Number) and **`label`** (String) properties. Allows a dropdown displaying the options provided to let the user indicate what the feedback is about.
 

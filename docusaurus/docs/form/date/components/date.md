@@ -8,7 +8,8 @@ If `initialValues` need to be specified for a Date or DateRange, they should be 
 
 ### Example
 
-```jsx live=true viewCode=true
+```jsx
+import React from 'react';
 import { Form } from '@availity/form';
 import { avDate } from '@availity/yup';
 import { Button } from 'reactstrap';
@@ -16,12 +17,12 @@ import Date from '@availity/date';
 import moment from 'moment';
 import * as yup from 'yup';
 
-<div className="w-100 d-flex flex-row justify-content-around align-items-center">
+const Example = () => (
   <Form
     initialValues={{
       dateOfService: '',
     }}
-    onSubmit={values => console.log(values)}
+    onSubmit={(values) => console.log(values)}
     validationSchema={yup.object().shape({
       dateOfService: avDate().required(),
     })}
@@ -36,7 +37,7 @@ import * as yup from 'yup';
       Submit
     </Button>
   </Form>
-</div>;
+);
 ```
 
 #### Live example: <a href="https://availity.github.io/availity-react/storybook/?path=/story/formik-date--date"> Storybook</a>

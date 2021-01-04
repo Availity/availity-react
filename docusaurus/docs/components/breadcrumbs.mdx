@@ -4,7 +4,17 @@ title: Breadcrumbs
 
 Availity breadcrumbs
 
+[![Version](https://img.shields.io/npm/v/@availity/breadcrumbs.svg?style=for-the-badge)](https://www.npmjs.com/package/@availity/breadcrumbs)
+
 ### Installation
+
+npm
+
+```bash
+npm install @availity/breadcrumbs --save
+```
+
+Yarn
 
 ```bash
 npm install @availity/breadcrumbs --save
@@ -12,16 +22,18 @@ npm install @availity/breadcrumbs --save
 
 ### Example
 
-```jsx live=true viewCode=true
+```jsx
 import Breadcrumbs from '@availity/breadcrumbs';
 import { BreadcrumbItem } from 'reactstrap';
 
-<div className="w-100 d-flex flex-column justify-content-around align-items-start">
+const BasicExample = () => (
   <div>
     <h3>Basic Example</h3>
     <Breadcrumbs active="Payer Space" />
   </div>
+);
 
+const CrumbsPropExample = () => (
   <div>
     <h3>Example with crumbs prop</h3>
     <Breadcrumbs
@@ -32,14 +44,16 @@ import { BreadcrumbItem } from 'reactstrap';
       ]}
     />
   </div>
+);
 
+const ChildrenExample = () => (
   <div>
     <h3>Example with custom breadcrumb children</h3>
     <Breadcrumbs active="Current Page">
       <BreadcrumbItem>Custom Bread Crumb</BreadcrumbItem>
     </Breadcrumbs>
   </div>
-</div>;
+);
 ```
 
 #### Live example: <a href="https://availity.github.io/availity-react/storybook/?path=/story/components-breadcrumbs--default"> Storybook</a>
@@ -50,7 +64,7 @@ import { BreadcrumbItem } from 'reactstrap';
 
 The name of the active page (the page the user is currently on).
 
-#### `crumbs?: Array<object>`
+#### `crumbs?: object[]`
 
 The ancestor pages. Objects in array contain `name` (String) and `url` (String) properties.
 
@@ -58,7 +72,7 @@ The ancestor pages. Objects in array contain `name` (String) and `url` (String) 
 
 The value to display when the active page or an ancestor does not have a value. **Default:** `"&hellip;"`
 
-#### `children?: BreadcrumbItem | Array<BreadcrumbItem>`
+#### `children?: BreadcrumbItem | BreadcrumbItem[]`
 
 The children must be a reactstrap `BreadcrumbItem` components.
 

@@ -10,7 +10,7 @@ Hook that returns user permissions.
 import React from 'react';
 import { usePermissions } from '@availity/hooks';
 
-const Component = () => {
+const Example = () => {
   const { data, isFetching } = usePermissions();
 
   return (

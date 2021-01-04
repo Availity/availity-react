@@ -9,13 +9,12 @@ Hook that returns true after the given amount of time in milliseconds.
 ```jsx
 import React, { useState } from 'react';
 import { useTimeout } from '@availity/hooks';
-// ...
-const Component = () => {
+
+const Example = () => {
   const timeIsUp = useTimeout(5000);
 
   return <div>{timeIsUp ? 'Time is up' : 'Still waiting'}</div>;
 };
-// ...
 ```
 
 ### Props

@@ -1,23 +1,37 @@
 ---
-
 title: Progress
----#### Availity Progress Bar
+---
+
+Availity Progress Bar
+
+[![Version](https://img.shields.io/npm/v/@availity/progress.svg?style=for-the-badge)](https://www.npmjs.com/package/@availity/progress)
 
 ### Installation
+
+npm
 
 ```bash
 npm install @availity/progress --save
 ```
 
+Yarn
+
+```bash
+yarn add @availity/progress
+```
+
 ### Example
 
 ```jsx
+import React from 'react';
 import Progress from '@availity/progress';
 
-<div className="w-100 flex-row justify-content-around align-items-center">
-  <p>50% Complete</p>
-  <Progress animated={false} striped complete={false} value={50} max={100} />
-</div>;
+const Example = () => (
+  <>
+    <p>50% Complete</p>
+    <Progress animated={false} striped complete={false} value={50} max={100} />
+  </>
+);
 ```
 
 #### Live example: <a href="https://availity.github.io/availity-react/storybook/?path=/story/components-progress--default"> Storybook</a>

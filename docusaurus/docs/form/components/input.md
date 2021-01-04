@@ -6,25 +6,29 @@ Basic Input field that utilizes the Form validation
 
 ### Example
 
-```jsx live=true viewCode=true
+```jsx
+import React from 'react';
 import { Form, Input } from '@availity/form';
 import { Button } from 'reacstrap';
+import * as yup from 'yup';
 
-<Form
-  initialValues={{
-    hello: '',
-  }}
-  onSubmit={values => alert(JSON.stringify(values))}
-  validationSchema={yup.object({
-    hello: yup.string().required(),
-  })}
-  className="d-flex"
->
-  <Input name="hello" placeholder="Say Hello..." />
-  <Button type="submit" className="ml-1" color="primary">
-    Submit
-  </Button>
-</Form>;
+const Example = () => (
+  <Form
+    initialValues={{
+      hello: '',
+    }}
+    onSubmit={(values) => alert(JSON.stringify(values))}
+    validationSchema={yup.object({
+      hello: yup.string().required(),
+    })}
+    className="d-flex"
+  >
+    <Input name="hello" placeholder="Say Hello..." />
+    <Button type="submit" className="ml-1" color="primary">
+      Submit
+    </Button>
+  </Form>
+);
 ```
 
 #### Live example: <a href="https://availity.github.io/availity-react/storybook/?path=/story/formik-form--input"> Storybook</a>

@@ -6,25 +6,32 @@ Inputs of type checkbox. Checkboxes should be wrapped in a CheckboxGroup.
 
 ### Example
 
-```jsx live=true viewCode=true
-<Form
-  initialValues={{
-    hello: [],
-  }}
-  onSubmit={() => {}}
-  validationSchema={yup.object().shape({
-    hello: yup.array().required('At least one checkbox is required'),
-  })}
->
-  <CheckboxGroup name="hello" label="Checkbox Group">
-    <Checkbox label="Check One" value="uno" />
-    <Checkbox label="Check Two" value="dos" />
-    <Checkbox label="Check Three" value="tres" />
-  </CheckboxGroup>
-  <Button type="submit" color="primary">
-    Submit
-  </Button>
-</Form>
+```jsx
+import React from 'react';
+import { Form, Checkbox, CheckboxGroup } from '@availity/form';
+import { Button } from 'reactstrap';
+import * as yup from 'yup';
+
+const Example = () => (
+  <Form
+    initialValues={{
+      hello: [],
+    }}
+    onSubmit={() => {}}
+    validationSchema={yup.object().shape({
+      hello: yup.array().required('At least one checkbox is required'),
+    })}
+  >
+    <CheckboxGroup name="hello" label="Checkbox Group">
+      <Checkbox label="Check One" value="uno" />
+      <Checkbox label="Check Two" value="dos" />
+      <Checkbox label="Check Three" value="tres" />
+    </CheckboxGroup>
+    <Button type="submit" color="primary">
+      Submit
+    </Button>
+  </Form>
+);
 ```
 
 #### Live example: <a href="https://availity.github.io/availity-react/storybook/?path=/story/formik-form--checkbox"> Storybook</a>

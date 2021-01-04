@@ -6,21 +6,28 @@ Input field wrapped in additional features such as label, feedback, grid options
 
 ### Example
 
-```jsx live=true viewCode=true
-<Form
-  initialValues={{
-    hello: '',
-  }}
-  onSubmit={values => alert(JSON.stringify(values))}
-  validationSchema={yup.object({
-    hello: yup.string().isRequired(true),
-  })}
->
-  <Field name="hello" label="Greeting" />
-  <Button type="submit" color="primary">
-    Submit
-  </Button>
-</Form>
+```jsx
+import React from 'react';
+import { Form, Field } from '@availity/form';
+import { Button } from 'reactstrap';
+import * as yup from 'yup';
+
+const Example = () => (
+  <Form
+    initialValues={{
+      hello: '',
+    }}
+    onSubmit={(values) => alert(JSON.stringify(values))}
+    validationSchema={yup.object({
+      hello: yup.string().isRequired(true),
+    })}
+  >
+    <Field name="hello" label="Greeting" />
+    <Button type="submit" color="primary">
+      Submit
+    </Button>
+  </Form>
+);
 ```
 
 #### Live example: <a href="https://availity.github.io/availity-react/storybook/?path=/story/formik-form--field"> Storybook</a>

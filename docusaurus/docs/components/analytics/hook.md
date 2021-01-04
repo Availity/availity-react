@@ -10,7 +10,7 @@ Hook giving you access to the instance of `@availity/analytics-core` for manuall
 import React from 'react';
 import { Button } from 'reactstrap';
 import { useAnalytics } from '@availity/analytics';
-const Component = () => {
+const Example = () => {
   const { trackEvent } = useAnalytics();
   return (
     <Button onClick={() => trackEvent({ url: '/test', data: 'some-data' })}>

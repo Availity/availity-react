@@ -14,7 +14,7 @@ Hook that allows you to "hook" into the favorites logic and create a custom comp
 import React, { useState } from 'react';
 import { useFavorites } from '@availity/favorites';
 
-const Component = () => {
+const Example = () => {
   const [isFavorite, toggleFavorite] = useFavorites('1234');
 
   return (

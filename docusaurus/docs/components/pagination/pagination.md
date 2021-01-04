@@ -9,17 +9,19 @@ This is the provider component needed for `@availity/pagination` components to w
 ```jsx
 import React from 'react';
 import Pagination from '@availity/pagination';
-// ...
-<Pagination itemsPerPage={25} items={this.state.items}>
-  <Pagination.Content component={Component} />
-</Pagination>;
+
+const Example = () => (
+  <Pagination itemsPerPage={25} items={this.state.items}>
+    <Pagination.Content component={Component} />
+  </Pagination>
+);
 ```
 
 #### Live example: <a href="https://availity.github.io/availity-react/storybook/?path=/story/components-pagination--default"> Storybook</a>
 
 ### Props
 
-#### `items? Array<Object> | (currentPage: number, itemsPerPage: number) => { items: Array<Object>, totalCount: number }`
+#### `items? object[] | (currentPage: number, itemsPerPage: number) => { items: object[], totalCount: number }`
 
 If Array, defaults `totalCount` to the length of the array, and page values are sliced from the Array. If a function, it is called with the current page as an argument and expects an array of items to be returned.
 
@@ -35,11 +37,11 @@ Optionally pass your own page in to make the pagination component controlled fro
 
 Function to call after the new page has been set when the user changes the page
 
-#### `watchList?: Array<any>`
+#### `watchList?: any[]`
 
 Array of data points that, when changed, causes the pagination to update. This is helpful when the `items` prop is a function and you want `items` to be called to get the most up-to-date list.
 
-#### `resetParams?: Array<any>`
+#### `resetParams?: any[]`
 
 Array of data points that, when changed, causes pagination to reset the current page to 1.
 

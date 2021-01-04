@@ -10,8 +10,16 @@ Note: Only works with OpenShift deployed applications using the standard pipelin
 
 ### Installation
 
+npm
+
 ```bash
 npm install @availity/feature axios --save
+```
+
+Yarn
+
+```bash
+yarn add @availity/feature axios
 ```
 
 ### Example
@@ -20,17 +28,19 @@ npm install @availity/feature axios --save
 import React from 'react';
 import Feature from '@availity/feature';
 
-<Feature
-  features={[
-    'AV-1234',
-    'AV-2345',
-    ['AV-3456', 'AV-4567'],
-    ['AV-5678', 'AV-6789'],
-  ]}
->
-  {/* stuff to render if the feature indicated 
+const Example = () => (
+  <Feature
+    features={[
+      'AV-1234',
+      'AV-2345',
+      ['AV-3456', 'AV-4567'],
+      ['AV-5678', 'AV-6789'],
+    ]}
+  >
+    {/* stuff to render if the feature indicated
       above is enabled in the environment */}
-</Feature>;
+  </Feature>
+);
 ```
 
 #### Live example: <a href="https://availity.github.io/availity-react/storybook/?path=/story/components-feature--default"> Storybook</a>
@@ -39,7 +49,7 @@ Component which validates the environment's features to determine if children co
 
 ### Props
 
-#### `features: string | Array<string | Array<string>>`
+#### `features: string | string[] | string[][]`
 
 Can either be a string, eg: `"AV-1234"` or an array containing feature ID strings as well as other arrays which contain feature ID strings, eg: `['AV-1234', 'AV-2345', ['AV-3456', 'AV-4567'], ['AV-5678', 'AV-6789']]`. The items in a nested array indicate feature IDs that must _all_ be enabled for a feature to be considered enabled (see `children`) - they act as "AND". The items in the top of the array act as "OR" - if _any_ are enabled, the feature is considered enabled. The example `['AV-1234', 'AV-2345', ['AV-3456', 'AV-4567'], ['AV-5678', 'AV-6789']]` is similar to `'AV-1234' OR 'AV-2345' OR ('AV-3456' && 'AV-4567') OR ('AV-5678' && 'AV-6789')`.
 
@@ -75,7 +85,7 @@ A promise that can be awaited and resolves to `true` or `false` indicating wheth
 
 #### Usage
 
-```javascript
+```js
 import { isFeatureEnabled } from '@availity/feature';
 
 async () => {

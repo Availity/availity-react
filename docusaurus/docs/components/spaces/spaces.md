@@ -18,15 +18,15 @@ Override the default slotmachine query
 
 Override the default variables used in the slotmachine query. Default: `{ types: ['space'] }`. If the spaces provider should contain spaces of a type other than `space`, you _must_ override this prop.
 
-#### `spaces?: Array<Object>`
+#### `spaces?: object[]`
 
 Array of spaces to be passed into the Spaces provider. Useful for if you already have the spaces in your app and don't want the spaces provider to have to fetch them again.
 
-#### `spaceIds?: Array<string>`
+#### `spaceIds?: string[]`
 
 Array of spaceIds the Spaces provider should fetch the spaces for. Any `spaceIds` already included in `spaces` will not be fetched again.
 
-#### `payerIds?: Array<string>`
+#### `payerIds?: string[]`
 
 Array of payerIds the Spaces provider should fetch the spaces for. Any `payerIds` already included in `spaces` will not be fetched again.
 

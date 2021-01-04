@@ -4,10 +4,11 @@ title: <Feedback /> ( Default Export )
 
 ### Example
 
-```jsx live=true viewCode=true
+```jsx
+import React from 'react';
 import Feedback from '@availity/feedback';
 
-<div className="w-100 d-flex flex-column justify-content-around align-items-start">
+const Example = () => (
   <Feedback
     appName="Payer Space"
     prompt="Please provide some feedback"
@@ -15,7 +16,7 @@ import Feedback from '@availity/feedback';
   >
     Provide Feedback
   </Feedback>
-</div>;
+);
 ```
 
 #### Live example: <a href="https://availity.github.io/availity-react/storybook/?path=/story/components-feedback--default"> Storybook</a>
