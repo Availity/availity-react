@@ -43,8 +43,13 @@ const ResourceSelect = ({
       ...rest.parameters,
       ...(additionalPostGetArgs || ''),
     };
-    _cacheUniq = watchParams.map((watchParam) => params[watchParam]).join(',');
+    _cacheUniq = watchParams.map((watchParam) => params[watchParam]);
   }
+
+  if (!Array.isArray(_cacheUniq)) {
+    _cacheUniq = [_cacheUniq];
+  }
+
   if (pageAll) {
     debounceTimeout = 0;
   }
