@@ -84,6 +84,12 @@ const Select = ({
 
   const [newOptions, setNewOptions] = useState([]);
 
+  let _cacheUniq = attributes.cacheUniq;
+
+  if (!Array.isArray(_cacheUniq)) {
+    _cacheUniq = [_cacheUniq];
+  }
+
   const getOptionLabel = (option) => {
     if (option.__isNew__) {
       return option.label;
@@ -296,6 +302,7 @@ const Select = ({
       components={components}
       options={selectOptions}
       defaultOptions={waitUntilFocused ? [] : true}
+      cacheUniqs={_cacheUniq}
       styles={{
         ...styles,
         placeholder: (provided, state) => {

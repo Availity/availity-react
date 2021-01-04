@@ -105,7 +105,7 @@ describe('utils', () => {
     it('renders correct options when min and max are strings', () => {
       const month = moment();
       const min = '01/01/1999';
-      const max = '12/31/2020';
+      const max = `12/31/${month.year()}`;
 
       const minMoment = moment(min, [
         'YYYY-MM-DD',
