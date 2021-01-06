@@ -41,7 +41,15 @@ const AvRegionSelect = ({ defaultToCurrentRegion, name, ...props }) => {
   }, [defaultRegion]);
 
   return (
-    <RegionSelect name={name} pageAll pageAllSearchBy={searchBy} {...props} />
+    <RegionSelect
+      name={name}
+      pageAll
+      pageAllSearchBy={searchBy}
+      getResult={(regions) =>
+        regions.map((region) => ({ id: region.id, value: region.value }))
+      }
+      {...props}
+    />
   );
 };
 
