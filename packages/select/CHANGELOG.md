@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.17.6](https://github.com/Availity/availity-react/compare/@availity/select@0.17.5...@availity/select@0.17.6) (2021-01-06)
+
+
+### Bug Fixes
+
+* **select:** add getResult function to AvRegionSelect ([9ae580d](https://github.com/Availity/availity-react/commit/9ae580db51b94b6cf717624a4eebb2e8de4ee882))
+
+
+
+
+
 ## 0.17.5 (2021-01-04)
 
 
