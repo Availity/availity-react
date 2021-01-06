@@ -1,4 +1,4 @@
-import React, { useRef, useEffect, useCallback } from 'react';
+import React, { useRef, useEffect, useCallback, useMemo } from 'react';
 import PropTypes from 'prop-types';
 import UploadCore from '@availity/upload-core';
 import { avFilesDeliveryApi } from '@availity/api-axios';
@@ -52,7 +52,9 @@ const Upload = ({
     metadata.touched && metadata.error && 'is-invalid'
   );
 
-  const fieldValue = Array.isArray(field.value) ? field.value : [];
+  const fieldValue = useMemo(() => {
+    return Array.isArray(field.value) ? field.value : [];
+  }, [field]);
 
   const callFileDelivery = useCallback(
     async (upload) => {
