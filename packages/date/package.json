@@ -28,7 +28,7 @@
     "react": "^17.0.1",
     "react-dom": "^17.0.1",
     "reactstrap": "^8.7.0",
-    "yup": "^0.29.3"
+    "yup": "^0.32.8"
   },
   "peerDependencies": {
     "@availity/form": "^0.1.0",
