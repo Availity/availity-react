@@ -30,7 +30,7 @@
     ]
   },
   "scripts": {
-    "format": "prettier --write 'packages/*/*.js' 'packages/*/!(node_modules)/**/*.js' '!(storybook|docs)/**/*.js'",
+    "format": "prettier --write 'packages/*/*.js' 'packages/*/!(node_modules)/**/*.js' '!(storybook|docusaurus)/**/*.js'",
     "lint": "eslint .",
     "lint-fix": "eslint . --fix",
     "nuke": "yarn remove-locks && yarn clean",

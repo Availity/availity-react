@@ -2,16 +2,12 @@
   "npmClient": "yarn",
   "useWorkspaces": true,
   "version": "independent",
-  "packages": [
-    "packages/*",
-    "docs",
-    "storybook",
-    "docusaurus"
-  ],
+  "packages": ["packages/*", "storybook", "docusaurus"],
   "message": "chore: publish release [skip ci]",
   "command": {
     "publish": {
       "conventionalCommits": true
     }
-  }
+  },
+  "ignoreChanges": ["**/*.test.js", "**/*.md", "**/*.mdx", "**/yarn.lock"]
 }
