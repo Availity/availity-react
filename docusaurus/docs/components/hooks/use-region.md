@@ -19,7 +19,7 @@ const Example = () => {
 
 ## Props
 
-### `options?: QueryConfig
+### `options?: QueryConfig`
 
 Options to be passed to the `useQuery` hook such as `enabled`, `retry`, and `onSuccess`.
 

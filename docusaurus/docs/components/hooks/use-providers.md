@@ -31,7 +31,7 @@ The Customer ID to retrieve the providers and other config options that can be p
 
 > More information about this config can be found [here](https://availity.github.io/sdk-js/api/getting-started/#config-1)
 
-### `options?: QueryConfig
+### `options?: QueryConfig`
 
 Options to be passed to the `useQuery` hook such as `enabled`, `retry`, and `onSuccess`.
 

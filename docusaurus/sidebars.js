@@ -39,7 +39,6 @@ module.exports = {
             ],
           },
           'components/feature',
-
           {
             type: 'category',
             label: 'Feedback',
@@ -49,11 +48,7 @@ module.exports = {
               'components/feedback/form',
             ],
           },
-          {
-            type: 'category',
-            label: 'Help',
-            items: ['components/help/index'],
-          },
+          'components/help',
           {
             type: 'category',
             label: 'Hooks',
