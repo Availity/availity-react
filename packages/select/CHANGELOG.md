@@ -3,6 +3,29 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.17.6](https://github.com/Availity/availity-react/compare/@availity/select@0.17.5...@availity/select@0.17.6) (2021-01-06)
+
+
+### Bug Fixes
+
+* **select:** add getResult function to AvRegionSelect ([9ae580d](https://github.com/Availity/availity-react/commit/9ae580db51b94b6cf717624a4eebb2e8de4ee882))
+
+
+
+
+
+## 0.17.5 (2021-01-04)
+
+
+### Bug Fixes
+
+* **select:** ensure cacheUniq is an array and rename to cacheUniqs ([0338c32](https://github.com/Availity/availity-react/commit/0338c322fed01c6a87aa07cfcb48d2913cfbafcf))
+* **select:** fixes error when cacheUniq isn't an array ([c3de0ce](https://github.com/Availity/availity-react/commit/c3de0ce6693221ca427919b244dd2ce01ab92181))
+
+
+
+
+
 ## [0.17.4](https://github.com/Availity/availity-react/compare/@availity/select@0.17.3...@availity/select@0.17.4) (2020-12-16)
 
 

@@ -23,7 +23,7 @@ const renderSelect = (props) => {
       >
         <ResourceSelect
           name="test-form-input"
-          cacheUniq={[cacheUniq]}
+          cacheUniq={cacheUniq}
           {...props}
         />
         <Button
@@ -585,7 +585,7 @@ const renderResourceSelect = (props) => {
       >
         <ResourceSelect
           name="test-form-input"
-          cacheUniq={[cacheUniq]}
+          cacheUniq={cacheUniq}
           parameters={({ q, limit, offset = 0, ...rest }) => ({
             q,
             limit,
@@ -700,7 +700,7 @@ const renderGQLResourceSelect = (props) => {
       >
         <ResourceSelect
           name="region-form-input"
-          cacheUniq={[cacheUniq]}
+          cacheUniq={cacheUniq}
           graphqlConfig={{
             type: 'region',
             query: `

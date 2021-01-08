@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## 3.0.1 (2021-01-06)
+
+
+### Bug Fixes
+
+* **hooks:** remove effect from dependency array in useMount ([a096fa4](https://github.com/Availity/availity-react/commit/a096fa45af7aaa40a09c87254aef0de864fa8ab6))
+
+
+
+
+
 # 3.0.0 (2020-12-23)
 
 

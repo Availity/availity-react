@@ -1,11 +1,13 @@
 .vscode/
-.yarn/
+.yarn
 
 docs/
-docusaurus/
 
+/**/.docusaurus
 /**/node_modules
 /**/build
+/**/dist
 
 # temporary to pass builds until TS errors fixed
 *.d.ts
+
