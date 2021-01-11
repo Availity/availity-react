@@ -5,7 +5,6 @@
 [build.environment]
   NODE_VERSION = "14"
 
-
 [[redirects]]
   from = "/availity-react" # docusaurus baseUrl
   to = "/"
