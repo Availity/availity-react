@@ -6,8 +6,8 @@
   NODE_VERSION = "14"
 
 [[redirects]]
-  from = "/availity-react" # docusaurus baseUrl
-  to = "/"
+  from = "/availity-react/*" # docusaurus baseUrl
+  to = "/:splat"
   force = true # ensure redirect
   status = 200 # changes redirect to rewrite, keeps baseUrl for docusaurus but serves / from netlify
 
