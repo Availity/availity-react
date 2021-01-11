@@ -144,7 +144,9 @@ Callback called when file is removed. The callback is provided two arguments. 1.
 
 The metadata properties that have been configured for the delivery channel you are trying to reach with `avFilesDeliveryApi`.
 
-##### Use this prop together with `deliveryChannel` and `deliverFileOnSubmit` to have uploads automatically sent to the file delivery API with the proper configuration, without the need to define a custom `onFileUpload` function.
+:::info
+Use this prop together with `deliveryChannel` and `deliverFileOnSubmit` to have uploads automatically sent to the file delivery API with the proper configuration, without the need to define a custom `onFileUpload` function.
+:::
 
 If you have a use case where some of your metadata is dependent on information from the upload, you can define `fileDeliveryMetadata` as a function that accepts an upload variable. The upload will be passed to your function before the file delivery API call, and you can assign any dynamic props that you need to before returning the metadata object. See [example File Delivery Metadata Function Usage below](###File-Delivery-Metadata-Function-Usage)
 
@@ -152,13 +154,17 @@ If you have a use case where some of your metadata is dependent on information f
 
 The name of the delivery channel that is unique to where you will deliver files via the `avFileDeliveryApi`.
 
-##### Use this prop together with `fileDeliveryMetadata` and `deliverFileOnSubmit` to have uploads automatically sent to the file delivery API with the proper configuration, without the need to define a custom `onFileUpload` function.
+:::info
+Use this prop together with `fileDeliveryMetadata` and `deliverFileOnSubmit` to have uploads automatically sent to the file delivery API with the proper configuration, without the need to define a custom `onFileUpload` function.
+:::
 
 #### `deliverFileOnSubmit?: boolean`
 
 This prop is used in tandem with `deliveryChannel` and `fileDeliveryMetadata` so that your files will only get delivered to `fileDeliveryApi` when the form is being submitted. **Default:** `false`
 
-##### Use this prop together with `fileDeliveryMetadata` and `deliveryChannel` to have uploads automatically sent to the file delivery API with the proper configuration, without the need to define a custom `onFileUpload` function.
+:::info
+Use this prop together with `fileDeliveryMetadata` and `deliveryChannel` to have uploads automatically sent to the file delivery API with the proper configuration, without the need to define a custom `onFileUpload` function.
+:::
 
 #### `maxSize?: number`
 
