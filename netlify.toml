@@ -9,3 +9,7 @@
   from = "/availity-react" # docusaurus baseUrl
   to = "/"
   force = true # ensure redirect
+  status = 200 # changes redirect to rewrite, keeps baseUrl for docusaurus but serves / from netlify
+
+[build.processing.html]
+  pretty_urls = false # https://v2.docusaurus.io/docs/deployment/#deploying-to-netlify
