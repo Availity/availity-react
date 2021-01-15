@@ -184,6 +184,24 @@ describe('FeedbackForm', () => {
     expect(getByText('This is about...')).toBeDefined();
   });
 
+  test('should render custom placeholder when provided', async () => {
+    const { getByText } = render(
+      <FeedbackForm
+        name="Test Space"
+        aboutOptions={[
+          { label: 'Payer 1', value: 'payer1' },
+          { label: 'Payer 2', value: 'payer2' },
+          { label: 'Payer 3', value: 'payer3' },
+          { label: 'Payer 4', value: 'payer4' },
+        ]}
+        customPlaceholder="Select payer..."
+      />
+    );
+
+    fireEvent.click(getByText('Meh face'));
+    expect(getByText('Select payer...')).toBeDefined();
+  });
+
   test('should render additional comments input', () => {
     const { getByText, getByPlaceholderText } = render(
       <FeedbackForm name="Payer Space" additionalComments />

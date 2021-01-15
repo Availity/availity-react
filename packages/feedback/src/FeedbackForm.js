@@ -32,6 +32,7 @@ const FeedbackForm = ({
   onClose,
   faceOptions,
   aboutOptions,
+  customPlaceholder,
   onFeedbackSent,
   prompt,
   additionalComments,
@@ -156,7 +157,7 @@ const FeedbackForm = ({
                   name="feedbackApp"
                   id="about-options"
                   data-testid="about-options"
-                  placeholder="This is about..."
+                  placeholder={customPlaceholder || 'This is about...'}
                   options={aboutOptions}
                 />
               )}
@@ -218,6 +219,7 @@ FeedbackForm.propTypes = {
       value: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
     })
   ),
+  customPlaceholder: PropTypes.string,
   onClose: PropTypes.func,
   prompt: PropTypes.string,
   additionalComments: PropTypes.bool,
