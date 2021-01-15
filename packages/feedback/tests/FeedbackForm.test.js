@@ -194,7 +194,7 @@ describe('FeedbackForm', () => {
           { label: 'Payer 3', value: 'payer3' },
           { label: 'Payer 4', value: 'payer4' },
         ]}
-        customPlaceholder="Select payer..."
+        aboutPlaceholder="Select payer..."
       />
     );
 
