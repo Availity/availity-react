@@ -3,6 +3,18 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# 5.5.0 (2021-01-19)
+
+
+### Features
+
+* **feedback:** add customPlaceholder prop for aboutOptions ([07d9926](https://github.com/Availity/availity-react/commit/07d992601967c6fb6e62617520dbc468fe759d64))
+* **feedback:** rename prop; update README and docs; small corrections ([51c7798](https://github.com/Availity/availity-react/commit/51c779846fdb8c311c8b8efaa603b6e49972650c))
+
+
+
+
+
 ## [5.4.24](https://github.com/Availity/availity-react/compare/@availity/feedback@5.4.23...@availity/feedback@5.4.24) (2021-01-06)
 
 **Note:** Version bump only for package @availity/feedback
