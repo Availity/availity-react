@@ -34,6 +34,10 @@ Array of Objects containing **`icon`** (String), **`description`** (String), and
 
 Array of Objects containing **`value`** (String,Number) and **`label`** (String) properties. Allows a dropdown displaying the options provided to let the user indicate what the feedback is about.
 
+#### `aboutPlaceholder?: node`
+
+Placeholder text for the dropdown created via the `aboutOptions` prop. **Default:** `"This is about..."`.
+
 #### `onClose?: () => void`
 
 When provided, a "Close" button is rendered and `onClose` is excuted when it's clicked.
