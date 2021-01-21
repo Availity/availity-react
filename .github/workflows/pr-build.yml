@@ -49,6 +49,7 @@ jobs:
           github-token: ${{ secrets.BOT_TOKEN }}
           netlify-auth-token: ${{ secrets.NETLIFY_DEPLOY_KEY }}
           netlify-site-id: ${{ secrets.NETLIFY_SITE_API_ID }}
+          config-path: './netlify.toml'
           build-dir: './docusaurus/build'
           draft: true
           comment-on-pull-request: true
