@@ -10,7 +10,7 @@ The controls for the pagination
 import React from 'react';
 import { PaginationControls } from '@availity/pagination';
 
-<PaginationControls directionLinks />;
+const Example = () => <PaginationControls directionLinks />;
 ```
 
 #### Live example: <a href="https://availity.github.io/availity-react/storybook/?path=/story/components-pagination--controls"> Storybook</a>

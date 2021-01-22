@@ -15,20 +15,27 @@ If you can't find what you are looking for on any of the left sub menus try out 
 
 For this example we'll use the [icon](/components/icon) component.
 
+npm
+
 ```bash
 npm install @availity/icon --save
 ```
 
-### Usage
+Yarn
+
+```bash
+yarn add @availity/icon
+```
+
+## Usage
 
 Import your component and you're good to go.
 
-```jsx live=true viewCode=true
+```jsx
+import React from 'react';
 import Icon from '@availity/icon';
 
-<div className="w-100 d-flex flex-row justify-content-around align-items-center">
-  <Icon name="home" size="3x" color="primary" />
-</div>;
+const Example = () => <Icon name="home" size="3x" color="primary" />;
 ```
 
 ## Supported Browsers

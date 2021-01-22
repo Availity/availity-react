@@ -10,9 +10,14 @@ Display the disclaimer for a given space id.
 import React from 'react';
 import Spaces, { SpacesDisclaimer } from '@availity/spaces';
 
-<Spaces spaceIds={['73162546201441126239486200007187']} clientId="my-client-id">
-  <SpacesDisclaimer markdown styled />
-</Spaces>;
+const Example = () => (
+  <Spaces
+    spaceIds={['73162546201441126239486200007187']}
+    clientId="my-client-id"
+  >
+    <SpacesDisclaimer markdown styled />
+  </Spaces>
+);
 ```
 
 #### Live example: <a href="https://availity.github.io/availity-react/storybook/?path=/story/components-spaces--disclaimer"> Storybook</a>

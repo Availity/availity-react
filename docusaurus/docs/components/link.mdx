@@ -4,22 +4,33 @@ title: Link
 
 Simple link component that renders an `<a>` tag with the `href` formatted to leverage loadApp so that when the link is opened in a new tab, it gets loaded inside the home page's iframe
 
+[![Version](https://img.shields.io/npm/v/@availity/link.svg?style=for-the-badge)](https://www.npmjs.com/package/@availity/link)
+
 ### Installation
+
+npm
 
 ```bash
 npm install @availity/link --save
 ```
 
+Yarn
+
+```bash
+yarn add @availity/link
+```
+
 ### Example
 
-```jsx live=true viewCode=true
+```jsx
+import React from 'react';
 import AvLink from '@availity/link';
 
-<div className="w-100 d-flex flex-row justify-content-around align-items-center">
+const Example = () => (
   <AvLink href="/public/apps/my-app" target="newBody">
     My Application
   </AvLink>
-</div>;
+);
 ```
 
 #### Live example: <a href="https://availity.github.io/availity-react/storybook/?path=/story/components-link--with-absolute-url"> Storybook</a>

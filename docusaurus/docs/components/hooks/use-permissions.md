@@ -10,7 +10,7 @@ Hook that returns user permissions.
 import React from 'react';
 import { usePermissions } from '@availity/hooks';
 
-const Component = () => {
+const Example = () => {
   const { data, isFetching } = usePermissions();
 
   return (
@@ -31,7 +31,7 @@ Config passed to the `getPermissions` call from `@availity/api-axios`.
 
 > More information about this config can be found [here](https://availity.github.io/sdk-js/api/getting-started/#config-1)
 
-### `options?: QueryConfig
+### `options?: QueryConfig`
 
 Options to be passed to the `useQuery` hook such as `enabled`, `retry`, and `onSuccess`.
 

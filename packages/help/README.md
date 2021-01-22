@@ -1,28 +1,41 @@
-# @availity/help
+---
+title: Help
+---
 
 > Context Provider to assist with Help Menu on Portal for specific pages
 > Field Help Icon to import and access field level support
 
 [![Version](https://img.shields.io/npm/v/@availity/favorites.svg?style=for-the-badge)](https://www.npmjs.com/package/@availity/help)
 
-
 ## Installation
+
+npm
 
 ```bash
 npm install @availity/help --save
 ```
 
+Yarn
+
+```bash
+yarn add @availity/help
+```
+
 ## Page Level Help Example
 
-```jsx viewCode=true
+```jsx
+import React from 'react';
 import HelpProvider, { Help } from '@availity/help';
 
-<HelpProvider>
-  <Help type="provider" id="1234-5678-9101-1213">
-    Some Content You May need documentation for.
-  </Help>
-</HelpProvider>;
+const Example = () => (
+  <HelpProvider>
+    <Help type="provider" id="1234-5678-9101-1213">
+      Some Content You May need documentation for.
+    </Help>
+  </HelpProvider>
+);
 ```
+
 ## Page Level Help Props
 
 ### `id: string`
@@ -33,14 +46,17 @@ The page level help ID **Required**
 
 The page level help type: ie.: provider | vendor | payer | insight. **Required**
 
-
 ## Field Level Help Icon Example
 
-```jsx viewCode=true
+```jsx
+import React from 'react';
 import { FieldHelpIcon } from '@availity/help';
-<div>
-  Select A Provider <FieldHelpIcon id="1234-5678-910" />
-</div>;
+
+const Example = () => (
+  <div>
+    Select A Provider <FieldHelpIcon id="1234-5678-910" />
+  </div>
+);
 ```
 
 ## Field Help Props

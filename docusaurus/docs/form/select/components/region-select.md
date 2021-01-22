@@ -6,27 +6,30 @@ A select list that automatically loads and pages through regions when the user s
 
 ### Example
 
-```jsx live=true viewCode=true
+```jsx
+import React from 'react';
 import { Form } from '@availity/form';
 import { AvRegionSelect } from '@availity/select/resources';
+import { Button } from 'reactstrap';
 import * as yup from 'yup';
 import '@availity/yup';
 
-<Form
-  initialValues={{
-    region: '',
-  }}
-  onSubmit={values => apiResource.submit(values)}
-  validationSchema={yup.object().shape({
-    region: yup.string().isRequired('This field is required.'),
-  })}
->
-  <AvRegionSelect id="region" name="region" defaultToCurrentRegion />
-
-  <Button color="primary" type="submit">
-    Submit
-  </Button>
-</Form>;
+const Example = () => (
+  <Form
+    initialValues={{
+      region: '',
+    }}
+    onSubmit={(values) => apiResource.submit(values)}
+    validationSchema={yup.object().shape({
+      region: yup.string().isRequired('This field is required.'),
+    })}
+  >
+    <AvRegionSelect id="region" name="region" defaultToCurrentRegion />
+    <Button color="primary" type="submit">
+      Submit
+    </Button>
+  </Form>
+);
 ```
 
 #### Live example: <a href="https://availity.github.io/availity-react/storybook/?path=/story/components-avselect-resources--avregionselect"> Storybook</a>

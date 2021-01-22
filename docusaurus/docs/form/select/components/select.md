@@ -6,37 +6,40 @@ Select dropdown without a Label or Feedback
 
 ### Example
 
-```jsx live=true viewCode=true
+```jsx
+import React from 'react';
 import { Form } from '@availity/form';
 import Select, { SelectField } from '@availity/select';
 import { Button } from 'reactstrap';
 import * as yup from 'yup';
 import '@availity/yup';
 
-<Form
-  initialValues={{
-    justTheInput: undefined,
-  }}
-  onSubmit={(values) => window.alert(JSON.stringify(values))}
-  validationSchema={yup.object().shape({
-    justTheInput: yup.string().required('This field is required.'),
-  })}
->
-  <Select
-    id="justTheInput"
-    name="justTheInput"
-    isMulti={false}
-    options={[
-      { label: 'Option 1', value: 1 },
-      { label: 'Option 2', value: 2 },
-      { label: 'Option 3', value: 3 },
-    ]}
-  />
+const Example = () => (
+  <Form
+    initialValues={{
+      justTheInput: undefined,
+    }}
+    onSubmit={(values) => window.alert(JSON.stringify(values))}
+    validationSchema={yup.object().shape({
+      justTheInput: yup.string().required('This field is required.'),
+    })}
+  >
+    <Select
+      id="justTheInput"
+      name="justTheInput"
+      isMulti={false}
+      options={[
+        { label: 'Option 1', value: 1 },
+        { label: 'Option 2', value: 2 },
+        { label: 'Option 3', value: 3 },
+      ]}
+    />
 
-  <Button className="mt-3" color="primary" type="submit">
-    Submit
-  </Button>
-</Form>;
+    <Button className="mt-3" color="primary" type="submit">
+      Submit
+    </Button>
+  </Form>
+);
 ```
 
 #### Live example: <a href="https://availity.github.io/availity-react/storybook/?path=/story/formik-select--default"> Storybook</a>
@@ -49,11 +52,11 @@ See [react-select](https://github.com/JedWatson/react-select) and [react-select-
 
 The name of the field. Will be the key of the selected option(s) that come through in the values of the `onSubmit` callback of the form.
 
-### `options: Array<object> = []`
+### `options: object[]`
 
 Array of options that populate the select menu. Grouped options are also supported, but must include the property `type: 'group'`.
 
-```
+```js
 const groupedOptions = [
   {
     label: 'options',

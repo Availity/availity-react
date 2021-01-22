@@ -6,43 +6,44 @@ Availity Phone component using Formik and Yup
 
 ### Example
 
-```jsx live=true viewCode=true
+```jsx
+import React from 'react';
 import { Form } from '@availity/form';
 import { Phone, validatePhone } from '@availity/phone';
 import { Button } from 'reactstrap';
+import * as yup from 'yup';
 
-<Form
-  initialValues={{
-    phone: '',
-    ext: '',
-  }}
-  onSubmit={values => alert(JSON.stringify(values))}
-  validationSchema={yup.object({
-    phone: yup
-      .string()
-      .validatePhone()
-      .isRequired(true),
-    ext: yup.string(),
-  })}
->
-  <Phone
-    name="phone"
-    label="Phone"
-    country="US"
-    showExtension={true}
-    phoneColProps={{ xs: { size: 9 } }}
-    extProps={{
-      name: 'ext',
-      label: 'Ext.',
-      extColProps: {
-        xs: { size: 3 },
-      },
+const Example = () => (
+  <Form
+    initialValues={{
+      phone: '',
+      ext: '',
     }}
-  />
-  <Button type="submit" color="primary">
-    Submit
-  </Button>
-</Form>;
+    onSubmit={(values) => alert(JSON.stringify(values))}
+    validationSchema={yup.object({
+      phone: yup.string().validatePhone().isRequired(true),
+      ext: yup.string(),
+    })}
+  >
+    <Phone
+      name="phone"
+      label="Phone"
+      country="US"
+      showExtension={true}
+      phoneColProps={{ xs: { size: 9 } }}
+      extProps={{
+        name: 'ext',
+        label: 'Ext.',
+        extColProps: {
+          xs: { size: 3 },
+        },
+      }}
+    />
+    <Button type="submit" color="primary">
+      Submit
+    </Button>
+  </Form>
+);
 ```
 
 #### Live example: <a href="https://availity.github.io/availity-react/storybook/?path=/story/formik-phone--default"> Storybook</a>

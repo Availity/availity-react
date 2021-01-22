@@ -6,37 +6,39 @@ The same as `Select` but with a `Label` that appears above the input and a `Feed
 
 ### Example
 
-```jsx live=true viewCode=true
+```jsx
+import React from 'react';
 import { Form } from '@availity/form';
 import { SelectField } from '@availity/select';
 import { Button } from 'reactstrap';
 import * as yup from 'yup';
 import '@availity/yup';
 
-<Form
-  initialValues={{
-    justTheInput: undefined,
-  }}
-  onSubmit={values => window.alert(JSON.stringify(values))}
-  validationSchema={yup.object().shape({
-    justTheInput: yup.string().required('This field is required.'),
-  })}
->
-  <SelectField
-    label="Just The Input"
-    name="justTheInput"
-    isMulti={false}
-    options={[
-      { label: 'Option 1', value: 1 },
-      { label: 'Option 2', value: 2 },
-      { label: 'Option 3', value: 3 },
-    ]}
-  />
-
-  <Button className="mt-3" color="primary" type="submit">
-    Submit
-  </Button>
-</Form>;
+const Example = () => (
+  <Form
+    initialValues={{
+      justTheInput: undefined,
+    }}
+    onSubmit={(values) => window.alert(JSON.stringify(values))}
+    validationSchema={yup.object().shape({
+      justTheInput: yup.string().required('This field is required.'),
+    })}
+  >
+    <SelectField
+      label="Just The Input"
+      name="justTheInput"
+      isMulti={false}
+      options={[
+        { label: 'Option 1', value: 1 },
+        { label: 'Option 2', value: 2 },
+        { label: 'Option 3', value: 3 },
+      ]}
+    />
+    <Button className="mt-3" color="primary" type="submit">
+      Submit
+    </Button>
+  </Form>
+);
 ```
 
 #### Live example: <a href="https://availity.github.io/availity-react/storybook/?path=/story/formik-select--selectfield"> Storybook</a>

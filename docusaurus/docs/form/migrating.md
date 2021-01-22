@@ -8,7 +8,7 @@ The primary difference in developing with `availity-reactstrap-validation` and `
 import React from 'react';
 import { AvInput, AvForm } from 'availity-reactstrap-validation';
 
-const MyComponent = () => {
+const Example = () => {
   return (
     <AvForm>
       <AvInput
@@ -32,7 +32,7 @@ Note: `availity-reactstrap-validation` also has a `required` prop that acts as a
 import React from 'react';
 import { AvInput, AvForm } from 'availity-reactstrap-validation';
 
-const MyComponent = () => {
+const Example = () => {
   return (
     <AvForm>
       <AvInput name="myInput" type="text" required />
@@ -49,7 +49,7 @@ import { Input, Form } from '@availity/form';
 import * as yup from 'yup';
 import '@availity/yup';
 
-const MyComponent = () => {
+const Example = () => {
   return (
     <Form
       initialValues={{ myInput: '' }}
@@ -71,7 +71,7 @@ Another key difference is we define the initial state of the inputs in the form 
 import React from 'react';
 import { AvField, AvForm } from 'availity-reactstrap-validation';
 
-const MyComponent = () => {
+const Example = () => {
   return (
     <AvForm onValidSubmit={() => {}}>
       <AvField
@@ -117,7 +117,7 @@ import { Field, Form } from '@availity/form';
 import '@availity/yup';
 import * as yup from 'yup';
 
-const MyComponent = () => {
+const Example = () => {
   return (
     <Form
       onSubmit={() => {}}

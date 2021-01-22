@@ -7,11 +7,17 @@ Display the ghost text for a given space. Renders `null` if the ghost text shoul
 ### Example
 
 ```jsx
+import React from 'react';
 import Spaces, { SpacesGhostText } from '@availity/spaces';
 
-<Spaces spaceIds={['73162546201441126239486200007187']} clientId="my-client-id">
-  <SpacesGhostText />
-</Spaces>;
+const Example = () => (
+  <Spaces
+    spaceIds={['73162546201441126239486200007187']}
+    clientId="my-client-id"
+  >
+    <SpacesGhostText />
+  </Spaces>
+);
 ```
 
 #### Live example: <a href="https://availity.github.io/availity-react/storybook/?path=/story/components-spaces--ghost-text"> Storybook</a>

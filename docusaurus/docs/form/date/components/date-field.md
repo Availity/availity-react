@@ -6,18 +6,19 @@ The same as `FormikDate` but with a `Label` that appears above input and a `Feed
 
 ### Example
 
-```jsx live=true viewCode=true
+```jsx
+import React from 'react';
 import { Form } from '@availity/form';
 import FormikDate from '@availity/date';
 import { avDate } from '@availity/yup';
 import * as yup from 'yup';
 
-<div className="w-100 d-flex flex-row justify-content-around align-items-center">
+const Example = () => (
   <Form
     initialValues={{
       dateOfService: '',
     }}
-    onSubmit={values => console.log(values)}
+    onSubmit={(values) => console.log(values)}
     validationSchema={yup.object().shape({
       dateOfService: avDate().required(),
     })}
@@ -33,7 +34,7 @@ import * as yup from 'yup';
       Submit
     </Button>
   </Form>
-</div>;
+);
 ```
 
 #### Live example: <a href="https://availity.github.io/availity-react/storybook/?path=/story/formik-date--datefield"> Storybook</a>

@@ -10,9 +10,14 @@ Display the agreement for a given space id.
 import React from 'react';
 import Spaces, { SpacesAgreement } from '@availity/spaces';
 
-<Spaces spaceIds={['73162546201441126239486200007187']} clientId="my-client-id">
-  <SpacesAgreement markdown />
-</Spaces>;
+const Example = () => (
+  <Spaces
+    spaceIds={['73162546201441126239486200007187']}
+    clientId="my-client-id"
+  >
+    <SpacesAgreement markdown />
+  </Spaces>
+);
 ```
 
 #### Live example: <a href="https://availity.github.io/availity-react/storybook/?path=/story/components-spaces--agreement"> Storybook</a>

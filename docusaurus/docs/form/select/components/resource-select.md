@@ -6,34 +6,37 @@ A select list that automatically loads and pages through a resource when the use
 
 ### Example
 
-```jsx live=true viewCode=true
+```jsx
+import React from 'react';
 import { Form } from '@availity/form';
 import { ResourceSelect } from '@availity/select';
+import { Button } from 'reactstrap';
 import * as yup from 'yup';
 import '@availity/yup';
 
-<Form
-  initialValues={{
-    resourceSelect: '',
-  }}
-  onSubmit={values => apiResource.submit(values)}
-  validationSchema={yup.object().shape({
-    resourceSelect: yup.string().required('This field is required.'),
-  })}
->
-  <ResourceSelect
-    id="resourceSelect"
-    name="resourceSelect"
-    labelKey="name"
-    label="Resource Select"
-    resource={avCustomResource}
-    isMulti={false}
-  />
-
-  <Button color="primary" type="submit">
-    Submit
-  </Button>
-</Form>;
+const Example = () => (
+  <Form
+    initialValues={{
+      resourceSelect: '',
+    }}
+    onSubmit={(values) => apiResource.submit(values)}
+    validationSchema={yup.object().shape({
+      resourceSelect: yup.string().required('This field is required.'),
+    })}
+  >
+    <ResourceSelect
+      id="resourceSelect"
+      name="resourceSelect"
+      labelKey="name"
+      label="Resource Select"
+      resource={avCustomResource}
+      isMulti={false}
+    />
+    <Button color="primary" type="submit">
+      Submit
+    </Button>
+  </Form>
+);
 ```
 
 #### Live example: <a href="https://availity.github.io/availity-react/storybook/?path=/story/formik-select--resourceselect"> Storybook</a>
@@ -62,7 +65,7 @@ Override method to use `post` request on REST calls with `graphqlConfig`.
 
 The value of the customer ID, which is sent in the parameters. Useful for restricting the loaded options to be related to the organization the user has in context.
 
-#### `requiredParams?: Array<string>`
+#### `requiredParams?: string[]`
 
 If present, the network request is not made until all of the required parameters specified in the array have a truthy value.
 
@@ -70,7 +73,7 @@ If present, the network request is not made until all of the required parameters
 
 When this prop changes, all cached options are cleared. (see [react-select-async-paginate](https://github.com/vtaits/react-select-async-paginate#cacheuniq))
 
-#### `watchParams?: Array<string>`
+#### `watchParams?: string[]`
 
 If present, the options reset when any of the parameters specified in the array change value. This is useful for when a customerId changes and you need to load a new list of options for the user to choose from. Used to derive `cacheUniq` if `cacheUniq` prop is not provided.
 
@@ -78,7 +81,7 @@ If present, the options reset when any of the parameters specified in the array 
 
 Availity API resource (see [@availity/api-core](https://github.com/Availity/sdk-js/tree/master/packages/api-core) and [@availity/api-axios](https://github.com/Availity/sdk-js/tree/master/packages/api-axios)).
 
-#### `getResult?: (data: object) => Array<object>`
+#### `getResult?: (data: object) => object[]`
 
 When a function, the function is called with the response body from the API call and is expected to return an array. When a string, the string is expected to be a simple key used to get the value from the response. ("simple" means dot notation is not supported for grabbing values from nested objects. If your result is deeply nested, provide a function.)
 
@@ -192,6 +195,7 @@ import {
   AvUserSelect,
   AvCodeSelect,
 } from '@availity/select/resources';
+import * as yup from 'yup';
 
 const schema = yup.object().shape({
   provider: yup.string().required('This field is required.'),
@@ -204,49 +208,50 @@ const schema = yup.object().shape({
   patient: yup.string().required('This field is required.'),
 });
 
-// ...
-<Form
-  initialValues={{
-    provider: null,
-    organization: null,
-    region: null,
-    permissions: null,
-    payerSpace: null,
-    user: null,
-    code: null,
-    patient: null,
-  }}
-  onSubmit={values => apiResource.submit(values)}
-  validationSchema={schema}
->
-  <AvProviderSelect
-    name="provider"
-    customerId="1234"
-    requiredParams={['customerId']}
-    watchParams={['customerId']}
-    label="Select a provider"
-    customerId={customerId}
-    required
-  />
-  <AvOrganizationSelect
-    name="organization"
-    label="Select a Organization"
-    required
-  />
-  <AvPermissionSelect
-    name="permissions"
-    label="Select a provider"
-    customerId={customerId}
-    isMulti
-    required
-  />
-  <AvNavigationSelect
-    name="payerSpace"
-    label="Select a Payer Space"
-    customerId={customerId}
-    required
-  />
-  <AvUserSelect name="user" label="Select a User" customerId={customerId} />
-  <AvCodeSelect name="code" label="Select a Code" />
-</Form>;
+const Example = () => (
+  <Form
+    initialValues={{
+      provider: null,
+      organization: null,
+      region: null,
+      permissions: null,
+      payerSpace: null,
+      user: null,
+      code: null,
+      patient: null,
+    }}
+    onSubmit={(values) => apiResource.submit(values)}
+    validationSchema={schema}
+  >
+    <AvProviderSelect
+      name="provider"
+      customerId="1234"
+      requiredParams={['customerId']}
+      watchParams={['customerId']}
+      label="Select a provider"
+      customerId={customerId}
+      required
+    />
+    <AvOrganizationSelect
+      name="organization"
+      label="Select a Organization"
+      required
+    />
+    <AvPermissionSelect
+      name="permissions"
+      label="Select a provider"
+      customerId={customerId}
+      isMulti
+      required
+    />
+    <AvNavigationSelect
+      name="payerSpace"
+      label="Select a Payer Space"
+      customerId={customerId}
+      required
+    />
+    <AvUserSelect name="user" label="Select a User" customerId={customerId} />
+    <AvCodeSelect name="code" label="Select a Code" />
+  </Form>
+);
 ```

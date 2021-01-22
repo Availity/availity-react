@@ -9,7 +9,7 @@ If you are using a class component, you can subscribe to the pagination by using
 ```jsx
 import React from 'react';
 import { PaginationContext } from '@availity/pagination';
-// ...
+
 class PageSetter extends React.Component {
   render() {
     const { page, setPage } = this.context;

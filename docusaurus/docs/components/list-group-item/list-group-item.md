@@ -6,11 +6,12 @@ Availity's ListGroup, which can feature Cards and Selectable items
 
 ### Example
 
-```jsx live=true viewCode=true
+```jsx
+import React from 'react';
 import ListGroup from '@availity/list-group';
 import ListGroupItem from '@availity/list-group-item';
 
-<div className="w-100 d-flex flex-row justify-content-around align-items-center">
+const Example = () => (
   <ListGroup cards>
     <ListGroupItem borderColor="primary" color="primary">
       Item 1
@@ -22,7 +23,7 @@ import ListGroupItem from '@availity/list-group-item';
       Item 3
     </ListGroupItem>
   </ListGroup>
-</div>;
+);
 ```
 
 #### Live example: <a href="https://availity.github.io/availity-react/storybook/?path=/story/components-list-group-item--default"> Storybook</a>

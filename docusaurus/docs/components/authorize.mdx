@@ -8,8 +8,16 @@ Check user permissions to see if the current user is authorized to see your cont
 
 ### Installation
 
+npm
+
 ```bash
 npm install @availity/authorize @availity/api-axios @availity/api-core axios --save
+```
+
+Yarn
+
+```bash
+yarn add @availity/authorize @availity/api-axios @availity/api-core axios
 ```
 
 ### Example
@@ -18,9 +26,11 @@ npm install @availity/authorize @availity/api-axios @availity/api-core axios --s
 import React from 'react';
 import Authorize from '@availity/authorize';
 
-<Authorize permissions="1234">
-  {/* stuff to render if the user is authorized with permission indicated above */}
-</Authorize>;
+const Example = () => (
+  <Authorize permissions="1234">
+    {/* stuff to render if the user is authorized with permission indicated above */}
+  </Authorize>
+);
 ```
 
 #### Live example: <a href="https://availity.github.io/availity-react/storybook/?path=/story/components-authorize--default"> Storybook</a>
@@ -93,15 +103,14 @@ Returns `[authorized, loading, currentRegion]`
 ```jsx
 import React from 'react';
 import { useAuthorize } from '@availity/authorize';
-// ...
-export default () => {
+
+const Component () => {
   const [authorized, loading] = useAuthorized(['1234', '5678'], {
     region: 'FL',
   });
 
   return authorized && <SomeAuthorizedComponent />;
 };
-// ...
 ```
 
 #### Live example: <a href="https://availity.github.io/availity-react/storybook/?path=/story/components-authorize--useAuthorize"> Storybook</a>

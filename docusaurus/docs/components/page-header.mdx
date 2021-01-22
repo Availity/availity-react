@@ -4,6 +4,8 @@ title: Page Header
 
 The standard Availity application header that appears at the top of the page. It can include an app icon, payer logo, and/or the feedback loop.
 
+[![Version](https://img.shields.io/npm/v/@availity/page-header.svg?style=for-the-badge)](https://www.npmjs.com/package/@availity/page-header)
+
 ### Installation
 
 ```bash
@@ -12,11 +14,13 @@ npx install-peerdeps @availity/page-header --save
 
 ### Example
 
-```jsx live=true viewCode=true
+```jsx
+import React from 'react';
 import PageHeader from '@availity/page-header';
-<div className="w-100 d-flex flex-column justify-content-around align-items-start">
+
+const Example = () => (
   <PageHeader appName="Payer Space" appAbbr="PS" iconColor="blue" feedback />
-</div>;
+);
 ```
 
 #### Live example: <a href="https://availity.github.io/availity-react/storybook/?path=/story/components-header--default"> Storybook</a>
@@ -71,7 +75,7 @@ See [Feedback](/components/feedback/feedback/#props). Props to send to `<Feedbac
 
 This value appears at the `h1` of the page. Overrides the `appName` to allow for custom elements (such as a "beta" tag). **Default:** `${appName}`.
 
-#### `crumbs?: Array<Object> | ReactNode`
+#### `crumbs?: object[] | ReactNode`
 
 Array of Objects containing `name` (String) and `url` (String) properties. The ancestor pages which get passed to the `Breadcrumbs` component. See [Breadcrumbs](/components/breadcrumbs/#crumbs-arrayobject)
 

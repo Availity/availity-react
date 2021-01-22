@@ -10,7 +10,7 @@ The raw progress bar to be used when making your own.
 import React from 'react';
 import { UploadProgressBar } from '@availity/upload';
 
-<UploadProgressBar upload={uploadInstance} animated />;
+const Example = () => <UploadProgressBar upload={uploadInstance} animated />;
 ```
 
 #### Live example: <a href="https://availity.github.io/availity-react/storybook/?path=/story/components-upload--progress-bar"> Storybook</a>

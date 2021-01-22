@@ -10,7 +10,7 @@ Hook that returns providers.
 import React from 'react';
 import { useProviders } from '@availity/hooks';
 
-const Component = () => {
+const Example = () => {
   const { data, isFetching } = useProviders({ customerId: 01234 });
 
   return (
@@ -31,7 +31,7 @@ The Customer ID to retrieve the providers and other config options that can be p
 
 > More information about this config can be found [here](https://availity.github.io/sdk-js/api/getting-started/#config-1)
 
-### `options?: QueryConfig
+### `options?: QueryConfig`
 
 Options to be passed to the `useQuery` hook such as `enabled`, `retry`, and `onSuccess`.
 

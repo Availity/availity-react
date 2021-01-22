@@ -6,14 +6,16 @@ The same as `DateRange` but with a `Label` that appears above the input and a `F
 
 ### Example
 
-```jsx live=true viewCode=true
+```jsx
+import React from 'react';
 import { Form } from '@availity/form';
 import { DateRange } from '@availity/date';
+import { Button } from 'reactstrap';
 import { dateRange } from '@availity/yup';
 import moment from 'moment';
 import * as yup from 'yup';
 
-<div className="w-100 d-flex flex-row justify-content-around align-items-center">
+const Example = () => (
   <Form
     initialValues={{
       dateOfService: {
@@ -21,16 +23,12 @@ import * as yup from 'yup';
         endDate: moment().format('YYYY-MM-DD'),
       },
     }}
-    onSubmit={values => console.log(values)}
+    onSubmit={(values) => console.log(values)}
     validationSchema={yup.object().shape({
       dateOfService: dateRange(
         {
-          min: moment()
-            .subtract(7, 'day')
-            .format('MM/DD/YYYY'),
-          max: moment()
-            .add(7, 'day')
-            .format('MM/DD/YYYY'),
+          min: moment().subtract(7, 'day').format('MM/DD/YYYY'),
+          max: moment().add(7, 'day').format('MM/DD/YYYY'),
           format: 'MM/DD/YYYY',
         },
         `Date must be between ${moment()
@@ -54,7 +52,7 @@ import * as yup from 'yup';
       Submit
     </Button>
   </Form>
-</div>;
+);
 ```
 
 #### Live example: <a href="https://availity.github.io/availity-react/storybook/?path=/story/formik-date--daterangefield"> Storybook</a>

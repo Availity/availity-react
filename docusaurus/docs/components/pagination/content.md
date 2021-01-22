@@ -10,11 +10,13 @@ This is the container of all the items rendered to the DOM when the `Pagination`
 import React from 'react';
 import { PaginationContent } from '@availity/pagination';
 
-<PaginationContent
-  loadingMessage="loading"
-  component={Component}
-  itemKey="id"
-/>;
+const Example = () => (
+  <PaginationContent
+    loadingMessage="loading"
+    component={Component}
+    itemKey="id"
+  />
+);
 ```
 
 ### Props

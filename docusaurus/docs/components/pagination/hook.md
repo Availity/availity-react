@@ -9,7 +9,7 @@ This is a custom hook for grabbing any Pagination Data you may need from the `Pa
 ```jsx
 import React from 'react';
 import { usePagination } from '@availity/pagination';
-// ...
+
 const PageSetter = () => {
   const { page, setPage } = usePagination();
 

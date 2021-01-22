@@ -6,11 +6,12 @@ summary: ListGroupItem with an optional status badge and colors for the card and
 
 ### Example
 
-```jsx live=true viewCode=true
+```jsx
+import React from 'react';
 import ListGroup from '@availity/list-group';
 import { ListGroupItemStatus } from '@availity/list-group-item';
 
-<div className="w-100 d-flex flex-row justify-content-around align-items-center">
+const Example = () => (
   <ListGroup cards>
     <ListGroupItemStatus
       titleContent="Hello World"
@@ -24,7 +25,7 @@ import { ListGroupItemStatus } from '@availity/list-group-item';
     </ListGroupItemStatus>
     <ListGroupItemStatus color="success">Item 3</ListGroupItemStatus>
   </ListGroup>
-</div>;
+);
 ```
 
 #### Live example: <a href="https://availity.github.io/availity-react/storybook/?path=/story/components-list-group-item--status"> Storybook</a>

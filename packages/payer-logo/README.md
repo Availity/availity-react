@@ -14,13 +14,24 @@ npx install-peerdeps @availity/payer-logo --save
 
 ### Usage
 
-```javascript
+```jsx
 import React from 'react';
 import PayerLogo from '@availity/payer-logo';
-// ...
-<PayerLogo spaceId="73162546201441126239486200007187" clientId="my-client-id" alt="The word 'Payer' in green" />
-<PayerLogo payerId="PayerID" clientId="my-client-id" alt="The word 'Payer' in green" />
-// ...
+
+const Example = () => (
+  <>
+    <PayerLogo
+      spaceId="73162546201441126239486200007187"
+      clientId="my-client-id"
+      alt="The word 'Payer' in green"
+    />
+    <PayerLogo
+      payerId="PayerID"
+      clientId="my-client-id"
+      alt="The word 'Payer' in green"
+    />
+  </>
+);
 ```
 
 #### PayerLogo (Default export)

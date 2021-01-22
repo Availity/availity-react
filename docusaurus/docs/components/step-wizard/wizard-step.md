@@ -1,25 +1,27 @@
 ---
-title: <WizardStep />
+title: WizardStep
 ---
 
 A step in the `<Wizard />`
 
 ### Example
 
-```jsx live=true viewCode=true
+```jsx
 import Wizard, { WizardStep, WizardStepTitle } from '@availity/step-wizard';
 
-<Wizard bar>
-  <WizardStep active href="#step-1">
-    <WizardStepBadge>1</WizardStepBadge>
-    <WizardStepTitle>First</WizardStepTitle>
-  </WizardStep>
+const Example = () => (
+  <Wizard bar>
+    <WizardStep active href="#step-1">
+      <WizardStepBadge>1</WizardStepBadge>
+      <WizardStepTitle>First</WizardStepTitle>
+    </WizardStep>
 
-  <WizardStep disabled href="#step-2">
-    <WizardStepBadge>2</WizardStepBadge>
-    <WizardStepTitle>Second with some long text</WizardStepTitle>
-  </WizardStep>
-</Wizard>;
+    <WizardStep disabled href="#step-2">
+      <WizardStepBadge>2</WizardStepBadge>
+      <WizardStepTitle>Second with some long text</WizardStepTitle>
+    </WizardStep>
+  </Wizard>
+);
 ```
 
 #### Live example: <a href="https://availity.github.io/availity-react/storybook/?path=/story/components-stepwizard--default"> Storybook</a>

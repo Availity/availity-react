@@ -10,7 +10,7 @@ Hook that returns the current user.
 import React from 'react';
 import { useCurrentUser } from '@availity/hooks';
 
-const Component = () => {
+const Example = () => {
   const { data: user, isFetching } = useCurrentUser();
 
   return <div>{isFetching ? 'Loading...' : user?.id}</div>;
@@ -19,7 +19,7 @@ const Component = () => {
 
 ## Props
 
-### `options?: QueryConfig
+### `options?: QueryConfig`
 
 Options to be passed to the `useQuery` hook such as `enabled`, `retry`, and `onSuccess`.
 
