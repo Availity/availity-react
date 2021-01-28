@@ -132,7 +132,7 @@ Restrict the file types allowed to be uploaded to. eg: `['.jpeg', '.jpg']`.
 
 #### `onFileUpload?: (upload: UploadCore) => void`
 
-Callback to be executed when file is uploaded. The callback is provided the `Upload` instance from upload-core SDK. Use this callback to hook into the `upload.onSuccess` and `upload.onError` events and track which files have been uploaded and get references returned by the API if needed. See [example callback function below](###Callback-Function-Usage)
+Callback to be executed when file is uploaded. The callback is provided the `Upload` instance from upload-core SDK. Use this callback to hook into the `upload.onSuccess` and `upload.onError` events and track which files have been uploaded and get references returned by the API if needed. See [example callback function above](###Callback-Function-Example)
 
 > The `onFileUpload` callback takes precedence over the combination of `fileDeliveryMetadata`, `deliveryChannel`, and `deliverFileSubmit`. If all four properties are defined, only `onFileUpload` will be used.
 
@@ -148,7 +148,7 @@ The metadata properties that have been configured for the delivery channel you a
 Use this prop together with `deliveryChannel` and `deliverFileOnSubmit` to have uploads automatically sent to the file delivery API with the proper configuration, without the need to define a custom `onFileUpload` function.
 :::
 
-If you have a use case where some of your metadata is dependent on information from the upload, you can define `fileDeliveryMetadata` as a function that accepts an upload variable. The upload will be passed to your function before the file delivery API call, and you can assign any dynamic props that you need to before returning the metadata object. See [example File Delivery Metadata Function Usage below](###File-Delivery-Metadata-Function-Usage)
+If you have a use case where some of your metadata is dependent on information from the upload, you can define `fileDeliveryMetadata` as a function that accepts an upload variable. The upload will be passed to your function before the file delivery API call, and you can assign any dynamic props that you need to before returning the metadata object. See [example File Delivery Metadata Function Example above](###File-Delivery-Metadata-Function-Example)
 
 #### `deliveryChannel?: string`
 
