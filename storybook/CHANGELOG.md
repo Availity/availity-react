@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## 9.4.85 (2021-02-03)
+
+
+### Bug Fixes
+
+* storybook build error ([9e6aa1a](https://github.com/Availity/availity-react/commit/9e6aa1a2754447381bb363fbac5fbcdb03d64dfc))
+
+
+
+
+
 ## 9.4.84 (2021-01-19)
 
 **Note:** Version bump only for package @availity/react-storybook

@@ -1,6 +1,6 @@
 {
   "name": "@availity/react-storybook",
-  "version": "9.4.84",
+  "version": "9.4.85",
   "private": true,
   "author": "Robert McGuinness <rob.mcguinness@availity.com>",
   "description": "Storybook docs for availity-react",
