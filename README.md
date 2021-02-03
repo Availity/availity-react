@@ -14,9 +14,9 @@
 
 ## Storybook
 
-https://availity-react-preview.netlify.com
+https://availity.github.io/availity-react/storybook
 
-## Gatsby Docs
+## Availity Docs
 
 https://availity.github.io/availity-react
 
