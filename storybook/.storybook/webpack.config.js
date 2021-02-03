@@ -32,7 +32,7 @@ module.exports = ({ config: defaultConfig }) => {
 
   defaultConfig.module.rules.push({
     test: /\.stories\.jsx?$/,
-    loaders: [require.resolve('@storybook/addon-storysource')],
+    loaders: [require.resolve('@storybook/source-loader')],
     enforce: 'pre',
   });
 
