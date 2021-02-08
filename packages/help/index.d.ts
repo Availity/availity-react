@@ -21,8 +21,8 @@ declare const HelpProvider: React.FC;
 declare const Help: React.StatelessComponent<HelpObj>;
 
 declare const FieldHelpIcon: (props: {
-  color: string;
-  size: string;
+  color?: string;
+  size?: string;
   id: string;
 }) => JSX.Element;
 
