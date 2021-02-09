@@ -55,14 +55,12 @@ const HelpProvider = ({ children }) => {
 
   // On umount make sure to remove the help from the top nav
   useEffect(() => {
-    return () => {
-      if (help && help.id) {
-        avMessages.send({
-          event: constants.RESET_HELP,
-          id: help.id,
-        });
-      }
-    };
+    if (help && help.id) {
+      avMessages.send({
+        event: constants.RESET_HELP,
+        id: help.id,
+      });
+    }
   }, [help]);
 
   return (
@@ -110,17 +108,15 @@ export const triggerFieldHelp = (id) => {
   });
 };
 
-export const FieldHelpIcon = ({ color, size, id }) => {
-  return (
-    <Icon
-      data-testid="field-help-icon"
-      name="help-circle"
-      size={size}
-      color={color}
-      onClick={() => triggerFieldHelp(id)}
-    />
-  );
-};
+export const FieldHelpIcon = ({ color, size, id }) => (
+  <Icon
+    data-testid="field-help-icon"
+    name="help-circle"
+    size={size}
+    color={color}
+    onClick={() => triggerFieldHelp(id)}
+  />
+);
 
 FieldHelpIcon.propTypes = {
   color: PropTypes.string,

@@ -5,13 +5,12 @@ import Upload from '..';
 
 afterEach(cleanup);
 
-const renderUpload = (formProps, uploadProps) => {
-  return render(
+const renderUpload = (formProps, uploadProps) =>
+  render(
     <Form {...formProps}>
       <Upload {...uploadProps} />
     </Form>
   );
-};
 
 describe('Upload', () => {
   test('should render', () => {

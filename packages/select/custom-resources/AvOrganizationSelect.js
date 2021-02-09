@@ -13,19 +13,15 @@ const AvOrganizationSelect = ({
   resourceIds,
   permissionIds,
   ...props
-}) => {
-  return (
-    <OrganizationSelect
-      name={name}
-      additionalPostGetArgs={
-        resourceIds || permissionIds
-          ? { resourceIds, permissionIds }
-          : undefined
-      }
-      {...props}
-    />
-  );
-};
+}) => (
+  <OrganizationSelect
+    name={name}
+    additionalPostGetArgs={
+      resourceIds || permissionIds ? { resourceIds, permissionIds } : undefined
+    }
+    {...props}
+  />
+);
 
 AvOrganizationSelect.propTypes = {
   resourceIds: PropTypes.oneOfType([

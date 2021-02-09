@@ -27,25 +27,23 @@ storiesOf('Formik|Form', module)
     },
   })
   .addDecorator(withKnobs)
-  .add('default', () => {
-    return (
-      <FormResults
-        initialValues={{
-          hello: '',
-        }}
-        validationSchema={yup.object().shape({
-          hello: yup
-            .string()
-            .isRequired(boolean('Required', false), 'This field is required.'),
-        })}
-      >
-        <Field name="hello" type="text" label="Hello" />
-        <Button color="primary" type="submit">
-          Submit
-        </Button>
-      </FormResults>
-    );
-  })
+  .add('default', () => (
+    <FormResults
+      initialValues={{
+        hello: '',
+      }}
+      validationSchema={yup.object().shape({
+        hello: yup
+          .string()
+          .isRequired(boolean('Required', false), 'This field is required.'),
+      })}
+    >
+      <Field name="hello" type="text" label="Hello" />
+      <Button color="primary" type="submit">
+        Submit
+      </Button>
+    </FormResults>
+  ))
   .add('Input', () => {
     const schema = yup.object().shape({
       hello: yup.string().required(),

@@ -52,9 +52,10 @@ const Upload = ({
     metadata.touched && metadata.error && 'is-invalid'
   );
 
-  const fieldValue = useMemo(() => {
-    return Array.isArray(field.value) ? field.value : [];
-  }, [field]);
+  const fieldValue = useMemo(
+    () => (Array.isArray(field.value) ? field.value : []),
+    [field]
+  );
 
   const callFileDelivery = useCallback(
     async (upload) => {

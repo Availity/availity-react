@@ -259,11 +259,11 @@ describe('AvResourcePagination', () => {
       <AvResourcePagination
         resource={resource}
         itemsPerPage={50}
-        getResult={(data) => {
-          return data.notifications.filter(
+        getResult={(data) =>
+          data.notifications.filter(
             (notification) => notification.id === paginationData[0].id
-          );
-        }}
+          )
+        }
       >
         <PaginationJson />
       </AvResourcePagination>
