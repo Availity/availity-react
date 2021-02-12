@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.3.8](https://github.com/Availity/availity-react/compare/@availity/help@1.3.7...@availity/help@1.3.8) (2021-02-12)
+
+
+### Bug Fixes
+
+* **help:** mark props as optional ([5fd99f5](https://github.com/Availity/availity-react/commit/5fd99f5ef0f6d1a4f9b7f53f838595cf528ad5c2))
+
+
+
+
+
 ## 1.3.7 (2021-02-12)
 
 **Note:** Version bump only for package @availity/help
