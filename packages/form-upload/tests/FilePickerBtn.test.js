@@ -5,13 +5,12 @@ import { FilePickerBtn } from '..';
 
 afterEach(cleanup);
 
-const renderFilePickerBtn = (formProps, buttonProps) => {
-  return render(
+const renderFilePickerBtn = (formProps, buttonProps) =>
+  render(
     <Form {...formProps}>
       <FilePickerBtn {...buttonProps} />
     </Form>
   );
-};
 
 describe('FilePickerBtn', () => {
   test('should render', () => {

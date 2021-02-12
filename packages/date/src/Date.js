@@ -32,6 +32,7 @@ const AvDate = ({
   validate,
   datePickerProps,
   'data-testid': dataTestId,
+  openDirection,
   ...attributes
 }) => {
   const { setFieldValue, setFieldTouched, validateField } = useFormikContext();
@@ -197,6 +198,7 @@ const AvDate = ({
           showDefaultInputIcon={datepicker}
           inputIconPosition="after"
           navPosition="navPositionBottom"
+          openDirection={openDirection}
         />
       </InputGroup>
     </>
@@ -218,12 +220,14 @@ AvDate.propTypes = {
   datepicker: PropTypes.bool,
   validate: PropTypes.func,
   datePickerProps: PropTypes.object,
+  openDirection: PropTypes.string,
 };
 
 AvDate.defaultProps = {
   calendarIcon: <Icon name="calendar" />,
   format: 'MM/DD/YYYY',
   datepicker: true,
+  openDirection: 'down',
 };
 
 export default AvDate;

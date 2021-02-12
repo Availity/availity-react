@@ -11,14 +11,13 @@ import Upload from '..';
 
 jest.mock('@availity/api-axios');
 
-const renderUpload = (formProps, uploadProps) => {
-  return render(
+const renderUpload = (formProps, uploadProps) =>
+  render(
     <Form {...formProps}>
       <Upload {...uploadProps} />
       <Button type="submit">Submit</Button>
     </Form>
   );
-};
 
 // FIXME: how can we await form-upload/Upload's onSuccess callback without resorting
 // to adding a second upload here and pushing done() into onSuccess?

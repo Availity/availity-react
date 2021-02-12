@@ -332,12 +332,10 @@ class AvSelect extends AvBaseInput {
             ...provided,
             width: '90%',
           }),
-          singleValue: (provided) => {
-            return {
-              ...provided,
-              color: '#495057',
-            };
-          },
+          singleValue: (provided) => ({
+            ...provided,
+            color: '#495057',
+          }),
           control: (provided, state) => {
             if (state.isDisabled) {
               return {

@@ -166,13 +166,11 @@ describe('AvResourceSelect', () => {
       });
 
     // eslint-disable-next-line react/prop-types
-    const ProviderComponent = ({ providerProps }) => {
-      return (
-        <AvForm>
-          <AvProviderSelect {...providerProps} />
-        </AvForm>
-      );
-    };
+    const ProviderComponent = ({ providerProps }) => (
+      <AvForm>
+        <AvProviderSelect {...providerProps} />
+      </AvForm>
+    );
 
     const providerProps = {
       name: 'test-form-input',

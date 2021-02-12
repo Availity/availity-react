@@ -25,23 +25,21 @@ const phoneProps = {
 };
 
 const renderPhone = (props, strictValidation = false) => {
-  const Component = () => {
-    return (
-      <Form
-        initialValues={{
-          test_phone: '201',
-        }}
-        onSubmit={() => {}}
-        validationSchema={yup.object().shape({
-          test_phone: yup
-            .string()
-            .validatePhone('This field is invalid', strictValidation),
-        })}
-      >
-        <Phone name="test_phone" {...props} />
-      </Form>
-    );
-  };
+  const Component = () => (
+    <Form
+      initialValues={{
+        test_phone: '201',
+      }}
+      onSubmit={() => {}}
+      validationSchema={yup.object().shape({
+        test_phone: yup
+          .string()
+          .validatePhone('This field is invalid', strictValidation),
+      })}
+    >
+      <Phone name="test_phone" {...props} />
+    </Form>
+  );
   return render(<Component />);
 };
 
