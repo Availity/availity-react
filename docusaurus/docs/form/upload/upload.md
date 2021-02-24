@@ -160,7 +160,7 @@ Use this prop together with `fileDeliveryMetadata` and `deliverFileOnSubmit` to 
 
 #### `deliverFileOnSubmit?: boolean`
 
-This prop is used in tandem with `deliveryChannel` and `fileDeliveryMetadata` so that your files will only get delivered to `fileDeliveryApi` when the form is being submitted. **Default:** `false`
+This prop is used in tandem with `deliveryChannel` and `fileDeliveryMetadata` so that your files will only get delivered to `fileDeliveryApi` when the form is being submitted. When false, the files are delivered as the user adds them. **Default:** `false`
 
 :::info
 Use this prop together with `fileDeliveryMetadata` and `deliveryChannel` to have uploads automatically sent to the file delivery API with the proper configuration, without the need to define a custom `onFileUpload` function.
