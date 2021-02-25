@@ -25,6 +25,8 @@ const Upload = ({
   customerId,
   deliverFileOnSubmit = false,
   deliveryChannel,
+  onDeliverySuccess,
+  onDeliveryError,
   disabled = false,
   feedbackClass,
   fileDeliveryMetadata,
@@ -45,6 +47,7 @@ const Upload = ({
     isValidating,
     setFieldError,
     setFieldValue,
+    setFieldTouched,
   } = useFormikContext();
   const classes = classNames(
     className,
@@ -84,9 +87,15 @@ const Upload = ({
           );
         }
 
-        await Promise.all(uploadResults);
-      } catch {
+        const responses = await Promise.all(uploadResults);
+        if (typeof onDeliverySuccess === 'function') {
+          onDeliverySuccess(responses);
+        }
+      } catch (error) {
         setFieldError(name, 'An error occurred while uploading files.');
+        if (typeof onDeliveryError === 'function') {
+          onDeliveryError(error);
+        }
       }
     },
     [
@@ -96,6 +105,8 @@ const Upload = ({
       fileDeliveryMetadata,
       name,
       setFieldError,
+      onDeliverySuccess,
+      onDeliveryError,
     ]
   );
 
@@ -103,6 +114,7 @@ const Upload = ({
     // eslint-disable-next-line unicorn/consistent-function-scoping
     async function checkValidFormAndCallFileDelivery() {
       if (Object.keys(errors).length === 0) {
+        // deliver all on submit
         await callFileDelivery(fieldValue);
       }
     }
@@ -168,13 +180,16 @@ const Upload = ({
 
         if (onFileUpload) {
           onFileUpload(upload);
-        } else if (
-          !deliverFileOnSubmit &&
-          deliveryChannel &&
-          fileDeliveryMetadata
-        ) {
+        } else if (deliveryChannel && fileDeliveryMetadata) {
           upload.onSuccess.push(() => {
-            callFileDelivery(upload);
+            if (upload?.references?.[0]) {
+              // allow form to revalidate when upload is complete
+              setFieldTouched(name, true);
+              // deliver upon upload complete, not form submit
+              if (!deliverFileOnSubmit) {
+                callFileDelivery(upload);
+              }
+            }
           });
         }
 
@@ -279,6 +294,8 @@ Upload.propTypes = {
   customerId: PropTypes.string.isRequired,
   deliverFileOnSubmit: PropTypes.bool,
   deliveryChannel: PropTypes.string,
+  onDeliverySuccess: PropTypes.func,
+  onDeliveryError: PropTypes.func,
   disabled: PropTypes.bool,
   feedbackClass: PropTypes.string,
   fileDeliveryMetadata: PropTypes.oneOfType([PropTypes.object, PropTypes.func]),
