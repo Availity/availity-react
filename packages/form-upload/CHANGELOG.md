@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# 0.4.0 (2021-02-25)
+
+
+### Features
+
+* add fileDelivery callbacks ([61d3203](https://github.com/Availity/availity-react/commit/61d320393a25ad61fac0ef849411af1fa684256d))
+
+
+
+
+
 ## 0.3.5 (2021-02-12)
 
 **Note:** Version bump only for package @availity/form-upload
