@@ -166,6 +166,22 @@ This prop is used in tandem with `deliveryChannel` and `fileDeliveryMetadata` so
 Use this prop together with `fileDeliveryMetadata` and `deliveryChannel` to have uploads automatically sent to the file delivery API with the proper configuration, without the need to define a custom `onFileUpload` function.
 :::
 
+#### `onDeliverySuccess?: (responses: object[]) => void`
+
+Callback to be executed when the delivery API call(s) have completed. It is called with an array of API responses (array of one if a single call was made). Note: a delivery can be REJECTED/FAILED/etc when the success callback is called - make sure to check the `deliveryStatus` for accurate handling.
+
+:::info
+Use this prop together with `fileDeliveryMetadata` and `deliveryChannel` to define custom actions once the file delivery API call has completed.
+:::
+
+#### `onDeliveryError?: (err: object) => void`
+
+Callback to be executed when the delivery API call(s) have failed. It is called with the error that was thrown.
+
+:::info
+Use this prop together with `fileDeliveryMetadata` and `deliveryChannel` to define error actions if the file delivery API call threw an error.
+:::
+
 #### `maxSize?: number`
 
 The maximum file size (in bytes) for a file to be uploaded.
