@@ -62,3 +62,11 @@ Allows for overriding the `z-index`value from react-strap `Modal`component.
 #### `analytics?: AnalyticsType`
 
 Override the analytics instance that is passed in. **Default** [avLogMessagesApi](https://availity.github.io/sdk-js/api/definitions/logs/)
+
+#### `supportZIndex?: number | string`
+
+Allows for overriding the `z-index` value from reactstrap Support `Modal` component.
+
+#### `showSupport?: number | string`
+
+Toggle whether or not to show the "Open a Support ticket" link in the FeedbackForm

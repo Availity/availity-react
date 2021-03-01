@@ -10,6 +10,7 @@ const Feedback = ({
   appName,
   modal,
   zIndex,
+  supportZIndex,
   children,
   analytics,
   className,
@@ -18,14 +19,16 @@ const Feedback = ({
   formProps,
   prompt,
   onFeedbackSent,
+  showSupport,
   ...props
 }) => {
-  const [isOpen, toggle] = useToggle(false);
+  const [feedbackIsOpen, feedbackToggle] = useToggle(false);
+  const [supportIsOpen, supportToggle] = useToggle(false);
 
   return (
     <Dropdown
-      isOpen={isOpen && !modal}
-      toggle={() => toggle()}
+      isOpen={feedbackIsOpen && !modal}
+      toggle={() => feedbackToggle()}
       className={`${className} hidden-print`}
       {...props}
     >
@@ -36,11 +39,12 @@ const Feedback = ({
         <FeedbackModal
           onFeedbackSent={onFeedbackSent}
           prompt={prompt}
-          isOpen={isOpen}
+          isOpen={feedbackIsOpen}
           zIndex={zIndex}
-          toggle={() => toggle()}
+          toggle={() => feedbackToggle()}
           name={appName}
           analytics={analytics}
+          showSupport={showSupport}
           {...formProps}
         />
       ) : (
@@ -48,8 +52,13 @@ const Feedback = ({
           onFeedbackSent={onFeedbackSent}
           prompt={prompt}
           analytics={analytics}
-          toggle={() => toggle()}
+          toggle={() => feedbackToggle()}
           name={appName}
+          showSupport={showSupport}
+          supportIsOpen={supportIsOpen}
+          supportToggle={supportToggle}
+          supportZIndex={supportZIndex}
+          modal={modal}
           {...formProps}
         />
       )}
@@ -61,6 +70,7 @@ Feedback.propTypes = {
   appName: PropTypes.string,
   modal: PropTypes.bool,
   zIndex: PropTypes.oneOfType([PropTypes.number, PropTypes.string]),
+  supportZIndex: PropTypes.oneOfType([PropTypes.number, PropTypes.string]),
   children: PropTypes.node,
   className: PropTypes.string,
   outline: PropTypes.bool,
@@ -71,12 +81,14 @@ Feedback.propTypes = {
   analytics: PropTypes.shape({
     info: PropTypes.func.isRequired,
   }),
+  showSupport: PropTypes.bool,
 };
 
 Feedback.defaultProps = {
   modal: false,
   color: 'light',
   analytics: avLogMessagesApi,
+  showSupport: false,
 };
 
 export default Feedback;

@@ -1,3 +1,4 @@
+root: true
 extends: availity/browser
 env:
   jest: true
