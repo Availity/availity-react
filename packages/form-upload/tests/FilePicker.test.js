@@ -5,13 +5,12 @@ import { FilePicker } from '..';
 
 afterEach(cleanup);
 
-const renderFilePicker = (formProps, pickerProps) => {
-  return render(
+const renderFilePicker = (formProps, pickerProps) =>
+  render(
     <Form {...formProps}>
       <FilePicker {...pickerProps} />
     </Form>
   );
-};
 
 describe('FilePicker', () => {
   test('should render', () => {

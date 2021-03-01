@@ -10,13 +10,12 @@ const RegionSelect = ResourceSelect.create({
   valueKey: 'id',
 });
 
-const searchBy = (prevOptions, inputValue) => {
-  return prevOptions.filter(
+const searchBy = (prevOptions, inputValue) =>
+  prevOptions.filter(
     (option) =>
       option.value.toLowerCase().indexOf(inputValue.toLowerCase()) >= 0 ||
       option.id.toLowerCase().indexOf(inputValue.toLowerCase()) >= 0
   );
-};
 
 const AvRegionSelect = ({ defaultToCurrentRegion, name, ...props }) => {
   const { setFieldValue } = useFormikContext();

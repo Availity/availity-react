@@ -194,19 +194,17 @@ describe('ResourceSelect', () => {
       });
 
     // eslint-disable-next-line react/prop-types
-    const ProviderComponent = ({ providerProps }) => {
-      return (
-        <Form
-          initialValues={{
-            'test-form-input': undefined,
-          }}
-          onSubmit={onSubmit}
-        >
-          <AvProviderSelect {...providerProps} />
-          <Button type="submit">Submit</Button>
-        </Form>
-      );
-    };
+    const ProviderComponent = ({ providerProps }) => (
+      <Form
+        initialValues={{
+          'test-form-input': undefined,
+        }}
+        onSubmit={onSubmit}
+      >
+        <AvProviderSelect {...providerProps} />
+        <Button type="submit">Submit</Button>
+      </Form>
+    );
 
     const providerProps = {
       name: 'test-form-input',
@@ -789,19 +787,17 @@ describe('Custom Resources', () => {
         },
       });
       // eslint-disable-next-line react/prop-types
-      const RegionComponent = ({ regionProps }) => {
-        return (
-          <Form
-            initialValues={{
-              'test-form-input': undefined,
-            }}
-            onSubmit={onSubmit}
-          >
-            <AvRegionSelect {...regionProps} />
-            <Button type="submit">Submit</Button>
-          </Form>
-        );
-      };
+      const RegionComponent = ({ regionProps }) => (
+        <Form
+          initialValues={{
+            'test-form-input': undefined,
+          }}
+          onSubmit={onSubmit}
+        >
+          <AvRegionSelect {...regionProps} />
+          <Button type="submit">Submit</Button>
+        </Form>
+      );
 
       const regionProps = {
         name: 'test-form-input',
@@ -856,19 +852,17 @@ describe('Custom Resources', () => {
       ]);
 
       // eslint-disable-next-line react/prop-types
-      const RegionComponent = ({ regionProps }) => {
-        return (
-          <Form
-            initialValues={{
-              'test-form-input': undefined,
-            }}
-            onSubmit={onSubmit}
-          >
-            <AvRegionSelect {...regionProps} />
-            <Button type="submit">Submit</Button>
-          </Form>
-        );
-      };
+      const RegionComponent = ({ regionProps }) => (
+        <Form
+          initialValues={{
+            'test-form-input': undefined,
+          }}
+          onSubmit={onSubmit}
+        >
+          <AvRegionSelect {...regionProps} />
+          <Button type="submit">Submit</Button>
+        </Form>
+      );
 
       const regionProps = {
         name: 'test-form-input',
@@ -916,19 +910,17 @@ describe('Custom Resources', () => {
       avRegionsApi.getResult = null;
 
       // eslint-disable-next-line react/prop-types
-      const RegionComponent = ({ regionProps }) => {
-        return (
-          <Form
-            initialValues={{
-              'test-form-input': undefined,
-            }}
-            onSubmit={onSubmit}
-          >
-            <AvRegionSelect {...regionProps} />
-            <Button type="submit">Submit</Button>
-          </Form>
-        );
-      };
+      const RegionComponent = ({ regionProps }) => (
+        <Form
+          initialValues={{
+            'test-form-input': undefined,
+          }}
+          onSubmit={onSubmit}
+        >
+          <AvRegionSelect {...regionProps} />
+          <Button type="submit">Submit</Button>
+        </Form>
+      );
 
       const regionProps = {
         name: 'test-form-input',
@@ -1038,19 +1030,17 @@ describe('Custom Resources', () => {
       ]);
 
       // eslint-disable-next-line react/prop-types
-      const RegionComponent = ({ regionProps }) => {
-        return (
-          <Form
-            initialValues={{
-              'test-form-input': undefined,
-            }}
-            onSubmit={onSubmit}
-          >
-            <AvRegionSelect {...regionProps} />
-            <Button type="submit">Submit</Button>
-          </Form>
-        );
-      };
+      const RegionComponent = ({ regionProps }) => (
+        <Form
+          initialValues={{
+            'test-form-input': undefined,
+          }}
+          onSubmit={onSubmit}
+        >
+          <AvRegionSelect {...regionProps} />
+          <Button type="submit">Submit</Button>
+        </Form>
+      );
 
       const regionProps = {
         name: 'test-form-input',
@@ -1150,19 +1140,17 @@ describe('Custom Resources', () => {
         },
       ]);
       // eslint-disable-next-line react/prop-types
-      const RegionComponent = ({ regionProps }) => {
-        return (
-          <Form
-            initialValues={{
-              'test-form-input': undefined,
-            }}
-            onSubmit={onSubmit}
-          >
-            <AvRegionSelect {...regionProps} />
-            <Button type="submit">Submit</Button>
-          </Form>
-        );
-      };
+      const RegionComponent = ({ regionProps }) => (
+        <Form
+          initialValues={{
+            'test-form-input': undefined,
+          }}
+          onSubmit={onSubmit}
+        >
+          <AvRegionSelect {...regionProps} />
+          <Button type="submit">Submit</Button>
+        </Form>
+      );
 
       const regionProps = {
         name: 'test-form-input',

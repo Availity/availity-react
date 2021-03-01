@@ -39,9 +39,7 @@ const FilePicker = ({
     setFieldValue(name, null, true);
   };
 
-  const getValue = () => {
-    return rest.multiple ? fieldValue : fieldValue[0];
-  };
+  const getValue = () => (rest.multiple ? fieldValue : fieldValue[0]);
 
   const file = getValue();
   rest.id = rest.id || name || stateId;

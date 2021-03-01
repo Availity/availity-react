@@ -47,14 +47,12 @@ const PaginationContent = ({
           }
 
           if (indexOfItemToReference === key) {
-            const ComponentWithRef = React.forwardRef((props, innerRef) => {
-              return (
-                <>
-                  <span className="sr-only" ref={innerRef} />
-                  <Component {...props} />
-                </>
-              );
-            });
+            const ComponentWithRef = React.forwardRef((props, innerRef) => (
+              <>
+                <span className="sr-only" ref={innerRef} />
+                <Component {...props} />
+              </>
+            ));
 
             return (
               <ComponentWithRef

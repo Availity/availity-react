@@ -37,9 +37,8 @@ const createOption = (label, labelKey = 'label', valueKey = 'value') => ({
   [valueKey]: label.toLowerCase().replace(/\W/g, ''),
 });
 
-const areValueAndOptionValueEqual = (value, optionValue) => {
-  return isEqual(value, optionValue);
-};
+const areValueAndOptionValueEqual = (value, optionValue) =>
+  isEqual(value, optionValue);
 
 const selectAllOption = {
   label: 'Select all',
@@ -321,12 +320,10 @@ const Select = ({
           ...provided,
           width: '90%',
         }),
-        singleValue: (provided) => {
-          return {
-            ...provided,
-            color: '#495057',
-          };
-        },
+        singleValue: (provided) => ({
+          ...provided,
+          color: '#495057',
+        }),
         control: (provided, state) => {
           if (state.isDisabled) {
             return {
