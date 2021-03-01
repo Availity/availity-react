@@ -67,6 +67,6 @@ Override the analytics instance that is passed in. **Default** [avLogMessagesApi
 
 Allows for overriding the `z-index` value from reactstrap Support `Modal` component.
 
-#### `showSupport?: number | string`
+#### `showSupport?: boolean`
 
 Toggle whether or not to show the "Open a Support ticket" link in the FeedbackForm
