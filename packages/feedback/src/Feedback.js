@@ -45,6 +45,7 @@ const Feedback = ({
           name={appName}
           analytics={analytics}
           showSupport={showSupport}
+          supportZIndex={supportZIndex}
           {...formProps}
         />
       ) : (
