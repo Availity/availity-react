@@ -66,6 +66,7 @@ const DateRange = ({
   autoSync,
   ranges: propsRanges,
   customArrowIcon,
+  openDirection,
   ...attributes
 }) => {
   const { setFieldValue, setFieldTouched, validateField } = useFormikContext();
@@ -339,6 +340,7 @@ const DateRange = ({
           inputIconPosition="after"
           numberOfMonths={2}
           navPosition="navPositionBottom"
+          openDirection={openDirection}
         />
       </InputGroup>
     </>
@@ -368,12 +370,14 @@ DateRange.propTypes = {
     PropTypes.object,
   ]),
   customArrowIcon: PropTypes.oneOfType([PropTypes.string, PropTypes.node]),
+  openDirection: PropTypes.string,
 };
 
 DateRange.defaultProps = {
   calendarIcon: <Icon name="calendar" data-testid="calendar-icon" />,
   format: isoDateFormat,
   datepicker: true,
+  openDirection: 'down',
 };
 
 export default DateRange;

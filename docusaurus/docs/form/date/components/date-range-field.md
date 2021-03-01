@@ -9,7 +9,7 @@ The same as `DateRange` but with a `Label` that appears above the input and a `F
 ```jsx
 import React from 'react';
 import { Form } from '@availity/form';
-import { DateRange } from '@availity/date';
+import { DateRangeField } from '@availity/date';
 import { Button } from 'reactstrap';
 import { dateRange } from '@availity/yup';
 import moment from 'moment';
@@ -79,4 +79,4 @@ Used to control if the label is displayed. When set to `true`, the label in the 
 
 #### `labelAttrs?: React.HTMLAttributes<HTMLLabelElement>`
 
-Pass additonal attributes to the label
+Pass additional attributes to the label

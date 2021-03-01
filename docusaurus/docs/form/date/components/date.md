@@ -22,7 +22,7 @@ const Example = () => (
     initialValues={{
       dateOfService: '',
     }}
-    onSubmit={(values) => console.log(values)}
+    onSubmit={values => console.log(values)}
     validationSchema={yup.object().shape({
       dateOfService: avDate().required(),
     })}
@@ -97,3 +97,7 @@ Toggle whether the calendar is shown.
 #### `datePickerProps?: SingleDatePickerShape`
 
 Props to be spread onto the datepicker component from [react-dates](https://github.com/airbnb/react-dates#singledatepicker).
+
+#### `openDirection?: string`
+
+Set which direction the date picker renders. Possible values are `up` and `down`. Default: `down`

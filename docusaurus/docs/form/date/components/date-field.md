@@ -9,7 +9,7 @@ The same as `FormikDate` but with a `Label` that appears above input and a `Feed
 ```jsx
 import React from 'react';
 import { Form } from '@availity/form';
-import FormikDate from '@availity/date';
+import { DateField } from '@availity/date';
 import { avDate } from '@availity/yup';
 import * as yup from 'yup';
 

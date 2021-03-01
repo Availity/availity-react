@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# 2.1.0 (2021-02-12)
+
+
+### Features
+
+* add openDirection to dates ([32cf78a](https://github.com/Availity/availity-react/commit/32cf78a68a4faa81f7311ee9b233fdf0549294cc))
+
+
+
+
+
 ## 2.0.4 (2021-01-04)
 
 **Note:** Version bump only for package @availity/date

@@ -20,12 +20,16 @@ const Example = () => (
     initialValues={{
       dateOfService: undefined,
     }}
-    onSubmit={(values) => console.log(values)}
+    onSubmit={values => console.log(values)}
     validationSchema={yup.object().shape({
       dateOfService: dateRange(
         {
-          min: moment().subtract(7, 'day').format('MM/DD/YYYY'),
-          max: moment().add(7, 'day').format('MM/DD/YYYY'),
+          min: moment()
+            .subtract(7, 'day')
+            .format('MM/DD/YYYY'),
+          max: moment()
+            .add(7, 'day')
+            .format('MM/DD/YYYY'),
           format: 'MM/DD/YYYY',
         },
         `Date must be between ${moment()
@@ -131,3 +135,7 @@ interface MomentDateRange {
   endDate: Moment;
 }
 ```
+
+#### `openDirection?: string`
+
+Set which direction the date picker renders. Possible values are `up` and `down`. Default: `down`
