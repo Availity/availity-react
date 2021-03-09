@@ -205,3 +205,13 @@ Set as true to show a drag and drop file upload option instead of a button (file
 #### `getDropRejectionMessage?: (errors: FileError[], file: File) => String`
 
 Override the default error message for files rejected when `showFileDrop` is `true`.
+
+#### `fallback?: node`
+
+A custom `fallback` element to render while `Dropzone` is being imported from `'react-dropzone`. Since `Dropzone` is only used when `showFileDrop` is `true`, it is imported using [lazy loading and suspense](https://reactjs.org/docs/code-splitting.html#reactlazy) to cut down on the bundle size the client needs to initially download.
+
+Defaults to
+
+```jsx
+<div>Loading...</div>
+```
