@@ -1,10 +1,15 @@
-import React, { useRef, useEffect, useCallback, useMemo } from 'react';
+import React, {
+  Suspense,
+  useRef,
+  useEffect,
+  useCallback,
+  useMemo,
+} from 'react';
 import PropTypes from 'prop-types';
 import UploadCore from '@availity/upload-core';
 import { avFilesDeliveryApi } from '@availity/api-axios';
 import { Input, InputGroup } from 'reactstrap';
 import { FormGroup, Feedback } from '@availity/form';
-import Dropzone from 'react-dropzone';
 import Icon from '@availity/icon';
 import { useField, useFormikContext } from 'formik';
 import classNames from 'classnames';
@@ -13,6 +18,10 @@ import { v4 as uuid } from 'uuid';
 import FilePickerBtn from './FilePickerBtn';
 import FileList from './FileList';
 import './styles.scss';
+
+const Dropzone = React.lazy(() => import('react-dropzone'));
+
+const dropzoneFallback = <div data-testid="dropzone-fallback">Loading...</div>;
 
 const Upload = ({
   allowedFileNameCharacters,
@@ -38,6 +47,7 @@ const Upload = ({
   onFileRemove,
   onFileUpload,
   showFileDrop = false,
+  fallback = dropzoneFallback,
 }) => {
   const input = useRef(null);
   const [field, metadata] = useField(name);
@@ -229,28 +239,32 @@ const Upload = ({
       <FormGroup for={name}>
         <Input name={name} style={{ display: 'none' }} />
         <InputGroup disabled={disabled} className={classes}>
-          <Dropzone
-            onDrop={onDrop}
-            multiple={multiple}
-            maxSize={maxSize}
-            accept={allowedFileTypes}
-          >
-            {({ getRootProps, getInputProps, isDragActive }) => (
-              <section>
-                <div
-                  {...getRootProps({
-                    className: isDragActive ? 'file-drop-active' : 'file-drop',
-                  })}
-                >
-                  <input data-testid="file-picker" {...getInputProps()} />
-                  <p>
-                    <strong>Drag and Drop</strong>
-                  </p>
-                  {text}
-                </div>
-              </section>
-            )}
-          </Dropzone>
+          <Suspense fallback={fallback}>
+            <Dropzone
+              onDrop={onDrop}
+              multiple={multiple}
+              maxSize={maxSize}
+              accept={allowedFileTypes}
+            >
+              {({ getRootProps, getInputProps, isDragActive }) => (
+                <section>
+                  <div
+                    {...getRootProps({
+                      className: isDragActive
+                        ? 'file-drop-active'
+                        : 'file-drop',
+                    })}
+                  >
+                    <input data-testid="file-picker" {...getInputProps()} />
+                    <p>
+                      <strong>Drag and Drop</strong>
+                    </p>
+                    {text}
+                  </div>
+                </section>
+              )}
+            </Dropzone>
+          </Suspense>
         </InputGroup>
         <Feedback
           className={classNames('d-block', feedbackClass)}
@@ -307,6 +321,7 @@ Upload.propTypes = {
   onFileRemove: PropTypes.func,
   onFileUpload: PropTypes.func,
   showFileDrop: PropTypes.bool,
+  fallback: PropTypes.node,
 };
 
 export default Upload;
