@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## 1.3.9 (2021-03-11)
+
+
+### Bug Fixes
+
+* **help:** restore clean up function ([5ed79c4](https://github.com/Availity/availity-react/commit/5ed79c41cf578c5e6565b932266c993f64fbfc8e))
+
+
+
+
+
 ## [1.3.8](https://github.com/Availity/availity-react/compare/@availity/help@1.3.7...@availity/help@1.3.8) (2021-02-12)
 
 
