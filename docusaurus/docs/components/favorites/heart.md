@@ -4,6 +4,8 @@ title: <FavoriteHeart />
 
 The default Favorite Icon that can be used to store a favorited item. Can only be used inside of a `<Favorites />` Provider.
 
+### Example
+
 ```jsx
 import React from 'react';
 import Favorites, { FavoriteHeart } from '@availity/favorites';

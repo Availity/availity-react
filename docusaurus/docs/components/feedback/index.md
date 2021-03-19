@@ -11,20 +11,3 @@ Availity feedback with smiley faces react component.
 ```bash
 npx install-peerdeps @availity/feedback --save
 ```
-
-### Example
-
-```jsx
-import React from 'react';
-import Feedback from '@availity/feedback';
-
-const Example = () => (
-  <Feedback
-    appName="Payer Space"
-    prompt="Please provide some feedback"
-    color="primary"
-  >
-    Provide Feedback
-  </Feedback>
-);
-```

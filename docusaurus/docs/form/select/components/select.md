@@ -1,5 +1,5 @@
 ---
-title: <Select /> ( Default Export )
+title: <Select />
 ---
 
 Select dropdown without a Label or Feedback

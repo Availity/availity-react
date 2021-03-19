@@ -5,6 +5,7 @@ title: Disclaimer
 ### Example
 
 ```jsx
+import React from 'react';
 import { Disclaimer } from '@availity/typography';
 
 const Example = () => (
@@ -22,6 +23,6 @@ const Example = () => (
 
 ### Props
 
-| Prop Name    | Types   | Required | Default | Description                                                          |
-| ------------ | ------- | -------- | ------- | -------------------------------------------------------------------- |
-| **`styled`** | Boolean | false    | `true`  | When true, a vertical bar is displayed to the left of the disclaimer |
+#### `styled?: boolean`
+
+Determine if a vertical bar is displayed to the left of the disclaimer. Default is `true`

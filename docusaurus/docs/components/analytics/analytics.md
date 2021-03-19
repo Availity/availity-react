@@ -1,5 +1,5 @@
 ---
-title: <Analytics /> ( Default Export )
+title: <Analytics />
 ---
 
 Component allowing page and click events to be tracked.
@@ -12,25 +12,23 @@ import { Button } from 'reactstrap';
 import Analytics from '@availity/Analytics';
 
 const plugin = {
-    trackEvent: e => {
-        alert(JSON.stringify(e))
-    }
-}
+  trackEvent: (e) => {
+    alert(JSON.stringify(e));
+  },
+};
 
-<Analytics
+const Example = () => (
+  <Analytics
     plugins={[plugin]}
     recursive
     attributePrefix="data-av-analytics"
     eventModifiers="action"
->
-  <Button
-        type="button"
-        data-av-analytics-action="click"
-        id="button"
   >
-    Click Me
-  </Button>
-</Analytics>
+    <Button type="button" data-av-analytics-action="click" id="button">
+      Click Me
+    </Button>
+  </Analytics>
+);
 ```
 
 #### Live example: [Storybook](https://availity.github.io/availity-react/storybook/?path=/story/components-analytics--default)

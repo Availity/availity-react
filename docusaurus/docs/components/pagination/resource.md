@@ -11,9 +11,11 @@ import React from 'react';
 import { AvResourcePagination, PaginationControls } from '@availity/pagination';
 import { avOrganizationsApi } from '@availity/api-axios';
 
-<AvResourcePagination resource={avOrganizationsApi} itemsPerPage={25}>
-  <PaginationControls />
-</AvResourcePagination>;
+const Example = () => (
+  <AvResourcePagination resource={avOrganizationsApi} itemsPerPage={25}>
+    <PaginationControls />
+  </AvResourcePagination>
+);
 ```
 
 #### Live example: <a href="https://availity.github.io/availity-react/storybook/?path=/story/components-pagination--resource"> Storybook</a>

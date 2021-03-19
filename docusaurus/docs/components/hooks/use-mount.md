@@ -7,7 +7,7 @@ Hook that runs a function on mount and dismount if a function is returned.
 ### Example
 
 ```jsx
-import React, { useState } from 'react';
+import React from 'react';
 import { useMount } from '@availity/hooks';
 
 const Example = () => {

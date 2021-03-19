@@ -1,5 +1,5 @@
 ---
-title: Wizard
+title: <Wizard />
 ---
 
 Container for the step wizard.
@@ -7,6 +7,7 @@ Container for the step wizard.
 ### Example
 
 ```jsx
+import React from 'react';
 import Wizard, { WizardStep, WizardStepTitle } from '@availity/step-wizard';
 
 const Example = () => (

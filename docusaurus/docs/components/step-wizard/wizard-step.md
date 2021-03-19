@@ -1,5 +1,5 @@
 ---
-title: WizardStep
+title: <WizardStep />
 ---
 
 A step in the `<Wizard />`
@@ -7,6 +7,7 @@ A step in the `<Wizard />`
 ### Example
 
 ```jsx
+import React from 'react';
 import Wizard, { WizardStep, WizardStepTitle } from '@availity/step-wizard';
 
 const Example = () => (

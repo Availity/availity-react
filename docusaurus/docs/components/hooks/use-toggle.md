@@ -20,6 +20,9 @@ const Example = () => {
 You can also pass the state you want to set the toggle to. If it hasn't changed, it will not perform a state update.
 
 ```jsx
+import React from 'react';
+import { useToggle } from '@availity/hooks';
+
 // This component will never re-render because the toggle is already set to `true`
 const Example = () => {
   const [isToggled, toggle] = useToggle(true);

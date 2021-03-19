@@ -5,6 +5,7 @@ title: Agreement
 ### Example
 
 ```jsx
+import React from 'react';
 import { Agreement } from '@availity/typography';
 
 const Example = () => (

@@ -24,7 +24,6 @@ module.exports = {
             ],
           },
           'components/app-icon',
-
           'components/authorize',
           'components/avatar',
           'components/breadcrumbs',
@@ -53,6 +52,7 @@ module.exports = {
             type: 'category',
             label: 'Hooks',
             items: [
+              'components/hooks/index',
               'components/hooks/use-current-user',
               'components/hooks/use-effect-async',
               'components/hooks/use-mount',
@@ -76,9 +76,7 @@ module.exports = {
               'components/list-group-item/list-group-item-status',
             ],
           },
-
           'components/page-header',
-
           {
             type: 'category',
             label: 'Pagination',
@@ -99,13 +97,13 @@ module.exports = {
             items: [
               'components/spaces/index',
               'components/spaces/spaces',
-              'components/spaces/use-spaces',
-              'components/spaces/use-spaces-context',
-              'components/spaces/context',
               'components/spaces/images',
               'components/spaces/disclaimer',
               'components/spaces/agreement',
               'components/spaces/ghost-text',
+              'components/spaces/use-spaces',
+              'components/spaces/context',
+              'components/spaces/use-spaces-context',
             ],
           },
           {
@@ -118,7 +116,6 @@ module.exports = {
             ],
           },
           'components/training-link',
-
           {
             type: 'category',
             label: 'Typography',
@@ -136,7 +133,6 @@ module.exports = {
         items: [
           'form/index',
           'form/migrating',
-
           'form/components/checkbox-group',
           'form/components/checkbox',
           'form/components/feedback',
@@ -151,10 +147,10 @@ module.exports = {
             label: 'Date',
             items: [
               'form/date/index',
+              'form/date/components/date',
               'form/date/components/date-field',
               'form/date/components/date-range-field',
               'form/date/components/date-range',
-              'form/date/components/date',
             ],
           },
           {
