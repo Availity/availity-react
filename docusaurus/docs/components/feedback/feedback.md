@@ -1,5 +1,5 @@
 ---
-title: <Feedback /> ( Default Export )
+title: <Feedback />
 ---
 
 ### Example

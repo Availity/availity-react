@@ -1,5 +1,5 @@
 ---
-title: <Date /> ( Default Export )
+title: <Date />
 ---
 
 Date picker without a `Label` or `Feedback`
@@ -22,7 +22,7 @@ const Example = () => (
     initialValues={{
       dateOfService: '',
     }}
-    onSubmit={values => console.log(values)}
+    onSubmit={(values) => console.log(values)}
     validationSchema={yup.object().shape({
       dateOfService: avDate().required(),
     })}

@@ -19,18 +19,3 @@ Yarn
 ```bash
 yarn add @availity/list-group-item
 ```
-
-### Example
-
-```jsx
-import React from 'react';
-import ListGroup from '@availity/list-group';
-import ListGroupItem, { ListGroupItemStatus } from '@availity/list-group-item';
-
-const Example = () => (
-  <ListGroup>
-    <ListGroupItem>Item</ListGroupItem>
-    <ListGroupItemStatus>Item2</ListGroupItemStatus>
-  </ListGroup>
-);
-```

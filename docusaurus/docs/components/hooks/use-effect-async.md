@@ -12,6 +12,7 @@ import { useEffectAsync } from '@availity/hooks';
 
 const Example = ({ asyncFunction }) => {
   const [state, setState] = useState('Hello');
+
   useEffectAsync(async () => {
     const newState = await asyncFunction();
 

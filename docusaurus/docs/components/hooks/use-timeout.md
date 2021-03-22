@@ -7,7 +7,7 @@ Hook that returns true after the given amount of time in milliseconds.
 ### Example
 
 ```jsx
-import React, { useState } from 'react';
+import React from 'react';
 import { useTimeout } from '@availity/hooks';
 
 const Example = () => {
