@@ -86,7 +86,7 @@ Pass additonal attributes to [Form Group](/form/components/form-group/#props)
 
 Object mapping number of columns to the label and input.
 
-#### `children?: ({ input: React.ReactNode, feedback: React.ReactNode }) => React.ReactNode
+#### `children?: ({ input: React.ReactNode, feedback: React.ReactNode }) => React.ReactNode`
 
 Optionally override the way the input is rendered with child render prop.
 
