@@ -33,7 +33,7 @@ const Feedback = ({
       {...props}
     >
       <DropdownToggle color={color} outline={outline}>
-        {children || 'Give Feedback'}
+        {children || showSupport ? 'Feedback & Support' : 'Give Feedback'}
       </DropdownToggle>
       {modal ? (
         <FeedbackModal
