@@ -2,28 +2,55 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { Modal } from 'reactstrap';
 import FeedbackForm from './FeedbackForm';
+import SupportModal from './SupportModal';
 
-const FeedbackModal = ({ isOpen, toggle, zIndex, ...formOptions }) => (
-  <Modal
-    fade
-    id="feedbackModal"
-    data-testid="feedbackModal"
-    tabIndex="-1"
-    role="dialog"
-    aria-labelledby="feedback-form-header"
-    aria-hidden="true"
-    isOpen={isOpen}
-    toggle={toggle}
-    zIndex={zIndex}
-  >
-    <FeedbackForm onClose={toggle} {...formOptions} />
-  </Modal>
-);
+const FeedbackModal = ({
+  isOpen,
+  toggle,
+  zIndex,
+  showSupport,
+  supportZIndex,
+  ...formOptions
+}) => {
+  const [supportIsActive, setSupportIsActive] = React.useState(false);
+
+  return supportIsActive ? (
+    <SupportModal
+      supportIsActive={supportIsActive}
+      setSupportIsActive={setSupportIsActive}
+      zIndex={supportZIndex}
+      toggle={toggle}
+    />
+  ) : (
+    <Modal
+      fade
+      id="feedbackModal"
+      data-testid="feedbackModal"
+      tabIndex="-1"
+      size="lg"
+      role="dialog"
+      aria-labelledby="feedback-form-header"
+      aria-hidden="true"
+      isOpen={isOpen && !supportIsActive}
+      toggle={toggle}
+      zIndex={zIndex}
+    >
+      <FeedbackForm
+        onClose={toggle}
+        showSupport={showSupport}
+        setSupportIsActive={setSupportIsActive}
+        {...formOptions}
+      />
+    </Modal>
+  );
+};
 
 FeedbackModal.propTypes = {
   isOpen: PropTypes.bool.isRequired,
   toggle: PropTypes.func.isRequired,
+  showSupport: PropTypes.bool,
   zIndex: PropTypes.oneOfType([PropTypes.number, PropTypes.string]),
+  supportZIndex: PropTypes.oneOfType([PropTypes.number, PropTypes.string]),
 };
 
 export default FeedbackModal;

@@ -213,4 +213,12 @@ describe('FeedbackForm', () => {
       getByPlaceholderText('Additional Comments... (Optional)')
     ).toBeDefined();
   });
+
+  test('should show support', () => {
+    const { getByText } = render(
+      <FeedbackForm name="Payer Space" showSupport additionalComments />
+    );
+
+    expect(getByText('Open a support ticket')).toBeDefined();
+  });
 });

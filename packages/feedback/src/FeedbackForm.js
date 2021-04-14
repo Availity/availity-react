@@ -39,6 +39,8 @@ const FeedbackForm = ({
   staticFields,
   analytics,
   modalHeaderProps,
+  showSupport,
+  setSupportIsActive,
   ...formProps
 }) => {
   const [active, setActive] = useState(null);
@@ -185,6 +187,25 @@ const FeedbackForm = ({
         </ModalBody>
 
         <ModalFooter>
+          {showSupport ? (
+            <>
+              <span style={{ display: 'inline-block', margin: 0 }}>
+                Need Help?
+              </span>
+              <Button
+                className="pl-0"
+                onClick={() => setSupportIsActive(true)}
+                color="link"
+                type="button"
+                onKeyDown={({ keyCode }) =>
+                  keyCode === 13 && setSupportIsActive(true)
+                }
+              >
+                Open a support ticket
+              </Button>
+            </>
+          ) : null}
+
           {onClose ? (
             <Button
               onClick={onClose}
@@ -194,6 +215,7 @@ const FeedbackForm = ({
               Close
             </Button>
           ) : null}
+
           <Button type="submit" color="primary" disabled={!active}>
             Send Feedback
           </Button>
@@ -228,6 +250,8 @@ FeedbackForm.propTypes = {
   analytics: PropTypes.shape({
     info: PropTypes.func.isRequired,
   }),
+  showSupport: PropTypes.bool,
+  setSupportIsActive: PropTypes.func,
 };
 
 FeedbackForm.defaultProps = {
@@ -236,6 +260,7 @@ FeedbackForm.defaultProps = {
   additionalComments: false,
   modalHeaderProps: {},
   analytics: avLogMessagesApi,
+  showSupport: false,
 };
 
 export default FeedbackForm;
