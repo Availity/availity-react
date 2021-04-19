@@ -40,6 +40,7 @@ class FilePicker extends Component {
   updateValidations(props = this.props) {
     this.validations = { ...props.validate };
 
+    // eslint-disable-next-line arrow-body-style
     Object.keys(props)
       .filter((val) => htmlValidationAttrs.indexOf(val) > -1)
       .forEach((attr) => {

@@ -175,6 +175,7 @@ class AvDateRange extends Component {
       }
       const { max, min } = this.props.distance;
       if (max) {
+        // eslint-disable-next-line unicorn/no-lonely-if
         if (mEnd.isAfter(moment(mStart).add(max.value, max.units), 'day')) {
           return (
             max.errorMessage ||
@@ -185,6 +186,7 @@ class AvDateRange extends Component {
         }
       }
       if (min) {
+        // eslint-disable-next-line unicorn/no-lonely-if
         if (mEnd.isBefore(mStart.add(min.value, min.units), 'day')) {
           return (
             min.errorMessage ||

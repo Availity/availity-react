@@ -53,6 +53,7 @@ class Upload extends Component {
         Math.max(0, this.props.max - this.state.files.length)
       );
     }
+
     this.files = this.files.concat(
       selectedFiles.map((file) => {
         const upload = new UploadCore(file, {
