@@ -3,6 +3,23 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# 5.6.0 (2021-04-20)
+
+
+### Bug Fixes
+
+* **feedback:** explicitly pass down supportZIndex to FeedbackModal ([0450fa4](https://github.com/Availity/availity-react/commit/0450fa4e612688211cc7c61ce0b0c8591dbb42ce))
+
+
+### Features
+
+* **feedback:** add support link ([c5e5c36](https://github.com/Availity/availity-react/commit/c5e5c36c9c6850c661beff281517b7aa0e028ad5))
+* **feedback:** make button text dynamic based on showSupport prop ([72ac218](https://github.com/Availity/availity-react/commit/72ac218fc7ae82f05088bcb4c270e685d52ab90a))
+
+
+
+
+
 ## 5.5.1 (2021-02-12)
 
 **Note:** Version bump only for package @availity/feedback
