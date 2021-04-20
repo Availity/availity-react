@@ -34,7 +34,7 @@
     "@availity/localstorage-core": "^3.0.0",
     "@availity/spaces": "^4.0.30",
     "axios": "^0.21.0",
-    "formik": "2.2.1",
+    "formik": "^2.2.6",
     "react": "^17.0.1",
     "react-dom": "^17.0.1",
     "yup": "^0.29.3"
