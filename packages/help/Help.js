@@ -54,16 +54,17 @@ const HelpProvider = ({ children }) => {
   }, [help, unload]);
 
   // On umount make sure to remove the help from the top nav
-  useEffect(() => {
-    return () => {
+  useEffect(
+    () => () => {
       if (help && help.id) {
         avMessages.send({
           event: constants.RESET_HELP,
           id: help.id,
         });
       }
-    }
-  }, [help]);
+    },
+    [help]
+  );
 
   return (
     <HelpContext.Provider

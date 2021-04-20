@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import PropTypes from 'prop-types';
 import { Button, ModalBody, ModalHeader, ModalFooter } from 'reactstrap';
 import { Form } from '@availity/form';
@@ -22,9 +22,7 @@ const openSupport = async (values, setBlocking) => {
   );
   let salesforceResponse;
   if (
-    orgsResp.data.organizations.some(
-      (org) => org.id === values.organizations.id
-    )
+    orgsResp.data.organizations.some((org) => org.id === values.organization.id)
   ) {
     salesforceResponse = await avWebQLApi.create({
       query: `
@@ -37,7 +35,7 @@ const openSupport = async (values, setBlocking) => {
         }
       `,
       variables: {
-        organizationId: values.organizations.id,
+        organizationId: values.organization.id,
       },
     });
   }
@@ -55,9 +53,9 @@ const openSupport = async (values, setBlocking) => {
 
   if (salesforceData) {
     const attributes = {
-      orgGenKey: values.organizations.customerId,
-      organizationName: values.organizations.name,
-      partyId: values.organizations.id,
+      orgGenKey: values.organization.customerId,
+      organizationName: values.organization.name,
+      partyId: values.organization.id,
       payerId: 'AVAILITY',
       X_Client_ID: '5430d59f-c5cc-4be7-be5a-34472ec30fe9',
       X_XSRF_TOKEN: getToken(),
@@ -79,67 +77,57 @@ const openSupport = async (values, setBlocking) => {
   }
 };
 
-const SupportForm = ({ setSupportIsActive, setBlocking }) => {
-  const [active, setActive] = useState(null);
+const SupportForm = ({ setSupportIsActive, setBlocking }) => (
+  <>
+    <ModalHeader aria-live="assertive" id="support-form-header">
+      Open Support Ticket
+    </ModalHeader>
+    <Form
+      aria-label="Support Form"
+      aria-describedby="support-form-header"
+      role="form"
+      data-testid="support-form"
+      initialValues={{
+        organization: undefined,
+      }}
+      validationSchema={yup.object().shape({
+        organization: yup
+          .object()
+          .shape({
+            id: yup.string(),
+          })
+          .required('This field is required.'),
+      })}
+      onSubmit={(values) => openSupport(values, setBlocking)}
+    >
+      <ModalBody>
+        <AvOrganizationSelect
+          id="organization"
+          name="organization"
+          data-testid="org-dropdown"
+          getResult={(data) => data.organizations}
+        />
+      </ModalBody>
 
-  return (
-    <>
-      <ModalHeader aria-live="assertive" id="support-form-header">
-        Open Support Ticket
-      </ModalHeader>
-      <Form
-        aria-label="Support Form"
-        aria-describedby="support-form-header"
-        role="form"
-        data-testid="support-form"
-        initialValues={{
-          organization: undefined,
-        }}
-        validationSchema={yup.object().shape({
-          organization: yup
-            .object()
-            .shape({
-              id: yup.string(),
-            })
-            .required('This field is required.'),
-        })}
-        onSubmit={(values) => openSupport(values, setBlocking)}
-      >
-        <ModalBody>
-          <AvOrganizationSelect
-            id="organizations"
-            name="organizations"
-            data-testid="org-dropdown"
-            onChange={(option) => setActive(option)}
-            getResult={(data) => data.organizations}
-          />
-        </ModalBody>
+      <ModalFooter>
+        <Button
+          onClick={() => setSupportIsActive(false)}
+          color="secondary"
+          type="button"
+          onKeyDown={({ keyCode }) =>
+            keyCode === 13 && setSupportIsActive(false)
+          }
+        >
+          Close
+        </Button>
 
-        <ModalFooter>
-          <Button
-            onClick={() => setSupportIsActive(false)}
-            color="secondary"
-            type="button"
-            onKeyDown={({ keyCode }) =>
-              keyCode === 13 && setSupportIsActive(false)
-            }
-          >
-            Close
-          </Button>
-
-          <Button
-            data-testid="submit-btn"
-            type="submit"
-            color="primary"
-            disabled={!active}
-          >
-            Continue
-          </Button>
-        </ModalFooter>
-      </Form>
-    </>
-  );
-};
+        <Button data-testid="submit-btn" type="submit" color="primary">
+          Continue
+        </Button>
+      </ModalFooter>
+    </Form>
+  </>
+);
 
 SupportForm.propTypes = {
   setSupportIsActive: PropTypes.func,
