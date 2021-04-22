@@ -21,6 +21,8 @@ export interface FeedbackFormProps {
   prompt?: string;
   staticFields?: object;
   modalHeaderProps?: ModalHeaderProps;
+  showSupport: boolean;
+  setSupportIsActive: Function;
 }
 
 declare const FeedbackForm: React.FunctionComponent<FeedbackFormProps>;

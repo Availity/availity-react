@@ -7,6 +7,7 @@ export interface FeedbackProps {
     formProps?: object;
     children?: React.ReactType;
     onFeedbackSent: Function;
+    supportIsOpen?: boolean;
 }
 
 declare const Feedback: React.StatelessComponent<FeedbackProps>;
