@@ -3,6 +3,18 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [5.6.1](https://github.com/Availity/availity-react/compare/@availity/feedback@5.6.0...@availity/feedback@5.6.1) (2021-04-22)
+
+
+### Bug Fixes
+
+* **feedback:** fix proptype of showSupport ([10e7400](https://github.com/Availity/availity-react/commit/10e7400b9b29fed8813e2802625e3a03c57c9249))
+* **feedback:** prevent supportIsOpen from being spread onto form ([9a0e275](https://github.com/Availity/availity-react/commit/9a0e2756e80e709a2594a629c879b0529771e870))
+
+
+
+
+
 # 5.6.0 (2021-04-20)
 
 
