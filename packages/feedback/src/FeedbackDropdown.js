@@ -56,7 +56,7 @@ FeedbackDropdown.propTypes = {
   prompt: PropTypes.string,
   toggle: PropTypes.func,
   onFeedbackSent: PropTypes.func,
-  showSupport: PropTypes.func,
+  showSupport: PropTypes.bool,
   supportToggle: PropTypes.func,
   supportZIndex: PropTypes.string,
   modal: PropTypes.bool,
