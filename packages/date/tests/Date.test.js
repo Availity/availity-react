@@ -271,4 +271,60 @@ describe('Date', () => {
     const pickedYear = within(nextGridYearPicker).getByText(newYear);
     expect(pickedYear).toBeDefined();
   });
+
+  test('unsets date and validation when value is blank', async () => {
+    const onSubmit = jest.fn();
+
+    const { container, getByText } = render(
+      <Form
+        initialValues={{
+          singleDate: '',
+        }}
+        onSubmit={onSubmit}
+      >
+        <FormikDate name="singleDate" data-testid="single-select" />
+        <Button type="submit">Submit</Button>
+      </Form>
+    );
+
+    const input = container.querySelector('.DateInput_input');
+
+    fireEvent.change(input, {
+      target: {
+        value: '01/04/1997',
+      },
+    });
+    fireEvent.change(input, {
+      target: {
+        value: '',
+      },
+    });
+
+    fireEvent.click(getByText('Submit'));
+
+    await waitFor(() => {
+      expect(onSubmit).toHaveBeenCalledWith(
+        expect.objectContaining({
+          singleDate: '',
+        }),
+        expect.anything()
+      );
+    });
+
+    fireEvent.change(input, {
+      target: {
+        value: '01/04/1997',
+      },
+    });
+    fireEvent.click(getByText('Submit'));
+
+    await waitFor(() => {
+      expect(onSubmit).toHaveBeenCalledWith(
+        expect.objectContaining({
+          singleDate: '1997-01-04',
+        }),
+        expect.anything()
+      );
+    });
+  });
 });

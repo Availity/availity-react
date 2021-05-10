@@ -65,21 +65,26 @@ const AvDate = ({
 
   // For updating when we delete the current input
   const onInputChange = (value) => {
-    const date = moment(
-      value,
-      [isoDateFormat, format, 'MMDDYYYY', 'YYYYMMDD'],
-      true
-    );
-    const isoFormatted = date.format(isoDateFormat);
-    setFieldValue(name, date.isValid() ? isoFormatted : date, false);
-    setFieldTouched(name, true, false);
+    if (!value) {
+      setFieldValue(name, '', false);
+      setFieldTouched(name, true, false);
+    } else {
+      const date = moment(
+        value,
+        [isoDateFormat, format, 'MMDDYYYY', 'YYYYMMDD'],
+        true
+      );
+      const isoFormatted = date.format(isoDateFormat);
+      setFieldValue(name, date.isValid() ? isoFormatted : date, false);
+      setFieldTouched(name, true, false);
 
-    if (date.isValid()) {
-      if (isFocused !== false) {
-        setIsFocused(false);
-      }
-      if (onChange) {
-        onChange(isoFormatted);
+      if (date.isValid()) {
+        if (isFocused !== false) {
+          setIsFocused(false);
+        }
+        if (onChange) {
+          onChange(isoFormatted);
+        }
       }
     }
   };
