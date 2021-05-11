@@ -71,7 +71,8 @@ const AvDate = ({
       true
     );
     const isoFormatted = date.format(isoDateFormat);
-    setFieldValue(name, date.isValid() ? isoFormatted : date, false);
+    const alternateValue = (value && value.length > 0) ? date : undefined;
+    setFieldValue(name, date.isValid() ? isoFormatted : alternateValue, false);
     setFieldTouched(name, true, false);
 
     if (date.isValid()) {
