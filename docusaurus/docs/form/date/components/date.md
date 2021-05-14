@@ -101,3 +101,9 @@ Props to be spread onto the datepicker component from [react-dates](https://gith
 #### `openDirection?: string`
 
 Set which direction the date picker renders. Possible values are `up` and `down`. Default: `down`
+
+### Yup Validation
+
+:::info
+When the existence of `Date` component's field value is used with something like `yup.when()` to help validate another field in the schema, you cannot depend on the truthiness of that field value alone. A `Date` field that has had a value erased does not return to its `initialValue`, instead it is now a `moment` object that will pass a truthy check. Your conditional validation should take this into account.
+:::
