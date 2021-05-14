@@ -3,6 +3,18 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [2.1.3](https://github.com/Availity/availity-react/compare/@availity/date@2.1.2...@availity/date@2.1.3) (2021-05-14)
+
+
+### Reverts
+
+* Revert "CMT-155" ([c7158ba](https://github.com/Availity/availity-react/commit/c7158ba0963f65e846c61b1122d877e9e11e9271))
+* Revert "CMT-155" ([6fa2301](https://github.com/Availity/availity-react/commit/6fa2301981e167f0b5c0417541305b7a304b0df2))
+
+
+
+
+
 ## 2.1.2 (2021-05-11)
 
 **Note:** Version bump only for package @availity/date
