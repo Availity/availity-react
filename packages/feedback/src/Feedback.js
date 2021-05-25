@@ -23,7 +23,6 @@ const Feedback = ({
   ...props
 }) => {
   const [feedbackIsOpen, feedbackToggle] = useToggle(false);
-  const [supportIsOpen, supportToggle] = useToggle(false);
 
   return (
     <Dropdown
@@ -56,8 +55,6 @@ const Feedback = ({
           toggle={() => feedbackToggle()}
           name={appName}
           showSupport={showSupport}
-          supportIsOpen={supportIsOpen}
-          supportToggle={supportToggle}
           supportZIndex={supportZIndex}
           modal={modal}
           {...formProps}
