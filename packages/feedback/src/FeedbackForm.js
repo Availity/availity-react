@@ -41,7 +41,6 @@ const FeedbackForm = ({
   modalHeaderProps,
   showSupport,
   setSupportIsActive,
-  supportIsOpen,
   ...formProps
 }) => {
   const [active, setActive] = useState(null);
@@ -253,7 +252,6 @@ FeedbackForm.propTypes = {
   }),
   showSupport: PropTypes.bool,
   setSupportIsActive: PropTypes.func,
-  supportIsOpen: PropTypes.bool,
 };
 
 FeedbackForm.defaultProps = {
