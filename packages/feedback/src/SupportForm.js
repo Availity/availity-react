@@ -15,7 +15,12 @@ const getToken = () =>
     '$1'
   );
 
-const openSupport = async (values, setBlocking) => {
+const openSupport = async (
+  values,
+  setBlocking,
+  setSupportIsActive,
+  feedbackToggle
+) => {
   setBlocking(true);
   const orgsResp = await avOrganizationsApi.getOrganizations(
     SUPPORT_PERMISSION_ID
@@ -75,9 +80,11 @@ const openSupport = async (values, setBlocking) => {
   } else {
     window.open(href, target);
   }
+  setSupportIsActive(false);
+  feedbackToggle(false);
 };
 
-const SupportForm = ({ setSupportIsActive, setBlocking }) => (
+const SupportForm = ({ setSupportIsActive, setBlocking, feedbackToggle }) => (
   <>
     <ModalHeader aria-live="assertive" id="support-form-header">
       Open Support Ticket
@@ -98,7 +105,9 @@ const SupportForm = ({ setSupportIsActive, setBlocking }) => (
           })
           .required('This field is required.'),
       })}
-      onSubmit={(values) => openSupport(values, setBlocking)}
+      onSubmit={(values) =>
+        openSupport(values, setBlocking, setSupportIsActive, feedbackToggle)
+      }
     >
       <ModalBody>
         <AvOrganizationSelect
@@ -132,6 +141,7 @@ const SupportForm = ({ setSupportIsActive, setBlocking }) => (
 SupportForm.propTypes = {
   setSupportIsActive: PropTypes.func,
   setBlocking: PropTypes.func,
+  feedbackToggle: PropTypes.func,
 };
 
 export default SupportForm;

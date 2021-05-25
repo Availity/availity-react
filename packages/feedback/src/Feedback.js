@@ -45,11 +45,13 @@ const Feedback = ({
           analytics={analytics}
           showSupport={showSupport}
           supportZIndex={supportZIndex}
+          feedbackToggle={feedbackToggle}
           {...formProps}
         />
       ) : (
         <FeedbackDropdown
           onFeedbackSent={onFeedbackSent}
+          feedbackToggle={feedbackToggle}
           prompt={prompt}
           analytics={analytics}
           toggle={() => feedbackToggle()}

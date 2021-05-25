@@ -10,6 +10,7 @@ const FeedbackModal = ({
   zIndex,
   showSupport,
   supportZIndex,
+  feedbackToggle,
   ...formOptions
 }) => {
   const [supportIsActive, setSupportIsActive] = React.useState(false);
@@ -20,6 +21,7 @@ const FeedbackModal = ({
       setSupportIsActive={setSupportIsActive}
       zIndex={supportZIndex}
       toggle={toggle}
+      feedbackToggle={feedbackToggle}
     />
   ) : (
     <Modal
@@ -51,6 +53,7 @@ FeedbackModal.propTypes = {
   showSupport: PropTypes.bool,
   zIndex: PropTypes.oneOfType([PropTypes.number, PropTypes.string]),
   supportZIndex: PropTypes.oneOfType([PropTypes.number, PropTypes.string]),
+  feedbackToggle: PropTypes.func,
 };
 
 export default FeedbackModal;

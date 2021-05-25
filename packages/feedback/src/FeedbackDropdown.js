@@ -13,6 +13,7 @@ const FeedbackDropdown = ({
   supportToggle,
   supportZIndex,
   modal,
+  feedbackToggle,
   ...formProps
 }) => {
   const [supportIsActive, setSupportIsActive] = React.useState(false);
@@ -25,11 +26,13 @@ const FeedbackDropdown = ({
         isOpen={supportIsActive}
         setSupportIsActive={setSupportIsActive}
         supportZIndex={supportZIndex}
+        feedbackToggle={feedbackToggle}
       />
     ) : (
       <SupportDropdown
         toggle={supportToggle}
         setSupportIsActive={setSupportIsActive}
+        feedbackToggle={feedbackToggle}
       />
     );
   }
@@ -60,6 +63,7 @@ FeedbackDropdown.propTypes = {
   supportToggle: PropTypes.func,
   supportZIndex: PropTypes.string,
   modal: PropTypes.bool,
+  feedbackToggle: PropTypes.func,
 };
 
 export default FeedbackDropdown;

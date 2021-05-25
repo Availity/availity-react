@@ -6,7 +6,7 @@ import 'react-block-ui/style.css';
 
 import SupportForm from './SupportForm';
 
-const SupportDropdown = ({ setSupportIsActive }) => {
+const SupportDropdown = ({ setSupportIsActive, feedbackToggle }) => {
   const [blocking, setBlocking] = useState(null);
 
   return (
@@ -15,6 +15,7 @@ const SupportDropdown = ({ setSupportIsActive }) => {
         <SupportForm
           setSupportIsActive={setSupportIsActive}
           setBlocking={setBlocking}
+          feedbackToggle={feedbackToggle}
         />
       </BlockUi>
     </DropdownMenu>
@@ -23,6 +24,7 @@ const SupportDropdown = ({ setSupportIsActive }) => {
 
 SupportDropdown.propTypes = {
   setSupportIsActive: PropTypes.func,
+  feedbackToggle: PropTypes.func,
 };
 
 export default SupportDropdown;

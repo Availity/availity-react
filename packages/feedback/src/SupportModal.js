@@ -11,6 +11,7 @@ const SupportModal = ({
   toggle,
   supportZIndex,
   setSupportIsActive,
+  feedbackToggle,
 }) => {
   const [blocking, setBlocking] = useState(null);
 
@@ -31,6 +32,7 @@ const SupportModal = ({
         <SupportForm
           setSupportIsActive={setSupportIsActive}
           setBlocking={setBlocking}
+          feedbackToggle={feedbackToggle}
         />
       </BlockUi>
     </Modal>
@@ -42,6 +44,7 @@ SupportModal.propTypes = {
   toggle: PropTypes.func.isRequired,
   supportZIndex: PropTypes.oneOfType([PropTypes.number, PropTypes.string]),
   setSupportIsActive: PropTypes.func,
+  feedbackToggle: PropTypes.func,
 };
 
 export default SupportModal;
