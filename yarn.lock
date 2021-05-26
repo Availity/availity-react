@@ -191,6 +191,16 @@
     "@babel/runtime" "^7.10.2"
     tus-js-client "1.7.1"
 
+"@availity/yup@^3.0.11":
+  version "3.0.11"
+  resolved "https://registry.yarnpkg.com/@availity/yup/-/yup-3.0.11.tgz#53d28219d916388040bbc04b92ff92d1e4c75846"
+  integrity sha512-6cjihpbKy00gv818QKS3G9SGbitPRSDPCywshcrqcFMfPzERgEpZ6Jz6sJFAkVAQf/Y8CKny3EsVCYk7ut24ng==
+  dependencies:
+    "@babel/runtime" "^7.10.2"
+    core-js "^3.12.1"
+    lodash "^4.17.21"
+    merge-options-es5 "^1.0.0"
+
 "@availity/yup@^3.0.2":
   version "3.0.8"
   resolved "https://registry.yarnpkg.com/@availity/yup/-/yup-3.0.8.tgz#fcd963c33f2184db801db29451192897c40e054e"
@@ -7764,6 +7774,11 @@ core-js@^3.0.1, core-js@^3.0.4, core-js@^3.1.2, core-js@^3.6.1, core-js@^3.6.5:
   resolved "https://registry.yarnpkg.com/core-js/-/core-js-3.9.1.tgz#cec8de593db8eb2a85ffb0dbdeb312cb6e5460ae"
   integrity sha512-gSjRvzkxQc1zjM/5paAmL4idJBFzuJoo+jDjF1tStYFMV2ERfD02HhahhCGXUyHxQRG4yFKVSdO6g62eoRMcDg==
 
+core-js@^3.12.1:
+  version "3.13.0"
+  resolved "https://registry.yarnpkg.com/core-js/-/core-js-3.13.0.tgz#58ca436bf01d6903aee3d364089868d0d89fe58d"
+  integrity sha512-iWDbiyha1M5vFwPFmQnvRv+tJzGbFAm6XimJUT0NgHYW3xZEs1SkCAcasWSVFxpI2Xb/V1DDJckq3v90+bQnog==
+
 core-util-is@1.0.2, core-util-is@~1.0.0:
   version "1.0.2"
   resolved "https://registry.yarnpkg.com/core-util-is/-/core-util-is-1.0.2.tgz#b5fd54220aa2bc5ab57aab7140c940754503c1a7"
@@ -13804,7 +13819,7 @@ lodash.zip@^4.2.0:
   resolved "https://registry.yarnpkg.com/lodash.zip/-/lodash.zip-4.2.0.tgz#ec6662e4896408ed4ab6c542a3990b72cc080020"
   integrity sha1-7GZi5IlkCO1KtsVCo5kLcswIACA=
 
-lodash@4.x, lodash@^4.0.0, lodash@^4.0.1, lodash@^4.1.1, lodash@^4.17.10, lodash@^4.17.11, lodash@^4.17.12, lodash@^4.17.14, lodash@^4.17.15, lodash@^4.17.19, lodash@^4.17.20, lodash@^4.17.4, lodash@^4.17.5, lodash@^4.2.1, lodash@~4.17.10:
+lodash@4.x, lodash@^4.0.0, lodash@^4.0.1, lodash@^4.1.1, lodash@^4.17.10, lodash@^4.17.11, lodash@^4.17.12, lodash@^4.17.14, lodash@^4.17.15, lodash@^4.17.19, lodash@^4.17.20, lodash@^4.17.21, lodash@^4.17.4, lodash@^4.17.5, lodash@^4.2.1, lodash@~4.17.10:
   version "4.17.21"
   resolved "https://registry.yarnpkg.com/lodash/-/lodash-4.17.21.tgz#679591c564c3bffaae8454cf0b3df370c3d6911c"
   integrity sha512-v2kDEe57lecTulaDIuNTPy3Ry4gLGJ6Z1O3vE1krgXZNrsQ+LFTGHVxVjcXPs17LhbZVGedAJv8XZ1tvj5FvSg==
