@@ -6,8 +6,12 @@ import { AvOrganizationSelect } from '@availity/select/resources';
 import * as yup from 'yup';
 import nativeForm from '@availity/native-form';
 import { avOrganizationsApi, avWebQLApi } from '@availity/api-axios';
+import '@availity/yup';
 
 const SUPPORT_PERMISSION_ID = '7205';
+
+const ORG_VALIDATION_MESSAGE =
+  'Please select an organization from the dropdown.';
 
 const getToken = () =>
   document.cookie.replace(
@@ -84,6 +88,27 @@ const openSupport = async (
   feedbackToggle(false);
 };
 
+function orgSelectTest(msg) {
+  const orgSelectSchema = yup.object().shape({
+    id: yup.string().isRequired(true, ORG_VALIDATION_MESSAGE),
+    name: yup.string().isRequired(true, ORG_VALIDATION_MESSAGE),
+  });
+
+  return this.test({
+    name: 'orgSelectTest',
+    exclusive: true,
+    message: msg || 'This field is invalid.',
+    async test(componentValue) {
+      if (!componentValue) return true;
+
+      const valid = await orgSelectSchema.isValid(componentValue);
+      return valid;
+    },
+  });
+}
+
+yup.addMethod(yup.object, 'orgSelectTest', orgSelectTest);
+
 const SupportForm = ({ setSupportIsActive, setBlocking, feedbackToggle }) => (
   <>
     <ModalHeader aria-live="assertive" id="support-form-header">
@@ -97,13 +122,12 @@ const SupportForm = ({ setSupportIsActive, setBlocking, feedbackToggle }) => (
       initialValues={{
         organization: undefined,
       }}
-      validationSchema={yup.object().shape({
+      validationSchema={yup.object({
         organization: yup
           .object()
-          .shape({
-            id: yup.string(),
-          })
-          .required('This field is required.'),
+          .orgSelectTest(ORG_VALIDATION_MESSAGE)
+          .isRequired(ORG_VALIDATION_MESSAGE)
+          .typeError(ORG_VALIDATION_MESSAGE),
       })}
       onSubmit={(values) =>
         openSupport(values, setBlocking, setSupportIsActive, feedbackToggle)
@@ -113,6 +137,7 @@ const SupportForm = ({ setSupportIsActive, setBlocking, feedbackToggle }) => (
         <AvOrganizationSelect
           id="organization"
           name="organization"
+          label="Select an Organization"
           data-testid="org-dropdown"
           getResult={(data) => data.organizations}
         />
