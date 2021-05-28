@@ -1,7 +1,7 @@
 import React, { Component, createRef } from 'react';
 import PropTypes from 'prop-types';
 import qs from 'qs';
-import get from 'lodash.get';
+import get from 'lodash/get';
 
 import AvSelect from './AvSelect';
 import AvSelectField from './AvSelectField';

@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import Skeleton from 'react-loading-skeleton';
 import { Img } from 'react-image';
-import get from 'lodash.get';
+import get from 'lodash/get';
 import { useSpaces, useSpacesContext } from './Spaces';
 
 const skeletonPropType = PropTypes.shape({

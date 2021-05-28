@@ -2,13 +2,13 @@ import React, { createContext, useContext, useState, useMemo } from 'react';
 import PropTypes from 'prop-types';
 import { useEffectAsync } from '@availity/hooks';
 import avMessages from '@availity/message-core';
-import get from 'lodash.get';
-import isUndefined from 'lodash.isundefined';
-import isNumber from 'lodash.isnumber';
-import sortBy from 'lodash.sortby';
-import reduce from 'lodash.reduce';
-import clone from 'lodash.clone';
-import findwhere from 'lodash.findwhere';
+import get from 'lodash/get';
+import isUndefined from 'lodash/isUndefined';
+import isNumber from 'lodash/isNumber';
+import sortBy from 'lodash/sortBy';
+import reduce from 'lodash/reduce';
+import clone from 'lodash/clone';
+import find from 'lodash/find';
 import { avSettingsApi, avLogMessagesApi } from '@availity/api-axios';
 
 const MAX_FAVORITES = 60;
@@ -136,7 +136,7 @@ const Favorites = ({ children }) => {
 
     sendUpdate(newFavorites);
 
-    const isFavorited = findwhere(newFavorites, { id });
+    const isFavorited = find(newFavorites, { id });
 
     return !!isFavorited;
   };
@@ -155,14 +155,10 @@ Favorites.propTypes = {
 };
 
 export const useFavorites = (id) => {
-  const { favorites, deleteFavorite, addFavorite } = useContext(
-    FavoritesContext
-  );
+  const { favorites, deleteFavorite, addFavorite } =
+    useContext(FavoritesContext);
 
-  const isFavorited = useMemo(() => !!findwhere(favorites, { id }), [
-    favorites,
-    id,
-  ]);
+  const isFavorited = useMemo(() => !!find(favorites, { id }), [favorites, id]);
 
   const toggleFavorite = async () =>
     isFavorited ? deleteFavorite(id) : addFavorite(id);

@@ -25,19 +25,19 @@
     "@availity/feedback": "^5.6.2",
     "@availity/payer-logo": "^4.0.30",
     "@availity/training-link": "^1.2.19",
-    "classnames": "^2.2.6",
+    "classnames": "^2.3.1",
     "prop-types": "^15.7.2"
   },
   "devDependencies": {
-    "@availity/api-axios": "^5.4.4",
-    "@availity/api-core": "^6.0.1",
+    "@availity/api-axios": "^5.5.14",
+    "@availity/api-core": "^7.0.2",
     "@availity/localstorage-core": "^3.0.0",
     "@availity/spaces": "^4.0.30",
-    "axios": "^0.21.0",
-    "formik": "^2.2.6",
-    "react": "^17.0.1",
-    "react-dom": "^17.0.1",
-    "yup": "^0.29.3"
+    "axios": "^0.21.1",
+    "formik": "^2.2.8",
+    "react": "^17.0.2",
+    "react-dom": "^17.0.2",
+    "yup": "^0.30.0"
   },
   "peerDependencies": {
     "@availity/api-axios": "^5.4.4",

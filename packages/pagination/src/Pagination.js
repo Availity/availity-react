@@ -1,7 +1,7 @@
 import React, { useState, useContext, useEffect, useRef } from 'react';
 import PropTypes from 'prop-types';
-import isFunction from 'lodash.isfunction';
-import isEqual from 'lodash.isequal';
+import isFunction from 'lodash/isFunction';
+import isEqual from 'lodash/isEqual';
 import * as avLocalStorage from '@availity/localstorage-core';
 import { useDebounce } from 'react-use';
 

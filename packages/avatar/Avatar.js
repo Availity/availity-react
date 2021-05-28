@@ -4,7 +4,7 @@ import Skeleton from 'react-loading-skeleton';
 import { Img } from 'react-image';
 import { useEffectAsync } from '@availity/hooks';
 import { avSettingsApi } from '@availity/api-axios';
-import get from 'lodash.get';
+import get from 'lodash/get';
 
 const skeletonPropType = PropTypes.shape({
   width: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),

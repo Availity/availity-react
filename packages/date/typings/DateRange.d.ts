@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { DateRangePicker } from 'react-dates';
 import { Moment } from 'moment';
-import { limitType, limitTypeAlt, DateBaseProps } from './Date';
+import { DateBaseProps } from './Date';
 
 interface MomentDateRange {
   startDate: Moment;

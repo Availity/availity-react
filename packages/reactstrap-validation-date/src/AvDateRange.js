@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { InputGroup, Button } from 'reactstrap';
 import moment from 'moment';
-import pick from 'lodash.pick';
+import pick from 'lodash/pick';
 import {
   inputType,
   isoDateFormat,
@@ -76,9 +76,10 @@ class AvDateRange extends Component {
       if (getDefaultValue(props.end.name)) {
         this.state.endValue = getDefaultValue(props.end.name);
       } else if (end) {
-        this.state.endValue = (end.fromStart
-          ? moment(this.state.startValue, this.state.format)
-          : moment(new Date())
+        this.state.endValue = (
+          end.fromStart
+            ? moment(this.state.startValue, this.state.format)
+            : moment(new Date())
         )
           .add(end.value, end.units)
           .format(this.state.format);
@@ -452,9 +453,8 @@ class AvDateRange extends Component {
     return ranges ? (
       <div className="d-flex flex-column ml-2 mt-2">
         {Object.keys(ranges).map((text) => {
-          const { startDate: startDateFunc, endDate: endDateFunc } = ranges[
-            text
-          ];
+          const { startDate: startDateFunc, endDate: endDateFunc } =
+            ranges[text];
 
           const presetStartDate = startDateFunc(moment());
           const presetEndDate = endDateFunc(moment());
