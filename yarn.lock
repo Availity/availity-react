@@ -5723,7 +5723,7 @@ autoprefixer@^9.4.7, autoprefixer@^9.6.1, autoprefixer@^9.8.6:
     postcss "^7.0.32"
     postcss-value-parser "^4.1.0"
 
-availity-reactstrap-validation@2.7.1, availity-reactstrap-validation@^2.5.3, availity-reactstrap-validation@^2.7.1:
+availity-reactstrap-validation@2.7.1, availity-reactstrap-validation@^2.7.1:
   version "2.7.1"
   resolved "https://registry.yarnpkg.com/availity-reactstrap-validation/-/availity-reactstrap-validation-2.7.1.tgz#6280fbdeee98a7ea5bdd8539f746e06e2c4c28b8"
   integrity sha512-XJ1riSZZ0C7V+z4/2Jdsi64aFS5Fdp/x0K5/bFCAKN2+0GmOcfF3/rBSHlB+3S3PnzWDrjikupXG9LVKzZbV7w==
@@ -17308,7 +17308,7 @@ react-dom@^16.8.3:
     prop-types "^15.6.2"
     scheduler "^0.19.1"
 
-react-dom@^17.0.1, react-dom@^17.0.2:
+react-dom@^17.0.2:
   version "17.0.2"
   resolved "https://registry.yarnpkg.com/react-dom/-/react-dom-17.0.2.tgz#ecffb6845e3ad8dbfcdc498f0d0a939736502c23"
   integrity sha512-s4h96KtLDUQlsENhMn1ar8t2bEa+q/YAtj8pPPdIjPDGBDIVNsrD9aXNWqspUe6AzKCIG0C1HZZLqLV7qpOBGA==
@@ -17780,7 +17780,7 @@ react@^16.8.3:
     object-assign "^4.1.1"
     prop-types "^15.6.2"
 
-react@^17.0.1, react@^17.0.2:
+react@^17.0.2:
   version "17.0.2"
   resolved "https://registry.yarnpkg.com/react/-/react-17.0.2.tgz#d0b5cc516d29eb3eee383f75b62864cfb6800037"
   integrity sha512-gnhPt75i/dq/z3/6q/0asP78D0u592D5L1pd7M8P+dck6Fu/jJeL6iVVK23fptSUZj8Vjf++7wXA8UNclGQcbA==
@@ -17788,7 +17788,7 @@ react@^17.0.1, react@^17.0.2:
     loose-envify "^1.1.0"
     object-assign "^4.1.1"
 
-reactstrap@*, reactstrap@^8.7.0, reactstrap@^8.9.0:
+reactstrap@*, reactstrap@^8.9.0:
   version "8.9.0"
   resolved "https://registry.yarnpkg.com/reactstrap/-/reactstrap-8.9.0.tgz#bca4afa3f5cd18899ef9b33d877a141886d5abae"
   integrity sha512-pmf33YjpNZk1IfrjqpWCUMq9hk6GzSnMWBAofTBNIRJQB1zQ0Au2kzv3lPUAFsBYgWEuI9iYa/xKXHaboSiMkQ==
