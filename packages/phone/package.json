@@ -10,16 +10,16 @@
     "access": "public"
   },
   "dependencies": {
-    "libphonenumber-js": "^1.8.6",
+    "libphonenumber-js": "^1.9.18",
     "prop-types": "^15.7.2"
   },
   "devDependencies": {
-    "formik": "^2.2.6",
-    "libphonenumber-js": "^1.7.38",
-    "react": "^17.0.1",
-    "react-dom": "^17.0.1",
-    "reactstrap": "^8.7.0",
-    "yup": "^0.29.3"
+    "formik": "^2.2.8",
+    "libphonenumber-js": "^1.9.18",
+    "react": "^17.0.2",
+    "react-dom": "^17.0.2",
+    "reactstrap": "^8.9.0",
+    "yup": "^0.30.0"
   },
   "peerDependencies": {
     "formik": "^2.0.1",

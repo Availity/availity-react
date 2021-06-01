@@ -11,7 +11,7 @@ const SpacesDisclaimer = ({ styled, spaceId, markdown, ...props }) => {
 
   if (disclaimer) {
     const children = markdown ? (
-      <ReactMarkdown source={disclaimer} />
+      <ReactMarkdown>{disclaimer}</ReactMarkdown>
     ) : (
       disclaimer
     );

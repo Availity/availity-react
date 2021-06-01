@@ -5,7 +5,7 @@ import { InputGroup, Input, Button, Row, Col } from 'reactstrap';
 import { DateRangePicker } from 'react-dates';
 import classNames from 'classnames';
 import { useField, useFormikContext } from 'formik';
-import pick from 'lodash.pick';
+import pick from 'lodash/pick';
 import moment from 'moment';
 import '../polyfills';
 

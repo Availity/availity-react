@@ -1,7 +1,7 @@
 import React, { useRef, useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
 import qs from 'qs';
-import get from 'lodash.get';
+import get from 'lodash/get';
 import { useFormikContext } from 'formik';
 
 import Select from './Select';

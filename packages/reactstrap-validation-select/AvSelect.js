@@ -4,19 +4,15 @@ import classNames from 'classnames';
 import { AvBaseInput } from 'availity-reactstrap-validation';
 import Select, { components as reactSelectComponents } from 'react-select';
 import Creatable from 'react-select/creatable';
-import get from 'lodash.get';
-import has from 'lodash.has';
-import isEqual from 'lodash.isequal';
-import isFunction from 'lodash.isfunction';
+import get from 'lodash/get';
+import has from 'lodash/has';
+import isEqual from 'lodash/isEqual';
+import isFunction from 'lodash/isFunction';
 
 import { AsyncPaginate } from 'react-select-async-paginate';
 
-const {
-  DownChevron,
-  CrossIcon,
-  DropdownIndicator,
-  ClearIndicator,
-} = reactSelectComponents;
+const { DownChevron, CrossIcon, DropdownIndicator, ClearIndicator } =
+  reactSelectComponents;
 
 const createOption = (label, labelKey = 'label', valueKey = 'value') => ({
   [labelKey]: label,
@@ -266,14 +262,8 @@ class AvSelect extends AvBaseInput {
   }
 
   render() {
-    const {
-      className,
-      selectRef,
-      styles,
-      creatable,
-      options,
-      ...attributes
-    } = this.props;
+    const { className, selectRef, styles, creatable, options, ...attributes } =
+      this.props;
     const { newOptions } = this.state;
     const touched =
       this.context.FormCtrl && this.context.FormCtrl.isTouched(this.props.name);

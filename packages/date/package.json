@@ -22,13 +22,13 @@
   "homepage": "https://github.com/Availity/availity-react/tree/master/packages/date#readme",
   "devDependencies": {
     "@availity/form": "^0.5.33",
-    "@availity/yup": "^3.0.2",
-    "@types/react-dates": "^21.8.0",
-    "formik": "^2.2.6",
-    "react": "^17.0.1",
-    "react-dom": "^17.0.1",
-    "reactstrap": "^8.7.0",
-    "yup": "^0.29.3"
+    "@availity/yup": "^3.0.11",
+    "@types/react-dates": "^21.8.2",
+    "formik": "^2.2.8",
+    "react": "^17.0.2",
+    "react-dom": "^17.0.2",
+    "reactstrap": "^8.9.0",
+    "yup": "^0.30.0"
   },
   "peerDependencies": {
     "@availity/form": "^0.1.0",
@@ -40,9 +40,9 @@
   },
   "dependencies": {
     "@availity/icon": "^0.7.18",
-    "classnames": "^2.2.6",
-    "lodash.pick": "^4.4.0",
-    "moment": "^2.24.0",
+    "classnames": "^2.3.1",
+    "lodash": "^4.17.21",
+    "moment": "^2.29.1",
     "prop-types": "^15.7.2",
     "react-dates": "^21.8.0"
   },

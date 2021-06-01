@@ -1,5 +1,3 @@
-import FavoriteHeart from './FavoriteHeart';
-
 export interface FavoriteType {
   id: string;
   pos: number;

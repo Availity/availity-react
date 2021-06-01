@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import { Util, Button } from 'reactstrap';
 import InfiniteScroll from 'react-infinite-scroll-component';
 import BlockUI from 'react-block-ui';
-import isFunction from 'lodash.isfunction';
+import isFunction from 'lodash/isFunction';
 import 'react-block-ui/style.css';
 import { usePagination } from './Pagination';
 

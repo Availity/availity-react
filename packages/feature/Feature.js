@@ -1,28 +1,23 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 import BlockUi from 'react-block-ui';
 import 'react-block-ui/style.css';
+import { useEffectAsync } from '@availity/hooks';
 import isFeatureEnabled from './isFeatureEnabled';
 
 const Feature = ({ features, loader, whenDisabled, children, negate }) => {
   const [loading, setLoading] = useState(false);
   const [enabled, setEnabled] = useState(null);
 
-  useEffect(() => {
-    // @see https://github.com/sindresorhus/eslint-plugin-unicorn/issues/392
-    // eslint-disable-next-line unicorn/consistent-function-scoping
-    const checkFeatures = async () => {
-      if (!loading) setLoading(true);
+  useEffectAsync(async () => {
+    if (!loading) setLoading(true);
 
-      const _enabled = await isFeatureEnabled(features);
+    const _enabled = await isFeatureEnabled(features);
 
-      setEnabled(_enabled);
+    setEnabled(_enabled);
 
-      setLoading(false);
-    };
-
-    checkFeatures();
-  }, [loading, features]);
+    setLoading(false);
+  }, [features]);
 
   if (loading) {
     if (loader) return loader === true ? <BlockUi blocking /> : loader;

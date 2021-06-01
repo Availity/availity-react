@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import classNames from 'classnames';
-import toNumber from 'lodash.tonumber';
+import toNumber from 'lodash/toNumber';
 
 const Progress = ({
   tag: Tag,
