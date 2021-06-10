@@ -20,7 +20,7 @@
     "access": "public"
   },
   "dependencies": {
-    "@availity/form": "^0.5.28",
+    "@availity/form": "^0.5.34",
     "@availity/hooks": "^1.8.0",
     "@availity/icon": "^0.7.17",
     "@availity/select": "^0.13.3",
