@@ -36,7 +36,7 @@
   "peerDependencies": {
     "@availity/api-axios": "^3.0.1",
     "@availity/api-core": "^3.0.0",
-    "@availity/form": "^0.2.0",
+    "@availity/form": "^0.2.0 || ^0.3.0 || ^0.4.0  || ^0.5.0",
     "@availity/localstorage-core": "^2.5.0",
     "axios": "^0.19.2",
     "formik": "^2.0.1",
