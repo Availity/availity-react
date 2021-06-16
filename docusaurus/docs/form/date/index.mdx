@@ -2,7 +2,9 @@
 title: Getting Started
 ---
 
-Wrapper for react-dates to work with formik.
+Wrapper for react-dates to work with `formik`.
+
+It can be helpful to understand the `formik` hook `useFormikContext()` for accessing values from the form. The documentation can be found [here](https://formik.org/docs/api/useFormikContext).
 
 ### Installation
 
@@ -12,7 +14,9 @@ npm install @availity/date @availity/form formik@^2.0.1-rc.5 react reactstrap --
 
 ### Validation
 
-See [yup](https://github.com/jquense/yup) and [@availity/yup](https://github.com/Availity/sdk-js/tree/master/packages/yup). Note to use this package with `@availity/yup` you will need to import the `moment` version as noted in the example below.
+See [yup](https://github.com/jquense/yup) and [@availity/yup](https://github.com/Availity/sdk-js/tree/master/packages/yup). Note: to use this package with `@availity/yup` you will need to import the `moment` version as noted in the example below.
+
+Currently, we recommend pinning the `yup` version to `0.31.1` to avoid bringing in some breaking changes from that project.
 
 ### References
 

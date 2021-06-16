@@ -1,4 +1,5 @@
 ---
+
 title: Getting Started
 ---Availity form components that are wired to be hooked up to formik
 
@@ -14,9 +15,15 @@ npx install-peerdeps @availity/form --save
 
 See [Formik documentation](https://jaredpalmer.com/formik/docs/api/formik)
 
+### Accessing form values using hooks
+
+It can be helpful to understand the `formik` hook `useFormikContext()` for accessing values from the form. The documentation can be found [here](https://formik.org/docs/api/useFormikContext).
+
 ### Validation
 
 See [yup](https://github.com/jquense/yup) and [@availity/yup](https://github.com/Availity/sdk-js/tree/master/packages/yup).
+
+Currently, we recommend pinning the `yup` version to `0.31.1` to avoid bringing in some breaking changes from that project.
 
 ### Browser Compatibility! ( Internet Explorer )
 
