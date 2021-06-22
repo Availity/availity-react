@@ -16,6 +16,7 @@ export interface UploadProps {
     name?: string;
     showFileDrop?: boolean;
     getDropRejectionMessage?: ((errors: FileError[], file: File) => string);
+    onPasswordSubmit?: Function;
 }
 
 declare const Upload: React.ComponentType<UploadProps>;

@@ -18,6 +18,7 @@ export interface UploadProgressBarProps {
     className?: string;
     tag?: React.ReactType | string;
     striped?: boolean;
+    onPasswordSubmit?: Function;
 }
 
 

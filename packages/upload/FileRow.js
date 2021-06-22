@@ -23,7 +23,7 @@ const fileTypeIconMap = {
   pdf: 'file-pdf',
 };
 
-const FileRow = ({ onRemove, children, file }) => {
+const FileRow = ({ onRemove, children, file, onPasswordSubmit }) => {
   const remove = () => {
     onRemove(file.id);
   };
@@ -59,7 +59,7 @@ const FileRow = ({ onRemove, children, file }) => {
         </div>
       </td>
       <td className="align-middle" style={{ width: '45%' }}>
-        <UploadProgressBar upload={file} />
+        <UploadProgressBar upload={file} onPasswordSubmit={onPasswordSubmit} />
       </td>
       <td className="align-middle" style={{ width: '10%' }}>
         <Button
@@ -90,6 +90,7 @@ FileRow.propTypes = {
     }).isRequired,
     options: PropTypes.object,
   }),
+  onPasswordSubmit: PropTypes.func,
 };
 
 export default FileRow;

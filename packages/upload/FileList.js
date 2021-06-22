@@ -3,15 +3,26 @@ import PropTypes from 'prop-types';
 import { Table } from 'reactstrap';
 import FileRow from './FileRow';
 
-const FileList = ({ files, children, onRemoveFile, ...rest }) => {
+const FileList = ({
+  files,
+  children,
+  onRemoveFile,
+  onPasswordSubmit,
+  ...rest
+}) => {
   const list = useMemo(
     () =>
       files.map((file) => (
-        <FileRow key={file.id} file={file} onRemove={onRemoveFile}>
+        <FileRow
+          key={file.id}
+          file={file}
+          onRemove={onRemoveFile}
+          onPasswordSubmit={onPasswordSubmit}
+        >
           {children}
         </FileRow>
       )),
-    [files, children, onRemoveFile]
+    [files, children, onRemoveFile, onPasswordSubmit]
   );
 
   if (typeof children === 'function') {
@@ -46,6 +57,7 @@ FileList.propTypes = {
   files: PropTypes.array,
   children: PropTypes.func,
   onRemoveFile: PropTypes.func,
+  onPasswordSubmit: PropTypes.func,
 };
 
 export default FileList;

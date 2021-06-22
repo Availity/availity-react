@@ -79,6 +79,10 @@ Set as true to show a drag and drop file upload option instead of a button (file
 
 Override the default error message for files rejected when `showFileDrop` is `true`.
 
+### `onPasswordSubmit?: (event) => void`
+
+When a user uploads an encrypted file, they are prompted to input a password. This function is called when the password form is submitted. By default, the event bubbles and will submit a form if the upload component is a child element of that form. Useful for adding event.stopPropagation() if this behavior is not desired.
+
 ### Example
 
 ```jsx
