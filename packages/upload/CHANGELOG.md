@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# 2.4.0 (2021-06-23)
+
+
+### Features
+
+* add onPasswordSubmit handler to upload ([ce6e277](https://github.com/Availity/availity-react/commit/ce6e2771878481d50d49193a6a1b3571e629107f))
+
+
+
+
+
 ## 2.3.21 (2021-06-01)
 
 **Note:** Version bump only for package @availity/upload
