@@ -9,6 +9,7 @@ export interface FileRowProps {
     onRemove: Function;
     children?: Function;
     file?: File;
+    onPasswordSubmit?: Function;
 }
 
 declare const FileRow: React.ComponentType<FileRowProps>;

@@ -149,6 +149,7 @@ class Upload extends Component {
       children,
       showFileDrop,
       disabled,
+      onPasswordSubmit,
     } = this.props;
     const { files } = this.state;
 
@@ -207,7 +208,11 @@ class Upload extends Component {
 
     return (
       <>
-        <FileList files={files} onRemoveFile={this.removeFile}>
+        <FileList
+          files={files}
+          onRemoveFile={this.removeFile}
+          onPasswordSubmit={onPasswordSubmit}
+        >
           {children}
         </FileList>
         {fileAddArea}
@@ -233,6 +238,7 @@ Upload.propTypes = {
   showFileDrop: PropTypes.bool,
   getDropRejectionMessage: PropTypes.func,
   disabled: PropTypes.bool,
+  onPasswordSubmit: PropTypes.func,
 };
 
 Upload.defaultProps = {

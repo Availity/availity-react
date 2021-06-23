@@ -13,6 +13,8 @@ import {
 } from 'reactstrap';
 
 class UploadProgressBar extends Component {
+  _isMounted = false;
+
   constructor(props) {
     super(props);
     this.state = {
@@ -23,29 +25,46 @@ class UploadProgressBar extends Component {
     props.upload.onError.push(this.onError);
   }
 
+  componentDidMount = () => {
+    this._isMounted = true;
+  };
+
+  componentWillUnmount = () => {
+    this._isMounted = false;
+  };
+
   onProgress = () => {
     const { upload, onProgress } = this.props;
-    this.setState({ percentage: upload.percentage, error: false });
+    if (this._isMounted) {
+      this.setState({ percentage: upload.percentage, error: false });
+    }
     if (onProgress) onProgress(upload);
   };
 
   onSuccess = () => {
     const { onSuccess, upload } = this.props;
-    this.setState({ percentage: 100, error: false });
+    if (this._isMounted) {
+      this.setState({ percentage: 100, error: false });
+    }
     if (onSuccess) onSuccess(upload);
   };
 
   onError = () => {
     const { onError, upload } = this.props;
-    this.setState({ error: true });
+    if (this._isMounted) {
+      this.setState({ error: true });
+    }
     if (onError) onError(upload);
   };
 
   verifyPassword = (event) => {
-    const { upload } = this.props;
+    const { upload, onPasswordSubmit } = this.props;
     const { password } = this.state;
     event.preventDefault();
     upload.sendPassword(password);
+    if (typeof onPasswordSubmit === 'function') {
+      onPasswordSubmit(event);
+    }
     this.toggleModal();
   };
 
@@ -58,7 +77,7 @@ class UploadProgressBar extends Component {
   };
 
   render() {
-    const { upload, ...rest } = this.props;
+    const { upload, onPasswordSubmit, ...rest } = this.props;
     const { percentage, error, modalOpen } = this.state;
     return upload.errorMessage ? (
       <>
@@ -67,7 +86,12 @@ class UploadProgressBar extends Component {
         </span>
         {upload.status === 'encrypted' && (
           <div className="pwRequired" data-testid="password-form-encrypted">
-            <Button size="sm" color="primary" onClick={this.toggleModal}>
+            <Button
+              data-testid=" password-form-button"
+              size="sm"
+              color="primary"
+              onClick={this.toggleModal}
+            >
               Enter password
             </Button>
             <Modal isOpen={modalOpen} toggle={this.toggleModal}>
@@ -126,6 +150,7 @@ UploadProgressBar.propTypes = {
   animated: PropTypes.bool,
   className: PropTypes.string,
   striped: PropTypes.bool,
+  onPasswordSubmit: PropTypes.func,
 };
 
 UploadProgressBar.defaultProps = {};

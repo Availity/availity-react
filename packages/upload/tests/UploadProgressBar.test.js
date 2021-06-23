@@ -1,5 +1,5 @@
 import React from 'react';
-import { render, cleanup } from '@testing-library/react';
+import { render, cleanup, fireEvent } from '@testing-library/react';
 import MockUpload from './mockUpload';
 import { UploadProgressBar } from '..';
 
@@ -48,6 +48,51 @@ describe('UploadProgressBar', () => {
 
     const btn = getByTestId('password-form-encrypted');
     expect(btn).toBeDefined();
+  });
+
+  test('should submit parent form on password submit', async () => {
+    const handleSubmit = jest.fn();
+    const SubmittingForm = () => (
+      <form data-testid="form" onSubmit={handleSubmit}>
+        <UploadProgressBar upload={instance} />
+      </form>
+    );
+    const { getByTestId, findByLabelText, findByTestId } = render(
+      <SubmittingForm />
+    );
+    instance.error('Encrypted files require a password', 'encrypted');
+    fireEvent.click(getByTestId('password-form-button'));
+    const input = await findByLabelText('Password');
+    fireEvent.change(input, { target: { value: 'password123' } });
+    const form = await findByTestId('password-form-modal');
+    fireEvent.submit(form);
+    const progress = await findByTestId('upload-progress');
+    expect(progress).toBeDefined();
+    expect(handleSubmit).toHaveBeenCalled();
+  });
+
+  test('should not submit parent form with onPasswordSubmit stopPropagation', async () => {
+    const handleSubmit = jest.fn();
+    const NonSubmittingForm = () => (
+      <form data-testid="form" onSubmit={handleSubmit}>
+        <UploadProgressBar
+          upload={instance}
+          onPasswordSubmit={(e) => e.stopPropagation()}
+        />
+      </form>
+    );
+    const { getByTestId, findByLabelText, findByTestId } = render(
+      <NonSubmittingForm />
+    );
+    instance.error('Encrypted files require a password', 'encrypted');
+    fireEvent.click(getByTestId('password-form-button'));
+    const input = await findByLabelText('Password');
+    fireEvent.change(input, { target: { value: 'password123' } });
+    const form = await findByTestId('password-form-modal');
+    fireEvent.submit(form);
+    const progress = await findByTestId('upload-progress');
+    expect(progress).toBeDefined();
+    expect(handleSubmit).not.toHaveBeenCalled();
   });
 
   // 1 Test for striped and animated
