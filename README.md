@@ -8,9 +8,10 @@
 
 ## Supported Browsers
 
-- Internet Explorer 11+
 - Google Chrome
 - Mozilla Firefox
+- Microsoft Edge
+- Internet Explorer 11+ (Internet Explorer will no longer be supported starting August 21st, 2021)
 
 ## Storybook
 
