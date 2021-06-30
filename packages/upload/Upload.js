@@ -9,7 +9,6 @@ import FileList from './FileList';
 import './styles.scss';
 
 const validationAttrs = ['min', 'max', 'required'];
-
 class Upload extends Component {
   constructor(props) {
     super(props);
@@ -40,6 +39,7 @@ class Upload extends Component {
   };
 
   setFiles = (files) => {
+    console.log('lands in setFiles');
     let selectedFiles = [];
     for (let i = 0; i < files.length; i++) {
       selectedFiles[i] = files[i];
@@ -53,7 +53,6 @@ class Upload extends Component {
         Math.max(0, this.props.max - this.state.files.length)
       );
     }
-
     this.files = this.files.concat(
       selectedFiles.map((file) => {
         const upload = new UploadCore(file, {
@@ -65,6 +64,8 @@ class Upload extends Component {
           allowedFileNameCharacters: this.props.allowedFileNameCharacters,
         });
         upload.id = `${upload.id}-${uuid()}`;
+        if (this.props.onFilePreUpload)
+          this.props.onFilePreUpload(upload, file);
         if (file.dropRejectionMessage) {
           upload.errorMessage = file.dropRejectionMessage;
         } else {
@@ -229,6 +230,7 @@ Upload.propTypes = {
   allowedFileNameCharacters: PropTypes.string,
   allowedFileTypes: PropTypes.arrayOf(PropTypes.string),
   onFileUpload: PropTypes.func,
+  onFilePreUpload: PropTypes.func,
   onFileRemove: PropTypes.func,
   maxSize: PropTypes.number,
   max: PropTypes.number,
