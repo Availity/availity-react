@@ -78,28 +78,25 @@ describe('Upload', () => {
 
   test('calls onFilePreUpload callback', () => {
     const mockFunc = jest.fn();
-    const { getByTestId } = render(
-      <Upload
-        clientId="a"
-        bucketId="b"
-        customerId="c"
-        onFilePreUpload={mockFunc}
-      />
+    const { getByTestId } = renderUpload(
+      { initialValues: { upload: null } },
+      {
+        name: 'upload',
+        clientId: 'a',
+        bucketId: 'b',
+        customerId: 'c',
+        onFilePreUpload: mockFunc,
+      }
     );
     const inputNode = getByTestId('file-picker');
 
     const file = new Buffer.from('hello world'.split(''));
     file.name = 'fileName.png';
     const fileEvent = { target: { files: [file] } };
-
     fireEvent.change(inputNode, fileEvent);
-
     expect(inputNode.files.length).toBe(1);
-
     const filerow = getByTestId('remove-file-btn');
-
     fireEvent.click(filerow);
-
     expect(mockFunc).toHaveBeenCalled();
   });
 
