@@ -88,7 +88,7 @@ describe('Upload', () => {
     );
     const inputNode = getByTestId('file-picker');
 
-    const file = new Buffer.from('hello world'.split('')); // eslint-disable-line new-cap
+    const file = new Buffer.from('hello world'.split(''));
     file.name = 'fileName.png';
     const fileEvent = { target: { files: [file] } };
 
@@ -102,9 +102,9 @@ describe('Upload', () => {
 
     expect(mockFunc).toHaveBeenCalled();
   });
+
   test('calls onFileRemove callback', () => {
     const mockFunc = jest.fn();
-
     const { getByTestId } = renderUpload(
       { initialValues: { upload: null } },
       {
