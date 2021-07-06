@@ -35,7 +35,7 @@
     "uuid": "^8.3.2"
   },
   "devDependencies": {
-    "@availity/upload-core": "^4.0.0",
+    "@availity/upload-core": "latest",
     "lodash": "^4.17.21",
     "react": "^17.0.2",
     "react-dom": "^17.0.2",

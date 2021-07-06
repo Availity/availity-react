@@ -200,6 +200,16 @@
     core-js "^3.12.1"
     tus-js-client "1.7.1"
 
+"@availity/upload-core@latest":
+  version "4.1.0"
+  resolved "https://packages.availity.com:443/artifactory/api/npm/availity-npm-all/@availity/upload-core/-/upload-core-4.1.0.tgz#6f539d92ebdbabcda3d6f0dbfdcf815deca604e0"
+  integrity sha1-b1Odkuvbq82j1vDb/c+BXeymBOA=
+  dependencies:
+    "@availity/resolve-url" "^1.1.21"
+    "@babel/runtime" "^7.10.2"
+    core-js "^3.12.1"
+    tus-js-client "1.7.1"
+
 "@availity/yup@^3.0.11":
   version "3.0.11"
   resolved "https://registry.yarnpkg.com/@availity/yup/-/yup-3.0.11.tgz#53d28219d916388040bbc04b92ff92d1e4c75846"
