@@ -57,7 +57,7 @@
     "@availity/training-link": "^1.2.20",
     "@availity/typography": "^1.2.20",
     "@availity/upload": "^2.5.0",
-    "@availity/upload-core": "^4.0.0",
+    "@availity/upload-core": "^4.1.0",
     "@availity/yup": "^3.0.11",
     "@babel/core": "^7.14.3",
     "@storybook/addon-a11y": "^6.0.27",

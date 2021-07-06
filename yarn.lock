@@ -190,12 +190,12 @@
     "@babel/runtime" "^7.10.2"
     core-js "^3.12.1"
 
-"@availity/upload-core@^4.0.0", "@availity/upload-core@^4.1.0":
+"@availity/upload-core@^4.1.0":
   version "4.1.0"
   resolved "https://packages.availity.com:443/artifactory/api/npm/availity-npm-all/@availity/upload-core/-/upload-core-4.1.0.tgz#6f539d92ebdbabcda3d6f0dbfdcf815deca604e0"
   integrity sha1-b1Odkuvbq82j1vDb/c+BXeymBOA=
   dependencies:
-    "@availity/resolve-url" "^1.1.21"
+    "@availity/resolve-url" "^1.1.21"x
     "@babel/runtime" "^7.10.2"
     core-js "^3.12.1"
     tus-js-client "1.7.1"
@@ -4462,9 +4462,9 @@
   integrity sha1-HBJhu+qhCoBVu8XYq4S3sq/IRqA=
 
 "@types/fined@*":
-  version "1.1.2"
-  resolved "https://packages.availity.com:443/artifactory/api/npm/availity-npm-all/@types/fined/-/fined-1.1.2.tgz#05d2b9f93d144855c97c18c9675f424ed01400c4"
-  integrity sha1-BdK5+T0USFXJfBjJZ19CTtAUAMQ=
+  version "1.1.3"
+  resolved "https://packages.availity.com:443/artifactory/api/npm/availity-npm-all/@types/fined/-/fined-1.1.3.tgz#83f03e8f0a8d3673dfcafb18fce3571f6250e1bc"
+  integrity sha1-g/A+jwqNNnPfyvsY/ONXH2JQ4bw=
 
 "@types/glob-base@^0.3.0":
   version "0.3.0"
@@ -4472,9 +4472,9 @@
   integrity sha1-pYHWiDR+EOUN18F9byiAoQNUMZ0=
 
 "@types/glob@*", "@types/glob@^7.1.1":
-  version "7.1.3"
-  resolved "https://packages.availity.com:443/artifactory/api/npm/availity-npm-all/@types/glob/-/glob-7.1.3.tgz#e6ba80f36b7daad2c685acd9266382e68985c183"
-  integrity sha1-5rqA82t9qtLGhazZJmOC5omFwYM=
+  version "7.1.4"
+  resolved "https://packages.availity.com:443/artifactory/api/npm/availity-npm-all/@types/glob/-/glob-7.1.4.tgz#ea59e21d2ee5c517914cb4bc8e4153b99e566672"
+  integrity sha1-6lniHS7lxReRTLS8jkFTuZ5WZnI=
   dependencies:
     "@types/minimatch" "*"
     "@types/node" "*"
