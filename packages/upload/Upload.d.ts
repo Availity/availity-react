@@ -11,6 +11,7 @@ export interface UploadProps {
     onFileRemove?: Function;
     maxSize?: number;
     max?: number;
+    onFilePreUpload?: Array<Function>;
     multiple?: boolean;
     children?: Function;
     name?: string;

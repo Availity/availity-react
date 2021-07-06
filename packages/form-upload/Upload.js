@@ -45,7 +45,7 @@ const Upload = ({
   multiple = true,
   name,
   onFileRemove,
-  onFilePreUpload,
+  onFilePreUpload = [],
   onFileUpload,
   showFileDrop = false,
   fallback = dropzoneFallback,

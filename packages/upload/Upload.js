@@ -60,7 +60,9 @@ class Upload extends Component {
           clientId: this.props.clientId,
           fileTypes: this.props.allowedFileTypes,
           maxSize: this.props.maxSize,
-          onPreStart: this.props.onFilePreUpload,
+          onPreStart: this.props.onFilePreUpload
+            ? this.props.onFilePreUpload
+            : [],
           allowedFileNameCharacters: this.props.allowedFileNameCharacters,
         };
         const upload = new UploadCore(file, options);
