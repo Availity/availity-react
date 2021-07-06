@@ -36,7 +36,11 @@ jobs:
       - run: yarn install
       - run: yarn lint
       - run: yarn test:ci
-      - uses: codecov/codecov-action@v1.0.6
+        # https://docs.github.com/en/actions/reference/authentication-in-a-workflow#permissions-for-the-github_token
+        # Workflow runs triggered by Dependabot PRs run as if they are from a forked repository, using a read-only GITHUB_TOKEN.
+        # These workflow runs cannot access any secrets.
+        if: github.actor != 'dependabot[bot]'
+      - uses: codecov/codecov-action@v1.0.6 # FIXME: no CI provider detected
         with:
           file: ./coverage/coverage-final.json
           token: ${{ secrets.CODECOV_TOKEN }}

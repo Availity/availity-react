@@ -3,6 +3,18 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [2.5.0](https://github.com/Availity/availity-react/compare/@availity/upload@2.4.0...@availity/upload@2.5.0) (2021-07-06)
+
+
+### Features
+
+* **upload:** added a test ([4180341](https://github.com/Availity/availity-react/commit/41803413b00c37d51d41f1d6df5c3eb827508841))
+* **upload:** fixed dependency mismatch used while developing ([288e577](https://github.com/Availity/availity-react/commit/288e577a21281840a19eb6645d4c140543815837))
+
+
+
+
+
 # 2.4.0 (2021-06-23)
 
 
