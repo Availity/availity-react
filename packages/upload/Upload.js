@@ -39,7 +39,6 @@ class Upload extends Component {
   };
 
   setFiles = (files) => {
-    console.log('lands in setFiles');
     let selectedFiles = [];
     for (let i = 0; i < files.length; i++) {
       selectedFiles[i] = files[i];
@@ -55,17 +54,17 @@ class Upload extends Component {
     }
     this.files = this.files.concat(
       selectedFiles.map((file) => {
-        const upload = new UploadCore(file, {
+        const options = {
           bucketId: this.props.bucketId,
           customerId: this.props.customerId,
           clientId: this.props.clientId,
           fileTypes: this.props.allowedFileTypes,
           maxSize: this.props.maxSize,
+          onPreStart: this.props.onFilePreUpload,
           allowedFileNameCharacters: this.props.allowedFileNameCharacters,
-        });
+        };
+        const upload = new UploadCore(file, options);
         upload.id = `${upload.id}-${uuid()}`;
-        if (this.props.onFilePreUpload)
-          this.props.onFilePreUpload(upload, file);
         if (file.dropRejectionMessage) {
           upload.errorMessage = file.dropRejectionMessage;
         } else {
@@ -230,7 +229,7 @@ Upload.propTypes = {
   allowedFileNameCharacters: PropTypes.string,
   allowedFileTypes: PropTypes.arrayOf(PropTypes.string),
   onFileUpload: PropTypes.func,
-  onFilePreUpload: PropTypes.func,
+  onFilePreUpload: PropTypes.arrayOf(PropTypes.func),
   onFileRemove: PropTypes.func,
   maxSize: PropTypes.number,
   max: PropTypes.number,
