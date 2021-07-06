@@ -3,6 +3,7 @@
 .tmp
 .vscode
 
+/**/.idea/
 *.log
 
 coverage/

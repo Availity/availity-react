@@ -45,6 +45,7 @@ const Upload = ({
   multiple = true,
   name,
   onFileRemove,
+  onFilePreUpload,
   onFileUpload,
   showFileDrop = false,
   fallback = dropzoneFallback,
@@ -182,6 +183,7 @@ const Upload = ({
           allowedFileNameCharacters,
         });
         upload.id = `${upload.id}-${uuid()}`;
+        if (onFilePreUpload) onFilePreUpload(upload, file);
         if (file.dropRejectionMessage) {
           upload.errorMessage = file.dropRejectionMessage;
         } else {
@@ -308,6 +310,7 @@ Upload.propTypes = {
   customerId: PropTypes.string.isRequired,
   deliverFileOnSubmit: PropTypes.bool,
   deliveryChannel: PropTypes.string,
+  onFilePreUpload: PropTypes.func,
   onDeliverySuccess: PropTypes.func,
   onDeliveryError: PropTypes.func,
   disabled: PropTypes.bool,
