@@ -151,6 +151,17 @@ describe('Upload', () => {
 
   test('a discontinue result from a function in the property onFilePreUpload does not stop an error message from generation', async () => {
     // eslint-disable-next-line unicorn/consistent-function-scoping
+    const getDropRejectionMessage = (errors) => {
+      let msg = '';
+      errors.forEach((error) => {
+        msg +=
+          error.code === 'file-too-large'
+            ? 'my custom error message'
+            : 'this file is no good';
+      });
+      return msg;
+    };
+
     const { getByTestId, getByText } = render(
       <Upload
         clientId="a"
@@ -158,7 +169,7 @@ describe('Upload', () => {
         customerId="c"
         showFileDrop
         maxSize={10}
-        getDropRejectionMessage={() => 'error message'}
+        getDropRejectionMessage={getDropRejectionMessage}
         onFilePreUpload={[() => false]}
       />
     );
