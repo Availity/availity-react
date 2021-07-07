@@ -85,7 +85,7 @@ describe('Upload', () => {
         clientId: 'a',
         bucketId: 'b',
         customerId: 'c',
-        onFilePreUpload: mockFunc,
+        onFilePreUpload: [mockFunc],
       }
     );
     const inputNode = getByTestId('file-picker');

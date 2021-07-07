@@ -1,6 +1,6 @@
 {
   "name": "@availity/upload",
-  "version": "2.4.0",
+  "version": "2.5.0",
   "author": "Evan Sharp <evan.sharp@availity.com>",
   "description": "Availity upload component for uploading files",
   "main": "index.js",
@@ -22,7 +22,7 @@
     "access": "public"
   },
   "peerDependencies": {
-    "@availity/upload-core": "^3.0.4",
+    "@availity/upload-core": "^4.1.0",
     "react": ">=16.8.0",
     "react-dom": ">=16.8.0",
     "react-dropzone": "^11.0.0",
@@ -35,7 +35,7 @@
     "uuid": "^8.3.2"
   },
   "devDependencies": {
-    "@availity/upload-core": "^4.0.0",
+    "@availity/upload-core": "^4.1.0",
     "lodash": "^4.17.21",
     "react": "^17.0.2",
     "react-dom": "^17.0.2",

@@ -61,7 +61,7 @@ describe('Upload', () => {
         clientId="a"
         bucketId="b"
         customerId="c"
-        onFilePreUpload={mockFunc}
+        onFilePreUpload={[mockFunc]}
       />
     );
     const inputNode = getByTestId('file-picker');
@@ -146,6 +146,69 @@ describe('Upload', () => {
     expect(inputNode.files.length).toBe(1);
     await waitFor(() => {
       expect(getByText('File is larger than 10 bytes')).toBeDefined();
+    });
+  });
+
+  test('a discontinue result from a function in the property onFilePreUpload should prevent onFileUpload from being called', async () => {
+    const myfunc = jest.fn();
+    const { getByTestId } = render(
+      <Upload
+        clientId="a"
+        bucketId="b"
+        customerId="c"
+        showFileDrop
+        maxSize={10}
+        onFileUpload={myfunc}
+        onFilePreUpload={[() => false]}
+      />
+    );
+    const file = new Buffer.from('hello world'.split('')); // eslint-disable-line new-cap
+    file.name = 'fileName.png';
+    file.size = 11;
+    const inputNode = getByTestId('file-picker');
+    const fileEvent = { target: { files: [file] } };
+
+    fireEvent.drop(inputNode, fileEvent);
+
+    expect(inputNode.files.length).toBe(1);
+    expect(myfunc).toBeCalledTimes(0);
+  });
+
+  test('a discontinue result from a function in the property onFilePreUpload does not stop an error message from generating', async () => {
+    // eslint-disable-next-line unicorn/consistent-function-scoping
+    const getDropRejectionMessage = (errors) => {
+      let msg = '';
+      errors.forEach((error) => {
+        msg +=
+          error.code === 'file-too-large'
+            ? 'my custom error message'
+            : 'this file is no good';
+      });
+      return msg;
+    };
+
+    const { getByTestId, getByText } = render(
+      <Upload
+        clientId="a"
+        bucketId="b"
+        customerId="c"
+        showFileDrop
+        maxSize={10}
+        getDropRejectionMessage={getDropRejectionMessage}
+        onFilePreUpload={[() => false]}
+      />
+    );
+    const file = new Buffer.from('hello world'.split('')); // eslint-disable-line new-cap
+    file.name = 'fileName.png';
+    file.size = 11;
+    const inputNode = getByTestId('file-picker');
+    const fileEvent = { target: { files: [file] } };
+
+    fireEvent.drop(inputNode, fileEvent);
+
+    expect(inputNode.files.length).toBe(1);
+    await waitFor(() => {
+      expect(getByText('my custom error message')).toBeDefined();
     });
   });
 

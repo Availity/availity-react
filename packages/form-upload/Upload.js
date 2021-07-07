@@ -45,7 +45,7 @@ const Upload = ({
   multiple = true,
   name,
   onFileRemove,
-  onFilePreUpload,
+  onFilePreUpload = [],
   onFileUpload,
   showFileDrop = false,
   fallback = dropzoneFallback,
@@ -178,18 +178,17 @@ const Upload = ({
           bucketId,
           customerId,
           clientId,
+          onPreStart: onFilePreUpload,
           fileTypes: allowedFileTypes,
           maxSize,
           allowedFileNameCharacters,
         });
         upload.id = `${upload.id}-${uuid()}`;
-        if (onFilePreUpload) onFilePreUpload(upload, file);
         if (file.dropRejectionMessage) {
           upload.errorMessage = file.dropRejectionMessage;
         } else {
           upload.start();
         }
-
         if (onFileUpload) {
           onFileUpload(upload);
         } else if (deliveryChannel && fileDeliveryMetadata) {
@@ -310,7 +309,7 @@ Upload.propTypes = {
   customerId: PropTypes.string.isRequired,
   deliverFileOnSubmit: PropTypes.bool,
   deliveryChannel: PropTypes.string,
-  onFilePreUpload: PropTypes.func,
+  onFilePreUpload: PropTypes.arrayOf(PropTypes.func),
   onDeliverySuccess: PropTypes.func,
   onDeliveryError: PropTypes.func,
   disabled: PropTypes.bool,
