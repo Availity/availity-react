@@ -149,6 +149,33 @@ describe('Upload', () => {
     });
   });
 
+  test('a discontinue result from a function in the property onFilePreUpload does not stop an error message from generation', async () => {
+    // eslint-disable-next-line unicorn/consistent-function-scoping
+    const { getByTestId, getByText } = render(
+      <Upload
+        clientId="a"
+        bucketId="b"
+        customerId="c"
+        showFileDrop
+        maxSize={10}
+        getDropRejectionMessage={() => 'error message'}
+        onFilePreUpload={[() => false]}
+      />
+    );
+    const file = new Buffer.from('hello world'.split('')); // eslint-disable-line new-cap
+    file.name = 'fileName.png';
+    file.size = 11;
+    const inputNode = getByTestId('file-picker');
+    const fileEvent = { target: { files: [file] } };
+
+    fireEvent.drop(inputNode, fileEvent);
+
+    expect(inputNode.files.length).toBe(1);
+    await waitFor(() => {
+      expect(getByText('my custom error message')).toBeDefined();
+    });
+  });
+
   test('uses custom drop rejection message', async () => {
     // eslint-disable-next-line unicorn/consistent-function-scoping
     const getDropRejectionMessage = (errors) => {
