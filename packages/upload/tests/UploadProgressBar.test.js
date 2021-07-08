@@ -95,6 +95,34 @@ describe('UploadProgressBar', () => {
     expect(handleSubmit).not.toHaveBeenCalled();
   });
 
+  test('an undefined passwordModalzIndex should leave the modals zIndex as the default 1050', async () => {
+    const { getByTestId, findByTestId } = render(
+      <UploadProgressBar upload={instance} />
+    );
+    instance.error('Encrypted files require a password', 'encrypted');
+    fireEvent.click(getByTestId('password-form-button'));
+    const form = await findByTestId('password-form-modal');
+    const container =
+      form.parentElement.parentElement.parentElement.parentElement
+        .parentElement;
+
+    expect(container.style.zIndex).toBe('1050');
+  });
+
+  test('setting passwordModalzIndex should change the modals zIndex as the default 1050', async () => {
+    const { getByTestId, findByTestId } = render(
+      <UploadProgressBar upload={instance} passwordModalzIndex="auto" />
+    );
+    instance.error('Encrypted files require a password', 'encrypted');
+    fireEvent.click(getByTestId('password-form-button'));
+    const form = await findByTestId('password-form-modal');
+    const container =
+      form.parentElement.parentElement.parentElement.parentElement
+        .parentElement;
+
+    expect(container.style.zIndex).toBe('auto');
+  });
+
   // 1 Test for striped and animated
   // striped
   // animated
