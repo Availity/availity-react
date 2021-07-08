@@ -33,20 +33,23 @@ jobs:
           key: ${{ runner.os }}-yarn-${{ hashFiles('**/yarn.lock') }}
           restore-keys: |
             ${{ runner.os }}-yarn-
+      - run: yarn check:packages
       - run: yarn install
       - run: yarn lint
       - run: yarn test:ci
         # https://docs.github.com/en/actions/reference/authentication-in-a-workflow#permissions-for-the-github_token
         # Workflow runs triggered by Dependabot PRs run as if they are from a forked repository, using a read-only GITHUB_TOKEN.
         # These workflow runs cannot access any secrets.
-        if: github.actor != 'dependabot[bot]'
       - uses: codecov/codecov-action@v1.0.6 # FIXME: no CI provider detected
+        if: github.actor != 'dependabot[bot]' # TODO: separate workflow for dependabot
         with:
           file: ./coverage/coverage-final.json
           token: ${{ secrets.CODECOV_TOKEN }}
       - run: yarn build:docs
+        if: github.actor != 'dependabot[bot]'
       - name: Deploy draft to Netlify
         uses: South-Paw/action-netlify-deploy@v1.0.4
+        if: github.actor != 'dependabot[bot]'
         with:
           github-token: ${{ secrets.BOT_TOKEN }}
           netlify-auth-token: ${{ secrets.NETLIFY_DEPLOY_KEY }}
