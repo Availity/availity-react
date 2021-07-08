@@ -8,6 +8,7 @@ const FileList = ({
   children,
   onRemoveFile,
   onPasswordSubmit,
+  passwordModalzIndex,
   ...rest
 }) => {
   const list = useMemo(
@@ -18,11 +19,12 @@ const FileList = ({
           file={file}
           onRemove={onRemoveFile}
           onPasswordSubmit={onPasswordSubmit}
+          passwordModalzIndex={passwordModalzIndex}
         >
           {children}
         </FileRow>
       )),
-    [files, children, onRemoveFile, onPasswordSubmit]
+    [files, children, onRemoveFile, onPasswordSubmit, passwordModalzIndex]
   );
 
   if (typeof children === 'function') {
@@ -58,6 +60,10 @@ FileList.propTypes = {
   children: PropTypes.func,
   onRemoveFile: PropTypes.func,
   onPasswordSubmit: PropTypes.func,
+  passwordModalzIndex: PropTypes.oneOfType([
+    PropTypes.number,
+    PropTypes.string,
+  ]),
 };
 
 export default FileList;

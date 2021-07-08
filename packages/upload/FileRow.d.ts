@@ -10,6 +10,7 @@ export interface FileRowProps {
     children?: Function;
     file?: File;
     onPasswordSubmit?: Function;
+    passwordModalzIndex?: number | string;
 }
 
 declare const FileRow: React.ComponentType<FileRowProps>;
