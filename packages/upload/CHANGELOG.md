@@ -3,6 +3,25 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [3.0.0](https://github.com/Availity/availity-react/compare/@availity/upload@2.5.0...@availity/upload@3.0.0) (2021-07-08)
+
+
+### Features
+
+* **form-upload,upload:** add onFilePreUpload callbacks to UploadCore constructor ([33b1c23](https://github.com/Availity/availity-react/commit/33b1c2333a255ccf9e1cc96b2f5dbeb0fac0d739)), closes [/github.com/Availity/sdk-js/blob/9b5e81bef0216d13fab6ca0bbe87370e2019f490/README.md#L16-L19](https://github.com//github.com/Availity/sdk-js/blob/9b5e81bef0216d13fab6ca0bbe87370e2019f490/README.md/issues/L16-L19)
+* **upload:** added a test ([4180341](https://github.com/Availity/availity-react/commit/41803413b00c37d51d41f1d6df5c3eb827508841))
+* **upload:** fixed dependency mismatch used while developing ([288e577](https://github.com/Availity/availity-react/commit/288e577a21281840a19eb6645d4c140543815837))
+
+
+### BREAKING CHANGES
+
+* **form-upload,upload:** require @availity/upload-core@^4.0.0, uses functions not directly compatible with IE11
+https://github.com/Availity/sdk-js/blob/master/packages/upload-core/CHANGELOG.md#breaking-changes
+
+
+
+
+
 # [2.5.0](https://github.com/Availity/availity-react/compare/@availity/upload@2.4.0...@availity/upload@2.5.0) (2021-07-06)
 
 

@@ -3,6 +3,28 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.6.0](https://github.com/Availity/availity-react/compare/@availity/form-upload@0.5.0...@availity/form-upload@0.6.0) (2021-07-08)
+
+
+### Features
+
+* **form-upload:** added a test for form-upload as well ([9f89d26](https://github.com/Availity/availity-react/commit/9f89d26caf2824c0887435af5666a3ab23bd5992))
+* **form-upload:** added a test for form-upload as well ([7f57d1a](https://github.com/Availity/availity-react/commit/7f57d1adad628125be3272d88d817507892b67d3))
+* **form-upload:** added a test for form-upload as well ([f21d06f](https://github.com/Availity/availity-react/commit/f21d06fbd03705a7c24dc9bac77de3ddecd3b9ff))
+* **form-upload,upload:** add onFilePreUpload callbacks to UploadCore constructor ([33b1c23](https://github.com/Availity/availity-react/commit/33b1c2333a255ccf9e1cc96b2f5dbeb0fac0d739)), closes [/github.com/Availity/sdk-js/blob/9b5e81bef0216d13fab6ca0bbe87370e2019f490/README.md#L16-L19](https://github.com//github.com/Availity/sdk-js/blob/9b5e81bef0216d13fab6ca0bbe87370e2019f490/README.md/issues/L16-L19)
+* **upload:** added a test for form-upload as well ([8272901](https://github.com/Availity/availity-react/commit/82729016cc02b8f27b5f456c2129fa8d6da60aa3))
+* **upload:** updated form-upload to include callback for onFilePreUpload ([243c3b8](https://github.com/Availity/availity-react/commit/243c3b86cf451fdf298e4fee1a818d4a0d4e0f00))
+
+
+### BREAKING CHANGES
+
+* **form-upload,upload:** require @availity/upload-core@^4.0.0, uses functions not directly compatible with IE11
+https://github.com/Availity/sdk-js/blob/master/packages/upload-core/CHANGELOG.md#breaking-changes
+
+
+
+
+
 # 0.5.0 (2021-07-06)
 
 
