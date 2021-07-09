@@ -77,7 +77,7 @@ class UploadProgressBar extends Component {
   };
 
   render() {
-    const { upload, onPasswordSubmit, passwordModalzIndex, ...rest } =
+    const { upload, onPasswordSubmit, passwordModalZIndex, ...rest } =
       this.props;
     const { percentage, error, modalOpen } = this.state;
     return upload.errorMessage ? (
@@ -98,7 +98,7 @@ class UploadProgressBar extends Component {
             <Modal
               isOpen={modalOpen}
               toggle={this.toggleModal}
-              zIndex={passwordModalzIndex}
+              zIndex={passwordModalZIndex}
             >
               <form
                 onSubmit={this.verifyPassword}
@@ -156,7 +156,7 @@ UploadProgressBar.propTypes = {
   className: PropTypes.string,
   striped: PropTypes.bool,
   onPasswordSubmit: PropTypes.func,
-  passwordModalzIndex: PropTypes.oneOfType([
+  passwordModalZIndex: PropTypes.oneOfType([
     PropTypes.number,
     PropTypes.string,
   ]),

@@ -152,7 +152,7 @@ class Upload extends Component {
       showFileDrop,
       disabled,
       onPasswordSubmit,
-      passwordModalzIndex,
+      passwordModalZIndex,
     } = this.props;
     const { files } = this.state;
 
@@ -215,7 +215,7 @@ class Upload extends Component {
           files={files}
           onRemoveFile={this.removeFile}
           onPasswordSubmit={onPasswordSubmit}
-          passwordModalzIndex={passwordModalzIndex}
+          passwordModalZIndex={passwordModalZIndex}
         >
           {children}
         </FileList>
@@ -244,7 +244,7 @@ Upload.propTypes = {
   getDropRejectionMessage: PropTypes.func,
   disabled: PropTypes.bool,
   onPasswordSubmit: PropTypes.func,
-  passwordModalzIndex: PropTypes.oneOfType([
+  passwordModalZIndex: PropTypes.oneOfType([
     PropTypes.number,
     PropTypes.string,
   ]),

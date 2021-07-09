@@ -28,7 +28,7 @@ const FileRow = ({
   children,
   file,
   onPasswordSubmit,
-  passwordModalzIndex,
+  passwordModalZIndex,
 }) => {
   const remove = () => {
     onRemove(file.id);
@@ -68,7 +68,7 @@ const FileRow = ({
         <UploadProgressBar
           upload={file}
           onPasswordSubmit={onPasswordSubmit}
-          passwordModalzIndex={passwordModalzIndex}
+          passwordModalZIndex={passwordModalZIndex}
         />
       </td>
       <td className="align-middle" style={{ width: '10%' }}>
@@ -101,7 +101,7 @@ FileRow.propTypes = {
     options: PropTypes.object,
   }),
   onPasswordSubmit: PropTypes.func,
-  passwordModalzIndex: PropTypes.oneOfType([
+  passwordModalZIndex: PropTypes.oneOfType([
     PropTypes.number,
     PropTypes.string,
   ]),

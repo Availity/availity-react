@@ -95,7 +95,7 @@ describe('UploadProgressBar', () => {
     expect(handleSubmit).not.toHaveBeenCalled();
   });
 
-  test('an undefined passwordModalzIndex should leave the modals zIndex as the default 1050', async () => {
+  test('an undefined passwordModalZIndex should leave the modals zIndex as the default 1050', async () => {
     const { getByTestId, findByTestId } = render(
       <UploadProgressBar upload={instance} />
     );
@@ -109,9 +109,9 @@ describe('UploadProgressBar', () => {
     expect(container.style.zIndex).toBe('1050');
   });
 
-  test('setting passwordModalzIndex should change the modals zIndex as the default 1050', async () => {
+  test('setting passwordModalZIndex should change the modals zIndex as the default 1050', async () => {
     const { getByTestId, findByTestId } = render(
-      <UploadProgressBar upload={instance} passwordModalzIndex="auto" />
+      <UploadProgressBar upload={instance} passwordModalZIndex="auto" />
     );
     instance.error('Encrypted files require a password', 'encrypted');
     fireEvent.click(getByTestId('password-form-button'));
