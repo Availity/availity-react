@@ -72,6 +72,7 @@ class Upload extends Component {
         } else {
           upload.start();
         }
+        if (this.props.onFilePreUpload) this.props.onFilePreUpload(upload);
         if (this.props.onFileUpload) this.props.onFileUpload(upload);
         return upload;
       })
