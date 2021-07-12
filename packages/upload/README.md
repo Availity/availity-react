@@ -88,6 +88,10 @@ Override the default error message for files rejected when `showFileDrop` is `tr
 
 When a user uploads an encrypted file, they are prompted to input a password. This function is called when the password form is submitted. By default, the event bubbles and will submit a form if the upload component is a child element of that form. Useful for adding event.stopPropagation() if this behavior is not desired.
 
+### `passwordModalZIndex?: number | string`
+
+Override the default z-index for the password prompt modal. Useful for squashing IE11 bugs by setting to auto if your upload component is already inside another modal.
+
 ### Example
 
 ```jsx

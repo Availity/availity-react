@@ -23,7 +23,13 @@ const fileTypeIconMap = {
   pdf: 'file-pdf',
 };
 
-const FileRow = ({ onRemove, children, file, onPasswordSubmit }) => {
+const FileRow = ({
+  onRemove,
+  children,
+  file,
+  onPasswordSubmit,
+  passwordModalZIndex,
+}) => {
   const remove = () => {
     onRemove(file.id);
   };
@@ -59,7 +65,11 @@ const FileRow = ({ onRemove, children, file, onPasswordSubmit }) => {
         </div>
       </td>
       <td className="align-middle" style={{ width: '45%' }}>
-        <UploadProgressBar upload={file} onPasswordSubmit={onPasswordSubmit} />
+        <UploadProgressBar
+          upload={file}
+          onPasswordSubmit={onPasswordSubmit}
+          passwordModalZIndex={passwordModalZIndex}
+        />
       </td>
       <td className="align-middle" style={{ width: '10%' }}>
         <Button
@@ -91,6 +101,10 @@ FileRow.propTypes = {
     options: PropTypes.object,
   }),
   onPasswordSubmit: PropTypes.func,
+  passwordModalZIndex: PropTypes.oneOfType([
+    PropTypes.number,
+    PropTypes.string,
+  ]),
 };
 
 export default FileRow;

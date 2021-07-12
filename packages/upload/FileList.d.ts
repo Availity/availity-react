@@ -3,6 +3,7 @@ export interface FileListProps {
     children?: Function;
     onRemoveFile?: Function;
     onPasswordSubmit?: Function;
+    passwordModalZIndex?: number | string;
 }
 
 declare const FileList: React.ComponentType<FileListProps>;

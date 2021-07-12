@@ -19,6 +19,7 @@ export interface UploadProgressBarProps {
     tag?: React.ReactType | string;
     striped?: boolean;
     onPasswordSubmit?: Function;
+    passwordModalZIndex?: number | string;
 }
 
 
