@@ -10,19 +10,20 @@ export const getUrl = (url = '', loadApp, absolute) => {
 };
 
 export const getTarget = (target) => {
-  if (
-    !target ||
-    target === 'BODY' || // Thanos
-    target === 'newBody' || // hardcoded in spaces ( Bad practice )
-    target === '_self' // Actual way of doing it
-  ) {
-    return '_self';
+  // should start with _, otherwise it is specifying a specific frame name
+  // _blank = new tab/window, _self = same frame, _parent = parent frame (use for home page from modals), _top = document body, framename = specific frame
+  if (target && !target.startsWith('_')) {
+    // Thanos uses BODY
+    // 'newBody' hard-coded in spaces -> should we keep this logic?
+    if (target === 'BODY' || target === 'newBody') {
+      return '_self';
+    }
+    if (target === 'TAB') {
+      return '_blank';
+    }
   }
 
-  if (target === 'TAB' || target === '_blank' || target === '_top') {
-    return '_blank';
-  }
-  return null;
+  return target || '_self';
 };
 
 // takes href and transforms it so that we can compare hostnames and other properties

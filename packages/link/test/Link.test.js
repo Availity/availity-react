@@ -91,14 +91,28 @@ describe('AvLink', () => {
   });
 
   test('should do getTarget transformation', () => {
-    const { getByTestId } = render(
+    const { getByTestId, rerender } = render(
       <AvLink loadApp={false} href="https://github.com/Availity" target="TAB">
         My App
       </AvLink>
     );
-
-    const tag = getByTestId('av-link-tag');
-
+    let tag = getByTestId('av-link-tag');
     expect(tag.getAttribute('target')).toBe('_blank');
+
+    rerender(
+      <AvLink loadApp={false} href="https://github.com/Availity" target="BODY">
+        My App
+      </AvLink>
+    );
+    tag = getByTestId('av-link-tag');
+    expect(tag.getAttribute('target')).toBe('_self');
+
+    rerender(
+      <AvLink href="https://github.com/Availity" target="_parent">
+        My App
+      </AvLink>
+    );
+    tag = getByTestId('av-link-tag');
+    expect(tag.getAttribute('target')).toBe('_parent');
   });
 });
