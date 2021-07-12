@@ -3,6 +3,23 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [3.1.0](https://github.com/Availity/availity-react/compare/@availity/upload@3.0.0...@availity/upload@3.1.0) (2021-07-12)
+
+
+### Bug Fixes
+
+* rename prop ([1159b61](https://github.com/Availity/availity-react/commit/1159b61b25f4f605662314f60c68fa2d1164e335))
+
+
+### Features
+
+* add passwordModalzIndex prop ([8d4378c](https://github.com/Availity/availity-react/commit/8d4378cf2dcb682b6741eccef23814c9dbe5d1c3))
+* add tests for upload password modal zIndex prop ([3e5eb07](https://github.com/Availity/availity-react/commit/3e5eb072f94abfa6ba30fee720ef19673da07abf))
+
+
+
+
+
 # [3.0.0](https://github.com/Availity/availity-react/compare/@availity/upload@2.5.0...@availity/upload@3.0.0) (2021-07-08)
 
 
