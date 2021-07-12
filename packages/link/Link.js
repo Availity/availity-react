@@ -23,7 +23,7 @@ export const getTarget = (target) => {
     }
   }
 
-  return target || null;
+  return target || '_self';
 };
 
 // takes href and transforms it so that we can compare hostnames and other properties
