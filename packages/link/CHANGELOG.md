@@ -3,6 +3,18 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## 2.2.3 (2021-07-12)
+
+
+### Bug Fixes
+
+* **link:** fix link target logic ([ffff832](https://github.com/Availity/availity-react/commit/ffff83241657e321418f2a76a3aa0823ae13c53d))
+* **link:** return self as target default ([7163443](https://github.com/Availity/availity-react/commit/7163443ec0852896232a871f28468731c5ace5f8))
+
+
+
+
+
 ## 2.2.2 (2021-06-01)
 
 **Note:** Version bump only for package @availity/link
