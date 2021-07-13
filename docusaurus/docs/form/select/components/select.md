@@ -122,3 +122,13 @@ For example, if the new value is `{ "payer": { "name": "Availity", "id": "1" } }
   payerNameAndId: opt => `${opt.payer.id} - ${opt.payer.name}`,
 }
 ```
+
+### `selectByValue?: SelectByValue`
+
+Allows the value passed to be automatically selected in the dropdown. If the options are strings, pass the `value` property as the value to match on. If the dropdown options are objects, pass a `key` and `value` property to match the unique option where the `option[key]` value is equal to `value`.
+
+For example, to match an organization on the AvOrganizationSelect (the options are the entire organization object), you can match the `customerId` as the `key` to the `value` of `1234`
+
+```js
+selectByValue={{key: 'customerId', value: '1234'}}
+```

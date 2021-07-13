@@ -2,6 +2,7 @@ import React, { useRef, useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
 import qs from 'qs';
 import get from 'lodash/get';
+import find from 'lodash/find';
 import { useFormikContext } from 'formik';
 
 import Select from './Select';
@@ -28,6 +29,7 @@ const ResourceSelect = ({
   additionalPostGetArgs,
   pageAll,
   pageAllSearchBy,
+  selectByValue,
   ...rest
 }) => {
   const { setFieldValue } = useFormikContext();
@@ -36,6 +38,13 @@ const ResourceSelect = ({
   const selectRef = useRef();
   const [previousOptions, setPreviousOptions] = useState([]);
   const [numTimesResourceCalled, setNumTimesResourceCalled] = useState(0);
+
+  const getValueKey = (attrs = rest) => get(attrs, 'valueKey', 'value');
+
+  const getOptionValue = (option) =>
+    rest.raw && !rest.valueKey
+      ? option
+      : get(option, getValueKey(rest), option);
 
   if (_cacheUniq === undefined && watchParams) {
     const params = {
@@ -57,6 +66,19 @@ const ResourceSelect = ({
   useEffect(() => {
     setNumTimesResourceCalled(0);
   }, [_cacheUniq]);
+
+  useEffect(() => {
+    if (selectByValue && previousOptions?.length >= 1) {
+      const matchedOption = find(
+        previousOptions,
+        (option) =>
+          getOptionValue(option)?.[selectByValue?.key] ===
+            selectByValue?.value ||
+          getOptionValue(option) === selectByValue?.value
+      );
+      setFieldValue(name, matchedOption);
+    }
+  }, [selectByValue, setFieldValue, previousOptions]);
 
   const onFocusHandler = (...args) => {
     if (onFocus) onFocus(...args);
@@ -356,6 +378,10 @@ ResourceSelect.propTypes = {
   pageAll: PropTypes.bool,
   pageAllSearchBy: PropTypes.func,
   onError: PropTypes.func,
+  selectByValue: PropTypes.shape({
+    value: PropTypes.string,
+    key: PropTypes.string,
+  }),
 };
 
 ResourceSelect.defaultProps = {

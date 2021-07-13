@@ -12,6 +12,11 @@ interface GraphQLConfigType {
   query?: string;
 }
 
+interface SelectByValue {
+  value: string;
+  key?: string;
+}
+
 export type OptionType = Record<string, any>;
 
 export type Additional = any;
@@ -47,6 +52,7 @@ export interface ResourceSelectProps<T> extends SelectFieldProps<T> {
   pageAll?: boolean;
   pageAllSearchBy?: (previousOptions: any[], inputValue: string) => any[];
   onError?: (error: Error) => void;
+  selectByValue: SelectByValue;
 }
 
 declare class ResourceSelect<T> extends React.Component<
