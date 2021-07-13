@@ -200,10 +200,10 @@
     core-js "^3.12.1"
     tus-js-client "1.7.1"
 
-"@availity/upload-core@^4.1.0":
-  version "4.1.0"
-  resolved "https://registry.yarnpkg.com/@availity/upload-core/-/upload-core-4.1.0.tgz#6f539d92ebdbabcda3d6f0dbfdcf815deca604e0"
-  integrity sha512-JxG3LSDHHDeeRxIh7L1BsSzEgvFbcWB+oR9YSw/R3BOsZDKCF7c7PKpfsyr9/9lzte+je4+xQ2ViC8ZLQ4735g==
+"@availity/upload-core@^4.1.1":
+  version "4.1.1"
+  resolved "https://registry.yarnpkg.com/@availity/upload-core/-/upload-core-4.1.1.tgz#e626603151fb7edc72e7dd70736f1bb601616fda"
+  integrity sha512-D2AXnJ2vBMb9d8kqbyvmpJ6OSzkgUkQdvSVQAfqu+7hrh/tDA3UIAACVpq4egwha1zBceEDSyqFtSoQgmkXEdg==
   dependencies:
     "@availity/resolve-url" "^1.1.21"
     "@babel/runtime" "^7.10.2"
