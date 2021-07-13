@@ -47,7 +47,7 @@ Restrict the file name characters to a regex set.
 
 Restrict the file types allowed to be uploaded to. eg: `['.jpeg', '.jpg']`.
 
-### `onFilePreUpload?: [() => boolean]`
+### `onFilePreUpload?: [(upload: UploadCore) => boolean]`
 `
 An array of callbacks called before the file is uploaded.  Each function should return a true or false.   If one of these is false, then it will not upload.  Useful for scanning files for corruption before uploading to the vault.  To ensure that the file is not uploaded and return false, call setError on the UploadCore object to set some error message via calling upload.setError('rejected', somemessage) method for updating the UI.  Make sure this is done relatively synchronously.
 
