@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## 3.1.1 (2021-07-13)
+
+
+### Bug Fixes
+
+* **upload:** upload-core dependency patch bump ([f4403d6](https://github.com/Availity/availity-react/commit/f4403d6acefcaac151b9f4a46243c4331fa99dbc))
+
+
+
+
+
 # [3.1.0](https://github.com/Availity/availity-react/compare/@availity/upload@3.0.0...@availity/upload@3.1.0) (2021-07-12)
 
 
