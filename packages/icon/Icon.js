@@ -17,7 +17,7 @@ const Icon = React.forwardRef(
   ) => (
     <i
       ref={ref}
-      aria-label={ariaLabel || name}
+      aria-hidden="true"
       className={classNames(
         'icon',
         `icon-${name}`,
