@@ -170,20 +170,21 @@ const FeedbackForm = ({
                   options={aboutOptions}
                 />
               )}
-              <Label for="feedback_input">
+              <Label id="feedback_label" for="feedback_input">
                 {(active && active.label) || 'Feedback? Requests? Defects?'}
-                <Field
-                  type="textarea"
-                  name="feedback"
-                  placeholder={
-                    (active && active.placeholder) ||
-                    'Feedback? Requests? Defects?'
-                  }
-                  style={{ resize: 'none' }}
-                  rows="2"
-                  id="feedback_input"
-                />
               </Label>
+              <Field
+                type="textarea"
+                name="feedback"
+                aria-labelledby="feedback_label"
+                placeholder={
+                  (active && active.placeholder) ||
+                  'Feedback? Requests? Defects?'
+                }
+                style={{ resize: 'none' }}
+                rows="2"
+                id="feedback_input"
+              />
               {additionalComments && (
                 <Field
                   type="textarea"
