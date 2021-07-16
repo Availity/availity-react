@@ -3,6 +3,22 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# 10.1.0 (2021-07-16)
+
+
+### Bug Fixes
+
+* **page-header:** allow crumbs to be hidden ([38f93e7](https://github.com/Availity/availity-react/commit/38f93e7b4ae9e970919f5c9dc096232e704c4cbc))
+
+
+### Features
+
+* **page-header:** allow crumbs to be hidden ([f882669](https://github.com/Availity/availity-react/commit/f8826692cd4beabe54c3ab11c21e61fe38a44529))
+
+
+
+
+
 ## [10.0.85](https://github.com/Availity/availity-react/compare/@availity/page-header@10.0.84...@availity/page-header@10.0.85) (2021-06-11)
 
 **Note:** Version bump only for package @availity/page-header
