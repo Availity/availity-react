@@ -90,16 +90,20 @@ const PageHeader = ({
   return (
     <>
       <div className="d-flex align-items-start flex-shrink-0">
-        {showCrumbs && React.isValidElement(crumbs) ? (
-          crumbs
-        ) : (
-          <Breadcrumbs
-            crumbs={crumbs}
-            active={appName || children}
-            homeUrl={homeUrl}
-            linkTag={linkTag}
-          />
-        )}
+        {showCrumbs ? (
+          <>
+            {React.isValidElement(crumbs) ? (
+              crumbs
+            ) : (
+              <Breadcrumbs
+                crumbs={crumbs}
+                active={appName || children}
+                homeUrl={homeUrl}
+                linkTag={linkTag}
+              />
+            )}
+          </>
+        ) : null}
         {component}
       </div>
       <div
