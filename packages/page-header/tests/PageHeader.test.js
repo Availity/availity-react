@@ -312,4 +312,36 @@ describe('PageHeader', () => {
 
     expect(spaceBreadcrumb).toBeNull();
   });
+
+  test('should hide crumbs if custom crumbs passed', async () => {
+    avSlotMachineApi.create.mockResolvedValue({
+      data: {
+        data: {
+          spaces: {
+            totalCount: 1,
+            page: 1,
+            perPage: 1,
+            spaces: [
+              { id: '1', name: 'My Space', link: { url: '/custom-link' } },
+            ],
+          },
+        },
+      },
+    });
+
+    const { queryByText } = render(
+      <Spaces spaceIds={['1']} clientId="my-client-id">
+        <PageHeader
+          appName="Payer Space"
+          spaceId="1"
+          showCrumbs={false}
+          crumbs={[{ name: 'Custom Crumb', url: '/my-custom-crumb' }]}
+        />
+      </Spaces>
+    );
+
+    const spaceBreadcrumb = await waitFor(() => queryByText('Custom Crumb'));
+
+    expect(spaceBreadcrumb).toBeNull();
+  });
 });
