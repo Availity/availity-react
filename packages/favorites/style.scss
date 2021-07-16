@@ -56,7 +56,7 @@ $av-heart-val-borderSize: $av-heart-val-iconSize + 2;
       content: $av-heart-val-emptyHeart;
     }
   }
-  &:hover {
+  &:hover, &:focus {
     .default-filled {
       height: $av-heart-val-borderSize;
       width: $av-heart-val-borderSize;
@@ -90,7 +90,7 @@ $av-heart-val-borderSize: $av-heart-val-iconSize + 2;
     .outline {
       display: none;
     }
-    &:hover {
+    &:hover, &:focus {
       .selected-filled {
         color: $av-heart-val-selected-color-hover;
       }

@@ -13,7 +13,7 @@ import '@availity/favorites/style.scss';
 
 const Example = () => (
   <Favorites>
-    <FavoriteHeart id="12345" />
+    <FavoriteHeart id="12345" name="My App" />
   </Favorites>
 );
 ```

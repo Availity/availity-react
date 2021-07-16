@@ -5,7 +5,7 @@ import { Tooltip } from 'reactstrap';
 import { useFavorites } from './FavoritesContext';
 
 // eslint-disable-next-line react-hooks/exhaustive-deps
-const FavoriteHeart = ({ id, onChange, onMouseDown, ...props }) => {
+const FavoriteHeart = ({ id, name, onChange, onMouseDown, ...props }) => {
   const [isFavorite, toggleFavorite] = useFavorites(id);
   const [tooltipOpen, toggleTooltip] = useToggle(false);
   const [loading, toggleLoading] = useToggle(true);
@@ -22,9 +22,9 @@ const FavoriteHeart = ({ id, onChange, onMouseDown, ...props }) => {
     return (
       <span
         id={`av-favorite-heart-${id}`}
-        role="button"
-        aria-label="Favorite"
-        aria-describedby={`av-favorite-heart-desc-${id}`}
+        role="checkbox"
+        aria-label={`Favorite ${name || ''}`}
+        aria-checked={isFavorite}
         {...props}
         tabIndex="0"
         className={`favorite-heart pt-4 ${isFavorite && 'active'}`}
@@ -34,21 +34,17 @@ const FavoriteHeart = ({ id, onChange, onMouseDown, ...props }) => {
             onMouseDown(e);
           }
         }}
-        onKeyPress={(e) => e.charCode === 13 && onChangeHandler(e)}
+        onKeyPress={(e) =>
+          (e.key === ' ' || e.key === 'Enter') && onChangeHandler(e)
+        }
         onClick={onChangeHandler}
       >
-        <span className="sr-only">Favorite</span>
-        <span className="sr-only" id={`av-favorite-heart-desc-${id}`}>
-          {isFavorite
-            ? 'This item is favorited.'
-            : 'This item is not favorited.'}
-        </span>
-        <span className="icon outline" />
-        <span className="icon default-filled" />
-        <span className="icon selected-filled" />
+        <span aria-hidden className="icon outline" />
+        <span aria-hidden className="icon default-filled" />
+        <span aria-hidden className="icon selected-filled" />
       </span>
     );
-  }, [id, isFavorite, onMouseDown, props, onChange, toggleFavorite]);
+  }, [id, name, isFavorite, onMouseDown, props, onChange, toggleFavorite]);
 
   useEffectAsync(async () => {
     toggleLoading(false);
@@ -80,6 +76,7 @@ const FavoriteHeart = ({ id, onChange, onMouseDown, ...props }) => {
 
 FavoriteHeart.propTypes = {
   id: PropTypes.string.isRequired,
+  name: PropTypes.string.isRequired,
   onChange: PropTypes.func,
   onMouseDown: PropTypes.func,
 };

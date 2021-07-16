@@ -132,7 +132,7 @@ describe('FavoriteHeart', () => {
       },
     });
 
-    const { container, getByText } = render(
+    const { container } = render(
       <Favorites>
         <FavoriteHeart id="789" />
       </Favorites>
@@ -142,12 +142,14 @@ describe('FavoriteHeart', () => {
 
     expect(heart).toBeDefined();
 
-    await waitFor(() => getByText('This item is not favorited.'));
+    expect(heart).toHaveAttribute('aria-label', 'Favorite ');
+
+    await waitFor(() => expect(heart).not.toBeChecked());
 
     // Simulate user favoriting item
     await fireEvent.click(heart);
 
-    await waitFor(() => getByText('This item is favorited.'));
+    await waitFor(() => expect(heart).toBeChecked());
 
     expect(avSettingsApi.setApplication).toHaveBeenCalledTimes(1);
     // Test that favorite gets sent to settings and to correct position
@@ -176,31 +178,37 @@ describe('FavoriteHeart', () => {
   });
 
   test('should render favorited', async () => {
-    const { container, getByText } = render(
+    const { container } = render(
       <Favorites>
-        <FavoriteHeart id="123" />
+        <FavoriteHeart id="123" name="Test App" />
       </Favorites>
     );
 
-    expect(container.querySelector('#av-favorite-heart-123')).toBeDefined();
+    const heart = container.querySelector('#av-favorite-heart-123');
 
-    await waitFor(() => getByText('This item is favorited.'));
+    expect(heart).toBeDefined();
+
+    expect(heart).toHaveAttribute('aria-label', 'Favorite Test App');
+
+    await waitFor(() => expect(heart).toBeChecked());
   });
 
   test('should render not favorited', async () => {
-    const { container, getByText } = render(
+    const { container } = render(
       <Favorites>
         <FavoriteHeart id="1234" />
       </Favorites>
     );
 
-    expect(container.querySelector('#av-favorite-heart-1234')).toBeDefined();
+    const heart = container.querySelector('#av-favorite-heart-1234');
 
-    await waitFor(() => getByText('This item is not favorited.'));
+    expect(heart).toBeDefined();
+
+    await waitFor(() => expect(heart).not.toBeChecked());
   });
 
   test('should update when avMessage changed event triggers from elsewhere', async () => {
-    const { container, getByText } = render(
+    const { container } = render(
       <Favorites>
         <FavoriteHeart id="123" />
       </Favorites>
@@ -210,7 +218,7 @@ describe('FavoriteHeart', () => {
 
     expect(heart).toBeDefined();
 
-    await waitFor(() => getByText('This item is favorited.'));
+    await waitFor(() => expect(heart).toBeChecked());
 
     avMessages.DOMAIN = 'http://localhost';
 
@@ -219,11 +227,11 @@ describe('FavoriteHeart', () => {
       message: { favorites: [] },
     });
 
-    await waitFor(() => getByText('This item is not favorited.'));
+    await waitFor(() => expect(heart).toBeChecked());
   });
 
   test('should update when avMessage updated event triggers from elsewhere', async () => {
-    const { container, getByText } = render(
+    const { container } = render(
       <Favorites>
         <FavoriteHeart id="123" />
       </Favorites>
@@ -233,7 +241,7 @@ describe('FavoriteHeart', () => {
 
     expect(heart).toBeDefined();
 
-    await waitFor(() => getByText('This item is favorited.'));
+    await waitFor(() => expect(heart).toBeChecked());
 
     avMessages.DOMAIN = 'http://localhost';
 
@@ -242,7 +250,7 @@ describe('FavoriteHeart', () => {
       message: { favorites: [] },
     });
 
-    await waitFor(() => getByText('This item is not favorited.'));
+    await waitFor(() => expect(heart).not.toBeChecked());
   });
 
   test('should delete favorite and send post message with updated favorites', async () => {
@@ -259,7 +267,7 @@ describe('FavoriteHeart', () => {
       })
     );
 
-    const { container, getByText } = render(
+    const { container } = render(
       <Favorites>
         <FavoriteHeart id="123" />
       </Favorites>
@@ -269,12 +277,12 @@ describe('FavoriteHeart', () => {
 
     expect(heart).toBeDefined();
 
-    await waitFor(() => getByText('This item is favorited.'));
+    await waitFor(() => expect(heart).toBeChecked());
 
     // Simulate user unfavoriting item
     fireEvent.click(heart);
 
-    await waitFor(() => getByText('This item is not favorited.'));
+    await waitFor(() => expect(heart).not.toBeChecked());
 
     expect(avMessages.send).toHaveBeenCalledTimes(1);
     expect(avMessages.send.mock.calls[0][0].event).toBe('av:favorites:update');
@@ -299,7 +307,7 @@ describe('FavoriteHeart', () => {
       })
     );
 
-    const { container, getByText } = render(
+    const { container } = render(
       <Favorites>
         <FavoriteHeart id="123" />
       </Favorites>
@@ -309,12 +317,12 @@ describe('FavoriteHeart', () => {
 
     expect(heart).toBeDefined();
 
-    await waitFor(() => getByText('This item is favorited.'));
+    await waitFor(() => expect(heart).toBeChecked());
 
     // Simulate user unfavoriting item
     fireEvent.keyPress(heart, { key: 'Enter', code: 13, charCode: 13 });
 
-    await waitFor(() => getByText('This item is not favorited.'));
+    await waitFor(() => expect(heart).not.toBeChecked());
 
     expect(avMessages.send).toHaveBeenCalledTimes(1);
     expect(avMessages.send.mock.calls[0][0].event).toBe('av:favorites:update');
@@ -326,7 +334,7 @@ describe('FavoriteHeart', () => {
 
   test('should call onChange once toggled', async () => {
     const onChange = jest.fn(() => {});
-    const { container, getByText } = render(
+    const { container } = render(
       <Favorites>
         <FavoriteHeart onChange={onChange} id="1234" />
       </Favorites>
@@ -336,7 +344,7 @@ describe('FavoriteHeart', () => {
 
     expect(heart).toBeDefined();
 
-    await waitFor(() => getByText('This item is not favorited.'));
+    await waitFor(() => expect(heart).not.toBeChecked());
 
     fireEvent.click(heart);
 
@@ -345,7 +353,7 @@ describe('FavoriteHeart', () => {
   test('should prevent default focus event', async () => {
     const onChange = jest.fn(() => {});
     const onMouseDown = jest.fn();
-    const { container, getByText } = render(
+    const { container } = render(
       <Favorites>
         <FavoriteHeart
           onChange={onChange}
@@ -359,7 +367,7 @@ describe('FavoriteHeart', () => {
 
     expect(heart).toBeDefined();
 
-    await waitFor(() => getByText('This item is not favorited.'));
+    await waitFor(() => expect(heart).not.toBeChecked());
 
     const event = new MouseEvent('mouseDown');
 
@@ -371,7 +379,7 @@ describe('FavoriteHeart', () => {
   });
 
   test('should show tooltip', async () => {
-    const { container, getByText, getByTestId } = render(
+    const { container, getByTestId } = render(
       <Favorites>
         <FavoriteHeart id="1234" />
       </Favorites>
@@ -381,7 +389,7 @@ describe('FavoriteHeart', () => {
 
     expect(heart).toBeDefined();
 
-    await waitFor(() => getByText('This item is not favorited.'));
+    await waitFor(() => expect(heart).not.toBeChecked());
 
     await fireEvent.mouseOver(heart);
 
@@ -408,7 +416,7 @@ describe('FavoriteHeart', () => {
       })
     );
 
-    const { container, getByText } = render(
+    const { container } = render(
       <Favorites>
         <FavoriteHeart id="123" />
       </Favorites>
@@ -418,7 +426,7 @@ describe('FavoriteHeart', () => {
 
     expect(heart).toBeDefined();
 
-    await waitFor(() => getByText('This item is not favorited.'));
+    await waitFor(() => expect(heart).not.toBeChecked());
 
     fireEvent.click(heart);
 
