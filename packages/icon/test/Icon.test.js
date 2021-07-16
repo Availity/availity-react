@@ -5,14 +5,14 @@ import Icon from '..';
 afterEach(cleanup);
 
 describe('Icon', () => {
-  test('should render default size and aria-label', () => {
+  test('should render default size and aria-hidden', () => {
     const { getByTestId } = render(<Icon data-testid="icon" name="home" />);
 
     const icon = getByTestId('icon');
 
     expect(icon).toBeDefined();
 
-    expect(icon.getAttribute('aria-label')).toBe('home');
+    expect(icon.getAttribute('aria-hidden')).toBe('true');
   });
 
   test('should render given a size', () => {
@@ -23,16 +23,6 @@ describe('Icon', () => {
     const icon = container.querySelector('.icon-3x');
 
     expect(icon).not.toBe(null);
-  });
-
-  test('should render custom aria-label', () => {
-    const { getByTestId } = render(
-      <Icon data-testid="icon" name="home" aria-label="custom label" />
-    );
-
-    const icon = getByTestId('icon');
-
-    expect(icon.getAttribute('aria-label')).toBe('custom label');
   });
 
   test('should render with extra className', () => {

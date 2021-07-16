@@ -6,6 +6,7 @@ import {
   ModalHeader,
   ModalFooter,
   FormGroup,
+  Label,
 } from 'reactstrap';
 import { avLogMessagesApi, avRegionsApi } from '@availity/api-axios';
 import { Form, Field } from '@availity/form';
@@ -88,7 +89,8 @@ const FeedbackForm = ({
 
   return sent ? (
     <ModalHeader
-      aria-live="assertive"
+      aria-modal="false"
+      id="feedback-form-header"
       tabIndex="0"
       className="d-flex justify-content-center"
       {...modalHeaderProps}
@@ -98,8 +100,10 @@ const FeedbackForm = ({
   ) : (
     <>
       <ModalHeader
-        aria-live="assertive"
+        aria-modal="false"
         id="feedback-form-header"
+        tag="h2"
+        tabIndex="0"
         {...modalHeaderProps}
       >
         {prompt || `Tell us what you think about ${name}`}
@@ -108,6 +112,7 @@ const FeedbackForm = ({
         aria-label="Feedback Form"
         aria-describedby="feedback-form-header"
         role="form"
+        onKeyDown={({ keyCode }) => keyCode === 27 && onClose()}
         data-testid="feedback-form"
         initialValues={{
           'face-options': undefined,
@@ -143,6 +148,7 @@ const FeedbackForm = ({
           <FormGroup
             size="lg"
             id="face-options"
+            role="group"
             data-testid="face-options"
             className="d-flex flex-row justify-content-between"
           >
@@ -163,6 +169,9 @@ const FeedbackForm = ({
                   options={aboutOptions}
                 />
               )}
+              <Label for="feedback_input">
+                {(active && active.label) || 'Feedback? Requests? Defects?'}
+              </Label>
               <Field
                 type="textarea"
                 name="feedback"
@@ -172,6 +181,7 @@ const FeedbackForm = ({
                 }
                 style={{ resize: 'none' }}
                 rows="2"
+                id="feedback_input"
               />
               {additionalComments && (
                 <Field

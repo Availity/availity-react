@@ -7,8 +7,9 @@ const SmileField = ({ name, options, onChange }) => {
   const [{ value }] = useField(name);
   const { setFieldValue } = useFormikContext();
 
-  return options.map((option) => (
+  return options.map((option, i) => (
     <FeedbackButton
+      autoFocus={i === 0}
       style={{ flex: 1, margin: '0 2% 0 2%' }}
       key={option.icon}
       icon={option.icon}
@@ -45,16 +46,19 @@ SmileField.defaultProps = {
       icon: 'smile',
       description: 'Smiley face',
       placeholder: 'What do you like?',
+      label: 'Please tell us what do you like?',
     },
     {
       icon: 'meh',
       description: 'Meh face',
       placeholder: 'What would you improve?',
+      label: 'Please tell us what would you improve?',
     },
     {
       icon: 'frown',
       description: 'Frowny face',
       placeholder: "What don't you like?",
+      label: "Please tell us what don't you like?",
     },
   ],
 };
