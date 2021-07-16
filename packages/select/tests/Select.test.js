@@ -29,6 +29,13 @@ const options = [
   { label: 'Option 4', value: 'value for option 4' },
 ];
 
+const objectOptions = [
+  { label: 'Option 1', value: { id: 1, someKey: 'value for option 1' } },
+  { label: 'Option 2', value: { id: 2, someKey: 'value for option 2' } },
+  { label: 'Option 3', value: { id: 3, someKey: 'value for option 3' } },
+  { label: 'Option 4', value: { id: 4, someKey: 'value for option 4' } },
+];
+
 const groupedOptions = [
   {
     label: 'options',
@@ -698,6 +705,100 @@ describe('Select', () => {
     // Check the loadOptions is called only after the input has been focused
     await waitFor(() => {
       expect(loadOptions).toHaveBeenCalledTimes(1);
+    });
+  });
+
+  test('selectByValue from string option is autoselected', async () => {
+    const onSubmit = jest.fn();
+    const { getByText } = render(
+      <Form
+        initialValues={{
+          singleSelect: undefined,
+        }}
+        validationSchema={singleValueSchema('singleSelect')}
+        onSubmit={onSubmit}
+      >
+        <Select
+          name="singleSelect"
+          options={options}
+          data-testid="single-select"
+          selectByValue={{ value: 'value for option 3' }}
+        />
+        <Button type="submit">Submit</Button>
+      </Form>
+    );
+
+    await waitFor(() => {
+      fireEvent.click(getByText('Submit'));
+      waitFor(() => {
+        expect(onSubmit).toHaveBeenCalledWith(
+          expect.objectContaining({
+            singleSelect: 'value for option 3',
+          }),
+          expect.anything()
+        );
+      });
+    });
+  });
+
+  test('selectByValue from object option is autoselected', async () => {
+    const onSubmit = jest.fn();
+    const { getByText } = render(
+      <Form
+        initialValues={{
+          singleSelect: undefined,
+        }}
+        onSubmit={onSubmit}
+        validationSchema={singleValueSchema('singleSelect')}
+      >
+        <Select
+          name="singleSelect"
+          options={objectOptions}
+          data-testid="single-select"
+          selectByValue={{ key: 'id', value: 3 }}
+        />
+        <Button type="submit">Submit</Button>
+      </Form>
+    );
+
+    await waitFor(() => {
+      fireEvent.click(getByText('Submit'));
+      waitFor(() => {
+        expect(onSubmit).toHaveBeenCalledWith(
+          expect.objectContaining({
+            singleSelect: { id: 3, someKey: 'value for option 3' },
+          }),
+          expect.anything()
+        );
+      });
+    });
+  });
+
+  test('selectByValue is not autoselected if no option is found', async () => {
+    const onSubmit = jest.fn();
+    const { getByText } = render(
+      <Form
+        initialValues={{
+          singleSelect: undefined,
+        }}
+        onSubmit={onSubmit}
+        validationSchema={singleValueSchema('singleSelect')}
+      >
+        <Select
+          name="singleSelect"
+          options={objectOptions}
+          data-testid="single-select"
+          selectByValue={{ key: 'id', value: 88 }}
+        />
+        <Button type="submit">Submit</Button>
+      </Form>
+    );
+
+    await waitFor(() => {
+      fireEvent.click(getByText('Submit'));
+      waitFor(() => {
+        expect(onSubmit).not.toHaveBeenCalled();
+      });
     });
   });
 });

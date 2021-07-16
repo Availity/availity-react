@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import PropTypes from 'prop-types';
 import classNames from 'classnames';
 import { useField, useFormikContext } from 'formik';
@@ -7,6 +7,7 @@ import Creatable from 'react-select/creatable';
 import { AsyncPaginate as Async } from 'react-select-async-paginate';
 import get from 'lodash/get';
 import has from 'lodash/has';
+import find from 'lodash/find';
 import isFunction from 'lodash/isFunction';
 import isEqual from 'lodash/isEqual';
 
@@ -78,6 +79,49 @@ const Select = ({
   const { values, setFieldValue, initialValues } = useFormikContext();
 
   const [newOptions, setNewOptions] = useState([]);
+
+  const [selectOptions, setSelectOptions] = useState([]);
+
+  useEffect(() => {
+    if (!attributes.loadOptions) {
+      if (allowSelectAll && attributes.isMulti) {
+        if (
+          [...options, ...newOptions].length > 0 &&
+          (values[name] === undefined ||
+            values[name] === null ||
+            values[name].length < [...options, ...newOptions].length)
+        ) {
+          validateSelectAllOptions([...options, ...newOptions]);
+          setSelectOptions([selectAllOption, ...options, ...newOptions]);
+        } else {
+          setSelectOptions([...options, ...newOptions]);
+        }
+      } else {
+        setSelectOptions([...options, ...newOptions]);
+      }
+    }
+  }, [
+    attributes.loadOptions,
+    allowSelectAll,
+    attributes.isMulti,
+    newOptions,
+    options,
+    setSelectOptions,
+  ]);
+
+  useEffect(() => {
+    // auto select an option
+    if (attributes.selectByValue && selectOptions?.length >= 1) {
+      const matchedOption = find(
+        options,
+        (option) =>
+          getOptionValue(option)?.[attributes.selectByValue?.key] ===
+            attributes.selectByValue?.value ||
+          getOptionValue(option) === attributes.selectByValue?.value
+      );
+      setFieldValue(name, matchedOption);
+    }
+  }, [attributes.selectByValue]);
 
   let _cacheUniq = attributes.cacheUniq;
 
@@ -248,25 +292,6 @@ const Select = ({
     }
   };
 
-  let selectOptions;
-  if (!attributes.loadOptions) {
-    if (allowSelectAll && attributes.isMulti) {
-      if (
-        [...options, ...newOptions].length > 0 &&
-        (values[name] === undefined ||
-          values[name] === null ||
-          values[name].length < [...options, ...newOptions].length)
-      ) {
-        validateSelectAllOptions([...options, ...newOptions]);
-        selectOptions = [selectAllOption, ...options, ...newOptions];
-      } else {
-        selectOptions = [...options, ...newOptions];
-      }
-    } else {
-      selectOptions = [...options, ...newOptions];
-    }
-  }
-
   if (attributes.loadOptions && allowSelectAll) {
     // eslint-disable-next-line no-console
     console.warn('allowSelectAll is ignored when loadOptions is defined.');
@@ -389,6 +414,10 @@ Select.propTypes = {
   autofill: PropTypes.oneOfType([PropTypes.bool, PropTypes.object]),
   allowSelectAll: PropTypes.bool,
   waitUntilFocused: PropTypes.bool,
+  selectByValue: PropTypes.shape({
+    value: PropTypes.string,
+    key: PropTypes.string,
+  }),
 };
 
 export default Select;

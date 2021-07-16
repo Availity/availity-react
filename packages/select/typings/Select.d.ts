@@ -8,6 +8,11 @@ interface GroupedOptions {
   type: 'group';
 }
 
+interface SelectByValue {
+  value: string;
+  key?: string;
+}
+
 export interface SelectProps<T> extends Props<{}> {
   loadOptions?: Function;
   raw?: boolean;
@@ -21,6 +26,7 @@ export interface SelectProps<T> extends Props<{}> {
   validate?: FieldValidator;
   autofill?: boolean | object;
   creatable?: boolean;
+  selectByValue?: SelectByValue;
 }
 
 declare class Select<T> extends React.Component<SelectProps<T>> {}

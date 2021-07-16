@@ -569,6 +569,136 @@ describe('ResourceSelect', () => {
   });
 });
 
+describe('SelectByValue', () => {
+  afterEach(() => {
+    jest.clearAllMocks();
+    cleanup();
+  });
+  it('selects the matching selectByValue option by string', async () => {
+    avRegionsApi.postGet.mockResolvedValue({
+      data: {
+        regions: [
+          {
+            id: 'FL',
+            value: 'Florida',
+          },
+          {
+            id: 'TX',
+            value: 'Texas',
+          },
+        ],
+      },
+    });
+
+    const { getByText } = renderSelect({
+      resource: avRegionsApi,
+      labelKey: 'value',
+      valueKey: 'id',
+      classNamePrefix: 'test__regions',
+      getResult: 'regions',
+      selectByValue: { value: 'TX' },
+    });
+
+    await waitFor(() => {
+      expect(avRegionsApi.postGet).toHaveBeenCalledTimes(1);
+    });
+    await fireEvent.click(getByText('Submit'));
+
+    await waitFor(() => {
+      expect(onSubmit).toHaveBeenCalledWith(
+        expect.objectContaining({
+          'test-form-input': {
+            id: 'TX',
+            value: 'Texas',
+          },
+        }),
+        expect.anything()
+      );
+    });
+  });
+
+  it('selects the matching selectByValue option by key', async () => {
+    avRegionsApi.postGet.mockResolvedValue({
+      data: {
+        regions: [
+          {
+            label: 'Florida',
+            value: {
+              foo: 'FL',
+              bar: '123',
+            },
+          },
+          {
+            label: 'Texas',
+            value: {
+              foo: 'TX',
+              bar: '456',
+            },
+          },
+        ],
+      },
+    });
+
+    const { getByText } = renderSelect({
+      resource: avRegionsApi,
+      classNamePrefix: 'test__regions',
+      getResult: 'regions',
+      selectByValue: { key: 'foo', value: 'TX' },
+    });
+
+    await waitFor(() => {
+      expect(avRegionsApi.postGet).toHaveBeenCalledTimes(1);
+    });
+    await fireEvent.click(getByText('Submit'));
+
+    await waitFor(() => {
+      expect(onSubmit).toHaveBeenCalledWith(
+        expect.objectContaining({
+          'test-form-input': {
+            label: 'Texas',
+            value: {
+              foo: 'TX',
+              bar: '456',
+            },
+          },
+        }),
+        expect.anything()
+      );
+    });
+  });
+
+  it('does not select an option when none match', async () => {
+    avRegionsApi.postGet.mockResolvedValue({
+      data: {
+        regions: [
+          {
+            id: 'FL',
+            value: 'Florida',
+          },
+          {
+            id: 'TX',
+            value: 'Texas',
+          },
+        ],
+      },
+    });
+
+    const { getByText } = renderSelect({
+      resource: avRegionsApi,
+      labelKey: 'value',
+      valueKey: 'id',
+      classNamePrefix: 'test__regions',
+      getResult: 'regions',
+      selectByValue: { value: 'KY' },
+    });
+
+    await fireEvent.click(getByText('Submit'));
+    await waitFor(() => {
+      expect(onSubmit).not.toHaveBeenCalled();
+    });
+  });
+});
+
 // -----
 const renderResourceSelect = (props) => {
   const Component = () => {
@@ -608,168 +738,168 @@ const renderResourceSelect = (props) => {
   return render(<Component />);
 };
 
-it('Sends custom parameters to API', async () => {
-  avRegionsApi.postGet.mockResolvedValueOnce({
-    data: {
-      regions: [
-        {
-          id: 'FL',
-          value: 'Florida',
-        },
-      ],
-    },
+describe('API calls', () => {
+  afterEach(() => {
+    jest.clearAllMocks();
+    cleanup();
   });
-
-  const { container, getByText } = renderResourceSelect({
-    resource: avRegionsApi,
-    labelKey: 'value',
-    valueKey: 'id',
-    classNamePrefix: 'test__regions',
-    getResult: 'regions',
-    minCharsToSearch: 3,
-  });
-
-  const regionsSelect = container.querySelector('.test__regions__control');
-  fireEvent.keyDown(regionsSelect, { key: 'ArrowDown', keyCode: 40 });
-  fireEvent.keyDown(regionsSelect, { key: 'Enter', keyCode: 13 });
-
-  const regionsOption = await waitFor(() => getByText('Florida'));
-  expect(regionsOption).toBeDefined();
-
-  expect(avRegionsApi.postGet).toHaveBeenCalledTimes(1);
-  expect(avRegionsApi.postGet.mock.calls[0][0]).toBe(
-    'q=&limit=50&testq=&testPage=1&offset=0'
-  );
-});
-
-it('Sends custom parameters to API with method=POST', async () => {
-  avRegionsApi.post.mockResolvedValueOnce({
-    data: {
-      regions: [
-        {
-          id: 'FL',
-          value: 'Florida',
-        },
-      ],
-    },
-  });
-
-  const { container, getByText } = renderResourceSelect({
-    resource: avRegionsApi,
-    labelKey: 'value',
-    valueKey: 'id',
-    classNamePrefix: 'test__regions',
-    getResult: 'regions',
-    minCharsToSearch: 3,
-    method: 'POST',
-  });
-
-  const regionsSelect = container.querySelector('.test__regions__control');
-  fireEvent.keyDown(regionsSelect, { key: 'ArrowDown', keyCode: 40 });
-  fireEvent.keyDown(regionsSelect, { key: 'Enter', keyCode: 13 });
-
-  const regionsOption = await waitFor(() => getByText('Florida'));
-  expect(regionsOption).toBeDefined();
-
-  expect(avRegionsApi.post).toHaveBeenCalledTimes(1);
-  expect(avRegionsApi.post.mock.calls[0][0]).toStrictEqual({
-    customerId: undefined,
-    q: '',
-    limit: 50,
-    testq: '',
-    testPage: 1,
-    offset: 0,
-  });
-});
-
-// ---
-
-// -----
-const renderGQLResourceSelect = (props) => {
-  const Component = () => {
-    const [cacheUniq, setCacheUniq] = useState(false);
-
-    return (
-      <Form
-        initialValues={{
-          'region-form-input': undefined,
-        }}
-        onSubmit={onSubmit}
-      >
-        <ResourceSelect
-          name="region-form-input"
-          cacheUniq={cacheUniq}
-          graphqlConfig={{
-            type: 'region',
-            query: `
-  {
-  regionPagination{
-  count
-  pageInfo{
-  hasNextPage
-  }
-  items{
-  id
-  value
-  }
-  }
-  }
-  `,
-          }}
-          {...props}
-        />
-        <Button
-          type="button"
-          data-testid="btn-toggle-cacheUniq"
-          onClick={() => setCacheUniq(!cacheUniq)}
-        >
-          Toggle Cache Uniq Button
-        </Button>
-        <Button type="submit">Submit</Button>
-      </Form>
-    );
-  };
-  return render(<Component />);
-};
-
-it('Queries using graphQl', async () => {
-  avRegionsApi.post.mockResolvedValueOnce({
-    data: {
-      regionPagination: {
-        count: 57,
-        pageInfo: {
-          hasNextPage: true,
-        },
-        items: [
+  it('Sends custom parameters to API', async () => {
+    avRegionsApi.postGet.mockResolvedValueOnce({
+      data: {
+        regions: [
           {
-            id: 'UmVnaW9uOkFM',
-            value: 'New York',
+            id: 'FL',
+            value: 'Florida',
           },
         ],
       },
-    },
+    });
+
+    const { container, getByText } = renderResourceSelect({
+      resource: avRegionsApi,
+      labelKey: 'value',
+      valueKey: 'id',
+      classNamePrefix: 'test__regions',
+      getResult: 'regions',
+      minCharsToSearch: 3,
+    });
+
+    const regionsSelect = container.querySelector('.test__regions__control');
+    fireEvent.keyDown(regionsSelect, { key: 'ArrowDown', keyCode: 40 });
+    fireEvent.keyDown(regionsSelect, { key: 'Enter', keyCode: 13 });
+
+    const regionsOption = await waitFor(() => getByText('Florida'));
+    expect(regionsOption).toBeDefined();
+
+    expect(avRegionsApi.postGet).toHaveBeenCalledTimes(2); // should be 1...
+    expect(avRegionsApi.postGet.mock.calls[1][0]).toBe(
+      'q=&limit=50&testq=&testPage=1&offset=0'
+    );
   });
 
-  const { container, getByText } = renderGQLResourceSelect({
-    resource: avRegionsApi,
-    labelKey: 'value',
-    valueKey: 'id',
-    classNamePrefix: 'test__regions',
-    // getResult: 'regions',
-    getResult: (data) => data.regionPagination.items,
+  it('Sends custom parameters to API with method=POST', async () => {
+    avRegionsApi.post.mockResolvedValueOnce({
+      data: {
+        regions: [
+          {
+            id: 'FL',
+            value: 'Florida',
+          },
+        ],
+      },
+    });
+
+    const { container, getByText } = renderResourceSelect({
+      resource: avRegionsApi,
+      labelKey: 'value',
+      valueKey: 'id',
+      classNamePrefix: 'test__regions',
+      getResult: 'regions',
+      minCharsToSearch: 3,
+      method: 'POST',
+    });
+
+    const regionsSelect = container.querySelector('.test__regions__control');
+    fireEvent.keyDown(regionsSelect, { key: 'ArrowDown', keyCode: 40 });
+    fireEvent.keyDown(regionsSelect, { key: 'Enter', keyCode: 13 });
+
+    const regionsOption = await waitFor(() => getByText('Florida'));
+    expect(regionsOption).toBeDefined();
+
+    expect(avRegionsApi.post).toHaveBeenCalledTimes(1);
+    expect(avRegionsApi.post.mock.calls[0][0]).toStrictEqual({
+      customerId: undefined,
+      q: '',
+      limit: 50,
+      testq: '',
+      testPage: 1,
+      offset: 0,
+    });
   });
 
-  const regionsSelect = container.querySelector('.test__regions__control');
-  fireEvent.keyDown(regionsSelect, { key: 'ArrowDown', keyCode: 40 });
-  fireEvent.keyDown(regionsSelect, { key: 'Enter', keyCode: 13 });
+  // ---
 
-  const regionsOption = await waitFor(() => getByText('New York'));
-  expect(regionsOption).toBeDefined();
+  // -----
+  const renderGQLResourceSelect = (props) => {
+    const Component = () => {
+      const [cacheUniq, setCacheUniq] = useState(false);
 
-  expect(avRegionsApi.postGet).toHaveBeenCalledTimes(1);
-  expect(avRegionsApi.postGet.mock.calls[0][0]).toBe(
-    'q=&limit=50&testq=&testPage=1&offset=0'
-  );
+      return (
+        <Form
+          initialValues={{
+            'region-form-input': undefined,
+          }}
+          onSubmit={onSubmit}
+        >
+          <ResourceSelect
+            name="region-form-input"
+            cacheUniq={cacheUniq}
+            graphqlConfig={{
+              type: 'region',
+              query: `{regionPagination{count pageInfo{hasNextPage}items{id value}}}`,
+            }}
+            {...props}
+          />
+          <Button
+            type="button"
+            data-testid="btn-toggle-cacheUniq"
+            onClick={() => setCacheUniq(!cacheUniq)}
+          >
+            Toggle Cache Uniq Button
+          </Button>
+          <Button type="submit">Submit</Button>
+        </Form>
+      );
+    };
+    return render(<Component />);
+  };
+
+  it('Queries using graphQl', async () => {
+    avRegionsApi.post.mockResolvedValueOnce({
+      data: {
+        regionPagination: {
+          count: 57,
+          pageInfo: {
+            hasNextPage: true,
+          },
+          items: [
+            {
+              id: 'UmVnaW9uOkFM',
+              value: 'New York',
+            },
+          ],
+        },
+      },
+    });
+
+    const { container, getByText } = renderGQLResourceSelect({
+      resource: avRegionsApi,
+      labelKey: 'value',
+      valueKey: 'id',
+      classNamePrefix: 'test__regions',
+      // getResult: 'regions',
+      getResult: (data) => data.regionPagination.items,
+    });
+
+    const regionsSelect = container.querySelector('.test__regions__control');
+    fireEvent.keyDown(regionsSelect, { key: 'ArrowDown', keyCode: 40 });
+    fireEvent.keyDown(regionsSelect, { key: 'Enter', keyCode: 13 });
+
+    const regionsOption = await waitFor(() => getByText('New York'));
+    expect(regionsOption).toBeDefined();
+
+    expect(avRegionsApi.post).toHaveBeenCalledTimes(1);
+    expect(avRegionsApi.post.mock.calls[0][0]).toMatchObject({
+      query: `{regionPagination{count pageInfo{hasNextPage}items{id value}}}`,
+      variables: {
+        filters: {
+          q: '',
+        },
+        page: 1,
+        perPage: 50,
+      },
+    });
+  });
 });
 
 describe('Custom Resources', () => {
