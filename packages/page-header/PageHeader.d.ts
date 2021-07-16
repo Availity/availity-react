@@ -31,6 +31,7 @@ export interface PageHeaderProps extends React.HTMLAttributes<HTMLDivElement> {
   iconAlt?: string;
   clientId?: string;
   homeUrl?: string;
+  showCrumbs?: boolean;
 }
 
 declare const PageHeader: React.FunctionComponent<PageHeaderProps>;
