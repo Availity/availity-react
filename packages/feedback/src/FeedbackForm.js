@@ -111,7 +111,6 @@ const FeedbackForm = ({
       <Form
         aria-label="Feedback Form"
         aria-describedby="feedback-form-header"
-        aria-labelledby="feedback-form-header"
         role="form"
         onKeyDown={({ keyCode }) => keyCode === 27 && onClose()}
         data-testid="feedback-form"
@@ -170,13 +169,12 @@ const FeedbackForm = ({
                   options={aboutOptions}
                 />
               )}
-              <Label id="feedback_label" for="feedback_input">
+              <Label for="feedback_input">
                 {(active && active.label) || 'Feedback? Requests? Defects?'}
               </Label>
               <Field
                 type="textarea"
                 name="feedback"
-                aria-labelledby="feedback_label"
                 placeholder={
                   (active && active.placeholder) ||
                   'Feedback? Requests? Defects?'
