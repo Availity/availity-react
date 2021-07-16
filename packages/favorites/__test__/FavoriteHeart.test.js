@@ -111,6 +111,34 @@ describe('FavoriteHeart', () => {
     global.document.createRange = null;
   });
 
+  test('should render label with app name', async () => {
+    const { container } = render(
+      <Favorites>
+        <FavoriteHeart id="123" name="Test App" />
+      </Favorites>
+    );
+
+    const heart = container.querySelector('#av-favorite-heart-123');
+
+    expect(heart).toBeDefined();
+
+    expect(heart).toHaveAttribute('aria-label', 'Favorite Test App');
+  });
+
+  test('should not render with undefined in label if no app name given', async () => {
+    const { container } = render(
+      <Favorites>
+        <FavoriteHeart id="123" />
+      </Favorites>
+    );
+
+    const heart = container.querySelector('#av-favorite-heart-123');
+
+    expect(heart).toBeDefined();
+
+    expect(heart).toHaveAttribute('aria-label', 'Favorite ');
+  });
+
   test('should add favorite and send post message with updated favorites', async () => {
     avSettingsApi.getApplication = getApplicationMock;
     avSettingsApi.setApplication = jest.fn().mockResolvedValue({
@@ -141,8 +169,6 @@ describe('FavoriteHeart', () => {
     const heart = container.querySelector('#av-favorite-heart-789');
 
     expect(heart).toBeDefined();
-
-    expect(heart).toHaveAttribute('aria-label', 'Favorite ');
 
     await waitFor(() => expect(heart).not.toBeChecked());
 
@@ -180,15 +206,13 @@ describe('FavoriteHeart', () => {
   test('should render favorited', async () => {
     const { container } = render(
       <Favorites>
-        <FavoriteHeart id="123" name="Test App" />
+        <FavoriteHeart id="123" />
       </Favorites>
     );
 
     const heart = container.querySelector('#av-favorite-heart-123');
 
     expect(heart).toBeDefined();
-
-    expect(heart).toHaveAttribute('aria-label', 'Favorite Test App');
 
     await waitFor(() => expect(heart).toBeChecked());
   });
