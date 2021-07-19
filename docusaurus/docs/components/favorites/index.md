@@ -23,7 +23,7 @@ const Example = () => (
   <Favorites>
     {({ default: FavoritesProvider, FavoriteHeart }) => (
       <FavoritesProvider>
-        <FavoriteHeart id="12345" />
+        <FavoriteHeart id="12345" name="My App" />
       </FavoritesProvider>
     )}
   </Favorites>
