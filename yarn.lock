@@ -211,9 +211,9 @@
     tus-js-client "1.7.1"
 
 "@availity/yup@^3.0.11":
-  version "3.0.11"
-  resolved "https://registry.yarnpkg.com/@availity/yup/-/yup-3.0.11.tgz#53d28219d916388040bbc04b92ff92d1e4c75846"
-  integrity sha512-6cjihpbKy00gv818QKS3G9SGbitPRSDPCywshcrqcFMfPzERgEpZ6Jz6sJFAkVAQf/Y8CKny3EsVCYk7ut24ng==
+  version "3.1.1"
+  resolved "https://registry.yarnpkg.com/@availity/yup/-/yup-3.1.1.tgz#bc26af0ed01f248ff5cb4d7f09f3309d2052ef1a"
+  integrity sha512-1VGiBMrhFfiaV5QzS4U0s9S2jJ80XXFXCBe2PmGmcAPonibGgfCihCpF9MfQWw4rQRPsomHdYy8BpCw2q7/0pA==
   dependencies:
     "@babel/runtime" "^7.10.2"
     core-js "^3.12.1"
