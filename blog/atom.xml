@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+    <id>https://availity.github.io/availity-react/blog</id>
+    <title>Availity React Docs Blog</title>
+    <updated>2015-10-25T23:29:00.000Z</updated>
+    <generator>https://github.com/jpmonette/feed</generator>
+    <link rel="alternate" href="https://availity.github.io/availity-react/blog"/>
+    <subtitle>Availity React Docs Blog</subtitle>
+    <icon>https://availity.github.io/availity-react/img/favicon.ico</icon>
+</feed>
