@@ -3,6 +3,18 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# 2.2.0 (2021-07-19)
+
+
+### Features
+
+* **favorites:** accessibility label tests ([9d66b7e](https://github.com/Availity/availity-react/commit/9d66b7eb73cae08550d4ae0787e3b10dbe112a1a))
+* **favorites:** accessibility updates ([37135f4](https://github.com/Availity/availity-react/commit/37135f48e7d9d57f06a339bb921525b67fa53937))
+
+
+
+
+
 ## 2.1.35 (2021-06-01)
 
 **Note:** Version bump only for package @availity/favorites
