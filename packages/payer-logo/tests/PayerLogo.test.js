@@ -1,6 +1,6 @@
 import React from 'react';
 import { render, waitFor, cleanup } from '@testing-library/react';
-import { avSlotMachineApi } from '@availity/api-axios';
+import { avWebQLApi } from '@availity/api-axios';
 import PayerLogo, { getLogo } from '../PayerLogo';
 
 jest.mock('@availity/api-axios');
@@ -15,19 +15,15 @@ describe('PayerLogo', () => {
   });
 
   test('should render with payer id', async () => {
-    avSlotMachineApi.create.mockResolvedValue({
+    avWebQLApi.create.mockResolvedValue({
       data: {
         data: {
-          spaces: {
-            spaces: [
+          configurationPagination: {
+            items: [
               {
-                images: [
-                  {
-                    name: 'logo',
-                    value:
-                      '/static/spaces/73162546201440710195134200002269/banner.png',
-                  },
-                ],
+                images: {
+                  logo: '/static/spaces/73162546201440710195134200002269/banner.png',
+                },
               },
             ],
           },
@@ -49,11 +45,11 @@ describe('PayerLogo', () => {
   });
 
   test('should render with default when payer id returns no results', async () => {
-    avSlotMachineApi.create.mockResolvedValue({
+    avWebQLApi.create.mockResolvedValue({
       data: {
         data: {
-          spaces: {
-            spaces: [],
+          configurationPagination: {
+            items: [],
           },
         },
       },
@@ -73,17 +69,13 @@ describe('PayerLogo', () => {
   });
 
   test('should render with space id', async () => {
-    avSlotMachineApi.create.mockResolvedValue({
+    avWebQLApi.create.mockResolvedValue({
       data: {
         data: {
-          space: {
-            images: [
-              {
-                name: 'logo',
-                value:
-                  '/static/spaces/73162546201441126239486200007187/banner.png',
-              },
-            ],
+          configurationFindOne: {
+            images: {
+              logo: '/static/spaces/73162546201441126239486200007187/banner.png',
+            },
           },
         },
       },
@@ -118,7 +110,7 @@ describe('PayerLogo', () => {
   });
 
   test('should return error on rejected promise', async () => {
-    avSlotMachineApi.create.mockRejectedValue('This field was rejected');
+    avWebQLApi.create.mockRejectedValue('This field was rejected');
 
     const response = await getLogo(null, '3', 'test-client-id');
 
