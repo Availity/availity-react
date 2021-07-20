@@ -1,18 +1,20 @@
 import React from 'react';
 import { render, waitFor, cleanup } from '@testing-library/react';
-import { avSlotMachineApi } from '@availity/api-axios';
+import { avWebQLApi } from '@availity/api-axios';
 import Spaces, { SpacesAgreement } from '..';
 
 jest.mock('@availity/api-axios');
 
-avSlotMachineApi.create.mockResolvedValue({
+avWebQLApi.create.mockResolvedValue({
   data: {
     data: {
-      spaces: {
-        totalCount: 1,
-        page: 1,
-        perPage: 50,
-        spaces: [
+      configurationPagination: {
+        pageInfo: {
+          itemCount: 1,
+          page: 1,
+          perPage: 50,
+        },
+        items: [
           {
             id: '1',
             description: 'foo',

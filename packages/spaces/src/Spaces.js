@@ -1,6 +1,6 @@
 import React, { createContext, useContext, useReducer } from 'react';
 import PropTypes from 'prop-types';
-import { avSlotMachineApi } from '@availity/api-axios';
+import { avWebQLApi } from '@availity/api-axios';
 import { useEffectAsync } from '@availity/hooks';
 import {
   spacesReducer,
@@ -21,9 +21,9 @@ export const getAllSpaces = async (
 
   const {
     data: {
-      data: { spaces },
+      data: { configurationPagination },
     },
-  } = await avSlotMachineApi.create(
+  } = await avWebQLApi.create(
     {
       query,
       variables,
@@ -31,11 +31,14 @@ export const getAllSpaces = async (
     { headers: { 'X-Client-ID': clientId } }
   );
 
-  const { totalCount, page, perPage } = spaces;
-  const unionedSpaces = _spaces.concat(spaces.spaces);
+  const {
+    pageInfo: { itemCount, currentPage, perPage },
+  } = configurationPagination;
 
-  if (totalCount > page * perPage) {
-    const vars = { ...variables, page: page + 1 };
+  const unionedSpaces = _spaces.concat(configurationPagination.items);
+
+  if (itemCount > currentPage * perPage) {
+    const vars = { ...variables, page: currentPage + 1 };
     return getAllSpaces(query, clientId, vars, unionedSpaces);
   }
 
@@ -60,8 +63,8 @@ const Spaces = ({
     INITIAL_STATE
   );
 
-  // NOTE: we do not want to query slotmachine by payerIDs and spaceIDs at the same time
-  // because slotmachine does an AND on those conditions. We want OR
+  // NOTE: we do not want to query webQL by payerIDs and spaceIDs at the same time
+  // because webQL does an AND on those conditions. We want OR
   useEffectAsync(async () => {
     try {
       dispatch({
@@ -181,6 +184,7 @@ export const useSpaces = (...ids) => {
     }
     return spc;
   });
+
   return filteredSpaces;
 };
 
@@ -196,34 +200,98 @@ Spaces.propTypes = {
 
 Spaces.defaultProps = {
   query: `
-    query($ids: [String!], $payerIDs: [String!], $types: [String!], $page: Int){
-      spaces(ids: $ids, payerIDs: $payerIDs, types: $types, page: $page){
-        totalCount
-        perPage
-        page
-        spaces{
-          id
-          name
-          description
-          link {
+    query configurationFindMany($ids: [String!], $payerIDs: [ID!], $types: [TypeEnum!]){
+      configurationPagination(filter: { ids: $ids, payerIds: $payerIDs, types: $types }){
+        pageInfo{
+          pageCount
+          currentPage
+          perPage
+          itemCount
+        }
+        items {
+          ...on Configuration{
+              name
+              description
+              payerIDs
+              parentIDs
+              metadataPairs{
+                name
+                value
+              }
+          }
+          
+          ... on Node {
+            id
+          }
+          
+          ... on Alert {
+            link{
+              url
+            }
+
+          }
+          
+          ... on Container {
+            link{
+              url
+            }
+            images{
+              tile
+              promotional
+              logo
+              billboard
+            }
+          }
+          
+          ... on PayerSpace {
+            link{
+              url
+            }
+            images{
+              tile
+              logo
+              billboard
+            }
             url
           }
-          payerIDs
-          parentIDs
-          metadata{
-            name
-            value
+          
+          ... on Application {
+            link{
+              url
+            }
           }
-          images{
-            name
-            value
+          
+          ... on Resource {
+            link{
+              url
+            }
           }
-          url
+          
+          ... on Navigation {
+            images{
+              promotional
+            }
+          }
+          
+          ... on Learning {
+            images {
+              promotional
+            }
+          }
+          
+          ... on Proxy {
+            url
+          }
+          
+          ... on File {
+            url
+          }
+
         }
       }
     }
   `,
-  variables: { types: ['space'] },
+  variables: { types: ['PAYERSPACE'] },
   spaceIds: [],
   payerIds: [],
   spaces: [],

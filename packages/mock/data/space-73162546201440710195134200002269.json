@@ -1,14 +1,11 @@
 {
   "data": {
-    "spaces": {
-      "spaces": [
+    "configurationPagination": {
+      "items": [
         {
-          "images": [
-            {
-              "name": "logo",
-              "value": "/public/apps/eligibility/images/value-add-logos/PayerID.gif"
-            }
-          ]
+          "images": {
+            "logo": "/public/apps/eligibility/images/value-add-logos/PayerID.gif"
+          }
         }
       ]
     }

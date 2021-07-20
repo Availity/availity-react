@@ -2,7 +2,7 @@
 /* eslint-disable react/prop-types */
 import React, { useState } from 'react';
 import { render, waitFor, cleanup, fireEvent } from '@testing-library/react';
-import { avSlotMachineApi } from '@availity/api-axios';
+import { avWebQLApi } from '@availity/api-axios';
 import { getAllSpaces } from '../src/Spaces';
 import { sanitizeSpaces } from '../src/helpers';
 import Spaces, { useSpaces, useSpacesContext, SpacesLogo } from '..';
@@ -15,16 +15,18 @@ describe('Spaces', () => {
     cleanup();
   });
 
-  it('provides correct spaces from props and from slotmachine', async () => {
-    avSlotMachineApi.create
+  it('provides correct spaces from props and from avWebQL', async () => {
+    avWebQLApi.create
       .mockResolvedValueOnce({
         data: {
           data: {
-            spaces: {
-              totalCount: 1,
-              page: 1,
-              perPage: 1,
-              spaces: [{ id: '1' }],
+            configurationPagination: {
+              pageInfo: {
+                pageCount: 1,
+                currentPage: 1,
+                perPage: 1,
+              },
+              items: [{ id: '1' }],
             },
           },
         },
@@ -32,11 +34,13 @@ describe('Spaces', () => {
       .mockResolvedValueOnce({
         data: {
           data: {
-            spaces: {
-              totalCount: 1,
-              page: 1,
-              perPage: 1,
-              spaces: [{ id: '2' }],
+            configurationPagination: {
+              pageInfo: {
+                pageCount: 1,
+                currentPage: 1,
+                perPage: 1,
+              },
+              items: [{ id: '2' }],
             },
           },
         },
@@ -84,7 +88,7 @@ describe('Spaces', () => {
 
     const { getByTestId } = render(<MyComponent />);
 
-    // Check that space 1 (fetched from slotmachine) is accessible by spaces provider
+    // Check that space 1 (fetched from avWebQL) is accessible by spaces provider
     let space1 = await waitFor(() => getByTestId('space-for-1'));
     expect(space1.textContent).toBe('Space 1 is in provider');
 
@@ -96,19 +100,17 @@ describe('Spaces', () => {
     let space3 = await waitFor(() => getByTestId('space-for-3'));
     expect(space3.textContent).toBe('Space 3 is in provider');
 
-    // Check that slotmachine was only queried for space 1 because space 3 was provided by props
-    expect(avSlotMachineApi.create.mock.calls[0][0].variables.ids).toEqual([
-      '1',
-    ]);
+    // Check that avWebQL was only queried for space 1 because space 3 was provided by props
+    expect(avWebQLApi.create.mock.calls[0][0].variables.ids).toEqual(['1']);
 
     // Click button that adds another space id, "2", to the provider
     fireEvent.click(getByTestId('add-spaceid-btn'));
 
-    // Check that space 1 (fetched from slotmachine) is still accessible by spaces provider
+    // Check that space 1 (fetched from avWebQL) is still accessible by spaces provider
     space1 = await waitFor(() => getByTestId('space-for-1'));
     expect(space1.textContent).toBe('Space 1 is in provider');
 
-    // Check that space 2 (now fetched from slotmachine) is now accessible by spaces provider
+    // Check that space 2 (now fetched from avWebQL) is now accessible by spaces provider
     space2 = await waitFor(() => getByTestId('space-for-2'));
     expect(space2.textContent).toBe('Space 2 is in provider');
 
@@ -116,22 +118,22 @@ describe('Spaces', () => {
     space3 = await waitFor(() => getByTestId('space-for-3'));
     expect(space3.textContent).toBe('Space 3 is in provider');
 
-    // Check that slotmachine was only queried for space 2 because the spaces provider already had space 1 (from previous query) and space 3 (from props)
-    expect(avSlotMachineApi.create.mock.calls[1][0].variables.ids).toEqual([
-      '2',
-    ]);
+    // Check that avWebQL was only queried for space 2 because the spaces provider already had space 1 (from previous query) and space 3 (from props)
+    expect(avWebQLApi.create.mock.calls[1][0].variables.ids).toEqual(['2']);
   });
 
   it('toggles whether the spaces provider is loading', async () => {
-    avSlotMachineApi.create
+    avWebQLApi.create
       .mockResolvedValueOnce({
         data: {
           data: {
-            spaces: {
-              totalCount: 1,
-              page: 1,
-              perPage: 1,
-              spaces: [{ id: '1' }],
+            configurationPagination: {
+              pageInfo: {
+                pageCount: 1,
+                currentPage: 1,
+                perPage: 1,
+              },
+              items: [{ id: '1' }],
             },
           },
         },
@@ -139,11 +141,13 @@ describe('Spaces', () => {
       .mockResolvedValue({
         data: {
           data: {
-            spaces: {
-              totalCount: 1,
-              page: 1,
-              perPage: 1,
-              spaces: [{ id: '2' }],
+            configurationPagination: {
+              pageInfo: {
+                pageCount: 1,
+                currentPage: 1,
+                perPage: 1,
+              },
+              items: [{ id: '2' }],
             },
           },
         },
@@ -155,7 +159,7 @@ describe('Spaces', () => {
       const [space] = useSpaces(spaceId);
       const { loading, error } = useSpacesContext(spaceId);
 
-      // Should be called when async effect to fetch spaces from slotmachine gets executed
+      // Should be called when async effect to fetch spaces from avWebQL gets executed
       if (space && !loading) fn(space, error);
       return loading ? null : (
         <span data-testid={`space-for-${spaceId}`}>
@@ -201,15 +205,18 @@ describe('Spaces', () => {
 
   describe('getAllSpaces', () => {
     it('gets all spaces', async () => {
-      avSlotMachineApi.create
+      avWebQLApi.create
         .mockResolvedValueOnce({
           data: {
             data: {
-              spaces: {
-                totalCount: 10,
-                page: 1,
-                perPage: 5,
-                spaces: [{ id: '1' }, {}, {}, {}, {}],
+              configurationPagination: {
+                pageInfo: {
+                  pageCount: 2,
+                  itemCount: 10,
+                  currentPage: 1,
+                  perPage: 5,
+                },
+                items: [{ id: '1' }, {}, {}, {}, {}],
               },
             },
           },
@@ -217,11 +224,14 @@ describe('Spaces', () => {
         .mockResolvedValueOnce({
           data: {
             data: {
-              spaces: {
-                totalCount: 10,
-                page: 2,
-                perPage: 5,
-                spaces: [{}, {}, {}, {}, { id: '10' }],
+              configurationPagination: {
+                pageInfo: {
+                  pageCount: 2,
+                  itemCount: 10,
+                  currentPage: 2,
+                  perPage: 5,
+                },
+                items: [{}, {}, {}, {}, { id: '10' }],
               },
             },
           },
@@ -236,9 +246,9 @@ describe('Spaces', () => {
       expect(spaces[0].id).toBe('1');
       expect(spaces[spaces.length - 1].id).toBe('10');
 
-      // Check correct slotmachine calls were made
-      expect(avSlotMachineApi.create).toHaveBeenCalledTimes(2);
-      expect(avSlotMachineApi.create.mock.calls[1][0].variables.page).toBe(2);
+      // Check correct avWebQLApi calls were made
+      expect(avWebQLApi.create).toHaveBeenCalledTimes(2);
+      expect(avWebQLApi.create.mock.calls[1][0].variables.page).toBe(2);
     });
 
     it('should throw error when missing clientId', async () => {
@@ -271,7 +281,7 @@ describe('Spaces', () => {
       const [space] = useSpaces(spaceId);
       const { loading, error } = useSpacesContext(spaceId);
 
-      // Should be called when async effect to fetch spaces from slotmachine gets executed
+      // Should be called when async effect to fetch spaces from avWebQL gets executed
       if (!loading) fn(space, error);
       return loading ? null : (
         <span data-testid={`space-for-${spaceId}`}>
@@ -292,14 +302,16 @@ describe('Spaces', () => {
   });
 
   test('works with render props', async () => {
-    avSlotMachineApi.create.mockResolvedValueOnce({
+    avWebQLApi.create.mockResolvedValueOnce({
       data: {
         data: {
-          spaces: {
-            totalCount: 2,
-            page: 1,
-            perPage: 2,
-            spaces: [{ id: '1' }, { id: '2' }],
+          configurationPagination: {
+            pageInfo: {
+              pageCount: 2,
+              currentPage: 1,
+              perPage: 2,
+            },
+            items: [{ id: '1' }, { id: '2' }],
           },
         },
       },
@@ -318,14 +330,16 @@ describe('Spaces', () => {
   });
 
   test('useSpaces hook works', async () => {
-    avSlotMachineApi.create.mockResolvedValue({
+    avWebQLApi.create.mockResolvedValue({
       data: {
         data: {
-          spaces: {
-            totalCount: 3,
-            page: 1,
-            perPage: 3,
-            spaces: [
+          configurationPagination: {
+            pageInfo: {
+              pageCount: 3,
+              currentPage: 1,
+              perPage: 3,
+            },
+            items: [
               { id: '1', payerIDs: ['a', 'b', 'c'] },
               { id: '2', payerIDs: ['b', 'c'] },
               { id: '3', payerIDs: ['d', 'c'] },
@@ -364,7 +378,7 @@ describe('Spaces', () => {
       </Spaces>
     );
 
-    expect(avSlotMachineApi.create.mock.calls[0][0].variables.ids).toEqual([
+    expect(avWebQLApi.create.mock.calls[0][0].variables.ids).toEqual([
       '1',
       '2',
       '3',
@@ -394,14 +408,16 @@ describe('Spaces', () => {
   });
 
   it('returns first payer space with when no spaceId passed', async () => {
-    avSlotMachineApi.create.mockResolvedValueOnce({
+    avWebQLApi.create.mockResolvedValueOnce({
       data: {
         data: {
-          spaces: {
-            totalCount: 1,
-            page: 1,
-            perPage: 1,
-            spaces: [{ id: '1', name: 'hello world' }],
+          configurationPagination: {
+            pageInfo: {
+              pageCount: 1,
+              currentPage: 1,
+              perPage: 1,
+            },
+            items: [{ id: '1', name: 'hello world' }],
           },
         },
       },
@@ -433,14 +449,16 @@ describe('Spaces', () => {
 });
 
 test('renders with warning', async () => {
-  avSlotMachineApi.create.mockResolvedValueOnce({
+  avWebQLApi.create.mockResolvedValueOnce({
     data: {
       data: {
-        spaces: {
-          totalCount: 2,
-          page: 1,
-          perPage: 2,
-          spaces: [{ id: '1' }, { id: '2' }],
+        configurationPagination: {
+          pageInfo: {
+            pageCount: 2,
+            currentPage: 1,
+            perPage: 2,
+          },
+          items: [{ id: '1' }, { id: '2' }],
         },
       },
     },
