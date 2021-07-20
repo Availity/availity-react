@@ -1,7 +1,7 @@
 import React from 'react';
 import { render, cleanup, waitFor } from '@testing-library/react';
 import TrainingLink from '@availity/training-link';
-import { avSlotMachineApi } from '@availity/api-axios';
+import { avWebQLApi } from '@availity/api-axios';
 import { NavLink } from 'reactstrap';
 import Spaces from '@availity/spaces';
 import PageHeader from '..';
@@ -104,14 +104,16 @@ describe('PageHeader', () => {
 
   describe('spaces', () => {
     test('should work with spaceId', async () => {
-      avSlotMachineApi.create.mockResolvedValue({
+      avWebQLApi.create.mockResolvedValue({
         data: {
           data: {
-            spaces: {
-              totalCount: 1,
-              page: 1,
-              perPage: 1,
-              spaces: [{ id: '1', name: 'My Space' }],
+            configurationPagination: {
+              pageInfo: {
+                itemCount: 1,
+                perPage: 1,
+                page: 1,
+              },
+              items: [{ id: '1', name: 'My Space' }],
             },
           },
         },
@@ -128,31 +130,30 @@ describe('PageHeader', () => {
     });
 
     test('should work with payerId', async () => {
-      avSlotMachineApi.create.mockResolvedValue({
+      avWebQLApi.create.mockResolvedValue({
         data: {
           data: {
-            spaces: {
-              totalCount: 1,
-              page: 1,
-              perPage: 1,
-              spaces: [
+            configurationPagination: {
+              pageInfo: {
+                itemCount: 1,
+                perPage: 1,
+                page: 1,
+              },
+              items: [
                 {
                   id: 'payer1',
                   name: 'My Space',
                   payerIDs: ['payer1'],
-
-                  images: [
-                    {
-                      name: 'logo',
-                      value: '/static/spaces/payer1/logo.png',
-                    },
-                  ],
+                  images: {
+                    logo: '/static/spaces/payer1/logo.png',
+                  },
                 },
               ],
             },
           },
         },
       });
+
       const { getByTestId } = render(
         <Spaces payerIds={['payer1']} clientId="my-client-id">
           <PageHeader appName="Payer Space" payerId="payer1" />
@@ -228,14 +229,16 @@ describe('PageHeader', () => {
   });
 
   test('should render with url', async () => {
-    avSlotMachineApi.create.mockResolvedValue({
+    avWebQLApi.create.mockResolvedValue({
       data: {
         data: {
-          spaces: {
-            totalCount: 1,
-            page: 1,
-            perPage: 1,
-            spaces: [
+          configurationPagination: {
+            pageInfo: {
+              itemCount: 1,
+              perPage: 1,
+              page: 1,
+            },
+            items: [
               { id: '1', name: 'My Space', link: { url: '/custom-link' } },
             ],
           },
@@ -256,14 +259,16 @@ describe('PageHeader', () => {
   });
 
   test('should render custom crumbs', async () => {
-    avSlotMachineApi.create.mockResolvedValue({
+    avWebQLApi.create.mockResolvedValue({
       data: {
         data: {
-          spaces: {
-            totalCount: 1,
-            page: 1,
-            perPage: 1,
-            spaces: [
+          configurationPagination: {
+            pageInfo: {
+              itemCount: 1,
+              perPage: 1,
+              page: 1,
+            },
+            items: [
               { id: '1', name: 'My Space', link: { url: '/custom-link' } },
             ],
           },
