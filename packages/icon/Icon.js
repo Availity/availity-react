@@ -3,18 +3,7 @@ import PropTypes from 'prop-types';
 import classNames from 'classnames';
 
 const Icon = React.forwardRef(
-  (
-    {
-      name,
-      size,
-      'aria-label': ariaLabel,
-      color,
-      className,
-      children,
-      ...rest
-    },
-    ref
-  ) => (
+  ({ name, size, color, className, children, ...rest }, ref) => (
     <i
       ref={ref}
       aria-hidden="true"
@@ -35,7 +24,6 @@ const Icon = React.forwardRef(
 Icon.propTypes = {
   name: PropTypes.string.isRequired,
   size: PropTypes.string,
-  'aria-label': PropTypes.string,
   className: PropTypes.string,
   color: PropTypes.string,
   children: PropTypes.node,
