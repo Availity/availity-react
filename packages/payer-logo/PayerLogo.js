@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 import { useEffectAsync } from '@availity/hooks';
 import { avWebQLApi } from '@availity/api-axios';
-import get from 'lodash.get';
+import get from 'lodash/get';
 
 const spaceIDQuery = `
 query configurationFindById($id: ID!){
