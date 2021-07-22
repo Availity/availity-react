@@ -37,6 +37,7 @@ export const getAllSpaces = async (
 
   const unionedSpaces = _spaces.concat(configurationPagination.items);
 
+  // TODO explore using pageInfo.hasNextPage instead
   if (itemCount > currentPage * perPage) {
     const vars = { ...variables, page: currentPage + 1 };
     return getAllSpaces(query, clientId, vars, unionedSpaces);
