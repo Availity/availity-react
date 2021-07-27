@@ -3,6 +3,34 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [11.0.0](https://github.com/Availity/availity-react/compare/@availity/page-header@10.1.1...@availity/page-header@11.0.0) (2021-07-27)
+
+
+### Features
+
+* **page-header:** switch to webQL from slotmachine ([14fe0e7](https://github.com/Availity/availity-react/commit/14fe0e76c64befdd786f2ec2491d39925b7a5416))
+
+
+### BREAKING CHANGES
+
+* **page-header:** response format of webQL is different than from
+slotmachine
+
+This is unlikely to break anyone using the components in this package in
+a typical fashion, but if you:
+
+1. use the `useSpaces` hook to do anything
+custom, the shape of a configuration (returned by webQL) differs
+slightly from a space (return by slotmachine). you may need to account
+for this
+
+2. pass in a custom query or variables to the Spaces provider the query
+   format and variables structure in webQL is different than that from slotmachine
+
+
+
+
+
 ## 10.1.1 (2021-07-20)
 
 **Note:** Version bump only for package @availity/page-header

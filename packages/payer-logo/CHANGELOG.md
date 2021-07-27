@@ -3,6 +3,39 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# 5.0.0 (2021-07-27)
+
+
+### Bug Fixes
+
+* **payer-logo:** fix lodash import ([81ccf0c](https://github.com/Availity/availity-react/commit/81ccf0ce04e74151b81faad749566f250e7b2aae))
+
+
+### Features
+
+* **payer-logo:** switch to webQL from slotmachine ([7e5b932](https://github.com/Availity/availity-react/commit/7e5b93232142fcb79eedf57de2cbee68da680e62))
+
+
+### BREAKING CHANGES
+
+* **payer-logo:** response format of webQL is different than from
+slotmachine
+
+This is unlikely to break anyone using the components in this package in
+a typical fashion, but if you:
+
+1. use the `useSpaces` hook to do anything
+custom, the shape of a configuration (returned by webQL) differs
+slightly from a space (return by slotmachine). you may need to account
+for this
+
+2. pass in a custom query or variables to the Spaces provider the query
+   format and variables structure in webQL is different than that from slotmachine
+
+
+
+
+
 ## 4.0.31 (2021-06-01)
 
 **Note:** Version bump only for package @availity/payer-logo

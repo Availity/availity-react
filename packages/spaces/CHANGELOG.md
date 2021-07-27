@@ -3,6 +3,34 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# 5.0.0 (2021-07-27)
+
+
+### Features
+
+* **spaces:** switch to webQL from slotmachine ([8394552](https://github.com/Availity/availity-react/commit/839455227d78d5eef37e47ad4b5885f92fc178b3))
+
+
+### BREAKING CHANGES
+
+* **spaces:** response format of webQL is different than from
+slotmachine
+
+This is unlikely to break anyone using the components in this package in
+a typical fashion, but if you:
+
+1. use the `useSpaces` hook to do anything
+custom, the shape of a configuration (returned by webQL) differs
+slightly from a space (return by slotmachine). you may need to account
+for this
+
+2. pass in a custom query or variables to the Spaces provider the query
+   format and variables structure in webQL is different than that from slotmachine
+
+
+
+
+
 ## 4.0.31 (2021-06-01)
 
 **Note:** Version bump only for package @availity/spaces
