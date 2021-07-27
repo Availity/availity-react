@@ -1,6 +1,6 @@
 {
   "name": "@availity/date",
-  "version": "2.1.5",
+  "version": "2.1.6",
   "description": "Wrapper for react-dates to work with formik",
   "main": "index.js",
   "typings": "typings/index.d.ts",
@@ -39,7 +39,7 @@
     "yup": "^0.27.0"
   },
   "dependencies": {
-    "@availity/icon": "^0.7.19",
+    "@availity/icon": "^0.8.0",
     "classnames": "^2.3.1",
     "lodash": "^4.17.21",
     "moment": "^2.29.1",

@@ -20,6 +20,7 @@ const PageHeader = ({
   appAbbr,
   iconColor,
   branded,
+  showCrumbs,
   crumbs,
   feedback: showFeedback,
   feedbackProps,
@@ -71,7 +72,7 @@ const PageHeader = ({
     const url =
       spaceForSpaceID && spaceForSpaceID.link && spaceForSpaceID.link.url
         ? spaceForSpaceID.link.url
-        : `/web/spaces/spaces/#/${spaceId}`;
+        : `/web/spc/spaces/#/${spaceId}`;
     crumbs = [{ name: _spaceName, url }];
   }
 
@@ -89,16 +90,20 @@ const PageHeader = ({
   return (
     <>
       <div className="d-flex align-items-start flex-shrink-0">
-        {React.isValidElement(crumbs) ? (
-          crumbs
-        ) : (
-          <Breadcrumbs
-            crumbs={crumbs}
-            active={appName || children}
-            homeUrl={homeUrl}
-            linkTag={linkTag}
-          />
-        )}
+        {showCrumbs ? (
+          <>
+            {React.isValidElement(crumbs) ? (
+              crumbs
+            ) : (
+              <Breadcrumbs
+                crumbs={crumbs}
+                active={appName || children}
+                homeUrl={homeUrl}
+                linkTag={linkTag}
+              />
+            )}
+          </>
+        ) : null}
         {component}
       </div>
       <div
@@ -164,6 +169,7 @@ PageHeader.propTypes = {
   titleProps: PropTypes.object,
   children: PropTypes.node,
   linkTag: PropTypes.oneOfType([PropTypes.func, PropTypes.string]),
+  showCrumbs: PropTypes.bool,
   crumbs: PropTypes.oneOfType([
     PropTypes.arrayOf(
       PropTypes.shape({
@@ -193,6 +199,7 @@ PageHeader.defaultProps = {
   titleProps: {},
   renderRightClassName:
     'page-header-left d-flex flex-wrap flex-md-nowrap flex-grow align-items-end justify-content-end',
+  showCrumbs: true,
 };
 
 export default PageHeader;

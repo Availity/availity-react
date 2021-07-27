@@ -124,9 +124,7 @@ describe('PageHeader', () => {
         </Spaces>
       );
       const defaultSpace = await waitFor(() => getByText('My Space'));
-      expect(defaultSpace.getAttribute('href')).toEqual(
-        '/web/spaces/spaces/#/1'
-      );
+      expect(defaultSpace.getAttribute('href')).toEqual('/web/spc/spaces/#/1');
     });
 
     test('should work with payerId', async () => {
@@ -175,7 +173,7 @@ describe('PageHeader', () => {
     expect(homeBtn.getAttribute('href')).toBe('/go-home');
   });
 
-  test('should acccept custom title props', () => {
+  test('should accept custom title props', () => {
     const { getByTestId } = render(
       <PageHeader
         appName="Payer Space"
@@ -291,5 +289,64 @@ describe('PageHeader', () => {
     expect(spaceBreadcrumb.tagName.toLowerCase()).toBe('a');
 
     expect(spaceBreadcrumb.getAttribute('href')).toEqual('/my-custom-crumb');
+  });
+
+  test('should hide crumbs', async () => {
+    avSlotMachineApi.create.mockResolvedValue({
+      data: {
+        data: {
+          spaces: {
+            totalCount: 1,
+            page: 1,
+            perPage: 1,
+            spaces: [
+              { id: '1', name: 'My Space', link: { url: '/custom-link' } },
+            ],
+          },
+        },
+      },
+    });
+
+    const { queryByText } = render(
+      <Spaces spaceIds={['1']} clientId="my-client-id">
+        <PageHeader appName="Payer Space" spaceId="1" showCrumbs={false} />
+      </Spaces>
+    );
+
+    const spaceBreadcrumb = await waitFor(() => queryByText('My Space'));
+
+    expect(spaceBreadcrumb).toBeNull();
+  });
+
+  test('should hide crumbs if custom crumbs passed', async () => {
+    avSlotMachineApi.create.mockResolvedValue({
+      data: {
+        data: {
+          spaces: {
+            totalCount: 1,
+            page: 1,
+            perPage: 1,
+            spaces: [
+              { id: '1', name: 'My Space', link: { url: '/custom-link' } },
+            ],
+          },
+        },
+      },
+    });
+
+    const { queryByText } = render(
+      <Spaces spaceIds={['1']} clientId="my-client-id">
+        <PageHeader
+          appName="Payer Space"
+          spaceId="1"
+          showCrumbs={false}
+          crumbs={[{ name: 'Custom Crumb', url: '/my-custom-crumb' }]}
+        />
+      </Spaces>
+    );
+
+    const spaceBreadcrumb = await waitFor(() => queryByText('Custom Crumb'));
+
+    expect(spaceBreadcrumb).toBeNull();
   });
 });

@@ -21,7 +21,7 @@ storiesOf('Icons|Favorite', module)
   .add('default', () => (
     <Favorites>
       <Card tag={CardBody} className="d-flex flex-row">
-        <FavoriteHeart id="1234" />
+        <FavoriteHeart id="1234" name="Hello World" />
         <CardTitle className="ml-2">Hello World</CardTitle>
       </Card>
     </Favorites>

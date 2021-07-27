@@ -13,7 +13,7 @@ import '@availity/favorites/style.scss';
 
 const Example = () => (
   <Favorites>
-    <FavoriteHeart id="12345" />
+    <FavoriteHeart id="12345" name="My App" />
   </Favorites>
 );
 ```
@@ -23,6 +23,10 @@ const Example = () => (
 #### `id: string`
 
 The unique id of the favorite item to be fetched from API.
+
+#### `name: string`
+
+Name of item to be favorited. *Used to generate unique name of control, needed for accessibility.*
 
 #### `onChange?: (isFavorited: boolean, event?: Event) => void`
 

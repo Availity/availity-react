@@ -3,6 +3,18 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# 0.8.0 (2021-07-20)
+
+
+### Features
+
+* **feedback:** removed unused prop ([2f85c3f](https://github.com/Availity/availity-react/commit/2f85c3f15fd4d004074bda93aedf6cdd5368cc39))
+* **feedback:** updated feedback components for accessibility ([45cbf4d](https://github.com/Availity/availity-react/commit/45cbf4d4964a71d95db127bd931574f6e0424bbc))
+
+
+
+
+
 ## 0.7.19 (2021-06-01)
 
 **Note:** Version bump only for package @availity/icon

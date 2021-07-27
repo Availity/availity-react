@@ -3,6 +3,19 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# 5.7.0 (2021-07-20)
+
+
+### Features
+
+* **feedback:** removed Label children and added aira-labelledby ([af79cd8](https://github.com/Availity/availity-react/commit/af79cd8d529f76b512d644ba88128db1310c1001))
+* **feedback:** removed redudant aria-labelledby ([2f48432](https://github.com/Availity/availity-react/commit/2f48432f8533297b77e29c987b2481a77eb7f8d1))
+* **feedback:** updated feedback components for accessibility ([45cbf4d](https://github.com/Availity/availity-react/commit/45cbf4d4964a71d95db127bd931574f6e0424bbc))
+
+
+
+
+
 ## [5.6.5](https://github.com/Availity/availity-react/compare/@availity/feedback@5.6.4...@availity/feedback@5.6.5) (2021-06-11)
 
 **Note:** Version bump only for package @availity/feedback
