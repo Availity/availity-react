@@ -1,27 +1,33 @@
 import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 import { useEffectAsync } from '@availity/hooks';
-import { avSlotMachineApi } from '@availity/api-axios';
+import { avWebQLApi } from '@availity/api-axios';
 import get from 'lodash/get';
 
 const spaceIDQuery = `
-query($id: ID!){
-  space(id: $id){
-    images{
-      name
-      value
+query configurationFindById($id: ID!){
+  configurationFindOne(id: $id){
+    ...on PayerSpace{
+      images{
+        tile
+        logo
+        billboard
+      }
     }
   }
 }
 `;
 
 const payerIDQuery = `
-query($payerIDs: [String!], $types: [String!]){
-  spaces(payerIDs: $payerIDs, types: $types){
-    spaces{
-      images{
-        name
-        value
+query configurationFindMany($payerIDs: [ID!], $types: [TypeEnum!]){
+  configurationPagination(filter: { payerIds: $payerIDs, types: $types }){
+    items {
+      ...on PayerSpace {
+        images{
+          tile
+          logo
+          billboard
+        }
       }
     }
   }
@@ -32,7 +38,7 @@ const fetchLogo = async (query, variables, path, clientId) => {
   try {
     const {
       data: { data },
-    } = await avSlotMachineApi.create(
+    } = await avWebQLApi.create(
       {
         query,
         variables,
@@ -40,12 +46,7 @@ const fetchLogo = async (query, variables, path, clientId) => {
       { headers: { 'X-Client-ID': clientId } }
     );
 
-    const images = get(data, path, []).reduce((accum, { name, value }) => {
-      accum[name] = value;
-      return accum;
-    }, {});
-
-    return images.logo;
+    return get(data, path);
   } catch (error) {
     return error;
   }
@@ -60,11 +61,11 @@ export const getLogo = async (spaceId, payerId, clientId) => {
     let url;
     if (spaceId) {
       const variables = { id: spaceId };
-      const path = 'space.images';
+      const path = 'configurationFindOne.images.logo';
       url = await fetchLogo(spaceIDQuery, variables, path, clientId);
     } else if (payerId) {
       const variables = { payerIDs: [payerId], types: ['space'] };
-      const path = 'spaces.spaces[0].images';
+      const path = 'configurationPagination.items[0].images.logo';
       url = await fetchLogo(payerIDQuery, variables, path, clientId);
 
       // We can probably remove this at some point once our spaces data is complete

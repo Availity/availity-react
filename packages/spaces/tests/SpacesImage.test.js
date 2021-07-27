@@ -1,6 +1,6 @@
 import React from 'react';
 import { render, waitFor, cleanup } from '@testing-library/react';
-import { avSlotMachineApi } from '@availity/api-axios';
+import { avWebQLApi } from '@availity/api-axios';
 import Spaces, {
   SpacesLogo,
   SpacesTile,
@@ -17,37 +17,30 @@ describe('SpacesImage', () => {
   });
 
   it('renders the spaces images in the spaces provider', async () => {
-    avSlotMachineApi.create
+    avWebQLApi.create
       .mockResolvedValueOnce({
         data: {
           data: {
-            spaces: {
-              totalCount: 3,
-              page: 1,
-              perPage: 50,
-              spaces: [
+            configurationPagination: {
+              pageInfo: {
+                itemCount: 3,
+                page: 1,
+                perPage: 50,
+              },
+              items: [
                 {
                   id: '1',
-                  images: [
-                    {
-                      name: 'logo',
-                      value: '/static/spaces/1/banner.png',
-                    },
-                  ],
+                  images: {
+                    logo: '/static/spaces/1/banner.png',
+                  },
                 },
                 {
                   id: '2',
                   payerIDs: ['payer1'],
-                  images: [
-                    {
-                      name: 'tile',
-                      value: '/static/spaces/2/tile.png',
-                    },
-                    {
-                      name: 'billboard',
-                      value: '/static/spaces/2/billboard.png',
-                    },
-                  ],
+                  images: {
+                    tile: '/static/spaces/2/tile.png',
+                    billboard: '/static/spaces/2/billboard.png',
+                  },
                 },
                 {
                   id: '3',
@@ -61,30 +54,27 @@ describe('SpacesImage', () => {
       .mockResolvedValueOnce({
         data: {
           data: {
-            spaces: {
-              totalCount: 1,
-              page: 1,
-              perPage: 50,
-              spaces: [
+            configurationPagination: {
+              pageInfo: {
+                itemCount: 1,
+                page: 1,
+                perPage: 50,
+              },
+              items: [
                 {
                   id: '2',
                   payerIDs: ['payer1'],
-                  images: [
-                    {
-                      name: 'tile',
-                      value: '/static/spaces/2/tile.png',
-                    },
-                    {
-                      name: 'billboard',
-                      value: '/static/spaces/2/billboard.png',
-                    },
-                  ],
+                  images: {
+                    tile: '/static/spaces/2/tile.png',
+                    billboard: '/static/spaces/2/billboard.png',
+                  },
                 },
               ],
             },
           },
         },
       });
+
     const MyComponent = () => (
       <Spaces
         spaceIds={['1', '1', '2', '2', '3']}
@@ -115,34 +105,33 @@ describe('SpacesImage', () => {
     await waitFor(() => getAllByTestId('space-url-3'));
 
     // Check that we did not query for duplicate ids
-    expect(avSlotMachineApi.create).toHaveBeenCalledTimes(2);
-    expect(avSlotMachineApi.create.mock.calls[0][0].variables.ids).toEqual([
+    expect(avWebQLApi.create).toHaveBeenCalledTimes(2);
+    expect(avWebQLApi.create.mock.calls[0][0].variables.ids).toEqual([
       '1',
       '2',
       '3',
     ]);
-    expect(
-      avSlotMachineApi.create.mock.calls[1][0].variables.payerIDs
-    ).toEqual(['payer1']);
+    expect(avWebQLApi.create.mock.calls[1][0].variables.payerIDs).toEqual([
+      'payer1',
+    ]);
   });
 
   it('renders spaces image from single space', async () => {
-    avSlotMachineApi.create.mockResolvedValueOnce({
+    avWebQLApi.create.mockResolvedValueOnce({
       data: {
         data: {
-          spaces: {
-            totalCount: 1,
-            page: 1,
-            perPage: 50,
-            spaces: [
+          configurationPagination: {
+            pageInfo: {
+              itemCount: 1,
+              page: 1,
+              perPage: 50,
+            },
+            items: [
               {
                 id: '1',
-                images: [
-                  {
-                    name: 'logo',
-                    value: '/static/spaces/1/banner.png',
-                  },
-                ],
+                images: {
+                  logo: '/static/spaces/1/banner.png',
+                },
               },
             ],
           },
@@ -160,22 +149,21 @@ describe('SpacesImage', () => {
   });
 
   it('renders fallback image', async () => {
-    avSlotMachineApi.create.mockResolvedValueOnce({
+    avWebQLApi.create.mockResolvedValueOnce({
       data: {
         data: {
-          spaces: {
-            totalCount: 1,
-            page: 1,
-            perPage: 50,
-            spaces: [
+          configurationPagination: {
+            pageInfo: {
+              itemCount: 1,
+              page: 1,
+              perPage: 50,
+            },
+            items: [
               {
                 id: '1',
-                images: [
-                  {
-                    name: 'logo',
-                    value: '/static/spaces/1/banner.png',
-                  },
-                ],
+                images: {
+                  logo: '/static/spaces/1/banner.png',
+                },
               },
             ],
           },

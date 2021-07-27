@@ -1,12 +1,14 @@
 {
   "data": {
-    "space": {
-      "images": [
+    "configurationPagination": {
+      "items": [
         {
-          "name": "logo",
-          "value": "/static/spaces/73162546201441126239486200007187/banner.png"
+          "images": {
+            "logo": "/static/spaces/73162546201441126239486200007187/banner.png"
+          }
         }
       ]
     }
   }
 }
+
