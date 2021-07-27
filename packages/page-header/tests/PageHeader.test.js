@@ -292,14 +292,16 @@ describe('PageHeader', () => {
   });
 
   test('should hide crumbs', async () => {
-    avSlotMachineApi.create.mockResolvedValue({
+    avWebQLApi.create.mockResolvedValue({
       data: {
         data: {
-          spaces: {
-            totalCount: 1,
-            page: 1,
-            perPage: 1,
-            spaces: [
+          configurationPagination: {
+            pageInfo: {
+              itemCount: 1,
+              perPage: 1,
+              page: 1,
+            },
+            items: [
               { id: '1', name: 'My Space', link: { url: '/custom-link' } },
             ],
           },
@@ -319,14 +321,16 @@ describe('PageHeader', () => {
   });
 
   test('should hide crumbs if custom crumbs passed', async () => {
-    avSlotMachineApi.create.mockResolvedValue({
+    avWebQLApi.create.mockResolvedValue({
       data: {
         data: {
-          spaces: {
-            totalCount: 1,
-            page: 1,
-            perPage: 1,
-            spaces: [
+          configurationPagination: {
+            pageInfo: {
+              itemCount: 1,
+              perPage: 1,
+              page: 1,
+            },
+            items: [
               { id: '1', name: 'My Space', link: { url: '/custom-link' } },
             ],
           },
