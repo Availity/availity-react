@@ -104,6 +104,7 @@ const PaginationContent = ({
         <Button
           data-testid="sr-only-pagination-load-more-btn"
           className="sr-only"
+          aria-label="Load More"
           onClick={() => {
             setDoFocusRefOnPageChange(true);
             setPage(currentPage + 1);

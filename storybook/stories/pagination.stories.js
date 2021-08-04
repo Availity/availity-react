@@ -88,6 +88,7 @@ storiesOf('Components|Pagination', module)
               marginPages={number('Margin Pages', 2, { min: 1 }) || 1}
               directionLinks={boolean('Direction Links', true)}
               autoHide={boolean('Auto Hide Controls', true)}
+              ariaLabel="pagination below results"
             />
           )}
         </div>
