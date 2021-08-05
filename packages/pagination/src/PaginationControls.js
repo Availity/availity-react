@@ -30,7 +30,7 @@ const PaginationControls = ({
         style={{ zIndex: 'auto' }}
         onClick={() => setPage(pageNumber)}
         type="button"
-        aria-label={`Page ${pageNumber}`}
+        aria-label={`Go to page ${pageNumber}`}
         aria-current={currentPage === pageNumber}
       >
         {pageNumber}
@@ -58,8 +58,8 @@ const PaginationControls = ({
       <PaginationLink
         onClick={() => handleBreakClick(index)}
         type="button"
-        aria-label="ellipsis"
-      >
+        aria-label={currentPage < index ? 'Jump forwards to page ' + getForwardJump() : 'Jump backwards to page ' + getBackwardJump()}
+        >
         &hellip;
       </PaginationLink>
     </PaginationItem>
