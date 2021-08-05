@@ -15,6 +15,7 @@ const PaginationControls = ({
   marginPages,
   breakLabel,
   ariaLabel,
+  listClassName,
   ...rest
 }) => {
   const { pageCount, currentPage, setPage } = usePagination();
@@ -58,7 +59,7 @@ const PaginationControls = ({
       <PaginationLink
         onClick={() => handleBreakClick(index)}
         type="button"
-        aria-label={currentPage < index ? 'Jump forwards to page ' + getForwardJump() : 'Jump backwards to page ' + getBackwardJump()}
+        aria-label={currentPage < index ? `Jump forwards to page ${getForwardJump()}` : `Jump backwards to page ${getBackwardJump()}`}
         >
         &hellip;
       </PaginationLink>
@@ -161,7 +162,8 @@ PaginationControls.propTypes = {
   pageRange: PropTypes.number,
   marginPages: PropTypes.number,
   breakLabel: PropTypes.bool,
-  ariaLabel: PropTypes.string
+  ariaLabel: PropTypes.string,
+  listClassName: PropTypes.string,
 };
 
 PaginationControls.defaultProps = {
@@ -172,4 +174,5 @@ PaginationControls.defaultProps = {
   breakLabel: true,
   ariaLabel: 'pagination'
 };
+
 export default PaginationControls;
