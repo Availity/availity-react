@@ -89,6 +89,9 @@ storiesOf('Components|Pagination', module)
               directionLinks={boolean('Direction Links', true)}
               autoHide={boolean('Auto Hide Controls', true)}
               ariaLabel="pagination below results"
+              listClassName={
+                boolean('Unstyled', false) ? 'pagination-unstyled' : ''
+              }
             />
           )}
         </div>
