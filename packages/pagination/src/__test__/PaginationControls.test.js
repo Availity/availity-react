@@ -139,7 +139,7 @@ describe('Pagination Controls', () => {
       const page1 = getByTestId('control-page-1');
       expect(page1).toBeDefined();
       const page1Button = page1.querySelector('button');
-      expect(page1Button).toHaveAttribute('aria-label', 'Page 1');
+      expect(page1Button).toHaveAttribute('aria-label', 'Go to page 1');
     });
   });
 
