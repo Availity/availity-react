@@ -25,7 +25,6 @@
     "@availity/api-core": "^7.0.2",
     "@availity/form": "^0.5.34",
     "@availity/localstorage-core": "^3.0.0",
-    "@types/react-select": "^3.0.23",
     "axios": "^0.21.1",
     "formik": "^2.2.8",
     "react": "^17.0.2",
@@ -49,6 +48,7 @@
     "prop-types": "^15.7.2",
     "qs": "^6.5.2",
     "react-select": "^3.0.4",
+    "@types/react-select": "^3.0.23",
     "react-select-async-paginate": "^0.4.1"
   },
   "publishConfig": {

@@ -30,7 +30,7 @@ declare class AvOrganizationSelect<T> extends React.Component<
 interface PrebuiltSelectProps<T>
   extends Omit<ResourceSelectProps<T>, 'resource'> {}
 
-class PrebuiltSelect<T> extends React.Component<PrebuiltSelectProps<T>> {}
+declare class PrebuiltSelect<T> extends React.Component<PrebuiltSelectProps<T>> {}
 
 export default ResourceSelect;
 

@@ -18,7 +18,7 @@ export interface SelectProps<T> extends Props<{}> {
   valueKey?: any;
   selectRef?: React.Ref<T>;
   name: string;
-  validate?: FieldValidator;
+  validate?: Partial<FieldValidator>;
   autofill?: boolean | object;
   creatable?: boolean;
 }

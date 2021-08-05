@@ -23,7 +23,6 @@
   "devDependencies": {
     "@availity/form": "^0.5.34",
     "@availity/yup": "^3.0.11",
-    "@types/react-dates": "^21.8.2",
     "formik": "^2.2.8",
     "react": "^17.0.2",
     "react-dom": "^17.0.2",
@@ -44,7 +43,8 @@
     "lodash": "^4.17.21",
     "moment": "^2.29.1",
     "prop-types": "^15.7.2",
-    "react-dates": "^21.8.0"
+    "react-dates": "^21.8.0",
+    "@types/react-dates": "^21.8.2"
   },
   "publishConfig": {
     "access": "public"

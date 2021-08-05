@@ -32,7 +32,7 @@ export interface InputProps extends React.InputHTMLAttributes<HTMLInputElement> 
   [key: string]: any;
   type?: InputType;
   name: string;
-  validate?: FieldValidator; 
+  validate?: Partial<FieldValidator>; 
   tag?: Node | string;
 }
 

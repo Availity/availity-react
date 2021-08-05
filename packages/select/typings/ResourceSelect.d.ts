@@ -18,7 +18,7 @@ export type Additional = any;
 
 export interface ResourceSelectProps<T> extends SelectFieldProps<T> {
   requestConfig?: object;
-  resource: ResourceType;
+  resource?: ResourceType;
   getResult?: string | Function;
   hasMore?: boolean | Function;
   delay?: number;
