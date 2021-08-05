@@ -138,7 +138,7 @@ describe('Pagination Controls', () => {
     await waitFor(() => {
       const page1 = getByTestId('control-page-1');
       expect(page1).toBeDefined();
-      var page1Button = page1.querySelector('button');
+      const page1Button = page1.querySelector('button');
       expect(page1Button).toHaveAttribute('aria-label', 'Page 1');
     });
   });
@@ -160,12 +160,12 @@ describe('Pagination Controls', () => {
     await waitFor(() => {
       const previous = getByTestId('pagination-control-previous');
       expect(previous).toBeDefined();
-      var previousButton = previous.querySelector('button');
+      const previousButton = previous.querySelector('button');
 
       
       const next = getByTestId('pagination-control-next');
       expect(next).toBeDefined();
-      var nextButton = next.querySelector('button');
+      const nextButton = next.querySelector('button');
 
       expect(previousButton).toHaveAttribute('aria-label', 'Previous');
       expect(nextButton).toHaveAttribute('aria-label', 'Next');
