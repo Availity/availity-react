@@ -40,3 +40,8 @@ When `true` an ellipse is displayed when there are more pages outside of the pag
 #### `ariaLabel?: string`
 
 If used, it will override the default ariaLabel prop. **Default:** `pagination`
+
+#### `listClassName?: string`
+
+Add bootstrap styles to list element.
+
