@@ -103,6 +103,9 @@ storiesOf('Components|Pagination', module)
       <PaginationControls
         directionLinks={boolean('Direction Links', true)}
         autoHide={boolean('Auto Hide', true)}
+        listClassName={
+          boolean('Unstyled', false) ? 'pagination-unstyled' : ''
+        }
       />
     </Pagination>
   ))
@@ -130,6 +133,9 @@ storiesOf('Components|Pagination', module)
               breakLabel={boolean('Break Label', true)}
               marginPages={number('Margin Pages', 2, { min: 1 }) || 1}
               directionLinks={boolean('Direction Links', true)}
+              listClassName={
+                boolean('Unstyled', false) ? 'pagination-unstyled' : ''
+              }
             />
           )}
         </div>
