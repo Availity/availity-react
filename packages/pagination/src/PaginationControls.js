@@ -108,7 +108,7 @@ const PaginationControls = ({
   };
 
   return pageCount > 1 || !autoHide ? (
-    <Pagination data-testid="pagination-controls-con" aria-label={ariaLabel} {...rest}>
+    <Pagination data-testid="pagination-controls-con" {...rest}>
       {directionLinks ? (
         <PaginationItem
           disabled={currentPage === 1}
