@@ -15,7 +15,6 @@ const PaginationControls = ({
   marginPages,
   breakLabel,
   ariaLabel,
-  listClassName,
   ...rest
 }) => {
   const { pageCount, currentPage, setPage } = usePagination();
