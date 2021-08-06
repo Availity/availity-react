@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## 2.1.7 (2021-08-06)
+
+
+### Bug Fixes
+
+* **date:** dates from calendar can be focused and selected with keyboard ([729aadf](https://github.com/Availity/availity-react/commit/729aadf59df795489a5a808ffba1fcb1efe8b8d5))
+
+
+
+
+
 ## 2.1.6 (2021-07-20)
 
 **Note:** Version bump only for package @availity/date
