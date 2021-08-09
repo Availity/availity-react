@@ -15,6 +15,7 @@ const PaginationControls = ({
   marginPages,
   breakLabel,
   ariaLabel,
+  listClassName,
   ...rest
 }) => {
   const { pageCount, currentPage, setPage } = usePagination();
@@ -165,6 +166,7 @@ PaginationControls.propTypes = {
   marginPages: PropTypes.number,
   breakLabel: PropTypes.bool,
   ariaLabel: PropTypes.string,
+  listClassName: PropTypes.string,
 };
 
 PaginationControls.defaultProps = {
@@ -175,4 +177,5 @@ PaginationControls.defaultProps = {
   breakLabel: true,
   ariaLabel: 'pagination',
 };
+
 export default PaginationControls;
