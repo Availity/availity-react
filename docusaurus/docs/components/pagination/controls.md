@@ -41,3 +41,7 @@ When `true` an ellipse is displayed when there are more pages outside of the pag
 
 Add bootstrap styles to list element.
 
+#### `aria-label?: string`
+
+Allows for custom aria-label.
+
