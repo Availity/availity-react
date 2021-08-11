@@ -1,0 +1,10 @@
+# https://docs.github.com/en/github/creating-cloning-and-archiving-repositories/creating-a-repository-on-github/about-code-owners#example-of-a-codeowners-file
+# These owners will be the default owners for everything in the repo.
+# Unless a later match takes precedence,
+# these users will be requested for review when someone opens a pull request.
+# Order is important; the last matching pattern takes the most precedence.
+
+*       @chrishavekost @jordan-a-young @nylon22
+
+/packages/upload/
+*       @bjnewman

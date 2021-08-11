@@ -7,6 +7,7 @@
 #
 #   - Run:
 #       npm run check:packages
+#       yarn check:packages
 #
 
 # error out if something fails
@@ -24,8 +25,8 @@ then
   printf " (.-./\`-'\.-.)(.-./\`-\`\.-.)(.-./\`-\`\.-.)(.-./\`-'\.-.)(.-./\`-\`\.-.)\n"
   printf "  \`-'     \`-'  \`-'     \`-'  \`-'     \`-'  \`-'     \`-'  \`-'     \`-' \n"
   printf "\n\n"
-  printf "\nOne of your packages contains a dependency from registry: artifactory.availity.com.\n"
-  printf "Please correct this by running 'yarn nuke' and then 'yarn'.\n\n"
+  printf "\nOne of your packages contains a dependency from a private Availity registry.\n"
+  printf "Please correct this by running 'yarn nuke' and then 'yarn' off of the Availity proxy.\n\n"
   exit 1
 else
   echo "Artifactory Check Passed"
