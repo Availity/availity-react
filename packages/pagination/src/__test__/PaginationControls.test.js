@@ -207,6 +207,29 @@ describe('Pagination Controls', () => {
     });
   });
 
+  test('should have a default pagination aria-label', async () => {
+    const items = [
+      { value: '1', key: 1 },
+      { value: '2', key: 2 },
+      { value: '3', key: 3 },
+      { value: '4', key: 4 },
+      { value: '5', key: 5 },
+    ];
+
+    const { getByTestId } = render(
+      <Pagination items={items} itemsPerPage={1}>
+        <PaginationControls pageRange={5} marginPages={1} directionLinks />
+      </Pagination>
+    );
+    await waitFor(() => {
+      const pageList = getByTestId('pagination-controls-con');
+      const paginationNav = pageList.parentElement;
+      expect(paginationNav).toBeDefined();
+
+      expect(paginationNav).toHaveAttribute('aria-label', 'pagination');
+    });
+  });
+
   test('should have a page break ellipsis to jump forward', async () => {
     const items = [
       { value: '1', key: 1 },
