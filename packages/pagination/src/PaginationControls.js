@@ -164,6 +164,7 @@ PaginationControls.propTypes = {
   marginPages: PropTypes.number,
   breakLabel: PropTypes.bool,
   listClassName: PropTypes.string,
+  'aria-label': PropTypes.string,
 };
 
 PaginationControls.defaultProps = {
