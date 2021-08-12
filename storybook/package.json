@@ -71,7 +71,7 @@
     "@storybook/react": "^6.0.27",
     "@storybook/storybook-deployer": "^2.8.8",
     "availity-reactstrap-validation": "2.7.1",
-    "availity-uikit": "^3.0.0",
+    "availity-uikit": "^4.1.1",
     "awesome-typescript-loader": "^5.2.1",
     "axios": "^0.21.1",
     "babel-loader": "^8.2.2",
