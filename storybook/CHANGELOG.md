@@ -3,6 +3,19 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [9.6.0](https://github.com/Availity/availity-react/compare/@availity/react-storybook@9.5.3...@availity/react-storybook@9.6.0) (2021-08-12)
+
+
+### Features
+
+* **pagination:** add customizable aria-label to pagination buttons ([6dfe952](https://github.com/Availity/availity-react/commit/6dfe95229f59976e0241e98f3b6f59cd531cf83d))
+* **pagination:** add listClassName prop for styled/unstyled pagination toggle ([92c14ae](https://github.com/Availity/availity-react/commit/92c14ae9309a668a0827923b6f787f03aa6e0a2f))
+* **pagination:** removing ariaLabel, ...rest takes care of it ([8dbce8d](https://github.com/Availity/availity-react/commit/8dbce8d9ad5ae57a312eafa0483779492821f71c))
+
+
+
+
+
 ## [9.5.3](https://github.com/Availity/availity-react/compare/@availity/react-storybook@9.5.2...@availity/react-storybook@9.5.3) (2021-08-06)
 
 **Note:** Version bump only for package @availity/react-storybook
