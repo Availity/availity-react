@@ -36,3 +36,12 @@ The number of pages to display on the ends when there are pages outside of the p
 #### `breakLabel?: boolean`
 
 When `true` an ellipse is displayed when there are more pages outside of the page range.
+
+#### `listClassName?: string`
+
+Add bootstrap styles to list element.
+
+#### `aria-label?: string`
+
+Allows for custom aria-label.
+

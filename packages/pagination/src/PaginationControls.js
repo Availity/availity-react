@@ -22,14 +22,14 @@ const PaginationControls = ({
     <PaginationItem
       key={pageNumber}
       active={currentPage === pageNumber}
-      aria-label={`Page ${pageNumber}`}
-      aria-current={currentPage === pageNumber}
       data-testid={`control-page-${pageNumber}`}
     >
       <PaginationLink
         style={{ zIndex: 'auto' }}
         onClick={() => setPage(pageNumber)}
         type="button"
+        aria-label={`Go to page ${pageNumber}`}
+        aria-current={currentPage === pageNumber}
       >
         {pageNumber}
       </PaginationLink>
@@ -53,7 +53,15 @@ const PaginationControls = ({
 
   const createBreak = (index) => (
     <PaginationItem key={index} data-testid={`control-page-${index}`}>
-      <PaginationLink onClick={() => handleBreakClick(index)} type="button">
+      <PaginationLink
+        onClick={() => handleBreakClick(index)}
+        type="button"
+        aria-label={
+          currentPage < index
+            ? `Jump forwards to page ${getForwardJump()}`
+            : `Jump backwards to page ${getBackwardJump()}`
+        }
+      >
         &hellip;
       </PaginationLink>
     </PaginationItem>
@@ -113,6 +121,7 @@ const PaginationControls = ({
               currentPage === 1 ? null : setPage(currentPage - 1)
             }
             type="button"
+            aria-disabled={currentPage === 1}
             previous
           >
             {leftCaret} Prev
@@ -133,6 +142,7 @@ const PaginationControls = ({
               currentPage === pageCount ? null : setPage(currentPage + 1)
             }
             type="button"
+            aria-disabled={currentPage === pageCount}
             next
           >
             Next {rightCaret}
@@ -153,6 +163,8 @@ PaginationControls.propTypes = {
   pageRange: PropTypes.number,
   marginPages: PropTypes.number,
   breakLabel: PropTypes.bool,
+  listClassName: PropTypes.string,
+  'aria-label': PropTypes.string,
 };
 
 PaginationControls.defaultProps = {
@@ -162,4 +174,5 @@ PaginationControls.defaultProps = {
   marginPages: 2,
   breakLabel: true,
 };
+
 export default PaginationControls;
