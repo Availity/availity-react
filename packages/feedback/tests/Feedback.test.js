@@ -84,4 +84,24 @@ describe('Feedback', () => {
       expect(onClose).toHaveBeenCalledTimes(1);
     });
   });
+
+  test('should have proper ARIA attributes on Give Feedback button', () => {
+    const { getByTestId, getByText } = render(
+      <Feedback appName="Test Space" />
+    );
+
+    const giveFeedbackButton = getByText('Give Feedback');
+
+    expect(giveFeedbackButton).toHaveAttribute('aria-expanded', 'false');
+
+    fireEvent.click(giveFeedbackButton);
+
+    // eslint-disable-next-line unicorn/prefer-query-selector
+    expect(getByTestId('feedback-form')).toBeDefined();
+    expect(giveFeedbackButton).toHaveAttribute('aria-expanded', 'true');
+
+    fireEvent.click(getByText('Close'));
+
+    expect(giveFeedbackButton).toHaveAttribute('aria-expanded', 'false');
+  });
 });

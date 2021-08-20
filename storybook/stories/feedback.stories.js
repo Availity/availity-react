@@ -32,6 +32,7 @@ storiesOf('Components|Feedback', module)
           : [],
         staticFields: { staticKey: 'my-static-value' },
       }}
+      showSupport={boolean('Support', false)}
       color={select(
         'Button Color',
         {

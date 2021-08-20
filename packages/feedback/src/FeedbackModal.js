@@ -28,11 +28,8 @@ const FeedbackModal = ({
       fade
       id="feedbackModal"
       data-testid="feedbackModal"
-      tabIndex="-1"
       size="lg"
-      role="dialog"
       aria-labelledby="feedback-form-header"
-      aria-hidden="true"
       isOpen={isOpen && !supportIsActive}
       toggle={toggle}
       zIndex={zIndex}

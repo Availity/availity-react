@@ -13,7 +13,7 @@ import { FeedbackForm } from '@availity/feedback';
 const Example = () => <FeedbackForm name="Payer Space" />;
 ```
 
-#### Live example: <a href="https://availity.github.io/availity-react/storybook/?path=/story/components-feedback--with-form"> Storybook</a>
+#### Live example: [Storybook](https://availity.github.io/availity-react/storybook/?path=/story/components-feedback--with-form)
 
 ### Props
 
@@ -27,15 +27,15 @@ Callback for when the feedback is submitted. It is called with the feedback obje
 
 #### `faceOptions?: object[]`
 
-Array of Objects containing **`icon`** (String), **`description`** (String), and **`placeholder`** (String) properties. Allows you to override the smiley face options which appear. Default: Smiley Face, Meh Face, and Frowny Face.
+Array of Objects containing **`icon`** (String), **`description`** (String), and **`label`** (String) properties. Allows you to override the smiley face options which appear. Default: Smiley Face, Meh Face, and Frowny Face.
 
 #### `aboutOptions?: object[]`
 
 Array of Objects containing **`value`** (String,Number) and **`label`** (String) properties. Allows a dropdown displaying the options provided to let the user indicate what the feedback is about.
 
-#### `aboutPlaceholder?: node`
+#### `aboutLabel?: node`
 
-Placeholder text for the dropdown created via the `aboutOptions` prop. **Default:** `"This is about..."`.
+Label text for the dropdown created via the `aboutOptions` prop. **Default:** `"This is about"`.
 
 #### `onClose?: () => void`
 
@@ -56,6 +56,8 @@ Static (non-user-entered) key/value pairs to be sent in feedback submission.
 #### `modalHeaderProps?: ModalHeaderProps`
 
 Props to be spread onto the `<ModalHeader />` rendered inside of the `<FeedbackForm />`. See [ModalHeader](https://github.com/reactstrap/reactstrap/blob/master/src/ModalHeader.js)
+
+> For accessibility use `className` instead of `tag` to adjust size and style of header.
 
 #### `...rest`
 

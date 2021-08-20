@@ -23,7 +23,12 @@ const FeedbackButton = ({
     onKeyDown={({ keyCode }) => keyCode === 13 && onClick(icon)}
     {...rest}
   >
-    <Icon data-testid="feedback-icon" name={icon} size={iconSize} />
+    <Icon
+      data-testid="feedback-icon"
+      name={icon}
+      size={iconSize}
+      style={{ margin: '0px' }}
+    />
     <span className="sr-only">{children}</span>
   </Button>
 );

@@ -10,7 +10,13 @@ const SupportDropdown = ({ setSupportIsActive, feedbackToggle }) => {
   const [blocking, setBlocking] = useState(null);
 
   return (
-    <DropdownMenu right style={{ width: '550px', padding: 0 }}>
+    <DropdownMenu
+      right
+      style={{ width: '550px', maxWidth: '90vw', padding: 0 }}
+      positionFixed="false"
+      role="dialog"
+      aria-labelledby="support-form-header"
+    >
       <BlockUi tag="div" keepInView blocking={blocking}>
         <SupportForm
           setSupportIsActive={setSupportIsActive}

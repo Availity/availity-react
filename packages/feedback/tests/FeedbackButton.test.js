@@ -17,4 +17,24 @@ describe('Feedback', () => {
 
     expect(container.firstChild.className).toContain('btn-primary');
   });
+
+  test('should have proper ARIA attributes when active', () => {
+    const { container, getByText } = render(
+      <FeedbackButton icon="home" active="home">
+        Home
+      </FeedbackButton>
+    );
+
+    expect(container.firstChild).toHaveAttribute('aria-pressed', 'true');
+    expect(getByText('Home')).toHaveClass('sr-only');
+  });
+
+  test('should have proper ARIA attributes', () => {
+    const { container, getByText } = render(
+      <FeedbackButton icon="home">Home</FeedbackButton>
+    );
+
+    expect(container.firstChild).toHaveAttribute('aria-pressed', 'false');
+    expect(getByText('Home')).toHaveClass('sr-only');
+  });
 });

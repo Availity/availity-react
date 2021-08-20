@@ -49,7 +49,13 @@ const FeedbackDropdown = ({
   );
 
   return (
-    <DropdownMenu right style={{ width: '550px', padding: 0 }}>
+    <DropdownMenu
+      right
+      style={{ width: '550px', maxWidth: '90vw', padding: 0 }}
+      role="dialog"
+      aria-labelledby="feedback-form-header"
+      aria-modal="false"
+    >
       {toRender}
     </DropdownMenu>
   );
