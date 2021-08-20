@@ -5,6 +5,8 @@ import FeedbackForm from './FeedbackForm';
 import SupportModal from './SupportModal';
 import SupportDropdown from './SupportDropdown';
 
+const dropdownStyles = { width: '550px', maxWidth: '90vw', padding: 0 };
+
 const FeedbackDropdown = ({
   prompt,
   toggle,
@@ -51,7 +53,7 @@ const FeedbackDropdown = ({
   return (
     <DropdownMenu
       right
-      style={{ width: '550px', maxWidth: '90vw', padding: 0 }}
+      style={dropdownStyles}
       role="dialog"
       aria-labelledby="feedback-form-header"
       aria-modal="false"

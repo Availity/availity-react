@@ -27,6 +27,9 @@ yup.addMethod(yup.string, 'isRequired', function format(isRequired, msg) {
   });
 });
 
+const fieldStyles = { resize: 'none' };
+const inlineStyles = { display: 'inline-block', margin: 0 };
+
 const FeedbackForm = ({
   name,
   onClose,
@@ -176,7 +179,7 @@ const FeedbackForm = ({
                 label={
                   (active && active.label) || 'Feedback? Requests? Defects?'
                 }
-                style={{ resize: 'none' }}
+                style={fieldStyles}
                 rows="2"
               />
               {additionalComments && (
@@ -184,7 +187,7 @@ const FeedbackForm = ({
                   type="textarea"
                   name="additionalFeedback"
                   label="Additional Comments... (Optional)"
-                  style={{ resize: 'none' }}
+                  style={fieldStyles}
                   rows="2"
                 />
               )}
@@ -195,10 +198,7 @@ const FeedbackForm = ({
         <ModalFooter>
           {showSupport ? (
             <>
-              <span
-                className="d-none d-md-block"
-                style={{ display: 'inline-block', margin: 0 }}
-              >
+              <span className="d-none d-md-block" style={inlineStyles}>
                 Need Help?
               </span>
               <Button
@@ -241,7 +241,7 @@ FeedbackForm.propTypes = {
     PropTypes.shape({
       icon: PropTypes.string,
       description: PropTypes.string,
-      placeholder: PropTypes.string,
+      label: PropTypes.string,
     })
   ),
   aboutOptions: PropTypes.arrayOf(

@@ -3,6 +3,8 @@ import PropTypes from 'prop-types';
 import { useField, useFormikContext } from 'formik';
 import FeedbackButton from './FeedbackButton';
 
+const btnStyles = { flex: 1, margin: '0 2% 0 2%' };
+
 const SmileField = ({ name, options, onChange }) => {
   const [{ value }] = useField(name);
   const { setFieldValue } = useFormikContext();
@@ -10,7 +12,7 @@ const SmileField = ({ name, options, onChange }) => {
   return options.map((option, i) => (
     <FeedbackButton
       autoFocus={i === 0}
-      style={{ flex: 1, margin: '0 2% 0 2%' }}
+      style={btnStyles}
       key={option.icon}
       icon={option.icon}
       iconSize="2x"
