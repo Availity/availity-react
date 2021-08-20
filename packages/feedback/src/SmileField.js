@@ -46,7 +46,6 @@ SmileField.defaultProps = {
       icon: 'smile',
       description: 'Smiley face',
       label: 'What do you like?',
-      placeholder: 'Does this break anything?',
     },
     {
       icon: 'meh',
