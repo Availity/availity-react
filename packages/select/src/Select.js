@@ -400,6 +400,7 @@ Select.propTypes = {
   allowSelectAll: PropTypes.bool,
   waitUntilFocused: PropTypes.bool,
   isDisabled: PropTypes.bool,
+  isSelected: PropTypes.bool,
 };
 
 export default Select;
