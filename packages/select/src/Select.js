@@ -10,7 +10,7 @@ import has from 'lodash/has';
 import isFunction from 'lodash/isFunction';
 import isEqual from 'lodash/isEqual';
 
-const { DownChevron, CrossIcon, DropdownIndicator, ClearIndicator } =
+const { DownChevron, CrossIcon, DropdownIndicator, ClearIndicator, Option } =
   reactSelectComponents;
 
 const components = {
@@ -26,6 +26,15 @@ const components = {
       <span className="sr-only">Clear all selections</span>
     </ClearIndicator>
   ),
+  Option: (props) => {
+    const innerProps = {
+      ...props.innerProps,
+      role: 'option',
+      'aria-selected': props.isSelected,
+      name: 'option',
+    };
+    return <Option {...props} innerProps={innerProps} />;
+  },
 };
 
 const createOption = (label, labelKey = 'label', valueKey = 'value') => ({
@@ -108,6 +117,7 @@ const Select = ({
       return value;
     }
     const valueKey = getValueKey();
+
     return get(value, valueKey, value);
   };
 
@@ -389,6 +399,7 @@ Select.propTypes = {
   autofill: PropTypes.oneOfType([PropTypes.bool, PropTypes.object]),
   allowSelectAll: PropTypes.bool,
   waitUntilFocused: PropTypes.bool,
+  isDisabled: PropTypes.bool,
 };
 
 export default Select;
