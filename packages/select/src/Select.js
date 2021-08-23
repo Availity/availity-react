@@ -400,8 +400,6 @@ Select.propTypes = {
   autofill: PropTypes.oneOfType([PropTypes.bool, PropTypes.object]),
   allowSelectAll: PropTypes.bool,
   waitUntilFocused: PropTypes.bool,
-  isDisabled: PropTypes.bool,
-  isSelected: PropTypes.bool,
 };
 
 export default Select;
