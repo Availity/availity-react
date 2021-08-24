@@ -1,4 +1,3 @@
-/* eslint-disable react/prop-types */
 import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 import classNames from 'classnames';
@@ -32,7 +31,7 @@ const components = {
       ...props.innerProps,
       role: 'option',
       'aria-selected': props.isSelected,
-      name: 'option',
+      name: props.innerProps.id,
     };
     return <Option {...props} innerProps={innerProps} />;
   },
@@ -400,6 +399,11 @@ Select.propTypes = {
   autofill: PropTypes.oneOfType([PropTypes.bool, PropTypes.object]),
   allowSelectAll: PropTypes.bool,
   waitUntilFocused: PropTypes.bool,
+};
+
+components.Option.propTypes = {
+  innerProps: PropTypes.object,
+  isSelected: PropTypes.bool,
 };
 
 export default Select;
