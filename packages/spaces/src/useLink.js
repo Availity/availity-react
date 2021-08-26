@@ -63,7 +63,7 @@ export default (
 
       updateTopApps(id, type);
 
-      nativeForm(metadata.ssoId, attributes, options);
+      nativeForm(metadata.ssoId, attributes, options, type);
       return false;
     }
     return false;
