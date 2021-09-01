@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# 2.1.0 (2021-09-01)
+
+
+### Features
+
+* **mock:** add permissions and GET to mocks ([c153fa8](https://github.com/Availity/availity-react/commit/c153fa8c390b628ee8be4c0e4f83543c14a24424))
+
+
+
+
+
 # 2.0.0 (2021-07-27)
 
 
