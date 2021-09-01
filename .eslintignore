@@ -2,6 +2,7 @@
 .yarn
 
 docs/
+storybook-docs/
 
 /**/.docusaurus
 /**/node_modules
