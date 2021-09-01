@@ -11,7 +11,8 @@
     "build:netlify": "NODE_ENV=production build-storybook -c .storybook -s ./static -o ../docusaurus/build/storybook --quiet",
     "deploy-docs": "storybook-to-ghpages",
     "storybook": "start-storybook -p 6006",
-    "build-storybook": "build-storybook"
+    "build-storybook": "build-storybook",
+    "format": "yarn prettier --write '**/*.{js,scss}'"
   },
   "keywords": [
     "react",
