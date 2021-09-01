@@ -26,7 +26,7 @@
     "@availity/link": "^2.1.0",
     "@availity/list-group-item": "^1.2.2",
     "@availity/message-core": "^4.0.3",
-    "@availity/native-form": "^2.8.4",
+    "@availity/native-form": "^4.0.0",
     "@availity/resolve-url": "^1.1.4",
     "@availity/typography": "^1.2.1",
     "classnames": "^2.2.6",

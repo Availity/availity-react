@@ -46,7 +46,7 @@ export default (
     });
   };
 
-  const linkSso = event => {
+  const linkSso = async event => {
     if (metadata && metadata.ssoId) {
       event.preventDefault();
       const options = link.target ? { target: link.target } : undefined;
@@ -63,7 +63,7 @@ export default (
 
       updateTopApps(id, type);
 
-      nativeForm(metadata.ssoId, attributes, options, type);
+      await nativeForm(metadata.ssoId, attributes, options, type);
       return false;
     }
     return false;
