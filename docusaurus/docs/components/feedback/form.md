@@ -29,6 +29,8 @@ Callback for when the feedback is submitted. It is called with the feedback obje
 
 Array of Objects containing **`icon`** (String), **`description`** (String), and **`label`** (String) properties. Allows you to override the smiley face options which appear. Default: Smiley Face, Meh Face, and Frowny Face.
 
+> Previous `placeholder` property removed as of v6.0.0. Use `label` instead.
+
 #### `aboutOptions?: object[]`
 
 Array of Objects containing **`value`** (String,Number) and **`label`** (String) properties. Allows a dropdown displaying the options provided to let the user indicate what the feedback is about.
@@ -36,6 +38,8 @@ Array of Objects containing **`value`** (String,Number) and **`label`** (String)
 #### `aboutLabel?: node`
 
 Label text for the dropdown created via the `aboutOptions` prop. **Default:** `"This is about"`.
+
+> Previously `aboutPlaceholder`. All placeholders replaced with labels starting v6.0.0.
 
 #### `onClose?: () => void`
 
