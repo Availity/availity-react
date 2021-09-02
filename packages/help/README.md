@@ -72,5 +72,3 @@ The bootstrap 3 color of the icon. **Default:**`primary`
 ### `size?: string`
 
 The size of the help icon. **Default:** `1x`
-
-Test
