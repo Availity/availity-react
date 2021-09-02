@@ -111,13 +111,23 @@ export const triggerFieldHelp = (id) => {
   });
 };
 
+const handleKeyPress = (e, id) => {
+  if (e.key === 'Enter') {
+    triggerFieldHelp(id);
+  }
+};
+
 export const FieldHelpIcon = ({ color, size, id }) => (
   <Icon
+    role="link"
     data-testid="field-help-icon"
     name="help-circle"
     size={size}
     color={color}
     onClick={() => triggerFieldHelp(id)}
+    tabIndex={0}
+    onKeyPress={(e) => handleKeyPress(e, id)}
+    aria-label="This link opens the help portal"
   />
 );
 
