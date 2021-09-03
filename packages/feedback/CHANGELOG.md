@@ -3,6 +3,22 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [6.0.0](https://github.com/Availity/availity-react/compare/@availity/feedback@5.8.0...@availity/feedback@6.0.0) (2021-09-03)
+
+
+### Bug Fixes
+
+* **feedback:** fixes description, version from previous release ([f0426d0](https://github.com/Availity/availity-react/commit/f0426d0fb0e5305de6d2ac9ae788fe12be80b887))
+
+
+### BREAKING CHANGES
+
+* **feedback:** aboutLabel replaces aboutPlaceholder
+
+
+
+
+
 # 5.8.0 (2021-09-03)
 
 
