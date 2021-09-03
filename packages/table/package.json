@@ -1,6 +1,6 @@
 {
   "name": "@availity/table",
-  "version": "0.0.1",
+  "version": "0.0.0",
   "author": "Ashlee Zeigler <ashlee.zeigler@availity.com>",
   "description": "A generic table component built with react-table",
   "main": "index.js",
@@ -26,12 +26,12 @@
     "react-table": "^7.7.0"
   },
   "dependencies": {
-    "prop-types": "^15.7.2",
-    "react-table": "^7.7.0"
+    "prop-types": "^15.7.2"
   },
   "devDependencies": {
     "react": "^16.8.3",
     "react-dom": "^16.8.3",
-    "reactstrap": "^8.7.1"
+    "reactstrap": "^8.7.1",
+    "react-table": "^7.7.0"
   }
 }
