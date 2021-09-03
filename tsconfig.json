@@ -26,6 +26,7 @@
       "@availity/reactstrap-validation-select": ["./reactstrap-validation-select"],
       "@availity/training-link": ["./training-link"],
       "@availity/upload": ["./upload"],
+      "@availity/table": ["./table/src"],
     }
   },
   "exclude": [
