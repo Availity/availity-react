@@ -49,12 +49,17 @@ describe('FeedbackForm', () => {
     expect(smileyFeedbackField.parentElement.className).toContain(
       'btn-primary'
     );
+
+    expect(smileyFeedbackField.parentElement).toHaveAttribute(
+      'aria-pressed',
+      'true'
+    );
   });
 
   test('should submit with feedback text value', async () => {
     const onFeedbackSent = jest.fn();
 
-    const { getByPlaceholderText, getByText } = render(
+    const { getByLabelText, getByText } = render(
       <FeedbackForm onFeedbackSent={onFeedbackSent} name="Payer Space" />
     );
 
@@ -62,7 +67,7 @@ describe('FeedbackForm', () => {
     fireEvent.click(getByText('Smiley face'));
 
     // Get the Input Node for the Feedback
-    const feedbackNode = getByPlaceholderText('What do you like?');
+    const feedbackNode = getByLabelText('What do you like?');
 
     // Simulate a user typing the value below into the field
     fireEvent.change(feedbackNode, {
@@ -90,7 +95,7 @@ describe('FeedbackForm', () => {
     const infoFn = jest.fn();
     const onFeedbackSent = jest.fn();
 
-    const { getByPlaceholderText, getByText } = render(
+    const { getByLabelText, getByText } = render(
       <FeedbackForm
         onFeedbackSent={onFeedbackSent}
         name="Payer Space"
@@ -104,7 +109,7 @@ describe('FeedbackForm', () => {
     fireEvent.click(getByText('Smiley face'));
 
     // Get the Input Node for the Feedback
-    const feedbackNode = getByPlaceholderText('What do you like?');
+    const feedbackNode = getByLabelText('What do you like?');
 
     // Simulate a user typing the value below into the field
     fireEvent.change(feedbackNode, {
@@ -180,11 +185,11 @@ describe('FeedbackForm', () => {
     // Simulate the Click First
     fireEvent.click(getByText('Smiley face'));
 
-    // Placeholder text on the Select Field to know we rendered it
-    expect(getByText('This is about...')).toBeDefined();
+    // Label text on the Select Field to know we rendered it
+    expect(getByText('This is about')).toBeDefined();
   });
 
-  test('should render custom placeholder when provided', async () => {
+  test('should render custom label when provided', async () => {
     const { getByText } = render(
       <FeedbackForm
         name="Test Space"
@@ -194,7 +199,7 @@ describe('FeedbackForm', () => {
           { label: 'Payer 3', value: 'payer3' },
           { label: 'Payer 4', value: 'payer4' },
         ]}
-        aboutPlaceholder="Select payer..."
+        aboutLabel="Select payer..."
       />
     );
 
@@ -203,15 +208,13 @@ describe('FeedbackForm', () => {
   });
 
   test('should render additional comments input', () => {
-    const { getByText, getByPlaceholderText } = render(
+    const { getByText } = render(
       <FeedbackForm name="Payer Space" additionalComments />
     );
 
     fireEvent.click(getByText('Smiley face'));
 
-    expect(
-      getByPlaceholderText('Additional Comments... (Optional)')
-    ).toBeDefined();
+    expect(getByText('Additional Comments... (Optional)')).toBeDefined();
   });
 
   test('should show support', () => {
@@ -220,5 +223,28 @@ describe('FeedbackForm', () => {
     );
 
     expect(getByText('Open a support ticket')).toBeDefined();
+  });
+
+  test('should render default heading as div with stylings of h5', () => {
+    const { getByText } = render(<FeedbackForm name="Payer Space" />);
+
+    const header = getByText('Tell us what you think about Payer Space');
+
+    expect(header.parentElement).toHaveClass('h5');
+    expect(header.parentElement).toHaveAttribute('role', 'heading');
+    expect(header.parentElement).toHaveAttribute('aria-level', '2');
+    expect(header.tagName).toEqual('DIV');
+  });
+
+  test('should have smileys in a group element', () => {
+    const { getByTestId } = render(<FeedbackForm name="Payer Space" />);
+
+    const smileyGroup = getByTestId('face-options');
+
+    expect(smileyGroup).toHaveAttribute('role', 'group');
+    expect(smileyGroup).toHaveAttribute(
+      'aria-labelledby',
+      'feedback-form-header'
+    );
   });
 });

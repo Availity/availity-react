@@ -16,7 +16,7 @@ export interface FeedbackFormProps {
   onFeedbackSent?: (feedback?: { [key: string]: any }) => void;
   faceOptions?: FaceOption[];
   aboutOptions?: AboutOption[];
-  aboutPlaceholder?: string;
+  aboutLabel?: string;
   analytics?: AnalyticsType;
   prompt?: string;
   staticFields?: object;

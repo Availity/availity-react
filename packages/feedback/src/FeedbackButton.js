@@ -4,6 +4,7 @@ import { Button } from 'reactstrap';
 import Icon from '@availity/icon';
 
 const btnStyles = { fontSize: '1.4em', padding: '.2em .4em' };
+const iconStyles = { margin: '0px' };
 
 const FeedbackButton = ({
   onClick,
@@ -23,7 +24,12 @@ const FeedbackButton = ({
     onKeyDown={({ keyCode }) => keyCode === 13 && onClick(icon)}
     {...rest}
   >
-    <Icon data-testid="feedback-icon" name={icon} size={iconSize} />
+    <Icon
+      data-testid="feedback-icon"
+      name={icon}
+      size={iconSize}
+      style={iconStyles}
+    />
     <span className="sr-only">{children}</span>
   </Button>
 );

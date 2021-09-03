@@ -128,4 +128,15 @@ describe('SupportForm', () => {
     );
     expect(nativeForm.mock.calls[0][2].target).toBe('_blank');
   });
+
+  test('should render default heading as div with stylings of h5', () => {
+    const { getByText } = render(<SupportForm />);
+
+    const header = getByText('Open Support Ticket');
+
+    expect(header.parentElement).toHaveClass('h5');
+    expect(header.parentElement).toHaveAttribute('role', 'heading');
+    expect(header.parentElement).toHaveAttribute('aria-level', '2');
+    expect(header.tagName).toEqual('DIV');
+  });
 });

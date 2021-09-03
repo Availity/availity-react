@@ -20,10 +20,7 @@ const SupportModal = ({
       fade
       id="supportModal"
       data-testid="supportModal"
-      tabIndex="-1"
-      role="dialog"
       aria-labelledby="support-form-header"
-      aria-hidden="true"
       isOpen={supportIsActive}
       toggle={toggle}
       zIndex={supportZIndex}

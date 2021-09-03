@@ -111,7 +111,13 @@ yup.addMethod(yup.object, 'orgSelectTest', orgSelectTest);
 
 const SupportForm = ({ setSupportIsActive, setBlocking, feedbackToggle }) => (
   <>
-    <ModalHeader aria-live="assertive" id="support-form-header">
+    <ModalHeader
+      id="support-form-header"
+      role="heading"
+      aria-level="2"
+      className="h5"
+      tag="div"
+    >
       Open Support Ticket
     </ModalHeader>
     <Form
@@ -135,7 +141,6 @@ const SupportForm = ({ setSupportIsActive, setBlocking, feedbackToggle }) => (
     >
       <ModalBody>
         <AvOrganizationSelect
-          id="organization"
           name="organization"
           label="Select an Organization"
           data-testid="org-dropdown"
