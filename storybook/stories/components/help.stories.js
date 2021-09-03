@@ -16,7 +16,7 @@ storiesOf('Components/Help', module)
   })
   .addDecorator(withKnobs)
   .add('Field Help Icon', () => (
-    <div>
-      Select A Provider <FieldHelpIcon id="1234-5678-910" />
+    <div id="testId">
+      Select A Provider <FieldHelpIcon id="1234-5678-910" labelId="testId" />
     </div>
   ));
