@@ -34,7 +34,7 @@ jobs:
           restore-keys: |
             ${{ runner.os }}-yarn-
       - run: yarn check:packages
-      - run: yarn install
+      - run: yarn install --frozen-lockfile --prefer-offline
       - run: yarn lint
       - run: yarn test:ci
         # https://docs.github.com/en/actions/reference/authentication-in-a-workflow#permissions-for-the-github_token
