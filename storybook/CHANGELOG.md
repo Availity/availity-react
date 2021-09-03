@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [9.7.0](https://github.com/Availity/availity-react/compare/@availity/react-storybook@9.6.3...@availity/react-storybook@9.7.0) (2021-09-03)
+
+
+### Features
+
+* **feedback:** accessibility and responsiveness updates ([69bb19d](https://github.com/Availity/availity-react/commit/69bb19d5d23a8fba01af748de541ada09acf6424))
+
+
+
+
+
 ## [9.6.3](https://github.com/Availity/availity-react/compare/@availity/react-storybook@9.6.2...@availity/react-storybook@9.6.3) (2021-09-01)
 
 **Note:** Version bump only for package @availity/react-storybook

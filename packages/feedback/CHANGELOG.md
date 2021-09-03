@@ -3,6 +3,22 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# 5.8.0 (2021-09-03)
+
+
+### Bug Fixes
+
+* **feedback:** remove face option test placeholder ([0ab9f09](https://github.com/Availity/availity-react/commit/0ab9f093ee8566acabd4f6ec2d645edb6595ea1a))
+
+
+### Features
+
+* **feedback:** accessibility and responsiveness updates ([69bb19d](https://github.com/Availity/availity-react/commit/69bb19d5d23a8fba01af748de541ada09acf6424))
+
+
+
+
+
 # 5.7.0 (2021-07-20)
 
 
