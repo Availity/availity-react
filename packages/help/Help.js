@@ -127,7 +127,7 @@ export const FieldHelpIcon = ({ color, size, id }) => (
     onClick={() => triggerFieldHelp(id)}
     tabIndex={0}
     onKeyPress={(e) => handleKeyPress(e, id)}
-    aria-label="This link opens the help portal, press the enter key or click the icon to open"
+    aria-label="help"
   />
 );
 
