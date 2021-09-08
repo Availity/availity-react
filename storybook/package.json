@@ -39,6 +39,7 @@
     "@availity/feature": "^1.2.25",
     "@availity/feedback": "^6.0.0",
     "@availity/form": "^0.5.34",
+    "@availity/help": "^1.3.11",
     "@availity/hooks": "^3.0.2",
     "@availity/icon": "^0.8.0",
     "@availity/link": "^2.2.3",
