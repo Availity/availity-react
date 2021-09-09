@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## 0.17.11 (2021-09-09)
+
+
+### Bug Fixes
+
+* **select:** fixed the contrast issues with the select options background and text color ([1ba87f5](https://github.com/Availity/availity-react/commit/1ba87f5a1b064ce43888547e87315761f1fdf1ef))
+
+
+
+
+
 ## [0.17.10](https://github.com/Availity/availity-react/compare/@availity/select@0.17.9...@availity/select@0.17.10) (2021-06-11)
 
 **Note:** Version bump only for package @availity/select
