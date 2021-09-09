@@ -133,9 +133,11 @@ describe('Pagination Content', () => {
     expect(getByTestId('pagination-table')).toBeDefined();
     expect(getByTestId('pagination-table-header')).toBeDefined();
 
-    loadPage().items.forEach((item) => {
-      expect(getByTestId(`item-tr-${item.value}`)).toBeDefined();
-      expect(getByTestId(`item-td-${item.value}`)).toBeDefined();
+    await waitFor(() => {
+      loadPage().items.forEach((item) => {
+        expect(getByTestId(`item-tr-${item.value}`)).toBeDefined();
+        expect(getByTestId(`item-td-${item.value}`)).toBeDefined();
+      });
     });
   });
 });
