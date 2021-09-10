@@ -9,6 +9,7 @@ import FormGroup from './FormGroup';
 const Radio = ({
   label,
   id,
+  name,
   value: checkValue,
   className,
   groupClassName,
@@ -25,6 +26,10 @@ const Radio = ({
     metadata.touched && metadata.error && 'is-invalid'
   );
 
+  const errorIndicated = !!metadata.touched && !!metadata.error;
+  const feedbackId =
+    errorIndicated && name ? `${name}-feedback`.toLowerCase() : '';
+
   return (
     <FormGroup
       for={inputId}
@@ -35,9 +40,11 @@ const Radio = ({
     >
       <Input
         id={inputId}
-        name={inputId}
+        name={name || inputId}
         className={classes}
         type="radio"
+        invalid={errorIndicated}
+        aria-describedby={feedbackId}
         {...attributes}
         value={checkValue}
         checked={value}
@@ -52,6 +59,7 @@ const Radio = ({
 
 Radio.propTypes = {
   id: PropTypes.string,
+  name: PropTypes.string,
   label: PropTypes.node,
   value: PropTypes.oneOfType([
     PropTypes.string,

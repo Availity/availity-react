@@ -1,6 +1,6 @@
 import React from 'react';
 import { storiesOf } from '@storybook/react';
-import { withKnobs, boolean } from '@storybook/addon-knobs';
+import { withKnobs, boolean, text } from '@storybook/addon-knobs';
 import { Button } from 'reactstrap';
 import * as yup from 'yup';
 
@@ -97,7 +97,12 @@ storiesOf('Form Components/Form', module)
         }}
         validationSchema={schema}
       >
-        <Field name="hello" type="text" label="Hello" />
+        <Field
+          name="hello"
+          type="text"
+          label="Hello"
+          helpMessage={text('Help message', '')}
+        />
         <Button className="ml-1" color="primary" type="submit">
           Submit
         </Button>
@@ -120,9 +125,13 @@ storiesOf('Form Components/Form', module)
         validationSchema={schema}
       >
         <CheckboxGroup name="checkboxGroup" label="Checkbox Group">
-          <Checkbox label="Check One" value="uno" />
-          <Checkbox label="Check Two" value="dos" />
-          <Checkbox label="Check Three" value="tres" />
+          <Checkbox groupName="checkboxGroup" label="Check One" value="uno" />
+          <Checkbox groupName="checkboxGroup" label="Check Two" value="dos" />
+          <Checkbox
+            groupName="checkboxGroup"
+            label="Check Three"
+            value="tres"
+          />
         </CheckboxGroup>
         <Button className="ml-1" color="primary" type="submit">
           Submit
@@ -145,9 +154,9 @@ storiesOf('Form Components/Form', module)
         validationSchema={schema}
       >
         <RadioGroup name="hello" label="Radio Group">
-          <Radio label="Radio One" value="uno" />
-          <Radio label="Radio Two" value="dos" />
-          <Radio label="Radio Three" value="tres" />
+          <Radio name="hello" label="Radio One" value="uno" />
+          <Radio name="hello" label="Radio Two" value="dos" />
+          <Radio name="hello" label="Radio Three" value="tres" />
         </RadioGroup>
         <Button className="ml-1" color="primary" type="submit">
           Submit

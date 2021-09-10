@@ -58,6 +58,8 @@ const Field = ({
       size={size}
       disabled={disabled}
       readOnly={readOnly}
+      feedback
+      helpMessage={!!helpMessage}
       {...attributes}
     />
   );
@@ -89,7 +91,9 @@ const Field = ({
     );
   }
 
-  const help = helpMessage ? <FormText>{helpMessage}</FormText> : null;
+  const help = helpMessage ? (
+    <FormText id={`${id}-helpmessage`.toLowerCase()}>{helpMessage}</FormText>
+  ) : null;
   const feedback = <Feedback name={id} />;
   let inputRow = row ? (
     <Col {...col}>

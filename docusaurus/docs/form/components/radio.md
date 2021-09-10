@@ -23,35 +23,35 @@ const Example = () => (
     })}
   >
     <RadioGroup name="hello" label="Radio Group">
-      <Radio label="Radio One" value="uno" />
-      <Radio label="Radio Two" value="dos" />
-      <Radio label="Radio Three" value="tres" />
+      <Radio name="hello" label="Radio One" value="uno" />
+      <Radio name="hello" label="Radio Two" value="dos" />
+      <Radio name="hello" label="Radio Three" value="tres" />
     </RadioGroup>
     <Button type="submit">Submit</Button>
   </Form>
 );
 ```
 
-#### Live example: <a href="https://availity.github.io/availity-react/storybook/?path=/story/formik-form--radio"> Storybook</a>
+#### Live example: [Storybook](https://availity.github.io/availity-react/storybook/?path=/story/formik-form--radio)
 
 ### Props
 
 #### `id?: string`
 
-Should match `<RadioGroup />` name for validation.
+Id for the radio button. **default:** generated uuid
+
+#### `name?: string`
+
+Should match `<RadioGroup />` name for validation and accessibly linking button to form feedback.
 
 #### `label?: ReactNode`
 
-Label for the checkbox.
+Label for the radio button.
 
 #### `value?: string`
 
-Value of the checkbox.
+Value of the radio button.
 
 #### `disabled?: boolean`
 
-Disables the checkbox.
-
-#### `inline?: boolean`
-
-Will render the checkbox inline with other checkboxes.
+Disables the radio button.

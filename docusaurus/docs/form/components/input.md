@@ -31,7 +31,7 @@ const Example = () => (
 );
 ```
 
-#### Live example: <a href="https://availity.github.io/availity-react/storybook/?path=/story/formik-form--input"> Storybook</a>
+#### Live example: [Storybook](https://availity.github.io/availity-react/storybook/?path=/story/formik-form--input)
 
 ### Props
 
@@ -42,3 +42,15 @@ Identifies the field and matches the validation
 #### `tag?: React.ComponentType | string`
 
 The Node or tag to substitute as the input field. Default is reactstrap `Input` tag.
+
+#### `feedback?: boolean`
+
+Will add default feedback id to `aria-describedby`.
+
+#### `helpMessage?: boolean`
+
+Will add default help message id to `aria-describedby`. Used by `<Field />`.
+
+#### `className?: string`
+
+Class name passed to the input.
