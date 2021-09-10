@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { AvForm } from 'availity-reactstrap-validation';
 
-const AvFormResults = props => {
+const AvFormResults = (props) => {
   const [{ submitted, errors, values }, setState] = useState({
     submitted: null,
   });

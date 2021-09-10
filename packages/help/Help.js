@@ -111,13 +111,24 @@ export const triggerFieldHelp = (id) => {
   });
 };
 
-export const FieldHelpIcon = ({ color, size, id }) => (
+const handleKeyPress = (e, id) => {
+  if (e.key === 'Enter') {
+    triggerFieldHelp(id);
+  }
+};
+
+export const FieldHelpIcon = ({ color, size, id, labelId }) => (
   <Icon
+    role="link"
     data-testid="field-help-icon"
     name="help-circle"
     size={size}
     color={color}
     onClick={() => triggerFieldHelp(id)}
+    tabIndex={0}
+    onKeyPress={(e) => handleKeyPress(e, id)}
+    aria-label="help"
+    aria-describedby={labelId || ''}
   />
 );
 
@@ -125,6 +136,7 @@ FieldHelpIcon.propTypes = {
   color: PropTypes.string,
   size: PropTypes.string,
   id: PropTypes.string.isRequired,
+  labelId: PropTypes.string,
 };
 
 FieldHelpIcon.defaultProps = {

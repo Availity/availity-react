@@ -4975,9 +4975,9 @@
     "@types/react" "*"
 
 "@types/react-dates@^21.8.2":
-  version "21.8.2"
-  resolved "https://registry.yarnpkg.com/@types/react-dates/-/react-dates-21.8.2.tgz#6b65b8e2ea2559be2e3d25bd3ca910430579f6bd"
-  integrity sha512-0BtpLI+zg7GESgoUd/3aknk35nOKQYEfqkGjy9cNxM7utB2tE0zOvh4npY8FSB8BkEranJkpmsuogeyMFIU/hw==
+  version "21.8.3"
+  resolved "https://registry.yarnpkg.com/@types/react-dates/-/react-dates-21.8.3.tgz#dc4e71f83d09979b1c4f355c267e52a850d0fe2c"
+  integrity sha512-MSG/A5UCXepPw5a9BtdOXfCCSMcQ5+oQIkm0K2u39sf4EJbsgngUg1zcoY3amxa6Hz0EWZkZOiExK/92J6hxUw==
   dependencies:
     "@types/react" "*"
     "@types/react-outside-click-handler" "*"

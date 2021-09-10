@@ -1,4 +1,3 @@
 extends: availity/browser
 rules:
   no-alert: 0
-  arrow-parens: 0

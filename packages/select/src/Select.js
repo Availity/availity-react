@@ -345,7 +345,10 @@ const Select = ({
             ...provided,
             borderRadius: '.25em',
             backgroundColor: showError ? '#fbcbc8' : 'white',
-            borderColor: showError ? '#931b1d' : 'hsl(0,0%,80%)',
+            borderColor: showError ? '#931b1d' : '#555555',
+            ':hover': {
+              borderColor: showError ? '#931b1d' : 'rgb(50 98 175)',
+            },
             zIndex: state.focused && '3',
           };
         },
@@ -371,9 +374,17 @@ const Select = ({
         },
         option: (provided) => ({
           ...provided,
-          color: '#000',
         }),
       }}
+      theme={theme => ({
+        ...theme,
+        borderRadius: 0,
+        colors: {
+          ...theme.colors,
+          primary25: '#85a8dc',
+          primary: 'rgb(50 98 175)',
+        },
+      })}
       {...attributes}
       value={getViewValue()}
     />

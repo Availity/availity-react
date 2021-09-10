@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## 2.1.8 (2021-08-30)
+
+
+### Bug Fixes
+
+* **date:** added css for onFocus datepickerInput for Accessibility ([64873ae](https://github.com/Availity/availity-react/commit/64873ae4949a9c6575ca608ed82a63136ecfdc11))
+
+
+
+
+
 ## 2.1.7 (2021-08-06)
 
 

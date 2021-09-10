@@ -78,6 +78,10 @@
   ); /* Do not remove this. Used to match Date Input heights to Reactstrap Input heights */
 }
 
+.DateInput_input__focused {
+  outline: 3px solid #2261b5;
+}
+
 .av-calendar-show .SingleDatePicker input.DateInput_input {
   border-top-right-radius: 0;
   border-bottom-right-radius: 0;

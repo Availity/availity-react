@@ -86,7 +86,7 @@ Feedback.propTypes = {
 
 Feedback.defaultProps = {
   modal: false,
-  color: 'light',
+  color: 'secondary',
   analytics: avLogMessagesApi,
   showSupport: false,
 };

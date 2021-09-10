@@ -1,4 +1,5 @@
 import React from 'react';
+import userEvent from '@testing-library/user-event';
 import { render, cleanup, fireEvent } from '@testing-library/react';
 import avMessageMock from '@availity/message-core';
 import HelpProvider, { Help, constants, FieldHelpIcon } from '../index';
@@ -58,6 +59,19 @@ describe('Field Help', () => {
 
     const node = getByTestId('field-help-icon');
     fireEvent.click(node);
+    expect(avMessageMock.send).toHaveBeenCalledWith({
+      event: constants.OPEN_FIELD_HELP,
+      id: 'Express_Entry_Fields',
+    });
+  });
+
+  test('expects message to be sent on enter', () => {
+    const { getByTestId } = render(<FieldHelpIcon id="Express_Entry_Fields" />);
+
+    const node = getByTestId('field-help-icon');
+    node.focus();
+    userEvent.type(node, '{enter}');
+    // fireEvent.keyDown(document.activeElement, {key: 'Enter', code: 'Enter'});
     expect(avMessageMock.send).toHaveBeenCalledWith({
       event: constants.OPEN_FIELD_HELP,
       id: 'Express_Entry_Fields',

@@ -1,49 +1,39 @@
 import mock, { proxy } from 'xhr-mock';
-import features from './features';
-import regions from './regions';
-import notifications from './notifications';
-import axiUserPermissions from './axi-user-permissions';
+
 import appeals from './appeals';
-import slotmachine from './slotmachine';
-import me from './me';
-import settings from './settings';
+import axiUserPermissions from './axi-user-permissions';
 import disclaimers from './disclaimers';
-import webQL from './webQL';
-import resourceSelect from './resource-select';
+import features from './features';
 import logMessages from './LogMessages';
+import me from './me';
+import notifications from './notifications';
 import organizations from './organizations';
+import permissions from './permissions';
 import providers from './providers';
+import regions from './regions';
+import resourceSelect from './resource-select';
+import settings from './settings';
+import slotmachine from './slotmachine';
+import webQL from './webQL';
 
 export default () => {
   mock.setup();
 
-  features(mock);
-
-  notifications(mock);
-
-  axiUserPermissions(mock);
-
-  regions(mock);
-
   appeals(mock);
-
-  slotmachine(mock);
-
-  me(mock);
-
-  settings(mock);
-
+  axiUserPermissions(mock);
   disclaimers(mock);
-
-  webQL(mock);
-
-  resourceSelect(mock);
-
+  features(mock);
   logMessages(mock);
-
+  me(mock);
+  notifications(mock);
   organizations(mock);
-
+  permissions(mock);
   providers(mock);
+  regions(mock);
+  resourceSelect(mock);
+  settings(mock);
+  slotmachine(mock);
+  webQL(mock);
 
   // keep this last
   mock.use(proxy);
