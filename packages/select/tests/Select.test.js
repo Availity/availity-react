@@ -642,6 +642,7 @@ describe('Select', () => {
       expect(payload.singleSelectCreatable.valueKeyTest).toBe('helloworld');
     });
   });
+
   test('waits to query resource until input is focused when waitUntilFocused is true', async () => {
     const loadOptions = jest.fn();
 
@@ -698,6 +699,41 @@ describe('Select', () => {
     // Check the loadOptions is called only after the input has been focused
     await waitFor(() => {
       expect(loadOptions).toHaveBeenCalledTimes(1);
+    });
+  });
+
+  test('checks accessibility of the options', async () => {
+    const onSubmit = jest.fn();
+    const { container, getByText } = render(
+      <Form
+        initialValues={{
+          singleSelect: undefined,
+        }}
+        onSubmit={onSubmit}
+        validationSchema={singleValueSchema('singleSelect')}
+      >
+        <Select
+          name="singleSelect"
+          options={options}
+          data-testid="single-select"
+        />
+        <Button type="submit">Submit</Button>
+      </Form>
+    );
+
+    const select = container.querySelector('.av__control');
+
+    // Open the dropdown
+    fireEvent.click(select);
+    // Hover down to the first option
+    fireEvent.keyDown(select, { key: 'ArrowDown', keyCode: 40 });
+
+    const optionOne = getByText('Option 1');
+
+    await waitFor(() => {
+      expect(optionOne).toHaveAttribute('role', 'option');
+      expect(optionOne).toHaveAttribute('aria-selected');
+      expect(optionOne).toHaveAttribute('name');
     });
   });
 });
