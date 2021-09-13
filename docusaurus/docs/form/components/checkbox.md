@@ -23,9 +23,9 @@ const Example = () => (
     })}
   >
     <CheckboxGroup name="hello" label="Checkbox Group">
-      <Checkbox label="Check One" value="uno" />
-      <Checkbox label="Check Two" value="dos" />
-      <Checkbox label="Check Three" value="tres" />
+      <Checkbox groupName="checkboxGroup" label="Check One" value="uno" />
+      <Checkbox groupName="checkboxGroup" label="Check Two" value="dos" />
+      <Checkbox groupName="checkboxGroup" label="Check Three" value="tres" />
     </CheckboxGroup>
     <Button type="submit" color="primary">
       Submit
@@ -34,13 +34,17 @@ const Example = () => (
 );
 ```
 
-#### Live example: <a href="https://availity.github.io/availity-react/storybook/?path=/story/formik-form--checkbox"> Storybook</a>
+#### Live example: [Storybook](https://availity.github.io/availity-react/storybook/?path=/story/formik-form--checkbox)
 
 ### Props
 
 #### `id?: string`
 
-Should match `<CheckboxGroup />` name for validation.
+Id and name for the checkbox. **default:** generated uuid
+
+#### `groupName?: string`
+
+Should match `<CheckboxGroup />` name to accessibly link input to form feedback.
 
 #### `label?: ReactNode`
 

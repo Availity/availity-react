@@ -30,6 +30,7 @@ describe('Feedback', () => {
       const feedback = getByTestId('hello-feedback');
 
       expect(feedback.textContent).toBe('Oops');
+      expect(feedback).toHaveAttribute('id', 'hello-feedback');
     });
   });
 });

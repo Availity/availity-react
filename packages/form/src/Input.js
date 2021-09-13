@@ -10,6 +10,8 @@ const Input = ({
   onChange: propsOnChange,
   validate,
   name,
+  feedback,
+  helpMessage,
   ...rest
 }) => {
   const [{ onChange, ...field }, metadata] = useField({
@@ -28,6 +30,10 @@ const Input = ({
       'was-validated'
   );
 
+  const error = !!metadata.touched && !!metadata.error;
+  const feedbackId = error && feedback ? `${name}-feedback`.toLowerCase() : '';
+  const helpMessageId = helpMessage ? ` ${name}-helpmessage`.toLowerCase() : '';
+
   const extraProps = {};
 
   if (rest.type === 'checkbox') {
@@ -44,6 +50,8 @@ const Input = ({
         }
       }}
       name={name}
+      invalid={error}
+      aria-describedby={feedbackId + helpMessageId}
       {...field}
       {...extraProps}
       {...rest}
@@ -57,6 +65,8 @@ Input.propTypes = {
   validate: PropTypes.func,
   name: PropTypes.string.isRequired,
   onChange: PropTypes.func,
+  feedback: PropTypes.bool,
+  helpMessage: PropTypes.bool,
 };
 
 Input.defaultProps = {

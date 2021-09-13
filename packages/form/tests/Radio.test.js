@@ -157,4 +157,43 @@ describe('Radio', () => {
 
     expect(container.querySelector('input').getAttribute('id')).toEqual('test');
   });
+
+  test('should render appropriate aria-attributes', async () => {
+    const { getByText, getByTestId } = render(
+      <Form
+        initialValues={{
+          hello: '',
+        }}
+        validationSchema={yup.object().shape({
+          hello: yup.string().required('This field is required'),
+        })}
+        onSubmit={() => {}}
+      >
+        <RadioGroup name="hello" label="Radio Group">
+          <Radio
+            name="hello"
+            label="Radio One"
+            value="uno"
+            data-testid="hello-radio"
+          />
+        </RadioGroup>
+        <Button type="submit">Submit</Button>
+      </Form>
+    );
+
+    const radio = getByTestId('hello-radio');
+    expect(radio).toHaveAttribute('aria-invalid', 'false');
+    expect(radio).toHaveAttribute('aria-describedby', '');
+
+    await fireEvent.click(getByText('Submit'));
+
+    await waitFor(() => {
+      expect(radio).toHaveAttribute('aria-invalid', 'true');
+      expect(radio).toHaveAttribute('aria-describedby', 'hello-feedback');
+      expect(getByText('This field is required')).toHaveAttribute(
+        'id',
+        'hello-feedback'
+      );
+    });
+  });
 });

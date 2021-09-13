@@ -50,7 +50,7 @@ describe('Field', () => {
   });
 
   test('should render help message', () => {
-    const { getByText } = render(
+    const { getByText, getByTestId } = render(
       <Form
         initialValues={{
           hello: 'hello',
@@ -63,6 +63,11 @@ describe('Field', () => {
 
     const el = getByText('help text');
     expect(el).toBeDefined();
+    expect(el).toHaveAttribute('id', 'hello-helpmessage');
+    expect(getByTestId('hello-input')).toHaveAttribute(
+      'aria-describedby',
+      ' hello-helpmessage'
+    );
   });
 
   test('renders with initial value', () => {
@@ -150,5 +155,46 @@ describe('Field', () => {
     );
 
     expect(container.querySelector('input').hasAttribute('id')).toBeTruthy();
+  });
+
+  test('should have proper aria attributes', async () => {
+    const { container, getByText, getByDisplayValue, getByTestId } = render(
+      <Form
+        initialValues={{ name: 'John' }}
+        onSubmit={() => {}}
+        validationSchema={yup.object().shape({ name: yup.string().required() })}
+      >
+        <Field name="name" helpMessage="help text" data-testid="name-input" />
+        <Button type="submit">Submit</Button>
+      </Form>
+    );
+
+    const input = getByTestId('name-input');
+    const help = getByText('help text');
+
+    expect(help).toHaveAttribute('id', 'name-helpmessage');
+    expect(input).toHaveAttribute('aria-describedby', ' name-helpmessage');
+    expect(input).toHaveAttribute('aria-invalid', 'false');
+
+    await fireEvent.change(getByDisplayValue('John'), {
+      target: {
+        name: 'name',
+        value: '',
+      },
+    });
+    fireEvent.click(getByText('Submit'));
+
+    await waitFor(() => {
+      const feedback = container.querySelector('.invalid-feedback');
+
+      expect(feedback).toBeDefined();
+      expect(feedback).toHaveAttribute('id', 'name-feedback');
+      expect(help).toHaveAttribute('id', 'name-helpmessage');
+      expect(input).toHaveAttribute('aria-invalid', 'true');
+      expect(input).toHaveAttribute(
+        'aria-describedby',
+        'name-feedback name-helpmessage'
+      );
+    });
   });
 });
