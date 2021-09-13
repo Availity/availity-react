@@ -3,6 +3,21 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.18.0](https://github.com/Availity/availity-react/compare/@availity/select@0.17.12...@availity/select@0.18.0) (2021-09-13)
+
+
+### Features
+
+* rmv unused prop type SIH-1194 ([266928f](https://github.com/Availity/availity-react/commit/266928f2a3fa7e2c046e3d7a2ca0c416461a5af0))
+* use distinct id as name and add proptypes ([a4b1de2](https://github.com/Availity/availity-react/commit/a4b1de29709d5658aba53674123b4bed4b9d0789))
+* used innerProps to add role, name and state to field options SIH-1194 ([d67a6c0](https://github.com/Availity/availity-react/commit/d67a6c08ec3c8e904c8d113fee2bdadca421aac1))
+* used innerProps to add role, name and state to field options SIH-1194 ([61bbaea](https://github.com/Availity/availity-react/commit/61bbaeaa1934b2a9837a709f56c9751a5f2c5a3b))
+* used innerProps to add role, name and state to field options SIH-1194 ([2ac2233](https://github.com/Availity/availity-react/commit/2ac223320c844c5b6767fb80f8e816e50a8a1987))
+
+
+
+
+
 ## [0.17.12](https://github.com/Availity/availity-react/compare/@availity/select@0.17.11...@availity/select@0.17.12) (2021-09-13)
 
 **Note:** Version bump only for package @availity/select
