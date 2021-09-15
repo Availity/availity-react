@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## 5.0.1 (2021-09-15)
+
+
+### Bug Fixes
+
+* **spaces:** find spaces by node id or configurationId ([c603860](https://github.com/Availity/availity-react/commit/c603860a8e24a7cc1f7e312d5c456fdac66af1a1))
+
+
+
+
+
 # 5.0.0 (2021-07-27)
 
 

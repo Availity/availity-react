@@ -1,6 +1,6 @@
 {
   "name": "@availity/spaces",
-  "version": "5.0.0",
+  "version": "5.0.1",
   "author": "Tyson Warner <tyson.warner@availity.com>",
   "description": "Easy to use spaces components",
   "main": "index.js",
