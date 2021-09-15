@@ -35,7 +35,7 @@ const SpacesImage = ({
   const [space = {}] = useSpaces(spaceId || payerId);
   const { loading } = useSpacesContext() || {};
 
-  const id = spaceId || payerId || space.id;
+  const id = spaceId || payerId || space.id || space.configurationId;
   let url = get(space, imageType);
 
   if (!url && loading) {

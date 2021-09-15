@@ -30,12 +30,14 @@ describe('SpacesImage', () => {
               items: [
                 {
                   id: '1',
+                  configurationId: '11',
                   images: {
                     logo: '/static/spaces/1/banner.png',
                   },
                 },
                 {
                   id: '2',
+                  configurationId: '22',
                   payerIDs: ['payer1'],
                   images: {
                     tile: '/static/spaces/2/tile.png',
@@ -44,6 +46,7 @@ describe('SpacesImage', () => {
                 },
                 {
                   id: '3',
+                  configurationId: '33',
                   url: '/some/path/to/a/image.png',
                 },
               ],
@@ -63,6 +66,7 @@ describe('SpacesImage', () => {
               items: [
                 {
                   id: '2',
+                  configurationId: '22',
                   payerIDs: ['payer1'],
                   images: {
                     tile: '/static/spaces/2/tile.png',
@@ -129,6 +133,7 @@ describe('SpacesImage', () => {
             items: [
               {
                 id: '1',
+                configurationId: '11',
                 images: {
                   logo: '/static/spaces/1/banner.png',
                 },
@@ -139,7 +144,7 @@ describe('SpacesImage', () => {
       },
     });
     const { getByTestId } = render(
-      <Spaces spaceIds={['1']} clientId="my-client-id">
+      <Spaces spaceIds={['11']} clientId="my-client-id">
         <SpacesLogo />
       </Spaces>
     );
@@ -161,6 +166,7 @@ describe('SpacesImage', () => {
             items: [
               {
                 id: '1',
+                configurationId: '11',
                 images: {
                   logo: '/static/spaces/1/banner.png',
                 },

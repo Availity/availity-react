@@ -75,8 +75,18 @@ const Spaces = ({
       // Filter out dupes and ids that we already have the space for
       const filteredSpaceIDs = spaceIds
         .filter((id, i) => spaceIds.indexOf(id) === i)
-        .filter((id) => !spaces.some((spc) => spc && spc.id === id))
-        .filter((id) => !spacesFromProps.some((spc) => spc && spc.id === id));
+        .filter(
+          (id) =>
+            !spaces.some(
+              (spc) => spc && (spc.id === id || spc.configurationId === id)
+            )
+        )
+        .filter(
+          (id) =>
+            !spacesFromProps.some(
+              (spc) => spc && (spc.id === id || spc.configurationId === id)
+            )
+        );
 
       const filteredPayerIDs = payerIds
         .filter((id, i) => payerIds.indexOf(id) === i)
@@ -171,7 +181,7 @@ export const useSpaces = (...ids) => {
 
   // Try to match by space id first, else match by payer id
   const filteredSpaces = ids.map((id) => {
-    let [spc] = spaces.filter((s) => s.id === id);
+    let [spc] = spaces.filter((s) => s.id === id || s.configurationId === id);
 
     if (!spc) {
       [spc] = spaces.filter((s) => {
@@ -211,6 +221,7 @@ Spaces.defaultProps = {
         }
         items {
           ...on Configuration{
+              configurationId
               name
               description
               payerIDs
