@@ -19,3 +19,7 @@ Class name to apply to the form control.
 #### `inline?: boolean`
 
 Will render the checkbox inline with other checkboxes.
+
+#### `helpId?: string`
+
+Help topic id, adds `<FieldHelpIcon/>` next to the label (should not be within label for accessibility).

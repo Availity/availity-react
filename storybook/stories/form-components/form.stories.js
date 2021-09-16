@@ -102,6 +102,7 @@ storiesOf('Form Components/Form', module)
           type="text"
           label="Hello"
           helpMessage={text('Help message', '')}
+          helpId={text('Help topic id', '')}
         />
         <Button className="ml-1" color="primary" type="submit">
           Submit
@@ -124,7 +125,11 @@ storiesOf('Form Components/Form', module)
         }}
         validationSchema={schema}
       >
-        <CheckboxGroup name="checkboxGroup" label="Checkbox Group">
+        <CheckboxGroup
+          name="checkboxGroup"
+          helpId={text('Checkbox Group help topic id', '')}
+          label="Checkbox Group"
+        >
           <Checkbox groupName="checkboxGroup" label="Check One" value="uno" />
           <Checkbox groupName="checkboxGroup" label="Check Two" value="dos" />
           <Checkbox
@@ -153,7 +158,11 @@ storiesOf('Form Components/Form', module)
         }}
         validationSchema={schema}
       >
-        <RadioGroup name="hello" label="Radio Group">
+        <RadioGroup
+          name="hello"
+          label="Radio Group"
+          helpId={text('Radio Group help topic id', '')}
+        >
           <Radio name="hello" label="Radio One" value="uno" />
           <Radio name="hello" label="Radio Two" value="dos" />
           <Radio name="hello" label="Radio Three" value="tres" />

@@ -38,7 +38,7 @@ const Example = () => (
 
 #### `id?: string`
 
-Id for the radio button. **default:** generated uuid
+Id for the radio button.
 
 #### `name?: string`
 
@@ -47,6 +47,10 @@ Should match `<RadioGroup />` name for validation and accessibly linking button 
 #### `label?: ReactNode`
 
 Label for the radio button.
+
+#### `helpId?: string`
+
+Help topic id, adds `<FieldHelpIcon/>` next to the label (should not be within label for accessibility).
 
 #### `value?: string`
 

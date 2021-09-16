@@ -1,5 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import { FieldHelpIcon } from '@availity/help';
 import {
   Input as RsInput,
   Label,
@@ -18,6 +19,7 @@ const colSizes = ['xs', 'sm', 'md', 'lg', 'xl'];
 
 const Field = ({
   helpMessage,
+  helpId,
   label,
   labelHidden,
   inputClass,
@@ -110,6 +112,11 @@ const Field = ({
   }
 
   const check = attributes.type === 'checkbox';
+  const helpIcon = helpId ? (
+    <FieldHelpIcon labelId={`${inputId}-label`} id={helpId} />
+  ) : (
+    false
+  );
 
   return (
     <FormGroup
@@ -121,16 +128,20 @@ const Field = ({
     >
       {check && inputRow}
       {label && (
-        <Label
-          for={inputId}
-          className={labelClass}
-          hidden={labelHidden}
-          size={size}
-          {...labelCol}
-          {...labelAttrs}
-        >
-          {label}
-        </Label>
+        <>
+          <Label
+            id={`${inputId}-label`}
+            for={inputId}
+            className={labelClass}
+            hidden={labelHidden}
+            size={size}
+            {...labelCol}
+            {...labelAttrs}
+          >
+            {label}
+          </Label>
+          {helpIcon}
+        </>
       )}
       {!check && inputRow}
       {!row && !prepend && !append && feedback}
@@ -156,6 +167,7 @@ Field.propTypes = {
   children: PropTypes.func,
   append: PropTypes.node,
   prepend: PropTypes.node,
+  helpId: PropTypes.string,
 };
 
 Field.defaultProps = {

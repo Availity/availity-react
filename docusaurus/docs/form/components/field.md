@@ -70,6 +70,10 @@ Class names passed to the input tag.
 
 Class names passed to the label tag.
 
+#### `helpId?: string`
+
+Help topic id, adds `<FieldHelpIcon/>` next to the label (should not be within label for accessibility).
+
 #### `helpMessage?: React.ReactNode`
 
 Display info text below the field

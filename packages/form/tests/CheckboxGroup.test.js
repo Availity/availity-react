@@ -66,6 +66,28 @@ describe('CheckboxGroup', () => {
     });
   });
 
+  test('renders with field help icon', () => {
+    const { getByTestId } = render(
+      <Form
+        initialValues={{
+          hello: '',
+        }}
+        onSubmit={() => {}}
+      >
+        <CheckboxGroup
+          name="hello"
+          label="Checkbox Group"
+          helpId="helloHelpTopic"
+        >
+          <Checkbox label="Check One" value="uno" />
+        </CheckboxGroup>
+        <Button type="submit">Submit</Button>
+      </Form>
+    );
+
+    expect(getByTestId('field-help-icon')).toBeDefined();
+  });
+
   test('submits with proper radio values', async () => {
     const onSubmit = jest.fn();
     const { getByText } = render(

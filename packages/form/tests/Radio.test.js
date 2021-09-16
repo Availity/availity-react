@@ -134,6 +134,28 @@ describe('Radio', () => {
     expect(el).toBeDefined();
   });
 
+  test('renders with field help icon', async () => {
+    const { getByTestId } = render(
+      <Form
+        initialValues={{
+          hello: '',
+        }}
+        onSubmit={() => {}}
+      >
+        <RadioGroup name="hello" label="Radio Group">
+          <Radio
+            name="hello"
+            label="Radio One"
+            value="uno"
+            helpId="radioOneHelpTopic"
+          />
+        </RadioGroup>
+      </Form>
+    );
+
+    expect(getByTestId('field-help-icon')).toBeDefined();
+  });
+
   test('should generate uuid even when id is not added', () => {
     const { container } = render(
       <Form initialValues={{ name: 'John' }} onSubmit={() => {}}>
