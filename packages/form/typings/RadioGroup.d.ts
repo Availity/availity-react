@@ -6,6 +6,7 @@ interface RadioGroupProps extends React.HTMLAttributes<HTMLFormElement> {
   groupClassName?: string;
   onChange?: (value: any) => void;
   inline?: boolean | false;
+  helpId: string;
 }
 
 declare class RadioGroup extends React.Component<RadioGroupProps> {}

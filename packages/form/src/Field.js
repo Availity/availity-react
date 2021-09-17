@@ -61,7 +61,7 @@ const Field = ({
       disabled={disabled}
       readOnly={readOnly}
       feedback
-      helpMessage={!!helpMessage}
+      help={!!helpMessage}
       {...attributes}
     />
   );

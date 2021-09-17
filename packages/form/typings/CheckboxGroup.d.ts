@@ -6,6 +6,7 @@ interface CheckboxGroupProps extends FormGroupProps {
   label?: React.ReactNode;
   groupClassName?: string;
   onChange?: (value: any) => void;
+  helpId?: string;
 }
 
 declare class CheckboxGroup extends React.Component<CheckboxGroupProps> {}

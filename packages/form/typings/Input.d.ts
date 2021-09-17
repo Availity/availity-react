@@ -34,6 +34,8 @@ export interface InputProps extends React.InputHTMLAttributes<HTMLInputElement> 
   name: string;
   validate?: FieldValidator; 
   tag?: Node | string;
+  feedback?: boolean;
+  help?: boolean;
 }
 
 declare class Input extends React.Component<InputProps> {}

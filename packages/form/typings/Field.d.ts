@@ -22,6 +22,7 @@ export interface FieldProps extends InputProps {
   children?: (props: FieldChildProps) => React.ReactNode;
   append?: string | React.ReactNode;
   prepend?: string | React.ReactNode;
+  helpId?: string;
 }
 
 declare class Field extends React.Component<FieldProps> {}
