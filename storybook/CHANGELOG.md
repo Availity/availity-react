@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [9.10.0](https://github.com/Availity/availity-react/compare/@availity/react-storybook@9.9.2...@availity/react-storybook@9.10.0) (2021-09-17)
+
+
+### Features
+
+* **form:** add field help icon beside label ([ce5f13b](https://github.com/Availity/availity-react/commit/ce5f13b92e2bdeab77ada74e955c0cad9c523799))
+
+
+
+
+
 ## [9.9.2](https://github.com/Availity/availity-react/compare/@availity/react-storybook@9.9.1...@availity/react-storybook@9.9.2) (2021-09-15)
 
 **Note:** Version bump only for package @availity/react-storybook

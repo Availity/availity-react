@@ -3,6 +3,19 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## 1.4.1 (2021-09-17)
+
+
+### Bug Fixes
+
+* **help:** add icon to package.json ([da094ad](https://github.com/Availity/availity-react/commit/da094ad370b5281dc88f7e55c469dcc72f09d543))
+* **help:** made field help icon link not aria-hidden ([c6fc634](https://github.com/Availity/availity-react/commit/c6fc63468f136f89933fe3c78a7002eac73c72bc))
+* **help:** update docs and typings for accessibility ([a26804b](https://github.com/Availity/availity-react/commit/a26804b9f1f962c9a3573ff9cd23f1f4f7819b24))
+
+
+
+
+
 # 1.4.0 (2021-09-08)
 
 
