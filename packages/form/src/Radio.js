@@ -34,9 +34,7 @@ const Radio = ({
   const labelId = `${inputId}-label`.toLowerCase();
   const helpIcon = helpId ? (
     <FieldHelpIcon id={helpId} labelId={labelId} />
-  ) : (
-    false
-  );
+  ) : null;
 
   return (
     <FormGroup

@@ -114,9 +114,7 @@ const Field = ({
   const check = attributes.type === 'checkbox';
   const helpIcon = helpId ? (
     <FieldHelpIcon labelId={`${inputId}-label`} id={helpId} />
-  ) : (
-    false
-  );
+  ) : null;
 
   return (
     <FormGroup

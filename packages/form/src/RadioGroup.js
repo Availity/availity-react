@@ -47,7 +47,7 @@ const RadioGroup = ({
   );
 
   let tag = 'div';
-  let legend = false;
+  let legend = null;
 
   if (label) {
     tag = 'fieldset';
