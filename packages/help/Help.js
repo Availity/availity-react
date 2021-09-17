@@ -127,6 +127,7 @@ export const FieldHelpIcon = ({ color, size, id, labelId }) => (
     onClick={() => triggerFieldHelp(id)}
     tabIndex={0}
     onKeyPress={(e) => handleKeyPress(e, id)}
+    aria-hidden="false"
     aria-label="help"
     aria-describedby={labelId || ''}
   />
@@ -147,6 +148,7 @@ FieldHelpIcon.defaultProps = {
 Help.propTypes = {
   type: PropTypes.string,
   id: PropTypes.string.isRequired,
+  children: PropTypes.node,
 };
 
 Help.defaultProps = {

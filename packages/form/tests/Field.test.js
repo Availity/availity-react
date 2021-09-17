@@ -49,6 +49,26 @@ describe('Field', () => {
     expect(label.className).toContain('col-md-6');
   });
 
+  test('renders with field help icon', () => {
+    const { getByTestId } = render(
+      <Form
+        initialValues={{
+          hello: 'hello',
+        }}
+        onSubmit={() => {}}
+      >
+        <Field
+          name="hello"
+          label="Hello Label"
+          data-testid="hello-input"
+          helpId="hellohelptopic"
+        />
+      </Form>
+    );
+
+    expect(getByTestId('field-help-icon')).toBeDefined();
+  });
+
   test('should render help message', () => {
     const { getByText, getByTestId } = render(
       <Form

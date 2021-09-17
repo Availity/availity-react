@@ -11,7 +11,7 @@ const Input = ({
   validate,
   name,
   feedback,
-  helpMessage,
+  help,
   ...rest
 }) => {
   const [{ onChange, ...field }, metadata] = useField({
@@ -32,7 +32,7 @@ const Input = ({
 
   const error = !!metadata.touched && !!metadata.error;
   const feedbackId = error && feedback ? `${name}-feedback`.toLowerCase() : '';
-  const helpMessageId = helpMessage ? ` ${name}-helpmessage`.toLowerCase() : '';
+  const helpMessageId = help ? ` ${name}-helpmessage`.toLowerCase() : '';
 
   const extraProps = {};
 
@@ -66,7 +66,7 @@ Input.propTypes = {
   name: PropTypes.string.isRequired,
   onChange: PropTypes.func,
   feedback: PropTypes.bool,
-  helpMessage: PropTypes.bool,
+  help: PropTypes.bool,
 };
 
 Input.defaultProps = {

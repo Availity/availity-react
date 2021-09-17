@@ -18,9 +18,10 @@ declare const constants: TopNavConstants;
 
 declare const HelpProvider: React.FC;
 
-declare const Help: React.StatelessComponent<HelpObj>;
+declare const Help: React.FunctionComponent<HelpObj>;
 
 declare const FieldHelpIcon: (props: {
+  labelId?: string;
   color?: string;
   size?: string;
   id: string;

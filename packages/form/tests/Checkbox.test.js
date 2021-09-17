@@ -147,6 +147,24 @@ describe('Checkbox', () => {
     expect(el).toBeDefined();
   });
 
+  test('renders with field help icon', () => {
+    const { getByTestId } = render(
+      <Form
+        initialValues={{
+          hello: '',
+        }}
+        onSubmit={() => {}}
+      >
+        <CheckboxGroup name="hello" label="Checkbox Group">
+          <Checkbox label="Check One" value="uno" helpId="UnoHelpTopic" />
+        </CheckboxGroup>
+        <Button type="submit">Submit</Button>
+      </Form>
+    );
+
+    expect(getByTestId('field-help-icon')).toBeDefined();
+  });
+
   test('renders without inline applied', async () => {
     const { getByText } = render(
       <Form

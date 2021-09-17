@@ -1,6 +1,7 @@
 import React, { createContext, useContext } from 'react';
 import PropTypes from 'prop-types';
 import classNames from 'classnames';
+import { FieldHelpIcon } from '@availity/help';
 import { useField, useFormikContext } from 'formik';
 import Feedback from './Feedback';
 import FormGroup from './FormGroup';
@@ -9,9 +10,12 @@ export const CheckboxGroupContext = createContext();
 
 export const useCheckboxGroup = (name) => {
   const { setFieldValue } = useFormikContext();
-  const { name: groupName, groupOnChange, value = [], ...rest } = useContext(
-    CheckboxGroupContext
-  );
+  const {
+    name: groupName,
+    groupOnChange,
+    value = [],
+    ...rest
+  } = useContext(CheckboxGroupContext);
 
   const toggle = () => {
     const valueArray = [...value];
@@ -40,6 +44,7 @@ const CheckboxGroup = ({
   onChange: groupOnChange,
   groupClassName,
   label,
+  helpId,
   ...rest
 }) => {
   const [field, metadata] = useField(name);
@@ -51,13 +56,35 @@ const CheckboxGroup = ({
     metadata.touched && metadata.error && 'is-invalid'
   );
 
-  const legend = label ? <legend>{label}</legend> : '';
+  let tag = 'div';
+  let legend = null;
+
+  if (label) {
+    tag = 'fieldset';
+    legend = <legend>{label}</legend>;
+
+    if (helpId) {
+      const legendId = `${name}-legend`.toLowerCase();
+      const legendStyle = { fontSize: '1.5rem', marginBottom: '.5rem' };
+      legend = (
+        <>
+          <legend id={legendId} className="sr-only">
+            {label}
+          </legend>
+          <div className="form-inline" style={legendStyle}>
+            <div aria-hidden="true">{label}</div>
+            <FieldHelpIcon id={helpId} labelId={legendId} />
+          </div>
+        </>
+      );
+    }
+  }
 
   return (
     <CheckboxGroupContext.Provider
       value={{ ...field, groupOnChange, metadata }}
     >
-      <FormGroup tag="fieldset" for={name} {...rest}>
+      <FormGroup tag={tag} for={name} {...rest}>
         {legend}
         <div className={classes} data-testid={`check-items-${name}`}>
           {children}
@@ -74,6 +101,7 @@ CheckboxGroup.propTypes = {
   label: PropTypes.node,
   onChange: PropTypes.func,
   groupClassName: PropTypes.string,
+  helpId: PropTypes.string,
 };
 
 export default CheckboxGroup;

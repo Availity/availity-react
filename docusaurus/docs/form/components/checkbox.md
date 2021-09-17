@@ -23,9 +23,9 @@ const Example = () => (
     })}
   >
     <CheckboxGroup name="hello" label="Checkbox Group">
-      <Checkbox groupName="checkboxGroup" label="Check One" value="uno" />
-      <Checkbox groupName="checkboxGroup" label="Check Two" value="dos" />
-      <Checkbox groupName="checkboxGroup" label="Check Three" value="tres" />
+      <Checkbox groupName="hello" label="Check One" value="uno" />
+      <Checkbox groupName="hello" label="Check Two" value="dos" />
+      <Checkbox groupName="hello" label="Check Three" value="tres" />
     </CheckboxGroup>
     <Button type="submit" color="primary">
       Submit
@@ -40,7 +40,7 @@ const Example = () => (
 
 #### `id?: string`
 
-Id and name for the checkbox. **default:** generated uuid
+Id and name for the checkbox.
 
 #### `groupName?: string`
 
@@ -49,6 +49,10 @@ Should match `<CheckboxGroup />` name to accessibly link input to form feedback.
 #### `label?: ReactNode`
 
 Label for the checkbox.
+
+#### `helpId?: string`
+
+Help topic id, adds `<FieldHelpIcon/>` next to the label (should not be within label for accessibility).
 
 #### `value?: string`
 

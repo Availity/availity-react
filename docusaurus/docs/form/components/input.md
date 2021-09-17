@@ -47,7 +47,7 @@ The Node or tag to substitute as the input field. Default is reactstrap `Input` 
 
 Will add default feedback id to `aria-describedby`.
 
-#### `helpMessage?: boolean`
+#### `help?: boolean`
 
 Will add default help message id to `aria-describedby`. Used by `<Field />`.
 

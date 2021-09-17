@@ -15,3 +15,7 @@ Label for the group or checkboxes.
 #### `groupClassName?: string`
 
 Class name to apply to the form control.
+
+#### `helpId?: string`
+
+Help topic id, adds `<FieldHelpIcon/>` next to the label (should not be within label for accessibility).

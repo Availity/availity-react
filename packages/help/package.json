@@ -25,6 +25,7 @@
   },
   "dependencies": {
     "@availity/message-core": "^5.0.0",
+    "@availity/icon": "^0.8.0",
     "prop-types": "^15.7.2"
   },
   "devDependencies": {
