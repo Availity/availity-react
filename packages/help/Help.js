@@ -148,6 +148,7 @@ FieldHelpIcon.defaultProps = {
 Help.propTypes = {
   type: PropTypes.string,
   id: PropTypes.string.isRequired,
+  children: PropTypes.node,
 };
 
 Help.defaultProps = {

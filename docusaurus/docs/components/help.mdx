@@ -53,7 +53,8 @@ import { FieldHelpIcon } from '@availity/help';
 
 const Example = () => (
   <div>
-    Select A Provider <FieldHelpIcon id="1234-5678-910" />
+    <Label id="provider-label">Select A Provider </Label>
+    <FieldHelpIcon id="1234-5678-910" labelId="provider-label" />
   </div>
 );
 ```
@@ -71,3 +72,7 @@ The bootstrap 3 color of the icon. **Default:**`primary`
 #### `size?: string`
 
 The size of the help icon. **Default:** `1x`
+
+### `labelId?: string`
+
+The id of the associated label for `aria-describedby`, needed for accessibility.
