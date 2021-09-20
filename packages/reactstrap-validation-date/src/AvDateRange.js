@@ -580,6 +580,7 @@ class AvDateRange extends Component {
           max={maxDate}
           valueFormatter={this.valueFormatter}
           valueParser={this.valueParser}
+          aria-labelledby="dateRange-start"
         />
         <AvInput
           style={{ display: 'none' }}
@@ -593,6 +594,7 @@ class AvDateRange extends Component {
           max={maxDate}
           valueFormatter={this.valueFormatter}
           valueParser={this.valueParser}
+          aria-labelledby="dateRange-end"
         />
         <InputGroup
           disabled={attributes.disabled}
