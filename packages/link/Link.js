@@ -45,6 +45,8 @@ const setRel = (url, target, absolute) => {
   return undefined;
 };
 
+const linkStyles = { textDecoration: 'underline' };
+
 const AvLink = ({
   tag: Tag,
   href,
@@ -62,6 +64,7 @@ const AvLink = ({
     <Tag
       href={url}
       target={target}
+      style={linkStyles}
       onClick={(event) => onClick && onClick(event, url)}
       data-testid="av-link-tag"
       rel={setRel(url, target, absolute)}
