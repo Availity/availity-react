@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# 4.1.0 (2021-09-20)
+
+
+### Features
+
+* **reactstrap-validation-date:** adding individual aria-labelledby to each input in avdaterange ([1daa647](https://github.com/Availity/availity-react/commit/1daa64773fb70a0ad15831d198a2deb69d559635))
+
+
+
+
+
 ## 4.0.3 (2021-07-20)
 
 **Note:** Version bump only for package @availity/reactstrap-validation-date
