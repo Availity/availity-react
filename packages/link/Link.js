@@ -62,6 +62,7 @@ const AvLink = ({
     <Tag
       href={url}
       target={target}
+      style={{ textDecoration: 'underline' }}
       onClick={(event) => onClick && onClick(event, url)}
       data-testid="av-link-tag"
       rel={setRel(url, target, absolute)}
