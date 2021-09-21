@@ -1,18 +1,18 @@
 import { Column } from 'react-table';
-
 export interface AvTableProps {
-    selectable?: boolean;
-    scrollable?: boolean;
-    fixedWidth?: boolean;
+    [key: string]: any;
+    actions: Object[];
+    actionProps?: Object;
+    additionalContentComponent?: React.ElementType;
+    bodyProps?: Object;
     columns: Column[];
+    headerProps?: Object;
+    scrollable?: boolean;
+    selectable?: boolean;
     records: Object[];
-    children?: React.ReactNode;
     sortBy?: Object[];
 }
 
 declare const AvTable: React.FunctionComponent<AvTableProps>;
 
-declare function useTableContext<T>(): AvTableContext<T>;
-
 export default AvTable;
-export { useTableContext };

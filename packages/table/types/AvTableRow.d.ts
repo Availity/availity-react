@@ -1,9 +1,10 @@
 import {  Row } from 'react-table';
 
 export interface AvTableRowProps {
-    className?: string;
     row?: Row,
-    selectedRowClassName?: string;
+    index?: number;
+    actionProps: object;
+    cellProps: object;
 }
 
 declare const AvTableRow: React.FunctionComponent<AvTableRowProps>;

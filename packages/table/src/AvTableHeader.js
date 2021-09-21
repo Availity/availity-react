@@ -1,58 +1,81 @@
 import React from 'react';
-import _ from 'lodash';
 import PropTypes from 'prop-types';
-import { useTableContext } from './AvTable';
+import { useTableContext } from './AvTableContext';
 
-const AvTableHeader = ({ sticky, className, sortableColumns, ...rest }) => {
-    const {
-        headerGroups,
-        scrollable
-    } = useTableContext();
+const AvTableHeader = ({ sticky, hasStickyActions, ...rest }) => {
+  const { headerGroups, scrollable } = useTableContext();
 
-    const buildHeaderClass = () => {
-        let headerClass = 'av-table-header';
-        if (sticky) {
-            headerClass += ' sticky-header';
-        }
-        if (className) {
-            headerClass += ` ${className}`
-        }
-        return headerClass;
+  const buildHeaderClass = () => {
+    let headerClass = 'av-grid-row-header';
+    if (sticky) {
+      headerClass += ' sticky-header';
+    }
+    return headerClass;
+  };
+
+  const getHeaderRowProps = () => ({
+    className: scrollable ? 'fixed-width-tr' : '',
+  });
+
+  const getHeaderClass = (column) => {
+    if (scrollable) {
+      return 'fixed-width-text';
     }
 
-    const getHeaderRowProps = () => ({
-        className: scrollable ? 'fixed-width-text' : ''
-    })
+    if (column.isIcon) {
+      return 'fixed-width-icon';
+    }
 
-    const getHeaderColumnProps = (column) => ({
-            className: scrollable ? 'fixed-width-text' : '',
-            title: column.Header.toString()
-    })
+    if (column.id === 'selection') {
+      return 'fixed-width-selection';
+    }
 
-    const isSortableColumn = (column) => (_.includes(sortableColumns, column.id));
-    
-    return (
-        <thead className={buildHeaderClass()} {...rest}>
-            {headerGroups.map((headerGroup) => (
-                <tr {...headerGroup.getHeaderGroupProps(getHeaderRowProps())}>
-                    {headerGroup.headers.map((column) => (
-                        <th {...column.getHeaderProps(column.getSortByToggleProps(getHeaderColumnProps(column)))}>
-                            {column.render('Header')}
-                            {isSortableColumn(column) &&
-                                <span className={`icon ${column.isSorted ? column.isSortedDesc ? 'icon-sort-down' : 'icon-sort-up' : 'icon-sort'}`}> </span>
-                            }
-                        </th>
-                    ))}
-                </tr>
-            ))}
-        </thead>
-    );
+    if (column.id === 'actions') {
+      return `action-column ${hasStickyActions ? 'sticky' : ''}`;
+    }
+    return '';
+  };
+
+  const getHeaderColumnProps = (column) => ({
+    className: getHeaderClass(column),
+    title: column.label || column.Header.toString(),
+  });
+
+  return (
+    <thead className={buildHeaderClass()} {...rest}>
+      {headerGroups.map((headerGroup) => (
+        <tr {...headerGroup.getHeaderGroupProps(getHeaderRowProps())}>
+          {headerGroup.headers.map((column) => (
+            <th
+              {...column.getHeaderProps(
+                column.getSortByToggleProps(getHeaderColumnProps(column))
+              )}
+            >
+              {column.render('Header')}
+              {column.canSort && !column.isIconColumn && (
+                <span
+                  className={`icon ${
+                    column.isSorted
+                      ? column.isSortedDesc
+                        ? 'icon-sort-down'
+                        : 'icon-sort-up'
+                      : 'icon-sort'
+                  }`}
+                >
+                  {' '}
+                </span>
+              )}
+            </th>
+          ))}
+        </tr>
+      ))}
+    </thead>
+  );
 };
 
 AvTableHeader.propTypes = {
-    sticky: PropTypes.bool,
-    className: PropTypes.string,
-    sortableColumns: PropTypes.arrayOf(PropTypes.string)
+  sticky: PropTypes.bool,
+  hasStickyActions: PropTypes.bool,
 };
 
 export default AvTableHeader;

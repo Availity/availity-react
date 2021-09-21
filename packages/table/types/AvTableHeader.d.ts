@@ -1,7 +1,6 @@
 export interface AvTableHeaderProps {
-    className?: string;
     sticky?: boolean;
-    sortableColumns?: string[];
+    hasStickyActions?: boolean;
 }
 
 declare const AvTableHeader: React.FunctionComponent<AvTableHeaderProps>;
