@@ -18,10 +18,6 @@ const AvTableHeader = ({ sticky, hasStickyActions, ...rest }) => {
   });
 
   const getHeaderClass = (column) => {
-    if (scrollable) {
-      return 'fixed-width-text';
-    }
-
     if (column.isIcon) {
       return 'fixed-width-icon';
     }
@@ -33,6 +29,11 @@ const AvTableHeader = ({ sticky, hasStickyActions, ...rest }) => {
     if (column.id === 'actions') {
       return `action-column ${hasStickyActions ? 'sticky' : ''}`;
     }
+
+    if (scrollable) {
+      return 'fixed-width-text';
+    }
+
     return '';
   };
 

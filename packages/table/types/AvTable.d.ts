@@ -1,9 +1,8 @@
 import { Column } from 'react-table';
 export interface AvTableProps {
-    [key: string]: any;
     actions: Object[];
     actionProps?: Object;
-    additionalContentComponent?: React.ElementType;
+    additionalContent?: React.ElementType | React.ReactElement | React.ReactType;
     bodyProps?: Object;
     columns: Column[];
     headerProps?: Object;
