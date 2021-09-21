@@ -11,6 +11,7 @@ const FeedbackModal = ({
   showSupport,
   supportZIndex,
   feedbackToggle,
+  autoFocusFeedbackButton,
   ...formOptions
 }) => {
   const [supportIsActive, setSupportIsActive] = React.useState(false);
@@ -38,6 +39,7 @@ const FeedbackModal = ({
         onClose={toggle}
         showSupport={showSupport}
         setSupportIsActive={setSupportIsActive}
+        autoFocusFeedbackButton={autoFocusFeedbackButton}
         {...formOptions}
       />
     </Modal>
@@ -51,6 +53,7 @@ FeedbackModal.propTypes = {
   zIndex: PropTypes.oneOfType([PropTypes.number, PropTypes.string]),
   supportZIndex: PropTypes.oneOfType([PropTypes.number, PropTypes.string]),
   feedbackToggle: PropTypes.func,
+  autoFocusFeedbackButton: PropTypes.bool,
 };
 
 export default FeedbackModal;

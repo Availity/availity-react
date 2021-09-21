@@ -16,6 +16,7 @@ const FeedbackDropdown = ({
   supportZIndex,
   modal,
   feedbackToggle,
+  autoFocusFeedbackButton,
   ...formProps
 }) => {
   const [supportIsActive, setSupportIsActive] = React.useState(false);
@@ -46,6 +47,7 @@ const FeedbackDropdown = ({
       onClose={toggle}
       showSupport={showSupport}
       setSupportIsActive={setSupportIsActive}
+      autoFocusFeedbackButton={autoFocusFeedbackButton}
       {...formProps}
     />
   );
@@ -72,6 +74,7 @@ FeedbackDropdown.propTypes = {
   supportZIndex: PropTypes.string,
   modal: PropTypes.bool,
   feedbackToggle: PropTypes.func,
+  autoFocusFeedbackButton: PropTypes.bool,
 };
 
 export default FeedbackDropdown;

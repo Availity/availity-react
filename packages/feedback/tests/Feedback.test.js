@@ -104,4 +104,28 @@ describe('Feedback', () => {
 
     expect(giveFeedbackButton).toHaveAttribute('aria-expanded', 'false');
   });
+
+  test('should focus first SmileField button if modal', async () => {
+    const { getByText } = render(
+      <Feedback showSupport={false} outline={false} modal={false} />
+    );
+
+    fireEvent.click(getByText('Give Feedback'));
+    const firstFeedbackButton = getByText('Smiley face').closest('button');
+    await waitFor(() => {
+      expect(firstFeedbackButton).toHaveFocus();
+    });
+  });
+
+  test('should not focus first SmileField button if not modal', async () => {
+    const { getByText } = render(
+      <Feedback showSupport={false} outline={false} modal />
+    );
+
+    fireEvent.click(getByText('Give Feedback'));
+    const firstFeedbackButton = getByText('Smiley face').closest('button');
+    await waitFor(() => {
+      expect(firstFeedbackButton).not.toHaveFocus();
+    });
+  });
 });

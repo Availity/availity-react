@@ -46,6 +46,7 @@ const Feedback = ({
           showSupport={showSupport}
           supportZIndex={supportZIndex}
           feedbackToggle={feedbackToggle}
+          autoFocusFeedbackButton={false}
           {...formProps}
         />
       ) : (
@@ -60,6 +61,7 @@ const Feedback = ({
           supportZIndex={supportZIndex}
           modal={modal}
           {...formProps}
+          autoFocusFeedbackButton
         />
       )}
     </Dropdown>
