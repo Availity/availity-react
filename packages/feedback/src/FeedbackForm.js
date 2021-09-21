@@ -44,6 +44,7 @@ const FeedbackForm = ({
   modalHeaderProps,
   showSupport,
   setSupportIsActive,
+  autoFocusFeedbackButton,
   ...formProps
 }) => {
   const [active, setActive] = useState(null);
@@ -160,6 +161,7 @@ const FeedbackForm = ({
               options={faceOptions}
               name="smileField"
               onChange={(option) => setActive(option)}
+              autoFocusFeedbackButton={autoFocusFeedbackButton}
             />
           </FormGroup>
           {active ? (
@@ -261,6 +263,7 @@ FeedbackForm.propTypes = {
   }),
   showSupport: PropTypes.bool,
   setSupportIsActive: PropTypes.func,
+  autoFocusFeedbackButton: PropTypes.bool,
 };
 
 FeedbackForm.defaultProps = {

@@ -57,6 +57,10 @@ If `true`, shows an optional comments field below.
 
 Static (non-user-entered) key/value pairs to be sent in feedback submission.
 
+#### `autoFocusFeedbackButton?: bool`
+
+Default: ```true```. When set to false, the first feedback button is not focused. This is to avoid issues with focus causing other elements to close (e.g. dropdowns)
+
 #### `modalHeaderProps?: ModalHeaderProps`
 
 Props to be spread onto the `<ModalHeader />` rendered inside of the `<FeedbackForm />`. See [ModalHeader](https://github.com/reactstrap/reactstrap/blob/master/src/ModalHeader.js)
