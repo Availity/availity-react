@@ -12,7 +12,7 @@ import { AvTableContext } from './AvTableContext';
 const AvTable = ({
   actions,
   actionProps,
-  additionalContentComponent,
+  additionalContent,
   bodyProps,
   cellProps,
   headerProps,
@@ -123,7 +123,7 @@ const AvTable = ({
         getTableBodyProps,
         prepareRow,
         scrollable,
-        additionalContentComponent,
+        additionalContent,
         columnSize: columns.length + (selectable ? 1 : 0),
         hasActions,
       }}
@@ -136,7 +136,7 @@ const AvTable = ({
 AvTable.propTypes = {
   actionProps: PropTypes.object,
   actions: PropTypes.arrayOf(PropTypes.object),
-  additionalContentComponent: Util.tagPropType,
+  additionalContent: Util.tagPropType,
   bodyProps: PropTypes.object,
   cellProps: PropTypes.object,
   columns: PropTypes.arrayOf(PropTypes.object),

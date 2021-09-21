@@ -10,7 +10,7 @@ const AvTableRow = ({ row, index, cellProps, actionProps, ...rest }) => {
     prepareRow,
     columnSize,
     selectedRows,
-    additionalContentComponent: AdditionalContentComponent,
+    additionalContent: AdditionalContent,
     hasActions,
   } = useTableContext();
 
@@ -48,10 +48,10 @@ const AvTableRow = ({ row, index, cellProps, actionProps, ...rest }) => {
           </React.Fragment>
         ))}
       </tr>
-      {AdditionalContentComponent && (
+      {AdditionalContent && (
         <tr {...definedRowProps} onClick={() => row.toggleRowSelected()}>
           <td colSpan={columnSize} style={{ borderTop: 0 }}>
-            <AdditionalContentComponent record={row.original} />
+            <AdditionalContent record={row.original} />
           </td>
           {hasActions && <td className="action-column sticky" />}
         </tr>
