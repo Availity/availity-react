@@ -16,9 +16,7 @@ describe('Icon', () => {
   });
 
   test('should render given a size', () => {
-    const { container } = render(
-      <Icon data-testid="icon" name="home" size="3x" />
-    );
+    const { container } = render(<Icon data-testid="icon" name="home" size="3x" />);
 
     const icon = container.querySelector('.icon-3x');
 
@@ -26,9 +24,7 @@ describe('Icon', () => {
   });
 
   test('should render with extra className', () => {
-    const { getByTestId } = render(
-      <Icon data-testid="icon" name="home" className="custom-classname" />
-    );
+    const { getByTestId } = render(<Icon data-testid="icon" name="home" className="custom-classname" />);
 
     const icon = getByTestId('icon');
 
@@ -36,9 +32,7 @@ describe('Icon', () => {
   });
 
   test('should render with different color', () => {
-    const { getByTestId } = render(
-      <Icon data-testid="icon" name="home" color="primary" />
-    );
+    const { getByTestId } = render(<Icon data-testid="icon" name="home" color="primary" />);
 
     const icon = getByTestId('icon');
 
