@@ -33,12 +33,7 @@ const Feature = ({ features, loader, whenDisabled, children, negate }) => {
 
 Feature.propTypes = {
   features: PropTypes.oneOfType([
-    PropTypes.arrayOf(
-      PropTypes.oneOfType([
-        PropTypes.arrayOf(PropTypes.string),
-        PropTypes.string,
-      ])
-    ),
+    PropTypes.arrayOf(PropTypes.oneOfType([PropTypes.arrayOf(PropTypes.string), PropTypes.string])),
     PropTypes.string,
   ]).isRequired,
   loader: PropTypes.oneOfType([PropTypes.bool, PropTypes.node]),

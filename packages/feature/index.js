@@ -1,5 +1,2 @@
-import Feature from './Feature';
-import isFeatureEnabled, { getFeatureCache } from './isFeatureEnabled';
-
-export default Feature;
-export { isFeatureEnabled, getFeatureCache };
+export { default } from './src/Feature';
+export { default as isFeatureEnabled, getFeatureCache } from './src/isFeatureEnabled';
