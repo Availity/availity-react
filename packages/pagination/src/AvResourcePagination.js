@@ -2,23 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import Pagination from './Pagination';
 
-const propTypes = {
-  parameters: PropTypes.object,
-  children: PropTypes.node,
-  resource: PropTypes.shape({
-    postGet: PropTypes.func,
-    getResult: PropTypes.oneOfType([PropTypes.string, PropTypes.func]),
-  }).isRequired,
-  getResult: PropTypes.oneOfType([PropTypes.string, PropTypes.func]),
-};
-
-const AvResourcePagination = ({
-  parameters = {},
-  resource,
-  getResult,
-  children,
-  ...paginationProps
-}) => {
+const AvResourcePagination = ({ parameters = {}, resource, getResult, children, ...paginationProps }) => {
   async function loadPage(page, itemsPerPage) {
     const params = {
       limit: itemsPerPage,
@@ -31,9 +15,8 @@ const AvResourcePagination = ({
     const useGetResult = getResult || resource.getResult;
 
     const items =
-      (typeof useGetResult === 'function'
-        ? useGetResult.call(resource, resp.data)
-        : resp.data[useGetResult]) || resp.data;
+      (typeof useGetResult === 'function' ? useGetResult.call(resource, resp.data) : resp.data[useGetResult]) ||
+      resp.data;
 
     if (!Array.isArray(items)) {
       throw new TypeError(
@@ -48,12 +31,20 @@ const AvResourcePagination = ({
   }
 
   return (
-    <Pagination {...paginationProps} items={loadPage}>
+    <Pagination {...paginationProps} items={(page, itemsPerPage) => loadPage(page, itemsPerPage)}>
       {children}
     </Pagination>
   );
 };
 
-AvResourcePagination.propTypes = propTypes;
+AvResourcePagination.propTypes = {
+  parameters: PropTypes.object,
+  children: PropTypes.node,
+  resource: PropTypes.shape({
+    postGet: PropTypes.func,
+    getResult: PropTypes.oneOfType([PropTypes.string, PropTypes.func]),
+  }).isRequired,
+  getResult: PropTypes.oneOfType([PropTypes.string, PropTypes.func]),
+};
 
 export default AvResourcePagination;

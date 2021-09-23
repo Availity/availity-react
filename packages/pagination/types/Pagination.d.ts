@@ -1,7 +1,6 @@
 export interface PaginationProps {
   items: object[] | Function;
   itemsPerPage?: number;
-  children?: React.ReactNode;
   page?: number;
   onPageChange?: Function;
   watchList?: any[];
@@ -32,7 +31,7 @@ export interface PaginationContext<Item> {
 
 declare function usePagination<T>(): PaginationContext<T>;
 
-declare const Pagination: React.FunctionComponent<PaginationProps>;
+declare const Pagination: React.FC<PaginationProps>;
 
 export default Pagination;
 export { usePagination };

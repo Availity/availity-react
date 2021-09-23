@@ -1,7 +1,6 @@
 import React from 'react';
 import { render, waitFor, cleanup } from '@testing-library/react';
-import Pagination from '../Pagination';
-import PaginationControls from '../PaginationControls';
+import { Pagination, PaginationControls } from '..';
 
 afterEach(cleanup);
 
@@ -19,15 +18,11 @@ describe('Pagination Controls', () => {
       </Pagination>
     );
 
-    const paginationControls = await waitFor(() =>
-      getByTestId('pagination-controls-con')
-    );
+    const paginationControls = await waitFor(() => getByTestId('pagination-controls-con'));
 
     expect(paginationControls).not.toBe(null);
 
-    items.forEach((item) =>
-      expect(getByTestId(`control-page-${item.value}`)).toBeDefined()
-    );
+    items.forEach((item) => expect(getByTestId(`control-page-${item.value}`)).toBeDefined());
   });
 
   test('should show direction arrows', async () => {
@@ -43,9 +38,7 @@ describe('Pagination Controls', () => {
       </Pagination>
     );
 
-    const paginationControls = await waitFor(() =>
-      getByTestId('pagination-controls-con')
-    );
+    const paginationControls = await waitFor(() => getByTestId('pagination-controls-con'));
 
     expect(paginationControls).not.toBe(null);
 
@@ -60,9 +53,7 @@ describe('Pagination Controls', () => {
       </Pagination>
     );
 
-    const paginationControls = await waitFor(() =>
-      getByTestId('pagination-controls-con')
-    );
+    const paginationControls = await waitFor(() => getByTestId('pagination-controls-con'));
 
     expect(paginationControls).not.toBe(null);
   });
@@ -82,9 +73,7 @@ describe('Pagination Controls', () => {
       </Pagination>
     );
 
-    const paginationControls = await waitFor(() =>
-      getByTestId('pagination-controls-con')
-    );
+    const paginationControls = await waitFor(() => getByTestId('pagination-controls-con'));
 
     expect(paginationControls).not.toBe(null);
 
@@ -154,12 +143,7 @@ describe('Pagination Controls', () => {
 
     const { getByTestId } = render(
       <Pagination items={items} itemsPerPage={1}>
-        <PaginationControls
-          pageRange={5}
-          marginPages={1}
-          directionLinks
-          aria-label="toppagination"
-        />
+        <PaginationControls pageRange={5} marginPages={1} directionLinks aria-label="toppagination" />
       </Pagination>
     );
     await waitFor(() => {
@@ -187,12 +171,7 @@ describe('Pagination Controls', () => {
 
     const { getByTestId } = render(
       <Pagination items={items} itemsPerPage={1}>
-        <PaginationControls
-          pageRange={5}
-          marginPages={1}
-          directionLinks
-          aria-label="pagination below results"
-        />
+        <PaginationControls pageRange={5} marginPages={1} directionLinks aria-label="pagination below results" />
       </Pagination>
     );
     await waitFor(() => {
@@ -200,10 +179,7 @@ describe('Pagination Controls', () => {
       const paginationNav = pageList.parentElement;
       expect(paginationNav).toBeDefined();
 
-      expect(paginationNav).toHaveAttribute(
-        'aria-label',
-        'pagination below results'
-      );
+      expect(paginationNav).toHaveAttribute('aria-label', 'pagination below results');
     });
   });
 
@@ -264,10 +240,7 @@ describe('Pagination Controls', () => {
       const pageBreakEllipsisLink = pageBreakEllipsisItem.firstChild;
       expect(pageBreakEllipsisLink).toBeDefined();
 
-      expect(pageBreakEllipsisLink).toHaveAttribute(
-        'aria-label',
-        'Jump forwards to page 6'
-      );
+      expect(pageBreakEllipsisLink).toHaveAttribute('aria-label', 'Jump forwards to page 6');
     });
   });
 });

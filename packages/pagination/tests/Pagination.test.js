@@ -1,8 +1,7 @@
 import React, { useState } from 'react';
 import { useToggle } from '@availity/hooks';
 import { render, waitFor, fireEvent, cleanup } from '@testing-library/react';
-import Pagination, { usePagination } from '../Pagination';
-import PaginationControls from '../PaginationControls';
+import { Pagination, PaginationControls, usePagination } from '..';
 
 afterEach(cleanup);
 
@@ -10,9 +9,7 @@ afterEach(cleanup);
 const PaginationJson = () => {
   const pagination = usePagination();
 
-  return !pagination.loading ? (
-    <span data-testid="pagination-con">{JSON.stringify(pagination)}</span>
-  ) : null;
+  return !pagination.loading ? <span data-testid="pagination-con">{JSON.stringify(pagination)}</span> : null;
 };
 
 describe('Pagination', () => {
@@ -117,11 +114,7 @@ describe('Pagination', () => {
     const mockOnPageChange = jest.fn((page) => page);
 
     const { getByTestId } = render(
-      <Pagination
-        onPageChange={mockOnPageChange}
-        items={items}
-        itemsPerPage={1}
-      >
+      <Pagination onPageChange={mockOnPageChange} items={items} itemsPerPage={1}>
         <PaginationJson />
         <PaginationControls directionLinks />
       </Pagination>
@@ -162,9 +155,7 @@ describe('Pagination', () => {
       // 3 - When the Pagination Forces a re-render due to the watch list
       if (!loading) mockFunc();
 
-      return loading ? null : (
-        <span data-testid="current-page">{currentPage}</span>
-      );
+      return loading ? null : <span data-testid="current-page">{currentPage}</span>;
     });
 
     const ComponentWrapper = () => {
@@ -172,11 +163,7 @@ describe('Pagination', () => {
       return (
         <>
           <Pagination watchList={[state]}>
-            <button
-              type="button"
-              data-testid="hello-btn"
-              onClick={() => setState('world')}
-            >
+            <button type="button" data-testid="hello-btn" onClick={() => setState('world')}>
               Toggle
             </button>
             <SomeComponent />
@@ -252,11 +239,7 @@ describe('Pagination', () => {
       return (
         <>
           <Pagination items={items} resetParams={[isToggled]}>
-            <button
-              type="button"
-              data-testid="toggle-btn"
-              onClick={() => toggle()}
-            >
+            <button type="button" data-testid="toggle-btn" onClick={() => toggle()}>
               Toggle
             </button>
             <SomeComponent />
@@ -303,9 +286,7 @@ describe('Pagination', () => {
     paginationCon = await waitFor(() => getByTestId('pagination-con'));
     expect(currentPageButton.textContent).toBe('1');
 
-    expect(JSON.stringify(JSON.parse(paginationCon.textContent).allPages)).toBe(
-      JSON.stringify(firstItems)
-    );
+    expect(JSON.stringify(JSON.parse(paginationCon.textContent).allPages)).toBe(JSON.stringify(firstItems));
   });
 
   test('should reset page to 1 and refetch page data if resetParams updates, items is a function, and already on page 1', async () => {
@@ -345,11 +326,7 @@ describe('Pagination', () => {
       return (
         <>
           <Pagination items={items} resetParams={[isToggled]}>
-            <button
-              type="button"
-              data-testid="toggle-btn"
-              onClick={() => toggle()}
-            >
+            <button type="button" data-testid="toggle-btn" onClick={() => toggle()}>
               Toggle
             </button>
             <SomeComponent />
@@ -455,12 +432,7 @@ describe('Pagination', () => {
       const [page, setPage] = useState(2);
 
       return (
-        <Pagination
-          items={items}
-          itemsPerPage={1}
-          page={page}
-          onPageChange={(newPage) => setPage(newPage)}
-        >
+        <Pagination items={items} itemsPerPage={1} page={page} onPageChange={(newPage) => setPage(newPage)}>
           <PaginationJson />
           <PaginationControls directionLinks />
         </Pagination>
@@ -511,10 +483,7 @@ describe('Pagination', () => {
       const [shouldReturnPrevious, setShouldReturnPrevious] = useState(true);
       return (
         <>
-          <Pagination
-            items={getItems}
-            shouldReturnPrevious={shouldReturnPrevious}
-          >
+          <Pagination items={getItems} shouldReturnPrevious={shouldReturnPrevious}>
             <button
               type="button"
               data-testid="toggle-return-previous-btn"
@@ -563,14 +532,8 @@ describe('Pagination', () => {
 
       return (
         <>
-          <div data-testid="pagination-error-container">
-            {error ? error.message : 'no error'}
-          </div>
-          <button
-            type="button"
-            data-testid="clear-error-btn"
-            onClick={() => setError(null)}
-          >
+          <div data-testid="pagination-error-container">{error ? error.message : 'no error'}</div>
+          <button type="button" data-testid="clear-error-btn" onClick={() => setError(null)}>
             Clear error
           </button>
         </>
@@ -592,17 +555,13 @@ describe('Pagination', () => {
       expect(getItems).toHaveBeenCalledTimes(1);
     });
 
-    expect(getByTestId('pagination-error-container').textContent).toBe(
-      'Async error'
-    );
+    expect(getByTestId('pagination-error-container').textContent).toBe('Async error');
 
     // Clear the error
     fireEvent.click(getByTestId('clear-error-btn'));
 
     // Check the error was cleared
-    expect(getByTestId('pagination-error-container').textContent).toBe(
-      'no error'
-    );
+    expect(getByTestId('pagination-error-container').textContent).toBe('no error');
 
     // Check onError cb was called
     expect(onError).toHaveBeenCalledTimes(1);

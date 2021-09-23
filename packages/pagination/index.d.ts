@@ -5,10 +5,4 @@ import PaginationContent from './types/PaginationContent';
 
 export default Pagination;
 
-export {
-  AvResourcePagination,
-  Pagination,
-  PaginationContent,
-  PaginationControls,
-  usePagination,
-};
+export { AvResourcePagination, Pagination, PaginationContent, PaginationControls, usePagination };

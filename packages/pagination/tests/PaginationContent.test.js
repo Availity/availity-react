@@ -1,19 +1,11 @@
 /* eslint-disable react/prop-types */
 import React from 'react';
-import {
-  render,
-  waitFor,
-  waitForElementToBeRemoved,
-  cleanup,
-} from '@testing-library/react';
-import Pagination from '../Pagination';
-import PaginationContent from '../PaginationContent';
+import { render, waitFor, waitForElementToBeRemoved, cleanup } from '@testing-library/react';
+import { Pagination, PaginationContent } from '..';
 
 afterEach(cleanup);
 
-const Component = ({ value }) => (
-  <span data-testid={`item-${value}`}>Item {value}</span>
-);
+const Component = ({ value }) => <span data-testid={`item-${value}`}>Item {value}</span>;
 
 const TableRowComponent = ({ value }) => (
   <tr data-testid={`item-tr-${value}`}>
@@ -35,9 +27,7 @@ describe('Pagination Content', () => {
       </Pagination>
     );
 
-    const paginationContent = await waitFor(() =>
-      getByTestId('pagination-content-con')
-    );
+    const paginationContent = await waitFor(() => getByTestId('pagination-content-con'));
 
     expect(paginationContent).not.toBe(null);
 
@@ -64,9 +54,7 @@ describe('Pagination Content', () => {
         <PaginationContent
           itemKey="key"
           component={Component}
-          loadingMessage={
-            <span data-testid="loading-message">Loading....</span>
-          }
+          loadingMessage={<span data-testid="loading-message">Loading....</span>}
           loader
         />
       </Pagination>
@@ -74,17 +62,13 @@ describe('Pagination Content', () => {
 
     expect(getByTestId('loading-message')).toBeDefined();
 
-    const paginationContent = await waitFor(() =>
-      getByTestId('pagination-content-con')
-    );
+    const paginationContent = await waitFor(() => getByTestId('pagination-content-con'));
 
     expect(paginationContent).not.toBe(null);
 
     await waitForElementToBeRemoved(() => getByTestId('loading-message'));
 
-    loadPage().items.forEach((item) =>
-      expect(getByTestId(`item-${item.value}`)).toBeDefined()
-    );
+    loadPage().items.forEach((item) => expect(getByTestId(`item-${item.value}`)).toBeDefined());
   });
 
   test('should use custom render children', async () => {
@@ -103,9 +87,7 @@ describe('Pagination Content', () => {
         <PaginationContent
           itemKey="key"
           component={TableRowComponent}
-          loadingMessage={
-            <span data-testid="loading-message">Loading....</span>
-          }
+          loadingMessage={<span data-testid="loading-message">Loading....</span>}
           loader
         >
           {({ items }) => (
@@ -124,9 +106,7 @@ describe('Pagination Content', () => {
 
     expect(getByTestId('loading-message')).toBeDefined();
 
-    const paginationContent = await waitFor(() =>
-      getByTestId('pagination-content-con')
-    );
+    const paginationContent = await waitFor(() => getByTestId('pagination-content-con'));
 
     expect(paginationContent).not.toBe(null);
 
