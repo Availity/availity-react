@@ -47,15 +47,7 @@ const setRel = (url, target, absolute) => {
 
 const linkStyles = { textDecoration: 'underline' };
 
-const AvLink = ({
-  tag: Tag,
-  href,
-  target,
-  children,
-  onClick,
-  loadApp,
-  ...props
-}) => {
+const AvLink = ({ tag: Tag, href, target, children, onClick, loadApp, ...props }) => {
   const absolute = isAbsoluteUrl(href);
   const url = getUrl(href, loadApp, absolute);
   target = getTarget(target);

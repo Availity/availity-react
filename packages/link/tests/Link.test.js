@@ -6,9 +6,7 @@ afterEach(cleanup);
 
 describe('AvLink', () => {
   test('should render absolute url', () => {
-    const { getByTestId } = render(
-      <AvLink href="https://github.com/Availity">Vim</AvLink>
-    );
+    const { getByTestId } = render(<AvLink href="https://github.com/Availity">Vim</AvLink>);
 
     const tag = getByTestId('av-link-tag');
 
@@ -16,13 +14,10 @@ describe('AvLink', () => {
   });
 
   test('should render formatted url when url prop is relative', () => {
-    const { getByTestId } = render(
-      <AvLink href="/public/apps/my-app">My App</AvLink>
-    );
+    const { getByTestId } = render(<AvLink href="/public/apps/my-app">My App</AvLink>);
 
     const tag = getByTestId('av-link-tag');
-    const expected =
-      '/public/apps/home/#!/loadApp?appUrl=%2Fpublic%2Fapps%2Fmy-app';
+    const expected = '/public/apps/home/#!/loadApp?appUrl=%2Fpublic%2Fapps%2Fmy-app';
 
     expect(tag.getAttribute('href')).toBe(expected);
   });
@@ -42,11 +37,7 @@ describe('AvLink', () => {
 
   test('should default rel prop if none provided when linking to external site', () => {
     const { getByTestId } = render(
-      <AvLink
-        loadApp={false}
-        href="https://github.com/Availity"
-        target="_blank"
-      >
+      <AvLink loadApp={false} href="https://github.com/Availity" target="_blank">
         My App
       </AvLink>
     );
@@ -59,12 +50,7 @@ describe('AvLink', () => {
 
   test('should respect rel prop if provided when linking to external site', () => {
     const { getByTestId } = render(
-      <AvLink
-        loadApp={false}
-        href="https://github.com/Availity"
-        target="_blank"
-        rel="nofollow"
-      >
+      <AvLink loadApp={false} href="https://github.com/Availity" target="_blank" rel="nofollow">
         My App
       </AvLink>
     );
