@@ -1,10 +1,4 @@
-import React, {
-  Suspense,
-  useRef,
-  useEffect,
-  useCallback,
-  useMemo,
-} from 'react';
+import React, { Suspense, useEffect, useCallback, useMemo } from 'react';
 import PropTypes from 'prop-types';
 import UploadCore from '@availity/upload-core';
 import { avFilesDeliveryApi } from '@availity/api-axios';
@@ -17,7 +11,7 @@ import { v4 as uuid } from 'uuid';
 
 import FilePickerBtn from './FilePickerBtn';
 import FileList from './FileList';
-import './styles.scss';
+import '../styles.scss';
 
 const Dropzone = React.lazy(() => import('react-dropzone'));
 
@@ -50,26 +44,15 @@ const Upload = ({
   showFileDrop = false,
   fallback = dropzoneFallback,
 }) => {
-  const input = useRef(null);
   const [field, metadata] = useField(name);
-  const {
-    errors,
-    isSubmitting,
-    isValidating,
-    setFieldError,
-    setFieldValue,
-    setFieldTouched,
-  } = useFormikContext();
+  const { errors, isSubmitting, isValidating, setFieldError, setFieldValue, setFieldTouched } = useFormikContext();
   const classes = classNames(
     className,
     metadata.touched ? 'is-touched' : 'is-untouched',
     metadata.touched && metadata.error && 'is-invalid'
   );
 
-  const fieldValue = useMemo(
-    () => (Array.isArray(field.value) ? field.value : []),
-    [field]
-  );
+  const fieldValue = useMemo(() => (Array.isArray(field.value) ? field.value : []), [field]);
 
   const callFileDelivery = useCallback(
     async (upload) => {
@@ -82,10 +65,7 @@ const Upload = ({
               {
                 deliveryChannel,
                 fileURI: u.references[0],
-                metadata:
-                  typeof fileDeliveryMetadata === 'function'
-                    ? fileDeliveryMetadata(u)
-                    : fileDeliveryMetadata,
+                metadata: typeof fileDeliveryMetadata === 'function' ? fileDeliveryMetadata(u) : fileDeliveryMetadata,
               },
             ],
           };
@@ -166,10 +146,7 @@ const Upload = ({
     }
 
     if (max && selectedFiles.length + fieldValue.length > max) {
-      selectedFiles = selectedFiles.slice(
-        0,
-        Math.max(0, max - fieldValue.length)
-      );
+      selectedFiles = selectedFiles.slice(0, Math.max(0, max - fieldValue.length));
     }
 
     const newFiles = fieldValue.concat(
@@ -241,19 +218,12 @@ const Upload = ({
         <Input name={name} style={{ display: 'none' }} />
         <InputGroup disabled={disabled} className={classes}>
           <Suspense fallback={fallback}>
-            <Dropzone
-              onDrop={onDrop}
-              multiple={multiple}
-              maxSize={maxSize}
-              accept={allowedFileTypes}
-            >
+            <Dropzone onDrop={onDrop} multiple={multiple} maxSize={maxSize} accept={allowedFileTypes}>
               {({ getRootProps, getInputProps, isDragActive }) => (
                 <section>
                   <div
                     {...getRootProps({
-                      className: isDragActive
-                        ? 'file-drop-active'
-                        : 'file-drop',
+                      className: isDragActive ? 'file-drop-active' : 'file-drop',
                     })}
                   >
                     <input data-testid="file-picker" {...getInputProps()} />
@@ -267,10 +237,7 @@ const Upload = ({
             </Dropzone>
           </Suspense>
         </InputGroup>
-        <Feedback
-          className={classNames('d-block', feedbackClass)}
-          name={name}
-        />
+        <Feedback className={classNames('d-block', feedbackClass)} name={name} />
       </FormGroup>
     ) : (
       <FilePickerBtn

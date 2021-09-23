@@ -1,10 +1,10 @@
 type File = {
-    name:string;
+  name: string;
 };
 
 type FileType = {
-    id: string;
-    file: File;
+  id: string;
+  file: File;
 };
 
 type ChildrenArgument = {
@@ -18,9 +18,9 @@ type ChildrenArgument = {
 };
 
 export interface FileRowProps {
-    onRemove: Function;
-    children?: ((arg: ChildrenArgument) => void);
-    file?: File;
+  onRemove: Function;
+  children?: (arg: ChildrenArgument) => void;
+  file?: File;
 }
 
 declare const FileRow: React.ComponentType<FileRowProps>;

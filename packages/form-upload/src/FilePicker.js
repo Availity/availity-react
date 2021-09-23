@@ -50,11 +50,7 @@ const FilePicker = ({
     <Tag
       value=""
       type="file"
-      accept={
-        Array.isArray(allowedFileTypes) && allowedFileTypes.length > 0
-          ? allowedFileTypes.join(',')
-          : undefined
-      }
+      accept={Array.isArray(allowedFileTypes) && allowedFileTypes.length > 0 ? allowedFileTypes.join(',') : undefined}
       size={maxSize ? maxSize.toString() : undefined}
       {...rest}
       onChange={onChange}

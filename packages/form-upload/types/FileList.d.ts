@@ -1,7 +1,7 @@
 export interface FileListProps {
-    files?: any[];
-    children?: Function;
-    onRemoveFile?: Function;
+  files?: any[];
+  children?: Function;
+  onRemoveFile?: Function;
 }
 
 declare const FileList: React.ComponentType<FileListProps>;

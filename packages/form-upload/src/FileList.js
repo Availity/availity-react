@@ -1,6 +1,7 @@
 import React, { useMemo } from 'react';
 import PropTypes from 'prop-types';
 import { Table } from 'reactstrap';
+
 import FileRow from './FileRow';
 
 const FileList = ({ files, children, onRemoveFile, ...rest }) => {

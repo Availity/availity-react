@@ -2,6 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { Button } from 'reactstrap';
 import Icon from '@availity/icon';
+
 import UploadProgressBar from './UploadProgressBar';
 
 const fileTypeIconMap = {
@@ -63,12 +64,7 @@ const FileRow = ({ onRemove, children, file }) => {
         <UploadProgressBar upload={file} />
       </td>
       <td className="align-middle" style={{ width: '10%' }}>
-        <Button
-          data-testid="remove-file-btn"
-          color="link"
-          className="text-danger px-0"
-          onClick={remove}
-        >
+        <Button data-testid="remove-file-btn" color="link" className="text-danger px-0" onClick={remove}>
           <Icon name="trash-empty">
             <span className="sr-only">
               Remove

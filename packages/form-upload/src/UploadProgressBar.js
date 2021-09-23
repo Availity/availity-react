@@ -1,21 +1,10 @@
 import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 import Progress from '@availity/progress';
-
-import {
-  Button,
-  Modal,
-  ModalHeader,
-  ModalBody,
-  ModalFooter,
-  Label,
-  Input,
-} from 'reactstrap';
+import { Button, Modal, ModalHeader, ModalBody, ModalFooter, Label, Input } from 'reactstrap';
 
 const UploadProgressBar = ({ upload, ...rest }) => {
-  const [statePercentage, setStatePercentage] = useState(
-    upload.percentage || 0
-  );
+  const [statePercentage, setStatePercentage] = useState(upload.percentage || 0);
   const [password, setPassword] = useState('');
   const [error, setError] = useState(null);
   const [modalOpen, setModalOpen] = useState(false);
@@ -71,12 +60,7 @@ const UploadProgressBar = ({ upload, ...rest }) => {
               <ModalHeader toggle={toggleModal}>Enter Password</ModalHeader>
               <ModalBody>
                 <Label for="upload-password">Password</Label>
-                <Input
-                  id="upload-password"
-                  onChange={handlePasswordChange}
-                  type="password"
-                  placeholder="password"
-                />
+                <Input id="upload-password" onChange={handlePasswordChange} type="password" placeholder="password" />
               </ModalBody>
               <ModalFooter>
                 <Button color="primary">Ok</Button>
