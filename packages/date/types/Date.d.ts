@@ -26,7 +26,7 @@ export interface DateBaseProps {
   format?: string;
 }
 
-export interface DateProps extends SingleDatePickerShape, DateBaseProps {}
+export type DateProps = SingleDatePickerShape & DateBaseProps;
 
 declare class Date extends React.Component<DateProps> {}
 
