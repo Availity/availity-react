@@ -1,11 +1,12 @@
 import React from 'react';
-import { FieldProps } from '@availity/form/typings/Field';
+import { FieldProps } from '@availity/form/types/Field';
 
 interface ExtensionProps extends FieldProps {
   name: string;
   id?: string;
   extColProps?: object;
 }
+
 export interface PhoneProps extends FieldProps {
   name: string;
   id?: string;
@@ -14,6 +15,6 @@ export interface PhoneProps extends FieldProps {
   extProps?: ExtensionProps;
 }
 
-declare const Phone: React.FunctionComponent<PhoneProps>;
+declare const Phone: React.FC<PhoneProps>;
 
 export default Phone;
