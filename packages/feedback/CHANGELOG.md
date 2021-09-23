@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## 6.0.5 (2021-09-23)
+
+
+### Bug Fixes
+
+* **feedback:** fixed focus issue for feedback in dropdowns ([378dec1](https://github.com/Availity/availity-react/commit/378dec16ee7a83cb6f078384a6bee642b32b6a21))
+
+
+
+
+
 ## [6.0.4](https://github.com/Availity/availity-react/compare/@availity/feedback@6.0.3...@availity/feedback@6.0.4) (2021-09-17)
 
 **Note:** Version bump only for package @availity/feedback
