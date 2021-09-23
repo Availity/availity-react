@@ -2,7 +2,7 @@
 import * as React from 'react';
 
 export interface FormGroupProps extends React.HTMLAttributes<HTMLFormElement> {
-  [key:string]: any;
+  [key: string]: any;
   tag?: React.ReactType | string;
   for: string;
 }
