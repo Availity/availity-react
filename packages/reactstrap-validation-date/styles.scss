@@ -25,14 +25,14 @@
   margin-right: 0;
   margin-left: 0;
   border-top-right-radius: 5px;
-    border-bottom-right-radius: 5px;
+  border-bottom-right-radius: 5px;
 }
 
 .DateRangePickerInput_calendarIcon:hover,
 .SingleDatePickerInput_calendarIcon:hover {
   color: #212529;
-background-color: #d4d9d9;
-border-color: #cdd3d3;
+  background-color: #d4d9d9;
+  border-color: #cdd3d3;
 }
 
 .DateRangePickerInput_calendarIcon:focus,
@@ -40,7 +40,6 @@ border-color: #cdd3d3;
   box-shadow: 0 0 0 0.2rem rgba(202, 205, 206, 0.5);
   outline: 0;
 }
-
 
 .current-day-highlight {
   .CalendarDay__today {
@@ -57,12 +56,10 @@ border-color: #cdd3d3;
   border: none;
 }
 
-
 .DateInput {
   border-radius: 0.25em;
   flex: 1;
 }
-
 
 .DateInput_input {
   font-size: 16px;
@@ -78,7 +75,7 @@ border-color: #cdd3d3;
 // .DateInput:has > input.DateInput_input {
 //   border-top-right-radius: 0;
 //   border-bottom-right-radius: 0;
-//   border-right:none;  
+//   border-right:none;
 // }
 .av-calendar-show .SingleDatePicker input.DateInput_input {
   border-top-right-radius: 0;
@@ -89,13 +86,13 @@ border-color: #cdd3d3;
 .DateRangePickerInput .DateInput:nth-of-type(1) input.DateInput_input {
   border-top-right-radius: 0;
   border-bottom-right-radius: 0;
-};
+}
 
 .DateRangePickerInput .DateRangePickerInput_arrow ~ .DateInput input.DateInput_input {
   border-top-left-radius: 0;
   border-bottom-left-radius: 0;
-};
-.av-calendar-show .DateRangePickerInput .DateRangePickerInput_arrow ~ .DateInput input.DateInput_input{
+}
+.av-calendar-show .DateRangePickerInput .DateRangePickerInput_arrow ~ .DateInput input.DateInput_input {
   border-top-right-radius: 0;
   border-bottom-right-radius: 0;
   border-right: none;
@@ -155,17 +152,17 @@ border-color: #cdd3d3;
   color: #fff;
 }
 
-
 .is-invalid {
-  .SingleDatePicker input.DateInput_input,.DateRangePickerInput .DateRangePickerInput_arrow, .DateRangePickerInput input.DateInput_input {
+  .SingleDatePicker input.DateInput_input,
+  .DateRangePickerInput .DateRangePickerInput_arrow,
+  .DateRangePickerInput input.DateInput_input {
     border-color: #dc3545;
   }
   .DateRangePickerInput .DateInput:nth-of-type(1) input.DateInput_input {
     border-right-color: #cdd3d3;
   }
-  
+
   .DateRangePickerInput .DateRangePickerInput_arrow ~ .DateInput input.DateInput_input {
-    border-left-color: #cdd3d3
+    border-left-color: #cdd3d3;
   }
 }
-
