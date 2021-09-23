@@ -6,19 +6,13 @@ const dependencyAnalyzer = async (args = {}) => {
   let { ignorePaths = [] } = args;
   let exitCode = 0;
   ignorePaths = Array.isArray(ignorePaths) ? ignorePaths : [ignorePaths];
-  const globs = [
-    ...[
-      'packages/**/package.json',
-      '!packages/**/node_modules/**/package.json',
-    ],
-    ...ignorePaths,
-  ];
+  const globs = [...['packages/**/package.json', '!packages/**/node_modules/**/package.json'], ...ignorePaths];
   const files = await globby(globs, {
     absolute: true,
   });
 
   await Promise.all(
-    files.map(async file => {
+    files.map(async (file) => {
       const data = await check({
         path: file,
         entries: [],
@@ -40,7 +34,7 @@ const dependencyAnalyzer = async (args = {}) => {
       if (missing.length > 0) {
         console.log(
           `Run the following command to add missing packages to ${pkg.name}:
-yarn workspace ${pkg.name} add ${missing.map(m => `${m}`).join(' ')}
+yarn workspace ${pkg.name} add ${missing.map((m) => `${m}`).join(' ')}
           `
         );
         exitCode = 1;
