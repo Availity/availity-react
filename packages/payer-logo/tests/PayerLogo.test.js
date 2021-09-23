@@ -1,7 +1,7 @@
 import React from 'react';
 import { render, waitFor, cleanup } from '@testing-library/react';
 import { avWebQLApi } from '@availity/api-axios';
-import PayerLogo, { getLogo } from '../PayerLogo';
+import PayerLogo, { getLogo } from '..';
 
 jest.mock('@availity/api-axios');
 
@@ -31,14 +31,10 @@ describe('PayerLogo', () => {
       },
     });
 
-    const { container } = render(
-      <PayerLogo payerId="BCBSF" clientId="my-client-id" />
-    );
+    const { container } = render(<PayerLogo payerId="BCBSF" clientId="my-client-id" />);
 
     await waitFor(() =>
-      container.querySelector(
-        'img[src="/static/spaces/73162546201440710195134200002269/banner.png"]'
-      )
+      container.querySelector('img[src="/static/spaces/73162546201440710195134200002269/banner.png"]')
     );
 
     expect(container).toMatchSnapshot();
@@ -55,14 +51,10 @@ describe('PayerLogo', () => {
       },
     });
 
-    const { container } = render(
-      <PayerLogo payerId="00681" clientId="my-client-id" />
-    );
+    const { container } = render(<PayerLogo payerId="00681" clientId="my-client-id" />);
 
     await waitFor(() =>
-      container.querySelector(
-        'img[src="/public/apps/eligibility/images/value-add-logos/00681.gif"]'
-      )
+      container.querySelector('img[src="/public/apps/eligibility/images/value-add-logos/00681.gif"]')
     );
 
     expect(container).toMatchSnapshot();
@@ -81,17 +73,10 @@ describe('PayerLogo', () => {
       },
     });
 
-    const { container } = render(
-      <PayerLogo
-        spaceId="73162546201441126239486200007187"
-        clientId="my-client-id"
-      />
-    );
+    const { container } = render(<PayerLogo spaceId="73162546201441126239486200007187" clientId="my-client-id" />);
 
     await waitFor(() =>
-      container.querySelector(
-        'img[src="/static/spaces/73162546201441126239486200007187/banner.png"]'
-      )
+      container.querySelector('img[src="/static/spaces/73162546201441126239486200007187/banner.png"]')
     );
 
     expect(container).toMatchSnapshot();

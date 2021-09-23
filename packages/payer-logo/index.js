@@ -1,3 +1,1 @@
-import PayerLogo from './PayerLogo';
-
-export default PayerLogo;
+export { default, getLogo } from './src/PayerLogo';

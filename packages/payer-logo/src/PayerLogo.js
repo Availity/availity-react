@@ -70,10 +70,7 @@ export const getLogo = async (spaceId, payerId, clientId) => {
 
       // We can probably remove this at some point once our spaces data is complete
       if (!url) {
-        url = `/public/apps/eligibility/images/value-add-logos/${payerId.replace(
-          /\s/g,
-          ''
-        )}.gif`;
+        url = `/public/apps/eligibility/images/value-add-logos/${payerId.replace(/\s/g, '')}.gif`;
       }
     }
 
