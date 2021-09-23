@@ -4,9 +4,10 @@ import UploadCore from '@availity/upload-core';
 import Dropzone from 'react-dropzone';
 import { InputGroup } from 'reactstrap';
 import { v4 as uuid } from 'uuid';
+
 import FilePickerBtn from './FilePickerBtn';
 import FileList from './FileList';
-import './styles.scss';
+import '../styles.scss';
 
 const validationAttrs = ['min', 'max', 'required'];
 class Upload extends Component {
@@ -28,8 +29,7 @@ class Upload extends Component {
       if (newFiles.length !== files.length) {
         this.files = newFiles;
 
-        if (this.props.onFileRemove)
-          this.props.onFileRemove(this.files, fileId);
+        if (this.props.onFileRemove) this.props.onFileRemove(this.files, fileId);
         return {
           files: newFiles,
         };
@@ -43,14 +43,8 @@ class Upload extends Component {
     for (let i = 0; i < files.length; i++) {
       selectedFiles[i] = files[i];
     }
-    if (
-      this.props.max &&
-      selectedFiles.length + this.state.files.length > this.props.max
-    ) {
-      selectedFiles = selectedFiles.slice(
-        0,
-        Math.max(0, this.props.max - this.state.files.length)
-      );
+    if (this.props.max && selectedFiles.length + this.state.files.length > this.props.max) {
+      selectedFiles = selectedFiles.slice(0, Math.max(0, this.props.max - this.state.files.length));
     }
     this.files = this.files.concat(
       selectedFiles.map((file) => {
@@ -60,9 +54,7 @@ class Upload extends Component {
           clientId: this.props.clientId,
           fileTypes: this.props.allowedFileTypes,
           maxSize: this.props.maxSize,
-          onPreStart: this.props.onFilePreUpload
-            ? this.props.onFilePreUpload
-            : [],
+          onPreStart: this.props.onFilePreUpload ? this.props.onFilePreUpload : [],
           allowedFileNameCharacters: this.props.allowedFileNameCharacters,
         };
         const upload = new UploadCore(file, options);
@@ -132,8 +124,7 @@ class Upload extends Component {
   }
 
   componentWillUnmount() {
-    if (this.context.FormCtrl && this.props.name)
-      this.context.FormCtrl.unregister(this);
+    if (this.context.FormCtrl && this.props.name) this.context.FormCtrl.unregister(this);
   }
 
   getValue() {
@@ -168,19 +159,12 @@ class Upload extends Component {
       fileAddArea = showFileDrop ? (
         <div>
           <InputGroup disabled={disabled}>
-            <Dropzone
-              onDrop={this.onDrop}
-              multiple={multiple}
-              maxSize={maxSize}
-              accept={allowedFileTypes}
-            >
+            <Dropzone onDrop={this.onDrop} multiple={multiple} maxSize={maxSize} accept={allowedFileTypes}>
               {({ getRootProps, getInputProps, isDragActive }) => (
                 <section>
                   <div
                     {...getRootProps({
-                      className: isDragActive
-                        ? 'file-drop-active'
-                        : 'file-drop',
+                      className: isDragActive ? 'file-drop-active' : 'file-drop',
                     })}
                   >
                     <input data-testid="file-picker" {...getInputProps()} />
@@ -244,10 +228,7 @@ Upload.propTypes = {
   getDropRejectionMessage: PropTypes.func,
   disabled: PropTypes.bool,
   onPasswordSubmit: PropTypes.func,
-  passwordModalZIndex: PropTypes.oneOfType([
-    PropTypes.number,
-    PropTypes.string,
-  ]),
+  passwordModalZIndex: PropTypes.oneOfType([PropTypes.number, PropTypes.string]),
 };
 
 Upload.defaultProps = {

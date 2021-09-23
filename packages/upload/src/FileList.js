@@ -1,16 +1,10 @@
 import React, { useMemo } from 'react';
 import PropTypes from 'prop-types';
 import { Table } from 'reactstrap';
+
 import FileRow from './FileRow';
 
-const FileList = ({
-  files,
-  children,
-  onRemoveFile,
-  onPasswordSubmit,
-  passwordModalZIndex,
-  ...rest
-}) => {
+const FileList = ({ files, children, onRemoveFile, onPasswordSubmit, passwordModalZIndex, ...rest }) => {
   const list = useMemo(
     () =>
       files.map((file) => (
@@ -60,10 +54,7 @@ FileList.propTypes = {
   children: PropTypes.func,
   onRemoveFile: PropTypes.func,
   onPasswordSubmit: PropTypes.func,
-  passwordModalZIndex: PropTypes.oneOfType([
-    PropTypes.number,
-    PropTypes.string,
-  ]),
+  passwordModalZIndex: PropTypes.oneOfType([PropTypes.number, PropTypes.string]),
 };
 
 export default FileList;

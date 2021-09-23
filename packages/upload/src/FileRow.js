@@ -1,6 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { Button } from 'reactstrap';
+
 import UploadProgressBar from './UploadProgressBar';
 
 const fileTypeIconMap = {
@@ -23,13 +24,7 @@ const fileTypeIconMap = {
   pdf: 'file-pdf',
 };
 
-const FileRow = ({
-  onRemove,
-  children,
-  file,
-  onPasswordSubmit,
-  passwordModalZIndex,
-}) => {
+const FileRow = ({ onRemove, children, file, onPasswordSubmit, passwordModalZIndex }) => {
   const remove = () => {
     onRemove(file.id);
   };
@@ -72,12 +67,7 @@ const FileRow = ({
         />
       </td>
       <td className="align-middle" style={{ width: '10%' }}>
-        <Button
-          data-testid="remove-file-btn"
-          color="link"
-          className="text-danger px-0"
-          onClick={remove}
-        >
+        <Button data-testid="remove-file-btn" color="link" className="text-danger px-0" onClick={remove}>
           <i className="icon icon-trash-empty">
             <span className="sr-only">
               Remove
@@ -101,10 +91,7 @@ FileRow.propTypes = {
     options: PropTypes.object,
   }),
   onPasswordSubmit: PropTypes.func,
-  passwordModalZIndex: PropTypes.oneOfType([
-    PropTypes.number,
-    PropTypes.string,
-  ]),
+  passwordModalZIndex: PropTypes.oneOfType([PropTypes.number, PropTypes.string]),
 };
 
 export default FileRow;

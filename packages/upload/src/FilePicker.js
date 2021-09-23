@@ -64,8 +64,7 @@ class FilePicker extends Component {
   }
 
   componentWillUnmount() {
-    if (this.context.FormCtrl && this.props.name)
-      this.context.FormCtrl.unregister(this);
+    if (this.context.FormCtrl && this.props.name) this.context.FormCtrl.unregister(this);
   }
 
   getValue() {
@@ -74,29 +73,16 @@ class FilePicker extends Component {
   }
 
   render() {
-    const {
-      tag: Tag,
-      maxSize,
-      allowedFileTypes,
-      children,
-      ...props
-    } = this.props;
+    const { tag: Tag, maxSize, allowedFileTypes, children, ...props } = this.props;
     const file = this.state.value && this.getValue();
     props.id = props.id || props.name || this.id;
-    return children &&
-      props.name &&
-      file &&
-      (!this.props.multiple || file.length > 0) ? (
+    return children && props.name && file && (!this.props.multiple || file.length > 0) ? (
       children({ file, clear: this.reset, reset: this.reset })
     ) : (
       <Tag
         value=""
         type="file"
-        accept={
-          Array.isArray(allowedFileTypes) && allowedFileTypes.length > 0
-            ? allowedFileTypes.join(',')
-            : undefined
-        }
+        accept={Array.isArray(allowedFileTypes) && allowedFileTypes.length > 0 ? allowedFileTypes.join(',') : undefined}
         size={maxSize ? maxSize.toString() : undefined}
         {...props}
         onChange={this.onChange}

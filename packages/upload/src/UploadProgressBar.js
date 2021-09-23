@@ -2,15 +2,7 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import Progress from '@availity/progress';
 
-import {
-  Button,
-  Modal,
-  ModalHeader,
-  ModalBody,
-  ModalFooter,
-  Label,
-  Input,
-} from 'reactstrap';
+import { Button, Modal, ModalHeader, ModalBody, ModalFooter, Label, Input } from 'reactstrap';
 
 class UploadProgressBar extends Component {
   _isMounted = false;
@@ -77,8 +69,7 @@ class UploadProgressBar extends Component {
   };
 
   render() {
-    const { upload, onPasswordSubmit, passwordModalZIndex, ...rest } =
-      this.props;
+    const { upload, onPasswordSubmit, passwordModalZIndex, ...rest } = this.props;
     const { percentage, error, modalOpen } = this.state;
     return upload.errorMessage ? (
       <>
@@ -87,26 +78,12 @@ class UploadProgressBar extends Component {
         </span>
         {upload.status === 'encrypted' && (
           <div className="pwRequired" data-testid="password-form-encrypted">
-            <Button
-              data-testid=" password-form-button"
-              size="sm"
-              color="primary"
-              onClick={this.toggleModal}
-            >
+            <Button data-testid=" password-form-button" size="sm" color="primary" onClick={this.toggleModal}>
               Enter password
             </Button>
-            <Modal
-              isOpen={modalOpen}
-              toggle={this.toggleModal}
-              zIndex={passwordModalZIndex}
-            >
-              <form
-                onSubmit={this.verifyPassword}
-                data-testid="password-form-modal"
-              >
-                <ModalHeader toggle={this.toggleModal}>
-                  Enter Password
-                </ModalHeader>
+            <Modal isOpen={modalOpen} toggle={this.toggleModal} zIndex={passwordModalZIndex}>
+              <form onSubmit={this.verifyPassword} data-testid="password-form-modal">
+                <ModalHeader toggle={this.toggleModal}>Enter Password</ModalHeader>
                 <ModalBody>
                   <Label for="upload-password">Password</Label>
                   <Input
@@ -156,10 +133,7 @@ UploadProgressBar.propTypes = {
   className: PropTypes.string,
   striped: PropTypes.bool,
   onPasswordSubmit: PropTypes.func,
-  passwordModalZIndex: PropTypes.oneOfType([
-    PropTypes.number,
-    PropTypes.string,
-  ]),
+  passwordModalZIndex: PropTypes.oneOfType([PropTypes.number, PropTypes.string]),
 };
 
 UploadProgressBar.defaultProps = {};
