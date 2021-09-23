@@ -2,15 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { Breadcrumb, BreadcrumbItem } from 'reactstrap';
 
-const Breadcrumbs = ({
-  crumbs,
-  active,
-  emptyState,
-  children,
-  linkTag: LinkTag,
-  homeUrl,
-  ...rest
-}) => {
+const Breadcrumbs = ({ crumbs, active, emptyState, children, linkTag: LinkTag, homeUrl, ...rest }) => {
   const renderBreadCrumb = (crumb) => {
     // default breadcrumbitem render
     let breadCrumbItemChildren = <span>{emptyState}</span>;
@@ -22,11 +14,7 @@ const Breadcrumbs = ({
         </LinkTag>
       );
     }
-    return (
-      <BreadcrumbItem key={crumb.name + crumb.url}>
-        {breadCrumbItemChildren}
-      </BreadcrumbItem>
-    );
+    return <BreadcrumbItem key={crumb.name + crumb.url}>{breadCrumbItemChildren}</BreadcrumbItem>;
   };
 
   return (
@@ -36,9 +24,7 @@ const Breadcrumbs = ({
           Home
         </LinkTag>
       </BreadcrumbItem>
-      {crumbs &&
-        crumbs.length > 0 &&
-        crumbs.map((crumb) => renderBreadCrumb(crumb))}
+      {crumbs && crumbs.length > 0 && crumbs.map((crumb) => renderBreadCrumb(crumb))}
       {children}
       <BreadcrumbItem active>{active || emptyState}</BreadcrumbItem>
     </Breadcrumb>
