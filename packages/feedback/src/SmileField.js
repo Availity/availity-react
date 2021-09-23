@@ -5,13 +5,13 @@ import FeedbackButton from './FeedbackButton';
 
 const btnStyles = { flex: 1, margin: '0 2% 0 2%' };
 
-const SmileField = ({ name, options, onChange }) => {
+const SmileField = ({ name, options, onChange, autoFocusFeedbackButton }) => {
   const [{ value }] = useField(name);
   const { setFieldValue } = useFormikContext();
 
   return options.map((option, i) => (
     <FeedbackButton
-      autoFocus={i === 0}
+      autoFocus={i === 0 && autoFocusFeedbackButton}
       style={btnStyles}
       key={option.icon}
       icon={option.icon}
@@ -40,6 +40,7 @@ SmileField.propTypes = {
     })
   ),
   onChange: PropTypes.func,
+  autoFocusFeedbackButton: PropTypes.bool,
 };
 
 SmileField.defaultProps = {
@@ -60,6 +61,7 @@ SmileField.defaultProps = {
       label: "What don't you like?",
     },
   ],
+  autoFocusFeedbackButton: true,
 };
 
 export default SmileField;

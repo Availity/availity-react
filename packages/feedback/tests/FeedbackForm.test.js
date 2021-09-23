@@ -247,4 +247,24 @@ describe('FeedbackForm', () => {
       'feedback-form-header'
     );
   });
+
+  test('should focus first SmileField button by default', async () => {
+    const { getByText } = render(<FeedbackForm name="Payer Space" />);
+
+    const firstFeedbackButton = getByText('Smiley face').closest('button');
+    await waitFor(() => {
+      expect(firstFeedbackButton).toHaveFocus();
+    });
+  });
+
+  test('should not focus first SmileField button if autofocus is set to false', async () => {
+    const { getByText } = render(
+      <FeedbackForm name="Payer Space" autoFocusFeedbackButton={false} />
+    );
+
+    const firstFeedbackButton = getByText('Smiley face').closest('button');
+    await waitFor(() => {
+      expect(firstFeedbackButton).not.toHaveFocus();
+    });
+  });
 });
