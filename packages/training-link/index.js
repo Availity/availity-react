@@ -1,3 +1,1 @@
-import TrainingLink from './TrainingLink';
-
-export default TrainingLink;
+export { default } from './src/TrainingLink';
