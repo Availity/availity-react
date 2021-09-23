@@ -42,13 +42,7 @@ const Avatar = ({ fallback, skeletonProps, ...props }) => {
   }, []);
 
   if (loading) {
-    return (
-      <Loader
-        data-testid="avatar-img-loader"
-        skeletonProps={skeletonProps}
-        {...props}
-      />
-    );
+    return <Loader data-testid="avatar-img-loader" skeletonProps={skeletonProps} {...props} />;
   }
 
   return (
@@ -56,13 +50,7 @@ const Avatar = ({ fallback, skeletonProps, ...props }) => {
       data-testid="avatar-img"
       src={avatar}
       alt="Avatar"
-      loader={
-        <Loader
-          data-testid="avatar-img"
-          skeletonProps={skeletonProps}
-          {...props}
-        />
-      }
+      loader={<Loader data-testid="avatar-img" skeletonProps={skeletonProps} {...props} />}
       {...props}
     />
   );
