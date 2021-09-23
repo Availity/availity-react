@@ -38,9 +38,7 @@ Authorize.propTypes = {
   permissions: PropTypes.oneOfType([
     PropTypes.arrayOf(
       PropTypes.oneOfType([
-        PropTypes.arrayOf(
-          PropTypes.oneOfType([PropTypes.string, PropTypes.number])
-        ),
+        PropTypes.arrayOf(PropTypes.oneOfType([PropTypes.string, PropTypes.number])),
         PropTypes.string,
         PropTypes.number,
       ])
@@ -51,9 +49,7 @@ Authorize.propTypes = {
   resources: PropTypes.oneOfType([
     PropTypes.arrayOf(
       PropTypes.oneOfType([
-        PropTypes.arrayOf(
-          PropTypes.oneOfType([PropTypes.string, PropTypes.number])
-        ),
+        PropTypes.arrayOf(PropTypes.oneOfType([PropTypes.string, PropTypes.number])),
         PropTypes.string,
         PropTypes.number,
       ])

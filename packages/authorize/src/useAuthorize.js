@@ -1,10 +1,7 @@
 import { useState, useEffect } from 'react';
 import { avUserPermissionsApi, avRegionsApi } from '@availity/api-axios';
 
-export default (
-  permissions,
-  { organizationId, customerId, region = true, resources } = {}
-) => {
+const useAuthorize = (permissions, { organizationId, customerId, region = true, resources } = {}) => {
   const [authorized, setAuthorized] = useState(false);
   const [loading, setLoading] = useState(true);
   const [currentRegion, setCurrentRegion] = useState('');
@@ -12,9 +9,7 @@ export default (
   const getRegion = async () => {
     if (region === true) {
       const resp = await avRegionsApi.getCurrentRegion();
-      const currentRegion =
-        (resp && resp.data && resp.data.regions && resp.data.regions[0]) ||
-        undefined;
+      const currentRegion = (resp && resp.data && resp.data.regions && resp.data.regions[0]) || undefined;
 
       setCurrentRegion(currentRegion);
 
@@ -35,16 +30,12 @@ export default (
 
     if (organizationId) {
       isAuthorizedForOrganizationId =
-        permission.organizations.filter(
-          ({ id: orgId }) => orgId === organizationId
-        ).length > 0;
+        permission.organizations.filter(({ id: orgId }) => orgId === organizationId).length > 0;
     }
 
     if (customerId) {
       isAuthorizedForCustomerId =
-        permission.organizations.filter(
-          ({ customerId: orgCustomerId }) => orgCustomerId === customerId
-        ).length > 0;
+        permission.organizations.filter(({ customerId: orgCustomerId }) => orgCustomerId === customerId).length > 0;
     }
 
     if (resources !== undefined) {
@@ -54,56 +45,39 @@ export default (
         resourceSets.some((resourceSet) => {
           if (Array.isArray(resourceSet)) {
             return resourceSet.every((resource) =>
-              permission.organizations.some(
-                ({ resources: orgResources = [] }) =>
-                  orgResources.some(({ id }) => `${id}` === `${resource}`)
+              permission.organizations.some(({ resources: orgResources = [] }) =>
+                orgResources.some(({ id }) => `${id}` === `${resource}`)
               )
             );
           }
-          return permission.organizations.some(
-            ({ resources: orgResources = [] }) =>
-              orgResources.some(({ id }) => `${id}` === `${resourceSet}`)
+          return permission.organizations.some(({ resources: orgResources = [] }) =>
+            orgResources.some(({ id }) => `${id}` === `${resourceSet}`)
           );
         });
     }
 
-    return (
-      isAuthorizedForCustomerId &&
-      isAuthorizedForOrganizationId &&
-      isAuthorizedForResources
-    );
+    return isAuthorizedForCustomerId && isAuthorizedForOrganizationId && isAuthorizedForResources;
   };
 
   // TODO: Move most of this logic to avUserPermissionsApi or something more common.
   const checkPermissions = async () => {
-    const permissionsSets = Array.isArray(permissions)
-      ? permissions
-      : [permissions];
+    const permissionsSets = Array.isArray(permissions) ? permissions : [permissions];
     const permissionsList = [].concat(...permissionsSets);
-    const newPermissions = (
-      await avUserPermissionsApi.getPermissions(
-        permissionsList,
-        await getRegion()
-      )
-    ).reduce((prev, cur) => {
-      prev[cur.id] = cur;
-      return prev;
-    }, {});
+    const newPermissions = (await avUserPermissionsApi.getPermissions(permissionsList, await getRegion())).reduce(
+      (prev, cur) => {
+        prev[cur.id] = cur;
+        return prev;
+      },
+      {}
+    );
 
     const authorized = permissionsSets.some((permissionSet) => {
       if (Array.isArray(permissionSet)) {
-        return permissionSet.every((permission) =>
-          checkPermission(newPermissions[permission])
-        );
+        return permissionSet.every((permission) => checkPermission(newPermissions[permission]));
       }
       return checkPermission(newPermissions[permissionSet]);
     });
-    if (
-      permissionsList.join() ===
-      []
-        .concat(...(Array.isArray(permissions) ? permissions : [permissions]))
-        .join()
-    ) {
+    if (permissionsList.join() === [].concat(...(Array.isArray(permissions) ? permissions : [permissions])).join()) {
       setLoading(false);
       setAuthorized(authorized);
     }
@@ -124,3 +98,5 @@ export default (
 
   return [authorized, loading, currentRegion];
 };
+
+export default useAuthorize;
