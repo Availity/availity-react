@@ -1,9 +1,9 @@
 import { ListGroupItemProps as RsListGroupItemProps } from 'reactstrap';
 
 export interface ListGroupItemProps extends RsListGroupItemProps {
-    borderColor?: string;
+  borderColor?: string;
 }
 
-declare const ListGroupItem: React.FunctionComponent<ListGroupItemProps>;
+declare const ListGroupItem: React.FC<ListGroupItemProps>;
 
 export default ListGroupItem;
