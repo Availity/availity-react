@@ -4,6 +4,6 @@ export interface FeedbackModalProps {
   zIndex?: number | string;
 }
 
-declare const FeedbackModal: React.FunctionComponent<FeedbackModalProps>;
+declare const FeedbackModal: React.FC<FeedbackModalProps>;
 
 export default FeedbackModal;

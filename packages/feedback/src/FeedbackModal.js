@@ -4,15 +4,7 @@ import { Modal } from 'reactstrap';
 import FeedbackForm from './FeedbackForm';
 import SupportModal from './SupportModal';
 
-const FeedbackModal = ({
-  isOpen,
-  toggle,
-  zIndex,
-  showSupport,
-  supportZIndex,
-  feedbackToggle,
-  ...formOptions
-}) => {
+const FeedbackModal = ({ isOpen, toggle, zIndex, showSupport, supportZIndex, feedbackToggle, ...formOptions }) => {
   const [supportIsActive, setSupportIsActive] = React.useState(false);
 
   return supportIsActive ? (

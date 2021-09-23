@@ -19,6 +19,6 @@ export interface FeedbackProps extends DropdownProps {
   supportZIndex?: number | string;
 }
 
-declare const Feedback: React.FunctionComponent<FeedbackProps>;
+declare const Feedback: React.FC<FeedbackProps>;
 
 export default Feedback;

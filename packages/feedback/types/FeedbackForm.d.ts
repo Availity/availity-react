@@ -25,6 +25,6 @@ export interface FeedbackFormProps {
   setSupportIsActive: Function;
 }
 
-declare const FeedbackForm: React.FunctionComponent<FeedbackFormProps>;
+declare const FeedbackForm: React.FC<FeedbackFormProps>;
 
 export default FeedbackForm;
