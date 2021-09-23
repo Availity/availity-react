@@ -1,6 +1,6 @@
 import React from 'react';
 import { render, cleanup } from '@testing-library/react';
-import Progress from '.';
+import Progress from '..';
 
 describe('Progress', () => {
   afterEach(cleanup);

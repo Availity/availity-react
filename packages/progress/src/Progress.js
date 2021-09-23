@@ -3,17 +3,7 @@ import PropTypes from 'prop-types';
 import classNames from 'classnames';
 import toNumber from 'lodash/toNumber';
 
-const Progress = ({
-  tag: Tag,
-  animated,
-  striped,
-  complete,
-  value,
-  max,
-  className: classes,
-  color,
-  ...rest
-}) => {
+const Progress = ({ tag: Tag, animated, striped, complete, value, max, className: classes, color, ...rest }) => {
   const percent = (toNumber(value) / toNumber(max)) * 100;
   return (
     <Tag
