@@ -61,8 +61,7 @@ avMessages.subscribe = jest.fn((event, fn) => {
 
 avMessages.send = jest.fn((payload, target = window.top) => {
   try {
-    const message =
-      typeof payload === 'string' ? payload : JSON.stringify(payload);
+    const message = typeof payload === 'string' ? payload : JSON.stringify(payload);
     target.postMessage(message, domain());
   } catch (error) {
     // eslint-disable-next-line no-console
@@ -311,9 +310,7 @@ describe('FavoriteHeart', () => {
     expect(avMessages.send).toHaveBeenCalledTimes(1);
     expect(avMessages.send.mock.calls[0][0].event).toBe('av:favorites:update');
     // Test that post message sent to window.parent sends favorites returned from settings api
-    expect(avMessages.send.mock.calls[0][0].favorites).toEqual([
-      { id: '456', pos: 0 },
-    ]);
+    expect(avMessages.send.mock.calls[0][0].favorites).toEqual([{ id: '456', pos: 0 }]);
   });
 
   test('should delete favorite and send post message with updated favorites when enter is pressed', async () => {
@@ -351,9 +348,7 @@ describe('FavoriteHeart', () => {
     expect(avMessages.send).toHaveBeenCalledTimes(1);
     expect(avMessages.send.mock.calls[0][0].event).toBe('av:favorites:update');
     // Test that post message sent to window.parent sends favorites returned from settings api
-    expect(avMessages.send.mock.calls[0][0].favorites).toEqual([
-      { id: '456', pos: 0 },
-    ]);
+    expect(avMessages.send.mock.calls[0][0].favorites).toEqual([{ id: '456', pos: 0 }]);
   });
 
   test('should call onChange once toggled', async () => {
@@ -379,11 +374,7 @@ describe('FavoriteHeart', () => {
     const onMouseDown = jest.fn();
     const { container } = render(
       <Favorites>
-        <FavoriteHeart
-          onChange={onChange}
-          id="1234"
-          onMouseDown={onMouseDown}
-        />
+        <FavoriteHeart onChange={onChange} id="1234" onMouseDown={onMouseDown} />
       </Favorites>
     );
 

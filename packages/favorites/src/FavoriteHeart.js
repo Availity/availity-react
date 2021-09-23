@@ -34,9 +34,7 @@ const FavoriteHeart = ({ id, name, onChange, onMouseDown, ...props }) => {
             onMouseDown(e);
           }
         }}
-        onKeyPress={(e) =>
-          (e.key === ' ' || e.key === 'Enter') && onChangeHandler(e)
-        }
+        onKeyPress={(e) => (e.key === ' ' || e.key === 'Enter') && onChangeHandler(e)}
         onClick={onChangeHandler}
       >
         <span aria-hidden className="icon outline" />

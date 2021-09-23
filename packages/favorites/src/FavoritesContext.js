@@ -27,11 +27,7 @@ const validatedFavorites = (input) => {
   const validFavorites = reduce(
     input,
     (result, favorite) => {
-      if (
-        !isUndefined(favorite.id) &&
-        !isUndefined(favorite.pos) &&
-        isNumber(favorite.pos)
-      ) {
+      if (!isUndefined(favorite.id) && !isUndefined(favorite.pos) && isNumber(favorite.pos)) {
         result.push(favorite);
       }
       return result;
@@ -100,9 +96,7 @@ const Favorites = ({ children }) => {
   }, []);
 
   const deleteFavorite = async (id) => {
-    const result = await submitFavorites(
-      clone(favorites).filter((favorite) => favorite.id !== id)
-    );
+    const result = await submitFavorites(clone(favorites).filter((favorite) => favorite.id !== id));
 
     const newFavorites = get(result, 'data.favorites');
     setFavorites(newFavorites);
@@ -142,11 +136,7 @@ const Favorites = ({ children }) => {
   };
 
   return (
-    <FavoritesContext.Provider
-      value={{ favorites, deleteFavorite, addFavorite }}
-    >
-      {children}
-    </FavoritesContext.Provider>
+    <FavoritesContext.Provider value={{ favorites, deleteFavorite, addFavorite }}>{children}</FavoritesContext.Provider>
   );
 };
 
@@ -155,14 +145,13 @@ Favorites.propTypes = {
 };
 
 export const useFavorites = (id) => {
-  const { favorites, deleteFavorite, addFavorite } =
-    useContext(FavoritesContext);
+  const { favorites, deleteFavorite, addFavorite } = useContext(FavoritesContext);
 
   const isFavorited = useMemo(() => !!find(favorites, { id }), [favorites, id]);
 
-  const toggleFavorite = async () =>
-    isFavorited ? deleteFavorite(id) : addFavorite(id);
+  const toggleFavorite = async () => (isFavorited ? deleteFavorite(id) : addFavorite(id));
 
   return [isFavorited, toggleFavorite];
 };
+
 export default Favorites;
