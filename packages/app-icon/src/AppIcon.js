@@ -1,17 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-function AppIcon({
-  tag: Tag,
-  color,
-  size,
-  src: image,
-  alt,
-  branded,
-  className,
-  children,
-  ...props
-}) {
+function AppIcon({ tag: Tag, color, size, src: image, alt, branded, className, children, ...props }) {
   const classname = [
     className,
     'app-icon',
@@ -24,11 +14,7 @@ function AppIcon({
 
   return (
     <Tag {...props} className={classname}>
-      {image ? (
-        <img className="w-100 h-100 align-baseline" src={image} alt={alt} />
-      ) : (
-        children
-      )}
+      {image ? <img className="w-100 h-100 align-baseline" src={image} alt={alt} /> : children}
       {branded && <span className="caret" />}
     </Tag>
   );
