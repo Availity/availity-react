@@ -2,7 +2,8 @@ import React from 'react';
 import userEvent from '@testing-library/user-event';
 import { render, cleanup, fireEvent } from '@testing-library/react';
 import avMessageMock from '@availity/message-core';
-import HelpProvider, { Help, constants, FieldHelpIcon } from '../index';
+
+import HelpProvider, { Help, constants, FieldHelpIcon } from '..';
 
 jest.mock('@availity/message-core');
 

@@ -3,7 +3,7 @@
   "version": "1.4.1",
   "author": "Kyle Gray <kyle.gray@availity.com>",
   "description": "Context Provider to assist with Help Menu on Portal for specific pages",
-  "typings": "index.d.ts",
+  "types": "index.d.ts",
   "main": "index.js",
   "keywords": [
     "react",
