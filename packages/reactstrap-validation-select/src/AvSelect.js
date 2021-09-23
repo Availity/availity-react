@@ -11,8 +11,7 @@ import isFunction from 'lodash/isFunction';
 
 import { AsyncPaginate } from 'react-select-async-paginate';
 
-const { DownChevron, CrossIcon, DropdownIndicator, ClearIndicator } =
-  reactSelectComponents;
+const { DownChevron, CrossIcon, DropdownIndicator, ClearIndicator } = reactSelectComponents;
 
 const createOption = (label, labelKey = 'label', valueKey = 'value') => ({
   [labelKey]: label,
@@ -45,15 +44,12 @@ class AvSelect extends AvBaseInput {
 
   optionsContainsValue = (props) => {
     const valueKey = this.getValueKey(props);
-    const matchingValues = props.options.filter(
-      (option) => option.value === valueKey
-    );
+    const matchingValues = props.options.filter((option) => option.value === valueKey);
     return matchingValues.length > 0;
   };
 
   componentWillReceiveProps(nextProps) {
-    const newValue =
-      nextProps.value !== undefined ? nextProps.value : this.value;
+    const newValue = nextProps.value !== undefined ? nextProps.value : this.value;
 
     if (newValue !== this.value) {
       this.value = newValue;
@@ -68,20 +64,14 @@ class AvSelect extends AvBaseInput {
   handleCreate = (value) => {
     const { newOptions, value: currentValue } = this.state;
     const { isMulti } = this.props;
-    const newOpt = createOption(
-      value,
-      this.getLabelKey(this.props),
-      this.getValueKey(this.props)
-    );
+    const newOpt = createOption(value, this.getLabelKey(this.props), this.getValueKey(this.props));
     newOptions.push(newOpt);
     this.setState({
       newOptions,
     });
 
     if (isMulti) {
-      this.getValidatorProps().onChange(
-        Array.isArray(currentValue) ? currentValue.concat(newOpt) : [newOpt]
-      );
+      this.getValidatorProps().onChange(Array.isArray(currentValue) ? currentValue.concat(newOpt) : [newOpt]);
     } else {
       this.getValidatorProps().onChange(newOpt);
     }
@@ -104,9 +94,7 @@ class AvSelect extends AvBaseInput {
   }
 
   getOptionValue = (option) =>
-    this.props.raw && !this.props.valueKey
-      ? option
-      : get(option, this.getValueKey(this.props), option);
+    this.props.raw && !this.props.valueKey ? option : get(option, this.getValueKey(this.props), option);
 
   getLabelKey(nextProps = this.props) {
     return get(nextProps, 'labelKey', 'label');
@@ -135,8 +123,7 @@ class AvSelect extends AvBaseInput {
     if (this.getValidationEvent() === 'onBlur') {
       this.validate();
     }
-    if (this.context.FormCtrl)
-      this.context.FormCtrl.setTouched(this.props.name);
+    if (this.context.FormCtrl) this.context.FormCtrl.setTouched(this.props.name);
     return this.props.onBlur && this.props.onBlur(value);
   }
 
@@ -163,11 +150,7 @@ class AvSelect extends AvBaseInput {
     }
     super.onChangeHandler(value);
 
-    const shouldAutofill =
-      this.props.autofill &&
-      !this.props.isMulti &&
-      inputValue &&
-      typeof inputValue === 'object';
+    const shouldAutofill = this.props.autofill && !this.props.isMulti && inputValue && typeof inputValue === 'object';
 
     if (shouldAutofill) {
       const formInputs = this.context.FormCtrl.getInputs();
@@ -178,15 +161,12 @@ class AvSelect extends AvBaseInput {
 
       let formValuesForAutofill = formValues;
       if (typeof this.props.autofill === 'object') {
-        formValuesForAutofill = Object.keys(this.props.autofill).reduce(
-          (accum, key) => {
-            if (has(formValues, key)) {
-              accum[key] = get(formValues, key);
-            }
-            return accum;
-          },
-          {}
-        );
+        formValuesForAutofill = Object.keys(this.props.autofill).reduce((accum, key) => {
+          if (has(formValues, key)) {
+            accum[key] = get(formValues, key);
+          }
+          return accum;
+        }, {});
       }
 
       Object.keys(formValuesForAutofill)
@@ -194,19 +174,13 @@ class AvSelect extends AvBaseInput {
         .filter((fieldName) => fieldName !== name)
         .forEach((fieldName) => {
           let rawValue = inputValue;
-          if (
-            !!inputValue.label &&
-            !!inputValue.value &&
-            typeof inputValue.value === 'object'
-          ) {
+          if (!!inputValue.label && !!inputValue.value && typeof inputValue.value === 'object') {
             rawValue = inputValue.value;
           }
 
           let shouldAutofillField = false;
           shouldAutofillField =
-            typeof this.props.autofill === 'object'
-              ? this.props.autofill[fieldName]
-              : has(rawValue, fieldName);
+            typeof this.props.autofill === 'object' ? this.props.autofill[fieldName] : has(rawValue, fieldName);
 
           if (shouldAutofillField) {
             const input = this.context.FormCtrl.getInput(fieldName);
@@ -216,11 +190,7 @@ class AvSelect extends AvBaseInput {
               if (isFunction(this.props.autofill[fieldName])) {
                 val = this.props.autofill[fieldName](rawValue);
               } else if (typeof this.props.autofill[fieldName] === 'string') {
-                val = get(
-                  rawValue,
-                  `${this.props.autofill[fieldName]}`,
-                  input.getDefaultValue()
-                );
+                val = get(rawValue, `${this.props.autofill[fieldName]}`, input.getDefaultValue());
               } else {
                 val = input.getDefaultValue();
               }
@@ -244,31 +214,22 @@ class AvSelect extends AvBaseInput {
 
     const options = [...propOptions, ...newOptions];
 
-    return (
-      Array.isArray(options) &&
-      options.filter((option) => this.getOptionValue(option) === value)[0]
-    );
+    return Array.isArray(options) && options.filter((option) => this.getOptionValue(option) === value)[0];
   }
 
   getViewValue() {
-    if (this.props.raw || this.props.loadOptions || !this.props.options)
-      return this.state.value;
+    if (this.props.raw || this.props.loadOptions || !this.props.options) return this.state.value;
     if (this.props.isMulti && Array.isArray(this.state.value)) {
-      return this.state.value.map(
-        (value) => this.findOptionFromValue(value) || value
-      );
+      return this.state.value.map((value) => this.findOptionFromValue(value) || value);
     }
     return this.findOptionFromValue(this.state.value) || this.state.value;
   }
 
   render() {
-    const { className, selectRef, styles, creatable, options, ...attributes } =
-      this.props;
+    const { className, selectRef, styles, creatable, options, ...attributes } = this.props;
     const { newOptions } = this.state;
-    const touched =
-      this.context.FormCtrl && this.context.FormCtrl.isTouched(this.props.name);
-    const hasError =
-      this.context.FormCtrl && this.context.FormCtrl.hasError(this.props.name);
+    const touched = this.context.FormCtrl && this.context.FormCtrl.isTouched(this.props.name);
+    const hasError = this.context.FormCtrl && this.context.FormCtrl.hasError(this.props.name);
 
     let classes = className;
     if (this.context.FormCtrl) {
@@ -276,9 +237,7 @@ class AvSelect extends AvBaseInput {
         className,
         'av-select',
         touched ? 'is-touched' : 'is-untouched',
-        this.context.FormCtrl.isDirty(this.props.name)
-          ? 'is-dirty'
-          : 'is-pristine',
+        this.context.FormCtrl.isDirty(this.props.name) ? 'is-dirty' : 'is-pristine',
         this.context.FormCtrl.isBad(this.props.name) ? 'is-bad-input' : null,
         hasError ? 'av-invalid' : 'av-valid',
         touched && hasError && 'is-invalid'
@@ -297,9 +256,7 @@ class AvSelect extends AvBaseInput {
         classNamePrefix="av"
         role="listbox"
         className={classes}
-        SelectComponent={
-          attributes.loadOptions && creatable ? Creatable : undefined
-        }
+        SelectComponent={attributes.loadOptions && creatable ? Creatable : undefined}
         getOptionLabel={this.getOptionLabel}
         getOptionValue={this.getOptionValue}
         closeMenuOnSelect={!attributes.isMulti}
@@ -366,9 +323,7 @@ class AvSelect extends AvBaseInput {
             };
           },
         }}
-        options={
-          !attributes.loadOptions ? [...options, ...newOptions] : undefined
-        }
+        options={!attributes.loadOptions ? [...options, ...newOptions] : undefined}
         onCreateOption={this.handleCreate}
         components={components}
         {...attributes}

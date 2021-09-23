@@ -98,14 +98,11 @@ class AvResourceSelect extends Component {
       page = 1;
     }
 
-    let requiredSatisfied =
-      !this.props.requiredParams || this.props.requiredParams.length === 0;
+    let requiredSatisfied = !this.props.requiredParams || this.props.requiredParams.length === 0;
 
     if (!requiredSatisfied) {
       requiredSatisfied = this.props.graphqlConfig
-        ? this.props.requiredParams.every((param) =>
-            get(data, `variables.filters.${param}`)
-          )
+        ? this.props.requiredParams.every((param) => get(data, `variables.filters.${param}`))
         : this.props.requiredParams.every((param) => params[param]);
     }
     if (this.props.isDisabled || !requiredSatisfied) {
@@ -148,19 +145,13 @@ class AvResourceSelect extends Component {
         let { hasMore } = this.props;
         if (hasMore === undefined) {
           hasMore = this.props.graphqlConfig
-            ? (data) =>
-                get(
-                  data.data,
-                  `${this.props.graphqlConfig.type}Pagination.pageInfo.hasNextPage`,
-                  false
-                )
+            ? (data) => get(data.data, `${this.props.graphqlConfig.type}Pagination.pageInfo.hasNextPage`, false)
             : ({ totalCount, limit, offset }) => totalCount > offset + limit;
         }
 
         const items =
-          (typeof getResult === 'function'
-            ? getResult.call(this.props.resource, resp.data)
-            : resp.data[getResult]) || this.data;
+          (typeof getResult === 'function' ? getResult.call(this.props.resource, resp.data) : resp.data[getResult]) ||
+          this.data;
 
         hasMore = typeof hasMore === 'function' ? hasMore(resp.data) : hasMore;
 
@@ -206,9 +197,7 @@ class AvResourceSelect extends Component {
         customerId: this.props.customerId,
         ...this.props.parameters,
       };
-      _cacheUniq = watchParams
-        .map((watchParam) => params[watchParam])
-        .join(',');
+      _cacheUniq = watchParams.map((watchParam) => params[watchParam]).join(',');
     }
 
     return (
@@ -234,12 +223,8 @@ class AvResourceSelect extends Component {
 const ucFirst = (str) => str && str.charAt(0).toUpperCase() + str.slice(1);
 
 AvResourceSelect.create = (defaults) => {
-  const SpecificAvResourceSelect = (props) => (
-    <AvResourceSelect {...defaults} {...props} />
-  );
-  SpecificAvResourceSelect.displayName = `Av${ucFirst(
-    defaults.resource.defaultConfig.name
-  )}Select`;
+  const SpecificAvResourceSelect = (props) => <AvResourceSelect {...defaults} {...props} />;
+  SpecificAvResourceSelect.displayName = `Av${ucFirst(defaults.resource.defaultConfig.name)}Select`;
   return SpecificAvResourceSelect;
 };
 

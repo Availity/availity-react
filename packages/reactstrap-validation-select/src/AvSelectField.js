@@ -11,10 +11,7 @@ class AvSelectField extends Component {
     if (this.context.FormCtrl) {
       this.FormCtrl = { ...this.context.FormCtrl };
       const registerValidator = this.FormCtrl.register;
-      this.FormCtrl.register = (
-        input,
-        updater = input && input.forceUpdate
-      ) => {
+      this.FormCtrl.register = (input, updater = input && input.forceUpdate) => {
         registerValidator(input, () => {
           this.forceUpdate();
           if (updater) updater();
@@ -40,17 +37,11 @@ class AvSelectField extends Component {
       ...attributes
     } = this.props;
 
-    const validation = this.context.FormCtrl
-      ? this.context.FormCtrl.getInputState(this.props.name)
-      : {};
+    const validation = this.context.FormCtrl ? this.context.FormCtrl.getInputState(this.props.name) : {};
     let feedback = null;
     if (validation.errorMessage) {
       const feedbackClasses = classNames('d-block', feedbackClass);
-      feedback = (
-        <AvFeedback className={feedbackClasses}>
-          {validation.errorMessage}
-        </AvFeedback>
-      );
+      feedback = <AvFeedback className={feedbackClasses}>{validation.errorMessage}</AvFeedback>;
     }
 
     let thisLabel = false;

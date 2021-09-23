@@ -1,6 +1,3 @@
-import AvSelect from './AvSelect';
-import AvSelectField from './AvSelectField';
-import AvResourceSelect from './AvResourceSelect';
-
-export default AvSelect;
-export { AvSelectField, AvResourceSelect };
+export { default } from './types/AvSelect';
+export { default as AvSelectField } from './types/AvSelectField';
+export { default as AvResourceSelect } from './types/AvResourceSelect';
