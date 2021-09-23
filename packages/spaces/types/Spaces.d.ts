@@ -95,8 +95,8 @@ export interface Space {
   mod: string[];
   link: Link;
   ssoId: string;
-  parents?: Space[]
-  children?: Space[]
+  parents?: Space[];
+  children?: Space[];
   categories?: string[];
   categorized?: boolean;
   icons?: object;
@@ -133,9 +133,7 @@ export interface SpacesContext {
 export interface SpacesProps {
   clientId: string;
   query?: string;
-  children?:
-    | React.ReactNode
-    | ((spacesContext: SpacesContext) => React.ReactNode);
+  children?: React.ReactNode | ((spacesContext: SpacesContext) => React.ReactNode);
   variables?: Record<string, any>;
   spaceIds?: string[];
   payerIds?: string[];
@@ -146,7 +144,7 @@ declare function useSpaces(...ids: (string | undefined | null)[]): Space[];
 
 declare function useSpacesContext(): SpacesContext;
 
-declare const Spaces: React.FunctionComponent<SpacesProps>;
+declare const Spaces: React.FC<SpacesProps>;
 
 export { useSpaces, useSpacesContext };
 

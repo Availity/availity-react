@@ -1,7 +1,7 @@
 export interface SpacesGhostTextProps {
-    spaceId?: string;
+  spaceId?: string;
 }
 
-declare const SpacesGhostText: React.FunctionComponent<SpacesGhostTextProps>;
+declare const SpacesGhostText: React.FC<SpacesGhostTextProps>;
 
 export default SpacesGhostText;
