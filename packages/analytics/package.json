@@ -4,6 +4,7 @@
   "author": "Kyle Gray <kyle.gray@gmail.com>",
   "description": "Track click and page view events for the user.",
   "main": "index.js",
+  "types": "index.d.ts",
   "keywords": [
     "react",
     "availity"

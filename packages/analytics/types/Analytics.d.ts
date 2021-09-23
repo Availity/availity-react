@@ -11,7 +11,6 @@ export interface AnalyticsPlugin {
 }
 
 export interface AnalyticsProps {
-  children?: React.ReactNode;
   plugins?: AnalyticsPlugin[];
   pageTracking?: boolean;
   autoTrack?: boolean;
@@ -28,7 +27,7 @@ export interface AnalyticsContext {
   trackEvent(trackEventOptions: TrackEventOptions): Promise<void>;
 }
 
-declare const Analytics: React.FunctionComponent<AnalyticsProps>;
+declare const Analytics: React.FC<AnalyticsProps>;
 
 declare const useAnalytics: () => AnalyticsContext;
 
