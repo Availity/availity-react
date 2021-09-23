@@ -4,11 +4,7 @@ import classNames from 'classnames';
 import Breadcrumbs from '@availity/breadcrumbs';
 import AppIcon from '@availity/app-icon';
 import Feedback from '@availity/feedback';
-import Spaces, {
-  SpacesLogo,
-  useSpaces,
-  useSpacesContext,
-} from '@availity/spaces';
+import Spaces, { SpacesLogo, useSpaces, useSpacesContext } from '@availity/spaces';
 
 const PageHeader = ({
   payerId,
@@ -57,11 +53,7 @@ const PageHeader = ({
       spaceForPayerID || (logo && spaceForSpaceID) || spacesIsLoading ? (
         <SpacesLogo {...logoAttrs} />
       ) : (
-        <Spaces
-          spaceIds={spaceId ? [spaceId] : undefined}
-          payerIds={[payerId]}
-          clientId={clientId}
-        >
+        <Spaces spaceIds={spaceId ? [spaceId] : undefined} payerIds={[payerId]} clientId={clientId}>
           <SpacesLogo {...logoAttrs} />
         </Spaces>
       );
@@ -95,12 +87,7 @@ const PageHeader = ({
             {React.isValidElement(crumbs) ? (
               crumbs
             ) : (
-              <Breadcrumbs
-                crumbs={crumbs}
-                active={appName || children}
-                homeUrl={homeUrl}
-                linkTag={linkTag}
-              />
+              <Breadcrumbs crumbs={crumbs} active={appName || children} homeUrl={homeUrl} linkTag={linkTag} />
             )}
           </>
         ) : null}
@@ -115,10 +102,7 @@ const PageHeader = ({
         {...props}
       >
         <Tag
-          className={classNames(
-            'page-header-title page-header-left d-flex align-items-center mb-0',
-            titleClassName
-          )}
+          className={classNames('page-header-title page-header-left d-flex align-items-center mb-0', titleClassName)}
           data-testid="page-header-title"
           {...restTitleProps}
         >
@@ -143,11 +127,7 @@ const PageHeader = ({
             {payerLogo}
           </div>
         ) : (
-          <RenderRightContent
-            className={renderRightClassName}
-            payerLogo={payerLogo}
-            feedback={feedback}
-          />
+          <RenderRightContent className={renderRightClassName} payerLogo={payerLogo} feedback={feedback} />
         )}
       </div>
     </>

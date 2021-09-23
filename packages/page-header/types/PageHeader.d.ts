@@ -20,12 +20,9 @@ export interface PageHeaderProps extends React.HTMLAttributes<HTMLDivElement> {
   feedback?: boolean;
   feedbackProps?: any;
   logo?: boolean;
-  linkTag?:
-    | React.ComponentType<React.HTMLAttributes<HTMLAnchorElement>>
-    | string;
+  linkTag?: React.ComponentType<React.HTMLAttributes<HTMLAnchorElement>> | string;
   titleProps?: React.HTMLAttributes<HTMLDivElement>;
-  renderRightContent?: React.FunctionComponent<RightContentProps>;
-  children?: React.ReactNode;
+  renderRightContent?: React.FC<RightContentProps>;
   crumbs?: CrumbType[] | React.ReactNode;
   iconSrc?: string;
   iconAlt?: string;
@@ -34,6 +31,6 @@ export interface PageHeaderProps extends React.HTMLAttributes<HTMLDivElement> {
   showCrumbs?: boolean;
 }
 
-declare const PageHeader: React.FunctionComponent<PageHeaderProps>;
+declare const PageHeader: React.FC<PageHeaderProps>;
 
 export default PageHeader;
