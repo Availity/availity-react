@@ -1393,14 +1393,6 @@
     "@babel/helper-create-regexp-features-plugin" "^7.12.13"
     "@babel/helper-plugin-utils" "^7.12.13"
 
-"@babel/polyfill@^7.12.1":
-  version "7.12.1"
-  resolved "https://registry.yarnpkg.com/@babel/polyfill/-/polyfill-7.12.1.tgz#1f2d6371d1261bbd961f3c5d5909150e12d0bd96"
-  integrity sha512-X0pi0V6gxLi6lFZpGmeNa4zxtwEmCs42isWLNjZZDE0Y8yVfgu0T2OAHlzBbdYlqbW/YXVvoBHpATEM+goCj8g==
-  dependencies:
-    core-js "^2.6.5"
-    regenerator-runtime "^0.13.4"
-
 "@babel/preset-env@7.12.1":
   version "7.12.1"
   resolved "https://registry.yarnpkg.com/@babel/preset-env/-/preset-env-7.12.1.tgz#9c7e5ca82a19efc865384bb4989148d2ee5d7ac2"
@@ -5035,6 +5027,13 @@
   dependencies:
     "@types/react" "*"
 
+"@types/react-table@^7.7.4":
+  version "7.7.5"
+  resolved "https://registry.yarnpkg.com/@types/react-table/-/react-table-7.7.5.tgz#34603de1f4e745d8eacdb289b90b6853d97f4e6d"
+  integrity sha512-a6KLDyT6ZXxewYTG9sOsB9heoBVTYYwfoyB7+sziNGECOJXqmavdWeRtp548pJl490XHmUSxaWnVeeT9UOW9Gg==
+  dependencies:
+    "@types/react" "*"
+
 "@types/react-textarea-autosize@^4.3.3":
   version "4.3.5"
   resolved "https://registry.yarnpkg.com/@types/react-textarea-autosize/-/react-textarea-autosize-4.3.5.tgz#6c4d2753fa1864c98c0b2b517f67bb1f6e4c46de"
@@ -6109,6 +6108,13 @@ availity-reactstrap-validation@2.7.1, availity-reactstrap-validation@^2.7.1:
     moment "^2.22.2"
     prop-types "^15.6.2"
 
+availity-uikit@^3.2.2:
+  version "3.2.2"
+  resolved "https://registry.yarnpkg.com/availity-uikit/-/availity-uikit-3.2.2.tgz#6f39d883652af18339335a5af17225053d9d6c29"
+  integrity sha512-T+eAFYiNWAAFEspTf3/FnQH9aMkkHMTOq7dn77+BuUIRZqOHDu6sqWR9DoBbZkqlOsSQC8YkgPouLzjPlv0X2g==
+  dependencies:
+    bootstrap "4.3.1"
+
 availity-uikit@^4.1.1:
   version "4.1.1"
   resolved "https://registry.yarnpkg.com/availity-uikit/-/availity-uikit-4.1.1.tgz#762c2eb9ed83f46191d8b308364c8fba47c14139"
@@ -6707,6 +6713,11 @@ boolbase@^1.0.0, boolbase@~1.0.0:
   version "1.0.0"
   resolved "https://registry.yarnpkg.com/boolbase/-/boolbase-1.0.0.tgz#68dff5fbe60c51eb37725ea9e3ed310dcc1e776e"
   integrity sha1-aN/1++YMUes3cl6p4+0xDcwed24=
+
+bootstrap@4.3.1:
+  version "4.3.1"
+  resolved "https://registry.yarnpkg.com/bootstrap/-/bootstrap-4.3.1.tgz#280ca8f610504d99d7b6b4bfc4b68cec601704ac"
+  integrity sha512-rXqOmH1VilAt2DyPzluTi2blhk17bO7ef+zLLPlWvG494pDxcM234pJ8wTc/6R40UWizAIIMgxjvxZg5kmsbag==
 
 bootstrap@4.5.3:
   version "4.5.3"
@@ -8178,6 +8189,11 @@ core-js@^3.0.1, core-js@^3.0.4, core-js@^3.12.1, core-js@^3.13.0, core-js@^3.6.1
   version "3.13.0"
   resolved "https://registry.yarnpkg.com/core-js/-/core-js-3.13.0.tgz#58ca436bf01d6903aee3d364089868d0d89fe58d"
   integrity sha512-iWDbiyha1M5vFwPFmQnvRv+tJzGbFAm6XimJUT0NgHYW3xZEs1SkCAcasWSVFxpI2Xb/V1DDJckq3v90+bQnog==
+
+core-js@^3.18.1:
+  version "3.18.1"
+  resolved "https://registry.yarnpkg.com/core-js/-/core-js-3.18.1.tgz#289d4be2ce0085d40fc1244c0b1a54c00454622f"
+  integrity sha512-vJlUi/7YdlCZeL6fXvWNaLUPh/id12WXj3MbkMw5uOyF0PfWPBNOCNbs53YqgrvtujLNlt9JQpruyIKkUZ+PKA==
 
 core-util-is@1.0.2, core-util-is@~1.0.0:
   version "1.0.2"
