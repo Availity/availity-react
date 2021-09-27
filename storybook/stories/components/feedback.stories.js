@@ -60,5 +60,6 @@ storiesOf('Components/Feedback', module)
     <FeedbackForm
       name={text('Application Name', 'Payer Space')}
       prompt={text('Prompt')}
+      autoFocusFeedbackButton={boolean('autoFocusFeedbackButton', false)}
     />
   ));
