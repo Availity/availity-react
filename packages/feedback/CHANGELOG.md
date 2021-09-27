@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [6.0.6](https://github.com/Availity/availity-react/compare/@availity/feedback@6.0.5...@availity/feedback@6.0.6) (2021-09-27)
+
+
+### Bug Fixes
+
+* **feedback:** fixed story for feedback form and added type ([c0cd899](https://github.com/Availity/availity-react/commit/c0cd8998fe0dc17ae8462872955b4cce0164a9ad))
+
+
+
+
+
 ## 6.0.5 (2021-09-23)
 
 
