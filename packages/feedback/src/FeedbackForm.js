@@ -38,6 +38,7 @@ const FeedbackForm = ({
   modalHeaderProps,
   showSupport,
   setSupportIsActive,
+  autoFocusFeedbackButton,
   ...formProps
 }) => {
   const [active, setActive] = useState(null);
@@ -141,7 +142,12 @@ const FeedbackForm = ({
             data-testid="face-options"
             className="d-flex flex-row justify-content-between"
           >
-            <SmileField options={faceOptions} name="smileField" onChange={(option) => setActive(option)} />
+            <SmileField
+              options={faceOptions}
+              name="smileField"
+              onChange={(option) => setActive(option)}
+              autoFocusFeedbackButton={autoFocusFeedbackButton}
+            />
           </FormGroup>
           {active ? (
             <>
@@ -234,6 +240,7 @@ FeedbackForm.propTypes = {
   }),
   showSupport: PropTypes.bool,
   setSupportIsActive: PropTypes.func,
+  autoFocusFeedbackButton: PropTypes.bool,
 };
 
 FeedbackForm.defaultProps = {

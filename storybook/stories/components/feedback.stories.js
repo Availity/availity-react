@@ -58,4 +58,10 @@ storiesOf('Components/Feedback', module)
       {text('Button Text')}
     </Feedback>
   ))
-  .add('with form', () => <FeedbackForm name={text('Application Name', 'Payer Space')} prompt={text('Prompt')} />);
+  .add('with form', () => (
+    <FeedbackForm
+      name={text('Application Name', 'Payer Space')}
+      prompt={text('Prompt')}
+      autoFocusFeedbackButton={boolean('autoFocusFeedbackButton', false)}
+    />
+  ));

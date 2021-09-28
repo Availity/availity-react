@@ -23,6 +23,7 @@ export interface FeedbackFormProps {
   modalHeaderProps?: ModalHeaderProps;
   showSupport: boolean;
   setSupportIsActive: Function;
+  autoFocusFeedbackButton?: Boolean;
 }
 
 declare const FeedbackForm: React.FC<FeedbackFormProps>;
