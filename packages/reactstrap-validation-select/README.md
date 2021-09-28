@@ -16,9 +16,7 @@ npx install-peerdeps @availity/reactstrap-validation-select --save
 import React from 'react';
 import { Label } from 'reactstrap';
 import { AvForm, AvGroup, AvFeedback } from 'availity-reactstrap-validation';
-import AvSelect, {
-  AvSelectField,
-} from '@availity/reactstrap-validation-select';
+import AvSelect, { AvSelectField } from '@availity/reactstrap-validation-select';
 import '@availity/reactstrap-validation-select/styles.scss';
 
 const options = [
@@ -34,12 +32,7 @@ const Example = () => (
       <AvSelect name="justTheInput" options={options} required />
       <AvFeedback>Some error message</AvFeedback>
     </AvGroup>
-    <AvSelectField
-      name="fieldWithLabel"
-      label="Label Made For Me"
-      options={options}
-      required
-    />
+    <AvSelectField name="fieldWithLabel" label="Label Made For Me" options={options} required />
   </AvForm>
 );
 ```
@@ -149,12 +142,7 @@ const options = [
 
 const Example = () => (
   <AvForm>
-    <AvSelectField
-      name="fieldWithLabel"
-      label="Label Made For Me"
-      options={options}
-      required
-    />
+    <AvSelectField name="fieldWithLabel" label="Label Made For Me" options={options} required />
   </AvForm>
 );
 ```
@@ -187,7 +175,7 @@ Please refer to [react-select-async-paginate](https://github.com/vtaits/react-se
 - **`requiredParams`**: Array of strings. Optional. If present, the network request will not be made until all of the required parameters specified in the array have a truthy value.
 - **`cacheUniq`**: Any. Optional. When this prop changes, all cache options are cleared. (see [react-select-async-paginate](https://github.com/vtaits/react-select-async-paginate#cacheuniq))
 - **`watchParams`**: Array of strings. Optional. If present, the options will reset when any of the parameters specified in the array change value. This is useful for when a customerId changes and you need to load a new list of options for the user to choose from. Used to derive `cacheUniq` if `cacheUniq` prop is not provided.
-- **`resource`**: Availity API resource (see [@availity/api-core](https://github.com/Availity/sdk-js/tree/master/packages/api-core) and [@availity/api-axios](https://github.com/Availity/sdk-js/tree/master/packages/api-axios)). Required.
+- **`resource`**: Availity API resource (see [@availity/api-axios](https://github.com/Availity/sdk-js/tree/master/packages/api-axios)). Required.
 - **`getResult`**: String or Function. Optional. When a function, the function will be called with the API response body/payload and is expected to return an array containing the list of items for the page. When a string, the string is expected to be a simple key used to get the value from the response ("simple" meaning not handling dot-notation for nested objects, if you need that provide a function.)
 - **`debounceTimeout`**: Number. default: 350. The amount of time (in milliseconds) to wait after the user has stopped typing before making the network request (debounced input).
 - **`delay`**: Number. default: 350. Set to `debounceTimeout` if `debounceTimeout` is not provided. (see [react-select-async-paginate](https://github.com/vtaits/react-select-async-paginate#debouncetimeout))
@@ -229,12 +217,7 @@ const avCustomResource = new AvApi({ name: 'my-custom-resource' });
 
 const Example = () => (
   <AvForm>
-    <AvResourceSelect
-      name="fieldWithLabel"
-      label="Label Made For Me"
-      resource={avCustomResource}
-      required
-    />
+    <AvResourceSelect name="fieldWithLabel" label="Label Made For Me" resource={avCustomResource} required />
   </AvForm>
 );
 ```
@@ -270,11 +253,7 @@ import '@availity/reactstrap-validation-select/styles.scss';
 const Example = () => (
   <AvForm>
     <AvRegionSelect name="region" label="Select a Region" required />
-    <AvOrganizationSelect
-      name="organization"
-      label="Select a Organization"
-      required
-    />
+    <AvOrganizationSelect name="organization" label="Select a Organization" required />
     <AvProviderSelect
       name="provider"
       customerId="1234"
@@ -284,19 +263,8 @@ const Example = () => (
       customerId={customerId}
       required
     />
-    <AvPermissionSelect
-      name="permissions"
-      label="Select a provider"
-      customerId={customerId}
-      isMulti
-      required
-    />
-    <AvNavigationSelect
-      name="payerSpace"
-      label="Select a Payer Space"
-      customerId={customerId}
-      required
-    />
+    <AvPermissionSelect name="permissions" label="Select a provider" customerId={customerId} isMulti required />
+    <AvNavigationSelect name="payerSpace" label="Select a Payer Space" customerId={customerId} required />
     <AvUserSelect name="user" label="Select a User" customerId={customerId} />
   </AvForm>
 );
