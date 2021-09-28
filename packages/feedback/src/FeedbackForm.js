@@ -1,12 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
-import {
-  Button,
-  ModalBody,
-  ModalHeader,
-  ModalFooter,
-  FormGroup,
-} from 'reactstrap';
+import { Button, ModalBody, ModalHeader, ModalFooter, FormGroup } from 'reactstrap';
 import { avLogMessagesApi, avRegionsApi } from '@availity/api-axios';
 import { Form, Field } from '@availity/form';
 import { SelectField } from '@availity/select';
@@ -76,9 +70,7 @@ const FeedbackForm = ({
           onClose(); // Mostly for Screen Reader use but a nice to have for all
         }
         if (onFeedbackSent) {
-          Object.keys(sent).forEach(
-            (key) => sent[key] === undefined && delete sent[key]
-          );
+          Object.keys(sent).forEach((key) => sent[key] === undefined && delete sent[key]);
 
           onFeedbackSent({
             active: active.icon,
@@ -126,13 +118,8 @@ const FeedbackForm = ({
           smileField: undefined,
         }}
         validationSchema={yup.object().shape({
-          feedback: yup
-            .string()
-            .max(200, 'Feedback cannot exceed 200 characters.')
-            .required('This field is required.'),
-          additionalFeedback: yup
-            .string()
-            .max(200, 'Additional Feedback cannot exceed 200 characters.'),
+          feedback: yup.string().max(200, 'Feedback cannot exceed 200 characters.').required('This field is required.'),
+          additionalFeedback: yup.string().max(200, 'Additional Feedback cannot exceed 200 characters.'),
           smileField: yup
             .object()
             .shape({
@@ -141,9 +128,7 @@ const FeedbackForm = ({
               label: yup.string(),
             })
             .required('This field is required.'),
-          feedbackApp: yup
-            .string()
-            .isRequired(aboutOptions.length > 0, 'This field is required.'),
+          feedbackApp: yup.string().isRequired(aboutOptions.length > 0, 'This field is required.'),
         })}
         {...formProps}
         onSubmit={(values) => sendFeedback(values)}
@@ -178,9 +163,7 @@ const FeedbackForm = ({
               <Field
                 type="textarea"
                 name="feedback"
-                label={
-                  (active && active.label) || 'Feedback? Requests? Defects?'
-                }
+                label={(active && active.label) || 'Feedback? Requests? Defects?'}
                 style={fieldStyles}
                 rows="2"
               />
@@ -208,9 +191,7 @@ const FeedbackForm = ({
                 onClick={() => setSupportIsActive(true)}
                 color="link"
                 type="button"
-                onKeyDown={({ keyCode }) =>
-                  keyCode === 13 && setSupportIsActive(true)
-                }
+                onKeyDown={({ keyCode }) => keyCode === 13 && setSupportIsActive(true)}
               >
                 Open a support ticket
               </Button>
@@ -218,11 +199,7 @@ const FeedbackForm = ({
           ) : null}
 
           {onClose ? (
-            <Button
-              onClick={onClose}
-              color="secondary"
-              onKeyDown={({ keyCode }) => keyCode === 13 && onClose()}
-            >
+            <Button onClick={onClose} color="secondary" onKeyDown={({ keyCode }) => keyCode === 13 && onClose()}>
               Close
             </Button>
           ) : null}

@@ -3,13 +3,14 @@ import { storiesOf } from '@storybook/react';
 import { withKnobs, text, select } from '@storybook/addon-knobs';
 import { BreadcrumbItem } from 'reactstrap';
 
-import PageHeader from '@availity/page-header';
 import README from '@availity/page-header/README.md';
-import TrainingLink from '@availity/training-link';
-import Breadcrumbs from '@availity/breadcrumbs/Breadcrumbs';
 import '@availity/mock';
 
 import { Preview } from '../util';
+
+const PageHeader = React.lazy(() => import('@availity/page-header'));
+const TrainingLink = React.lazy(() => import('@availity/training-link'));
+const Breadcrumbs = React.lazy(() => import('@availity/breadcrumbs'));
 
 const CustomBreadcrumbs = (
   <Breadcrumbs active="Active Page Name">
@@ -31,9 +32,7 @@ storiesOf('Components/Page Header', module)
     },
   })
   .addDecorator(withKnobs)
-  .add('default', () => (
-    <PageHeader appName={text('Application Name', 'Payer Space')} />
-  ))
+  .add('default', () => <PageHeader appName={text('Application Name', 'Payer Space')} />)
   .add('with app icon', () => (
     <PageHeader
       homeUrl={text('Home Url', '/public/apps/dashboard')}
@@ -61,10 +60,7 @@ storiesOf('Components/Page Header', module)
         clientId={text('Client ID', 'my-client-id')}
         payerId={text('Payer ID', 'PayerID')}
       />
-      <p>
-        Note: the logo uses a relative URL which will only work on the Availity
-        Portal
-      </p>
+      <p>Note: the logo uses a relative URL which will only work on the Availity Portal</p>
     </div>
   ))
   .add('with payer space breadcrumb', () => (
@@ -91,9 +87,7 @@ storiesOf('Components/Page Header', module)
       crumbs={CustomBreadcrumbs}
     />
   ))
-  .add('with feedback', () => (
-    <PageHeader appName={text('Application Name', 'Payer Space')} feedback />
-  ))
+  .add('with feedback', () => <PageHeader appName={text('Application Name', 'Payer Space')} feedback />)
   .add('with feedback and payer logo', () => (
     <PageHeader
       homeUrl={text('Home Url', '/public/apps/dashboard')}
@@ -108,11 +102,6 @@ storiesOf('Components/Page Header', module)
       homeUrl={text('Home Url', '/public/apps/dashboard')}
       feedback
       appName={text('Application Name', 'Payer Space')}
-      component={
-        <TrainingLink
-          link="https://www.youtube.com/watch?v=GgwE94KZJ7E"
-          name="Payer Space"
-        />
-      }
+      component={<TrainingLink link="https://www.youtube.com/watch?v=GgwE94KZJ7E" name="Payer Space" />}
     />
   ));

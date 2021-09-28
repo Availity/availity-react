@@ -1,3 +1,1 @@
-import ListGroup from './ListGroup';
-
-export default ListGroup;
+export { default } from './src/ListGroup';

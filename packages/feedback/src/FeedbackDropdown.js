@@ -31,11 +31,7 @@ const FeedbackDropdown = ({
         feedbackToggle={feedbackToggle}
       />
     ) : (
-      <SupportDropdown
-        toggle={supportToggle}
-        setSupportIsActive={setSupportIsActive}
-        feedbackToggle={feedbackToggle}
-      />
+      <SupportDropdown toggle={supportToggle} setSupportIsActive={setSupportIsActive} feedbackToggle={feedbackToggle} />
     );
   }
 
@@ -51,13 +47,7 @@ const FeedbackDropdown = ({
   );
 
   return (
-    <DropdownMenu
-      right
-      style={dropdownStyles}
-      role="dialog"
-      aria-labelledby="feedback-form-header"
-      aria-modal="false"
-    >
+    <DropdownMenu right style={dropdownStyles} role="dialog" aria-labelledby="feedback-form-header" aria-modal="false">
       {toRender}
     </DropdownMenu>
   );

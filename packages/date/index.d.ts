@@ -1,7 +1,4 @@
-import Date from './typings/Date';
-import DateField from './typings/DateField';
-import DateRange from './typings/DateRange';
-import DateRangeField from './typings/DateRangeField';
-
-export { DateField, DateRange, DateRangeField };
-export default Date;
+export { default } from './types/Date';
+export { default as DateField } from './types/DateField';
+export { default as DateRange } from './types/DateRange';
+export { default as DateRangeField } from './types/DateRangeField';

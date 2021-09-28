@@ -1,5 +1,1 @@
-import Analytics, { useAnalytics } from './types/Analytics';
-
-export { useAnalytics };
-
-export default Analytics;
+export { default, useAnalytics } from './types/Analytics';

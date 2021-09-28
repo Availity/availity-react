@@ -3,9 +3,10 @@ import { storiesOf } from '@storybook/react';
 import { withKnobs, boolean, number, text } from '@storybook/addon-knobs';
 
 import README from '@availity/progress/README.md';
-import Progress from '@availity/progress';
 
 import { Preview } from '../util';
+
+const Progress = React.lazy(() => import('@availity/progress'));
 
 storiesOf('Components/Progress', module)
   .addParameters({

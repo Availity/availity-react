@@ -10,16 +10,16 @@
   "publishConfig": {
     "access": "public"
   },
-  "peerDependencies": {
-    "react": ">=16.8.0",
-    "reactstrap": "^8.0.0 || ^7.0.0"
-  },
   "repository": {
     "type": "git",
     "url": "https://github.com/Availity/availity-react.git"
   },
   "bugs": {
     "url": "https://github.com/Availity/availity-react/issues"
+  },
+  "peerDependencies": {
+    "react": ">=16.8.0",
+    "reactstrap": "^8.0.0 || ^7.0.0"
   },
   "dependencies": {
     "@availity/localstorage-core": "^3.0.0",

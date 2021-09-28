@@ -1,11 +1,11 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-
 import { Badge } from 'reactstrap';
 
 import ListGroupItem from './ListGroupItem';
 
 const defaultColor = 'info';
+
 const ListItemStatus = ({ color, titleContent, children, badge, ...props }) => {
   const borderColor = color || (badge && badge.color) || defaultColor;
   let title = titleContent;
@@ -20,10 +20,7 @@ const ListItemStatus = ({ color, titleContent, children, badge, ...props }) => {
       </Badge>
     );
     title = (
-      <div
-        className="d-flex py-1 justify-content-between align-items-baseline"
-        data-testid="lgi-content-wrapper"
-      >
+      <div className="d-flex py-1 justify-content-between align-items-baseline" data-testid="lgi-content-wrapper">
         {titleContent}
         {useBadge}
       </div>
@@ -37,11 +34,7 @@ const ListItemStatus = ({ color, titleContent, children, badge, ...props }) => {
   }
 
   return (
-    <ListGroupItem
-      data-testid="list-group-item-status-id"
-      {...props}
-      borderColor={borderColor}
-    >
+    <ListGroupItem data-testid="list-group-item-status-id" {...props} borderColor={borderColor}>
       {title}
       {children}
     </ListGroupItem>

@@ -2,7 +2,9 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { Card, CardBody, CardTitle } from 'reactstrap';
 
-export const Preview = ({ children }) => <div>{children}</div>;
+export const Preview = ({ children }) => (
+  <React.Suspense fallback={<div className="text-center">Loading...</div>}>{children}</React.Suspense>
+);
 
 Preview.propTypes = {
   children: PropTypes.node,
@@ -13,9 +15,7 @@ export const ResourceComponent = ({ data, loading, title = '' }) => (
     <CardTitle className="text-center" tag="h4">
       {title}
     </CardTitle>
-    <CardBody>
-      {loading ? 'Loading...' : <pre>{JSON.stringify(data, null, 2)}</pre>}
-    </CardBody>
+    <CardBody>{loading ? 'Loading...' : <pre>{JSON.stringify(data, null, 2)}</pre>}</CardBody>
   </Card>
 );
 

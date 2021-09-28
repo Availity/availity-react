@@ -56,12 +56,8 @@ describe('AvResourceSelect', () => {
 
     fireEvent.click(regionsOption);
 
-    expect(
-      container.querySelector('.test__regions__option--is-selected')
-    ).toBeDefined();
-    expect(regionsSelect.querySelector('.test__regions__placeholder')).toBe(
-      null
-    );
+    expect(container.querySelector('.test__regions__option--is-selected')).toBeDefined();
+    expect(regionsSelect.querySelector('.test__regions__placeholder')).toBe(null);
   });
 
   it('returns previousOptions when search input is less than minCharsToSearch', async () => {
@@ -131,9 +127,7 @@ describe('AvResourceSelect', () => {
 
     expect(avRegionsApi.postGet).toHaveBeenCalledTimes(2);
     expect(avRegionsApi.postGet.mock.calls[0][0]).toBe('q=&limit=50&offset=0');
-    expect(avRegionsApi.postGet.mock.calls[1][0]).toBe(
-      'q=geo&limit=50&offset=0'
-    );
+    expect(avRegionsApi.postGet.mock.calls[1][0]).toBe('q=geo&limit=50&offset=0');
   });
 
   // only makes one call when cacheUniq not defined but watchParams are
@@ -179,9 +173,7 @@ describe('AvResourceSelect', () => {
       getResult: 'providers',
     };
 
-    const { container, getByText, rerender } = render(
-      <ProviderComponent providerProps={providerProps} />
-    );
+    const { container, getByText, rerender } = render(<ProviderComponent providerProps={providerProps} />);
 
     const providerSelect = container.querySelector('.test__provider__control');
     fireEvent.keyDown(providerSelect, { key: 'ArrowDown', keyCode: 40 });
@@ -191,9 +183,7 @@ describe('AvResourceSelect', () => {
 
     expect(providerOption).toBeDefined();
     expect(avProvidersApi.postGet).toHaveBeenCalledTimes(1);
-    expect(avProvidersApi.postGet.mock.calls[0][0]).toBe(
-      'q=&limit=50&customerId=1194&offset=0'
-    );
+    expect(avProvidersApi.postGet.mock.calls[0][0]).toBe('q=&limit=50&customerId=1194&offset=0');
 
     // rerender with same props should not trigger api call
     rerender(<ProviderComponent providerProps={providerProps} />);
@@ -213,9 +203,7 @@ describe('AvResourceSelect', () => {
 
     expect(providerOption).toBeDefined();
     expect(avProvidersApi.postGet).toHaveBeenCalledTimes(2);
-    expect(avProvidersApi.postGet.mock.calls[1][0]).toBe(
-      'q=&limit=50&customerId=1195&offset=0'
-    );
+    expect(avProvidersApi.postGet.mock.calls[1][0]).toBe('q=&limit=50&customerId=1195&offset=0');
   });
 
   it('waits to query resource until input is focused when waitUntilFocused is true', async () => {
@@ -261,12 +249,8 @@ describe('AvResourceSelect', () => {
 
     fireEvent.click(regionsOption);
 
-    expect(
-      container.querySelector('.test__regions__option--is-selected')
-    ).toBeDefined();
-    expect(regionsSelect.querySelector('.test__regions__placeholder')).toBe(
-      null
-    );
+    expect(container.querySelector('.test__regions__option--is-selected')).toBeDefined();
+    expect(regionsSelect.querySelector('.test__regions__placeholder')).toBe(null);
   });
   it('waits to query until requiredParams are set', async () => {
     const renderDropdown = ({ parameters = {}, ...props }) => {
@@ -275,16 +259,8 @@ describe('AvResourceSelect', () => {
 
         return (
           <AvForm>
-            <AvResourceSelect
-              name="test-form-input"
-              parameters={{ ...parameters, list: listParameter }}
-              {...props}
-            />
-            <Button
-              type="button"
-              data-testid="btn-set-list"
-              onClick={() => setListParameter('foo')}
-            >
+            <AvResourceSelect name="test-form-input" parameters={{ ...parameters, list: listParameter }} {...props} />
+            <Button type="button" data-testid="btn-set-list" onClick={() => setListParameter('foo')}>
               Set List Parameter
             </Button>
             <Button type="submit">Submit</Button>
@@ -441,7 +417,5 @@ it('Sends custom parameters to API', async () => {
   expect(regionsOption).toBeDefined();
 
   expect(avRegionsApi.postGet).toHaveBeenCalledTimes(1);
-  expect(avRegionsApi.postGet.mock.calls[0][0]).toBe(
-    'q=&limit=50&testq=&testPage=1&offset=0'
-  );
+  expect(avRegionsApi.postGet.mock.calls[0][0]).toBe('q=&limit=50&testq=&testPage=1&offset=0');
 });

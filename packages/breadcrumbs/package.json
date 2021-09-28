@@ -4,6 +4,7 @@
   "author": "Evan Sharp <evan.sharp@availity.com>",
   "description": "Availity breadcrumbs",
   "main": "index.js",
+  "types": "index.d.ts",
   "keywords": [
     "react",
     "availity"

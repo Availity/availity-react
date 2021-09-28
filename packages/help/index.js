@@ -1,11 +1,1 @@
-import HelpProvider, {
-  Help,
-  useHelp,
-  constants,
-  triggerFieldHelp,
-  FieldHelpIcon,
-} from './Help';
-
-export { Help, useHelp, constants, triggerFieldHelp, FieldHelpIcon };
-
-export default HelpProvider;
+export { default, Help, useHelp, constants, triggerFieldHelp, FieldHelpIcon } from './src/Help';

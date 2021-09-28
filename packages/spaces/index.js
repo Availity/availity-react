@@ -1,8 +1,4 @@
-import Spaces, {
-  useSpaces,
-  useSpacesContext,
-  SpacesContext,
-} from './src/Spaces';
+import Spaces, { useSpaces, useSpacesContext, SpacesContext } from './src/Spaces';
 import SpacesImage from './src/SpacesImage';
 import SpacesDisclaimer from './src/SpacesDisclaimer';
 import SpacesAgreement from './src/SpacesAgreement';

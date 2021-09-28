@@ -1,3 +1,1 @@
-import AvLink from './Link';
-
-export default AvLink;
+export { default } from './src/Link';

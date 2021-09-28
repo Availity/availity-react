@@ -2,12 +2,14 @@ import React from 'react';
 import { storiesOf } from '@storybook/react';
 import { Card, CardBody, CardTitle } from 'reactstrap';
 
-import Favorites, { FavoriteHeart } from '@availity/favorites';
 import '@availity/favorites/style.scss';
 import README from '@availity/favorites/README.md';
 import '@availity/mock';
 
 import { Preview } from '../util';
+
+const Favorites = React.lazy(() => import('@availity/favorites'));
+const FavoriteHeart = React.lazy(() => import('@availity/favorites/src/FavoriteHeart'));
 
 storiesOf('Components/Favorites', module)
   .addParameters({

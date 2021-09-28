@@ -3,10 +3,11 @@ import { storiesOf } from '@storybook/react';
 import { select } from '@storybook/addon-knobs';
 
 import README from '@availity/icon/README.md';
-import Icon from '@availity/icon';
 import icons from 'availity-uikit/fonts/config.json';
 
 import { Preview } from '../util';
+
+const Icon = React.lazy(() => import('@availity/icon'));
 
 const options = {
   lg: 'lg',

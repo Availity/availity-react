@@ -16,12 +16,7 @@ afterEach(() => {
 });
 
 const Date = (props) => (
-  <AvForm
-    onInvalidSubmit={onInvalidSubmit}
-    onSubmit={onSubmit}
-    model={props.model}
-    onValidSubmit={onValidSubmit}
-  >
+  <AvForm onInvalidSubmit={onInvalidSubmit} onSubmit={onSubmit} model={props.model} onValidSubmit={onValidSubmit}>
     <AvDate {...props} />
     <Button type="submit">Submit</Button>
   </AvForm>
@@ -42,9 +37,7 @@ describe('AvDate', () => {
   });
 
   test('max date validation', async () => {
-    const { getByText } = render(
-      <Date name="standAlone" value="07/20/1995" max="06/20/1995" />
-    );
+    const { getByText } = render(<Date name="standAlone" value="07/20/1995" max="06/20/1995" />);
 
     fireEvent.click(getByText('Submit'));
 
@@ -55,9 +48,7 @@ describe('AvDate', () => {
   });
 
   test('min date validation', async () => {
-    const { getByText } = render(
-      <Date name="standAlone" value="07/20/1995" min="08/20/1995" />
-    );
+    const { getByText } = render(<Date name="standAlone" value="07/20/1995" min="08/20/1995" />);
 
     fireEvent.click(getByText('Submit'));
 

@@ -12,23 +12,37 @@
     "baseUrl": "./packages",
     "allowSyntheticDefaultImports": true,
     "paths": {
-      "@availity/app-icon": ["./app-icon/src"],
+      "@availity/analytics": ["./analytics"],
+      "@availity/app-icon": ["./app-icon"],
       "@availity/authorize": ["./authorize"],
+      "@availity/avatar": ["./avatar"],
       "@availity/breadcrumbs": ["./breadcrumbs"],
+      "@availity/date": ["./date"],
+      "@availity/favorites": ["./favorites"],
       "@availity/feature": ["./feature"],
       "@availity/feedback": ["./feedback"],
+      "@availity/form": ["./form"],
+      "@availity/form-upload": ["./form-upload"],
+      "@availity/help": ["./help"],
+      "@availity/hooks": ["./hooks"],
+      "@availity/icon": ["./icon"],
+      "@availity/link": ["./link"],
       "@availity/list-group": ["./list-group"],
       "@availity/list-group-item": ["./list-group-item"],
       "@availity/page-header": ["./page-header"],
+      "@availity/pagination": ["./pagination"],
       "@availity/payer-logo": ["./payer-logo"],
-      "@availity/spaces": ["./spaces"],
+      "@availity/phone": ["./phone"],
+      "@availity/progress": ["./progress"],
       "@availity/reactstrap-validation-date": ["./reactstrap-validation-date"],
       "@availity/reactstrap-validation-select": ["./reactstrap-validation-select"],
+      "@availity/select": ["./select"],
+      "@availity/spaces": ["./spaces"],
+      "@availity/step-wizard": ["./step-wizard"],
       "@availity/training-link": ["./training-link"],
-      "@availity/upload": ["./upload"],
+      "@availity/typography": ["./typography"],
+      "@availity/upload": ["./upload"]
     }
   },
-  "exclude": [
-    "**/node_modules/"
-  ]
+  "exclude": ["**/node_modules/"]
 }

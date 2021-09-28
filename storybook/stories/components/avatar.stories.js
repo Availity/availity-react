@@ -3,9 +3,10 @@ import { storiesOf } from '@storybook/react';
 import { withKnobs, text } from '@storybook/addon-knobs';
 
 import README from '@availity/avatar/README.md';
-import Avatar from '@availity/avatar';
 
 import { Preview } from '../util';
+
+const Avatar = React.lazy(() => import('@availity/avatar'));
 
 storiesOf('Components/Avatar', module)
   .addParameters({
@@ -19,10 +20,7 @@ storiesOf('Components/Avatar', module)
   .add('default', () => (
     <div className="py-3">
       <Avatar
-        fallback={text(
-          'Fallback',
-          '/public/apps/my-profile/images/Avatars-00.png'
-        )}
+        fallback={text('Fallback', '/public/apps/my-profile/images/Avatars-00.png')}
         skeletonProps={{
           width: text('Skeleton Width', '350px'),
           height: text('Skeleton Height', '350px'),

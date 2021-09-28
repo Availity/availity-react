@@ -3,10 +3,11 @@ import { storiesOf } from '@storybook/react';
 import { withKnobs } from '@storybook/addon-knobs';
 import { Button } from 'reactstrap';
 
-import Analytics from '@availity/analytics';
 import README from '@availity/analytics/README.md';
 
 import { Preview } from '../util';
+
+const Analytics = React.lazy(() => import('@availity/analytics'));
 
 storiesOf('Components/Analytics', module)
   .addParameters({

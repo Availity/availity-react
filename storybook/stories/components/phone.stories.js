@@ -6,11 +6,12 @@ import { Button } from 'reactstrap';
 import * as yup from 'yup';
 import '@availity/phone/src/validatePhone';
 
-import { Phone } from '@availity/phone';
 import README from '@availity/phone/README.md';
 
 import FormikResults from '../mocks/FormikResults';
 import { Preview } from '../util';
+
+const Phone = React.lazy(() => import('@availity/phone/src/Phone'));
 
 storiesOf('Components/Phone', module)
   .addParameters({
@@ -38,11 +39,7 @@ storiesOf('Components/Phone', module)
         validationSchema={yup.object().shape({
           phone: yup
             .string()
-            .validatePhone(
-              undefined,
-              boolean('Strict Validation', false),
-              country
-            )
+            .validatePhone(undefined, boolean('Strict Validation', false), country)
             .isRequired(required, 'This field is required.'),
           ext: yup.string().isRequired(required),
         })}
