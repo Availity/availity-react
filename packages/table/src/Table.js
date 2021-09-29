@@ -73,6 +73,12 @@ const Table = ({
           ...columns,
         ]);
       }
+
+      if (!sortable) {
+        hooks.visibleColumns.forEach((col) => {
+          col.disableSortBy = true;
+        });
+      }
     }
   );
 

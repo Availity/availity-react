@@ -5,7 +5,7 @@ import { useTableContext } from './TableContext';
 
 const TableCell = ({ stickyClass, cell, children, onCellClick, ...rest }) => {
   const { scrollable } = useTableContext();
-  const { isIconColumn, disableClick } = cell.column;
+  const { isFormattedColumn, disableClick } = cell.column;
 
   const cellProps = {
     className: classNames(cell.column.className, stickyClass || '', {
@@ -13,7 +13,7 @@ const TableCell = ({ stickyClass, cell, children, onCellClick, ...rest }) => {
       'cursor-pointer': !!onCellClick,
       sticky: cell.column.sticky,
     }),
-    title: cell.value && !isIconColumn ? cell.value.toString() : undefined,
+    title: cell.value && !isFormattedColumn ? cell.value.toString() : undefined,
     onClick: (e) => {
       if (!disableClick && onCellClick)
         onCellClick({
