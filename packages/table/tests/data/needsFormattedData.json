@@ -1,0 +1,18 @@
+[
+    {
+        "id": 1,
+        "text": "My Text Field",
+        "currency": "43.08",
+        "badge": "badge field",
+        "icon": true,
+        "date": "1956-02-16T05:00:00.000+0000"
+    },
+    {
+        "id": 2,
+        "text": "My Text Field",
+        "currency": "43.08",
+        "badge": "badge field",
+        "icon": false,
+        "date": "1990-02-16T05:00:00.000+0000"
+    }
+]

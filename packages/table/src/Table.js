@@ -20,6 +20,7 @@ const Table = ({
   cellProps,
   headerProps,
   onRowClick,
+  onRowSelected,
   records,
   rowProps,
   scrollable,
@@ -36,6 +37,7 @@ const Table = ({
     prepareRow,
     selectedFlatRows: selectedRows,
     allColumns,
+    toggleAllRowsSelected,
   } = useTable(
     {
       columns,
@@ -53,16 +55,55 @@ const Table = ({
             className: 'fixed-width-selection',
             defaultCanSort: false,
             disableClick: true,
-            Header: ({ getToggleAllRowsSelectedProps }) => (
-              <div className="text-center">
-                <IndeterminateCheckbox aria-label="Select all records" {...getToggleAllRowsSelectedProps()} />
-              </div>
-            ),
-            Cell: ({ row }) => (
-              <div className="text-center">
-                <IndeterminateCheckbox aria-label="Select record" {...row.getToggleRowSelectedProps()} />
-              </div>
-            ),
+            Header: ({ getToggleAllRowsSelectedProps }) => {
+              const selectedProps = {
+                onClick: async () => {
+                  await toggleAllRowsSelected();
+                  if (onRowSelected) {
+                    onRowSelected({ selectedRows });
+                  }
+                },
+              };
+
+              return (
+                <div className="text-center">
+                  <IndeterminateCheckbox
+                    data-testid="table_header_select_all"
+                    aria-label="Select all records"
+                    {...selectedProps}
+                    {...getToggleAllRowsSelectedProps()}
+                  />
+                </div>
+              );
+            },
+            Cell: ({
+              row: {
+                original,
+                toggleRowSelected,
+                getToggleRowSelectedProps,
+                index,
+              },
+            }) => {
+              const selectedProps = {
+                onClick: () => {
+                  if (onRowSelected) {
+                    toggleRowSelected();
+                    onRowSelected({ selectedId: original.id, data: original });
+                  }
+                },
+              };
+
+              return (
+                <div className="text-center">
+                  <IndeterminateCheckbox
+                    data-testid={`table_header_select_row_${index}`}
+                    aria-label="Select record"
+                    {...selectedProps}
+                    {...getToggleRowSelectedProps()}
+                  />
+                </div>
+              );
+            },
           },
           ...columns,
         ]);
@@ -85,6 +126,8 @@ const Table = ({
     handleRowClick = onRowClick;
   }
 
+  const populateId = () => (id ? `${id}_` : '');
+
   return (
     <TableContext.Provider
       value={{
@@ -95,11 +138,25 @@ const Table = ({
       }}
     >
       <RsTable id={id} {...getTableProps({ className: 'av-grid' })} {...rest}>
-        <TableHeader id={`${id}_table_header`} {...headerProps}>
-          {headerGroups.map((headerGroup, index) => (
-            <TableHeaderRow id={`${id}_table_header_row`} key={index.toString()} headerGroup={headerGroup}>
-              {headerGroup.headers.map((column, index) => (
-                <TableHeaderCell id={`${id}_table_header_cell_${index}_${column.id}`} key={column.id} column={column}>
+        <TableHeader id={`${populateId()}table_header`} {...headerProps}>
+          {headerGroups.map((headerGroup, rowIndex) => (
+            <TableHeaderRow
+              id={`${populateId()}table_header_row_${rowIndex}`}
+              data-testid={`${populateId()}table_header_row_${rowIndex}`}
+              key={rowIndex.toString()}
+              headerGroup={headerGroup}
+            >
+              {headerGroup.headers.map((column, cellIndex) => (
+                <TableHeaderCell
+                  id={`${populateId()}table_header_row_${rowIndex}_cell_${cellIndex}_${
+                    column.id
+                  }`}
+                  data-testid={`${populateId()}table_header_row_${rowIndex}_cell_${cellIndex}_${
+                    column.id
+                  }`}
+                  key={column.id}
+                  column={column}
+                >
                   {column.render('Header')}
                   {sortable && column.defaultCanSort ? (
                     <Icon
@@ -113,22 +170,24 @@ const Table = ({
           ))}
         </TableHeader>
         <tbody {...getTableBodyProps()} {...bodyProps}>
-          {rows.map((row, index) => {
+          {rows.map((row, rowIndex) => {
             prepareRow(row);
             return (
               <TableRow
-                id={`{${id}_table_row_${index}`}
+                id={`${populateId()}table_row_${rowIndex}`}
+                data-testid={`${populateId()}table_row_${rowIndex}`}
                 key={row.original.id}
-                index={index}
+                index={rowIndex}
                 row={row}
                 onRowClick={handleRowClick}
                 onCellClick={handleCellClick}
                 {...rowProps}
               >
-                {row.cells.map((cell, index) => (
+                {row.cells.map((cell, cellIndex) => (
                   <TableCell
-                    id={`${id}_table_row_${index}_${cell.column.id}`}
-                    key={index.toString()}
+                    id={`${populateId()}table_row_${rowIndex}_cell_${cellIndex}`}
+                    data-testid={`${populateId()}table_row_${rowIndex}_cell_${cellIndex}`}
+                    key={cellIndex.toString()}
                     cell={cell}
                     onCellClick={handleCellClick}
                     {...cellProps}
@@ -154,6 +213,7 @@ Table.propTypes = {
   headerProps: PropTypes.object,
   initialState: PropTypes.object,
   onRowClick: PropTypes.func,
+  onRowSelected: PropTypes.func,
   selectable: PropTypes.bool,
   sortable: PropTypes.bool,
   scrollable: PropTypes.bool,
