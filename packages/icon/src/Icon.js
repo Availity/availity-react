@@ -14,6 +14,8 @@ const Icon = React.forwardRef(({ name, size, color, onClick, className, children
       onClick && { cursor: 'pointer' },
       className
     )}
+    onClick={onClick}
+    style={onClick ? { cursor: 'pointer' } : undefined}
     {...rest}
   >
     {children}
