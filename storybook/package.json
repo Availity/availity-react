@@ -1,6 +1,6 @@
 {
   "name": "@availity/react-storybook",
-  "version": "9.10.5",
+  "version": "9.10.6",
   "private": true,
   "author": "Robert McGuinness <rob.mcguinness@availity.com>",
   "description": "Storybook docs for availity-react",
@@ -34,7 +34,7 @@
     "@availity/authorize": "^1.5.21",
     "@availity/avatar": "^0.4.4",
     "@availity/breadcrumbs": "^3.1.25",
-    "@availity/date": "^2.1.11",
+    "@availity/date": "^2.1.12",
     "@availity/favorites": "^2.2.1",
     "@availity/feature": "^1.2.26",
     "@availity/feedback": "^6.0.7",
