@@ -1,10 +1,6 @@
-import Upload from './Upload';
-import FilePicker from './FilePicker';
-import FileList from './FileList';
-import FileRow from './FileRow';
-import FilePickerBtn from './FilePickerBtn';
-import UploadProgressBar from './UploadProgressBar';
-
-export default Upload;
-
-export { FilePicker, FileList, FileRow, FilePickerBtn, UploadProgressBar };
+export { default } from './src/Upload';
+export { default as FilePicker } from './src/FilePicker';
+export { default as FileList } from './src/FileList';
+export { default as FileRow } from './src/FileRow';
+export { default as FilePickerBtn } from './src/FilePickerBtn';
+export { default as UploadProgressBar } from './src/UploadProgressBar';

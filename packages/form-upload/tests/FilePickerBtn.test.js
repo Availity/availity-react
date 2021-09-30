@@ -14,10 +14,7 @@ const renderFilePickerBtn = (formProps, buttonProps) =>
 
 describe('FilePickerBtn', () => {
   test('should render', () => {
-    const { container } = renderFilePickerBtn(
-      { initialValues: { file: null } },
-      { name: 'file', onChange: () => {} }
-    );
+    const { container } = renderFilePickerBtn({ initialValues: { file: null } }, { name: 'file', onChange: () => {} });
     expect(container).toBeDefined();
   });
 });

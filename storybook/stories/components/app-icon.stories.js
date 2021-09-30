@@ -2,10 +2,11 @@ import React from 'react';
 import { storiesOf } from '@storybook/react';
 import { withKnobs, text, boolean, select } from '@storybook/addon-knobs';
 
-import AppIcon from '@availity/app-icon';
 import README from '@availity/app-icon/README.md';
 
 import { Preview } from '../util';
+
+const AppIcon = React.lazy(() => import('@availity/app-icon'));
 
 storiesOf('Components/AppIcon', module)
   .addParameters({
@@ -35,7 +36,7 @@ storiesOf('Components/AppIcon', module)
           Green: 'green',
           Orange: 'orange',
         },
-        AppIcon.defaultProps.color
+        'black'
       )}
       branded={boolean('Branded', false)}
       className={text('ClassName')}

@@ -1,10 +1,9 @@
 export interface DisclaimerProps {
-    tag?: React.ReactType | string;
-    className?: string;
-    styled?: boolean;
-    children?: React.ReactType;
+  tag?: React.ReactType | string;
+  className?: string;
+  styled?: boolean;
 }
 
-declare const Disclaimer: React.FunctionComponent<DisclaimerProps>;
+declare const Disclaimer: React.FC<DisclaimerProps>;
 
 export default Disclaimer;

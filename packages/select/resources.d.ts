@@ -1,6 +1,6 @@
 /* eslint-disable max-classes-per-file, @typescript-eslint/no-empty-interface */
 import * as React from 'react';
-import ResourceSelect, { ResourceSelectProps } from './typings/ResourceSelect';
+import ResourceSelect, { ResourceSelectProps } from './types/ResourceSelect';
 
 export interface AvRegionSelectProps<T> extends ResourceSelectProps<T> {
   defaultToCurrentRegion?: boolean;

@@ -3,6 +3,25 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [2.3.1](https://github.com/Availity/availity-react/compare/@availity/link@2.3.0...@availity/link@2.3.1) (2021-09-28)
+
+**Note:** Version bump only for package @availity/link
+
+
+
+
+
+# 2.3.0 (2021-09-20)
+
+
+### Features
+
+* **link:** adding underline for all links 508 compliance ([72d6190](https://github.com/Availity/availity-react/commit/72d61903fea4057e6465e8c991711a9a0b2705d0))
+
+
+
+
+
 ## 2.2.3 (2021-07-12)
 
 

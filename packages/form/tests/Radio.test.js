@@ -22,11 +22,7 @@ describe('Radio', () => {
       >
         <RadioGroup name="greeting" label="Radio Group">
           <Radio label="Hello" value="hello" data-testid="greeting-radio-1" />
-          <Radio
-            label="Goodbye"
-            value="goodbye"
-            data-testid="greeting-radio-2"
-          />
+          <Radio label="Goodbye" value="goodbye" data-testid="greeting-radio-2" />
         </RadioGroup>
         <Button type="submit">Submit</Button>
       </Form>
@@ -61,11 +57,7 @@ describe('Radio', () => {
       >
         <RadioGroup name="greeting" label="Radio Group">
           <Radio label="Hello" value="hello" data-testid="greeting-radio-1" />
-          <Radio
-            label="Goodbye"
-            value="goodbye"
-            data-testid="greeting-radio-2"
-          />
+          <Radio label="Goodbye" value="goodbye" data-testid="greeting-radio-2" />
         </RadioGroup>
         <Button type="submit">Submit</Button>
       </Form>
@@ -134,6 +126,23 @@ describe('Radio', () => {
     expect(el).toBeDefined();
   });
 
+  test('renders with field help icon', async () => {
+    const { getByTestId } = render(
+      <Form
+        initialValues={{
+          hello: '',
+        }}
+        onSubmit={() => {}}
+      >
+        <RadioGroup name="hello" label="Radio Group">
+          <Radio name="hello" label="Radio One" value="uno" helpId="radioOneHelpTopic" />
+        </RadioGroup>
+      </Form>
+    );
+
+    expect(getByTestId('field-help-icon')).toBeDefined();
+  });
+
   test('should generate uuid even when id is not added', () => {
     const { container } = render(
       <Form initialValues={{ name: 'John' }} onSubmit={() => {}}>
@@ -156,5 +165,36 @@ describe('Radio', () => {
     );
 
     expect(container.querySelector('input').getAttribute('id')).toEqual('test');
+  });
+
+  test('should render appropriate aria-attributes', async () => {
+    const { getByText, getByTestId } = render(
+      <Form
+        initialValues={{
+          hello: '',
+        }}
+        validationSchema={yup.object().shape({
+          hello: yup.string().required('This field is required'),
+        })}
+        onSubmit={() => {}}
+      >
+        <RadioGroup name="hello" label="Radio Group">
+          <Radio name="hello" label="Radio One" value="uno" data-testid="hello-radio" />
+        </RadioGroup>
+        <Button type="submit">Submit</Button>
+      </Form>
+    );
+
+    const radio = getByTestId('hello-radio');
+    expect(radio).toHaveAttribute('aria-invalid', 'false');
+    expect(radio).toHaveAttribute('aria-describedby', '');
+
+    await fireEvent.click(getByText('Submit'));
+
+    await waitFor(() => {
+      expect(radio).toHaveAttribute('aria-invalid', 'true');
+      expect(radio).toHaveAttribute('aria-describedby', 'hello-feedback');
+      expect(getByText('This field is required')).toHaveAttribute('id', 'hello-feedback');
+    });
   });
 });

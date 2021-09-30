@@ -18,11 +18,7 @@ describe('RadioGroup', () => {
           hello: yup.string().required('This field is required'),
         })}
       >
-        <RadioGroup
-          name="hello"
-          label="Radio Group"
-          groupClassName="some-group"
-        >
+        <RadioGroup name="hello" label="Radio Group" groupClassName="some-group">
           <Radio label="Radio One" value="uno" />
         </RadioGroup>
         <Button type="submit">Submit</Button>
@@ -146,5 +142,26 @@ describe('RadioGroup', () => {
     const radioGroup = getByTestId('radio-items-hello');
     const formGroup = radioGroup.children[0];
     expect(formGroup.className).toContain('form-check-inline');
+  });
+
+  test('renders field help icon', async () => {
+    const { getByTestId } = render(
+      <Form
+        initialValues={{
+          hello: '',
+        }}
+        onSubmit={() => {}}
+        validationSchema={yup.object().shape({
+          hello: yup.string().required('This field is required'),
+        })}
+      >
+        <RadioGroup name="hello" label="Radio Group" helpId="helloHelpTopic">
+          <Radio label="Radio One" value="uno" />
+        </RadioGroup>
+        <Button type="submit">Submit</Button>
+      </Form>
+    );
+
+    expect(getByTestId('field-help-icon')).toBeDefined();
   });
 });

@@ -1,9 +1,10 @@
 {
   "name": "@availity/feedback",
-  "version": "5.7.0",
+  "version": "6.0.7",
   "author": "Evan Sharp <evan.sharp@availity.com>",
-  "description": "Availity feedback with simley faces react component.",
+  "description": "Availity feedback with smiley faces react component.",
   "main": "index.js",
+  "types": "index.d.ts",
   "keywords": [
     "react",
     "availity"
@@ -20,17 +21,16 @@
     "access": "public"
   },
   "dependencies": {
-    "@availity/form": "^0.5.34",
-    "@availity/hooks": "^3.0.2",
-    "@availity/icon": "^0.8.0",
+    "@availity/form": "^0.7.1",
+    "@availity/hooks": "^3.0.3",
+    "@availity/icon": "^0.8.1",
     "@availity/native-form": "^3.0.0",
-    "@availity/select": "^0.17.10",
+    "@availity/select": "^0.18.2",
     "prop-types": "^15.7.2"
   },
   "devDependencies": {
     "@availity/api-axios": "^5.5.14",
     "@availity/api-core": "^7.0.2",
-    "@availity/localstorage-core": "^3.0.0",
     "@availity/yup": "^3.0.11",
     "axios": "^0.21.1",
     "formik": "^2.2.8",
@@ -42,9 +42,8 @@
   "peerDependencies": {
     "@availity/api-axios": ">=2.0.0",
     "@availity/api-core": ">=2.0.0",
-    "@availity/localstorage-core": "^2.6.1",
     "@availity/yup": "^3.0.11",
-    "axios": "^0.19.2",
+    "axios": "^0.21.1",
     "formik": "^2.0.1",
     "react": ">=16.3.0",
     "reactstrap": "^8.0.0 || ^7.0.0 || ^6.0.0",

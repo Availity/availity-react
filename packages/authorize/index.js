@@ -1,6 +1,2 @@
-import Authorize from './Authorize';
-import useAuthorize from './useAuthorize';
-
-export { useAuthorize };
-
-export default Authorize;
+export { default } from './src/Authorize';
+export { default as useAuthorize } from './src/useAuthorize';

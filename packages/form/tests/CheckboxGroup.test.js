@@ -19,11 +19,7 @@ describe('CheckboxGroup', () => {
           hello: yup.array().required('At least one checkbox is required'),
         })}
       >
-        <CheckboxGroup
-          name="hello"
-          label="Checkbox Group"
-          groupClassName="some-group"
-        >
+        <CheckboxGroup name="hello" label="Checkbox Group" groupClassName="some-group">
           <Checkbox label="Chcek One" value="uno" />
         </CheckboxGroup>
         <Button type="submit">Submit</Button>
@@ -64,6 +60,24 @@ describe('CheckboxGroup', () => {
       expect(checkboxGroup.className).toContain('is-touched');
       expect(checkboxGroup.className).toContain('is-invalid');
     });
+  });
+
+  test('renders with field help icon', () => {
+    const { getByTestId } = render(
+      <Form
+        initialValues={{
+          hello: '',
+        }}
+        onSubmit={() => {}}
+      >
+        <CheckboxGroup name="hello" label="Checkbox Group" helpId="helloHelpTopic">
+          <Checkbox label="Check One" value="uno" />
+        </CheckboxGroup>
+        <Button type="submit">Submit</Button>
+      </Form>
+    );
+
+    expect(getByTestId('field-help-icon')).toBeDefined();
   });
 
   test('submits with proper radio values', async () => {

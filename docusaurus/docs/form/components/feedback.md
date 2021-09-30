@@ -22,7 +22,7 @@ const Example = () => (
   >
     <FormGroup>
       <Label>Hello Field</Label>
-      <Input name="hello" />
+      <Input name="hello" feedback="true" />
       <FormFeedback name="hello" />
     </FormGroup>
     <Button type="submit" color="primary">

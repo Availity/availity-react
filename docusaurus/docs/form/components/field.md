@@ -30,7 +30,7 @@ const Example = () => (
 );
 ```
 
-#### Live example: <a href="https://availity.github.io/availity-react/storybook/?path=/story/formik-form--field"> Storybook</a>
+#### Live example: [Storybook](https://availity.github.io/availity-react/storybook/?path=/story/formik-form--field)
 
 ### Props
 
@@ -69,6 +69,10 @@ Class names passed to the input tag.
 #### `labelClass?: string`
 
 Class names passed to the label tag.
+
+#### `helpId?: string`
+
+Help topic id, adds `<FieldHelpIcon/>` next to the label (should not be within label for accessibility).
 
 #### `helpMessage?: React.ReactNode`
 

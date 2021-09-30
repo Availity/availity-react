@@ -3,6 +3,100 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [6.0.7](https://github.com/Availity/availity-react/compare/@availity/feedback@6.0.6...@availity/feedback@6.0.7) (2021-09-28)
+
+**Note:** Version bump only for package @availity/feedback
+
+
+
+
+
+## [6.0.6](https://github.com/Availity/availity-react/compare/@availity/feedback@6.0.5...@availity/feedback@6.0.6) (2021-09-27)
+
+
+### Bug Fixes
+
+* **feedback:** fixed story for feedback form and added type ([c0cd899](https://github.com/Availity/availity-react/commit/c0cd8998fe0dc17ae8462872955b4cce0164a9ad))
+
+
+
+
+
+## 6.0.5 (2021-09-23)
+
+
+### Bug Fixes
+
+* **feedback:** fixed focus issue for feedback in dropdowns ([378dec1](https://github.com/Availity/availity-react/commit/378dec16ee7a83cb6f078384a6bee642b32b6a21))
+
+
+
+
+
+## [6.0.4](https://github.com/Availity/availity-react/compare/@availity/feedback@6.0.3...@availity/feedback@6.0.4) (2021-09-17)
+
+**Note:** Version bump only for package @availity/feedback
+
+
+
+
+
+## [6.0.3](https://github.com/Availity/availity-react/compare/@availity/feedback@6.0.2...@availity/feedback@6.0.3) (2021-09-13)
+
+**Note:** Version bump only for package @availity/feedback
+
+
+
+
+
+## [6.0.2](https://github.com/Availity/availity-react/compare/@availity/feedback@6.0.1...@availity/feedback@6.0.2) (2021-09-13)
+
+**Note:** Version bump only for package @availity/feedback
+
+
+
+
+
+## [6.0.1](https://github.com/Availity/availity-react/compare/@availity/feedback@6.0.0...@availity/feedback@6.0.1) (2021-09-09)
+
+**Note:** Version bump only for package @availity/feedback
+
+
+
+
+
+# [6.0.0](https://github.com/Availity/availity-react/compare/@availity/feedback@5.8.0...@availity/feedback@6.0.0) (2021-09-03)
+
+
+### Bug Fixes
+
+* **feedback:** fixes description, version from previous release ([f0426d0](https://github.com/Availity/availity-react/commit/f0426d0fb0e5305de6d2ac9ae788fe12be80b887))
+
+
+### BREAKING CHANGES
+
+* **feedback:** aboutLabel replaces aboutPlaceholder
+
+
+
+
+
+# 5.8.0 (2021-09-03)
+
+
+### Bug Fixes
+
+* **feedback:** remove face option test placeholder ([0ab9f09](https://github.com/Availity/availity-react/commit/0ab9f093ee8566acabd4f6ec2d645edb6595ea1a))
+
+
+### Features
+
+* **feedback:** accessibility and responsiveness updates ([69bb19d](https://github.com/Availity/availity-react/commit/69bb19d5d23a8fba01af748de541ada09acf6424))
+
+
+
+
+
 # 5.7.0 (2021-07-20)
 
 

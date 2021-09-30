@@ -9,13 +9,9 @@ export interface ProviderContextValues {
   addFavorite: (id: string) => void;
 }
 
-interface FavoritesProps {
-  children?: React.ReactNode;
-}
-
 export type FavoritesContext = React.Context<ProviderContextValues>;
 
-declare const Favorites: React.FunctionComponent<FavoritesProps>;
+declare const Favorites: React.FC;
 
 declare function useFavorites(id: string): [string, () => void];
 

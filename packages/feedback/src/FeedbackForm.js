@@ -1,13 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
-import {
-  Button,
-  ModalBody,
-  ModalHeader,
-  ModalFooter,
-  FormGroup,
-  Label,
-} from 'reactstrap';
+import { Button, ModalBody, ModalHeader, ModalFooter, FormGroup } from 'reactstrap';
 import { avLogMessagesApi, avRegionsApi } from '@availity/api-axios';
 import { Form, Field } from '@availity/form';
 import { SelectField } from '@availity/select';
@@ -28,12 +21,15 @@ yup.addMethod(yup.string, 'isRequired', function format(isRequired, msg) {
   });
 });
 
+const fieldStyles = { resize: 'none' };
+const inlineStyles = { display: 'inline-block', margin: 0 };
+
 const FeedbackForm = ({
   name,
   onClose,
   faceOptions,
   aboutOptions,
-  aboutPlaceholder,
+  aboutLabel,
   onFeedbackSent,
   prompt,
   additionalComments,
@@ -42,6 +38,7 @@ const FeedbackForm = ({
   modalHeaderProps,
   showSupport,
   setSupportIsActive,
+  autoFocusFeedbackButton,
   ...formProps
 }) => {
   const [active, setActive] = useState(null);
@@ -73,9 +70,7 @@ const FeedbackForm = ({
           onClose(); // Mostly for Screen Reader use but a nice to have for all
         }
         if (onFeedbackSent) {
-          Object.keys(sent).forEach(
-            (key) => sent[key] === undefined && delete sent[key]
-          );
+          Object.keys(sent).forEach((key) => sent[key] === undefined && delete sent[key]);
 
           onFeedbackSent({
             active: active.icon,
@@ -89,7 +84,7 @@ const FeedbackForm = ({
 
   return sent ? (
     <ModalHeader
-      aria-modal="false"
+      role="status"
       id="feedback-form-header"
       tabIndex="0"
       className="d-flex justify-content-center"
@@ -100,10 +95,11 @@ const FeedbackForm = ({
   ) : (
     <>
       <ModalHeader
-        aria-modal="false"
         id="feedback-form-header"
-        tag="h2"
-        tabIndex="0"
+        role="heading"
+        aria-level="2"
+        className="h5"
+        tag="div"
         {...modalHeaderProps}
       >
         {prompt || `Tell us what you think about ${name}`}
@@ -122,24 +118,17 @@ const FeedbackForm = ({
           smileField: undefined,
         }}
         validationSchema={yup.object().shape({
-          feedback: yup
-            .string()
-            .max(200, 'Additional Feedback cannot exceed 200 characters.')
-            .required('This field is required.'),
-          additionalFeedback: yup
-            .string()
-            .max(200, 'Additional Feedback cannot exceed 200 characters.'),
+          feedback: yup.string().max(200, 'Feedback cannot exceed 200 characters.').required('This field is required.'),
+          additionalFeedback: yup.string().max(200, 'Additional Feedback cannot exceed 200 characters.'),
           smileField: yup
             .object()
             .shape({
               icon: yup.string().required(),
               description: yup.string(),
-              placeholder: yup.string(),
+              label: yup.string(),
             })
             .required('This field is required.'),
-          feedbackApp: yup
-            .string()
-            .isRequired(aboutOptions.length > 0, 'This field is required.'),
+          feedbackApp: yup.string().isRequired(aboutOptions.length > 0, 'This field is required.'),
         })}
         {...formProps}
         onSubmit={(values) => sendFeedback(values)}
@@ -149,6 +138,7 @@ const FeedbackForm = ({
             size="lg"
             id="face-options"
             role="group"
+            aria-labelledby="feedback-form-header"
             data-testid="face-options"
             className="d-flex flex-row justify-content-between"
           >
@@ -156,6 +146,7 @@ const FeedbackForm = ({
               options={faceOptions}
               name="smileField"
               onChange={(option) => setActive(option)}
+              autoFocusFeedbackButton={autoFocusFeedbackButton}
             />
           </FormGroup>
           {active ? (
@@ -165,30 +156,23 @@ const FeedbackForm = ({
                   name="feedbackApp"
                   id="about-options"
                   data-testid="about-options"
-                  placeholder={aboutPlaceholder}
+                  label={aboutLabel}
                   options={aboutOptions}
                 />
               )}
-              <Label for="feedback_input">
-                {(active && active.label) || 'Feedback? Requests? Defects?'}
-              </Label>
               <Field
                 type="textarea"
                 name="feedback"
-                placeholder={
-                  (active && active.placeholder) ||
-                  'Feedback? Requests? Defects?'
-                }
-                style={{ resize: 'none' }}
+                label={(active && active.label) || 'Feedback? Requests? Defects?'}
+                style={fieldStyles}
                 rows="2"
-                id="feedback_input"
               />
               {additionalComments && (
                 <Field
                   type="textarea"
                   name="additionalFeedback"
-                  placeholder="Additional Comments... (Optional)"
-                  style={{ resize: 'none' }}
+                  label="Additional Comments... (Optional)"
+                  style={fieldStyles}
                   rows="2"
                 />
               )}
@@ -199,7 +183,7 @@ const FeedbackForm = ({
         <ModalFooter>
           {showSupport ? (
             <>
-              <span style={{ display: 'inline-block', margin: 0 }}>
+              <span className="d-none d-md-block" style={inlineStyles}>
                 Need Help?
               </span>
               <Button
@@ -207,9 +191,7 @@ const FeedbackForm = ({
                 onClick={() => setSupportIsActive(true)}
                 color="link"
                 type="button"
-                onKeyDown={({ keyCode }) =>
-                  keyCode === 13 && setSupportIsActive(true)
-                }
+                onKeyDown={({ keyCode }) => keyCode === 13 && setSupportIsActive(true)}
               >
                 Open a support ticket
               </Button>
@@ -217,11 +199,7 @@ const FeedbackForm = ({
           ) : null}
 
           {onClose ? (
-            <Button
-              onClick={onClose}
-              color="secondary"
-              onKeyDown={({ keyCode }) => keyCode === 13 && onClose()}
-            >
+            <Button onClick={onClose} color="secondary" onKeyDown={({ keyCode }) => keyCode === 13 && onClose()}>
               Close
             </Button>
           ) : null}
@@ -242,7 +220,7 @@ FeedbackForm.propTypes = {
     PropTypes.shape({
       icon: PropTypes.string,
       description: PropTypes.string,
-      placeholder: PropTypes.string,
+      label: PropTypes.string,
     })
   ),
   aboutOptions: PropTypes.arrayOf(
@@ -251,7 +229,7 @@ FeedbackForm.propTypes = {
       value: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
     })
   ),
-  aboutPlaceholder: PropTypes.node,
+  aboutLabel: PropTypes.node,
   onClose: PropTypes.func,
   prompt: PropTypes.string,
   additionalComments: PropTypes.bool,
@@ -262,11 +240,12 @@ FeedbackForm.propTypes = {
   }),
   showSupport: PropTypes.bool,
   setSupportIsActive: PropTypes.func,
+  autoFocusFeedbackButton: PropTypes.bool,
 };
 
 FeedbackForm.defaultProps = {
   aboutOptions: [],
-  aboutPlaceholder: 'This is about...',
+  aboutLabel: 'This is about',
   additionalComments: false,
   modalHeaderProps: {},
   analytics: avLogMessagesApi,

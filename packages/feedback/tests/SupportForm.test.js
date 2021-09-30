@@ -28,10 +28,7 @@ describe('SupportForm', () => {
     const setSupportIsActive = jest.fn();
     const setBlocking = jest.fn();
     const { container, getByText, getByTestId } = render(
-      <SupportForm
-        setSupportIsActive={setSupportIsActive}
-        setBlocking={setBlocking}
-      />
+      <SupportForm setSupportIsActive={setSupportIsActive} setBlocking={setBlocking} />
     );
 
     avOrganizationsApi.postGet.mockResolvedValue({
@@ -108,9 +105,7 @@ describe('SupportForm', () => {
 
     await fireEvent.click(getByTestId('submit-btn'));
 
-    await waitFor(() =>
-      expect(avOrganizationsApi.getOrganizations).toHaveBeenCalledTimes(1)
-    );
+    await waitFor(() => expect(avOrganizationsApi.getOrganizations).toHaveBeenCalledTimes(1));
     expect(avWebQLApi.create).toHaveBeenCalledTimes(1);
     expect(nativeForm).toHaveBeenCalledTimes(1);
 
@@ -119,13 +114,20 @@ describe('SupportForm', () => {
     expect(nativeForm.mock.calls[0][1].organizationName).toBe('Org 1');
     expect(nativeForm.mock.calls[0][1].partyId).toBe('org1');
     expect(nativeForm.mock.calls[0][1].payerId).toBe('AVAILITY');
-    expect(nativeForm.mock.calls[0][1].X_Client_ID).toBe(
-      '5430d59f-c5cc-4be7-be5a-34472ec30fe9'
-    );
+    expect(nativeForm.mock.calls[0][1].X_Client_ID).toBe('5430d59f-c5cc-4be7-be5a-34472ec30fe9');
     expect(nativeForm.mock.calls[0][1].X_XSRF_TOKEN).toBeDefined();
-    expect(nativeForm.mock.calls[0][2].action).toBe(
-      '/ms/api/availity/internal/spc/magneto/sso/v1/saml/E-t_s_JQ0P'
-    );
+    expect(nativeForm.mock.calls[0][2].action).toBe('/ms/api/availity/internal/spc/magneto/sso/v1/saml/E-t_s_JQ0P');
     expect(nativeForm.mock.calls[0][2].target).toBe('_blank');
+  });
+
+  test('should render default heading as div with stylings of h5', () => {
+    const { getByText } = render(<SupportForm />);
+
+    const header = getByText('Open Support Ticket');
+
+    expect(header.parentElement).toHaveClass('h5');
+    expect(header.parentElement).toHaveAttribute('role', 'heading');
+    expect(header.parentElement).toHaveAttribute('aria-level', '2');
+    expect(header.tagName).toEqual('DIV');
   });
 });

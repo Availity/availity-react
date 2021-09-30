@@ -6,13 +6,7 @@ import 'react-block-ui/style.css';
 
 import SupportForm from './SupportForm';
 
-const SupportModal = ({
-  supportIsActive,
-  toggle,
-  supportZIndex,
-  setSupportIsActive,
-  feedbackToggle,
-}) => {
+const SupportModal = ({ supportIsActive, toggle, supportZIndex, setSupportIsActive, feedbackToggle }) => {
   const [blocking, setBlocking] = useState(null);
 
   return (
@@ -20,10 +14,7 @@ const SupportModal = ({
       fade
       id="supportModal"
       data-testid="supportModal"
-      tabIndex="-1"
-      role="dialog"
       aria-labelledby="support-form-header"
-      aria-hidden="true"
       isOpen={supportIsActive}
       toggle={toggle}
       zIndex={supportZIndex}

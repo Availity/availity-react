@@ -6,15 +6,18 @@ import StoryRouter from 'storybook-react-router';
 import { linkTo } from '@storybook/addon-links';
 import { BreadcrumbItem } from 'reactstrap';
 
-import Breadcrumbs from '@availity/breadcrumbs';
 import README from '@availity/breadcrumbs/README.md';
 
 import { Preview } from '../util';
 
+const Breadcrumbs = React.lazy(() => import('@availity/breadcrumbs'));
+
+const emptyState = '..';
+
 const ReactRouterBreadcrumbs = () => (
   <div>
     <Breadcrumbs
-      emptyState={text('Empty State', Breadcrumbs.defaultProps.emptyState)}
+      emptyState={text('Empty State', emptyState)}
       active={text('Active Page', 'React Router Breadcrumb')}
       homeUrl={text('Home Url', 'public/apps/dashboard')}
     >
@@ -28,9 +31,8 @@ const ReactRouterBreadcrumbs = () => (
       <li>react-router Integration</li>
     </ul>
     <p>
-      In this case we are using react-router to navigate from one page to
-      another, but any custom content (as long as it is inside a react-strap
-      BreadcrumbItem) can be used.
+      In this case we are using react-router to navigate from one page to another, but any custom content (as long as it
+      is inside a react-strap BreadcrumbItem) can be used.
     </p>
   </div>
 );
@@ -65,7 +67,7 @@ storiesOf('Components/Breadcrumbs', module)
   )
   .add('default', () => (
     <Breadcrumbs
-      emptyState={text('Empty State', Breadcrumbs.defaultProps.emptyState)}
+      emptyState={text('Empty State', emptyState)}
       active={text('Active Page', 'Payer Spaces')}
       homeUrl={text('Home Url', 'public/apps/dashboard')}
     />
@@ -74,7 +76,7 @@ storiesOf('Components/Breadcrumbs', module)
   .add('with parents', () => (
     <Breadcrumbs
       homeUrl={text('Home Url', 'public/apps/dashboard')}
-      emptyState={text('Empty State', Breadcrumbs.defaultProps.emptyState)}
+      emptyState={text('Empty State', emptyState)}
       crumbs={[
         { name: 'Grand Parent', url: '/grand-parent' },
         { name: 'Parent', url: '/parent' },

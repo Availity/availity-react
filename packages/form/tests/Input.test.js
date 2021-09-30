@@ -124,4 +124,32 @@ describe('Input', () => {
     expect(input.getAttribute('value')).toBe('true');
     expect(input.getAttribute('checked')).toBe(''); // null would mean its not checked...
   });
+
+  test('should render appropriate aria-attributes', async () => {
+    const { getByTestId, getByText } = render(
+      <Form
+        initialValues={{
+          hello: '',
+        }}
+        onSubmit={() => {}}
+        validationSchema={yup.object().shape({
+          hello: yup.string().required(),
+        })}
+      >
+        <Input name="hello" data-testid="hello-input" />
+        <Button type="submit">Submit</Button>
+      </Form>
+    );
+
+    const input = getByTestId('hello-input');
+    expect(input).toHaveAttribute('aria-invalid', 'false');
+    expect(input).toHaveAttribute('aria-describedby', '');
+
+    await fireEvent.click(getByText('Submit'));
+
+    await waitFor(() => {
+      expect(input).toHaveAttribute('aria-invalid', 'true');
+      expect(input).toHaveAttribute('aria-describedby', ''); // left blank if no feedback
+    });
+  });
 });

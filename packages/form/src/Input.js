@@ -4,14 +4,7 @@ import classNames from 'classnames';
 import { Input as RsInput } from 'reactstrap';
 import { useField } from 'formik';
 
-const Input = ({
-  tag: Tag,
-  className,
-  onChange: propsOnChange,
-  validate,
-  name,
-  ...rest
-}) => {
+const Input = ({ tag: Tag, className, onChange: propsOnChange, validate, name, feedback, help, ...rest }) => {
   const [{ onChange, ...field }, metadata] = useField({
     name,
     validate,
@@ -22,11 +15,12 @@ const Input = ({
     metadata.touched ? 'is-touched' : 'is-untouched',
     metadata.error ? 'av-invalid' : 'av-valid',
     metadata.touched && metadata.error && 'is-invalid',
-    rest.type === 'checkbox' &&
-      metadata.touched &&
-      metadata.error &&
-      'was-validated'
+    rest.type === 'checkbox' && metadata.touched && metadata.error && 'was-validated'
   );
+
+  const error = !!metadata.touched && !!metadata.error;
+  const feedbackId = error && feedback ? `${name}-feedback`.toLowerCase() : '';
+  const helpMessageId = help ? ` ${name}-helpmessage`.toLowerCase() : '';
 
   const extraProps = {};
 
@@ -44,6 +38,8 @@ const Input = ({
         }
       }}
       name={name}
+      invalid={error}
+      aria-describedby={feedbackId + helpMessageId}
       {...field}
       {...extraProps}
       {...rest}
@@ -57,6 +53,8 @@ Input.propTypes = {
   validate: PropTypes.func,
   name: PropTypes.string.isRequired,
   onChange: PropTypes.func,
+  feedback: PropTypes.bool,
+  help: PropTypes.bool,
 };
 
 Input.defaultProps = {

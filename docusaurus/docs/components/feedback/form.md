@@ -13,7 +13,7 @@ import { FeedbackForm } from '@availity/feedback';
 const Example = () => <FeedbackForm name="Payer Space" />;
 ```
 
-#### Live example: <a href="https://availity.github.io/availity-react/storybook/?path=/story/components-feedback--with-form"> Storybook</a>
+#### Live example: [Storybook](https://availity.github.io/availity-react/storybook/?path=/story/components-feedback--with-form)
 
 ### Props
 
@@ -27,15 +27,19 @@ Callback for when the feedback is submitted. It is called with the feedback obje
 
 #### `faceOptions?: object[]`
 
-Array of Objects containing **`icon`** (String), **`description`** (String), and **`placeholder`** (String) properties. Allows you to override the smiley face options which appear. Default: Smiley Face, Meh Face, and Frowny Face.
+Array of Objects containing **`icon`** (String), **`description`** (String), and **`label`** (String) properties. Allows you to override the smiley face options which appear. Default: Smiley Face, Meh Face, and Frowny Face.
+
+> Previous `placeholder` property removed as of v6.0.0. Use `label` instead.
 
 #### `aboutOptions?: object[]`
 
 Array of Objects containing **`value`** (String,Number) and **`label`** (String) properties. Allows a dropdown displaying the options provided to let the user indicate what the feedback is about.
 
-#### `aboutPlaceholder?: node`
+#### `aboutLabel?: node`
 
-Placeholder text for the dropdown created via the `aboutOptions` prop. **Default:** `"This is about..."`.
+Label text for the dropdown created via the `aboutOptions` prop. **Default:** `"This is about"`.
+
+> Previously `aboutPlaceholder`. All placeholders replaced with labels starting v6.0.0.
 
 #### `onClose?: () => void`
 
@@ -53,9 +57,15 @@ If `true`, shows an optional comments field below.
 
 Static (non-user-entered) key/value pairs to be sent in feedback submission.
 
+#### `autoFocusFeedbackButton?: bool`
+
+Default: ```true```. When set to false, the first feedback button is not focused. This is to avoid issues with focus causing other elements to close (e.g. dropdowns)
+
 #### `modalHeaderProps?: ModalHeaderProps`
 
 Props to be spread onto the `<ModalHeader />` rendered inside of the `<FeedbackForm />`. See [ModalHeader](https://github.com/reactstrap/reactstrap/blob/master/src/ModalHeader.js)
+
+> For accessibility use `className` instead of `tag` to adjust size and style of header.
 
 #### `...rest`
 

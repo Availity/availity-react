@@ -1,4 +1,2 @@
-import Agreement from './src/Agreement';
-import Disclaimer from './src/Disclaimer';
-
-export { Agreement, Disclaimer };
+export { default as Agreement } from './types/Agreement';
+export { default as Disclaimer } from './types/Disclaimer';

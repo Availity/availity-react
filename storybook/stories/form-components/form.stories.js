@@ -1,18 +1,10 @@
 import React from 'react';
 import { storiesOf } from '@storybook/react';
-import { withKnobs, boolean } from '@storybook/addon-knobs';
+import { withKnobs, boolean, text } from '@storybook/addon-knobs';
 import { Button } from 'reactstrap';
 import * as yup from 'yup';
 
-import {
-  Field,
-  Input,
-  Checkbox,
-  CheckboxGroup,
-  RadioGroup,
-  Radio,
-  FormGroup,
-} from '@availity/form';
+import { Field, Input, Checkbox, CheckboxGroup, RadioGroup, Radio, FormGroup } from '@availity/form';
 import '@availity/yup';
 import README from '@availity/form/README.md';
 
@@ -34,9 +26,7 @@ storiesOf('Form Components/Form', module)
         hello: '',
       }}
       validationSchema={yup.object().shape({
-        hello: yup
-          .string()
-          .isRequired(boolean('Required', false), 'This field is required.'),
+        hello: yup.string().isRequired(boolean('Required', false), 'This field is required.'),
       })}
     >
       <Field name="hello" type="text" label="Hello" />
@@ -72,9 +62,7 @@ storiesOf('Form Components/Form', module)
         hello: '',
       }}
       validationSchema={yup.object().shape({
-        hello: yup
-          .string()
-          .isRequired(boolean('Required', false), 'This field is required.'),
+        hello: yup.string().isRequired(boolean('Required', false), 'This field is required.'),
       })}
     >
       <FormGroup name="hello" data-testid="hello-group">
@@ -85,9 +73,7 @@ storiesOf('Form Components/Form', module)
   ))
   .add('Field', () => {
     const schema = yup.object().shape({
-      hello: yup
-        .string()
-        .isRequired(boolean('Required', false), 'This field is required.'),
+      hello: yup.string().isRequired(boolean('Required', false), 'This field is required.'),
     });
 
     return (
@@ -97,7 +83,13 @@ storiesOf('Form Components/Form', module)
         }}
         validationSchema={schema}
       >
-        <Field name="hello" type="text" label="Hello" />
+        <Field
+          name="hello"
+          type="text"
+          label="Hello"
+          helpMessage={text('Help message', '')}
+          helpId={text('Help topic id', '')}
+        />
         <Button className="ml-1" color="primary" type="submit">
           Submit
         </Button>
@@ -107,9 +99,7 @@ storiesOf('Form Components/Form', module)
   .add('Checkbox', () => {
     const required = boolean('Required', false);
     const schema = yup.object().shape({
-      checkboxGroup: yup
-        .array()
-        .isRequired(required, 'At least one checkbox is required'),
+      checkboxGroup: yup.array().isRequired(required, 'At least one checkbox is required'),
     });
 
     return (
@@ -119,10 +109,10 @@ storiesOf('Form Components/Form', module)
         }}
         validationSchema={schema}
       >
-        <CheckboxGroup name="checkboxGroup" label="Checkbox Group">
-          <Checkbox label="Check One" value="uno" />
-          <Checkbox label="Check Two" value="dos" />
-          <Checkbox label="Check Three" value="tres" />
+        <CheckboxGroup name="checkboxGroup" helpId={text('Checkbox Group help topic id', '')} label="Checkbox Group">
+          <Checkbox groupName="checkboxGroup" label="Check One" value="uno" />
+          <Checkbox groupName="checkboxGroup" label="Check Two" value="dos" />
+          <Checkbox groupName="checkboxGroup" label="Check Three" value="tres" />
         </CheckboxGroup>
         <Button className="ml-1" color="primary" type="submit">
           Submit
@@ -132,9 +122,7 @@ storiesOf('Form Components/Form', module)
   })
   .add('Radio', () => {
     const schema = yup.object().shape({
-      hello: yup
-        .string()
-        .isRequired(boolean('Required', false), 'This field is required.'),
+      hello: yup.string().isRequired(boolean('Required', false), 'This field is required.'),
     });
 
     return (
@@ -144,10 +132,10 @@ storiesOf('Form Components/Form', module)
         }}
         validationSchema={schema}
       >
-        <RadioGroup name="hello" label="Radio Group">
-          <Radio label="Radio One" value="uno" />
-          <Radio label="Radio Two" value="dos" />
-          <Radio label="Radio Three" value="tres" />
+        <RadioGroup name="hello" label="Radio Group" helpId={text('Radio Group help topic id', '')}>
+          <Radio name="hello" label="Radio One" value="uno" />
+          <Radio name="hello" label="Radio Two" value="dos" />
+          <Radio name="hello" label="Radio Three" value="tres" />
         </RadioGroup>
         <Button className="ml-1" color="primary" type="submit">
           Submit

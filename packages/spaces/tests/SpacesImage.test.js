@@ -1,12 +1,7 @@
 import React from 'react';
 import { render, waitFor, cleanup } from '@testing-library/react';
 import { avWebQLApi } from '@availity/api-axios';
-import Spaces, {
-  SpacesLogo,
-  SpacesTile,
-  SpacesBillboard,
-  SpacesImage,
-} from '..';
+import Spaces, { SpacesLogo, SpacesTile, SpacesBillboard, SpacesImage } from '..';
 
 jest.mock('@availity/api-axios');
 
@@ -30,12 +25,14 @@ describe('SpacesImage', () => {
               items: [
                 {
                   id: '1',
+                  configurationId: '11',
                   images: {
                     logo: '/static/spaces/1/banner.png',
                   },
                 },
                 {
                   id: '2',
+                  configurationId: '22',
                   payerIDs: ['payer1'],
                   images: {
                     tile: '/static/spaces/2/tile.png',
@@ -44,6 +41,7 @@ describe('SpacesImage', () => {
                 },
                 {
                   id: '3',
+                  configurationId: '33',
                   url: '/some/path/to/a/image.png',
                 },
               ],
@@ -63,6 +61,7 @@ describe('SpacesImage', () => {
               items: [
                 {
                   id: '2',
+                  configurationId: '22',
                   payerIDs: ['payer1'],
                   images: {
                     tile: '/static/spaces/2/tile.png',
@@ -76,11 +75,7 @@ describe('SpacesImage', () => {
       });
 
     const MyComponent = () => (
-      <Spaces
-        spaceIds={['1', '1', '2', '2', '3']}
-        payerIds={['payer1', 'payer1']}
-        clientId="my-client-id"
-      >
+      <Spaces spaceIds={['1', '1', '2', '2', '3']} payerIds={['payer1', 'payer1']} clientId="my-client-id">
         <SpacesLogo spaceId="1" />
         <SpacesTile payerId="payer1" />
         <SpacesBillboard spaceId="2" />
@@ -106,14 +101,8 @@ describe('SpacesImage', () => {
 
     // Check that we did not query for duplicate ids
     expect(avWebQLApi.create).toHaveBeenCalledTimes(2);
-    expect(avWebQLApi.create.mock.calls[0][0].variables.ids).toEqual([
-      '1',
-      '2',
-      '3',
-    ]);
-    expect(avWebQLApi.create.mock.calls[1][0].variables.payerIDs).toEqual([
-      'payer1',
-    ]);
+    expect(avWebQLApi.create.mock.calls[0][0].variables.ids).toEqual(['1', '2', '3']);
+    expect(avWebQLApi.create.mock.calls[1][0].variables.payerIDs).toEqual(['payer1']);
   });
 
   it('renders spaces image from single space', async () => {
@@ -129,6 +118,7 @@ describe('SpacesImage', () => {
             items: [
               {
                 id: '1',
+                configurationId: '11',
                 images: {
                   logo: '/static/spaces/1/banner.png',
                 },
@@ -139,7 +129,7 @@ describe('SpacesImage', () => {
       },
     });
     const { getByTestId } = render(
-      <Spaces spaceIds={['1']} clientId="my-client-id">
+      <Spaces spaceIds={['11']} clientId="my-client-id">
         <SpacesLogo />
       </Spaces>
     );
@@ -161,6 +151,7 @@ describe('SpacesImage', () => {
             items: [
               {
                 id: '1',
+                configurationId: '11',
                 images: {
                   logo: '/static/spaces/1/banner.png',
                 },

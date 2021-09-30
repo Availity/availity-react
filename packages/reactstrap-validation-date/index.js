@@ -1,7 +1,4 @@
-import AvDate from './src/AvDate';
-import AvDateField from './src/AvDateField';
-import AvDateRange from './src/AvDateRange';
-import AvDateRangeField from './src/AvDateRangeField';
-
-export default AvDate;
-export { AvDate, AvDateField, AvDateRange, AvDateRangeField };
+export { default, default as AvDate } from './src/AvDate';
+export { default as AvDateField } from './src/AvDateField';
+export { default as AvDateRange } from './src/AvDateRange';
+export { default as AvDateRangeField } from './src/AvDateRangeField';

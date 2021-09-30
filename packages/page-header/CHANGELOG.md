@@ -3,6 +3,94 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [11.0.11](https://github.com/Availity/availity-react/compare/@availity/page-header@11.0.10...@availity/page-header@11.0.11) (2021-09-28)
+
+**Note:** Version bump only for package @availity/page-header
+
+
+
+
+
+## [11.0.10](https://github.com/Availity/availity-react/compare/@availity/page-header@11.0.9...@availity/page-header@11.0.10) (2021-09-27)
+
+**Note:** Version bump only for package @availity/page-header
+
+
+
+
+
+## [11.0.9](https://github.com/Availity/availity-react/compare/@availity/page-header@11.0.8...@availity/page-header@11.0.9) (2021-09-23)
+
+**Note:** Version bump only for package @availity/page-header
+
+
+
+
+
+## [11.0.8](https://github.com/Availity/availity-react/compare/@availity/page-header@11.0.7...@availity/page-header@11.0.8) (2021-09-20)
+
+**Note:** Version bump only for package @availity/page-header
+
+
+
+
+
+## [11.0.7](https://github.com/Availity/availity-react/compare/@availity/page-header@11.0.6...@availity/page-header@11.0.7) (2021-09-17)
+
+**Note:** Version bump only for package @availity/page-header
+
+
+
+
+
+## [11.0.6](https://github.com/Availity/availity-react/compare/@availity/page-header@11.0.5...@availity/page-header@11.0.6) (2021-09-15)
+
+**Note:** Version bump only for package @availity/page-header
+
+
+
+
+
+## [11.0.5](https://github.com/Availity/availity-react/compare/@availity/page-header@11.0.4...@availity/page-header@11.0.5) (2021-09-13)
+
+**Note:** Version bump only for package @availity/page-header
+
+
+
+
+
+## [11.0.4](https://github.com/Availity/availity-react/compare/@availity/page-header@11.0.3...@availity/page-header@11.0.4) (2021-09-13)
+
+**Note:** Version bump only for package @availity/page-header
+
+
+
+
+
+## [11.0.3](https://github.com/Availity/availity-react/compare/@availity/page-header@11.0.2...@availity/page-header@11.0.3) (2021-09-09)
+
+**Note:** Version bump only for package @availity/page-header
+
+
+
+
+
+## [11.0.2](https://github.com/Availity/availity-react/compare/@availity/page-header@11.0.1...@availity/page-header@11.0.2) (2021-09-03)
+
+**Note:** Version bump only for package @availity/page-header
+
+
+
+
+
+## 11.0.1 (2021-09-03)
+
+**Note:** Version bump only for package @availity/page-header
+
+
+
+
+
 # [11.0.0](https://github.com/Availity/availity-react/compare/@availity/page-header@10.1.1...@availity/page-header@11.0.0) (2021-07-27)
 
 

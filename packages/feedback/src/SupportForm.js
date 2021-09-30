@@ -10,29 +10,15 @@ import '@availity/yup';
 
 const SUPPORT_PERMISSION_ID = '7205';
 
-const ORG_VALIDATION_MESSAGE =
-  'Please select an organization from the dropdown.';
+const ORG_VALIDATION_MESSAGE = 'Please select an organization from the dropdown.';
 
-const getToken = () =>
-  document.cookie.replace(
-    /(?:(?:^|.*;\s*)XSRF-TOKEN\s*=\s*([^;]*).*$)|^.*$/,
-    '$1'
-  );
+const getToken = () => document.cookie.replace(/(?:(?:^|.*;\s*)XSRF-TOKEN\s*=\s*([^;]*).*$)|^.*$/, '$1');
 
-const openSupport = async (
-  values,
-  setBlocking,
-  setSupportIsActive,
-  feedbackToggle
-) => {
+const openSupport = async (values, setBlocking, setSupportIsActive, feedbackToggle) => {
   setBlocking(true);
-  const orgsResp = await avOrganizationsApi.getOrganizations(
-    SUPPORT_PERMISSION_ID
-  );
+  const orgsResp = await avOrganizationsApi.getOrganizations(SUPPORT_PERMISSION_ID);
   let salesforceResponse;
-  if (
-    orgsResp.data.organizations.some((org) => org.id === values.organization.id)
-  ) {
+  if (orgsResp.data.organizations.some((org) => org.id === values.organization.id)) {
     salesforceResponse = await avWebQLApi.create({
       query: `
         query salesforceUser($organizationId: ID!) {
@@ -75,9 +61,7 @@ const openSupport = async (
       attributes.avSalesForceContactAccId = salesforceData.accountId;
     }
 
-    href = `/ms/api/availity/internal/spc/magneto/sso/v1/saml/${
-      salesforceData.newCommunity ? newCommutySsoId : ssoId
-    }`;
+    href = `/ms/api/availity/internal/spc/magneto/sso/v1/saml/${salesforceData.newCommunity ? newCommutySsoId : ssoId}`;
 
     nativeForm(ssoId, attributes, { action: href, target: '_blank' });
     setBlocking(false);
@@ -111,7 +95,7 @@ yup.addMethod(yup.object, 'orgSelectTest', orgSelectTest);
 
 const SupportForm = ({ setSupportIsActive, setBlocking, feedbackToggle }) => (
   <>
-    <ModalHeader aria-live="assertive" id="support-form-header">
+    <ModalHeader id="support-form-header" role="heading" aria-level="2" className="h5" tag="div">
       Open Support Ticket
     </ModalHeader>
     <Form
@@ -129,13 +113,10 @@ const SupportForm = ({ setSupportIsActive, setBlocking, feedbackToggle }) => (
           .isRequired(ORG_VALIDATION_MESSAGE)
           .typeError(ORG_VALIDATION_MESSAGE),
       })}
-      onSubmit={(values) =>
-        openSupport(values, setBlocking, setSupportIsActive, feedbackToggle)
-      }
+      onSubmit={(values) => openSupport(values, setBlocking, setSupportIsActive, feedbackToggle)}
     >
       <ModalBody>
         <AvOrganizationSelect
-          id="organization"
           name="organization"
           label="Select an Organization"
           data-testid="org-dropdown"
@@ -148,9 +129,7 @@ const SupportForm = ({ setSupportIsActive, setBlocking, feedbackToggle }) => (
           onClick={() => setSupportIsActive(false)}
           color="secondary"
           type="button"
-          onKeyDown={({ keyCode }) =>
-            keyCode === 13 && setSupportIsActive(false)
-          }
+          onKeyDown={({ keyCode }) => keyCode === 13 && setSupportIsActive(false)}
         >
           Close
         </Button>

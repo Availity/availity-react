@@ -7,7 +7,7 @@ import {
   avUserApi,
   avCodesApi,
 } from '@availity/api-axios';
-import AvResourceSelect from './AvResourceSelect';
+import AvResourceSelect from './src/AvResourceSelect';
 
 const AvProviderSelect = AvResourceSelect.create({
   resource: avProvidersApi,
@@ -36,8 +36,7 @@ const AvNavigationSelect = AvResourceSelect.create({
 });
 const AvUserSelect = AvResourceSelect.create({
   resource: avUserApi,
-  getOptionLabel: (option) =>
-    `${option.firstName} ${option.lastName} (${option.id}) - ${option.userId}`,
+  getOptionLabel: (option) => `${option.firstName} ${option.lastName} (${option.id}) - ${option.userId}`,
 });
 const AvCodeSelect = AvResourceSelect.create({
   resource: avCodesApi,

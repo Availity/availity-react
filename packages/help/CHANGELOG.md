@@ -3,6 +3,41 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## 1.4.2 (2021-09-28)
+
+**Note:** Version bump only for package @availity/help
+
+
+
+
+
+## 1.4.1 (2021-09-17)
+
+
+### Bug Fixes
+
+* **help:** add icon to package.json ([da094ad](https://github.com/Availity/availity-react/commit/da094ad370b5281dc88f7e55c469dcc72f09d543))
+* **help:** made field help icon link not aria-hidden ([c6fc634](https://github.com/Availity/availity-react/commit/c6fc63468f136f89933fe3c78a7002eac73c72bc))
+* **help:** update docs and typings for accessibility ([a26804b](https://github.com/Availity/availity-react/commit/a26804b9f1f962c9a3573ff9cd23f1f4f7819b24))
+
+
+
+
+
+# 1.4.0 (2021-09-08)
+
+
+### Features
+
+* **help:** adding describedBy ([82c6601](https://github.com/Availity/availity-react/commit/82c660120f80987139016a4bdccb8d523c082c83))
+* **help:** adding instructions for voice over ([36ddbc0](https://github.com/Availity/availity-react/commit/36ddbc00c042978a78b3012b449e8b1e151c1698))
+* **help:** changing aria-label ([f9d6c26](https://github.com/Availity/availity-react/commit/f9d6c26455b25043e40d8d1fa9a85afd909ec88b))
+* **help:** making help accessible ([322004d](https://github.com/Availity/availity-react/commit/322004d0c0c62b9f1daa2692225e6f165e4059a6))
+
+
+
+
+
 ## 1.3.11 (2021-06-01)
 
 **Note:** Version bump only for package @availity/help

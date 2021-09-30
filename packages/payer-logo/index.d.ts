@@ -1,3 +1,2 @@
-import PayerLogo from './PayerLogo';
-
-export default PayerLogo;
+export { default } from './types/PayerLogo';
+export * from './types/PayerLogo';

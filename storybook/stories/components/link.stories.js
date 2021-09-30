@@ -2,9 +2,10 @@ import React from 'react';
 import { storiesOf } from '@storybook/react';
 
 import README from '@availity/link/README.md';
-import Link from '@availity/link';
 
 import { Preview } from '../util';
+
+const Link = React.lazy(() => import('@availity/link'));
 
 storiesOf('Components/Link', module)
   .addParameters({

@@ -11,6 +11,7 @@ exports[`TrainingLink should not render with link and name 1`] = `
     <a
       href="http://catvidoes.com"
       rel="noopener noreferrer"
+      style="text-decoration: underline;"
       target="_blank"
     >
       Watch a demo

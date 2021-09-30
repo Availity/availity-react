@@ -1,9 +1,10 @@
 {
   "name": "@availity/progress",
-  "version": "1.2.20",
+  "version": "1.2.21",
   "author": "Tyson Warner <tyson.warner@availity.com>",
   "description": "Availity progress bar",
   "main": "index.js",
+  "types": "index.d.ts",
   "keywords": [
     "react",
     "availity",
@@ -21,7 +22,6 @@
     "access": "public"
   },
   "devDependencies": {
-    "prop-types": "^15.7.2",
     "react": "^17.0.2",
     "react-dom": "^17.0.2"
   },
@@ -30,6 +30,7 @@
   },
   "dependencies": {
     "classnames": "^2.3.1",
-    "lodash": "^4.17.21"
+    "lodash": "^4.17.21",
+    "prop-types": "^15.7.2"
   }
 }

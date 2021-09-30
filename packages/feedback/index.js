@@ -1,7 +1,3 @@
-import Feedback from './src/Feedback';
-import FeedbackForm from './src/FeedbackForm';
-import FeedbackModal from './src/FeedbackModal';
-
-export default Feedback;
-
-export { FeedbackForm, FeedbackModal };
+export { default } from './src/Feedback';
+export { default as FeedbackForm } from './src/FeedbackForm';
+export { default as FeedbackModal } from './src/FeedbackModal';

@@ -2,11 +2,13 @@ import React from 'react';
 import { storiesOf } from '@storybook/react';
 import { withKnobs, boolean, select, text } from '@storybook/addon-knobs';
 
-import ListGroup from '@availity/list-group';
-import ListGroupItem, { ListGroupItemStatus } from '@availity/list-group-item';
 import README from '@availity/list-group-item/README.md';
 
 import { Preview } from '../util';
+
+const ListGroup = React.lazy(() => import('@availity/list-group'));
+const ListGroupItem = React.lazy(() => import('@availity/list-group-item'));
+const ListGroupItemStatus = React.lazy(() => import('@availity/list-group-item/src/ListGroupItemStatus'));
 
 const colorOptions = {
   success: 'success',
@@ -32,33 +34,27 @@ storiesOf('Components/List Group Item', module)
       <div>
         <ListGroup cards={cards} selectable={boolean('Selectable', false)}>
           <ListGroupItem
-            borderColor={
-              cards && select('Item 1 Border Color', colorOptions, '', 'Card')
-            }
+            borderColor={cards && select('Item 1 Border Color', colorOptions, '', 'Card')}
             color={select('Item 1 Background Color', colorOptions, '')}
           >
             item
           </ListGroupItem>
           <ListGroupItem
-            borderColor={
-              cards && select('Item 2 Border Color', colorOptions, '', 'Card')
-            }
+            borderColor={cards && select('Item 2 Border Color', colorOptions, '', 'Card')}
             color={select('Item 2 Background Color', colorOptions, '')}
           >
             item
           </ListGroupItem>
           <ListGroupItem
-            borderColor={
-              cards && select('Item 3 Border Color', colorOptions, '', 'Card')
-            }
+            borderColor={cards && select('Item 3 Border Color', colorOptions, '', 'Card')}
             color={select('Item 3 Background Color', colorOptions, '')}
           >
             item
           </ListGroupItem>
         </ListGroup>
         <p>
-          When the <code>ListGroup</code> has <code>cards</code> props,{' '}
-          <code>ListGroupItem</code> will be able to display color.
+          When the <code>ListGroup</code> has <code>cards</code> props, <code>ListGroupItem</code> will be able to
+          display color.
         </p>
       </div>
     );
@@ -93,8 +89,8 @@ storiesOf('Components/List Group Item', module)
           </ListGroupItemStatus>
         </ListGroup>
         <p>
-          When the <code>ListGroup</code> has <code>cards</code> props,{' '}
-          <code>ListGroupItem</code> will be able to display color.
+          When the <code>ListGroup</code> has <code>cards</code> props, <code>ListGroupItem</code> will be able to
+          display color.
         </p>
       </div>
     );

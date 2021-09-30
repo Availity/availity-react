@@ -1,14 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import {
-  Input as RsInput,
-  Label,
-  FormText,
-  Col,
-  InputGroup,
-  InputGroupText,
-  InputGroupAddon,
-} from 'reactstrap';
+import { FieldHelpIcon } from '@availity/help';
+import { Input as RsInput, Label, FormText, Col, InputGroup, InputGroupText, InputGroupAddon } from 'reactstrap';
 import { v4 as uuid } from 'uuid';
 import Feedback from './Feedback';
 import FormGroup from './FormGroup';
@@ -18,6 +11,7 @@ const colSizes = ['xs', 'sm', 'md', 'lg', 'xl'];
 
 const Field = ({
   helpMessage,
+  helpId,
   label,
   labelHidden,
   inputClass,
@@ -58,6 +52,8 @@ const Field = ({
       size={size}
       disabled={disabled}
       readOnly={readOnly}
+      feedback
+      help={!!helpMessage}
       {...attributes}
     />
   );
@@ -67,21 +63,13 @@ const Field = ({
       <InputGroup>
         {prepend && (
           <InputGroupAddon addonType="prepend">
-            {typeof prepend === 'string' ? (
-              <InputGroupText>{prepend}</InputGroupText>
-            ) : (
-              prepend
-            )}
+            {typeof prepend === 'string' ? <InputGroupText>{prepend}</InputGroupText> : prepend}
           </InputGroupAddon>
         )}
         {input}
         {append && (
           <InputGroupAddon addonType="append">
-            {typeof append === 'string' ? (
-              <InputGroupText>{append}</InputGroupText>
-            ) : (
-              append
-            )}
+            {typeof append === 'string' ? <InputGroupText>{append}</InputGroupText> : append}
           </InputGroupAddon>
         )}
         <Feedback name={id} />
@@ -89,7 +77,7 @@ const Field = ({
     );
   }
 
-  const help = helpMessage ? <FormText>{helpMessage}</FormText> : null;
+  const help = helpMessage ? <FormText id={`${id}-helpmessage`.toLowerCase()}>{helpMessage}</FormText> : null;
   const feedback = <Feedback name={id} />;
   let inputRow = row ? (
     <Col {...col}>
@@ -106,27 +94,26 @@ const Field = ({
   }
 
   const check = attributes.type === 'checkbox';
+  const helpIcon = helpId ? <FieldHelpIcon labelId={`${inputId}-label`} id={helpId} /> : null;
 
   return (
-    <FormGroup
-      for={id}
-      check={check}
-      disabled={disabled}
-      row={row}
-      {...groupAttrs}
-    >
+    <FormGroup for={id} check={check} disabled={disabled} row={row} {...groupAttrs}>
       {check && inputRow}
       {label && (
-        <Label
-          for={inputId}
-          className={labelClass}
-          hidden={labelHidden}
-          size={size}
-          {...labelCol}
-          {...labelAttrs}
-        >
-          {label}
-        </Label>
+        <>
+          <Label
+            id={`${inputId}-label`}
+            for={inputId}
+            className={labelClass}
+            hidden={labelHidden}
+            size={size}
+            {...labelCol}
+            {...labelAttrs}
+          >
+            {label}
+          </Label>
+          {helpIcon}
+        </>
       )}
       {!check && inputRow}
       {!row && !prepend && !append && feedback}
@@ -152,6 +139,7 @@ Field.propTypes = {
   children: PropTypes.func,
   append: PropTypes.node,
   prepend: PropTypes.node,
+  helpId: PropTypes.string,
 };
 
 Field.defaultProps = {

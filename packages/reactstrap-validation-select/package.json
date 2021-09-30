@@ -1,8 +1,9 @@
 {
   "name": "@availity/reactstrap-validation-select",
-  "version": "7.0.2",
+  "version": "7.0.3",
   "description": "Wrapper for react-select to work with availity-reactstrap-validation",
   "main": "index.js",
+  "types": "index.d.ts",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
@@ -25,7 +26,6 @@
   "devDependencies": {
     "@availity/api-axios": "^5.5.14",
     "@availity/api-core": "^7.0.2",
-    "@availity/localstorage-core": "^3.0.0",
     "availity-reactstrap-validation": "^2.7.1",
     "axios": "^0.21.1",
     "react": "^17.0.2",
@@ -34,16 +34,14 @@
   },
   "peerDependencies": {
     "@availity/api-axios": "^5.4.0",
-    "@availity/api-core": "^5.4.0",
-    "@availity/localstorage-core": "^2.6.1",
+    "@availity/api-core": "^7.0.1",
     "availity-reactstrap-validation": "^2.7.0",
-    "availity-uikit": "^3.0.0",
-    "axios": "^0.19.2",
+    "availity-uikit": ">=3.0.0",
+    "axios": "^0.21.1",
     "react": ">=16.8.3",
     "reactstrap": "^8.0.0 || ^7.0.0 || ^6.0.0"
   },
   "dependencies": {
-    "@availity/env-var": "^1.11.1",
     "classnames": "^2.3.1",
     "lodash": "^4.17.21",
     "prop-types": "^15.7.2",

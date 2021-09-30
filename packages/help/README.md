@@ -53,8 +53,8 @@ import React from 'react';
 import { FieldHelpIcon } from '@availity/help';
 
 const Example = () => (
-  <div>
-    Select A Provider <FieldHelpIcon id="1234-5678-910" />
+  <div id="testId">
+    Select A Provider <FieldHelpIcon id="1234-5678-910" labelId="testId"/>
   </div>
 );
 ```
@@ -72,3 +72,8 @@ The bootstrap 3 color of the icon. **Default:**`primary`
 ### `size?: string`
 
 The size of the help icon. **Default:** `1x`
+
+### `labelId?: string`
+
+The id of the label for accessibility (aria-describedby). **Default:** ''
+

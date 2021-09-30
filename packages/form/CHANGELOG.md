@@ -3,6 +3,43 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## 0.7.1 (2021-09-28)
+
+**Note:** Version bump only for package @availity/form
+
+
+
+
+
+# 0.7.0 (2021-09-17)
+
+
+### Bug Fixes
+
+* **form:** change optional component default to null ([c18d1f8](https://github.com/Availity/availity-react/commit/c18d1f83df2a2704bb52fae4857805c36ca019f8))
+
+
+### Features
+
+* **form:** add field help icon beside label ([ce5f13b](https://github.com/Availity/availity-react/commit/ce5f13b92e2bdeab77ada74e955c0cad9c523799))
+* **form:** add help to package.json ([88f5317](https://github.com/Availity/availity-react/commit/88f5317c319504c5b9ad9be428e5603e02b7dd31))
+* **form:** update typings for accessibility ([9087b04](https://github.com/Availity/availity-react/commit/9087b0415ea2e1cb06c527563ba3f9f6b5b0243d))
+
+
+
+
+
+# 0.6.0 (2021-09-13)
+
+
+### Features
+
+* **form:** accessibly link feedback to inputs ([ff63c95](https://github.com/Availity/availity-react/commit/ff63c958002037c6f9dc95863cb82c2293b75079))
+
+
+
+
+
 ## 0.5.34 (2021-06-01)
 
 **Note:** Version bump only for package @availity/form

@@ -1,9 +1,10 @@
 {
   "name": "@availity/authorize",
-  "version": "1.5.20",
+  "version": "1.5.21",
   "author": "Evan Sharp <evan.sharp@gmail.com>",
   "description": "Check user permissions to see if the current user is authorized to see your content.",
   "main": "index.js",
+  "types": "index.d.ts",
   "keywords": [
     "react",
     "availity"
@@ -26,13 +27,13 @@
   "devDependencies": {
     "@availity/api-axios": "^5.5.14",
     "@availity/api-core": "^7.0.2",
-    "@availity/localstorage-core": "^3.0.0",
     "axios": "^0.21.1",
     "react": "^17.0.2",
     "react-dom": "^17.0.2"
   },
   "peerDependencies": {
     "@availity/api-axios": ">= 2.0.0",
+    "axios": "^0.21.1",
     "react": ">=16.3.0"
   }
 }
