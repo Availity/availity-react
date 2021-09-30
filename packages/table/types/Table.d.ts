@@ -15,7 +15,8 @@ export interface TableProps {
     additionalContent?: React.ElementType | React.ReactElement | React.ReactType;
     bodyProps?: Object;
     columns: ExtendedTableColumn[];
-    onRowClick?: (record: object) => void;
+    onRowClick?: (event: OnTableClickEvent) => void;
+    onRowSelected?: (event: OnRowSelectedEvent) => void;
     headerProps?: Object;
     scrollable?: boolean;
     selectable?: boolean;
@@ -28,6 +29,11 @@ export interface OnTableClickEvent extends Event {
     instance: Row,
     data: object,
     index: number
+}
+
+export interface OnRowSelectedEvent extends Event {
+    selectedId: string,
+    data: object
 }
 
 declare const Table: React.FunctionComponent<TableProps>;
