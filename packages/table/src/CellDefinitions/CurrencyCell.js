@@ -19,7 +19,7 @@ const CurrencyCell = ({ currency = 'USD', defaultValue = '', locales = 'en-us' }
   };
 
   CurrencyCellDef.propTypes = {
-    value: PropTypes.string,
+    value: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
   };
 
   return CurrencyCellDef;
