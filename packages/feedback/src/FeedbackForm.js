@@ -1,12 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
-import {
-  Button,
-  ModalBody,
-  ModalHeader,
-  ModalFooter,
-  FormGroup,
-} from 'reactstrap';
+import { Button, FormGroup, Alert } from 'reactstrap';
 import { avLogMessagesApi, avRegionsApi } from '@availity/api-axios';
 import { Form, Field } from '@availity/form';
 import { SelectField } from '@availity/select';
@@ -41,7 +35,6 @@ const FeedbackForm = ({
   additionalComments,
   staticFields,
   analytics,
-  modalHeaderProps,
   showSupport,
   setSupportIsActive,
   autoFocusFeedbackButton,
@@ -91,27 +84,14 @@ const FeedbackForm = ({
   }, [sent]);
 
   return sent ? (
-    <ModalHeader
-      role="status"
-      id="feedback-form-header"
-      tabIndex="0"
-      className="d-flex justify-content-center"
-      {...modalHeaderProps}
-    >
-      Thank you for your feedback.
-    </ModalHeader>
+    <Alert color="success" className="m-5 p-3">
+      Your feedback has been sent. Thank you!
+    </Alert>
   ) : (
-    <>
-      <ModalHeader
-        id="feedback-form-header"
-        role="heading"
-        aria-level="2"
-        className="h5"
-        tag="div"
-        {...modalHeaderProps}
-      >
+    <div className="m-2">
+      <h5 className="m-2" id="feedback-form-header">
         {prompt || `Tell us what you think about ${name}`}
-      </ModalHeader>
+      </h5>
       <Form
         aria-label="Feedback Form"
         aria-describedby="feedback-form-header"
@@ -148,14 +128,13 @@ const FeedbackForm = ({
         {...formProps}
         onSubmit={(values) => sendFeedback(values)}
       >
-        <ModalBody>
+        <div className="p-2">
           <FormGroup
             size="lg"
             id="face-options"
             role="group"
             aria-labelledby="feedback-form-header"
             data-testid="face-options"
-            className="d-flex flex-row justify-content-between"
           >
             <SmileField
               options={faceOptions}
@@ -195,16 +174,17 @@ const FeedbackForm = ({
               )}
             </>
           ) : null}
-        </ModalBody>
+        </div>
 
-        <ModalFooter>
+        <div className="m-2 d-flex justify-content-end align-items-baseline">
           {showSupport ? (
             <>
               <span className="d-none d-md-block" style={inlineStyles}>
                 Need Help?
               </span>
               <Button
-                className="pl-0"
+                size="sm"
+                className="pl-0 ml-1"
                 onClick={() => setSupportIsActive(true)}
                 color="link"
                 type="button"
@@ -216,23 +196,28 @@ const FeedbackForm = ({
               </Button>
             </>
           ) : null}
-
           {onClose ? (
             <Button
+              size="sm"
               onClick={onClose}
               color="secondary"
-              onKeyDown={({ keyCode }) => keyCode === 13 && onClose()}
+              className="ml-1"
             >
               Close
             </Button>
           ) : null}
-
-          <Button type="submit" color="primary" disabled={!active}>
+          <Button
+            size="sm"
+            type="submit"
+            color="primary"
+            disabled={!active}
+            className="ml-1"
+          >
             Send Feedback
           </Button>
-        </ModalFooter>
+        </div>
       </Form>
-    </>
+    </div>
   );
 };
 
@@ -257,7 +242,7 @@ FeedbackForm.propTypes = {
   prompt: PropTypes.string,
   additionalComments: PropTypes.bool,
   staticFields: PropTypes.object,
-  modalHeaderProps: PropTypes.shape({ ...ModalHeader.propTypes }),
+
   analytics: PropTypes.shape({
     info: PropTypes.func.isRequired,
   }),
@@ -270,7 +255,7 @@ FeedbackForm.defaultProps = {
   aboutOptions: [],
   aboutLabel: 'This is about',
   additionalComments: false,
-  modalHeaderProps: {},
+
   analytics: avLogMessagesApi,
   showSupport: false,
 };
