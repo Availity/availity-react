@@ -23,7 +23,7 @@ const CurrencyCell = ({
   };
 
   CurrencyCellDef.propTypes = {
-    value: PropTypes.string,
+    value: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
   };
 
   return CurrencyCellDef;
