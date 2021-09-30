@@ -82,12 +82,26 @@ const DateRange = ({
   const endValue = value.endDate || '';
 
   const startValueMoment = useMemo(
-    () => moment(startValue, [isoDateFormat, format, 'MMDDYYYY', 'YYYYMMDD']),
+    () =>
+      moment(startValue, [
+        isoDateFormat,
+        format,
+        'MMDDYYYY',
+        'YYYYMMDD',
+        'M/D/YYYY',
+      ]),
     [startValue, format]
   );
 
   const endValueMoment = useMemo(
-    () => moment(endValue, [isoDateFormat, format, 'MMDDYYYY', 'YYYYMMDD']),
+    () =>
+      moment(endValue, [
+        isoDateFormat,
+        format,
+        'MMDDYYYY',
+        'YYYYMMDD',
+        'M/D/YYYY',
+      ]),
     [endValue, format]
   );
 
@@ -114,7 +128,7 @@ const DateRange = ({
     const isStart = focusedInput === 'startDate';
     const date = moment(
       val,
-      [isoDateFormat, format, 'MMDDYYYY', 'YYYYMMDD'],
+      [isoDateFormat, format, 'MMDDYYYY', 'YYYYMMDD', 'M/D/YYYY'],
       true
     );
 
@@ -192,7 +206,7 @@ const DateRange = ({
   const getDateValue = (val) => {
     const date = moment(
       val,
-      [isoDateFormat, format, 'MMDDYYYY', 'YYYYMMDD'],
+      [isoDateFormat, format, 'MMDDYYYY', 'YYYYMMDD', 'M/D/YYYY'],
       true
     );
     if (date.isValid()) return date;

@@ -115,6 +115,41 @@ describe('Date', () => {
     });
   });
 
+  test('works with text input in M/D/YYYY format', async () => {
+    const onSubmit = jest.fn();
+
+    const { container, getByText } = render(
+      <Form
+        initialValues={{
+          singleDate: '',
+        }}
+        onSubmit={onSubmit}
+      >
+        <FormikDate name="singleDate" data-testid="single-select" />
+        <Button type="submit">Submit</Button>
+      </Form>
+    );
+
+    const input = container.querySelector('.DateInput_input');
+
+    fireEvent.change(input, {
+      target: {
+        value: '1/4/1997',
+      },
+    });
+
+    fireEvent.click(getByText('Submit'));
+
+    await waitFor(() => {
+      expect(onSubmit).toHaveBeenCalledWith(
+        expect.objectContaining({
+          singleDate: '1997-01-04',
+        }),
+        expect.anything()
+      );
+    });
+  });
+
   test('works with date picker', async () => {
     const onSubmit = jest.fn();
 
