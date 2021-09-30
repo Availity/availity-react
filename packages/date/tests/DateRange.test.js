@@ -191,6 +191,56 @@ describe('DateRange', () => {
     });
   });
 
+  test('works with text input in M/D/YYYY format', async () => {
+    const onSubmit = jest.fn();
+
+    const { container, getByText } = render(
+      <Form
+        initialValues={{
+          dateRange: undefined,
+        }}
+        onSubmit={onSubmit}
+      >
+        <DateRange id="dateRange" name="dateRange" />
+        <Button type="submit">Submit</Button>
+      </Form>
+    );
+
+    // Simulate user entering start date
+    const start = container.querySelector('#dateRange-start');
+
+    fireEvent.focus(start);
+
+    fireEvent.change(start, {
+      target: {
+        value: '1/4/1997',
+      },
+    });
+
+    // Simulate user entering end date
+    const end = container.querySelector('#dateRange-end');
+
+    fireEvent.change(end, {
+      target: {
+        value: '1/5/1997',
+      },
+    });
+
+    fireEvent.click(getByText('Submit'));
+
+    await waitFor(() => {
+      expect(onSubmit).toHaveBeenCalledWith(
+        expect.objectContaining({
+          dateRange: {
+            startDate: '1997-01-04',
+            endDate: '1997-01-05',
+          },
+        }),
+        expect.anything()
+      );
+    });
+  });
+
   test('works with date picker', async () => {
     const onSubmit = jest.fn();
 
