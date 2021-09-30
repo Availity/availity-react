@@ -20,9 +20,17 @@
     "url": "https://github.com/Availity/availity-react/issues"
   },
   "homepage": "https://github.com/Availity/availity-react/tree/master/packages/select#readme",
+  "dependencies": {
+    "@types/react-select": "^3.0.23",
+    "classnames": "^2.3.1",
+    "lodash": "^4.17.21",
+    "prop-types": "^15.7.2",
+    "qs": "^6.5.2",
+    "react-select": "^3.0.4",
+    "react-select-async-paginate": "^0.4.1"
+  },
   "devDependencies": {
-    "@availity/api-axios": "^5.5.14",
-    "@availity/api-core": "^7.0.2",
+    "@availity/api-axios": "^6.0.0",
     "@availity/form": "^0.7.1",
     "axios": "^0.21.1",
     "formik": "^2.2.8",
@@ -32,22 +40,12 @@
     "yup": "^0.30.0"
   },
   "peerDependencies": {
-    "@availity/api-axios": "^5.0.0",
-    "@availity/api-core": "^7.0.0",
+    "@availity/api-axios": "^6.0.0",
     "@availity/form": "^0.2.0 || ^0.3.0 || ^0.4.0  || ^0.5.0 || ^0.6.0 || ^0.7.0",
     "axios": "^0.21.1",
     "formik": "^2.0.1",
     "react": ">=16.8.3",
     "reactstrap": "^8.0.0 || ^7.0.0 || ^6.0.0"
-  },
-  "dependencies": {
-    "@types/react-select": "^3.0.23",
-    "classnames": "^2.3.1",
-    "lodash": "^4.17.21",
-    "prop-types": "^15.7.2",
-    "qs": "^6.5.2",
-    "react-select": "^3.0.4",
-    "react-select-async-paginate": "^0.4.1"
   },
   "publishConfig": {
     "access": "public"
