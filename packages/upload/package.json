@@ -22,14 +22,6 @@
   "publishConfig": {
     "access": "public"
   },
-  "peerDependencies": {
-    "@availity/upload-core": "^4.1.1",
-    "react": ">=16.8.0",
-    "react-dom": ">=16.8.0",
-    "react-dropzone": "^11.0.0",
-    "reactstrap": "^8.0.0 || ^7.0.0 || ^6.0.0",
-    "tus-js-client": "^1.5.1"
-  },
   "dependencies": {
     "@availity/progress": "^1.2.21",
     "prop-types": "^15.7.2",
@@ -42,5 +34,13 @@
     "react-dropzone": "^11.3.2",
     "reactstrap": "^8.9.0",
     "tus-js-client": "^2.3.0"
+  },
+  "peerDependencies": {
+    "@availity/upload-core": "^4.1.1",
+    "react": ">=16.8.0",
+    "react-dom": ">=16.8.0",
+    "react-dropzone": "^11.0.0",
+    "reactstrap": "^8.0.0 || ^7.0.0 || ^6.0.0",
+    "tus-js-client": "^1.5.1"
   }
 }

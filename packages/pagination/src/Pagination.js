@@ -49,8 +49,7 @@ const Pagination = ({
 
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
-  const toggleLoading = (isLoading) =>
-    setLoading((l) => (isLoading !== undefined ? isLoading : !l));
+  const toggleLoading = (isLoading) => setLoading((l) => (isLoading !== undefined ? isLoading : !l));
 
   useEffect(() => {
     if (onError && error) onError(error);
@@ -68,14 +67,10 @@ const Pagination = ({
         : { items: theItems };
 
       // Get index of item at the start of the currentPage
-      const lower =
-        currentPage === 1 ? 1 : (currentPage - 1) * itemsPerPage + 1;
+      const lower = currentPage === 1 ? 1 : (currentPage - 1) * itemsPerPage + 1;
 
       // Get the index of the item at the cut-off of the itemPerPage Count
-      const upper =
-        items.length - currentPage * itemsPerPage > 0
-          ? itemsPerPage * currentPage
-          : items.length;
+      const upper = items.length - currentPage * itemsPerPage > 0 ? itemsPerPage * currentPage : items.length;
 
       // Slice that data if it was NOT given from a function since we don't know if its returning all items or not for now.
       // todo - add prop if needed to handle this
@@ -115,13 +110,7 @@ const Pagination = ({
       }
     },
     debounceTimeout,
-    [
-      currentPage,
-      itemsPerPage,
-      isFunction(theItems) ? null : theItems,
-      shouldReturnPrevious,
-      ...watchList,
-    ]
+    [currentPage, itemsPerPage, isFunction(theItems) ? null : theItems, shouldReturnPrevious, ...watchList]
   );
 
   const updatePage = (page) => {
