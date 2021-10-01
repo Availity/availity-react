@@ -14,20 +14,26 @@ const Authorize = ({
   negate,
   children,
   unauthorized,
+  queryOptions,
 }) => {
-  const [authorized, loading] = useAuthorize(permissions, {
-    customerId,
-    organizationId,
-    region,
-    resources,
-  });
+  const { authorized, isLoading } = useAuthorize(
+    permissions,
+    {
+      customerId,
+      organizationId,
+      region,
+      resources,
+    },
+    queryOptions
+  );
 
-  if (loading) {
+  if (isLoading) {
     if (loader) return loader === true ? <BlockUi blocking /> : loader;
     return null;
   }
-  const showChildren = authorized ^ negate; // eslint-disable-line no-bitwise
-  if (showChildren) {
+
+  // show children when authorized or negate is exclusively true
+  if ((authorized || negate) && !(authorized && negate)) {
     return children;
   }
 
@@ -57,13 +63,14 @@ Authorize.propTypes = {
     PropTypes.string,
     PropTypes.number,
   ]),
-  region: PropTypes.oneOfType([PropTypes.bool, PropTypes.string]),
-  loader: PropTypes.oneOfType([PropTypes.bool, PropTypes.node]),
-  organizationId: PropTypes.string,
-  customerId: PropTypes.string,
-  unauthorized: PropTypes.node,
   children: PropTypes.node,
+  customerId: PropTypes.string,
+  loader: PropTypes.oneOfType([PropTypes.bool, PropTypes.node]),
   negate: PropTypes.bool,
+  organizationId: PropTypes.string,
+  queryOptions: PropTypes.object,
+  region: PropTypes.oneOfType([PropTypes.bool, PropTypes.string]),
+  unauthorized: PropTypes.node,
 };
 
 Authorize.defaultProps = {

@@ -1,13 +1,17 @@
 import React from 'react';
 import { render, cleanup, waitFor } from '@testing-library/react';
 import { avUserPermissionsApi } from '@availity/api-axios';
+import { QueryClient, QueryClientProvider } from 'react-query';
 import Authorize from '..';
 
 jest.mock('@availity/api-axios');
 
+const queryClient = new QueryClient();
+
 afterEach(() => {
   jest.clearAllMocks();
   cleanup();
+  queryClient.clear();
 });
 
 beforeEach(() => {
@@ -38,9 +42,11 @@ beforeEach(() => {
 describe('Authorize', () => {
   test('should render authorized content', async () => {
     const { getByText } = render(
-      <Authorize permissions="1234" loader>
-        You have permission to see this
-      </Authorize>
+      <QueryClientProvider client={queryClient}>
+        <Authorize permissions="1234" loader>
+          You have permission to see this
+        </Authorize>
+      </QueryClientProvider>
     );
 
     await waitFor(() => {
@@ -52,7 +58,9 @@ describe('Authorize', () => {
 
   test('should render unauthorized content', async () => {
     const { getByText } = render(
-      <Authorize permissions="12345" unauthorized="You do not have permission to see this" />
+      <QueryClientProvider client={queryClient}>
+        <Authorize permissions="12345" unauthorized="You do not have permission to see this" />
+      </QueryClientProvider>
     );
 
     await waitFor(() => {
@@ -64,9 +72,11 @@ describe('Authorize', () => {
 
   test('should render authorized with array of permissions', async () => {
     const { getByText } = render(
-      <Authorize permissions={['1234', 2345, [3456, '4567']]} unauthorized="You do not have permission to see this">
-        You have permission to see this
-      </Authorize>
+      <QueryClientProvider client={queryClient}>
+        <Authorize permissions={['1234', 2345, [3456, '4567']]} unauthorized="You do not have permission to see this">
+          You have permission to see this
+        </Authorize>
+      </QueryClientProvider>
     );
 
     await waitFor(() => {
@@ -78,9 +88,11 @@ describe('Authorize', () => {
 
   test('should render negate permissions', async () => {
     const { getByText } = render(
-      <Authorize permissions="1234" negate unauthorized="You do not have permission to see this">
-        You have permission to see this
-      </Authorize>
+      <QueryClientProvider client={queryClient}>
+        <Authorize permissions="1234" negate unauthorized="You do not have permission to see this">
+          You have permission to see this
+        </Authorize>
+      </QueryClientProvider>
     );
 
     await waitFor(() => {
@@ -90,11 +102,29 @@ describe('Authorize', () => {
     });
   });
 
+  test('should negate and show authorized when unauthorized', async () => {
+    const { getByText } = render(
+      <QueryClientProvider client={queryClient}>
+        <Authorize permissions="12345" negate unauthorized="You do not have permission to see this">
+          You have permission to see this
+        </Authorize>
+      </QueryClientProvider>
+    );
+
+    await waitFor(() => {
+      const el = getByText('You have permission to see this');
+      expect(el).toBeDefined();
+      return el;
+    });
+  });
+
   test('should render authorized with correct organizationId', async () => {
     const { getByText } = render(
-      <Authorize permissions="1234" organizationId="1111" unauthorized="You do not have permission to see this">
-        You have permission to see this
-      </Authorize>
+      <QueryClientProvider client={queryClient}>
+        <Authorize permissions="1234" organizationId="1111" unauthorized="You do not have permission to see this">
+          You have permission to see this
+        </Authorize>
+      </QueryClientProvider>
     );
 
     await waitFor(() => {
@@ -106,9 +136,11 @@ describe('Authorize', () => {
 
   test('should render unauthorized with incorrect organizationId', async () => {
     const { getByText } = render(
-      <Authorize permissions="1234" organizationId="1112" unauthorized="You do not have permission to see this">
-        You have permission to see this
-      </Authorize>
+      <QueryClientProvider client={queryClient}>
+        <Authorize permissions="1234" organizationId="1112" unauthorized="You do not have permission to see this">
+          You have permission to see this
+        </Authorize>
+      </QueryClientProvider>
     );
 
     await waitFor(() => {
@@ -120,9 +152,11 @@ describe('Authorize', () => {
 
   test('should render authorized with correct customerId', async () => {
     const { getByText } = render(
-      <Authorize permissions="1234" customerId="1194" unauthorized="You do not have permission to see this">
-        You have permission to see this
-      </Authorize>
+      <QueryClientProvider client={queryClient}>
+        <Authorize permissions="1234" customerId="1194" unauthorized="You do not have permission to see this">
+          You have permission to see this
+        </Authorize>
+      </QueryClientProvider>
     );
 
     await waitFor(() => {
@@ -134,9 +168,11 @@ describe('Authorize', () => {
 
   test('should render unauthorized with incorrect customerId', async () => {
     const { getByText } = render(
-      <Authorize permissions="1234" customerId="1193" unauthorized="You do not have permission to see this">
-        You have permission to see this
-      </Authorize>
+      <QueryClientProvider client={queryClient}>
+        <Authorize permissions="1234" customerId="1193" unauthorized="You do not have permission to see this">
+          You have permission to see this
+        </Authorize>
+      </QueryClientProvider>
     );
 
     await waitFor(() => {
@@ -148,14 +184,16 @@ describe('Authorize', () => {
 
   test('should render authorized with correct resources', async () => {
     const { getByText } = render(
-      <Authorize
-        permissions="1234"
-        customerId="1194"
-        unauthorized="You do not have permission to see this"
-        resources="2"
-      >
-        You have permission to see this
-      </Authorize>
+      <QueryClientProvider client={queryClient}>
+        <Authorize
+          permissions="1234"
+          customerId="1194"
+          unauthorized="You do not have permission to see this"
+          resources="2"
+        >
+          You have permission to see this
+        </Authorize>
+      </QueryClientProvider>
     );
 
     await waitFor(() => {
@@ -167,14 +205,16 @@ describe('Authorize', () => {
 
   test('should render unauthorized with incorrect resources', async () => {
     const { getByText } = render(
-      <Authorize
-        permissions="1234"
-        customerId="1194"
-        unauthorized="You do not have permission to see this"
-        resources="5"
-      >
-        You have permission to see this
-      </Authorize>
+      <QueryClientProvider client={queryClient}>
+        <Authorize
+          permissions="1234"
+          customerId="1194"
+          unauthorized="You do not have permission to see this"
+          resources="5"
+        >
+          You have permission to see this
+        </Authorize>
+      </QueryClientProvider>
     );
 
     await waitFor(() => {

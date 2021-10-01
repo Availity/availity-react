@@ -1,3 +1,4 @@
+import { QueryOptions } from 'react-query';
 import { Permission, Resource } from './Authorize';
 
 export interface AuthorizeOpts {
@@ -9,7 +10,8 @@ export interface AuthorizeOpts {
 
 declare function useAuthorize(
   permissions: string | number | Permission[],
-  options?: AuthorizeOpts
-): [boolean, boolean, string];
+  options?: AuthorizeOpts,
+  queryOptions?: QueryOptions<boolean>
+): { authorized: boolean; isLoading: boolean };
 
 export default useAuthorize;
