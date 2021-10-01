@@ -28,9 +28,7 @@ describe('Breadcrumbs', () => {
         url: '/grand-parent-page',
       },
     ];
-    const { container } = render(
-      <Breadcrumbs crumbs={crumbs} active="Payer Space" />
-    );
+    const { container } = render(<Breadcrumbs crumbs={crumbs} active="Payer Space" />);
     expect(container.firstChild).toMatchSnapshot();
   });
 
@@ -45,9 +43,7 @@ describe('Breadcrumbs', () => {
         url: '',
       },
     ];
-    const { container } = render(
-      <Breadcrumbs crumbs={crumbs} active="Payer Space" />
-    );
+    const { container } = render(<Breadcrumbs crumbs={crumbs} active="Payer Space" />);
     expect(container.firstChild).toMatchSnapshot();
   });
 
@@ -58,17 +54,13 @@ describe('Breadcrumbs', () => {
         url: '',
       },
     ];
-    const { container } = render(
-      <Breadcrumbs crumbs={crumbs} emptyState="???" active="Payer Space" />
-    );
+    const { container } = render(<Breadcrumbs crumbs={crumbs} emptyState="???" active="Payer Space" />);
 
     expect(container.firstChild).toMatchSnapshot();
   });
 
   test('should render custom home url', () => {
-    const { getByText } = render(
-      <Breadcrumbs homeUrl="/go-home" active="Payer Space" />
-    );
+    const { getByText } = render(<Breadcrumbs homeUrl="/go-home" active="Payer Space" />);
 
     const homeBtn = getByText('Home');
 
@@ -76,9 +68,7 @@ describe('Breadcrumbs', () => {
   });
 
   test('should render custom link tag', () => {
-    const { getByText } = render(
-      <Breadcrumbs homeUrl="/go-home" active="Payer Space" linkTag={NavLink} />
-    );
+    const { getByText } = render(<Breadcrumbs homeUrl="/go-home" active="Payer Space" linkTag={NavLink} />);
 
     const homeBtn = getByText('Home');
 

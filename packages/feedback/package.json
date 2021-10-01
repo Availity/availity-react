@@ -29,8 +29,7 @@
     "prop-types": "^15.7.2"
   },
   "devDependencies": {
-    "@availity/api-axios": "^5.5.14",
-    "@availity/api-core": "^7.0.2",
+    "@availity/api-axios": "^6.0.0",
     "@availity/yup": "^3.0.11",
     "axios": "^0.21.1",
     "formik": "^2.2.8",
@@ -40,8 +39,7 @@
     "yup": "^0.30.0"
   },
   "peerDependencies": {
-    "@availity/api-axios": ">=2.0.0",
-    "@availity/api-core": ">=2.0.0",
+    "@availity/api-axios": "^6.0.0",
     "@availity/yup": "^3.0.11",
     "axios": "^0.21.1",
     "formik": "^2.0.1",

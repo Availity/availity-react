@@ -6,9 +6,7 @@ describe('WizardStepBadge', () => {
   afterEach(cleanup);
 
   test('should render with stepwizard class', () => {
-    const { getByTestId } = render(
-      <WizardStepBadge data-testid="step-wizard-badge" />
-    );
+    const { getByTestId } = render(<WizardStepBadge data-testid="step-wizard-badge" />);
 
     const container = getByTestId('step-wizard-badge');
 

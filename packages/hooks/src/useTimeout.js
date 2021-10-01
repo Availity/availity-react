@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 
-export default (ms = 0) => {
+export default function useTimeout(ms = 0) {
   const [ready, setReady] = useState(false);
 
   useEffect(() => {
@@ -18,4 +18,4 @@ export default (ms = 0) => {
   }, [ms]);
 
   return ready;
-};
+}

@@ -2,17 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import classNames from 'classnames';
 
-const WizardStep = ({
-  tag,
-  complete,
-  active,
-  disabled,
-  clickable,
-  href,
-  children,
-  className: classes,
-  ...rest
-}) => {
+const WizardStep = ({ tag, complete, active, disabled, clickable, href, children, className: classes, ...rest }) => {
   const className = classNames(
     classes,
     'stepwizard-step',
@@ -25,6 +15,7 @@ const WizardStep = ({
   const Tag = tag || (href ? 'a' : 'div');
 
   const tagProps = Tag === 'a' ? { className, href } : { className };
+
   return (
     <Tag data-testid="step-wizard-step" {...rest} {...tagProps}>
       {children}

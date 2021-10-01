@@ -45,9 +45,7 @@ describe('AppIcon', () => {
   });
 
   test('should render additional attributes', () => {
-    const { container, getAllByTitle } = render(
-      <AppIcon title="Availity Icon" />
-    );
+    const { container, getAllByTitle } = render(<AppIcon title="Availity Icon" />);
 
     expect(getAllByTitle('Availity Icon')).toBeDefined();
     expect(container).toMatchSnapshot();
@@ -61,9 +59,7 @@ describe('AppIcon', () => {
   });
 
   test('should render with image', () => {
-    const { container } = render(
-      <AppIcon src="/path-to-some-image" alt="icon" />
-    );
+    const { container } = render(<AppIcon src="/path-to-some-image" alt="icon" />);
     const image = container.querySelectorAll('img')[0];
     expect(image.src).toEqual('http://localhost/path-to-some-image');
   });
