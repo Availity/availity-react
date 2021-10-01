@@ -230,9 +230,9 @@ describe('FeedbackForm', () => {
 
     const header = getByText('Tell us what you think about Payer Space');
 
-    expect(header.parentElement).toHaveClass('h5');
-    expect(header.parentElement).toHaveAttribute('role', 'heading');
-    expect(header.parentElement).toHaveAttribute('aria-level', '2');
+    expect(header).toHaveClass('h5 m-2');
+    expect(header).toHaveAttribute('role', 'heading');
+    expect(header).toHaveAttribute('aria-level', '2');
     expect(header.tagName).toEqual('DIV');
   });
 
@@ -241,8 +241,8 @@ describe('FeedbackForm', () => {
 
     const smileyGroup = getByTestId('face-options');
 
-    expect(smileyGroup).toHaveAttribute('role', 'group');
-    expect(smileyGroup).toHaveAttribute(
+    expect(smileyGroup.parentElement).toHaveAttribute('role', 'group');
+    expect(smileyGroup.parentElement).toHaveAttribute(
       'aria-labelledby',
       'feedback-form-header'
     );

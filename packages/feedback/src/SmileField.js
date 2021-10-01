@@ -16,6 +16,7 @@ const SmileField = ({ name, options, onChange, autoFocusFeedbackButton }) => {
         ...groupStyles,
         gridTemplateColumns: `repeat(${options.length}, auto)`,
       }}
+      data-testid="face-options"
     >
       {options.map((option, i) => (
         <FeedbackButton

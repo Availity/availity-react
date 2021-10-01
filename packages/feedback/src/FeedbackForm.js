@@ -89,9 +89,14 @@ const FeedbackForm = ({
     </Alert>
   ) : (
     <div className="m-2">
-      <h5 className="m-2" id="feedback-form-header">
+      <div
+        className="h5 m-2"
+        role="heading"
+        aria-level="2"
+        id="feedback-form-header"
+      >
         {prompt || `Tell us what you think about ${name}`}
-      </h5>
+      </div>
       <Form
         aria-label="Feedback Form"
         aria-describedby="feedback-form-header"
@@ -134,7 +139,6 @@ const FeedbackForm = ({
             id="face-options"
             role="group"
             aria-labelledby="feedback-form-header"
-            data-testid="face-options"
           >
             <SmileField
               options={faceOptions}
@@ -186,11 +190,11 @@ const FeedbackForm = ({
                 size="sm"
                 className="pl-0 ml-1"
                 onClick={() => setSupportIsActive(true)}
-                color="link"
-                type="button"
                 onKeyDown={({ keyCode }) =>
                   keyCode === 13 && setSupportIsActive(true)
                 }
+                color="link"
+                type="button"
               >
                 Open a support ticket
               </Button>
@@ -200,6 +204,7 @@ const FeedbackForm = ({
             <Button
               size="sm"
               onClick={onClose}
+              onKeyDown={({ keyCode }) => keyCode === 13 && onClose()}
               color="secondary"
               className="ml-1"
             >
