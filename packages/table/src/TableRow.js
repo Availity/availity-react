@@ -4,16 +4,8 @@ import _ from 'lodash';
 import classNames from 'classnames';
 import { useTableContext } from './TableContext';
 
-const TableRow = ({
-  row,
-  index,
-  onRowClick,
-  onCellClick,
-  children,
-  ...rest
-}) => {
-  const { AdditionalContent, scrollable, selectedRows, allColumns } =
-    useTableContext();
+const TableRow = ({ row, index, onRowClick, onCellClick, children, ...rest }) => {
+  const { AdditionalContent, scrollable, selectedRows, allColumns } = useTableContext();
 
   const definedRowProps = {
     className: classNames(`av-grid-row-${index % 2 === 0 ? 'even' : 'odd'}`, {
@@ -49,12 +41,10 @@ const TableRow = ({
     },
   };
 
-  const isLastColumnSticky = allColumns.slice(-1)[0].sticky === true;
-  const isFirstColumnSticky = allColumns[0].sticky === true;
-  const numberOfNonStickyColumns = _.filter(
-    allColumns,
-    (c) => !c.sticky
-  ).length;
+  const isLastColumnSticky = allColumns.slice(-1)[0].stickyRight === true;
+  const isFirstColumnSticky = allColumns[0].stickyLeft === true;
+
+  const numberOfNonStickyColumns = _.filter(allColumns, (c) => !(c.stickyRight || c.stickyLeft)).length;
 
   return (
     <>
@@ -64,11 +54,7 @@ const TableRow = ({
       {AdditionalContent && (
         <tr {...definedRowProps}>
           {isFirstColumnSticky && <td className="sticky sticky-left" />}
-          <td
-            colSpan={numberOfNonStickyColumns}
-            style={{ borderTop: 0 }}
-            {...definedCellProps}
-          >
+          <td colSpan={numberOfNonStickyColumns} style={{ borderTop: 0 }} {...definedCellProps}>
             <AdditionalContent record={row.original} />
           </td>
           {isLastColumnSticky && <td className="sticky sticky-right" />}

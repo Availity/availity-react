@@ -17,11 +17,7 @@ module.exports = {
           {
             type: 'category',
             label: 'Analytics',
-            items: [
-              'components/analytics/index',
-              'components/analytics/analytics',
-              'components/analytics/hook',
-            ],
+            items: ['components/analytics/index', 'components/analytics/analytics', 'components/analytics/hook'],
           },
           'components/app-icon',
           'components/authorize',
@@ -41,11 +37,7 @@ module.exports = {
           {
             type: 'category',
             label: 'Feedback',
-            items: [
-              'components/feedback/index',
-              'components/feedback/feedback',
-              'components/feedback/form',
-            ],
+            items: ['components/feedback/index', 'components/feedback/feedback', 'components/feedback/form'],
           },
           'components/help',
           {
@@ -115,6 +107,11 @@ module.exports = {
               'components/step-wizard/wizard-step',
             ],
           },
+          {
+            type: 'category',
+            label: 'Table',
+            items: ['components/table/index', 'components/table/scrollableContainer'],
+          },
           'components/training-link',
           {
             type: 'category',
@@ -156,11 +153,7 @@ module.exports = {
           {
             type: 'category',
             label: 'Phone',
-            items: [
-              'form/phone/index',
-              'form/phone/components/phone',
-              'form/phone/components/validate-phone',
-            ],
+            items: ['form/phone/index', 'form/phone/components/phone', 'form/phone/components/validate-phone'],
           },
           {
             type: 'category',

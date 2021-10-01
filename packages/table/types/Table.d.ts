@@ -3,7 +3,8 @@ import { Column, Row } from 'react-table';
 type TableColumn = {
     className?: string;
     defaultCanSort?: boolean;
-    sticky?: boolean;
+    stickyRight?: boolean;
+    stickyLeft?: boolean;
     isFormattedColumn?: boolean;
 }
 
@@ -17,12 +18,12 @@ export interface TableProps {
     columns: ExtendedTableColumn[];
     onRowClick?: (event: OnTableClickEvent) => void;
     onRowSelected?: (event: OnRowSelectedEvent) => void;
-    headerProps?: Object;
+    headerProps?: object;
     scrollable?: boolean;
     selectable?: boolean;
     sortable?: boolean;
-    records: Object[];
-    sortBy?: Object[];
+    rowProps?: object
+    records: object[];
 }
 
 export interface OnTableClickEvent extends Event {
