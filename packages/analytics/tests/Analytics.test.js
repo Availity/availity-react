@@ -1,7 +1,6 @@
 import React from 'react';
 import { render, cleanup, fireEvent, waitFor } from '@testing-library/react';
-import Analytics from '..';
-import { useAnalytics } from '../src/Analytics';
+import Analytics, { useAnalytics } from '..';
 
 const makePlugin = () => ({
   isEnabled: jest.fn(() => true),
@@ -20,11 +19,7 @@ describe('Analytics', () => {
 
     const { getByText } = render(
       <Analytics plugins={plugins} attributePrefix="data-av-analytics">
-        <button
-          data-av-analytics-on="click"
-          data-av-analytics-action="click"
-          type="button"
-        >
+        <button data-av-analytics-on="click" data-av-analytics-action="click" type="button">
           Hello World
         </button>
       </Analytics>

@@ -1,12 +1,12 @@
-import { PaginationProps } from "reactstrap";
+import { PaginationProps } from 'reactstrap';
 
 export interface PaginationControlsProps extends PaginationProps {
-    directionLinks?: boolean;
-    autoHide?: boolean;
-    marginPages?: number;
-    pageRange?: number;
+  directionLinks?: boolean;
+  autoHide?: boolean;
+  marginPages?: number;
+  pageRange?: number;
 }
 
-declare const PaginationControls: React.FunctionComponent<PaginationControlsProps>;
+declare const PaginationControls: React.FC<PaginationControlsProps>;
 
 export default PaginationControls;

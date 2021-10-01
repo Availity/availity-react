@@ -1,5 +1,2 @@
-import FavoriteHeart from './types/FavoriteHeart';
-import Favorites, { useFavorites, FavoritesContext } from './types/FavoritesContext';
-
-export default Favorites;
-export { FavoritesContext, useFavorites, FavoriteHeart };
+export { default as FavoriteHeart } from './types/FavoriteHeart';
+export { default, useFavorites, FavoritesContext } from './types/FavoritesContext';

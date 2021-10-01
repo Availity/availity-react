@@ -3,10 +3,12 @@ import { storiesOf } from '@storybook/react';
 import { withKnobs, text, boolean, select } from '@storybook/addon-knobs';
 import '@availity/mock';
 
-import Feedback, { FeedbackForm } from '@availity/feedback';
 import README from '@availity/feedback/README.md';
 
 import { Preview } from '../util';
+
+const Feedback = React.lazy(() => import('@availity/feedback'));
+const FeedbackForm = React.lazy(() => import('@availity/feedback/src/FeedbackForm'));
 
 storiesOf('Components/Feedback', module)
   .addParameters({
@@ -47,10 +49,10 @@ storiesOf('Components/Feedback', module)
           info: 'info',
           warning: 'warning',
         },
-        Feedback.defaultProps.color
+        'secondary'
       )}
       outline={boolean('Button Outline', false)}
-      className={text('ClassName', Feedback.defaultProps.className)}
+      className={text('ClassName', '')}
       modal={boolean('Modal', false)}
     >
       {text('Button Text')}

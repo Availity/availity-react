@@ -18,21 +18,12 @@ const Component = ({ permissions, children, ...options }) => {
     return <span data-testid="component-loading">Loading</span>;
   }
 
-  return authorized ? (
-    children
-  ) : (
-    <span data-testid="component-content">
-      You do not have permission to see this
-    </span>
-  );
+  return authorized ? children : <span data-testid="component-content">You do not have permission to see this</span>;
 };
 
 // eslint-disable-next-line react/prop-types
 const RegionComponent = ({ permissions, ...options }) => {
-  const [authorized, loading, currentRegion] = useAuthorize(
-    permissions,
-    options
-  );
+  const [authorized, loading, currentRegion] = useAuthorize(permissions, options);
 
   if (loading) {
     return <span data-testid="component-loading">Loading</span>;
@@ -41,9 +32,7 @@ const RegionComponent = ({ permissions, ...options }) => {
   return authorized ? (
     <span data-testid="component-region">{currentRegion.value}</span>
   ) : (
-    <span data-testid="component-content">
-      You do not have permission to see this
-    </span>
+    <span data-testid="component-content">You do not have permission to see this</span>
   );
 };
 
@@ -86,9 +75,7 @@ beforeEach(() => {
 
 describe('useAuthorize', () => {
   test('should render authorized content', async () => {
-    const { getByText } = render(
-      <Component permissions="1234">You have permission to see this</Component>
-    );
+    const { getByText } = render(<Component permissions="1234">You have permission to see this</Component>);
 
     await waitFor(() => {
       const el = getByText('You have permission to see this');
@@ -109,9 +96,7 @@ describe('useAuthorize', () => {
 
   test('should render authorized with array of permissions', async () => {
     const { getByText } = render(
-      <Component permissions={['1234', 2345, [3456, '4567']]}>
-        You have permission to see this
-      </Component>
+      <Component permissions={['1234', 2345, [3456, '4567']]}>You have permission to see this</Component>
     );
 
     await waitFor(() => {
@@ -158,11 +143,7 @@ describe('useAuthorize', () => {
     ]);
 
     const { getByText } = render(
-      <Component
-        permissions={['1234', ['5678', '9012']]}
-        region="FL"
-        organizationId="1111"
-      >
+      <Component permissions={['1234', ['5678', '9012']]} region="FL" organizationId="1111">
         You have permission to see this
       </Component>
     );
@@ -373,9 +354,7 @@ describe('useAuthorize', () => {
 
   test('should get current region back from useAuthorize hook', async () => {
     const { getByText } = await render(
-      <RegionComponent permissions="1234">
-        You have permission to see this
-      </RegionComponent>
+      <RegionComponent permissions="1234">You have permission to see this</RegionComponent>
     );
 
     await waitFor(() => {
@@ -386,9 +365,7 @@ describe('useAuthorize', () => {
   });
 
   test('should not call permissions api if no permissions are passed', async () => {
-    const { getByText } = await render(
-      <RegionComponent>You have permission to see this</RegionComponent>
-    );
+    const { getByText } = await render(<RegionComponent>You have permission to see this</RegionComponent>);
 
     await waitFor(() => {
       expect(avUserPermissionsApi.getPermissions).not.toHaveBeenCalled();

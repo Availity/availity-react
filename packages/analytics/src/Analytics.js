@@ -4,15 +4,7 @@ import PropTypes from 'prop-types';
 
 export const AnalyticsContext = createContext();
 
-const Analytics = ({
-  children,
-  plugins,
-  pageTracking,
-  autoTrack,
-  recursive,
-  attributePrefix,
-  eventModifiers,
-}) => {
+const Analytics = ({ children, plugins, pageTracking, autoTrack, recursive, attributePrefix, eventModifiers }) => {
   const analytics = useRef(
     new AvAnalytics(plugins, Promise, pageTracking, autoTrack, {
       recursive,
@@ -33,11 +25,7 @@ const Analytics = ({
     return cleanup;
   }, [pageTracking]);
 
-  return (
-    <AnalyticsContext.Provider value={analytics.current}>
-      {children}
-    </AnalyticsContext.Provider>
-  );
+  return <AnalyticsContext.Provider value={analytics.current}>{children}</AnalyticsContext.Provider>;
 };
 
 export const useAnalytics = () => useContext(AnalyticsContext);

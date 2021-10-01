@@ -1,8 +1,4 @@
-import Wizard from './src/Wizard';
-import WizardStep from './src/WizardStep';
-import WizardStepBadge from './src/WizardStepBadge';
-import WizardStepTitle from './src/WizardStepTitle';
-
-export default Wizard;
-
-export { WizardStep, WizardStepBadge, WizardStepTitle };
+export { default } from './src/Wizard';
+export { default as WizardStep } from './src/WizardStep';
+export { default as WizardStepBadge } from './src/WizardStepBadge';
+export { default as WizardStepTitle } from './src/WizardStepTitle';

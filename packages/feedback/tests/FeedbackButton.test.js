@@ -30,9 +30,7 @@ describe('Feedback', () => {
   });
 
   test('should have proper ARIA attributes', () => {
-    const { container, getByText } = render(
-      <FeedbackButton icon="home">Home</FeedbackButton>
-    );
+    const { container, getByText } = render(<FeedbackButton icon="home">Home</FeedbackButton>);
 
     expect(container.firstChild).toHaveAttribute('aria-pressed', 'false');
     expect(getByText('Home')).toHaveClass('sr-only');

@@ -1,11 +1,5 @@
 import React from 'react';
-import {
-  render,
-  fireEvent,
-  waitFor,
-  cleanup,
-  within,
-} from '@testing-library/react';
+import { render, fireEvent, waitFor, cleanup, within } from '@testing-library/react';
 import { Button } from 'reactstrap';
 import { Form } from '@availity/form';
 import { avDate } from '@availity/yup';
@@ -28,9 +22,7 @@ describe('Date', () => {
         }}
         onSubmit={onSubmit}
         validationSchema={object().shape({
-          singleDate: avDate({ format: 'MM/DD/YYYY' }).required(
-            'This field is required'
-          ),
+          singleDate: avDate({ format: 'MM/DD/YYYY' }).required('This field is required'),
         })}
       >
         <FormikDate name="singleDate" data-testid="single-select" />
@@ -58,11 +50,7 @@ describe('Date', () => {
         }}
         onSubmit={onSubmit}
       >
-        <FormikDate
-          name="singleDate"
-          data-testid="single-select"
-          onChange={onChange}
-        />
+        <FormikDate name="singleDate" data-testid="single-select" onChange={onChange} />
         <Button type="submit">Submit</Button>
       </Form>
     );
@@ -100,6 +88,41 @@ describe('Date', () => {
     fireEvent.change(input, {
       target: {
         value: '01/04/1997',
+      },
+    });
+
+    fireEvent.click(getByText('Submit'));
+
+    await waitFor(() => {
+      expect(onSubmit).toHaveBeenCalledWith(
+        expect.objectContaining({
+          singleDate: '1997-01-04',
+        }),
+        expect.anything()
+      );
+    });
+  });
+
+  test('works with text input in M/D/YYYY format', async () => {
+    const onSubmit = jest.fn();
+
+    const { container, getByText } = render(
+      <Form
+        initialValues={{
+          singleDate: '',
+        }}
+        onSubmit={onSubmit}
+      >
+        <FormikDate name="singleDate" data-testid="single-select" />
+        <Button type="submit">Submit</Button>
+      </Form>
+    );
+
+    const input = container.querySelector('.DateInput_input');
+
+    fireEvent.change(input, {
+      target: {
+        value: '1/4/1997',
       },
     });
 
@@ -198,9 +221,7 @@ describe('Date', () => {
     expect(yearPickers.length).toBe(3);
 
     const currentGridYearPicker = yearPickers[1];
-    expect(currentGridYearPicker.children.length).toBe(
-      max.year() - min.year() + 1
-    );
+    expect(currentGridYearPicker.children.length).toBe(max.year() - min.year() + 1);
 
     const pickedYear = within(currentGridYearPicker).getByText(someYear);
     expect(pickedYear).toBeDefined();
@@ -235,12 +256,8 @@ describe('Date', () => {
     let nextGridYearPicker = yearPickers[2]; // next in this context refers to the next CalendarMonthGrid to be rendered
 
     // Expect year options to have same length as range of initial options
-    expect(currentGridYearPicker.children.length).toBe(
-      max.year() - min.year() + 1
-    );
-    expect(nextGridYearPicker.children.length).toBe(
-      max.year() - min.year() + 1
-    );
+    expect(currentGridYearPicker.children.length).toBe(max.year() - min.year() + 1);
+    expect(nextGridYearPicker.children.length).toBe(max.year() - min.year() + 1);
 
     fireEvent.change(input, {
       target: {
@@ -261,12 +278,8 @@ describe('Date', () => {
 
     // Expect current MonthGrid to have same number of options, it is still December of max
     // Expect next MonthGrid (January) to have new year option created
-    expect(currentGridYearPicker.children.length).toBe(
-      max.year() - min.year() + 1
-    );
-    expect(nextGridYearPicker.children.length).toBe(
-      max.year() - min.year() + 2
-    );
+    expect(currentGridYearPicker.children.length).toBe(max.year() - min.year() + 1);
+    expect(nextGridYearPicker.children.length).toBe(max.year() - min.year() + 2);
 
     const pickedYear = within(nextGridYearPicker).getByText(newYear);
     expect(pickedYear).toBeDefined();

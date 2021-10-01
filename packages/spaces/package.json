@@ -1,9 +1,10 @@
 {
   "name": "@availity/spaces",
-  "version": "5.0.1",
+  "version": "5.0.2",
   "author": "Tyson Warner <tyson.warner@availity.com>",
   "description": "Easy to use spaces components",
   "main": "index.js",
+  "types": "index.d.ts",
   "keywords": [
     "react",
     "availity"
@@ -20,8 +21,8 @@
     "access": "public"
   },
   "dependencies": {
-    "@availity/hooks": "^3.0.2",
-    "@availity/typography": "^1.2.20",
+    "@availity/hooks": "^3.0.3",
+    "@availity/typography": "^1.2.21",
     "lodash": "^4.17.21",
     "prop-types": "^15.7.2",
     "react-image": "^4.0.3",
@@ -31,16 +32,15 @@
   "devDependencies": {
     "@availity/api-axios": "^5.5.14",
     "@availity/api-core": "^7.0.2",
-    "@availity/localstorage-core": "^3.0.0",
     "axios": "^0.21.1",
+    "react": "^17.0.2",
     "react-dom": "^17.0.2",
     "reactstrap": "^8.9.0"
   },
   "peerDependencies": {
     "@availity/api-axios": "^5.1.5",
-    "@availity/api-core": "^5.1.5",
-    "@availity/localstorage-core": "^2.6.1",
-    "axios": "^0.19.2",
+    "@availity/api-core": "^7.0.2",
+    "axios": "^0.21.1",
     "react": ">=16.8.6",
     "reactstrap": ">=8.0.0"
   }

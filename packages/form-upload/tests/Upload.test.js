@@ -17,7 +17,7 @@ describe('Upload', () => {
     // This is useful to isolate specific modules for every test so that local module state doesn't conflict between tests.
     // Makes lazy loading react-dropzone consistent instead of relying on only one test to set it up
     // eslint-disable-next-line no-return-assign
-    jest.isolateModules(() => (Upload = require('../Upload').default));
+    jest.isolateModules(() => (Upload = require('../src/Upload').default));
   });
 
   test('should render', () => {
@@ -159,9 +159,7 @@ describe('Upload', () => {
           bucketId: 'b',
           customerId: 'c',
           showFileDrop: true,
-          fallback: (
-            <div data-testid="user-fallback">Loading suspended component</div>
-          ),
+          fallback: <div data-testid="user-fallback">Loading suspended component</div>,
         }
       );
 
@@ -227,10 +225,7 @@ describe('Upload', () => {
       const getDropRejectionMessage = (errors) => {
         let msg = '';
         errors.forEach((error) => {
-          msg +=
-            error.code === 'file-too-large'
-              ? 'my custom error message'
-              : 'this file is no good';
+          msg += error.code === 'file-too-large' ? 'my custom error message' : 'this file is no good';
         });
         return msg;
       };

@@ -44,25 +44,19 @@ describe('filesDelivery upload', () => {
     });
     xhrMock.setup();
 
-    nock('https://dev.local')
-      .post(
-        '/ms/api/availity/internal/core/vault/upload/v1/resumable/testbucket/'
-      )
-      .reply(
-        201,
-        {},
-        {
-          'tus-resumable': '1.0.0',
-          'upload-expires': 'Fri, 12 Jan 2030 15:54:39 GMT',
-          'transfer-encoding': 'chunked',
-          location: '4611142db7c049bbbe37376583a3f46b',
-        }
-      );
+    nock('https://dev.local').post('/ms/api/availity/internal/core/vault/upload/v1/resumable/testbucket/').reply(
+      201,
+      {},
+      {
+        'tus-resumable': '1.0.0',
+        'upload-expires': 'Fri, 12 Jan 2030 15:54:39 GMT',
+        'transfer-encoding': 'chunked',
+        location: '4611142db7c049bbbe37376583a3f46b',
+      }
+    );
 
     nock('https://dev.local')
-      .patch(
-        '/ms/api/availity/internal/core/vault/upload/v1/resumable/testbucket/4611142db7c049bbbe37376583a3f46b'
-      )
+      .patch('/ms/api/availity/internal/core/vault/upload/v1/resumable/testbucket/4611142db7c049bbbe37376583a3f46b')
       .reply(
         204,
         {},
@@ -130,9 +124,7 @@ describe('filesDelivery upload', () => {
     fireEvent.change(inputNode, fileEvent);
     expect(inputNode.files.length).toBe(1);
 
-    await wait(() =>
-      expect(avFilesDeliveryApi.uploadFilesDelivery).toHaveBeenCalledTimes(1)
-    );
+    await wait(() => expect(avFilesDeliveryApi.uploadFilesDelivery).toHaveBeenCalledTimes(1));
   });
 
   test('calls avFilesDeliveryApi onSubmit when deliverFileOnSubmit is true and deliveryChannel and fileDeliveryMetadata are defined', async (done) => {
@@ -173,9 +165,7 @@ describe('filesDelivery upload', () => {
 
     fireEvent.click(getByText('Submit'));
     await wait(() => expect(onSubmit).toHaveBeenCalled());
-    await wait(() =>
-      expect(avFilesDeliveryApi.uploadFilesDelivery).toHaveBeenCalledTimes(1)
-    );
+    await wait(() => expect(avFilesDeliveryApi.uploadFilesDelivery).toHaveBeenCalledTimes(1));
   });
 
   test('does not call avFilesDeliveryApi when onFileUpload is defined', async (done) => {
@@ -220,8 +210,6 @@ describe('filesDelivery upload', () => {
     fireEvent.click(filerow);
 
     expect(mockFunc).toHaveBeenCalled();
-    await wait(() =>
-      expect(avFilesDeliveryApi.uploadFilesDelivery).not.toHaveBeenCalled()
-    );
+    await wait(() => expect(avFilesDeliveryApi.uploadFilesDelivery).not.toHaveBeenCalled());
   });
 });

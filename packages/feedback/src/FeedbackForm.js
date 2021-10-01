@@ -69,9 +69,7 @@ const FeedbackForm = ({
           onClose(); // Mostly for Screen Reader use but a nice to have for all
         }
         if (onFeedbackSent) {
-          Object.keys(sent).forEach(
-            (key) => sent[key] === undefined && delete sent[key]
-          );
+          Object.keys(sent).forEach((key) => sent[key] === undefined && delete sent[key]);
 
           onFeedbackSent({
             active: active.icon,
@@ -89,12 +87,7 @@ const FeedbackForm = ({
     </Alert>
   ) : (
     <div className="m-2">
-      <div
-        className="h5 m-2"
-        role="heading"
-        aria-level="2"
-        id="feedback-form-header"
-      >
+      <div className="h5 m-2" role="heading" aria-level="2" id="feedback-form-header">
         {prompt || `Tell us what you think about ${name}`}
       </div>
       <Form
@@ -111,13 +104,8 @@ const FeedbackForm = ({
           smileField: undefined,
         }}
         validationSchema={yup.object().shape({
-          feedback: yup
-            .string()
-            .max(200, 'Feedback cannot exceed 200 characters.')
-            .required('This field is required.'),
-          additionalFeedback: yup
-            .string()
-            .max(200, 'Additional Feedback cannot exceed 200 characters.'),
+          feedback: yup.string().max(200, 'Feedback cannot exceed 200 characters.').required('This field is required.'),
+          additionalFeedback: yup.string().max(200, 'Additional Feedback cannot exceed 200 characters.'),
           smileField: yup
             .object()
             .shape({
@@ -126,20 +114,13 @@ const FeedbackForm = ({
               label: yup.string(),
             })
             .required('This field is required.'),
-          feedbackApp: yup
-            .string()
-            .isRequired(aboutOptions.length > 0, 'This field is required.'),
+          feedbackApp: yup.string().isRequired(aboutOptions.length > 0, 'This field is required.'),
         })}
         {...formProps}
         onSubmit={(values) => sendFeedback(values)}
       >
         <div className="p-2">
-          <FormGroup
-            size="lg"
-            id="face-options"
-            role="group"
-            aria-labelledby="feedback-form-header"
-          >
+          <FormGroup size="lg" id="face-options" role="group" aria-labelledby="feedback-form-header">
             <SmileField
               options={faceOptions}
               name="smileField"
@@ -161,9 +142,7 @@ const FeedbackForm = ({
               <Field
                 type="textarea"
                 name="feedback"
-                label={
-                  (active && active.label) || 'Feedback? Requests? Defects?'
-                }
+                label={(active && active.label) || 'Feedback? Requests? Defects?'}
                 style={fieldStyles}
                 rows="2"
               />
@@ -190,9 +169,7 @@ const FeedbackForm = ({
                 size="sm"
                 className="pl-0 ml-1"
                 onClick={() => setSupportIsActive(true)}
-                onKeyDown={({ keyCode }) =>
-                  keyCode === 13 && setSupportIsActive(true)
-                }
+                onKeyDown={({ keyCode }) => keyCode === 13 && setSupportIsActive(true)}
                 color="link"
                 type="button"
               >
@@ -211,13 +188,7 @@ const FeedbackForm = ({
               Close
             </Button>
           ) : null}
-          <Button
-            size="sm"
-            type="submit"
-            color="primary"
-            disabled={!active}
-            className="ml-1"
-          >
+          <Button size="sm" type="submit" color="primary" disabled={!active} className="ml-1">
             Send Feedback
           </Button>
         </div>

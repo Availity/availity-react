@@ -1,3 +1,3 @@
-export { default } from './Authorize';
-export * from './Authorize';
-export * from './useAuthorize';
+export { default } from './types/Authorize';
+export * from './types/Authorize';
+export * from './types/useAuthorize';

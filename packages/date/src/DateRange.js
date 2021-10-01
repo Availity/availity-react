@@ -82,12 +82,12 @@ const DateRange = ({
   const endValue = value.endDate || '';
 
   const startValueMoment = useMemo(
-    () => moment(startValue, [isoDateFormat, format, 'MMDDYYYY', 'YYYYMMDD']),
+    () => moment(startValue, [isoDateFormat, format, 'MMDDYYYY', 'YYYYMMDD', 'M/D/YYYY']),
     [startValue, format]
   );
 
   const endValueMoment = useMemo(
-    () => moment(endValue, [isoDateFormat, format, 'MMDDYYYY', 'YYYYMMDD']),
+    () => moment(endValue, [isoDateFormat, format, 'MMDDYYYY', 'YYYYMMDD', 'M/D/YYYY']),
     [endValue, format]
   );
 
@@ -112,11 +112,7 @@ const DateRange = ({
   // For updating when we delete the current input
   const onInputChange = (val) => {
     const isStart = focusedInput === 'startDate';
-    const date = moment(
-      val,
-      [isoDateFormat, format, 'MMDDYYYY', 'YYYYMMDD'],
-      true
-    );
+    const date = moment(val, [isoDateFormat, format, 'MMDDYYYY', 'YYYYMMDD', 'M/D/YYYY'], true);
 
     const valueToSet = date.isValid() ? date.format(format) : null;
 
@@ -190,11 +186,7 @@ const DateRange = ({
   };
 
   const getDateValue = (val) => {
-    const date = moment(
-      val,
-      [isoDateFormat, format, 'MMDDYYYY', 'YYYYMMDD'],
-      true
-    );
+    const date = moment(val, [isoDateFormat, format, 'MMDDYYYY', 'YYYYMMDD', 'M/D/YYYY'], true);
     if (date.isValid()) return date;
 
     return null;
@@ -205,9 +197,7 @@ const DateRange = ({
     if (typeof propsRanges === 'boolean' && propsRanges) {
       ranges = relativeRanges;
     } else if (propsRanges) {
-      ranges = Array.isArray(propsRanges)
-        ? pick(relativeRanges, propsRanges)
-        : propsRanges;
+      ranges = Array.isArray(propsRanges) ? pick(relativeRanges, propsRanges) : propsRanges;
     }
 
     return ranges ? (
@@ -217,8 +207,7 @@ const DateRange = ({
 
           // Comparing moments with unit as 'millisecond' avoids moment cloning
           const isSelected =
-            startDate.isSame(startValueMoment, 'millisecond') &&
-            endDate.isSame(endValueMoment, 'millisecond');
+            startDate.isSame(startValueMoment, 'millisecond') && endDate.isSame(endValueMoment, 'millisecond');
 
           return (
             <Button
@@ -364,11 +353,7 @@ DateRange.propTypes = {
   datepickerProps: PropTypes.object,
   'data-testid': PropTypes.string,
   autoSync: PropTypes.bool,
-  ranges: PropTypes.oneOfType([
-    PropTypes.bool,
-    PropTypes.array,
-    PropTypes.object,
-  ]),
+  ranges: PropTypes.oneOfType([PropTypes.bool, PropTypes.array, PropTypes.object]),
   customArrowIcon: PropTypes.oneOfType([PropTypes.string, PropTypes.node]),
   openDirection: PropTypes.string,
 };

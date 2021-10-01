@@ -1,17 +1,15 @@
-
 type ResourceType = {
-    postGet: Function;
-    getResult: string | Function
+  postGet: Function;
+  getResult: string | Function;
 };
 
 export interface AvResourcePaginationProps {
-    itemsPerPage?: number;
-    parameters?: object;
-    children?: React.ReactType;
-    resource: ResourceType;
-    getResult: string | Function;
+  itemsPerPage?: number;
+  parameters?: object;
+  resource: ResourceType;
+  getResult: string | Function;
 }
 
-declare const AvResourcePagination: React.FunctionComponent<AvResourcePaginationProps>;
+declare const AvResourcePagination: React.FC<AvResourcePaginationProps>;
 
 export default AvResourcePagination;

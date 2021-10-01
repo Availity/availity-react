@@ -46,22 +46,15 @@ describe('FeedbackForm', () => {
     // Simulate the Click
     fireEvent.click(smileyFeedbackField);
 
-    expect(smileyFeedbackField.parentElement.className).toContain(
-      'btn-primary'
-    );
+    expect(smileyFeedbackField.parentElement.className).toContain('btn-primary');
 
-    expect(smileyFeedbackField.parentElement).toHaveAttribute(
-      'aria-pressed',
-      'true'
-    );
+    expect(smileyFeedbackField.parentElement).toHaveAttribute('aria-pressed', 'true');
   });
 
   test('should submit with feedback text value', async () => {
     const onFeedbackSent = jest.fn();
 
-    const { getByLabelText, getByText } = render(
-      <FeedbackForm onFeedbackSent={onFeedbackSent} name="Payer Space" />
-    );
+    const { getByLabelText, getByText } = render(<FeedbackForm onFeedbackSent={onFeedbackSent} name="Payer Space" />);
 
     // Simulate the Click
     fireEvent.click(getByText('Smiley face'));
@@ -144,18 +137,14 @@ describe('FeedbackForm', () => {
       },
     ];
 
-    const { getByTestId } = render(
-      <FeedbackForm name="Payer Space" faceOptions={faceOptions} />
-    );
+    const { getByTestId } = render(<FeedbackForm name="Payer Space" faceOptions={faceOptions} />);
 
     const faceOptionFields = getByTestId('face-options');
 
     expect(faceOptionFields.childElementCount).toBe(4);
 
     faceOptions.forEach((faceOption) => {
-      expect(
-        faceOptionFields.getElementsByClassName(`icon-${faceOption.icon}`)
-      ).not.toBe(null);
+      expect(faceOptionFields.getElementsByClassName(`icon-${faceOption.icon}`)).not.toBe(null);
     });
   });
 
@@ -178,9 +167,7 @@ describe('FeedbackForm', () => {
         label: 'Availity as a whole',
       },
     ];
-    const { getByText } = render(
-      <FeedbackForm name="Payer Space" aboutOptions={aboutOptions} />
-    );
+    const { getByText } = render(<FeedbackForm name="Payer Space" aboutOptions={aboutOptions} />);
 
     // Simulate the Click First
     fireEvent.click(getByText('Smiley face'));
@@ -208,9 +195,7 @@ describe('FeedbackForm', () => {
   });
 
   test('should render additional comments input', () => {
-    const { getByText } = render(
-      <FeedbackForm name="Payer Space" additionalComments />
-    );
+    const { getByText } = render(<FeedbackForm name="Payer Space" additionalComments />);
 
     fireEvent.click(getByText('Smiley face'));
 
@@ -218,9 +203,7 @@ describe('FeedbackForm', () => {
   });
 
   test('should show support', () => {
-    const { getByText } = render(
-      <FeedbackForm name="Payer Space" showSupport additionalComments />
-    );
+    const { getByText } = render(<FeedbackForm name="Payer Space" showSupport additionalComments />);
 
     expect(getByText('Open a support ticket')).toBeDefined();
   });
@@ -242,10 +225,7 @@ describe('FeedbackForm', () => {
     const smileyGroup = getByTestId('face-options');
 
     expect(smileyGroup.parentElement).toHaveAttribute('role', 'group');
-    expect(smileyGroup.parentElement).toHaveAttribute(
-      'aria-labelledby',
-      'feedback-form-header'
-    );
+    expect(smileyGroup.parentElement).toHaveAttribute('aria-labelledby', 'feedback-form-header');
   });
 
   test('should focus first SmileField button by default', async () => {
@@ -258,9 +238,7 @@ describe('FeedbackForm', () => {
   });
 
   test('should not focus first SmileField button if autofocus is set to false', async () => {
-    const { getByText } = render(
-      <FeedbackForm name="Payer Space" autoFocusFeedbackButton={false} />
-    );
+    const { getByText } = render(<FeedbackForm name="Payer Space" autoFocusFeedbackButton={false} />);
 
     const firstFeedbackButton = getByText('Smiley face').closest('button');
     await waitFor(() => {

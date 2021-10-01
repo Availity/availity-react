@@ -5,15 +5,7 @@ import { useFormikContext } from 'formik';
 import { AsYouType } from 'libphonenumber-js';
 import { Row, Col } from 'reactstrap';
 
-const Phone = ({
-  name,
-  label,
-  country = 'US',
-  showExtension = false,
-  extProps,
-  phoneColProps,
-  ...restPhoneProps
-}) => {
+const Phone = ({ name, label, country = 'US', showExtension = false, extProps, phoneColProps, ...restPhoneProps }) => {
   const { setFieldValue, setFieldTouched } = useFormikContext();
 
   let ext = null;
@@ -43,12 +35,7 @@ const Phone = ({
   return (
     <Row>
       <Col xs={showExtension ? 10 : 12} {...phoneColProps}>
-        <Field
-          name={name}
-          label={label}
-          onBlur={formatPhoneOnBlur}
-          {...restPhoneProps}
-        />
+        <Field name={name} label={label} onBlur={formatPhoneOnBlur} {...restPhoneProps} />
       </Col>
       {ext}
     </Row>

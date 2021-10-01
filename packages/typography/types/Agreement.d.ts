@@ -1,9 +1,8 @@
 export interface AgreementProps {
-    tag?: React.ReactType | string;
-    className?: string;
-    children?: React.ReactType;
+  tag?: React.ReactType | string;
+  className?: string;
 }
 
-declare const Agreement: React.FunctionComponent<AgreementProps>;
+declare const Agreement: React.FC<AgreementProps>;
 
 export default Agreement;

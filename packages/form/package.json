@@ -1,10 +1,10 @@
 {
   "name": "@availity/form",
-  "version": "0.7.0",
+  "version": "0.7.1",
   "author": "Kyle Gray <kyle.gray@availity.com>",
   "description": "Form Wrapper around formik using reactstrap components",
   "main": "index.js",
-  "typings": "typings/index.d.ts",
+  "types": "index.d.ts",
   "keywords": [
     "react",
     "availity"
@@ -21,7 +21,7 @@
     "access": "public"
   },
   "dependencies": {
-    "@availity/help": "^1.4.1",
+    "@availity/help": "^1.4.2",
     "classnames": "^2.3.1",
     "prop-types": "^15.7.2",
     "uuid": "^8.3.2"
