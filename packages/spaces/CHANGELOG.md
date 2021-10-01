@@ -3,6 +3,14 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [5.0.3](https://github.com/Availity/availity-react/compare/@availity/spaces@5.0.2...@availity/spaces@5.0.3) (2021-10-01)
+
+**Note:** Version bump only for package @availity/spaces
+
+
+
+
+
 ## 5.0.2 (2021-09-28)
 
 **Note:** Version bump only for package @availity/spaces

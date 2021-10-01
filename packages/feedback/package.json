@@ -1,6 +1,6 @@
 {
   "name": "@availity/feedback",
-  "version": "6.0.7",
+  "version": "6.0.8",
   "author": "Evan Sharp <evan.sharp@availity.com>",
   "description": "Availity feedback with smiley faces react component.",
   "main": "index.js",
@@ -21,11 +21,11 @@
     "access": "public"
   },
   "dependencies": {
-    "@availity/form": "^0.7.1",
-    "@availity/hooks": "^3.0.3",
-    "@availity/icon": "^0.8.1",
+    "@availity/form": "^0.7.2",
+    "@availity/hooks": "^3.0.4",
+    "@availity/icon": "^0.8.2",
     "@availity/native-form": "^3.0.0",
-    "@availity/select": "^0.18.2",
+    "@availity/select": "^0.18.3",
     "prop-types": "^15.7.2"
   },
   "devDependencies": {

@@ -1,6 +1,6 @@
 {
   "name": "@availity/avatar",
-  "version": "0.4.4",
+  "version": "0.4.5",
   "author": "Tyson Warner <tyson.warner@availity.com>",
   "description": "Availity User avatar component",
   "main": "index.js",
@@ -33,7 +33,7 @@
     "react": ">=16.8.0"
   },
   "dependencies": {
-    "@availity/hooks": "^3.0.3",
+    "@availity/hooks": "^3.0.4",
     "lodash": "^4.17.21",
     "prop-types": "^15.7.2",
     "react-image": "^4.0.3",
