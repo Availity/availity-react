@@ -41,9 +41,10 @@ const TableRow = ({ row, index, onRowClick, onCellClick, children, ...rest }) =>
     },
   };
 
-  const isLastColumnSticky = allColumns.slice(-1)[0].sticky === true;
-  const isFirstColumnSticky = allColumns[0].sticky === true;
-  const numberOfNonStickyColumns = _.filter(allColumns, (c) => !c.sticky).length;
+  const isLastColumnSticky = allColumns.slice(-1)[0].stickyRight === true;
+  const isFirstColumnSticky = allColumns[0].stickyLeft === true;
+
+  const numberOfNonStickyColumns = _.filter(allColumns, (c) => !(c.stickyRight || c.stickyLeft)).length;
 
   return (
     <>

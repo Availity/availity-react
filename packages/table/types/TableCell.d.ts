@@ -1,8 +1,10 @@
-import React from "react";
-import { OnTableClickEvent } from "./Table";
+import React from 'react';
+import { Cell } from 'react-table';
+import { OnTableClickEvent } from './Table';
 
 export interface TableCellProps {
-    cell: object;
+    cell: Cell;
+    children: React.ElementType | React.ReactElement | React.ReactType;
     onCellClick: (event: OnTableClickEvent) => void;
 }
 
