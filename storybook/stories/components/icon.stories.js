@@ -34,6 +34,10 @@ const colors = {
 
 const iconOptions = {};
 
+const hoverOptions = {
+  cursor: 'pointer',
+};
+
 icons.glyphs.forEach((glyph) => {
   iconOptions[glyph.css] = glyph.css;
 });
@@ -52,6 +56,7 @@ storiesOf('Components/Icon', module)
         name={select('Icon Name', iconOptions, 'home')}
         size={select('Sizes', options, '3x')}
         color={select('Colors', colors)}
+        style={{ cursor: select('Hover', hoverOptions, 'pointer') }}
       />
     </div>
   ));
