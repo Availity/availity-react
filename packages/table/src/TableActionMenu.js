@@ -10,7 +10,7 @@ const TableActionMenu = ({ id, children }) => {
   return (
     <Dropdown id={id} className="dropdown-action-menu" direction="left" isOpen={isOpen} toggle={toggle}>
       <DropdownToggle id={`${id}_dropdown_toggle`} data-boundary="viewport" className="btn btn-ghost">
-        <Icon id={`${id}_dropdown_toggle_icon`} name="icon-menu" />
+        <Icon id={`${id}_dropdown_toggle_icon`} name="menu" />
       </DropdownToggle>
       <DropdownMenu id={`${id}_dropdown_toggle_icon`} className="dropdown-action-menu" container=".av-grid-row-even td">
         {children}
