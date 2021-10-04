@@ -39,7 +39,7 @@
       "@availity/select": ["./select"],
       "@availity/spaces": ["./spaces"],
       "@availity/step-wizard": ["./step-wizard"],
-      "@availity/table": ["./table/src"],
+      "@availity/table": ["./table"],
       "@availity/training-link": ["./training-link"],
       "@availity/typography": ["./typography"],
       "@availity/upload": ["./upload"]

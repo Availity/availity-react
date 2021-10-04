@@ -76,14 +76,7 @@ const Table = ({
                 </div>
               );
             },
-            Cell: ({
-              row: {
-                original,
-                toggleRowSelected,
-                getToggleRowSelectedProps,
-                index,
-              },
-            }) => {
+            Cell: ({ row: { original, toggleRowSelected, getToggleRowSelectedProps, index } }) => {
               const selectedProps = {
                 onClick: () => {
                   if (onRowSelected) {
@@ -148,12 +141,8 @@ const Table = ({
             >
               {headerGroup.headers.map((column, cellIndex) => (
                 <TableHeaderCell
-                  id={`${populateId()}table_header_row_${rowIndex}_cell_${cellIndex}_${
-                    column.id
-                  }`}
-                  data-testid={`${populateId()}table_header_row_${rowIndex}_cell_${cellIndex}_${
-                    column.id
-                  }`}
+                  id={`${populateId()}table_header_row_${rowIndex}_cell_${cellIndex}_${column.id}`}
+                  data-testid={`${populateId()}table_header_row_${rowIndex}_cell_${cellIndex}_${column.id}`}
                   key={column.id}
                   column={column}
                 >
