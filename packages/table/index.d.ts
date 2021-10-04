@@ -1,13 +1,6 @@
-import AvTable from './types/AvTable';
-import AvTableHeader from './types/AvTableHeader';
-import AvTableBody from './types/AvTableBody';
-import AvTableRow from './types/AvTableRow';
-
-export {
-    AvTable,
-    AvTableHeader,
-    AvTableBody,
-    AvTableRow
-};
-
-export default AvTable;
+export { default as AvTable} from './types/AvTable';
+export { default as AvTableHeader } from './types/AvTableHeader';
+export { default as AvTableRow } from './types/AvTableRow';
+export { default as AvTableCell } from './types/AvTableCell';
+export { default as AvTableActionMenu } from './types/AvTableActionMenu';
+export { default as AvTableContext, useTableContext } from './types/AvTableContext';

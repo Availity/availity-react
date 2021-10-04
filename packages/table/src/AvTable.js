@@ -1,21 +1,27 @@
-import React, { useContext } from 'react';
+import React from 'react';
 import PropTypes from 'prop-types';
 import { useTable, useRowSelect, useSortBy } from 'react-table';
-import { Table } from 'reactstrap';
+import { Util, Table } from 'reactstrap';
 import AvIndeterminateCheckbox from './AvIndeterminateCheckbox';
-
-export const AvTableContext = React.createContext();
-export const useTableContext = () => useContext(AvTableContext);
+import AvTableActionMenu from './AvTableActionMenu';
+import AvTableRow from './AvTableRow';
+import AvTableHeader from './AvTableHeader';
+import { AvTableContext } from './AvTableContext';
 
 const AvTable = ({
-  selectable,
-  scrollable,
+  actions,
+  actionProps,
+  additionalContentComponent,
+  bodyProps,
+  cellProps,
+  headerProps,
   columns,
-  className,
   records,
+  rowProps,
+  scrollable,
+  selectable,
+  sortable,
   sortBy,
-  children,
-  sortableColumns,
   ...rest
 }) => {
   const { getTableProps, getTableBodyProps, headerGroups, rows, prepareRow, selectedFlatRows } = useTable(
@@ -33,6 +39,8 @@ const AvTable = ({
         hooks.visibleColumns.push((columns) => [
           {
             id: 'selection',
+            label: 'Select record(s)',
+            canSort: false,
             Header: ({ getToggleAllRowsSelectedProps }) => (
               <div className="text-center">
                 <AvIndeterminateCheckbox aria-label="Select all records" {...getToggleAllRowsSelectedProps()} />
@@ -47,34 +55,47 @@ const AvTable = ({
           ...columns,
         ]);
       }
+
+      if (actions) {
+        hooks.visibleColumns.push((columns) => [
+          ...columns,
+          {
+            id: 'actions',
+            canSort: false,
+            Header: 'Actions',
+            Cell: ({ row: { original } }) => (
+              <>
+                <AvTableActionMenu actions={actions} record={original} />
+                {actionProps.primaryAction && actionProps.primaryAction.render()}
+              </>
+            ),
+          },
+        ]);
+      }
     }
   );
 
-  const getTableClass = () => {
-    let tableClassName = 'av-grid';
-    if (className) {
-      tableClassName += ` ${className}`;
-    }
-    return {
-      className: tableClassName,
-    };
-  };
-
   const renderTable = () => (
-    <Table {...getTableProps(getTableClass())} {...rest}>
-      {children}
+    <Table {...getTableProps({ className: 'av-grid' })} {...rest}>
+      <AvTableHeader hasStickyActions={actionProps.sticky} {...headerProps} />
+      <tbody {...getTableBodyProps()} {...bodyProps}>
+        {rows.map((row, index) => (
+          <AvTableRow
+            key={row.original.id}
+            row={row}
+            index={index}
+            cellProps={cellProps}
+            actionProps={actionProps}
+            {...rowProps}
+          />
+        ))}
+      </tbody>
     </Table>
   );
 
-  const tableBody = scrollable ? (
-    <div className="av-scrollable-table-wrapper">
-      <section className="flexie content-main">
-        <div className="col-scrollable-table flexie">{renderTable()}</div>
-      </section>
-    </div>
-  ) : (
-    renderTable()
-  );
+  const getScrollableTable = () => <div className="av-scrollable-table-wrapper">{renderTable()}</div>;
+
+  const hasActions = actions && actions.length > 0;
 
   return (
     <AvTableContext.Provider
@@ -85,26 +106,40 @@ const AvTable = ({
         getTableBodyProps,
         prepareRow,
         scrollable,
+        additionalContentComponent,
+        columnSize: columns.length + (selectable ? 1 : 0),
+        hasActions,
       }}
     >
-      {tableBody}
+      {scrollable ? getScrollableTable() : renderTable()}
     </AvTableContext.Provider>
   );
 };
 
 AvTable.propTypes = {
-  selectable: PropTypes.bool,
-  scrollable: PropTypes.bool,
+  actionProps: PropTypes.object,
+  actions: PropTypes.arrayOf(PropTypes.object),
+  additionalContentComponent: Util.tagPropType,
+  bodyProps: PropTypes.object,
+  cellProps: PropTypes.object,
   columns: PropTypes.arrayOf(PropTypes.object),
+  headerProps: PropTypes.object,
+  selectable: PropTypes.bool,
+  sortable: PropTypes.bool,
+  scrollable: PropTypes.bool,
   records: PropTypes.arrayOf(PropTypes.object),
-  className: PropTypes.string,
-  children: PropTypes.node,
+  rowProps: PropTypes.object,
   sortBy: PropTypes.arrayOf(PropTypes.object),
-  sortableColumns: PropTypes.arrayOf(PropTypes.string),
-  row: PropTypes.object,
   getToggleAllRowsSelectedProps: PropTypes.func,
+  row: PropTypes.object,
 };
 
-AvTable.defaultProps = {};
+AvTable.defaultProps = {
+  headerProps: {},
+  rowProps: {},
+  bodyProps: {},
+  cellProps: {},
+  actionProps: {},
+};
 
 export default AvTable;

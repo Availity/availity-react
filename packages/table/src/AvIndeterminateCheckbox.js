@@ -11,7 +11,10 @@ const AvIndeterminateCheckbox = React.forwardRef(({ indeterminate, ...rest }, re
 
   return (
     <>
-      <input type="checkbox" ref={resolvedRef} {...rest} />
+      <label className="custom-control custom-checkbox">
+        <input type="checkbox" ref={resolvedRef} {...rest} className="custom-control-input" />
+        <span className="custom-control-label" />
+      </label>
     </>
   );
 });
