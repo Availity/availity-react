@@ -1,0 +1,37 @@
+{
+  "name": "@availity/table",
+  "version": "0.0.1",
+  "author": "Ashlee Zeigler <ashlee.zeigler@availity.com>",
+  "description": "A generic table component built with react-table",
+  "main": "index.js",
+  "types": "index.d.ts",
+  "keywords": [
+    "react",
+    "availity"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Availity/availity-react.git"
+  },
+  "bugs": {
+    "url": "https://github.com/Availity/availity-react/issues"
+  },
+  "license": "MIT",
+  "publishConfig": {
+    "access": "public"
+  },
+  "peerDependencies": {
+    "react": "^16.8.3",
+    "react-dom": "^16.8.3",
+    "react-table": "^7.7.0"
+  },
+  "dependencies": {
+    "prop-types": "^15.7.2",
+    "react-table": "^7.7.0"
+  },
+  "devDependencies": {
+    "react": "^16.8.3",
+    "react-dom": "^16.8.3",
+    "reactstrap": "^8.7.1"
+  }
+}
