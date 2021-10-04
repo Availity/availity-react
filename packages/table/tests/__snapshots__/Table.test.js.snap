@@ -816,7 +816,7 @@ exports[`Table should render with formatted cells 1`] = `
             >
               <i
                 aria-hidden="true"
-                class="icon icon-icon-menu"
+                class="icon icon-menu"
                 id="table_row_action_menu_1_dropdown_toggle_icon"
               />
             </button>
@@ -920,7 +920,7 @@ exports[`Table should render with formatted cells 1`] = `
             >
               <i
                 aria-hidden="true"
-                class="icon icon-icon-menu"
+                class="icon icon-menu"
                 id="table_row_action_menu_2_dropdown_toggle_icon"
               />
             </button>
