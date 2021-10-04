@@ -1,6 +1,20 @@
-export { default as AvTable} from './types/AvTable';
-export { default as AvTableHeader } from './types/AvTableHeader';
-export { default as AvTableRow } from './types/AvTableRow';
-export { default as AvTableCell } from './types/AvTableCell';
-export { default as AvTableActionMenu } from './types/AvTableActionMenu';
-export { default as AvTableContext, useTableContext } from './types/AvTableContext';
+import Table from './types/Table';
+import ScrollableContainer from './types/ScrollableContainer';
+
+import ActionCell from './types/CellDefinitions/ActionCell';
+import BadgeCell from './types/CellDefinitions/BadgeCell';
+import CurrencyCell from './types/CellDefinitions/CurrencyCell';
+import DateCell from './types/CellDefinitions/DateCell';
+import IconCell, { BuildIcon } from './types/CellDefinitions/IconCell';
+
+export default Table;
+export {
+    ScrollableContainer,
+    
+    ActionCell,
+    BadgeCell,
+    BuildIcon,
+    CurrencyCell, 
+    DateCell, 
+    IconCell
+ };

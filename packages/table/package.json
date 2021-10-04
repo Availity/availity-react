@@ -21,11 +21,16 @@
     "access": "public"
   },
   "devDependencies": {
-    "@babel/polyfill": "^7.12.1"
+    "@types/react-table": "^7.7.4"
   },
   "dependencies": {
-    "@babel/polyfill": "^7.12.1",
+    "@availity/icon": "^0.8.0",
+    "@types/react-table": "^7.7.4",
+    "availity-uikit": "^3.2.2",
+    "classnames": "^2.3.1",
+    "core-js": "^3.18.1",
     "lodash": "^4.17.21",
+    "moment": "^2.29.1",
     "prop-types": "^15.7.2",
     "react-table": "^7.7.0",
     "reactstrap": "^8.9.0"

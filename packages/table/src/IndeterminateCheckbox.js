@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-const AvIndeterminateCheckbox = React.forwardRef(({ indeterminate, ...rest }, ref) => {
+const IndeterminateCheckbox = React.forwardRef(({ indeterminate, ...rest }, ref) => {
   const defaultRef = React.useRef();
   const resolvedRef = ref || defaultRef;
 
@@ -19,8 +19,8 @@ const AvIndeterminateCheckbox = React.forwardRef(({ indeterminate, ...rest }, re
   );
 });
 
-AvIndeterminateCheckbox.propTypes = {
+IndeterminateCheckbox.propTypes = {
   indeterminate: PropTypes.bool,
 };
 
-export default AvIndeterminateCheckbox;
+export default IndeterminateCheckbox;
