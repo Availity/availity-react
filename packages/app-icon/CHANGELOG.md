@@ -3,6 +3,14 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.3.24](https://github.com/Availity/availity-react/compare/@availity/app-icon@1.3.23...@availity/app-icon@1.3.24) (2021-10-01)
+
+**Note:** Version bump only for package @availity/app-icon
+
+
+
+
+
 ## 1.3.23 (2021-09-28)
 
 **Note:** Version bump only for package @availity/app-icon

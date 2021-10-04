@@ -1,6 +1,6 @@
 {
   "name": "@availity/reactstrap-validation-select",
-  "version": "7.0.3",
+  "version": "7.0.4",
   "description": "Wrapper for react-select to work with availity-reactstrap-validation",
   "main": "index.js",
   "types": "index.d.ts",
@@ -23,9 +23,17 @@
     "url": "https://github.com/Availity/availity-react/issues"
   },
   "homepage": "https://github.com/Availity/availity-react/tree/master/packages/reactstrap-validation-select#readme",
+  "dependencies": {
+    "@types/react-select": "^3.0.23",
+    "classnames": "^2.3.1",
+    "lodash": "^4.17.21",
+    "prop-types": "^15.7.2",
+    "qs": "^6.5.2",
+    "react-select": "^3.0.3",
+    "react-select-async-paginate": "^0.4.1"
+  },
   "devDependencies": {
-    "@availity/api-axios": "^5.5.14",
-    "@availity/api-core": "^7.0.2",
+    "@availity/api-axios": "^6.0.0",
     "availity-reactstrap-validation": "^2.7.1",
     "axios": "^0.21.1",
     "react": "^17.0.2",
@@ -33,21 +41,12 @@
     "reactstrap": "^8.9.0"
   },
   "peerDependencies": {
-    "@availity/api-axios": "^5.4.0",
-    "@availity/api-core": "^7.0.1",
+    "@availity/api-axios": "^6.0.0",
     "availity-reactstrap-validation": "^2.7.0",
     "availity-uikit": ">=3.0.0",
     "axios": "^0.21.1",
     "react": ">=16.8.3",
     "reactstrap": "^8.0.0 || ^7.0.0 || ^6.0.0"
-  },
-  "dependencies": {
-    "classnames": "^2.3.1",
-    "lodash": "^4.17.21",
-    "prop-types": "^15.7.2",
-    "qs": "^6.5.2",
-    "react-select": "^3.0.3",
-    "react-select-async-paginate": "^0.4.1"
   },
   "publishConfig": {
     "access": "public"

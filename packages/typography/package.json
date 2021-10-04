@@ -1,6 +1,6 @@
 {
   "name": "@availity/typography",
-  "version": "1.2.21",
+  "version": "1.2.22",
   "author": "Tyson Warner <tyson.warner@availity.com>",
   "description": "Availity typography components",
   "main": "index.js",
@@ -21,15 +21,15 @@
   "publishConfig": {
     "access": "public"
   },
+  "dependencies": {
+    "classnames": "^2.3.1",
+    "prop-types": "^15.7.2"
+  },
   "devDependencies": {
     "react": "^17.0.2",
     "react-dom": "^17.0.2"
   },
   "peerDependencies": {
     "react": ">=16.3.0"
-  },
-  "dependencies": {
-    "classnames": "^2.3.1",
-    "prop-types": "^15.7.2"
   }
 }

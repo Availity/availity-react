@@ -52,10 +52,7 @@ describe('Authorize', () => {
 
   test('should render unauthorized content', async () => {
     const { getByText } = render(
-      <Authorize
-        permissions="12345"
-        unauthorized="You do not have permission to see this"
-      />
+      <Authorize permissions="12345" unauthorized="You do not have permission to see this" />
     );
 
     await waitFor(() => {
@@ -67,10 +64,7 @@ describe('Authorize', () => {
 
   test('should render authorized with array of permissions', async () => {
     const { getByText } = render(
-      <Authorize
-        permissions={['1234', 2345, [3456, '4567']]}
-        unauthorized="You do not have permission to see this"
-      >
+      <Authorize permissions={['1234', 2345, [3456, '4567']]} unauthorized="You do not have permission to see this">
         You have permission to see this
       </Authorize>
     );
@@ -84,11 +78,7 @@ describe('Authorize', () => {
 
   test('should render negate permissions', async () => {
     const { getByText } = render(
-      <Authorize
-        permissions="1234"
-        negate
-        unauthorized="You do not have permission to see this"
-      >
+      <Authorize permissions="1234" negate unauthorized="You do not have permission to see this">
         You have permission to see this
       </Authorize>
     );
@@ -102,11 +92,7 @@ describe('Authorize', () => {
 
   test('should render authorized with correct organizationId', async () => {
     const { getByText } = render(
-      <Authorize
-        permissions="1234"
-        organizationId="1111"
-        unauthorized="You do not have permission to see this"
-      >
+      <Authorize permissions="1234" organizationId="1111" unauthorized="You do not have permission to see this">
         You have permission to see this
       </Authorize>
     );
@@ -120,11 +106,7 @@ describe('Authorize', () => {
 
   test('should render unauthorized with incorrect organizationId', async () => {
     const { getByText } = render(
-      <Authorize
-        permissions="1234"
-        organizationId="1112"
-        unauthorized="You do not have permission to see this"
-      >
+      <Authorize permissions="1234" organizationId="1112" unauthorized="You do not have permission to see this">
         You have permission to see this
       </Authorize>
     );
@@ -138,11 +120,7 @@ describe('Authorize', () => {
 
   test('should render authorized with correct customerId', async () => {
     const { getByText } = render(
-      <Authorize
-        permissions="1234"
-        customerId="1194"
-        unauthorized="You do not have permission to see this"
-      >
+      <Authorize permissions="1234" customerId="1194" unauthorized="You do not have permission to see this">
         You have permission to see this
       </Authorize>
     );
@@ -156,11 +134,7 @@ describe('Authorize', () => {
 
   test('should render unauthorized with incorrect customerId', async () => {
     const { getByText } = render(
-      <Authorize
-        permissions="1234"
-        customerId="1193"
-        unauthorized="You do not have permission to see this"
-      >
+      <Authorize permissions="1234" customerId="1193" unauthorized="You do not have permission to see this">
         You have permission to see this
       </Authorize>
     );

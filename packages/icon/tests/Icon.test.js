@@ -38,4 +38,13 @@ describe('Icon', () => {
 
     expect(icon.className).toBe('icon icon-home text-primary');
   });
+
+  test('should render with pointer if onClick', () => {
+    const onClick = jest.fn();
+    const { getByTestId } = render(<Icon data-testid="icon" name="home" color="primary" onClick={onClick} />);
+
+    const icon = getByTestId('icon');
+
+    expect(icon.style.cursor).toBe('pointer');
+  });
 });

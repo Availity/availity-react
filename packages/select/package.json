@@ -1,6 +1,6 @@
 {
   "name": "@availity/select",
-  "version": "0.18.2",
+  "version": "0.18.4",
   "description": "Wrapper for react-select to work with formik",
   "main": "index.js",
   "types": "index.d.ts",
@@ -20,26 +20,6 @@
     "url": "https://github.com/Availity/availity-react/issues"
   },
   "homepage": "https://github.com/Availity/availity-react/tree/master/packages/select#readme",
-  "devDependencies": {
-    "@availity/api-axios": "^5.5.14",
-    "@availity/api-core": "^7.0.2",
-    "@availity/form": "^0.7.1",
-    "axios": "^0.21.1",
-    "formik": "^2.2.8",
-    "react": "^17.0.2",
-    "react-dom": "^17.0.2",
-    "reactstrap": "^8.9.0",
-    "yup": "^0.30.0"
-  },
-  "peerDependencies": {
-    "@availity/api-axios": "^5.0.0",
-    "@availity/api-core": "^7.0.0",
-    "@availity/form": "^0.2.0 || ^0.3.0 || ^0.4.0  || ^0.5.0 || ^0.6.0 || ^0.7.0",
-    "axios": "^0.21.1",
-    "formik": "^2.0.1",
-    "react": ">=16.8.3",
-    "reactstrap": "^8.0.0 || ^7.0.0 || ^6.0.0"
-  },
   "dependencies": {
     "@types/react-select": "^3.0.23",
     "classnames": "^2.3.1",
@@ -48,6 +28,24 @@
     "qs": "^6.5.2",
     "react-select": "^3.0.4",
     "react-select-async-paginate": "^0.4.1"
+  },
+  "devDependencies": {
+    "@availity/api-axios": "^6.0.0",
+    "@availity/form": "^0.7.3",
+    "axios": "^0.21.1",
+    "formik": "^2.2.8",
+    "react": "^17.0.2",
+    "react-dom": "^17.0.2",
+    "reactstrap": "^8.9.0",
+    "yup": "^0.30.0"
+  },
+  "peerDependencies": {
+    "@availity/api-axios": "^6.0.0",
+    "@availity/form": "^0.2.0 || ^0.3.0 || ^0.4.0  || ^0.5.0 || ^0.6.0 || ^0.7.0",
+    "axios": "^0.21.1",
+    "formik": "^2.0.1",
+    "react": ">=16.8.3",
+    "reactstrap": "^8.0.0 || ^7.0.0 || ^6.0.0"
   },
   "publishConfig": {
     "access": "public"

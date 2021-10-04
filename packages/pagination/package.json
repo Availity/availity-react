@@ -1,6 +1,6 @@
 {
   "name": "@availity/pagination",
-  "version": "2.10.1",
+  "version": "2.10.2",
   "description": "",
   "main": "index.js",
   "types": "index.d.ts",
@@ -17,10 +17,6 @@
   "bugs": {
     "url": "https://github.com/Availity/availity-react/issues"
   },
-  "peerDependencies": {
-    "react": ">=16.8.0",
-    "reactstrap": "^8.0.0 || ^7.0.0"
-  },
   "dependencies": {
     "@availity/localstorage-core": "^3.0.0",
     "lodash": "^4.17.21",
@@ -30,10 +26,14 @@
     "react-use": "^17.2.4"
   },
   "devDependencies": {
-    "@availity/hooks": "^3.0.3",
+    "@availity/hooks": "^3.0.4",
     "react": "^17.0.2",
     "react-dom": "^17.0.2",
     "reactstrap": "^8.9.0"
+  },
+  "peerDependencies": {
+    "react": ">=16.8.0",
+    "reactstrap": "^8.0.0 || ^7.0.0"
   },
   "gitHead": "49d436db19e42e3c16b4185b12e9dfcce60ec253"
 }

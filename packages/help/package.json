@@ -1,6 +1,6 @@
 {
   "name": "@availity/help",
-  "version": "1.4.2",
+  "version": "1.4.4",
   "author": "Kyle Gray <kyle.gray@availity.com>",
   "description": "Context Provider to assist with Help Menu on Portal for specific pages",
   "types": "index.d.ts",
@@ -20,16 +20,16 @@
   "publishConfig": {
     "access": "public"
   },
-  "peerDependencies": {
-    "react": ">=16.3.0"
-  },
   "dependencies": {
-    "@availity/icon": "^0.8.1",
+    "@availity/icon": "^0.9.0",
     "@availity/message-core": "^5.0.0",
     "prop-types": "^15.7.2"
   },
   "devDependencies": {
     "react": "^17.0.2",
     "react-dom": "^17.0.2"
+  },
+  "peerDependencies": {
+    "react": ">=16.3.0"
   }
 }

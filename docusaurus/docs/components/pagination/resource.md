@@ -26,7 +26,7 @@ In addition to `Pagination` props:
 
 #### `resource: ApiResource`
 
-Availity API resource (see [@availity/api-core](https://github.com/Availity/sdk-js/tree/master/packages/api-core) and [@availity/api-axios](https://github.com/Availity/sdk-js/tree/master/packages/api-axios)).
+Availity API resource (see [@availity/api-axios](https://github.com/Availity/sdk-js/tree/master/packages/api-axios)).
 
 #### `getResult?: string | (data: object) => object[]`
 

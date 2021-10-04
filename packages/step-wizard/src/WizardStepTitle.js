@@ -2,12 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import classNames from 'classnames';
 
-const WizardStepTitle = ({
-  tag: Tag,
-  className: classes,
-  children,
-  ...rest
-}) => (
+const WizardStepTitle = ({ tag: Tag, className: classes, children, ...rest }) => (
   <Tag className={classNames(classes, 'stepwizard-title')} {...rest}>
     {children}
   </Tag>

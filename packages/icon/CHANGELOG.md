@@ -3,6 +3,28 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.9.0](https://github.com/Availity/availity-react/compare/@availity/icon@0.8.2...@availity/icon@0.9.0) (2021-10-04)
+
+
+### Features
+
+* **icon:** adding hover style if there is an onclick on the icon ([64627c7](https://github.com/Availity/availity-react/commit/64627c7a08935ac0acd10fe15b9af47a1aebb039))
+* **icon:** adding test ([86581b9](https://github.com/Availity/availity-react/commit/86581b9d534c027c53b04445f9c189ae98c0b34c))
+* **icon:** fixing hover ([a42a6fd](https://github.com/Availity/availity-react/commit/a42a6fd09ff7cd723e3ee07f25f146c025f4cb3b))
+* **icon:** removing copy paste line ([fd89783](https://github.com/Availity/availity-react/commit/fd89783cdd8a79136b4ef750991004ac256bef68))
+
+
+
+
+
+## [0.8.2](https://github.com/Availity/availity-react/compare/@availity/icon@0.8.1...@availity/icon@0.8.2) (2021-10-01)
+
+**Note:** Version bump only for package @availity/icon
+
+
+
+
+
 ## 0.8.1 (2021-09-28)
 
 **Note:** Version bump only for package @availity/icon
