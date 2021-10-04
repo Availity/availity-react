@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import 'core-js/stable';
 import PropTypes from 'prop-types';
 import { useTable, useRowSelect, useSortBy } from 'react-table';
@@ -29,6 +29,8 @@ const Table = ({
   initialState,
   ...rest
 }) => {
+  let selectionColumn;
+
   const {
     getTableProps,
     getTableBodyProps,
@@ -38,6 +40,7 @@ const Table = ({
     selectedFlatRows: selectedRows,
     allColumns,
     toggleAllRowsSelected,
+    toggleHideColumn,
   } = useTable(
     {
       columns,
@@ -47,68 +50,64 @@ const Table = ({
     useSortBy,
     useRowSelect,
     (hooks) => {
-      if (selectable) {
-        hooks.visibleColumns.push((columns) => [
-          {
-            id: 'selection',
-            title: 'Select record(s)',
-            className: 'fixed-width-selection',
-            defaultCanSort: false,
-            disableClick: true,
-            Header: ({ getToggleAllRowsSelectedProps }) => {
-              const selectedProps = {
-                onClick: async () => {
-                  await toggleAllRowsSelected();
-                  if (onRowSelected) {
-                    onRowSelected({ selectedRows });
-                  }
-                },
-              };
-
-              return (
-                <div className="text-center">
-                  <IndeterminateCheckbox
-                    data-testid="table_header_select_all"
-                    aria-label="Select all records"
-                    {...selectedProps}
-                    {...getToggleAllRowsSelectedProps()}
-                  />
-                </div>
-              );
+      selectionColumn = {
+        id: 'selection',
+        title: 'Select record(s)',
+        className: 'fixed-width-selection',
+        defaultCanSort: false,
+        disableSortBy: true,
+        disableClick: true,
+        Header: ({ getToggleAllRowsSelectedProps }) => {
+          const selectedProps = {
+            onClick: async () => {
+              await toggleAllRowsSelected();
+              if (onRowSelected) {
+                onRowSelected({ selectedRows });
+              }
             },
-            Cell: ({ row: { original, toggleRowSelected, getToggleRowSelectedProps, index } }) => {
-              const selectedProps = {
-                onClick: () => {
-                  if (onRowSelected) {
-                    toggleRowSelected();
-                    onRowSelected({ selectedId: original.id, data: original });
-                  }
-                },
-              };
+          };
 
-              return (
-                <div className="text-center">
-                  <IndeterminateCheckbox
-                    data-testid={`table_header_select_row_${index}`}
-                    aria-label="Select record"
-                    {...selectedProps}
-                    {...getToggleRowSelectedProps()}
-                  />
-                </div>
-              );
+          return (
+            <div className="text-center">
+              <IndeterminateCheckbox
+                data-testid="table_header_select_all"
+                aria-label="Select all records"
+                {...selectedProps}
+                {...getToggleAllRowsSelectedProps()}
+              />
+            </div>
+          );
+        },
+        Cell: ({ row: { original, toggleRowSelected, getToggleRowSelectedProps, index } }) => {
+          const selectedProps = {
+            onClick: () => {
+              if (onRowSelected) {
+                toggleRowSelected();
+                onRowSelected({ selectedId: original.id, data: original });
+              }
             },
-          },
-          ...columns,
-        ]);
-      }
+          };
 
-      if (!sortable) {
-        hooks.visibleColumns.forEach((col) => {
-          col.disableSortBy = true;
-        });
-      }
+          return (
+            <div className="text-center">
+              <IndeterminateCheckbox
+                data-testid={`table_header_select_row_${index}`}
+                aria-label="Select record"
+                {...selectedProps}
+                {...getToggleRowSelectedProps()}
+              />
+            </div>
+          );
+        },
+      };
+
+      hooks.visibleColumns.push((columns) => [selectionColumn, ...columns]);
     }
   );
+
+  useEffect(() => {
+    toggleHideColumn('selection', !selectable);
+  }, [selectable, toggleHideColumn]);
 
   let handleRowClick;
   let handleCellClick;
@@ -124,10 +123,11 @@ const Table = ({
   return (
     <TableContext.Provider
       value={{
+        AdditionalContent,
         allColumns,
         selectedRows,
         scrollable,
-        AdditionalContent,
+        sortable,
       }}
     >
       <RsTable id={id} {...getTableProps({ className: 'av-grid' })} {...rest}>
@@ -147,7 +147,7 @@ const Table = ({
                   column={column}
                 >
                   {column.render('Header')}
-                  {sortable && column.defaultCanSort ? (
+                  {sortable && !column.disableSortBy ? (
                     <Icon
                       aria-hidden="true"
                       name={column.isSorted ? (column.isSortedDesc ? 'sort-down' : 'sort-up') : 'sort'}
@@ -165,7 +165,7 @@ const Table = ({
               <TableRow
                 id={`${populateId()}table_row_${rowIndex}`}
                 data-testid={`${populateId()}table_row_${rowIndex}`}
-                key={row.original.id}
+                key={`${populateId()}table_row_${rowIndex.toString()}`}
                 index={rowIndex}
                 row={row}
                 onRowClick={handleRowClick}
@@ -176,7 +176,7 @@ const Table = ({
                   <TableCell
                     id={`${populateId()}table_row_${rowIndex}_cell_${cellIndex}`}
                     data-testid={`${populateId()}table_row_${rowIndex}_cell_${cellIndex}`}
-                    key={cellIndex.toString()}
+                    key={`${populateId()}table_row_${rowIndex.toString()}_cell_${cellIndex.toString()}`}
                     cell={cell}
                     onCellClick={handleCellClick}
                     {...cellProps}
@@ -199,6 +199,7 @@ Table.propTypes = {
   bodyProps: PropTypes.object,
   cellProps: PropTypes.object,
   columns: PropTypes.arrayOf(PropTypes.object),
+  getToggleAllRowsSelectedProps: PropTypes.func,
   headerProps: PropTypes.object,
   initialState: PropTypes.object,
   onRowClick: PropTypes.func,
@@ -207,17 +208,16 @@ Table.propTypes = {
   sortable: PropTypes.bool,
   scrollable: PropTypes.bool,
   records: PropTypes.arrayOf(PropTypes.object),
+  row: PropTypes.object,
   rowProps: PropTypes.object,
   sortBy: PropTypes.arrayOf(PropTypes.object),
-  getToggleAllRowsSelectedProps: PropTypes.func,
-  row: PropTypes.object,
 };
 
 Table.defaultProps = {
-  headerProps: {},
-  rowProps: {},
   bodyProps: {},
   cellProps: {},
+  headerProps: {},
+  rowProps: {},
 };
 
 export default Table;

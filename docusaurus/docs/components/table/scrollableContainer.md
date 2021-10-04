@@ -2,6 +2,9 @@
 title: <ScrollableContainer/>
 ---
 
+In order to make the table scrollable within a fixed container, wrap the `Table` component with the ScrollableContainer.
+This will automatically set the `scrollable` property to true in the
+
 ```jsx
 import React from 'react';
 import Table, { ScrollableContainer } from '@availity/table';
@@ -17,7 +20,7 @@ const myTableConfig = {
             Header: 'Column 2',
             accessor: 'column2' 
         },
-                {
+        {
             Header: 'Column 3',
             accessor: 'column3' 
         },

@@ -5,17 +5,19 @@ import { useTableContext } from './TableContext';
 
 const TableCell = ({ cell, children, onCellClick, ...rest }) => {
   const { scrollable } = useTableContext();
-  const { isFormattedColumn, disableClick } = cell.column;
+  const { disableClick } = cell.column;
+
+  const isFixedWidth = scrollable && !cell.column.className;
 
   const cellProps = {
     className: classNames(cell.column.className || '', {
-      'fixed-width-text': scrollable && !cell.column.className,
+      'fixed-width-text': isFixedWidth,
       'cursor-pointer': !!onCellClick,
       sticky: cell.column.stickyRight || cell.column.stickyLeft,
       'sticky-right': cell.column.stickyRight,
       'sticky-left': cell.column.stickyLeft,
     }),
-    title: cell.value && !isFormattedColumn ? cell.value.toString() : undefined,
+    title: cell.value && isFixedWidth ? cell.value.toString() : undefined,
     onClick: (e) => {
       if (!disableClick && onCellClick)
         onCellClick({

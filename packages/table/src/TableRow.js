@@ -1,6 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import _ from 'lodash';
+import includes from 'lodash/includes';
+import filter from 'lodash/filter';
 import classNames from 'classnames';
 import { useTableContext } from './TableContext';
 
@@ -10,7 +11,7 @@ const TableRow = ({ row, index, onRowClick, onCellClick, children, ...rest }) =>
   const definedRowProps = {
     className: classNames(`av-grid-row-${index % 2 === 0 ? 'even' : 'odd'}`, {
       'fixed-width-tr': scrollable,
-      selected: _.includes(
+      selected: includes(
         selectedRows.map((sr) => sr.id),
         row.id
       ),
@@ -41,10 +42,10 @@ const TableRow = ({ row, index, onRowClick, onCellClick, children, ...rest }) =>
     },
   };
 
-  const isLastColumnSticky = allColumns.slice(-1)[0].stickyRight === true;
   const isFirstColumnSticky = allColumns[0].stickyLeft === true;
+  const isLastColumnSticky = allColumns.slice(-1)[0].stickyRight === true;
 
-  const numberOfNonStickyColumns = _.filter(allColumns, (c) => !(c.stickyRight || c.stickyLeft)).length;
+  const numberOfNonStickyColumns = filter(allColumns, (c) => !(c.stickyRight || c.stickyLeft)).length;
 
   return (
     <>
