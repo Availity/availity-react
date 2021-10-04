@@ -67,11 +67,11 @@ This property is automatically set when it is wrapped in a scrollable container.
 
 This determines whether the table is selectable or not. If it is set to true, then the first column of the table will be a checkbox column that will toggle selecting and deselecting the row.
 
-#### `sortable: boolean`
+#### `sortable?: boolean`
 
 This determines whether the table is sortable or not. 
 
-#### `initialState: object`
+#### `initialState?: object`
 
 This object definition sets the initial state of the table, including the default sort by definition.
 
@@ -195,9 +195,9 @@ This is used to display an action menu in a cell.
 
 ### Badge Cell
 
-This is used to display a badge in a cell. See [Availity UI Kit](https://availity.github.io/availity-uikit/v3/components#Badges-Contextual-Variations) for available stylings. 
+This is used to display a Reactstrap Badge in a cell. See [Availity UI Kit](https://availity.github.io/availity-uikit/v3/components#Badges-Contextual-Variations) and [ReactStrap](https://reactstrap.github.io/components/badge/) for available stylings. 
 
-#### Example
+#### Usages
 
 ```jsx
 
@@ -206,7 +206,15 @@ This is used to display a badge in a cell. See [Availity UI Kit](https://availit
         Header: 'Badge',
         accessor: 'badge',
         Cell: ({ row: { original } }) =>
-        original ? BadgeCell('badge-success', original.badgeValue) : null
+        original ? BadgeCell('success', original.badgeValue) : null
+    }
+  ];
+
+   const columns = [
+    {
+        Header: 'Badge',
+        accessor: 'badge',
+        Cell: Badgecell('success')
     }
   ];
 ```
@@ -215,7 +223,7 @@ This is used to display a badge in a cell. See [Availity UI Kit](https://availit
 
 This is used to format currency in a cell. You can optionally pass it a default value to display if the value is null.
 
-#### Example
+#### Usages
 
 ```jsx
 
@@ -244,7 +252,7 @@ The locale of the currency. Defaults to `en-us`.
 
 This is used to format a date in a cell by passing in a date format. 
 
-#### Example
+#### Usages
 
 ```jsx
 
@@ -262,33 +270,38 @@ This is used to format a date in a cell by passing in a date format.
 This is used to have an cell display an icon. This will only show the icon if the value for the cell is populated (or `true`). 
 In order to show an icon always and not conditionally you can utilize `BuildIcon` and supply it the name of the icon and title.
 
+
 See [Availity UI Kit](https://availity.github.io/availity-uikit/v3/icons) for available icons. 
 
-#### Example
+
+
+#### Usages
+
+To always display an icon, such as when it is visible in the header, set the `isVisible` property to `true`.
 
 ```jsx
+    /*
+        This displays a header as an icon.
+        In the body of the table, the icon is displayed if the hasNotes property is sest to true
+    */
     const columns = [
             {
-                Header: BuildIcon({ name: 'doc-alt', title: 'Has Notes' }),
+                Header: BuildIcon({ name: 'doc-alt', title: 'Has Notes', isVisible: true }),
                 accessor: 'hasNotes',
                 Cell: IconCell({ name: 'doc-alt', title: 'View Notes' }),
             }
     ]
 ```
 
-
-If you need to the title of the icon to the value of a property on the data record, you should set it up as follows:
-
+If the title (tooltip) of the icon is dependent on the data of the record, it is possible to pass a function to the IconCell to populate the record.
 
 ```jsx
     const columns = [
-        {
-            Header: BuildIcon({ name: 'phone', title: 'Has Cell Phone' }),
-            accessor: 'cellPhone',
-            Cell: ({ value }: CellProps<RemitClaim>): Cell<RemitClaim> => {
-                return value ? BuildIcon({ name: 'phone', title: `My Data value: ${value}` }) : null;
-            },
-        }
+            {
+                Header: IconCell({ name: 'flag', title: 'Flag for Followup', isVisible: true }),
+                accessor: 'followup',
+                Cell: IconCell({ name: 'flag', title: (value: { username: string; }) => `Assigned To ${value.username}`}),
+            }
     ]
 ```
 

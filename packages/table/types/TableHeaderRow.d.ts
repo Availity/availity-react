@@ -1,8 +1,8 @@
 import { HeaderGroup } from 'react-table';
 
 export interface TableHeaderRowProps {
-    sticky?: boolean;
     headerGroup: HeaderGroup;
+    children: React.ElementType | React.ReactElement | React.ReactType;
 }
 
 declare const TableHeaderRow: React.FunctionComponent<TableHeaderRowProps>;

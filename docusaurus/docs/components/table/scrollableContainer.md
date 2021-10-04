@@ -3,7 +3,7 @@ title: <ScrollableContainer/>
 ---
 
 In order to make the table scrollable within a fixed container, wrap the `Table` component with the ScrollableContainer.
-This will automatically set the `scrollable` property to true in the
+This will automatically set the `scrollable` property to true in the `Table` component.
 
 ```jsx
 import React from 'react';
