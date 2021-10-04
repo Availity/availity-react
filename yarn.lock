@@ -135,9 +135,9 @@
     yup "^0.28.4"
 
 "@availity/api-axios@^6.0.0":
-  version "6.0.0"
-  resolved "https://registry.yarnpkg.com/@availity/api-axios/-/api-axios-6.0.0.tgz#7351b0fa0699257768c8f0cff7518648807cbce5"
-  integrity sha512-rCx0xoHXs2OJvBNfSTSuakei7L4ZbDDeONJDPMgSAZTj1txXhXrfXFRBpdhdCVPXSNPsT1KPX+poaan7DgcIFQ==
+  version "6.0.1"
+  resolved "https://registry.yarnpkg.com/@availity/api-axios/-/api-axios-6.0.1.tgz#2f42f1f8404fd04c878e978a014e22a81326b903"
+  integrity sha512-9R/UHiBLK5B2ydw3idDv0GG1r3DFctwEbyPMzLxXs5TRZCudV6pTJFzQVAkhJu2iRaMsrfHk5Yrz/7hpsjDWfA==
   dependencies:
     "@availity/env-var" "^1.11.1"
     "@availity/resolve-url" "^1.1.21"
