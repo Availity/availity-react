@@ -1,6 +1,6 @@
 import { useState } from 'react';
 
-export default (initialState = false) => {
+export default function useToggle(initialState = false) {
   const [state, setState] = useState(initialState);
   const toggle = (newState) => {
     if (newState !== undefined && newState !== state) {
@@ -11,4 +11,4 @@ export default (initialState = false) => {
   };
 
   return [state, toggle];
-};
+}

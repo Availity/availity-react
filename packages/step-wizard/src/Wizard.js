@@ -2,15 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import classNames from 'classnames';
 
-const Wizard = ({
-  tag: Tag,
-  bar,
-  stacked,
-  children,
-  progress,
-  className: classes,
-  ...rest
-}) => (
+const Wizard = ({ tag: Tag, bar, stacked, children, progress, className: classes, ...rest }) => (
   <Tag
     className={classNames(
       classes,

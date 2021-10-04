@@ -67,7 +67,7 @@ const AvDate = ({
   const onInputChange = (value) => {
     const date = moment(
       value,
-      [isoDateFormat, format, 'MMDDYYYY', 'YYYYMMDD'],
+      [isoDateFormat, format, 'MMDDYYYY', 'YYYYMMDD', 'M/D/YYYY'],
       true
     );
     const isoFormatted = date.format(isoDateFormat);
@@ -116,7 +116,7 @@ const AvDate = ({
   const getDateValue = () => {
     const date = moment(
       field.value,
-      [isoDateFormat, format, 'MMDDYYYY', 'YYYYMMDD'],
+      [isoDateFormat, format, 'MMDDYYYY', 'YYYYMMDD', 'M/D/YYYY'],
       true
     );
     if (date.isValid()) return date;
