@@ -14,7 +14,7 @@ const IconCell = ({ name, title, isVisible }) => {
   };
 
   IconCellDef.propTypes = {
-    value: PropTypes.oneOfType([PropTypes.string, PropTypes.object]),
+    value: PropTypes.oneOfType([PropTypes.string, PropTypes.object, PropTypes.bool]),
   };
 
   return IconCellDef;

@@ -5,7 +5,7 @@ import ActionCell from './types/CellDefinitions/ActionCell';
 import BadgeCell from './types/CellDefinitions/BadgeCell';
 import CurrencyCell from './types/CellDefinitions/CurrencyCell';
 import DateCell from './types/CellDefinitions/DateCell';
-import IconCell, { BuildIcon } from './types/CellDefinitions/IconCell';
+import IconCell from './types/CellDefinitions/IconCell';
 
 export default Table;
 export {
@@ -13,7 +13,6 @@ export {
     
     ActionCell,
     BadgeCell,
-    BuildIcon,
     CurrencyCell, 
     DateCell, 
     IconCell

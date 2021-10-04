@@ -20,7 +20,6 @@ exports[`Table should render basic table 1`] = `
           data-testid="table_header_row_0_cell_0_first_name"
           id="table_header_row_0_cell_0_first_name"
           role="columnheader"
-          style="cursor: pointer;"
           title="First Name"
         >
           First Name
@@ -30,7 +29,6 @@ exports[`Table should render basic table 1`] = `
           data-testid="table_header_row_0_cell_1_last_name"
           id="table_header_row_0_cell_1_last_name"
           role="columnheader"
-          style="cursor: pointer;"
           title="Last Name"
         >
           Last Name
@@ -40,7 +38,6 @@ exports[`Table should render basic table 1`] = `
           data-testid="table_header_row_0_cell_2_email"
           id="table_header_row_0_cell_2_email"
           role="columnheader"
-          style="cursor: pointer;"
           title="Email"
         >
           Email
@@ -60,7 +57,6 @@ exports[`Table should render basic table 1`] = `
           data-testid="table_row_0_cell_0"
           id="table_row_0_cell_0"
           role="cell"
-          title="Barbra"
         >
           Barbra
         </td>
@@ -68,7 +64,6 @@ exports[`Table should render basic table 1`] = `
           data-testid="table_row_0_cell_1"
           id="table_row_0_cell_1"
           role="cell"
-          title="Tull"
         >
           Tull
         </td>
@@ -76,7 +71,6 @@ exports[`Table should render basic table 1`] = `
           data-testid="table_row_0_cell_2"
           id="table_row_0_cell_2"
           role="cell"
-          title="btull0@usatoday.com"
         >
           btull0@usatoday.com
         </td>
@@ -91,7 +85,6 @@ exports[`Table should render basic table 1`] = `
           data-testid="table_row_1_cell_0"
           id="table_row_1_cell_0"
           role="cell"
-          title="Karlis"
         >
           Karlis
         </td>
@@ -99,7 +92,6 @@ exports[`Table should render basic table 1`] = `
           data-testid="table_row_1_cell_1"
           id="table_row_1_cell_1"
           role="cell"
-          title="Yurshev"
         >
           Yurshev
         </td>
@@ -107,7 +99,6 @@ exports[`Table should render basic table 1`] = `
           data-testid="table_row_1_cell_2"
           id="table_row_1_cell_2"
           role="cell"
-          title="kyurshev1@spotify.com"
         >
           kyurshev1@spotify.com
         </td>
@@ -122,7 +113,6 @@ exports[`Table should render basic table 1`] = `
           data-testid="table_row_2_cell_0"
           id="table_row_2_cell_0"
           role="cell"
-          title="Bordie"
         >
           Bordie
         </td>
@@ -130,7 +120,6 @@ exports[`Table should render basic table 1`] = `
           data-testid="table_row_2_cell_1"
           id="table_row_2_cell_1"
           role="cell"
-          title="Marsy"
         >
           Marsy
         </td>
@@ -138,7 +127,6 @@ exports[`Table should render basic table 1`] = `
           data-testid="table_row_2_cell_2"
           id="table_row_2_cell_2"
           role="cell"
-          title="bmarsy2@elegantthemes.com"
         >
           bmarsy2@elegantthemes.com
         </td>
@@ -195,7 +183,6 @@ exports[`Table should render selectable table 1`] = `
           data-testid="table_header_row_0_cell_1_first_name"
           id="table_header_row_0_cell_1_first_name"
           role="columnheader"
-          style="cursor: pointer;"
           title="First Name"
         >
           First Name
@@ -205,7 +192,6 @@ exports[`Table should render selectable table 1`] = `
           data-testid="table_header_row_0_cell_2_last_name"
           id="table_header_row_0_cell_2_last_name"
           role="columnheader"
-          style="cursor: pointer;"
           title="Last Name"
         >
           Last Name
@@ -215,7 +201,6 @@ exports[`Table should render selectable table 1`] = `
           data-testid="table_header_row_0_cell_3_email"
           id="table_header_row_0_cell_3_email"
           role="columnheader"
-          style="cursor: pointer;"
           title="Email"
         >
           Email
@@ -261,7 +246,6 @@ exports[`Table should render selectable table 1`] = `
           data-testid="table_row_0_cell_1"
           id="table_row_0_cell_1"
           role="cell"
-          title="Barbra"
         >
           Barbra
         </td>
@@ -269,7 +253,6 @@ exports[`Table should render selectable table 1`] = `
           data-testid="table_row_0_cell_2"
           id="table_row_0_cell_2"
           role="cell"
-          title="Tull"
         >
           Tull
         </td>
@@ -277,7 +260,6 @@ exports[`Table should render selectable table 1`] = `
           data-testid="table_row_0_cell_3"
           id="table_row_0_cell_3"
           role="cell"
-          title="btull0@usatoday.com"
         >
           btull0@usatoday.com
         </td>
@@ -318,7 +300,6 @@ exports[`Table should render selectable table 1`] = `
           data-testid="table_row_1_cell_1"
           id="table_row_1_cell_1"
           role="cell"
-          title="Karlis"
         >
           Karlis
         </td>
@@ -326,7 +307,6 @@ exports[`Table should render selectable table 1`] = `
           data-testid="table_row_1_cell_2"
           id="table_row_1_cell_2"
           role="cell"
-          title="Yurshev"
         >
           Yurshev
         </td>
@@ -334,7 +314,6 @@ exports[`Table should render selectable table 1`] = `
           data-testid="table_row_1_cell_3"
           id="table_row_1_cell_3"
           role="cell"
-          title="kyurshev1@spotify.com"
         >
           kyurshev1@spotify.com
         </td>
@@ -375,7 +354,6 @@ exports[`Table should render selectable table 1`] = `
           data-testid="table_row_2_cell_1"
           id="table_row_2_cell_1"
           role="cell"
-          title="Bordie"
         >
           Bordie
         </td>
@@ -383,7 +361,6 @@ exports[`Table should render selectable table 1`] = `
           data-testid="table_row_2_cell_2"
           id="table_row_2_cell_2"
           role="cell"
-          title="Marsy"
         >
           Marsy
         </td>
@@ -391,7 +368,6 @@ exports[`Table should render selectable table 1`] = `
           data-testid="table_row_2_cell_3"
           id="table_row_2_cell_3"
           role="cell"
-          title="bmarsy2@elegantthemes.com"
         >
           bmarsy2@elegantthemes.com
         </td>
@@ -425,6 +401,10 @@ exports[`Table should render sortable table 1`] = `
           title="First Name"
         >
           First Name
+          <i
+            aria-hidden="true"
+            class="icon icon-sort"
+          />
         </th>
         <th
           colspan="1"
@@ -435,6 +415,10 @@ exports[`Table should render sortable table 1`] = `
           title="Last Name"
         >
           Last Name
+          <i
+            aria-hidden="true"
+            class="icon icon-sort"
+          />
         </th>
         <th
           colspan="1"
@@ -445,6 +429,10 @@ exports[`Table should render sortable table 1`] = `
           title="Email"
         >
           Email
+          <i
+            aria-hidden="true"
+            class="icon icon-sort"
+          />
         </th>
       </tr>
     </thead>
@@ -461,7 +449,6 @@ exports[`Table should render sortable table 1`] = `
           data-testid="table_row_0_cell_0"
           id="table_row_0_cell_0"
           role="cell"
-          title="Barbra"
         >
           Barbra
         </td>
@@ -469,7 +456,6 @@ exports[`Table should render sortable table 1`] = `
           data-testid="table_row_0_cell_1"
           id="table_row_0_cell_1"
           role="cell"
-          title="Tull"
         >
           Tull
         </td>
@@ -477,7 +463,6 @@ exports[`Table should render sortable table 1`] = `
           data-testid="table_row_0_cell_2"
           id="table_row_0_cell_2"
           role="cell"
-          title="btull0@usatoday.com"
         >
           btull0@usatoday.com
         </td>
@@ -492,7 +477,6 @@ exports[`Table should render sortable table 1`] = `
           data-testid="table_row_1_cell_0"
           id="table_row_1_cell_0"
           role="cell"
-          title="Karlis"
         >
           Karlis
         </td>
@@ -500,7 +484,6 @@ exports[`Table should render sortable table 1`] = `
           data-testid="table_row_1_cell_1"
           id="table_row_1_cell_1"
           role="cell"
-          title="Yurshev"
         >
           Yurshev
         </td>
@@ -508,7 +491,6 @@ exports[`Table should render sortable table 1`] = `
           data-testid="table_row_1_cell_2"
           id="table_row_1_cell_2"
           role="cell"
-          title="kyurshev1@spotify.com"
         >
           kyurshev1@spotify.com
         </td>
@@ -523,7 +505,6 @@ exports[`Table should render sortable table 1`] = `
           data-testid="table_row_2_cell_0"
           id="table_row_2_cell_0"
           role="cell"
-          title="Bordie"
         >
           Bordie
         </td>
@@ -531,7 +512,6 @@ exports[`Table should render sortable table 1`] = `
           data-testid="table_row_2_cell_1"
           id="table_row_2_cell_1"
           role="cell"
-          title="Marsy"
         >
           Marsy
         </td>
@@ -539,7 +519,6 @@ exports[`Table should render sortable table 1`] = `
           data-testid="table_row_2_cell_2"
           id="table_row_2_cell_2"
           role="cell"
-          title="bmarsy2@elegantthemes.com"
         >
           bmarsy2@elegantthemes.com
         </td>
@@ -570,7 +549,6 @@ exports[`Table should render with expected ids 1`] = `
           data-testid="my_availity_table_table_header_row_0_cell_0_first_name"
           id="my_availity_table_table_header_row_0_cell_0_first_name"
           role="columnheader"
-          style="cursor: pointer;"
           title="First Name"
         >
           First Name
@@ -580,7 +558,6 @@ exports[`Table should render with expected ids 1`] = `
           data-testid="my_availity_table_table_header_row_0_cell_1_last_name"
           id="my_availity_table_table_header_row_0_cell_1_last_name"
           role="columnheader"
-          style="cursor: pointer;"
           title="Last Name"
         >
           Last Name
@@ -590,7 +567,6 @@ exports[`Table should render with expected ids 1`] = `
           data-testid="my_availity_table_table_header_row_0_cell_2_email"
           id="my_availity_table_table_header_row_0_cell_2_email"
           role="columnheader"
-          style="cursor: pointer;"
           title="Email"
         >
           Email
@@ -610,7 +586,6 @@ exports[`Table should render with expected ids 1`] = `
           data-testid="my_availity_table_table_row_0_cell_0"
           id="my_availity_table_table_row_0_cell_0"
           role="cell"
-          title="Barbra"
         >
           Barbra
         </td>
@@ -618,7 +593,6 @@ exports[`Table should render with expected ids 1`] = `
           data-testid="my_availity_table_table_row_0_cell_1"
           id="my_availity_table_table_row_0_cell_1"
           role="cell"
-          title="Tull"
         >
           Tull
         </td>
@@ -626,7 +600,6 @@ exports[`Table should render with expected ids 1`] = `
           data-testid="my_availity_table_table_row_0_cell_2"
           id="my_availity_table_table_row_0_cell_2"
           role="cell"
-          title="btull0@usatoday.com"
         >
           btull0@usatoday.com
         </td>
@@ -641,7 +614,6 @@ exports[`Table should render with expected ids 1`] = `
           data-testid="my_availity_table_table_row_1_cell_0"
           id="my_availity_table_table_row_1_cell_0"
           role="cell"
-          title="Karlis"
         >
           Karlis
         </td>
@@ -649,7 +621,6 @@ exports[`Table should render with expected ids 1`] = `
           data-testid="my_availity_table_table_row_1_cell_1"
           id="my_availity_table_table_row_1_cell_1"
           role="cell"
-          title="Yurshev"
         >
           Yurshev
         </td>
@@ -657,7 +628,6 @@ exports[`Table should render with expected ids 1`] = `
           data-testid="my_availity_table_table_row_1_cell_2"
           id="my_availity_table_table_row_1_cell_2"
           role="cell"
-          title="kyurshev1@spotify.com"
         >
           kyurshev1@spotify.com
         </td>
@@ -672,7 +642,6 @@ exports[`Table should render with expected ids 1`] = `
           data-testid="my_availity_table_table_row_2_cell_0"
           id="my_availity_table_table_row_2_cell_0"
           role="cell"
-          title="Bordie"
         >
           Bordie
         </td>
@@ -680,7 +649,6 @@ exports[`Table should render with expected ids 1`] = `
           data-testid="my_availity_table_table_row_2_cell_1"
           id="my_availity_table_table_row_2_cell_1"
           role="cell"
-          title="Marsy"
         >
           Marsy
         </td>
@@ -688,7 +656,6 @@ exports[`Table should render with expected ids 1`] = `
           data-testid="my_availity_table_table_row_2_cell_2"
           id="my_availity_table_table_row_2_cell_2"
           role="cell"
-          title="bmarsy2@elegantthemes.com"
         >
           bmarsy2@elegantthemes.com
         </td>
@@ -718,7 +685,6 @@ exports[`Table should render with formatted cells 1`] = `
           data-testid="table_header_row_0_cell_0_text"
           id="table_header_row_0_cell_0_text"
           role="columnheader"
-          style="cursor: pointer;"
           title="Basic Text"
         >
           Basic Text
@@ -728,7 +694,6 @@ exports[`Table should render with formatted cells 1`] = `
           data-testid="table_header_row_0_cell_1_currency"
           id="table_header_row_0_cell_1_currency"
           role="columnheader"
-          style="cursor: pointer;"
           title="Currency"
         >
           Currency
@@ -738,7 +703,6 @@ exports[`Table should render with formatted cells 1`] = `
           data-testid="table_header_row_0_cell_2_badge"
           id="table_header_row_0_cell_2_badge"
           role="columnheader"
-          style="cursor: pointer;"
           title="Badge"
         >
           Badge
@@ -748,7 +712,6 @@ exports[`Table should render with formatted cells 1`] = `
           data-testid="table_header_row_0_cell_3_icon"
           id="table_header_row_0_cell_3_icon"
           role="columnheader"
-          style="cursor: pointer;"
           title="Icon"
         >
           Icon
@@ -758,7 +721,6 @@ exports[`Table should render with formatted cells 1`] = `
           data-testid="table_header_row_0_cell_4_date"
           id="table_header_row_0_cell_4_date"
           role="columnheader"
-          style="cursor: pointer;"
           title="Date"
         >
           Date
@@ -787,7 +749,6 @@ exports[`Table should render with formatted cells 1`] = `
           data-testid="table_row_0_cell_0"
           id="table_row_0_cell_0"
           role="cell"
-          title="My Text Field"
         >
           My Text Field
         </td>
@@ -795,7 +756,6 @@ exports[`Table should render with formatted cells 1`] = `
           data-testid="table_row_0_cell_1"
           id="table_row_0_cell_1"
           role="cell"
-          title="43.08"
         >
           <span
             title="$43.08"
@@ -807,20 +767,18 @@ exports[`Table should render with formatted cells 1`] = `
           data-testid="table_row_0_cell_2"
           id="table_row_0_cell_2"
           role="cell"
-          title="badge field"
         >
-          <p
-            class="badge badge-success"
+          <span
+            class="badge badge-badge-success"
             title="badge field"
           >
             badge field
-          </p>
+          </span>
         </td>
         <td
           data-testid="table_row_0_cell_3"
           id="table_row_0_cell_3"
           role="cell"
-          title="true"
         >
           <i
             aria-hidden="true"
@@ -832,7 +790,6 @@ exports[`Table should render with formatted cells 1`] = `
           data-testid="table_row_0_cell_4"
           id="table_row_0_cell_4"
           role="cell"
-          title="1956-02-16T05:00:00.000+0000"
         >
           <span
             title="02/16/1956"
@@ -858,7 +815,8 @@ exports[`Table should render with formatted cells 1`] = `
               type="button"
             >
               <i
-                class="icon icon-menu"
+                aria-hidden="true"
+                class="icon icon-icon-menu"
                 id="table_row_action_menu_1_dropdown_toggle_icon"
               />
             </button>
@@ -901,7 +859,6 @@ exports[`Table should render with formatted cells 1`] = `
           data-testid="table_row_1_cell_0"
           id="table_row_1_cell_0"
           role="cell"
-          title="My Text Field"
         >
           My Text Field
         </td>
@@ -909,7 +866,6 @@ exports[`Table should render with formatted cells 1`] = `
           data-testid="table_row_1_cell_1"
           id="table_row_1_cell_1"
           role="cell"
-          title="43.08"
         >
           <span
             title="$43.08"
@@ -921,14 +877,13 @@ exports[`Table should render with formatted cells 1`] = `
           data-testid="table_row_1_cell_2"
           id="table_row_1_cell_2"
           role="cell"
-          title="badge field"
         >
-          <p
-            class="badge badge-success"
+          <span
+            class="badge badge-badge-success"
             title="badge field"
           >
             badge field
-          </p>
+          </span>
         </td>
         <td
           data-testid="table_row_1_cell_3"
@@ -939,7 +894,6 @@ exports[`Table should render with formatted cells 1`] = `
           data-testid="table_row_1_cell_4"
           id="table_row_1_cell_4"
           role="cell"
-          title="1990-02-16T05:00:00.000+0000"
         >
           <span
             title="02/16/1990"
@@ -965,7 +919,8 @@ exports[`Table should render with formatted cells 1`] = `
               type="button"
             >
               <i
-                class="icon icon-menu"
+                aria-hidden="true"
+                class="icon icon-icon-menu"
                 id="table_row_action_menu_2_dropdown_toggle_icon"
               />
             </button>

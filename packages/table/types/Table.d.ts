@@ -2,10 +2,9 @@ import { Column, Row } from 'react-table';
 
 type TableColumn = {
     className?: string;
-    defaultCanSort?: boolean;
     stickyRight?: boolean;
     stickyLeft?: boolean;
-    isFormattedColumn?: boolean;
+    disableClick?: boolean;
 }
 
 export type ExtendedTableColumn = Column & TableColumn;
@@ -15,6 +14,7 @@ export interface TableProps {
     id?: string;
     additionalContent?: React.ElementType | React.ReactElement | React.ReactType;
     bodyProps?: Object;
+    cellProps?: Object;
     columns: ExtendedTableColumn[];
     onRowClick?: (event: OnTableClickEvent) => void;
     onRowSelected?: (event: OnRowSelectedEvent) => void;
