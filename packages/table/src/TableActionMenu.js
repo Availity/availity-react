@@ -11,7 +11,9 @@ const TableActionMenu = ({ id, children }) => {
       <DropdownToggle id={`${id}_dropdown_toggle`} data-boundary="viewport" className="btn btn-ghost">
         <i id={`${id}_dropdown_toggle_icon`} className="icon icon-menu" />
       </DropdownToggle>
-      <DropdownMenu id={`${id}_dropdown_toggle_icon`}>{children}</DropdownMenu>
+      <DropdownMenu id={`${id}_dropdown_toggle_icon`} className="dropdown-action-menu" container=".av-grid-row-even td">
+        {children}
+      </DropdownMenu>
     </Dropdown>
   );
 };

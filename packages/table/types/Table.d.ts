@@ -4,6 +4,7 @@ type TableColumn = {
     className?: string;
     defaultCanSort?: boolean;
     sticky?: boolean;
+    isFormattedColumn?: boolean;
 }
 
 export type ExtendedTableColumn = Column & TableColumn;

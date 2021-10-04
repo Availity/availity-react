@@ -1,10 +1,11 @@
+import React from 'react';
 import PropTypes from 'prop-types';
 
-const CurrencyCell =
-  ({ currency = 'USD', defaultValue = '', locales = 'en-us' }) =>
-  ({ value }) => {
+const CurrencyCell = ({ currency = 'USD', defaultValue = '', locales = 'en-us' }) => {
+  const CurrencyCellDef = ({ value }) => {
+    let formattedValue;
     if (!value) {
-      return defaultValue;
+      formattedValue = defaultValue;
     }
 
     value = typeof value === 'string' ? Number.parseFloat(value) : value;
@@ -12,8 +13,17 @@ const CurrencyCell =
       style: 'currency',
       currency,
     }).format;
-    return formatNum(value);
+
+    formattedValue = formatNum(value);
+    return <span title={formattedValue}>{formattedValue}</span>;
   };
+
+  CurrencyCellDef.propTypes = {
+    value: PropTypes.string,
+  };
+
+  return CurrencyCellDef;
+};
 
 CurrencyCell.propTypes = {
   defaultValue: PropTypes.string,

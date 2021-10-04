@@ -35,6 +35,24 @@ $av-table-additional-content-background-color: #fff !default;
 	position: relative;
 }
 
+.dropdown-action-menu {
+	.btn {
+		padding: 0;
+	}
+
+	.icon.icon-menu {
+		color: $av-table-action-menu-color;
+	}
+
+	&.dropdown-menu {
+		z-index: 1;
+	}
+
+	&.dropdown-menu > .dropdown-item {
+		font-size: $av-table-font-size;
+	}
+}
+
 table.av-grid {
 	font-size: $av-table-font-size;
 	position: relative;
@@ -55,6 +73,13 @@ table.av-grid {
 
 	thead th.action-column {
 		width: $av-table-action-column-width;
+
+		&.sticky.sticky-right {
+			right: 0;
+			z-index: 1;
+			position: -webkit-sticky;
+			position: sticky;
+		}
 	}
 
 	thead th.sticky.sticky-right {
@@ -80,20 +105,6 @@ table.av-grid {
 	tbody td.action-column {
 		vertical-align: middle;
 		text-align: center;
-
-		.dropdown-action-menu {
-			.btn {
-				padding: 0;
-			}
-
-			.icon.icon-menu {
-				color: $av-table-action-menu-color;
-			}
-
-			.dropdown-menu > .dropdown-item {
-				font-size: $av-table-font-size;
-			}
-		}
 	}
 
 	tr {
