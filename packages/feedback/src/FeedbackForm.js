@@ -116,7 +116,7 @@ const FeedbackForm = ({
       {...formProps}
       onSubmit={(values) => sendFeedback(values)}
     >
-      {!sent ? (
+      {sent ? (
         modalHeaderProps ? (
           // TODO Sorry for all the ternaries here. This component badly needs to be
           // refactored. PF-2208 was to make FeedbackForm usable outside, but to maintain
