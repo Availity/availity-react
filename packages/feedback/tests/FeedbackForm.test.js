@@ -213,7 +213,7 @@ describe('FeedbackForm', () => {
 
     const header = getByText('Tell us what you think about Payer Space');
 
-    expect(header).toHaveClass('h5 m-2');
+    expect(header).toHaveClass('col h5');
     expect(header).toHaveAttribute('role', 'heading');
     expect(header).toHaveAttribute('aria-level', '2');
     expect(header.tagName).toEqual('DIV');
@@ -224,8 +224,8 @@ describe('FeedbackForm', () => {
 
     const smileyGroup = getByTestId('face-options');
 
-    expect(smileyGroup.parentElement).toHaveAttribute('role', 'group');
-    expect(smileyGroup.parentElement).toHaveAttribute('aria-labelledby', 'feedback-form-header');
+    expect(smileyGroup).toHaveAttribute('role', 'group');
+    expect(smileyGroup).toHaveAttribute('aria-labelledby', 'feedback-form-header');
   });
 
   test('should focus first SmileField button by default', async () => {
