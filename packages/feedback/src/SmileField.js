@@ -11,10 +11,9 @@ const SmileField = ({ name, options, onChange, autoFocusFeedbackButton }) => {
   return (
     <>
       {options.map((option, i) => (
-        <Col>
+        <Col key={option.icon}>
           <FeedbackButton
             autoFocus={i === 0 && autoFocusFeedbackButton}
-            key={option.icon}
             icon={option.icon}
             iconSize="2x"
             value={option}

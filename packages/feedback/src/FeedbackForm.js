@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
-import { Col, Row, Button, FormGroup, Alert } from 'reactstrap';
+import { Col, Row, Button, ModalHeader, FormGroup } from 'reactstrap';
 import { avLogMessagesApi, avRegionsApi } from '@availity/api-axios';
 import { Form, Field } from '@availity/form';
 import { SelectField } from '@availity/select';
@@ -21,6 +21,9 @@ yup.addMethod(yup.string, 'isRequired', function format(isRequired, msg) {
   });
 });
 
+// const ConditionalModalHeader = ({ condition, wrapper, children }) =>
+//   condition ? wrapper(children) : children;
+
 const fieldStyles = { resize: 'none' };
 const inlineStyles = { display: 'inline-block', margin: 0 };
 
@@ -35,6 +38,7 @@ const FeedbackForm = ({
   additionalComments,
   staticFields,
   analytics,
+  modalHeaderProps,
   showSupport,
   setSupportIsActive,
   autoFocusFeedbackButton,
@@ -112,19 +116,61 @@ const FeedbackForm = ({
       {...formProps}
       onSubmit={(values) => sendFeedback(values)}
     >
-      {sent ? (
-        <Row>
-          <Alert color="success" className="m-5 p-3">
-            Your feedback has been sent. Thank you!
-          </Alert>
-        </Row>
+      {!sent ? (
+        modalHeaderProps ? (
+          // TODO Sorry for all the ternaries here. This component badly needs to be
+          // refactored. PF-2208 was to make FeedbackForm usable outside, but to maintain
+          // the use case of it being inside a modal I needed to keep modalHeaderProps
+          // in the PropTypes. Since modalHeaderProps is being used to pass an onClose
+          // handler to the modal header, I need to still conditionally render the
+          // ModalHeader and spread the props onto it. This whole set of components
+          // need to be completely reworked to enable better composition of these
+          // components
+          <ModalHeader
+            role="status"
+            id="feedback-form-header"
+            tabIndex="0"
+            className="d-flex justify-content-center"
+            {...modalHeaderProps}
+          >
+            Thank you for your feedback.
+          </ModalHeader>
+        ) : modalHeaderProps ? (
+          <ModalHeader
+            id="feedback-form-header"
+            role="heading"
+            aria-level="2"
+            className="h5"
+            tag="div"
+            {...modalHeaderProps}
+          >
+            {prompt || `Tell us what you think about ${name}`}
+          </ModalHeader>
+        ) : (
+          <Row>
+            <Col className="m-2 p-3">Your feedback has been sent. Thank you!</Col>
+          </Row>
+        )
       ) : (
         <>
-          <Row>
-            <div className="col h5" role="heading" aria-level="2" id="feedback-form-header">
+          {modalHeaderProps ? (
+            <ModalHeader
+              id="feedback-form-header"
+              role="heading"
+              aria-level="2"
+              className="h5"
+              tag="div"
+              {...modalHeaderProps}
+            >
               {prompt || `Tell us what you think about ${name}`}
-            </div>
-          </Row>
+            </ModalHeader>
+          ) : (
+            <Row>
+              <div className="col h5" role="heading" aria-level="2" id="feedback-form-header">
+                {prompt || `Tell us what you think about ${name}`}
+              </div>
+            </Row>
+          )}
 
           <FormGroup
             row
@@ -250,7 +296,7 @@ FeedbackForm.propTypes = {
   prompt: PropTypes.string,
   additionalComments: PropTypes.bool,
   staticFields: PropTypes.object,
-
+  modalHeaderProps: PropTypes.shape({ ...ModalHeader.propTypes }),
   analytics: PropTypes.shape({
     info: PropTypes.func.isRequired,
   }),
@@ -263,7 +309,6 @@ FeedbackForm.defaultProps = {
   aboutOptions: [],
   aboutLabel: 'This is about',
   additionalComments: false,
-
   analytics: avLogMessagesApi,
   showSupport: false,
 };
