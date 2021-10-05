@@ -4,8 +4,6 @@ import { useField, useFormikContext } from 'formik';
 import { Col } from 'reactstrap';
 import FeedbackButton from './FeedbackButton';
 
-// const groupStyles = { display: 'grid', gap: '1rem' };
-
 const SmileField = ({ name, options, onChange, autoFocusFeedbackButton }) => {
   const [{ value }] = useField(name);
   const { setFieldValue } = useFormikContext();
