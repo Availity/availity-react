@@ -21,6 +21,7 @@
   },
   "homepage": "https://github.com/Availity/availity-react/tree/master/packages/select#readme",
   "dependencies": {
+    "@availity/help": "^1.4.1",
     "@types/react-select": "^3.0.23",
     "classnames": "^2.3.1",
     "lodash": "^4.17.21",

@@ -2,18 +2,11 @@ import React, { useEffect } from 'react';
 import PropTypes from 'prop-types';
 import classNames from 'classnames';
 import { FormGroup, Feedback } from '@availity/form';
+import { FieldHelpIcon } from '@availity/help';
 import { Label } from 'reactstrap';
 import Select from './Select';
 
-const SelectField = ({
-  feedbackClass,
-  groupClass,
-  label,
-  labelClass,
-  labelHidden,
-  name,
-  ...attributes
-}) => {
+const SelectField = ({ feedbackClass, groupClass, label, labelClass, labelHidden, name, helpId, ...attributes }) => {
   useEffect(() => {
     if (attributes.id && attributes.id === name) {
       // eslint-disable-next-line no-console
@@ -24,11 +17,15 @@ const SelectField = ({
   }, [attributes.id, name]);
 
   let thisLabel = false;
+  const helpIcon = helpId ? <FieldHelpIcon labelId={`${name}-label`} id={helpId} /> : null;
   if (label) {
     thisLabel = (
-      <Label for={name} hidden={labelHidden} className={labelClass}>
-        {label}
-      </Label>
+      <>
+        <Label id={`${name}-label`} for={name} hidden={labelHidden} className={labelClass}>
+          {label}
+        </Label>
+        {helpIcon}
+      </>
     );
   }
 
@@ -48,5 +45,6 @@ SelectField.propTypes = {
   labelClass: PropTypes.string,
   labelHidden: PropTypes.bool,
   name: PropTypes.string.isRequired,
+  helpId: PropTypes.string,
 };
 export default SelectField;

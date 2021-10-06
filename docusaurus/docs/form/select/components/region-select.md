@@ -32,7 +32,7 @@ const Example = () => (
 );
 ```
 
-#### Live example: <a href="https://availity.github.io/availity-react/storybook/?path=/story/components-avselect-resources--avregionselect"> Storybook</a>
+#### Live example: [Storybook](https://availity.github.io/availity-react/storybook/?path=/story/components-avselect-resources--avregionselect)
 
 ### Props
 
