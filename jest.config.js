@@ -22,4 +22,5 @@ module.exports = {
   globals: {
     jsdom: true,
   },
+  globalSetup: './global-setup.js',
 };
