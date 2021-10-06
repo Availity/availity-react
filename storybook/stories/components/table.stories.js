@@ -5,7 +5,7 @@ import '@availity/mock';
 import 'availity-uikit';
 import '@availity/table/styles.scss';
 
-import Table, { BadgeCell, DateCell, ScrollableContainer } from '@availity/table';
+import Table, { ActionCell, BadgeCell, DateCell, ScrollableContainer } from '@availity/table';
 import README from '@availity/table/README.md';
 import response from '@availity/mock/data/patients.json';
 
@@ -37,6 +37,35 @@ const columns = [
     defaultCanSort: true,
     disableSortBy: false,
     Cell: BadgeCell('primary'),
+  },
+  {
+    id: 'actions',
+    Header: 'Actions',
+    className: 'action-column',
+    Cell: ActionCell({
+      actions: [
+        {
+          id: 'action1',
+          displayText: 'Action 1',
+          onClick: (record) => {
+            // eslint-disable-next-line no-console
+            console.log(`action on record ${record.id}`);
+          },
+        },
+        {
+          id: 'actionDivider',
+          divider: true,
+        },
+        {
+          id: 'action2',
+          displayText: 'Action 2',
+          onClick: (record) => {
+            // eslint-disable-next-line no-console
+            console.log(`action on record ${record.id}`);
+          },
+        },
+      ],
+    }),
   },
 ];
 

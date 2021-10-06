@@ -60,6 +60,10 @@ const formattedColumns = [
           },
         },
         {
+          id: 'actionDivider',
+          divider: true,
+        },
+        {
           id: 'action2',
           displayText: 'Action 2',
           onClick: (record) => {

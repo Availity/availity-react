@@ -836,9 +836,14 @@ exports[`Table should render with formatted cells 1`] = `
               >
                 Action 1
               </button>
+              <div
+                class="dropdown-divider"
+                id="table_row_action_menu_item_1_action_actionDivider"
+                tabindex="-1"
+              />
               <button
                 class="dropdown-item"
-                id="table_row_action_menu_item_1_action_action2"
+                id="table_row_action_menu_item_2_action_action2"
                 role="menuitem"
                 tabindex="0"
                 type="button"
@@ -931,18 +936,14 @@ exports[`Table should render with formatted cells 1`] = `
               role="menu"
               tabindex="-1"
             >
+              <div
+                class="dropdown-divider"
+                id="table_row_action_menu_item_1_action_actionDivider"
+                tabindex="-1"
+              />
               <button
                 class="dropdown-item"
-                id="table_row_action_menu_item_0_action_action1"
-                role="menuitem"
-                tabindex="0"
-                type="button"
-              >
-                Action 1
-              </button>
-              <button
-                class="dropdown-item"
-                id="table_row_action_menu_item_1_action_action2"
+                id="table_row_action_menu_item_2_action_action2"
                 role="menuitem"
                 tabindex="0"
                 type="button"

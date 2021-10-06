@@ -5,9 +5,13 @@ import TableActionMenu from '../TableActionMenu';
 import TableActionMenuItem from '../TableActionMenuItem';
 
 const ActionCell = ({ actions, primaryAction }) => {
-  const ActionCellDef = ({ row: { original } }) => (
+  const ActionCellDef = ({ row: { original }, index }) => (
     <>
-      <TableActionMenu id={`table_row_action_menu_${original.id}`} actions={actions} record={original}>
+      <TableActionMenu
+        id={`table_row_action_menu_${original.id ? original.id : index}`}
+        actions={actions}
+        record={original}
+      >
         {actions.map((action, index) => (
           <TableActionMenuItem
             key={action.id}
@@ -26,6 +30,7 @@ const ActionCell = ({ actions, primaryAction }) => {
     original: PropTypes.shape({
       id: PropTypes.string,
     }),
+    index: PropTypes.number,
   };
   return ActionCellDef;
 };
