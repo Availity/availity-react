@@ -20,9 +20,6 @@
   "publishConfig": {
     "access": "public"
   },
-  "devDependencies": {
-    "@types/react-table": "^7.7.4"
-  },
   "dependencies": {
     "@availity/icon": "^0.8.0",
     "@types/react-table": "^7.7.4",
