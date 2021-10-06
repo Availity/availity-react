@@ -97,14 +97,14 @@ describe('Table', () => {
     fireEvent.click(selectAllRecordsInput);
 
     await waitFor(() => {
-      expect(onSelect).toHaveBeenCalledTimes(1);
+      expect(onSelect).toHaveBeenCalledTimes(2);
     });
 
     const selectFirstRecordInput = getByTestId('table_header_select_row_0');
     fireEvent.click(selectFirstRecordInput);
 
     await waitFor(() => {
-      expect(onSelect).toHaveBeenCalledTimes(2);
+      expect(onSelect).toHaveBeenCalledTimes(3);
     });
   });
 
