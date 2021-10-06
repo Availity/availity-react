@@ -1,5 +1,4 @@
 import React, { useEffect } from 'react';
-import 'core-js/stable';
 import PropTypes from 'prop-types';
 import { useTable, useRowSelect, useSortBy } from 'react-table';
 import { Util, Table as RsTable } from 'reactstrap';

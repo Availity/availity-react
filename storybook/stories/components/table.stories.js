@@ -2,7 +2,6 @@ import React from 'react';
 import { storiesOf } from '@storybook/react';
 import { withKnobs, object, boolean } from '@storybook/addon-knobs';
 import '@availity/mock';
-import 'availity-uikit';
 import '@availity/table/styles.scss';
 
 import Table, { ActionCell, BadgeCell, DateCell, ScrollableContainer } from '@availity/table';
