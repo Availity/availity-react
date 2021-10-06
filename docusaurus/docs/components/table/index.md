@@ -3,7 +3,7 @@ title: Getting Started
 ---
 
 This is a generic table component that wraps react-table.
-See [react-table documentation](https://react-table.tanstack.com/docs/overview)
+See [react-table documentation](https://react-table.tanstack.com/docs/overview).
 
 [![Version](https://img.shields.io/npm/v/@availity/table.svg?style=for-the-badge)](https://www.npmjs.com/package/@availity/table)
 
@@ -277,16 +277,13 @@ See [Availity UI Kit](https://availity.github.io/availity-uikit/v3/icons) for av
 
 #### Usages
 
-To always display an icon, such as when it is visible in the header, set the `isVisible` property to `true`.
+To always display an icon, you can configure the column to just pass in the @availity/Icon component.
+In the body of the table, the icon is displayed if the hasNotes property is set to true.
 
 ```jsx
-    /*
-        This displays a header as an icon.
-        In the body of the table, the icon is displayed if the hasNotes property is sest to true
-    */
     const columns = [
             {
-                Header: BuildIcon({ name: 'doc-alt', title: 'Has Notes', isVisible: true }),
+                Header: <Icon name='doc-alt' title='Has Notes'/>),
                 accessor: 'hasNotes',
                 Cell: IconCell({ name: 'doc-alt', title: 'View Notes' }),
             }
@@ -298,7 +295,7 @@ If the title (tooltip) of the icon is dependent on the data of the record, it is
 ```jsx
     const columns = [
             {
-                Header: IconCell({ name: 'flag', title: 'Flag for Followup', isVisible: true }),
+                Header: <Icon name='flag' title='Flag for follup'/>,
                 accessor: 'followup',
                 Cell: IconCell({ name: 'flag', title: (value: { username: string; }) => `Assigned To ${value.username}`}),
             }
@@ -358,7 +355,7 @@ This makes the column sticky to the left side of the table. This works best when
 
 #### `stickyRight`
 
-This makes the column sticky to the right side of the table. This works best when inside scrollable container. Not supported in IE11;
+This makes the column sticky to the right side of the table. This works best when inside scrollable container. Not supported in IE11.
 
 #### `disableClick`
 
