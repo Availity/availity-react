@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [6.0.10](https://github.com/Availity/availity-react/compare/@availity/feedback@6.0.9...@availity/feedback@6.0.10) (2021-10-06)
+
+
+### Bug Fixes
+
+* improve modal use case for FeedbackForm ([66dff23](https://github.com/Availity/availity-react/commit/66dff23e8b770e4143496c2d81683c46a1fc4fb4))
+
+
+
+
+
 ## [6.0.9](https://github.com/Availity/availity-react/compare/@availity/feedback@6.0.8...@availity/feedback@6.0.9) (2021-10-04)
 
 **Note:** Version bump only for package @availity/feedback
