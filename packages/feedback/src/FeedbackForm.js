@@ -140,7 +140,7 @@ const FeedbackForm = ({
             id="feedback-form-header"
             role="heading"
             aria-level="2"
-            className="h5"
+            className="h5 mt-n2 mx-n2"
             tag="div"
             {...modalHeaderProps}
           >
@@ -158,7 +158,7 @@ const FeedbackForm = ({
               id="feedback-form-header"
               role="heading"
               aria-level="2"
-              className="h5"
+              className="h5 mt-n2 mx-n2"
               tag="div"
               {...modalHeaderProps}
             >
