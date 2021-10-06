@@ -1,10 +1,19 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { Modal } from 'reactstrap';
+import { Modal, ModalHeader } from 'reactstrap';
 import FeedbackForm from './FeedbackForm';
 import SupportModal from './SupportModal';
 
-const FeedbackModal = ({ isOpen, toggle, zIndex, showSupport, supportZIndex, feedbackToggle, ...formOptions }) => {
+const FeedbackModal = ({
+  isOpen,
+  toggle,
+  zIndex,
+  showSupport,
+  supportZIndex,
+  feedbackToggle,
+  modalHeaderProps = {},
+  ...formOptions
+}) => {
   const [supportIsActive, setSupportIsActive] = React.useState(false);
 
   return supportIsActive ? (
@@ -30,6 +39,7 @@ const FeedbackModal = ({ isOpen, toggle, zIndex, showSupport, supportZIndex, fee
         onClose={toggle}
         showSupport={showSupport}
         setSupportIsActive={setSupportIsActive}
+        modalHeaderProps={{ toggle, ...modalHeaderProps }}
         {...formOptions}
       />
     </Modal>
@@ -43,6 +53,7 @@ FeedbackModal.propTypes = {
   zIndex: PropTypes.oneOfType([PropTypes.number, PropTypes.string]),
   supportZIndex: PropTypes.oneOfType([PropTypes.number, PropTypes.string]),
   feedbackToggle: PropTypes.func,
+  modalHeaderProps: PropTypes.shape({ ...ModalHeader.propTypes }),
 };
 
 export default FeedbackModal;

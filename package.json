@@ -40,6 +40,7 @@
     "link": "lerna link",
     "clean": "lerna clean --yes",
     "test": "jest",
+    "test:watch": "jest --watch",
     "test:ci": "jest --runInBand --collectCoverage",
     "postinstall": "yarn bootstrap",
     "start": "yarn workspace @availity/react-storybook start",

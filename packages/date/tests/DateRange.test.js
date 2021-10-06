@@ -1,11 +1,5 @@
 import React from 'react';
-import {
-  render,
-  fireEvent,
-  waitFor,
-  cleanup,
-  within,
-} from '@testing-library/react';
+import { render, fireEvent, waitFor, cleanup, within } from '@testing-library/react';
 import { Button } from 'reactstrap';
 import { Form } from '@availity/form';
 import { object, string } from 'yup';
@@ -263,12 +257,9 @@ describe('DateRange', () => {
     // Simulate user selecting today as start date
     const current = container.querySelector('.CalendarDay__today');
     const previous = current.previousSibling;
-    const next =
-      current.nextSibling ||
-      current.parentElement.nextSibling.firstElementChild;
+    const next = current.nextSibling || current.parentElement.nextSibling.firstElementChild;
 
-    const isCurrentDayLastDayOfMonth =
-      moment().dayOfYear() === moment().endOf('month').dayOfYear();
+    const isCurrentDayLastDayOfMonth = moment().dayOfYear() === moment().endOf('month').dayOfYear();
 
     let expectedStartDate = moment();
     let expectedEndDate = moment().add(1, 'day');
@@ -358,9 +349,7 @@ describe('DateRange', () => {
 
     await waitFor(() => {
       expect(
-        container.querySelector(
-          '.DayPicker_calendarInfo__horizontal DayPicker_calendarInfo__horizontal_1'
-        )
+        container.querySelector('.DayPicker_calendarInfo__horizontal DayPicker_calendarInfo__horizontal_1')
       ).toBeDefined();
     });
 
@@ -369,13 +358,9 @@ describe('DateRange', () => {
 
     const today = moment().format('MM/DD/YYYY');
 
-    expect(
-      container.querySelectorAll('.DateInput_input.DateInput_input_1')[0].value
-    ).toEqual(today);
+    expect(container.querySelectorAll('.DateInput_input.DateInput_input_1')[0].value).toEqual(today);
 
-    expect(
-      container.querySelectorAll('.DateInput_input.DateInput_input_1')[1].value
-    ).toEqual(today);
+    expect(container.querySelectorAll('.DateInput_input.DateInput_input_1')[1].value).toEqual(today);
   });
 
   test('renders month picker', async () => {
@@ -430,9 +415,7 @@ describe('DateRange', () => {
     expect(yearPickers.length).toBe(4);
 
     const currentGridYearPicker = yearPickers[1];
-    expect(currentGridYearPicker.children.length).toBe(
-      max.year() - min.year() + 1
-    );
+    expect(currentGridYearPicker.children.length).toBe(max.year() - min.year() + 1);
 
     const pickedYear = within(currentGridYearPicker).getByText(someYear);
     expect(pickedYear).toBeDefined();
@@ -451,13 +434,7 @@ describe('DateRange', () => {
           dateRange: '',
         }}
       >
-        <DateRange
-          id="dateRange"
-          name="dateRange"
-          min={min}
-          max={max}
-          onChange={onChange}
-        />
+        <DateRange id="dateRange" name="dateRange" min={min} max={max} onChange={onChange} />
       </Form>
     );
 
@@ -475,12 +452,8 @@ describe('DateRange', () => {
     let nextGridYearPicker = yearPickers[2]; // next in this context refers to the next CalendarMonthGrid to be rendered
 
     // Expect year options to have same length as range of initial options
-    expect(currentGridYearPicker.children.length).toBe(
-      max.year() - min.year() + 1
-    );
-    expect(nextGridYearPicker.children.length).toBe(
-      max.year() - min.year() + 1
-    );
+    expect(currentGridYearPicker.children.length).toBe(max.year() - min.year() + 1);
+    expect(nextGridYearPicker.children.length).toBe(max.year() - min.year() + 1);
 
     fireEvent.change(start, {
       target: {
@@ -517,12 +490,8 @@ describe('DateRange', () => {
 
     // Expect current MonthGrid to have same number of options, it is still December of max
     // Expect next MonthGrid (January) to have new year option created
-    expect(currentGridYearPicker.children.length).toBe(
-      max.year() - min.year() + 1
-    );
-    expect(nextGridYearPicker.children.length).toBe(
-      max.year() - min.year() + 2
-    );
+    expect(currentGridYearPicker.children.length).toBe(max.year() - min.year() + 1);
+    expect(nextGridYearPicker.children.length).toBe(max.year() - min.year() + 2);
 
     const pickedYear = within(nextGridYearPicker).getByText(newYear);
     expect(pickedYear).toBeDefined();
