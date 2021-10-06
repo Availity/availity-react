@@ -39,7 +39,6 @@ const Table = ({
     prepareRow,
     selectedFlatRows: selectedRows,
     allColumns,
-    toggleAllRowsSelected,
     toggleHideColumn,
   } = useTable(
     {
@@ -57,48 +56,24 @@ const Table = ({
         defaultCanSort: false,
         disableSortBy: true,
         disableClick: true,
-        Header: ({ getToggleAllRowsSelectedProps }) => {
-          const selectedProps = {
-            onClick: async () => {
-              await toggleAllRowsSelected();
-              if (onRowSelected) {
-                onRowSelected({ selectedRows });
-              }
-            },
-          };
-
-          return (
-            <div className="text-center">
-              <IndeterminateCheckbox
-                data-testid="table_header_select_all"
-                aria-label="Select all records"
-                {...selectedProps}
-                {...getToggleAllRowsSelectedProps()}
-              />
-            </div>
-          );
-        },
-        Cell: ({ row: { original, toggleRowSelected, getToggleRowSelectedProps, index } }) => {
-          const selectedProps = {
-            onClick: () => {
-              if (onRowSelected) {
-                toggleRowSelected();
-                onRowSelected({ selectedId: original.id, data: original });
-              }
-            },
-          };
-
-          return (
-            <div className="text-center">
-              <IndeterminateCheckbox
-                data-testid={`table_header_select_row_${index}`}
-                aria-label="Select record"
-                {...selectedProps}
-                {...getToggleRowSelectedProps()}
-              />
-            </div>
-          );
-        },
+        Header: ({ getToggleAllRowsSelectedProps }) => (
+          <div className="text-center">
+            <IndeterminateCheckbox
+              data-testid="table_header_select_all"
+              aria-label="Select all records"
+              {...getToggleAllRowsSelectedProps()}
+            />
+          </div>
+        ),
+        Cell: ({ row: { getToggleRowSelectedProps, index } }) => (
+          <div className="text-center">
+            <IndeterminateCheckbox
+              data-testid={`table_header_select_row_${index}`}
+              aria-label="Select record"
+              {...getToggleRowSelectedProps()}
+            />
+          </div>
+        ),
       };
 
       hooks.visibleColumns.push((columns) => [selectionColumn, ...columns]);
@@ -108,6 +83,12 @@ const Table = ({
   useEffect(() => {
     toggleHideColumn('selection', !selectable);
   }, [selectable, toggleHideColumn]);
+
+  useEffect(() => {
+    if (onRowSelected) {
+      onRowSelected(selectedRows?.map((selectedRow) => selectedRow.id));
+    }
+  }, [selectedRows, onRowSelected]);
 
   let handleRowClick;
   let handleCellClick;

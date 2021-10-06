@@ -4,7 +4,7 @@ import { OnTableClickEvent } from './Table';
 
 export interface TableCellProps {
     cell: Cell;
-    children: React.ElementType | React.ReactElement | React.ReactType;
+    children: React.ReactNode;
     onCellClick: (event: OnTableClickEvent) => void;
 }
 

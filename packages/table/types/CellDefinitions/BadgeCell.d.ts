@@ -1,5 +1,3 @@
-import { CellProps } from 'react-table';
+declare function BadgeCell(color: string, displayText?: string): string;
 
-declare function BadgeCell({ value }: CellProps<any, string>): string;
-
-export { BadgeCell };
+export default BadgeCell;

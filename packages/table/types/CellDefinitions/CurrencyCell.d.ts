@@ -1,11 +1,10 @@
-import { CellProps } from 'react-table';
-
 export interface CurrencyCellConfig {
-    currency: string;
+    currency?: string;
     style?: string;
     numberFormat?: string;
     defaultValue?: string;
 }
-declare function CurrencyCell({ value }: CellProps<any, string>): string;
 
-export { CurrencyCell };
+declare function CurrencyCell(config?: CurrencyCellConfig): string;
+
+export default CurrencyCell;

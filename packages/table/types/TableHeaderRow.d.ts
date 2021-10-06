@@ -2,7 +2,7 @@ import { HeaderGroup } from 'react-table';
 
 export interface TableHeaderRowProps {
     headerGroup: HeaderGroup;
-    children: React.ElementType | React.ReactElement | React.ReactType;
+    children: React.ReactNode;
 }
 
 declare const TableHeaderRow: React.FunctionComponent<TableHeaderRowProps>;

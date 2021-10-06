@@ -8,7 +8,7 @@ export interface TableRowProps {
     cellProps: object;
     onRowClick?: (event: OnTableClickEvent) => void;
     onCellClick?: (event: OnTableClickEvent) => void;
-    children: React.ElementType | React.ReactElement | React.ReactType;
+    children: React.ReactNode;
 }
 
 declare const TableRow: React.FunctionComponent<TableRowProps>;

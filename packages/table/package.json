@@ -23,7 +23,6 @@
   "dependencies": {
     "@availity/icon": "^0.8.0",
     "@types/react-table": "^7.7.4",
-    "availity-uikit": "^3.2.2",
     "classnames": "^2.3.1",
     "core-js": "^3.18.1",
     "lodash": "^4.17.21",
@@ -34,6 +33,7 @@
   },
   "peerDependencies": {
     "react": "^17.0.2",
-    "react-dom": "^17.0.2"
+    "react-dom": "^17.0.2",
+    "availity-uikit": ">=3.0.0"
   }
 }

@@ -21,7 +21,9 @@ const ActionCell = ({ actions, primaryAction }) => {
           />
         ))}
       </TableActionMenu>
-      {primaryAction && <Icon name={primaryAction.name} title={primaryAction.title} onClick={primaryAction.onClick} />}
+      {primaryAction && (
+        <Icon name={primaryAction.iconName} title={primaryAction.title} onClick={primaryAction.onClick} />
+      )}
     </>
   );
 
@@ -38,7 +40,7 @@ const ActionCell = ({ actions, primaryAction }) => {
 ActionCell.propTypes = {
   actions: PropTypes.arrayOf(PropTypes.object),
   primaryAction: PropTypes.shape({
-    name: PropTypes.string,
+    iconName: PropTypes.string,
     title: PropTypes.string,
     onClick: PropTypes.func,
   }),

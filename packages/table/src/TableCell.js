@@ -24,7 +24,7 @@ const TableCell = ({ cell, children, onCellClick, ...rest }) => {
           ...e,
           data: cell.row.original,
           index: cell.row.index,
-          instance: cell.row,
+          row: cell.row,
         });
     },
   };

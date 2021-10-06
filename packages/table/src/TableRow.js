@@ -23,7 +23,7 @@ const TableRow = ({ row, index, onRowClick, onCellClick, children, ...rest }) =>
           ...e,
           data: row.original,
           index: row.index,
-          instance: row,
+          row,
         });
       }
     },
@@ -36,7 +36,7 @@ const TableRow = ({ row, index, onRowClick, onCellClick, children, ...rest }) =>
           ...e,
           data: row.original,
           index: row.index,
-          instance: row,
+          row,
         });
       }
     },

@@ -1,4 +1,4 @@
-import Table from './types/Table';
+import Table, { OnTableClickEvent, OnRowSelectedEvent } from './types/Table';
 import ScrollableContainer from './types/ScrollableContainer';
 
 import ActionCell from './types/CellDefinitions/ActionCell';
@@ -11,9 +11,12 @@ export default Table;
 export {
     ScrollableContainer,
     
+    OnTableClickEvent,
+    OnRowSelectedEvent,
+
     ActionCell,
     BadgeCell,
-    CurrencyCell, 
-    DateCell, 
+    CurrencyCell,
+    DateCell,
     IconCell
- };
+};

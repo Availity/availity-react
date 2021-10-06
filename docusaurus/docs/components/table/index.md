@@ -119,13 +119,9 @@ Event handler for when a row is selected.
 
 ##### OnRowSelectedEvent Props
 
-`selectedId: string`
+`selectedRows: string[] | number[]`
 
-The id of the record that was selected.
-
-`data: object`
-
-The record that was selected.
+The ids of the records that are selected.
 
 ## Formatting Cells
 

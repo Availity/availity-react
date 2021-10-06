@@ -1,4 +1,7 @@
-import { CellProps } from 'react-table';
+export interface IconConfig<T> {
+    name: string;
+    title: string | ((value: T) => string);
+}
 
-declare function IconCell({ value }: CellProps<any, string>): string;
-export { IconCell };
+declare function IconCell<T>(iconConfig: IconConfig<T>): string;
+export default IconCell;

@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import Icon from '@availity/icon';
 
-const IconCell = ({ name, title, isVisible }) => {
+const IconCell = ({ name, title }) => {
   const IconCellDef = ({ value }) => {
     let generatedTitle;
     if (typeof title === 'function') {
@@ -10,7 +10,7 @@ const IconCell = ({ name, title, isVisible }) => {
     } else if (typeof title === 'string') {
       generatedTitle = title;
     }
-    return isVisible || value ? <Icon name={name} title={generatedTitle} /> : null;
+    return value ? <Icon name={name} title={generatedTitle} /> : null;
   };
 
   IconCellDef.propTypes = {
@@ -25,7 +25,6 @@ IconCell.propTypes = {
     {
       name: PropTypes.string,
       title: PropTypes.oneOfType([PropTypes.string, PropTypes.func]),
-      isVisible: PropTypes.bool,
     },
   ]),
 };

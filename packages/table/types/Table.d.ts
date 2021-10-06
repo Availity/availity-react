@@ -7,15 +7,15 @@ type TableColumn = {
     disableClick?: boolean;
 }
 
-export type ExtendedTableColumn = Column & TableColumn;
+export type AvTableColumn = Column & TableColumn;
 
 export interface TableProps {
     [key:string]: any;
     id?: string;
-    additionalContent?: React.ElementType | React.ReactElement | React.ReactType;
+    additionalContent?: React.ReactNode;
     bodyProps?: Object;
     cellProps?: Object;
-    columns: ExtendedTableColumn[];
+    columns: AvTableColumn[];
     onRowClick?: (event: OnTableClickEvent) => void;
     onRowSelected?: (event: OnRowSelectedEvent) => void;
     headerProps?: object;
@@ -26,15 +26,20 @@ export interface TableProps {
     records: object[];
 }
 
+type TableRow = {
+    toggleRowSelected: () => void;
+}
+
+export type AvTableRow = Row & TableRow
+
 export interface OnTableClickEvent extends Event {
-    instance: Row,
+    row: AvTableRow,
     data: object,
     index: number
 }
 
 export interface OnRowSelectedEvent extends Event {
-    selectedId: string,
-    data: object
+    selectedRows: string[] | number[]
 }
 
 declare const Table: React.FunctionComponent<TableProps>;
