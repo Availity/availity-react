@@ -4,7 +4,6 @@ import classNames from 'classnames';
 import { useField, useFormikContext } from 'formik';
 import 'react-dates/initialize';
 import { SingleDatePicker } from 'react-dates';
-import Icon from '@availity/icon';
 import { InputGroup, Input, Row, Col } from 'reactstrap';
 import moment from 'moment';
 import '../polyfills';
@@ -21,7 +20,6 @@ const yearPickerStyles = {
 const AvDate = ({
   className,
   name,
-  calendarIcon,
   innerRef,
   onChange,
   onPickerFocusChange,
@@ -181,9 +179,6 @@ const AvDate = ({
           onFocusChange={onFocusChange}
           numberOfMonths={1}
           isOutsideRange={isOutsideRange(min, max)}
-          customInputIcon={datepicker ? calendarIcon : undefined}
-          showDefaultInputIcon={datepicker}
-          inputIconPosition="after"
           navPosition="navPositionBottom"
           openDirection={openDirection}
         />
@@ -198,7 +193,6 @@ AvDate.propTypes = {
   className: PropTypes.string,
   min: limitPropType,
   max: limitPropType,
-  calendarIcon: PropTypes.node,
   onChange: PropTypes.func,
   onPickerFocusChange: PropTypes.func,
   innerRef: PropTypes.oneOfType([PropTypes.func, PropTypes.node]),
@@ -211,7 +205,6 @@ AvDate.propTypes = {
 };
 
 AvDate.defaultProps = {
-  calendarIcon: <Icon name="calendar" />,
   format: 'MM/DD/YYYY',
   datepicker: true,
   openDirection: 'down',

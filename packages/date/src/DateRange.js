@@ -1,6 +1,5 @@
-import React, { useEffect, useMemo, useRef, useState } from 'react';
+import React, { useEffect, useMemo, useState } from 'react';
 import PropTypes from 'prop-types';
-import Icon from '@availity/icon';
 import { InputGroup, Input, Button, Row, Col } from 'reactstrap';
 import { DateRangePicker } from 'react-dates';
 import classNames from 'classnames';
@@ -59,7 +58,6 @@ const DateRange = ({
   innerRef,
   className,
   format,
-  calendarIcon,
   datepickerProps,
   'data-testid': dataTestId,
   datepicker,
@@ -72,8 +70,6 @@ const DateRange = ({
   const { setFieldValue, setFieldTouched, validateField } = useFormikContext();
   const [{ value = {} }, metadata] = useField({ name, validate });
   const [focusedInput, setFocusedInput] = useState(null);
-
-  const calendarIconRef = useRef();
 
   const startId = `${(id || name).replace(/[^\da-z]/gi, '')}-start`;
   const endId = `${(id || name).replace(/[^\da-z]/gi, '')}-end`;
@@ -220,12 +216,7 @@ const DateRange = ({
                   startDate,
                   endDate,
                 });
-
                 setFocusedInput(null);
-
-                // Focus the calendar icon once clicked because we don't
-                // want to get back in the loop of opening the calendar
-                calendarIconRef.current.parentElement.focus();
               }}
             >
               {relativeRange}
@@ -313,20 +304,6 @@ const DateRange = ({
           renderCalendarInfo={renderDateRanges}
           customArrowIcon={customArrowIcon}
           isOutsideRange={isOutsideRange(min, max, format)}
-          customInputIcon={
-            datepicker
-              ? React.cloneElement(calendarIcon, {
-                  ref: calendarIconRef,
-                  onClick: () => {
-                    if (focusedInput) {
-                      setFocusedInput();
-                    }
-                  },
-                })
-              : undefined
-          }
-          showDefaultInputIcon={datepicker}
-          inputIconPosition="after"
           numberOfMonths={2}
           navPosition="navPositionBottom"
           openDirection={openDirection}
@@ -346,7 +323,6 @@ DateRange.propTypes = {
   disabled: PropTypes.bool,
   onChange: PropTypes.func,
   onPickerFocusChange: PropTypes.func,
-  calendarIcon: PropTypes.node,
   innerRef: PropTypes.oneOfType([PropTypes.func, PropTypes.node]),
   format: PropTypes.string,
   datepicker: PropTypes.bool,
@@ -359,7 +335,6 @@ DateRange.propTypes = {
 };
 
 DateRange.defaultProps = {
-  calendarIcon: <Icon name="calendar" data-testid="calendar-icon" />,
   format: isoDateFormat,
   datepicker: true,
   openDirection: 'down',
