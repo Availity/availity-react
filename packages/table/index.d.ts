@@ -1,4 +1,4 @@
-import Table, { OnTableClickEvent, OnRowSelectedEvent } from './types/Table';
+import Table, { AvTableColumn, AvTableRow, OnTableClickEvent, OnRowSelectedEvent } from './types/Table';
 import ScrollableContainer from './types/ScrollableContainer';
 
 import ActionCell from './types/CellDefinitions/ActionCell';
@@ -10,7 +10,9 @@ import IconCell from './types/CellDefinitions/IconCell';
 export default Table;
 export {
     ScrollableContainer,
-    
+
+    AvTableColumn,
+    AvTableRow,
     OnTableClickEvent,
     OnRowSelectedEvent,
 
