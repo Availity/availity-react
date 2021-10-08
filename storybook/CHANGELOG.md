@@ -3,6 +3,21 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [9.13.0](https://github.com/Availity/availity-react/compare/@availity/react-storybook@9.12.0...@availity/react-storybook@9.13.0) (2021-10-08)
+
+
+### Features
+
+* **table:** add support for formatted cells, extracting out specific stylings, renaming ([62d3526](https://github.com/Availity/availity-react/commit/62d35261113143b0614fc31d73750c433af3edfa))
+* **table:** enhance storybook docs ([a678bed](https://github.com/Availity/availity-react/commit/a678beded12e299f4df075b75c9588f88f23c3c9))
+* **table:** fix dropdown table placement and value tooltips for formatted cells ([d80051e](https://github.com/Availity/availity-react/commit/d80051ee9a183ad74b19476475e586cc9fd0015b))
+* **table:** remove core-js, uikit import ([a8757d4](https://github.com/Availity/availity-react/commit/a8757d4463ed74b5afc526b9d26ab16150f3bb9e))
+* **table:** some code review feedback and some fixes, storybook enhancements ([f6a8f92](https://github.com/Availity/availity-react/commit/f6a8f92365c3e53a68deca536ef3e948122e4434))
+
+
+
+
+
 # [9.12.0](https://github.com/Availity/availity-react/compare/@availity/react-storybook@9.11.1...@availity/react-storybook@9.12.0) (2021-10-08)
 
 
