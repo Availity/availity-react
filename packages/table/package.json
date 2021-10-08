@@ -3,7 +3,7 @@
   "version": "0.0.0",
   "author": "Ashlee Zeigler <ashlee.zeigler@availity.com>",
   "description": "A generic table wrapper for react-table",
-  "main": "app.js",
+  "main": "index.js",
   "types": "index.d.ts",
   "keywords": [
     "react",
