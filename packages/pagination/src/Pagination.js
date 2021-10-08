@@ -2,7 +2,6 @@ import React, { useState, useContext, useEffect, useRef } from 'react';
 import PropTypes from 'prop-types';
 import isFunction from 'lodash/isFunction';
 import isEqual from 'lodash/isEqual';
-import * as avLocalStorage from '@availity/localstorage-core';
 import { useDebounce } from 'react-use';
 
 export const PaginationContext = React.createContext();
@@ -59,7 +58,7 @@ const Pagination = ({
   const getPageData = async () => {
     try {
       toggleLoading(true);
-      avLocalStorage.set('current-page', currentPage);
+      window.localStorage.setItem('current-page', JSON.stringify(currentPage));
 
       // If the items is a function then await the response in case of async actions
       const { items, totalCount } = isFunction(theItems)
@@ -78,7 +77,7 @@ const Pagination = ({
 
       const pageCount = Math.ceil((totalCount || items.length) / itemsPerPage);
 
-      if (!isEqual(avLocalStorage.get('current-page'), currentPage)) {
+      if (!isEqual(JSON.parse(window.localStorage.getItem('current-page')), currentPage)) {
         return;
       }
 
