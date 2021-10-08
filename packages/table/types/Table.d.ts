@@ -13,8 +13,8 @@ export interface TableProps {
   [key: string]: any;
   id?: string;
   additionalContent?: React.ReactNode;
-  bodyProps?: Object;
-  cellProps?: Object;
+  bodyProps?: object;
+  cellProps?: object;
   columns: AvTableColumn[];
   onRowClick?: (event: OnTableClickEvent) => void;
   onRowSelected?: (event: OnRowSelectedEvent) => void;

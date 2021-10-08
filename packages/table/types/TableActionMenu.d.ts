@@ -1,6 +1,6 @@
 export interface TableActionMenuProps {
   id?: string;
-  children: React.ElementType | React.ReactElement | React.ReactType;
+  children: React.ReactNode;
 }
 
 declare const TableActionMenu: React.FunctionComponent<TableActionMenuProps>;
