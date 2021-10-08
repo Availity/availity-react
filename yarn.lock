@@ -166,10 +166,10 @@
     "@babel/runtime" "^7.10.2"
     core-js "^3.12.1"
 
-"@availity/native-form@^3.0.0":
-  version "3.0.0"
-  resolved "https://registry.yarnpkg.com/@availity/native-form/-/native-form-3.0.0.tgz#bb8881ed46a7c3e848f1154a6709ed92f07d6d30"
-  integrity sha512-YNOzLW4ONL27pli4fGOmiA788pcqzUZfjj3/6R6pBx2m/KDacbPo3YkWVCJ/SpRxt+5F4MjiSAyvWFZt5vdWbA==
+"@availity/native-form@^4.0.5":
+  version "4.0.5"
+  resolved "https://registry.yarnpkg.com/@availity/native-form/-/native-form-4.0.5.tgz#3a7d90f3edb7493bba57fc2c81b8382512f41ddc"
+  integrity sha512-KRNohg6+B0ikfeqwcDQX9oYdmAjmtDKa7S5rbq/VfUtJMBWa7cDjfaxwGGULsbHIxcqJpr0jIeNxiKeURMEC0w==
   dependencies:
     "@babel/runtime" "^7.10.2"
     core-js "^3.12.1"

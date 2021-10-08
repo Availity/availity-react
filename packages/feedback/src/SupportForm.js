@@ -63,7 +63,7 @@ const openSupport = async (values, setBlocking, setSupportIsActive, feedbackTogg
 
     href = `/ms/api/availity/internal/spc/magneto/sso/v1/saml/${salesforceData.newCommunity ? newCommutySsoId : ssoId}`;
 
-    nativeForm(ssoId, attributes, { action: href, target: '_blank' });
+    await nativeForm(ssoId, attributes, { action: href, target: '_blank' });
     setBlocking(false);
   } else {
     window.open(href, target);
