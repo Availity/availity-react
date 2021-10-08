@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [9.12.0](https://github.com/Availity/availity-react/compare/@availity/react-storybook@9.11.1...@availity/react-storybook@9.12.0) (2021-10-08)
+
+
+### Features
+
+* **select:** pull field help icon out of label element ([e2ead22](https://github.com/Availity/availity-react/commit/e2ead22326ec5863755398d9b3f68b78c14345c1))
+
+
+
+
+
 ## [9.11.1](https://github.com/Availity/availity-react/compare/@availity/react-storybook@9.11.0...@availity/react-storybook@9.11.1) (2021-10-06)
 
 **Note:** Version bump only for package @availity/react-storybook

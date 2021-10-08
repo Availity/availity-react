@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# 0.19.0 (2021-10-08)
+
+
+### Features
+
+* **select:** pull field help icon out of label element ([e2ead22](https://github.com/Availity/availity-react/commit/e2ead22326ec5863755398d9b3f68b78c14345c1))
+
+
+
+
+
 ## [0.18.4](https://github.com/Availity/availity-react/compare/@availity/select@0.18.3...@availity/select@0.18.4) (2021-10-04)
 
 **Note:** Version bump only for package @availity/select
