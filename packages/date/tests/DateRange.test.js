@@ -345,7 +345,9 @@ describe('DateRange', () => {
       </Form>
     );
 
-    container.querySelector('.DateRangePickerInput_calendarIcon').click();
+    const input = container.querySelector('.DateInput_input');
+
+    fireEvent.focus(input);
 
     await waitFor(() => {
       expect(
