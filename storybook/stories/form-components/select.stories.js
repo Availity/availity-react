@@ -7,10 +7,7 @@ import '@availity/yup';
 import * as yup from 'yup';
 
 import Select, { SelectField, ResourceSelect } from '@availity/select';
-import {
-  AvProviderSelect,
-  AvOrganizationSelect,
-} from '@availity/select/resources';
+import { AvProviderSelect, AvOrganizationSelect } from '@availity/select/resources';
 import { Feedback, FormGroup, Field } from '@availity/form';
 import README from '@availity/select/README.md';
 import '@availity/mock';
@@ -58,10 +55,7 @@ const autofillOptions = [
 
 const singleValueSchema = (name, required) =>
   yup.object().shape({
-    [name]: yup
-      .string()
-      .isRequired(required, 'This field is required.')
-      .nullable(),
+    [name]: yup.string().isRequired(required, 'This field is required.').nullable(),
   });
 
 const multiValueSchema = (name, required, min, max) =>
@@ -100,9 +94,7 @@ storiesOf('Form Components/Select', module)
           autoFill2: '',
         }}
         validationSchema={
-          isMulti
-            ? multiValueSchema('standAlone', required, min, max)
-            : singleValueSchema('standAlone', required)
+          isMulti ? multiValueSchema('standAlone', required, min, max) : singleValueSchema('standAlone', required)
         }
       >
         <Select
@@ -117,13 +109,9 @@ storiesOf('Form Components/Select', module)
           raw={boolean('Raw value', false)}
           isDisabled={boolean('Disabled', false)}
         />
-        {autofill && (
-          <Field name="autoFill1" type="text" label="Autofill Value 1" />
-        )}
+        {autofill && <Field name="autoFill1" type="text" label="Autofill Value 1" />}
 
-        {autofill && (
-          <Field name="autoFill2" type="text" label="Autofill Value 2" />
-        )}
+        {autofill && <Field name="autoFill2" type="text" label="Autofill Value 2" />}
         <Button className="mt-3" color="primary">
           Submit
         </Button>
@@ -151,9 +139,7 @@ storiesOf('Form Components/Select', module)
         }
       >
         <FormGroup for="standAloneWithLabel">
-          <Label for="standAloneWithLabel">
-            {text('Label', 'Select Label')}
-          </Label>
+          <Label for="standAloneWithLabel">{text('Label', 'Select Label')}</Label>
           <Select
             autofill={autofill}
             minLength={min}
@@ -163,20 +149,16 @@ storiesOf('Form Components/Select', module)
             creatable={boolean('Creatable', false)}
             name="standAloneWithLabel"
             inputProps={{ 'aria-label': 'stand-alone with Label' }}
-            required={boolean('Required', false)}
+            required={required}
             raw={boolean('Raw value', false)}
             isDisabled={boolean('Disabled', false)}
           />
-          <Feedback>{text('Error Message', 'This field is invalid')}</Feedback>
+          <Feedback name="standAloneWithLabel">{text('Error Message', 'This field is invalid')}</Feedback>
         </FormGroup>
 
-        {autofill && (
-          <Field name="autoFill1" type="text" label="Autofill Value 1" />
-        )}
+        {autofill && <Field name="autoFill1" type="text" label="Autofill Value 1" />}
 
-        {autofill && (
-          <Field name="autoFill2" type="text" label="Autofill Value 2" />
-        )}
+        {autofill && <Field name="autoFill2" type="text" label="Autofill Value 2" />}
         <Button color="primary">Submit</Button>
       </FormikResults>
     );
@@ -187,6 +169,7 @@ storiesOf('Form Components/Select', module)
     const max = (isMulti && number('Max Selection', 3)) || undefined;
     const required = boolean('Required', false);
     const autofill = boolean('Autofill', false);
+    const helpId = text('Field Help ID', '');
 
     return (
       <FormikResults
@@ -196,9 +179,7 @@ storiesOf('Form Components/Select', module)
           autoFill2: '',
         }}
         validationSchema={
-          isMulti
-            ? multiValueSchema('SelectField', required, min, max)
-            : singleValueSchema('SelectField', required)
+          isMulti ? multiValueSchema('SelectField', required, min, max) : singleValueSchema('SelectField', required)
         }
       >
         <SelectField
@@ -213,14 +194,11 @@ storiesOf('Form Components/Select', module)
           required={required}
           raw={boolean('Raw value', false)}
           isDisabled={boolean('Disabled', false)}
+          helpId={helpId}
         />
-        {autofill && (
-          <Field name="autoFill1" type="text" label="Autofill Value 1" />
-        )}
+        {autofill && <Field name="autoFill1" type="text" label="Autofill Value 1" />}
 
-        {autofill && (
-          <Field name="autoFill2" type="text" label="Autofill Value 2" />
-        )}
+        {autofill && <Field name="autoFill2" type="text" label="Autofill Value 2" />}
         <Button color="primary">Submit</Button>
       </FormikResults>
     );
@@ -237,9 +215,7 @@ storiesOf('Form Components/Select', module)
           ResourceSelect: null,
         }}
         validationSchema={
-          isMulti
-            ? multiValueSchema('SelectField', required, min, max)
-            : singleValueSchema('SelectField', required)
+          isMulti ? multiValueSchema('SelectField', required, min, max) : singleValueSchema('SelectField', required)
         }
       >
         <ResourceSelect
@@ -273,9 +249,7 @@ storiesOf('Form Components/Select', module)
           ResourceSelect: null,
         }}
         validationSchema={
-          isMulti
-            ? multiValueSchema('SelectField', required, min, max)
-            : singleValueSchema('SelectField', required)
+          isMulti ? multiValueSchema('SelectField', required, min, max) : singleValueSchema('SelectField', required)
         }
       >
         <ResourceSelect
@@ -377,9 +351,7 @@ storiesOf('Form Components/Select/resources', module)
           validate={{
             required: {
               value: required,
-              errorMessage:
-                required &&
-                text('Required Error Message', 'This field is required'),
+              errorMessage: required && text('Required Error Message', 'This field is required'),
             },
           }}
           isDisabled={boolean('Disabled', false)}
