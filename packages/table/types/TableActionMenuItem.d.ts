@@ -1,7 +1,7 @@
 export interface TableActionMenuItemProps {
-    id?: string;
-    action: Object;
-    record: Object;
+  id?: string;
+  action: Object;
+  record: Object;
 }
 
 declare const TableActionMenuItem: React.FunctionComponent<TableActionMenuItemProps>;

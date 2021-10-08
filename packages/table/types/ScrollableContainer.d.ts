@@ -1,7 +1,6 @@
-
 export interface ScrollableContainerProps {
-    [key:string]: any;
-    id?: string;
+  [key: string]: any;
+  id?: string;
 }
 
 declare const ScrollableContainer: React.FunctionComponent<ScrollableContainerProps>;
