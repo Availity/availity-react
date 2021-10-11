@@ -1,14 +1,17 @@
-import { ListGroupItemProps } from './ListGroupItem';
+import { ListGroupItemProps as RsListGroupItemProps } from 'reactstrap';
 
 type BadgeType = {
   color?: string;
   text?: string;
 };
-export interface ListGroupItemStatusProps extends ListGroupItemProps {
-  titleContent?: React.ReactType;
+
+export interface ListGroupItemStatusProps extends RsListGroupItemProps {
+  titleContent?: React.ReactNode;
+  children: React.ReactNode;
+  color?: string;
   badge?: boolean | string | BadgeType;
 }
 
-declare const ListGroupItemStatus: React.StatelessComponent<ListGroupItemStatusProps>;
+declare const ListGroupItemStatus: (props: ListGroupItemStatusProps) => JSX.Element;
 
 export default ListGroupItemStatus;
