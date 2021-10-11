@@ -4,4 +4,4 @@
 
 [![Version](https://img.shields.io/npm/v/@availity/analytics.svg?style=for-the-badge)](https://www.npmjs.com/package/@availity/analytics)
 
-## [Documentation](https://availity.github.io/availity-react/components/analytics)
+## [Documentation](https://availity.github.io/availity-react/components/analytics/index)
