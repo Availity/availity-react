@@ -8,6 +8,17 @@ export const PaginationContext = React.createContext();
 
 export const usePagination = () => useContext(PaginationContext);
 
+const getItemLocalStorage = (key) => {
+  const value = window.localStorage.getItem(key);
+  let output;
+  try {
+    output = JSON.parse(value);
+  } catch {
+    output = value;
+  }
+  return output;
+};
+
 // todos
 // Add another `useEffect` for only updating the items without calling the function if the `itemsPerPage` prop changes
 
@@ -77,7 +88,9 @@ const Pagination = ({
 
       const pageCount = Math.ceil((totalCount || items.length) / itemsPerPage);
 
-      if (!isEqual(JSON.parse(window.localStorage.getItem('current-page')), currentPage)) {
+      const localStorageItem = getItemLocalStorage('current-page');
+
+      if (!isEqual(localStorageItem, currentPage)) {
         return;
       }
 
