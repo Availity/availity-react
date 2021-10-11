@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# 2.11.0 (2021-10-11)
+
+
+### Features
+
+* **pagination:** adding try catch around json parse for localstorage get ([efd965b](https://github.com/Availity/availity-react/commit/efd965b9b694077333614d01acf0b889f4287a8c))
+
+
+
+
+
 ## [2.10.2](https://github.com/Availity/availity-react/compare/@availity/pagination@2.10.1...@availity/pagination@2.10.2) (2021-10-01)
 
 **Note:** Version bump only for package @availity/pagination
