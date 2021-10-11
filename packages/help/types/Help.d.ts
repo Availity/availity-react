@@ -6,6 +6,7 @@ export interface HelpObj {
 export type TopNavConstants = {
   SET_HELP: 'nav:help:set';
   RESET_HELP: 'nav:help:reset';
+  OPEN_FIELD_HELP: 'nav:help:field';
 };
 
 export interface HelpContext {

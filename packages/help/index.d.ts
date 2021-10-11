@@ -1,2 +1,2 @@
-export { default } from './types/Help';
+export { default, Help, useHelp, constants, triggerFieldHelp, FieldHelpIcon } from './types/Help';
 export * from './types/Help';
