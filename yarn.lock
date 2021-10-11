@@ -161,11 +161,6 @@
     classnames "^2.3.1"
     prop-types "^15.7.2"
 
-"@availity/localstorage-core@^3.0.0":
-  version "3.0.0"
-  resolved "https://registry.yarnpkg.com/@availity/localstorage-core/-/localstorage-core-3.0.0.tgz#3c8f7fbb84338562d117569b59a4cec415d8aa1f"
-  integrity sha512-3N0fHI7DuHksvnhdtvZcnnFpKYY4BmCcL1nc3jb9U9sPEIhw/9q4203yhd9MEsYcICLbpA6I03p7/vbo048ayA==
-
 "@availity/message-core@^5.0.0":
   version "5.0.0"
   resolved "https://registry.yarnpkg.com/@availity/message-core/-/message-core-5.0.0.tgz#c0c429cb3a128453f79e204b4f3c43e2feade392"
@@ -7197,8 +7192,8 @@ class-utils@^0.3.5:
 
 classnames@^2.2.3, classnames@^2.2.5, classnames@^2.2.6, classnames@^2.3.1:
   version "2.3.1"
-  resolved "https://registry.yarnpkg.com/classnames/-/classnames-2.3.1.tgz#dfcfa3891e306ec1dad105d0e88f4417b8535e8e"
-  integrity sha512-OlQdbZ7gLfGarSqxesMesDa5uz7KFbID8Kpq/SxIoNGDqY8lSYs0D+hhtBXhcdB3rcbXArFr7vlHheLk1voeNA==
+  resolved "https://packages.availity.com:443/artifactory/api/npm/availity-npm-all/classnames/-/classnames-2.3.1.tgz#dfcfa3891e306ec1dad105d0e88f4417b8535e8e"
+  integrity sha1-38+jiR4wbsHa0QXQ6I9EF7hTXo4=
 
 clean-css@4.2.x, clean-css@^4.2.3:
   version "4.2.3"

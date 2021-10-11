@@ -44,7 +44,6 @@
     "@availity/link": "^2.3.2",
     "@availity/list-group": "^1.2.24",
     "@availity/list-group-item": "^1.2.23",
-    "@availity/localstorage-core": "^3.0.0",
     "@availity/mock": "^2.1.0",
     "@availity/page-header": "^11.0.15",
     "@availity/pagination": "^2.11.0",
