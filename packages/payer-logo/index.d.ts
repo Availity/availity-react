@@ -1,2 +1,2 @@
-export { default } from './types/PayerLogo';
+export { default, getLogo } from './types/PayerLogo';
 export * from './types/PayerLogo';
