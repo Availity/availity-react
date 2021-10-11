@@ -4,23 +4,10 @@ import { Label } from 'reactstrap';
 import { FormGroup, Feedback } from '@availity/form';
 import DateRange from './DateRange';
 
-const DateRangeField = ({
-  name,
-  label,
-  labelClass,
-  labelHidden,
-  labelAttrs,
-  id = name,
-  ...props
-}) => (
+const DateRangeField = ({ name, label, labelClass, labelHidden, labelAttrs, id = name, ...props }) => (
   <FormGroup for={name}>
     {label && (
-      <Label
-        for={`${id.replace(/[^\da-z]/gi, '')}-start`}
-        className={labelClass}
-        hidden={labelHidden}
-        {...labelAttrs}
-      >
+      <Label for={`${id.replace(/[^\da-z]/gi, '')}-start`} className={labelClass} hidden={labelHidden} {...labelAttrs}>
         {label}
       </Label>
     )}

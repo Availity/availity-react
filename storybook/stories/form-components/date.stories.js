@@ -1,20 +1,10 @@
 import React from 'react';
 import { storiesOf } from '@storybook/react';
-import {
-  withKnobs,
-  boolean,
-  text,
-  select,
-  number,
-} from '@storybook/addon-knobs';
+import { withKnobs, boolean, text, select, number } from '@storybook/addon-knobs';
 import { Button } from 'reactstrap';
 import { avDate, dateRange } from '@availity/yup';
 import { object } from 'yup';
-import FormikDate, {
-  DateField,
-  DateRange,
-  DateRangeField,
-} from '@availity/date';
+import FormikDate, { DateField, DateRange, DateRangeField } from '@availity/date';
 import '@availity/date/styles.scss';
 import README from '@availity/date/README.md';
 import moment from 'moment';
