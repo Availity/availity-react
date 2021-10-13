@@ -27,7 +27,7 @@
     "prop-types": "^15.7.2",
     "qs": "^6.5.2",
     "react-select": "^5.0.0",
-    "react-select-async-paginate": "^0.4.1"
+    "react-select-async-paginate": "^0.6.0"
   },
   "devDependencies": {
     "@availity/api-axios": "^6.0.0",
