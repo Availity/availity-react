@@ -3,6 +3,22 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [1.0.0](https://github.com/Availity/availity-react/compare/@availity/form@0.9.0...@availity/form@1.0.0) (2021-10-19)
+
+
+### Features
+
+* **form:** update import ([d07e08a](https://github.com/Availity/availity-react/commit/d07e08a552fdc64abdde1faff7ef643a7fdb987e))
+
+
+### BREAKING CHANGES
+
+* **form:** promote to v1
+
+
+
+
+
 # [0.9.0](https://github.com/Availity/availity-react/compare/@availity/form@0.8.0...@availity/form@0.9.0) (2021-10-19)
 
 
