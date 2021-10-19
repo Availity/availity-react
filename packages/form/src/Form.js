@@ -37,20 +37,19 @@ const Form = ({
   </Formik>
 );
 
+/* eslint-disable react/forbid-prop-types */
 Form.propTypes = {
-  initialValues: PropTypes.object.isRequired,
-  enableReinitialize: PropTypes.bool,
-  onSubmit: PropTypes.func,
-  onReset: PropTypes.func,
-  // eslint-disable-next-line react/forbid-prop-types
-  initialStatus: PropTypes.any,
-  initialErrors: PropTypes.object,
-  initialTouched: PropTypes.object,
-  validationSchema: PropTypes.object,
-  validate: PropTypes.func,
-  // eslint-disable-next-line react/forbid-prop-types
-  innerRef: PropTypes.any,
   children: PropTypes.oneOfType([PropTypes.func, PropTypes.node]),
+  enableReinitialize: PropTypes.bool,
+  initialErrors: PropTypes.object,
+  initialStatus: PropTypes.any,
+  initialTouched: PropTypes.object,
+  initialValues: PropTypes.object.isRequired,
+  innerRef: PropTypes.any,
+  onReset: PropTypes.func,
+  onSubmit: PropTypes.func,
+  validate: PropTypes.func,
+  validationSchema: PropTypes.object,
 };
 
 Form.defaultProps = {

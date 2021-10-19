@@ -40,7 +40,7 @@ describe('Input', () => {
       </Form>
     );
 
-    await fireEvent.click(getByText('Submit'));
+    fireEvent.click(getByText('Submit'));
 
     await waitFor(() => {
       const input = getByTestId('hello-input');
@@ -65,9 +65,9 @@ describe('Input', () => {
       </Form>
     );
 
-    await fireEvent.focus(getByTestId('hello-input'));
+    fireEvent.focus(getByTestId('hello-input'));
 
-    await fireEvent.blur(getByTestId('hello-input'));
+    fireEvent.blur(getByTestId('hello-input'));
 
     await waitFor(() => {
       const input = getByTestId('hello-input');
@@ -92,9 +92,9 @@ describe('Input', () => {
       </Form>
     );
 
-    await fireEvent.focus(getByTestId('hello-input'));
+    fireEvent.focus(getByTestId('hello-input'));
 
-    await fireEvent.blur(getByTestId('hello-input'));
+    fireEvent.blur(getByTestId('hello-input'));
 
     await waitFor(() => {
       const input = getByTestId('hello-input');
@@ -145,7 +145,7 @@ describe('Input', () => {
     expect(input).toHaveAttribute('aria-invalid', 'false');
     expect(input).toHaveAttribute('aria-describedby', '');
 
-    await fireEvent.click(getByText('Submit'));
+    fireEvent.click(getByText('Submit'));
 
     await waitFor(() => {
       expect(input).toHaveAttribute('aria-invalid', 'true');

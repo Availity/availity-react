@@ -19,11 +19,7 @@ describe('CheckboxGroup', () => {
           hello: yup.array().required('At least one checkbox is required'),
         })}
       >
-        <CheckboxGroup
-          name="hello"
-          label="Checkbox Group"
-          groupClassName="some-group"
-        >
+        <CheckboxGroup name="hello" label="Checkbox Group" groupClassName="some-group">
           <Checkbox label="Chcek One" value="uno" />
         </CheckboxGroup>
         <Button type="submit">Submit</Button>
@@ -56,7 +52,7 @@ describe('CheckboxGroup', () => {
       </Form>
     );
 
-    await fireEvent.click(getByText('Submit'));
+    fireEvent.click(getByText('Submit'));
 
     await waitFor(() => {
       const checkboxGroup = getByTestId('check-items-hello');
@@ -74,11 +70,7 @@ describe('CheckboxGroup', () => {
         }}
         onSubmit={() => {}}
       >
-        <CheckboxGroup
-          name="hello"
-          label="Checkbox Group"
-          helpId="helloHelpTopic"
-        >
+        <CheckboxGroup name="hello" label="Checkbox Group" helpId="helloHelpTopic">
           <Checkbox label="Check One" value="uno" />
         </CheckboxGroup>
         <Button type="submit">Submit</Button>
@@ -110,10 +102,10 @@ describe('CheckboxGroup', () => {
       </Form>
     );
 
-    await fireEvent.click(getByText('Check One'));
-    await fireEvent.click(getByText('Check Two'));
+    fireEvent.click(getByText('Check One'));
+    fireEvent.click(getByText('Check Two'));
 
-    await fireEvent.click(getByText('Submit'));
+    fireEvent.click(getByText('Submit'));
 
     await waitFor(() => {
       expect(onSubmit).toHaveBeenCalledWith(
@@ -146,10 +138,10 @@ describe('CheckboxGroup', () => {
       </Form>
     );
 
-    await fireEvent.click(getByText('Check One'));
-    await fireEvent.click(getByText('Check Two'));
+    fireEvent.click(getByText('Check One'));
+    fireEvent.click(getByText('Check Two'));
 
-    await fireEvent.click(getByText('Submit'));
+    fireEvent.click(getByText('Submit'));
 
     await waitFor(() => {
       expect(onSubmit).toHaveBeenCalledWith(
@@ -181,7 +173,7 @@ describe('CheckboxGroup', () => {
       </Form>
     );
 
-    await fireEvent.click(getByText('Check One'));
+    fireEvent.click(getByText('Check One'));
 
     await waitFor(() => {
       expect(onChange.mock.calls[0][0][0]).toBe('uno');

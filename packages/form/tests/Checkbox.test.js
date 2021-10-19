@@ -50,7 +50,7 @@ describe('Checkbox', () => {
       </Form>
     );
 
-    await fireEvent.click(getByText('Submit'));
+    fireEvent.click(getByText('Submit'));
 
     await waitFor(() => {
       const checkbox = getByTestId('hello-check');
@@ -73,12 +73,7 @@ describe('Checkbox', () => {
         onSubmit={() => {}}
       >
         <CheckboxGroup name="hello" label="Checkbox Group">
-          <Checkbox
-            groupName="hello"
-            label="Check One"
-            value="uno"
-            data-testid="hello-check"
-          />
+          <Checkbox groupName="hello" label="Check One" value="uno" data-testid="hello-check" />
         </CheckboxGroup>
         <Button type="submit">Submit</Button>
       </Form>
@@ -89,15 +84,12 @@ describe('Checkbox', () => {
     expect(checkbox).toHaveAttribute('aria-invalid', 'false');
     expect(checkbox).toHaveAttribute('aria-describedby', '');
 
-    await fireEvent.click(getByText('Submit'));
+    fireEvent.click(getByText('Submit'));
 
     await waitFor(() => {
       expect(checkbox).toHaveAttribute('aria-invalid', 'true');
       expect(checkbox).toHaveAttribute('aria-describedby', 'hello-feedback');
-      expect(getByText('This field is required')).toHaveAttribute(
-        'id',
-        'hello-feedback'
-      );
+      expect(getByText('This field is required')).toHaveAttribute('id', 'hello-feedback');
     });
   });
 
@@ -119,7 +111,7 @@ describe('Checkbox', () => {
       </Form>
     );
 
-    await fireEvent.click(getByText('Submit'));
+    fireEvent.click(getByText('Submit'));
 
     await waitFor(() => {
       const checkbox = getByTestId('hello-check');

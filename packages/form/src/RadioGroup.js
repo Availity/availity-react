@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import classNames from 'classnames';
 import { FieldHelpIcon } from '@availity/help';
 import { useField, useFormikContext } from 'formik';
+
 import Feedback from './Feedback';
 import FormGroup from './FormGroup';
 
@@ -10,12 +11,7 @@ export const RadioGroupContext = createContext();
 
 export const useRadioGroup = (radioValue) => {
   const { setFieldValue } = useFormikContext();
-  const {
-    name: groupName,
-    value = '',
-    groupOnChange,
-    ...rest
-  } = useContext(RadioGroupContext);
+  const { name: groupName, value = '', groupOnChange, ...rest } = useContext(RadioGroupContext);
 
   const setValue = () => {
     setFieldValue(groupName, radioValue);
@@ -71,9 +67,7 @@ const RadioGroup = ({
   }
 
   return (
-    <RadioGroupContext.Provider
-      value={{ ...field, groupOnChange, metadata, inline }}
-    >
+    <RadioGroupContext.Provider value={{ ...field, groupOnChange, metadata, inline }}>
       <FormGroup tag={tag} for={name} {...rest}>
         {legend}
         <div className={classes} data-testid={`radio-items-${name}`}>
@@ -86,13 +80,13 @@ const RadioGroup = ({
 };
 
 RadioGroup.propTypes = {
-  name: PropTypes.string,
   children: PropTypes.node,
-  label: PropTypes.node,
-  onChange: PropTypes.func,
-  inline: PropTypes.bool,
   groupClassName: PropTypes.string,
   helpId: PropTypes.string,
+  inline: PropTypes.bool,
+  label: PropTypes.node,
+  name: PropTypes.string,
+  onChange: PropTypes.func,
 };
 
 export default RadioGroup;

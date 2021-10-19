@@ -25,7 +25,7 @@ describe('FormGroup', () => {
       </Form>
     );
 
-    await fireEvent.click(getByText('Submit'));
+    fireEvent.click(getByText('Submit'));
 
     await waitFor(() => {
       const formGroup = getByTestId('hello-group');

@@ -24,7 +24,7 @@ describe('Feedback', () => {
       </Form>
     );
 
-    await fireEvent.click(getByText('Submit'));
+    fireEvent.click(getByText('Submit'));
 
     await waitFor(() => {
       const feedback = getByTestId('hello-feedback');
