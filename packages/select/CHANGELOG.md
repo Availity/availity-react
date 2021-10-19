@@ -3,6 +3,26 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# 0.20.0 (2021-10-19)
+
+
+### Features
+
+* **select:** upgrade react-select-async-paginate to latest ([ec4b380](https://github.com/Availity/availity-react/commit/ec4b380284594255b346b20943e3e969a17b4bd5))
+
+
+* feat(select)!: upgrade react-select v3 to v5 and removed unneeded type import ([43bd83c](https://github.com/Availity/availity-react/commit/43bd83c837acaa9c3d844826bd150bcc7667b5af))
+
+
+### BREAKING CHANGES
+
+* upgraded to version 5 of react-select
+feat(select): added new yarn.lock
+
+
+
+
+
 # 0.19.0 (2021-10-08)
 
 
