@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { FieldHelpIcon } from '@availity/help';
-import { Input as RsInput, Label, FormText, Col, InputGroup, InputGroupText, InputGroupAddon } from 'reactstrap';
+import { Col, FormText, Input as RsInput, InputGroup, InputGroupAddon, InputGroupText, Label } from 'reactstrap';
 import { v4 as uuid } from 'uuid';
 
 import Feedback from './Feedback';
