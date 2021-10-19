@@ -6,9 +6,7 @@ export interface AvRegionSelectProps<T> extends ResourceSelectProps<T> {
   defaultToCurrentRegion?: boolean;
 }
 
-declare class AvRegionSelect<T> extends React.Component<
-  AvRegionSelectProps<T>
-> {
+declare class AvRegionSelect<T> extends React.Component<AvRegionSelectProps<T>> {
   public static create<T>(defaults: AvRegionSelectProps<T>): AvRegionSelect<T>;
 }
 
@@ -19,18 +17,13 @@ export interface AvOrganizationSelectProps<T> extends ResourceSelectProps<T> {
   permissionIds?: [[StringOrNumber] | StringOrNumber] | StringOrNumber;
 }
 
-declare class AvOrganizationSelect<T> extends React.Component<
-  AvOrganizationSelectProps<T>
-> {
-  public static create<T>(
-    defaults: AvOrganizationSelectProps<T>
-  ): AvOrganizationSelect<T>;
+declare class AvOrganizationSelect<T> extends React.Component<AvOrganizationSelectProps<T>> {
+  public static create<T>(defaults: AvOrganizationSelectProps<T>): AvOrganizationSelect<T>;
 }
 
-interface PrebuiltSelectProps<T>
-  extends Omit<ResourceSelectProps<T>, 'resource'> {}
+interface PrebuiltSelectProps<T> extends Omit<ResourceSelectProps<T>, 'resource'> {}
 
-class PrebuiltSelect<T> extends React.Component<PrebuiltSelectProps<T>> {}
+declare class PrebuiltSelect<T> extends React.Component<PrebuiltSelectProps<T>> {}
 
 export default ResourceSelect;
 
