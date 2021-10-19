@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 import { FieldHelpIcon } from '@availity/help';
-import { Label, Input } from 'reactstrap';
+import { Input, Label } from 'reactstrap';
 import { v4 as uuid } from 'uuid';
 import classNames from 'classnames';
 
