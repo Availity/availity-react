@@ -63,7 +63,7 @@ const openSupport = async (values, setBlocking, setSupportIsActive, feedbackTogg
 
     href = `/ms/api/availity/internal/spc/magneto/sso/v1/saml/${salesforceData.newCommunity ? newCommutySsoId : ssoId}`;
 
-    await nativeForm(ssoId, attributes, { action: href, target: '_blank' });
+    await nativeForm(ssoId, attributes, { action: href, target: '_blank' }, 'saml');
     setBlocking(false);
   } else {
     window.open(href, target);
@@ -123,7 +123,6 @@ const SupportForm = ({ setSupportIsActive, setBlocking, feedbackToggle }) => (
           getResult={(data) => data.organizations}
         />
       </ModalBody>
-
       <ModalFooter>
         <Button
           onClick={() => setSupportIsActive(false)}
@@ -133,7 +132,6 @@ const SupportForm = ({ setSupportIsActive, setBlocking, feedbackToggle }) => (
         >
           Close
         </Button>
-
         <Button data-testid="submit-btn" type="submit" color="primary">
           Continue
         </Button>
