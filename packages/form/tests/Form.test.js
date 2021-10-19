@@ -8,9 +8,7 @@ afterEach(cleanup);
 
 describe('Form', () => {
   test('renders', () => {
-    const { getByTestId } = render(
-      <Form initialValues={{}} onSubmit={() => {}} />
-    );
+    const { getByTestId } = render(<Form initialValues={{}} onSubmit={() => {}} />);
 
     const el = getByTestId('form-container');
     expect(el).toBeDefined();
@@ -38,7 +36,7 @@ describe('Form', () => {
 
     getByTestId('form-container');
 
-    await fireEvent.click(getByText('Submit'));
+    fireEvent.click(getByText('Submit'));
 
     await waitFor(() => {
       expect(onSubmit).toHaveBeenCalledWith(

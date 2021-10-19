@@ -119,10 +119,7 @@ const Example = () => (
       zipCode: yup
         .string()
         .isRequired(true, 'This Field is Required.')
-        .matches(
-          /^\d{5}(?:-\d{4})?$/,
-          'Valid Zip Code Formats: 12345 or 12345-6789'
-        ),
+        .matches(/^\d{5}(?:-\d{4})?$/, 'Valid Zip Code Formats: 12345 or 12345-6789'),
     })}
   >
     <Field name="memberId" type="text" label="Member ID" />

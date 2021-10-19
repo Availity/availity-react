@@ -18,11 +18,7 @@ describe('RadioGroup', () => {
           hello: yup.string().required('This field is required'),
         })}
       >
-        <RadioGroup
-          name="hello"
-          label="Radio Group"
-          groupClassName="some-group"
-        >
+        <RadioGroup name="hello" label="Radio Group" groupClassName="some-group">
           <Radio label="Radio One" value="uno" />
         </RadioGroup>
         <Button type="submit">Submit</Button>
@@ -53,7 +49,7 @@ describe('RadioGroup', () => {
       </Form>
     );
 
-    await fireEvent.click(getByText('Submit'));
+    fireEvent.click(getByText('Submit'));
 
     await waitFor(() => {
       const radioGroup = getByTestId('radio-items-hello');
@@ -85,9 +81,9 @@ describe('RadioGroup', () => {
       </Form>
     );
 
-    await fireEvent.click(getByText('Radio One'));
+    fireEvent.click(getByText('Radio One'));
 
-    await fireEvent.click(getByText('Submit'));
+    fireEvent.click(getByText('Submit'));
 
     await waitFor(() => {
       expect(onSubmit).toHaveBeenCalledWith(
@@ -120,7 +116,7 @@ describe('RadioGroup', () => {
       </Form>
     );
 
-    await fireEvent.click(getByText('Radio One'));
+    fireEvent.click(getByText('Radio One'));
 
     await waitFor(() => {
       expect(onChange).toHaveBeenCalledWith('uno');

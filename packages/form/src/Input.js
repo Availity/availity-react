@@ -4,16 +4,7 @@ import classNames from 'classnames';
 import { Input as RsInput } from 'reactstrap';
 import { useField } from 'formik';
 
-const Input = ({
-  tag: Tag,
-  className,
-  onChange: propsOnChange,
-  validate,
-  name,
-  feedback,
-  help,
-  ...rest
-}) => {
+const Input = ({ tag: Tag, className, onChange: propsOnChange, validate, name, feedback, help, ...rest }) => {
   const [{ onChange, ...field }, metadata] = useField({
     name,
     validate,
@@ -24,10 +15,7 @@ const Input = ({
     metadata.touched ? 'is-touched' : 'is-untouched',
     metadata.error ? 'av-invalid' : 'av-valid',
     metadata.touched && metadata.error && 'is-invalid',
-    rest.type === 'checkbox' &&
-      metadata.touched &&
-      metadata.error &&
-      'was-validated'
+    rest.type === 'checkbox' && metadata.touched && metadata.error && 'was-validated'
   );
 
   const error = !!metadata.touched && !!metadata.error;
@@ -60,13 +48,13 @@ const Input = ({
 };
 
 Input.propTypes = {
-  tag: PropTypes.oneOfType([PropTypes.func, PropTypes.string]),
   className: PropTypes.string,
-  validate: PropTypes.func,
-  name: PropTypes.string.isRequired,
-  onChange: PropTypes.func,
   feedback: PropTypes.bool,
   help: PropTypes.bool,
+  name: PropTypes.string.isRequired,
+  onChange: PropTypes.func,
+  tag: PropTypes.oneOfType([PropTypes.func, PropTypes.string]),
+  validate: PropTypes.func,
 };
 
 Input.defaultProps = {

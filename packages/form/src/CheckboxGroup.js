@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import classNames from 'classnames';
 import { FieldHelpIcon } from '@availity/help';
 import { useField, useFormikContext } from 'formik';
+
 import Feedback from './Feedback';
 import FormGroup from './FormGroup';
 
@@ -10,12 +11,7 @@ export const CheckboxGroupContext = createContext();
 
 export const useCheckboxGroup = (name) => {
   const { setFieldValue } = useFormikContext();
-  const {
-    name: groupName,
-    groupOnChange,
-    value = [],
-    ...rest
-  } = useContext(CheckboxGroupContext);
+  const { name: groupName, groupOnChange, value = [], ...rest } = useContext(CheckboxGroupContext);
 
   const toggle = () => {
     const valueArray = [...value];
@@ -38,15 +34,7 @@ export const useCheckboxGroup = (name) => {
   return { toggle, value: value.indexOf(name) > -1, ...rest };
 };
 
-const CheckboxGroup = ({
-  name,
-  children,
-  onChange: groupOnChange,
-  groupClassName,
-  label,
-  helpId,
-  ...rest
-}) => {
+const CheckboxGroup = ({ name, children, onChange: groupOnChange, groupClassName, label, helpId, ...rest }) => {
   const [field, metadata] = useField(name);
 
   const classes = classNames(
@@ -81,9 +69,7 @@ const CheckboxGroup = ({
   }
 
   return (
-    <CheckboxGroupContext.Provider
-      value={{ ...field, groupOnChange, metadata }}
-    >
+    <CheckboxGroupContext.Provider value={{ ...field, groupOnChange, metadata }}>
       <FormGroup tag={tag} for={name} {...rest}>
         {legend}
         <div className={classes} data-testid={`check-items-${name}`}>
@@ -96,12 +82,12 @@ const CheckboxGroup = ({
 };
 
 CheckboxGroup.propTypes = {
-  name: PropTypes.string,
   children: PropTypes.node,
-  label: PropTypes.node,
-  onChange: PropTypes.func,
   groupClassName: PropTypes.string,
   helpId: PropTypes.string,
+  label: PropTypes.node,
+  name: PropTypes.string.isRequired,
+  onChange: PropTypes.func,
 };
 
 export default CheckboxGroup;

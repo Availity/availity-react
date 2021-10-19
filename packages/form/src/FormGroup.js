@@ -7,10 +7,7 @@ import { useField } from 'formik';
 const FormGroup = ({ className, for: For, ...props }) => {
   const [, metadata] = useField(For);
 
-  const classname = classNames(
-    className,
-    metadata.touched && metadata.error && `text-danger`
-  );
+  const classname = classNames(className, metadata.touched && metadata.error && `text-danger`);
 
   return <RsFormGroup className={classname} {...props} />;
 };
