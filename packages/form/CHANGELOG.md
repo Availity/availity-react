@@ -3,6 +3,20 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.8.0](https://github.com/Availity/availity-react/compare/@availity/form@0.7.4...@availity/form@0.8.0) (2021-10-19)
+
+
+* feat(form)!: run formatter with new settings ([7498f10](https://github.com/Availity/availity-react/commit/7498f10456b714a5834cba4ae2541d2db6244128))
+
+
+### BREAKING CHANGES
+
+* promote to v1
+
+
+
+
+
 ## 0.7.4 (2021-10-19)
 
 **Note:** Version bump only for package @availity/form
