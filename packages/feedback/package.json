@@ -21,7 +21,7 @@
     "access": "public"
   },
   "dependencies": {
-    "@availity/form": "^0.9.0",
+    "@availity/form": "^1.0.1",
     "@availity/hooks": "^3.0.4",
     "@availity/icon": "^0.9.0",
     "@availity/native-form": "^3.0.0",

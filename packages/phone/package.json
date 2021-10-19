@@ -15,7 +15,7 @@
     "prop-types": "^15.7.2"
   },
   "devDependencies": {
-    "@availity/form": "^0.9.0",
+    "@availity/form": "^1.0.1",
     "formik": "^2.2.8",
     "react": "^17.0.2",
     "react-dom": "^17.0.2",
@@ -23,7 +23,7 @@
     "yup": "^0.30.0"
   },
   "peerDependencies": {
-    "@availity/form": "^0.7.0",
+    "@availity/form": "^1.0.1",
     "formik": "^2.0.1",
     "react": ">=16.8.3",
     "reactstrap": "^8.4.1",
