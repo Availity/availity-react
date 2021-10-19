@@ -1,4 +1,3 @@
-import React from 'react';
 import { FieldProps } from '@availity/form/types/Field';
 
 interface ExtensionProps extends FieldProps {
@@ -10,11 +9,12 @@ interface ExtensionProps extends FieldProps {
 export interface PhoneProps extends FieldProps {
   name: string;
   id?: string;
-  showExtension?: boolean | false;
+  country?: string;
+  showExtension?: boolean;
   phoneColProps?: object;
   extProps?: ExtensionProps;
 }
 
-declare const Phone: React.FC<PhoneProps>;
+declare const Phone: (props: PhoneProps) => JSX.Element;
 
 export default Phone;

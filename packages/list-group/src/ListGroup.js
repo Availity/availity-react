@@ -1,13 +1,12 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { ListGroup as RsListGroup } from 'reactstrap';
+import classNames from 'classnames';
 
 const ListGroup = React.forwardRef(({ cards, selectable, className, ...props }, ref) => {
-  const classname = [className, cards && 'list-group-cards', selectable && 'list-group-selectable']
-    .filter((a) => a)
-    .join(' ');
+  const classes = classNames(className, { 'list-group-cards': cards, 'list-group-selectable': selectable });
 
-  return <RsListGroup ref={ref} {...props} className={classname} />;
+  return <RsListGroup ref={ref} {...props} className={classes} />;
 });
 
 ListGroup.propTypes = {

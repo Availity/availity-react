@@ -9,6 +9,6 @@ export interface ProgressProps {
   color?: string;
 }
 
-declare const Progress: React.FC<ProgressProps>;
+declare const Progress: (props: ProgressProps) => JSX.Element;
 
 export default Progress;

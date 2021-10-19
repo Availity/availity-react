@@ -21,7 +21,9 @@ https://availity.github.io/availity-react/storybook
 
 https://availity.github.io/availity-react
 
-## [Contributing](./.github/CONTRIBUTING.md)
+## Contributing
+
+[Contributing Guide](./.github/CONTRIBUTING.md)
 
 ## Additional Notes
 

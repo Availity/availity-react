@@ -6,6 +6,6 @@ export interface ListGroupProps extends RsListGroupProps {
   className?: string;
 }
 
-declare const ListGroup: React.StatelessComponent<ListGroupProps>;
+declare const ListGroup: (props: ListGroupProps) => JSX.Element;
 
 export default ListGroup;

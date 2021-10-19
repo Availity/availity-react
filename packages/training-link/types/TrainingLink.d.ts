@@ -3,6 +3,6 @@ export interface TrainingLinkProps {
   name: string;
 }
 
-declare const TrainingLink: React.FC<TrainingLinkProps>;
+declare const TrainingLink: (props: TrainingLinkProps) => JSX.Element;
 
 export default TrainingLink;
