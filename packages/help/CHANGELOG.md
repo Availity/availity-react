@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## 1.4.5 (2021-10-19)
+
+
+### Bug Fixes
+
+* **help:** update types ([8e6b5af](https://github.com/Availity/availity-react/commit/8e6b5afc2dfd4d91564d8e9f4d737a30a405fb8a))
+
+
+
+
+
 ## [1.4.4](https://github.com/Availity/availity-react/compare/@availity/help@1.4.3...@availity/help@1.4.4) (2021-10-04)
 
 **Note:** Version bump only for package @availity/help

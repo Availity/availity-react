@@ -1,6 +1,6 @@
 {
   "name": "@availity/help",
-  "version": "1.4.4",
+  "version": "1.4.5",
   "author": "Kyle Gray <kyle.gray@availity.com>",
   "description": "Context Provider to assist with Help Menu on Portal for specific pages",
   "types": "index.d.ts",

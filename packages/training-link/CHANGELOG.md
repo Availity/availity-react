@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## 1.3.2 (2021-10-19)
+
+
+### Bug Fixes
+
+* **training-link:** update types ([21f3d86](https://github.com/Availity/availity-react/commit/21f3d86a50d94167614e5a064cf42c3b5b4187f4))
+
+
+
+
+
 ## [1.3.1](https://github.com/Availity/availity-react/compare/@availity/training-link@1.3.0...@availity/training-link@1.3.1) (2021-09-28)
 
 **Note:** Version bump only for package @availity/training-link

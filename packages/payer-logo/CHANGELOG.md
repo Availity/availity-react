@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## 5.0.3 (2021-10-19)
+
+
+### Bug Fixes
+
+* **payer-logo:** update types ([368a336](https://github.com/Availity/availity-react/commit/368a336e86c5894c491d8d5223fd5b8ecc31fff3))
+
+
+
+
+
 ## [5.0.2](https://github.com/Availity/availity-react/compare/@availity/payer-logo@5.0.1...@availity/payer-logo@5.0.2) (2021-10-01)
 
 **Note:** Version bump only for package @availity/payer-logo
