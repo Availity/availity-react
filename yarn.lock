@@ -153,16 +153,6 @@
   dependencies:
     core-js "^3.12.1"
 
-"@availity/form@^0.9.0":
-  version "0.9.0"
-  resolved "https://registry.yarnpkg.com/@availity/form/-/form-0.9.0.tgz#d664ba315b666fa3822b0cbf5a3cd9cc4088cf25"
-  integrity sha512-GUKFO1rG/86kE1/+/LpOeJ+aKtZfhKphcJNsk+9RtGPet2Wp4/5HcChueXjHhalyZnphD4VU/g+9jpkFEL/lTQ==
-  dependencies:
-    "@availity/help" "^1.4.5"
-    classnames "^2.3.1"
-    prop-types "^15.7.2"
-    uuid "^8.3.2"
-
 "@availity/icon@^0.8.0":
   version "0.8.2"
   resolved "https://registry.yarnpkg.com/@availity/icon/-/icon-0.8.2.tgz#757f6f9ad6eeee11c4801f56072d3d0f1321dc26"
