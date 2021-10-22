@@ -15,6 +15,7 @@ export interface FeedbackProps extends DropdownProps {
   formProps?: { [key: string]: any };
   prompt?: React.ReactType;
   onFeedbackSent?: (feedback?: { [key: string]: any }) => void;
+  onModalOpenChange?: (feedback?: { [key: string]: any }) => void;
   showSupport?: boolean;
   supportZIndex?: number | string;
 }
