@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# 9.14.0 (2021-10-22)
+
+
+### Features
+
+* **feedback:** revert feedback changes and add onModalOpenChange prop ([cf8fb64](https://github.com/Availity/availity-react/commit/cf8fb648feafd1c9aa7a547a8bb4707e3f7c2f5a))
+
+
+
+
+
 ## 9.13.7 (2021-10-19)
 
 **Note:** Version bump only for package @availity/react-storybook
