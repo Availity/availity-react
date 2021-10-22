@@ -1,36 +1,33 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { useField, useFormikContext } from 'formik';
-import { Col } from 'reactstrap';
 import FeedbackButton from './FeedbackButton';
+
+const btnStyles = { flex: 1, margin: '0 2% 0 2%' };
 
 const SmileField = ({ name, options, onChange, autoFocusFeedbackButton }) => {
   const [{ value }] = useField(name);
   const { setFieldValue } = useFormikContext();
 
-  return (
-    <>
-      {options.map((option, i) => (
-        <Col key={option.icon}>
-          <FeedbackButton
-            autoFocus={i === 0 && autoFocusFeedbackButton}
-            icon={option.icon}
-            iconSize="2x"
-            value={option}
-            active={value && value.icon}
-            onClick={() => {
-              setFieldValue(name, option);
-              if (onChange) {
-                onChange(option);
-              }
-            }}
-          >
-            {option.description}
-          </FeedbackButton>
-        </Col>
-      ))}
-    </>
-  );
+  return options.map((option, i) => (
+    <FeedbackButton
+      autoFocus={i === 0 && autoFocusFeedbackButton}
+      style={btnStyles}
+      key={option.icon}
+      icon={option.icon}
+      iconSize="2x"
+      value={option}
+      active={value && value.icon}
+      onClick={() => {
+        setFieldValue(name, option);
+        if (onChange) {
+          onChange(option);
+        }
+      }}
+    >
+      {option.description}
+    </FeedbackButton>
+  ));
 };
 
 SmileField.propTypes = {

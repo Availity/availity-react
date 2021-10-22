@@ -63,17 +63,5 @@ storiesOf('Components/Feedback', module)
       name={text('Application Name', 'Payer Space')}
       prompt={text('Prompt')}
       autoFocusFeedbackButton={boolean('autoFocusFeedbackButton', false)}
-      faceOptions={[
-        {
-          icon: 'ok',
-          description: 'Yes',
-          placeholder: `Leave a comment if you'd like.`,
-        },
-        {
-          icon: 'cancel',
-          description: 'No',
-          placeholder: `Leave a comment if you'd like.`,
-        },
-      ]}
     />
   ));

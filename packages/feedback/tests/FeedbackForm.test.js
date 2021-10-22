@@ -213,9 +213,9 @@ describe('FeedbackForm', () => {
 
     const header = getByText('Tell us what you think about Payer Space');
 
-    expect(header).toHaveClass('col h5');
-    expect(header).toHaveAttribute('role', 'heading');
-    expect(header).toHaveAttribute('aria-level', '2');
+    expect(header.parentElement).toHaveClass('h5');
+    expect(header.parentElement).toHaveAttribute('role', 'heading');
+    expect(header.parentElement).toHaveAttribute('aria-level', '2');
     expect(header.tagName).toEqual('DIV');
   });
 
