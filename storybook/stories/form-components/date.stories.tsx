@@ -1,0 +1,247 @@
+import React from "react";
+import {
+  withKnobs,
+  boolean,
+  text,
+  select,
+  number
+} from "@storybook/addon-knobs";
+import { Button } from "reactstrap";
+import { avDate, dateRange } from "@availity/yup";
+import { object } from "yup";
+import FormikDate, {
+  DateField,
+  DateRange,
+  DateRangeField
+} from "@availity/date";
+import "@availity/date/styles.scss";
+import README from "@availity/date/README.md";
+import moment from "moment";
+import FormikResults from "../mocks/FormikResults";
+import { Preview } from "../util";
+
+export default {
+  title: "Form Components/Date",
+  decorators: [withKnobs],
+  parameters: {
+    readme: {
+      // Show readme at the addons panel
+      sidebar: README,
+      StoryPreview: Preview
+    }
+  }
+};
+export const Date = () => {
+  const dateFormat = "MM/DD/YYYY";
+  const min = text("Min Date (yyyy-mm-dd)");
+  const max = text("Max Date (yyyy-mm-dd)");
+  const minDate = moment(min).format(dateFormat);
+  const maxDate = moment(max).format(dateFormat);
+  const required = boolean("Required", false);
+  const schema = object().shape({
+    dateOfService: avDate({
+      format: dateFormat
+    })
+      .isRequired(required, "This field is required.")
+      .min(min && !max && minDate)
+      .max(!min && max && maxDate)
+      .between(min && max && minDate, maxDate)
+  });
+  return (
+    <FormikResults
+      initialValues={{
+        dateOfService: ""
+      }}
+      validationSchema={schema}
+    >
+      <FormikDate
+        id="dateOfService"
+        name="dateOfService"
+        disabled={boolean("Disabled", false)}
+        datepicker={boolean("Has datepicker", true)}
+        min={min && minDate}
+        max={max && maxDate}
+      />
+
+      <Button className="mt-3" color="primary" type="submit">
+        Submit
+      </Button>
+    </FormikResults>
+  );
+};
+export const _DateField = () => {
+  const dateFormat = "MM/DD/YYYY";
+  const min = text("Min Date (yyyy-mm-dd)");
+  const max = text("Max Date (yyyy-mm-dd)");
+  const minDate = moment(min).format(dateFormat);
+  const maxDate = moment(max).format(dateFormat);
+  const required = boolean("Required", false);
+  const schema = object().shape({
+    dateOfService: avDate({
+      format: dateFormat
+    })
+      .isRequired(required, "This field is required.")
+      .min(min && !max && minDate)
+      .max(!min && max && maxDate)
+      .between(min && max && minDate, maxDate)
+  });
+  return (
+    <FormikResults
+      initialValues={{
+        dateOfService: ""
+      }}
+      validationSchema={schema}
+    >
+      <DateField
+        id="dateOfService"
+        name="dateOfService"
+        label={text("Label", "Date of Service")}
+        disabled={boolean("Disabled", false)}
+        datepicker={boolean("Has datepicker", true)}
+        min={min && minDate}
+        max={max && maxDate}
+      />
+
+      <Button className="ml-1" color="primary" type="submit">
+        Submit
+      </Button>
+    </FormikResults>
+  );
+};
+_DateField.story = {
+  name: "DateField"
+};
+export const _DateRange = () => {
+  const dateFormat = "MM/DD/YYYY";
+  const min = text("Min Date (yyyy-mm-dd)");
+  const max = text("Max Date (yyyy-mm-dd)");
+  const minDate = moment(min).format(dateFormat);
+  const maxDate = moment(max).format(dateFormat);
+  const required = boolean("Required", false);
+  const minDistance = number("Min Distance");
+  const maxDistance = number("Max Distance");
+  const distanceUnits = ["day", "month"];
+  let minDistanceUnits = "day";
+  let maxDistanceUnits = "day";
+  if (minDistance) {
+    minDistanceUnits = select("Min Distance Units", distanceUnits, "day");
+  }
+  if (maxDistance) {
+    maxDistanceUnits = select("Max Distance Units", distanceUnits, "day");
+  }
+  const schema = object().shape({
+    dateOfService: dateRange({
+      startKey: "startDate",
+      endKey: "endDate",
+      format: dateFormat
+    })
+      .min(min && !max && minDate)
+      .max(!min && max && maxDate)
+      .between(min && max && minDate, maxDate)
+      .distance({
+        min: {
+          value: minDistance,
+          units: minDistanceUnits
+        },
+        max: {
+          value: maxDistance,
+          units: maxDistanceUnits
+        }
+      })
+      .isRequired(required, "This field is required.")
+  });
+  return (
+    <FormikResults
+      initialValues={{
+        dateOfService: ""
+      }}
+      validationSchema={schema}
+    >
+      <DateRange
+        id="dateOfService"
+        name="dateOfService"
+        disabled={boolean("Disabled", false)}
+        datepicker={boolean("Has datepicker", true)}
+        autoSync={boolean("Auto Sync", false)}
+        ranges={boolean("ranges", false)}
+        min={min && minDate}
+        max={max && maxDate}
+      />
+
+      <Button className="mt-1 ml-1" color="primary" type="submit">
+        Submit
+      </Button>
+    </FormikResults>
+  );
+};
+_DateRange.story = {
+  name: "DateRange"
+};
+export const _DateRangeField = () => {
+  const dateFormat = "YYYY-MM-DD";
+  const min = text("Min Date (yyyy-mm-dd)");
+  const max = text("Max Date (yyyy-mm-dd)");
+  const minDate = moment(min).format(dateFormat);
+  const maxDate = moment(max).format(dateFormat);
+  const required = boolean("Required", false);
+  const minDistance = number("Min Distance");
+  const maxDistance = number("Max Distance");
+  const distanceUnits = ["day", "month"];
+  let minDistanceUnits = "day";
+  let maxDistanceUnits = "day";
+  if (minDistance) {
+    minDistanceUnits = select("Min Distance Units", distanceUnits, "day");
+  }
+  if (maxDistance) {
+    maxDistanceUnits = select("Max Distance Units", distanceUnits, "day");
+  }
+  const schema = object().shape({
+    dateOfService: dateRange({
+      format: dateFormat
+    })
+      .min(min && !max && minDate)
+      .max(!min && max && maxDate)
+      .between(min && max && minDate, maxDate)
+      .isRequired(required, "This field is required.")
+      .distance({
+        min: {
+          value: minDistance,
+          units: minDistanceUnits
+        },
+        max: {
+          value: maxDistance,
+          units: maxDistanceUnits
+        }
+      })
+  });
+  return (
+    <FormikResults
+      initialValues={{
+        dateOfService: {
+          startDate: "",
+          endDate: ""
+        }
+      }}
+      validationSchema={schema}
+    >
+      <DateRangeField
+        id="dateOfService"
+        name="dateOfService"
+        label="Date of Service"
+        disabled={boolean("Disabled", false)}
+        datepicker={boolean("Has datepicker", true)}
+        autoSync={boolean("Auto sync", false)}
+        ranges={boolean("ranges", false)}
+        format={dateFormat}
+        min={min && minDate}
+        max={max && maxDate}
+      />
+      <Button className="mt-1 ml-1" color="primary" type="submit">
+        Submit
+      </Button>
+    </FormikResults>
+  );
+};
+_DateRangeField.story = {
+  name: "DateRangeField"
+};
