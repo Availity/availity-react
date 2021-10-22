@@ -1,5 +1,4 @@
 import React from 'react';
-import { storiesOf } from '@storybook/react';
 import { withKnobs, object, boolean } from '@storybook/addon-knobs';
 import '@availity/mock';
 import '@availity/table/styles.scss';
@@ -68,35 +67,48 @@ const columns = [
   },
 ];
 
-storiesOf('Components/Table', module)
-  .addParameters({
+export default {
+  title: 'Components/Table',
+  decorators: [withKnobs],
+
+  parameters: {
     readme: {
       sidebar: README,
       StoryPreview: Preview,
     },
-  })
-  .addDecorator(withKnobs)
-  .add('default', () => (
+  },
+};
+
+export const Default = () => (
+  <Table
+    sortable={boolean('Sortable', false)}
+    selectable={boolean('Selectable', false)}
+    columns={object('Columns', columns)}
+    records={object('Data', response.data.patientPagination.items)}
+    headerProps={object('Header Props', { style: { background: 'pink' } })}
+    rowProps={object('Row Props', { style: {} })}
+    cellProps={object('Cell Props', { style: {} })}
+    bodyProps={object('Body Props', { style: {} })}
+  />
+);
+
+Default.story = {
+  name: 'default',
+};
+
+export const WithScrollableContainer = () => (
+  <ScrollableContainer>
     <Table
-      sortable={boolean('Sortable', false)}
-      selectable={boolean('Selectable', false)}
       columns={object('Columns', columns)}
-      records={object('Data', response.data.patientPagination.items)}
-      headerProps={object('Header Props', { style: { background: 'pink' } })}
+      records={response.data.patientPagination.items}
+      headerProps={object('Header Props', { style: {}, className: {} })}
       rowProps={object('Row Props', { style: {} })}
       cellProps={object('Cell Props', { style: {} })}
       bodyProps={object('Body Props', { style: {} })}
     />
-  ))
-  .add('with scrollable container', () => (
-    <ScrollableContainer>
-      <Table
-        columns={object('Columns', columns)}
-        records={response.data.patientPagination.items}
-        headerProps={object('Header Props', { style: {}, className: {} })}
-        rowProps={object('Row Props', { style: {} })}
-        cellProps={object('Cell Props', { style: {} })}
-        bodyProps={object('Body Props', { style: {} })}
-      />
-    </ScrollableContainer>
-  ));
+  </ScrollableContainer>
+);
+
+WithScrollableContainer.story = {
+  name: 'with scrollable container',
+};

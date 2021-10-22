@@ -1,5 +1,4 @@
 import React from 'react';
-import { storiesOf } from '@storybook/react';
 import { withKnobs, boolean } from '@storybook/addon-knobs';
 import { ListGroupItem } from 'reactstrap';
 
@@ -9,19 +8,27 @@ import { Preview } from '../util';
 
 const ListGroup = React.lazy(() => import('@availity/list-group'));
 
-storiesOf('Components/List Group', module)
-  .addParameters({
+export default {
+  title: 'Components/List Group',
+  decorators: [withKnobs],
+
+  parameters: {
     readme: {
       // Show readme at the addons panel
       sidebar: README,
       StoryPreview: Preview,
     },
-  })
-  .addDecorator(withKnobs)
-  .add('default', () => (
-    <ListGroup cards={boolean('Cards', false)} selectable={boolean('Selectable', false)}>
-      <ListGroupItem>item</ListGroupItem>
-      <ListGroupItem>item</ListGroupItem>
-      <ListGroupItem>item</ListGroupItem>
-    </ListGroup>
-  ));
+  },
+};
+
+export const Default = () => (
+  <ListGroup cards={boolean('Cards', false)} selectable={boolean('Selectable', false)}>
+    <ListGroupItem>item</ListGroupItem>
+    <ListGroupItem>item</ListGroupItem>
+    <ListGroupItem>item</ListGroupItem>
+  </ListGroup>
+);
+
+Default.story = {
+  name: 'default',
+};

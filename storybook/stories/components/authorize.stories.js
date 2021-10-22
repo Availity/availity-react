@@ -1,5 +1,4 @@
 import React from 'react';
-import { storiesOf } from '@storybook/react';
 import { withKnobs, text, boolean, object } from '@storybook/addon-knobs';
 
 import { useAuthorize } from '@availity/authorize';
@@ -20,40 +19,53 @@ const Component = () => {
     : text('UnAuthorized Content', 'You are not authorized to see this content.');
 };
 
-storiesOf('Components/Authorize', module)
-  .addParameters({
+export default {
+  title: 'Components/Authorize',
+  decorators: [withKnobs],
+
+  parameters: {
     readme: {
       // Show readme at the addons panel
       sidebar: README,
       StoryPreview: Preview,
     },
-  })
-  .addDecorator(withKnobs)
-  .add('default', () => (
-    <div>
-      <p>
-        For this demo, the following permissions are granted: 1234, 2345, 3456, 4567, 5678, 6789. You can use the knobs
-        to see what the component will do when you set the required permissions to various things.
-      </p>
-      <hr />
-      <Authorize
-        permissions={text('Permissions', '1234') || object('Permissions Array', [])}
-        organizationId={text('OrganizationId', '1111')}
-        negate={boolean('Negate', false)}
-        loader={boolean('Loader', true)}
-        unauthorized={text('Unauthorized Content', 'You are not authorized to see this content.')}
-      >
-        {text('Authorized Content', 'You are authorized to see this content.')}
-      </Authorize>
-    </div>
-  ))
-  .add('useAuthorize', () => (
-    <div>
-      <p>
-        For this demo, the following permissions are granted: 1234, 2345, 3456, 4567, 5678, 6789. You can use the knobs
-        to see what the component will do when you set the required permissions to various things.
-      </p>
-      <hr />
-      <Component />
-    </div>
-  ));
+  },
+};
+
+export const Default = () => (
+  <div>
+    <p>
+      For this demo, the following permissions are granted: 1234, 2345, 3456, 4567, 5678, 6789. You can use the knobs to
+      see what the component will do when you set the required permissions to various things.
+    </p>
+    <hr />
+    <Authorize
+      permissions={text('Permissions', '1234') || object('Permissions Array', [])}
+      organizationId={text('OrganizationId', '1111')}
+      negate={boolean('Negate', false)}
+      loader={boolean('Loader', true)}
+      unauthorized={text('Unauthorized Content', 'You are not authorized to see this content.')}
+    >
+      {text('Authorized Content', 'You are authorized to see this content.')}
+    </Authorize>
+  </div>
+);
+
+Default.story = {
+  name: 'default',
+};
+
+export const UseAuthorize = () => (
+  <div>
+    <p>
+      For this demo, the following permissions are granted: 1234, 2345, 3456, 4567, 5678, 6789. You can use the knobs to
+      see what the component will do when you set the required permissions to various things.
+    </p>
+    <hr />
+    <Component />
+  </div>
+);
+
+UseAuthorize.story = {
+  name: 'useAuthorize',
+};

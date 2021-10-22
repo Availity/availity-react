@@ -1,5 +1,4 @@
 import React from 'react';
-import { storiesOf } from '@storybook/react';
 import { select } from '@storybook/addon-knobs';
 
 import README from '@availity/icon/README.md';
@@ -42,21 +41,29 @@ icons.glyphs.forEach((glyph) => {
   iconOptions[glyph.css] = glyph.css;
 });
 
-storiesOf('Components/Icon', module)
-  .addParameters({
+export default {
+  title: 'Components/Icon',
+
+  parameters: {
     readme: {
       // Show readme at the addons panel
       sidebar: README,
       StoryPreview: Preview,
     },
-  })
-  .add('default', () => (
-    <div className="py-3">
-      <Icon
-        name={select('Icon Name', iconOptions, 'home')}
-        size={select('Sizes', options, '3x')}
-        color={select('Colors', colors)}
-        style={{ cursor: select('Hover', hoverOptions, 'pointer') }}
-      />
-    </div>
-  ));
+  },
+};
+
+export const Default = () => (
+  <div className="py-3">
+    <Icon
+      name={select('Icon Name', iconOptions, 'home')}
+      size={select('Sizes', options, '3x')}
+      color={select('Colors', colors)}
+      style={{ cursor: select('Hover', hoverOptions, 'pointer') }}
+    />
+  </div>
+);
+
+Default.story = {
+  name: 'default',
+};

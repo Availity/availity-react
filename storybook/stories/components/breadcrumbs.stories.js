@@ -1,5 +1,4 @@
 import React from 'react';
-import { storiesOf } from '@storybook/react';
 import { withKnobs, text } from '@storybook/addon-knobs';
 import { Route, Link } from 'react-router-dom';
 import StoryRouter from 'storybook-react-router';
@@ -48,45 +47,69 @@ const ReactRouterDestination = () => (
   </div>
 );
 
-storiesOf('Components/Breadcrumbs', module)
-  .addParameters({
-    readme: {
-      // Show readme at the addons panel
-      sidebar: README,
-      StoryPreview: Preview,
-    },
-  })
-  .addDecorator(withKnobs)
-  .addDecorator(
+export default {
+  title: 'Components/Breadcrumbs',
+
+  decorators: [
+    withKnobs,
     StoryRouter(
       {
         '/': linkTo('Linked stories', 'destination'),
       },
       { initialEntries: ['/react-router-demo'] }
-    )
-  )
-  .add('default', () => (
-    <Breadcrumbs
-      emptyState={text('Empty State', emptyState)}
-      active={text('Active Page', 'Payer Spaces')}
-      homeUrl={text('Home Url', 'public/apps/dashboard')}
-    />
-  ))
-  .add('active blank', () => <Breadcrumbs active="" />)
-  .add('with parents', () => (
-    <Breadcrumbs
-      homeUrl={text('Home Url', 'public/apps/dashboard')}
-      emptyState={text('Empty State', emptyState)}
-      crumbs={[
-        { name: 'Grand Parent', url: '/grand-parent' },
-        { name: 'Parent', url: '/parent' },
-      ]}
-      active={text('Active Page', 'Payer Spaces')}
-    />
-  ))
-  .add('with custom content', () => (
-    <div>
-      <Route path="/react-router-parent" component={ReactRouterDestination} />
-      <Route path="/react-router-demo" component={ReactRouterBreadcrumbs} />
-    </div>
-  ));
+    ),
+  ],
+
+  parameters: {
+    readme: {
+      // Show readme at the addons panel
+      sidebar: README,
+      StoryPreview: Preview,
+    },
+  },
+};
+
+export const Default = () => (
+  <Breadcrumbs
+    emptyState={text('Empty State', emptyState)}
+    active={text('Active Page', 'Payer Spaces')}
+    homeUrl={text('Home Url', 'public/apps/dashboard')}
+  />
+);
+
+Default.story = {
+  name: 'default',
+};
+
+export const ActiveBlank = () => <Breadcrumbs active="" />;
+
+ActiveBlank.story = {
+  name: 'active blank',
+};
+
+export const WithParents = () => (
+  <Breadcrumbs
+    homeUrl={text('Home Url', 'public/apps/dashboard')}
+    emptyState={text('Empty State', emptyState)}
+    crumbs={[
+      { name: 'Grand Parent', url: '/grand-parent' },
+      { name: 'Parent', url: '/parent' },
+    ]}
+    active={text('Active Page', 'Payer Spaces')}
+  />
+);
+
+WithParents.story = {
+  name: 'with parents',
+};
+
+export const WithCustomContent = () => (
+  <div>
+    <Route path="/react-router-parent" component={ReactRouterDestination} />
+    <Route path="/react-router-demo" component={ReactRouterBreadcrumbs} />
+  </div>
+);
+
+WithCustomContent.story = {
+  name: 'with custom content',
+};

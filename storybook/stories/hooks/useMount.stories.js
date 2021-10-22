@@ -1,30 +1,37 @@
 import React, { useState } from 'react';
-import { storiesOf } from '@storybook/react';
 import { withKnobs } from '@storybook/addon-knobs';
 import { useMount } from '@availity/hooks';
 import README from '@availity/hooks/README.md';
 
 import { Preview } from '../util';
 
-storiesOf('Hooks/useMount', module)
-  .addParameters({
+export default {
+  title: 'Hooks/useMount',
+  decorators: [withKnobs],
+
+  parameters: {
     readme: {
       // Show readme at the addons panel
       sidebar: README,
       StoryPreview: Preview,
     },
-  })
-  .addDecorator(withKnobs)
-  .add('default', () => {
-    const Component = () => {
-      const [text, setText] = useState('hello');
+  },
+};
 
-      useMount(() => {
-        setText('world');
-      });
+export const Default = () => {
+  const Component = () => {
+    const [text, setText] = useState('hello');
 
-      return <span>{text}</span>;
-    };
+    useMount(() => {
+      setText('world');
+    });
 
-    return <Component />;
-  });
+    return <span>{text}</span>;
+  };
+
+  return <Component />;
+};
+
+Default.story = {
+  name: 'default',
+};

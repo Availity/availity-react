@@ -1,6 +1,5 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { storiesOf } from '@storybook/react';
 import { useToggle } from '@availity/hooks';
 import README from '@availity/hooks/README.md';
 import { Button } from 'reactstrap';
@@ -21,13 +20,26 @@ Component.propTypes = {
   initialValue: PropTypes.bool,
 };
 
-storiesOf('Hooks/useToggle', module)
-  .addParameters({
+export default {
+  title: 'Hooks/useToggle',
+
+  parameters: {
     readme: {
       // Show readme at the addons panel
       sidebar: README,
       StoryPreview: Preview,
     },
-  })
-  .add('default', () => <Component />)
-  .add('with initialValue', () => <Component initialValue />);
+  },
+};
+
+export const Default = () => <Component />;
+
+Default.story = {
+  name: 'default',
+};
+
+export const WithInitialValue = () => <Component initialValue />;
+
+WithInitialValue.story = {
+  name: 'with initialValue',
+};

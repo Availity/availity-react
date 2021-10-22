@@ -1,41 +1,48 @@
 import React, { useState, useEffect } from 'react';
-import { storiesOf } from '@storybook/react';
 import { number, text, withKnobs } from '@storybook/addon-knobs';
 import { useTimeout } from '@availity/hooks';
 import README from '@availity/hooks/README.md';
 
 import { Preview } from '../util';
 
-storiesOf('Hooks/useTimeout', module)
-  .addParameters({
+export default {
+  title: 'Hooks/useTimeout',
+  decorators: [withKnobs],
+
+  parameters: {
     readme: {
       // Show readme at the addons panel
       sidebar: README,
       StoryPreview: Preview,
     },
-  })
-  .addDecorator(withKnobs)
-  .add('default', () => {
-    const beforeTimeoutText = text('Before Timeout', 'Hello');
-    const afterTimeoutText = text('After Timeout', 'World');
+  },
+};
 
-    const Component = () => {
-      const [value, setValue] = useState(beforeTimeoutText);
-      const ready = useTimeout(number('Timeout', 3000));
+export const Default = () => {
+  const beforeTimeoutText = text('Before Timeout', 'Hello');
+  const afterTimeoutText = text('After Timeout', 'World');
 
-      useEffect(() => {
-        if (ready) {
-          setValue(afterTimeoutText);
-        }
-      }, [ready]);
+  const Component = () => {
+    const [value, setValue] = useState(beforeTimeoutText);
+    const ready = useTimeout(number('Timeout', 3000));
 
-      return (
-        <div>
-          <p>Timeout triggered: {`${ready}`}</p>
-          <p>Value: {value}</p>
-        </div>
-      );
-    };
+    useEffect(() => {
+      if (ready) {
+        setValue(afterTimeoutText);
+      }
+    }, [ready]);
 
-    return <Component />;
-  });
+    return (
+      <div>
+        <p>Timeout triggered: {`${ready}`}</p>
+        <p>Value: {value}</p>
+      </div>
+    );
+  };
+
+  return <Component />;
+};
+
+Default.story = {
+  name: 'default',
+};
