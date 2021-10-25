@@ -1,5 +1,3 @@
-import '@testing-library/jest-dom';
-
 // eslint-disable-next-line no-console
 const originalError = console.error;
 

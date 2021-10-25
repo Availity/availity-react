@@ -1,5 +1,5 @@
 module.exports = {
-  setupFilesAfterEnv: ['<rootDir>/jest/setupTests.js'],
+  setupFilesAfterEnv: ['<rootDir>/jest/setupTests.js', '@testing-library/jest-dom/extend-expect'],
   collectCoverageFrom: ['packages/**/*.{js,jsx}'],
   testPathIgnorePatterns: ['/node_modules/', '/docs', '/storybook', '/packages/mock/'],
   coveragePathIgnorePatterns: [
