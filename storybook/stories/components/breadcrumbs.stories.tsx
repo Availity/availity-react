@@ -1,102 +1,100 @@
-import React from "react";
-import { withKnobs, text } from "@storybook/addon-knobs";
-import { Route, Link } from "react-router-dom";
-import StoryRouter from "storybook-react-router";
-import { linkTo } from "@storybook/addon-links";
-import { BreadcrumbItem } from "reactstrap";
-import README from "@availity/breadcrumbs/README.md";
-import { Preview } from "../util";
+import React from 'react';
+import { Story, Meta } from '@storybook/react';
+import { Route, Link } from 'react-router-dom';
+import StoryRouter from 'storybook-react-router';
+import { linkTo } from '@storybook/addon-links';
+import { BreadcrumbItem } from 'reactstrap';
+import Breadcrumbs from '@availity/breadcrumbs';
+// import README from '@availity/breadcrumbs/README.md';
 
-const Breadcrumbs = React.lazy(() => import("@availity/breadcrumbs"));
+const emptyState = '...';
 
-const emptyState = "..";
-
-const ReactRouterBreadcrumbs = () => (
-  <div>
-    <Breadcrumbs
-      emptyState={text("Empty State", emptyState)}
-      active={text("Active Page", "React Router Breadcrumb")}
-      homeUrl={text("Home Url", "public/apps/dashboard")}
-    >
-      <BreadcrumbItem>
-        <Link to="react-router-parent">Custom Breadcrumb Demo</Link>
-      </BreadcrumbItem>
-    </Breadcrumbs>
-    <p>Hello! this is a demo for breadcrumbs with:</p>
-    <ul>
-      <li>Custom Breadcrumb Items</li>
-      <li>react-router Integration</li>
-    </ul>
-    <p>
-      In this case we are using react-router to navigate from one page to
-      another, but any custom content (as long as it is inside a react-strap
-      BreadcrumbItem) can be used.
-    </p>
-  </div>
-);
-const ReactRouterDestination = () => (
-  <div>
-    <Breadcrumbs
-      active={text("Active Page", "Custom Breadcrumb Demo")}
-      homeUrl={text("Home Url", "public/apps/dashboard")}
-    />
-    <Link to="/react-router-demo">react-router Link Back To demo</Link>
-    <p>Sample destination page with react-router navigation</p>
-  </div>
-);
 export default {
-  title: "Components/Breadcrumbs",
+  title: 'Components/Breadcrumbs',
   decorators: [
-    withKnobs,
     StoryRouter(
       {
-        "/": linkTo("Linked stories", "destination")
+        '/': linkTo('Linked stories', 'destination'),
       },
-      { initialEntries: ["/react-router-demo"] }
-    )
+      { initialEntries: ['/react-router-demo'] }
+    ),
   ],
   parameters: {
-    readme: {
-      // Show readme at the addons panel
-      sidebar: README,
-      StoryPreview: Preview
-    }
-  }
-};
-export const Default = () => (
-  <Breadcrumbs
-    emptyState={text("Empty State", emptyState)}
-    active={text("Active Page", "Payer Spaces")}
-    homeUrl={text("Home Url", "public/apps/dashboard")}
-  />
+    docs: {
+      // page: README,
+    },
+  },
+} as Meta;
+
+export const Default: Story = ({ emptyState, activePage, homeUrl }) => (
+  <Breadcrumbs emptyState={emptyState} active={activePage} homeUrl={homeUrl} />
 );
-Default.story = {
-  name: "default"
+Default.args = {
+  emptyState,
+  activePage: 'Payer Spaces',
+  homeUrl: 'public/apps/dashboard',
 };
-export const ActiveBlank = () => <Breadcrumbs active="" />;
-ActiveBlank.story = {
-  name: "active blank"
-};
-export const WithParents = () => (
+Default.storyName = 'default';
+
+export const ActiveBlank: Story = () => <Breadcrumbs active="" />;
+ActiveBlank.storyName = 'active blank';
+
+export const WithParents: Story = ({ emptyState, activePage, homeUrl }) => (
   <Breadcrumbs
-    homeUrl={text("Home Url", "public/apps/dashboard")}
-    emptyState={text("Empty State", emptyState)}
+    homeUrl={homeUrl}
+    emptyState={emptyState}
     crumbs={[
-      { name: "Grand Parent", url: "/grand-parent" },
-      { name: "Parent", url: "/parent" }
+      { name: 'Grand Parent', url: '/grand-parent' },
+      { name: 'Parent', url: '/parent' },
     ]}
-    active={text("Active Page", "Payer Spaces")}
+    active={activePage}
   />
 );
-WithParents.story = {
-  name: "with parents"
+WithParents.args = {
+  emptyState,
+  activePage: 'Payer Spaces',
+  homeUrl: 'public/apps/dashboard',
 };
-export const WithCustomContent = () => (
+WithParents.storyName = 'with parents';
+
+export const WithCustomContent: Story = ({ activePage, emptyState, homeUrl }) => (
   <div>
-    <Route path="/react-router-parent" component={ReactRouterDestination} />
-    <Route path="/react-router-demo" component={ReactRouterBreadcrumbs} />
+    <Route
+      path="/react-router-parent"
+      component={
+        <div>
+          <Breadcrumbs active={activePage} homeUrl={homeUrl} />
+          <Link to="/react-router-demo">react-router Link Back To demo</Link>
+          <p>Sample destination page with react-router navigation</p>
+        </div>
+      }
+    />
+    <Route
+      path="/react-router-demo"
+      component={
+        <div>
+          <Breadcrumbs emptyState={emptyState} active={activePage} homeUrl={homeUrl}>
+            <BreadcrumbItem>
+              <Link to="react-router-parent">Custom Breadcrumb Demo</Link>
+            </BreadcrumbItem>
+          </Breadcrumbs>
+          <p>Hello! this is a demo for breadcrumbs with:</p>
+          <ul>
+            <li>Custom Breadcrumb Items</li>
+            <li>react-router Integration</li>
+          </ul>
+          <p>
+            In this case we are using react-router to navigate from one page to another, but any custom content (as long
+            as it is inside a react-strap BreadcrumbItem) can be used.
+          </p>
+        </div>
+      }
+    />
   </div>
 );
-WithCustomContent.story = {
-  name: "with custom content"
+WithCustomContent.args = {
+  activePage: 'Payer Spaces',
+  homeUrl: 'public/apps/dashboard',
+  emptyState,
 };
+WithCustomContent.storyName = 'with custom content';

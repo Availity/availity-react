@@ -1,99 +1,88 @@
-import React from "react";
-import { Button } from "reactstrap";
-import { number, text, boolean } from "@storybook/addon-knobs";
-import "@availity/yup";
-import * as yup from "yup";
-import {
-  AvProviderSelect,
-  AvOrganizationSelect
-} from "@availity/select/resources";
-import README from "@availity/select/README.md";
-import "@availity/mock";
-import FormikResults from "../mocks/FormikResults";
-import { Preview } from "../util";
+import React from 'react';
+import { Meta, Story } from '@storybook/react';
+import { Button } from 'reactstrap';
+import * as yup from 'yup';
+import '@availity/yup';
+import { AvProviderSelect, AvOrganizationSelect } from '@availity/select/resources';
+// import README from '@availity/select/README.md';
 
-const singleValueSchema = (name, required) =>
+import '@availity/mock';
+import FormikResults from '../util/FormikResults';
+
+const singleValueSchema = (name: string, required = false) =>
   yup.object().shape({
-    [name]: yup
-      .string()
-      .isRequired(required, "This field is required.")
-      .nullable()
+    [name]: yup.string().isRequired(required, 'This field is required.').nullable(),
   });
+
 export default {
-  title: "Form Components/Select/resources",
+  title: 'Form Components/Select/resources',
   parameters: {
-    readme: {
-      // Show readme at the addons panel
-      sidebar: README,
-      StoryPreview: Preview
-    }
-  }
+    docs: {
+      // page: README,
+    },
+  },
+} as Meta;
+
+export const _AvProviderSelect: Story = ({ customerId, disabled, isMulti, label, max, min, required }) => (
+  <FormikResults
+    initialValues={{
+      AvProviderSelect: null,
+    }}
+    validationSchema={singleValueSchema('AvProviderSelect', required)}
+  >
+    <AvProviderSelect
+      name="AvProviderSelect"
+      label={label}
+      customerId={customerId}
+      requiredParams={['customerId']}
+      watchParams={['customerId']}
+      minLength={min}
+      maxLength={max}
+      isMulti={isMulti}
+      required={required}
+      isDisabled={disabled}
+    />
+    <Button color="primary">Submit</Button>
+  </FormikResults>
+);
+_AvProviderSelect.args = {
+  customerId: '1234',
+  disabled: false,
+  isMulti: false,
+  label: 'Select a Provider',
+  max: 3,
+  min: 2,
+  required: true,
 };
-export const _AvProviderSelect = () => {
-  const isMulti = boolean("Multiple", false);
-  const min = (isMulti && number("Min Selection", 2)) || undefined;
-  const max = (isMulti && number("Max Selection", 3)) || undefined;
-  const required = boolean("Required", false);
-  return (
-    <FormikResults
-      initialValues={{
-        AvProviderSelect: null
-      }}
-      validationSchema={singleValueSchema("AvProviderSelect")}
-    >
-      <AvProviderSelect
-        label={text("Label", "Select Provider")}
-        name="AvProviderSelect"
-        customerId={text("Customer ID", "1234")}
-        requiredParams={["customerId"]}
-        watchParams={["customerId"]}
-        minLength={min}
-        maxLength={max}
-        isMulti={isMulti}
-        required={required}
-        isDisabled={boolean("Disabled", false)}
-      />
-      <Button color="primary">Submit</Button>
-    </FormikResults>
-  );
+_AvProviderSelect.storyName = 'AvProviderSelect';
+
+export const _AvOrganizationSelect: Story = ({ disabled, errorMessage, isMulti, label, max, min, required }) => (
+  <FormikResults
+    initialValues={{
+      AvOrganizationSelect: null,
+    }}
+    validationSchema={singleValueSchema('AvOrganizationSelect', required)}
+  >
+    <AvOrganizationSelect
+      name="AvOrganizationSelect"
+      label={label}
+      minLength={min}
+      maxLength={max}
+      isMulti={isMulti}
+      required={required}
+      errorMessage={errorMessage}
+      isDisabled={disabled}
+    />
+    <Button color="primary">Submit</Button>
+  </FormikResults>
+);
+_AvOrganizationSelect.args = {
+  disabled: false,
+  errorMessage: 'This field is invalid',
+  isMulti: false,
+  label: 'Select a Provider',
+  max: 3,
+  min: 2,
+  required: true,
 };
-_AvProviderSelect.story = {
-  name: "AvProviderSelect"
-};
-export const _AvOrganizationSelect = () => {
-  const isMulti = boolean("Multiple", false);
-  const min = (isMulti && number("Min Selection", 2)) || undefined;
-  const max = (isMulti && number("Max Selection", 3)) || undefined;
-  const required = boolean("Required", false);
-  return (
-    <FormikResults
-      initialValues={{
-        AvOrganizationSelect: null
-      }}
-      validationSchema={singleValueSchema("AvOrganizationSelect")}
-    >
-      <AvOrganizationSelect
-        label={text("Label", "Select Organization")}
-        name="AvOrganizationSelect"
-        minLength={min}
-        maxLength={max}
-        isMulti={isMulti}
-        required={required}
-        errorMessage={text("Generic Error Message", "This field is invalid")}
-        validate={{
-          required: {
-            value: required,
-            errorMessage:
-              required &&
-              text("Required Error Message", "This field is required")
-          }
-        }}
-        isDisabled={boolean("Disabled", false)}
-      />
-      <Button color="primary">Submit</Button>
-    </FormikResults>
-  );
-};
-_AvOrganizationSelect.story = {
-  name: "AvOrganizationSelect"
-};
+_AvOrganizationSelect.storyName = 'AvOrganizationSelect';

@@ -1,30 +1,27 @@
-import React, { useState } from "react";
-import { withKnobs } from "@storybook/addon-knobs";
-import { useMount } from "@availity/hooks";
-import README from "@availity/hooks/README.md";
-import { Preview } from "../util";
+import React, { useState } from 'react';
+import { Meta, Story } from '@storybook/react';
+import { Card } from 'reactstrap';
+import { useMount } from '@availity/hooks';
+// import README from '@availity/hooks/README.md';
 
 export default {
-  title: "Hooks/useMount",
-  decorators: [withKnobs],
+  title: 'Hooks/useMount',
   parameters: {
-    readme: {
-      // Show readme at the addons panel
-      sidebar: README,
-      StoryPreview: Preview
-    }
-  }
-};
-export const Default = () => {
+    docs: {
+      // page: README,
+    },
+  },
+} as Meta;
+
+export const Default: Story = () => {
   const Component = () => {
-    const [text, setText] = useState("hello");
+    const [text, setText] = useState('hello');
     useMount(() => {
-      setText("world");
+      setText('world');
     });
-    return <span>{text}</span>;
+    return <Card body>{text}</Card>;
   };
+
   return <Component />;
 };
-Default.story = {
-  name: "default"
-};
+Default.storyName = 'default';

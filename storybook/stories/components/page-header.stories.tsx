@@ -1,13 +1,12 @@
-import React from "react";
-import { withKnobs, text, select } from "@storybook/addon-knobs";
-import { BreadcrumbItem } from "reactstrap";
-import README from "@availity/page-header/README.md";
-import "@availity/mock";
-import { Preview } from "../util";
+import React from 'react';
+import { Meta, Story } from '@storybook/react';
+import { BreadcrumbItem } from 'reactstrap';
+import PageHeader from '@availity/page-header';
+import TrainingLink from '@availity/training-link';
+import Breadcrumbs from '@availity/breadcrumbs';
+// import README from '@availity/page-header/README.md';
 
-const PageHeader = React.lazy(() => import("@availity/page-header"));
-const TrainingLink = React.lazy(() => import("@availity/training-link"));
-const Breadcrumbs = React.lazy(() => import("@availity/breadcrumbs"));
+import '@availity/mock';
 
 const CustomBreadcrumbs = (
   <Breadcrumbs active="Active Page Name">
@@ -19,126 +18,110 @@ const CustomBreadcrumbs = (
     </BreadcrumbItem>
   </Breadcrumbs>
 );
+
+const colors = ['black', 'blue', 'orange', 'green'];
+
+const initialValues = {
+  appName: 'Payer Space',
+  appAbbr: 'PS',
+  homeUrl: '/public/apps/dashboard',
+  payerId: 'PayerId',
+  clientId: 'my-client-id',
+};
+
 export default {
-  title: "Components/Page Header",
-  decorators: [withKnobs],
+  title: 'Components/Page Header',
   parameters: {
-    readme: {
-      // Show readme at the addons panel
-      sidebar: README,
-      StoryPreview: Preview
-    }
-  }
+    docs: {
+      // page: README,
+    },
+  },
+} as Meta;
+
+export const Default: Story = ({ appName }) => <PageHeader appName={appName} />;
+Default.args = {
+  appName: initialValues.appName,
 };
-export const Default = () => (
-  <PageHeader appName={text("Application Name", "Payer Space")} />
-);
-Default.story = {
-  name: "default"
-};
-export const WithAppIcon = () => (
+Default.storyName = 'default';
+
+export const WithAppIcon: Story = ({ abbreviation, appName, homeUrl, iconAlt, iconColor, iconSrc }) => (
   <PageHeader
-    homeUrl={text("Home Url", "/public/apps/dashboard")}
-    appName={text("Application Name", "Payer Space")}
-    appAbbr={text("Application Abbreviation", "PS")}
-    iconColor={select(
-      "Color",
-      {
-        Black: "black",
-        Blue: "blue",
-        Green: "green",
-        Orange: "orange"
-      },
-      "black"
-    )}
-    iconSrc={text("AppIcon Image")}
-    iconAlt={text("AppIcon Alt")}
+    appName={appName}
+    appAbbr={abbreviation}
+    homeUrl={homeUrl}
+    iconColor={iconColor}
+    iconSrc={iconSrc}
+    iconAlt={iconAlt}
   />
 );
-WithAppIcon.story = {
-  name: "with app icon"
+WithAppIcon.args = {
+  abbreviation: 'PS',
+  appName: initialValues.appName,
+  homeUrl: initialValues.homeUrl,
+  iconAlt: '',
+  iconColor: colors[0],
+  iconSrc: '',
 };
-export const WithPayerLogo = () => (
+WithAppIcon.storyName = 'with app icon';
+
+export const WithPayerLogo: Story = ({ appName, clientId, feedback, homeUrl, payerId }) => (
   <div>
-    <PageHeader
-      homeUrl={text("Home Url", "/public/apps/dashboard")}
-      appName={text("Application Name", "Payer Space")}
-      clientId={text("Client ID", "my-client-id")}
-      payerId={text("Payer ID", "PayerID")}
-    />
-    <p>
-      Note: the logo uses a relative URL which will only work on the Availity
-      Portal
-    </p>
+    <PageHeader homeUrl={homeUrl} appName={appName} clientId={clientId} payerId={payerId} feedback={feedback} />
+    <p>Note: the logo uses a relative URL which will only work on the Availity Portal</p>
   </div>
 );
-WithPayerLogo.story = {
-  name: "with payer logo"
+WithPayerLogo.args = {
+  appName: initialValues.appName,
+  clientId: 'my-client-id',
+  feedback: false,
+  homeUrl: initialValues.homeUrl,
+  payerId: 'PayerID',
 };
-export const WithPayerSpaceBreadcrumb = () => (
+WithPayerLogo.storyName = 'with payer logo';
+
+export const WithPayerSpaceBreadcrumb: Story = ({ appName, homeUrl, spaceId, spaceName }) => (
+  <PageHeader homeUrl={homeUrl} appName={appName} spaceId={spaceId} spaceName={spaceName} />
+);
+WithPayerSpaceBreadcrumb.args = {
+  appName: initialValues.appName,
+  homeUrl: initialValues.homeUrl,
+  spaceId: '73162546201441126239486200007187',
+  spaceName: 'PayerSpace',
+};
+WithPayerSpaceBreadcrumb.storyName = 'with payer space breadcrumb';
+
+export const WithArbitraryBreadcrumbs: Story = ({ appName, crumbs }) => (
+  <PageHeader appName={appName} crumbs={crumbs} />
+);
+WithArbitraryBreadcrumbs.args = {
+  appName: initialValues.appName,
+  crumbs: [
+    { name: 'Grand Parent', url: '/grand-parent' },
+    { name: 'Parent', url: '/parent' },
+  ],
+};
+WithArbitraryBreadcrumbs.storyName = 'with arbitrary breadcrumbs';
+
+export const WithCustomBreadcrumbs: Story = ({ appName, homeUrl }) => (
+  <PageHeader homeUrl={homeUrl} appName={appName} crumbs={CustomBreadcrumbs} />
+);
+WithCustomBreadcrumbs.args = {
+  appName: initialValues.appName,
+  homeUrl: initialValues.homeUrl,
+};
+WithCustomBreadcrumbs.storyName = 'with custom breadcrumbs';
+
+export const WithTrainingLink: Story = ({ appName, homeUrl, feedback }) => (
   <PageHeader
-    homeUrl={text("Home Url", "/public/apps/dashboard")}
-    appName={text("Application Name", "Payer Space")}
-    spaceId={text("Payer Space ID", "73162546201441126239486200007187")}
-    spaceName={text("Payer Space Name", "Payers Space")}
+    appName={appName}
+    homeUrl={homeUrl}
+    component={<TrainingLink link="https://www.youtube.com/watch?v=GgwE94KZJ7E" name="Payer Space" />}
+    feedback={feedback}
   />
 );
-WithPayerSpaceBreadcrumb.story = {
-  name: "with payer space breadcrumb"
+WithCustomBreadcrumbs.args = {
+  appName: initialValues.appName,
+  homeUrl: initialValues.homeUrl,
+  feedback: true,
 };
-export const WithArbitraryBreadcrumbs = () => (
-  <PageHeader
-    appName={text("Application Name", "Payer Space")}
-    crumbs={[
-      { name: "Grand Parent", url: "/grand-parent" },
-      { name: "Parent", url: "/parent" }
-    ]}
-  />
-);
-WithArbitraryBreadcrumbs.story = {
-  name: "with arbitrary breadcrumbs"
-};
-export const WithCustomBreadcrumbs = () => (
-  <PageHeader
-    homeUrl={text("Home Url", "/public/apps/dashboard")}
-    appName={text("Application Name", "Payer Space")}
-    crumbs={CustomBreadcrumbs}
-  />
-);
-WithCustomBreadcrumbs.story = {
-  name: "with custom breadcrumbs"
-};
-export const WithFeedback = () => (
-  <PageHeader appName={text("Application Name", "Payer Space")} feedback />
-);
-WithFeedback.story = {
-  name: "with feedback"
-};
-export const WithFeedbackAndPayerLogo = () => (
-  <PageHeader
-    homeUrl={text("Home Url", "/public/apps/dashboard")}
-    appName={text("Application Name", "Payer Space")}
-    payerId={text("Payer ID", "PayerID")}
-    clientId={text("Client ID", "my-client-id")}
-    feedback
-  />
-);
-WithFeedbackAndPayerLogo.story = {
-  name: "with feedback and payer logo"
-};
-export const WithTrainingLink = () => (
-  <PageHeader
-    homeUrl={text("Home Url", "/public/apps/dashboard")}
-    feedback
-    appName={text("Application Name", "Payer Space")}
-    component={
-      <TrainingLink
-        link="https://www.youtube.com/watch?v=GgwE94KZJ7E"
-        name="Payer Space"
-      />
-    }
-  />
-);
-WithTrainingLink.story = {
-  name: "with training link"
-};
+WithTrainingLink.storyName = 'with training link';

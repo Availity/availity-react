@@ -1,226 +1,251 @@
-import React from "react";
-import { Label, Button } from "reactstrap";
-import { AvGroup, AvFeedback, AvField } from "availity-reactstrap-validation";
-import { number, text, boolean } from "@storybook/addon-knobs";
-import AvApi from "@availity/api-axios";
-import AvSelect, {
-  AvSelectField
-} from "@availity/reactstrap-validation-select";
-import AvSelectResource from "@availity/reactstrap-validation-select/resources";
-import README from "@availity/reactstrap-validation-select/README.md";
-import "@availity/mock";
-import AvFormResults from "../mocks/AvFormResults";
-import { Preview } from "../util";
+import React from 'react';
+import { Meta, Story } from '@storybook/react';
+import { Label, Button } from 'reactstrap';
+import AvApi from '@availity/api-axios';
+import { AvGroup, AvFeedback, AvField } from 'availity-reactstrap-validation';
+import AvSelect, { AvSelectField } from '@availity/reactstrap-validation-select';
+import AvSelectResource from '@availity/reactstrap-validation-select/resources';
+// import README from '@availity/reactstrap-validation-select/README.md';
+
+import '@availity/mock';
+import AvFormResults from '../util/AvFormResults';
 
 const options = [
-  { label: "Option 1", value: "value for option 1" },
-  { label: "Option 2", value: "value for option 2" },
-  { label: "Option 3", value: "value for option 3" },
-  { label: "Option 4", value: "value for option 4" }
+  { label: 'Option 1', value: 'value for option 1' },
+  { label: 'Option 2', value: 'value for option 2' },
+  { label: 'Option 3', value: 'value for option 3' },
+  { label: 'Option 4', value: 'value for option 4' },
 ];
 
 const autofillOptions = [
   {
-    label: "Option 1",
+    label: 'Option 1',
     value: {
-      autoFill1: "option 1 autofill value 1",
-      autoFill2: "option 1 autofill value 2"
-    }
+      autoFill1: 'option 1 autofill value 1',
+      autoFill2: 'option 1 autofill value 2',
+    },
   },
   {
-    label: "Option 2",
+    label: 'Option 2',
     value: {
-      autoFill1: "option 2 autofill value 1",
-      autoFill2: "option 2 autofill value 2"
-    }
+      autoFill1: 'option 2 autofill value 1',
+      autoFill2: 'option 2 autofill value 2',
+    },
   },
   {
-    label: "Option 3",
+    label: 'Option 3',
     value: {
-      autoFill1: "option 3 autofill value 1",
-      autoFill2: "option 3 autofill value 2"
-    }
+      autoFill1: 'option 3 autofill value 1',
+      autoFill2: 'option 3 autofill value 2',
+    },
   },
   {
-    label: "Option 4",
+    label: 'Option 4',
     value: {
-      autoFill1: "option 4 autofill value 1",
-      autoFill2: "option 4 autofill value 2"
-    }
-  }
+      autoFill1: 'option 4 autofill value 1',
+      autoFill2: 'option 4 autofill value 2',
+    },
+  },
 ];
 
-const avCustomResource = new AvApi({ name: "my-custom-resource" });
+const avCustomResource = new AvApi({ name: 'my-custom-resource' });
 
 export default {
-  title: "Legacy Form Components/AvSelect",
+  title: 'Legacy Form Components/AvSelect',
   parameters: {
-    readme: {
-      // Show readme at the addons panel
-      sidebar: README,
-      StoryPreview: Preview
-    }
-  }
+    docs: {
+      // page: README,
+    },
+  },
+} as Meta;
+
+export const Default: Story = ({ autofill, creatable, disabled, isMulti, max, min, raw, required }) => (
+  <AvFormResults>
+    <AvSelect
+      name="standAlone"
+      minLength={min}
+      maxLength={max}
+      isMulti={isMulti}
+      options={autofill ? autofillOptions : options}
+      aria-label="stand-alone"
+      required={required}
+      raw={raw}
+      isDisabled={disabled}
+      creatable={creatable}
+      autofill={autofill}
+    />
+    {autofill && <AvField name="autoFill1" type="text" label="Autofill Value 1" />}
+    {autofill && <AvField name="autoFill2" type="text" label="Autofill Value 2" />}
+    <Button className="mt-3" color="primary">
+      Submit
+    </Button>
+  </AvFormResults>
+);
+Default.args = {
+  autofill: false,
+  creatbale: false,
+  disabled: false,
+  isMulti: false,
+  min: 2,
+  max: 3,
+  raw: false,
+  required: true,
 };
-export const Default = () => {
-  const isMulti = boolean("Multiple", false);
-  const min = (isMulti && number("Min Selection", 2)) || undefined;
-  const max = (isMulti && number("Max Selection", 3)) || undefined;
-  const autofill = boolean("Autofill", false);
-  return (
-    <AvFormResults>
+Default.storyName = 'default';
+
+export const WithLabel: Story = ({
+  autofill,
+  creatable,
+  disabled,
+  errorMessage,
+  isMulti,
+  label,
+  max,
+  min,
+  raw,
+  required,
+}) => (
+  <AvFormResults>
+    <AvGroup>
+      <Label for="standAloneWithLabel">{label}</Label>
       <AvSelect
         minLength={min}
         maxLength={max}
         isMulti={isMulti}
         options={autofill ? autofillOptions : options}
-        name="standAlone"
-        aria-label="stand-alone"
-        required={boolean("Required", false)}
-        raw={boolean("Raw value", false)}
-        isDisabled={boolean("Disabled", false)}
-        creatable={boolean("Creatable", false)}
-        autofill={autofill}
-      />
-      {autofill && (
-        <AvField name="autoFill1" type="text" label="Autofill Value 1" />
-      )}
-
-      {autofill && (
-        <AvField name="autoFill2" type="text" label="Autofill Value 2" />
-      )}
-      <Button className="mt-3" color="primary">
-        Submit
-      </Button>
-    </AvFormResults>
-  );
-};
-Default.story = {
-  name: "default"
-};
-export const WithLabel = () => {
-  const isMulti = boolean("Multiple", false);
-  const min = (isMulti && number("Min Selection", 2)) || undefined;
-  const max = (isMulti && number("Max Selection", 3)) || undefined;
-  const autofill = boolean("Autofill", false);
-  return (
-    <AvFormResults>
-      <AvGroup>
-        <Label for="standAloneWithLabel">
-          {text("Label", "AvSelect Label")}
-        </Label>
-        <AvSelect
-          minLength={min}
-          maxLength={max}
-          isMulti={isMulti}
-          options={autofill ? autofillOptions : options}
-          name="standAloneWithLabel"
-          inputProps={{ "aria-label": "stand-alone with Label" }}
-          required={boolean("Required", false)}
-          raw={boolean("Raw value", false)}
-          autofill={autofill}
-          isDisabled={boolean("Disabled", false)}
-          creatable={boolean("Creatable", false)}
-        />
-        {autofill && (
-          <AvField name="autoFill1" type="text" label="Autofill Value 1" />
-        )}
-
-        {autofill && (
-          <AvField name="autoFill2" type="text" label="Autofill Value 2" />
-        )}
-        <AvFeedback>
-          {text("Error Message", "This field is invalid")}
-        </AvFeedback>
-      </AvGroup>
-      <Button color="primary">Submit</Button>
-    </AvFormResults>
-  );
-};
-WithLabel.story = {
-  name: "with label"
-};
-export const _AvSelectField = () => {
-  const isMulti = boolean("Multiple", false);
-  const min = (isMulti && number("Min Selection", 2)) || undefined;
-  const max = (isMulti && number("Max Selection", 3)) || undefined;
-  const required = boolean("Required", false);
-  const autofill = boolean("Autofill", false);
-  return (
-    <AvFormResults>
-      <AvSelectField
-        label={text("Label", "Field Label")}
-        name="AvSelectField"
-        minLength={min}
-        maxLength={max}
-        isMulti={isMulti}
-        options={autofill ? autofillOptions : options}
+        name="standAloneWithLabel"
+        inputProps={{ 'aria-label': 'stand-alone with Label' }}
         required={required}
-        errorMessage={text("Generic Error Message", "This field is invalid")}
-        validate={{
-          required: {
-            value: required,
-            errorMessage:
-              required &&
-              text("Required Error Message", "This field is required")
-          }
-        }}
-        raw={boolean("Raw value", false)}
-        isDisabled={boolean("Disabled", false)}
-        creatable={boolean("Creatable", false)}
+        raw={raw}
         autofill={autofill}
+        isDisabled={disabled}
+        creatable={creatable}
       />
-      {autofill && (
-        <AvField name="autoFill1" type="text" label="Autofill Value 1" />
-      )}
+      {autofill && <AvField name="autoFill1" type="text" label="Autofill Value 1" />}
+      {autofill && <AvField name="autoFill2" type="text" label="Autofill Value 2" />}
+      <AvFeedback>{errorMessage}</AvFeedback>
+    </AvGroup>
+    <Button color="primary">Submit</Button>
+  </AvFormResults>
+);
+WithLabel.args = {
+  autofill: false,
+  creatbale: false,
+  disabled: false,
+  errorMessage: 'This field is invalid',
+  isMulti: false,
+  label: 'AvSelect Label',
+  min: 2,
+  max: 3,
+  raw: false,
+  required: true,
+};
+WithLabel.storyName = 'with label';
 
-      {autofill && (
-        <AvField name="autoFill2" type="text" label="Autofill Value 2" />
-      )}
-      <Button color="primary">Submit</Button>
-    </AvFormResults>
-  );
+export const _AvSelectField: Story = ({
+  autofill,
+  creatable,
+  disabled,
+  errorMessage,
+  isMulti,
+  label,
+  max,
+  min,
+  raw,
+  required,
+  requiredErrorMessage,
+}) => (
+  <AvFormResults>
+    <AvSelectField
+      name="AvSelectField"
+      label={label}
+      minLength={min}
+      maxLength={max}
+      isMulti={isMulti}
+      options={autofill ? autofillOptions : options}
+      required={required}
+      errorMessage={errorMessage}
+      validate={{
+        required: {
+          value: required,
+          errorMessage: required && requiredErrorMessage,
+        },
+      }}
+      raw={raw}
+      isDisabled={disabled}
+      creatable={creatable}
+      autofill={autofill}
+    />
+    {autofill && <AvField name="autoFill1" type="text" label="Autofill Value 1" />}
+    {autofill && <AvField name="autoFill2" type="text" label="Autofill Value 2" />}
+    <Button color="primary">Submit</Button>
+  </AvFormResults>
+);
+_AvSelectField.args = {
+  autofill: false,
+  creatbale: false,
+  disabled: false,
+  errorMessage: 'This field is invalid',
+  isMulti: false,
+  label: 'Select',
+  max: 3,
+  min: 2,
+  raw: false,
+  required: true,
+  requiredErrorMessage: 'This field is required',
 };
-_AvSelectField.story = {
-  name: "AvSelectField"
+_AvSelectField.storyName = 'AvSelectField';
+
+export const _AvSelectResource: Story = ({
+  creatable,
+  disabled,
+  errorMessage,
+  isMulti,
+  label,
+  max,
+  min,
+  required,
+  requiredErrorMessage,
+}) => (
+  <AvFormResults>
+    <AvSelectResource
+      label={
+        <>
+          {label}
+          {required ? <span className="text-danger">*</span> : null}
+        </>
+      }
+      name="AvSelectResource"
+      minLength={min}
+      maxLength={max}
+      isMulti={isMulti}
+      required={required}
+      resource={avCustomResource}
+      labelKey="name"
+      creatable={creatable}
+      errorMessage={errorMessage}
+      validate={{
+        required: {
+          value: required,
+          errorMessage: required && requiredErrorMessage,
+        },
+      }}
+      isDisabled={disabled}
+    />
+    <Button color="primary">Submit</Button>
+  </AvFormResults>
+);
+_AvSelectResource.args = {
+  autofill: false,
+  creatbale: false,
+  disabled: false,
+  errorMessage: 'This field is invalid',
+  isMulti: false,
+  label: 'Custom Select',
+  min: 2,
+  max: 3,
+  raw: false,
+  required: true,
+  requiredErrorMessage: 'This field is required',
 };
-export const _AvSelectResource = () => {
-  const isMulti = boolean("Multiple", false);
-  const min = (isMulti && number("Min Selection", 2)) || undefined;
-  const max = (isMulti && number("Max Selection", 3)) || undefined;
-  const required = boolean("Required", false);
-  return (
-    <AvFormResults>
-      <AvSelectResource
-        label={
-          <>
-            {text("Label", "Custom Select")}
-            <span className="text-primary">*</span>
-          </>
-        }
-        name="AvSelectResource"
-        minLength={min}
-        maxLength={max}
-        isMulti={isMulti}
-        required={required}
-        resource={avCustomResource}
-        labelKey="name"
-        creatable={boolean("Creatable", false)}
-        errorMessage={text("Generic Error Message", "This field is invalid")}
-        validate={{
-          required: {
-            value: required,
-            errorMessage:
-              required &&
-              text("Required Error Message", "This field is required")
-          }
-        }}
-        isDisabled={boolean("Disabled", false)}
-      />
-      <Button color="primary">Submit</Button>
-    </AvFormResults>
-  );
-};
-_AvSelectResource.story = {
-  name: "AvSelectResource"
-};
+_AvSelectResource.storyName = 'AvSelectResource';

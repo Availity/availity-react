@@ -1,21 +1,20 @@
-import React from "react";
-import { withKnobs } from "@storybook/addon-knobs";
-import { FieldHelpIcon } from "@availity/help";
-import README from "@availity/help/README.md";
-import { Preview } from "../util";
+import React from 'react';
+import { Meta, Story } from '@storybook/react';
+import { FieldHelpIcon } from '@availity/help';
+// import README from "@availity/help/README.md";
 
 export default {
-  title: "Components/Help",
-  decorators: [withKnobs],
+  title: 'Components/Help',
   parameters: {
-    readme: {
-      sidebar: README,
-      StoryPreview: Preview
-    }
-  }
-};
-export const _FieldHelpIcon = (): JSX.Element => (
+    docs: {
+      // page: README,
+    },
+  },
+} as Meta;
+
+export const Default: Story = () => (
   <div id="testId">
     Select A Provider <FieldHelpIcon id="1234-5678-910" labelId="testId" />
   </div>
 );
+Default.storyName = 'default';

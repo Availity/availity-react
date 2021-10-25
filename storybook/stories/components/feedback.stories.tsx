@@ -1,86 +1,100 @@
-import React from "react";
-import { withKnobs, text, boolean, select } from "@storybook/addon-knobs";
-import "@availity/mock";
-import README from "@availity/feedback/README.md";
-import { Preview } from "../util";
+import React from 'react';
+import { Story, Meta } from '@storybook/react';
+import Feedback, { FeedbackForm } from '@availity/feedback';
+// import README from '@availity/feedback/README.md';
 
-const Feedback = React.lazy(() => import("@availity/feedback"));
-const FeedbackForm = React.lazy(() =>
-  import("@availity/feedback/src/FeedbackForm")
-);
+import '@availity/mock';
 
 export default {
-  title: "Components/Feedback",
-  decorators: [withKnobs],
+  title: 'Components/Feedback',
   parameters: {
-    readme: {
-      // Show readme at the addons panel
-      sidebar: README,
-      StoryPreview: Preview
-    }
-  }
-};
-export const Default = () => (
+    docs: {
+      // page: README,
+    },
+  },
+} as Meta;
+
+const colorOptions = ['secondary', 'success', 'info', 'danger', 'warning'];
+
+export const Default: Story = ({
+  btnText,
+  aboutOptions,
+  appName,
+  showSupport,
+  prompt,
+  additionalComments,
+  btnColor,
+  btnOutline,
+  className,
+  modal,
+}) => (
   <Feedback
-    appName={text("Application Name", "Payer Space")}
-    prompt={text("Prompt")}
+    appName={appName}
+    prompt={prompt}
     formProps={{
-      additionalComments: boolean("Additional Comments", false),
-      aboutOptions: boolean("About Options", false)
+      additionalComments,
+      aboutOptions: aboutOptions
         ? [
-            { label: "The Payer Space", value: "space" },
-            { label: "Applications", value: "applications" },
-            { label: "Resources", value: "resources" },
-            { label: "News and Announcements", value: "news" }
+            { label: 'The Payer Space', value: 'space' },
+            { label: 'Applications', value: 'applications' },
+            { label: 'Resources', value: 'resources' },
+            { label: 'News and Announcements', value: 'news' },
           ]
         : [],
-      staticFields: { staticKey: "my-static-value" }
+      staticFields: { staticKey: 'my-static-value' },
     }}
-    showSupport={boolean("Support", false)}
-    color={select(
-      "Button Color",
-      {
-        light: "light",
-        dark: "dark",
-        ghost: "ghost",
-        primary: "primary",
-        secondary: "secondary",
-        success: "success",
-        danger: "danger",
-        info: "info",
-        warning: "warning"
-      },
-      "secondary"
-    )}
-    outline={boolean("Button Outline", false)}
-    className={text("ClassName", "")}
-    modal={boolean("Modal", false)}
+    showSupport={showSupport}
+    color={btnColor}
+    outline={btnOutline}
+    className={className}
+    modal={modal}
   >
-    {text("Button Text")}
+    {btnText}
   </Feedback>
 );
-Default.story = {
-  name: "default"
+Default.args = {
+  btnText: 'Button Text',
+  appName: 'Payer Space',
+  prompt: '',
+  additionalComments: false,
+  aboutOptions: false,
+  showSupport: false,
+  btnOutline: false,
+  btnColor: colorOptions[0],
+  className: '',
+  modal: false,
 };
-export const WithForm = () => (
+Default.argTypes = {
+  btnColor: {
+    type: 'select',
+    options: colorOptions,
+  },
+};
+Default.storyName = 'default';
+
+export const WithForm: Story = ({ appName, autoFocusFeedbackButton, prompt, faceOptions }) => (
   <FeedbackForm
-    name={text("Application Name", "Payer Space")}
-    prompt={text("Prompt")}
-    autoFocusFeedbackButton={boolean("autoFocusFeedbackButton", false)}
-    faceOptions={[
-      {
-        icon: "ok",
-        description: "Yes",
-        placeholder: `Leave a comment if you'd like.`
-      },
-      {
-        icon: "cancel",
-        description: "No",
-        placeholder: `Leave a comment if you'd like.`
-      }
-    ]}
+    name={appName}
+    prompt={prompt}
+    autoFocusFeedbackButton={autoFocusFeedbackButton}
+    faceOptions={faceOptions}
   />
 );
-WithForm.story = {
-  name: "with form"
+WithForm.args = {
+  appName: 'Payer Space',
+  prompt: '',
+  autoFocusFeedbackButton: false,
+  faceOptions: [
+    {
+      icon: 'ok',
+      description: 'Yes',
+      placeholder: `Leave a comment if you'd like.`,
+    },
+    {
+      icon: 'cancel',
+      description: 'No',
+      placeholder: `Leave a comment if you'd like.`,
+    },
+  ],
 };
+WithForm.storyName = 'with form';

@@ -1,145 +1,185 @@
-import React from "react";
-import { Label, Button } from "reactstrap";
-import { AvGroup, AvFeedback } from "availity-reactstrap-validation";
-import { text, boolean, select, number } from "@storybook/addon-knobs";
-import AvDate, {
-  AvDateField,
-  AvDateRange,
-  AvDateRangeField
-} from "@availity/reactstrap-validation-date";
-import README from "@availity/reactstrap-validation-date/README.md";
-import "@availity/reactstrap-validation-date/styles.scss";
-import AvFormResults from "../mocks/AvFormResults";
-import { Preview } from "../util";
+import React from 'react';
+import { Meta, Story } from '@storybook/react';
+import { Label, Button } from 'reactstrap';
+import { AvGroup, AvFeedback } from 'availity-reactstrap-validation';
+import AvDate, { AvDateField, AvDateRange, AvDateRangeField } from '@availity/reactstrap-validation-date';
+// import README from '@availity/reactstrap-validation-date/README.md';
+import '@availity/reactstrap-validation-date/styles.scss';
 
-const types = {
-  text: "text",
-  date: "date"
-};
+import AvFormResults from '../util/AvFormResults';
+
+const types = ['text', 'date'];
 
 export default {
-  title: "Legacy Form Components/AvDate",
+  title: 'Legacy Form Components/AvDate',
   parameters: {
-    readme: {
-      // Show readme at the addons panel
-      sidebar: README,
-      StoryPreview: Preview
-    }
-  }
-};
-export const Default = () => (
+    docs: {
+      // page: README,
+    },
+  },
+} as Meta;
+
+export const Default: Story = ({ datepicker, disabled, max, min, required, type }) => (
   <AvFormResults>
     <AvDate
-      min={text("Min Date (yyyy-mm-dd)")}
-      max={text("Max Date (yyyy-mm-dd)")}
-      type={select("Type", types, "text")}
       name="standAlone"
-      required={boolean("Required", false)}
-      disabled={boolean("Disabled", false)}
-      datepicker={boolean("Has DatePicker", true)}
+      datepicker={datepicker}
+      disabled={disabled}
+      max={max}
+      min={min}
+      required={required}
+      type={type}
     />
     <Button className="mt-3" color="primary">
       Submit
     </Button>
   </AvFormResults>
 );
-Default.story = {
-  name: "default"
+Default.args = {
+  datepicker: true,
+  disabled: false,
+  max: '',
+  min: '',
+  required: true,
+  type: 'text',
 };
-export const WithLabel = () => (
+Default.argTypes = {
+  type: {
+    type: 'select',
+    options: types,
+  },
+};
+Default.storyName = 'default';
+
+export const WithLabel: Story = ({ datepicker, disabled, errorMessage, label, max, min, required, type }) => (
   <AvFormResults>
     <AvGroup>
-      <Label for="standAloneWithLabel">{text("Label", "AvDate Label")}</Label>
+      <Label for="standAloneWithLabel">{label}</Label>
       <AvDate
-        min={text("Min Date (yyyy-mm-dd)")}
-        max={text("Max Date (yyyy-mm-dd)")}
-        type={select("Type", types, "text")}
         name="standAlone"
-        required={boolean("Required", false)}
-        disabled={boolean("Disabled", false)}
-        datepicker={boolean("Has DatePicker", true)}
+        datepicker={datepicker}
+        disabled={disabled}
+        max={max}
+        min={min}
+        required={required}
+        type={type}
       />
-      <AvFeedback>{text("Error Message", "This field is invalid")}</AvFeedback>
+      <AvFeedback>{errorMessage}</AvFeedback>
     </AvGroup>
     <Button color="primary">Submit</Button>
   </AvFormResults>
 );
-WithLabel.story = {
-  name: "with label"
+WithLabel.args = {
+  datepicker: true,
+  disabled: false,
+  errorMessage: 'This field is invalid',
+  label: 'AvDate Label',
+  max: '',
+  min: '',
+  required: true,
+  type: 'text',
 };
-export const _AvDateField = () => {
-  const required = boolean("Required", false);
-  const min = text("Min Date (yyyy-mm-dd)");
-  return (
-    <AvFormResults>
-      <AvDateField
-        label={text("Label", "Field Label")}
-        min={min}
-        max={text("Max Date (yyyy-mm-dd)")}
-        type={select("Type", types, "text")}
-        name="AvDateField"
-        required={boolean("Required", false)}
-        disabled={boolean("Disabled", false)}
-        datepicker={boolean("Has DatePicker", true)}
-        errorMessage={text("Generic Error Message", "This field is invalid")}
-        distance={{
-          max: {
-            value: 90,
-            units: "days"
-          }
-        }}
-        validate={{
-          required: {
-            value: required,
-            errorMessage:
-              required &&
-              text("Required Error Message", "This field is required")
-          }
-        }}
-      />
-      <Button color="primary">Submit</Button>
-    </AvFormResults>
-  );
+WithLabel.argTypes = {
+  type: {
+    type: 'select',
+    options: types,
+  },
 };
-_AvDateField.story = {
-  name: "AvDateField"
+WithLabel.storyName = 'with label';
+
+export const _AvDateField: Story = ({
+  datepicker,
+  disabled,
+  errorMessage,
+  label,
+  max,
+  min,
+  required,
+  requiredErrorMessage,
+  type,
+}) => (
+  <AvFormResults>
+    <AvDateField
+      name="AvDateField"
+      datepicker={datepicker}
+      disabled={disabled}
+      errorMessage={errorMessage}
+      label={label}
+      max={max}
+      min={min}
+      required={required}
+      type={type}
+      distance={{
+        max: {
+          value: 90,
+          units: 'days',
+        },
+      }}
+      validate={{
+        required: {
+          value: required,
+          errorMessage: required && requiredErrorMessage,
+        },
+      }}
+    />
+    <Button color="primary">Submit</Button>
+  </AvFormResults>
+);
+_AvDateField.args = {
+  datepicker: true,
+  disabled: false,
+  errorMessage: 'This field is invalid',
+  label: 'Field Label',
+  max: '',
+  min: '',
+  required: true,
+  requiredErrorMessage: 'This field is required',
+  type: 'text',
 };
-export const _AvDateRange = () => {
-  const required = boolean("Required", false);
-  const distanceUnits = ["day", "month"];
-  const minDistance = number("Min Distance");
-  const maxDistance = number("Max Distance");
-  let minDistanceUnits;
-  let maxDistanceUnits;
-  if (minDistance) {
-    minDistanceUnits = select("Min Distance Units", distanceUnits, "day");
-  }
-  if (maxDistance) {
-    maxDistanceUnits = select("Max Distance Units", distanceUnits, "day");
-  }
+_AvDateField.argTypes = {
+  type: {
+    type: 'select',
+    options: types,
+  },
+};
+_AvDateField.storyName = 'AvDateField';
+
+const distanceUnits = ['day', 'month'];
+export const _AvDateRange: Story = ({
+  autoSync,
+  datepicker,
+  defaultEndDate,
+  defaultStartDate,
+  disabled,
+  errorMessage,
+  maxDistance,
+  maxDistanceUnits,
+  minDistance,
+  minDistanceUnits,
+  ranges,
+  required,
+  requiredErrorMessage,
+  type,
+}) => {
   const min = minDistance &&
     minDistanceUnits && {
       value: minDistance,
-      units: minDistanceUnits
+      units: minDistanceUnits,
     };
   const max = maxDistance &&
     maxDistanceUnits && {
       value: maxDistance,
-      units: maxDistanceUnits
+      units: maxDistanceUnits,
     };
   const distance = (min || max) && { min, max };
   const baseStart = {
-    name: "date.start"
+    name: 'date.start',
+    value: undefined,
   };
   const baseEnd = {
-    name: "date.end"
+    name: 'date.end',
+    value: undefined,
   };
-  const hasDefaultStart = boolean("Has Default Start Date", false);
-  const defaultStartDate =
-    hasDefaultStart && text("Default Start Date (yyyy-mm-dd)", "2019-01-01");
-  const hasDefaultEnd = boolean("Has Default End Date", false);
-  const defaultEndDate =
-    hasDefaultEnd && text("Default End Date (yyyy-mm-dd)", "2019-12-31");
   if (defaultStartDate) {
     baseStart.value = defaultStartDate;
   }
@@ -150,106 +190,162 @@ export const _AvDateRange = () => {
     <AvFormResults>
       <AvDateRange
         name="AvDateRange"
-        type={select("Type", types, "text")}
+        type={type}
         start={baseStart}
         end={baseEnd}
-        min={text("Min Date (yyyy-mm-dd)")}
-        max={text("Max Date (yyyy-mm-dd)")}
-        required={boolean("Required", false)}
-        disabled={boolean("Disabled", false)}
-        autoSync={boolean("Auto Sync", false)}
+        min={min}
+        max={max}
+        required={required}
+        disabled={disabled}
+        autoSync={autoSync}
         distance={distance}
-        ranges={boolean("ranges", false)}
-        errorMessage={text("Generic Error Message", "This field is invalid")}
+        ranges={ranges}
+        errorMessage={errorMessage}
         validate={{
           required: {
             value: required,
-            errorMessage:
-              required &&
-              text("Required Error Message", "This field is required")
-          }
+            errorMessage: required && requiredErrorMessage,
+          },
         }}
-        datepicker={boolean("Has DatePicker", true)}
+        datepicker={datepicker}
       />
       <Button color="primary">Submit</Button>
     </AvFormResults>
   );
 };
-_AvDateRange.story = {
-  name: "AvDateRange"
+_AvDateRange.args = {
+  autoSync: true,
+  datepicker: true,
+  defaultEndDate: '2019-12-31',
+  defaultStartDate: '2019-01-01',
+  disabled: false,
+  errorMessage: 'This field is invalid',
+  maxDistance: 0,
+  maxDistanceUnits: distanceUnits[0],
+  minDistance: 0,
+  minDistanceUnits: distanceUnits[0],
+  ranges: true,
+  required: true,
+  requiredErrorMessage: 'This field is required',
+  type: 'text',
 };
-export const _AvDateRangeField = () => {
-  const distanceUnits = ["day", "month"];
-  const required = boolean("Required", false);
-  const minDistance = number("Min Distance");
-  const maxDistance = number("Max Distance");
-  let minDistanceUnits;
-  let maxDistanceUnits;
-  if (minDistance) {
-    minDistanceUnits = select("Min Distance Units", distanceUnits, "day");
-  }
-  if (maxDistance) {
-    maxDistanceUnits = select("Max Distance Units", distanceUnits, "day");
-  }
+_AvDateRange.argTypes = {
+  maxDistanceUnits: {
+    type: 'select',
+    options: distanceUnits,
+  },
+  minDistanceUnits: {
+    type: 'select',
+    options: distanceUnits,
+  },
+  type: {
+    type: 'select',
+    options: types,
+  },
+};
+_AvDateRange.storyName = 'AvDateRange';
+
+export const _AvDateRangeField: Story = ({
+  autoSync,
+  datepicker,
+  defaultEndDate,
+  defaultStartDate,
+  disabled,
+  errorMessage,
+  label,
+  maxDistance,
+  maxDistanceUnits,
+  minDistance,
+  minDistanceUnits,
+  ranges,
+  required,
+  requiredErrorMessage,
+  type,
+}) => {
   const min = minDistance &&
     minDistanceUnits && {
       value: minDistance,
-      units: minDistanceUnits
+      units: minDistanceUnits,
     };
   const max = maxDistance &&
     maxDistanceUnits && {
       value: maxDistance,
-      units: maxDistanceUnits
+      units: maxDistanceUnits,
     };
   const distance = (min || max) && { min, max };
   const baseStart = {
-    name: "date.start"
+    name: 'date.start',
+    value: undefined,
   };
   const baseEnd = {
-    name: "date.end"
+    name: 'date.end',
+    value: undefined,
   };
-  const hasDefaultStart = boolean("Has Default Start Date", false);
-  const defaultStartDate =
-    hasDefaultStart && text("Default Start Date (yyyy-mm-dd)", "2019-01-01");
-  const hasDefaultEnd = boolean("Has Default End Date", false);
-  const defaultEndDate =
-    hasDefaultEnd && text("Default End Date (yyyy-mm-dd)", "2019-12-31");
+
   if (defaultStartDate) {
     baseStart.value = defaultStartDate;
   }
   if (defaultEndDate) {
     baseEnd.value = defaultEndDate;
   }
+
   return (
     <AvFormResults>
       <AvDateRangeField
-        label={text("Label", "Date Range")}
         name="AvDateRange"
-        type={select("Type", types, "text")}
+        label={label}
+        type={type}
         start={baseStart}
         end={baseEnd}
-        min={text("Min Date (yyyy-mm-dd)")}
-        max={text("Max Date (yyyy-mm-dd)")}
+        min={min}
+        max={max}
         distance={distance}
-        ranges={boolean("ranges", false)}
-        required={boolean("Required", false)}
-        disabled={boolean("Disabled", false)}
-        autoSync={boolean("Auto Sync", false)}
-        errorMessage={text("Generic Error Message", "This field is invalid")}
+        ranges={ranges}
+        required={required}
+        disabled={disabled}
+        autoSync={autoSync}
+        errorMessage={errorMessage}
         validate={{
           required: {
             value: required,
-            errorMessage:
-              required &&
-              text("Required Error Message", "This field is required")
-          }
+            errorMessage: required && requiredErrorMessage,
+          },
         }}
-        datepicker={boolean("Has DatePicker", true)}
+        datepicker={datepicker}
       />
       <Button color="primary">Submit</Button>
     </AvFormResults>
   );
 };
-_AvDateRangeField.story = {
-  name: "AvDateRangeField"
+_AvDateRangeField.args = {
+  autoSync: true,
+  datepicker: true,
+  defaultEndDate: '2019-12-31',
+  defaultStartDate: '2019-01-01',
+  disabled: false,
+  errorMessage: 'This field is invalid',
+  label: 'Date Range',
+  maxDistance: 0,
+  maxDistanceUnits: distanceUnits[0],
+  minDistance: 0,
+  minDistanceUnits: distanceUnits[0],
+  ranges: true,
+  required: true,
+  requiredErrorMessage: 'This field is required',
+  type: 'text',
 };
+_AvDateRangeField.argTypes = {
+  maxDistanceUnits: {
+    type: 'select',
+    options: distanceUnits,
+  },
+  minDistanceUnits: {
+    type: 'select',
+    options: distanceUnits,
+  },
+  type: {
+    type: 'select',
+    options: types,
+  },
+};
+_AvDateRangeField.storyName = 'AvDateRangeField';

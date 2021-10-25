@@ -1,50 +1,39 @@
-import React from "react";
-import { withKnobs, text, boolean, select } from "@storybook/addon-knobs";
-import README from "@availity/app-icon/README.md";
-import { Preview } from "../util";
-
-const AppIcon = React.lazy(() => import("@availity/app-icon"));
+import React from 'react';
+import { Story, Meta } from '@storybook/react';
+import AppIcon from '@availity/app-icon';
+// import README from '@availity/app-icon/README.md';
 
 export default {
-  title: "Components/AppIcon",
-  decorators: [withKnobs],
+  title: 'Components/AppIcon',
   parameters: {
-    readme: {
-      // Show readme at the addons panel
-      sidebar: README,
-      StoryPreview: Preview
-    }
-  }
-};
-export const _Default = () => (
-  <AppIcon
-    size={select(
-      "Size",
-      {
-        Default: "",
-        Large: "lg",
-        "Extra Large": "xl"
-      },
-      ""
-    )}
-    color={select(
-      "Color",
-      {
-        Black: "black",
-        Blue: "blue",
-        Green: "green",
-        Orange: "orange"
-      },
-      "black"
-    )}
-    branded={boolean("Branded", false)}
-    className={text("ClassName")}
-    src={text("Image")}
-    alt={text("alt")}
-  >
-    {text("Application Abbreviation", "AI")}
+    docs: {
+      // page: README,
+    },
+  },
+} as Meta;
+
+export const Default: Story = ({ size, color, branded, className, src, alt, children }) => (
+  <AppIcon size={size} color={color} branded={branded} className={className} src={src} alt={alt}>
+    {children}
   </AppIcon>
 );
-_Default.story = {
-  name: "default"
+Default.args = {
+  children: 'AI',
+  size: '',
+  color: 'black',
+  className: '',
+  branded: false,
+  src: '',
+  alt: '',
 };
+Default.argTypes = {
+  size: {
+    type: 'select',
+    options: ['lg', 'xl'],
+  },
+  color: {
+    type: 'select',
+    options: ['black', 'blue', 'orange', 'green'],
+  },
+};
+Default.storyName = 'default';

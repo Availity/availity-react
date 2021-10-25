@@ -1,17 +1,13 @@
 import React from 'react';
 import { Card, CardBody, CardTitle } from 'reactstrap';
 
-export const Preview: React.FC = ({ children }) => (
-  <React.Suspense fallback={<div className="text-center">Loading...</div>}>{children}</React.Suspense>
-);
-
 type Props = {
   data: Record<string, unknown>;
   loading: boolean;
-  title: string;
-}
+  title?: string;
+};
 
-export const ResourceComponent: React.FC<Props> = ({ data, loading, title = '' }) => (
+const ResourceComponent = ({ data, loading, title = '' }: Props): JSX.Element => (
   <Card body>
     <CardTitle className="text-center" tag="h4">
       {title}
@@ -20,3 +16,4 @@ export const ResourceComponent: React.FC<Props> = ({ data, loading, title = '' }
   </Card>
 );
 
+export default ResourceComponent;

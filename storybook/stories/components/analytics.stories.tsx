@@ -1,37 +1,39 @@
-import React from "react";
-import { withKnobs } from "@storybook/addon-knobs";
-import { Button } from "reactstrap";
-import README from "@availity/analytics/README.md";
-import { Preview } from "../util";
-
-const Analytics = React.lazy(() => import("@availity/analytics"));
+/* eslint-disable no-console */
+import React from 'react';
+import { Story, Meta } from '@storybook/react';
+import { Button } from 'reactstrap';
+import Analytics from '@availity/analytics';
+// import README from '@availity/analytics/README.md';
 
 export default {
-  title: "Components/Analytics",
-  decorators: [withKnobs],
+  title: 'Components/Analytics',
   parameters: {
-    readme: {
-      // Show readme at the addons panel
-      sidebar: README,
-      StoryPreview: Preview
-    }
-  }
-};
-export const Default = () => {
+    docs: {
+      // page: README,
+    },
+  },
+} as Meta;
+
+export const Default: Story = () => {
   const plugin = {
     isEnabled: () => true,
-    init: () => {},
-    trackEvent: e => {
-      alert(JSON.stringify(e));
+    init: () => {
+      console.log('init');
     },
-    trackPageView: () => {}
+    trackEvent: (event: unknown) => {
+      alert(JSON.stringify(event));
+    },
+    trackPageView: () => {
+      console.log('track page view');
+    },
   };
+
   return (
     <Analytics
       plugins={[plugin]}
       options={{
         recursive: true,
-        attributePrefix: "data-av-analytics"
+        attributePrefix: 'data-av-analytics',
       }}
     >
       <Button
@@ -45,6 +47,4 @@ export const Default = () => {
     </Analytics>
   );
 };
-Default.story = {
-  name: "default"
-};
+Default.storyName = 'default';

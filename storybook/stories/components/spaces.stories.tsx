@@ -1,34 +1,32 @@
-import React from "react";
-import { withKnobs, boolean } from "@storybook/addon-knobs";
-import { Row, Col } from "reactstrap";
+import React from 'react';
+import { Meta, Story } from '@storybook/react';
+import { Row, Col } from 'reactstrap';
 import Spaces, {
   SpacesLogo,
   SpacesTile,
   SpacesBillboard,
   SpacesDisclaimer,
   SpacesGhostText,
-  SpacesAgreement
-} from "@availity/spaces";
-import README from "@availity/spaces/README.md";
-import "@availity/mock";
-import { Preview } from "../util";
+  SpacesAgreement,
+} from '@availity/spaces';
+// import README from '@availity/spaces/README.md';
+
+import '@availity/mock';
 
 export default {
-  title: "Components/Spaces",
-  decorators: [withKnobs],
+  title: 'Components/Spaces',
   parameters: {
-    readme: {
-      // Show readme at the addons panel
-      sidebar: README,
-      StoryPreview: Preview
-    }
-  }
-};
-export const Images = () => (
+    docs: {
+      // page: README,
+    },
+  },
+} as Meta;
+
+export const Images: Story = () => (
   <div>
     <Spaces
-      spaceIds={["space1", "space2", "space3"]}
-      payerIds={["availity1", "availity2", "availity3"]}
+      spaceIds={['space1', 'space2', 'space3']}
+      payerIds={['availity1', 'availity2', 'availity3']}
       clientId="my-client-id"
     >
       <Row className="mb-3">
@@ -60,47 +58,42 @@ export const Images = () => (
     </Spaces>
 
     <div>
-      <p>
-        Note: these spaces images use a relative URL which will only work on the
-        Availity Portal
-      </p>
+      <p>Note: these spaces images use a relative URL which will only work on the Availity Portal</p>
     </div>
   </div>
 );
-Images.story = {
-  name: "images"
-};
-export const Disclaimer = () => (
+Images.storyName = 'images';
+
+export const Disclaimer: Story = ({ styled, markdown }) => (
   <div>
-    <Spaces spaceIds={["space1"]} clientId="my-client-id">
-      <SpacesDisclaimer
-        styled={boolean("Styled", true)}
-        markdown={boolean("Markdown", false)}
-        spaceId="space1"
-      />
+    <Spaces spaceIds={['space1']} clientId="my-client-id">
+      <SpacesDisclaimer styled={styled} markdown={markdown} spaceId="space1" />
     </Spaces>
   </div>
 );
-Disclaimer.story = {
-  name: "disclaimer"
+Disclaimer.args = {
+  styled: true,
+  markdown: false,
 };
-export const Agreement = () => (
+Disclaimer.storyName = 'disclaimer';
+
+export const Agreement: Story = ({ markdown }) => (
   <div>
-    <Spaces spaceIds={["space1"]} clientId="my-client-id">
-      <SpacesAgreement markdown={boolean("Markdown", false)} spaceId="space1" />
+    <Spaces spaceIds={['space1']} clientId="my-client-id">
+      <SpacesAgreement markdown={markdown} spaceId="space1" />
     </Spaces>
   </div>
 );
-Agreement.story = {
-  name: "agreement"
+Agreement.args = {
+  markdown: false,
 };
-export const GhostText = () => (
+Agreement.storyName = 'agreement';
+
+export const GhostText: Story = () => (
   <div>
-    <Spaces spaceIds={["space1"]} clientId="my-client-id">
+    <Spaces spaceIds={['space1']} clientId="my-client-id">
       <SpacesGhostText spaceId="space1" />
     </Spaces>
   </div>
 );
-GhostText.story = {
-  name: "ghost text"
-};
+GhostText.storyName = 'ghost text';

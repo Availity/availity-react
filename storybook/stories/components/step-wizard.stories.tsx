@@ -1,59 +1,67 @@
-import React from "react";
-import { withKnobs, boolean, text } from "@storybook/addon-knobs";
-import README from "@availity/step-wizard/README.md";
-import Wizard, {
-  WizardStep,
-  WizardStepBadge,
-  WizardStepTitle
-} from "@availity/step-wizard";
-import { Preview } from "../util";
+import React from 'react';
+import { Meta, Story } from '@storybook/react';
+import Wizard, { WizardStep, WizardStepBadge, WizardStepTitle } from '@availity/step-wizard';
+// import README from '@availity/step-wizard/README.md';
 
 export default {
-  title: "Components/Wizard",
-  decorators: [withKnobs],
+  title: 'Components/Wizard',
   parameters: {
-    readme: {
-      // Show readme at the addons panel
-      sidebar: README,
-      StoryPreview: Preview
-    }
-  }
-};
-export const Default = () => (
+    docs: {
+      // page: README,
+    },
+  },
+} as Meta;
+
+export const Default: Story = ({
+  bar,
+  stacked,
+  progress,
+  firstStepComplete,
+  firstStepActive,
+  firstStepDisabled,
+  firstStepClickable,
+  firstStepHref,
+  secondStepComplete,
+  secondStepActive,
+  secondStepDisabled,
+  secondStepClickable,
+  secondStepHref,
+  thirdStepComplete,
+  thirdStepActive,
+  thirdStepDisabled,
+  thirdStepClickable,
+  thirdStepHref,
+}) => (
   <div className="py-3">
-    <Wizard
-      bar={boolean("Wizard Bar", false)}
-      stacked={boolean("Wizard Stacked", false)}
-      progress={boolean("Wizard Progress", false)}
-    >
+    <Wizard bar={bar} stacked={stacked} progress={progress}>
       <WizardStep
-        complete={boolean("First Step Complete", false)}
-        active={boolean("First Step Active", false)}
-        disabled={boolean("First Step Disabled", false)}
-        clickable={boolean("First Step Clickable", false)}
-        href={text("First Step Href", "#step-1")}
+        complete={firstStepComplete}
+        active={firstStepActive}
+        disabled={firstStepDisabled}
+        clickable={firstStepClickable}
+        href={firstStepHref}
       >
         <WizardStepBadge>1</WizardStepBadge>
         <WizardStepTitle>First</WizardStepTitle>
       </WizardStep>
 
       <WizardStep
-        complete={boolean("Second Step Complete", false)}
-        active={boolean("Second Step Active", false)}
-        disabled={boolean("Second Step Disabled", false)}
-        clickable={boolean("Second Step Clickable", false)}
-        href={text("Second Step Href", "#step-2")}
+        complete={secondStepComplete}
+        active={secondStepActive}
+        disabled={secondStepDisabled}
+        clickable={secondStepClickable}
+        href={secondStepHref}
       >
         <WizardStepBadge>2</WizardStepBadge>
         <WizardStepTitle>Second</WizardStepTitle>
       </WizardStep>
 
       <WizardStep
-        complete={boolean("Third Step Complete", false)}
-        active={boolean("Third Step Active", false)}
-        disabled={boolean("Third Step Disabled", false)}
-        clickable={boolean("Third Step Clickable", false)}
-        href={text("Third Step Href", "#step-3")}
+        complete={thirdStepComplete}
+        active={thirdStepActive}
+        disabled={thirdStepDisabled}
+        clickable={thirdStepClickable}
+        href={thirdStepHref}
       >
         <WizardStepBadge>3</WizardStepBadge>
         <WizardStepTitle>Third</WizardStepTitle>
@@ -61,6 +69,24 @@ export const Default = () => (
     </Wizard>
   </div>
 );
-Default.story = {
-  name: "default"
+Default.args = {
+  bar: false,
+  stacked: false,
+  progress: false,
+  firstStepComplete: false,
+  firstStepActive: false,
+  firstStepDisabled: false,
+  firstStepClickable: false,
+  firstStepHref: '#step-1',
+  secondStepComplete: false,
+  secondStepActive: false,
+  secondStepDisabled: false,
+  secondStepClickable: false,
+  secondStepHref: '#step-2',
+  thirdStepComplete: false,
+  thirdStepActive: false,
+  thirdStepDisabled: false,
+  thirdStepClickable: false,
+  thirdStepHref: '#step-3',
 };
+Default.storyName = 'default';

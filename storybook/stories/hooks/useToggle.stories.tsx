@@ -1,36 +1,33 @@
-import React from "react";
-import { useToggle } from "@availity/hooks";
-import README from "@availity/hooks/README.md";
-import { Button } from "reactstrap";
-import { Preview } from "../util";
+import React from 'react';
+import { Meta, Story } from '@storybook/react';
+import { Button } from 'reactstrap';
+import { useToggle } from '@availity/hooks';
+// import README from '@availity/hooks/README.md';
 
-type ComponentProps = {
-  initialValue?: boolean
-};
-
-const Component: React.SFC<ComponentProps> = ({ initialValue = false }) => {
+const Component = ({ initialValue = false }: { initialValue?: boolean }) => {
   const [isToggled, toggle] = useToggle(initialValue);
+
   return (
     <Button onClick={() => toggle()} color="primary">
-      {isToggled ? "World" : "Hello"}
+      {isToggled ? 'World' : 'Hello'}
     </Button>
   );
 };
+
 export default {
-  title: "Hooks/useToggle",
+  title: 'Hooks/useToggle',
   parameters: {
     readme: {
-      // Show readme at the addons panel
-      sidebar: README,
-      StoryPreview: Preview
-    }
-  }
+      // page: README,
+    },
+  },
+} as Meta;
+
+export const Default: Story = () => <Component />;
+Default.storyName = 'default';
+
+export const WithInitialValue: Story = ({ initialValue }) => <Component initialValue={initialValue} />;
+WithInitialValue.args = {
+  initialValue: true,
 };
-export const Default = () => <Component />;
-Default.story = {
-  name: "default"
-};
-export const WithInitialValue = () => <Component initialValue />;
-WithInitialValue.story = {
-  name: "with initialValue"
-};
+WithInitialValue.storyName = 'with initialValue';

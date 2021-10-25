@@ -1,59 +1,59 @@
-import React from "react";
-import { select } from "@storybook/addon-knobs";
-import README from "@availity/icon/README.md";
-import icons from "availity-uikit/fonts/config.json";
-import { Preview } from "../util";
+import React from 'react';
+import { Meta, Story } from '@storybook/react';
+import Icon from '@availity/icon';
+// import README from '@availity/icon/README.md';
+import icons from 'availity-uikit/fonts/config.json';
 
-const Icon = React.lazy(() => import("@availity/icon"));
+const sizes = ['lg', 'xl', '2x', '3x', '4x', '5x'];
 
-const options = {
-  lg: "lg",
-  xl: "xl",
-  "2x": "2x",
-  "3x": "3x",
-  "4x": "4x",
-  "5x": "5x"
-};
-const colors = {
-  none: "none",
-  primary: "primary",
-  secondary: "secondary",
-  danger: "danger",
-  warning: "warning",
-  dark: "dark",
-  white: "white",
-  light: "light",
-  success: "success",
-  info: "info",
-  muted: "muted"
-};
-const iconOptions = {};
-const hoverOptions = {
-  cursor: "pointer"
-};
-icons.glyphs.forEach(glyph => {
-  iconOptions[glyph.css] = glyph.css;
-});
+const colors = [
+  'none',
+  'primary',
+  'secondary',
+  'danger',
+  'warning',
+  'dark',
+  'white',
+  'light',
+  'success',
+  'info',
+  'muted',
+];
+
+const iconOptions = icons.glyphs.map((glyph) => glyph.css);
+
 export default {
-  title: "Components/Icon",
+  title: 'Components/Icon',
   parameters: {
-    readme: {
-      // Show readme at the addons panel
-      sidebar: README,
-      StoryPreview: Preview
-    }
-  }
-};
-export const Default = () => (
+    docs: {
+      // page: README,
+    },
+  },
+} as Meta;
+
+export const Default: Story = ({ name, size, color, hover }) => (
   <div className="py-3">
-    <Icon
-      name={select("Icon Name", iconOptions, "home")}
-      size={select("Sizes", options, "3x")}
-      color={select("Colors", colors)}
-      style={{ cursor: select("Hover", hoverOptions, "pointer") }}
-    />
+    <Icon name={name} size={size} color={color} onClick={hover ? () => ({}) : undefined} />
   </div>
 );
-Default.story = {
-  name: "default"
+Default.args = {
+  name: 'home',
+  size: '3x',
+  color: 'none',
+  hover: false,
 };
+Default.argTypes = {
+  name: {
+    type: 'select',
+    options: iconOptions,
+  },
+  size: {
+    type: 'select',
+    options: sizes,
+  },
+  color: {
+    type: 'select',
+    options: colors,
+  },
+};
+Default.storyName = 'default';

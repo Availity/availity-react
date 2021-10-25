@@ -1,138 +1,126 @@
-import React from "react";
-import { button, boolean, number, array, text } from "@storybook/addon-knobs";
-import mock from "xhr-mock";
-import Upload, {
-  UploadProgressBar,
-  FilePicker,
-  FilePickerBtn
-} from "@availity/upload";
-import README from "@availity/upload/README.md";
-import MockUpload from "@availity/upload/tests/mockUpload";
-import { Preview } from "../util";
+import React from 'react';
+import { Meta, Story } from '@storybook/react';
+import { button } from '@storybook/addon-knobs';
+import mock from 'xhr-mock';
+import Upload, { UploadProgressBar, FilePicker, FilePickerBtn } from '@availity/upload';
+// import README from '@availity/upload/README.md';
+import MockUpload from '@availity/upload/tests/mockUpload';
 
 const log = window.console.log.bind(console);
-mock.post(
-  /\/ms\/api\/availity\/internal\/core\/vault\/upload\/v1\/resumable\/[^/]\//,
-  (req, res) =>
-    res
-      .status(201)
-      .headers({
-        "tus-resumable": "1.0.0",
-        "upload-expires": "Fri, 12 Jan 2030 15:54:39 GMT",
-        "transfer-encoding": "chunked",
-        location: "4611142db7c049bbbe37376583a3f46b"
-      })
-      .body("")
+mock.post(/\/ms\/api\/availity\/internal\/core\/vault\/upload\/v1\/resumable\/[^/]\//, (req, res) =>
+  res
+    .status(201)
+    .headers({
+      'tus-resumable': '1.0.0',
+      'upload-expires': 'Fri, 12 Jan 2030 15:54:39 GMT',
+      'transfer-encoding': 'chunked',
+      location: '4611142db7c049bbbe37376583a3f46b',
+    })
+    .body('')
 );
-mock.patch(
-  /\/ms\/api\/availity\/internal\/core\/vault\/upload\/v1\/resumable\/[^/]\/[^/]/,
-  (req, res) =>
-    res
-      .status(204)
-      .headers({
-        "tus-resumable": "1.0.0",
-        "upload-expires": "Fri, 12 Jan 2030 15:54:39 GMT",
-        "transfer-encoding": "chunked",
-        "AV-Scan-Result": "accepted",
-        "Upload-Result": "accepted",
-        "Upload-Length": req.body().length,
-        "Upload-Offset": req.header("upload-offset") + req.body().size,
-        references: '["/files/105265/9ee77f6d-9779-4b96-a995-0df47657e504"]'
-      })
-      .body("")
+mock.patch(/\/ms\/api\/availity\/internal\/core\/vault\/upload\/v1\/resumable\/[^/]\/[^/]/, (req, res) =>
+  res
+    .status(204)
+    .headers({
+      'tus-resumable': '1.0.0',
+      'upload-expires': 'Fri, 12 Jan 2030 15:54:39 GMT',
+      'transfer-encoding': 'chunked',
+      'AV-Scan-Result': 'accepted',
+      'Upload-Result': 'accepted',
+      'Upload-Length': req.body().length,
+      'Upload-Offset': req.header('upload-offset') + req.body().size,
+      references: '["/files/105265/9ee77f6d-9779-4b96-a995-0df47657e504"]',
+    })
+    .body('')
 );
-mock.use(
-  "HEAD",
-  /\/ms\/api\/availity\/internal\/core\/vault\/upload\/v1\/resumable\/[^/]\/[^/]/,
-  (req, res) =>
-    res
-      .status(200)
-      .headers({
-        "tus-resumable": "1.0.0",
-        "upload-expires": "Fri, 12 Jan 2030 15:54:39 GMT",
-        "transfer-encoding": "chunked",
-        "AV-Scan-Result": "accepted",
-        "Upload-Result": "accepted",
-        "Upload-Length": "596852",
-        "Upload-Offset": "596852",
-        references: '["/files/105265/9ee77f6d-9779-4b96-a995-0df47657e504"]'
-      })
-      .body("")
+mock.use('HEAD', /\/ms\/api\/availity\/internal\/core\/vault\/upload\/v1\/resumable\/[^/]\/[^/]/, (req, res) =>
+  res
+    .status(200)
+    .headers({
+      'tus-resumable': '1.0.0',
+      'upload-expires': 'Fri, 12 Jan 2030 15:54:39 GMT',
+      'transfer-encoding': 'chunked',
+      'AV-Scan-Result': 'accepted',
+      'Upload-Result': 'accepted',
+      'Upload-Length': '596852',
+      'Upload-Offset': '596852',
+      references: '["/files/105265/9ee77f6d-9779-4b96-a995-0df47657e504"]',
+    })
+    .body('')
 );
 // mock.use(proxy);
+
 let instance;
 export default {
-  title: "Components/Upload",
+  title: 'Components/Upload',
   decorators: [
-    story => {
+    (story) => {
       instance = new MockUpload();
       return story();
-    }
+    },
   ],
   parameters: {
-    readme: {
-      // Show readme at the addons panel
-      sidebar: README,
-      StoryPreview: Preview
-    }
-  }
-};
-export const Default = () => (
+    docs: {
+      // page: README,
+    },
+  },
+} as Meta;
+
+export const Default: Story = ({ allowedFileTypes, disabled, max, maxSize, multiple }) => (
   <div className="py-3">
     <Upload
       clientId="a"
       bucketId="b"
       customerId="c"
-      multiple={boolean("Multiple File Select", Upload.defaultProps.multiple)}
-      disabled={boolean("Disabled", Upload.defaultProps.disabled)}
-      max={number("Max number of files", 0)}
-      allowedFileTypes={array(
-        "Allowed File Types",
-        [".jpg", ".jpeg", ".doc", ".docx"],
-        ","
-      )}
-      maxSize={number("Max File Size", 0, { min: 0 }) || undefined}
+      multiple={multiple}
+      disabled={disabled}
+      max={max}
+      allowedFileTypes={allowedFileTypes}
+      maxSize={maxSize}
     />
   </div>
 );
-Default.story = {
-  name: "default"
+Default.args = {
+  allowedFileTypes: ['.jpg', '.jpeg', '.doc', '.docx'],
+  disabled: false,
+  max: 0,
+  maxSize: 0,
+  multiple: false,
 };
-export const PickerButton = () => (
+Default.storyName = 'default';
+
+export const PickerButton: Story = ({ allowedFileTypes, disabled, maxSize }) => (
   <div className="py-3">
     <p>
-      This component does not do much out-of-the-box, it is mostly just a button
-      that triggers a file input which ensures the value gets reset after a file
-      is chosen so that the user can choose the same file again.
+      This component does not do much out-of-the-box, it is mostly just a button that triggers a file input which
+      ensures the value gets reset after a file is chosen so that the user can choose the same file again.
     </p>
-    <FilePickerBtn
-      allowedFileTypes={array("Allowed File Types", [], ",")}
-      maxSize={number("Max File Size", 0, { min: 0 }) || undefined}
-      disabled={boolean("Disabled", Upload.defaultProps.disabled)}
-    />
+    <FilePickerBtn allowedFileTypes={allowedFileTypes} maxSize={maxSize} disabled={disabled} />
   </div>
 );
-PickerButton.story = {
-  name: "picker button"
+PickerButton.args = {
+  allowedFileTypes: [],
+  disabled: false,
+  maxSize: 0,
 };
-export const PickerField = () => (
+PickerButton.storyName = 'picker button';
+
+export const PickerField: Story = ({ allowedFileTypes, maxSize }) => (
   <div className="py-3">
     <p>
-      This component does not do much out-of-the-box, it mostly just ensures the
-      value gets reset after a file is chosen so that the user can chose the
-      same file again.
+      This component does not do much out-of-the-box, it mostly just ensures the value gets reset after a file is chosen
+      so that the user can chose the same file again.
     </p>
-    <FilePicker
-      onChange={log}
-      allowedFileTypes={array("Allowed File Types", [], ",")}
-      maxSize={number("Max File Size", 0, { min: 0 }) || undefined}
-    />
+    <FilePicker onChange={log} allowedFileTypes={allowedFileTypes} maxSize={maxSize} />
   </div>
 );
-PickerField.story = {
-  name: "picker field"
+PickerField.args = {
+  allowedFileTypes: [],
+  maxSize: 0,
 };
-export const RestrictFileTypes = () => (
+PickerField.storyName = 'picker field';
+
+export const RestrictFileTypes: Story = ({ allowedFileTypes, disabled, max, maxSize, multiple }) => (
   <div className="py-3">
     <p>Allows you to define which file types are available to upload.</p>
     <p>Here we have jpg, jpeg, doc and docx available to be selected.</p>
@@ -140,69 +128,53 @@ export const RestrictFileTypes = () => (
       clientId="a"
       bucketId="b"
       customerId="c"
-      multiple={boolean("Multiple File Select", Upload.defaultProps.multiple)}
-      disabled={boolean("Disabled", Upload.defaultProps.disabled)}
-      max={number("Max number of files", 0)}
-      allowedFileTypes={array(
-        "Allowed File Types",
-        [".jpg", ".jpeg", ".doc", ".docx"],
-        ","
-      )}
-      maxSize={number("Max File Size", 0, { min: 0 }) || undefined}
+      multiple={multiple}
+      disabled={disabled}
+      max={max}
+      allowedFileTypes={allowedFileTypes}
+      maxSize={maxSize}
     />
   </div>
 );
-RestrictFileTypes.story = {
-  name: "restrict file types"
+RestrictFileTypes.args = {
+  allowedFileTypes: ['.jpg', '.jpeg', '.doc', '.docx'],
+  disabled: false,
+  max: 0,
+  maxSize: 0,
+  multiple: false,
 };
-export const RestrictFileName = () => (
+RestrictFileTypes.storyName = 'restrict file types';
+
+export const RestrictFileName: Story = ({ disabled, regex }) => (
   <div className="py-3">
-    <p>
-      Allows you to restrict characters are permissible in the filename of
-      uploads.
-    </p>
-    <p>
-      Here we will allow files with any letter, number or the characters _ and -
-      in its name. (-_a-zA-Z0-9)
-    </p>
-    <Upload
-      clientId="a"
-      bucketId="b"
-      customerId="c"
-      allowedFileNameCharacters={text("REGEX", "-_a-zA-z0-9")}
-      disabled={boolean("Disabled", Upload.defaultProps.disabled)}
-    />
+    <p>Allows you to restrict characters are permissible in the filename of uploads.</p>
+    <p>Here we will allow files with any letter, number or the characters _ and - in its name. (-_a-zA-Z0-9)</p>
+    <Upload clientId="a" bucketId="b" customerId="c" allowedFileNameCharacters={regex} disabled={disabled} />
   </div>
 );
-RestrictFileName.story = {
-  name: "restrict file name"
+RestrictFileName.args = {
+  disabled: false,
+  regex: '-_a-zA-z0-9',
 };
-export const ProgressBar = () => {
-  button("+10%", () => instance.progress(10), "Mock Actions");
-  button("Accept", () => instance.success(), "Mock Actions");
-  button(
-    "Reject",
-    () => instance.error("File upload rejected"),
-    "Mock Actions"
-  );
-  button(
-    "Require Password",
-    () => instance.error("Encrypted files require a password", "encrypted"),
-    "Mock Actions"
-  );
-  button("Reset", () => instance.reset(), "Mock Actions");
+RestrictFileName.storyName = 'restrict file name';
+
+export const ProgressBar: Story = ({ animated, striped, complete, color }) => {
+  button('+10%', () => instance.progress(10), 'Mock Actions');
+  button('Accept', () => instance.success(), 'Mock Actions');
+  button('Reject', () => instance.error('File upload rejected'), 'Mock Actions');
+  button('Require Password', () => instance.error('Encrypted files require a password', 'encrypted'), 'Mock Actions');
+  button('Reset', () => instance.reset(), 'Mock Actions');
+
   return (
     <div className="py-3">
-      <UploadProgressBar
-        upload={instance}
-        animated={boolean("Animated", false)}
-        striped={boolean("Striped", false)}
-        complete={boolean("Complete", false)}
-        color={text("Color", "success")}
-      />
+      <UploadProgressBar upload={instance} animated={animated} striped={striped} complete={complete} color={color} />
     </div>
   );
 };
-ProgressBar.story = {
-  name: "progress bar"
+ProgressBar.args = {
+  animated: false,
+  striped: false,
+  complete: false,
+  color: 'success',
 };
+ProgressBar.storyName = 'progress bar';

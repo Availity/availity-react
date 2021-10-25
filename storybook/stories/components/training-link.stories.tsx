@@ -1,24 +1,20 @@
-import React from "react";
-import { withKnobs, text } from "@storybook/addon-knobs";
-import README from "@availity/training-link/README.md";
-import { Preview } from "../util";
-
-const TrainingLink = React.lazy(() => import("@availity/training-link"));
+import React from 'react';
+import { Meta, Story } from '@storybook/react';
+import TrainingLink from '@availity/training-link';
+// import README from '@availity/training-link/README.md';
 
 export default {
-  title: "Components/Training Link",
-  decorators: [withKnobs],
+  title: 'Components/Training Link',
   parameters: {
-    readme: {
-      // Show readme at the addons panel
-      sidebar: README,
-      StoryPreview: Preview
-    }
-  }
+    docs: {
+      // page: README,
+    },
+  },
+} as Meta;
+
+export const Default: Story = ({ link, name }) => <TrainingLink link={link} name={name} />;
+Default.args = {
+  name: 'Appeals',
+  link: 'https://google.com',
 };
-export const Default = () => (
-  <TrainingLink link={text("Link", "https://google.com")} name="Appeals" />
-);
-Default.story = {
-  name: "default"
-};
+Default.storyName = 'default';

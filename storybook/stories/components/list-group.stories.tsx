@@ -1,32 +1,29 @@
-import React from "react";
-import { withKnobs, boolean } from "@storybook/addon-knobs";
-import { ListGroupItem } from "reactstrap";
-import README from "@availity/list-group/README.md";
-import { Preview } from "../util";
-
-const ListGroup = React.lazy(() => import("@availity/list-group"));
+import React from 'react';
+import { Story, Meta } from '@storybook/react';
+import { ListGroupItem } from 'reactstrap';
+import ListGroup from '@availity/list-group';
+// import README from '@availity/list-group/README.md';
 
 export default {
-  title: "Components/List Group",
-  decorators: [withKnobs],
+  title: 'Components/List Group',
   parameters: {
-    readme: {
-      // Show readme at the addons panel
-      sidebar: README,
-      StoryPreview: Preview
-    }
-  }
-};
-export const Default = () => (
-  <ListGroup
-    cards={boolean("Cards", false)}
-    selectable={boolean("Selectable", false)}
-  >
+    docs: {
+      // page: README,
+    },
+  },
+} as Meta;
+
+export const Default: Story = ({ cards, selectable }) => (
+  <ListGroup cards={cards} selectable={selectable}>
     <ListGroupItem>item</ListGroupItem>
     <ListGroupItem>item</ListGroupItem>
     <ListGroupItem>item</ListGroupItem>
   </ListGroup>
 );
-Default.story = {
-  name: "default"
+
+Default.args = {
+  cards: false,
+  selectable: false,
 };
+
+Default.storyName = 'default';

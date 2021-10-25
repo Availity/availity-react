@@ -1,3 +1,5 @@
+const path = require('path');
+
 module.exports = {
   typescript: {
     check: false,
@@ -11,10 +13,19 @@ module.exports = {
   },
   stories: ['../stories/**/*.stories.@(js|mdx|tsx)'],
   addons: [
-    'storybook-readme',
-    '@storybook/addon-knobs',
-    '@storybook/addon-storysource',
+    '@storybook/addon-docs',
+    '@storybook/addon-controls',
     '@storybook/addon-a11y',
+    '@storybook/addon-viewport',
+    {
+      name: '@storybook/addon-storysource',
+      options: {
+        rule: {
+          test: [/\.stories\.tsx?$/],
+          include: [path.resolve(__dirname, '../stories')],
+        },
+      },
+    },
     '@storybook/addon-actions',
     '@storybook/addon-links',
   ],

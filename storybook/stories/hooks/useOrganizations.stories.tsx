@@ -1,41 +1,33 @@
-import React from "react";
-import { withKnobs } from "@storybook/addon-knobs";
-import { useOrganizations } from "@availity/hooks";
-import README from "@availity/hooks/README.md";
-import { QueryClientProvider, QueryClient } from "react-query";
-import "@availity/mock";
-import { Preview, ResourceComponent } from "../util";
+import React from 'react';
+import { Meta, Story } from '@storybook/react';
+import { QueryClientProvider, QueryClient } from 'react-query';
+import { useOrganizations } from '@availity/hooks';
+// import README from '@availity/hooks/README.md';
+
+import '@availity/mock';
+import ResourceComponent from '../util/ResourceComponent';
 
 const queryClient = new QueryClient();
 
 export default {
-  title: "Hooks/useOrganizations",
-  decorators: [withKnobs],
+  title: 'Hooks/useOrganizations',
   parameters: {
-    readme: {
-      // Show readme at the addons panel
-      sidebar: README,
-      StoryPreview: Preview
-    }
-  }
-};
-export const Default = () => {
+    docs: {
+      // page: README,
+    },
+  },
+} as Meta;
+
+export const Default: Story = () => {
   const SomeComponent = () => {
     const { data, isLoading } = useOrganizations();
-    return (
-      <ResourceComponent
-        title="Organizations"
-        data={data}
-        loading={isLoading}
-      />
-    );
+    return <ResourceComponent title="Organizations" data={data} loading={isLoading} />;
   };
+
   return (
     <QueryClientProvider client={queryClient}>
       <SomeComponent />
     </QueryClientProvider>
   );
 };
-Default.story = {
-  name: "default"
-};
+Default.storyName = 'default';

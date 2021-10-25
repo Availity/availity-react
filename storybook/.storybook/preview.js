@@ -1,30 +1,21 @@
-import { addDecorator, addParameters } from '@storybook/react';
-import { withA11y } from '@storybook/addon-a11y';
-import { withKnobs } from '@storybook/addon-knobs';
-import { addReadme } from 'storybook-readme';
+import { themes } from '@storybook/theming';
+import '@storybook/addon-console';
 import mock from 'xhr-mock';
 import './config.scss';
 
 mock.setup();
 
-addParameters({
-  options: {
-    theme: {
-      brandTitle: 'availity-react',
-      brandUrl: 'https://github.com/availity/availity-react',
-    },
-    isFullscreen: false,
-    showPanel: true,
-    showNav: true,
-    showSearchBox: false,
-    sortStoriesByKind: true,
-    panelPosition: 'right',
-    selectedAddonPanel: undefined,
-    hierarchySeparator: /\//,
-    hierarchyRootSeparator: /\|/,
+export const parameters = {
+  docs: {
+    theme: themes.dark,
   },
-});
-
-addDecorator(withA11y);
-addDecorator(withKnobs);
-addDecorator(addReadme);
+  options: {
+    name: 'availity-react',
+    url: 'https://github.com/availity/availity-react',
+    goFullScreen: false,
+    showStoriesPanel: true,
+    showAddonPanel: true,
+    showSearchBox: false,
+    addonPanelInRight: true,
+  },
+};

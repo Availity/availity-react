@@ -1,34 +1,28 @@
-import React, { useState, useEffect } from "react";
-import { number, text, withKnobs } from "@storybook/addon-knobs";
-import { useTimeout } from "@availity/hooks";
-import README from "@availity/hooks/README.md";
-import { Preview } from "../util";
+import React, { useState, useEffect } from 'react';
+import { Meta, Story } from '@storybook/react';
+import { useTimeout } from '@availity/hooks';
+// import README from '@availity/hooks/README.md';
 
 export default {
-  title: "Hooks/useTimeout",
-  decorators: [withKnobs],
+  title: 'Hooks/useTimeout',
   parameters: {
-    readme: {
-      // Show readme at the addons panel
-      sidebar: README,
-      StoryPreview: Preview
-    }
-  }
-};
-export const Default = () => {
-  const beforeTimeoutText = text("Before Timeout", "Hello");
-  const afterTimeoutText = text("After Timeout", "World");
+    docs: {
+      // page: README,
+    },
+  },
+} as Meta;
+
+export const Default: Story = ({ beforeTimeout, afterTimeout, timeout }) => {
   const Component = () => {
-    const [value, setValue] = useState(beforeTimeoutText);
-    const ready = useTimeout(number("Timeout", 3000));
-    useEffect(
-      () => {
-        if (ready) {
-          setValue(afterTimeoutText);
-        }
-      },
-      [ready]
-    );
+    const [value, setValue] = useState(beforeTimeout);
+    const ready = useTimeout(timeout);
+
+    useEffect(() => {
+      if (ready) {
+        setValue(afterTimeout);
+      }
+    }, [ready]);
+
     return (
       <div>
         <p>Timeout triggered: {`${ready}`}</p>
@@ -36,8 +30,12 @@ export const Default = () => {
       </div>
     );
   };
+
   return <Component />;
 };
-Default.story = {
-  name: "default"
+Default.args = {
+  beforeTimeout: 'Hello',
+  afterTimeout: 'World',
+  timeout: 3000,
 };
+Default.storyName = 'default';

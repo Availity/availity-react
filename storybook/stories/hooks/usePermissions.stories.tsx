@@ -1,37 +1,33 @@
-import React from "react";
-import { withKnobs } from "@storybook/addon-knobs";
-import { usePermissions } from "@availity/hooks";
-import README from "@availity/hooks/README.md";
-import { QueryClientProvider, QueryClient } from "react-query";
-import "@availity/mock";
-import { Preview, ResourceComponent } from "../util";
+import React from 'react';
+import { Meta, Story } from '@storybook/react';
+import { QueryClientProvider, QueryClient } from 'react-query';
+import { usePermissions } from '@availity/hooks';
+// import README from '@availity/hooks/README.md';
+
+import '@availity/mock';
+import ResourceComponent from '../util/ResourceComponent';
 
 const queryClient = new QueryClient();
 
 export default {
-  title: "Hooks/usePermissions",
-  decorators: [withKnobs],
+  title: 'Hooks/usePermissions',
   parameters: {
-    readme: {
-      // Show readme at the addons panel
-      sidebar: README,
-      StoryPreview: Preview
-    }
-  }
-};
-export const Default = () => {
+    docs: {
+      // sidebar: README,
+    },
+  },
+} as Meta;
+
+export const Default: Story = () => {
   const SomeComponent = () => {
     const { data, isLoading } = usePermissions();
-    return (
-      <ResourceComponent title="Permissions" data={data} loading={isLoading} />
-    );
+    return <ResourceComponent title="Permissions" data={data} loading={isLoading} />;
   };
+
   return (
     <QueryClientProvider client={queryClient}>
       <SomeComponent />
     </QueryClientProvider>
   );
 };
-Default.story = {
-  name: "default"
-};
+Default.storyName = 'default';

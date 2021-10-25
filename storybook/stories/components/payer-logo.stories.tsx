@@ -1,48 +1,39 @@
-import React from "react";
-import { withKnobs, text } from "@storybook/addon-knobs";
-import README from "@availity/payer-logo/README.md";
-import "@availity/mock";
-import { Preview } from "../util";
+import React from 'react';
+import { Meta, Story } from '@storybook/react';
+import PayerLogo from '@availity/payer-logo';
+// import README from '@availity/payer-logo/README.md';
 
-const PayerLogo = React.lazy(() => import("@availity/payer-logo"));
+import '@availity/mock';
 
 export default {
-  title: "Components/Payer Logo",
-  decorators: [withKnobs],
+  title: 'Components/Payer Logo',
   parameters: {
-    readme: {
-      // Show readme at the addons panel
-      sidebar: README,
-      StoryPreview: Preview
-    }
-  }
-};
-export const WithPayerId = () => (
+    docs: {
+      // page: README,
+    },
+  },
+} as Meta;
+
+export const WithPayerId: Story = ({ payerId, clientId }) => (
   <div>
-    <PayerLogo
-      payerId={text("Payer ID", "PayerID")}
-      clientId={text("Client ID", "my-client-id")}
-    />
-    <p>
-      Note: the logo uses a relative URL which will only work on Availity Portal
-    </p>
+    <PayerLogo payerId={payerId} clientId={clientId} />
+    <p>Note: the logo uses a relative URL which will only work on Availity Portal</p>
   </div>
 );
-WithPayerId.story = {
-  name: "with payer ID"
+WithPayerId.args = {
+  payerId: 'PayerID',
+  clientId: 'my-client-id',
 };
-export const WithSpaceId = () => (
+WithPayerId.storyName = 'with payer ID';
+
+export const WithSpaceId: Story = ({ spaceId, clientId }) => (
   <div>
-    <PayerLogo
-      spaceId={text("Payer Space ID", "73162546201441126239486200007187")}
-      clientId={text("Client ID", "my-client-id")}
-    />
-    <p>
-      Note: the logo uses a relative URL which will only work on the Availity
-      Portal
-    </p>
+    <PayerLogo spaceId={spaceId} clientId={clientId} />
+    <p>Note: the logo uses a relative URL which will only work on the Availity Portal</p>
   </div>
 );
-WithSpaceId.story = {
-  name: "with space ID"
+WithSpaceId.args = {
+  spaceId: '73162546201441126239486200007187',
+  clientId: 'my-client-id',
 };
+WithSpaceId.storyName = 'with space ID';

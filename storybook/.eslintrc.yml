@@ -1,3 +1,4 @@
 extends: availity/browser
 rules:
   no-alert: 0
+  import/extensions: 0
