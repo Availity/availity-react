@@ -16,18 +16,18 @@ export default {
       // sidebar: README,
     },
   },
+  decorators: [
+    (Story) => (
+      <QueryClientProvider client={queryClient}>
+        <Story />
+      </QueryClientProvider>
+    ),
+  ],
 } as Meta;
 
 export const Default: Story = () => {
-  const SomeComponent = () => {
-    const { data, isLoading } = usePermissions();
-    return <ResourceComponent title="Permissions" data={data} loading={isLoading} />;
-  };
+  const { data, isLoading } = usePermissions();
 
-  return (
-    <QueryClientProvider client={queryClient}>
-      <SomeComponent />
-    </QueryClientProvider>
-  );
+  return <ResourceComponent title="Permissions" data={data} loading={isLoading} />;
 };
 Default.storyName = 'default';

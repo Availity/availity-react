@@ -14,8 +14,8 @@ export default {
   },
 } as Meta;
 
-export const Default: Story = () => {
-  const plugin = {
+const plugins = [
+  {
     isEnabled: () => true,
     init: () => {
       console.log('init');
@@ -26,25 +26,19 @@ export const Default: Story = () => {
     trackPageView: () => {
       console.log('track page view');
     },
-  };
+  },
+];
 
-  return (
-    <Analytics
-      plugins={[plugin]}
-      options={{
-        recursive: true,
-        attributePrefix: 'data-av-analytics',
-      }}
+export const Default: Story = () => (
+  <Analytics plugins={plugins}>
+    <Button
+      id="buttonId"
+      data-av-analytics-on="click"
+      data-av-analytics-action="click"
+      data-av-analytics-test-id="hello"
     >
-      <Button
-        id="buttonId"
-        data-av-analytics-on="click"
-        data-av-analytics-action="click"
-        data-av-analytics-test-id="hello"
-      >
-        Click Me
-      </Button>
-    </Analytics>
-  );
-};
+      Click Me
+    </Button>
+  </Analytics>
+);
 Default.storyName = 'default';

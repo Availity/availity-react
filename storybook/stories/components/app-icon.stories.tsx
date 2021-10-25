@@ -12,7 +12,9 @@ export default {
   },
 } as Meta;
 
-export const Default: Story = ({ size, color, branded, className, src, alt, children }) => (
+const colors = ['black', 'blue', 'orange', 'green'];
+
+export const Default: Story = ({ alt, branded, children, className, color, size, src }) => (
   <AppIcon size={size} color={color} branded={branded} className={className} src={src} alt={alt}>
     {children}
   </AppIcon>
@@ -20,7 +22,7 @@ export const Default: Story = ({ size, color, branded, className, src, alt, chil
 Default.args = {
   children: 'AI',
   size: '',
-  color: 'black',
+  color: colors[0],
   className: '',
   branded: false,
   src: '',
@@ -33,7 +35,7 @@ Default.argTypes = {
   },
   color: {
     type: 'select',
-    options: ['black', 'blue', 'orange', 'green'],
+    options: colors,
   },
 };
 Default.storyName = 'default';

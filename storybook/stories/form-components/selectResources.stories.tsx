@@ -25,6 +25,9 @@ export default {
 
 export const _AvProviderSelect: Story = ({ customerId, disabled, isMulti, label, max, min, required }) => (
   <FormikResults
+    onSubmit={() => {
+      console.log('submitted');
+    }}
     initialValues={{
       AvProviderSelect: null,
     }}
@@ -42,7 +45,9 @@ export const _AvProviderSelect: Story = ({ customerId, disabled, isMulti, label,
       required={required}
       isDisabled={disabled}
     />
-    <Button color="primary">Submit</Button>
+    <Button color="primary" type="submit">
+      Submit
+    </Button>
   </FormikResults>
 );
 _AvProviderSelect.args = {
@@ -58,6 +63,9 @@ _AvProviderSelect.storyName = 'AvProviderSelect';
 
 export const _AvOrganizationSelect: Story = ({ disabled, errorMessage, isMulti, label, max, min, required }) => (
   <FormikResults
+    onSubmit={() => {
+      console.log('submitted');
+    }}
     initialValues={{
       AvOrganizationSelect: null,
     }}
@@ -73,7 +81,9 @@ export const _AvOrganizationSelect: Story = ({ disabled, errorMessage, isMulti, 
       errorMessage={errorMessage}
       isDisabled={disabled}
     />
-    <Button color="primary">Submit</Button>
+    <Button color="primary" type="submit">
+      Submit
+    </Button>
   </FormikResults>
 );
 _AvOrganizationSelect.args = {

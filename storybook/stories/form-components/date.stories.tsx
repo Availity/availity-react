@@ -19,6 +19,13 @@ export default {
       // page: README,
     },
   },
+  args: {
+    datepicker: true,
+    disabled: false,
+    max: '',
+    min: '',
+    required: true,
+  },
 } as Meta;
 
 export const DateInput: Story = ({ datepicker, disabled, max, min, required }) => {
@@ -28,6 +35,9 @@ export const DateInput: Story = ({ datepicker, disabled, max, min, required }) =
 
   return (
     <FormikResults
+      onSubmit={() => {
+        console.log('submitted');
+      }}
       initialValues={{
         dateOfService: '',
       }}
@@ -56,13 +66,6 @@ export const DateInput: Story = ({ datepicker, disabled, max, min, required }) =
     </FormikResults>
   );
 };
-DateInput.args = {
-  datepicker: true,
-  disabled: false,
-  max: '',
-  min: '',
-  required: true,
-};
 DateInput.storyName = 'date';
 
 export const _DateField: Story = ({ datepicker, disabled, label, max, min, required }) => {
@@ -81,6 +84,9 @@ export const _DateField: Story = ({ datepicker, disabled, label, max, min, requi
 
   return (
     <FormikResults
+      onSubmit={() => {
+        console.log('submitted');
+      }}
       initialValues={{
         dateOfService: '',
       }}
@@ -103,12 +109,7 @@ export const _DateField: Story = ({ datepicker, disabled, label, max, min, requi
   );
 };
 _DateField.args = {
-  datepicker: true,
-  disabled: false,
   label: 'Date Field',
-  max: '',
-  min: '',
-  required: true,
 };
 _DateField.storyName = 'DateField';
 
@@ -131,6 +132,9 @@ export const _DateRange: Story = ({
 
   return (
     <FormikResults
+      onSubmit={() => {
+        console.log('submitted');
+      }}
       initialValues={{
         dateOfService: '',
       }}
@@ -175,16 +179,11 @@ export const _DateRange: Story = ({
 };
 _DateRange.args = {
   autoSync: false,
-  datepicker: true,
-  disabled: false,
-  max: '',
   maxDistance: 0,
   maxDistanceUnits: distanceUnits[0],
-  min: '',
   minDistance: 0,
   minDistanceUnits: distanceUnits[0],
   ranges: false,
-  required: true,
 };
 _DateRange.argTypes = {
   maxDistanceUnits: {
@@ -215,6 +214,9 @@ export const _DateRangeField: Story = ({
 
   return (
     <FormikResults
+      onSubmit={() => {
+        console.log('submitted');
+      }}
       initialValues={{
         dateOfService: {
           startDate: '',
@@ -261,16 +263,11 @@ export const _DateRangeField: Story = ({
 };
 _DateRangeField.args = {
   autoSync: false,
-  datepicker: true,
-  disabled: false,
-  max: '',
   maxDistance: 0,
   maxDistanceUnits: distanceUnits[0],
-  min: '',
   minDistance: 0,
   minDistanceUnits: distanceUnits[0],
   ranges: false,
-  required: true,
 };
 _DateRangeField.argTypes = {
   maxDistanceUnits: {

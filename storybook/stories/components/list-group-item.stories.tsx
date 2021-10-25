@@ -4,7 +4,7 @@ import ListGroup from '@availity/list-group';
 import ListGroupItem, { ListGroupItemStatus } from '@availity/list-group-item';
 // import README from '@availity/list-group-item/README.md';
 
-const colorOptions = ['success', 'info', 'danger', 'warning', 'secondary'];
+const colors = ['success', 'info', 'danger', 'warning', 'secondary'];
 
 export default {
   title: 'Components/List Group Item',
@@ -12,6 +12,10 @@ export default {
     docs: {
       // page: README,
     },
+  },
+  args: {
+    cards: false,
+    selectable: false,
   },
 } as Meta;
 
@@ -35,10 +39,18 @@ export const Default: Story = ({ cards, selectable, borderColor, backgroundColor
   </div>
 );
 Default.args = {
-  cards: false,
-  selectable: false,
-  borderColor: colorOptions,
-  backgroundColor: colorOptions,
+  borderColor: colors[0],
+  backgroundColor: colors[0],
+};
+Default.argTypes = {
+  borderColor: {
+    type: 'select',
+    options: colors,
+  },
+  backgroundColor: {
+    type: 'select',
+    options: colors,
+  },
 };
 Default.storyName = 'default';
 
@@ -62,22 +74,20 @@ export const Status: Story = ({ cards, content, title, color, selectable, badgeC
   </div>
 );
 Status.args = {
-  cards: false,
   title: <h5>Item Title</h5>,
   content: 'Item',
-  color: colorOptions[0],
-  selectable: false,
-  badgeColor: colorOptions[0],
+  color: colors[0],
+  badgeColor: colors[0],
   badgeText: 'Badge',
 };
 Status.argTypes = {
   color: {
     type: 'select',
-    options: colorOptions,
+    options: colors,
   },
   badgeColor: {
     type: 'select',
-    options: colorOptions,
+    options: colors,
   },
 };
 Status.storyName = 'status';

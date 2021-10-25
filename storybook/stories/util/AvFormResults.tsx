@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { AvForm } from 'availity-reactstrap-validation';
 
-type Props = Record<string, unknown>;
+type Props = { children: React.ReactNode };
 type State = {
   submitted: string | null;
   errors: string | null;
@@ -13,14 +13,14 @@ const onInvalidSubmit = () => {
   console.log('invalid');
 };
 
-const AvFormResults = (props: Props): JSX.Element => {
+const AvFormResults = ({ children }: Props): JSX.Element => {
   const [{ submitted, errors, values }, setState] = useState<State>({
     submitted: null,
     errors: null,
     values: null,
   });
 
-  const onSubmit = (event: React.FormEvent, errors: unknown[], values: Record<string, unknown>) => {
+  const onSubmit = (_event: React.FormEvent, errors: string[], values: Record<string, unknown>) => {
     setState({
       submitted: new Date().toJSON(),
       errors: errors.join(', '),
@@ -30,7 +30,9 @@ const AvFormResults = (props: Props): JSX.Element => {
 
   return (
     <>
-      <AvForm {...props} onSubmit={onSubmit} onInvalidSubmit={onInvalidSubmit} />
+      <AvForm onSubmit={onSubmit} onInvalidSubmit={onInvalidSubmit}>
+        {children}
+      </AvForm>
       <hr />
       {submitted && (
         <div>

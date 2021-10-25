@@ -16,18 +16,18 @@ export default {
       // page: README,
     },
   },
+  decorators: [
+    (Story) => (
+      <QueryClientProvider client={queryClient}>
+        <Story />
+      </QueryClientProvider>
+    ),
+  ],
 } as Meta;
 
 export const Default: Story = () => {
-  const SomeComponent = () => {
-    const { data, isLoading } = useOrganizations();
-    return <ResourceComponent title="Organizations" data={data} loading={isLoading} />;
-  };
+  const { data, isLoading } = useOrganizations();
 
-  return (
-    <QueryClientProvider client={queryClient}>
-      <SomeComponent />
-    </QueryClientProvider>
-  );
+  return <ResourceComponent title="Organizations" data={data} loading={isLoading} />;
 };
 Default.storyName = 'default';

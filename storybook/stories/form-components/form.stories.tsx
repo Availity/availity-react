@@ -15,10 +15,16 @@ export default {
       // page: README,
     },
   },
+  args: {
+    required: false,
+  },
 } as Meta;
 
 export const Default: Story = ({ required }) => (
   <FormResults
+    onSubmit={() => {
+      console.log('submitted');
+    }}
     initialValues={{
       hello: '',
     }}
@@ -32,18 +38,18 @@ export const Default: Story = ({ required }) => (
     </Button>
   </FormResults>
 );
-Default.args = {
-  required: false,
-};
 Default.storyName = 'default';
 
-export const _Input: Story = () => (
+export const _Input: Story = ({ required }) => (
   <FormResults
+    onSubmit={() => {
+      console.log('submitted');
+    }}
     initialValues={{
       hello: '',
     }}
     validationSchema={yup.object().shape({
-      hello: yup.string().required(),
+      hello: yup.string().isRequired(required, 'This field is required'),
     })}
   >
     <div className="d-flex">
@@ -58,6 +64,9 @@ _Input.storyName = 'Input';
 
 export const _FormGroup: Story = ({ required }) => (
   <FormResults
+    onSubmit={() => {
+      console.log('submitted');
+    }}
     initialValues={{
       hello: '',
     }}
@@ -71,13 +80,13 @@ export const _FormGroup: Story = ({ required }) => (
     <Button type="submit">Submit</Button>
   </FormResults>
 );
-_FormGroup.args = {
-  required: false,
-};
 _FormGroup.storyName = 'Form Group';
 
-export const _Field: Story = ({ required, helpMessage, helpTopicId }) => (
+export const _Field: Story = ({ required, helpMessage, helpId }) => (
   <FormResults
+    onSubmit={() => {
+      console.log('submitted');
+    }}
     initialValues={{
       hello: '',
     }}
@@ -85,21 +94,23 @@ export const _Field: Story = ({ required, helpMessage, helpTopicId }) => (
       hello: yup.string().isRequired(required, 'This field is required.'),
     })}
   >
-    <Field name="hello" type="text" label="Hello" helpMessage={helpMessage} helpId={helpTopicId} />
+    <Field name="hello" type="text" label="Hello" helpMessage={helpMessage} helpId={helpId} />
     <Button className="ml-1" color="primary" type="submit">
       Submit
     </Button>
   </FormResults>
 );
 _Field.args = {
-  required: false,
   helpMessage: '',
-  helpTopicId: '',
+  helpId: '',
 };
 _Field.storyName = 'Field';
 
 export const _Checkbox: Story = ({ required, helpId }) => (
   <FormResults
+    onSubmit={() => {
+      console.log('submitted');
+    }}
     initialValues={{
       checkboxGroup: [],
     }}
@@ -118,13 +129,15 @@ export const _Checkbox: Story = ({ required, helpId }) => (
   </FormResults>
 );
 _Checkbox.args = {
-  required: false,
   helpId: '',
 };
 _Checkbox.storyName = 'Checkbox';
 
 export const _Radio: Story = ({ required, helpId }) => (
   <FormResults
+    onSubmit={() => {
+      console.log('submitted');
+    }}
     initialValues={{
       hello: '',
     }}
@@ -143,7 +156,6 @@ export const _Radio: Story = ({ required, helpId }) => (
   </FormResults>
 );
 _Radio.args = {
-  required: false,
   helpId: '',
 };
-_Radio.storyName = 'Checkbox';
+_Radio.storyName = 'Radio';

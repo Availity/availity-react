@@ -28,6 +28,9 @@ export const Default: Story = ({
   extColProps,
 }) => (
   <FormikResults
+    onSubmit={() => {
+      console.log('submitted');
+    }}
     initialValues={{
       phone: '',
       ext: '',
@@ -49,7 +52,9 @@ export const Default: Story = ({
         extColProps: enableExtColProps ? extColProps : undefined,
       }}
     />
-    <Button type="submit">Submit</Button>
+    <Button type="submit" color="primary">
+      Submit
+    </Button>
   </FormikResults>
 );
 Default.args = {

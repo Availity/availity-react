@@ -2,8 +2,8 @@ import React from 'react';
 import { Meta, Story } from '@storybook/react';
 import { Label, Button } from 'reactstrap';
 import AvApi from '@availity/api-axios';
-import '@availity/yup';
 import * as yup from 'yup';
+import '@availity/yup';
 import Select, { SelectField, ResourceSelect } from '@availity/select';
 import { Feedback, FormGroup, Field } from '@availity/form';
 // import README from '@availity/select/README.md';
@@ -71,10 +71,22 @@ export default {
       // page: README,
     },
   },
+  args: {
+    creatable: false,
+    disabled: false,
+    isMulti: false,
+    min: 2,
+    max: 3,
+    raw: false,
+    required: true,
+  },
 } as Meta;
 
 export const Default: Story = ({ autofill, creatable, disabled, isMulti, max, min, raw, required }) => (
   <FormikResults
+    onSubmit={() => {
+      console.log('submitted');
+    }}
     initialValues={{
       standAlone: undefined,
       autoFill1: '',
@@ -97,22 +109,14 @@ export const Default: Story = ({ autofill, creatable, disabled, isMulti, max, mi
       isDisabled={disabled}
     />
     {autofill && <Field name="autoFill1" type="text" label="Autofill Value 1" />}
-
     {autofill && <Field name="autoFill2" type="text" label="Autofill Value 2" />}
-    <Button className="mt-3" color="primary">
+    <Button className="mt-3" color="primary" type="submit">
       Submit
     </Button>
   </FormikResults>
 );
 Default.args = {
   autofill: false,
-  creatable: false,
-  disabled: false,
-  isMulti: false,
-  max: 3,
-  min: 2,
-  raw: false,
-  required: true,
 };
 Default.storyName = 'default';
 
@@ -129,6 +133,9 @@ export const WithLabel: Story = ({
   required,
 }) => (
   <FormikResults
+    onSubmit={() => {
+      console.log('submitted');
+    }}
     initialValues={{
       standAloneWithLabel: null,
       autoFill1: '',
@@ -157,24 +164,17 @@ export const WithLabel: Story = ({
       />
       <Feedback name="standAloneWithLabel">{errorMessage}</Feedback>
     </FormGroup>
-
     {autofill && <Field name="autoFill1" type="text" label="Autofill Value 1" />}
-
     {autofill && <Field name="autoFill2" type="text" label="Autofill Value 2" />}
-    <Button color="primary">Submit</Button>
+    <Button color="primary" type="submit">
+      Submit
+    </Button>
   </FormikResults>
 );
 WithLabel.args = {
   autofill: false,
-  creatable: false,
-  disabled: false,
   errorMessage: 'This field is invalid',
-  isMulti: false,
   label: 'Select Label',
-  max: 3,
-  min: 2,
-  raw: false,
-  required: true,
 };
 WithLabel.storyName = 'with label';
 
@@ -191,6 +191,9 @@ export const _SelectField: Story = ({
   required,
 }) => (
   <FormikResults
+    onSubmit={() => {
+      console.log('submitted');
+    }}
     initialValues={{
       SelectField: undefined,
       autoFill1: '',
@@ -215,27 +218,24 @@ export const _SelectField: Story = ({
       helpId={helpId}
     />
     {autofill && <Field name="autoFill1" type="text" label="Autofill Value 1" />}
-
     {autofill && <Field name="autoFill2" type="text" label="Autofill Value 2" />}
-    <Button color="primary">Submit</Button>
+    <Button color="primary" type="submit">
+      Submit
+    </Button>
   </FormikResults>
 );
 _SelectField.args = {
   autofill: false,
-  creatable: false,
-  disabled: false,
   helpId: '',
-  isMulti: false,
   label: 'Select Label',
-  max: 3,
-  min: 2,
-  raw: false,
-  required: true,
 };
 _SelectField.storyName = 'SelectField';
 
-export const _ResourceSelect: Story = ({ creatable, disabled, isMulti, label, max, min, required }) => (
+export const _ResourceSelect: Story = ({ creatable, disabled, isMulti, label, max, min, raw, required }) => (
   <FormikResults
+    onSubmit={() => {
+      console.log('submitted');
+    }}
     initialValues={{
       ResourceSelect: null,
     }}
@@ -247,34 +247,34 @@ export const _ResourceSelect: Story = ({ creatable, disabled, isMulti, label, ma
       label={
         <>
           {label}
-          <span className="text-primary">*</span>
+          {required ? <span className="text-danger">*</span> : null}
         </>
       }
       name="ResourceSelect"
       labelKey="name"
       maxLength={max}
       isMulti={isMulti}
+      raw={raw}
       required={required}
       creatable={creatable}
       isDisabled={disabled}
       resource={avCustomResource}
     />
-    <Button color="primary">Submit</Button>
+    <Button color="primary" type="submit">
+      Submit
+    </Button>
   </FormikResults>
 );
 _ResourceSelect.args = {
-  creatable: false,
-  disabled: false,
-  isMulti: false,
   label: 'Select Label',
-  max: 3,
-  min: 2,
-  required: true,
 };
 _ResourceSelect.storyName = 'ResourceSelect';
 
-export const GraphQlResourceSelect: Story = ({ creatable, disabled, isMulti, label, max, min, required }) => (
+export const GraphQlResourceSelect: Story = ({ creatable, disabled, isMulti, label, max, min, raw, required }) => (
   <FormikResults
+    onSubmit={() => {
+      console.log('submitted');
+    }}
     initialValues={{
       ResourceSelect: null,
     }}
@@ -286,13 +286,14 @@ export const GraphQlResourceSelect: Story = ({ creatable, disabled, isMulti, lab
       label={
         <>
           {label}
-          <span className="text-primary">*</span>
+          {required ? <span className="text-danger">*</span> : null}
         </>
       }
       name="ResourceSelect"
       labelKey="value"
       valueKey="id"
       maxLength={max}
+      raw={raw}
       isMulti={isMulti}
       required={required}
       resource={avGraphqlResource}
@@ -317,16 +318,12 @@ export const GraphQlResourceSelect: Story = ({ creatable, disabled, isMulti, lab
       }}
       getResult={(data) => data.regionPagination.items}
     />
-    <Button color="primary">Submit</Button>
+    <Button color="primary" type="submit">
+      Submit
+    </Button>
   </FormikResults>
 );
 GraphQlResourceSelect.args = {
-  creatable: false,
-  disabled: false,
-  isMulti: false,
   label: 'Select Label',
-  max: 3,
-  min: 2,
-  required: true,
 };
 GraphQlResourceSelect.storyName = 'GraphQL ResourceSelect';

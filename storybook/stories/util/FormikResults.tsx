@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { Form } from '@availity/form';
-import { FormikProps, FormikValues, useFormikContext } from 'formik';
+import { FormikConfig, FormikValues, useFormikContext } from 'formik';
 
 type Result = {
   errors: string;
@@ -36,7 +36,7 @@ const Results = () => {
   ) : null;
 };
 
-const FormikResults: React.FC<FormikProps<FormikValues>> = ({ children, ...props }) => (
+const FormikResults: React.FC<FormikConfig<FormikValues>> = ({ children, ...props }) => (
   <Form {...props}>
     {children}
     <hr />

@@ -13,15 +13,13 @@ export default {
 } as Meta;
 
 export const Default: Story = ({ fallback, skeletonWidth, skeletonHeight }) => (
-  <div className="py-3">
-    <Avatar
-      fallback={fallback}
-      skeletonProps={{
-        width: skeletonWidth,
-        height: skeletonHeight,
-      }}
-    />
-  </div>
+  <Avatar
+    fallback={fallback}
+    skeletonProps={{
+      width: skeletonWidth,
+      height: skeletonHeight,
+    }}
+  />
 );
 Default.args = {
   fallback: '/public/apps/my-profile/images/Avatars-00.png',
