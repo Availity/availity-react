@@ -15,10 +15,7 @@ describe('Feature', () => {
   });
   test('should render with single permission', () => {
     const { container } = render(
-      <Feature
-        features="1234"
-        whenDisabled="You do not have permission to see this"
-      >
+      <Feature features="1234" whenDisabled="You do not have permission to see this">
         You can see this
       </Feature>
     );
@@ -29,10 +26,7 @@ describe('Feature', () => {
   });
   test('should render with array of features', () => {
     const { container } = render(
-      <Feature
-        features={['1234', '2345', ['3456', '4567']]}
-        whenDisabled="You do not have permission to see this"
-      >
+      <Feature features={['1234', '2345', ['3456', '4567']]} whenDisabled="You do not have permission to see this">
         You can see this
       </Feature>
     );
@@ -43,11 +37,7 @@ describe('Feature', () => {
   });
   test('should render negate features', () => {
     const { container } = render(
-      <Feature
-        features="1234"
-        negate
-        whenDisabled="You do not have permission to see this"
-      >
+      <Feature features="1234" negate whenDisabled="You do not have permission to see this">
         You can see this
       </Feature>
     );

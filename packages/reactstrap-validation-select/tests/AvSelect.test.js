@@ -44,9 +44,7 @@ describe('AvSelect', () => {
 
     fireEvent.click(option);
 
-    expect(
-      container.querySelector('.test__creatable__option--is-selected')
-    ).toBeDefined();
+    expect(container.querySelector('.test__creatable__option--is-selected')).toBeDefined();
     expect(select.querySelector('.test__creatable__placeholder')).toBe(null);
   });
 
@@ -68,12 +66,8 @@ describe('AvSelect', () => {
 
     expect(selectOption).toBeDefined();
 
-    expect(
-      container.querySelector('.test__creatable__option--is-selected')
-    ).toBeDefined();
-    expect(selectInput.querySelector('.test__creatable__placeholder')).toBe(
-      null
-    );
+    expect(container.querySelector('.test__creatable__option--is-selected')).toBeDefined();
+    expect(selectInput.querySelector('.test__creatable__placeholder')).toBe(null);
   });
 
   test('creatable works with custom keys', async () => {
@@ -141,13 +135,7 @@ describe('AvSelect', () => {
     const onSubmit = jest.fn();
     const { container, getByText } = render(
       <AvForm onSubmit={onSubmit}>
-        <AvSelect
-          name="test-form-input"
-          options={opts}
-          classNamePrefix="test"
-          raw
-          autofill
-        />
+        <AvSelect name="test-form-input" options={opts} classNamePrefix="test" raw autofill />
         <AvInput data-testid="first-input" name="firstName" />
         <AvInput data-testid="last-input" name="lastName" />
         <AvInput data-testid="full-input" name="full.name" />

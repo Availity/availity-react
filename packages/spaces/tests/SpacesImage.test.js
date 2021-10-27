@@ -1,12 +1,7 @@
 import React from 'react';
 import { render, waitFor, cleanup } from '@testing-library/react';
 import { avWebQLApi } from '@availity/api-axios';
-import Spaces, {
-  SpacesLogo,
-  SpacesTile,
-  SpacesBillboard,
-  SpacesImage,
-} from '..';
+import Spaces, { SpacesLogo, SpacesTile, SpacesBillboard, SpacesImage } from '..';
 
 jest.mock('@availity/api-axios');
 
@@ -80,11 +75,7 @@ describe('SpacesImage', () => {
       });
 
     const MyComponent = () => (
-      <Spaces
-        spaceIds={['1', '1', '2', '2', '3']}
-        payerIds={['payer1', 'payer1']}
-        clientId="my-client-id"
-      >
+      <Spaces spaceIds={['1', '1', '2', '2', '3']} payerIds={['payer1', 'payer1']} clientId="my-client-id">
         <SpacesLogo spaceId="1" />
         <SpacesTile payerId="payer1" />
         <SpacesBillboard spaceId="2" />
@@ -110,14 +101,8 @@ describe('SpacesImage', () => {
 
     // Check that we did not query for duplicate ids
     expect(avWebQLApi.create).toHaveBeenCalledTimes(2);
-    expect(avWebQLApi.create.mock.calls[0][0].variables.ids).toEqual([
-      '1',
-      '2',
-      '3',
-    ]);
-    expect(avWebQLApi.create.mock.calls[1][0].variables.payerIDs).toEqual([
-      'payer1',
-    ]);
+    expect(avWebQLApi.create.mock.calls[0][0].variables.ids).toEqual(['1', '2', '3']);
+    expect(avWebQLApi.create.mock.calls[1][0].variables.payerIDs).toEqual(['payer1']);
   });
 
   it('renders spaces image from single space', async () => {

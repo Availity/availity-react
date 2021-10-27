@@ -1,10 +1,4 @@
-import {
-  avProvidersApi,
-  avPermissionsApi,
-  avNavigationApi,
-  avUserApi,
-  avCodesApi,
-} from '@availity/api-axios';
+import { avProvidersApi, avPermissionsApi, avNavigationApi, avUserApi, avCodesApi } from '@availity/api-axios';
 import { ResourceSelect } from '.';
 import AvOrganizationSelect from './custom-resources/AvOrganizationSelect';
 import AvRegionSelect from './custom-resources/AvRegionSelect';
@@ -27,8 +21,7 @@ const AvNavigationSelect = ResourceSelect.create({
 });
 const AvUserSelect = ResourceSelect.create({
   resource: avUserApi,
-  getOptionLabel: (option) =>
-    `${option.firstName} ${option.lastName} (${option.id}) - ${option.userId}`,
+  getOptionLabel: (option) => `${option.firstName} ${option.lastName} (${option.id}) - ${option.userId}`,
 });
 const AvCodeSelect = ResourceSelect.create({
   resource: avCodesApi,

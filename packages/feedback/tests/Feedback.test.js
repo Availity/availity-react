@@ -15,9 +15,7 @@ afterEach(cleanup);
 
 describe('Feedback', () => {
   test('should show form on click', () => {
-    const { getByTestId, getByText } = render(
-      <Feedback appName="Test Space" />
-    );
+    const { getByTestId, getByText } = render(<Feedback appName="Test Space" />);
 
     fireEvent.click(getByText('Give Feedback'));
 
@@ -26,9 +24,7 @@ describe('Feedback', () => {
   });
 
   test('should show modal form on click', () => {
-    const { getByTestId, getByText } = render(
-      <Feedback appName="Test Space" modal />
-    );
+    const { getByTestId, getByText } = render(<Feedback appName="Test Space" modal />);
 
     fireEvent.click(getByText('Give Feedback'));
 
@@ -39,9 +35,7 @@ describe('Feedback', () => {
   test('should call onClose in form', async () => {
     const onClose = jest.fn();
 
-    const { getByTestId, getByText } = render(
-      <Feedback appName="Test Space" formProps={{ onClose }} />
-    );
+    const { getByTestId, getByText } = render(<Feedback appName="Test Space" formProps={{ onClose }} />);
 
     fireEvent.click(getByText('Give Feedback'));
 
@@ -69,9 +63,7 @@ describe('Feedback', () => {
   test('should call onClose in modal', async () => {
     const onClose = jest.fn();
 
-    const { getByTestId, getByText } = render(
-      <Feedback appName="Test Space" formProps={{ onClose }} modal />
-    );
+    const { getByTestId, getByText } = render(<Feedback appName="Test Space" formProps={{ onClose }} modal />);
 
     fireEvent.click(getByText('Give Feedback'));
 
@@ -86,9 +78,7 @@ describe('Feedback', () => {
   });
 
   test('should have proper ARIA attributes on Give Feedback button', () => {
-    const { getByTestId, getByText } = render(
-      <Feedback appName="Test Space" />
-    );
+    const { getByTestId, getByText } = render(<Feedback appName="Test Space" />);
 
     const giveFeedbackButton = getByText('Give Feedback');
 

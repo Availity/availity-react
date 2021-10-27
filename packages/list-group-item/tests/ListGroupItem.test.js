@@ -27,13 +27,9 @@ describe('ListGroupItem', () => {
   });
 
   test('should render border color and color', () => {
-    const { getByTestId } = render(
-      <ListGroupItem borderColor="success" color="success" />
-    );
+    const { getByTestId } = render(<ListGroupItem borderColor="success" color="success" />);
 
     const el = getByTestId('list-group-item-id');
-    expect(el.className).toBe(
-      'success list-group-item-success list-group-item'
-    );
+    expect(el.className).toBe('success list-group-item-success list-group-item');
   });
 });

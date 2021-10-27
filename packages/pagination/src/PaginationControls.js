@@ -8,22 +8,11 @@ import { usePagination } from './Pagination';
 const leftCaret = '\u2039'; // ‹
 const rightCaret = '\u203A'; // ›
 
-const PaginationControls = ({
-  directionLinks,
-  autoHide,
-  pageRange,
-  marginPages,
-  breakLabel,
-  ...rest
-}) => {
+const PaginationControls = ({ directionLinks, autoHide, pageRange, marginPages, breakLabel, ...rest }) => {
   const { pageCount, currentPage, setPage } = usePagination();
 
   const createItem = (pageNumber) => (
-    <PaginationItem
-      key={pageNumber}
-      active={currentPage === pageNumber}
-      data-testid={`control-page-${pageNumber}`}
-    >
+    <PaginationItem key={pageNumber} active={currentPage === pageNumber} data-testid={`control-page-${pageNumber}`}>
       <PaginationLink
         style={{ zIndex: 'auto' }}
         onClick={() => setPage(pageNumber)}
@@ -112,14 +101,9 @@ const PaginationControls = ({
   return pageCount > 1 || !autoHide ? (
     <Pagination data-testid="pagination-controls-con" {...rest}>
       {directionLinks ? (
-        <PaginationItem
-          disabled={currentPage === 1}
-          data-testid="pagination-control-previous"
-        >
+        <PaginationItem disabled={currentPage === 1} data-testid="pagination-control-previous">
           <PaginationLink
-            onClick={() =>
-              currentPage === 1 ? null : setPage(currentPage - 1)
-            }
+            onClick={() => (currentPage === 1 ? null : setPage(currentPage - 1))}
             type="button"
             aria-disabled={currentPage === 1}
             previous
@@ -132,15 +116,10 @@ const PaginationControls = ({
       )}
       {paginate()}
       {directionLinks ? (
-        <PaginationItem
-          disabled={currentPage === pageCount}
-          data-testid="pagination-control-next"
-        >
+        <PaginationItem disabled={currentPage === pageCount} data-testid="pagination-control-next">
           <PaginationLink
             data-testid="pagination-control-next-link"
-            onClick={() =>
-              currentPage === pageCount ? null : setPage(currentPage + 1)
-            }
+            onClick={() => (currentPage === pageCount ? null : setPage(currentPage + 1))}
             type="button"
             aria-disabled={currentPage === pageCount}
             next

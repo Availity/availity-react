@@ -60,9 +60,7 @@ describe('AvDateRange', () => {
 
     fireEvent.click(getByText('Submit'));
 
-    const el = await waitFor(() =>
-      getByText('Both start and end date are required.')
-    );
+    const el = await waitFor(() => getByText('Both start and end date are required.'));
     expect(el).toBeDefined();
   });
 
@@ -83,9 +81,7 @@ describe('AvDateRange', () => {
 
     fireEvent.click(getByText('Submit'));
 
-    const el = await waitFor(() =>
-      getByText('Start Date must come before End Date.')
-    );
+    const el = await waitFor(() => getByText('Start Date must come before End Date.'));
     expect(el).toBeDefined();
   });
 
@@ -105,9 +101,7 @@ describe('AvDateRange', () => {
 
     fireEvent.click(getByText('Submit'));
 
-    const range = await waitFor(() =>
-      getByText('Both start and end date are required.')
-    );
+    const range = await waitFor(() => getByText('Both start and end date are required.'));
     expect(range).toBeDefined();
   });
 
