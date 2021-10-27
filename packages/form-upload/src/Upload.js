@@ -149,6 +149,7 @@ const Upload = ({
       selectedFiles = selectedFiles.slice(0, Math.max(0, max - fieldValue.length));
     }
 
+    // eslint-disable-next-line unicorn/prefer-spread
     const newFiles = fieldValue.concat(
       selectedFiles.map((file) => {
         const upload = new UploadCore(file, {
@@ -266,31 +267,31 @@ const Upload = ({
 };
 
 Upload.propTypes = {
+  bucketId: PropTypes.string.isRequired,
+  clientId: PropTypes.string.isRequired,
+  customerId: PropTypes.string.isRequired,
+  name: PropTypes.string.isRequired,
   allowedFileNameCharacters: PropTypes.string,
   allowedFileTypes: PropTypes.arrayOf(PropTypes.string),
   btnText: PropTypes.node,
-  bucketId: PropTypes.string.isRequired,
   children: PropTypes.func,
   className: PropTypes.string,
-  clientId: PropTypes.string.isRequired,
-  customerId: PropTypes.string.isRequired,
   deliverFileOnSubmit: PropTypes.bool,
   deliveryChannel: PropTypes.string,
-  onFilePreUpload: PropTypes.arrayOf(PropTypes.func),
-  onDeliverySuccess: PropTypes.func,
-  onDeliveryError: PropTypes.func,
   disabled: PropTypes.bool,
+  fallback: PropTypes.node,
   feedbackClass: PropTypes.string,
   fileDeliveryMetadata: PropTypes.oneOfType([PropTypes.object, PropTypes.func]),
   getDropRejectionMessage: PropTypes.func,
   max: PropTypes.number,
   maxSize: PropTypes.number,
   multiple: PropTypes.bool,
-  name: PropTypes.string.isRequired,
+  onDeliveryError: PropTypes.func,
+  onDeliverySuccess: PropTypes.func,
+  onFilePreUpload: PropTypes.arrayOf(PropTypes.func),
   onFileRemove: PropTypes.func,
   onFileUpload: PropTypes.func,
   showFileDrop: PropTypes.bool,
-  fallback: PropTypes.node,
 };
 
 export default Upload;
