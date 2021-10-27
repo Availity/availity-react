@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## 6.1.1 (2021-10-27)
+
+
+### Bug Fixes
+
+* **feedback:** update select dep ([12677ee](https://github.com/Availity/availity-react/commit/12677ee4817c7b0569987df42c1e8830a4a99bd2))
+
+
+
+
+
 # 6.1.0 (2021-10-22)
 
 

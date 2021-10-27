@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [9.15.1](https://github.com/Availity/availity-react/compare/@availity/react-storybook@9.15.0...@availity/react-storybook@9.15.1) (2021-10-27)
+
+
+### Bug Fixes
+
+* **react-storybook:** typo on prop ([4ad5393](https://github.com/Availity/availity-react/commit/4ad5393244438dfd50fa0becc127e3783553490a))
+
+
+
+
+
 # [9.15.0](https://github.com/Availity/availity-react/compare/@availity/react-storybook@9.14.0...@availity/react-storybook@9.15.0) (2021-10-26)
 
 
