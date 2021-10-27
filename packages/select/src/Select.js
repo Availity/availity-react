@@ -10,8 +10,7 @@ import has from 'lodash/has';
 import isFunction from 'lodash/isFunction';
 import isEqual from 'lodash/isEqual';
 
-const { DownChevron, CrossIcon, DropdownIndicator, ClearIndicator, Option } =
-  reactSelectComponents;
+const { DownChevron, CrossIcon, DropdownIndicator, ClearIndicator, Option } = reactSelectComponents;
 
 const components = {
   DropdownIndicator: (props) => (
@@ -42,8 +41,7 @@ const createOption = (label, labelKey = 'label', valueKey = 'value') => ({
   [valueKey]: label.toLowerCase().replace(/\W/g, ''),
 });
 
-const areValueAndOptionValueEqual = (value, optionValue) =>
-  isEqual(value, optionValue);
+const areValueAndOptionValueEqual = (value, optionValue) => isEqual(value, optionValue);
 
 const selectAllOption = {
   label: 'Select all',
@@ -51,9 +49,7 @@ const selectAllOption = {
 };
 
 const validateSelectAllOptions = (options) => {
-  const filtered = options.filter(
-    (option) => option.value === selectAllOption.value
-  );
+  const filtered = options.filter((option) => option.value === selectAllOption.value);
   if (filtered.length > 0) {
     // eslint-disable-next-line no-console
     console.warn(
@@ -77,10 +73,7 @@ const Select = ({
   waitUntilFocused,
   ...attributes
 }) => {
-  const [
-    { onChange, value: fieldValue, ...field },
-    { touched, error: hasError },
-  ] = useField({
+  const [{ onChange, value: fieldValue, ...field }, { touched, error: hasError }] = useField({
     name,
     validate,
   });
@@ -105,9 +98,7 @@ const Select = ({
   const getValueKey = (attrs = attributes) => get(attrs, 'valueKey', 'value');
 
   const getOptionValue = (option) =>
-    attributes.raw && !attributes.valueKey
-      ? option
-      : get(option, getValueKey(attributes), option);
+    attributes.raw && !attributes.valueKey ? option : get(option, getValueKey(attributes), option);
 
   const prepValue = (value, digIfMulti = true) => {
     if (attributes.isMulti && digIfMulti && Array.isArray(value)) {
@@ -129,9 +120,7 @@ const Select = ({
         }
         return prev.concat(current);
       }, []);
-      return flattened.filter((o) =>
-        areValueAndOptionValueEqual(value, getOptionValue(o))
-      )[0];
+      return flattened.filter((o) => areValueAndOptionValueEqual(value, getOptionValue(o)))[0];
     }
 
     return null;
@@ -140,9 +129,7 @@ const Select = ({
   const getViewValue = () => {
     if (attributes.raw || attributes.loadOptions || !options) return fieldValue;
     if (attributes.isMulti && Array.isArray(fieldValue)) {
-      return fieldValue.map(
-        (value) => findOptionFromValue(value, options) || value
-      );
+      return fieldValue.map((value) => findOptionFromValue(value, options) || value);
     }
     return findOptionFromValue(fieldValue, options) || fieldValue;
   };
@@ -158,20 +145,12 @@ const Select = ({
   }
 
   const onChangeHandler = async (newValue) => {
-    if (
-      newValue &&
-      newValue.length > 0 &&
-      newValue[newValue.length - 1].value === selectAllOption.value
-    ) {
+    if (newValue && newValue.length > 0 && newValue[newValue.length - 1].value === selectAllOption.value) {
       newValue = options;
     }
 
     const newVal = prepValue(newValue);
-    const isOverMax =
-      maxLength &&
-      attributes.isMulti &&
-      newValue &&
-      newValue.length > maxLength;
+    const isOverMax = maxLength && attributes.isMulti && newValue && newValue.length > maxLength;
 
     if (isOverMax) return;
 
@@ -179,8 +158,7 @@ const Select = ({
 
     await setFieldValue(name, newVal);
 
-    const shouldAutofill =
-      autofill && !attributes.isMulti && newValue && typeof newVal === 'object';
+    const shouldAutofill = autofill && !attributes.isMulti && newValue && typeof newVal === 'object';
 
     if (shouldAutofill) {
       let formValuesForAutofill = values;
@@ -197,19 +175,12 @@ const Select = ({
         .filter((fieldName) => fieldName !== name)
         .forEach(async (fieldName) => {
           let rawValue = newValue;
-          if (
-            !!newValue.label &&
-            !!newValue.value &&
-            typeof newValue.value === 'object'
-          ) {
+          if (!!newValue.label && !!newValue.value && typeof newValue.value === 'object') {
             rawValue = newValue.value;
           }
 
           let shouldAutofillField = false;
-          shouldAutofillField =
-            typeof autofill === 'object'
-              ? autofill[fieldName]
-              : has(rawValue, fieldName);
+          shouldAutofillField = typeof autofill === 'object' ? autofill[fieldName] : has(rawValue, fieldName);
 
           if (shouldAutofillField) {
             let val;
@@ -217,11 +188,7 @@ const Select = ({
               if (isFunction(autofill[fieldName])) {
                 val = autofill[fieldName](rawValue);
               } else if (typeof autofill[fieldName] === 'string') {
-                val = get(
-                  rawValue,
-                  `${autofill[fieldName]}`,
-                  initialValues[fieldName]
-                );
+                val = get(rawValue, `${autofill[fieldName]}`, initialValues[fieldName]);
               } else {
                 val = initialValues[fieldName];
               }
@@ -241,18 +208,12 @@ const Select = ({
   };
 
   const handleCreate = (value) => {
-    const newOpt = createOption(
-      value,
-      get(attributes, 'labelKey', 'label'),
-      get(attributes, 'valueKey', 'value')
-    );
+    const newOpt = createOption(value, get(attributes, 'labelKey', 'label'), get(attributes, 'valueKey', 'value'));
     newOptions.push(newOpt);
     setNewOptions([...newOptions]);
 
     if (attributes.isMulti) {
-      onChangeHandler(
-        Array.isArray(fieldValue) ? fieldValue.concat(newOpt) : [newOpt]
-      );
+      onChangeHandler(Array.isArray(fieldValue) ? fieldValue.concat(newOpt) : [newOpt]);
     } else {
       onChangeHandler(newOpt);
     }
@@ -290,9 +251,7 @@ const Select = ({
       name={name}
       classNamePrefix="av"
       role="listbox"
-      SelectComponent={
-        attributes.loadOptions && creatable ? Creatable : undefined
-      }
+      SelectComponent={attributes.loadOptions && creatable ? Creatable : undefined}
       onCreateOption={handleCreate}
       className={classNames(
         className,
@@ -376,7 +335,7 @@ const Select = ({
           ...provided,
         }),
       }}
-      theme={theme => ({
+      theme={(theme) => ({
         ...theme,
         borderRadius: 0,
         colors: {
