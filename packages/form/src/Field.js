@@ -35,14 +35,14 @@ const Field = ({
   const labelCol = {};
 
   if (grid) {
-    colSizes.forEach((colSize) => {
+    for (const colSize of colSizes) {
       if (grid[colSize]) {
         row = true;
         const sizeNum = Number.parseInt(grid[colSize], 10);
         col[colSize] = sizeNum;
         labelCol[colSize] = 12 - sizeNum;
       }
-    });
+    }
   }
 
   let input = (
@@ -124,6 +124,7 @@ const Field = ({
 };
 
 Field.propTypes = {
+  name: PropTypes.string.isRequired,
   append: PropTypes.node,
   children: PropTypes.func,
   disabled: PropTypes.bool,
@@ -136,7 +137,6 @@ Field.propTypes = {
   labelAttrs: PropTypes.object,
   labelClass: PropTypes.string,
   labelHidden: PropTypes.bool,
-  name: PropTypes.string.isRequired,
   prepend: PropTypes.node,
   readOnly: PropTypes.bool,
   size: PropTypes.string,
