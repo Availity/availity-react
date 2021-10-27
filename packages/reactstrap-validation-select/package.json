@@ -24,13 +24,12 @@
   },
   "homepage": "https://github.com/Availity/availity-react/tree/master/packages/reactstrap-validation-select#readme",
   "dependencies": {
-    "@types/react-select": "^3.0.23",
     "classnames": "^2.3.1",
     "lodash": "^4.17.21",
     "prop-types": "^15.7.2",
     "qs": "^6.5.2",
-    "react-select": "^3.0.3",
-    "react-select-async-paginate": "^0.4.1"
+    "react-select": "^5.0.0",
+    "react-select-async-paginate": "^0.6.0"
   },
   "devDependencies": {
     "@availity/api-axios": "^6.0.0",

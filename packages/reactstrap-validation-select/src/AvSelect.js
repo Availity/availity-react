@@ -4,12 +4,11 @@ import classNames from 'classnames';
 import { AvBaseInput } from 'availity-reactstrap-validation';
 import Select, { components as reactSelectComponents } from 'react-select';
 import Creatable from 'react-select/creatable';
+import { AsyncPaginate } from 'react-select-async-paginate';
 import get from 'lodash/get';
 import has from 'lodash/has';
 import isEqual from 'lodash/isEqual';
 import isFunction from 'lodash/isFunction';
-
-import { AsyncPaginate } from 'react-select-async-paginate';
 
 const { DownChevron, CrossIcon, DropdownIndicator, ClearIndicator } = reactSelectComponents;
 
@@ -298,7 +297,10 @@ class AvSelect extends AvBaseInput {
               ...provided,
               borderRadius: '.25em',
               backgroundColor: showError ? '#fbcbc8' : 'white',
-              borderColor: showError ? '#931b1d' : 'hsl(0,0%,80%)',
+              borderColor: showError ? '#931b1d' : '#555555',
+              ':hover': {
+                borderColor: showError ? '#931b1d' : 'rgb(50 98 175)',
+              },
               zIndex: state.focused && '3',
             };
           },
@@ -323,6 +325,15 @@ class AvSelect extends AvBaseInput {
             };
           },
         }}
+        theme={(theme) => ({
+          ...theme,
+          borderRadius: 0,
+          colors: {
+            ...theme.colors,
+            primary25: '#85a8dc',
+            primary: 'rgb(50 98 175)',
+          },
+        })}
         options={!attributes.loadOptions ? [...options, ...newOptions] : undefined}
         onCreateOption={this.handleCreate}
         components={components}

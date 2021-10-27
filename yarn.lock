@@ -185,19 +185,6 @@
     "@babel/runtime" "^7.10.2"
     core-js "^3.12.1"
 
-"@availity/select@^0.20.4":
-  version "0.20.4"
-  resolved "https://registry.yarnpkg.com/@availity/select/-/select-0.20.4.tgz#9bf5513b7bf8e00cd94f39754b86f59dc30e1bab"
-  integrity sha512-PLY1glQG3C0VHrxfW/5gHXtg4YgkKjbXvk2ZDynKQVr5waeqZdUePBfUypQ4vHSQI2YKKNYngYoIuI7NrRVOOw==
-  dependencies:
-    "@availity/help" "^1.4.5"
-    classnames "^2.3.1"
-    lodash "^4.17.21"
-    prop-types "^15.7.2"
-    qs "^6.5.2"
-    react-select "^5.0.0"
-    react-select-async-paginate "^0.6.0"
-
 "@availity/upload-core@^4.0.0", "@availity/upload-core@^4.1.1":
   version "4.2.0"
   resolved "https://registry.yarnpkg.com/@availity/upload-core/-/upload-core-4.2.0.tgz#9b937aea49463005f711ffffc04a153f574b7cc0"
@@ -3491,7 +3478,7 @@
     prop-types "^15.6.1"
     react-lifecycles-compat "^3.0.4"
 
-"@seznam/compose-react-refs@^1.0.4", "@seznam/compose-react-refs@^1.0.6":
+"@seznam/compose-react-refs@^1.0.6":
   version "1.0.6"
   resolved "https://registry.yarnpkg.com/@seznam/compose-react-refs/-/compose-react-refs-1.0.6.tgz#6ec4e70bdd6e32f8e70b4100f27267cf306bd8df"
   integrity sha512-izzOXQfeQLonzrIQb8u6LQ8dk+ymz3WXTIXjvOlTXHq6sbzROg3NWU+9TTAOpEoK9Bth24/6F/XrfHJ5yR5n6Q==
@@ -4759,13 +4746,6 @@
     "@types/react-outside-click-handler" "*"
     moment "^2.26.0"
 
-"@types/react-dom@*":
-  version "17.0.9"
-  resolved "https://registry.yarnpkg.com/@types/react-dom/-/react-dom-17.0.9.tgz#441a981da9d7be117042e1a6fd3dac4b30f55add"
-  integrity sha512-wIvGxLfgpVDSAMH5utdL9Ngm5Owu0VsGmldro3ORLXV8CShrL8awVj06NuEXFQ5xyaYfdca7Sgbk/50Ri1GdPg==
-  dependencies:
-    "@types/react" "*"
-
 "@types/react-dom@^16.8.0":
   version "16.9.14"
   resolved "https://registry.yarnpkg.com/@types/react-dom/-/react-dom-16.9.14.tgz#674b8f116645fe5266b40b525777fc6bb8eb3bcd"
@@ -4779,15 +4759,6 @@
   integrity sha512-BxQpd5GsbA9rjqLcM4lYp70VnvahgjMUeJ4OKi0A7QOsDLD2yUPswOVixtDpmvCu0PkRTfvMoStIR3gKC/L3XQ==
   dependencies:
     "@types/react" "*"
-
-"@types/react-select@^3.0.23":
-  version "3.1.2"
-  resolved "https://registry.yarnpkg.com/@types/react-select/-/react-select-3.1.2.tgz#38627df4b49be9b28f800ed72b35d830369a624b"
-  integrity sha512-ygvR/2FL87R2OLObEWFootYzkvm67LRA+URYEAcBuvKk7IXmdsnIwSGm60cVXGaqkJQHozb2Cy1t94tCYb6rJA==
-  dependencies:
-    "@types/react" "*"
-    "@types/react-dom" "*"
-    "@types/react-transition-group" "*"
 
 "@types/react-syntax-highlighter@11.0.5":
   version "11.0.5"
@@ -4810,7 +4781,7 @@
   dependencies:
     "@types/react" "*"
 
-"@types/react-transition-group@*", "@types/react-transition-group@^4.4.0":
+"@types/react-transition-group@^4.4.0":
   version "4.4.3"
   resolved "https://registry.yarnpkg.com/@types/react-transition-group/-/react-transition-group-4.4.3.tgz#b0994da0a7023d67dbb4a8910a62112bc00d5688"
   integrity sha512-fUx5muOWSYP8Bw2BUQ9M9RK9+W1XBK/7FLJ8PTQpnpTEkn0ccyMffyEQvan4C3h53gHdx7KE5Qrxi/LnUGQtdg==
@@ -17501,7 +17472,7 @@ react-inspector@^5.1.0:
     is-dom "^1.0.0"
     prop-types "^15.0.0"
 
-react-is-mounted-hook@^1.0.3, react-is-mounted-hook@^1.1.2:
+react-is-mounted-hook@^1.1.2:
   version "1.1.2"
   resolved "https://registry.yarnpkg.com/react-is-mounted-hook/-/react-is-mounted-hook-1.1.2.tgz#0e57d237c0ed60f6a8dc0520634608a80ae864ff"
   integrity sha512-yjq3Tj34CiFcdVOS/h6JerWLOLdJqEGKMNpTHc4kWebzz2YtIpgqMRrqxdmQhewM1KJREojdAV2tsNvBsUWyhA==
@@ -17676,16 +17647,6 @@ react-router@5.2.1, react-router@^5.2.0:
     tiny-invariant "^1.0.2"
     tiny-warning "^1.0.0"
 
-react-select-async-paginate@^0.4.1:
-  version "0.4.1"
-  resolved "https://registry.yarnpkg.com/react-select-async-paginate/-/react-select-async-paginate-0.4.1.tgz#974eeee57a176b76264c95a946c7c624ea0fb566"
-  integrity sha512-zWeaN9C9PVQej4bz1+OvU6/ylHE6rHscDYcP+KiWdBedVQ5j2vXBjf/5RWLEvobvtUUHBOTbUF8+m2HDoeIcvQ==
-  dependencies:
-    "@babel/runtime" "^7.11.2"
-    "@seznam/compose-react-refs" "^1.0.4"
-    react-is-mounted-hook "^1.0.3"
-    sleep-promise "^8.0.1"
-
 react-select-async-paginate@^0.6.0:
   version "0.6.0"
   resolved "https://registry.yarnpkg.com/react-select-async-paginate/-/react-select-async-paginate-0.6.0.tgz#48e8e20345fa4df2432d8b9d1fb2498edd5aa440"
@@ -17696,7 +17657,7 @@ react-select-async-paginate@^0.6.0:
     react-is-mounted-hook "^1.1.2"
     sleep-promise "^9.1.0"
 
-react-select@^3.0.3, react-select@^3.2.0:
+react-select@^3.2.0:
   version "3.2.0"
   resolved "https://registry.yarnpkg.com/react-select/-/react-select-3.2.0.tgz#de9284700196f5f9b5277c5d850a9ce85f5c72fe"
   integrity sha512-B/q3TnCZXEKItO0fFN/I0tWOX3WJvi/X2wtdffmwSQVRwg5BpValScTO1vdic9AxlUgmeSzib2hAZAwIUQUZGQ==
@@ -19014,11 +18975,6 @@ slash@^3.0.0:
   version "3.0.0"
   resolved "https://registry.yarnpkg.com/slash/-/slash-3.0.0.tgz#6539be870c165adbd5240220dbe361f1bc4d4634"
   integrity sha512-g9Q1haeby36OSStwb4ntCGGGaKsaVSjQ68fBxoQcutl5fS1vuY18H3wSt3jFyFtrkx+Kz0V1G85A4MyAdDMi2Q==
-
-sleep-promise@^8.0.1:
-  version "8.0.1"
-  resolved "https://registry.yarnpkg.com/sleep-promise/-/sleep-promise-8.0.1.tgz#8d795a27ea23953df6b52b91081e5e22665993c5"
-  integrity sha1-jXlaJ+ojlT32tSuRCB5eImZZk8U=
 
 sleep-promise@^9.1.0:
   version "9.1.0"

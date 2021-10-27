@@ -83,7 +83,7 @@ export const Default: Story = ({ autofill, creatable, disabled, isMulti, max, mi
 );
 Default.args = {
   autofill: false,
-  creatbale: false,
+  creatable: false,
   disabled: false,
   isMulti: false,
   min: 2,
@@ -130,7 +130,7 @@ export const WithLabel: Story = ({
 );
 WithLabel.args = {
   autofill: false,
-  creatbale: false,
+  creatable: false,
   disabled: false,
   errorMessage: 'This field is invalid',
   isMulti: false,
@@ -183,7 +183,7 @@ export const _AvSelectField: Story = ({
 );
 _AvSelectField.args = {
   autofill: false,
-  creatbale: false,
+  creatable: false,
   disabled: false,
   errorMessage: 'This field is invalid',
   isMulti: false,
@@ -237,7 +237,7 @@ export const _AvSelectResource: Story = ({
 );
 _AvSelectResource.args = {
   autofill: false,
-  creatbale: false,
+  creatable: false,
   disabled: false,
   errorMessage: 'This field is invalid',
   isMulti: false,
