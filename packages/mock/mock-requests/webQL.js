@@ -14,10 +14,8 @@ export default (mock) => {
 
     if (
       body.variables &&
-      ((body.variables.filters.ids &&
-        body.variables.filters.ids.some((id) => id === 'space1')) ||
-        (body.variables.filters.payerIds &&
-          body.variables.filters.payerIds.some((id) => id === 'availity1')))
+      ((body.variables.filters.ids && body.variables.filters.ids.some((id) => id === 'space1')) ||
+        (body.variables.filters.payerIds && body.variables.filters.payerIds.some((id) => id === 'availity1')))
     ) {
       resp = availitySpacesResponse;
     } else if (body.variables && body.variables.filters.payerIds) {
