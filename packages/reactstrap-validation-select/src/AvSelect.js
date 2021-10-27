@@ -71,6 +71,7 @@ class AvSelect extends AvBaseInput {
     });
 
     if (isMulti) {
+      // eslint-disable-next-line unicorn/prefer-spread
       this.getValidatorProps().onChange(Array.isArray(currentValue) ? currentValue.concat(newOpt) : [newOpt]);
     } else {
       this.getValidatorProps().onChange(newOpt);
@@ -110,7 +111,7 @@ class AvSelect extends AvBaseInput {
 
   prepValue = (value, digIfMulti = true) => {
     if (this.props.isMulti && digIfMulti && Array.isArray(value)) {
-      return value.map((val) => this.prepValue(val), false);
+      return value.map((val) => this.prepValue(val));
     }
     if (this.props.raw || this.props.loadOptions) {
       return value;
@@ -172,6 +173,7 @@ class AvSelect extends AvBaseInput {
       Object.keys(formValuesForAutofill)
         // Filter out the input that the onChangeHandler is being called for
         .filter((fieldName) => fieldName !== name)
+        // eslint-disable-next-line unicorn/no-array-for-each
         .forEach((fieldName) => {
           let rawValue = inputValue;
           if (!!inputValue.label && !!inputValue.value && typeof inputValue.value === 'object') {

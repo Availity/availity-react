@@ -13,6 +13,7 @@ const SpacesGhostText = ({ spaceId, ...props }) => {
       </small>
     );
   }
+
   return null;
 };
 

@@ -21,21 +21,21 @@ export const actions = {
   }),
 };
 
-export const spacesReducer = (state, action) =>
-  actions[action.type](state, action);
+export const spacesReducer = (state, action) => actions[action.type](state, action);
 
 export const sanitizeSpaces = (spaces) => {
   // Normalize space pairs ( [{ name, value }] => { name: value } )
   const pairFields = ['images', 'metadata', 'colors', 'icons', 'mapping'];
+
   return spaces.reduce((accum, spc) => {
-    pairFields.forEach((field) => {
+    for (const field of pairFields) {
       if (spc[field] && Array.isArray(spc[field])) {
         spc[field] = spc[field].reduce((_accum, { name, value }) => {
           _accum[name] = value;
           return _accum;
         }, {});
       }
-    });
+    }
 
     accum.push(spc);
     return accum;

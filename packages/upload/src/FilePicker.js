@@ -40,9 +40,9 @@ class FilePicker extends Component {
   updateValidations(props = this.props) {
     this.validations = { ...props.validate };
 
-    // eslint-disable-next-line arrow-body-style
     Object.keys(props)
       .filter((val) => htmlValidationAttrs.indexOf(val) > -1)
+      // eslint-disable-next-line unicorn/no-array-for-each
       .forEach((attr) => {
         if (props[attr]) {
           this.validations[attr] = this.validations[attr] || {
@@ -76,6 +76,7 @@ class FilePicker extends Component {
     const { tag: Tag, maxSize, allowedFileTypes, children, ...props } = this.props;
     const file = this.state.value && this.getValue();
     props.id = props.id || props.name || this.id;
+
     return children && props.name && file && (!this.props.multiple || file.length > 0) ? (
       children({ file, clear: this.reset, reset: this.reset })
     ) : (
