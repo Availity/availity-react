@@ -185,19 +185,6 @@
     "@babel/runtime" "^7.10.2"
     core-js "^3.12.1"
 
-"@availity/select@^0.20.4":
-  version "0.20.4"
-  resolved "https://registry.yarnpkg.com/@availity/select/-/select-0.20.4.tgz#9bf5513b7bf8e00cd94f39754b86f59dc30e1bab"
-  integrity sha512-PLY1glQG3C0VHrxfW/5gHXtg4YgkKjbXvk2ZDynKQVr5waeqZdUePBfUypQ4vHSQI2YKKNYngYoIuI7NrRVOOw==
-  dependencies:
-    "@availity/help" "^1.4.5"
-    classnames "^2.3.1"
-    lodash "^4.17.21"
-    prop-types "^15.7.2"
-    qs "^6.5.2"
-    react-select "^5.0.0"
-    react-select-async-paginate "^0.6.0"
-
 "@availity/upload-core@^4.0.0", "@availity/upload-core@^4.1.1":
   version "4.2.0"
   resolved "https://registry.yarnpkg.com/@availity/upload-core/-/upload-core-4.2.0.tgz#9b937aea49463005f711ffffc04a153f574b7cc0"
