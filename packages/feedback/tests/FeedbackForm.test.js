@@ -143,9 +143,9 @@ describe('FeedbackForm', () => {
 
     expect(faceOptionFields.childElementCount).toBe(4);
 
-    faceOptions.forEach((faceOption) => {
+    for (const faceOption of faceOptions) {
       expect(faceOptionFields.getElementsByClassName(`icon-${faceOption.icon}`)).not.toBe(null);
-    });
+    }
   });
 
   test('should render about options', () => {
