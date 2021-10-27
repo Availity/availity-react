@@ -13,7 +13,7 @@ class AvResourceSelect extends Component {
     this.state.previousOptions = [];
   }
 
-  select = createRef();
+  selectRef = createRef();
 
   loadOptions = (...args) => {
     const [inputValue, , additional = {}] = args;
@@ -202,7 +202,7 @@ class AvResourceSelect extends Component {
 
     return (
       <Tag
-        selectRef={this.select}
+        selectRef={this.selectRef}
         loadOptions={this.loadOptions}
         defaultOptions={waitUntilFocused ? [] : true}
         pagination

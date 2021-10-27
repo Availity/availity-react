@@ -4,12 +4,11 @@ import classNames from 'classnames';
 import { AvBaseInput } from 'availity-reactstrap-validation';
 import Select, { components as reactSelectComponents } from 'react-select';
 import Creatable from 'react-select/creatable';
+import { AsyncPaginate } from 'react-select-async-paginate';
 import get from 'lodash/get';
 import has from 'lodash/has';
 import isEqual from 'lodash/isEqual';
 import isFunction from 'lodash/isFunction';
-
-import { AsyncPaginate } from 'react-select-async-paginate';
 
 const { DownChevron, CrossIcon, DropdownIndicator, ClearIndicator } = reactSelectComponents;
 
