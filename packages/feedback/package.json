@@ -24,7 +24,7 @@
     "@availity/form": "^1.0.3",
     "@availity/hooks": "^3.0.6",
     "@availity/icon": "^0.9.1",
-    "@availity/native-form": "^3.0.0",
+    "@availity/native-form": "^4.0.5",
     "@availity/select": "^1.0.5",
     "prop-types": "^15.7.2"
   },
