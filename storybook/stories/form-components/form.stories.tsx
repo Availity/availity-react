@@ -1,3 +1,4 @@
+/* eslint-disable no-console */
 import React from 'react';
 import { Meta, Story } from '@storybook/react';
 import { Button } from 'reactstrap';
