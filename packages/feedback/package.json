@@ -30,7 +30,7 @@
   },
   "devDependencies": {
     "@availity/api-axios": "^6.0.0",
-    "@availity/yup": "^3.0.11",
+    "@availity/yup": "^3.2.0",
     "axios": "^0.21.1",
     "formik": "^2.2.8",
     "react": "^17.0.2",
