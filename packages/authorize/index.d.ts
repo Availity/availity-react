@@ -1,3 +1,2 @@
-export { default } from './types/Authorize';
-export * from './types/Authorize';
-export * from './types/useAuthorize';
+export { default, AuthorizeProps } from './types/Authorize';
+export { default as useAuthorize, AuthorizeOpts } from './types/useAuthorize';

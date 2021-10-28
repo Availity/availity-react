@@ -5,6 +5,7 @@
     "lib": ["es6", "dom"],
     "jsx": "react",
     "moduleResolution": "node",
+    "resolveJsonModule": true,
     "forceConsistentCasingInFileNames": true,
     "strict": true,
     "noEmit": true,
@@ -39,6 +40,7 @@
       "@availity/select": ["./select"],
       "@availity/spaces": ["./spaces"],
       "@availity/step-wizard": ["./step-wizard"],
+      "@availity/table": ["./table"],
       "@availity/training-link": ["./training-link"],
       "@availity/typography": ["./typography"],
       "@availity/upload": ["./upload"]

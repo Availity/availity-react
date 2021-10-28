@@ -53,9 +53,7 @@ describe('Spaces', () => {
       return (
         <div>
           <span data-testid={`space-for-${spaceId}`}>
-            {space
-              ? `Space ${spaceId} is in provider`
-              : `Space ${spaceId} is not in provider`}
+            {space ? `Space ${spaceId} is in provider` : `Space ${spaceId} is not in provider`}
           </span>
         </div>
       );
@@ -66,20 +64,12 @@ describe('Spaces', () => {
       const [spaceIds, setSpaceIds] = useState(['1', '3']);
 
       return (
-        <Spaces
-          spaceIds={spaceIds}
-          spaces={[{ id: '3' }]}
-          clientId="my-client-id"
-        >
+        <Spaces spaceIds={spaceIds} spaces={[{ id: '3' }]} clientId="my-client-id">
           <SpaceComponent spaceId="1" />
           <SpaceComponent spaceId="2" />
           <SpaceComponent spaceId="3" />
 
-          <button
-            type="button"
-            data-testid="add-spaceid-btn"
-            onClick={() => setSpaceIds(['1', '2', '3'])}
-          >
+          <button type="button" data-testid="add-spaceid-btn" onClick={() => setSpaceIds(['1', '2', '3'])}>
             Add
           </button>
         </Spaces>
@@ -162,9 +152,7 @@ describe('Spaces', () => {
       // Should be called when async effect to fetch spaces from avWebQL gets executed
       if (space && !loading) fn(space, error);
       return loading ? null : (
-        <span data-testid={`space-for-${spaceId}`}>
-          {space ? `Space ${space.id}` : 'No Space '}
-        </span>
+        <span data-testid={`space-for-${spaceId}`}>{space ? `Space ${space.id}` : 'No Space '}</span>
       );
     };
 
@@ -176,11 +164,7 @@ describe('Spaces', () => {
         <Spaces spaceIds={[spaceId]} clientId="my-client-id">
           <SpaceComponent spaceId={spaceId} />
 
-          <button
-            type="button"
-            data-testid="add-spaceid-btn"
-            onClick={() => setSpaceId('2')}
-          >
+          <button type="button" data-testid="add-spaceid-btn" onClick={() => setSpaceId('2')}>
             Add
           </button>
         </Spaces>
@@ -284,9 +268,7 @@ describe('Spaces', () => {
       // Should be called when async effect to fetch spaces from avWebQL gets executed
       if (!loading) fn(space, error);
       return loading ? null : (
-        <span data-testid={`space-for-${spaceId}`}>
-          {space ? `Space ${space.id}` : 'No Space '}
-        </span>
+        <span data-testid={`space-for-${spaceId}`}>{space ? `Space ${space.id}` : 'No Space '}</span>
       );
     };
 
@@ -353,13 +335,10 @@ describe('Spaces', () => {
     const SpacesComponent = ({ ids = [] }) => {
       const spaces = useSpaces(...ids);
 
-      const dataTestIdSuffix =
-        ids && ids.length > 0 ? ids.join('-') : 'all-spaces';
+      const dataTestIdSuffix = ids && ids.length > 0 ? ids.join('-') : 'all-spaces';
       return (
         <div>
-          <span data-testid={`spaces-for-${dataTestIdSuffix}`}>
-            {spaces.map((spc) => `Id: ${spc && spc.id} `)}
-          </span>
+          <span data-testid={`spaces-for-${dataTestIdSuffix}`}>{spaces.map((spc) => `Id: ${spc && spc.id} `)}</span>
         </div>
       );
     };
@@ -391,22 +370,14 @@ describe('Spaces', () => {
         </Spaces>
       );
 
-      expect(avWebQLApi.create.mock.calls[0][0].variables.ids).toEqual([
-        '1',
-        '2',
-        '3',
-      ]);
+      expect(avWebQLApi.create.mock.calls[0][0].variables.ids).toEqual(['1', '2', '3']);
 
       // Check that all spaces get returned when no ids get passed to useSpaces hook
-      const allSpaces = await waitFor(() =>
-        testById.getByTestId('spaces-for-all-spaces')
-      );
+      const allSpaces = await waitFor(() => testById.getByTestId('spaces-for-all-spaces'));
       expect(allSpaces.textContent).toBe('Id: 1 Id: 2 Id: 3 ');
 
       // Check that spaces for ids get returned when ids passed to useSpaces hook
-      const specificSpaces = await waitFor(() =>
-        testById.getByTestId('spaces-for-2-3')
-      );
+      const specificSpaces = await waitFor(() => testById.getByTestId('spaces-for-2-3'));
       expect(specificSpaces.textContent).toBe('Id: 2 Id: 3 ');
     });
 
@@ -441,9 +412,7 @@ describe('Spaces', () => {
       const allSpacesByConfigurationIds = await waitFor(() =>
         testByConfigurationId.getByTestId('spaces-for-all-spaces')
       );
-      expect(allSpacesByConfigurationIds.textContent).toBe(
-        'Id: 1 Id: 2 Id: 3 '
-      );
+      expect(allSpacesByConfigurationIds.textContent).toBe('Id: 1 Id: 2 Id: 3 ');
 
       // Check that spaces for configurationIds get returned when configurationIds passed to useSpaces hook
       const specificSpacesByConfigurationIds = await waitFor(() =>
@@ -480,13 +449,9 @@ describe('Spaces', () => {
       );
 
       // Check that spaces for payer ids get returned when ids passed to useSpaces hook
-      const payerSpecificSpaces = await waitFor(() =>
-        testByPayerId.getByTestId('spaces-for-b')
-      );
+      const payerSpecificSpaces = await waitFor(() => testByPayerId.getByTestId('spaces-for-b'));
       expect(payerSpecificSpaces.textContent).toBe('Id: 2 ');
-      const payerSpecificSpaces2 = await waitFor(() =>
-        testByPayerId.getByTestId('spaces-for-c')
-      );
+      const payerSpecificSpaces2 = await waitFor(() => testByPayerId.getByTestId('spaces-for-c'));
       expect(payerSpecificSpaces2.textContent).toBe('Id: 1 ');
     });
   });

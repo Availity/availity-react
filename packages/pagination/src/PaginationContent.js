@@ -19,17 +19,8 @@ const PaginationContent = ({
   children,
   ...rest
 }) => {
-  const {
-    page,
-    currentPage,
-    setPage,
-    allPages,
-    hasMore,
-    loading,
-    lower,
-    ref,
-    setDoFocusRefOnPageChange,
-  } = usePagination();
+  const { page, currentPage, setPage, allPages, hasMore, loading, lower, ref, setDoFocusRefOnPageChange } =
+    usePagination();
 
   const _children = useMemo(() => {
     let items;
@@ -40,10 +31,7 @@ const PaginationContent = ({
         allPages.map((value, key) => {
           if (!value[itemKey]) {
             // eslint-disable-next-line no-console
-            console.warn(
-              "Warning a Pagination Item doesn't have a key:",
-              value
-            );
+            console.warn("Warning a Pagination Item doesn't have a key:", value);
           }
 
           if (indexOfItemToReference === key) {
@@ -54,14 +42,7 @@ const PaginationContent = ({
               </>
             ));
 
-            return (
-              <ComponentWithRef
-                ref={ref}
-                {...rest}
-                key={value[itemKey] || key}
-                {...value}
-              />
-            );
+            return <ComponentWithRef ref={ref} {...rest} key={value[itemKey] || key} {...value} />;
           }
 
           return <Component {...rest} key={value[itemKey] || key} {...value} />;
@@ -72,10 +53,7 @@ const PaginationContent = ({
         page.map((value, key) => {
           if (!value[itemKey]) {
             // eslint-disable-next-line no-console
-            console.warn(
-              "Warning a Pagination Item doesn't have a key:",
-              value
-            );
+            console.warn("Warning a Pagination Item doesn't have a key:", value);
           }
 
           return <Component {...rest} key={value[itemKey] || key} {...value} />;

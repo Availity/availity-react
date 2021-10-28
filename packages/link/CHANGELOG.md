@@ -3,6 +3,25 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## 2.3.4 (2021-10-28)
+
+**Note:** Version bump only for package @availity/link
+
+
+
+
+
+## 2.3.3 (2021-10-19)
+
+
+### Bug Fixes
+
+* **link:** update types ([5385416](https://github.com/Availity/availity-react/commit/5385416b13dec242357f27317caaedff694e1087))
+
+
+
+
+
 ## [2.3.2](https://github.com/Availity/availity-react/compare/@availity/link@2.3.1...@availity/link@2.3.2) (2021-10-01)
 
 **Note:** Version bump only for package @availity/link

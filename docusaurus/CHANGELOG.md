@@ -3,6 +3,21 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# 1.2.0 (2021-10-08)
+
+
+### Features
+
+* **table:** fix typings, address code review comments, enhance onRowSelect handling ([ac3b85c](https://github.com/Availity/availity-react/commit/ac3b85ce9e54b1e8469d33873a6e1bc05fd182ac))
+* **table:** fix up some docs and typings ([93e044d](https://github.com/Availity/availity-react/commit/93e044d949724aef4722b763c4e60399bb309727))
+* **table:** initial of add documentation and make some minor sticky updates ([6f6b84e](https://github.com/Availity/availity-react/commit/6f6b84e01c91f50b170453ece563a568d41a1651))
+* **table:** proofreading documentation ([3ca9f95](https://github.com/Availity/availity-react/commit/3ca9f95b16c96ff7886fafa22bc491bf7e4dc4ab))
+* **table:** some code review feedback and some fixes, storybook enhancements ([f6a8f92](https://github.com/Availity/availity-react/commit/f6a8f92365c3e53a68deca536ef3e948122e4434))
+
+
+
+
+
 ## 1.1.9 (2021-06-01)
 
 **Note:** Version bump only for package @availity/dinosaurdocs

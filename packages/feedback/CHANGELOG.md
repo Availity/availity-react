@@ -3,6 +3,95 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [6.1.4](https://github.com/Availity/availity-react/compare/@availity/feedback@6.1.3...@availity/feedback@6.1.4) (2021-10-28)
+
+**Note:** Version bump only for package @availity/feedback
+
+
+
+
+
+## [6.1.3](https://github.com/Availity/availity-react/compare/@availity/feedback@6.1.2...@availity/feedback@6.1.3) (2021-10-28)
+
+**Note:** Version bump only for package @availity/feedback
+
+
+
+
+
+## [6.1.2](https://github.com/Availity/availity-react/compare/@availity/feedback@6.1.1...@availity/feedback@6.1.2) (2021-10-28)
+
+
+### Bug Fixes
+
+* **feedback:** resolve lint errors ([295cb3e](https://github.com/Availity/availity-react/commit/295cb3e126b70d5204899fe265869752c9024eb2))
+
+
+
+
+
+## 6.1.1 (2021-10-27)
+
+
+### Bug Fixes
+
+* **feedback:** update select dep ([12677ee](https://github.com/Availity/availity-react/commit/12677ee4817c7b0569987df42c1e8830a4a99bd2))
+
+
+
+
+
+# 6.1.0 (2021-10-22)
+
+
+### Features
+
+* **feedback:** revert feedback changes and add onModalOpenChange prop ([cf8fb64](https://github.com/Availity/availity-react/commit/cf8fb648feafd1c9aa7a547a8bb4707e3f7c2f5a))
+
+
+
+
+
+## 6.0.16 (2021-10-19)
+
+**Note:** Version bump only for package @availity/feedback
+
+
+
+
+
+## [6.0.15](https://github.com/Availity/availity-react/compare/@availity/feedback@6.0.14...@availity/feedback@6.0.15) (2021-10-19)
+
+**Note:** Version bump only for package @availity/feedback
+
+
+
+
+
+## [6.0.14](https://github.com/Availity/availity-react/compare/@availity/feedback@6.0.13...@availity/feedback@6.0.14) (2021-10-19)
+
+**Note:** Version bump only for package @availity/feedback
+
+
+
+
+
+## [6.0.13](https://github.com/Availity/availity-react/compare/@availity/feedback@6.0.12...@availity/feedback@6.0.13) (2021-10-19)
+
+**Note:** Version bump only for package @availity/feedback
+
+
+
+
+
+## 6.0.12 (2021-10-19)
+
+**Note:** Version bump only for package @availity/feedback
+
+
+
+
+
 ## [6.0.11](https://github.com/Availity/availity-react/compare/@availity/feedback@6.0.10...@availity/feedback@6.0.11) (2021-10-08)
 
 **Note:** Version bump only for package @availity/feedback

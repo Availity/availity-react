@@ -46,6 +46,7 @@ class Upload extends Component {
     if (this.props.max && selectedFiles.length + this.state.files.length > this.props.max) {
       selectedFiles = selectedFiles.slice(0, Math.max(0, this.props.max - this.state.files.length));
     }
+    // eslint-disable-next-line unicorn/prefer-spread
     this.files = this.files.concat(
       selectedFiles.map((file) => {
         const options = {
@@ -103,6 +104,7 @@ class Upload extends Component {
 
     Object.keys(props)
       .filter((val) => validationAttrs.indexOf(val) > -1)
+      // eslint-disable-next-line unicorn/no-array-for-each
       .forEach((attr) => {
         if (props[attr]) {
           this.validations[attr] = this.validations[attr] || {

@@ -2,12 +2,22 @@ import React, { useState, useContext, useEffect, useRef } from 'react';
 import PropTypes from 'prop-types';
 import isFunction from 'lodash/isFunction';
 import isEqual from 'lodash/isEqual';
-import * as avLocalStorage from '@availity/localstorage-core';
 import { useDebounce } from 'react-use';
 
 export const PaginationContext = React.createContext();
 
 export const usePagination = () => useContext(PaginationContext);
+
+const getItemLocalStorage = (key) => {
+  const value = window.localStorage.getItem(key);
+  let output;
+  try {
+    output = JSON.parse(value);
+  } catch {
+    output = value;
+  }
+  return output;
+};
 
 // todos
 // Add another `useEffect` for only updating the items without calling the function if the `itemsPerPage` prop changes
@@ -59,7 +69,7 @@ const Pagination = ({
   const getPageData = async () => {
     try {
       toggleLoading(true);
-      avLocalStorage.set('current-page', currentPage);
+      window.localStorage.setItem('current-page', JSON.stringify(currentPage));
 
       // If the items is a function then await the response in case of async actions
       const { items, totalCount } = isFunction(theItems)
@@ -76,14 +86,18 @@ const Pagination = ({
       // todo - add prop if needed to handle this
       const page = isFunction(theItems) ? items : items.slice(lower - 1, upper);
 
-      const pageCount = Math.ceil((totalCount || items.length) / itemsPerPage);
+      // eslint-disable-next-line unicorn/explicit-length-check
+      const total = totalCount || items.length;
+      const pageCount = Math.ceil(total / itemsPerPage);
 
-      if (!isEqual(avLocalStorage.get('current-page'), currentPage)) {
+      const localStorageItem = getItemLocalStorage('current-page');
+
+      if (!isEqual(localStorageItem, currentPage)) {
         return;
       }
 
       setPageData({
-        total: totalCount || items.length,
+        total,
         pageCount,
         page,
         allPages: [...pageData.allPages, ...page],

@@ -3,6 +3,57 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.6.13](https://github.com/Availity/availity-react/compare/@availity/form-upload@0.6.12...@availity/form-upload@0.6.13) (2021-10-28)
+
+**Note:** Version bump only for package @availity/form-upload
+
+
+
+
+
+## 0.6.12 (2021-10-28)
+
+
+### Bug Fixes
+
+* **form-upload:** resolve lint errors ([92d2f84](https://github.com/Availity/availity-react/commit/92d2f846d80af76e0e355dc6f4f33174a50bd368))
+
+
+
+
+
+## 0.6.11 (2021-10-19)
+
+**Note:** Version bump only for package @availity/form-upload
+
+
+
+
+
+## [0.6.10](https://github.com/Availity/availity-react/compare/@availity/form-upload@0.6.9...@availity/form-upload@0.6.10) (2021-10-19)
+
+**Note:** Version bump only for package @availity/form-upload
+
+
+
+
+
+## [0.6.9](https://github.com/Availity/availity-react/compare/@availity/form-upload@0.6.8...@availity/form-upload@0.6.9) (2021-10-19)
+
+**Note:** Version bump only for package @availity/form-upload
+
+
+
+
+
+## 0.6.8 (2021-10-19)
+
+**Note:** Version bump only for package @availity/form-upload
+
+
+
+
+
 ## [0.6.7](https://github.com/Availity/availity-react/compare/@availity/form-upload@0.6.6...@availity/form-upload@0.6.7) (2021-10-04)
 
 **Note:** Version bump only for package @availity/form-upload

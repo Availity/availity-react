@@ -4,4 +4,4 @@
 
 [![Version](https://img.shields.io/npm/v/@availity/form.svg?style=for-the-badge)](https://www.npmjs.com/package/@availity/form)
 
-## [Documentation](https://availity.github.io/availity-react/form/components/)
+## [Documentation](https://availity.github.io/availity-react/form/index)

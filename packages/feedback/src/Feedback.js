@@ -20,14 +20,20 @@ const Feedback = ({
   prompt,
   onFeedbackSent,
   showSupport,
+  onModalOpenChange,
   ...props
 }) => {
   const [feedbackIsOpen, feedbackToggle] = useToggle(false);
 
+  const handleFeedbackToggle = () => {
+    feedbackToggle();
+    onModalOpenChange(!feedbackIsOpen);
+  };
+
   return (
     <Dropdown
       isOpen={feedbackIsOpen && !modal}
-      toggle={() => feedbackToggle()}
+      toggle={handleFeedbackToggle}
       className={`${className} hidden-print`}
       {...props}
     >
@@ -40,7 +46,7 @@ const Feedback = ({
           prompt={prompt}
           isOpen={feedbackIsOpen}
           zIndex={zIndex}
-          toggle={() => feedbackToggle()}
+          toggle={handleFeedbackToggle}
           name={appName}
           analytics={analytics}
           showSupport={showSupport}
@@ -54,7 +60,7 @@ const Feedback = ({
           feedbackToggle={feedbackToggle}
           prompt={prompt}
           analytics={analytics}
-          toggle={() => feedbackToggle()}
+          toggle={handleFeedbackToggle}
           name={appName}
           showSupport={showSupport}
           supportZIndex={supportZIndex}
@@ -78,6 +84,7 @@ Feedback.propTypes = {
   formProps: PropTypes.object,
   prompt: PropTypes.string,
   onFeedbackSent: PropTypes.func,
+  onModalOpenChange: PropTypes.func,
   analytics: PropTypes.shape({
     info: PropTypes.func.isRequired,
   }),
@@ -89,6 +96,7 @@ Feedback.defaultProps = {
   color: 'secondary',
   analytics: avLogMessagesApi,
   showSupport: false,
+  onModalOpenChange: Object,
 };
 
 export default Feedback;

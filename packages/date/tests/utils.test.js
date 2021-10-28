@@ -96,9 +96,7 @@ describe('utils', () => {
       const yearPicker = UTILS.buildYearPickerOptions(min, max, month);
 
       expect(yearPicker.length).toBe(
-        moment().add(max.value, max.units).year() -
-          moment().subtract(min.value, min.units).year() +
-          1
+        moment().add(max.value, max.units).year() - moment().subtract(min.value, min.units).year() + 1
       );
     });
 
@@ -107,19 +105,9 @@ describe('utils', () => {
       const min = '01/01/1999';
       const max = `12/31/${month.year()}`;
 
-      const minMoment = moment(min, [
-        'YYYY-MM-DD',
-        'MM/DD/YYYY',
-        'MMDDYYYY',
-        'YYYYMMDD',
-      ]);
+      const minMoment = moment(min, ['YYYY-MM-DD', 'MM/DD/YYYY', 'MMDDYYYY', 'YYYYMMDD']);
 
-      const maxMoment = moment(max, [
-        'YYYY-MM-DD',
-        'MM/DD/YYYY',
-        'MMDDYYYY',
-        'YYYYMMDD',
-      ]);
+      const maxMoment = moment(max, ['YYYY-MM-DD', 'MM/DD/YYYY', 'MMDDYYYY', 'YYYYMMDD']);
 
       const yearPicker = UTILS.buildYearPickerOptions(min, max, month);
 

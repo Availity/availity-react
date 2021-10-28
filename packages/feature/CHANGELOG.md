@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## 1.2.27 (2021-10-28)
+
+
+### Bug Fixes
+
+* **feature:** resolve lint errors ([a8ea493](https://github.com/Availity/availity-react/commit/a8ea493595df7d534d27fd9f37a7e19e93903896))
+
+
+
+
+
 ## 1.2.26 (2021-09-28)
 
 **Note:** Version bump only for package @availity/feature

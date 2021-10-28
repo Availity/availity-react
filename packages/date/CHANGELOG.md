@@ -3,6 +3,65 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [2.1.22](https://github.com/Availity/availity-react/compare/@availity/date@2.1.21...@availity/date@2.1.22) (2021-10-28)
+
+**Note:** Version bump only for package @availity/date
+
+
+
+
+
+## 2.1.21 (2021-10-28)
+
+**Note:** Version bump only for package @availity/date
+
+
+
+
+
+## 2.1.20 (2021-10-19)
+
+**Note:** Version bump only for package @availity/date
+
+
+
+
+
+## [2.1.19](https://github.com/Availity/availity-react/compare/@availity/date@2.1.18...@availity/date@2.1.19) (2021-10-19)
+
+**Note:** Version bump only for package @availity/date
+
+
+
+
+
+## [2.1.18](https://github.com/Availity/availity-react/compare/@availity/date@2.1.17...@availity/date@2.1.18) (2021-10-19)
+
+**Note:** Version bump only for package @availity/date
+
+
+
+
+
+## 2.1.17 (2021-10-19)
+
+**Note:** Version bump only for package @availity/date
+
+
+
+
+
+## [2.1.16](https://github.com/Availity/availity-react/compare/@availity/date@2.1.14...@availity/date@2.1.16) (2021-10-11)
+
+
+### Bug Fixes
+
+* **date:** update types to correctly reflect props ([dd9a76e](https://github.com/Availity/availity-react/commit/dd9a76edfe7fcdd68633cbf65d19eef49143bb22))
+
+
+
+
+
 ## [2.1.15](https://github.com/Availity/availity-react/compare/@availity/date@2.1.14...@availity/date@2.1.15) (2021-10-06)
 
 **Note:** Version bump only for package @availity/date

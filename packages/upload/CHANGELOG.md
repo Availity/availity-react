@@ -3,6 +3,25 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## 3.1.5 (2021-10-28)
+
+
+### Bug Fixes
+
+* upgrade eslint-config-availity and fix the errors ([6da0423](https://github.com/Availity/availity-react/commit/6da0423ecfa72b426287fd62ad00445fefce024e))
+
+
+
+
+
+## 3.1.4 (2021-10-19)
+
+**Note:** Version bump only for package @availity/upload
+
+
+
+
+
 ## [3.1.3](https://github.com/Availity/availity-react/compare/@availity/upload@3.1.2...@availity/upload@3.1.3) (2021-10-01)
 
 **Note:** Version bump only for package @availity/upload

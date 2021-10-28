@@ -1,21 +1,22 @@
 import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 import { FieldHelpIcon } from '@availity/help';
-import { Label, Input } from 'reactstrap';
+import { Input, Label } from 'reactstrap';
 import { v4 as uuid } from 'uuid';
 import classNames from 'classnames';
+
 import { useCheckboxGroup } from './CheckboxGroup';
 import FormGroup from './FormGroup';
 
 const Checkbox = ({
-  label,
-  value: checkValue,
-  groupClassName,
   className,
-  id,
-  inline,
+  groupClassName,
   groupName,
   helpId,
+  id,
+  inline,
+  label,
+  value: checkValue,
   ...attributes
 }) => {
   const { value, toggle, metadata } = useCheckboxGroup(checkValue);
@@ -30,21 +31,12 @@ const Checkbox = ({
 
   // should only reference feedback id when feedback is in the DOM
   const errorIndicated = !!metadata.touched && !!metadata.error;
-  const groupFeedbackId =
-    errorIndicated && groupName ? `${groupName}-feedback`.toLowerCase() : '';
+  const groupFeedbackId = errorIndicated && groupName ? `${groupName}-feedback`.toLowerCase() : '';
   const labelId = `${inputId}-label`.toLowerCase();
-  const helpIcon = helpId ? (
-    <FieldHelpIcon id={helpId} labelId={labelId} />
-  ) : null;
+  const helpIcon = helpId ? <FieldHelpIcon id={helpId} labelId={labelId} /> : null;
 
   return (
-    <FormGroup
-      for={inputId}
-      className={groupClassName}
-      check
-      inline={inline}
-      disabled={attributes.disabled}
-    >
+    <FormGroup for={inputId} className={groupClassName} check inline={inline} disabled={attributes.disabled}>
       <Input
         id={inputId}
         name={inputId}
@@ -66,19 +58,15 @@ const Checkbox = ({
 };
 
 Checkbox.propTypes = {
-  id: PropTypes.string,
-  label: PropTypes.string,
-  value: PropTypes.oneOfType([
-    PropTypes.string,
-    PropTypes.bool,
-    PropTypes.object,
-  ]),
-  inline: PropTypes.bool,
-  disabled: PropTypes.bool,
   className: PropTypes.string,
+  disabled: PropTypes.bool,
   groupClassName: PropTypes.string,
   groupName: PropTypes.string,
   helpId: PropTypes.string,
+  id: PropTypes.string,
+  inline: PropTypes.bool,
+  label: PropTypes.string,
+  value: PropTypes.oneOfType([PropTypes.string, PropTypes.bool, PropTypes.object]),
 };
 
 Checkbox.defaultProps = {

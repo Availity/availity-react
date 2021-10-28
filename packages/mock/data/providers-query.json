@@ -5,11 +5,7 @@
     "uiDisplayName": "SENTIA",
     "atypical": false,
     "npi": "6205944295",
-    "customerIds": [
-      "055921",
-      "534035",
-      "238160"
-    ],
+    "customerIds": ["055921", "534035", "238160"],
     "roles": [
       {
         "code": "ad",
@@ -60,9 +56,7 @@
     "uiDisplayName": "ZEDALIS",
     "atypical": false,
     "npi": "5421058207",
-    "customerIds": [
-      "855631"
-    ],
+    "customerIds": ["855631"],
     "roles": [
       {
         "code": "cupi",
@@ -109,10 +103,7 @@
     "uiDisplayName": "BEDDER",
     "atypical": false,
     "npi": "5254132454",
-    "customerIds": [
-      "675606",
-      "055319"
-    ],
+    "customerIds": ["675606", "055319"],
     "roles": [
       {
         "code": "dese",
@@ -155,10 +146,7 @@
     "uiDisplayName": "REMOLD",
     "atypical": false,
     "npi": "3168124210",
-    "customerIds": [
-      "380670",
-      "712111"
-    ],
+    "customerIds": ["380670", "712111"],
     "roles": [
       {
         "code": "qui",
@@ -205,9 +193,7 @@
     "uiDisplayName": "GRONK",
     "atypical": false,
     "npi": "6565054568",
-    "customerIds": [
-      "056347"
-    ],
+    "customerIds": ["056347"],
     "roles": [
       {
         "code": "irur",
@@ -246,9 +232,7 @@
     "uiDisplayName": "DIGIQUE",
     "atypical": false,
     "npi": "8069930114",
-    "customerIds": [
-      "196217"
-    ],
+    "customerIds": ["196217"],
     "roles": [
       {
         "code": "exer",
@@ -299,10 +283,7 @@
     "uiDisplayName": "NUTRALAB",
     "atypical": false,
     "npi": "7854811342",
-    "customerIds": [
-      "571439",
-      "164809"
-    ],
+    "customerIds": ["571439", "164809"],
     "roles": [
       {
         "code": "sit",
@@ -353,9 +334,7 @@
     "uiDisplayName": "BIFLEX",
     "atypical": false,
     "npi": "4485847913",
-    "customerIds": [
-      "839020"
-    ],
+    "customerIds": ["839020"],
     "roles": [
       {
         "code": "cons",
@@ -414,9 +393,7 @@
     "uiDisplayName": "TSUNAMIA",
     "atypical": false,
     "npi": "9540880755",
-    "customerIds": [
-      "975657"
-    ],
+    "customerIds": ["975657"],
     "roles": [
       {
         "code": "irur",
@@ -463,10 +440,7 @@
     "uiDisplayName": "FLUM",
     "atypical": false,
     "npi": "5524717588",
-    "customerIds": [
-      "968494",
-      "856438"
-    ],
+    "customerIds": ["968494", "856438"],
     "roles": [
       {
         "code": "Lore",
@@ -521,11 +495,7 @@
     "uiDisplayName": "EARBANG",
     "atypical": false,
     "npi": "3883746700",
-    "customerIds": [
-      "734437",
-      "587909",
-      "856979"
-    ],
+    "customerIds": ["734437", "587909", "856979"],
     "roles": [
       {
         "code": "aliq",
@@ -572,9 +542,7 @@
     "uiDisplayName": "ECSTASIA",
     "atypical": false,
     "npi": "2712207604",
-    "customerIds": [
-      "615009"
-    ],
+    "customerIds": ["615009"],
     "roles": [
       {
         "code": null,
@@ -621,9 +589,7 @@
     "uiDisplayName": "ENOMEN",
     "atypical": false,
     "npi": "6535405861",
-    "customerIds": [
-      "084578"
-    ],
+    "customerIds": ["084578"],
     "roles": [
       {
         "code": "qui",
@@ -658,11 +624,7 @@
     "uiDisplayName": "GEEKETRON",
     "atypical": false,
     "npi": "6447798604",
-    "customerIds": [
-      "588993",
-      "543686",
-      "411468"
-    ],
+    "customerIds": ["588993", "543686", "411468"],
     "roles": [
       {
         "code": "et",
@@ -721,9 +683,7 @@
     "uiDisplayName": "IMPERIUM",
     "atypical": false,
     "npi": "4238424167",
-    "customerIds": [
-      "736236"
-    ],
+    "customerIds": ["736236"],
     "roles": [
       {
         "code": "labo",
@@ -770,11 +730,7 @@
     "uiDisplayName": "QUINEX",
     "atypical": false,
     "npi": "3567760843",
-    "customerIds": [
-      "042734",
-      "144026",
-      "069211"
-    ],
+    "customerIds": ["042734", "144026", "069211"],
     "roles": [
       {
         "code": "amet",
@@ -809,9 +765,7 @@
     "uiDisplayName": "MIRACULA",
     "atypical": false,
     "npi": "2505470520",
-    "customerIds": [
-      "196566"
-    ],
+    "customerIds": ["196566"],
     "roles": [
       {
         "code": "volu",
@@ -870,9 +824,7 @@
     "uiDisplayName": "CYTREX",
     "atypical": false,
     "npi": "2882587594",
-    "customerIds": [
-      "164306"
-    ],
+    "customerIds": ["164306"],
     "roles": [
       {
         "code": "proi",
@@ -931,10 +883,7 @@
     "uiDisplayName": "RECOGNIA",
     "atypical": false,
     "npi": "1922117562",
-    "customerIds": [
-      "665464",
-      "015248"
-    ],
+    "customerIds": ["665464", "015248"],
     "roles": [
       {
         "code": "exce",
@@ -969,9 +918,7 @@
     "uiDisplayName": "BALOOBA",
     "atypical": false,
     "npi": "5504251483",
-    "customerIds": [
-      "193724"
-    ],
+    "customerIds": ["193724"],
     "roles": [
       {
         "code": "moll",
@@ -1010,10 +957,7 @@
     "uiDisplayName": "MEDIFAX",
     "atypical": false,
     "npi": "1490182846",
-    "customerIds": [
-      "021215",
-      "148345"
-    ],
+    "customerIds": ["021215", "148345"],
     "roles": [
       {
         "code": "veli",
@@ -1060,10 +1004,7 @@
     "uiDisplayName": "AVIT",
     "atypical": false,
     "npi": "4469333124",
-    "customerIds": [
-      "984819",
-      "975302"
-    ],
+    "customerIds": ["984819", "975302"],
     "roles": [
       {
         "code": "pari",
@@ -1118,10 +1059,7 @@
     "uiDisplayName": "XYQAG",
     "atypical": false,
     "npi": "6729298176",
-    "customerIds": [
-      "090079",
-      "896800"
-    ],
+    "customerIds": ["090079", "896800"],
     "roles": [
       {
         "code": "adip",
@@ -1172,9 +1110,7 @@
     "uiDisplayName": "ROCKABYE",
     "atypical": false,
     "npi": "5174158089",
-    "customerIds": [
-      "236993"
-    ],
+    "customerIds": ["236993"],
     "roles": [
       {
         "code": "fugi",
@@ -1237,10 +1173,7 @@
     "uiDisplayName": "WAZZU",
     "atypical": false,
     "npi": "9994089308",
-    "customerIds": [
-      "468184",
-      "184772"
-    ],
+    "customerIds": ["468184", "184772"],
     "roles": [
       {
         "code": "labo",
@@ -1291,9 +1224,7 @@
     "uiDisplayName": "KROG",
     "atypical": false,
     "npi": "4060614721",
-    "customerIds": [
-      "898504"
-    ],
+    "customerIds": ["898504"],
     "roles": [
       {
         "code": "repr",
@@ -1352,11 +1283,7 @@
     "uiDisplayName": "FANGOLD",
     "atypical": false,
     "npi": "3855781738",
-    "customerIds": [
-      "149925",
-      "962479",
-      "690948"
-    ],
+    "customerIds": ["149925", "962479", "690948"],
     "roles": [
       {
         "code": "temp",
@@ -1415,9 +1342,7 @@
     "uiDisplayName": "ARCTIQ",
     "atypical": false,
     "npi": "3454477250",
-    "customerIds": [
-      "416998"
-    ],
+    "customerIds": ["416998"],
     "roles": [
       {
         "code": "dolo",
@@ -1464,10 +1389,7 @@
     "uiDisplayName": "MUSANPOLY",
     "atypical": false,
     "npi": "9256362133",
-    "customerIds": [
-      "427747",
-      "685695"
-    ],
+    "customerIds": ["427747", "685695"],
     "roles": [
       {
         "code": "repr",
@@ -1518,9 +1440,7 @@
     "uiDisplayName": "FITCORE",
     "atypical": false,
     "npi": "1180178179",
-    "customerIds": [
-      "374693"
-    ],
+    "customerIds": ["374693"],
     "roles": [
       {
         "code": "qui",
@@ -1571,10 +1491,7 @@
     "uiDisplayName": "ENORMO",
     "atypical": false,
     "npi": "5751121109",
-    "customerIds": [
-      "130553",
-      "052570"
-    ],
+    "customerIds": ["130553", "052570"],
     "roles": [
       {
         "code": "nost",
@@ -1633,10 +1550,7 @@
     "uiDisplayName": "PROWASTE",
     "atypical": false,
     "npi": "7076956267",
-    "customerIds": [
-      "114826",
-      "213044"
-    ],
+    "customerIds": ["114826", "213044"],
     "roles": [
       {
         "code": "volu",
@@ -1675,9 +1589,7 @@
     "uiDisplayName": "KENGEN",
     "atypical": false,
     "npi": "9044481185",
-    "customerIds": [
-      "543968"
-    ],
+    "customerIds": ["543968"],
     "roles": [
       {
         "code": "Lore",
@@ -1716,10 +1628,7 @@
     "uiDisplayName": "PORTALINE",
     "atypical": false,
     "npi": "6576329415",
-    "customerIds": [
-      "768216",
-      "956179"
-    ],
+    "customerIds": ["768216", "956179"],
     "roles": [
       {
         "code": "et",
@@ -1758,9 +1667,7 @@
     "uiDisplayName": "AQUOAVO",
     "atypical": false,
     "npi": "7366200060",
-    "customerIds": [
-      "483818"
-    ],
+    "customerIds": ["483818"],
     "roles": [
       {
         "code": "ea",
@@ -1823,9 +1730,7 @@
     "uiDisplayName": "HOPELI",
     "atypical": false,
     "npi": "4848561750",
-    "customerIds": [
-      "118629"
-    ],
+    "customerIds": ["118629"],
     "roles": [
       {
         "code": "moll",
@@ -1868,10 +1773,7 @@
     "uiDisplayName": "DATAGEN",
     "atypical": false,
     "npi": "7763005626",
-    "customerIds": [
-      "585943",
-      "487860"
-    ],
+    "customerIds": ["585943", "487860"],
     "roles": [
       {
         "code": "labo",
@@ -1918,10 +1820,7 @@
     "uiDisplayName": "SARASONIC",
     "atypical": false,
     "npi": "8214488237",
-    "customerIds": [
-      "523665",
-      "812801"
-    ],
+    "customerIds": ["523665", "812801"],
     "roles": [
       {
         "code": "labo",
@@ -1984,10 +1883,7 @@
     "uiDisplayName": "ELITA",
     "atypical": false,
     "npi": "5267195145",
-    "customerIds": [
-      "256205",
-      "431314"
-    ],
+    "customerIds": ["256205", "431314"],
     "roles": [
       {
         "code": "Lore",
@@ -2042,11 +1938,7 @@
     "uiDisplayName": "ORBOID",
     "atypical": false,
     "npi": "8794369447",
-    "customerIds": [
-      "580412",
-      "944596",
-      "764474"
-    ],
+    "customerIds": ["580412", "944596", "764474"],
     "roles": [
       {
         "code": "inci",
@@ -2093,11 +1985,7 @@
     "uiDisplayName": "AQUACINE",
     "atypical": false,
     "npi": "6024481734",
-    "customerIds": [
-      "237229",
-      "480501",
-      "193798"
-    ],
+    "customerIds": ["237229", "480501", "193798"],
     "roles": [
       {
         "code": "cons",
@@ -2132,11 +2020,7 @@
     "uiDisplayName": "EQUICOM",
     "atypical": false,
     "npi": "4940860278",
-    "customerIds": [
-      "970513",
-      "920032",
-      "954792"
-    ],
+    "customerIds": ["970513", "920032", "954792"],
     "roles": [
       {
         "code": "ulla",
@@ -2179,10 +2063,7 @@
     "uiDisplayName": "TRIPSCH",
     "atypical": false,
     "npi": "1950085992",
-    "customerIds": [
-      "874948",
-      "466249"
-    ],
+    "customerIds": ["874948", "466249"],
     "roles": [
       {
         "code": "aute",
@@ -2233,9 +2114,7 @@
     "uiDisplayName": "OATFARM",
     "atypical": false,
     "npi": "8535593348",
-    "customerIds": [
-      "477651"
-    ],
+    "customerIds": ["477651"],
     "roles": [
       {
         "code": "sit",
@@ -2286,11 +2165,7 @@
     "uiDisplayName": "COMBOT",
     "atypical": false,
     "npi": "2162088876",
-    "customerIds": [
-      "328476",
-      "419844",
-      "812481"
-    ],
+    "customerIds": ["328476", "419844", "812481"],
     "roles": [
       {
         "code": "et",
@@ -2349,9 +2224,7 @@
     "uiDisplayName": "COMSTAR",
     "atypical": false,
     "npi": "2764987547",
-    "customerIds": [
-      "845396"
-    ],
+    "customerIds": ["845396"],
     "roles": [
       {
         "code": "eu",
@@ -2406,11 +2279,7 @@
     "uiDisplayName": "KLUGGER",
     "atypical": false,
     "npi": "1458308247",
-    "customerIds": [
-      "389155",
-      "313808",
-      "677998"
-    ],
+    "customerIds": ["389155", "313808", "677998"],
     "roles": [
       {
         "code": "enim",
@@ -2473,11 +2342,7 @@
     "uiDisplayName": "NETAGY",
     "atypical": false,
     "npi": "6499440724",
-    "customerIds": [
-      "278008",
-      "715290",
-      "594738"
-    ],
+    "customerIds": ["278008", "715290", "594738"],
     "roles": [
       {
         "code": "labo",
@@ -2520,11 +2385,7 @@
     "uiDisplayName": "SLOGANAUT",
     "atypical": false,
     "npi": "6586211598",
-    "customerIds": [
-      "096219",
-      "645302",
-      "691145"
-    ],
+    "customerIds": ["096219", "645302", "691145"],
     "roles": [
       {
         "code": "id",
@@ -2579,11 +2440,7 @@
     "uiDisplayName": "SILODYNE",
     "atypical": false,
     "npi": "6780851284",
-    "customerIds": [
-      "510184",
-      "878680",
-      "689140"
-    ],
+    "customerIds": ["510184", "878680", "689140"],
     "roles": [
       {
         "code": "cupi",
@@ -2630,10 +2487,7 @@
     "uiDisplayName": "EMERGENT",
     "atypical": false,
     "npi": "8940137305",
-    "customerIds": [
-      "494885",
-      "745702"
-    ],
+    "customerIds": ["494885", "745702"],
     "roles": [
       {
         "code": "do",
@@ -2688,10 +2542,7 @@
     "uiDisplayName": "ENERFORCE",
     "atypical": false,
     "npi": "6398550867",
-    "customerIds": [
-      "854407",
-      "188134"
-    ],
+    "customerIds": ["854407", "188134"],
     "roles": [
       {
         "code": "proi",
@@ -2726,10 +2577,7 @@
     "uiDisplayName": "KYAGURU",
     "atypical": false,
     "npi": "1132605172",
-    "customerIds": [
-      "832456",
-      "945169"
-    ],
+    "customerIds": ["832456", "945169"],
     "roles": [
       {
         "code": "non",
@@ -2776,10 +2624,7 @@
     "uiDisplayName": "ZENTURY",
     "atypical": false,
     "npi": "8831679847",
-    "customerIds": [
-      "199764",
-      "423566"
-    ],
+    "customerIds": ["199764", "423566"],
     "roles": [
       {
         "code": "non",
@@ -2842,10 +2687,7 @@
     "uiDisplayName": "ENTHAZE",
     "atypical": false,
     "npi": "9891058502",
-    "customerIds": [
-      "859111",
-      "065705"
-    ],
+    "customerIds": ["859111", "065705"],
     "roles": [
       {
         "code": "labo",
@@ -2904,10 +2746,7 @@
     "uiDisplayName": "UBERLUX",
     "atypical": false,
     "npi": "6429442421",
-    "customerIds": [
-      "256326",
-      "149803"
-    ],
+    "customerIds": ["256326", "149803"],
     "roles": [
       {
         "code": "et",
@@ -2954,11 +2793,7 @@
     "uiDisplayName": "OPTIQUE",
     "atypical": false,
     "npi": "5795164645",
-    "customerIds": [
-      "463862",
-      "811547",
-      "648117"
-    ],
+    "customerIds": ["463862", "811547", "648117"],
     "roles": [
       {
         "code": "comm",
@@ -3021,11 +2856,7 @@
     "uiDisplayName": "KAGGLE",
     "atypical": false,
     "npi": "8002372674",
-    "customerIds": [
-      "244186",
-      "062607",
-      "248505"
-    ],
+    "customerIds": ["244186", "062607", "248505"],
     "roles": [
       {
         "code": "ad",
@@ -3072,10 +2903,7 @@
     "uiDisplayName": "ZUVY",
     "atypical": false,
     "npi": "3340460625",
-    "customerIds": [
-      "836506",
-      "823892"
-    ],
+    "customerIds": ["836506", "823892"],
     "roles": [
       {
         "code": "temp",
@@ -3114,11 +2942,7 @@
     "uiDisplayName": "CENTREGY",
     "atypical": false,
     "npi": "6798358558",
-    "customerIds": [
-      "024533",
-      "834815",
-      "995376"
-    ],
+    "customerIds": ["024533", "834815", "995376"],
     "roles": [
       {
         "code": "exer",
@@ -3173,10 +2997,7 @@
     "uiDisplayName": "EXTRAWEAR",
     "atypical": false,
     "npi": "1399896067",
-    "customerIds": [
-      "262915",
-      "065559"
-    ],
+    "customerIds": ["262915", "065559"],
     "roles": [
       {
         "code": "ipsu",
@@ -3223,11 +3044,7 @@
     "uiDisplayName": "TWIIST",
     "atypical": false,
     "npi": "3660052109",
-    "customerIds": [
-      "334755",
-      "360294",
-      "287732"
-    ],
+    "customerIds": ["334755", "360294", "287732"],
     "roles": [
       {
         "code": "irur",
@@ -3270,10 +3087,7 @@
     "uiDisplayName": "INDEXIA",
     "atypical": false,
     "npi": "5728861372",
-    "customerIds": [
-      "886531",
-      "660393"
-    ],
+    "customerIds": ["886531", "660393"],
     "roles": [
       {
         "code": "duis",
@@ -3320,10 +3134,7 @@
     "uiDisplayName": "ULTRIMAX",
     "atypical": false,
     "npi": "9432205907",
-    "customerIds": [
-      "451566",
-      "818001"
-    ],
+    "customerIds": ["451566", "818001"],
     "roles": [
       {
         "code": "fugi",
@@ -3378,9 +3189,7 @@
     "uiDisplayName": "PEARLESSA",
     "atypical": false,
     "npi": "4285931941",
-    "customerIds": [
-      "543327"
-    ],
+    "customerIds": ["543327"],
     "roles": [
       {
         "code": "ea",
@@ -3431,11 +3240,7 @@
     "uiDisplayName": "KINETICUT",
     "atypical": false,
     "npi": "1442234179",
-    "customerIds": [
-      "619636",
-      "650001",
-      "110379"
-    ],
+    "customerIds": ["619636", "650001", "110379"],
     "roles": [
       {
         "code": "non",
@@ -3494,9 +3299,7 @@
     "uiDisplayName": "DOGTOWN",
     "atypical": false,
     "npi": "5343654125",
-    "customerIds": [
-      "484278"
-    ],
+    "customerIds": ["484278"],
     "roles": [
       {
         "code": "repr",
@@ -3551,9 +3354,7 @@
     "uiDisplayName": "DAYCORE",
     "atypical": false,
     "npi": "7340614469",
-    "customerIds": [
-      "055398"
-    ],
+    "customerIds": ["055398"],
     "roles": [
       {
         "code": "veni",
@@ -3616,11 +3417,7 @@
     "uiDisplayName": "ZOLAREX",
     "atypical": false,
     "npi": "3479554648",
-    "customerIds": [
-      "486666",
-      "152602",
-      "784562"
-    ],
+    "customerIds": ["486666", "152602", "784562"],
     "roles": [
       {
         "code": "ad",
@@ -3671,10 +3468,7 @@
     "uiDisplayName": "ELPRO",
     "atypical": false,
     "npi": "5223298454",
-    "customerIds": [
-      "615559",
-      "312947"
-    ],
+    "customerIds": ["615559", "312947"],
     "roles": [
       {
         "code": "labo",
@@ -3737,10 +3531,7 @@
     "uiDisplayName": "ORBEAN",
     "atypical": false,
     "npi": "5730651168",
-    "customerIds": [
-      "175915",
-      "480072"
-    ],
+    "customerIds": ["175915", "480072"],
     "roles": [
       {
         "code": "est",
@@ -3787,9 +3578,7 @@
     "uiDisplayName": "INEAR",
     "atypical": false,
     "npi": "4832548907",
-    "customerIds": [
-      "966413"
-    ],
+    "customerIds": ["966413"],
     "roles": [
       {
         "code": "magn",
@@ -3840,11 +3629,7 @@
     "uiDisplayName": "APEXIA",
     "atypical": false,
     "npi": "4571796162",
-    "customerIds": [
-      "829286",
-      "141352",
-      "931271"
-    ],
+    "customerIds": ["829286", "141352", "931271"],
     "roles": [
       {
         "code": "ut",
@@ -3903,10 +3688,7 @@
     "uiDisplayName": "VERTIDE",
     "atypical": false,
     "npi": "8006404727",
-    "customerIds": [
-      "891338",
-      "741215"
-    ],
+    "customerIds": ["891338", "741215"],
     "roles": [
       {
         "code": "aliq",
@@ -3941,10 +3723,7 @@
     "uiDisplayName": "FUTURIS",
     "atypical": false,
     "npi": "9618888903",
-    "customerIds": [
-      "843455",
-      "819397"
-    ],
+    "customerIds": ["843455", "819397"],
     "roles": [
       {
         "code": "ea",
@@ -3983,9 +3762,7 @@
     "uiDisplayName": "DYMI",
     "atypical": false,
     "npi": "3145571735",
-    "customerIds": [
-      "752221"
-    ],
+    "customerIds": ["752221"],
     "roles": [
       {
         "code": "temp",
@@ -4044,11 +3821,7 @@
     "uiDisplayName": "DEMINIMUM",
     "atypical": false,
     "npi": "2329965607",
-    "customerIds": [
-      "687523",
-      "478587",
-      "266192"
-    ],
+    "customerIds": ["687523", "478587", "266192"],
     "roles": [
       {
         "code": "veni",
@@ -4087,11 +3860,7 @@
     "uiDisplayName": "ESCENTA",
     "atypical": false,
     "npi": "5648024622",
-    "customerIds": [
-      "280619",
-      "922654",
-      "156326"
-    ],
+    "customerIds": ["280619", "922654", "156326"],
     "roles": [
       {
         "code": "duis",
@@ -4134,10 +3903,7 @@
     "uiDisplayName": "XELEGYL",
     "atypical": false,
     "npi": "5687595081",
-    "customerIds": [
-      "468172",
-      "841272"
-    ],
+    "customerIds": ["468172", "841272"],
     "roles": [
       {
         "code": "elit",
@@ -4196,11 +3962,7 @@
     "uiDisplayName": "EXOSPACE",
     "atypical": false,
     "npi": "2177235251",
-    "customerIds": [
-      "326778",
-      "697685",
-      "325924"
-    ],
+    "customerIds": ["326778", "697685", "325924"],
     "roles": [
       {
         "code": "sint",
@@ -4251,9 +4013,7 @@
     "uiDisplayName": "PYRAMAX",
     "atypical": false,
     "npi": "5206481690",
-    "customerIds": [
-      "690182"
-    ],
+    "customerIds": ["690182"],
     "roles": [
       {
         "code": "ipsu",
@@ -4308,11 +4068,7 @@
     "uiDisplayName": "FROSNEX",
     "atypical": false,
     "npi": "3046713724",
-    "customerIds": [
-      "888968",
-      "214960",
-      "344553"
-    ],
+    "customerIds": ["888968", "214960", "344553"],
     "roles": [
       {
         "code": "ea",
@@ -4367,11 +4123,7 @@
     "uiDisplayName": "XINWARE",
     "atypical": false,
     "npi": "3654736510",
-    "customerIds": [
-      "556097",
-      "035710",
-      "785072"
-    ],
+    "customerIds": ["556097", "035710", "785072"],
     "roles": [
       {
         "code": "ad",
@@ -4422,10 +4174,7 @@
     "uiDisplayName": "BILLMED",
     "atypical": false,
     "npi": "6081359271",
-    "customerIds": [
-      "653118",
-      "564811"
-    ],
+    "customerIds": ["653118", "564811"],
     "roles": [
       {
         "code": "mini",
@@ -4488,9 +4237,7 @@
     "uiDisplayName": "TALKOLA",
     "atypical": false,
     "npi": "7406125121",
-    "customerIds": [
-      "955148"
-    ],
+    "customerIds": ["955148"],
     "roles": [
       {
         "code": "exer",
@@ -4553,9 +4300,7 @@
     "uiDisplayName": "OVOLO",
     "atypical": false,
     "npi": "3017960657",
-    "customerIds": [
-      "425578"
-    ],
+    "customerIds": ["425578"],
     "roles": [
       {
         "code": null,
@@ -4606,9 +4351,7 @@
     "uiDisplayName": "SUPPORTAL",
     "atypical": false,
     "npi": "5269594861",
-    "customerIds": [
-      "838314"
-    ],
+    "customerIds": ["838314"],
     "roles": [
       {
         "code": "esse",
@@ -4651,10 +4394,7 @@
     "uiDisplayName": "SOPRANO",
     "atypical": false,
     "npi": "3986356072",
-    "customerIds": [
-      "665768",
-      "375693"
-    ],
+    "customerIds": ["665768", "375693"],
     "roles": [
       {
         "code": "volu",
@@ -4693,11 +4433,7 @@
     "uiDisplayName": "NEWCUBE",
     "atypical": false,
     "npi": "4504995408",
-    "customerIds": [
-      "226236",
-      "330112",
-      "593612"
-    ],
+    "customerIds": ["226236", "330112", "593612"],
     "roles": [
       {
         "code": "non",
@@ -4760,9 +4496,7 @@
     "uiDisplayName": "UNISURE",
     "atypical": false,
     "npi": "4741285061",
-    "customerIds": [
-      "636272"
-    ],
+    "customerIds": ["636272"],
     "roles": [
       {
         "code": "qui",
@@ -4801,10 +4535,7 @@
     "uiDisplayName": "DEVILTOE",
     "atypical": false,
     "npi": "7927065952",
-    "customerIds": [
-      "730335",
-      "918420"
-    ],
+    "customerIds": ["730335", "918420"],
     "roles": [
       {
         "code": "nisi",
@@ -4839,10 +4570,7 @@
     "uiDisplayName": "OMATOM",
     "atypical": false,
     "npi": "1040722091",
-    "customerIds": [
-      "658305",
-      "868297"
-    ],
+    "customerIds": ["658305", "868297"],
     "roles": [
       {
         "code": "sit",
@@ -4901,10 +4629,7 @@
     "uiDisplayName": "FIBRODYNE",
     "atypical": false,
     "npi": "8723481773",
-    "customerIds": [
-      "435574",
-      "445939"
-    ],
+    "customerIds": ["435574", "445939"],
     "roles": [
       {
         "code": "repr",
@@ -4951,11 +4676,7 @@
     "uiDisplayName": "ZIALACTIC",
     "atypical": false,
     "npi": "9245103659",
-    "customerIds": [
-      "063402",
-      "283270",
-      "155449"
-    ],
+    "customerIds": ["063402", "283270", "155449"],
     "roles": [
       {
         "code": "id",
@@ -5006,10 +4727,7 @@
     "uiDisplayName": "IDEGO",
     "atypical": false,
     "npi": "3667461115",
-    "customerIds": [
-      "666537",
-      "926018"
-    ],
+    "customerIds": ["666537", "926018"],
     "roles": [
       {
         "code": "nost",
@@ -5064,9 +4782,7 @@
     "uiDisplayName": "ICOLOGY",
     "atypical": false,
     "npi": "7743659772",
-    "customerIds": [
-      "092696"
-    ],
+    "customerIds": ["092696"],
     "roles": [
       {
         "code": "fugi",
@@ -5129,9 +4845,7 @@
     "uiDisplayName": "ORGANICA",
     "atypical": false,
     "npi": "1489442147",
-    "customerIds": [
-      "672337"
-    ],
+    "customerIds": ["672337"],
     "roles": [
       {
         "code": "do",
@@ -5190,9 +4904,7 @@
     "uiDisplayName": "ROOFORIA",
     "atypical": false,
     "npi": "2346317750",
-    "customerIds": [
-      "856897"
-    ],
+    "customerIds": ["856897"],
     "roles": [
       {
         "code": "cill",
@@ -5255,10 +4967,7 @@
     "uiDisplayName": "GYNKO",
     "atypical": false,
     "npi": "8196783699",
-    "customerIds": [
-      "882902",
-      "933235"
-    ],
+    "customerIds": ["882902", "933235"],
     "roles": [
       {
         "code": "in",
@@ -5313,10 +5022,7 @@
     "uiDisplayName": "TROPOLI",
     "atypical": false,
     "npi": "9697616101",
-    "customerIds": [
-      "372946",
-      "968798"
-    ],
+    "customerIds": ["372946", "968798"],
     "roles": [
       {
         "code": "exer",

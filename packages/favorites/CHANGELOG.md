@@ -3,6 +3,25 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [2.2.4](https://github.com/Availity/availity-react/compare/@availity/favorites@2.2.3...@availity/favorites@2.2.4) (2021-10-28)
+
+**Note:** Version bump only for package @availity/favorites
+
+
+
+
+
+## 2.2.3 (2021-10-28)
+
+
+### Bug Fixes
+
+* **favorites:** disable lint rule ([e328b64](https://github.com/Availity/availity-react/commit/e328b648283edfd495eadb55661b6f3988e1fe3a))
+
+
+
+
+
 ## [2.2.2](https://github.com/Availity/availity-react/compare/@availity/favorites@2.2.1...@availity/favorites@2.2.2) (2021-10-01)
 
 **Note:** Version bump only for package @availity/favorites

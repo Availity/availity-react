@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## 1.2.23 (2021-10-19)
+
+
+### Bug Fixes
+
+* **progress:** update types ([82ec332](https://github.com/Availity/availity-react/commit/82ec3323b3bcbca8bd4b1ce7113cff8f0bfdb4fe))
+
+
+
+
+
 ## [1.2.22](https://github.com/Availity/availity-react/compare/@availity/progress@1.2.21...@availity/progress@1.2.22) (2021-10-01)
 
 **Note:** Version bump only for package @availity/progress

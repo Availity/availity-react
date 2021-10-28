@@ -1,4 +1,3 @@
-/* eslint-disable unicorn/prefer-query-selector */
 import React from 'react';
 import { render, fireEvent, waitFor, cleanup } from '@testing-library/react';
 import { avLogMessagesApi, avRegionsApi } from '@availity/api-axios';
@@ -72,15 +71,16 @@ describe('FeedbackForm', () => {
 
     fireEvent.click(getByText('Send Feedback'));
 
-    jest.advanceTimersByTime(1000);
-
-    await waitFor(() =>
-      expect(onFeedbackSent).toHaveBeenCalledWith(
-        expect.objectContaining({
-          active: 'smile',
-          feedback: 'some good text here',
-        })
-      )
+    await waitFor(
+      () => {
+        expect(onFeedbackSent).toHaveBeenCalledWith(
+          expect.objectContaining({
+            active: 'smile',
+            feedback: 'some good text here',
+          })
+        );
+      },
+      { timeout: 2500 }
     );
   });
 
@@ -143,9 +143,9 @@ describe('FeedbackForm', () => {
 
     expect(faceOptionFields.childElementCount).toBe(4);
 
-    faceOptions.forEach((faceOption) => {
+    for (const faceOption of faceOptions) {
       expect(faceOptionFields.getElementsByClassName(`icon-${faceOption.icon}`)).not.toBe(null);
-    });
+    }
   });
 
   test('should render about options', () => {
@@ -213,9 +213,9 @@ describe('FeedbackForm', () => {
 
     const header = getByText('Tell us what you think about Payer Space');
 
-    expect(header).toHaveClass('col h5');
-    expect(header).toHaveAttribute('role', 'heading');
-    expect(header).toHaveAttribute('aria-level', '2');
+    expect(header.parentElement).toHaveClass('h5');
+    expect(header.parentElement).toHaveAttribute('role', 'heading');
+    expect(header.parentElement).toHaveAttribute('aria-level', '2');
     expect(header.tagName).toEqual('DIV');
   });
 

@@ -2,4 +2,4 @@
 
 > Wrapper for [react-select-async-paginate](https://github.com/vtaits/react-select-async-paginate) to work with [formik](https://github.com/jaredpalmer/formik)
 
-## [Documentation](https://availity.github.io/availity-react/form/select/)
+## [Documentation](https://availity.github.io/availity-react/form/select/index)

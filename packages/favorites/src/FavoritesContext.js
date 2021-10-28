@@ -34,6 +34,7 @@ const validatedFavorites = (input) => {
     },
     []
   );
+  // eslint-disable-next-line unicorn/no-array-for-each
   sortBy(validFavorites, 'pos').forEach((favorite, index) => {
     favorite.pos = index;
   });

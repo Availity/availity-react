@@ -3,6 +3,139 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [9.15.4](https://github.com/Availity/availity-react/compare/@availity/react-storybook@9.15.3...@availity/react-storybook@9.15.4) (2021-10-28)
+
+**Note:** Version bump only for package @availity/react-storybook
+
+
+
+
+
+## [9.15.3](https://github.com/Availity/availity-react/compare/@availity/react-storybook@9.15.2...@availity/react-storybook@9.15.3) (2021-10-28)
+
+**Note:** Version bump only for package @availity/react-storybook
+
+
+
+
+
+## [9.15.2](https://github.com/Availity/availity-react/compare/@availity/react-storybook@9.15.1...@availity/react-storybook@9.15.2) (2021-10-28)
+
+
+### Bug Fixes
+
+* upgrade eslint-config-availity and fix the errors ([6da0423](https://github.com/Availity/availity-react/commit/6da0423ecfa72b426287fd62ad00445fefce024e))
+
+
+
+
+
+## [9.15.1](https://github.com/Availity/availity-react/compare/@availity/react-storybook@9.15.0...@availity/react-storybook@9.15.1) (2021-10-27)
+
+
+### Bug Fixes
+
+* **react-storybook:** typo on prop ([4ad5393](https://github.com/Availity/availity-react/commit/4ad5393244438dfd50fa0becc127e3783553490a))
+
+
+
+
+
+# [9.15.0](https://github.com/Availity/availity-react/compare/@availity/react-storybook@9.14.0...@availity/react-storybook@9.15.0) (2021-10-26)
+
+
+### Features
+
+* **react-storybook:** migrate to CSF and TypeScript ([7963026](https://github.com/Availity/availity-react/commit/79630260df9fdfc1a40192dd7d42e6d3847b5903))
+* **react-storybook:** move storybook to typescript ([d1a3417](https://github.com/Availity/availity-react/commit/d1a3417ed1a98adc5fe8ab55e1e94a8aa4b1bf34))
+* **react-storybook:** update storiesOf to CSF syntax ([44949e7](https://github.com/Availity/availity-react/commit/44949e710b18cc4712d26d44b87e7384a4329f4e))
+
+
+
+
+
+# 9.14.0 (2021-10-22)
+
+
+### Features
+
+* **feedback:** revert feedback changes and add onModalOpenChange prop ([cf8fb64](https://github.com/Availity/availity-react/commit/cf8fb648feafd1c9aa7a547a8bb4707e3f7c2f5a))
+
+
+
+
+
+## 9.13.7 (2021-10-19)
+
+**Note:** Version bump only for package @availity/react-storybook
+
+
+
+
+
+## [9.13.6](https://github.com/Availity/availity-react/compare/@availity/react-storybook@9.13.5...@availity/react-storybook@9.13.6) (2021-10-19)
+
+**Note:** Version bump only for package @availity/react-storybook
+
+
+
+
+
+## [9.13.5](https://github.com/Availity/availity-react/compare/@availity/react-storybook@9.13.4...@availity/react-storybook@9.13.5) (2021-10-19)
+
+**Note:** Version bump only for package @availity/react-storybook
+
+
+
+
+
+## [9.13.4](https://github.com/Availity/availity-react/compare/@availity/react-storybook@9.13.3...@availity/react-storybook@9.13.4) (2021-10-19)
+
+**Note:** Version bump only for package @availity/react-storybook
+
+
+
+
+
+## [9.13.3](https://github.com/Availity/availity-react/compare/@availity/react-storybook@9.13.2...@availity/react-storybook@9.13.3) (2021-10-19)
+
+**Note:** Version bump only for package @availity/react-storybook
+
+
+
+
+
+## [9.13.2](https://github.com/Availity/availity-react/compare/@availity/react-storybook@9.13.1...@availity/react-storybook@9.13.2) (2021-10-11)
+
+**Note:** Version bump only for package @availity/react-storybook
+
+
+
+
+
+## [9.13.1](https://github.com/Availity/availity-react/compare/@availity/react-storybook@9.13.0...@availity/react-storybook@9.13.1) (2021-10-11)
+
+**Note:** Version bump only for package @availity/react-storybook
+
+
+
+
+
+# [9.13.0](https://github.com/Availity/availity-react/compare/@availity/react-storybook@9.12.0...@availity/react-storybook@9.13.0) (2021-10-08)
+
+
+### Features
+
+* **table:** add support for formatted cells, extracting out specific stylings, renaming ([62d3526](https://github.com/Availity/availity-react/commit/62d35261113143b0614fc31d73750c433af3edfa))
+* **table:** enhance storybook docs ([a678bed](https://github.com/Availity/availity-react/commit/a678beded12e299f4df075b75c9588f88f23c3c9))
+* **table:** fix dropdown table placement and value tooltips for formatted cells ([d80051e](https://github.com/Availity/availity-react/commit/d80051ee9a183ad74b19476475e586cc9fd0015b))
+* **table:** remove core-js, uikit import ([a8757d4](https://github.com/Availity/availity-react/commit/a8757d4463ed74b5afc526b9d26ab16150f3bb9e))
+* **table:** some code review feedback and some fixes, storybook enhancements ([f6a8f92](https://github.com/Availity/availity-react/commit/f6a8f92365c3e53a68deca536ef3e948122e4434))
+
+
+
+
+
 # [9.12.0](https://github.com/Availity/availity-react/compare/@availity/react-storybook@9.11.1...@availity/react-storybook@9.12.0) (2021-10-08)
 
 

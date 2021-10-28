@@ -51,14 +51,9 @@ Component.propTypes = {
 
 describe('useOrganizations', () => {
   test('should return an error', async () => {
-    avOrganizationsApi.getOrganizations.mockRejectedValueOnce(
-      'An error occurred'
-    );
+    avOrganizationsApi.getOrganizations.mockRejectedValueOnce('An error occurred');
 
-    const { getByText } = renderWithClient(
-      queryClient,
-      <Component log={pushState} />
-    );
+    const { getByText } = renderWithClient(queryClient, <Component log={pushState} />);
 
     getByText('Status: loading');
     await waitFor(() => {
@@ -89,10 +84,7 @@ describe('useOrganizations', () => {
       },
     });
 
-    const { getByText } = renderWithClient(
-      queryClient,
-      <Component log={pushState} />
-    );
+    const { getByText } = renderWithClient(queryClient, <Component log={pushState} />);
 
     getByText('Status: loading');
     await waitFor(() => {

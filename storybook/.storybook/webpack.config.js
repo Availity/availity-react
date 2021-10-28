@@ -31,12 +31,12 @@ module.exports = ({ config: defaultConfig }) => {
   });
 
   defaultConfig.module.rules.push({
-    test: /\.stories\.jsx?$/,
+    test: /\.stories\.(jsx|tsx)?$/,
     loaders: [require.resolve('@storybook/source-loader')],
     enforce: 'pre',
   });
 
-  defaultConfig.resolve.extensions = ['.js', '.jsx', '.scss', '.css'];
+  defaultConfig.resolve.extensions = ['.js', '.jsx', '.scss', '.css', '.ts', '.tsx'];
   // Return the altered config
   return defaultConfig;
 };

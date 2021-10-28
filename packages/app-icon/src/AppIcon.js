@@ -1,19 +1,17 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import classNames from 'classnames';
 
 function AppIcon({ tag: Tag, color, size, src: image, alt, branded, className, children, ...props }) {
-  const classname = [
-    className,
-    'app-icon',
-    branded ? `app-icon-branded-${color}` : `app-icon-${color}`,
-    size && `app-icon-${size}`,
-    image && 'border-0',
-  ]
-    .filter((a) => a)
-    .join(' ');
+  const classes = classNames(className, 'app-icon', {
+    [`app-icon-${color}`]: color && !branded,
+    [`app-icon-branded-${color}`]: color && branded,
+    [`app-icon-${size}`]: size,
+    'border-0': image,
+  });
 
   return (
-    <Tag {...props} className={classname}>
+    <Tag {...props} className={classes}>
       {image ? <img className="w-100 h-100 align-baseline" src={image} alt={alt} /> : children}
       {branded && <span className="caret" />}
     </Tag>

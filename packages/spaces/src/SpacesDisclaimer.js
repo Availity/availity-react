@@ -7,21 +7,13 @@ import { useSpaces } from './Spaces';
 
 const SpacesDisclaimer = ({ styled, spaceId, markdown, ...props }) => {
   const [space = {}] = useSpaces(spaceId);
-  const { description: disclaimer } = space;
+  const { description: disclaimer, id } = space;
 
   if (disclaimer) {
-    const children = markdown ? (
-      <ReactMarkdown>{disclaimer}</ReactMarkdown>
-    ) : (
-      disclaimer
-    );
+    const children = markdown ? <ReactMarkdown>{disclaimer}</ReactMarkdown> : disclaimer;
 
     return (
-      <Disclaimer
-        data-testid={`spaces-disclaimer-${spaceId || space.id}`}
-        styled={styled}
-        {...props}
-      >
+      <Disclaimer data-testid={`spaces-disclaimer-${spaceId || id}`} styled={styled} {...props}>
         {children}
       </Disclaimer>
     );

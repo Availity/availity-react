@@ -3,6 +3,115 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.0.5](https://github.com/Availity/availity-react/compare/@availity/select@1.0.4...@availity/select@1.0.5) (2021-10-28)
+
+
+### Bug Fixes
+
+* **select:** pass ref as selectRef when using async component ([729630e](https://github.com/Availity/availity-react/commit/729630e478d5b953f87614af95c83755c5f1c3b6))
+
+
+
+
+
+## [1.0.4](https://github.com/Availity/availity-react/compare/@availity/select@1.0.3...@availity/select@1.0.4) (2021-10-28)
+
+**Note:** Version bump only for package @availity/select
+
+
+
+
+
+## [1.0.3](https://github.com/Availity/availity-react/compare/@availity/select@1.0.2...@availity/select@1.0.3) (2021-10-28)
+
+
+### Bug Fixes
+
+* upgrade eslint-config-availity and fix the errors ([6da0423](https://github.com/Availity/availity-react/commit/6da0423ecfa72b426287fd62ad00445fefce024e))
+
+
+
+
+
+## 1.0.2 (2021-10-27)
+
+**Note:** Version bump only for package @availity/select
+
+
+
+
+
+## [1.0.1](https://github.com/Availity/availity-react/compare/@availity/select@1.0.0...@availity/select@1.0.1) (2021-10-19)
+
+
+### Bug Fixes
+
+* **select:** update typedef ([42f8cd3](https://github.com/Availity/availity-react/commit/42f8cd37b6cd4d1d38882988de73d4c82385ac4f))
+
+
+
+
+
+# [1.0.0](https://github.com/Availity/availity-react/compare/@availity/select@0.20.4...@availity/select@1.0.0) (2021-10-19)
+
+**Note:** Version bump only for package @availity/select
+
+
+
+
+
+## 0.20.4 (2021-10-19)
+
+**Note:** Version bump only for package @availity/select
+
+
+
+
+
+## [0.20.3](https://github.com/Availity/availity-react/compare/@availity/select@0.20.2...@availity/select@0.20.3) (2021-10-19)
+
+**Note:** Version bump only for package @availity/select
+
+
+
+
+
+## [0.20.2](https://github.com/Availity/availity-react/compare/@availity/select@0.20.1...@availity/select@0.20.2) (2021-10-19)
+
+**Note:** Version bump only for package @availity/select
+
+
+
+
+
+## [0.20.1](https://github.com/Availity/availity-react/compare/@availity/select@0.20.0...@availity/select@0.20.1) (2021-10-19)
+
+**Note:** Version bump only for package @availity/select
+
+
+
+
+
+# 0.20.0 (2021-10-19)
+
+
+### Features
+
+* **select:** upgrade react-select-async-paginate to latest ([ec4b380](https://github.com/Availity/availity-react/commit/ec4b380284594255b346b20943e3e969a17b4bd5))
+
+
+* feat(select)!: upgrade react-select v3 to v5 and removed unneeded type import ([43bd83c](https://github.com/Availity/availity-react/commit/43bd83c837acaa9c3d844826bd150bcc7667b5af))
+
+
+### BREAKING CHANGES
+
+* upgraded to version 5 of react-select
+feat(select): added new yarn.lock
+
+
+
+
+
 # 0.19.0 (2021-10-08)
 
 

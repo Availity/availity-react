@@ -3,6 +3,14 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## 0.9.1 (2021-10-28)
+
+**Note:** Version bump only for package @availity/icon
+
+
+
+
+
 # [0.9.0](https://github.com/Availity/availity-react/compare/@availity/icon@0.8.2...@availity/icon@0.9.0) (2021-10-04)
 
 

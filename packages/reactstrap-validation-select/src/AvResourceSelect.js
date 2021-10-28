@@ -13,7 +13,7 @@ class AvResourceSelect extends Component {
     this.state.previousOptions = [];
   }
 
-  select = createRef();
+  selectRef = createRef();
 
   loadOptions = (...args) => {
     const [inputValue, , additional = {}] = args;
@@ -141,17 +141,19 @@ class AvResourceSelect extends Component {
         if (!resp || !resp.data) {
           throw new Error(`API returned an invalid response.`);
         }
-        const getResult = this.props.getResult || this.props.resource.getResult;
-        let { hasMore } = this.props;
+        const { graphqlConfig, resource } = this.props;
+        let { hasMore, getResult } = this.props;
+
+        getResult = getResult || resource.getResult;
+
         if (hasMore === undefined) {
-          hasMore = this.props.graphqlConfig
-            ? (data) => get(data.data, `${this.props.graphqlConfig.type}Pagination.pageInfo.hasNextPage`, false)
+          hasMore = graphqlConfig
+            ? (data) => get(data.data, `${graphqlConfig.type}Pagination.pageInfo.hasNextPage`, false)
             : ({ totalCount, limit, offset }) => totalCount > offset + limit;
         }
 
         const items =
-          (typeof getResult === 'function' ? getResult.call(this.props.resource, resp.data) : resp.data[getResult]) ||
-          this.data;
+          (typeof getResult === 'function' ? getResult.call(resource, resp.data) : resp.data[getResult]) || this.data;
 
         hasMore = typeof hasMore === 'function' ? hasMore(resp.data) : hasMore;
 
@@ -197,12 +199,12 @@ class AvResourceSelect extends Component {
         customerId: this.props.customerId,
         ...this.props.parameters,
       };
-      _cacheUniq = watchParams.map((watchParam) => params[watchParam]).join(',');
+      _cacheUniq = watchParams.map((watchParam) => params[watchParam]);
     }
 
     return (
       <Tag
-        selectRef={this.select}
+        selectRef={this.selectRef}
         loadOptions={this.loadOptions}
         defaultOptions={waitUntilFocused ? [] : true}
         pagination

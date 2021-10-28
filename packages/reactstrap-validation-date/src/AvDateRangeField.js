@@ -13,10 +13,7 @@ class AvDateRangeField extends Component {
     const registerValidator = this.FormCtrl.register;
     const { getInputState } = this.FormCtrl;
     this.FormCtrl.getInputState = (inputName) => {
-      if (
-        inputName === this.props.start.name ||
-        inputName === this.props.end.name
-      ) {
+      if (inputName === this.props.start.name || inputName === this.props.end.name) {
         return this.getInputState();
       }
       return getInputState(inputName);
@@ -33,13 +30,9 @@ class AvDateRangeField extends Component {
   }
 
   getInputState = () => {
-    const startValidation = this.context.FormCtrl.getInputState(
-      this.props.start.name
-    );
+    const startValidation = this.context.FormCtrl.getInputState(this.props.start.name);
     if (startValidation.errorMessage) return startValidation;
-    const endValidation = this.context.FormCtrl.getInputState(
-      this.props.end.name
-    );
+    const endValidation = this.context.FormCtrl.getInputState(this.props.end.name);
     return endValidation;
   };
 
@@ -65,47 +58,31 @@ class AvDateRangeField extends Component {
     } = this.props;
 
     if (grid) {
-      colSizes.forEach((colSize) => {
+      for (const colSize of colSizes) {
         if (grid[colSize]) {
           row = true;
           const sizeNum = Number.parseInt(grid[colSize], 10);
           col[colSize] = sizeNum;
           labelCol[colSize] = 12 - sizeNum;
         }
-      });
+      }
     }
 
     const input = (
-      <AvDateRange
-        id={id}
-        className={inputClass}
-        size={size}
-        disabled={disabled}
-        readOnly={readOnly}
-        {...attributes}
-      >
+      <AvDateRange id={id} className={inputClass} size={size} disabled={disabled} readOnly={readOnly} {...attributes}>
         {children}
       </AvDateRange>
     );
 
     const validation = this.getInputState();
 
-    const feedback = validation.error ? (
-      <AvFeedback className="d-block">{validation.errorMessage}</AvFeedback>
-    ) : null;
+    const feedback = validation.error ? <AvFeedback className="d-block">{validation.errorMessage}</AvFeedback> : null;
     const help = helpMessage ? <FormText>{helpMessage}</FormText> : null;
 
     return (
       <AvGroup disabled={disabled} row={row} {...groupAttrs}>
         {label && (
-          <Label
-            for={id}
-            className={labelClass}
-            hidden={labelHidden}
-            size={size}
-            {...labelCol}
-            {...labelAttrs}
-          >
+          <Label for={id} className={labelClass} hidden={labelHidden} size={size} {...labelCol} {...labelAttrs}>
             {label}
           </Label>
         )}

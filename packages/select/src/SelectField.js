@@ -3,8 +3,30 @@ import PropTypes from 'prop-types';
 import classNames from 'classnames';
 import { FormGroup, Feedback } from '@availity/form';
 import { FieldHelpIcon } from '@availity/help';
-import { Label } from 'reactstrap';
+import { Label as RsLabel } from 'reactstrap';
+
 import Select from './Select';
+
+const Label = ({ name, className, helpId, hidden, label }) => {
+  if (!label) return null;
+
+  return (
+    <>
+      <RsLabel id={`${name}-label`} for={name} hidden={hidden} className={className}>
+        {label}
+      </RsLabel>
+      {helpId ? <FieldHelpIcon labelId={`${name}-label`} id={helpId} /> : null}
+    </>
+  );
+};
+
+Label.propTypes = {
+  name: PropTypes.string.isRequired,
+  className: PropTypes.string,
+  helpId: PropTypes.string,
+  hidden: PropTypes.bool,
+  label: PropTypes.node,
+};
 
 const SelectField = ({ feedbackClass, groupClass, label, labelClass, labelHidden, name, helpId, ...attributes }) => {
   useEffect(() => {
@@ -16,22 +38,9 @@ const SelectField = ({ feedbackClass, groupClass, label, labelClass, labelHidden
     }
   }, [attributes.id, name]);
 
-  let thisLabel = false;
-  const helpIcon = helpId ? <FieldHelpIcon labelId={`${name}-label`} id={helpId} /> : null;
-  if (label) {
-    thisLabel = (
-      <>
-        <Label id={`${name}-label`} for={name} hidden={labelHidden} className={labelClass}>
-          {label}
-        </Label>
-        {helpIcon}
-      </>
-    );
-  }
-
   return (
     <FormGroup className={groupClass} for={name} disabled={attributes.disabled}>
-      {thisLabel}
+      <Label name={name} label={label} hidden={labelHidden} className={labelClass} helpId={helpId} />
       <Select name={name} {...attributes} />
       <Feedback className={classNames('d-block', feedbackClass)} name={name} />
     </FormGroup>
@@ -39,12 +48,13 @@ const SelectField = ({ feedbackClass, groupClass, label, labelClass, labelHidden
 };
 
 SelectField.propTypes = {
+  name: PropTypes.string.isRequired,
   feedbackClass: PropTypes.string,
   groupClass: PropTypes.string,
+  helpId: PropTypes.string,
   label: PropTypes.node,
   labelClass: PropTypes.string,
   labelHidden: PropTypes.bool,
-  name: PropTypes.string.isRequired,
-  helpId: PropTypes.string,
 };
+
 export default SelectField;

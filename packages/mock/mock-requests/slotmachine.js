@@ -8,10 +8,8 @@ export default (mock) => {
     const body = JSON.parse(req._body);
     if (
       body.variables &&
-      ((body.variables.ids &&
-        body.variables.ids.some((id) => id === 'space1')) ||
-        (body.variables.payerIDs &&
-          body.variables.payerIDs.some((id) => id === 'availity1')))
+      ((body.variables.ids && body.variables.ids.some((id) => id === 'space1')) ||
+        (body.variables.payerIDs && body.variables.payerIDs.some((id) => id === 'availity1')))
     ) {
       resp = availitySpacesResponse;
     } else if (body.variables && body.variables.payerIDs) {
