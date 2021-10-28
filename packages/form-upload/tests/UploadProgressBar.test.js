@@ -51,9 +51,7 @@ describe('UploadProgressBar', () => {
   });
 
   test('should render striped', () => {
-    const { getByTestId } = render(
-      <UploadProgressBar upload={instance} striped />
-    );
+    const { getByTestId } = render(<UploadProgressBar upload={instance} striped />);
 
     const progressBar = getByTestId('progress-inner');
 
@@ -61,9 +59,7 @@ describe('UploadProgressBar', () => {
   });
 
   test('should render animated', () => {
-    const { getByTestId } = render(
-      <UploadProgressBar upload={instance} animated />
-    );
+    const { getByTestId } = render(<UploadProgressBar upload={instance} animated />);
 
     const progressBar = getByTestId('progress-inner');
 
@@ -71,9 +67,7 @@ describe('UploadProgressBar', () => {
   });
 
   test('should render striped and animated', () => {
-    const { getByTestId } = render(
-      <UploadProgressBar upload={instance} striped animated />
-    );
+    const { getByTestId } = render(<UploadProgressBar upload={instance} striped animated />);
 
     const progressBar = getByTestId('progress-inner');
 

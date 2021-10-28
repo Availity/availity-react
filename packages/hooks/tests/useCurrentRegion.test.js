@@ -52,10 +52,7 @@ Component.propTypes = {
 describe('useCurrentRegion', () => {
   test('handle error', async () => {
     avRegionsApi.getCurrentRegion.mockRejectedValueOnce('An error occurred');
-    const { getByText } = renderWithClient(
-      queryClient,
-      <Component log={pushState} />
-    );
+    const { getByText } = renderWithClient(queryClient, <Component log={pushState} />);
 
     getByText('Status: loading');
     await waitFor(() => {
@@ -83,10 +80,7 @@ describe('useCurrentRegion', () => {
       statusText: 'Ok',
     });
 
-    const { getByText } = renderWithClient(
-      queryClient,
-      <Component log={pushState} />
-    );
+    const { getByText } = renderWithClient(queryClient, <Component log={pushState} />);
 
     getByText('Status: loading');
     await waitFor(() => {

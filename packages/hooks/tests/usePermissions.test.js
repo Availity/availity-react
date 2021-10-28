@@ -53,10 +53,7 @@ describe('usePermissions', () => {
   test('should return an error', async () => {
     avPermissionsApi.getPermissions.mockRejectedValueOnce('An error occurred');
 
-    const { getByText } = renderWithClient(
-      queryClient,
-      <Component log={pushState} />
-    );
+    const { getByText } = renderWithClient(queryClient, <Component log={pushState} />);
 
     getByText('Status: loading');
     await waitFor(() => {
@@ -76,10 +73,7 @@ describe('usePermissions', () => {
       links: { self: { href: 'test.com' } },
     });
 
-    const { getByText } = renderWithClient(
-      queryClient,
-      <Component log={pushState} />
-    );
+    const { getByText } = renderWithClient(queryClient, <Component log={pushState} />);
 
     getByText('Status: loading');
     await waitFor(() => {

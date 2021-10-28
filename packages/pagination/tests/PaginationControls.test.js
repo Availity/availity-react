@@ -22,7 +22,7 @@ describe('Pagination Controls', () => {
 
     expect(paginationControls).not.toBe(null);
 
-    items.forEach((item) => expect(getByTestId(`control-page-${item.value}`)).toBeDefined());
+    for (const item of items) expect(getByTestId(`control-page-${item.value}`)).toBeDefined();
   });
 
   test('should show direction arrows', async () => {

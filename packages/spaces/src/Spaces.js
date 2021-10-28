@@ -1,20 +1,12 @@
+/* eslint-disable unicorn/prefer-spread */
 import React, { createContext, useContext, useReducer } from 'react';
 import PropTypes from 'prop-types';
 import { avWebQLApi } from '@availity/api-axios';
 import { useEffectAsync } from '@availity/hooks';
-import {
-  spacesReducer,
-  INITIAL_STATE,
-  sanitizeSpaces,
-  isFunction,
-} from './helpers';
 
-export const getAllSpaces = async (
-  query,
-  clientId,
-  variables,
-  _spaces = []
-) => {
+import { spacesReducer, INITIAL_STATE, sanitizeSpaces, isFunction } from './helpers';
+
+export const getAllSpaces = async (query, clientId, variables, _spaces = []) => {
   if (!clientId) {
     throw new Error('clientId is required');
   }
@@ -33,9 +25,10 @@ export const getAllSpaces = async (
 
   const {
     pageInfo: { itemCount, currentPage, perPage },
+    items,
   } = configurationPagination;
 
-  const unionedSpaces = _spaces.concat(configurationPagination.items);
+  const unionedSpaces = _spaces.concat(items);
 
   // TODO explore using pageInfo.hasNextPage instead
   if (itemCount > currentPage * perPage) {
@@ -50,19 +43,8 @@ export const SpacesContext = createContext();
 
 export const useSpacesContext = () => useContext(SpacesContext);
 
-const Spaces = ({
-  query,
-  variables,
-  clientId,
-  spaceIds,
-  payerIds,
-  children,
-  spaces: spacesFromProps,
-}) => {
-  const [{ spaces, loading, error }, dispatch] = useReducer(
-    spacesReducer,
-    INITIAL_STATE
-  );
+const Spaces = ({ query, variables, clientId, spaceIds, payerIds, children, spaces: spacesFromProps }) => {
+  const [{ spaces, loading, error }, dispatch] = useReducer(spacesReducer, INITIAL_STATE);
 
   // NOTE: we do not want to query webQL by payerIDs and spaceIDs at the same time
   // because webQL does an AND on those conditions. We want OR
@@ -75,35 +57,13 @@ const Spaces = ({
       // Filter out dupes and ids that we already have the space for
       const filteredSpaceIDs = spaceIds
         .filter((id, i) => spaceIds.indexOf(id) === i)
-        .filter(
-          (id) =>
-            !spaces.some(
-              (spc) => spc && (spc.id === id || spc.configurationId === id)
-            )
-        )
-        .filter(
-          (id) =>
-            !spacesFromProps.some(
-              (spc) => spc && (spc.id === id || spc.configurationId === id)
-            )
-        );
+        .filter((id) => !spaces.some((spc) => spc && (spc.id === id || spc.configurationId === id)))
+        .filter((id) => !spacesFromProps.some((spc) => spc && (spc.id === id || spc.configurationId === id)));
 
       const filteredPayerIDs = payerIds
         .filter((id, i) => payerIds.indexOf(id) === i)
-        .filter(
-          (id) =>
-            !spaces.some(
-              (spc) =>
-                spc && spc.payerIDs && spc.payerIDs.some((pId) => pId === id)
-            )
-        )
-        .filter(
-          (id) =>
-            !spacesFromProps.some(
-              (spc) =>
-                spc && spc.payerIDs && spc.payerIDs.some((pId) => pId === id)
-            )
-        );
+        .filter((id) => !spaces.some((spc) => spc && spc.payerIDs && spc.payerIDs.some((pId) => pId === id)))
+        .filter((id) => !spacesFromProps.some((spc) => spc && spc.payerIDs && spc.payerIDs.some((pId) => pId === id)));
 
       if (filteredSpaceIDs.length === 0 && filteredPayerIDs.length === 0) {
         dispatch({
@@ -116,23 +76,13 @@ const Spaces = ({
       let _spaces = [];
       if (filteredSpaceIDs.length > 0) {
         const vars = { ...variables, ids: filteredSpaceIDs };
-        const spacesBySpaceIDs = await getAllSpaces(
-          query,
-          clientId,
-          vars,
-          spaces
-        );
+        const spacesBySpaceIDs = await getAllSpaces(query, clientId, vars, spaces);
         _spaces = _spaces.concat(spacesBySpaceIDs);
       }
 
       if (filteredPayerIDs.length > 0) {
         const vars = { ...variables, payerIDs: filteredPayerIDs };
-        const spacesByPayerIDs = await getAllSpaces(
-          query,
-          clientId,
-          vars,
-          spaces
-        );
+        const spacesByPayerIDs = await getAllSpaces(query, clientId, vars, spaces);
         _spaces = _spaces.concat(spacesByPayerIDs);
       }
 
@@ -150,12 +100,8 @@ const Spaces = ({
 
   const spacesForProvider = sanitizeSpaces(spaces.concat(spacesFromProps));
   return (
-    <SpacesContext.Provider
-      value={{ spaces: spacesForProvider, loading, error }}
-    >
-      {isFunction(children)
-        ? (() => children({ spaces: spacesForProvider, loading, error }))()
-        : children}
+    <SpacesContext.Provider value={{ spaces: spacesForProvider, loading, error }}>
+      {isFunction(children) ? (() => children({ spaces: spacesForProvider, loading, error }))() : children}
     </SpacesContext.Provider>
   );
 };
@@ -164,8 +110,7 @@ export const useSpaces = (...ids) => {
   const { spaces = [] } = useContext(SpacesContext) || {};
 
   const idsIsEmpty = !ids || ids.length === 0;
-  const callerIsExpectingFirstSpace =
-    ids && ids.length === 1 && ids[0] === undefined;
+  const callerIsExpectingFirstSpace = ids && ids.length === 1 && ids[0] === undefined;
 
   if (callerIsExpectingFirstSpace && spaces.length > 1) {
     // eslint-disable-next-line no-console

@@ -1,12 +1,13 @@
 /* eslint-disable jest/no-done-callback */
 import React from 'react';
-import { render, fireEvent, wait } from '@testing-library/react';
+import { render, fireEvent, waitFor } from '@testing-library/react';
 import { avFilesDeliveryApi } from '@availity/api-axios';
 import { Form } from '@availity/form';
 import { Button } from 'reactstrap';
 import nock from 'nock';
 import xhrMock from 'xhr-mock';
 import UploadCore from '@availity/upload-core';
+
 import Upload from '..';
 
 jest.mock('@availity/api-axios');
@@ -28,8 +29,7 @@ const createTestExtendingUpload = (file, done) => {
     clientId: 'c',
   });
   const success = jest.fn();
-  upload.onSuccess.push(success);
-  upload.onSuccess.push(() => {
+  upload.onSuccess.push(success, () => {
     expect(success).toHaveBeenCalled();
     done();
   });
@@ -124,7 +124,7 @@ describe('filesDelivery upload', () => {
     fireEvent.change(inputNode, fileEvent);
     expect(inputNode.files.length).toBe(1);
 
-    await wait(() => expect(avFilesDeliveryApi.uploadFilesDelivery).toHaveBeenCalledTimes(1));
+    await waitFor(() => expect(avFilesDeliveryApi.uploadFilesDelivery).toHaveBeenCalledTimes(1));
   });
 
   test('calls avFilesDeliveryApi onSubmit when deliverFileOnSubmit is true and deliveryChannel and fileDeliveryMetadata are defined', async (done) => {
@@ -164,8 +164,8 @@ describe('filesDelivery upload', () => {
     expect(inputNode.files.length).toBe(1);
 
     fireEvent.click(getByText('Submit'));
-    await wait(() => expect(onSubmit).toHaveBeenCalled());
-    await wait(() => expect(avFilesDeliveryApi.uploadFilesDelivery).toHaveBeenCalledTimes(1));
+    await waitFor(() => expect(onSubmit).toHaveBeenCalled());
+    await waitFor(() => expect(avFilesDeliveryApi.uploadFilesDelivery).toHaveBeenCalledTimes(1));
   });
 
   test('does not call avFilesDeliveryApi when onFileUpload is defined', async (done) => {
@@ -210,6 +210,6 @@ describe('filesDelivery upload', () => {
     fireEvent.click(filerow);
 
     expect(mockFunc).toHaveBeenCalled();
-    await wait(() => expect(avFilesDeliveryApi.uploadFilesDelivery).not.toHaveBeenCalled());
+    await waitFor(() => expect(avFilesDeliveryApi.uploadFilesDelivery).not.toHaveBeenCalled());
   });
 });

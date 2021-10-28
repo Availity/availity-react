@@ -69,11 +69,7 @@ describe('Select', () => {
         onSubmit={onSubmit}
         validationSchema={singleValueSchema('singleSelect')}
       >
-        <Select
-          name="singleSelect"
-          options={options}
-          data-testid="single-select"
-        />
+        <Select name="singleSelect" options={options} data-testid="single-select" />
         <Button type="submit">Submit</Button>
       </Form>
     );
@@ -102,11 +98,7 @@ describe('Select', () => {
         onSubmit={onSubmit}
         validationSchema={singleValueSchema('singleSelect')}
       >
-        <Select
-          name="singleSelect"
-          options={groupedOptions}
-          data-testid="single-select"
-        />
+        <Select name="singleSelect" options={groupedOptions} data-testid="single-select" />
         <Button type="submit">Submit</Button>
       </Form>
     );
@@ -135,12 +127,7 @@ describe('Select', () => {
         onSubmit={onSubmit}
         validationSchema={singleValueSchema('singleSelect')}
       >
-        <Select
-          isMulti
-          name="singleSelect"
-          options={groupedOptions}
-          data-testid="single-select"
-        />
+        <Select isMulti name="singleSelect" options={groupedOptions} data-testid="single-select" />
         <Button type="submit">Submit</Button>
       </Form>
     );
@@ -169,12 +156,7 @@ describe('Select', () => {
         onSubmit={onSubmit}
         validationSchema={multiValueSchema('multiSelect', true, 1, 2)}
       >
-        <Select
-          name="multiSelect"
-          isMulti
-          options={options}
-          data-testid="single-select"
-        />
+        <Select name="multiSelect" isMulti options={options} data-testid="single-select" />
         <Button type="submit">Submit</Button>
       </Form>
     );
@@ -204,13 +186,7 @@ describe('Select', () => {
         onSubmit={onSubmit}
         validationSchema={multiValueSchema('selectAll', true, 1, 4)}
       >
-        <Select
-          name="selectAll"
-          isMulti
-          options={options}
-          data-testid="single-select"
-          allowSelectAll
-        />
+        <Select name="selectAll" isMulti options={options} data-testid="single-select" allowSelectAll />
         <Button type="submit">Submit</Button>
       </Form>
     );
@@ -222,12 +198,7 @@ describe('Select', () => {
     await waitFor(() => {
       expect(onSubmit).toHaveBeenCalledWith(
         expect.objectContaining({
-          selectAll: [
-            'value for option 1',
-            'value for option 2',
-            'value for option 3',
-            'value for option 4',
-          ],
+          selectAll: ['value for option 1', 'value for option 2', 'value for option 3', 'value for option 4'],
         }),
         expect.anything()
       );
@@ -244,13 +215,7 @@ describe('Select', () => {
         onSubmit={onSubmit}
         validationSchema={multiValueSchema('selectAll', true, 1, 4)}
       >
-        <Select
-          name="selectAll"
-          isMulti
-          options={options}
-          data-testid="single-select"
-          allowSelectAll
-        />
+        <Select name="selectAll" isMulti options={options} data-testid="single-select" allowSelectAll />
         <Button type="submit">Submit</Button>
       </Form>
     );
@@ -262,12 +227,7 @@ describe('Select', () => {
     await waitFor(() => {
       expect(onSubmit).toHaveBeenCalledWith(
         expect.objectContaining({
-          selectAll: [
-            'value for option 1',
-            'value for option 2',
-            'value for option 3',
-            'value for option 4',
-          ],
+          selectAll: ['value for option 1', 'value for option 2', 'value for option 3', 'value for option 4'],
         }),
         expect.anything()
       );
@@ -284,13 +244,7 @@ describe('Select', () => {
         onSubmit={onSubmit}
         validationSchema={multiValueSchema('selectAll', true, 1, 4)}
       >
-        <Select
-          name="selectAll"
-          isMulti
-          options={options}
-          data-testid="single-select"
-          allowSelectAll
-        />
+        <Select name="selectAll" isMulti options={options} data-testid="single-select" allowSelectAll />
         <Button type="submit">Submit</Button>
       </Form>
     );
@@ -302,12 +256,7 @@ describe('Select', () => {
     await waitFor(() => {
       expect(onSubmit).toHaveBeenCalledWith(
         expect.objectContaining({
-          selectAll: [
-            'value for option 1',
-            'value for option 2',
-            'value for option 3',
-            'value for option 4',
-          ],
+          selectAll: ['value for option 1', 'value for option 2', 'value for option 3', 'value for option 4'],
         }),
         expect.anything()
       );
@@ -323,11 +272,7 @@ describe('Select', () => {
         onSubmit={() => {}}
         validationSchema={singleValueSchema('singleSelect')}
       >
-        <Select
-          name="singleSelect"
-          options={options}
-          data-testid="single-select"
-        />
+        <Select name="singleSelect" options={options} data-testid="single-select" />
         <Button type="submit">Submit</Button>
       </Form>
     );
@@ -353,13 +298,7 @@ describe('Select', () => {
         onSubmit={onSubmit}
         validationSchema={multiValueSchema('multiSelect', true, 1, 2)}
       >
-        <Select
-          name="multiSelect"
-          isMulti
-          maxLength={2}
-          options={options}
-          data-testid="single-select"
-        />
+        <Select name="multiSelect" isMulti maxLength={2} options={options} data-testid="single-select" />
         <Button type="submit">Submit</Button>
       </Form>
     );
@@ -391,12 +330,7 @@ describe('Select', () => {
         onSubmit={onSubmit}
         validationSchema={singleValueSchema('singleSelect')}
       >
-        <Select
-          name="singleSelect"
-          options={options}
-          raw
-          data-testid="single-select"
-        />
+        <Select name="singleSelect" options={options} raw data-testid="single-select" />
         <Button type="submit">Submit</Button>
       </Form>
     );
@@ -450,13 +384,7 @@ describe('Select', () => {
         }}
         onSubmit={onSubmit}
       >
-        <Select
-          name="testFormInput"
-          options={opts}
-          classNamePrefix="test"
-          raw
-          autofill
-        />
+        <Select name="testFormInput" options={opts} classNamePrefix="test" raw autofill />
         <Input data-testid="first-input" name="firstName" />
         <Input data-testid="last-input" name="lastName" />
         <Input data-testid="full-input" name="full.name" />
@@ -688,9 +616,7 @@ describe('Select', () => {
       expect(loadOptions).not.toHaveBeenCalled();
     });
 
-    const waitUntilFocusSelect = container.querySelector(
-      '.test__wait__control'
-    );
+    const waitUntilFocusSelect = container.querySelector('.test__wait__control');
     const input = container.querySelector('input');
     fireEvent.focus(input);
     fireEvent.keyDown(waitUntilFocusSelect, { key: 'ArrowDown', keyCode: 40 });
@@ -712,11 +638,7 @@ describe('Select', () => {
         onSubmit={onSubmit}
         validationSchema={singleValueSchema('singleSelect')}
       >
-        <Select
-          name="singleSelect"
-          options={options}
-          data-testid="single-select"
-        />
+        <Select name="singleSelect" options={options} data-testid="single-select" />
         <Button type="submit">Submit</Button>
       </Form>
     );

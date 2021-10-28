@@ -1,3 +1,4 @@
+/* eslint-disable unicorn/prefer-spread */
 import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 import classNames from 'classnames';
@@ -102,7 +103,7 @@ const Select = ({
 
   const prepValue = (value, digIfMulti = true) => {
     if (attributes.isMulti && digIfMulti && Array.isArray(value)) {
-      return value.map((val) => prepValue(val), false);
+      return value.map((val) => prepValue(val));
     }
     if (attributes.raw || attributes.loadOptions) {
       return value;
@@ -173,6 +174,7 @@ const Select = ({
 
       Object.keys(formValuesForAutofill)
         .filter((fieldName) => fieldName !== name)
+        // eslint-disable-next-line unicorn/no-array-for-each
         .forEach(async (fieldName) => {
           let rawValue = newValue;
           if (!!newValue.label && !!newValue.value && typeof newValue.value === 'object') {

@@ -16,12 +16,7 @@ afterEach(() => {
 
 // eslint-disable-next-line react/prop-types
 const DateRange = ({ model, ...props }) => (
-  <AvForm
-    onInvalidSubmit={onInvalidSubmit}
-    onSubmit={onSubmit}
-    onValidSubmit={onValidSubmit}
-    model={model}
-  >
+  <AvForm onInvalidSubmit={onInvalidSubmit} onSubmit={onSubmit} onValidSubmit={onValidSubmit} model={model}>
     <AvDateRange {...props} />
     <Button type="submit">Submit</Button>
   </AvForm>
@@ -249,11 +244,7 @@ describe('AvDateRange', () => {
 
   test('works with text input', async () => {
     const { container, getByText } = render(
-      <DateRange
-        name="dateRange"
-        start={{ name: 'date.start' }}
-        end={{ name: 'date.end' }}
-      />
+      <DateRange name="dateRange" start={{ name: 'date.start' }} end={{ name: 'date.end' }} />
     );
 
     // Simulate user entering start date
@@ -291,11 +282,7 @@ describe('AvDateRange', () => {
 
   test('works with date picker', async () => {
     const { container, getByText } = render(
-      <DateRange
-        name="dateRange"
-        start={{ name: 'date.start' }}
-        end={{ name: 'date.end' }}
-      />
+      <DateRange name="dateRange" start={{ name: 'date.start' }} end={{ name: 'date.end' }} />
     );
 
     const input = container.querySelector('.DateInput_input');
@@ -308,8 +295,7 @@ describe('AvDateRange', () => {
 
     // Simulate user selecting tomorrow as end date
     const dt = container.querySelector('.CalendarDay__today');
-    const end =
-      dt.nextSibling || dt.parentElement.nextSibling.firstElementChild;
+    const end = dt.nextSibling || dt.parentElement.nextSibling.firstElementChild;
     fireEvent.click(end);
 
     fireEvent.click(getByText('Submit'));
@@ -329,11 +315,7 @@ describe('AvDateRange', () => {
 
   test('same day can be selected', async () => {
     const { container, getByText } = render(
-      <DateRange
-        name="dateRange"
-        start={{ name: 'date.start' }}
-        end={{ name: 'date.end' }}
-      />
+      <DateRange name="dateRange" start={{ name: 'date.start' }} end={{ name: 'date.end' }} />
     );
 
     const input = container.querySelector('.DateInput_input');
@@ -409,12 +391,7 @@ describe('AvDateRange', () => {
 
   test('autoSync updates other value', async () => {
     const { container } = render(
-      <DateRange
-        name="dateRange"
-        start={{ name: 'date.start' }}
-        end={{ name: 'date.end' }}
-        autoSync
-      />
+      <DateRange name="dateRange" start={{ name: 'date.start' }} end={{ name: 'date.end' }} autoSync />
     );
 
     // Simulate user entering start date
@@ -477,9 +454,7 @@ describe('AvDateRange', () => {
     fireEvent.click(start);
 
     // Simulate user selecting tomorrow as end date
-    const end =
-      current.nextSibling ||
-      current.parentElement.nextSibling.firstElementChild;
+    const end = current.nextSibling || current.parentElement.nextSibling.firstElementChild;
     fireEvent.click(end);
 
     fireEvent.click(getByText('Submit'));

@@ -1,21 +1,22 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import classNames from 'classnames';
+
 import { useTableContext } from './TableContext';
 
 const TableCell = ({ cell, children, onCellClick, ...rest }) => {
   const { scrollable } = useTableContext();
-  const { disableClick } = cell.column;
+  const { className, disableClick, stickyLeft, stickyRight } = cell.column;
 
-  const isFixedWidth = scrollable && !cell.column.className;
+  const isFixedWidth = scrollable && !className;
 
   const cellProps = {
-    className: classNames(cell.column.className || '', {
+    className: classNames(className || '', {
       'fixed-width-text': isFixedWidth,
       'cursor-pointer': !!onCellClick,
-      sticky: cell.column.stickyRight || cell.column.stickyLeft,
-      'sticky-right': cell.column.stickyRight,
-      'sticky-left': cell.column.stickyLeft,
+      sticky: stickyRight || stickyLeft,
+      'sticky-right': stickyRight,
+      'sticky-left': stickyLeft,
     }),
     title: cell.value && isFixedWidth ? cell.value.toString() : undefined,
     onClick: (e) => {

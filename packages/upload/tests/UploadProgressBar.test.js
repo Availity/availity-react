@@ -57,9 +57,7 @@ describe('UploadProgressBar', () => {
         <UploadProgressBar upload={instance} />
       </form>
     );
-    const { getByTestId, findByLabelText, findByTestId } = render(
-      <SubmittingForm />
-    );
+    const { getByTestId, findByLabelText, findByTestId } = render(<SubmittingForm />);
     instance.error('Encrypted files require a password', 'encrypted');
     fireEvent.click(getByTestId('password-form-button'));
     const input = await findByLabelText('Password');
@@ -75,15 +73,10 @@ describe('UploadProgressBar', () => {
     const handleSubmit = jest.fn();
     const NonSubmittingForm = () => (
       <form data-testid="form" onSubmit={handleSubmit}>
-        <UploadProgressBar
-          upload={instance}
-          onPasswordSubmit={(e) => e.stopPropagation()}
-        />
+        <UploadProgressBar upload={instance} onPasswordSubmit={(e) => e.stopPropagation()} />
       </form>
     );
-    const { getByTestId, findByLabelText, findByTestId } = render(
-      <NonSubmittingForm />
-    );
+    const { getByTestId, findByLabelText, findByTestId } = render(<NonSubmittingForm />);
     instance.error('Encrypted files require a password', 'encrypted');
     fireEvent.click(getByTestId('password-form-button'));
     const input = await findByLabelText('Password');
@@ -96,29 +89,21 @@ describe('UploadProgressBar', () => {
   });
 
   test('an undefined passwordModalZIndex should leave the modals zIndex as the default 1050', async () => {
-    const { getByTestId, findByTestId } = render(
-      <UploadProgressBar upload={instance} />
-    );
+    const { getByTestId, findByTestId } = render(<UploadProgressBar upload={instance} />);
     instance.error('Encrypted files require a password', 'encrypted');
     fireEvent.click(getByTestId('password-form-button'));
     const form = await findByTestId('password-form-modal');
-    const container =
-      form.parentElement.parentElement.parentElement.parentElement
-        .parentElement;
+    const container = form.parentElement.parentElement.parentElement.parentElement.parentElement;
 
     expect(container.style.zIndex).toBe('1050');
   });
 
   test('setting passwordModalZIndex should change the modals zIndex as the default 1050', async () => {
-    const { getByTestId, findByTestId } = render(
-      <UploadProgressBar upload={instance} passwordModalZIndex="auto" />
-    );
+    const { getByTestId, findByTestId } = render(<UploadProgressBar upload={instance} passwordModalZIndex="auto" />);
     instance.error('Encrypted files require a password', 'encrypted');
     fireEvent.click(getByTestId('password-form-button'));
     const form = await findByTestId('password-form-modal');
-    const container =
-      form.parentElement.parentElement.parentElement.parentElement
-        .parentElement;
+    const container = form.parentElement.parentElement.parentElement.parentElement.parentElement;
 
     expect(container.style.zIndex).toBe('auto');
   });
@@ -128,9 +113,7 @@ describe('UploadProgressBar', () => {
   // animated
 
   test('should render striped', () => {
-    const { getByTestId } = render(
-      <UploadProgressBar upload={instance} striped />
-    );
+    const { getByTestId } = render(<UploadProgressBar upload={instance} striped />);
 
     const progressBar = getByTestId('progress-inner');
 
@@ -138,9 +121,7 @@ describe('UploadProgressBar', () => {
   });
 
   test('should render animated', () => {
-    const { getByTestId } = render(
-      <UploadProgressBar upload={instance} animated />
-    );
+    const { getByTestId } = render(<UploadProgressBar upload={instance} animated />);
 
     const progressBar = getByTestId('progress-inner');
 
@@ -148,9 +129,7 @@ describe('UploadProgressBar', () => {
   });
 
   test('should render striped and animated', () => {
-    const { getByTestId } = render(
-      <UploadProgressBar upload={instance} striped animated />
-    );
+    const { getByTestId } = render(<UploadProgressBar upload={instance} striped animated />);
 
     const progressBar = getByTestId('progress-inner');
 

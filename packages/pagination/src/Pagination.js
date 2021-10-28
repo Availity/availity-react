@@ -86,7 +86,9 @@ const Pagination = ({
       // todo - add prop if needed to handle this
       const page = isFunction(theItems) ? items : items.slice(lower - 1, upper);
 
-      const pageCount = Math.ceil((totalCount || items.length) / itemsPerPage);
+      // eslint-disable-next-line unicorn/explicit-length-check
+      const total = totalCount || items.length;
+      const pageCount = Math.ceil(total / itemsPerPage);
 
       const localStorageItem = getItemLocalStorage('current-page');
 
@@ -95,7 +97,7 @@ const Pagination = ({
       }
 
       setPageData({
-        total: totalCount || items.length,
+        total,
         pageCount,
         page,
         allPages: [...pageData.allPages, ...page],

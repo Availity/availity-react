@@ -1,3 +1,5 @@
+/* eslint-disable unicorn/prefer-spread */
+/* eslint-disable unicorn/prefer-array-flat */
 import { useState, useEffect } from 'react';
 import { avUserPermissionsApi, avRegionsApi } from '@availity/api-axios';
 
@@ -29,13 +31,11 @@ const useAuthorize = (permissions, { organizationId, customerId, region = true, 
     let isAuthorizedForResources = true;
 
     if (organizationId) {
-      isAuthorizedForOrganizationId =
-        permission.organizations.filter(({ id: orgId }) => orgId === organizationId).length > 0;
+      isAuthorizedForOrganizationId = permission.organizations.some((org) => org.id === organizationId);
     }
 
     if (customerId) {
-      isAuthorizedForCustomerId =
-        permission.organizations.filter(({ customerId: orgCustomerId }) => orgCustomerId === customerId).length > 0;
+      isAuthorizedForCustomerId = permission.organizations.some((org) => org.customerId === customerId);
     }
 
     if (resources !== undefined) {
@@ -77,7 +77,9 @@ const useAuthorize = (permissions, { organizationId, customerId, region = true, 
       }
       return checkPermission(newPermissions[permissionSet]);
     });
-    if (permissionsList.join() === [].concat(...(Array.isArray(permissions) ? permissions : [permissions])).join()) {
+    if (
+      permissionsList.join(',') === [].concat(...(Array.isArray(permissions) ? permissions : [permissions])).join(',')
+    ) {
       setLoading(false);
       setAuthorized(authorized);
     }

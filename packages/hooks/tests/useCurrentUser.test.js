@@ -53,10 +53,7 @@ describe('useCurrentUser', () => {
   test('should set error on rejected promise', async () => {
     avUserApi.me.mockRejectedValueOnce('An error occurred');
 
-    const { getByText } = renderWithClient(
-      queryClient,
-      <Component log={pushState} />
-    );
+    const { getByText } = renderWithClient(queryClient, <Component log={pushState} />);
 
     getByText('Status: loading');
     await waitFor(() => {
@@ -78,10 +75,7 @@ describe('useCurrentUser', () => {
       firstName: 'First',
     });
 
-    const { getByText } = renderWithClient(
-      queryClient,
-      <Component log={pushState} />
-    );
+    const { getByText } = renderWithClient(queryClient, <Component log={pushState} />);
 
     getByText('Status: loading');
     await waitFor(() => {

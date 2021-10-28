@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import Skeleton from 'react-loading-skeleton';
 import { Img } from 'react-image';
 import get from 'lodash/get';
+
 import { useSpaces, useSpacesContext } from './Spaces';
 
 const skeletonPropType = PropTypes.shape({
@@ -24,14 +25,7 @@ Loader.defaultProps = {
   },
 };
 
-const SpacesImage = ({
-  spaceId,
-  payerId,
-  imageType,
-  fallback,
-  skeletonProps,
-  ...props
-}) => {
+const SpacesImage = ({ spaceId, payerId, imageType, fallback, skeletonProps, ...props }) => {
   const [space = {}] = useSpaces(spaceId || payerId);
   const { loading } = useSpacesContext() || {};
 
@@ -39,13 +33,7 @@ const SpacesImage = ({
   let url = get(space, imageType);
 
   if (!url && loading) {
-    return (
-      <Loader
-        data-testid={`space-${imageType}-${id}-loading`}
-        skeletonProps={skeletonProps}
-        {...props}
-      />
-    );
+    return <Loader data-testid={`space-${imageType}-${id}-loading`} skeletonProps={skeletonProps} {...props} />;
   }
 
   // We can probably remove this at some point once our spaces data is complete
@@ -60,13 +48,7 @@ const SpacesImage = ({
       data-testid={`space-${imageType}-${id}`}
       src={url}
       alt={`Space ${imageType}`}
-      loader={
-        <Loader
-          data-testid={`space-${imageType}-${id}`}
-          skeletonProps={skeletonProps}
-          {...props}
-        />
-      }
+      loader={<Loader data-testid={`space-${imageType}-${id}`} skeletonProps={skeletonProps} {...props} />}
       {...props}
     />
   );
@@ -88,9 +70,7 @@ SpacesImage.defaultProps = {
 const ucFirst = (str) => str && str.charAt(0).toUpperCase() + str.slice(1);
 
 SpacesImage.create = (defaults) => {
-  const SpecificSpacesImage = (props) => (
-    <SpacesImage {...defaults} {...props} />
-  );
+  const SpecificSpacesImage = (props) => <SpacesImage {...defaults} {...props} />;
 
   SpecificSpacesImage.displayName = `Spaces${ucFirst(defaults.imageType)}`;
   return SpecificSpacesImage;

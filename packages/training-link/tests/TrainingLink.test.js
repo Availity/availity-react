@@ -6,9 +6,7 @@ afterEach(cleanup);
 
 describe('TrainingLink', () => {
   test('should not render with link and name', () => {
-    const { container } = render(
-      <TrainingLink link="http://catvidoes.com" name="Appeals" />
-    );
+    const { container } = render(<TrainingLink link="http://catvidoes.com" name="Appeals" />);
 
     expect(container).toMatchSnapshot();
   });

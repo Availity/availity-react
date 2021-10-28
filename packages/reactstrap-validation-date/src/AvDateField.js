@@ -44,25 +44,18 @@ class AvDateField extends Component {
     } = this.props;
 
     if (grid) {
-      colSizes.forEach((colSize) => {
+      for (const colSize of colSizes) {
         if (grid[colSize]) {
           row = true;
           const sizeNum = Number.parseInt(grid[colSize], 10);
           col[colSize] = sizeNum;
           labelCol[colSize] = 12 - sizeNum;
         }
-      });
+      }
     }
 
     const input = (
-      <AvDate
-        id={id}
-        className={inputClass}
-        size={size}
-        disabled={disabled}
-        readOnly={readOnly}
-        {...attributes}
-      >
+      <AvDate id={id} className={inputClass} size={size} disabled={disabled} readOnly={readOnly} {...attributes}>
         {children}
       </AvDate>
     );
@@ -77,14 +70,7 @@ class AvDateField extends Component {
     return (
       <AvGroup disabled={disabled} row={row} {...groupAttrs}>
         {label && (
-          <Label
-            for={id}
-            className={labelClass}
-            hidden={labelHidden}
-            size={size}
-            {...labelCol}
-            {...labelAttrs}
-          >
+          <Label for={id} className={labelClass} hidden={labelHidden} size={size} {...labelCol} {...labelAttrs}>
             {label}
           </Label>
         )}

@@ -5,6 +5,7 @@ import { avLogMessagesApi, avRegionsApi } from '@availity/api-axios';
 import { Form, Field } from '@availity/form';
 import { SelectField } from '@availity/select';
 import * as yup from 'yup';
+
 import SmileField from './SmileField';
 
 yup.addMethod(yup.string, 'isRequired', function format(isRequired, msg) {
@@ -70,7 +71,11 @@ const FeedbackForm = ({
           onClose(); // Mostly for Screen Reader use but a nice to have for all
         }
         if (onFeedbackSent) {
-          Object.keys(sent).forEach((key) => sent[key] === undefined && delete sent[key]);
+          for (const key of Object.keys(sent)) {
+            if (sent[key] === undefined) {
+              delete sent[key];
+            }
+          }
 
           onFeedbackSent({
             active: active.icon,

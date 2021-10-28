@@ -7,20 +7,13 @@ import { useSpaces } from './Spaces';
 
 const SpacesAgreement = ({ spaceId, markdown, ...props }) => {
   const [space = {}] = useSpaces(spaceId);
-  const { description: agreement } = space;
+  const { description: agreement, id } = space;
 
   if (agreement) {
-    const children = markdown ? (
-      <ReactMarkdown source={agreement} />
-    ) : (
-      agreement
-    );
+    const children = markdown ? <ReactMarkdown source={agreement} /> : agreement;
 
     return (
-      <Agreement
-        data-testid={`spaces-agreement-${spaceId || space.id}`}
-        {...props}
-      >
+      <Agreement data-testid={`spaces-agreement-${spaceId || id}`} {...props}>
         {children}
       </Agreement>
     );

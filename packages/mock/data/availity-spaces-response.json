@@ -8,9 +8,7 @@
           "images": {
             "logo": "/static/spaces/space1/banner.png"
           },
-          "parentIDs": [
-            "pid1"
-          ],
+          "parentIDs": ["pid1"],
           "metadataPairs": [
             {
               "name": "ghostText",
@@ -24,9 +22,7 @@
         },
         {
           "id": "a",
-          "payerIDs": [
-            "availity1"
-          ],
+          "payerIDs": ["availity1"],
           "images": {
             "logo": "/static/spaces/a/banner.png"
           }
@@ -39,9 +35,7 @@
         },
         {
           "id": "b",
-          "payerIDs": [
-            "availity2"
-          ],
+          "payerIDs": ["availity2"],
           "images": {
             "tile": "/static/spaces/b/tile.png"
           }
@@ -54,9 +48,7 @@
         },
         {
           "id": "c",
-          "payerIDs": [
-            "availity3"
-          ],
+          "payerIDs": ["availity3"],
           "images": {
             "billboard": "/static/spaces/b/billboard.png"
           }
