@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## 0.1.1 (2021-10-28)
+
+
+### Bug Fixes
+
+* upgrade eslint-config-availity and fix the errors ([6da0423](https://github.com/Availity/availity-react/commit/6da0423ecfa72b426287fd62ad00445fefce024e))
+
+
+
+
+
 # 0.1.0 (2021-10-08)
 
 

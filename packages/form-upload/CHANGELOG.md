@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## 0.6.12 (2021-10-28)
+
+
+### Bug Fixes
+
+* **form-upload:** resolve lint errors ([92d2f84](https://github.com/Availity/availity-react/commit/92d2f846d80af76e0e355dc6f4f33174a50bd368))
+
+
+
+
+
 ## 0.6.11 (2021-10-19)
 
 **Note:** Version bump only for package @availity/form-upload

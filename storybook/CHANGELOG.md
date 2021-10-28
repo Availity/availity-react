@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [9.15.2](https://github.com/Availity/availity-react/compare/@availity/react-storybook@9.15.1...@availity/react-storybook@9.15.2) (2021-10-28)
+
+
+### Bug Fixes
+
+* upgrade eslint-config-availity and fix the errors ([6da0423](https://github.com/Availity/availity-react/commit/6da0423ecfa72b426287fd62ad00445fefce024e))
+
+
+
+
+
 ## [9.15.1](https://github.com/Availity/availity-react/compare/@availity/react-storybook@9.15.0...@availity/react-storybook@9.15.1) (2021-10-27)
 
 

@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## 2.1.1 (2021-10-28)
+
+
+### Bug Fixes
+
+* **mock:** add exported type and run formatter ([1e25c88](https://github.com/Availity/availity-react/commit/1e25c88d3f310ad2f2b2781ba5cf25f5703be7d7))
+
+
+
+
+
 # 2.1.0 (2021-09-01)
 
 

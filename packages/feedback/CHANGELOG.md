@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [6.1.2](https://github.com/Availity/availity-react/compare/@availity/feedback@6.1.1...@availity/feedback@6.1.2) (2021-10-28)
+
+
+### Bug Fixes
+
+* **feedback:** resolve lint errors ([295cb3e](https://github.com/Availity/availity-react/commit/295cb3e126b70d5204899fe265869752c9024eb2))
+
+
+
+
+
 ## 6.1.1 (2021-10-27)
 
 

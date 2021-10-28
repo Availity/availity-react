@@ -3,6 +3,14 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## 1.1.29 (2021-10-28)
+
+**Note:** Version bump only for package @availity/phone
+
+
+
+
+
 ## 1.1.28 (2021-10-19)
 
 **Note:** Version bump only for package @availity/phone

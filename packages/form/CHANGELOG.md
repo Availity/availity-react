@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## 1.0.2 (2021-10-28)
+
+
+### Bug Fixes
+
+* **form:** resolve lint error ([cafef19](https://github.com/Availity/availity-react/commit/cafef19a4696057d6816aa1bf82f4599676a1965))
+
+
+
+
+
 ## [1.0.1](https://github.com/Availity/availity-react/compare/@availity/form@1.0.0...@availity/form@1.0.1) (2021-10-19)
 
 

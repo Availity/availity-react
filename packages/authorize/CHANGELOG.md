@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## 1.5.23 (2021-10-28)
+
+
+### Bug Fixes
+
+* **authorize:** resolve linter errors and add type ([fafea0c](https://github.com/Availity/availity-react/commit/fafea0c2b7ef6547b405e385e6b90df260aa8f52))
+
+
+
+
+
 ## [1.5.22](https://github.com/Availity/availity-react/compare/@availity/authorize@1.5.21...@availity/authorize@1.5.22) (2021-10-01)
 
 **Note:** Version bump only for package @availity/authorize

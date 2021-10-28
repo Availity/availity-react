@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## 2.11.1 (2021-10-28)
+
+
+### Bug Fixes
+
+* **pagination:** resolve lint errors ([d1cf97c](https://github.com/Availity/availity-react/commit/d1cf97cbcf689f0e032cf6d7a1eb3984f8ebb786))
+
+
+
+
+
 # 2.11.0 (2021-10-11)
 
 

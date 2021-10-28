@@ -3,6 +3,27 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [9.0.0](https://github.com/Availity/availity-react/compare/@availity/reactstrap-validation-select@8.0.0...@availity/reactstrap-validation-select@9.0.0) (2021-10-28)
+
+
+### Bug Fixes
+
+* upgrade eslint-config-availity and fix the errors ([6da0423](https://github.com/Availity/availity-react/commit/6da0423ecfa72b426287fd62ad00445fefce024e))
+
+
+### Features
+
+* **reactstrap-validation-select:** upgrade to react-select v5 ([34eec6d](https://github.com/Availity/availity-react/commit/34eec6d606858d3cbdf1f45e93205b40000eeb2d))
+
+
+### BREAKING CHANGES
+
+* **reactstrap-validation-select:** react-select v5 drops support for IE11
+
+
+
+
+
 # 8.0.0 (2021-10-27)
 
 

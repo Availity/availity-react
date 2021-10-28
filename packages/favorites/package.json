@@ -1,6 +1,6 @@
 {
   "name": "@availity/favorites",
-  "version": "2.2.2",
+  "version": "2.2.3",
   "author": "Kyle Gray <kyle.gray@availity.com>",
   "description": "Favorite Heart for favoriting items such as links/resources etc.",
   "main": "index.js",
@@ -22,7 +22,7 @@
   },
   "dependencies": {
     "@availity/analytics-core": "^3.0.0",
-    "@availity/hooks": "^3.0.4",
+    "@availity/hooks": "^3.0.5",
     "@availity/message-core": "^5.0.0",
     "lodash": "^4.17.21",
     "prop-types": "^15.7.2"

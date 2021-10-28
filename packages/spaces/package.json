@@ -1,6 +1,6 @@
 {
   "name": "@availity/spaces",
-  "version": "5.0.3",
+  "version": "5.0.4",
   "author": "Tyson Warner <tyson.warner@availity.com>",
   "description": "Easy to use spaces components",
   "main": "index.js",
@@ -21,7 +21,7 @@
     "access": "public"
   },
   "dependencies": {
-    "@availity/hooks": "^3.0.4",
+    "@availity/hooks": "^3.0.5",
     "@availity/typography": "^1.2.22",
     "lodash": "^4.17.21",
     "prop-types": "^15.7.2",
