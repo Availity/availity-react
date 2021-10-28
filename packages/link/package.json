@@ -21,7 +21,7 @@
     "access": "public"
   },
   "dependencies": {
-    "@availity/resolve-url": "^1.1.21",
+    "@availity/resolve-url": "^1.1.22",
     "prop-types": "^15.7.2"
   },
   "devDependencies": {

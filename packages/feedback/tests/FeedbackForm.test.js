@@ -1,4 +1,3 @@
-/* eslint-disable unicorn/prefer-query-selector */
 import React from 'react';
 import { render, fireEvent, waitFor, cleanup } from '@testing-library/react';
 import { avLogMessagesApi, avRegionsApi } from '@availity/api-axios';
@@ -72,15 +71,16 @@ describe('FeedbackForm', () => {
 
     fireEvent.click(getByText('Send Feedback'));
 
-    jest.advanceTimersByTime(1000);
-
-    await waitFor(() =>
-      expect(onFeedbackSent).toHaveBeenCalledWith(
-        expect.objectContaining({
-          active: 'smile',
-          feedback: 'some good text here',
-        })
-      )
+    await waitFor(
+      () => {
+        expect(onFeedbackSent).toHaveBeenCalledWith(
+          expect.objectContaining({
+            active: 'smile',
+            feedback: 'some good text here',
+          })
+        );
+      },
+      { timeout: 2500 }
     );
   });
 

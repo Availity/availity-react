@@ -22,7 +22,7 @@
   },
   "dependencies": {
     "prop-types": "^15.7.2",
-    "react-query": "^3.0.0"
+    "react-query": "^3.29.0"
   },
   "devDependencies": {
     "@availity/api-axios": "^6.0.0",
