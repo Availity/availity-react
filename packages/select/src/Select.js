@@ -249,7 +249,8 @@ const Select = ({
     <Tag
       {...field}
       onChange={onChangeHandler}
-      ref={selectRef}
+      ref={attributes.loadOptions ? undefined : selectRef}
+      selectRef={attributes.loadOptions ? selectRef : undefined}
       name={name}
       classNamePrefix="av"
       role="listbox"
