@@ -199,7 +199,7 @@ class AvResourceSelect extends Component {
         customerId: this.props.customerId,
         ...this.props.parameters,
       };
-      _cacheUniq = watchParams.map((watchParam) => params[watchParam]).join(',');
+      _cacheUniq = watchParams.map((watchParam) => params[watchParam]);
     }
 
     return (
