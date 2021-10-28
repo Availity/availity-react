@@ -3,6 +3,14 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.4.7](https://github.com/Availity/availity-react/compare/@availity/avatar@0.4.6...@availity/avatar@0.4.7) (2021-10-28)
+
+**Note:** Version bump only for package @availity/avatar
+
+
+
+
+
 ## 0.4.6 (2021-10-28)
 
 **Note:** Version bump only for package @availity/avatar

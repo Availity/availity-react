@@ -3,6 +3,14 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [3.0.6](https://github.com/Availity/availity-react/compare/@availity/hooks@3.0.5...@availity/hooks@3.0.6) (2021-10-28)
+
+**Note:** Version bump only for package @availity/hooks
+
+
+
+
+
 ## 3.0.5 (2021-10-28)
 
 **Note:** Version bump only for package @availity/hooks
