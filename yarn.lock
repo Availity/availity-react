@@ -154,11 +154,11 @@
     core-js "^3.12.1"
 
 "@availity/message-core@^5.0.1":
-  version "5.0.1"
-  resolved "https://registry.yarnpkg.com/@availity/message-core/-/message-core-5.0.1.tgz#a42d3c0869b53f2264a535f24e28af2f875a5021"
-  integrity sha512-Vs4EeTomWzk2t50duQBeWcjmAFsSZA+3SNDDmO1OeBnTymnJUaab675obGZ1Gaj7ddlfWVCJURBUq/kw4rmVUQ==
+  version "5.0.2"
+  resolved "https://registry.yarnpkg.com/@availity/message-core/-/message-core-5.0.2.tgz#6d0f8f7d15835bd9518e6977b97b491de6cc0e3d"
+  integrity sha512-VmKi9IxfGvVpiFjZh2RQ9cuQuQjPlnosRAkRefyW7yZdRrv7IJ/DUXtZY8tsBazEtN1+ydIWcLZcEmfOrXwedA==
   dependencies:
-    "@babel/runtime" "^7.10.2"
+    "@babel/runtime" "^7.15.4"
     core-js "^3.12.1"
 
 "@availity/native-form@^4.0.5":
