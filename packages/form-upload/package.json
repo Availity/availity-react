@@ -1,6 +1,6 @@
 {
   "name": "@availity/form-upload",
-  "version": "0.6.13",
+  "version": "0.6.14",
   "author": "Tyson Warner <tyson.warner@availity.com>",
   "description": "Availity upload component for uploading files, compatible with @availity/form",
   "main": "index.js",

@@ -3,6 +3,14 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## 0.6.14 (2021-11-01)
+
+**Note:** Version bump only for package @availity/form-upload
+
+
+
+
+
 ## [0.6.13](https://github.com/Availity/availity-react/compare/@availity/form-upload@0.6.12...@availity/form-upload@0.6.13) (2021-10-28)
 
 **Note:** Version bump only for package @availity/form-upload
