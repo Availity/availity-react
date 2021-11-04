@@ -1,6 +1,6 @@
 {
   "name": "@availity/analytics",
-  "version": "1.1.26",
+  "version": "1.1.27",
   "author": "Kyle Gray <kyle.gray@gmail.com>",
   "description": "Track click and page view events for the user.",
   "main": "index.js",
@@ -21,7 +21,7 @@
     "access": "public"
   },
   "dependencies": {
-    "@availity/analytics-core": "^3.0.0",
+    "@availity/analytics-core": "^3.1.2",
     "prop-types": "^15.7.2"
   },
   "devDependencies": {

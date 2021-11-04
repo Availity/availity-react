@@ -1,6 +1,6 @@
 {
   "name": "@availity/help",
-  "version": "1.4.6",
+  "version": "1.4.7",
   "author": "Kyle Gray <kyle.gray@availity.com>",
   "description": "Context Provider to assist with Help Menu on Portal for specific pages",
   "types": "index.d.ts",
@@ -22,7 +22,7 @@
   },
   "dependencies": {
     "@availity/icon": "^0.9.1",
-    "@availity/message-core": "^5.0.0",
+    "@availity/message-core": "^5.0.1",
     "prop-types": "^15.7.2"
   },
   "devDependencies": {

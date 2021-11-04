@@ -3,6 +3,25 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.0.5](https://github.com/Availity/availity-react/compare/@availity/select@1.0.4...@availity/select@1.0.5) (2021-10-28)
+
+
+### Bug Fixes
+
+* **select:** pass ref as selectRef when using async component ([729630e](https://github.com/Availity/availity-react/commit/729630e478d5b953f87614af95c83755c5f1c3b6))
+
+
+
+
+
+## [1.0.4](https://github.com/Availity/availity-react/compare/@availity/select@1.0.3...@availity/select@1.0.4) (2021-10-28)
+
+**Note:** Version bump only for package @availity/select
+
+
+
+
+
 ## [1.0.3](https://github.com/Availity/availity-react/compare/@availity/select@1.0.2...@availity/select@1.0.3) (2021-10-28)
 
 

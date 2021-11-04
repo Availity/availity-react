@@ -1,6 +1,6 @@
 {
   "name": "@availity/upload",
-  "version": "3.1.5",
+  "version": "3.1.6",
   "author": "Evan Sharp <evan.sharp@availity.com>",
   "description": "Availity upload component for uploading files",
   "main": "index.js",
@@ -32,15 +32,13 @@
     "react": "^17.0.2",
     "react-dom": "^17.0.2",
     "react-dropzone": "^11.3.2",
-    "reactstrap": "^8.9.0",
-    "tus-js-client": "^2.3.0"
+    "reactstrap": "^8.9.0"
   },
   "peerDependencies": {
     "@availity/upload-core": "^4.1.1",
     "react": ">=16.8.0",
     "react-dom": ">=16.8.0",
     "react-dropzone": "^11.0.0",
-    "reactstrap": "^8.0.0 || ^7.0.0 || ^6.0.0",
-    "tus-js-client": "^1.5.1"
+    "reactstrap": "^8.0.0 || ^7.0.0 || ^6.0.0"
   }
 }

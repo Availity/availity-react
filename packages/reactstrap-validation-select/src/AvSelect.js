@@ -253,7 +253,8 @@ class AvSelect extends AvBaseInput {
 
     return (
       <Tag
-        ref={selectRef}
+        ref={attributes.loadOptions ? undefined : selectRef}
+        selectRef={attributes.loadOptions ? selectRef : undefined}
         classNamePrefix="av"
         role="listbox"
         className={classes}
