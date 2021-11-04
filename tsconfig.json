@@ -1,6 +1,7 @@
 {
   "compilerOptions": {
-    "module": "commonjs",
+    "declaration": true,
+    "module": "esnext",
     "target": "es5",
     "lib": ["es6", "dom"],
     "jsx": "react",
@@ -8,7 +9,7 @@
     "resolveJsonModule": true,
     "forceConsistentCasingInFileNames": true,
     "strict": true,
-    "noEmit": true,
+    "noEmit": false,
     "experimentalDecorators": true,
     "baseUrl": "./packages",
     "allowSyntheticDefaultImports": true,
