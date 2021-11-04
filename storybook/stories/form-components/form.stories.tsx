@@ -1,4 +1,5 @@
 /* eslint-disable import/no-duplicates */
+/* eslint-disable no-console */
 import React from 'react';
 import { Meta, Story } from '@storybook/react';
 import { Button } from 'reactstrap';
@@ -242,7 +243,6 @@ export const _Checkbox: Story = ({ required, helpId }) => (
 );
 _Checkbox.args = {
   helpId: '',
-  labelClassName: 'label',
 };
 _Checkbox.storyName = 'Checkbox';
 
@@ -258,7 +258,7 @@ export const _Radio: Story = ({ required, helpId }) => (
       hello: yup.string().isRequired(required, 'This field is required.'),
     })}
   >
-    <RadioGroup name="hello" label="Radio Group" helpId={helpId} >
+    <RadioGroup name="hello" label="Radio Group" helpId={helpId}>
       <Radio name="hello" label="Radio One" value="uno" />
       <Radio name="hello" label="Radio Two" value="dos" />
       <Radio name="hello" label="Radio Three" value="tres" />
