@@ -103,11 +103,15 @@ describe('AvLink', () => {
   });
 
   test('should render link with proper styling', () => {
-    const { getByRole } = render(<AvLink href="/public/apps/my-app">My App</AvLink>);
+    const { getByRole } = render(
+      <AvLink href="/public/apps/my-app" className="card-link">
+        My App
+      </AvLink>
+    );
 
     const link = getByRole('link');
 
-    expect(link).toHaveAttribute('class', 'link');
+    expect(link).toHaveAttribute('class', 'link card-link');
     expect(link).toHaveAttribute('style', 'font-weight: bold;');
   });
 });

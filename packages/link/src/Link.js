@@ -1,5 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import classNames from 'classnames';
 import { isAbsoluteUrl } from '@availity/resolve-url';
 
 // if absolute or loadApp is disabled, return url. otherwise loadappify the url
@@ -47,9 +48,10 @@ const setRel = (url, target, absolute) => {
 
 const linkStyles = { fontWeight: 'bold' };
 
-const AvLink = ({ tag: Tag, href, target, children, onClick, loadApp, ...props }) => {
+const AvLink = ({ tag: Tag, href, target, children, onClick, loadApp, className, ...props }) => {
   const absolute = isAbsoluteUrl(href);
   const url = getUrl(href, loadApp, absolute);
+  const classnames = classNames('link', className);
   target = getTarget(target);
 
   return (
@@ -57,7 +59,7 @@ const AvLink = ({ tag: Tag, href, target, children, onClick, loadApp, ...props }
       href={url}
       target={target}
       style={linkStyles}
-      className="link"
+      className={classnames}
       onClick={(event) => onClick && onClick(event, url)}
       data-testid="av-link-tag"
       rel={setRel(url, target, absolute)}
@@ -80,6 +82,7 @@ AvLink.propTypes = {
   href: PropTypes.string.isRequired,
   onClick: PropTypes.func,
   loadApp: PropTypes.bool,
+  className: PropTypes.string,
   rel: PropTypes.string,
 };
 
