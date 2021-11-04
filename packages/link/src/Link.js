@@ -45,7 +45,7 @@ const setRel = (url, target, absolute) => {
   return undefined;
 };
 
-const linkStyles = { textDecoration: 'underline' };
+const linkStyles = { fontWeight: 'bold' };
 
 const AvLink = ({ tag: Tag, href, target, children, onClick, loadApp, ...props }) => {
   const absolute = isAbsoluteUrl(href);
@@ -57,6 +57,7 @@ const AvLink = ({ tag: Tag, href, target, children, onClick, loadApp, ...props }
       href={url}
       target={target}
       style={linkStyles}
+      className="link"
       onClick={(event) => onClick && onClick(event, url)}
       data-testid="av-link-tag"
       rel={setRel(url, target, absolute)}

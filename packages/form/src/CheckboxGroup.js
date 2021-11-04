@@ -49,7 +49,7 @@ const CheckboxGroup = ({ name, children, onChange: groupOnChange, groupClassName
 
   if (label) {
     tag = 'fieldset';
-    legend = <legend>{label}</legend>;
+    legend = <legend className="text-dark">{label}</legend>;
 
     if (helpId) {
       const legendId = `${name}-legend`.toLowerCase();
@@ -59,7 +59,7 @@ const CheckboxGroup = ({ name, children, onChange: groupOnChange, groupClassName
           <legend id={legendId} className="sr-only">
             {label}
           </legend>
-          <div className="form-inline" style={legendStyle}>
+          <div className="form-inline text-dark" style={legendStyle}>
             <div aria-hidden="true">{label}</div>
             <FieldHelpIcon id={helpId} labelId={legendId} />
           </div>
