@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { FormGroupProps } from './FormGroup';
+import { FormGroupProps } from 'reactstrap';
 
 interface CheckboxGroupProps extends FormGroupProps {
   name: string;

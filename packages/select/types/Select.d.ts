@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { Props } from 'react-select/src/Select';
+import { Props } from 'react-select';
 import { FieldValidator } from 'formik';
 
 interface GroupedOptions {

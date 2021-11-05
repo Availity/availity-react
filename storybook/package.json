@@ -68,6 +68,7 @@
     "@storybook/addon-storysource": "^6.0.27",
     "@storybook/addons": "^6.0.27",
     "@storybook/react": "^6.0.27",
+    "@types/yup": "^0.29.13",
     "availity-reactstrap-validation": "2.7.1",
     "availity-uikit": "^4.1.1",
     "awesome-typescript-loader": "^5.2.1",
