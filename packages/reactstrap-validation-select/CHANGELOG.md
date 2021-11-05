@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [9.0.2](https://github.com/Availity/availity-react/compare/@availity/reactstrap-validation-select@9.0.0...@availity/reactstrap-validation-select@9.0.2) (2021-11-05)
+
+
+### Bug Fixes
+
+* coordinate accessible UI changes ([ee84d14](https://github.com/Availity/availity-react/commit/ee84d14412864943e626422e075071cd0571f783))
+
+
+
+
+
 ## 9.0.1 (2021-10-28)
 
 

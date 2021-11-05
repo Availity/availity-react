@@ -1,6 +1,6 @@
 {
   "name": "@availity/phone",
-  "version": "1.1.30",
+  "version": "1.1.31",
   "description": "Availity Phone component using Formik and Yup",
   "main": "index.js",
   "types": "index.d.ts",
@@ -15,7 +15,7 @@
     "prop-types": "^15.7.2"
   },
   "devDependencies": {
-    "@availity/form": "^1.0.3",
+    "@availity/form": "^1.0.4",
     "formik": "^2.2.8",
     "react": "^17.0.2",
     "react-dom": "^17.0.2",

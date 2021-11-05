@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [4.1.5](https://github.com/Availity/availity-react/compare/@availity/reactstrap-validation-date@4.1.4...@availity/reactstrap-validation-date@4.1.5) (2021-11-05)
+
+
+### Bug Fixes
+
+* coordinate accessible UI changes ([ee84d14](https://github.com/Availity/availity-react/commit/ee84d14412864943e626422e075071cd0571f783))
+
+
+
+
+
 ## 4.1.4 (2021-10-28)
 
 

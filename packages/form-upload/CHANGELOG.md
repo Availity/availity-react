@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.6.15](https://github.com/Availity/availity-react/compare/@availity/form-upload@0.6.14...@availity/form-upload@0.6.15) (2021-11-05)
+
+
+### Bug Fixes
+
+* add classnames dep ([9bdda6f](https://github.com/Availity/availity-react/commit/9bdda6f1ec1e0b23e31fe81008c94f69b940804d))
+
+
+
+
+
 ## 0.6.14 (2021-11-01)
 
 **Note:** Version bump only for package @availity/form-upload

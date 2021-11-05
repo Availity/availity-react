@@ -3,6 +3,18 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [9.15.7](https://github.com/Availity/availity-react/compare/@availity/react-storybook@9.15.6...@availity/react-storybook@9.15.7) (2021-11-05)
+
+
+### Bug Fixes
+
+* checkbox/radio group typings ([10bb6da](https://github.com/Availity/availity-react/commit/10bb6da7db6912e2a06fa6530d2f727678468c74))
+* coordinate accessible UI changes ([ee84d14](https://github.com/Availity/availity-react/commit/ee84d14412864943e626422e075071cd0571f783))
+
+
+
+
+
 ## [9.15.6](https://github.com/Availity/availity-react/compare/@availity/react-storybook@9.15.5...@availity/react-storybook@9.15.6) (2021-11-01)
 
 **Note:** Version bump only for package @availity/react-storybook

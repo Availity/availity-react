@@ -1,6 +1,6 @@
 {
   "name": "@availity/select",
-  "version": "1.0.5",
+  "version": "1.0.6",
   "description": "Wrapper for react-select to work with formik",
   "main": "index.js",
   "types": "index.d.ts",
@@ -31,7 +31,7 @@
   },
   "devDependencies": {
     "@availity/api-axios": "^6.0.0",
-    "@availity/form": "^1.0.3",
+    "@availity/form": "^1.0.4",
     "axios": "^0.21.1",
     "formik": "^2.2.8",
     "react": "^17.0.2",
