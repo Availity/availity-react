@@ -3,6 +3,18 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## 1.3.3 (2021-11-05)
+
+
+### Bug Fixes
+
+* coordinate accessible UI changes ([ee84d14](https://github.com/Availity/availity-react/commit/ee84d14412864943e626422e075071cd0571f783))
+* remove training-link snapshot, update link tests ([150ba4e](https://github.com/Availity/availity-react/commit/150ba4e59241f7843d11cbbee566fa356defeac9))
+
+
+
+
+
 ## 1.3.2 (2021-10-19)
 
 

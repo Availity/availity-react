@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [2.1.23](https://github.com/Availity/availity-react/compare/@availity/date@2.1.21...@availity/date@2.1.23) (2021-11-05)
+
+
+### Bug Fixes
+
+* coordinate accessible UI changes ([ee84d14](https://github.com/Availity/availity-react/commit/ee84d14412864943e626422e075071cd0571f783))
+
+
+
+
+
 ## [2.1.22](https://github.com/Availity/availity-react/compare/@availity/date@2.1.21...@availity/date@2.1.22) (2021-10-28)
 
 **Note:** Version bump only for package @availity/date

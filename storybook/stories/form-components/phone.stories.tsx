@@ -10,7 +10,7 @@ import '@availity/phone/src/validatePhone';
 import FormikResults from '../util/FormikResults';
 
 export default {
-  title: 'Components/Phone',
+  title: 'Form Components/Phone',
   parameters: {
     docs: {
       // page: README,
