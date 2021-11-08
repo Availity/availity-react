@@ -1,6 +1,7 @@
 import React from 'react';
 import { render, cleanup } from '@testing-library/react';
-import Icon from '..';
+
+import Icon from '../Icon';
 
 afterEach(cleanup);
 

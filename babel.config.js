@@ -10,6 +10,7 @@ module.exports = (api) => {
           useESModules: false,
         },
       ],
+      '@babel/preset-typescript',
     ],
   };
 };

@@ -4,7 +4,7 @@ import { defineConfig } from 'rollup';
 import typescript from 'rollup-plugin-typescript2';
 import postcss from 'rollup-plugin-postcss';
 
-const packages = ['much-wow'];
+const packages = ['icon', 'training-link'];
 
 // rollup.config.js
 /**

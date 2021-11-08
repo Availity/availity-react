@@ -1,13 +1,14 @@
 import React from 'react';
-import PropTypes from 'prop-types';
 
-const shouldProbablyBeInUIKit = {
-  paddingTop: '12px',
+const shouldProbablyBeInUIKit = { paddingTop: '12px' };
+const linkStyles = { fontWeight: 'bold' } as const;
+
+type Props = {
+  name: string;
+  link: string;
 };
 
-const linkStyles = { fontWeight: 'bold' };
-
-const TrainingLink = ({ name, link }) => (
+const TrainingLink = ({ name, link }: Props): JSX.Element => (
   <span style={shouldProbablyBeInUIKit} className="ml-auto">
     Need Help?{' '}
     <a href={link} style={linkStyles} className="link" target="_blank" rel="noopener noreferrer">
@@ -16,10 +17,5 @@ const TrainingLink = ({ name, link }) => (
     for {name}
   </span>
 );
-
-TrainingLink.propTypes = {
-  link: PropTypes.string.isRequired,
-  name: PropTypes.string.isRequired,
-};
 
 export default TrainingLink;

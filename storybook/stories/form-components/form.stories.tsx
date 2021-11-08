@@ -26,130 +26,94 @@ export default {
   },
 } as Meta;
 
-export const Default: Story = ({required}) => {
+export const Default: Story = ({ required }) => {
   const schema = yup.object().shape({
-    field: yup
-      .string()
-      .isRequired(required, 'This field is required.'),
-    phone: yup
-      .string()
-      .validatePhone(undefined, false, 'US')
-      .isRequired(required, 'This field is required.'),
-      ext: yup.string().isRequired(required),
+    field: yup.string().isRequired(required, 'This field is required.'),
+    phone: yup.string().validatePhone(undefined, false, 'US').isRequired(required, 'This field is required.'),
+    ext: yup.string().isRequired(required),
     dateField: avDate({
-        format: 'MM/DD/YYYY',
-      })
+      format: 'MM/DD/YYYY',
+    })
       .isRequired(required, 'This field is required.')
       .min('')
       .max('')
-      .between('',''),
-    checkboxGroup: yup
-      .array()
-      .isRequired(required, 'At least one checkbox is required'),
-    radioGroup: yup
-      .string()
-      .isRequired(required, 'A selection is required'),
-    SelectField: yup
-      .string()
-      .isRequired(required, 'This field is required.')
-      .nullable(),
-    disabledField: yup
-      .string(),
+      .between('', ''),
+    checkboxGroup: yup.array().isRequired(required, 'At least one checkbox is required'),
+    radioGroup: yup.string().isRequired(required, 'A selection is required'),
+    SelectField: yup.string().isRequired(required, 'This field is required.').nullable(),
+    disabledField: yup.string(),
     disabledDateField: avDate({
-        format: 'MM/DD/YYYY',
-      })
+      format: 'MM/DD/YYYY',
+    })
       .min('')
       .max('')
-      .between('',''),
-    disabledSelectField: yup
-      .string()
-      .nullable(),
+      .between('', ''),
+    disabledSelectField: yup.string().nullable(),
   });
-    const options = [
-      { label: 'Option 1', value: 'value for option 1' },
-      { label: 'Option 2', value: 'value for option 2' },
-      { label: 'Option 3', value: 'value for option 3' },
-      { label: 'Option 4', value: 'value for option 4' },
-    ];
+  const options = [
+    { label: 'Option 1', value: 'value for option 1' },
+    { label: 'Option 2', value: 'value for option 2' },
+    { label: 'Option 3', value: 'value for option 3' },
+    { label: 'Option 4', value: 'value for option 4' },
+  ];
 
-    return (
-      <FormResults
-          onSubmit={() => {
-            console.log('submitted');
-          }}
-          initialValues={{
-            field: '',
-            phone: '',
-            ext: '',
-            dateField: '',
-            checkboxGroup: [],
-            radioGroup: '',
-            SelectField: undefined,
-            disabledField: '',
-            disabledDateField: '01/01/2021',
-            disabledSelectField: [],
-          }}
-          validationSchema={schema}
-        >
-          <h2>Form</h2>
+  return (
+    <FormResults
+      onSubmit={() => {
+        console.log('submitted');
+      }}
+      initialValues={{
+        field: '',
+        phone: '',
+        ext: '',
+        dateField: '',
+        checkboxGroup: [],
+        radioGroup: '',
+        SelectField: undefined,
+        disabledField: '',
+        disabledDateField: '01/01/2021',
+        disabledSelectField: [],
+      }}
+      validationSchema={schema}
+    >
+      <h2>Form</h2>
 
-          <Field name="field" type="text" label="Field" helpId="fieldHelp" />
-          <Phone
-            name="phone"
-            label="Phone"
-            showExtension
-            extProps={{
-              name: 'ext',
-              label: 'Ext.',
-            }}
-          />
-          <DateField
-            id="dateField"
-            name="dateField"
-            label="Date Field"
-            datepicker={false}
-          />
-          <CheckboxGroup
-            name="checkboxGroup"
-            label="Checkbox Group"
-            helpId="checkboxGroup"
-          >
-            <Checkbox groupName="checkboxGroup" label="Check One" value="uno" helpId="option1" />
-            <Checkbox groupName="checkboxGroup" label="Check Two" value="dos" />
-            <Checkbox groupName="checkboxGroup" label="Check Three" value="tres" helpId="option3"/>
-          </CheckboxGroup>
-          <RadioGroup
-            name="radioGroup"
-            label="Radio Group"
-          >
-            <Radio name="radioGroup" label="Radio One" value="uno" />
-            <Radio name="radioGroup" label="Radio Two" value="dos" />
-            <Radio name="radioGroup" label="Radio Three" value="tres" />
-          </RadioGroup>
-          <SelectField
-              label="Select Field"
-              name="SelectField"
-              options={options}
-            />
-            <Field name="disabledField" type="text" label="Disabled Field" disabled/>
-            <DateField
-            id="disabledDateField"
-            name="disabledDateField"
-            label="Disabled Date Field"
-            datepicker={false}
-            disabled
-          />
-          <SelectField
-              label="Disabled Select Field"
-              name="disabledSelectField"
-              options={options}
-              isDisabled
-            />
-          <Button color="primary" type="submit">
-            Submit
-          </Button>
-        </FormResults>
-  )
+      <Field name="field" type="text" label="Field" helpId="fieldHelp" />
+      <Phone
+        name="phone"
+        label="Phone"
+        showExtension
+        extProps={{
+          name: 'ext',
+          label: 'Ext.',
+        }}
+      />
+      <DateField id="dateField" name="dateField" label="Date Field" datepicker={false} />
+      <CheckboxGroup name="checkboxGroup" label="Checkbox Group" helpId="checkboxGroup">
+        <Checkbox groupName="checkboxGroup" label="Check One" value="uno" helpId="option1" />
+        <Checkbox groupName="checkboxGroup" label="Check Two" value="dos" />
+        <Checkbox groupName="checkboxGroup" label="Check Three" value="tres" helpId="option3" />
+      </CheckboxGroup>
+      <RadioGroup name="radioGroup" label="Radio Group">
+        <Radio name="radioGroup" label="Radio One" value="uno" />
+        <Radio name="radioGroup" label="Radio Two" value="dos" />
+        <Radio name="radioGroup" label="Radio Three" value="tres" />
+      </RadioGroup>
+      <SelectField label="Select Field" name="SelectField" options={options} />
+      <Field name="disabledField" type="text" label="Disabled Field" disabled />
+      <DateField
+        id="disabledDateField"
+        name="disabledDateField"
+        label="Disabled Date Field"
+        datepicker={false}
+        disabled
+      />
+      <SelectField label="Disabled Select Field" name="disabledSelectField" options={options} isDisabled />
+      <Button color="primary" type="submit">
+        Submit
+      </Button>
+    </FormResults>
+  );
 };
 Default.storyName = 'default';
 
