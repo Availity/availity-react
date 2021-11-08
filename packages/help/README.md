@@ -54,7 +54,7 @@ import { FieldHelpIcon } from '@availity/help';
 
 const Example = () => (
   <div id="testId">
-    Select A Provider <FieldHelpIcon id="1234-5678-910" labelId="testId"/>
+    Select A Provider <FieldHelpIcon id="1234-5678-910" labelId="testId" />
   </div>
 );
 ```
@@ -76,4 +76,3 @@ The size of the help icon. **Default:** `1x`
 ### `labelId?: string`
 
 The id of the label for accessibility (aria-describedby). **Default:** ''
-
