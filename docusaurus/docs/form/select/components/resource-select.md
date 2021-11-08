@@ -127,7 +127,7 @@ When true, if the `resource` only returns one result the first time it is called
 
 #### `defaultToFirstOption?: boolean`
 
-When true, if the `resource` only returns at least one result the first time it is called, the value is defaulted to the first result. Note: if `waitUntilFocused` is `true`, this prop is ignored.
+When true, if the `resource` returns at least one result the first time it is called, the value is defaulted to the first result. Note: if `waitUntilFocused` is `true`, this prop is ignored.
 
 #### `shouldSearch?: boolean | (inputValue: string, prevOptions: OptionType, additional: any) => boolean`
 
