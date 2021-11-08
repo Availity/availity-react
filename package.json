@@ -39,6 +39,7 @@
     "test:ci": "jest --runInBand --collectCoverage",
     "codecov:ci": "codecov",
     "clean": "lerna clean --yes",
+    "clean-dists": "rm -rf packages/*/dist",
     "remove-locks": "rimraf 'yarn.lock'",
     "nuke": "yarn remove-locks && yarn clean",
     "lerna": "lerna",
@@ -48,6 +49,7 @@
     "start": "yarn workspace @availity/react-storybook start",
     "start:docs": "yarn workspace @availity/dinosaurdocs start",
     "build:components": "rimraf packages/*/dist && rollup -c",
+    "start:components": "rimraf packages/*/dist && rollup -cw",
     "build:storybook": "yarn workspace @availity/react-storybook build",
     "build:storybook:netlify": "yarn workspace @availity/react-storybook build:netlify",
     "build:netlify": "yarn workspace @availity/dinosaurdocs build && yarn build:storybook:netlify",
@@ -61,7 +63,9 @@
     "check": "npm-check -u && lerna exec --bail false --concurrency 1 -- npm-check -u",
     "check:packages": "sh ./scripts/artifactory-check.sh",
     "check:dependencies": "node scripts/check-missing-deps.js",
-    "new": "plop"
+    "new": "plop",
+    "storybook": "start-storybook -p 6006",
+    "build-storybook": "build-storybook"
   },
   "devDependencies": {
     "@babel/core": "^7.16.0",
@@ -73,6 +77,10 @@
     "@commitlint/config-lerna-scopes": "^13.2.0",
     "@rollup/plugin-commonjs": "^21.0.1",
     "@rollup/plugin-node-resolve": "^13.0.6",
+    "@storybook/addon-actions": "^6.3.12",
+    "@storybook/addon-essentials": "^6.3.12",
+    "@storybook/addon-links": "^6.3.12",
+    "@storybook/react": "^6.3.12",
     "@testing-library/jest-dom": "^5.15.0",
     "@testing-library/react": "^12.1.2",
     "@testing-library/user-event": "^13.5.0",
@@ -84,6 +92,7 @@
     "@typescript-eslint/eslint-plugin": "4.33.0",
     "@typescript-eslint/parser": "4.33.0",
     "babel-jest": "^26.6.2",
+    "babel-loader": "^8.2.3",
     "babel-preset-react-app": "^10.0.0",
     "codecov": "^3.8.2",
     "conventional-changelog-cli": "^2.1.1",
@@ -118,5 +127,6 @@
       "pre-commit": "lint-staged",
       "pre-push": "yarn test && yarn check:dependencies && yarn check:packages"
     }
-  }
+  },
+  "dependencies": {}
 }

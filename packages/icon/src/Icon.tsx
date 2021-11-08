@@ -19,6 +19,7 @@ const Icon = React.forwardRef(
       style={onClick ? pointerStyles : undefined}
       {...rest}
     >
+      hello
       {children}
     </i>
   )
