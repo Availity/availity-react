@@ -433,6 +433,51 @@ describe('ResourceSelect', () => {
         );
       });
     });
+
+    describe('defaultToFirstOption', () => {
+      it('defaults to first option', async () => {
+        avRegionsApi.postGet.mockResolvedValue({
+          data: {
+            regions: [
+              {
+                id: 'FL',
+                value: 'Florida',
+              },
+              {
+                id: 'TX',
+                value: 'Texas',
+              },
+            ],
+          },
+        });
+
+        const { getByText } = renderSelect({
+          resource: avRegionsApi,
+          labelKey: 'value',
+          valueKey: 'id',
+          classNamePrefix: 'test__regions',
+          getResult: 'regions',
+          defaultToFirstOption: true,
+        });
+
+        await waitFor(() => {
+          expect(avRegionsApi.postGet).toHaveBeenCalled();
+        });
+
+        await fireEvent.click(getByText('Submit'));
+        await waitFor(() => {
+          expect(onSubmit).toHaveBeenCalledWith(
+            expect.objectContaining({
+              'test-form-input': {
+                id: 'FL',
+                value: 'Florida',
+              },
+            }),
+            expect.anything()
+          );
+        });
+      });
+    });
   });
 
   it('waits to query until requiredParams are set', async () => {
