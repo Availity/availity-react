@@ -1,9 +1,0 @@
-{
-  "extends": "../../tsconfig",
-  "compilerOptions": {
-    "baseUrl": "../../",
-    "paths": {
-      "@availity/app-icon": ["packages/app-icon"]
-    }
-  }
-}
