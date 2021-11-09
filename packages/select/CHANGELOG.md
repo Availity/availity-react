@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [1.1.0](https://github.com/Availity/availity-react/compare/@availity/select@1.0.6...@availity/select@1.1.0) (2021-11-09)
+
+
+### Features
+
+* add defaultToFirstOption for resource select ([5ea6c80](https://github.com/Availity/availity-react/commit/5ea6c80216319f1548299a51bfe083f002a44798))
+
+
+
+
+
 ## [1.0.6](https://github.com/Availity/availity-react/compare/@availity/select@1.0.3...@availity/select@1.0.6) (2021-11-05)
 
 
