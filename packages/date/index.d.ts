@@ -1,4 +1,4 @@
-export { default } from './types/Date';
-export { default as DateField } from './types/DateField';
-export { default as DateRange } from './types/DateRange';
-export { default as DateRangeField } from './types/DateRangeField';
+export { default } from './src/Date';
+export { default as DateField } from './src/DateField';
+export { default as DateRange } from './src/DateRange';
+export { default as DateRangeField } from './src/DateRangeField';

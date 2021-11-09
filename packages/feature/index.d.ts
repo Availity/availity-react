@@ -1,1 +1,1 @@
-export { default, FeatureProps } from './types/Feature';
+export { default, FeatureProps } from './src/Feature';

@@ -1,6 +1,6 @@
 import { defineConfig } from 'rollup';
-// import resolve from '@rollup/plugin-node-resolve';
-// import commonjs from '@rollup/plugin-commonjs';
+import resolve from '@rollup/plugin-node-resolve';
+import commonjs from '@rollup/plugin-commonjs';
 import typescript from 'rollup-plugin-typescript2';
 import postcss from 'rollup-plugin-postcss';
 
@@ -30,8 +30,8 @@ export default () =>
       },
       external: externals,
       plugins: [
-        // resolve(),
-        // commonjs(),
+        resolve(),
+        commonjs(),
         typescript({
           tsconfigOverride: {
             files: [`${pkgPath}/src/index.ts`],

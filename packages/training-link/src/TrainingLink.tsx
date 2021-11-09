@@ -3,7 +3,7 @@ import React from 'react';
 const shouldProbablyBeInUIKit = { paddingTop: '12px' };
 const linkStyles = { fontWeight: 'bold' } as const;
 
-type Props = {
+export type Props = {
   name: string;
   link: string;
 };

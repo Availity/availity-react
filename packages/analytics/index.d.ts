@@ -1,1 +1,1 @@
-export { default, useAnalytics } from './types/Analytics';
+export { default, useAnalytics } from './src/Analytics';
