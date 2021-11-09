@@ -24,6 +24,7 @@ const ResourceSelect = ({
   onFocus,
   waitUntilFocused,
   defaultToOnlyOption,
+  defaultToFirstOption,
   shouldSearch,
   additionalPostGetArgs,
   pageAll,
@@ -245,12 +246,19 @@ const ResourceSelect = ({
          * We only want to default to the first option under the following conditions:
          * 1. defaultToOnlyOption is true
          * 2. There is only one option
+         *   OR
+         * 1. defaultToFirstOption is true
+         * 2. There is at least 1 option
+         *
          * 3. waitUntilFocused is false - Otherwise we would be defaulting the value when the user has the dropdown open to select a value
          * 4. numTimesResourceCalled is 0 - This means this is the first time calling the resource. Again, otherwise we would be defaulting the value when the user has the dropdown open to select a value - keeping in mind numTimesResourceCalled resets to 0 any time cacheUniq changes
          */
-        if (defaultToOnlyOption && items.length === 1 && !waitUntilFocused && numTimesResourceCalled === 0) {
-          await setFieldValue(name, items[0]);
+        if (!waitUntilFocused && numTimesResourceCalled === 0 && items.length > 0) {
+          if ((defaultToOnlyOption && items.length === 1) || defaultToFirstOption) {
+            await setFieldValue(name, items[0]);
+          }
         }
+
         setNumTimesResourceCalled(numTimesResourceCalled + 1);
 
         return {
@@ -325,6 +333,7 @@ ResourceSelect.propTypes = {
   onFocus: PropTypes.func,
   waitUntilFocused: PropTypes.bool,
   defaultToOnlyOption: PropTypes.bool,
+  defaultToFirstOption: PropTypes.bool,
   shouldSearch: PropTypes.oneOfType([PropTypes.bool, PropTypes.func]),
   additionalPostGetArgs: PropTypes.object,
   pageAll: PropTypes.bool,
@@ -337,6 +346,7 @@ ResourceSelect.defaultProps = {
   itemsPerPage: 50,
   waitUntilFocused: false,
   defaultToOnlyOption: false,
+  defaultToFirstOption: false,
   shouldSearch: true,
   pageAll: false,
 };
