@@ -22,7 +22,7 @@ const Example = () => (
       hello: yup.string().isRequired(true),
     })}
   >
-    <Field name="hello" label="Greeting" />
+    <Field name="hello" label="Greeting" required />
     <Button type="submit" color="primary">
       Submit
     </Button>
@@ -44,11 +44,15 @@ The Node or tag to substitute as the input field. Default is reactstrap `Input` 
 
 #### `label?: React.ReactNode`
 
-Displays a Reactstrap `<Label />` for the field
+Contents of the field label. Renders within a Reactstrap `<Label />`.
 
 #### `labelHidden? boolean`
 
 Used to hide the label.
+
+#### `required? boolean`
+
+Will add `aria-required` to input, will add `<RequiredAsterisk />` to label.
 
 #### `disabled? boolean`
 
@@ -80,11 +84,11 @@ Display info text below the field
 
 #### `labelAttrs?: React.HTMLAttributes<HTMLLabelElement>`
 
-Pass additonal attributes to the label
+Pass additional attributes to the label
 
 #### `groupAttrs?: FormGroupProps`
 
-Pass additonal attributes to [Form Group](/form/components/form-group/#props)
+Pass additional attributes to [Form Group](/form/components/form-group/#props)
 
 #### `grid?: object`
 

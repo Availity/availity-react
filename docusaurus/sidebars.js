@@ -137,6 +137,7 @@ module.exports = {
           'form/components/form-group',
           'form/components/form',
           'form/components/input',
+          'form/components/label',
           'form/components/radio-group',
           'form/components/radio',
           {

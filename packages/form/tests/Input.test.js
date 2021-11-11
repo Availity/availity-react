@@ -136,7 +136,7 @@ describe('Input', () => {
           hello: yup.string().required(),
         })}
       >
-        <Input name="hello" data-testid="hello-input" />
+        <Input name="hello" data-testid="hello-input" required />
         <Button type="submit">Submit</Button>
       </Form>
     );
@@ -144,6 +144,7 @@ describe('Input', () => {
     const input = getByTestId('hello-input');
     expect(input).toHaveAttribute('aria-invalid', 'false');
     expect(input).toHaveAttribute('aria-describedby', '');
+    expect(input).toHaveAttribute('aria-required', 'true');
 
     fireEvent.click(getByText('Submit'));
 

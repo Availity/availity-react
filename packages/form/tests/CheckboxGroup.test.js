@@ -80,6 +80,24 @@ describe('CheckboxGroup', () => {
     expect(getByTestId('field-help-icon')).toBeDefined();
   });
 
+  test('renders with required asterisk', () => {
+    const { getByTestId } = render(
+      <Form
+        initialValues={{
+          hello: '',
+        }}
+        onSubmit={() => {}}
+      >
+        <CheckboxGroup name="hello" label="Checkbox Group" required>
+          <Checkbox label="Check One" value="uno" />
+        </CheckboxGroup>
+        <Button type="submit">Submit</Button>
+      </Form>
+    );
+
+    expect(getByTestId('required-asterisk')).toBeDefined();
+  });
+
   test('submits with proper radio values', async () => {
     const onSubmit = jest.fn();
     const { getByText } = render(

@@ -5808,10 +5808,10 @@ availity-reactstrap-validation@2.7.1, availity-reactstrap-validation@^2.7.1:
     moment "^2.22.2"
     prop-types "^15.6.2"
 
-availity-uikit@^4.1.1:
-  version "4.1.3"
-  resolved "https://registry.yarnpkg.com/availity-uikit/-/availity-uikit-4.1.3.tgz#11ab07d619919dcf343f74a9bc38201512a67e57"
-  integrity sha512-j2M70OIhnWi4uzvPAvwILfPajCSpmJBgLWzEzFxoOKy1LvZzSaq8O3LDEjMbWk98+ENuDS/acUgp0MAWTpnF8g==
+availity-uikit@^4.1.5:
+  version "4.1.5"
+  resolved "https://registry.yarnpkg.com/availity-uikit/-/availity-uikit-4.1.5.tgz#74a741e4f284bcf2e3f627566b1b55aa7e3a605d"
+  integrity sha512-0epzy7Qlc85kj+EJGa2+8Kw7ioZ4rsZusvXmeDG2+sQ3a5VP4cbQyQOjuYIIToQnUMELoR4IHp6b4DGmnTxPGw==
   dependencies:
     bootstrap "4.5.3"
 
