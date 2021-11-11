@@ -13,15 +13,7 @@ import Upload from '@availity/form-upload';
 
 const Example = () => (
   <Form initialValues={{ myFile: undefined }}>
-    <Upload
-      name="myFile"
-      btnText="Upload a claim"
-      clientId="a"
-      bucketId="b"
-      customerId="c"
-      multiple={false}
-      max={1}
-    />
+    <Upload name="myFile" btnText="Upload a claim" clientId="a" bucketId="b" customerId="c" multiple={false} max={1} />
   </Form>
 );
 ```
@@ -185,6 +177,10 @@ Use this prop together with `fileDeliveryMetadata` and `deliveryChannel` to defi
 #### `maxSize?: number`
 
 The maximum file size (in bytes) for a file to be uploaded.
+
+#### `totalMaxSize?: number`
+
+The total maximum combined file size (in bytes) for all the files to be uploaded.
 
 #### `max?: number`
 
