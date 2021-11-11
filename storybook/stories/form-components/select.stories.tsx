@@ -1,12 +1,12 @@
 /* eslint-disable no-console */
 import React from 'react';
 import { Meta, Story } from '@storybook/react';
-import { Label, Button } from 'reactstrap';
+import { Button } from 'reactstrap';
 import AvApi from '@availity/api-axios';
 import * as yup from 'yup';
 import '@availity/yup';
 import Select, { SelectField, ResourceSelect } from '@availity/select';
-import { Feedback, FormGroup, Field } from '@availity/form';
+import { Feedback, FormGroup, Field, Label } from '@availity/form';
 // import README from '@availity/select/README.md';
 
 import '@availity/mock';
@@ -149,7 +149,7 @@ export const WithLabel: Story = ({
     }
   >
     <FormGroup for="standAloneWithLabel">
-      <Label for="standAloneWithLabel">{label}</Label>
+      <Label for="standAloneWithLabel" required={required} >{label}</Label>
       <Select
         name="standAloneWithLabel"
         autofill={autofill}
@@ -245,12 +245,7 @@ export const _ResourceSelect: Story = ({ creatable, disabled, isMulti, label, ma
     }
   >
     <ResourceSelect
-      label={
-        <>
-          {label}
-          {required ? <span className="text-danger">*</span> : null}
-        </>
-      }
+      label={label}
       name="ResourceSelect"
       labelKey="name"
       maxLength={max}
@@ -284,12 +279,7 @@ export const GraphQlResourceSelect: Story = ({ creatable, disabled, isMulti, lab
     }
   >
     <ResourceSelect
-      label={
-        <>
-          {label}
-          {required ? <span className="text-danger">*</span> : null}
-        </>
-      }
+      label={label}
       name="ResourceSelect"
       labelKey="value"
       valueKey="id"
