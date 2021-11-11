@@ -1,7 +1,8 @@
 import React from 'react';
 import { Meta, Story } from '@storybook/react';
-import { FieldHelpIcon } from '@availity/help';
-// import README from "@availity/help/README.md";
+
+import { FieldHelpIcon } from '..';
+// import README from "../README.md";
 
 export default {
   title: 'Components/Help',

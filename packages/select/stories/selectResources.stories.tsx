@@ -4,11 +4,12 @@ import { Meta, Story } from '@storybook/react';
 import { Button } from 'reactstrap';
 import * as yup from 'yup';
 import '@availity/yup';
-import { AvProviderSelect, AvOrganizationSelect } from '@availity/select/resources';
-// import README from '@availity/select/README.md';
+
+import { AvProviderSelect, AvOrganizationSelect } from '../resources';
+// import README from '../README.md';
 
 import '@availity/mock';
-import FormikResults from '../../../util/FormikResults';
+import FormikResults from '../../../story-utils/FormikResults';
 
 const singleValueSchema = (name: string, required = false) =>
   yup.object().shape({

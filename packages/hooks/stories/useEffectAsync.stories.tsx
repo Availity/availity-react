@@ -1,8 +1,9 @@
 import React, { useState } from 'react';
 import { Meta, Story } from '@storybook/react';
 import { Card } from 'reactstrap';
-import { useEffectAsync, useToggle } from '@availity/hooks';
-// import README from '@availity/hooks/README.md';
+
+import { useEffectAsync, useToggle } from '..';
+// import README from '../README.md';
 
 const asyncFunction = (data: string) => new Promise((resolve) => setInterval(() => resolve(data), 1000));
 

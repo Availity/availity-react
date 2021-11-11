@@ -1,8 +1,9 @@
 import React, { useState } from 'react';
 import { Meta, Story } from '@storybook/react';
 import { Card } from 'reactstrap';
-import { useMount } from '@availity/hooks';
-// import README from '@availity/hooks/README.md';
+
+import { useMount } from '..';
+// import README from '../README.md';
 
 export default {
   title: 'Hooks/useMount',

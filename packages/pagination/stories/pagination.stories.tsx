@@ -1,9 +1,10 @@
 import React from 'react';
 import { Meta, Story } from '@storybook/react';
 import { Card, CardBody, CardText, CardTitle, Col } from 'reactstrap';
-import { Pagination, PaginationContent, PaginationControls, AvResourcePagination } from '@availity/pagination';
-// import README from '@availity/pagination/README.md';
 import paginationData from '@availity/mock/data/pagination.json';
+
+import { Pagination, PaginationContent, PaginationControls, AvResourcePagination } from '..';
+// import README from '../README.md';
 
 interface Name {
   first: string;

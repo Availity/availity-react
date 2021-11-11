@@ -6,7 +6,6 @@ import { avDate, dateRange } from '@availity/yup';
 import * as yup from 'yup';
 import moment from 'moment';
 
-// import FormikDate, { DateField, DateRange, DateRangeField } from '@availity/date';
 import FormikDate from '../src/Date';
 import DateField from '../src/DateField';
 import DateRange from '../src/DateRange';
@@ -15,7 +14,7 @@ import DateRangeField from '../src/DateRangeField';
 import '../styles.scss';
 // import README from '../README.md';
 
-import FormikResults from '../../../util/FormikResults';
+import FormikResults from '../../../story-utils/FormikResults';
 
 const distanceUnits = ['day', 'month'];
 

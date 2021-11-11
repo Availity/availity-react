@@ -1,8 +1,9 @@
 import React from 'react';
 import { Meta, Story } from '@storybook/react';
 import { Button } from 'reactstrap';
-import { useToggle } from '@availity/hooks';
-// import README from '@availity/hooks/README.md';
+
+import { useToggle } from '..';
+// import README from '../README.md';
 
 const Component = ({ initialValue = false }: { initialValue?: boolean }) => {
   const [isToggled, toggle] = useToggle(initialValue);

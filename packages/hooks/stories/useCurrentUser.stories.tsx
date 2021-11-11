@@ -1,8 +1,9 @@
 import React from 'react';
 import { Meta, Story } from '@storybook/react';
 import { QueryClientProvider, QueryClient } from 'react-query';
-import { useCurrentUser } from '@availity/hooks';
-// import README from '@availity/hooks/README.md';
+
+import { useCurrentUser } from '..';
+// import README from '../README.md';
 
 import '@availity/mock';
 import ResourceComponent from './ResourceComponent';

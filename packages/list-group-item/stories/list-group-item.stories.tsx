@@ -1,8 +1,9 @@
 import React from 'react';
 import { Meta, Story } from '@storybook/react';
 import ListGroup from '@availity/list-group';
-import ListGroupItem, { ListGroupItemStatus } from '@availity/list-group-item';
-// import README from '@availity/list-group-item/README.md';
+
+import ListGroupItem, { ListGroupItemStatus } from '..';
+// import README from '../README.md';
 
 const colors = ['success', 'info', 'danger', 'warning', 'secondary'];
 

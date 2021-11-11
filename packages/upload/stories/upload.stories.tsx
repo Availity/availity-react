@@ -2,9 +2,10 @@ import React from 'react';
 import { Meta, Story } from '@storybook/react';
 // import { button } from '@storybook/addon-knobs';
 import mock from 'xhr-mock';
-import Upload, { FilePicker, FilePickerBtn } from '@availity/upload';
-// import README from '@availity/upload/README.md';
-import MockUpload from '@availity/upload/tests/mockUpload';
+
+import Upload, { FilePicker, FilePickerBtn } from '..';
+// import README from '../README.md';
+import MockUpload from '../tests/mockUpload';
 
 const log = window.console.log.bind(console);
 mock.post(/\/ms\/api\/availity\/internal\/core\/vault\/upload\/v1\/resumable\/[^/]\//, (req, res) =>

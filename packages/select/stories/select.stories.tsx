@@ -5,12 +5,13 @@ import { Label, Button } from 'reactstrap';
 import AvApi from '@availity/api-axios';
 import * as yup from 'yup';
 import '@availity/yup';
-import Select, { SelectField, ResourceSelect } from '@availity/select';
 import { Feedback, FormGroup, Field } from '@availity/form';
-// import README from '@availity/select/README.md';
+
+import Select, { SelectField, ResourceSelect } from '..';
+// import README from '../README.md';
 
 import '@availity/mock';
-import FormikResults from '../../../util/FormikResults';
+import FormikResults from '../../../story-utils/FormikResults';
 
 const options = [
   { label: 'Option 1', value: 'value for option 1' },

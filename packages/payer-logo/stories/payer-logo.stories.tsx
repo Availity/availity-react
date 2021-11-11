@@ -1,7 +1,8 @@
 import React from 'react';
 import { Meta, Story } from '@storybook/react';
-import PayerLogo from '@availity/payer-logo';
-// import README from '@availity/payer-logo/README.md';
+
+import PayerLogo from '..';
+// import README from '../README.md';
 
 import '@availity/mock';
 

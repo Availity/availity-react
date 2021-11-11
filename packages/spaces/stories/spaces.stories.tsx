@@ -1,6 +1,7 @@
 import React from 'react';
 import { Meta, Story } from '@storybook/react';
 import { Row, Col } from 'reactstrap';
+
 import Spaces, {
   SpacesLogo,
   SpacesTile,
@@ -8,8 +9,8 @@ import Spaces, {
   SpacesDisclaimer,
   SpacesGhostText,
   SpacesAgreement,
-} from '@availity/spaces';
-// import README from '@availity/spaces/README.md';
+} from '..';
+// import README from '../README.md';
 
 import '@availity/mock';
 

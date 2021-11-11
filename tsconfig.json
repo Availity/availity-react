@@ -12,7 +12,11 @@
     "noEmit": true,
     "experimentalDecorators": true,
     "esModuleInterop": true,
-    "allowSyntheticDefaultImports": true
+    "allowSyntheticDefaultImports": true,
+    "baseUrl": ".",
+    "paths": {
+      "@availity/training-link": ["packages/training-link/src"]
+    }
   },
   "exclude": ["**/node_modules/"]
 }

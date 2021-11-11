@@ -2,11 +2,12 @@ import React from 'react';
 import { Meta, Story } from '@storybook/react';
 import { Label, Button } from 'reactstrap';
 import { AvGroup, AvFeedback } from 'availity-reactstrap-validation';
-import AvDate, { AvDateField, AvDateRange, AvDateRangeField } from '@availity/reactstrap-validation-date';
-// import README from '@availity/reactstrap-validation-date/README.md';
-import '@availity/reactstrap-validation-date/styles.scss';
 
-import AvFormResults from '../../../util/AvFormResults';
+import AvDate, { AvDateField, AvDateRange, AvDateRangeField } from '..';
+// import README from '../README.md';
+import '../styles.scss';
+
+import AvFormResults from '../../../story-utils/AvFormResults';
 
 const types = ['text', 'date'];
 

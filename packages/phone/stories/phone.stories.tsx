@@ -3,11 +3,12 @@ import React from 'react';
 import { Story, Meta } from '@storybook/react';
 import { Button } from 'reactstrap';
 import * as yup from 'yup';
-import { Phone } from '@availity/phone';
-import '@availity/phone/src/validatePhone';
-// import README from '@availity/phone/README.md';
 
-import FormikResults from '../../../util/FormikResults';
+import { Phone } from '..';
+import '../src/validatePhone';
+// import README from '../README.md';
+
+import FormikResults from '../../../story-utils/FormikResults';
 
 export default {
   title: 'Form Components/Phone',

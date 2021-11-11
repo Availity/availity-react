@@ -1,8 +1,9 @@
 import React from 'react';
 import { Story, Meta } from '@storybook/react';
 import { ListGroupItem } from 'reactstrap';
-import ListGroup from '@availity/list-group';
-// import README from '@availity/list-group/README.md';
+
+import ListGroup from '..';
+// import README from '../README.md';
 
 export default {
   title: 'Components/List Group',

@@ -1,10 +1,11 @@
 import React from 'react';
 import { Meta, Story } from '@storybook/react';
 import { BreadcrumbItem } from 'reactstrap';
-import PageHeader from '@availity/page-header';
 import TrainingLink from '@availity/training-link';
 import Breadcrumbs from '@availity/breadcrumbs';
-// import README from '@availity/page-header/README.md';
+
+import PageHeader from '..';
+// import README from '../README.md';
 
 import '@availity/mock';
 

@@ -1,7 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import { Meta, Story } from '@storybook/react';
-import { useTimeout } from '@availity/hooks';
-// import README from '@availity/hooks/README.md';
+
+import { useTimeout } from '..';
+// import README from '../README.md';
 
 export default {
   title: 'Hooks/useTimeout',

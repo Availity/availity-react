@@ -1,7 +1,8 @@
 import React from 'react';
 import { Story, Meta } from '@storybook/react';
-import Link from '@availity/link';
-// import README from '@availity/link/README.md';
+
+import Link from '..';
+// import README from '../README.md';
 
 export default {
   title: 'Components/Link',

@@ -1,8 +1,9 @@
 import React from 'react';
 import { Meta, Story } from '@storybook/react';
-import Icon from '@availity/icon';
-// import README from '@availity/icon/README.md';
 import icons from 'availity-uikit/fonts/config.json';
+
+import Icon from '..';
+// import README from '../README.md';
 
 const sizes = ['lg', 'xl', '2x', '3x', '4x', '5x'];
 

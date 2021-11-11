@@ -1,6 +1,7 @@
 import React from 'react';
 import { Meta, Story } from '@storybook/react';
 import { Button } from 'reactstrap';
+
 import {
   AvProviderSelect,
   AvOrganizationSelect,
@@ -9,11 +10,11 @@ import {
   AvNavigationSelect,
   AvUserSelect,
   AvCodeSelect,
-} from '@availity/reactstrap-validation-select/resources';
-// import README from '@availity/reactstrap-validation-select/README.md';
+} from '../resources';
+// import README from '../README.md';
 
 import '@availity/mock';
-import AvFormResults from '../../../util/AvFormResults';
+import AvFormResults from '../../../story-utils/AvFormResults';
 
 export default {
   title: 'Legacy Form Components/AvSelect/resources',

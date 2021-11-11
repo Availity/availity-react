@@ -1,7 +1,8 @@
 import React from 'react';
 import { Meta, Story } from '@storybook/react';
-import Wizard, { WizardStep, WizardStepBadge, WizardStepTitle } from '@availity/step-wizard';
-// import README from '@availity/step-wizard/README.md';
+
+import Wizard, { WizardStep, WizardStepBadge, WizardStepTitle } from '..';
+// import README from '../README.md';
 
 export default {
   title: 'Components/Wizard',

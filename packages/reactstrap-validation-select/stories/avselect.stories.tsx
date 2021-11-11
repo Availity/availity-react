@@ -3,12 +3,13 @@ import { Meta, Story } from '@storybook/react';
 import { Label, Button } from 'reactstrap';
 import AvApi from '@availity/api-axios';
 import { AvGroup, AvFeedback, AvField } from 'availity-reactstrap-validation';
-import AvSelect, { AvSelectField } from '@availity/reactstrap-validation-select';
-import AvSelectResource from '@availity/reactstrap-validation-select/resources';
-// import README from '@availity/reactstrap-validation-select/README.md';
+
+import AvSelect, { AvSelectField } from '..';
+import AvSelectResource from '../resources';
+// import README from '../README.md';
 
 import '@availity/mock';
-import AvFormResults from '../../../util/AvFormResults';
+import AvFormResults from '../../../story-utils/AvFormResults';
 
 const options = [
   { label: 'Option 1', value: 'value for option 1' },
