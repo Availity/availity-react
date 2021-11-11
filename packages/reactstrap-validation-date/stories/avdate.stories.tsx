@@ -3,7 +3,7 @@ import { Meta, Story } from '@storybook/react';
 import { Label, Button } from 'reactstrap';
 import { AvGroup, AvFeedback } from 'availity-reactstrap-validation';
 
-import AvDate, { AvDateField, AvDateRange, AvDateRangeField } from '..';
+import { AvDate, AvDateField, AvDateRange, AvDateRangeField } from '..';
 // import README from '../README.md';
 import '../styles.scss';
 
