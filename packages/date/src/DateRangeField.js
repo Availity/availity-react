@@ -1,13 +1,29 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { Label } from 'reactstrap';
-import { FormGroup, Feedback } from '@availity/form';
+import { FormGroup, Feedback, Label } from '@availity/form';
 import DateRange from './DateRange';
 
-const DateRangeField = ({ name, label, labelClass, labelHidden, labelAttrs, id = name, ...props }) => (
+const DateRangeField = ({
+  name,
+  label,
+  labelClass,
+  labelHidden,
+  labelAttrs,
+  id = name,
+  required,
+  helpId,
+  ...props
+}) => (
   <FormGroup for={name}>
     {label && (
-      <Label for={`${id.replace(/[^\da-z]/gi, '')}-start`} className={labelClass} hidden={labelHidden} {...labelAttrs}>
+      <Label
+        for={`${id.replace(/[^\da-z]/gi, '')}-start`}
+        className={labelClass}
+        hidden={labelHidden}
+        required={required}
+        helpId={helpId}
+        {...labelAttrs}
+      >
         {label}
       </Label>
     )}
@@ -23,6 +39,8 @@ DateRangeField.propTypes = {
   labelClass: PropTypes.string,
   labelHidden: PropTypes.bool,
   labelAttrs: PropTypes.object,
+  required: PropTypes.bool,
+  helpId: PropTypes.string,
 };
 
 export default DateRangeField;

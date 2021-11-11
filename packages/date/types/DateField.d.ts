@@ -6,6 +6,8 @@ export type DateFieldProps = {
   labelClass?: string;
   labelHidden?: boolean;
   labelAttrs?: React.HTMLAttributes<HTMLLabelElement>;
+  required?: boolean;
+  helpId?: string;
 } & DateProps;
 
 declare const DateField: (props: DateFieldProps) => JSX.Element;
