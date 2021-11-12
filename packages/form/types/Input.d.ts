@@ -36,6 +36,7 @@ export interface InputProps extends React.InputHTMLAttributes<HTMLInputElement> 
   tag?: Node | string;
   feedback?: boolean;
   help?: boolean;
+  required?: boolean;
 }
 
 declare class Input extends React.Component<InputProps> {}

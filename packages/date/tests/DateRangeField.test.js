@@ -73,6 +73,38 @@ describe('Date', () => {
     expect(label.tagName).toEqual('H3');
   });
 
+  test('renders with field help icon', () => {
+    const { getByTestId } = render(
+      <Form
+        initialValues={{
+          singleDate: '',
+        }}
+        onSubmit={() => {}}
+      >
+        <DateRangeField name="dateRange" label="My Date Field" helpId="dateHelp" />
+        <Button type="submit">Submit</Button>
+      </Form>
+    );
+
+    expect(getByTestId('field-help-icon')).toBeDefined();
+  });
+
+  test('renders with required asterisk', () => {
+    const { getByTestId } = render(
+      <Form
+        initialValues={{
+          singleDate: '',
+        }}
+        onSubmit={() => {}}
+      >
+        <DateRangeField name="dateRange" label="My Date Field" required />
+        <Button type="submit">Submit</Button>
+      </Form>
+    );
+
+    expect(getByTestId('required-asterisk')).toBeDefined();
+  });
+
   test('renders error text', async () => {
     const onSubmit = jest.fn();
 

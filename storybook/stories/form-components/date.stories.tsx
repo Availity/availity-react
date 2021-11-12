@@ -69,7 +69,7 @@ export const DateInput: Story = ({ datepicker, disabled, max, min, required }) =
 };
 DateInput.storyName = 'date';
 
-export const _DateField: Story = ({ datepicker, disabled, label, max, min, required }) => {
+export const _DateField: Story = ({ datepicker, disabled, helpId, label, max, min, required }) => {
   const dateFormat = 'MM/DD/YYYY';
   const minDate = moment(min).format(dateFormat);
   const maxDate = moment(max).format(dateFormat);
@@ -97,6 +97,8 @@ export const _DateField: Story = ({ datepicker, disabled, label, max, min, requi
         id="dateOfService"
         name="dateOfService"
         label={label}
+        required={required}
+        helpId={helpId}
         disabled={disabled}
         datepicker={datepicker}
         min={min && minDate}
@@ -111,6 +113,7 @@ export const _DateField: Story = ({ datepicker, disabled, label, max, min, requi
 };
 _DateField.args = {
   label: 'Date Field',
+  helpId: '',
 };
 _DateField.storyName = 'DateField';
 
@@ -200,6 +203,7 @@ export const _DateRangeField: Story = ({
   autoSync,
   datepicker,
   disabled,
+  helpId,
   max,
   maxDistance,
   maxDistanceUnits,
@@ -249,6 +253,8 @@ export const _DateRangeField: Story = ({
         name="dateOfService"
         label="Date of Service"
         disabled={disabled}
+        required={required}
+        helpId={helpId}
         datepicker={datepicker}
         autoSync={autoSync}
         ranges={ranges}
@@ -264,6 +270,7 @@ export const _DateRangeField: Story = ({
 };
 _DateRangeField.args = {
   autoSync: false,
+  helpId: '',
   maxDistance: 0,
   maxDistanceUnits: distanceUnits[0],
   minDistance: 0,

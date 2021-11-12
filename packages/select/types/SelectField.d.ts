@@ -7,6 +7,7 @@ export interface SelectFieldProps<T> extends SelectProps<T> {
   labelClass?: string;
   groupClass?: string;
   helpId?: string;
+  required?: boolean | false;
 }
 
 declare class SelectField<T = { [key: string]: any }> extends React.Component<SelectFieldProps<T>> {}

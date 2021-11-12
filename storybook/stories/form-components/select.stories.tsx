@@ -1,12 +1,12 @@
 /* eslint-disable no-console */
 import React from 'react';
 import { Meta, Story } from '@storybook/react';
-import { Label, Button } from 'reactstrap';
+import { Button } from 'reactstrap';
 import AvApi from '@availity/api-axios';
 import * as yup from 'yup';
 import '@availity/yup';
 import Select, { SelectField, ResourceSelect } from '@availity/select';
-import { Feedback, FormGroup, Field } from '@availity/form';
+import { Feedback, FormGroup, Field, Label } from '@availity/form';
 // import README from '@availity/select/README.md';
 
 import '@availity/mock';
@@ -103,7 +103,6 @@ export const Default: Story = ({ autofill, creatable, disabled, isMulti, max, mi
       isMulti={isMulti}
       creatable={creatable}
       options={autofill ? autofillOptions : options}
-      minLength={min}
       maxLength={max}
       aria-label="stand-alone"
       raw={raw}
@@ -149,17 +148,14 @@ export const WithLabel: Story = ({
     }
   >
     <FormGroup for="standAloneWithLabel">
-      <Label for="standAloneWithLabel">{label}</Label>
+      <Label for="standAloneWithLabel" required={required} >{label}</Label>
       <Select
         name="standAloneWithLabel"
         autofill={autofill}
-        minLength={min}
         maxLength={max}
         isMulti={isMulti}
         options={autofill ? autofillOptions : options}
         creatable={creatable}
-        inputProps={{ 'aria-label': 'stand-alone with Label' }}
-        required={required}
         raw={raw}
         isDisabled={disabled}
       />
@@ -208,7 +204,6 @@ export const _SelectField: Story = ({
       name="SelectField"
       autofill={autofill}
       label={label}
-      minLength={min}
       maxLength={max}
       creatable={creatable}
       isMulti={isMulti}
@@ -245,12 +240,7 @@ export const _ResourceSelect: Story = ({ creatable, disabled, isMulti, label, ma
     }
   >
     <ResourceSelect
-      label={
-        <>
-          {label}
-          {required ? <span className="text-danger">*</span> : null}
-        </>
-      }
+      label={label}
       name="ResourceSelect"
       labelKey="name"
       maxLength={max}
@@ -284,12 +274,7 @@ export const GraphQlResourceSelect: Story = ({ creatable, disabled, isMulti, lab
     }
   >
     <ResourceSelect
-      label={
-        <>
-          {label}
-          {required ? <span className="text-danger">*</span> : null}
-        </>
-      }
+      label={label}
       name="ResourceSelect"
       labelKey="value"
       valueKey="id"

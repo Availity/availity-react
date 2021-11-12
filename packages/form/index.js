@@ -7,3 +7,4 @@ export { default as Checkbox } from './src/Checkbox';
 export { default as RadioGroup } from './src/RadioGroup';
 export { default as Radio } from './src/Radio';
 export { default as Feedback } from './src/Feedback';
+export { default as Label, RequiredAsterisk, RequiredKey } from './src/Label';

@@ -4,7 +4,7 @@ import classNames from 'classnames';
 import { Input as RsInput } from 'reactstrap';
 import { useField } from 'formik';
 
-const Input = ({ tag: Tag, className, onChange: propsOnChange, validate, name, feedback, help, ...rest }) => {
+const Input = ({ tag: Tag, className, onChange: propsOnChange, validate, name, feedback, help, required, ...rest }) => {
   const [{ onChange, ...field }, metadata] = useField({
     name,
     validate,
@@ -40,6 +40,7 @@ const Input = ({ tag: Tag, className, onChange: propsOnChange, validate, name, f
       name={name}
       invalid={error}
       aria-describedby={feedbackId + helpMessageId}
+      aria-required={required}
       {...field}
       {...extraProps}
       {...rest}
@@ -53,11 +54,13 @@ Input.propTypes = {
   help: PropTypes.bool,
   name: PropTypes.string.isRequired,
   onChange: PropTypes.func,
+  required: PropTypes.bool,
   tag: PropTypes.oneOfType([PropTypes.func, PropTypes.string]),
   validate: PropTypes.func,
 };
 
 Input.defaultProps = {
+  required: false,
   tag: RsInput,
 };
 

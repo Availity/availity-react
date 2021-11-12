@@ -1,18 +1,19 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { FieldHelpIcon } from '@availity/help';
-import { Col, FormText, Input as RsInput, InputGroup, InputGroupAddon, InputGroupText, Label } from 'reactstrap';
+import { Col, FormText, Input as RsInput, InputGroup, InputGroupAddon, InputGroupText } from 'reactstrap';
 import { v4 as uuid } from 'uuid';
 
 import Feedback from './Feedback';
 import FormGroup from './FormGroup';
 import Input from './Input';
+import Label from './Label';
 
 const colSizes = ['xs', 'sm', 'md', 'lg', 'xl'];
 
 const Field = ({
   helpMessage,
   helpId,
+  required,
   label,
   labelHidden,
   inputClass,
@@ -51,6 +52,7 @@ const Field = ({
       id={inputId}
       className={inputClass}
       size={size}
+      required={required}
       disabled={disabled}
       readOnly={readOnly}
       feedback
@@ -95,26 +97,25 @@ const Field = ({
   }
 
   const check = attributes.type === 'checkbox';
-  const helpIcon = helpId ? <FieldHelpIcon labelId={`${inputId}-label`} id={helpId} /> : null;
 
   return (
     <FormGroup for={id} check={check} disabled={disabled} row={row} {...groupAttrs}>
       {check && inputRow}
       {label && (
-        <>
-          <Label
-            id={`${inputId}-label`}
-            for={inputId}
-            className={labelClass}
-            hidden={labelHidden}
-            size={size}
-            {...labelCol}
-            {...labelAttrs}
-          >
-            {label}
-          </Label>
-          {helpIcon}
-        </>
+        <Label
+          id={`${inputId}-label`}
+          for={inputId}
+          className={labelClass}
+          hidden={labelHidden}
+          size={size}
+          required={!!required}
+          helpId={helpId}
+          disabled={disabled}
+          {...labelCol}
+          {...labelAttrs}
+        >
+          {label}
+        </Label>
       )}
       {!check && inputRow}
       {!row && !prepend && !append && feedback}
@@ -139,12 +140,14 @@ Field.propTypes = {
   labelHidden: PropTypes.bool,
   prepend: PropTypes.node,
   readOnly: PropTypes.bool,
+  required: PropTypes.bool,
   size: PropTypes.string,
   tag: PropTypes.oneOfType([PropTypes.func, PropTypes.string]),
 };
 
 Field.defaultProps = {
   tag: RsInput,
+  required: false,
 };
 
 export default Field;
