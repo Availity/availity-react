@@ -16,6 +16,7 @@ export interface UploadProps {
   onDeliveryError?: Function;
   fileDeliveryMetadata?: object | Function;
   maxSize?: number;
+  totalMaxSize?: number;
   max?: number;
   multiple?: boolean;
   children?: Function;
