@@ -352,8 +352,8 @@ const Select = ({
         boxShadow: 0,
         colors: {
           ...theme.colors,
-          primary25: '#85a8dc',
-          primary: 'rgb(50 98 175)',
+          primary25: '#b8d4fb',
+          primary: '#85a8fc',
         },
       })}
       {...attributes}
