@@ -1,11 +1,12 @@
 import * as React from 'react';
+import { LabelProps } from '@availity/form';
 import { DateProps } from './Date';
 
 export type DateFieldProps = {
   label?: React.ReactNode;
   labelClass?: string;
   labelHidden?: boolean;
-  labelAttrs?: React.HTMLAttributes<HTMLLabelElement>;
+  labelAttrs?: LabelProps;
   required?: boolean;
   helpId?: string;
 } & DateProps;
