@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [2.0.1](https://github.com/Availity/availity-react/compare/@availity/select@2.0.0...@availity/select@2.0.1) (2021-11-12)
+
+
+### Bug Fixes
+
+* **select:** set new colors due to accessibility issue when error changes border and color ([40b0156](https://github.com/Availity/availity-react/commit/40b0156f41436bf4b293d44861127996e5b4489d))
+
+
+
+
+
 # [2.0.0](https://github.com/Availity/availity-react/compare/@availity/select@1.0.6...@availity/select@2.0.0) (2021-11-12)
 
 
