@@ -3,6 +3,14 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.1.32](https://github.com/Availity/availity-react/compare/@availity/phone@1.1.31...@availity/phone@1.1.32) (2021-11-12)
+
+**Note:** Version bump only for package @availity/phone
+
+
+
+
+
 ## [1.1.31](https://github.com/Availity/availity-react/compare/@availity/phone@1.1.29...@availity/phone@1.1.31) (2021-11-05)
 
 **Note:** Version bump only for package @availity/phone

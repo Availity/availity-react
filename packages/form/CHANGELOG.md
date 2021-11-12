@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [1.1.0](https://github.com/Availity/availity-react/compare/@availity/form@1.0.4...@availity/form@1.1.0) (2021-11-12)
+
+
+### Features
+
+* **form:** add label component with required asterisk and field help icon handling ([ee96cdf](https://github.com/Availity/availity-react/commit/ee96cdfd6fc09bd7f92ee25ac2ae3c1f4151e61a))
+
+
+
+
+
 ## [1.0.4](https://github.com/Availity/availity-react/compare/@availity/form@1.0.2...@availity/form@1.0.4) (2021-11-05)
 
 

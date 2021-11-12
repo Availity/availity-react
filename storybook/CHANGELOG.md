@@ -3,6 +3,29 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [10.0.0](https://github.com/Availity/availity-react/compare/@availity/react-storybook@9.15.7...@availity/react-storybook@10.0.0) (2021-11-12)
+
+
+### Bug Fixes
+
+* **select:** use label from availity/form ([77dc1a5](https://github.com/Availity/availity-react/commit/77dc1a5fc73f38531371a81ee464c3c64b55e514))
+
+
+### Features
+
+* **date:** add label component with required asterisk and field help icon handling ([ad1d10a](https://github.com/Availity/availity-react/commit/ad1d10a9392d3c45bcc7c7fcc50df3f891f7aa25))
+* **form:** add label component with required asterisk and field help icon handling ([ee96cdf](https://github.com/Availity/availity-react/commit/ee96cdfd6fc09bd7f92ee25ac2ae3c1f4151e61a))
+* **select:** add label component with required asterisk ([ee4913c](https://github.com/Availity/availity-react/commit/ee4913c42813e19eb45bcf97fd14c307b831c5f3))
+
+
+### BREAKING CHANGES
+
+* **select:** Requires v1.1.0 of form for label component
+
+
+
+
+
 ## [9.15.8](https://github.com/Availity/availity-react/compare/@availity/react-storybook@9.15.7...@availity/react-storybook@9.15.8) (2021-11-09)
 
 **Note:** Version bump only for package @availity/react-storybook
