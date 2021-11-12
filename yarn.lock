@@ -135,12 +135,12 @@
     yup "^0.28.4"
 
 "@availity/api-axios@^6.0.0":
-  version "6.0.4"
-  resolved "https://registry.yarnpkg.com/@availity/api-axios/-/api-axios-6.0.4.tgz#7edc18efe9e910734db37b252f2fc06167079c4d"
-  integrity sha512-sztzu80EncAZ1YmNWfuTQJgwQaTbgE2K6rSCz8GbVEXDr/0YwLCe2DP7VL7BsIeoA9Xrx/HFJpj13RyLCqY9yg==
+  version "6.0.5"
+  resolved "https://registry.yarnpkg.com/@availity/api-axios/-/api-axios-6.0.5.tgz#da20701c64739d18aefb18ce6ec556b3aaa29967"
+  integrity sha512-m1PJ8bPZb1XrUYeN43Ejc+SGR5oKndAd7vvoujHf3xH75cu34EmqRqMm0Lyqp8C/BcEi2MYJfKeSUWHRb8kAsg==
   dependencies:
     "@availity/env-var" "^1.11.2"
-    "@availity/resolve-url" "^1.1.22"
+    "@availity/resolve-url" "^1.1.23"
     "@babel/runtime" "^7.14.0"
     core-js "^3.12.1"
     lodash "^4.17.21"
@@ -169,12 +169,12 @@
     "@babel/runtime" "^7.10.2"
     core-js "^3.12.1"
 
-"@availity/resolve-url@^1.1.22":
-  version "1.1.22"
-  resolved "https://registry.yarnpkg.com/@availity/resolve-url/-/resolve-url-1.1.22.tgz#7fc095ec844ae4b373a8df2b61865893f3189aa0"
-  integrity sha512-eJ064SuzVRJrl1QuAENMLkC6SD8+isoQ1fM0ffyfLCuvCNnYAx97T+385Ragpb3YJr293yxBtK3Gghj6n5bMuQ==
+"@availity/resolve-url@^1.1.22", "@availity/resolve-url@^1.1.23":
+  version "1.1.23"
+  resolved "https://registry.yarnpkg.com/@availity/resolve-url/-/resolve-url-1.1.23.tgz#276137b45b24ea79663279270ba7a22f83814d9a"
+  integrity sha512-k+41pnDDNKtfT78O8DjK347yg76VKyZ9RHredgSVZtXBevjP/Ju9IbrBLBrr87y5iEUis1J9nJ8/S0ecChjfow==
   dependencies:
-    "@babel/runtime" "^7.10.2"
+    "@babel/runtime" "^7.15.4"
     core-js "^3.12.1"
 
 "@availity/upload-core@^4.0.0", "@availity/upload-core@^4.1.1":
