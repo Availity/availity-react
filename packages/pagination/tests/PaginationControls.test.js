@@ -127,8 +127,7 @@ describe('Pagination Controls', () => {
     await waitFor(() => {
       const page1 = getByTestId('control-page-1');
       expect(page1).toBeDefined();
-      const page1Button = page1.querySelector('button');
-      expect(page1Button).toHaveAttribute('aria-label', 'Go to page 1');
+      expect(page1).toHaveAttribute('aria-label', 'Go to page 1');
     });
   });
 
@@ -178,7 +177,6 @@ describe('Pagination Controls', () => {
       const pageList = getByTestId('pagination-controls-con');
       const paginationNav = pageList.parentElement;
       expect(paginationNav).toBeDefined();
-
       expect(paginationNav).toHaveAttribute('aria-label', 'pagination below results');
     });
   });
@@ -239,8 +237,7 @@ describe('Pagination Controls', () => {
       const pageBreakEllipsisItem = getByTestId('control-page-7');
       const pageBreakEllipsisLink = pageBreakEllipsisItem.firstChild;
       expect(pageBreakEllipsisLink).toBeDefined();
-
-      expect(pageBreakEllipsisLink).toHaveAttribute('aria-label', 'Jump forwards to page 6');
+      expect(pageBreakEllipsisItem).toHaveAttribute('aria-label', 'Jump forwards to page 6');
     });
   });
 });

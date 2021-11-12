@@ -12,14 +12,14 @@ const PaginationControls = ({ directionLinks, autoHide, pageRange, marginPages, 
   const { pageCount, currentPage, setPage } = usePagination();
 
   const createItem = (pageNumber) => (
-    <PaginationItem key={pageNumber} active={currentPage === pageNumber} data-testid={`control-page-${pageNumber}`}>
-      <PaginationLink
-        style={{ zIndex: 'auto' }}
-        onClick={() => setPage(pageNumber)}
-        type="button"
-        aria-label={`Go to page ${pageNumber}`}
-        aria-current={currentPage === pageNumber}
-      >
+    <PaginationItem
+      key={pageNumber}
+      active={currentPage === pageNumber}
+      data-testid={`control-page-${pageNumber}`}
+      aria-label={`Go to page ${pageNumber}`}
+      aria-current={currentPage === pageNumber}
+    >
+      <PaginationLink style={{ zIndex: 'auto' }} onClick={() => setPage(pageNumber)} type="button">
         {pageNumber}
       </PaginationLink>
     </PaginationItem>
@@ -41,16 +41,16 @@ const PaginationControls = ({ directionLinks, autoHide, pageRange, marginPages, 
   };
 
   const createBreak = (index) => (
-    <PaginationItem key={index} data-testid={`control-page-${index}`}>
-      <PaginationLink
-        onClick={() => handleBreakClick(index)}
-        type="button"
-        aria-label={
-          currentPage < index
-            ? `Jump forwards to page ${getForwardJump()}`
-            : `Jump backwards to page ${getBackwardJump()}`
-        }
-      >
+    <PaginationItem
+      key={index}
+      data-testid={`control-page-${index}`}
+      aria-label={
+        currentPage < index
+          ? `Jump forwards to page ${getForwardJump()}`
+          : `Jump backwards to page ${getBackwardJump()}`
+      }
+    >
+      <PaginationLink onClick={() => handleBreakClick(index)} type="button">
         &hellip;
       </PaginationLink>
     </PaginationItem>
@@ -101,13 +101,12 @@ const PaginationControls = ({ directionLinks, autoHide, pageRange, marginPages, 
   return pageCount > 1 || !autoHide ? (
     <Pagination data-testid="pagination-controls-con" {...rest}>
       {directionLinks ? (
-        <PaginationItem disabled={currentPage === 1} data-testid="pagination-control-previous">
-          <PaginationLink
-            onClick={() => (currentPage === 1 ? null : setPage(currentPage - 1))}
-            type="button"
-            aria-disabled={currentPage === 1}
-            previous
-          >
+        <PaginationItem
+          disabled={currentPage === 1}
+          data-testid="pagination-control-previous"
+          aria-disabled={currentPage === 1}
+        >
+          <PaginationLink onClick={() => (currentPage === 1 ? null : setPage(currentPage - 1))} type="button" previous>
             {leftCaret} Prev
           </PaginationLink>
         </PaginationItem>
@@ -116,12 +115,15 @@ const PaginationControls = ({ directionLinks, autoHide, pageRange, marginPages, 
       )}
       {paginate()}
       {directionLinks ? (
-        <PaginationItem disabled={currentPage === pageCount} data-testid="pagination-control-next">
+        <PaginationItem
+          disabled={currentPage === pageCount}
+          data-testid="pagination-control-next"
+          aria-disabled={currentPage === pageCount}
+        >
           <PaginationLink
             data-testid="pagination-control-next-link"
             onClick={() => (currentPage === pageCount ? null : setPage(currentPage + 1))}
             type="button"
-            aria-disabled={currentPage === pageCount}
             next
           >
             Next {rightCaret}
