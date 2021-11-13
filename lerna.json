@@ -7,7 +7,7 @@
   "command": {
     "publish": {
       "conventionalCommits": true,
-      "verifyAccess": false,
+      "verifyAccess": false
     }
   },
   "ignoreChanges": ["**/*.test.js", "**/*.md", "**/*.mdx", "**/yarn.lock"]
