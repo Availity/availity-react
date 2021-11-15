@@ -47,7 +47,7 @@
     "lerna": "lerna",
     "bootstrap": "lerna bootstrap --use-workspaces",
     "link": "lerna link",
-    "postinstall": "yarn bootstrap",
+    "postinstall": "yarn bootstrap && yarn build:components",
     "start": "yarn start:storybook",
     "start:storybook": "start-storybook -p 6006",
     "start:docs": "yarn workspace @availity/dinosaurdocs start",
