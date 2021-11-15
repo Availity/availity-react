@@ -3,6 +3,18 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [2.1.1](https://github.com/Availity/availity-react/compare/@availity/select@2.1.0...@availity/select@2.1.1) (2021-11-15)
+
+
+### Bug Fixes
+
+* **select:** set new colors due to accessibility issue when error changes border and color ([40b0156](https://github.com/Availity/availity-react/commit/40b0156f41436bf4b293d44861127996e5b4489d))
+* **select,reactstrap-validation-select:** fixed select color to fix contrast issue with white text ([6e5bf3a](https://github.com/Availity/availity-react/commit/6e5bf3aa21446c17fc29548a177ac2ba75e85b07))
+
+
+
+
+
 # [2.1.0](https://github.com/Availity/availity-react/compare/@availity/select@2.0.1...@availity/select@2.1.0) (2021-11-15)
 
 
