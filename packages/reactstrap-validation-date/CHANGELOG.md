@@ -3,6 +3,22 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [4.2.0](https://github.com/Availity/availity-react/compare/@availity/reactstrap-validation-date@4.1.5...@availity/reactstrap-validation-date@4.2.0) (2021-11-15)
+
+
+### Bug Fixes
+
+* **reactstrap-validation-date:** resolve linter error ([9787f1b](https://github.com/Availity/availity-react/commit/9787f1bdbff87f78ed46ba3abbad080910a8fa8b))
+
+
+### Features
+
+* move storybook, stories, and fix hmr ([2f65f71](https://github.com/Availity/availity-react/commit/2f65f71769d2d981e22700b87a09516833588f64))
+
+
+
+
+
 ## [4.1.5](https://github.com/Availity/availity-react/compare/@availity/reactstrap-validation-date@4.1.4...@availity/reactstrap-validation-date@4.1.5) (2021-11-05)
 
 

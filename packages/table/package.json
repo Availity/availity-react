@@ -1,6 +1,6 @@
 {
   "name": "@availity/table",
-  "version": "0.1.2",
+  "version": "0.2.0",
   "author": "Ashlee Zeigler <ashlee.zeigler@availity.com>",
   "description": "A generic table wrapper for react-table",
   "main": "index.js",
@@ -21,7 +21,7 @@
     "access": "public"
   },
   "dependencies": {
-    "@availity/icon": "^0.9.1",
+    "@availity/icon": "^0.10.0",
     "@types/react-table": "^7.7.7",
     "classnames": "^2.3.1",
     "lodash": "^4.17.21",

@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# 2.12.0 (2021-11-15)
+
+
+### Features
+
+* move storybook, stories, and fix hmr ([2f65f71](https://github.com/Availity/availity-react/commit/2f65f71769d2d981e22700b87a09516833588f64))
+
+
+
+
+
 ## [2.11.2](https://github.com/Availity/availity-react/compare/@availity/pagination@2.11.1...@availity/pagination@2.11.2) (2021-10-28)
 
 **Note:** Version bump only for package @availity/pagination

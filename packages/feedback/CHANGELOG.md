@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [6.2.0](https://github.com/Availity/availity-react/compare/@availity/feedback@6.1.9...@availity/feedback@6.2.0) (2021-11-15)
+
+
+### Features
+
+* move storybook, stories, and fix hmr ([2f65f71](https://github.com/Availity/availity-react/commit/2f65f71769d2d981e22700b87a09516833588f64))
+
+
+
+
+
 ## [6.1.9](https://github.com/Availity/availity-react/compare/@availity/feedback@6.1.8...@availity/feedback@6.1.9) (2021-11-12)
 
 **Note:** Version bump only for package @availity/feedback

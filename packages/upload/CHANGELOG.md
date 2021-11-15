@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [3.2.0](https://github.com/Availity/availity-react/compare/@availity/upload@3.1.6...@availity/upload@3.2.0) (2021-11-15)
+
+
+### Features
+
+* move storybook, stories, and fix hmr ([2f65f71](https://github.com/Availity/availity-react/commit/2f65f71769d2d981e22700b87a09516833588f64))
+
+
+
+
+
 ## 3.1.6 (2021-11-01)
 
 **Note:** Version bump only for package @availity/upload
