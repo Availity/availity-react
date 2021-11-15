@@ -353,7 +353,7 @@ const Select = ({
         colors: {
           ...theme.colors,
           primary25: '#b8d4fb',
-          primary: '#85a8fc',
+          primary: '#3262af',
         },
       })}
       {...attributes}

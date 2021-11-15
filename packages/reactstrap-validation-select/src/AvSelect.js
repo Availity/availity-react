@@ -340,7 +340,7 @@ class AvSelect extends AvBaseInput {
           colors: {
             ...theme.colors,
             primary25: '#b8d4fb',
-            primary: '#85a8fc',
+            primary: '#3262af',
           },
         })}
         options={!attributes.loadOptions ? [...options, ...newOptions] : undefined}
