@@ -17,6 +17,7 @@ describe('Select', () => {
     const field = getByText('Single Select Field');
     expect(field).toBeDefined();
   });
+
   test('renders with field help icon', () => {
     const { getByTestId } = render(
       <Form onSubmit={() => {}} initialValues={{}}>
@@ -30,5 +31,21 @@ describe('Select', () => {
       </Form>
     );
     expect(getByTestId('field-help-icon')).toBeDefined();
+  });
+
+  test('renders with required asterisk', () => {
+    const { getByTestId } = render(
+      <Form onSubmit={() => {}} initialValues={{}}>
+        <SelectField
+          name="singleSelect"
+          label="Single Select Field"
+          options={[{}]}
+          data-testid="single-select"
+          required
+        />
+      </Form>
+    );
+
+    expect(getByTestId('required-asterisk')).toBeDefined();
   });
 });

@@ -51,6 +51,10 @@ Will add default feedback id to `aria-describedby`.
 
 Will add default help message id to `aria-describedby`. Used by `<Field />`.
 
+#### `required? boolean`
+
+Will add `aria-required` to input.
+
 #### `className?: string`
 
 Class name passed to the input.

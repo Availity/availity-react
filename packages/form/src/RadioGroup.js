@@ -1,11 +1,11 @@
 import React, { createContext, useContext } from 'react';
 import PropTypes from 'prop-types';
 import classNames from 'classnames';
-import { FieldHelpIcon } from '@availity/help';
 import { useField, useFormikContext } from 'formik';
 
 import Feedback from './Feedback';
 import FormGroup from './FormGroup';
+import Label from './Label';
 
 export const RadioGroupContext = createContext();
 
@@ -20,7 +20,7 @@ export const useRadioGroup = (radioValue) => {
     }
   };
 
-  return { setValue, value: value === radioValue, ...rest };
+  return { groupName, setValue, value: value === radioValue, ...rest };
 };
 
 const RadioGroup = ({
@@ -31,6 +31,8 @@ const RadioGroup = ({
   groupClassName,
   inline = false,
   helpId,
+  labelClassName,
+  required,
   ...rest
 }) => {
   const [field, metadata] = useField(name);
@@ -47,23 +49,23 @@ const RadioGroup = ({
 
   if (label) {
     tag = 'fieldset';
-    legend = <legend className="text-dark">{label}</legend>;
+    const legendId = `${name}-legend`.toLowerCase();
+    const styles = { cursor: 'default', lineHeight: 'inherit', color: '#000' };
+    const labelClasses = classNames('form-inline', labelClassName, !labelClassName && 'h4 font-weight-normal');
 
-    if (helpId) {
-      const legendId = `${name}-legend`.toLowerCase();
-      const legendStyle = { fontSize: '1.5rem', marginBottom: '.5rem' };
-      legend = (
-        <>
-          <legend id={legendId} className="sr-only">
+    legend = (
+      <>
+        <legend id={legendId} className="sr-only">
+          {required ? '* ' : null}
+          {label}
+        </legend>
+        <div className={labelClasses} style={styles}>
+          <Label tag="div" aria-hidden helpId={helpId} required={required}>
             {label}
-          </legend>
-          <div className="form-inline text-dark" style={legendStyle}>
-            <div aria-hidden="true">{label}</div>
-            <FieldHelpIcon id={helpId} labelId={legendId} />
-          </div>
-        </>
-      );
-    }
+          </Label>
+        </div>
+      </>
+    );
   }
 
   return (
@@ -87,6 +89,8 @@ RadioGroup.propTypes = {
   label: PropTypes.node,
   name: PropTypes.string,
   onChange: PropTypes.func,
+  labelClassName: PropTypes.string,
+  required: PropTypes.bool,
 };
 
 export default RadioGroup;

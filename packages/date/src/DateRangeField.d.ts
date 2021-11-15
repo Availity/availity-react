@@ -6,6 +6,8 @@ export type DateRangeFieldProps = {
   labelClass?: string;
   labelHidden?: boolean;
   labelAttrs?: React.HTMLAttributes<HTMLLabelElement>;
+  required?: boolean;
+  helpId?: string;
 } & DateRangeProps;
 
 declare const DateRangeField: (props: DateRangeFieldProps) => JSX.Element;

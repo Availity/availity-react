@@ -164,4 +164,25 @@ describe('RadioGroup', () => {
 
     expect(getByTestId('field-help-icon')).toBeDefined();
   });
+
+  test('renders with required asterisk', () => {
+    const { getByTestId } = render(
+      <Form
+        initialValues={{
+          hello: '',
+        }}
+        onSubmit={() => {}}
+        validationSchema={yup.object().shape({
+          hello: yup.string().required('This field is required'),
+        })}
+      >
+        <RadioGroup name="hello" label="Radio Group" required>
+          <Radio label="Radio One" value="uno" />
+        </RadioGroup>
+        <Button type="submit">Submit</Button>
+      </Form>
+    );
+
+    expect(getByTestId('required-asterisk')).toBeDefined();
+  });
 });

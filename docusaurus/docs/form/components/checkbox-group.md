@@ -16,6 +16,14 @@ Label for the group or checkboxes.
 
 Class name to apply to the form control.
 
+#### `labelClassName?: string`
+
+Class name to apply to the Label. Default is Legend styling
+
 #### `helpId?: string`
 
 Help topic id, adds `<FieldHelpIcon/>` next to the label (should not be within label for accessibility).
+
+#### `required?: boolean`
+
+Will add `<RequiredAsterisk />` to label.

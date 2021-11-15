@@ -1,12 +1,12 @@
 import React, { useState } from 'react';
 import PropTypes from 'prop-types';
-import { FieldHelpIcon } from '@availity/help';
-import { Input, Label } from 'reactstrap';
+import { Input } from 'reactstrap';
 import { v4 as uuid } from 'uuid';
 import classNames from 'classnames';
 
 import { useCheckboxGroup } from './CheckboxGroup';
 import FormGroup from './FormGroup';
+import Label from './Label';
 
 const Checkbox = ({
   className,
@@ -33,7 +33,6 @@ const Checkbox = ({
   const errorIndicated = !!metadata.touched && !!metadata.error;
   const groupFeedbackId = errorIndicated && groupName ? `${groupName}-feedback`.toLowerCase() : '';
   const labelId = `${inputId}-label`.toLowerCase();
-  const helpIcon = helpId ? <FieldHelpIcon id={helpId} labelId={labelId} /> : null;
 
   return (
     <FormGroup for={inputId} className={groupClassName} check inline={inline} disabled={attributes.disabled}>
@@ -49,10 +48,9 @@ const Checkbox = ({
         checked={value}
         onChange={toggle}
       />
-      <Label check id={labelId} for={inputId}>
+      <Label check id={labelId} for={inputId} helpId={helpId}>
         {label}
       </Label>
-      {helpIcon}
     </FormGroup>
   );
 };

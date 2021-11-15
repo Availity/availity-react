@@ -3,6 +3,25 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.7.1](https://github.com/Availity/availity-react/compare/@availity/form-upload@0.7.0...@availity/form-upload@0.7.1) (2021-11-12)
+
+**Note:** Version bump only for package @availity/form-upload
+
+
+
+
+
+# 0.7.0 (2021-11-12)
+
+
+### Features
+
+* **form-upload:** add totalMaxSize prop ([5fcd077](https://github.com/Availity/availity-react/commit/5fcd077cb2a91c5f4c3979aa40e15baefb74ead7))
+
+
+
+
+
 ## [0.6.15](https://github.com/Availity/availity-react/compare/@availity/form-upload@0.6.14...@availity/form-upload@0.6.15) (2021-11-05)
 
 

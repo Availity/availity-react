@@ -6,7 +6,8 @@
   "message": "chore: publish release [skip ci]",
   "command": {
     "publish": {
-      "conventionalCommits": true
+      "conventionalCommits": true,
+      "verifyAccess": false
     }
   },
   "ignoreChanges": ["**/*.test.js", "**/*.md", "**/*.mdx", "**/yarn.lock"]

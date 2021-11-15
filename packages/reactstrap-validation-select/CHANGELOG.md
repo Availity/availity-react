@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## 9.0.3 (2021-11-12)
+
+
+### Bug Fixes
+
+* **reactstrap-validation-select:** added new colors to help with  contrast on error ([02890d8](https://github.com/Availity/availity-react/commit/02890d8d9cef9c6deb68973a05d6ef4074924fd8))
+
+
+
+
+
 ## [9.0.2](https://github.com/Availity/availity-react/compare/@availity/reactstrap-validation-select@9.0.0...@availity/reactstrap-validation-select@9.0.2) (2021-11-05)
 
 

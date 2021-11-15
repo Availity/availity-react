@@ -3,6 +3,49 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [2.0.1](https://github.com/Availity/availity-react/compare/@availity/select@2.0.0...@availity/select@2.0.1) (2021-11-12)
+
+
+### Bug Fixes
+
+* **select:** set new colors due to accessibility issue when error changes border and color ([40b0156](https://github.com/Availity/availity-react/commit/40b0156f41436bf4b293d44861127996e5b4489d))
+
+
+
+
+
+# [2.0.0](https://github.com/Availity/availity-react/compare/@availity/select@1.0.6...@availity/select@2.0.0) (2021-11-12)
+
+
+### Bug Fixes
+
+* **select:** use label from availity/form ([77dc1a5](https://github.com/Availity/availity-react/commit/77dc1a5fc73f38531371a81ee464c3c64b55e514))
+
+
+### Features
+
+* **select:** add label component with required asterisk ([ee4913c](https://github.com/Availity/availity-react/commit/ee4913c42813e19eb45bcf97fd14c307b831c5f3))
+
+
+### BREAKING CHANGES
+
+* **select:** Requires v1.1.0 of form for label component
+
+
+
+
+
+# [1.1.0](https://github.com/Availity/availity-react/compare/@availity/select@1.0.6...@availity/select@1.1.0) (2021-11-09)
+
+
+### Features
+
+* add defaultToFirstOption for resource select ([5ea6c80](https://github.com/Availity/availity-react/commit/5ea6c80216319f1548299a51bfe083f002a44798))
+
+
+
+
+
 ## [1.0.6](https://github.com/Availity/availity-react/compare/@availity/select@1.0.3...@availity/select@1.0.6) (2021-11-05)
 
 

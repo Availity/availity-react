@@ -14,6 +14,7 @@ export interface SelectProps<T> extends Props<{}> {
   options?: any[] | GroupedOptions[];
   labelKey?: any;
   className?: string;
+  maxLength?: number;
   placeholder?: string;
   valueKey?: any;
   selectRef?: React.Ref<T>;

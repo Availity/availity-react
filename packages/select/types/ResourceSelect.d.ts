@@ -36,6 +36,7 @@ export interface ResourceSelectProps<T> extends SelectFieldProps<T> {
   minCharsToSearch?: number;
   waitUntilFocused?: boolean;
   defaultToOnlyOption?: boolean;
+  defaultToFirstOption?: boolean;
   shouldSearch?: boolean | ((inputValue: string, prevOptions: OptionType[], additional: Additional) => boolean);
   additionalPostGetArgs?: object;
   pageAll?: boolean;

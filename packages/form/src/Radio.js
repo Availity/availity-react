@@ -1,12 +1,12 @@
 import React, { useState } from 'react';
 import PropTypes from 'prop-types';
-import { FieldHelpIcon } from '@availity/help';
-import { Input, Label } from 'reactstrap';
+import { Input } from 'reactstrap';
 import { v4 as uuid } from 'uuid';
 import classNames from 'classnames';
 
 import { useRadioGroup } from './RadioGroup';
 import FormGroup from './FormGroup';
+import Label from './Label';
 
 const Radio = ({ label, id, name, value: checkValue, className, groupClassName, children, helpId, ...attributes }) => {
   const { value, setValue, metadata, inline } = useRadioGroup(checkValue);
@@ -22,7 +22,6 @@ const Radio = ({ label, id, name, value: checkValue, className, groupClassName, 
   const errorIndicated = !!metadata.touched && !!metadata.error;
   const feedbackId = errorIndicated && name ? `${name}-feedback`.toLowerCase() : '';
   const labelId = `${inputId}-label`.toLowerCase();
-  const helpIcon = helpId ? <FieldHelpIcon id={helpId} labelId={labelId} /> : null;
 
   return (
     <FormGroup for={inputId} check className={groupClassName} inline={inline} disabled={attributes.disabled}>
@@ -38,10 +37,9 @@ const Radio = ({ label, id, name, value: checkValue, className, groupClassName, 
         checked={value}
         onChange={setValue}
       />
-      <Label check id={labelId} for={inputId}>
+      <Label check id={labelId} for={inputId} helpId={helpId}>
         {label || children}
       </Label>
-      {helpIcon}
     </FormGroup>
   );
 };
