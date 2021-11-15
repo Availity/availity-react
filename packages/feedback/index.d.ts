@@ -1,3 +1,3 @@
-export { default } from './types/Feedback';
-export { default as FeedbackForm } from './types/FeedbackForm';
-export { default as FeedbackModal } from './types/FeedbackModal';
+export { default } from './src/Feedback';
+export { default as FeedbackForm } from './src/FeedbackForm';
+export { default as FeedbackModal } from './src/FeedbackModal';

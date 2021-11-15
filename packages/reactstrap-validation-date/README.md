@@ -24,11 +24,7 @@ yarn add @availity/reactstrap-validation-date availity-reactstrap-validation rea
 import React from 'react';
 import { Label } from 'reactstrap';
 import { AvForm, AvGroup, AvFeedback } from 'availity-reactstrap-validation';
-import AvDate, {
-  AvDateField,
-  AvDateRange,
-  AvDateRangeField,
-} from '@availity/reactstrap-validation-date';
+import AvDate, { AvDateField, AvDateRange, AvDateRangeField } from '@availity/reactstrap-validation-date';
 import '@availity/reactstrap-validation-date/styles.scss';
 
 const Example = () => (

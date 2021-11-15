@@ -4,7 +4,7 @@ module.exports = {
 
   testPathIgnorePatterns: ['/node_modules/', '/docs', '/storybook', '/packages/mock/'],
 
-  collectCoverageFrom: ['packages/**/*.{js,jsx}'],
+  collectCoverageFrom: ['packages/**/*.{js,jsx,tsx}'],
   coveragePathIgnorePatterns: [
     '/node_modules/',
     '/coverage/',
@@ -17,7 +17,7 @@ module.exports = {
 
   transformIgnorePatterns: ['[/\\\\]node_modules[/\\\\](?!@availity).+\\.(js|jsx)$'],
   transform: {
-    '^.+\\.(js|jsx)$': `${require.resolve('./jest/babel.js')}`,
+    '^.+\\.(js|jsx|tsx)$': `${require.resolve('./jest/babel.js')}`,
     '^.+\\.css$': `${require.resolve('./jest/css.js')}`,
     '^(?!.*\\.(js|jsx|css|json)$)': `${require.resolve('./jest/file.js')}`,
   },

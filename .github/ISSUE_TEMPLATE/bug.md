@@ -28,6 +28,7 @@ about: Open a new issue here if something isn't working as expected.
 ### Your environment
 
 <!-- PLEASE FILL THIS OUT -->
+
 ```bash
 npx envinfo --npmPackages '@availity/*' --binaries
 ```

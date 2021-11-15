@@ -1,2 +1,2 @@
-export { default as FavoriteHeart } from './types/FavoriteHeart';
-export { default, useFavorites, FavoritesContext } from './types/FavoritesContext';
+export { default as FavoriteHeart } from './src/FavoriteHeart';
+export { default, useFavorites, FavoritesContext } from './src/FavoritesContext';

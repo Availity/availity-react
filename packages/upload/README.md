@@ -99,14 +99,7 @@ import React from 'react';
 import Upload from '@availity/upload';
 
 const Example = () => (
-  <Upload
-    btnText="Upload a claim"
-    clientId="a"
-    bucketId="b"
-    customerId="c"
-    multiple={false}
-    max={1}
-  />
+  <Upload btnText="Upload a claim" clientId="a" bucketId="b" customerId="c" multiple={false} max={1} />
 );
 ```
 
