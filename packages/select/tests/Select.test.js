@@ -571,6 +571,82 @@ describe('Select', () => {
     });
   });
 
+  test('async creatable', async () => {
+    const loadOptions = jest.fn();
+
+    loadOptions.mockResolvedValue({
+      options: [
+        {
+          labelKeyTest: 'Doe, John',
+          valueKeyTest: {
+            name: {
+              first: 'John',
+              last: 'Doe',
+            },
+          },
+        },
+        {
+          labelKeyTest: 'Doe, Jane',
+          valueKeyTest: {
+            name: {
+              first: 'Jane',
+              last: 'Doe',
+            },
+          },
+        },
+      ],
+      hasMore: false,
+      additional: {
+        page: 2,
+      },
+    });
+
+    const onSubmit = jest.fn();
+    const { container, getByText } = render(
+      <Form
+        initialValues={{
+          singleSelectCreatable: undefined,
+        }}
+        onSubmit={onSubmit}
+      >
+        <Select
+          name="singleSelectCreatable"
+          loadOptions={loadOptions}
+          valueKey="valueKeyTest"
+          labelKey="labelKeyTest"
+          creatable
+          raw
+        />
+        <Button>Submit</Button>
+      </Form>
+    );
+
+    // Simulate the user selecting "Doe, John"
+    const select = container.querySelector('.av__control');
+    fireEvent.keyDown(select, { key: 'ArrowDown', keyCode: 40 });
+
+    fireEvent.change(container.querySelector('#singleSelectCreatable'), {
+      target: {
+        value: 'HelloWorld',
+      },
+    });
+
+    await selectItem(container, getByText, 'Create "HelloWorld"');
+
+    // Simulate the user clicking "Submit"
+    const submitButton = getByText('Submit');
+    expect(submitButton).toBeDefined();
+
+    await fireEvent.click(submitButton);
+
+    await waitFor(() => {
+      expect(onSubmit).toHaveBeenCalledTimes(1);
+      const payload = onSubmit.mock.calls[0][0];
+      expect(payload.singleSelectCreatable.labelKeyTest).toBe('HelloWorld');
+      expect(payload.singleSelectCreatable.valueKeyTest).toBe('helloworld');
+    });
+  });
+
   test('waits to query resource until input is focused when waitUntilFocused is true', async () => {
     const loadOptions = jest.fn();
 

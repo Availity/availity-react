@@ -5,13 +5,15 @@ import classNames from 'classnames';
 import { useField, useFormikContext } from 'formik';
 import RSelect, { components as reactSelectComponents } from 'react-select';
 import Creatable from 'react-select/creatable';
-import { AsyncPaginate as Async } from 'react-select-async-paginate';
+import { AsyncPaginate as Async, withAsyncPaginate } from 'react-select-async-paginate';
 import get from 'lodash/get';
 import has from 'lodash/has';
 import isFunction from 'lodash/isFunction';
 import isEqual from 'lodash/isEqual';
 
 const { DownChevron, CrossIcon, DropdownIndicator, ClearIndicator, Option } = reactSelectComponents;
+
+const CreatableAsyncPaginate = withAsyncPaginate(Creatable);
 
 const components = {
   DropdownIndicator: (props) => (
@@ -137,8 +139,8 @@ const Select = ({
 
   let Tag = attributes.loadOptions ? Async : RSelect;
 
-  if (!attributes.loadOptions && creatable) {
-    Tag = Creatable;
+  if (creatable) {
+    Tag = attributes.loadOptions ? CreatableAsyncPaginate : Creatable;
   }
 
   if (!attributes.inputId) {
@@ -254,7 +256,6 @@ const Select = ({
       name={name}
       classNamePrefix="av"
       role="listbox"
-      SelectComponent={attributes.loadOptions && creatable ? Creatable : undefined}
       onCreateOption={handleCreate}
       className={classNames(
         className,
