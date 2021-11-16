@@ -4,8 +4,8 @@ import React, { useState } from 'react';
 import { render, waitFor, cleanup, fireEvent } from '@testing-library/react';
 import { avWebQLApi } from '@availity/api-axios';
 import { getAllSpaces } from '../src/Spaces';
-import { sanitizeSpaces } from '../src/helpers';
-import Spaces, { useSpaces, useSpacesContext, SpacesLogo } from '..';
+import { normalizeSpaces } from '../src/helpers';
+import Spaces, { useSpaces, useSpacesContext } from '..';
 
 jest.mock('@availity/api-axios');
 
@@ -22,9 +22,8 @@ describe('Spaces', () => {
           data: {
             configurationPagination: {
               pageInfo: {
-                pageCount: 1,
                 currentPage: 1,
-                perPage: 1,
+                hasNextPage: false,
               },
               items: [{ id: '1' }],
             },
@@ -36,9 +35,8 @@ describe('Spaces', () => {
           data: {
             configurationPagination: {
               pageInfo: {
-                pageCount: 1,
                 currentPage: 1,
-                perPage: 1,
+                hasNextPage: false,
               },
               items: [{ id: '2' }],
             },
@@ -53,9 +51,7 @@ describe('Spaces', () => {
       return (
         <div>
           <span data-testid={`space-for-${spaceId}`}>
-            {space
-              ? `Space ${spaceId} is in provider`
-              : `Space ${spaceId} is not in provider`}
+            {space ? `Space ${spaceId} is in provider` : `Space ${spaceId} is not in provider`}
           </span>
         </div>
       );
@@ -66,20 +62,12 @@ describe('Spaces', () => {
       const [spaceIds, setSpaceIds] = useState(['1', '3']);
 
       return (
-        <Spaces
-          spaceIds={spaceIds}
-          spaces={[{ id: '3' }]}
-          clientId="my-client-id"
-        >
+        <Spaces spaceIds={spaceIds} spaces={[{ id: '3' }]} clientId="my-client-id">
           <SpaceComponent spaceId="1" />
           <SpaceComponent spaceId="2" />
           <SpaceComponent spaceId="3" />
 
-          <button
-            type="button"
-            data-testid="add-spaceid-btn"
-            onClick={() => setSpaceIds(['1', '2', '3'])}
-          >
+          <button type="button" data-testid="add-spaceid-btn" onClick={() => setSpaceIds(['1', '2', '3'])}>
             Add
           </button>
         </Spaces>
@@ -129,9 +117,8 @@ describe('Spaces', () => {
           data: {
             configurationPagination: {
               pageInfo: {
-                pageCount: 1,
                 currentPage: 1,
-                perPage: 1,
+                hasNextPage: false,
               },
               items: [{ id: '1' }],
             },
@@ -143,9 +130,8 @@ describe('Spaces', () => {
           data: {
             configurationPagination: {
               pageInfo: {
-                pageCount: 1,
                 currentPage: 1,
-                perPage: 1,
+                hasNextPage: false,
               },
               items: [{ id: '2' }],
             },
@@ -162,9 +148,7 @@ describe('Spaces', () => {
       // Should be called when async effect to fetch spaces from avWebQL gets executed
       if (space && !loading) fn(space, error);
       return loading ? null : (
-        <span data-testid={`space-for-${spaceId}`}>
-          {space ? `Space ${space.id}` : 'No Space '}
-        </span>
+        <span data-testid={`space-for-${spaceId}`}>{space ? `Space ${space.id}` : 'No Space '}</span>
       );
     };
 
@@ -176,11 +160,7 @@ describe('Spaces', () => {
         <Spaces spaceIds={[spaceId]} clientId="my-client-id">
           <SpaceComponent spaceId={spaceId} />
 
-          <button
-            type="button"
-            data-testid="add-spaceid-btn"
-            onClick={() => setSpaceId('2')}
-          >
+          <button type="button" data-testid="add-spaceid-btn" onClick={() => setSpaceId('2')}>
             Add
           </button>
         </Spaces>
@@ -211,10 +191,8 @@ describe('Spaces', () => {
             data: {
               configurationPagination: {
                 pageInfo: {
-                  pageCount: 2,
-                  itemCount: 10,
                   currentPage: 1,
-                  perPage: 5,
+                  hasNextPage: true,
                 },
                 items: [{ id: '1' }, {}, {}, {}, {}],
               },
@@ -226,10 +204,8 @@ describe('Spaces', () => {
             data: {
               configurationPagination: {
                 pageInfo: {
-                  pageCount: 2,
-                  itemCount: 10,
                   currentPage: 2,
-                  perPage: 5,
+                  hasNextPage: false,
                 },
                 items: [{}, {}, {}, {}, { id: '10' }],
               },
@@ -237,8 +213,12 @@ describe('Spaces', () => {
           },
         });
 
-      const spaces = await getAllSpaces('query', 'clientId', {
-        types: ['space'],
+      const spaces = await getAllSpaces({
+        query: 'query',
+        clientId: 'clientId',
+        variables: {
+          types: ['space'],
+        },
       });
 
       // Check correct spaces get returned
@@ -254,7 +234,7 @@ describe('Spaces', () => {
     it('should throw error when missing clientId', async () => {
       let message = false;
       try {
-        await getAllSpaces('query');
+        await getAllSpaces({ query: 'query' });
       } catch (error) {
         const { message: mess } = error;
         message = mess;
@@ -263,11 +243,11 @@ describe('Spaces', () => {
     });
   });
 
-  describe('sanitizeSpaces', () => {
+  describe('normalizeSpaces', () => {
     it('normalizes space pairs', async () => {
       const spaces = [{ metadata: [{ name: 'a', value: '1' }] }];
 
-      const sanitized = sanitizeSpaces(spaces);
+      const sanitized = normalizeSpaces(spaces);
 
       expect(sanitized[0].metadata).toEqual({ a: '1' });
     });
@@ -284,9 +264,7 @@ describe('Spaces', () => {
       // Should be called when async effect to fetch spaces from avWebQL gets executed
       if (!loading) fn(space, error);
       return loading ? null : (
-        <span data-testid={`space-for-${spaceId}`}>
-          {space ? `Space ${space.id}` : 'No Space '}
-        </span>
+        <span data-testid={`space-for-${spaceId}`}>{space ? `Space ${space.id}` : 'No Space '}</span>
       );
     };
 
@@ -307,9 +285,8 @@ describe('Spaces', () => {
         data: {
           configurationPagination: {
             pageInfo: {
-              pageCount: 2,
               currentPage: 1,
-              perPage: 2,
+              hasNextPage: false,
             },
             items: [{ id: '1' }, { id: '2' }],
           },
@@ -321,7 +298,7 @@ describe('Spaces', () => {
 
     const { getByText } = render(
       <Spaces spaceIds={['1', '2']} clientId="test-client-id">
-        {({ spaces = [] }) => <div>{spaces.map((space) => space.id)}</div>}
+        {({ spaces = [] }) => <div>{spaces?.map((space) => space.id)}</div>}
       </Spaces>
     );
 
@@ -330,36 +307,14 @@ describe('Spaces', () => {
   });
 
   describe('useSpaces', () => {
-    avWebQLApi.create.mockResolvedValue({
-      data: {
-        data: {
-          configurationPagination: {
-            pageInfo: {
-              pageCount: 3,
-              currentPage: 1,
-              perPage: 3,
-            },
-            items: [
-              { id: '1', configurationId: '11', payerIDs: ['a', 'b', 'c'] },
-              { id: '2', configurationId: '22', payerIDs: ['b', 'c'] },
-              { id: '3', configurationId: '33', payerIDs: ['d', 'c'] },
-            ],
-          },
-        },
-      },
-    });
-
     // Create a spaces component that renders ids passed in
     const SpacesComponent = ({ ids = [] }) => {
       const spaces = useSpaces(...ids);
 
-      const dataTestIdSuffix =
-        ids && ids.length > 0 ? ids.join('-') : 'all-spaces';
+      const dataTestIdSuffix = ids && ids.length > 0 ? ids.join('-') : 'all-spaces';
       return (
         <div>
-          <span data-testid={`spaces-for-${dataTestIdSuffix}`}>
-            {spaces.map((spc) => `Id: ${spc && spc.id} `)}
-          </span>
+          <span data-testid={`spaces-for-${dataTestIdSuffix}`}>{spaces.map((spc) => `Id: ${spc && spc.id} `)}</span>
         </div>
       );
     };
@@ -370,9 +325,8 @@ describe('Spaces', () => {
           data: {
             configurationPagination: {
               pageInfo: {
-                pageCount: 3,
                 currentPage: 1,
-                perPage: 3,
+                hasNextPage: false,
               },
               items: [
                 { id: '1', configurationId: '11', payerIDs: ['a', 'b', 'c'] },
@@ -391,34 +345,26 @@ describe('Spaces', () => {
         </Spaces>
       );
 
-      expect(avWebQLApi.create.mock.calls[0][0].variables.ids).toEqual([
-        '1',
-        '2',
-        '3',
-      ]);
+      expect(avWebQLApi.create.mock.calls[0][0].variables.ids).toEqual(['1', '2', '3']);
 
       // Check that all spaces get returned when no ids get passed to useSpaces hook
-      const allSpaces = await waitFor(() =>
-        testById.getByTestId('spaces-for-all-spaces')
-      );
-      expect(allSpaces.textContent).toBe('Id: 1 Id: 2 Id: 3 ');
+      const allSpaces = await waitFor(() => testById.getByTestId('spaces-for-all-spaces'));
+      await waitFor(() => expect(allSpaces.textContent).toBe('Id: 1 Id: 2 Id: 3 '));
 
       // Check that spaces for ids get returned when ids passed to useSpaces hook
-      const specificSpaces = await waitFor(() =>
-        testById.getByTestId('spaces-for-2-3')
-      );
+      const specificSpaces = await waitFor(() => testById.getByTestId('spaces-for-2-3'));
       expect(specificSpaces.textContent).toBe('Id: 2 Id: 3 ');
     });
 
     it('returns spaces by configurationId', async () => {
+      // TODO: msw
       avWebQLApi.create.mockResolvedValue({
         data: {
           data: {
             configurationPagination: {
               pageInfo: {
-                pageCount: 3,
                 currentPage: 1,
-                perPage: 3,
+                hasNextPage: false,
               },
               items: [
                 { id: '1', configurationId: '11', payerIDs: ['a', 'b', 'c'] },
@@ -441,9 +387,7 @@ describe('Spaces', () => {
       const allSpacesByConfigurationIds = await waitFor(() =>
         testByConfigurationId.getByTestId('spaces-for-all-spaces')
       );
-      expect(allSpacesByConfigurationIds.textContent).toBe(
-        'Id: 1 Id: 2 Id: 3 '
-      );
+      expect(allSpacesByConfigurationIds.textContent).toBe('Id: 1 Id: 2 Id: 3 ');
 
       // Check that spaces for configurationIds get returned when configurationIds passed to useSpaces hook
       const specificSpacesByConfigurationIds = await waitFor(() =>
@@ -452,15 +396,14 @@ describe('Spaces', () => {
       expect(specificSpacesByConfigurationIds.textContent).toBe('Id: 2 Id: 3 ');
     });
 
-    it('returns spaces by payerId', async () => {
+    it('returns all matching spaces when searching by payerId', async () => {
       avWebQLApi.create.mockResolvedValue({
         data: {
           data: {
             configurationPagination: {
               pageInfo: {
-                pageCount: 3,
                 currentPage: 1,
-                perPage: 3,
+                hasNextPage: false,
               },
               items: [
                 { id: '1', configurationId: '11', payerIDs: ['a', 'b', 'c'] },
@@ -480,14 +423,51 @@ describe('Spaces', () => {
       );
 
       // Check that spaces for payer ids get returned when ids passed to useSpaces hook
-      const payerSpecificSpaces = await waitFor(() =>
-        testByPayerId.getByTestId('spaces-for-b')
+      const payerSpecificSpaces = await waitFor(() => testByPayerId.getByTestId('spaces-for-b'));
+      expect(payerSpecificSpaces.textContent).toBe('Id: 1 Id: 2 ');
+      const payerSpecificSpaces2 = await waitFor(() => testByPayerId.getByTestId('spaces-for-c'));
+      expect(payerSpecificSpaces2.textContent).toBe('Id: 1 Id: 2 Id: 3 ');
+    });
+
+    it('renders with warning when returning all spaces because no ids were passed in', async () => {
+      const consoleWarnMock = jest.spyOn(console, 'warn').mockImplementation(() => {});
+      const SpacesComponent = ({ ids = [] }) => {
+        const spaces = useSpaces(...ids);
+
+        const dataTestIdSuffix = ids && ids.length > 0 ? ids.join('-') : 'all-spaces';
+        return (
+          <div>
+            <span data-testid={`spaces-for-${dataTestIdSuffix}`}>{spaces.map((spc) => `Id: ${spc && spc.id} `)}</span>
+          </div>
+        );
+      };
+
+      avWebQLApi.create.mockResolvedValueOnce({
+        data: {
+          data: {
+            configurationPagination: {
+              pageInfo: {
+                currentPage: 1,
+                hasNextPage: false,
+              },
+              items: [{ id: '1' }, { id: '2' }],
+            },
+          },
+        },
+      });
+
+      const { getByTestId } = render(
+        <Spaces spaceIds={['1', '2']} clientId="test-client-id">
+          <SpacesComponent />
+        </Spaces>
       );
-      expect(payerSpecificSpaces.textContent).toBe('Id: 2 ');
-      const payerSpecificSpaces2 = await waitFor(() =>
-        testByPayerId.getByTestId('spaces-for-c')
-      );
-      expect(payerSpecificSpaces2.textContent).toBe('Id: 1 ');
+
+      await waitFor(() => getByTestId('spaces-for-all-spaces'));
+
+      expect(consoleWarnMock).toHaveBeenCalled();
+      expect(consoleWarnMock.mock.calls[0][0]).toBe('You did not pass in an ID to find a space, returning all spaces.');
+
+      consoleWarnMock.mockRestore();
     });
   });
 
@@ -497,9 +477,8 @@ describe('Spaces', () => {
         data: {
           configurationPagination: {
             pageInfo: {
-              pageCount: 1,
               currentPage: 1,
-              perPage: 1,
+              hasNextPage: false,
             },
             items: [{ id: '1', name: 'hello world' }],
           },
@@ -530,35 +509,4 @@ describe('Spaces', () => {
     expect(spc1).toBeDefined();
     expect(spc2).toBeDefined();
   });
-});
-
-test('renders with warning', async () => {
-  avWebQLApi.create.mockResolvedValueOnce({
-    data: {
-      data: {
-        configurationPagination: {
-          pageInfo: {
-            pageCount: 2,
-            currentPage: 1,
-            perPage: 2,
-          },
-          items: [{ id: '1' }, { id: '2' }],
-        },
-      },
-    },
-  });
-
-  console.warn = jest.fn();
-
-  const { getByTestId } = render(
-    <Spaces spaceIds={['1', '2']} clientId="test-client-id">
-      <SpacesLogo data-testid="spaces-logo-1" />
-    </Spaces>
-  );
-
-  await waitFor(() => getByTestId('spaces-logo-1'));
-
-  expect(console.warn.mock.calls[0][0]).toBe(
-    'You did not pass an ID in to find a space, and there is more than 1 space in the space array. Returning all.'
-  );
 });

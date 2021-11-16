@@ -6,6 +6,7 @@ import { sanitizeSpaces } from './types/helpers';
 
 export default Spaces;
 
+// TODO
 export {
   SpacesImage,
   SpacesImage as SpacesLogo,

@@ -1,3 +1,5 @@
+import qs from 'query-string';
+
 export const INITIAL_STATE = {
   spaces: [],
   loading: true,
@@ -5,8 +7,10 @@ export const INITIAL_STATE = {
 };
 
 export const actions = {
-  SPACES: (_, { spaces }) => ({
-    spaces: spaces || [],
+  SPACES: (currentState, { spaces, spacesByConfig, spacesByPayer }) => ({
+    previousSpacesMap: spaces || [],
+    previousSpacesByConfigMap: spacesByConfig || [],
+    previousSpacesByPayerMap: spacesByPayer || [],
     error: null,
     loading: false,
   }),
@@ -21,13 +25,20 @@ export const actions = {
   }),
 };
 
-export const spacesReducer = (state, action) =>
-  actions[action.type](state, action);
+export const spacesReducer = (state, action) => actions[action.type](state, action);
 
-export const sanitizeSpaces = (spaces) => {
-  // Normalize space pairs ( [{ name, value }] => { name: value } )
+// TODO: metadata deprecated in favor of metadataPairs, need to remove or refactor?
+export const normalizeSpaces = (spaces) => {
+  // if spaces coming in is array of an array of spaces objects,
+  // then we matched by payerId and should unravel that first level of array
+  let spacesToReduce = spaces;
+  if (Array.isArray(spaces[0])) {
+    spacesToReduce = spaces[0];
+  }
+  // Normalize space pairs ( [{ name: 'foo'', value: 'bar' }] => { foo: 'bar' } )
   const pairFields = ['images', 'metadata', 'colors', 'icons', 'mapping'];
-  return spaces.reduce((accum, spc) => {
+  return spacesToReduce.reduce((accum, spc) => {
+    if (!spc) return accum;
     pairFields.forEach((field) => {
       if (spc[field] && Array.isArray(spc[field])) {
         spc[field] = spc[field].reduce((_accum, { name, value }) => {
@@ -43,3 +54,20 @@ export const sanitizeSpaces = (spaces) => {
 };
 
 export const isFunction = (obj) => typeof obj === 'function';
+
+// Examples:
+//
+//    - http://www.example.com?foo=bar#hashme
+//    - http://www.example.com
+//    - http://www.example.com?foo=bar
+//
+export const updateUrl = (url, key, value) => {
+  const [uri, queryString] = url.split('?');
+  const currentParams = qs.parse(queryString);
+  const newParams = qs.stringify({
+    ...currentParams,
+    [key]: value,
+  });
+
+  return `${uri}?${newParams}`;
+};

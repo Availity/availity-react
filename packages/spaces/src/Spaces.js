@@ -2,19 +2,12 @@ import React, { createContext, useContext, useReducer } from 'react';
 import PropTypes from 'prop-types';
 import { avWebQLApi } from '@availity/api-axios';
 import { useEffectAsync } from '@availity/hooks';
-import {
-  spacesReducer,
-  INITIAL_STATE,
-  sanitizeSpaces,
-  isFunction,
-} from './helpers';
+import { spacesReducer, INITIAL_STATE, normalizeSpaces, isFunction } from './helpers';
 
-export const getAllSpaces = async (
-  query,
-  clientId,
-  variables,
-  _spaces = []
-) => {
+// TODO: types
+
+// TODO: if we are always grabbing all spaces, send a large limit (50?) over
+export const getAllSpaces = async ({ query, clientId, variables, _spaces = [] }) => {
   if (!clientId) {
     throw new Error('clientId is required');
   }
@@ -32,80 +25,88 @@ export const getAllSpaces = async (
   );
 
   const {
-    pageInfo: { itemCount, currentPage, perPage },
+    pageInfo: { currentPage, hasNextPage },
   } = configurationPagination;
 
-  const unionedSpaces = _spaces.concat(configurationPagination.items);
+  // current state (_spaces) is being modified with API results (items)
+  _spaces.push(...configurationPagination?.items);
 
-  // TODO explore using pageInfo.hasNextPage instead
-  if (itemCount > currentPage * perPage) {
-    const vars = { ...variables, page: currentPage + 1 };
-    return getAllSpaces(query, clientId, vars, unionedSpaces);
+  // TODO: react-query and get all spaces?
+  if (hasNextPage) {
+    const vars = {
+      ...variables,
+      page: currentPage + 1,
+    };
+    return getAllSpaces({ query, clientId, variables: vars, _spaces });
   }
 
-  return unionedSpaces;
+  return _spaces;
 };
 
 export const SpacesContext = createContext();
 
 export const useSpacesContext = () => useContext(SpacesContext);
 
-const Spaces = ({
-  query,
-  variables,
-  clientId,
-  spaceIds,
-  payerIds,
-  children,
-  spaces: spacesFromProps,
-}) => {
-  const [{ spaces, loading, error }, dispatch] = useReducer(
-    spacesReducer,
-    INITIAL_STATE
-  );
+// react-query -> initial cache values come from props, then if we have spaceIdsToQuery or payerIdsToQuery, we do, then update cache/prev values
+// what would cache keys be based on? separate caches for spaces and spacesByPayerIds?
+const Spaces = ({ query, variables, clientId, spaceIds, payerIds, children, spaces: spacesFromProps }) => {
+  const [{ previousSpacesMap, previousSpacesByConfigMap, previousSpacesByPayerMap, loading, error }, dispatch] =
+    useReducer(spacesReducer, INITIAL_STATE); // TODO: react-query. Don't expose cache time options to users
+
+  const spacesMap = new Map(previousSpacesMap); // merges existing/prev map spaces
+  const configIdsMap = new Map(previousSpacesByConfigMap); // TODO: combine these Maps using to/fromGlobalId on spaces. ConfigId is probably main case vs global id. Key off that and only transform ids when needed
+  const payerIdsMap = new Map(previousSpacesByPayerMap); // Save this so we can retrieve spaces by payerId later, array of all space objects for 1 payer id
+  const spaceIdsToQuery = new Set();
+  const payerIdsToQuery = new Set();
+
+  // If we have data for a space, add it to the Map and remove from Set of ids to query
+  spacesFromProps?.forEach((space) => {
+    if (space.id && !spacesMap.has(space.id)) {
+      spacesMap.set(space.id, space);
+    }
+
+    if (space.configurationId && !configIdsMap.has(space.configurationId)) {
+      configIdsMap.set(space.configurationId, space);
+    }
+
+    // each space can have array of payerIDs
+    space.payerIDs?.forEach((pId) => {
+      const currentSpacesForPayerId = payerIdsMap.get(pId);
+      if (currentSpacesForPayerId) {
+        payerIdsMap.set(pId, [...currentSpacesForPayerId, space]);
+      } else {
+        payerIdsMap.set(pId, [space]);
+      }
+    });
+  });
+
+  spaceIds?.forEach((id) => {
+    // If one has id, no need to query for it
+    if (!(spacesMap.has(id) || configIdsMap.has(id))) {
+      spaceIdsToQuery.add(id);
+    }
+  });
+
+  payerIds?.forEach((pId) => {
+    if (!payerIdsMap.has(pId)) {
+      payerIdsToQuery.add(pId);
+    }
+  });
+
+  // with react-query we would probably just set query cache using keys for data we already have,
+  // won't need to worry about keeping track of dupes or refetching
 
   // NOTE: we do not want to query webQL by payerIDs and spaceIDs at the same time
   // because webQL does an AND on those conditions. We want OR
+  // TODO: look into adding server side option for ORs?
   useEffectAsync(async () => {
     try {
       dispatch({
         type: 'LOADING',
         loading: true,
       });
-      // Filter out dupes and ids that we already have the space for
-      const filteredSpaceIDs = spaceIds
-        .filter((id, i) => spaceIds.indexOf(id) === i)
-        .filter(
-          (id) =>
-            !spaces.some(
-              (spc) => spc && (spc.id === id || spc.configurationId === id)
-            )
-        )
-        .filter(
-          (id) =>
-            !spacesFromProps.some(
-              (spc) => spc && (spc.id === id || spc.configurationId === id)
-            )
-        );
 
-      const filteredPayerIDs = payerIds
-        .filter((id, i) => payerIds.indexOf(id) === i)
-        .filter(
-          (id) =>
-            !spaces.some(
-              (spc) =>
-                spc && spc.payerIDs && spc.payerIDs.some((pId) => pId === id)
-            )
-        )
-        .filter(
-          (id) =>
-            !spacesFromProps.some(
-              (spc) =>
-                spc && spc.payerIDs && spc.payerIDs.some((pId) => pId === id)
-            )
-        );
-
-      if (filteredSpaceIDs.length === 0 && filteredPayerIDs.length === 0) {
+      if (spaceIdsToQuery.size === 0 && payerIdsToQuery.size === 0) {
         dispatch({
           type: 'LOADING',
           loading: false,
@@ -113,32 +114,68 @@ const Spaces = ({
         return;
       }
 
-      let _spaces = [];
-      if (filteredSpaceIDs.length > 0) {
-        const vars = { ...variables, ids: filteredSpaceIDs };
-        const spacesBySpaceIDs = await getAllSpaces(
+      if (spaceIdsToQuery.size > 0) {
+        const vars = { ...variables, ids: [...spaceIdsToQuery.keys()] };
+        const spacesBySpaceIds = await getAllSpaces({
           query,
           clientId,
-          vars,
-          spaces
-        );
-        _spaces = _spaces.concat(spacesBySpaceIDs);
+          variables: vars,
+        });
+
+        // TODO: move to react-query onSuccess?
+        spacesBySpaceIds.forEach((space) => {
+          if (!spacesMap.has(space.id)) {
+            spacesMap.set(space.id, space);
+          }
+
+          if (!configIdsMap.has(space.configurationId)) {
+            configIdsMap.set(space.configurationId, space);
+          }
+
+          space.payerIDs?.forEach((pId) => {
+            const currentSpacesForPayerId = payerIdsMap.get(pId);
+            if (currentSpacesForPayerId) {
+              payerIdsMap.set(pId, [...currentSpacesForPayerId, space]);
+            } else {
+              payerIdsMap.set(pId, [space]);
+            }
+          });
+        });
       }
 
-      if (filteredPayerIDs.length > 0) {
-        const vars = { ...variables, payerIDs: filteredPayerIDs };
-        const spacesByPayerIDs = await getAllSpaces(
+      if (payerIdsToQuery.size > 0) {
+        const vars = { ...variables, payerIDs: [...payerIdsToQuery.keys()] };
+        const spacesByPayerIds = await getAllSpaces({
           query,
           clientId,
-          vars,
-          spaces
-        );
-        _spaces = _spaces.concat(spacesByPayerIDs);
+          variables: vars,
+        });
+
+        spacesByPayerIds.forEach((space) => {
+          if (!spacesMap.has(space.id)) {
+            spacesMap.set(space.id, space);
+          }
+
+          if (!configIdsMap.has(space.configurationId)) {
+            configIdsMap.set(space.configurationId, space);
+          }
+
+          space.payerIDs?.forEach((pId) => {
+            const currentSpacesForPayerId = payerIdsMap.get(pId);
+            if (currentSpacesForPayerId) {
+              payerIdsMap.set(pId, [...currentSpacesForPayerId, space]);
+            } else {
+              payerIdsMap.set(pId, [space]);
+            }
+          });
+        });
       }
 
       dispatch({
         type: 'SPACES',
-        spaces: _spaces,
+        spaces: spacesMap,
+        spacesByConfig: configIdsMap,
+        spacesByPayer: payerIdsMap,
       });
     } catch (error_) {
       dispatch({
@@ -148,55 +185,41 @@ const Spaces = ({
     }
   }, [payerIds, spaceIds]);
 
-  const spacesForProvider = sanitizeSpaces(spaces.concat(spacesFromProps));
   return (
     <SpacesContext.Provider
-      value={{ spaces: spacesForProvider, loading, error }}
+      value={{ spaces: spacesMap, spacesByConfig: configIdsMap, spacesByPayer: payerIdsMap, loading, error }}
     >
       {isFunction(children)
-        ? (() => children({ spaces: spacesForProvider, loading, error }))()
+        ? (() =>
+            children({
+              // if children is function, as long as spacesMap contains all values and we return them, no breaking change
+              spaces: normalizeSpaces([...spacesMap.values()]),
+              loading,
+              error,
+            }))()
         : children}
     </SpacesContext.Provider>
   );
 };
 
 export const useSpaces = (...ids) => {
-  const { spaces = [] } = useContext(SpacesContext) || {};
+  const { spaces, spacesByConfig, spacesByPayer } = useContext(SpacesContext) || {};
 
   const idsIsEmpty = !ids || ids.length === 0;
-  const callerIsExpectingFirstSpace =
-    ids && ids.length === 1 && ids[0] === undefined;
-
-  if (callerIsExpectingFirstSpace && spaces.length > 1) {
-    // eslint-disable-next-line no-console
-    console.warn(
-      `You did not pass an ID in to find a space, and there is more than 1 space in the space array. Returning all.`
-    );
-  }
-
+  const callerIsExpectingFirstSpace = ids?.length === 1 && ids[0] === undefined;
   const shouldReturnAllSpaces = idsIsEmpty || callerIsExpectingFirstSpace;
+
   if (shouldReturnAllSpaces) {
-    return spaces;
+    // eslint-disable-next-line no-console
+    console.warn(`You did not pass in an ID to find a space, returning all spaces.`);
+    return normalizeSpaces([...spaces?.values()]);
   }
 
-  // Try to match by space id first, else match by payer id
-  const filteredSpaces = ids.map((id) => {
-    let [spc] = spaces.filter((s) => s.id === id || s.configurationId === id);
+  // Passed in ids can be global/relay id, configurationId, or payerId. Match in that order
+  const matchedSpaces = ids.map((id) => spaces?.get(id) || spacesByConfig?.get(id) || spacesByPayer?.get(id));
+  const normalized = normalizeSpaces(matchedSpaces);
 
-    if (!spc) {
-      [spc] = spaces.filter((s) => {
-        if (s.payerIDs && s.payerIDs.length > 0) return s.payerIDs[0] === id;
-        return false;
-      });
-    }
-
-    if (!spc) {
-      [spc] = spaces.filter((s) => (s.payerIDs || []).some((p) => p === id));
-    }
-    return spc;
-  });
-
-  return filteredSpaces;
+  return normalized;
 };
 
 Spaces.propTypes = {
@@ -210,98 +233,113 @@ Spaces.propTypes = {
 };
 
 Spaces.defaultProps = {
+  // TODO: move to .graphql file
+  // TODO: confirm we have everything needed from old SpacesFragment request
   query: `
-    query configurationFindMany($ids: [String!], $payerIDs: [ID!], $types: [TypeEnum!]){
-      configurationPagination(filter: { ids: $ids, payerIds: $payerIDs, types: $types }){
-        pageInfo{
-          pageCount
-          currentPage
-          perPage
-          itemCount
+  query configurationFindMany($ids: [String!], $payerIDs: [ID!], $types: [TypeEnum!]) {
+    configurationPagination(filter: { ids: $ids, payerIds: $payerIDs, types: $types }) {
+      pageInfo {
+        hasNextPage
+        currentPage
+      }
+      items {
+        ... on Configuration {
+          configurationId
+          name
+          shortName
+          type
+          activeDate
+          isNew
+          description
+          payerIDs
+          parentIDs
+          metadataPairs {
+            name
+            value
+          }
         }
-        items {
-          ...on Configuration{
-              configurationId
-              name
-              description
-              payerIDs
-              parentIDs
-              metadataPairs{
-                name
-                value
-              }
+
+        ... on Node {
+          id
+        }
+
+        ... on Alert {
+          link {
+            text
+            target
+            url
           }
-          
-          ... on Node {
-            id
+        }
+
+        ... on Container {
+          link {
+            text
+            target
+            url
           }
-          
-          ... on Alert {
-            link{
-              url
-            }
+          images {
+            tile
+            promotional
+            logo
+            billboard
+          }
+        }
+
+        ... on PayerSpace {
+          link {
+            text
+            target
+            url
+          }
+          images {
+            tile
+            logo
+            billboard
+          }
+          url
+        }
+
+        ... on Application {
+          link {
+            text
+            target
+            url
+          }
+        }
+
+        ... on Resource {
+          link {
+            text
+            target
+            url
+          }
+        }
+
+        ... on Navigation {
+          icons {
 
           }
-          
-          ... on Container {
-            link{
-              url
-            }
-            images{
-              tile
-              promotional
-              logo
-              billboard
-            }
+          images {
+            promotional
           }
-          
-          ... on PayerSpace {
-            link{
-              url
-            }
-            images{
-              tile
-              logo
-              billboard
-            }
-            url
-          }
-          
-          ... on Application {
-            link{
-              url
-            }
-          }
-          
-          ... on Resource {
-            link{
-              url
-            }
-          }
-          
-          ... on Navigation {
-            images{
-              promotional
-            }
-          }
-          
-          ... on Learning {
-            images {
-              promotional
-            }
-          }
-          
-          ... on Proxy {
-            url
-          }
-          
-          ... on File {
-            url
-          }
+        }
 
+        ... on Learning {
+          images {
+            promotional
+          }
+        }
+
+        ... on Proxy {
+          url
+        }
+
+        ... on File {
+          url
         }
       }
     }
+  }
   `,
   variables: { types: ['PAYERSPACE'] },
   spaceIds: [],
