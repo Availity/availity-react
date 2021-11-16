@@ -2,15 +2,16 @@ import React from 'react';
 import { fireEvent, render, waitFor, cleanup } from '@testing-library/react';
 import { avSettingsApi } from '@availity/api-axios';
 import avMessages from '@availity/message-core';
-import maxFavorites from './maxFavorites.json';
+
 import Favorites, { FavoriteHeart } from '..';
+import maxFavorites from './maxFavorites.json';
 
 jest.mock('@availity/api-axios');
 jest.mock('@availity/message-core');
 
 global.document.createRange = () => ({
-  setStart: () => {},
-  setEnd: () => {},
+  setStart: () => ({}),
+  setEnd: () => ({}),
   commonAncestorContainer: {
     nodeName: 'BODY',
     ownerDocument: document,
@@ -95,8 +96,8 @@ avSettingsApi.getApplication = getApplicationMock;
 describe('FavoriteHeart', () => {
   beforeEach(() => {
     global.document.createRange = () => ({
-      setStart: () => {},
-      setEnd: () => {},
+      setStart: () => ({}),
+      setEnd: () => ({}),
       commonAncestorContainer: {
         nodeName: 'BODY',
         ownerDocument: document,
@@ -172,7 +173,7 @@ describe('FavoriteHeart', () => {
     await waitFor(() => expect(heart).not.toBeChecked());
 
     // Simulate user favoriting item
-    await fireEvent.click(heart);
+    fireEvent.click(heart);
 
     await waitFor(() => expect(heart).toBeChecked());
 
@@ -406,7 +407,7 @@ describe('FavoriteHeart', () => {
 
     await waitFor(() => expect(heart).not.toBeChecked());
 
-    await fireEvent.mouseOver(heart);
+    fireEvent.mouseOver(heart);
 
     await waitFor(
       () => {

@@ -1,8 +1,9 @@
 export interface FeedbackButtonProps {
-    onClick?: Function;
-    icon?: string;
-    active?: string;
-    children?: React.ReactType;
+  onClick: string;
+  icon: string;
+  iconSize?: string;
+  active?: string;
+  children?: React.ReactNode;
 }
 
 declare const FeedbackButton: React.ComponentType<FeedbackButtonProps>;

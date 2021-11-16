@@ -3,11 +3,13 @@
   "version": "1.5.0",
   "author": "Kyle Gray <kyle.gray@availity.com>",
   "description": "Context Provider to assist with Help Menu on Portal for specific pages",
-  "types": "index.d.ts",
-  "main": "index.js",
+  "main": "dist/index.js",
+  "module": "dist/index.js",
+  "types": "dist/index.d.ts",
   "keywords": [
     "react",
-    "availity"
+    "availity",
+    "help"
   ],
   "repository": {
     "type": "git",
@@ -22,8 +24,7 @@
   },
   "dependencies": {
     "@availity/icon": "^0.10.0",
-    "@availity/message-core": "^5.0.1",
-    "prop-types": "^15.7.2"
+    "@availity/message-core": "^5.0.3"
   },
   "devDependencies": {
     "react": "^17.0.2",

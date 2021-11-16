@@ -14,8 +14,6 @@ export type CurrentUser = {
   userValidated: boolean;
 };
 
-declare function useCurrentUser(
-  options?: UseQueryOptions<CurrentUser, unknown>
-): UseQueryResult<CurrentUser, unknown>;
+declare function useCurrentUser(options?: UseQueryOptions<CurrentUser, unknown>): UseQueryResult<CurrentUser, unknown>;
 
 export default useCurrentUser;

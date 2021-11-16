@@ -20,16 +20,8 @@ import PayerLogo from '@availity/payer-logo';
 
 const Example = () => (
   <>
-    <PayerLogo
-      spaceId="73162546201441126239486200007187"
-      clientId="my-client-id"
-      alt="The word 'Payer' in green"
-    />
-    <PayerLogo
-      payerId="PayerID"
-      clientId="my-client-id"
-      alt="The word 'Payer' in green"
-    />
+    <PayerLogo spaceId="73162546201441126239486200007187" clientId="my-client-id" alt="The word 'Payer' in green" />
+    <PayerLogo payerId="PayerID" clientId="my-client-id" alt="The word 'Payer' in green" />
   </>
 );
 ```

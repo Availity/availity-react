@@ -1,9 +1,10 @@
 import React from 'react';
 import { render, cleanup, waitFor } from '@testing-library/react';
-import TrainingLink from '@availity/training-link';
-import { avWebQLApi } from '@availity/api-axios';
 import { NavLink } from 'reactstrap';
+import { avWebQLApi } from '@availity/api-axios';
 import Spaces from '@availity/spaces';
+import TrainingLink from '@availity/training-link';
+
 import PageHeader from '..';
 
 jest.mock('@availity/api-axios');

@@ -81,7 +81,7 @@
   ); /* Do not remove this. Used to match Date Input heights to Reactstrap Input heights */
 
   &.DateInput_input__disabled {
-    background-color:#e9ecef;
+    background-color: #e9ecef;
     color: #495057;
   }
 
@@ -102,19 +102,12 @@
   border-bottom-right-radius: 0;
 }
 
-.DateRangePickerInput
-  .DateRangePickerInput_arrow
-  ~ .DateInput
-  input.DateInput_input {
+.DateRangePickerInput .DateRangePickerInput_arrow ~ .DateInput input.DateInput_input {
   border-top-left-radius: 0;
   border-bottom-left-radius: 0;
 }
 
-.av-calendar-show
-  .DateRangePickerInput
-  .DateRangePickerInput_arrow
-  ~ .DateInput
-  input.DateInput_input {
+.av-calendar-show .DateRangePickerInput .DateRangePickerInput_arrow ~ .DateInput input.DateInput_input {
   border-top-right-radius: 0;
   border-bottom-right-radius: 0;
   border-right: none;
@@ -189,10 +182,7 @@
     border-right-color: #cdd3d3;
   }
 
-  .DateRangePickerInput
-    .DateRangePickerInput_arrow
-    ~ .DateInput
-    input.DateInput_input {
+  .DateRangePickerInput .DateRangePickerInput_arrow ~ .DateInput input.DateInput_input {
     border-left-color: #cdd3d3;
   }
 }

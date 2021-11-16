@@ -2,7 +2,7 @@ module.exports = {
   setupFiles: ['raf/polyfill'],
   setupFilesAfterEnv: ['<rootDir>/jest/setupTests.js', '@testing-library/jest-dom/extend-expect'],
 
-  testPathIgnorePatterns: ['/node_modules/', '/docs', '/storybook', '/packages/mock/'],
+  testPathIgnorePatterns: ['/node_modules/', '/docs', '/packages/mock/'],
 
   collectCoverageFrom: ['packages/**/*.{js,jsx,tsx}'],
   coveragePathIgnorePatterns: [
@@ -12,12 +12,14 @@ module.exports = {
     '/packages/mock/',
     '/storybook/',
     '/docs/',
+    '/stories/',
+    '.stories.tsx',
     '/packages/feature/bin.js',
   ],
 
   transformIgnorePatterns: ['[/\\\\]node_modules[/\\\\](?!@availity).+\\.(js|jsx)$'],
   transform: {
-    '^.+\\.(js|jsx|tsx)$': `${require.resolve('./jest/babel.js')}`,
+    '^.+\\.(js|jsx|ts|tsx)$': `${require.resolve('./jest/babel.js')}`,
     '^.+\\.css$': `${require.resolve('./jest/css.js')}`,
     '^(?!.*\\.(js|jsx|css|json)$)': `${require.resolve('./jest/file.js')}`,
   },

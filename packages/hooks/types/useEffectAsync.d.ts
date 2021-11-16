@@ -1,3 +1,6 @@
-import { useEffect } from 'react';
+type EffectCallback = () => Promise<void | (() => void)>;
+type DepArray = readonly any[];
 
-export default useEffect;
+declare function useEffectAsync(effect: EffectCallback, deps?: DepArray): void;
+
+export default useEffectAsync;

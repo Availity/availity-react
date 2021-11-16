@@ -9,16 +9,14 @@ import IconCell from './types/CellDefinitions/IconCell';
 
 export default Table;
 export {
-    ScrollableContainer,
-
-    AvTableColumn,
-    AvTableRow,
-    OnTableClickEvent,
-    OnRowSelectedEvent,
-
-    ActionCell,
-    BadgeCell,
-    CurrencyCell,
-    DateCell,
-    IconCell
+  ScrollableContainer,
+  AvTableColumn,
+  AvTableRow,
+  OnTableClickEvent,
+  OnRowSelectedEvent,
+  ActionCell,
+  BadgeCell,
+  CurrencyCell,
+  DateCell,
+  IconCell,
 };

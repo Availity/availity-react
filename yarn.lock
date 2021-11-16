@@ -125,10 +125,10 @@
     "@algolia/logger-common" "4.11.0"
     "@algolia/requester-common" "4.11.0"
 
-"@availity/analytics-core@^3.1.2":
-  version "3.1.3"
-  resolved "https://registry.yarnpkg.com/@availity/analytics-core/-/analytics-core-3.1.3.tgz#3845573f35c8d1244582bdf3e599572011287df2"
-  integrity sha512-0ks/p9VCF4wj2I1GbMiTMKIGMLa9VJkUOAhZfTctPXObV3m6vqL/DHkKTuOpgztAUdmQ0OTJEanSNFd+FoNHxg==
+"@availity/analytics-core@^3.1.4":
+  version "3.1.4"
+  resolved "https://registry.yarnpkg.com/@availity/analytics-core/-/analytics-core-3.1.4.tgz#0c51fdaab0a7c08e142e4aed0424fe8066f8d971"
+  integrity sha512-oS2yMcbVSKnt9vY2m2+C2shFMrJa3/2B5dWEfheqoEFLGPjGqjpC6ZTwO2wx6E/ZvBe99a9MYR+p8X9EK9Dlfg==
   dependencies:
     "@babel/runtime" "^7.15.4"
     core-js "^3.12.1"
@@ -153,10 +153,10 @@
   dependencies:
     core-js "^3.12.1"
 
-"@availity/message-core@^5.0.1":
-  version "5.0.2"
-  resolved "https://registry.yarnpkg.com/@availity/message-core/-/message-core-5.0.2.tgz#6d0f8f7d15835bd9518e6977b97b491de6cc0e3d"
-  integrity sha512-VmKi9IxfGvVpiFjZh2RQ9cuQuQjPlnosRAkRefyW7yZdRrv7IJ/DUXtZY8tsBazEtN1+ydIWcLZcEmfOrXwedA==
+"@availity/message-core@^5.0.3":
+  version "5.0.3"
+  resolved "https://registry.yarnpkg.com/@availity/message-core/-/message-core-5.0.3.tgz#f6acee3521501d43af67c0280bdf031043b2f024"
+  integrity sha512-LtYkhvq/aJhMU71M+I+LBNqGKcJGOvJDHWhI2TSkSEgFQ9+p5vzPF6PToeF9ARW5x6izkJZld+5aemynUW05Gg==
   dependencies:
     "@babel/runtime" "^7.15.4"
     core-js "^3.12.1"
@@ -187,7 +187,7 @@
     core-js "^3.12.1"
     tus-js-client "1.7.1"
 
-"@availity/yup@3.2.0", "@availity/yup@^3.2.0":
+"@availity/yup@^3.2.0":
   version "3.2.0"
   resolved "https://registry.yarnpkg.com/@availity/yup/-/yup-3.2.0.tgz#b3bfa3fce6ccd51921e9bc90be90d3a178c30ff2"
   integrity sha512-iNVydznH51Sqdf0Q3RIbqQHAg9pulfW3b/XCKbZlDpKlzbkwLk7lv402+mVJ+YA7DST+2jGcUi2ORcjq/LP7DQ==

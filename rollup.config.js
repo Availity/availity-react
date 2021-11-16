@@ -4,7 +4,23 @@ import commonjs from '@rollup/plugin-commonjs';
 import typescript from 'rollup-plugin-typescript2';
 import postcss from 'rollup-plugin-postcss';
 
-const packages = ['icon', 'training-link'];
+// IMPORTANT: This order matters! This determines build order. Packages which are
+// dependencies must be built first (eg: help uses icon)
+const packages = [
+  'analytics',
+  'app-icon',
+  'avatar',
+  'breadcrumbs',
+  'icon',
+  'help',
+  'link',
+  'list-group',
+  'list-group-item',
+  'progress',
+  'step-wizard',
+  'training-link',
+  'typography',
+];
 
 // rollup.config.js
 /**

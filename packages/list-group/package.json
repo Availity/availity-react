@@ -3,11 +3,13 @@
   "version": "1.3.0",
   "author": "Evan Sharp <evan.sharp@availity.com>",
   "description": "List Group with some Availity flair",
-  "main": "index.js",
-  "types": "index.d.ts",
+  "main": "dist/index.js",
+  "module": "dist/index.js",
+  "types": "dist/index.d.ts",
   "keywords": [
     "react",
-    "availity"
+    "availity",
+    "list"
   ],
   "repository": {
     "type": "git",
@@ -21,8 +23,7 @@
     "access": "public"
   },
   "dependencies": {
-    "classnames": "^2.3.1",
-    "prop-types": "^15.7.2"
+    "classnames": "^2.3.1"
   },
   "devDependencies": {
     "react": "^17.0.2",

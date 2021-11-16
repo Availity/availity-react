@@ -1,3 +1,3 @@
-declare function useTimeout(ms?: number | 0): boolean;
+declare function useTimeout(ms?: number): boolean;
 
 export default useTimeout;

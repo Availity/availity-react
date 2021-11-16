@@ -1,10 +1,9 @@
 import React from 'react';
 import { Story, Meta } from '@storybook/react';
 import { Card, CardTitle } from 'reactstrap';
-import '@availity/favorites/style.scss';
 
-import Favorites from '../src/FavoritesContext';
-import FavoriteHeart from '../src/FavoriteHeart';
+import Favorites, { FavoriteHeart } from '..';
+import '../style.scss';
 // import README from '../README.md';
 
 import '@availity/mock';
