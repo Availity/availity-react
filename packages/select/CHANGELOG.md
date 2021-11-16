@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [2.1.2](https://github.com/Availity/availity-react/compare/@availity/select@2.1.1...@availity/select@2.1.2) (2021-11-16)
+
+
+### Bug Fixes
+
+* **select:** use withAsyncPaginate instead of SelectComponent prop for creatable AsyncPaginate selects ([b45b0d4](https://github.com/Availity/availity-react/commit/b45b0d4a4a041c3d8c35939fc7e6494bd96cf5b8))
+
+
+
+
+
 ## [2.1.1](https://github.com/Availity/availity-react/compare/@availity/select@2.1.0...@availity/select@2.1.1) (2021-11-15)
 
 
