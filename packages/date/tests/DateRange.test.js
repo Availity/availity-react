@@ -82,6 +82,112 @@ describe('DateRange', () => {
     });
   });
 
+  test('does not update formik with invalid format dates', async () => {
+    const onSubmit = jest.fn();
+
+    const { container, getByText } = render(
+      <Form
+        initialValues={{
+          dateRange: {
+            startDate: '',
+            endDate: '',
+          },
+        }}
+        onSubmit={onSubmit}
+      >
+        <DateRange id="dateRange" name="dateRange" format="MM/DD/YYYY" />
+        <Button type="submit">Submit</Button>
+      </Form>
+    );
+
+    // Simulate user entering start date
+    const start = container.querySelector('#dateRange-start');
+
+    fireEvent.focus(start);
+
+    fireEvent.change(start, {
+      target: {
+        value: '01-04-1997',
+      },
+    });
+
+    // Simulate user entering end date
+    const end = container.querySelector('#dateRange-end');
+
+    fireEvent.focus(start);
+
+    fireEvent.change(end, {
+      target: {
+        value: '01-05-1997',
+      },
+    });
+
+    // simulate submission
+    fireEvent.click(getByText('Submit'));
+
+    await waitFor(() => {
+      expect(onSubmit.mock.calls[0][0]).toEqual({
+        dateRange: {
+          startDate: '',
+          endDate: '',
+        },
+      });
+    });
+  });
+
+  test('updates formik with invalid dates with passThroughInvalidDates prop', async () => {
+    const onSubmit = jest.fn();
+
+    const { container, getByText } = render(
+      <Form
+        initialValues={{
+          dateRange: {
+            startDate: '',
+            endDate: '',
+          },
+        }}
+        onSubmit={onSubmit}
+      >
+        <DateRange id="dateRange" name="dateRange" format="MM/DD/YYYY" passThroughInvalidDates />
+        <Button type="submit">Submit</Button>
+      </Form>
+    );
+
+    // Simulate user entering start date
+    const start = container.querySelector('#dateRange-start');
+
+    fireEvent.focus(start);
+
+    fireEvent.change(start, {
+      target: {
+        value: '01-04-1997',
+      },
+    });
+
+    // Simulate user entering end date
+    const end = container.querySelector('#dateRange-end');
+
+    fireEvent.focus(end);
+
+    fireEvent.change(end, {
+      target: {
+        value: '01-05-1997',
+      },
+    });
+
+    // simulate submission
+    fireEvent.click(getByText('Submit'));
+
+    await waitFor(() => {
+      expect(onSubmit.mock.calls[0][0]).toEqual({
+        dateRange: {
+          startDate: '01-04-1997',
+          endDate: '01-05-1997',
+        },
+      });
+    });
+  });
+
   test('autoSync updates other value', async () => {
     const onSubmit = jest.fn();
 
