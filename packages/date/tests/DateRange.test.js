@@ -114,7 +114,7 @@ describe('DateRange', () => {
     // Simulate user entering end date
     const end = container.querySelector('#dateRange-end');
 
-    fireEvent.focus(start);
+    fireEvent.focus(end);
 
     fireEvent.change(end, {
       target: {
