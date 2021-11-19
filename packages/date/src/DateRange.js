@@ -2,7 +2,7 @@ import React, { useEffect, useMemo, useRef, useState } from 'react';
 import PropTypes from 'prop-types';
 import Icon from '@availity/icon';
 import { InputGroup, Input, Button, Row, Col } from 'reactstrap';
-import { DateRangePicker } from 'react-dates';
+import { DateRangePicker } from '@availity/react-dates';
 import classNames from 'classnames';
 import { useField, useFormikContext } from 'formik';
 import pick from 'lodash/pick';

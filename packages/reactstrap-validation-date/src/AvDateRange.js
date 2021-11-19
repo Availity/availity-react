@@ -5,8 +5,8 @@ import moment from 'moment';
 import pick from 'lodash/pick';
 import { inputType, isoDateFormat } from 'availity-reactstrap-validation/lib/AvValidator/utils';
 import { AvInput } from 'availity-reactstrap-validation';
-import { DateRangePicker } from 'react-dates';
-import 'react-dates/initialize';
+import { DateRangePicker } from '@availity/react-dates';
+import '@availity/react-dates/initialize';
 import classNames from 'classnames';
 import Icon from '@availity/icon';
 
