@@ -76,6 +76,7 @@ export default {
   args: {
     creatable: false,
     disabled: false,
+    helpMessage: 'This is a message to provide guidance',
     isMulti: false,
     min: 2,
     max: 3,
@@ -84,7 +85,7 @@ export default {
   },
 } as Meta;
 
-export const Default: Story = ({ autofill, creatable, disabled, isMulti, max, min, raw, required }) => (
+export const Default: Story = ({ autofill, creatable, disabled, helpMessage, isMulti, max, min, raw, required }) => (
   <FormikResults
     onSubmit={() => {
       console.log('submitted');
@@ -183,6 +184,7 @@ export const _SelectField: Story = ({
   creatable,
   disabled,
   helpId,
+  helpMessage,
   isMulti,
   label,
   max,
@@ -215,6 +217,7 @@ export const _SelectField: Story = ({
       raw={raw}
       isDisabled={disabled}
       helpId={helpId}
+      helpMessage={helpMessage}
     />
     {autofill && <Field name="autoFill1" type="text" label="Autofill Value 1" />}
     {autofill && <Field name="autoFill2" type="text" label="Autofill Value 2" />}
@@ -230,7 +233,17 @@ _SelectField.args = {
 };
 _SelectField.storyName = 'SelectField';
 
-export const _ResourceSelect: Story = ({ creatable, disabled, isMulti, label, max, min, raw, required }) => (
+export const _ResourceSelect: Story = ({
+  creatable,
+  disabled,
+  helpMessage,
+  isMulti,
+  label,
+  max,
+  min,
+  raw,
+  required,
+}) => (
   <FormikResults
     onSubmit={() => {
       console.log('submitted');
@@ -247,6 +260,7 @@ export const _ResourceSelect: Story = ({ creatable, disabled, isMulti, label, ma
       name="ResourceSelect"
       labelKey="name"
       maxLength={max}
+      helpMessage={helpMessage}
       isMulti={isMulti}
       raw={raw}
       required={required}
