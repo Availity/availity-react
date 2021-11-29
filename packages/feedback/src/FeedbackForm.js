@@ -211,7 +211,6 @@ const FeedbackForm = ({
               onClick={onClose}
               color="secondary"
               onKeyDown={({ keyCode }) => {
-                console.log(keyCode);
                 if (keyCode === 13) {
                   onClose();
                 }
