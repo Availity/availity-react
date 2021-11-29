@@ -98,7 +98,7 @@ describe('Feedback', () => {
   test('should focus FeedbackButton when enter is clicked', async () => {
     const onChange = jest.fn();
 
-    const { getByTestId, getByText, getByRole } = render(<Feedback appName="Test Space" formProps={{ onChange }} />);
+    const { getByTestId, getByText } = render(<Feedback appName="Test Space" formProps={{ onChange }} />);
 
     fireEvent.click(getByText('Give Feedback'));
 
@@ -119,7 +119,7 @@ describe('Feedback', () => {
   test('should close when first feedbackButton is shift+tabbed', async () => {
     const onClose = jest.fn();
 
-    const { getByTestId, getByText, getByRole } = render(<Feedback appName="Test Space" formProps={{ onClose }} />);
+    const { getByTestId, getByText } = render(<Feedback appName="Test Space" formProps={{ onClose }} />);
 
     fireEvent.click(getByText('Give Feedback'));
 
@@ -141,7 +141,7 @@ describe('Feedback', () => {
   test('should close when the close button is tabbed and give feedback is disabled', async () => {
     const onClose = jest.fn();
 
-    const { getByTestId, getByText, getByRole } = render(<Feedback appName="Test Space" formProps={{ onClose }} />);
+    const { getByTestId, getByText } = render(<Feedback appName="Test Space" formProps={{ onClose }} />);
 
     fireEvent.click(getByText('Give Feedback'));
 
@@ -162,7 +162,7 @@ describe('Feedback', () => {
   test('should not close when the close button is tabbed and give feedback is not disabled', async () => {
     const onClose = jest.fn();
 
-    const { getByTestId, getByText, getByRole } = render(<Feedback appName="Test Space" formProps={{ onClose }} />);
+    const { getByTestId, getByText } = render(<Feedback appName="Test Space" formProps={{ onClose }} />);
 
     fireEvent.click(getByText('Give Feedback'));
 
@@ -184,7 +184,7 @@ describe('Feedback', () => {
   test('should close when the send feedback button is tabbed', async () => {
     const onClose = jest.fn();
 
-    const { getByTestId, getByText, getByRole } = render(<Feedback appName="Test Space" formProps={{ onClose }} />);
+    const { getByTestId, getByText } = render(<Feedback appName="Test Space" formProps={{ onClose }} />);
 
     fireEvent.click(getByText('Give Feedback'));
 

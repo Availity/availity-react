@@ -13,7 +13,7 @@ const SmileField = ({ name, options, onChange, autoFocusFeedbackButton, onClose 
     <FeedbackButton
       autoFocus={i === 0 && autoFocusFeedbackButton}
       onKeyDown={(e) => {
-        if (e.shiftKey && e.keyCode == 9 && i === 0) {
+        if (e.shiftKey && e.keyCode === 9 && i === 0) {
           onClose();
         }
         if (e.keyCode === 13) {
