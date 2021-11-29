@@ -22,7 +22,11 @@ const ActionCell = ({ actions, primaryAction }) => {
         ))}
       </TableActionMenu>
       {primaryAction && (
-        <Icon name={primaryAction.iconName} title={primaryAction.title} onClick={primaryAction.onClick} />
+        <Icon
+          name={primaryAction.iconName}
+          title={primaryAction.title}
+          onClick={() => primaryAction.onClick(original)}
+        />
       )}
     </>
   );
