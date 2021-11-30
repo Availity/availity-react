@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## 2.1.2 (2021-11-30)
+
+
+### Bug Fixes
+
+* **mock:** add null checks ([fe32ec4](https://github.com/Availity/availity-react/commit/fe32ec4a9984b5630680982c0c07ff123eadaaf0))
+
+
+
+
+
 ## 2.1.1 (2021-10-28)
 
 
