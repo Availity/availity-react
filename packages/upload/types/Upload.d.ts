@@ -1,23 +1,25 @@
 import { FileError } from 'react-dropzone/typings/react-dropzone';
 
 export interface UploadProps {
-  btnText?: React.ReactType;
-  bucketId: string;
-  customerId: string;
-  clientId: string;
   allowedFileNameCharacters?: string;
   allowedFileTypes?: string[];
-  onFileUpload?: Function;
-  onFileRemove?: Function;
-  maxSize?: number;
-  max?: number;
-  onFilePreUpload?: Array<Function>;
-  multiple?: boolean;
+  btnText?: React.ReactNode;
+  bucketId: string;
   children?: Function;
-  name?: string;
-  showFileDrop?: boolean;
+  clientId: string;
+  customerId: string;
+  disabled?: boolean;
   getDropRejectionMessage?: (errors: FileError[], file: File) => string;
+  max?: number;
+  maxSize?: number;
+  multiple?: boolean;
+  name?: string;
+  onFilePreUpload?: Function[];
+  onFileRemove?: Function;
+  onFileUpload?: Function;
   onPasswordSubmit?: Function;
+  passwordModalZIndex?: number | string;
+  showFileDrop?: boolean;
 }
 
 declare const Upload: React.ComponentType<UploadProps>;

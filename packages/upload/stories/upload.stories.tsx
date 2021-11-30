@@ -5,7 +5,7 @@ import mock from 'xhr-mock';
 
 import Upload, { FilePicker, FilePickerBtn } from '..';
 // import README from '../README.md';
-import MockUpload from '../tests/mockUpload';
+// import MockUpload from '../tests/mockUpload';
 
 const log = window.console.log.bind(console);
 mock.post(/\/ms\/api\/availity\/internal\/core\/vault\/upload\/v1\/resumable\/[^/]\//, (req, res) =>
@@ -54,12 +54,12 @@ mock.use('HEAD', /\/ms\/api\/availity\/internal\/core\/vault\/upload\/v1\/resuma
 // let instance;
 export default {
   title: 'Components/Upload',
-  decorators: [
-    (story) => {
-      instance = new MockUpload();
-      return story();
-    },
-  ],
+  // decorators: [
+  //   (story) => {
+  //     instance = new MockUpload();
+  //     return story();
+  //   },
+  // ],
   parameters: {
     docs: {
       // page: README,
