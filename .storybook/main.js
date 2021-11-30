@@ -17,6 +17,7 @@ module.exports = {
       options: {
         presets: [['react-app', { flow: false, typescript: true }]],
       },
+      include: new RegExp(`node_modules[/\\\\](?=(@availity)).*`),
     });
     config.resolve.extensions.push('.ts', '.tsx');
 
