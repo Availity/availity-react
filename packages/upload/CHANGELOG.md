@@ -3,6 +3,14 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## 3.2.1 (2021-11-30)
+
+**Note:** Version bump only for package @availity/upload
+
+
+
+
+
 # [3.2.0](https://github.com/Availity/availity-react/compare/@availity/upload@3.1.6...@availity/upload@3.2.0) (2021-11-15)
 
 
