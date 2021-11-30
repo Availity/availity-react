@@ -8,19 +8,18 @@ export default (mock) => {
     let resp = {};
     const body = JSON.parse(req._body);
 
-    if (body.query && body.query.indexOf('patientPagination') > -1) {
+    if (body.query?.indexOf('patientPagination') > -1) {
       resp = patients;
     }
 
     if (
-      body.variables &&
-      ((body.variables.filters.ids && body.variables.filters.ids.some((id) => id === 'space1')) ||
-        (body.variables.filters.payerIds && body.variables.filters.payerIds.some((id) => id === 'availity1')))
+      body.variables?.filters?.ids?.some((id) => id === 'space1') ||
+      body.variables?.filters?.payerIds?.some((id) => id === 'availity1')
     ) {
       resp = availitySpacesResponse;
-    } else if (body.variables && body.variables.filters.payerIds) {
+    } else if (body.variables?.filters?.payerIds) {
       resp = space1;
-    } else if (body.variables && body.variables.filters.ids) {
+    } else if (body.variables?.filters?.ids) {
       resp = space2;
     }
 
