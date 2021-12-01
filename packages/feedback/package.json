@@ -1,6 +1,6 @@
 {
   "name": "@availity/feedback",
-  "version": "6.2.4",
+  "version": "6.2.5",
   "author": "Evan Sharp <evan.sharp@availity.com>",
   "description": "Availity feedback with smiley faces react component.",
   "main": "index.js",
