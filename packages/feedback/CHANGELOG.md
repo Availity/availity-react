@@ -3,6 +3,18 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [6.2.5](https://github.com/Availity/availity-react/compare/@availity/feedback@6.2.4...@availity/feedback@6.2.5) (2021-12-01)
+
+
+### Bug Fixes
+
+* **feedback:** added keyDown for tabbing out to close dropdown ([afa0ce8](https://github.com/Availity/availity-react/commit/afa0ce8d6c4116a1c6ede611025bf2c794129d8b))
+* **feedback:** removed console log ([df6b146](https://github.com/Availity/availity-react/commit/df6b146ae66560777d797c0399dbf9b2db189e47))
+
+
+
+
+
 ## [6.2.4](https://github.com/Availity/availity-react/compare/@availity/feedback@6.2.3...@availity/feedback@6.2.4) (2021-11-30)
 
 **Note:** Version bump only for package @availity/feedback
