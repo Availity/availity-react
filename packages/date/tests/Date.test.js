@@ -231,7 +231,7 @@ describe('Date', () => {
     const onChange = jest.fn();
 
     const min = moment('12/01/2020').subtract(1, 'years');
-    const max = moment('12/31/2021');
+    const max = moment().add(1, 'years');
     const newYear = `${max.year() + 1}`;
 
     const { container, getAllByTestId } = render(
