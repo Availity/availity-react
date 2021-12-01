@@ -151,6 +151,7 @@ const FeedbackForm = ({
               options={faceOptions}
               name="smileField"
               onChange={(option) => setActive(option)}
+              onClose={onClose}
               autoFocusFeedbackButton={autoFocusFeedbackButton}
             />
           </FormGroup>
@@ -206,12 +207,32 @@ const FeedbackForm = ({
           ) : null}
 
           {onClose ? (
-            <Button onClick={onClose} color="secondary" onKeyDown={({ keyCode }) => keyCode === 13 && onClose()}>
+            <Button
+              onClick={onClose}
+              color="secondary"
+              onKeyDown={({ keyCode }) => {
+                if (keyCode === 13) {
+                  onClose();
+                }
+                if (keyCode === 9 && !active) {
+                  onClose();
+                }
+              }}
+            >
               Close
             </Button>
           ) : null}
 
-          <Button type="submit" color="primary" disabled={!active}>
+          <Button
+            onKeyDown={({ keyCode }) => {
+              if (keyCode === 9) {
+                onClose();
+              }
+            }}
+            type="submit"
+            color="primary"
+            disabled={!active}
+          >
             Send Feedback
           </Button>
         </ModalFooter>
