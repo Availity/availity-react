@@ -125,7 +125,7 @@
     "@algolia/logger-common" "4.11.0"
     "@algolia/requester-common" "4.11.0"
 
-"@availity/analytics-core@^3.1.2":
+"@availity/analytics-core@^3.1.5":
   version "3.1.5"
   resolved "https://registry.yarnpkg.com/@availity/analytics-core/-/analytics-core-3.1.5.tgz#eb8a54c8d5ae476784c022f35622a1054c025176"
   integrity sha512-ftm9ABUZhzs5/kWHD5wdHFL/T/RitKn21Yekao1Knq7up/lL9la4Ng6X5TAEJt/QZuNjzUkuAVz4TWZkkaHZag==
@@ -187,7 +187,7 @@
     core-js "^3.12.1"
     tus-js-client "1.7.1"
 
-"@availity/yup@3.2.0", "@availity/yup@^3.2.0":
+"@availity/yup@^3.2.0":
   version "3.2.0"
   resolved "https://registry.yarnpkg.com/@availity/yup/-/yup-3.2.0.tgz#b3bfa3fce6ccd51921e9bc90be90d3a178c30ff2"
   integrity sha512-iNVydznH51Sqdf0Q3RIbqQHAg9pulfW3b/XCKbZlDpKlzbkwLk7lv402+mVJ+YA7DST+2jGcUi2ORcjq/LP7DQ==
