@@ -210,7 +210,7 @@ const FeedbackForm = ({
             <Button
               onClick={onClose}
               color="secondary"
-              onKeyDown={(keyCode, shiftKey) => {
+              onKeyDown={({keyCode, shiftKey}) => {
                 if (keyCode === 13) {
                   onClose();
                 }
