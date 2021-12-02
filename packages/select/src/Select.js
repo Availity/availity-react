@@ -74,6 +74,8 @@ const Select = ({
   creatable,
   allowSelectAll,
   waitUntilFocused,
+  helpMessage,
+  feedback,
   ...attributes
 }) => {
   const [{ onChange, value: fieldValue, ...field }, { touched, error: hasError }] = useField({
@@ -89,6 +91,15 @@ const Select = ({
   if (!Array.isArray(_cacheUniq)) {
     _cacheUniq = [_cacheUniq];
   }
+
+  attributes.placeholder = (
+    <>
+      {attributes.placeholder || 'Select...'}
+      <span className="sr-only">
+        {(touched && hasError) || null} {helpMessage || null}
+      </span>
+    </>
+  );
 
   const getOptionLabel = (option) => {
     if (option.__isNew__) {
@@ -267,6 +278,8 @@ const Select = ({
       getOptionLabel={getOptionLabel}
       getOptionValue={getOptionValue}
       closeMenuOnSelect={!attributes.isMulti}
+      aria-invalid={hasError && touched}
+      aria-errormessage={feedback && fieldValue && hasError && touched ? `${name}-feedback`.toLowerCase() : ''}
       components={components}
       options={selectOptions}
       defaultOptions={waitUntilFocused ? [] : true}
@@ -382,6 +395,8 @@ Select.propTypes = {
   autofill: PropTypes.oneOfType([PropTypes.bool, PropTypes.object]),
   allowSelectAll: PropTypes.bool,
   waitUntilFocused: PropTypes.bool,
+  helpMessage: PropTypes.string,
+  feedback: PropTypes.bool,
 };
 
 components.Option.propTypes = {

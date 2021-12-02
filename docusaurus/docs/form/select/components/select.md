@@ -83,6 +83,14 @@ The key of the value to return when selected. **Default:** `"value"`
 
 The key of the label to render in the dropdown for the user to see. **Default:** `"label"`
 
+#### `helpMessage?: string`
+
+Adds hidden help message to placeholder so it is read with `aria-describedby` (should match visible help message).
+
+#### `feedback?: boolean`
+
+Will add default `<Feedback />` id to `aria-errormessage`.
+
 #### `maxLength?: number`
 
 The maximum number of options that can be selected ( when `isMulti` is `true`)

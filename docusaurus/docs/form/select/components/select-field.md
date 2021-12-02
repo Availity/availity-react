@@ -67,6 +67,10 @@ Class names to pass to the `Label`.
 
 Help topic id, adds `<FieldHelpIcon/>` next to the label (should not be within label for accessibility).
 
+#### `helpMessage?: string`
+
+Adds help message below input.
+
 #### `required?: boolean`
 
 Will add `<RequiredAsterisk />` to label.
