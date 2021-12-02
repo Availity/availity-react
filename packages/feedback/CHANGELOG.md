@@ -3,6 +3,19 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [6.2.6](https://github.com/Availity/availity-react/compare/@availity/feedback@6.2.5...@availity/feedback@6.2.6) (2021-12-02)
+
+
+### Bug Fixes
+
+* **feedback:** added destructering for event ([a8110d7](https://github.com/Availity/availity-react/commit/a8110d7c2d118d4e14fb142f6002790b635593c9))
+* **feedback:** fix typo ([9adfd42](https://github.com/Availity/availity-react/commit/9adfd42264eb64d57c976b6118e794a9be36a605))
+* **feedback:** fixed shift tab closing dropdown issue ([06aad38](https://github.com/Availity/availity-react/commit/06aad384f87e8e3a75fc469f30a0795cfee242ce))
+
+
+
+
+
 ## [6.2.5](https://github.com/Availity/availity-react/compare/@availity/feedback@6.2.4...@availity/feedback@6.2.5) (2021-12-01)
 
 
