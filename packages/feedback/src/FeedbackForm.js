@@ -210,11 +210,11 @@ const FeedbackForm = ({
             <Button
               onClick={onClose}
               color="secondary"
-              onKeyDown={(e) => {
-                if (e.keyCode === 13) {
+              onKeyDown={(keyCode, shiftKey) => {
+                if (keyCode === 13) {
                   onClose();
                 }
-                if (e.keyCode === 9 && !active && !e.shiftKey) {
+                if (keyCode === 9 && !active && !shiftKey) {
                   onClose();
                 }
               }}
@@ -224,8 +224,8 @@ const FeedbackForm = ({
           ) : null}
 
           <Button
-            onKeyDown={(e) => {
-              if (e.keyCode === 9 && !e.shiftKey) {
+            onKeyDown={({keyCode, shiftKey}) => {
+              if (keyCode === 9 && !shiftKey) {
                 onClose();
               }
             }}
