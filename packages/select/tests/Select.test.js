@@ -748,7 +748,7 @@ describe('Select', () => {
       </Form>
     );
 
-    await fireEvent.click(getByText('Submit'));
+    fireEvent.click(getByText('Submit'));
 
     await waitFor(() => {
       const hiddenPlaceholderMessage = container.querySelector('.av__placeholder .sr-only');
@@ -775,7 +775,7 @@ describe('Select', () => {
       </Form>
     );
 
-    await fireEvent.click(getByText('Submit'));
+    fireEvent.click(getByText('Submit'));
 
     await waitFor(() => {
       const hiddenPlaceholderMessage = container.querySelector('.av__placeholder .sr-only');
@@ -806,7 +806,7 @@ describe('Select', () => {
 
     await selectItem(container, getByText, 'Option 1');
 
-    await fireEvent.click(getByText('Submit'));
+    fireEvent.click(getByText('Submit'));
 
     await waitFor(() => {
       expect(select).toHaveAttribute('aria-invalid', 'true');
@@ -815,7 +815,7 @@ describe('Select', () => {
 
     await selectItem(container, getByText, 'Option 2');
 
-    await fireEvent.click(getByText('Submit'));
+    fireEvent.click(getByText('Submit'));
 
     await waitFor(() => {
       expect(select).not.toHaveAttribute('aria-invalid');

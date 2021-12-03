@@ -76,6 +76,7 @@ const Select = ({
   waitUntilFocused,
   helpMessage,
   feedback,
+  placeholder,
   ...attributes
 }) => {
   const [{ onChange, value: fieldValue, ...field }, { touched, error: hasError }] = useField({
@@ -92,9 +93,9 @@ const Select = ({
     _cacheUniq = [_cacheUniq];
   }
 
-  attributes.placeholder = (
+  placeholder = (
     <>
-      {attributes.placeholder || 'Select...'}
+      {placeholder || 'Select...'}
       <span className="sr-only">
         {(touched && hasError) || null} {helpMessage || null}
       </span>
@@ -280,6 +281,7 @@ const Select = ({
       closeMenuOnSelect={!attributes.isMulti}
       aria-invalid={hasError && touched}
       aria-errormessage={feedback && fieldValue && hasError && touched ? `${name}-feedback`.toLowerCase() : ''}
+      placeholder={placeholder}
       components={components}
       options={selectOptions}
       defaultOptions={waitUntilFocused ? [] : true}
@@ -397,6 +399,7 @@ Select.propTypes = {
   waitUntilFocused: PropTypes.bool,
   helpMessage: PropTypes.string,
   feedback: PropTypes.bool,
+  placeholder: PropTypes.string,
 };
 
 components.Option.propTypes = {
