@@ -79,7 +79,7 @@ const Select = ({
   placeholder,
   ...attributes
 }) => {
-  const [{ onChange, value: fieldValue, ...field }, { touched, error }] = useField({
+  const [{ onChange, value: fieldValue, ...field }, { touched, error: fieldError }] = useField({
     name,
     validate,
   });
@@ -97,7 +97,7 @@ const Select = ({
     <>
       {placeholder || 'Select...'}
       <span className="sr-only">
-        {(touched && error) || null} {helpMessage || null}
+        {(touched && fieldError) || null} {helpMessage || null}
       </span>
     </>
   );
@@ -273,14 +273,14 @@ const Select = ({
         className,
         'av-select',
         touched ? 'is-touched' : 'is-untouched',
-        error ? 'av-invalid' : 'av-valid',
-        touched && error && 'is-invalid'
+        fieldError ? 'av-invalid' : 'av-valid',
+        touched && fieldError && 'is-invalid'
       )}
       getOptionLabel={getOptionLabel}
       getOptionValue={getOptionValue}
       closeMenuOnSelect={!attributes.isMulti}
-      aria-invalid={error && touched}
-      aria-errormessage={feedback && fieldValue && error && touched ? `${name}-feedback`.toLowerCase() : ''}
+      aria-invalid={fieldError && touched}
+      aria-errormessage={feedback && fieldValue && fieldError && touched ? `${name}-feedback`.toLowerCase() : ''}
       placeholder={placeholder}
       components={components}
       options={selectOptions}
@@ -295,7 +295,7 @@ const Select = ({
               borderColor: '#ced4da',
             };
           }
-          const showError = touched && error && !state.focused;
+          const showError = touched && fieldError && !state.focused;
 
           return {
             ...provided,
@@ -320,7 +320,7 @@ const Select = ({
               backgroundColor: '#e9ecef',
             };
           }
-          const showError = touched && error;
+          const showError = touched && fieldError;
 
           return {
             ...provided,
@@ -350,7 +350,7 @@ const Select = ({
           if (state.isDisabled) {
             return provided;
           }
-          const showError = touched && error && !state.focused;
+          const showError = touched && fieldError && !state.focused;
 
           return {
             ...provided,
