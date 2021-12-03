@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { SingleDatePickerShape } from 'react-dates';
+import { SingleDatePickerShape } from '@availity/react-dates';
 import { FieldValidator } from 'formik';
 
 export type limitType = {

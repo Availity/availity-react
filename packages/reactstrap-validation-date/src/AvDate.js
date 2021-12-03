@@ -1,11 +1,11 @@
 /* eslint-disable react/default-props-match-prop-types */
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import { SingleDatePicker } from 'react-dates';
+import { SingleDatePicker } from '@availity/react-dates';
 import { InputGroup } from 'reactstrap';
 import classNames from 'classnames';
 import moment from 'moment';
-import 'react-dates/initialize';
+import '@availity/react-dates/initialize';
 import '../polyfills';
 
 import { inputType, isoDateFormat } from 'availity-reactstrap-validation/lib/AvValidator/utils';
