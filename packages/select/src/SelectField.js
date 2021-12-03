@@ -43,7 +43,7 @@ const SelectField = ({
   return (
     <FormGroup className={groupClass} for={name} disabled={attributes.disabled}>
       {thisLabel}
-      <Select name={name} feedback required={required} {...attributes} />
+      <Select name={name} feedback helpMessage={helpMessage} required={required} {...attributes} />
       <Feedback className={classNames('d-block', feedbackClass)} name={name} />
       {helpMessage ? <FormText id={`${name}-helpmessage`.toLowerCase()}>{helpMessage}</FormText> : null}
     </FormGroup>

@@ -74,9 +74,12 @@ const Select = ({
   creatable,
   allowSelectAll,
   waitUntilFocused,
+  helpMessage,
+  feedback,
+  placeholder,
   ...attributes
 }) => {
-  const [{ onChange, value: fieldValue, ...field }, { touched, error: hasError }] = useField({
+  const [{ onChange, value: fieldValue, ...field }, { touched, error: fieldError }] = useField({
     name,
     validate,
   });
@@ -89,6 +92,15 @@ const Select = ({
   if (!Array.isArray(_cacheUniq)) {
     _cacheUniq = [_cacheUniq];
   }
+
+  placeholder = (
+    <>
+      {placeholder || 'Select...'}
+      <span className="sr-only">
+        {(touched && fieldError) || null} {helpMessage || null}
+      </span>
+    </>
+  );
 
   const getOptionLabel = (option) => {
     if (option.__isNew__) {
@@ -261,12 +273,15 @@ const Select = ({
         className,
         'av-select',
         touched ? 'is-touched' : 'is-untouched',
-        hasError ? 'av-invalid' : 'av-valid',
-        touched && hasError && 'is-invalid'
+        fieldError ? 'av-invalid' : 'av-valid',
+        touched && fieldError && 'is-invalid'
       )}
       getOptionLabel={getOptionLabel}
       getOptionValue={getOptionValue}
       closeMenuOnSelect={!attributes.isMulti}
+      aria-invalid={fieldError && touched}
+      aria-errormessage={feedback && fieldValue && fieldError && touched ? `${name}-feedback`.toLowerCase() : ''}
+      placeholder={placeholder}
       components={components}
       options={selectOptions}
       defaultOptions={waitUntilFocused ? [] : true}
@@ -280,7 +295,7 @@ const Select = ({
               borderColor: '#ced4da',
             };
           }
-          const showError = touched && hasError && !state.focused;
+          const showError = touched && fieldError && !state.focused;
 
           return {
             ...provided,
@@ -305,7 +320,7 @@ const Select = ({
               backgroundColor: '#e9ecef',
             };
           }
-          const showError = touched && hasError;
+          const showError = touched && fieldError;
 
           return {
             ...provided,
@@ -335,7 +350,7 @@ const Select = ({
           if (state.isDisabled) {
             return provided;
           }
-          const showError = touched && hasError && !state.focused;
+          const showError = touched && fieldError && !state.focused;
 
           return {
             ...provided,
@@ -382,6 +397,9 @@ Select.propTypes = {
   autofill: PropTypes.oneOfType([PropTypes.bool, PropTypes.object]),
   allowSelectAll: PropTypes.bool,
   waitUntilFocused: PropTypes.bool,
+  helpMessage: PropTypes.string,
+  feedback: PropTypes.bool,
+  placeholder: PropTypes.string,
 };
 
 components.Option.propTypes = {

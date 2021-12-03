@@ -734,4 +734,92 @@ describe('Select', () => {
       expect(optionOne).toHaveAttribute('name');
     });
   });
+  test('renders error message in placeholder with invalid', async () => {
+    const { container, getByText } = render(
+      <Form
+        initialValues={{
+          singleSelect: undefined,
+        }}
+        onSubmit={() => {}}
+        validationSchema={singleValueSchema('singleSelect')}
+      >
+        <Select name="singleSelect" options={options} data-testid="single-select" />
+        <Button type="submit">Submit</Button>
+      </Form>
+    );
+
+    fireEvent.click(getByText('Submit'));
+
+    await waitFor(() => {
+      const hiddenPlaceholderMessage = container.querySelector('.av__placeholder .sr-only');
+
+      expect(hiddenPlaceholderMessage.innerHTML).toContain('This field is required.');
+    });
+  });
+  test('renders help message in placeholder', async () => {
+    const { container, getByText } = render(
+      <Form
+        initialValues={{
+          singleSelect: undefined,
+        }}
+        onSubmit={() => {}}
+        validationSchema={singleValueSchema('singleSelect')}
+      >
+        <Select
+          name="singleSelect"
+          options={options}
+          helpMessage="This is a help message."
+          data-testid="single-select"
+        />
+        <Button type="submit">Submit</Button>
+      </Form>
+    );
+
+    fireEvent.click(getByText('Submit'));
+
+    await waitFor(() => {
+      const hiddenPlaceholderMessage = container.querySelector('.av__placeholder .sr-only');
+
+      expect(hiddenPlaceholderMessage.innerHTML).toContain('This is a help message.');
+    });
+  });
+
+  test('renders aria attributes when invalid', async () => {
+    const onSubmit = jest.fn();
+    const { container, getByText } = render(
+      <Form
+        initialValues={{
+          multiSelect: undefined,
+        }}
+        onSubmit={onSubmit}
+        validationSchema={multiValueSchema('multiSelect', true, 2, 3)}
+      >
+        <Select name="multiSelect" isMulti feedback options={options} data-testid="multi-select" />
+        <Button type="submit">Submit</Button>
+      </Form>
+    );
+
+    const select = container.querySelector('.av__input');
+
+    expect(select).not.toHaveAttribute('aria-invalid');
+    expect(select).toHaveAttribute('aria-errormessage', '');
+
+    await selectItem(container, getByText, 'Option 1');
+
+    fireEvent.click(getByText('Submit'));
+
+    await waitFor(() => {
+      expect(select).toHaveAttribute('aria-invalid', 'true');
+      expect(select).toHaveAttribute('aria-errormessage', 'multiselect-feedback');
+    });
+
+    await selectItem(container, getByText, 'Option 2');
+
+    fireEvent.click(getByText('Submit'));
+
+    await waitFor(() => {
+      expect(select).not.toHaveAttribute('aria-invalid');
+      expect(select).toHaveAttribute('aria-errormessage', '');
+    });
+  });
 });
