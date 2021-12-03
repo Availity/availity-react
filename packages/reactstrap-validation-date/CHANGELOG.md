@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## 4.2.1 (2021-12-03)
+
+
+### Bug Fixes
+
+* **reactstrap-validation-date,date:** replaced react-dates with availity version for accessibility fixes ([63fb249](https://github.com/Availity/availity-react/commit/63fb249575044b1465755e1067e426d99e845429))
+
+
+
+
+
 # [4.2.0](https://github.com/Availity/availity-react/compare/@availity/reactstrap-validation-date@4.1.5...@availity/reactstrap-validation-date@4.2.0) (2021-11-15)
 
 
