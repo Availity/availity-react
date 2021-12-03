@@ -1,9 +1,8 @@
 import React from 'react';
 import { Meta, Story } from '@storybook/react';
 import response from '@availity/mock/data/patients.json';
-
-import Table, { ActionCell, BadgeCell, DateCell, ScrollableContainer } from '..';
-// import README from '../README.md';
+import Table, { TableContextProvider, ScrollableContainer, TableControls } from '../src';
+;
 import '../styles.scss';
 
 import '@availity/mock';
@@ -21,49 +20,49 @@ const columns = [
     defaultCanSort: true,
     disableSortBy: false,
   },
-  {
-    Header: 'Birth Date',
-    accessor: 'birthDate',
-    defaultCanSort: true,
-    disableSortBy: false,
-    Cell: DateCell({ dateFormat: 'MM/DD/yyyy' }),
-  },
-  {
-    Header: 'Subscriber Relationship',
-    accessor: 'subscriberRelationship',
-    defaultCanSort: true,
-    disableSortBy: false,
-    Cell: BadgeCell('primary'),
-  },
-  {
-    id: 'actions',
-    Header: 'Actions',
-    className: 'action-column',
-    Cell: ActionCell({
-      actions: [
-        {
-          id: 'action1',
-          displayText: 'Action 1',
-          onClick: (record) => {
-            // eslint-disable-next-line no-console
-            console.log(`action on record ${record.id}`);
-          },
-        },
-        {
-          id: 'actionDivider',
-          divider: true,
-        },
-        {
-          id: 'action2',
-          displayText: 'Action 2',
-          onClick: (record) => {
-            // eslint-disable-next-line no-console
-            console.log(`action on record ${record.id}`);
-          },
-        },
-      ],
-    }),
-  },
+  // {
+  //   Header: 'Birth Date',
+  //   accessor: 'birthDate',
+  //   defaultCanSort: true,
+  //   disableSortBy: false,
+  //   Cell: DateCell({ dateFormat: 'MM/DD/yyyy' }),
+  // },
+  // {
+  //   Header: 'Subscriber Relationship',
+  //   accessor: 'subscriberRelationship',
+  //   defaultCanSort: true,
+  //   disableSortBy: false,
+  //   Cell: BadgeCell('primary'),
+  // },
+  // {
+  //   id: 'actions',
+  //   Header: 'Actions',
+  //   className: 'action-column',
+  //   Cell: ActionCell({
+  //     actions: [
+  //       {
+  //         id: 'action1',
+  //         displayText: 'Action 1',
+  //         onClick: (record: any) => {
+  //           // eslint-disable-next-line no-console
+  //           console.log(`action on record ${record?.id}`);
+  //         },
+  //       },
+  //       {
+  //         id: 'actionDivider',
+  //         divider: true,
+  //       },
+  //       {
+  //         id: 'action2',
+  //         displayText: 'Action 2',
+  //         onClick: (record: any) => {
+  //           // eslint-disable-next-line no-console
+  //           console.log(`action on record ${record?.id}`);
+  //         },
+  //       },
+  //     ],
+  //   }),
+  // },
 ];
 
 export default {
@@ -84,18 +83,22 @@ export const Default: Story = ({
   rowProps,
   cellProps,
   bodyProps,
-}) => (
-  <Table
-    sortable={sortable}
-    selectable={selectable}
-    columns={columns}
-    records={data}
-    headerProps={headerProps}
-    rowProps={rowProps}
-    cellProps={cellProps}
-    bodyProps={bodyProps}
-  />
-);
+}: any) => {
+  return (
+    <TableContextProvider
+      sortable={sortable}
+      selectable={selectable}
+      columns={columns}
+      records={data}
+    >
+      <Table
+        headerProps={headerProps}
+        rowProps={rowProps}
+        cellProps={cellProps}
+        bodyProps={bodyProps}
+      />
+    </TableContextProvider>)
+};
 Default.args = {
   sortable: false,
   selectable: false,
@@ -119,16 +122,19 @@ export const WithScrollableContainer: Story = ({
   bodyProps,
 }) => (
   <ScrollableContainer>
-    <Table
+    <TableContextProvider
       sortable={sortable}
       selectable={selectable}
       columns={columns}
       records={data}
-      headerProps={headerProps}
-      rowProps={rowProps}
-      cellProps={cellProps}
-      bodyProps={bodyProps}
-    />
+    >
+      <Table
+        headerProps={headerProps}
+        rowProps={rowProps}
+        cellProps={cellProps}
+        bodyProps={bodyProps}
+      />
+    </TableContextProvider>
   </ScrollableContainer>
 );
 WithScrollableContainer.args = {
@@ -142,3 +148,44 @@ WithScrollableContainer.args = {
   bodyProps: { style: {} },
 };
 WithScrollableContainer.storyName = 'with scrollable container';
+
+
+export const WithTableControls: Story = ({
+  sortable,
+  selectable,
+  columns,
+  data,
+  headerProps,
+  rowProps,
+  cellProps,
+  bodyProps,
+}) => (
+
+  <TableContextProvider
+    sortable={sortable}
+    selectable={selectable}
+    columns={columns}
+    records={data}
+  >
+    <TableControls>
+      <div>table controls</div>
+    </TableControls>
+    <Table
+      headerProps={headerProps}
+      rowProps={rowProps}
+      cellProps={cellProps}
+      bodyProps={bodyProps}
+    />
+  </TableContextProvider>
+);
+WithTableControls.args = {
+  sortable: false,
+  selectable: false,
+  columns,
+  data: response.data.patientPagination.items,
+  headerProps: { style: { background: 'pink' } },
+  rowProps: { style: {} },
+  cellProps: { style: {} },
+  bodyProps: { style: {} },
+};
+WithTableControls.storyName = 'with table controls';
