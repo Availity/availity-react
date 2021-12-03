@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## 6.2.7 (2021-12-03)
+
+
+### Bug Fixes
+
+* **feedback:** modal no longer closes when tabbed ([7ce4f53](https://github.com/Availity/availity-react/commit/7ce4f53f7e86ba2aeee79db606338bca251c89ff))
+
+
+
+
+
 ## [6.2.6](https://github.com/Availity/availity-react/compare/@availity/feedback@6.2.5...@availity/feedback@6.2.6) (2021-12-02)
 
 
