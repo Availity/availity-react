@@ -40,6 +40,7 @@ const FeedbackForm = ({
   showSupport,
   setSupportIsActive,
   autoFocusFeedbackButton,
+  modal,
   ...formProps
 }) => {
   const [active, setActive] = useState(null);
@@ -153,6 +154,7 @@ const FeedbackForm = ({
               onChange={(option) => setActive(option)}
               onClose={onClose}
               autoFocusFeedbackButton={autoFocusFeedbackButton}
+              modal={modal}
             />
           </FormGroup>
 
@@ -214,7 +216,7 @@ const FeedbackForm = ({
                 if (keyCode === 13) {
                   onClose();
                 }
-                if (keyCode === 9 && !active && !shiftKey) {
+                if (keyCode === 9 && !active && !shiftKey && !modal) {
                   onClose();
                 }
               }}
@@ -225,7 +227,7 @@ const FeedbackForm = ({
 
           <Button
             onKeyDown={({keyCode, shiftKey}) => {
-              if (keyCode === 9 && !shiftKey) {
+              if (keyCode === 9 && !shiftKey && !modal) {
                 onClose();
               }
             }}
@@ -269,6 +271,7 @@ FeedbackForm.propTypes = {
   showSupport: PropTypes.bool,
   setSupportIsActive: PropTypes.func,
   autoFocusFeedbackButton: PropTypes.bool,
+  modal: PropTypes.bool
 };
 
 FeedbackForm.defaultProps = {
@@ -277,6 +280,7 @@ FeedbackForm.defaultProps = {
   additionalComments: false,
   analytics: avLogMessagesApi,
   showSupport: false,
+  modal: true
 };
 
 export default FeedbackForm;
