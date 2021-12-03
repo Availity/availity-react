@@ -5,7 +5,7 @@ import FeedbackButton from './FeedbackButton';
 
 const btnStyles = { flex: 1, margin: '0 2% 0 2%' };
 
-const SmileField = ({ name, options, onChange, autoFocusFeedbackButton, onClose }) => {
+const SmileField = ({ name, options, onChange, autoFocusFeedbackButton, onClose, modal }) => {
   const [{ value }] = useField(name);
   const { setFieldValue } = useFormikContext();
 
@@ -13,7 +13,7 @@ const SmileField = ({ name, options, onChange, autoFocusFeedbackButton, onClose 
     <FeedbackButton
       autoFocus={i === 0 && autoFocusFeedbackButton}
       onKeyDown={(e) => {
-        if (e.shiftKey && e.keyCode === 9 && i === 0) {
+        if (e.shiftKey && e.keyCode === 9 && i === 0 && !modal) {
           onClose();
         }
         if (e.keyCode === 13) {
@@ -52,6 +52,7 @@ SmileField.propTypes = {
   ),
   onChange: PropTypes.func,
   autoFocusFeedbackButton: PropTypes.bool,
+  modal: PropTypes.bool
 };
 
 SmileField.defaultProps = {

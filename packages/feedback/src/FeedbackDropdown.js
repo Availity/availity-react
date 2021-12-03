@@ -42,6 +42,7 @@ const FeedbackDropdown = ({
       onClose={toggle}
       showSupport={showSupport}
       setSupportIsActive={setSupportIsActive}
+      modal={modal}
       {...formProps}
     />
   );
