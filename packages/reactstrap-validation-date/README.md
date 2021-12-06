@@ -59,7 +59,6 @@ This is the underlying date without the `AvGroup`, `Label` or `AvFeedback`
 See availity-reactstrap-validation for additional props, such as `name`, `validate`, `min`, `max`, and more.
 
 - **`datepicker`**: Boolean. Optional. Default: `true`. If `true`, the date picker button will be shown, clicking it activates the datepicker calendar. If `false`, only the date input field will be displayed (useful for date of birth fields).
-- **`calendarIcon`**: Node. Optional. Default: `<Icon name="calendar" />`. You can optional change the icon the calendar renders in the case you don't use the `availity-uikit` icons.
 - **`min`**: string. Optional. Minimum date to allow the datepicker and input to take. You can either pass the `min` here or in the `validate` object if you want a custom error message with it.
 - **`max`**: string. Optional. Max date to allow the datepicker and input to take. You can either pass the `max` here or in the `validate` object if you want a custom error message with it.
 
@@ -119,7 +118,6 @@ See availity-reactstrap-validation for additional props, such as `name`, `valida
 - **`start`**: Object. Required. and object which will be spread on the start date input. It must contain the `name` prop as required by availity-reactstrap-validation. It can contain additional validations as well.
 - **`end`**: Object. Required. and object which will be spread on the end date input. It must contain the `name` prop as required by availity-reactstrap-validation. It can contain additional validations as well.
 - **`distance`**: Object. Optional. Object containing the `min` and `max` distance the start and end dates are allowed to be apart from each other. See example below.
-- **`calendarIcon`**: Node. Optional. Default: `<Icon name="calendar" />`. You can optional change the icon the calendar renders in the case you don't use the `availity-uikit` icons.
 - **`min`**: string. Optional. Minimum date to allow the datepicker and input to take. You can either pass the `min` here or in the `validate` object if you want a custom error message with it.
 - **`max`**: string. Optional. Max date to allow the datepicker and input to take. You can either pass the `max` here or in the `validate` object if you want a custom error message with it.
 - **`ranges`**: object, boolean, array. Optional. Renders list of ranges preset to the left of the calendar

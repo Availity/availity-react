@@ -78,10 +78,6 @@ Used in conjunction with `min` to derive `isOutsideRange` prop from `react-dates
 }
 ```
 
-#### `calendarIcon?: ReactNode`
-
-Override the default icon that appears. Default: `<Icon name="calendar" />
-
 #### `onPickerFocusChange?: ({ focused: boolean }) => void`
 
 Function to be run when focus on the input changes.

@@ -424,7 +424,7 @@ class AvDateRange extends Component {
   };
 
   render() {
-    const { name, className, id, min, max, calendarIcon, validate, distance, ...attributes } = this.props;
+    const { name, className, id, min, max, validate, distance, ...attributes } = this.props;
     const { startValue, endValue, focusedInput, format } = this.state;
     const endValidate = {
       afterStart: this.afterStartValidate,

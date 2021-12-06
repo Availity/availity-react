@@ -19,12 +19,10 @@ export type DateProps = {
   className?: string;
   min?: string | limitType | limitTypeAlt;
   max?: string | limitType | limitTypeAlt;
-  calendarIcon?: React.ReactNode;
   onChange?: (date: string) => void;
   onPickerFocusChange?: (arg: { focused: boolean }) => void;
   innerRef?: Function | string;
   format?: string;
-  datepicker?: boolean;
   datePickerProps?: SingleDatePickerShape;
   validate?: FieldValidator;
   openDirection?: 'down' | 'up';
