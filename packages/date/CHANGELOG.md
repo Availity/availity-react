@@ -3,6 +3,21 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## 3.1.3 (2021-12-06)
+
+
+### Bug Fixes
+
+* **reactstrap-validation-date,date:** fixed test that used date icon ([351291e](https://github.com/Availity/availity-react/commit/351291e9380ba39fa87892a3c138a6796ab482d6))
+* **reactstrap-validation-date,date:** removed date icon to fix accessiiblity issues ([dcb8179](https://github.com/Availity/availity-react/commit/dcb8179f7f9fb70ce13440328d22c551643dd35a))
+* **reactstrap-validation-date,date:** removed unused code and imports ([887066d](https://github.com/Availity/availity-react/commit/887066db55eb6c10a53747c0c5262ff41f21cb88))
+* **reactstrap-validation-date,date:** removed unused code and imports ([be51dea](https://github.com/Availity/availity-react/commit/be51dead1fc5daaec0b1f17c7f0b239df73c271f))
+* **reactstrap-validation-date,date:** removed unused code and imports ([ba713b8](https://github.com/Availity/availity-react/commit/ba713b8aee77f6eff7d4c6a46fa87b592de4dba7))
+
+
+
+
+
 ## 3.1.2 (2021-12-03)
 
 
