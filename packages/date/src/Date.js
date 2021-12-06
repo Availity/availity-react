@@ -4,7 +4,6 @@ import classNames from 'classnames';
 import { useField, useFormikContext } from 'formik';
 import '@availity/react-dates/initialize';
 import { SingleDatePicker } from '@availity/react-dates';
-import Icon from '@availity/icon';
 import { InputGroup, Input, Row, Col } from 'reactstrap';
 import moment from 'moment';
 import '../polyfills';
@@ -21,13 +20,11 @@ const yearPickerStyles = {
 const AvDate = ({
   className,
   name,
-  calendarIcon,
   innerRef,
   onChange,
   onPickerFocusChange,
   min,
   max,
-  datepicker,
   format,
   validate,
   datePickerProps,
@@ -46,7 +43,6 @@ const AvDate = ({
     metadata.touched ? 'is-touched' : 'is-untouched',
     metadata.touched && metadata.error && 'is-invalid',
     !field.value && 'current-day-highlight',
-    datepicker && 'av-calendar-show'
   );
 
   const pickerId = `${(attributes.id || name).replace(/[^\da-z]/gi, '')}-picker`;
@@ -195,22 +191,18 @@ AvDate.propTypes = {
   className: PropTypes.string,
   min: limitPropType,
   max: limitPropType,
-  calendarIcon: PropTypes.node,
   onChange: PropTypes.func,
   onPickerFocusChange: PropTypes.func,
   innerRef: PropTypes.oneOfType([PropTypes.func, PropTypes.node]),
   format: PropTypes.string,
   'data-testid': PropTypes.string,
-  datepicker: PropTypes.bool,
   validate: PropTypes.func,
   datePickerProps: PropTypes.object,
   openDirection: PropTypes.string,
 };
 
 AvDate.defaultProps = {
-  calendarIcon: <Icon name="calendar" />,
   format: 'MM/DD/YYYY',
-  datepicker: true,
   openDirection: 'down',
 };
 
