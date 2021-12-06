@@ -8,7 +8,6 @@ import { AvInput } from 'availity-reactstrap-validation';
 import { DateRangePicker } from '@availity/react-dates';
 import '@availity/react-dates/initialize';
 import classNames from 'classnames';
-import Icon from '@availity/icon';
 
 import { isOutsideRange, limitPropType, isSameDay } from './utils';
 import '../polyfills';
@@ -425,7 +424,7 @@ class AvDateRange extends Component {
   };
 
   render() {
-    const { name, className, id, min, max, calendarIcon, datepicker, validate, distance, ...attributes } = this.props;
+    const { name, className, id, min, max, validate, distance, ...attributes } = this.props;
     const { startValue, endValue, focusedInput, format } = this.state;
     const endValidate = {
       afterStart: this.afterStartValidate,
@@ -469,7 +468,6 @@ class AvDateRange extends Component {
       hasError ? 'av-invalid' : 'av-valid',
       validation.error && 'is-invalid',
       !startValue && !endValue && 'current-day-highlight',
-      datepicker && 'av-calendar-show'
     );
 
     return (
@@ -527,22 +525,7 @@ class AvDateRange extends Component {
             focusedInput={focusedInput}
             onFocusChange={this.onFocusChange}
             isOutsideRange={isOutsideRange(minDate, maxDate, format)}
-            customInputIcon={
-              datepicker
-                ? React.cloneElement(calendarIcon, {
-                    ref: this.calendarIconRef,
-                    onClick: () => {
-                      const { focusedInput } = this.state;
-                      if (focusedInput) {
-                        this.setState({ focusedInput: undefined });
-                      }
-                    },
-                  })
-                : undefined
-            }
-            inputIconPosition="after"
             customArrowIcon="-"
-            showDefaultInputIcon={datepicker}
             onClose={this.onClose}
             numberOfMonths={2}
             minimumNights={0}
@@ -568,8 +551,6 @@ AvDateRange.propTypes = {
   ranges: PropTypes.oneOfType([PropTypes.bool, PropTypes.array, PropTypes.object]),
   onPickerFocusChange: PropTypes.func,
   defaultValues: PropTypes.object,
-  calendarIcon: PropTypes.node,
-  datepicker: PropTypes.bool,
   autoSync: PropTypes.bool,
 };
 
@@ -577,8 +558,6 @@ AvDateRange.contextTypes = { FormCtrl: PropTypes.object.isRequired };
 
 AvDateRange.defaultProps = {
   type: 'text',
-  calendarIcon: <Icon name="calendar" />,
-  datepicker: true,
 };
 
 export default AvDateRange;

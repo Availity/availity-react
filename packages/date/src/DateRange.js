@@ -1,6 +1,5 @@
 import React, { useEffect, useMemo, useRef, useState } from 'react';
 import PropTypes from 'prop-types';
-import Icon from '@availity/icon';
 import { InputGroup, Input, Button, Row, Col } from 'reactstrap';
 import { DateRangePicker } from '@availity/react-dates';
 import classNames from 'classnames';
@@ -59,10 +58,8 @@ const DateRange = ({
   innerRef,
   className,
   format,
-  calendarIcon,
   datepickerProps,
   'data-testid': dataTestId,
-  datepicker,
   autoSync,
   ranges: propsRanges,
   customArrowIcon,
@@ -97,7 +94,6 @@ const DateRange = ({
     metadata.touched ? 'is-touched' : 'is-untouched',
     metadata.touched && metadata.error && 'is-invalid',
     !startValue && !endValue && 'current-day-highlight',
-    datepicker && 'av-calendar-show'
   );
 
   // Should only run validation once per real change to component, instead of each time setFieldValue/Touched is called.
@@ -313,20 +309,6 @@ const DateRange = ({
           renderCalendarInfo={renderDateRanges}
           customArrowIcon={customArrowIcon}
           isOutsideRange={isOutsideRange(min, max, format)}
-          customInputIcon={
-            datepicker
-              ? React.cloneElement(calendarIcon, {
-                  ref: calendarIconRef,
-                  onClick: () => {
-                    if (focusedInput) {
-                      setFocusedInput();
-                    }
-                  },
-                })
-              : undefined
-          }
-          showDefaultInputIcon={datepicker}
-          inputIconPosition="after"
           numberOfMonths={2}
           navPosition="navPositionBottom"
           openDirection={openDirection}
@@ -346,10 +328,8 @@ DateRange.propTypes = {
   disabled: PropTypes.bool,
   onChange: PropTypes.func,
   onPickerFocusChange: PropTypes.func,
-  calendarIcon: PropTypes.node,
   innerRef: PropTypes.oneOfType([PropTypes.func, PropTypes.node]),
   format: PropTypes.string,
-  datepicker: PropTypes.bool,
   datepickerProps: PropTypes.object,
   'data-testid': PropTypes.string,
   autoSync: PropTypes.bool,
@@ -359,9 +339,7 @@ DateRange.propTypes = {
 };
 
 DateRange.defaultProps = {
-  calendarIcon: <Icon name="calendar" data-testid="calendar-icon" />,
   format: isoDateFormat,
-  datepicker: true,
   openDirection: 'down',
 };
 

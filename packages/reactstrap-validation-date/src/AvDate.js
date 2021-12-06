@@ -9,7 +9,6 @@ import '@availity/react-dates/initialize';
 import '../polyfills';
 
 import { inputType, isoDateFormat } from 'availity-reactstrap-validation/lib/AvValidator/utils';
-import Icon from '@availity/icon';
 import { AvInput } from 'availity-reactstrap-validation';
 
 import { isOutsideRange, limitPropType } from './utils';
@@ -122,9 +121,7 @@ class AvDate extends Component {
 
   render() {
     const {
-      calendarIcon,
       className,
-      datepicker,
       datePickerProps,
       hideIcon,
       max,
@@ -153,7 +150,6 @@ class AvDate extends Component {
       hasError ? 'av-invalid' : 'av-valid',
       touched && hasError && 'is-invalid',
       !value && 'current-day-highlight',
-      datepicker && 'av-calendar-show'
     );
 
     const input = (
@@ -192,9 +188,6 @@ class AvDate extends Component {
             onFocusChange={this.onFocusChange}
             numberOfMonths={1}
             isOutsideRange={isOutsideRange(minDate, maxDate, format)}
-            customInputIcon={datepicker ? calendarIcon : undefined}
-            showDefaultInputIcon={datepicker}
-            inputIconPosition="after"
             onClose={this.onClose}
           />
         </InputGroup>
@@ -205,7 +198,6 @@ class AvDate extends Component {
 
 AvDate.propTypes = {
   ...AvInput.propTypes,
-  calendarIcon: PropTypes.node,
   min: limitPropType,
   max: limitPropType,
   onPickerFocusChange: PropTypes.func,
@@ -218,9 +210,7 @@ AvDate.contextTypes = {
 
 AvDate.defaultProps = {
   type: 'text',
-  datepicker: true,
   datePickerProps: {},
-  calendarIcon: <Icon name="calendar" />,
 };
 
 export default AvDate;
