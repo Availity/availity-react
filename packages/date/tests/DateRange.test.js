@@ -345,7 +345,7 @@ describe('DateRange', () => {
       </Form>
     );
 
-    container.querySelector('.DateRangePickerInput_calendarIcon').click();
+    container.querySelector('.DateInput_input_1').focus();
 
     await waitFor(() => {
       expect(
@@ -354,7 +354,8 @@ describe('DateRange', () => {
     });
 
     // Simulate User hitting the 'Today' pre-set
-    container.querySelectorAll('.btn-default')[0].click();
+    container.querySelector('.CalendarDay__today').click();
+    container.querySelector('.CalendarDay__today').click();
 
     const today = moment().format('MM/DD/YYYY');
 
