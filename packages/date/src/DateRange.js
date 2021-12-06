@@ -313,20 +313,6 @@ const DateRange = ({
           renderCalendarInfo={renderDateRanges}
           customArrowIcon={customArrowIcon}
           isOutsideRange={isOutsideRange(min, max, format)}
-          customInputIcon={
-            datepicker
-              ? React.cloneElement(calendarIcon, {
-                  ref: calendarIconRef,
-                  onClick: () => {
-                    if (focusedInput) {
-                      setFocusedInput();
-                    }
-                  },
-                })
-              : undefined
-          }
-          showDefaultInputIcon={datepicker}
-          inputIconPosition="after"
           numberOfMonths={2}
           navPosition="navPositionBottom"
           openDirection={openDirection}

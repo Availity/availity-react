@@ -181,9 +181,6 @@ const AvDate = ({
           onFocusChange={onFocusChange}
           numberOfMonths={1}
           isOutsideRange={isOutsideRange(min, max)}
-          customInputIcon={datepicker ? calendarIcon : undefined}
-          showDefaultInputIcon={datepicker}
-          inputIconPosition="after"
           navPosition="navPositionBottom"
           openDirection={openDirection}
         />

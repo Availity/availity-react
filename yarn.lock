@@ -171,8 +171,8 @@
 
 "@availity/react-dates@^21.10.0":
   version "21.10.0"
-  resolved "https://registry.yarnpkg.com/@availity/react-dates/-/react-dates-21.10.0.tgz#c0837875b7db7dfb7de353d1b26dae6e56bb6c06"
-  integrity sha512-mmd+mbW4Egq0z/f/8sUBd0cdwT4PrjXGJs8s8A8Oa1lpve+n4uRbS3xSGYnpPYL4BNvZlpm6Lklx7BDUu3vcHg==
+  resolved "https://packages.availity.com:443/artifactory/api/npm/availity-npm-all/@availity/react-dates/-/react-dates-21.10.0.tgz#c0837875b7db7dfb7de353d1b26dae6e56bb6c06"
+  integrity sha1-wIN4dbfbfft941PRsm2ubla7bAY=
   dependencies:
     airbnb-prop-types "^2.16.0"
     color2k "^1.1.1"
@@ -209,7 +209,7 @@
     core-js "^3.12.1"
     tus-js-client "1.7.1"
 
-"@availity/yup@3.2.0", "@availity/yup@^3.2.0":
+"@availity/yup@^3.2.0":
   version "3.2.0"
   resolved "https://registry.yarnpkg.com/@availity/yup/-/yup-3.2.0.tgz#b3bfa3fce6ccd51921e9bc90be90d3a178c30ff2"
   integrity sha512-iNVydznH51Sqdf0Q3RIbqQHAg9pulfW3b/XCKbZlDpKlzbkwLk7lv402+mVJ+YA7DST+2jGcUi2ORcjq/LP7DQ==
