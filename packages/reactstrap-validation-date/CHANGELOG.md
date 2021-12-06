@@ -3,6 +3,21 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [4.2.2](https://github.com/Availity/availity-react/compare/@availity/reactstrap-validation-date@4.2.1...@availity/reactstrap-validation-date@4.2.2) (2021-12-06)
+
+
+### Bug Fixes
+
+* **reactstrap-validation-date,date:** removed date icon to fix accessiiblity issues ([dcb8179](https://github.com/Availity/availity-react/commit/dcb8179f7f9fb70ce13440328d22c551643dd35a))
+* **reactstrap-validation-date,date:** removed unused code and imports ([deea109](https://github.com/Availity/availity-react/commit/deea1093270fae8dc8d468edeb2eb3ac7283da94))
+* **reactstrap-validation-date,date:** removed unused code and imports ([128d183](https://github.com/Availity/availity-react/commit/128d183303c71413b15a34178f8f75becd99068d))
+* **reactstrap-validation-date,date:** removed unused code and imports ([be51dea](https://github.com/Availity/availity-react/commit/be51dead1fc5daaec0b1f17c7f0b239df73c271f))
+* **reactstrap-validation-date,date:** removed unused code and imports ([ba713b8](https://github.com/Availity/availity-react/commit/ba713b8aee77f6eff7d4c6a46fa87b592de4dba7))
+
+
+
+
+
 ## 4.2.1 (2021-12-03)
 
 
