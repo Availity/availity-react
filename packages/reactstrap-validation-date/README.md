@@ -58,7 +58,6 @@ This is the underlying date without the `AvGroup`, `Label` or `AvFeedback`
 
 See availity-reactstrap-validation for additional props, such as `name`, `validate`, `min`, `max`, and more.
 
-- **`datepicker`**: Boolean. Optional. Default: `true`. If `true`, the date picker button will be shown, clicking it activates the datepicker calendar. If `false`, only the date input field will be displayed (useful for date of birth fields).
 - **`min`**: string. Optional. Minimum date to allow the datepicker and input to take. You can either pass the `min` here or in the `validate` object if you want a custom error message with it.
 - **`max`**: string. Optional. Max date to allow the datepicker and input to take. You can either pass the `max` here or in the `validate` object if you want a custom error message with it.
 
@@ -88,8 +87,6 @@ Like `AvField`, but for dates with a date picker
 #### AvDateField Props
 
 See availity-reactstrap-validation for additional props, such as `name`, `validate`, `min`, `max`, and more.
-
-- **`datepicker`**: Boolean. Optional. Default: `true`. If `true`, the date picker button will be shown, clicking it activates the datepicker calendar. If `false`, only the date input field will be displayed (useful for date of birth fields).
 - **`min`**: string. Optional. Minimum date to allow the datepicker and input to take. You can either pass the `min` here or in the `validate` object if you want a custom error message with it.
 - **`max`**: string. Optional. Max date to allow the datepicker and input to take. You can either pass the `max` here or in the `validate` object if you want a custom error message with it.
 
