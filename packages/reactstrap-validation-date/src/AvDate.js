@@ -198,7 +198,6 @@ class AvDate extends Component {
 
 AvDate.propTypes = {
   ...AvInput.propTypes,
-  calendarIcon: PropTypes.node,
   min: limitPropType,
   max: limitPropType,
   onPickerFocusChange: PropTypes.func,
