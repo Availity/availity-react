@@ -21,7 +21,6 @@
   },
   "homepage": "https://github.com/Availity/availity-react/tree/master/packages/date#readme",
   "dependencies": {
-    "@availity/icon": "^0.10.0",
     "@availity/react-dates": "^21.10.0",
     "@types/react-dates": "^21.8.2",
     "classnames": "^2.3.1",
