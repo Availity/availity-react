@@ -10,9 +10,6 @@
     "react",
     "availity"
   ],
-  "scripts": {
-    "format": "prettier src/* --write --ignore-unknown"
-  },
   "repository": {
     "type": "git",
     "url": "https://github.com/Availity/availity-react.git"
@@ -30,7 +27,6 @@
     "classnames": "^2.3.1",
     "lodash": "^4.17.21",
     "moment": "^2.29.1",
-    "prop-types": "^15.7.2",
     "react-table": "^7.7.0",
     "reactstrap": "^8.9.0"
   },
