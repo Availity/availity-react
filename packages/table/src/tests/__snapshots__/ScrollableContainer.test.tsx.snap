@@ -5,7 +5,9 @@ exports[`Scrollable Container should render 1`] = `
   <div
     class="av-scrollable-table-wrapper"
   >
-    <div>
+    <div
+      scrollable="true"
+    >
       This is my Content.
     </div>
   </div>
