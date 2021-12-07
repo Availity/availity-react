@@ -1,9 +1,7 @@
-import { TableRecord } from "./TableRecord";
-
-export interface PrimaryTableAction {
+export interface PrimaryTableAction<T> {
     iconName: string;
     title: string;
-    onClick: (record?: TableRecord) => void;
+    onClick: (record?: T) => void;
 }
 export interface TableAction {
     id: string;
@@ -11,12 +9,12 @@ export interface TableAction {
     divider?: boolean;
 }
 
-export interface SingleTableAction extends TableAction {
-    onClick?: (record?: TableRecord) => void;
-    isVisible?: (record?: TableRecord) => boolean;
+export interface SingleTableAction<T> extends TableAction {
+    onClick?: (record?: T) => void;
+    isVisible?: (record?: T) => boolean;
 }
 
-export interface BulkTableAction extends TableAction {
-    onClick?: (records?: TableRecord[]) => void;
-    isVisible?: (records?: TableRecord[]) => boolean;
+export interface BulkTableAction<T> extends TableAction {
+    onClick?: (records?: T[]) => void;
+    isVisible?: (records?: T[]) => boolean;
 }

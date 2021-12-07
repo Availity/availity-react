@@ -83,6 +83,7 @@ export const Default: Story = ({
   rowProps,
   cellProps,
   bodyProps,
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
 }: any) => (
   <TableContextProvider
     sortable={sortable}
@@ -118,6 +119,7 @@ export const WithScrollableContainer: Story = ({
   rowProps,
   cellProps,
   bodyProps,
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
 }: any) => (
   <TableContextProvider
     sortable={sortable}
@@ -157,6 +159,7 @@ export const WithTableControls: Story = ({
   rowProps,
   cellProps,
   bodyProps,
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
 }: any) => (
 
   <TableContextProvider

@@ -4,7 +4,7 @@ import Icon from '@availity/icon';
 import find from 'lodash/find';
 import { TableSortConfig } from '../types/TableSortConfig';
 import { useTableContext } from '../TableContext';
-import { CurrentTableState, TableInstance } from '../types/ReactTable';
+import { CurrentTableState, IdType, TableInstance } from '../types/ReactTable';
 import { TableSortOption } from '../types/TableSortOption';
 
 type Props = {
@@ -14,9 +14,10 @@ type Props = {
     onSort?: (sortBy: TableSortConfig[]) => void;
 } & React.HTMLAttributes<HTMLElement>;
 
-const TableSorter = ({ id, onSort, disabled, color, ...rest }: Props): JSX.Element | null => {
+/* eslint-disable-next-line  @typescript-eslint/ban-types */
+const TableSorter = <T extends IdType>({ id, onSort, disabled, color, ...rest }: Props): JSX.Element | null => {
     const { sortOptions, instance } = useTableContext();
-    const { toggleSortBy, state } = instance as TableInstance;
+    const { toggleSortBy, state } = instance as TableInstance<T>;
 
     const [isSortingDropdownOpen, setIsSortingDropdownOpen] = useState<boolean>(false);
     const [tableSort, setTableSort] = useState<TableSortOption | undefined>();
@@ -25,7 +26,14 @@ const TableSorter = ({ id, onSort, disabled, color, ...rest }: Props): JSX.Eleme
     useEffect(() => {
         if (sortOptions && state) {
             const { sortBy } = state as CurrentTableState;
+            if (!sortBy) {
+                return;
+            }
+
             const currentSort = (sortBy as TableSortConfig[])[0];
+            if (!currentSort) {
+                return;
+            }
 
             const currentSortOption = find(sortOptions, (option) => option.value === currentSort.id);
             if (currentSortOption) {

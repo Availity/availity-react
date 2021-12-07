@@ -1,15 +1,15 @@
 import React from 'react';
 import { DropdownItem } from 'reactstrap';
+import { IdType } from './types/ReactTable';
 import { SingleTableAction } from './types/TableActions';
-import { TableRecord } from './types/TableRecord';
 
-type Props = {
+type Props<T extends IdType> = {
   id?: string;
-  action: SingleTableAction;
-  record: TableRecord;
+  action: SingleTableAction<T>;
+  record: T;
 };
 
-const TableActionMenuItem = ({ id, action, record }: Props): JSX.Element | null => {
+const TableActionMenuItem = <T extends IdType>({ id, action, record }: Props<T>): JSX.Element | null => {
   const isVisible = action.isVisible ? action.isVisible(record) : true;
   if (!isVisible) {
     return null;
@@ -19,7 +19,7 @@ const TableActionMenuItem = ({ id, action, record }: Props): JSX.Element | null 
     if (!action.onClick) {
       return null;
     }
-    const clickEvent = action.onClick as (record: TableRecord) => void;
+    const clickEvent = action.onClick as (record: T) => void;
     return { onClick: () => clickEvent(record) };
   };
 

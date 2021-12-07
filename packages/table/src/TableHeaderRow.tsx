@@ -1,14 +1,15 @@
 import React from 'react';
-import { HeaderGroup } from 'react-table';
 import { useTableContext } from './TableContext';
+import { ExtendedTableHeader } from './types';
+import { IdType } from './types/ReactTable';
 
-export type Props = {
+export type Props<T extends IdType> = {
   id?: string;
-  headerGroup: HeaderGroup;
+  headerGroup: ExtendedTableHeader<T>;
   children?: React.ReactNode;
 } & React.HTMLAttributes<HTMLElement>;
 
-const TableHeaderRow = ({ headerGroup, children, ...rest }: Props): JSX.Element => {
+const TableHeaderRow = <T extends IdType>({ headerGroup, children, ...rest }: Props<T>): JSX.Element => {
   const { scrollable } = useTableContext();
 
   return (

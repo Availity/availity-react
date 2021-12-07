@@ -1,25 +1,26 @@
 import React from 'react';
 import Icon from '@availity/icon';
-import { TableRecord } from '../types/TableRecord';
 
-type CellValue = string | TableRecord
-type CellProps = {
-  value: CellValue;
+type CellValue<T> = T;
+type CellProps<T> = {
+  value: CellValue<T>;
 };
 
-export interface IconConfig {
+export interface IconConfig<T> {
   name: string;
-  title: string | ((value: CellValue) => string)
+  title?: string;
+  getTitle?: (value: T) => string;
 }
 
-const IconCell = ({ name, title }: IconConfig): JSX.Element | ((cell: CellProps) => JSX.Element | null) => {
-  const IconCellDef = ({ value }: CellProps) : JSX.Element | null => {
+const IconCell = <T extends unknown>({ name, title, getTitle }: IconConfig<T>): JSX.Element | ((cell: CellProps<T>) => JSX.Element | null) => {
+  const IconCellDef = ({ value }: CellProps<T>): JSX.Element | null => {
     let generatedTitle;
-    if (typeof title === 'function') {
-      generatedTitle = title(value);
-    } else if (typeof title === 'string') {
+    if (title) {
       generatedTitle = title;
+    } else if (getTitle) {
+      generatedTitle = getTitle(value);
     }
+
     return value ? <Icon name={name} title={generatedTitle} /> : null;
   };
 

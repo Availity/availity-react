@@ -1,18 +1,18 @@
 import React from 'react';
 import classNames from 'classnames';
 import { useTableContext } from './TableContext';
-import { ExtendedTableHeader } from './types/ReactTable';
+import { ExtendedTableHeader, IdType } from './types/ReactTable';
 
-type Props = {
+type Props<T extends IdType> = {
   id?: string;
-  column: ExtendedTableHeader;
+  column: ExtendedTableHeader<T>;
   children: React.ReactNode | React.ReactNode[];
 } & React.HTMLAttributes<HTMLElement>;
 
-const TableHeaderCell = ({ column, children, ...rest }: Props): JSX.Element => {
+const TableHeaderCell = <T extends IdType>({ column, children, ...rest }: Props<T>): JSX.Element => {
   const { scrollable, sortable } = useTableContext();
 
-  const getHeaderColumnProps = (column: ExtendedTableHeader) => {
+  const getHeaderColumnProps = (column: ExtendedTableHeader<T>) => {
     const props = {
       className: classNames(column.className || '', {
         'fixed-width-text': scrollable && !column.className,

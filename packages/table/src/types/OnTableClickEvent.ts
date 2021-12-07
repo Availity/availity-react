@@ -1,8 +1,8 @@
-import { Row } from "./ReactTable";
-import { TableRecord } from "./TableRecord";
+import { IdType, Row } from "./ReactTable";
 
-export interface OnTableClickEvent<T> extends React.MouseEvent<T, MouseEvent> {
-    row: Row;
-    data: TableRecord;
+
+export interface OnTableClickEvent<T, J extends IdType> extends React.MouseEvent<T, MouseEvent> {
+    row: Row<J>;
+    data: J;
     index: number;
 }

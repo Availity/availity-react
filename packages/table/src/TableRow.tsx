@@ -4,28 +4,35 @@ import filter from 'lodash/filter';
 import classNames from 'classnames';
 import { useTableContext } from './TableContext';
 import { OnTableClickEvent } from './types/OnTableClickEvent';
-import { Column, Row, TableInstance } from './types/ReactTable';
+import { Column, IdType, Row, TableInstance } from './types/ReactTable';
 
-export type Props = {
+export type Props<T extends IdType> = {
   id?: string;
-  row: Row;
+  row: Row<T>;
   index: number;
-  onRowClick?: (event: OnTableClickEvent<HTMLElement>) => void;
-  onCellClick?: (event: OnTableClickEvent<HTMLElement>) => void;
+  onRowClick?: (event: OnTableClickEvent<HTMLElement, T>) => void;
+  onCellClick?: (event: OnTableClickEvent<HTMLElement, T>) => void;
   children?: React.ReactNode;
 } & React.HTMLAttributes<HTMLElement>;
 
-const TableRow = ({ row, index, onRowClick, onCellClick, children, ...rest }: Props): JSX.Element => {
+const TableRow = <T extends IdType>({
+  row,
+  index,
+  onRowClick,
+  onCellClick,
+  children,
+  ...rest
+}: Props<T>): JSX.Element => {
   const { AdditionalContent, scrollable, instance } = useTableContext();
-  const { selectedFlatRows: selectedRows, allColumns } = instance as TableInstance;
+  const { selectedFlatRows: selectedRows, allColumns } = instance as TableInstance<T>;
 
-  const columns = allColumns as Column[];
+  const columns = allColumns as Column<T>[];
 
   const definedRowProps = {
     className: classNames(`av-grid-row-${index % 2 === 0 ? 'even' : 'odd'}`, {
       'fixed-width-tr': scrollable,
       selected: includes(
-        selectedRows.map((row: Row) => row.id),
+        selectedRows.map((row: Row<T>) => row.id),
         row.id
       ),
       'cursor-pointer': !!onRowClick || !!onCellClick,
@@ -37,7 +44,7 @@ const TableRow = ({ row, index, onRowClick, onCellClick, children, ...rest }: Pr
           data: row.original,
           index: row.index,
           row,
-        } as OnTableClickEvent<HTMLTableRowElement>);
+        } as OnTableClickEvent<HTMLTableRowElement, T>);
       }
     },
   };
@@ -50,7 +57,7 @@ const TableRow = ({ row, index, onRowClick, onCellClick, children, ...rest }: Pr
           data: row.original,
           index: row.index,
           row,
-        } as OnTableClickEvent<HTMLTableCellElement>);
+        } as OnTableClickEvent<HTMLTableCellElement, T>);
       }
     },
   };

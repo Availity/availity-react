@@ -1,24 +1,23 @@
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 import { useRowSelect, useSortBy, useTable, Hooks, UseRowSelectInstanceProps, Column as RtColumn } from 'react-table';
 import filter from 'lodash/filter';
 import IndeterminateCheckbox from './IndeterminateCheckbox';
-import { Cell, Column, CurrentTableState, TableInstance, TableOptions } from './types/ReactTable';
+import { Cell, Column, CurrentTableState, IdType, TableInstance, TableOptions } from './types/ReactTable';
 import { TableSortOption } from './types/TableSortOption';
 import { TableContext } from './TableContext';
-import { TableRecord } from './types/TableRecord';
 
-export type Props = {
+export type Props<T extends IdType> = {
   additionalContent?: React.ElementType;
   children: React.ReactChild | React.ReactChild[];
-  columns: Column[];
-  records: TableRecord[];
+  columns: Column<T>[];
+  records: T[];
   scrollable?: boolean;
   selectable?: boolean;
   sortable?: boolean;
   initialState?: Partial<CurrentTableState>;
 };
 
-const TableContextProvider = ({
+const TableContextProvider = <T extends IdType>({
   additionalContent: AdditionalContent,
   columns,
   records,
@@ -27,28 +26,28 @@ const TableContextProvider = ({
   sortable,
   initialState,
   children,
-}: Props): JSX.Element => {
-  let selectionColumn: Column;
+}: Props<T>): JSX.Element => {
+  let selectionColumn: Column<T>;
   const [isScrollable, setScrollable] = useState<boolean | undefined>(scrollable);
 
   const getSortableColumns = (): TableSortOption[] =>
     filter(columns, (column) => !column.disableSortBy && column.defaultCanSort).map((column) => {
-      const col = column as Column;
+      const col = column as Column<T>;
       return { value: col.accessor as string, label: col.Header as string };
     });
 
-  const cols = columns as RtColumn<TableRecord>[];
+  const cols = columns as RtColumn<T>[];
 
-  const tableInstance = useTable(
+  const tableInstance = useTable<T>(
     {
       columns: cols,
       data: records,
       initialState: initialState || {},
       autoResetSelectedRows: false,
-    } as TableOptions,
+    } as TableOptions<T>,
     useSortBy,
     useRowSelect,
-    (hooks: Hooks) => {
+    (hooks: Hooks<T>) => {
       selectionColumn = {
         id: 'selection',
         title: 'Select record(s)',
@@ -56,7 +55,7 @@ const TableContextProvider = ({
         defaultCanSort: false,
         disableSortBy: true,
         disableClick: true,
-        Header: ({ getToggleAllRowsSelectedProps }: UseRowSelectInstanceProps<TableRecord>) => (
+        Header: ({ getToggleAllRowsSelectedProps }: UseRowSelectInstanceProps<T>) => (
           <div className="text-center">
             <IndeterminateCheckbox
               data-testid="table_header_select_all"
@@ -65,7 +64,7 @@ const TableContextProvider = ({
             />
           </div>
         ),
-        Cell: ({ row: { getToggleRowSelectedProps, index } }: Cell) => (
+        Cell: ({ row: { getToggleRowSelectedProps, index } }: Cell<T>) => (
           <div className="text-center">
             <IndeterminateCheckbox
               data-testid={`table_header_select_row_${index}`}
@@ -76,9 +75,9 @@ const TableContextProvider = ({
         ),
       };
 
-      hooks.visibleColumns.push((columns: Column[]) => [selectionColumn, ...columns]);
+      hooks.visibleColumns.push((columns: Column<T>[]) => [selectionColumn, ...columns]);
     }
-  ) as TableInstance;
+  ) as TableInstance<T>;
 
   return (
     <TableContext.Provider

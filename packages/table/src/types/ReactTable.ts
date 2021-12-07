@@ -13,35 +13,37 @@ import {
     UseRowSelectOptions,
     UseTableOptions
 } from 'react-table';
-import { TableRecord } from './TableRecord';
 
 import { TableSortConfig } from './TableSortConfig';
 
-export type Row = RtRow & {
+/* eslint-disable-next-line  @typescript-eslint/ban-types */
+export type IdType = { id: string } & object;
+
+export type Row<T extends IdType> = RtRow<T> & {
     toggleRowSelected: () => void;
     getToggleRowSelectedProps: () => void;
-    original: TableRecord;
+    original: T;
 };
 
-export type Column = RtColumn & {
-    className ?: string;
-    stickyRight ?: boolean;
-    stickyLeft ?: boolean;
-    disableClick ?: boolean;
-    title ?: string;
-    defaultCanSort ?: boolean;
-    disableSortBy ?: boolean;
-    label ?: string;
+export type Column<T extends IdType> = RtColumn<T> & {
+    className?: string;
+    stickyRight?: boolean;
+    stickyLeft?: boolean;
+    disableClick?: boolean;
+    title?: string;
+    defaultCanSort?: boolean;
+    disableSortBy?: boolean;
+    label?: string;
 };
 
-export type Cell = RtCell & {
+export type Cell<T extends IdType> = RtCell<T> & {
     index: number;
-    row: Row;
-    column: Column;
-    original: TableRecord;
+    row: Row<T>;
+    column: Column<T>;
+    original: T;
 };
 
-export type ExtendedTableHeader = HeaderGroup & Column & UseSortByColumnProps<TableRecord> &  UseTableHeaderGroupProps<TableRecord> & {
+export type ExtendedTableHeader<T extends IdType> = HeaderGroup<T> & Column<T> & UseSortByColumnProps<T> & UseTableHeaderGroupProps<T> & {
     defaultCanSort?: boolean;
     disableSortBy?: boolean;
     isSorted?: boolean;
@@ -49,18 +51,17 @@ export type ExtendedTableHeader = HeaderGroup & Column & UseSortByColumnProps<Ta
     toggleSortBy: (isDesc: boolean, isMult: boolean) => void;
 };
 
-
-export type TableOptions = RtTableOptions<TableRecord> & UseTableOptions<TableRecord> & {
+export type TableOptions<T extends IdType> = RtTableOptions<T> & UseTableOptions<T> & {
     autoResetSelectedRows?: boolean;
-}
+};
 
-export type TableInstance = UseSortByInstanceProps<TableRecord> & UseRowSelectInstanceProps<TableRecord> & UseRowSelectOptions<TableRecord> & RtTableInstance<TableRecord> & {
+export type TableInstance<T extends IdType> = UseSortByInstanceProps<T> & UseRowSelectInstanceProps<T> & UseRowSelectOptions<T> & RtTableInstance<T> & {
     toggleAllPageRowsSelected: (set?: boolean) => void;
-    selectedFlatRows: Row[];
+    selectedFlatRows: Row<T>[];
     isAllRowsSelected: boolean;
     toggleAllRowsSelected: () => void;
     sortBy?: TableSortConfig;
-}
+};
 
 export interface CurrentTableState extends TableState {
     sortBy?: TableSortConfig[]

@@ -1,23 +1,22 @@
 import React, { useEffect, useState } from 'react';
 import { Badge, Button, ButtonDropdown, ButtonGroup, DropdownItem, DropdownMenu, DropdownToggle } from 'reactstrap';
 import { useTableContext } from '../TableContext';
-import { TableInstance } from '../types/ReactTable';
+import { IdType, TableInstance } from '../types/ReactTable';
 import { BulkTableAction } from '../types/TableActions';
-import { TableRecord } from '../types/TableRecord';
 
-type Props = {
+type Props<T> = {
     id?: string;
     disabled?: boolean;
     recordName: string;
-    bulkActions: BulkTableAction[];
+    bulkActions: BulkTableAction<T>[];
     color?: string;
-    onRecordsSelected?: (records: TableRecord[]) => void;
+    onRecordsSelected?: (records: T[]) => void;
 } & React.HTMLAttributes<HTMLElement>;
 
-const BulkTableActions = ({ id, disabled, color, recordName, bulkActions, onRecordsSelected }: Props): JSX.Element | null => {
+const BulkTableActions = <T extends IdType>({ id, disabled, color, recordName, bulkActions, onRecordsSelected }: Props<T>): JSX.Element | null => {
     const { instance } = useTableContext();
 
-    const { selectedFlatRows: selectedRows, isAllRowsSelected, toggleAllRowsSelected } = instance as TableInstance;
+    const { selectedFlatRows: selectedRows, isAllRowsSelected, toggleAllRowsSelected } = instance as TableInstance<T>;
 
     const [isSelectionDropdownOpen, setIsSelectionDropdownOpen] = useState<boolean>(false);
     const [numberOfSelectedRows, setNumberOfSelectedRows] = useState<number>(0);
@@ -33,11 +32,12 @@ const BulkTableActions = ({ id, disabled, color, recordName, bulkActions, onReco
         }
 
         if (onRecordsSelected) {
-            const records = selectedRows.map(row =>  row.original);
+            const records = selectedRows.map((row: { original: T}) =>  row.original);
             onRecordsSelected(records);
         }
 
         setIsDisabled(disabled || selectedRows?.length === 0);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [selectedRows, disabled, numberOfSelectedRows]);
 
     const toggleSelectionDropdown = () => setIsSelectionDropdownOpen(!isSelectionDropdownOpen);

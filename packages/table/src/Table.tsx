@@ -7,7 +7,7 @@ import TableHeaderCell from './TableHeaderCell';
 import TableRow from './TableRow';
 import TableCell from './TableCell';
 import { TableSortConfig } from './types/TableSortConfig';
-import { Cell, CurrentTableState, ExtendedTableHeader, Row, TableInstance } from './types/ReactTable';
+import { Cell, CurrentTableState, ExtendedTableHeader, IdType, Row, TableInstance } from './types/ReactTable';
 import { OnTableClickEvent } from './types/OnTableClickEvent';
 import { OnRowSelectedEvent } from './types/OnRowSelectedEvent';
 import { useTableContext } from './TableContext';
@@ -16,12 +16,12 @@ type HeaderProps = {
   sticky: boolean;
 } & React.HTMLAttributes<HTMLElement>;
 
-export type Props = {
+export type Props<T extends IdType> = {
   id?: string;
   bodyProps?: React.HTMLAttributes<HTMLElement>;
   cellProps?: React.HTMLAttributes<HTMLElement>;
-  onCellClick?: (event: OnTableClickEvent<HTMLElement>) => void;
-  onRowClick?: (event: OnTableClickEvent<HTMLElement>) => void;
+  onCellClick?: (event: OnTableClickEvent<HTMLElement, T>) => void;
+  onRowClick?: (event: OnTableClickEvent<HTMLElement, T>) => void;
   onRowSelected?: (event: OnRowSelectedEvent) => void;
   headerProps?: HeaderProps;
   rowProps?: React.HTMLAttributes<HTMLElement>;
@@ -29,7 +29,7 @@ export type Props = {
   onSort?: (sortBy: TableSortConfig[]) => void;
 } & React.HTMLAttributes<HTMLElement>;
 
-const Table = ({
+const Table = <T extends IdType>({
   id,
   bodyProps,
   cellProps,
@@ -41,7 +41,7 @@ const Table = ({
   scrollable,
   onSort,
   ...rest
-}: Props): JSX.Element => {
+}: Props<T>): JSX.Element => {
   const { sortable, selectable, instance, setScrollable } = useTableContext();
 
   const {
@@ -53,7 +53,7 @@ const Table = ({
     selectedFlatRows: selectedRows,
     toggleHideColumn,
     state,
-  } = instance as TableInstance;
+  } = instance as TableInstance<T>;
 
   const tableState = state as CurrentTableState;
 
@@ -78,7 +78,7 @@ const Table = ({
 
   useEffect(() => {
     if (onRowSelected) {
-      onRowSelected({ selectedRows: selectedRows?.map((selectedRow: Row) => selectedRow.id) });
+      onRowSelected({ selectedRows: selectedRows?.map((selectedRow: Row<T>) => selectedRow.id) });
     }
   }, [selectedRows, onRowSelected]);
 
@@ -87,34 +87,37 @@ const Table = ({
   return (
     <RsTable id={id} {...getTableProps({ className: 'av-grid' })} {...rest}>
       <TableHeader id={`${populateId()}table_header`} {...headerProps}>
-        {headerGroups.map((headerGroup, rowIndex: number) => (
-          <TableHeaderRow
-            id={`${populateId()}table_header_row_${rowIndex}`}
-            data-testid={`${populateId()}table_header_row_${rowIndex}`}
-            key={rowIndex.toString()}
-            headerGroup={headerGroup}
-          >
-            {headerGroup.headers.map((column, cellIndex: number) => {
-              const header = column as ExtendedTableHeader;
-              return (
-                <TableHeaderCell
-                  id={`${populateId()}table_header_row_${rowIndex}_cell_${cellIndex}_${column.id}`}
-                  data-testid={`${populateId()}table_header_row_${rowIndex}_cell_${cellIndex}_${column.id}`}
-                  key={column.id}
-                  column={header}
-                >
-                  {header.render('Header')}
-                  {sortable && header.defaultCanSort && header.disableSortBy !== true ? (
-                    <Icon
-                      aria-hidden="true"
-                      name={header.isSorted ? (header.isSortedDesc ? 'sort-down' : 'sort-up') : 'sort'}
-                    />
-                  ) : null}
-                </TableHeaderCell>
-              );
-            })}
-          </TableHeaderRow>
-        ))}
+        {headerGroups.map((headerGroup, rowIndex: number) => {
+          const headerGroupEx = headerGroup as ExtendedTableHeader<T>;
+          return (
+            <TableHeaderRow
+              id={`${populateId()}table_header_row_${rowIndex}`}
+              data-testid={`${populateId()}table_header_row_${rowIndex}`}
+              key={rowIndex.toString()}
+              headerGroup={headerGroupEx}
+            >
+              {headerGroup.headers.map((column, cellIndex: number) => {
+                const header = column as ExtendedTableHeader<T>;
+                return (
+                  <TableHeaderCell
+                    id={`${populateId()}table_header_row_${rowIndex}_cell_${cellIndex}_${column.id}`}
+                    data-testid={`${populateId()}table_header_row_${rowIndex}_cell_${cellIndex}_${column.id}`}
+                    key={column.id}
+                    column={header}
+                  >
+                    {header.render('Header')}
+                    {sortable && header.defaultCanSort && header.disableSortBy !== true ? (
+                      <Icon
+                        aria-hidden="true"
+                        name={header.isSorted ? (header.isSortedDesc ? 'sort-down' : 'sort-up') : 'sort'}
+                      />
+                    ) : null}
+                  </TableHeaderCell>
+                );
+              })}
+            </TableHeaderRow>
+          );
+        })}
       </TableHeader>
       <tbody {...getTableBodyProps()} {...bodyProps}>
         {rows.map((row, rowIndex: number) => {
@@ -125,7 +128,7 @@ const Table = ({
               data-testid={`${populateId()}table_row_${rowIndex}`}
               key={`${populateId()}table_row_${rowIndex.toString()}`}
               index={rowIndex}
-              row={row as Row}
+              row={row as Row<T>}
               onRowClick={selectable ? undefined : onRowClick}
               onCellClick={selectable ? onRowClick : onCellClick}
               {...rowProps}
@@ -135,7 +138,7 @@ const Table = ({
                   id={`${populateId()}table_row_${rowIndex}_cell_${cellIndex}`}
                   data-testid={`${populateId()}table_row_${rowIndex}_cell_${cellIndex}`}
                   key={`${populateId()}table_row_${rowIndex.toString()}_cell_${cellIndex.toString()}`}
-                  cell={cell as Cell}
+                  cell={cell as Cell<T>}
                   onCellClick={selectable ? onRowClick : onCellClick}
                   {...cellProps}
                 >

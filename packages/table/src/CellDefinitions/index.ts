@@ -4,7 +4,6 @@ export { default as CurrencyCell } from './CurrencyCell';
 export { default as DateCell } from './DateCell';
 export { default as IconCell } from './IconCell';
 
-
 export type { ActionCellConfig } from './ActionCell';
 export type { CurrencyCellConfig } from './CurrencyCell';
 export type { DateTimeCellConfig } from './DateCell';
