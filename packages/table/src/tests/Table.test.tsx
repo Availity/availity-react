@@ -9,8 +9,8 @@ import ActionCell from '../CellDefinitions/ActionCell';
 import BadgeCell from '../CellDefinitions/BadgeCell';
 import IconCell from '../CellDefinitions/IconCell';
 import DateCell from '../CellDefinitions/DateCell';
+import { Cell } from '../types/ReactTable';
 
-import { Cell } from '..';
 
 const basicColumns = [
   {
@@ -61,10 +61,10 @@ const formattedColumns = [
         {
           id: 'action1',
           displayText: 'Action 1',
-          isVisible: (record:any) => record.icon,
-          onClick: (record:any) => {
+          isVisible: (record?: Record<string, unknown>) => !!record?.icon,
+          onClick: (record?: Record<string, unknown>) => {
             // eslint-disable-next-line no-console
-            console.log(`action on record ${record.id}`);
+            console.log(`action on record ${record?.id}`);
           },
         },
         {
@@ -74,9 +74,9 @@ const formattedColumns = [
         {
           id: 'action2',
           displayText: 'Action 2',
-          onClick: (record:any) => {
+          onClick: (record?: Record<string, unknown>) => {
             // eslint-disable-next-line no-console
-            console.log(`action on record ${record.id}`);
+            console.log(`action on record ${record?.id}`);
           },
         },
       ],
@@ -93,8 +93,7 @@ describe('Table', () => {
   });
 
   test('should render selectable table', async () => {
-    const onSelect = jest.fn();
-    const { container, getByTestId } = render(
+    const { container } = render(
       <TableContextProvider selectable records={basicData} columns={basicColumns}><Table /></TableContextProvider>
     );
 

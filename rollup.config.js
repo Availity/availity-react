@@ -34,7 +34,8 @@ export default () =>
         commonjs(),
         typescript({
           tsconfigOverride: {
-            files: [`${pkgPath}/src/index.ts`],
+            include: [`${pkgPath}/src`],
+            exclude: [`${pkgPath}/src/**/*.test.tsx`],
           },
         }),
         postcss(),

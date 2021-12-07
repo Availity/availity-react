@@ -1,46 +1,56 @@
 import React, { useEffect, useState } from 'react';
-import { Button, ButtonDropdown, DropdownItem, DropdownMenu, DropdownToggle, InputGroup, Label } from 'reactstrap';
+import { Button, ButtonDropdown, DropdownItem, DropdownMenu, DropdownToggle, InputGroup, Label, UncontrolledTooltip } from 'reactstrap';
 import Icon from '@availity/icon';
 import find from 'lodash/find';
-import { AvailityTableState, TableSortConfig, TableSortOption, useTableContext } from '../TableContext';
-import { ExtendedTableInstance } from '..';
+import { TableSortConfig } from '../types/TableSortConfig';
+import { useTableContext } from '../TableContext';
+import { CurrentTableState, TableInstance } from '../types/ReactTable';
+import { TableSortOption } from '../types/TableSortOption';
 
 type Props = {
-    onSort?: (sortBy: TableSortConfig) => void;
-}
+    id?: string;
+    disabled?: boolean;
+    color?: string;
+    onSort?: (sortBy: TableSortConfig[]) => void;
+} & React.HTMLAttributes<HTMLElement>;
 
-const TableSorter = ({ onSort }: Props): JSX.Element | null => {
-    const { sortOptions, instance, initialState } = useTableContext();
-    const { toggleSortBy } = instance as ExtendedTableInstance;
+const TableSorter = ({ id, onSort, disabled, color, ...rest }: Props): JSX.Element | null => {
+    const { sortOptions, instance } = useTableContext();
+    const { toggleSortBy, state } = instance as TableInstance;
 
     const [isSortingDropdownOpen, setIsSortingDropdownOpen] = useState<boolean>(false);
     const [tableSort, setTableSort] = useState<TableSortOption | undefined>();
     const [tableSortDesc, setTableSortDesc] = useState<boolean>(true);
 
     useEffect(() => {
-        if (sortOptions && initialState && initialState.sortBy && !tableSort) {
-            const { sortBy } = initialState as AvailityTableState;
-            const defaultSortOption = find(sortOptions, (option) => option.value === (sortBy as TableSortConfig[])[0].id);
-            if (defaultSortOption) {
-                setTableSort(defaultSortOption);
-                setTableSortDesc(true);
+        if (sortOptions && state) {
+            const { sortBy } = state as CurrentTableState;
+            const currentSort = (sortBy as TableSortConfig[])[0];
+
+            const currentSortOption = find(sortOptions, (option) => option.value === currentSort.id);
+            if (currentSortOption) {
+                setTableSort(currentSortOption);
+                setTableSortDesc(currentSort.desc);
             }
         }
-    }, [sortOptions]);
+    }, [sortOptions, state]);
 
-    const toggleSortingDropdown = () => setIsSortingDropdownOpen(!isSortingDropdownOpen);
-
-    const handleSort = (sortOption: TableSortOption) => {
-
-        setTableSort(sortOption);
-
+    const sort = async (sortBy: TableSortOption, isDesc: boolean) => {
         if (toggleSortBy) {
-            toggleSortBy(sortOption.value, tableSortDesc, false);
+            toggleSortBy(sortBy.value, isDesc, false);
         }
 
         if (onSort) {
-            onSort({ id: sortOption.value, desc: tableSortDesc })
+            onSort([{ id: sortBy.value, desc: isDesc }]);
         }
+    };
+
+    const toggleSortingDropdown = () => setIsSortingDropdownOpen(!isSortingDropdownOpen);
+
+    const handleSort = async (sortOption: TableSortOption) => {
+        await setTableSort(sortOption);
+
+        sort(sortOption, tableSortDesc);
     }
 
     const toggleSortDirection = async () => {
@@ -51,13 +61,7 @@ const TableSorter = ({ onSort }: Props): JSX.Element | null => {
             return;
         }
 
-        if (toggleSortBy) {
-            toggleSortBy(tableSort.value, newSortDir, false);
-        }
-
-        if (onSort) {
-            onSort({ id: tableSort.value, desc: newSortDir })
-        }
+        sort(tableSort, newSortDir);
     }
 
     if (!sortOptions) {
@@ -65,20 +69,23 @@ const TableSorter = ({ onSort }: Props): JSX.Element | null => {
     }
 
     return (
-        <InputGroup className="table-controls-sorting mb-2 me-sm-2 mb-sm-0">
-            <Label className="me-sm-2">
+        <InputGroup id={id} className="table-controls-sorting mb-2 me-sm-2 mb-sm-0" {...rest}>
+            <Label className="me-sm-2 pr-1 pl-2">
                 <strong>Sort By: </strong>
             </Label>
-            <ButtonDropdown color="light" isOpen={isSortingDropdownOpen} toggle={toggleSortingDropdown}>
-                <DropdownToggle color="light" caret>
+            <ButtonDropdown className="m1-1" disabled={disabled} isOpen={isSortingDropdownOpen} toggle={toggleSortingDropdown}>
+                <DropdownToggle disabled={disabled} color={color} caret>
                     {tableSort && tableSort.label}
                 </DropdownToggle>
-                <DropdownMenu color="light">
+                <DropdownMenu disabled={disabled} color={color}>
                     {sortOptions.map((sortOption: TableSortOption) =>
                         <DropdownItem key={sortOption.value} onClick={() => handleSort(sortOption)}>{sortOption.label}</DropdownItem>
                     )}
                 </DropdownMenu>
-                <Button color="light" onClick={async () => { await toggleSortDirection(); }}>
+                <UncontrolledTooltip id="tooltip-toggle-sort-dir" placement="top" target="btn-toggle-sort-dir">
+                    {tableSortDesc ? 'Descending' : 'Ascending'}
+                </UncontrolledTooltip>
+                <Button id="btn-toggle-sort-dir" disabled={disabled} color={color} onClick={async () => { await toggleSortDirection(); }}>
                     <Icon name={tableSortDesc ? 'sort-alt-down' : 'sort-alt-up'} />
                 </Button>
             </ButtonDropdown>

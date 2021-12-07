@@ -2,15 +2,16 @@ import React from 'react';
 import Icon from '@availity/icon';
 import TableActionMenu from '../TableActionMenu';
 import TableActionMenuItem from '../TableActionMenuItem';
-import { PrimaryTableAction, SingleTableAction, Cell } from '..';
+import { PrimaryTableAction, SingleTableAction } from '../types/TableActions';
+import { Cell } from '../types/ReactTable';
 
-export interface ActionCellConfig<T> {
-  actions: SingleTableAction<T>[];
-  primaryAction?: PrimaryTableAction<T>
+export interface ActionCellConfig {
+  actions: SingleTableAction[];
+  primaryAction?: PrimaryTableAction
 }
 
-const ActionCell =({ actions, primaryAction } : ActionCellConfig<unknown>) => {
-  const ActionCellDef = ({ row: { original }, index }: Cell) => (
+const ActionCell = ({ actions, primaryAction }: ActionCellConfig): (cell: Cell) => JSX.Element => {
+  const ActionCellDef = ({ row: { original }, index }: Cell): JSX.Element => (
     <>
       <TableActionMenu
         id={`table_row_action_menu_${original.id ? original.id : index}`}

@@ -1,16 +1,17 @@
 import React from 'react';
 import classNames from 'classnames';
 import { useTableContext } from './TableContext';
-import { Cell, OnTableClickEvent } from '.';
+import { OnTableClickEvent } from './types/OnTableClickEvent';
+import { Cell } from './types/ReactTable';
 
 type Props = {
-  id?: string,
-  cell: Cell,
-  children: React.ReactNode,
+  id?: string;
+  cell: Cell;
+  children: React.ReactNode;
   onCellClick?: (event: OnTableClickEvent<HTMLElement>) => void;
-}
+} & React.HTMLAttributes<HTMLElement>;
 
-const TableCell = ({ cell, children, onCellClick, ...rest } : Props) : JSX.Element => {
+const TableCell = ({ cell, children, onCellClick, ...rest }: Props): JSX.Element => {
   const { scrollable } = useTableContext();
   const { className, disableClick, stickyLeft, stickyRight } = cell.column;
 
@@ -26,7 +27,6 @@ const TableCell = ({ cell, children, onCellClick, ...rest } : Props) : JSX.Eleme
     }),
     title: cell.value && isFixedWidth ? cell.value.toString() : undefined,
     onClick: (e: React.MouseEvent<HTMLTableCellElement, MouseEvent>) => {
-
       if (!disableClick && onCellClick)
         onCellClick({
           ...e,

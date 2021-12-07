@@ -10,6 +10,9 @@
     "react",
     "availity"
   ],
+  "scripts": {
+    "format": "prettier src/* --write --ignore-unknown"
+  },
   "repository": {
     "type": "git",
     "url": "https://github.com/Availity/availity-react.git"

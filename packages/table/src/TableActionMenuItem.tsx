@@ -1,12 +1,13 @@
 import React from 'react';
 import { DropdownItem } from 'reactstrap';
-import { SingleTableAction } from '.';
+import { SingleTableAction } from './types/TableActions';
+import { TableRecord } from './types/TableRecord';
 
 type Props = {
   id?: string;
-  action: SingleTableAction<any>;
-  record: any;
-}
+  action: SingleTableAction;
+  record: TableRecord;
+};
 
 const TableActionMenuItem = ({ id, action, record }: Props): JSX.Element | null => {
   const isVisible = action.isVisible ? action.isVisible(record) : true;
@@ -15,12 +16,12 @@ const TableActionMenuItem = ({ id, action, record }: Props): JSX.Element | null 
   }
 
   const setOnClickProps = () => {
-    if (action.onClick) {
-      const clickEvent = action.onClick as (record: object) => void;
-      return { onClick: () => clickEvent(record) };
+    if (!action.onClick) {
+      return null;
     }
-    return undefined;
-  }
+    const clickEvent = action.onClick as (record: TableRecord) => void;
+    return { onClick: () => clickEvent(record) };
+  };
 
   return action.divider ? (
     <DropdownItem id={`${id}_action_${action.id}`} key={action.id} divider />

@@ -1,22 +1,28 @@
 import React, { useEffect, useState } from 'react';
-import { useTableContext } from '../TableContext';
 import { Badge, Button, ButtonDropdown, ButtonGroup, DropdownItem, DropdownMenu, DropdownToggle } from 'reactstrap';
-import { BulkTableAction, ExtendedTableInstance } from '..';
+import { useTableContext } from '../TableContext';
+import { TableInstance } from '../types/ReactTable';
+import { BulkTableAction } from '../types/TableActions';
+import { TableRecord } from '../types/TableRecord';
 
 type Props = {
+    id?: string;
+    disabled?: boolean;
     recordName: string;
-    bulkActions: BulkTableAction<any>[];
-    onRecordsSelected?: (records: any[]) => void;
-}
+    bulkActions: BulkTableAction[];
+    color?: string;
+    onRecordsSelected?: (records: TableRecord[]) => void;
+} & React.HTMLAttributes<HTMLElement>;
 
-const BulkTableActions = ({ recordName, bulkActions, onRecordsSelected }: Props): JSX.Element | null => {
+const BulkTableActions = ({ id, disabled, color, recordName, bulkActions, onRecordsSelected }: Props): JSX.Element | null => {
     const { instance } = useTableContext();
 
-    const { selectedFlatRows: selectedRows, isAllRowsSelected, toggleAllRowsSelected } = instance as ExtendedTableInstance;
+    const { selectedFlatRows: selectedRows, isAllRowsSelected, toggleAllRowsSelected } = instance as TableInstance;
 
     const [isSelectionDropdownOpen, setIsSelectionDropdownOpen] = useState<boolean>(false);
     const [numberOfSelectedRows, setNumberOfSelectedRows] = useState<number>(0);
     const [selectionButtonText, setSelectionButtonText] = useState('Select');
+    const [isDisabled, setIsDisabled] = useState<boolean>(disabled || false);
 
     useEffect(() => {
         setNumberOfSelectedRows(selectedRows?.length);
@@ -27,10 +33,12 @@ const BulkTableActions = ({ recordName, bulkActions, onRecordsSelected }: Props)
         }
 
         if (onRecordsSelected) {
-            onRecordsSelected(selectedRows);
+            const records = selectedRows.map(row =>  row.original);
+            onRecordsSelected(records);
         }
 
-    }, [selectedRows]);
+        setIsDisabled(disabled || selectedRows?.length === 0);
+    }, [selectedRows, disabled, numberOfSelectedRows]);
 
     const toggleSelectionDropdown = () => setIsSelectionDropdownOpen(!isSelectionDropdownOpen);
 
@@ -41,27 +49,30 @@ const BulkTableActions = ({ recordName, bulkActions, onRecordsSelected }: Props)
     }
 
     return (
-        <ButtonGroup className='btn-group' color="light">
+        <ButtonGroup id={id} disabled={isDisabled} className="btn-group">
             <Button
+                disabled={isDisabled}
                 onClick={() => { handleToggleSelectAll() }}
-                color="light">
+                color={color}>
                 <Badge>{numberOfSelectedRows}</Badge> {selectionButtonText} All {recordName}
             </Button>
-            <ButtonDropdown disabled={numberOfSelectedRows === 0} color="light" isOpen={isSelectionDropdownOpen} toggle={toggleSelectionDropdown}>
-                <DropdownToggle disabled={numberOfSelectedRows === 0} color="light" caret></DropdownToggle>
-                <DropdownMenu color="light">
+            <ButtonDropdown disabled={isDisabled} isOpen={isSelectionDropdownOpen} toggle={toggleSelectionDropdown}>
+                <DropdownToggle disabled={isDisabled} color={color} caret />
+                <DropdownMenu color={color}>
                     {bulkActions.map((action) => {
                         const isVisible = action.isVisible ? action.isVisible() : true;
                         const setProps = () => {
-                            if (action.onClick) {
-                                const clickEvent = action.onClick as (records: object[]) => void;
-                                return { onClick: () => clickEvent(selectedRows) };
+                            if (!action.onClick) {
+                                return null;
                             }
+                            const clickEvent = action.onClick;
+                            return { onClick: () => clickEvent(selectedRows.map(row =>  row.original)) };
                         }
 
                         if (isVisible) {
                             return <DropdownItem key={action.displayText} {...setProps()}>{action.displayText}</DropdownItem>
                         }
+                        return null;
                     }
                     )}
                 </DropdownMenu>

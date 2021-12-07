@@ -6,8 +6,11 @@ import TableHeaderRow from './TableHeaderRow';
 import TableHeaderCell from './TableHeaderCell';
 import TableRow from './TableRow';
 import TableCell from './TableCell';
+import { TableSortConfig } from './types/TableSortConfig';
+import { Cell, CurrentTableState, ExtendedTableHeader, Row, TableInstance } from './types/ReactTable';
+import { OnTableClickEvent } from './types/OnTableClickEvent';
+import { OnRowSelectedEvent } from './types/OnRowSelectedEvent';
 import { useTableContext } from './TableContext';
-import { OnRowSelectedEvent, OnTableClickEvent, ExtendedTableHeader, TableInstance, Row, Cell } from '.';
 
 type HeaderProps = {
   sticky: boolean;
@@ -22,6 +25,8 @@ export type Props = {
   onRowSelected?: (event: OnRowSelectedEvent) => void;
   headerProps?: HeaderProps;
   rowProps?: React.HTMLAttributes<HTMLElement>;
+  scrollable?: boolean;
+  onSort?: (sortBy: TableSortConfig[]) => void;
 } & React.HTMLAttributes<HTMLElement>;
 
 const Table = ({
@@ -33,10 +38,11 @@ const Table = ({
   onCellClick,
   onRowSelected,
   rowProps,
+  scrollable,
+  onSort,
   ...rest
-}: Props) : JSX.Element => {
-
-  const { sortable, selectable, instance } = useTableContext();
+}: Props): JSX.Element => {
+  const { sortable, selectable, instance, setScrollable } = useTableContext();
 
   const {
     getTableProps,
@@ -46,7 +52,25 @@ const Table = ({
     prepareRow,
     selectedFlatRows: selectedRows,
     toggleHideColumn,
+    state,
   } = instance as TableInstance;
+
+  const tableState = state as CurrentTableState;
+
+  useEffect(() => {
+    if (scrollable && setScrollable) {
+      setScrollable(scrollable);
+    }
+  }, [scrollable, setScrollable]);
+
+  useEffect(() => {
+    if (sortable && onSort && tableState) {
+      const { sortBy } = tableState;
+      if (sortBy) {
+        onSort(sortBy);
+      }
+    }
+  }, [tableState, sortable, onSort]);
 
   useEffect(() => {
     toggleHideColumn('selection', !selectable);
@@ -54,7 +78,7 @@ const Table = ({
 
   useEffect(() => {
     if (onRowSelected) {
-      onRowSelected({ selectedRows: selectedRows?.map((selectedRow: any) => selectedRow.id) });
+      onRowSelected({ selectedRows: selectedRows?.map((selectedRow: Row) => selectedRow.id) });
     }
   }, [selectedRows, onRowSelected]);
 
@@ -63,35 +87,37 @@ const Table = ({
   return (
     <RsTable id={id} {...getTableProps({ className: 'av-grid' })} {...rest}>
       <TableHeader id={`${populateId()}table_header`} {...headerProps}>
-        {headerGroups.map((headerGroup, rowIndex) => (
+        {headerGroups.map((headerGroup, rowIndex: number) => (
           <TableHeaderRow
             id={`${populateId()}table_header_row_${rowIndex}`}
             data-testid={`${populateId()}table_header_row_${rowIndex}`}
             key={rowIndex.toString()}
             headerGroup={headerGroup}
           >
-            {headerGroup.headers.map((column, cellIndex) => {
+            {headerGroup.headers.map((column, cellIndex: number) => {
               const header = column as ExtendedTableHeader;
-              return (<TableHeaderCell
-                id={`${populateId()}table_header_row_${rowIndex}_cell_${cellIndex}_${header.id}`}
-                data-testid={`${populateId()}table_header_row_${rowIndex}_cell_${cellIndex}_${header.id}`}
-                key={header.id}
-                column={header}
-              >
-                {header.render('Header')}
-                {sortable && header.defaultCanSort && header.disableSortBy !== true ? (
-                  <Icon
-                    aria-hidden="true"
-                    name={header.isSorted ? (header.isSortedDesc ? 'sort-down' : 'sort-up') : 'sort'}
-                  />
-                ) : null}
-              </TableHeaderCell>)
+              return (
+                <TableHeaderCell
+                  id={`${populateId()}table_header_row_${rowIndex}_cell_${cellIndex}_${column.id}`}
+                  data-testid={`${populateId()}table_header_row_${rowIndex}_cell_${cellIndex}_${column.id}`}
+                  key={column.id}
+                  column={header}
+                >
+                  {header.render('Header')}
+                  {sortable && header.defaultCanSort && header.disableSortBy !== true ? (
+                    <Icon
+                      aria-hidden="true"
+                      name={header.isSorted ? (header.isSortedDesc ? 'sort-down' : 'sort-up') : 'sort'}
+                    />
+                  ) : null}
+                </TableHeaderCell>
+              );
             })}
           </TableHeaderRow>
         ))}
       </TableHeader>
       <tbody {...getTableBodyProps()} {...bodyProps}>
-        {rows.map((row, rowIndex) => {
+        {rows.map((row, rowIndex: number) => {
           prepareRow(row);
           return (
             <TableRow
@@ -104,7 +130,7 @@ const Table = ({
               onCellClick={selectable ? onRowClick : onCellClick}
               {...rowProps}
             >
-              {row.cells.map((cell, cellIndex) => (
+              {row.cells.map((cell, cellIndex: number) => (
                 <TableCell
                   id={`${populateId()}table_row_${rowIndex}_cell_${cellIndex}`}
                   data-testid={`${populateId()}table_row_${rowIndex}_cell_${cellIndex}`}
@@ -120,7 +146,7 @@ const Table = ({
           );
         })}
       </tbody>
-    </RsTable >
+    </RsTable>
   );
 };
 

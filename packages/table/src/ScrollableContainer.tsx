@@ -1,13 +1,13 @@
-import React, { cloneElement } from 'react';
+import React, { cloneElement, isValidElement } from 'react';
 
 type Props = {
   id?: string;
-  children: React.ReactNode;
+  children?: React.ReactNode | React.ReactChild;
 } & React.HTMLAttributes<HTMLElement>;
 
 const ScrollableContainer = ({ id, children, ...rest }: Props): JSX.Element => (
   <div id={id} className="av-scrollable-table-wrapper" {...rest}>
-    {cloneElement(children as React.ReactElement<any>, { scrollable: true })}
+    {isValidElement(children) && cloneElement(children, { scrollable: 'true' })}
   </div>
 );
 

@@ -9,10 +9,10 @@ export interface DateTimeCellConfig {
   dateFormat: string;
   timeFormat?: string;
   convertTimeZone?: boolean;
-};
+}
 
-const DateCell = ({ dateFormat }: DateTimeCellConfig) => {
-  const DateCellDef = ({ value }: CellProps) => {
+const DateCell = ({ dateFormat }: DateTimeCellConfig) : JSX.Element | ((cell:CellProps) => JSX.Element) => {
+  const DateCellDef = ({ value }: CellProps) : JSX.Element => {
     let formattedValue;
     if (value) {
       formattedValue = moment(value).format(dateFormat);

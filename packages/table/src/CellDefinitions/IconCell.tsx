@@ -1,17 +1,19 @@
 import React from 'react';
 import Icon from '@availity/icon';
+import { TableRecord } from '../types/TableRecord';
 
+type CellValue = string | TableRecord
 type CellProps = {
-  value: string | object;
+  value: CellValue;
 };
 
 export interface IconConfig {
   name: string;
-  title: string | ((value: any) => string)
+  title: string | ((value: CellValue) => string)
 }
 
-const IconCell = ({ name, title }: IconConfig) => {
-  const IconCellDef = ({ value }: CellProps) => {
+const IconCell = ({ name, title }: IconConfig): JSX.Element | ((cell: CellProps) => JSX.Element | null) => {
+  const IconCellDef = ({ value }: CellProps) : JSX.Element | null => {
     let generatedTitle;
     if (typeof title === 'function') {
       generatedTitle = title(value);

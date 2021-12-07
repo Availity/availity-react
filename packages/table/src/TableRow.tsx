@@ -3,18 +3,19 @@ import includes from 'lodash/includes';
 import filter from 'lodash/filter';
 import classNames from 'classnames';
 import { useTableContext } from './TableContext';
-import { Column, OnTableClickEvent, Row, TableInstance } from '.';
+import { OnTableClickEvent } from './types/OnTableClickEvent';
+import { Column, Row, TableInstance } from './types/ReactTable';
 
 export type Props = {
   id?: string;
-  row: Row,
+  row: Row;
   index: number;
   onRowClick?: (event: OnTableClickEvent<HTMLElement>) => void;
   onCellClick?: (event: OnTableClickEvent<HTMLElement>) => void;
   children?: React.ReactNode;
-}
+} & React.HTMLAttributes<HTMLElement>;
 
-const TableRow = ({ row, index, onRowClick, onCellClick, children, ...rest }: Props) => {
+const TableRow = ({ row, index, onRowClick, onCellClick, children, ...rest }: Props): JSX.Element => {
   const { AdditionalContent, scrollable, instance } = useTableContext();
   const { selectedFlatRows: selectedRows, allColumns } = instance as TableInstance;
 
@@ -24,7 +25,7 @@ const TableRow = ({ row, index, onRowClick, onCellClick, children, ...rest }: Pr
     className: classNames(`av-grid-row-${index % 2 === 0 ? 'even' : 'odd'}`, {
       'fixed-width-tr': scrollable,
       selected: includes(
-        selectedRows.map((sr) => sr.id),
+        selectedRows.map((row: Row) => row.id),
         row.id
       ),
       'cursor-pointer': !!onRowClick || !!onCellClick,

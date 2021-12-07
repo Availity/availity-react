@@ -5,9 +5,9 @@ import { Dropdown, DropdownToggle, DropdownMenu } from 'reactstrap';
 type Props = {
   id?: string;
   children: React.ReactNode;
-}
+};
 
-const TableActionMenu = ({ id, children } : Props) : JSX.Element => {
+const TableActionMenu = ({ id, children }: Props): JSX.Element => {
   const [isOpen, setIsOpen] = useState(false);
   const toggle = () => setIsOpen(!isOpen);
 

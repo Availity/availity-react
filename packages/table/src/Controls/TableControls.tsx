@@ -1,10 +1,10 @@
-import React from 'react';
+import React, { cloneElement, isValidElement, useEffect, useState } from 'react';
 import { Form } from 'reactstrap';
 
 type Props = {
     id?: string;
     disabled?: boolean;
-    children?: React.ReactNode;
+    children?: React.ReactNode[];
 } & React.HTMLAttributes<HTMLElement>;
 
 const TableControls = ({
@@ -13,14 +13,26 @@ const TableControls = ({
     children,
     ...rest
 }: Props): JSX.Element => {
-    console.log(disabled);
+    const [isDisabled, setIsDisabled] = useState<boolean>(disabled || false);
+
+    useEffect(() => {
+        setIsDisabled(disabled || false);
+    }, [disabled]);
+
     return (
         <div id={id} className="table-controls" {...rest}>
             <Form inline>
-                {children}
+                {children?.map((child: React.ReactNode, index: number) => {
+                    if (!isValidElement(child)) {
+                        return null;
+                    }
+                    return cloneElement(child, { disabled: isDisabled, key: `table_controls_${index}` });
+
+                })
+                }
             </Form>
         </div>
-    );
+    )
 };
 
 
