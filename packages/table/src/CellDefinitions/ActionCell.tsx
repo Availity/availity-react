@@ -2,12 +2,13 @@ import React from 'react';
 import Icon from '@availity/icon';
 import TableActionMenu from '../TableActionMenu';
 import TableActionMenuItem from '../TableActionMenuItem';
-import { PrimaryTableAction, SingleTableAction } from '../types/TableActions';
 import { Cell, IdType } from '../types/ReactTable';
+import { RecordAction } from '../types/RecordAction';
+import { PrimaryRecordAction } from '../types/PrimaryRecordAction';
 
 export interface ActionCellConfig<T> {
-  actions: SingleTableAction<T>[];
-  primaryAction?: PrimaryTableAction<T>
+  actions: RecordAction<T>[];
+  primaryAction?: PrimaryRecordAction<T>
 }
 
 const ActionCell = <T extends IdType>({ actions, primaryAction }: ActionCellConfig<T>): (cell: Cell<T>) => JSX.Element => {

@@ -38,14 +38,15 @@ const myTableConfig = {
 }
 
 const Example = () => (
-    <Table
+    <TableProvider
         columns={columns}
-        records={data}
-    >
+        records={data}>
+        <Table/>
+    </TableProvider>
 );
 ```
 
-## Table Props
+## Table Provider Props
 
 #### `id?: string`
 
@@ -79,6 +80,11 @@ This object definition sets the initial state of the table, including the defaul
 
 This designates a Component that will be displayed in the table row for the record. This content displays in an additional `<tr>` with a colspan equal to the number of columns that are NOT sticky.  
 
+
+Event handler for clicking on a row. 
+
+## Table Props
+
 #### `bodyProps?:object`
 
 Any DOM properties that should be passed onto the `<tbody>` element.
@@ -96,9 +102,6 @@ Any DOM properties that should be passed onto the `<thead>` element.
 Any DOM properties that should be passed onto the `<tr>` element.
 
 #### `onRowClick?: (event: OnTableClickEvent) => void`
-
-Event handler for clicking on a row. 
-
 ##### OnTableClickEvent Props
 
 `instance: Row`

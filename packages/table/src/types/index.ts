@@ -1,8 +1,5 @@
 export type { OnTableClickEvent } from './OnTableClickEvent';
-export type {
-    OnRowSelectedEvent
-} from './OnRowSelectedEvent';
-
+export type { OnRowSelectedEvent } from './OnRowSelectedEvent';
 
 export type {
     Row,
@@ -13,17 +10,10 @@ export type {
     TableInstance
 } from './ReactTable';
 
-export type {
-    PrimaryTableAction,
-    SingleTableAction,
-    TableAction,
-    BulkTableAction
-} from './TableActions';
+export type { TableAction } from './TableAction';
+export type { BulkRecordAction } from './BulkRecordAction';
+export type { RecordAction } from './RecordAction';
+export type { PrimaryRecordAction } from './PrimaryRecordAction';
 
-export type {
-    TableSortConfig
-} from './TableSortConfig';
-
-export type {
-    TableSortOption
-} from './TableSortOption';
+export type { TableSort } from './TableSort';
+export type { TableSortOption } from './TableSortOption';

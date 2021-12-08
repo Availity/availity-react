@@ -27,9 +27,7 @@ const TableControls = ({
                         return null;
                     }
                     return cloneElement(child, { disabled: isDisabled, key: `table_controls_${index}` });
-
-                })
-                }
+                })}
             </Form>
         </div>
     )

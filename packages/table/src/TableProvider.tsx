@@ -10,22 +10,22 @@ export type Props<T extends IdType> = {
   additionalContent?: React.ElementType;
   children: React.ReactChild | React.ReactChild[];
   columns: Column<T>[];
-  records: T[];
+  data: T[];
   scrollable?: boolean;
   selectable?: boolean;
   sortable?: boolean;
   initialState?: Partial<CurrentTableState>;
-};
+} & TableOptions<T>;
 
-const TableContextProvider = <T extends IdType>({
+const TableProvider = <T extends IdType>({
   additionalContent: AdditionalContent,
   columns,
-  records,
+  data,
   selectable,
   scrollable,
   sortable,
-  initialState,
   children,
+  ...rest
 }: Props<T>): JSX.Element => {
   let selectionColumn: Column<T>;
   const [isScrollable, setScrollable] = useState<boolean | undefined>(scrollable);
@@ -40,10 +40,9 @@ const TableContextProvider = <T extends IdType>({
 
   const tableInstance = useTable<T>(
     {
+      ...rest,
       columns: cols,
-      data: records,
-      initialState: initialState || {},
-      autoResetSelectedRows: false,
+      data,
     } as TableOptions<T>,
     useSortBy,
     useRowSelect,
@@ -87,7 +86,6 @@ const TableContextProvider = <T extends IdType>({
         scrollable: isScrollable as boolean | undefined,
         setScrollable,
         sortable,
-        initialState,
         sortOptions: getSortableColumns(),
         instance: tableInstance,
       }}
@@ -97,4 +95,4 @@ const TableContextProvider = <T extends IdType>({
   );
 };
 
-export default TableContextProvider;
+export default TableProvider;

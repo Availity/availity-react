@@ -1,6 +1,5 @@
 import React, { useContext } from 'react';
-import { TableSortConfig, TableSortOption } from './types';
-import { CurrentTableState } from './types/ReactTable';
+import { TableSort, TableSortOption } from './types';
 
 export type TableContext = {
   scrollable?: boolean;
@@ -8,10 +7,9 @@ export type TableContext = {
   sortable?: boolean;
   AdditionalContent?: React.ElementType;
   toggleSelectAll?: () => void;
-  sortBy?: TableSortConfig;
+  sortBy?: TableSort;
   sortOptions?: TableSortOption[];
   selectable?: boolean;
-  initialState?: CurrentTableState;
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   instance?: any;
 };

@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { Button, ButtonDropdown, DropdownItem, DropdownMenu, DropdownToggle, InputGroup, Label, UncontrolledTooltip } from 'reactstrap';
 import Icon from '@availity/icon';
 import find from 'lodash/find';
-import { TableSortConfig } from '../types/TableSortConfig';
+import { TableSort } from '../types/TableSort';
 import { useTableContext } from '../TableContext';
 import { CurrentTableState, IdType, TableInstance } from '../types/ReactTable';
 import { TableSortOption } from '../types/TableSortOption';
@@ -11,7 +11,7 @@ type Props = {
     id?: string;
     disabled?: boolean;
     color?: string;
-    onSort?: (sortBy: TableSortConfig[]) => void;
+    onSort?: (sortBy: TableSort[]) => void;
 } & React.HTMLAttributes<HTMLElement>;
 
 /* eslint-disable-next-line  @typescript-eslint/ban-types */
@@ -22,6 +22,7 @@ const TableSorter = <T extends IdType>({ id, onSort, disabled, color, ...rest }:
     const [isSortingDropdownOpen, setIsSortingDropdownOpen] = useState<boolean>(false);
     const [tableSort, setTableSort] = useState<TableSortOption | undefined>();
     const [tableSortDesc, setTableSortDesc] = useState<boolean>(true);
+    const [isDisabled, setIsDisabled] = useState<boolean>(disabled || false);
 
     useEffect(() => {
         if (sortOptions && state) {
@@ -30,7 +31,7 @@ const TableSorter = <T extends IdType>({ id, onSort, disabled, color, ...rest }:
                 return;
             }
 
-            const currentSort = (sortBy as TableSortConfig[])[0];
+            const currentSort = (sortBy as TableSort[])[0];
             if (!currentSort) {
                 return;
             }
@@ -42,6 +43,10 @@ const TableSorter = <T extends IdType>({ id, onSort, disabled, color, ...rest }:
             }
         }
     }, [sortOptions, state]);
+
+    useEffect(() => {
+        setIsDisabled(disabled || false);
+    }, [disabled]);
 
     const sort = async (sortBy: TableSortOption, isDesc: boolean) => {
         if (toggleSortBy) {
@@ -81,11 +86,11 @@ const TableSorter = <T extends IdType>({ id, onSort, disabled, color, ...rest }:
             <Label className="me-sm-2 pr-1 pl-2">
                 <strong>Sort By: </strong>
             </Label>
-            <ButtonDropdown className="m1-1" disabled={disabled} isOpen={isSortingDropdownOpen} toggle={toggleSortingDropdown}>
-                <DropdownToggle disabled={disabled} color={color} caret>
+            <ButtonDropdown className="m1-1" disabled={isDisabled} isOpen={isSortingDropdownOpen} toggle={toggleSortingDropdown}>
+                <DropdownToggle disabled={isDisabled} color={color} caret>
                     {tableSort && tableSort.label}
                 </DropdownToggle>
-                <DropdownMenu disabled={disabled} color={color}>
+                <DropdownMenu disabled={isDisabled} color={color}>
                     {sortOptions.map((sortOption: TableSortOption) =>
                         <DropdownItem key={sortOption.value} onClick={() => handleSort(sortOption)}>{sortOption.label}</DropdownItem>
                     )}
@@ -93,7 +98,7 @@ const TableSorter = <T extends IdType>({ id, onSort, disabled, color, ...rest }:
                 <UncontrolledTooltip id="tooltip-toggle-sort-dir" placement="top" target="btn-toggle-sort-dir">
                     {tableSortDesc ? 'Descending' : 'Ascending'}
                 </UncontrolledTooltip>
-                <Button id="btn-toggle-sort-dir" disabled={disabled} color={color} onClick={async () => { await toggleSortDirection(); }}>
+                <Button id="btn-toggle-sort-dir" disabled={isDisabled} color={color} onClick={async () => { await toggleSortDirection(); }}>
                     <Icon name={tableSortDesc ? 'sort-alt-down' : 'sort-alt-up'} />
                 </Button>
             </ButtonDropdown>

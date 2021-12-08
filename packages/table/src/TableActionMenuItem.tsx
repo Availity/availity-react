@@ -1,11 +1,11 @@
 import React from 'react';
 import { DropdownItem } from 'reactstrap';
 import { IdType } from './types/ReactTable';
-import { SingleTableAction } from './types/TableActions';
+import { RecordAction } from './types/RecordAction';
 
 type Props<T extends IdType> = {
   id?: string;
-  action: SingleTableAction<T>;
+  action: RecordAction<T>;
   record: T;
 };
 

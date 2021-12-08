@@ -1,4 +1,4 @@
-export type TableSortConfig = {
+export type TableSort = {
     id: string;
     desc: boolean;
 };

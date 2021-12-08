@@ -6,7 +6,7 @@ import TableHeaderRow from './TableHeaderRow';
 import TableHeaderCell from './TableHeaderCell';
 import TableRow from './TableRow';
 import TableCell from './TableCell';
-import { TableSortConfig } from './types/TableSortConfig';
+import { TableSort } from './types/TableSort';
 import { Cell, CurrentTableState, ExtendedTableHeader, IdType, Row, TableInstance } from './types/ReactTable';
 import { OnTableClickEvent } from './types/OnTableClickEvent';
 import { OnRowSelectedEvent } from './types/OnRowSelectedEvent';
@@ -26,7 +26,7 @@ export type Props<T extends IdType> = {
   headerProps?: HeaderProps;
   rowProps?: React.HTMLAttributes<HTMLElement>;
   scrollable?: boolean;
-  onSort?: (sortBy: TableSortConfig[]) => void;
+  onSort?: (sortBy: TableSort[]) => void;
 } & React.HTMLAttributes<HTMLElement>;
 
 const Table = <T extends IdType>({

@@ -14,7 +14,7 @@ import {
     UseTableOptions
 } from 'react-table';
 
-import { TableSortConfig } from './TableSortConfig';
+import { TableSort } from './TableSort';
 
 /* eslint-disable-next-line  @typescript-eslint/ban-types */
 export type IdType = { id: string } & object;
@@ -53,6 +53,7 @@ export type ExtendedTableHeader<T extends IdType> = HeaderGroup<T> & Column<T> &
 
 export type TableOptions<T extends IdType> = RtTableOptions<T> & UseTableOptions<T> & {
     autoResetSelectedRows?: boolean;
+    autoResetSortBy?: boolean;
 };
 
 export type TableInstance<T extends IdType> = UseSortByInstanceProps<T> & UseRowSelectInstanceProps<T> & UseRowSelectOptions<T> & RtTableInstance<T> & {
@@ -60,9 +61,9 @@ export type TableInstance<T extends IdType> = UseSortByInstanceProps<T> & UseRow
     selectedFlatRows: Row<T>[];
     isAllRowsSelected: boolean;
     toggleAllRowsSelected: () => void;
-    sortBy?: TableSortConfig;
+    sortBy?: TableSort;
 };
 
 export interface CurrentTableState extends TableState {
-    sortBy?: TableSortConfig[]
+    sortBy?: TableSort[]
 }

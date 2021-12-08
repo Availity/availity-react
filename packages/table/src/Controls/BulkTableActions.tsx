@@ -1,14 +1,14 @@
 import React, { useEffect, useState } from 'react';
 import { Badge, Button, ButtonDropdown, ButtonGroup, DropdownItem, DropdownMenu, DropdownToggle } from 'reactstrap';
 import { useTableContext } from '../TableContext';
+import { BulkRecordAction } from '../types/BulkRecordAction';
 import { IdType, TableInstance } from '../types/ReactTable';
-import { BulkTableAction } from '../types/TableActions';
 
 type Props<T> = {
     id?: string;
     disabled?: boolean;
     recordName: string;
-    bulkActions: BulkTableAction<T>[];
+    bulkActions: BulkRecordAction<T>[];
     color?: string;
     onRecordsSelected?: (records: T[]) => void;
 } & React.HTMLAttributes<HTMLElement>;
@@ -32,14 +32,16 @@ const BulkTableActions = <T extends IdType>({ id, disabled, color, recordName, b
         }
 
         if (onRecordsSelected) {
-            const records = selectedRows.map((row: { original: T}) =>  row.original);
+            const records = selectedRows.map((row: { original: T }) => row.original);
             onRecordsSelected(records);
         }
+        // eslint-disable-next-line react-hooks/exhaustive-deps
+    }, [selectedRows, numberOfSelectedRows]);
 
-        setIsDisabled(disabled || selectedRows?.length === 0);
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-    }, [selectedRows, disabled, numberOfSelectedRows]);
-
+    useEffect(() => {
+        setIsDisabled(disabled || false);
+    }, [disabled]);
+    
     const toggleSelectionDropdown = () => setIsSelectionDropdownOpen(!isSelectionDropdownOpen);
 
     const handleToggleSelectAll = () => {
@@ -51,13 +53,13 @@ const BulkTableActions = <T extends IdType>({ id, disabled, color, recordName, b
     return (
         <ButtonGroup id={id} disabled={isDisabled} className="btn-group">
             <Button
-                disabled={isDisabled}
+                disabled={disabled}
                 onClick={() => { handleToggleSelectAll() }}
                 color={color}>
                 <Badge>{numberOfSelectedRows}</Badge> {selectionButtonText} All {recordName}
             </Button>
-            <ButtonDropdown disabled={isDisabled} isOpen={isSelectionDropdownOpen} toggle={toggleSelectionDropdown}>
-                <DropdownToggle disabled={isDisabled} color={color} caret />
+            <ButtonDropdown isOpen={isSelectionDropdownOpen} toggle={toggleSelectionDropdown}>
+                <DropdownToggle disabled={numberOfSelectedRows === 0 || disabled} color={color} caret />
                 <DropdownMenu color={color}>
                     {bulkActions.map((action) => {
                         const isVisible = action.isVisible ? action.isVisible() : true;
@@ -66,7 +68,7 @@ const BulkTableActions = <T extends IdType>({ id, disabled, color, recordName, b
                                 return null;
                             }
                             const clickEvent = action.onClick;
-                            return { onClick: () => clickEvent(selectedRows.map(row =>  row.original)) };
+                            return { onClick: () => clickEvent(selectedRows.map(row => row.original)) };
                         }
 
                         if (isVisible) {

@@ -3,7 +3,7 @@ import { render, fireEvent, waitFor } from '@testing-library/react';
 import basicData from './data/basicData.json';
 import formattedData from './data/needsFormattedData.json';
 import Table from '../Table';
-import TableContextProvider from '../TableContextProvider';
+import TableContextProvider from '../TableProvider';
 import CurrencyCell from '../CellDefinitions/CurrencyCell';
 import ActionCell from '../CellDefinitions/ActionCell';
 import BadgeCell from '../CellDefinitions/BadgeCell';
