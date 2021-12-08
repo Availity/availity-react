@@ -3,6 +3,19 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# 2.13.0 (2021-12-08)
+
+
+### Features
+
+* **pagination:** add option for pagination text in controls ([43e2954](https://github.com/Availity/availity-react/commit/43e29548164144fe8d697865fdcd5b1fe3236ce8))
+* **pagination:** fix proptype to bool ([0daf42f](https://github.com/Availity/availity-react/commit/0daf42fefe16c9e5ecdb9e6881549eee5cbc929f))
+* **pagination:** unbump version ([6698aad](https://github.com/Availity/availity-react/commit/6698aad375108d300298800ac6f66155d2aa7a30))
+
+
+
+
+
 # 2.12.0 (2021-11-15)
 
 
