@@ -120,17 +120,7 @@ class AvDate extends Component {
   };
 
   render() {
-    const {
-      className,
-      datePickerProps,
-      hideIcon,
-      max,
-      min,
-      name,
-      type,
-      validate,
-      ...attributes
-    } = this.props;
+    const { className, datePickerProps, hideIcon, max, min, name, type, validate, ...attributes } = this.props;
     const { focused, format, value } = this.state;
     const { FormCtrl } = this.context;
 
@@ -149,7 +139,7 @@ class AvDate extends Component {
       FormCtrl.isBad(name) ? 'is-bad-input' : null,
       hasError ? 'av-invalid' : 'av-valid',
       touched && hasError && 'is-invalid',
-      !value && 'current-day-highlight',
+      !value && 'current-day-highlight'
     );
 
     const input = (
@@ -189,6 +179,7 @@ class AvDate extends Component {
             numberOfMonths={1}
             isOutsideRange={isOutsideRange(minDate, maxDate, format)}
             onClose={this.onClose}
+            autoComplete="date"
           />
         </InputGroup>
       </>

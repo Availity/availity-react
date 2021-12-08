@@ -93,7 +93,7 @@ const DateRange = ({
     className,
     metadata.touched ? 'is-touched' : 'is-untouched',
     metadata.touched && metadata.error && 'is-invalid',
-    !startValue && !endValue && 'current-day-highlight',
+    !startValue && !endValue && 'current-day-highlight'
   );
 
   // Should only run validation once per real change to component, instead of each time setFieldValue/Touched is called.
@@ -312,6 +312,7 @@ const DateRange = ({
           numberOfMonths={2}
           navPosition="navPositionBottom"
           openDirection={openDirection}
+          autoComplete="date"
         />
       </InputGroup>
     </>
