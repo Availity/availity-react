@@ -8,8 +8,17 @@ import { usePagination } from './Pagination';
 const leftCaret = '\u2039'; // ‹
 const rightCaret = '\u203A'; // ›
 
-const PaginationControls = ({ directionLinks, autoHide, pageRange, marginPages, breakLabel, ...rest }) => {
-  const { pageCount, currentPage, setPage } = usePagination();
+const PaginationControls = ({
+  directionLinks,
+  autoHide,
+  pageRange,
+  marginPages,
+  breakLabel,
+  showPaginationText,
+  populatePaginationText,
+  ...rest
+}) => {
+  const { pageCount, currentPage, setPage, lower, upper, total } = usePagination();
 
   const createItem = (pageNumber) => (
     <PaginationItem key={pageNumber} active={currentPage === pageNumber} data-testid={`control-page-${pageNumber}`}>
@@ -130,6 +139,11 @@ const PaginationControls = ({ directionLinks, autoHide, pageRange, marginPages, 
       ) : (
         ''
       )}
+      {showPaginationText && (
+        <div data-testid="pagination-text" className="pagination-text pt-1 pl-2 pr-2">
+          {populatePaginationText ? populatePaginationText(lower, upper, total) : `${lower}-${upper} of ${total}`}
+        </div>
+      )}
     </Pagination>
   ) : (
     ''
@@ -144,6 +158,8 @@ PaginationControls.propTypes = {
   breakLabel: PropTypes.bool,
   listClassName: PropTypes.string,
   'aria-label': PropTypes.string,
+  showPaginationText: PropTypes.string,
+  populatePaginationText: PropTypes.func,
 };
 
 PaginationControls.defaultProps = {
@@ -152,6 +168,7 @@ PaginationControls.defaultProps = {
   pageRange: 5,
   marginPages: 2,
   breakLabel: true,
+  showPaginationText: false,
 };
 
 export default PaginationControls;
