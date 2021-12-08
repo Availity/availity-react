@@ -158,7 +158,7 @@ PaginationControls.propTypes = {
   breakLabel: PropTypes.bool,
   listClassName: PropTypes.string,
   'aria-label': PropTypes.string,
-  showPaginationText: PropTypes.string,
+  showPaginationText: PropTypes.bool,
   populatePaginationText: PropTypes.func,
 };
 
