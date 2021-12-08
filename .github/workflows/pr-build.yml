@@ -46,15 +46,16 @@ jobs:
           file: ./coverage/coverage-final.json
           token: ${{ secrets.CODECOV_TOKEN }}
       - run: yarn build:docs
-        if: github.actor != 'dependabot[bot]'
-      - name: Deploy draft to Netlify
-        uses: South-Paw/action-netlify-deploy@v1.0.4
-        if: github.actor != 'dependabot[bot]'
-        with:
-          github-token: ${{ secrets.BOT_TOKEN }}
-          netlify-auth-token: ${{ secrets.NETLIFY_DEPLOY_KEY }}
-          netlify-site-id: ${{ secrets.NETLIFY_SITE_API_ID }}
-          config-path: './netlify.toml'
-          build-dir: './docusaurus/build'
-          draft: true
-          comment-on-pull-request: true
+#       TODO: fix Netlify draft deploys, investigate gh-pages for draft docs
+#         if: github.actor != 'dependabot[bot]'
+#       - name: Deploy draft to Netlify
+#         uses: South-Paw/action-netlify-deploy@v1.0.4
+#         if: github.actor != 'dependabot[bot]'
+#         with:
+#           github-token: ${{ secrets.BOT_TOKEN }}
+#           netlify-auth-token: ${{ secrets.NETLIFY_DEPLOY_KEY }}
+#           netlify-site-id: ${{ secrets.NETLIFY_SITE_API_ID }}
+#           config-path: './netlify.toml'
+#           build-dir: './docusaurus/build'
+#           draft: true
+#           comment-on-pull-request: true
