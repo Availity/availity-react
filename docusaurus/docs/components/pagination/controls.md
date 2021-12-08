@@ -45,3 +45,11 @@ Add bootstrap styles to list element.
 
 Allows for custom aria-label.
 
+#### `showPaginationText?: boolean`
+
+When true, this will show pagination text next to the controls describing the current page and page range. This defaults to the following: 1-50 of 100.
+
+#### `showPaginationText?: (lower: number, upper: number, total: number) => string`
+
+When `showPaginationText` is true, this function allows for customization of the pagination text that is displayed. 
+
