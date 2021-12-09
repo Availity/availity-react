@@ -1,7 +1,7 @@
 import React from 'react';
 import { Meta, Story } from '@storybook/react';
 import response from '@availity/mock/data/patients.json';
-import Table, { TableContextProvider, ScrollableContainer, TableControls, DateCell, BadgeCell, ActionCell } from '../src';
+import Table, { ScrollableContainer, TableControls, DateCell, BadgeCell, ActionCell, TableProvider } from '../src';
 
 import '../styles.scss';
 
@@ -85,11 +85,11 @@ export const Default: Story = ({
   bodyProps,
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
 }: any) => (
-  <TableContextProvider
+  <TableProvider
     sortable={sortable}
     selectable={selectable}
     columns={columns}
-    records={data}
+    data={data}
   >
     <Table
       headerProps={headerProps}
@@ -97,7 +97,7 @@ export const Default: Story = ({
       cellProps={cellProps}
       bodyProps={bodyProps}
     />
-  </TableContextProvider>);
+  </TableProvider>);
 Default.args = {
   sortable: false,
   selectable: false,
@@ -121,11 +121,11 @@ export const WithScrollableContainer: Story = ({
   bodyProps,
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
 }: any) => (
-  <TableContextProvider
+  <TableProvider
     sortable={sortable}
     selectable={selectable}
     columns={columns}
-    records={data}
+    data={data}
   >
     <ScrollableContainer>
       <Table
@@ -135,7 +135,7 @@ export const WithScrollableContainer: Story = ({
         bodyProps={bodyProps}
       />
     </ScrollableContainer>
-  </TableContextProvider>
+  </TableProvider>
 );
 WithScrollableContainer.args = {
   sortable: false,
@@ -148,46 +148,3 @@ WithScrollableContainer.args = {
   bodyProps: { style: {} },
 };
 WithScrollableContainer.storyName = 'with scrollable container';
-
-
-export const WithTableControls: Story = ({
-  sortable,
-  selectable,
-  columns,
-  data,
-  headerProps,
-  rowProps,
-  cellProps,
-  bodyProps,
-    // eslint-disable-next-line @typescript-eslint/no-explicit-any
-}: any) => (
-
-  <TableContextProvider
-    sortable={sortable}
-    selectable={selectable}
-    columns={columns}
-    records={data}
-  >
-    <TableControls>
-      <div>table controls</div>
-      <div>hi</div>
-    </TableControls>
-    <Table
-      headerProps={headerProps}
-      rowProps={rowProps}
-      cellProps={cellProps}
-      bodyProps={bodyProps}
-    />
-  </TableContextProvider>
-);
-WithTableControls.args = {
-  sortable: false,
-  selectable: false,
-  columns,
-  data: response.data.patientPagination.items,
-  headerProps: { style: { background: 'pink' } },
-  rowProps: { style: {} },
-  cellProps: { style: {} },
-  bodyProps: { style: {} },
-};
-WithTableControls.storyName = 'with table controls';
