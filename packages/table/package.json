@@ -1,6 +1,6 @@
 {
   "name": "@availity/table",
-  "version": "1.0.0",
+  "version": "0.2.0",
   "author": "Ashlee Zeigler <ashlee.zeigler@availity.com>",
   "description": "A generic table wrapper for react-table",
   "main": "dist/index.js",
