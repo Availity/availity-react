@@ -170,7 +170,7 @@ If true, the data should sort descending. If false, the data should sort ascendi
 This is used to display an action menu in a cell. 
 
 #### `isVisible?`: (record?: T) => boolean
-This is an optional function that can be used to conditionally display an action. The record will be passed into the function so that, if needed, the properties on the record can determine if the action is visible or not. If this properties is not populated, the action will always display.
+This is an optional function that can be used to conditionally display an action. The record will be passed into the function so that, if needed, the properties on the record can determine if the action is visible or not. If this properties are not populated, the action will always display.
 
 #### `onClick?`: (record?: T) => action
 This is the onClick event handler for the action.

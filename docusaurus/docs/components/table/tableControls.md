@@ -7,7 +7,7 @@ title: <TableControls/>
 ### Props
 
 #### `id?: string`
-This is a unique id that used to identity the component.
+This is a unique id that used to identify the component.
 
 #### `disabled?: boolean`
 If this flag is set to `true` on the parent `<TabelControls/>` component, it will set `disabled` to `true` on all of it's child controls (for those components that have a `disabled` property and respect it).
@@ -84,7 +84,7 @@ This component will allow you to select all and deselect all records in the tabl
 ### Props
 
 #### `id?: string`
-This is a unique id that used to identity the component.
+This is a unique id that used to identify the component.
 
 #### `disabled?: boolean`
 If this flag is set to true, the dropdown and buttons will be disabled.
@@ -112,7 +112,7 @@ This is a function that determines whether the given action should display, pass
 This components supplies a dropdown of all the available sort fields, alongside a toggle that will sort that field ascending or descending. This dropdown is automatically populated by what columns allow sorting when set in the `<TableProvider>`.
 
 #### `id?: string`
-This is a unique id that used to identity the component.
+This is a unique id that used to identify the component.
 
 #### `disabled?: boolean`
 If this flag is set to true, the dropdown and buttons will be disabled.
@@ -121,7 +121,7 @@ If this flag is set to true, the dropdown and buttons will be disabled.
 This identifies the color variant to use for the dropdown buttons. For what variants are available, refer to Reactstrap.
 #### `onSort?: (sortBy: TableSort) => void`
 
-Event handler that is called when data is sorted. This passes in current sort configuration for the table.
+Event handler that is called when data is sorted. This passes in the current sort configuration for the table.
 
 ## Adding Additional Components
 

@@ -8,7 +8,7 @@ import { PrimaryRecordAction } from '../types/PrimaryRecordAction';
 
 export interface ActionCellConfig<T> {
   actions: RecordAction<T>[];
-  primaryAction?: PrimaryRecordAction<T>
+  primaryAction?: PrimaryRecordAction<T>;
 }
 
 const ActionCell = <T extends IdType>({ actions, primaryAction }: ActionCellConfig<T>): (cell: Cell<T>) => JSX.Element => {

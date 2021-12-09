@@ -14,7 +14,6 @@ type Props = {
     onSort?: (sortBy: TableSort[]) => void;
 } & React.HTMLAttributes<HTMLElement>;
 
-/* eslint-disable-next-line  @typescript-eslint/ban-types */
 const TableSorter = <T extends IdType>({ id, onSort, disabled, color, ...rest }: Props): JSX.Element | null => {
     const { sortOptions, instance } = useTableContext();
     const { toggleSortBy, state } = instance as TableInstance<T>;
