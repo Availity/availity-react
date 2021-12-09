@@ -467,7 +467,7 @@ class AvDateRange extends Component {
       isBad ? 'is-bad-input' : null,
       hasError ? 'av-invalid' : 'av-valid',
       validation.error && 'is-invalid',
-      !startValue && !endValue && 'current-day-highlight',
+      !startValue && !endValue && 'current-day-highlight'
     );
 
     return (
@@ -529,6 +529,7 @@ class AvDateRange extends Component {
             onClose={this.onClose}
             numberOfMonths={2}
             minimumNights={0}
+            autoComplete="date"
             {...attributes}
           />
         </InputGroup>
