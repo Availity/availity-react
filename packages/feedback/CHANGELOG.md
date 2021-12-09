@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## 6.2.9 (2021-12-09)
+
+
+### Bug Fixes
+
+* **feedback:** added submit on enter func and tests ([d642923](https://github.com/Availity/availity-react/commit/d642923eb0ca80ee5faff17e0f830c3e1e2181c7))
+
+
+
+
+
 ## [6.2.8](https://github.com/Availity/availity-react/compare/@availity/feedback@6.2.7...@availity/feedback@6.2.8) (2021-12-03)
 
 **Note:** Version bump only for package @availity/feedback
