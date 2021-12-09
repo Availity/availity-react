@@ -1,7 +1,7 @@
 import React from 'react';
 import { Meta, Story } from '@storybook/react';
 import response from '@availity/mock/data/patients.json';
-import Table, { ScrollableContainer, TableControls, DateCell, BadgeCell, ActionCell, TableProvider } from '../src';
+import Table, { ScrollableContainer, DateCell, BadgeCell, ActionCell, TableProvider } from '../src';
 
 import '../styles.scss';
 
