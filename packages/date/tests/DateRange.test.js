@@ -135,7 +135,7 @@ describe('DateRange', () => {
     });
   });
 
-  test('updates formik with invalid dates with passThroughInvalidDates prop', async () => {
+  test('updates formik with invalid dates with allowInvalidDates prop', async () => {
     const onSubmit = jest.fn();
 
     const { container, getByText } = render(
@@ -148,7 +148,7 @@ describe('DateRange', () => {
         }}
         onSubmit={onSubmit}
       >
-        <DateRange id="dateRange" name="dateRange" format="MM/DD/YYYY" passThroughInvalidDates />
+        <DateRange id="dateRange" name="dateRange" format="MM/DD/YYYY" allowInvalidDates />
         <Button type="submit">Submit</Button>
       </Form>
     );

@@ -64,7 +64,7 @@ const DateRange = ({
   ranges: propsRanges,
   customArrowIcon,
   openDirection,
-  passThroughInvalidDates,
+  allowInvalidDates,
   ...attributes
 }) => {
   const { setFieldValue, setFieldTouched, validateField } = useFormikContext();
@@ -94,7 +94,7 @@ const DateRange = ({
     className,
     metadata.touched ? 'is-touched' : 'is-untouched',
     metadata.touched && metadata.error && 'is-invalid',
-    !startValue && !endValue && 'current-day-highlight',
+    !startValue && !endValue && 'current-day-highlight'
   );
 
   // Should only run validation once per real change to component, instead of each time setFieldValue/Touched is called.
@@ -111,7 +111,7 @@ const DateRange = ({
     const isStart = focusedInput === 'startDate';
     const date = moment(val, [isoDateFormat, format, 'MMDDYYYY', 'YYYYMMDD', 'M/D/YYYY'], true);
 
-    const valueToSet = date.isValid() ? date.format(format) : passThroughInvalidDates ? val : null;
+    const valueToSet = date.isValid() ? date.format(format) : allowInvalidDates ? val : null;
 
     setFieldValue(
       name,
@@ -337,13 +337,13 @@ DateRange.propTypes = {
   ranges: PropTypes.oneOfType([PropTypes.bool, PropTypes.array, PropTypes.object]),
   customArrowIcon: PropTypes.oneOfType([PropTypes.string, PropTypes.node]),
   openDirection: PropTypes.string,
-  passThroughInvalidDates: PropTypes.bool,
+  allowInvalidDates: PropTypes.bool,
 };
 
 DateRange.defaultProps = {
   format: isoDateFormat,
   openDirection: 'down',
-  passThroughInvalidDates: false,
+  allowInvalidDates: false,
 };
 
 export default DateRange;
