@@ -126,17 +126,20 @@ describe('DateRange', () => {
     fireEvent.click(getByText('Submit'));
 
     await waitFor(() => {
-      expect(onSubmit.mock.calls[0][0]).toEqual({
-        dateRange: {
-          startDate: '',
-          endDate: '',
+      expect(onSubmit).toHaveBeenCalledWith(
+        {
+          dateRange: {
+            startDate: '',
+            endDate: '',
+          },
         },
-      });
+        expect.anything()
+      );
     });
   });
 
   test('updates formik with invalid dates with allowInvalidDates prop', async () => {
-    const onSubmit = jest.fn();
+    const handleSubmit = jest.fn();
 
     const { container, getByText } = render(
       <Form
@@ -146,7 +149,7 @@ describe('DateRange', () => {
             endDate: '',
           },
         }}
-        onSubmit={onSubmit}
+        onSubmit={handleSubmit}
       >
         <DateRange id="dateRange" name="dateRange" format="MM/DD/YYYY" allowInvalidDates />
         <Button type="submit">Submit</Button>
@@ -179,12 +182,15 @@ describe('DateRange', () => {
     fireEvent.click(getByText('Submit'));
 
     await waitFor(() => {
-      expect(onSubmit.mock.calls[0][0]).toEqual({
-        dateRange: {
-          startDate: '01-04-1997',
-          endDate: '01-05-1997',
+      expect(handleSubmit).toHaveBeenCalledWith(
+        {
+          dateRange: {
+            startDate: '01-04-1997',
+            endDate: '01-05-1997',
+          },
         },
-      });
+        expect.anything()
+      );
     });
   });
 
@@ -280,12 +286,12 @@ describe('DateRange', () => {
 
     await waitFor(() => {
       expect(onSubmit).toHaveBeenCalledWith(
-        expect.objectContaining({
+        {
           dateRange: {
             startDate: '1997-01-04',
             endDate: '1997-01-05',
           },
-        }),
+        },
         expect.anything()
       );
     });
@@ -330,12 +336,12 @@ describe('DateRange', () => {
 
     await waitFor(() => {
       expect(onSubmit).toHaveBeenCalledWith(
-        expect.objectContaining({
+        {
           dateRange: {
             startDate: '1997-01-04',
             endDate: '1997-01-05',
           },
-        }),
+        },
         expect.anything()
       );
     });
@@ -383,12 +389,12 @@ describe('DateRange', () => {
 
     await waitFor(() => {
       expect(onSubmit).toHaveBeenCalledWith(
-        expect.objectContaining({
+        {
           dateRange: {
             startDate: expectedStartDate.format('YYYY-MM-DD'),
             endDate: expectedEndDate.format('YYYY-MM-DD'),
           },
-        }),
+        },
         expect.anything()
       );
     });
@@ -425,12 +431,12 @@ describe('DateRange', () => {
 
     await waitFor(() => {
       expect(onSubmit).toHaveBeenCalledWith(
-        expect.objectContaining({
+        {
           dateRange: {
             startDate: moment().format('YYYY-MM-DD'),
             endDate: moment().format('YYYY-MM-DD'),
           },
-        }),
+        },
         expect.anything()
       );
     });
