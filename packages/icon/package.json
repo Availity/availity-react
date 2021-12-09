@@ -1,26 +1,23 @@
 {
   "name": "@availity/icon",
   "version": "0.10.0",
-  "author": "Kyle Gray <kyle.gray@availity.com>",
   "description": "Simple Icon Component that uses classes from availity uikit",
-  "main": "dist/index.js",
-  "module": "dist/index.js",
-  "types": "dist/index.d.ts",
   "keywords": [
     "react",
     "availity"
   ],
+  "bugs": {
+    "url": "https://github.com/Availity/availity-react/issues"
+  },
   "repository": {
     "type": "git",
     "url": "https://github.com/Availity/availity-react.git"
   },
-  "bugs": {
-    "url": "https://github.com/Availity/availity-react/issues"
-  },
   "license": "MIT",
-  "publishConfig": {
-    "access": "public"
-  },
+  "author": "Kyle Gray <kyle.gray@availity.com>",
+  "main": "dist/index.js",
+  "module": "dist/index.js",
+  "types": "dist/index.d.ts",
   "dependencies": {
     "classnames": "^2.3.1"
   },
@@ -30,5 +27,8 @@
   },
   "peerDependencies": {
     "react": ">=16.3.0"
+  },
+  "publishConfig": {
+    "access": "public"
   }
 }

@@ -1,31 +1,31 @@
 {
   "name": "@availity/training-link",
   "version": "1.4.0",
-  "author": "Andrew Bauer <andrew.bauer@availity.com>",
   "description": "Component for allowing link out to training in the Header component",
-  "main": "dist/index.js",
-  "module": "dist/index.js",
-  "types": "dist/index.d.ts",
   "keywords": [
     "react",
     "availity"
   ],
+  "bugs": {
+    "url": "https://github.com/Availity/availity-react/issues"
+  },
   "repository": {
     "type": "git",
     "url": "https://github.com/Availity/availity-react.git"
   },
-  "bugs": {
-    "url": "https://github.com/Availity/availity-react/issues"
-  },
   "license": "MIT",
-  "publishConfig": {
-    "access": "public"
-  },
+  "author": "Andrew Bauer <andrew.bauer@availity.com>",
+  "main": "dist/index.js",
+  "module": "dist/index.js",
+  "types": "dist/index.d.ts",
   "devDependencies": {
     "react": "^17.0.2",
     "react-dom": "^17.0.2"
   },
   "peerDependencies": {
     "react": ">=16.3.0"
+  },
+  "publishConfig": {
+    "access": "public"
   }
 }
