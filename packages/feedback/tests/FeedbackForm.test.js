@@ -84,6 +84,43 @@ describe('FeedbackForm', () => {
     );
   });
 
+  test('should submit with feedback text value when enter is pressed', async () => {
+    const onFeedbackSent = jest.fn();
+
+    const { getByLabelText, getByText } = render(<FeedbackForm onFeedbackSent={onFeedbackSent} name="Payer Space" />);
+
+    // Simulate the Click
+    fireEvent.click(getByText('Smiley face'));
+
+    // Get the Input Node for the Feedback
+    const feedbackNode = getByLabelText('What do you like?');
+
+    // Simulate a user typing the value below into the field
+    fireEvent.change(feedbackNode, {
+      target: { value: 'some good text here' },
+    });
+
+    // Check if the Input Got Updated
+    expect(feedbackNode.value).toEqual('some good text here');
+
+    fireEvent.keyDown(getByText('Send Feedback'), {
+      key: 'Enter',
+      keyCode: 13,
+    });
+
+    await waitFor(
+      () => {
+        expect(onFeedbackSent).toHaveBeenCalledWith(
+          expect.objectContaining({
+            active: 'smile',
+            feedback: 'some good text here',
+          })
+        );
+      },
+      { timeout: 2500 }
+    );
+  });
+
   test('should submit with custom analytics', async () => {
     const infoFn = jest.fn();
     const onFeedbackSent = jest.fn();
