@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [3.1.4](https://github.com/Availity/availity-react/compare/@availity/date@3.1.3...@availity/date@3.1.4) (2021-12-09)
+
+
+### Bug Fixes
+
+* **reactstrap-validation-date,date:** set autocomplete prop to fix autofill bug ([c93eaa6](https://github.com/Availity/availity-react/commit/c93eaa6e52e782c3a4a73cecf5721c22d0807fd7))
+
+
+
+
+
 ## 3.1.3 (2021-12-06)
 
 
