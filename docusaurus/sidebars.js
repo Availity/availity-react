@@ -110,7 +110,7 @@ module.exports = {
           {
             type: 'category',
             label: 'Table',
-            items: ['components/table/index', 'components/table/scrollableContainer'],
+            items: ['components/table/index', 'components/table/scrollableContainer', 'components/table/tableControls'],
           },
           'components/training-link',
           {

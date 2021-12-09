@@ -7,8 +7,8 @@ import { IdType, TableInstance } from '../types/ReactTable';
 type Props<T> = {
     id?: string;
     disabled?: boolean;
-    recordName: string;
-    bulkActions: BulkRecordAction<T>[];
+    recordName?: string;
+    bulkActions?: BulkRecordAction<T>[];
     color?: string;
     onRecordsSelected?: (records: T[]) => void;
 } & React.HTMLAttributes<HTMLElement>;
@@ -61,7 +61,7 @@ const BulkTableActions = <T extends IdType>({ id, disabled, color, recordName, b
             <ButtonDropdown isOpen={isSelectionDropdownOpen} toggle={toggleSelectionDropdown}>
                 <DropdownToggle disabled={numberOfSelectedRows === 0 || disabled} color={color} caret />
                 <DropdownMenu color={color}>
-                    {bulkActions.map((action) => {
+                    {bulkActions?.map((action) => {
                         const isVisible = action.isVisible ? action.isVisible() : true;
                         const setProps = () => {
                             if (!action.onClick) {
@@ -81,6 +81,10 @@ const BulkTableActions = <T extends IdType>({ id, disabled, color, recordName, b
             </ButtonDropdown>
         </ButtonGroup>
     );
+}
+
+BulkTableActions.defaultProps = {
+    recordName: 'Records'
 }
 
 export default BulkTableActions;

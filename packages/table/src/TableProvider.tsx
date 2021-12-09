@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useRowSelect, useSortBy, useTable, Hooks, UseRowSelectInstanceProps, Column as RtColumn } from 'react-table';
 import filter from 'lodash/filter';
 import IndeterminateCheckbox from './IndeterminateCheckbox';
@@ -77,6 +77,12 @@ const TableProvider = <T extends IdType>({
       hooks.visibleColumns.push((columns: Column<T>[]) => [selectionColumn, ...columns]);
     }
   ) as TableInstance<T>;
+
+  const { toggleHideColumn } = tableInstance;
+
+  useEffect(() => {
+    toggleHideColumn('selection', !selectable);
+  }, [selectable, toggleHideColumn]);
 
   return (
     <TableContext.Provider
