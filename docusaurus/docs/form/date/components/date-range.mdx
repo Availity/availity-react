@@ -38,7 +38,7 @@ const Example = () => (
           .add(7, 'day')
           .format('MM/DD/YYYY')}`
       )
-        .typeError('This field is invalid.')
+        .typeError({message: 'This field is invalid.'})
         .required('This field is required.'),
     })}
   >
@@ -135,3 +135,9 @@ interface MomentDateRange {
 #### `openDirection?: string`
 
 Set which direction the date picker renders. Possible values are `up` and `down`. Default: `down`
+
+#### `allowInvalidDates?: boolean`
+
+Defaults to false, with this behavior the onInputChange handler will not pass through invalid dates to formik. By setting this prop to true, you can allow formik to handle invalid dates.
+Very useful for getting errors from non-required date range components.
+
