@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# 3.3.0 (2021-12-10)
+
+
+### Features
+
+* **upload:** return upload onPasswordSubmit callback ([6e10896](https://github.com/Availity/availity-react/commit/6e10896011565d23056211ab7a67f12994097575))
+
+
+
+
+
 ## 3.2.1 (2021-11-30)
 
 **Note:** Version bump only for package @availity/upload
