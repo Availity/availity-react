@@ -40,7 +40,7 @@ const myTableConfig = {
 const Example = () => (
     <TableProvider
         columns={columns}
-        records={data}>
+        data={data}>
         <Table/>
     </TableProvider>
 );
