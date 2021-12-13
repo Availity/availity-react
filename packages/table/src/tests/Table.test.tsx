@@ -24,7 +24,7 @@ const basicColumns = [
     Header: 'Email',
     accessor: 'email',
   },
-] as Column<any>[];
+] as Column<Record<string, string | boolean | number | undefined>>[];
 
 const formattedColumns = [
   {
@@ -39,7 +39,8 @@ const formattedColumns = [
   {
     Header: 'Badge',
     accessor: 'badge',
-    Cell: ({ row: { original } }: Cell<any>) => (original ? BadgeCell('badge-success', original.badge) : null),
+    Cell: ({ row: { original } }: Cell<Record<string, string | boolean | number | undefined>>) =>
+      original ? BadgeCell('badge-success', original.badge) : null,
   },
   {
     Header: 'Icon',
@@ -60,8 +61,8 @@ const formattedColumns = [
         {
           id: 'action1',
           displayText: 'Action 1',
-          isVisible: (record?: any) => !!record?.icon,
-          onClick: (record?: any) => {
+          isVisible: (record?: Record<string, string | boolean | number>) => !!record?.icon,
+          onClick: (record?: Record<string, string | boolean | number>) => {
             // eslint-disable-next-line no-console
             console.log(`action on record ${record?.id}`);
           },
@@ -73,7 +74,7 @@ const formattedColumns = [
         {
           id: 'action2',
           displayText: 'Action 2',
-          onClick: (record?: any) => {
+          onClick: (record?: Record<string, string | boolean | number>) => {
             // eslint-disable-next-line no-console
             console.log(`action on record ${record?.id}`);
           },
@@ -81,7 +82,7 @@ const formattedColumns = [
       ],
     }),
   },
-] as Column<any>[];
+] as Column<Record<string, string | boolean | number | undefined>>[];
 
 describe('Table', () => {
   test('should render basic table', () => {

@@ -1,11 +1,11 @@
 import React from 'react';
-import { render, fireEvent, waitFor, getByTestId } from '@testing-library/react';
+import { render, fireEvent, waitFor } from '@testing-library/react';
+import every from 'lodash/every';
 import basicData from './data/basicData.json';
 import TableControls from '../Controls/TableControls';
 import BulkTableActions from '../Controls/BulkTableActions';
 import TableProvider from '../TableProvider';
 import { Column } from '../types/ReactTable';
-import every from 'lodash/every';
 import { TableContext } from '../TableContext';
 
 const basicColumns = [
@@ -25,13 +25,13 @@ const basicColumns = [
     Header: 'Email',
     accessor: 'email',
   },
-] as Column<any>[];
+] as Column<Record<string, string | boolean | number>>[];
 
 const bulkActions = [
   {
     id: 'action1',
     displayText: 'Action 1',
-    isVisible: (records?: any[]) => every(records, { isActive: true }),
+    isVisible: (records?: Record<string, string | boolean | number>[]) => every(records, { isActive: true }),
     onClick: jest.fn(),
   },
   {

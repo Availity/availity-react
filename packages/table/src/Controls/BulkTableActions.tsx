@@ -78,7 +78,7 @@ const BulkTableActions = <T extends IdType>({
             caret
           />
           <DropdownMenu color={color}>
-            {bulkActions?.map((action, index) => {
+            {bulkActions?.map((action) => {
               const isVisible = action.isVisible ? action.isVisible() : true;
               const setProps = () => {
                 if (!action.onClick) {
@@ -90,7 +90,7 @@ const BulkTableActions = <T extends IdType>({
 
               if (isVisible) {
                 return (
-                  <DropdownItem data-testid={`bulk_action_${action.id}`} key={`${action.id}_${index}`} {...setProps()}>
+                  <DropdownItem data-testid={`bulk_action_${action.id}`} key={`${action.id}`} {...setProps()}>
                     {action.displayText}
                   </DropdownItem>
                 );

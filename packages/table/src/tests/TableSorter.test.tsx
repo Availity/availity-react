@@ -24,7 +24,7 @@ const basicColumns = [
     Header: 'Email',
     accessor: 'email',
   },
-] as Column<any>[];
+] as Column<Record<string, string | boolean | number>>[];
 
 describe('TableSorter', () => {
   test('should render table Sorter', async () => {
@@ -104,9 +104,9 @@ describe('TableSorter', () => {
     expect(container).toBeDefined();
     expect(container).toMatchSnapshot();
 
-    const sorterToggleButton = await waitFor(() => getByTestId('btn_toggle_sort_dir'));
+    const sorterToggleButton = await waitFor(() => getByTestId('btn_toggle_sort_dir_icon'));
     expect(sorterToggleButton).not.toBeNull();
-    expect(sorterToggleButton.classList.contains('sort-alt-down'));
+    expect(sorterToggleButton.className).toBe('icon icon-sort-alt-down');
   });
 
   test('should show ascending icon', async () => {
@@ -136,9 +136,9 @@ describe('TableSorter', () => {
     expect(container).toBeDefined();
     expect(container).toMatchSnapshot();
 
-    const sorterToggleButton = await waitFor(() => getByTestId('btn_toggle_sort_dir'));
+    const sorterToggleButton = await waitFor(() => getByTestId('btn_toggle_sort_dir_icon'));
     expect(sorterToggleButton).not.toBeNull();
-    expect(sorterToggleButton.classList.contains('sort-alt-up'));
+    expect(sorterToggleButton.className).toBe('icon icon-sort-alt-up');
   });
 
   test('should sort on dropdown select', async () => {

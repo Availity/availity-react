@@ -1,11 +1,11 @@
 import React from 'react';
 import { render, waitFor } from '@testing-library/react';
+import every from 'lodash/every';
 import basicData from './data/basicData.json';
 import TableControls from '../Controls/TableControls';
 import BulkTableActions from '../Controls/BulkTableActions';
 import TableProvider from '../TableProvider';
 import { Column } from '../types/ReactTable';
-import every from 'lodash/every';
 import TableSorter from '../Controls/TableSorter';
 
 const basicColumns = [
@@ -25,28 +25,36 @@ const basicColumns = [
     Header: 'Email',
     accessor: 'email',
   },
-] as Column<any>[];
+] as Column<Record<string, string | boolean | number>>[];
 
 const bulkActions = [
   {
     id: 'action1',
     displayText: 'Action 1',
-    isVisible: (records?: any[]) => every(records, { isActive: true }),
-    onClick: (records?: any[]) => {
-      records?.forEach((record) => {
+    isVisible: (records?: Record<string, string | boolean | number>[]) => every(records, { isActive: true }),
+    onClick: (records?: Record<string, string | boolean | number>[]) => {
+      if (!records) {
+        return;
+      }
+
+      for (const record of records) {
         // eslint-disable-next-line no-console
         console.log(`action on record ${record?.id}`);
-      });
+      }
     },
   },
   {
     id: 'action2',
     displayText: 'Action 2',
-    onClick: (records?: any[]) => {
-      records?.forEach((record) => {
+    onClick: (records?: Record<string, string>[]) => {
+      if (!records) {
+        return;
+      }
+
+      for (const record of records) {
         // eslint-disable-next-line no-console
         console.log(`action on record ${record?.id}`);
-      });
+      }
     },
   },
 ];
@@ -82,7 +90,7 @@ describe('TableControls', () => {
   test('should disable all records when disabled is true', async () => {
     const { container, getByTestId } = render(
       <TableProvider data={basicData} columns={basicColumns}>
-        <TableControls disabled={true}>
+        <TableControls disabled>
           <BulkTableActions bulkActions={bulkActions} />
           <TableSorter />
         </TableControls>
