@@ -69,35 +69,37 @@ const BulkTableActions = <T extends IdType>({
       >
         <Badge pill>{numberOfSelectedRows}</Badge> {selectionButtonText} All {recordName}
       </Button>
-      <ButtonDropdown isOpen={isSelectionDropdownOpen} toggle={toggleSelectionDropdown}>
-        <DropdownToggle
-          data-testid="bulk_actions_toggle"
-          disabled={numberOfSelectedRows === 0 || disabled}
-          color={color}
-          caret
-        />
-        <DropdownMenu color={color}>
-          {bulkActions?.map((action, index) => {
-            const isVisible = action.isVisible ? action.isVisible() : true;
-            const setProps = () => {
-              if (!action.onClick) {
-                return null;
-              }
-              const clickEvent = action.onClick;
-              return { onClick: () => clickEvent(selectedRows.map((row) => row.original)) };
-            };
+      {bulkActions && (
+        <ButtonDropdown isOpen={isSelectionDropdownOpen} toggle={toggleSelectionDropdown}>
+          <DropdownToggle
+            data-testid="bulk_actions_toggle"
+            disabled={numberOfSelectedRows === 0 || disabled}
+            color={color}
+            caret
+          />
+          <DropdownMenu color={color}>
+            {bulkActions?.map((action, index) => {
+              const isVisible = action.isVisible ? action.isVisible() : true;
+              const setProps = () => {
+                if (!action.onClick) {
+                  return null;
+                }
+                const clickEvent = action.onClick;
+                return { onClick: () => clickEvent(selectedRows.map((row) => row.original)) };
+              };
 
-            if (isVisible) {
-              return (
-                <DropdownItem data-testid={`bulk_action_${action.id}`} key={`${action.id}_${index}`} {...setProps()}>
-                  {action.displayText}
-                </DropdownItem>
-              );
-            }
-            return null;
-          })}
-        </DropdownMenu>
-      </ButtonDropdown>
+              if (isVisible) {
+                return (
+                  <DropdownItem data-testid={`bulk_action_${action.id}`} key={`${action.id}_${index}`} {...setProps()}>
+                    {action.displayText}
+                  </DropdownItem>
+                );
+              }
+              return null;
+            })}
+          </DropdownMenu>
+        </ButtonDropdown>
+      )}
     </ButtonGroup>
   );
 };
