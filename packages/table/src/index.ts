@@ -2,19 +2,25 @@ export { ActionCell, BadgeCell, CurrencyCell, DateCell, IconCell } from './CellD
 
 export type { ActionCellConfig, CurrencyCellConfig, DateTimeCellConfig, IconConfig } from './CellDefinitions';
 
-export type { 
-    OnRowSelectedEvent, 
-    OnTableClickEvent, 
-    BulkRecordAction,
-    RecordAction,
-    PrimaryRecordAction,
-    TableSort,
-    TableSortOption 
+export type {
+  OnRowSelectedEvent,
+  OnTableClickEvent,
+  BulkRecordAction,
+  RecordAction,
+  PrimaryRecordAction,
+  TableSort,
+  TableSortOption,
+  Row,
+  Column,
+  Cell,
+  TableInstance,
+  CurrentTableState,
+  ExtendedTableHeader,
 } from './types';
 
 export { default } from './Table';
 
-export { useTableContext, TableContext } from './TableContext';
+export { useTableContext, TableContext, AvTableContext } from './TableContext';
 
 export { default as TableProvider } from './TableProvider';
 

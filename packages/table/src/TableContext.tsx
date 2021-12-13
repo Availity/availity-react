@@ -1,7 +1,7 @@
 import React, { useContext } from 'react';
 import { TableSort, TableSortOption } from './types';
 
-export type TableContext = {
+export type AvTableContext = {
   scrollable?: boolean;
   setScrollable?: React.Dispatch<React.SetStateAction<boolean | undefined>>;
   sortable?: boolean;
@@ -14,9 +14,9 @@ export type TableContext = {
   instance?: any;
 };
 
-export const TableContext = React.createContext<TableContext>({
+export const TableContext = React.createContext<AvTableContext>({
   scrollable: false,
   sortable: false,
 });
 
-export const useTableContext = (): TableContext => useContext(TableContext);
+export const useTableContext = (): AvTableContext => useContext(TableContext);

@@ -1,6 +1,6 @@
-import { TableAction } from "./TableAction";
+import { TableAction } from './TableAction';
 
 export interface BulkRecordAction<T> extends TableAction {
-    onClick?: (records?: T[]) => void;
-    isVisible?: (records?: T[]) => boolean;
+  onClick?: (records?: T[]) => void;
+  isVisible?: (records?: T[]) => boolean;
 }

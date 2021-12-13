@@ -1,4 +1,4 @@
 export type TableSort = {
-    id: string;
-    desc: boolean;
+  id: string;
+  desc: boolean;
 };

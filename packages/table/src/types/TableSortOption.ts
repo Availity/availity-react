@@ -1,4 +1,4 @@
 export type TableSortOption = {
-    value: string;
-    label: string;
+  value: string;
+  label: string;
 };

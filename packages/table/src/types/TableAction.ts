@@ -1,5 +1,5 @@
 export interface TableAction {
-    id: string;
-    displayText?: string;
-    divider?: boolean;
+  id: string;
+  displayText?: string;
+  divider?: boolean;
 }

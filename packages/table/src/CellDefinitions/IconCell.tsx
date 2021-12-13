@@ -12,7 +12,11 @@ export interface IconConfig<T> {
   getTitle?: (value: T) => string;
 }
 
-const IconCell = <T extends unknown>({ name, title, getTitle }: IconConfig<T>): JSX.Element | ((cell: CellProps<T>) => JSX.Element | null) => {
+const IconCell = <T extends unknown>({
+  name,
+  title,
+  getTitle,
+}: IconConfig<T>): JSX.Element | ((cell: CellProps<T>) => JSX.Element | null) => {
   const IconCellDef = ({ value }: CellProps<T>): JSX.Element | null => {
     let generatedTitle;
     if (title) {

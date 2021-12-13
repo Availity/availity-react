@@ -12,7 +12,11 @@ export interface CurrencyCellConfig {
   locales?: string;
 }
 
-const CurrencyCell = ({ currency = 'USD', defaultValue = '', locales = 'en-us' }: CurrencyCellConfig) : JSX.Element | ((cell:CellProps) => JSX.Element) => {
+const CurrencyCell = ({
+  currency = 'USD',
+  defaultValue = '',
+  locales = 'en-us',
+}: CurrencyCellConfig): JSX.Element | ((cell: CellProps) => JSX.Element) => {
   const CurrencyCellDef = ({ value }: CellProps): JSX.Element => {
     let formattedValue;
     if (!value) {

@@ -1,0 +1,183 @@
+import React from 'react';
+import { render, fireEvent, waitFor } from '@testing-library/react';
+import basicData from './data/basicData.json';
+import TableControls from '../Controls/TableControls';
+import TableProvider from '../TableProvider';
+import { Column } from '../types/ReactTable';
+import TableSorter from '../Controls/TableSorter';
+import { TableContext } from '../TableContext';
+
+const basicColumns = [
+  {
+    Header: 'First Name',
+    accessor: 'first_name',
+    defaultCanSort: true,
+    disableSortBy: false,
+  },
+  {
+    Header: 'Last Name',
+    accessor: 'last_name',
+    defaultCanSort: false,
+    disableSortBy: true,
+  },
+  {
+    Header: 'Email',
+    accessor: 'email',
+  },
+] as Column<any>[];
+
+describe('TableSorter', () => {
+  test('should render table Sorter', async () => {
+    const { container, getByTestId } = render(
+      <TableProvider data={basicData} columns={basicColumns}>
+        <TableControls>
+          <TableSorter />
+        </TableControls>
+      </TableProvider>
+    );
+
+    expect(container).toBeDefined();
+    expect(container).toMatchSnapshot();
+
+    const sorterInputGrp = await waitFor(() => getByTestId('sorter_input_group'));
+    expect(sorterInputGrp).not.toBeNull();
+  });
+
+  test('should render sort options in dropdown menu', async () => {
+    const tableInstanceMock = {
+      selectedFlatRows: [basicData[0]],
+      data: basicData,
+      columns: basicColumns,
+      state: {
+        sortBy: [{ id: 'first_name', desc: true }],
+      },
+    };
+
+    const { container, getByTestId } = render(
+      <TableContext.Provider
+        value={{
+          instance: tableInstanceMock,
+          sortable: true,
+          sortOptions: [{ value: 'first_name', label: ' First name' }],
+        }}
+      >
+        <TableControls>
+          <TableSorter />
+        </TableControls>
+      </TableContext.Provider>
+    );
+
+    expect(container).toBeDefined();
+    expect(container).toMatchSnapshot();
+
+    const sorterMenu = await waitFor(() => getByTestId('sorter_menu'));
+    expect(sorterMenu).not.toBeNull();
+
+    const sorterMenuItem = await waitFor(() => getByTestId('sorter_menu_first_name'));
+    expect(sorterMenuItem).not.toBeNull();
+  });
+
+  test('should show descending icon', async () => {
+    const tableInstanceMock = {
+      selectedFlatRows: [basicData[0]],
+      data: basicData,
+      columns: basicColumns,
+      state: {
+        sortBy: [{ id: 'first_name', desc: true }],
+      },
+    };
+
+    const { container, getByTestId } = render(
+      <TableContext.Provider
+        value={{
+          instance: tableInstanceMock,
+          sortable: true,
+          sortOptions: [{ value: 'first_name', label: ' First name' }],
+        }}
+      >
+        <TableControls>
+          <TableSorter />
+        </TableControls>
+      </TableContext.Provider>
+    );
+
+    expect(container).toBeDefined();
+    expect(container).toMatchSnapshot();
+
+    const sorterToggleButton = await waitFor(() => getByTestId('btn_toggle_sort_dir'));
+    expect(sorterToggleButton).not.toBeNull();
+    expect(sorterToggleButton.classList.contains('sort-alt-down'));
+  });
+
+  test('should show ascending icon', async () => {
+    const tableInstanceMock = {
+      selectedFlatRows: [basicData[0]],
+      data: basicData,
+      columns: basicColumns,
+      state: {
+        sortBy: [{ id: 'first_name', desc: false }],
+      },
+    };
+
+    const { container, getByTestId } = render(
+      <TableContext.Provider
+        value={{
+          instance: tableInstanceMock,
+          sortable: true,
+          sortOptions: [{ value: 'first_name', label: ' First name' }],
+        }}
+      >
+        <TableControls>
+          <TableSorter />
+        </TableControls>
+      </TableContext.Provider>
+    );
+
+    expect(container).toBeDefined();
+    expect(container).toMatchSnapshot();
+
+    const sorterToggleButton = await waitFor(() => getByTestId('btn_toggle_sort_dir'));
+    expect(sorterToggleButton).not.toBeNull();
+    expect(sorterToggleButton.classList.contains('sort-alt-up'));
+  });
+
+  test('should sort on dropdown select', async () => {
+    const onSort = jest.fn();
+
+    const tableInstanceMock = {
+      selectedFlatRows: [basicData[0]],
+      data: basicData,
+      columns: basicColumns,
+      state: {
+        sortBy: [{ id: 'first_name', desc: false }],
+      },
+    };
+
+    const { getByTestId } = render(
+      <TableContext.Provider
+        value={{
+          instance: tableInstanceMock,
+          sortable: true,
+          sortOptions: [{ value: 'first_name', label: ' First name' }],
+        }}
+      >
+        <TableControls>
+          <TableSorter onSort={onSort} />
+        </TableControls>
+      </TableContext.Provider>
+    );
+
+    const btnDropdownToggle = await waitFor(() => getByTestId('sorter_toggle'));
+    expect(btnDropdownToggle).not.toBeNull();
+    fireEvent.click(btnDropdownToggle);
+
+    const btnAction = await waitFor(() => getByTestId('sorter_menu_first_name'));
+    expect(btnAction).not.toBeNull();
+
+    fireEvent.click(btnAction);
+
+    await waitFor(() => {
+      expect(onSort).toHaveBeenCalledTimes(1);
+    });
+  });
+});

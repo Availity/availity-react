@@ -5,7 +5,7 @@ type CellProps = {
   value: string;
 };
 
-const BadgeCell = (color: string, displayText = ''): JSX.Element | ((cell:CellProps) => JSX.Element) => {
+const BadgeCell = (color: string, displayText = ''): JSX.Element | ((cell: CellProps) => JSX.Element) => {
   const BadgeCellDef = ({ value }: CellProps): JSX.Element => (
     <Badge color={color} title={value}>
       {value}
@@ -15,7 +15,6 @@ const BadgeCell = (color: string, displayText = ''): JSX.Element | ((cell:CellPr
   if (displayText !== '') {
     return BadgeCellDef({ value: displayText });
   }
-
 
   return BadgeCellDef;
 };

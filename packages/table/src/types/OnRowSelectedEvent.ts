@@ -1,3 +1,3 @@
 export interface OnRowSelectedEvent {
-    selectedRows: string[] | number[];
+  selectedRows: string[] | number[];
 }

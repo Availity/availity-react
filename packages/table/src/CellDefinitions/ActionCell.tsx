@@ -11,12 +11,13 @@ export interface ActionCellConfig<T> {
   primaryAction?: PrimaryRecordAction<T>;
 }
 
-const ActionCell = <T extends IdType>({ actions, primaryAction }: ActionCellConfig<T>): (cell: Cell<T>) => JSX.Element => {
+const ActionCell = <T extends IdType>({
+  actions,
+  primaryAction,
+}: ActionCellConfig<T>): ((cell: Cell<T>) => JSX.Element) => {
   const ActionCellDef = ({ row: { original }, index }: Cell<T>): JSX.Element => (
     <>
-      <TableActionMenu
-        id={`table_row_action_menu_${original.id ? original.id : index}`}
-      >
+      <TableActionMenu id={`table_row_action_menu_${original.id ? original.id : index}`}>
         {actions.map((action, index) => (
           <TableActionMenuItem
             key={action.id}

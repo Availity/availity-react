@@ -3,7 +3,7 @@ import moment from 'moment';
 
 export type CellProps = {
   value: string;
-}
+};
 
 export interface DateTimeCellConfig {
   dateFormat: string;
@@ -11,8 +11,8 @@ export interface DateTimeCellConfig {
   convertTimeZone?: boolean;
 }
 
-const DateCell = ({ dateFormat }: DateTimeCellConfig) : JSX.Element | ((cell:CellProps) => JSX.Element) => {
-  const DateCellDef = ({ value }: CellProps) : JSX.Element => {
+const DateCell = ({ dateFormat }: DateTimeCellConfig): JSX.Element | ((cell: CellProps) => JSX.Element) => {
+  const DateCellDef = ({ value }: CellProps): JSX.Element => {
     let formattedValue;
     if (value) {
       formattedValue = moment(value).format(dateFormat);
@@ -22,6 +22,5 @@ const DateCell = ({ dateFormat }: DateTimeCellConfig) : JSX.Element | ((cell:Cel
 
   return DateCellDef;
 };
-
 
 export default DateCell;
