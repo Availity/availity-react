@@ -121,17 +121,19 @@ Default.args = {
   pageRange: 5,
   showLoader: false,
   unstyled: false,
+  showPaginationText: false
 };
 Default.storyName = 'default';
 
-export const Controls: Story = ({ autoHide, directionLinks }) => (
+export const Controls: Story = ({ autoHide, directionLinks, showPaginationText,  }) => (
   <Pagination items={paginationData}>
-    <PaginationControls directionLinks={directionLinks} autoHide={autoHide} />
+    <PaginationControls directionLinks={directionLinks} autoHide={autoHide} showPaginationText={showPaginationText} />
   </Pagination>
 );
 Controls.args = {
   autoHide: true,
   directionLinks: true,
+  showPaginationText: true
 };
 Controls.storyName = 'controls';
 

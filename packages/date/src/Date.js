@@ -42,7 +42,7 @@ const AvDate = ({
     className,
     metadata.touched ? 'is-touched' : 'is-untouched',
     metadata.touched && metadata.error && 'is-invalid',
-    !field.value && 'current-day-highlight',
+    !field.value && 'current-day-highlight'
   );
 
   const pickerId = `${(attributes.id || name).replace(/[^\da-z]/gi, '')}-picker`;
@@ -179,6 +179,7 @@ const AvDate = ({
           isOutsideRange={isOutsideRange(min, max)}
           navPosition="navPositionBottom"
           openDirection={openDirection}
+          autoComplete="date"
         />
       </InputGroup>
     </>

@@ -1,26 +1,23 @@
 {
   "name": "@availity/analytics",
-  "version": "1.2.1",
-  "author": "Kyle Gray <kyle.gray@gmail.com>",
+  "version": "1.2.2",
   "description": "Track click and page view events for the user.",
-  "main": "src/index.js",
-  "types": "src/index.d.ts",
   "keywords": [
     "react",
     "availity",
     "analytics"
   ],
+  "bugs": {
+    "url": "https://github.com/Availity/availity-react/issues"
+  },
   "repository": {
     "type": "git",
     "url": "https://github.com/Availity/availity-react.git"
   },
-  "bugs": {
-    "url": "https://github.com/Availity/availity-react/issues"
-  },
   "license": "MIT",
-  "publishConfig": {
-    "access": "public"
-  },
+  "author": "Kyle Gray <kyle.gray@gmail.com>",
+  "main": "src/index.js",
+  "types": "src/index.d.ts",
   "dependencies": {
     "@availity/analytics-core": "^3.1.5",
     "prop-types": "^15.7.2"
@@ -31,5 +28,8 @@
   },
   "peerDependencies": {
     "react": ">=16.8.0"
+  },
+  "publishConfig": {
+    "access": "public"
   }
 }

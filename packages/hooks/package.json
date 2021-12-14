@@ -1,25 +1,22 @@
 {
   "name": "@availity/hooks",
-  "version": "3.1.0",
-  "author": "Kyle Gray <kyle.gray@availity.com>",
+  "version": "3.1.1",
   "description": "A group of pre-built hooks that are common in most apps",
-  "main": "index.js",
-  "types": "index.d.ts",
   "keywords": [
     "react",
     "availity"
   ],
+  "bugs": {
+    "url": "https://github.com/Availity/availity-react/issues"
+  },
   "repository": {
     "type": "git",
     "url": "https://github.com/Availity/availity-react.git"
   },
-  "bugs": {
-    "url": "https://github.com/Availity/availity-react/issues"
-  },
   "license": "MIT",
-  "publishConfig": {
-    "access": "public"
-  },
+  "author": "Kyle Gray <kyle.gray@availity.com>",
+  "main": "index.js",
+  "types": "index.d.ts",
   "dependencies": {
     "prop-types": "^15.7.2",
     "react-query": "^3.29.0"
@@ -34,5 +31,8 @@
     "@availity/api-axios": "^6.0.0",
     "axios": "^0.21.1",
     "react": ">=16.8.0"
+  },
+  "publishConfig": {
+    "access": "public"
   }
 }

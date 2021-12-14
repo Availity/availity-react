@@ -3,6 +3,43 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## 3.2.1 (2021-12-14)
+
+**Note:** Version bump only for package @availity/date
+
+
+
+
+
+# 3.2.0 (2021-12-10)
+
+
+### Bug Fixes
+
+* **date:** fix passThroughInvalidDates to be optional in typedef ([d3bad3e](https://github.com/Availity/availity-react/commit/d3bad3ef6baa6f676403642c639ef2d403ff817d))
+* **date:** rename prop ([dc95b8d](https://github.com/Availity/availity-react/commit/dc95b8ddcca3c55f3933f764579506ae98be46a7))
+
+
+### Features
+
+* **date:** allow dateRange to pass through invalid formatted dates with extra prop ([b7f5da3](https://github.com/Availity/availity-react/commit/b7f5da327db90992c3812d77c60560c43761db75))
+* **date:** fix new DateRange test ([066b6e9](https://github.com/Availity/availity-react/commit/066b6e95173f04b596f482c66b2cd8161c5fe3f6))
+
+
+
+
+
+## [3.1.4](https://github.com/Availity/availity-react/compare/@availity/date@3.1.3...@availity/date@3.1.4) (2021-12-09)
+
+
+### Bug Fixes
+
+* **reactstrap-validation-date,date:** set autocomplete prop to fix autofill bug ([c93eaa6](https://github.com/Availity/availity-react/commit/c93eaa6e52e782c3a4a73cecf5721c22d0807fd7))
+
+
+
+
+
 ## 3.1.3 (2021-12-06)
 
 

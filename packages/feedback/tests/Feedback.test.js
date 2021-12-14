@@ -115,7 +115,6 @@ describe('Feedback', () => {
     expect(submitButton.getAttribute('disabled')).toBe(null);
   });
 
-  // Add Test to check when first smiley button is shift+tabbed, the dropdown closes.
   test('should close when first feedbackButton is shift+tabbed', async () => {
     const onClose = jest.fn();
 
@@ -137,7 +136,6 @@ describe('Feedback', () => {
     });
   });
 
-  // Add Test to check when close is tabbed over and the send feedback is not active, the dropdown closes
   test('should close when the close button is tabbed and give feedback is disabled', async () => {
     const onClose = jest.fn();
 
@@ -158,7 +156,6 @@ describe('Feedback', () => {
     });
   });
 
-  // Add Test to check when close is tabbed over and the send feedback is active, the dropdown does not close
   test('should not close when the close button is tabbed and give feedback is not disabled', async () => {
     const onClose = jest.fn();
 
@@ -180,7 +177,7 @@ describe('Feedback', () => {
       expect(onClose).toHaveBeenCalledTimes(0);
     });
   });
-  // Add Test to check when send feedback is tabbed over and the send feedback is active, the dropdown closes
+
   test('should close when the send feedback button is tabbed', async () => {
     const onClose = jest.fn();
 

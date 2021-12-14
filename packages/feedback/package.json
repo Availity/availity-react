@@ -1,31 +1,28 @@
 {
   "name": "@availity/feedback",
-  "version": "6.2.8",
-  "author": "Evan Sharp <evan.sharp@availity.com>",
+  "version": "6.2.10",
   "description": "Availity feedback with smiley faces react component.",
-  "main": "index.js",
-  "types": "index.d.ts",
   "keywords": [
     "react",
     "availity"
   ],
+  "bugs": {
+    "url": "https://github.com/Availity/availity-react/issues"
+  },
   "repository": {
     "type": "git",
     "url": "https://github.com/Availity/availity-react.git"
   },
-  "bugs": {
-    "url": "https://github.com/Availity/availity-react/issues"
-  },
   "license": "MIT",
-  "publishConfig": {
-    "access": "public"
-  },
+  "author": "Evan Sharp <evan.sharp@availity.com>",
+  "main": "index.js",
+  "types": "index.d.ts",
   "dependencies": {
-    "@availity/form": "^1.2.1",
-    "@availity/hooks": "^3.1.0",
-    "@availity/icon": "^0.10.0",
+    "@availity/form": "^1.2.2",
+    "@availity/hooks": "^3.1.1",
+    "@availity/icon": "^0.10.1",
     "@availity/native-form": "^4.0.5",
-    "@availity/select": "^2.3.0",
+    "@availity/select": "^2.3.1",
     "prop-types": "^15.7.2"
   },
   "devDependencies": {
@@ -46,5 +43,8 @@
     "react": ">=16.3.0",
     "reactstrap": "^8.0.0 || ^7.0.0 || ^6.0.0",
     "yup": "^0.27.0"
+  },
+  "publishConfig": {
+    "access": "public"
   }
 }

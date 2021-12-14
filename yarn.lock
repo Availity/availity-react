@@ -169,10 +169,10 @@
     "@babel/runtime" "^7.15.4"
     core-js "^3.12.1"
 
-"@availity/react-dates@^21.10.0":
-  version "21.10.0"
-  resolved "https://registry.yarnpkg.com/@availity/react-dates/-/react-dates-21.10.0.tgz#c0837875b7db7dfb7de353d1b26dae6e56bb6c06"
-  integrity sha512-mmd+mbW4Egq0z/f/8sUBd0cdwT4PrjXGJs8s8A8Oa1lpve+n4uRbS3xSGYnpPYL4BNvZlpm6Lklx7BDUu3vcHg==
+"@availity/react-dates@^21.10.3":
+  version "21.10.3"
+  resolved "https://registry.yarnpkg.com/@availity/react-dates/-/react-dates-21.10.3.tgz#548b0c416b12651260475ae6dc3d0afed9c4cbdb"
+  integrity sha512-DOHIe4NHWqVvIRH6CGZiiLwidhD6sGN9FqDeGYCX6nqgqFr2ppZzT39IKguyC0C8/tWBilssMs3F3LRSwl0oSQ==
   dependencies:
     airbnb-prop-types "^2.16.0"
     color2k "^1.1.1"

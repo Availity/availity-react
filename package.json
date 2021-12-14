@@ -2,24 +2,24 @@
   "name": "@availity/availity-react",
   "private": true,
   "description": "React components using Availity UIKit and Bootstrap 4",
-  "license": "MIT",
-  "homepage": "https://github.com/Availity/availity-react#readme",
-  "repository": {
-    "type": "git",
-    "url": "git+ssh://git@github.com/Availity/availity-react.git"
-  },
-  "contributors": [
-    "tyson warner (https://github.com/nylon22)",
-    "robert mcguinness (https://github.com/robmcguinness)"
-  ],
-  "bugs": {
-    "url": "https://github.com/Availity/availity-react/issues"
-  },
-  "author": "Robert McGuinness <rob.mcguinness@availity.com>",
   "keywords": [
     "availity",
     "react",
     "ui"
+  ],
+  "homepage": "https://github.com/Availity/availity-react#readme",
+  "bugs": {
+    "url": "https://github.com/Availity/availity-react/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+ssh://git@github.com/Availity/availity-react.git"
+  },
+  "license": "MIT",
+  "author": "Robert McGuinness <rob.mcguinness@availity.com>",
+  "contributors": [
+    "tyson warner (https://github.com/nylon22)",
+    "robert mcguinness (https://github.com/robmcguinness)"
   ],
   "main": "index.js",
   "workspaces": {
@@ -29,44 +29,54 @@
     ]
   },
   "scripts": {
-    "format": "prettier '**/*' --write --ignore-unknown",
-    "format:check": "prettier '**/*' --check --ignore-unknown",
-    "lint": "eslint .",
-    "lint:fix": "eslint . --fix",
-    "pretest": "yarn build:components",
-    "test": "jest",
-    "test:watch": "jest --watch",
-    "test:ci": "jest --runInBand --collectCoverage",
-    "codecov:ci": "codecov",
+    "bootstrap": "lerna bootstrap --use-workspaces",
+    "build:components": "yarn clean:builds && rollup -c",
+    "build:deploy": "yarn build:docs && yarn build:storybook:netlify",
+    "build:docs": "yarn workspace @availity/dinosaurdocs build",
+    "build:netlify": "yarn workspace @availity/dinosaurdocs build && yarn build:storybook:netlify",
+    "build:storybook": "build-storybook",
+    "build:storybook:netlify": "NODE_ENV=production build-storybook -c .storybook -s ./static -o ./docusaurus/build/storybook --quiet",
+    "build:storybook:production": "NODE_ENV=production build-storybook -c .storybook -s ./static -o ./storybook-docs --quiet",
+    "check": "npm-check -u && lerna exec --bail false --concurrency 1 -- npm-check -u",
+    "check:dependencies": "node scripts/check-missing-deps.js",
+    "check:packages": "sh ./scripts/artifactory-check.sh",
     "clean": "lerna clean --yes",
     "clean:builds": "rimraf packages/*/dist",
-    "clean:locks": "rimraf 'yarn.lock'",
     "clean:docs": "rimraf docusaurus/build docusaurus/.docusaurus",
+    "clean:locks": "rimraf 'yarn.lock'",
     "clean:storybook": "rimraf storybook-docs",
-    "nuke": "yarn clean && yarn clean:locks && yarn clean:builds && yarn clean:docs && yarn clean:storybook",
-    "lerna": "lerna",
-    "bootstrap": "lerna bootstrap --use-workspaces",
-    "link": "lerna link",
-    "postinstall": "yarn bootstrap && yarn build:components",
-    "start": "yarn start:storybook",
-    "start:storybook": "start-storybook -p 6006",
-    "start:docs": "yarn workspace @availity/dinosaurdocs start",
-    "build:components": "yarn clean:builds && rollup -c",
-    "build:storybook": "build-storybook",
-    "build:storybook:production": "NODE_ENV=production build-storybook -c .storybook -s ./static -o ./storybook-docs --quiet",
-    "build:storybook:netlify": "NODE_ENV=production build-storybook -c .storybook -s ./static -o ./docusaurus/build/storybook --quiet",
-    "build:netlify": "yarn workspace @availity/dinosaurdocs build && yarn build:storybook:netlify",
-    "build:docs": "yarn workspace @availity/dinosaurdocs build",
-    "build:deploy": "yarn build:docs && yarn build:storybook:netlify",
-    "prerelease:ci": "yarn build:components",
-    "release:ci": "lerna publish --yes",
+    "codecov:ci": "codecov",
     "deploy:ci": "yarn build:deploy",
     "deploy:docs": "yarn workspace @availity/dinosaurdocs deploy",
-    "updated": "lerna updated",
-    "check": "npm-check -u && lerna exec --bail false --concurrency 1 -- npm-check -u",
-    "check:packages": "sh ./scripts/artifactory-check.sh",
-    "check:dependencies": "node scripts/check-missing-deps.js",
-    "new": "plop"
+    "format": "prettier '**/*' --write --ignore-unknown",
+    "format:check": "prettier '**/*' --check --ignore-unknown",
+    "postinstall": "yarn bootstrap && yarn build:components",
+    "lerna": "lerna",
+    "link": "lerna link",
+    "lint": "eslint .",
+    "lint:fix": "eslint . --fix",
+    "new": "plop",
+    "nuke": "yarn clean && yarn clean:locks && yarn clean:builds && yarn clean:docs && yarn clean:storybook",
+    "prerelease:ci": "yarn build:components",
+    "release:ci": "lerna publish --yes",
+    "start": "yarn start:storybook",
+    "start:docs": "yarn workspace @availity/dinosaurdocs start",
+    "start:storybook": "start-storybook -p 6006",
+    "pretest": "yarn build:components",
+    "test": "jest",
+    "test:ci": "jest --runInBand --collectCoverage",
+    "test:watch": "jest --watch",
+    "updated": "lerna updated"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged",
+      "commit-msg": "commitlint -e $HUSKY_GIT_PARAMS",
+      "pre-push": "yarn test && yarn check:dependencies && yarn check:packages"
+    }
+  },
+  "resolutions": {
+    "@availity/yup": "3.2.0"
   },
   "dependencies": {
     "@babel/core": "^7.16.0",
@@ -127,15 +137,5 @@
     "sass-loader": "^10.0.0",
     "style-loader": "^2.0.0",
     "typescript": "^4.4.4"
-  },
-  "resolutions": {
-    "@availity/yup": "3.2.0"
-  },
-  "husky": {
-    "hooks": {
-      "commit-msg": "commitlint -e $HUSKY_GIT_PARAMS",
-      "pre-commit": "lint-staged",
-      "pre-push": "yarn test && yarn check:dependencies && yarn check:packages"
-    }
   }
 }

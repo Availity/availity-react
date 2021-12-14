@@ -1,30 +1,27 @@
 {
   "name": "@availity/reactstrap-validation-date",
-  "version": "4.2.2",
+  "version": "4.2.4",
   "description": "Wrapper for react-date-range to work with availity-reactstrap-validation",
-  "main": "index.js",
-  "types": "index.d.ts",
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
-  },
   "keywords": [
     "availity",
     "reactstrap",
     "validation",
     "date"
   ],
-  "author": "Evan Sharp <evan.sharp@availity.com>",
-  "license": "MIT",
+  "homepage": "https://github.com/Availity/availity-react/tree/master/packages/reactstrap-validation-date#readme",
+  "bugs": {
+    "url": "https://github.com/Availity/availity-react/issues"
+  },
   "repository": {
     "type": "git",
     "url": "https://github.com/Availity/availity-react.git"
   },
-  "bugs": {
-    "url": "https://github.com/Availity/availity-react/issues"
-  },
-  "homepage": "https://github.com/Availity/availity-react/tree/master/packages/reactstrap-validation-date#readme",
+  "license": "MIT",
+  "author": "Evan Sharp <evan.sharp@availity.com>",
+  "main": "index.js",
+  "types": "index.d.ts",
   "dependencies": {
-    "@availity/react-dates": "^21.10.0",
+    "@availity/react-dates": "^21.10.3",
     "@types/react-dates": "^21.8.2",
     "classnames": "^2.3.1",
     "lodash": "^4.17.21",
