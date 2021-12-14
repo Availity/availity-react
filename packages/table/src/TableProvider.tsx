@@ -8,7 +8,7 @@ import { TableContext } from './TableContext';
 
 export type Props<T extends IdType> = {
   additionalContent?: React.ElementType;
-  additionalContentProps: Record<string, string | number | boolean | undefined | null>;
+  additionalContentProps?: Record<string, string | number | boolean | undefined | null>;
 
   children: React.ReactChild | React.ReactChild[];
   columns: Column<T>[];
