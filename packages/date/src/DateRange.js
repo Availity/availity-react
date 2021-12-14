@@ -64,6 +64,7 @@ const DateRange = ({
   ranges: propsRanges,
   customArrowIcon,
   openDirection,
+  allowInvalidDates,
   ...attributes
 }) => {
   const { setFieldValue, setFieldTouched, validateField } = useFormikContext();
@@ -110,7 +111,7 @@ const DateRange = ({
     const isStart = focusedInput === 'startDate';
     const date = moment(val, [isoDateFormat, format, 'MMDDYYYY', 'YYYYMMDD', 'M/D/YYYY'], true);
 
-    const valueToSet = date.isValid() ? date.format(format) : null;
+    const valueToSet = date.isValid() ? date.format(format) : allowInvalidDates ? val : null;
 
     setFieldValue(
       name,
@@ -337,11 +338,13 @@ DateRange.propTypes = {
   ranges: PropTypes.oneOfType([PropTypes.bool, PropTypes.array, PropTypes.object]),
   customArrowIcon: PropTypes.oneOfType([PropTypes.string, PropTypes.node]),
   openDirection: PropTypes.string,
+  allowInvalidDates: PropTypes.bool,
 };
 
 DateRange.defaultProps = {
   format: isoDateFormat,
   openDirection: 'down',
+  allowInvalidDates: false,
 };
 
 export default DateRange;
