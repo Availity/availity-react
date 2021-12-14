@@ -1,3 +1,5 @@
+import React from 'react';
+
 export interface AnalyticsEvent {
   [key: string]: any;
   url: string;
@@ -17,6 +19,7 @@ export interface AnalyticsProps {
   recursive?: boolean;
   attributePrefix?: string;
   eventModifiers?: string | string[];
+  children: React.ReactNode;
 }
 
 export interface TrackEventOptions {
@@ -27,7 +30,7 @@ export interface AnalyticsContext {
   trackEvent(trackEventOptions: TrackEventOptions): Promise<void>;
 }
 
-declare const Analytics: React.FC<AnalyticsProps>;
+declare const Analytics: (props: AnalyticsProps) => JSX.Element;
 
 declare const useAnalytics: () => AnalyticsContext;
 

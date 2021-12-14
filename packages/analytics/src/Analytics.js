@@ -1,34 +1,38 @@
-import React, { createContext, useContext, useRef, useEffect } from 'react';
-import { AvAnalytics } from '@availity/analytics-core';
+import React, { createContext, useContext, useEffect, useMemo } from 'react';
 import PropTypes from 'prop-types';
+import { AvAnalytics } from '@availity/analytics-core';
 
 export const AnalyticsContext = createContext();
 
-const Analytics = ({ children, plugins, pageTracking, autoTrack, recursive, attributePrefix, eventModifiers }) => {
-  const analytics = useRef(
-    new AvAnalytics(plugins, Promise, pageTracking, autoTrack, {
-      recursive,
-      attributePrefix,
-      eventModifiers,
-    })
-  );
-
-  const cleanup = () => analytics.current.stopAutoTrack();
-
-  useEffect(() => {
-    analytics.current.init();
-
-    if (pageTracking) {
-      analytics.current.trackPageView();
-    }
-
-    return cleanup;
-  }, [pageTracking]);
-
-  return <AnalyticsContext.Provider value={analytics.current}>{children}</AnalyticsContext.Provider>;
+export const useAnalytics = () => {
+  const ctx = useContext(AnalyticsContext);
+  if (!ctx) throw new Error('useAnalytics must be used inside of the Analytics component');
+  return ctx;
 };
 
-export const useAnalytics = () => useContext(AnalyticsContext);
+const Analytics = ({ children, plugins, pageTracking, autoTrack, recursive, attributePrefix, eventModifiers }) => {
+  const analytics = useMemo(
+    () =>
+      new AvAnalytics(plugins, Promise, pageTracking, autoTrack, {
+        recursive,
+        attributePrefix,
+        eventModifiers,
+      }),
+    [attributePrefix, autoTrack, eventModifiers, pageTracking, plugins, recursive]
+  );
+
+  useEffect(() => {
+    analytics.init();
+
+    if (pageTracking) {
+      analytics.trackPageView();
+    }
+
+    return () => analytics.stopAutoTrack();
+  }, [analytics, pageTracking]);
+
+  return <AnalyticsContext.Provider value={analytics}>{children}</AnalyticsContext.Provider>;
+};
 
 Analytics.propTypes = {
   children: PropTypes.node,
