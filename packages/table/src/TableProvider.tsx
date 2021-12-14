@@ -8,7 +8,7 @@ import { TableContext } from './TableContext';
 
 export type Props<T extends IdType> = {
   additionalContent?: React.ElementType;
-  additionalContentProps: Record<string, any>;
+  additionalContentProps: Record<string, string | number | boolean | undefined | null>;
 
   children: React.ReactChild | React.ReactChild[];
   columns: Column<T>[];
@@ -41,8 +41,6 @@ const TableProvider = <T extends IdType>({
     });
 
   const cols = columns as RtColumn<T>[];
-
-  console.log(additionalContentProps);
 
   const tableInstance = useTable<T>(
     {
