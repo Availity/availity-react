@@ -1,6 +1,6 @@
 {
   "name": "@availity/payer-logo",
-  "version": "5.1.0",
+  "version": "5.1.1",
   "description": "Easy to use component to display the payer&#x27;s logo given the payer&#x27;s ID",
   "keywords": [
     "react",
@@ -18,7 +18,7 @@
   "main": "index.js",
   "types": "index.d.ts",
   "dependencies": {
-    "@availity/hooks": "^3.1.0",
+    "@availity/hooks": "^3.1.1",
     "lodash": "^4.17.21",
     "prop-types": "^15.7.2"
   },

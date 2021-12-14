@@ -1,6 +1,6 @@
 {
   "name": "@availity/icon",
-  "version": "0.10.0",
+  "version": "0.10.1",
   "description": "Simple Icon Component that uses classes from availity uikit",
   "keywords": [
     "react",

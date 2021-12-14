@@ -1,6 +1,6 @@
 {
   "name": "@availity/favorites",
-  "version": "2.3.1",
+  "version": "2.3.2",
   "description": "Favorite Heart for favoriting items such as links/resources etc.",
   "keywords": [
     "react",
@@ -19,7 +19,7 @@
   "types": "index.d.ts",
   "dependencies": {
     "@availity/analytics-core": "^3.1.5",
-    "@availity/hooks": "^3.1.0",
+    "@availity/hooks": "^3.1.1",
     "@availity/message-core": "^5.0.1",
     "lodash": "^4.17.21",
     "prop-types": "^15.7.2"

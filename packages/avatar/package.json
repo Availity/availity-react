@@ -1,6 +1,6 @@
 {
   "name": "@availity/avatar",
-  "version": "0.5.0",
+  "version": "0.5.1",
   "description": "Availity User avatar component",
   "keywords": [
     "react",
@@ -19,7 +19,7 @@
   "main": "index.js",
   "types": "index.d.ts",
   "dependencies": {
-    "@availity/hooks": "^3.1.0",
+    "@availity/hooks": "^3.1.1",
     "lodash": "^4.17.21",
     "prop-types": "^15.7.2",
     "react-image": "^4.0.3",
