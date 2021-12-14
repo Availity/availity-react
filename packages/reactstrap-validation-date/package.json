@@ -20,9 +20,6 @@
   "author": "Evan Sharp <evan.sharp@availity.com>",
   "main": "index.js",
   "types": "index.d.ts",
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
-  },
   "dependencies": {
     "@availity/react-dates": "^21.10.3",
     "@types/react-dates": "^21.8.2",
