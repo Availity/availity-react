@@ -6,6 +6,7 @@ export type AvTableContext = {
   setScrollable?: React.Dispatch<React.SetStateAction<boolean | undefined>>;
   sortable?: boolean;
   AdditionalContent?: React.ElementType;
+  additionalContentProps?: Record<string, any>;
   toggleSelectAll?: () => void;
   sortBy?: TableSort;
   sortOptions?: TableSortOption[];

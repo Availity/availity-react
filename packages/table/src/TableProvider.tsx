@@ -8,6 +8,8 @@ import { TableContext } from './TableContext';
 
 export type Props<T extends IdType> = {
   additionalContent?: React.ElementType;
+  additionalContentProps: Record<string, any>;
+
   children: React.ReactChild | React.ReactChild[];
   columns: Column<T>[];
   data: T[];
@@ -19,6 +21,8 @@ export type Props<T extends IdType> = {
 
 const TableProvider = <T extends IdType>({
   additionalContent: AdditionalContent,
+  additionalContentProps,
+
   columns,
   data,
   selectable,
@@ -37,6 +41,8 @@ const TableProvider = <T extends IdType>({
     });
 
   const cols = columns as RtColumn<T>[];
+
+  console.log(additionalContentProps);
 
   const tableInstance = useTable<T>(
     {
@@ -88,6 +94,7 @@ const TableProvider = <T extends IdType>({
     <TableContext.Provider
       value={{
         AdditionalContent,
+        additionalContentProps,
         selectable,
         scrollable: isScrollable as boolean | undefined,
         setScrollable,

@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import includes from 'lodash/includes';
 import filter from 'lodash/filter';
 import classNames from 'classnames';
@@ -23,7 +23,7 @@ const TableRow = <T extends IdType>({
   children,
   ...rest
 }: Props<T>): JSX.Element => {
-  const { AdditionalContent, scrollable, instance } = useTableContext();
+  const { AdditionalContent, additionalContentProps, scrollable, instance } = useTableContext();
   const { selectedFlatRows: selectedRows, allColumns } = instance as TableInstance<T>;
 
   const columns = allColumns as Column<T>[];
@@ -76,7 +76,7 @@ const TableRow = <T extends IdType>({
         <tr {...definedRowProps}>
           {isFirstColumnSticky && <td className="sticky sticky-left" />}
           <td colSpan={numberOfNonStickyColumns} style={{ borderTop: 0 }} {...definedCellProps}>
-            <AdditionalContent record={row.original} />
+            <AdditionalContent record={row.original} {...additionalContentProps} />
           </td>
           {isLastColumnSticky && <td className="sticky sticky-right" />}
         </tr>
