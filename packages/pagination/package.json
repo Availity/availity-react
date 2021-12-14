@@ -2,21 +2,18 @@
   "name": "@availity/pagination",
   "version": "2.13.0",
   "description": "",
-  "main": "index.js",
-  "types": "index.d.ts",
   "keywords": [],
-  "author": "Evan Sharp <evan.sharp@availity.com>",
-  "license": "MIT",
-  "publishConfig": {
-    "access": "public"
+  "bugs": {
+    "url": "https://github.com/Availity/availity-react/issues"
   },
   "repository": {
     "type": "git",
     "url": "https://github.com/Availity/availity-react.git"
   },
-  "bugs": {
-    "url": "https://github.com/Availity/availity-react/issues"
-  },
+  "license": "MIT",
+  "author": "Evan Sharp <evan.sharp@availity.com>",
+  "main": "index.js",
+  "types": "index.d.ts",
   "dependencies": {
     "lodash": "^4.17.21",
     "prop-types": "^15.7.2",
@@ -33,6 +30,9 @@
   "peerDependencies": {
     "react": ">=16.8.0",
     "reactstrap": "^8.0.0 || ^7.0.0"
+  },
+  "publishConfig": {
+    "access": "public"
   },
   "gitHead": "49d436db19e42e3c16b4185b12e9dfcce60ec253"
 }
