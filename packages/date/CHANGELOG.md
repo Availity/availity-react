@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [3.2.2](https://github.com/Availity/availity-react/compare/@availity/date@3.2.1...@availity/date@3.2.2) (2021-12-15)
+
+
+### Bug Fixes
+
+* **reactstrap-validation-date,date:** updated version to fix tab issue ([ac5d369](https://github.com/Availity/availity-react/commit/ac5d3692db62740ed59abf8962800f7f4a8ae3fc))
+
+
+
+
+
 ## 3.2.1 (2021-12-14)
 
 **Note:** Version bump only for package @availity/date

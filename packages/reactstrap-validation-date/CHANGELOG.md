@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [4.2.5](https://github.com/Availity/availity-react/compare/@availity/reactstrap-validation-date@4.2.4...@availity/reactstrap-validation-date@4.2.5) (2021-12-15)
+
+
+### Bug Fixes
+
+* **reactstrap-validation-date,date:** updated version to fix tab issue ([ac5d369](https://github.com/Availity/availity-react/commit/ac5d3692db62740ed59abf8962800f7f4a8ae3fc))
+
+
+
+
+
 ## 4.2.4 (2021-12-14)
 
 **Note:** Version bump only for package @availity/reactstrap-validation-date
