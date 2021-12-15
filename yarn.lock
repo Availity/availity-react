@@ -169,10 +169,10 @@
     "@babel/runtime" "^7.15.4"
     core-js "^3.12.1"
 
-"@availity/react-dates@^21.10.3":
-  version "21.10.3"
-  resolved "https://registry.yarnpkg.com/@availity/react-dates/-/react-dates-21.10.3.tgz#548b0c416b12651260475ae6dc3d0afed9c4cbdb"
-  integrity sha512-DOHIe4NHWqVvIRH6CGZiiLwidhD6sGN9FqDeGYCX6nqgqFr2ppZzT39IKguyC0C8/tWBilssMs3F3LRSwl0oSQ==
+"@availity/react-dates@^21.11.1":
+  version "21.11.1"
+  resolved "https://registry.yarnpkg.com/@availity/react-dates/-/react-dates-21.11.1.tgz#315e8183c2328baa86c75c7b744912e75a332479"
+  integrity sha512-ODE/rqcXTowlN6qvDIZAZE866GLceOfIkbGHKwZAQMyJhYT9MY9vkkeemWuXic9lC0Xi73yhotG46WAT3EyK4w==
   dependencies:
     airbnb-prop-types "^2.16.0"
     color2k "^1.1.1"
@@ -209,7 +209,7 @@
     core-js "^3.12.1"
     tus-js-client "1.7.1"
 
-"@availity/yup@3.2.0", "@availity/yup@^3.2.0":
+"@availity/yup@^3.2.0":
   version "3.2.0"
   resolved "https://registry.yarnpkg.com/@availity/yup/-/yup-3.2.0.tgz#b3bfa3fce6ccd51921e9bc90be90d3a178c30ff2"
   integrity sha512-iNVydznH51Sqdf0Q3RIbqQHAg9pulfW3b/XCKbZlDpKlzbkwLk7lv402+mVJ+YA7DST+2jGcUi2ORcjq/LP7DQ==
