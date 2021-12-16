@@ -211,8 +211,8 @@
 
 "@availity/yup@3.2.0", "@availity/yup@^3.2.0":
   version "3.2.0"
-  resolved "https://packages.availity.com:443/artifactory/api/npm/availity-npm-all/@availity/yup/-/yup-3.2.0.tgz#b3bfa3fce6ccd51921e9bc90be90d3a178c30ff2"
-  integrity sha1-s7+j/ObM1Rkh6byQvpDToXjDD/I=
+  resolved "https://registry.yarnpkg.com/@availity/yup/-/yup-3.2.0.tgz#b3bfa3fce6ccd51921e9bc90be90d3a178c30ff2"
+  integrity sha512-iNVydznH51Sqdf0Q3RIbqQHAg9pulfW3b/XCKbZlDpKlzbkwLk7lv402+mVJ+YA7DST+2jGcUi2ORcjq/LP7DQ==
   dependencies:
     "@babel/runtime" "^7.10.2"
     core-js "^3.12.1"
