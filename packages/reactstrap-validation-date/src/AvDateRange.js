@@ -515,6 +515,7 @@ class AvDateRange extends Component {
           <DateRangePicker
             disabled={attributes.disabled}
             enableOutsideDays
+            ariaDescribedBy={`${name.toLowerCase()}-feedback`}
             startDate={this.getDateValue(startValue)}
             startDateId={startId}
             endDate={this.getDateValue(endValue)}
