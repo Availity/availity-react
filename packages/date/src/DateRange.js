@@ -295,6 +295,7 @@ const DateRange = ({
         <DateRangePicker
           renderMonthElement={renderMonthElement}
           minimumNights={0}
+          ariaDescribedBy={`${name.toLowerCase()}-feedback`}
           {...datepickerProps}
           startDate={getDateValue(startValue)}
           startDateId={startId}
