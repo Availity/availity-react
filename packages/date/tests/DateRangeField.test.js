@@ -123,7 +123,6 @@ describe('Date', () => {
       </Form>
     );
     
-
     fireEvent.click(getByText('Submit'));
 
     await waitFor(() => {
