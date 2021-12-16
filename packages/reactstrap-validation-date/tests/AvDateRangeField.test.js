@@ -129,5 +129,4 @@ describe('AvDateRange', () => {
 
     expect(label.className).toContain('col-md-6');
   });
-
 });

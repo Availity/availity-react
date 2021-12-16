@@ -122,7 +122,7 @@ describe('Date', () => {
         <Button type="submit">Submit</Button>
       </Form>
     );
-    
+
     fireEvent.click(getByText('Submit'));
 
     await waitFor(() => {
