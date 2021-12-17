@@ -85,7 +85,7 @@ export default {
   },
 } as Meta;
 
-export const Default: Story = ({ autofill, creatable, disabled, helpMessage, isMulti, max, min, raw, required }) => (
+export const Default: Story = ({ autofill, creatable, disabled, isMulti, max, min, raw, required }) => (
   <FormikResults
     onSubmit={() => {
       console.log('submitted');

@@ -3,6 +3,88 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [3.2.2](https://github.com/Availity/availity-react/compare/@availity/date@3.2.1...@availity/date@3.2.2) (2021-12-15)
+
+
+### Bug Fixes
+
+* **reactstrap-validation-date,date:** updated version to fix tab issue ([ac5d369](https://github.com/Availity/availity-react/commit/ac5d3692db62740ed59abf8962800f7f4a8ae3fc))
+
+
+
+
+
+## 3.2.1 (2021-12-14)
+
+**Note:** Version bump only for package @availity/date
+
+
+
+
+
+# 3.2.0 (2021-12-10)
+
+
+### Bug Fixes
+
+* **date:** fix passThroughInvalidDates to be optional in typedef ([d3bad3e](https://github.com/Availity/availity-react/commit/d3bad3ef6baa6f676403642c639ef2d403ff817d))
+* **date:** rename prop ([dc95b8d](https://github.com/Availity/availity-react/commit/dc95b8ddcca3c55f3933f764579506ae98be46a7))
+
+
+### Features
+
+* **date:** allow dateRange to pass through invalid formatted dates with extra prop ([b7f5da3](https://github.com/Availity/availity-react/commit/b7f5da327db90992c3812d77c60560c43761db75))
+* **date:** fix new DateRange test ([066b6e9](https://github.com/Availity/availity-react/commit/066b6e95173f04b596f482c66b2cd8161c5fe3f6))
+
+
+
+
+
+## [3.1.4](https://github.com/Availity/availity-react/compare/@availity/date@3.1.3...@availity/date@3.1.4) (2021-12-09)
+
+
+### Bug Fixes
+
+* **reactstrap-validation-date,date:** set autocomplete prop to fix autofill bug ([c93eaa6](https://github.com/Availity/availity-react/commit/c93eaa6e52e782c3a4a73cecf5721c22d0807fd7))
+
+
+
+
+
+## 3.1.3 (2021-12-06)
+
+
+### Bug Fixes
+
+* **reactstrap-validation-date,date:** fixed test that used date icon ([351291e](https://github.com/Availity/availity-react/commit/351291e9380ba39fa87892a3c138a6796ab482d6))
+* **reactstrap-validation-date,date:** removed date icon to fix accessiiblity issues ([dcb8179](https://github.com/Availity/availity-react/commit/dcb8179f7f9fb70ce13440328d22c551643dd35a))
+* **reactstrap-validation-date,date:** removed unused code and imports ([887066d](https://github.com/Availity/availity-react/commit/887066db55eb6c10a53747c0c5262ff41f21cb88))
+* **reactstrap-validation-date,date:** removed unused code and imports ([be51dea](https://github.com/Availity/availity-react/commit/be51dead1fc5daaec0b1f17c7f0b239df73c271f))
+* **reactstrap-validation-date,date:** removed unused code and imports ([ba713b8](https://github.com/Availity/availity-react/commit/ba713b8aee77f6eff7d4c6a46fa87b592de4dba7))
+
+
+
+
+
+## 3.1.2 (2021-12-03)
+
+
+### Bug Fixes
+
+* **reactstrap-validation-date,date:** replaced react-dates with availity version for accessibility fixes ([63fb249](https://github.com/Availity/availity-react/commit/63fb249575044b1465755e1067e426d99e845429))
+
+
+
+
+
+## 3.1.1 (2021-11-30)
+
+**Note:** Version bump only for package @availity/date
+
+
+
+
+
 # [3.1.0](https://github.com/Availity/availity-react/compare/@availity/date@2.1.23...@availity/date@3.1.0) (2021-11-15)
 
 

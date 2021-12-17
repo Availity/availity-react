@@ -1,8 +1,7 @@
 import React, { useEffect, useMemo, useRef, useState } from 'react';
 import PropTypes from 'prop-types';
-import Icon from '@availity/icon';
 import { InputGroup, Input, Button, Row, Col } from 'reactstrap';
-import { DateRangePicker } from 'react-dates';
+import { DateRangePicker } from '@availity/react-dates';
 import classNames from 'classnames';
 import { useField, useFormikContext } from 'formik';
 import pick from 'lodash/pick';
@@ -59,14 +58,13 @@ const DateRange = ({
   innerRef,
   className,
   format,
-  calendarIcon,
   datepickerProps,
   'data-testid': dataTestId,
-  datepicker,
   autoSync,
   ranges: propsRanges,
   customArrowIcon,
   openDirection,
+  allowInvalidDates,
   ...attributes
 }) => {
   const { setFieldValue, setFieldTouched, validateField } = useFormikContext();
@@ -96,8 +94,7 @@ const DateRange = ({
     className,
     metadata.touched ? 'is-touched' : 'is-untouched',
     metadata.touched && metadata.error && 'is-invalid',
-    !startValue && !endValue && 'current-day-highlight',
-    datepicker && 'av-calendar-show'
+    !startValue && !endValue && 'current-day-highlight'
   );
 
   // Should only run validation once per real change to component, instead of each time setFieldValue/Touched is called.
@@ -114,7 +111,7 @@ const DateRange = ({
     const isStart = focusedInput === 'startDate';
     const date = moment(val, [isoDateFormat, format, 'MMDDYYYY', 'YYYYMMDD', 'M/D/YYYY'], true);
 
-    const valueToSet = date.isValid() ? date.format(format) : null;
+    const valueToSet = date.isValid() ? date.format(format) : allowInvalidDates ? val : null;
 
     setFieldValue(
       name,
@@ -313,23 +310,10 @@ const DateRange = ({
           renderCalendarInfo={renderDateRanges}
           customArrowIcon={customArrowIcon}
           isOutsideRange={isOutsideRange(min, max, format)}
-          customInputIcon={
-            datepicker
-              ? React.cloneElement(calendarIcon, {
-                  ref: calendarIconRef,
-                  onClick: () => {
-                    if (focusedInput) {
-                      setFocusedInput();
-                    }
-                  },
-                })
-              : undefined
-          }
-          showDefaultInputIcon={datepicker}
-          inputIconPosition="after"
           numberOfMonths={2}
           navPosition="navPositionBottom"
           openDirection={openDirection}
+          autoComplete="date"
         />
       </InputGroup>
     </>
@@ -346,23 +330,21 @@ DateRange.propTypes = {
   disabled: PropTypes.bool,
   onChange: PropTypes.func,
   onPickerFocusChange: PropTypes.func,
-  calendarIcon: PropTypes.node,
   innerRef: PropTypes.oneOfType([PropTypes.func, PropTypes.node]),
   format: PropTypes.string,
-  datepicker: PropTypes.bool,
   datepickerProps: PropTypes.object,
   'data-testid': PropTypes.string,
   autoSync: PropTypes.bool,
   ranges: PropTypes.oneOfType([PropTypes.bool, PropTypes.array, PropTypes.object]),
   customArrowIcon: PropTypes.oneOfType([PropTypes.string, PropTypes.node]),
   openDirection: PropTypes.string,
+  allowInvalidDates: PropTypes.bool,
 };
 
 DateRange.defaultProps = {
-  calendarIcon: <Icon name="calendar" data-testid="calendar-icon" />,
   format: isoDateFormat,
-  datepicker: true,
   openDirection: 'down',
+  allowInvalidDates: false,
 };
 
 export default DateRange;

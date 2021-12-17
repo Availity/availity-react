@@ -1,4 +1,4 @@
-@import '~react-dates/lib/css/_datepicker.css';
+@import '~@availity/react-dates/lib/css/_datepicker.css';
 
 .DateInput {
   flex: 1 0 0;
@@ -91,35 +91,12 @@
   }
 }
 
-
-
-.av-calendar-show .SingleDatePicker input.DateInput_input {
-  border-top-right-radius: 0;
-  border-bottom-right-radius: 0;
-  border-right: none;
-}
-
-.DateRangePickerInput .DateInput:nth-of-type(1) input.DateInput_input {
-  border-top-right-radius: 0;
-  border-bottom-right-radius: 0;
-}
-
 .DateRangePickerInput
   .DateRangePickerInput_arrow
   ~ .DateInput
   input.DateInput_input {
   border-top-left-radius: 0;
   border-bottom-left-radius: 0;
-}
-
-.av-calendar-show
-  .DateRangePickerInput
-  .DateRangePickerInput_arrow
-  ~ .DateInput
-  input.DateInput_input {
-  border-top-right-radius: 0;
-  border-bottom-right-radius: 0;
-  border-right: none;
 }
 
 .CalendarDay__selected,

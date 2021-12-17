@@ -1,27 +1,24 @@
 {
   "name": "@availity/payer-logo",
-  "version": "5.1.0",
-  "author": "Evan Sharp <evan.sharp@availity.com>",
+  "version": "5.1.1",
   "description": "Easy to use component to display the payer&#x27;s logo given the payer&#x27;s ID",
-  "main": "index.js",
-  "types": "index.d.ts",
   "keywords": [
     "react",
     "availity"
   ],
+  "bugs": {
+    "url": "https://github.com/Availity/availity-react/issues"
+  },
   "repository": {
     "type": "git",
     "url": "https://github.com/Availity/availity-react.git"
   },
-  "bugs": {
-    "url": "https://github.com/Availity/availity-react/issues"
-  },
   "license": "MIT",
-  "publishConfig": {
-    "access": "public"
-  },
+  "author": "Evan Sharp <evan.sharp@availity.com>",
+  "main": "index.js",
+  "types": "index.d.ts",
   "dependencies": {
-    "@availity/hooks": "^3.1.0",
+    "@availity/hooks": "^3.1.1",
     "lodash": "^4.17.21",
     "prop-types": "^15.7.2"
   },
@@ -35,5 +32,8 @@
     "@availity/api-axios": "^6.0.0",
     "axios": "^0.21.1",
     "react": ">=16.8.3"
+  },
+  "publishConfig": {
+    "access": "public"
   }
 }

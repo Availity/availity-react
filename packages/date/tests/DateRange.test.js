@@ -82,6 +82,118 @@ describe('DateRange', () => {
     });
   });
 
+  test('does not update formik with invalid format dates', async () => {
+    const onSubmit = jest.fn();
+
+    const { container, getByText } = render(
+      <Form
+        initialValues={{
+          dateRange: {
+            startDate: '',
+            endDate: '',
+          },
+        }}
+        onSubmit={onSubmit}
+      >
+        <DateRange id="dateRange" name="dateRange" format="MM/DD/YYYY" />
+        <Button type="submit">Submit</Button>
+      </Form>
+    );
+
+    // Simulate user entering start date
+    const start = container.querySelector('#dateRange-start');
+
+    fireEvent.focus(start);
+
+    fireEvent.change(start, {
+      target: {
+        value: '01-04-1997',
+      },
+    });
+
+    // Simulate user entering end date
+    const end = container.querySelector('#dateRange-end');
+
+    fireEvent.focus(end);
+
+    fireEvent.change(end, {
+      target: {
+        value: '01-05-1997',
+      },
+    });
+
+    // simulate submission
+    fireEvent.click(getByText('Submit'));
+
+    await waitFor(() => {
+      expect(onSubmit).toHaveBeenCalledWith(
+        {
+          dateRange: {
+            startDate: '',
+            endDate: '',
+          },
+        },
+        expect.anything()
+      );
+    });
+  });
+
+  test('updates formik with invalid dates with allowInvalidDates prop', async () => {
+    const handleSubmit = jest.fn();
+
+    const { container, getByText } = render(
+      <Form
+        initialValues={{
+          dateRange: {
+            startDate: '',
+            endDate: '',
+          },
+        }}
+        onSubmit={handleSubmit}
+      >
+        <DateRange id="dateRange" name="dateRange" format="MM/DD/YYYY" allowInvalidDates />
+        <Button type="submit">Submit</Button>
+      </Form>
+    );
+
+    // Simulate user entering start date
+    const start = container.querySelector('#dateRange-start');
+
+    fireEvent.focus(start);
+
+    fireEvent.change(start, {
+      target: {
+        value: '01-04-1997',
+      },
+    });
+
+    // Simulate user entering end date
+    const end = container.querySelector('#dateRange-end');
+
+    fireEvent.focus(end);
+
+    fireEvent.change(end, {
+      target: {
+        value: '01-05-1997',
+      },
+    });
+
+    // simulate submission
+    fireEvent.click(getByText('Submit'));
+
+    await waitFor(() => {
+      expect(handleSubmit).toHaveBeenCalledWith(
+        {
+          dateRange: {
+            startDate: '01-04-1997',
+            endDate: '01-05-1997',
+          },
+        },
+        expect.anything()
+      );
+    });
+  });
+
   test('autoSync updates other value', async () => {
     const onSubmit = jest.fn();
 
@@ -174,12 +286,12 @@ describe('DateRange', () => {
 
     await waitFor(() => {
       expect(onSubmit).toHaveBeenCalledWith(
-        expect.objectContaining({
+        {
           dateRange: {
             startDate: '1997-01-04',
             endDate: '1997-01-05',
           },
-        }),
+        },
         expect.anything()
       );
     });
@@ -224,12 +336,12 @@ describe('DateRange', () => {
 
     await waitFor(() => {
       expect(onSubmit).toHaveBeenCalledWith(
-        expect.objectContaining({
+        {
           dateRange: {
             startDate: '1997-01-04',
             endDate: '1997-01-05',
           },
-        }),
+        },
         expect.anything()
       );
     });
@@ -277,12 +389,12 @@ describe('DateRange', () => {
 
     await waitFor(() => {
       expect(onSubmit).toHaveBeenCalledWith(
-        expect.objectContaining({
+        {
           dateRange: {
             startDate: expectedStartDate.format('YYYY-MM-DD'),
             endDate: expectedEndDate.format('YYYY-MM-DD'),
           },
-        }),
+        },
         expect.anything()
       );
     });
@@ -319,12 +431,12 @@ describe('DateRange', () => {
 
     await waitFor(() => {
       expect(onSubmit).toHaveBeenCalledWith(
-        expect.objectContaining({
+        {
           dateRange: {
             startDate: moment().format('YYYY-MM-DD'),
             endDate: moment().format('YYYY-MM-DD'),
           },
-        }),
+        },
         expect.anything()
       );
     });
@@ -345,7 +457,7 @@ describe('DateRange', () => {
       </Form>
     );
 
-    container.querySelector('.DateRangePickerInput_calendarIcon').click();
+    container.querySelector('.DateInput_input_1').focus();
 
     await waitFor(() => {
       expect(
@@ -354,7 +466,8 @@ describe('DateRange', () => {
     });
 
     // Simulate User hitting the 'Today' pre-set
-    container.querySelectorAll('.btn-default')[0].click();
+    container.querySelector('.CalendarDay__today').click();
+    container.querySelector('.CalendarDay__today').click();
 
     const today = moment().format('MM/DD/YYYY');
 
@@ -425,7 +538,7 @@ describe('DateRange', () => {
     const onChange = jest.fn();
 
     const min = moment('12/01/2020').subtract(1, 'years');
-    const max = moment('12/31/2021');
+    const max = moment().add(1, 'years');
     const newYear = `${max.year() + 1}`;
 
     const { container, getAllByTestId } = render(

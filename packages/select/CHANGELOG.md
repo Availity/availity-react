@@ -3,6 +3,36 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## 2.3.1 (2021-12-14)
+
+**Note:** Version bump only for package @availity/select
+
+
+
+
+
+# 2.3.0 (2021-12-03)
+
+
+### Features
+
+* **select:** add placeholder prop ([0f115fc](https://github.com/Availity/availity-react/commit/0f115fc01d812ab65ff1458ed4f3a66684188f39))
+* **select:** associate help and error messages to input ([5e042c6](https://github.com/Availity/availity-react/commit/5e042c600887a2aa7fd82c3d3f245c63666464a0))
+* **select:** rename error variable ([f1e74f8](https://github.com/Availity/availity-react/commit/f1e74f8cffeaf232b7df85fdc6e2b7385f436d6d))
+* **select:** rename error variable ([ed50160](https://github.com/Availity/availity-react/commit/ed50160fc5523b4fd4badfcf04d8f10f7491155e))
+
+
+
+
+
+## [2.2.1](https://github.com/Availity/availity-react/compare/@availity/select@2.2.0...@availity/select@2.2.1) (2021-11-30)
+
+**Note:** Version bump only for package @availity/select
+
+
+
+
+
 # [2.2.0](https://github.com/Availity/availity-react/compare/@availity/select@2.1.2...@availity/select@2.2.0) (2021-11-19)
 
 

@@ -3,6 +3,25 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## 1.2.2 (2021-12-14)
+
+**Note:** Version bump only for package @availity/analytics
+
+
+
+
+
+## 1.2.1 (2021-12-02)
+
+
+### Bug Fixes
+
+* **analytics:** vbump @availity/analytics-core ([ed5cb47](https://github.com/Availity/availity-react/commit/ed5cb473b3aea7752ac8d31fbff19ba2b2358d9b))
+
+
+
+
+
 # 1.2.0 (2021-11-15)
 
 

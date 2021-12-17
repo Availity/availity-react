@@ -1,15 +1,14 @@
 /* eslint-disable react/default-props-match-prop-types */
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import { SingleDatePicker } from 'react-dates';
+import { SingleDatePicker } from '@availity/react-dates';
 import { InputGroup } from 'reactstrap';
 import classNames from 'classnames';
 import moment from 'moment';
-import 'react-dates/initialize';
+import '@availity/react-dates/initialize';
 import '../polyfills';
 
 import { inputType, isoDateFormat } from 'availity-reactstrap-validation/lib/AvValidator/utils';
-import Icon from '@availity/icon';
 import { AvInput } from 'availity-reactstrap-validation';
 
 import { isOutsideRange, limitPropType } from './utils';
@@ -121,19 +120,7 @@ class AvDate extends Component {
   };
 
   render() {
-    const {
-      calendarIcon,
-      className,
-      datepicker,
-      datePickerProps,
-      hideIcon,
-      max,
-      min,
-      name,
-      type,
-      validate,
-      ...attributes
-    } = this.props;
+    const { className, datePickerProps, hideIcon, max, min, name, type, validate, ...attributes } = this.props;
     const { focused, format, value } = this.state;
     const { FormCtrl } = this.context;
 
@@ -152,8 +139,7 @@ class AvDate extends Component {
       FormCtrl.isBad(name) ? 'is-bad-input' : null,
       hasError ? 'av-invalid' : 'av-valid',
       touched && hasError && 'is-invalid',
-      !value && 'current-day-highlight',
-      datepicker && 'av-calendar-show'
+      !value && 'current-day-highlight'
     );
 
     const input = (
@@ -192,10 +178,8 @@ class AvDate extends Component {
             onFocusChange={this.onFocusChange}
             numberOfMonths={1}
             isOutsideRange={isOutsideRange(minDate, maxDate, format)}
-            customInputIcon={datepicker ? calendarIcon : undefined}
-            showDefaultInputIcon={datepicker}
-            inputIconPosition="after"
             onClose={this.onClose}
+            autoComplete="date"
           />
         </InputGroup>
       </>
@@ -205,7 +189,6 @@ class AvDate extends Component {
 
 AvDate.propTypes = {
   ...AvInput.propTypes,
-  calendarIcon: PropTypes.node,
   min: limitPropType,
   max: limitPropType,
   onPickerFocusChange: PropTypes.func,
@@ -218,9 +201,7 @@ AvDate.contextTypes = {
 
 AvDate.defaultProps = {
   type: 'text',
-  datepicker: true,
   datePickerProps: {},
-  calendarIcon: <Icon name="calendar" />,
 };
 
 export default AvDate;

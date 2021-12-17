@@ -3,6 +3,14 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## 2.4.1 (2021-12-14)
+
+**Note:** Version bump only for package @availity/link
+
+
+
+
+
 # [2.4.0](https://github.com/Availity/availity-react/compare/@availity/link@2.3.5...@availity/link@2.4.0) (2021-11-15)
 
 

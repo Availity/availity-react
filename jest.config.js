@@ -13,6 +13,7 @@ module.exports = {
     '/storybook/',
     '/docs/',
     '/packages/feature/bin.js',
+    '.stories.tsx',
   ],
 
   transformIgnorePatterns: ['[/\\\\]node_modules[/\\\\](?!@availity).+\\.(js|jsx)$'],

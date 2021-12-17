@@ -3,6 +3,25 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## 9.2.1 (2021-12-14)
+
+**Note:** Version bump only for package @availity/reactstrap-validation-select
+
+
+
+
+
+# 9.2.0 (2021-12-06)
+
+
+### Features
+
+* **reactstrap-validation-select:** add helpMessage prop ([e2a6ae7](https://github.com/Availity/availity-react/commit/e2a6ae7843e486f0c3edd7af1736463f5dad1dc0))
+
+
+
+
+
 ## [9.1.1](https://github.com/Availity/availity-react/compare/@availity/reactstrap-validation-select@9.1.0...@availity/reactstrap-validation-select@9.1.1) (2021-11-15)
 
 

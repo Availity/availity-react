@@ -243,4 +243,54 @@ describe('Pagination Controls', () => {
       expect(pageBreakEllipsisLink).toHaveAttribute('aria-label', 'Jump forwards to page 6');
     });
   });
+
+  test('should show pagination text', async () => {
+    const items = [
+      { value: '1', key: 1 },
+      { value: '2', key: 2 },
+      { value: '3', key: 3 },
+      { value: '4', key: 4 },
+      { value: '5', key: 5 },
+    ];
+
+    const { getByTestId } = render(
+      <Pagination items={items} itemsPerPage={1}>
+        <PaginationControls pageRange={5} marginPages={1} directionLinks showPaginationText />
+      </Pagination>
+    );
+    await waitFor(() => {
+      const pageText = getByTestId('pagination-text');
+      expect(pageText).toBeDefined();
+
+      expect(pageText.textContent).toBe('1-1 of 5');
+    });
+  });
+
+  test('should show pagination text with populatePaginationText', async () => {
+    const items = [
+      { value: '1', key: 1 },
+      { value: '2', key: 2 },
+      { value: '3', key: 3 },
+      { value: '4', key: 4 },
+      { value: '5', key: 5 },
+    ];
+
+    const { getByTestId } = render(
+      <Pagination items={items} itemsPerPage={1}>
+        <PaginationControls
+          pageRange={5}
+          marginPages={1}
+          directionLinks
+          showPaginationText
+          populatePaginationText={(lower, upper, total) => `Show me ${lower} thru ${upper} of ${total}`}
+        />
+      </Pagination>
+    );
+    await waitFor(() => {
+      const pageText = getByTestId('pagination-text');
+      expect(pageText).toBeDefined();
+
+      expect(pageText.textContent).toBe('Show me 1 thru 1 of 5');
+    });
+  });
 });

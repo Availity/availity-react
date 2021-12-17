@@ -74,6 +74,62 @@ Default.argTypes = {
 };
 Default.storyName = 'default';
 
+export const DefaultWithModal: Story = ({
+  btnText,
+  aboutOptions,
+  appName,
+  showSupport,
+  prompt,
+  additionalComments,
+  btnColor,
+  btnOutline,
+  className,
+  modal,
+}) => (
+  <Feedback
+    appName={appName}
+    prompt={prompt}
+    formProps={{
+      additionalComments,
+      aboutOptions: aboutOptions
+        ? [
+            { label: 'The Payer Space', value: 'space' },
+            { label: 'Applications', value: 'applications' },
+            { label: 'Resources', value: 'resources' },
+            { label: 'News and Announcements', value: 'news' },
+          ]
+        : [],
+      staticFields: { staticKey: 'my-static-value' },
+    }}
+    showSupport={showSupport}
+    color={btnColor}
+    outline={btnOutline}
+    className={className}
+    modal={modal}
+  >
+    {btnText}
+  </Feedback>
+);
+DefaultWithModal.args = {
+  btnText: 'Button Text',
+  appName: 'Payer Space',
+  prompt: '',
+  additionalComments: false,
+  aboutOptions: false,
+  showSupport: false,
+  btnOutline: false,
+  btnColor: colorOptions[0],
+  className: '',
+  modal: true,
+};
+DefaultWithModal.argTypes = {
+  btnColor: {
+    type: 'select',
+    options: colorOptions,
+  },
+};
+DefaultWithModal.storyName = 'default w/ modal';
+
 export const WithForm: Story = ({ appName, autoFocusFeedbackButton, prompt, faceOptions }) => (
   <FeedbackForm
     name={appName}

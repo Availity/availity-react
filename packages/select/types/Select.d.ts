@@ -22,6 +22,8 @@ export interface SelectProps<T> extends Props<{}> {
   validate?: FieldValidator;
   autofill?: boolean | object;
   creatable?: boolean;
+  helpMessage?: string;
+  feedback?: boolean;
 }
 
 declare class Select<T> extends React.Component<SelectProps<T>> {}

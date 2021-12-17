@@ -1,9 +1,8 @@
-/* eslint-disable import/no-duplicates */
+/* eslint-disable no-console */
 import React from 'react';
 import { Meta, Story } from '@storybook/react';
 import { Button } from 'reactstrap';
 import * as yup from 'yup';
-import '@availity/yup';
 import { avDate } from '@availity/yup';
 import { Phone } from '@availity/phone';
 import { DateField } from '@availity/date';

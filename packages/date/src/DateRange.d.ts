@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { DateRangePickerShape } from 'react-dates';
+import { DateRangePickerShape } from '@availity/react-dates';
 import { Moment } from 'moment';
 import { DateProps } from './Date';
 
@@ -15,6 +15,7 @@ export type DateRangeProps = {
   onChange?: (dates: { startDate: string; endDate: string }) => void;
   onPickerFocusChange?: (arg: { focusedInput: 'startDate' | 'endDate' | null }) => void;
   customArrowIcon?: React.ReactNode;
+  allowInvalidDates?: boolean;
 } & Omit<DateProps, 'datePickerProps'>;
 
 declare const DateRange: (props: DateRangeProps) => JSX.Element;
