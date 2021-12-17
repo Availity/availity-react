@@ -136,7 +136,7 @@ describe('Date', () => {
   test('renders aria-describedby', async () => {
     const onSubmit = jest.fn();
 
-    const { container, getByText, getByTestId } = render(
+    const { container } = render(
       <Form
         initialValues={{
           dateRange: '',
