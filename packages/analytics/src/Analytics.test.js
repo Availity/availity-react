@@ -1,6 +1,7 @@
 import React from 'react';
 import { render, cleanup, fireEvent, waitFor } from '@testing-library/react';
-import Analytics, { useAnalytics } from '..';
+
+import Analytics, { useAnalytics } from '.';
 
 const makePlugin = () => ({
   isEnabled: jest.fn(() => true),
