@@ -60,7 +60,7 @@
     "release:ci": "lerna publish --yes",
     "start": "yarn start:storybook",
     "start:docs": "yarn workspace @availity/dinosaurdocs start",
-    "start:storybook": "start-storybook -p 6006",
+    "start:storybook": "start-storybook -p 6006 -s ./static",
     "pretest": "yarn build:components",
     "test": "jest",
     "test:ci": "jest --runInBand --collectCoverage",
