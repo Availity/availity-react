@@ -69,7 +69,15 @@ class AvDateRangeField extends Component {
     }
 
     const input = (
-      <AvDateRange id={id} className={inputClass} size={size} disabled={disabled} readOnly={readOnly} ariaDescribedBy={`${this.props.name.toLowerCase()}-feedback`} {...attributes}>
+      <AvDateRange
+        id={id}
+        className={inputClass}
+        size={size}
+        disabled={disabled}
+        readOnly={readOnly}
+        ariaDescribedBy={`${this.props.name.toLowerCase()}-feedback`}
+        {...attributes}
+      >
         {children}
       </AvDateRange>
     );
