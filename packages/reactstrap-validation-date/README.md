@@ -3,16 +3,18 @@
 > Wrapper for react-date-range to work with availity-reactstrap-validation.
 
 [![Version](https://img.shields.io/npm/v/@availity/reactstrap-validation-date.svg?style=for-the-badge)](https://www.npmjs.com/package/@availity/reactstrap-validation-date)
+[![NPM Downloads](https://img.shields.io/npm/dt/@availity/reactstrap-validation-date.svg?style=for-the-badge)](https://www.npmjs.com/package/@availity/reactstrap-validation-date)
+[![Dependecy Status](https://img.shields.io/librariesio/release/npm/@availity/reactstrap-validation-date?style=for-the-badge)](https://github.com/Availity/availity-react/blob/master/packages/reactstrap-validation-date/package.json)
 
 ## Installation
 
-npm
+### NPM
 
 ```bash
 npm install @availity/reactstrap-validation-date availity-reactstrap-validation reactstrap --save
 ```
 
-Yarn
+### Yarn
 
 ```bash
 yarn add @availity/reactstrap-validation-date availity-reactstrap-validation reactstrap
@@ -87,6 +89,7 @@ Like `AvField`, but for dates with a date picker
 #### AvDateField Props
 
 See availity-reactstrap-validation for additional props, such as `name`, `validate`, `min`, `max`, and more.
+
 - **`min`**: string. Optional. Minimum date to allow the datepicker and input to take. You can either pass the `min` here or in the `validate` object if you want a custom error message with it.
 - **`max`**: string. Optional. Max date to allow the datepicker and input to take. You can either pass the `max` here or in the `validate` object if you want a custom error message with it.
 

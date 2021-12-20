@@ -4,17 +4,17 @@
   "description": "Wrapper for react-dates to work with formik",
   "keywords": [
     "availity",
-    "reactstrap",
-    "validation",
+    "formik",
     "date"
   ],
-  "homepage": "https://github.com/Availity/availity-react/tree/master/packages/date#readme",
+  "homepage": "https://availity.github.io/availity-react/form/date/index",
   "bugs": {
     "url": "https://github.com/Availity/availity-react/issues"
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/Availity/availity-react.git"
+    "url": "https://github.com/Availity/availity-react.git",
+    "directory": "packages/date"
   },
   "license": "MIT",
   "author": "Tyson Warner <tyson.warner@availity.com>",

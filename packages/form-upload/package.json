@@ -7,13 +7,14 @@
     "availity",
     "upload"
   ],
-  "homepage": "https://github.com/Availity/availity-react/tree/master/packages/upload#readme",
+  "homepage": "https://availity.github.io/availity-react/form/upload/index",
   "bugs": {
     "url": "https://github.com/Availity/availity-react/issues"
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/Availity/availity-react.git"
+    "url": "https://github.com/Availity/availity-react.git",
+    "directory": "packages/form-upload"
   },
   "license": "MIT",
   "author": "Tyson Warner <tyson.warner@availity.com>",

@@ -4,17 +4,17 @@
   "description": "Wrapper for react-select to work with formik",
   "keywords": [
     "availity",
-    "reactstrap",
-    "validation",
+    "formik",
     "select"
   ],
-  "homepage": "https://github.com/Availity/availity-react/tree/master/packages/select#readme",
+  "homepage": "https://availity.github.io/availity-react/form/select/index",
   "bugs": {
     "url": "https://github.com/Availity/availity-react/issues"
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/Availity/availity-react.git"
+    "url": "https://github.com/Availity/availity-react.git",
+    "directory": "packages/select"
   },
   "license": "MIT",
   "author": "Evan Sharp <evan.sharp@availity.com>",

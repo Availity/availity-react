@@ -3,6 +3,8 @@
 > THIS PACKAGE HAS BEEN DEPRECATED IN FAVOR OF `@availity/spaces`
 
 [![Version](https://img.shields.io/npm/v/@availity/payer-logo.svg?style=for-the-badge)](https://www.npmjs.com/package/@availity/payer-logo)
+[![NPM Downloads](https://img.shields.io/npm/dt/@availity/payer-logo.svg?style=for-the-badge)](https://www.npmjs.com/package/@availity/payer-logo)
+[![Dependecy Status](https://img.shields.io/librariesio/release/npm/@availity/payer-logo?style=for-the-badge)](https://github.com/Availity/availity-react/blob/master/packages/payer-logo/package.json)
 
 Easy to use component to display the payer&#x27;s logo given the payer&#x27;s ID
 
@@ -20,16 +22,8 @@ import PayerLogo from '@availity/payer-logo';
 
 const Example = () => (
   <>
-    <PayerLogo
-      spaceId="73162546201441126239486200007187"
-      clientId="my-client-id"
-      alt="The word 'Payer' in green"
-    />
-    <PayerLogo
-      payerId="PayerID"
-      clientId="my-client-id"
-      alt="The word 'Payer' in green"
-    />
+    <PayerLogo spaceId="73162546201441126239486200007187" clientId="my-client-id" alt="The word 'Payer' in green" />
+    <PayerLogo payerId="PayerID" clientId="my-client-id" alt="The word 'Payer' in green" />
   </>
 );
 ```

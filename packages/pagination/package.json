@@ -1,14 +1,20 @@
 {
   "name": "@availity/pagination",
   "version": "2.13.1",
-  "description": "",
-  "keywords": [],
+  "description": "component for displaying paginated data",
+  "keywords": [
+    "availity",
+    "react",
+    "pagination"
+  ],
+  "homepage": "https://availity.github.io/availity-react/components/pagination/index",
   "bugs": {
     "url": "https://github.com/Availity/availity-react/issues"
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/Availity/availity-react.git"
+    "url": "https://github.com/Availity/availity-react.git",
+    "directory": "packages/pagination"
   },
   "license": "MIT",
   "author": "Evan Sharp <evan.sharp@availity.com>",

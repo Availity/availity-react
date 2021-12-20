@@ -4,14 +4,17 @@
   "description": "Check user permissions to see if the current user is authorized to see your content.",
   "keywords": [
     "react",
-    "availity"
+    "availity",
+    "authorize"
   ],
+  "homepage": "https://availity.github.io/availity-react/components/authorize",
   "bugs": {
     "url": "https://github.com/Availity/availity-react/issues"
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/Availity/availity-react.git"
+    "url": "https://github.com/Availity/availity-react.git",
+    "directory": "packages/authorize"
   },
   "license": "MIT",
   "author": "Evan Sharp <evan.sharp@gmail.com>",

@@ -4,14 +4,18 @@
   "description": "Form Wrapper around formik using reactstrap components",
   "keywords": [
     "react",
-    "availity"
+    "availity",
+    "form",
+    "formik"
   ],
+  "homepage": "https://availity.github.io/availity-react/form/index",
   "bugs": {
     "url": "https://github.com/Availity/availity-react/issues"
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/Availity/availity-react.git"
+    "url": "https://github.com/Availity/availity-react.git",
+    "directory": "packages/form"
   },
   "license": "MIT",
   "author": "Kyle Gray <kyle.gray@availity.com>",

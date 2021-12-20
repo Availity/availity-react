@@ -4,14 +4,17 @@
   "description": "Availity feedback with smiley faces react component.",
   "keywords": [
     "react",
-    "availity"
+    "availity",
+    "feedback"
   ],
+  "homepage": "https://availity.github.io/availity-react/components/feedback/index",
   "bugs": {
     "url": "https://github.com/Availity/availity-react/issues"
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/Availity/availity-react.git"
+    "url": "https://github.com/Availity/availity-react.git",
+    "directory": "packages/feedback"
   },
   "license": "MIT",
   "author": "Evan Sharp <evan.sharp@availity.com>",

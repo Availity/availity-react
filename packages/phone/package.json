@@ -2,7 +2,20 @@
   "name": "@availity/phone",
   "version": "1.2.2",
   "description": "Availity Phone component using Formik and Yup",
-  "keywords": [],
+  "keywords": [
+    "availity",
+    "yup",
+    "formik"
+  ],
+  "homepage": "https://availity.github.io/availity-react/form/phone/index",
+  "bugs": {
+    "url": "https://github.com/Availity/availity-react/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Availity/availity-react.git",
+    "directory": "packages/phone"
+  },
   "license": "MIT",
   "author": "Christopher Havekost <Christopher.Havekost@availity.com>",
   "main": "index.js",
