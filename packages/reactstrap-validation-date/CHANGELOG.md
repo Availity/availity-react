@@ -3,6 +3,20 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [4.3.0](https://github.com/Availity/availity-react/compare/@availity/reactstrap-validation-date@4.2.5...@availity/reactstrap-validation-date@4.3.0) (2021-12-20)
+
+
+### Features
+
+* **date,reactstrap-validation-date:** added aria-describedby to date inputs so that screen readers will read errors ([38eb5c4](https://github.com/Availity/availity-react/commit/38eb5c4bd0d115b067bfa2d7b8da19e4c432c662))
+* **date,reactstrap-validation-date:** removed extra lines ([0489761](https://github.com/Availity/availity-react/commit/04897612a09f9376bb5d7b1f03970a05ceeb22db))
+* **date,reactstrap-validation-date:** removed extra lines ([11e76de](https://github.com/Availity/availity-react/commit/11e76deb80960822906c4d6fd65e45da15bf9009))
+* **date,reactstrap-validation-date:** restructured AvDateRange props so aria-describedby gets passed in ([7b2ec72](https://github.com/Availity/availity-react/commit/7b2ec72bdb8fc7122a69c5a0e857eb3edf55c3d6))
+
+
+
+
+
 ## [4.2.5](https://github.com/Availity/availity-react/compare/@availity/reactstrap-validation-date@4.2.4...@availity/reactstrap-validation-date@4.2.5) (2021-12-15)
 
 
