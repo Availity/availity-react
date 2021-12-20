@@ -1,5 +1,5 @@
 import React from 'react';
-import { render, fireEvent, waitFor, cleanup } from '@testing-library/react';
+import { render, fireEvent, waitFor, cleanup, queryByAttribute } from '@testing-library/react';
 import { Button, Label } from 'reactstrap';
 import { Form } from '@availity/form';
 import * as yup from 'yup';
@@ -130,6 +130,41 @@ describe('Date', () => {
       const el2 = getByText('This field is required');
       expect(el1).toBeDefined();
       expect(el2).toBeDefined();
+    });
+  });
+
+  test('renders aria-describedby', async () => {
+    const onSubmit = jest.fn();
+
+    const { container } = render(
+      <Form
+        initialValues={{
+          dateRange: '',
+        }}
+        onSubmit={onSubmit}
+        validationSchema={yup.object().shape({
+          dateRange: yup.string().required('This field is required'),
+        })}
+      >
+        <DateRangeField id="dateRange" name="dateRange" />
+        <Button type="submit">Submit</Button>
+      </Form>
+    );
+
+    await waitFor(() => {
+      const getById = queryByAttribute.bind(null, 'id');
+      const firstInput = getById(container, 'dateRange-start');
+      expect(firstInput).toBeDefined();
+      expect(firstInput).toHaveAttribute(
+        'aria-describedby',
+        'DateInput__screen-reader-message-dateRange-start daterange-feedback'
+      );
+      const secondInput = getById(container, 'dateRange-end');
+      expect(secondInput).toBeDefined();
+      expect(secondInput).toHaveAttribute(
+        'aria-describedby',
+        'DateInput__screen-reader-message-dateRange-end daterange-feedback'
+      );
     });
   });
 });
