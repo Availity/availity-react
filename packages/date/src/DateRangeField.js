@@ -27,7 +27,7 @@ const DateRangeField = ({
         {label}
       </Label>
     )}
-    <DateRange name={name} id={id} ariaDescribedBy= {`${name.toLowerCase()}-feedback`} {...props} />
+    <DateRange name={name} id={id} ariaDescribedBy={`${name.toLowerCase()}-feedback`} {...props} />
     <Feedback name={name} />
   </FormGroup>
 );
