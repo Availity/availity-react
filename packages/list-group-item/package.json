@@ -4,14 +4,17 @@
   "description": "List Group Item with some Availity flair",
   "keywords": [
     "react",
-    "availity"
+    "availity",
+    "list"
   ],
+  "homepage": "https://availity.github.io/availity-react/components/list-group-item/index",
   "bugs": {
     "url": "https://github.com/Availity/availity-react/issues"
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/Availity/availity-react.git"
+    "url": "https://github.com/Availity/availity-react.git",
+    "directory": "packages/list-group-item"
   },
   "license": "MIT",
   "author": "Evan Sharp <evan.sharp@availity.com>",

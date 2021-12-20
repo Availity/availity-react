@@ -7,7 +7,7 @@
     "react",
     "ui"
   ],
-  "homepage": "https://github.com/Availity/availity-react#readme",
+  "homepage": "https://availity.github.io/availity-react/",
   "bugs": {
     "url": "https://github.com/Availity/availity-react/issues"
   },
@@ -21,7 +21,6 @@
     "tyson warner (https://github.com/nylon22)",
     "robert mcguinness (https://github.com/robmcguinness)"
   ],
-  "main": "index.js",
   "workspaces": {
     "packages": [
       "packages/*",
@@ -45,6 +44,7 @@
     "clean:docs": "rimraf docusaurus/build docusaurus/.docusaurus",
     "clean:locks": "rimraf 'yarn.lock'",
     "clean:storybook": "rimraf storybook-docs",
+    "nuke": "yarn clean && yarn clean:locks && yarn clean:builds && yarn clean:docs && yarn clean:storybook",
     "codecov:ci": "codecov",
     "deploy:ci": "yarn build:deploy",
     "deploy:docs": "yarn workspace @availity/dinosaurdocs deploy",
@@ -56,12 +56,11 @@
     "lint": "eslint .",
     "lint:fix": "eslint . --fix",
     "new": "plop",
-    "nuke": "yarn clean && yarn clean:locks && yarn clean:builds && yarn clean:docs && yarn clean:storybook",
     "prerelease:ci": "yarn build:components",
     "release:ci": "lerna publish --yes",
     "start": "yarn start:storybook",
     "start:docs": "yarn workspace @availity/dinosaurdocs start",
-    "start:storybook": "start-storybook -p 6006",
+    "start:storybook": "start-storybook -p 6006 -s ./static",
     "pretest": "yarn build:components",
     "test": "jest",
     "test:ci": "jest --runInBand --collectCoverage",

@@ -14,7 +14,8 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/Availity/availity-react.git"
+    "url": "https://github.com/Availity/availity-react.git",
+    "directory": "packages/reactstrap-validation-date"
   },
   "license": "MIT",
   "author": "Evan Sharp <evan.sharp@availity.com>",
