@@ -1,6 +1,6 @@
 {
   "name": "@availity/form",
-  "version": "1.2.2",
+  "version": "1.2.3",
   "description": "Form Wrapper around formik using reactstrap components",
   "keywords": [
     "react",
@@ -22,7 +22,7 @@
   "main": "index.js",
   "types": "index.d.ts",
   "dependencies": {
-    "@availity/help": "^1.5.1",
+    "@availity/help": "^1.5.2",
     "classnames": "^2.3.1",
     "prop-types": "^15.7.2",
     "uuid": "^8.3.2"

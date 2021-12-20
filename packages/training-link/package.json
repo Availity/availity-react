@@ -1,6 +1,6 @@
 {
   "name": "@availity/training-link",
-  "version": "1.4.1",
+  "version": "1.4.2",
   "description": "Component for allowing link out to training in the Header component",
   "keywords": [
     "react",

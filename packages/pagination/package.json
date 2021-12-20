@@ -1,6 +1,6 @@
 {
   "name": "@availity/pagination",
-  "version": "2.13.1",
+  "version": "2.13.2",
   "description": "component for displaying paginated data",
   "keywords": [
     "availity",
@@ -28,7 +28,7 @@
     "react-use": "^17.2.4"
   },
   "devDependencies": {
-    "@availity/hooks": "^3.1.1",
+    "@availity/hooks": "^3.1.2",
     "react": "^17.0.2",
     "react-dom": "^17.0.2",
     "reactstrap": "^8.9.0"

@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [1.4.0](https://github.com/Availity/availity-react/compare/@availity/analytics@1.2.2...@availity/analytics@1.4.0) (2021-12-20)
+
+
+### Features
+
+* **analytics:** switch from useRef to useMemo and add to story ([3c9b737](https://github.com/Availity/availity-react/commit/3c9b73799a0e7f20aa521f5a48faa33c772ffa3e))
+
+
+
+
+
 # [1.3.0](https://github.com/Availity/availity-react/compare/@availity/analytics@1.2.2...@availity/analytics@1.3.0) (2021-12-20)
 
 

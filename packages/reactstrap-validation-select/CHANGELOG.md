@@ -3,6 +3,14 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [9.2.2](https://github.com/Availity/availity-react/compare/@availity/reactstrap-validation-select@9.2.1...@availity/reactstrap-validation-select@9.2.2) (2021-12-20)
+
+**Note:** Version bump only for package @availity/reactstrap-validation-select
+
+
+
+
+
 ## 9.2.1 (2021-12-14)
 
 **Note:** Version bump only for package @availity/reactstrap-validation-select

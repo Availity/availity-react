@@ -1,6 +1,6 @@
 {
   "name": "@availity/mock",
-  "version": "2.1.3",
+  "version": "2.1.4",
   "private": true,
   "description": "Contains xhr mocks for storybook and gatsby docs",
   "keywords": [
