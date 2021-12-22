@@ -91,7 +91,7 @@ export const Default: Story = ({ required }) => {
           label: 'Ext.',
         }}
       />
-      <DateField id="dateField" name="dateField" label="Date Field" required={required} datepicker={false} />
+      <DateField id="dateField" name="dateField" label="Date Field" required={required} />
       <CheckboxGroup name="checkboxGroup" label="Checkbox Group" helpId="checkboxGroup" required={required}>
         <Checkbox groupName="checkboxGroup" label="Check One" value="uno" helpId="option1" />
         <Checkbox groupName="checkboxGroup" label="Check Two" value="dos" />
@@ -119,7 +119,6 @@ export const Default: Story = ({ required }) => {
         id="disabledDateField"
         name="disabledDateField"
         label="Disabled Date Field"
-        datepicker={false}
         disabled
       />
       <SelectField label="Disabled Select Field" name="disabledSelectField" options={options} isDisabled />

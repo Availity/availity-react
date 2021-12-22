@@ -37,6 +37,10 @@ Object of values to initialize the form components with by name.
 
 Action to perform on submit.
 
+#### `focusOnErrors: boolean`
+
+Determines whether invalid submission focuses first invalid field for accessibility. **Default:** true
+
 #### `...rest`
 
 View full set of [Formik Form Props](https://jaredpalmer.com/formik/docs/api/formik#props)
