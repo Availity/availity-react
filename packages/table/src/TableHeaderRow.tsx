@@ -1,11 +1,12 @@
 import React from 'react';
 import { useTableContext } from './TableContext';
-import { ExtendedTableHeader } from './types';
+import { ExtendedTableHeader, TableSort } from './types';
 import { IdType } from './types/ReactTable';
 
 export type Props<T extends IdType> = {
   id?: string;
   headerGroup: ExtendedTableHeader<T>;
+  onSort?: (sortBy: TableSort[]) => void;
   children?: React.ReactNode;
 } & React.HTMLAttributes<HTMLElement>;
 

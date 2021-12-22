@@ -123,6 +123,12 @@ This identifies the color variant to use for the dropdown buttons. For what vari
 
 Event handler that is called when data is sorted. This passes in the current sort configuration for the table.
 
+#### `sortOptions?: TableSortOption[];`
+When this is set to populated, it will populate the dropdown from this list. If `autoGenerateSortOptions` is set to true, it will concatenate this list with the all the sortable columns in the table.
+
+#### `autoGenerateSortOptions?: boolean;`
+When this is set to true, the sort options in the dropdown will be automatically sorted based on the sortable columns in the table. If this is set to false, it will look at the provided sort options and populate the dropdown from that. This defaults to true.
+
 ## Adding Additional Components
 
 Any custom component can also be added as a child to the `<TableControls/>` component. Doing so will provide the component with the TableContext and leverage data on that context. 

@@ -21,19 +21,37 @@ type Props = {
   disabled?: boolean;
   color?: string;
   onSort?: (sortBy: TableSort[]) => void;
+  sortOptions?: TableSortOption[];
+  autoGenerateSortOptions?: boolean;
 } & React.HTMLAttributes<HTMLElement>;
 
-const TableSorter = <T extends IdType>({ id, onSort, disabled, color, ...rest }: Props): JSX.Element | null => {
-  const { sortOptions, instance } = useTableContext();
+const TableSorter = <T extends IdType>({ id, onSort, disabled, color, sortOptions, autoGenerateSortOptions, ...rest }: Props): JSX.Element | null => {
+  const { sortableColumns, instance } = useTableContext();
   const { toggleSortBy, state } = instance as TableInstance<T>;
 
   const [isSortingDropdownOpen, setIsSortingDropdownOpen] = useState<boolean>(false);
   const [tableSort, setTableSort] = useState<TableSortOption | undefined>();
   const [tableSortDesc, setTableSortDesc] = useState<boolean>(true);
   const [isDisabled, setIsDisabled] = useState<boolean>(disabled || false);
+  const [displayedSortOptions, setDisplayedSortOptions] = useState<TableSortOption[]>();
 
   useEffect(() => {
-    if (sortOptions && state) {
+    if (sortableColumns) {
+      let availableSortOptions: TableSortOption[] = [];
+      if (autoGenerateSortOptions) {
+        availableSortOptions = sortableColumns;
+      }
+
+      if (sortOptions) {
+        availableSortOptions = [...availableSortOptions, ...sortOptions];
+      }
+
+      setDisplayedSortOptions(availableSortOptions);
+    }
+  }, [sortOptions, autoGenerateSortOptions, sortableColumns]);
+
+  useEffect(() => {
+    if (state && displayedSortOptions) {
       const { sortBy } = state as CurrentTableState;
       if (!sortBy) {
         return;
@@ -44,13 +62,13 @@ const TableSorter = <T extends IdType>({ id, onSort, disabled, color, ...rest }:
         return;
       }
 
-      const currentSortOption = find(sortOptions, (option) => option.value === currentSort.id);
+      const currentSortOption = find(displayedSortOptions, (option) => option.value === currentSort.id);
       if (currentSortOption) {
         setTableSort(currentSortOption);
         setTableSortDesc(currentSort.desc);
       }
     }
-  }, [sortOptions, state]);
+  }, [state, displayedSortOptions])
 
   useEffect(() => {
     setIsDisabled(disabled || false);
@@ -71,7 +89,13 @@ const TableSorter = <T extends IdType>({ id, onSort, disabled, color, ...rest }:
   const handleSort = async (sortOption: TableSortOption) => {
     await setTableSort(sortOption);
 
-    sort(sortOption, tableSortDesc);
+    let isDesc = tableSortDesc;
+    if (sortOption.isDesc !== undefined) {
+      isDesc = sortOption.isDesc;
+      setTableSortDesc(isDesc);
+    }
+
+    sort(sortOption, isDesc);
   };
 
   const toggleSortDirection = async () => {
@@ -85,7 +109,7 @@ const TableSorter = <T extends IdType>({ id, onSort, disabled, color, ...rest }:
     sort(tableSort, newSortDir);
   };
 
-  if (!sortOptions) {
+  if (!displayedSortOptions) {
     return null;
   }
 
@@ -104,7 +128,7 @@ const TableSorter = <T extends IdType>({ id, onSort, disabled, color, ...rest }:
           {tableSort && tableSort.label}
         </DropdownToggle>
         <DropdownMenu data-testid="sorter_menu" disabled={isDisabled} color={color}>
-          {sortOptions.map((sortOption: TableSortOption) => (
+          {displayedSortOptions?.map((sortOption: TableSortOption) => (
             <DropdownItem
               data-testid={`sorter_menu_${sortOption.value}`}
               key={sortOption.value}
@@ -138,4 +162,7 @@ const TableSorter = <T extends IdType>({ id, onSort, disabled, color, ...rest }:
   );
 };
 
+TableSorter.defaultProps = {
+  autoGenerateSortOptions: true
+}
 export default TableSorter;

@@ -7,7 +7,7 @@ import TableHeaderCell from './TableHeaderCell';
 import TableRow from './TableRow';
 import TableCell from './TableCell';
 import { TableSort } from './types/TableSort';
-import { Cell, CurrentTableState, ExtendedTableHeader, IdType, Row, TableInstance } from './types/ReactTable';
+import { Cell, ExtendedTableHeader, IdType, Row, TableInstance } from './types/ReactTable';
 import { OnTableClickEvent } from './types/OnTableClickEvent';
 import { OnRowSelectedEvent } from './types/OnRowSelectedEvent';
 import { useTableContext } from './TableContext';
@@ -52,25 +52,13 @@ const Table = <T extends IdType>({
     prepareRow,
     selectedFlatRows: selectedRows,
     toggleHideColumn,
-    state,
   } = instance as TableInstance<T>;
-
-  const tableState = state as CurrentTableState;
 
   useEffect(() => {
     if (scrollable && setScrollable) {
       setScrollable(scrollable);
     }
   }, [scrollable, setScrollable]);
-
-  useEffect(() => {
-    if (sortable && onSort && tableState) {
-      const { sortBy } = tableState;
-      if (sortBy) {
-        onSort(sortBy);
-      }
-    }
-  }, [tableState, sortable, onSort]);
 
   useEffect(() => {
     toggleHideColumn('selection', !selectable);
@@ -100,6 +88,7 @@ const Table = <T extends IdType>({
                 const header = column as ExtendedTableHeader<T>;
                 return (
                   <TableHeaderCell
+                    onSort={onSort}
                     id={`${populateId()}table_header_row_${rowIndex}_cell_${cellIndex}_${column.id}`}
                     data-testid={`${populateId()}table_header_row_${rowIndex}_cell_${cellIndex}_${column.id}`}
                     key={column.id}

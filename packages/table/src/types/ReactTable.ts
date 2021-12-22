@@ -58,6 +58,7 @@ export type TableOptions<T extends IdType> = RtTableOptions<T> &
   UseTableOptions<T> & {
     autoResetSelectedRows?: boolean;
     autoResetSortBy?: boolean;
+    manualSortBy?: boolean;
   };
 
 export type TableInstance<T extends IdType> = UseSortByInstanceProps<T> &

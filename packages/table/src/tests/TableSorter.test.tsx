@@ -58,7 +58,7 @@ describe('TableSorter', () => {
         value={{
           instance: tableInstanceMock,
           sortable: true,
-          sortOptions: [{ value: 'first_name', label: ' First name' }],
+          sortableColumns: [{ value: 'first_name', label: ' First name' }],
         }}
       >
         <TableControls>
@@ -92,7 +92,7 @@ describe('TableSorter', () => {
         value={{
           instance: tableInstanceMock,
           sortable: true,
-          sortOptions: [{ value: 'first_name', label: ' First name' }],
+          sortableColumns: [{ value: 'first_name', label: ' First name' }],
         }}
       >
         <TableControls>
@@ -124,7 +124,7 @@ describe('TableSorter', () => {
         value={{
           instance: tableInstanceMock,
           sortable: true,
-          sortOptions: [{ value: 'first_name', label: ' First name' }],
+          sortableColumns: [{ value: 'first_name', label: ' First name' }],
         }}
       >
         <TableControls>
@@ -158,7 +158,7 @@ describe('TableSorter', () => {
         value={{
           instance: tableInstanceMock,
           sortable: true,
-          sortOptions: [{ value: 'first_name', label: ' First name' }],
+          sortableColumns: [{ value: 'first_name', label: ' First name' }],
         }}
       >
         <TableControls>

@@ -9,7 +9,7 @@ export type AvTableContext = {
   additionalContentProps?: Record<string, string | number | boolean | undefined | null>;
   toggleSelectAll?: () => void;
   sortBy?: TableSort;
-  sortOptions?: TableSortOption[];
+  sortableColumns?: TableSortOption[];
   selectable?: boolean;
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   instance?: any;

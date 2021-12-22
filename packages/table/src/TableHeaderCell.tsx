@@ -2,15 +2,33 @@ import React from 'react';
 import classNames from 'classnames';
 import { useTableContext } from './TableContext';
 import { ExtendedTableHeader, IdType } from './types/ReactTable';
+import { TableSort } from './types/TableSort';
 
 type Props<T extends IdType> = {
   id?: string;
   column: ExtendedTableHeader<T>;
+  onSort?: (sortBy: TableSort[]) => void;
   children: React.ReactNode | React.ReactNode[];
 } & React.HTMLAttributes<HTMLElement>;
 
-const TableHeaderCell = <T extends IdType>({ column, children, ...rest }: Props<T>): JSX.Element => {
-  const { scrollable, sortable } = useTableContext();
+const TableHeaderCell = <T extends IdType>({ column, children, onSort, ...rest }: Props<T>): JSX.Element => {
+  const { scrollable, sortable, instance } = useTableContext();
+
+  const { manualSortBy } = instance;
+
+  const getOnClick = () => {
+    if (sortable && manualSortBy) {
+      return { onClick: () => sort() };
+    }
+    return undefined;
+  };
+
+  const sort = () => {
+    column.toggleSortBy(!column.isSortedDesc, false);
+    if (onSort) {
+      onSort([{ id: column.id as string, desc: !column.isSortedDesc }]);
+    }
+  };
 
   const getHeaderColumnProps = (column: ExtendedTableHeader<T>) => {
     const props = {
@@ -22,11 +40,11 @@ const TableHeaderCell = <T extends IdType>({ column, children, ...rest }: Props<
       }),
       title: column.label || typeof column.Header === 'string' ? column.Header?.toString() : undefined,
     };
-    return sortable ? column.getSortByToggleProps(props) : props;
+    return sortable ? { ...column.getSortByToggleProps(props) } : props;
   };
 
   return (
-    <th {...column.getHeaderProps(getHeaderColumnProps(column))} {...rest}>
+    <th {...column.getHeaderProps(getHeaderColumnProps(column))} {...getOnClick()} {...rest}>
       {children}
     </th>
   );

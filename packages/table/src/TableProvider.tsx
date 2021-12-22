@@ -97,7 +97,7 @@ const TableProvider = <T extends IdType>({
         scrollable: isScrollable as boolean | undefined,
         setScrollable,
         sortable,
-        sortOptions: getSortableColumns(),
+        sortableColumns: getSortableColumns(),
         instance: tableInstance,
       }}
     >
