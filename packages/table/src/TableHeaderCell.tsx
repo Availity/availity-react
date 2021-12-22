@@ -17,7 +17,7 @@ const TableHeaderCell = <T extends IdType>({ column, children, onSort, ...rest }
   const { manualSortBy } = instance;
 
   const getOnClick = () => {
-    if (sortable && manualSortBy) {
+    if (sortable && manualSortBy && column.canSort && !column.disableSortBy) {
       return { onClick: () => sort() };
     }
     return undefined;
