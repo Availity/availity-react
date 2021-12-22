@@ -16,18 +16,18 @@ const TableHeaderCell = <T extends IdType>({ column, children, onSort, ...rest }
 
   const { manualSortBy } = instance;
 
-  const getOnClick = () => {
-    if (sortable && manualSortBy && column.canSort && !column.disableSortBy) {
-      return { onClick: () => sort() };
-    }
-    return undefined;
-  };
-
   const sort = () => {
     column.toggleSortBy(!column.isSortedDesc, false);
     if (onSort) {
       onSort([{ id: column.id as string, desc: !column.isSortedDesc }]);
     }
+  };
+
+  const getOnClick = () => {
+    if (sortable && manualSortBy && column.canSort && !column.disableSortBy) {
+      return { onClick: () => sort() };
+    }
+    return null;
   };
 
   const getHeaderColumnProps = (column: ExtendedTableHeader<T>) => {

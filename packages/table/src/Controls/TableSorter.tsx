@@ -89,9 +89,11 @@ const TableSorter = <T extends IdType>({ id, onSort, disabled, color, sortOption
   const handleSort = async (sortOption: TableSortOption) => {
     await setTableSort(sortOption);
 
+    const { isDesc: sortAsc } = sortOption;
+
     let isDesc = tableSortDesc;
-    if (sortOption.isDesc !== undefined) {
-      isDesc = sortOption.isDesc;
+    if (sortAsc !== undefined) {
+      isDesc = sortAsc;
       setTableSortDesc(isDesc);
     }
 
