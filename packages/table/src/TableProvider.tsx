@@ -6,7 +6,7 @@ import { Cell, Column, CurrentTableState, IdType, TableInstance, TableOptions } 
 import { TableSortOption } from './types/TableSortOption';
 import { TableContext } from './TableContext';
 
-export type Props<T extends IdType> = {
+export type TableProviderProps<T extends IdType> = {
   additionalContent?: React.ElementType;
   additionalContentProps?: Record<string, string | number | boolean | undefined | null>;
 
@@ -30,7 +30,7 @@ const TableProvider = <T extends IdType>({
   sortable,
   children,
   ...rest
-}: Props<T>): JSX.Element => {
+}: TableProviderProps<T>): JSX.Element => {
   let selectionColumn: Column<T>;
   const [isScrollable, setScrollable] = useState<boolean | undefined>(scrollable);
 
