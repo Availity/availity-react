@@ -7,8 +7,8 @@ $av-table-header-background-color: #ffffff !default;
 $av-table-header-text-color: #000 !default;
 $av-table-header-cell-hover-color: #f2f2f2 !default;
 $av-table-header-height: 36px !default;
-$av-table-scrollable-height: 69vh !default;
-$av-table-scrollable-max-height: 100vh !default;
+$av-table-scrollable-height: 100vh !default;
+$av-table-scrollable-max-height: 69vh !default;
 
 $av-table-fixed-text-column-width: 160px !default;
 $av-table-fixed-icon-column-width: 27px !default;
@@ -29,8 +29,8 @@ $av-table-additional-content-background-color: #fff !default;
 }
 
 .av-scrollable-table-wrapper {
-	max-height: $av-table-scrollable-height;
-	height: $av-table-scrollable-max-height;
+	max-height: $av-table-scrollable-max-height;
+	height: $av-table-scrollable-height;
 	overflow: scroll;
 	position: relative;
 }
