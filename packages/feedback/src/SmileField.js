@@ -35,6 +35,7 @@ const SmileField = ({ name, options, onChange, autoFocusFeedbackButton, onClose,
           onChange(option);
         }
       }}
+      aria-label={option.label}
     >
       {option.description}
     </FeedbackButton>

@@ -95,6 +95,7 @@ describe('FeedbackForm', () => {
     // Get the Input Node for the Feedback
     const feedbackNode = getByLabelText('What do you like?');
 
+    debug(feedbackNode);
     // Simulate a user typing the value below into the field
     fireEvent.change(feedbackNode, {
       target: { value: 'some good text here' },

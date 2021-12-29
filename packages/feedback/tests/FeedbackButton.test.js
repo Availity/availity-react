@@ -35,4 +35,14 @@ describe('Feedback', () => {
     expect(container.firstChild).toHaveAttribute('aria-pressed', 'false');
     expect(getByText('Home')).toHaveClass('sr-only');
   });
+
+  test('should have ARIA label on buttons', () => {
+    const { container, getByText } = render(<FeedbackButton icon="home">Home</FeedbackButton>);
+    console.log("******************************************************************************")
+    console.log(container.firstChild)
+    console.log("******************************************************************************")
+    expect(container.firstChild).toHaveAttribute('aria-label', 'What do you like?');
+    expect(container.children[1]).toHaveAttribute('aria-label', 'What would you improve?');
+    expect(container.children[2]).toHaveAttribute('aria-label', "What don't you like?");
+  });
 });
