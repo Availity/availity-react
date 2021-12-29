@@ -59,7 +59,7 @@ describe('FeedbackForm', () => {
     fireEvent.click(getByText('Smiley face'));
 
     // Get the Input Node for the Feedback
-    const feedbackNode = getByLabelText('What do you like?');
+    const feedbackNode = getByLabelText('What do you like?', {selector:'textarea'});
 
     // Simulate a user typing the value below into the field
     fireEvent.change(feedbackNode, {
@@ -93,9 +93,8 @@ describe('FeedbackForm', () => {
     fireEvent.click(getByText('Smiley face'));
 
     // Get the Input Node for the Feedback
-    const feedbackNode = getByLabelText('What do you like?');
+    const feedbackNode = getByLabelText('What do you like?', {selector:'textarea'});
 
-    debug(feedbackNode);
     // Simulate a user typing the value below into the field
     fireEvent.change(feedbackNode, {
       target: { value: 'some good text here' },
@@ -140,7 +139,7 @@ describe('FeedbackForm', () => {
     fireEvent.click(getByText('Smiley face'));
 
     // Get the Input Node for the Feedback
-    const feedbackNode = getByLabelText('What do you like?');
+    const feedbackNode = getByLabelText('What do you like?', {selector:'textarea'});
 
     // Simulate a user typing the value below into the field
     fireEvent.change(feedbackNode, {
