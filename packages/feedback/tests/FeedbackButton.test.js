@@ -38,13 +38,13 @@ describe('Feedback', () => {
 
 
   test('should have default ARIA label', () => {
-    const { container, getByText } = render(<FeedbackButton icon="home">Home</FeedbackButton>);
+    const { container } = render(<FeedbackButton icon="home">Home</FeedbackButton>);
 
     expect(container.firstChild).toHaveAttribute('aria-label', 'home button');
   });
 
   test('should have passed ARIA label', () => {
-    const { container, getByText } = render(<FeedbackButton icon="home" aria-label="What do you like?">Home</FeedbackButton>);
+    const { container } = render(<FeedbackButton icon="home" aria-label="What do you like?">Home</FeedbackButton>);
 
     expect(container.firstChild).toHaveAttribute('aria-label', 'What do you like?');
   });
