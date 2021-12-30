@@ -29,6 +29,7 @@ FeedbackButton.propTypes = {
   active: PropTypes.string,
   children: PropTypes.node,
   iconSize: PropTypes.string,
+  ariaLabel: PropTypes.string
 };
 
 FeedbackButton.defaultProps = {
