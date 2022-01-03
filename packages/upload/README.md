@@ -3,6 +3,8 @@
 > Availity component for uploading files
 
 [![Version](https://img.shields.io/npm/v/@availity/upload.svg?style=for-the-badge)](https://www.npmjs.com/package/@availity/upload)
+[![NPM Downloads](https://img.shields.io/npm/dt/@availity/upload.svg?style=for-the-badge)](https://www.npmjs.com/package/@availity/upload)
+[![Dependecy Status](https://img.shields.io/librariesio/release/npm/@availity/upload?style=for-the-badge)](https://github.com/Availity/availity-react/blob/master/packages/upload/package.json)
 
 ## Installation
 

@@ -1,34 +1,38 @@
 {
   "name": "@availity/page-header",
-  "version": "11.1.10",
+  "version": "11.1.11",
   "description": "The standard page header for Availity Portal Applications",
   "keywords": [
     "react",
-    "availity"
+    "availity",
+    "page",
+    "header"
   ],
+  "homepage": "https://availity.github.io/availity-react/components/page-header",
   "bugs": {
     "url": "https://github.com/Availity/availity-react/issues"
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/Availity/availity-react.git"
+    "url": "https://github.com/Availity/availity-react.git",
+    "directory": "packages/page-header"
   },
   "license": "MIT",
   "author": "Evan Sharp <evan.sharp@availity.com>",
   "main": "index.js",
   "types": "index.d.ts",
   "dependencies": {
-    "@availity/app-icon": "^1.4.1",
-    "@availity/breadcrumbs": "^3.2.1",
-    "@availity/feedback": "^6.2.10",
-    "@availity/payer-logo": "^5.1.1",
+    "@availity/app-icon": "^1.4.2",
+    "@availity/breadcrumbs": "^3.2.2",
+    "@availity/feedback": "^6.2.11",
+    "@availity/payer-logo": "^5.1.2",
     "classnames": "^2.3.1",
     "prop-types": "^15.7.2"
   },
   "devDependencies": {
     "@availity/api-axios": "^6.0.0",
-    "@availity/spaces": "^5.1.1",
-    "@availity/training-link": "^1.4.1",
+    "@availity/spaces": "^5.1.2",
+    "@availity/training-link": "^1.4.2",
     "axios": "^0.21.1",
     "formik": "^2.2.8",
     "react": "^17.0.2",

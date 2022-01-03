@@ -1,6 +1,6 @@
 {
   "name": "@availity/step-wizard",
-  "version": "1.4.1",
+  "version": "1.4.2",
   "description": "Availity step wizard",
   "keywords": [
     "react",
@@ -8,12 +8,14 @@
     "step",
     "wizard"
   ],
+  "homepage": "https://availity.github.io/availity-react/components/step-wizard/index",
   "bugs": {
     "url": "https://github.com/Availity/availity-react/issues"
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/Availity/availity-react.git"
+    "url": "https://github.com/Availity/availity-react.git",
+    "directory": "packages/step-wizard"
   },
   "license": "MIT",
   "author": "Tyson Warner <tyson.warner@availity.com>",

@@ -1,17 +1,20 @@
 {
   "name": "@availity/favorites",
-  "version": "2.3.2",
+  "version": "2.3.3",
   "description": "Favorite Heart for favoriting items such as links/resources etc.",
   "keywords": [
     "react",
-    "availity"
+    "availity",
+    "favorites"
   ],
+  "homepage": "https://availity.github.io/availity-react/components/favorites/index",
   "bugs": {
     "url": "https://github.com/Availity/availity-react/issues"
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/Availity/availity-react.git"
+    "url": "https://github.com/Availity/availity-react.git",
+    "directory": "packages/favorites"
   },
   "license": "MIT",
   "author": "Kyle Gray <kyle.gray@availity.com>",
@@ -19,7 +22,7 @@
   "types": "index.d.ts",
   "dependencies": {
     "@availity/analytics-core": "^3.1.5",
-    "@availity/hooks": "^3.1.1",
+    "@availity/hooks": "^3.1.2",
     "@availity/message-core": "^5.0.1",
     "lodash": "^4.17.21",
     "prop-types": "^15.7.2"

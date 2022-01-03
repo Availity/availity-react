@@ -1,28 +1,31 @@
 {
   "name": "@availity/feedback",
-  "version": "6.2.10",
+  "version": "6.2.11",
   "description": "Availity feedback with smiley faces react component.",
   "keywords": [
     "react",
-    "availity"
+    "availity",
+    "feedback"
   ],
+  "homepage": "https://availity.github.io/availity-react/components/feedback/index",
   "bugs": {
     "url": "https://github.com/Availity/availity-react/issues"
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/Availity/availity-react.git"
+    "url": "https://github.com/Availity/availity-react.git",
+    "directory": "packages/feedback"
   },
   "license": "MIT",
   "author": "Evan Sharp <evan.sharp@availity.com>",
   "main": "index.js",
   "types": "index.d.ts",
   "dependencies": {
-    "@availity/form": "^1.2.2",
-    "@availity/hooks": "^3.1.1",
-    "@availity/icon": "^0.10.1",
+    "@availity/form": "^1.2.3",
+    "@availity/hooks": "^3.1.2",
+    "@availity/icon": "^0.10.2",
     "@availity/native-form": "^4.0.5",
-    "@availity/select": "^2.3.1",
+    "@availity/select": "^2.3.2",
     "prop-types": "^15.7.2"
   },
   "devDependencies": {

@@ -1,6 +1,6 @@
 {
   "name": "@availity/reactstrap-validation-date",
-  "version": "4.2.5",
+  "version": "4.3.1",
   "description": "Wrapper for react-date-range to work with availity-reactstrap-validation",
   "keywords": [
     "availity",
@@ -14,14 +14,15 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/Availity/availity-react.git"
+    "url": "https://github.com/Availity/availity-react.git",
+    "directory": "packages/reactstrap-validation-date"
   },
   "license": "MIT",
   "author": "Evan Sharp <evan.sharp@availity.com>",
   "main": "index.js",
   "types": "index.d.ts",
   "dependencies": {
-    "@availity/react-dates": "^21.11.1",
+    "@availity/react-dates": "21.11.4",
     "@types/react-dates": "^21.8.2",
     "classnames": "^2.3.1",
     "lodash": "^4.17.21",

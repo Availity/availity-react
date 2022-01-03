@@ -1,22 +1,25 @@
 {
   "name": "@availity/analytics",
-  "version": "1.2.2",
+  "version": "1.4.0",
   "description": "Track click and page view events for the user.",
   "keywords": [
     "react",
-    "availity"
+    "availity",
+    "analytics"
   ],
+  "homepage": "https://availity.github.io/availity-react/components/analytics/index",
   "bugs": {
     "url": "https://github.com/Availity/availity-react/issues"
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/Availity/availity-react.git"
+    "url": "https://github.com/Availity/availity-react.git",
+    "directory": "packages/analytics"
   },
   "license": "MIT",
   "author": "Kyle Gray <kyle.gray@gmail.com>",
-  "main": "index.js",
-  "types": "index.d.ts",
+  "main": "src/index.js",
+  "types": "src/index.d.ts",
   "dependencies": {
     "@availity/analytics-core": "^3.1.5",
     "prop-types": "^15.7.2"

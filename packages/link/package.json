@@ -1,17 +1,20 @@
 {
   "name": "@availity/link",
-  "version": "2.4.1",
+  "version": "2.4.2",
   "description": "React component that renders an a tag with the `href` formatted to leverage loadApp",
   "keywords": [
     "react",
-    "availity"
+    "availity",
+    "link"
   ],
+  "homepage": "https://availity.github.io/availity-react/components/link",
   "bugs": {
     "url": "https://github.com/Availity/availity-react/issues"
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/Availity/availity-react.git"
+    "url": "https://github.com/Availity/availity-react.git",
+    "directory": "packages/link"
   },
   "license": "MIT",
   "author": "Tyson Warner <tyson.warner@availity.com>",

@@ -1,17 +1,20 @@
 {
   "name": "@availity/app-icon",
-  "version": "1.4.1",
+  "version": "1.4.2",
   "description": "Availity UI Kit application icon react component.",
   "keywords": [
     "react",
-    "availity"
+    "availity",
+    "app-icon"
   ],
+  "homepage": "https://availity.github.io/availity-react/components/app-icon",
   "bugs": {
     "url": "https://github.com/Availity/availity-react/issues"
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/Availity/availity-react.git"
+    "url": "https://github.com/Availity/availity-react.git",
+    "directory": "packages/app-icon"
   },
   "license": "MIT",
   "author": "Evan Sharp <evan.sharp@availity.com>",

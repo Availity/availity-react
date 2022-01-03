@@ -3,6 +3,29 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [3.3.1](https://github.com/Availity/availity-react/compare/@availity/date@3.3.0...@availity/date@3.3.1) (2021-12-20)
+
+**Note:** Version bump only for package @availity/date
+
+
+
+
+
+# [3.3.0](https://github.com/Availity/availity-react/compare/@availity/date@3.2.2...@availity/date@3.3.0) (2021-12-20)
+
+
+### Features
+
+* **date,reactstrap-validation-date:** added aria-describedby to date inputs so that screen readers will read errors ([38eb5c4](https://github.com/Availity/availity-react/commit/38eb5c4bd0d115b067bfa2d7b8da19e4c432c662))
+* **date,reactstrap-validation-date:** fixing lint issues ([9decfce](https://github.com/Availity/availity-react/commit/9decfcefca7dcda9c2ec575cf26ad388747cac09))
+* **date,reactstrap-validation-date:** removed extra lines ([0489761](https://github.com/Availity/availity-react/commit/04897612a09f9376bb5d7b1f03970a05ceeb22db))
+* **date,reactstrap-validation-date:** removed extra lines ([11e76de](https://github.com/Availity/availity-react/commit/11e76deb80960822906c4d6fd65e45da15bf9009))
+* **date,reactstrap-validation-date:** restructuring aria-describedby attribute to be set in DateRangeField ([f972a45](https://github.com/Availity/availity-react/commit/f972a456c4a9f4eae6197620cef7b62eba693b95))
+
+
+
+
+
 ## [3.2.2](https://github.com/Availity/availity-react/compare/@availity/date@3.2.1...@availity/date@3.2.2) (2021-12-15)
 
 

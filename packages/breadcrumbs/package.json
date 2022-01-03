@@ -1,17 +1,20 @@
 {
   "name": "@availity/breadcrumbs",
-  "version": "3.2.1",
+  "version": "3.2.2",
   "description": "Availity breadcrumbs",
   "keywords": [
     "react",
-    "availity"
+    "availity",
+    "breadcrumbs"
   ],
+  "homepage": "https://availity.github.io/availity-react/form/date/index",
   "bugs": {
     "url": "https://github.com/Availity/availity-react/issues"
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/Availity/availity-react.git"
+    "url": "https://github.com/Availity/availity-react.git",
+    "directory": "packages/breadcrumbs"
   },
   "license": "MIT",
   "author": "Evan Sharp <evan.sharp@availity.com>",

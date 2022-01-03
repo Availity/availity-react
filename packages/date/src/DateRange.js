@@ -58,6 +58,7 @@ const DateRange = ({
   innerRef,
   className,
   format,
+  ariaDescribedBy,
   datepickerProps,
   'data-testid': dataTestId,
   autoSync,
@@ -296,6 +297,7 @@ const DateRange = ({
         <DateRangePicker
           renderMonthElement={renderMonthElement}
           minimumNights={0}
+          ariaDescribedBy={ariaDescribedBy}
           {...datepickerProps}
           startDate={getDateValue(startValue)}
           startDateId={startId}
@@ -326,6 +328,7 @@ DateRange.propTypes = {
   validate: PropTypes.func,
   min: limitPropType,
   max: limitPropType,
+  ariaDescribedBy: PropTypes.string,
   className: PropTypes.string,
   disabled: PropTypes.bool,
   onChange: PropTypes.func,
