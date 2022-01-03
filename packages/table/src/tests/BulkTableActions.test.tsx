@@ -39,6 +39,12 @@ const bulkActions = [
     displayText: 'Action 2',
     onClick: jest.fn(),
   },
+  {
+    id: 'action2',
+    displayText: 'Action 2',
+    onClick: jest.fn(),
+    isVisible: () => false,
+  },
 ];
 
 describe('BulkTableActions', () => {
@@ -132,6 +138,35 @@ describe('BulkTableActions', () => {
     });
   });
 
+  test('should show Deselect all rows when all rows are deselected', async () => {
+    const toggleAllRowsSelected = jest.fn();
+
+    const tableInstanceMock = {
+      selectedFlatRows: [basicData[0]],
+      data: basicData,
+      columns: basicColumns,
+      toggleAllRowsSelected,
+      isAllRowsSelected: true,
+    };
+
+    const { getByTestId } = render(
+      <TableContext.Provider
+        value={{
+          instance: tableInstanceMock,
+        }}
+      >
+        <TableControls>
+          <BulkTableActions bulkActions={bulkActions} />
+        </TableControls>
+      </TableContext.Provider>
+    );
+
+    const btnSelectDeselect = await waitFor(() => getByTestId('select_deselect_all_records'));
+    expect(btnSelectDeselect).not.toBeNull();
+
+    expect(btnSelectDeselect.textContent).toBe('1 Deselect All Records');
+  });
+
   test('should call bulk action when clicking event', async () => {
     const tableInstanceMock = {
       selectedFlatRows: [basicData[0]],
@@ -155,7 +190,7 @@ describe('BulkTableActions', () => {
     expect(btnToggle).not.toBeNull();
     fireEvent.click(btnToggle);
 
-    const actionToDo = bulkActions[0];
+    const actionToDo = bulkActions[1];
 
     const btnAction = await waitFor(() => getByTestId(`bulk_action_${actionToDo.id}`));
     expect(btnAction).not.toBeNull();
@@ -164,6 +199,37 @@ describe('BulkTableActions', () => {
 
     await waitFor(() => {
       expect(actionToDo.onClick).toHaveBeenCalledTimes(1);
+    });
+  });
+
+  test('should fire onRecordsSelected when provided', async () => {
+    const onRowsSelected = jest.fn();
+
+    const tableInstanceMock = {
+      selectedFlatRows: [basicData[0]],
+      data: basicData,
+      columns: basicColumns,
+    };
+
+    const { getByTestId } = render(
+      <TableContext.Provider
+        value={{
+          instance: tableInstanceMock,
+        }}
+      >
+        <TableControls>
+          <BulkTableActions bulkActions={bulkActions} onRecordsSelected={onRowsSelected} />
+        </TableControls>
+      </TableContext.Provider>
+    );
+
+    const btnSelectDeselect = await waitFor(() => getByTestId('select_deselect_all_records'));
+    expect(btnSelectDeselect).not.toBeNull();
+
+    fireEvent.click(btnSelectDeselect);
+
+    await waitFor(() => {
+      expect(onRowsSelected).toHaveBeenCalled();
     });
   });
 });

@@ -25,7 +25,15 @@ type Props = {
   autoGenerateSortOptions?: boolean;
 } & React.HTMLAttributes<HTMLElement>;
 
-const TableSorter = <T extends IdType>({ id, onSort, disabled, color, sortOptions, autoGenerateSortOptions, ...rest }: Props): JSX.Element | null => {
+const TableSorter = <T extends IdType>({
+  id,
+  onSort,
+  disabled,
+  color,
+  sortOptions,
+  autoGenerateSortOptions,
+  ...rest
+}: Props): JSX.Element | null => {
   const { sortableColumns, instance } = useTableContext();
   const { toggleSortBy, state } = instance as TableInstance<T>;
 
@@ -68,7 +76,7 @@ const TableSorter = <T extends IdType>({ id, onSort, disabled, color, sortOption
         setTableSortDesc(currentSort.desc);
       }
     }
-  }, [state, displayedSortOptions])
+  }, [state, displayedSortOptions]);
 
   useEffect(() => {
     setIsDisabled(disabled || false);
@@ -165,6 +173,6 @@ const TableSorter = <T extends IdType>({ id, onSort, disabled, color, sortOption
 };
 
 TableSorter.defaultProps = {
-  autoGenerateSortOptions: true
-}
+  autoGenerateSortOptions: true,
+};
 export default TableSorter;

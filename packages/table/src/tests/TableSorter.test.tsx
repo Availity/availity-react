@@ -143,6 +143,7 @@ describe('TableSorter', () => {
 
   test('should sort on dropdown select', async () => {
     const onSort = jest.fn();
+    const toggleSortBy = jest.fn();
 
     const tableInstanceMock = {
       selectedFlatRows: [basicData[0]],
@@ -151,6 +152,7 @@ describe('TableSorter', () => {
       state: {
         sortBy: [{ id: 'first_name', desc: false }],
       },
+      toggleSortBy,
     };
 
     const { getByTestId } = render(
@@ -178,6 +180,46 @@ describe('TableSorter', () => {
 
     await waitFor(() => {
       expect(onSort).toHaveBeenCalledTimes(1);
+      expect(toggleSortBy).toHaveBeenCalledTimes(1);
     });
+  });
+
+  test('should populate sortOptions when provided', async () => {
+    const onSort = jest.fn();
+    const toggleSortBy = jest.fn();
+
+    const tableInstanceMock = {
+      selectedFlatRows: [basicData[0]],
+      data: basicData,
+      columns: basicColumns,
+      state: {
+        sortBy: [{ id: 'first_name', desc: false }],
+      },
+      toggleSortBy,
+    };
+
+    const { getByTestId } = render(
+      <TableContext.Provider
+        value={{
+          instance: tableInstanceMock,
+          sortable: true,
+          sortableColumns: [{ value: 'first_name', label: ' First name' }],
+        }}
+      >
+        <TableControls>
+          <TableSorter onSort={onSort} sortOptions={[{ value: 'last_name', label: ' Last name' }]} />
+        </TableControls>
+      </TableContext.Provider>
+    );
+
+    const btnDropdownToggle = await waitFor(() => getByTestId('sorter_toggle'));
+    expect(btnDropdownToggle).not.toBeNull();
+    fireEvent.click(btnDropdownToggle);
+
+    const btnAction1 = await waitFor(() => getByTestId('sorter_menu_first_name'));
+    expect(btnAction1).not.toBeNull();
+
+    const btnAction2 = await waitFor(() => getByTestId('sorter_menu_last_name'));
+    expect(btnAction2).not.toBeNull();
   });
 });

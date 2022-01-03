@@ -15,10 +15,12 @@ const basicColumns = [
   {
     Header: 'First Name',
     accessor: 'first_name',
+    defaultCanSort: true,
   },
   {
     Header: 'Last Name',
     accessor: 'last_name',
+    defaultCanSort: true,
   },
   {
     Header: 'Email',
@@ -39,13 +41,23 @@ const formattedColumns = [
   {
     Header: 'Badge',
     accessor: 'badge',
-    Cell: ({ row: { original } }: Cell<Record<string, string | boolean | number | undefined>>) =>
+    Cell: ({ row: { original } }: Cell<Record<string, string | undefined>>) =>
       original ? BadgeCell('badge-success', original.badge) : null,
   },
   {
     Header: 'Icon',
     accessor: 'icon',
     Cell: IconCell({ name: 'doc-alt', title: 'View Notes' }),
+  },
+  {
+    Header: 'icon2',
+    accessor: 'icon2',
+    Cell: IconCell({
+      name: 'doc-alt',
+      getTitle: () => {
+        return 'test';
+      },
+    }),
   },
   {
     Header: 'Date',
@@ -80,6 +92,14 @@ const formattedColumns = [
           },
         },
       ],
+      primaryAction: {
+        iconName: 'file-pdf',
+        title: 'View File',
+        onClick: (record?: Record<string, unknown>) => {
+          // eslint-disable-next-line no-console
+          console.log(`action on record ${record?.id}`);
+        },
+      },
     }),
   },
 ] as Column<Record<string, string | boolean | number | undefined>>[];
@@ -177,6 +197,45 @@ describe('Table', () => {
 
     await waitFor(() => {
       expect(onRowClick).toHaveBeenCalledTimes(1);
+    });
+  });
+
+  test('should call onRowSelected when provided', async () => {
+    const onRowSelected = jest.fn();
+
+    const { container, getByTestId } = render(
+      <TableProvider selectable data={basicData} columns={basicColumns}>
+        {' '}
+        <Table onRowSelected={onRowSelected} />
+      </TableProvider>
+    );
+
+    expect(container).toBeDefined();
+
+    const tableRow = getByTestId('table_row_0_cell_0');
+    fireEvent.click(tableRow);
+
+    await waitFor(() => {
+      expect(onRowSelected).toHaveBeenCalledTimes(1);
+    });
+  });
+
+  test('should sort table when clicking header', async () => {
+    const onSort = jest.fn();
+
+    const { container, getByTestId } = render(
+      <TableProvider sortable data={basicData} columns={basicColumns} manualSortBy={true}>
+        <Table onSort={onSort} />
+      </TableProvider>
+    );
+
+    expect(container).toBeDefined();
+
+    const tableRow = getByTestId('table_header_row_0_cell_0_first_name');
+    fireEvent.click(tableRow);
+
+    await waitFor(() => {
+      expect(onSort).toHaveBeenCalledTimes(1);
     });
   });
 });

@@ -79,7 +79,7 @@ const BulkTableActions = <T extends IdType>({
           />
           <DropdownMenu color={color}>
             {bulkActions?.map((action) => {
-              const isVisible = action.isVisible ? action.isVisible() : true;
+              const isVisible = action.isVisible ? action.isVisible(selectedRows.map((row) => row.original)) : true;
               const setProps = () => {
                 if (!action.onClick) {
                   return null;

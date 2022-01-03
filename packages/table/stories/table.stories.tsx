@@ -62,7 +62,15 @@ const columns = [
         },
       ],
     }),
-  },
+    primaryAction: {
+      iconName: 'file-pdf',
+      title: 'View File',
+      onClick: (record?: Record<string, unknown>) => {
+        // eslint-disable-next-line no-console
+        console.log(`action on record ${record?.id}`);
+      }
+    }
+  }
 ];
 
 export default {

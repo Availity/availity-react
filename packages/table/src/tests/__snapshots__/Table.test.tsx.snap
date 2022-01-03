@@ -401,6 +401,10 @@ exports[`Table should render sortable table 1`] = `
           title="First Name"
         >
           First Name
+          <i
+            aria-hidden="true"
+            class="icon icon-sort"
+          />
         </th>
         <th
           colspan="1"
@@ -411,6 +415,10 @@ exports[`Table should render sortable table 1`] = `
           title="Last Name"
         >
           Last Name
+          <i
+            aria-hidden="true"
+            class="icon icon-sort"
+          />
         </th>
         <th
           colspan="1"
@@ -707,8 +715,17 @@ exports[`Table should render with formatted cells 1`] = `
         </th>
         <th
           colspan="1"
-          data-testid="table_header_row_0_cell_4_date"
-          id="table_header_row_0_cell_4_date"
+          data-testid="table_header_row_0_cell_4_icon2"
+          id="table_header_row_0_cell_4_icon2"
+          role="columnheader"
+          title="icon2"
+        >
+          icon2
+        </th>
+        <th
+          colspan="1"
+          data-testid="table_header_row_0_cell_5_date"
+          id="table_header_row_0_cell_5_date"
           role="columnheader"
           title="Date"
         >
@@ -716,8 +733,8 @@ exports[`Table should render with formatted cells 1`] = `
         </th>
         <th
           colspan="1"
-          data-testid="table_header_row_0_cell_5_actions"
-          id="table_header_row_0_cell_5_actions"
+          data-testid="table_header_row_0_cell_6_actions"
+          id="table_header_row_0_cell_6_actions"
           role="columnheader"
           title="Actions"
         >
@@ -780,6 +797,17 @@ exports[`Table should render with formatted cells 1`] = `
           id="table_row_0_cell_4"
           role="cell"
         >
+          <i
+            aria-hidden="true"
+            class="icon icon-doc-alt"
+            title="test"
+          />
+        </td>
+        <td
+          data-testid="table_row_0_cell_5"
+          id="table_row_0_cell_5"
+          role="cell"
+        >
           <span
             title="02/16/1956"
           >
@@ -787,8 +815,8 @@ exports[`Table should render with formatted cells 1`] = `
           </span>
         </td>
         <td
-          data-testid="table_row_0_cell_5"
-          id="table_row_0_cell_5"
+          data-testid="table_row_0_cell_6"
+          id="table_row_0_cell_6"
           role="cell"
         >
           <div
@@ -841,6 +869,12 @@ exports[`Table should render with formatted cells 1`] = `
               </button>
             </div>
           </div>
+          <i
+            aria-hidden="true"
+            class="icon icon-file-pdf"
+            style="cursor: pointer;"
+            title="View File"
+          />
         </td>
       </tr>
       <tr
@@ -888,6 +922,11 @@ exports[`Table should render with formatted cells 1`] = `
           data-testid="table_row_1_cell_4"
           id="table_row_1_cell_4"
           role="cell"
+        />
+        <td
+          data-testid="table_row_1_cell_5"
+          id="table_row_1_cell_5"
+          role="cell"
         >
           <span
             title="02/16/1990"
@@ -896,8 +935,8 @@ exports[`Table should render with formatted cells 1`] = `
           </span>
         </td>
         <td
-          data-testid="table_row_1_cell_5"
-          id="table_row_1_cell_5"
+          data-testid="table_row_1_cell_6"
+          id="table_row_1_cell_6"
           role="cell"
         >
           <div
@@ -941,6 +980,12 @@ exports[`Table should render with formatted cells 1`] = `
               </button>
             </div>
           </div>
+          <i
+            aria-hidden="true"
+            class="icon icon-file-pdf"
+            style="cursor: pointer;"
+            title="View File"
+          />
         </td>
       </tr>
     </tbody>

@@ -5,7 +5,8 @@
     "currency": "43.08",
     "badge": "badge field",
     "icon": true,
-    "date": "1956-02-16T05:00:00.000+0000"
+    "date": "1956-02-16T05:00:00.000+0000",
+    "icon2": "someValue"
   },
   {
     "id": 2,
