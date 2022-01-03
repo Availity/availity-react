@@ -54,9 +54,7 @@ const formattedColumns = [
     accessor: 'icon2',
     Cell: IconCell({
       name: 'doc-alt',
-      getTitle: () => {
-        return 'test';
-      },
+      getTitle: () => 'test'
     }),
   },
   {
@@ -224,7 +222,7 @@ describe('Table', () => {
     const onSort = jest.fn();
 
     const { container, getByTestId } = render(
-      <TableProvider sortable data={basicData} columns={basicColumns} manualSortBy={true}>
+      <TableProvider sortable data={basicData} columns={basicColumns} manualSortBy>
         <Table onSort={onSort} />
       </TableProvider>
     );
