@@ -1,0 +1,32 @@
+{
+  "name": "@availity/block-ui",
+  "version": "0.1.0",
+  "description": "Block UI for react",
+  "keywords": [
+    "availity",
+    "loader",
+    "blockui",
+    "react"
+  ],
+  "homepage": "https://availity.github.io/availity-react/components/block-ui",
+  "bugs": {
+    "url": "https://github.com/Availity/availity-react/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Availity/availity-react.git",
+    "directory": "packages/block-ui"
+  },
+  "license": "MIT",
+  "author": "Jordan Young <jordan.young@availity.com>",
+  "main": "dist/index.js",
+  "module": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "devDependencies": {
+    "react": "^17.0.2",
+    "react-dom": "^17.0.2"
+  },
+  "peerDependencies": {
+    "react": ">=16.8.0"
+  }
+}

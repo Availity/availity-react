@@ -1,0 +1,62 @@
+---
+title: Block UI
+summary: Component for blocking sections of an interface
+---
+
+[![Version](https://img.shields.io/npm/v/@availity/block-ui.svg?style=for-the-badge)](https://www.npmjs.com/package/@availity/block-ui)
+
+### Installation
+
+npm
+
+```bash
+npm install @availity/block-ui
+```
+
+Yarn
+
+```bash
+yarn add @availity/block-ui
+```
+
+### Usage
+
+#### Example
+
+```jsx
+import React, { useState } from 'react';
+import BlockUi from '@availity/block-ui';
+
+const Example = () => {
+  const [loading, setLoading] = useState(false);
+
+  const handleSubmit = () => {
+    setLoading(true);
+    // do stuff...
+    setLoading(false);
+  };
+
+  return (
+    <BlockUi blocking={loading}>
+      <div>Child components</div>
+    </BlockUi>
+  );
+};
+```
+
+#### Storybook
+
+Check out our [Storybook](https://availity.github.io/availity-react/storybook/?path=/story/components-block-ui--default) for more examples
+
+#### Props
+
+|  Prop Name     |  Types              |  Required    |  Default |  Description                                                                           |
+| -------------- | ------------------- | ------------ | -------- | -------------------------------------------------------------------------------------- |
+| blocking       | boolean             | true         |          | Set whether the component hould block its children                                     |
+| children       | ReactNode           | false        |          | children to display                                                                    |
+| className      | string              | false        |          | CSS class name to pass to component                                                    |
+| keepInView     | boolean             | false        |          | Set whether the blocking component should follow the scroll or stay at a fixed postion |
+| loader         | JSX.Element         | false        |          | Loader component to use                                                                |
+| message        | string or ReactNode | false        |          | The message to display. Can also be a component.                                       |
+| renderChildren | boolean             | false        |          | Control if the children are shown when the component is being blocked                  |
+| tag            | ElementType         | false        | <div />  | tag to render as container element                                                     |
