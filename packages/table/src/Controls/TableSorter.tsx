@@ -11,6 +11,7 @@ import {
 } from 'reactstrap';
 import Icon from '@availity/icon';
 import find from 'lodash/find';
+import sortBy from 'lodash/sortBy';
 import { TableSort } from '../types/TableSort';
 import { useTableContext } from '../TableContext';
 import { CurrentTableState, IdType, TableInstance } from '../types/ReactTable';
@@ -54,7 +55,7 @@ const TableSorter = <T extends IdType>({
         availableSortOptions = [...availableSortOptions, ...sortOptions];
       }
 
-      setDisplayedSortOptions(availableSortOptions);
+      setDisplayedSortOptions(sortBy(availableSortOptions, option => option.label.toUpperCase()));
     }
   }, [sortOptions, autoGenerateSortOptions, sortableColumns]);
 
