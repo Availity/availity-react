@@ -1,9 +1,7 @@
 import React from 'react';
-import { render, cleanup } from '@testing-library/react';
+import { render } from '@testing-library/react';
 
-import Icon from '../Icon';
-
-afterEach(cleanup);
+import Icon from './Icon';
 
 describe('Icon', () => {
   test('should render default size and aria-hidden', () => {
