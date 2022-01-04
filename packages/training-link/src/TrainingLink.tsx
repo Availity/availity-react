@@ -1,7 +1,8 @@
 import React from 'react';
+import type { CSSProperties } from 'react';
 
-const shouldProbablyBeInUIKit = { paddingTop: '12px' };
-const linkStyles = { fontWeight: 'bold' } as const;
+const shouldProbablyBeInUIKit: CSSProperties = { paddingTop: '12px' };
+const linkStyles: CSSProperties = { fontWeight: 'bold' };
 
 export type Props = {
   name: string;

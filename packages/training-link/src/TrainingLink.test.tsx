@@ -1,9 +1,7 @@
 import React from 'react';
-import { render, cleanup } from '@testing-library/react';
+import { render } from '@testing-library/react';
 
-import TrainingLink from '../TrainingLink';
-
-afterEach(cleanup);
+import TrainingLink from './TrainingLink';
 
 describe('TrainingLink', () => {
   test('should render a link with correct href', () => {
