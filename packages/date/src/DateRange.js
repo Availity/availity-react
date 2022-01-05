@@ -66,6 +66,7 @@ const DateRange = ({
   customArrowIcon,
   openDirection,
   allowInvalidDates,
+  enableOutsideDays,
   ...attributes
 }) => {
   const { setFieldValue, setFieldTouched, validateField } = useFormikContext();
@@ -301,7 +302,7 @@ const DateRange = ({
           {...datepickerProps}
           startDate={getDateValue(startValue)}
           startDateId={startId}
-          enableOutsideDays
+          enableOutsideDays={enableOutsideDays}
           endDate={getDateValue(endValue)}
           endDateId={endId}
           calendarInfoPosition="before"
@@ -342,12 +343,14 @@ DateRange.propTypes = {
   customArrowIcon: PropTypes.oneOfType([PropTypes.string, PropTypes.node]),
   openDirection: PropTypes.string,
   allowInvalidDates: PropTypes.bool,
+  enableOutsideDays: PropTypes.bool,
 };
 
 DateRange.defaultProps = {
   format: isoDateFormat,
   openDirection: 'down',
   allowInvalidDates: false,
+  enableOutsideDays: true,
 };
 
 export default DateRange;
