@@ -3,6 +3,18 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## 3.3.2 (2022-01-05)
+
+
+### Bug Fixes
+
+* **date:** fix console error that happens whenever selecting a range for the date range ([3d50680](https://github.com/Availity/availity-react/commit/3d50680f53860673ef0968fa2ea3217594d843d5))
+* **date:** remove calendarIconRef completely ([0d72d9d](https://github.com/Availity/availity-react/commit/0d72d9df929a4abd8173024d7e0046fa5932e3dd))
+
+
+
+
+
 ## [3.3.1](https://github.com/Availity/availity-react/compare/@availity/date@3.3.0...@availity/date@3.3.1) (2021-12-20)
 
 **Note:** Version bump only for package @availity/date
