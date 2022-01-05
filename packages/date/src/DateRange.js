@@ -223,7 +223,9 @@ const DateRange = ({
 
                 // Focus the calendar icon once clicked because we don't
                 // want to get back in the loop of opening the calendar
-                calendarIconRef.current.parentElement.focus();
+                if (calendarIconRef && calendarIconRef.current) {
+                  calendarIconRef.current.parentElement.focus();
+                }
               }}
             >
               {relativeRange}
