@@ -50,10 +50,11 @@ The page level help type: ie.: provider | vendor | payer | insight. **Required**
 ```jsx
 import React from 'react';
 import { FieldHelpIcon } from '@availity/help';
+import { Label } from 'reactstrap';
 
 const Example = () => (
   <div>
-    <Label id="provider-label">Select A Provider </Label>
+    <Label id="provider-label">Select A Provider</Label>
     <FieldHelpIcon id="1234-5678-910" labelId="provider-label" />
   </div>
 );

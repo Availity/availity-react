@@ -151,25 +151,21 @@ Function that is called when the api call returned an error. The error is return
 
 This object can be used to pass additional arguments to a resource's `postGet` call. These additional arguments are separate from the `parameters` that are supported by an API and may be used for filtering or other methods called inside a resource's `postGet` method. Example for the `organizations` resource that supports `additionalPostGetArgs`:
 
-```jsx
-async postGet(data, config, additionalPostGetArgs) {
+```js
+async function postGet(data, config, additionalPostGetArgs) {
+  if (additionalPostGetArgs) {
+    const { data: organizationsData } = await super.postGet(data, config);
 
-    if (additionalPostGetArgs) {
-      const { data: organizationsData } = await super.postGet(
-        data,
-        config
-      );
-
-      return this.getFilteredOrganizations(
-        organizationsData,
-        additionalPostGetArgs,
-        data
-      );
-    }
-
-    // Else return normal organizations call
-    return super.postGet(data, config);
+    return this.getFilteredOrganizations(
+      organizationsData,
+      additionalPostGetArgs,
+      data
+    );
   }
+
+  // Else return normal organizations call
+  return super.postGet(data, config);
+}
 ```
 
 ### Pre-made Resource Selects
@@ -236,9 +232,24 @@ const Example = () => (
       customerId={customerId}
       required
     />
-    <AvOrganizationSelect name="organization" label="Select a Organization" required />
-    <AvPermissionSelect name="permissions" label="Select a provider" customerId={customerId} isMulti required />
-    <AvNavigationSelect name="payerSpace" label="Select a Payer Space" customerId={customerId} required />
+    <AvOrganizationSelect
+      name="organization"
+      label="Select a Organization"
+      required
+    />
+    <AvPermissionSelect
+      name="permissions"
+      label="Select a provider"
+      customerId={customerId}
+      isMulti
+      required
+    />
+    <AvNavigationSelect
+      name="payerSpace"
+      label="Select a Payer Space"
+      customerId={customerId}
+      required
+    />
     <AvUserSelect name="user" label="Select a User" customerId={customerId} />
     <AvCodeSelect name="code" label="Select a Code" />
   </Form>
