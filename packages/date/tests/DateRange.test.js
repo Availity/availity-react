@@ -617,7 +617,7 @@ describe('DateRange', () => {
           dateRange: undefined,
         }}
       >
-        <DateRange id="dateRange" name="dateRange" enableOutsideDays />
+        <DateRange id="dateRange" name="dateRange" />
         <Button type="submit">Submit</Button>
       </Form>
     );
@@ -642,7 +642,7 @@ describe('DateRange', () => {
           dateRange: undefined,
         }}
       >
-        <DateRange id="dateRange" name="dateRange" enableOutsideDays={false} />
+        <DateRange id="dateRange" name="dateRange" datepickerProps={{ enableOutsideDays: false }} />
         <Button type="submit">Submit</Button>
       </Form>
     );

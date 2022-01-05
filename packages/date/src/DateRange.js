@@ -66,7 +66,6 @@ const DateRange = ({
   customArrowIcon,
   openDirection,
   allowInvalidDates,
-  enableOutsideDays,
   ...attributes
 }) => {
   const { setFieldValue, setFieldTouched, validateField } = useFormikContext();
@@ -299,10 +298,10 @@ const DateRange = ({
           renderMonthElement={renderMonthElement}
           minimumNights={0}
           ariaDescribedBy={ariaDescribedBy}
+          enableOutsideDays
           {...datepickerProps}
           startDate={getDateValue(startValue)}
           startDateId={startId}
-          enableOutsideDays={enableOutsideDays}
           endDate={getDateValue(endValue)}
           endDateId={endId}
           calendarInfoPosition="before"

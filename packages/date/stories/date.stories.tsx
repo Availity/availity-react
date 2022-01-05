@@ -133,8 +133,7 @@ export const _DateRange: Story = ({
   minDistance,
   minDistanceUnits,
   ranges,
-  required,
-  enableOutsideDays
+  required
 }) => {
   const dateFormat = 'MM/DD/YYYY';
   const minDate = moment(min).format(dateFormat);
@@ -179,7 +178,6 @@ export const _DateRange: Story = ({
         ranges={ranges}
         min={min && minDate}
         max={max && maxDate}
-        enableOutsideDays={enableOutsideDays}
       />
 
       <Button className="mt-1 ml-1" color="primary" type="submit">
@@ -195,7 +193,6 @@ _DateRange.args = {
   minDistance: 0,
   minDistanceUnits: distanceUnits[0],
   ranges: false,
-  enableOutsideDays: true
 };
 _DateRange.argTypes = {
   maxDistanceUnits: {
@@ -219,8 +216,7 @@ export const _DateRangeField: Story = ({
   minDistance,
   minDistanceUnits,
   ranges,
-  required,
-  enableOutsideDays
+  required
 }) => {
   const dateFormat = 'YYYY-MM-DD';
   const minDate = moment(min).format(dateFormat);
@@ -270,7 +266,6 @@ export const _DateRangeField: Story = ({
         format={dateFormat}
         min={min && minDate}
         max={max && maxDate}
-        enableOutsideDays={enableOutsideDays}
       />
       <Button className="mt-1 ml-1" color="primary" type="submit">
         Submit
@@ -286,7 +281,6 @@ _DateRangeField.args = {
   minDistance: 0,
   minDistanceUnits: distanceUnits[0],
   ranges: false,
-  enableOutsideDays: true
 };
 _DateRangeField.argTypes = {
   maxDistanceUnits: {
