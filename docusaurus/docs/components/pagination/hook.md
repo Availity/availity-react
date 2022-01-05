@@ -25,17 +25,17 @@ const PageSetter = () => {
 
 ### Returns
 
-```js
-{
-    pageCount: Number,
-    total: Number,
-    page: Array,
-    currentPage: Number,
-    lower: Number,
-    upper: Number,
-    setPage: (page: number) => void,
-    loading: Boolean,
-    error: Any,
-    setError: (error: any) => void
-}
+```ts
+type Return = {
+  pageCount: number;
+  total: number;
+  page: Array;
+  currentPage: number;
+  lower: number;
+  upper: number;
+  setPage: (page: number) => void;
+  loading: boolean;
+  error: any;
+  setError: (error: any) => void;
+};
 ```
