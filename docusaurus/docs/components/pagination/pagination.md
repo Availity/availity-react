@@ -7,14 +7,20 @@ This is the provider component needed for `@availity/pagination` components to w
 ### Example
 
 ```jsx
-import React from 'react';
+import React, { useState } from 'react';
 import Pagination from '@availity/pagination';
 
-const Example = () => (
-  <Pagination itemsPerPage={25} items={this.state.items}>
-    <Pagination.Content component={Component} />
-  </Pagination>
-);
+const Example = () => {
+  const [items, setItems] = useState([]);
+
+  // logic to get items
+
+  return (
+    <Pagination itemsPerPage={25} items={items}>
+      <Pagination.Content component={Component} />
+    </Pagination>
+  );
+};
 ```
 
 #### Live example: <a href="https://availity.github.io/availity-react/storybook/?path=/story/components-pagination--default"> Storybook</a>

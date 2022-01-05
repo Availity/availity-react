@@ -9,6 +9,7 @@ Error message container for an input
 ```jsx
 import React from 'react';
 import { Form, Input, Feedback as FormFeedback } from '@availity/form';
+import { Button, Label, FormGroup } from 'reactstrap';
 
 const Example = () => (
   <Form

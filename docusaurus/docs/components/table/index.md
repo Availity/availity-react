@@ -20,22 +20,20 @@ import React from 'react';
 import Table, { TableProvider } from '@availity/table';
 import '@availity/table/style.scss';
 
-const myTableConfig = {
-    columns: [
-        {
-            Header: 'Column 1',
-            accessor: 'column1'
-        },
-        {
-            Header: 'Column 2',
-            accessor: 'column2' 
-        },
-                {
-            Header: 'Column 3',
-            accessor: 'column3' 
-        },
-    ]
-}
+const columns = [
+  {
+    Header: 'Column 1',
+    accessor: 'column1',
+  },
+  {
+    Header: 'Column 2',
+    accessor: 'column2',
+  },
+  {
+    Header: 'Column 3',
+    accessor: 'column3',
+  },
+];
 
 const Example = () => (
     <TableProvider
@@ -71,7 +69,7 @@ This determines whether the table is selectable or not. If it is set to true, th
 
 #### `sortable?: boolean`
 
-This determines whether the table is sortable or not. 
+This determines whether the table is sortable or not.
 
 #### `initialState?: object`
 
@@ -79,7 +77,7 @@ This object definition sets the initial state of the table, including the defaul
 
 #### `additionalContent?: ReactNode`
 
-This designates a Component that will be displayed in the table row for the record. This content displays in an additional `<tr>` with a colspan equal to the number of columns that are NOT sticky.  
+This designates a Component that will be displayed in the table row for the record. This content displays in an additional `<tr>` with a colspan equal to the number of columns that are NOT sticky.
 
 
 ### useTableContext hook
@@ -141,7 +139,7 @@ The index of the row that was clicked.
 
 #### `onRowSelected?: (event: OnRowSelectedEvent) => void`
 
-Event handler for when a row is selected. 
+Event handler for when a row is selected.
 
 ##### OnRowSelectedEvent Props
 
@@ -167,7 +165,7 @@ If true, the data should sort descending. If false, the data should sort ascendi
 
 ### Action Cell
 
-This is used to display an action menu in a cell. 
+This is used to display an action menu in a cell.
 
 #### `isVisible?`: (record?: T) => boolean
 This is an optional function that can be used to conditionally display an action. The record will be passed into the function so that, if needed, the properties on the record can determine if the action is visible or not. If this properties are not populated, the action will always display.
@@ -178,8 +176,7 @@ This is the onClick event handler for the action.
 #### Example
 
 ```jsx
-
- const columns = [
+const columns = [
   {
     id: 'actions',
     Header: 'Actions',
@@ -207,33 +204,33 @@ This is the onClick event handler for the action.
         },
       ],
     }),
-  }];
+  },
+];
 ```
 
 ### Badge Cell
 
-This is used to display a Reactstrap Badge in a cell. See [Availity UI Kit](https://availity.github.io/availity-uikit/v3/components#Badges-Contextual-Variations) and [ReactStrap](https://reactstrap.github.io/components/badge/) for available stylings. 
+This is used to display a Reactstrap Badge in a cell. See [Availity UI Kit](https://availity.github.io/availity-uikit/v3/components#Badges-Contextual-Variations) and [ReactStrap](https://reactstrap.github.io/components/badge/) for available stylings.
 
 #### Usages
 
 ```jsx
+const columns = [
+  {
+    Header: 'Badge',
+    accessor: 'badge',
+    Cell: ({ row: { original } }) =>
+      original ? BadgeCell('success', original.badgeValue) : null,
+  },
+];
 
- const columns = [
-    {
-        Header: 'Badge',
-        accessor: 'badge',
-        Cell: ({ row: { original } }) =>
-        original ? BadgeCell('success', original.badgeValue) : null
-    }
-  ];
-
-   const columns = [
-    {
-        Header: 'Badge',
-        accessor: 'badge',
-        Cell: Badgecell('success')
-    }
-  ];
+const columns = [
+  {
+    Header: 'Badge',
+    accessor: 'badge',
+    Cell: Badgecell('success'),
+  },
+];
 ```
 
 ### Currency Cell
@@ -243,16 +240,17 @@ This is used to format currency in a cell. You can optionally pass it a default 
 #### Usages
 
 ```jsx
-
- const columns = [
-    {
-        Header: 'Currency',
-        accessor: 'currency',
-        Cell: CurrencyCell({defaultValue: '$0.00'})
-    }
-  ];
+const columns = [
+  {
+    Header: 'Currency',
+    accessor: 'currency',
+    Cell: CurrencyCell({ defaultValue: '$0.00' }),
+  },
+];
 ```
+
 #### Props
+
 `currency`
 
 Defaults to `USD`.
@@ -267,30 +265,26 @@ The locale of the currency. Defaults to `en-us`.
 
 ### Date Cell
 
-This is used to format a date in a cell by passing in a date format. 
+This is used to format a date in a cell by passing in a date format.
 
 #### Usages
 
 ```jsx
-
- const columns = [
-        {
-            Header: 'Service Date',
-            accessor: 'serviceDate',
-            Cell: DateCell({ dateFormat: 'MM/DD/yyyy' })
-        }
-  ];
+const columns = [
+  {
+    Header: 'Service Date',
+    accessor: 'serviceDate',
+    Cell: DateCell({ dateFormat: 'MM/DD/yyyy' }),
+  },
+];
 ```
 
 ### Icon Cell
 
-This is used to have an cell display an icon. This will only show the icon if the value for the cell is populated (or `true`). 
+This is used to have an cell display an icon. This will only show the icon if the value for the cell is populated (or `true`).
 In order to show an icon always and not conditionally you can utilize `BuildIcon` and supply it the name of the icon and title.
 
-
-See [Availity UI Kit](https://availity.github.io/availity-uikit/v3/icons) for available icons. 
-
-
+See [Availity UI Kit](https://availity.github.io/availity-uikit/v3/icons) for available icons.
 
 #### Usages
 
@@ -341,7 +335,7 @@ Display a header as a static string:
     ]
 ```
 
-Display a formatted header, such as an Icon. 
+Display a formatted header, such as an Icon.
 
 ```jsx
   const columns = [
@@ -354,7 +348,7 @@ Display a formatted header, such as an Icon.
 
 #### `accessor`
 
-This is the property name from the record. 
+This is the property name from the record.
 
 #### `Cell`
 
@@ -396,8 +390,8 @@ $av-table-font-size: 12px;
 $av-table-selected-background-color: #ccdee2;
 
 @import '~@availity/table/styles.scss';
-
 ```
+
 The following are the available variables to utilize.
 
 ```
@@ -432,15 +426,16 @@ You can configure the table header to be sticky by setting the `headerProps.stic
 This works best when the table is wrapped in a `<ScrollableContainer/>`.
 
 ```jsx
-    <Table columns={columns} records={records}
-        headerProps={{
-            sticky: true
-        }}
-    />
-
+<Table
+  columns={columns}
+  records={records}
+  headerProps={{
+    sticky: true,
+  }}
+/>
 ```
 
-You can also can configure a column to be sticky either left or right. This can be configured on in the column definitions for the table. 
+You can also can configure a column to be sticky either left or right. This can be configured on in the column definitions for the table.
 
 ```jsx
 const columns = [
@@ -453,4 +448,4 @@ const columns = [
 
 ```
 
-Note that this is not supported in IE 11. 
+Note that this is not supported in IE 11.

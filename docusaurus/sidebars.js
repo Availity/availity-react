@@ -2,14 +2,16 @@ module.exports = {
   someSidebar: {
     'React Docs': [
       'intro',
-      'contributing',
-      // {
-      //   type: 'link',
-      //   label: 'Storybook', // The label that should be displayed (string).
-      //   href:
-      //     'https://availity.github.io/availity-react/storybook/?path=/story/components-analytics--default', // The target URL (string).
-      // },
-
+      {
+        type: 'link',
+        label: 'Contributing',
+        href: 'https://github.com/Availity/availity-react/blob/master/.github/CONTRIBUTING.md',
+      },
+      {
+        type: 'link',
+        label: 'Storybook', // The label that should be displayed (string).
+        href: 'https://availity.github.io/availity-react/storybook/', // The target URL (string).
+      },
       {
         type: 'category',
         label: 'Components',
@@ -17,7 +19,11 @@ module.exports = {
           {
             type: 'category',
             label: 'Analytics',
-            items: ['components/analytics/index', 'components/analytics/analytics', 'components/analytics/hook'],
+            items: [
+              'components/analytics/index',
+              'components/analytics/analytics',
+              'components/analytics/hook',
+            ],
           },
           'components/app-icon',
           'components/authorize',
@@ -37,7 +43,11 @@ module.exports = {
           {
             type: 'category',
             label: 'Feedback',
-            items: ['components/feedback/index', 'components/feedback/feedback', 'components/feedback/form'],
+            items: [
+              'components/feedback/index',
+              'components/feedback/feedback',
+              'components/feedback/form',
+            ],
           },
           'components/help',
           {
@@ -110,7 +120,11 @@ module.exports = {
           {
             type: 'category',
             label: 'Table',
-            items: ['components/table/index', 'components/table/scrollableContainer', 'components/table/tableControls'],
+            items: [
+              'components/table/index',
+              'components/table/scrollableContainer',
+              'components/table/tableControls',
+            ],
           },
           'components/training-link',
           {
@@ -154,7 +168,11 @@ module.exports = {
           {
             type: 'category',
             label: 'Phone',
-            items: ['form/phone/index', 'form/phone/components/phone', 'form/phone/components/validate-phone'],
+            items: [
+              'form/phone/index',
+              'form/phone/components/phone',
+              'form/phone/components/validate-phone',
+            ],
           },
           {
             type: 'category',

@@ -9,7 +9,7 @@ Component allowing page and click events to be tracked.
 ```jsx
 import React from 'react';
 import { Button } from 'reactstrap';
-import Analytics from '@availity/Analytics';
+import Analytics from '@availity/analytics';
 
 const plugin = {
   trackEvent: (e) => {

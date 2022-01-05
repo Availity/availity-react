@@ -10,22 +10,20 @@ import React from 'react';
 import Table, { TableProvider, ScrollableContainer } from '@availity/table';
 import '@availity/table/style.scss';
 
-const myTableConfig = {
-    columns: [
-        {
-            Header: 'Column 1',
-            accessor: 'column1'
-        },
-        {
-            Header: 'Column 2',
-            accessor: 'column2' 
-        },
-        {
-            Header: 'Column 3',
-            accessor: 'column3' 
-        },
-    ]
-}
+const columns = [
+  {
+    Header: 'Column 1',
+    accessor: 'column1',
+  },
+  {
+    Header: 'Column 2',
+    accessor: 'column2',
+  },
+  {
+    Header: 'Column 3',
+    accessor: 'column3',
+  },
+];
 
 const Example = () => (
     <TableProvider

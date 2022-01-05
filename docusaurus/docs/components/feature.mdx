@@ -69,7 +69,7 @@ The content that renders when the features are enabled.
 
 Negate the feature. If the feature specified is enabled, it acts as if it were disabled (by rendering the `whenDisabled` prop content). If the feature specified is disabled, it acts as if it were enabled (by rendering the `children` prop content).
 
-### `isFeatureEnabled`
+### isFeatureEnabled
 
 Function that validates the environment's features to determine if children content should be shown.
 
@@ -95,7 +95,7 @@ async () => {
 };
 ```
 
-### `generate-features-json (CLI)
+### generate-features-json (CLI)
 
 `generate-features-json` is a CLI tool that takes a `features.json` file and outputs environment specific `features.json` files to be used depending on which environment it's currently in. Note: This is where OpenShift comes into play. OpenShift ensures the right file (based on the ENV) is placed in the right location when the pod starts.
 
