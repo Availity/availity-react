@@ -1,6 +1,6 @@
 ---
 title: Block UI
-summary: Component for blocking sections of an interface
+summary: Component for blocking sections of a User Interface
 ---
 
 [![Version](https://img.shields.io/npm/v/@availity/block-ui.svg?style=for-the-badge)](https://www.npmjs.com/package/@availity/block-ui)
@@ -50,13 +50,13 @@ Check out our [Storybook](https://availity.github.io/availity-react/storybook/?p
 
 #### Props
 
-|  Prop Name     |  Types              |  Required    |  Default |  Description                                                                           |
-| -------------- | ------------------- | ------------ | -------- | -------------------------------------------------------------------------------------- |
-| blocking       | boolean             | true         |          | Set whether the component hould block its children                                     |
-| children       | ReactNode           | false        |          | children to display                                                                    |
-| className      | string              | false        |          | CSS class name to pass to component                                                    |
-| keepInView     | boolean             | false        |          | Set whether the blocking component should follow the scroll or stay at a fixed postion |
-| loader         | JSX.Element         | false        |          | Loader component to use                                                                |
-| message        | string or ReactNode | false        |          | The message to display. Can also be a component.                                       |
-| renderChildren | boolean             | false        |          | Control if the children are shown when the component is being blocked                  |
-| tag            | ElementType         | false        | <div />  | tag to render as container element                                                     |
+|  Prop Name            |  Types                |  Default  |  Description                                                                           |
+| --------------------- | --------------------- | --------- | -------------------------------------------------------------------------------------- |
+| blocking (required)   | `boolean`             |           | Set whether the component should block its children                                    |
+| children              | `ReactNode`           |           | children to display                                                                    |
+| className             | `string`              |           | CSS class name to pass to component                                                    |
+| keepInView            | `boolean`             |           | Set whether the blocking component should follow the scroll or stay at a fixed postion |
+| loader                | `JSX.Element`         |           | Loader component to use                                                                |
+| message               | `string or ReactNode` |           | The message to display. Can also be a component.                                       |
+| renderChildren        | `boolean`             | `true`    | Control if the children are shown when the component is being blocked                  |
+| tag                   | `ElementType`         | `<div />` | tag to render as container element                                                     |
