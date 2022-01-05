@@ -20,16 +20,12 @@ const Example = () => (
     initialValues={{
       dateOfService: undefined,
     }}
-    onSubmit={values => console.log(values)}
+    onSubmit={(values) => console.log(values)}
     validationSchema={yup.object().shape({
       dateOfService: dateRange(
         {
-          min: moment()
-            .subtract(7, 'day')
-            .format('MM/DD/YYYY'),
-          max: moment()
-            .add(7, 'day')
-            .format('MM/DD/YYYY'),
+          min: moment().subtract(7, 'day').format('MM/DD/YYYY'),
+          max: moment().add(7, 'day').format('MM/DD/YYYY'),
           format: 'MM/DD/YYYY',
         },
         `Date must be between ${moment()
@@ -38,7 +34,7 @@ const Example = () => (
           .add(7, 'day')
           .format('MM/DD/YYYY')}`
       )
-        .typeError({message: 'This field is invalid.'})
+        .typeError({ message: 'This field is invalid.' })
         .required('This field is required.'),
     })}
   >
@@ -140,4 +136,3 @@ Set which direction the date picker renders. Possible values are `up` and `down`
 
 Defaults to false, with this behavior the onInputChange handler will not pass through invalid dates to formik. By setting this prop to true, you can allow formik to handle invalid dates.
 Very useful for getting errors from non-required date range components.
-

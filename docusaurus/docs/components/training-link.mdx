@@ -2,18 +2,18 @@
 title: Training Link
 ---
 
+[![Version](https://img.shields.io/npm/v/@availity/training-link.svg?style=for-the-badge)](https://www.npmjs.com/package/@availity/training-link)
+
 Component for allowing link out to training in the Header component
 
 Provide a link for training videos for your app
-
-[![Version](https://img.shields.io/npm/v/@availity/training-link.svg?style=for-the-badge)](https://www.npmjs.com/package/@availity/training-link)
 
 ### Installation
 
 npm
 
 ```bash
-npm install @availity/training-link --save
+npm install @availity/training-link
 ```
 
 Yarn
@@ -22,9 +22,12 @@ Yarn
 yarn add @availity/training-link
 ```
 
-### Example
+### Usage
+
+#### Example
 
 ```jsx
+import React from 'react';
 import TrainingLink from '@availity/training-link';
 
 const Example = () => (
@@ -32,14 +35,13 @@ const Example = () => (
 );
 ```
 
-#### Live example: <a href="https://availity.github.io/availity-react/storybook/?path=/story/components-training-link--default"> Storybook</a>
+#### Storybook
+
+Checkout the [Storybook](https://availity.github.io/availity-react/storybook/?path=/story/components-training-link--default) for interactive examples
 
 ### Props
 
-#### `link: string`
-
-Link to training video.
-
-#### `name: string`
-
-Name of your app to make the sentence complete.
+| name | required | type     | description                                     |
+| ---- | -------- | -------- | ----------------------------------------------- |
+| link | true     | `string` | Link to training video                          |
+| name | true     | `string` | Name of your app to make the sentence complete. |

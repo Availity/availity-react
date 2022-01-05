@@ -11,7 +11,8 @@ Hook that allows you to "hook" into the favorites logic and create a custom comp
 ### Example
 
 ```jsx
-import React, { useState } from 'react';
+import React from 'react';
+import Icon from '@availity/icon';
 import { useFavorites } from '@availity/favorites';
 
 const Example = () => {

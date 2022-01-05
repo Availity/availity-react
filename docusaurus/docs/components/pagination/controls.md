@@ -51,5 +51,4 @@ When true, this will show pagination text next to the controls describing the cu
 
 #### `populatePaginationText?: (lower: number, upper: number, total: number) => string`
 
-When `showPaginationText` is true, this function allows for customization of the pagination text that is displayed. 
-
+When `showPaginationText` is true, this function allows for customization of the pagination text that is displayed.
