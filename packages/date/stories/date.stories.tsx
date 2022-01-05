@@ -133,7 +133,7 @@ export const _DateRange: Story = ({
   minDistance,
   minDistanceUnits,
   ranges,
-  required
+  required,
 }) => {
   const dateFormat = 'MM/DD/YYYY';
   const minDate = moment(min).format(dateFormat);
@@ -216,7 +216,7 @@ export const _DateRangeField: Story = ({
   minDistance,
   minDistanceUnits,
   ranges,
-  required
+  required,
 }) => {
   const dateFormat = 'YYYY-MM-DD';
   const minDate = moment(min).format(dateFormat);

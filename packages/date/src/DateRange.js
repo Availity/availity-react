@@ -342,14 +342,12 @@ DateRange.propTypes = {
   customArrowIcon: PropTypes.oneOfType([PropTypes.string, PropTypes.node]),
   openDirection: PropTypes.string,
   allowInvalidDates: PropTypes.bool,
-  enableOutsideDays: PropTypes.bool,
 };
 
 DateRange.defaultProps = {
   format: isoDateFormat,
   openDirection: 'down',
   allowInvalidDates: false,
-  enableOutsideDays: true,
 };
 
 export default DateRange;
