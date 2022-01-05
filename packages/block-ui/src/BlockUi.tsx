@@ -29,7 +29,6 @@ function BlockUi({
 }: Props): JSX.Element {
   const [top, setTop] = useState<string | number>('50%');
 
-  const helperRef = useRef<HTMLDivElement>(null);
   const blockerRef = useRef<HTMLDivElement>(null);
   const topFocusRef = useRef<HTMLDivElement>(null);
   const containerRef = useRef<HTMLDivElement>(null);
@@ -138,7 +137,6 @@ function BlockUi({
           </div>
         </div>
       ) : null}
-      <span ref={helperRef} />
     </Tag>
   );
 }

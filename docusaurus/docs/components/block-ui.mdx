@@ -44,6 +44,29 @@ const Example = () => {
 };
 ```
 
+The `BlockUi` component uses a `div` as the default tag. You can override this by using the `tag` prop. Some tags may appear broken at first. In most cases, you can fix this by adding `display: block` as a style. We reecommend creating a CSS class and passing in the `className` prop. If you are using `bootstrap`, then you can leverage the existing class `d-block`
+
+```jsx
+import React, { useState } from 'react';
+import BlockUi from '@availity/block-ui';
+
+const Example = () => {
+  const [loading, setLoading] = useState(false);
+
+  const handleSubmit = () => {
+    setLoading(true);
+    // do stuff...
+    setLoading(false);
+  };
+
+  return (
+    <BlockUi tag="span" className="d-block" blocking={loading}>
+      <div>Child components</div>
+    </BlockUi>
+  );
+};
+```
+
 #### Storybook
 
 Check out our [Storybook](https://availity.github.io/availity-react/storybook/?path=/story/components-block-ui--default) for more examples

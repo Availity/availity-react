@@ -21,7 +21,7 @@ export default {
   },
 } as Meta;
 
-const Template: Story<Props> = (args) => {
+const Template: Story<Props> = ({ tag, ...args }) => {
   const [count, setCount] = useState(0);
 
   return (
@@ -36,7 +36,7 @@ const Template: Story<Props> = (args) => {
       }}
     >
       <h1>This content will not be blocked</h1>
-      <BlockUi {...args}>
+      <BlockUi {...args} tag={tag || undefined}>
         <div style={{ height: '100vh', borderStyle: 'solid', padding: '2rem', borderColor: 'white' }}>
           <h2>Header</h2>
           <p>This content is a child of BlockUi component and will be blocked.</p>
