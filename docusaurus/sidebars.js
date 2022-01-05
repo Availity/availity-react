@@ -2,7 +2,11 @@ module.exports = {
   someSidebar: {
     'React Docs': [
       'intro',
-      'contributing',
+      {
+        type: 'link',
+        label: 'Contributing',
+        href: 'https://github.com/Availity/availity-react/blob/master/.github/CONTRIBUTING.md',
+      },
       {
         type: 'link',
         label: 'Storybook', // The label that should be displayed (string).
