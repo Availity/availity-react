@@ -17,7 +17,7 @@
         "id": "anotherSpace1",
         "payerIDs": ["availity1"],
         "images": {
-          "logo": "/static/spaces/12345/sample-logo.png"
+          "logo": "/storybook/static/spaces/12345/sample-logo.png"
         }
       },
       {
