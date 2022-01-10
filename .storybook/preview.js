@@ -22,12 +22,12 @@ export const parameters = {
 if (typeof global.process === 'undefined') {
   const { worker } = require('../packages/mock/src');
 
-  const config =
-    process.env.NODE_ENV === 'production'
-      ? {
-          serviceWorker: { url: '/availity-react/storybook' },
-        }
-      : undefined;
+  // const config =
+  //   process.env.NODE_ENV === 'production'
+  //     ? {
+  //         serviceWorker: { url: '/availity-react/storybook' },
+  //       }
+  //     : undefined;
 
-  worker.start(config);
+  worker.start({ serviceWorker: { url: '/availity-react/storybook' } });
 }
