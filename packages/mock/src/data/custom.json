@@ -1,0 +1,19 @@
+{
+  "resources": [
+    {
+      "id": 1,
+      "name": "Option 1",
+      "value": "resource1"
+    },
+    {
+      "id": 2,
+      "name": "Option 2",
+      "value": "resource2"
+    },
+    {
+      "id": 3,
+      "name": "Option 3",
+      "value": "resource3"
+    }
+  ]
+}

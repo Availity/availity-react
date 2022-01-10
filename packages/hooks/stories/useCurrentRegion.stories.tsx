@@ -5,7 +5,6 @@ import { QueryClientProvider, QueryClient } from 'react-query';
 import { useCurrentRegion } from '..';
 // import README from '../README.md';
 
-import '@availity/mock';
 import ResourceComponent from './ResourceComponent';
 
 const queryClient = new QueryClient();

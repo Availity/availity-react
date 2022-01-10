@@ -1,12 +1,10 @@
 import React from 'react';
 import { Meta, Story } from '@storybook/react';
-import response from '@availity/mock/data/patients.json';
+import response from '@availity/mock/src/data/patients.json';
 
 import Table, { ActionCell, BadgeCell, DateCell, ScrollableContainer } from '..';
 // import README from '../README.md';
 import '../styles.scss';
-
-import '@availity/mock';
 
 const columns = [
   {

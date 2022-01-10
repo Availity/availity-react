@@ -4,7 +4,6 @@ import { QueryClientProvider, QueryClient } from 'react-query';
 
 import { useProviders } from '..';
 // import README from '../README.md';
-import '@availity/mock';
 
 import ResourceComponent from './ResourceComponent';
 

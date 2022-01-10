@@ -8,7 +8,6 @@ import AvSelect, { AvSelectField } from '..';
 import AvSelectResource from '../resources';
 // import README from '../README.md';
 
-import '@availity/mock';
 import AvFormResults from '../../../story-utils/AvFormResults';
 
 const options = [
@@ -58,6 +57,16 @@ export default {
       // page: README,
     },
   },
+  args: {
+    autofill: false,
+    creatable: false,
+    disabled: false,
+    isMulti: false,
+    min: 2,
+    max: 3,
+    raw: false,
+    required: true,
+  },
 } as Meta;
 
 export const Default: Story = ({ autofill, creatable, disabled, isMulti, max, min, raw, required }) => (
@@ -82,16 +91,7 @@ export const Default: Story = ({ autofill, creatable, disabled, isMulti, max, mi
     </Button>
   </AvFormResults>
 );
-Default.args = {
-  autofill: false,
-  creatable: false,
-  disabled: false,
-  isMulti: false,
-  min: 2,
-  max: 3,
-  raw: false,
-  required: true,
-};
+Default.args = {};
 Default.storyName = 'default';
 
 export const WithLabel: Story = ({
@@ -130,16 +130,8 @@ export const WithLabel: Story = ({
   </AvFormResults>
 );
 WithLabel.args = {
-  autofill: false,
-  creatable: false,
-  disabled: false,
   errorMessage: 'This field is invalid',
-  isMulti: false,
-  label: 'AvSelect Label',
-  min: 2,
-  max: 3,
-  raw: false,
-  required: true,
+  label: 'Select',
 };
 WithLabel.storyName = 'with label';
 
@@ -183,16 +175,8 @@ export const _AvSelectField: Story = ({
   </AvFormResults>
 );
 _AvSelectField.args = {
-  autofill: false,
-  creatable: false,
-  disabled: false,
   errorMessage: 'This field is invalid',
-  isMulti: false,
   label: 'Select',
-  max: 3,
-  min: 2,
-  raw: false,
-  required: true,
   requiredErrorMessage: 'This field is required',
 };
 _AvSelectField.storyName = 'AvSelectField';
@@ -237,16 +221,16 @@ export const _AvSelectResource: Story = ({
   </AvFormResults>
 );
 _AvSelectResource.args = {
-  autofill: false,
-  creatable: false,
-  disabled: false,
+  // autofill: false,
+  // creatable: false,
+  // disabled: false,
   errorMessage: 'This field is invalid',
-  isMulti: false,
+  // isMulti: false,
   label: 'Custom Select',
-  min: 2,
-  max: 3,
-  raw: false,
-  required: true,
+  // min: 2,
+  // max: 3,
+  // raw: false,
+  // required: true,
   requiredErrorMessage: 'This field is required',
 };
 _AvSelectResource.storyName = 'AvSelectResource';

@@ -19,11 +19,7 @@
   },
   "license": "MIT",
   "author": "Kyle Gray <kyle.gray@availity.com>",
-  "main": "index.js",
-  "types": "index.d.ts",
   "dependencies": {
-    "lodash": "^4.17.21",
-    "qs": "^6.5.2",
-    "xhr-mock": "^2.5.1"
+    "msw": "^0.36.3"
   }
 }

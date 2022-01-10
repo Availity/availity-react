@@ -1,10 +1,8 @@
 /* eslint-disable import/prefer-default-export */
 import { themes } from '@storybook/theming';
-import mock from 'xhr-mock';
 
+import { worker } from '../packages/mock/src/browser';
 import './config.scss';
-
-mock.setup();
 
 export const parameters = {
   docs: {
@@ -20,3 +18,7 @@ export const parameters = {
     addonPanelInRight: true,
   },
 };
+
+if (worker) {
+  worker.start();
+}

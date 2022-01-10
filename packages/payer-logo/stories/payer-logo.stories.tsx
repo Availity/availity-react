@@ -4,8 +4,6 @@ import { Meta, Story } from '@storybook/react';
 import PayerLogo from '..';
 // import README from '../README.md';
 
-import '@availity/mock';
-
 export default {
   title: 'Components/Payer Logo',
   parameters: {
@@ -18,7 +16,7 @@ export default {
 export const WithPayerId: Story = ({ payerId, clientId }) => (
   <div>
     <PayerLogo payerId={payerId} clientId={clientId} />
-    <p>Note: the logo uses a relative URL which will only work on Availity Portal</p>
+    <p>Note: this is not a real logo. It is a sample image.</p>
   </div>
 );
 WithPayerId.args = {
@@ -30,11 +28,11 @@ WithPayerId.storyName = 'with payer ID';
 export const WithSpaceId: Story = ({ spaceId, clientId }) => (
   <div>
     <PayerLogo spaceId={spaceId} clientId={clientId} />
-    <p>Note: the logo uses a relative URL which will only work on the Availity Portal</p>
+    <p>Note: this is not a real logo. It is a sample image.</p>
   </div>
 );
 WithSpaceId.args = {
-  spaceId: '73162546201441126239486200007187',
+  spaceId: 'space1',
   clientId: 'my-client-id',
 };
 WithSpaceId.storyName = 'with space ID';
