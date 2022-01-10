@@ -221,16 +221,8 @@ export const _AvSelectResource: Story = ({
   </AvFormResults>
 );
 _AvSelectResource.args = {
-  // autofill: false,
-  // creatable: false,
-  // disabled: false,
   errorMessage: 'This field is invalid',
-  // isMulti: false,
   label: 'Custom Select',
-  // min: 2,
-  // max: 3,
-  // raw: false,
-  // required: true,
   requiredErrorMessage: 'This field is required',
 };
 _AvSelectResource.storyName = 'AvSelectResource';
