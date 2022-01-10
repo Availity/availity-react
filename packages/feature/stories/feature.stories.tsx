@@ -4,8 +4,6 @@ import { Story, Meta } from '@storybook/react';
 import Feature from '../src/Feature';
 // import README from "@availity/feature/README.md";
 
-import '@availity/mock';
-
 export default {
   title: 'Components/Feature',
   parameters: {

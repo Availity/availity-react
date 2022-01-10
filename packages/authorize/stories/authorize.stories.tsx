@@ -1,11 +1,9 @@
 import React from 'react';
 import { Story, Meta } from '@storybook/react';
+import { Alert } from 'reactstrap';
 
-import Authorize from '../src/Authorize';
-import useAuthorize from '../src/useAuthorize';
+import Authorize, { useAuthorize } from '..';
 // import README from '../README.md';
-
-import '@availity/mock';
 
 export default {
   title: 'Components/Authorize',
@@ -28,9 +26,9 @@ export const Default: Story = ({ permissions, organizationId, negate, loader, un
       organizationId={organizationId}
       negate={negate}
       loader={loader}
-      unauthorized={unauthorized}
+      unauthorized={<Alert color="danger">{unauthorized}</Alert>}
     >
-      {children}
+      <Alert color="success">{children}</Alert>
     </Authorize>
   </div>
 );
@@ -45,9 +43,7 @@ Default.args = {
 Default.storyName = 'default';
 
 export const UseAuthorize: Story = ({ permissions, organizationId, unauthorized, authorized }) => {
-  const [isAuthorized] = useAuthorize(permissions, {
-    organizationId,
-  });
+  const [isAuthorized] = useAuthorize(permissions, { organizationId });
 
   return (
     <div>
@@ -56,7 +52,7 @@ export const UseAuthorize: Story = ({ permissions, organizationId, unauthorized,
         to see what the component will do when you set the required permissions to various things.
       </p>
       <hr />
-      {isAuthorized ? authorized : unauthorized}
+      {isAuthorized ? <Alert color="success">{authorized}</Alert> : <Alert color="danger">{unauthorized}</Alert>}
     </div>
   );
 };

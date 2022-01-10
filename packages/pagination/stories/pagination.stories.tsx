@@ -1,7 +1,8 @@
 import React from 'react';
 import { Meta, Story } from '@storybook/react';
 import { Card, CardBody, CardText, CardTitle, Col } from 'reactstrap';
-import paginationData from '@availity/mock/data/pagination.json';
+import AvApi from '@availity/api-axios';
+import paginationData from '@availity/mock/src/data/pagination.json';
 
 import { Pagination, PaginationContent, PaginationControls, AvResourcePagination } from '..';
 // import README from '../README.md';
@@ -38,30 +39,7 @@ const Component = ({ name, address }: ComponentProps): JSX.Element => (
   </Card>
 );
 
-const mockResponse = {
-  postGet: async (params = {}, config = {}) =>
-    new Promise((resolve) =>
-      setTimeout(() => {
-        const { offset = 0, limit = 50 } = params;
-        const notifications = paginationData.slice(offset, offset + limit);
-        resolve({
-          config,
-          data: {
-            totalCount: paginationData.length,
-            count: notifications.length,
-            offset,
-            limit,
-            notifications,
-          },
-        });
-      }, 1000)
-    ),
-};
-
-const resource = {
-  postGet: mockResponse.postGet,
-  getResult: 'notifications',
-};
+const resource = new AvApi({ name: 'pagination' });
 
 export default {
   title: 'Components/Pagination',
@@ -121,11 +99,11 @@ Default.args = {
   pageRange: 5,
   showLoader: false,
   unstyled: false,
-  showPaginationText: false
+  showPaginationText: false,
 };
 Default.storyName = 'default';
 
-export const Controls: Story = ({ autoHide, directionLinks, showPaginationText,  }) => (
+export const Controls: Story = ({ autoHide, directionLinks, showPaginationText }) => (
   <Pagination items={paginationData}>
     <PaginationControls directionLinks={directionLinks} autoHide={autoHide} showPaginationText={showPaginationText} />
   </Pagination>
@@ -133,7 +111,7 @@ export const Controls: Story = ({ autoHide, directionLinks, showPaginationText, 
 Controls.args = {
   autoHide: true,
   directionLinks: true,
-  showPaginationText: true
+  showPaginationText: true,
 };
 Controls.storyName = 'controls';
 
@@ -170,6 +148,6 @@ Resource.args = {
   itemsPerPage: 5,
   marginPages: 2,
   pageRange: 5,
-  showLoader: false,
+  showLoader: true,
 };
 Resource.storyName = 'resource';

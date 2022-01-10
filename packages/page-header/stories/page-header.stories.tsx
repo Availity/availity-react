@@ -7,8 +7,6 @@ import Breadcrumbs from '@availity/breadcrumbs';
 import PageHeader from '..';
 // import README from '../README.md';
 
-import '@availity/mock';
-
 const CustomBreadcrumbs = (
   <Breadcrumbs active="Active Page Name">
     <BreadcrumbItem>
@@ -63,11 +61,11 @@ WithAppIcon.storyName = 'with app icon';
 export const WithPayerLogo: Story = ({ appName, feedback, homeUrl, payerId }) => (
   <div>
     <PageHeader homeUrl={homeUrl} appName={appName} clientId="clientId" payerId={payerId} feedback={feedback} />
-    <p>Note: the logo uses a relative URL which will only work on the Availity Portal</p>
+    <p>Note: the logo is a sample image, and not an actual logo</p>
   </div>
 );
 WithPayerLogo.args = {
-  payerId: 'PayerID',
+  payerId: 'availity1',
 };
 WithPayerLogo.storyName = 'with payer logo';
 
