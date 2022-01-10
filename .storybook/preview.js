@@ -1,7 +1,6 @@
 /* eslint-disable import/prefer-default-export */
 import { themes } from '@storybook/theming';
 
-import { worker } from '../packages/mock/src/browser';
 import './config.scss';
 
 export const parameters = {
@@ -19,6 +18,9 @@ export const parameters = {
   },
 };
 
-if (worker) {
+// Make sure we are in the browser before starting
+if (typeof global.process === 'undefined') {
+  const { worker } = require('../packages/mock/src');
+
   worker.start();
 }
