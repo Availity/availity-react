@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [2.1.8](https://github.com/Availity/availity-react/compare/@availity/mock@2.1.7...@availity/mock@2.1.8) (2022-01-11)
+
+
+### Bug Fixes
+
+* **mock:** return single region when currentlySelected is true ([9e4df32](https://github.com/Availity/availity-react/commit/9e4df32e845d0a85786f5dac0a5afb849c1196be))
+
+
+
+
+
 ## [2.1.7](https://github.com/Availity/availity-react/compare/@availity/mock@2.1.6...@availity/mock@2.1.7) (2022-01-10)
 
 **Note:** Version bump only for package @availity/mock
