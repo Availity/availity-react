@@ -32,7 +32,13 @@ export const handlers = [
   rest.post(routes.LOG_A2, (req, res, ctx) => res(ctx.delay(delay), ctx.status(201))),
 
   // Region
-  rest.get(routes.REGIONS, (req, res, ctx) => res(ctx.delay(delay), ctx.status(200), ctx.json(region))),
+  rest.get(routes.REGIONS, (req, res, ctx) => {
+    // Check if the request wants one region or a list
+    const parsed = req.url.search.slice(1).split('&');
+    const currentlySelected = parsed[0].slice(18) === 'true';
+
+    return res(ctx.delay(delay), ctx.status(200), ctx.json(currentlySelected ? region : regions));
+  }),
   rest.post(routes.REGIONS, (req, res, ctx) => res(ctx.delay(delay), ctx.status(200), ctx.json(regions))),
 
   // AXI Permissions
