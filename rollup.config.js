@@ -4,7 +4,7 @@ import commonjs from '@rollup/plugin-commonjs';
 import typescript from 'rollup-plugin-typescript2';
 import postcss from 'rollup-plugin-postcss';
 
-const packages = ['icon', 'training-link'];
+const packages = ['app-icon', 'avatar', 'icon', 'training-link'];
 
 // rollup.config.js
 /**

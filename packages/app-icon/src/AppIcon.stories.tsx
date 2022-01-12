@@ -1,7 +1,7 @@
 import React from 'react';
 import { Story, Meta } from '@storybook/react';
 
-import AppIcon from '../src/AppIcon';
+import AppIcon from './AppIcon';
 // import README from '../README.md';
 
 export default {
