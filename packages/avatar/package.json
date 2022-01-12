@@ -18,12 +18,10 @@
   },
   "license": "MIT",
   "author": "Tyson Warner <tyson.warner@availity.com>",
-  "main": "index.js",
-  "types": "index.d.ts",
+  "main": "dist/index.js",
+  "module": "dist/index.js",
+  "types": "dist/index.d.ts",
   "dependencies": {
-    "@availity/hooks": "^3.1.2",
-    "lodash": "^4.17.21",
-    "prop-types": "^15.7.2",
     "react-image": "^4.0.3",
     "react-loading-skeleton": "^2.2.0"
   },

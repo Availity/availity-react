@@ -1,7 +1,7 @@
 import React from 'react';
 import { Story, Meta } from '@storybook/react';
 
-import Avatar from '../src/Avatar';
+import Avatar from './Avatar';
 // import README from '../README.md';
 
 export default {
@@ -22,9 +22,11 @@ export const Default: Story = ({ fallback, skeletonWidth, skeletonHeight }) => (
     }}
   />
 );
+
 Default.args = {
   fallback: '/public/apps/my-profile/images/Avatars-00.png',
   skeletonHeight: '350px',
   skeletonWidth: '350px',
 };
+
 Default.storyName = 'default';
