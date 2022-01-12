@@ -1,11 +1,14 @@
 /* eslint-disable import/prefer-default-export */
 import { rest, graphql } from 'msw';
+import qs from 'qs';
 
 import * as routes from './routes';
+import avatar from './data/avatar.json';
 import axiPermissions from './data/axi-user-permissions.json';
 import codes from './data/codes.json';
 import custom from './data/custom.json';
 import customGraphql from './data/custom-graphql.json';
+import favorites from './data/favorites.json';
 import features from './data/features.json';
 import navigationSpaces from './data/navigation-spaces.json';
 import organizations from './data/organizations.json';
@@ -15,12 +18,16 @@ import permissions from './data/permissions.json';
 import providers from './data/providers.json';
 import region from './data/region.json';
 import regions from './data/regions.json';
-import settings from './data/settings.json';
 import spaces from './data/spaces.json';
 import user from './data/user.json';
 import users from './data/users.json';
 
 const delay = 500; // .5 sec
+
+const settings = {
+  AVATAR: avatar,
+  'Gateway-AvNavigation': favorites,
+};
 
 export const handlers = [
   // User
@@ -33,9 +40,8 @@ export const handlers = [
 
   // Region
   rest.get(routes.REGIONS, (req, res, ctx) => {
-    // Check if the request wants one region or a list
-    const parsed = req.url.search.slice(1).split('&');
-    const currentlySelected = parsed[0].slice(18) === 'true';
+    const parsed = qs.parse(req.url.search, { ignoreQueryPrefix: true });
+    const currentlySelected = parsed.currentlySelected === 'true';
 
     return res(ctx.delay(delay), ctx.status(200), ctx.json(currentlySelected ? region : regions));
   }),
@@ -49,7 +55,11 @@ export const handlers = [
   rest.post(routes.PERMISSIONS, (req, res, ctx) => res(ctx.delay(delay), ctx.status(200), ctx.json(permissions))),
 
   // Settings
-  rest.get(routes.SETTINGS, (req, res, ctx) => res(ctx.delay(delay), ctx.status(200), ctx.json(settings))),
+  rest.get(routes.SETTINGS, (req, res, ctx) => {
+    const { applicationId } = qs.parse(req.url.search, { ignoreQueryPrefix: true });
+
+    return res(ctx.delay(delay), ctx.status(200), ctx.json(settings[applicationId] || {}));
+  }),
   rest.put(routes.SETTINGS, (req, res, ctx) => res(ctx.delay(delay), ctx.status(200), ctx.json(req.body))),
 
   // Feature
@@ -80,9 +90,9 @@ export const handlers = [
 
   // Pagination example
   rest.post(routes.PAGINATION, (req, res, ctx) => {
-    const parsed = req.body.split('&');
-    const limit = Number(parsed[0].slice(6));
-    const offset = Number(parsed[1].slice(7));
+    const parsed = qs.parse(req.body);
+    const limit = Number(parsed.limit);
+    const offset = Number(parsed.offset);
 
     const items = pagination.slice(offset, offset + limit);
     const response = { totalCount: pagination.length, count: items.length, offset, limit, items };
