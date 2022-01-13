@@ -1,11 +1,9 @@
 import React from 'react';
-import { render, fireEvent, cleanup, waitFor } from '@testing-library/react';
+import { render, fireEvent, waitFor } from '@testing-library/react';
 import { AvForm } from 'availity-reactstrap-validation';
 import { Button } from 'reactstrap';
 
 import { AvSelectField } from '..';
-
-afterEach(cleanup);
 
 const options = [
   { label: 'Option 1', value: 'value for option 1' },
@@ -33,6 +31,7 @@ describe('AvSelect', () => {
     const select = getByText('Hello World');
     expect(select).toBeDefined();
   });
+
   test('works with error message', async () => {
     const { getByText } = renderSelect({
       options,
