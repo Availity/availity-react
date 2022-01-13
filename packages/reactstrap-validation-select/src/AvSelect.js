@@ -227,7 +227,15 @@ class AvSelect extends AvBaseInput {
   }
 
   render() {
-    const { className, selectRef, styles, creatable, options, ...attributes } = this.props;
+    const {
+      className,
+      selectRef,
+      styles,
+      creatable,
+      options,
+      components: componentsOverride,
+      ...attributes
+    } = this.props;
     const { newOptions } = this.state;
     const touched = this.context.FormCtrl && this.context.FormCtrl.isTouched(this.props.name);
     const hasError = this.context.FormCtrl && this.context.FormCtrl.hasError(this.props.name);
@@ -345,7 +353,7 @@ class AvSelect extends AvBaseInput {
         })}
         options={!attributes.loadOptions ? [...options, ...newOptions] : undefined}
         onCreateOption={this.handleCreate}
-        components={components}
+        components={{ ...components, ...componentsOverride }}
         {...attributes}
         {...this.getValidatorProps()}
         value={this.getViewValue()}
