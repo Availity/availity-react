@@ -609,4 +609,54 @@ describe('DateRange', () => {
     const pickedYear = within(nextGridYearPicker).getByText(newYear);
     expect(pickedYear).toBeDefined();
   });
+
+  test('renders outside days when enableOutsideDays is enabled', async () => {
+    const { container } = render(
+      <Form
+        initialValues={{
+          dateRange: undefined,
+        }}
+      >
+        <DateRange id="dateRange" name="dateRange" />
+        <Button type="submit">Submit</Button>
+      </Form>
+    );
+
+    container.querySelector('.DateInput_input_1').focus();
+
+    await waitFor(() => {
+      expect(
+        container.querySelector('.DayPicker_calendarInfo__horizontal DayPicker_calendarInfo__horizontal_1')
+      ).toBeDefined();
+    });
+
+    const outsideDays = container.querySelectorAll('.CalendarDay__outside');
+    expect(outsideDays).toBeDefined();
+    expect(outsideDays.length).toBeGreaterThan(0);
+  });
+
+  test('does not render outside days when enableOutsideDays is disabled', async () => {
+    const { container } = render(
+      <Form
+        initialValues={{
+          dateRange: undefined,
+        }}
+      >
+        <DateRange id="dateRange" name="dateRange" datepickerProps={{ enableOutsideDays: false }} />
+        <Button type="submit">Submit</Button>
+      </Form>
+    );
+
+    container.querySelector('.DateInput_input_1').focus();
+
+    await waitFor(() => {
+      expect(
+        container.querySelector('.DayPicker_calendarInfo__horizontal DayPicker_calendarInfo__horizontal_1')
+      ).toBeDefined();
+    });
+
+    const outsideDays = container.querySelectorAll('.CalendarDay__outside');
+    expect(outsideDays).toBeDefined();
+    expect(outsideDays.length).toBe(0);
+  });
 });

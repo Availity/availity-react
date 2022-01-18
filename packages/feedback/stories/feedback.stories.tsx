@@ -5,8 +5,6 @@ import Feedback from '../src/Feedback';
 import FeedbackForm from '../src/FeedbackForm';
 // import README from '../README.md';
 
-import '@availity/mock';
-
 export default {
   title: 'Components/Feedback',
   parameters: {

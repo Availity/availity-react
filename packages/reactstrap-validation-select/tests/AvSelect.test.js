@@ -1,11 +1,9 @@
 import React from 'react';
-import { render, fireEvent, waitFor, cleanup } from '@testing-library/react';
+import { render, fireEvent, waitFor } from '@testing-library/react';
 import { AvForm, AvInput } from 'availity-reactstrap-validation';
 import { Button } from 'reactstrap';
 
 import AvSelect from '..';
-
-afterEach(cleanup);
 
 const options = [
   { label: 'Option 1', value: 'value for option 1' },
@@ -97,7 +95,7 @@ describe('AvSelect', () => {
     const submitButton = getByText('Submit');
     expect(submitButton).toBeDefined();
 
-    await fireEvent.click(submitButton);
+    fireEvent.click(submitButton);
 
     // Check for proper object format in payload
     await waitFor(() => {
@@ -159,7 +157,7 @@ describe('AvSelect', () => {
     const submitButton = getByText('Submit');
     expect(submitButton).toBeDefined();
 
-    await fireEvent.click(submitButton);
+    fireEvent.click(submitButton);
 
     // Check that values got autofilled
     await waitFor(() => {
@@ -232,7 +230,7 @@ describe('AvSelect', () => {
     const submitButton = getByText('Submit');
     expect(submitButton).toBeDefined();
 
-    await fireEvent.click(submitButton);
+    fireEvent.click(submitButton);
 
     // Check that values got autofilled
     await waitFor(() => {

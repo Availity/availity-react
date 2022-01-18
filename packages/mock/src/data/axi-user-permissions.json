@@ -1,0 +1,70 @@
+{
+  "axiUserPermissions": [
+    {
+      "id": "1234",
+      "description": "Claim Research Tool",
+      "organizations": [
+        {
+          "id": "1111",
+          "customerId": "1194",
+          "name": "Techmania"
+        }
+      ]
+    },
+    {
+      "id": "2345",
+      "description": "Reporting and Analytics",
+      "organizations": [
+        {
+          "id": "1111",
+          "customerId": "1194",
+          "name": "Techmania"
+        }
+      ]
+    },
+    {
+      "id": "3456",
+      "description": "Care Reminders",
+      "organizations": [
+        {
+          "id": "1111",
+          "customerId": "1194",
+          "name": "Techmania"
+        }
+      ]
+    },
+    {
+      "id": "4567",
+      "description": "Authorization Request",
+      "organizations": [
+        {
+          "id": "1111",
+          "customerId": "1194",
+          "name": "Techmania"
+        }
+      ]
+    },
+    {
+      "id": "5678",
+      "description": "Fee Schedules",
+      "organizations": [
+        {
+          "id": "1111",
+          "customerId": "1194",
+          "name": "Techmania"
+        }
+      ]
+    },
+    {
+      "id": "6789",
+      "description": "Referral Request",
+      "organizations": [
+        {
+          "id": "1111",
+          "customerId": "1194",
+          "name": "Techmania"
+        }
+      ]
+    }
+  ]
+}

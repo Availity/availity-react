@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# 2.4.0 (2022-01-13)
+
+
+### Features
+
+* **select:** allow components override ([3db073d](https://github.com/Availity/availity-react/commit/3db073dc3b3dd3532b60f809ed349a61e14ab17f))
+
+
+
+
+
 ## [2.3.2](https://github.com/Availity/availity-react/compare/@availity/select@2.3.1...@availity/select@2.3.2) (2021-12-20)
 
 **Note:** Version bump only for package @availity/select

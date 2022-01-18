@@ -3,6 +3,31 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [3.4.0](https://github.com/Availity/availity-react/compare/@availity/date@3.3.2...@availity/date@3.4.0) (2022-01-05)
+
+
+### Features
+
+* **date:** add back in dangling commas ([9c87374](https://github.com/Availity/availity-react/commit/9c873744d0f4cc5fd96ef4e9175f722c7d7e805f))
+* **date:** undo changes, just move enableOutsideDays above spread so we can override it ([52ba998](https://github.com/Availity/availity-react/commit/52ba998a52b1527e12c763bbad9240e522b7a2c3))
+* **table:** add enableOutsideDays attribute so that this can be configured rather than automatically set to true ([c880cc6](https://github.com/Availity/availity-react/commit/c880cc65dc6ae58b37983cb533e64a30c18f5654))
+
+
+
+
+
+## 3.3.2 (2022-01-05)
+
+
+### Bug Fixes
+
+* **date:** fix console error that happens whenever selecting a range for the date range ([3d50680](https://github.com/Availity/availity-react/commit/3d50680f53860673ef0968fa2ea3217594d843d5))
+* **date:** remove calendarIconRef completely ([0d72d9d](https://github.com/Availity/availity-react/commit/0d72d9df929a4abd8173024d7e0046fa5932e3dd))
+
+
+
+
+
 ## [3.3.1](https://github.com/Availity/availity-react/compare/@availity/date@3.3.0...@availity/date@3.3.1) (2021-12-20)
 
 **Note:** Version bump only for package @availity/date

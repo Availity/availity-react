@@ -16,3 +16,4 @@ reports/
 /**/lib
 /**/node_modules
 /**/storybook-docs
+/**/storybook-static

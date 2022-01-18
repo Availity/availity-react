@@ -1,11 +1,11 @@
 import React from 'react';
-import { render, fireEvent, waitFor, cleanup } from '@testing-library/react';
+import { render, fireEvent, waitFor } from '@testing-library/react';
 import { Button } from 'reactstrap';
+import { components } from 'react-select';
 import * as yup from 'yup';
 import { Form, Input } from '@availity/form';
-import Select from '..';
 
-afterEach(cleanup);
+import Select from '..';
 
 const singleValueSchema = (name) =>
   yup.object().shape({
@@ -76,7 +76,7 @@ describe('Select', () => {
 
     await selectItem(container, getByText, 'Option 1');
 
-    await fireEvent.click(getByText('Submit'));
+    fireEvent.click(getByText('Submit'));
 
     await waitFor(() => {
       expect(onSubmit).toHaveBeenCalledWith(
@@ -105,7 +105,7 @@ describe('Select', () => {
 
     await selectItem(container, getByText, 'Option 1');
 
-    await fireEvent.click(getByText('Submit'));
+    fireEvent.click(getByText('Submit'));
 
     await waitFor(() => {
       expect(onSubmit).toHaveBeenCalledWith(
@@ -134,7 +134,7 @@ describe('Select', () => {
 
     await selectItem(container, getByText, 'Option 1');
 
-    await fireEvent.click(getByText('Submit'));
+    fireEvent.click(getByText('Submit'));
 
     await waitFor(() => {
       expect(onSubmit).toHaveBeenCalledWith(
@@ -164,7 +164,7 @@ describe('Select', () => {
     await selectItem(container, getByText, 'Option 1');
     await selectItem(container, getByText, 'Option 2');
 
-    await fireEvent.click(getByText('Submit'));
+    fireEvent.click(getByText('Submit'));
 
     await waitFor(() => {
       expect(onSubmit).toHaveBeenCalledWith(
@@ -193,7 +193,7 @@ describe('Select', () => {
 
     await selectItem(container, getByText, 'Select all');
 
-    await fireEvent.click(getByText('Submit'));
+    fireEvent.click(getByText('Submit'));
 
     await waitFor(() => {
       expect(onSubmit).toHaveBeenCalledWith(
@@ -222,7 +222,7 @@ describe('Select', () => {
 
     await selectItem(container, getByText, 'Select all');
 
-    await fireEvent.click(getByText('Submit'));
+    fireEvent.click(getByText('Submit'));
 
     await waitFor(() => {
       expect(onSubmit).toHaveBeenCalledWith(
@@ -251,7 +251,7 @@ describe('Select', () => {
 
     await selectItem(container, getByText, 'Select all');
 
-    await fireEvent.click(getByText('Submit'));
+    fireEvent.click(getByText('Submit'));
 
     await waitFor(() => {
       expect(onSubmit).toHaveBeenCalledWith(
@@ -277,7 +277,7 @@ describe('Select', () => {
       </Form>
     );
 
-    await fireEvent.click(getByText('Submit'));
+    fireEvent.click(getByText('Submit'));
 
     await waitFor(() => {
       const select = container.querySelector('.av-select');
@@ -308,7 +308,7 @@ describe('Select', () => {
     // This will not get added
     await selectItem(container, getByText, 'Option 3');
 
-    await fireEvent.click(getByText('Submit'));
+    fireEvent.click(getByText('Submit'));
 
     await waitFor(() => {
       expect(onSubmit).toHaveBeenCalledWith(
@@ -337,7 +337,7 @@ describe('Select', () => {
 
     await selectItem(container, getByText, 'Option 1');
 
-    await fireEvent.click(getByText('Submit'));
+    fireEvent.click(getByText('Submit'));
 
     await waitFor(() => {
       expect(onSubmit).toHaveBeenCalledWith(
@@ -408,7 +408,7 @@ describe('Select', () => {
     const submitButton = getByText('Submit');
     expect(submitButton).toBeDefined();
 
-    await fireEvent.click(submitButton);
+    fireEvent.click(submitButton);
 
     // Check that values got autofilled
     await waitFor(() => {
@@ -490,7 +490,7 @@ describe('Select', () => {
     const submitButton = getByText('Submit');
     expect(submitButton).toBeDefined();
 
-    await fireEvent.click(submitButton);
+    fireEvent.click(submitButton);
 
     // Check that values got autofilled
     await waitFor(() => {
@@ -561,7 +561,7 @@ describe('Select', () => {
     const submitButton = getByText('Submit');
     expect(submitButton).toBeDefined();
 
-    await fireEvent.click(submitButton);
+    fireEvent.click(submitButton);
 
     await waitFor(() => {
       expect(onSubmit).toHaveBeenCalledTimes(1);
@@ -637,7 +637,7 @@ describe('Select', () => {
     const submitButton = getByText('Submit');
     expect(submitButton).toBeDefined();
 
-    await fireEvent.click(submitButton);
+    fireEvent.click(submitButton);
 
     await waitFor(() => {
       expect(onSubmit).toHaveBeenCalledTimes(1);
@@ -821,5 +821,34 @@ describe('Select', () => {
       expect(select).not.toHaveAttribute('aria-invalid');
       expect(select).toHaveAttribute('aria-errormessage', '');
     });
+  });
+
+  test('allow component overrides', async () => {
+    // Display 'Foo' as the selected value instead of the given option
+    const SingleValue = (props) => <components.SingleValue {...props}>Foo</components.SingleValue>;
+
+    const onSubmit = jest.fn();
+    const { container, getByText } = render(
+      <Form
+        initialValues={{
+          singleSelect: undefined,
+        }}
+        onSubmit={onSubmit}
+        validationSchema={singleValueSchema('singleSelect')}
+      >
+        <Select name="singleSelect" options={options} data-testid="single-select" components={{ SingleValue }} />
+        <Button type="submit">Submit</Button>
+      </Form>
+    );
+
+    const select = container.querySelector('.av__control');
+
+    // Open the dropdown
+    fireEvent.click(select);
+    // Hover down to the first option and select
+    fireEvent.keyDown(select, { key: 'ArrowDown', keyCode: 40 });
+    fireEvent.keyDown(select, { key: 'Enter', keyCode: 13 });
+
+    expect(getByText('Foo')).toBeDefined();
   });
 });
