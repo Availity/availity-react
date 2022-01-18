@@ -21,7 +21,7 @@
   "main": "index.js",
   "types": "index.d.ts",
   "dependencies": {
-    "@availity/react-dates": "21.11.4",
+    "@availity/react-dates": "^21.12.1",
     "@types/react-dates": "^21.8.2",
     "classnames": "^2.3.1",
     "lodash": "^4.17.21",
