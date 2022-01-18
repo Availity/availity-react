@@ -1,0 +1,273 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`TableSorter should render sort options in dropdown menu 1`] = `
+<div>
+  <div
+    class="table-controls"
+  >
+    <form
+      class="form-inline"
+    >
+      <div
+        class="table-controls-sorting mb-2 me-sm-2 mb-sm-0 input-group"
+        data-testid="sorter_input_group"
+      >
+        <label
+          class="me-sm-2 pr-1 pl-2"
+        >
+          <strong>
+            Sort By: 
+          </strong>
+        </label>
+        <div
+          class="m1-1 btn-group"
+        >
+          <button
+            aria-expanded="false"
+            aria-haspopup="true"
+            class="dropdown-toggle btn btn-secondary"
+            data-testid="sorter_toggle"
+            type="button"
+          >
+             First name
+          </button>
+          <div
+            aria-hidden="true"
+            class="dropdown-menu"
+            data-testid="sorter_menu"
+            role="menu"
+            tabindex="-1"
+          >
+            <button
+              class="dropdown-item"
+              data-testid="sorter_menu_first_name"
+              role="menuitem"
+              tabindex="0"
+              type="button"
+            >
+               First name
+            </button>
+          </div>
+          <button
+            class="btn btn-secondary"
+            data-testid="btn_toggle_sort_dir"
+            id="btn-toggle-sort-dir"
+            type="button"
+          >
+            <i
+              aria-hidden="true"
+              class="icon icon-sort-alt-down"
+              data-testid="btn_toggle_sort_dir_icon"
+            />
+          </button>
+        </div>
+      </div>
+    </form>
+  </div>
+</div>
+`;
+
+exports[`TableSorter should render table Sorter 1`] = `
+<div>
+  <div
+    class="table-controls"
+  >
+    <form
+      class="form-inline"
+    >
+      <div
+        class="table-controls-sorting mb-2 me-sm-2 mb-sm-0 input-group"
+        data-testid="sorter_input_group"
+      >
+        <label
+          class="me-sm-2 pr-1 pl-2"
+        >
+          <strong>
+            Sort By: 
+          </strong>
+        </label>
+        <div
+          class="m1-1 btn-group"
+        >
+          <button
+            aria-expanded="false"
+            aria-haspopup="true"
+            class="dropdown-toggle btn btn-secondary"
+            data-testid="sorter_toggle"
+            type="button"
+          >
+            <span
+              class="sr-only"
+            >
+              Toggle Dropdown
+            </span>
+          </button>
+          <div
+            aria-hidden="true"
+            class="dropdown-menu"
+            data-testid="sorter_menu"
+            role="menu"
+            tabindex="-1"
+          >
+            <button
+              class="dropdown-item"
+              data-testid="sorter_menu_first_name"
+              role="menuitem"
+              tabindex="0"
+              type="button"
+            >
+              First Name
+            </button>
+          </div>
+          <button
+            class="btn btn-secondary"
+            data-testid="btn_toggle_sort_dir"
+            id="btn-toggle-sort-dir"
+            type="button"
+          >
+            <i
+              aria-hidden="true"
+              class="icon icon-sort-alt-down"
+              data-testid="btn_toggle_sort_dir_icon"
+            />
+          </button>
+        </div>
+      </div>
+    </form>
+  </div>
+</div>
+`;
+
+exports[`TableSorter should show ascending icon 1`] = `
+<div>
+  <div
+    class="table-controls"
+  >
+    <form
+      class="form-inline"
+    >
+      <div
+        class="table-controls-sorting mb-2 me-sm-2 mb-sm-0 input-group"
+        data-testid="sorter_input_group"
+      >
+        <label
+          class="me-sm-2 pr-1 pl-2"
+        >
+          <strong>
+            Sort By: 
+          </strong>
+        </label>
+        <div
+          class="m1-1 btn-group"
+        >
+          <button
+            aria-expanded="false"
+            aria-haspopup="true"
+            class="dropdown-toggle btn btn-secondary"
+            data-testid="sorter_toggle"
+            type="button"
+          >
+             First name
+          </button>
+          <div
+            aria-hidden="true"
+            class="dropdown-menu"
+            data-testid="sorter_menu"
+            role="menu"
+            tabindex="-1"
+          >
+            <button
+              class="dropdown-item"
+              data-testid="sorter_menu_first_name"
+              role="menuitem"
+              tabindex="0"
+              type="button"
+            >
+               First name
+            </button>
+          </div>
+          <button
+            class="btn btn-secondary"
+            data-testid="btn_toggle_sort_dir"
+            id="btn-toggle-sort-dir"
+            type="button"
+          >
+            <i
+              aria-hidden="true"
+              class="icon icon-sort-alt-up"
+              data-testid="btn_toggle_sort_dir_icon"
+            />
+          </button>
+        </div>
+      </div>
+    </form>
+  </div>
+</div>
+`;
+
+exports[`TableSorter should show descending icon 1`] = `
+<div>
+  <div
+    class="table-controls"
+  >
+    <form
+      class="form-inline"
+    >
+      <div
+        class="table-controls-sorting mb-2 me-sm-2 mb-sm-0 input-group"
+        data-testid="sorter_input_group"
+      >
+        <label
+          class="me-sm-2 pr-1 pl-2"
+        >
+          <strong>
+            Sort By: 
+          </strong>
+        </label>
+        <div
+          class="m1-1 btn-group"
+        >
+          <button
+            aria-expanded="false"
+            aria-haspopup="true"
+            class="dropdown-toggle btn btn-secondary"
+            data-testid="sorter_toggle"
+            type="button"
+          >
+             First name
+          </button>
+          <div
+            aria-hidden="true"
+            class="dropdown-menu"
+            data-testid="sorter_menu"
+            role="menu"
+            tabindex="-1"
+          >
+            <button
+              class="dropdown-item"
+              data-testid="sorter_menu_first_name"
+              role="menuitem"
+              tabindex="0"
+              type="button"
+            >
+               First name
+            </button>
+          </div>
+          <button
+            class="btn btn-secondary"
+            data-testid="btn_toggle_sort_dir"
+            id="btn-toggle-sort-dir"
+            type="button"
+          >
+            <i
+              aria-hidden="true"
+              class="icon icon-sort-alt-down"
+              data-testid="btn_toggle_sort_dir_icon"
+            />
+          </button>
+        </div>
+      </div>
+    </form>
+  </div>
+</div>
+`;

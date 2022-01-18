@@ -15,15 +15,15 @@
   },
   "license": "MIT",
   "author": "Ashlee Zeigler <ashlee.zeigler@availity.com>",
-  "main": "index.js",
-  "types": "index.d.ts",
+  "main": "dist/index.js",
+  "module": "dist/index.js",
+  "types": "dist/index.d.ts",
   "dependencies": {
     "@availity/icon": "^0.10.2",
     "@types/react-table": "^7.7.7",
     "classnames": "^2.3.1",
     "lodash": "^4.17.21",
     "moment": "^2.29.1",
-    "prop-types": "^15.7.2",
     "react-table": "^7.7.0",
     "reactstrap": "^8.9.0"
   },

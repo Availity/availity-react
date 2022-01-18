@@ -1,0 +1,488 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`TableControls should disable all records when disabled is false 1`] = `
+<div>
+  <div
+    class="table-controls"
+  >
+    <form
+      class="form-inline"
+    >
+      <div
+        class="btn-group btn-group"
+        data-testid="bulk_actions_btn_group"
+        role="group"
+      >
+        <button
+          class="btn btn-secondary"
+          data-testid="select_deselect_all_records"
+          type="button"
+        >
+          <span
+            class="badge badge-secondary badge-pill"
+          >
+            0
+          </span>
+           
+          Select
+           All 
+          Records
+        </button>
+        <div
+          class="btn-group"
+        >
+          <button
+            aria-expanded="false"
+            aria-haspopup="true"
+            class="dropdown-toggle btn btn-secondary disabled"
+            data-testid="bulk_actions_toggle"
+            disabled=""
+            type="button"
+          >
+            <span
+              class="sr-only"
+            >
+              Toggle Dropdown
+            </span>
+          </button>
+          <div
+            aria-hidden="true"
+            class="dropdown-menu"
+            role="menu"
+            tabindex="-1"
+          >
+            <button
+              class="dropdown-item"
+              data-testid="bulk_action_action1"
+              role="menuitem"
+              tabindex="0"
+              type="button"
+            >
+              Action 1
+            </button>
+            <button
+              class="dropdown-item"
+              data-testid="bulk_action_action2"
+              role="menuitem"
+              tabindex="0"
+              type="button"
+            >
+              Action 2
+            </button>
+          </div>
+        </div>
+      </div>
+      <div
+        class="table-controls-sorting mb-2 me-sm-2 mb-sm-0 input-group"
+        data-testid="sorter_input_group"
+      >
+        <label
+          class="me-sm-2 pr-1 pl-2"
+        >
+          <strong>
+            Sort By: 
+          </strong>
+        </label>
+        <div
+          class="m1-1 btn-group"
+        >
+          <button
+            aria-expanded="false"
+            aria-haspopup="true"
+            class="dropdown-toggle btn btn-secondary"
+            data-testid="sorter_toggle"
+            type="button"
+          >
+            <span
+              class="sr-only"
+            >
+              Toggle Dropdown
+            </span>
+          </button>
+          <div
+            aria-hidden="true"
+            class="dropdown-menu"
+            data-testid="sorter_menu"
+            role="menu"
+            tabindex="-1"
+          >
+            <button
+              class="dropdown-item"
+              data-testid="sorter_menu_first_name"
+              role="menuitem"
+              tabindex="0"
+              type="button"
+            >
+              First Name
+            </button>
+          </div>
+          <button
+            class="btn btn-secondary"
+            data-testid="btn_toggle_sort_dir"
+            id="btn-toggle-sort-dir"
+            type="button"
+          >
+            <i
+              aria-hidden="true"
+              class="icon icon-sort-alt-down"
+              data-testid="btn_toggle_sort_dir_icon"
+            />
+          </button>
+        </div>
+      </div>
+    </form>
+  </div>
+</div>
+`;
+
+exports[`TableControls should disable all records when disabled is true 1`] = `
+<div>
+  <div
+    class="table-controls"
+  >
+    <form
+      class="form-inline"
+    >
+      <div
+        class="btn-group btn-group"
+        data-testid="bulk_actions_btn_group"
+        disabled=""
+        role="group"
+      >
+        <button
+          class="btn btn-secondary disabled"
+          data-testid="select_deselect_all_records"
+          disabled=""
+          type="button"
+        >
+          <span
+            class="badge badge-secondary badge-pill"
+          >
+            0
+          </span>
+           
+          Select
+           All 
+          Records
+        </button>
+        <div
+          class="btn-group"
+        >
+          <button
+            aria-expanded="false"
+            aria-haspopup="true"
+            class="dropdown-toggle btn btn-secondary disabled"
+            data-testid="bulk_actions_toggle"
+            disabled=""
+            type="button"
+          >
+            <span
+              class="sr-only"
+            >
+              Toggle Dropdown
+            </span>
+          </button>
+          <div
+            aria-hidden="true"
+            class="dropdown-menu"
+            role="menu"
+            tabindex="-1"
+          >
+            <button
+              class="dropdown-item"
+              data-testid="bulk_action_action1"
+              role="menuitem"
+              tabindex="0"
+              type="button"
+            >
+              Action 1
+            </button>
+            <button
+              class="dropdown-item"
+              data-testid="bulk_action_action2"
+              role="menuitem"
+              tabindex="0"
+              type="button"
+            >
+              Action 2
+            </button>
+          </div>
+        </div>
+      </div>
+      <div
+        class="table-controls-sorting mb-2 me-sm-2 mb-sm-0 input-group"
+        data-testid="sorter_input_group"
+      >
+        <label
+          class="me-sm-2 pr-1 pl-2"
+        >
+          <strong>
+            Sort By: 
+          </strong>
+        </label>
+        <div
+          class="m1-1 btn-group"
+        >
+          <button
+            aria-expanded="false"
+            aria-haspopup="true"
+            class="dropdown-toggle btn btn-secondary disabled"
+            data-testid="sorter_toggle"
+            disabled=""
+            type="button"
+          >
+            <span
+              class="sr-only"
+            >
+              Toggle Dropdown
+            </span>
+          </button>
+          <div
+            aria-hidden="true"
+            class="dropdown-menu"
+            data-testid="sorter_menu"
+            disabled=""
+            role="menu"
+            tabindex="-1"
+          >
+            <button
+              class="dropdown-item"
+              data-testid="sorter_menu_first_name"
+              role="menuitem"
+              tabindex="0"
+              type="button"
+            >
+              First Name
+            </button>
+          </div>
+          <button
+            class="btn btn-secondary disabled"
+            data-testid="btn_toggle_sort_dir"
+            disabled=""
+            id="btn-toggle-sort-dir"
+            type="button"
+          >
+            <i
+              aria-hidden="true"
+              class="icon icon-sort-alt-down"
+              data-testid="btn_toggle_sort_dir_icon"
+            />
+          </button>
+        </div>
+      </div>
+    </form>
+  </div>
+</div>
+`;
+
+exports[`TableControls should render table controls with one child 1`] = `
+<div>
+  <div
+    class="table-controls"
+  >
+    <form
+      class="form-inline"
+    >
+      <div
+        class="btn-group btn-group"
+        data-testid="bulk_actions_btn_group"
+        role="group"
+      >
+        <button
+          class="btn btn-secondary"
+          data-testid="select_deselect_all_records"
+          type="button"
+        >
+          <span
+            class="badge badge-secondary badge-pill"
+          >
+            0
+          </span>
+           
+          Select
+           All 
+          Records
+        </button>
+        <div
+          class="btn-group"
+        >
+          <button
+            aria-expanded="false"
+            aria-haspopup="true"
+            class="dropdown-toggle btn btn-secondary disabled"
+            data-testid="bulk_actions_toggle"
+            disabled=""
+            type="button"
+          >
+            <span
+              class="sr-only"
+            >
+              Toggle Dropdown
+            </span>
+          </button>
+          <div
+            aria-hidden="true"
+            class="dropdown-menu"
+            role="menu"
+            tabindex="-1"
+          >
+            <button
+              class="dropdown-item"
+              data-testid="bulk_action_action1"
+              role="menuitem"
+              tabindex="0"
+              type="button"
+            >
+              Action 1
+            </button>
+            <button
+              class="dropdown-item"
+              data-testid="bulk_action_action2"
+              role="menuitem"
+              tabindex="0"
+              type="button"
+            >
+              Action 2
+            </button>
+          </div>
+        </div>
+      </div>
+    </form>
+  </div>
+</div>
+`;
+
+exports[`TableControls should render table controls with two children 1`] = `
+<div>
+  <div
+    class="table-controls"
+  >
+    <form
+      class="form-inline"
+    >
+      <div
+        class="btn-group btn-group"
+        data-testid="bulk_actions_btn_group"
+        role="group"
+      >
+        <button
+          class="btn btn-secondary"
+          data-testid="select_deselect_all_records"
+          type="button"
+        >
+          <span
+            class="badge badge-secondary badge-pill"
+          >
+            0
+          </span>
+           
+          Select
+           All 
+          Records
+        </button>
+        <div
+          class="btn-group"
+        >
+          <button
+            aria-expanded="false"
+            aria-haspopup="true"
+            class="dropdown-toggle btn btn-secondary disabled"
+            data-testid="bulk_actions_toggle"
+            disabled=""
+            type="button"
+          >
+            <span
+              class="sr-only"
+            >
+              Toggle Dropdown
+            </span>
+          </button>
+          <div
+            aria-hidden="true"
+            class="dropdown-menu"
+            role="menu"
+            tabindex="-1"
+          >
+            <button
+              class="dropdown-item"
+              data-testid="bulk_action_action1"
+              role="menuitem"
+              tabindex="0"
+              type="button"
+            >
+              Action 1
+            </button>
+            <button
+              class="dropdown-item"
+              data-testid="bulk_action_action2"
+              role="menuitem"
+              tabindex="0"
+              type="button"
+            >
+              Action 2
+            </button>
+          </div>
+        </div>
+      </div>
+      <div
+        class="table-controls-sorting mb-2 me-sm-2 mb-sm-0 input-group"
+        data-testid="sorter_input_group"
+      >
+        <label
+          class="me-sm-2 pr-1 pl-2"
+        >
+          <strong>
+            Sort By: 
+          </strong>
+        </label>
+        <div
+          class="m1-1 btn-group"
+        >
+          <button
+            aria-expanded="false"
+            aria-haspopup="true"
+            class="dropdown-toggle btn btn-secondary"
+            data-testid="sorter_toggle"
+            type="button"
+          >
+            <span
+              class="sr-only"
+            >
+              Toggle Dropdown
+            </span>
+          </button>
+          <div
+            aria-hidden="true"
+            class="dropdown-menu"
+            data-testid="sorter_menu"
+            role="menu"
+            tabindex="-1"
+          >
+            <button
+              class="dropdown-item"
+              data-testid="sorter_menu_first_name"
+              role="menuitem"
+              tabindex="0"
+              type="button"
+            >
+              First Name
+            </button>
+          </div>
+          <button
+            class="btn btn-secondary"
+            data-testid="btn_toggle_sort_dir"
+            id="btn-toggle-sort-dir"
+            type="button"
+          >
+            <i
+              aria-hidden="true"
+              class="icon icon-sort-alt-down"
+              data-testid="btn_toggle_sort_dir_icon"
+            />
+          </button>
+        </div>
+      </div>
+    </form>
+  </div>
+</div>
+`;

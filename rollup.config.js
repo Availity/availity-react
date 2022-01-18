@@ -4,7 +4,7 @@ import commonjs from '@rollup/plugin-commonjs';
 import typescript from 'rollup-plugin-typescript2';
 import postcss from 'rollup-plugin-postcss';
 
-const packages = ['icon', 'training-link'];
+const packages = ['icon', 'training-link', 'table'];
 
 // rollup.config.js
 /**
@@ -34,7 +34,8 @@ export default () =>
         commonjs(),
         typescript({
           tsconfigOverride: {
-            files: [`${pkgPath}/src/index.ts`],
+            include: [`${pkgPath}/src`],
+            exclude: [`${pkgPath}/src/**/*.test.tsx`],
           },
         }),
         postcss(),

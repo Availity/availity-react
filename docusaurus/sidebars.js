@@ -123,6 +123,7 @@ module.exports = {
             items: [
               'components/table/index',
               'components/table/scrollableContainer',
+              'components/table/tableControls',
             ],
           },
           'components/training-link',
