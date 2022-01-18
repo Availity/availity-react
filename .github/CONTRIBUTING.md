@@ -44,7 +44,7 @@ Run `yarn build:components`, after packages are installed, to build the componen
 
 Commits should use the [Angular Commit Format](https://github.com/angular/angular/blob/master/CONTRIBUTING.md#type). Scope should be one of the un-prefixed names of the packages under `./packages/`. If a commit applies to multiple packages, leave out the scope.
 
-For example, here is what the commit message would like when fixing a null-checking error in the `icon` package:
+For example, here is what the commit message would like when fixing a null-checking error in the [icon](../packages/icon) package:
 
 ```bash
 git commit -m "fix(icon): check for null before doing the action"
