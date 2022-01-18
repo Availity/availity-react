@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [3.4.1](https://github.com/Availity/availity-react/compare/@availity/date@3.4.0...@availity/date@3.4.1) (2022-01-18)
+
+
+### Bug Fixes
+
+* **reactstrap-validation-date,date:** updated react-dates for phrases ([687d8a3](https://github.com/Availity/availity-react/commit/687d8a350a3f2bceb5f37e19e42781b3dbef9d0e))
+
+
+
+
+
 # [3.4.0](https://github.com/Availity/availity-react/compare/@availity/date@3.3.2...@availity/date@3.4.0) (2022-01-05)
 
 
