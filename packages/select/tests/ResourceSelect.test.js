@@ -586,6 +586,70 @@ describe('ResourceSelect', () => {
     expect(avRegionsApi.postGet).toHaveBeenCalledTimes(1);
     expect(avRegionsApi.postGet.mock.calls[0][0]).toBe('q=flo&limit=50&offset=0');
   });
+
+  it('sends appropriate searchTerm parameter to API when searchTerm is provided', async () => {
+    avRegionsApi.post.mockResolvedValueOnce({
+      data: {
+        regions: [
+          {
+            id: 'FL',
+            value: 'Florida',
+          },
+          {
+            id: 'TX',
+            value: 'Texas',
+          },
+          {
+            id: 'WA',
+            value: 'Washington',
+          },
+        ],
+      },
+    });
+
+    const { container, getByText } = render(
+      <Form
+        initialValues={{
+          'test-form-input': undefined,
+        }}
+        onSubmit={onSubmit}
+      >
+        <ResourceSelect
+          name="test-form-input"
+          resource={avRegionsApi}
+          classNamePrefix="test__regions"
+          labelKey="value"
+          valueKey="id"
+          getResult="regions"
+          method="POST"
+          searchTerm="myCustomSearchParam"
+          minCharsToSearch={3}
+        />
+      </Form>
+    );
+
+    const regionsSelect = container.querySelector('.test__regions__control');
+
+    fireEvent.keyDown(regionsSelect, { key: 'ArrowDown', keyCode: 40 });
+    fireEvent.keyDown(regionsSelect, { key: 'Enter', keyCode: 13 });
+
+    fireEvent.keyDown(regionsSelect, {
+      key: 'w',
+      keyCode: 87,
+    });
+
+    await waitFor(() => expect(getByText('Florida')).toBeDefined());
+
+    waitFor(async () => {
+      expect(avRegionsApi.post).toHaveBeenCalledTimes(1);
+      expect(avRegionsApi.post.mock.calls[0][0]).toStrictEqual({
+        myCustomSearchParam: '',
+        limit: 50,
+        customerId: undefined,
+        offset: 0,
+      });
+    });
+  });
 });
 
 // -----
@@ -694,7 +758,6 @@ it('Sends custom parameters to API with method=POST', async () => {
     offset: 0,
   });
 });
-
 // ---
 
 // -----

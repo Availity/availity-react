@@ -167,6 +167,9 @@ async function postGet(data, config, additionalPostGetArgs) {
   return super.postGet(data, config);
 }
 ```
+#### `searchTerm?: string`
+
+If present, this will serve as the argument name for the typed search value when sending the request to the API. This defaults to `q`. 
 
 ### Pre-made Resource Selects
 
