@@ -25,7 +25,7 @@ export interface ResourceSelectProps<T> extends SelectFieldProps<T> {
   debounceTimeout?: number;
   customerId?: string;
   parameters?: object | ((params: any) => void);
-  method?: string;
+  method?: 'POST';
   itemsPerPage?: number;
   onPageChange?: Function;
   requiredParams?: any[];
