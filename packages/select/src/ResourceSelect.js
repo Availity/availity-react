@@ -89,7 +89,7 @@ const ResourceSelect = ({
         variables: {
           perPage: itemsPerPage,
           filters: {
-            q: encodeURIComponent(inputValue),
+            [searchTerm]: encodeURIComponent(inputValue),
           },
         },
       };
@@ -108,9 +108,8 @@ const ResourceSelect = ({
         data.query = graphqlConfig.query;
       }
     } else {
-      const searchParam = searchTerm || 'q';
-      params[searchParam] = encodeURIComponent(inputValue);
       params = {
+        [searchTerm]: encodeURIComponent(inputValue),
         limit: itemsPerPage,
         customerId: rest.customerId,
       };
