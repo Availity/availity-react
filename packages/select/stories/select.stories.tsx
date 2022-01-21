@@ -10,7 +10,6 @@ import { Feedback, FormGroup, Field, Label } from '@availity/form';
 import Select, { SelectField, ResourceSelect } from '..';
 // import README from '../README.md';
 
-import '@availity/mock';
 import FormikResults from '../../../story-utils/FormikResults';
 
 const options = [
@@ -64,7 +63,7 @@ const multiValueSchema = (name: string, required: boolean, min: number, max: num
       .isRequired(required, 'This field is required.'),
   });
 const avCustomResource = new AvApi({ name: 'my-custom-resource' });
-const avGraphqlResource = new AvApi({ name: 'my-graphql-resource' });
+const avGraphqlResource = new AvApi({ name: 'my-custom-graphql' });
 
 export default {
   title: 'Form Components/Select',
@@ -74,6 +73,7 @@ export default {
     },
   },
   args: {
+    autofill: false,
     creatable: false,
     disabled: false,
     helpMessage: 'This is a message to provide guidance',
@@ -117,9 +117,7 @@ export const Default: Story = ({ autofill, creatable, disabled, isMulti, max, mi
     </Button>
   </FormikResults>
 );
-Default.args = {
-  autofill: false,
-};
+Default.args = {};
 Default.storyName = 'default';
 
 export const WithLabel: Story = ({
@@ -173,7 +171,6 @@ export const WithLabel: Story = ({
   </FormikResults>
 );
 WithLabel.args = {
-  autofill: false,
   errorMessage: 'This field is invalid',
   label: 'Select Label',
 };
@@ -227,7 +224,6 @@ export const _SelectField: Story = ({
   </FormikResults>
 );
 _SelectField.args = {
-  autofill: false,
   helpId: '',
   label: 'Select Label',
 };
@@ -274,7 +270,7 @@ export const _ResourceSelect: Story = ({
   </FormikResults>
 );
 _ResourceSelect.args = {
-  label: 'Select Label',
+  label: 'Resource Select',
 };
 _ResourceSelect.storyName = 'ResourceSelect';
 
@@ -303,23 +299,21 @@ export const GraphQlResourceSelect: Story = ({ creatable, disabled, isMulti, lab
       creatable={creatable}
       isDisabled={disabled}
       graphqlConfig={{
-        type: 'region',
+        type: 'custom',
         query: `
-   {
-  regionPagination{
-    count
-    pageInfo{
-      hasNextPage
-    }
-    items{
-      id
-      value
-    }
-  }
-}
-`,
+          query customPagination {
+            count
+            pageInfo {
+              hasNextPage
+            }
+            items {
+              id
+              value
+            }
+          }
+        `,
       }}
-      getResult={(data) => data.regionPagination.items}
+      getResult={(response) => response.data.customPagination.items}
     />
     <Button color="primary" type="submit">
       Submit
@@ -327,6 +321,6 @@ export const GraphQlResourceSelect: Story = ({ creatable, disabled, isMulti, lab
   </FormikResults>
 );
 GraphQlResourceSelect.args = {
-  label: 'Select Label',
+  label: 'GraphQL Resource Select',
 };
 GraphQlResourceSelect.storyName = 'GraphQL ResourceSelect';

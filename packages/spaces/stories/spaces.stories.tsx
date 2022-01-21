@@ -12,8 +12,6 @@ import Spaces, {
 } from '..';
 // import README from '../README.md';
 
-import '@availity/mock';
-
 export default {
   title: 'Components/Spaces',
   parameters: {
@@ -25,11 +23,17 @@ export default {
 
 export const Images: Story = () => (
   <div>
+    <p>
+      We have 3 <code>Spaces</code> components that are used to display images. <code>SpacesLogo</code>,{' '}
+      <code>SpacesTile</code>, and <code>SpacesBillboard</code>. Examples for each are below. The component on the left
+      uses the <code>spaceId</code> prop, and the component on the right uses the <code>payerId</code> prop.
+    </p>
     <Spaces
       spaceIds={['space1', 'space2', 'space3']}
       payerIds={['availity1', 'availity2', 'availity3']}
       clientId="my-client-id"
     >
+      <p>Spaces Logo component</p>
       <Row className="mb-3">
         <Col sm={6}>
           <SpacesLogo spaceId="space1" />
@@ -39,6 +43,7 @@ export const Images: Story = () => (
         </Col>
       </Row>
 
+      <p>Spaces Tile component</p>
       <Row className="mb-3">
         <Col sm={6}>
           <SpacesTile spaceId="space2" />
@@ -48,6 +53,7 @@ export const Images: Story = () => (
         </Col>
       </Row>
 
+      <p>Spaces Billboard component</p>
       <Row className="mb-3">
         <Col sm={6}>
           <SpacesBillboard spaceId="space3" />
@@ -57,10 +63,6 @@ export const Images: Story = () => (
         </Col>
       </Row>
     </Spaces>
-
-    <div>
-      <p>Note: these spaces images use a relative URL which will only work on the Availity Portal</p>
-    </div>
   </div>
 );
 Images.storyName = 'images';
@@ -81,7 +83,7 @@ Disclaimer.storyName = 'disclaimer';
 export const Agreement: Story = ({ markdown }) => (
   <div>
     <Spaces spaceIds={['space1']} clientId="my-client-id">
-      <SpacesAgreement markdown={markdown} spaceId="space1" />
+      <SpacesAgreement markdown={markdown} spaceId="space2" />
     </Spaces>
   </div>
 );
@@ -93,7 +95,7 @@ Agreement.storyName = 'agreement';
 export const GhostText: Story = () => (
   <div>
     <Spaces spaceIds={['space1']} clientId="my-client-id">
-      <SpacesGhostText spaceId="space1" />
+      <SpacesGhostText spaceId="space3" />
     </Spaces>
   </div>
 );

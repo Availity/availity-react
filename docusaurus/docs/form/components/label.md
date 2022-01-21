@@ -32,8 +32,8 @@ const Example = () => (
   >
     <RequiredKey />
 
-    <Label for="hello" helpId="hello-help-id" required >
-        Hello
+    <Label for="hello" helpId="hello-help-id" required>
+      Hello
     </Label>
     <Input name="hello" />
     <Button type="submit" className="ml-1" color="primary">

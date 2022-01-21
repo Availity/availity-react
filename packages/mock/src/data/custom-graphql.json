@@ -1,0 +1,22 @@
+{
+  "customPagination": {
+    "count": 3,
+    "pageInfo": {
+      "hasNextPage": false
+    },
+    "items": [
+      {
+        "id": 1,
+        "value": "New York"
+      },
+      {
+        "id": 2,
+        "value": "Florida"
+      },
+      {
+        "id": 3,
+        "value": "Georgia"
+      }
+    ]
+  }
+}

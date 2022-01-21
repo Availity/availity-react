@@ -1,8 +1,9 @@
 import React, { useState } from 'react';
-import { fireEvent, render, waitFor, cleanup } from '@testing-library/react';
+import { fireEvent, render, waitFor } from '@testing-library/react';
 import { avRegionsApi, avProvidersApi, avCodesApi } from '@availity/api-axios';
 import { Button } from 'reactstrap';
 import { Form } from '@availity/form';
+
 import { ResourceSelect } from '..';
 import { AvProviderSelect, AvRegionSelect } from '../resources';
 
@@ -35,7 +36,6 @@ const renderSelect = (props) => {
 describe('ResourceSelect', () => {
   afterEach(() => {
     jest.clearAllMocks();
-    cleanup();
   });
 
   it('returns resource options', async () => {
@@ -70,7 +70,7 @@ describe('ResourceSelect', () => {
 
     fireEvent.click(regionsOption);
 
-    await fireEvent.click(getByText('Submit'));
+    fireEvent.click(getByText('Submit'));
     await waitFor(() => {
       expect(onSubmit).toHaveBeenCalledWith(
         expect.objectContaining({
@@ -277,7 +277,7 @@ describe('ResourceSelect', () => {
 
     fireEvent.click(regionsOption);
 
-    await fireEvent.click(getByText('Submit'));
+    fireEvent.click(getByText('Submit'));
     await waitFor(() => {
       expect(onSubmit).toHaveBeenCalledWith(
         expect.objectContaining({
@@ -317,7 +317,7 @@ describe('ResourceSelect', () => {
         expect(avRegionsApi.postGet).toHaveBeenCalled();
       });
 
-      await fireEvent.click(getByText('Submit'));
+      fireEvent.click(getByText('Submit'));
       await waitFor(() => {
         expect(onSubmit).toHaveBeenCalledWith(
           expect.objectContaining({
@@ -367,7 +367,7 @@ describe('ResourceSelect', () => {
         expect(avRegionsApi.postGet).toHaveBeenCalledTimes(1);
       });
 
-      await fireEvent.click(getByText('Submit'));
+      fireEvent.click(getByText('Submit'));
       await waitFor(() => {
         const testFormInput = onSubmit.mock.calls[0][0]['test-form-input'];
         expect(testFormInput).toEqual({
@@ -377,13 +377,13 @@ describe('ResourceSelect', () => {
       });
 
       // Change what cache uniq is
-      await fireEvent.click(getByTestId('btn-toggle-cacheUniq'));
+      fireEvent.click(getByTestId('btn-toggle-cacheUniq'));
 
       await waitFor(() => {
         expect(avRegionsApi.postGet).toHaveBeenCalledTimes(2);
       });
 
-      await fireEvent.click(getByText('Submit'));
+      fireEvent.click(getByText('Submit'));
 
       await waitFor(() => {
         const testFormInput = onSubmit.mock.calls[1][0]['test-form-input'];
@@ -423,7 +423,7 @@ describe('ResourceSelect', () => {
         expect(avRegionsApi.postGet).toHaveBeenCalled();
       });
 
-      await fireEvent.click(getByText('Submit'));
+      fireEvent.click(getByText('Submit'));
       await waitFor(() => {
         expect(onSubmit).toHaveBeenCalledWith(
           expect.objectContaining({
@@ -464,7 +464,7 @@ describe('ResourceSelect', () => {
           expect(avRegionsApi.postGet).toHaveBeenCalled();
         });
 
-        await fireEvent.click(getByText('Submit'));
+        fireEvent.click(getByText('Submit'));
         await waitFor(() => {
           expect(onSubmit).toHaveBeenCalledWith(
             expect.objectContaining({
@@ -586,6 +586,70 @@ describe('ResourceSelect', () => {
     expect(avRegionsApi.postGet).toHaveBeenCalledTimes(1);
     expect(avRegionsApi.postGet.mock.calls[0][0]).toBe('q=flo&limit=50&offset=0');
   });
+
+  it('sends appropriate searchTerm parameter to API when searchTerm is provided', async () => {
+    avRegionsApi.post.mockResolvedValueOnce({
+      data: {
+        regions: [
+          {
+            id: 'FL',
+            value: 'Florida',
+          },
+          {
+            id: 'TX',
+            value: 'Texas',
+          },
+          {
+            id: 'WA',
+            value: 'Washington',
+          },
+        ],
+      },
+    });
+
+    const { container, getByText } = render(
+      <Form
+        initialValues={{
+          'test-form-input': undefined,
+        }}
+        onSubmit={onSubmit}
+      >
+        <ResourceSelect
+          name="test-form-input"
+          resource={avRegionsApi}
+          classNamePrefix="test__regions"
+          labelKey="value"
+          valueKey="id"
+          getResult="regions"
+          method="POST"
+          searchTerm="myCustomSearchParam"
+          minCharsToSearch={3}
+        />
+      </Form>
+    );
+
+    const regionsSelect = container.querySelector('.test__regions__control');
+
+    fireEvent.keyDown(regionsSelect, { key: 'ArrowDown', keyCode: 40 });
+    fireEvent.keyDown(regionsSelect, { key: 'Enter', keyCode: 13 });
+
+    fireEvent.keyDown(regionsSelect, {
+      key: 'w',
+      keyCode: 87,
+    });
+
+    await waitFor(() => expect(getByText('Florida')).toBeDefined());
+
+    waitFor(async () => {
+      expect(avRegionsApi.post).toHaveBeenCalledTimes(1);
+      expect(avRegionsApi.post.mock.calls[0][0]).toStrictEqual({
+        myCustomSearchParam: '',
+        limit: 50,
+        customerId: undefined,
+        offset: 0,
+      });
+    });
+  });
 });
 
 // -----
@@ -694,7 +758,6 @@ it('Sends custom parameters to API with method=POST', async () => {
     offset: 0,
   });
 });
-
 // ---
 
 // -----
@@ -814,7 +877,7 @@ describe('Custom Resources', () => {
 
       const { getByText } = render(<RegionComponent regionProps={regionProps} />);
 
-      await fireEvent.click(getByText('Submit'));
+      fireEvent.click(getByText('Submit'));
       await waitFor(() => {
         expect(onSubmit).toHaveBeenCalledWith(
           expect.objectContaining({

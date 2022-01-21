@@ -3,6 +3,28 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [1.4.0](https://github.com/Availity/availity-react/compare/@availity/dinosaurdocs@1.3.2...@availity/dinosaurdocs@1.4.0) (2022-01-18)
+
+
+### Features
+
+* **table:** add some docs and fix some bulk actions work, toggle select ([e0c29bd](https://github.com/Availity/availity-react/commit/e0c29bdc128fd766da470efd697e7be449c162c5))
+* **table:** clean up naming, fix disable of controls ([639fc4f](https://github.com/Availity/availity-react/commit/639fc4f6cb588b566613802fe379011fc429756a))
+* **table:** code review fixes ([4893d96](https://github.com/Availity/availity-react/commit/4893d96bc70b346f2c8047f6d1df3916d9070d24))
+* **table:** update documentation paramsters ([8fda274](https://github.com/Availity/availity-react/commit/8fda274ec3bfb4e58ea2b81c74b11dc9cabd624e))
+
+
+
+
+
+## 1.3.2 (2022-01-05)
+
+**Note:** Version bump only for package @availity/dinosaurdocs
+
+
+
+
+
 ## 1.3.1 (2021-12-14)
 
 **Note:** Version bump only for package @availity/dinosaurdocs

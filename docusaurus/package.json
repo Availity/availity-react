@@ -1,6 +1,6 @@
 {
   "name": "@availity/dinosaurdocs",
-  "version": "1.3.1",
+  "version": "1.4.0",
   "private": true,
   "workspaces": {
     "nohoist": [
@@ -13,7 +13,8 @@
     "docusaurus": "docusaurus",
     "serve": "docusaurus serve",
     "start": "docusaurus start",
-    "swizzle": "docusaurus swizzle"
+    "swizzle": "docusaurus swizzle",
+    "format": "prettier '**/*' --write --ignore-unknown"
   },
   "browserslist": {
     "production": [
@@ -34,5 +35,11 @@
     "clsx": "^1.1.1",
     "react": "^17.0.2",
     "react-dom": "^17.0.2"
+  },
+  "prettier": {
+    "printWidth": 80,
+    "singleQuote": true,
+    "trailingComma": "es5",
+    "tabWidth": 2
   }
 }

@@ -70,11 +70,11 @@ Enable the phone extension field. This is `false` by default.
 
 Used to pass props to the extension field when it is enabled.
 
-```js
-extProps: {
-  name: '',
-  label: '',
-  extColProps: {},
+```json
+{
+  "name": "",
+  "label": "",
+  "extColProps": {}
 }
 ```
 
@@ -82,14 +82,13 @@ extProps: {
 
 Used to control props on the `<Col />` for the phone field, if needed. The phone column defaults to `xs: { size: 12 }` when not rendering an extension field, and defaults to `xs: { size: 10 }` when rendering an extension field.
 
-```js
-phoneColProps: {
-  xs: {
-    size: 9;
+```json
+{
+  "xs": {
+    "size": 9
   },
-
-  sm: {
-    size: 10;
+  "sm": {
+    "size": 10
   }
 }
 ```
@@ -98,14 +97,13 @@ phoneColProps: {
 
 Used to control props on `<Col />` for the extension field, if needed. The extension column has no default size value, so it's default will effectively be `size: { 12 - phoneColSize }` unless otherwise specified.
 
-```js
-extColProps: {
-  xs: {
-    size: 3;
+```json
+{
+  "xs": {
+    "size": 3
   },
-
-  sm: {
-    size: 2;
+  "sm": {
+    "size": 2
   }
 }
 ```

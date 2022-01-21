@@ -34,8 +34,8 @@
     "build:docs": "yarn workspace @availity/dinosaurdocs build",
     "build:netlify": "yarn workspace @availity/dinosaurdocs build && yarn build:storybook:netlify",
     "build:storybook": "build-storybook",
-    "build:storybook:netlify": "NODE_ENV=production build-storybook -c .storybook -s ./static -o ./docusaurus/build/storybook --quiet",
-    "build:storybook:production": "NODE_ENV=production build-storybook -c .storybook -s ./static -o ./storybook-docs --quiet",
+    "build:storybook:netlify": "NODE_ENV=production build-storybook -c .storybook -o ./docusaurus/build/storybook --quiet",
+    "build:storybook:production": "NODE_ENV=production build-storybook -c .storybook -o ./storybook-docs --quiet",
     "check": "npm-check -u && lerna exec --bail false --concurrency 1 -- npm-check -u",
     "check:dependencies": "node scripts/check-missing-deps.js",
     "check:packages": "sh ./scripts/artifactory-check.sh",
@@ -43,7 +43,7 @@
     "clean:builds": "rimraf packages/*/dist",
     "clean:docs": "rimraf docusaurus/build docusaurus/.docusaurus",
     "clean:locks": "rimraf 'yarn.lock'",
-    "clean:storybook": "rimraf storybook-docs",
+    "clean:storybook": "rimraf storybook-docs/ storybook-static/",
     "nuke": "yarn clean && yarn clean:locks && yarn clean:builds && yarn clean:docs && yarn clean:storybook",
     "codecov:ci": "codecov",
     "deploy:ci": "yarn build:deploy",
@@ -60,7 +60,7 @@
     "release:ci": "lerna publish --yes",
     "start": "yarn start:storybook",
     "start:docs": "yarn workspace @availity/dinosaurdocs start",
-    "start:storybook": "start-storybook -p 6006 -s ./static",
+    "start:storybook": "start-storybook -p 6006",
     "pretest": "yarn build:components",
     "test": "jest",
     "test:ci": "jest --runInBand --collectCoverage",
@@ -88,9 +88,9 @@
     "@commitlint/config-lerna-scopes": "^13.2.0",
     "@rollup/plugin-commonjs": "^21.0.1",
     "@rollup/plugin-node-resolve": "^13.0.6",
-    "@storybook/addon-a11y": "^6.3.12",
-    "@storybook/addon-essentials": "^6.3.12",
-    "@storybook/react": "^6.3.12",
+    "@storybook/addon-a11y": "^6.4.9",
+    "@storybook/addon-essentials": "^6.4.9",
+    "@storybook/react": "^6.4.9",
     "@testing-library/jest-dom": "^5.15.0",
     "@testing-library/react": "^12.1.2",
     "@testing-library/user-event": "^13.5.0",
@@ -136,5 +136,8 @@
     "sass-loader": "^10.0.0",
     "style-loader": "^2.0.0",
     "typescript": "^4.4.4"
+  },
+  "msw": {
+    "workerDirectory": "static"
   }
 }

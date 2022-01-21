@@ -7,8 +7,6 @@ import Favorites from '../src/FavoritesContext';
 import FavoriteHeart from '../src/FavoriteHeart';
 // import README from '../README.md';
 
-import '@availity/mock';
-
 export default {
   title: 'Components/Favorites',
   parameters: {

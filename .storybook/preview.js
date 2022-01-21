@@ -1,10 +1,7 @@
 /* eslint-disable import/prefer-default-export */
 import { themes } from '@storybook/theming';
-import mock from 'xhr-mock';
 
 import './config.scss';
-
-mock.setup();
 
 export const parameters = {
   docs: {
@@ -20,3 +17,17 @@ export const parameters = {
     addonPanelInRight: true,
   },
 };
+
+// Make sure we are in the browser before starting
+if (typeof global.process === 'undefined') {
+  const { worker } = require('../packages/mock/src');
+
+  const config =
+    process.env.NODE_ENV === 'development'
+      ? undefined
+      : {
+          serviceWorker: { url: '/availity-react/storybook/mockServiceWorker.js' },
+        };
+
+  worker.start(config);
+}

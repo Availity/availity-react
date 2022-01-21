@@ -1,0 +1,32 @@
+{
+  "totalCount": 1,
+  "count": 1,
+  "offset": 0,
+  "limit": 50,
+  "links": {
+    "self": {
+      "href": "https://apps.availity.com/api/sdk/platform/v1/navigation/spaces?authorized=true&id=home_page&output=sparse&region=FL"
+    }
+  },
+  "spaces": [
+    {
+      "id": "home_page",
+      "name": "Home Page",
+      "shortName": "",
+      "description": "Home Page",
+      "type": "container",
+      "activeDate": "2016-03-22T11:59:25.000-0400",
+      "children": [
+        {
+          "id": "dashboard",
+          "name": "Dashboard",
+          "shortName": "",
+          "description": "Dashboard",
+          "type": "container",
+          "activeDate": "2016-03-28T08:27:30.000-0400",
+          "hasAccess": true
+        }
+      ]
+    }
+  ]
+}

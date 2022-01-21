@@ -1,0 +1,26 @@
+{
+  "totalCount": 1,
+  "count": 1,
+  "offset": 0,
+  "limit": 50,
+  "links": {
+    "self": {
+      "href": "https://apps.availity.com/api/sdk/platform/v1/regions?currentlySelected=true"
+    },
+    "user": {
+      "href": "https://apps.availity.com/api/sdk/platform/v1/users/aka123456789"
+    }
+  },
+  "regions": [
+    {
+      "links": {
+        "self": {
+          "href": "https://apps.availity.com/api/sdk/platform/v1/regions/FL"
+        }
+      },
+      "id": "FL",
+      "value": "Florida",
+      "currentlySelected": true
+    }
+  ]
+}

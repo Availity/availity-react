@@ -17,36 +17,40 @@ npx install-peerdeps @availity/table --save
 
 ```jsx
 import React from 'react';
-import Table from '@availity/table';
+import Table, { TableProvider } from '@availity/table';
 import '@availity/table/style.scss';
 
-const myTableConfig = {
-    columns: [
-        {
-            Header: 'Column 1',
-            accessor: 'column1'
-        },
-        {
-            Header: 'Column 2',
-            accessor: 'column2' 
-        },
-                {
-            Header: 'Column 3',
-            accessor: 'column3' 
-        },
-    ]
-}
+const columns = [
+  {
+    Header: 'Column 1',
+    accessor: 'column1',
+  },
+  {
+    Header: 'Column 2',
+    accessor: 'column2',
+  },
+  {
+    Header: 'Column 3',
+    accessor: 'column3',
+  },
+];
 
 const Example = () => (
-    <Table
+    <TableProvider
         columns={columns}
-        records={data}
-    >
+        data={data}>
+        <Table/>
+    </TableProvider>
 );
 ```
 
-## Table Props
+## TableProvider
 
+
+### Table Provider Props
+
+This extends the [react-table TableOptions](https://react-table.tanstack.com/docs/api/useTable#table-options). 
+You can supply any properties listed on the documentation here and have the table respect it.
 #### `id?: string`
 
 This is a unique id that is prepended to the table and nested table elements.
@@ -55,13 +59,9 @@ This is a unique id that is prepended to the table and nested table elements.
 
 This is an array of column definitions based off of [react-table Column](https://react-table.tanstack.com/docs/api/useTable#column-options).
 
-#### `records: object[]`
+#### `data: object[]`
 
 This property holds the data for the table.
-
-#### `scrollable?: boolean`
-
-This property is automatically set when it is wrapped in a scrollable container. This will apply fixed column widths to force it to scroll rather than minify the columns to fit in a set container.
 
 #### `selectable?: boolean`
 
@@ -69,7 +69,7 @@ This determines whether the table is selectable or not. If it is set to true, th
 
 #### `sortable?: boolean`
 
-This determines whether the table is sortable or not. 
+This determines whether the table is sortable or not.
 
 #### `initialState?: object`
 
@@ -77,7 +77,36 @@ This object definition sets the initial state of the table, including the defaul
 
 #### `additionalContent?: ReactNode`
 
-This designates a Component that will be displayed in the table row for the record. This content displays in an additional `<tr>` with a colspan equal to the number of columns that are NOT sticky.  
+This designates a Component that will be displayed in the table row for the record. This content displays in an additional `<tr>` with a colspan equal to the number of columns that are NOT sticky.
+
+
+### useTableContext hook
+
+Wrapping the table and any other components with the TableProvider will provide access to those child components to the TableContext, which holds all of the instance data created by the useTable hook from react-table alongside any other provided parameters.
+
+
+```jsx
+import { useTableContext } from './TableContext';
+...
+const { 
+    scrollable,
+    AdditionalContent,
+    toggleSelectAll
+    toggleSortBy, 
+    sortBy, 
+    sortByOptions,
+    selectable, 
+    instance 
+} = useTableContext();
+```
+
+The `instance` property is tied directly to the [react-table Table Instance](https://react-table.tanstack.com/docs/api/useTable#instance-properties). Refer to the documentation for details on what data is provided there.
+
+## Table Props
+
+#### `scrollable?: boolean`
+
+This property is automatically set when it is wrapped in a scrollable container. This will apply fixed column widths to force it to scroll rather than minify the columns to fit in a set container.
 
 #### `bodyProps?:object`
 
@@ -96,14 +125,9 @@ Any DOM properties that should be passed onto the `<thead>` element.
 Any DOM properties that should be passed onto the `<tr>` element.
 
 #### `onRowClick?: (event: OnTableClickEvent) => void`
-
-Event handler for clicking on a row. 
-
 ##### OnTableClickEvent Props
 
-`instance: Row`
-
-The react-table [Row](https://react-table.tanstack.com/docs/api/useTable#row-properties) instance that was clicked.
+`instance: Row` The react-table [Row](https://react-table.tanstack.com/docs/api/useTable#row-properties) instance that was clicked.
 
 `data: object`
 
@@ -115,7 +139,7 @@ The index of the row that was clicked.
 
 #### `onRowSelected?: (event: OnRowSelectedEvent) => void`
 
-Event handler for when a row is selected. 
+Event handler for when a row is selected.
 
 ##### OnRowSelectedEvent Props
 
@@ -123,48 +147,36 @@ Event handler for when a row is selected.
 
 The ids of the records that are selected.
 
+#### `onSort?: (sortBy: TableSort) => void`
+
+Event handler that is called when data is sorted. 
+
+##### TableSort props
+
+`id: string`
+
+The id, or the name of property on the object, that should be used to sort the data.
+
+`desc: boolean`
+
+If true, the data should sort descending. If false, the data should sort ascending. 
+
 ## Formatting Cells
-
-```jsx
-import React from 'react';
-import Table, { Cell } from '@availity/table';
-import '@availity/table/style.scss';
-
-const myTableConfig = {
-    columns: [
-        {
-            Header: 'Column 1',
-            accessor: 'column1'
-        },
-        {
-            Header: 'Column 2',
-            accessor: 'column2' 
-        },
-                {
-            Header: 'Column 3',
-            accessor: 'column3' 
-        },
-    ]
-}
-
-const Example = () => (
-    <Table
-        columns={columns}
-        records={data}
-    >
-);
-```
-
 
 ### Action Cell
 
-This is used to display an action menu in a cell. 
+This is used to display an action menu in a cell.
+
+#### `isVisible?`: (record?: T) => boolean
+This is an optional function that can be used to conditionally display an action. The record will be passed into the function so that, if needed, the properties on the record can determine if the action is visible or not. If this properties are not populated, the action will always display.
+
+#### `onClick?`: (record?: T) => action
+This is the onClick event handler for the action.
 
 #### Example
 
 ```jsx
-
- const columns = [
+const columns = [
   {
     id: 'actions',
     Header: 'Actions',
@@ -173,6 +185,9 @@ This is used to display an action menu in a cell.
         {
           id: 'action1',
           displayText: 'Action 1',
+          isVisible: (record: MyRecordType) => {
+              return record.hasAction1;
+          },
           onClick: (record) => {
             console.log(`action on record ${record.id}`);
           },
@@ -180,39 +195,42 @@ This is used to display an action menu in a cell.
         {
           id: 'action2',
           displayText: 'Action 2',
+          isVisible: (record: MyRecordType) => {
+            return !record.hasAction1;
+          },
           onClick: (record) => {
             console.log(`action on record ${record.id}`);
           },
         },
       ],
     }),
-  }];
+  },
+];
 ```
 
 ### Badge Cell
 
-This is used to display a Reactstrap Badge in a cell. See [Availity UI Kit](https://availity.github.io/availity-uikit/v3/components#Badges-Contextual-Variations) and [ReactStrap](https://reactstrap.github.io/components/badge/) for available stylings. 
+This is used to display a Reactstrap Badge in a cell. See [Availity UI Kit](https://availity.github.io/availity-uikit/v3/components#Badges-Contextual-Variations) and [ReactStrap](https://reactstrap.github.io/components/badge/) for available stylings.
 
 #### Usages
 
 ```jsx
+const columns = [
+  {
+    Header: 'Badge',
+    accessor: 'badge',
+    Cell: ({ row: { original } }) =>
+      original ? BadgeCell('success', original.badgeValue) : null,
+  },
+];
 
- const columns = [
-    {
-        Header: 'Badge',
-        accessor: 'badge',
-        Cell: ({ row: { original } }) =>
-        original ? BadgeCell('success', original.badgeValue) : null
-    }
-  ];
-
-   const columns = [
-    {
-        Header: 'Badge',
-        accessor: 'badge',
-        Cell: Badgecell('success')
-    }
-  ];
+const columns = [
+  {
+    Header: 'Badge',
+    accessor: 'badge',
+    Cell: Badgecell('success'),
+  },
+];
 ```
 
 ### Currency Cell
@@ -222,16 +240,17 @@ This is used to format currency in a cell. You can optionally pass it a default 
 #### Usages
 
 ```jsx
-
- const columns = [
-    {
-        Header: 'Currency',
-        accessor: 'currency',
-        Cell: CurrencyCell({defaultValue: '$0.00'})
-    }
-  ];
+const columns = [
+  {
+    Header: 'Currency',
+    accessor: 'currency',
+    Cell: CurrencyCell({ defaultValue: '$0.00' }),
+  },
+];
 ```
+
 #### Props
+
 `currency`
 
 Defaults to `USD`.
@@ -246,30 +265,26 @@ The locale of the currency. Defaults to `en-us`.
 
 ### Date Cell
 
-This is used to format a date in a cell by passing in a date format. 
+This is used to format a date in a cell by passing in a date format.
 
 #### Usages
 
 ```jsx
-
- const columns = [
-        {
-            Header: 'Service Date',
-            accessor: 'serviceDate',
-            Cell: DateCell({ dateFormat: 'MM/DD/yyyy' })
-        }
-  ];
+const columns = [
+  {
+    Header: 'Service Date',
+    accessor: 'serviceDate',
+    Cell: DateCell({ dateFormat: 'MM/DD/yyyy' }),
+  },
+];
 ```
 
 ### Icon Cell
 
-This is used to have an cell display an icon. This will only show the icon if the value for the cell is populated (or `true`). 
+This is used to have an cell display an icon. This will only show the icon if the value for the cell is populated (or `true`).
 In order to show an icon always and not conditionally you can utilize `BuildIcon` and supply it the name of the icon and title.
 
-
-See [Availity UI Kit](https://availity.github.io/availity-uikit/v3/icons) for available icons. 
-
-
+See [Availity UI Kit](https://availity.github.io/availity-uikit/v3/icons) for available icons.
 
 #### Usages
 
@@ -286,14 +301,14 @@ In the body of the table, the icon is displayed if the hasNotes property is set 
     ]
 ```
 
-If the title (tooltip) of the icon is dependent on the data of the record, it is possible to pass a function to the IconCell to populate the record.
+If the title (tooltip) of the icon is dependent on the data of the record, it is possible to pass a function to the IconCell (as `getTitle`) to populate the record.
 
 ```jsx
     const columns = [
             {
                 Header: <Icon name='flag' title='Flag for follup'/>,
                 accessor: 'followup',
-                Cell: IconCell({ name: 'flag', title: (value: { username: string; }) => `Assigned To ${value.username}`}),
+                Cell: IconCell({ name: 'flag', getTitle: (value: { username: string; }) => `Assigned To ${value.username}`}),
             }
     ]
 ```
@@ -320,12 +335,12 @@ Display a header as a static string:
     ]
 ```
 
-Display a formatted header, such as an Icon. 
+Display a formatted header, such as an Icon.
 
 ```jsx
   const columns = [
         {
-            Header: () => <Icon name="phone" title="phone/>,
+            Header: <Icon name="phone" title="phone/>,
             ...
         }
     ]
@@ -333,7 +348,7 @@ Display a formatted header, such as an Icon.
 
 #### `accessor`
 
-This is the property name from the record. 
+This is the property name from the record.
 
 #### `Cell`
 
@@ -375,8 +390,8 @@ $av-table-font-size: 12px;
 $av-table-selected-background-color: #ccdee2;
 
 @import '~@availity/table/styles.scss';
-
 ```
+
 The following are the available variables to utilize.
 
 ```
@@ -411,15 +426,16 @@ You can configure the table header to be sticky by setting the `headerProps.stic
 This works best when the table is wrapped in a `<ScrollableContainer/>`.
 
 ```jsx
-    <Table columns={columns} records={records}
-        headerProps={{
-            sticky: true
-        }}
-    />
-
+<Table
+  columns={columns}
+  records={records}
+  headerProps={{
+    sticky: true,
+  }}
+/>
 ```
 
-You can also can configure a column to be sticky either left or right. This can be configured on in the column definitions for the table. 
+You can also can configure a column to be sticky either left or right. This can be configured on in the column definitions for the table.
 
 ```jsx
 const columns = [
@@ -432,4 +448,4 @@ const columns = [
 
 ```
 
-Note that this is not supported in IE 11. 
+Note that this is not supported in IE 11.

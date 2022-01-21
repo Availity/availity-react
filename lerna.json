@@ -10,5 +10,5 @@
       "verifyAccess": false
     }
   },
-  "ignoreChanges": ["**/*.test.js", "**/*.md", "**/*.mdx", "**/yarn.lock", "**/*.stories.tsx"]
+  "ignoreChanges": ["**/*.test.js", "**/*.test.tsx", "**/*.stories.tsx", "**/*.md", "**/*.mdx", "**/yarn.lock"]
 }

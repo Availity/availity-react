@@ -3,6 +3,30 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [2.5.0](https://github.com/Availity/availity-react/compare/@availity/select@2.4.0...@availity/select@2.5.0) (2022-01-19)
+
+
+### Features
+
+* **select:** add ability to override searchTerm and fix default of method to POST ([7af25f0](https://github.com/Availity/availity-react/commit/7af25f07162c9d725ea2c394eb95b40958e680db))
+* **select:** add docs, reset typescript file ([9f875a2](https://github.com/Availity/availity-react/commit/9f875a283f0966bbbb79396b92b77287d81f976e))
+* **select:** add test, apply searchTerm for graph ql stuff too ([725bd64](https://github.com/Availity/availity-react/commit/725bd64a877b63e56bae82af495ffc9e890cf7f4))
+
+
+
+
+
+# 2.4.0 (2022-01-13)
+
+
+### Features
+
+* **select:** allow components override ([3db073d](https://github.com/Availity/availity-react/commit/3db073dc3b3dd3532b60f809ed349a61e14ab17f))
+
+
+
+
+
 ## [2.3.2](https://github.com/Availity/availity-react/compare/@availity/select@2.3.1...@availity/select@2.3.2) (2021-12-20)
 
 **Note:** Version bump only for package @availity/select

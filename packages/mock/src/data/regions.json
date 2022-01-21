@@ -1,0 +1,517 @@
+{
+  "regions": [
+    {
+      "links": {
+        "self": {
+          "href": "https://qa-apps.availity.com/api/sdk/platform/v1/regions/AL"
+        }
+      },
+      "id": "AL",
+      "value": "Alabama"
+    },
+    {
+      "links": {
+        "self": {
+          "href": "https://qa-apps.availity.com/api/sdk/platform/v1/regions/AK"
+        }
+      },
+      "id": "AK",
+      "value": "Alaska"
+    },
+    {
+      "links": {
+        "self": {
+          "href": "https://qa-apps.availity.com/api/sdk/platform/v1/regions/AS"
+        }
+      },
+      "id": "AS",
+      "value": "American Samoa"
+    },
+    {
+      "links": {
+        "self": {
+          "href": "https://qa-apps.availity.com/api/sdk/platform/v1/regions/AZ"
+        }
+      },
+      "id": "AZ",
+      "value": "Arizona"
+    },
+    {
+      "links": {
+        "self": {
+          "href": "https://qa-apps.availity.com/api/sdk/platform/v1/regions/AR"
+        }
+      },
+      "id": "AR",
+      "value": "Arkansas"
+    },
+    {
+      "links": {
+        "self": {
+          "href": "https://qa-apps.availity.com/api/sdk/platform/v1/regions/CA"
+        }
+      },
+      "id": "CA",
+      "value": "California"
+    },
+    {
+      "links": {
+        "self": {
+          "href": "https://qa-apps.availity.com/api/sdk/platform/v1/regions/CO"
+        }
+      },
+      "id": "CO",
+      "value": "Colorado"
+    },
+    {
+      "links": {
+        "self": {
+          "href": "https://qa-apps.availity.com/api/sdk/platform/v1/regions/CT"
+        }
+      },
+      "id": "CT",
+      "value": "Connecticut"
+    },
+    {
+      "links": {
+        "self": {
+          "href": "https://qa-apps.availity.com/api/sdk/platform/v1/regions/DE"
+        }
+      },
+      "id": "DE",
+      "value": "Delaware"
+    },
+    {
+      "links": {
+        "self": {
+          "href": "https://qa-apps.availity.com/api/sdk/platform/v1/regions/DC"
+        }
+      },
+      "id": "DC",
+      "value": "District of Columbia"
+    },
+    {
+      "links": {
+        "self": {
+          "href": "https://qa-apps.availity.com/api/sdk/platform/v1/regions/FL"
+        }
+      },
+      "id": "FL",
+      "value": "Florida"
+    },
+    {
+      "links": {
+        "self": {
+          "href": "https://qa-apps.availity.com/api/sdk/platform/v1/regions/GA"
+        }
+      },
+      "id": "GA",
+      "value": "Georgia"
+    },
+    {
+      "links": {
+        "self": {
+          "href": "https://qa-apps.availity.com/api/sdk/platform/v1/regions/GU"
+        }
+      },
+      "id": "GU",
+      "value": "Guam"
+    },
+    {
+      "links": {
+        "self": {
+          "href": "https://qa-apps.availity.com/api/sdk/platform/v1/regions/HI"
+        }
+      },
+      "id": "HI",
+      "value": "Hawaii"
+    },
+    {
+      "links": {
+        "self": {
+          "href": "https://qa-apps.availity.com/api/sdk/platform/v1/regions/ID"
+        }
+      },
+      "id": "ID",
+      "value": "Idaho"
+    },
+    {
+      "links": {
+        "self": {
+          "href": "https://qa-apps.availity.com/api/sdk/platform/v1/regions/IL"
+        }
+      },
+      "id": "IL",
+      "value": "Illinois"
+    },
+    {
+      "links": {
+        "self": {
+          "href": "https://qa-apps.availity.com/api/sdk/platform/v1/regions/IN"
+        }
+      },
+      "id": "IN",
+      "value": "Indiana"
+    },
+    {
+      "links": {
+        "self": {
+          "href": "https://qa-apps.availity.com/api/sdk/platform/v1/regions/IA"
+        }
+      },
+      "id": "IA",
+      "value": "Iowa"
+    },
+    {
+      "links": {
+        "self": {
+          "href": "https://qa-apps.availity.com/api/sdk/platform/v1/regions/KS"
+        }
+      },
+      "id": "KS",
+      "value": "Kansas"
+    },
+    {
+      "links": {
+        "self": {
+          "href": "https://qa-apps.availity.com/api/sdk/platform/v1/regions/KY"
+        }
+      },
+      "id": "KY",
+      "value": "Kentucky"
+    },
+    {
+      "links": {
+        "self": {
+          "href": "https://qa-apps.availity.com/api/sdk/platform/v1/regions/LA"
+        }
+      },
+      "id": "LA",
+      "value": "Louisiana"
+    },
+    {
+      "links": {
+        "self": {
+          "href": "https://qa-apps.availity.com/api/sdk/platform/v1/regions/ME"
+        }
+      },
+      "id": "ME",
+      "value": "Maine"
+    },
+    {
+      "links": {
+        "self": {
+          "href": "https://qa-apps.availity.com/api/sdk/platform/v1/regions/MD"
+        }
+      },
+      "id": "MD",
+      "value": "Maryland"
+    },
+    {
+      "links": {
+        "self": {
+          "href": "https://qa-apps.availity.com/api/sdk/platform/v1/regions/MA"
+        }
+      },
+      "id": "MA",
+      "value": "Massachusetts"
+    },
+    {
+      "links": {
+        "self": {
+          "href": "https://qa-apps.availity.com/api/sdk/platform/v1/regions/MI"
+        }
+      },
+      "id": "MI",
+      "value": "Michigan"
+    },
+    {
+      "links": {
+        "self": {
+          "href": "https://qa-apps.availity.com/api/sdk/platform/v1/regions/MN"
+        }
+      },
+      "id": "MN",
+      "value": "Minnesota"
+    },
+    {
+      "links": {
+        "self": {
+          "href": "https://qa-apps.availity.com/api/sdk/platform/v1/regions/MS"
+        }
+      },
+      "id": "MS",
+      "value": "Mississippi"
+    },
+    {
+      "links": {
+        "self": {
+          "href": "https://qa-apps.availity.com/api/sdk/platform/v1/regions/MO"
+        }
+      },
+      "id": "MO",
+      "value": "Missouri"
+    },
+    {
+      "links": {
+        "self": {
+          "href": "https://qa-apps.availity.com/api/sdk/platform/v1/regions/MT"
+        }
+      },
+      "id": "MT",
+      "value": "Montana"
+    },
+    {
+      "links": {
+        "self": {
+          "href": "https://qa-apps.availity.com/api/sdk/platform/v1/regions/NE"
+        }
+      },
+      "id": "NE",
+      "value": "Nebraska"
+    },
+    {
+      "links": {
+        "self": {
+          "href": "https://qa-apps.availity.com/api/sdk/platform/v1/regions/NV"
+        }
+      },
+      "id": "NV",
+      "value": "Nevada"
+    },
+    {
+      "links": {
+        "self": {
+          "href": "https://qa-apps.availity.com/api/sdk/platform/v1/regions/NH"
+        }
+      },
+      "id": "NH",
+      "value": "New Hampshire"
+    },
+    {
+      "links": {
+        "self": {
+          "href": "https://qa-apps.availity.com/api/sdk/platform/v1/regions/NJ"
+        }
+      },
+      "id": "NJ",
+      "value": "New Jersey"
+    },
+    {
+      "links": {
+        "self": {
+          "href": "https://qa-apps.availity.com/api/sdk/platform/v1/regions/NM"
+        }
+      },
+      "id": "NM",
+      "value": "New Mexico"
+    },
+    {
+      "links": {
+        "self": {
+          "href": "https://qa-apps.availity.com/api/sdk/platform/v1/regions/NY"
+        }
+      },
+      "id": "NY",
+      "value": "New York"
+    },
+    {
+      "links": {
+        "self": {
+          "href": "https://qa-apps.availity.com/api/sdk/platform/v1/regions/NC"
+        }
+      },
+      "id": "NC",
+      "value": "North Carolina"
+    },
+    {
+      "links": {
+        "self": {
+          "href": "https://qa-apps.availity.com/api/sdk/platform/v1/regions/ND"
+        }
+      },
+      "id": "ND",
+      "value": "North Dakota"
+    },
+    {
+      "links": {
+        "self": {
+          "href": "https://qa-apps.availity.com/api/sdk/platform/v1/regions/MP"
+        }
+      },
+      "id": "MP",
+      "value": "Northern Mariana Islands"
+    },
+    {
+      "links": {
+        "self": {
+          "href": "https://qa-apps.availity.com/api/sdk/platform/v1/regions/OH"
+        }
+      },
+      "id": "OH",
+      "value": "Ohio"
+    },
+    {
+      "links": {
+        "self": {
+          "href": "https://qa-apps.availity.com/api/sdk/platform/v1/regions/OK"
+        }
+      },
+      "id": "OK",
+      "value": "Oklahoma"
+    },
+    {
+      "links": {
+        "self": {
+          "href": "https://qa-apps.availity.com/api/sdk/platform/v1/regions/OR"
+        }
+      },
+      "id": "OR",
+      "value": "Oregon"
+    },
+    {
+      "links": {
+        "self": {
+          "href": "https://qa-apps.availity.com/api/sdk/platform/v1/regions/OTHR"
+        }
+      },
+      "id": "OTHR",
+      "value": "Other"
+    },
+    {
+      "links": {
+        "self": {
+          "href": "https://qa-apps.availity.com/api/sdk/platform/v1/regions/PA"
+        }
+      },
+      "id": "PA",
+      "value": "Pennsylvania"
+    },
+    {
+      "links": {
+        "self": {
+          "href": "https://qa-apps.availity.com/api/sdk/platform/v1/regions/PR"
+        }
+      },
+      "id": "PR",
+      "value": "Puerto Rico"
+    },
+    {
+      "links": {
+        "self": {
+          "href": "https://qa-apps.availity.com/api/sdk/platform/v1/regions/RI"
+        }
+      },
+      "id": "RI",
+      "value": "Rhode Island"
+    },
+    {
+      "links": {
+        "self": {
+          "href": "https://qa-apps.availity.com/api/sdk/platform/v1/regions/SC"
+        }
+      },
+      "id": "SC",
+      "value": "South Carolina"
+    },
+    {
+      "links": {
+        "self": {
+          "href": "https://qa-apps.availity.com/api/sdk/platform/v1/regions/SD"
+        }
+      },
+      "id": "SD",
+      "value": "South Dakota"
+    },
+    {
+      "links": {
+        "self": {
+          "href": "https://qa-apps.availity.com/api/sdk/platform/v1/regions/TN"
+        }
+      },
+      "id": "TN",
+      "value": "Tennessee"
+    },
+    {
+      "links": {
+        "self": {
+          "href": "https://qa-apps.availity.com/api/sdk/platform/v1/regions/TX"
+        }
+      },
+      "id": "TX",
+      "value": "Texas"
+    },
+    {
+      "links": {
+        "self": {
+          "href": "https://qa-apps.availity.com/api/sdk/platform/v1/regions/UT"
+        }
+      },
+      "id": "UT",
+      "value": "Utah"
+    },
+    {
+      "links": {
+        "self": {
+          "href": "https://qa-apps.availity.com/api/sdk/platform/v1/regions/VT"
+        }
+      },
+      "id": "VT",
+      "value": "Vermont"
+    },
+    {
+      "links": {
+        "self": {
+          "href": "https://qa-apps.availity.com/api/sdk/platform/v1/regions/VI"
+        }
+      },
+      "id": "VI",
+      "value": "Virgin Islands"
+    },
+    {
+      "links": {
+        "self": {
+          "href": "https://qa-apps.availity.com/api/sdk/platform/v1/regions/VA"
+        }
+      },
+      "id": "VA",
+      "value": "Virginia"
+    },
+    {
+      "links": {
+        "self": {
+          "href": "https://qa-apps.availity.com/api/sdk/platform/v1/regions/WA"
+        }
+      },
+      "id": "WA",
+      "value": "Washington"
+    },
+    {
+      "links": {
+        "self": {
+          "href": "https://qa-apps.availity.com/api/sdk/platform/v1/regions/WV"
+        }
+      },
+      "id": "WV",
+      "value": "West Virginia"
+    },
+    {
+      "links": {
+        "self": {
+          "href": "https://qa-apps.availity.com/api/sdk/platform/v1/regions/WI"
+        }
+      },
+      "id": "WI",
+      "value": "Wisconsin"
+    },
+    {
+      "links": {
+        "self": {
+          "href": "https://qa-apps.availity.com/api/sdk/platform/v1/regions/WY"
+        }
+      },
+      "id": "WY",
+      "value": "Wyoming"
+    }
+  ]
+}

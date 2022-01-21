@@ -3,6 +3,7 @@ const path = require('path');
 module.exports = {
   stories: ['../packages/**/*.stories.tsx'],
   addons: ['@storybook/addon-essentials', '@storybook/addon-a11y'],
+  staticDirs: ['../static'],
   webpackFinal: async (config) => {
     config.module.rules.push(
       {

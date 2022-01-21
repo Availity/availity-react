@@ -1,4 +1,4 @@
-import React, { useEffect, useMemo, useRef, useState } from 'react';
+import React, { useEffect, useMemo, useState } from 'react';
 import PropTypes from 'prop-types';
 import { InputGroup, Input, Button, Row, Col } from 'reactstrap';
 import { DateRangePicker } from '@availity/react-dates';
@@ -71,8 +71,6 @@ const DateRange = ({
   const { setFieldValue, setFieldTouched, validateField } = useFormikContext();
   const [{ value = {} }, metadata] = useField({ name, validate });
   const [focusedInput, setFocusedInput] = useState(null);
-
-  const calendarIconRef = useRef();
 
   const startId = `${(id || name).replace(/[^\da-z]/gi, '')}-start`;
   const endId = `${(id || name).replace(/[^\da-z]/gi, '')}-end`;
@@ -220,10 +218,6 @@ const DateRange = ({
                 });
 
                 setFocusedInput(null);
-
-                // Focus the calendar icon once clicked because we don't
-                // want to get back in the loop of opening the calendar
-                calendarIconRef.current.parentElement.focus();
               }}
             >
               {relativeRange}
@@ -298,10 +292,10 @@ const DateRange = ({
           renderMonthElement={renderMonthElement}
           minimumNights={0}
           ariaDescribedBy={ariaDescribedBy}
+          enableOutsideDays
           {...datepickerProps}
           startDate={getDateValue(startValue)}
           startDateId={startId}
-          enableOutsideDays
           endDate={getDateValue(endValue)}
           endDateId={endId}
           calendarInfoPosition="before"

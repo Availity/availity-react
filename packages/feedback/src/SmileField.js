@@ -52,7 +52,7 @@ SmileField.propTypes = {
   ),
   onChange: PropTypes.func,
   autoFocusFeedbackButton: PropTypes.bool,
-  modal: PropTypes.bool
+  modal: PropTypes.bool,
 };
 
 SmileField.defaultProps = {
