@@ -12,5 +12,7 @@ updates:
       - dependency-name: '@typescript-eslint/eslint-plugin'
         versions: ['5.x']
       - dependency-name: '@types/node'
-        versions: ['15.x', '16.x']
+        versions: ['15.x', '16.x', '17.x']
+      - dependency-name: '@types/jest'
+        versions: ['27.x']
       - dependency-name: yup
