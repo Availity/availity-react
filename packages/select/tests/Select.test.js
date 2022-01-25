@@ -173,6 +173,7 @@ describe('Select', () => {
         }),
         expect.anything()
       );
+      expect(container.querySelector('[role="button"].av__multi-value__remove')).toBeDefined();
     });
   });
 
