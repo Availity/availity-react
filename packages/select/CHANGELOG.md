@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [2.6.0](https://github.com/Availity/availity-react/compare/@availity/select@2.5.0...@availity/select@2.6.0) (2022-01-25)
+
+
+### Features
+
+* **select:** added role and aria attributes to clear indicator of select ([8de0038](https://github.com/Availity/availity-react/commit/8de003825d3049f07ec25a8fc8decbfc3a357323))
+
+
+
+
+
 # [2.5.0](https://github.com/Availity/availity-react/compare/@availity/select@2.4.0...@availity/select@2.5.0) (2022-01-19)
 
 
