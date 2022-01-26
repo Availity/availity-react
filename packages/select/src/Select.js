@@ -24,7 +24,8 @@ const components = {
   ),
   ClearIndicator: (props) => (
     <ClearIndicator {...props}>
-      <CrossIcon tabIndex="0" role="button" aria-label="Clear all selections"/>
+      <CrossIcon />
+      <span className="sr-only">Clear all selections</span>
     </ClearIndicator>
   ),
   Option: (props) => {
@@ -76,7 +77,6 @@ const Select = ({
   helpMessage,
   feedback,
   placeholder,
-  components: componentOverrides,
   ...attributes
 }) => {
   const [{ onChange, value: fieldValue, ...field }, { touched, error: fieldError }] = useField({
@@ -282,7 +282,7 @@ const Select = ({
       aria-invalid={fieldError && touched}
       aria-errormessage={feedback && fieldValue && fieldError && touched ? `${name}-feedback`.toLowerCase() : ''}
       placeholder={placeholder}
-      components={{ ...components, ...componentOverrides }}
+      components={components}
       options={selectOptions}
       defaultOptions={waitUntilFocused ? [] : true}
       cacheUniqs={_cacheUniq}
@@ -400,7 +400,6 @@ Select.propTypes = {
   helpMessage: PropTypes.string,
   feedback: PropTypes.bool,
   placeholder: PropTypes.string,
-  components: PropTypes.object,
 };
 
 components.Option.propTypes = {
