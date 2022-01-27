@@ -77,6 +77,7 @@ const Select = ({
   helpMessage,
   feedback,
   placeholder,
+  components: componentOverrides,
   ...attributes
 }) => {
   const [{ onChange, value: fieldValue, ...field }, { touched, error: fieldError }] = useField({
@@ -282,7 +283,7 @@ const Select = ({
       aria-invalid={fieldError && touched}
       aria-errormessage={feedback && fieldValue && fieldError && touched ? `${name}-feedback`.toLowerCase() : ''}
       placeholder={placeholder}
-      components={components}
+      components={...components, ...componentOverrides}
       options={selectOptions}
       defaultOptions={waitUntilFocused ? [] : true}
       cacheUniqs={_cacheUniq}
@@ -400,6 +401,7 @@ Select.propTypes = {
   helpMessage: PropTypes.string,
   feedback: PropTypes.bool,
   placeholder: PropTypes.string,
+  components: PropTypes.object,
 };
 
 components.Option.propTypes = {
