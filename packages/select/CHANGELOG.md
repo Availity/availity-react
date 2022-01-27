@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [2.6.1](https://github.com/Availity/availity-react/compare/@availity/select@2.6.0...@availity/select@2.6.1) (2022-01-27)
+
+
+### Bug Fixes
+
+* **select:** remove role and attributes from clear indicator ([b4eae57](https://github.com/Availity/availity-react/commit/b4eae5751967a1f85b9b0c6e0064086e50f13e56))
+
+
+
+
+
 # [2.6.0](https://github.com/Availity/availity-react/compare/@availity/select@2.5.0...@availity/select@2.6.0) (2022-01-25)
 
 
