@@ -24,7 +24,8 @@ const components = {
   ),
   ClearIndicator: (props) => (
     <ClearIndicator {...props}>
-      <CrossIcon tabIndex="0" role="button" aria-label="Clear all selections"/>
+      <CrossIcon />
+      <span className="sr-only">Clear all selections</span>
     </ClearIndicator>
   ),
   Option: (props) => {
