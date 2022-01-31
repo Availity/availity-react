@@ -23,13 +23,13 @@ export default {
 export const Default: Story = ({ cards, selectable, borderColor, backgroundColor }) => (
   <div>
     <ListGroup cards={cards} selectable={selectable}>
-      <ListGroupItem borderColor={cards && borderColor} color={backgroundColor}>
+      <ListGroupItem borderColor={cards ? borderColor : ''} color={backgroundColor}>
         item
       </ListGroupItem>
-      <ListGroupItem borderColor={cards && borderColor} color={backgroundColor}>
+      <ListGroupItem borderColor={cards ? borderColor : ''} color={backgroundColor}>
         item
       </ListGroupItem>
-      <ListGroupItem borderColor={cards && borderColor} color={backgroundColor}>
+      <ListGroupItem borderColor={cards ? borderColor : ''} color={backgroundColor}>
         item
       </ListGroupItem>
     </ListGroup>

@@ -74,11 +74,10 @@ _Agreement.storyName = 'agreement';
 export const _Disclaimer: Story = ({ styled }) => (
   <div>
     <Disclaimer styled={styled}>
-      I have fully read this agreement and understand that I am entering into a legally binding agreement and that my
-      organization is bound by the terms and conditions contained therein. I attest and certify that I am the Primary
-      Controlling Authority for the organization named herein and that I possess the necessary legal authority to bind
-      this organization. I further attest and certify my organization&apos;s designation as a Covered Entity under
-      HIPAA, as more fully described in 45 CFR § 160.103.
+      Lorem ipsum dolor sit amet, consectetur adipiscing elit. In lorem metus, commodo ac sagittis ac, fringilla vel
+      diam. Etiam metus metus, tincidunt nec tellus a, accumsan rhoncus neque. Vivamus nec augue id elit ultricies
+      mollis. Praesent porta metus sed mollis pellentesque. Vivamus interdum tellus ac luctus venenatis. Ut iaculis
+      rhoncus nibh, in elementum elit commodo dictum. Aenean finibus odio elit, a dictum dolor fermentum sit amet.
     </Disclaimer>
   </div>
 );

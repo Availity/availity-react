@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## 4.3.2 (2022-01-18)
+
+
+### Bug Fixes
+
+* **reactstrap-validation-date,date:** updated react-dates for phrases ([687d8a3](https://github.com/Availity/availity-react/commit/687d8a350a3f2bceb5f37e19e42781b3dbef9d0e))
+
+
+
+
+
 ## [4.3.1](https://github.com/Availity/availity-react/compare/@availity/reactstrap-validation-date@4.3.0...@availity/reactstrap-validation-date@4.3.1) (2021-12-20)
 
 **Note:** Version bump only for package @availity/reactstrap-validation-date

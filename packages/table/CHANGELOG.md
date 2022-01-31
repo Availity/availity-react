@@ -3,6 +3,35 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.3.0](https://github.com/Availity/availity-react/compare/@availity/table@0.2.2...@availity/table@0.3.0) (2022-01-18)
+
+
+### Features
+
+* **table:** add additionalContentProps ([caec4f7](https://github.com/Availity/availity-react/commit/caec4f70ec50ee66486cb91ca4386f54b7d8a1c2))
+* **table:** add some docs and fix some bulk actions work, toggle select ([e0c29bd](https://github.com/Availity/availity-react/commit/e0c29bdc128fd766da470efd697e7be449c162c5))
+* **table:** add unit tests and cleanup some types ([77815b8](https://github.com/Availity/availity-react/commit/77815b8d8aa12b1e3920c5466eb19c93d920db4f))
+* **table:** bug fixes, typing fixes, formatting fixes ([18089ec](https://github.com/Availity/availity-react/commit/18089ec0efd7fdb53da7853ab52560523a475ae8))
+* **table:** clean up naming, fix disable of controls ([639fc4f](https://github.com/Availity/availity-react/commit/639fc4f6cb588b566613802fe379011fc429756a))
+* **table:** code review fixes ([4893d96](https://github.com/Availity/availity-react/commit/4893d96bc70b346f2c8047f6d1df3916d9070d24))
+* **table:** conditionally render action menu ([aeea886](https://github.com/Availity/availity-react/commit/aeea88691736c17de42af81698468062c8819c80))
+* **table:** convert table to typescript and add table controls, refactor with provider and react context ([f138343](https://github.com/Availity/availity-react/commit/f138343cba7359847e12b2fda3cdd2dad5f4d932))
+* **table:** downgrade version ([a131d59](https://github.com/Availity/availity-react/commit/a131d59525587ff4311d3ec27a8e2f6cf106687b))
+* **table:** fix package.json to remove scripts and unneeded dependency ([46b66e5](https://github.com/Availity/availity-react/commit/46b66e5588f8442f0b1606f57a7abc6578a9628d))
+* **table:** fix primary action menu icon click to pass in current record ([bfdbbaf](https://github.com/Availity/availity-react/commit/bfdbbafe19a3181da001624f99669fdca47adfc6))
+* **table:** fix scrollable container ([69521fe](https://github.com/Availity/availity-react/commit/69521feea2fa63d139af14e62b69ba8894c49eda))
+* **table:** fix scrollable container ([52a9c07](https://github.com/Availity/availity-react/commit/52a9c076b09282a3aada1cb49d8e2e724863b317))
+* **table:** fix story references ([704d3f5](https://github.com/Availity/availity-react/commit/704d3f5ea26a395e1d6b42311cac4acee1480a28))
+* **table:** fix story references ([69331de](https://github.com/Availity/availity-react/commit/69331def6d240ae76046a1590cd6fc4a93d6a7a8))
+* **table:** fix typings again ([2a06a96](https://github.com/Availity/availity-react/commit/2a06a96200e0be0c8ac601293149c14d199f0afe))
+* **table:** linting ([ccfc435](https://github.com/Availity/availity-react/commit/ccfc435a6123eca34f8bae00daaa3e0016942ca6))
+* **table:** linting and tests ([3d16c69](https://github.com/Availity/availity-react/commit/3d16c69d7e090858cd316a86fa075b21d7be84c0))
+* **table:** option additionalComponentParams ([180f328](https://github.com/Availity/availity-react/commit/180f32898b5bef9d9d8778e87df7701bb4eacdbc))
+
+
+
+
+
 ## [0.2.2](https://github.com/Availity/availity-react/compare/@availity/table@0.2.1...@availity/table@0.2.2) (2021-12-20)
 
 **Note:** Version bump only for package @availity/table

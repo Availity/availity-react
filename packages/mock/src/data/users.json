@@ -1,0 +1,32 @@
+{
+  "users": [
+    {
+      "id": "aka123456789",
+      "userId": "rsanchez",
+      "akaname": "aka123456789",
+      "lastName": "Sanchez",
+      "firstName": "Rick",
+      "email": "rick.sanchez@test.com",
+      "userValidated": false,
+      "userHasSecurityException": false,
+      "userLatestVerifyStatusCode": "7",
+      "currentRegion": "FL",
+      "createDate": "2018-07-30T15:23:45.000+0000",
+      "lastUpdateDate": "2021-11-02T17:49:30.000+0000"
+    },
+    {
+      "id": "aka987654321",
+      "userId": "msmith",
+      "akaname": "aka987654321",
+      "lastName": "Smith",
+      "firstName": "Morty",
+      "email": "morty.smith@test.com",
+      "userValidated": false,
+      "userHasSecurityException": false,
+      "userLatestVerifyStatusCode": "7",
+      "currentRegion": "FL",
+      "createDate": "2018-07-30T15:23:45.000+0000",
+      "lastUpdateDate": "2021-11-02T17:49:30.000+0000"
+    }
+  ]
+}

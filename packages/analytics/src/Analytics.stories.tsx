@@ -45,9 +45,8 @@ export const Default: Story = ({ id, action, eventModifiers, recursive }) => {
   return (
     <Analytics plugins={plugins} eventModifiers={eventModifiers} recursive={recursive}>
       <p>
-        This example is setup to track user events. The &quot;select&quot; will allow log for the blur event, while the
-        &quot;textarea&quot; and &quot;input&quot; will log when focused. Both of the buttons will log when they are
-        clicked.
+        This example is set up to track user events. <code>Select</code> allows logging for the blur event.{' '}
+        <code>Textarea</code> and <code>Input</code> log when focused. Both of these buttons log when clicked.
       </p>
       <p>Events logged: {count}</p>
       <pre>Last Event: {state}</pre>

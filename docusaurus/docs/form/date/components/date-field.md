@@ -11,6 +11,7 @@ import React from 'react';
 import { Form } from '@availity/form';
 import { DateField } from '@availity/date';
 import { avDate } from '@availity/yup';
+import { Button } from 'reactstrap';
 import * as yup from 'yup';
 
 const Example = () => (
@@ -70,4 +71,3 @@ Help topic id, adds `<FieldHelpIcon/>` next to the label (should not be within l
 #### `required?: boolean`
 
 Will add `<RequiredAsterisk />` to label.
-

@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { fireEvent, waitFor, render, cleanup } from '@testing-library/react';
+import { fireEvent, waitFor, render } from '@testing-library/react';
 import { avRegionsApi, avProvidersApi, avCodesApi } from '@availity/api-axios';
 import { AvForm } from 'availity-reactstrap-validation';
 import { Button } from 'reactstrap';
@@ -18,7 +18,6 @@ const renderSelect = (props) =>
 
 describe('AvResourceSelect', () => {
   afterEach(() => {
-    cleanup();
     jest.clearAllMocks();
   });
 

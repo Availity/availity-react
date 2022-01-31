@@ -8,7 +8,11 @@ Container for the step wizard.
 
 ```jsx
 import React from 'react';
-import Wizard, { WizardStep, WizardStepTitle } from '@availity/step-wizard';
+import Wizard, {
+  WizardStep,
+  WizardStepBadge,
+  WizardStepTitle,
+} from '@availity/step-wizard';
 
 const Example = () => (
   <Wizard bar>

@@ -15,7 +15,8 @@
     "allowSyntheticDefaultImports": true,
     "baseUrl": ".",
     "paths": {
-      "@availity/training-link": ["packages/training-link/src"]
+      "@availity/training-link": ["packages/training-link/src"],
+      "@availity/table": ["packages/table/src"]
     }
   },
   "exclude": ["**/node_modules/"]

@@ -42,6 +42,7 @@ export interface ResourceSelectProps<T> extends SelectFieldProps<T> {
   pageAll?: boolean;
   pageAllSearchBy?: (previousOptions: any[], inputValue: string) => any[];
   onError?: (error: Error) => void;
+  searchTerm?: string;
 }
 
 declare class ResourceSelect<T> extends React.Component<ResourceSelectProps<T>> {
