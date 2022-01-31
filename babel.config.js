@@ -8,9 +8,9 @@ module.exports = (api) => {
         {
           absoluteRuntime: false,
           useESModules: false,
+          typescript: true,
         },
       ],
-      '@babel/preset-typescript',
     ],
     plugins: [
       ['@babel/plugin-proposal-class-properties', { loose: true }],

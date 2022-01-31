@@ -7,8 +7,6 @@ import { usePermissions } from '..';
 
 import ResourceComponent from './ResourceComponent';
 
-const queryClient = new QueryClient();
-
 export default {
   title: 'Hooks/usePermissions',
   parameters: {
@@ -18,7 +16,7 @@ export default {
   },
   decorators: [
     (Story) => (
-      <QueryClientProvider client={queryClient}>
+      <QueryClientProvider client={new QueryClient()}>
         <Story />
       </QueryClientProvider>
     ),

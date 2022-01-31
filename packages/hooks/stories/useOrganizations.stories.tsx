@@ -7,8 +7,6 @@ import { useOrganizations } from '..';
 
 import ResourceComponent from './ResourceComponent';
 
-const queryClient = new QueryClient();
-
 export default {
   title: 'Hooks/useOrganizations',
   parameters: {
@@ -18,7 +16,7 @@ export default {
   },
   decorators: [
     (Story) => (
-      <QueryClientProvider client={queryClient}>
+      <QueryClientProvider client={new QueryClient()}>
         <Story />
       </QueryClientProvider>
     ),

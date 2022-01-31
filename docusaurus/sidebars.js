@@ -26,7 +26,16 @@ module.exports = {
             ],
           },
           'components/app-icon',
-          'components/authorize',
+          {
+            type: 'category',
+            label: 'Authorize',
+            items: [
+              'components/authorize/index',
+              'components/authorize/authorize',
+              'components/authorize/useAuthorize',
+            ],
+          },
+          // 'components/authorize',
           'components/avatar',
           'components/breadcrumbs',
           {

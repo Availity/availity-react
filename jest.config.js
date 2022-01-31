@@ -18,13 +18,14 @@ module.exports = {
 
   transformIgnorePatterns: ['[/\\\\]node_modules[/\\\\](?!@availity).+\\.(js|jsx)$'],
   transform: {
-    '^.+\\.(js|jsx|tsx)$': `${require.resolve('./jest/babel.js')}`,
+    '^.+\\.(js|ts|jsx|tsx)$': `${require.resolve('./jest/babel.js')}`,
     '^.+\\.css$': `${require.resolve('./jest/css.js')}`,
     '^(?!.*\\.(js|jsx|css|json)$)': `${require.resolve('./jest/file.js')}`,
   },
 
   moduleNameMapper: {
     '.+\\.(css|styl|less|sass|scss|png|jpg|ttf|woff|woff2)$': 'identity-obj-proxy',
+    '@availity/mock/src/(.*)': '<rootDir>/packages/mock/src/$1',
   },
 
   roots: ['packages/'],
