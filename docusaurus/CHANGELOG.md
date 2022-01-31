@@ -3,6 +3,14 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## 1.4.1 (2022-01-31)
+
+**Note:** Version bump only for package @availity/dinosaurdocs
+
+
+
+
+
 # [1.4.0](https://github.com/Availity/availity-react/compare/@availity/dinosaurdocs@1.3.2...@availity/dinosaurdocs@1.4.0) (2022-01-18)
 
 

@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# 2.2.0 (2022-01-31)
+
+
+### Features
+
+* **mock:** convert to ts and update data ([4f32967](https://github.com/Availity/availity-react/commit/4f32967117676aeef7c7de26a072263e184dfe30))
+
+
+
+
+
 ## [2.1.8](https://github.com/Availity/availity-react/compare/@availity/mock@2.1.7...@availity/mock@2.1.8) (2022-01-11)
 
 

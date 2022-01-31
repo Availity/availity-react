@@ -3,6 +3,25 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# 2.0.0 (2022-01-31)
+
+
+### Bug Fixes
+
+* **authorize:** change query key to useAuthorize ([e916267](https://github.com/Availity/availity-react/commit/e91626725bae7c843e6f7023e5dc769169bf363b))
+
+
+* feat(authorize)!: convert to typescript and add react-query ([056744a](https://github.com/Availity/availity-react/commit/056744ac7526544095cfe45749ed5249d73a8956))
+
+
+### BREAKING CHANGES
+
+* react-query provider now required,  args are stricter
+
+
+
+
+
 ## [1.6.2](https://github.com/Availity/availity-react/compare/@availity/authorize@1.6.1...@availity/authorize@1.6.2) (2021-12-20)
 
 **Note:** Version bump only for package @availity/authorize
