@@ -1,0 +1,20 @@
+{
+  "name": "@availity/codemods",
+  "version": "0.1.0",
+  "scripts": {
+    "lint": "eslint --cache .",
+    "test": "codemod-cli test",
+    "update-docs": "codemod-cli update-docs"
+  },
+  "bin": "./src/transform",
+  "keywords": [
+    "codemod-cli"
+  ],
+  "dependencies": {
+    "codemod-cli": "^3.2.0"
+  },
+  "devDependencies": {},
+  "jest": {
+    "testEnvironment": "node"
+  }
+}

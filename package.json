@@ -24,7 +24,8 @@
   "workspaces": {
     "packages": [
       "packages/*",
-      "docusaurus"
+      "docusaurus",
+      "codemods"
     ]
   },
   "scripts": {

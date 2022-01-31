@@ -8,6 +8,7 @@ coverage/
 /**/.docusaurus
 /**/build
 /**/dist
+/**/__testfixtures__
 
 # temporary to pass builds until TS errors fixed
 *.d.ts

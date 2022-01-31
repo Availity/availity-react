@@ -2,7 +2,7 @@
   "npmClient": "yarn",
   "useWorkspaces": true,
   "version": "independent",
-  "packages": ["packages/*", "docusaurus"],
+  "packages": ["packages/*", "docusaurus", "codemods"],
   "message": "chore: publish release [skip ci]",
   "command": {
     "publish": {
