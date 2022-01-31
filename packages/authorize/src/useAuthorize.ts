@@ -20,7 +20,7 @@ const useAuthorize = (
   const { organizationId, customerId, region = true, resources } = parameters;
 
   const { data: authorized = false, isLoading } = useQuery(
-    ['authorized', permissions, region, resources, organizationId, customerId],
+    ['useAuthorize', permissions, region, resources, organizationId, customerId],
     () => checkPermissions(permissions, region, resources, organizationId, customerId),
     { enabled: permissions.length > 0, ...options }
   );
