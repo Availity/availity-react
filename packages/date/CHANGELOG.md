@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## 3.4.2 (2022-02-02)
+
+
+### Bug Fixes
+
+* **date:** prevent loss of onChange handler when date value is manually cleared out ([00fd97e](https://github.com/Availity/availity-react/commit/00fd97ee183cbc2afe87f3bb7b276097ea5c31f6))
+
+
+
+
+
 ## [3.4.1](https://github.com/Availity/availity-react/compare/@availity/date@3.4.0...@availity/date@3.4.1) (2022-01-18)
 
 
