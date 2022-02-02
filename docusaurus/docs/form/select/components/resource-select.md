@@ -75,7 +75,7 @@ When this prop changes, all cached options are cleared. (see [react-select-async
 
 #### `watchParams?: string[]`
 
-If present, the options reset when any of the parameters specified in the array change value. This is useful for when a customerId changes and you need to load a new list of options for the user to choose from. Used to derive `cacheUniq` if `cacheUniq` prop is not provided.
+Provide a list of properties to listen to from the parameters prop. If present, the options reset when any of the parameters specified in the array change value. This is useful for when a customerId changes and you need to load a new list of options for the user to choose from. This list will be used to derive cacheUniq when the cacheUniq prop is not provided. When using `watchParams`, the `parameters` prop must must be populated with values that are in the `watchParams` object. 
 
 #### `resource: AxiosResource`
 
