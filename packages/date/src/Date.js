@@ -74,15 +74,15 @@ const AvDate = ({
   };
 
   const onPickerChange = (value) => {
-    if (value === null) return;
-
     let val = value;
-    if (val instanceof Object && val.isValid()) {
-      val = val.format(isoDateFormat);
-    }
+    if (val !== null) {
+      if (val instanceof Object && val.isValid()) {
+        val = val.format(isoDateFormat);
+      }
 
-    setFieldValue(name, val, false);
-    setFieldTouched(name, true, false);
+      setFieldValue(name, val, false);
+      setFieldTouched(name, true, false);
+    }
 
     if (onChange) {
       onChange(val);
