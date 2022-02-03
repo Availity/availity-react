@@ -293,6 +293,8 @@ const DateRange = ({
           minimumNights={0}
           ariaDescribedBy={ariaDescribedBy}
           enableOutsideDays
+          autoComplete="date"
+          numberOfMonths={2}
           {...datepickerProps}
           startDate={getDateValue(startValue)}
           startDateId={startId}
@@ -306,10 +308,8 @@ const DateRange = ({
           renderCalendarInfo={renderDateRanges}
           customArrowIcon={customArrowIcon}
           isOutsideRange={isOutsideRange(min, max, format)}
-          numberOfMonths={2}
           navPosition="navPositionBottom"
           openDirection={openDirection}
-          autoComplete="date"
         />
       </InputGroup>
     </>
