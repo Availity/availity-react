@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [3.4.3](https://github.com/Availity/availity-react/compare/@availity/date@3.4.2...@availity/date@3.4.3) (2022-02-03)
+
+
+### Bug Fixes
+
+* **date:** fix DateRangePicker props on element definition so that they are customizable and not hardcoded ([e1c229a](https://github.com/Availity/availity-react/commit/e1c229a99d960c4338e21ea4120aad2526416fc8))
+
+
+
+
+
 ## 3.4.2 (2022-02-02)
 
 
