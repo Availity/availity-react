@@ -167,6 +167,8 @@ const AvDate = ({
       >
         <SingleDatePicker
           renderMonthElement={renderMonthElement}
+          autoComplete="date"
+          numberOfMonths={1}
           {...datePickerProps}
           disabled={attributes.disabled}
           id={pickerId}
@@ -175,11 +177,9 @@ const AvDate = ({
           onDateChange={onPickerChange}
           focused={isFocused}
           onFocusChange={onFocusChange}
-          numberOfMonths={1}
           isOutsideRange={isOutsideRange(min, max)}
           navPosition="navPositionBottom"
           openDirection={openDirection}
-          autoComplete="date"
         />
       </InputGroup>
     </>
