@@ -320,6 +320,7 @@ class AvSelect extends AvBaseInput {
           },
           multiValue: (provided) => ({
             ...provided,
+            borderRadius: '0.25em',
             width: 'auto',
           }),
           input: (provided) => ({
