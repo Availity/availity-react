@@ -318,6 +318,7 @@ class AvSelect extends AvBaseInput {
               zIndex: state.focused && '3',
             };
           },
+          menu: (provided) => ({ ...provided, borderRadius: '.25em' }),
           multiValue: (provided) => ({
             ...provided,
             borderRadius: '0.25em',
