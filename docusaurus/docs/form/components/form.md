@@ -25,7 +25,7 @@ const Example = () => (
 );
 ```
 
-#### Live example: <a href="https://availity.github.io/availity-react/storybook/?path=/story/formik-form--default"> Storybook</a>
+#### Live example: [Storybook](https://availity.github.io/availity-react/storybook/?path=/story/formik-form--default)
 
 ### Props
 
@@ -37,9 +37,13 @@ Object of values to initialize the form components with by name.
 
 Action to perform on submit.
 
-#### `focusOnErrors: boolean`
+#### `focusInvalidField: boolean`
 
-Determines whether invalid submission focuses first invalid field for accessibility. **Default:** true
+Determines whether invalid submission focuses first invalid field. **Default:** true
+
+#### `invalidInputSelectors: string`
+
+CSS selectors used to find first invalid field within form for focus. **Default:** 'input[aria-invalid="true"], div.is-invalid input:first-of-type:not([hidden]):not([style*="display:none"]):not([style*="display: none"])'
 
 #### `...rest`
 

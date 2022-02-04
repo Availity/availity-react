@@ -4,22 +4,23 @@ import { v4 as uuid } from 'uuid';
 import { Form as RsForm } from 'reactstrap';
 import { Formik, Form as FForm, useFormikContext } from 'formik';
 
-const FormikOnError = ({ id }) => {
+const useFormikFocusFirstInvalidField = (id, focusInvalidField, invalidInputSelectors) => {
   const formik = useFormikContext();
   const [submitCount, setSubmitCount] = useState(formik.submitCount);
 
   useEffect(() => {
-    if (!formik.isValid && formik.submitCount > submitCount) {
-      const genericErrorInput =
-        'input[aria-invalid="true"], div.is-invalid input:first-of-type:not([hidden]):not([style*="display:none"]):not([style*="display: none"])';
+    if (focusInvalidField && !formik.isValid && formik.submitCount > submitCount) {
       const form = document.getElementById(id);
-      const firstErrorInput = form.querySelector(genericErrorInput);
-      firstErrorInput?.focus();
+      const firstInvalidInput = form.querySelector(invalidInputSelectors);
+      firstInvalidInput?.focus();
       setSubmitCount(formik.submitCount);
     }
-  }, [id, formik.isValid, formik.submitCount, submitCount, formik.errors]);
+  }, [id, focusInvalidField, formik.isValid, formik.submitCount, invalidInputSelectors, submitCount, formik.errors]);
+};
 
-  return null;
+const FocusableForm = ({ children, focusProps, ...rest }) => {
+  useFormikFocusFirstInvalidField(...focusProps);
+  return <RsForm {...rest}>{children}</RsForm>;
 };
 
 const Form = ({
@@ -32,14 +33,15 @@ const Form = ({
   onReset,
   validationSchema,
   validate,
-  focusOnErrors,
+  focusInvalidField,
   id,
   innerRef,
+  invalidInputSelectors,
   children,
   ...rest
 }) => {
   const formId = id || uuid();
-  const focusErrors = focusOnErrors ? <FormikOnError id={formId} /> : null;
+  const focusProps = [(id = formId), focusInvalidField, invalidInputSelectors];
 
   return (
     <Formik
@@ -55,10 +57,9 @@ const Form = ({
       innerRef={innerRef}
     >
       {(props) => (
-        <RsForm data-testid="form-container" tag={FForm} id={formId} {...rest}>
-          {focusErrors}
+        <FocusableForm data-testid="form-container" tag={FForm} id={formId} focusProps={focusProps} {...rest}>
           {typeof children === 'function' ? children(props) : children}
-        </RsForm>
+        </FocusableForm>
       )}
     </Formik>
   );
@@ -68,13 +69,14 @@ const Form = ({
 Form.propTypes = {
   children: PropTypes.oneOfType([PropTypes.func, PropTypes.node]),
   enableReinitialize: PropTypes.bool,
-  focusOnErrors: PropTypes.bool,
+  focusInvalidField: PropTypes.bool,
   id: PropTypes.string,
   initialErrors: PropTypes.object,
   initialStatus: PropTypes.any,
   initialTouched: PropTypes.object,
   initialValues: PropTypes.object.isRequired,
   innerRef: PropTypes.any,
+  invalidInputSelectors: PropTypes.string,
   onReset: PropTypes.func,
   onSubmit: PropTypes.func,
   validate: PropTypes.func,
@@ -82,8 +84,15 @@ Form.propTypes = {
 };
 
 Form.defaultProps = {
-  focusOnErrors: true,
+  focusInvalidField: true,
+  invalidInputSelectors:
+    'input[aria-invalid="true"], div.is-invalid input:first-of-type:not([hidden]):not([style*="display:none"]):not([style*="display: none"])',
   onSubmit: () => {},
+};
+
+FocusableForm.propTypes = {
+  children: PropTypes.node,
+  focusProps: PropTypes.array,
 };
 
 export default Form;
