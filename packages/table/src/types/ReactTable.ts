@@ -34,6 +34,7 @@ export type Column<T extends IdType> = RtColumn<T> & {
   defaultCanSort?: boolean;
   disableSortBy?: boolean;
   label?: string;
+  hidden?: boolean;
 };
 
 export type Cell<T extends IdType> = RtCell<T> & {

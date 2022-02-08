@@ -78,7 +78,10 @@ const TableProvider = <T extends IdType>({
         ),
       };
 
-      hooks.visibleColumns.push((columns: Column<T>[]) => [selectionColumn, ...columns]);
+      hooks.visibleColumns.push((columns: Column<T>[]) => [
+        selectionColumn,
+        ...filter(columns, (col) => col.hidden !== true),
+      ]);
     }
   ) as TableInstance<T>;
 

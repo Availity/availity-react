@@ -3,4 +3,5 @@ export type TableSortOption = {
   label: string;
   isDesc?: boolean;
   order?: number;
+  fieldMap?: string;
 };
