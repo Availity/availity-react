@@ -192,14 +192,7 @@ const Link = ({
       className={classNames('spaces-hook-link', className, `spaces-${linkStyle}-link`, {
         'p-2': linkStyle === 'default',
       })}
-      tabIndex={0}
-      style={{
-        ...style,
-        cursor: link?.url ? 'pointer' : 'not-allowed',
-      }}
-      {...props}
-      {...rest}
-      aria-label={name}
+      style={{ ...style }}
     >
       <BodyTag
         className={classNames('d-flex', `align-items-${!showDescription || stacked ? 'center' : 'start'}`, {
@@ -221,6 +214,13 @@ const Link = ({
                     'pt-3': stacked,
                     'text-center': stacked,
                   })}
+                  tabIndex={0}
+                  style={{
+                    cursor: link?.url ? 'pointer' : 'not-allowed',
+                  }}
+                  {...props}
+                  {...rest}
+                  aria-label={name}
                 >
                   {name}
                 </TitleTag>
