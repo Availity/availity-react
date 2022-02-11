@@ -3,6 +3,18 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [1.3.0](https://github.com/Availity/availity-react/compare/@availity/form@1.2.3...@availity/form@1.3.0) (2022-02-11)
+
+
+### Features
+
+* **form:** focus first invalid input hook ([5ac64e3](https://github.com/Availity/availity-react/commit/5ac64e3a6795462951bee12fa22a45072ccafb5d))
+* **form:** focus first invalid input on submission ([b89f4ac](https://github.com/Availity/availity-react/commit/b89f4ac481a91c39256a0664bada1aa3794db53f))
+
+
+
+
+
 ## [1.2.3](https://github.com/Availity/availity-react/compare/@availity/form@1.2.2...@availity/form@1.2.3) (2021-12-20)
 
 **Note:** Version bump only for package @availity/form
