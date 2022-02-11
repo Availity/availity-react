@@ -372,6 +372,10 @@ This makes the column sticky to the right side of the table. This works best whe
 
 When there is an on OnRowClick event populated, this designates that the column should not be clickable and not call that event. This is helpful for actions columns or cells that contain links or special functions.
 
+#### `hidden`
+
+When this is true, the column will be hidden in the table.
+
 ## Styling the Table
 
 In order to get the out-of-the-box styles for the table you can import the table scss file. You can also supply classNames to `bodyProps`, `cellProps`, `headerProps`, or `rowProps`.

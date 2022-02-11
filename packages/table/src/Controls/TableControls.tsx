@@ -8,7 +8,7 @@ type Props = {
 } & React.HTMLAttributes<HTMLElement>;
 
 const TableControls = ({ id, disabled, children, ...rest }: Props): JSX.Element => {
-  const [isDisabled, setIsDisabled] = useState<boolean>(disabled || false);
+  const [isDisabled, setIsDisabled] = useState(disabled || false);
 
   useEffect(() => {
     setIsDisabled(disabled || false);

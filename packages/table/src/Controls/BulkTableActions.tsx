@@ -25,10 +25,10 @@ const BulkTableActions = <T extends IdType>({
 
   const { selectedFlatRows: selectedRows, isAllRowsSelected, toggleAllRowsSelected } = instance as TableInstance<T>;
 
-  const [isSelectionDropdownOpen, setIsSelectionDropdownOpen] = useState<boolean>(false);
-  const [numberOfSelectedRows, setNumberOfSelectedRows] = useState<number>(0);
+  const [isSelectionDropdownOpen, setIsSelectionDropdownOpen] = useState(false);
+  const [numberOfSelectedRows, setNumberOfSelectedRows] = useState(0);
   const [selectionButtonText, setSelectionButtonText] = useState('Select');
-  const [isDisabled, setIsDisabled] = useState<boolean>(disabled || false);
+  const [isDisabled, setIsDisabled] = useState(disabled || false);
 
   useEffect(() => {
     setNumberOfSelectedRows(selectedRows?.length);
