@@ -118,7 +118,7 @@
     "jest-environment-jsdom-global": "^2.0.4",
     "lerna": "^3.6.0",
     "lint-staged": "^11.2.6",
-    "node-sass": "^5.0.0",
+    "node-sass": "^7.0.1",
     "plop": "^2.7.4",
     "postcss": "^8.3.11",
     "prettier": "^2.3.0",
