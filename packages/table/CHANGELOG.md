@@ -3,6 +3,19 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## 0.3.1 (2022-02-11)
+
+
+### Bug Fixes
+
+* **table:** cleanup and add tests ([53fa570](https://github.com/Availity/availity-react/commit/53fa57056ee9fa7e3b4baedf6a7206b235536d45))
+* **table:** fix sorting issues by allowing to hide columns ([426f724](https://github.com/Availity/availity-react/commit/426f7247ab805a427404c7faec720d6cf685a6ca))
+* **table:** only include hidden columns in additionalContent table row check ([e9d3c8e](https://github.com/Availity/availity-react/commit/e9d3c8e58d7307aa6a85a6ae5cd00e8ea5f3e4e9))
+
+
+
+
+
 # [0.3.0](https://github.com/Availity/availity-react/compare/@availity/table@0.2.2...@availity/table@0.3.0) (2022-01-18)
 
 

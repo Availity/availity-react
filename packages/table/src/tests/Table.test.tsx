@@ -1,5 +1,5 @@
 import React from 'react';
-import { render, fireEvent, waitFor } from '@testing-library/react';
+import { render, fireEvent, waitFor, queryByTestId } from '@testing-library/react';
 import basicData from './data/basicData.json';
 import formattedData from './data/needsFormattedData.json';
 import Table from '../Table';
@@ -54,7 +54,7 @@ const formattedColumns = [
     accessor: 'icon2',
     Cell: IconCell({
       name: 'doc-alt',
-      getTitle: () => 'test'
+      getTitle: () => 'test',
     }),
   },
   {
@@ -235,5 +235,30 @@ describe('Table', () => {
     await waitFor(() => {
       expect(onSort).toHaveBeenCalledTimes(1);
     });
+  });
+
+  test('should not display hidden columns', async () => {
+    const columnsToUse = [
+      ...basicColumns,
+      {
+        Header: 'Hidden',
+        accessor: 'aPropThatIsHidden',
+        hidden: true,
+      },
+    ];
+
+    const { container, queryByTestId } = render(
+      <TableProvider data={basicData} columns={columnsToUse}>
+        <Table />
+      </TableProvider>
+    );
+
+    expect(container).toBeDefined();
+
+    expect(container).toBeDefined();
+    expect(container).toMatchSnapshot();
+
+    const columnHeader = queryByTestId('table_header_row_0_cell_4_aPropThatIsHidden');
+    expect(columnHeader).toBeNull();
   });
 });

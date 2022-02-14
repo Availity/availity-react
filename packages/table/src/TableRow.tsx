@@ -24,9 +24,9 @@ const TableRow = <T extends IdType>({
   ...rest
 }: Props<T>): JSX.Element => {
   const { AdditionalContent, additionalContentProps, scrollable, instance } = useTableContext();
-  const { selectedFlatRows: selectedRows, allColumns } = instance as TableInstance<T>;
+  const { selectedFlatRows: selectedRows, visibleColumns } = instance as TableInstance<T>;
 
-  const columns = allColumns as Column<T>[];
+  const columns = visibleColumns as Column<T>[];
 
   const definedRowProps = {
     className: classNames(`av-grid-row-${index % 2 === 0 ? 'even' : 'odd'}`, {

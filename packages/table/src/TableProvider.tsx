@@ -32,7 +32,7 @@ const TableProvider = <T extends IdType>({
   ...rest
 }: TableProviderProps<T>): JSX.Element => {
   let selectionColumn: Column<T>;
-  const [isScrollable, setScrollable] = useState<boolean | undefined>(scrollable);
+  const [isScrollable, setScrollable] = useState(scrollable);
 
   const getSortableColumns = (): TableSortOption[] =>
     filter(columns, (column) => !column.disableSortBy && column.defaultCanSort).map((column) => {
@@ -78,7 +78,10 @@ const TableProvider = <T extends IdType>({
         ),
       };
 
-      hooks.visibleColumns.push((columns: Column<T>[]) => [selectionColumn, ...columns]);
+      hooks.visibleColumns.push((columns: Column<T>[]) => [
+        selectionColumn,
+        ...filter(columns, (col) => col.hidden !== true),
+      ]);
     }
   ) as TableInstance<T>;
 
