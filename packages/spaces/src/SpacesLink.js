@@ -192,6 +192,7 @@ const Link = ({
       className={classNames('spaces-hook-link', className, `spaces-${linkStyle}-link`, {
         'p-2': linkStyle === 'default',
       })}
+      {...rest}
       style={{ ...style }}
     >
       <BodyTag
@@ -219,7 +220,6 @@ const Link = ({
                     cursor: link?.url ? 'pointer' : 'not-allowed',
                   }}
                   {...props}
-                  {...rest}
                   aria-label={name}
                 >
                   {name}
