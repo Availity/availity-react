@@ -1,4 +1,4 @@
-import React, { useMemo, useCallback } from 'react';
+import React, { useMemo, useCallback, cloneElement } from 'react';
 import PropTypes from 'prop-types';
 import classNames from 'classnames';
 import truncate from 'lodash.truncate';
@@ -184,7 +184,7 @@ const Link = ({
             ...restLink,
             ...props,
           }))()
-      : children;
+      : cloneElement(children, { tabIndex: 0, style: { cursor: link?.url ? 'pointer' : 'not-allowed' }, ...props });
 
   return (
     <Tag
