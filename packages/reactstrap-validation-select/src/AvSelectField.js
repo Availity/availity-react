@@ -66,7 +66,7 @@ class AvSelectField extends Component {
         {thisLabel}
         <AvSelect 
           name={name} 
-          aria-describedby={validation.errorMessage ? `${id}-error` : undefined} 
+          aria-describedby={feedback ? `${id}-error` : undefined} 
           {...attributes} 
         />
         {helpMessage ? <FormText id={`${name}-helpmessage`.toLowerCase()}>{helpMessage}</FormText> : null}
