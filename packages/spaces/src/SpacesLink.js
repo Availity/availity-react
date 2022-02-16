@@ -13,6 +13,7 @@ import { useSpacesContext } from './Spaces';
 import { isFunction } from './helpers';
 import useLink from './useLink';
 import Loader, { skeletonPropType } from './Loader';
+import '../styles.scss';
 
 const getDisplayDate = (date) => dayjs(date).format('MM/DD/YYYY');
 
@@ -65,6 +66,7 @@ const Link = ({
   style,
   skeletonProps,
   linkAttributes,
+  role,
   ...rest
 }) => {
   const { loading } = useSpacesContext() || {};
@@ -184,7 +186,13 @@ const Link = ({
             ...restLink,
             ...props,
           }))()
-      : cloneElement(children, { tabIndex: 0, style: { cursor: link?.url ? 'pointer' : 'not-allowed' }, ...props });
+      : cloneElement(children, {
+          role: 'link',
+          tabIndex: 0,
+          style: { cursor: link?.url ? 'pointer' : 'not-allowed' },
+          'aria-label': name,
+          ...props,
+        });
 
   return (
     <Tag
@@ -194,6 +202,7 @@ const Link = ({
       })}
       {...rest}
       style={{ ...style }}
+      role={linkStyle === 'list' ? 'listitem' : role}
     >
       <BodyTag
         className={classNames('d-flex', `align-items-${!showDescription || stacked ? 'center' : 'start'}`, {
@@ -209,8 +218,7 @@ const Link = ({
               <Media body id={`${type}-${id}`} className="text-dark">
                 <TitleTag
                   id={`app-title-${id}`}
-                  tag="h4"
-                  className={classNames('h5', {
+                  className={classNames({
                     'mb-0': !showDescription || !description,
                     'pt-3': stacked,
                     'text-center': stacked,
@@ -280,6 +288,7 @@ Link.propTypes = {
   skeletonProps: skeletonPropType,
   maxDescriptionLength: PropTypes.number,
   linkAttributes: PropTypes.object,
+  role: PropTypes.string,
 };
 
 Link.defaultProps = {
