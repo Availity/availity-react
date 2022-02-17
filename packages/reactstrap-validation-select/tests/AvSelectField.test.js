@@ -15,7 +15,7 @@ const options = [
 const renderSelect = (props) =>
   render(
     <AvForm>
-      <AvSelectField name="test-form-input" {...props} />
+      <AvSelectField name="test-form-input" data-testid="select-field" {...props} />
       <Button type="submit">Submit</Button>
     </AvForm>
   );
@@ -48,4 +48,17 @@ describe('AvSelect', () => {
     const err = await waitFor(() => getByText('This field is wrong.'));
     expect(err).toBeDefined();
   });
+
+  test('has aria-describedby attribute', async () => {
+    const { getByText } = renderSelect({
+      options,
+      classNamePrefix: 'test',
+      getResult: 'regions',
+      label: 'Hello World',
+    });
+    const select = getByText('Hello World');
+    expect(getByTestId('select-field')).toHaveAttribute('aria-describedby');
+    expect(select).toBeDefined();
+  });
+
 });

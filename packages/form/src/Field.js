@@ -57,6 +57,7 @@ const Field = ({
       readOnly={readOnly}
       feedback
       help={!!helpMessage}
+      aria-describedby={`${id}-error`}
       {...attributes}
     />
   );
@@ -81,7 +82,7 @@ const Field = ({
   }
 
   const help = helpMessage ? <FormText id={`${id}-helpmessage`.toLowerCase()}>{helpMessage}</FormText> : null;
-  const feedback = <Feedback name={id} />;
+  const feedback = <Feedback id={`${id}-error`} name={id} />;
   let inputRow = row ? (
     <Col {...col}>
       {input}

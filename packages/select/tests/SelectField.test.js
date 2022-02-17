@@ -47,4 +47,20 @@ describe('Select', () => {
 
     expect(getByTestId('required-asterisk')).toBeDefined();
   });
+
+  test('renders with aria-describedby attribute', () => {
+    const { getByTestId } = render(
+      <Form onSubmit={() => {}} initialValues={{}}>
+        <SelectField
+          name="singleSelect"
+          label="Single Select Field"
+          options={[{}]}
+          data-testid="single-select"
+          required
+        />
+      </Form>
+    );
+
+    expect(getByTestId('single-select')).toHaveAttribute('aria-describedby');
+  });
 });
