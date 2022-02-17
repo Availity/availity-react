@@ -734,6 +734,7 @@ describe('Select', () => {
       expect(optionOne).toHaveAttribute('name');
     });
   });
+
   test('renders error message in placeholder with invalid', async () => {
     const { container, getByText } = render(
       <Form
@@ -756,6 +757,7 @@ describe('Select', () => {
       expect(hiddenPlaceholderMessage.innerHTML).toContain('This field is required.');
     });
   });
+
   test('renders help message in placeholder', async () => {
     const { container, getByText } = render(
       <Form

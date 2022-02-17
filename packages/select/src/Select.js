@@ -120,7 +120,7 @@ const Select = ({
     if (attributes.isMulti && digIfMulti && Array.isArray(value)) {
       return value.map((val) => prepValue(val));
     }
-    if (attributes.raw || attributes.loadOptions) {
+    if (attributes.raw || (attributes.loadOptions && !attributes.valueKey)) {
       return value;
     }
     const valueKey = getValueKey();
