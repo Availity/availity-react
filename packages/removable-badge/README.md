@@ -2,9 +2,9 @@
 
 > Removable Badge Component
 
-[![Version](https://img.shields.io/npm/v/@availity/training-link.svg?style=for-the-badge)](https://www.npmjs.com/package/@availity/removable-badge)
-[![NPM Downloads](https://img.shields.io/npm/dt/@availity/training-link.svg?style=for-the-badge)](https://www.npmjs.com/package/@availity/removable-badge)
-[![Dependecy Status](https://img.shields.io/librariesio/release/npm/@availity/training-link?style=for-the-badge)](https://github.com/Availity/availity-react/blob/master/packages/removable-badge/package.json)
+[![Version](https://img.shields.io/npm/v/@availity/removable-badge.svg?style=for-the-badge)](https://www.npmjs.com/package/@availity/removable-badge)
+[![NPM Downloads](https://img.shields.io/npm/dt/@availity/removable-badge.svg?style=for-the-badge)](https://www.npmjs.com/package/@availity/removable-badge)
+[![Dependency Status](https://img.shields.io/librariesio/release/npm/@availity/removable-badge?style=for-the-badge)](https://github.com/Availity/availity-react/blob/master/packages/removable-badge/package.json)
 
 ## Installation
 
