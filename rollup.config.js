@@ -4,7 +4,7 @@ import commonjs from '@rollup/plugin-commonjs';
 import typescript from 'rollup-plugin-typescript2';
 import postcss from 'rollup-plugin-postcss';
 
-const packages = ['authorize', 'icon', 'training-link', 'table'];
+const packages = ['authorize', 'icon', 'removable-badge', 'training-link', 'table'];
 
 // rollup.config.js
 /**
