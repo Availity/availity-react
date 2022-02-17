@@ -7,6 +7,7 @@ import Feedback from './Feedback';
 import FormGroup from './FormGroup';
 import Input from './Input';
 import Label from './Label';
+import { useField } from 'formik';
 
 const colSizes = ['xs', 'sm', 'md', 'lg', 'xl'];
 
@@ -46,6 +47,8 @@ const Field = ({
     }
   }
 
+  const [,{ error }] = useField(id);
+
   let input = (
     <Input
       name={id}
@@ -57,7 +60,7 @@ const Field = ({
       readOnly={readOnly}
       feedback
       help={!!helpMessage}
-      aria-describedby={`${id}-error`}
+      aria-describedby={error ? `${id}-feedback`.toLowerCase() : undefined}
       {...attributes}
     />
   );
@@ -82,7 +85,7 @@ const Field = ({
   }
 
   const help = helpMessage ? <FormText id={`${id}-helpmessage`.toLowerCase()}>{helpMessage}</FormText> : null;
-  const feedback = <Feedback id={`${id}-error`} name={id} />;
+  const feedback = <Feedback name={id} />;
   let inputRow = row ? (
     <Col {...col}>
       {input}

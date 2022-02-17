@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import classNames from 'classnames';
 import { FormText } from 'reactstrap';
 import { FormGroup, Feedback, Label } from '@availity/form';
+import { useField } from 'formik';
 
 import Select from './Select';
 
@@ -40,11 +41,13 @@ const SelectField = ({
     </Label>
   ) : null;
 
+  const [,{ error }] = useField(name);
+
   return (
     <FormGroup className={groupClass} for={name} disabled={attributes.disabled}>
       {thisLabel}
-      <Select name={name} feedback helpMessage={helpMessage} required={required} aria-describedby={`${id}-error`} {...attributes} />
-      <Feedback id={`${id}-error`} className={classNames('d-block', feedbackClass)} name={name} />
+      <Select name={name} feedback helpMessage={helpMessage} required={required} aria-describedby={error ? `${name}-feedback`.toLowerCase() : undefined} {...attributes} />
+      <Feedback className={classNames('d-block', feedbackClass)} name={name} />
       {helpMessage ? <FormText id={`${name}-helpmessage`.toLowerCase()}>{helpMessage}</FormText> : null}
     </FormGroup>
   );
