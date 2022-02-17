@@ -1,20 +1,20 @@
 {
-  "name": "@availity/removable-badge",
+  "name": "@availity/badge",
   "version": "1.0.0",
-  "description": "Removable Badge Component",
+  "description": "This provides specialized functionality for badge components",
   "keywords": [
     "react",
     "availity",
-    "removable-badge"
+    "badge"
   ],
-  "homepage": "https://availity.github.io/availity-react/components/removable-badge",
+  "homepage": "https://availity.github.io/availity-react/components/badge",
   "bugs": {
     "url": "https://github.com/Availity/availity-react/issues"
   },
   "repository": {
     "type": "git",
     "url": "https://github.com/Availity/availity-react.git",
-    "directory": "packages/removable-badge"
+    "directory": "packages/badge"
   },
   "license": "MIT",
   "author": "Ashlee Zeigler <ashlee.zeigler@availity.com>",

@@ -1,15 +1,15 @@
 ---
-title: Removable Badge
+title: Badge
 ---
 
-This is a removable badge component, utilizing Reactstrap Badge.
+This library contains specialized Badges, utilizing Reactstrap Badge.
 
-[![Version](https://img.shields.io/npm/v/@availity/removable-badge.svg?style=for-the-badge)](https://www.npmjs.com/package/@availity/removable-badge)
+[![Version](https://img.shields.io/npm/v/@availity/badge.svg?style=for-the-badge)](https://www.npmjs.com/package/@availity/badge)
 
 ### Installation
 
 ```bash
-npx install-peerdeps @availity/removable-badge --save
+npx install-peerdeps @availity/badge --save
 ```
 
 ##  Removable Badge
@@ -18,7 +18,7 @@ npx install-peerdeps @availity/removable-badge --save
 
 ```jsx
 import React from 'react';
-import RemovableBadge from '@availity/removable-badge';
+import RemovableBadge from '@availity/badge';
 
 const Example = () => (
     <RemovableBadge key={badge.value} color={badge.color} value={badge.value} onRemove={remove}>
@@ -49,7 +49,7 @@ This component allows you to specify a list of badges and handles removing the b
 
 ```jsx
 import React from 'react';
-import { RemovableBadgeList, BadgeItem } from '@availity/removable-badge';
+import { RemovableBadgeList, BadgeItem } from '@availity/badge';
 
 const Example = () => (
    const defaultBadgeList: BadgeItem[] = [
