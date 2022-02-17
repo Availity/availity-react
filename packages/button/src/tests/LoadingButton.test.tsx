@@ -39,7 +39,7 @@ describe('Loading Button', () => {
 
   test('should render when loading', async () => {
     const buttonText = 'Text';
-    const { container, getByTestId } = render(<LoadingButton isLoading={true}>{buttonText}</LoadingButton>);
+    const { container, getByTestId } = render(<LoadingButton isLoading>{buttonText}</LoadingButton>);
 
     expect(container).toBeDefined();
     expect(container).toMatchSnapshot();
@@ -54,7 +54,7 @@ describe('Loading Button', () => {
 
     const buttonText = 'Text';
     const { container, getByTestId } = render(
-      <LoadingButton isLoading={true} onClick={onClick}>
+      <LoadingButton isLoading onClick={onClick}>
         {buttonText}
       </LoadingButton>
     );
