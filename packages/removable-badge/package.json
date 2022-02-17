@@ -1,0 +1,38 @@
+{
+  "name": "@availity/removable-badge",
+  "version": "1.4.2",
+  "description": "Removable Badge Component",
+  "keywords": [
+    "react",
+    "availity",
+    "removable-badge"
+  ],
+  "homepage": "https://availity.github.io/availity-react/components/removable-badge",
+  "bugs": {
+    "url": "https://github.com/Availity/availity-react/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Availity/availity-react.git",
+    "directory": "packages/removable-badge"
+  },
+  "license": "MIT",
+  "author": "Ashlee Zeigler <ashlee.zeigler@availity.com>",
+  "main": "dist/index.js",
+  "module": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "dependencies": {
+    "@availity/icon": "^0.10.2",
+    "lodash": "^4.17.21"
+  },
+  "devDependencies": {
+    "react": "^17.0.2",
+    "react-dom": "^17.0.2"
+  },
+  "peerDependencies": {
+    "react": ">=16.3.0"
+  },
+  "publishConfig": {
+    "access": "public"
+  }
+}

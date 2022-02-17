@@ -1,0 +1,103 @@
+---
+title: Removable Badge
+---
+
+This is a removable badge component, utilizing ReactStrap Badge.
+
+[![Version](https://img.shields.io/npm/v/@availity/removable-badge.svg?style=for-the-badge)](https://www.npmjs.com/package/@availity/removable-badge)
+
+### Installation
+
+```bash
+npx install-peerdeps @availity/removable-badge --save
+```
+
+##  Removable Badge
+
+### Example
+
+```jsx
+import React from 'react';
+import RemovableBadge from '@availity/removable-badge';
+
+const Example = () => (
+    <RemovableBadge key={badge.value} color={badge.color} value={badge.value} onRemove={remove}>
+        {displayText}
+    </RemovableBadge>
+);
+```
+
+#### Live example: <a href="https://availity.github.io/availity-react/storybook/?path=/story/components-header--default"> Storybook</a>
+
+### `RemovableBadge` Props
+
+`<RemovableBadge/>` contains all of the `BadgeProp` from Reacstrap, in addition to the following.
+
+#### `value: string`
+
+This is a unique value for the badge, which is passed up to the `onRemove` function to describe which badge is being removed.
+
+#### `onRemove: (value: string) => void`
+
+This is the function that is called whenever the 'X' icon is clicked. It passes the value of the specified badge to the parent component.
+
+## Removable Badge List
+
+This component allows you to specify a list of badges and handles removing the badge from the badge list 
+
+### Example
+
+```jsx
+import React from 'react';
+import { RemovableBadgeList, BadgeItem } from '@availity/removable-badge';
+
+const Example = () => (
+   const defaultBadgeList: BadgeItem[] = [
+        { value: '1', color: 'primary', displayText: 'Test 1' },
+        { value: '2', color: 'success', displayText: 'Test 2' },
+        { value: '3', color: 'danger', displayText: 'Test 3' },
+        { value: '4', color: 'warning', displayText: 'Test 4' },
+        { value: '5', color: 'info', displayText: 'Test 5' },
+        { value: '6', color: 'light', displayText: 'Test 6' },
+        { value: '7', color: 'dark', displayText: 'Test 7' },
+        { value: '8', displayText: 'Test 9' },
+  ];
+  const [badgeList, setBadgeList] = useState<BadgeItem[]>(defaultBadgeList);
+
+  const remove = () => {
+    setBadgeList(defaultBadgeList);
+  }
+
+  const onRemoveBadge = (badgeList: BadgeItem[]) => {
+    setBadgeList(badgeList);
+  }
+
+  return (
+      <RemovableBadgeList badges={badgeList} onRemove={onRemoveBadge}/>
+  );
+);
+```
+
+### `RemovableBadgeList` Props
+
+#### `onRemove: (badges: BadgeItem[]) => void`
+
+This is the function that is called whenever a badge in the list has been removed. It passes in the current badge list, after the badge has been removed. 
+
+### `BadgeItem` Props
+
+#### `value: string`
+
+This is a unique value for the badge, which is passed up to the `onRemove` function to describe which badge is being removed.
+
+#### `displayText: string`
+
+This is the text that will be displayed in the badge.
+
+#### `color: string`
+
+The color of the badge. Refer to the ReactStrap documentation to determine which colors are available. 
+
+#### `order: number`
+
+Optionally display the badges in a specified order.

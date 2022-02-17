@@ -101,6 +101,7 @@ module.exports = {
               'components/pagination/context',
             ],
           },
+          'components/removable-badge',
           'components/progress',
           {
             type: 'category',

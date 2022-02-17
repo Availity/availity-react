@@ -1,0 +1,18 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Removable Badge should render 1`] = `
+<div>
+  <span
+    class="badge badge-primary"
+    data-testid="removable_badge"
+  >
+    <i
+      aria-hidden="true"
+      class="icon icon-cancel"
+      data-testid="removable_badge_remove"
+      style="cursor: pointer;"
+    />
+    My Badge
+  </span>
+</div>
+`;
