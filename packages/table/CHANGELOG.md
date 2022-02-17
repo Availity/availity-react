@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.3.2](https://github.com/Availity/availity-react/compare/@availity/table@0.3.1...@availity/table@0.3.2) (2022-02-17)
+
+
+### Bug Fixes
+
+* **table:** add npmIgnore to prevent story files from getting packaged ([9228917](https://github.com/Availity/availity-react/commit/922891789095a5e6f8beb802d824a3fad3f8364c))
+
+
+
+
+
 ## 0.3.1 (2022-02-11)
 
 
