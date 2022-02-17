@@ -37,6 +37,7 @@ module.exports = {
           },
           // 'components/authorize',
           'components/avatar',
+          'components/button',
           'components/breadcrumbs',
           {
             type: 'category',
@@ -76,7 +77,6 @@ module.exports = {
             ],
           },
           'components/icon',
-          'components/loading-button',
           'components/link',
           'components/list-group',
           {

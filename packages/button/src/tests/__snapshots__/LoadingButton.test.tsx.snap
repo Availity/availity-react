@@ -3,7 +3,7 @@
 exports[`Loading Button should render when loading 1`] = `
 <div>
   <button
-    class="loading-button is-loading  btn btn-secondary disabled"
+    class="button is-loading  btn btn-secondary disabled"
     data-testid="loading_button"
     disabled=""
     type="submit"
@@ -62,7 +62,7 @@ exports[`Loading Button should render when loading 1`] = `
 exports[`Loading Button should render when not loading 1`] = `
 <div>
   <button
-    class="loading-button   btn btn-secondary"
+    class="button   btn btn-secondary"
     data-testid="loading_button"
     type="submit"
   >

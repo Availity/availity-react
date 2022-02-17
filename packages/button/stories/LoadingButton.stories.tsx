@@ -6,7 +6,7 @@ import LoadingButton from '../src';
 import '../styles.scss';
 
 export default {
-  title: 'Components/Loading Button',
+  title: 'Components/Button/Loading Button',
 } as Meta;
 
 export const Default: Story = () => {

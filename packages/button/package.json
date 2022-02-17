@@ -1,20 +1,20 @@
 {
-  "name": "@availity/loading-button",
+  "name": "@availity/button",
   "version": "1.0.0",
-  "description": "This is a button component that displays a loading indicator inside of it when loading",
+  "description": "This is provides specialized functionality for button components",
   "keywords": [
     "react",
     "availity",
-    "loading-button"
+    "button"
   ],
-  "homepage": "https://availity.github.io/availity-react/components/loading-button",
+  "homepage": "https://availity.github.io/availity-react/components/button",
   "bugs": {
     "url": "https://github.com/Availity/availity-react/issues"
   },
   "repository": {
     "type": "git",
     "url": "https://github.com/Availity/availity-react.git",
-    "directory": "packages/loading-button"
+    "directory": "packages/button"
   },
   "license": "MIT",
   "author": "Ashlee Zeigler <ashlee.zeigler@availity.com>",

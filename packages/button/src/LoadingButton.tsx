@@ -16,7 +16,7 @@ const LoadingButton = ({ id, isLoading, className, children, type, ...rest }: Pr
     id={id}
     disabled={isLoading}
     type={type}
-    className={`loading-button ${isLoading ? 'is-loading' : ''} ${className || ''}`}
+    className={`button ${isLoading ? 'is-loading' : ''} ${className || ''}`}
     {...rest}
   >
     <BlockUi tag="div" blocking={isLoading} keepInView />
