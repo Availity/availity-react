@@ -76,6 +76,7 @@ module.exports = {
             ],
           },
           'components/icon',
+          'components/loading-button',
           'components/link',
           'components/list-group',
           {

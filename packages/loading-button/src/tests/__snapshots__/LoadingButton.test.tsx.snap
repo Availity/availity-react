@@ -1,0 +1,77 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Loading Button should render when loading 1`] = `
+<div>
+  <button
+    class="loading-button is-loading  btn btn-secondary disabled"
+    data-testid="loading_button"
+    disabled=""
+    type="submit"
+  >
+    <div
+      aria-busy="true"
+      class="block-ui undefined"
+    >
+      <div
+        tabindex="0"
+      />
+      <div
+        class="block-ui-container"
+        tabindex="0"
+      >
+        <div
+          class="block-ui-overlay"
+        />
+        <div
+          class="block-ui-message-container"
+          style="top: 50%;"
+        >
+          <div
+            class="block-ui-message"
+          >
+            <div
+              class="loading-indicator"
+            >
+              <span
+                class="loading-bullet"
+              >
+                •
+              </span>
+               
+              <span
+                class="loading-bullet"
+              >
+                •
+              </span>
+               
+              <span
+                class="loading-bullet"
+              >
+                •
+              </span>
+            </div>
+          </div>
+        </div>
+      </div>
+      <span />
+    </div>
+  </button>
+</div>
+`;
+
+exports[`Loading Button should render when not loading 1`] = `
+<div>
+  <button
+    class="loading-button   btn btn-secondary"
+    data-testid="loading_button"
+    type="submit"
+  >
+    <div
+      aria-busy="false"
+    >
+      <span />
+    </div>
+    Text
+  </button>
+</div>
+`;
