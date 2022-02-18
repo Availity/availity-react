@@ -3,6 +3,19 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [1.2.0](https://github.com/Availity/availity-react/compare/@availity/button@1.1.0...@availity/button@1.2.0) (2022-02-18)
+
+
+### Features
+
+* **button:** add peerdeps and change from default export ([b334dfe](https://github.com/Availity/availity-react/commit/b334dfec731f28b5d0a665e4b9a02f637b81c6ec))
+* **button:** fix linting ([65df51f](https://github.com/Availity/availity-react/commit/65df51f8c8c8d6c2f2e61b565f65ff0f802f4ef8))
+* **button:** reactstrap set to 8.0.0 ([f25cafe](https://github.com/Availity/availity-react/commit/f25cafee16a03e9fef4def282c5ea38866c5db32))
+
+
+
+
+
 # 1.1.0 (2022-02-18)
 
 
