@@ -650,6 +650,29 @@ describe('ResourceSelect', () => {
       });
     });
   });
+
+  it('applies valueKey override', async () => {
+    const { container, getByText } = renderSelect({
+      resource: { all: async () => [{ label: 'test', test: 'value' }] },
+      pageAll: true,
+      valueKey: 'test',
+      raw: false,
+      classNamePrefix: 'test__value__key',
+    });
+
+    // query
+    const select = container.querySelector('.test__value__key__control');
+    fireEvent.keyDown(select, { key: 'ArrowDown', keyCode: 40 });
+
+    const option = await waitFor(() => getByText('test'));
+    fireEvent.click(option);
+
+    fireEvent.click(getByText('Submit'));
+
+    await waitFor(() =>
+      expect(onSubmit).toHaveBeenCalledWith(expect.objectContaining({ 'test-form-input': 'value' }), expect.anything())
+    );
+  });
 });
 
 // -----

@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## 2.6.5 (2022-02-17)
+
+
+### Bug Fixes
+
+* **select:** allow valueKey to work with ResourceSelect ([85c554d](https://github.com/Availity/availity-react/commit/85c554d6d5b519c5d9ec6342a6f5b074ae8520a9))
+
+
+
+
+
 ## [2.6.4](https://github.com/Availity/availity-react/compare/@availity/select@2.6.3...@availity/select@2.6.4) (2022-02-11)
 
 **Note:** Version bump only for package @availity/select
