@@ -37,6 +37,7 @@ module.exports = {
           },
           // 'components/authorize',
           'components/avatar',
+          'components/button',
           'components/breadcrumbs',
           {
             type: 'category',
