@@ -1,6 +1,6 @@
 {
   "name": "@availity/page-header",
-  "version": "11.1.20",
+  "version": "11.1.21",
   "description": "The standard page header for Availity Portal Applications",
   "keywords": [
     "react",
@@ -24,14 +24,14 @@
   "dependencies": {
     "@availity/app-icon": "^1.4.2",
     "@availity/breadcrumbs": "^3.2.2",
-    "@availity/feedback": "^6.2.20",
-    "@availity/payer-logo": "^5.1.2",
+    "@availity/feedback": "^6.2.21",
+    "@availity/payer-logo": "^5.1.3",
     "classnames": "^2.3.1",
     "prop-types": "^15.7.2"
   },
   "devDependencies": {
     "@availity/api-axios": "^6.0.0",
-    "@availity/spaces": "^5.1.2",
+    "@availity/spaces": "^5.1.3",
     "@availity/training-link": "^1.4.2",
     "axios": "^0.21.1",
     "formik": "^2.2.8",
