@@ -4,7 +4,7 @@ import commonjs from '@rollup/plugin-commonjs';
 import typescript from 'rollup-plugin-typescript2';
 import postcss from 'rollup-plugin-postcss';
 
-const packages = ['authorize', 'icon', 'training-link', 'table'];
+const packages = ['authorize', 'icon', 'training-link', 'table', 'favorites'];
 
 // rollup.config.js
 /**
@@ -38,7 +38,12 @@ export default () =>
             exclude: [`${pkgPath}/src/**/*.test.tsx`, `${pkgPath}/src/**/*.test.ts`, `${pkgPath}/src/**/*.stories.tsx`],
           },
         }),
-        postcss(),
+        postcss({
+          extract: false,
+          modules: {
+            generateScopedName: '[hash:base64]',
+          },
+        }),
       ],
     });
   });

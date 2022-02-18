@@ -1,0 +1,53 @@
+// TODO: Colors are currently sampled from the uikit:
+// https://availity.github.io/availity-uikit/v3/components
+// They need to eventually be replaced with design token
+// once that package has stabilized. Size units are mostly
+// arbitrary. Those also need to eventaully utilize tokens.
+
+$rootSize: 1.5rem;
+$heartSize: 1.125rem;
+
+.root {
+  height: $rootSize;
+  width: $rootSize;
+  position: relative;
+}
+
+.input {
+  -webkit-appearance: none;
+  appearance: none;
+  cursor: pointer;
+  margin: 0;
+  height: $rootSize;
+  width: $rootSize;
+  display: block;
+  border-radius: 0.25rem;
+}
+.root:hover .input {
+  background-color: #e8ebeb;
+}
+
+.icons {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+  pointer-events: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.icon {
+  height: $heartSize;
+  width: $heartSize;
+}
+
+.heartFilled {
+  color: #ed5624;
+}
+
+.heartOutlined {
+  color: #4d4f53;
+}
