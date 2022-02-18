@@ -10,7 +10,7 @@ type Props = {
   type?: string;
 } & ButtonProps;
 
-const LoadingButton = ({ id, isLoading, className, children, type, ...rest }: Props): JSX.Element => (
+const LoadingButton = ({ id, isLoading, className, children, type = 'submit', ...rest }: Props): JSX.Element => (
   <Button
     data-testid="loading_button"
     id={id}
@@ -23,9 +23,5 @@ const LoadingButton = ({ id, isLoading, className, children, type, ...rest }: Pr
     {!isLoading && <>{children}</>}
   </Button>
 );
-
-LoadingButton.defaultProps = {
-  type: 'submit',
-};
 
 export default LoadingButton;
