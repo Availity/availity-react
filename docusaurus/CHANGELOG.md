@@ -3,6 +3,21 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [1.7.0](https://github.com/Availity/availity-react/compare/@availity/dinosaurdocs@1.5.0...@availity/dinosaurdocs@1.7.0) (2022-02-18)
+
+
+### Features
+
+* **badge:** add removable-badge component ([b56ab6a](https://github.com/Availity/availity-react/commit/b56ab6a5a0f14dc83c34edb10f778ef9733dc948))
+* **badge:** fix docs parsing issue ([90bb3a1](https://github.com/Availity/availity-react/commit/90bb3a12ce69b69065523643a6d39bc81bbc2c14))
+* **badge:** fix typos ([be8cef6](https://github.com/Availity/availity-react/commit/be8cef684aa1ca659d0afcbecdd518ddbdb5344f))
+* **badge:** remove default args from story and clean up story organization ([f5f49d0](https://github.com/Availity/availity-react/commit/f5f49d0e8e9c9fb23750dbf304fbfd8c32754c51))
+* **badge:** rename library ([7ed2ad2](https://github.com/Availity/availity-react/commit/7ed2ad28fd3247799aaffa6eb5e4b8ef354bffe5))
+
+
+
+
+
 # [1.6.0](https://github.com/Availity/availity-react/compare/@availity/dinosaurdocs@1.5.0...@availity/dinosaurdocs@1.6.0) (2022-02-18)
 
 
