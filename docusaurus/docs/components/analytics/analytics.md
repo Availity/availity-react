@@ -37,7 +37,7 @@ const Example = () => (
 
 #### `plugins?: AnalyticsPlugin[]`
 
-Array of plugins to call when an event is tracked. See [@availity/analytics-core](https://availity.github.io/sdk-js/features/analytics/) for list of prebuilt plugins.
+Array of plugins to call when an event is tracked. See [@availity/analytics-core](https://availity.github.io/sdk-js/resources/analytics/#defined-plugins) for list of prebuilt plugins.
 
 #### `pageTracking?: boolean`
 
