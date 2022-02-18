@@ -1,4 +1,4 @@
-import React, { useMemo, useCallback } from 'react';
+import React, { useMemo, useCallback, cloneElement } from 'react';
 import PropTypes from 'prop-types';
 import classNames from 'classnames';
 import truncate from 'lodash.truncate';
@@ -13,6 +13,7 @@ import { useSpacesContext } from './Spaces';
 import { isFunction } from './helpers';
 import useLink from './useLink';
 import Loader, { skeletonPropType } from './Loader';
+import '../styles.scss';
 
 const getDisplayDate = (date) => dayjs(date).format('MM/DD/YYYY');
 
@@ -65,6 +66,7 @@ const Link = ({
   style,
   skeletonProps,
   linkAttributes,
+  role,
   ...rest
 }) => {
   const { loading } = useSpacesContext() || {};
@@ -184,7 +186,13 @@ const Link = ({
             ...restLink,
             ...props,
           }))()
-      : children;
+      : cloneElement(children, {
+          role: 'link',
+          tabIndex: 0,
+          style: { cursor: link?.url ? 'pointer' : 'not-allowed' },
+          'aria-label': name,
+          ...props,
+        });
 
   return (
     <Tag
@@ -192,14 +200,9 @@ const Link = ({
       className={classNames('spaces-hook-link', className, `spaces-${linkStyle}-link`, {
         'p-2': linkStyle === 'default',
       })}
-      tabIndex={0}
-      style={{
-        ...style,
-        cursor: link?.url ? 'pointer' : 'not-allowed',
-      }}
-      {...props}
       {...rest}
-      aria-label={name}
+      style={{ ...style }}
+      role={linkStyle === 'list' ? 'listitem' : role}
     >
       <BodyTag
         className={classNames('d-flex', `align-items-${!showDescription || stacked ? 'center' : 'start'}`, {
@@ -215,12 +218,17 @@ const Link = ({
               <Media body id={`${type}-${id}`} className="text-dark">
                 <TitleTag
                   id={`app-title-${id}`}
-                  tag="h4"
-                  className={classNames('h5', {
+                  className={classNames({
                     'mb-0': !showDescription || !description,
                     'pt-3': stacked,
                     'text-center': stacked,
                   })}
+                  tabIndex={0}
+                  style={{
+                    cursor: link?.url ? 'pointer' : 'not-allowed',
+                  }}
+                  {...props}
+                  aria-label={name}
                 >
                   {name}
                 </TitleTag>
@@ -280,6 +288,7 @@ Link.propTypes = {
   skeletonProps: skeletonPropType,
   maxDescriptionLength: PropTypes.number,
   linkAttributes: PropTypes.object,
+  role: PropTypes.string,
 };
 
 Link.defaultProps = {
