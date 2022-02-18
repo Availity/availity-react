@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { Meta, Story } from '@storybook/react';
 import { Button, Col, Row } from 'reactstrap';
-import LoadingButton from '../src';
+import { LoadingButton } from '../src';
 
 import '../styles.scss';
 
