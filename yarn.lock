@@ -18083,7 +18083,7 @@ reactstrap@*:
     react-popper "^2.2.4"
     react-transition-group "^4.4.2"
 
-reactstrap@^8.9.0:
+reactstrap@^8.0.0, reactstrap@^8.9.0:
   version "8.10.1"
   resolved "https://registry.yarnpkg.com/reactstrap/-/reactstrap-8.10.1.tgz#43ea596c7f82f88997a9c8aae203417910262d3f"
   integrity sha512-StjLADa/12yMNjafrSs+UD7sZAGtKpLO9fZp++2Dj0IzJinqY7eQhXlM3nFf0q40YsIcLvQdFc9pKF8PF4f0Qg==
