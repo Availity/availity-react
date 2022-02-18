@@ -3,6 +3,20 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# 1.5.0 (2022-02-18)
+
+
+### Features
+
+* **button:** add line about scss in documentation ([f0228bd](https://github.com/Availity/availity-react/commit/f0228bd29c05e4446b50e2bc0dd8197c754b9e80))
+* **button:** add loading button component ([b4f6940](https://github.com/Availity/availity-react/commit/b4f694048eb28e0a03dab9cacad44fa1e95dfd82))
+* **button:** rename package to button ([ab7dc32](https://github.com/Availity/availity-react/commit/ab7dc32a2bf80f47085029377dd4d05010c51d87))
+* **button:** typo ([31e66bd](https://github.com/Availity/availity-react/commit/31e66bd1e80b4f6cd817200856dafd5eb24b6537))
+
+
+
+
+
 ## 1.4.1 (2022-01-31)
 
 **Note:** Version bump only for package @availity/dinosaurdocs
