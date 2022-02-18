@@ -4,13 +4,13 @@ import { Button } from 'reactstrap';
 import RemovableBadge, { BadgeItem, RemovableBadgeProps } from '../src';
 
 export default {
-  title: 'Components/Removable Badge',
+  title: 'Components/Badge/Removable Badge',
   parameters: {
     docs: {},
   },
 } as Meta;
 
-export const Default: Story<RemovableBadgeProps> = ({ value, color, displayText }) => {
+export const Default: Story<RemovableBadgeProps> = ({ value = '1', color = 'primary', displayText = 'This is my Button' }) => {
   const [badgeList, setBadgeList] = useState<BadgeItem[]>([{ value, color, displayText }]);
 
   const remove = () => {
@@ -38,8 +38,3 @@ export const Default: Story<RemovableBadgeProps> = ({ value, color, displayText 
   );
 };
 Default.storyName = 'default';
-Default.args = {
-  value: '1',
-  color: 'primary',
-  displayText: 'This is my button',
-};
