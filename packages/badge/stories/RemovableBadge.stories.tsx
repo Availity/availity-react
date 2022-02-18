@@ -10,7 +10,11 @@ export default {
   },
 } as Meta;
 
-export const Default: Story<RemovableBadgeProps> = ({ value = '1', color = 'primary', displayText = 'This is my Button' }) => {
+export const Default: Story<RemovableBadgeProps> = ({
+  value = '1',
+  color = 'primary',
+  displayText = 'This is my Button',
+}) => {
   const [badgeList, setBadgeList] = useState<BadgeItem[]>([{ value, color, displayText }]);
 
   const remove = () => {
