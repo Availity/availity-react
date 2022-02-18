@@ -103,6 +103,7 @@ module.exports = {
               'components/pagination/context',
             ],
           },
+          'components/badge',
           'components/progress',
           {
             type: 'category',
