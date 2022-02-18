@@ -1,9 +1,8 @@
 export type Dimensions = {
-    width: number;
-    height: number
+  width: number;
+  height: number;
 };
 
-  declare function useWindowDimensions(): Dimensions;
-  
-  export default useWindowDimensions;
-  
+declare function useWindowDimensions(): Dimensions;
+
+export default useWindowDimensions;
