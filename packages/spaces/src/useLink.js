@@ -1,7 +1,7 @@
 import nativeForm from '@availity/native-form';
 import { getUrl, getTarget } from '@availity/link';
 import { useSpaces, useSpacesContext } from './Spaces';
-import { updateTopApps } from './helpers';
+// import { updateTopApps } from './helpers';
 
 export default (spaceOrSpaceId, { clientId: propsClientId, linkAttributes = {} } = {}) => {
   const { clientId = propsClientId } = useSpacesContext() || {};
@@ -41,7 +41,7 @@ export default (spaceOrSpaceId, { clientId: propsClientId, linkAttributes = {} }
       };
 
       try {
-        await updateTopApps(id, type);
+        // await updateTopApps(id, type);
         await nativeForm(metadata.ssoId, attributes, options, type);
       } catch {
         // eslint-disable-next-line no-console
@@ -58,7 +58,7 @@ export default (spaceOrSpaceId, { clientId: propsClientId, linkAttributes = {} }
       return;
     }
 
-    await updateTopApps(id, type);
+    // await updateTopApps(id, type);
 
     const target = getTarget(link.target);
     const url = getUrl(link.url);
