@@ -9,4 +9,10 @@ export interface AvLinkProps extends React.AnchorHTMLAttributes<HTMLAnchorElemen
 
 declare const AvLink: React.FC<AvLinkProps>;
 
+declare function getUrl(url: string, loadApp: boolean, absolute: boolean): string;
+
+declare function getTarget(target: string): string;
+
+export { getUrl, getTarget };
+
 export default AvLink;

@@ -1,1 +1,1 @@
-export { default } from './src/Link';
+export { default, getTarget, getUrl } from './src/Link';
