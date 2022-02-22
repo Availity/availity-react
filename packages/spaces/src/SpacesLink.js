@@ -29,11 +29,13 @@ const getBodyTag = (propTag = 'div', linkStyle) =>
     list: 'div',
   }[linkStyle] || propTag);
 
-const getTitleTag = (propTag = 'div', linkStyle) =>
-  ({
+const getTitleTag = (propTag, linkStyle) =>
+  propTag ||
+  {
     card: CardTitle,
     list: ListGroupItemHeading,
-  }[linkStyle] || propTag);
+  }[linkStyle] ||
+  'div';
 
 const getTextTag = (propTag = 'div', linkStyle) =>
   ({
