@@ -3,7 +3,7 @@ import { HeartOutlined, HeartFilled, Spinner } from './Icons';
 import css from './FavoriteHeart.module.scss';
 import { useFavorites } from './FavoritesContext';
 
-const FavoriteHeart = ({
+export const FavoriteHeart = ({
   id,
   name,
   onChange,
@@ -14,30 +14,27 @@ const FavoriteHeart = ({
   onChange?: (isFavorited: boolean, event: React.ChangeEvent<HTMLInputElement>) => void;
   onMouseDown?: (event: React.MouseEvent<HTMLInputElement, MouseEvent>) => void;
 }): JSX.Element => {
-  const [isFavorited, toggleFavorite] = useFavorites(id);
+  const { isFavorited, isDisabled, isActiveMutation, toggleFavorite } = useFavorites(id);
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     if (onChange) onChange(isFavorited, e);
     toggleFavorite();
   };
 
-  // TODO: Implement loading state using react-query
-  const isLoading = false;
-
   return (
     <>
       <div className={css.root}>
-        <div className={css.icons}>
-          {isLoading ? <Spinner className={css.icon} /> : null}
-          {!isLoading ? (
-            isFavorited ? (
-              <HeartFilled className={`${css.icon} ${css.heartFilled}`} />
-            ) : (
-              <HeartOutlined className={`${css.icon} ${css.heartOutlined}`} />
-            )
-          ) : null}
+        <div className={css.icons} style={isDisabled && !isActiveMutation ? { opacity: 0.75 } : undefined}>
+          {isActiveMutation ? (
+            <Spinner className={`${css.icon}  ${css.spinner}`} />
+          ) : isFavorited ? (
+            <HeartFilled className={`${css.icon} ${css.heartFilled}`} />
+          ) : (
+            <HeartOutlined className={`${css.icon} ${css.heartOutlined}`} />
+          )}
         </div>
         <input
+          style={isDisabled && !isActiveMutation ? { cursor: 'not-allowed' } : undefined}
           className={css.input}
           type="checkbox"
           aria-label={`Favorite ${name}`}
@@ -47,7 +44,6 @@ const FavoriteHeart = ({
           onMouseDown={onMouseDown}
         />
       </div>
-      <div>{isFavorited ? 'true' : 'false'}</div>
     </>
   );
 };

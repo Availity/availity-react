@@ -1,43 +1,50 @@
-import React, { ReactNode, createContext, useState, useEffect, useMemo, useContext } from 'react';
+import React, { ReactNode, createContext, useEffect, useMemo, useContext, useState } from 'react';
 import avMessages from '@availity/message-core';
-import { avSettingsApi } from '@availity/api-axios';
-import { AppContext, Favorite } from './types';
-import { AV_INTERNAL_GLOBALS, MAX_FAVORITES, NAV_APP_ID } from './constants';
-import { openMaxModal, sendUpdate, submitFavorites, validateFavorites } from './utils';
+import { useQueryClient } from 'react-query';
+import { AppContext, Favorite, StatusUnion } from './types';
+import { AV_INTERNAL_GLOBALS, MAX_FAVORITES } from './constants';
+import { openMaxModal, sendUpdateMessage, useSubmitFavorites, useFavoritesQuery } from './utils';
 
-export const FavoritesContext = createContext<AppContext | null>(null);
+const asyncNoOp = () => Promise.resolve();
 
-const Favorites = ({ children }: { children: ReactNode }): JSX.Element => {
-  const [favorites, setFavorites] = useState<Favorite[]>([]);
+const FavoritesContext = createContext<AppContext | null>(null);
+
+export const FavoritesProvider = ({ children }: { children: ReactNode }): JSX.Element => {
+  const [activeMutationId, setActiveMutationId] = useState<string | null>(null);
+  const queryClient = useQueryClient();
+  const { data: favorites, status } = useFavoritesQuery();
+
+  const { submitFavorites, isLoading } = useSubmitFavorites({
+    onMutate({ activeMutationId }) {
+      setActiveMutationId(activeMutationId);
+    },
+    onSettled() {
+      setActiveMutationId(null);
+    },
+  });
 
   useEffect(() => {
-    const getFavorites = async () => {
-      const result = await avSettingsApi.getApplication(NAV_APP_ID);
-      const unvalidatedFavorites = result?.data?.settings?.[0]?.favorites;
-      const validatedFavorites = validateFavorites(unvalidatedFavorites);
-
-      setFavorites(validatedFavorites);
-    };
-
-    getFavorites();
-  }, []);
-
-  useEffect(() => {
-    avMessages.subscribe(AV_INTERNAL_GLOBALS.FAVORITES_CHANGED, (data) => {
-      setFavorites(data.favorites || []);
+    avMessages.subscribe(AV_INTERNAL_GLOBALS.FAVORITES_CHANGED, (messagesData) => {
+      queryClient.setQueryData('favorites', messagesData.favorites || []);
     });
 
     return () => avMessages.unsubscribe(AV_INTERNAL_GLOBALS.FAVORITES_CHANGED);
-  }, []);
+  }, [queryClient]);
 
   const deleteFavorite = async (id: string) => {
-    const newFavorites = await submitFavorites(favorites.filter((favorite: Favorite) => favorite.id !== id));
-    setFavorites(newFavorites);
+    if (favorites) {
+      const response = await submitFavorites({
+        favorites: favorites.filter((favorite: Favorite) => favorite.id !== id),
+        activeMutationId: id,
+      });
 
-    sendUpdate(newFavorites);
+      sendUpdateMessage(response.favorites);
+    }
   };
 
   const addFavorite = async (id: string) => {
+    if (!favorites) return false;
+
     if (favorites.length >= MAX_FAVORITES) {
       openMaxModal();
       return false;
@@ -49,45 +56,73 @@ const Favorites = ({ children }: { children: ReactNode }): JSX.Element => {
       }
       return accum;
     }, null);
-    const newData = [...favorites];
 
-    newData.push({
-      id,
-      pos: maxFavorite ? maxFavorite.pos + 1 : 0,
+    setActiveMutationId(id);
+
+    const newFavPos = maxFavorite ? maxFavorite.pos + 1 : 0;
+    const response = await submitFavorites({
+      favorites: [...favorites, { id, pos: newFavPos }],
+      activeMutationId: id,
     });
 
-    const newFavorites = await submitFavorites(newData);
+    sendUpdateMessage(response.favorites);
 
-    setFavorites(newFavorites);
-
-    sendUpdate(newFavorites);
-
-    const isFavorited = newFavorites.find((f) => f.id === id);
+    const isFavorited = response.favorites.find((f) => f.id === id);
 
     return !!isFavorited;
   };
 
   return (
-    <FavoritesContext.Provider value={{ favorites, deleteFavorite, addFavorite }}>{children}</FavoritesContext.Provider>
+    <FavoritesContext.Provider
+      value={{
+        favorites,
+        status,
+        isLoading,
+        activeMutationId,
+        deleteFavorite,
+        addFavorite,
+      }}
+    >
+      {children}
+    </FavoritesContext.Provider>
   );
 };
 
-export const useFavorites = (id: string): [boolean, () => Promise<void>] => {
+export const useFavorites = (
+  id: string
+): {
+  isFavorited: boolean;
+  status: StatusUnion;
+  isDisabled: boolean;
+  isActiveMutation: boolean;
+  toggleFavorite: () => Promise<void>;
+  allFavorites?: Favorite[];
+} => {
   const context = useContext(FavoritesContext);
 
   if (context === null) {
-    throw new Error('useCount must be used within a FavoritesProvider');
+    throw new Error('useFavorites must be used within a FavoritesProvider');
   }
-  const { favorites, deleteFavorite, addFavorite } = context;
+  const { favorites, status, activeMutationId, deleteFavorite, addFavorite } = context;
+
+  const isActiveMutation = activeMutationId === id;
 
   const isFavorited = useMemo(() => {
-    const fav = favorites.find((f) => f.id === id);
+    const fav = favorites?.find((f) => f.id === id);
     return !!fav;
   }, [favorites, id]);
 
   const toggleFavorite = async () => (isFavorited ? deleteFavorite(id) : addFavorite(id));
 
-  return [isFavorited, toggleFavorite];
-};
+  const isDisabled = status === 'loading' || status === 'idle' || activeMutationId !== null;
 
-export default Favorites;
+  return {
+    isFavorited,
+    status,
+    // try to put spinner on the button that was clicked, and subtly disable the other buttons
+    isDisabled,
+    isActiveMutation,
+    toggleFavorite: isDisabled ? asyncNoOp : toggleFavorite,
+    allFavorites: favorites,
+  };
+};
