@@ -1,2 +1,2 @@
-export { default } from './types/Link';
+export { default, getUrl, getTarget } from './types/Link';
 export * from './types/Link';
