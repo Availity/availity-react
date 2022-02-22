@@ -24,7 +24,7 @@
     "@availity/app-icon": "^1.3.24",
     "@availity/hooks": "^3.0.4",
     "@availity/icon": "^0.9.0",
-    "@availity/link": "^2.4.0",
+    "@availity/link": "^2.4.3",
     "@availity/list-group-item": "^1.2.23",
     "@availity/message-core": "^5.0.0",
     "@availity/native-form": "^4.0.4",

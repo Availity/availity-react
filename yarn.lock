@@ -161,10 +161,10 @@
     classnames "^2.3.1"
     prop-types "^15.7.2"
 
-"@availity/link@^2.4.0":
-  version "2.4.0"
-  resolved "https://registry.yarnpkg.com/@availity/link/-/link-2.4.0.tgz#deafb25f49e7557a7285135bd17f9ef10ebbf5cf"
-  integrity sha512-OqcWqE3m4GdjiLxrdLwjk6dVR5+UUmDme5WeIiQuO2G5MDR3+qIMHO+XGtoHa9ezNfTtW/GuYs9vhung8egchw==
+"@availity/link@^2.4.3":
+  version "2.4.3"
+  resolved "https://registry.yarnpkg.com/@availity/link/-/link-2.4.3.tgz#e1d4d17bc6af64fbc9b5b2dd832b91b6883d50d7"
+  integrity sha512-jTqZWqlUxKDxv8eUty47hZghLzxemvOQLRCCBv1AD/Lh5tk5gQ4/2DGI+XIOCGi9rpdcz6VrEJHLRP9gfrQjbQ==
   dependencies:
     "@availity/resolve-url" "^1.1.22"
     classnames "^2.3.1"
@@ -20836,7 +20836,7 @@ typedarray@^0.0.6:
   resolved "https://registry.yarnpkg.com/typedarray/-/typedarray-0.0.6.tgz#867ac74e3864187b1d3d47d996a78ec5c8830777"
   integrity sha1-hnrHTjhkGHsdPUfZlqeOxciDB3c=
 
-typescript@4.0.5, typescript@^4.0.5:
+typescript@^4.0.5:
   version "4.0.5"
   resolved "https://registry.yarnpkg.com/typescript/-/typescript-4.0.5.tgz#ae9dddfd1069f1cb5beb3ef3b2170dd7c1332389"
   integrity sha512-ywmr/VrTVCmNTJ6iV2LwIrfG1P+lv6luD8sUJs+2eI9NLGigaN+nUQc13iHqisq7bra9lnmUSYqbJvegraBOPQ==
