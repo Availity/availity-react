@@ -1,7 +1,9 @@
 import nativeForm from '@availity/native-form';
 import { getUrl, getTarget } from '@availity/link';
+import { isAbsoluteUrl } from '@availity/resolve-url';
 import { useSpaces, useSpacesContext } from './Spaces';
 // import { updateTopApps } from './helpers';
+import { updateUrl } from './helpers';
 
 export default (spaceOrSpaceId, { clientId: propsClientId, linkAttributes = {} } = {}) => {
   const { clientId = propsClientId } = useSpacesContext() || {};
@@ -61,7 +63,17 @@ export default (spaceOrSpaceId, { clientId: propsClientId, linkAttributes = {} }
     // await updateTopApps(id, type);
 
     const target = getTarget(link.target);
-    const url = getUrl(link.url);
+    const url = !isAbsoluteUrl(link.url)
+      ? getUrl(
+          updateUrl(
+            link.url,
+            'spaceId',
+            space.parents && space.parents[0] ? space.parents[0].id : linkAttributes.spaceId
+          ),
+          false,
+          false
+        )
+      : link.url;
     window.open(url, target);
   };
 
