@@ -242,18 +242,15 @@ const Link = ({
                       'text-center': stacked,
                     })}
                   >
-                    <ReactMarkdown
-                      // TODO: just rendering text, do we need markdown component?
-                      className="Card-text"
-                      source={
-                        maxDescriptionLength && description.length > maxDescriptionLength
-                          ? truncate(description, {
-                              length: maxDescriptionLength,
-                              separator: ' ',
-                            })
-                          : description
-                      }
-                    />
+                    {/* TODO: just rendering text, do we need markdown component? */}
+                    <ReactMarkdown className="Card-text">
+                      {maxDescriptionLength && description.length > maxDescriptionLength
+                        ? truncate(description, {
+                            length: maxDescriptionLength,
+                            separator: ' ',
+                          })
+                        : description}
+                    </ReactMarkdown>
                   </TextTag>
                 )}
               </Media>
