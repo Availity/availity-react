@@ -188,6 +188,14 @@
     "@babel/runtime" "^7.10.2"
     core-js "^3.12.1"
 
+"@availity/message-core@^5.0.4":
+  version "5.0.4"
+  resolved "https://registry.yarnpkg.com/@availity/message-core/-/message-core-5.0.4.tgz#a15e81064a4d2f3d162baefa9ab55ed34f2487cd"
+  integrity sha512-mxDWZCBh3p1aHNBv03vQiOeQW673YGKZeuL5Hq3r28AD+BExSQhvWc9FT8R9t5gkzQ9J59pTW+iib7exHPCQOg==
+  dependencies:
+    "@babel/runtime" "^7.16.5"
+    core-js "^3.12.1"
+
 "@availity/native-form@^3.0.0":
   version "3.0.0"
   resolved "https://registry.yarnpkg.com/@availity/native-form/-/native-form-3.0.0.tgz#bb8881ed46a7c3e848f1154a6709ed92f07d6d30"
@@ -196,12 +204,12 @@
     "@babel/runtime" "^7.10.2"
     core-js "^3.12.1"
 
-"@availity/native-form@^4.0.4":
-  version "4.0.4"
-  resolved "https://packages.availity.com:443/artifactory/api/npm/availity-npm-all/@availity/native-form/-/native-form-4.0.4.tgz#7ffcf47bc340440817e6035241ba51d8d25e9e29"
-  integrity sha1-f/z0e8NARAgX5gNSQbpR2NJenik=
+"@availity/native-form@^4.0.12":
+  version "4.0.12"
+  resolved "https://registry.yarnpkg.com/@availity/native-form/-/native-form-4.0.12.tgz#1c705c893f6b5b551262bba2a96657b698a54c66"
+  integrity sha512-Lu6KtrYy+TAeCfPFVfbWQW6izAvTR3SnH0wyfUIN4BsQf+nFQuhd9a+QqDtleovcl/CG8xUwcxC1QLLUuzRB8Q==
   dependencies:
-    "@babel/runtime" "^7.10.2"
+    "@babel/runtime" "^7.16.5"
     core-js "^3.12.1"
 
 "@availity/resolve-url@^1.1.21":
@@ -1560,6 +1568,13 @@
   version "7.16.3"
   resolved "https://registry.yarnpkg.com/@babel/runtime/-/runtime-7.16.3.tgz#b86f0db02a04187a3c17caa77de69840165d42d5"
   integrity sha512-WBwekcqacdY2e9AF/Q7WLFUWmdJGJTkbjqTjoMDgXkVZ3ZRUvOPsLb5KdwISoQVsbP+DQzVZW4Zhci0DvpbNTQ==
+  dependencies:
+    regenerator-runtime "^0.13.4"
+
+"@babel/runtime@^7.16.5":
+  version "7.17.2"
+  resolved "https://registry.yarnpkg.com/@babel/runtime/-/runtime-7.17.2.tgz#66f68591605e59da47523c631416b18508779941"
+  integrity sha512-hzeyJyMA1YGdJTuWU0e/j4wKXrU4OMFvY2MSlaI9B7VQb0r5cxTE3EAIS2Q7Tn2RIcDkRvTA/v2JsAEhxe99uw==
   dependencies:
     regenerator-runtime "^0.13.4"
 
@@ -20836,7 +20851,7 @@ typedarray@^0.0.6:
   resolved "https://registry.yarnpkg.com/typedarray/-/typedarray-0.0.6.tgz#867ac74e3864187b1d3d47d996a78ec5c8830777"
   integrity sha1-hnrHTjhkGHsdPUfZlqeOxciDB3c=
 
-typescript@^4.0.5:
+typescript@4.0.5, typescript@^4.0.5:
   version "4.0.5"
   resolved "https://registry.yarnpkg.com/typescript/-/typescript-4.0.5.tgz#ae9dddfd1069f1cb5beb3ef3b2170dd7c1332389"
   integrity sha512-ywmr/VrTVCmNTJ6iV2LwIrfG1P+lv6luD8sUJs+2eI9NLGigaN+nUQc13iHqisq7bra9lnmUSYqbJvegraBOPQ==
