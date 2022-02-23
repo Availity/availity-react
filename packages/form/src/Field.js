@@ -3,11 +3,11 @@ import PropTypes from 'prop-types';
 import { Col, FormText, Input as RsInput, InputGroup, InputGroupAddon, InputGroupText } from 'reactstrap';
 import { v4 as uuid } from 'uuid';
 
+import { useField } from 'formik';
 import Feedback from './Feedback';
 import FormGroup from './FormGroup';
 import Input from './Input';
 import Label from './Label';
-import { useField } from 'formik';
 
 const colSizes = ['xs', 'sm', 'md', 'lg', 'xl'];
 

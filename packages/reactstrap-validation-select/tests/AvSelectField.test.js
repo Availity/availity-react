@@ -50,13 +50,13 @@ describe('AvSelect', () => {
   });
 
   test('has aria-describedby attribute', async () => {
-    const { getByText } = renderSelect({
+    const { getByTestId } = renderSelect({
       options,
       classNamePrefix: 'test',
       getResult: 'regions',
       label: 'Hello World',
     });
-    const select = getByText('Hello World');
+    
     expect(getByTestId('select-field')).toHaveAttribute('aria-describedby');
     expect(select).toBeDefined();
   });
