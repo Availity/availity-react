@@ -22,12 +22,19 @@ const components = {
       <span className="sr-only">Toggle Select Options</span>
     </DropdownIndicator>
   ),
-  ClearIndicator: (props) => (
-    <ClearIndicator {...props}>
+ClearIndicator: (props) => {
+    const innerProps = {
+      ...props.innerProps,
+      role: 'button',
+      'aria-hidden': false,
+    };
+    console.log(props);
+    return (
+    <ClearIndicator {...props} innerProps={innerProps} >
       <CrossIcon />
       <span className="sr-only">Clear all selections</span>
     </ClearIndicator>
-  ),
+  )},
   Option: (props) => {
     const innerProps = {
       ...props.innerProps,
