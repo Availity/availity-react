@@ -58,7 +58,6 @@ describe('AvSelect', () => {
     });
     
     expect(getByTestId('select-field')).toHaveAttribute('aria-describedby');
-    expect(select).toBeDefined();
   });
 
 });
