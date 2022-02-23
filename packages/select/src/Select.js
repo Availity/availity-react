@@ -28,7 +28,6 @@ ClearIndicator: (props) => {
       role: 'button',
       'aria-hidden': false,
     };
-    console.log(props);
     return (
     <ClearIndicator {...props} innerProps={innerProps} >
       <CrossIcon />
