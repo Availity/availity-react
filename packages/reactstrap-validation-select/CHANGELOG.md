@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [9.4.1](https://github.com/Availity/availity-react/compare/@availity/reactstrap-validation-select@9.4.0...@availity/reactstrap-validation-select@9.4.1) (2022-02-23)
+
+
+### Bug Fixes
+
+* update proptype and typedef for helpMessage ([f61d0a1](https://github.com/Availity/availity-react/commit/f61d0a1c204900e55046262aa2f06056ce858c3b))
+
+
+
+
+
 # 9.4.0 (2022-02-23)
 
 

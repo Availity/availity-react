@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [2.7.1](https://github.com/Availity/availity-react/compare/@availity/select@2.7.0...@availity/select@2.7.1) (2022-02-23)
+
+
+### Bug Fixes
+
+* update proptype and typedef for helpMessage ([f61d0a1](https://github.com/Availity/availity-react/commit/f61d0a1c204900e55046262aa2f06056ce858c3b))
+
+
+
+
+
 # 2.7.0 (2022-02-23)
 
 
