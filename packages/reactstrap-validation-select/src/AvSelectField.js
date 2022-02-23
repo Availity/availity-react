@@ -76,7 +76,7 @@ AvSelectField.propTypes = {
   label: PropTypes.node,
   labelHidden: PropTypes.bool,
   id: PropTypes.string,
-  helpMessage: PropTypes.string,
+  helpMessage: PropTypes.oneOfType([PropTypes.string, PropTypes.node]),
   feedbackClass: PropTypes.string,
   groupClass: PropTypes.string,
   labelClass: PropTypes.string,
