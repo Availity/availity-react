@@ -30,6 +30,7 @@ export interface AvResourceSelectProps {
   graphqlConfig?: GraphQLConfigType;
   minCharsToSearch?: number;
   waitUntilFocused?: boolean;
+  encodeSearchValue?: boolean;
 }
 
 declare const AvResourceSelect: React.ComponentType<AvResourceSelectProps>;
