@@ -417,4 +417,8 @@ components.Option.propTypes = {
   isSelected: PropTypes.bool,
 };
 
+components.ClearIndicator.propTypes = {
+  innerProps: PropTypes.object
+}
+
 export default Select;
