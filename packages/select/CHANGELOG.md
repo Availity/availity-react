@@ -3,6 +3,19 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [2.9.0](https://github.com/Availity/availity-react/compare/@availity/select@2.8.0...@availity/select@2.9.0) (2022-02-24)
+
+
+### Features
+
+* **select:** add aria-hidden='false' for individual clear indicator ([ae17081](https://github.com/Availity/availity-react/commit/ae17081e143210beaa8eef42456cd8ec2def6863))
+* **select:** merge conflicts ([7af8633](https://github.com/Availity/availity-react/commit/7af863357d225c1386660fb8b8ac13574fd6917a))
+* **select:** run prettier ([00c10e3](https://github.com/Availity/availity-react/commit/00c10e3e07cc5993859cf5714cdefbf19bc68c90))
+
+
+
+
+
 # [2.8.0](https://github.com/Availity/availity-react/compare/@availity/select@2.7.1...@availity/select@2.8.0) (2022-02-24)
 
 

@@ -1,6 +1,6 @@
 {
   "name": "@availity/feedback",
-  "version": "6.2.24",
+  "version": "6.2.25",
   "description": "Availity feedback with smiley faces react component.",
   "keywords": [
     "react",
@@ -25,7 +25,7 @@
     "@availity/hooks": "^3.2.0",
     "@availity/icon": "^0.10.2",
     "@availity/native-form": "^4.0.5",
-    "@availity/select": "^2.8.0",
+    "@availity/select": "^2.9.0",
     "prop-types": "^15.7.2"
   },
   "devDependencies": {
