@@ -1,30 +1,34 @@
-/* eslint-disable @typescript-eslint/explicit-module-boundary-types */
-/* eslint-disable @typescript-eslint/no-explicit-any */
 import avMessages from '@availity/message-core';
 import { avSettingsApi, avLogMessagesApi } from '@availity/api-axios';
-import { useMutation, UseMutationOptions, useQuery, useQueryClient } from 'react-query';
-import { Favorite } from './types';
+import { useMutation, useQuery, useQueryClient, UseQueryResult } from 'react-query';
 import { AV_INTERNAL_GLOBALS, NAV_APP_ID } from './constants';
 
+export type Favorite = {
+  id: string;
+  pos: number;
+};
+
+/* eslint-disable-next-line @typescript-eslint/no-explicit-any, @typescript-eslint/explicit-module-boundary-types */
 export const isFavorite = (arg: any): arg is Favorite =>
   Boolean(typeof arg?.id === 'string' && typeof arg?.pos === 'number');
 
-export const validateFavorites = (unvalidatedFavorites: any) => {
+/* eslint-disable-next-line @typescript-eslint/no-explicit-any, @typescript-eslint/explicit-module-boundary-types */
+export const validateFavorites = (unvalidatedFavorites: any): Favorite[] => {
   const validatedFavorites = Array.isArray(unvalidatedFavorites) ? unvalidatedFavorites?.filter(isFavorite) : [];
   return validatedFavorites;
 };
 
-type SettingsResponseType = { data: { favorites: Favorite[] } };
-
-type MutationVarialbes = {
+type MutationVariables = {
   favorites: Favorite[];
   activeMutationId: string;
 };
 
-const submit = ({ favorites, activeMutationId }: MutationVarialbes) =>
-  avSettingsApi
-    .setApplication(NAV_APP_ID, { favorites })
-    .then(({ data }: SettingsResponseType) => ({ favorites: data.favorites, activeMutationId }));
+type SettingsResponse = { data: { favorites: Favorite[] } };
+
+const submit = async ({ favorites, activeMutationId }: MutationVariables): Promise<MutationVariables> => {
+  const response: SettingsResponse = await avSettingsApi.setApplication(NAV_APP_ID, { favorites });
+  return { favorites: response.data.favorites, activeMutationId };
+};
 
 const getFavorites = async () => {
   const result = await avSettingsApi.getApplication(NAV_APP_ID);
@@ -34,34 +38,26 @@ const getFavorites = async () => {
   return validatedFavorites;
 };
 
-export const useFavoritesQuery = () => useQuery('favorites', getFavorites);
+export const useFavoritesQuery = (): UseQueryResult<Favorite[], unknown> => useQuery('favorites', getFavorites);
 
-type MutationOptions = Omit<UseMutationOptions<MutationVarialbes, unknown, MutationVarialbes, unknown>, 'mutationFn'>;
+type MutationOptions = {
+  onMutationStart?: (activeMutationId: string) => void;
+  onMutationSettled?: () => void;
+};
 
-export const useSubmitFavorites = (options?: MutationOptions) => {
+// I'll give you a dollar if you can type this return type for me 💵
+// eslint-disable-next-line @typescript-eslint/explicit-module-boundary-types
+export const useSubmitFavorites = ({ onMutationStart, onMutationSettled }: MutationOptions) => {
   const queryClient = useQueryClient();
   const { mutateAsync: submitFavorites, ...rest } = useMutation(submit, {
-    ...options,
-    onMutate(...args) {
-      const prevFavorites = queryClient.getQueryData('favorites');
-      let optionsRecover: unknown | undefined;
-      if (options?.onMutate) {
-        optionsRecover = options.onMutate(...args);
-      }
-      return () => {
-        if (typeof optionsRecover === 'function') optionsRecover();
-        queryClient.setQueryData('favorites', prevFavorites);
-      };
+    onMutate(variables) {
+      onMutationStart?.(variables.activeMutationId);
     },
-    onSuccess(...args) {
-      const [data] = args;
+    onSuccess(data) {
       queryClient.setQueryData('favorites', data.favorites);
-      if (options?.onSuccess) options.onSuccess(...args);
     },
-    onError(...args) {
-      const recover = args[2];
-      if (typeof recover === 'function') recover();
-      if (options?.onError) options.onError(...args);
+    onSettled() {
+      onMutationSettled?.();
     },
   });
   return { submitFavorites, ...rest };

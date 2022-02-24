@@ -1,9 +1,13 @@
 import React from 'react';
 import { fireEvent, render, waitFor, cleanup } from '@testing-library/react';
+import PropTypes from 'prop-types';
 import { avSettingsApi } from '@availity/api-axios';
 import avMessages from '@availity/message-core';
+import { QueryClient, QueryClientProvider } from 'react-query';
 import maxFavorites from './maxFavorites.json';
-import Favorites, { FavoriteHeart } from '..';
+import Favorites, { FavoriteHeart } from '../src';
+
+const queryClient = new QueryClient();
 
 jest.mock('@availity/api-axios');
 jest.mock('@availity/message-core');
@@ -92,6 +96,16 @@ const getApplicationMock = jest.fn(() =>
 
 avSettingsApi.getApplication = getApplicationMock;
 
+const Render = ({ children }) => (
+  <QueryClientProvider client={queryClient}>
+    <Favorites>{children}</Favorites>
+  </QueryClientProvider>
+);
+
+Render.propTypes = {
+  children: PropTypes.node,
+};
+
 describe('FavoriteHeart', () => {
   beforeEach(() => {
     global.document.createRange = () => ({
@@ -106,15 +120,16 @@ describe('FavoriteHeart', () => {
 
   afterEach(() => {
     jest.clearAllMocks();
+    queryClient.clear();
     cleanup();
     global.document.createRange = null;
   });
 
   test('should render label with app name', async () => {
     const { container } = render(
-      <Favorites>
+      <Render>
         <FavoriteHeart id="123" name="Test App" />
-      </Favorites>
+      </Render>
     );
 
     const heart = container.querySelector('#av-favorite-heart-123');
@@ -126,9 +141,9 @@ describe('FavoriteHeart', () => {
 
   test('should not render with undefined in label if no app name given', async () => {
     const { container } = render(
-      <Favorites>
+      <Render>
         <FavoriteHeart id="123" />
-      </Favorites>
+      </Render>
     );
 
     const heart = container.querySelector('#av-favorite-heart-123');
@@ -160,9 +175,9 @@ describe('FavoriteHeart', () => {
     });
 
     const { container } = render(
-      <Favorites>
+      <Render>
         <FavoriteHeart id="789" />
-      </Favorites>
+      </Render>
     );
 
     const heart = container.querySelector('#av-favorite-heart-789');
@@ -204,9 +219,9 @@ describe('FavoriteHeart', () => {
 
   test('should render favorited', async () => {
     const { container } = render(
-      <Favorites>
+      <Render>
         <FavoriteHeart id="123" />
-      </Favorites>
+      </Render>
     );
 
     const heart = container.querySelector('#av-favorite-heart-123');
@@ -218,9 +233,9 @@ describe('FavoriteHeart', () => {
 
   test('should render not favorited', async () => {
     const { container } = render(
-      <Favorites>
+      <Render>
         <FavoriteHeart id="1234" />
-      </Favorites>
+      </Render>
     );
 
     const heart = container.querySelector('#av-favorite-heart-1234');
@@ -232,9 +247,9 @@ describe('FavoriteHeart', () => {
 
   test('should update when avMessage changed event triggers from elsewhere', async () => {
     const { container } = render(
-      <Favorites>
+      <Render>
         <FavoriteHeart id="123" />
-      </Favorites>
+      </Render>
     );
 
     const heart = container.querySelector('#av-favorite-heart-123');
@@ -255,9 +270,9 @@ describe('FavoriteHeart', () => {
 
   test('should update when avMessage updated event triggers from elsewhere', async () => {
     const { container } = render(
-      <Favorites>
+      <Render>
         <FavoriteHeart id="123" />
-      </Favorites>
+      </Render>
     );
 
     const heart = container.querySelector('#av-favorite-heart-123');
@@ -291,9 +306,9 @@ describe('FavoriteHeart', () => {
     );
 
     const { container } = render(
-      <Favorites>
+      <Render>
         <FavoriteHeart id="123" />
-      </Favorites>
+      </Render>
     );
 
     const heart = container.querySelector('#av-favorite-heart-123');
@@ -329,9 +344,9 @@ describe('FavoriteHeart', () => {
     );
 
     const { container } = render(
-      <Favorites>
+      <Render>
         <FavoriteHeart id="123" />
-      </Favorites>
+      </Render>
     );
 
     const heart = container.querySelector('#av-favorite-heart-123');
@@ -354,9 +369,9 @@ describe('FavoriteHeart', () => {
   test('should call onChange once toggled', async () => {
     const onChange = jest.fn(() => {});
     const { container } = render(
-      <Favorites>
+      <Render>
         <FavoriteHeart onChange={onChange} id="1234" />
-      </Favorites>
+      </Render>
     );
 
     const heart = container.querySelector('#av-favorite-heart-1234');
@@ -373,9 +388,9 @@ describe('FavoriteHeart', () => {
     const onChange = jest.fn(() => {});
     const onMouseDown = jest.fn();
     const { container } = render(
-      <Favorites>
+      <Render>
         <FavoriteHeart onChange={onChange} id="1234" onMouseDown={onMouseDown} />
-      </Favorites>
+      </Render>
     );
 
     const heart = container.querySelector('#av-favorite-heart-1234');
@@ -395,9 +410,9 @@ describe('FavoriteHeart', () => {
 
   test('should show tooltip', async () => {
     const { container, getByTestId } = render(
-      <Favorites>
+      <Render>
         <FavoriteHeart id="1234" />
-      </Favorites>
+      </Render>
     );
 
     const heart = container.querySelector('#av-favorite-heart-1234');
@@ -432,9 +447,9 @@ describe('FavoriteHeart', () => {
     );
 
     const { container } = render(
-      <Favorites>
+      <Render>
         <FavoriteHeart id="123" />
-      </Favorites>
+      </Render>
     );
 
     const heart = container.querySelector('#av-favorite-heart-123');

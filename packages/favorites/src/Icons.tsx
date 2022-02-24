@@ -1,16 +1,31 @@
 import React from 'react';
 
-type IconProps = { className?: string; size?: string | number; color?: string };
+type IconProps = {
+  className?: string;
+  title?: string;
+  'aria-hidden'?: boolean;
+  size?: string | number;
+  color?: string;
+};
 
-const IconBase = ({ className, size, color, pathData }: IconProps & { pathData: string }): JSX.Element => (
+const IconBase = ({
+  className,
+  title,
+  'aria-hidden': ariaHidden = false,
+  size,
+  color,
+  pathData,
+}: IconProps & { pathData: string }): JSX.Element => (
   <svg
     style={{ color }}
     className={className}
+    aria-hidden={ariaHidden}
     xmlns="http://www.w3.org/2000/svg"
     viewBox="0 0 512 512"
     height={size}
     width={size}
   >
+    {!!title && <title>{title}</title>}
     <path fill="currentColor" d={pathData} />
   </svg>
 );

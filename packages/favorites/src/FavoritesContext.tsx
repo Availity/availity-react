@@ -1,13 +1,22 @@
 import React, { ReactNode, createContext, useEffect, useMemo, useContext, useState } from 'react';
 import avMessages from '@availity/message-core';
 import { useQueryClient } from 'react-query';
-import { AppContext, Favorite, StatusUnion } from './types';
+// import { FavoritesContextType, Favorite, StatusUnion } from './types';
 import { AV_INTERNAL_GLOBALS, MAX_FAVORITES } from './constants';
-import { openMaxModal, sendUpdateMessage, useSubmitFavorites, useFavoritesQuery } from './utils';
+import { openMaxModal, sendUpdateMessage, useSubmitFavorites, useFavoritesQuery, Favorite } from './utils';
 
-const asyncNoOp = () => Promise.resolve();
+type StatusUnion = 'idle' | 'error' | 'loading' | 'success';
 
-const FavoritesContext = createContext<AppContext | null>(null);
+type FavoritesContextType = {
+  favorites?: Favorite[];
+  status: StatusUnion;
+  isLoading: boolean;
+  activeMutationId: string | null;
+  deleteFavorite: (id: string) => void;
+  addFavorite: (id: string) => void;
+};
+
+const FavoritesContext = createContext<FavoritesContextType | null>(null);
 
 export const FavoritesProvider = ({ children }: { children: ReactNode }): JSX.Element => {
   const [activeMutationId, setActiveMutationId] = useState<string | null>(null);
@@ -15,10 +24,10 @@ export const FavoritesProvider = ({ children }: { children: ReactNode }): JSX.El
   const { data: favorites, status } = useFavoritesQuery();
 
   const { submitFavorites, isLoading } = useSubmitFavorites({
-    onMutate({ activeMutationId }) {
+    onMutationStart(activeMutationId) {
       setActiveMutationId(activeMutationId);
     },
-    onSettled() {
+    onMutationSettled() {
       setActiveMutationId(null);
     },
   });
@@ -88,6 +97,8 @@ export const FavoritesProvider = ({ children }: { children: ReactNode }): JSX.El
   );
 };
 
+const asyncNoOp = () => Promise.resolve();
+
 export const useFavorites = (
   id: string
 ): {
@@ -96,7 +107,6 @@ export const useFavorites = (
   isDisabled: boolean;
   isActiveMutation: boolean;
   toggleFavorite: () => Promise<void>;
-  allFavorites?: Favorite[];
 } => {
   const context = useContext(FavoritesContext);
 
@@ -119,10 +129,8 @@ export const useFavorites = (
   return {
     isFavorited,
     status,
-    // try to put spinner on the button that was clicked, and subtly disable the other buttons
     isDisabled,
     isActiveMutation,
     toggleFavorite: isDisabled ? asyncNoOp : toggleFavorite,
-    allFavorites: favorites,
   };
 };
