@@ -11,7 +11,7 @@ import has from 'lodash/has';
 import isFunction from 'lodash/isFunction';
 import isEqual from 'lodash/isEqual';
 
-const { DownChevron, CrossIcon, DropdownIndicator, ClearIndicator, Option } = reactSelectComponents;
+const { DownChevron, CrossIcon, DropdownIndicator, ClearIndicator, Option, MultiValueRemove } = reactSelectComponents;
 
 const CreatableAsyncPaginate = withAsyncPaginate(Creatable);
 
@@ -37,6 +37,15 @@ const components = {
     };
     return <Option {...props} innerProps={innerProps} />;
   },
+  MultiValueRemove: (props) =>{
+    const innerProps = {
+      ...props.innerProps,
+      'aria-hidden':false
+    }
+    return (
+    <MultiValueRemove {...props} innerProps={innerProps} />
+    )
+  }
 };
 
 const createOption = (label, labelKey = 'label', valueKey = 'value') => ({
@@ -410,5 +419,9 @@ components.Option.propTypes = {
   innerProps: PropTypes.object,
   isSelected: PropTypes.bool,
 };
+
+components.MultiValueRemove.propTypes = {
+  innerProps: PropTypes.object
+}
 
 export default Select;
