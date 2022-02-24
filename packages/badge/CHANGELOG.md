@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## 1.1.1 (2022-02-24)
+
+
+### Bug Fixes
+
+* **badge:** updated removable badge to be a named import ([59dc216](https://github.com/Availity/availity-react/commit/59dc216333f01f2a35f3e9a28960d9dc732c0a4e))
+
+
+
+
+
 # 1.1.0 (2022-02-18)
 
 
