@@ -3,6 +3,28 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [9.4.1](https://github.com/Availity/availity-react/compare/@availity/reactstrap-validation-select@9.4.0...@availity/reactstrap-validation-select@9.4.1) (2022-02-23)
+
+
+### Bug Fixes
+
+* update proptype and typedef for helpMessage ([f61d0a1](https://github.com/Availity/availity-react/commit/f61d0a1c204900e55046262aa2f06056ce858c3b))
+
+
+
+
+
+# 9.4.0 (2022-02-23)
+
+
+### Features
+
+* add prop to allow inputValue to not be encoded ([9c598a8](https://github.com/Availity/availity-react/commit/9c598a8d4b69f3aebfc215a56f81501fa3451b58))
+
+
+
+
+
 ## [9.3.2](https://github.com/Availity/availity-react/compare/@availity/reactstrap-validation-select@9.3.1...@availity/reactstrap-validation-select@9.3.2) (2022-02-04)
 
 **Note:** Version bump only for package @availity/reactstrap-validation-select

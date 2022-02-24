@@ -22,7 +22,7 @@ export interface SelectProps<T> extends Props<{}> {
   validate?: FieldValidator;
   autofill?: boolean | object;
   creatable?: boolean;
-  helpMessage?: string;
+  helpMessage?: React.ReactNode;
   feedback?: boolean;
 }
 

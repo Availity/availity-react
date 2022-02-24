@@ -30,6 +30,7 @@ const ResourceSelect = ({
   pageAll,
   pageAllSearchBy,
   searchTerm,
+  encodeSearchValue,
   ...rest
 }) => {
   const { setFieldValue } = useFormikContext();
@@ -89,7 +90,7 @@ const ResourceSelect = ({
         variables: {
           perPage: itemsPerPage,
           filters: {
-            [searchTerm]: encodeURIComponent(inputValue),
+            [searchTerm]: encodeSearchValue ? encodeURIComponent(inputValue) : inputValue,
           },
         },
       };
@@ -109,7 +110,7 @@ const ResourceSelect = ({
       }
     } else {
       params = {
-        [searchTerm]: encodeURIComponent(inputValue),
+        [searchTerm]: encodeSearchValue ? encodeURIComponent(inputValue) : inputValue,
         limit: itemsPerPage,
         customerId: rest.customerId,
       };
@@ -341,6 +342,7 @@ ResourceSelect.propTypes = {
   pageAllSearchBy: PropTypes.func,
   onError: PropTypes.func,
   searchTerm: PropTypes.string,
+  encodeSearchValue: PropTypes.bool,
 };
 
 ResourceSelect.defaultProps = {
@@ -352,6 +354,7 @@ ResourceSelect.defaultProps = {
   shouldSearch: true,
   pageAll: false,
   searchTerm: 'q',
+  encodeSearchValue: true,
 };
 
 const ucFirst = (str) => str && str.charAt(0).toUpperCase() + str.slice(1);

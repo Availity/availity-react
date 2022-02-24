@@ -22,12 +22,18 @@ const components = {
       <span className="sr-only">Toggle Select Options</span>
     </DropdownIndicator>
   ),
-  ClearIndicator: (props) => (
-    <ClearIndicator {...props}>
+ClearIndicator: (props) => {
+    const innerProps = {
+      ...props.innerProps,
+      role: 'button',
+      'aria-hidden': false,
+    };
+    return (
+    <ClearIndicator {...props} innerProps={innerProps} >
       <CrossIcon />
       <span className="sr-only">Clear all selections</span>
     </ClearIndicator>
-  ),
+  )},
   Option: (props) => {
     const innerProps = {
       ...props.innerProps,
@@ -409,7 +415,7 @@ Select.propTypes = {
   autofill: PropTypes.oneOfType([PropTypes.bool, PropTypes.object]),
   allowSelectAll: PropTypes.bool,
   waitUntilFocused: PropTypes.bool,
-  helpMessage: PropTypes.string,
+  helpMessage: PropTypes.oneOfType([PropTypes.string, PropTypes.node]),
   feedback: PropTypes.bool,
   placeholder: PropTypes.string,
   components: PropTypes.object,
@@ -420,8 +426,12 @@ components.Option.propTypes = {
   isSelected: PropTypes.bool,
 };
 
-components.MultiValueRemove.propTypes = {
+components.ClearIndicator.propTypes = {
   innerProps: PropTypes.object
+}
+
+components.MultiValueRemove.propTypes = {
+   innerProps: PropTypes.object
 }
 
 export default Select;
