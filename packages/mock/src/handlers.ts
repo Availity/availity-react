@@ -17,6 +17,7 @@ import providers from './data/providers.json';
 import region from './data/region.json';
 import regions from './data/regions.json';
 import settings from './data/settings.json';
+import maxFavorites from '../../favorites/tests/maxFavorites.json';
 import spaces from './data/spaces.json';
 import user from './data/user.json';
 import users from './data/users.json';
@@ -71,7 +72,10 @@ export const handlers = [
   rest.post(routes.PERMISSIONS, (req, res, ctx) => res(delay(defaultDelay), ctx.status(200), ctx.json(permissions))),
 
   // Settings
-  rest.get(routes.SETTINGS, (req, res, ctx) => res(delay(defaultDelay), ctx.status(200), ctx.json(settings))),
+  // rest.get(routes.SETTINGS, (req, res, ctx) => res(delay(defaultDelay), ctx.status(200), ctx.json(settings))),
+  rest.get(routes.SETTINGS, (req, res, ctx) =>
+    res(delay(defaultDelay), ctx.status(200), ctx.json({ settings: [{ favorites: maxFavorites }] }))
+  ),
   rest.put(routes.SETTINGS, (req, res, ctx) => res(delay(defaultDelay), ctx.status(200), ctx.json(req.body))),
 
   // Feature

@@ -21,6 +21,22 @@ global.document.createRange = () => ({
   },
 });
 
+global.DOMRect = {
+  fromRect: () => ({ top: 0, left: 0, bottom: 0, right: 0, width: 0, height: 0 }),
+};
+
+global.ResizeObserver = class ResizeObserver {
+  constructor(cb) {
+    this.cb = cb;
+  }
+
+  observe() {
+    this.cb([{ borderBoxSize: { inlineSize: 0, blockSize: 0 } }]);
+  }
+
+  unobserve() {}
+};
+
 const domain = () => {
   if (window.location.origin) {
     return window.location.origin;
@@ -125,6 +141,65 @@ describe('FavoriteHeart', () => {
     global.document.createRange = null;
   });
 
+  // This was at the end, but I can only get it to pass if I move it to the top
+  // I want to know why!!
+  test('should call max modal when at max favorites', async () => {
+    avSettingsApi.getApplication = jest.fn(() =>
+      Promise.resolve({
+        data: {
+          settings: [
+            {
+              favorites: maxFavorites,
+            },
+          ],
+        },
+      })
+    );
+
+    const { container } = render(
+      <Render>
+        <FavoriteHeart id="123" />
+      </Render>
+    );
+
+    const heart = container.querySelector('#av-favorite-heart-123');
+
+    expect(heart).toBeDefined();
+
+    await waitFor(() => expect(heart).not.toBeChecked());
+
+    fireEvent.click(heart);
+
+    await waitFor(() => {
+      expect(avMessages.send).toHaveBeenCalledTimes(1);
+      expect(avMessages.send.mock.calls[0][0]).toBe('av:favorites:maxed');
+    });
+  });
+
+  test('should show tooltip', async () => {
+    const { container, getByTestId } = render(
+      <Render>
+        <FavoriteHeart id="1234" />
+      </Render>
+    );
+
+    const heart = container.querySelector('#av-favorite-heart-1234');
+
+    await waitFor(() => expect(heart).not.toBeChecked());
+
+    await fireEvent.mouseOver(heart);
+    expect(heart).toBeDefined();
+
+    await waitFor(
+      () => {
+        const tooltip = getByTestId('av-favorite-heart-1234-tooltip');
+
+        expect(tooltip.textContent).toContain('Add to My Favorites');
+      },
+      { timeout: 2000 }
+    );
+  });
+
   test('should render label with app name', async () => {
     const { container } = render(
       <Render>
@@ -187,7 +262,7 @@ describe('FavoriteHeart', () => {
     await waitFor(() => expect(heart).not.toBeChecked());
 
     // Simulate user favoriting item
-    await fireEvent.click(heart);
+    fireEvent.click(heart);
 
     await waitFor(() => expect(heart).toBeChecked());
 
@@ -245,6 +320,29 @@ describe('FavoriteHeart', () => {
     await waitFor(() => expect(heart).not.toBeChecked());
   });
 
+  test('should toggle favorited', async () => {
+    avSettingsApi.setApplication = jest.fn().mockResolvedValue({
+      data: {
+        favorites: [],
+      },
+    });
+    const { container } = render(
+      <Render>
+        <FavoriteHeart id="123" />
+      </Render>
+    );
+
+    const heart = container.querySelector('#av-favorite-heart-123');
+
+    expect(heart).toBeDefined();
+
+    await waitFor(() => expect(heart).toBeChecked());
+
+    fireEvent.click(heart);
+
+    await waitFor(() => expect(heart).not.toBeChecked());
+  });
+
   test('should update when avMessage changed event triggers from elsewhere', async () => {
     const { container } = render(
       <Render>
@@ -265,7 +363,7 @@ describe('FavoriteHeart', () => {
       message: { favorites: [] },
     });
 
-    await waitFor(() => expect(heart).toBeChecked());
+    await waitFor(() => expect(heart).not.toBeChecked());
   });
 
   test('should update when avMessage updated event triggers from elsewhere', async () => {
@@ -356,7 +454,7 @@ describe('FavoriteHeart', () => {
     await waitFor(() => expect(heart).toBeChecked());
 
     // Simulate user unfavoriting item
-    fireEvent.keyPress(heart, { key: 'Enter', code: 13, charCode: 13 });
+    fireEvent.keyPress(heart, { key: 'Enter', code: 'Enter', charCode: 13 });
 
     await waitFor(() => expect(heart).not.toBeChecked());
 
@@ -366,7 +464,50 @@ describe('FavoriteHeart', () => {
     expect(avMessages.send.mock.calls[0][0].favorites).toEqual([{ id: '456', pos: 0 }]);
   });
 
+  test('should call onMouseDown once toggled', async () => {
+    avSettingsApi.setApplication = jest.fn().mockResolvedValue({
+      data: {
+        favorites: [
+          {
+            id: '1234',
+            pos: 0,
+          },
+        ],
+      },
+    });
+    const onMouseDown = jest.fn(() => {});
+    const { container } = render(
+      <Render>
+        <FavoriteHeart onMouseDown={onMouseDown} id="1234" />
+      </Render>
+    );
+
+    const heart = container.querySelector('#av-favorite-heart-1234');
+
+    expect(heart).toBeDefined();
+
+    await waitFor(() => expect(heart).not.toBeChecked());
+
+    const event = new MouseEvent('mouseDown');
+
+    fireEvent.mouseDown(heart, event);
+    fireEvent.click(heart);
+
+    await waitFor(() => expect(heart).toBeChecked());
+    expect(onMouseDown).toHaveBeenCalledTimes(1);
+  });
+
   test('should call onChange once toggled', async () => {
+    avSettingsApi.setApplication = jest.fn().mockResolvedValue({
+      data: {
+        favorites: [
+          {
+            id: '1234',
+            pos: 0,
+          },
+        ],
+      },
+    });
     const onChange = jest.fn(() => {});
     const { container } = render(
       <Render>
@@ -382,87 +523,8 @@ describe('FavoriteHeart', () => {
 
     fireEvent.click(heart);
 
-    expect(onChange).toHaveBeenCalledTimes(1);
-  });
-  test('should prevent default focus event', async () => {
-    const onChange = jest.fn(() => {});
-    const onMouseDown = jest.fn();
-    const { container } = render(
-      <Render>
-        <FavoriteHeart onChange={onChange} id="1234" onMouseDown={onMouseDown} />
-      </Render>
-    );
-
-    const heart = container.querySelector('#av-favorite-heart-1234');
-
-    expect(heart).toBeDefined();
-
-    await waitFor(() => expect(heart).not.toBeChecked());
-
-    const event = new MouseEvent('mouseDown');
-
-    fireEvent.mouseDown(heart, event);
-    fireEvent.click(heart);
+    await waitFor(() => expect(heart).toBeChecked());
 
     expect(onChange).toHaveBeenCalledTimes(1);
-    expect(onMouseDown).toHaveBeenCalledTimes(1);
-  });
-
-  test('should show tooltip', async () => {
-    const { container, getByTestId } = render(
-      <Render>
-        <FavoriteHeart id="1234" />
-      </Render>
-    );
-
-    const heart = container.querySelector('#av-favorite-heart-1234');
-
-    expect(heart).toBeDefined();
-
-    await waitFor(() => expect(heart).not.toBeChecked());
-
-    await fireEvent.mouseOver(heart);
-
-    await waitFor(
-      () => {
-        const tooltip = getByTestId('av-favorite-heart-1234-tooltip');
-
-        expect(tooltip.textContent).toContain('Add to My Favorites');
-      },
-      { timeout: 2000 }
-    );
-  });
-
-  test('should call max modal when at max favorites', async () => {
-    avSettingsApi.getApplication = jest.fn(() =>
-      Promise.resolve({
-        data: {
-          settings: [
-            {
-              favorites: maxFavorites,
-            },
-          ],
-        },
-      })
-    );
-
-    const { container } = render(
-      <Render>
-        <FavoriteHeart id="123" />
-      </Render>
-    );
-
-    const heart = container.querySelector('#av-favorite-heart-123');
-
-    expect(heart).toBeDefined();
-
-    await waitFor(() => expect(heart).not.toBeChecked());
-
-    fireEvent.click(heart);
-
-    await waitFor(() => {
-      expect(avMessages.send).toHaveBeenCalledTimes(1);
-      expect(avMessages.send.mock.calls[0][0]).toBe('av:favorites:maxed');
-    });
   });
 });

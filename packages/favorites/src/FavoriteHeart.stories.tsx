@@ -4,8 +4,8 @@ import { QueryClientProvider, QueryClient } from 'react-query';
 import mockFavorites from '../../mock/src/data/settings.json';
 import '@availity/favorites/style.scss';
 
-import { FavoritesProvider } from '../src/FavoritesContext';
-import { FavoriteHeart } from '../src/FavoriteHeart';
+import { FavoritesProvider } from './context';
+import { FavoriteHeart } from './FavoriteHeart';
 // import README from '../README.md';
 
 const { favorites } = mockFavorites.settings[0];

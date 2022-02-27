@@ -1,7 +1,7 @@
-import { FavoritesProvider } from './FavoritesContext';
+import { FavoritesProvider } from './context/FavoritesProvider';
 
 export { FavoritesProvider };
 export { FavoriteHeart } from './FavoriteHeart';
-export { useFavoritesQuery } from './utils';
+export { useFavoritesQuery } from './context/utils';
 
 export default FavoritesProvider;

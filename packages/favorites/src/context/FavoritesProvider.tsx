@@ -1,7 +1,6 @@
 import React, { ReactNode, createContext, useEffect, useMemo, useContext, useState } from 'react';
 import avMessages from '@availity/message-core';
 import { useQueryClient } from 'react-query';
-// import { FavoritesContextType, Favorite, StatusUnion } from './types';
 import { AV_INTERNAL_GLOBALS, MAX_FAVORITES } from './constants';
 import { openMaxModal, sendUpdateMessage, useSubmitFavorites, useFavoritesQuery, Favorite } from './utils';
 
@@ -34,7 +33,7 @@ export const FavoritesProvider = ({ children }: { children: ReactNode }): JSX.El
 
   useEffect(() => {
     avMessages.subscribe(AV_INTERNAL_GLOBALS.FAVORITES_CHANGED, (messagesData) => {
-      queryClient.setQueryData('favorites', messagesData.favorites || []);
+      queryClient.setQueryData('favorites', messagesData?.favorites || []);
     });
 
     return () => avMessages.unsubscribe(AV_INTERNAL_GLOBALS.FAVORITES_CHANGED);
