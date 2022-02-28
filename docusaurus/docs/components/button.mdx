@@ -1,0 +1,58 @@
+---
+title: Button
+---
+
+[![Version](https://img.shields.io/npm/v/@availity/button.svg?style=for-the-badge)](https://www.npmjs.com/package/@availity/button)
+
+### Installation
+
+npm
+
+```bash
+npm install @availity/button --save
+```
+
+Yarn
+
+```bash
+yarn add @availity/button
+```
+
+### Loading Button Example
+
+```jsx
+import React from 'react';
+import Progress from '@availity/button';
+
+const Example = () => (
+  <>
+     <LoadingButton block disabled isLoading={isLoading} color="primary">
+            Test
+      </LoadingButton>
+  </>
+);
+```
+### Import Styles
+
+Add this line in your scss file to load the styles.
+
+```scss
+@import '~@availity/button/styles.scss';
+```
+
+
+#### Live example: <a href="https://availity.github.io/availity-react/storybook/?path=/story/components-loading-button--default"> Storybook</a>
+
+### Props
+
+#### `isLoading: boolean`
+
+This is the flag that determines whether the button is loading. If it is true, the loading panel will show.
+
+#### `className?: string`
+
+Additional classes that should be applied to the button.
+
+#### `type?: string`
+
+This represents the button type, so either 'submit' or 'button'. Defaults to 'submit'.

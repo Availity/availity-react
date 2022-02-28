@@ -650,6 +650,137 @@ describe('ResourceSelect', () => {
       });
     });
   });
+
+  it('does encode the search value when encodeSearchValue is true', async () => {
+    avRegionsApi.post.mockResolvedValueOnce({
+      data: {
+        regions: [
+          {
+            id: 'FL',
+            value: 'Florida',
+          },
+          {
+            id: 'TX',
+            value: 'Texas',
+          },
+          {
+            id: 'WA',
+            value: 'Washington',
+          },
+        ],
+      },
+    });
+
+    const { container, getByText } = render(
+      <Form
+        initialValues={{
+          'test-form-input': undefined,
+        }}
+        onSubmit={onSubmit}
+      >
+        <ResourceSelect
+          name="test-form-input"
+          resource={avRegionsApi}
+          classNamePrefix="test__regions"
+          labelKey="value"
+          valueKey="id"
+          getResult="regions"
+          method="POST"
+          searchTerm="myCustomSearchParam"
+          inputValue="test example"
+          encodeSearchValue
+        />
+      </Form>
+    );
+
+    const regionsSelect = container.querySelector('.test__regions__control');
+
+    fireEvent.focus(regionsSelect);
+    fireEvent.keyDown(regionsSelect, { key: 'ArrowDown', keyCode: 40 });
+    fireEvent.keyDown(regionsSelect, { key: 'Enter', keyCode: 13 });
+
+    await waitFor(() => expect(getByText('Florida')).toBeDefined());
+
+    expect(avRegionsApi.post).toHaveBeenCalledTimes(1);
+    expect(avRegionsApi.post.mock.calls[0][0].myCustomSearchParam).toEqual('test%20example');
+  });
+
+  it('does not encode the search value when encodeSearchValue is false', async () => {
+    avRegionsApi.post.mockResolvedValueOnce({
+      data: {
+        regions: [
+          {
+            id: 'FL',
+            value: 'Florida',
+          },
+          {
+            id: 'TX',
+            value: 'Texas',
+          },
+          {
+            id: 'WA',
+            value: 'Washington',
+          },
+        ],
+      },
+    });
+
+    const { container, getByText } = render(
+      <Form
+        initialValues={{
+          'test-form-input': undefined,
+        }}
+        onSubmit={onSubmit}
+      >
+        <ResourceSelect
+          name="test-form-input"
+          resource={avRegionsApi}
+          classNamePrefix="test__regions"
+          labelKey="value"
+          valueKey="id"
+          getResult="regions"
+          method="POST"
+          searchTerm="myCustomSearchParam"
+          inputValue="test example"
+          encodeSearchValue={false}
+        />
+      </Form>
+    );
+
+    const regionsSelect = container.querySelector('.test__regions__control');
+
+    fireEvent.focus(regionsSelect);
+    fireEvent.keyDown(regionsSelect, { key: 'ArrowDown', keyCode: 40 });
+    fireEvent.keyDown(regionsSelect, { key: 'Enter', keyCode: 13 });
+
+    await waitFor(() => expect(getByText('Florida')).toBeDefined());
+
+    expect(avRegionsApi.post).toHaveBeenCalledTimes(1);
+    expect(avRegionsApi.post.mock.calls[0][0].myCustomSearchParam).toEqual('test example');
+  });
+
+  it('applies valueKey override', async () => {
+    const { container, getByText } = renderSelect({
+      resource: { all: async () => [{ label: 'test', test: 'value' }] },
+      pageAll: true,
+      valueKey: 'test',
+      raw: false,
+      classNamePrefix: 'test__value__key',
+    });
+
+    // query
+    const select = container.querySelector('.test__value__key__control');
+    fireEvent.keyDown(select, { key: 'ArrowDown', keyCode: 40 });
+
+    const option = await waitFor(() => getByText('test'));
+    fireEvent.click(option);
+
+    fireEvent.click(getByText('Submit'));
+
+    await waitFor(() =>
+      expect(onSubmit).toHaveBeenCalledWith(expect.objectContaining({ 'test-form-input': 'value' }), expect.anything())
+    );
+  });
 });
 
 // -----

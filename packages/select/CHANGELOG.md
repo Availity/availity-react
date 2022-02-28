@@ -3,6 +3,65 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [2.9.0](https://github.com/Availity/availity-react/compare/@availity/select@2.8.0...@availity/select@2.9.0) (2022-02-24)
+
+
+### Features
+
+* **select:** add aria-hidden='false' for individual clear indicator ([ae17081](https://github.com/Availity/availity-react/commit/ae17081e143210beaa8eef42456cd8ec2def6863))
+* **select:** merge conflicts ([7af8633](https://github.com/Availity/availity-react/commit/7af863357d225c1386660fb8b8ac13574fd6917a))
+* **select:** run prettier ([00c10e3](https://github.com/Availity/availity-react/commit/00c10e3e07cc5993859cf5714cdefbf19bc68c90))
+
+
+
+
+
+# [2.8.0](https://github.com/Availity/availity-react/compare/@availity/select@2.7.1...@availity/select@2.8.0) (2022-02-24)
+
+
+### Features
+
+* **select:** added role and aria attributes to clear indicator of select ([f2feca8](https://github.com/Availity/availity-react/commit/f2feca8c08e6b6a46daa2dc9dc7b018571c8db3d))
+* **select:** fix lint errors ([1f0f8b3](https://github.com/Availity/availity-react/commit/1f0f8b3aad77d2bf30b44d6837159a129747d063))
+* **select:** remove console statement ([46d4d9d](https://github.com/Availity/availity-react/commit/46d4d9d1870c18ae98bacda3325fa32db040d2da))
+
+
+
+
+
+## [2.7.1](https://github.com/Availity/availity-react/compare/@availity/select@2.7.0...@availity/select@2.7.1) (2022-02-23)
+
+
+### Bug Fixes
+
+* update proptype and typedef for helpMessage ([f61d0a1](https://github.com/Availity/availity-react/commit/f61d0a1c204900e55046262aa2f06056ce858c3b))
+
+
+
+
+
+# 2.7.0 (2022-02-23)
+
+
+### Features
+
+* add prop to allow inputValue to not be encoded ([9c598a8](https://github.com/Availity/availity-react/commit/9c598a8d4b69f3aebfc215a56f81501fa3451b58))
+
+
+
+
+
+## 2.6.5 (2022-02-17)
+
+
+### Bug Fixes
+
+* **select:** allow valueKey to work with ResourceSelect ([85c554d](https://github.com/Availity/availity-react/commit/85c554d6d5b519c5d9ec6342a6f5b074ae8520a9))
+
+
+
+
+
 ## [2.6.4](https://github.com/Availity/availity-react/compare/@availity/select@2.6.3...@availity/select@2.6.4) (2022-02-11)
 
 **Note:** Version bump only for package @availity/select

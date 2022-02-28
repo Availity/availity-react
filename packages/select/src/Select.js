@@ -11,7 +11,7 @@ import has from 'lodash/has';
 import isFunction from 'lodash/isFunction';
 import isEqual from 'lodash/isEqual';
 
-const { DownChevron, CrossIcon, DropdownIndicator, ClearIndicator, Option } = reactSelectComponents;
+const { DownChevron, CrossIcon, DropdownIndicator, ClearIndicator, Option, MultiValueRemove } = reactSelectComponents;
 
 const CreatableAsyncPaginate = withAsyncPaginate(Creatable);
 
@@ -22,12 +22,19 @@ const components = {
       <span className="sr-only">Toggle Select Options</span>
     </DropdownIndicator>
   ),
-  ClearIndicator: (props) => (
-    <ClearIndicator {...props}>
-      <CrossIcon />
-      <span className="sr-only">Clear all selections</span>
-    </ClearIndicator>
-  ),
+  ClearIndicator: (props) => {
+    const innerProps = {
+      ...props.innerProps,
+      role: 'button',
+      'aria-hidden': false,
+    };
+    return (
+      <ClearIndicator {...props} innerProps={innerProps}>
+        <CrossIcon />
+        <span className="sr-only">Clear all selections</span>
+      </ClearIndicator>
+    );
+  },
   Option: (props) => {
     const innerProps = {
       ...props.innerProps,
@@ -36,6 +43,13 @@ const components = {
       name: props.innerProps.id,
     };
     return <Option {...props} innerProps={innerProps} />;
+  },
+  MultiValueRemove: (props) => {
+    const innerProps = {
+      ...props.innerProps,
+      'aria-hidden': false,
+    };
+    return <MultiValueRemove {...props} innerProps={innerProps} />;
   },
 };
 
@@ -120,7 +134,7 @@ const Select = ({
     if (attributes.isMulti && digIfMulti && Array.isArray(value)) {
       return value.map((val) => prepValue(val));
     }
-    if (attributes.raw || attributes.loadOptions) {
+    if (attributes.raw || (attributes.loadOptions && !attributes.valueKey)) {
       return value;
     }
     const valueKey = getValueKey();
@@ -400,7 +414,7 @@ Select.propTypes = {
   autofill: PropTypes.oneOfType([PropTypes.bool, PropTypes.object]),
   allowSelectAll: PropTypes.bool,
   waitUntilFocused: PropTypes.bool,
-  helpMessage: PropTypes.string,
+  helpMessage: PropTypes.oneOfType([PropTypes.string, PropTypes.node]),
   feedback: PropTypes.bool,
   placeholder: PropTypes.string,
   components: PropTypes.object,
@@ -409,6 +423,14 @@ Select.propTypes = {
 components.Option.propTypes = {
   innerProps: PropTypes.object,
   isSelected: PropTypes.bool,
+};
+
+components.ClearIndicator.propTypes = {
+  innerProps: PropTypes.object,
+};
+
+components.MultiValueRemove.propTypes = {
+  innerProps: PropTypes.object,
 };
 
 export default Select;

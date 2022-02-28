@@ -3,6 +3,14 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## 2.3.4 (2022-02-18)
+
+**Note:** Version bump only for package @availity/favorites
+
+
+
+
+
 ## [2.3.3](https://github.com/Availity/availity-react/compare/@availity/favorites@2.3.2...@availity/favorites@2.3.3) (2021-12-20)
 
 **Note:** Version bump only for package @availity/favorites

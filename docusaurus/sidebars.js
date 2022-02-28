@@ -37,6 +37,7 @@ module.exports = {
           },
           // 'components/authorize',
           'components/avatar',
+          'components/button',
           'components/breadcrumbs',
           {
             type: 'category',
@@ -73,6 +74,7 @@ module.exports = {
               'components/hooks/use-permissions',
               'components/hooks/use-organizations',
               'components/hooks/use-providers',
+              'components/hooks/use-window-dimensions',
             ],
           },
           'components/icon',
@@ -101,6 +103,7 @@ module.exports = {
               'components/pagination/context',
             ],
           },
+          'components/badge',
           'components/progress',
           {
             type: 'category',

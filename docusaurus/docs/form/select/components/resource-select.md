@@ -45,6 +45,8 @@ const Example = () => (
 
 Extends [SelectField Props](/form/select/components/select-field/#props).
 
+Note: the `valueKey` prop will only work if you also pass `false` to the `raw` prop.
+
 #### `name: string`
 
 The name of the field. Will be the key of the selected date that comes through in the values of the `onSubmit` callback.
@@ -75,7 +77,7 @@ When this prop changes, all cached options are cleared. (see [react-select-async
 
 #### `watchParams?: string[]`
 
-Provide a list of properties to listen to from the parameters prop. If present, the options reset when any of the parameters specified in the array change value. This is useful for when a customerId changes and you need to load a new list of options for the user to choose from. This list will be used to derive cacheUniq when the cacheUniq prop is not provided. When using `watchParams`, the `parameters` prop must must be populated with values that are in the `watchParams` object. 
+Provide a list of properties to listen to from the parameters prop. If present, the options reset when any of the parameters specified in the array change value. This is useful for when a customerId changes and you need to load a new list of options for the user to choose from. This list will be used to derive cacheUniq when the cacheUniq prop is not provided. When using `watchParams`, the `parameters` prop must must be populated with values that are in the `watchParams` object.
 
 #### `resource: AxiosResource`
 
@@ -167,9 +169,10 @@ async function postGet(data, config, additionalPostGetArgs) {
   return super.postGet(data, config);
 }
 ```
+
 #### `searchTerm?: string`
 
-If present, this will serve as the argument name for the typed search value when sending the request to the API. This defaults to `q`. 
+If present, this will serve as the argument name for the typed search value when sending the request to the API. This defaults to `q`.
 
 ### Pre-made Resource Selects
 
