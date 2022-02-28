@@ -16,7 +16,7 @@ const Tooltip = ({
       <Trigger asChild>{children}</Trigger>
       <Content side="top" className={css.content} data-testid={dataTestId}>
         {content}
-        <Arrow className={css.arrow} />
+        <Arrow className={css.arrow} offset={7} />
       </Content>
     </Root>
   </Provider>

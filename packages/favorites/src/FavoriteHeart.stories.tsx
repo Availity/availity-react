@@ -20,7 +20,17 @@ export default {
 } as Meta;
 
 export const Default: Story = () => (
-  <QueryClientProvider client={new QueryClient()}>
+  <QueryClientProvider
+    client={
+      new QueryClient({
+        defaultOptions: {
+          queries: {
+            refetchOnWindowFocus: false,
+          },
+        },
+      })
+    }
+  >
     <FavoritesProvider>
       {favorites.map((fav, index) => (
         <div style={{ display: 'flex', gap: '1rem' }} key={fav.id}>

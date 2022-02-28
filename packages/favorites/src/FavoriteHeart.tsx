@@ -4,6 +4,52 @@ import css from './FavoriteHeart.module.scss';
 import { useFavorites } from './context';
 import Tooltip from './components/FavoritesTooltip';
 
+const RED = '#ed5624';
+const GREY = '#4d4f53';
+const DISABLED_OPACITY = 0.75;
+const INIT_LOADING_OPACITY = 0.5;
+
+const icons = {
+  spinner: (
+    <Spinner
+      aria-hidden
+      title="Loading spinner icon"
+      className={`${css.icon} ${css.spinner}`}
+      style={{ color: GREY, opacity: DISABLED_OPACITY }}
+    />
+  ),
+
+  unknownDisabledHeart: (
+    <HeartFilled
+      aria-hidden
+      title="Filled heart icon"
+      className={css.icon}
+      style={{ color: GREY, opacity: INIT_LOADING_OPACITY }}
+    />
+  ),
+  favoritedDisabledHeart: (
+    <HeartFilled
+      aria-hidden
+      title="Filled heart icon"
+      className={css.icon}
+      style={{ color: RED, opacity: DISABLED_OPACITY }}
+    />
+  ),
+  unfavoritedDisabledHeart: (
+    <HeartOutlined
+      aria-hidden
+      title="Outlined heart icon"
+      className={css.icon}
+      style={{ color: GREY, opacity: DISABLED_OPACITY }}
+    />
+  ),
+
+  favoritedHeart: <HeartFilled aria-hidden title="Filled heart icon" className={css.icon} style={{ color: RED }} />,
+  unfavoritedHeart: (
+    <HeartOutlined aria-hidden title="Outlined heart icon" className={css.icon} style={{ color: GREY }} />
+  ),
+};
+
 export const FavoriteHeart = ({
   id,
   name,
@@ -18,7 +64,7 @@ export const FavoriteHeart = ({
   ) => void;
   onMouseDown?: (event: React.MouseEvent<HTMLInputElement, MouseEvent>) => void;
 }): JSX.Element => {
-  const { isFavorited, isDisabled, isActiveMutation, toggleFavorite } = useFavorites(id);
+  const { isFavorited, isLastClickedFavorite, status, toggleFavorite } = useFavorites(id);
 
   const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     onChange?.(isFavorited, event);
@@ -32,24 +78,37 @@ export const FavoriteHeart = ({
     }
   };
 
+  const derivedState = (() => {
+    if (status === 'initLoading') return 'unknownDisabledHeart';
+
+    if (status === 'reloading') {
+      if (isLastClickedFavorite) return 'spinner';
+      return isFavorited ? 'favoritedDisabledHeart' : 'unfavoritedDisabledHeart';
+    }
+    if (isFavorited) return 'favoritedHeart';
+    return 'unfavoritedHeart';
+  })();
+
+  const cursor =
+    !isLastClickedFavorite && (status === 'initLoading' || status === 'reloading') ? 'not-allowed' : undefined;
+
   return (
     <div className={css.root}>
-      <div className={css.icons} style={isDisabled && !isActiveMutation ? { opacity: 0.75 } : undefined}>
-        {isActiveMutation ? (
-          <Spinner aria-hidden title="Loading spinner icon" className={`${css.icon}  ${css.spinner}`} />
-        ) : isFavorited ? (
-          <HeartFilled aria-hidden title="Filled heart icon" className={`${css.icon} ${css.heartFilled}`} />
-        ) : (
-          <HeartOutlined aria-hidden title="Outlined heart icon" className={`${css.icon} ${css.heartOutlined}`} />
-        )}
-      </div>
-      <span aria-live={isActiveMutation ? 'polite' : 'off'} className={css.screenReaderOnly}>
-        {isActiveMutation ? 'Loading...' : ''}
+      <div className={css.icons}>{icons[derivedState]}</div>
+      <span
+        aria-live={isLastClickedFavorite && (status === 'reloading' || status === 'error') ? 'polite' : 'off'}
+        className={css.screenReaderOnly}
+      >
+        {isLastClickedFavorite && status === 'reloading'
+          ? 'Loading...'
+          : isLastClickedFavorite && status === 'error'
+          ? 'An error has occurred. Please try again.'
+          : ''}
       </span>
 
       <Tooltip content="Add to My Favorites" data-testid={`av-favorite-heart-${id}-tooltip`}>
         <input
-          style={isDisabled && !isActiveMutation ? { cursor: 'not-allowed' } : undefined}
+          style={{ cursor }}
           className={css.input}
           onKeyPress={handleKeyPress}
           type="checkbox"

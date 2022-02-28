@@ -8,9 +8,9 @@ type StatusUnion = 'idle' | 'error' | 'loading' | 'success';
 
 type FavoritesContextType = {
   favorites?: Favorite[];
-  status: StatusUnion;
-  isLoading: boolean;
-  activeMutationId: string | null;
+  queryStatus: StatusUnion;
+  mutationStatus: StatusUnion;
+  lastClickedFavoriteId: string;
   deleteFavorite: (id: string) => void;
   addFavorite: (id: string) => void;
 };
@@ -18,16 +18,14 @@ type FavoritesContextType = {
 const FavoritesContext = createContext<FavoritesContextType | null>(null);
 
 export const FavoritesProvider = ({ children }: { children: ReactNode }): JSX.Element => {
-  const [activeMutationId, setActiveMutationId] = useState<string | null>(null);
-  const queryClient = useQueryClient();
-  const { data: favorites, status } = useFavoritesQuery();
+  const [lastClickedFavoriteId, setlastClickedFavoriteId] = useState<string>('');
 
-  const { submitFavorites, isLoading } = useSubmitFavorites({
-    onMutationStart(activeMutationId) {
-      setActiveMutationId(activeMutationId);
-    },
-    onMutationSettled() {
-      setActiveMutationId(null);
+  const queryClient = useQueryClient();
+  const { data: favorites, status: queryStatus } = useFavoritesQuery();
+
+  const { submitFavorites, status: mutationStatus } = useSubmitFavorites({
+    onMutationStart(targetFavoriteId) {
+      setlastClickedFavoriteId(targetFavoriteId);
     },
   });
 
@@ -43,7 +41,7 @@ export const FavoritesProvider = ({ children }: { children: ReactNode }): JSX.El
     if (favorites) {
       const response = await submitFavorites({
         favorites: favorites.filter((favorite: Favorite) => favorite.id !== id),
-        activeMutationId: id,
+        targetFavoriteId: id,
       });
 
       sendUpdateMessage(response.favorites);
@@ -65,12 +63,10 @@ export const FavoritesProvider = ({ children }: { children: ReactNode }): JSX.El
       return accum;
     }, null);
 
-    setActiveMutationId(id);
-
     const newFavPos = maxFavorite ? maxFavorite.pos + 1 : 0;
     const response = await submitFavorites({
       favorites: [...favorites, { id, pos: newFavPos }],
-      activeMutationId: id,
+      targetFavoriteId: id,
     });
 
     sendUpdateMessage(response.favorites);
@@ -84,9 +80,9 @@ export const FavoritesProvider = ({ children }: { children: ReactNode }): JSX.El
     <FavoritesContext.Provider
       value={{
         favorites,
-        status,
-        isLoading,
-        activeMutationId,
+        queryStatus,
+        mutationStatus,
+        lastClickedFavoriteId,
         deleteFavorite,
         addFavorite,
       }}
@@ -96,40 +92,46 @@ export const FavoritesProvider = ({ children }: { children: ReactNode }): JSX.El
   );
 };
 
-const asyncNoOp = () => Promise.resolve();
+// eslint-disable-next-line @typescript-eslint/no-empty-function
+const noOp = () => {};
 
+type MergedStatusUnion = 'initLoading' | 'reloading' | 'error' | 'success';
 export const useFavorites = (
   id: string
 ): {
   isFavorited: boolean;
-  status: StatusUnion;
-  isDisabled: boolean;
-  isActiveMutation: boolean;
-  toggleFavorite: () => Promise<void>;
+  status: MergedStatusUnion;
+  isLastClickedFavorite: boolean;
+  toggleFavorite: () => void;
 } => {
   const context = useContext(FavoritesContext);
 
   if (context === null) {
     throw new Error('useFavorites must be used within a FavoritesProvider');
   }
-  const { favorites, status, activeMutationId, deleteFavorite, addFavorite } = context;
+  const { favorites, queryStatus, mutationStatus, lastClickedFavoriteId, deleteFavorite, addFavorite } = context;
 
-  const isActiveMutation = activeMutationId === id;
+  const isLastClickedFavorite = lastClickedFavoriteId === id;
 
   const isFavorited = useMemo(() => {
     const fav = favorites?.find((f) => f.id === id);
     return !!fav;
   }, [favorites, id]);
 
-  const toggleFavorite = async () => (isFavorited ? deleteFavorite(id) : addFavorite(id));
+  const toggleFavorite = () => (isFavorited ? deleteFavorite(id) : addFavorite(id));
 
-  const isDisabled = status === 'loading' || status === 'idle' || activeMutationId !== null;
+  const isDisabled = queryStatus === 'loading' || queryStatus === 'idle' || mutationStatus === 'loading';
+
+  let status: MergedStatusUnion = 'initLoading';
+  if (queryStatus === 'loading') status = 'initLoading';
+  if (mutationStatus === 'loading') status = 'reloading';
+  if (queryStatus === 'error' || mutationStatus === 'error') status = 'error';
+  if (queryStatus === 'success' && (mutationStatus === 'success' || mutationStatus === 'idle')) status = 'success';
 
   return {
     isFavorited,
     status,
-    isDisabled,
-    isActiveMutation,
-    toggleFavorite: isDisabled ? asyncNoOp : toggleFavorite,
+    isLastClickedFavorite,
+    toggleFavorite: isDisabled ? noOp : toggleFavorite,
   };
 };

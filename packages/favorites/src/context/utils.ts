@@ -20,14 +20,14 @@ export const validateFavorites = (unvalidatedFavorites: any): Favorite[] => {
 
 type MutationVariables = {
   favorites: Favorite[];
-  activeMutationId: string;
+  targetFavoriteId: string;
 };
 
 type SettingsResponse = { data: { favorites: Favorite[] } };
 
-const submit = async ({ favorites, activeMutationId }: MutationVariables): Promise<MutationVariables> => {
+const submit = async ({ favorites, targetFavoriteId }: MutationVariables): Promise<MutationVariables> => {
   const response: SettingsResponse = await avSettingsApi.setApplication(NAV_APP_ID, { favorites });
-  return { favorites: response.data.favorites, activeMutationId };
+  return { favorites: response.data.favorites, targetFavoriteId };
 };
 
 const getFavorites = async () => {
@@ -41,23 +41,19 @@ const getFavorites = async () => {
 export const useFavoritesQuery = (): UseQueryResult<Favorite[], unknown> => useQuery('favorites', getFavorites);
 
 type MutationOptions = {
-  onMutationStart?: (activeMutationId: string) => void;
-  onMutationSettled?: () => void;
+  onMutationStart?: (targetFavoriteId: string) => void;
 };
 
 // I'll give you a dollar if you can type this return type for me 💵
 // eslint-disable-next-line @typescript-eslint/explicit-module-boundary-types
-export const useSubmitFavorites = ({ onMutationStart, onMutationSettled }: MutationOptions) => {
+export const useSubmitFavorites = ({ onMutationStart }: MutationOptions) => {
   const queryClient = useQueryClient();
   const { mutateAsync: submitFavorites, ...rest } = useMutation(submit, {
     onMutate(variables) {
-      onMutationStart?.(variables.activeMutationId);
+      onMutationStart?.(variables.targetFavoriteId);
     },
     onSuccess(data) {
       queryClient.setQueryData('favorites', data.favorites);
-    },
-    onSettled() {
-      onMutationSettled?.();
     },
   });
   return { submitFavorites, ...rest };
