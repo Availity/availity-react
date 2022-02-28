@@ -34,8 +34,8 @@ export const Default: Story = () => (
     <FavoritesProvider>
       {favorites.map((fav, index) => (
         <div style={{ display: 'flex', gap: '1rem' }} key={fav.id}>
-          <FavoriteHeart id={fav.id} name={`App #${index}`} />
-          <div>{`App #${index}`}</div>
+          <FavoriteHeart id={fav.id} name={`App #${index + 1}`} />
+          <div>{`App #${index + 1}`}</div>
         </div>
       ))}
     </FavoritesProvider>

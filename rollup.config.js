@@ -41,7 +41,7 @@ export default () =>
         postcss({
           extract: false,
           modules: {
-            generateScopedName: '[hash:base64]',
+            generateScopedName: '[hash:base64:12]',
           },
         }),
       ],

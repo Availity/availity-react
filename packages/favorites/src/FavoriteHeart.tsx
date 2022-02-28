@@ -4,6 +4,11 @@ import css from './FavoriteHeart.module.scss';
 import { useFavorites } from './context';
 import Tooltip from './components/FavoritesTooltip';
 
+// TODO: Colors are currently sampled from the uikit:
+// https://availity.github.io/availity-uikit/v3/components
+// They need to eventually be replaced with design tokens
+// once that package has stabilized. Size units are mostly
+// arbitrary. Those also need to eventaully utilize tokens.
 const RED = '#ed5624';
 const GREY = '#4d4f53';
 const DISABLED_OPACITY = 0.75;

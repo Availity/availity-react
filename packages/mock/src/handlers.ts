@@ -17,7 +17,6 @@ import providers from './data/providers.json';
 import region from './data/region.json';
 import regions from './data/regions.json';
 import settings from './data/settings.json';
-// import maxFavorites from '../../favorites/tests/maxFavorites.json';
 import spaces from './data/spaces.json';
 import user from './data/user.json';
 import users from './data/users.json';
@@ -74,12 +73,6 @@ export const handlers = [
   // Settings
   rest.get(routes.SETTINGS, (req, res, ctx) => res(delay(defaultDelay), ctx.status(200), ctx.json(settings))),
   rest.put(routes.SETTINGS, (req, res, ctx) => res(delay(defaultDelay), ctx.status(200), ctx.json(req.body))),
-
-  // rest.put(routes.SETTINGS, (req, res, ctx) =>
-  //   Math.random() > 0.5
-  //     ? res(delay(defaultDelay), ctx.status(200), ctx.json(req.body))
-  //     : res(delay(defaultDelay), ctx.status(403), ctx.json({ errorMessage: 'there was an error' }))
-  // ),
 
   // Feature
   rest.get('/features.json', (req, res, ctx) => res(delay(defaultDelay), ctx.status(200), ctx.json(features))),
