@@ -24,7 +24,7 @@
     "@availity/analytics-core": "^3.1.5",
     "@availity/hooks": "^3.2.0",
     "@availity/message-core": "^5.0.1",
-    "@radix-ui/react-tooltip": "^0.1.6",
+    "@radix-ui/react-tooltip": "0.1.6",
     "lodash": "^4.17.21",
     "prop-types": "^15.7.2"
   },
