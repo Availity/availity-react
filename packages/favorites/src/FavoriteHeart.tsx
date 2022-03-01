@@ -15,40 +15,23 @@ const DISABLED_OPACITY = 0.75;
 const INIT_LOADING_OPACITY = 0.5;
 
 const icons = {
+  // Loading icon
   spinner: (
-    <Spinner
-      aria-hidden
-      title="Loading spinner icon"
-      className={`${css.icon} ${css.spinner}`}
-      style={{ color: GREY, opacity: DISABLED_OPACITY }}
-    />
+    <Spinner aria-hidden className={`${css.icon} ${css.spinner}`} style={{ color: GREY, opacity: DISABLED_OPACITY }} />
   ),
 
+  // disabled heart icons
   unknownDisabledHeart: (
-    <HeartFilled
-      aria-hidden
-      title="Filled heart icon"
-      className={css.icon}
-      style={{ color: GREY, opacity: INIT_LOADING_OPACITY }}
-    />
+    <HeartFilled aria-hidden className={css.icon} style={{ color: GREY, opacity: INIT_LOADING_OPACITY }} />
   ),
   favoritedDisabledHeart: (
-    <HeartFilled
-      aria-hidden
-      title="Filled heart icon"
-      className={css.icon}
-      style={{ color: RED, opacity: DISABLED_OPACITY }}
-    />
+    <HeartFilled aria-hidden className={css.icon} style={{ color: RED, opacity: DISABLED_OPACITY }} />
   ),
   unfavoritedDisabledHeart: (
-    <HeartOutlined
-      aria-hidden
-      title="Outlined heart icon"
-      className={css.icon}
-      style={{ color: GREY, opacity: DISABLED_OPACITY }}
-    />
+    <HeartOutlined aria-hidden className={css.icon} style={{ color: GREY, opacity: DISABLED_OPACITY }} />
   ),
 
+  // regular heart icons
   favoritedHeart: <HeartFilled aria-hidden title="Filled heart icon" className={css.icon} style={{ color: RED }} />,
   unfavoritedHeart: (
     <HeartOutlined aria-hidden title="Outlined heart icon" className={css.icon} style={{ color: GREY }} />
@@ -83,7 +66,7 @@ export const FavoriteHeart = ({
     }
   };
 
-  const derivedState = (() => {
+  const iconKey = (() => {
     if (status === 'initLoading') return 'unknownDisabledHeart';
 
     if (status === 'reloading') {
@@ -99,7 +82,7 @@ export const FavoriteHeart = ({
 
   return (
     <div className={css.root}>
-      <div className={css.icons}>{icons[derivedState]}</div>
+      <div className={css.icons}>{icons[iconKey]}</div>
       <span
         aria-live={isLastClickedFavorite && (status === 'reloading' || status === 'error') ? 'polite' : 'off'}
         className={css.screenReaderOnly}
