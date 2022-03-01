@@ -32,10 +32,8 @@ const icons = {
   ),
 
   // regular heart icons
-  favoritedHeart: <HeartFilled aria-hidden title="Filled heart icon" className={css.icon} style={{ color: RED }} />,
-  unfavoritedHeart: (
-    <HeartOutlined aria-hidden title="Outlined heart icon" className={css.icon} style={{ color: GREY }} />
-  ),
+  favoritedHeart: <HeartFilled aria-hidden className={css.icon} style={{ color: RED }} />,
+  unfavoritedHeart: <HeartOutlined aria-hidden className={css.icon} style={{ color: GREY }} />,
 };
 
 export const FavoriteHeart = ({
