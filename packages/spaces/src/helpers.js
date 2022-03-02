@@ -1,4 +1,7 @@
 import qs from 'query-string';
+import avMessage from '@availity/message-core';
+import AvLocalStorage from '@availity/localstorage-core';
+import dayjs from 'dayjs';
 
 export const INITIAL_STATE = {
   spaces: [],
@@ -70,4 +73,56 @@ export const updateUrl = (url, key, value) => {
   });
 
   return `${uri}?${newParams}`;
+};
+
+/**
+ * Top Apps
+ */
+
+const localStorageCore = new AvLocalStorage();
+
+const TOP_APPS = {
+  ALLOWED_TYPES: ['application', 'linkout', 'navigation'],
+  BLACKLIST: ['reporting', 'how_to_guide_dental_providers', 'my_account_profile', 'my_administrators'],
+  KEYS: {
+    LAST_UPDATED: 'top-apps-updated',
+    VALUES: 'myTopApps',
+  },
+  UPDATE_EVENT: 'av:topApps:updated',
+};
+
+const canTrackSpace = (spaceId, type) =>
+  TOP_APPS.ALLOWED_TYPES.some((t) => t === type) && !TOP_APPS.BLACKLIST.some((id) => id === spaceId);
+
+const getLocalStorageTopApps = (userId) => {
+  const topAppsValues = localStorageCore.get(`${TOP_APPS.KEYS.VALUES}-${userId}`);
+
+  return topAppsValues;
+};
+
+export const updateTopApps = async (spaceId, type, akaname) => {
+  if (!spaceId || !type) return;
+
+  // If we can track the space
+  if (canTrackSpace(spaceId, type)) {
+    const today = dayjs();
+
+    // Grab the current top apps from localstorage
+    const values = (await getLocalStorageTopApps(akaname)) || {};
+
+    // Update the last updated date. For use in top nav to actually sync with settings api
+    localStorageCore.set(`${TOP_APPS.KEYS.LAST_UPDATED}-${akaname}`, today.format());
+
+    const currentCount = values[spaceId] && typeof values[spaceId].count === 'number' ? values[spaceId].count : 0;
+
+    values[spaceId] = {
+      ...values[spaceId],
+      count: currentCount + 1,
+      lastUse: today.format(),
+    };
+
+    localStorageCore.set(`${TOP_APPS.KEYS.VALUES}-${akaname}`, values);
+
+    avMessage.send(TOP_APPS.UPDATE_EVENT);
+  }
 };

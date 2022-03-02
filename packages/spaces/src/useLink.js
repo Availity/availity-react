@@ -1,9 +1,9 @@
 import nativeForm from '@availity/native-form';
 import { getUrl, getTarget } from '@availity/link';
 import { isAbsoluteUrl } from '@availity/resolve-url';
+import { useCurrentUser } from '@availity/hooks';
 import { useSpaces, useSpacesContext } from './Spaces';
-// import { updateTopApps } from './helpers';
-import { updateUrl } from './helpers';
+import { updateTopApps, updateUrl } from './helpers';
 
 export default (spaceOrSpaceId, { clientId: propsClientId, linkAttributes = {} } = {}) => {
   const { clientId = propsClientId } = useSpacesContext() || {};
@@ -26,6 +26,8 @@ export default (spaceOrSpaceId, { clientId: propsClientId, linkAttributes = {} }
     window.open(`/web/spc/disclaimers/#/?spaceId=${id}&ssoText=${metadata.disclaimerId}`, '_self');
   };
 
+  const { data: user } = useCurrentUser();
+
   const linkSso = async (event) => {
     if (metadata && metadata.ssoId) {
       event.preventDefault();
@@ -43,7 +45,7 @@ export default (spaceOrSpaceId, { clientId: propsClientId, linkAttributes = {} }
       };
 
       try {
-        // await updateTopApps(id, type);
+        await updateTopApps(id, type, user.akaname);
         await nativeForm(metadata.ssoId, attributes, options, type);
       } catch {
         // eslint-disable-next-line no-console
@@ -60,7 +62,7 @@ export default (spaceOrSpaceId, { clientId: propsClientId, linkAttributes = {} }
       return;
     }
 
-    // await updateTopApps(id, type);
+    await updateTopApps(id, type, user.akaname);
 
     const target = getTarget(link.target);
     const url = !isAbsoluteUrl(link.url)
