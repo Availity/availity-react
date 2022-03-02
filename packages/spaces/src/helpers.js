@@ -82,7 +82,7 @@ export const updateUrl = (url, key, value) => {
 const localStorageCore = new AvLocalStorage();
 
 const TOP_APPS = {
-  ALLOWED_TYPES: ['application', 'linkout', 'navigation'],
+  ALLOWED_TYPES: ['APPLICATION', 'RESOURCE', 'NAVIGATION'],
   BLACKLIST: ['reporting', 'how_to_guide_dental_providers', 'my_account_profile', 'my_administrators'],
   KEYS: {
     LAST_UPDATED: 'top-apps-updated',
