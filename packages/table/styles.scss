@@ -246,8 +246,9 @@ thead > tr {
   border: none !important;
 
   .configure-columns.table > tbody > tr {
+    padding: 0 !important;
     background-color: #e8ebeb !important;
-
+    font-size: 11px !important;
     td {
       padding: 0 !important;
     }
@@ -255,42 +256,45 @@ thead > tr {
 }
 
 .edit-table-columns {
-  margin-top: 20vh !important;
-  width: 215px;
-  .popover-inner {
+  .popover-inner.sortable-table-fields-content {
+    font-size: 11px !important;
+    margin: 8px 0px;
+
+    .customizable-column-item {
+      cursor: move;
+      border-collapse: separate;
+      border: none;
+
+      height: 15px !important;
+      &:hover {
+        background-color: #e8ebeb;
+      }
+
+      > td {
+        font-size: 11px !important;
+        padding: 0px !important;
+      }
+    }
+
     .popover-body {
       padding: 2px 15px;
-	  .header-margin {
-		margin: 5px 0px 3px 0px;
-		font-size: 14px !important;
-		h5 {
-		  font-size: 14px !important;
-		}
-	  }
+	  margin-top: 10px;
+      width: 215px;
+
+      .icon {
+        color: #212529;
+      }
+      .header-margin {
+        margin: 5px 0px 3px 0px;
+        font-size: 14px !important;
+        h5 {
+          font-size: 14px !important;
+        }
+      }
       .reset-to-default > button {
         font-size: 11px !important;
       }
-
-	  .icon {
-		  color: #212529
-	  }
     }
-
-	.customizable-column-item {
-		cursor: move;
-		border-collapse: separate;
-		border: none;
-	  
-		height: 15px !important;
-		&:hover {
-		  background-color: #e8ebeb;
-		}
-	  
-		> td {
-		  font-size: 11px !important;
-		  padding: 0px !important;
-		}
-	  }
   }
 }
 
