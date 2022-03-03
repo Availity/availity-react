@@ -6,20 +6,21 @@ export interface AnalyticsEvent {
 }
 
 export interface AnalyticsPlugin {
+  init?: () => void;
   isEnabled: () => boolean;
-  init: () => void;
   trackEvent: (event: AnalyticsEvent) => void;
   trackPageView: (url: string) => void;
 }
 
 export interface AnalyticsProps {
-  plugins?: AnalyticsPlugin[];
-  pageTracking?: boolean;
-  autoTrack?: boolean;
-  recursive?: boolean;
   attributePrefix?: string;
-  eventModifiers?: string | string[];
+  autoTrack?: boolean;
   children: React.ReactNode;
+  eventModifiers?: string | string[];
+  init: () => void;
+  pageTracking?: boolean;
+  plugins?: AnalyticsPlugin[];
+  recursive?: boolean;
 }
 
 export interface TrackEventOptions {
