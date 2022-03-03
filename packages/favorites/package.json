@@ -18,12 +18,13 @@
   },
   "license": "MIT",
   "author": "Kyle Gray <kyle.gray@availity.com>",
-  "main": "index.js",
-  "types": "index.d.ts",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
   "dependencies": {
     "@availity/analytics-core": "^3.1.5",
     "@availity/hooks": "^3.2.0",
     "@availity/message-core": "^5.0.1",
+    "@radix-ui/react-tooltip": "0.1.6",
     "lodash": "^4.17.21",
     "prop-types": "^15.7.2"
   },
@@ -32,13 +33,14 @@
     "axios": "^0.21.1",
     "react": "^17.0.2",
     "react-dom": "^17.0.2",
-    "reactstrap": "^8.9.0"
+    "react-query": "^3.34.8"
   },
   "peerDependencies": {
     "@availity/api-axios": "^6.0.0",
     "axios": "^0.21.1",
     "react": ">=16.8.0",
-    "reactstrap": "^8.0.0 || ^7.1.0"
+    "react-dom": ">=16.8.0",
+    "react-query": "^3.34.8"
   },
   "publishConfig": {
     "access": "public"
