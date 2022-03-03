@@ -1,5 +1,5 @@
 import avMessages from '@availity/message-core';
-import { avSettingsApi, avLogMessagesApi } from '@availity/api-axios';
+import { avSettingsApi } from '@availity/api-axios';
 import { useMutation, useQuery, useQueryClient, UseQueryResult } from 'react-query';
 import { AV_INTERNAL_GLOBALS, NAV_APP_ID } from './constants';
 
@@ -66,14 +66,4 @@ export const sendUpdateMessage = (favorites: Favorite[]): void => {
   });
 };
 
-export const openMaxModal = (): void => {
-  const atMaxLog = {
-    category: 'favorites',
-    label: 'max-favorites-modal',
-    event: 'modal-open',
-  };
-
-  avLogMessagesApi.info(atMaxLog);
-
-  avMessages.send(AV_INTERNAL_GLOBALS.MAX_FAVORITES);
-};
+export const openMaxModal = (): void => avMessages.send(AV_INTERNAL_GLOBALS.MAX_FAVORITES);
