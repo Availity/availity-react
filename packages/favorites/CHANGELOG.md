@@ -3,6 +3,34 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# 3.0.0 (2022-03-03)
+
+
+### Bug Fixes
+
+* **favorites:** restore default export ([4b334ae](https://github.com/Availity/availity-react/commit/4b334ae9b987bbce6c9a6c73b7a5281fdb4e11af))
+
+
+### Features
+
+* **favorites:** improved accessibility for loading state ([9038803](https://github.com/Availity/availity-react/commit/90388033f095f312d0ea8e2ca124bb875cb54c6c))
+* **favorites:** initial refactor removing bootstrap PF-2802 ([f05a093](https://github.com/Availity/availity-react/commit/f05a0939c596ceb82d2c6849b87e9aea92306d21))
+* **favorites:** remove logging ([3c8de83](https://github.com/Availity/availity-react/commit/3c8de8315eb0906ba7076397e89a92a35dd1fbda))
+
+
+* refactor(favorites)!: remove bootstrap, add react-query, rewrite to TypeScript ([eebe86b](https://github.com/Availity/availity-react/commit/eebe86b450024b57f73bac8f45219b9803fe8651))
+
+
+### BREAKING CHANGES
+
+* Adds react-query v3 as a peer dependency
+* Requires all components to be used inside react-query's QueryClientProvider
+* No longer requires availity-uikit or any other Bootstrap dependent
+
+
+
+
+
 ## 2.3.4 (2022-02-18)
 
 **Note:** Version bump only for package @availity/favorites

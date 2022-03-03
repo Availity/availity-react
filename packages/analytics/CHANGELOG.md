@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## 1.4.1 (2022-03-03)
+
+
+### Bug Fixes
+
+* **analytics:** makes init funciton optional for plugins ([baf8e02](https://github.com/Availity/availity-react/commit/baf8e023cfa4f12596e041ef84653f7828435a6f))
+
+
+
+
+
 # [1.4.0](https://github.com/Availity/availity-react/compare/@availity/analytics@1.2.2...@availity/analytics@1.4.0) (2021-12-20)
 
 

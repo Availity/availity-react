@@ -3,6 +3,22 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# 3.0.0 (2022-03-03)
+
+
+* refactor(favorites)!: remove bootstrap, add react-query, rewrite to TypeScript ([eebe86b](https://github.com/Availity/availity-react/commit/eebe86b450024b57f73bac8f45219b9803fe8651))
+
+
+### BREAKING CHANGES
+
+* Adds react-query v3 as a peer dependency
+* Requires all components to be used inside react-query's QueryClientProvider
+* No longer requires availity-uikit or any other Bootstrap dependent
+
+
+
+
+
 # 2.2.0 (2022-01-31)
 
 
