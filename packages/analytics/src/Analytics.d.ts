@@ -17,7 +17,6 @@ export interface AnalyticsProps {
   autoTrack?: boolean;
   children: React.ReactNode;
   eventModifiers?: string | string[];
-  init: () => void;
   pageTracking?: boolean;
   plugins?: AnalyticsPlugin[];
   recursive?: boolean;
