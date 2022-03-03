@@ -25,7 +25,8 @@
     "lodash": "^4.17.21",
     "moment": "^2.29.1",
     "react-table": "^7.7.0",
-    "reactstrap": "^8.9.0"
+    "reactstrap": "^8.9.0",
+    "react-movable": "^3.0.2"
   },
   "peerDependencies": {
     "availity-uikit": ">=3.0.0",

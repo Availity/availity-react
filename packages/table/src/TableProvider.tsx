@@ -1,38 +1,53 @@
-import React, { useEffect, useState } from 'react';
-import { useRowSelect, useSortBy, useTable, Hooks, UseRowSelectInstanceProps, Column as RtColumn } from 'react-table';
+import React, {  useEffect, useState } from 'react';
+import {
+  useRowSelect,
+  useSortBy,
+  useTable,
+  Hooks,
+  UseRowSelectInstanceProps,
+  Column as RtColumn,
+  useColumnOrder,
+} from 'react-table';
 import filter from 'lodash/filter';
 import IndeterminateCheckbox from './IndeterminateCheckbox';
-import { Cell, Column, CurrentTableState, IdType, TableInstance, TableOptions } from './types/ReactTable';
+import { Cell, Column, IdType, TableInstance, TableOptions } from './types/ReactTable';
 import { TableSortOption } from './types/TableSortOption';
 import { TableContext } from './TableContext';
 
 export type TableProviderProps<T extends IdType> = {
   additionalContent?: React.ElementType;
   additionalContentProps?: Record<string, string | number | boolean | undefined | null>;
-
-  children: React.ReactChild | React.ReactChild[];
   columns: Column<T>[];
+  onReset?: () => void;
   data: T[];
+  hasCustomizableColumns: boolean;
+  onColumnsCustomized?: (hiddenColumnIds: string[], visibleColumnIds: []) => void;
+  children: React.ReactChild | React.ReactChild[];
   scrollable?: boolean;
   selectable?: boolean;
   sortable?: boolean;
-  initialState?: Partial<CurrentTableState>;
+  minimumNumberOfColumns?: number;
+  defaultColumns: Column<T>[]
 } & TableOptions<T>;
 
 const TableProvider = <T extends IdType>({
   additionalContent: AdditionalContent,
   additionalContentProps,
-
+  hasCustomizableColumns = false,
   columns,
   data,
   selectable,
   scrollable,
   sortable,
+  onReset,
+  minimumNumberOfColumns = 3,
+  defaultColumns,
   children,
   ...rest
 }: TableProviderProps<T>): JSX.Element => {
   let selectionColumn: Column<T>;
   const [isScrollable, setScrollable] = useState(scrollable);
+  const [isCustomizingColumns, setIsCustomizingColumns] = useState(false);
 
   const getSortableColumns = (): TableSortOption[] =>
     filter(columns, (column) => !column.disableSortBy && column.defaultCanSort).map((column) => {
@@ -50,6 +65,7 @@ const TableProvider = <T extends IdType>({
     } as TableOptions<T>,
     useSortBy,
     useRowSelect,
+    useColumnOrder,
     (hooks: Hooks<T>) => {
       selectionColumn = {
         id: 'selection',
@@ -58,6 +74,7 @@ const TableProvider = <T extends IdType>({
         defaultCanSort: false,
         disableSortBy: true,
         disableClick: true,
+        canCustomize: false,
         Header: ({ getToggleAllRowsSelectedProps }: UseRowSelectInstanceProps<T>) => (
           <div className="text-center">
             <IndeterminateCheckbox
@@ -96,12 +113,18 @@ const TableProvider = <T extends IdType>({
       value={{
         AdditionalContent,
         additionalContentProps,
+        hasCustomizableColumns,
         selectable,
         scrollable: isScrollable as boolean | undefined,
         setScrollable,
         sortable,
         sortableColumns: getSortableColumns(),
         instance: tableInstance,
+        isCustomizingColumns,
+        setIsCustomizingColumns,
+        onReset,
+        minimumNumberOfColumns,
+        defaultColumns: defaultColumns as Column<IdType>[]
       }}
     >
       {children}

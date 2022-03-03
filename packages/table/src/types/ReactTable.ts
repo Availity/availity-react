@@ -25,7 +25,7 @@ export type Row<T extends IdType> = RtRow<T> & {
   original: T;
 };
 
-export type Column<T extends IdType> = RtColumn<T> & {
+export type Column<T extends IdType> = RtColumn<T>  & {
   className?: string;
   stickyRight?: boolean;
   stickyLeft?: boolean;
@@ -35,6 +35,8 @@ export type Column<T extends IdType> = RtColumn<T> & {
   disableSortBy?: boolean;
   label?: string;
   hidden?: boolean;
+  canCustomize?: boolean;
+  isVisible?: boolean;
 };
 
 export type Cell<T extends IdType> = RtCell<T> & {
@@ -60,6 +62,7 @@ export type TableOptions<T extends IdType> = RtTableOptions<T> &
     autoResetSelectedRows?: boolean;
     autoResetSortBy?: boolean;
     manualSortBy?: boolean;
+    hiddenColumns?: string[];
   };
 
 export type TableInstance<T extends IdType> = UseSortByInstanceProps<T> &

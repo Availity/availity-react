@@ -32,7 +32,7 @@ const TableSorter = <T extends IdType>({
   disabled,
   color,
   sortOptions,
-  autoGenerateSortOptions,
+  autoGenerateSortOptions = true,
   ...rest
 }: Props): JSX.Element | null => {
   const { sortableColumns, instance } = useTableContext();
@@ -173,7 +173,4 @@ const TableSorter = <T extends IdType>({
   );
 };
 
-TableSorter.defaultProps = {
-  autoGenerateSortOptions: true,
-};
 export default TableSorter;

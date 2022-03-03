@@ -42,7 +42,7 @@ const Table = <T extends IdType>({
   onSort,
   ...rest
 }: Props<T>): JSX.Element => {
-  const { sortable, selectable, instance, setScrollable } = useTableContext();
+  const { sortable, selectable, instance, setScrollable, isCustomizingColumns } = useTableContext();
 
   const {
     getTableProps,
@@ -52,6 +52,7 @@ const Table = <T extends IdType>({
     prepareRow,
     selectedFlatRows: selectedRows,
     toggleHideColumn,
+    visibleColumns,
   } = instance as TableInstance<T>;
 
   useEffect(() => {
@@ -73,72 +74,76 @@ const Table = <T extends IdType>({
   const populateId = () => (id ? `${id}_` : '');
 
   return (
-    <RsTable id={id} {...getTableProps({ className: 'av-grid' })} {...rest}>
-      <TableHeader id={`${populateId()}table_header`} {...headerProps}>
-        {headerGroups.map((headerGroup, rowIndex: number) => {
-          const headerGroupEx = headerGroup as ExtendedTableHeader<T>;
-          return (
-            <TableHeaderRow
-              id={`${populateId()}table_header_row_${rowIndex}`}
-              data-testid={`${populateId()}table_header_row_${rowIndex}`}
-              key={rowIndex.toString()}
-              headerGroup={headerGroupEx}
-            >
-              {headerGroup.headers.map((column, cellIndex: number) => {
-                const header = column as ExtendedTableHeader<T>;
-                return (
-                  <TableHeaderCell
-                    onSort={onSort}
-                    id={`${populateId()}table_header_row_${rowIndex}_cell_${cellIndex}_${column.id}`}
-                    data-testid={`${populateId()}table_header_row_${rowIndex}_cell_${cellIndex}_${column.id}`}
-                    key={column.id}
-                    column={header}
+    <>
+      {isCustomizingColumns ? <div className="overlay" /> : null}
+      <RsTable id={id} {...getTableProps({ className: 'av-grid' })} {...rest}>
+        <TableHeader id={`${populateId()}table_header`} {...headerProps}>
+          {headerGroups.map((headerGroup, rowIndex: number) => {
+            const headerGroupEx = headerGroup as ExtendedTableHeader<T>;
+            return (
+              <TableHeaderRow
+                id={`${populateId()}table_header_row_${rowIndex}`}
+                data-testid={`${populateId()}table_header_row_${rowIndex}`}
+                key={rowIndex.toString()}
+                headerGroup={headerGroupEx}
+              >
+                {headerGroup.headers.map((column, cellIndex: number) => {
+                  const header = column as ExtendedTableHeader<T>;
+                  return (
+                    <TableHeaderCell
+                      isLastColumn={cellIndex === visibleColumns.length - 1}
+                      onSort={onSort}
+                      id={`${populateId()}table_header_row_${rowIndex}_cell_${cellIndex}_${column.id}`}
+                      data-testid={`${populateId()}table_header_row_${rowIndex}_cell_${cellIndex}_${column.id}`}
+                      key={column.id}
+                      column={header}
+                    >
+                      {header.render('Header')}
+                      {sortable && header.defaultCanSort && header.disableSortBy !== true ? (
+                        <Icon
+                          aria-hidden="true"
+                          name={header.isSorted ? (header.isSortedDesc ? 'sort-down' : 'sort-up') : 'sort'}
+                        />
+                      ) : null}
+                    </TableHeaderCell>
+                  );
+                })}
+              </TableHeaderRow>
+            );
+          })}
+        </TableHeader>
+        <tbody {...getTableBodyProps()} {...bodyProps}>
+          {rows.map((row, rowIndex: number) => {
+            prepareRow(row);
+            return (
+              <TableRow
+                id={`${populateId()}table_row_${rowIndex}`}
+                data-testid={`${populateId()}table_row_${rowIndex}`}
+                key={`${populateId()}table_row_${rowIndex.toString()}`}
+                index={rowIndex}
+                row={row as Row<T>}
+                onRowClick={selectable ? undefined : onRowClick}
+                onCellClick={selectable ? onRowClick : onCellClick}
+                {...rowProps}
+              >
+                {row.cells.map((cell, cellIndex: number) => (
+                  <TableCell
+                    id={`${populateId()}table_row_${rowIndex}_cell_${cellIndex}`}
+                    data-testid={`${populateId()}table_row_${rowIndex}_cell_${cellIndex}`}
+                    key={`${populateId()}table_row_${rowIndex.toString()}_cell_${cellIndex.toString()}`}
+                    cell={cell as Cell<T>}
+                    onCellClick={selectable ? onRowClick : onCellClick}
+                    {...cellProps}
                   >
-                    {header.render('Header')}
-                    {sortable && header.defaultCanSort && header.disableSortBy !== true ? (
-                      <Icon
-                        aria-hidden="true"
-                        name={header.isSorted ? (header.isSortedDesc ? 'sort-down' : 'sort-up') : 'sort'}
-                      />
-                    ) : null}
-                  </TableHeaderCell>
-                );
-              })}
-            </TableHeaderRow>
-          );
-        })}
-      </TableHeader>
-      <tbody {...getTableBodyProps()} {...bodyProps}>
-        {rows.map((row, rowIndex: number) => {
-          prepareRow(row);
-          return (
-            <TableRow
-              id={`${populateId()}table_row_${rowIndex}`}
-              data-testid={`${populateId()}table_row_${rowIndex}`}
-              key={`${populateId()}table_row_${rowIndex.toString()}`}
-              index={rowIndex}
-              row={row as Row<T>}
-              onRowClick={selectable ? undefined : onRowClick}
-              onCellClick={selectable ? onRowClick : onCellClick}
-              {...rowProps}
-            >
-              {row.cells.map((cell, cellIndex: number) => (
-                <TableCell
-                  id={`${populateId()}table_row_${rowIndex}_cell_${cellIndex}`}
-                  data-testid={`${populateId()}table_row_${rowIndex}_cell_${cellIndex}`}
-                  key={`${populateId()}table_row_${rowIndex.toString()}_cell_${cellIndex.toString()}`}
-                  cell={cell as Cell<T>}
-                  onCellClick={selectable ? onRowClick : onCellClick}
-                  {...cellProps}
-                >
-                  {cell.render('Cell')}
-                </TableCell>
-              ))}
-            </TableRow>
-          );
-        })}
-      </tbody>
-    </RsTable>
+                    {cell.render('Cell')}
+                  </TableCell>
+                ))}
+              </TableRow>
+            );
+          })}
+        </tbody>
+      </RsTable>
+    </>
   );
 };
 

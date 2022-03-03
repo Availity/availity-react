@@ -3,16 +3,24 @@ import classNames from 'classnames';
 import { useTableContext } from './TableContext';
 import { ExtendedTableHeader, IdType } from './types/ReactTable';
 import { TableSort } from './types/TableSort';
+import CustomizeColumnsPopover from './CustomizeColumnsPopover.';
 
 type Props<T extends IdType> = {
   id?: string;
   column: ExtendedTableHeader<T>;
   onSort?: (sortBy: TableSort[]) => void;
+  isLastColumn?: boolean;
   children: React.ReactNode | React.ReactNode[];
 } & React.HTMLAttributes<HTMLElement>;
 
-const TableHeaderCell = <T extends IdType>({ column, children, onSort, ...rest }: Props<T>): JSX.Element => {
-  const { scrollable, sortable, instance } = useTableContext();
+const TableHeaderCell = <T extends IdType>({
+  column,
+  children,
+  onSort,
+  isLastColumn,
+  ...rest
+}: Props<T>): JSX.Element => {
+  const { scrollable, sortable, instance, hasCustomizableColumns } = useTableContext();
 
   const { manualSortBy } = instance;
 
@@ -45,7 +53,10 @@ const TableHeaderCell = <T extends IdType>({ column, children, onSort, ...rest }
 
   return (
     <th {...column.getHeaderProps(getHeaderColumnProps(column))} {...getOnClick()} {...rest}>
-      {children}
+      <>
+        {children}
+        {isLastColumn && hasCustomizableColumns && <CustomizeColumnsPopover />}
+      </>
     </th>
   );
 };
