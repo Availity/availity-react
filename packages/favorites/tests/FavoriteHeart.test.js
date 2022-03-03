@@ -214,20 +214,6 @@ describe('FavoriteHeart', () => {
     expect(heart).toHaveAttribute('aria-label', 'Favorite Test App');
   });
 
-  test('should not render with undefined in label if no app name given', async () => {
-    const { container } = render(
-      <Render>
-        <FavoriteHeart id="123" />
-      </Render>
-    );
-
-    const heart = container.querySelector('#av-favorite-heart-123');
-
-    expect(heart).toBeDefined();
-
-    expect(heart).toHaveAttribute('aria-label', 'Favorite ');
-  });
-
   test('should add favorite and send post message with updated favorites', async () => {
     avSettingsApi.getApplication = getApplicationMock;
     avSettingsApi.setApplication = jest.fn().mockResolvedValue({

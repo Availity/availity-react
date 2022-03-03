@@ -98,12 +98,7 @@ export const FavoriteHeart = ({
           className={css.input}
           onKeyPress={handleKeyPress}
           type="checkbox"
-          // Previous to converting to TypeScript, the propType for 'name' was required,
-          // so I presumed the TS type should also be required, but there is a test
-          // checking that aria-label should not be 'Favorite undefined' if a name is not
-          // passed. So I'm disabling this ternary rule to satisfy that test.
-          // eslint-disable-next-line no-unneeded-ternary
-          aria-label={`Favorite ${name ? name : ''}`}
+          aria-label={`Favorite ${name}`}
           id={`av-favorite-heart-${id}`}
           checked={isFavorited}
           onChange={handleChange}
