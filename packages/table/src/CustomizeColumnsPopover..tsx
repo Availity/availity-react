@@ -92,11 +92,14 @@ const CustomizeColumnsPopover = <T extends IdType>(): JSX.Element => {
           <section>
             <div className="row">
               <h5 className="header-margin col-sm-5">Columns</h5>
+
+              {defaultColumns && defaultColumns.length > 0 && 
               <div className="reset-to-default">
                 <Button color="link" onClick={resetToDefault}>
                   Reset to Default
                 </Button>
               </div>
+}
             </div>
             <Icon name="info-circle" /> Drag the labels below to reorder your table.
           </section>

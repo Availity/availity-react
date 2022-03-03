@@ -22,6 +22,8 @@ $av-table-font-size: 1rem !default;
 
 $av-table-additional-content-background-color: #fff !default;
 
+$av-table-customizable-columns-icon-color: $av-table-header-text-color;
+
 .av-grid-additional-content {
   table {
     background: $av-table-additional-content-background-color;
@@ -80,6 +82,10 @@ table.av-grid {
       position: -webkit-sticky;
       position: sticky;
     }
+
+	&.customizable {
+		width: 100px !important;
+	}
   }
 
   thead th.sticky.sticky-right {
@@ -236,7 +242,7 @@ thead > tr {
 
 .customize-column-link {
   text-decoration: inherit !important;
-  color: #fff !important;
+  color: $av-table-customizable-columns-icon-color !important;
   padding: 0 !important;
 }
 
@@ -244,6 +250,7 @@ thead > tr {
   cursor: grabbing;
   box-shadow: none !important;
   border: none !important;
+  z-index: 60000;
 
   .configure-columns.table > tbody > tr {
     padding: 0 !important;
@@ -282,7 +289,7 @@ thead > tr {
       width: 215px;
 
       .icon {
-        color: #212529;
+        color: $av-table-customizable-columns-icon-color;
       }
       .header-margin {
         margin: 5px 0px 3px 0px;

@@ -10,12 +10,14 @@ const columns = [
     accessor: 'firstName',
     defaultCanSort: true,
     disableSortBy: false,
+    canCustomize: true
   },
   {
     Header: 'Last Name',
     accessor: 'lastName',
     defaultCanSort: true,
     disableSortBy: false,
+    canCustomize: true
   },
   {
     Header: 'Birth Date',
@@ -23,6 +25,7 @@ const columns = [
     defaultCanSort: true,
     disableSortBy: false,
     Cell: DateCell({ dateFormat: 'MM/DD/yyyy' }),
+    canCustomize: true
   },
   {
     Header: 'Subscriber Relationship',
@@ -30,6 +33,7 @@ const columns = [
     defaultCanSort: true,
     disableSortBy: false,
     Cell: BadgeCell('primary'),
+    canCustomize: true
   },
   {
     id: 'actions',
@@ -88,6 +92,8 @@ export const Default: Story = ({
   rowProps,
   cellProps,
   bodyProps,
+  hasConfigurableColumns,
+  minimumNumberOfColumns
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
 }: any) => (
   <TableProvider
@@ -95,6 +101,8 @@ export const Default: Story = ({
     selectable={selectable}
     columns={columns}
     data={data}
+    minimumNumberOfColumns={minimumNumberOfColumns}
+    hasCustomizableColumns={hasConfigurableColumns}
   >
     <Table
       headerProps={headerProps}
@@ -106,9 +114,11 @@ export const Default: Story = ({
 Default.args = {
   sortable: false,
   selectable: false,
+  hasConfigurableColumns: true,
   columns,
   data: response.data.patientPagination.items,
-  headerProps: { style: { background: 'ping' } },
+  headerProps: { style: { background: 'gray' } },
+  minimumNumberOfColumns: 0,
   rowProps: { style: {} },
   cellProps: { style: {} },
   bodyProps: { style: {} },
@@ -147,7 +157,7 @@ WithScrollableContainer.args = {
   selectable: false,
   columns,
   data: response.data.patientPagination.items,
-  headerProps: { style: { background: 'ping' } },
+  headerProps: { style: { background: 'gray' } },
   rowProps: { style: {} },
   cellProps: { style: {} },
   bodyProps: { style: {} },

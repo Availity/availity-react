@@ -12,12 +12,12 @@ export type AvTableContext = {
   sortBy?: TableSort;
   sortableColumns?: TableSortOption[];
   selectable?: boolean;
-  hasCustomizableColumns: boolean;
+  hasCustomizableColumns?: boolean;
   defaultColumns?: Column<IdType>[];
   onColumnsCustomized?: (hiddenColumnIds: string[], visibleColumnIds: []) => void;
   isCustomizingColumns?: boolean;
   setIsCustomizingColumns?: React.Dispatch<React.SetStateAction<boolean>>;
-  minimumNumberOfColumns: number;
+  minimumNumberOfColumns?: number;
   onReset?: () => void;
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   instance?: any;

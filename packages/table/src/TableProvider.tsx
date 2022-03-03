@@ -20,14 +20,14 @@ export type TableProviderProps<T extends IdType> = {
   columns: Column<T>[];
   onReset?: () => void;
   data: T[];
-  hasCustomizableColumns: boolean;
+  hasCustomizableColumns?: boolean;
   onColumnsCustomized?: (hiddenColumnIds: string[], visibleColumnIds: []) => void;
   children: React.ReactChild | React.ReactChild[];
   scrollable?: boolean;
   selectable?: boolean;
   sortable?: boolean;
   minimumNumberOfColumns?: number;
-  defaultColumns: Column<T>[]
+  defaultColumns?: Column<T>[]
 } & TableOptions<T>;
 
 const TableProvider = <T extends IdType>({
