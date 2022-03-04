@@ -69,6 +69,7 @@ const Link = ({
   skeletonProps,
   linkAttributes,
   role,
+  analytics,
   ...rest
 }) => {
   const { loading } = useSpacesContext() || {};
@@ -185,6 +186,7 @@ const Link = ({
             icons,
             images,
             colors,
+            ...analytics,
             ...restLink,
             ...props,
           }))()
@@ -193,6 +195,7 @@ const Link = ({
           tabIndex: 0,
           style: { cursor: link?.url ? 'pointer' : 'not-allowed' },
           'aria-label': name,
+          ...analytics,
           ...props,
         });
 
@@ -229,6 +232,7 @@ const Link = ({
                   style={{
                     cursor: link?.url ? 'pointer' : 'not-allowed',
                   }}
+                  {...analytics}
                   {...props}
                   aria-label={name}
                 >
@@ -288,6 +292,7 @@ Link.propTypes = {
   maxDescriptionLength: PropTypes.number,
   linkAttributes: PropTypes.object,
   role: PropTypes.string,
+  analytics: PropTypes.object,
 };
 
 Link.defaultProps = {
