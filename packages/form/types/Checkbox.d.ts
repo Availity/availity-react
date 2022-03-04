@@ -1,7 +1,8 @@
-import * as React from 'react';
+/* eslint-disable @typescript-eslint/ban-types */
+import { HTMLAttributes, ReactNode } from 'react';
 
-interface CheckboxProps extends React.HTMLAttributes<HTMLInputElement> {
-  label?: React.ReactNode;
+interface CheckboxProps extends HTMLAttributes<HTMLInputElement> {
+  label?: ReactNode;
   value?: string | boolean | object;
   inline?: boolean;
   disabled?: boolean;
@@ -11,6 +12,6 @@ interface CheckboxProps extends React.HTMLAttributes<HTMLInputElement> {
   helpId?: string;
 }
 
-declare class Checkbox extends React.Component<CheckboxProps> {}
+declare const Checkbox: (props: CheckboxProps) => JSX.Element;
 
 export default Checkbox;
