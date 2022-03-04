@@ -1,28 +1,9 @@
-import { avProvidersApi, avPermissionsApi, avNavigationApi, avUserApi, avCodesApi } from '@availity/api-axios';
-import { ResourceSelect } from '.';
+import { avCodesApi, avNavigationApi, avPermissionsApi, avProvidersApi, avUserApi } from '@availity/api-axios';
+
+import ResourceSelect from './src/ResourceSelect';
 import AvOrganizationSelect from './custom-resources/AvOrganizationSelect';
 import AvRegionSelect from './custom-resources/AvRegionSelect';
 
-const AvProviderSelect = ResourceSelect.create({
-  resource: avProvidersApi,
-  labelKey: 'uiDisplayName',
-  requiredParams: ['customerId'],
-  watchParams: ['customerId'],
-});
-const AvPermissionSelect = ResourceSelect.create({
-  resource: avPermissionsApi,
-  labelKey: 'description',
-  valueKey: 'id',
-});
-const AvNavigationSelect = ResourceSelect.create({
-  resource: avNavigationApi,
-  labelKey: 'name',
-  valueKey: 'id',
-});
-const AvUserSelect = ResourceSelect.create({
-  resource: avUserApi,
-  getOptionLabel: (option) => `${option.firstName} ${option.lastName} (${option.id}) - ${option.userId}`,
-});
 const AvCodeSelect = ResourceSelect.create({
   resource: avCodesApi,
   valueKey: 'code',
@@ -31,13 +12,37 @@ const AvCodeSelect = ResourceSelect.create({
   watchParams: ['list'],
 });
 
+const AvNavigationSelect = ResourceSelect.create({
+  resource: avNavigationApi,
+  labelKey: 'name',
+  valueKey: 'id',
+});
+
+const AvPermissionSelect = ResourceSelect.create({
+  resource: avPermissionsApi,
+  labelKey: 'description',
+  valueKey: 'id',
+});
+
+const AvProviderSelect = ResourceSelect.create({
+  resource: avProvidersApi,
+  labelKey: 'uiDisplayName',
+  requiredParams: ['customerId'],
+  watchParams: ['customerId'],
+});
+
+const AvUserSelect = ResourceSelect.create({
+  resource: avUserApi,
+  getOptionLabel: (option) => `${option.firstName} ${option.lastName} (${option.id}) - ${option.userId}`,
+});
+
 export default ResourceSelect;
 export {
-  AvProviderSelect,
-  AvOrganizationSelect,
-  AvRegionSelect,
-  AvPermissionSelect,
-  AvNavigationSelect,
-  AvUserSelect,
   AvCodeSelect,
+  AvNavigationSelect,
+  AvOrganizationSelect,
+  AvPermissionSelect,
+  AvProviderSelect,
+  AvRegionSelect,
+  AvUserSelect,
 };

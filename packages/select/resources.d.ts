@@ -1,38 +1,79 @@
 /* eslint-disable max-classes-per-file, @typescript-eslint/no-empty-interface */
-import * as React from 'react';
-import ResourceSelect, { ResourceSelectProps } from './types/ResourceSelect';
+// import * as React from 'react';
+import type { GroupBase } from 'react-select';
 
-export interface AvRegionSelectProps<T> extends ResourceSelectProps<T> {
-  defaultToCurrentRegion?: boolean;
-}
+import ResourceSelect from './types/ResourceSelect';
+import type { ResourceSelectProps } from './types/ResourceSelect';
 
-declare class AvRegionSelect<T> extends React.Component<AvRegionSelectProps<T>> {
-  public static create<T>(defaults: AvRegionSelectProps<T>): AvRegionSelect<T>;
-}
+type PrebuiltResourceSelectProps<
+  Option,
+  IsMulti extends boolean,
+  Group extends GroupBase<Option> = GroupBase<Option>
+> = Omit<ResourceSelectProps<Option, IsMulti, Group>, 'resource'>;
 
-type StringOrNumber = string | number;
+export declare const AvCodeSelect: <
+  Option,
+  IsMulti extends boolean,
+  Group extends GroupBase<Option> = GroupBase<Option>
+>(
+  props: PrebuiltResourceSelectProps<Option, IsMulti, Group>
+) => JSX.Element;
 
-export interface AvOrganizationSelectProps<T> extends ResourceSelectProps<T> {
-  resourceIds?: [[StringOrNumber] | StringOrNumber] | StringOrNumber;
-  permissionIds?: [[StringOrNumber] | StringOrNumber] | StringOrNumber;
-}
+export declare const AvNavigationSelect: <
+  Option,
+  IsMulti extends boolean,
+  Group extends GroupBase<Option> = GroupBase<Option>
+>(
+  props: PrebuiltResourceSelectProps<Option, IsMulti, Group>
+) => JSX.Element;
 
-declare class AvOrganizationSelect<T> extends React.Component<AvOrganizationSelectProps<T>> {
-  public static create<T>(defaults: AvOrganizationSelectProps<T>): AvOrganizationSelect<T>;
-}
+export type AvOrganizationSelectProps<
+  Option,
+  IsMulti extends boolean,
+  Group extends GroupBase<Option> = GroupBase<Option>
+> = PrebuiltResourceSelectProps<Option, IsMulti, Group> & {
+  resourceIds?: string | string[] | string[][];
+  permissionIds?: string | string[] | string[][];
+};
 
-interface PrebuiltSelectProps<T> extends Omit<ResourceSelectProps<T>, 'resource'> {}
+export declare const AvOrganizationSelect: <
+  Option,
+  IsMulti extends boolean,
+  Group extends GroupBase<Option> = GroupBase<Option>
+>(
+  props: AvOrganizationSelectProps<Option, IsMulti, Group>
+) => JSX.Element;
 
-declare class PrebuiltSelect<T> extends React.Component<PrebuiltSelectProps<T>> {}
+export declare const AvPermissionSelect: <
+  Option,
+  IsMulti extends boolean,
+  Group extends GroupBase<Option> = GroupBase<Option>
+>(
+  props: PrebuiltResourceSelectProps<Option, IsMulti, Group>
+) => JSX.Element;
+
+export declare const AvProviderSelect: <
+  Option,
+  IsMulti extends boolean,
+  Group extends GroupBase<Option> = GroupBase<Option>
+>(
+  props: PrebuiltResourceSelectProps<Option, IsMulti, Group> & { customerId: string }
+) => JSX.Element;
+
+export declare const AvRegionSelect: <
+  Option,
+  IsMulti extends boolean,
+  Group extends GroupBase<Option> = GroupBase<Option>
+>(
+  props: PrebuiltResourceSelectProps<Option, IsMulti, Group> & { defaultToCurrentRegion?: boolean }
+) => JSX.Element;
+
+export declare const AvUserSelect: <
+  Option,
+  IsMulti extends boolean,
+  Group extends GroupBase<Option> = GroupBase<Option>
+>(
+  props: PrebuiltResourceSelectProps<Option, IsMulti, Group>
+) => JSX.Element;
 
 export default ResourceSelect;
-
-export {
-  PrebuiltSelect as AvProviderSelect,
-  AvOrganizationSelect,
-  PrebuiltSelect as AvPermissionSelect,
-  PrebuiltSelect as AvNavigationSelect,
-  PrebuiltSelect as AvUserSelect,
-  PrebuiltSelect as AvCodeSelect,
-  AvRegionSelect,
-};
