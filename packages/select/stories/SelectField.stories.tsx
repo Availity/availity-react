@@ -4,11 +4,11 @@ import { Meta, Story } from '@storybook/react';
 import { Button, Col, Row } from 'reactstrap';
 import { Field } from '@availity/form';
 
-import Select from '..';
+import { SelectField } from '..';
 // import README from '../README.md';
 
-import FormikResults from '../../../story-utils/FormikResults';
 import { singleValueSchema, multiValueSchema, options, SelectedOption } from './utils';
+import FormikResults from '../../../story-utils/FormikResults';
 
 export default {
   title: 'Form Components/Select',
@@ -21,8 +21,10 @@ export default {
     autofill: false,
     creatable: false,
     disabled: false,
+    helpId: '',
     helpMessage: 'This is a message to provide guidance',
     isMulti: false,
+    label: 'Select Field Label',
     min: 2,
     max: 3,
     raw: false,
@@ -30,7 +32,19 @@ export default {
   },
 } as Meta;
 
-export const Default: Story = ({ autofill, creatable, disabled, helpMessage, isMulti, max, min, raw, required }) => (
+export const SelectFieldStory: Story = ({
+  autofill,
+  creatable,
+  disabled,
+  helpId,
+  helpMessage,
+  isMulti,
+  label,
+  max,
+  min,
+  raw,
+  required,
+}) => (
   <FormikResults
     onSubmit={() => {
       console.log('submitted');
@@ -44,17 +58,19 @@ export const Default: Story = ({ autofill, creatable, disabled, helpMessage, isM
   >
     <Row>
       <Col>
-        <Select
+        <SelectField
           name="select"
-          aria-label="stand-alone"
           autofill={autofill}
           creatable={creatable}
+          helpId={helpId}
           helpMessage={helpMessage}
           isDisabled={disabled}
           isMulti={isMulti}
+          label={label}
           maxLength={max}
           options={options}
           raw={raw}
+          required={required}
         />
         {autofill ? (
           <>
@@ -62,7 +78,7 @@ export const Default: Story = ({ autofill, creatable, disabled, helpMessage, isM
             <Field name="autoFill2" type="text" label="Autofill Value 2" />
           </>
         ) : null}
-        <Button className="mt-3" color="primary" type="submit">
+        <Button color="primary" type="submit">
           Submit
         </Button>
       </Col>
@@ -73,4 +89,4 @@ export const Default: Story = ({ autofill, creatable, disabled, helpMessage, isM
   </FormikResults>
 );
 
-Default.storyName = '<Select />';
+SelectFieldStory.storyName = '<SelectField />';
