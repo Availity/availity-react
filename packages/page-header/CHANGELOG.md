@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## 11.1.26 (2022-03-04)
+
+
+### Bug Fixes
+
+* **page-header:** dont send in empty payerId ([9b9e551](https://github.com/Availity/availity-react/commit/9b9e5512216cefffe2e3f67ca223e50e805dfc90))
+
+
+
+
+
 ## [11.1.25](https://github.com/Availity/availity-react/compare/@availity/page-header@11.1.24...@availity/page-header@11.1.25) (2022-02-24)
 
 **Note:** Version bump only for package @availity/page-header
