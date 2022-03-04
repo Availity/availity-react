@@ -1,6 +1,5 @@
 import qs from 'query-string';
 import avMessage from '@availity/message-core';
-import AvLocalStorage from '@availity/localstorage-core';
 import dayjs from 'dayjs';
 
 export const INITIAL_STATE = {
@@ -79,8 +78,6 @@ export const updateUrl = (url, key, value) => {
  * Top Apps
  */
 
-const localStorageCore = new AvLocalStorage();
-
 const TOP_APPS = {
   ALLOWED_TYPES: ['APPLICATION', 'RESOURCE', 'NAVIGATION'],
   BLACKLIST: ['reporting', 'how_to_guide_dental_providers', 'my_account_profile', 'my_administrators'],
@@ -91,11 +88,22 @@ const TOP_APPS = {
   UPDATE_EVENT: 'av:topApps:updated',
 };
 
+const getItemLocalStorage = (key) => {
+  const value = window.localStorage.getItem(key);
+  let output;
+  try {
+    output = JSON.parse(value);
+  } catch {
+    output = value;
+  }
+  return output;
+};
+
 const canTrackSpace = (spaceId, type) =>
   TOP_APPS.ALLOWED_TYPES.some((t) => t === type) && !TOP_APPS.BLACKLIST.some((id) => id === spaceId);
 
 const getLocalStorageTopApps = (akaname) => {
-  const topAppsValues = localStorageCore.get(`${TOP_APPS.KEYS.VALUES}-${akaname}`);
+  const topAppsValues = getItemLocalStorage(`${TOP_APPS.KEYS.VALUES}-${akaname}`);
 
   return topAppsValues;
 };
@@ -111,7 +119,7 @@ export const updateTopApps = async (spaceId, type, akaname) => {
     const topApps = (await getLocalStorageTopApps(akaname)) || {};
 
     // Update the last updated date. For use in top nav to actually sync with settings api
-    localStorageCore.set(`${TOP_APPS.KEYS.LAST_UPDATED}-${akaname}`, today.format());
+    window.localStorage.setItem(`${TOP_APPS.KEYS.LAST_UPDATED}-${akaname}`, today.format());
 
     const currentCount = topApps[spaceId] && typeof topApps[spaceId].count === 'number' ? topApps[spaceId].count : 0;
 
@@ -121,7 +129,7 @@ export const updateTopApps = async (spaceId, type, akaname) => {
       lastUse: today.format(),
     };
 
-    localStorageCore.set(`${TOP_APPS.KEYS.VALUES}-${akaname}`, topApps);
+    window.localStorage.setItem(`${TOP_APPS.KEYS.VALUES}-${akaname}`, JSON.stringify(topApps));
 
     avMessage.send(TOP_APPS.UPDATE_EVENT);
   }
