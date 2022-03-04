@@ -94,8 +94,8 @@ const TOP_APPS = {
 const canTrackSpace = (spaceId, type) =>
   TOP_APPS.ALLOWED_TYPES.some((t) => t === type) && !TOP_APPS.BLACKLIST.some((id) => id === spaceId);
 
-const getLocalStorageTopApps = (userId) => {
-  const topAppsValues = localStorageCore.get(`${TOP_APPS.KEYS.VALUES}-${userId}`);
+const getLocalStorageTopApps = (akaname) => {
+  const topAppsValues = localStorageCore.get(`${TOP_APPS.KEYS.VALUES}-${akaname}`);
 
   return topAppsValues;
 };
@@ -108,20 +108,20 @@ export const updateTopApps = async (spaceId, type, akaname) => {
     const today = dayjs();
 
     // Grab the current top apps from localstorage
-    const values = (await getLocalStorageTopApps(akaname)) || {};
+    const topApps = (await getLocalStorageTopApps(akaname)) || {};
 
     // Update the last updated date. For use in top nav to actually sync with settings api
     localStorageCore.set(`${TOP_APPS.KEYS.LAST_UPDATED}-${akaname}`, today.format());
 
-    const currentCount = values[spaceId] && typeof values[spaceId].count === 'number' ? values[spaceId].count : 0;
+    const currentCount = topApps[spaceId] && typeof topApps[spaceId].count === 'number' ? topApps[spaceId].count : 0;
 
-    values[spaceId] = {
-      ...values[spaceId],
+    topApps[spaceId] = {
+      ...topApps[spaceId],
       count: currentCount + 1,
       lastUse: today.format(),
     };
 
-    localStorageCore.set(`${TOP_APPS.KEYS.VALUES}-${akaname}`, values);
+    localStorageCore.set(`${TOP_APPS.KEYS.VALUES}-${akaname}`, topApps);
 
     avMessage.send(TOP_APPS.UPDATE_EVENT);
   }
