@@ -1,6 +1,6 @@
 import avMessages from '@availity/message-core';
 import { avSettingsApi } from '@availity/api-axios';
-import { useMutation, useQuery, useQueryClient, UseQueryResult } from 'react-query';
+import { useMutation, useQuery, useQueryClient, UseQueryOptions, UseQueryResult } from 'react-query';
 import { AV_INTERNAL_GLOBALS, NAV_APP_ID } from './constants';
 
 export type Favorite = {
@@ -38,7 +38,9 @@ const getFavorites = async () => {
   return validatedFavorites;
 };
 
-export const useFavoritesQuery = (): UseQueryResult<Favorite[], unknown> => useQuery('favorites', getFavorites);
+export const useFavoritesQuery = (
+  options?: Omit<UseQueryOptions<Favorite[], unknown, Favorite[], 'favorites'>, 'queryKey' | 'queryFn'>
+): UseQueryResult<Favorite[], unknown> => useQuery({ queryKey: 'favorites', queryFn: getFavorites, ...options });
 
 type MutationOptions = {
   onMutationStart?: (targetFavoriteId: string) => void;
