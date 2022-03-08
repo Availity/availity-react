@@ -3,6 +3,14 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## 2.13.4 (2022-03-08)
+
+**Note:** Version bump only for package @availity/pagination
+
+
+
+
+
 ## 2.13.3 (2022-02-18)
 
 **Note:** Version bump only for package @availity/pagination
