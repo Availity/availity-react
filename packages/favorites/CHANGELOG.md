@@ -3,6 +3,18 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# 3.1.0 (2022-03-08)
+
+
+### Features
+
+* **favorites:** add `onFavoritesChange` prop to provider ([b7984e0](https://github.com/Availity/availity-react/commit/b7984e05cac41da672410707c6ef4050aecb2e59))
+* **favorites:** add `size` prop to heart ([5057bcf](https://github.com/Availity/availity-react/commit/5057bcfcc9af7df0e0e79370bc6e8a8e8a04da93))
+
+
+
+
+
 # 3.0.0 (2022-03-03)
 
 
