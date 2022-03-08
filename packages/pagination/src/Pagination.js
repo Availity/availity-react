@@ -57,7 +57,6 @@ const Pagination = ({
   const getPageData = async () => {
     try {
       toggleLoading(true);
-      window.localStorage.setItem('current-page', JSON.stringify(currentPage));
 
       // If the items is a function then await the response in case of async actions
       const { items, totalCount } = isFunction(theItems)
