@@ -513,4 +513,102 @@ describe('FavoriteHeart', () => {
 
     expect(onChange).toHaveBeenCalledTimes(1);
   });
+
+  test('should call onFavoritesChange when favorited', async () => {
+    const initialFavoritedId = 'my_favorite_id';
+
+    avSettingsApi.getApplication = jest.fn(() =>
+      Promise.resolve({
+        data: {
+          settings: [
+            {
+              favorites: [],
+            },
+          ],
+        },
+      })
+    );
+
+    avSettingsApi.setApplication = jest.fn().mockResolvedValue({
+      data: {
+        favorites: [
+          {
+            id: initialFavoritedId,
+            pos: 0,
+          },
+        ],
+      },
+    });
+
+    const handleFavoritesChange = jest.fn(() => {});
+
+    const { container } = render(
+      <QueryClientProvider client={queryClient}>
+        <Favorites onFavoritesChange={handleFavoritesChange}>
+          <FavoriteHeart id={initialFavoritedId} />
+        </Favorites>
+      </QueryClientProvider>
+    );
+
+    const heart = container.querySelector(`#av-favorite-heart-${initialFavoritedId}`);
+
+    expect(heart).toBeDefined();
+
+    await waitFor(() => expect(heart).not.toBeChecked());
+
+    fireEvent.click(heart);
+
+    await waitFor(() => expect(heart).toBeChecked());
+
+    expect(handleFavoritesChange).toHaveBeenCalledTimes(1);
+  });
+
+  test('should call onFavoritesChange when unfavorited', async () => {
+    const initialFavoritedId = 'my_favorite_id';
+
+    avSettingsApi.getApplication = jest.fn(() =>
+      Promise.resolve({
+        data: {
+          settings: [
+            {
+              favorites: [
+                {
+                  id: initialFavoritedId,
+                  pos: 0,
+                },
+              ],
+            },
+          ],
+        },
+      })
+    );
+
+    avSettingsApi.setApplication = jest.fn().mockResolvedValue({
+      data: {
+        favorites: [],
+      },
+    });
+
+    const handleFavoritesChange = jest.fn(() => {});
+
+    const { container } = render(
+      <QueryClientProvider client={queryClient}>
+        <Favorites onFavoritesChange={handleFavoritesChange}>
+          <FavoriteHeart id={initialFavoritedId} />
+        </Favorites>
+      </QueryClientProvider>
+    );
+
+    const heart = container.querySelector(`#av-favorite-heart-${initialFavoritedId}`);
+
+    expect(heart).toBeDefined();
+
+    await waitFor(() => expect(heart).toBeChecked());
+
+    fireEvent.click(heart);
+
+    await waitFor(() => expect(heart).not.toBeChecked());
+
+    expect(handleFavoritesChange).toHaveBeenCalledTimes(1);
+  });
 });
