@@ -41,14 +41,25 @@ export const FavoriteHeart = ({
   name,
   onChange,
   onMouseDown,
+  size,
 }: {
   id: string;
+
+  /**
+   * @param {string} props.name The name of the item to be favorited. Used to create an accessible label.
+   */
   name: string;
   onChange?: (
     isFavorited: boolean,
     event: React.ChangeEvent<HTMLInputElement> | React.KeyboardEvent<HTMLInputElement>
   ) => void;
   onMouseDown?: (event: React.MouseEvent<HTMLInputElement, MouseEvent>) => void;
+
+  /**
+   * @param {string} props.size  A CSS length unit like '2rem' or '32px' to be applied to the height and
+   * width of the outer container. Sizes smaller '1.5rem' or equivalent will have no effect.
+   */
+  size?: string;
 }): JSX.Element => {
   const { isFavorited, isLastClickedFavorite, status, toggleFavorite } = useFavorites(id);
 
@@ -79,7 +90,7 @@ export const FavoriteHeart = ({
     !isLastClickedFavorite && (status === 'initLoading' || status === 'reloading') ? 'not-allowed' : undefined;
 
   return (
-    <div className={css.root}>
+    <div className={css.root} style={{ height: size, width: size }}>
       <div className={css.icons}>{icons[iconKey]}</div>
       <span
         aria-live={isLastClickedFavorite && (status === 'reloading' || status === 'error') ? 'polite' : 'off'}
@@ -94,7 +105,7 @@ export const FavoriteHeart = ({
 
       <Tooltip content="Add to My Favorites" data-testid={`av-favorite-heart-${id}-tooltip`}>
         <input
-          style={{ cursor }}
+          style={{ cursor, height: size, width: size }}
           className={css.input}
           onKeyPress={handleKeyPress}
           type="checkbox"

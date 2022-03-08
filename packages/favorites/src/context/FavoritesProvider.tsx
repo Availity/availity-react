@@ -17,7 +17,13 @@ type FavoritesContextType = {
 
 const FavoritesContext = createContext<FavoritesContextType | null>(null);
 
-export const FavoritesProvider = ({ children }: { children: ReactNode }): JSX.Element => {
+export const FavoritesProvider = ({
+  children,
+  onFavoritesChange,
+}: {
+  children: ReactNode;
+  onFavoritesChange?: (favorites: Favorite[]) => void;
+}): JSX.Element => {
   const [lastClickedFavoriteId, setlastClickedFavoriteId] = useState<string>('');
 
   const queryClient = useQueryClient();
@@ -45,6 +51,7 @@ export const FavoritesProvider = ({ children }: { children: ReactNode }): JSX.El
       });
 
       sendUpdateMessage(response.favorites);
+      onFavoritesChange?.(response.favorites);
     }
   };
 
@@ -70,6 +77,7 @@ export const FavoritesProvider = ({ children }: { children: ReactNode }): JSX.El
     });
 
     sendUpdateMessage(response.favorites);
+    onFavoritesChange?.(response.favorites);
 
     const isFavorited = response.favorites.find((f) => f.id === id);
 
