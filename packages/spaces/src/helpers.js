@@ -89,14 +89,16 @@ const TOP_APPS = {
 };
 
 const getItemLocalStorage = (key) => {
-  const value = window.localStorage.getItem(key);
-  let output;
   try {
-    output = JSON.parse(value);
+    const value = window.localStorage.getItem(key);
+    if (value === null) {
+      return null;
+    }
+
+    return JSON.parse(value);
   } catch {
-    output = value;
+    return null;
   }
-  return output;
 };
 
 const canTrackSpace = (spaceId, type) =>
