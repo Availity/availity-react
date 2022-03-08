@@ -1,23 +1,11 @@
 import React, { useState, useContext, useEffect, useRef } from 'react';
 import PropTypes from 'prop-types';
 import isFunction from 'lodash/isFunction';
-import isEqual from 'lodash/isEqual';
 import { useDebounce } from 'react-use';
 
 export const PaginationContext = React.createContext();
 
 export const usePagination = () => useContext(PaginationContext);
-
-const getItemLocalStorage = (key) => {
-  const value = window.localStorage.getItem(key);
-  let output;
-  try {
-    output = JSON.parse(value);
-  } catch {
-    output = value;
-  }
-  return output;
-};
 
 // todos
 // Add another `useEffect` for only updating the items without calling the function if the `itemsPerPage` prop changes
@@ -89,12 +77,6 @@ const Pagination = ({
       // eslint-disable-next-line unicorn/explicit-length-check
       const total = totalCount || items.length;
       const pageCount = Math.ceil(total / itemsPerPage);
-
-      const localStorageItem = getItemLocalStorage('current-page');
-
-      if (!isEqual(localStorageItem, currentPage)) {
-        return;
-      }
 
       setPageData({
         total,
