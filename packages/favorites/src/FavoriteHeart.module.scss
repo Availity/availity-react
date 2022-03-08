@@ -22,6 +22,8 @@ $heartSize: 1.125rem;
 .root {
   height: $rootSize;
   width: $rootSize;
+  min-height: $rootSize;
+  min-width: $rootSize;
   position: relative;
 }
 
@@ -32,6 +34,8 @@ $heartSize: 1.125rem;
   margin: 0;
   height: $rootSize;
   width: $rootSize;
+  min-height: $rootSize;
+  min-width: $rootSize;
   display: block;
   border-radius: 0.25rem;
 }
