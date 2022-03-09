@@ -1,4 +1,6 @@
 import qs from 'query-string';
+import avMessage from '@availity/message-core';
+import dayjs from 'dayjs';
 
 export const INITIAL_STATE = {
   spaces: [],
@@ -70,4 +72,67 @@ export const updateUrl = (url, key, value) => {
   });
 
   return `${uri}?${newParams}`;
+};
+
+/**
+ * Top Apps
+ */
+
+const TOP_APPS = {
+  ALLOWED_TYPES: ['APPLICATION', 'RESOURCE', 'NAVIGATION'],
+  BLACKLIST: ['reporting', 'how_to_guide_dental_providers', 'my_account_profile', 'my_administrators'],
+  KEYS: {
+    LAST_UPDATED: 'top-apps-updated',
+    VALUES: 'myTopApps',
+  },
+  UPDATE_EVENT: 'av:topApps:updated',
+};
+
+const getItemLocalStorage = (key) => {
+  try {
+    const value = window.localStorage.getItem(key);
+    if (value === null) {
+      return null;
+    }
+
+    return JSON.parse(value);
+  } catch {
+    return null;
+  }
+};
+
+const canTrackSpace = (spaceId, type) =>
+  TOP_APPS.ALLOWED_TYPES.some((t) => t === type) && !TOP_APPS.BLACKLIST.some((id) => id === spaceId);
+
+const getLocalStorageTopApps = (akaname) => {
+  const topAppsValues = getItemLocalStorage(`${TOP_APPS.KEYS.VALUES}-${akaname}`);
+
+  return topAppsValues;
+};
+
+export const updateTopApps = async (spaceId, type, akaname) => {
+  if (!spaceId || !type) return;
+
+  // If we can track the space
+  if (canTrackSpace(spaceId, type)) {
+    const today = dayjs();
+
+    // Grab the current top apps from localstorage
+    const topApps = (await getLocalStorageTopApps(akaname)) || {};
+
+    // Update the last updated date. For use in top nav to actually sync with settings api
+    window.localStorage.setItem(`${TOP_APPS.KEYS.LAST_UPDATED}-${akaname}`, today.format());
+
+    const currentCount = topApps[spaceId] && typeof topApps[spaceId].count === 'number' ? topApps[spaceId].count : 0;
+
+    topApps[spaceId] = {
+      ...topApps[spaceId],
+      count: currentCount + 1,
+      lastUse: today.format(),
+    };
+
+    window.localStorage.setItem(`${TOP_APPS.KEYS.VALUES}-${akaname}`, JSON.stringify(topApps));
+
+    avMessage.send(TOP_APPS.UPDATE_EVENT);
+  }
 };
