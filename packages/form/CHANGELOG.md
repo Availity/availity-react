@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## 1.3.1 (2022-03-09)
+
+
+### Bug Fixes
+
+* **form:** convert typedefs to functions and export FormProps ([43ca5c5](https://github.com/Availity/availity-react/commit/43ca5c5695909f7f86267848572ffbc10cb4a5d8))
+
+
+
+
+
 # [1.3.0](https://github.com/Availity/availity-react/compare/@availity/form@1.2.3...@availity/form@1.3.0) (2022-02-11)
 
 

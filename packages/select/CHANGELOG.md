@@ -3,6 +3,18 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [2.9.1](https://github.com/Availity/availity-react/compare/@availity/select@2.9.0...@availity/select@2.9.1) (2022-03-09)
+
+
+### Bug Fixes
+
+* **select:** add resource select types ([2cda8f4](https://github.com/Availity/availity-react/commit/2cda8f48459d12f8b272a4411ea044a810106b13))
+* **select:** fix typedefs for all select components ([2334bce](https://github.com/Availity/availity-react/commit/2334bceeb48dbcf01b91c706e5f3049c8bf345a9))
+
+
+
+
+
 # [2.9.0](https://github.com/Availity/availity-react/compare/@availity/select@2.8.0...@availity/select@2.9.0) (2022-02-24)
 
 
