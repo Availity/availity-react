@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
-import { Form } from '@availity/form';
-import { FormikConfig, FormikValues, useFormikContext } from 'formik';
+import { Form, FormProps } from '@availity/form';
+import { useFormikContext } from 'formik';
 
 type Result = {
   errors: string;
@@ -36,12 +36,14 @@ const Results = () => {
   ) : null;
 };
 
-const FormikResults: React.FC<FormikConfig<FormikValues>> = ({ children, ...props }) => (
-  <Form {...props}>
-    {children}
-    <hr />
-    <Results />
-  </Form>
-);
+function FormikResults<FormValues>({ children, ...props }: FormProps<FormValues>): JSX.Element {
+  return (
+    <Form {...props}>
+      {children}
+      <hr />
+      <Results />
+    </Form>
+  );
+}
 
 export default FormikResults;

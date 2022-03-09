@@ -1,6 +1,12 @@
-import * as React from 'react';
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import { FormikConfig } from 'formik';
 
-declare class Form<T = { [key: string]: any }> extends React.Component<FormikConfig<T>> {}
+export type FormProps<FormValues> = {
+  id?: string;
+  focusInvalidField?: boolean;
+  invalidInputSelectors?: string;
+} & FormikConfig<FormValues>;
+
+declare const Form: <FormValues>(props: FormProps<FormValues>) => JSX.Element;
 
 export default Form;

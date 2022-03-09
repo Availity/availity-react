@@ -115,12 +115,7 @@ export const Default: Story = ({ required }) => {
       </RadioGroup>
       <SelectField label="Select Field" name="SelectField" options={options} required={required} />
       <Field name="disabledField" type="text" label="Disabled Field" disabled />
-      <DateField
-        id="disabledDateField"
-        name="disabledDateField"
-        label="Disabled Date Field"
-        disabled
-      />
+      <DateField id="disabledDateField" name="disabledDateField" label="Disabled Date Field" disabled />
       <SelectField label="Disabled Select Field" name="disabledSelectField" options={options} isDisabled />
       <Button color="primary" type="submit">
         Submit

@@ -1,53 +1,50 @@
-import * as React from 'react';
-import { SelectFieldProps } from './SelectField';
+/* eslint-disable @typescript-eslint/no-explicit-any */
+/* eslint-disable @typescript-eslint/ban-types */
+import type { GroupBase } from 'react-select';
 
-interface ResourceType {
-  postGet?: Function;
-  post?: Function;
-  getResult?: string | Function;
-}
+import type { SelectFieldProps } from './SelectField';
 
-interface GraphQLConfigType {
-  type?: string;
-  query?: string;
-}
-
-export type OptionType = Record<string, any>;
-
-export type Additional = any;
-
-export interface ResourceSelectProps<T> extends SelectFieldProps<T> {
-  requestConfig?: object;
-  resource: ResourceType;
-  getResult?: string | Function;
-  hasMore?: boolean | Function;
-  delay?: number;
-  debounceTimeout?: number;
-  customerId?: string;
-  parameters?: object | ((params: any) => void);
-  method?: 'POST';
-  itemsPerPage?: number;
-  onPageChange?: Function;
-  requiredParams?: any[];
-  watchParams?: any[];
-  cacheUniq?: any;
+export type ResourceSelectProps<
+  Option,
+  IsMulti extends boolean,
+  Group extends GroupBase<Option> = GroupBase<Option>
+> = {
   additional?: object;
-  graphqlConfig?: GraphQLConfigType;
-  minCharsToSearch?: number;
-  waitUntilFocused?: boolean;
-  defaultToOnlyOption?: boolean;
-  defaultToFirstOption?: boolean;
-  shouldSearch?: boolean | ((inputValue: string, prevOptions: OptionType[], additional: Additional) => boolean);
   additionalPostGetArgs?: object;
-  pageAll?: boolean;
-  pageAllSearchBy?: (previousOptions: any[], inputValue: string) => any[];
-  onError?: (error: Error) => void;
-  searchTerm?: string;
+  customerId?: string;
+  debounceTimeout?: number;
+  defaultToFirstOption?: boolean;
+  defaultToOnlyOption?: boolean;
+  delay?: number;
   encodeSearchValue?: boolean;
-}
+  getResult?: string | ((resource: any, data: any) => any);
+  graphqlConfig?: { type: string; query: string };
+  hasMore?:
+    | boolean
+    | ((data: any) => boolean)
+    | ((data: { totalCount: number; limit: number; offset: number }) => boolean);
+  itemsPerPage?: number;
+  method?: 'POST';
+  minCharsToSearch?: number;
+  onError?: (error: unknown) => void;
+  onPageChange?: (inputValue: any, page: any) => void;
+  parameters?: any | ((params: any) => void);
+  pageAll?: boolean;
+  pageAllSearchBy?: (previousOptions: Option[], inputValue: string) => Option[] | Promise<Option[]>;
+  requestConfig?: any;
+  requiredParams?: any[];
+  resource: any;
+  searchTerm?: string;
+  shouldSearch?: boolean | ((inputValue: string, prevOptions: Option[], additional: any) => boolean);
+  watchParams?: any[];
+} & SelectFieldProps<Option, IsMulti, Group>;
 
-declare class ResourceSelect<T> extends React.Component<ResourceSelectProps<T>> {
-  public static create<T>(defaults: ResourceSelectProps<T>): ResourceSelect<T>;
-}
+declare const ResourceSelect: (<Option, IsMulti extends boolean, Group extends GroupBase<Option> = GroupBase<Option>>(
+  props: ResourceSelectProps<Option, IsMulti, Group>
+) => JSX.Element) & {
+  create<Option, IsMulti extends boolean, Group extends GroupBase<Option>>(
+    defaults: ResourceSelectProps<Option, IsMulti, Group>
+  ): (props: ResourceSelectProps<Option, IsMulti, Group>) => JSX.Element;
+};
 
 export default ResourceSelect;

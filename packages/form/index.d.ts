@@ -1,4 +1,4 @@
-export { default as Form } from './types/Form';
+export { default as Form, FormProps } from './types/Form';
 export { default as Field } from './types/Field';
 export { default as Input } from './types/Input';
 export { default as FormGroup } from './types/FormGroup';

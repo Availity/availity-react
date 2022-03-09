@@ -1,14 +1,16 @@
-import * as React from 'react';
+/* eslint-disable @typescript-eslint/ban-types */
+import { ReactNode } from 'react';
+
 import { InputProps } from './Input';
-import { FormGroupProps } from './FormGroup';
+import { Props as FormGroupProps } from './FormGroup';
 
 interface FieldChildProps {
-  input: React.ReactNode;
-  feedback: React.ReactNode;
+  input: ReactNode;
+  feedback: ReactNode;
 }
 
 export interface FieldProps extends InputProps {
-  label?: React.ReactNode;
+  label?: ReactNode;
   labelHidden?: boolean | false;
   disabled?: boolean | false;
   readOnly?: boolean | false;
@@ -19,12 +21,12 @@ export interface FieldProps extends InputProps {
   labelAttrs?: HTMLLabelElement;
   groupAttrs?: Partial<FormGroupProps>;
   grid?: object;
-  children?: (props: FieldChildProps) => React.ReactNode;
-  append?: string | React.ReactNode;
-  prepend?: string | React.ReactNode;
+  children?: (props: FieldChildProps) => ReactNode;
+  append?: string | ReactNode;
+  prepend?: string | ReactNode;
   helpId?: string;
 }
 
-declare class Field extends React.Component<FieldProps> {}
+declare const Field: (props: FieldProps) => JSX.Element;
 
 export default Field;
