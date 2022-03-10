@@ -1,5 +1,5 @@
 import { AvInput } from './AvInput';
-import { SingleDatePickerShape } from 'react-dates';
+import { SingleDatePickerShape } from '@availity/react-dates';
 
 export interface AvDateProps extends AvInput, SingleDatePickerShape {
   id: any;

@@ -1,28 +1,28 @@
 {
   "name": "@availity/help",
-  "version": "1.4.3",
-  "author": "Kyle Gray <kyle.gray@availity.com>",
+  "version": "1.5.2",
   "description": "Context Provider to assist with Help Menu on Portal for specific pages",
-  "types": "index.d.ts",
-  "main": "index.js",
   "keywords": [
     "react",
-    "availity"
+    "availity",
+    "help"
   ],
-  "repository": {
-    "type": "git",
-    "url": "https://github.com/Availity/availity-react.git"
-  },
+  "homepage": "https://availity.github.io/availity-react/components/help",
   "bugs": {
     "url": "https://github.com/Availity/availity-react/issues"
   },
-  "license": "MIT",
-  "publishConfig": {
-    "access": "public"
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Availity/availity-react.git",
+    "directory": "packages/help"
   },
+  "license": "MIT",
+  "author": "Kyle Gray <kyle.gray@availity.com>",
+  "main": "index.js",
+  "types": "index.d.ts",
   "dependencies": {
-    "@availity/icon": "^0.8.2",
-    "@availity/message-core": "^5.0.0",
+    "@availity/icon": "^0.10.2",
+    "@availity/message-core": "^5.0.1",
     "prop-types": "^15.7.2"
   },
   "devDependencies": {
@@ -31,5 +31,8 @@
   },
   "peerDependencies": {
     "react": ">=16.3.0"
+  },
+  "publishConfig": {
+    "access": "public"
   }
 }

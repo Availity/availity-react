@@ -1,4 +1,12 @@
-/.yarn
-/dist
-/**/node_modules/
+# root
+.yarn
+**/.docusaurus
+coverage/
+storybook-docs/
+plop-templates/
+static/
+
+# packages
+/**/dist
 /**/build
+**/CHANGELOG.md

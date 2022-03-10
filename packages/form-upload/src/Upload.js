@@ -1,4 +1,4 @@
-import React, { Suspense, useEffect, useCallback, useMemo } from 'react';
+import React, { Suspense, useEffect, useCallback, useMemo, useState } from 'react';
 import PropTypes from 'prop-types';
 import UploadCore from '@availity/upload-core';
 import { avFilesDeliveryApi } from '@availity/api-axios';
@@ -36,6 +36,7 @@ const Upload = ({
   getDropRejectionMessage,
   max,
   maxSize,
+  totalMaxSize,
   multiple = true,
   name,
   onFileRemove,
@@ -51,6 +52,7 @@ const Upload = ({
     metadata.touched ? 'is-touched' : 'is-untouched',
     metadata.touched && metadata.error && 'is-invalid'
   );
+  const [totalSize, setTotalSize] = useState(0);
 
   const fieldValue = useMemo(() => (Array.isArray(field.value) ? field.value : []), [field]);
 
@@ -135,6 +137,8 @@ const Upload = ({
     const newFiles = fieldValue.filter((file) => file.id !== fileId);
     if (newFiles.length !== fieldValue.length) {
       setFieldValue(name, newFiles, true);
+      const removedFile = fieldValue.find((file) => file.id === fileId);
+      if (!removedFile.error && !removedFile.errorMessage) setTotalSize(totalSize - removedFile.file.size);
       if (onFileRemove) onFileRemove(newFiles, fileId);
     }
   };
@@ -149,8 +153,11 @@ const Upload = ({
       selectedFiles = selectedFiles.slice(0, Math.max(0, max - fieldValue.length));
     }
 
-    const newFiles = fieldValue.concat(
-      selectedFiles.map((file) => {
+    // eslint-disable-next-line unicorn/prefer-spread
+    let newFilesTotalSize = 0;
+    const newFiles = [
+      ...fieldValue,
+      ...selectedFiles.map((file) => {
         const upload = new UploadCore(file, {
           bucketId,
           customerId,
@@ -163,8 +170,11 @@ const Upload = ({
         upload.id = `${upload.id}-${uuid()}`;
         if (file.dropRejectionMessage) {
           upload.errorMessage = file.dropRejectionMessage;
+        } else if (totalMaxSize && totalSize + newFilesTotalSize + upload.file.size > totalMaxSize) {
+          upload.errorMessage = 'Total documents size is too large';
         } else {
           upload.start();
+          newFilesTotalSize += upload.file.size;
         }
         if (onFileUpload) {
           onFileUpload(upload);
@@ -182,9 +192,10 @@ const Upload = ({
         }
 
         return upload;
-      })
-    );
+      }),
+    ];
 
+    setTotalSize(totalSize + newFilesTotalSize);
     setFieldValue(name, newFiles, true);
   };
 
@@ -257,7 +268,7 @@ const Upload = ({
 
   return (
     <>
-      <FileList files={fieldValue} onRemoveFile={removeFile}>
+      <FileList files={fieldValue} onRemoveFile={removeFile} data-testid="file-list">
         {children}
       </FileList>
       {fileAddArea}
@@ -266,31 +277,32 @@ const Upload = ({
 };
 
 Upload.propTypes = {
+  bucketId: PropTypes.string.isRequired,
+  clientId: PropTypes.string.isRequired,
+  customerId: PropTypes.string.isRequired,
+  name: PropTypes.string.isRequired,
   allowedFileNameCharacters: PropTypes.string,
   allowedFileTypes: PropTypes.arrayOf(PropTypes.string),
   btnText: PropTypes.node,
-  bucketId: PropTypes.string.isRequired,
   children: PropTypes.func,
   className: PropTypes.string,
-  clientId: PropTypes.string.isRequired,
-  customerId: PropTypes.string.isRequired,
   deliverFileOnSubmit: PropTypes.bool,
   deliveryChannel: PropTypes.string,
-  onFilePreUpload: PropTypes.arrayOf(PropTypes.func),
-  onDeliverySuccess: PropTypes.func,
-  onDeliveryError: PropTypes.func,
   disabled: PropTypes.bool,
+  fallback: PropTypes.node,
   feedbackClass: PropTypes.string,
   fileDeliveryMetadata: PropTypes.oneOfType([PropTypes.object, PropTypes.func]),
   getDropRejectionMessage: PropTypes.func,
   max: PropTypes.number,
   maxSize: PropTypes.number,
+  totalMaxSize: PropTypes.number,
   multiple: PropTypes.bool,
-  name: PropTypes.string.isRequired,
+  onDeliveryError: PropTypes.func,
+  onDeliverySuccess: PropTypes.func,
+  onFilePreUpload: PropTypes.arrayOf(PropTypes.func),
   onFileRemove: PropTypes.func,
   onFileUpload: PropTypes.func,
   showFileDrop: PropTypes.bool,
-  fallback: PropTypes.node,
 };
 
 export default Upload;

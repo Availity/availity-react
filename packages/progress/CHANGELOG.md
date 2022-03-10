@@ -3,6 +3,44 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.3.2](https://github.com/Availity/availity-react/compare/@availity/progress@1.3.1...@availity/progress@1.3.2) (2021-12-20)
+
+**Note:** Version bump only for package @availity/progress
+
+
+
+
+
+## 1.3.1 (2021-12-14)
+
+**Note:** Version bump only for package @availity/progress
+
+
+
+
+
+# 1.3.0 (2021-11-15)
+
+
+### Features
+
+* move storybook, stories, and fix hmr ([2f65f71](https://github.com/Availity/availity-react/commit/2f65f71769d2d981e22700b87a09516833588f64))
+
+
+
+
+
+## 1.2.23 (2021-10-19)
+
+
+### Bug Fixes
+
+* **progress:** update types ([82ec332](https://github.com/Availity/availity-react/commit/82ec3323b3bcbca8bd4b1ce7113cff8f0bfdb4fe))
+
+
+
+
+
 ## [1.2.22](https://github.com/Availity/availity-react/compare/@availity/progress@1.2.21...@availity/progress@1.2.22) (2021-10-01)
 
 **Note:** Version bump only for package @availity/progress

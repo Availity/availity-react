@@ -1,3 +1,4 @@
+/* eslint-disable unicorn/prefer-spread */
 import React, { createContext, useContext, useReducer } from 'react';
 import PropTypes from 'prop-types';
 import { avWebQLApi } from '@availity/api-axios';
@@ -26,10 +27,11 @@ export const getAllSpaces = async ({ query, clientId, variables, _spaces = [] })
 
   const {
     pageInfo: { currentPage, hasNextPage },
+    items,
   } = configurationPagination;
 
   // current state (_spaces) is being modified with API results (items)
-  _spaces.push(...configurationPagination?.items);
+  _spaces.push(...items);
 
   // TODO: react-query and get all spaces?
   if (hasNextPage) {
@@ -60,7 +62,7 @@ const Spaces = ({ query, variables, clientId, spaceIds, payerIds, children, spac
   const payerIdsToQuery = new Set();
 
   // If we have data for a space, add it to the Map and remove from Set of ids to query
-  spacesFromProps?.forEach((space) => {
+  for (const space of spacesFromProps) {
     if (space.id && !spacesMap.has(space.id)) {
       spacesMap.set(space.id, space);
     }
@@ -70,28 +72,28 @@ const Spaces = ({ query, variables, clientId, spaceIds, payerIds, children, spac
     }
 
     // each space can have array of payerIDs
-    space.payerIDs?.forEach((pId) => {
+    for (const pId of space.payerIDs) {
       const currentSpacesForPayerId = payerIdsMap.get(pId);
       if (currentSpacesForPayerId) {
         payerIdsMap.set(pId, [...currentSpacesForPayerId, space]);
       } else {
         payerIdsMap.set(pId, [space]);
       }
-    });
-  });
+    }
+  }
 
-  spaceIds?.forEach((id) => {
+  for (const id of spaceIds) {
     // If one has id, no need to query for it
     if (!(spacesMap.has(id) || configIdsMap.has(id))) {
       spaceIdsToQuery.add(id);
     }
-  });
+  }
 
-  payerIds?.forEach((pId) => {
+  for (const pId of payerIds) {
     if (!payerIdsMap.has(pId)) {
       payerIdsToQuery.add(pId);
     }
-  });
+  }
 
   // with react-query we would probably just set query cache using keys for data we already have,
   // won't need to worry about keeping track of dupes or refetching
@@ -123,7 +125,7 @@ const Spaces = ({ query, variables, clientId, spaceIds, payerIds, children, spac
         });
 
         // TODO: move to react-query onSuccess?
-        spacesBySpaceIds.forEach((space) => {
+        for (const space of spacesBySpaceIds) {
           if (!spacesMap.has(space.id)) {
             spacesMap.set(space.id, space);
           }
@@ -132,15 +134,15 @@ const Spaces = ({ query, variables, clientId, spaceIds, payerIds, children, spac
             configIdsMap.set(space.configurationId, space);
           }
 
-          space.payerIDs?.forEach((pId) => {
+          for (const pId of space.payerIDs) {
             const currentSpacesForPayerId = payerIdsMap.get(pId);
             if (currentSpacesForPayerId) {
               payerIdsMap.set(pId, [...currentSpacesForPayerId, space]);
             } else {
               payerIdsMap.set(pId, [space]);
             }
-          });
-        });
+          }
+        }
       }
 
       if (payerIdsToQuery.size > 0) {
@@ -151,7 +153,7 @@ const Spaces = ({ query, variables, clientId, spaceIds, payerIds, children, spac
           variables: vars,
         });
 
-        spacesByPayerIds.forEach((space) => {
+        for (const space of spacesByPayerIds) {
           if (!spacesMap.has(space.id)) {
             spacesMap.set(space.id, space);
           }
@@ -160,15 +162,15 @@ const Spaces = ({ query, variables, clientId, spaceIds, payerIds, children, spac
             configIdsMap.set(space.configurationId, space);
           }
 
-          space.payerIDs?.forEach((pId) => {
+          for (const pId of space.payerIDs) {
             const currentSpacesForPayerId = payerIdsMap.get(pId);
             if (currentSpacesForPayerId) {
               payerIdsMap.set(pId, [...currentSpacesForPayerId, space]);
             } else {
               payerIdsMap.set(pId, [space]);
             }
-          });
-        });
+          }
+        }
       }
 
       dispatch({

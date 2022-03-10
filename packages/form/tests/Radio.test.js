@@ -22,11 +22,7 @@ describe('Radio', () => {
       >
         <RadioGroup name="greeting" label="Radio Group">
           <Radio label="Hello" value="hello" data-testid="greeting-radio-1" />
-          <Radio
-            label="Goodbye"
-            value="goodbye"
-            data-testid="greeting-radio-2"
-          />
+          <Radio label="Goodbye" value="goodbye" data-testid="greeting-radio-2" />
         </RadioGroup>
         <Button type="submit">Submit</Button>
       </Form>
@@ -61,11 +57,7 @@ describe('Radio', () => {
       >
         <RadioGroup name="greeting" label="Radio Group">
           <Radio label="Hello" value="hello" data-testid="greeting-radio-1" />
-          <Radio
-            label="Goodbye"
-            value="goodbye"
-            data-testid="greeting-radio-2"
-          />
+          <Radio label="Goodbye" value="goodbye" data-testid="greeting-radio-2" />
         </RadioGroup>
         <Button type="submit">Submit</Button>
       </Form>
@@ -106,7 +98,7 @@ describe('Radio', () => {
       </Form>
     );
 
-    await fireEvent.click(getByText('Submit'));
+    fireEvent.click(getByText('Submit'));
 
     await waitFor(() => {
       const radio = getByTestId('hello-radio');
@@ -143,12 +135,7 @@ describe('Radio', () => {
         onSubmit={() => {}}
       >
         <RadioGroup name="hello" label="Radio Group">
-          <Radio
-            name="hello"
-            label="Radio One"
-            value="uno"
-            helpId="radioOneHelpTopic"
-          />
+          <Radio name="hello" label="Radio One" value="uno" helpId="radioOneHelpTopic" />
         </RadioGroup>
       </Form>
     );
@@ -192,12 +179,7 @@ describe('Radio', () => {
         onSubmit={() => {}}
       >
         <RadioGroup name="hello" label="Radio Group">
-          <Radio
-            name="hello"
-            label="Radio One"
-            value="uno"
-            data-testid="hello-radio"
-          />
+          <Radio name="hello" label="Radio One" value="uno" data-testid="hello-radio" />
         </RadioGroup>
         <Button type="submit">Submit</Button>
       </Form>
@@ -207,15 +189,12 @@ describe('Radio', () => {
     expect(radio).toHaveAttribute('aria-invalid', 'false');
     expect(radio).toHaveAttribute('aria-describedby', '');
 
-    await fireEvent.click(getByText('Submit'));
+    fireEvent.click(getByText('Submit'));
 
     await waitFor(() => {
       expect(radio).toHaveAttribute('aria-invalid', 'true');
       expect(radio).toHaveAttribute('aria-describedby', 'hello-feedback');
-      expect(getByText('This field is required')).toHaveAttribute(
-        'id',
-        'hello-feedback'
-      );
+      expect(getByText('This field is required')).toHaveAttribute('id', 'hello-feedback');
     });
   });
 });

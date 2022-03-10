@@ -1,28 +1,28 @@
 {
   "name": "@availity/authorize",
-  "version": "1.5.22",
-  "author": "Evan Sharp <evan.sharp@gmail.com>",
+  "version": "2.0.0",
   "description": "Check user permissions to see if the current user is authorized to see your content.",
-  "main": "index.js",
-  "types": "index.d.ts",
   "keywords": [
     "react",
-    "availity"
+    "availity",
+    "authorize"
   ],
-  "repository": {
-    "type": "git",
-    "url": "https://github.com/Availity/availity-react.git"
-  },
+  "homepage": "https://availity.github.io/availity-react/components/authorize",
   "bugs": {
     "url": "https://github.com/Availity/availity-react/issues"
   },
-  "license": "MIT",
-  "publishConfig": {
-    "access": "public"
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Availity/availity-react.git",
+    "directory": "packages/authorize"
   },
+  "license": "MIT",
+  "author": "Evan Sharp <evan.sharp@gmail.com>",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
   "dependencies": {
-    "prop-types": "^15.7.2",
-    "react-block-ui": "^1.3.3"
+    "react-block-ui": "^1.3.3",
+    "react-query": "^3.34.8"
   },
   "devDependencies": {
     "@availity/api-axios": "^6.0.0",
@@ -33,6 +33,9 @@
   "peerDependencies": {
     "@availity/api-axios": "^6.0.0",
     "axios": "^0.21.1",
-    "react": ">=16.3.0"
+    "react": ">=16.8.0"
+  },
+  "publishConfig": {
+    "access": "public"
   }
 }

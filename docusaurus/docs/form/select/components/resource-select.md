@@ -39,11 +39,13 @@ const Example = () => (
 );
 ```
 
-#### Live example: <a href="https://availity.github.io/availity-react/storybook/?path=/story/formik-select--resourceselect"> Storybook</a>
+#### Live example: [Storybook](https://availity.github.io/availity-react/storybook/?path=/story/formik-select--resourceselect)
 
 ### Props
 
 Extends [SelectField Props](/form/select/components/select-field/#props).
+
+Note: the `valueKey` prop will only work if you also pass `false` to the `raw` prop.
 
 #### `name: string`
 
@@ -75,7 +77,7 @@ When this prop changes, all cached options are cleared. (see [react-select-async
 
 #### `watchParams?: string[]`
 
-If present, the options reset when any of the parameters specified in the array change value. This is useful for when a customerId changes and you need to load a new list of options for the user to choose from. Used to derive `cacheUniq` if `cacheUniq` prop is not provided.
+Provide a list of properties to listen to from the parameters prop. If present, the options reset when any of the parameters specified in the array change value. This is useful for when a customerId changes and you need to load a new list of options for the user to choose from. This list will be used to derive cacheUniq when the cacheUniq prop is not provided. When using `watchParams`, the `parameters` prop must must be populated with values that are in the `watchParams` object.
 
 #### `resource: AxiosResource`
 
@@ -125,6 +127,10 @@ When true, the network request is not made until the dropdown has been focused.
 
 When true, if the `resource` only returns one result the first time it is called, the value is defaulted to the single result. Note: if `waitUntilFocused` is `true`, this prop is ignored.
 
+#### `defaultToFirstOption?: boolean`
+
+When true, if the `resource` returns at least one result the first time it is called, the value is defaulted to the first result. Note: if `waitUntilFocused` is `true`, this prop is ignored.
+
 #### `shouldSearch?: boolean | (inputValue: string, prevOptions: OptionType, additional: any) => boolean`
 
 When false or a function that returns false, the network request won't be made. Defaults to `true`.
@@ -147,26 +153,26 @@ Function that is called when the api call returned an error. The error is return
 
 This object can be used to pass additional arguments to a resource's `postGet` call. These additional arguments are separate from the `parameters` that are supported by an API and may be used for filtering or other methods called inside a resource's `postGet` method. Example for the `organizations` resource that supports `additionalPostGetArgs`:
 
-```jsx
-async postGet(data, config, additionalPostGetArgs) {
+```js
+async function postGet(data, config, additionalPostGetArgs) {
+  if (additionalPostGetArgs) {
+    const { data: organizationsData } = await super.postGet(data, config);
 
-    if (additionalPostGetArgs) {
-      const { data: organizationsData } = await super.postGet(
-        data,
-        config
-      );
-
-      return this.getFilteredOrganizations(
-        organizationsData,
-        additionalPostGetArgs,
-        data
-      );
-    }
-
-    // Else return normal organizations call
-    return super.postGet(data, config);
+    return this.getFilteredOrganizations(
+      organizationsData,
+      additionalPostGetArgs,
+      data
+    );
   }
+
+  // Else return normal organizations call
+  return super.postGet(data, config);
+}
 ```
+
+#### `searchTerm?: string`
+
+If present, this will serve as the argument name for the typed search value when sending the request to the API. This defaults to `q`.
 
 ### Pre-made Resource Selects
 
@@ -232,9 +238,24 @@ const Example = () => (
       customerId={customerId}
       required
     />
-    <AvOrganizationSelect name="organization" label="Select a Organization" required />
-    <AvPermissionSelect name="permissions" label="Select a provider" customerId={customerId} isMulti required />
-    <AvNavigationSelect name="payerSpace" label="Select a Payer Space" customerId={customerId} required />
+    <AvOrganizationSelect
+      name="organization"
+      label="Select a Organization"
+      required
+    />
+    <AvPermissionSelect
+      name="permissions"
+      label="Select a provider"
+      customerId={customerId}
+      isMulti
+      required
+    />
+    <AvNavigationSelect
+      name="payerSpace"
+      label="Select a Payer Space"
+      customerId={customerId}
+      required
+    />
     <AvUserSelect name="user" label="Select a User" customerId={customerId} />
     <AvCodeSelect name="code" label="Select a Code" />
   </Form>

@@ -2,6 +2,7 @@ import Spaces, { useSpaces, useSpacesContext, SpacesContext } from './types/Spac
 import SpacesImage from './types/SpacesImage';
 import SpacesDisclaimer from './types/SpacesDisclaimer';
 import SpacesAgreement from './types/SpacesAgreement';
+import SpacesGhostText from './types/SpacesGhostText';
 import { sanitizeSpaces } from './types/helpers';
 
 export default Spaces;
@@ -14,8 +15,9 @@ export {
   SpacesImage as SpacesTile,
   SpacesDisclaimer,
   SpacesAgreement,
+  SpacesGhostText,
   useSpaces,
   useSpacesContext,
-  sanitizeSpaces,
   SpacesContext,
+  sanitizeSpaces,
 };

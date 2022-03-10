@@ -1,25 +1,31 @@
 {
   "name": "@availity/avatar",
-  "version": "0.4.5",
-  "author": "Tyson Warner <tyson.warner@availity.com>",
+  "version": "0.5.3",
   "description": "Availity User avatar component",
-  "main": "index.js",
-  "types": "index.d.ts",
   "keywords": [
     "react",
     "availity",
     "avatar"
   ],
-  "repository": {
-    "type": "git",
-    "url": "https://github.com/Availity/availity-react.git"
-  },
+  "homepage": "https://availity.github.io/availity-react/components/avatar",
   "bugs": {
     "url": "https://github.com/Availity/availity-react/issues"
   },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Availity/availity-react.git",
+    "directory": "packages/avatar"
+  },
   "license": "MIT",
-  "publishConfig": {
-    "access": "public"
+  "author": "Tyson Warner <tyson.warner@availity.com>",
+  "main": "index.js",
+  "types": "index.d.ts",
+  "dependencies": {
+    "@availity/hooks": "^3.2.0",
+    "lodash": "^4.17.21",
+    "prop-types": "^15.7.2",
+    "react-image": "^4.0.3",
+    "react-loading-skeleton": "^2.2.0"
   },
   "devDependencies": {
     "@availity/api-axios": "^6.0.0",
@@ -32,11 +38,7 @@
     "axios": "^0.21.1",
     "react": ">=16.8.0"
   },
-  "dependencies": {
-    "@availity/hooks": "^3.0.4",
-    "lodash": "^4.17.21",
-    "prop-types": "^15.7.2",
-    "react-image": "^4.0.3",
-    "react-loading-skeleton": "^2.2.0"
+  "publishConfig": {
+    "access": "public"
   }
 }

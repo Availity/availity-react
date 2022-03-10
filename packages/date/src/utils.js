@@ -3,53 +3,48 @@ import PropTypes from 'prop-types';
 
 const isoDateFormat = 'YYYY-MM-DD';
 
-export const isOutsideRange = (min, max, format = 'MM/DD/YYYY') => (day) => {
-  let isOutsideMax = false;
-  let isOutsideMin = false;
+export const isOutsideRange =
+  (min, max, format = 'MM/DD/YYYY') =>
+  (day) => {
+    let isOutsideMax = false;
+    let isOutsideMin = false;
 
-  if (min) {
-    if (moment.isMoment(min)) {
-      isOutsideMin = day.isBefore(min);
-    }
-
-    if (typeof min === 'string') {
-      isOutsideMin = day.isBefore(
-        moment(min, [isoDateFormat, format, 'MMDDYYYY', 'YYYYMMDD'])
-      );
-    }
-
-    if (min.value !== undefined && min.units) {
-      isOutsideMin = day.isBefore(moment().subtract(min.value, min.units));
-    }
-  }
-
-  if (max) {
-    if (moment.isMoment(max)) {
-      isOutsideMax = day.isAfter(max);
-    }
-
-    if (typeof max === 'string') {
-      const maxMoment = moment(max, [
-        isoDateFormat,
-        format,
-        'MMDDYYYY',
-        'YYYYMMDD',
-      ]);
-      if (!maxMoment._f || maxMoment._f.indexOf('H') === -1) {
-        maxMoment.hour(23);
-        maxMoment.minute(59);
-        maxMoment.second(59);
+    if (min) {
+      if (moment.isMoment(min)) {
+        isOutsideMin = day.isBefore(min);
       }
-      isOutsideMax = day.isAfter(maxMoment);
+
+      if (typeof min === 'string') {
+        isOutsideMin = day.isBefore(moment(min, [isoDateFormat, format, 'MMDDYYYY', 'YYYYMMDD']));
+      }
+
+      if (min.value !== undefined && min.units) {
+        isOutsideMin = day.isBefore(moment().subtract(min.value, min.units));
+      }
     }
 
-    if (max.value !== undefined && max.units) {
-      isOutsideMax = day.isAfter(moment().add(max.value, max.units));
-    }
-  }
+    if (max) {
+      if (moment.isMoment(max)) {
+        isOutsideMax = day.isAfter(max);
+      }
 
-  return isOutsideMax || isOutsideMin;
-};
+      if (typeof max === 'string') {
+        const maxMoment = moment(max, [isoDateFormat, format, 'MMDDYYYY', 'YYYYMMDD']);
+        if (!maxMoment._f || maxMoment._f.indexOf('H') === -1) {
+          maxMoment.hour(23);
+          maxMoment.minute(59);
+          maxMoment.second(59);
+        }
+        isOutsideMax = day.isAfter(maxMoment);
+      }
+
+      if (max.value !== undefined && max.units) {
+        isOutsideMax = day.isAfter(moment().add(max.value, max.units));
+      }
+    }
+
+    return isOutsideMax || isOutsideMin;
+  };
 
 export const limitPropType = PropTypes.oneOfType([
   PropTypes.string,
@@ -57,12 +52,7 @@ export const limitPropType = PropTypes.oneOfType([
   PropTypes.shape({ _d: PropTypes.string, _isValid: PropTypes.func }), // moment prop type
 ]);
 
-export const buildYearPickerOptions = (
-  min,
-  max,
-  month,
-  format = 'MM/DD/YYYY'
-) => {
+export const buildYearPickerOptions = (min, max, month, format = 'MM/DD/YYYY') => {
   const yearPickerOptions = [];
   let minYear;
   let maxYear;
@@ -73,12 +63,7 @@ export const buildYearPickerOptions = (
     } else if (min.value !== undefined && min.units) {
       minYear = moment().subtract(min.value, min.units).year();
     } else if (typeof min === 'string') {
-      const minMoment = moment(min, [
-        isoDateFormat,
-        format,
-        'MMDDYYYY',
-        'YYYYMMDD',
-      ]);
+      const minMoment = moment(min, [isoDateFormat, format, 'MMDDYYYY', 'YYYYMMDD']);
 
       minYear = minMoment.year();
     }
@@ -92,12 +77,7 @@ export const buildYearPickerOptions = (
     } else if (max.value !== undefined && max.units) {
       maxYear = moment().add(max.value, max.units).year();
     } else if (typeof max === 'string') {
-      const maxMoment = moment(max, [
-        isoDateFormat,
-        format,
-        'MMDDYYYY',
-        'YYYYMMDD',
-      ]);
+      const maxMoment = moment(max, [isoDateFormat, format, 'MMDDYYYY', 'YYYYMMDD']);
 
       maxYear = maxMoment.year();
     }

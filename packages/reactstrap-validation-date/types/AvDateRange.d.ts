@@ -1,4 +1,4 @@
-import { DateRangePicker } from 'react-dates';
+import { DateRangePicker } from '@availity/react-dates';
 import { AvInput } from './AvInput';
 
 export interface AvDateRangeProps extends AvInput, DateRangePicker {

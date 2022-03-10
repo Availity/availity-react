@@ -32,9 +32,7 @@ const renderPhone = (props, strictValidation = false) => {
       }}
       onSubmit={() => {}}
       validationSchema={yup.object().shape({
-        test_phone: yup
-          .string()
-          .validatePhone('This field is invalid', strictValidation),
+        test_phone: yup.string().validatePhone('This field is invalid', strictValidation),
       })}
     >
       <Phone name="test_phone" {...props} />

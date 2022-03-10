@@ -1,11 +1,6 @@
 import React from 'react';
-import {
-  render,
-  fireEvent,
-  waitFor,
-  cleanup,
-  within,
-} from '@testing-library/react';
+import { render, fireEvent, waitFor, cleanup, within } from '@testing-library/react';
+import userEvent from '@testing-library/user-event';
 import { Button } from 'reactstrap';
 import { Form } from '@availity/form';
 import { avDate } from '@availity/yup';
@@ -28,9 +23,7 @@ describe('Date', () => {
         }}
         onSubmit={onSubmit}
         validationSchema={object().shape({
-          singleDate: avDate({ format: 'MM/DD/YYYY' }).required(
-            'This field is required'
-          ),
+          singleDate: avDate({ format: 'MM/DD/YYYY' }).required('This field is required'),
         })}
       >
         <FormikDate name="singleDate" data-testid="single-select" />
@@ -58,11 +51,7 @@ describe('Date', () => {
         }}
         onSubmit={onSubmit}
       >
-        <FormikDate
-          name="singleDate"
-          data-testid="single-select"
-          onChange={onChange}
-        />
+        <FormikDate name="singleDate" data-testid="single-select" onChange={onChange} />
         <Button type="submit">Submit</Button>
       </Form>
     );
@@ -77,6 +66,31 @@ describe('Date', () => {
 
     await waitFor(() => {
       expect(onChange.mock.calls[0][0]).toBe('1997-01-04');
+    });
+  });
+
+  test('renders call on change when clearing out value manually', async () => {
+    const onSubmit = jest.fn();
+    const onChange = jest.fn();
+
+    const { container } = render(
+      <Form
+        initialValues={{
+          singleDate: '01/04/1997',
+        }}
+        onSubmit={onSubmit}
+      >
+        <FormikDate name="singleDate" data-testid="single-select" onChange={onChange} />
+        <Button type="submit">Submit</Button>
+      </Form>
+    );
+
+    const input = container.querySelector('.DateInput_input');
+    input.setSelectionRange(0, 10);
+    userEvent.type(input, '01/04/1997{backspace}');
+
+    await waitFor(() => {
+      expect(onChange.mock.calls[0][0]).toBeNull();
     });
   });
 
@@ -233,9 +247,7 @@ describe('Date', () => {
     expect(yearPickers.length).toBe(3);
 
     const currentGridYearPicker = yearPickers[1];
-    expect(currentGridYearPicker.children.length).toBe(
-      max.year() - min.year() + 1
-    );
+    expect(currentGridYearPicker.children.length).toBe(max.year() - min.year() + 1);
 
     const pickedYear = within(currentGridYearPicker).getByText(someYear);
     expect(pickedYear).toBeDefined();
@@ -245,7 +257,7 @@ describe('Date', () => {
     const onChange = jest.fn();
 
     const min = moment('12/01/2020').subtract(1, 'years');
-    const max = moment('12/31/2021');
+    const max = moment().add(1, 'years');
     const newYear = `${max.year() + 1}`;
 
     const { container, getAllByTestId } = render(
@@ -270,12 +282,8 @@ describe('Date', () => {
     let nextGridYearPicker = yearPickers[2]; // next in this context refers to the next CalendarMonthGrid to be rendered
 
     // Expect year options to have same length as range of initial options
-    expect(currentGridYearPicker.children.length).toBe(
-      max.year() - min.year() + 1
-    );
-    expect(nextGridYearPicker.children.length).toBe(
-      max.year() - min.year() + 1
-    );
+    expect(currentGridYearPicker.children.length).toBe(max.year() - min.year() + 1);
+    expect(nextGridYearPicker.children.length).toBe(max.year() - min.year() + 1);
 
     fireEvent.change(input, {
       target: {
@@ -296,12 +304,8 @@ describe('Date', () => {
 
     // Expect current MonthGrid to have same number of options, it is still December of max
     // Expect next MonthGrid (January) to have new year option created
-    expect(currentGridYearPicker.children.length).toBe(
-      max.year() - min.year() + 1
-    );
-    expect(nextGridYearPicker.children.length).toBe(
-      max.year() - min.year() + 2
-    );
+    expect(currentGridYearPicker.children.length).toBe(max.year() - min.year() + 1);
+    expect(nextGridYearPicker.children.length).toBe(max.year() - min.year() + 2);
 
     const pickedYear = within(nextGridYearPicker).getByText(newYear);
     expect(pickedYear).toBeDefined();

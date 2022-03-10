@@ -1,43 +1,18 @@
 version: 2
 updates:
-- package-ecosystem: npm
-  directory: "/"
-  schedule:
-    interval: weekly
-    time: "10:00"
-  open-pull-requests-limit: 10
-  ignore:
-  - dependency-name: elliptic
-    versions:
-    - 6.5.4
-  - dependency-name: "@typescript-eslint/parser"
-    versions:
-    - 4.11.0
-    - 4.14.2
-    - 4.15.0
-  - dependency-name: formik
-    versions:
-    - 2.2.6
-  - dependency-name: eslint-config-availity
-    versions:
-    - 7.0.250
-    - 7.0.251
-  - dependency-name: core-js
-    versions:
-    - 3.8.2
-    - 3.8.3
-  - dependency-name: "@types/node"
-    versions:
-    - 14.14.22
-  - dependency-name: yup
-    versions:
-    - 0.32.8
-  - dependency-name: conventional-recommended-bump
-    versions:
-    - 6.1.0
-  - dependency-name: "@types/react"
-    versions:
-    - 17.0.0
-  - dependency-name: "@types/react-dom"
-    versions:
-    - 17.0.0
+  - package-ecosystem: npm
+    directory: '/'
+    schedule:
+      interval: weekly
+      time: '10:00'
+    open-pull-requests-limit: 10
+    ignore:
+      - dependency-name: '@typescript-eslint/parser'
+        versions: ['5.x']
+      - dependency-name: '@typescript-eslint/eslint-plugin'
+        versions: ['5.x']
+      - dependency-name: '@types/node'
+        versions: ['15.x', '16.x', '17.x']
+      - dependency-name: '@types/jest'
+        versions: ['27.x']
+      - dependency-name: yup

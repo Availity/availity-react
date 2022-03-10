@@ -1,11 +1,9 @@
 import React from 'react';
-import { render, fireEvent, waitFor, cleanup } from '@testing-library/react';
+import { render, fireEvent, waitFor } from '@testing-library/react';
 import { AvForm, AvInput } from 'availity-reactstrap-validation';
 import { Button } from 'reactstrap';
 
 import AvSelect from '..';
-
-afterEach(cleanup);
 
 const options = [
   { label: 'Option 1', value: 'value for option 1' },
@@ -44,9 +42,7 @@ describe('AvSelect', () => {
 
     fireEvent.click(option);
 
-    expect(
-      container.querySelector('.test__creatable__option--is-selected')
-    ).toBeDefined();
+    expect(container.querySelector('.test__creatable__option--is-selected')).toBeDefined();
     expect(select.querySelector('.test__creatable__placeholder')).toBe(null);
   });
 
@@ -68,12 +64,8 @@ describe('AvSelect', () => {
 
     expect(selectOption).toBeDefined();
 
-    expect(
-      container.querySelector('.test__creatable__option--is-selected')
-    ).toBeDefined();
-    expect(selectInput.querySelector('.test__creatable__placeholder')).toBe(
-      null
-    );
+    expect(container.querySelector('.test__creatable__option--is-selected')).toBeDefined();
+    expect(selectInput.querySelector('.test__creatable__placeholder')).toBe(null);
   });
 
   test('creatable works with custom keys', async () => {
@@ -103,7 +95,7 @@ describe('AvSelect', () => {
     const submitButton = getByText('Submit');
     expect(submitButton).toBeDefined();
 
-    await fireEvent.click(submitButton);
+    fireEvent.click(submitButton);
 
     // Check for proper object format in payload
     await waitFor(() => {
@@ -141,13 +133,7 @@ describe('AvSelect', () => {
     const onSubmit = jest.fn();
     const { container, getByText } = render(
       <AvForm onSubmit={onSubmit}>
-        <AvSelect
-          name="test-form-input"
-          options={opts}
-          classNamePrefix="test"
-          raw
-          autofill
-        />
+        <AvSelect name="test-form-input" options={opts} classNamePrefix="test" raw autofill />
         <AvInput data-testid="first-input" name="firstName" />
         <AvInput data-testid="last-input" name="lastName" />
         <AvInput data-testid="full-input" name="full.name" />
@@ -171,7 +157,7 @@ describe('AvSelect', () => {
     const submitButton = getByText('Submit');
     expect(submitButton).toBeDefined();
 
-    await fireEvent.click(submitButton);
+    fireEvent.click(submitButton);
 
     // Check that values got autofilled
     await waitFor(() => {
@@ -244,7 +230,7 @@ describe('AvSelect', () => {
     const submitButton = getByText('Submit');
     expect(submitButton).toBeDefined();
 
-    await fireEvent.click(submitButton);
+    fireEvent.click(submitButton);
 
     // Check that values got autofilled
     await waitFor(() => {

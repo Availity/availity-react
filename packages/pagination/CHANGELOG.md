@@ -3,6 +3,92 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## 2.13.4 (2022-03-08)
+
+**Note:** Version bump only for package @availity/pagination
+
+
+
+
+
+## 2.13.3 (2022-02-18)
+
+**Note:** Version bump only for package @availity/pagination
+
+
+
+
+
+## [2.13.2](https://github.com/Availity/availity-react/compare/@availity/pagination@2.13.1...@availity/pagination@2.13.2) (2021-12-20)
+
+**Note:** Version bump only for package @availity/pagination
+
+
+
+
+
+## 2.13.1 (2021-12-14)
+
+**Note:** Version bump only for package @availity/pagination
+
+
+
+
+
+# 2.13.0 (2021-12-08)
+
+
+### Features
+
+* **pagination:** add option for pagination text in controls ([43e2954](https://github.com/Availity/availity-react/commit/43e29548164144fe8d697865fdcd5b1fe3236ce8))
+* **pagination:** fix proptype to bool ([0daf42f](https://github.com/Availity/availity-react/commit/0daf42fefe16c9e5ecdb9e6881549eee5cbc929f))
+* **pagination:** unbump version ([6698aad](https://github.com/Availity/availity-react/commit/6698aad375108d300298800ac6f66155d2aa7a30))
+
+
+
+
+
+# 2.12.0 (2021-11-15)
+
+
+### Features
+
+* move storybook, stories, and fix hmr ([2f65f71](https://github.com/Availity/availity-react/commit/2f65f71769d2d981e22700b87a09516833588f64))
+
+
+
+
+
+## [2.11.2](https://github.com/Availity/availity-react/compare/@availity/pagination@2.11.1...@availity/pagination@2.11.2) (2021-10-28)
+
+**Note:** Version bump only for package @availity/pagination
+
+
+
+
+
+## 2.11.1 (2021-10-28)
+
+
+### Bug Fixes
+
+* **pagination:** resolve lint errors ([d1cf97c](https://github.com/Availity/availity-react/commit/d1cf97cbcf689f0e032cf6d7a1eb3984f8ebb786))
+
+
+
+
+
+# 2.11.0 (2021-10-11)
+
+
+### Features
+
+* **pagination:** adding try catch around json parse for localstorage get ([efd965b](https://github.com/Availity/availity-react/commit/efd965b9b694077333614d01acf0b889f4287a8c))
+
+
+
+
+
 ## [2.10.2](https://github.com/Availity/availity-react/compare/@availity/pagination@2.10.1...@availity/pagination@2.10.2) (2021-10-01)
 
 **Note:** Version bump only for package @availity/pagination

@@ -2,12 +2,13 @@
   "npmClient": "yarn",
   "useWorkspaces": true,
   "version": "independent",
-  "packages": ["packages/*", "storybook", "docusaurus"],
+  "packages": ["packages/*", "docusaurus"],
   "message": "chore: publish release [skip ci]",
   "command": {
     "publish": {
-      "conventionalCommits": true
+      "conventionalCommits": true,
+      "verifyAccess": false
     }
   },
-  "ignoreChanges": ["**/*.test.js", "**/*.md", "**/*.mdx", "**/yarn.lock"]
+  "ignoreChanges": ["**/*.test.js", "**/*.test.tsx", "**/*.stories.tsx", "**/*.md", "**/*.mdx", "**/yarn.lock"]
 }

@@ -3,46 +3,32 @@ title: Introduction
 slug: /
 ---
 
-**Availity React is a repo of React components built for web projects on the Availity Portal**.
+Availity React is a repo of [React](https://beta.reactjs.org/) components built for web projects on the Availity Portal. This site provides documentation on how to use those components.
 
-#### You can browse these docs to help find the React component(s) you're looking to import.
-
-Many of the packages provided by `availity-react` are wrappers around common `reactstrap` components. If you can't find what you're looking for in these docs, we recommend looking at [Reactstrap documentation here](https://reactstrap.github.io).
+Many of the packages provided by `availity-react` are wrappers around common `reactstrap` components. If you can't find what you're looking for in these docs, take a look at the [Reactstrap documentation](https://reactstrap.github.io).
 
 :::note
-If you can't find what you are looking for on any of the left sub menus try out the `search bar` at the top of every page that leverages [Algolia](https://www.algolia.com/) to provide lightning fast searches across all of our docs.
+Try the `search bar` at the top right of every page for faster browsing. The search bar leverages [Algolia](https://www.algolia.com/) to provide lightning fast searches across all our docs.
 :::
-
-## Installation
-
-For this example we'll use the [icon](/components/icon) component.
-
-npm
-
-```bash
-npm install @availity/icon --save
-```
-
-Yarn
-
-```bash
-yarn add @availity/icon
-```
-
-## Usage
-
-Import your component and you're good to go.
-
-```jsx
-import React from 'react';
-import Icon from '@availity/icon';
-
-const Example = () => <Icon name="home" size="3x" color="primary" />;
-```
 
 ## Supported Browsers
 
+Packages in this repository work with
+
 - Google Chrome
-- Mozilla Firefox
 - Microsoft Edge
-- Internet Explorer 11+ (Internet Explorer will no longer be supported starting August 21st, 2021)
+- Mozilla Firefox
+
+### Internet Explorer Support
+
+Active support for Internet Explorer ended in August 2021.
+
+If you still need support for IE 11, use [`@availity/workflow >=8.5.0 && <9.0.0`](https://github.com/Availity/availity-workflow/blob/master/packages/workflow/CHANGELOG.md#850-2021-04-07). This transpiles _all_ your code and adds polyfills needed for IE 11 support.
+
+If you do not want to, or can't, use `@availity/workflow`, use your own `babel` configuration to polyfill the necessary code
+
+## Additional Notes
+
+We use `data-testid` for unit tests to use for grabbing unique attributes. If you are using `availity-workflow@6.0.0` or later it will be removed for you in production builds. If you don't want `data-testid`, however, and you're not using `@availity/workflow`, add the following `babel` plugin to remove it:
+
+- [babel-plugin-jsx-remove-data-test-id](https://github.com/coderas/babel-plugin-jsx-remove-data-test-id)

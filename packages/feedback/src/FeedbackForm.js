@@ -1,10 +1,11 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import PropTypes from 'prop-types';
 import { Button, ModalBody, ModalHeader, ModalFooter, FormGroup } from 'reactstrap';
 import { avLogMessagesApi, avRegionsApi } from '@availity/api-axios';
 import { Form, Field } from '@availity/form';
 import { SelectField } from '@availity/select';
 import * as yup from 'yup';
+
 import SmileField from './SmileField';
 
 yup.addMethod(yup.string, 'isRequired', function format(isRequired, msg) {
@@ -39,11 +40,12 @@ const FeedbackForm = ({
   showSupport,
   setSupportIsActive,
   autoFocusFeedbackButton,
+  modal,
   ...formProps
 }) => {
   const [active, setActive] = useState(null);
   const [sent, setSent] = useState(null);
-
+  const ref = useRef();
   const sendFeedback = async ({ smileField, ...values }) => {
     const response = await avRegionsApi.getCurrentRegion();
 
@@ -70,7 +72,11 @@ const FeedbackForm = ({
           onClose(); // Mostly for Screen Reader use but a nice to have for all
         }
         if (onFeedbackSent) {
-          Object.keys(sent).forEach((key) => sent[key] === undefined && delete sent[key]);
+          for (const key of Object.keys(sent)) {
+            if (sent[key] === undefined) {
+              delete sent[key];
+            }
+          }
 
           onFeedbackSent({
             active: active.icon,
@@ -105,10 +111,11 @@ const FeedbackForm = ({
         {prompt || `Tell us what you think about ${name}`}
       </ModalHeader>
       <Form
+        innerRef={ref}
         aria-label="Feedback Form"
         aria-describedby="feedback-form-header"
         role="form"
-        onKeyDown={({ keyCode }) => keyCode === 27 && onClose()}
+        onKeyDown={({ key }) => key === 'Escape' && onClose()}
         data-testid="feedback-form"
         initialValues={{
           'face-options': undefined,
@@ -146,9 +153,12 @@ const FeedbackForm = ({
               options={faceOptions}
               name="smileField"
               onChange={(option) => setActive(option)}
+              onClose={onClose}
               autoFocusFeedbackButton={autoFocusFeedbackButton}
+              modal={modal}
             />
           </FormGroup>
+
           {active ? (
             <>
               {aboutOptions.length > 0 && (
@@ -160,6 +170,7 @@ const FeedbackForm = ({
                   options={aboutOptions}
                 />
               )}
+
               <Field
                 type="textarea"
                 name="feedback"
@@ -191,7 +202,7 @@ const FeedbackForm = ({
                 onClick={() => setSupportIsActive(true)}
                 color="link"
                 type="button"
-                onKeyDown={({ keyCode }) => keyCode === 13 && setSupportIsActive(true)}
+                onKeyDown={({ key }) => key === 'Enter' && setSupportIsActive(true)}
               >
                 Open a support ticket
               </Button>
@@ -199,12 +210,36 @@ const FeedbackForm = ({
           ) : null}
 
           {onClose ? (
-            <Button onClick={onClose} color="secondary" onKeyDown={({ keyCode }) => keyCode === 13 && onClose()}>
+            <Button
+              type="button"
+              onClick={onClose}
+              color="secondary"
+              onKeyDown={({ key, shiftKey }) => {
+                if (key === 'Enter') {
+                  onClose();
+                }
+                if (key === 'Tab' && !active && !shiftKey && !modal) {
+                  onClose();
+                }
+              }}
+            >
               Close
             </Button>
           ) : null}
 
-          <Button type="submit" color="primary" disabled={!active}>
+          <Button
+            onKeyDown={({ key, shiftKey }) => {
+              if (key === 'Enter') {
+                ref.current.submitForm();
+              }
+              if (key === 'Tab' && !shiftKey && !modal) {
+                onClose();
+              }
+            }}
+            type="submit"
+            color="primary"
+            disabled={!active}
+          >
             Send Feedback
           </Button>
         </ModalFooter>
@@ -241,15 +276,16 @@ FeedbackForm.propTypes = {
   showSupport: PropTypes.bool,
   setSupportIsActive: PropTypes.func,
   autoFocusFeedbackButton: PropTypes.bool,
+  modal: PropTypes.bool,
 };
 
 FeedbackForm.defaultProps = {
   aboutOptions: [],
   aboutLabel: 'This is about',
   additionalComments: false,
-  modalHeaderProps: {},
   analytics: avLogMessagesApi,
   showSupport: false,
+  modal: true,
 };
 
 export default FeedbackForm;

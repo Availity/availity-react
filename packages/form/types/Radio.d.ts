@@ -1,7 +1,8 @@
-import * as React from 'react';
+/* eslint-disable @typescript-eslint/ban-types */
+import { HTMLAttributes, ReactNode } from 'react';
 
-interface RadioProps extends React.HTMLAttributes<HTMLInputElement> {
-  label?: React.ReactNode;
+interface RadioProps extends HTMLAttributes<HTMLInputElement> {
+  label?: ReactNode;
   name?: string;
   id?: string;
   groupClassName?: string;
@@ -10,6 +11,6 @@ interface RadioProps extends React.HTMLAttributes<HTMLInputElement> {
   helpId?: string;
 }
 
-declare class Radio extends React.Component<RadioProps> {}
+declare const Radio: (props: RadioProps) => JSX.Element;
 
 export default Radio;

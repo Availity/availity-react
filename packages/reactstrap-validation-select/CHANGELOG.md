@@ -3,6 +3,176 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [9.4.1](https://github.com/Availity/availity-react/compare/@availity/reactstrap-validation-select@9.4.0...@availity/reactstrap-validation-select@9.4.1) (2022-02-23)
+
+
+### Bug Fixes
+
+* update proptype and typedef for helpMessage ([f61d0a1](https://github.com/Availity/availity-react/commit/f61d0a1c204900e55046262aa2f06056ce858c3b))
+
+
+
+
+
+# 9.4.0 (2022-02-23)
+
+
+### Features
+
+* add prop to allow inputValue to not be encoded ([9c598a8](https://github.com/Availity/availity-react/commit/9c598a8d4b69f3aebfc215a56f81501fa3451b58))
+
+
+
+
+
+## [9.3.2](https://github.com/Availity/availity-react/compare/@availity/reactstrap-validation-select@9.3.1...@availity/reactstrap-validation-select@9.3.2) (2022-02-04)
+
+**Note:** Version bump only for package @availity/reactstrap-validation-select
+
+
+
+
+
+## 9.3.1 (2022-02-03)
+
+**Note:** Version bump only for package @availity/reactstrap-validation-select
+
+
+
+
+
+# 9.3.0 (2022-01-13)
+
+
+### Features
+
+* **reactstrap-validation-select:** allow components override ([61ceacd](https://github.com/Availity/availity-react/commit/61ceacd1f34a2b00b17f99e9fc7ef78f128a9c6e))
+
+
+
+
+
+## [9.2.2](https://github.com/Availity/availity-react/compare/@availity/reactstrap-validation-select@9.2.1...@availity/reactstrap-validation-select@9.2.2) (2021-12-20)
+
+**Note:** Version bump only for package @availity/reactstrap-validation-select
+
+
+
+
+
+## 9.2.1 (2021-12-14)
+
+**Note:** Version bump only for package @availity/reactstrap-validation-select
+
+
+
+
+
+# 9.2.0 (2021-12-06)
+
+
+### Features
+
+* **reactstrap-validation-select:** add helpMessage prop ([e2a6ae7](https://github.com/Availity/availity-react/commit/e2a6ae7843e486f0c3edd7af1736463f5dad1dc0))
+
+
+
+
+
+## [9.1.1](https://github.com/Availity/availity-react/compare/@availity/reactstrap-validation-select@9.1.0...@availity/reactstrap-validation-select@9.1.1) (2021-11-15)
+
+
+### Bug Fixes
+
+* **reactstrap-validation-select:** added new colors to help with  contrast on error ([02890d8](https://github.com/Availity/availity-react/commit/02890d8d9cef9c6deb68973a05d6ef4074924fd8))
+* **select,reactstrap-validation-select:** fixed select color to fix contrast issue with white text ([6e5bf3a](https://github.com/Availity/availity-react/commit/6e5bf3aa21446c17fc29548a177ac2ba75e85b07))
+
+
+
+
+
+# [9.1.0](https://github.com/Availity/availity-react/compare/@availity/reactstrap-validation-select@9.0.3...@availity/reactstrap-validation-select@9.1.0) (2021-11-15)
+
+
+### Features
+
+* move storybook, stories, and fix hmr ([2f65f71](https://github.com/Availity/availity-react/commit/2f65f71769d2d981e22700b87a09516833588f64))
+
+
+
+
+
+## 9.0.3 (2021-11-12)
+
+
+### Bug Fixes
+
+* **reactstrap-validation-select:** added new colors to help with  contrast on error ([02890d8](https://github.com/Availity/availity-react/commit/02890d8d9cef9c6deb68973a05d6ef4074924fd8))
+
+
+
+
+
+## [9.0.2](https://github.com/Availity/availity-react/compare/@availity/reactstrap-validation-select@9.0.0...@availity/reactstrap-validation-select@9.0.2) (2021-11-05)
+
+
+### Bug Fixes
+
+* coordinate accessible UI changes ([ee84d14](https://github.com/Availity/availity-react/commit/ee84d14412864943e626422e075071cd0571f783))
+
+
+
+
+
+## 9.0.1 (2021-10-28)
+
+
+### Bug Fixes
+
+* **reactstrap-validation-select:** do not convert _cacheUniq to a string ([31fe218](https://github.com/Availity/availity-react/commit/31fe2186f6665f0d752592298bff7c1fdc49699d))
+* **reactstrap-validation-select:** pass ref as selectRef for async component ([29ef8e2](https://github.com/Availity/availity-react/commit/29ef8e2c84181fa87147bf25f507425d7479b5b3))
+
+
+
+
+
+# [9.0.0](https://github.com/Availity/availity-react/compare/@availity/reactstrap-validation-select@8.0.0...@availity/reactstrap-validation-select@9.0.0) (2021-10-28)
+
+
+### Bug Fixes
+
+* upgrade eslint-config-availity and fix the errors ([6da0423](https://github.com/Availity/availity-react/commit/6da0423ecfa72b426287fd62ad00445fefce024e))
+
+
+### Features
+
+* **reactstrap-validation-select:** upgrade to react-select v5 ([34eec6d](https://github.com/Availity/availity-react/commit/34eec6d606858d3cbdf1f45e93205b40000eeb2d))
+
+
+### BREAKING CHANGES
+
+* **reactstrap-validation-select:** react-select v5 drops support for IE11
+
+
+
+
+
+# 8.0.0 (2021-10-27)
+
+
+### Features
+
+* **reactstrap-validation-select:** upgrade to react-select v5 ([34eec6d](https://github.com/Availity/availity-react/commit/34eec6d606858d3cbdf1f45e93205b40000eeb2d))
+
+
+### BREAKING CHANGES
+
+* **reactstrap-validation-select:** react-select v5 drops support for IE11
+
+
+
+
+
 ## [7.0.4](https://github.com/Availity/availity-react/compare/@availity/reactstrap-validation-select@7.0.3...@availity/reactstrap-validation-select@7.0.4) (2021-10-01)
 
 **Note:** Version bump only for package @availity/reactstrap-validation-select

@@ -1,11 +1,11 @@
 import React from 'react';
-import { render, fireEvent, waitFor, cleanup } from '@testing-library/react';
+import { render, fireEvent, waitFor } from '@testing-library/react';
 import { Button } from 'reactstrap';
+import { components } from 'react-select';
 import * as yup from 'yup';
 import { Form, Input } from '@availity/form';
-import Select from '..';
 
-afterEach(cleanup);
+import Select from '..';
 
 const singleValueSchema = (name) =>
   yup.object().shape({
@@ -69,18 +69,14 @@ describe('Select', () => {
         onSubmit={onSubmit}
         validationSchema={singleValueSchema('singleSelect')}
       >
-        <Select
-          name="singleSelect"
-          options={options}
-          data-testid="single-select"
-        />
+        <Select name="singleSelect" options={options} data-testid="single-select" />
         <Button type="submit">Submit</Button>
       </Form>
     );
 
     await selectItem(container, getByText, 'Option 1');
 
-    await fireEvent.click(getByText('Submit'));
+    fireEvent.click(getByText('Submit'));
 
     await waitFor(() => {
       expect(onSubmit).toHaveBeenCalledWith(
@@ -102,18 +98,14 @@ describe('Select', () => {
         onSubmit={onSubmit}
         validationSchema={singleValueSchema('singleSelect')}
       >
-        <Select
-          name="singleSelect"
-          options={groupedOptions}
-          data-testid="single-select"
-        />
+        <Select name="singleSelect" options={groupedOptions} data-testid="single-select" />
         <Button type="submit">Submit</Button>
       </Form>
     );
 
     await selectItem(container, getByText, 'Option 1');
 
-    await fireEvent.click(getByText('Submit'));
+    fireEvent.click(getByText('Submit'));
 
     await waitFor(() => {
       expect(onSubmit).toHaveBeenCalledWith(
@@ -135,19 +127,14 @@ describe('Select', () => {
         onSubmit={onSubmit}
         validationSchema={singleValueSchema('singleSelect')}
       >
-        <Select
-          isMulti
-          name="singleSelect"
-          options={groupedOptions}
-          data-testid="single-select"
-        />
+        <Select isMulti name="singleSelect" options={groupedOptions} data-testid="single-select" />
         <Button type="submit">Submit</Button>
       </Form>
     );
 
     await selectItem(container, getByText, 'Option 1');
 
-    await fireEvent.click(getByText('Submit'));
+    fireEvent.click(getByText('Submit'));
 
     await waitFor(() => {
       expect(onSubmit).toHaveBeenCalledWith(
@@ -169,12 +156,7 @@ describe('Select', () => {
         onSubmit={onSubmit}
         validationSchema={multiValueSchema('multiSelect', true, 1, 2)}
       >
-        <Select
-          name="multiSelect"
-          isMulti
-          options={options}
-          data-testid="single-select"
-        />
+        <Select name="multiSelect" isMulti options={options} data-testid="single-select" />
         <Button type="submit">Submit</Button>
       </Form>
     );
@@ -182,7 +164,7 @@ describe('Select', () => {
     await selectItem(container, getByText, 'Option 1');
     await selectItem(container, getByText, 'Option 2');
 
-    await fireEvent.click(getByText('Submit'));
+    fireEvent.click(getByText('Submit'));
 
     await waitFor(() => {
       expect(onSubmit).toHaveBeenCalledWith(
@@ -204,30 +186,19 @@ describe('Select', () => {
         onSubmit={onSubmit}
         validationSchema={multiValueSchema('selectAll', true, 1, 4)}
       >
-        <Select
-          name="selectAll"
-          isMulti
-          options={options}
-          data-testid="single-select"
-          allowSelectAll
-        />
+        <Select name="selectAll" isMulti options={options} data-testid="single-select" allowSelectAll />
         <Button type="submit">Submit</Button>
       </Form>
     );
 
     await selectItem(container, getByText, 'Select all');
 
-    await fireEvent.click(getByText('Submit'));
+    fireEvent.click(getByText('Submit'));
 
     await waitFor(() => {
       expect(onSubmit).toHaveBeenCalledWith(
         expect.objectContaining({
-          selectAll: [
-            'value for option 1',
-            'value for option 2',
-            'value for option 3',
-            'value for option 4',
-          ],
+          selectAll: ['value for option 1', 'value for option 2', 'value for option 3', 'value for option 4'],
         }),
         expect.anything()
       );
@@ -244,30 +215,19 @@ describe('Select', () => {
         onSubmit={onSubmit}
         validationSchema={multiValueSchema('selectAll', true, 1, 4)}
       >
-        <Select
-          name="selectAll"
-          isMulti
-          options={options}
-          data-testid="single-select"
-          allowSelectAll
-        />
+        <Select name="selectAll" isMulti options={options} data-testid="single-select" allowSelectAll />
         <Button type="submit">Submit</Button>
       </Form>
     );
 
     await selectItem(container, getByText, 'Select all');
 
-    await fireEvent.click(getByText('Submit'));
+    fireEvent.click(getByText('Submit'));
 
     await waitFor(() => {
       expect(onSubmit).toHaveBeenCalledWith(
         expect.objectContaining({
-          selectAll: [
-            'value for option 1',
-            'value for option 2',
-            'value for option 3',
-            'value for option 4',
-          ],
+          selectAll: ['value for option 1', 'value for option 2', 'value for option 3', 'value for option 4'],
         }),
         expect.anything()
       );
@@ -284,30 +244,19 @@ describe('Select', () => {
         onSubmit={onSubmit}
         validationSchema={multiValueSchema('selectAll', true, 1, 4)}
       >
-        <Select
-          name="selectAll"
-          isMulti
-          options={options}
-          data-testid="single-select"
-          allowSelectAll
-        />
+        <Select name="selectAll" isMulti options={options} data-testid="single-select" allowSelectAll />
         <Button type="submit">Submit</Button>
       </Form>
     );
 
     await selectItem(container, getByText, 'Select all');
 
-    await fireEvent.click(getByText('Submit'));
+    fireEvent.click(getByText('Submit'));
 
     await waitFor(() => {
       expect(onSubmit).toHaveBeenCalledWith(
         expect.objectContaining({
-          selectAll: [
-            'value for option 1',
-            'value for option 2',
-            'value for option 3',
-            'value for option 4',
-          ],
+          selectAll: ['value for option 1', 'value for option 2', 'value for option 3', 'value for option 4'],
         }),
         expect.anything()
       );
@@ -323,16 +272,12 @@ describe('Select', () => {
         onSubmit={() => {}}
         validationSchema={singleValueSchema('singleSelect')}
       >
-        <Select
-          name="singleSelect"
-          options={options}
-          data-testid="single-select"
-        />
+        <Select name="singleSelect" options={options} data-testid="single-select" />
         <Button type="submit">Submit</Button>
       </Form>
     );
 
-    await fireEvent.click(getByText('Submit'));
+    fireEvent.click(getByText('Submit'));
 
     await waitFor(() => {
       const select = container.querySelector('.av-select');
@@ -353,13 +298,7 @@ describe('Select', () => {
         onSubmit={onSubmit}
         validationSchema={multiValueSchema('multiSelect', true, 1, 2)}
       >
-        <Select
-          name="multiSelect"
-          isMulti
-          maxLength={2}
-          options={options}
-          data-testid="single-select"
-        />
+        <Select name="multiSelect" isMulti maxLength={2} options={options} data-testid="single-select" />
         <Button type="submit">Submit</Button>
       </Form>
     );
@@ -369,7 +308,7 @@ describe('Select', () => {
     // This will not get added
     await selectItem(container, getByText, 'Option 3');
 
-    await fireEvent.click(getByText('Submit'));
+    fireEvent.click(getByText('Submit'));
 
     await waitFor(() => {
       expect(onSubmit).toHaveBeenCalledWith(
@@ -391,19 +330,14 @@ describe('Select', () => {
         onSubmit={onSubmit}
         validationSchema={singleValueSchema('singleSelect')}
       >
-        <Select
-          name="singleSelect"
-          options={options}
-          raw
-          data-testid="single-select"
-        />
+        <Select name="singleSelect" options={options} raw data-testid="single-select" />
         <Button type="submit">Submit</Button>
       </Form>
     );
 
     await selectItem(container, getByText, 'Option 1');
 
-    await fireEvent.click(getByText('Submit'));
+    fireEvent.click(getByText('Submit'));
 
     await waitFor(() => {
       expect(onSubmit).toHaveBeenCalledWith(
@@ -450,13 +384,7 @@ describe('Select', () => {
         }}
         onSubmit={onSubmit}
       >
-        <Select
-          name="testFormInput"
-          options={opts}
-          classNamePrefix="test"
-          raw
-          autofill
-        />
+        <Select name="testFormInput" options={opts} classNamePrefix="test" raw autofill />
         <Input data-testid="first-input" name="firstName" />
         <Input data-testid="last-input" name="lastName" />
         <Input data-testid="full-input" name="full.name" />
@@ -480,7 +408,7 @@ describe('Select', () => {
     const submitButton = getByText('Submit');
     expect(submitButton).toBeDefined();
 
-    await fireEvent.click(submitButton);
+    fireEvent.click(submitButton);
 
     // Check that values got autofilled
     await waitFor(() => {
@@ -562,7 +490,7 @@ describe('Select', () => {
     const submitButton = getByText('Submit');
     expect(submitButton).toBeDefined();
 
-    await fireEvent.click(submitButton);
+    fireEvent.click(submitButton);
 
     // Check that values got autofilled
     await waitFor(() => {
@@ -633,7 +561,83 @@ describe('Select', () => {
     const submitButton = getByText('Submit');
     expect(submitButton).toBeDefined();
 
-    await fireEvent.click(submitButton);
+    fireEvent.click(submitButton);
+
+    await waitFor(() => {
+      expect(onSubmit).toHaveBeenCalledTimes(1);
+      const payload = onSubmit.mock.calls[0][0];
+      expect(payload.singleSelectCreatable.labelKeyTest).toBe('HelloWorld');
+      expect(payload.singleSelectCreatable.valueKeyTest).toBe('helloworld');
+    });
+  });
+
+  test('async creatable', async () => {
+    const loadOptions = jest.fn();
+
+    loadOptions.mockResolvedValue({
+      options: [
+        {
+          labelKeyTest: 'Doe, John',
+          valueKeyTest: {
+            name: {
+              first: 'John',
+              last: 'Doe',
+            },
+          },
+        },
+        {
+          labelKeyTest: 'Doe, Jane',
+          valueKeyTest: {
+            name: {
+              first: 'Jane',
+              last: 'Doe',
+            },
+          },
+        },
+      ],
+      hasMore: false,
+      additional: {
+        page: 2,
+      },
+    });
+
+    const onSubmit = jest.fn();
+    const { container, getByText } = render(
+      <Form
+        initialValues={{
+          singleSelectCreatable: undefined,
+        }}
+        onSubmit={onSubmit}
+      >
+        <Select
+          name="singleSelectCreatable"
+          loadOptions={loadOptions}
+          valueKey="valueKeyTest"
+          labelKey="labelKeyTest"
+          creatable
+          raw
+        />
+        <Button>Submit</Button>
+      </Form>
+    );
+
+    // Simulate the user selecting "Doe, John"
+    const select = container.querySelector('.av__control');
+    fireEvent.keyDown(select, { key: 'ArrowDown', keyCode: 40 });
+
+    fireEvent.change(container.querySelector('#singleSelectCreatable'), {
+      target: {
+        value: 'HelloWorld',
+      },
+    });
+
+    await selectItem(container, getByText, 'Create "HelloWorld"');
+
+    // Simulate the user clicking "Submit"
+    const submitButton = getByText('Submit');
+    expect(submitButton).toBeDefined();
+
+    fireEvent.click(submitButton);
 
     await waitFor(() => {
       expect(onSubmit).toHaveBeenCalledTimes(1);
@@ -688,9 +692,7 @@ describe('Select', () => {
       expect(loadOptions).not.toHaveBeenCalled();
     });
 
-    const waitUntilFocusSelect = container.querySelector(
-      '.test__wait__control'
-    );
+    const waitUntilFocusSelect = container.querySelector('.test__wait__control');
     const input = container.querySelector('input');
     fireEvent.focus(input);
     fireEvent.keyDown(waitUntilFocusSelect, { key: 'ArrowDown', keyCode: 40 });
@@ -712,11 +714,7 @@ describe('Select', () => {
         onSubmit={onSubmit}
         validationSchema={singleValueSchema('singleSelect')}
       >
-        <Select
-          name="singleSelect"
-          options={options}
-          data-testid="single-select"
-        />
+        <Select name="singleSelect" options={options} data-testid="single-select" />
         <Button type="submit">Submit</Button>
       </Form>
     );
@@ -735,5 +733,124 @@ describe('Select', () => {
       expect(optionOne).toHaveAttribute('aria-selected');
       expect(optionOne).toHaveAttribute('name');
     });
+  });
+
+  test('renders error message in placeholder with invalid', async () => {
+    const { container, getByText } = render(
+      <Form
+        initialValues={{
+          singleSelect: undefined,
+        }}
+        onSubmit={() => {}}
+        validationSchema={singleValueSchema('singleSelect')}
+      >
+        <Select name="singleSelect" options={options} data-testid="single-select" />
+        <Button type="submit">Submit</Button>
+      </Form>
+    );
+
+    fireEvent.click(getByText('Submit'));
+
+    await waitFor(() => {
+      const hiddenPlaceholderMessage = container.querySelector('.av__placeholder .sr-only');
+
+      expect(hiddenPlaceholderMessage.innerHTML).toContain('This field is required.');
+    });
+  });
+
+  test('renders help message in placeholder', async () => {
+    const { container, getByText } = render(
+      <Form
+        initialValues={{
+          singleSelect: undefined,
+        }}
+        onSubmit={() => {}}
+        validationSchema={singleValueSchema('singleSelect')}
+      >
+        <Select
+          name="singleSelect"
+          options={options}
+          helpMessage="This is a help message."
+          data-testid="single-select"
+        />
+        <Button type="submit">Submit</Button>
+      </Form>
+    );
+
+    fireEvent.click(getByText('Submit'));
+
+    await waitFor(() => {
+      const hiddenPlaceholderMessage = container.querySelector('.av__placeholder .sr-only');
+
+      expect(hiddenPlaceholderMessage.innerHTML).toContain('This is a help message.');
+    });
+  });
+
+  test('renders aria attributes when invalid', async () => {
+    const onSubmit = jest.fn();
+    const { container, getByText } = render(
+      <Form
+        initialValues={{
+          multiSelect: undefined,
+        }}
+        onSubmit={onSubmit}
+        validationSchema={multiValueSchema('multiSelect', true, 2, 3)}
+      >
+        <Select name="multiSelect" isMulti feedback options={options} data-testid="multi-select" />
+        <Button type="submit">Submit</Button>
+      </Form>
+    );
+
+    const select = container.querySelector('.av__input');
+
+    expect(select).not.toHaveAttribute('aria-invalid');
+    expect(select).toHaveAttribute('aria-errormessage', '');
+
+    await selectItem(container, getByText, 'Option 1');
+
+    fireEvent.click(getByText('Submit'));
+
+    await waitFor(() => {
+      expect(select).toHaveAttribute('aria-invalid', 'true');
+      expect(select).toHaveAttribute('aria-errormessage', 'multiselect-feedback');
+    });
+
+    await selectItem(container, getByText, 'Option 2');
+
+    fireEvent.click(getByText('Submit'));
+
+    await waitFor(() => {
+      expect(select).not.toHaveAttribute('aria-invalid');
+      expect(select).toHaveAttribute('aria-errormessage', '');
+    });
+  });
+
+  test('allow component overrides', async () => {
+    // Display 'Foo' as the selected value instead of the given option
+    const SingleValue = (props) => <components.SingleValue {...props}>Foo</components.SingleValue>;
+
+    const onSubmit = jest.fn();
+    const { container, getByText } = render(
+      <Form
+        initialValues={{
+          singleSelect: undefined,
+        }}
+        onSubmit={onSubmit}
+        validationSchema={singleValueSchema('singleSelect')}
+      >
+        <Select name="singleSelect" options={options} data-testid="single-select" components={{ SingleValue }} />
+        <Button type="submit">Submit</Button>
+      </Form>
+    );
+
+    const select = container.querySelector('.av__control');
+
+    // Open the dropdown
+    fireEvent.click(select);
+    // Hover down to the first option and select
+    fireEvent.keyDown(select, { key: 'ArrowDown', keyCode: 40 });
+    fireEvent.keyDown(select, { key: 'Enter', keyCode: 13 });
+
+    expect(getByText('Foo')).toBeDefined();
   });
 });

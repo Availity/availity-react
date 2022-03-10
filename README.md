@@ -1,33 +1,22 @@
-# availity-react
+# Availity React Component Library
 
 > React components using Availity UIKit and Bootstrap 4
 
-[![License](https://img.shields.io/badge/license-MIT-blue.svg?style=for-the-badge&logo=MIT)](http://opensource.org/licenses/MIT)
-[![Dependency Status](https://img.shields.io/david/dev/Availity/availity-react.svg?style=for-the-badge)](https://david-dm.org/Availity/availity-react)
+[![Build](https://img.shields.io/github/workflow/status/availity/sdk-js/Publish%20Release?style=for-the-badge)](https://github.com/Availity/sdk-js/actions/workflows/deploy.yml)
 [![Coverage](https://img.shields.io/codecov/c/github/Availity/availity-react?style=for-the-badge)](https://codecov.io/gh/Availity/availity-react)
-
-## Supported Browsers
-
-- Google Chrome
-- Mozilla Firefox
-- Microsoft Edge
-- Internet Explorer 11+ (Internet Explorer will no longer be supported starting August 21st, 2021)
+[![License](https://img.shields.io/badge/license-MIT-blue.svg?style=for-the-badge&logo=MIT)](http://opensource.org/licenses/MIT)
 
 ## Storybook
 
-https://availity.github.io/availity-react/storybook
+We have a [Storybook](https://availity.github.io/availity-react/storybook) instance where you can see the components in action.
 
-## Availity Docs
+## Documentation
 
-https://availity.github.io/availity-react
+Check out our [documentation site](https://availity.github.io/availity-react) for more information on all Availity maintained repos.
 
-## [Contributing](./.github/CONTRIBUTING.md)
+## Contributing
 
-## Additional Notes
-
-We use `data-testid` for unit tests to use for grabbing unique attributes. If you are using `availity-workflow@6.0.0` or later it will be removed for you in production builds. However, if you don't want it and not using workflow, you will need to add the following babel plugin to remove it:
-
-- [babel-plugin-jsx-remove-data-test-id](https://github.com/coderas/babel-plugin-jsx-remove-data-test-id)
+See our [contributing guide](./.github/CONTRIBUTING.md) on how to contribute to the repository.
 
 ## License
 

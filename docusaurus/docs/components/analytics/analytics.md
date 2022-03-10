@@ -9,7 +9,7 @@ Component allowing page and click events to be tracked.
 ```jsx
 import React from 'react';
 import { Button } from 'reactstrap';
-import Analytics from '@availity/Analytics';
+import Analytics from '@availity/analytics';
 
 const plugin = {
   trackEvent: (e) => {
@@ -37,7 +37,7 @@ const Example = () => (
 
 #### `plugins?: AnalyticsPlugin[]`
 
-Array of plugins to call when an event is tracked. See [@availity/analytics-core](https://availity.github.io/sdk-js/features/analytics/) for list of prebuilt plugins.
+Array of plugins to call when an event is tracked. See [@availity/analytics-core](https://availity.github.io/sdk-js/resources/analytics/#defined-plugins) for list of prebuilt plugins.
 
 #### `pageTracking?: boolean`
 

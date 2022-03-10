@@ -2,9 +2,8 @@ import React, { useEffect, useState } from 'react';
 import PropTypes from 'prop-types';
 import classNames from 'classnames';
 import { useField, useFormikContext } from 'formik';
-import 'react-dates/initialize';
-import { SingleDatePicker } from 'react-dates';
-import Icon from '@availity/icon';
+import '@availity/react-dates/initialize';
+import { SingleDatePicker } from '@availity/react-dates';
 import { InputGroup, Input, Row, Col } from 'reactstrap';
 import moment from 'moment';
 import '../polyfills';
@@ -21,13 +20,11 @@ const yearPickerStyles = {
 const AvDate = ({
   className,
   name,
-  calendarIcon,
   innerRef,
   onChange,
   onPickerFocusChange,
   min,
   max,
-  datepicker,
   format,
   validate,
   datePickerProps,
@@ -45,14 +42,10 @@ const AvDate = ({
     className,
     metadata.touched ? 'is-touched' : 'is-untouched',
     metadata.touched && metadata.error && 'is-invalid',
-    !field.value && 'current-day-highlight',
-    datepicker && 'av-calendar-show'
+    !field.value && 'current-day-highlight'
   );
 
-  const pickerId = `${(attributes.id || name).replace(
-    /[^\da-z]/gi,
-    ''
-  )}-picker`;
+  const pickerId = `${(attributes.id || name).replace(/[^\da-z]/gi, '')}-picker`;
 
   // Should only run validation once per real change to component, instead of each time setFieldValue/Touched is called.
   // By batching multiple calls for validation we can avoid multiple moment comparisons of the same values
@@ -65,11 +58,7 @@ const AvDate = ({
 
   // For updating when we delete the current input
   const onInputChange = (value) => {
-    const date = moment(
-      value,
-      [isoDateFormat, format, 'MMDDYYYY', 'YYYYMMDD', 'M/D/YYYY'],
-      true
-    );
+    const date = moment(value, [isoDateFormat, format, 'MMDDYYYY', 'YYYYMMDD', 'M/D/YYYY'], true);
     const isoFormatted = date.format(isoDateFormat);
     setFieldValue(name, date.isValid() ? isoFormatted : date, false);
     setFieldTouched(name, true, false);
@@ -85,15 +74,15 @@ const AvDate = ({
   };
 
   const onPickerChange = (value) => {
-    if (value === null) return;
-
     let val = value;
-    if (val instanceof Object && val.isValid()) {
-      val = val.format(isoDateFormat);
-    }
+    if (val !== null) {
+      if (val instanceof Object && val.isValid()) {
+        val = val.format(isoDateFormat);
+      }
 
-    setFieldValue(name, val, false);
-    setFieldTouched(name, true, false);
+      setFieldValue(name, val, false);
+      setFieldTouched(name, true, false);
+    }
 
     if (onChange) {
       onChange(val);
@@ -114,11 +103,7 @@ const AvDate = ({
   };
 
   const getDateValue = () => {
-    const date = moment(
-      field.value,
-      [isoDateFormat, format, 'MMDDYYYY', 'YYYYMMDD', 'M/D/YYYY'],
-      true
-    );
+    const date = moment(field.value, [isoDateFormat, format, 'MMDDYYYY', 'YYYYMMDD', 'M/D/YYYY'], true);
     if (date.isValid()) return date;
 
     return null;
@@ -177,13 +162,13 @@ const AvDate = ({
       <InputGroup
         disabled={attributes.disabled}
         className={classes}
-        onChange={({ target }) =>
-          target.id === pickerId && onInputChange(target.value)
-        }
+        onChange={({ target }) => target.id === pickerId && onInputChange(target.value)}
         data-testid={`date-input-group-${name}`}
       >
         <SingleDatePicker
           renderMonthElement={renderMonthElement}
+          autoComplete="date"
+          numberOfMonths={1}
           {...datePickerProps}
           disabled={attributes.disabled}
           id={pickerId}
@@ -192,11 +177,7 @@ const AvDate = ({
           onDateChange={onPickerChange}
           focused={isFocused}
           onFocusChange={onFocusChange}
-          numberOfMonths={1}
           isOutsideRange={isOutsideRange(min, max)}
-          customInputIcon={datepicker ? calendarIcon : undefined}
-          showDefaultInputIcon={datepicker}
-          inputIconPosition="after"
           navPosition="navPositionBottom"
           openDirection={openDirection}
         />
@@ -211,22 +192,18 @@ AvDate.propTypes = {
   className: PropTypes.string,
   min: limitPropType,
   max: limitPropType,
-  calendarIcon: PropTypes.node,
   onChange: PropTypes.func,
   onPickerFocusChange: PropTypes.func,
   innerRef: PropTypes.oneOfType([PropTypes.func, PropTypes.node]),
   format: PropTypes.string,
   'data-testid': PropTypes.string,
-  datepicker: PropTypes.bool,
   validate: PropTypes.func,
   datePickerProps: PropTypes.object,
   openDirection: PropTypes.string,
 };
 
 AvDate.defaultProps = {
-  calendarIcon: <Icon name="calendar" />,
   format: 'MM/DD/YYYY',
-  datepicker: true,
   openDirection: 'down',
 };
 

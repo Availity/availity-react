@@ -20,16 +20,12 @@ const Example = () => (
     initialValues={{
       dateOfService: undefined,
     }}
-    onSubmit={values => console.log(values)}
+    onSubmit={(values) => console.log(values)}
     validationSchema={yup.object().shape({
       dateOfService: dateRange(
         {
-          min: moment()
-            .subtract(7, 'day')
-            .format('MM/DD/YYYY'),
-          max: moment()
-            .add(7, 'day')
-            .format('MM/DD/YYYY'),
+          min: moment().subtract(7, 'day').format('MM/DD/YYYY'),
+          max: moment().add(7, 'day').format('MM/DD/YYYY'),
           format: 'MM/DD/YYYY',
         },
         `Date must be between ${moment()
@@ -38,7 +34,7 @@ const Example = () => (
           .add(7, 'day')
           .format('MM/DD/YYYY')}`
       )
-        .typeError('This field is invalid.')
+        .typeError({ message: 'This field is invalid.' })
         .required('This field is required.'),
     })}
   >
@@ -103,10 +99,6 @@ Function to be run when focus on the input changes. `focusedInput` contains the 
 - `endId` - the id of the end field. `"<name>-end"`
 - `undefined` - the date range was unfocused
 
-#### `calendarIcon?: ReactNode`
-
-Override the default icon that appears. Default: `<Icon name="calendar" />
-
 #### `format?: string`
 
 How to format date value in `onSubmit` callback. Must be a format recognized by [moment](https://momentjs.com/docs/#/displaying/format/). **Default: `MM/DD/YYYY`**
@@ -139,3 +131,8 @@ interface MomentDateRange {
 #### `openDirection?: string`
 
 Set which direction the date picker renders. Possible values are `up` and `down`. Default: `down`
+
+#### `allowInvalidDates?: boolean`
+
+Defaults to false, with this behavior the onInputChange handler will not pass through invalid dates to formik. By setting this prop to true, you can allow formik to handle invalid dates.
+Very useful for getting errors from non-required date range components.

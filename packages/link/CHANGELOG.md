@@ -3,6 +3,74 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## 2.4.3 (2022-02-22)
+
+**Note:** Version bump only for package @availity/link
+
+
+
+
+
+## [2.4.2](https://github.com/Availity/availity-react/compare/@availity/link@2.4.1...@availity/link@2.4.2) (2021-12-20)
+
+**Note:** Version bump only for package @availity/link
+
+
+
+
+
+## 2.4.1 (2021-12-14)
+
+**Note:** Version bump only for package @availity/link
+
+
+
+
+
+# [2.4.0](https://github.com/Availity/availity-react/compare/@availity/link@2.3.5...@availity/link@2.4.0) (2021-11-15)
+
+
+### Features
+
+* move storybook, stories, and fix hmr ([2f65f71](https://github.com/Availity/availity-react/commit/2f65f71769d2d981e22700b87a09516833588f64))
+
+
+
+
+
+## 2.3.5 (2021-11-05)
+
+
+### Bug Fixes
+
+* add classnames dep ([9bdda6f](https://github.com/Availity/availity-react/commit/9bdda6f1ec1e0b23e31fe81008c94f69b940804d))
+* coordinate accessible UI changes ([ee84d14](https://github.com/Availity/availity-react/commit/ee84d14412864943e626422e075071cd0571f783))
+* link classNames ([b81f3ea](https://github.com/Availity/availity-react/commit/b81f3ea409bd90e81f6477132fddfa1436f724ed))
+* remove training-link snapshot, update link tests ([150ba4e](https://github.com/Availity/availity-react/commit/150ba4e59241f7843d11cbbee566fa356defeac9))
+
+
+
+
+
+## 2.3.4 (2021-10-28)
+
+**Note:** Version bump only for package @availity/link
+
+
+
+
+
+## 2.3.3 (2021-10-19)
+
+
+### Bug Fixes
+
+* **link:** update types ([5385416](https://github.com/Availity/availity-react/commit/5385416b13dec242357f27317caaedff694e1087))
+
+
+
+
+
 ## [2.3.2](https://github.com/Availity/availity-react/compare/@availity/link@2.3.1...@availity/link@2.3.2) (2021-10-01)
 
 **Note:** Version bump only for package @availity/link

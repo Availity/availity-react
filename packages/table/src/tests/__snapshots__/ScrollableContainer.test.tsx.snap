@@ -1,0 +1,15 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Scrollable Container should render 1`] = `
+<div>
+  <div
+    class="av-scrollable-table-wrapper"
+  >
+    <div
+      scrollable="true"
+    >
+      This is my Content.
+    </div>
+  </div>
+</div>
+`;

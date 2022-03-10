@@ -3,6 +3,61 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# 3.2.0 (2022-02-18)
+
+
+### Features
+
+* **hooks:** add documentation to sidebar, some formatting ([fbd9964](https://github.com/Availity/availity-react/commit/fbd99648c18993394f773d8540c1be023acf6e5b))
+* **hooks:** add useWindowDimensionsHook ([203d9c0](https://github.com/Availity/availity-react/commit/203d9c0a31362ec084c94c4ae50ab4b6efbc876b))
+
+
+
+
+
+## [3.1.2](https://github.com/Availity/availity-react/compare/@availity/hooks@3.1.1...@availity/hooks@3.1.2) (2021-12-20)
+
+**Note:** Version bump only for package @availity/hooks
+
+
+
+
+
+## 3.1.1 (2021-12-14)
+
+**Note:** Version bump only for package @availity/hooks
+
+
+
+
+
+# 3.1.0 (2021-11-15)
+
+
+### Features
+
+* move storybook, stories, and fix hmr ([2f65f71](https://github.com/Availity/availity-react/commit/2f65f71769d2d981e22700b87a09516833588f64))
+
+
+
+
+
+## [3.0.6](https://github.com/Availity/availity-react/compare/@availity/hooks@3.0.5...@availity/hooks@3.0.6) (2021-10-28)
+
+**Note:** Version bump only for package @availity/hooks
+
+
+
+
+
+## 3.0.5 (2021-10-28)
+
+**Note:** Version bump only for package @availity/hooks
+
+
+
+
+
 ## [3.0.4](https://github.com/Availity/availity-react/compare/@availity/hooks@3.0.3...@availity/hooks@3.0.4) (2021-10-01)
 
 **Note:** Version bump only for package @availity/hooks

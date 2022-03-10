@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { AvGroup, AvFeedback } from 'availity-reactstrap-validation';
 import classNames from 'classnames';
-import { Label } from 'reactstrap';
+import { Label, FormText } from 'reactstrap';
 
 import AvSelect from './AvSelect';
 
@@ -30,14 +30,16 @@ class AvSelectField extends Component {
     const {
       label,
       labelHidden,
-      id = this.props.name,
+      name,
+      id = name,
       feedbackClass,
       groupClass,
       labelClass,
+      helpMessage,
       ...attributes
     } = this.props;
 
-    const validation = this.context.FormCtrl ? this.context.FormCtrl.getInputState(this.props.name) : {};
+    const validation = this.context.FormCtrl ? this.context.FormCtrl.getInputState(name) : {};
     let feedback = null;
     if (validation.errorMessage) {
       const feedbackClasses = classNames('d-block', feedbackClass);
@@ -62,7 +64,8 @@ class AvSelectField extends Component {
     return (
       <AvGroup className={groupClass}>
         {thisLabel}
-        <AvSelect {...attributes} />
+        <AvSelect name={name} {...attributes} />
+        {helpMessage ? <FormText id={`${name}-helpmessage`.toLowerCase()}>{helpMessage}</FormText> : null}
         {feedback}
       </AvGroup>
     );
@@ -73,6 +76,7 @@ AvSelectField.propTypes = {
   label: PropTypes.node,
   labelHidden: PropTypes.bool,
   id: PropTypes.string,
+  helpMessage: PropTypes.oneOfType([PropTypes.string, PropTypes.node]),
   feedbackClass: PropTypes.string,
   groupClass: PropTypes.string,
   labelClass: PropTypes.string,

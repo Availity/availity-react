@@ -3,6 +3,57 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## 0.5.3 (2022-02-18)
+
+**Note:** Version bump only for package @availity/avatar
+
+
+
+
+
+## [0.5.2](https://github.com/Availity/availity-react/compare/@availity/avatar@0.5.1...@availity/avatar@0.5.2) (2021-12-20)
+
+**Note:** Version bump only for package @availity/avatar
+
+
+
+
+
+## 0.5.1 (2021-12-14)
+
+**Note:** Version bump only for package @availity/avatar
+
+
+
+
+
+# 0.5.0 (2021-11-15)
+
+
+### Features
+
+* move storybook, stories, and fix hmr ([2f65f71](https://github.com/Availity/availity-react/commit/2f65f71769d2d981e22700b87a09516833588f64))
+
+
+
+
+
+## [0.4.7](https://github.com/Availity/availity-react/compare/@availity/avatar@0.4.6...@availity/avatar@0.4.7) (2021-10-28)
+
+**Note:** Version bump only for package @availity/avatar
+
+
+
+
+
+## 0.4.6 (2021-10-28)
+
+**Note:** Version bump only for package @availity/avatar
+
+
+
+
+
 ## [0.4.5](https://github.com/Availity/availity-react/compare/@availity/avatar@0.4.4...@availity/avatar@0.4.5) (2021-10-01)
 
 **Note:** Version bump only for package @availity/avatar

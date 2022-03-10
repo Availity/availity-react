@@ -1,0 +1,77 @@
+// TODO: Colors are currently sampled from the uikit:
+// https://availity.github.io/availity-uikit/v3/components
+// They need to eventually be replaced with design tokens
+// once that package has stabilized. Size units are mostly
+// arbitrary. Those also need to eventaully utilize tokens.
+
+$rootSize: 1.5rem;
+$heartSize: 1.125rem;
+
+.screenReaderOnly {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border-width: 0;
+}
+
+.root {
+  height: $rootSize;
+  width: $rootSize;
+  min-height: $rootSize;
+  min-width: $rootSize;
+  position: relative;
+}
+
+.input {
+  -webkit-appearance: none;
+  appearance: none;
+  cursor: pointer;
+  margin: 0;
+  height: $rootSize;
+  width: $rootSize;
+  min-height: $rootSize;
+  min-width: $rootSize;
+  display: block;
+  border-radius: 0.25rem;
+}
+.root:hover .input {
+  background-color: #e8ebeb;
+}
+
+.icons {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+  pointer-events: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.icon {
+  height: $heartSize;
+  width: $heartSize;
+}
+
+.spinner {
+  animation-name: spin;
+  animation-duration: 3000ms;
+  animation-iteration-count: infinite;
+  animation-timing-function: linear;
+}
+
+@keyframes spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}

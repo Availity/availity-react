@@ -45,7 +45,7 @@ const Example = () => (
 );
 ```
 
-#### Live example: <a href="https://availity.github.io/availity-react/storybook/?path=/story/formik-select-resources--avorganizationselect"> Storybook</a>
+#### Live example: [Storybook](https://availity.github.io/availity-react/storybook/?path=/story/formik-select-resources--avorganizationselect)
 
 ### Props
 

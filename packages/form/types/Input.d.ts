@@ -1,4 +1,5 @@
-import * as React from 'react';
+/* eslint-disable @typescript-eslint/no-explicit-any */
+import { InputHTMLAttributes } from 'react';
 import { FieldValidator } from 'formik';
 
 export type InputType =
@@ -28,7 +29,7 @@ export type InputType =
   | 'time'
   | 'color';
 
-export interface InputProps extends React.InputHTMLAttributes<HTMLInputElement> {
+export interface InputProps extends InputHTMLAttributes<HTMLInputElement> {
   [key: string]: any;
   type?: InputType;
   name: string;
@@ -36,8 +37,9 @@ export interface InputProps extends React.InputHTMLAttributes<HTMLInputElement> 
   tag?: Node | string;
   feedback?: boolean;
   help?: boolean;
+  required?: boolean;
 }
 
-declare class Input extends React.Component<InputProps> {}
+declare const Input: (props: InputProps) => JSX.Element;
 
 export default Input;

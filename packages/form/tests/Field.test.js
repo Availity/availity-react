@@ -49,6 +49,21 @@ describe('Field', () => {
     expect(label.className).toContain('col-md-6');
   });
 
+  test('renders with required asterisk', () => {
+    const { getByTestId } = render(
+      <Form
+        initialValues={{
+          hello: 'hello',
+        }}
+        onSubmit={() => {}}
+      >
+        <Field name="hello" label="Hello Label" data-testid="hello-input" required />
+      </Form>
+    );
+
+    expect(getByTestId('required-asterisk')).toBeDefined();
+  });
+
   test('renders with field help icon', () => {
     const { getByTestId } = render(
       <Form
@@ -57,12 +72,7 @@ describe('Field', () => {
         }}
         onSubmit={() => {}}
       >
-        <Field
-          name="hello"
-          label="Hello Label"
-          data-testid="hello-input"
-          helpId="hellohelptopic"
-        />
+        <Field name="hello" label="Hello Label" data-testid="hello-input" helpId="hellohelptopic" />
       </Form>
     );
 
@@ -84,10 +94,7 @@ describe('Field', () => {
     const el = getByText('help text');
     expect(el).toBeDefined();
     expect(el).toHaveAttribute('id', 'hello-helpmessage');
-    expect(getByTestId('hello-input')).toHaveAttribute(
-      'aria-describedby',
-      ' hello-helpmessage'
-    );
+    expect(getByTestId('hello-input')).toHaveAttribute('aria-describedby', ' hello-helpmessage');
   });
 
   test('renders with initial value', () => {
@@ -116,7 +123,7 @@ describe('Field', () => {
       </Form>
     );
 
-    await fireEvent.change(getByDisplayValue('John'), {
+    fireEvent.change(getByDisplayValue('John'), {
       target: {
         name: 'name',
         value: '',
@@ -159,12 +166,8 @@ describe('Field', () => {
       </Form>
     );
 
-    expect(container.querySelector('input').getAttribute('id')).toEqual(
-      inputId
-    );
-    expect(container.querySelector('label').getAttribute('for')).toEqual(
-      inputId
-    );
+    expect(container.querySelector('input').getAttribute('id')).toEqual(inputId);
+    expect(container.querySelector('label').getAttribute('for')).toEqual(inputId);
   });
 
   test('should generate uuid even when label is not added', () => {
@@ -184,7 +187,7 @@ describe('Field', () => {
         onSubmit={() => {}}
         validationSchema={yup.object().shape({ name: yup.string().required() })}
       >
-        <Field name="name" helpMessage="help text" data-testid="name-input" />
+        <Field name="name" helpMessage="help text" data-testid="name-input" required />
         <Button type="submit">Submit</Button>
       </Form>
     );
@@ -195,8 +198,9 @@ describe('Field', () => {
     expect(help).toHaveAttribute('id', 'name-helpmessage');
     expect(input).toHaveAttribute('aria-describedby', ' name-helpmessage');
     expect(input).toHaveAttribute('aria-invalid', 'false');
+    expect(input).toHaveAttribute('aria-required', 'true');
 
-    await fireEvent.change(getByDisplayValue('John'), {
+    fireEvent.change(getByDisplayValue('John'), {
       target: {
         name: 'name',
         value: '',
@@ -211,10 +215,7 @@ describe('Field', () => {
       expect(feedback).toHaveAttribute('id', 'name-feedback');
       expect(help).toHaveAttribute('id', 'name-helpmessage');
       expect(input).toHaveAttribute('aria-invalid', 'true');
-      expect(input).toHaveAttribute(
-        'aria-describedby',
-        'name-feedback name-helpmessage'
-      );
+      expect(input).toHaveAttribute('aria-describedby', 'name-feedback name-helpmessage');
     });
   });
 });

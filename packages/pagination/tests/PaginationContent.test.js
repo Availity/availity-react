@@ -31,11 +31,11 @@ describe('Pagination Content', () => {
 
     expect(paginationContent).not.toBe(null);
 
-    items.forEach(async (item) => {
-      await waitFor(() => {
+    for await (const item of items) {
+      waitFor(() => {
         expect(getByTestId(`item-${item.value}`)).toBeDefined();
       });
-    });
+    }
   });
 
   test('should render loading message', async () => {
@@ -68,7 +68,7 @@ describe('Pagination Content', () => {
 
     await waitForElementToBeRemoved(() => getByTestId('loading-message'));
 
-    loadPage().items.forEach((item) => expect(getByTestId(`item-${item.value}`)).toBeDefined());
+    for (const item of loadPage().items) expect(getByTestId(`item-${item.value}`)).toBeDefined();
   });
 
   test('should use custom render children', async () => {
@@ -114,10 +114,10 @@ describe('Pagination Content', () => {
     expect(getByTestId('pagination-table-header')).toBeDefined();
 
     await waitFor(() => {
-      loadPage().items.forEach((item) => {
+      for (const item of loadPage().items) {
         expect(getByTestId(`item-tr-${item.value}`)).toBeDefined();
         expect(getByTestId(`item-td-${item.value}`)).toBeDefined();
-      });
+      }
     });
   });
 });

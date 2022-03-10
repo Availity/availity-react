@@ -1,13 +1,20 @@
-import * as React from 'react';
-import { SelectProps } from './Select';
+import type { ReactNode } from 'react';
+import type { GroupBase } from 'react-select';
 
-export interface SelectFieldProps<T> extends SelectProps<T> {
-  label?: React.ReactNode;
-  labelHidden?: boolean | false;
-  labelClass?: string;
+import type { SelectProps } from './Select';
+
+export type SelectFieldProps<Option, IsMulti extends boolean, Group extends GroupBase<Option> = GroupBase<Option>> = {
+  feedbackClass?: string;
   groupClass?: string;
-}
+  helpId?: string;
+  label?: ReactNode;
+  labelClass?: string;
+  labelHidden?: boolean;
+  required?: boolean;
+} & SelectProps<Option, IsMulti, Group>;
 
-declare class SelectField<T = { [key: string]: any }> extends React.Component<SelectFieldProps<T>> {}
+declare const SelectField: <Option, IsMulti extends boolean, Group extends GroupBase<Option> = GroupBase<Option>>(
+  props: SelectFieldProps<Option, IsMulti, Group>
+) => JSX.Element;
 
 export default SelectField;

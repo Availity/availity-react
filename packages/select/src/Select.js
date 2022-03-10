@@ -1,17 +1,19 @@
+/* eslint-disable unicorn/prefer-spread */
 import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 import classNames from 'classnames';
 import { useField, useFormikContext } from 'formik';
 import RSelect, { components as reactSelectComponents } from 'react-select';
 import Creatable from 'react-select/creatable';
-import { AsyncPaginate as Async } from 'react-select-async-paginate';
+import { AsyncPaginate as Async, withAsyncPaginate } from 'react-select-async-paginate';
 import get from 'lodash/get';
 import has from 'lodash/has';
 import isFunction from 'lodash/isFunction';
 import isEqual from 'lodash/isEqual';
 
-const { DownChevron, CrossIcon, DropdownIndicator, ClearIndicator, Option } =
-  reactSelectComponents;
+const { DownChevron, CrossIcon, DropdownIndicator, ClearIndicator, Option, MultiValueRemove } = reactSelectComponents;
+
+const CreatableAsyncPaginate = withAsyncPaginate(Creatable);
 
 const components = {
   DropdownIndicator: (props) => (
@@ -20,12 +22,19 @@ const components = {
       <span className="sr-only">Toggle Select Options</span>
     </DropdownIndicator>
   ),
-  ClearIndicator: (props) => (
-    <ClearIndicator {...props}>
-      <CrossIcon />
-      <span className="sr-only">Clear all selections</span>
-    </ClearIndicator>
-  ),
+  ClearIndicator: (props) => {
+    const innerProps = {
+      ...props.innerProps,
+      role: 'button',
+      'aria-hidden': false,
+    };
+    return (
+      <ClearIndicator {...props} innerProps={innerProps}>
+        <CrossIcon />
+        <span className="sr-only">Clear all selections</span>
+      </ClearIndicator>
+    );
+  },
   Option: (props) => {
     const innerProps = {
       ...props.innerProps,
@@ -35,6 +44,13 @@ const components = {
     };
     return <Option {...props} innerProps={innerProps} />;
   },
+  MultiValueRemove: (props) => {
+    const innerProps = {
+      ...props.innerProps,
+      'aria-hidden': false,
+    };
+    return <MultiValueRemove {...props} innerProps={innerProps} />;
+  },
 };
 
 const createOption = (label, labelKey = 'label', valueKey = 'value') => ({
@@ -42,8 +58,7 @@ const createOption = (label, labelKey = 'label', valueKey = 'value') => ({
   [valueKey]: label.toLowerCase().replace(/\W/g, ''),
 });
 
-const areValueAndOptionValueEqual = (value, optionValue) =>
-  isEqual(value, optionValue);
+const areValueAndOptionValueEqual = (value, optionValue) => isEqual(value, optionValue);
 
 const selectAllOption = {
   label: 'Select all',
@@ -51,9 +66,7 @@ const selectAllOption = {
 };
 
 const validateSelectAllOptions = (options) => {
-  const filtered = options.filter(
-    (option) => option.value === selectAllOption.value
-  );
+  const filtered = options.filter((option) => option.value === selectAllOption.value);
   if (filtered.length > 0) {
     // eslint-disable-next-line no-console
     console.warn(
@@ -75,12 +88,13 @@ const Select = ({
   creatable,
   allowSelectAll,
   waitUntilFocused,
+  helpMessage,
+  feedback,
+  placeholder,
+  components: componentOverrides,
   ...attributes
 }) => {
-  const [
-    { onChange, value: fieldValue, ...field },
-    { touched, error: hasError },
-  ] = useField({
+  const [{ onChange, value: fieldValue, ...field }, { touched, error: fieldError }] = useField({
     name,
     validate,
   });
@@ -94,6 +108,15 @@ const Select = ({
     _cacheUniq = [_cacheUniq];
   }
 
+  placeholder = (
+    <>
+      {placeholder || 'Select...'}
+      <span className="sr-only">
+        {(touched && fieldError) || null} {helpMessage || null}
+      </span>
+    </>
+  );
+
   const getOptionLabel = (option) => {
     if (option.__isNew__) {
       return option.label;
@@ -105,15 +128,13 @@ const Select = ({
   const getValueKey = (attrs = attributes) => get(attrs, 'valueKey', 'value');
 
   const getOptionValue = (option) =>
-    attributes.raw && !attributes.valueKey
-      ? option
-      : get(option, getValueKey(attributes), option);
+    attributes.raw && !attributes.valueKey ? option : get(option, getValueKey(attributes), option);
 
   const prepValue = (value, digIfMulti = true) => {
     if (attributes.isMulti && digIfMulti && Array.isArray(value)) {
-      return value.map((val) => prepValue(val), false);
+      return value.map((val) => prepValue(val));
     }
-    if (attributes.raw || attributes.loadOptions) {
+    if (attributes.raw || (attributes.loadOptions && !attributes.valueKey)) {
       return value;
     }
     const valueKey = getValueKey();
@@ -129,9 +150,7 @@ const Select = ({
         }
         return prev.concat(current);
       }, []);
-      return flattened.filter((o) =>
-        areValueAndOptionValueEqual(value, getOptionValue(o))
-      )[0];
+      return flattened.filter((o) => areValueAndOptionValueEqual(value, getOptionValue(o)))[0];
     }
 
     return null;
@@ -140,17 +159,15 @@ const Select = ({
   const getViewValue = () => {
     if (attributes.raw || attributes.loadOptions || !options) return fieldValue;
     if (attributes.isMulti && Array.isArray(fieldValue)) {
-      return fieldValue.map(
-        (value) => findOptionFromValue(value, options) || value
-      );
+      return fieldValue.map((value) => findOptionFromValue(value, options) || value);
     }
     return findOptionFromValue(fieldValue, options) || fieldValue;
   };
 
   let Tag = attributes.loadOptions ? Async : RSelect;
 
-  if (!attributes.loadOptions && creatable) {
-    Tag = Creatable;
+  if (creatable) {
+    Tag = attributes.loadOptions ? CreatableAsyncPaginate : Creatable;
   }
 
   if (!attributes.inputId) {
@@ -158,20 +175,12 @@ const Select = ({
   }
 
   const onChangeHandler = async (newValue) => {
-    if (
-      newValue &&
-      newValue.length > 0 &&
-      newValue[newValue.length - 1].value === selectAllOption.value
-    ) {
+    if (newValue && newValue.length > 0 && newValue[newValue.length - 1].value === selectAllOption.value) {
       newValue = options;
     }
 
     const newVal = prepValue(newValue);
-    const isOverMax =
-      maxLength &&
-      attributes.isMulti &&
-      newValue &&
-      newValue.length > maxLength;
+    const isOverMax = maxLength && attributes.isMulti && newValue && newValue.length > maxLength;
 
     if (isOverMax) return;
 
@@ -179,8 +188,7 @@ const Select = ({
 
     await setFieldValue(name, newVal);
 
-    const shouldAutofill =
-      autofill && !attributes.isMulti && newValue && typeof newVal === 'object';
+    const shouldAutofill = autofill && !attributes.isMulti && newValue && typeof newVal === 'object';
 
     if (shouldAutofill) {
       let formValuesForAutofill = values;
@@ -195,21 +203,15 @@ const Select = ({
 
       Object.keys(formValuesForAutofill)
         .filter((fieldName) => fieldName !== name)
+        // eslint-disable-next-line unicorn/no-array-for-each
         .forEach(async (fieldName) => {
           let rawValue = newValue;
-          if (
-            !!newValue.label &&
-            !!newValue.value &&
-            typeof newValue.value === 'object'
-          ) {
+          if (!!newValue.label && !!newValue.value && typeof newValue.value === 'object') {
             rawValue = newValue.value;
           }
 
           let shouldAutofillField = false;
-          shouldAutofillField =
-            typeof autofill === 'object'
-              ? autofill[fieldName]
-              : has(rawValue, fieldName);
+          shouldAutofillField = typeof autofill === 'object' ? autofill[fieldName] : has(rawValue, fieldName);
 
           if (shouldAutofillField) {
             let val;
@@ -217,11 +219,7 @@ const Select = ({
               if (isFunction(autofill[fieldName])) {
                 val = autofill[fieldName](rawValue);
               } else if (typeof autofill[fieldName] === 'string') {
-                val = get(
-                  rawValue,
-                  `${autofill[fieldName]}`,
-                  initialValues[fieldName]
-                );
+                val = get(rawValue, `${autofill[fieldName]}`, initialValues[fieldName]);
               } else {
                 val = initialValues[fieldName];
               }
@@ -241,18 +239,12 @@ const Select = ({
   };
 
   const handleCreate = (value) => {
-    const newOpt = createOption(
-      value,
-      get(attributes, 'labelKey', 'label'),
-      get(attributes, 'valueKey', 'value')
-    );
+    const newOpt = createOption(value, get(attributes, 'labelKey', 'label'), get(attributes, 'valueKey', 'value'));
     newOptions.push(newOpt);
     setNewOptions([...newOptions]);
 
     if (attributes.isMulti) {
-      onChangeHandler(
-        Array.isArray(fieldValue) ? fieldValue.concat(newOpt) : [newOpt]
-      );
+      onChangeHandler(Array.isArray(fieldValue) ? fieldValue.concat(newOpt) : [newOpt]);
     } else {
       onChangeHandler(newOpt);
     }
@@ -286,25 +278,26 @@ const Select = ({
     <Tag
       {...field}
       onChange={onChangeHandler}
-      ref={selectRef}
+      ref={attributes.loadOptions ? undefined : selectRef}
+      selectRef={attributes.loadOptions ? selectRef : undefined}
       name={name}
       classNamePrefix="av"
       role="listbox"
-      SelectComponent={
-        attributes.loadOptions && creatable ? Creatable : undefined
-      }
       onCreateOption={handleCreate}
       className={classNames(
         className,
         'av-select',
         touched ? 'is-touched' : 'is-untouched',
-        hasError ? 'av-invalid' : 'av-valid',
-        touched && hasError && 'is-invalid'
+        fieldError ? 'av-invalid' : 'av-valid',
+        touched && fieldError && 'is-invalid'
       )}
       getOptionLabel={getOptionLabel}
       getOptionValue={getOptionValue}
       closeMenuOnSelect={!attributes.isMulti}
-      components={components}
+      aria-invalid={fieldError && touched}
+      aria-errormessage={feedback && fieldValue && fieldError && touched ? `${name}-feedback`.toLowerCase() : ''}
+      placeholder={placeholder}
+      components={{ ...components, ...componentOverrides }}
       options={selectOptions}
       defaultOptions={waitUntilFocused ? [] : true}
       cacheUniqs={_cacheUniq}
@@ -312,9 +305,12 @@ const Select = ({
         ...styles,
         placeholder: (provided, state) => {
           if (state.isDisabled) {
-            return provided;
+            return {
+              ...provided,
+              borderColor: '#ced4da',
+            };
           }
-          const showError = touched && hasError && !state.focused;
+          const showError = touched && fieldError && !state.focused;
 
           return {
             ...provided,
@@ -334,26 +330,33 @@ const Select = ({
           if (state.isDisabled) {
             return {
               ...provided,
-              borderRadius: '.25em',
-              borderColor: '#ced4da',
+              borderRadius: '0.25em',
+              borderColor: 'inherit',
               backgroundColor: '#e9ecef',
             };
           }
-          const showError = touched && hasError && !state.focused;
+          const showError = touched && fieldError;
 
           return {
             ...provided,
-            borderRadius: '.25em',
-            backgroundColor: showError ? '#fbcbc8' : 'white',
-            borderColor: showError ? '#931b1d' : '#555555',
+            borderRadius: '0.25em',
+            backgroundColor: 'white',
+            borderColor: showError ? '#dc3545' : '#555',
             ':hover': {
-              borderColor: showError ? '#931b1d' : 'rgb(50 98 175)',
+              borderColor: showError ? '#dc3545' : '#555',
+              cursor: 'text',
+            },
+            ':focus-within': {
+              borderColor: showError ? '#dc3545' : '#2261b5',
+              boxShadow: showError ? '0 0 0 0.2rem rgba(220 53 69 / 25%)' : '0 0 0 0.2rem #2261b5',
             },
             zIndex: state.focused && '3',
           };
         },
+        menu: (provided) => ({ ...provided, borderRadius: '.25em' }),
         multiValue: (provided) => ({
           ...provided,
+          borderRadius: '0.25em',
           width: 'auto',
         }),
         input: (provided) => ({
@@ -364,25 +367,26 @@ const Select = ({
           if (state.isDisabled) {
             return provided;
           }
-          const showError = touched && hasError && !state.focused;
+          const showError = touched && fieldError && !state.focused;
 
           return {
             ...provided,
             pointerEvents: 'none',
-            color: showError ? '#931b1d' : 'hsl(0,0%,80%)',
+            color: showError ? '#dc3545' : '#555',
           };
         },
         option: (provided) => ({
           ...provided,
         }),
       }}
-      theme={theme => ({
+      theme={(theme) => ({
         ...theme,
         borderRadius: 0,
+        boxShadow: 0,
         colors: {
           ...theme.colors,
-          primary25: '#85a8dc',
-          primary: 'rgb(50 98 175)',
+          primary25: '#b8d4fb',
+          primary: '#3262af',
         },
       })}
       {...attributes}
@@ -410,11 +414,23 @@ Select.propTypes = {
   autofill: PropTypes.oneOfType([PropTypes.bool, PropTypes.object]),
   allowSelectAll: PropTypes.bool,
   waitUntilFocused: PropTypes.bool,
+  helpMessage: PropTypes.oneOfType([PropTypes.string, PropTypes.node]),
+  feedback: PropTypes.bool,
+  placeholder: PropTypes.string,
+  components: PropTypes.object,
 };
 
 components.Option.propTypes = {
   innerProps: PropTypes.object,
   isSelected: PropTypes.bool,
+};
+
+components.ClearIndicator.propTypes = {
+  innerProps: PropTypes.object,
+};
+
+components.MultiValueRemove.propTypes = {
+  innerProps: PropTypes.object,
 };
 
 export default Select;

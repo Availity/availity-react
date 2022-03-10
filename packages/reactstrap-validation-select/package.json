@@ -1,36 +1,33 @@
 {
   "name": "@availity/reactstrap-validation-select",
-  "version": "7.0.4",
+  "version": "9.4.1",
   "description": "Wrapper for react-select to work with availity-reactstrap-validation",
-  "main": "index.js",
-  "types": "index.d.ts",
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
-  },
   "keywords": [
     "availity",
     "reactstrap",
     "validation",
     "select"
   ],
-  "author": "Evan Sharp <evan.sharp@availity.com>",
-  "license": "MIT",
-  "repository": {
-    "type": "git",
-    "url": "https://github.com/Availity/availity-react.git"
-  },
+  "homepage": "https://github.com/Availity/availity-react/tree/master/packages/reactstrap-validation-select#readme",
   "bugs": {
     "url": "https://github.com/Availity/availity-react/issues"
   },
-  "homepage": "https://github.com/Availity/availity-react/tree/master/packages/reactstrap-validation-select#readme",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Availity/availity-react.git",
+    "directory": "packages/reactstrap-validation-select"
+  },
+  "license": "MIT",
+  "author": "Evan Sharp <evan.sharp@availity.com>",
+  "main": "index.js",
+  "types": "index.d.ts",
   "dependencies": {
-    "@types/react-select": "^3.0.23",
     "classnames": "^2.3.1",
     "lodash": "^4.17.21",
     "prop-types": "^15.7.2",
     "qs": "^6.5.2",
-    "react-select": "^3.0.3",
-    "react-select-async-paginate": "^0.4.1"
+    "react-select": "^5.0.0",
+    "react-select-async-paginate": "^0.6.0"
   },
   "devDependencies": {
     "@availity/api-axios": "^6.0.0",

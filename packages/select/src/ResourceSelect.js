@@ -24,10 +24,13 @@ const ResourceSelect = ({
   onFocus,
   waitUntilFocused,
   defaultToOnlyOption,
+  defaultToFirstOption,
   shouldSearch,
   additionalPostGetArgs,
   pageAll,
   pageAllSearchBy,
+  searchTerm,
+  encodeSearchValue,
   ...rest
 }) => {
   const { setFieldValue } = useFormikContext();
@@ -67,9 +70,7 @@ const ResourceSelect = ({
     let { page } = additional;
 
     const shouldReturnPreviousOptions =
-      inputValue.length > 0 &&
-      minCharsToSearch !== undefined &&
-      inputValue.length < minCharsToSearch;
+      inputValue.length > 0 && minCharsToSearch !== undefined && inputValue.length < minCharsToSearch;
 
     if (shouldReturnPreviousOptions) {
       return {
@@ -89,7 +90,7 @@ const ResourceSelect = ({
         variables: {
           perPage: itemsPerPage,
           filters: {
-            q: encodeURIComponent(inputValue),
+            [searchTerm]: encodeSearchValue ? encodeURIComponent(inputValue) : inputValue,
           },
         },
       };
@@ -109,7 +110,7 @@ const ResourceSelect = ({
       }
     } else {
       params = {
-        q: encodeURIComponent(inputValue),
+        [searchTerm]: encodeSearchValue ? encodeURIComponent(inputValue) : inputValue,
         limit: itemsPerPage,
         customerId: rest.customerId,
       };
@@ -145,14 +146,11 @@ const ResourceSelect = ({
       page = 1;
     }
 
-    let requiredSatisfied =
-      !rest.requiredParams || rest.requiredParams.length === 0;
+    let requiredSatisfied = !rest.requiredParams || rest.requiredParams.length === 0;
 
     if (!requiredSatisfied) {
       requiredSatisfied = graphqlConfig
-        ? rest.requiredParams.every((param) =>
-            get(data, `variables.filters.${param}`)
-          )
+        ? rest.requiredParams.every((param) => get(data, `variables.filters.${param}`))
         : rest.requiredParams.every((param) => params[param]);
     }
 
@@ -177,10 +175,7 @@ const ResourceSelect = ({
       }
       return {
         options: previousOptions.filter(
-          (option) =>
-            option[rest.labelKey || rest.label]
-              .toLowerCase()
-              .indexOf(inputValue.toLowerCase()) >= 0
+          (option) => option[rest.labelKey || rest.label].toLowerCase().indexOf(inputValue.toLowerCase()) >= 0
         ),
         hasMore: false,
       };
@@ -225,31 +220,18 @@ const ResourceSelect = ({
         let items = [];
         if (pageAll) {
           items = resp.data ? resp.data : resp;
-          if (getResult)
-            items =
-              typeof getResult === 'function'
-                ? getResult.call(resource, items)
-                : items[getResult];
+          if (getResult) items = typeof getResult === 'function' ? getResult.call(resource, items) : items[getResult];
         } else {
-          items =
-            typeof getResult === 'function'
-              ? getResult.call(resource, resp.data)
-              : resp.data[getResult];
+          items = typeof getResult === 'function' ? getResult.call(resource, resp.data) : resp.data[getResult];
         }
 
         if (hasMore === undefined) {
           if (graphqlConfig) {
-            hasMore = (data) =>
-              get(
-                data.data,
-                `${graphqlConfig.type}Pagination.pageInfo.hasNextPage`,
-                false
-              );
+            hasMore = (data) => get(data.data, `${graphqlConfig.type}Pagination.pageInfo.hasNextPage`, false);
           } else if (pageAll) {
             hasMore = false;
           } else {
-            hasMore = ({ totalCount, limit, offset }) =>
-              totalCount > offset + limit;
+            hasMore = ({ totalCount, limit, offset }) => totalCount > offset + limit;
           }
         }
 
@@ -266,17 +248,19 @@ const ResourceSelect = ({
          * We only want to default to the first option under the following conditions:
          * 1. defaultToOnlyOption is true
          * 2. There is only one option
+         *   OR
+         * 1. defaultToFirstOption is true
+         * 2. There is at least 1 option
+         *
          * 3. waitUntilFocused is false - Otherwise we would be defaulting the value when the user has the dropdown open to select a value
          * 4. numTimesResourceCalled is 0 - This means this is the first time calling the resource. Again, otherwise we would be defaulting the value when the user has the dropdown open to select a value - keeping in mind numTimesResourceCalled resets to 0 any time cacheUniq changes
          */
-        if (
-          defaultToOnlyOption &&
-          items.length === 1 &&
-          !waitUntilFocused &&
-          numTimesResourceCalled === 0
-        ) {
-          await setFieldValue(name, items[0]);
+        if (!waitUntilFocused && numTimesResourceCalled === 0 && items.length > 0) {
+          if ((defaultToOnlyOption && items.length === 1) || defaultToFirstOption) {
+            await setFieldValue(name, items[0]);
+          }
         }
+
         setNumTimesResourceCalled(numTimesResourceCalled + 1);
 
         return {
@@ -351,11 +335,14 @@ ResourceSelect.propTypes = {
   onFocus: PropTypes.func,
   waitUntilFocused: PropTypes.bool,
   defaultToOnlyOption: PropTypes.bool,
+  defaultToFirstOption: PropTypes.bool,
   shouldSearch: PropTypes.oneOfType([PropTypes.bool, PropTypes.func]),
   additionalPostGetArgs: PropTypes.object,
   pageAll: PropTypes.bool,
   pageAllSearchBy: PropTypes.func,
   onError: PropTypes.func,
+  searchTerm: PropTypes.string,
+  encodeSearchValue: PropTypes.bool,
 };
 
 ResourceSelect.defaultProps = {
@@ -363,19 +350,18 @@ ResourceSelect.defaultProps = {
   itemsPerPage: 50,
   waitUntilFocused: false,
   defaultToOnlyOption: false,
+  defaultToFirstOption: false,
   shouldSearch: true,
   pageAll: false,
+  searchTerm: 'q',
+  encodeSearchValue: true,
 };
 
 const ucFirst = (str) => str && str.charAt(0).toUpperCase() + str.slice(1);
 
 ResourceSelect.create = (defaults) => {
-  const SpecificResourceSelect = (props) => (
-    <ResourceSelect {...defaults} {...props} />
-  );
-  SpecificResourceSelect.displayName = `${ucFirst(
-    defaults.resource.defaultConfig.name
-  )}Select`;
+  const SpecificResourceSelect = (props) => <ResourceSelect {...defaults} {...props} />;
+  SpecificResourceSelect.displayName = `${ucFirst(defaults.resource.defaultConfig.name)}Select`;
   return SpecificResourceSelect;
 };
 

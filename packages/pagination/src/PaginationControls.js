@@ -14,16 +14,14 @@ const PaginationControls = ({
   pageRange,
   marginPages,
   breakLabel,
+  showPaginationText,
+  populatePaginationText,
   ...rest
 }) => {
-  const { pageCount, currentPage, setPage } = usePagination();
+  const { pageCount, currentPage, setPage, lower, upper, total } = usePagination();
 
   const createItem = (pageNumber) => (
-    <PaginationItem
-      key={pageNumber}
-      active={currentPage === pageNumber}
-      data-testid={`control-page-${pageNumber}`}
-    >
+    <PaginationItem key={pageNumber} active={currentPage === pageNumber} data-testid={`control-page-${pageNumber}`}>
       <PaginationLink
         style={{ zIndex: 'auto' }}
         onClick={() => setPage(pageNumber)}
@@ -112,14 +110,9 @@ const PaginationControls = ({
   return pageCount > 1 || !autoHide ? (
     <Pagination data-testid="pagination-controls-con" {...rest}>
       {directionLinks ? (
-        <PaginationItem
-          disabled={currentPage === 1}
-          data-testid="pagination-control-previous"
-        >
+        <PaginationItem disabled={currentPage === 1} data-testid="pagination-control-previous">
           <PaginationLink
-            onClick={() =>
-              currentPage === 1 ? null : setPage(currentPage - 1)
-            }
+            onClick={() => (currentPage === 1 ? null : setPage(currentPage - 1))}
             type="button"
             aria-disabled={currentPage === 1}
             previous
@@ -132,15 +125,10 @@ const PaginationControls = ({
       )}
       {paginate()}
       {directionLinks ? (
-        <PaginationItem
-          disabled={currentPage === pageCount}
-          data-testid="pagination-control-next"
-        >
+        <PaginationItem disabled={currentPage === pageCount} data-testid="pagination-control-next">
           <PaginationLink
             data-testid="pagination-control-next-link"
-            onClick={() =>
-              currentPage === pageCount ? null : setPage(currentPage + 1)
-            }
+            onClick={() => (currentPage === pageCount ? null : setPage(currentPage + 1))}
             type="button"
             aria-disabled={currentPage === pageCount}
             next
@@ -150,6 +138,11 @@ const PaginationControls = ({
         </PaginationItem>
       ) : (
         ''
+      )}
+      {showPaginationText && (
+        <div data-testid="pagination-text" className="pagination-text pt-1 pl-2 pr-2">
+          {populatePaginationText ? populatePaginationText(lower, upper, total) : `${lower}-${upper} of ${total}`}
+        </div>
       )}
     </Pagination>
   ) : (
@@ -165,6 +158,8 @@ PaginationControls.propTypes = {
   breakLabel: PropTypes.bool,
   listClassName: PropTypes.string,
   'aria-label': PropTypes.string,
+  showPaginationText: PropTypes.bool,
+  populatePaginationText: PropTypes.func,
 };
 
 PaginationControls.defaultProps = {
@@ -173,6 +168,7 @@ PaginationControls.defaultProps = {
   pageRange: 5,
   marginPages: 2,
   breakLabel: true,
+  showPaginationText: false,
 };
 
 export default PaginationControls;

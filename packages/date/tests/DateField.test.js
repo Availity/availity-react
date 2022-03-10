@@ -20,11 +20,7 @@ describe('Date', () => {
         }}
         onSubmit={onSubmit}
       >
-        <DateField
-          name="singleDate"
-          data-testid="single-select"
-          label="My Date Field"
-        />
+        <DateField name="singleDate" data-testid="single-select" label="My Date Field" />
         <Button type="submit">Submit</Button>
       </Form>
     );
@@ -45,11 +41,7 @@ describe('Date', () => {
         }}
         onSubmit={onSubmit}
       >
-        <DateField
-          name="singleDate"
-          data-testid="single-select"
-          label={<Label>My Date Field</Label>}
-        />
+        <DateField name="singleDate" data-testid="single-select" label={<Label>My Date Field</Label>} />
         <Button type="submit">Submit</Button>
       </Form>
     );
@@ -70,12 +62,7 @@ describe('Date', () => {
         }}
         onSubmit={onSubmit}
       >
-        <DateField
-          name="singleDate"
-          data-testid="single-select"
-          label="My Date Field"
-          labelAttrs={{ tag: 'h3' }}
-        />
+        <DateField name="singleDate" data-testid="single-select" label="My Date Field" labelAttrs={{ tag: 'h3' }} />
         <Button type="submit">Submit</Button>
       </Form>
     );
@@ -84,6 +71,38 @@ describe('Date', () => {
 
     const label = getByText('My Date Field');
     expect(label.tagName).toEqual('H3');
+  });
+
+  test('renders with field help icon', () => {
+    const { getByTestId } = render(
+      <Form
+        initialValues={{
+          singleDate: '',
+        }}
+        onSubmit={() => {}}
+      >
+        <DateField name="singleDate" data-testid="single-select" label="My Date Field" helpId="dateHelp" />
+        <Button type="submit">Submit</Button>
+      </Form>
+    );
+
+    expect(getByTestId('field-help-icon')).toBeDefined();
+  });
+
+  test('renders with required asterisk', () => {
+    const { getByTestId } = render(
+      <Form
+        initialValues={{
+          singleDate: '',
+        }}
+        onSubmit={() => {}}
+      >
+        <DateField name="singleDate" data-testid="single-select" label="My Date Field" required />
+        <Button type="submit">Submit</Button>
+      </Form>
+    );
+
+    expect(getByTestId('required-asterisk')).toBeDefined();
   });
 
   test('renders error text', async () => {

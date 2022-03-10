@@ -41,7 +41,7 @@ const Example = () => (
 );
 ```
 
-#### Live example: <a href="https://availity.github.io/availity-react/storybook/?path=/story/formik-select--selectfield"> Storybook</a>
+#### Live example: [Storybook](https://availity.github.io/availity-react/storybook/?path=/story/formik-select--selectfield)
 
 ### Props
 
@@ -62,6 +62,18 @@ Whether the `label` should be hidden.
 #### `labelClass?: string`
 
 Class names to pass to the `Label`.
+
+#### `helpId?: string`
+
+Help topic id, adds `<FieldHelpIcon/>` next to the label (should not be within label for accessibility).
+
+#### `helpMessage?: string`
+
+Adds help message below input.
+
+#### `required?: boolean`
+
+Will add `<RequiredAsterisk />` to label.
 
 #### `feedbackClass?: string`
 

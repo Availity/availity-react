@@ -53,10 +53,7 @@ describe('useProviders', () => {
   test('should return an error', async () => {
     avProvidersApi.getProviders.mockRejectedValueOnce('An error occurred');
 
-    const { getByText } = renderWithClient(
-      queryClient,
-      <Component log={pushState} />
-    );
+    const { getByText } = renderWithClient(queryClient, <Component log={pushState} />);
 
     getByText('Status: loading');
     await waitFor(() => {
@@ -84,10 +81,7 @@ describe('useProviders', () => {
       },
     });
 
-    const { getByText } = renderWithClient(
-      queryClient,
-      <Component log={pushState} />
-    );
+    const { getByText } = renderWithClient(queryClient, <Component log={pushState} />);
 
     getByText('Status: loading');
     await waitFor(() => {

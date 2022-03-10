@@ -1,0 +1,38 @@
+{
+  "name": "@availity/table",
+  "version": "0.3.2",
+  "description": "A generic table wrapper for react-table",
+  "keywords": [
+    "react",
+    "availity"
+  ],
+  "bugs": {
+    "url": "https://github.com/Availity/availity-react/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Availity/availity-react.git"
+  },
+  "license": "MIT",
+  "author": "Ashlee Zeigler <ashlee.zeigler@availity.com>",
+  "main": "dist/index.js",
+  "module": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "dependencies": {
+    "@availity/icon": "^0.10.2",
+    "@types/react-table": "^7.7.7",
+    "classnames": "^2.3.1",
+    "lodash": "^4.17.21",
+    "moment": "^2.29.1",
+    "react-table": "^7.7.0",
+    "reactstrap": "^8.9.0"
+  },
+  "peerDependencies": {
+    "availity-uikit": ">=3.0.0",
+    "react": "^17.0.2",
+    "react-dom": "^17.0.2"
+  },
+  "publishConfig": {
+    "access": "public"
+  }
+}

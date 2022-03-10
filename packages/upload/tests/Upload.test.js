@@ -6,17 +6,13 @@ afterEach(cleanup);
 
 describe('Upload', () => {
   test('should render', () => {
-    const { container } = render(
-      <Upload clientId="a" bucketId="b" customerId="c" />
-    );
+    const { container } = render(<Upload clientId="a" bucketId="b" customerId="c" />);
 
     expect(container).toMatchSnapshot();
   });
 
   test('adding a file', () => {
-    const { getByTestId } = render(
-      <Upload clientId="a" bucketId="b" customerId="c" showFileDrop />
-    );
+    const { getByTestId } = render(<Upload clientId="a" bucketId="b" customerId="c" showFileDrop />);
 
     const file = new Buffer.from('hello world'.split('')); // eslint-disable-line new-cap
     file.name = 'fileName.png';
@@ -30,9 +26,7 @@ describe('Upload', () => {
   });
 
   test('removing a file', () => {
-    const { getByTestId, queryByTestId } = render(
-      <Upload clientId="a" bucketId="b" customerId="c" />
-    );
+    const { getByTestId, queryByTestId } = render(<Upload clientId="a" bucketId="b" customerId="c" />);
 
     // Create a new file
     const file = new Buffer.from('hello world'.split('')); // eslint-disable-line new-cap
@@ -56,14 +50,7 @@ describe('Upload', () => {
 
   test('calls onFilePreUpload callback', () => {
     const mockFunc = jest.fn();
-    const { getByTestId } = render(
-      <Upload
-        clientId="a"
-        bucketId="b"
-        customerId="c"
-        onFilePreUpload={[mockFunc]}
-      />
-    );
+    const { getByTestId } = render(<Upload clientId="a" bucketId="b" customerId="c" onFilePreUpload={[mockFunc]} />);
     const inputNode = getByTestId('file-picker');
 
     const file = new Buffer.from('hello world'.split('')); // eslint-disable-line new-cap
@@ -83,14 +70,7 @@ describe('Upload', () => {
   test('calls onFileRemove callback', () => {
     const mockFunc = jest.fn();
 
-    const { getByTestId } = render(
-      <Upload
-        clientId="a"
-        bucketId="b"
-        customerId="c"
-        onFileRemove={mockFunc}
-      />
-    );
+    const { getByTestId } = render(<Upload clientId="a" bucketId="b" customerId="c" onFileRemove={mockFunc} />);
 
     const inputNode = getByTestId('file-picker');
 
@@ -110,9 +90,7 @@ describe('Upload', () => {
   });
 
   test('adds file via dropzone', () => {
-    const { getByTestId } = render(
-      <Upload clientId="a" bucketId="b" customerId="c" showFileDrop />
-    );
+    const { getByTestId } = render(<Upload clientId="a" bucketId="b" customerId="c" showFileDrop />);
     const file = new Buffer.from('hello world'.split('')); // eslint-disable-line new-cap
     file.name = 'fileName.png';
 
@@ -126,13 +104,7 @@ describe('Upload', () => {
 
   test('uses default drop rejection message', async () => {
     const { getByTestId, getByText } = render(
-      <Upload
-        clientId="a"
-        bucketId="b"
-        customerId="c"
-        showFileDrop
-        maxSize={10}
-      />
+      <Upload clientId="a" bucketId="b" customerId="c" showFileDrop maxSize={10} />
     );
     const file = new Buffer.from('hello world'.split('')); // eslint-disable-line new-cap
     file.name = 'fileName.png';
@@ -178,12 +150,9 @@ describe('Upload', () => {
     // eslint-disable-next-line unicorn/consistent-function-scoping
     const getDropRejectionMessage = (errors) => {
       let msg = '';
-      errors.forEach((error) => {
-        msg +=
-          error.code === 'file-too-large'
-            ? 'my custom error message'
-            : 'this file is no good';
-      });
+      for (const error of errors) {
+        msg += error.code === 'file-too-large' ? 'my custom error message' : 'this file is no good';
+      }
       return msg;
     };
 
@@ -216,12 +185,9 @@ describe('Upload', () => {
     // eslint-disable-next-line unicorn/consistent-function-scoping
     const getDropRejectionMessage = (errors) => {
       let msg = '';
-      errors.forEach((error) => {
-        msg +=
-          error.code === 'file-too-large'
-            ? 'my custom error message'
-            : 'this file is no good';
-      });
+      for (const error of errors) {
+        msg += error.code === 'file-too-large' ? 'my custom error message' : 'this file is no good';
+      }
       return msg;
     };
 

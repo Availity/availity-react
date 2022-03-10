@@ -3,6 +3,41 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.3.2](https://github.com/Availity/availity-react/compare/@availity/list-group@1.3.1...@availity/list-group@1.3.2) (2021-12-20)
+
+**Note:** Version bump only for package @availity/list-group
+
+
+
+
+
+## 1.3.1 (2021-12-14)
+
+**Note:** Version bump only for package @availity/list-group
+
+
+
+
+
+# 1.3.0 (2021-11-15)
+
+
+### Features
+
+* move storybook, stories, and fix hmr ([2f65f71](https://github.com/Availity/availity-react/commit/2f65f71769d2d981e22700b87a09516833588f64))
+
+
+
+
+
+## 1.2.25 (2021-10-19)
+
+**Note:** Version bump only for package @availity/list-group
+
+
+
+
+
 ## [1.2.24](https://github.com/Availity/availity-react/compare/@availity/list-group@1.2.23...@availity/list-group@1.2.24) (2021-10-01)
 
 **Note:** Version bump only for package @availity/list-group

@@ -2,6 +2,7 @@ import React, { useEffect, useCallback } from 'react';
 import PropTypes from 'prop-types';
 import { useFormikContext } from 'formik';
 import { avRegionsApi } from '@availity/api-axios';
+
 import { ResourceSelect } from '..';
 
 const RegionSelect = ResourceSelect.create({
@@ -44,9 +45,7 @@ const AvRegionSelect = ({ defaultToCurrentRegion, name, ...props }) => {
       name={name}
       pageAll
       pageAllSearchBy={searchBy}
-      getResult={(regions) =>
-        regions.map((region) => ({ id: region.id, value: region.value }))
-      }
+      getResult={(regions) => regions.map((region) => ({ id: region.id, value: region.value }))}
       {...props}
     />
   );

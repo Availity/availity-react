@@ -3,6 +3,56 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.4.2](https://github.com/Availity/availity-react/compare/@availity/training-link@1.4.1...@availity/training-link@1.4.2) (2021-12-20)
+
+**Note:** Version bump only for package @availity/training-link
+
+
+
+
+
+## 1.4.1 (2021-12-14)
+
+**Note:** Version bump only for package @availity/training-link
+
+
+
+
+
+# [1.4.0](https://github.com/Availity/availity-react/compare/@availity/training-link@1.3.3...@availity/training-link@1.4.0) (2021-11-15)
+
+
+### Features
+
+* move storybook, stories, and fix hmr ([2f65f71](https://github.com/Availity/availity-react/commit/2f65f71769d2d981e22700b87a09516833588f64))
+
+
+
+
+
+## 1.3.3 (2021-11-05)
+
+
+### Bug Fixes
+
+* coordinate accessible UI changes ([ee84d14](https://github.com/Availity/availity-react/commit/ee84d14412864943e626422e075071cd0571f783))
+* remove training-link snapshot, update link tests ([150ba4e](https://github.com/Availity/availity-react/commit/150ba4e59241f7843d11cbbee566fa356defeac9))
+
+
+
+
+
+## 1.3.2 (2021-10-19)
+
+
+### Bug Fixes
+
+* **training-link:** update types ([21f3d86](https://github.com/Availity/availity-react/commit/21f3d86a50d94167614e5a064cf42c3b5b4187f4))
+
+
+
+
+
 ## [1.3.1](https://github.com/Availity/availity-react/compare/@availity/training-link@1.3.0...@availity/training-link@1.3.1) (2021-09-28)
 
 **Note:** Version bump only for package @availity/training-link

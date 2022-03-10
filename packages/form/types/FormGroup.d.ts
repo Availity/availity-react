@@ -1,12 +1,9 @@
-/* eslint-disable @typescript-eslint/no-explicit-any */
-import * as React from 'react';
+import { FormGroupProps } from 'reactstrap';
 
-export interface FormGroupProps extends React.HTMLAttributes<HTMLFormElement> {
-  [key: string]: any;
-  tag?: React.ReactType | string;
+export type Props = {
   for: string;
-}
+} & FormGroupProps;
 
-declare class FormGroup extends React.Component<FormGroupProps> {}
+declare const FormGroup: (props: Props) => JSX.Element;
 
 export default FormGroup;

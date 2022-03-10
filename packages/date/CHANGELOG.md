@@ -3,6 +3,303 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## 3.4.5 (2022-03-09)
+
+**Note:** Version bump only for package @availity/date
+
+
+
+
+
+## [3.4.4](https://github.com/Availity/availity-react/compare/@availity/date@3.3.1...@availity/date@3.4.4) (2022-02-11)
+
+**Note:** Version bump only for package @availity/date
+
+
+
+
+
+## [3.4.3](https://github.com/Availity/availity-react/compare/@availity/date@3.4.2...@availity/date@3.4.3) (2022-02-03)
+
+
+### Bug Fixes
+
+* **date:** fix DateRangePicker props on element definition so that they are customizable and not hardcoded ([e1c229a](https://github.com/Availity/availity-react/commit/e1c229a99d960c4338e21ea4120aad2526416fc8))
+
+
+
+
+
+## 3.4.2 (2022-02-02)
+
+
+### Bug Fixes
+
+* **date:** prevent loss of onChange handler when date value is manually cleared out ([00fd97e](https://github.com/Availity/availity-react/commit/00fd97ee183cbc2afe87f3bb7b276097ea5c31f6))
+
+
+
+
+
+## [3.4.1](https://github.com/Availity/availity-react/compare/@availity/date@3.4.0...@availity/date@3.4.1) (2022-01-18)
+
+
+### Bug Fixes
+
+* **reactstrap-validation-date,date:** updated react-dates for phrases ([687d8a3](https://github.com/Availity/availity-react/commit/687d8a350a3f2bceb5f37e19e42781b3dbef9d0e))
+
+
+
+
+
+# [3.4.0](https://github.com/Availity/availity-react/compare/@availity/date@3.3.2...@availity/date@3.4.0) (2022-01-05)
+
+
+### Features
+
+* **date:** add back in dangling commas ([9c87374](https://github.com/Availity/availity-react/commit/9c873744d0f4cc5fd96ef4e9175f722c7d7e805f))
+* **date:** undo changes, just move enableOutsideDays above spread so we can override it ([52ba998](https://github.com/Availity/availity-react/commit/52ba998a52b1527e12c763bbad9240e522b7a2c3))
+* **table:** add enableOutsideDays attribute so that this can be configured rather than automatically set to true ([c880cc6](https://github.com/Availity/availity-react/commit/c880cc65dc6ae58b37983cb533e64a30c18f5654))
+
+
+
+
+
+## 3.3.2 (2022-01-05)
+
+
+### Bug Fixes
+
+* **date:** fix console error that happens whenever selecting a range for the date range ([3d50680](https://github.com/Availity/availity-react/commit/3d50680f53860673ef0968fa2ea3217594d843d5))
+* **date:** remove calendarIconRef completely ([0d72d9d](https://github.com/Availity/availity-react/commit/0d72d9df929a4abd8173024d7e0046fa5932e3dd))
+
+
+
+
+
+## [3.3.1](https://github.com/Availity/availity-react/compare/@availity/date@3.3.0...@availity/date@3.3.1) (2021-12-20)
+
+**Note:** Version bump only for package @availity/date
+
+
+
+
+
+# [3.3.0](https://github.com/Availity/availity-react/compare/@availity/date@3.2.2...@availity/date@3.3.0) (2021-12-20)
+
+
+### Features
+
+* **date,reactstrap-validation-date:** added aria-describedby to date inputs so that screen readers will read errors ([38eb5c4](https://github.com/Availity/availity-react/commit/38eb5c4bd0d115b067bfa2d7b8da19e4c432c662))
+* **date,reactstrap-validation-date:** fixing lint issues ([9decfce](https://github.com/Availity/availity-react/commit/9decfcefca7dcda9c2ec575cf26ad388747cac09))
+* **date,reactstrap-validation-date:** removed extra lines ([0489761](https://github.com/Availity/availity-react/commit/04897612a09f9376bb5d7b1f03970a05ceeb22db))
+* **date,reactstrap-validation-date:** removed extra lines ([11e76de](https://github.com/Availity/availity-react/commit/11e76deb80960822906c4d6fd65e45da15bf9009))
+* **date,reactstrap-validation-date:** restructuring aria-describedby attribute to be set in DateRangeField ([f972a45](https://github.com/Availity/availity-react/commit/f972a456c4a9f4eae6197620cef7b62eba693b95))
+
+
+
+
+
+## [3.2.2](https://github.com/Availity/availity-react/compare/@availity/date@3.2.1...@availity/date@3.2.2) (2021-12-15)
+
+
+### Bug Fixes
+
+* **reactstrap-validation-date,date:** updated version to fix tab issue ([ac5d369](https://github.com/Availity/availity-react/commit/ac5d3692db62740ed59abf8962800f7f4a8ae3fc))
+
+
+
+
+
+## 3.2.1 (2021-12-14)
+
+**Note:** Version bump only for package @availity/date
+
+
+
+
+
+# 3.2.0 (2021-12-10)
+
+
+### Bug Fixes
+
+* **date:** fix passThroughInvalidDates to be optional in typedef ([d3bad3e](https://github.com/Availity/availity-react/commit/d3bad3ef6baa6f676403642c639ef2d403ff817d))
+* **date:** rename prop ([dc95b8d](https://github.com/Availity/availity-react/commit/dc95b8ddcca3c55f3933f764579506ae98be46a7))
+
+
+### Features
+
+* **date:** allow dateRange to pass through invalid formatted dates with extra prop ([b7f5da3](https://github.com/Availity/availity-react/commit/b7f5da327db90992c3812d77c60560c43761db75))
+* **date:** fix new DateRange test ([066b6e9](https://github.com/Availity/availity-react/commit/066b6e95173f04b596f482c66b2cd8161c5fe3f6))
+
+
+
+
+
+## [3.1.4](https://github.com/Availity/availity-react/compare/@availity/date@3.1.3...@availity/date@3.1.4) (2021-12-09)
+
+
+### Bug Fixes
+
+* **reactstrap-validation-date,date:** set autocomplete prop to fix autofill bug ([c93eaa6](https://github.com/Availity/availity-react/commit/c93eaa6e52e782c3a4a73cecf5721c22d0807fd7))
+
+
+
+
+
+## 3.1.3 (2021-12-06)
+
+
+### Bug Fixes
+
+* **reactstrap-validation-date,date:** fixed test that used date icon ([351291e](https://github.com/Availity/availity-react/commit/351291e9380ba39fa87892a3c138a6796ab482d6))
+* **reactstrap-validation-date,date:** removed date icon to fix accessiiblity issues ([dcb8179](https://github.com/Availity/availity-react/commit/dcb8179f7f9fb70ce13440328d22c551643dd35a))
+* **reactstrap-validation-date,date:** removed unused code and imports ([887066d](https://github.com/Availity/availity-react/commit/887066db55eb6c10a53747c0c5262ff41f21cb88))
+* **reactstrap-validation-date,date:** removed unused code and imports ([be51dea](https://github.com/Availity/availity-react/commit/be51dead1fc5daaec0b1f17c7f0b239df73c271f))
+* **reactstrap-validation-date,date:** removed unused code and imports ([ba713b8](https://github.com/Availity/availity-react/commit/ba713b8aee77f6eff7d4c6a46fa87b592de4dba7))
+
+
+
+
+
+## 3.1.2 (2021-12-03)
+
+
+### Bug Fixes
+
+* **reactstrap-validation-date,date:** replaced react-dates with availity version for accessibility fixes ([63fb249](https://github.com/Availity/availity-react/commit/63fb249575044b1465755e1067e426d99e845429))
+
+
+
+
+
+## 3.1.1 (2021-11-30)
+
+**Note:** Version bump only for package @availity/date
+
+
+
+
+
+# [3.1.0](https://github.com/Availity/availity-react/compare/@availity/date@2.1.23...@availity/date@3.1.0) (2021-11-15)
+
+
+### Features
+
+* move storybook, stories, and fix hmr ([2f65f71](https://github.com/Availity/availity-react/commit/2f65f71769d2d981e22700b87a09516833588f64))
+
+
+
+
+
+# [3.0.0](https://github.com/Availity/availity-react/compare/@availity/date@2.1.23...@availity/date@3.0.0) (2021-11-12)
+
+
+### Bug Fixes
+
+* **date:** use label from availity/form ([46d0791](https://github.com/Availity/availity-react/commit/46d07916ea7cd69d8d980e987368bed309479bea))
+
+
+### Features
+
+* **date:** add label component with required asterisk and field help icon handling ([ad1d10a](https://github.com/Availity/availity-react/commit/ad1d10a9392d3c45bcc7c7fcc50df3f891f7aa25))
+
+
+### BREAKING CHANGES
+
+* **date:** Requires v1.1.0 of form for label component
+
+
+
+
+
+## [2.1.23](https://github.com/Availity/availity-react/compare/@availity/date@2.1.21...@availity/date@2.1.23) (2021-11-05)
+
+
+### Bug Fixes
+
+* coordinate accessible UI changes ([ee84d14](https://github.com/Availity/availity-react/commit/ee84d14412864943e626422e075071cd0571f783))
+
+
+
+
+
+## [2.1.22](https://github.com/Availity/availity-react/compare/@availity/date@2.1.21...@availity/date@2.1.22) (2021-10-28)
+
+**Note:** Version bump only for package @availity/date
+
+
+
+
+
+## 2.1.21 (2021-10-28)
+
+**Note:** Version bump only for package @availity/date
+
+
+
+
+
+## 2.1.20 (2021-10-19)
+
+**Note:** Version bump only for package @availity/date
+
+
+
+
+
+## [2.1.19](https://github.com/Availity/availity-react/compare/@availity/date@2.1.18...@availity/date@2.1.19) (2021-10-19)
+
+**Note:** Version bump only for package @availity/date
+
+
+
+
+
+## [2.1.18](https://github.com/Availity/availity-react/compare/@availity/date@2.1.17...@availity/date@2.1.18) (2021-10-19)
+
+**Note:** Version bump only for package @availity/date
+
+
+
+
+
+## 2.1.17 (2021-10-19)
+
+**Note:** Version bump only for package @availity/date
+
+
+
+
+
+## [2.1.16](https://github.com/Availity/availity-react/compare/@availity/date@2.1.14...@availity/date@2.1.16) (2021-10-11)
+
+
+### Bug Fixes
+
+* **date:** update types to correctly reflect props ([dd9a76e](https://github.com/Availity/availity-react/commit/dd9a76edfe7fcdd68633cbf65d19eef49143bb22))
+
+
+
+
+
+## [2.1.15](https://github.com/Availity/availity-react/compare/@availity/date@2.1.14...@availity/date@2.1.15) (2021-10-06)
+
+**Note:** Version bump only for package @availity/date
+
+
+
+
+
+## [2.1.14](https://github.com/Availity/availity-react/compare/@availity/date@2.1.13...@availity/date@2.1.14) (2021-10-04)
+
+**Note:** Version bump only for package @availity/date
+
+
+
+
+
 ## [2.1.13](https://github.com/Availity/availity-react/compare/@availity/date@2.1.12...@availity/date@2.1.13) (2021-10-01)
 
 **Note:** Version bump only for package @availity/date

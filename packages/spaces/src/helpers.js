@@ -41,14 +41,14 @@ export const normalizeSpaces = (spaces) => {
   const pairFields = ['images', 'metadata', 'colors', 'icons', 'mapping'];
   return spacesToReduce.reduce((accum, spc) => {
     if (!spc) return accum;
-    pairFields.forEach((field) => {
+    for (const field of pairFields) {
       if (spc[field] && Array.isArray(spc[field])) {
         spc[field] = spc[field].reduce((_accum, { name, value }) => {
           _accum[name] = value;
           return _accum;
         }, {});
       }
-    });
+    }
 
     accum.push(spc);
     return accum;
