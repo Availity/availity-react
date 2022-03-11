@@ -72,12 +72,14 @@ const Spaces = ({ query, variables, clientId, spaceIds, payerIds, children, spac
     }
 
     // each space can have array of payerIDs
-    for (const pId of space.payerIDs) {
-      const currentSpacesForPayerId = payerIdsMap.get(pId);
-      if (currentSpacesForPayerId) {
-        payerIdsMap.set(pId, [...currentSpacesForPayerId, space]);
-      } else {
-        payerIdsMap.set(pId, [space]);
+    if (space.payerIDs) {
+      for (const pId of space.payerIDs) {
+        const currentSpacesForPayerId = payerIdsMap.get(pId);
+        if (currentSpacesForPayerId) {
+          payerIdsMap.set(pId, [...currentSpacesForPayerId, space]);
+        } else {
+          payerIdsMap.set(pId, [space]);
+        }
       }
     }
   }
@@ -134,12 +136,14 @@ const Spaces = ({ query, variables, clientId, spaceIds, payerIds, children, spac
             configIdsMap.set(space.configurationId, space);
           }
 
-          for (const pId of space.payerIDs) {
-            const currentSpacesForPayerId = payerIdsMap.get(pId);
-            if (currentSpacesForPayerId) {
-              payerIdsMap.set(pId, [...currentSpacesForPayerId, space]);
-            } else {
-              payerIdsMap.set(pId, [space]);
+          if (space.payerIDs) {
+            for (const pId of space.payerIDs) {
+              const currentSpacesForPayerId = payerIdsMap.get(pId);
+              if (currentSpacesForPayerId) {
+                payerIdsMap.set(pId, [...currentSpacesForPayerId, space]);
+              } else {
+                payerIdsMap.set(pId, [space]);
+              }
             }
           }
         }
@@ -162,12 +166,14 @@ const Spaces = ({ query, variables, clientId, spaceIds, payerIds, children, spac
             configIdsMap.set(space.configurationId, space);
           }
 
-          for (const pId of space.payerIDs) {
-            const currentSpacesForPayerId = payerIdsMap.get(pId);
-            if (currentSpacesForPayerId) {
-              payerIdsMap.set(pId, [...currentSpacesForPayerId, space]);
-            } else {
-              payerIdsMap.set(pId, [space]);
+          if (space.payerIDs) {
+            for (const pId of space.payerIDs) {
+              const currentSpacesForPayerId = payerIdsMap.get(pId);
+              if (currentSpacesForPayerId) {
+                payerIdsMap.set(pId, [...currentSpacesForPayerId, space]);
+              } else {
+                payerIdsMap.set(pId, [space]);
+              }
             }
           }
         }
