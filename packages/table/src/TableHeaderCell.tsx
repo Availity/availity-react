@@ -21,7 +21,6 @@ const TableHeaderCell = <T extends IdType>({
   ...rest
 }: Props<T>): JSX.Element => {
   const { scrollable, sortable, instance, hasCustomizableColumns } = useTableContext();
-
   const { manualSortBy } = instance;
 
   const sort = () => {
@@ -45,7 +44,7 @@ const TableHeaderCell = <T extends IdType>({
         sticky: column.stickyRight || column.stickyLeft,
         'sticky-right': column.stickyRight,
         'sticky-left': column.stickyLeft,
-        'customizable':  isLastColumn && hasCustomizableColumns
+        customizable: isLastColumn && hasCustomizableColumns,
       }),
       title: column.label || typeof column.Header === 'string' ? column.Header?.toString() : undefined,
     };

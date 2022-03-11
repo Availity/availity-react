@@ -33,7 +33,7 @@ export type TableProviderProps<T extends IdType> = {
 const TableProvider = <T extends IdType>({
   additionalContent: AdditionalContent,
   additionalContentProps,
-  hasCustomizableColumns = false,
+  hasCustomizableColumns,
   columns,
   data,
   selectable,

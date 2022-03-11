@@ -7,8 +7,6 @@ import { OnTableClickEvent } from './types/OnTableClickEvent';
 import { Column, IdType, Row, TableInstance } from './types/ReactTable';
 
 export type Props<T extends IdType> = {
-  AdditionalContent?: React.ElementType;
-  additionalContentProps?: Record<string, string | number | boolean | undefined | null>;
   id?: string;
   row: Row<T>;
   index: number;
@@ -23,11 +21,9 @@ const TableRow = <T extends IdType>({
   onRowClick,
   onCellClick,
   children,
-  AdditionalContent,
-  additionalContentProps,
   ...rest
 }: Props<T>): JSX.Element => {
-  const { scrollable, instance } = useTableContext();
+  const { scrollable, instance, AdditionalContent, additionalContentProps } = useTableContext();
   const { selectedFlatRows: selectedRows, visibleColumns } = instance as TableInstance<T>;
   const columns = visibleColumns as Column<T>[];
   const definedRowProps = {
