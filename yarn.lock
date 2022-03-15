@@ -153,17 +153,6 @@
   dependencies:
     core-js "^3.12.1"
 
-"@availity/favorites@^2.1.8":
-  version "2.3.4"
-  resolved "https://registry.yarnpkg.com/@availity/favorites/-/favorites-2.3.4.tgz#603c0ab6dca3ad4254f0183489e90e8dc8ef8c31"
-  integrity sha512-eLWyK4n4gHZ90YiTAP4ZUSws+U/61fFhlD9y7KO/IQvXSAU8DoOk66DcNK5gc4H+aMDYpziTgwb/+wgzthPMwA==
-  dependencies:
-    "@availity/analytics-core" "^3.1.5"
-    "@availity/hooks" "^3.2.0"
-    "@availity/message-core" "^5.0.1"
-    lodash "^4.17.21"
-    prop-types "^15.7.2"
-
 "@availity/message-core@^5.0.1", "@availity/message-core@^5.0.4":
   version "5.0.4"
   resolved "https://registry.yarnpkg.com/@availity/message-core/-/message-core-5.0.4.tgz#a15e81064a4d2f3d162baefa9ab55ed34f2487cd"

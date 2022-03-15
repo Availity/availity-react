@@ -40,7 +40,7 @@
   },
   "devDependencies": {
     "@availity/api-axios": "^6.0.0",
-    "@availity/favorites": "^2.1.8",
+    "@availity/favorites": "^3.1.0",
     "axios": "^0.21.1",
     "react": "^17.0.2",
     "react-dom": "^17.0.2",
@@ -48,7 +48,7 @@
   },
   "peerDependencies": {
     "@availity/api-axios": "^6.0.0",
-    "@availity/favorites": "^2.1.8",
+    "@availity/favorites": "^3.1.0",
     "axios": "^0.21.1",
     "react": ">=16.8.6",
     "react-query": "^3.29.0",
