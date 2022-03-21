@@ -76,8 +76,40 @@ When an event is created, if `true`, will traverse up the DOM tree from the give
 
 #### `attributePrefix?: string`
 
-Prefix to apply on event attributes you want to strip off components on click. **Default:** `data-analytics`
+Use this prop to customize the prefix you use for the data attributes you will add to DOM elements for which you wish to track events. **Default:** `'data-analytics'`
+
+Example of default attribute prefix:
+
+```jsx
+<Analytics plugins={[splunkPlugin]}>
+  <Button
+    type="button"
+    data-analytics-my-special-value={mySpecialValue}
+    data-analytics-action="click"
+  >
+    Button with analytics
+  </Button>
+</Analytics>
+```
+
+Example of a customized attribute prefix:
+
+```jsx
+<Analytics plugins={[splunkPlugin]} attributePrefix="data-foo-bar">
+  <Button
+    type="button"
+    data-foo-bar-my-special-value={mySpecialValue}
+    data-foo-bar-action="click"
+  >
+    Button with analytics
+  </Button>
+  <div data-foo-bar-action="click">foo</div>
+  <input type="text" data-foo-bar-action="focus" />
+</Analytics>
+```
+
+These two examples will track events in the same way.
 
 #### `eventModifiers?: string | string[]`
 
-Array of event modifiers enabling you to use other keywords for `action` instead of `click` for event type matching. **Default:** `['action']`
+Array of event modifiers enabling you to use other keywords for `action` instead of `click` for event type matching. **Default:** `['action']`. Note: This prop may not be working as expected. See [issue #1042](https://github.com/Availity/availity-react/issues/1042).
