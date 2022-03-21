@@ -13,7 +13,8 @@
 # error out if something fails
 set -e
 
-if grep -R --exclude='*.sh' --exclude-dir='node_modules'  --include='yarn.lock' -e 'artifactory.availity' -e 'packages.availity'  ./
+# TODO: include lockfile only remove recursive search, remove exclusions
+if grep -R --exclude='*.sh' --exclude-dir='node_modules' --exclude-dir='.git'  --include='yarn.lock' -e 'artifactory.availity' -e 'packages.availity'  ./
 then
   printf "\n"
   printf "   (c).-.(c)    (c).-.(c)    (c).-.(c)    (c).-.(c)    (c).-.(c) \n"
