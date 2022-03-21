@@ -6,8 +6,6 @@ This Analytics component is part of Availity's toolset for tracking 'click', 'bl
 
 You may also find it helpful read [these docs on the AvAnalytics class](https://availity.github.io/sdk-js/resources/analytics), since the Analytics component implements an instance of AvAnalytics, and most of the props are forwarded directly to it.
 
-If you only need Splunk reports, use avLogMessagesApi. If you're working with Availity's DMA team for reporting through Insights, use avLogMessagesApiV2
-
 ### Example
 
 ```jsx
