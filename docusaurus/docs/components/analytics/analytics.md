@@ -4,7 +4,7 @@ title: <Analytics />
 
 This Analytics component is part of Availity's toolset for tracking 'click', 'blur', 'focus' and page load events in your application. For a helpful overview of how to setup these tools, read our [Setting Up Logging](https://availity.github.io/availity-workflow/recipes/logging/) guide. Logging in a React application at Availity usually involves imports from this React focused [@availity/analytics](https://www.npmjs.com/package/@availity/analytics) package and from [@availity/analytics-core](https://www.npmjs.com/package/@availity/analytics-core). Starting with the Setting Up Logging guide will give you a better understanding of how they work together.
 
-You may also find it helpful read [these docs on the AvAnalytics class](https://availity.github.io/sdk-js/resources/analytics), since the Analytics component implements an instance of AvAnalytics, and most of the props are forwarded directly to it.
+You may also find it helpful to read [these docs on the AvAnalytics class](https://availity.github.io/sdk-js/resources/analytics), since the Analytics component implements an instance of AvAnalytics, and most of the props are forwarded directly to it.
 
 ### Example
 
