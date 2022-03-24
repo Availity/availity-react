@@ -2,11 +2,27 @@
 title: <Analytics />
 ---
 
-This Analytics component is part of Availity's toolset for tracking 'click', 'blur', 'focus' and page load events in your application. For a helpful overview of how to setup these tools, read our [Setting Up Logging](https://availity.github.io/availity-workflow/recipes/logging/) guide. Logging in a React application at Availity usually involves imports from this React focused [@availity/analytics](https://www.npmjs.com/package/@availity/analytics) package and from [@availity/analytics-core](https://www.npmjs.com/package/@availity/analytics-core). Starting with the Setting Up Logging guide will give you a better understanding of how they work together.
+[![Version](https://img.shields.io/npm/v/@availity/analytics-core.svg?style=for-the-badge)](https://www.npmjs.com/package/@availity/analytics-core)
 
-You may also find it helpful to read [these docs on the AvAnalytics class](https://availity.github.io/sdk-js/resources/analytics), since the Analytics component implements an instance of AvAnalytics, and most of the props are forwarded directly to it.
+#### Live example: [Storybook](https://availity.github.io/availity-react/storybook/?path=/story/components-analytics--default)
 
-### Example
+This `<Analytics />` component is part of Availity's toolset for tracking user interactions and page views in your application. For a helpful overview of how to setup these tools, read our [Setting Up Logging](https://availity.github.io/availity-workflow/recipes/logging/) guide. Logging in a React application at Availity involves imports from this React focused [@availity/analytics](https://www.npmjs.com/package/@availity/analytics) package and from [@availity/analytics-core](https://www.npmjs.com/package/@availity/analytics-core). Starting with the Setting Up Logging guide will give you a better understanding of how they work together.
+
+For a detailed understanding of how analytics logging works, you will find it helpful to read [these docs on the AvAnalytics class](https://availity.github.io/sdk-js/resources/analytics), since `<Analytics />` implements an instance of `AvAnalytics`, and most of the props are forwarded directly to it.
+
+For access to the underlying AvAnalytics instance in your React application, use the [useAnalytics hook](/availity-react/components/analytics/hook). This allows you to [manually track](https://availity.github.io/sdk-js/resources/analytics/#trackeventproperties-object) events, which does not have the same [limitations](https://availity.github.io/sdk-js/resources/analytics/#limitations) as [auto tracking](https://availity.github.io/sdk-js/resources/analytics/#auto-tracking-with-data-analytics-attributes) events.
+
+## Auto Tracking vs Manual Uracking
+
+### Auto Tracking
+
+The [`AvAnalytics` class](https://availity.github.io/sdk-js/resources/analytics/) provides a convenient [auto tracking feature](https://availity.github.io/sdk-js/resources/analytics/) which allows user interactions to be automatically tracked based on special `data-analytics-...` attributes added directly to DOM elements or to React components that are able to forward these attributes to the underlying DOM elements.
+
+Auto tracking is very convenient because it eliminates the need to create your own event handlers or setup listeners for the interactions you want to track, which would be required when using [manual tracking](https://availity.github.io/sdk-js/resources/analytics/#trackeventproperties-object). However, be aware that auto tracking does come with it's own set [limitations](https://availity.github.io/sdk-js/resources/analytics/#limitations).
+
+The code sample below shows an example of using [auto tracking](https://availity.github.io/sdk-js/resources/analytics/#auto-tracking-with-data-analytics-attributes) with special `data-analytics-...` attributes added directly to DOM elements or to React components that are able to forward these attributes to the underlying DOM elements.
+
+This is a complete example of setting up analytics in a React application using [data analytics attributes for auto tracking](https://availity.github.io/sdk-js/resources/analytics/#auto-tracking-with-data-analytics-attributes).
 
 ```jsx
 import React from 'react';
@@ -46,69 +62,86 @@ entries.event: click
 entries.url: <url of the page where the user performed the action>
 ```
 
-#### Live example: [Storybook](https://availity.github.io/availity-react/storybook/?path=/story/components-analytics--default)
+NOTE: In the code sample above, the Reactstrap `<Button>` component is able forwarded these data attributes to the native `<button>` element that the component renders. Not all React components can accept these data analytics attributes. Use the Elements panel of DevTools to confirm that these attributes are added to the appropriate DOM element.
 
+Be sure to read more on auto tracking and the required data attributes [here on the docs for the AvAnalytics class](https://availity.github.io/sdk-js/resources/analytics/#auto-tracking-with-data-analytics-attributes).
+
+### Manual Tracking
+
+If the [limitations of auto tracking](https://availity.github.io/sdk-js/resources/analytics/#limitations) prevent you from logging the events you are interested in, you will need to use manual tracking by calling analytics.trackEvent() directly. For this, you will need access to the instance of AvAnalytics that has been initialize by the Analytics context provider. This instance is return by the [useAnalytics hook](/availity-react/components/analytics/hook).
+
+Here is a complete example of using the [useAnalytics hook](/availity-react/components/analytics/hook) and the [`analytics.trackEvent()`](https://availity.github.io/sdk-js/resources/analytics/#trackeventproperties-object) method to manually track an event in React.
+
+```jsx
+import React from 'react';
+import Analytics, { useAnalytics } from '@availity/analytics';
+
+import { avLogMessagesApiV2 } from '@availity/api-axios';
+import { AvSplunkAnalytics } from '@availity/analytics-core';
+
+const splunkPlugin = new AvSplunkAnalytics(avLogMessagesApiV2, true);
+
+const MyDeeplyNestedComponent = () => {
+  const analytics = useAnalytics();
+
+  const handleMouseOver = () => {
+    analytics.trackEvent({
+      level: 'info',
+      someValue: 'foo',
+      otherValue: 'bar',
+    });
+  };
+
+  return (
+    <div onMouseOver={handleMouseOver}>
+      Tracking mouseover events on this div
+    </div>
+  );
+};
+
+const App = () => (
+  <Analytics plugins={[splunkPlugin]}>
+    <MyDeeplyNestedComponent />
+  </Analytics>
+);
+
+export default App;
+```
+
+<!--
 ### Required `data-analytics-...` attributes
 
 Wrapping your app in the Analytics component without adding data attributes to DOM elements within your app will only allow you to track page load events. Tracking user interactions (i.e., 'click', 'focus' and 'blur' events) requires that you add the data attributes.
 
 You can add many data attributes to a single element, including custom values, but the `data-analytics-action` with a value of 'click', 'focus' or 'blur' **_is required_**. Without it, no events will be tracked for that element. The 'focus' or 'blur' events can be tracked on `select`, `textarea` and `input` elements. You cannot track 'click' events on these elements and you cannot track 'focus' and 'blur' events for the same element at the same time. For all other DOM elements, only 'click' can be tracked.
 
-For more details on these special attributes, see the documenation on the AvAnalytics class [regarding these special data attributes](https://availity.github.io/sdk-js/resources/analytics#special-attributes).
+For more details on these special attributes, see the documenation on the AvAnalytics class [regarding these special data attributes](https://availity.github.io/sdk-js/resources/analytics#special-attributes). -->
+
+### Logging for Splunk and Insights
+
+The examples above use `avLogMessagesApiV2` from [`@availity/api-axios`](https://www.npmjs.com/package/@availity/api-axios) and `AvSplunkAnalytics` from [`@availity/analytics-core`](https://www.npmjs.com/package/@availity/analytics-core). These are required for logging to Splunk or Insights. If you are creating a Payer Spaces app and want to use Insights reporting, read more about the the official [AvSplunkAnalytics](https://availity.github.io/sdk-js/resources/analytics/#official-avsplunkanalytics-plugin) and [other requirements for Payer Spaces apps to use Insights](https://availity.github.io/sdk-js/resources/analytics/#note-about-insights).
 
 ### Props
 
-#### `plugins?: AnalyticsPlugin[]`
+#### `plugins?: AnalyticsPlugin | AnalyticsPlugin[]`
 
-An array of plugins to pass to the underlying AvAnalytics class instance. Methods on these plugins will be called to track user actions and page loads. Refer to [the AvAnalytics docs](https://availity.github.io/sdk-js/resources/analytics) for details on plugins and their methods, or for [official Availity plugins](https://availity.github.io/sdk-js/resources/analytics/#defined-plugins) for working with Splunk and Insights.
+A plugin or array of plugins to pass to the underlying AvAnalytics class instance. [Read more about analytics plugins](https://availity.github.io/sdk-js/resources/analytics/#plugins).
 
 #### `pageTracking?: boolean`
 
-Whether or not the initial page tracking is enabled. **Default:** `true`.
+Enable or disable page tracking on initialization. **Default:** `true`. [Read more about auto tracking](https://availity.github.io/sdk-js/resources/analytics/#pagetracking-boolean).
 
 #### `autoTrack?: boolean`
 
-Whether or not initial event tracking is enabled. **Default:** `true`.
+Enable or disable auto tracking on initialization. **Default:** `true`. [Read more about page tracking](https://availity.github.io/sdk-js/resources/analytics/#autotrack-boolean)
 
 #### `recursive?: boolean`
 
-When an event is created, if `true`, will traverse up the DOM tree from the given element and take `data-analytics` attributes off each component until it reaches the root. **Default:** `true`
+Enable or disable recursive functionality on initialization. **Default:** `true`. [Read more about recursive functionality](recursive functionality)
 
 #### `attributePrefix?: string`
 
-Use this prop to customize the prefix you use for the data attributes you will add to DOM elements for which you wish to track events. **Default:** `'data-analytics'`
-
-Example of default attribute prefix:
-
-```jsx
-<Analytics plugins={[splunkPlugin]}>
-  <Button
-    type="button"
-    data-analytics-my-special-value={mySpecialValue}
-    data-analytics-action="click"
-  >
-    Button with analytics
-  </Button>
-</Analytics>
-```
-
-Example of a customized attribute prefix:
-
-```jsx
-<Analytics plugins={[splunkPlugin]} attributePrefix="data-foo-bar">
-  <Button
-    type="button"
-    data-foo-bar-my-special-value={mySpecialValue}
-    data-foo-bar-action="click"
-  >
-    Button with analytics
-  </Button>
-  <div data-foo-bar-action="click">foo</div>
-  <input type="text" data-foo-bar-action="focus" />
-</Analytics>
-```
-
-These two examples will track events in the same way.
+Customize the prefix used for data analytics attributes used for auto tracking. **Default:** `'data-analytics'`. [Read more about customizing the attribute prefix](https://availity.github.io/sdk-js/resources/analytics/#optionsattributeprefix-string)
 
 #### `eventModifiers?: string | string[]`
 
