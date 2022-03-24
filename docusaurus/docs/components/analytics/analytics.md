@@ -62,13 +62,13 @@ entries.event: click
 entries.url: <url of the page where the user performed the action>
 ```
 
-NOTE: In the code sample above, the Reactstrap `<Button>` component is able forwarded these data attributes to the native `<button>` element that the component renders. Not all React components can accept these data analytics attributes. Use the Elements panel of DevTools to confirm that these attributes are added to the appropriate DOM element.
+NOTE: In the code sample above, the Reactstrap `<Button>` component is forwarding these data attributes to the native `<button>` element that the component renders. Not all React components can accept these data analytics attributes. Use the Elements panel of DevTools to confirm that these attributes are added to the appropriate DOM element.
 
 Be sure to read more on auto tracking and the required data attributes [here on the docs for the AvAnalytics class](https://availity.github.io/sdk-js/resources/analytics/#auto-tracking-with-data-analytics-attributes).
 
 ### Manual Tracking
 
-If the [limitations of auto tracking](https://availity.github.io/sdk-js/resources/analytics/#limitations) prevent you from logging the events you are interested in, you will need to use manual tracking by calling analytics.trackEvent() directly. For this, you will need access to the instance of AvAnalytics that has been initialize by the Analytics context provider. This instance is return by the [useAnalytics hook](/availity-react/components/analytics/hook).
+If the [limitations of auto tracking](https://availity.github.io/sdk-js/resources/analytics/#limitations) prevent you from logging the events you are interested in, you will need to use manual tracking by calling analytics.trackEvent() directly. For this, you will need access to the instance of AvAnalytics that has been initialize by the Analytics context provider. This instance is returned by the [useAnalytics hook](/availity-react/components/analytics/hook).
 
 Here is a complete example of using the [useAnalytics hook](/availity-react/components/analytics/hook) and the [`analytics.trackEvent()`](https://availity.github.io/sdk-js/resources/analytics/#trackeventproperties-object) method to manually track an event in React.
 
