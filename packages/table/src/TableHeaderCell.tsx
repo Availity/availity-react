@@ -1,9 +1,8 @@
 import React from 'react';
 import classNames from 'classnames';
-import { useTableContext } from './TableContext';
-import { ExtendedTableHeader, IdType } from './types/ReactTable';
+import { Column, ExtendedTableHeader, IdType, TableInstance } from './types/ReactTable';
 import { TableSort } from './types/TableSort';
-import CustomizeColumnsPopover from './CustomizeColumnsPopover.';
+import CustomizeColumnsPopover from './CustomizeColumnsPopover';
 
 type Props<T extends IdType> = {
   id?: string;
@@ -11,6 +10,17 @@ type Props<T extends IdType> = {
   onSort?: (sortBy: TableSort[]) => void;
   isLastColumn?: boolean;
   children: React.ReactNode | React.ReactNode[];
+
+  instance: TableInstance<T>;
+  scrollable?: boolean;
+  sortable?: boolean;
+  hasCustomizableColumns?: boolean;
+  manualSortBy?: boolean;
+  onColumnsCustomizing: (isCustomizing: boolean) => void;
+  onColumnsCustomized?: (hiddenColumnIds: string[], visibleColumnIds: string[]) => void;
+  minimumNumberOfColumns?: number;
+  onReset?: () => void;
+  defaultColumns?: Column<T>[];
 } & React.HTMLAttributes<HTMLElement>;
 
 const TableHeaderCell = <T extends IdType>({
@@ -18,11 +28,20 @@ const TableHeaderCell = <T extends IdType>({
   children,
   onSort,
   isLastColumn,
+
+  instance,
+  scrollable,
+  sortable,
+  hasCustomizableColumns,
+  manualSortBy,
+  onColumnsCustomizing,
+  onColumnsCustomized,
+  minimumNumberOfColumns,
+  defaultColumns,
+  onReset,
+
   ...rest
 }: Props<T>): JSX.Element => {
-  const { scrollable, sortable, instance, hasCustomizableColumns } = useTableContext();
-  const { manualSortBy } = instance;
-
   const sort = () => {
     column.toggleSortBy(!column.isSortedDesc, false);
     if (onSort) {
@@ -55,7 +74,16 @@ const TableHeaderCell = <T extends IdType>({
     <th {...column.getHeaderProps(getHeaderColumnProps(column))} {...getOnClick()} {...rest}>
       <>
         {children}
-        {isLastColumn && hasCustomizableColumns && <CustomizeColumnsPopover />}
+        {isLastColumn && hasCustomizableColumns && (
+          <CustomizeColumnsPopover
+            instance={instance}
+            onColumnsCustomizing={onColumnsCustomizing}
+            onColumnsCustomized={onColumnsCustomized}
+            defaultColumns={defaultColumns}
+            minimumNumberOfColumns={minimumNumberOfColumns}
+            onReset={onReset}
+          />
+        )}
       </>
     </th>
   );

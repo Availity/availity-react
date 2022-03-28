@@ -12,6 +12,10 @@ import {
   UseTableHeaderGroupProps,
   UseRowSelectOptions,
   UseTableOptions,
+  UseSortByOptions,
+  UsePaginationOptions,
+  UsePaginationInstanceProps,
+  UseColumnOrderInstanceProps,
 } from 'react-table';
 
 import { TableSort } from './TableSort';
@@ -63,17 +67,22 @@ export type TableOptions<T extends IdType> = RtTableOptions<T> &
     autoResetSortBy?: boolean;
     manualSortBy?: boolean;
     hiddenColumns?: string[];
-  };
+    initialState?: Partial<TableState<T>> & CurrentTableState;
+  } & UseSortByOptions<T> & UsePaginationOptions<T>;
 
 export type TableInstance<T extends IdType> = UseSortByInstanceProps<T> &
   UseRowSelectInstanceProps<T> &
   UseRowSelectOptions<T> &
-  RtTableInstance<T> & {
+  RtTableInstance<T> &
+  UseColumnOrderInstanceProps<T> &
+  UsePaginationInstanceProps<T> & {
     toggleAllPageRowsSelected: (set?: boolean) => void;
     selectedFlatRows: Row<T>[];
     isAllRowsSelected: boolean;
     toggleAllRowsSelected: () => void;
     sortBy?: TableSort;
+  } & {
+    manualSortBy?: boolean;
   };
 
 export interface CurrentTableState extends TableState {

@@ -2,19 +2,32 @@ import React, { useState, useEffect } from 'react';
 import Icon from '@availity/icon';
 import { Button, Popover, PopoverBody, Table, UncontrolledTooltip } from 'reactstrap';
 import { List, arrayMove } from 'react-movable';
-import { useTableContext } from './TableContext';
 import { Column, ExtendedTableHeader } from './types';
-import { IdType } from './types/ReactTable';
+import { IdType, TableInstance } from './types/ReactTable';
 
-const CustomizeColumnsPopover = <T extends IdType>(): JSX.Element => {
-  const { instance, onColumnsCustomized, setIsCustomizingColumns, onReset, minimumNumberOfColumns, defaultColumns } =
-    useTableContext();
+type Props<T extends IdType> = {
+  instance: TableInstance<T>;
+  minimumNumberOfColumns?: number;
+  onColumnsCustomizing: (isCustomizing: boolean) => void;
+  onReset?: () => void;
+  defaultColumns?: Column<T>[];
+  onColumnsCustomized?: (hiddenColumnIds: string[], visibleColumnIds: string[]) => void;
+};
+
+const CustomizeColumnsPopover = <T extends IdType>({
+  onColumnsCustomizing,
+  onColumnsCustomized,
+  instance,
+  minimumNumberOfColumns = 3,
+  onReset,
+  defaultColumns,
+}: Props<T>): JSX.Element => {
   const { allColumns, setColumnOrder, setHiddenColumns } = instance;
   const [isCustomizableColumnsPopoverOpen, setIsCustomizableColumnsPopoverOpen] = useState(false);
   const [availableColumns, setAvailableColumns] = useState(allColumns.filter((col: Column<T>) => col.canCustomize));
 
   const [userColumns, setUserColumns] = useState(
-    availableColumns.filter((col: Column<T>) => col.canCustomize && col.isVisible).map((col: Column<T>) => col.id)
+    availableColumns.filter((col: Column<T>) => col.canCustomize && col.isVisible).map((col: Column<T>) => col.id as string)
   );
 
   useEffect(() => {
@@ -23,27 +36,25 @@ const CustomizeColumnsPopover = <T extends IdType>(): JSX.Element => {
 
   useEffect(() => {
     setUserColumns(
-      availableColumns.filter((col: Column<T>) => col.canCustomize && col.isVisible).map((col: Column<T>) => col.id)
+      availableColumns.filter((col: Column<T>) => col.canCustomize && col.isVisible).map((col: Column<T>) => col.id as string)
     );
   }, [availableColumns]);
 
   const togglePopover = () => {
     const isOpen = !isCustomizableColumnsPopoverOpen;
     setIsCustomizableColumnsPopoverOpen(isOpen);
-    if (setIsCustomizingColumns) {
-      setIsCustomizingColumns(isOpen);
-    }
+    onColumnsCustomizing(isOpen);
   };
 
   const resetToDefault = () => {
     const defaultCols = defaultColumns as Column<T>[];
     setHiddenColumns(
-      defaultCols?.filter((col: Column<T>) => col.canCustomize && col.hidden).map((col: Column<T>) => col.accessor)
+      defaultCols?.filter((col) => col.canCustomize && col.hidden && col)?.map((col) => col.accessor as string)
     );
     setUserColumns(
       defaultCols
         ?.filter((col: Column<T>) => col.canCustomize && col.hidden !== true)
-        .map((col: Column<T>) => col.accessor)
+        .map((col: Column<T>) => col.accessor as string)
     );
     if (onReset) {
       onReset();
@@ -53,16 +64,15 @@ const CustomizeColumnsPopover = <T extends IdType>(): JSX.Element => {
 
   const submitCustomizeFields = () => {
     setColumnOrder(
-      availableColumns.filter((col: Column<T>) => userColumns.includes(col.id)).map((col: Column<T>) => col.id)
+      availableColumns.filter((col: Column<T>) => userColumns.includes(col.id as string)).map((col: Column<T>) => col.id as string)
     );
 
-    const hiddenCols = availableColumns.filter((col: Column<T>) => !userColumns.includes(col.id));
-    setHiddenColumns(hiddenCols.map((ac: Column<T>) => ac.id));
+    const hiddenCols = availableColumns.filter((col: Column<T>) => !userColumns.includes(col.id as string)).map((col: Column<T>) => col.id as string);
+    setHiddenColumns(hiddenCols);
 
     if (onColumnsCustomized) {
-      onColumnsCustomized(userColumns, hiddenCols);
+      onColumnsCustomized(hiddenCols, userColumns);
     }
-
     togglePopover();
   };
 
@@ -93,13 +103,13 @@ const CustomizeColumnsPopover = <T extends IdType>(): JSX.Element => {
             <div className="row">
               <h5 className="header-margin col-sm-5">Columns</h5>
 
-              {defaultColumns && defaultColumns.length > 0 && 
-              <div className="reset-to-default">
-                <Button color="link" onClick={resetToDefault}>
-                  Reset to Default
-                </Button>
-              </div>
-}
+              {defaultColumns && defaultColumns.length > 0 && (
+                <div className="reset-to-default">
+                  <Button color="link" onClick={resetToDefault}>
+                    Reset to Default
+                  </Button>
+                </div>
+              )}
             </div>
             <Icon name="info-circle" /> Drag the labels below to reorder your table.
           </section>

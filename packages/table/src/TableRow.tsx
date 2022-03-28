@@ -2,7 +2,6 @@ import React from 'react';
 import includes from 'lodash/includes';
 import filter from 'lodash/filter';
 import classNames from 'classnames';
-import { useTableContext } from './TableContext';
 import { OnTableClickEvent } from './types/OnTableClickEvent';
 import { Column, IdType, Row, TableInstance } from './types/ReactTable';
 
@@ -12,6 +11,12 @@ export type Props<T extends IdType> = {
   index: number;
   onRowClick?: (event: OnTableClickEvent<HTMLElement, T>) => void;
   onCellClick?: (event: OnTableClickEvent<HTMLElement, T>) => void;
+
+  AdditionalContent?: React.ElementType;
+  additionalContentProps?: Record<string, string | number | boolean | undefined | null>;
+  scrollable?: boolean;
+  instance: TableInstance<T>;
+
   children?: React.ReactNode;
 } & React.HTMLAttributes<HTMLElement>;
 
@@ -20,10 +25,13 @@ const TableRow = <T extends IdType>({
   index,
   onRowClick,
   onCellClick,
+  instance,
+  scrollable,
+  AdditionalContent,
+  additionalContentProps,
   children,
   ...rest
 }: Props<T>): JSX.Element => {
-  const { scrollable, instance, AdditionalContent, additionalContentProps } = useTableContext();
   const { selectedFlatRows: selectedRows, visibleColumns } = instance as TableInstance<T>;
   const columns = visibleColumns as Column<T>[];
   const definedRowProps = {

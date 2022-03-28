@@ -105,8 +105,8 @@ const formattedColumns = [
 describe('Table', () => {
   test('should render basic table', () => {
     const { container } = render(
-      <TableProvider data={basicData} columns={basicColumns}>
-        <Table />
+      <TableProvider>
+        <Table data={basicData} columns={basicColumns} />
       </TableProvider>
     );
 
@@ -116,8 +116,8 @@ describe('Table', () => {
 
   test('should render selectable table', async () => {
     const { container } = render(
-      <TableProvider selectable data={basicData} columns={basicColumns}>
-        <Table />
+      <TableProvider>
+        <Table selectable data={basicData} columns={basicColumns} />
       </TableProvider>
     );
 
@@ -127,8 +127,8 @@ describe('Table', () => {
 
   test('should render sortable table', () => {
     const { container } = render(
-      <TableProvider sortable data={basicData} columns={basicColumns}>
-        <Table />
+      <TableProvider>
+        <Table sortable data={basicData} columns={basicColumns} />
       </TableProvider>
     );
 
@@ -138,8 +138,8 @@ describe('Table', () => {
 
   test('should render with formatted cells', () => {
     const { container } = render(
-      <TableProvider data={formattedData} columns={formattedColumns}>
-        <Table />
+      <TableProvider>
+        <Table data={formattedData} columns={formattedColumns} />
       </TableProvider>
     );
 
@@ -149,8 +149,8 @@ describe('Table', () => {
 
   test('should render with expected ids', () => {
     const { container } = render(
-      <TableProvider data={basicData} columns={basicColumns}>
-        <Table id="my_availity_table" />{' '}
+      <TableProvider>
+        <Table id="my_availity_table" data={basicData} columns={basicColumns} />{' '}
       </TableProvider>
     );
 
@@ -161,9 +161,9 @@ describe('Table', () => {
   test('should call onRowClick when event is provided', async () => {
     const onRowClick = jest.fn();
     const { container, getByTestId } = render(
-      <TableProvider data={basicData} columns={basicColumns}>
+      <TableProvider>
         {' '}
-        <Table onRowClick={onRowClick} />
+        <Table onRowClick={onRowClick} data={basicData} columns={basicColumns} />
       </TableProvider>
     );
 
@@ -181,9 +181,9 @@ describe('Table', () => {
   test('should call onRowClick when event is provided for selectable table', async () => {
     const onRowClick = jest.fn();
     const { container, getByTestId } = render(
-      <TableProvider selectable data={basicData} columns={basicColumns}>
+      <TableProvider>
         {' '}
-        <Table onRowClick={onRowClick} />
+        <Table onRowClick={onRowClick} selectable data={basicData} columns={basicColumns} />
       </TableProvider>
     );
 
@@ -202,9 +202,9 @@ describe('Table', () => {
     const onRowSelected = jest.fn();
 
     const { container, getByTestId } = render(
-      <TableProvider selectable data={basicData} columns={basicColumns}>
+      <TableProvider>
         {' '}
-        <Table onRowSelected={onRowSelected} />
+        <Table onRowSelected={onRowSelected} selectable data={basicData} columns={basicColumns} />
       </TableProvider>
     );
 
@@ -222,8 +222,8 @@ describe('Table', () => {
     const onSort = jest.fn();
 
     const { container, getByTestId } = render(
-      <TableProvider sortable data={basicData} columns={basicColumns} manualSortBy>
-        <Table onSort={onSort} />
+      <TableProvider>
+        <Table onSort={onSort} sortable data={basicData} columns={basicColumns} manualSortBy />
       </TableProvider>
     );
 
@@ -248,8 +248,8 @@ describe('Table', () => {
     ];
 
     const { container, queryByTestId } = render(
-      <TableProvider data={basicData} columns={columnsToUse}>
-        <Table />
+      <TableProvider>
+        <Table data={basicData} columns={columnsToUse} />
       </TableProvider>
     );
 

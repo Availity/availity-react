@@ -17,13 +17,12 @@ const BulkTableActions = <T extends IdType>({
   id,
   disabled,
   color,
-  recordName,
+  recordName = 'Records',
   bulkActions,
   onRecordsSelected,
 }: Props<T>): JSX.Element | null => {
-  const { instance } = useTableContext();
-
-  const { selectedFlatRows: selectedRows, isAllRowsSelected, toggleAllRowsSelected } = instance as TableInstance<T>;
+  const { instance, selectedRows } = useTableContext();
+  const { isAllRowsSelected, toggleAllRowsSelected } = instance as TableInstance<T>;
 
   const [isSelectionDropdownOpen, setIsSelectionDropdownOpen] = useState(false);
   const [numberOfSelectedRows, setNumberOfSelectedRows] = useState(0);
@@ -43,7 +42,7 @@ const BulkTableActions = <T extends IdType>({
       onRecordsSelected(records);
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [selectedRows, numberOfSelectedRows]);
+  }, [selectedRows]);
 
   useEffect(() => {
     setIsDisabled(disabled || false);
@@ -102,10 +101,6 @@ const BulkTableActions = <T extends IdType>({
       )}
     </ButtonGroup>
   );
-};
-
-BulkTableActions.defaultProps = {
-  recordName: 'Records',
 };
 
 export default BulkTableActions;

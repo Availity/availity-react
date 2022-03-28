@@ -6,6 +6,7 @@ import TableProvider from '../TableProvider';
 import { Column } from '../types/ReactTable';
 import TableSorter from '../Controls/TableSorter';
 import { TableContext } from '../TableContext';
+import Table from '../Table';
 
 const basicColumns = [
   {
@@ -29,10 +30,11 @@ const basicColumns = [
 describe('TableSorter', () => {
   test('should render table Sorter', async () => {
     const { container, getByTestId } = render(
-      <TableProvider data={basicData} columns={basicColumns}>
+      <TableProvider>
         <TableControls>
           <TableSorter />
         </TableControls>
+        <Table sortable data={basicData} columns={basicColumns}></Table>
       </TableProvider>
     );
 
@@ -59,11 +61,19 @@ describe('TableSorter', () => {
           instance: tableInstanceMock,
           sortable: true,
           sortableColumns: [{ value: 'first_name', label: ' First name' }],
+          selectedRows: [],
         }}
       >
         <TableControls>
           <TableSorter />
         </TableControls>
+        <Table
+          data={basicData}
+          columns={basicColumns}
+          initialState={{
+            sortBy: [{ id: 'first_name', desc: true }],
+          }}
+        ></Table>
       </TableContext.Provider>
     );
 
@@ -93,11 +103,13 @@ describe('TableSorter', () => {
           instance: tableInstanceMock,
           sortable: true,
           sortableColumns: [{ value: 'first_name', label: ' First name' }],
+          selectedRows: [],
         }}
       >
         <TableControls>
           <TableSorter />
         </TableControls>
+        <Table data={basicData} columns={basicColumns}></Table>
       </TableContext.Provider>
     );
 
@@ -125,11 +137,13 @@ describe('TableSorter', () => {
           instance: tableInstanceMock,
           sortable: true,
           sortableColumns: [{ value: 'first_name', label: ' First name' }],
+          selectedRows: [],
         }}
       >
         <TableControls>
           <TableSorter />
         </TableControls>
+        <Table data={basicData} columns={basicColumns}></Table>
       </TableContext.Provider>
     );
 
@@ -161,11 +175,13 @@ describe('TableSorter', () => {
           instance: tableInstanceMock,
           sortable: true,
           sortableColumns: [{ value: 'first_name', label: ' First name' }],
+          selectedRows: [],
         }}
       >
         <TableControls>
           <TableSorter onSort={onSort} />
         </TableControls>
+        <Table data={basicData} columns={basicColumns}></Table>
       </TableContext.Provider>
     );
 
@@ -204,11 +220,13 @@ describe('TableSorter', () => {
           instance: tableInstanceMock,
           sortable: true,
           sortableColumns: [{ value: 'first_name', label: ' First name' }],
+          selectedRows: [],
         }}
       >
         <TableControls>
           <TableSorter onSort={onSort} sortOptions={[{ value: 'last_name', label: ' Last name' }]} />
         </TableControls>
+        <Table data={basicData} columns={basicColumns}></Table>
       </TableContext.Provider>
     );
 

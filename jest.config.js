@@ -16,7 +16,7 @@ module.exports = {
     '.stories.tsx',
   ],
 
-  transformIgnorePatterns: ['[/\\\\]node_modules[/\\\\](?!@availity).+\\.(js|jsx)$'],
+  transformIgnorePatterns: ['[/\\\\]node_modules[/\\\\](?!@availity|react-movable).+\\.(js|jsx)$'],
   transform: {
     '^.+\\.(js|ts|jsx|tsx)$': `${require.resolve('./jest/babel.js')}`,
     '^.+\\.css$': `${require.resolve('./jest/css.js')}`,

@@ -7,6 +7,7 @@ import BulkTableActions from '../Controls/BulkTableActions';
 import TableProvider from '../TableProvider';
 import { Column } from '../types/ReactTable';
 import TableSorter from '../Controls/TableSorter';
+import Table from '../Table';
 
 const basicColumns = [
   {
@@ -75,11 +76,13 @@ describe('TableControls', () => {
 
   test('should render table controls with two children', () => {
     const { container } = render(
-      <TableProvider data={basicData} columns={basicColumns}>
+      <TableProvider>
         <TableControls>
           <BulkTableActions bulkActions={bulkActions} />
           <TableSorter />
         </TableControls>
+        <Table data={basicData} columns={basicColumns}></Table>
+
       </TableProvider>
     );
 
@@ -89,11 +92,13 @@ describe('TableControls', () => {
 
   test('should disable all records when disabled is true', async () => {
     const { container, getByTestId } = render(
-      <TableProvider data={basicData} columns={basicColumns}>
+      <TableProvider>
         <TableControls disabled>
           <BulkTableActions bulkActions={bulkActions} />
           <TableSorter />
         </TableControls>
+        <Table data={basicData} columns={basicColumns}></Table>
+
       </TableProvider>
     );
 
@@ -111,11 +116,12 @@ describe('TableControls', () => {
 
   test('should disable all records when disabled is false', async () => {
     const { container, getByTestId } = render(
-      <TableProvider data={basicData} columns={basicColumns}>
+      <TableProvider>
         <TableControls>
           <BulkTableActions bulkActions={bulkActions} />
           <TableSorter />
         </TableControls>
+        <Table data={basicData} columns={basicColumns}></Table>
       </TableProvider>
     );
 

@@ -7,6 +7,7 @@ import BulkTableActions from '../Controls/BulkTableActions';
 import TableProvider from '../TableProvider';
 import { Column } from '../types/ReactTable';
 import { TableContext } from '../TableContext';
+import Table from '../Table';
 
 const basicColumns = [
   {
@@ -50,10 +51,11 @@ const bulkActions = [
 describe('BulkTableActions', () => {
   test('should render default bulk actions', async () => {
     const { container, getByTestId } = render(
-      <TableProvider data={basicData} columns={basicColumns}>
+      <TableProvider>
         <TableControls>
           <BulkTableActions bulkActions={bulkActions} />
         </TableControls>
+        <Table data={basicData} columns={basicColumns}></Table>
       </TableProvider>
     );
 
@@ -68,10 +70,11 @@ describe('BulkTableActions', () => {
 
   test('should render bulk actions with record name', async () => {
     const { getByTestId } = render(
-      <TableProvider data={basicData} columns={basicColumns}>
+      <TableProvider>
         <TableControls>
           <BulkTableActions bulkActions={bulkActions} recordName="MyRecords" />
         </TableControls>
+        <Table data={basicData} columns={basicColumns}></Table>
       </TableProvider>
     );
 
@@ -92,11 +95,13 @@ describe('BulkTableActions', () => {
       <TableContext.Provider
         value={{
           instance: tableInstanceMock,
+          selectedRows: [basicData[0]],
         }}
       >
         <TableControls>
           <BulkTableActions bulkActions={bulkActions} />
         </TableControls>
+        <Table data={basicData} columns={basicColumns}></Table>
       </TableContext.Provider>
     );
 
@@ -120,11 +125,13 @@ describe('BulkTableActions', () => {
       <TableContext.Provider
         value={{
           instance: tableInstanceMock,
+          selectedRows: [],
         }}
       >
         <TableControls>
           <BulkTableActions bulkActions={bulkActions} />
         </TableControls>
+        <Table data={basicData} columns={basicColumns}></Table>
       </TableContext.Provider>
     );
 
@@ -153,11 +160,13 @@ describe('BulkTableActions', () => {
       <TableContext.Provider
         value={{
           instance: tableInstanceMock,
+          selectedRows: [basicData[0]],
         }}
       >
         <TableControls>
           <BulkTableActions bulkActions={bulkActions} />
         </TableControls>
+        <Table data={basicData} columns={basicColumns}></Table>
       </TableContext.Provider>
     );
 
@@ -178,11 +187,13 @@ describe('BulkTableActions', () => {
       <TableContext.Provider
         value={{
           instance: tableInstanceMock,
+          selectedRows: [],
         }}
       >
         <TableControls>
           <BulkTableActions bulkActions={bulkActions} />
         </TableControls>
+        <Table data={basicData} columns={basicColumns}></Table>
       </TableContext.Provider>
     );
 
@@ -215,11 +226,13 @@ describe('BulkTableActions', () => {
       <TableContext.Provider
         value={{
           instance: tableInstanceMock,
+          selectedRows: [],
         }}
       >
         <TableControls>
           <BulkTableActions bulkActions={bulkActions} onRecordsSelected={onRowsSelected} />
         </TableControls>
+        <Table data={basicData} columns={basicColumns}></Table>
       </TableContext.Provider>
     );
 

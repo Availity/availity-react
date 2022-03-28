@@ -1,18 +1,17 @@
 import React from 'react';
 import classNames from 'classnames';
-import { useTableContext } from './TableContext';
 import { OnTableClickEvent } from './types/OnTableClickEvent';
 import { Cell, IdType } from './types/ReactTable';
 
 type Props<T extends IdType> = {
   id?: string;
   cell: Cell<T>;
+  scrollable?: boolean;
   children: React.ReactNode;
   onCellClick?: (event: OnTableClickEvent<HTMLElement, T>) => void;
 } & React.HTMLAttributes<HTMLElement>;
 
-const TableCell = <T extends IdType>({ cell, children, onCellClick, ...rest }: Props<T>): JSX.Element => {
-  const { scrollable } = useTableContext();
+const TableCell = <T extends IdType>({ cell, scrollable, children, onCellClick, ...rest }: Props<T>): JSX.Element => {
   const { className, disableClick, stickyLeft, stickyRight } = cell.column;
 
   const isFixedWidth = scrollable && !className;
