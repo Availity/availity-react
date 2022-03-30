@@ -1,8 +1,6 @@
 import React from 'react';
-import { render, cleanup } from '@testing-library/react';
+import { render } from '@testing-library/react';
 import JsonViewer from '..';
-
-afterEach(cleanup);
 
 const setup = (data: Record<string, unknown>, expandAll?: boolean, listClassNames?: string | string[]) => render(<JsonViewer data={data} expandAll={!!expandAll} listClassNames={listClassNames} />);
 

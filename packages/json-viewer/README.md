@@ -2,9 +2,9 @@
 
 > Simple component that renders json as an accessible list of detail tags with summaries from the keys which allows accessible exploration of raw data
 
-[![Version](https://img.shields.io/npm/v/@availity/link.svg?style=for-the-badge)](https://www.npmjs.com/package/@availity/json-viewer)
-[![NPM Downloads](https://img.shields.io/npm/dt/@availity/link.svg?style=for-the-badge)](https://www.npmjs.com/package/@availity/json-viewer)
-[![Dependency Status](https://img.shields.io/librariesio/release/npm/@availity/link?style=for-the-badge)](https://github.com/Availity/availity-react/blob/master/packages/link/package.json)
+[![Version](https://img.shields.io/npm/v/@availity/json-viewer.svg?style=for-the-badge)](https://www.npmjs.com/package/@availity/json-viewer)
+[![NPM Downloads](https://img.shields.io/npm/dt/@availity/json-viewer.svg?style=for-the-badge)](https://www.npmjs.com/package/@availity/json-viewer)
+[![Dependency Status](https://img.shields.io/librariesio/release/npm/@availity/json-viewer?style=for-the-badge)](https://github.com/Availity/availity-react/blob/master/packages/json-viewer/package.json)
 
 ## Installation
 

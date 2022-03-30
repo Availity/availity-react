@@ -7,6 +7,7 @@ export interface JsonViewerProps {
   listClassNames?: string | string[];
   keyClassNames?: string | string[];
   summaryClassNames?: string | string[];
+  backgroundColor?: string
 }
 
 type Detailable = Omit<JsonViewerProps, 'listClassNames'>;
@@ -27,7 +28,7 @@ function getDetails({ data, expandAll, keyClassNames, summaryClassNames }: Detai
           <span className={classnames('text-bold', keyClassNames)}>
             {`${key}:`}
           </span>
-          <span> {(value as string | number | boolean).toString()}</span>
+          <span> {value.toString()}</span>
         </li>
       );
     }
@@ -40,7 +41,7 @@ function getDetails({ data, expandAll, keyClassNames, summaryClassNames }: Detai
                 Array.isArray(value) ? `[ ] ${value.length} items` : `{ } ${Object.keys(value).length} keys`
               }`}
             </summary>
-            <ul className="pl-4" style={{ listStyle: 'none' }}>
+            <ul className="pl-4 list-unstyled">
               {getDetails({ data: value, expandAll, keyClassNames })}
             </ul>
           </details>
@@ -51,17 +52,13 @@ function getDetails({ data, expandAll, keyClassNames, summaryClassNames }: Detai
   });
 }
 
-function JsonViewer({ data, expandAll, listClassNames, keyClassNames, summaryClassNames }: JsonViewerProps): JSX.Element {
+function JsonViewer({ data, expandAll = false, listClassNames, keyClassNames, summaryClassNames, backgroundColor = 'light' }: JsonViewerProps): JSX.Element {
   const details = getDetails({ data, expandAll, keyClassNames, summaryClassNames });
   return (
-    <ul data-testid='topLevelUl' className={classnames("p-2", listClassNames)} style={{ listStyle: 'none', backgroundColor: '#fbfbfb' }}>
+    <ul data-testid='topLevelUl' className={classnames(`p-2 list-unstyled bg-${backgroundColor}`, listClassNames)}>
       {details}
     </ul>
   );
-}
-
-JsonViewer.defaultProps = {
-  expandAll: false
 }
 
 export default JsonViewer;

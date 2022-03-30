@@ -29,3 +29,7 @@ Defaults to false, if true will open all details elements.
 
 Optional props passed to classnames to style various parts of the rendered tree.
 
+### `backgroundColor?: string`
+
+One of the bootstrap color classes - see https://getbootstrap.com/docs/4.0/utilities/colors/#background-color for options. Defaults to light.
+

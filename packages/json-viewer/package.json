@@ -14,7 +14,7 @@
   "repository": {
     "type": "git",
     "url": "git+https://github.com/Availity/availity-react.git",
-    "directory": "packages/link"
+    "directory": "packages/json-viewer"
   },
   "license": "MIT",
   "author": "Ben Newman <benjamin.newman@availity.com>",
