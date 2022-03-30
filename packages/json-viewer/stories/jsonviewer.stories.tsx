@@ -14,12 +14,12 @@ export default {
 } as Meta;
 
 export const WithoutExpandAll: Story = () => ( 
-    <JsonViewer data={{foo: 'bar'}} expandAll={false}/>
+    <JsonViewer data={{foo: {bar: {baz: ['stuff', 'things', 'etc.']}}}} expandAll={false}/>
 );
 
 WithoutExpandAll.storyName = 'with expandAll false';
 
 export const WithExpandAll: Story = () => (
-    <JsonViewer data={{foo: 'bar'}} expandAll/>
+    <JsonViewer data={{foo: {bar: {baz: ['stuff', 'things', 'etc.']}}}} expandAll/>
 );
 WithExpandAll.storyName = 'with expandAll true';
