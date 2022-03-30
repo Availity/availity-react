@@ -1,5 +1,5 @@
 import React from 'react';
-import { render, cleanup, screen } from '@testing-library/react';
+import { render, cleanup } from '@testing-library/react';
 import JsonViewer from '..';
 
 afterEach(cleanup);
@@ -22,7 +22,6 @@ describe('JsonViewer', () => {
   test('expandAll expands all details elements', () => {
     const {getAllByRole} = setup({foo: {bar: {baz: ['stuff', 'things', 'etc.']}}}, true)
     const details = getAllByRole('group')
-    screen.debug()
     details.forEach(detail => {
       expect(detail).toHaveAttribute('open')
     })
@@ -30,7 +29,6 @@ describe('JsonViewer', () => {
   test('expandAll false does not have open attribute on details elements', () => {
     const {getAllByRole} = setup({foo: {bar: {baz: ['stuff', 'things', 'etc.']}}}, false)
     const details = getAllByRole('group')
-    screen.debug()
     details.forEach(detail => {
       expect(detail).not.toHaveAttribute('open')
     })
