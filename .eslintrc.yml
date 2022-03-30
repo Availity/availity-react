@@ -14,3 +14,4 @@ rules:
   unicorn/prefer-array-find: 0
   unicorn/no-abusive-eslint-disable: 0
   unicorn/no-lonely-if: 0
+  unicorn/no-array-for-each: 0

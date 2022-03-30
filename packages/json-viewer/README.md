@@ -22,4 +22,4 @@ yarn add @availity/json-viewer
 
 ## Documentation
 
-Check out more documentation at [availity.github.io](https://availity.github.io/availity-react/components/jsonviewer)
+Check out more documentation at [availity.github.io](https://availity.github.io/availity-react/components/json-viewer)

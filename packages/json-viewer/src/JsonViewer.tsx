@@ -3,7 +3,7 @@ import classnames from 'classnames'
 
 export interface JsonViewerProps {
   data: Record<string, unknown>;
-  expandAll: boolean;
+  expandAll?: boolean;
   listClassNames?: string | string[];
   keyClassNames?: string | string[];
   summaryClassNames?: string | string[];
@@ -37,7 +37,7 @@ function getDetails({ data, expandAll, keyClassNames, summaryClassNames }: Detai
           <details open={expandAll}>
             <summary className={classnames('text-bold', summaryClassNames)}>
               {`${key}: ${
-                Array.isArray(value) ? `[] ${value.length} items` : `{} ${Object.keys(value).length} keys`
+                Array.isArray(value) ? `[ ] ${value.length} items` : `{ } ${Object.keys(value).length} keys`
               }`}
             </summary>
             <ul className="pl-4" style={{ listStyle: 'none' }}>
@@ -54,10 +54,14 @@ function getDetails({ data, expandAll, keyClassNames, summaryClassNames }: Detai
 function JsonViewer({ data, expandAll, listClassNames, keyClassNames, summaryClassNames }: JsonViewerProps): JSX.Element {
   const details = getDetails({ data, expandAll, keyClassNames, summaryClassNames });
   return (
-    <ul className={classnames("p-2", listClassNames)} style={{ listStyle: 'none', backgroundColor: '#fbfbfb' }}>
+    <ul data-testid='topLevelUl' className={classnames("p-2", listClassNames)} style={{ listStyle: 'none', backgroundColor: '#fbfbfb' }}>
       {details}
     </ul>
   );
+}
+
+JsonViewer.defaultProps = {
+  expandAll: false
 }
 
 export default JsonViewer;
