@@ -96,7 +96,8 @@ const Table = <T extends IdType>({
   ...rest
 }: TableProps<T>): JSX.Element | null => {
   let selectionColumn: Column<T>;
-  const { setInstance, setScrollable, setSortable, setSortableColumns, setSelectable } = useTableContext();
+  const { setInstance, setScrollable, setSortable, setSortableColumns, setSelectable, setSelectedRows } =
+    useTableContext();
 
   const [selectedTableRows, setSelectedTableRows] = useState<Row<T>[]>([]);
   const cols = columns as RtColumn<T>[];
@@ -174,10 +175,14 @@ const Table = <T extends IdType>({
   }, [selectedFlatRows, getCanSelectRow]);
 
   useEffect(() => {
+    if (setSelectedRows) {
+      setSelectedRows(selectedTableRows);
+    }
+
     if (onRowSelected) {
       onRowSelected({ selectedRows: selectedTableRows?.map((selectedRow: Row<T>) => selectedRow.id) });
     }
-  }, [selectedTableRows, onRowSelected]);
+  }, [selectedTableRows, onRowSelected, setSelectedRows]);
 
   useEffect(() => {
     if (tableInstance) {
