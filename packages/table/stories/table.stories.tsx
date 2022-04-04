@@ -22,14 +22,12 @@ const columns = [
     accessor: 'firstName',
     defaultCanSort: true,
     disableSortBy: false,
-    canCustomize: true,
   },
   {
     Header: 'Last Name',
     accessor: 'lastName',
     defaultCanSort: true,
     disableSortBy: false,
-    canCustomize: true,
   },
   {
     Header: 'Birth Date',
@@ -37,7 +35,6 @@ const columns = [
     defaultCanSort: true,
     disableSortBy: false,
     Cell: DateCell({ dateFormat: 'MM/DD/yyyy' }),
-    canCustomize: true,
   },
   {
     Header: 'Subscriber Relationship',
@@ -45,7 +42,6 @@ const columns = [
     defaultCanSort: true,
     disableSortBy: false,
     Cell: BadgeCell('primary'),
-    canCustomize: true,
   },
   {
     id: 'actions',
@@ -124,11 +120,7 @@ export const BasicTable: Story = ({
   columns,
   data,
   headerProps,
-  rowProps,
-  cellProps,
   bodyProps,
-  hasConfigurableColumns,
-  minimumNumberOfColumns,
 }: // eslint-disable-next-line @typescript-eslint/no-explicit-any
 any) => (
   <Table
@@ -139,24 +131,21 @@ any) => (
     selectable={selectable}
     columns={columns}
     data={data}
-    minimumNumberOfColumns={minimumNumberOfColumns}
-    hasCustomizableColumns={hasConfigurableColumns}
     headerProps={headerProps}
-    rowProps={rowProps}
-    cellProps={cellProps}
     bodyProps={bodyProps}
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    onRowSelected={(e: any) => {
+      // eslint-disable-next-line no-console
+      console.log(e);
+    }}
   />
 );
 BasicTable.args = {
   sortable: false,
-  selectable: false,
-  hasConfigurableColumns: true,
+  selectable: true,
   columns,
   data: response.data.patientPagination.items,
   headerProps: { style: { background: 'gray' } },
-  minimumNumberOfColumns: 0,
-  rowProps: { style: {} },
-  cellProps: { style: {} },
   bodyProps: { style: {} },
 };
 BasicTable.storyName = 'basic';
@@ -167,11 +156,7 @@ export const WithProvider: Story = ({
   columns,
   data,
   headerProps,
-  rowProps,
-  cellProps,
   bodyProps,
-  hasConfigurableColumns,
-  minimumNumberOfColumns,
 }: // eslint-disable-next-line @typescript-eslint/no-explicit-any
 any) => (
   <TableProvider>
@@ -219,11 +204,7 @@ any) => (
       selectable={selectable}
       columns={columns}
       data={data}
-      minimumNumberOfColumns={minimumNumberOfColumns}
-      hasCustomizableColumns={hasConfigurableColumns}
       headerProps={headerProps}
-      rowProps={rowProps}
-      cellProps={cellProps}
       bodyProps={bodyProps}
     />
   </TableProvider>
@@ -231,13 +212,9 @@ any) => (
 WithProvider.args = {
   sortable: true,
   selectable: true,
-  hasConfigurableColumns: true,
   columns,
   data: response.data.patientPagination.items,
   headerProps: { style: { background: '#f0f0f0' } },
-  minimumNumberOfColumns: 0,
-  rowProps: { style: {} },
-  cellProps: { style: {} },
   bodyProps: { style: {} },
 };
 WithProvider.storyName = 'with provider and controls';
@@ -248,8 +225,6 @@ export const WithScrollableContainer: Story = ({
   columns,
   data,
   headerProps,
-  rowProps,
-  cellProps,
   bodyProps,
 }: // eslint-disable-next-line @typescript-eslint/no-explicit-any
 any) => (
@@ -264,8 +239,6 @@ any) => (
         columns={columns}
         data={data}
         headerProps={headerProps}
-        rowProps={rowProps}
-        cellProps={cellProps}
         bodyProps={bodyProps}
       />
     </ScrollableContainer>
@@ -276,9 +249,7 @@ WithScrollableContainer.args = {
   selectable: false,
   columns,
   data: response.data.patientPagination.items,
-  headerProps: { style: { background: 'gray' } },
-  rowProps: { style: {} },
-  cellProps: { style: {} },
+  headerProps: { style: { background: '#333' } },
   bodyProps: { style: {} },
 };
 WithScrollableContainer.storyName = 'with scrollable container';

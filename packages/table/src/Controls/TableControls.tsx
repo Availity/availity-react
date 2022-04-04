@@ -10,7 +10,7 @@ type Props = {
 
 const TableControls = ({ id, disabled, children, ...rest }: Props): JSX.Element | null => {
   const [isDisabled, setIsDisabled] = useState(disabled || false);
-  
+
   const { instance } = useTableContext();
   const [isReady, setIsReady] = useState(!!instance);
 

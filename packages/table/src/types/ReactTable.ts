@@ -29,7 +29,11 @@ export type Row<T extends IdType> = RtRow<T> & {
   original: T;
 };
 
-export type Column<T extends IdType> = RtColumn<T>  & {
+export type RowProps = {
+  isDisabled?: boolean;
+} & React.HTMLAttributes<HTMLTableRowElement>;
+
+export type Column<T extends IdType> = RtColumn<T> & {
   className?: string;
   stickyRight?: boolean;
   stickyLeft?: boolean;
@@ -39,7 +43,6 @@ export type Column<T extends IdType> = RtColumn<T>  & {
   disableSortBy?: boolean;
   label?: string;
   hidden?: boolean;
-  canCustomize?: boolean;
   isVisible?: boolean;
 };
 
@@ -68,7 +71,8 @@ export type TableOptions<T extends IdType> = RtTableOptions<T> &
     manualSortBy?: boolean;
     hiddenColumns?: string[];
     initialState?: Partial<TableState<T>> & CurrentTableState;
-  } & UseSortByOptions<T> & UsePaginationOptions<T>;
+  } & UseSortByOptions<T> &
+  UsePaginationOptions<T>;
 
 export type TableInstance<T extends IdType> = UseSortByInstanceProps<T> &
   UseRowSelectInstanceProps<T> &

@@ -16,11 +16,13 @@ const basicColumns = [
     Header: 'First Name',
     accessor: 'first_name',
     defaultCanSort: true,
+    canCustomize: true,
   },
   {
     Header: 'Last Name',
     accessor: 'last_name',
     defaultCanSort: true,
+    canCustomize: true,
   },
   {
     Header: 'Email',
@@ -214,7 +216,7 @@ describe('Table', () => {
     fireEvent.click(tableRow);
 
     await waitFor(() => {
-      expect(onRowSelected).toHaveBeenCalledTimes(1);
+      expect(onRowSelected).toHaveBeenCalled();
     });
   });
 
@@ -252,8 +254,6 @@ describe('Table', () => {
         <Table data={basicData} columns={columnsToUse} />
       </TableProvider>
     );
-
-    expect(container).toBeDefined();
 
     expect(container).toBeDefined();
     expect(container).toMatchSnapshot();

@@ -55,7 +55,7 @@ describe('BulkTableActions', () => {
         <TableControls>
           <BulkTableActions bulkActions={bulkActions} />
         </TableControls>
-        <Table data={basicData} columns={basicColumns}></Table>
+        <Table data={basicData} columns={basicColumns} />
       </TableProvider>
     );
 
@@ -74,7 +74,7 @@ describe('BulkTableActions', () => {
         <TableControls>
           <BulkTableActions bulkActions={bulkActions} recordName="MyRecords" />
         </TableControls>
-        <Table data={basicData} columns={basicColumns}></Table>
+        <Table data={basicData} columns={basicColumns} />
       </TableProvider>
     );
 
@@ -101,7 +101,7 @@ describe('BulkTableActions', () => {
         <TableControls>
           <BulkTableActions bulkActions={bulkActions} />
         </TableControls>
-        <Table data={basicData} columns={basicColumns}></Table>
+        <Table data={basicData} columns={basicColumns} />
       </TableContext.Provider>
     );
 
@@ -131,7 +131,7 @@ describe('BulkTableActions', () => {
         <TableControls>
           <BulkTableActions bulkActions={bulkActions} />
         </TableControls>
-        <Table data={basicData} columns={basicColumns}></Table>
+        <Table data={basicData} columns={basicColumns} />
       </TableContext.Provider>
     );
 
@@ -166,7 +166,7 @@ describe('BulkTableActions', () => {
         <TableControls>
           <BulkTableActions bulkActions={bulkActions} />
         </TableControls>
-        <Table data={basicData} columns={basicColumns}></Table>
+        <Table data={basicData} columns={basicColumns} />
       </TableContext.Provider>
     );
 
@@ -193,7 +193,7 @@ describe('BulkTableActions', () => {
         <TableControls>
           <BulkTableActions bulkActions={bulkActions} />
         </TableControls>
-        <Table data={basicData} columns={basicColumns}></Table>
+        <Table data={basicData} columns={basicColumns} />
       </TableContext.Provider>
     );
 
@@ -232,7 +232,7 @@ describe('BulkTableActions', () => {
         <TableControls>
           <BulkTableActions bulkActions={bulkActions} onRecordsSelected={onRowsSelected} />
         </TableControls>
-        <Table data={basicData} columns={basicColumns}></Table>
+        <Table data={basicData} columns={basicColumns} />
       </TableContext.Provider>
     );
 

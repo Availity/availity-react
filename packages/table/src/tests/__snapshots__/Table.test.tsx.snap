@@ -56,21 +56,18 @@ exports[`Table should not display hidden columns 1`] = `
         <td
           data-testid="table_row_0_cell_0"
           id="table_row_0_cell_0"
-          role="cell"
         >
           Barbra
         </td>
         <td
           data-testid="table_row_0_cell_1"
           id="table_row_0_cell_1"
-          role="cell"
         >
           Tull
         </td>
         <td
           data-testid="table_row_0_cell_2"
           id="table_row_0_cell_2"
-          role="cell"
         >
           btull0@usatoday.com
         </td>
@@ -84,21 +81,18 @@ exports[`Table should not display hidden columns 1`] = `
         <td
           data-testid="table_row_1_cell_0"
           id="table_row_1_cell_0"
-          role="cell"
         >
           Karlis
         </td>
         <td
           data-testid="table_row_1_cell_1"
           id="table_row_1_cell_1"
-          role="cell"
         >
           Yurshev
         </td>
         <td
           data-testid="table_row_1_cell_2"
           id="table_row_1_cell_2"
-          role="cell"
         >
           kyurshev1@spotify.com
         </td>
@@ -112,21 +106,18 @@ exports[`Table should not display hidden columns 1`] = `
         <td
           data-testid="table_row_2_cell_0"
           id="table_row_2_cell_0"
-          role="cell"
         >
           Bordie
         </td>
         <td
           data-testid="table_row_2_cell_1"
           id="table_row_2_cell_1"
-          role="cell"
         >
           Marsy
         </td>
         <td
           data-testid="table_row_2_cell_2"
           id="table_row_2_cell_2"
-          role="cell"
         >
           bmarsy2@elegantthemes.com
         </td>
@@ -192,21 +183,18 @@ exports[`Table should render basic table 1`] = `
         <td
           data-testid="table_row_0_cell_0"
           id="table_row_0_cell_0"
-          role="cell"
         >
           Barbra
         </td>
         <td
           data-testid="table_row_0_cell_1"
           id="table_row_0_cell_1"
-          role="cell"
         >
           Tull
         </td>
         <td
           data-testid="table_row_0_cell_2"
           id="table_row_0_cell_2"
-          role="cell"
         >
           btull0@usatoday.com
         </td>
@@ -220,21 +208,18 @@ exports[`Table should render basic table 1`] = `
         <td
           data-testid="table_row_1_cell_0"
           id="table_row_1_cell_0"
-          role="cell"
         >
           Karlis
         </td>
         <td
           data-testid="table_row_1_cell_1"
           id="table_row_1_cell_1"
-          role="cell"
         >
           Yurshev
         </td>
         <td
           data-testid="table_row_1_cell_2"
           id="table_row_1_cell_2"
-          role="cell"
         >
           kyurshev1@spotify.com
         </td>
@@ -248,21 +233,18 @@ exports[`Table should render basic table 1`] = `
         <td
           data-testid="table_row_2_cell_0"
           id="table_row_2_cell_0"
-          role="cell"
         >
           Bordie
         </td>
         <td
           data-testid="table_row_2_cell_1"
           id="table_row_2_cell_1"
-          role="cell"
         >
           Marsy
         </td>
         <td
           data-testid="table_row_2_cell_2"
           id="table_row_2_cell_2"
-          role="cell"
         >
           bmarsy2@elegantthemes.com
         </td>
@@ -356,7 +338,6 @@ exports[`Table should render selectable table 1`] = `
           class="fixed-width-selection"
           data-testid="table_row_0_cell_0"
           id="table_row_0_cell_0"
-          role="cell"
         >
           <div
             class="text-center"
@@ -381,21 +362,18 @@ exports[`Table should render selectable table 1`] = `
         <td
           data-testid="table_row_0_cell_1"
           id="table_row_0_cell_1"
-          role="cell"
         >
           Barbra
         </td>
         <td
           data-testid="table_row_0_cell_2"
           id="table_row_0_cell_2"
-          role="cell"
         >
           Tull
         </td>
         <td
           data-testid="table_row_0_cell_3"
           id="table_row_0_cell_3"
-          role="cell"
         >
           btull0@usatoday.com
         </td>
@@ -410,7 +388,6 @@ exports[`Table should render selectable table 1`] = `
           class="fixed-width-selection"
           data-testid="table_row_1_cell_0"
           id="table_row_1_cell_0"
-          role="cell"
         >
           <div
             class="text-center"
@@ -435,21 +412,18 @@ exports[`Table should render selectable table 1`] = `
         <td
           data-testid="table_row_1_cell_1"
           id="table_row_1_cell_1"
-          role="cell"
         >
           Karlis
         </td>
         <td
           data-testid="table_row_1_cell_2"
           id="table_row_1_cell_2"
-          role="cell"
         >
           Yurshev
         </td>
         <td
           data-testid="table_row_1_cell_3"
           id="table_row_1_cell_3"
-          role="cell"
         >
           kyurshev1@spotify.com
         </td>
@@ -464,7 +438,6 @@ exports[`Table should render selectable table 1`] = `
           class="fixed-width-selection"
           data-testid="table_row_2_cell_0"
           id="table_row_2_cell_0"
-          role="cell"
         >
           <div
             class="text-center"
@@ -489,21 +462,18 @@ exports[`Table should render selectable table 1`] = `
         <td
           data-testid="table_row_2_cell_1"
           id="table_row_2_cell_1"
-          role="cell"
         >
           Bordie
         </td>
         <td
           data-testid="table_row_2_cell_2"
           id="table_row_2_cell_2"
-          role="cell"
         >
           Marsy
         </td>
         <td
           data-testid="table_row_2_cell_3"
           id="table_row_2_cell_3"
-          role="cell"
         >
           bmarsy2@elegantthemes.com
         </td>
@@ -580,21 +550,18 @@ exports[`Table should render sortable table 1`] = `
         <td
           data-testid="table_row_0_cell_0"
           id="table_row_0_cell_0"
-          role="cell"
         >
           Barbra
         </td>
         <td
           data-testid="table_row_0_cell_1"
           id="table_row_0_cell_1"
-          role="cell"
         >
           Tull
         </td>
         <td
           data-testid="table_row_0_cell_2"
           id="table_row_0_cell_2"
-          role="cell"
         >
           btull0@usatoday.com
         </td>
@@ -608,21 +575,18 @@ exports[`Table should render sortable table 1`] = `
         <td
           data-testid="table_row_1_cell_0"
           id="table_row_1_cell_0"
-          role="cell"
         >
           Karlis
         </td>
         <td
           data-testid="table_row_1_cell_1"
           id="table_row_1_cell_1"
-          role="cell"
         >
           Yurshev
         </td>
         <td
           data-testid="table_row_1_cell_2"
           id="table_row_1_cell_2"
-          role="cell"
         >
           kyurshev1@spotify.com
         </td>
@@ -636,21 +600,18 @@ exports[`Table should render sortable table 1`] = `
         <td
           data-testid="table_row_2_cell_0"
           id="table_row_2_cell_0"
-          role="cell"
         >
           Bordie
         </td>
         <td
           data-testid="table_row_2_cell_1"
           id="table_row_2_cell_1"
-          role="cell"
         >
           Marsy
         </td>
         <td
           data-testid="table_row_2_cell_2"
           id="table_row_2_cell_2"
-          role="cell"
         >
           bmarsy2@elegantthemes.com
         </td>
@@ -717,21 +678,18 @@ exports[`Table should render with expected ids 1`] = `
         <td
           data-testid="my_availity_table_table_row_0_cell_0"
           id="my_availity_table_table_row_0_cell_0"
-          role="cell"
         >
           Barbra
         </td>
         <td
           data-testid="my_availity_table_table_row_0_cell_1"
           id="my_availity_table_table_row_0_cell_1"
-          role="cell"
         >
           Tull
         </td>
         <td
           data-testid="my_availity_table_table_row_0_cell_2"
           id="my_availity_table_table_row_0_cell_2"
-          role="cell"
         >
           btull0@usatoday.com
         </td>
@@ -745,21 +703,18 @@ exports[`Table should render with expected ids 1`] = `
         <td
           data-testid="my_availity_table_table_row_1_cell_0"
           id="my_availity_table_table_row_1_cell_0"
-          role="cell"
         >
           Karlis
         </td>
         <td
           data-testid="my_availity_table_table_row_1_cell_1"
           id="my_availity_table_table_row_1_cell_1"
-          role="cell"
         >
           Yurshev
         </td>
         <td
           data-testid="my_availity_table_table_row_1_cell_2"
           id="my_availity_table_table_row_1_cell_2"
-          role="cell"
         >
           kyurshev1@spotify.com
         </td>
@@ -773,21 +728,18 @@ exports[`Table should render with expected ids 1`] = `
         <td
           data-testid="my_availity_table_table_row_2_cell_0"
           id="my_availity_table_table_row_2_cell_0"
-          role="cell"
         >
           Bordie
         </td>
         <td
           data-testid="my_availity_table_table_row_2_cell_1"
           id="my_availity_table_table_row_2_cell_1"
-          role="cell"
         >
           Marsy
         </td>
         <td
           data-testid="my_availity_table_table_row_2_cell_2"
           id="my_availity_table_table_row_2_cell_2"
-          role="cell"
         >
           bmarsy2@elegantthemes.com
         </td>
@@ -890,14 +842,12 @@ exports[`Table should render with formatted cells 1`] = `
         <td
           data-testid="table_row_0_cell_0"
           id="table_row_0_cell_0"
-          role="cell"
         >
           My Text Field
         </td>
         <td
           data-testid="table_row_0_cell_1"
           id="table_row_0_cell_1"
-          role="cell"
         >
           <span
             title="$43.08"
@@ -908,7 +858,6 @@ exports[`Table should render with formatted cells 1`] = `
         <td
           data-testid="table_row_0_cell_2"
           id="table_row_0_cell_2"
-          role="cell"
         >
           <span
             class="badge badge-badge-success"
@@ -920,7 +869,6 @@ exports[`Table should render with formatted cells 1`] = `
         <td
           data-testid="table_row_0_cell_3"
           id="table_row_0_cell_3"
-          role="cell"
         >
           <i
             aria-hidden="true"
@@ -931,7 +879,6 @@ exports[`Table should render with formatted cells 1`] = `
         <td
           data-testid="table_row_0_cell_4"
           id="table_row_0_cell_4"
-          role="cell"
         >
           <i
             aria-hidden="true"
@@ -942,7 +889,6 @@ exports[`Table should render with formatted cells 1`] = `
         <td
           data-testid="table_row_0_cell_5"
           id="table_row_0_cell_5"
-          role="cell"
         >
           <span
             title="02/16/1956"
@@ -953,7 +899,6 @@ exports[`Table should render with formatted cells 1`] = `
         <td
           data-testid="table_row_0_cell_6"
           id="table_row_0_cell_6"
-          role="cell"
         >
           <div
             class="dropdown-action-menu dropleft dropdown"
@@ -1022,14 +967,12 @@ exports[`Table should render with formatted cells 1`] = `
         <td
           data-testid="table_row_1_cell_0"
           id="table_row_1_cell_0"
-          role="cell"
         >
           My Text Field
         </td>
         <td
           data-testid="table_row_1_cell_1"
           id="table_row_1_cell_1"
-          role="cell"
         >
           <span
             title="$43.08"
@@ -1040,7 +983,6 @@ exports[`Table should render with formatted cells 1`] = `
         <td
           data-testid="table_row_1_cell_2"
           id="table_row_1_cell_2"
-          role="cell"
         >
           <span
             class="badge badge-badge-success"
@@ -1052,17 +994,14 @@ exports[`Table should render with formatted cells 1`] = `
         <td
           data-testid="table_row_1_cell_3"
           id="table_row_1_cell_3"
-          role="cell"
         />
         <td
           data-testid="table_row_1_cell_4"
           id="table_row_1_cell_4"
-          role="cell"
         />
         <td
           data-testid="table_row_1_cell_5"
           id="table_row_1_cell_5"
-          role="cell"
         >
           <span
             title="02/16/1990"
@@ -1073,7 +1012,6 @@ exports[`Table should render with formatted cells 1`] = `
         <td
           data-testid="table_row_1_cell_6"
           id="table_row_1_cell_6"
-          role="cell"
         >
           <div
             class="dropdown-action-menu dropleft dropdown"

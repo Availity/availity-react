@@ -118,21 +118,18 @@ exports[`TableSorter should render sort options in dropdown menu 1`] = `
         <td
           data-testid="table_row_0_cell_0"
           id="table_row_0_cell_0"
-          role="cell"
         >
           Karlis
         </td>
         <td
           data-testid="table_row_0_cell_1"
           id="table_row_0_cell_1"
-          role="cell"
         >
           Yurshev
         </td>
         <td
           data-testid="table_row_0_cell_2"
           id="table_row_0_cell_2"
-          role="cell"
         >
           kyurshev1@spotify.com
         </td>
@@ -146,21 +143,18 @@ exports[`TableSorter should render sort options in dropdown menu 1`] = `
         <td
           data-testid="table_row_1_cell_0"
           id="table_row_1_cell_0"
-          role="cell"
         >
           Bordie
         </td>
         <td
           data-testid="table_row_1_cell_1"
           id="table_row_1_cell_1"
-          role="cell"
         >
           Marsy
         </td>
         <td
           data-testid="table_row_1_cell_2"
           id="table_row_1_cell_2"
-          role="cell"
         >
           bmarsy2@elegantthemes.com
         </td>
@@ -174,21 +168,18 @@ exports[`TableSorter should render sort options in dropdown menu 1`] = `
         <td
           data-testid="table_row_2_cell_0"
           id="table_row_2_cell_0"
-          role="cell"
         >
           Barbra
         </td>
         <td
           data-testid="table_row_2_cell_1"
           id="table_row_2_cell_1"
-          role="cell"
         >
           Tull
         </td>
         <td
           data-testid="table_row_2_cell_2"
           id="table_row_2_cell_2"
-          role="cell"
         >
           btull0@usatoday.com
         </td>
@@ -326,21 +317,18 @@ exports[`TableSorter should render table Sorter 1`] = `
         <td
           data-testid="table_row_0_cell_0"
           id="table_row_0_cell_0"
-          role="cell"
         >
           Barbra
         </td>
         <td
           data-testid="table_row_0_cell_1"
           id="table_row_0_cell_1"
-          role="cell"
         >
           Tull
         </td>
         <td
           data-testid="table_row_0_cell_2"
           id="table_row_0_cell_2"
-          role="cell"
         >
           btull0@usatoday.com
         </td>
@@ -354,21 +342,18 @@ exports[`TableSorter should render table Sorter 1`] = `
         <td
           data-testid="table_row_1_cell_0"
           id="table_row_1_cell_0"
-          role="cell"
         >
           Karlis
         </td>
         <td
           data-testid="table_row_1_cell_1"
           id="table_row_1_cell_1"
-          role="cell"
         >
           Yurshev
         </td>
         <td
           data-testid="table_row_1_cell_2"
           id="table_row_1_cell_2"
-          role="cell"
         >
           kyurshev1@spotify.com
         </td>
@@ -382,21 +367,18 @@ exports[`TableSorter should render table Sorter 1`] = `
         <td
           data-testid="table_row_2_cell_0"
           id="table_row_2_cell_0"
-          role="cell"
         >
           Bordie
         </td>
         <td
           data-testid="table_row_2_cell_1"
           id="table_row_2_cell_1"
-          role="cell"
         >
           Marsy
         </td>
         <td
           data-testid="table_row_2_cell_2"
           id="table_row_2_cell_2"
-          role="cell"
         >
           bmarsy2@elegantthemes.com
         </td>
@@ -524,21 +506,18 @@ exports[`TableSorter should show ascending icon 1`] = `
         <td
           data-testid="table_row_0_cell_0"
           id="table_row_0_cell_0"
-          role="cell"
         >
           Barbra
         </td>
         <td
           data-testid="table_row_0_cell_1"
           id="table_row_0_cell_1"
-          role="cell"
         >
           Tull
         </td>
         <td
           data-testid="table_row_0_cell_2"
           id="table_row_0_cell_2"
-          role="cell"
         >
           btull0@usatoday.com
         </td>
@@ -552,21 +531,18 @@ exports[`TableSorter should show ascending icon 1`] = `
         <td
           data-testid="table_row_1_cell_0"
           id="table_row_1_cell_0"
-          role="cell"
         >
           Karlis
         </td>
         <td
           data-testid="table_row_1_cell_1"
           id="table_row_1_cell_1"
-          role="cell"
         >
           Yurshev
         </td>
         <td
           data-testid="table_row_1_cell_2"
           id="table_row_1_cell_2"
-          role="cell"
         >
           kyurshev1@spotify.com
         </td>
@@ -580,21 +556,18 @@ exports[`TableSorter should show ascending icon 1`] = `
         <td
           data-testid="table_row_2_cell_0"
           id="table_row_2_cell_0"
-          role="cell"
         >
           Bordie
         </td>
         <td
           data-testid="table_row_2_cell_1"
           id="table_row_2_cell_1"
-          role="cell"
         >
           Marsy
         </td>
         <td
           data-testid="table_row_2_cell_2"
           id="table_row_2_cell_2"
-          role="cell"
         >
           bmarsy2@elegantthemes.com
         </td>
@@ -722,21 +695,18 @@ exports[`TableSorter should show descending icon 1`] = `
         <td
           data-testid="table_row_0_cell_0"
           id="table_row_0_cell_0"
-          role="cell"
         >
           Barbra
         </td>
         <td
           data-testid="table_row_0_cell_1"
           id="table_row_0_cell_1"
-          role="cell"
         >
           Tull
         </td>
         <td
           data-testid="table_row_0_cell_2"
           id="table_row_0_cell_2"
-          role="cell"
         >
           btull0@usatoday.com
         </td>
@@ -750,21 +720,18 @@ exports[`TableSorter should show descending icon 1`] = `
         <td
           data-testid="table_row_1_cell_0"
           id="table_row_1_cell_0"
-          role="cell"
         >
           Karlis
         </td>
         <td
           data-testid="table_row_1_cell_1"
           id="table_row_1_cell_1"
-          role="cell"
         >
           Yurshev
         </td>
         <td
           data-testid="table_row_1_cell_2"
           id="table_row_1_cell_2"
-          role="cell"
         >
           kyurshev1@spotify.com
         </td>
@@ -778,21 +745,18 @@ exports[`TableSorter should show descending icon 1`] = `
         <td
           data-testid="table_row_2_cell_0"
           id="table_row_2_cell_0"
-          role="cell"
         >
           Bordie
         </td>
         <td
           data-testid="table_row_2_cell_1"
           id="table_row_2_cell_1"
-          role="cell"
         >
           Marsy
         </td>
         <td
           data-testid="table_row_2_cell_2"
           id="table_row_2_cell_2"
-          role="cell"
         >
           bmarsy2@elegantthemes.com
         </td>

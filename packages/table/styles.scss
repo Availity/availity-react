@@ -22,8 +22,6 @@ $av-table-font-size: 1rem !default;
 
 $av-table-additional-content-background-color: #fff !default;
 
-$av-table-customizable-columns-icon-color: $av-table-header-text-color;
-
 .av-grid-additional-content {
   table {
     background: $av-table-additional-content-background-color;
@@ -82,10 +80,6 @@ table.av-grid {
       position: -webkit-sticky;
       position: sticky;
     }
-
-	&.customizable {
-		width: 100px !important;
-	}
   }
 
   thead th.sticky.sticky-right {
@@ -238,84 +232,4 @@ thead > tr {
   .table-controls-sorting {
     margin-left: 15px;
   }
-}
-
-.customize-column-link {
-  text-decoration: inherit !important;
-  color: $av-table-customizable-columns-icon-color !important;
-  padding: 0 !important;
-}
-
-.grabbed-item {
-  cursor: grabbing;
-  box-shadow: none !important;
-  border: none !important;
-  z-index: 60000;
-
-  .configure-columns.table > tbody > tr {
-    padding: 0 !important;
-    background-color: #e8ebeb !important;
-    font-size: 11px !important;
-    td {
-      padding: 0 !important;
-    }
-  }
-}
-
-.edit-table-columns {
-  .popover-inner.sortable-table-fields-content {
-    font-size: 11px !important;
-    margin: 8px 0px;
-
-    .customizable-column-item {
-      cursor: move;
-      border-collapse: separate;
-      border: none;
-
-      height: 15px !important;
-      &:hover {
-        background-color: #e8ebeb;
-      }
-
-      > td {
-        font-size: 11px !important;
-        padding: 0px !important;
-      }
-    }
-
-    .popover-body {
-      padding: 2px 15px;
-	  margin-top: 10px;
-      width: 215px;
-
-      .icon {
-        color: #212529;
-      }
-      .header-margin {
-        margin: 5px 0px 3px 0px;
-        font-size: 14px !important;
-        h5 {
-          font-size: 14px !important;
-        }
-      }
-      .reset-to-default > button {
-        font-size: 11px !important;
-      }
-    }
-  }
-}
-
-.customize-columns-buttons > button {
-  font-size: 12px;
-}
-
-.overlay {
-  width: 100%;
-  height: 100%;
-  position: absolute;
-  top: 0;
-  left: 0;
-  background-color: rgba(0, 0, 0, 0.2);
-  transition: opacity 0.5s;
-  z-index: 1000;
 }

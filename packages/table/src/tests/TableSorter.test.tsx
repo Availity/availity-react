@@ -34,7 +34,7 @@ describe('TableSorter', () => {
         <TableControls>
           <TableSorter />
         </TableControls>
-        <Table sortable data={basicData} columns={basicColumns}></Table>
+        <Table sortable data={basicData} columns={basicColumns} />
       </TableProvider>
     );
 
@@ -73,7 +73,7 @@ describe('TableSorter', () => {
           initialState={{
             sortBy: [{ id: 'first_name', desc: true }],
           }}
-        ></Table>
+        />
       </TableContext.Provider>
     );
 
@@ -109,7 +109,7 @@ describe('TableSorter', () => {
         <TableControls>
           <TableSorter />
         </TableControls>
-        <Table data={basicData} columns={basicColumns}></Table>
+        <Table data={basicData} columns={basicColumns} />
       </TableContext.Provider>
     );
 
@@ -143,7 +143,7 @@ describe('TableSorter', () => {
         <TableControls>
           <TableSorter />
         </TableControls>
-        <Table data={basicData} columns={basicColumns}></Table>
+        <Table data={basicData} columns={basicColumns} />
       </TableContext.Provider>
     );
 
@@ -181,7 +181,7 @@ describe('TableSorter', () => {
         <TableControls>
           <TableSorter onSort={onSort} />
         </TableControls>
-        <Table data={basicData} columns={basicColumns}></Table>
+        <Table data={basicData} columns={basicColumns} />
       </TableContext.Provider>
     );
 
@@ -226,7 +226,7 @@ describe('TableSorter', () => {
         <TableControls>
           <TableSorter onSort={onSort} sortOptions={[{ value: 'last_name', label: ' Last name' }]} />
         </TableControls>
-        <Table data={basicData} columns={basicColumns}></Table>
+        <Table data={basicData} columns={basicColumns} />
       </TableContext.Provider>
     );
 

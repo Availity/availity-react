@@ -4,7 +4,7 @@ import { TableSortOption } from './types';
 export type AvTableContext = {
   scrollable?: boolean;
   setScrollable?: React.Dispatch<React.SetStateAction<boolean>>;
-  
+
   sortable?: boolean;
   setSortable?: React.Dispatch<React.SetStateAction<boolean>>;
 
@@ -13,10 +13,6 @@ export type AvTableContext = {
 
   selectable?: boolean;
   setSelectable?: React.Dispatch<React.SetStateAction<boolean>>;
-
-  hasCustomizableColumns?: boolean;
-  isCustomizingColumns?: boolean;
-  setIsCustomizingColumns?: React.Dispatch<React.SetStateAction<boolean>>;
 
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   instance?: any;
@@ -31,7 +27,7 @@ export type AvTableContext = {
 export const TableContext = React.createContext<AvTableContext>({
   scrollable: false,
   sortable: false,
-  selectedRows: []
+  selectedRows: [],
 });
 
 export const useTableContext = (): AvTableContext => useContext(TableContext);

@@ -63,7 +63,7 @@ const bulkActions = [
 describe('TableControls', () => {
   test('should render table controls with one child', () => {
     const { container } = render(
-      <TableProvider data={basicData} columns={basicColumns}>
+      <TableProvider>
         <TableControls>
           <BulkTableActions bulkActions={bulkActions} />
         </TableControls>
@@ -81,8 +81,7 @@ describe('TableControls', () => {
           <BulkTableActions bulkActions={bulkActions} />
           <TableSorter />
         </TableControls>
-        <Table data={basicData} columns={basicColumns}></Table>
-
+        <Table data={basicData} columns={basicColumns} />
       </TableProvider>
     );
 
@@ -97,8 +96,7 @@ describe('TableControls', () => {
           <BulkTableActions bulkActions={bulkActions} />
           <TableSorter />
         </TableControls>
-        <Table data={basicData} columns={basicColumns}></Table>
-
+        <Table data={basicData} columns={basicColumns} />
       </TableProvider>
     );
 
@@ -121,7 +119,7 @@ describe('TableControls', () => {
           <BulkTableActions bulkActions={bulkActions} />
           <TableSorter />
         </TableControls>
-        <Table data={basicData} columns={basicColumns}></Table>
+        <Table data={basicData} columns={basicColumns} />
       </TableProvider>
     );
 
