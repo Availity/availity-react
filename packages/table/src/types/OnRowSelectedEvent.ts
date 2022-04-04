@@ -1,3 +1,5 @@
-export interface OnRowSelectedEvent {
-  selectedRows: string[] | number[];
+import { Row } from "./ReactTable";
+
+export interface OnRowSelectedEvent<T> {
+  selectedRows: Row<T>[]
 }

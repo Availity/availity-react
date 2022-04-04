@@ -48,7 +48,7 @@ export type CommonTableProps<T extends IdType> = {
 
   onCellClick?: (event: OnTableClickEvent<HTMLElement, T>) => void;
   onRowClick?: (event: OnTableClickEvent<HTMLElement, T>) => void;
-  onRowSelected?: (event: OnRowSelectedEvent) => void;
+  onRowSelected?: (event: OnRowSelectedEvent<T>) => void;
   headerProps?: HeaderProps;
   onSort?: (sortBy: TableSort[]) => void;
 
@@ -180,7 +180,7 @@ const Table = <T extends IdType>({
     }
 
     if (onRowSelected) {
-      onRowSelected({ selectedRows: selectedTableRows?.map((selectedRow: Row<T>) => selectedRow.id) });
+      onRowSelected({ selectedRows: selectedTableRows });
     }
   }, [selectedTableRows, onRowSelected, setSelectedRows]);
 
