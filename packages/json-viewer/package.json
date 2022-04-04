@@ -18,8 +18,8 @@
   },
   "license": "MIT",
   "author": "Ben Newman <benjamin.newman@availity.com>",
-  "main": "index.js",
-  "types": "index.d.ts",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
   "dependencies": {
     "classnames": "^2.3.1"
   },
