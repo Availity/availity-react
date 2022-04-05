@@ -78,6 +78,14 @@ module.exports = {
             ],
           },
           'components/icon',
+          {
+            type: 'category',
+            label: 'JSON Viewer',
+            items: [
+              'components/json-viewer/index',
+              'components/json-viewer/json-viewer',
+            ],
+          },
           'components/link',
           'components/list-group',
           {
