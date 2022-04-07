@@ -1,8 +1,7 @@
-import React, { useEffect, useMemo, useRef, useState } from 'react';
+import React, { useEffect, useMemo, useState } from 'react';
 import PropTypes from 'prop-types';
-import Icon from '@availity/icon';
 import { InputGroup, Input, Button, Row, Col } from 'reactstrap';
-import { DateRangePicker } from 'react-dates';
+import { DateRangePicker } from '@availity/react-dates';
 import classNames from 'classnames';
 import { useField, useFormikContext } from 'formik';
 import pick from 'lodash/pick';
@@ -59,21 +58,19 @@ const DateRange = ({
   innerRef,
   className,
   format,
-  calendarIcon,
+  ariaDescribedBy,
   datepickerProps,
   'data-testid': dataTestId,
-  datepicker,
   autoSync,
   ranges: propsRanges,
   customArrowIcon,
   openDirection,
+  allowInvalidDates,
   ...attributes
 }) => {
   const { setFieldValue, setFieldTouched, validateField } = useFormikContext();
   const [{ value = {} }, metadata] = useField({ name, validate });
   const [focusedInput, setFocusedInput] = useState(null);
-
-  const calendarIconRef = useRef();
 
   const startId = `${(id || name).replace(/[^\da-z]/gi, '')}-start`;
   const endId = `${(id || name).replace(/[^\da-z]/gi, '')}-end`;
@@ -82,26 +79,12 @@ const DateRange = ({
   const endValue = value.endDate || '';
 
   const startValueMoment = useMemo(
-    () =>
-      moment(startValue, [
-        isoDateFormat,
-        format,
-        'MMDDYYYY',
-        'YYYYMMDD',
-        'M/D/YYYY',
-      ]),
+    () => moment(startValue, [isoDateFormat, format, 'MMDDYYYY', 'YYYYMMDD', 'M/D/YYYY']),
     [startValue, format]
   );
 
   const endValueMoment = useMemo(
-    () =>
-      moment(endValue, [
-        isoDateFormat,
-        format,
-        'MMDDYYYY',
-        'YYYYMMDD',
-        'M/D/YYYY',
-      ]),
+    () => moment(endValue, [isoDateFormat, format, 'MMDDYYYY', 'YYYYMMDD', 'M/D/YYYY']),
     [endValue, format]
   );
 
@@ -110,8 +93,7 @@ const DateRange = ({
     className,
     metadata.touched ? 'is-touched' : 'is-untouched',
     metadata.touched && metadata.error && 'is-invalid',
-    !startValue && !endValue && 'current-day-highlight',
-    datepicker && 'av-calendar-show'
+    !startValue && !endValue && 'current-day-highlight'
   );
 
   // Should only run validation once per real change to component, instead of each time setFieldValue/Touched is called.
@@ -126,13 +108,9 @@ const DateRange = ({
   // For updating when we delete the current input
   const onInputChange = (val) => {
     const isStart = focusedInput === 'startDate';
-    const date = moment(
-      val,
-      [isoDateFormat, format, 'MMDDYYYY', 'YYYYMMDD', 'M/D/YYYY'],
-      true
-    );
+    const date = moment(val, [isoDateFormat, format, 'MMDDYYYY', 'YYYYMMDD', 'M/D/YYYY'], true);
 
-    const valueToSet = date.isValid() ? date.format(format) : null;
+    const valueToSet = date.isValid() ? date.format(format) : allowInvalidDates ? val : null;
 
     setFieldValue(
       name,
@@ -204,11 +182,7 @@ const DateRange = ({
   };
 
   const getDateValue = (val) => {
-    const date = moment(
-      val,
-      [isoDateFormat, format, 'MMDDYYYY', 'YYYYMMDD', 'M/D/YYYY'],
-      true
-    );
+    const date = moment(val, [isoDateFormat, format, 'MMDDYYYY', 'YYYYMMDD', 'M/D/YYYY'], true);
     if (date.isValid()) return date;
 
     return null;
@@ -219,9 +193,7 @@ const DateRange = ({
     if (typeof propsRanges === 'boolean' && propsRanges) {
       ranges = relativeRanges;
     } else if (propsRanges) {
-      ranges = Array.isArray(propsRanges)
-        ? pick(relativeRanges, propsRanges)
-        : propsRanges;
+      ranges = Array.isArray(propsRanges) ? pick(relativeRanges, propsRanges) : propsRanges;
     }
 
     return ranges ? (
@@ -231,8 +203,7 @@ const DateRange = ({
 
           // Comparing moments with unit as 'millisecond' avoids moment cloning
           const isSelected =
-            startDate.isSame(startValueMoment, 'millisecond') &&
-            endDate.isSame(endValueMoment, 'millisecond');
+            startDate.isSame(startValueMoment, 'millisecond') && endDate.isSame(endValueMoment, 'millisecond');
 
           return (
             <Button
@@ -247,10 +218,6 @@ const DateRange = ({
                 });
 
                 setFocusedInput(null);
-
-                // Focus the calendar icon once clicked because we don't
-                // want to get back in the loop of opening the calendar
-                calendarIconRef.current.parentElement.focus();
               }}
             >
               {relativeRange}
@@ -324,10 +291,13 @@ const DateRange = ({
         <DateRangePicker
           renderMonthElement={renderMonthElement}
           minimumNights={0}
+          ariaDescribedBy={ariaDescribedBy}
+          enableOutsideDays
+          autoComplete="date"
+          numberOfMonths={2}
           {...datepickerProps}
           startDate={getDateValue(startValue)}
           startDateId={startId}
-          enableOutsideDays
           endDate={getDateValue(endValue)}
           endDateId={endId}
           calendarInfoPosition="before"
@@ -338,21 +308,6 @@ const DateRange = ({
           renderCalendarInfo={renderDateRanges}
           customArrowIcon={customArrowIcon}
           isOutsideRange={isOutsideRange(min, max, format)}
-          customInputIcon={
-            datepicker
-              ? React.cloneElement(calendarIcon, {
-                  ref: calendarIconRef,
-                  onClick: () => {
-                    if (focusedInput) {
-                      setFocusedInput();
-                    }
-                  },
-                })
-              : undefined
-          }
-          showDefaultInputIcon={datepicker}
-          inputIconPosition="after"
-          numberOfMonths={2}
           navPosition="navPositionBottom"
           openDirection={openDirection}
         />
@@ -367,31 +322,26 @@ DateRange.propTypes = {
   validate: PropTypes.func,
   min: limitPropType,
   max: limitPropType,
+  ariaDescribedBy: PropTypes.string,
   className: PropTypes.string,
   disabled: PropTypes.bool,
   onChange: PropTypes.func,
   onPickerFocusChange: PropTypes.func,
-  calendarIcon: PropTypes.node,
   innerRef: PropTypes.oneOfType([PropTypes.func, PropTypes.node]),
   format: PropTypes.string,
-  datepicker: PropTypes.bool,
   datepickerProps: PropTypes.object,
   'data-testid': PropTypes.string,
   autoSync: PropTypes.bool,
-  ranges: PropTypes.oneOfType([
-    PropTypes.bool,
-    PropTypes.array,
-    PropTypes.object,
-  ]),
+  ranges: PropTypes.oneOfType([PropTypes.bool, PropTypes.array, PropTypes.object]),
   customArrowIcon: PropTypes.oneOfType([PropTypes.string, PropTypes.node]),
   openDirection: PropTypes.string,
+  allowInvalidDates: PropTypes.bool,
 };
 
 DateRange.defaultProps = {
-  calendarIcon: <Icon name="calendar" data-testid="calendar-icon" />,
   format: isoDateFormat,
-  datepicker: true,
   openDirection: 'down',
+  allowInvalidDates: false,
 };
 
 export default DateRange;

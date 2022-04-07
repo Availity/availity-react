@@ -1,11 +1,5 @@
 import React from 'react';
-import {
-  render,
-  fireEvent,
-  waitFor,
-  cleanup,
-  within,
-} from '@testing-library/react';
+import { render, fireEvent, waitFor, cleanup, within } from '@testing-library/react';
 import { Button } from 'reactstrap';
 import { Form } from '@availity/form';
 import { object, string } from 'yup';
@@ -85,6 +79,118 @@ describe('DateRange', () => {
         startDate: '1997-01-04',
         endDate: '1997-01-05',
       });
+    });
+  });
+
+  test('does not update formik with invalid format dates', async () => {
+    const onSubmit = jest.fn();
+
+    const { container, getByText } = render(
+      <Form
+        initialValues={{
+          dateRange: {
+            startDate: '',
+            endDate: '',
+          },
+        }}
+        onSubmit={onSubmit}
+      >
+        <DateRange id="dateRange" name="dateRange" format="MM/DD/YYYY" />
+        <Button type="submit">Submit</Button>
+      </Form>
+    );
+
+    // Simulate user entering start date
+    const start = container.querySelector('#dateRange-start');
+
+    fireEvent.focus(start);
+
+    fireEvent.change(start, {
+      target: {
+        value: '01-04-1997',
+      },
+    });
+
+    // Simulate user entering end date
+    const end = container.querySelector('#dateRange-end');
+
+    fireEvent.focus(end);
+
+    fireEvent.change(end, {
+      target: {
+        value: '01-05-1997',
+      },
+    });
+
+    // simulate submission
+    fireEvent.click(getByText('Submit'));
+
+    await waitFor(() => {
+      expect(onSubmit).toHaveBeenCalledWith(
+        {
+          dateRange: {
+            startDate: '',
+            endDate: '',
+          },
+        },
+        expect.anything()
+      );
+    });
+  });
+
+  test('updates formik with invalid dates with allowInvalidDates prop', async () => {
+    const handleSubmit = jest.fn();
+
+    const { container, getByText } = render(
+      <Form
+        initialValues={{
+          dateRange: {
+            startDate: '',
+            endDate: '',
+          },
+        }}
+        onSubmit={handleSubmit}
+      >
+        <DateRange id="dateRange" name="dateRange" format="MM/DD/YYYY" allowInvalidDates />
+        <Button type="submit">Submit</Button>
+      </Form>
+    );
+
+    // Simulate user entering start date
+    const start = container.querySelector('#dateRange-start');
+
+    fireEvent.focus(start);
+
+    fireEvent.change(start, {
+      target: {
+        value: '01-04-1997',
+      },
+    });
+
+    // Simulate user entering end date
+    const end = container.querySelector('#dateRange-end');
+
+    fireEvent.focus(end);
+
+    fireEvent.change(end, {
+      target: {
+        value: '01-05-1997',
+      },
+    });
+
+    // simulate submission
+    fireEvent.click(getByText('Submit'));
+
+    await waitFor(() => {
+      expect(handleSubmit).toHaveBeenCalledWith(
+        {
+          dateRange: {
+            startDate: '01-04-1997',
+            endDate: '01-05-1997',
+          },
+        },
+        expect.anything()
+      );
     });
   });
 
@@ -180,12 +286,12 @@ describe('DateRange', () => {
 
     await waitFor(() => {
       expect(onSubmit).toHaveBeenCalledWith(
-        expect.objectContaining({
+        {
           dateRange: {
             startDate: '1997-01-04',
             endDate: '1997-01-05',
           },
-        }),
+        },
         expect.anything()
       );
     });
@@ -230,12 +336,12 @@ describe('DateRange', () => {
 
     await waitFor(() => {
       expect(onSubmit).toHaveBeenCalledWith(
-        expect.objectContaining({
+        {
           dateRange: {
             startDate: '1997-01-04',
             endDate: '1997-01-05',
           },
-        }),
+        },
         expect.anything()
       );
     });
@@ -263,12 +369,9 @@ describe('DateRange', () => {
     // Simulate user selecting today as start date
     const current = container.querySelector('.CalendarDay__today');
     const previous = current.previousSibling;
-    const next =
-      current.nextSibling ||
-      current.parentElement.nextSibling.firstElementChild;
+    const next = current.nextSibling || current.parentElement.nextSibling.firstElementChild;
 
-    const isCurrentDayLastDayOfMonth =
-      moment().dayOfYear() === moment().endOf('month').dayOfYear();
+    const isCurrentDayLastDayOfMonth = moment().dayOfYear() === moment().endOf('month').dayOfYear();
 
     let expectedStartDate = moment();
     let expectedEndDate = moment().add(1, 'day');
@@ -286,12 +389,12 @@ describe('DateRange', () => {
 
     await waitFor(() => {
       expect(onSubmit).toHaveBeenCalledWith(
-        expect.objectContaining({
+        {
           dateRange: {
             startDate: expectedStartDate.format('YYYY-MM-DD'),
             endDate: expectedEndDate.format('YYYY-MM-DD'),
           },
-        }),
+        },
         expect.anything()
       );
     });
@@ -328,12 +431,12 @@ describe('DateRange', () => {
 
     await waitFor(() => {
       expect(onSubmit).toHaveBeenCalledWith(
-        expect.objectContaining({
+        {
           dateRange: {
             startDate: moment().format('YYYY-MM-DD'),
             endDate: moment().format('YYYY-MM-DD'),
           },
-        }),
+        },
         expect.anything()
       );
     });
@@ -354,28 +457,23 @@ describe('DateRange', () => {
       </Form>
     );
 
-    container.querySelector('.DateRangePickerInput_calendarIcon').click();
+    container.querySelector('.DateInput_input_1').focus();
 
     await waitFor(() => {
       expect(
-        container.querySelector(
-          '.DayPicker_calendarInfo__horizontal DayPicker_calendarInfo__horizontal_1'
-        )
+        container.querySelector('.DayPicker_calendarInfo__horizontal DayPicker_calendarInfo__horizontal_1')
       ).toBeDefined();
     });
 
     // Simulate User hitting the 'Today' pre-set
-    container.querySelectorAll('.btn-default')[0].click();
+    container.querySelector('.CalendarDay__today').click();
+    container.querySelector('.CalendarDay__today').click();
 
     const today = moment().format('MM/DD/YYYY');
 
-    expect(
-      container.querySelectorAll('.DateInput_input.DateInput_input_1')[0].value
-    ).toEqual(today);
+    expect(container.querySelectorAll('.DateInput_input.DateInput_input_1')[0].value).toEqual(today);
 
-    expect(
-      container.querySelectorAll('.DateInput_input.DateInput_input_1')[1].value
-    ).toEqual(today);
+    expect(container.querySelectorAll('.DateInput_input.DateInput_input_1')[1].value).toEqual(today);
   });
 
   test('renders month picker', async () => {
@@ -430,9 +528,7 @@ describe('DateRange', () => {
     expect(yearPickers.length).toBe(4);
 
     const currentGridYearPicker = yearPickers[1];
-    expect(currentGridYearPicker.children.length).toBe(
-      max.year() - min.year() + 1
-    );
+    expect(currentGridYearPicker.children.length).toBe(max.year() - min.year() + 1);
 
     const pickedYear = within(currentGridYearPicker).getByText(someYear);
     expect(pickedYear).toBeDefined();
@@ -442,7 +538,7 @@ describe('DateRange', () => {
     const onChange = jest.fn();
 
     const min = moment('12/01/2020').subtract(1, 'years');
-    const max = moment('12/31/2021');
+    const max = moment().add(1, 'years');
     const newYear = `${max.year() + 1}`;
 
     const { container, getAllByTestId } = render(
@@ -451,13 +547,7 @@ describe('DateRange', () => {
           dateRange: '',
         }}
       >
-        <DateRange
-          id="dateRange"
-          name="dateRange"
-          min={min}
-          max={max}
-          onChange={onChange}
-        />
+        <DateRange id="dateRange" name="dateRange" min={min} max={max} onChange={onChange} />
       </Form>
     );
 
@@ -475,12 +565,8 @@ describe('DateRange', () => {
     let nextGridYearPicker = yearPickers[2]; // next in this context refers to the next CalendarMonthGrid to be rendered
 
     // Expect year options to have same length as range of initial options
-    expect(currentGridYearPicker.children.length).toBe(
-      max.year() - min.year() + 1
-    );
-    expect(nextGridYearPicker.children.length).toBe(
-      max.year() - min.year() + 1
-    );
+    expect(currentGridYearPicker.children.length).toBe(max.year() - min.year() + 1);
+    expect(nextGridYearPicker.children.length).toBe(max.year() - min.year() + 1);
 
     fireEvent.change(start, {
       target: {
@@ -517,14 +603,60 @@ describe('DateRange', () => {
 
     // Expect current MonthGrid to have same number of options, it is still December of max
     // Expect next MonthGrid (January) to have new year option created
-    expect(currentGridYearPicker.children.length).toBe(
-      max.year() - min.year() + 1
-    );
-    expect(nextGridYearPicker.children.length).toBe(
-      max.year() - min.year() + 2
-    );
+    expect(currentGridYearPicker.children.length).toBe(max.year() - min.year() + 1);
+    expect(nextGridYearPicker.children.length).toBe(max.year() - min.year() + 2);
 
     const pickedYear = within(nextGridYearPicker).getByText(newYear);
     expect(pickedYear).toBeDefined();
+  });
+
+  test('renders outside days when enableOutsideDays is enabled', async () => {
+    const { container } = render(
+      <Form
+        initialValues={{
+          dateRange: undefined,
+        }}
+      >
+        <DateRange id="dateRange" name="dateRange" />
+        <Button type="submit">Submit</Button>
+      </Form>
+    );
+
+    container.querySelector('.DateInput_input_1').focus();
+
+    await waitFor(() => {
+      expect(
+        container.querySelector('.DayPicker_calendarInfo__horizontal DayPicker_calendarInfo__horizontal_1')
+      ).toBeDefined();
+    });
+
+    const outsideDays = container.querySelectorAll('.CalendarDay__outside');
+    expect(outsideDays).toBeDefined();
+    expect(outsideDays.length).toBeGreaterThan(0);
+  });
+
+  test('does not render outside days when enableOutsideDays is disabled', async () => {
+    const { container } = render(
+      <Form
+        initialValues={{
+          dateRange: undefined,
+        }}
+      >
+        <DateRange id="dateRange" name="dateRange" datepickerProps={{ enableOutsideDays: false }} />
+        <Button type="submit">Submit</Button>
+      </Form>
+    );
+
+    container.querySelector('.DateInput_input_1').focus();
+
+    await waitFor(() => {
+      expect(
+        container.querySelector('.DayPicker_calendarInfo__horizontal DayPicker_calendarInfo__horizontal_1')
+      ).toBeDefined();
+    });
+
+    const outsideDays = container.querySelectorAll('.CalendarDay__outside');
+    expect(outsideDays).toBeDefined();
+    expect(outsideDays.length).toBe(0);
   });
 });

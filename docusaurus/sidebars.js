@@ -2,14 +2,16 @@ module.exports = {
   someSidebar: {
     'React Docs': [
       'intro',
-      'contributing',
-      // {
-      //   type: 'link',
-      //   label: 'Storybook', // The label that should be displayed (string).
-      //   href:
-      //     'https://availity.github.io/availity-react/storybook/?path=/story/components-analytics--default', // The target URL (string).
-      // },
-
+      {
+        type: 'link',
+        label: 'Contributing',
+        href: 'https://github.com/Availity/availity-react/blob/master/.github/CONTRIBUTING.md',
+      },
+      {
+        type: 'link',
+        label: 'Storybook', // The label that should be displayed (string).
+        href: 'https://availity.github.io/availity-react/storybook/', // The target URL (string).
+      },
       {
         type: 'category',
         label: 'Components',
@@ -24,8 +26,18 @@ module.exports = {
             ],
           },
           'components/app-icon',
-          'components/authorize',
+          {
+            type: 'category',
+            label: 'Authorize',
+            items: [
+              'components/authorize/index',
+              'components/authorize/authorize',
+              'components/authorize/useAuthorize',
+            ],
+          },
+          // 'components/authorize',
           'components/avatar',
+          'components/button',
           'components/breadcrumbs',
           {
             type: 'category',
@@ -62,6 +74,7 @@ module.exports = {
               'components/hooks/use-permissions',
               'components/hooks/use-organizations',
               'components/hooks/use-providers',
+              'components/hooks/use-window-dimensions',
             ],
           },
           'components/icon',
@@ -90,6 +103,7 @@ module.exports = {
               'components/pagination/context',
             ],
           },
+          'components/badge',
           'components/progress',
           {
             type: 'category',
@@ -113,6 +127,15 @@ module.exports = {
               'components/step-wizard/index',
               'components/step-wizard/wizard',
               'components/step-wizard/wizard-step',
+            ],
+          },
+          {
+            type: 'category',
+            label: 'Table',
+            items: [
+              'components/table/index',
+              'components/table/scrollableContainer',
+              'components/table/tableControls',
             ],
           },
           'components/training-link',
@@ -140,6 +163,7 @@ module.exports = {
           'form/components/form-group',
           'form/components/form',
           'form/components/input',
+          'form/components/label',
           'form/components/radio-group',
           'form/components/radio',
           {

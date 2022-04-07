@@ -55,7 +55,7 @@ class UploadProgressBar extends Component {
     event.preventDefault();
     upload.sendPassword(password);
     if (typeof onPasswordSubmit === 'function') {
-      onPasswordSubmit(event);
+      onPasswordSubmit(event, upload);
     }
     this.toggleModal();
   };

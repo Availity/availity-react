@@ -53,7 +53,11 @@ const PageHeader = ({
       spaceForPayerID || (logo && spaceForSpaceID) || spacesIsLoading ? (
         <SpacesLogo {...logoAttrs} />
       ) : (
-        <Spaces spaceIds={spaceId ? [spaceId] : undefined} payerIds={[payerId]} clientId={clientId}>
+        <Spaces
+          spaceIds={spaceId ? [spaceId] : undefined}
+          payerIds={payerId ? [payerId] : undefined}
+          clientId={clientId}
+        >
           <SpacesLogo {...logoAttrs} />
         </Spaces>
       );

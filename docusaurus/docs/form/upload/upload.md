@@ -186,6 +186,10 @@ Use this prop together with `fileDeliveryMetadata` and `deliveryChannel` to defi
 
 The maximum file size (in bytes) for a file to be uploaded.
 
+#### `totalMaxSize?: number`
+
+The total maximum combined file size (in bytes) for all the files to be uploaded.
+
 #### `max?: number`
 
 The maximum number of files allowed to be uploaded. `0` (or a falsey value) means unlimited. When the max number has been reached, the add button will disappear.

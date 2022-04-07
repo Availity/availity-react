@@ -26,7 +26,7 @@ The unique id of the favorite item to be fetched from API.
 
 #### `name: string`
 
-Name of item to be favorited. *Used to generate unique name of control, needed for accessibility.*
+Name of item to be favorited. _Used to generate unique name of control, needed for accessibility._
 
 #### `onChange?: (isFavorited: boolean, event?: Event) => void`
 

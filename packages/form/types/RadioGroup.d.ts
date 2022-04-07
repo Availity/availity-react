@@ -1,14 +1,18 @@
-import * as React from 'react';
+/* eslint-disable @typescript-eslint/no-explicit-any */
+import { ReactNode } from 'react';
+import { FormGroupProps } from 'reactstrap';
 
-interface RadioGroupProps extends React.HTMLAttributes<HTMLFormElement> {
+interface RadioGroupProps extends FormGroupProps {
   name: string;
-  label?: React.ReactNode;
+  label?: ReactNode;
+  labelClassName?: string;
   groupClassName?: string;
   onChange?: (value: any) => void;
   inline?: boolean | false;
-  helpId: string;
+  helpId?: string;
+  required?: boolean | false;
 }
 
-declare class RadioGroup extends React.Component<RadioGroupProps> {}
+declare const RadioGroup: (props: RadioGroupProps) => JSX.Element;
 
 export default RadioGroup;

@@ -3,6 +3,106 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# 3.0.0 (2022-03-03)
+
+
+* refactor(favorites)!: remove bootstrap, add react-query, rewrite to TypeScript ([eebe86b](https://github.com/Availity/availity-react/commit/eebe86b450024b57f73bac8f45219b9803fe8651))
+
+
+### BREAKING CHANGES
+
+* Adds react-query v3 as a peer dependency
+* Requires all components to be used inside react-query's QueryClientProvider
+* No longer requires availity-uikit or any other Bootstrap dependent
+
+
+
+
+
+# 2.2.0 (2022-01-31)
+
+
+### Features
+
+* **mock:** convert to ts and update data ([4f32967](https://github.com/Availity/availity-react/commit/4f32967117676aeef7c7de26a072263e184dfe30))
+
+
+
+
+
+## [2.1.8](https://github.com/Availity/availity-react/compare/@availity/mock@2.1.7...@availity/mock@2.1.8) (2022-01-11)
+
+
+### Bug Fixes
+
+* **mock:** return single region when currentlySelected is true ([9e4df32](https://github.com/Availity/availity-react/commit/9e4df32e845d0a85786f5dac0a5afb849c1196be))
+
+
+
+
+
+## [2.1.7](https://github.com/Availity/availity-react/compare/@availity/mock@2.1.6...@availity/mock@2.1.7) (2022-01-10)
+
+**Note:** Version bump only for package @availity/mock
+
+
+
+
+
+## [2.1.6](https://github.com/Availity/availity-react/compare/@availity/mock@2.1.5...@availity/mock@2.1.6) (2022-01-10)
+
+**Note:** Version bump only for package @availity/mock
+
+
+
+
+
+## 2.1.5 (2022-01-10)
+
+**Note:** Version bump only for package @availity/mock
+
+
+
+
+
+## [2.1.4](https://github.com/Availity/availity-react/compare/@availity/mock@2.1.3...@availity/mock@2.1.4) (2021-12-20)
+
+**Note:** Version bump only for package @availity/mock
+
+
+
+
+
+## 2.1.3 (2021-12-14)
+
+**Note:** Version bump only for package @availity/mock
+
+
+
+
+
+## 2.1.2 (2021-11-30)
+
+
+### Bug Fixes
+
+* **mock:** add null checks ([fe32ec4](https://github.com/Availity/availity-react/commit/fe32ec4a9984b5630680982c0c07ff123eadaaf0))
+
+
+
+
+
+## 2.1.1 (2021-10-28)
+
+
+### Bug Fixes
+
+* **mock:** add exported type and run formatter ([1e25c88](https://github.com/Availity/availity-react/commit/1e25c88d3f310ad2f2b2781ba5cf25f5703be7d7))
+
+
+
+
+
 # 2.1.0 (2021-09-01)
 
 

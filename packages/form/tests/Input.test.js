@@ -40,7 +40,7 @@ describe('Input', () => {
       </Form>
     );
 
-    await fireEvent.click(getByText('Submit'));
+    fireEvent.click(getByText('Submit'));
 
     await waitFor(() => {
       const input = getByTestId('hello-input');
@@ -65,9 +65,9 @@ describe('Input', () => {
       </Form>
     );
 
-    await fireEvent.focus(getByTestId('hello-input'));
+    fireEvent.focus(getByTestId('hello-input'));
 
-    await fireEvent.blur(getByTestId('hello-input'));
+    fireEvent.blur(getByTestId('hello-input'));
 
     await waitFor(() => {
       const input = getByTestId('hello-input');
@@ -92,9 +92,9 @@ describe('Input', () => {
       </Form>
     );
 
-    await fireEvent.focus(getByTestId('hello-input'));
+    fireEvent.focus(getByTestId('hello-input'));
 
-    await fireEvent.blur(getByTestId('hello-input'));
+    fireEvent.blur(getByTestId('hello-input'));
 
     await waitFor(() => {
       const input = getByTestId('hello-input');
@@ -136,7 +136,7 @@ describe('Input', () => {
           hello: yup.string().required(),
         })}
       >
-        <Input name="hello" data-testid="hello-input" />
+        <Input name="hello" data-testid="hello-input" required />
         <Button type="submit">Submit</Button>
       </Form>
     );
@@ -144,8 +144,9 @@ describe('Input', () => {
     const input = getByTestId('hello-input');
     expect(input).toHaveAttribute('aria-invalid', 'false');
     expect(input).toHaveAttribute('aria-describedby', '');
+    expect(input).toHaveAttribute('aria-required', 'true');
 
-    await fireEvent.click(getByText('Submit'));
+    fireEvent.click(getByText('Submit'));
 
     await waitFor(() => {
       expect(input).toHaveAttribute('aria-invalid', 'true');

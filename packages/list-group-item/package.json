@@ -1,25 +1,25 @@
 {
   "name": "@availity/list-group-item",
-  "version": "1.2.23",
-  "author": "Evan Sharp <evan.sharp@availity.com>",
+  "version": "1.3.2",
   "description": "List Group Item with some Availity flair",
-  "main": "index.js",
-  "types": "index.d.ts",
   "keywords": [
     "react",
-    "availity"
+    "availity",
+    "list"
   ],
-  "repository": {
-    "type": "git",
-    "url": "https://github.com/Availity/availity-react.git"
-  },
+  "homepage": "https://availity.github.io/availity-react/components/list-group-item/index",
   "bugs": {
     "url": "https://github.com/Availity/availity-react/issues"
   },
-  "license": "MIT",
-  "publishConfig": {
-    "access": "public"
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Availity/availity-react.git",
+    "directory": "packages/list-group-item"
   },
+  "license": "MIT",
+  "author": "Evan Sharp <evan.sharp@availity.com>",
+  "main": "index.js",
+  "types": "index.d.ts",
   "dependencies": {
     "prop-types": "^15.7.2"
   },
@@ -31,5 +31,8 @@
   "peerDependencies": {
     "react": ">=16.3.0",
     "reactstrap": "^8.0.0 || ^7.0.0 || ^6.0.0"
+  },
+  "publishConfig": {
+    "access": "public"
   }
 }

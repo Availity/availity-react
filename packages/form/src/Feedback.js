@@ -5,14 +5,7 @@ import { ErrorMessage } from 'formik';
 
 const Feedback = ({ name, ...rest }) => {
   const feedbackId = `${name}-feedback`.toLowerCase();
-  return (
-    <ErrorMessage
-      id={feedbackId}
-      component={FormFeedback}
-      name={name}
-      {...rest}
-    />
-  );
+  return <ErrorMessage id={feedbackId} component={FormFeedback} name={name} {...rest} />;
 };
 
 Feedback.propTypes = {

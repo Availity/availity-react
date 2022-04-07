@@ -42,7 +42,7 @@ const Example = () => (
 );
 ```
 
-#### Live example: <a href="https://availity.github.io/availity-react/storybook/?path=/story/formik-select--default"> Storybook</a>
+#### Live example: [Storybook](https://availity.github.io/availity-react/storybook/?path=/story/formik-select--default)
 
 ### Props
 
@@ -82,6 +82,14 @@ The key of the value to return when selected. **Default:** `"value"`
 #### `labelKey?: string`
 
 The key of the label to render in the dropdown for the user to see. **Default:** `"label"`
+
+#### `helpMessage?: string`
+
+Adds hidden help message to placeholder so it is read with `aria-describedby` (should match visible help message).
+
+#### `feedback?: boolean`
+
+Will add default `<Feedback />` id to `aria-errormessage`.
 
 #### `maxLength?: number`
 

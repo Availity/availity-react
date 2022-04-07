@@ -11,6 +11,7 @@ import React from 'react';
 import { Form } from '@availity/form';
 import { DateField } from '@availity/date';
 import { avDate } from '@availity/yup';
+import { Button } from 'reactstrap';
 import * as yup from 'yup';
 
 const Example = () => (
@@ -62,3 +63,11 @@ Used to control if the label is displayed. When set to `true`, the label in the 
 #### `labelAttrs?: React.HTMLAttributes<HTMLLabelElement>`
 
 Pass additional attributes to the label
+
+#### `helpId?: string`
+
+Help topic id, adds `<FieldHelpIcon/>` next to the label (should not be within label for accessibility).
+
+#### `required?: boolean`
+
+Will add `<RequiredAsterisk />` to label.

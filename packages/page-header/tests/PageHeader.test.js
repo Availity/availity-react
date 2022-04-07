@@ -23,18 +23,14 @@ describe('PageHeader', () => {
   });
 
   test('should render app icon', () => {
-    const { getByText } = render(
-      <PageHeader appName="Payer Space" appAbbr="PS" />
-    );
+    const { getByText } = render(<PageHeader appName="Payer Space" appAbbr="PS" />);
 
     const icon = getByText('PS');
     expect(icon).toBeDefined();
   });
 
   test('should add custom class name', () => {
-    const { getByTestId } = render(
-      <PageHeader appName="Payer Space" className="custom-classname" />
-    );
+    const { getByTestId } = render(<PageHeader appName="Payer Space" className="custom-classname" />);
 
     const pageHeader = getByTestId('page-header');
 
@@ -42,9 +38,7 @@ describe('PageHeader', () => {
   });
 
   test('should render app icon color', () => {
-    const { getByTestId } = render(
-      <PageHeader appName="Payer Space" appAbbr="PS" iconColor="green" />
-    );
+    const { getByTestId } = render(<PageHeader appName="Payer Space" appAbbr="PS" iconColor="green" />);
 
     const appIcon = getByTestId('page-header-app-icon');
 
@@ -52,14 +46,7 @@ describe('PageHeader', () => {
   });
 
   test('should render app icon color branded', () => {
-    const { getByTestId } = render(
-      <PageHeader
-        appName="Payer Space"
-        appAbbr="PS"
-        iconColor="green"
-        branded
-      />
-    );
+    const { getByTestId } = render(<PageHeader appName="Payer Space" appAbbr="PS" iconColor="green" branded />);
 
     const appIcon = getByTestId('page-header-app-icon');
 
@@ -67,17 +54,13 @@ describe('PageHeader', () => {
   });
 
   test('should render feedback', () => {
-    const { getByTestId } = render(
-      <PageHeader appName="Payer Space" feedback />
-    );
+    const { getByTestId } = render(<PageHeader appName="Payer Space" feedback />);
 
     expect(getByTestId('face-options')).toBeDefined();
   });
 
   test('should render children', () => {
-    const { getByText } = render(
-      <PageHeader appName="Payer Space">this is cool</PageHeader>
-    );
+    const { getByText } = render(<PageHeader appName="Payer Space">this is cool</PageHeader>);
 
     const children = getByText('this is cool');
     expect(children).toBeDefined();
@@ -87,12 +70,7 @@ describe('PageHeader', () => {
     const { getByText } = render(
       <PageHeader
         appName="Payer Space"
-        component={
-          <TrainingLink
-            name="Appeals"
-            link="https://www.youtube.com/watch?v=GgwE94KZJ7E"
-          />
-        }
+        component={<TrainingLink name="Appeals" link="https://www.youtube.com/watch?v=GgwE94KZJ7E" />}
       >
         <p>this is cool</p>
       </PageHeader>
@@ -154,7 +132,7 @@ describe('PageHeader', () => {
 
       const { getByTestId } = render(
         <Spaces payerIds={['payer1']} clientId="my-client-id">
-          <PageHeader appName="Payer Space" payerId="payer1" />
+          <PageHeader appName="Payer Space" payerId="payer1" clientId="my-client-id" />
         </Spaces>
       );
 
@@ -164,9 +142,7 @@ describe('PageHeader', () => {
   });
 
   test('should render custom home url', () => {
-    const { getByText } = render(
-      <PageHeader homeUrl="/go-home" appName="Payer Space" />
-    );
+    const { getByText } = render(<PageHeader homeUrl="/go-home" appName="Payer Space" />);
 
     const homeBtn = getByText('Home');
 
@@ -236,9 +212,7 @@ describe('PageHeader', () => {
               perPage: 1,
               page: 1,
             },
-            items: [
-              { id: '1', name: 'My Space', link: { url: '/custom-link' } },
-            ],
+            items: [{ id: '1', name: 'My Space', link: { url: '/custom-link' } }],
           },
         },
       },
@@ -266,9 +240,7 @@ describe('PageHeader', () => {
               perPage: 1,
               page: 1,
             },
-            items: [
-              { id: '1', name: 'My Space', link: { url: '/custom-link' } },
-            ],
+            items: [{ id: '1', name: 'My Space', link: { url: '/custom-link' } }],
           },
         },
       },
@@ -276,11 +248,7 @@ describe('PageHeader', () => {
 
     const { getByText } = render(
       <Spaces spaceIds={['1']} clientId="my-client-id">
-        <PageHeader
-          appName="Payer Space"
-          spaceId="1"
-          crumbs={[{ name: 'Custom Crumb', url: '/my-custom-crumb' }]}
-        />
+        <PageHeader appName="Payer Space" spaceId="1" crumbs={[{ name: 'Custom Crumb', url: '/my-custom-crumb' }]} />
       </Spaces>
     );
 
@@ -301,9 +269,7 @@ describe('PageHeader', () => {
               perPage: 1,
               page: 1,
             },
-            items: [
-              { id: '1', name: 'My Space', link: { url: '/custom-link' } },
-            ],
+            items: [{ id: '1', name: 'My Space', link: { url: '/custom-link' } }],
           },
         },
       },
@@ -330,9 +296,7 @@ describe('PageHeader', () => {
               perPage: 1,
               page: 1,
             },
-            items: [
-              { id: '1', name: 'My Space', link: { url: '/custom-link' } },
-            ],
+            items: [{ id: '1', name: 'My Space', link: { url: '/custom-link' } }],
           },
         },
       },

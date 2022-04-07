@@ -1,21 +1,17 @@
 import React, { createContext, useContext } from 'react';
 import PropTypes from 'prop-types';
 import classNames from 'classnames';
-import { FieldHelpIcon } from '@availity/help';
 import { useField, useFormikContext } from 'formik';
+
 import Feedback from './Feedback';
 import FormGroup from './FormGroup';
+import Label from './Label';
 
 export const CheckboxGroupContext = createContext();
 
 export const useCheckboxGroup = (name) => {
   const { setFieldValue } = useFormikContext();
-  const {
-    name: groupName,
-    groupOnChange,
-    value = [],
-    ...rest
-  } = useContext(CheckboxGroupContext);
+  const { name: groupName, groupOnChange, value = [], ...rest } = useContext(CheckboxGroupContext);
 
   const toggle = () => {
     const valueArray = [...value];
@@ -44,6 +40,8 @@ const CheckboxGroup = ({
   onChange: groupOnChange,
   groupClassName,
   label,
+  labelClassName,
+  required,
   helpId,
   ...rest
 }) => {
@@ -61,29 +59,28 @@ const CheckboxGroup = ({
 
   if (label) {
     tag = 'fieldset';
-    legend = <legend>{label}</legend>;
+    const legendId = `${name}-legend`.toLowerCase();
+    const srRequiredAsterisk = required ? '* ' : null;
+    const styles = { cursor: 'default', lineHeight: 'inherit', color: '#000' };
+    const labelClasses = classNames('form-inline', labelClassName, !labelClassName && 'h4 font-weight-normal');
 
-    if (helpId) {
-      const legendId = `${name}-legend`.toLowerCase();
-      const legendStyle = { fontSize: '1.5rem', marginBottom: '.5rem' };
-      legend = (
-        <>
-          <legend id={legendId} className="sr-only">
+    legend = (
+      <>
+        <legend id={legendId} className="sr-only">
+          {srRequiredAsterisk}
+          {label}
+        </legend>
+        <div className={labelClasses} style={styles}>
+          <Label tag="div" aria-hidden helpId={helpId} required={required}>
             {label}
-          </legend>
-          <div className="form-inline" style={legendStyle}>
-            <div aria-hidden="true">{label}</div>
-            <FieldHelpIcon id={helpId} labelId={legendId} />
-          </div>
-        </>
-      );
-    }
+          </Label>
+        </div>
+      </>
+    );
   }
 
   return (
-    <CheckboxGroupContext.Provider
-      value={{ ...field, groupOnChange, metadata }}
-    >
+    <CheckboxGroupContext.Provider value={{ ...field, groupOnChange, metadata }}>
       <FormGroup tag={tag} for={name} {...rest}>
         {legend}
         <div className={classes} data-testid={`check-items-${name}`}>
@@ -96,12 +93,14 @@ const CheckboxGroup = ({
 };
 
 CheckboxGroup.propTypes = {
-  name: PropTypes.string,
   children: PropTypes.node,
-  label: PropTypes.node,
-  onChange: PropTypes.func,
   groupClassName: PropTypes.string,
   helpId: PropTypes.string,
+  label: PropTypes.node,
+  name: PropTypes.string.isRequired,
+  onChange: PropTypes.func,
+  labelClassName: PropTypes.string,
+  required: PropTypes.bool,
 };
 
 export default CheckboxGroup;

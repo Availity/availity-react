@@ -4,12 +4,11 @@ import classNames from 'classnames';
 import { AvBaseInput } from 'availity-reactstrap-validation';
 import Select, { components as reactSelectComponents } from 'react-select';
 import Creatable from 'react-select/creatable';
+import { AsyncPaginate } from 'react-select-async-paginate';
 import get from 'lodash/get';
 import has from 'lodash/has';
 import isEqual from 'lodash/isEqual';
 import isFunction from 'lodash/isFunction';
-
-import { AsyncPaginate } from 'react-select-async-paginate';
 
 const { DownChevron, CrossIcon, DropdownIndicator, ClearIndicator } = reactSelectComponents;
 
@@ -71,6 +70,7 @@ class AvSelect extends AvBaseInput {
     });
 
     if (isMulti) {
+      // eslint-disable-next-line unicorn/prefer-spread
       this.getValidatorProps().onChange(Array.isArray(currentValue) ? currentValue.concat(newOpt) : [newOpt]);
     } else {
       this.getValidatorProps().onChange(newOpt);
@@ -110,7 +110,7 @@ class AvSelect extends AvBaseInput {
 
   prepValue = (value, digIfMulti = true) => {
     if (this.props.isMulti && digIfMulti && Array.isArray(value)) {
-      return value.map((val) => this.prepValue(val), false);
+      return value.map((val) => this.prepValue(val));
     }
     if (this.props.raw || this.props.loadOptions) {
       return value;
@@ -172,6 +172,7 @@ class AvSelect extends AvBaseInput {
       Object.keys(formValuesForAutofill)
         // Filter out the input that the onChangeHandler is being called for
         .filter((fieldName) => fieldName !== name)
+        // eslint-disable-next-line unicorn/no-array-for-each
         .forEach((fieldName) => {
           let rawValue = inputValue;
           if (!!inputValue.label && !!inputValue.value && typeof inputValue.value === 'object') {
@@ -226,7 +227,15 @@ class AvSelect extends AvBaseInput {
   }
 
   render() {
-    const { className, selectRef, styles, creatable, options, ...attributes } = this.props;
+    const {
+      className,
+      selectRef,
+      styles,
+      creatable,
+      options,
+      components: componentsOverride,
+      ...attributes
+    } = this.props;
     const { newOptions } = this.state;
     const touched = this.context.FormCtrl && this.context.FormCtrl.isTouched(this.props.name);
     const hasError = this.context.FormCtrl && this.context.FormCtrl.hasError(this.props.name);
@@ -252,7 +261,8 @@ class AvSelect extends AvBaseInput {
 
     return (
       <Tag
-        ref={selectRef}
+        ref={attributes.loadOptions ? undefined : selectRef}
+        selectRef={attributes.loadOptions ? selectRef : undefined}
         classNamePrefix="av"
         role="listbox"
         className={classes}
@@ -268,7 +278,6 @@ class AvSelect extends AvBaseInput {
               return provided;
             }
             const showError = touched && hasError && !state.focused;
-
             return {
               ...provided,
               color: showError ? '#3D3D3D' : '#666',
@@ -287,23 +296,32 @@ class AvSelect extends AvBaseInput {
             if (state.isDisabled) {
               return {
                 ...provided,
-                borderRadius: '.25em',
+                borderRadius: '0.25em',
                 borderColor: '#ced4da',
                 backgroundColor: '#e9ecef',
               };
             }
-            const showError = touched && hasError && !state.focused;
-
+            const showError = touched && hasError;
             return {
               ...provided,
-              borderRadius: '.25em',
-              backgroundColor: showError ? '#fbcbc8' : 'white',
-              borderColor: showError ? '#931b1d' : 'hsl(0,0%,80%)',
+              borderRadius: '0.25em',
+              backgroundColor: 'white',
+              borderColor: showError ? '#dc3545' : '#555',
+              ':hover': {
+                borderColor: showError ? '#dc3545' : '#555',
+                cursor: 'text',
+              },
+              ':focus-within': {
+                borderColor: showError ? '#dc3545' : '#2261b5',
+                boxShadow: showError ? '0 0 0 0.2rem rgba(220 53 69 / 25%)' : '0 0 0 0.2rem #2261b5',
+              },
               zIndex: state.focused && '3',
             };
           },
+          menu: (provided) => ({ ...provided, borderRadius: '.25em' }),
           multiValue: (provided) => ({
             ...provided,
+            borderRadius: '0.25em',
             width: 'auto',
           }),
           input: (provided) => ({
@@ -315,17 +333,29 @@ class AvSelect extends AvBaseInput {
               return provided;
             }
             const showError = touched && hasError && !state.focused;
-
             return {
               ...provided,
               pointerEvents: 'none',
-              color: showError ? '#931b1d' : 'hsl(0,0%,80%)',
+              color: showError ? '#dc3545' : '#555',
             };
           },
+          option: (provided) => ({
+            ...provided,
+          }),
         }}
+        theme={(theme) => ({
+          ...theme,
+          borderRadius: 0,
+          boxShadow: 0,
+          colors: {
+            ...theme.colors,
+            primary25: '#b8d4fb',
+            primary: '#3262af',
+          },
+        })}
         options={!attributes.loadOptions ? [...options, ...newOptions] : undefined}
         onCreateOption={this.handleCreate}
-        components={components}
+        components={{ ...components, ...componentsOverride }}
         {...attributes}
         {...this.getValidatorProps()}
         value={this.getViewValue()}

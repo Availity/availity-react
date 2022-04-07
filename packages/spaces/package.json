@@ -1,36 +1,36 @@
 {
   "name": "@availity/spaces",
-  "version": "5.0.3",
-  "author": "Tyson Warner <tyson.warner@availity.com>",
+  "version": "5.1.3",
   "description": "Easy to use spaces components",
-  "main": "index.js",
-  "types": "index.d.ts",
   "keywords": [
     "react",
-    "availity"
+    "availity",
+    "spaces"
   ],
-  "repository": {
-    "type": "git",
-    "url": "https://github.com/Availity/availity-react.git"
-  },
+  "homepage": "https://availity.github.io/availity-react/components/spaces/index",
   "bugs": {
     "url": "https://github.com/Availity/availity-react/issues"
   },
-  "license": "MIT",
-  "publishConfig": {
-    "access": "public"
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Availity/availity-react.git",
+    "directory": "packages/spaces"
   },
+  "license": "MIT",
+  "author": "Tyson Warner <tyson.warner@availity.com>",
+  "main": "index.js",
+  "types": "index.d.ts",
   "dependencies": {
     "@availity/app-icon": "^1.3.24",
     "@availity/hooks": "^3.2.0",
-    "@availity/icon": "^0.9.0",
+    "@availity/icon": "^0.10.2",
     "@availity/link": "^2.4.3",
     "@availity/list-group-item": "^1.2.23",
     "@availity/message-core": "^5.0.4",
     "@availity/native-form": "^4.0.12",
-    "@availity/typography": "^1.2.22",
+    "@availity/typography": "^1.3.2",
     "classnames": "^2.3.1",
-    "dayjs": "^1.10.7",
+    "dayjs": "^1.10.8",
     "lodash": "^4.17.21",
     "prop-types": "^15.7.2",
     "query-string": "5.1.1",
@@ -40,7 +40,7 @@
   },
   "devDependencies": {
     "@availity/api-axios": "^6.0.0",
-    "@availity/favorites": "^2.1.8",
+    "@availity/favorites": "^3.1.0",
     "axios": "^0.21.1",
     "react": "^17.0.2",
     "react-dom": "^17.0.2",
@@ -48,10 +48,13 @@
   },
   "peerDependencies": {
     "@availity/api-axios": "^6.0.0",
-    "@availity/favorites": "^2.1.8",
+    "@availity/favorites": "^3.1.0",
     "axios": "^0.21.1",
     "react": ">=16.8.6",
     "react-query": "^3.29.0",
     "reactstrap": ">=8.0.0"
+  },
+  "publishConfig": {
+    "access": "public"
   }
 }

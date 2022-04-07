@@ -1,79 +1,25 @@
----
-title: Help
----
+# @availity/help
 
-> Context Provider to assist with Help Menu on Portal for specific pages
-> Field Help Icon to import and access field level support
+> Context Provider to assist with Help Menu on Portal for specific pages and Field Help Icon to import and access field level support
 
 [![Version](https://img.shields.io/npm/v/@availity/favorites.svg?style=for-the-badge)](https://www.npmjs.com/package/@availity/help)
+[![NPM Downloads](https://img.shields.io/npm/dt/@availity/help.svg?style=for-the-badge)](https://www.npmjs.com/package/@availity/help)
+[![Dependecy Status](https://img.shields.io/librariesio/release/npm/@availity/help?style=for-the-badge)](https://github.com/Availity/availity-react/blob/master/packages/help/package.json)
 
 ## Installation
 
-npm
+### NPM
 
 ```bash
-npm install @availity/help --save
+npm install @availity/help
 ```
 
-Yarn
+### Yarn
 
 ```bash
 yarn add @availity/help
 ```
 
-## Page Level Help Example
+## Documentation
 
-```jsx
-import React from 'react';
-import HelpProvider, { Help } from '@availity/help';
-
-const Example = () => (
-  <HelpProvider>
-    <Help type="provider" id="1234-5678-9101-1213">
-      Some Content You May need documentation for.
-    </Help>
-  </HelpProvider>
-);
-```
-
-## Page Level Help Props
-
-### `id: string`
-
-The page level help ID **Required**
-
-### `type: string`
-
-The page level help type: ie.: provider | vendor | payer | insight. **Required**
-
-## Field Level Help Icon Example
-
-```jsx
-import React from 'react';
-import { FieldHelpIcon } from '@availity/help';
-
-const Example = () => (
-  <div id="testId">
-    Select A Provider <FieldHelpIcon id="1234-5678-910" labelId="testId"/>
-  </div>
-);
-```
-
-## Field Help Props
-
-### `id: string`
-
-The field Help ID **Required**
-
-### `color?: string`
-
-The bootstrap 3 color of the icon. **Default:**`primary`
-
-### `size?: string`
-
-The size of the help icon. **Default:** `1x`
-
-### `labelId?: string`
-
-The id of the label for accessibility (aria-describedby). **Default:** ''
-
+Check out more documentation at [availity.github.io](https://availity.github.io/availity-react/components/help)

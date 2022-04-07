@@ -3,6 +3,399 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [6.2.26](https://github.com/Availity/availity-react/compare/@availity/feedback@6.2.25...@availity/feedback@6.2.26) (2022-03-09)
+
+**Note:** Version bump only for package @availity/feedback
+
+
+
+
+
+## [6.2.25](https://github.com/Availity/availity-react/compare/@availity/feedback@6.2.24...@availity/feedback@6.2.25) (2022-02-24)
+
+**Note:** Version bump only for package @availity/feedback
+
+
+
+
+
+## [6.2.24](https://github.com/Availity/availity-react/compare/@availity/feedback@6.2.23...@availity/feedback@6.2.24) (2022-02-24)
+
+**Note:** Version bump only for package @availity/feedback
+
+
+
+
+
+## [6.2.23](https://github.com/Availity/availity-react/compare/@availity/feedback@6.2.22...@availity/feedback@6.2.23) (2022-02-23)
+
+**Note:** Version bump only for package @availity/feedback
+
+
+
+
+
+## 6.2.22 (2022-02-23)
+
+**Note:** Version bump only for package @availity/feedback
+
+
+
+
+
+## [6.2.21](https://github.com/Availity/availity-react/compare/@availity/feedback@6.2.20...@availity/feedback@6.2.21) (2022-02-18)
+
+**Note:** Version bump only for package @availity/feedback
+
+
+
+
+
+## 6.2.20 (2022-02-17)
+
+**Note:** Version bump only for package @availity/feedback
+
+
+
+
+
+## [6.2.19](https://github.com/Availity/availity-react/compare/@availity/feedback@6.2.18...@availity/feedback@6.2.19) (2022-02-11)
+
+**Note:** Version bump only for package @availity/feedback
+
+
+
+
+
+## [6.2.18](https://github.com/Availity/availity-react/compare/@availity/feedback@6.2.17...@availity/feedback@6.2.18) (2022-02-04)
+
+**Note:** Version bump only for package @availity/feedback
+
+
+
+
+
+## 6.2.17 (2022-02-03)
+
+**Note:** Version bump only for package @availity/feedback
+
+
+
+
+
+## [6.2.16](https://github.com/Availity/availity-react/compare/@availity/feedback@6.2.15...@availity/feedback@6.2.16) (2022-01-27)
+
+**Note:** Version bump only for package @availity/feedback
+
+
+
+
+
+## [6.2.15](https://github.com/Availity/availity-react/compare/@availity/feedback@6.2.14...@availity/feedback@6.2.15) (2022-01-25)
+
+**Note:** Version bump only for package @availity/feedback
+
+
+
+
+
+## [6.2.14](https://github.com/Availity/availity-react/compare/@availity/feedback@6.2.12...@availity/feedback@6.2.14) (2022-01-19)
+
+**Note:** Version bump only for package @availity/feedback
+
+
+
+
+
+## [6.2.13](https://github.com/Availity/availity-react/compare/@availity/feedback@6.2.12...@availity/feedback@6.2.13) (2022-01-18)
+
+**Note:** Version bump only for package @availity/feedback
+
+
+
+
+
+## 6.2.12 (2022-01-13)
+
+**Note:** Version bump only for package @availity/feedback
+
+
+
+
+
+## [6.2.11](https://github.com/Availity/availity-react/compare/@availity/feedback@6.2.10...@availity/feedback@6.2.11) (2021-12-20)
+
+**Note:** Version bump only for package @availity/feedback
+
+
+
+
+
+## [6.2.10](https://github.com/Availity/availity-react/compare/@availity/feedback@6.2.9...@availity/feedback@6.2.10) (2021-12-14)
+
+**Note:** Version bump only for package @availity/feedback
+
+
+
+
+
+## 6.2.9 (2021-12-09)
+
+
+### Bug Fixes
+
+* **feedback:** added submit on enter func and tests ([d642923](https://github.com/Availity/availity-react/commit/d642923eb0ca80ee5faff17e0f830c3e1e2181c7))
+
+
+
+
+
+## [6.2.8](https://github.com/Availity/availity-react/compare/@availity/feedback@6.2.7...@availity/feedback@6.2.8) (2021-12-03)
+
+**Note:** Version bump only for package @availity/feedback
+
+
+
+
+
+## 6.2.7 (2021-12-03)
+
+
+### Bug Fixes
+
+* **feedback:** modal no longer closes when tabbed ([7ce4f53](https://github.com/Availity/availity-react/commit/7ce4f53f7e86ba2aeee79db606338bca251c89ff))
+
+
+
+
+
+## [6.2.6](https://github.com/Availity/availity-react/compare/@availity/feedback@6.2.5...@availity/feedback@6.2.6) (2021-12-02)
+
+
+### Bug Fixes
+
+* **feedback:** added destructering for event ([a8110d7](https://github.com/Availity/availity-react/commit/a8110d7c2d118d4e14fb142f6002790b635593c9))
+* **feedback:** fix typo ([9adfd42](https://github.com/Availity/availity-react/commit/9adfd42264eb64d57c976b6118e794a9be36a605))
+* **feedback:** fixed shift tab closing dropdown issue ([06aad38](https://github.com/Availity/availity-react/commit/06aad384f87e8e3a75fc469f30a0795cfee242ce))
+
+
+
+
+
+## [6.2.5](https://github.com/Availity/availity-react/compare/@availity/feedback@6.2.4...@availity/feedback@6.2.5) (2021-12-01)
+
+
+### Bug Fixes
+
+* **feedback:** added keyDown for tabbing out to close dropdown ([afa0ce8](https://github.com/Availity/availity-react/commit/afa0ce8d6c4116a1c6ede611025bf2c794129d8b))
+* **feedback:** removed console log ([df6b146](https://github.com/Availity/availity-react/commit/df6b146ae66560777d797c0399dbf9b2db189e47))
+
+
+
+
+
+## [6.2.4](https://github.com/Availity/availity-react/compare/@availity/feedback@6.2.3...@availity/feedback@6.2.4) (2021-11-30)
+
+**Note:** Version bump only for package @availity/feedback
+
+
+
+
+
+## [6.2.3](https://github.com/Availity/availity-react/compare/@availity/feedback@6.2.2...@availity/feedback@6.2.3) (2021-11-19)
+
+**Note:** Version bump only for package @availity/feedback
+
+
+
+
+
+## [6.2.2](https://github.com/Availity/availity-react/compare/@availity/feedback@6.2.1...@availity/feedback@6.2.2) (2021-11-16)
+
+**Note:** Version bump only for package @availity/feedback
+
+
+
+
+
+## [6.2.1](https://github.com/Availity/availity-react/compare/@availity/feedback@6.2.0...@availity/feedback@6.2.1) (2021-11-15)
+
+**Note:** Version bump only for package @availity/feedback
+
+
+
+
+
+# [6.2.0](https://github.com/Availity/availity-react/compare/@availity/feedback@6.1.9...@availity/feedback@6.2.0) (2021-11-15)
+
+
+### Features
+
+* move storybook, stories, and fix hmr ([2f65f71](https://github.com/Availity/availity-react/commit/2f65f71769d2d981e22700b87a09516833588f64))
+
+
+
+
+
+## [6.1.9](https://github.com/Availity/availity-react/compare/@availity/feedback@6.1.8...@availity/feedback@6.1.9) (2021-11-12)
+
+**Note:** Version bump only for package @availity/feedback
+
+
+
+
+
+## [6.1.8](https://github.com/Availity/availity-react/compare/@availity/feedback@6.1.6...@availity/feedback@6.1.8) (2021-11-12)
+
+**Note:** Version bump only for package @availity/feedback
+
+
+
+
+
+## [6.1.7](https://github.com/Availity/availity-react/compare/@availity/feedback@6.1.6...@availity/feedback@6.1.7) (2021-11-09)
+
+**Note:** Version bump only for package @availity/feedback
+
+
+
+
+
+## [6.1.6](https://github.com/Availity/availity-react/compare/@availity/feedback@6.1.2...@availity/feedback@6.1.6) (2021-11-05)
+
+**Note:** Version bump only for package @availity/feedback
+
+
+
+
+
+## [6.1.5](https://github.com/Availity/availity-react/compare/@availity/feedback@6.1.4...@availity/feedback@6.1.5) (2021-10-28)
+
+
+### Bug Fixes
+
+* **feedback:** pass saml as type ([7c5b541](https://github.com/Availity/availity-react/commit/7c5b541a776ded872ed1633df6fb2eb1f0a6aafe))
+
+
+
+
+
+## [6.1.4](https://github.com/Availity/availity-react/compare/@availity/feedback@6.1.3...@availity/feedback@6.1.4) (2021-10-28)
+
+**Note:** Version bump only for package @availity/feedback
+
+
+
+
+
+## [6.1.3](https://github.com/Availity/availity-react/compare/@availity/feedback@6.1.2...@availity/feedback@6.1.3) (2021-10-28)
+
+**Note:** Version bump only for package @availity/feedback
+
+
+
+
+
+## [6.1.2](https://github.com/Availity/availity-react/compare/@availity/feedback@6.1.1...@availity/feedback@6.1.2) (2021-10-28)
+
+
+### Bug Fixes
+
+* **feedback:** resolve lint errors ([295cb3e](https://github.com/Availity/availity-react/commit/295cb3e126b70d5204899fe265869752c9024eb2))
+
+
+
+
+
+## 6.1.1 (2021-10-27)
+
+
+### Bug Fixes
+
+* **feedback:** update select dep ([12677ee](https://github.com/Availity/availity-react/commit/12677ee4817c7b0569987df42c1e8830a4a99bd2))
+
+
+
+
+
+# 6.1.0 (2021-10-22)
+
+
+### Features
+
+* **feedback:** revert feedback changes and add onModalOpenChange prop ([cf8fb64](https://github.com/Availity/availity-react/commit/cf8fb648feafd1c9aa7a547a8bb4707e3f7c2f5a))
+
+
+
+
+
+## 6.0.16 (2021-10-19)
+
+**Note:** Version bump only for package @availity/feedback
+
+
+
+
+
+## [6.0.15](https://github.com/Availity/availity-react/compare/@availity/feedback@6.0.14...@availity/feedback@6.0.15) (2021-10-19)
+
+**Note:** Version bump only for package @availity/feedback
+
+
+
+
+
+## [6.0.14](https://github.com/Availity/availity-react/compare/@availity/feedback@6.0.13...@availity/feedback@6.0.14) (2021-10-19)
+
+**Note:** Version bump only for package @availity/feedback
+
+
+
+
+
+## [6.0.13](https://github.com/Availity/availity-react/compare/@availity/feedback@6.0.12...@availity/feedback@6.0.13) (2021-10-19)
+
+**Note:** Version bump only for package @availity/feedback
+
+
+
+
+
+## 6.0.12 (2021-10-19)
+
+**Note:** Version bump only for package @availity/feedback
+
+
+
+
+
+## [6.0.11](https://github.com/Availity/availity-react/compare/@availity/feedback@6.0.10...@availity/feedback@6.0.11) (2021-10-08)
+
+**Note:** Version bump only for package @availity/feedback
+
+
+
+
+
+## [6.0.10](https://github.com/Availity/availity-react/compare/@availity/feedback@6.0.9...@availity/feedback@6.0.10) (2021-10-06)
+
+
+### Bug Fixes
+
+* improve modal use case for FeedbackForm ([66dff23](https://github.com/Availity/availity-react/commit/66dff23e8b770e4143496c2d81683c46a1fc4fb4))
+
+
+
+
+
+## [6.0.9](https://github.com/Availity/availity-react/compare/@availity/feedback@6.0.8...@availity/feedback@6.0.9) (2021-10-04)
+
+**Note:** Version bump only for package @availity/feedback
+
+
+
+
+
 ## [6.0.8](https://github.com/Availity/availity-react/compare/@availity/feedback@6.0.7...@availity/feedback@6.0.8) (2021-10-01)
 
 **Note:** Version bump only for package @availity/feedback

@@ -3,6 +3,68 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.5.2](https://github.com/Availity/availity-react/compare/@availity/help@1.5.1...@availity/help@1.5.2) (2021-12-20)
+
+**Note:** Version bump only for package @availity/help
+
+
+
+
+
+## 1.5.1 (2021-12-14)
+
+**Note:** Version bump only for package @availity/help
+
+
+
+
+
+# 1.5.0 (2021-11-15)
+
+
+### Features
+
+* move storybook, stories, and fix hmr ([2f65f71](https://github.com/Availity/availity-react/commit/2f65f71769d2d981e22700b87a09516833588f64))
+
+
+
+
+
+## [1.4.7](https://github.com/Availity/availity-react/compare/@availity/help@1.4.6...@availity/help@1.4.7) (2021-10-28)
+
+**Note:** Version bump only for package @availity/help
+
+
+
+
+
+## 1.4.6 (2021-10-28)
+
+**Note:** Version bump only for package @availity/help
+
+
+
+
+
+## 1.4.5 (2021-10-19)
+
+
+### Bug Fixes
+
+* **help:** update types ([8e6b5af](https://github.com/Availity/availity-react/commit/8e6b5afc2dfd4d91564d8e9f4d737a30a405fb8a))
+
+
+
+
+
+## [1.4.4](https://github.com/Availity/availity-react/compare/@availity/help@1.4.3...@availity/help@1.4.4) (2021-10-04)
+
+**Note:** Version bump only for package @availity/help
+
+
+
+
+
 ## [1.4.3](https://github.com/Availity/availity-react/compare/@availity/help@1.4.2...@availity/help@1.4.3) (2021-10-01)
 
 **Note:** Version bump only for package @availity/help

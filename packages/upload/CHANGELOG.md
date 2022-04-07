@@ -3,6 +3,79 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [3.3.2](https://github.com/Availity/availity-react/compare/@availity/upload@3.3.1...@availity/upload@3.3.2) (2021-12-20)
+
+**Note:** Version bump only for package @availity/upload
+
+
+
+
+
+## [3.3.1](https://github.com/Availity/availity-react/compare/@availity/upload@3.3.0...@availity/upload@3.3.1) (2021-12-14)
+
+**Note:** Version bump only for package @availity/upload
+
+
+
+
+
+# 3.3.0 (2021-12-10)
+
+
+### Features
+
+* **upload:** return upload onPasswordSubmit callback ([6e10896](https://github.com/Availity/availity-react/commit/6e10896011565d23056211ab7a67f12994097575))
+
+
+
+
+
+## 3.2.1 (2021-11-30)
+
+**Note:** Version bump only for package @availity/upload
+
+
+
+
+
+# [3.2.0](https://github.com/Availity/availity-react/compare/@availity/upload@3.1.6...@availity/upload@3.2.0) (2021-11-15)
+
+
+### Features
+
+* move storybook, stories, and fix hmr ([2f65f71](https://github.com/Availity/availity-react/commit/2f65f71769d2d981e22700b87a09516833588f64))
+
+
+
+
+
+## 3.1.6 (2021-11-01)
+
+**Note:** Version bump only for package @availity/upload
+
+
+
+
+
+## 3.1.5 (2021-10-28)
+
+
+### Bug Fixes
+
+* upgrade eslint-config-availity and fix the errors ([6da0423](https://github.com/Availity/availity-react/commit/6da0423ecfa72b426287fd62ad00445fefce024e))
+
+
+
+
+
+## 3.1.4 (2021-10-19)
+
+**Note:** Version bump only for package @availity/upload
+
+
+
+
+
 ## [3.1.3](https://github.com/Availity/availity-react/compare/@availity/upload@3.1.2...@availity/upload@3.1.3) (2021-10-01)
 
 **Note:** Version bump only for package @availity/upload

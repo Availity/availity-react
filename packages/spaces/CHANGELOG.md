@@ -3,6 +3,60 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## 5.1.3 (2022-02-18)
+
+**Note:** Version bump only for package @availity/spaces
+
+
+
+
+
+## [5.1.2](https://github.com/Availity/availity-react/compare/@availity/spaces@5.1.1...@availity/spaces@5.1.2) (2021-12-20)
+
+**Note:** Version bump only for package @availity/spaces
+
+
+
+
+
+## 5.1.1 (2021-12-14)
+
+**Note:** Version bump only for package @availity/spaces
+
+
+
+
+
+# 5.1.0 (2021-11-15)
+
+
+### Features
+
+* move storybook, stories, and fix hmr ([2f65f71](https://github.com/Availity/availity-react/commit/2f65f71769d2d981e22700b87a09516833588f64))
+
+
+
+
+
+## [5.0.5](https://github.com/Availity/availity-react/compare/@availity/spaces@5.0.4...@availity/spaces@5.0.5) (2021-10-28)
+
+**Note:** Version bump only for package @availity/spaces
+
+
+
+
+
+## 5.0.4 (2021-10-28)
+
+
+### Bug Fixes
+
+* upgrade eslint-config-availity and fix the errors ([6da0423](https://github.com/Availity/availity-react/commit/6da0423ecfa72b426287fd62ad00445fefce024e))
+
+
+
+
+
 ## [5.0.3](https://github.com/Availity/availity-react/compare/@availity/spaces@5.0.2...@availity/spaces@5.0.3) (2021-10-01)
 
 **Note:** Version bump only for package @availity/spaces

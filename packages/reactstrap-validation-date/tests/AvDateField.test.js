@@ -47,9 +47,7 @@ describe('AvDateField', () => {
 
     fireEvent.click(getByText('Submit'));
 
-    const el = await waitFor(() =>
-      getByText('value must come after this date')
-    );
+    const el = await waitFor(() => getByText('value must come after this date'));
     expect(el).toBeDefined();
   });
 
@@ -71,9 +69,7 @@ describe('AvDateField', () => {
 
     fireEvent.click(getByText('Submit'));
 
-    const el = await waitFor(() =>
-      getByText('value must come before this date')
-    );
+    const el = await waitFor(() => getByText('value must come before this date'));
 
     expect(el).toBeDefined();
   });

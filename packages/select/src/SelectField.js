@@ -1,8 +1,9 @@
 import React, { useEffect } from 'react';
 import PropTypes from 'prop-types';
 import classNames from 'classnames';
-import { FormGroup, Feedback } from '@availity/form';
-import { Label } from 'reactstrap';
+import { FormText } from 'reactstrap';
+import { FormGroup, Feedback, Label } from '@availity/form';
+
 import Select from './Select';
 
 const SelectField = ({
@@ -12,6 +13,9 @@ const SelectField = ({
   labelClass,
   labelHidden,
   name,
+  helpId,
+  required,
+  helpMessage,
   ...attributes
 }) => {
   useEffect(() => {
@@ -23,30 +27,39 @@ const SelectField = ({
     }
   }, [attributes.id, name]);
 
-  let thisLabel = false;
-  if (label) {
-    thisLabel = (
-      <Label for={name} hidden={labelHidden} className={labelClass}>
-        {label}
-      </Label>
-    );
-  }
+  const thisLabel = label ? (
+    <Label
+      id={`${name}-label`}
+      for={name}
+      hidden={labelHidden}
+      className={labelClass}
+      required={required}
+      helpId={helpId}
+    >
+      {label}
+    </Label>
+  ) : null;
 
   return (
     <FormGroup className={groupClass} for={name} disabled={attributes.disabled}>
       {thisLabel}
-      <Select name={name} {...attributes} />
+      <Select name={name} feedback helpMessage={helpMessage} required={required} {...attributes} />
       <Feedback className={classNames('d-block', feedbackClass)} name={name} />
+      {helpMessage ? <FormText id={`${name}-helpmessage`.toLowerCase()}>{helpMessage}</FormText> : null}
     </FormGroup>
   );
 };
 
 SelectField.propTypes = {
+  name: PropTypes.string.isRequired,
   feedbackClass: PropTypes.string,
   groupClass: PropTypes.string,
+  helpId: PropTypes.string,
+  helpMessage: PropTypes.oneOfType([PropTypes.string, PropTypes.node]),
   label: PropTypes.node,
   labelClass: PropTypes.string,
   labelHidden: PropTypes.bool,
-  name: PropTypes.string.isRequired,
+  required: PropTypes.bool,
 };
+
 export default SelectField;

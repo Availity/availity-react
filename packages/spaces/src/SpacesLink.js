@@ -101,9 +101,12 @@ const Link = ({
     if (shortName) return shortName;
 
     // We have to pass `name` as `className` bc of how its stored in spaces
-    if (icons.navigation) return <Icon className={icons.navigation} />;
+    if (icons.navigation)
+      return (
+        <Icon className={icons.navigation} data-testid={`space-link-${icons.navigation}-icon-${linkStyle}-${id}`} />
+      );
 
-    return <Icon name="desktop" />;
+    return <Icon name="desktop" data-testid={`space-link-desktop-icon-${linkStyle}-${id}`} />;
   }, [icons.navigation, shortName]);
 
   const appIcon = useMemo(() => {
@@ -116,6 +119,7 @@ const Link = ({
           top: showDescription && description && !stacked ? -5 : 0,
         }}
         size={size === undefined && stacked ? 'lg' : size}
+        data-testid={`space-link-appIcon-${linkStyle}-${id}`}
       >
         {getIconTitle()}
       </AppIcon>
@@ -131,7 +135,12 @@ const Link = ({
             'pr-2': !showAppIcon,
           })}
         >
-          <FavoriteHeart id={id} name={name} onChange={(_, e) => e.stopPropagation()} />
+          <FavoriteHeart
+            data-testid={`space-link-favorite-${linkStyle}-${id}`}
+            id={id}
+            name={name}
+            onChange={(_, e) => e.stopPropagation()}
+          />
         </span>
       ),
     [favorite, id, name, showAppIcon]
@@ -152,11 +161,14 @@ const Link = ({
               className={classNames({
                 'mr-2': showDate,
               })}
+              data-testid={`space-link-new-badge-${linkStyle}-${id}`}
             >
               New!
             </Badge>
           )}
-          {showDate && <small>{getDisplayDate(activeDate)}</small>}
+          {showDate && (
+            <small data-testid={`space-link-display-date-${linkStyle}-${id}`}>{getDisplayDate(activeDate)}</small>
+          )}
         </div>
       ),
     [activeDate, isNew, showDate, showNew, stacked]
@@ -208,6 +220,7 @@ const Link = ({
       {...rest}
       style={{ ...style }}
       role={linkStyle === 'list' ? 'listitem' : role}
+      data-testid={`space-link-${linkStyle}-${id}`}
     >
       <BodyTag
         className={classNames('d-flex', `align-items-${!showDescription || stacked ? 'center' : 'start'}`, {
@@ -235,6 +248,7 @@ const Link = ({
                   {...analytics}
                   {...props}
                   aria-label={name}
+                  data-testid={`space-link-header-${linkStyle}-${id}`}
                 >
                   {name}
                 </TitleTag>
@@ -245,6 +259,7 @@ const Link = ({
                     className={classNames('mt-1', {
                       'text-center': stacked,
                     })}
+                    data-testid={`space-link-description-${linkStyle}-${id}`}
                   >
                     {/* TODO: just rendering text, do we need markdown component? */}
                     <ReactMarkdown className="Card-text">

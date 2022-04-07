@@ -3,6 +3,108 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# 3.1.0 (2022-03-08)
+
+
+### Features
+
+* **favorites:** add `onFavoritesChange` prop to provider ([b7984e0](https://github.com/Availity/availity-react/commit/b7984e05cac41da672410707c6ef4050aecb2e59))
+* **favorites:** add `size` prop to heart ([5057bcf](https://github.com/Availity/availity-react/commit/5057bcfcc9af7df0e0e79370bc6e8a8e8a04da93))
+
+
+
+
+
+# 3.0.0 (2022-03-03)
+
+
+### Bug Fixes
+
+* **favorites:** restore default export ([4b334ae](https://github.com/Availity/availity-react/commit/4b334ae9b987bbce6c9a6c73b7a5281fdb4e11af))
+
+
+### Features
+
+* **favorites:** improved accessibility for loading state ([9038803](https://github.com/Availity/availity-react/commit/90388033f095f312d0ea8e2ca124bb875cb54c6c))
+* **favorites:** initial refactor removing bootstrap PF-2802 ([f05a093](https://github.com/Availity/availity-react/commit/f05a0939c596ceb82d2c6849b87e9aea92306d21))
+* **favorites:** remove logging ([3c8de83](https://github.com/Availity/availity-react/commit/3c8de8315eb0906ba7076397e89a92a35dd1fbda))
+
+
+* refactor(favorites)!: remove bootstrap, add react-query, rewrite to TypeScript ([eebe86b](https://github.com/Availity/availity-react/commit/eebe86b450024b57f73bac8f45219b9803fe8651))
+
+
+### BREAKING CHANGES
+
+* Adds react-query v3 as a peer dependency
+* Requires all components to be used inside react-query's QueryClientProvider
+* No longer requires availity-uikit or any other Bootstrap dependent
+
+
+
+
+
+## 2.3.4 (2022-02-18)
+
+**Note:** Version bump only for package @availity/favorites
+
+
+
+
+
+## [2.3.3](https://github.com/Availity/availity-react/compare/@availity/favorites@2.3.2...@availity/favorites@2.3.3) (2021-12-20)
+
+**Note:** Version bump only for package @availity/favorites
+
+
+
+
+
+## 2.3.2 (2021-12-14)
+
+**Note:** Version bump only for package @availity/favorites
+
+
+
+
+
+## 2.3.1 (2021-12-02)
+
+**Note:** Version bump only for package @availity/favorites
+
+
+
+
+
+# 2.3.0 (2021-11-15)
+
+
+### Features
+
+* move storybook, stories, and fix hmr ([2f65f71](https://github.com/Availity/availity-react/commit/2f65f71769d2d981e22700b87a09516833588f64))
+
+
+
+
+
+## [2.2.4](https://github.com/Availity/availity-react/compare/@availity/favorites@2.2.3...@availity/favorites@2.2.4) (2021-10-28)
+
+**Note:** Version bump only for package @availity/favorites
+
+
+
+
+
+## 2.2.3 (2021-10-28)
+
+
+### Bug Fixes
+
+* **favorites:** disable lint rule ([e328b64](https://github.com/Availity/availity-react/commit/e328b648283edfd495eadb55661b6f3988e1fe3a))
+
+
+
+
+
 ## [2.2.2](https://github.com/Availity/availity-react/compare/@availity/favorites@2.2.1...@availity/favorites@2.2.2) (2021-10-01)
 
 **Note:** Version bump only for package @availity/favorites

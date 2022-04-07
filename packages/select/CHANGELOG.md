@@ -3,6 +3,412 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [2.9.1](https://github.com/Availity/availity-react/compare/@availity/select@2.9.0...@availity/select@2.9.1) (2022-03-09)
+
+
+### Bug Fixes
+
+* **select:** add resource select types ([2cda8f4](https://github.com/Availity/availity-react/commit/2cda8f48459d12f8b272a4411ea044a810106b13))
+* **select:** fix typedefs for all select components ([2334bce](https://github.com/Availity/availity-react/commit/2334bceeb48dbcf01b91c706e5f3049c8bf345a9))
+
+
+
+
+
+# [2.9.0](https://github.com/Availity/availity-react/compare/@availity/select@2.8.0...@availity/select@2.9.0) (2022-02-24)
+
+
+### Features
+
+* **select:** add aria-hidden='false' for individual clear indicator ([ae17081](https://github.com/Availity/availity-react/commit/ae17081e143210beaa8eef42456cd8ec2def6863))
+* **select:** merge conflicts ([7af8633](https://github.com/Availity/availity-react/commit/7af863357d225c1386660fb8b8ac13574fd6917a))
+* **select:** run prettier ([00c10e3](https://github.com/Availity/availity-react/commit/00c10e3e07cc5993859cf5714cdefbf19bc68c90))
+
+
+
+
+
+# [2.8.0](https://github.com/Availity/availity-react/compare/@availity/select@2.7.1...@availity/select@2.8.0) (2022-02-24)
+
+
+### Features
+
+* **select:** added role and aria attributes to clear indicator of select ([f2feca8](https://github.com/Availity/availity-react/commit/f2feca8c08e6b6a46daa2dc9dc7b018571c8db3d))
+* **select:** fix lint errors ([1f0f8b3](https://github.com/Availity/availity-react/commit/1f0f8b3aad77d2bf30b44d6837159a129747d063))
+* **select:** remove console statement ([46d4d9d](https://github.com/Availity/availity-react/commit/46d4d9d1870c18ae98bacda3325fa32db040d2da))
+
+
+
+
+
+## [2.7.1](https://github.com/Availity/availity-react/compare/@availity/select@2.7.0...@availity/select@2.7.1) (2022-02-23)
+
+
+### Bug Fixes
+
+* update proptype and typedef for helpMessage ([f61d0a1](https://github.com/Availity/availity-react/commit/f61d0a1c204900e55046262aa2f06056ce858c3b))
+
+
+
+
+
+# 2.7.0 (2022-02-23)
+
+
+### Features
+
+* add prop to allow inputValue to not be encoded ([9c598a8](https://github.com/Availity/availity-react/commit/9c598a8d4b69f3aebfc215a56f81501fa3451b58))
+
+
+
+
+
+## 2.6.5 (2022-02-17)
+
+
+### Bug Fixes
+
+* **select:** allow valueKey to work with ResourceSelect ([85c554d](https://github.com/Availity/availity-react/commit/85c554d6d5b519c5d9ec6342a6f5b074ae8520a9))
+
+
+
+
+
+## [2.6.4](https://github.com/Availity/availity-react/compare/@availity/select@2.6.3...@availity/select@2.6.4) (2022-02-11)
+
+**Note:** Version bump only for package @availity/select
+
+
+
+
+
+## [2.6.3](https://github.com/Availity/availity-react/compare/@availity/select@2.6.2...@availity/select@2.6.3) (2022-02-04)
+
+**Note:** Version bump only for package @availity/select
+
+
+
+
+
+## 2.6.2 (2022-02-03)
+
+**Note:** Version bump only for package @availity/select
+
+
+
+
+
+## [2.6.1](https://github.com/Availity/availity-react/compare/@availity/select@2.6.0...@availity/select@2.6.1) (2022-01-27)
+
+
+### Bug Fixes
+
+* **select:** remove role and attributes from clear indicator ([b4eae57](https://github.com/Availity/availity-react/commit/b4eae5751967a1f85b9b0c6e0064086e50f13e56))
+
+
+
+
+
+# [2.6.0](https://github.com/Availity/availity-react/compare/@availity/select@2.5.0...@availity/select@2.6.0) (2022-01-25)
+
+
+### Features
+
+* **select:** added role and aria attributes to clear indicator of select ([8de0038](https://github.com/Availity/availity-react/commit/8de003825d3049f07ec25a8fc8decbfc3a357323))
+
+
+
+
+
+# [2.5.0](https://github.com/Availity/availity-react/compare/@availity/select@2.4.0...@availity/select@2.5.0) (2022-01-19)
+
+
+### Features
+
+* **select:** add ability to override searchTerm and fix default of method to POST ([7af25f0](https://github.com/Availity/availity-react/commit/7af25f07162c9d725ea2c394eb95b40958e680db))
+* **select:** add docs, reset typescript file ([9f875a2](https://github.com/Availity/availity-react/commit/9f875a283f0966bbbb79396b92b77287d81f976e))
+* **select:** add test, apply searchTerm for graph ql stuff too ([725bd64](https://github.com/Availity/availity-react/commit/725bd64a877b63e56bae82af495ffc9e890cf7f4))
+
+
+
+
+
+# 2.4.0 (2022-01-13)
+
+
+### Features
+
+* **select:** allow components override ([3db073d](https://github.com/Availity/availity-react/commit/3db073dc3b3dd3532b60f809ed349a61e14ab17f))
+
+
+
+
+
+## [2.3.2](https://github.com/Availity/availity-react/compare/@availity/select@2.3.1...@availity/select@2.3.2) (2021-12-20)
+
+**Note:** Version bump only for package @availity/select
+
+
+
+
+
+## 2.3.1 (2021-12-14)
+
+**Note:** Version bump only for package @availity/select
+
+
+
+
+
+# 2.3.0 (2021-12-03)
+
+
+### Features
+
+* **select:** add placeholder prop ([0f115fc](https://github.com/Availity/availity-react/commit/0f115fc01d812ab65ff1458ed4f3a66684188f39))
+* **select:** associate help and error messages to input ([5e042c6](https://github.com/Availity/availity-react/commit/5e042c600887a2aa7fd82c3d3f245c63666464a0))
+* **select:** rename error variable ([f1e74f8](https://github.com/Availity/availity-react/commit/f1e74f8cffeaf232b7df85fdc6e2b7385f436d6d))
+* **select:** rename error variable ([ed50160](https://github.com/Availity/availity-react/commit/ed50160fc5523b4fd4badfcf04d8f10f7491155e))
+
+
+
+
+
+## [2.2.1](https://github.com/Availity/availity-react/compare/@availity/select@2.2.0...@availity/select@2.2.1) (2021-11-30)
+
+**Note:** Version bump only for package @availity/select
+
+
+
+
+
+# [2.2.0](https://github.com/Availity/availity-react/compare/@availity/select@2.1.2...@availity/select@2.2.0) (2021-11-19)
+
+
+### Features
+
+* **select:** add helpMessage prop ([68014af](https://github.com/Availity/availity-react/commit/68014afc0bcb6b082ff6042c8880655fe31ada1d))
+
+
+
+
+
+## [2.1.2](https://github.com/Availity/availity-react/compare/@availity/select@2.1.1...@availity/select@2.1.2) (2021-11-16)
+
+
+### Bug Fixes
+
+* **select:** use withAsyncPaginate instead of SelectComponent prop for creatable AsyncPaginate selects ([b45b0d4](https://github.com/Availity/availity-react/commit/b45b0d4a4a041c3d8c35939fc7e6494bd96cf5b8))
+
+
+
+
+
+## [2.1.1](https://github.com/Availity/availity-react/compare/@availity/select@2.1.0...@availity/select@2.1.1) (2021-11-15)
+
+
+### Bug Fixes
+
+* **select:** set new colors due to accessibility issue when error changes border and color ([40b0156](https://github.com/Availity/availity-react/commit/40b0156f41436bf4b293d44861127996e5b4489d))
+* **select,reactstrap-validation-select:** fixed select color to fix contrast issue with white text ([6e5bf3a](https://github.com/Availity/availity-react/commit/6e5bf3aa21446c17fc29548a177ac2ba75e85b07))
+
+
+
+
+
+# [2.1.0](https://github.com/Availity/availity-react/compare/@availity/select@2.0.1...@availity/select@2.1.0) (2021-11-15)
+
+
+### Features
+
+* move storybook, stories, and fix hmr ([2f65f71](https://github.com/Availity/availity-react/commit/2f65f71769d2d981e22700b87a09516833588f64))
+
+
+
+
+
+## [2.0.1](https://github.com/Availity/availity-react/compare/@availity/select@2.0.0...@availity/select@2.0.1) (2021-11-12)
+
+
+### Bug Fixes
+
+* **select:** set new colors due to accessibility issue when error changes border and color ([40b0156](https://github.com/Availity/availity-react/commit/40b0156f41436bf4b293d44861127996e5b4489d))
+
+
+
+
+
+# [2.0.0](https://github.com/Availity/availity-react/compare/@availity/select@1.0.6...@availity/select@2.0.0) (2021-11-12)
+
+
+### Bug Fixes
+
+* **select:** use label from availity/form ([77dc1a5](https://github.com/Availity/availity-react/commit/77dc1a5fc73f38531371a81ee464c3c64b55e514))
+
+
+### Features
+
+* **select:** add label component with required asterisk ([ee4913c](https://github.com/Availity/availity-react/commit/ee4913c42813e19eb45bcf97fd14c307b831c5f3))
+
+
+### BREAKING CHANGES
+
+* **select:** Requires v1.1.0 of form for label component
+
+
+
+
+
+# [1.1.0](https://github.com/Availity/availity-react/compare/@availity/select@1.0.6...@availity/select@1.1.0) (2021-11-09)
+
+
+### Features
+
+* add defaultToFirstOption for resource select ([5ea6c80](https://github.com/Availity/availity-react/commit/5ea6c80216319f1548299a51bfe083f002a44798))
+
+
+
+
+
+## [1.0.6](https://github.com/Availity/availity-react/compare/@availity/select@1.0.3...@availity/select@1.0.6) (2021-11-05)
+
+
+### Bug Fixes
+
+* coordinate accessible UI changes ([ee84d14](https://github.com/Availity/availity-react/commit/ee84d14412864943e626422e075071cd0571f783))
+
+
+
+
+
+## [1.0.5](https://github.com/Availity/availity-react/compare/@availity/select@1.0.4...@availity/select@1.0.5) (2021-10-28)
+
+
+### Bug Fixes
+
+* **select:** pass ref as selectRef when using async component ([729630e](https://github.com/Availity/availity-react/commit/729630e478d5b953f87614af95c83755c5f1c3b6))
+
+
+
+
+
+## [1.0.4](https://github.com/Availity/availity-react/compare/@availity/select@1.0.3...@availity/select@1.0.4) (2021-10-28)
+
+**Note:** Version bump only for package @availity/select
+
+
+
+
+
+## [1.0.3](https://github.com/Availity/availity-react/compare/@availity/select@1.0.2...@availity/select@1.0.3) (2021-10-28)
+
+
+### Bug Fixes
+
+* upgrade eslint-config-availity and fix the errors ([6da0423](https://github.com/Availity/availity-react/commit/6da0423ecfa72b426287fd62ad00445fefce024e))
+
+
+
+
+
+## 1.0.2 (2021-10-27)
+
+**Note:** Version bump only for package @availity/select
+
+
+
+
+
+## [1.0.1](https://github.com/Availity/availity-react/compare/@availity/select@1.0.0...@availity/select@1.0.1) (2021-10-19)
+
+
+### Bug Fixes
+
+* **select:** update typedef ([42f8cd3](https://github.com/Availity/availity-react/commit/42f8cd37b6cd4d1d38882988de73d4c82385ac4f))
+
+
+
+
+
+# [1.0.0](https://github.com/Availity/availity-react/compare/@availity/select@0.20.4...@availity/select@1.0.0) (2021-10-19)
+
+**Note:** Version bump only for package @availity/select
+
+
+
+
+
+## 0.20.4 (2021-10-19)
+
+**Note:** Version bump only for package @availity/select
+
+
+
+
+
+## [0.20.3](https://github.com/Availity/availity-react/compare/@availity/select@0.20.2...@availity/select@0.20.3) (2021-10-19)
+
+**Note:** Version bump only for package @availity/select
+
+
+
+
+
+## [0.20.2](https://github.com/Availity/availity-react/compare/@availity/select@0.20.1...@availity/select@0.20.2) (2021-10-19)
+
+**Note:** Version bump only for package @availity/select
+
+
+
+
+
+## [0.20.1](https://github.com/Availity/availity-react/compare/@availity/select@0.20.0...@availity/select@0.20.1) (2021-10-19)
+
+**Note:** Version bump only for package @availity/select
+
+
+
+
+
+# 0.20.0 (2021-10-19)
+
+
+### Features
+
+* **select:** upgrade react-select-async-paginate to latest ([ec4b380](https://github.com/Availity/availity-react/commit/ec4b380284594255b346b20943e3e969a17b4bd5))
+
+
+* feat(select)!: upgrade react-select v3 to v5 and removed unneeded type import ([43bd83c](https://github.com/Availity/availity-react/commit/43bd83c837acaa9c3d844826bd150bcc7667b5af))
+
+
+### BREAKING CHANGES
+
+* upgraded to version 5 of react-select
+feat(select): added new yarn.lock
+
+
+
+
+
+# 0.19.0 (2021-10-08)
+
+
+### Features
+
+* **select:** pull field help icon out of label element ([e2ead22](https://github.com/Availity/availity-react/commit/e2ead22326ec5863755398d9b3f68b78c14345c1))
+
+
+
+
+
+## [0.18.4](https://github.com/Availity/availity-react/compare/@availity/select@0.18.3...@availity/select@0.18.4) (2021-10-04)
+
+**Note:** Version bump only for package @availity/select
+
+
+
+
+
 ## [0.18.3](https://github.com/Availity/availity-react/compare/@availity/select@0.18.2...@availity/select@0.18.3) (2021-10-01)
 
 **Note:** Version bump only for package @availity/select

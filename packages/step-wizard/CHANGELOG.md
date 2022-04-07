@@ -3,6 +3,33 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.4.2](https://github.com/Availity/availity-react/compare/@availity/step-wizard@1.4.1...@availity/step-wizard@1.4.2) (2021-12-20)
+
+**Note:** Version bump only for package @availity/step-wizard
+
+
+
+
+
+## 1.4.1 (2021-12-14)
+
+**Note:** Version bump only for package @availity/step-wizard
+
+
+
+
+
+# 1.4.0 (2021-11-15)
+
+
+### Features
+
+* move storybook, stories, and fix hmr ([2f65f71](https://github.com/Availity/availity-react/commit/2f65f71769d2d981e22700b87a09516833588f64))
+
+
+
+
+
 ## [1.3.22](https://github.com/Availity/availity-react/compare/@availity/step-wizard@1.3.21...@availity/step-wizard@1.3.22) (2021-10-01)
 
 **Note:** Version bump only for package @availity/step-wizard

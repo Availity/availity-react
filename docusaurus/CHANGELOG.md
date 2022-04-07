@@ -3,6 +3,117 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [1.7.0](https://github.com/Availity/availity-react/compare/@availity/dinosaurdocs@1.5.0...@availity/dinosaurdocs@1.7.0) (2022-02-18)
+
+
+### Features
+
+* **badge:** add removable-badge component ([b56ab6a](https://github.com/Availity/availity-react/commit/b56ab6a5a0f14dc83c34edb10f778ef9733dc948))
+* **badge:** fix docs parsing issue ([90bb3a1](https://github.com/Availity/availity-react/commit/90bb3a12ce69b69065523643a6d39bc81bbc2c14))
+* **badge:** fix typos ([be8cef6](https://github.com/Availity/availity-react/commit/be8cef684aa1ca659d0afcbecdd518ddbdb5344f))
+* **badge:** remove default args from story and clean up story organization ([f5f49d0](https://github.com/Availity/availity-react/commit/f5f49d0e8e9c9fb23750dbf304fbfd8c32754c51))
+* **badge:** rename library ([7ed2ad2](https://github.com/Availity/availity-react/commit/7ed2ad28fd3247799aaffa6eb5e4b8ef354bffe5))
+
+
+
+
+
+# [1.6.0](https://github.com/Availity/availity-react/compare/@availity/dinosaurdocs@1.5.0...@availity/dinosaurdocs@1.6.0) (2022-02-18)
+
+
+### Features
+
+* **button:** add line about scss in documentation ([f0228bd](https://github.com/Availity/availity-react/commit/f0228bd29c05e4446b50e2bc0dd8197c754b9e80))
+* **button:** add loading button component ([b4f6940](https://github.com/Availity/availity-react/commit/b4f694048eb28e0a03dab9cacad44fa1e95dfd82))
+* **button:** rename package to button ([ab7dc32](https://github.com/Availity/availity-react/commit/ab7dc32a2bf80f47085029377dd4d05010c51d87))
+* **button:** typo ([31e66bd](https://github.com/Availity/availity-react/commit/31e66bd1e80b4f6cd817200856dafd5eb24b6537))
+* **hooks:** add documentation to sidebar, some formatting ([fbd9964](https://github.com/Availity/availity-react/commit/fbd99648c18993394f773d8540c1be023acf6e5b))
+* **hooks:** add useWindowDimensionsHook ([203d9c0](https://github.com/Availity/availity-react/commit/203d9c0a31362ec084c94c4ae50ab4b6efbc876b))
+
+
+
+
+
+# 1.5.0 (2022-02-18)
+
+
+### Features
+
+* **button:** add line about scss in documentation ([f0228bd](https://github.com/Availity/availity-react/commit/f0228bd29c05e4446b50e2bc0dd8197c754b9e80))
+* **button:** add loading button component ([b4f6940](https://github.com/Availity/availity-react/commit/b4f694048eb28e0a03dab9cacad44fa1e95dfd82))
+* **button:** rename package to button ([ab7dc32](https://github.com/Availity/availity-react/commit/ab7dc32a2bf80f47085029377dd4d05010c51d87))
+* **button:** typo ([31e66bd](https://github.com/Availity/availity-react/commit/31e66bd1e80b4f6cd817200856dafd5eb24b6537))
+
+
+
+
+
+## 1.4.1 (2022-01-31)
+
+**Note:** Version bump only for package @availity/dinosaurdocs
+
+
+
+
+
+# [1.4.0](https://github.com/Availity/availity-react/compare/@availity/dinosaurdocs@1.3.2...@availity/dinosaurdocs@1.4.0) (2022-01-18)
+
+
+### Features
+
+* **table:** add some docs and fix some bulk actions work, toggle select ([e0c29bd](https://github.com/Availity/availity-react/commit/e0c29bdc128fd766da470efd697e7be449c162c5))
+* **table:** clean up naming, fix disable of controls ([639fc4f](https://github.com/Availity/availity-react/commit/639fc4f6cb588b566613802fe379011fc429756a))
+* **table:** code review fixes ([4893d96](https://github.com/Availity/availity-react/commit/4893d96bc70b346f2c8047f6d1df3916d9070d24))
+* **table:** update documentation paramsters ([8fda274](https://github.com/Availity/availity-react/commit/8fda274ec3bfb4e58ea2b81c74b11dc9cabd624e))
+
+
+
+
+
+## 1.3.2 (2022-01-05)
+
+**Note:** Version bump only for package @availity/dinosaurdocs
+
+
+
+
+
+## 1.3.1 (2021-12-14)
+
+**Note:** Version bump only for package @availity/dinosaurdocs
+
+
+
+
+
+# 1.3.0 (2021-11-12)
+
+
+### Features
+
+* **date:** add label component with required asterisk and field help icon handling ([ad1d10a](https://github.com/Availity/availity-react/commit/ad1d10a9392d3c45bcc7c7fcc50df3f891f7aa25))
+* **form:** add label component with required asterisk and field help icon handling ([ee96cdf](https://github.com/Availity/availity-react/commit/ee96cdfd6fc09bd7f92ee25ac2ae3c1f4151e61a))
+* **select:** add label component with required asterisk ([ee4913c](https://github.com/Availity/availity-react/commit/ee4913c42813e19eb45bcf97fd14c307b831c5f3))
+
+
+
+
+
+# 1.2.0 (2021-10-08)
+
+
+### Features
+
+* **table:** fix typings, address code review comments, enhance onRowSelect handling ([ac3b85c](https://github.com/Availity/availity-react/commit/ac3b85ce9e54b1e8469d33873a6e1bc05fd182ac))
+* **table:** fix up some docs and typings ([93e044d](https://github.com/Availity/availity-react/commit/93e044d949724aef4722b763c4e60399bb309727))
+* **table:** initial of add documentation and make some minor sticky updates ([6f6b84e](https://github.com/Availity/availity-react/commit/6f6b84e01c91f50b170453ece563a568d41a1651))
+* **table:** proofreading documentation ([3ca9f95](https://github.com/Availity/availity-react/commit/3ca9f95b16c96ff7886fafa22bc491bf7e4dc4ab))
+* **table:** some code review feedback and some fixes, storybook enhancements ([f6a8f92](https://github.com/Availity/availity-react/commit/f6a8f92365c3e53a68deca536ef3e948122e4434))
+
+
+
+
+
 ## 1.1.9 (2021-06-01)
 
 **Note:** Version bump only for package @availity/dinosaurdocs

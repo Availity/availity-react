@@ -50,6 +50,54 @@ describe('Upload', () => {
     expect(inputNode.files.length).toBe(1);
   });
 
+  test('adding a file over maxSize', () => {
+    const { getByTestId, getByText } = renderUpload(
+      { initialValues: { upload: null } },
+      {
+        name: 'upload',
+        clientId: 'a',
+        bucketId: 'b',
+        customerId: 'c',
+        maxSize: 100,
+      }
+    );
+
+    const file = new Buffer.from('hello world'.split(''));
+    file.name = 'fileName.png';
+    file.size = 10000;
+    const fileEvent = { target: { files: [file] } };
+
+    const inputNode = getByTestId('file-picker');
+    fireEvent.change(inputNode, fileEvent);
+
+    expect(getByText('Document is too large')).toBeDefined();
+  });
+
+  test('adding a file over totalMaxSize', () => {
+    const { getByTestId, getByText } = renderUpload(
+      { initialValues: { upload: null } },
+      {
+        name: 'upload',
+        clientId: 'a',
+        bucketId: 'b',
+        customerId: 'c',
+        maxSize: 700,
+        totalMaxSize: 1000,
+      }
+    );
+
+    const file = new Buffer.from('hello world'.split(''));
+    file.name = 'fileName.png';
+    file.size = 600;
+    const fileEvent = { target: { files: [file] } };
+
+    const inputNode = getByTestId('file-picker');
+    fireEvent.change(inputNode, fileEvent);
+    fireEvent.change(inputNode, fileEvent);
+
+    expect(getByText('Total documents size is too large')).toBeDefined();
+  });
+
   test('removing a file', () => {
     const { getByTestId, queryByTestId } = renderUpload(
       { initialValues: { upload: null } },
@@ -224,9 +272,9 @@ describe('Upload', () => {
       // eslint-disable-next-line unicorn/consistent-function-scoping
       const getDropRejectionMessage = (errors) => {
         let msg = '';
-        errors.forEach((error) => {
+        for (const error of errors) {
           msg += error.code === 'file-too-large' ? 'my custom error message' : 'this file is no good';
-        });
+        }
         return msg;
       };
 

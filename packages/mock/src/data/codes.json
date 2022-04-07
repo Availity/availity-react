@@ -1,0 +1,44 @@
+{
+  "codes": [
+    {
+      "code": "171100000X",
+      "value": "Acupuncturist"
+    },
+    {
+      "code": "363LA2100X",
+      "value": "Acute Care"
+    },
+    {
+      "code": "364SA2100X",
+      "value": "Acute Care"
+    },
+    {
+      "code": "101YA0400X",
+      "value": "Addiction &#x28;Substance Use Disorder&#x29;"
+    },
+    {
+      "code": "163WA0400X",
+      "value": "Addiction &#x28;Substance Use Disorder&#x29;"
+    },
+    {
+      "code": "103TA0400X",
+      "value": "Addiction &#x28;Substance Use Disorder&#x29;"
+    },
+    {
+      "code": "2084A0401X",
+      "value": "Addiction Medicine"
+    },
+    {
+      "code": "207RA0401X",
+      "value": "Addiction Medicine"
+    },
+    {
+      "code": "207QA0401X",
+      "value": "Addiction Medicine"
+    },
+    {
+      "code": "207LA0401X",
+      "value": "Addiction Medicine"
+    }
+  ]
+}

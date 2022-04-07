@@ -1,14 +1,17 @@
-import * as React from 'react';
-import { FormGroupProps } from './FormGroup';
+/* eslint-disable @typescript-eslint/no-explicit-any */
+import { ReactNode } from 'react';
+import { FormGroupProps } from 'reactstrap';
 
 interface CheckboxGroupProps extends FormGroupProps {
   name: string;
-  label?: React.ReactNode;
+  label?: ReactNode;
+  labelClassName?: string;
   groupClassName?: string;
   onChange?: (value: any) => void;
   helpId?: string;
+  required?: boolean | false;
 }
 
-declare class CheckboxGroup extends React.Component<CheckboxGroupProps> {}
+declare const CheckboxGroup: (props: CheckboxGroupProps) => JSX.Element;
 
 export default CheckboxGroup;

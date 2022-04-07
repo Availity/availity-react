@@ -1,0 +1,52 @@
+---
+title: useAuthorize
+---
+
+The `useAuthorize` hook accepts a list of permissions, with optional parameters, and will return whether the user is authorized or not.
+
+This package uses [react-query](https://react-query.tanstack.com/) to handle data fetching. This means you must add a [QueryClientProvider](https://react-query.tanstack.com/reference/QueryClientProvider#_top) to your app if you do not already have one. The default setup should cover most use-cases. However, there are 2 options we recommend looking into in order to determine what is correct for your app. These settings are `refetchOnWindowFocus` and `staleTime`. The first option sets whether the to refetch the query when the window is focused, and the other is the default marker for how long the query is valid.
+
+## Args
+
+- **`permissions`**: (string | string[])[]. Required.
+  - **string**: The permission ID, eg: `'1234'`
+  - **array**: The array can contain Permission ID's as well as other arrays which contain Permission ID's eg: `['1234', '2345', ['3456', '4567'], ['5678', '6789']]`. The items in a nested array indicate Permission ID's that must _all_ be granted to the user to be considered authorized - they act as an `"AND"`. The items in the top of the array act as an `"OR"` - if _any_ are granted to the user, the user is considered authorized. For example, `['1234', '2345', ['3456', '4567'], ['5678', '6789']]` is equivalent to `'1234' || '2345' || ('3456' && '4567') || ('5678' && '6789')`.
+- **`options`** Object. Optional. Additional options
+  - **`organizationId`**: String. Optional. When present, the permission is validated to ensure it is assigned to the organization.
+  - **`customerId`**: String. Optional. When present, the permission is validated to ensure it is assigned to the customer.
+  - **`region`**: String or Boolean. Optional. Default: `true`. When a string, the permission is validated to ensure it is assigned in the provided region. When true, the permission is validated to ensure it is assigned in the current region.
+  - **`resources`**: (string | string[])[]. Optional.
+    - **string**: The Resource ID, eg: `'12345'`
+    - **array**: The array can contain Resource ID's as well as other arrays which contain Resource ID's eg: `['12345', '23456', ['34567', '45678'], ['56789', '67890']]`. The items in a nested array indicate the Resource ID's that must _all_ be granted to the user to be considered authorized - they act as an `"AND"`. The items in the top of the array act as an `"OR"` - if _any_ are granted to the user, the user is considered authorized. For example, `['12345', '23456', ['34567', '45678'], ['56789', '67890']]` is equivalent to `'12345' || '23456' || ('34567' && '45678') || ('56789' && '67890')`.
+
+## Return Object
+
+An object with two properties is returned from the call
+
+```ts
+type ReturnObject = {
+  /* Result of permission check */
+  authorized: boolean;
+  /* State of the api call */
+  isLoading: boolean;
+};
+```
+
+## Example
+
+```jsx
+import React from 'react';
+import { useAuthorize } from '@availity/authorize';
+
+const Component = () => {
+  const { authorized, isLoading } = useAuthorize(['1234', '5678'], {
+    region: 'FL',
+  });
+
+  return authorized && <SomeAuthorizedComponent />;
+};
+```
+
+## Storybook
+
+[Live Example](https://availity.github.io/availity-react/storybook/?path=/story/components-authorize--use-authorize)

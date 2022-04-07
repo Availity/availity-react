@@ -1,6 +1,8 @@
-@import '~react-dates/lib/css/_datepicker.css';
+@import '~@availity/react-dates/lib/css/_datepicker.css';
 
 .DateInput {
+  flex: 1 0 0;
+  border-radius: 0.25em;
   font-size: 16px;
   font-weight: normal;
   line-height: normal;
@@ -12,33 +14,43 @@
 }
 
 .DateRangePickerInput_arrow {
-  padding: 0.375rem 0.75rem;
+  padding: 0.25rem 0.5rem;
   background-color: #e9ecef;
-  border: 1px solid #ced4da;
+  border: 1px solid #555;
   border-left: none;
   border-right: none;
+  height: calc(
+    1.5em + 0.75rem + 2px
+  ); /* Do not remove this. Used to match Date Input heights to Reactstrap Input heights */
 }
 
 .DateRangePickerInput_calendarIcon,
 .SingleDatePickerInput_calendarIcon {
+  padding: 0.25rem 0.5rem;
   background-color: #e9ecef;
   margin-right: 0;
   margin-left: 0;
+  border: 1px solid #555;
   border-top-right-radius: 5px;
   border-bottom-right-radius: 5px;
+  height: calc(
+    1.5em + 0.75rem + 2px
+  ); /* Do not remove this. Used to match Date Input heights to Reactstrap Input heights */
 }
 
 .DateRangePickerInput_calendarIcon:hover,
 .SingleDatePickerInput_calendarIcon:hover {
   color: #212529;
   background-color: #d4d9d9;
-  border-color: #cdd3d3;
+  border-color: #555;
 }
 
 .DateRangePickerInput_calendarIcon:focus,
 .SingleDatePickerInput_calendarIcon:focus {
-  box-shadow: 0 0 0 0.2rem rgba(202, 205, 206, 0.5);
+  box-shadow: 0 0 0 0.2rem #949494; // matches btn-light focus styling
+  border: 0.1rem solid #fff;
   outline: 0;
+  z-index: 1;
 }
 
 .current-day-highlight {
@@ -56,48 +68,32 @@
   border: none;
 }
 
-.DateInput {
-  border-radius: 0.25em;
-  flex: 1;
-}
-
 .DateInput_input {
   font-size: 16px;
   font-weight: normal;
-  height: calc(1.5em + 0.75rem + 2px); /* Do not remove this */
   line-height: normal;
   padding: 0.375rem 0.75rem;
-  border: 1px solid #ced4da;
+  border: 1px solid #555;
   border-radius: 0.25rem;
   transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
-}
+  height: calc(
+    1.5em + 0.75rem + 2px
+  ); /* Do not remove this. Used to match Date Input heights to Reactstrap Input heights */
 
-// .DateInput:has > input.DateInput_input {
-//   border-top-right-radius: 0;
-//   border-bottom-right-radius: 0;
-//   border-right:none;
-// }
-.av-calendar-show .SingleDatePicker input.DateInput_input {
-  border-top-right-radius: 0;
-  border-bottom-right-radius: 0;
-  border-right: none;
-}
+  &.DateInput_input__disabled {
+    background-color: #e9ecef;
+    color: #495057;
+  }
 
-.DateRangePickerInput .DateInput:nth-of-type(1) input.DateInput_input {
-  border-top-right-radius: 0;
-  border-bottom-right-radius: 0;
+  &.DateInput_input__focused {
+    border: 1px solid #2261b5;
+    box-shadow: 0 0 0 0.2rem #2261b5;
+  }
 }
 
 .DateRangePickerInput .DateRangePickerInput_arrow ~ .DateInput input.DateInput_input {
   border-top-left-radius: 0;
   border-bottom-left-radius: 0;
-}
-.av-calendar-show .DateRangePickerInput .DateRangePickerInput_arrow ~ .DateInput input.DateInput_input {
-  border-top-right-radius: 0;
-  border-bottom-right-radius: 0;
-  border-right: none;
-  // background-color:purple;
-  // color:purple;
 }
 
 .CalendarDay__selected,
@@ -155,9 +151,16 @@
 .is-invalid {
   .SingleDatePicker input.DateInput_input,
   .DateRangePickerInput .DateRangePickerInput_arrow,
-  .DateRangePickerInput input.DateInput_input {
+  .DateRangePickerInput input.DateInput_input,
+  .DateRangePickerInput_calendarIcon,
+  .SingleDatePickerInput_calendarIcon {
     border-color: #dc3545;
   }
+
+  .DateInput_input__focused {
+    box-shadow: 0 0 0 0.2rem rgba(220, 53, 69, 0.25);
+  }
+
   .DateRangePickerInput .DateInput:nth-of-type(1) input.DateInput_input {
     border-right-color: #cdd3d3;
   }

@@ -1,8 +1,23 @@
 {
   "name": "@availity/feature",
-  "version": "1.2.26",
-  "author": "Evan Sharp <evan.sharp@gmail.com>",
+  "version": "1.3.2",
   "description": "Check if a feature is enabled or disabled before doing something.",
+  "keywords": [
+    "react",
+    "availity",
+    "feature"
+  ],
+  "homepage": "https://availity.github.io/availity-react/components/feature",
+  "bugs": {
+    "url": "https://github.com/Availity/availity-react/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Availity/availity-react.git",
+    "directory": "packages/feature"
+  },
+  "license": "MIT",
+  "author": "Evan Sharp <evan.sharp@gmail.com>",
   "main": "index.js",
   "types": "index.d.ts",
   "bin": {
@@ -10,21 +25,6 @@
   },
   "scripts": {
     "feature": "generate-features-json . path-to-dist"
-  },
-  "keywords": [
-    "react",
-    "availity"
-  ],
-  "repository": {
-    "type": "git",
-    "url": "https://github.com/Availity/availity-react.git"
-  },
-  "bugs": {
-    "url": "https://github.com/Availity/availity-react/issues"
-  },
-  "license": "MIT",
-  "publishConfig": {
-    "access": "public"
   },
   "dependencies": {
     "fs-extra": "^9.0.1",
@@ -40,5 +40,8 @@
   "peerDependencies": {
     "axios": "^0.21.1",
     "react": ">=16.3.0"
+  },
+  "publishConfig": {
+    "access": "public"
   }
 }
