@@ -3,7 +3,7 @@ import SpacesImage from './types/SpacesImage';
 import SpacesDisclaimer from './types/SpacesDisclaimer';
 import SpacesAgreement from './types/SpacesAgreement';
 import SpacesGhostText from './types/SpacesGhostText';
-import { sanitizeSpaces } from './types/helpers';
+import { normalizeSpaces } from './types/helpers';
 
 export default Spaces;
 
@@ -19,5 +19,5 @@ export {
   useSpaces,
   useSpacesContext,
   SpacesContext,
-  sanitizeSpaces,
+  normalizeSpaces,
 };

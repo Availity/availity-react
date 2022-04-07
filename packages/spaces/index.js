@@ -7,7 +7,7 @@ import SpacesImage from './src/SpacesImage';
 import SpacesLink from './src/SpacesLink';
 import useLink from './src/useLink';
 
-import { sanitizeSpaces } from './src/helpers';
+import { normalizeSpaces } from './src/helpers';
 
 const SpacesLogo = SpacesImage.create({
   imageType: 'images.logo',
@@ -24,7 +24,7 @@ const SpacesBillboard = SpacesImage.create({
 export default Spaces;
 
 export {
-  sanitizeSpaces,
+  normalizeSpaces,
   SpacesAgreement,
   SpacesBillboard,
   SpacesContext,
