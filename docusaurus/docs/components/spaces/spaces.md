@@ -1,6 +1,6 @@
-## <!-- TODO: SpacesLink docs -->
-
-## title: <Space />
+---
+title: <Space />
+---
 
 This is the provider component needed for `@availity/spaces` components to work. All `@availity/spaces` components must be children of a Spaces provider.
 

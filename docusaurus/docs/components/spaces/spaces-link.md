@@ -33,8 +33,9 @@ If no `spaceId` is provided, the first space in the `spaces` array is used. Note
 
 ### `space?: SanitizedSpace`
 
-You don't have to use this component wrapped in the `SpacesProvider`. You can directly pass your `Space` into this, however, if you are wanting to take advantage of the sso links you will additionally need to pass the `clientId` in.
-Use to directly pass a space to the component rather than have it fetched from the spaces API. This component does not have to be a child of a SpacesProvider." and move the note about clientId and sso links to the clientId prop
+Use to directly pass a space to the component rather than have it fetched from the spaces API. This component does not have to be a child of a SpacesProvider.
+
+> Note: If you are wanting to take advantage of the sso links you will additionally need to pass the `clientId` in.
 
 ### `clientId?: string`
 
@@ -122,7 +123,7 @@ When `true`, utilizes the reactstrap `Card` component for styling.
 
 ### `role: string`
 
-Allows the role oof the root component to be overwritten. If `linkStyle` prop is set to `"list"`, defaults to "listitem".
+Allows the role of the root component to be overwritten. If `linkStyle` prop is set to `"list"`, defaults to "listitem".
 
 ### `analytics: object`
 
