@@ -30,7 +30,7 @@ describe('SpacesLink', () => {
         targe: '_self',
       },
     };
-    const { getByTestId } = render(
+    const { container } = render(
       <SpacesLink
         id="application-link-1"
         titleTag="h5"
@@ -51,11 +51,9 @@ describe('SpacesLink', () => {
       />
     );
 
-    const link = await waitFor(() => getByTestId('space-link-card-1'));
+    expect(container.tagName).toBe('DIV');
 
-    expect(link.tagName).toBe('DIV');
-
-    const linkHeader = await waitFor(() => getByTestId('space-link-header-card-1'));
+    const linkHeader = await waitFor(() => container.querySelector('#app-title-1'));
     expect(linkHeader.tagName).toBe('H5');
     expect(linkHeader.attributes.role.value).toBe('link');
     expect(linkHeader.attributes['data-av-analytics-application-id'].value).toBe('1');
@@ -64,7 +62,7 @@ describe('SpacesLink', () => {
     expect(linkHeader.attributes['data-av-analytics-label'].value).toBe('An application');
     expect(linkHeader.textContent).toBe('An application');
 
-    const linkDescription = await waitFor(() => getByTestId('space-link-description-card-1'));
+    const linkDescription = await waitFor(() => container.querySelector('#app-description-1'));
     expect(linkDescription.textContent).toBe('This is an application');
   });
 
@@ -81,7 +79,7 @@ describe('SpacesLink', () => {
         targe: '_self',
       },
     };
-    const { getByTestId } = render(
+    const { container } = render(
       <SpacesLink
         id="application-link-2"
         titleTag="h5"
@@ -95,7 +93,7 @@ describe('SpacesLink', () => {
       />
     );
 
-    const link2 = await waitFor(() => getByTestId('space-link-default-2'));
+    const link2 = await waitFor(() => container.querySelector('#application-link-2'));
 
     expect(link2.tagName).toBe('LI');
   });
@@ -113,7 +111,7 @@ describe('SpacesLink', () => {
         targe: '_self',
       },
     };
-    const { getByTestId } = render(
+    const { container } = render(
       <SpacesLink
         id="application-link-3"
         space={space}
@@ -125,7 +123,7 @@ describe('SpacesLink', () => {
       />
     );
 
-    const link3_header = await waitFor(() => getByTestId('space-link-header-default-3'));
+    const link3_header = await waitFor(() => container.querySelector('#app-title-3'));
 
     expect(link3_header.tagName).toBe('DIV');
   });
@@ -143,7 +141,7 @@ describe('SpacesLink', () => {
         targe: '_self',
       },
     };
-    const { getByTestId } = render(
+    const { container } = render(
       <SpacesLink
         id="application-link-4"
         appIcon
@@ -156,7 +154,7 @@ describe('SpacesLink', () => {
       />
     );
 
-    const link4_appIcon = await waitFor(() => getByTestId('space-link-desktop-icon-default-4'));
+    const link4_appIcon = await waitFor(() => container.querySelector('#app-desktop-icon-4'));
 
     expect(link4_appIcon.tagName).toBe('I');
     expect(link4_appIcon.className).toBe('icon icon-desktop');
@@ -175,7 +173,7 @@ describe('SpacesLink', () => {
         targe: '_self',
       },
     };
-    const { getByTestId } = render(
+    const { container } = render(
       <SpacesLink
         id="application-link-5"
         appIcon
@@ -188,7 +186,7 @@ describe('SpacesLink', () => {
       />
     );
 
-    const link5_appIcon = await waitFor(() => getByTestId('space-link-appIcon-default-5'));
+    const link5_appIcon = await waitFor(() => container.querySelector('#app-appIcon-5'));
 
     expect(link5_appIcon.textContent).toBe('AA');
   });
@@ -209,7 +207,7 @@ describe('SpacesLink', () => {
         navigation: 'app-icon-green',
       },
     };
-    const { getByTestId } = render(
+    const { container } = render(
       <SpacesLink
         id="navigation-link-6"
         appIcon
@@ -222,7 +220,7 @@ describe('SpacesLink', () => {
       />
     );
 
-    const link6_appIcon = await waitFor(() => getByTestId('space-link-app-icon-green-icon-default-6'));
+    const link6_appIcon = await waitFor(() => container.querySelector('#app-app-icon-green-icon-6'));
 
     expect(link6_appIcon.tagName).toBe('I');
 
@@ -243,7 +241,7 @@ describe('SpacesLink', () => {
       },
       isNew: true,
     };
-    const { getByTestId } = render(
+    const { container } = render(
       <SpacesLink
         id="navigation-link-7"
         space={space}
@@ -256,7 +254,7 @@ describe('SpacesLink', () => {
       />
     );
 
-    const link7_newBadge = await waitFor(() => getByTestId('space-link-new-badge-default-7'));
+    const link7_newBadge = await waitFor(() => container.querySelector('#app-new-badge-7'));
 
     expect(link7_newBadge.className).toBe('badge badge-secondary');
     expect(link7_newBadge.textContent).toBe('New!');
@@ -276,7 +274,7 @@ describe('SpacesLink', () => {
       },
       activeDate: dayjs('01/01/2022').format(),
     };
-    const { getByTestId } = render(
+    const { container } = render(
       <SpacesLink
         id="navigation-link-8"
         space={space}
@@ -289,7 +287,7 @@ describe('SpacesLink', () => {
       />
     );
 
-    const link8_date = await waitFor(() => getByTestId('space-link-display-date-default-8'));
+    const link8_date = await waitFor(() => container.querySelector('#app-display-date-8'));
 
     expect(link8_date.tagName).toBe('SMALL');
     expect(link8_date.textContent).toBe('01/01/2022');
@@ -308,7 +306,7 @@ describe('SpacesLink', () => {
         target: '_self',
       },
     };
-    const { getByTestId } = render(
+    const { container } = render(
       <SpacesLink
         id="navigation-link-9"
         space={space}
@@ -324,11 +322,11 @@ describe('SpacesLink', () => {
           'data-av-analytics-label': space.name,
         }}
       >
-        <span data-testid="space-link-child-1" />
+        <span id="space-link-child-1" />
       </SpacesLink>
     );
 
-    const link9_child = await waitFor(() => getByTestId('space-link-child-1'));
+    const link9_child = await waitFor(() => container.querySelector('#space-link-child-1'));
 
     expect(link9_child.tagName).toBe('SPAN');
     expect(link9_child.attributes.role.value).toBe('link');
@@ -351,8 +349,8 @@ describe('SpacesLink', () => {
         target: '_self',
       },
     };
-    const children = ({ name }) => <span data-testid="space-link-child-2">{name}</span>;
-    const { getByTestId } = render(
+    const children = ({ name }) => <span id="space-link-child-2">{name}</span>;
+    const { container } = render(
       <SpacesLink
         id="navigation-link-10"
         space={space}
@@ -366,7 +364,7 @@ describe('SpacesLink', () => {
       </SpacesLink>
     );
 
-    const link10_child = await waitFor(() => getByTestId('space-link-child-2'));
+    const link10_child = await waitFor(() => container.querySelector('#space-link-child-2'));
 
     expect(link10_child.tagName).toBe('SPAN');
     expect(link10_child.textContent).toBe('A navigation');

@@ -13,7 +13,7 @@ const SpacesDisclaimer = ({ styled, spaceId, markdown, ...props }) => {
     const children = markdown ? <ReactMarkdown>{disclaimer}</ReactMarkdown> : disclaimer;
 
     return (
-      <Disclaimer data-testid={`spaces-disclaimer-${spaceId || id}`} styled={styled} {...props}>
+      <Disclaimer styled={styled} {...props} id={props.id || `spaces-disclaimer-${spaceId || id}`}>
         {children}
       </Disclaimer>
     );
@@ -30,6 +30,7 @@ SpacesDisclaimer.propTypes = {
   spaceId: PropTypes.string,
   markdown: PropTypes.bool,
   styled: PropTypes.bool,
+  id: PropTypes.string,
 };
 
 export default SpacesDisclaimer;

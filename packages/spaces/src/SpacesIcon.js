@@ -24,8 +24,7 @@ const SpacesIcon = ({
     clientId,
   });
 
-  if (isLoading)
-    return <Loader data-testid={`space-icon-${spaceId}-loading`} skeletonProps={skeletonProps} {...rest} />;
+  if (isLoading) return <Loader id={`space-icon-${spaceId}-loading`} skeletonProps={skeletonProps} {...rest} />;
 
   const getIconTitle = () => {
     if (shortName) return shortName;

@@ -13,7 +13,7 @@ const SpacesImage = ({ spaceId, payerId, imageType, fallback, skeletonProps, ...
   let url = get(space, imageType);
 
   if (!url && loading) {
-    return <Loader data-testid={`space-${imageType}-${id}-loading`} skeletonProps={skeletonProps} {...props} />;
+    return <Loader id={`app-${id}-loading`} skeletonProps={skeletonProps} {...props} />;
   }
 
   // We can probably remove this at some point once our spaces data is complete
@@ -25,10 +25,10 @@ const SpacesImage = ({ spaceId, payerId, imageType, fallback, skeletonProps, ...
 
   return (
     <Img
-      data-testid={`space-${imageType}-${id}`}
+      id={props.id || `app-img-${id}`}
       src={url}
       alt={`Space ${imageType}`}
-      loader={<Loader data-testid={`space-${imageType}-${id}`} skeletonProps={skeletonProps} {...props} />}
+      loader={<Loader id={`app-img-${id}-loading`} skeletonProps={skeletonProps} {...props} />}
       {...props}
     />
   );
@@ -40,6 +40,7 @@ SpacesImage.propTypes = {
   fallback: PropTypes.string,
   imageType: PropTypes.string,
   skeletonProps: skeletonPropType,
+  id: PropTypes.string,
 };
 
 SpacesImage.defaultProps = {

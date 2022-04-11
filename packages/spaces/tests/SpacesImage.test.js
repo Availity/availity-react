@@ -85,19 +85,19 @@ describe('SpacesImage', () => {
         <SpacesImage spaceId="3" />
       </Spaces>
     );
-    const { getAllByTestId } = render(<MyComponent />);
+    const { container } = render(<MyComponent />);
 
     // Check logo rendered
-    await waitFor(() => getAllByTestId('space-images.logo-1'));
+    await waitFor(() => container.querySelector('#app-img-1'));
 
     // Check tile rendered
-    await waitFor(() => getAllByTestId('space-images.tile-payer1'));
+    await waitFor(() => container.querySelector('#app-img-payer1'));
 
     // Check billboard rendered
-    await waitFor(() => getAllByTestId('space-images.billboard-2'));
+    await waitFor(() => container.querySelector('#app-img-2'));
 
     // Check spaces file rendered
-    await waitFor(() => getAllByTestId('space-url-3'));
+    await waitFor(() => container.querySelector('app-img-3'));
 
     // Check that we did not query for duplicate ids
     expect(avWebQLApi.create).toHaveBeenCalledTimes(2);
@@ -128,13 +128,13 @@ describe('SpacesImage', () => {
         },
       },
     });
-    const { getByTestId } = render(
+    const { container } = render(
       <Spaces spaceIds={['11']} clientId="my-client-id">
         <SpacesLogo />
       </Spaces>
     );
 
-    const img = await waitFor(() => getByTestId('space-images.logo-1'));
+    const img = await waitFor(() => container.querySelector('app-img-'));
     expect(img).toBeDefined();
   });
 
@@ -162,14 +162,14 @@ describe('SpacesImage', () => {
       },
     });
 
-    const { getByTestId } = render(
+    const { container } = render(
       <Spaces spaceIds={['1']} clientId="my-client-id">
         <SpacesLogo spaceId="3" fallback="fallback-url" />
       </Spaces>
     );
 
     // Would be empty if no fallback
-    const img = await waitFor(() => getByTestId('space-images.logo-3'));
+    const img = await waitFor(() => container.querySelector('app-img-3'));
     expect(img).toBeDefined();
   });
 });
