@@ -149,6 +149,10 @@ const Spaces = ({ query, variables, clientId, spaceIds, payerIds, children, spac
         }
       }
 
+      // Note: If a payerId is associated with more than one payer space, the
+      // order in which they are returned should not be relied upon.If a
+      // specific payer space is required, you'll need to filter the list that
+      // is returned.
       if (payerIdsToQuery.size > 0) {
         const vars = { ...variables, payerIDs: [...payerIdsToQuery.keys()] };
         const spacesByPayerIds = await getAllSpaces({
