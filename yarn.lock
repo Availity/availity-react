@@ -217,7 +217,7 @@
     core-js "^3.12.1"
     tus-js-client "1.7.1"
 
-"@availity/yup@^3.2.0":
+"@availity/yup@3.2.0", "@availity/yup@^3.2.0":
   version "3.2.0"
   resolved "https://registry.yarnpkg.com/@availity/yup/-/yup-3.2.0.tgz#b3bfa3fce6ccd51921e9bc90be90d3a178c30ff2"
   integrity sha512-iNVydznH51Sqdf0Q3RIbqQHAg9pulfW3b/XCKbZlDpKlzbkwLk7lv402+mVJ+YA7DST+2jGcUi2ORcjq/LP7DQ==

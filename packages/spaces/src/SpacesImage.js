@@ -25,10 +25,18 @@ const SpacesImage = ({ spaceId, payerId, imageType, fallback, skeletonProps, ...
 
   return (
     <Img
+      data-testid={`space-${imageType}-${id}`}
       id={props.id || `app-img-${id}`}
       src={url}
       alt={`Space ${imageType}`}
-      loader={<Loader id={`app-img-${id}-loading`} skeletonProps={skeletonProps} {...props} />}
+      loader={
+        <Loader
+          id={`app-img-${id}-loading`}
+          data-testid={`space-${imageType}-${id}`}
+          skeletonProps={skeletonProps}
+          {...props}
+        />
+      }
       {...props}
     />
   );
