@@ -3,10 +3,11 @@ import SpacesImage from './types/SpacesImage';
 import SpacesDisclaimer from './types/SpacesDisclaimer';
 import SpacesAgreement from './types/SpacesAgreement';
 import SpacesGhostText from './types/SpacesGhostText';
-import { sanitizeSpaces } from './types/helpers';
+import { normalizeSpaces } from './types/helpers';
 
 export default Spaces;
 
+// TODO
 export {
   SpacesImage,
   SpacesImage as SpacesLogo,
@@ -18,5 +19,5 @@ export {
   useSpaces,
   useSpacesContext,
   SpacesContext,
-  sanitizeSpaces,
+  normalizeSpaces,
 };

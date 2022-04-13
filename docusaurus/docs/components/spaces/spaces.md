@@ -30,6 +30,8 @@ Array of spaceIds the Spaces provider should fetch the spaces for. Any `spaceIds
 
 Array of payerIds the Spaces provider should fetch the spaces for. Any `payerIds` already included in `spaces` will not be fetched again.
 
+> Note: If a payerId is associated with more than one payer space, the order in which they are returned should not be relied upon. If a specific payer space is required, you'll need to filter the list that is returned.
+
 #### `children?: React.ReactNode | (spacesContext: SpacesContext) => ReactNode`
 
 Children can be a react child or render prop.
