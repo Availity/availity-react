@@ -96,6 +96,7 @@ export const handlers = [
   ),
 
   // Spaces
+  rest.post(routes.WEB, (req, res, ctx) => res(delay(defaultDelay), ctx.status(200), ctx.json(spaces))),
   graphql.query('patientPagination', (req, res, ctx) => res(delay(defaultDelay), ctx.status(200), ctx.data(patients))),
   graphql.query('configurationFindMany', (req, res, ctx) =>
     res(delay(defaultDelay), ctx.status(200), ctx.data(spaces))

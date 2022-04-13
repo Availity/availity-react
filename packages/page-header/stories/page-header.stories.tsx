@@ -60,7 +60,7 @@ WithAppIcon.storyName = 'with app icon';
 
 export const WithPayerLogo: Story = ({ appName, feedback, homeUrl, payerId }) => (
   <div>
-    <PageHeader homeUrl={homeUrl} appName={appName} clientId="clientId" payerId={payerId} feedback={feedback} />
+    <PageHeader homeUrl={homeUrl} appName={appName} clientId="clientId" payerId={payerId} feedback={feedback} logo />
     <p>Note: the logo is a sample image, and not an actual logo</p>
   </div>
 );
@@ -68,6 +68,17 @@ WithPayerLogo.args = {
   payerId: 'availity1',
 };
 WithPayerLogo.storyName = 'with payer logo';
+
+export const WithPayerLogoSpace: Story = ({ appName, feedback, homeUrl, spaceId }) => (
+  <div>
+    <PageHeader homeUrl={homeUrl} appName={appName} clientId="clientId" spaceId={spaceId} feedback={feedback} logo />
+    <p>Note: the logo is a sample image, and not an actual logo</p>
+  </div>
+);
+WithPayerLogoSpace.args = {
+  spaceId: 'space1',
+};
+WithPayerLogoSpace.storyName = 'with payer logo space';
 
 export const WithPayerSpaceBreadcrumb: Story = ({ appName, feedback, homeUrl, spaceId, spaceName }) => (
   <PageHeader homeUrl={homeUrl} appName={appName} feedback={feedback} spaceId={spaceId} spaceName={spaceName} />
