@@ -271,7 +271,7 @@ const Link = ({
 Link.propTypes = {
   spaceId: PropTypes.string,
   space: PropTypes.object,
-  children: PropTypes.node,
+  children: PropTypes.oneOfType([PropTypes.node, PropTypes.element]),
   tag: PropTypes.oneOfType([PropTypes.func, PropTypes.string]),
   bodyTag: PropTypes.oneOfType([PropTypes.func, PropTypes.string]),
   titleTag: PropTypes.oneOfType([PropTypes.func, PropTypes.string]),

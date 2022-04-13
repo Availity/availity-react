@@ -322,7 +322,7 @@ describe('SpacesLink', () => {
           'data-av-analytics-label': space.name,
         }}
       >
-        <span id="space-link-child-1" />
+        <span id="space-link-child-1">{space.name}</span>
       </SpacesLink>
     );
 
