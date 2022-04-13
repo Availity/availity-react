@@ -3,6 +3,22 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [6.0.0](https://github.com/Availity/availity-react/compare/@availity/spaces@5.2.0...@availity/spaces@6.0.0) (2022-04-13)
+
+
+### Code Refactoring
+
+* **spaces:** add note about multiple spaces being associated with a payerId ([e65ad0e](https://github.com/Availity/availity-react/commit/e65ad0e02242965cd038e03e84780a8a005af170))
+
+
+### BREAKING CHANGES
+
+* **spaces:** payerIds associated with more than one payer space can return in any order
+
+
+
+
+
 # [5.2.0](https://github.com/Availity/availity-react/compare/@availity/spaces@5.0.3...@availity/spaces@5.2.0) (2022-04-13)
 
 
