@@ -3,6 +3,27 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [5.2.0](https://github.com/Availity/availity-react/compare/@availity/spaces@5.0.3...@availity/spaces@5.2.0) (2022-04-13)
+
+
+### Bug Fixes
+
+* **spaces:** build url with params ([25e47ae](https://github.com/Availity/availity-react/commit/25e47ae8048b3ee3e6588161e797ac9c0fc07829))
+* **spaces:** pass children instead of source to ReactMarkdown ([7a7cec4](https://github.com/Availity/availity-react/commit/7a7cec43727122e85fffbca49b94d91c1b8cffa3))
+* **spaces:** rename sanitizeSpaces to normalizeSpaces ([55b37fd](https://github.com/Availity/availity-react/commit/55b37fdba0cec374ac430bff6c8aafe646e14adc))
+* **spaces:** update SpacesLink types to fix conssole warnings ([9ee0f62](https://github.com/Availity/availity-react/commit/9ee0f6206af2f7d38ccf8df1a023ca70a54e89d1))
+* **spaces:** use correct roles for links ([8cad77b](https://github.com/Availity/availity-react/commit/8cad77b197dfc13a1623fee151aaabfe7272740e))
+
+
+### Features
+
+* **spaces:** add updateTopApps logic ([b34a163](https://github.com/Availity/availity-react/commit/b34a163b0614c2321e471d480308084246adbf31))
+* **spaces:** initial SpacesLink update commit ([849f6f6](https://github.com/Availity/availity-react/commit/849f6f643af45d86748606feadf4393423575d40))
+
+
+
+
+
 ## 5.1.3 (2022-02-18)
 
 **Note:** Version bump only for package @availity/spaces
