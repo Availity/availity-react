@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [11.1.30](https://github.com/Availity/availity-react/compare/@availity/page-header@11.1.29...@availity/page-header@11.1.30) (2022-04-14)
+
+
+### Bug Fixes
+
+* **page-header:** account for payerId with multiple associated spaces and no spaceId passed ([871caf0](https://github.com/Availity/availity-react/commit/871caf05ad4d94bcd51f3df8a899d7a36191a227))
+
+
+
+
+
 ## [11.1.29](https://github.com/Availity/availity-react/compare/@availity/page-header@11.1.28...@availity/page-header@11.1.29) (2022-04-13)
 
 **Note:** Version bump only for package @availity/page-header
