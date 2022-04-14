@@ -1,0 +1,47 @@
+.page-header {
+  border-bottom: 1px solid #dadfdf;
+  margin: 40px 0 20px;
+  padding-bottom: 9px;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-end;
+  justify-content: space-between;
+}
+
+.page-header-right {
+  display: flex;
+  flex-wrap: wrap;
+  flex-shrink: 1;
+  align-items: flex-end;
+  margin: -.15rem;
+
+  img,
+  button, .btn,
+  a {
+    flex-grow: 0;
+    margin: .15rem;
+    max-width: 100%;
+  }
+}
+
+.page-header-title {
+  margin-bottom: 0;
+  align-items: center;
+  display: flex;
+
+  h1 {
+    margin-bottom: 0;
+  }
+
+  .app-icon {
+    margin-right: 0.5rem;
+  }
+}
+
+.page-header-above {
+  display: flex;
+  flex-wrap: wrap;
+  flex-shrink: 0;
+  align-items: flex-start;
+  justify-content: space-between;
+}
