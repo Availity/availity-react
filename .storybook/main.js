@@ -1,7 +1,7 @@
 module.exports = {
-  stories: ['../packages/**/*.stories.tsx'],
-  addons: ['@storybook/addon-essentials', '@storybook/addon-a11y'],
-  staticDirs: ['../static'],
+  stories: ['./*.stories.mdx', '../packages/**/*.stories.tsx'],
+  addons: ['@storybook/addon-essentials', '@storybook/addon-a11y', '@storybook/addon-docs'],
+  staticDirs: ['../static', './static'],
   webpackFinal: async (config) => {
     config.module.rules.push(
       {
