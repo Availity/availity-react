@@ -1,61 +1,72 @@
 {
-  "configurationPagination": {
-    "pageInfo": {
-      "itemCount": 6,
-      "currentPage": 1,
-      "perPage": 10
+  "data": {
+    "configurationPagination": {
+      "pageInfo": {
+        "itemCount": 6,
+        "currentPage": 1,
+        "perPage": 10
+      },
+      "items": [
+        {
+          "id": "space1",
+          "images": {
+            "logo": "/static/spaces/12345/sample-logo.png"
+          },
+          "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. In lorem metus, commodo ac sagittis ac, fringilla vel diam. Etiam metus metus, tincidunt nec tellus a, accumsan rhoncus neque. Vivamus nec augue id elit ultricies mollis. Praesent porta metus sed mollis pellentesque. Vivamus interdum tellus ac luctus venenatis. Ut iaculis rhoncus nibh, in elementum elit commodo dictum. Aenean finibus odio elit, a dictum dolor fermentum sit amet."
+        },
+        {
+          "id": "anotherSpace1",
+          "payerIDs": ["availity1"],
+          "images": {
+            "logo": "/static/spaces/12345/sample-logo.png"
+          }
+        },
+        {
+          "id": "anotherSpace2",
+          "payerIDs": ["availity1"],
+          "images": {
+            "logo": "/static/spaces/12345/sample-tile.png"
+          }
+        },
+        {
+          "id": "space2",
+          "payerIDs": ["availity1"],
+          "images": {
+            "tile": "/static/spaces/12345/sample-tile.png",
+            "logo": "/static/spaces/12345/sample-tile.png"
+          },
+          "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. In lorem metus, commodo ac sagittis ac, fringilla vel diam. Etiam metus metus, tincidunt nec tellus a, accumsan rhoncus neque. Vivamus nec augue id elit ultricies mollis. Praesent porta metus sed mollis pellentesque. Vivamus interdum tellus ac luctus venenatis. Ut iaculis rhoncus nibh, in elementum elit commodo dictum. Aenean finibus odio elit, a dictum dolor fermentum sit amet."
+        },
+        {
+          "id": "anotherSpace2",
+          "payerIDs": ["availity2"],
+          "images": {
+            "tile": "/static/spaces/12345/sample-tile.png"
+          }
+        },
+        {
+          "id": "space3",
+          "images": {
+            "billboard": "/static/spaces/12345/sample-billboard.png"
+          },
+          "isGhost": true,
+          "metadata": {
+            "ghostText": "This is some ghost text. Boo!"
+          }
+        },
+        {
+          "id": "anotherSpace3",
+          "payerIDs": ["availity3"],
+          "images": {
+            "billboard": "/static/spaces/12345/sample-billboard.png"
+          }
+        }
+      ]
     },
-    "items": [
-      {
-        "id": "space1",
-        "images": {
-          "logo": "/static/spaces/12345/sample-logo.png"
-        },
-        "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. In lorem metus, commodo ac sagittis ac, fringilla vel diam. Etiam metus metus, tincidunt nec tellus a, accumsan rhoncus neque. Vivamus nec augue id elit ultricies mollis. Praesent porta metus sed mollis pellentesque. Vivamus interdum tellus ac luctus venenatis. Ut iaculis rhoncus nibh, in elementum elit commodo dictum. Aenean finibus odio elit, a dictum dolor fermentum sit amet."
-      },
-      {
-        "id": "anotherSpace1",
-        "payerIDs": ["availity1"],
-        "images": {
-          "logo": "/storybook/static/spaces/12345/sample-logo.png"
-        }
-      },
-      {
-        "id": "space2",
-        "images": {
-          "tile": "/static/spaces/12345/sample-tile.png"
-        },
-        "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. In lorem metus, commodo ac sagittis ac, fringilla vel diam. Etiam metus metus, tincidunt nec tellus a, accumsan rhoncus neque. Vivamus nec augue id elit ultricies mollis. Praesent porta metus sed mollis pellentesque. Vivamus interdum tellus ac luctus venenatis. Ut iaculis rhoncus nibh, in elementum elit commodo dictum. Aenean finibus odio elit, a dictum dolor fermentum sit amet."
-      },
-      {
-        "id": "anotherSpace2",
-        "payerIDs": ["availity2"],
-        "images": {
-          "tile": "/static/spaces/12345/sample-tile.png"
-        }
-      },
-      {
-        "id": "space3",
-        "images": {
-          "billboard": "/static/spaces/12345/sample-billboard.png"
-        },
-        "isGhost": true,
-        "metadata": {
-          "ghostText": "This is some ghost text. Boo!"
-        }
-      },
-      {
-        "id": "anotherSpace3",
-        "payerIDs": ["availity3"],
-        "images": {
-          "billboard": "/static/spaces/12345/sample-billboard.png"
-        }
+    "configurationFindOne": {
+      "images": {
+        "logo": "/static/spaces/12345/sample-logo.png"
       }
-    ]
-  },
-  "configurationFindOne": {
-    "images": {
-      "logo": "/static/spaces/12345/sample-logo.png"
     }
   }
 }
