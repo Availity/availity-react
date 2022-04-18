@@ -6,14 +6,7 @@ import TableHeaderRow from './TableHeaderRow';
 import TableHeaderCell from './TableHeaderCell';
 import TableRow from './TableRow';
 import TableCell from './TableCell';
-import {
-  Cell,
-  ExtendedTableHeader,
-  IdType,
-  Row,
-  TableInstance,
-  RowProps,
-} from './types/ReactTable';
+import { Cell, ExtendedTableHeader, IdType, Row, TableInstance, RowProps } from './types/ReactTable';
 import { useTableContext } from './TableContext';
 
 const TableContent = <T extends IdType>(): JSX.Element | null => {
@@ -35,18 +28,11 @@ const TableContent = <T extends IdType>(): JSX.Element | null => {
     onCellClick,
     getCellProps,
     getRowProps,
-    onReset
+    onReset,
   } = useTableContext();
 
-  const {
-    getTableProps,
-    getTableBodyProps,
-    headerGroups,
-    rows,
-    prepareRow,
-    manualSortBy,
-    page,
-  } = tableInstance as TableInstance<T>;
+  const { getTableProps, getTableBodyProps, headerGroups, rows, prepareRow, manualSortBy, page } =
+    tableInstance as TableInstance<T>;
 
   const populateId = () => (id ? `${id}_` : '');
 

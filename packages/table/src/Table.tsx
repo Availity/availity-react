@@ -13,15 +13,7 @@ import {
   useRowState,
 } from 'react-table';
 import { TableSort } from './types/TableSort';
-import {
-  Cell,
-  Column,
-  IdType,
-  Row,
-  TableInstance,
-  TableOptions,
-  RowProps,
-} from './types/ReactTable';
+import { Cell, Column, IdType, Row, TableInstance, TableOptions, RowProps } from './types/ReactTable';
 import { OnTableClickEvent } from './types/OnTableClickEvent';
 import { OnRowSelectedEvent } from './types/OnRowSelectedEvent';
 import { TableContext } from './TableContext';
@@ -195,7 +187,7 @@ const Table = <T extends IdType>({
         onSort,
         onReset,
         onRowSelected,
-        tableProps
+        tableProps,
       }}
     >
       {children}

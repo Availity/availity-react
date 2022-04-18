@@ -127,7 +127,6 @@ describe('BulkTableActions', () => {
   });
 
   test('should call bulk action when clicking event', async () => {
-
     const { getByTestId } = render(
       <Table
         initialState={{

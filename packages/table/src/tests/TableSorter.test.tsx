@@ -147,12 +147,7 @@ describe('TableSorter', () => {
     const { getByTestId } = render(
       <Table sortable data={basicData} columns={basicColumns}>
         <TableControls>
-          <TableSorter
-            onSort={onSort}
-            sortOptions={[
-              { value: 'last_name', label: 'Last name' },
-            ]}
-          />
+          <TableSorter onSort={onSort} sortOptions={[{ value: 'last_name', label: 'Last name' }]} />
         </TableControls>
       </Table>
     );

@@ -16,6 +16,7 @@ export type {
   TableInstance,
   CurrentTableState,
   ExtendedTableHeader,
+  IdType
 } from './types';
 
 export { default } from './Table';
