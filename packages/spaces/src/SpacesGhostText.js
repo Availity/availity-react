@@ -3,12 +3,12 @@ import PropTypes from 'prop-types';
 
 import { useSpaces } from './Spaces';
 
-const SpacesGhostText = ({ spaceId, ...props }) => {
+const SpacesGhostText = ({ spaceId, id, ...props }) => {
   const [space = {}] = useSpaces(spaceId);
 
   if (space.isGhost) {
     return (
-      <small className="ghost-text" data-testid="spaces-ghost-text" {...props}>
+      <small className="ghost-text" id={id || `app-ghost-text-${spaceId}`} {...props}>
         <em>{space.metadata.ghostText}</em>
       </small>
     );
@@ -19,6 +19,7 @@ const SpacesGhostText = ({ spaceId, ...props }) => {
 
 SpacesGhostText.propTypes = {
   spaceId: PropTypes.string,
+  id: PropTypes.string,
 };
 
 export default SpacesGhostText;

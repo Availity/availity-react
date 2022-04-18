@@ -3,6 +3,18 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# 1.8.0 (2022-04-05)
+
+
+### Features
+
+* **json-viewer:** cleaning up mistakes and using Jordans suggestions ([4404a36](https://github.com/Availity/availity-react/commit/4404a362a8e5d2283d9eb01611322e75873df3f4))
+* **json-viewer:** docs and tests and some minor tweaks ([8f8a0b7](https://github.com/Availity/availity-react/commit/8f8a0b74439a3bd1d640bdf55b151667f53f8b29))
+
+
+
+
+
 # [1.7.0](https://github.com/Availity/availity-react/compare/@availity/dinosaurdocs@1.5.0...@availity/dinosaurdocs@1.7.0) (2022-02-18)
 
 

@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## 2.0.1 (2022-04-05)
+
+
+### Bug Fixes
+
+* **authorize:** move react-dom and react-query to peerDeps ([a3c25f9](https://github.com/Availity/availity-react/commit/a3c25f971719dea936dc7c7a3c7253f951c9f0d1))
+
+
+
+
+
 # 2.0.0 (2022-01-31)
 
 

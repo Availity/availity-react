@@ -5,7 +5,7 @@ import PayerLogo from '..';
 // import README from '../README.md';
 
 export default {
-  title: 'Components/Payer Logo',
+  title: 'Deprecated/Payer Logo',
   parameters: {
     docs: {
       // page: README,

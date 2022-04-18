@@ -130,7 +130,7 @@ describe('SpacesImage', () => {
     });
     const { getByTestId } = render(
       <Spaces spaceIds={['11']} clientId="my-client-id">
-        <SpacesLogo />
+        <SpacesLogo spaceId="1" />
       </Spaces>
     );
 

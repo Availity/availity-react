@@ -1,4 +1,19 @@
+/* eslint-disable import/prefer-default-export */
 import './config.scss';
+
+export const parameters = {
+  docs: {
+    source: {
+      type: 'code',
+    },
+  },
+  options: {
+    storySort: {
+      order: ['Home', 'Hooks', 'Components', 'Form Components', 'Legacy Form Components', 'Deprecated'],
+    },
+  },
+  viewMode: 'docs',
+};
 
 // Make sure we are in the browser before starting
 if (typeof global.process === 'undefined') {

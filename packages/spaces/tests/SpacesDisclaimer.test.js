@@ -32,25 +32,25 @@ describe('SpacesDisclaimer', () => {
   });
 
   it('renders disclaimer from space', async () => {
-    const { getByTestId } = render(
+    const { container } = render(
       <Spaces clientId="my-client-id" spaceIds={['1']}>
         <SpacesDisclaimer spaceId="1" />
       </Spaces>
     );
 
-    const disclaimer = await waitFor(() => getByTestId('spaces-disclaimer-1'));
+    const disclaimer = await waitFor(() => container);
 
     expect(disclaimer.textContent).toBe('foo');
   });
 
   it('renders disclaimer from single space', async () => {
-    const { getByTestId } = render(
+    const { container } = render(
       <Spaces clientId="my-client-id" spaceIds={['1']}>
         <SpacesDisclaimer />
       </Spaces>
     );
 
-    const disclaimer = await waitFor(() => getByTestId('spaces-disclaimer-1'));
+    const disclaimer = await waitFor(() => container);
 
     expect(disclaimer.textContent).toBe('foo');
   });

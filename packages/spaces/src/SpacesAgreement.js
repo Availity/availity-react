@@ -13,7 +13,7 @@ const SpacesAgreement = ({ spaceId, markdown, ...props }) => {
     const children = markdown ? <ReactMarkdown source={agreement} /> : agreement;
 
     return (
-      <Agreement data-testid={`spaces-agreement-${spaceId || id}`} {...props}>
+      <Agreement {...props} id={props.id || `spaces-agreement-${spaceId || id}`}>
         {children}
       </Agreement>
     );
@@ -29,6 +29,7 @@ SpacesAgreement.defaultProps = {
 SpacesAgreement.propTypes = {
   spaceId: PropTypes.string,
   markdown: PropTypes.bool,
+  id: PropTypes.string,
 };
 
 export default SpacesAgreement;

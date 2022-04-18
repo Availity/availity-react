@@ -39,6 +39,8 @@ Required if `payerId` is not provided. The payer spaces ID of the payer to rende
 
 Required if `spaceId` is not provided. The payer ID of the payer to render the image for. If no `spaceId` or `payerId` is provided, the first space in the `spaces` array is used. Note: This is only to be used when the Spaces provider should only ever contain a single space.
 
+> Note: If the payerId is associated with more than one payer space, the order in which they are returned should not be relied upon. If a specific payer space is required, you'll need to filter the list that is returned.
+
 #### `skeletonProps?: object`
 
 Dimensions passed to loader to show while the image is loading.

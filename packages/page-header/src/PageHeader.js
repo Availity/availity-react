@@ -34,10 +34,19 @@ const PageHeader = ({
   className,
   ...props
 }) => {
-  const [spaceForSpaceID, spaceForPayerID] = useSpaces(spaceId, payerId);
+  const spaces = useSpaces(spaceId, payerId);
+
+  let firstSpaceForPayerID;
+  let firstSpaceForSpaceID;
+  if (!spaceId && payerId && spaces[0]) {
+    firstSpaceForPayerID = spaces[0];
+  } else {
+    firstSpaceForSpaceID = spaces[0];
+    firstSpaceForPayerID = spaces[1];
+  }
   const { loading: spacesIsLoading } = useSpacesContext() || {};
 
-  const _space = spaceForSpaceID || spaceForPayerID;
+  const _space = firstSpaceForSpaceID || firstSpaceForPayerID;
 
   let payerLogo = null;
   if (payerId || logo) {
@@ -51,7 +60,7 @@ const PageHeader = ({
       },
     };
     payerLogo =
-      spaceForPayerID || (logo && spaceForSpaceID) || spacesIsLoading ? (
+      firstSpaceForPayerID || (logo && firstSpaceForSpaceID) || spacesIsLoading ? (
         <SpacesLogo {...logoAttrs} />
       ) : (
         <Spaces
@@ -67,8 +76,8 @@ const PageHeader = ({
   const _spaceName = spaceName || (_space && _space.name);
   if ((spaceId || _spaceName) && !crumbs) {
     const url =
-      spaceForSpaceID && spaceForSpaceID.link && spaceForSpaceID.link.url
-        ? spaceForSpaceID.link.url
+      firstSpaceForSpaceID && firstSpaceForSpaceID.link && firstSpaceForSpaceID.link.url
+        ? firstSpaceForSpaceID.link.url
         : `/web/spc/spaces/#/${spaceId}`;
     crumbs = [{ name: _spaceName, url }];
   }

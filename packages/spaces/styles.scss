@@ -1,0 +1,9 @@
+*[role='link'] {
+  color: #2261b5;
+  text-decoration: none;
+  background-color: transparent;
+  &:hover {
+    color: #0056b3;
+    text-decoration: underline;
+  }
+}
