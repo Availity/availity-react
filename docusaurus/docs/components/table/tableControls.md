@@ -7,16 +7,20 @@ title: <TableControls/>
 ### Props
 
 #### `id?: string`
+
 This is a unique id that used to identify the component.
 
 #### `disabled?: boolean`
+
 If this flag is set to `true` on the parent `<TabelControls/>` component, it will set `disabled` to `true` on all of it's child controls (for those components that have a `disabled` property and respect it).
 
 ## Example
-Here is  an example of basic set up of the TableControls.
+
+Here is an example of basic set up of the TableControls.
+
 ```jsx
 import React, { useState } from 'react';
-import Table, { TableProvider, ScrollableContainer, TableControls, TableSorter } from '@availity/table';
+import Table, { TableContent, ScrollableContainer, TableControls, TableSorter } from '@availity/table';
 import '@availity/table/style.scss';
 
 import records from 'data/records.json';
@@ -29,11 +33,11 @@ const myTableConfig = {
         },
         {
             Header: 'Column 2',
-            accessor: 'column2' 
+            accessor: 'column2'
         },
         {
             Header: 'Column 3',
-            accessor: 'column3' 
+            accessor: 'column3'
         },
     ]
 }
@@ -64,7 +68,7 @@ const MyBulkTableActions = [
 const Example = () : JSX.Element => (
     const [isDisabled, setIsDisabled] = useState<boolean>(records.length === 0);
 
-    <TableProvider
+    <Table
         columns={columns}
         data={records}>
         <TableControls disabled={disabled}>
@@ -72,36 +76,44 @@ const Example = () : JSX.Element => (
             <TableSorter/>
         </TableControls>
         <ScrollableContainer>
-            <Table/>
+            <TableContent/>
         </ScrollableContainer>
-    </TableProvider>
+    </Table>
 );
 ```
 
 ## `<BulkTableActions/>`
-This component will allow you to select all and deselect all records in the table and perform actions on them. 
+
+This component will allow you to select all and deselect all records in the table and perform actions on them.
 
 ### Props
 
 #### `id?: string`
+
 This is a unique id that used to identify the component.
 
 #### `disabled?: boolean`
+
 If this flag is set to true, the dropdown and buttons will be disabled.
 
 #### `recordName?: string`
-This is the name of the record as it should display on the button. For instance, if the `recordName="MyRecords"`, the button will read `Select all MyRecords`, or `Deselect all MyRecords`. If no property is provided, it will default the record name to `Records`. 
 
-#### `color?: string` 
+This is the name of the record as it should display on the button. For instance, if the `recordName="MyRecords"`, the button will read `Select all MyRecords`, or `Deselect all MyRecords`. If no property is provided, it will default the record name to `Records`.
+
+#### `color?: string`
+
 This identifies the color variant to use for the dropdown buttons. For what variants are available, refer to Reactstrap.
 
 #### `onRecordsSelected?: (selectedRows: object[]) => void`
-If this function is provided, it will be called whenever records are selected or deselected, passing the records that are currently selected in the table. 
 
-#### `bulkActions?: BulkRecordAction` 
-This is the list of actions that are available to perform on selected records. 
+If this function is provided, it will be called whenever records are selected or deselected, passing the records that are currently selected in the table.
+
+#### `bulkActions?: BulkRecordAction`
+
+This is the list of actions that are available to perform on selected records.
 
 #### BulkRecordAction Props
+
 `onClick?: (selectedRecords: object[]) => void`
 This is the action that is taken whenever the action is selected from the dropdown, passing the records that are currently selected in the table.
 
@@ -109,26 +121,33 @@ This is the action that is taken whenever the action is selected from the dropdo
 This is a function that determines whether the given action should display, passing the records that are currently selected in the table.
 
 ## `<TableSorter/>`
+
 This components supplies a dropdown of all the available sort fields, alongside a toggle that will sort that field ascending or descending. This dropdown is automatically populated by what columns allow sorting when set in the `<TableProvider>`.
 
 #### `id?: string`
+
 This is a unique id that used to identify the component.
 
 #### `disabled?: boolean`
+
 If this flag is set to true, the dropdown and buttons will be disabled.
 
-#### `color?: string` 
+#### `color?: string`
+
 This identifies the color variant to use for the dropdown buttons. For what variants are available, refer to Reactstrap.
+
 #### `onSort?: (sortBy: TableSort) => void`
 
 Event handler that is called when data is sorted. This passes in the current sort configuration for the table.
 
 #### `sortOptions?: TableSortOption[];`
+
 When this is set to populated, it will populate the dropdown from this list. If `autoGenerateSortOptions` is set to true, it will concatenate this list with the all the sortable columns in the table.
 
 #### `autoGenerateSortOptions?: boolean;`
+
 When this is set to true, the sort options in the dropdown will be automatically sorted based on the sortable columns in the table. If this is set to false, it will look at the provided sort options and populate the dropdown from that. This defaults to true.
 
 ## Adding Additional Components
 
-Any custom component can also be added as a child to the `<TableControls/>` component. Doing so will provide the component with the TableContext and leverage data on that context. 
+Any custom component can also be added as a child to the `<TableControls/>` component. Doing so will provide the component with the TableContext and leverage data on that context.

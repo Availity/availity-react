@@ -61,7 +61,7 @@ const TableSorter = <T extends IdType>({
 
   useEffect(() => {
     if (state && displayedSortOptions) {
-      const { sortBy } = state as CurrentTableState;
+      const { sortBy } = state as CurrentTableState<T>;
       if (!sortBy) {
         return;
       }

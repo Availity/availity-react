@@ -16,6 +16,7 @@ import {
   UsePaginationOptions,
   UsePaginationInstanceProps,
   UseColumnOrderInstanceProps,
+  UseRowSelectState,
 } from 'react-table';
 
 import { TableSort } from './TableSort';
@@ -70,7 +71,7 @@ export type TableOptions<T extends IdType> = RtTableOptions<T> &
     autoResetSortBy?: boolean;
     manualSortBy?: boolean;
     hiddenColumns?: string[];
-    initialState?: Partial<TableState<T>> & CurrentTableState;
+    initialState?: Partial<TableState<T>> & CurrentTableState<T>;
   } & UseSortByOptions<T> &
   UsePaginationOptions<T>;
 
@@ -89,6 +90,6 @@ export type TableInstance<T extends IdType> = UseSortByInstanceProps<T> &
     manualSortBy?: boolean;
   };
 
-export interface CurrentTableState extends TableState {
+export type CurrentTableState<T extends IdType> =  TableState & Partial<UseRowSelectState<T>> & {
   sortBy?: TableSort[];
-}
+};

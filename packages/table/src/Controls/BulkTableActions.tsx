@@ -21,8 +21,8 @@ const BulkTableActions = <T extends IdType>({
   bulkActions,
   onRecordsSelected,
 }: Props<T>): JSX.Element | null => {
-  const { instance, selectedRows } = useTableContext();
-  const { isAllRowsSelected, toggleAllRowsSelected } = instance as TableInstance<T>;
+  const { instance } = useTableContext();
+  const { isAllRowsSelected, toggleAllRowsSelected, selectedFlatRows } = instance as TableInstance<T>;
 
   const [isSelectionDropdownOpen, setIsSelectionDropdownOpen] = useState(false);
   const [numberOfSelectedRows, setNumberOfSelectedRows] = useState(0);
@@ -30,7 +30,7 @@ const BulkTableActions = <T extends IdType>({
   const [isDisabled, setIsDisabled] = useState(disabled || false);
 
   useEffect(() => {
-    setNumberOfSelectedRows(selectedRows?.length);
+    setNumberOfSelectedRows(selectedFlatRows?.length);
     if (isAllRowsSelected) {
       setSelectionButtonText('Deselect');
     } else {
@@ -38,11 +38,11 @@ const BulkTableActions = <T extends IdType>({
     }
 
     if (onRecordsSelected) {
-      const records = selectedRows.map((row: { original: T }) => row.original);
+      const records = selectedFlatRows.map((row: { original: T }) => row.original);
       onRecordsSelected(records);
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [selectedRows]);
+  }, [selectedFlatRows]);
 
   useEffect(() => {
     setIsDisabled(disabled || false);
@@ -78,13 +78,13 @@ const BulkTableActions = <T extends IdType>({
           />
           <DropdownMenu color={color}>
             {bulkActions?.map((action) => {
-              const isVisible = action.isVisible ? action.isVisible(selectedRows.map((row) => row.original)) : true;
+              const isVisible = action.isVisible ? action.isVisible(selectedFlatRows.map((row) => row.original)) : true;
               const setProps = () => {
                 if (!action.onClick) {
                   return null;
                 }
                 const clickEvent = action.onClick;
-                return { onClick: () => clickEvent(selectedRows.map((row) => row.original)) };
+                return { onClick: () => clickEvent(selectedFlatRows.map((row) => row.original)) };
               };
 
               if (isVisible) {

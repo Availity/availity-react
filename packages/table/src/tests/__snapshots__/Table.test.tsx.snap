@@ -746,7 +746,6 @@ exports[`Table should render with expected ids 1`] = `
       </tr>
     </tbody>
   </table>
-   
 </div>
 `;
 

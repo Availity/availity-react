@@ -3,13 +3,13 @@ import { render, fireEvent, waitFor } from '@testing-library/react';
 import basicData from './data/basicData.json';
 import formattedData from './data/needsFormattedData.json';
 import Table from '../Table';
-import TableProvider from '../TableProvider';
 import CurrencyCell from '../CellDefinitions/CurrencyCell';
 import ActionCell from '../CellDefinitions/ActionCell';
 import BadgeCell from '../CellDefinitions/BadgeCell';
 import IconCell from '../CellDefinitions/IconCell';
 import DateCell from '../CellDefinitions/DateCell';
 import { Cell, Column } from '../types/ReactTable';
+import TableContent from '../TableContent';
 
 const basicColumns = [
   {
@@ -107,9 +107,9 @@ const formattedColumns = [
 describe('Table', () => {
   test('should render basic table', () => {
     const { container } = render(
-      <TableProvider>
-        <Table data={basicData} columns={basicColumns} />
-      </TableProvider>
+      <Table data={basicData} columns={basicColumns}>
+        <TableContent />
+      </Table>
     );
 
     expect(container).toBeDefined();
@@ -118,9 +118,9 @@ describe('Table', () => {
 
   test('should render selectable table', async () => {
     const { container } = render(
-      <TableProvider>
-        <Table selectable data={basicData} columns={basicColumns} />
-      </TableProvider>
+      <Table selectable data={basicData} columns={basicColumns}>
+        <TableContent />
+      </Table>
     );
 
     expect(container).toBeDefined();
@@ -129,9 +129,9 @@ describe('Table', () => {
 
   test('should render sortable table', () => {
     const { container } = render(
-      <TableProvider>
-        <Table sortable data={basicData} columns={basicColumns} />
-      </TableProvider>
+      <Table sortable data={basicData} columns={basicColumns}>
+        <TableContent />
+      </Table>
     );
 
     expect(container).toBeDefined();
@@ -140,9 +140,9 @@ describe('Table', () => {
 
   test('should render with formatted cells', () => {
     const { container } = render(
-      <TableProvider>
-        <Table data={formattedData} columns={formattedColumns} />
-      </TableProvider>
+      <Table data={formattedData} columns={formattedColumns}>
+        <TableContent />
+      </Table>
     );
 
     expect(container).toBeDefined();
@@ -151,9 +151,9 @@ describe('Table', () => {
 
   test('should render with expected ids', () => {
     const { container } = render(
-      <TableProvider>
-        <Table id="my_availity_table" data={basicData} columns={basicColumns} />{' '}
-      </TableProvider>
+      <Table id="my_availity_table" data={basicData} columns={basicColumns}>
+        <TableContent />
+      </Table>
     );
 
     expect(container).toBeDefined();
@@ -163,10 +163,9 @@ describe('Table', () => {
   test('should call onRowClick when event is provided', async () => {
     const onRowClick = jest.fn();
     const { container, getByTestId } = render(
-      <TableProvider>
-        {' '}
-        <Table onRowClick={onRowClick} data={basicData} columns={basicColumns} />
-      </TableProvider>
+      <Table onRowClick={onRowClick} data={basicData} columns={basicColumns}>
+        <TableContent />
+      </Table>
     );
 
     expect(container).toBeDefined();
@@ -183,10 +182,9 @@ describe('Table', () => {
   test('should call onRowClick when event is provided for selectable table', async () => {
     const onRowClick = jest.fn();
     const { container, getByTestId } = render(
-      <TableProvider>
-        {' '}
-        <Table onRowClick={onRowClick} selectable data={basicData} columns={basicColumns} />
-      </TableProvider>
+      <Table selectable onRowClick={onRowClick} data={basicData} columns={basicColumns}>
+        <TableContent />
+      </Table>
     );
 
     expect(container).toBeDefined();
@@ -204,10 +202,9 @@ describe('Table', () => {
     const onRowSelected = jest.fn();
 
     const { container, getByTestId } = render(
-      <TableProvider>
-        {' '}
-        <Table onRowSelected={onRowSelected} selectable data={basicData} columns={basicColumns} />
-      </TableProvider>
+      <Table selectable onRowSelected={onRowSelected} data={basicData} columns={basicColumns}>
+        <TableContent />
+      </Table>
     );
 
     expect(container).toBeDefined();
@@ -224,9 +221,9 @@ describe('Table', () => {
     const onSort = jest.fn();
 
     const { container, getByTestId } = render(
-      <TableProvider>
-        <Table onSort={onSort} sortable data={basicData} columns={basicColumns} manualSortBy />
-      </TableProvider>
+      <Table onSort={onSort} sortable data={basicData} columns={basicColumns} manualSortBy>
+        <TableContent />
+      </Table>
     );
 
     expect(container).toBeDefined();
@@ -250,9 +247,9 @@ describe('Table', () => {
     ];
 
     const { container, queryByTestId } = render(
-      <TableProvider>
-        <Table data={basicData} columns={columnsToUse} />
-      </TableProvider>
+      <Table data={basicData} columns={columnsToUse}>
+        <TableContent />
+      </Table>
     );
 
     expect(container).toBeDefined();

@@ -132,128 +132,6 @@ exports[`TableControls should disable all records when disabled is false 1`] = `
       </div>
     </form>
   </div>
-  <table
-    class="av-grid table"
-    role="table"
-  >
-    <thead
-      class="av-grid-row-header"
-      id="table_header"
-    >
-      <tr
-        data-testid="table_header_row_0"
-        id="table_header_row_0"
-        role="row"
-      >
-        <th
-          colspan="1"
-          data-testid="table_header_row_0_cell_0_first_name"
-          id="table_header_row_0_cell_0_first_name"
-          role="columnheader"
-          title="First Name"
-        >
-          First Name
-        </th>
-        <th
-          colspan="1"
-          data-testid="table_header_row_0_cell_1_last_name"
-          id="table_header_row_0_cell_1_last_name"
-          role="columnheader"
-          title="Last Name"
-        >
-          Last Name
-        </th>
-        <th
-          colspan="1"
-          data-testid="table_header_row_0_cell_2_email"
-          id="table_header_row_0_cell_2_email"
-          role="columnheader"
-          title="Email"
-        >
-          Email
-        </th>
-      </tr>
-    </thead>
-    <tbody
-      role="rowgroup"
-    >
-      <tr
-        class="av-grid-row-even"
-        data-testid="table_row_0"
-        id="table_row_0"
-        role="row"
-      >
-        <td
-          data-testid="table_row_0_cell_0"
-          id="table_row_0_cell_0"
-        >
-          Barbra
-        </td>
-        <td
-          data-testid="table_row_0_cell_1"
-          id="table_row_0_cell_1"
-        >
-          Tull
-        </td>
-        <td
-          data-testid="table_row_0_cell_2"
-          id="table_row_0_cell_2"
-        >
-          btull0@usatoday.com
-        </td>
-      </tr>
-      <tr
-        class="av-grid-row-odd"
-        data-testid="table_row_1"
-        id="table_row_1"
-        role="row"
-      >
-        <td
-          data-testid="table_row_1_cell_0"
-          id="table_row_1_cell_0"
-        >
-          Karlis
-        </td>
-        <td
-          data-testid="table_row_1_cell_1"
-          id="table_row_1_cell_1"
-        >
-          Yurshev
-        </td>
-        <td
-          data-testid="table_row_1_cell_2"
-          id="table_row_1_cell_2"
-        >
-          kyurshev1@spotify.com
-        </td>
-      </tr>
-      <tr
-        class="av-grid-row-even"
-        data-testid="table_row_2"
-        id="table_row_2"
-        role="row"
-      >
-        <td
-          data-testid="table_row_2_cell_0"
-          id="table_row_2_cell_0"
-        >
-          Bordie
-        </td>
-        <td
-          data-testid="table_row_2_cell_1"
-          id="table_row_2_cell_1"
-        >
-          Marsy
-        </td>
-        <td
-          data-testid="table_row_2_cell_2"
-          id="table_row_2_cell_2"
-        >
-          bmarsy2@elegantthemes.com
-        </td>
-      </tr>
-    </tbody>
-  </table>
 </div>
 `;
 
@@ -394,132 +272,85 @@ exports[`TableControls should disable all records when disabled is true 1`] = `
       </div>
     </form>
   </div>
-  <table
-    class="av-grid table"
-    role="table"
-  >
-    <thead
-      class="av-grid-row-header"
-      id="table_header"
-    >
-      <tr
-        data-testid="table_header_row_0"
-        id="table_header_row_0"
-        role="row"
-      >
-        <th
-          colspan="1"
-          data-testid="table_header_row_0_cell_0_first_name"
-          id="table_header_row_0_cell_0_first_name"
-          role="columnheader"
-          title="First Name"
-        >
-          First Name
-        </th>
-        <th
-          colspan="1"
-          data-testid="table_header_row_0_cell_1_last_name"
-          id="table_header_row_0_cell_1_last_name"
-          role="columnheader"
-          title="Last Name"
-        >
-          Last Name
-        </th>
-        <th
-          colspan="1"
-          data-testid="table_header_row_0_cell_2_email"
-          id="table_header_row_0_cell_2_email"
-          role="columnheader"
-          title="Email"
-        >
-          Email
-        </th>
-      </tr>
-    </thead>
-    <tbody
-      role="rowgroup"
-    >
-      <tr
-        class="av-grid-row-even"
-        data-testid="table_row_0"
-        id="table_row_0"
-        role="row"
-      >
-        <td
-          data-testid="table_row_0_cell_0"
-          id="table_row_0_cell_0"
-        >
-          Barbra
-        </td>
-        <td
-          data-testid="table_row_0_cell_1"
-          id="table_row_0_cell_1"
-        >
-          Tull
-        </td>
-        <td
-          data-testid="table_row_0_cell_2"
-          id="table_row_0_cell_2"
-        >
-          btull0@usatoday.com
-        </td>
-      </tr>
-      <tr
-        class="av-grid-row-odd"
-        data-testid="table_row_1"
-        id="table_row_1"
-        role="row"
-      >
-        <td
-          data-testid="table_row_1_cell_0"
-          id="table_row_1_cell_0"
-        >
-          Karlis
-        </td>
-        <td
-          data-testid="table_row_1_cell_1"
-          id="table_row_1_cell_1"
-        >
-          Yurshev
-        </td>
-        <td
-          data-testid="table_row_1_cell_2"
-          id="table_row_1_cell_2"
-        >
-          kyurshev1@spotify.com
-        </td>
-      </tr>
-      <tr
-        class="av-grid-row-even"
-        data-testid="table_row_2"
-        id="table_row_2"
-        role="row"
-      >
-        <td
-          data-testid="table_row_2_cell_0"
-          id="table_row_2_cell_0"
-        >
-          Bordie
-        </td>
-        <td
-          data-testid="table_row_2_cell_1"
-          id="table_row_2_cell_1"
-        >
-          Marsy
-        </td>
-        <td
-          data-testid="table_row_2_cell_2"
-          id="table_row_2_cell_2"
-        >
-          bmarsy2@elegantthemes.com
-        </td>
-      </tr>
-    </tbody>
-  </table>
 </div>
 `;
 
-exports[`TableControls should render table controls with one child 1`] = `<div />`;
+exports[`TableControls should render table controls with one child 1`] = `
+<div>
+  <div
+    class="table-controls"
+  >
+    <form
+      class="form-inline"
+    >
+      <div
+        class="btn-group btn-group"
+        data-testid="bulk_actions_btn_group"
+        role="group"
+      >
+        <button
+          class="btn btn-secondary"
+          data-testid="select_deselect_all_records"
+          type="button"
+        >
+          <span
+            class="badge badge-secondary badge-pill"
+          >
+            0
+          </span>
+           
+          Select
+           All 
+          Records
+        </button>
+        <div
+          class="btn-group"
+        >
+          <button
+            aria-expanded="false"
+            aria-haspopup="true"
+            class="dropdown-toggle btn btn-secondary disabled"
+            data-testid="bulk_actions_toggle"
+            disabled=""
+            type="button"
+          >
+            <span
+              class="sr-only"
+            >
+              Toggle Dropdown
+            </span>
+          </button>
+          <div
+            aria-hidden="true"
+            class="dropdown-menu"
+            role="menu"
+            tabindex="-1"
+          >
+            <button
+              class="dropdown-item"
+              data-testid="bulk_action_action1"
+              role="menuitem"
+              tabindex="0"
+              type="button"
+            >
+              Action 1
+            </button>
+            <button
+              class="dropdown-item"
+              data-testid="bulk_action_action2"
+              role="menuitem"
+              tabindex="0"
+              type="button"
+            >
+              Action 2
+            </button>
+          </div>
+        </div>
+      </div>
+    </form>
+  </div>
+</div>
+`;
 
 exports[`TableControls should render table controls with two children 1`] = `
 <div>
@@ -653,127 +484,5 @@ exports[`TableControls should render table controls with two children 1`] = `
       </div>
     </form>
   </div>
-  <table
-    class="av-grid table"
-    role="table"
-  >
-    <thead
-      class="av-grid-row-header"
-      id="table_header"
-    >
-      <tr
-        data-testid="table_header_row_0"
-        id="table_header_row_0"
-        role="row"
-      >
-        <th
-          colspan="1"
-          data-testid="table_header_row_0_cell_0_first_name"
-          id="table_header_row_0_cell_0_first_name"
-          role="columnheader"
-          title="First Name"
-        >
-          First Name
-        </th>
-        <th
-          colspan="1"
-          data-testid="table_header_row_0_cell_1_last_name"
-          id="table_header_row_0_cell_1_last_name"
-          role="columnheader"
-          title="Last Name"
-        >
-          Last Name
-        </th>
-        <th
-          colspan="1"
-          data-testid="table_header_row_0_cell_2_email"
-          id="table_header_row_0_cell_2_email"
-          role="columnheader"
-          title="Email"
-        >
-          Email
-        </th>
-      </tr>
-    </thead>
-    <tbody
-      role="rowgroup"
-    >
-      <tr
-        class="av-grid-row-even"
-        data-testid="table_row_0"
-        id="table_row_0"
-        role="row"
-      >
-        <td
-          data-testid="table_row_0_cell_0"
-          id="table_row_0_cell_0"
-        >
-          Barbra
-        </td>
-        <td
-          data-testid="table_row_0_cell_1"
-          id="table_row_0_cell_1"
-        >
-          Tull
-        </td>
-        <td
-          data-testid="table_row_0_cell_2"
-          id="table_row_0_cell_2"
-        >
-          btull0@usatoday.com
-        </td>
-      </tr>
-      <tr
-        class="av-grid-row-odd"
-        data-testid="table_row_1"
-        id="table_row_1"
-        role="row"
-      >
-        <td
-          data-testid="table_row_1_cell_0"
-          id="table_row_1_cell_0"
-        >
-          Karlis
-        </td>
-        <td
-          data-testid="table_row_1_cell_1"
-          id="table_row_1_cell_1"
-        >
-          Yurshev
-        </td>
-        <td
-          data-testid="table_row_1_cell_2"
-          id="table_row_1_cell_2"
-        >
-          kyurshev1@spotify.com
-        </td>
-      </tr>
-      <tr
-        class="av-grid-row-even"
-        data-testid="table_row_2"
-        id="table_row_2"
-        role="row"
-      >
-        <td
-          data-testid="table_row_2_cell_0"
-          id="table_row_2_cell_0"
-        >
-          Bordie
-        </td>
-        <td
-          data-testid="table_row_2_cell_1"
-          id="table_row_2_cell_1"
-        >
-          Marsy
-        </td>
-        <td
-          data-testid="table_row_2_cell_2"
-          id="table_row_2_cell_2"
-        >
-          bmarsy2@elegantthemes.com
-        </td>
-      </tr>
-    </tbody>
-  </table>
 </div>
 `;

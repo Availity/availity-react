@@ -17,7 +17,7 @@ npx install-peerdeps @availity/table --save
 
 ```jsx
 import React from 'react';
-import Table, { TableProvider } from '@availity/table';
+import Table, { TableContent } from '@availity/table';
 import '@availity/table/style.scss';
 
 const columns = [
@@ -36,21 +36,21 @@ const columns = [
 ];
 
 const Example = () => (
-    <TableProvider
+    <Table
         columns={columns}
         data={data}>
-        <Table/>
+        <TableContent/>
     </TableProvider>
 );
 ```
 
-## TableProvider
+## Table
 
+### Table Props
 
-### Table Provider Props
-
-This extends the [react-table TableOptions](https://react-table.tanstack.com/docs/api/useTable#table-options). 
+This extends the [react-table TableOptions](https://react-table.tanstack.com/docs/api/useTable#table-options).
 You can supply any properties listed on the documentation here and have the table respect it.
+
 #### `id?: string`
 
 This is a unique id that is prepended to the table and nested table elements.
@@ -79,31 +79,6 @@ This object definition sets the initial state of the table, including the defaul
 
 This designates a Component that will be displayed in the table row for the record. This content displays in an additional `<tr>` with a colspan equal to the number of columns that are NOT sticky.
 
-
-### useTableContext hook
-
-Wrapping the table and any other components with the TableProvider will provide access to those child components to the TableContext, which holds all of the instance data created by the useTable hook from react-table alongside any other provided parameters.
-
-
-```jsx
-import { useTableContext } from './TableContext';
-...
-const { 
-    scrollable,
-    AdditionalContent,
-    toggleSelectAll
-    toggleSortBy, 
-    sortBy, 
-    sortByOptions,
-    selectable, 
-    instance 
-} = useTableContext();
-```
-
-The `instance` property is tied directly to the [react-table Table Instance](https://react-table.tanstack.com/docs/api/useTable#instance-properties). Refer to the documentation for details on what data is provided there.
-
-## Table Props
-
 #### `scrollable?: boolean`
 
 This property is automatically set when it is wrapped in a scrollable container. This will apply fixed column widths to force it to scroll rather than minify the columns to fit in a set container.
@@ -125,6 +100,7 @@ Any DOM properties that should be passed onto the `<thead>` element.
 Any DOM properties that should be passed onto the `<tr>` element.
 
 #### `onRowClick?: (event: OnTableClickEvent) => void`
+
 ##### OnTableClickEvent Props
 
 `instance: Row` The react-table [Row](https://react-table.tanstack.com/docs/api/useTable#row-properties) instance that was clicked.
@@ -149,7 +125,7 @@ The ids of the records that are selected.
 
 #### `onSort?: (sortBy: TableSort) => void`
 
-Event handler that is called when data is sorted. 
+Event handler that is called when data is sorted.
 
 ##### TableSort props
 
@@ -159,7 +135,30 @@ The id, or the name of property on the object, that should be used to sort the d
 
 `desc: boolean`
 
-If true, the data should sort descending. If false, the data should sort ascending. 
+If true, the data should sort descending. If false, the data should sort ascending.
+
+### useTableContext hook
+
+Wrapping the table and any other components with the TableProvider will provide access to those child components to the TableContext, which holds all of the instance data created by the useTable hook from react-table alongside any other provided parameters.
+
+```jsx
+import { useTableContext } from './TableContext';
+...
+const {
+    scrollable,
+    AdditionalContent,
+    toggleSelectAll
+    toggleSortBy,
+    sortBy,
+    sortByOptions,
+    selectable,
+    instance
+} = useTableContext();
+```
+
+The `instance` property is tied directly to the [react-table Table Instance](https://react-table.tanstack.com/docs/api/useTable#instance-properties). Refer to the documentation for details on what data is provided there.
+
+
 
 ## Formatting Cells
 
@@ -168,9 +167,11 @@ If true, the data should sort descending. If false, the data should sort ascendi
 This is used to display an action menu in a cell.
 
 #### `isVisible?`: (record?: T) => boolean
+
 This is an optional function that can be used to conditionally display an action. The record will be passed into the function so that, if needed, the properties on the record can determine if the action is visible or not. If this properties are not populated, the action will always display.
 
 #### `onClick?`: (record?: T) => action
+
 This is the onClick event handler for the action.
 
 #### Example
@@ -186,7 +187,7 @@ const columns = [
           id: 'action1',
           displayText: 'Action 1',
           isVisible: (record: MyRecordType) => {
-              return record.hasAction1;
+            return record.hasAction1;
           },
           onClick: (record) => {
             console.log(`action on record ${record.id}`);
@@ -304,13 +305,17 @@ In the body of the table, the icon is displayed if the hasNotes property is set 
 If the title (tooltip) of the icon is dependent on the data of the record, it is possible to pass a function to the IconCell (as `getTitle`) to populate the record.
 
 ```jsx
-    const columns = [
-            {
-                Header: <Icon name='flag' title='Flag for follup'/>,
-                accessor: 'followup',
-                Cell: IconCell({ name: 'flag', getTitle: (value: { username: string; }) => `Assigned To ${value.username}`}),
-            }
-    ]
+const columns = [
+  {
+    Header: <Icon name="flag" title="Flag for follup" />,
+    accessor: 'followup',
+    Cell: IconCell({
+      name: 'flag',
+      getTitle: (value: { username: string }) =>
+        `Assigned To ${value.username}`,
+    }),
+  },
+];
 ```
 
 ## Column Configuration Properties

@@ -29,7 +29,7 @@ exports[`TableSorter should render sort options in dropdown menu 1`] = `
             data-testid="sorter_toggle"
             type="button"
           >
-             First name
+            First Name
           </button>
           <div
             aria-hidden="true"
@@ -45,7 +45,7 @@ exports[`TableSorter should render sort options in dropdown menu 1`] = `
               tabindex="0"
               type="button"
             >
-               First name
+              First Name
             </button>
           </div>
           <button
@@ -64,128 +64,6 @@ exports[`TableSorter should render sort options in dropdown menu 1`] = `
       </div>
     </form>
   </div>
-  <table
-    class="av-grid table"
-    role="table"
-  >
-    <thead
-      class="av-grid-row-header"
-      id="table_header"
-    >
-      <tr
-        data-testid="table_header_row_0"
-        id="table_header_row_0"
-        role="row"
-      >
-        <th
-          colspan="1"
-          data-testid="table_header_row_0_cell_0_first_name"
-          id="table_header_row_0_cell_0_first_name"
-          role="columnheader"
-          title="First Name"
-        >
-          First Name
-        </th>
-        <th
-          colspan="1"
-          data-testid="table_header_row_0_cell_1_last_name"
-          id="table_header_row_0_cell_1_last_name"
-          role="columnheader"
-          title="Last Name"
-        >
-          Last Name
-        </th>
-        <th
-          colspan="1"
-          data-testid="table_header_row_0_cell_2_email"
-          id="table_header_row_0_cell_2_email"
-          role="columnheader"
-          title="Email"
-        >
-          Email
-        </th>
-      </tr>
-    </thead>
-    <tbody
-      role="rowgroup"
-    >
-      <tr
-        class="av-grid-row-even"
-        data-testid="table_row_0"
-        id="table_row_0"
-        role="row"
-      >
-        <td
-          data-testid="table_row_0_cell_0"
-          id="table_row_0_cell_0"
-        >
-          Karlis
-        </td>
-        <td
-          data-testid="table_row_0_cell_1"
-          id="table_row_0_cell_1"
-        >
-          Yurshev
-        </td>
-        <td
-          data-testid="table_row_0_cell_2"
-          id="table_row_0_cell_2"
-        >
-          kyurshev1@spotify.com
-        </td>
-      </tr>
-      <tr
-        class="av-grid-row-odd"
-        data-testid="table_row_1"
-        id="table_row_1"
-        role="row"
-      >
-        <td
-          data-testid="table_row_1_cell_0"
-          id="table_row_1_cell_0"
-        >
-          Bordie
-        </td>
-        <td
-          data-testid="table_row_1_cell_1"
-          id="table_row_1_cell_1"
-        >
-          Marsy
-        </td>
-        <td
-          data-testid="table_row_1_cell_2"
-          id="table_row_1_cell_2"
-        >
-          bmarsy2@elegantthemes.com
-        </td>
-      </tr>
-      <tr
-        class="av-grid-row-even"
-        data-testid="table_row_2"
-        id="table_row_2"
-        role="row"
-      >
-        <td
-          data-testid="table_row_2_cell_0"
-          id="table_row_2_cell_0"
-        >
-          Barbra
-        </td>
-        <td
-          data-testid="table_row_2_cell_1"
-          id="table_row_2_cell_1"
-        >
-          Tull
-        </td>
-        <td
-          data-testid="table_row_2_cell_2"
-          id="table_row_2_cell_2"
-        >
-          btull0@usatoday.com
-        </td>
-      </tr>
-    </tbody>
-  </table>
 </div>
 `;
 
@@ -257,134 +135,6 @@ exports[`TableSorter should render table Sorter 1`] = `
       </div>
     </form>
   </div>
-  <table
-    class="av-grid table"
-    role="table"
-  >
-    <thead
-      class="av-grid-row-header"
-      id="table_header"
-    >
-      <tr
-        data-testid="table_header_row_0"
-        id="table_header_row_0"
-        role="row"
-      >
-        <th
-          colspan="1"
-          data-testid="table_header_row_0_cell_0_first_name"
-          id="table_header_row_0_cell_0_first_name"
-          role="columnheader"
-          style="cursor: pointer;"
-          title="First Name"
-        >
-          First Name
-          <i
-            aria-hidden="true"
-            class="icon icon-sort"
-          />
-        </th>
-        <th
-          colspan="1"
-          data-testid="table_header_row_0_cell_1_last_name"
-          id="table_header_row_0_cell_1_last_name"
-          role="columnheader"
-          title="Last Name"
-        >
-          Last Name
-        </th>
-        <th
-          colspan="1"
-          data-testid="table_header_row_0_cell_2_email"
-          id="table_header_row_0_cell_2_email"
-          role="columnheader"
-          style="cursor: pointer;"
-          title="Email"
-        >
-          Email
-        </th>
-      </tr>
-    </thead>
-    <tbody
-      role="rowgroup"
-    >
-      <tr
-        class="av-grid-row-even"
-        data-testid="table_row_0"
-        id="table_row_0"
-        role="row"
-      >
-        <td
-          data-testid="table_row_0_cell_0"
-          id="table_row_0_cell_0"
-        >
-          Barbra
-        </td>
-        <td
-          data-testid="table_row_0_cell_1"
-          id="table_row_0_cell_1"
-        >
-          Tull
-        </td>
-        <td
-          data-testid="table_row_0_cell_2"
-          id="table_row_0_cell_2"
-        >
-          btull0@usatoday.com
-        </td>
-      </tr>
-      <tr
-        class="av-grid-row-odd"
-        data-testid="table_row_1"
-        id="table_row_1"
-        role="row"
-      >
-        <td
-          data-testid="table_row_1_cell_0"
-          id="table_row_1_cell_0"
-        >
-          Karlis
-        </td>
-        <td
-          data-testid="table_row_1_cell_1"
-          id="table_row_1_cell_1"
-        >
-          Yurshev
-        </td>
-        <td
-          data-testid="table_row_1_cell_2"
-          id="table_row_1_cell_2"
-        >
-          kyurshev1@spotify.com
-        </td>
-      </tr>
-      <tr
-        class="av-grid-row-even"
-        data-testid="table_row_2"
-        id="table_row_2"
-        role="row"
-      >
-        <td
-          data-testid="table_row_2_cell_0"
-          id="table_row_2_cell_0"
-        >
-          Bordie
-        </td>
-        <td
-          data-testid="table_row_2_cell_1"
-          id="table_row_2_cell_1"
-        >
-          Marsy
-        </td>
-        <td
-          data-testid="table_row_2_cell_2"
-          id="table_row_2_cell_2"
-        >
-          bmarsy2@elegantthemes.com
-        </td>
-      </tr>
-    </tbody>
-  </table>
 </div>
 `;
 
@@ -417,7 +167,7 @@ exports[`TableSorter should show ascending icon 1`] = `
             data-testid="sorter_toggle"
             type="button"
           >
-             First name
+            First Name
           </button>
           <div
             aria-hidden="true"
@@ -433,7 +183,7 @@ exports[`TableSorter should show ascending icon 1`] = `
               tabindex="0"
               type="button"
             >
-               First name
+              First Name
             </button>
           </div>
           <button
@@ -452,128 +202,6 @@ exports[`TableSorter should show ascending icon 1`] = `
       </div>
     </form>
   </div>
-  <table
-    class="av-grid table"
-    role="table"
-  >
-    <thead
-      class="av-grid-row-header"
-      id="table_header"
-    >
-      <tr
-        data-testid="table_header_row_0"
-        id="table_header_row_0"
-        role="row"
-      >
-        <th
-          colspan="1"
-          data-testid="table_header_row_0_cell_0_first_name"
-          id="table_header_row_0_cell_0_first_name"
-          role="columnheader"
-          title="First Name"
-        >
-          First Name
-        </th>
-        <th
-          colspan="1"
-          data-testid="table_header_row_0_cell_1_last_name"
-          id="table_header_row_0_cell_1_last_name"
-          role="columnheader"
-          title="Last Name"
-        >
-          Last Name
-        </th>
-        <th
-          colspan="1"
-          data-testid="table_header_row_0_cell_2_email"
-          id="table_header_row_0_cell_2_email"
-          role="columnheader"
-          title="Email"
-        >
-          Email
-        </th>
-      </tr>
-    </thead>
-    <tbody
-      role="rowgroup"
-    >
-      <tr
-        class="av-grid-row-even"
-        data-testid="table_row_0"
-        id="table_row_0"
-        role="row"
-      >
-        <td
-          data-testid="table_row_0_cell_0"
-          id="table_row_0_cell_0"
-        >
-          Barbra
-        </td>
-        <td
-          data-testid="table_row_0_cell_1"
-          id="table_row_0_cell_1"
-        >
-          Tull
-        </td>
-        <td
-          data-testid="table_row_0_cell_2"
-          id="table_row_0_cell_2"
-        >
-          btull0@usatoday.com
-        </td>
-      </tr>
-      <tr
-        class="av-grid-row-odd"
-        data-testid="table_row_1"
-        id="table_row_1"
-        role="row"
-      >
-        <td
-          data-testid="table_row_1_cell_0"
-          id="table_row_1_cell_0"
-        >
-          Karlis
-        </td>
-        <td
-          data-testid="table_row_1_cell_1"
-          id="table_row_1_cell_1"
-        >
-          Yurshev
-        </td>
-        <td
-          data-testid="table_row_1_cell_2"
-          id="table_row_1_cell_2"
-        >
-          kyurshev1@spotify.com
-        </td>
-      </tr>
-      <tr
-        class="av-grid-row-even"
-        data-testid="table_row_2"
-        id="table_row_2"
-        role="row"
-      >
-        <td
-          data-testid="table_row_2_cell_0"
-          id="table_row_2_cell_0"
-        >
-          Bordie
-        </td>
-        <td
-          data-testid="table_row_2_cell_1"
-          id="table_row_2_cell_1"
-        >
-          Marsy
-        </td>
-        <td
-          data-testid="table_row_2_cell_2"
-          id="table_row_2_cell_2"
-        >
-          bmarsy2@elegantthemes.com
-        </td>
-      </tr>
-    </tbody>
-  </table>
 </div>
 `;
 
@@ -606,7 +234,7 @@ exports[`TableSorter should show descending icon 1`] = `
             data-testid="sorter_toggle"
             type="button"
           >
-             First name
+            First Name
           </button>
           <div
             aria-hidden="true"
@@ -622,7 +250,7 @@ exports[`TableSorter should show descending icon 1`] = `
               tabindex="0"
               type="button"
             >
-               First name
+              First Name
             </button>
           </div>
           <button
@@ -641,127 +269,5 @@ exports[`TableSorter should show descending icon 1`] = `
       </div>
     </form>
   </div>
-  <table
-    class="av-grid table"
-    role="table"
-  >
-    <thead
-      class="av-grid-row-header"
-      id="table_header"
-    >
-      <tr
-        data-testid="table_header_row_0"
-        id="table_header_row_0"
-        role="row"
-      >
-        <th
-          colspan="1"
-          data-testid="table_header_row_0_cell_0_first_name"
-          id="table_header_row_0_cell_0_first_name"
-          role="columnheader"
-          title="First Name"
-        >
-          First Name
-        </th>
-        <th
-          colspan="1"
-          data-testid="table_header_row_0_cell_1_last_name"
-          id="table_header_row_0_cell_1_last_name"
-          role="columnheader"
-          title="Last Name"
-        >
-          Last Name
-        </th>
-        <th
-          colspan="1"
-          data-testid="table_header_row_0_cell_2_email"
-          id="table_header_row_0_cell_2_email"
-          role="columnheader"
-          title="Email"
-        >
-          Email
-        </th>
-      </tr>
-    </thead>
-    <tbody
-      role="rowgroup"
-    >
-      <tr
-        class="av-grid-row-even"
-        data-testid="table_row_0"
-        id="table_row_0"
-        role="row"
-      >
-        <td
-          data-testid="table_row_0_cell_0"
-          id="table_row_0_cell_0"
-        >
-          Barbra
-        </td>
-        <td
-          data-testid="table_row_0_cell_1"
-          id="table_row_0_cell_1"
-        >
-          Tull
-        </td>
-        <td
-          data-testid="table_row_0_cell_2"
-          id="table_row_0_cell_2"
-        >
-          btull0@usatoday.com
-        </td>
-      </tr>
-      <tr
-        class="av-grid-row-odd"
-        data-testid="table_row_1"
-        id="table_row_1"
-        role="row"
-      >
-        <td
-          data-testid="table_row_1_cell_0"
-          id="table_row_1_cell_0"
-        >
-          Karlis
-        </td>
-        <td
-          data-testid="table_row_1_cell_1"
-          id="table_row_1_cell_1"
-        >
-          Yurshev
-        </td>
-        <td
-          data-testid="table_row_1_cell_2"
-          id="table_row_1_cell_2"
-        >
-          kyurshev1@spotify.com
-        </td>
-      </tr>
-      <tr
-        class="av-grid-row-even"
-        data-testid="table_row_2"
-        id="table_row_2"
-        role="row"
-      >
-        <td
-          data-testid="table_row_2_cell_0"
-          id="table_row_2_cell_0"
-        >
-          Bordie
-        </td>
-        <td
-          data-testid="table_row_2_cell_1"
-          id="table_row_2_cell_1"
-        >
-          Marsy
-        </td>
-        <td
-          data-testid="table_row_2_cell_2"
-          id="table_row_2_cell_2"
-        >
-          bmarsy2@elegantthemes.com
-        </td>
-      </tr>
-    </tbody>
-  </table>
 </div>
 `;

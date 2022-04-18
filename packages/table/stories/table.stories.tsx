@@ -7,12 +7,12 @@ import Table, {
   DateCell,
   BadgeCell,
   ActionCell,
-  TableProvider,
   TableControls,
   BulkTableActions,
   TableSorter,
   TableSort,
   TableContext,
+  TableContent,
 } from '../src';
 import '../styles.scss';
 
@@ -138,7 +138,9 @@ any) => (
       // eslint-disable-next-line no-console
       console.log(e);
     }}
-  />
+  >
+    <TableContent />
+  </Table>
 );
 BasicTable.args = {
   sortable: false,
@@ -150,7 +152,7 @@ BasicTable.args = {
 };
 BasicTable.storyName = 'basic';
 
-export const WithProvider: Story = ({
+export const WithControls: Story = ({
   sortable,
   selectable,
   columns,
@@ -159,7 +161,26 @@ export const WithProvider: Story = ({
   bodyProps,
 }: // eslint-disable-next-line @typescript-eslint/no-explicit-any
 any) => (
-  <TableProvider>
+  <Table
+    initialState={{
+      sortBy: [{ id: 'firstName', desc: false }],
+      selectedRowIds: {
+        '0': true,
+      },
+    }}
+    paged
+    sortable={sortable}
+    selectable={selectable}
+    columns={columns}
+    data={data}
+    headerProps={headerProps}
+    bodyProps={bodyProps}
+    //eslint-disabl-next-line @typescript-eslint/no-explicit-any
+    onRowSelected={(e: any) => {
+      // eslint-disable-next-line no-console
+      console.log(e);
+    }}
+  >
     <TableControls className="pb-2">
       <BulkTableActions color="light" bulkActions={bulkActions} />
       <TableSorter
@@ -195,21 +216,10 @@ any) => (
         </TableContext.Consumer>
       </div>
     </TableControls>
-    <Table
-      initialState={{
-        sortBy: [{ id: 'firstName', desc: false }],
-      }}
-      paged
-      sortable={sortable}
-      selectable={selectable}
-      columns={columns}
-      data={data}
-      headerProps={headerProps}
-      bodyProps={bodyProps}
-    />
-  </TableProvider>
+    <TableContent />
+  </Table>
 );
-WithProvider.args = {
+WithControls.args = {
   sortable: true,
   selectable: true,
   columns,
@@ -217,7 +227,7 @@ WithProvider.args = {
   headerProps: { style: { background: '#f0f0f0' } },
   bodyProps: { style: {} },
 };
-WithProvider.storyName = 'with provider and controls';
+WithControls.storyName = 'with controls';
 
 export const WithScrollableContainer: Story = ({
   sortable,
@@ -228,21 +238,21 @@ export const WithScrollableContainer: Story = ({
   bodyProps,
 }: // eslint-disable-next-line @typescript-eslint/no-explicit-any
 any) => (
-  <TableProvider>
-    <ScrollableContainer>
-      <Table
-        initialState={{
-          sortBy: [{ id: 'firstName', desc: false }],
-        }}
-        sortable={sortable}
-        selectable={selectable}
-        columns={columns}
-        data={data}
-        headerProps={headerProps}
-        bodyProps={bodyProps}
-      />
-    </ScrollableContainer>
-  </TableProvider>
+  <ScrollableContainer>
+    <Table
+      initialState={{
+        sortBy: [{ id: 'firstName', desc: false }],
+      }}
+      sortable={sortable}
+      selectable={selectable}
+      columns={columns}
+      data={data}
+      headerProps={headerProps}
+      bodyProps={bodyProps}
+    >
+      <TableContent />
+    </Table>
+  </ScrollableContainer>
 );
 WithScrollableContainer.args = {
   sortable: false,

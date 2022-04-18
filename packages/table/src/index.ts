@@ -22,7 +22,7 @@ export { default } from './Table';
 
 export { useTableContext, TableContext, AvTableContext } from './TableContext';
 
-export { default as TableProvider, TableProviderProps } from './TableProvider';
+export { default as TableContent } from './TableContent';
 
 export { default as ScrollableContainer } from './ScrollableContainer';
 
