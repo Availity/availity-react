@@ -138,9 +138,7 @@ any) => (
       // eslint-disable-next-line no-console
       console.log(e);
     }}
-  >
-    <TableContent />
-  </Table>
+  />
 );
 BasicTable.args = {
   sortable: false,
@@ -249,6 +247,7 @@ any) => (
       data={data}
       headerProps={headerProps}
       bodyProps={bodyProps}
+      
     >
       <TableContent />
     </Table>
@@ -259,7 +258,7 @@ WithScrollableContainer.args = {
   selectable: false,
   columns,
   data: response.data.patientPagination.items,
-  headerProps: { style: { background: '#333' } },
+  headerProps: { sticky: true, style: { background: '#333' } },
   bodyProps: { style: {} },
 };
 WithScrollableContainer.storyName = 'with scrollable container';

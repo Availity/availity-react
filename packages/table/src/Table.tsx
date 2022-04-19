@@ -19,6 +19,7 @@ import { OnRowSelectedEvent } from './types/OnRowSelectedEvent';
 import { TableContext } from './TableContext';
 import IndeterminateCheckbox from './IndeterminateCheckbox';
 import { TableSortOption } from './types';
+import TableContent from './TableContent';
 
 type HeaderProps = {
   sticky: boolean;
@@ -36,7 +37,6 @@ export type CommonTableProps<T extends IdType> = {
   onRowSelected?: (event: OnRowSelectedEvent<T>) => void;
   headerProps?: HeaderProps;
   onSort?: (sortBy: TableSort[]) => void;
-  onReset?: () => void;
 
   additionalContent?: React.ElementType;
   additionalContentProps?: Record<string, string | number | boolean | undefined | null>;
@@ -185,12 +185,11 @@ const Table = <T extends IdType>({
         onCellClick,
         getCanSelectRow,
         onSort,
-        onReset,
         onRowSelected,
         tableProps,
       }}
     >
-      {children}
+      {children || <TableContent />}
     </TableContext.Provider>
   );
 };

@@ -4,6 +4,8 @@ title: <TableControls/>
 
 `<TableControls/>` is a container that wraps any given components that would be utilized in concert with the table component. This includes bulk selection, bulk actions, pagination, or any custom component that could potentially be needed. There are two components provided that can be utilized within the `<TableControls>`: `<BulkTableActions/>` and `<TableSorter/>`.
 
+When utilizing `<TableControls>` as a child of `<Table>`, the `<TableContent>` must be provided. This allows for flexibility to allow for adding any number of child components either above or below the table. The `TableContent` is the pure rendering of just the table itself.
+
 ### Props
 
 #### `id?: string`
@@ -12,7 +14,7 @@ This is a unique id that used to identify the component.
 
 #### `disabled?: boolean`
 
-If this flag is set to `true` on the parent `<TabelControls/>` component, it will set `disabled` to `true` on all of it's child controls (for those components that have a `disabled` property and respect it).
+If this flag is set to `true` on the parent `<TableControls/>` component, it will set `disabled` to `true` on all of it's child controls (for those components that have a `disabled` property and respect it).
 
 ## Example
 
@@ -20,7 +22,8 @@ Here is an example of basic set up of the TableControls.
 
 ```jsx
 import React, { useState } from 'react';
-import Table, { TableContent, ScrollableContainer, TableControls, TableSorter } from '@availity/table';
+import Table, { TableContent, ScrollableContainer, TableControls, TableSorter, BulkTableActions} from '@availity/table';
+import Pagination, { PaginationControls } from '@availity/pagination';
 import '@availity/table/style.scss';
 
 import records from 'data/records.json';
@@ -74,6 +77,30 @@ const Example = () : JSX.Element => (
         <TableControls disabled={disabled}>
             <BulkTableActions/>
             <TableSorter/>
+             <div style={{ marginLeft: 'auto' }}>
+            <TableContext.Consumer>
+            {({ instance }) => (
+                <Pagination
+                itemsPerPage={instance.state.pageSize}
+                page={instance.currentPage}
+                onPageChange={(page: number) => {
+                    const { gotoPage } = instance;
+                    gotoPage(page - 1);
+                }}
+                items={records}
+                >
+                    <PaginationControls
+                        className="pt-3"
+                        listClassName="pagination-unstyled"
+                        directionLinks
+                        showPaginationText
+                        pageRange={3}
+                        marginPages={1}
+                    />
+                </Pagination>
+            )}
+            </TableContext.Consumer>
+            </div>
         </TableControls>
         <ScrollableContainer>
             <TableContent/>
@@ -122,7 +149,7 @@ This is a function that determines whether the given action should display, pass
 
 ## `<TableSorter/>`
 
-This components supplies a dropdown of all the available sort fields, alongside a toggle that will sort that field ascending or descending. This dropdown is automatically populated by what columns allow sorting when set in the `<TableProvider>`.
+This components supplies a dropdown of all the available sort fields, alongside a toggle that will sort that field ascending or descending. This dropdown is automatically populated by what columns allow sorting in the TableContext`.
 
 #### `id?: string`
 
@@ -151,3 +178,43 @@ When this is set to true, the sort options in the dropdown will be automatically
 ## Adding Additional Components
 
 Any custom component can also be added as a child to the `<TableControls/>` component. Doing so will provide the component with the TableContext and leverage data on that context.
+
+### Pagination Example
+
+The `@availity/pagination` can also be leverage to work with the table.
+
+Below is an example of how to configure it (client-size pagination).
+
+```jsx
+<Table columns={columns} data={records} paged>
+  <TableControls disabled={disabled}>
+    <div style={{ marginLeft: 'auto' }}>
+      <TableContext.Consumer>
+        {({ instance }) => (
+          <Pagination
+            itemsPerPage={instance.state.pageSize}
+            page={instance.currentPage}
+            onPageChange={(page: number) => {
+              const { gotoPage } = instance;
+              gotoPage(page - 1);
+            }}
+            items={records}
+          >
+            <PaginationControls
+              className="pt-3"
+              listClassName="pagination-unstyled"
+              directionLinks
+              showPaginationText
+              pageRange={3}
+              marginPages={1}
+            />
+          </Pagination>
+        )}
+      </TableContext.Consumer>
+    </div>
+  </TableControls>
+  <ScrollableContainer>
+    <TableContent />
+  </ScrollableContainer>
+</Table>
+```

@@ -7,7 +7,7 @@ This will automatically set the `scrollable` property to true in the `Table` com
 
 ```jsx
 import React from 'react';
-import Table, { TableContent, ScrollableContainer } from '@availity/table';
+import Table, { ScrollableContainer } from '@availity/table';
 import '@availity/table/style.scss';
 
 const columns = [
@@ -18,7 +18,7 @@ const columns = [
   {
     Header: 'Column 2',
     accessor: 'column2',
-  },
+  },s
   {
     Header: 'Column 3',
     accessor: 'column3',
@@ -26,12 +26,8 @@ const columns = [
 ];
 
 const Example = () => (
-    <Table
-        columns={columns}
-        data={records}>
-        <ScrollableContainer>
-            <TableContent/>
-        </ScrollableContainer>
-    </TableProvider>
+  <ScrollableContainer>
+    <Table columns={columns} data={records}/>
+  </ScrollableContainer>
 );
 ```

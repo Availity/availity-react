@@ -28,7 +28,6 @@ const TableContent = <T extends IdType>(): JSX.Element | null => {
     onCellClick,
     getCellProps,
     getRowProps,
-    onReset,
   } = useTableContext();
 
   const { getTableProps, getTableBodyProps, headerGroups, rows, prepareRow, manualSortBy, page } =
@@ -60,7 +59,6 @@ const TableContent = <T extends IdType>(): JSX.Element | null => {
                     scrollable={scrollable}
                     sortable={sortable}
                     manualSortBy={manualSortBy}
-                    onReset={onReset}
                     column={header}
                   >
                     {header.render('Header')}

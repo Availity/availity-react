@@ -18,7 +18,6 @@ export type AvTableContext = {
   onRowClick?: (event: OnTableClickEvent<HTMLElement, any>) => void;
   onRowSelected?: (event: OnRowSelectedEvent<any>) => void;
   onSort?: (sortBy: TableSort[]) => void;
-  onReset?: () => void;
   getCanSelectRow?: (record: any) => boolean;
   AdditionalContent?: React.ElementType;
   additionalContentProps?: Record<string, string | number | boolean | undefined | null>;
