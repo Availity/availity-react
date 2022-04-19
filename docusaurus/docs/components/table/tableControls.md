@@ -181,7 +181,7 @@ Any custom component can also be added as a child to the `<TableControls/>` comp
 
 ### Pagination Example
 
-The `@availity/pagination` can also be leverage to work with the table.
+The `@availity/pagination` library can also be leverage to work with the table.
 
 Below is an example of how to configure it (client-size pagination).
 
