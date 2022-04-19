@@ -66,7 +66,6 @@ const Table = <T extends IdType>({
   selectable,
   scrollable,
   sortable,
-  onReset,
   id,
   tableProps,
   bodyProps,

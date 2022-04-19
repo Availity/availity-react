@@ -173,7 +173,7 @@ any) => (
     data={data}
     headerProps={headerProps}
     bodyProps={bodyProps}
-    //eslint-disabl-next-line @typescript-eslint/no-explicit-any
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
     onRowSelected={(e: any) => {
       // eslint-disable-next-line no-console
       console.log(e);
