@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [11.2.0](https://github.com/Availity/availity-react/compare/@availity/page-header@11.1.30...@availity/page-header@11.2.0) (2022-04-20)
+
+
+### Features
+
+* **page-header:** responsiveness and debootstrapifying ([ce4b2f9](https://github.com/Availity/availity-react/commit/ce4b2f9086d2fe2c808297fc606db6581b768a7b))
+
+
+
+
+
 ## [11.1.30](https://github.com/Availity/availity-react/compare/@availity/page-header@11.1.29...@availity/page-header@11.1.30) (2022-04-14)
 
 
