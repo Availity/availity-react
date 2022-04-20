@@ -1,10 +1,12 @@
 import React from 'react';
 import { Meta, Story } from '@storybook/react';
-import { BreadcrumbItem } from 'reactstrap';
+import { BreadcrumbItem, Button } from 'reactstrap';
 import TrainingLink from '@availity/training-link';
 import Breadcrumbs from '@availity/breadcrumbs';
+import { SpacesLogo } from '@availity/spaces';
 
-import PageHeader from '..';
+import PageHeader, { RightContentProps } from '..';
+import fallback from '../../../static/static/spaces/12345/sample-logo.png'
 // import README from '../README.md';
 
 const CustomBreadcrumbs = (
@@ -17,6 +19,15 @@ const CustomBreadcrumbs = (
     </BreadcrumbItem>
   </Breadcrumbs>
 );
+
+const logoAttrs = {
+  skeletonProps: {
+    width: 180,
+    height: '100%',
+  },
+  imageType:'image.logo',
+  fallback,
+};
 
 const colors = ['black', 'blue', 'orange', 'green'];
 
@@ -58,27 +69,28 @@ WithAppIcon.args = {
 };
 WithAppIcon.storyName = 'with app icon';
 
-export const WithPayerLogo: Story = ({ appName, feedback, homeUrl, payerId }) => (
-  <div>
-    <PageHeader homeUrl={homeUrl} appName={appName} clientId="clientId" payerId={payerId} feedback={feedback} logo />
-    <p>Note: the logo is a sample image, and not an actual logo</p>
-  </div>
-);
+export const WithPayerLogo: Story = ({ appName, feedback, homeUrl, payerId, logo, spaceId }) => {
+  // renderRightContent needed to use fallback logo
+  const CustomRightContent: React.FC<RightContentProps> = ({ feedback: Feedback, payerLogo, className }: RightContentProps) => (
+    <div className={className}>
+      {feedback && Feedback}
+      {payerLogo && <SpacesLogo payerId={payerId} spaceId={spaceId} {...logoAttrs}/>}
+    </div>
+  );
+
+  return (
+    <div>
+      <PageHeader homeUrl={homeUrl} appName={appName} clientId="clientId" payerId={payerId} spaceId={spaceId} feedback={feedback} renderRightContent={CustomRightContent} logo={logo} />
+      <p>Note: the logo is a sample image, and not an actual logo</p>
+    </div>
+  );
+}
 WithPayerLogo.args = {
   payerId: 'availity1',
+  logo: false,
+  spaceId: '',
 };
 WithPayerLogo.storyName = 'with payer logo';
-
-export const WithPayerLogoSpace: Story = ({ appName, feedback, homeUrl, spaceId }) => (
-  <div>
-    <PageHeader homeUrl={homeUrl} appName={appName} clientId="clientId" spaceId={spaceId} feedback={feedback} logo />
-    <p>Note: the logo is a sample image, and not an actual logo</p>
-  </div>
-);
-WithPayerLogoSpace.args = {
-  spaceId: 'space1',
-};
-WithPayerLogoSpace.storyName = 'with payer logo space';
 
 export const WithPayerSpaceBreadcrumb: Story = ({ appName, feedback, homeUrl, spaceId, spaceName }) => (
   <PageHeader homeUrl={homeUrl} appName={appName} feedback={feedback} spaceId={spaceId} spaceName={spaceName} />
@@ -114,3 +126,29 @@ export const WithTrainingLink: Story = ({ appName, feedback, homeUrl }) => (
   />
 );
 WithTrainingLink.storyName = 'with training link';
+
+export const WithCustomRightContent: Story = ({ appName, feedback, homeUrl, payerId }) => {
+  const CustomRightContent: React.FC<RightContentProps> = ({ feedback: Feedback, payerLogo, className }: RightContentProps) => (
+    <div className={className}>
+      <Button color='danger' >Custom Button</Button>
+      <Button>Custom Button with long name</Button>
+      {feedback && Feedback}
+      {payerLogo && <SpacesLogo payerId={payerId} {...logoAttrs}/>}
+    </div>
+  );
+
+  return (
+    <PageHeader
+      homeUrl={homeUrl}
+      appName={appName}
+      clientId="clientId"
+      payerId={payerId}
+      feedback={feedback}
+      renderRightContent={CustomRightContent}
+    />
+  );
+  }
+WithCustomRightContent.args = {
+  payerId: '',
+};
+WithCustomRightContent.storyName = 'with custom right content';
