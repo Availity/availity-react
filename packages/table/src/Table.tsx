@@ -82,8 +82,6 @@ const Table = <T extends IdType>({
   children,
   ...rest
 }: TableProps<T>): JSX.Element | null => {
-  let selectionColumn: Column<T>;
-
   const [selectedTableRows, setSelectedTableRows] = useState<Row<T>[]>([]);
   const [sortableColumns] = useState<TableSortOption[]>(
     filter(columns, (column) => !column.disableSortBy && column.defaultCanSort).map((column) => {
@@ -107,7 +105,7 @@ const Table = <T extends IdType>({
     useColumnOrder,
     useRowState,
     (hooks: Hooks<T>) => {
-      selectionColumn = {
+      const selectionColumn = {
         id: 'selection',
         title: 'Select record(s)',
         className: 'fixed-width-selection',

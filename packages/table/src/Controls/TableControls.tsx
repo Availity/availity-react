@@ -12,20 +12,13 @@ const TableControls = ({ id, disabled, children, ...rest }: Props): JSX.Element 
   const [isDisabled, setIsDisabled] = useState(disabled || false);
 
   const { instance } = useTableContext();
-  const [isReady, setIsReady] = useState(!!instance);
-
-  useEffect(() => {
-    if (instance) {
-      setIsReady(true);
-    }
-  }, [instance]);
 
   useEffect(() => {
     setIsDisabled(disabled || false);
   }, [disabled]);
 
   const childElements = Array.isArray(children) ? children : [children];
-  if (!isReady) {
+  if (!instance) {
     return null;
   }
   return (

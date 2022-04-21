@@ -24,13 +24,6 @@ const TableCell = <T extends IdType>({
   const { className, disableClick, stickyLeft, stickyRight } = cell.column;
 
   const isFixedWidth = scrollable && !className;
-  const cellClasses = classNames(className || '', {
-    'fixed-width-text': isFixedWidth,
-    'cursor-pointer': !!onCellClick,
-    sticky: stickyRight || stickyLeft,
-    'sticky-right': stickyRight,
-    'sticky-left': stickyLeft,
-  });
 
   const cellProps = {
     title: cell.value && isFixedWidth ? cell.value.toString() : undefined,
@@ -47,7 +40,17 @@ const TableCell = <T extends IdType>({
 
   const buildCellProps = () => {
     const props = getCellProps(cell);
-    props.className = classNames(cellClasses, props.className);
+    props.className = classNames(
+      className || '',
+      {
+        'fixed-width-text': isFixedWidth,
+        'cursor-pointer': !!onCellClick,
+        sticky: stickyRight || stickyLeft,
+        'sticky-right': stickyRight,
+        'sticky-left': stickyLeft,
+      },
+      props.className
+    );
     return { ...props, ...cellProps, ...rest };
   };
 
