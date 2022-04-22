@@ -63,9 +63,9 @@ const Table = <T extends IdType>({
   additionalContentProps,
   columns,
   data,
-  selectable,
+  selectable = false,
   scrollable,
-  sortable,
+  sortable = false,
   id,
   tableProps,
   bodyProps,
@@ -112,6 +112,7 @@ const Table = <T extends IdType>({
         defaultCanSort: false,
         disableSortBy: true,
         disableClick: true,
+        hidden: selectable,
         Header: ({ getToggleAllRowsSelectedProps }: UseRowSelectInstanceProps<T>) => (
           <div className="text-center">
             <IndeterminateCheckbox
@@ -135,18 +136,18 @@ const Table = <T extends IdType>({
         },
       };
 
-      hooks.visibleColumns.push((columns: Column<T>[]) => [
-        selectionColumn,
-        ...filter(columns, (col) => col.hidden !== true),
-      ]);
+      hooks.visibleColumns.push((columns: Column<T>[]) => {
+        const cols = [];
+        if (selectable) {
+          cols.push(selectionColumn);
+        }
+        cols.push(...filter(columns, (col) => col.hidden !== true));
+        return cols;
+      });
     }
   ) as TableInstance<T>;
 
-  const { selectedFlatRows, toggleHideColumn } = tableInstance;
-
-  useEffect(() => {
-    toggleHideColumn('selection', !selectable);
-  }, [selectable, toggleHideColumn]);
+  const { selectedFlatRows } = tableInstance;
 
   useEffect(() => {
     setSelectedTableRows(
