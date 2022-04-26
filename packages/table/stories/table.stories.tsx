@@ -63,7 +63,7 @@ const columns = [
         },
         {
           id: 'action2',
-          displayText: 'Action 2',
+          displayText: <span className="text-danger">Action 2</span>,
           onClick: (record?: Record<string, unknown>) => {
             // eslint-disable-next-line no-console
             console.log(`action on record ${record?.id}`);
