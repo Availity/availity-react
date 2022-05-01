@@ -11,7 +11,7 @@ import Tooltip from './components/FavoritesTooltip';
 // arbitrary. Those also need to eventaully utilize tokens.
 const RED = '#ed5624';
 const GREY = '#4d4f53';
-const DISABLED_OPACITY = 0.75;
+const DISABLED_OPACITY = 0.6;
 const INIT_LOADING_OPACITY = 0.5;
 
 const icons = {
@@ -41,6 +41,7 @@ export const FavoriteHeart = ({
   name,
   onChange,
   onMouseDown,
+  disabled = false,
   size,
 }: {
   id: string;
@@ -54,6 +55,7 @@ export const FavoriteHeart = ({
     event: React.ChangeEvent<HTMLInputElement> | React.KeyboardEvent<HTMLInputElement>
   ) => void;
   onMouseDown?: (event: React.MouseEvent<HTMLInputElement, MouseEvent>) => void;
+  disabled?: boolean;
 
   /**
    * @param {string} props.size  A CSS length unit like '2rem' or '32px' to be applied to the height and
@@ -82,15 +84,20 @@ export const FavoriteHeart = ({
       if (isLastClickedFavorite) return 'spinner';
       return isFavorited ? 'favoritedDisabledHeart' : 'unfavoritedDisabledHeart';
     }
+    if (disabled) {
+      return isFavorited ? 'favoritedDisabledHeart' : 'unfavoritedDisabledHeart';
+    }
     if (isFavorited) return 'favoritedHeart';
     return 'unfavoritedHeart';
   })();
 
   const cursor =
-    !isLastClickedFavorite && (status === 'initLoading' || status === 'reloading') ? 'not-allowed' : undefined;
+    disabled || (!isLastClickedFavorite && (status === 'initLoading' || status === 'reloading'))
+      ? 'not-allowed'
+      : undefined;
 
   return (
-    <div className={css.root} style={{ height: size, width: size }}>
+    <div className={`${css.root} ${disabled ? css.disabled : ''}`} style={{ height: size, width: size }}>
       <div className={css.icons}>{icons[iconKey]}</div>
       <span
         aria-live={isLastClickedFavorite && (status === 'reloading' || status === 'error') ? 'polite' : 'off'}
