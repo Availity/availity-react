@@ -153,13 +153,10 @@
   dependencies:
     core-js "^3.12.1"
 
-"@availity/message-core@^5.0.1", "@availity/message-core@^5.0.4":
-  version "5.0.4"
-  resolved "https://registry.yarnpkg.com/@availity/message-core/-/message-core-5.0.4.tgz#a15e81064a4d2f3d162baefa9ab55ed34f2487cd"
-  integrity sha512-mxDWZCBh3p1aHNBv03vQiOeQW673YGKZeuL5Hq3r28AD+BExSQhvWc9FT8R9t5gkzQ9J59pTW+iib7exHPCQOg==
-  dependencies:
-    "@babel/runtime" "^7.16.5"
-    core-js "^3.12.1"
+"@availity/message-core@^6.0.1":
+  version "6.0.1"
+  resolved "https://registry.yarnpkg.com/@availity/message-core/-/message-core-6.0.1.tgz#d7013deeb434b06929ca26402e2ab445a7846343"
+  integrity sha512-QF2lEn3DmCs/E0hEW5soPMRBX+0xjZSDxOjPJI3lacwdrJoKOpfrY3DD76IpsNHxvQh3lYsIx3BbBn6CzTYG5g==
 
 "@availity/native-form@^4.0.12", "@availity/native-form@^4.0.5":
   version "4.0.12"
