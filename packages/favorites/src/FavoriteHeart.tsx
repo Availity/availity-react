@@ -118,6 +118,7 @@ export const FavoriteHeart = ({
           type="checkbox"
           aria-label={`Favorite ${name}`}
           id={`av-favorite-heart-${id}`}
+          disabled={disabled}
           checked={isFavorited}
           onChange={handleChange}
           onMouseDown={onMouseDown}
