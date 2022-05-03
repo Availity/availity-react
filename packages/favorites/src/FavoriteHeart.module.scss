@@ -42,6 +42,9 @@ $heartSize: 1.125rem;
 .root:hover .input {
   background-color: #e8ebeb;
 }
+.disabled.root:hover .input {
+  background-color: transparent;
+}
 
 .icons {
   position: absolute;
