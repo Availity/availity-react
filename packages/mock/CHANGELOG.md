@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# 3.1.0 (2022-05-03)
+
+
+### Features
+
+* **favorites:** add `disabled` prop to heart ([fb42164](https://github.com/Availity/availity-react/commit/fb42164ac413676e8c3e35484566fca0cb46a70d))
+
+
+
+
+
 ## 3.0.1 (2022-04-14)
 
 
