@@ -127,6 +127,318 @@ exports[`Table should not display hidden columns 1`] = `
 </div>
 `;
 
+exports[`Table should not display primary action column when provided 1`] = `
+<div>
+  <table
+    class="av-grid table"
+    role="table"
+  >
+    <thead
+      class="av-grid-row-header"
+      id="table_header"
+    >
+      <tr
+        data-testid="table_header_row_0"
+        id="table_header_row_0"
+        role="row"
+      >
+        <th
+          colspan="1"
+          data-testid="table_header_row_0_cell_0_text"
+          id="table_header_row_0_cell_0_text"
+          role="columnheader"
+          title="Basic Text"
+        >
+          Basic Text
+        </th>
+        <th
+          colspan="1"
+          data-testid="table_header_row_0_cell_1_currency"
+          id="table_header_row_0_cell_1_currency"
+          role="columnheader"
+          title="Currency"
+        >
+          Currency
+        </th>
+        <th
+          colspan="1"
+          data-testid="table_header_row_0_cell_2_badge"
+          id="table_header_row_0_cell_2_badge"
+          role="columnheader"
+          title="Badge"
+        >
+          Badge
+        </th>
+        <th
+          colspan="1"
+          data-testid="table_header_row_0_cell_3_icon"
+          id="table_header_row_0_cell_3_icon"
+          role="columnheader"
+          title="Icon"
+        >
+          Icon
+        </th>
+        <th
+          colspan="1"
+          data-testid="table_header_row_0_cell_4_icon2"
+          id="table_header_row_0_cell_4_icon2"
+          role="columnheader"
+          title="icon2"
+        >
+          icon2
+        </th>
+        <th
+          colspan="1"
+          data-testid="table_header_row_0_cell_5_date"
+          id="table_header_row_0_cell_5_date"
+          role="columnheader"
+          title="Date"
+        >
+          Date
+        </th>
+        <th
+          colspan="1"
+          data-testid="table_header_row_0_cell_6_actions"
+          id="table_header_row_0_cell_6_actions"
+          role="columnheader"
+          title="Actions"
+        >
+          Actions
+        </th>
+      </tr>
+    </thead>
+    <tbody
+      role="rowgroup"
+    >
+      <tr
+        class="av-grid-row-even"
+        data-testid="table_row_0"
+        id="table_row_0"
+        role="row"
+      >
+        <td
+          data-testid="table_row_0_cell_0"
+          id="table_row_0_cell_0"
+        >
+          My Text Field
+        </td>
+        <td
+          data-testid="table_row_0_cell_1"
+          id="table_row_0_cell_1"
+        >
+          <span
+            title="$43.08"
+          >
+            $43.08
+          </span>
+        </td>
+        <td
+          data-testid="table_row_0_cell_2"
+          id="table_row_0_cell_2"
+        >
+          <span
+            class="badge badge-badge-success"
+            title="badge field"
+          >
+            badge field
+          </span>
+        </td>
+        <td
+          data-testid="table_row_0_cell_3"
+          id="table_row_0_cell_3"
+        >
+          <i
+            aria-hidden="true"
+            class="icon icon-doc-alt"
+            title="View Notes"
+          />
+        </td>
+        <td
+          data-testid="table_row_0_cell_4"
+          id="table_row_0_cell_4"
+        >
+          <i
+            aria-hidden="true"
+            class="icon icon-doc-alt"
+            title="test"
+          />
+        </td>
+        <td
+          data-testid="table_row_0_cell_5"
+          id="table_row_0_cell_5"
+        >
+          <span
+            title="02/16/1956"
+          >
+            02/16/1956
+          </span>
+        </td>
+        <td
+          data-testid="table_row_0_cell_6"
+          id="table_row_0_cell_6"
+        >
+          <div
+            class="dropdown-action-menu dropleft dropdown"
+            id="table_row_action_menu_1"
+          >
+            <button
+              aria-expanded="false"
+              aria-haspopup="true"
+              class="btn btn-ghost btn btn-secondary"
+              data-boundary="viewport"
+              id="table_row_action_menu_1_dropdown_toggle"
+              type="button"
+            >
+              <i
+                aria-hidden="true"
+                class="icon icon-menu"
+                id="table_row_action_menu_1_dropdown_toggle_icon"
+              />
+            </button>
+            <div
+              aria-hidden="true"
+              class="dropdown-action-menu dropdown-menu"
+              id="table_row_action_menu_1_dropdown_toggle_icon"
+              role="menu"
+              tabindex="-1"
+            >
+              <button
+                class="dropdown-item"
+                id="table_row_action_menu_item_0_action_action1"
+                role="menuitem"
+                tabindex="0"
+                type="button"
+              >
+                Action 1
+              </button>
+              <div
+                class="dropdown-divider"
+                id="table_row_action_menu_item_1_action_actionDivider"
+                tabindex="-1"
+              />
+              <button
+                class="dropdown-item"
+                id="table_row_action_menu_item_2_action_action2"
+                role="menuitem"
+                tabindex="0"
+                type="button"
+              >
+                Action 2
+              </button>
+            </div>
+          </div>
+          <i
+            aria-hidden="true"
+            class="icon icon-file-pdf"
+            data-testid="table_row_action_menu_item_1_primaryAction"
+            style="cursor: pointer;"
+            title="View File"
+          />
+        </td>
+      </tr>
+      <tr
+        class="av-grid-row-odd"
+        data-testid="table_row_1"
+        id="table_row_1"
+        role="row"
+      >
+        <td
+          data-testid="table_row_1_cell_0"
+          id="table_row_1_cell_0"
+        >
+          My Text Field
+        </td>
+        <td
+          data-testid="table_row_1_cell_1"
+          id="table_row_1_cell_1"
+        >
+          <span
+            title="$43.08"
+          >
+            $43.08
+          </span>
+        </td>
+        <td
+          data-testid="table_row_1_cell_2"
+          id="table_row_1_cell_2"
+        >
+          <span
+            class="badge badge-badge-success"
+            title="badge field"
+          >
+            badge field
+          </span>
+        </td>
+        <td
+          data-testid="table_row_1_cell_3"
+          id="table_row_1_cell_3"
+        />
+        <td
+          data-testid="table_row_1_cell_4"
+          id="table_row_1_cell_4"
+        />
+        <td
+          data-testid="table_row_1_cell_5"
+          id="table_row_1_cell_5"
+        >
+          <span
+            title="02/16/1990"
+          >
+            02/16/1990
+          </span>
+        </td>
+        <td
+          data-testid="table_row_1_cell_6"
+          id="table_row_1_cell_6"
+        >
+          <div
+            class="dropdown-action-menu dropleft dropdown"
+            id="table_row_action_menu_2"
+          >
+            <button
+              aria-expanded="false"
+              aria-haspopup="true"
+              class="btn btn-ghost btn btn-secondary"
+              data-boundary="viewport"
+              id="table_row_action_menu_2_dropdown_toggle"
+              type="button"
+            >
+              <i
+                aria-hidden="true"
+                class="icon icon-menu"
+                id="table_row_action_menu_2_dropdown_toggle_icon"
+              />
+            </button>
+            <div
+              aria-hidden="true"
+              class="dropdown-action-menu dropdown-menu"
+              id="table_row_action_menu_2_dropdown_toggle_icon"
+              role="menu"
+              tabindex="-1"
+            >
+              <div
+                class="dropdown-divider"
+                id="table_row_action_menu_item_1_action_actionDivider"
+                tabindex="-1"
+              />
+              <button
+                class="dropdown-item"
+                id="table_row_action_menu_item_2_action_action2"
+                role="menuitem"
+                tabindex="0"
+                type="button"
+              >
+                Action 2
+              </button>
+            </div>
+          </div>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+`;
+
 exports[`Table should render basic table 1`] = `
 <div>
   <table
@@ -952,6 +1264,7 @@ exports[`Table should render with formatted cells 1`] = `
           <i
             aria-hidden="true"
             class="icon icon-file-pdf"
+            data-testid="table_row_action_menu_item_1_primaryAction"
             style="cursor: pointer;"
             title="View File"
           />
@@ -1053,12 +1366,6 @@ exports[`Table should render with formatted cells 1`] = `
               </button>
             </div>
           </div>
-          <i
-            aria-hidden="true"
-            class="icon icon-file-pdf"
-            style="cursor: pointer;"
-            title="View File"
-          />
         </td>
       </tr>
     </tbody>

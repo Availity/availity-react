@@ -36,6 +36,7 @@ const ActionCell = <T extends IdType>({
         </TableActionMenu>
         {primaryAction && isPrimaryActionVisible && (
           <Icon
+            data-testid={`table_row_action_menu_item_${original.id}_primaryAction`}
             name={primaryAction.iconName}
             title={primaryAction.title}
             onClick={() => primaryAction.onClick(original)}
