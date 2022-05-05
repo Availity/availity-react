@@ -18,7 +18,7 @@ const columns = [
   {
     Header: 'Column 2',
     accessor: 'column2',
-  },s
+  },
   {
     Header: 'Column 3',
     accessor: 'column3',
