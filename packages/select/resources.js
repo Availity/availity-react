@@ -2,6 +2,7 @@ import { avCodesApi, avNavigationApi, avPermissionsApi, avProvidersApi, avUserAp
 
 import ResourceSelect from './src/ResourceSelect';
 import AvOrganizationSelect from './custom-resources/AvOrganizationSelect';
+import AvPayerSelect from './custom-resources/AvPayerSelect';
 import AvRegionSelect from './custom-resources/AvRegionSelect';
 
 const AvCodeSelect = ResourceSelect.create({
@@ -41,6 +42,7 @@ export {
   AvCodeSelect,
   AvNavigationSelect,
   AvOrganizationSelect,
+  AvPayerSelect,
   AvPermissionSelect,
   AvProviderSelect,
   AvRegionSelect,

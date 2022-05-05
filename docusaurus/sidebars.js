@@ -204,6 +204,7 @@ module.exports = {
               'form/select/components/resource-select',
               'form/select/components/region-select',
               'form/select/components/organization-select',
+              'form/select/components/payer-select',
             ],
           },
           {
