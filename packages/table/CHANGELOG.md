@@ -3,6 +3,21 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# 0.4.0 (2022-05-05)
+
+
+### Features
+
+* **table:** add customizable columns popover ([31e1d06](https://github.com/Availity/availity-react/commit/31e1d061d158d37bbfea5d2de08d7ca4d0ba49a4))
+* **table:** fix additional content ([380aeee](https://github.com/Availity/availity-react/commit/380aeee2b0dce4344988385696277b6d5bb2cb0d))
+* **table:** fixes with story ([ea0df82](https://github.com/Availity/availity-react/commit/ea0df826d0f9aca3818cddfb52c948694efb2c05))
+* **table:** icon color tweak ([6f3c6de](https://github.com/Availity/availity-react/commit/6f3c6defe8d4eab6b82431433d177889575932ad))
+* **table:** styling ([50e1d86](https://github.com/Availity/availity-react/commit/50e1d8679b2a38e81e2258e79e43e594a44dcc8b))
+
+
+
+
+
 ## [0.3.2](https://github.com/Availity/availity-react/compare/@availity/table@0.3.1...@availity/table@0.3.2) (2022-02-17)
 
 ### Bug Fixes
