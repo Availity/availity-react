@@ -22,7 +22,7 @@ const TableControls = ({ id, disabled, children, ...rest }: Props): JSX.Element 
     return null;
   }
   return (
-    <div id={id} className="table-controls" {...rest}>
+    <div id={id} data-testid="test-controls-container" className="table-controls" {...rest}>
       <Form inline>
         {childElements?.map((child: React.ReactNode, index: number) => {
           if (!isValidElement(child)) {

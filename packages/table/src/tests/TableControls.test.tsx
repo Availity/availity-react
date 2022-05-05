@@ -73,6 +73,17 @@ describe('TableControls', () => {
     expect(container).toMatchSnapshot();
   });
 
+  test('should not render table controls when there is no table wrapper', async () => {
+    const { queryByTestId } = render(
+      <TableControls>
+        <BulkTableActions bulkActions={bulkActions} />
+      </TableControls>
+    );
+
+    const tableControlsEl = await waitFor(() => queryByTestId('test-controls-container'));
+    expect(tableControlsEl).toBeNull();
+  });
+
   test('should render table controls with two children', () => {
     const { container } = render(
       <Table data={basicData} columns={basicColumns}>

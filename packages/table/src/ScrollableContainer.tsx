@@ -7,7 +7,7 @@ type Props = {
 
 const ScrollableContainer = ({ id, children, ...rest }: Props): JSX.Element => (
   <div id={id} className="av-scrollable-table-wrapper" {...rest}>
-    {Array.isArray(children) && children.map((child) => cloneElement(child, { scrollable: 'true' }))}
+    {Array.isArray(children) && children.map((child, index) => cloneElement(child, { scrollable: 'true', key: index.toString() }))}
 
     {!Array.isArray(children) && isValidElement(children) && cloneElement(children, { scrollable: 'true' })}
   </div>

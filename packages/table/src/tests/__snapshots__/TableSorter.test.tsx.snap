@@ -4,6 +4,7 @@ exports[`TableSorter should render sort options in dropdown menu 1`] = `
 <div>
   <div
     class="table-controls"
+    data-testid="test-controls-container"
   >
     <form
       class="form-inline"
@@ -71,6 +72,7 @@ exports[`TableSorter should render table Sorter 1`] = `
 <div>
   <div
     class="table-controls"
+    data-testid="test-controls-container"
   >
     <form
       class="form-inline"
@@ -142,6 +144,7 @@ exports[`TableSorter should show ascending icon 1`] = `
 <div>
   <div
     class="table-controls"
+    data-testid="test-controls-container"
   >
     <form
       class="form-inline"
@@ -209,6 +212,7 @@ exports[`TableSorter should show descending icon 1`] = `
 <div>
   <div
     class="table-controls"
+    data-testid="test-controls-container"
   >
     <form
       class="form-inline"

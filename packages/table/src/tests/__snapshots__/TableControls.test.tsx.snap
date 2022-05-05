@@ -4,6 +4,7 @@ exports[`TableControls should disable all records when disabled is false 1`] = `
 <div>
   <div
     class="table-controls"
+    data-testid="test-controls-container"
   >
     <form
       class="form-inline"
@@ -139,6 +140,7 @@ exports[`TableControls should disable all records when disabled is true 1`] = `
 <div>
   <div
     class="table-controls"
+    data-testid="test-controls-container"
   >
     <form
       class="form-inline"
@@ -279,6 +281,7 @@ exports[`TableControls should render table controls with one child 1`] = `
 <div>
   <div
     class="table-controls"
+    data-testid="test-controls-container"
   >
     <form
       class="form-inline"
@@ -356,6 +359,7 @@ exports[`TableControls should render table controls with two children 1`] = `
 <div>
   <div
     class="table-controls"
+    data-testid="test-controls-container"
   >
     <form
       class="form-inline"
