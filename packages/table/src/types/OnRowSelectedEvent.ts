@@ -1,3 +1,5 @@
-export interface OnRowSelectedEvent {
-  selectedRows: string[] | number[];
+import { IdType, Row } from "./ReactTable";
+
+export interface OnRowSelectedEvent<T extends IdType> {
+  selectedRows: Row<T>[]
 }

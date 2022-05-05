@@ -2,10 +2,9 @@ import React from 'react';
 import { render, fireEvent, waitFor } from '@testing-library/react';
 import basicData from './data/basicData.json';
 import TableControls from '../Controls/TableControls';
-import TableProvider from '../TableProvider';
 import { Column } from '../types/ReactTable';
 import TableSorter from '../Controls/TableSorter';
-import { TableContext } from '../TableContext';
+import Table from '../Table';
 
 const basicColumns = [
   {
@@ -29,11 +28,11 @@ const basicColumns = [
 describe('TableSorter', () => {
   test('should render table Sorter', async () => {
     const { container, getByTestId } = render(
-      <TableProvider data={basicData} columns={basicColumns}>
+      <Table sortable data={basicData} columns={basicColumns}>
         <TableControls>
           <TableSorter />
         </TableControls>
-      </TableProvider>
+      </Table>
     );
 
     expect(container).toBeDefined();
@@ -44,27 +43,19 @@ describe('TableSorter', () => {
   });
 
   test('should render sort options in dropdown menu', async () => {
-    const tableInstanceMock = {
-      selectedFlatRows: [basicData[0]],
-      data: basicData,
-      columns: basicColumns,
-      state: {
-        sortBy: [{ id: 'first_name', desc: true }],
-      },
-    };
-
     const { container, getByTestId } = render(
-      <TableContext.Provider
-        value={{
-          instance: tableInstanceMock,
-          sortable: true,
-          sortableColumns: [{ value: 'first_name', label: ' First name' }],
+      <Table
+        sortable
+        data={basicData}
+        columns={basicColumns}
+        initialState={{
+          sortBy: [{ id: 'first_name', desc: true }],
         }}
       >
         <TableControls>
           <TableSorter />
         </TableControls>
-      </TableContext.Provider>
+      </Table>
     );
 
     expect(container).toBeDefined();
@@ -78,27 +69,19 @@ describe('TableSorter', () => {
   });
 
   test('should show descending icon', async () => {
-    const tableInstanceMock = {
-      selectedFlatRows: [basicData[0]],
-      data: basicData,
-      columns: basicColumns,
-      state: {
-        sortBy: [{ id: 'first_name', desc: true }],
-      },
-    };
-
     const { container, getByTestId } = render(
-      <TableContext.Provider
-        value={{
-          instance: tableInstanceMock,
-          sortable: true,
-          sortableColumns: [{ value: 'first_name', label: ' First name' }],
+      <Table
+        initialState={{
+          sortBy: [{ id: 'first_name', desc: true }],
         }}
+        sortable
+        data={basicData}
+        columns={basicColumns}
       >
         <TableControls>
           <TableSorter />
         </TableControls>
-      </TableContext.Provider>
+      </Table>
     );
 
     expect(container).toBeDefined();
@@ -110,27 +93,19 @@ describe('TableSorter', () => {
   });
 
   test('should show ascending icon', async () => {
-    const tableInstanceMock = {
-      selectedFlatRows: [basicData[0]],
-      data: basicData,
-      columns: basicColumns,
-      state: {
-        sortBy: [{ id: 'first_name', desc: false }],
-      },
-    };
-
     const { container, getByTestId } = render(
-      <TableContext.Provider
-        value={{
-          instance: tableInstanceMock,
-          sortable: true,
-          sortableColumns: [{ value: 'first_name', label: ' First name' }],
+      <Table
+        initialState={{
+          sortBy: [{ id: 'first_name', desc: false }],
         }}
+        sortable
+        data={basicData}
+        columns={basicColumns}
       >
         <TableControls>
           <TableSorter />
         </TableControls>
-      </TableContext.Provider>
+      </Table>
     );
 
     expect(container).toBeDefined();
@@ -143,30 +118,13 @@ describe('TableSorter', () => {
 
   test('should sort on dropdown select', async () => {
     const onSort = jest.fn();
-    const toggleSortBy = jest.fn();
-
-    const tableInstanceMock = {
-      selectedFlatRows: [basicData[0]],
-      data: basicData,
-      columns: basicColumns,
-      state: {
-        sortBy: [{ id: 'first_name', desc: false }],
-      },
-      toggleSortBy,
-    };
 
     const { getByTestId } = render(
-      <TableContext.Provider
-        value={{
-          instance: tableInstanceMock,
-          sortable: true,
-          sortableColumns: [{ value: 'first_name', label: ' First name' }],
-        }}
-      >
+      <Table sortable data={basicData} columns={basicColumns}>
         <TableControls>
           <TableSorter onSort={onSort} />
         </TableControls>
-      </TableContext.Provider>
+      </Table>
     );
 
     const btnDropdownToggle = await waitFor(() => getByTestId('sorter_toggle'));
@@ -180,36 +138,18 @@ describe('TableSorter', () => {
 
     await waitFor(() => {
       expect(onSort).toHaveBeenCalledTimes(1);
-      expect(toggleSortBy).toHaveBeenCalledTimes(1);
     });
   });
 
   test('should populate sortOptions when provided', async () => {
     const onSort = jest.fn();
-    const toggleSortBy = jest.fn();
-
-    const tableInstanceMock = {
-      selectedFlatRows: [basicData[0]],
-      data: basicData,
-      columns: basicColumns,
-      state: {
-        sortBy: [{ id: 'first_name', desc: false }],
-      },
-      toggleSortBy,
-    };
 
     const { getByTestId } = render(
-      <TableContext.Provider
-        value={{
-          instance: tableInstanceMock,
-          sortable: true,
-          sortableColumns: [{ value: 'first_name', label: ' First name' }],
-        }}
-      >
+      <Table sortable data={basicData} columns={basicColumns}>
         <TableControls>
-          <TableSorter onSort={onSort} sortOptions={[{ value: 'last_name', label: ' Last name' }]} />
+          <TableSorter onSort={onSort} sortOptions={[{ value: 'last_name', label: 'Last name' }]} />
         </TableControls>
-      </TableContext.Provider>
+      </Table>
     );
 
     const btnDropdownToggle = await waitFor(() => getByTestId('sorter_toggle'));

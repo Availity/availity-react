@@ -1,6 +1,5 @@
 import React from 'react';
 import classNames from 'classnames';
-import { useTableContext } from './TableContext';
 import { ExtendedTableHeader, IdType } from './types/ReactTable';
 import { TableSort } from './types/TableSort';
 
@@ -9,13 +8,23 @@ type Props<T extends IdType> = {
   column: ExtendedTableHeader<T>;
   onSort?: (sortBy: TableSort[]) => void;
   children: React.ReactNode | React.ReactNode[];
+
+  scrollable?: boolean;
+  sortable?: boolean;
+  manualSortBy?: boolean;
 } & React.HTMLAttributes<HTMLElement>;
 
-const TableHeaderCell = <T extends IdType>({ column, children, onSort, ...rest }: Props<T>): JSX.Element => {
-  const { scrollable, sortable, instance } = useTableContext();
+const TableHeaderCell = <T extends IdType>({
+  column,
+  children,
+  onSort,
 
-  const { manualSortBy } = instance;
+  scrollable,
+  sortable,
+  manualSortBy,
 
+  ...rest
+}: Props<T>): JSX.Element => {
   const sort = () => {
     column.toggleSortBy(!column.isSortedDesc, false);
     if (onSort) {
@@ -45,7 +54,7 @@ const TableHeaderCell = <T extends IdType>({ column, children, onSort, ...rest }
 
   return (
     <th {...column.getHeaderProps(getHeaderColumnProps(column))} {...getOnClick()} {...rest}>
-      {children}
+      <>{children}</>
     </th>
   );
 };

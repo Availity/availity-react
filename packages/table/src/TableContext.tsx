@@ -1,23 +1,40 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import React, { useContext } from 'react';
-import { TableSort, TableSortOption } from './types';
+import { OnRowSelectedEvent, OnTableClickEvent, TableSort, TableSortOption } from './types';
+import { Cell, Row, RowProps } from './types/ReactTable';
+
+type HeaderProps = {
+  sticky: boolean;
+} & React.HTMLAttributes<HTMLElement>;
 
 export type AvTableContext = {
-  scrollable?: boolean;
-  setScrollable?: React.Dispatch<React.SetStateAction<boolean | undefined>>;
-  sortable?: boolean;
+  id?: string;
+  tableProps?: React.HTMLAttributes<HTMLElement>;
+  bodyProps?: React.HTMLAttributes<HTMLElement>;
+  headerProps?: HeaderProps;
+  getCellProps: (cell: Cell<Record<string, any>>) => React.HTMLAttributes<HTMLTableCellElement>;
+  getRowProps: (row: Row<Record<string, any>>) => RowProps;
+  onCellClick?: (event: OnTableClickEvent<HTMLElement, any>) => void;
+  onRowClick?: (event: OnTableClickEvent<HTMLElement, any>) => void;
+  onRowSelected?: (event: OnRowSelectedEvent<any>) => void;
+  onSort?: (sortBy: TableSort[]) => void;
+  getCanSelectRow?: (record: any) => boolean;
   AdditionalContent?: React.ElementType;
   additionalContentProps?: Record<string, string | number | boolean | undefined | null>;
-  toggleSelectAll?: () => void;
-  sortBy?: TableSort;
-  sortableColumns?: TableSortOption[];
+  scrollable?: boolean;
   selectable?: boolean;
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  sortable?: boolean;
+  paged?: boolean;
+  sortableColumns?: TableSortOption[];
   instance?: any;
+  setInstance?: React.Dispatch<React.SetStateAction<any>>;
 };
 
 export const TableContext = React.createContext<AvTableContext>({
   scrollable: false,
   sortable: false,
+  getRowProps: () => ({} as RowProps),
+  getCellProps: () => ({} as React.HTMLAttributes<HTMLTableCellElement>),
 });
 
 export const useTableContext = (): AvTableContext => useContext(TableContext);

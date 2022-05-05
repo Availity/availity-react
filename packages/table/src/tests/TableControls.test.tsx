@@ -4,9 +4,9 @@ import every from 'lodash/every';
 import basicData from './data/basicData.json';
 import TableControls from '../Controls/TableControls';
 import BulkTableActions from '../Controls/BulkTableActions';
-import TableProvider from '../TableProvider';
 import { Column } from '../types/ReactTable';
 import TableSorter from '../Controls/TableSorter';
+import Table from '../Table';
 
 const basicColumns = [
   {
@@ -62,25 +62,36 @@ const bulkActions = [
 describe('TableControls', () => {
   test('should render table controls with one child', () => {
     const { container } = render(
-      <TableProvider data={basicData} columns={basicColumns}>
+      <Table data={basicData} columns={basicColumns}>
         <TableControls>
           <BulkTableActions bulkActions={bulkActions} />
         </TableControls>
-      </TableProvider>
+      </Table>
     );
 
     expect(container).toBeDefined();
     expect(container).toMatchSnapshot();
   });
 
+  test('should not render table controls when there is no table wrapper', async () => {
+    const { queryByTestId } = render(
+      <TableControls>
+        <BulkTableActions bulkActions={bulkActions} />
+      </TableControls>
+    );
+
+    const tableControlsEl = await waitFor(() => queryByTestId('test-controls-container'));
+    expect(tableControlsEl).toBeNull();
+  });
+
   test('should render table controls with two children', () => {
     const { container } = render(
-      <TableProvider data={basicData} columns={basicColumns}>
+      <Table data={basicData} columns={basicColumns}>
         <TableControls>
           <BulkTableActions bulkActions={bulkActions} />
           <TableSorter />
         </TableControls>
-      </TableProvider>
+      </Table>
     );
 
     expect(container).toBeDefined();
@@ -89,12 +100,12 @@ describe('TableControls', () => {
 
   test('should disable all records when disabled is true', async () => {
     const { container, getByTestId } = render(
-      <TableProvider data={basicData} columns={basicColumns}>
+      <Table data={basicData} columns={basicColumns}>
         <TableControls disabled>
           <BulkTableActions bulkActions={bulkActions} />
           <TableSorter />
         </TableControls>
-      </TableProvider>
+      </Table>
     );
 
     expect(container).toBeDefined();
@@ -111,12 +122,12 @@ describe('TableControls', () => {
 
   test('should disable all records when disabled is false', async () => {
     const { container, getByTestId } = render(
-      <TableProvider data={basicData} columns={basicColumns}>
+      <Table data={basicData} columns={basicColumns}>
         <TableControls>
           <BulkTableActions bulkActions={bulkActions} />
           <TableSorter />
         </TableControls>
-      </TableProvider>
+      </Table>
     );
 
     expect(container).toBeDefined();
