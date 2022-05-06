@@ -1,11 +1,11 @@
 import React, { useState } from 'react';
 import { fireEvent, render, waitFor } from '@testing-library/react';
-import { avRegionsApi, avProvidersApi, avCodesApi, AvApi } from '@availity/api-axios';
+import { avRegionsApi, avProvidersApi, avCodesApi } from '@availity/api-axios';
 import { Button } from 'reactstrap';
 import { Form } from '@availity/form';
 
 import { ResourceSelect } from '..';
-import { AvPayerSelect, AvProviderSelect, AvRegionSelect } from '../resources';
+import { AvProviderSelect, AvRegionSelect } from '../resources';
 
 jest.mock('@availity/api-axios');
 
@@ -1362,126 +1362,6 @@ describe('Custom Resources', () => {
       expect(getAllByText('Florida')).toBeDefined();
       expect(queryByText('Texas')).toBeNull();
       expect(queryByText('Washington')).toBeNull();
-    });
-  });
-  
-  describe('AvPayerSelect', () => {
-    const avExtendedPayersApi = new AvApi({ path: '/api/internal', name: 'extended-payers'});
-    it('filters when a search value is typed', async () => {
-      avExtendedPayersApi.all.mockResolvedValueOnce({
-        data: {
-          extendedAccessPayers: [
-            {
-              id: '11232',
-              payerName: 'Test Payer',
-              payerId: '4321',
-            },
-            {
-              id: '12232',
-              payerName: 'Healthy Payer',
-              payerId: '5321',
-            },
-            {
-              id: '13232',
-              payerName: 'Last Payer',
-              payerId: '6321',
-            },
-          ],
-        },
-      });
-
-      avExtendedPayersApi.getResult = null;
-
-      // eslint-disable-next-line react/prop-types
-      const PayerComponent = ({ payerProps }) => (
-        <Form
-          initialValues={{
-            'test-form-input': undefined,
-          }}
-          onSubmit={onSubmit}
-        >
-          <AvPayerSelect {...payerProps} />
-          <Button type="submit">Submit</Button>
-        </Form>
-      );
-
-      const payerProps = {
-        name: 'test-form-input',
-        classNamePrefix: 'test__payer',
-        parameters: {
-          region: 'FL',
-          tranTypeCode:'1',
-        },
-        customerId: '12345',
-      };
-
-      const { container, getByText, queryByText } = render(<PayerComponent payerProps={payerProps} />);
-
-      expect(avExtendedPayersApi.all).toHaveBeenCalled();
-
-      const payerComp = container.querySelector('.test__payer__control');
-      const payerInput = container.querySelector('.test__payer__input');
-      fireEvent.keyDown(payerComp, { key: 'ArrowDown', keyCode: 40 });
-      fireEvent.keyDown(payerComp, { key: 'Enter', keyCode: 13 });
-
-      await waitFor(() => expect(getByText('Healthy Payer')).toBeDefined());
-
-      fireEvent.keyDown(payerInput, {
-        key: 'l',
-        keyCode: 76,
-      });
-
-      waitFor(async () => {
-        const payerOptionLP = getByText('Last Payer');
-        fireEvent.click(payerOptionLP);
-        expect(queryByText('Test Payer')).toBeNull();
-
-        fireEvent.click(getByText('Submit'));
-
-        await waitFor(() => {
-          expect(onSubmit).toHaveBeenCalledWith(
-            expect.objectContaining({
-              'test-form-input': {
-                id: '13232',
-                payerName: 'Last Payer',
-                payerId: '6321',
-              },
-            }),
-            expect.anything()
-          );
-        });
-      });
-
-      // uses the new filter to search by id
-      fireEvent.keyDown(payerInput, {
-        key: 'h',
-        keyCode: 72,
-      });
-      fireEvent.keyDown(payerInput, {
-        key: 'l',
-        keyCode: 76,
-      });
-
-      waitFor(async () => {
-        const payerOptionHP = getByText('Healthy Payer');
-        fireEvent.click(payerOptionHP);
-        expect(queryByText('Test Payer')).toBeNull();
-
-        fireEvent.click(getByText('Submit'));
-
-        await waitFor(() => {
-          expect(onSubmit).toHaveBeenCalledWith(
-            expect.objectContaining({
-              'test-form-input': {
-                id: '12232',
-                payerName: 'Healthy Payer',
-                payerId: '5321',
-              },
-            }),
-            expect.anything()
-          );
-        });
-      });
     });
   });
 });

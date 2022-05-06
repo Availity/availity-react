@@ -7,6 +7,7 @@ import { ResourceSelect } from '..';
 const extendedPayersApi = new AvApi({ path: '/api/internal', name: 'extended-payers'});
 
 extendedPayersApi.all = parameters => { extendedPayersApi.query({params: { state: parameters.region, transactionType: parameters.tranTypeCode }, headers: {'X-Availity-Customer-ID': parameters.customerId}})};
+extendedPayersApi.defaultConfig = { name: "extended-payers"};
 
 const PayerSelect = ResourceSelect.create({
     resource: extendedPayersApi,
