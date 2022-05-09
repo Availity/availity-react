@@ -1,0 +1,108 @@
+{
+    "totalCount": 19,
+    "count": 19,
+    "offset": 0,
+    "limit": 300,
+    "links": {
+        "self": {
+            "href": "https://qa-apps.availity.com/api/internal/v1/extended-payers?state=FL&transactionType=EBREACT"
+        }
+    },
+    "extendedAccessPayers": [
+        {
+            "id": "17178",
+            "payerName": "ALLEGIANCE BENEFIT PLAN",
+            "payerId": "81040"
+        },
+        {
+            "id": "17179",
+            "payerName": "AVMED HEALTH PLANS",
+            "payerId": "592742907"
+        },
+        {
+            "id": "17142",
+            "payerName": "BRIGHT HEALTHCARE",
+            "payerId": "BRGHT"
+        },
+        {
+            "id": "17144",
+            "payerName": "DEVOTED HEALTH",
+            "payerId": "DEVOT"
+        },
+        {
+            "id": "17145",
+            "payerName": "EBMS",
+            "payerId": "81039"
+        },
+        {
+            "id": "17146",
+            "payerName": "FL MEDICAID",
+            "payerId": "77027"
+        },
+        {
+            "id": "17147",
+            "payerName": "FLORIDA HEALTH CARE PLANS",
+            "payerId": "593222484"
+        },
+        {
+            "id": "17148",
+            "payerName": "FRH-FREEDOM HEALTH INC.",
+            "payerId": "FRH01"
+        },
+        {
+            "id": "17150",
+            "payerName": "HEALTHCARE HIGHWAYS",
+            "payerId": "HCH01"
+        },
+        {
+            "id": "17151",
+            "payerName": "HEALTHCARE MANAGEMENT ADMINISTRATORS",
+            "payerId": "HMA01"
+        },
+        {
+            "id": "17152",
+            "payerName": "HEALTHEASE",
+            "payerId": "HEASE14163"
+        },
+        {
+            "id": "17153",
+            "payerName": "HEALTHEASE KIDS",
+            "payerId": "HKIDS14163"
+        },
+        {
+            "id": "17154",
+            "payerName": "HEALTHSCOPE BENEFITS INC",
+            "payerId": "71063"
+        },
+        {
+            "id": "17155",
+            "payerName": "HEALTHSCOPE BENEFITS INC AKA MORRIS ASSOCIATES",
+            "payerId": "35092"
+        },
+        {
+            "id": "17140",
+            "payerName": "HEALTHSCOPE HSB",
+            "payerId": "71084"
+        },
+        {
+            "id": "17163",
+            "payerName": "OPT-OPTIMUM HEALTHCARE INC.",
+            "payerId": "OPT01"
+        },
+        {
+            "id": "17164",
+            "payerName": "STAYWELL",
+            "payerId": "STAYW14163"
+        },
+        {
+            "id": "17165",
+            "payerName": "STAYWELL KIDS",
+            "payerId": "SKIDS14163"
+        },
+        {
+            "id": "17166",
+            "payerName": "USFAMILYHEALTHPLAN",
+            "payerId": "USFAMILYHEALTHPLAN"
+        }
+    ]
+}

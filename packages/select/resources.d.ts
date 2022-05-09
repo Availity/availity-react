@@ -89,6 +89,20 @@ export declare const AvOrganizationSelect: <
   props: AvOrganizationSelectProps<Option, IsMulti, Group>
 ) => JSX.Element;
 
+type Payer = {
+  id: string;
+  payerId: string;
+  payerName: string;
+};
+
+export declare const AvPayerSelect: <
+  Option = Payer,
+  IsMulti extends boolean = boolean,
+  Group extends GroupBase<Option> = GroupBase<Option>
+>(
+  props: PrebuiltResourceSelectProps<Option, IsMulti, Group> & { customerId: string }
+) => JSX.Element;
+
 type Permission = {
   id: string;
   description: string;
