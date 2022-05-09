@@ -269,7 +269,7 @@ const Example = () => (
       customerId={customerId}
       parameters={{
         region: 'FL',
-        tranTypeCode='1',
+        tranTypeCode: '1',
       }}
       label="Select a Payer"
       required
