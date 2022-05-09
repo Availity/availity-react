@@ -86,7 +86,6 @@ export const handlers = [
 
   // ExtendedPayers
   rest.get(routes.EXTENDEDPAYERS, (req, res, ctx) => res(delay(defaultDelay), ctx.status(200), ctx.json(extendedPayers))),
-  rest.post(routes.EXTENDEDPAYERS, (req, res, ctx) => res(delay(defaultDelay), ctx.status(200), ctx.json(extendedPayers))),
 
   // Providers
   rest.get(routes.PROVIDERS, (req, res, ctx) => res(delay(defaultDelay), ctx.status(200), ctx.json(providers))),
