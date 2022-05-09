@@ -95,6 +95,8 @@ export const FavoriteHeart = ({
     disabled || (!isLastClickedFavorite && (status === 'initLoading' || status === 'reloading'))
       ? 'not-allowed'
       : undefined;
+  
+  const tooltipContent = `${isFavorited ? 'Remove from' : 'Add to'} My Favorites`;
 
   return (
     <div className={`${css.root} ${disabled ? css.disabled : ''}`} style={{ height: size, width: size }}>
@@ -110,7 +112,7 @@ export const FavoriteHeart = ({
           : ''}
       </span>
 
-      <Tooltip content="Add to My Favorites" data-testid={`av-favorite-heart-${id}-tooltip`}>
+      <Tooltip content={tooltipContent} data-testid={`av-favorite-heart-${id}-tooltip`}>
         <input
           style={{ cursor, height: size, width: size }}
           className={css.input}
