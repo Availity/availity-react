@@ -60,6 +60,6 @@ Example: region: 'FL'
 
 #### `tranTypeCode: string`
 
-The `extended-payers` API from `aries` requires a `tranTypeCode` prop that must be a string. Currently only the following transaction type codes are supported `1, 2, 3, 5` by the backing API. This will be passed as a request param so that the results of the `all` call to `extended-payers` will be filtered, containing only payers that have either a security resource or EPDM route for the specified transaction type code.
+The `extended-payers` API from `aries` requires a `tranTypeCode` prop that must be a string. Currently only the following transaction type codes are supported `1, 2, 3, 5`. Additionally `EBREACT` has been added to support payer list for E&B react payers. by the backing API. This will be passed as a request param so that the results of the `all` call to `extended-payers` will be filtered, containing only payers that have either a security resource or EPDM route for the specified transaction type code.
 
 Example: tranTypeCode: '1'
