@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# 3.3.0 (2022-05-09)
+
+
+### Features
+
+* **favorites:** added remove content for tooltip and refactored tests to fix order bug and improve tests ([e58b5a0](https://github.com/Availity/availity-react/commit/e58b5a0026b406656f1e036534ae9a155a5665f8))
+
+
+
+
+
 # 3.2.0 (2022-05-03)
 
 

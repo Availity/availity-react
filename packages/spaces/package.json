@@ -1,6 +1,6 @@
 {
   "name": "@availity/spaces",
-  "version": "6.0.1",
+  "version": "6.0.2",
   "description": "Easy to use spaces components",
   "keywords": [
     "react",
@@ -40,7 +40,7 @@
   },
   "devDependencies": {
     "@availity/api-axios": "^6.0.0",
-    "@availity/favorites": "^3.2.0",
+    "@availity/favorites": "^3.3.0",
     "axios": "^0.21.1",
     "react": "^17.0.2",
     "react-dom": "^17.0.2",
