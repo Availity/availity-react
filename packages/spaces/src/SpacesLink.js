@@ -104,7 +104,7 @@ const Link = ({
     if (icons.navigation) return <Icon className={icons.navigation} id={`app-${icons.navigation}-icon-${id}`} />;
 
     return <Icon name="desktop" id={`app-desktop-icon-${id}`} />;
-  }, [icons.navigation, shortName]);
+  }, [icons.navigation, shortName, id]);
 
   const appIcon = useMemo(() => {
     if (!showAppIcon) return null;
@@ -121,7 +121,7 @@ const Link = ({
         {getIconTitle()}
       </AppIcon>
     );
-  }, [description, getIconTitle, icons.navigation, showAppIcon, showDescription, size, stacked]);
+  }, [description, getIconTitle, icons.navigation, showAppIcon, showDescription, size, stacked, id]);
 
   const favoriteIcon = useMemo(
     () =>
@@ -161,7 +161,7 @@ const Link = ({
           {showDate && <small id={`app-display-date-${id}`}>{getDisplayDate(activeDate)}</small>}
         </div>
       ),
-    [activeDate, isNew, showDate, showNew, stacked]
+    [activeDate, isNew, showDate, showNew, stacked, id]
   );
 
   if (isLoading) {
