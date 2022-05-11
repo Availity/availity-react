@@ -1,6 +1,6 @@
 {
   "name": "@availity/page-header",
-  "version": "11.2.3",
+  "version": "11.2.4",
   "description": "The standard page header for Availity Portal Applications",
   "keywords": [
     "react",
@@ -31,7 +31,7 @@
   },
   "devDependencies": {
     "@availity/api-axios": "^6.0.0",
-    "@availity/spaces": "^6.0.2",
+    "@availity/spaces": "^6.0.3",
     "@availity/training-link": "^1.4.2",
     "axios": "^0.21.1",
     "formik": "^2.2.8",
