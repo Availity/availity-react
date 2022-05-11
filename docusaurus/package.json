@@ -2,10 +2,8 @@
   "name": "@availity/dinosaurdocs",
   "version": "1.8.0",
   "private": true,
-  "workspaces": {
-    "nohoist": [
-      "**"
-    ]
+  "installConfig": {
+    "hoistingLimits": "none"
   },
   "scripts": {
     "build": "docusaurus build",
@@ -31,10 +29,10 @@
   "dependencies": {
     "@docusaurus/core": "2.0.0-alpha.70",
     "@docusaurus/preset-classic": "2.0.0-alpha.70",
-    "@mdx-js/react": "^1.5.8",
+    "@mdx-js/react": "^1.6.22",
     "clsx": "^1.1.1",
-    "react": "^17.0.2",
-    "react-dom": "^17.0.2"
+    "react": "^18.1.0",
+    "react-dom": "^18.1.0"
   },
   "prettier": {
     "printWidth": 80,
