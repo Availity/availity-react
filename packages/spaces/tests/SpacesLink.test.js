@@ -19,7 +19,7 @@ describe('SpacesLink', () => {
 
   it('renders link card from space', async () => {
     const space = {
-      id: '1',
+      id: 'encoded1',
       configurationId: '1',
       type: 'APPLICATION',
       name: 'An application',
@@ -43,7 +43,7 @@ describe('SpacesLink', () => {
         title={space.link.text}
         description
         analytics={{
-          'data-av-analytics-application-id': space.id,
+          'data-av-analytics-application-id': space.configurationId,
           'data-av-analytics-action': 'click',
           'data-av-analytics-value': space.link?.url,
           'data-av-analytics-label': space.name,
@@ -68,7 +68,7 @@ describe('SpacesLink', () => {
 
   it('renders link card from space with custom link tag', async () => {
     const space = {
-      id: '2',
+      id: 'encoded2',
       configurationId: '2',
       type: 'APPLICATION',
       name: 'An application',
@@ -100,7 +100,7 @@ describe('SpacesLink', () => {
 
   it('renders link card from space with no titleTag', async () => {
     const space = {
-      id: '3',
+      id: 'encoded3',
       configurationId: '3',
       type: 'APPLICATION',
       name: 'An application',
@@ -130,7 +130,7 @@ describe('SpacesLink', () => {
 
   it('renders link card from space with icon', async () => {
     const space = {
-      id: '4',
+      id: 'encoded4',
       configurationId: '4',
       type: 'APPLICATION',
       name: 'An application',
@@ -161,7 +161,7 @@ describe('SpacesLink', () => {
   });
   it('renders link card from space with icon and shortname', async () => {
     const space = {
-      id: '5',
+      id: 'encoded5',
       configurationId: '5',
       type: 'APPLICATION',
       name: 'An application',
@@ -193,7 +193,7 @@ describe('SpacesLink', () => {
 
   it('renders link card from space with icon from config', async () => {
     const space = {
-      id: '6',
+      id: 'encoded6',
       configurationId: '6',
       type: 'NAVIGATION',
       name: 'A navigation',
@@ -229,7 +229,7 @@ describe('SpacesLink', () => {
 
   it('renders link card from new space with new badge', async () => {
     const space = {
-      id: '7',
+      id: 'encoded7',
       configurationId: '7',
       type: 'NAVIGATION',
       name: 'A navigation',
@@ -262,7 +262,7 @@ describe('SpacesLink', () => {
 
   it('renders link card from new space with date', async () => {
     const space = {
-      id: '8',
+      id: 'encoded8',
       configurationId: '8',
       type: 'NAVIGATION',
       name: 'A navigation',
@@ -295,7 +295,7 @@ describe('SpacesLink', () => {
 
   it('renders link card from space with children', async () => {
     const space = {
-      id: '9',
+      id: 'encoded9',
       configurationId: '9',
       type: 'NAVIGATION',
       name: 'A navigation',
@@ -316,7 +316,7 @@ describe('SpacesLink', () => {
         clientId="my-client-id"
         title={space.link.text}
         analytics={{
-          'data-av-analytics-application-id': space.id,
+          'data-av-analytics-application-id': space.configurationId,
           'data-av-analytics-action': 'click',
           'data-av-analytics-value': space.link?.url,
           'data-av-analytics-label': space.name,
@@ -338,7 +338,7 @@ describe('SpacesLink', () => {
 
   it('renders link card from space with children function', async () => {
     const space = {
-      id: '10',
+      id: 'encoded10',
       configurationId: '10',
       type: 'NAVIGATION',
       name: 'A navigation',

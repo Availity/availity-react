@@ -89,6 +89,7 @@ const Link = ({
       images = {},
       colors = {},
       link,
+      configurationId,
       ...restLink
     } = {},
     props = {},
@@ -101,10 +102,11 @@ const Link = ({
     if (shortName) return shortName;
 
     // We have to pass `name` as `className` bc of how its stored in spaces
-    if (icons.navigation) return <Icon className={icons.navigation} id={`app-${icons.navigation}-icon-${id}`} />;
+    if (icons.navigation)
+      return <Icon className={icons.navigation} id={`app-${icons.navigation}-icon-${configurationId}`} />;
 
-    return <Icon name="desktop" id={`app-desktop-icon-${id}`} />;
-  }, [icons.navigation, shortName]);
+    return <Icon name="desktop" id={`app-desktop-icon-${configurationId}`} />;
+  }, [icons.navigation, shortName, configurationId]);
 
   const appIcon = useMemo(() => {
     if (!showAppIcon) return null;
@@ -116,26 +118,26 @@ const Link = ({
           top: showDescription && description && !stacked ? -5 : 0,
         }}
         size={size === undefined && stacked ? 'lg' : size}
-        id={`app-appIcon-${id}`}
+        id={`app-appIcon-${configurationId}`}
       >
         {getIconTitle()}
       </AppIcon>
     );
-  }, [description, getIconTitle, icons.navigation, showAppIcon, showDescription, size, stacked]);
+  }, [description, getIconTitle, icons.navigation, showAppIcon, showDescription, size, stacked, configurationId]);
 
   const favoriteIcon = useMemo(
     () =>
-      id &&
+      configurationId &&
       favorite && (
         <span
           className={classNames('d-table-cell align-middle', {
             'pr-2': !showAppIcon,
           })}
         >
-          <FavoriteHeart id={`app-favorite-${id}`} name={name} onChange={(_, e) => e.stopPropagation()} />
+          <FavoriteHeart id={configurationId} name={name} onChange={(_, e) => e.stopPropagation()} />
         </span>
       ),
-    [favorite, id, name, showAppIcon]
+    [favorite, configurationId, name, showAppIcon]
   );
 
   const dateInfo = useMemo(
@@ -153,19 +155,19 @@ const Link = ({
               className={classNames({
                 'mr-2': showDate,
               })}
-              id={`app-new-badge-${id}`}
+              id={`app-new-badge-${configurationId}`}
             >
               New!
             </Badge>
           )}
-          {showDate && <small id={`app-display-date-${id}`}>{getDisplayDate(activeDate)}</small>}
+          {showDate && <small id={`app-display-date-${configurationId}`}>{getDisplayDate(activeDate)}</small>}
         </div>
       ),
-    [activeDate, isNew, showDate, showNew, stacked]
+    [activeDate, isNew, showDate, showNew, stacked, configurationId]
   );
 
   if (isLoading) {
-    return <Loader id={`app-${id}-loading`} skeletonProps={skeletonProps} {...rest} />;
+    return <Loader id={`app-${configurationId}-loading`} skeletonProps={skeletonProps} {...rest} />;
   }
 
   Tag = getContainerTag(Tag, linkStyle);
@@ -222,9 +224,9 @@ const Link = ({
         {children
           ? renderChildren()
           : body && (
-              <Media body id={`${type}-${id}`} className="text-dark">
+              <Media body id={`${type}-${configurationId}`} className="text-dark">
                 <TitleTag
-                  id={`app-title-${id}`}
+                  id={`app-title-${configurationId}`}
                   className={classNames({
                     'mb-0': !showDescription || !description,
                     'pt-3': stacked,
@@ -247,7 +249,7 @@ const Link = ({
                     className={classNames('mt-1', {
                       'text-center': stacked,
                     })}
-                    id={`app-description-${id}`}
+                    id={`app-description-${configurationId}`}
                   >
                     {/* TODO: just rendering text, do we need markdown component? */}
                     <ReactMarkdown className="Card-text">
