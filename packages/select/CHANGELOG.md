@@ -3,6 +3,21 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# 2.10.0 (2022-05-11)
+
+
+### Features
+
+* **select:** add back unit test for extended payers api all call ([0d4a8cf](https://github.com/Availity/availity-react/commit/0d4a8cf27a184f31517b495a3b3e9faa96f0c708))
+* **select:** add custom select for payers through extended-payers api ([22eda92](https://github.com/Availity/availity-react/commit/22eda92850a870047bb5ab3df1a4b62297b392cb))
+* **select:** creating a resource select directly instead of making payer select to avoid null defaultconfig issues ([f81a1f6](https://github.com/Availity/availity-react/commit/f81a1f6622cc4fc8fc0bbfebfa46d20e788b0e54))
+* **select:** properly use all call instead of postGet ([42f8350](https://github.com/Availity/availity-react/commit/42f83503736aa5cc0597bf1ced584a768adcebf3))
+* **select:** remove redundant select unit test and update documentation ([40d6f90](https://github.com/Availity/availity-react/commit/40d6f90ef7b9777d9ea86cbd7571bf6d1e595240))
+
+
+
+
+
 ## [2.9.1](https://github.com/Availity/availity-react/compare/@availity/select@2.9.0...@availity/select@2.9.1) (2022-03-09)
 
 
