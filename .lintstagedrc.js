@@ -1,3 +1,4 @@
 module.exports = {
-  '*.js': ['eslint --fix', 'prettier --write'],
+  '*.js': ['yarn nx affected --target=lint --fix --files', 'prettier --write'],
+  '*.json': ['prettier --write'],
 };
