@@ -29,6 +29,7 @@ module.exports = {
         test: /\.(js|jsx|ts|tsx)$/,
         loader: require.resolve('babel-loader'),
         options: {
+          sourceType: 'unambiguous',
           presets: [['react-app', { flow: false, typescript: true }]],
         },
         include: new RegExp(`node_modules[/\\\\](?=(@availity)).*`),
