@@ -3,6 +3,7 @@ export const AXI_PERMISSIONS = '/api/internal/v1/axi-user-permissions';
 export const CODES = '/api/v1/codes';
 export const CUSTOM = '/api/v1/my-custom-resource';
 export const DISCLAIMERS = '/api/sdk/platform/v1/disclaimers';
+export const EXTENDEDPAYERS = '/api/internal/v1/extended-payers';
 export const LOG = '/api/v1/log-messages';
 export const NAVIGATION = '/api/sdk/platform/v1/navigation/spaces';
 export const NOTIFICATIONS = '/api/v1/notificatons';

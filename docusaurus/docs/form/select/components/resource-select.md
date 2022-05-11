@@ -184,6 +184,7 @@ The following components can be imported by name from `@availity/select/resource
 - AvNavigationSelect
 - AvUserSelect
 - AvCodeSelect
+- AvPayerSelect
 
 These components are `ResourceSelect` with pre-configured `resource`, `valueKey`, and `labelKey` to make it easy to use. All of the props for `ResourceSelect` can be provided to override the defaults of these pre-made components. For some of these components, you will want to provide the `customerId` prop.
 
@@ -200,6 +201,7 @@ import {
   AvNavigationSelect,
   AvUserSelect,
   AvCodeSelect,
+  AvPayerSelect,
 } from '@availity/select/resources';
 import * as yup from 'yup';
 
@@ -212,6 +214,7 @@ const schema = yup.object().shape({
   user: yup.string().required('This field is required.'),
   code: yup.string().required('This field is required.'),
   patient: yup.string().required('This field is required.'),
+  payer: yup.string().required('This field is required.'),
 });
 
 const Example = () => (
@@ -225,6 +228,7 @@ const Example = () => (
       user: null,
       code: null,
       patient: null,
+      payer: null,
     }}
     onSubmit={(values) => apiResource.submit(values)}
     validationSchema={schema}
@@ -258,6 +262,18 @@ const Example = () => (
     />
     <AvUserSelect name="user" label="Select a User" customerId={customerId} />
     <AvCodeSelect name="code" label="Select a Code" />
+    <AvPayerSelect
+      name="payer"
+      requiredParams={['region', 'tranTypeCode']}
+      watchParams={['region', 'tranTypeCode']}
+      customerId={customerId}
+      parameters={{
+        region: 'FL',
+        tranTypeCode: '1',
+      }}
+      label="Select a Payer"
+      required
+    />
   </Form>
 );
 ```

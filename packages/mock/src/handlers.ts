@@ -12,6 +12,7 @@ import navigationSpaces from './data/navigation-spaces.json';
 import organizations from './data/organizations.json';
 import pagination from './data/pagination.json';
 import patients from './data/patients.json';
+import extendedPayers from './data/extended-payers.json';
 import permissions from './data/permissions.json';
 import providers from './data/providers.json';
 import region from './data/region.json';
@@ -82,6 +83,9 @@ export const handlers = [
   rest.post(routes.ORGANIZATIONS, (req, res, ctx) =>
     res(delay(defaultDelay), ctx.status(200), ctx.json(organizations))
   ),
+
+  // ExtendedPayers
+  rest.get(routes.EXTENDEDPAYERS, (req, res, ctx) => res(delay(defaultDelay), ctx.status(200), ctx.json(extendedPayers))),
 
   // Providers
   rest.get(routes.PROVIDERS, (req, res, ctx) => res(delay(defaultDelay), ctx.status(200), ctx.json(providers))),
