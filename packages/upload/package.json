@@ -20,6 +20,9 @@
   "license": "MIT",
   "main": "index.js",
   "types": "index.d.ts",
+  "scripts": {
+    "publish": "yarn npm publish --tolerate-republish --access public"
+  },
   "dependencies": {
     "@availity/progress": "workspace:*",
     "prop-types": "^15.8.1",

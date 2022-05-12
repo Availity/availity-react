@@ -24,7 +24,8 @@
     "generate-features-json": "bin.js"
   },
   "scripts": {
-    "feature": "generate-features-json . path-to-dist"
+    "feature": "generate-features-json . path-to-dist",
+    "publish": "yarn npm publish --tolerate-republish --access public"
   },
   "dependencies": {
     "fs-extra": "^9.1.0",

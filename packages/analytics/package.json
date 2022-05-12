@@ -20,6 +20,9 @@
   "author": "Kyle Gray <kyle.gray@gmail.com>",
   "main": "src/index.js",
   "types": "src/index.d.ts",
+  "scripts": {
+    "publish": "yarn npm publish --tolerate-republish --access public"
+  },
   "dependencies": {
     "@availity/analytics-core": "^4.0.1",
     "prop-types": "^15.8.1"
