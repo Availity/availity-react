@@ -9,7 +9,7 @@ A select list that automatically loads and pages through regions when the user s
 ```jsx
 import React from 'react';
 import { Form } from '@availity/form';
-import { AvRegionSelect } from '@availity/select/resources';
+import { AvRegionSelect } from '@availity/select';
 import { Button } from 'reactstrap';
 import * as yup from 'yup';
 import '@availity/yup';
