@@ -1,12 +1,11 @@
 import React from 'react';
-import { render, fireEvent, waitFor, cleanup } from '@testing-library/react';
+import { render, fireEvent, waitFor } from '@testing-library/react';
 import { Button } from 'reactstrap';
 import * as yup from 'yup';
 import { DateField } from '@availity/date';
 import { SelectField } from '@availity/select';
-import { Form, Input, RadioGroup, Radio } from '..';
 
-afterEach(cleanup);
+import { Form, Input, RadioGroup, Radio } from '..';
 
 describe('Form', () => {
   test('renders', () => {

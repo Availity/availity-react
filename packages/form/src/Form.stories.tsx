@@ -6,9 +6,9 @@ import * as yup from 'yup';
 import { avDate } from '@availity/yup';
 import { Phone } from '@availity/phone';
 import { DateField } from '@availity/date';
-import { SelectField } from '@availity/select';
+// import { SelectField } from '@availity/select';
 
-import { Field, Input, Checkbox, CheckboxGroup, Label, RadioGroup, Radio, FormGroup, RequiredKey } from '..';
+import { Field, Input, Checkbox, CheckboxGroup, Label, RadioGroup, Radio, FormGroup, RequiredKey } from '.';
 // import README from '../form/README.md';
 
 import FormResults from '../../../story-utils/FormikResults';
@@ -113,10 +113,10 @@ export const Default: Story = ({ required }) => {
         <Radio name="radioGroupLabelStyling" label="Radio Two" value="dos" />
         <Radio name="radioGroupLabelStyling" label="Radio Three" value="tres" />
       </RadioGroup>
-      <SelectField label="Select Field" name="SelectField" options={options} required={required} />
+      {/* <SelectField label="Select Field" name="SelectField" options={options} required={required} /> */}
       <Field name="disabledField" type="text" label="Disabled Field" disabled />
       <DateField id="disabledDateField" name="disabledDateField" label="Disabled Date Field" disabled />
-      <SelectField label="Disabled Select Field" name="disabledSelectField" options={options} isDisabled />
+      {/* <SelectField label="Disabled Select Field" name="disabledSelectField" options={options} isDisabled /> */}
       <Button color="primary" type="submit">
         Submit
       </Button>

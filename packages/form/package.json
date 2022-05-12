@@ -19,26 +19,36 @@
   },
   "license": "MIT",
   "author": "Kyle Gray <kyle.gray@availity.com>",
-  "main": "index.js",
-  "types": "index.d.ts",
+  "browser": "./dist/index.js",
+  "main": "./dist/index.js",
+  "module": "./dist/index.mjs",
+  "types": "./dist/index.d.ts",
+  "scripts": {
+    "build": "tsup src/index.js --format esm,cjs --loader \".js=jsx\" --dts",
+    "dev": "tsup src/index.js --format esm,cjs --loader \".js=jsx\" --watch --dts",
+    "clean": "rm -rf node_modules && rm -rf dist",
+    "bundlesize": "bundlesize",
+    "publish": "yarn npm publish --tolerate-republish --access public"
+  },
   "dependencies": {
-    "@availity/help": "^1.5.2",
+    "@availity/help": "workspace:*",
     "classnames": "^2.3.1",
-    "prop-types": "^15.7.2",
+    "prop-types": "^15.8.1",
     "uuid": "^8.3.2"
   },
   "devDependencies": {
-    "formik": "^2.2.8",
+    "formik": "^2.2.9",
     "react": "^17.0.2",
     "react-dom": "^17.0.2",
-    "reactstrap": "^8.9.0",
-    "yup": "^0.30.0"
+    "reactstrap": "^8.10.1",
+    "tsup": "^5.12.7",
+    "typescript": "^4.6.4",
+    "yup": "^0.32.11"
   },
   "peerDependencies": {
     "formik": "^2.0.1",
     "react": ">=16.8.3",
-    "reactstrap": "^8.0.0",
-    "yup": "^0.27.0"
+    "reactstrap": "^8.0.0"
   },
   "publishConfig": {
     "access": "public"
