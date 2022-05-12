@@ -1,9 +1,7 @@
 import React, { useState } from 'react';
 import { useToggle } from '@availity/hooks';
-import { render, waitFor, fireEvent, cleanup } from '@testing-library/react';
+import { render, waitFor, fireEvent } from '@testing-library/react';
 import { Pagination, PaginationControls, usePagination } from '..';
-
-afterEach(cleanup);
 
 // eslint-disable-next-line react/prop-types
 const PaginationJson = () => {

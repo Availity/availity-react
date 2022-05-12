@@ -1,26 +1,38 @@
 /* eslint-disable no-restricted-syntax */
 /* eslint-disable guard-for-in */
 import React from 'react';
-import PropTypes from 'prop-types';
 import { Pagination, PaginationItem, PaginationLink } from 'reactstrap';
+
 import { usePagination } from './Pagination';
 
 const leftCaret = '\u2039'; // ‹
 const rightCaret = '\u203A'; // ›
 
+export type PaginationControlsProps = {
+  'aria-label'?: string;
+  autoHide?: boolean;
+  breakLabel?: boolean;
+  directionLinks?: boolean;
+  listClassName?: string;
+  marginPages?: number;
+  pageRange?: number;
+  populatePaginationText?: (lower: number, upper: number, total: number) => React.ReactNode;
+  showPaginationText?: boolean;
+};
+
 const PaginationControls = ({
-  directionLinks,
-  autoHide,
-  pageRange,
-  marginPages,
-  breakLabel,
-  showPaginationText,
+  directionLinks = false,
+  autoHide = true,
+  pageRange = 5,
+  marginPages = 2,
+  breakLabel = true,
+  showPaginationText = false,
   populatePaginationText,
   ...rest
-}) => {
+}: PaginationControlsProps): JSX.Element | null => {
   const { pageCount, currentPage, setPage, lower, upper, total } = usePagination();
 
-  const createItem = (pageNumber) => (
+  const createItem = (pageNumber: number) => (
     <PaginationItem key={pageNumber} active={currentPage === pageNumber} data-testid={`control-page-${pageNumber}`}>
       <PaginationLink
         style={{ zIndex: 'auto' }}
@@ -45,11 +57,11 @@ const PaginationControls = ({
     return backwardJump < 1 ? 1 : backwardJump;
   };
 
-  const handleBreakClick = (index) => {
+  const handleBreakClick = (index: number) => {
     setPage(currentPage < index ? getForwardJump() : getBackwardJump());
   };
 
-  const createBreak = (index) => (
+  const createBreak = (index: number) => (
     <PaginationItem key={index} data-testid={`control-page-${index}`}>
       <PaginationLink
         onClick={() => handleBreakClick(index)}
@@ -145,30 +157,7 @@ const PaginationControls = ({
         </div>
       )}
     </Pagination>
-  ) : (
-    ''
-  );
-};
-
-PaginationControls.propTypes = {
-  directionLinks: PropTypes.bool,
-  autoHide: PropTypes.bool, // If there are no items to show. This component will not show
-  pageRange: PropTypes.number,
-  marginPages: PropTypes.number,
-  breakLabel: PropTypes.bool,
-  listClassName: PropTypes.string,
-  'aria-label': PropTypes.string,
-  showPaginationText: PropTypes.bool,
-  populatePaginationText: PropTypes.func,
-};
-
-PaginationControls.defaultProps = {
-  directionLinks: false,
-  autoHide: true,
-  pageRange: 5,
-  marginPages: 2,
-  breakLabel: true,
-  showPaginationText: false,
+  ) : null;
 };
 
 export default PaginationControls;

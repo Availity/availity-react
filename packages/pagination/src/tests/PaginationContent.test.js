@@ -1,9 +1,7 @@
 /* eslint-disable react/prop-types */
 import React from 'react';
-import { render, waitFor, waitForElementToBeRemoved, cleanup } from '@testing-library/react';
+import { render, waitFor, waitForElementToBeRemoved } from '@testing-library/react';
 import { Pagination, PaginationContent } from '..';
-
-afterEach(cleanup);
 
 const Component = ({ value }) => <span data-testid={`item-${value}`}>Item {value}</span>;
 

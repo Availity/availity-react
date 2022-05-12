@@ -1,26 +1,40 @@
 import React, { useMemo } from 'react';
-import PropTypes from 'prop-types';
-import { Util, Button } from 'reactstrap';
+import { Button } from 'reactstrap';
 import InfiniteScroll from 'react-infinite-scroll-component';
+import type { Props as InfiniteScrollProps } from 'react-infinite-scroll-component';
 import BlockUI from 'react-block-ui';
+import type { BlockUiProps } from 'react-block-ui';
 import isFunction from 'lodash/isFunction';
 import 'react-block-ui/style.css';
+
 import { usePagination } from './Pagination';
 
-const PaginationContent = ({
+export type PaginationContentProps = {
+  component: React.ElementType;
+  children?: React.ReactNode;
+  containerProps?: BlockUiProps;
+  loadingMessage?: string;
+  itemKey: string;
+  loader?: boolean;
+  infiniteScroll?: boolean;
+  infiniteScrollProps?: InfiniteScrollProps;
+  containerTag?: React.ElementType;
+};
+
+const PaginationContent = <TItem extends Record<string, unknown>>({
   component: Component,
   loadingMessage,
   itemKey,
-  loader,
-  containerTag,
-  containerProps,
-  infiniteScroll,
+  loader = false,
+  containerTag = 'div',
+  containerProps = {},
+  infiniteScroll = false,
   infiniteScrollProps,
   children,
   ...rest
-}) => {
+}: PaginationContentProps): JSX.Element => {
   const { page, currentPage, setPage, allPages, hasMore, loading, lower, ref, setDoFocusRefOnPageChange } =
-    usePagination();
+    usePagination<TItem>();
 
   const _children = useMemo(() => {
     let items;
@@ -28,24 +42,24 @@ const PaginationContent = ({
       const indexOfItemToReference = lower - 1;
       items =
         allPages &&
-        allPages.map((value, key) => {
+        allPages.map((value, index) => {
           if (!value[itemKey]) {
             // eslint-disable-next-line no-console
             console.warn("Warning a Pagination Item doesn't have a key:", value);
           }
 
-          if (indexOfItemToReference === key) {
-            const ComponentWithRef = React.forwardRef((props, innerRef) => (
+          if (indexOfItemToReference === index) {
+            const ComponentWithRef = React.forwardRef<HTMLSpanElement>((props, innerRef) => (
               <>
                 <span className="sr-only" ref={innerRef} />
                 <Component {...props} />
               </>
             ));
 
-            return <ComponentWithRef ref={ref} {...rest} key={value[itemKey] || key} {...value} />;
+            return <ComponentWithRef ref={ref} {...rest} key={(value[itemKey] as string) || index} {...value} />;
           }
 
-          return <Component {...rest} key={value[itemKey] || key} {...value} />;
+          return <Component {...rest} key={value[itemKey] || index} {...value} />;
         });
     } else {
       items =
@@ -65,7 +79,7 @@ const PaginationContent = ({
     }
 
     return items;
-  }, [infiniteScroll, allPages, page, children, itemKey, lower, ref, rest]);
+  }, [allPages, children, Component, infiniteScroll, itemKey, lower, page, ref, rest]);
 
   if (infiniteScroll) {
     return (
@@ -107,25 +121,6 @@ const PaginationContent = ({
       {_children}
     </BlockUI>
   );
-};
-
-PaginationContent.propTypes = {
-  component: Util.tagPropType,
-  loadingMessage: PropTypes.node,
-  itemKey: PropTypes.string,
-  loader: PropTypes.bool,
-  containerProps: PropTypes.object,
-  containerTag: PropTypes.oneOfType([PropTypes.string, PropTypes.elementType]),
-  infiniteScroll: PropTypes.bool,
-  infiniteScrollProps: PropTypes.shape({ ...InfiniteScroll.propTypes }),
-  children: PropTypes.oneOfType([PropTypes.node, PropTypes.func]),
-};
-
-PaginationContent.defaultProps = {
-  infiniteScroll: false,
-  loader: false,
-  containerTag: 'div',
-  containerProps: {},
 };
 
 export default PaginationContent;

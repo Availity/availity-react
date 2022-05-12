@@ -1,38 +1,90 @@
 import React, { useState, useContext, useEffect, useRef } from 'react';
-import PropTypes from 'prop-types';
 import isFunction from 'lodash/isFunction';
 import { useDebounce } from 'react-use';
 
-export const PaginationContext = React.createContext();
+export type PaginationCtx<TItem extends Record<string, unknown>> = {
+  total: number;
+  pageCount: number;
+  page: TItem[];
+  allPages: TItem[];
+  lower: number;
+  upper: number;
+  hasMore: boolean;
+  setPage: (page: number) => void;
+  currentPage: number;
+  loading: boolean;
+  error: Error | null;
+  setError: (error: Error) => void;
+  itemsPerPage: number;
+  // ref: React.MutableRefObject<HTMLSpanElement | undefined>;
+  ref: React.Ref<HTMLSpanElement>;
+  setDoFocusRefOnPageChange: (doFocus: boolean) => void;
+};
 
-export const usePagination = () => useContext(PaginationContext);
+export const PaginationContext = React.createContext<PaginationCtx<Record<string, unknown>> | null>(null);
+
+export const usePagination = <TItem extends Record<string, unknown>>(): PaginationCtx<TItem> => {
+  const ctx = useContext(PaginationContext);
+  if (!ctx) throw new Error('usePagination must be used inside the Pagination Provider');
+  return ctx as PaginationCtx<TItem>;
+};
 
 // todos
 // Add another `useEffect` for only updating the items without calling the function if the `itemsPerPage` prop changes
 
-/**
- * Pagination Provider that takes in an async function or items and provides a list of items
- * @param {Function|Object} items - The Items or function to use for pagination
- * @param {number} itemsPerPage - The items to show per page
- */
-const Pagination = ({
-  items: theItems,
+export type PaginationProps<TItem extends Record<string, unknown>> = {
+  children?: React.ReactNode;
+  debounceTimeout?: number;
+  defaultPage?: number;
+  items: TItem[] | ((page: number, itemsPerPage: number) => Promise<{ items: TItem[]; totalCount: number }>);
+  itemsPerPage?: number;
+  onError?: (error: Error) => void;
+  onPageChange?: (page: number) => void;
+  page?: number;
+  resetParams?: unknown[];
+  shouldReturnPrevious?: boolean;
+  watchList?: unknown[];
+};
+
+type PaginationState<TItem> = {
+  total: number;
+  pageCount: number;
+  page: TItem[];
+  allPages: TItem[];
+  lower: number;
+  upper: number;
+  hasMore: boolean;
+};
+
+// Define default values out here for referential stability
+const defaultValues = {
+  items: [],
+  watchList: [],
+  resetParams: [],
+  itemsPerPage: 10,
+  defaultPage: 1,
+  debounceTimeout: 0,
+  shouldReturnPrevious: false,
+};
+
+const Pagination = <TItem extends Record<string, unknown>>({
+  items: theItems = defaultValues.items,
   page: propsCurrentPage,
-  itemsPerPage,
+  itemsPerPage = defaultValues.itemsPerPage,
   onPageChange,
   children,
-  watchList,
-  resetParams,
-  defaultPage,
-  debounceTimeout,
-  shouldReturnPrevious,
+  watchList = defaultValues.watchList,
+  resetParams = defaultValues.resetParams,
+  defaultPage = defaultValues.defaultPage,
+  debounceTimeout = defaultValues.debounceTimeout,
+  shouldReturnPrevious = defaultValues.shouldReturnPrevious,
   onError,
-}) => {
-  const ref = React.useRef();
+}: PaginationProps<TItem>): JSX.Element => {
+  const ref = React.useRef<HTMLSpanElement>(null);
   const [stateCurrentPage, setPage] = useState(defaultPage);
   const [doFocusRefOnPageChange, setDoFocusRefOnPageChange] = useState(false);
-  const [pageData, setPageData] = useState({
-    total: theItems != null && !isFunction(theItems) ? theItems.totalCount : 0,
+  const [pageData, setPageData] = useState<PaginationState<TItem>>({
+    total: theItems != null && !isFunction(theItems) ? theItems.length : 0,
     pageCount: 0,
     page: [],
     allPages: [],
@@ -46,8 +98,10 @@ const Pagination = ({
   // create an abort controller for fetch to be able to cancel it
 
   const [loading, setLoading] = useState(true);
-  const [error, setError] = useState(null);
-  const toggleLoading = (isLoading) => setLoading((l) => (isLoading !== undefined ? isLoading : !l));
+  const [error, setError] = useState<Error | null>(null);
+  const toggleLoading = (isLoading: boolean) => {
+    setLoading((prev) => (isLoading !== undefined ? isLoading : !prev));
+  };
 
   useEffect(() => {
     if (onError && error) onError(error);
@@ -61,7 +115,7 @@ const Pagination = ({
       // If the items is a function then await the response in case of async actions
       const { items, totalCount } = isFunction(theItems)
         ? await theItems(currentPage, itemsPerPage)
-        : { items: theItems };
+        : { items: theItems, totalCount: theItems.length };
 
       // Get index of item at the start of the currentPage
       const lower = currentPage === 1 ? 1 : (currentPage - 1) * itemsPerPage + 1;
@@ -88,11 +142,11 @@ const Pagination = ({
       });
 
       if (doFocusRefOnPageChange && ref.current && ref.current.nextSibling) {
-        ref.current.nextSibling.focus();
+        (ref.current.nextSibling as HTMLElement).focus();
         setDoFocusRefOnPageChange(false);
       }
     } catch (error_) {
-      setError(error_);
+      setError(error_ as Error);
     } finally {
       toggleLoading(false);
     }
@@ -108,7 +162,7 @@ const Pagination = ({
     [currentPage, itemsPerPage, isFunction(theItems) ? null : theItems, shouldReturnPrevious, ...watchList]
   );
 
-  const updatePage = (page) => {
+  const updatePage = (page: number) => {
     if (page !== currentPage) {
       toggleLoading(true);
 
@@ -145,7 +199,6 @@ const Pagination = ({
     [...resetParams]
   );
 
-  // boom roasted
   return (
     <PaginationContext.Provider
       value={{
@@ -163,30 +216,6 @@ const Pagination = ({
       {children}
     </PaginationContext.Provider>
   );
-};
-
-Pagination.propTypes = {
-  items: PropTypes.oneOfType([PropTypes.array, PropTypes.func]),
-  itemsPerPage: PropTypes.number,
-  onPageChange: PropTypes.func,
-  children: PropTypes.node,
-  watchList: PropTypes.array,
-  resetParams: PropTypes.array,
-  defaultPage: PropTypes.number,
-  page: PropTypes.number,
-  debounceTimeout: PropTypes.number,
-  shouldReturnPrevious: PropTypes.bool,
-  onError: PropTypes.func,
-};
-
-Pagination.defaultProps = {
-  itemsPerPage: 10,
-  items: [],
-  watchList: [],
-  resetParams: [],
-  defaultPage: 1,
-  debounceTimeout: 0,
-  shouldReturnPrevious: false,
 };
 
 export default Pagination;

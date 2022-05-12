@@ -1,5 +1,5 @@
 import React from 'react';
-import { render, waitFor, fireEvent, cleanup } from '@testing-library/react';
+import { render, waitFor, fireEvent } from '@testing-library/react';
 import { PaginationControls, usePagination, AvResourcePagination, PaginationContent } from '..';
 import paginationData from './data/pagination.json';
 
@@ -36,7 +36,6 @@ const mockResponse = {
 
 afterEach(() => {
   mockResponse.postGet.mockClear();
-  cleanup();
 });
 
 const resource = {

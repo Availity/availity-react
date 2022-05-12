@@ -1,8 +1,6 @@
 import React from 'react';
-import { render, waitFor, cleanup } from '@testing-library/react';
+import { render, waitFor } from '@testing-library/react';
 import { Pagination, PaginationControls } from '..';
-
-afterEach(cleanup);
 
 describe('Pagination Controls', () => {
   test('should provide a list of page controls', async () => {
