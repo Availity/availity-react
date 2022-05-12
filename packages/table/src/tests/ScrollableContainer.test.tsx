@@ -13,4 +13,16 @@ describe('Scrollable Container', () => {
     expect(container).toBeDefined();
     expect(container).toMatchSnapshot();
   });
+
+  test('should render multiple children', () => {
+    const { container } = render(
+      <ScrollableContainer>
+        <div>This is my Content.</div>
+        <div>This is my Content.</div>
+      </ScrollableContainer>
+    );
+
+    expect(container).toBeDefined();
+    expect(container).toMatchSnapshot();
+  });
 });

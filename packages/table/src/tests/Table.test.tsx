@@ -1,26 +1,28 @@
 import React from 'react';
-import { render, fireEvent, waitFor, queryByTestId } from '@testing-library/react';
+import { render, fireEvent, waitFor } from '@testing-library/react';
 import basicData from './data/basicData.json';
 import formattedData from './data/needsFormattedData.json';
 import Table from '../Table';
-import TableProvider from '../TableProvider';
 import CurrencyCell from '../CellDefinitions/CurrencyCell';
 import ActionCell from '../CellDefinitions/ActionCell';
 import BadgeCell from '../CellDefinitions/BadgeCell';
 import IconCell from '../CellDefinitions/IconCell';
 import DateCell from '../CellDefinitions/DateCell';
 import { Cell, Column } from '../types/ReactTable';
+import TableContent from '../TableContent';
 
 const basicColumns = [
   {
     Header: 'First Name',
     accessor: 'first_name',
     defaultCanSort: true,
+    canCustomize: true,
   },
   {
     Header: 'Last Name',
     accessor: 'last_name',
     defaultCanSort: true,
+    canCustomize: true,
   },
   {
     Header: 'Email',
@@ -93,6 +95,7 @@ const formattedColumns = [
       primaryAction: {
         iconName: 'file-pdf',
         title: 'View File',
+        isVisible: (record?: Record<string, string | boolean | number>) => !!record?.quickAction,
         onClick: (record?: Record<string, unknown>) => {
           // eslint-disable-next-line no-console
           console.log(`action on record ${record?.id}`);
@@ -105,9 +108,7 @@ const formattedColumns = [
 describe('Table', () => {
   test('should render basic table', () => {
     const { container } = render(
-      <TableProvider data={basicData} columns={basicColumns}>
-        <Table />
-      </TableProvider>
+      <Table data={basicData} columns={basicColumns}/>
     );
 
     expect(container).toBeDefined();
@@ -116,9 +117,7 @@ describe('Table', () => {
 
   test('should render selectable table', async () => {
     const { container } = render(
-      <TableProvider selectable data={basicData} columns={basicColumns}>
-        <Table />
-      </TableProvider>
+      <Table selectable data={basicData} columns={basicColumns}/>
     );
 
     expect(container).toBeDefined();
@@ -127,9 +126,9 @@ describe('Table', () => {
 
   test('should render sortable table', () => {
     const { container } = render(
-      <TableProvider sortable data={basicData} columns={basicColumns}>
-        <Table />
-      </TableProvider>
+      <Table sortable data={basicData} columns={basicColumns}>
+        <TableContent />
+      </Table>
     );
 
     expect(container).toBeDefined();
@@ -138,9 +137,9 @@ describe('Table', () => {
 
   test('should render with formatted cells', () => {
     const { container } = render(
-      <TableProvider data={formattedData} columns={formattedColumns}>
-        <Table />
-      </TableProvider>
+      <Table data={formattedData} columns={formattedColumns}>
+        <TableContent />
+      </Table>
     );
 
     expect(container).toBeDefined();
@@ -149,9 +148,7 @@ describe('Table', () => {
 
   test('should render with expected ids', () => {
     const { container } = render(
-      <TableProvider data={basicData} columns={basicColumns}>
-        <Table id="my_availity_table" />{' '}
-      </TableProvider>
+      <Table id="my_availity_table" data={basicData} columns={basicColumns}/>
     );
 
     expect(container).toBeDefined();
@@ -161,10 +158,7 @@ describe('Table', () => {
   test('should call onRowClick when event is provided', async () => {
     const onRowClick = jest.fn();
     const { container, getByTestId } = render(
-      <TableProvider data={basicData} columns={basicColumns}>
-        {' '}
-        <Table onRowClick={onRowClick} />
-      </TableProvider>
+      <Table onRowClick={onRowClick} data={basicData} columns={basicColumns}/>
     );
 
     expect(container).toBeDefined();
@@ -181,10 +175,7 @@ describe('Table', () => {
   test('should call onRowClick when event is provided for selectable table', async () => {
     const onRowClick = jest.fn();
     const { container, getByTestId } = render(
-      <TableProvider selectable data={basicData} columns={basicColumns}>
-        {' '}
-        <Table onRowClick={onRowClick} />
-      </TableProvider>
+      <Table selectable onRowClick={onRowClick} data={basicData} columns={basicColumns}/>
     );
 
     expect(container).toBeDefined();
@@ -202,10 +193,7 @@ describe('Table', () => {
     const onRowSelected = jest.fn();
 
     const { container, getByTestId } = render(
-      <TableProvider selectable data={basicData} columns={basicColumns}>
-        {' '}
-        <Table onRowSelected={onRowSelected} />
-      </TableProvider>
+      <Table selectable onRowSelected={onRowSelected} data={basicData} columns={basicColumns}/>
     );
 
     expect(container).toBeDefined();
@@ -214,7 +202,7 @@ describe('Table', () => {
     fireEvent.click(tableRow);
 
     await waitFor(() => {
-      expect(onRowSelected).toHaveBeenCalledTimes(1);
+      expect(onRowSelected).toHaveBeenCalled();
     });
   });
 
@@ -222,9 +210,7 @@ describe('Table', () => {
     const onSort = jest.fn();
 
     const { container, getByTestId } = render(
-      <TableProvider sortable data={basicData} columns={basicColumns} manualSortBy>
-        <Table onSort={onSort} />
-      </TableProvider>
+      <Table onSort={onSort} sortable data={basicData} columns={basicColumns} manualSortBy/>
     );
 
     expect(container).toBeDefined();
@@ -248,17 +234,28 @@ describe('Table', () => {
     ];
 
     const { container, queryByTestId } = render(
-      <TableProvider data={basicData} columns={columnsToUse}>
-        <Table />
-      </TableProvider>
+      <Table data={basicData} columns={columnsToUse}/>
     );
-
-    expect(container).toBeDefined();
 
     expect(container).toBeDefined();
     expect(container).toMatchSnapshot();
 
     const columnHeader = queryByTestId('table_header_row_0_cell_4_aPropThatIsHidden');
     expect(columnHeader).toBeNull();
+  });
+
+  test('should not display primary action column when provided', async () => {
+    const { container, queryByTestId } = render(
+      <Table data={formattedData} columns={formattedColumns}/>
+    );
+
+    expect(container).toBeDefined();
+    expect(container).toMatchSnapshot();
+
+    const primaryAction1 = queryByTestId('table_row_action_menu_item_1_primaryAction');
+    expect(primaryAction1).not.toBeNull();
+
+    const primaryAction2 = queryByTestId('table_row_action_menu_item_3_primaryAction');
+    expect(primaryAction2).toBeNull();
   });
 });

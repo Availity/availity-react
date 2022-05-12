@@ -2,8 +2,9 @@
 title: Getting Started
 ---
 
-This is a generic table component that wraps react-table.
-See [react-table documentation](https://react-table.tanstack.com/docs/overview).
+This is a generic table component that wraps react-table. It also provides a mechanism for child components to have access to the table instance, in controls such as pagination and sorting.
+
+See [react-table documentation](https://react-table.tanstack.com/docs/overview) for more information about react-table.
 
 [![Version](https://img.shields.io/npm/v/@availity/table.svg?style=for-the-badge)](https://www.npmjs.com/package/@availity/table)
 
@@ -17,7 +18,53 @@ npx install-peerdeps @availity/table --save
 
 ```jsx
 import React from 'react';
-import Table, { TableProvider } from '@availity/table';
+import Table, { TableContent } from '@availity/table';
+import '@availity/table/style.scss';
+
+const columns = [
+  {
+    Header: 'Column 1',
+    accessor: 'column1',
+  },
+  {
+    Header: 'Column 2',
+    accessor: 'column2',
+  },
+  {
+    Header: 'Column 3',
+    accessor: 'column3',
+  },
+];
+
+const Example = () => <Table columns={columns} data={data} />;
+```
+
+:::info
+If migrating from a @availity/table version of 0.3.2 or below, we have simplified the markup and changes will need to be made to fix this.. You just need to copy all of the properties from the original `TableProvider` component and apply them to the table. The table can now be used without the table provider. If context needs to be shared to child components, just add those components as a child of the table. See more details in the Migrating from version 0.3.x section.
+:::
+
+## Table
+
+By default, the following react-table provided hooks are implemented:
+
+- [useSortBy](https://react-table.tanstack.com/docs/api/useSortBy)
+- [usePagination](https://react-table.tanstack.com/docs/api/usePagination)
+- [useRowSelect](https://react-table.tanstack.com/docs/api/useRowSelect)
+- [useColumnOrder](https://react-table.tanstack.com/docs/api/useColumnOrder)
+- [useRowState](https://react-table.tanstack.com/docs/api/useRowState)
+
+Need to add custom hooks, or implement a react-table hook that isn't displayed above? Just pass the hook into the `pluginHooks` property of the table.
+
+### `<TableContent>`
+
+To display a basic table, the `Table` component with no children is the only thing that needs to be implemented. However, if there are child components that need to be added, it is required to add the `<TableContent>` component wherever the table should be displayed. This allows for flexibility of where components can be displayed, either before or after the table.
+
+### Table with Children Example
+
+```jsx
+import React from 'react';
+import Table, { TableContent, TableContext, BulkTableActions, TableSorter } from '@availity/table';
+import Pagination, { PaginationControls } from '@availity/pagination';
 import '@availity/table/style.scss';
 
 const columns = [
@@ -36,21 +83,45 @@ const columns = [
 ];
 
 const Example = () => (
-    <TableProvider
-        columns={columns}
-        data={data}>
-        <Table/>
-    </TableProvider>
+  <Table columns={columns} data={data}>
+    <TableControls disabled={disabled}>
+      <BulkTableActions />
+      <TableSorter />
+      <div style={{ marginLeft: 'auto' }}>
+        <TableContext.Consumer>
+          {({ instance }) => (
+            <Pagination
+              itemsPerPage={instance.state.pageSize}
+              page={instance.currentPage}
+              onPageChange={(page: number) => {
+                const { gotoPage } = instance;
+                gotoPage(page - 1);
+              }}
+              items={records}
+            >
+              <PaginationControls
+                className="pt-3"
+                listClassName="pagination-unstyled"
+                directionLinks
+                showPaginationText
+                pageRange={3}
+                marginPages={1}
+              />
+            </Pagination>
+          )}
+        </TableContext.Consumer>
+      </div>
+    </TableControls>
+    <TableContent />
+  </Table>
 );
 ```
 
-## TableProvider
+### Table Props
 
-
-### Table Provider Props
-
-This extends the [react-table TableOptions](https://react-table.tanstack.com/docs/api/useTable#table-options). 
+This extends the [react-table TableOptions](https://react-table.tanstack.com/docs/api/useTable#table-options).
 You can supply any properties listed on the documentation here and have the table respect it.
+
 #### `id?: string`
 
 This is a unique id that is prepended to the table and nested table elements.
@@ -79,52 +150,46 @@ This object definition sets the initial state of the table, including the defaul
 
 This designates a Component that will be displayed in the table row for the record. This content displays in an additional `<tr>` with a colspan equal to the number of columns that are NOT sticky.
 
-
-### useTableContext hook
-
-Wrapping the table and any other components with the TableProvider will provide access to those child components to the TableContext, which holds all of the instance data created by the useTable hook from react-table alongside any other provided parameters.
-
-
-```jsx
-import { useTableContext } from './TableContext';
-...
-const { 
-    scrollable,
-    AdditionalContent,
-    toggleSelectAll
-    toggleSortBy, 
-    sortBy, 
-    sortByOptions,
-    selectable, 
-    instance 
-} = useTableContext();
-```
-
-The `instance` property is tied directly to the [react-table Table Instance](https://react-table.tanstack.com/docs/api/useTable#instance-properties). Refer to the documentation for details on what data is provided there.
-
-## Table Props
-
 #### `scrollable?: boolean`
 
 This property is automatically set when it is wrapped in a scrollable container. This will apply fixed column widths to force it to scroll rather than minify the columns to fit in a set container.
+
+#### `paged?: boolean`
+
+This boolean determines whether the table is paged or not. This works with the [`usePagination`](https://react-table.tanstack.com/docs/api/usePagination) hook that is documented in react-table. This defaults to false.
+
+#### `pluginHooks?: `
+
+Custom plugin hooks that should be passed to the table. For more information on how to utilize and apply hooks, refer to the [documentation](https://react-table.tanstack.com/docs/api/overview)
 
 #### `bodyProps?:object`
 
 Any DOM properties that should be passed onto the `<tbody>` element.
 
-#### `cellProps?: object`
+#### `getCellProps?: (cell: Cell<object>) => void`
 
-Any DOM properties that should be passed onto the `<td>` elements.
+This function provides any DOM properties that should be passed onto the `<td>` elements. Optionally pass in the Cell object in order to conditionally add DOM properties based on data of the cell.
 
 #### `headerProps?: object`
 
-Any DOM properties that should be passed onto the `<thead>` element.
+Any DOM properties that should be passed onto the `<thead>` element. A special boolean property `sticky'` is added here to allow for designating the header as 'sticky' or not.
 
-#### `rowProps?: object`
+#### `getRowProps?: (row: Row<object>) => void`
 
-Any DOM properties that should be passed onto the `<tr>` element.
+This function provides any DOM properties that should be passed onto the `<tr>` element. Optionally pass in the Row object in order to conditionally add DOM properties based on the data of the row.
+
+#### `onSort?: (sortBy: tableSort[]) => void`
+
+This function will be called whenever the table has been sorted.
+
+#### `getCanSelectRow: (record: T) => boolean`
+
+This function determines if a row in a selectable table can be selected. By default if no function is provided to this property, all rows in the table are selectable.
 
 #### `onRowClick?: (event: OnTableClickEvent) => void`
+
+This function is called whenever a row on the table has been clicked.
+
 ##### OnTableClickEvent Props
 
 `instance: Row` The react-table [Row](https://react-table.tanstack.com/docs/api/useTable#row-properties) instance that was clicked.
@@ -143,13 +208,13 @@ Event handler for when a row is selected.
 
 ##### OnRowSelectedEvent Props
 
-`selectedRows: string[] | number[]`
+`selectedRows: Row<T>[]`
 
-The ids of the records that are selected.
+The records that are selected.
 
 #### `onSort?: (sortBy: TableSort) => void`
 
-Event handler that is called when data is sorted. 
+Event handler that is called when data is sorted.
 
 ##### TableSort props
 
@@ -159,7 +224,21 @@ The id, or the name of property on the object, that should be used to sort the d
 
 `desc: boolean`
 
-If true, the data should sort descending. If false, the data should sort ascending. 
+If true, the data should sort descending. If false, the data should sort ascending.
+
+### useTableContext hook
+
+Any child components of the `<Table>` will have access to the TableContext, which holds all of the instance data created by the useTable hook from react-table alongside any other provided parameters.
+
+```jsx
+import { useTableContext } from './TableContext';
+...
+const {
+    instance
+} = useTableContext();
+```
+
+The `instance` property is tied directly to the [react-table Table Instance](https://react-table.tanstack.com/docs/api/useTable#instance-properties). Refer to the documentation for details on what data is provided there.
 
 ## Formatting Cells
 
@@ -168,9 +247,11 @@ If true, the data should sort descending. If false, the data should sort ascendi
 This is used to display an action menu in a cell.
 
 #### `isVisible?`: (record?: T) => boolean
+
 This is an optional function that can be used to conditionally display an action. The record will be passed into the function so that, if needed, the properties on the record can determine if the action is visible or not. If this properties are not populated, the action will always display.
 
 #### `onClick?`: (record?: T) => action
+
 This is the onClick event handler for the action.
 
 #### Example
@@ -186,7 +267,7 @@ const columns = [
           id: 'action1',
           displayText: 'Action 1',
           isVisible: (record: MyRecordType) => {
-              return record.hasAction1;
+            return record.hasAction1;
           },
           onClick: (record) => {
             console.log(`action on record ${record.id}`);
@@ -304,13 +385,17 @@ In the body of the table, the icon is displayed if the hasNotes property is set 
 If the title (tooltip) of the icon is dependent on the data of the record, it is possible to pass a function to the IconCell (as `getTitle`) to populate the record.
 
 ```jsx
-    const columns = [
-            {
-                Header: <Icon name='flag' title='Flag for follup'/>,
-                accessor: 'followup',
-                Cell: IconCell({ name: 'flag', getTitle: (value: { username: string; }) => `Assigned To ${value.username}`}),
-            }
-    ]
+const columns = [
+  {
+    Header: <Icon name="flag" title="Flag for follup" />,
+    accessor: 'followup',
+    Cell: IconCell({
+      name: 'flag',
+      getTitle: (value: { username: string }) =>
+        `Assigned To ${value.username}`,
+    }),
+  },
+];
 ```
 
 ## Column Configuration Properties
@@ -453,3 +538,218 @@ const columns = [
 ```
 
 Note that this is not supported in IE 11.
+
+## Migrating from version 0.3.x
+
+To migrate from a version of `@availity/table` of 0.3.X or below, you should only need to copy all the props from the old `TableProvider` component and apply them to the table.
+
+If `<TableControls>` are being utilized, move the `<TableControls>` to be a child of the `TableComponent` and add the `TableContent` component to where the table should be displayed relative to the table controls.
+
+### Simple Migration
+
+#### Before
+
+```jsx
+import React from 'react';
+import Table, { TableProvider } from '@availity/table';
+import '@availity/table/style.scss';
+
+const columns = [
+  {
+    Header: 'Column 1',
+    accessor: 'column1',
+  },
+  {
+    Header: 'Column 2',
+    accessor: 'column2',
+  },
+  {
+    Header: 'Column 3',
+    accessor: 'column3',
+  },
+];
+
+const Example = () => (
+  <TableProvider columns={columns} data={data}>
+    <Table />
+  </TableProvider>
+);
+```
+
+#### After
+
+```jsx
+import React from 'react';
+import Table from '@availity/table';
+import '@availity/table/style.scss';
+
+const columns = [
+  {
+    Header: 'Column 1',
+    accessor: 'column1',
+  },
+  {
+    Header: 'Column 2',
+    accessor: 'column2',
+  },
+  {
+    Header: 'Column 3',
+    accessor: 'column3',
+  },
+];
+
+const Example = () => <Table columns={columns} data={data} />;
+```
+
+If `<TableControls>` are being utilized, move the `<TableControls>` to be a child of the `TableComponent` and add the `TableContent` component to where the table should be displayed relative to the table controls.
+
+### Migration with Table Controls
+
+#### Before
+
+```jsx
+import React from 'react';
+import Table, { TableProvider, TableControls, BulkTableActions, TableSorter, TableContext } from '@availity/table';
+import Pagination, { PaginationControls } from '@availity/pagination';
+
+import '@availity/table/style.scss';
+
+const columns = [
+  {
+    Header: 'Column 1',
+    accessor: 'column1',
+  },
+  {
+    Header: 'Column 2',
+    accessor: 'column2',
+  },
+  {
+    Header: 'Column 3',
+    accessor: 'column3',
+  },
+];
+
+const Example = () => (
+  <TableProvider columns={columns} data={data}>
+    <TableControls disabled={disabled}>
+      <BulkTableActions />
+      <TableSorter />
+      <div style={{ marginLeft: 'auto' }}>
+        <TableContext.Consumer>
+          {({ instance }) => (
+            <Pagination
+              itemsPerPage={instance.state.pageSize}
+              page={instance.currentPage}
+              onPageChange={(page: number) => {
+                const { gotoPage } = instance;
+                gotoPage(page - 1);
+              }}
+              items={records}
+            >
+              <PaginationControls
+                className="pt-3"
+                listClassName="pagination-unstyled"
+                directionLinks
+                showPaginationText
+                pageRange={3}
+                marginPages={1}
+              />
+            </Pagination>
+          )}
+        </TableContext.Consumer>
+      </div>
+    </TableControls>
+    <Table />
+  </TableProvider>
+);
+```
+#### After
+
+```jsx
+import React, { useState } from 'react';
+import Table, { TableContent, TableControls, TableSorter, BulkTableActions} from '@availity/table';
+import Pagination, { PaginationControls } from '@availity/pagination';
+import '@availity/table/style.scss';
+
+import records from 'data/records.json';
+
+const myTableConfig = {
+    columns: [
+        {
+            Header: 'Column 1',
+            accessor: 'column1'
+        },
+        {
+            Header: 'Column 2',
+            accessor: 'column2'
+        },
+        {
+            Header: 'Column 3',
+            accessor: 'column3'
+        },
+    ]
+}
+
+const MyBulkTableActions = [
+    {
+        id: 'action1',
+        displayText: 'Action 1',
+        isVisible: (records: MyRecordType[]) => {
+             return every(records, record.hasAction1);
+        },
+        onClick: (records: MyRecordType[]) => {
+            console.log(`action on record ${record.id}`);
+        },
+    },
+    {
+        id: 'action2',
+        displayText: 'Action 2',
+        isVisible: (records: MyRecordType[]) => {
+            return every(records, !record.hasAction1);
+        },
+        onClick: (records: MyRecordType[]) => {
+            console.log(`action on record ${record.id}`);
+        },
+    },
+];
+
+const Example = () : JSX.Element => (
+    const [isDisabled, setIsDisabled] = useState<boolean>(records.length === 0);
+
+    <Table
+        columns={columns}
+        data={records}>
+        <TableControls disabled={disabled}>
+            <BulkTableActions/>
+            <TableSorter/>
+             <div style={{ marginLeft: 'auto' }}>
+            <TableContext.Consumer>
+            {({ instance }) => (
+                <Pagination
+                itemsPerPage={instance.state.pageSize}
+                page={instance.currentPage}
+                onPageChange={(page: number) => {
+                    const { gotoPage } = instance;
+                    gotoPage(page - 1);
+                }}
+                items={records}
+                >
+                    <PaginationControls
+                        className="pt-3"
+                        listClassName="pagination-unstyled"
+                        directionLinks
+                        showPaginationText
+                        pageRange={3}
+                        marginPages={1}
+                    />
+                </Pagination>
+            )}
+            </TableContext.Consumer>
+            </div>
+        </TableControls>
+        <TableContent/>
+    </Table>
+);
+```
+
+

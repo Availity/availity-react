@@ -16,6 +16,7 @@ export type {
   TableInstance,
   CurrentTableState,
   ExtendedTableHeader,
+  IdType,
 } from './types';
 
 export { default } from './Table';
@@ -23,8 +24,7 @@ export { default } from './Table';
 export { useTableContext, TableContext } from './TableContext';
 export type { AvTableContext } from './TableContext';
 
-export { default as TableProvider } from './TableProvider';
-export type { TableProviderProps } from './TableProvider';
+export { default as TableContent } from './TableContent';
 
 export { default as ScrollableContainer } from './ScrollableContainer';
 

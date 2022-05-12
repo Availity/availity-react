@@ -90,36 +90,41 @@ avMessages.send = jest.fn((payload, target = window.top) => {
   }
 });
 
-const getApplicationMock = jest.fn(() =>
-  Promise.resolve({
-    data: {
-      settings: [
-        {
-          favorites: [
-            {
-              pos: 0,
-              id: '123',
-            },
-            {
-              pos: 1,
-              id: '456',
-            },
-          ],
-        },
-      ],
-    },
-  })
-);
+// If a test finishes before a post message has settled, it can be captured by the following test, polluting it's data
+const waitForPostMessageToSettle = () => waitFor(() => expect(avMessages.send).toHaveBeenCalled());
 
-avSettingsApi.getApplication = getApplicationMock;
+const getApplicationMock = jest.fn().mockResolvedValue({
+  data: {
+    settings: [
+      {
+        favorites: [
+          {
+            pos: 0,
+            id: '123',
+          },
+          {
+            pos: 1,
+            id: '456',
+          },
+        ],
+      },
+    ],
+  },
+});
 
-const Render = ({ children }) => (
+const setApplicationMock = jest.fn().mockResolvedValue({
+  data: {
+    favorites: [],
+  },
+});
+
+const Providers = ({ children }) => (
   <QueryClientProvider client={queryClient}>
     <Favorites>{children}</Favorites>
   </QueryClientProvider>
 );
 
-Render.propTypes = {
+Providers.propTypes = {
   children: PropTypes.node,
 };
 
@@ -133,6 +138,8 @@ describe('FavoriteHeart', () => {
         ownerDocument: document,
       },
     });
+    avSettingsApi.getApplication = getApplicationMock;
+    avSettingsApi.setApplication = setApplicationMock;
   });
 
   afterEach(() => {
@@ -142,8 +149,6 @@ describe('FavoriteHeart', () => {
     global.document.createRange = null;
   });
 
-  // This was at the end, but I can only get it to pass if I move it to the top
-  // I want to know why!!
   test('should call max modal when at max favorites', async () => {
     avSettingsApi.getApplication = jest.fn(() =>
       Promise.resolve({
@@ -158,9 +163,9 @@ describe('FavoriteHeart', () => {
     );
 
     const { container } = render(
-      <Render>
+      <Providers>
         <FavoriteHeart id="123" />
-      </Render>
+      </Providers>
     );
 
     const heart = container.querySelector('#av-favorite-heart-123');
@@ -175,13 +180,15 @@ describe('FavoriteHeart', () => {
       expect(avMessages.send).toHaveBeenCalledTimes(1);
       expect(avMessages.send.mock.calls[0][0]).toBe('av:favorites:maxed');
     });
+
+    await waitForPostMessageToSettle();
   });
 
-  test('should show tooltip', async () => {
+  test('should show tooltip with add message', async () => {
     const { container, getByTestId } = render(
-      <Render>
+      <Providers>
         <FavoriteHeart id="1234" />
-      </Render>
+      </Providers>
     );
 
     const heart = container.querySelector('#av-favorite-heart-1234');
@@ -201,11 +208,47 @@ describe('FavoriteHeart', () => {
     );
   });
 
+  test('should show tooltip with remove message', async () => {
+    avSettingsApi.setApplication = jest.fn().mockResolvedValue({
+      data: {
+        favorites: [
+          {
+            id: '123',
+            pos: 0,
+          },
+        ],
+      },
+    });
+    const { container, getByTestId } = render(
+      <Providers>
+        <FavoriteHeart id="123" />
+      </Providers>
+    );
+
+    const heart = container.querySelector('#av-favorite-heart-123');
+
+    expect(heart).toBeDefined();
+
+    await waitFor(() => expect(heart).toBeChecked());
+
+    await fireEvent.mouseOver(heart);
+    expect(heart).toBeDefined();
+
+    await waitFor(
+      () => {
+        const tooltip = getByTestId('av-favorite-heart-123-tooltip');
+
+        expect(tooltip.textContent).toContain('Remove from My Favorites');
+      },
+      { timeout: 2000 }
+    );
+  });
+
   test('should render label with app name', async () => {
     const { container } = render(
-      <Render>
+      <Providers>
         <FavoriteHeart id="123" name="Test App" />
-      </Render>
+      </Providers>
     );
 
     const heart = container.querySelector('#av-favorite-heart-123');
@@ -216,30 +259,21 @@ describe('FavoriteHeart', () => {
   });
 
   test('should add favorite and send post message with updated favorites', async () => {
-    avSettingsApi.getApplication = getApplicationMock;
+    const favorites = [
+      { id: '123', pos: 0 },
+      { id: '456', pos: 1 },
+      { id: '789', pos: 2 },
+    ];
     avSettingsApi.setApplication = jest.fn().mockResolvedValue({
       data: {
-        favorites: [
-          {
-            id: '123',
-            pos: 0,
-          },
-          {
-            id: '456',
-            pos: 1,
-          },
-          {
-            id: '789',
-            pos: 2,
-          },
-        ],
+        favorites,
       },
     });
 
     const { container } = render(
-      <Render>
+      <Providers>
         <FavoriteHeart id="789" />
-      </Render>
+      </Providers>
     );
 
     const heart = container.querySelector('#av-favorite-heart-789');
@@ -255,35 +289,18 @@ describe('FavoriteHeart', () => {
 
     expect(avSettingsApi.setApplication).toHaveBeenCalledTimes(1);
     // Test that favorite gets sent to settings and to correct position
-    expect(avSettingsApi.setApplication.mock.calls[0][1].favorites).toEqual([
-      {
-        id: '123',
-        pos: 0,
-      },
-      {
-        id: '456',
-        pos: 1,
-      },
-      {
-        id: '789',
-        pos: 2,
-      },
-    ]);
+    expect(avSettingsApi.setApplication.mock.calls[0][1].favorites).toEqual(favorites);
     expect(avMessages.send).toHaveBeenCalledTimes(1);
     expect(avMessages.send.mock.calls[0][0].event).toBe('av:favorites:update');
     // Test that post message sent to window.parent sends favorites returned from settings api
-    expect(avMessages.send.mock.calls[0][0].favorites).toEqual([
-      { id: '123', pos: 0 },
-      { id: '456', pos: 1 },
-      { id: '789', pos: 2 },
-    ]);
+    expect(avMessages.send.mock.calls[0][0].favorites).toEqual(favorites);
   });
 
   test('should render favorited', async () => {
     const { container } = render(
-      <Render>
+      <Providers>
         <FavoriteHeart id="123" />
-      </Render>
+      </Providers>
     );
 
     const heart = container.querySelector('#av-favorite-heart-123');
@@ -295,9 +312,9 @@ describe('FavoriteHeart', () => {
 
   test('should render not favorited', async () => {
     const { container } = render(
-      <Render>
+      <Providers>
         <FavoriteHeart id="1234" />
-      </Render>
+      </Providers>
     );
 
     const heart = container.querySelector('#av-favorite-heart-1234');
@@ -308,15 +325,10 @@ describe('FavoriteHeart', () => {
   });
 
   test('should toggle favorited', async () => {
-    avSettingsApi.setApplication = jest.fn().mockResolvedValue({
-      data: {
-        favorites: [],
-      },
-    });
     const { container } = render(
-      <Render>
+      <Providers>
         <FavoriteHeart id="123" />
-      </Render>
+      </Providers>
     );
 
     const heart = container.querySelector('#av-favorite-heart-123');
@@ -328,13 +340,14 @@ describe('FavoriteHeart', () => {
     fireEvent.click(heart);
 
     await waitFor(() => expect(heart).not.toBeChecked());
-  });
 
+    await waitForPostMessageToSettle();
+  });
   test('should update when avMessage changed event triggers from elsewhere', async () => {
     const { container } = render(
-      <Render>
+      <Providers>
         <FavoriteHeart id="123" />
-      </Render>
+      </Providers>
     );
 
     const heart = container.querySelector('#av-favorite-heart-123');
@@ -355,9 +368,9 @@ describe('FavoriteHeart', () => {
 
   test('should update when avMessage updated event triggers from elsewhere', async () => {
     const { container } = render(
-      <Render>
+      <Providers>
         <FavoriteHeart id="123" />
-      </Render>
+      </Providers>
     );
 
     const heart = container.querySelector('#av-favorite-heart-123');
@@ -377,23 +390,19 @@ describe('FavoriteHeart', () => {
   });
 
   test('should delete favorite and send post message with updated favorites', async () => {
+    const favorites = [{ id: '456', pos: 0 }];
     avSettingsApi.setApplication = jest.fn(() =>
       Promise.resolve({
         data: {
-          favorites: [
-            {
-              id: '456',
-              pos: 0,
-            },
-          ],
+          favorites,
         },
       })
     );
 
     const { container } = render(
-      <Render>
+      <Providers>
         <FavoriteHeart id="123" />
-      </Render>
+      </Providers>
     );
 
     const heart = container.querySelector('#av-favorite-heart-123');
@@ -410,28 +419,25 @@ describe('FavoriteHeart', () => {
     expect(avMessages.send).toHaveBeenCalledTimes(1);
     expect(avMessages.send.mock.calls[0][0].event).toBe('av:favorites:update');
     // Test that post message sent to window.parent sends favorites returned from settings api
-    expect(avMessages.send.mock.calls[0][0].favorites).toEqual([{ id: '456', pos: 0 }]);
+    expect(avMessages.send.mock.calls[0][0].favorites).toEqual(favorites);
+
+    await waitForPostMessageToSettle();
   });
 
   test('should delete favorite and send post message with updated favorites when enter is pressed', async () => {
-    avSettingsApi.getApplication = getApplicationMock;
+    const favorites = [{ id: '456', pos: 0 }];
     avSettingsApi.setApplication = jest.fn(() =>
       Promise.resolve({
         data: {
-          favorites: [
-            {
-              id: '456',
-              pos: 0,
-            },
-          ],
+          favorites,
         },
       })
     );
 
     const { container } = render(
-      <Render>
+      <Providers>
         <FavoriteHeart id="123" />
-      </Render>
+      </Providers>
     );
 
     const heart = container.querySelector('#av-favorite-heart-123');
@@ -464,9 +470,9 @@ describe('FavoriteHeart', () => {
     });
     const onMouseDown = jest.fn(() => {});
     const { container } = render(
-      <Render>
+      <Providers>
         <FavoriteHeart onMouseDown={onMouseDown} id="1234" />
-      </Render>
+      </Providers>
     );
 
     const heart = container.querySelector('#av-favorite-heart-1234');
@@ -482,6 +488,7 @@ describe('FavoriteHeart', () => {
 
     await waitFor(() => expect(heart).toBeChecked());
     expect(onMouseDown).toHaveBeenCalledTimes(1);
+    await waitForPostMessageToSettle();
   });
 
   test('should call onChange once toggled', async () => {
@@ -497,9 +504,9 @@ describe('FavoriteHeart', () => {
     });
     const onChange = jest.fn(() => {});
     const { container } = render(
-      <Render>
+      <Providers>
         <FavoriteHeart onChange={onChange} id="1234" />
-      </Render>
+      </Providers>
     );
 
     const heart = container.querySelector('#av-favorite-heart-1234');
@@ -513,6 +520,7 @@ describe('FavoriteHeart', () => {
     await waitFor(() => expect(heart).toBeChecked());
 
     expect(onChange).toHaveBeenCalledTimes(1);
+    await waitForPostMessageToSettle();
   });
 
   test('should call onFavoritesChange when favorited', async () => {
@@ -562,6 +570,7 @@ describe('FavoriteHeart', () => {
     await waitFor(() => expect(heart).toBeChecked());
 
     expect(handleFavoritesChange).toHaveBeenCalledTimes(1);
+    await waitForPostMessageToSettle();
   });
 
   test('should call onFavoritesChange when unfavorited', async () => {
@@ -584,12 +593,6 @@ describe('FavoriteHeart', () => {
       })
     );
 
-    avSettingsApi.setApplication = jest.fn().mockResolvedValue({
-      data: {
-        favorites: [],
-      },
-    });
-
     const handleFavoritesChange = jest.fn(() => {});
 
     const { container } = render(
@@ -611,5 +614,21 @@ describe('FavoriteHeart', () => {
     await waitFor(() => expect(heart).not.toBeChecked());
 
     expect(handleFavoritesChange).toHaveBeenCalledTimes(1);
+
+    await waitForPostMessageToSettle();
+  });
+
+  // I'm unabled to actually test that the checkbox doesn't toggle.
+  // https://github.com/testing-library/react-testing-library/issues/275
+  test('favorite heart heart with `disabled` prop set to true should disabled the underlying checkbox', async () => {
+    const { container } = render(
+      <Providers>
+        <FavoriteHeart id="123" disabled />
+      </Providers>
+    );
+
+    const heart = container.querySelector('#av-favorite-heart-123');
+
+    expect(heart).toBeDisabled();
   });
 });

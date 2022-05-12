@@ -2,9 +2,8 @@ import React from 'react';
 import includes from 'lodash/includes';
 import filter from 'lodash/filter';
 import classNames from 'classnames';
-import { useTableContext } from './TableContext';
 import { OnTableClickEvent } from './types/OnTableClickEvent';
-import { Column, IdType, Row, TableInstance } from './types/ReactTable';
+import { Column, IdType, Row, RowProps, TableInstance } from './types/ReactTable';
 
 export type Props<T extends IdType> = {
   id?: string;
@@ -12,6 +11,14 @@ export type Props<T extends IdType> = {
   index: number;
   onRowClick?: (event: OnTableClickEvent<HTMLElement, T>) => void;
   onCellClick?: (event: OnTableClickEvent<HTMLElement, T>) => void;
+
+  AdditionalContent?: React.ElementType;
+  additionalContentProps?: Record<string, string | number | boolean | undefined | null>;
+  scrollable?: boolean;
+  instance?: TableInstance<T>;
+
+  getRowProps?: (row: Row<T>) => RowProps;
+
   children?: React.ReactNode;
 } & React.HTMLAttributes<HTMLElement>;
 
@@ -20,23 +27,27 @@ const TableRow = <T extends IdType>({
   index,
   onRowClick,
   onCellClick,
+  instance,
+  scrollable,
+  AdditionalContent,
+  additionalContentProps,
+  getRowProps,
   children,
   ...rest
 }: Props<T>): JSX.Element => {
-  const { AdditionalContent, additionalContentProps, scrollable, instance } = useTableContext();
   const { selectedFlatRows: selectedRows, visibleColumns } = instance as TableInstance<T>;
+  const columns = (visibleColumns || []) as Column<T>[];
 
-  const columns = visibleColumns as Column<T>[];
+  const rowClasses = classNames(`av-grid-row-${index % 2 === 0 ? 'even' : 'odd'}`, {
+    'fixed-width-tr': scrollable,
+    selected: includes(
+      selectedRows.map((row: Row<T>) => row.id),
+      row.id
+    ),
+    'cursor-pointer': !!onRowClick || !!onCellClick,
+  });
 
   const definedRowProps = {
-    className: classNames(`av-grid-row-${index % 2 === 0 ? 'even' : 'odd'}`, {
-      'fixed-width-tr': scrollable,
-      selected: includes(
-        selectedRows.map((row: Row<T>) => row.id),
-        row.id
-      ),
-      'cursor-pointer': !!onRowClick || !!onCellClick,
-    }),
     onClick: (event: React.MouseEvent<HTMLTableRowElement, MouseEvent>) => {
       if (onRowClick) {
         onRowClick({
@@ -47,6 +58,12 @@ const TableRow = <T extends IdType>({
         } as OnTableClickEvent<HTMLTableRowElement, T>);
       }
     },
+  };
+
+  const buildRowProps = () => {
+    const props = getRowProps ? getRowProps(row) : {};
+    props.className = classNames(rowClasses, props.className);
+    return { ...props, ...definedRowProps, ...rest };
   };
 
   const definedCellProps = {
@@ -69,11 +86,9 @@ const TableRow = <T extends IdType>({
 
   return (
     <>
-      <tr {...row.getRowProps()} {...definedRowProps} {...rest}>
-        {children}
-      </tr>
+      <tr {...row.getRowProps(buildRowProps())}>{children}</tr>
       {AdditionalContent && (
-        <tr {...definedRowProps}>
+        <tr {...buildRowProps()}>
           {isFirstColumnSticky && <td className="sticky sticky-left" />}
           <td colSpan={numberOfNonStickyColumns} style={{ borderTop: 0 }} {...definedCellProps}>
             <AdditionalContent record={row.original} {...additionalContentProps} />

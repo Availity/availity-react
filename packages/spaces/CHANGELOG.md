@@ -3,6 +3,33 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [6.0.3](https://github.com/Availity/availity-react/compare/@availity/spaces@6.0.2...@availity/spaces@6.0.3) (2022-05-11)
+
+
+### Bug Fixes
+
+* **spaces:** missing useMemo id dep ([44f9620](https://github.com/Availity/availity-react/commit/44f9620072e5dbb8897627207768b15c920bdeb7))
+
+
+
+
+
+## 6.0.2 (2022-05-09)
+
+**Note:** Version bump only for package @availity/spaces
+
+
+
+
+
+## 6.0.1 (2022-05-03)
+
+**Note:** Version bump only for package @availity/spaces
+
+
+
+
+
 # [6.0.0](https://github.com/Availity/availity-react/compare/@availity/spaces@5.2.0...@availity/spaces@6.0.0) (2022-04-13)
 
 

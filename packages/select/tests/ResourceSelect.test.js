@@ -1,11 +1,11 @@
 import React, { useState } from 'react';
 import { fireEvent, render, waitFor } from '@testing-library/react';
-import { avRegionsApi, avProvidersApi, avCodesApi } from '@availity/api-axios';
+import AvApi, { avRegionsApi, avProvidersApi, avCodesApi } from '@availity/api-axios';
 import { Button } from 'reactstrap';
 import { Form } from '@availity/form';
 
 import { ResourceSelect } from '../src';
-import { AvProviderSelect, AvRegionSelect } from '../src/resources';
+import { AvProviderSelect, AvRegionSelect, AvPayerSelect } from '../src/resources';
 
 jest.mock('@availity/api-axios');
 
@@ -1364,5 +1364,51 @@ describe('Custom Resources', () => {
       expect(queryByText('Texas')).toBeNull();
       expect(queryByText('Washington')).toBeNull();
     });
+  });
+});
+
+describe('AvPayerSelect', () => {
+  it('calls extendedPayersApi.all', async () => {
+    const extendedPayersApi = new AvApi({ path: '/api/internal', name: 'extended-payers' });
+    extendedPayersApi.all.mockResolvedValueOnce([
+      {
+        id: '11232',
+        payerName: 'Test Payer',
+        payerId: '4321',
+      },
+      {
+        id: '12232',
+        payerName: 'Healthy Payer',
+        payerId: '5321',
+      },
+      {
+        id: '13232',
+        payerName: 'Last Payer',
+        payerId: '6321',
+      },
+    ]);
+
+    // eslint-disable-next-line react/prop-types
+    const PayerComponent = ({ payerProps }) => (
+      <Form
+        initialValues={{
+          'test-form-input': undefined,
+        }}
+        onSubmit={onSubmit}
+      >
+        <AvPayerSelect {...payerProps} />
+        <Button type="submit">Submit</Button>
+      </Form>
+    );
+
+    const payerProps = {
+      name: 'test-form-input',
+      classNamePrefix: 'test__payer',
+      customerId: '12345',
+    };
+
+    render(<PayerComponent payerProps={payerProps} />);
+
+    expect(extendedPayersApi.all).toHaveBeenCalled();
   });
 });

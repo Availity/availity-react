@@ -1,144 +1,194 @@
-import React, { useEffect } from 'react';
-import { Table as RsTable } from 'reactstrap';
-import Icon from '@availity/icon';
-import TableHeader from './TableHeader';
-import TableHeaderRow from './TableHeaderRow';
-import TableHeaderCell from './TableHeaderCell';
-import TableRow from './TableRow';
-import TableCell from './TableCell';
+import React, { useEffect, useState } from 'react';
+import filter from 'lodash/filter';
+import {
+  Hooks,
+  useColumnOrder,
+  useRowSelect,
+  UseRowSelectInstanceProps,
+  useSortBy,
+  useTable,
+  Column as RtColumn,
+  usePagination,
+  PluginHook,
+  useRowState,
+} from 'react-table';
 import { TableSort } from './types/TableSort';
-import { Cell, ExtendedTableHeader, IdType, Row, TableInstance } from './types/ReactTable';
+import { Cell, Column, IdType, Row, TableInstance, TableOptions, RowProps } from './types/ReactTable';
 import { OnTableClickEvent } from './types/OnTableClickEvent';
 import { OnRowSelectedEvent } from './types/OnRowSelectedEvent';
-import { useTableContext } from './TableContext';
+import { TableContext } from './TableContext';
+import IndeterminateCheckbox from './IndeterminateCheckbox';
+import { TableSortOption } from './types';
+import TableContent from './TableContent';
 
 type HeaderProps = {
   sticky: boolean;
 } & React.HTMLAttributes<HTMLElement>;
 
-export type Props<T extends IdType> = {
+export type CommonTableProps<T extends IdType> = {
   id?: string;
+  tableProps?: React.HTMLAttributes<HTMLElement>;
   bodyProps?: React.HTMLAttributes<HTMLElement>;
-  cellProps?: React.HTMLAttributes<HTMLElement>;
+  getCellProps?: (cell: Cell<T>) => React.HTMLAttributes<HTMLTableCellElement>;
+  getRowProps?: (row: Row<T>) => RowProps;
+
   onCellClick?: (event: OnTableClickEvent<HTMLElement, T>) => void;
   onRowClick?: (event: OnTableClickEvent<HTMLElement, T>) => void;
-  onRowSelected?: (event: OnRowSelectedEvent) => void;
+  onRowSelected?: (event: OnRowSelectedEvent<T>) => void;
   headerProps?: HeaderProps;
-  rowProps?: React.HTMLAttributes<HTMLElement>;
-  scrollable?: boolean;
   onSort?: (sortBy: TableSort[]) => void;
-} & React.HTMLAttributes<HTMLElement>;
+
+  additionalContent?: React.ElementType;
+  additionalContentProps?: Record<string, string | number | boolean | undefined | null>;
+
+  scrollable?: boolean;
+  selectable?: boolean;
+  getCanSelectRow?: (record: T) => boolean;
+  sortable?: boolean;
+  paged?: boolean;
+
+  pluginHooks?: PluginHook<T>[];
+  children?: React.ReactNode | React.ReactChild;
+};
+
+export type TableProps<T extends IdType> = {
+  columns: Column<T>[];
+  data: T[];
+} & React.HTMLAttributes<HTMLElement> &
+  CommonTableProps<T> &
+  TableOptions<T>;
 
 const Table = <T extends IdType>({
+  additionalContent: AdditionalContent,
+  additionalContentProps,
+  columns,
+  data,
+  selectable = false,
+  scrollable,
+  sortable = false,
   id,
+  tableProps,
   bodyProps,
-  cellProps,
   headerProps,
   onRowClick,
   onCellClick,
   onRowSelected,
-  rowProps,
-  scrollable,
+  getCanSelectRow,
+  getRowProps = () => ({} as RowProps),
+  getCellProps = () => ({} as React.HTMLAttributes<HTMLTableCellElement>),
   onSort,
+  paged = false,
+  pluginHooks,
+  children,
   ...rest
-}: Props<T>): JSX.Element => {
-  const { sortable, selectable, instance, setScrollable } = useTableContext();
+}: TableProps<T>): JSX.Element | null => {
+  const [selectedTableRows, setSelectedTableRows] = useState<Row<T>[]>([]);
+  const [sortableColumns] = useState<TableSortOption[]>(
+    filter(columns, (column) => !column.disableSortBy && column.defaultCanSort).map((column) => {
+      const col = column as Column<T>;
+      return { value: col.accessor as string, label: col.Header as string };
+    })
+  );
 
-  const {
-    getTableProps,
-    getTableBodyProps,
-    headerGroups,
-    rows,
-    prepareRow,
-    selectedFlatRows: selectedRows,
-    toggleHideColumn,
-  } = instance as TableInstance<T>;
+  const cols = columns as RtColumn<T>[];
 
-  useEffect(() => {
-    if (scrollable && setScrollable) {
-      setScrollable(scrollable);
+  const tableInstance = useTable<T>(
+    {
+      ...rest,
+      columns: cols,
+      data,
+    } as TableOptions<T>,
+    ...(pluginHooks || []),
+    useSortBy,
+    usePagination,
+    useRowSelect,
+    useColumnOrder,
+    useRowState,
+    (hooks: Hooks<T>) => {
+      const selectionColumn = {
+        id: 'selection',
+        title: 'Select record(s)',
+        className: 'fixed-width-selection',
+        defaultCanSort: false,
+        disableSortBy: true,
+        disableClick: true,
+        hidden: selectable,
+        Header: ({ getToggleAllRowsSelectedProps }: UseRowSelectInstanceProps<T>) => (
+          <div className="text-center">
+            <IndeterminateCheckbox
+              data-testid="table_header_select_all"
+              aria-label="Select all records"
+              {...getToggleAllRowsSelectedProps()}
+            />
+          </div>
+        ),
+        Cell: ({ row }: Cell<T>) => {
+          const { getToggleRowSelectedProps, index, original } = row;
+          return getCanSelectRow && !getCanSelectRow(original) ? null : (
+            <div className="text-center">
+              <IndeterminateCheckbox
+                data-testid={`table_header_select_row_${index}`}
+                aria-label="Select record"
+                {...getToggleRowSelectedProps()}
+              />
+            </div>
+          );
+        },
+      };
+
+      hooks.visibleColumns.push((columns: Column<T>[]) => {
+        const cols = [];
+        if (selectable) {
+          cols.push(selectionColumn);
+        }
+        cols.push(...filter(columns, (col) => col.hidden !== true));
+        return cols;
+      });
     }
-  }, [scrollable, setScrollable]);
+  ) as TableInstance<T>;
+
+  const { selectedFlatRows } = tableInstance;
 
   useEffect(() => {
-    toggleHideColumn('selection', !selectable);
-  }, [selectable, toggleHideColumn]);
+    setSelectedTableRows(
+      getCanSelectRow ? (selectedFlatRows.filter((row) => getCanSelectRow(row.original)) as Row<T>[]) : selectedFlatRows
+    );
+  }, [selectedFlatRows, getCanSelectRow]);
 
   useEffect(() => {
     if (onRowSelected) {
-      onRowSelected({ selectedRows: selectedRows?.map((selectedRow: Row<T>) => selectedRow.id) });
+      onRowSelected({ selectedRows: selectedTableRows });
     }
-  }, [selectedRows, onRowSelected]);
-
-  const populateId = () => (id ? `${id}_` : '');
+  }, [selectedTableRows, onRowSelected]);
 
   return (
-    <RsTable id={id} {...getTableProps({ className: 'av-grid' })} {...rest}>
-      <TableHeader id={`${populateId()}table_header`} {...headerProps}>
-        {headerGroups.map((headerGroup, rowIndex: number) => {
-          const headerGroupEx = headerGroup as ExtendedTableHeader<T>;
-          return (
-            <TableHeaderRow
-              id={`${populateId()}table_header_row_${rowIndex}`}
-              data-testid={`${populateId()}table_header_row_${rowIndex}`}
-              key={rowIndex.toString()}
-              headerGroup={headerGroupEx}
-            >
-              {headerGroup.headers.map((column, cellIndex: number) => {
-                const header = column as ExtendedTableHeader<T>;
-                return (
-                  <TableHeaderCell
-                    onSort={onSort}
-                    id={`${populateId()}table_header_row_${rowIndex}_cell_${cellIndex}_${column.id}`}
-                    data-testid={`${populateId()}table_header_row_${rowIndex}_cell_${cellIndex}_${column.id}`}
-                    key={column.id}
-                    column={header}
-                  >
-                    {header.render('Header')}
-                    {sortable && header.defaultCanSort && header.disableSortBy !== true ? (
-                      <Icon
-                        aria-hidden="true"
-                        name={header.isSorted ? (header.isSortedDesc ? 'sort-down' : 'sort-up') : 'sort'}
-                      />
-                    ) : null}
-                  </TableHeaderCell>
-                );
-              })}
-            </TableHeaderRow>
-          );
-        })}
-      </TableHeader>
-      <tbody {...getTableBodyProps()} {...bodyProps}>
-        {rows.map((row, rowIndex: number) => {
-          prepareRow(row);
-          return (
-            <TableRow
-              id={`${populateId()}table_row_${rowIndex}`}
-              data-testid={`${populateId()}table_row_${rowIndex}`}
-              key={`${populateId()}table_row_${rowIndex.toString()}`}
-              index={rowIndex}
-              row={row as Row<T>}
-              onRowClick={selectable ? undefined : onRowClick}
-              onCellClick={selectable ? onRowClick : onCellClick}
-              {...rowProps}
-            >
-              {row.cells.map((cell, cellIndex: number) => (
-                <TableCell
-                  id={`${populateId()}table_row_${rowIndex}_cell_${cellIndex}`}
-                  data-testid={`${populateId()}table_row_${rowIndex}_cell_${cellIndex}`}
-                  key={`${populateId()}table_row_${rowIndex.toString()}_cell_${cellIndex.toString()}`}
-                  cell={cell as Cell<T>}
-                  onCellClick={selectable ? onRowClick : onCellClick}
-                  {...cellProps}
-                >
-                  {cell.render('Cell')}
-                </TableCell>
-              ))}
-            </TableRow>
-          );
-        })}
-      </tbody>
-    </RsTable>
+    <TableContext.Provider
+      value={{
+        id,
+        instance: tableInstance,
+        /* eslint-disable @typescript-eslint/no-explicit-any */
+        getCellProps: getCellProps as (cell: Cell<Record<string, any>>) => React.HTMLAttributes<HTMLTableCellElement>,
+        /* eslint-disable @typescript-eslint/no-explicit-any */
+        getRowProps: getRowProps as (row: Row<Record<string, any>>) => RowProps,
+        selectable,
+        sortable,
+        scrollable,
+        sortableColumns,
+        headerProps,
+        bodyProps,
+        AdditionalContent,
+        additionalContentProps,
+        paged,
+        onRowClick,
+        onCellClick,
+        getCanSelectRow,
+        onSort,
+        onRowSelected,
+        tableProps,
+      }}
+    >
+      {children || <TableContent />}
+    </TableContext.Provider>
   );
 };
 

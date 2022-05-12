@@ -8,6 +8,7 @@ import ResourceSelect, {
   AvCodeSelect,
   AvNavigationSelect,
   AvOrganizationSelect,
+  AvPayerSelect,
   AvPermissionSelect,
   AvProviderSelect,
   AvRegionSelect,
@@ -271,6 +272,51 @@ OrganizationSelect.args = {
 };
 
 OrganizationSelect.storyName = '<AvOrganizationSelect />';
+
+export const PayerSelect: Story = ({ disabled, isMulti, label, raw, required, region, tranTypeCode, customerId }) => (
+  <FormikResults
+    onSubmit={() => {
+      console.log('submitted');
+    }}
+    initialValues={{
+      payerSelect: null,
+    }}
+    validationSchema={singleValueSchema('payerSelect', required)}
+  >
+    <Row>
+      <Col>
+        <AvPayerSelect
+          name="payerSelect"
+          isDisabled={disabled}
+          isMulti={isMulti}
+          label={label}
+          raw={raw}
+          required={required}
+          customerId={customerId}
+          parameters={{
+            region,
+            tranTypeCode,
+          }}
+        />
+        <Button color="primary" type="submit">
+          Submit
+        </Button>
+      </Col>
+      <Col md="5">
+        <SelectedOption field="payerSelect" />
+      </Col>
+    </Row>
+  </FormikResults>
+);
+
+PayerSelect.args = {
+  label: 'Select a Payer',
+  region: "FL",
+  tranTypeCode: "EBREACT",
+  customerId: "12345",
+};
+
+PayerSelect.storyName = '<AvPayerSelect />';
 
 export const PermissionsSelect: Story = ({ disabled, isMulti, label, raw, required }) => (
   <FormikResults
