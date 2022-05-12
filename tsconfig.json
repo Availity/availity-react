@@ -16,7 +16,6 @@
     "target": "ES6",
     "jsx": "react-jsx",
     "baseUrl": ".",
-    "typeRoots": ["node_modules/@types/react"],
     "paths": {
       "@availity/analytics": ["packages/analytics"],
       "@availity/app-icon": ["packages/app-icon"],

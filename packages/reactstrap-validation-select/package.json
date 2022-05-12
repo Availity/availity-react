@@ -24,18 +24,18 @@
   "dependencies": {
     "classnames": "^2.3.1",
     "lodash": "^4.17.21",
-    "prop-types": "^15.7.2",
-    "qs": "^6.5.2",
-    "react-select": "^5.0.0",
-    "react-select-async-paginate": "^0.6.0"
+    "prop-types": "^15.8.1",
+    "qs": "^6.10.3",
+    "react-select": "^5.3.2",
+    "react-select-async-paginate": "^0.6.1"
   },
   "devDependencies": {
-    "@availity/api-axios": "^6.0.0",
+    "@availity/api-axios": "^7.0.1",
     "availity-reactstrap-validation": "^2.7.1",
-    "axios": "^0.21.1",
+    "axios": "^0.21.4",
     "react": "^17.0.2",
     "react-dom": "^17.0.2",
-    "reactstrap": "^8.9.0"
+    "reactstrap": "^8.10.1"
   },
   "peerDependencies": {
     "@availity/api-axios": "^6.0.0",
@@ -43,7 +43,7 @@
     "availity-uikit": ">=3.0.0",
     "axios": "^0.21.1",
     "react": ">=16.8.3",
-    "reactstrap": "^8.0.0 || ^7.0.0 || ^6.0.0"
+    "reactstrap": "^8.0.0"
   },
   "publishConfig": {
     "access": "public"

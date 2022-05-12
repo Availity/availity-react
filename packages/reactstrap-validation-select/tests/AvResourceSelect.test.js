@@ -287,6 +287,7 @@ describe('AvResourceSelect', () => {
       classNamePrefix: 'test__codes',
       getResult: 'codes',
       requiredParams: ['list'],
+      watchParams: ['list'],
     });
 
     await waitFor(() => {

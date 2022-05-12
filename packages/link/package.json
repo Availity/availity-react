@@ -21,9 +21,9 @@
   "main": "index.js",
   "types": "index.d.ts",
   "dependencies": {
-    "@availity/resolve-url": "^1.1.22",
+    "@availity/resolve-url": "^2.0.1",
     "classnames": "^2.3.1",
-    "prop-types": "^15.7.2"
+    "prop-types": "^15.8.1"
   },
   "devDependencies": {
     "react": "^17.0.2",

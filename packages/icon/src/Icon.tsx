@@ -3,14 +3,14 @@ import classNames from 'classnames';
 
 const pointerStyles = { cursor: 'pointer' };
 
-type Props = {
+export type IconProps = {
   name: string;
   size?: string;
   children?: React.ReactNode;
 } & React.HTMLAttributes<HTMLElement>;
 
 const Icon = React.forwardRef(
-  ({ name, size, color, onClick, className, children, ...rest }: Props, ref?: React.Ref<HTMLElement>) => (
+  ({ name, size, color, onClick, className, children, ...rest }: IconProps, ref?: React.Ref<HTMLElement>) => (
     <i
       ref={ref}
       aria-hidden="true"

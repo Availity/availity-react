@@ -6,7 +6,7 @@ import 'react-block-ui/style.css';
 import useAuthorize from './useAuthorize';
 import type { QueryOptions, RequestedPermissions, RequestedResources } from './types';
 
-type AuthorizeProps = {
+export type AuthorizeProps = {
   permissions: RequestedPermissions;
   resources?: RequestedResources;
   region?: boolean | string;

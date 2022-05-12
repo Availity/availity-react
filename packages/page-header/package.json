@@ -22,22 +22,22 @@
   "main": "index.js",
   "types": "index.d.ts",
   "dependencies": {
-    "@availity/app-icon": "^1.4.2",
-    "@availity/breadcrumbs": "^3.2.2",
-    "@availity/feedback": "^6.2.26",
-    "@availity/payer-logo": "^5.1.3",
+    "@availity/app-icon": "workspace:*",
+    "@availity/breadcrumbs": "workspace:*",
+    "@availity/feedback": "workspace:*",
+    "@availity/payer-logo": "workspace:*",
     "classnames": "^2.3.1",
-    "prop-types": "^15.7.2"
+    "prop-types": "^15.8.1"
   },
   "devDependencies": {
-    "@availity/api-axios": "^6.0.0",
-    "@availity/spaces": "^6.0.0",
-    "@availity/training-link": "^1.4.2",
-    "axios": "^0.21.1",
-    "formik": "^2.2.8",
+    "@availity/api-axios": "^7.0.1",
+    "@availity/spaces": "workspace:*",
+    "@availity/training-link": "workspace:*",
+    "axios": "^0.21.4",
+    "formik": "^2.2.9",
     "react": "^17.0.2",
     "react-dom": "^17.0.2",
-    "yup": "^0.30.0"
+    "yup": "^0.32.11"
   },
   "peerDependencies": {
     "@availity/api-axios": "^6.0.0",
