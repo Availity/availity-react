@@ -1,10 +1,32 @@
 import React from 'react';
-import PropTypes from 'prop-types';
 import classNames from 'classnames';
 import toNumber from 'lodash/toNumber';
 
-const Progress = ({ tag: Tag, animated, striped, complete, value, max, className: classes, color, ...rest }) => {
+export type ProgressProps = {
+  tag?: React.ElementType;
+  animated?: boolean;
+  striped?: boolean;
+  complete?: boolean;
+  value?: number | string;
+  max?: number | string;
+  className?: string;
+  color?: string;
+  children?: React.ReactNode; // TODO: check if this is right
+};
+
+const Progress = ({
+  tag: Tag = 'div',
+  animated,
+  striped,
+  complete,
+  value = 0,
+  max = 100,
+  className: classes,
+  color = 'success',
+  ...rest
+}: ProgressProps): JSX.Element => {
   const percent = (toNumber(value) / toNumber(max)) * 100;
+
   return (
     <Tag
       className={classNames(classes, 'progress', {
@@ -29,24 +51,6 @@ const Progress = ({ tag: Tag, animated, striped, complete, value, max, className
       />
     </Tag>
   );
-};
-
-Progress.defaultProps = {
-  tag: 'div',
-  value: 0,
-  max: 100,
-  color: 'success',
-};
-
-Progress.propTypes = {
-  tag: PropTypes.oneOfType([PropTypes.func, PropTypes.string]),
-  animated: PropTypes.bool,
-  striped: PropTypes.bool,
-  complete: PropTypes.bool,
-  value: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
-  max: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
-  className: PropTypes.string,
-  color: PropTypes.string,
 };
 
 export default Progress;

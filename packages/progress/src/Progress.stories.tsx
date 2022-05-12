@@ -1,7 +1,7 @@
 import React from 'react';
 import { Meta, Story } from '@storybook/react';
 
-import Progress from '..';
+import Progress from '.';
 // import README from '../README.md';
 
 export default {
