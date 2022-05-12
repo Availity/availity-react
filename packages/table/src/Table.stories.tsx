@@ -1,7 +1,7 @@
 import React from 'react';
 import { Meta, Story } from '@storybook/react';
 import response from '@availity/mock/src/data/patients.json';
-import Table, { ScrollableContainer, DateCell, BadgeCell, ActionCell, TableProvider } from '../src';
+import Table, { ScrollableContainer, DateCell, BadgeCell, ActionCell, TableProvider } from '.';
 import '../styles.scss';
 
 const columns = [
@@ -65,9 +65,9 @@ const columns = [
       onClick: (record?: Record<string, unknown>) => {
         // eslint-disable-next-line no-console
         console.log(`action on record ${record?.id}`);
-      }
-    }
-  }
+      },
+    },
+  },
 ];
 
 export default {
@@ -88,21 +88,12 @@ export const Default: Story = ({
   rowProps,
   cellProps,
   bodyProps,
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
-}: any) => (
-  <TableProvider
-    sortable={sortable}
-    selectable={selectable}
-    columns={columns}
-    data={data}
-  >
-    <Table
-      headerProps={headerProps}
-      rowProps={rowProps}
-      cellProps={cellProps}
-      bodyProps={bodyProps}
-    />
-  </TableProvider>);
+}: // eslint-disable-next-line @typescript-eslint/no-explicit-any
+any) => (
+  <TableProvider sortable={sortable} selectable={selectable} columns={columns} data={data}>
+    <Table headerProps={headerProps} rowProps={rowProps} cellProps={cellProps} bodyProps={bodyProps} />
+  </TableProvider>
+);
 Default.args = {
   sortable: false,
   selectable: false,
@@ -124,21 +115,11 @@ export const WithScrollableContainer: Story = ({
   rowProps,
   cellProps,
   bodyProps,
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
-}: any) => (
-  <TableProvider
-    sortable={sortable}
-    selectable={selectable}
-    columns={columns}
-    data={data}
-  >
+}: // eslint-disable-next-line @typescript-eslint/no-explicit-any
+any) => (
+  <TableProvider sortable={sortable} selectable={selectable} columns={columns} data={data}>
     <ScrollableContainer>
-      <Table
-        headerProps={headerProps}
-        rowProps={rowProps}
-        cellProps={cellProps}
-        bodyProps={bodyProps}
-      />
+      <Table headerProps={headerProps} rowProps={rowProps} cellProps={cellProps} bodyProps={bodyProps} />
     </ScrollableContainer>
   </TableProvider>
 );
