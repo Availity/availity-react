@@ -1,6 +1,6 @@
 import React from 'react';
-import { render, waitFor, fireEvent } from '@testing-library/react';
-import RemovableBadge from '../RemovableBadge';
+import { fireEvent, render, screen, waitFor } from '@testing-library/react';
+import RemovableBadge from './RemovableBadge';
 
 describe('Removable Badge', () => {
   test('should render', async () => {
@@ -8,16 +8,13 @@ describe('Removable Badge', () => {
     const displayText = 'My Badge';
     const color = 'primary';
 
-    const { container, getByTestId } = render(
+    render(
       <RemovableBadge onRemove={onRemove} value="badgeValue" color={color}>
         {displayText}
       </RemovableBadge>
     );
 
-    expect(container).toBeDefined();
-    expect(container).toMatchSnapshot();
-
-    const badgeElement = await waitFor(() => getByTestId('removable_badge'));
+    const badgeElement = await waitFor(() => screen.getByTestId('removable_badge'));
     expect(badgeElement).not.toBeNull();
     expect(badgeElement.textContent).toBe(displayText);
     expect(badgeElement.className).toContain(color);
@@ -28,18 +25,16 @@ describe('Removable Badge', () => {
     const displayText = 'My Badge';
     const color = 'primary';
 
-    const { container, getByTestId } = render(
+    render(
       <RemovableBadge onRemove={onRemove} value="badgeValue" color={color}>
         {displayText}
       </RemovableBadge>
     );
 
-    expect(container).toBeDefined();
-
-    const badgeElement = await waitFor(() => getByTestId('removable_badge'));
+    const badgeElement = await waitFor(() => screen.getByTestId('removable_badge'));
     expect(badgeElement).not.toBeNull();
 
-    const removeIcon = await waitFor(() => getByTestId('removable_badge_remove'));
+    const removeIcon = await waitFor(() => screen.getByTestId('removable_badge_remove'));
     expect(removeIcon).not.toBeNull();
     fireEvent.click(removeIcon);
 

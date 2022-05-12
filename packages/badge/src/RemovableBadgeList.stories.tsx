@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { Meta, Story } from '@storybook/react';
 import { Button } from 'reactstrap';
-import { RemovableBadgeList, BadgeItem, RemovableBadgeProps } from '../src';
+import { RemovableBadgeList, BadgeItem, RemovableBadgeProps } from '.';
 
 export default {
   title: 'Components/Badge/Removable Badge/List',

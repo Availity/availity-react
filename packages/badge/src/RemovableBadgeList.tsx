@@ -1,8 +1,9 @@
 import React, { useEffect, useState } from 'react';
-import { BadgeProps } from 'reactstrap';
+import type { BadgeProps } from 'reactstrap';
 import find from 'lodash/find';
 import without from 'lodash/without';
 import orderBy from 'lodash/orderBy';
+
 import RemovableBadge from './RemovableBadge';
 
 export type BadgeItem = {
