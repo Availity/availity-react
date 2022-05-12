@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { Button, ModalBody, ModalHeader, ModalFooter } from 'reactstrap';
 import { Form } from '@availity/form';
-import { AvOrganizationSelect } from '@availity/select/resources';
+import { AvOrganizationSelect } from '@availity/select';
 import * as yup from 'yup';
 import nativeForm from '@availity/native-form';
 import { avOrganizationsApi, avWebQLApi } from '@availity/api-axios';
