@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { avOrganizationsApi } from '@availity/api-axios';
 
-import { ResourceSelect } from '..';
+import ResourceSelect from './ResourceSelect';
 
 const OrganizationSelect = ResourceSelect.create({
   resource: avOrganizationsApi,

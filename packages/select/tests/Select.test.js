@@ -5,7 +5,7 @@ import { components } from 'react-select';
 import * as yup from 'yup';
 import { Form, Input } from '@availity/form';
 
-import Select from '..';
+import Select from '../src';
 
 const singleValueSchema = (name) =>
   yup.object().shape({
@@ -125,7 +125,7 @@ describe('Select', () => {
           singleSelect: undefined,
         }}
         onSubmit={onSubmit}
-        validationSchema={singleValueSchema('singleSelect')}
+        validationSchema={multiValueSchema('singleSelect', true, 1, 2)}
       >
         <Select isMulti name="singleSelect" options={groupedOptions} data-testid="single-select" />
         <Button type="submit">Submit</Button>
@@ -328,7 +328,9 @@ describe('Select', () => {
           singleSelect: undefined,
         }}
         onSubmit={onSubmit}
-        validationSchema={singleValueSchema('singleSelect')}
+        validationSchema={yup.object().shape({
+          singleSelect: yup.object(),
+        })}
       >
         <Select name="singleSelect" options={options} raw data-testid="single-select" />
         <Button type="submit">Submit</Button>

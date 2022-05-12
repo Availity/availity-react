@@ -12,7 +12,7 @@ import ResourceSelect, {
   AvProviderSelect,
   AvRegionSelect,
   AvUserSelect,
-} from '../resources';
+} from '../src/resources';
 import { singleValueSchema, multiValueSchema, SelectedOption } from './utils';
 // import README from '../README.md';
 

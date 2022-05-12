@@ -4,8 +4,8 @@ import { avRegionsApi, avProvidersApi, avCodesApi } from '@availity/api-axios';
 import { Button } from 'reactstrap';
 import { Form } from '@availity/form';
 
-import { ResourceSelect } from '..';
-import { AvProviderSelect, AvRegionSelect } from '../resources';
+import { ResourceSelect } from '../src';
+import { AvProviderSelect, AvRegionSelect } from '../src/resources';
 
 jest.mock('@availity/api-axios');
 
@@ -521,6 +521,7 @@ describe('ResourceSelect', () => {
       classNamePrefix: 'test__codes',
       getResult: 'codes',
       requiredParams: ['list'],
+      watchParams: ['list'],
     });
 
     await waitFor(() => {

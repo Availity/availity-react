@@ -1,8 +1,8 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 /* eslint-disable @typescript-eslint/ban-types */
-import type { GroupBase } from 'react-select';
+import { GroupBase } from 'react-select';
 
-import type { SelectFieldProps } from './SelectField';
+import { SelectFieldProps } from './SelectField';
 
 export type ResourceSelectProps<
   Option,

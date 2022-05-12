@@ -1,7 +1,11 @@
 import type { GroupBase } from 'react-select';
 
-import ResourceSelect from './types/ResourceSelect';
-import type { ResourceSelectProps } from './types/ResourceSelect';
+import ResourceSelect from './ResourceSelect';
+import type { ResourceSelectProps } from './ResourceSelect';
+import AvOrganizationSelect from './AvOrganizationSelect';
+import AvRegionSelect from './AvRegionSelect';
+
+export { AvOrganizationSelect, AvRegionSelect };
 
 type PrebuiltResourceSelectProps<
   Option,
@@ -50,45 +54,6 @@ type Address = {
   zipCode: string;
 };
 
-type Organization = {
-  id: string;
-  customerId: string;
-  name: string;
-  dbaName: string;
-  status: string;
-  statusCode: string;
-  types: { code: string; name: string }[];
-  primaryConrollingAuthority: { lastName: string; firstName: string; primaryPhone: string; email: string };
-  physicalAddress: Address;
-  mailingAddress: Address;
-  billingAddress: Address;
-  regions: { code: string; value: string }[];
-  npis: { number: string }[];
-  taxIds: { number: string; type: string }[];
-  payerAssignedProviderIds: Record<string, { number: string }[]>;
-  phoneNumber: { areaCode: string; exchange: string; phoneNumber: string };
-  faxNumber: { areaCode: string; exchange: string; phoneNumber: string };
-  numberOfLicensedPhysicians: string;
-  numberOfLicensedClinicians: string;
-};
-
-export type AvOrganizationSelectProps<
-  Option,
-  IsMulti extends boolean = boolean,
-  Group extends GroupBase<Option> = GroupBase<Option>
-> = PrebuiltResourceSelectProps<Option, IsMulti, Group> & {
-  resourceIds?: string | string[] | string[][];
-  permissionIds?: string | string[] | string[][];
-};
-
-export declare const AvOrganizationSelect: <
-  Option = Organization,
-  IsMulti extends boolean = boolean,
-  Group extends GroupBase<Option> = GroupBase<Option>
->(
-  props: AvOrganizationSelectProps<Option, IsMulti, Group>
-) => JSX.Element;
-
 type Permission = {
   id: string;
   description: string;
@@ -136,19 +101,6 @@ export declare const AvProviderSelect: <
   Group extends GroupBase<Option> = GroupBase<Option>
 >(
   props: PrebuiltResourceSelectProps<Option, IsMulti, Group> & { customerId: string }
-) => JSX.Element;
-
-type Region = {
-  id: string;
-  value: string;
-};
-
-export declare const AvRegionSelect: <
-  Option = Region,
-  IsMulti extends boolean = boolean,
-  Group extends GroupBase<Option> = GroupBase<Option>
->(
-  props: PrebuiltResourceSelectProps<Option, IsMulti, Group> & { defaultToCurrentRegion?: boolean }
 ) => JSX.Element;
 
 type User = {
