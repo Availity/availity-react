@@ -34,9 +34,7 @@
   "scripts": {
     "build": "nx run-many --target=build --all",
     "build:components": "nx run-many --target=build --all --exclude=docusaurus",
-    "build:deploy": "yarn build:docs && yarn build:storybook:netlify",
     "build:docs": "yarn nx build docusaurus",
-    "build:netlify": "yarn build:storybook:netlify",
     "build:storybook": "build-storybook",
     "build:storybook:netlify": "NODE_ENV=production build-storybook -c .storybook -o ./docusaurus/build/storybook --quiet",
     "build:storybook:production": "NODE_ENV=production build-storybook -c .storybook -o ./storybook-docs --quiet",
@@ -47,7 +45,7 @@
     "clean:storybook": "rm -rf storybook-docs/ storybook-static/",
     "clean:nuke": "yarn clean && rm -rf node_modules/",
     "codecov:ci": "codecov",
-    "deploy:ci": "yarn build:deploy",
+    "deploy:ci": "yarn build:docs && yarn build:storybook:netlify",
     "deploy:docs": "nx deploy docusaurus",
     "dev": "nx run-many --target=dev --all",
     "format": "prettier '**/*.json' --write --ignore-unknown",

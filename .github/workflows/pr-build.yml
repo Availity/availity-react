@@ -1,13 +1,10 @@
 # This workflow will do a clean install of node dependencies, build the source code and run tests across different versions of node
 # For more information see: https://help.github.com/actions/language-and-framework-guides/using-nodejs-with-github-actions
 
-name: Node.js CI
+name: Pull Request Build
 
 on:
   pull_request:
-    types:
-      - opened
-      - synchronize
     branches: [master]
 
 jobs:
@@ -15,37 +12,65 @@ jobs:
   #   * deploy a draft every time there is a pull request created or synchronized that is not on master branch
   #   * comment on that pull request with the deploy URL
   build:
-    runs-on: ubuntu-latest
+    if: ${{ github.actor != 'dependabot[bot]' }}
+    runs-on: ${{ matrix.os }}
+    strategy:
+      matrix:
+        os: [ubuntu-latest, macos-latest]
+        node: [14, 16]
 
-    if: github.event_name == 'pull_request' && github.ref != 'refs/heads/master'
     steps:
-      - uses: actions/checkout@v2
-      - uses: actions/setup-node@v2
+      - name: Checkout Code
+        uses: actions/checkout@v2
         with:
-          node-version: 14
+          fetch-depth: 0
+          token: ${{ secrets.BOT_TOKEN }}
+
+      - name: Derive appropriate SHAs for base and head for `nx affected` commands
+        uses: nrwl/nx-set-shas@v2
+        with:
+          main-branch-name: 'master'
+
+      - name: Set Node Version
+        uses: actions/setup-node@v2
+        with:
+          node-version: ${{ matrix.node }}
+
       - name: Get yarn cache directory path
         id: yarn-cache-dir-path
         run: echo "::set-output name=dir::$(yarn cache dir)"
+
       - uses: actions/cache@v2
         id: yarn-cache
         with:
           path: ${{ steps.yarn-cache-dir-path.outputs.dir }}
-          key: ${{ runner.os }}-yarn-${{ hashFiles('**/yarn.lock') }}
+          key: ${{ runner.os }}-${{ matrix.node }}-yarn-${{ hashFiles('yarn.lock') }}
           restore-keys: |
-            ${{ runner.os }}-yarn-
-      - run: yarn check:packages
-      - run: yarn install --frozen-lockfile --prefer-offline
-      - run: yarn lint
-      - run: yarn test:ci
-        # https://docs.github.com/en/actions/reference/authentication-in-a-workflow#permissions-for-the-github_token
-        # Workflow runs triggered by Dependabot PRs run as if they are from a forked repository, using a read-only GITHUB_TOKEN.
-        # These workflow runs cannot access any secrets.
-      - uses: codecov/codecov-action@v1.0.6 # FIXME: no CI provider detected
-        if: github.actor != 'dependabot[bot]' # TODO: separate workflow for dependabot
+            ${{ runner.os }}-${{ matrix.node }}-yarn-
+
+      # - name: Artifactory Check
+      #   run: yarn check:registry
+
+      - name: Install Dependencies
+        run: yarn install --immutable
+
+      - name: Lint
+        run: yarn nx affected --target=lint
+
+      - name: Unit Test
+        run: yarn test:ci
+
+      - name: Publish Dry Run
+        run: yarn publish:dry-run
+
+      - name: Upload coverage report
+        uses: codecov/codecov-action@v1.0.6 # FIXME: no CI provider detected
         with:
           file: ./coverage/coverage-final.json
           token: ${{ secrets.CODECOV_TOKEN }}
-      - run: yarn build:docs
+
+      - name: Build
+        run: yarn build
 #       TODO: fix Netlify draft deploys, investigate gh-pages for draft docs
 #         if: github.actor != 'dependabot[bot]'
 #       - name: Deploy draft to Netlify
