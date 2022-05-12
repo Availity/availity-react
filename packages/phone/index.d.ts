@@ -1,2 +1,1 @@
-export { default as Phone } from './types/Phone';
-export * from './types/Phone';
+export { default as Phone, PhoneProps } from './src/Phone';

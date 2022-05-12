@@ -5,7 +5,7 @@ import { Button } from 'reactstrap';
 import * as yup from 'yup';
 
 import { Phone } from '..';
-import '../src/validatePhone';
+import './validatePhone';
 // import README from '../README.md';
 
 import FormikResults from '../../../story-utils/FormikResults';
