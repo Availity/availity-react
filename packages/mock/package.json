@@ -21,7 +21,7 @@
   "license": "MIT",
   "author": "Kyle Gray <kyle.gray@availity.com>",
   "dependencies": {
-    "msw": "^0.36.3",
+    "msw": "^0.36.8",
     "qs": "^6.10.3"
   }
 }
