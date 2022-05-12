@@ -1,18 +1,25 @@
 import React from 'react';
 import BlockUi from 'react-block-ui';
-import { Button, ButtonProps } from 'reactstrap';
+import { Button } from 'reactstrap';
+import type { ButtonProps } from 'reactstrap';
 
-type Props = {
+export type LoadingButtonProps = {
   id?: string;
   isLoading: boolean;
-  children: string;
-  className?: React.ReactChild;
+  children: React.ReactNode;
+  className?: string;
   type?: string;
 } & ButtonProps;
 
-const LoadingButton = ({ id, isLoading, className, children, type = 'submit', ...rest }: Props): JSX.Element => (
+const LoadingButton = ({
+  id,
+  isLoading,
+  className,
+  children,
+  type = 'submit',
+  ...rest
+}: LoadingButtonProps): JSX.Element => (
   <Button
-    data-testid="loading_button"
     id={id}
     disabled={isLoading}
     type={type}

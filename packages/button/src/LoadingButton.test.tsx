@@ -1,16 +1,17 @@
 import React from 'react';
-import { render, waitFor, fireEvent } from '@testing-library/react';
-import LoadingButton from '../LoadingButton';
+import { render, waitFor, fireEvent, screen } from '@testing-library/react';
+import LoadingButton from './LoadingButton';
 
 describe('Loading Button', () => {
   test('should render when not loading', async () => {
     const buttonText = 'Text';
-    const { container, getByTestId } = render(<LoadingButton isLoading={false}>{buttonText}</LoadingButton>);
+    render(
+      <LoadingButton data-testid="loading_button" isLoading={false}>
+        {buttonText}
+      </LoadingButton>
+    );
 
-    expect(container).toBeDefined();
-    expect(container).toMatchSnapshot();
-
-    const buttonElement = await waitFor(() => getByTestId('loading_button'));
+    const buttonElement = await waitFor(() => screen.getByTestId('loading_button'));
     expect(buttonElement).not.toBeNull();
     expect(buttonElement.textContent?.trim()).toBe(buttonText);
   });
@@ -19,15 +20,13 @@ describe('Loading Button', () => {
     const onClick = jest.fn();
 
     const buttonText = 'Text';
-    const { container, getByTestId } = render(
-      <LoadingButton isLoading={false} onClick={onClick}>
+    render(
+      <LoadingButton isLoading={false} onClick={onClick} data-testid="loading_button">
         {buttonText}
       </LoadingButton>
     );
 
-    expect(container).toBeDefined();
-
-    const buttonElement = await waitFor(() => getByTestId('loading_button'));
+    const buttonElement = await waitFor(() => screen.getByTestId('loading_button'));
     expect(buttonElement).not.toBeNull();
 
     fireEvent.click(buttonElement);
@@ -39,29 +38,28 @@ describe('Loading Button', () => {
 
   test('should render when loading', async () => {
     const buttonText = 'Text';
-    const { container, getByTestId } = render(<LoadingButton isLoading>{buttonText}</LoadingButton>);
+    render(
+      <LoadingButton isLoading data-testid="loading_button">
+        {buttonText}
+      </LoadingButton>
+    );
 
-    expect(container).toBeDefined();
-    expect(container).toMatchSnapshot();
-
-    const buttonElement = await waitFor(() => getByTestId('loading_button'));
+    const buttonElement = await waitFor(() => screen.getByTestId('loading_button'));
     expect(buttonElement).not.toBeNull();
     expect(buttonElement.textContent?.trim()).not.toBe(buttonText);
   });
 
   test('is disabled when loading', async () => {
     const onClick = jest.fn();
-
     const buttonText = 'Text';
-    const { container, getByTestId } = render(
-      <LoadingButton isLoading onClick={onClick}>
+
+    render(
+      <LoadingButton isLoading onClick={onClick} data-testid="loading_button">
         {buttonText}
       </LoadingButton>
     );
 
-    expect(container).toBeDefined();
-
-    const buttonElement = await waitFor(() => getByTestId('loading_button'));
+    const buttonElement = await waitFor(() => screen.getByTestId('loading_button'));
     expect(buttonElement).not.toBeNull();
 
     fireEvent.click(buttonElement);
