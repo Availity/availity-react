@@ -1,8 +1,29 @@
 import React from 'react';
-import PropTypes from 'prop-types';
 import classNames from 'classnames';
 
-function AppIcon({ tag: Tag, color, size, src: image, alt, branded, className, children, ...props }) {
+export type AppIconProps = {
+  alt?: string;
+  branded?: boolean;
+  children?: React.ReactNode;
+  className?: string;
+  color?: string;
+  size?: string;
+  src?: string;
+  tag?: React.ElementType;
+  title?: string;
+};
+
+function AppIcon({
+  tag: Tag = 'span',
+  color = 'black',
+  size,
+  src: image,
+  alt,
+  branded,
+  className,
+  children,
+  ...props
+}: AppIconProps): JSX.Element {
   const classes = classNames(className, 'app-icon', {
     [`app-icon-${color}`]: color && !branded,
     [`app-icon-branded-${color}`]: color && branded,
@@ -17,21 +38,5 @@ function AppIcon({ tag: Tag, color, size, src: image, alt, branded, className, c
     </Tag>
   );
 }
-
-AppIcon.propTypes = {
-  color: PropTypes.string,
-  size: PropTypes.string,
-  branded: PropTypes.bool,
-  className: PropTypes.string,
-  tag: PropTypes.oneOfType([PropTypes.func, PropTypes.string]),
-  children: PropTypes.node,
-  src: PropTypes.string,
-  alt: PropTypes.string,
-};
-
-AppIcon.defaultProps = {
-  tag: 'span',
-  color: 'black',
-};
 
 export default AppIcon;
