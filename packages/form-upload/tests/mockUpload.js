@@ -1,6 +1,7 @@
 let id = 0;
 
 export default class MockUpload {
+  // eslint-disable-next-line unicorn/consistent-function-scoping
   id = (() => {
     id += 1;
     return id.toString();
@@ -29,9 +30,9 @@ export default class MockUpload {
   progress = (amount = 10) => {
     this.percentage = Math.min(Math.max(amount + this.percentage, 0), 100);
     this.errorMessage = null;
-    for (const a of this.onProgress) a();
+    for (const fn of this.onProgress) fn();
     if (this.percentage === 100) {
-      for (const a of this.onSuccess) a();
+      for (const fn of this.onSuccess) fn();
     }
   };
 
@@ -39,13 +40,13 @@ export default class MockUpload {
     this.percentage = 100;
     this.errorMessage = null;
     this.status = 'accepted';
-    for (const a of this.onSuccess) a();
+    for (const fn of this.onSuccess) fn();
   };
 
   error = (message = null, status = 'rejected') => {
     this.errorMessage = message;
     this.status = status;
-    for (const a of this.onError) a();
+    for (const fn of this.onError) fn();
   };
 
   reset = () => {
