@@ -15,7 +15,7 @@
       "executor": "@nrwl/linter:eslint",
       "options": {
         "eslintConfig": ".eslintrc.yaml",
-        "lintFilePatterns": ["docusaurus/**/*.{js,ts,md}"],
+        "lintFilePatterns": ["docusaurus/**/*.{js,ts}"],
         "silent": false,
         "fix": false,
         "cache": true,
