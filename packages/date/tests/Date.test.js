@@ -1,16 +1,13 @@
 import React from 'react';
-import { render, fireEvent, waitFor, cleanup, within } from '@testing-library/react';
+import { render, fireEvent, waitFor, within } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 import { Button } from 'reactstrap';
 import { Form } from '@availity/form';
 import { avDate } from '@availity/yup';
 import { object } from 'yup';
 import moment from 'moment';
-import FormikDate from '..';
 
-afterEach(() => {
-  cleanup();
-});
+import FormikDate from '../src';
 
 describe('Date', () => {
   test('renders error classes', async () => {

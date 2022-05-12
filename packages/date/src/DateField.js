@@ -1,6 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { FormGroup, Feedback, Label } from '@availity/form';
+
 import Date from './Date';
 
 const DateField = ({ name, label, labelClass, labelHidden, labelAttrs, id = name, required, helpId, ...props }) => (
