@@ -283,6 +283,7 @@ __metadata:
     eslint: ^7.32.0
     eslint-config-availity: 8.0.7
     husky: ^6.0.0
+    identity-obj-proxy: ^3.0.0
     is-ci: ^3.0.1
     jest: ^27.5.1
     jest-environment-jsdom: ^27.5.1
@@ -475,7 +476,7 @@ __metadata:
     reactstrap: ^8.10.1
   peerDependencies:
     "@availity/api-axios": ^6.0.0
-    "@availity/yup": ^3.0.11
+    "@availity/yup": ^5.0.0
     axios: ^0.21.1
     formik: ^2.0.1
     react: ">=16.3.0"
@@ -534,7 +535,6 @@ __metadata:
     formik: ^2.0.1
     react: ">=16.8.3"
     reactstrap: ^8.0.0
-    yup: ^0.27.0
   languageName: unknown
   linkType: soft
 
@@ -14991,7 +14991,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"identity-obj-proxy@npm:3.0.0":
+"identity-obj-proxy@npm:3.0.0, identity-obj-proxy@npm:^3.0.0":
   version: 3.0.0
   resolution: "identity-obj-proxy@npm:3.0.0"
   dependencies:

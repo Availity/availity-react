@@ -18,5 +18,8 @@ module.exports = {
     jsdom: true,
   },
   coverageReporters: ['json'],
-  moduleNameMapper: pathsToModuleNameMapper(compilerOptions.paths, { prefix: '<rootDir>/../../' }),
+  moduleNameMapper: {
+    ...pathsToModuleNameMapper(compilerOptions.paths, { prefix: '<rootDir>/../../' }),
+    '\\.(css|scss)$': 'identity-obj-proxy',
+  },
 };
