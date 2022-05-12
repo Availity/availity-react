@@ -1,14 +1,13 @@
 import React from 'react';
 import userEvent from '@testing-library/user-event';
-import { render, cleanup, fireEvent } from '@testing-library/react';
+import { render, fireEvent } from '@testing-library/react';
 import avMessageMock from '@availity/message-core';
 
-import HelpProvider, { Help, constants, FieldHelpIcon } from '..';
+import HelpProvider, { Help, constants, FieldHelpIcon } from '.';
 
 jest.mock('@availity/message-core');
 
 afterEach(() => {
-  cleanup();
   jest.clearAllMocks();
 });
 
