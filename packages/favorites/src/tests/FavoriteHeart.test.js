@@ -4,8 +4,9 @@ import PropTypes from 'prop-types';
 import { avSettingsApi } from '@availity/api-axios';
 import avMessages from '@availity/message-core';
 import { QueryClient, QueryClientProvider } from 'react-query';
+
 import maxFavorites from './maxFavorites.json';
-import Favorites, { FavoriteHeart } from '../src';
+import Favorites, { FavoriteHeart } from '..';
 
 const queryClient = new QueryClient();
 
