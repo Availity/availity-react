@@ -63,8 +63,8 @@ jobs:
       - name: Unit Test
         run: yarn test:ci
 
-      - name: Publish Dry Run
-        run: yarn publish:dry-run
+      - name: Version Bump Dry Run
+        run: yarn version:dry-run
 
       - name: Upload coverage report
         uses: codecov/codecov-action@v1.0.6 # FIXME: no CI provider detected
