@@ -3,7 +3,7 @@ import { render, fireEvent, waitFor } from '@testing-library/react';
 import { Button } from 'reactstrap';
 import * as yup from 'yup';
 
-import { Form, Field } from '..';
+import { Form, Field } from '../src';
 
 describe('Field', () => {
   test('renders with label', () => {

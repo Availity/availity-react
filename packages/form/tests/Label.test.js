@@ -1,7 +1,7 @@
 import React from 'react';
 import { render } from '@testing-library/react';
 
-import { Label } from '..';
+import { Label } from '../src';
 
 describe('Label', () => {
   test('renders', () => {

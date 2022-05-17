@@ -5,7 +5,7 @@ import * as yup from 'yup';
 import { DateField } from '@availity/date';
 import { SelectField } from '@availity/select';
 
-import { Form, Input, RadioGroup, Radio } from '..';
+import { Form, Input, RadioGroup, Radio } from '../src';
 
 describe('Form', () => {
   test('renders', () => {

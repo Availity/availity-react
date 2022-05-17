@@ -3,7 +3,7 @@ import { render, waitFor, fireEvent } from '@testing-library/react';
 import { Button } from 'reactstrap';
 import * as yup from 'yup';
 
-import { Form, Input, Feedback } from '..';
+import { Form, Input, Feedback } from '../src';
 
 describe('Feedback', () => {
   test('renders feedback error', async () => {

@@ -3,7 +3,7 @@ import { render, waitFor, fireEvent } from '@testing-library/react';
 import { Button } from 'reactstrap';
 import * as yup from 'yup';
 
-import { Form, Input, FormGroup } from '..';
+import { Form, Input, FormGroup } from '../src';
 
 describe('FormGroup', () => {
   test('renders with danger className when invalid form input', async () => {
