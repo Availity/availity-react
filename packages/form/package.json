@@ -26,7 +26,8 @@
   "scripts": {
     "build": "tsup src/index.js --format esm,cjs --loader \".js=jsx\" --dts",
     "dev": "tsup src/index.js --format esm,cjs --loader \".js=jsx\" --watch --dts",
-    "clean": "rm -rf node_modules && rm -rf dist",
+    "clean": "rm -rf dist",
+    "clean:nm": "rm -rf node_modules",
     "bundlesize": "bundlesize",
     "publish": "yarn npm publish --tolerate-republish --access public"
   },
