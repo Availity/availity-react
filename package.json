@@ -71,6 +71,7 @@
     "@commitlint/cli": "^16.2.4",
     "@commitlint/config-conventional": "^16.2.4",
     "@commitlint/config-nx-scopes": "^16.2.1",
+    "@jscutlery/semver": "^2.23.4",
     "@nrwl/cli": "14.1.5",
     "@nrwl/jest": "14.1.5",
     "@nrwl/workspace": "14.1.5",
