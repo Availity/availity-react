@@ -1,4 +1,4 @@
-# This workflow will do a clean install of node dependencies, build the source code and run tests across different versions of node
+# This workflow will do a clean install of node dependencies, build the source code, and run tests across different versions of node
 # For more information see: https://help.github.com/actions/language-and-framework-guides/using-nodejs-with-github-actions
 
 name: Publish Release
@@ -50,6 +50,9 @@ jobs:
       - name: Install Dependencies
         run: yarn install --immutable
 
+      - name: Build Packages
+        run: yarn build:components
+
       - name: Lint Source Code
         run: yarn lint
 
@@ -61,9 +64,6 @@ jobs:
         with:
           file: ./coverage/coverage-final.json
           token: ${{ secrets.CODECOV_TOKEN }}
-
-      - name: Build Packages
-        run: yarn build
 
       - name: Setup Publish Config
         run: |
