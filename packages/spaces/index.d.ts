@@ -1,4 +1,4 @@
-import Spaces, { useSpaces, useSpacesContext, SpacesContext } from './types/Spaces';
+import Spaces, { useSpaces, useSpacesContext, SpacesContext, Space, Link } from './types/Spaces';
 import SpacesImage from './types/SpacesImage';
 import SpacesDisclaimer from './types/SpacesDisclaimer';
 import SpacesAgreement from './types/SpacesAgreement';
@@ -9,6 +9,8 @@ export default Spaces;
 
 // TODO
 export {
+  Space,
+  Link,
   SpacesImage,
   SpacesImage as SpacesLogo,
   SpacesImage as SpacesBillboard,
