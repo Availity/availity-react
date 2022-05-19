@@ -1,5 +1,5 @@
 import React from 'react';
-import { render, cleanup } from '@testing-library/react';
+import { render, cleanup, fireEvent } from '@testing-library/react';
 import MockUpload from './mockUpload';
 import { UploadProgressBar } from '..';
 
@@ -48,6 +48,39 @@ describe('UploadProgressBar', () => {
 
     const el = getByTestId('password-form-encrypted');
     expect(el).toBeDefined();
+  });
+
+  test('should render password modal', () => {
+    const { getByTestId, getByText } = render(<UploadProgressBar upload={instance} />);
+    instance.error('Encrypted files require a password', 'encrypted');
+
+    const enterPassword = getByText('Enter password');
+    fireEvent.click(enterPassword);
+
+    const modal = getByTestId('password-form-modal');
+    expect(modal).toBeDefined();
+  });
+
+  test('should not submit parent forms on password submit', () => {
+    const submitFunction = jest.fn();
+
+    const { getByTestId, getByText } = render(
+      <form onSubmit={submitFunction}>
+        <UploadProgressBar upload={instance} />
+      </form>
+    );
+    instance.error('Encrypted files require a password', 'encrypted');
+
+    const enterPassword = getByText('Enter password');
+    fireEvent.click(enterPassword);
+
+    const modal = getByTestId('password-form-modal');
+    expect(modal).toBeDefined();
+
+    const submit = getByText('Ok');
+    fireEvent.click(submit);
+
+    expect(submitFunction).not.toHaveBeenCalled();
   });
 
   test('should render striped', () => {
