@@ -98,6 +98,7 @@ export default (spaceOrSpaceId, { clientId: propsClientId, linkAttributes = {} }
   return [
     {
       ...space,
+      type,
       id,
       name,
       description,
