@@ -6,7 +6,7 @@ import * as yup from 'yup';
 import { avDate } from '@availity/yup';
 import { Phone } from '@availity/phone';
 import { DateField } from '@availity/date';
-// import { SelectField } from '@availity/select';
+import { SelectField } from '@availity/select';
 
 import { Field, Input, Checkbox, CheckboxGroup, Label, RadioGroup, Radio, FormGroup, RequiredKey } from '.';
 // import README from '../form/README.md';
@@ -25,31 +25,9 @@ export default {
   },
 } as Meta;
 
-export const Default: Story = ({ required }) => {
-  const schema = yup.object().shape({
-    field: yup.string().isRequired(required, 'This field is required.'),
-    phone: yup.string().validatePhone(undefined, false, 'US').isRequired(required, 'This field is required.'),
-    ext: yup.string(),
-    dateField: avDate({
-      format: 'MM/DD/YYYY',
-    })
-      .isRequired(required, 'This field is required.')
-      .min('')
-      .max('')
-      .between('', ''),
-    checkboxGroup: yup.array().isRequired(required, 'At least one checkbox is required'),
-    radioGroup: yup.string().isRequired(required, 'A selection is required'),
-    radioGroupLabelStyling: yup.string().isRequired(required, 'A selection is required'),
-    SelectField: yup.string().isRequired(required, 'This field is required.').nullable(),
-    disabledField: yup.string(),
-    disabledDateField: avDate({
-      format: 'MM/DD/YYYY',
-    })
-      .min('')
-      .max('')
-      .between('', ''),
-    disabledSelectField: yup.string().nullable(),
-  });
+type FormStoryProps = { required: boolean };
+
+export const Default: Story<FormStoryProps> = ({ required }) => {
   const options = [
     { label: 'Option 1', value: 'value for option 1' },
     { label: 'Option 2', value: 'value for option 2' },
@@ -75,7 +53,19 @@ export const Default: Story = ({ required }) => {
         disabledDateField: '01/01/2021',
         disabledSelectField: [],
       }}
-      validationSchema={schema}
+      validationSchema={yup.object().shape({
+        field: yup.string().isRequired(required, 'This field is required.'),
+        phone: yup.string().validatePhone(undefined, false, 'US').isRequired(required, 'This field is required.'),
+        ext: yup.string(),
+        dateField: avDate().isRequired(required, 'This field is required.'),
+        checkboxGroup: yup.array().isRequired(required, 'At least one checkbox is required'),
+        radioGroup: yup.string().isRequired(required, 'A selection is required'),
+        radioGroupLabelStyling: yup.string().isRequired(required, 'A selection is required'),
+        SelectField: yup.string().isRequired(required, 'This field is required.').nullable(),
+        disabledField: yup.string(),
+        disabledDateField: avDate(),
+        disabledSelectField: yup.string().nullable(),
+      })}
     >
       <h2>Form</h2>
       <RequiredKey />
@@ -113,10 +103,10 @@ export const Default: Story = ({ required }) => {
         <Radio name="radioGroupLabelStyling" label="Radio Two" value="dos" />
         <Radio name="radioGroupLabelStyling" label="Radio Three" value="tres" />
       </RadioGroup>
-      {/* <SelectField label="Select Field" name="SelectField" options={options} required={required} /> */}
+      <SelectField label="Select Field" name="SelectField" options={options} required={required} />
       <Field name="disabledField" type="text" label="Disabled Field" disabled />
       <DateField id="disabledDateField" name="disabledDateField" label="Disabled Date Field" disabled />
-      {/* <SelectField label="Disabled Select Field" name="disabledSelectField" options={options} isDisabled /> */}
+      <SelectField label="Disabled Select Field" name="disabledSelectField" options={options} isDisabled />
       <Button color="primary" type="submit">
         Submit
       </Button>
@@ -125,7 +115,7 @@ export const Default: Story = ({ required }) => {
 };
 Default.storyName = 'default';
 
-export const _Input: Story = ({ required }) => (
+export const _Input: Story<FormStoryProps> = ({ required }) => (
   <FormResults
     onSubmit={() => {
       console.log('submitted');
@@ -147,7 +137,13 @@ export const _Input: Story = ({ required }) => (
 );
 _Input.storyName = 'Input';
 
-export const _Label: Story = ({ required, helpId, className, children }) => (
+type LabelStoryProps = {
+  helpId: string;
+  className: string;
+  children: React.ReactNode;
+} & FormStoryProps;
+
+export const _Label: Story<LabelStoryProps> = ({ required, helpId, className, children }) => (
   <Label required={required} helpId={helpId} className={className}>
     {children}
   </Label>
@@ -159,7 +155,7 @@ _Label.args = {
 };
 _Label.storyName = 'Label';
 
-export const _FormGroup: Story = ({ required }) => (
+export const _FormGroup: Story<FormStoryProps> = ({ required }) => (
   <FormResults
     onSubmit={() => {
       console.log('submitted');
@@ -179,7 +175,12 @@ export const _FormGroup: Story = ({ required }) => (
 );
 _FormGroup.storyName = 'Form Group';
 
-export const _Field: Story = ({ required, helpMessage, helpId }) => (
+type FieldStoryProps = {
+  helpMessage: string;
+  helpId: string;
+} & FormStoryProps;
+
+export const _Field: Story<FieldStoryProps> = ({ required, helpMessage, helpId }) => (
   <FormResults
     onSubmit={() => {
       console.log('submitted');
@@ -203,7 +204,12 @@ _Field.args = {
 };
 _Field.storyName = 'Field';
 
-export const _Checkbox: Story = ({ required, helpId, labelClassName }) => (
+type CheckboxStoryProps = {
+  helpId: string;
+  labelClassName: string;
+} & FormStoryProps;
+
+export const _Checkbox: Story<CheckboxStoryProps> = ({ required, helpId, labelClassName }) => (
   <FormResults
     onSubmit={() => {
       console.log('submitted');
@@ -237,7 +243,9 @@ _Checkbox.args = {
 };
 _Checkbox.storyName = 'Checkbox';
 
-export const _Radio: Story = ({ required, helpId, labelClassName }) => (
+type RadioStoryProps = CheckboxStoryProps;
+
+export const _Radio: Story<RadioStoryProps> = ({ required, helpId, labelClassName }) => (
   <FormResults
     onSubmit={() => {
       console.log('submitted');

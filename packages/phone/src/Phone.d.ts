@@ -1,4 +1,4 @@
-import { FieldProps } from '@availity/form/types/Field';
+import { FieldProps } from '@availity/form';
 
 interface ExtensionProps extends FieldProps {
   name: string;

@@ -12,6 +12,7 @@ export type PaginationControlsProps = {
   'aria-label'?: string;
   autoHide?: boolean;
   breakLabel?: boolean;
+  className?: string;
   directionLinks?: boolean;
   listClassName?: string;
   marginPages?: number;

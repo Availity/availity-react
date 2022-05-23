@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { Form, FormProps } from '@availity/form';
 import { useFormikContext } from 'formik';
+import moment from 'moment';
 
 type Result = {
   errors: string;
@@ -21,17 +22,17 @@ const Results = () => {
 
   useEffect(() => {
     if (submitCount > 0) {
-      setSubmitted(new Date().toJSON());
+      setSubmitted(moment().format('h:mm:ss a'));
     }
   }, [submitCount]);
 
   return submitted ? (
     <div>
-      <p>Results (submitted {submitted}):</p>
-      <p>Errors: {results?.errors}</p>
-      <div>
-        Values: <pre>{results?.values}</pre>
-      </div>
+      <p>Results as of {submitted}</p>
+      <p>Errors:</p>
+      <pre>{results?.errors}</pre>
+      <p>Values:</p>
+      <pre>{results?.values}</pre>
     </div>
   ) : null;
 };

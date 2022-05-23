@@ -1,5 +1,5 @@
 export { default as Form, FormProps } from './Form';
-export { default as Field } from './Field';
+export { default as Field, FieldProps } from './Field';
 export { default as Input } from './Input';
 export { default as FormGroup } from './FormGroup';
 export { default as CheckboxGroup } from './CheckboxGroup';

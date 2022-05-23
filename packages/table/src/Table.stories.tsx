@@ -88,7 +88,7 @@ const bulkActions = [
     displayText: 'Action 1',
     onClick: (records?: Record<string, unknown>[]) => {
       // eslint-disable-next-line no-console
-      console.log(records);
+      console.log('Records', records);
       // eslint-disable-next-line no-console
       console.log(`action 1 on records ${records?.map((rec) => rec.firstName)}`);
     },
@@ -98,7 +98,7 @@ const bulkActions = [
     displayText: 'Action 2',
     onClick: (records?: Record<string, unknown>[]) => {
       // eslint-disable-next-line no-console
-      console.log(records);
+      console.log('Records', records);
       // eslint-disable-next-line no-console
       console.log(`action 2 on records ${records?.map((rec) => rec.firstName)}`);
     },
@@ -114,15 +114,7 @@ export default {
   },
 } as Meta;
 
-export const BasicTable: Story = ({
-  sortable,
-  selectable,
-  columns,
-  data,
-  headerProps,
-  bodyProps,
-}: // eslint-disable-next-line @typescript-eslint/no-explicit-any
-any) => (
+export const BasicTable: Story = ({ sortable, selectable, columns, data, headerProps, bodyProps }) => (
   <Table
     initialState={{
       sortBy: [{ id: 'firstName', desc: false }],
@@ -133,10 +125,9 @@ any) => (
     data={data}
     headerProps={headerProps}
     bodyProps={bodyProps}
-    // eslint-disable-next-line @typescript-eslint/no-explicit-any
-    onRowSelected={(e: any) => {
+    onRowSelected={(event) => {
       // eslint-disable-next-line no-console
-      console.log(e);
+      console.log('Row selected', event);
     }}
   />
 );
@@ -150,15 +141,7 @@ BasicTable.args = {
 };
 BasicTable.storyName = 'basic';
 
-export const WithControls: Story = ({
-  sortable,
-  selectable,
-  columns,
-  data,
-  headerProps,
-  bodyProps,
-}: // eslint-disable-next-line @typescript-eslint/no-explicit-any
-any) => (
+export const WithControls: Story = ({ sortable, selectable, columns, data, headerProps, bodyProps }) => (
   <Table
     initialState={{
       sortBy: [{ id: 'firstName', desc: false }],
@@ -173,10 +156,9 @@ any) => (
     data={data}
     headerProps={headerProps}
     bodyProps={bodyProps}
-    // eslint-disable-next-line @typescript-eslint/no-explicit-any
-    onRowSelected={(e: any) => {
+    onRowSelected={(event) => {
       // eslint-disable-next-line no-console
-      console.log(e);
+      console.log('Row selected', event);
     }}
   >
     <TableControls className="pb-2">
@@ -227,15 +209,7 @@ WithControls.args = {
 };
 WithControls.storyName = 'with controls';
 
-export const WithScrollableContainer: Story = ({
-  sortable,
-  selectable,
-  columns,
-  data,
-  headerProps,
-  bodyProps,
-}: // eslint-disable-next-line @typescript-eslint/no-explicit-any
-any) => (
+export const WithScrollableContainer: Story = ({ sortable, selectable, columns, data, headerProps, bodyProps }) => (
   <ScrollableContainer>
     <Table
       initialState={{

@@ -11,6 +11,8 @@
     "resolveJsonModule": true,
     "skipLibCheck": true,
     "strict": true,
+    "strictFunctionTypes": false,
+    "strictNullChecks": true,
     "lib": ["ES2017", "dom"],
     "module": "ESNext",
     "target": "ES6",
