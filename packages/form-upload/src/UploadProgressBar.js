@@ -33,6 +33,7 @@ const UploadProgressBar = ({ upload, ...rest }) => {
 
   const verifyPassword = (event) => {
     event.preventDefault();
+    event.stopPropagation();
     upload.sendPassword(password);
     toggleModal();
   };

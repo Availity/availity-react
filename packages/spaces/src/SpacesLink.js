@@ -151,7 +151,6 @@ const Link = ({
         >
           {showNew && isNew && (
             <Badge
-              tabIndex={0}
               className={classNames({
                 'mr-2': showDate,
               })}
@@ -239,6 +238,7 @@ const Link = ({
                   {...analytics}
                   {...props}
                   aria-label={name}
+                  aria-describedby={`app-new-badge-${configurationId}`}
                 >
                   {name}
                 </TitleTag>

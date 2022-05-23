@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## 0.8.6 (2022-05-19)
+
+
+### Bug Fixes
+
+* **form-upload:** stop propagation from form submit to prevent submission of parent forms ([b76094b](https://github.com/Availity/availity-react/commit/b76094b9e5c5655091dedb70fc3c13776bde2054))
+
+
+
+
+
 ## 0.8.5 (2022-03-09)
 
 **Note:** Version bump only for package @availity/form-upload

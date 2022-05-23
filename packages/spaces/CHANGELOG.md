@@ -3,6 +3,25 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## 6.0.5 (2022-05-20)
+
+
+### Bug Fixes
+
+* **spaces:** new badge 508 compliance ([87bf351](https://github.com/Availity/availity-react/commit/87bf3517439a2707aa34d2d7c998582289f9be93))
+
+
+
+
+
+## [6.0.4](https://github.com/Availity/availity-react/compare/@availity/spaces@6.0.3...@availity/spaces@6.0.4) (2022-05-18)
+
+**Note:** Version bump only for package @availity/spaces
+
+
+
+
+
 ## [6.0.3](https://github.com/Availity/availity-react/compare/@availity/spaces@6.0.2...@availity/spaces@6.0.3) (2022-05-11)
 
 
