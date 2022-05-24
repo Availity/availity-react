@@ -1,7 +1,21 @@
-# Change Log
+# Changelog
 
-All notable changes to this project will be documented in this file.
-See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
+This file was generated using [@jscutlery/semver](https://github.com/jscutlery/semver).
+
+# [1.4.0](https://github.com/Availity/availity-react/compare/@availity/form@1.3.1...@availity/form@1.4.0) (2022-05-24)
+
+
+### Bug Fixes
+
+* **form:** update import path ([4b5935a](https://github.com/Availity/availity-react/commit/4b5935a0b10a13a797922b0eddb06e506f85b295))
+* upgrade yup and update sb stories ([68aeafe](https://github.com/Availity/availity-react/commit/68aeafe4fd7d90d7c88dbb24636ba7770fe87aa3))
+
+
+### Features
+
+* **form:** compile lib with tsup ([9fea59c](https://github.com/Availity/availity-react/commit/9fea59c7038f6c6eeb820b969ef708f6ff366f84))
+
+
 
 ## 1.3.1 (2022-03-09)
 
