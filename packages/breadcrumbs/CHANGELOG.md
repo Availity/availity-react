@@ -1,7 +1,10 @@
-# Change Log
+# Changelog
 
-All notable changes to this project will be documented in this file.
-See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
+This file was generated using [@jscutlery/semver](https://github.com/jscutlery/semver).
+
+## [3.2.3](https://github.com/Availity/availity-react/compare/@availity/breadcrumbs@3.2.2...@availity/breadcrumbs@3.2.3) (2022-05-24)
+
+
 
 ## [3.2.2](https://github.com/Availity/availity-react/compare/@availity/breadcrumbs@3.2.1...@availity/breadcrumbs@3.2.2) (2021-12-20)
 
