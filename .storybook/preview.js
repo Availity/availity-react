@@ -9,7 +9,15 @@ export const parameters = {
   },
   options: {
     storySort: {
-      order: ['Home', 'Hooks', 'Components', 'Form Components', 'Legacy Form Components', 'Deprecated'],
+      order: [
+        'Home',
+        'Hooks',
+        'Components',
+        'Form Components',
+        ['Form', 'Date', 'Phone', 'Select', 'Upload'],
+        'Legacy Form Components',
+        'Deprecated',
+      ],
     },
   },
   viewMode: 'docs',

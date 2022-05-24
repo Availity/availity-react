@@ -1,6 +1,7 @@
 let id = 0;
 
 export default class MockUpload {
+  // eslint-disable-next-line unicorn/consistent-function-scoping
   id = (() => {
     id += 1;
     return id.toString();

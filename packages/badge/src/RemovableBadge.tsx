@@ -1,5 +1,6 @@
 import React from 'react';
-import { Badge, BadgeProps } from 'reactstrap';
+import { Badge } from 'reactstrap';
+import type { BadgeProps } from 'reactstrap';
 import Icon from '@availity/icon';
 
 export type RemovableBadgeProps = {

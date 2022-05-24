@@ -176,7 +176,11 @@ If present, this will serve as the argument name for the typed search value when
 
 ### Pre-made Resource Selects
 
-The following components can be imported by name from `@availity/select/resources`
+:::important
+The imports were changed in version 3+. In previous versions of `@availity/select` you will need to import the resources from `@availity/select/resources`
+:::
+
+The following components can be imported by name from `@availity/select`
 
 - AvProviderSelect
 - AvOrganizationSelect

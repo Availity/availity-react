@@ -44,7 +44,7 @@ const TableContent = <T extends IdType>(): JSX.Element | null => {
             <TableHeaderRow
               id={`${populateId()}table_header_row_${rowIndex}`}
               data-testid={`${populateId()}table_header_row_${rowIndex}`}
-              key={rowIndex.toString()}
+              key={headerGroupEx.getHeaderGroupProps().key}
               headerGroup={headerGroupEx}
               scrollable={scrollable}
             >
@@ -94,7 +94,7 @@ const TableContent = <T extends IdType>(): JSX.Element | null => {
               getRowProps={getRowProps as (row: Row<T>) => RowProps}
             >
               {row.cells.map((cell, cellIndex: number) => (
-                <TableCell
+                <TableCell<T>
                   id={`${populateId()}table_row_${rowIndex}_cell_${cellIndex}`}
                   data-testid={`${populateId()}table_row_${rowIndex}_cell_${cellIndex}`}
                   key={`${populateId()}table_row_${rowIndex.toString()}_cell_${cellIndex.toString()}`}

@@ -6,6 +6,7 @@ import '@availity/react-dates/initialize';
 import { SingleDatePicker } from '@availity/react-dates';
 import { InputGroup, Input, Row, Col } from 'reactstrap';
 import moment from 'moment';
+
 import '../polyfills';
 import '../styles.scss';
 

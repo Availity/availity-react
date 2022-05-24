@@ -16,12 +16,13 @@ export type {
   TableInstance,
   CurrentTableState,
   ExtendedTableHeader,
-  IdType
+  IdType,
 } from './types';
 
 export { default } from './Table';
 
-export { useTableContext, TableContext, AvTableContext } from './TableContext';
+export { useTableContext, TableContext } from './TableContext';
+export type { AvTableContext } from './TableContext';
 
 export { default as TableContent } from './TableContent';
 

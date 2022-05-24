@@ -4,7 +4,7 @@ import { Meta, Story } from '@storybook/react';
 import { Button, Col, Row } from 'reactstrap';
 import { Field } from '@availity/form';
 
-import { SelectField } from '..';
+import { SelectField } from '../src';
 // import README from '../README.md';
 
 import { singleValueSchema, multiValueSchema, options, SelectedOption } from './utils';

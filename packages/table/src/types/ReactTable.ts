@@ -47,7 +47,8 @@ export type Column<T extends IdType> = RtColumn<T> & {
   isVisible?: boolean;
 };
 
-export type Cell<T extends IdType> = RtCell<T> & {
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
+export type Cell<T extends IdType, V = any> = RtCell<T, V> & {
   index: number;
   row: Row<T>;
   column: Column<T>;
@@ -90,6 +91,7 @@ export type TableInstance<T extends IdType> = UseSortByInstanceProps<T> &
     manualSortBy?: boolean;
   };
 
-export type CurrentTableState<T extends IdType> =  TableState & Partial<UseRowSelectState<T>> & {
-  sortBy?: TableSort[];
-};
+export type CurrentTableState<T extends IdType> = TableState &
+  Partial<UseRowSelectState<T>> & {
+    sortBy?: TableSort[];
+  };

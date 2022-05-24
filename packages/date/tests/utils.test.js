@@ -1,4 +1,5 @@
 import moment from 'moment';
+
 import * as UTILS from '../src/utils';
 
 const ONE_DAY = 60 * 60 * 24 * 1000;

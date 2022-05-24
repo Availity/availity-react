@@ -4,7 +4,7 @@ import { Meta, Story } from '@storybook/react';
 import { Button, Col, Row } from 'reactstrap';
 import { Field } from '@availity/form';
 
-import Select from '..';
+import Select from '../src';
 // import README from '../README.md';
 
 import FormikResults from '../../../story-utils/FormikResults';

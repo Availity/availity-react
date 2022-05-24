@@ -4,7 +4,8 @@ import { Meta, Story } from '@storybook/react';
 import { Button, Col, Row } from 'reactstrap';
 import AvApi from '@availity/api-axios';
 
-import ResourceSelect, {
+import ResourceSelect from '../src/ResourceSelect';
+import {
   AvCodeSelect,
   AvNavigationSelect,
   AvOrganizationSelect,
@@ -13,7 +14,7 @@ import ResourceSelect, {
   AvProviderSelect,
   AvRegionSelect,
   AvUserSelect,
-} from '../resources';
+} from '../src/resources';
 import { singleValueSchema, multiValueSchema, SelectedOption } from './utils';
 // import README from '../README.md';
 
@@ -311,9 +312,9 @@ export const PayerSelect: Story = ({ disabled, isMulti, label, raw, required, re
 
 PayerSelect.args = {
   label: 'Select a Payer',
-  region: "FL",
-  tranTypeCode: "EBREACT",
-  customerId: "12345",
+  region: 'FL',
+  tranTypeCode: 'EBREACT',
+  customerId: '12345',
 };
 
 PayerSelect.storyName = '<AvPayerSelect />';

@@ -1,2 +1,2 @@
-export { default } from './types/ListGroupItem';
-export { default as ListGroupItemStatus } from './types/ListGroupItemStatus';
+export { default, ListGroupItemProps } from './src/ListGroupItem';
+export { default as ListGroupItemStatus, ListGroupItemStatusProps } from './src/ListGroupItemStatus';

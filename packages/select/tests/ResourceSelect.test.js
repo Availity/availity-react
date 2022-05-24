@@ -4,8 +4,8 @@ import AvApi, { avRegionsApi, avProvidersApi, avCodesApi } from '@availity/api-a
 import { Button } from 'reactstrap';
 import { Form } from '@availity/form';
 
-import { ResourceSelect } from '..';
-import { AvProviderSelect, AvRegionSelect, AvPayerSelect } from '../resources';
+import { ResourceSelect } from '../src';
+import { AvProviderSelect, AvRegionSelect, AvPayerSelect } from '../src/resources';
 
 jest.mock('@availity/api-axios');
 
@@ -521,6 +521,7 @@ describe('ResourceSelect', () => {
       classNamePrefix: 'test__codes',
       getResult: 'codes',
       requiredParams: ['list'],
+      watchParams: ['list'],
     });
 
     await waitFor(() => {
@@ -1368,7 +1369,7 @@ describe('Custom Resources', () => {
 
 describe('AvPayerSelect', () => {
   it('calls extendedPayersApi.all', async () => {
-    const extendedPayersApi = new AvApi({ path: '/api/internal', name: 'extended-payers'});
+    const extendedPayersApi = new AvApi({ path: '/api/internal', name: 'extended-payers' });
     extendedPayersApi.all.mockResolvedValueOnce([
       {
         id: '11232',

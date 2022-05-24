@@ -1,11 +1,9 @@
 import React from 'react';
-import { render, fireEvent, waitFor, cleanup } from '@testing-library/react';
+import { render, fireEvent, waitFor } from '@testing-library/react';
 import { Button } from 'reactstrap';
 import * as yup from 'yup';
 
-import { Form, Field } from '..';
-
-afterEach(cleanup);
+import { Form, Field } from '../src';
 
 describe('Field', () => {
   test('renders with label', () => {

@@ -1,49 +1,48 @@
 import React from 'react';
-import { render, cleanup, waitFor } from '@testing-library/react';
+import { render, screen, waitFor } from '@testing-library/react';
+
 import Feature from '..';
 
-afterEach(cleanup);
-
 describe('Feature', () => {
-  test('should render loading', () => {
-    const { container, getByText } = render(<Feature features="1234" loader />);
+  test('should render loading', async () => {
+    render(<Feature features="1234" loader={<div data-testid="loader" />} />);
 
-    expect(container).toMatchSnapshot();
-    waitFor(() => {
-      expect(getByText('You do not have permission to see this')).toBeDefined();
-    });
+    expect(screen.getByTestId('loader')).toBeDefined();
   });
-  test('should render with single permission', () => {
-    const { container } = render(
+
+  test('should render with single permission', async () => {
+    render(
       <Feature features="1234" whenDisabled="You do not have permission to see this">
         You can see this
       </Feature>
     );
 
-    waitFor(() => {
-      expect(container).toMatchSnapshot();
+    await waitFor(() => {
+      expect(screen.getByText('You can see this')).toBeDefined();
     });
   });
-  test('should render with array of features', () => {
-    const { container } = render(
+
+  test('should render with array of features', async () => {
+    render(
       <Feature features={['1234', '2345', ['3456', '4567']]} whenDisabled="You do not have permission to see this">
         You can see this
       </Feature>
     );
 
-    waitFor(() => {
-      expect(container).toMatchSnapshot();
+    await waitFor(() => {
+      expect(screen.getByText('You can see this')).toBeDefined();
     });
   });
-  test('should render negate features', () => {
-    const { container } = render(
+
+  test('should render negate features', async () => {
+    render(
       <Feature features="1234" negate whenDisabled="You do not have permission to see this">
         You can see this
       </Feature>
     );
 
-    waitFor(() => {
-      expect(container).toMatchSnapshot();
+    await waitFor(() => {
+      expect(screen.getByText('You do not have permission to see this')).toBeDefined();
     });
   });
 });
