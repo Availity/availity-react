@@ -1,7 +1,10 @@
-# Change Log
+# Changelog
 
-All notable changes to this project will be documented in this file.
-See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
+This file was generated using [@jscutlery/semver](https://github.com/jscutlery/semver).
+
+## [1.1.1](https://github.com/Availity/availity-react/compare/@availity/json-viewer@1.1.0...@availity/json-viewer@1.1.1) (2022-05-24)
+
+
 
 # 1.1.0 (2022-04-04)
 
