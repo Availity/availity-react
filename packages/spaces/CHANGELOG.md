@@ -2,6 +2,16 @@
 
 This file was generated using [@jscutlery/semver](https://github.com/jscutlery/semver).
 
+## [6.0.7](https://github.com/Availity/availity-react/compare/@availity/spaces@6.0.6...@availity/spaces@6.0.7) (2022-05-24)
+
+
+### Bug Fixes
+
+* add navigation icons fields to spaces graphql query string ([4414b20](https://github.com/Availity/availity-react/commit/4414b206374ec9527b4dfcf5adda01a0657024fc))
+* fix spaces graphql query string ([ad9ceb5](https://github.com/Availity/availity-react/commit/ad9ceb5bacfbdeba292add52a9854d8f21f5d0ee))
+
+
+
 ## [6.0.6](https://github.com/Availity/availity-react/compare/@availity/spaces@6.0.5...@availity/spaces@6.0.6) (2022-05-24)
 
 
