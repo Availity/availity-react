@@ -328,6 +328,10 @@ Spaces.defaultProps = {
         }
 
         ... on Navigation {
+          icons {
+            dashboard
+            navigation
+          }
           images {
             promotional
           }
