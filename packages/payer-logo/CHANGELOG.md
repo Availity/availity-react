@@ -1,7 +1,10 @@
-# Change Log
+# Changelog
 
-All notable changes to this project will be documented in this file.
-See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
+This file was generated using [@jscutlery/semver](https://github.com/jscutlery/semver).
+
+## [5.1.4](https://github.com/Availity/availity-react/compare/@availity/payer-logo@5.1.3...@availity/payer-logo@5.1.4) (2022-05-24)
+
+
 
 ## 5.1.3 (2022-02-18)
 
