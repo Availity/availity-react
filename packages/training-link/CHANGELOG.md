@@ -1,7 +1,10 @@
-# Change Log
+# Changelog
 
-All notable changes to this project will be documented in this file.
-See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
+This file was generated using [@jscutlery/semver](https://github.com/jscutlery/semver).
+
+## [1.4.3](https://github.com/Availity/availity-react/compare/@availity/training-link@1.4.2...@availity/training-link@1.4.3) (2022-05-24)
+
+
 
 ## [1.4.2](https://github.com/Availity/availity-react/compare/@availity/training-link@1.4.1...@availity/training-link@1.4.2) (2021-12-20)
 
