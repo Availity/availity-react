@@ -1,7 +1,18 @@
-# Change Log
+# Changelog
 
-All notable changes to this project will be documented in this file.
-See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
+This file was generated using [@jscutlery/semver](https://github.com/jscutlery/semver).
+
+# [2.0.0](https://github.com/Availity/availity-react/compare/@availity/help@1.5.2...@availity/help@2.0.0) (2022-05-24)
+
+
+* feat(help)!: convert to ts ([f319cbf](https://github.com/Availity/availity-react/commit/f319cbf45508391277bed6254e8cd041d08a7394))
+
+
+### BREAKING CHANGES
+
+* upgrade to @availity/message-core 6.0.0
+
+
 
 ## [1.5.2](https://github.com/Availity/availity-react/compare/@availity/help@1.5.1...@availity/help@1.5.2) (2021-12-20)
 
