@@ -28,7 +28,8 @@
     "clean": "rm -rf dist",
     "clean:nm": "rm -rf node_modules",
     "bundlesize": "bundlesize",
-    "publish": "yarn npm publish --tolerate-republish --access public"
+    "publish": "yarn npm publish --tolerate-republish --access public",
+    "publish:canary": "yarn npm publish --access public --tag canary"
   },
   "dependencies": {
     "lodash": "^4.17.21",

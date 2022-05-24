@@ -25,7 +25,8 @@
   },
   "scripts": {
     "feature": "generate-features-json . path-to-dist",
-    "publish": "yarn npm publish --tolerate-republish --access public"
+    "publish": "yarn npm publish --tolerate-republish --access public",
+    "publish:canary": "yarn npm publish --access public --tag canary"
   },
   "dependencies": {
     "fs-extra": "^9.1.0",

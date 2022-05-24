@@ -20,9 +20,6 @@
   "license": "MIT",
   "author": "Kyle Gray <kyle.gray@availity.com>",
   "main": "src/index.js",
-  "scripts": {
-    "publish": "yarn npm publish --tolerate-republish --access public"
-  },
   "dependencies": {
     "msw": "^0.36.8",
     "qs": "^6.10.3"

@@ -21,7 +21,8 @@
   "main": "./src/index.js",
   "types": "./src/index.d.ts",
   "scripts": {
-    "publish": "yarn npm publish --tolerate-republish --access public"
+    "publish": "yarn npm publish --tolerate-republish --access public",
+    "publish:canary": "yarn npm publish --access public --tag canary"
   },
   "dependencies": {
     "@availity/icon": "workspace:*",
