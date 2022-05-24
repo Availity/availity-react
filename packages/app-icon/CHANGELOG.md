@@ -1,7 +1,15 @@
-# Change Log
+# Changelog
 
-All notable changes to this project will be documented in this file.
-See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
+This file was generated using [@jscutlery/semver](https://github.com/jscutlery/semver).
+
+# [1.5.0](https://github.com/Availity/availity-react/compare/@availity/app-icon@1.4.2...@availity/app-icon@1.5.0) (2022-05-24)
+
+
+### Features
+
+* **app-icon:** convert to typescript ([b0c9840](https://github.com/Availity/availity-react/commit/b0c9840707df0dda52ef909e7b976058d4a57a5d))
+
+
 
 ## [1.4.2](https://github.com/Availity/availity-react/compare/@availity/app-icon@1.4.1...@availity/app-icon@1.4.2) (2021-12-20)
 
