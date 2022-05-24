@@ -1,7 +1,23 @@
-# Change Log
+# Changelog
 
-All notable changes to this project will be documented in this file.
-See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
+This file was generated using [@jscutlery/semver](https://github.com/jscutlery/semver).
+
+# [7.0.0](https://github.com/Availity/availity-react/compare/@availity/feedback@6.2.27...@availity/feedback@7.0.0) (2022-05-24)
+
+
+### Bug Fixes
+
+* upgrade yup and update sb stories ([68aeafe](https://github.com/Availity/availity-react/commit/68aeafe4fd7d90d7c88dbb24636ba7770fe87aa3))
+
+
+* feat(feedback)!: switch to nx ([d2b5339](https://github.com/Availity/availity-react/commit/d2b533977e86479971dc7fb7b1edbc2bd90ba761))
+
+
+### BREAKING CHANGES
+
+* upgraded to @availity/yup 5.0.0 and @availity/select 3.0.0
+
+
 
 ## 6.2.27 (2022-05-11)
 
