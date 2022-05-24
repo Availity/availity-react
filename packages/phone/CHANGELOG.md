@@ -1,7 +1,23 @@
-# Change Log
+# Changelog
 
-All notable changes to this project will be documented in this file.
-See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
+This file was generated using [@jscutlery/semver](https://github.com/jscutlery/semver).
+
+# [2.0.0](https://github.com/Availity/availity-react/compare/@availity/phone@1.2.5...@availity/phone@2.0.0) (2022-05-24)
+
+
+### Bug Fixes
+
+* upgrade yup and update sb stories ([68aeafe](https://github.com/Availity/availity-react/commit/68aeafe4fd7d90d7c88dbb24636ba7770fe87aa3))
+
+
+* feat(phone)!: upgrade to yup 0.32.0 ([dadde41](https://github.com/Availity/availity-react/commit/dadde41e7535ee444a0737a7ba31d5467a34133f))
+
+
+### BREAKING CHANGES
+
+* must be using yup 0.32.0
+
+
 
 ## 1.2.5 (2022-03-09)
 
