@@ -1,7 +1,15 @@
-# Change Log
+# Changelog
 
-All notable changes to this project will be documented in this file.
-See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
+This file was generated using [@jscutlery/semver](https://github.com/jscutlery/semver).
+
+## [0.8.7](https://github.com/Availity/availity-react/compare/@availity/form-upload@0.8.6...@availity/form-upload@0.8.7) (2022-05-24)
+
+
+### Bug Fixes
+
+* upgrade yup and update sb stories ([68aeafe](https://github.com/Availity/availity-react/commit/68aeafe4fd7d90d7c88dbb24636ba7770fe87aa3))
+
+
 
 ## 0.8.6 (2022-05-19)
 
