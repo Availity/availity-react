@@ -1,7 +1,18 @@
-# Change Log
+# Changelog
 
-All notable changes to this project will be documented in this file.
-See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
+This file was generated using [@jscutlery/semver](https://github.com/jscutlery/semver).
+
+# [4.0.0](https://github.com/Availity/availity-react/compare/@availity/date@3.4.5...@availity/date@4.0.0) (2022-05-24)
+
+
+* build(date)!: switch to nx ([4558f3b](https://github.com/Availity/availity-react/commit/4558f3b1511c218e98494a1f641ec515d8d9eda7))
+
+
+### BREAKING CHANGES
+
+* upgrade to @availity/yup 5.0.0
+
+
 
 ## 3.4.5 (2022-03-09)
 
