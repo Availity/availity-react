@@ -1,7 +1,10 @@
-# Change Log
+# Changelog
 
-All notable changes to this project will be documented in this file.
-See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
+This file was generated using [@jscutlery/semver](https://github.com/jscutlery/semver).
+
+## [0.5.4](https://github.com/Availity/availity-react/compare/@availity/avatar@0.5.3...@availity/avatar@0.5.4) (2022-05-24)
+
+
 
 ## 0.5.3 (2022-02-18)
 
