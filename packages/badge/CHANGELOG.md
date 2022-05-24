@@ -1,7 +1,15 @@
-# Change Log
+# Changelog
 
-All notable changes to this project will be documented in this file.
-See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
+This file was generated using [@jscutlery/semver](https://github.com/jscutlery/semver).
+
+# [1.2.0](https://github.com/Availity/availity-react/compare/@availity/badge@1.1.1...@availity/badge@1.2.0) (2022-05-24)
+
+
+### Features
+
+* **badge:** convert to typescript ([92a8242](https://github.com/Availity/availity-react/commit/92a8242fadf34f23c0cb20f1865f9a0563d65fdb))
+
+
 
 ## 1.1.1 (2022-02-24)
 
