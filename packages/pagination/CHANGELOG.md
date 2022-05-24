@@ -1,7 +1,20 @@
-# Change Log
+# Changelog
 
-All notable changes to this project will be documented in this file.
-See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
+This file was generated using [@jscutlery/semver](https://github.com/jscutlery/semver).
+
+# [2.14.0](https://github.com/Availity/availity-react/compare/@availity/pagination@2.13.4...@availity/pagination@2.14.0) (2022-05-24)
+
+
+### Bug Fixes
+
+* upgrade yup and update sb stories ([68aeafe](https://github.com/Availity/availity-react/commit/68aeafe4fd7d90d7c88dbb24636ba7770fe87aa3))
+
+
+### Features
+
+* **pagination:** convert to typescript ([04af0f9](https://github.com/Availity/availity-react/commit/04af0f96203ea528ad31d7f01248490750b336d8))
+
+
 
 ## 2.13.4 (2022-03-08)
 
