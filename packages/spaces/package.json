@@ -30,7 +30,7 @@
     "@availity/icon": "workspace:*",
     "@availity/link": "workspace:*",
     "@availity/list-group-item": "workspace:*",
-    "@availity/message-core": "^6.0.1",
+    "@availity/message-core": "^6.0.2",
     "@availity/native-form": "^5.0.1",
     "@availity/typography": "workspace:*",
     "classnames": "^2.3.1",

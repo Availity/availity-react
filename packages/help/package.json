@@ -33,7 +33,7 @@
   },
   "dependencies": {
     "@availity/icon": "workspace:*",
-    "@availity/message-core": "^6.0.1"
+    "@availity/message-core": "^6.0.2"
   },
   "devDependencies": {
     "react": "^17.0.2",

@@ -34,7 +34,7 @@
   "dependencies": {
     "@availity/analytics-core": "^4.0.1",
     "@availity/hooks": "workspace:*",
-    "@availity/message-core": "^6.0.1",
+    "@availity/message-core": "^6.0.2",
     "@radix-ui/react-tooltip": "0.1.6",
     "lodash": "^4.17.21"
   },
