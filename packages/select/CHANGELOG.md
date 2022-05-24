@@ -1,7 +1,23 @@
-# Change Log
+# Changelog
 
-All notable changes to this project will be documented in this file.
-See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
+This file was generated using [@jscutlery/semver](https://github.com/jscutlery/semver).
+
+# [3.0.0](https://github.com/Availity/availity-react/compare/@availity/select@2.10.0...@availity/select@3.0.0) (2022-05-24)
+
+
+### Bug Fixes
+
+* upgrade yup and update sb stories ([68aeafe](https://github.com/Availity/availity-react/commit/68aeafe4fd7d90d7c88dbb24636ba7770fe87aa3))
+
+
+* feat(select)!: compile with tsup ([537ac57](https://github.com/Availity/availity-react/commit/537ac57812688dce41f02b575dda0fc281a3d958))
+
+
+### BREAKING CHANGES
+
+* import resources from the root file instead of @availity/select/resources
+
+
 
 # 2.10.0 (2022-05-11)
 
