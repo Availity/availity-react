@@ -181,8 +181,8 @@ module.exports = {
               'form/date/index',
               'form/date/components/date',
               'form/date/components/date-field',
-              'form/date/components/date-range-field',
               'form/date/components/date-range',
+              'form/date/components/date-range-field',
             ],
           },
           {

@@ -1,5 +1,5 @@
 {
-  "root": "docusaurus/dinosaurdocs",
+  "root": "docusaurus",
   "projectType": "application",
   "targets": {
     "version": {

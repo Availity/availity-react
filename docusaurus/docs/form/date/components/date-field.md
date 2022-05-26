@@ -2,7 +2,7 @@
 title: <DateField />
 ---
 
-The same as `FormikDate` but with a `Label` that appears above input and a `Feedback` that appears below the input.
+The same as `Date` but with a `Label` that appears above input and a `Feedback` that appears below the input.
 
 ### Example
 
@@ -10,6 +10,7 @@ The same as `FormikDate` but with a `Label` that appears above input and a `Feed
 import React from 'react';
 import { Form } from '@availity/form';
 import { DateField } from '@availity/date';
+import '@availity/date/styles.scss';
 import { avDate } from '@availity/yup';
 import { Button } from 'reactstrap';
 import * as yup from 'yup';
