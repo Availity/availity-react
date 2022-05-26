@@ -26,22 +26,30 @@ import Progress from '@availity/button';
 
 const Example = () => (
   <>
-     <LoadingButton block disabled isLoading={isLoading} color="primary">
-            Test
-      </LoadingButton>
+    <LoadingButton block disabled isLoading={isLoading} color="primary">
+      Test
+    </LoadingButton>
   </>
 );
 ```
+
 ### Import Styles
 
-Add this line in your scss file to load the styles.
+Add this line in your scss file or app root to load the styles.
 
 ```scss
 @import '~@availity/button/styles.scss';
 ```
 
+OR
 
-#### Live example: <a href="https://availity.github.io/availity-react/storybook/?path=/story/components-loading-button--default"> Storybook</a>
+```js
+import '@availity/button/styles.scss';
+```
+
+#### Live example
+
+[Storybook](https://availity.github.io/availity-react/storybook/?path=/docs/components-button-loading-button--default)
 
 ### Props
 
