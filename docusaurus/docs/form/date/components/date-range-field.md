@@ -10,6 +10,7 @@ The same as `DateRange` but with a `Label` that appears above the input and a `F
 import React from 'react';
 import { Form } from '@availity/form';
 import { DateRangeField } from '@availity/date';
+import '@availity/date/styles.scss';
 import { Button } from 'reactstrap';
 import { dateRange } from '@availity/yup';
 import moment from 'moment';
@@ -55,11 +56,13 @@ const Example = () => (
 );
 ```
 
-#### Live example: <a href="https://availity.github.io/availity-react/storybook/?path=/story/formik-date--daterangefield"> Storybook</a>
+#### Live example
+
+[Storybook](https://availity.github.io/availity-react/storybook/?path=/docs/form-components-date--date-range-field)
 
 ### Props
 
-Extends [DateRange Props](/form/date/components/date-range/#props).
+Extends [DateRange Props](/form/date/components/date-range#props).
 
 #### `name: string`
 

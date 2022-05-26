@@ -14,6 +14,7 @@ import { Form } from '@availity/form';
 import { avDate } from '@availity/yup';
 import { Button } from 'reactstrap';
 import Date from '@availity/date';
+import '@availity/date/styles.scss';
 import moment from 'moment';
 import * as yup from 'yup';
 
@@ -40,7 +41,9 @@ const Example = () => (
 );
 ```
 
-#### Live example: <a href="https://availity.github.io/availity-react/storybook/?path=/story/formik-date--date"> Storybook</a>
+#### Live example
+
+[Storybook](https://availity.github.io/availity-react/storybook/?path=/docs/form-components-date--date-input)
 
 ### Props
 

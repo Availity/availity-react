@@ -394,7 +394,6 @@ __metadata:
     typescript: ^4.6.4
   peerDependencies:
     "@availity/form": ^1.1.0
-    "@availity/yup": ^3.0.2
     formik: ^2.0.1
     react: ">=16.3.0"
     reactstrap: ^8.0.0
@@ -478,7 +477,7 @@ __metadata:
     reactstrap: ^8.10.1
   peerDependencies:
     "@availity/api-axios": ^6.0.0
-    "@availity/yup": ^5.0.0
+    "@availity/yup": ^5.1.0
     axios: ^0.21.1
     formik: ^2.0.1
     react: ">=16.3.0"
@@ -687,8 +686,8 @@ __metadata:
     react-dom: ^17.0.2
     yup: ^0.32.11
   peerDependencies:
-    "@availity/api-axios": ^6.0.0
-    "@availity/spaces": ^4.0.1 || ^5.0.0
+    "@availity/api-axios": ^6.0.0 || ^7.0.0
+    "@availity/spaces": ^4.0.1 || ^5.0.0 || ^6.0.0
     axios: ^0.21.1
     formik: ^2.0.1
     react: ">=16.11.0"

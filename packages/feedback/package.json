@@ -43,7 +43,7 @@
   },
   "peerDependencies": {
     "@availity/api-axios": "^6.0.0",
-    "@availity/yup": "^5.0.0",
+    "@availity/yup": "^5.1.0",
     "axios": "^0.21.1",
     "formik": "^2.0.1",
     "react": ">=16.3.0",
