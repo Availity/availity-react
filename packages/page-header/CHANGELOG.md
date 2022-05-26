@@ -2,6 +2,15 @@
 
 This file was generated using [@jscutlery/semver](https://github.com/jscutlery/semver).
 
+## [11.2.8](https://github.com/Availity/availity-react/compare/@availity/page-header@11.2.7...@availity/page-header@11.2.8) (2022-05-26)
+
+
+### Bug Fixes
+
+* update peerDep ranges ([1e26d13](https://github.com/Availity/availity-react/commit/1e26d1388383fdbd1dc919ab97c1b6f1c5a047be))
+
+
+
 ## [11.2.7](https://github.com/Availity/availity-react/compare/@availity/page-header@11.2.6...@availity/page-header@11.2.7) (2022-05-24)
 
 
