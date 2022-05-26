@@ -52,7 +52,6 @@
   },
   "peerDependencies": {
     "@availity/form": "^1.1.0",
-    "@availity/yup": "^3.0.2",
     "formik": "^2.0.1",
     "react": ">=16.3.0",
     "reactstrap": "^8.0.0"
