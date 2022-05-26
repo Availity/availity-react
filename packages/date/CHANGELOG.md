@@ -2,6 +2,15 @@
 
 This file was generated using [@jscutlery/semver](https://github.com/jscutlery/semver).
 
+## [4.0.1](https://github.com/Availity/availity-react/compare/@availity/date@4.0.0...@availity/date@4.0.1) (2022-05-26)
+
+
+### Bug Fixes
+
+* set @availity/yup version ([47640d2](https://github.com/Availity/availity-react/commit/47640d2983821f8ead367221e57bcdd6be36d505))
+
+
+
 # [4.0.0](https://github.com/Availity/availity-react/compare/@availity/date@3.4.5...@availity/date@4.0.0) (2022-05-24)
 
 

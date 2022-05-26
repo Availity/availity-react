@@ -1,6 +1,6 @@
 {
   "name": "@availity/date",
-  "version": "4.0.0",
+  "version": "4.0.1",
   "description": "Wrapper for react-dates to work with formik",
   "keywords": [
     "availity",
