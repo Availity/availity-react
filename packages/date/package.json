@@ -40,7 +40,7 @@
   },
   "devDependencies": {
     "@availity/form": "workspace:*",
-    "@availity/yup": "^5.1.0",
+    "@availity/yup": "^5.1.1",
     "@types/react-dates": "^21.8.3",
     "esbuild-sass-plugin": "^2.2.6",
     "formik": "^2.2.9",
