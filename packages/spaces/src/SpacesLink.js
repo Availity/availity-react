@@ -227,12 +227,14 @@ const Link = ({
               <Media body id={`${type}-${configurationId}`} className="text-dark">
                 <TitleTag
                   id={`app-title-${configurationId}`}
-                  className={classNames({
-                    'mb-0': !showDescription || !description,
-                    'pt-3': stacked,
-                    'text-center': stacked,
-                    [titleClassName]: !!titleClassName,
-                  })}
+                  className={classNames(
+                    {
+                      'mb-0': !showDescription || !description,
+                      'pt-3': stacked,
+                      'text-center': stacked,
+                    },
+                    titleClassName
+                  )}
                   tabIndex={0}
                   style={{
                     cursor: link?.url ? 'pointer' : 'not-allowed',
