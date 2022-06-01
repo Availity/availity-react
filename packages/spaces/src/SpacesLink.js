@@ -60,6 +60,7 @@ const Link = ({
   bodyTag: BodyTag,
   titleTag: TitleTag,
   textTag: TextTag,
+  titleClassName,
   linkStyle,
   size,
   loading: propsLoading,
@@ -230,6 +231,7 @@ const Link = ({
                     'mb-0': !showDescription || !description,
                     'pt-3': stacked,
                     'text-center': stacked,
+                    [titleClassName]: !!titleClassName,
                   })}
                   tabIndex={0}
                   style={{
@@ -278,6 +280,7 @@ Link.propTypes = {
   bodyTag: PropTypes.oneOfType([PropTypes.func, PropTypes.string]),
   titleTag: PropTypes.oneOfType([PropTypes.func, PropTypes.string]),
   textTag: PropTypes.oneOfType([PropTypes.func, PropTypes.string]),
+  titleClassName: PropTypes.string,
   card: PropTypes.bool,
   icon: PropTypes.bool,
   description: PropTypes.bool,
