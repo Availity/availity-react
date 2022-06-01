@@ -1,7 +1,7 @@
 import { useCallback, useState } from 'react';
 import { Meta, Story } from '@storybook/react';
 
-import { Tree } from '.';
+import Tree from '.';
 
 import '../styles.scss';
 import TreeItem from './TreeItem';
@@ -11,7 +11,7 @@ export default {
 } as Meta;
 
 export const Default: Story = ({ enableSearch, searchLabel, expandAll, selectable }) => {
-  const [selectedItems, setSelectedItems] = useState<TreeItem[]>([]);
+  const [selectedItems] = useState<TreeItem[]>([]);
   const [newSelectedList, setNewSelectedList] = useState<TreeItem[]>([]);
 
   const [items] = useState<TreeItem[]>([
@@ -57,7 +57,6 @@ export const Default: Story = ({ enableSearch, searchLabel, expandAll, selectabl
   ]);
 
   const onItemsSelected = useCallback((selected: TreeItem[]): void => {
-    console.log(selected);
     setNewSelectedList(selected);
   }, []);
 
