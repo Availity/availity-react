@@ -1,0 +1,27 @@
+.tree-view {
+  padding-left: 0;
+
+  .custom-checkbox {
+    display: inline-block;
+  }
+
+  .custom-control-label::before {
+    top: 0;
+  }
+  .custom-control-label::after {
+    top: 0;
+  }
+
+  li {
+    list-style: none;
+  }
+
+  .expand-tree {
+    cursor: pointer;
+  }
+
+  .icon-expand,
+  icon-expand:hover {
+    color: #363f45;
+  }
+}

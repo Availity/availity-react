@@ -979,6 +979,23 @@ __metadata:
   languageName: unknown
   linkType: soft
 
+"@availity/tree@workspace:packages/tree":
+  version: 0.0.0-use.local
+  resolution: "@availity/tree@workspace:packages/tree"
+  dependencies:
+    "@availity/icon": "workspace:*"
+    react: ^17.0.2
+    react-block-ui: ^1.3.3
+    react-dom: ^17.0.2
+    reactstrap: ^8.10.1
+    tsup: ^5.12.7
+    typescript: ^4.6.4
+  peerDependencies:
+    react: ">=16.3.0"
+    reactstrap: ^8.0.0
+  languageName: unknown
+  linkType: soft
+
 "@availity/typography@workspace:*, @availity/typography@workspace:packages/typography":
   version: 0.0.0-use.local
   resolution: "@availity/typography@workspace:packages/typography"
