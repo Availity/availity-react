@@ -9,8 +9,12 @@ function isObject(value) {
 
 export default function useTabsEventHandlers(tab, tabs, updaterFn, active, options = {}) {
   const { customFindFn, customSelector } = options;
-  if (typeof tab !== 'string' && !isObject(tab) && isObject(tab) && !('name' in tab)) {
-    throw new Error('useTabsEventHandler requires tabs to be strings or objects with a name propery');
+  if ((typeof tab !== 'string' && !isObject(tab)) || (isObject(tab) && !('name' in tab))) {
+    throw new Error('useTabsEventHandler requires tabs to be strings or objects with a name property');
+  }
+
+  if ((isObject(tab) || isObject(active)) && typeof customFindFn !== 'function') {
+    throw new Error('when using tab objects a custom find function is required');
   }
   const handleKeys = React.useCallback(
     (event) => {

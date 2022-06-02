@@ -116,4 +116,4 @@ The currently active tab.
 
 ### `options?: {customFindFn?: CustomFindFunction, customSelector?: string}`
 
-Optional overrides for certain features, customFindFn if you have a tab list of objects you may need to use a function like Lodash's isEqual. Or a custom selector to override the id's we are checking in some cases. If you need additional overrides PR's are welcome.
+Optional overrides for certain features, customFindFn if you have a tab list of objects you will need to use a function like Lodash's isEqual or your own custom find logic, see tests for examples. Or a custom selector to override the id's we are checking in some cases. If you need additional overrides PR's are welcome.

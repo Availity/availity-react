@@ -6,23 +6,37 @@ import userEvent from '@testing-library/user-event';
 import PropTypes from 'prop-types';
 import useTabsEventHandlers from '../src/useTabsEventHandlers';
 
-const Example = ({ initialActive }) => {
+function setup(...args) {
+  const returnVal = {};
+  function TestComponent() {
+    Object.assign(returnVal, useTabsEventHandlers(...args));
+    return null;
+  }
+  render(<TestComponent />);
+  return returnVal;
+}
+
+const Example = ({ initialActive, tabPanelId, useObjects, customFindFn }) => {
   const [activeTab, setActiveTab] = useState(initialActive);
 
   const toggle = (tab) => {
     if (activeTab !== tab) setActiveTab(tab);
   };
-  const tabs = ['one', 'two'];
+  const tabs = useObjects ? [{ name: 'one' }, { name: 'two' }] : ['one', 'two'];
 
   const { handleKeys: firstHandler, handleFocus: navHandler } = useTabsEventHandlers(
     'one',
     tabs,
     setActiveTab,
-    activeTab
+    activeTab,
+    { customFindFn, customSelector: tabPanelId }
   );
-  const { handleKeys: secondHandler } = useTabsEventHandlers('two', tabs, setActiveTab, activeTab);
+  const { handleKeys: secondHandler } = useTabsEventHandlers('two', tabs, setActiveTab, activeTab, {
+    customFindFn,
+    customSelector: tabPanelId,
+  });
   return (
-    <>
+    <div>
       <button type="button" id="sibling-above" tabIndex={0}>
         Some Stuff
       </button>
@@ -84,11 +98,15 @@ const Example = ({ initialActive }) => {
       <button type="button" id="sibling-below" tabIndex={0}>
         Other Stuff
       </button>
-    </>
+    </div>
   );
 };
+
 Example.propTypes = {
   initialActive: PropTypes.string,
+  tabPanelId: PropTypes.string,
+  useObjects: PropTypes.bool,
+  customFindFn: PropTypes.func,
 };
 
 // taken from https://www.w3.org/WAI/ARIA/apg/patterns/tabpanel/#:~:text=.-,Keyboard%20Interaction,-For%20the%20tab
@@ -162,5 +180,72 @@ describe('useTabsEventHandlers', () => {
     expect(tab1).not.toHaveClass('active');
     userEvent.type(tab1, '[Space]');
     expect(tab1).toHaveClass('active');
+  });
+  test('it throws if tabs are objects without a name property', () => {
+    const firstTab = { id: 'firsttab' };
+    const secondTab = { id: 'secondtab' };
+    const tabs = [firstTab, secondTab];
+    expect(() => setup(firstTab, tabs, () => tabs[1], firstTab)).toThrow(
+      'useTabsEventHandler requires tabs to be strings or objects with a name property'
+    );
+  });
+
+  test('pressing tab without a valid tabPanel selector will skip focus to the next sibling element which should still be the panel if it is focusable', () => {
+    render(<Example tabPanelId="somerandom342" initialActive="two" />);
+    const buttonAbove = screen.getByText('Some Stuff');
+    buttonAbove.focus();
+    userEvent.tab();
+    const tab2 = screen.getByText('More Tabs');
+    expect(tab2).toHaveClass('active');
+    expect(tab2).toHaveFocus();
+    userEvent.tab();
+    const tabPanel = screen.getByTestId('tabPanel');
+    expect(tabPanel).toHaveFocus();
+  });
+
+  test('using tab objects without a custom find function wont work and so will throw', () => {
+    const firstTab = { name: 'firsttab' };
+    const secondTab = { name: 'secondtab' };
+    const tabs = [firstTab, secondTab];
+    expect(() => setup(firstTab, tabs, () => tabs[1], firstTab)).toThrow(
+      'when using tab objects a custom find function is required'
+    );
+  });
+
+  test('use tab objects and provide a custom find function', () => {
+    render(
+      <Example
+        useObjects
+        tabPanelId="somerandom342"
+        initialActive="two"
+        customFindFn={(tabs, active) => {
+          tabs.find((tab) => tab.name === active.name);
+        }}
+      />
+    );
+    const buttonAbove = screen.getByText('Some Stuff');
+    buttonAbove.focus();
+    userEvent.tab();
+    const tab2 = screen.getByText('More Tabs');
+    const tab1 = screen.getByText('Tab1');
+    expect(tab2).toHaveClass('active');
+    expect(tab2).toHaveFocus();
+    userEvent.keyboard('[ArrowLeft]');
+    expect(tab1).toHaveFocus();
+  });
+
+  test('arrow up and arrow down have no effect on tab active or focus state', () => {
+    render(<Example useObjects tabPanelId="somerandom342" initialActive="two" />);
+    const buttonAbove = screen.getByText('Some Stuff');
+    buttonAbove.focus();
+    userEvent.tab();
+    const tab2 = screen.getByText('More Tabs');
+    expect(tab2).toHaveClass('active');
+    expect(tab2).toHaveFocus();
+    userEvent.keyboard('[ArrowDown]');
+    expect(tab2).toHaveFocus();
+    userEvent.keyboard('[ArrowUp]');
+    expect(tab2).toHaveFocus();
+    expect(tab2).toHaveClass('active');
   });
 });
