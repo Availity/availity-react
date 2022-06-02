@@ -1,5 +1,5 @@
 /* eslint-disable no-console */
-import React from 'react';
+import React, { useState } from 'react';
 import { Meta, Story } from '@storybook/react';
 import { Button } from 'reactstrap';
 import * as yup from 'yup';
@@ -12,6 +12,8 @@ import { Field, Input, Checkbox, CheckboxGroup, Label, RadioGroup, Radio, FormGr
 // import README from '../form/README.md';
 
 import FormResults from '../../../story-utils/FormikResults';
+import CurrencyInput from './CurrencyInput';
+import { FormikProps } from 'formik';
 
 export default {
   title: 'Form Components/Form',
@@ -272,3 +274,37 @@ _Radio.args = {
   labelClassName: 'label',
 };
 _Radio.storyName = 'Radio';
+
+export const _CurrencyInput: Story = ({ value }) => {
+  const [newValue, setNewValue] = useState(value);
+
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  const onChange = (value: any) => {
+    setNewValue(value);
+  };
+
+  return (
+    <FormResults
+      onSubmit={() => {
+        console.log('submitted');
+      }}
+      initialValues={{
+        paidAmount: value,
+      }}
+      validationSchema={yup.object().shape({
+        paidAmount: yup.string().required('This field is required'),
+      })}
+    >
+      <CurrencyInput
+        name="paidAmount"
+        value={newValue}
+        id="paidAmount"
+        onValueChanged={onChange}
+      />
+    </FormResults>
+  );
+};
+_CurrencyInput.storyName = 'Currency';
+_CurrencyInput.args = {
+  value: '4.93',
+};
