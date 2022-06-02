@@ -591,21 +591,13 @@ exports[`Table should render selectable table 1`] = `
           <div
             class="text-center"
           >
-            <label
-              class="custom-control custom-checkbox"
-            >
-              <input
-                aria-label="Select all records"
-                class="custom-control-input"
-                data-testid="table_header_select_all"
-                style="cursor: pointer;"
-                title="Toggle All Rows Selected"
-                type="checkbox"
-              />
-              <span
-                class="custom-control-label"
-              />
-            </label>
+            <input
+              aria-label="Select all records"
+              data-testid="table_header_select_all"
+              style="cursor: pointer;"
+              title="Toggle All Rows Selected"
+              type="checkbox"
+            />
           </div>
         </th>
         <th
@@ -654,21 +646,13 @@ exports[`Table should render selectable table 1`] = `
           <div
             class="text-center"
           >
-            <label
-              class="custom-control custom-checkbox"
-            >
-              <input
-                aria-label="Select record"
-                class="custom-control-input"
-                data-testid="table_header_select_row_0"
-                style="cursor: pointer;"
-                title="Toggle Row Selected"
-                type="checkbox"
-              />
-              <span
-                class="custom-control-label"
-              />
-            </label>
+            <input
+              aria-label="Select record"
+              data-testid="table_header_select_row_0"
+              style="cursor: pointer;"
+              title="Toggle Row Selected"
+              type="checkbox"
+            />
           </div>
         </td>
         <td
@@ -704,21 +688,13 @@ exports[`Table should render selectable table 1`] = `
           <div
             class="text-center"
           >
-            <label
-              class="custom-control custom-checkbox"
-            >
-              <input
-                aria-label="Select record"
-                class="custom-control-input"
-                data-testid="table_header_select_row_1"
-                style="cursor: pointer;"
-                title="Toggle Row Selected"
-                type="checkbox"
-              />
-              <span
-                class="custom-control-label"
-              />
-            </label>
+            <input
+              aria-label="Select record"
+              data-testid="table_header_select_row_1"
+              style="cursor: pointer;"
+              title="Toggle Row Selected"
+              type="checkbox"
+            />
           </div>
         </td>
         <td
@@ -754,21 +730,13 @@ exports[`Table should render selectable table 1`] = `
           <div
             class="text-center"
           >
-            <label
-              class="custom-control custom-checkbox"
-            >
-              <input
-                aria-label="Select record"
-                class="custom-control-input"
-                data-testid="table_header_select_row_2"
-                style="cursor: pointer;"
-                title="Toggle Row Selected"
-                type="checkbox"
-              />
-              <span
-                class="custom-control-label"
-              />
-            </label>
+            <input
+              aria-label="Select record"
+              data-testid="table_header_select_row_2"
+              style="cursor: pointer;"
+              title="Toggle Row Selected"
+              type="checkbox"
+            />
           </div>
         </td>
         <td
