@@ -11,27 +11,36 @@ import * as React from 'react';
 import { TabContent, TabPane, Nav, NavItem, NavLink, Card, Button, CardTitle, CardText, Row, Col } from 'reactstrap';
 import classnames from 'classnames';
 
-const Example = ({initialActive}) => {
+const Example = ({ initialActive }) => {
   const [activeTab, setActiveTab] = useState(initialActive);
 
-  const toggle = tab => {
-    if(activeTab !== tab) setActiveTab(tab);
-  }
-  const tabs = ['1', '2']
+  const toggle = (tab) => {
+    if (activeTab !== tab) setActiveTab(tab);
+  };
+  const tabs = ['one', 'two'];
 
-  const {handleKeys: firstHandler, handleFocus: navHandler} = useTabsEventHandlers('1', tabs, setActiveTab, activeTab)
-  const {handleKeys: secondHandler} = useTabsEventHandlers('2', tabs, setActiveTab, activeTab)
+  const { handleKeys: firstHandler, handleFocus: navHandler } = useTabsEventHandlers(
+    'one',
+    tabs,
+    setActiveTab,
+    activeTab
+  );
+  const { handleKeys: secondHandler } = useTabsEventHandlers('two', tabs, setActiveTab, activeTab);
   return (
     <>
-    <button type='button' id='sibling-above' tabIndex={0}>Some Stuff</button>
-      <Nav onFocus={navHandler} id='tabListParentNav' tabs>
+      <Button type="button" id="sibling-above" tabIndex={0}>
+        Some Stuff
+      </Button>
+      <Nav onFocus={navHandler} id="tabListParentNav" tabs>
         <NavItem>
           <NavLink
-            id='1-tab'
+            id="one-tab"
             tabIndex={0}
-            onKeyDown = {firstHandler}
-            className={classnames({ active: activeTab === '1' })}
-            onClick={() => { toggle('1'); }}
+            onKeyDown={firstHandler}
+            className={classnames({ active: activeTab === 'one' })}
+            onClick={() => {
+              toggle('one');
+            }}
           >
             Tab1
           </NavLink>
@@ -40,23 +49,25 @@ const Example = ({initialActive}) => {
           <NavLink
             onKeyDown={secondHandler}
             tabIndex={0}
-            id='2-tab'
-            className={classnames({ active: activeTab === '2' })}
-            onClick={() => { toggle('2'); }}
+            id="two-tab"
+            className={classnames({ active: activeTab === 'two' })}
+            onClick={() => {
+              toggle('two');
+            }}
           >
-          More Tabs
+            More Tabs
           </NavLink>
         </NavItem>
       </Nav>
-      <TabContent data-testid='tabPanel' id='tabPanel' activeTab={activeTab}>
-        <TabPane tabId="1">
+      <TabContent tabIndex={0} data-testid="tabPanel" id="tabPanel" activeTab={activeTab}>
+        <TabPane tabId="one">
           <Row>
             <Col sm="12">
               <h4>Tab 1 Contents</h4>
             </Col>
           </Row>
         </TabPane>
-        <TabPane tabId="2">
+        <TabPane tabId="two">
           <Row>
             <Col sm="6">
               <Card body>
@@ -75,17 +86,20 @@ const Example = ({initialActive}) => {
           </Row>
         </TabPane>
       </TabContent>
-      <button type='button' id='sibling-below' tabIndex={0}>Other Stuff</button>
+      <Button type="button" id="sibling-below" tabIndex={0}>
+        Other Stuff
+      </Button>
     </>
   );
-}
+};
+
 ```
 
 ## Props
 
 ### `tab: Tab`
 
-The tab component to attach the onKeyDown listener to. This should be an element of a list of Tabs (i.e. if your list has objects this tab should be referentially equal to one element in the list). Tabs can be either strings, like in the example, or can be objects with a name property (and any other properties you need but they will be safely ignored by this hook, but name is required)
+The tab component to attach the onKeyDown listener to. This should be an element of a list of Tabs (i.e. if your list has objects this tab should be referentially equal to one element in the list). Tabs can be either strings, like in the example, or can be objects with a name property (and any other properties you need but they will be safely ignored by this hook, but name is required). Also note that the NavLinks must use the tab or tab.name as part of building their elementID so any tab name must make a valid id (i.e. tabs can't be ['1', '2', '3'] but instead ['one', 'two', 'three] because 1-tab is not a valid id)
 
 ### `tabs: Tab[]`
 
