@@ -8,3 +8,4 @@ export { default as useProviders } from './src/useProviders';
 export { default as usePermissions } from './src/usePermissions';
 export { default as useOrganizations } from './src/useOrganizations';
 export { default as useWindowDimensions } from './src/useWindowDimensions';
+export { default as useTabsEventHandlers} from './src/useTabsEventHandlers'
