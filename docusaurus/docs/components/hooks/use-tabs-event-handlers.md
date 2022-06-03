@@ -120,6 +120,6 @@ Optional overrides for certain features, customFindFn if you have a tab list of 
 
 ## Returns
 
-### handleKeys: React.KeyboardEventHandler<HTMLAnchorElement>
+### `handleKeys: React.KeyboardEventHandler<HTMLAnchorElement>`
 
-Used as a keydown event handler on a HTML anchor tag. Type signature for event handler is (event: React.KeyboardEvent<HTMLAnchorElement>) => void. 
+`Used as a keydown event handler on a HTML anchor tag. Type signature for event handler is (event: React.KeyboardEvent<HTMLAnchorElement>) => void`. 
