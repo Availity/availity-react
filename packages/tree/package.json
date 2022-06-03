@@ -1,7 +1,7 @@
 {
   "name": "@availity/tree",
-  "version": "0.0.1-alpha.0",
-  "description": "TThis is a component for displaying hierarchical data",
+  "version": "1.0.0",
+  "description": "This is a component for displaying hierarchical data",
   "keywords": [
     "react",
     "availity",
@@ -36,8 +36,8 @@
     "react-block-ui": "^1.3.3"
   },
   "devDependencies": {
-    "react": "^17.0.2",
-    "react-dom": "^17.0.2",
+    "react": "^16.3.0 || ^17.0.0",
+    "react-dom": "^16.3.0 || ^17.0.0",
     "reactstrap": "^8.10.1",
     "tsup": "^5.12.7",
     "typescript": "^4.6.4"
