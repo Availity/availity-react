@@ -14,16 +14,16 @@ const Example = ({initialActive}: {initialActive: string}) => {
   }
   const tabs = ['one', 'two']
 
-  const {handleKeys: firstHandler, handleFocus: navHandler} = useTabsEventHandlers('one', tabs, setActiveTab, activeTab)
-  const {handleKeys: secondHandler} = useTabsEventHandlers('two', tabs, setActiveTab, activeTab)
+  const firstHandler = useTabsEventHandlers('one', tabs, setActiveTab, activeTab)
+  const secondHandler = useTabsEventHandlers('two', tabs, setActiveTab, activeTab)
   return (
     <>
       <button type='button' id='sibling-above' tabIndex={0}>Some Stuff</button>
-      <Nav onFocus={navHandler} id='tabListParentNav' tabs>
+      <Nav  id='tabListParentNav' tabs>
         <NavItem>
           <NavLink
             id='one-tab'
-            tabIndex={0}
+            tabIndex={activeTab === 'one' ? 0 : -1}
             onKeyDown = {firstHandler}
             className={classnames({ active: activeTab === 'one' })}
             onClick={() => { toggle('one'); }}
@@ -34,7 +34,7 @@ const Example = ({initialActive}: {initialActive: string}) => {
         <NavItem>
           <NavLink
             onKeyDown={secondHandler}
-            tabIndex={0}
+            tabIndex={activeTab === 'two' ? 0 : -1}
             id='two-tab'
             className={classnames({ active: activeTab === 'two' })}
             onClick={() => { toggle('two'); }}
@@ -43,7 +43,7 @@ const Example = ({initialActive}: {initialActive: string}) => {
           </NavLink>
         </NavItem>
       </Nav>
-      <TabContent tabIndex={0} data-testid='tabPanel' id='tabPanel' activeTab={activeTab}>
+      <TabContent tabIndex={activeTab === 'one' ? 0 : undefined} data-testid='tabPanel' id='tabPanel' activeTab={activeTab}>
         <TabPane tabId="one">
           <Row>
             <Col sm="12">
