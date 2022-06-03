@@ -2,7 +2,7 @@
 title: useTabsEventHandlers
 ---
 
-Hook that returns keydown event handler for a tab and a focus event handler for the nav element containing your tabs. Intended for use with Reactstrap nav and tab components (see example for full list) but should be configurable if you are using alternate tab components. Tested and compatible with proxy-based state management libraries(you may need to use the custom find function to ensure that you are return a referentially identical tab from your tab list) as well as apps using plain context for managing state. Note that this hook relies on users adding tabIndex = 0 for their NavLink Reactstrap component and a few other conventions related to the way the tab element Ids are created. 
+Hook that returns keydown event handler for a tab. Intended for use with Reactstrap tab components (see example for full list) but should be configurable if you are using alternate tab components. Tested and compatible with proxy-based state management libraries(you may need to use the custom find function to ensure that you are return a referentially identical tab from your tab list) as well as apps using plain context for managing state. Note that this hook relies on users adding tabIndex = 0 for active tab and tabIndex = -1 for inactive tabs and a few other conventions related to the way the tab element Ids are created. 
 
 ### Example
 
@@ -19,23 +19,23 @@ const Example = ({ initialActive }) => {
   };
   const tabs = ['one', 'two'];
 
-  const { handleKeys: firstHandler, handleFocus: navHandler } = useTabsEventHandlers(
+  const firstHandler = useTabsEventHandlers(
     'one',
     tabs,
     setActiveTab,
     activeTab
   );
-  const { handleKeys: secondHandler } = useTabsEventHandlers('two', tabs, setActiveTab, activeTab);
+  const secondHandler = useTabsEventHandlers('two', tabs, setActiveTab, activeTab);
   return (
     <>
       <Button type="button" id="sibling-above" tabIndex={0}>
         Some Stuff
       </Button>
-      <Nav onFocus={navHandler} id="tabListParentNav" tabs>
+      <Nav id="tabListParentNav" tabs>
         <NavItem>
           <NavLink
             id="one-tab"
-            tabIndex={0}
+            tabIndex={activeTab === 'one' ? 0 : -1}
             onKeyDown={firstHandler}
             className={classnames({ active: activeTab === 'one' })}
             onClick={() => {
@@ -48,7 +48,7 @@ const Example = ({ initialActive }) => {
         <NavItem>
           <NavLink
             onKeyDown={secondHandler}
-            tabIndex={0}
+            tabIndex={activeTab === 'two' ? 0 : -1}
             id="two-tab"
             className={classnames({ active: activeTab === 'two' })}
             onClick={() => {
@@ -59,7 +59,7 @@ const Example = ({ initialActive }) => {
           </NavLink>
         </NavItem>
       </Nav>
-      <TabContent tabIndex={0} data-testid="tabPanel" id="tabPanel" activeTab={activeTab}>
+      <TabContent tabIndex={activeTab == 'one' ? 0 : undefined} data-testid="tabPanel" id="tabPanel" activeTab={activeTab}>
         <TabPane tabId="one">
           <Row>
             <Col sm="12">
@@ -114,6 +114,12 @@ This is the function used to update your state management with any newly active 
 
 The currently active tab.
 
-### `options?: {customFindFn?: CustomFindFunction, customSelector?: string}`
+### `options?: {customFindFn?: CustomFindFunction}`
 
-Optional overrides for certain features, customFindFn if you have a tab list of objects you will need to use a function like Lodash's isEqual or your own custom find logic, see tests for examples. Or a custom selector to override the id's we are checking in some cases. If you need additional overrides PR's are welcome.
+Optional overrides for certain features, customFindFn if you have a tab list of objects you will need to use a function like Lodash's isEqual or your own custom find logic, see tests for examples. If you need additional overrides PR's are welcome.
+
+## Returns
+
+### handleKeys: React.KeyboardEventHandler<HTMLAnchorElement>
+
+Used as a keydown event handler on a HTML anchor tag. Type signature for event handler is (event: React.KeyboardEvent<HTMLAnchorElement>) => void. 

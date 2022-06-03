@@ -16,7 +16,7 @@ function setup(...args) {
   return returnVal;
 }
 
-const Example = ({ initialActive, tabPanelId, useObjects, customFindFn }) => {
+const Example = ({ initialActive, useObjects, customFindFn }) => {
   const [activeTab, setActiveTab] = useState(initialActive);
 
   const toggle = (tab) => {
@@ -24,27 +24,20 @@ const Example = ({ initialActive, tabPanelId, useObjects, customFindFn }) => {
   };
   const tabs = useObjects ? [{ name: 'one' }, { name: 'two' }] : ['one', 'two'];
 
-  const { handleKeys: firstHandler, handleFocus: navHandler } = useTabsEventHandlers(
-    'one',
-    tabs,
-    setActiveTab,
-    activeTab,
-    { customFindFn, customSelector: tabPanelId }
-  );
-  const { handleKeys: secondHandler } = useTabsEventHandlers('two', tabs, setActiveTab, activeTab, {
+  const firstHandler = useTabsEventHandlers('one', tabs, setActiveTab, activeTab, { customFindFn });
+  const secondHandler = useTabsEventHandlers('two', tabs, setActiveTab, activeTab, {
     customFindFn,
-    customSelector: tabPanelId,
   });
   return (
     <div>
       <button type="button" id="sibling-above" tabIndex={0}>
         Some Stuff
       </button>
-      <Nav onFocus={navHandler} id="tabListParentNav" tabs>
+      <Nav id="tabListParentNav" tabs>
         <NavItem>
           <NavLink
             id="one-tab"
-            tabIndex={0}
+            tabIndex={activeTab === 'one' ? 0 : -1}
             onKeyDown={firstHandler}
             className={classnames({ active: activeTab === 'one' })}
             onClick={() => {
@@ -57,7 +50,7 @@ const Example = ({ initialActive, tabPanelId, useObjects, customFindFn }) => {
         <NavItem>
           <NavLink
             onKeyDown={secondHandler}
-            tabIndex={0}
+            tabIndex={activeTab === 'two' ? 0 : -1}
             id="two-tab"
             className={classnames({ active: activeTab === 'two' })}
             onClick={() => {
@@ -104,7 +97,6 @@ const Example = ({ initialActive, tabPanelId, useObjects, customFindFn }) => {
 
 Example.propTypes = {
   initialActive: PropTypes.string,
-  tabPanelId: PropTypes.string,
   useObjects: PropTypes.bool,
   customFindFn: PropTypes.func,
 };
@@ -190,19 +182,6 @@ describe('useTabsEventHandlers', () => {
     );
   });
 
-  test('pressing tab without a valid tabPanel selector will skip focus to the next sibling element which should still be the panel if it is focusable', () => {
-    render(<Example tabPanelId="somerandom342" initialActive="two" />);
-    const buttonAbove = screen.getByText('Some Stuff');
-    buttonAbove.focus();
-    userEvent.tab();
-    const tab2 = screen.getByText('More Tabs');
-    expect(tab2).toHaveClass('active');
-    expect(tab2).toHaveFocus();
-    userEvent.tab();
-    const tabPanel = screen.getByTestId('tabPanel');
-    expect(tabPanel).toHaveFocus();
-  });
-
   test('using tab objects without a custom find function wont work and so will throw', () => {
     const firstTab = { name: 'firsttab' };
     const secondTab = { name: 'secondtab' };
@@ -216,7 +195,6 @@ describe('useTabsEventHandlers', () => {
     render(
       <Example
         useObjects
-        tabPanelId="somerandom342"
         initialActive="two"
         customFindFn={(tabs, active) => {
           tabs.find((tab) => tab.name === active.name);
@@ -235,7 +213,7 @@ describe('useTabsEventHandlers', () => {
   });
 
   test('arrow up and arrow down have no effect on tab active or focus state', () => {
-    render(<Example useObjects tabPanelId="somerandom342" initialActive="two" />);
+    render(<Example useObjects initialActive="two" />);
     const buttonAbove = screen.getByText('Some Stuff');
     buttonAbove.focus();
     userEvent.tab();

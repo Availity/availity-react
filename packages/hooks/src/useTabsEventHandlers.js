@@ -8,7 +8,7 @@ function isObject(value) {
 }
 
 export default function useTabsEventHandlers(tab, tabs, updaterFn, active, options = {}) {
-  const { customFindFn, customSelector } = options;
+  const { customFindFn } = options;
   if ((typeof tab !== 'string' && !isObject(tab)) || (isObject(tab) && !('name' in tab))) {
     throw new Error('useTabsEventHandler requires tabs to be strings or objects with a name property');
   }
@@ -19,20 +19,6 @@ export default function useTabsEventHandlers(tab, tabs, updaterFn, active, optio
   const handleKeys = React.useCallback(
     (event) => {
       switch (event.key) {
-        case 'Tab': {
-          if (event.shiftKey) return false;
-          const selector = customSelector ?? '#tabPanel';
-          let el = document.querySelector(selector);
-          if (!el) {
-            el = document.querySelector('#tabListParentNav')?.nextElementSibling;
-          }
-          // if we cant find something either way fall back to default to avoid trap
-          if (el) {
-            event.preventDefault();
-            event.stopPropagation();
-          }
-          return el?.focus();
-        }
         case ' ':
         case 'Enter':
           event.preventDefault();
@@ -62,18 +48,7 @@ export default function useTabsEventHandlers(tab, tabs, updaterFn, active, optio
           return false;
       }
     },
-    [tabs, tab, updaterFn, active, customFindFn, customSelector]
+    [tabs, tab, updaterFn, active, customFindFn]
   );
-  const handleFocus = React.useCallback(
-    (event) => {
-      if (!event.currentTarget.contains(event.relatedTarget)) {
-        // Not triggered when swapping focus between children
-        const id = typeof active === 'string' ? `${active}-tab` : `${active.name}-tab`;
-        const activeTab = document.querySelector(`#${id}`);
-        activeTab?.focus();
-      }
-    },
-    [active]
-  );
-  return { handleKeys, handleFocus };
+  return handleKeys;
 }
