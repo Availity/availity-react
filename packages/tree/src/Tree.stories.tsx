@@ -44,11 +44,11 @@ export const Default: Story = ({ enableSearch, searchLabel, expandAll, selectabl
         },
         {
           id: '7',
-          name: 'Availity Webinars',
+          name: 'Second Level Parent 2',
           children: [
             {
               id: '6',
-              name: 'Validation Office',
+              name: 'Child Test 4',
             },
           ],
         },
