@@ -2,6 +2,20 @@
 
 This file was generated using [@jscutlery/semver](https://github.com/jscutlery/semver).
 
+## [6.0.9](https://github.com/Availity/availity-react/compare/@availity/spaces@6.0.8...@availity/spaces@6.0.9) (2022-06-10)
+
+
+
+## [6.0.8](https://github.com/Availity/availity-react/compare/@availity/spaces@6.0.7...@availity/spaces@6.0.8) (2022-06-02)
+
+
+### Bug Fixes
+
+* **spaces:** aadd ability to give class to Link title PF-2340 ([23d3230](https://github.com/Availity/availity-react/commit/23d3230bc687b14c1f7c2e03ed56bdf3eaf19a45))
+* **spaces:** use classNames second param and aadd unit test PF-2340 ([09f4457](https://github.com/Availity/availity-react/commit/09f44573506284c8ee43a15ccea12c6f71205c19))
+
+
+
 ## [6.0.7](https://github.com/Availity/availity-react/compare/@availity/spaces@6.0.6...@availity/spaces@6.0.7) (2022-05-24)
 
 

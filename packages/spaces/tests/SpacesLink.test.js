@@ -128,6 +128,37 @@ describe('SpacesLink', () => {
     expect(link3_header.tagName).toBe('DIV');
   });
 
+  it('renders link card from space with custom title class', async () => {
+    const space = {
+      id: 'encoded3',
+      configurationId: '3',
+      type: 'APPLICATION',
+      name: 'An application',
+      description: 'This is an application',
+      link: {
+        url: '/path/to/url',
+        text: 'the link',
+        targe: '_self',
+      },
+    };
+    const { container } = render(
+      <SpacesLink
+        id="application-link-3"
+        titleClassName="custom_class"
+        space={space}
+        linkAttributes={{
+          spaceId: '3',
+        }}
+        clientId="my-client-id"
+        title={space.link.text}
+      />
+    );
+
+    const link3_title = await waitFor(() => container.querySelector('#app-title-3'));
+
+    expect(link3_title.className).toContain('custom_class');
+  });
+
   it('renders link card from space with icon', async () => {
     const space = {
       id: 'encoded4',

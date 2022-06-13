@@ -2,6 +2,20 @@
 
 This file was generated using [@jscutlery/semver](https://github.com/jscutlery/semver).
 
+## [0.4.3](https://github.com/Availity/availity-react/compare/@availity/table@0.4.2...@availity/table@0.4.3) (2022-06-10)
+
+
+
+## [0.4.2](https://github.com/Availity/availity-react/compare/@availity/table@0.4.1...@availity/table@0.4.2) (2022-06-02)
+
+
+### Bug Fixes
+
+* **table:** replace checkbox with standard fix issue where checkbox is not showing as checked ([3e7623e](https://github.com/Availity/availity-react/commit/3e7623eeca2cd86c304b2deb2fd58c720ba384f7))
+* **table:** replace checkbox with standard fix issue where checkbox is not showing as checked ([4d3d49e](https://github.com/Availity/availity-react/commit/4d3d49e3ab82460de5c47ae7669bde8916d424bc))
+
+
+
 ## [0.4.1](https://github.com/Availity/availity-react/compare/@availity/table@0.4.0...@availity/table@0.4.1) (2022-05-24)
 
 
