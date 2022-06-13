@@ -1,6 +1,6 @@
 import React from 'react';
 import { render, waitFor, fireEvent, screen, cleanup } from '@testing-library/react';
-import Tree from './Tree';
+import Tree, { buildTree } from './Tree';
 import TreeItem from './TreeItem';
 
 const items: TreeItem[] = [
@@ -11,19 +11,25 @@ const items: TreeItem[] = [
       {
         id: '2',
         name: 'Second Level Parent',
+        parentId: '1',
         children: [
           {
             id: '3',
             name: 'Child Test 1',
             isDisabled: true,
+            parentId: '2',
+            children: [],
           },
           {
             id: '4',
             name: 'Child Test 2',
+            parentId: '2',
             children: [
               {
                 id: '5',
                 name: 'Child Test 3',
+                parentId: '4',
+                children: [],
               },
             ],
           },
@@ -32,16 +38,68 @@ const items: TreeItem[] = [
       {
         id: '7',
         name: 'Availity Webinars',
+        parentId: '1',
         children: [
           {
             id: '6',
             name: 'Validation Office',
+            parentId: '7',
+            children: [],
           },
         ],
       },
     ],
   },
 ];
+
+const flatTreeItems: TreeItem[] = [
+  {
+    id: '1',
+    name: 'Parent',
+  },
+  {
+    id: '2',
+    name: 'Second Level Parent',
+    parentId: '1',
+  },
+  {
+    id: '3',
+    name: 'Child Test 1',
+    isDisabled: true,
+    parentId: '2',
+  },
+  {
+    id: '4',
+    name: 'Child Test 2',
+    parentId: '2',
+  },
+  {
+    id: '5',
+    name: 'Child Test 3',
+    parentId: '4',
+  },
+  {
+    id: '7',
+    name: 'Availity Webinars',
+    parentId: '1',
+  },
+  {
+    id: '6',
+    name: 'Validation Office',
+    parentId: '7',
+  },
+];
+
+describe('buildTree', () => {
+  afterEach(() => {
+    cleanup();
+  });
+
+  test('buildTree should create a a hierarchical structure from a flat list', () => {
+    const hierarchicalTreeItems = buildTree(flatTreeItems);
+    expect(hierarchicalTreeItems).toEqual(items);
+  });
+});
 
 describe('Tree', () => {
   afterEach(() => {
@@ -137,6 +195,15 @@ describe('Tree', () => {
       expect(queryByTestId('tree-view-3')).toBeNull();
 
       expect(onItemExpanded).toHaveBeenCalledTimes(1);
+
+      fireEvent.click(screen.getByTestId('btn-expand-all-1'));
+
+      await waitFor(async () => {
+        expect(queryByTestId('tree-view-2')).toBeNull();
+        expect(queryByTestId('tree-view-7')).toBeNull();
+
+        expect(onItemExpanded).toHaveBeenCalledTimes(2);
+      });
     });
   });
 
@@ -160,7 +227,7 @@ describe('Tree', () => {
   test('should select item on click', async () => {
     const onItemsSelected = jest.fn();
 
-    render(<Tree items={items} expandAll selectable onItemsSelected={onItemsSelected} selectedItems={[]} />);
+    render(<Tree items={[...items]} expandAll selectable onItemsSelected={onItemsSelected} selectedItems={[]} />);
 
     const treeElement = await waitFor(() => screen.getByTestId('tree-view-parent'));
     expect(treeElement).not.toBeNull();
@@ -176,7 +243,7 @@ describe('Tree', () => {
   });
 
   test('should expand and collapse all on click', async () => {
-    render(<Tree items={items} expandAll={false} />);
+    render(<Tree items={[...items]} expandAll={false} />);
 
     expect(screen.getByTestId('btn-expand-all').textContent).toBe('Expand All');
 
@@ -194,7 +261,7 @@ describe('Tree', () => {
   test('should select and deselect all on click', async () => {
     const onItemsSelected = jest.fn();
 
-    render(<Tree items={items} expandAll={false} selectable onItemsSelected={onItemsSelected} />);
+    render(<Tree items={[...items]} expandAll={false} selectable onItemsSelected={onItemsSelected} />);
 
     expect(screen.getByTestId('btn-select-all').textContent).toBe('Select All');
 
@@ -214,12 +281,12 @@ describe('Tree', () => {
   });
 
   test('should show search input when enableSearch is true', async () => {
-    const { queryByTestId } = render(<Tree items={items} expandAll={false} enableSearch />);
+    const { queryByTestId } = render(<Tree items={[...items]} expandAll={false} enableSearch />);
     expect(queryByTestId('tree-search-input')).not.toBeNull();
   });
 
   test('should hide search input when enableSearch is false', async () => {
-    const { queryByTestId } = render(<Tree items={items} expandAll={false} enableSearch={false} />);
+    const { queryByTestId } = render(<Tree items={[...items]} expandAll={false} enableSearch={false} />);
     expect(queryByTestId('tree-search-input')).toBeNull();
   });
 
@@ -229,11 +296,39 @@ describe('Tree', () => {
     const input = screen.getByTestId('tree-search-input');
     expect(input).not.toBeNull();
 
-   fireEvent.change(input, { target: { value: 'Validation' } });
+    fireEvent.change(input, { target: { value: 'Validation' } });
 
     await waitFor(async () => {
       expect(queryByTestId('tree-view-item-6-label')).not.toBeNull();
       expect(queryByTestId('tree-view-item-2-label')).toBeNull();
+
+      const input = screen.getByTestId('tree-search-input');
+      expect(input).not.toBeNull();
+
+      fireEvent.change(input, { target: { value: '' } });
+    });
+  });
+
+  test('should select all children on click', async () => {
+    const onItemsSelected = jest.fn();
+
+    const theseItems = [...items];
+    theseItems.forEach((item) => {
+      item.isExpanded = true;
+      item.isHidden = false;
+    });
+
+    render(<Tree items={theseItems} expandAll selectable onItemsSelected={onItemsSelected} />);
+
+    const selectAllChildren = await waitFor(() => screen.getByTestId('chkSelectAllChildren_2'));
+
+    await waitFor(async () => {
+      fireEvent.click(selectAllChildren);
+    });
+
+    await waitFor(async () => {
+      const response = onItemsSelected.mock.lastCall[0];
+      expect(response.length).toEqual(3);
     });
   });
 });

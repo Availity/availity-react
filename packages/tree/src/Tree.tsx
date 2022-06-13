@@ -10,7 +10,7 @@ const EXPAND_ALL = 'Expand All';
 const COLLAPSE_ALL = 'Collapse All';
 
 const areAllChildrenSelected = (item: TreeItem) =>
-  (item.isSelected && item.children?.every((child) => child.isSelected)) || false;
+  (item.isSelected && item.children?.every((child) => !child.isDisabled ? child.isSelected : true)) || false;
 
 export type TreeProps = {
   searchLabel?: string;
@@ -141,20 +141,6 @@ const Tree = ({
     }
   }, [selectedItems, walkTree, treeItems]);
 
-  const findItem = (items: TreeItem[], id: string): TreeItem | null => {
-    const item = items.find((item) => item.id === id);
-    if (item) {
-      return item;
-    }
-
-    for (const item of items) {
-      if (item.children) {
-        return findItem(item.children, id);
-      }
-    }
-    return null;
-  };
-
   const filterItems = (items: TreeItem[], searchTerm: string) => {
     const searchValue = searchTerm.toUpperCase();
     const rootItems = items.filter((item) => item.name.toUpperCase().includes(searchValue));
@@ -256,6 +242,9 @@ const Tree = ({
 
     for (const child of item.children || []) {
       walkTree(child, (child) => {
+        if (child.isDisabled) {
+          return;
+        }
         child.isSelected = isSelected;
         child.areAllChildrenSelected = isSelected;
       });
@@ -337,6 +326,7 @@ const Tree = ({
                         )}
                         {selectable && (<FormGroup check>
                           <Input
+                            data-testid={`chkSelectAllChildren_${item.id}`}
                             id={`chkSelectAllChildren_${item.id}`}
                             type="checkbox"
                             checked={item.areAllChildrenSelected}
