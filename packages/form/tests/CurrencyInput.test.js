@@ -79,6 +79,32 @@ describe('CurrencyInput', () => {
     });
   });
 
+  test('should format decimals on blur', async () => {
+    const { container } = render(
+      <Form
+        onSubmit={() => {
+          console.log('submitted');
+        }}
+        initialValues={{}}
+      >
+        <>
+          <CurrencyInput name="paidAmount" value="1" />
+          <Button type="submit">Submit</Button>
+        </>
+      </Form>
+    );
+
+    const currencyInput = container.querySelector('input');
+
+    fireEvent.focus(currencyInput);
+
+    expect(currencyInput.value).toEqual('1');
+
+    fireEvent.blur(currencyInput);
+
+    expect(currencyInput.value).toEqual('$1.11');
+  });
+
   test('should use id when passed in', () => {
     const { container } = render(
       <Form
