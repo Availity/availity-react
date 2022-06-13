@@ -2,6 +2,7 @@ import React from 'react';
 import ReactCurrencyInput from 'react-currency-input-field';
 import classnames from 'classnames';
 import { useField, useFormikContext } from 'formik';
+import Feedback from './Feedback';
 
 type Props = {
   id?: string;
@@ -70,7 +71,7 @@ const CurrencyInput = ({ id, name, value, placeholder, disabled, onValueChanged 
         }}
         onValueChange={onValueChanged}
       />
-      {metadata.error && <span className="invalid-feedback">{metadata.error}</span>}
+      <Feedback name={name} />
     </>
   );
 };
