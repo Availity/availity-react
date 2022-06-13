@@ -58,15 +58,15 @@ const DateRange = ({
   onPickerFocusChange,
   innerRef,
   className,
-  format,
+  format = isoDateFormat,
   ariaDescribedBy,
   datepickerProps,
   'data-testid': dataTestId,
   autoSync,
   ranges: propsRanges,
   customArrowIcon,
-  openDirection,
-  allowInvalidDates,
+  openDirection = 'down',
+  allowInvalidDates = false,
   ...attributes
 }) => {
   const { setFieldValue, setFieldTouched, validateField } = useFormikContext();
@@ -337,12 +337,6 @@ DateRange.propTypes = {
   customArrowIcon: PropTypes.oneOfType([PropTypes.string, PropTypes.node]),
   openDirection: PropTypes.string,
   allowInvalidDates: PropTypes.bool,
-};
-
-DateRange.defaultProps = {
-  format: isoDateFormat,
-  openDirection: 'down',
-  allowInvalidDates: false,
 };
 
 export default DateRange;
