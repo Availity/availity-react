@@ -98,11 +98,13 @@ describe('CurrencyInput', () => {
 
     fireEvent.focus(currencyInput);
 
-    expect(currencyInput.value).toEqual('1');
+    expect(currencyInput.value).toEqual('$1');
 
     fireEvent.blur(currencyInput);
 
-    expect(currencyInput.value).toEqual('$1.11');
+    setTimeout(() => {
+      expect(currencyInput.value).toEqual('$1.00');
+    });
   });
 
   test('should use id when passed in', () => {
