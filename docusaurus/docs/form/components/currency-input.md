@@ -22,7 +22,7 @@ const MyComponent = () => {
         onValueChanged={async (value) => {
             setMyValue(value);
         }}
-    />;
+    />
     )
 }
 
