@@ -27,19 +27,21 @@ export type TreeProps = {
 
 export const buildTree = (items: TreeItem[]) => {
   const tree: TreeItem[] = [];
-  const hash: Record<string, TreeItem> = {};
+  const parents: Map<string, TreeItem> = new Map<string, TreeItem>();
 
   for (const item of items) {
-    hash[item.id] = item;
-    hash[item.id].children = [];
+    item.children =[];
+    parents.set(item.id, item);
   }
 
-  for (const id in hash) {
-    const item = hash[id];
-    if (item.parentId) {
-      hash[item.parentId]?.children?.push(item);
+  for (let [key, value] of parents) {
+    if (value.parentId && parents.get(value.parentId)) {
+      const parent = parents.get(value.parentId);
+      if (parent) {
+        parent.children?.push(value);
+      }
     } else {
-      tree.push(item);
+      tree.push(value);
     }
   }
   return tree;

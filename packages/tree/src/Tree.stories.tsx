@@ -1,7 +1,7 @@
-import { useCallback, useState } from 'react';
+import { useCallback, useEffect, useState } from 'react';
 import { Meta, Story } from '@storybook/react';
 
-import Tree from '.';
+import Tree, { buildTree } from '.';
 
 import '../styles.scss';
 import TreeItem from './TreeItem';
@@ -14,47 +14,49 @@ export const Default: Story = ({ enableSearch, searchLabel, expandAll, selectabl
   const [selectedItems] = useState<TreeItem[]>([]);
   const [newSelectedList, setNewSelectedList] = useState<TreeItem[]>([]);
 
-  const [items] = useState<TreeItem[]>([
+  const flatTreeItems: TreeItem[] = [
     {
       id: '1',
       name: 'Parent',
-      children: [
-        {
-          id: '2',
-          name: 'Second Level Parent',
-          children: [
-            {
-              id: '3',
-              name: 'Child Test 1',
-              isDisabled: true,
-            },
-            {
-              id: '4',
-
-              name: 'Child Test 2',
-              children: [
-                {
-                  id: '5',
-
-                  name: 'Child Test 3',
-                },
-              ],
-            },
-          ],
-        },
-        {
-          id: '7',
-          name: 'Second Level Parent 2',
-          children: [
-            {
-              id: '6',
-              name: 'Child Test 4',
-            },
-          ],
-        },
-      ],
     },
-  ]);
+    {
+      id: '2',
+      name: 'Second Level Parent',
+      parentId: '1',
+    },
+    {
+      id: '3',
+      name: 'Child Test 1',
+      isDisabled: true,
+      parentId: '2',
+    },
+    {
+      id: '4',
+      name: 'Child Test 2',
+      parentId: '2',
+    },
+    {
+      id: '5',
+      name: 'Child Test 3',
+      parentId: '4',
+    },
+    {
+      id: '7',
+      name: 'Child Test 3',
+      parentId: '1',
+    },
+    {
+      id: '6',
+      name: 'Child Test 4',
+      parentId: '7',
+    },
+  ];
+
+  const [items] = useState(buildTree(flatTreeItems));
+
+  useEffect(() => {
+    console.log('items', items);
+  }, [items])
 
   const onItemsSelected = useCallback((selected: TreeItem[]): void => {
     setNewSelectedList(selected);
