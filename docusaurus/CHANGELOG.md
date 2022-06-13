@@ -2,6 +2,15 @@
 
 This file was generated using [@jscutlery/semver](https://github.com/jscutlery/semver).
 
+## [1.0.3](https://github.com/Availity/availity-react/compare/@availity/docusaurus@1.0.2...@availity/docusaurus@1.0.3) (2022-06-13)
+
+
+### Bug Fixes
+
+* **date:** remove css from bundle as it was only producing an error ([d7f8660](https://github.com/Availity/availity-react/commit/d7f86600eb68f774e18cc5379d3d458ca4252564))
+
+
+
 ## [1.0.2](https://github.com/Availity/availity-react/compare/@availity/docusaurus@1.0.1...@availity/docusaurus@1.0.2) (2022-06-10)
 
 
