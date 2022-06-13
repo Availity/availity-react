@@ -2,6 +2,19 @@
 
 This file was generated using [@jscutlery/semver](https://github.com/jscutlery/semver).
 
+## [4.0.3](https://github.com/Availity/availity-react/compare/@availity/date@4.0.2...@availity/date@4.0.3) (2022-06-13)
+
+
+### Bug Fixes
+
+* **date:** remove css from bundle as it was only producing an error ([d7f8660](https://github.com/Availity/availity-react/commit/d7f86600eb68f774e18cc5379d3d458ca4252564))
+
+
+
+## [4.0.2](https://github.com/Availity/availity-react/compare/@availity/date@4.0.1...@availity/date@4.0.2) (2022-06-10)
+
+
+
 ## [4.0.1](https://github.com/Availity/availity-react/compare/@availity/date@4.0.0...@availity/date@4.0.1) (2022-05-26)
 
 

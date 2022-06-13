@@ -8,7 +8,6 @@ import { InputGroup, Input, Row, Col } from 'reactstrap';
 import moment from 'moment';
 
 import '../polyfills';
-import '../styles.scss';
 
 import { isOutsideRange, limitPropType, buildYearPickerOptions } from './utils';
 
@@ -26,11 +25,11 @@ const AvDate = ({
   onPickerFocusChange,
   min,
   max,
-  format,
+  format = 'MM/DD/YYYY',
   validate,
   datePickerProps,
   'data-testid': dataTestId,
-  openDirection,
+  openDirection = 'down',
   ...attributes
 }) => {
   const { setFieldValue, setFieldTouched, validateField } = useFormikContext();
@@ -201,11 +200,6 @@ AvDate.propTypes = {
   validate: PropTypes.func,
   datePickerProps: PropTypes.object,
   openDirection: PropTypes.string,
-};
-
-AvDate.defaultProps = {
-  format: 'MM/DD/YYYY',
-  openDirection: 'down',
 };
 
 export default AvDate;
