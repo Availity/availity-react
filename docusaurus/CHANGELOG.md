@@ -2,6 +2,15 @@
 
 This file was generated using [@jscutlery/semver](https://github.com/jscutlery/semver).
 
+# [1.2.0](https://github.com/Availity/availity-react/compare/@availity/docusaurus@1.1.0...@availity/docusaurus@1.2.0) (2022-06-14)
+
+
+### Features
+
+* **tree:** add tree component ([f952b85](https://github.com/Availity/availity-react/commit/f952b8580b798c836fc6e8d91b54f9dc29bc2a55))
+
+
+
 # [1.1.0](https://github.com/Availity/availity-react/compare/@availity/docusaurus@1.0.3...@availity/docusaurus@1.1.0) (2022-06-14)
 
 
