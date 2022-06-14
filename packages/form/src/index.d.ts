@@ -8,3 +8,4 @@ export { default as RadioGroup } from './RadioGroup';
 export { default as Radio } from './Radio';
 export { default as Feedback } from './Feedback';
 export { default as Label, LabelProps, RequiredAsterisk, RequiredKey } from './Label';
+export { default as CurrencyInput } from './CurrencyInput';

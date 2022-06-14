@@ -15,7 +15,7 @@ type Props = {
 
 const CurrencyInput = ({ id, name, value, placeholder, disabled, onValueChanged }: Props) => {
   const { setFieldValue, setFieldTouched } = useFormikContext();
-  const [{}, metadata] = useField({
+  const [, metadata] = useField({
     name,
   });
 
@@ -29,8 +29,9 @@ const CurrencyInput = ({ id, name, value, placeholder, disabled, onValueChanged 
   const formatDecimals = async (value: string | undefined): Promise<void> => {
     setFieldTouched(name, true);
     if (value === '') {
+      // eslint-disable-next-line unicorn/no-useless-undefined
       setFieldValue(name, undefined);
-      if(onValueChanged) {
+      if (onValueChanged) {
         // eslint-disable-next-line unicorn/no-useless-undefined
         onValueChanged(undefined);
       }
@@ -49,7 +50,7 @@ const CurrencyInput = ({ id, name, value, placeholder, disabled, onValueChanged 
     const decimalValue = number.toLocaleString(undefined, options).replace(/,/g, '');
     setFieldValue(name, decimalValue);
 
-    if(onValueChanged) {
+    if (onValueChanged) {
       onValueChanged(decimalValue);
     }
   };
@@ -75,4 +76,5 @@ const CurrencyInput = ({ id, name, value, placeholder, disabled, onValueChanged 
     </>
   );
 };
+
 export default CurrencyInput;

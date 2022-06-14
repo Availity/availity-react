@@ -8,12 +8,21 @@ import { Phone } from '@availity/phone';
 import { DateField } from '@availity/date';
 import { SelectField } from '@availity/select';
 
-import { Field, Input, Checkbox, CheckboxGroup, Label, RadioGroup, Radio, FormGroup, RequiredKey } from '.';
+import {
+  Field,
+  Input,
+  CurrencyInput,
+  Checkbox,
+  CheckboxGroup,
+  Label,
+  RadioGroup,
+  Radio,
+  FormGroup,
+  RequiredKey,
+} from '.';
 // import README from '../form/README.md';
 
 import FormResults from '../../../story-utils/FormikResults';
-import CurrencyInput from './CurrencyInput';
-import { FormikProps } from 'formik';
 
 export default {
   title: 'Form Components/Form',
@@ -275,13 +284,8 @@ _Radio.args = {
 };
 _Radio.storyName = 'Radio';
 
-export const _CurrencyInput: Story = ({ value }) => {
+export const _CurrencyInput: Story<{ value: string | undefined }> = ({ value }) => {
   const [newValue, setNewValue] = useState(value);
-
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  const onChange = (value: any) => {
-    setNewValue(value);
-  };
 
   return (
     <FormResults
@@ -299,7 +303,9 @@ export const _CurrencyInput: Story = ({ value }) => {
         name="paidAmount"
         value={newValue}
         id="paidAmount"
-        onValueChanged={onChange}
+        onValueChanged={(value) => {
+          setNewValue(value);
+        }}
       />
     </FormResults>
   );
