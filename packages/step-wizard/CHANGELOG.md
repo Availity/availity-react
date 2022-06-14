@@ -2,6 +2,15 @@
 
 This file was generated using [@jscutlery/semver](https://github.com/jscutlery/semver).
 
+# [1.5.0](https://github.com/Availity/availity-react/compare/@availity/step-wizard@1.4.4...@availity/step-wizard@1.5.0) (2022-06-14)
+
+
+### Features
+
+* **form:** add currency input ([fa9eea6](https://github.com/Availity/availity-react/commit/fa9eea6a3b3dd2ef741a0658c102e36c6db5288c))
+
+
+
 ## [1.4.4](https://github.com/Availity/availity-react/compare/@availity/step-wizard@1.4.3...@availity/step-wizard@1.4.4) (2022-06-10)
 
 
