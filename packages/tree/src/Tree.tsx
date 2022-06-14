@@ -172,7 +172,6 @@ const Tree = ({
         setSelectedList(selectedList.filter((item) => item.id !== itemToUpdate.id));
       }
     }
-    setTreeItems([...treeItems]);
   };
 
   const toggleExpand = (item: TreeItem) => {
