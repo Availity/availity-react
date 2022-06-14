@@ -2,6 +2,17 @@
 
 This file was generated using [@jscutlery/semver](https://github.com/jscutlery/semver).
 
+# [1.5.0](https://github.com/Availity/availity-react/compare/@availity/form@1.4.1...@availity/form@1.5.0) (2022-06-14)
+
+
+### Features
+
+* **form:** add currency input ([c703d1f](https://github.com/Availity/availity-react/commit/c703d1f748a1806f69bb8f4e964dddf3c430d395))
+* **form:** add currency input ([ef26faf](https://github.com/Availity/availity-react/commit/ef26faf9fb5aedbe54f08af4d989997595c48b0c))
+* **form:** add currency input ([6a4828a](https://github.com/Availity/availity-react/commit/6a4828acc9883cbede447c0c65a63077c16160a0))
+* **form:** add currency input ([fa9eea6](https://github.com/Availity/availity-react/commit/fa9eea6a3b3dd2ef741a0658c102e36c6db5288c))
+* **form:** add currency input ([5e085db](https://github.com/Availity/availity-react/commit/5e085db75537f78dbdc4136794aec5bfc3587ed9))
+
 
 
 # [1.4.0](https://github.com/Availity/availity-react/compare/@availity/form@1.3.1...@availity/form@1.4.0) (2022-05-24)
