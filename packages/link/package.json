@@ -1,6 +1,6 @@
 {
   "name": "@availity/link",
-  "version": "2.5.0",
+  "version": "2.5.1",
   "description": "React component that renders an a tag with the `href` formatted to leverage loadApp",
   "keywords": [
     "react",
