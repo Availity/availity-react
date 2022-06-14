@@ -526,6 +526,7 @@ __metadata:
     formik: ^2.2.9
     prop-types: ^15.8.1
     react: ^17.0.2
+    react-currency-input-field: ^3.6.0
     react-dom: ^17.0.2
     reactstrap: ^8.10.1
     tsup: ^5.12.7
@@ -22031,6 +22032,15 @@ __metadata:
     react: ^0.14.9 || ^15.3.0 || ^16.0.0
     react-dom: ^0.14.9 || ^15.3.0 || ^16.0.0
   checksum: b9d00a9e7e8f27d7a0f58dd7ac879cbfa5d7b445145a5496f41fd7df7ddd7b1c8b5627104a14c89e7e8522534b0594f588507a54351043544469169220fc5fed
+  languageName: node
+  linkType: hard
+
+"react-currency-input-field@npm:^3.6.0":
+  version: 3.6.4
+  resolution: "react-currency-input-field@npm:3.6.4"
+  peerDependencies:
+    react: ^16.9.0 || ^17.0.0
+  checksum: 48d72c9f5c6ee1ceb4fe489fefbb276b8f375535c707c282ab2c261bb951274aaa69a09dbb7611b5dceb0e5153f62f9ed7e1480418da8658151e8e37a50ded09
   languageName: node
   linkType: hard
 
