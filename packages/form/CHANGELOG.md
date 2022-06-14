@@ -2,6 +2,16 @@
 
 This file was generated using [@jscutlery/semver](https://github.com/jscutlery/semver).
 
+## [1.5.1](https://github.com/Availity/availity-react/compare/@availity/form@1.5.0...@availity/form@1.5.1) (2022-06-14)
+
+
+### Bug Fixes
+
+* **form:** export CurrencyInput type ([2ca22fe](https://github.com/Availity/availity-react/commit/2ca22fe6d75ab87b0af5fd882f3c7b8911fed9de))
+* **form:** specify outDir ([a3de3a0](https://github.com/Availity/availity-react/commit/a3de3a02908fd09da97aefbce5266159b785bf42))
+
+
+
 # [1.5.0](https://github.com/Availity/availity-react/compare/@availity/form@1.4.1...@availity/form@1.5.0) (2022-06-14)
 
 
