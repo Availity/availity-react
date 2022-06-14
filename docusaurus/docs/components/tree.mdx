@@ -1,0 +1,101 @@
+---
+title: Tree
+---
+
+[![Version](https://img.shields.io/npm/v/@availity/tree.svg?style=for-the-badge)](https://www.npmjs.com/package/@availity/tree)
+
+This component builds out a hierarchical tree of objects, with the ability to expand/collapse, select, and search.
+
+### Installation
+
+npm
+
+```bash
+npm install @availity/tree
+```
+
+Yarn
+
+```bash
+yarn add @availity/tree
+```
+
+### Usage
+
+#### Example
+
+```jsx
+import React from 'react';
+import Tree, { TreeItem } from '@availity/tree';
+
+const Example = () => (
+  const [valueList, setValueList] = useState<TreeItem[]>([]);
+  const [tree, setTree] = useState<TreeItem[]>([]);
+
+  const onSelected = (selectedItems: TreeItem[]) => {
+    setTentativeSelectList(selectedItems.map((item) => ({ code: item.id, value: item.name })));
+  };
+
+   return (
+        <>
+            <Tree
+                items={tree}
+                expandAll
+                enableSearch
+                searchLabel={treeLabel}
+                selectedItems={valueList}
+                onItemsSelected={onSelected}
+            />
+        </>
+    );
+);
+```
+
+#### Storybook
+
+Checkout the [Storybook](https://availity.github.io/availity-react/storybook/?path=/story/components-tree--default) for interactive examples
+
+### Props
+
+#### `items: TreeItem[]`
+Required. The list of items to display in the tree.
+
+####  `enableSearch?: boolean`
+Defaults to false. When enabled, there is a search input box that will display and allow for the user to limit the items in the tree based on the typed search value.
+
+####  `searchLabel?: string`
+The label that displays above the text box.
+
+####  `expandAll?: boolean`
+Defaults to false. When true, the tree view will be entirely expanded on initial load. 
+
+####  `onItemsSelected?: (selectedIds: AvTreeItem[]) => void`
+Whenever an item is selected in the tree, it fires this event to let the parent know of the items that are selected.
+
+### Functions
+
+####  buildTree
+Whenever the items are in a flat array, call this method to build the hierarchical list that is ready for the tree.
+
+
+### Types
+
+#### TreeItem
+
+##### `id: string`
+
+##### `parentId: string`
+
+##### `isExpanded: boolean`
+
+##### `isSelected: boolean`
+
+##### `isHidden: boolean`
+
+##### `isDisabled: boolean`
+
+##### `name: string`
+
+##### `children: TreeItem[]`
+
+##### `areAllChildrenSelected: boolean`

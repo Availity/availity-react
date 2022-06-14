@@ -147,6 +147,7 @@ module.exports = {
             ],
           },
           'components/training-link',
+          'components/tree',
           {
             type: 'category',
             label: 'Typography',
