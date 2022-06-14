@@ -2,6 +2,15 @@
 
 This file was generated using [@jscutlery/semver](https://github.com/jscutlery/semver).
 
+# [7.1.0](https://github.com/Availity/availity-react/compare/@availity/feedback@7.0.2...@availity/feedback@7.1.0) (2022-06-14)
+
+
+### Features
+
+* **form:** add currency input ([fa9eea6](https://github.com/Availity/availity-react/commit/fa9eea6a3b3dd2ef741a0658c102e36c6db5288c))
+
+
+
 ## [7.0.2](https://github.com/Availity/availity-react/compare/@availity/feedback@7.0.1...@availity/feedback@7.0.2) (2022-06-10)
 
 
