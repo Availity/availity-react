@@ -25,6 +25,10 @@ function getReport() {
 
   // Write the merged report to file
   fs.writeFile(path.resolve('./coverage/coverage-final.json'), JSON.stringify(mergedReport), (err) => {
-    if (err) throw err;
+    if (err) {
+      // If we can't find the file, assume no tests ran
+      if (err.code === 'ENOENT') return;
+      throw err;
+    }
   });
 })();
