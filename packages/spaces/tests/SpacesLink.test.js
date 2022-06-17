@@ -190,6 +190,7 @@ describe('SpacesLink', () => {
     expect(link4_appIcon.tagName).toBe('I');
     expect(link4_appIcon.className).toBe('icon icon-desktop');
   });
+
   it('renders link card from space with icon and shortname', async () => {
     const space = {
       id: 'encoded5',
@@ -399,5 +400,66 @@ describe('SpacesLink', () => {
 
     expect(link10_child.tagName).toBe('SPAN');
     expect(link10_child.textContent).toBe('A navigation');
+  });
+
+  it('renders title with link role when url is provided', async () => {
+    const space = {
+      id: 'encoded11',
+      configurationId: '11',
+      type: 'APPLICATION',
+      name: 'application with link',
+      description: 'This is a application',
+      link: {
+        url: '/path/to/url',
+        text: 'title',
+        target: '_self',
+      },
+    };
+    const { container } = render(
+      <SpacesLink
+        id="application-link-11"
+        space={space}
+        linkAttributes={{
+          spaceId: '11',
+        }}
+        role="listitem"
+        clientId="my-client-id"
+        title={space.link.text}
+      />
+    );
+
+    const link11_title = await waitFor(() => container.querySelector('#app-title-11'));
+
+    expect(link11_title.getAttribute('role')).toBe('link');
+  });
+
+  it('renders title without link role when no url is provided', async () => {
+    const space = {
+      id: 'encoded12',
+      configurationId: '12',
+      type: 'APPLICATION',
+      name: 'no link application',
+      description: 'This is a application',
+      link: {
+        text: 'title',
+        target: '_self',
+      },
+    };
+    const { container } = render(
+      <SpacesLink
+        id="application-link-12"
+        space={space}
+        linkAttributes={{
+          spaceId: '12',
+        }}
+        role="listitem"
+        clientId="my-client-id"
+        title={space.link.text}
+      />
+    );
+
+    const link12_title = await waitFor(() => container.querySelector('#app-title-12'));
+
+    expect(link12_title.getAttribute('role')).toBe('listitem');
   });
 });

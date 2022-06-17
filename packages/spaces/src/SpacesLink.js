@@ -241,6 +241,7 @@ const Link = ({
                   }}
                   {...analytics}
                   {...props}
+                  role={link?.url ? 'link' : role}
                   aria-label={name}
                   aria-describedby={`app-new-badge-${configurationId}`}
                 >
