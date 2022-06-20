@@ -33,7 +33,7 @@
   "devDependencies": {
     "@availity/api-axios": "^7.0.1",
     "@availity/form": "workspace:*",
-    "@availity/upload-core": "^5.0.1",
+    "@availity/upload-core": "^5.0.3",
     "@types/uuid": "^8.3.4",
     "formik": "^2.2.9",
     "nock": "^13.2.4",
