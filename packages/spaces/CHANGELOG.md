@@ -2,6 +2,15 @@
 
 This file was generated using [@jscutlery/semver](https://github.com/jscutlery/semver).
 
+## [6.1.2](https://github.com/Availity/availity-react/compare/@availity/spaces@6.1.1...@availity/spaces@6.1.2) (2022-06-21)
+
+
+### Bug Fixes
+
+* **spaces:** remove link role when no url is provided PF-3073 ([608b014](https://github.com/Availity/availity-react/commit/608b014bfa89fa69c853572b8178e9d88e74b010))
+
+
+
 ## [6.1.1](https://github.com/Availity/availity-react/compare/@availity/spaces@6.1.0...@availity/spaces@6.1.1) (2022-06-14)
 
 
