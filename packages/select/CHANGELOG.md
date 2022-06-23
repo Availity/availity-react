@@ -2,6 +2,15 @@
 
 This file was generated using [@jscutlery/semver](https://github.com/jscutlery/semver).
 
+## [3.1.2](https://github.com/Availity/availity-react/compare/@availity/select@3.1.1...@availity/select@3.1.2) (2022-06-23)
+
+
+### Bug Fixes
+
+* **select:** display selected option when raw is false ([3095ada](https://github.com/Availity/availity-react/commit/3095ada5e85b91f55a2c039722e872a7dcbdc777))
+
+
+
 ## [3.1.1](https://github.com/Availity/availity-react/compare/@availity/select@3.1.0...@availity/select@3.1.1) (2022-06-14)
 
 
