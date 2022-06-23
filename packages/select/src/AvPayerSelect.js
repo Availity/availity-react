@@ -16,6 +16,7 @@ const AvPayerSelect = ({ name, customerId, ...props }) => (
   <ResourceSelect
     name={name}
     labelKey="payerName"
+    valueKey="payerId"
     resource={extendedPayersApi}
     pageAll
     customerId={customerId}
