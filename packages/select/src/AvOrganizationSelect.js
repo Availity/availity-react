@@ -7,6 +7,7 @@ import ResourceSelect from './ResourceSelect';
 const OrganizationSelect = ResourceSelect.create({
   resource: avOrganizationsApi,
   labelKey: 'name',
+  valueKey: 'id',
 });
 
 const AvOrganizationSelect = ({ name, resourceIds, permissionIds, ...props }) => (

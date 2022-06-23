@@ -108,6 +108,7 @@ const Select = ({
     _cacheUniq = [_cacheUniq];
   }
 
+  // Enhance placeholder for accessibility
   placeholder = (
     <>
       {placeholder || 'Select...'}
@@ -117,6 +118,10 @@ const Select = ({
     </>
   );
 
+  /**
+   * Get the path to the label from the option. Uses the `labelKey` prop.
+   * Default to the `label` property on the option
+   */
   const getOptionLabel = (option) => {
     if (option.__isNew__) {
       return option.label;
@@ -125,8 +130,15 @@ const Select = ({
     return option[get(attributes, 'labelKey', 'label')];
   };
 
+  /**
+   * Get the path to the value from the option. Uses the `valueKey` prop.
+   * Default to the `value` property on the option
+   */
   const getValueKey = (attrs = attributes) => get(attrs, 'valueKey', 'value');
 
+  /**
+   * Get the actual value for the option.
+   */
   const getOptionValue = (option) =>
     attributes.raw && !attributes.valueKey ? option : get(option, getValueKey(attributes), option);
 
@@ -142,7 +154,13 @@ const Select = ({
     return get(value, valueKey, value);
   };
 
+  /**
+   * Find the actual option in the list when the set value
+   * is a string or number
+   */
   const findOptionFromValue = (value, options) => {
+    // selectRef.current.commonProps has the options returned by loadOptions function
+    options = options || selectRef?.current?.commonProps.options;
     if (Array.isArray(options)) {
       const flattened = [...options, ...newOptions].reduce((prev, current) => {
         if (current.type === 'group') {
@@ -156,8 +174,21 @@ const Select = ({
     return null;
   };
 
+  /**
+   * Get the value that will be used by the dropdown.
+   */
   const getViewValue = () => {
-    if (attributes.raw || attributes.loadOptions || !options) return fieldValue;
+    // Return entire object when:
+    // 1) raw prop is set
+    // 2) loadOptions is set and labelKey and getOptionLabel are not given
+    // 3) loadOptions is not set and no options are available
+    if (
+      attributes.raw ||
+      (attributes.loadOptions && !attributes.labelKey && !attributes.getOptionLabel) ||
+      (!attributes.loadOptions && !options)
+    ) {
+      return fieldValue;
+    }
     if (attributes.isMulti && Array.isArray(fieldValue)) {
       return fieldValue.map((value) => findOptionFromValue(value, options) || value);
     }

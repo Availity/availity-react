@@ -60,6 +60,7 @@ export const Default: Story = ({ creatable, disabled, helpMessage, isMulti, labe
           isMulti={isMulti}
           label={label}
           labelKey="name"
+          valueKey="value"
           maxLength={max}
           raw={raw}
           required={required}

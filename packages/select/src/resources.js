@@ -28,6 +28,7 @@ const AvPermissionSelect = ResourceSelect.create({
 const AvProviderSelect = ResourceSelect.create({
   resource: avProvidersApi,
   labelKey: 'uiDisplayName',
+  valueKey: 'npi',
   requiredParams: ['customerId'],
   watchParams: ['customerId'],
 });
@@ -35,6 +36,7 @@ const AvProviderSelect = ResourceSelect.create({
 const AvUserSelect = ResourceSelect.create({
   resource: avUserApi,
   getOptionLabel: (option) => `${option.firstName} ${option.lastName} (${option.id}) - ${option.userId}`,
+  valueKey: 'userId',
 });
 
 export {

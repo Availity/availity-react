@@ -853,6 +853,8 @@ describe('Select', () => {
     fireEvent.keyDown(select, { key: 'ArrowDown', keyCode: 40 });
     fireEvent.keyDown(select, { key: 'Enter', keyCode: 13 });
 
-    expect(getByText('Foo')).toBeDefined();
+    await waitFor(() => {
+      expect(getByText('Foo')).toBeDefined();
+    });
   });
 });

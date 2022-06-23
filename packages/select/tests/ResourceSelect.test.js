@@ -291,9 +291,48 @@ describe('ResourceSelect', () => {
     });
   });
 
-  describe('defaultToOnlyOption', () => {
-    it('defaults to only option', async () => {
-      avRegionsApi.postGet.mockResolvedValue({
+  it('defaults to only option', async () => {
+    avRegionsApi.postGet.mockResolvedValue({
+      data: {
+        regions: [
+          {
+            id: 'FL',
+            value: 'Florida',
+          },
+        ],
+      },
+    });
+
+    const { getByText } = renderSelect({
+      resource: avRegionsApi,
+      labelKey: 'value',
+      valueKey: 'id',
+      classNamePrefix: 'test__regions',
+      getResult: 'regions',
+      defaultToOnlyOption: true,
+    });
+
+    await waitFor(() => {
+      expect(avRegionsApi.postGet).toHaveBeenCalled();
+    });
+
+    fireEvent.click(getByText('Submit'));
+    await waitFor(() => {
+      expect(onSubmit).toHaveBeenCalledWith(
+        expect.objectContaining({
+          'test-form-input': {
+            id: 'FL',
+            value: 'Florida',
+          },
+        }),
+        expect.anything()
+      );
+    });
+  });
+
+  it('defaults to only option when cacheUniq changes', async () => {
+    avRegionsApi.postGet
+      .mockResolvedValueOnce({
         data: {
           regions: [
             {
@@ -302,106 +341,10 @@ describe('ResourceSelect', () => {
             },
           ],
         },
-      });
-
-      const { getByText } = renderSelect({
-        resource: avRegionsApi,
-        labelKey: 'value',
-        valueKey: 'id',
-        classNamePrefix: 'test__regions',
-        getResult: 'regions',
-        defaultToOnlyOption: true,
-      });
-
-      await waitFor(() => {
-        expect(avRegionsApi.postGet).toHaveBeenCalled();
-      });
-
-      fireEvent.click(getByText('Submit'));
-      await waitFor(() => {
-        expect(onSubmit).toHaveBeenCalledWith(
-          expect.objectContaining({
-            'test-form-input': {
-              id: 'FL',
-              value: 'Florida',
-            },
-          }),
-          expect.anything()
-        );
-      });
-    });
-
-    it('defaults to only option when cacheUniq changes', async () => {
-      avRegionsApi.postGet
-        .mockResolvedValueOnce({
-          data: {
-            regions: [
-              {
-                id: 'FL',
-                value: 'Florida',
-              },
-            ],
-          },
-        })
-        .mockResolvedValue({
-          data: {
-            regions: [
-              {
-                id: 'AL',
-                value: 'Alabama',
-              },
-            ],
-          },
-        });
-
-      const { getByTestId, getByText } = renderSelect({
-        resource: avRegionsApi,
-        labelKey: 'value',
-        valueKey: 'id',
-        classNamePrefix: 'test__regions',
-        getResult: 'regions',
-        defaultToOnlyOption: true,
-      });
-
-      await waitFor(() => {
-        expect(avRegionsApi.postGet).toHaveBeenCalledTimes(1);
-      });
-
-      fireEvent.click(getByText('Submit'));
-      await waitFor(() => {
-        const testFormInput = onSubmit.mock.calls[0][0]['test-form-input'];
-        expect(testFormInput).toEqual({
-          id: 'FL',
-          value: 'Florida',
-        });
-      });
-
-      // Change what cache uniq is
-      fireEvent.click(getByTestId('btn-toggle-cacheUniq'));
-
-      await waitFor(() => {
-        expect(avRegionsApi.postGet).toHaveBeenCalledTimes(2);
-      });
-
-      fireEvent.click(getByText('Submit'));
-
-      await waitFor(() => {
-        const testFormInput = onSubmit.mock.calls[1][0]['test-form-input'];
-        expect(testFormInput).toEqual({
-          id: 'AL',
-          value: 'Alabama',
-        });
-      });
-    });
-
-    it('does not default to only option when more than one option', async () => {
-      avRegionsApi.postGet.mockResolvedValue({
+      })
+      .mockResolvedValue({
         data: {
           regions: [
-            {
-              id: 'FL',
-              value: 'Florida',
-            },
             {
               id: 'AL',
               value: 'Alabama',
@@ -410,73 +353,126 @@ describe('ResourceSelect', () => {
         },
       });
 
-      const { getByText } = renderSelect({
-        resource: avRegionsApi,
-        labelKey: 'value',
-        valueKey: 'id',
-        classNamePrefix: 'test__regions',
-        getResult: 'regions',
-        defaultToOnlyOption: true,
-      });
+    const { getByTestId, getByText } = renderSelect({
+      resource: avRegionsApi,
+      labelKey: 'value',
+      valueKey: 'id',
+      classNamePrefix: 'test__regions',
+      getResult: 'regions',
+      defaultToOnlyOption: true,
+    });
 
-      await waitFor(() => {
-        expect(avRegionsApi.postGet).toHaveBeenCalled();
-      });
+    await waitFor(() => {
+      expect(avRegionsApi.postGet).toHaveBeenCalledTimes(1);
+    });
 
-      fireEvent.click(getByText('Submit'));
-      await waitFor(() => {
-        expect(onSubmit).toHaveBeenCalledWith(
-          expect.objectContaining({
-            'test-form-input': undefined,
-          }),
-          expect.anything()
-        );
+    fireEvent.click(getByText('Submit'));
+    await waitFor(() => {
+      const testFormInput = onSubmit.mock.calls[0][0]['test-form-input'];
+      expect(testFormInput).toEqual({
+        id: 'FL',
+        value: 'Florida',
       });
     });
 
-    describe('defaultToFirstOption', () => {
-      it('defaults to first option', async () => {
-        avRegionsApi.postGet.mockResolvedValue({
-          data: {
-            regions: [
-              {
-                id: 'FL',
-                value: 'Florida',
-              },
-              {
-                id: 'TX',
-                value: 'Texas',
-              },
-            ],
-          },
-        });
+    // Change what cache uniq is
+    fireEvent.click(getByTestId('btn-toggle-cacheUniq'));
 
-        const { getByText } = renderSelect({
-          resource: avRegionsApi,
-          labelKey: 'value',
-          valueKey: 'id',
-          classNamePrefix: 'test__regions',
-          getResult: 'regions',
-          defaultToFirstOption: true,
-        });
+    await waitFor(() => {
+      expect(avRegionsApi.postGet).toHaveBeenCalledTimes(2);
+    });
 
-        await waitFor(() => {
-          expect(avRegionsApi.postGet).toHaveBeenCalled();
-        });
+    fireEvent.click(getByText('Submit'));
 
-        fireEvent.click(getByText('Submit'));
-        await waitFor(() => {
-          expect(onSubmit).toHaveBeenCalledWith(
-            expect.objectContaining({
-              'test-form-input': {
-                id: 'FL',
-                value: 'Florida',
-              },
-            }),
-            expect.anything()
-          );
-        });
+    await waitFor(() => {
+      const testFormInput = onSubmit.mock.calls[1][0]['test-form-input'];
+      expect(testFormInput).toEqual({
+        id: 'AL',
+        value: 'Alabama',
       });
+    });
+  });
+
+  it('defaults to first option', async () => {
+    avRegionsApi.postGet.mockResolvedValue({
+      data: {
+        regions: [
+          {
+            id: 'FL',
+            value: 'Florida',
+          },
+          {
+            id: 'TX',
+            value: 'Texas',
+          },
+        ],
+      },
+    });
+
+    const { getByText } = renderSelect({
+      resource: avRegionsApi,
+      labelKey: 'value',
+      valueKey: 'id',
+      classNamePrefix: 'test__regions',
+      getResult: 'regions',
+      defaultToFirstOption: true,
+    });
+
+    await waitFor(() => {
+      expect(avRegionsApi.postGet).toHaveBeenCalled();
+    });
+
+    fireEvent.click(getByText('Submit'));
+    await waitFor(() => {
+      expect(onSubmit).toHaveBeenCalledWith(
+        expect.objectContaining({
+          'test-form-input': {
+            id: 'FL',
+            value: 'Florida',
+          },
+        }),
+        expect.anything()
+      );
+    });
+  });
+
+  it('does not default to only option when more than one option', async () => {
+    avRegionsApi.postGet.mockResolvedValue({
+      data: {
+        regions: [
+          {
+            id: 'FL',
+            value: 'Florida',
+          },
+          {
+            id: 'AL',
+            value: 'Alabama',
+          },
+        ],
+      },
+    });
+
+    const { getByText } = renderSelect({
+      resource: avRegionsApi,
+      labelKey: 'value',
+      valueKey: 'id',
+      classNamePrefix: 'test__regions',
+      getResult: 'regions',
+      defaultToOnlyOption: true,
+    });
+
+    await waitFor(() => {
+      expect(avRegionsApi.postGet).toHaveBeenCalled();
+    });
+
+    fireEvent.click(getByText('Submit'));
+    await waitFor(() => {
+      expect(onSubmit).toHaveBeenCalledWith(
+        expect.objectContaining({
+          'test-form-input': undefined,
+        }),
+        expect.anything()
+      );
     });
   });
 
@@ -694,11 +690,9 @@ describe('ResourceSelect', () => {
       </Form>
     );
 
-    const regionsSelect = container.querySelector('.test__regions__control');
-
-    fireEvent.focus(regionsSelect);
-    fireEvent.keyDown(regionsSelect, { key: 'ArrowDown', keyCode: 40 });
-    fireEvent.keyDown(regionsSelect, { key: 'Enter', keyCode: 13 });
+    // Click on select component and wait for options to be available
+    const select = container.querySelector('.test__regions__control');
+    fireEvent.keyDown(select, { key: 'ArrowDown', keyCode: 40 });
 
     await waitFor(() => expect(getByText('Florida')).toBeDefined());
 
@@ -748,11 +742,9 @@ describe('ResourceSelect', () => {
       </Form>
     );
 
-    const regionsSelect = container.querySelector('.test__regions__control');
-
-    fireEvent.focus(regionsSelect);
-    fireEvent.keyDown(regionsSelect, { key: 'ArrowDown', keyCode: 40 });
-    fireEvent.keyDown(regionsSelect, { key: 'Enter', keyCode: 13 });
+    // Click on select component and wait for options to be available
+    const select = container.querySelector('.test__regions__control');
+    fireEvent.keyDown(select, { key: 'ArrowDown', keyCode: 40 });
 
     await waitFor(() => expect(getByText('Florida')).toBeDefined());
 
@@ -769,18 +761,76 @@ describe('ResourceSelect', () => {
       classNamePrefix: 'test__value__key',
     });
 
-    // query
+    // Click on the select component
     const select = container.querySelector('.test__value__key__control');
     fireEvent.keyDown(select, { key: 'ArrowDown', keyCode: 40 });
 
+    // Click the option
     const option = await waitFor(() => getByText('test'));
     fireEvent.click(option);
 
+    // Submit the form
     fireEvent.click(getByText('Submit'));
 
     await waitFor(() =>
       expect(onSubmit).toHaveBeenCalledWith(expect.objectContaining({ 'test-form-input': 'value' }), expect.anything())
     );
+  });
+
+  it('applies labelKey when raw is false', async () => {
+    const { container, getByText } = renderSelect({
+      resource: { all: async () => [{ name: 'test', test: 'value' }] },
+      pageAll: true,
+      labelKey: 'name',
+      valueKey: 'test',
+      raw: false,
+      classNamePrefix: 'test__value__key',
+    });
+
+    // Click on the select component
+    const select = container.querySelector('.test__value__key__control');
+    fireEvent.keyDown(select, { key: 'ArrowDown', keyCode: 40 });
+
+    // Click on the option
+    const option = await waitFor(() => getByText('test'));
+    fireEvent.click(option);
+
+    await waitFor(() => expect(getByText('test')).toBeDefined());
+
+    // Submit the form
+    fireEvent.click(getByText('Submit'));
+
+    await waitFor(() => {
+      expect(onSubmit).toHaveBeenCalledWith(expect.objectContaining({ 'test-form-input': 'value' }), expect.anything());
+    });
+  });
+
+  it('applies getOptionLabel when raw is false', async () => {
+    const { container, getByText } = renderSelect({
+      resource: { all: async () => [{ name: 'test', test: 'value' }] },
+      pageAll: true,
+      getOptionLabel: (option) => `${option.name}-${option.test}`,
+      valueKey: 'test',
+      raw: false,
+      classNamePrefix: 'test__value__key',
+    });
+
+    // Click on the select component
+    const select = container.querySelector('.test__value__key__control');
+    fireEvent.keyDown(select, { key: 'ArrowDown', keyCode: 40 });
+
+    // Click on the option
+    const option = await waitFor(() => getByText('test-value'));
+    fireEvent.click(option);
+
+    await waitFor(() => expect(getByText('test-value')).toBeDefined());
+
+    // Submit the form
+    fireEvent.click(getByText('Submit'));
+
+    await waitFor(() => {
+      expect(onSubmit).toHaveBeenCalledWith(expect.objectContaining({ 'test-form-input': 'value' }), expect.anything());
+    });
   });
 });
 
@@ -1072,7 +1122,9 @@ describe('Custom Resources', () => {
 
       render(<RegionComponent regionProps={regionProps} />);
 
-      expect(avRegionsApi.all).toHaveBeenCalled();
+      await waitFor(() => {
+        expect(avRegionsApi.all).toHaveBeenCalled();
+      });
     });
 
     it('filters when a search value is typed', async () => {
@@ -1244,7 +1296,6 @@ describe('Custom Resources', () => {
         name: 'test-form-input',
         classNamePrefix: 'test__region',
         defaultToCurrentRegion: true,
-        pageAllSearchBy: 'not a method',
       };
 
       const { container, getByText, queryByText } = render(<RegionComponent regionProps={regionProps} />);
@@ -1269,7 +1320,6 @@ describe('Custom Resources', () => {
         expect(queryByText('Florida')).toBeNull();
 
         fireEvent.click(getByText('Submit'));
-
         await waitFor(() => {
           expect(onSubmit).toHaveBeenCalledWith(
             expect.objectContaining({
@@ -1299,7 +1349,6 @@ describe('Custom Resources', () => {
         expect(queryByText('Florida')).toBeNull();
 
         fireEvent.click(getByText('Submit'));
-
         await waitFor(() => {
           expect(onSubmit).toHaveBeenCalledWith(expect.objectContaining({}), expect.anything());
         });
@@ -1405,10 +1454,14 @@ describe('AvPayerSelect', () => {
       name: 'test-form-input',
       classNamePrefix: 'test__payer',
       customerId: '12345',
+      parameters: { region: 'FL', tranTypeCode: '1' },
+      resource: extendedPayersApi,
     };
 
     render(<PayerComponent payerProps={payerProps} />);
 
-    expect(extendedPayersApi.all).toHaveBeenCalled();
+    await waitFor(() => {
+      expect(extendedPayersApi.all).toHaveBeenCalled();
+    });
   });
 });
