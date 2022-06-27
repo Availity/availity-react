@@ -545,7 +545,7 @@ __metadata:
   resolution: "@availity/help@workspace:packages/help"
   dependencies:
     "@availity/icon": "workspace:*"
-    "@availity/message-core": ^6.1.0
+    "@availity/message-core": ^6.0.1
     react: ^17.0.2
     react-dom: ^17.0.2
     tsup: ^5.12.7
@@ -643,7 +643,7 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@availity/message-core@npm:^6.1.0":
+"@availity/message-core@npm:^6.0.1, @availity/message-core@npm:^6.1.0":
   version: 6.1.0
   resolution: "@availity/message-core@npm:6.1.0"
   checksum: c6ef958a5c90b1fdeae119990530aeb10e9a017d27bd556cd1b9331b55913be53acf4c4bbfda5d0201d762970b23ea46e317944ef2933bca0158db00119e5df1
@@ -906,7 +906,7 @@ __metadata:
     "@availity/icon": "workspace:*"
     "@availity/link": "workspace:*"
     "@availity/list-group-item": "workspace:*"
-    "@availity/message-core": ^6.1.0
+    "@availity/message-core": ^6.0.1
     "@availity/native-form": ^5.0.1
     "@availity/typography": "workspace:*"
     axios: ^0.21.4
