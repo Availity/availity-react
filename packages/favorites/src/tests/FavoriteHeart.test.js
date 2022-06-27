@@ -360,7 +360,7 @@ describe('FavoriteHeart', () => {
 
     avMessages.send({
       event: 'av:favorites:changed',
-      message: { favorites: [] },
+      favorites: [],
     });
 
     await waitFor(() => expect(heart).not.toBeChecked());
@@ -383,9 +383,8 @@ describe('FavoriteHeart', () => {
 
     avMessages.send({
       event: 'av:favorites:update',
-      message: { favorites: [] },
+      favorites: [],
     });
-
     await waitFor(() => expect(heart).not.toBeChecked());
   });
 

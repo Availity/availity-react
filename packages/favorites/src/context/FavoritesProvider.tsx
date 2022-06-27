@@ -36,11 +36,30 @@ export const FavoritesProvider = ({
   });
 
   useEffect(() => {
-    avMessages.subscribe(AV_INTERNAL_GLOBALS.FAVORITES_CHANGED, (messagesData) => {
-      queryClient.setQueryData('favorites', messagesData?.favorites || []);
-    });
+    const unsubscribeFavoritesChanged = avMessages.subscribe(
+      AV_INTERNAL_GLOBALS.FAVORITES_CHANGED,
+      (data) => {
+        if (data?.favorites) {
+          queryClient.setQueryData('favorites', data?.favorites);
+        }
+      },
+      { ignoreSameWindow: false }
+    );
 
-    return () => avMessages.unsubscribe(AV_INTERNAL_GLOBALS.FAVORITES_CHANGED);
+    const unsubscribeFavoritesUpdate = avMessages.subscribe(
+      AV_INTERNAL_GLOBALS.FAVORITES_UPDATE,
+      (data) => {
+        if (data?.favorites) {
+          queryClient.setQueryData('favorites', data?.favorites);
+        }
+      },
+      { ignoreSameWindow: false }
+    );
+
+    return () => {
+      unsubscribeFavoritesChanged();
+      unsubscribeFavoritesUpdate();
+    };
   }, [queryClient]);
 
   const deleteFavorite = async (id: string) => {
