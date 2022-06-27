@@ -2,6 +2,17 @@
 
 This file was generated using [@jscutlery/semver](https://github.com/jscutlery/semver).
 
+## [3.4.2](https://github.com/Availity/availity-react/compare/@availity/favorites@3.4.1...@availity/favorites@3.4.2) (2022-06-27)
+
+
+### Bug Fixes
+
+* **favorites:** add message-core subscription for `av:favorites:update` ([55db901](https://github.com/Availity/availity-react/commit/55db90132a2713bea0815d739b645ba52d8d9ed9))
+* **favorites:** fix tests for recieving postMessages from elsewhere ([bf58f1a](https://github.com/Availity/availity-react/commit/bf58f1aeec3c5e70a2e8a25eec036edb52f36a98))
+* **favorites:** remove console.log from test ([32d6904](https://github.com/Availity/availity-react/commit/32d6904d6bb957fdc2a9c3d7518c40a46dfab830))
+
+
+
 ## [3.4.1](https://github.com/Availity/availity-react/compare/@availity/favorites@3.4.0...@availity/favorites@3.4.1) (2022-06-14)
 
 
