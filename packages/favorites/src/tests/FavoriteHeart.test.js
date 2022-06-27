@@ -385,7 +385,6 @@ describe('FavoriteHeart', () => {
       event: 'av:favorites:update',
       favorites: [],
     });
-    console.log('yoooooohooooooo');
     await waitFor(() => expect(heart).not.toBeChecked());
   });
 
