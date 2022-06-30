@@ -4,6 +4,16 @@ title: <Select />
 
 Select dropdown without a Label or Feedback
 
+### Additional Resources
+
+- `SelectStyles(showError, styles, isInline)`
+  - Extract styling of this component for cases when react-select is used directly.
+  - Returns style and theme object to be spread on Select
+  - Props
+    - `showError?: boolean` if error styling should be applied
+    - `styles?: css object` same as react-select styles prop
+    - `isInline?: boolean` if inline styling should be applied, must be within a flexbox.
+
 ### Example
 
 ```jsx
@@ -91,6 +101,10 @@ Adds hidden help message to placeholder so it is read with `aria-describedby` (s
 
 Will add default `<Feedback />` id to `aria-errormessage`.
 
+#### `required?: boolean`
+
+Will add `aria-required` to input.
+
 #### `maxLength?: number`
 
 The maximum number of options that can be selected ( when `isMulti` is `true`)
@@ -106,6 +120,10 @@ Allow new items to be created if not found. **Default:** `false`.
 #### `allowSelectAll?: boolean`
 
 Adds a `Select all` option ( when `isMulti` is `true`). Note: `allowSelectAll` is ignored when `loadOptions` is defined.
+
+#### `clearButtonClassName?: string`
+
+Class names to add to clear button (only available when `isMulti` or `isClearable`). **Default:** `btn btn-link link`
 
 ### `waitUntilFocused?: boolean`
 

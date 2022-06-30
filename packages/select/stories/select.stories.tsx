@@ -8,7 +8,7 @@ import Select from '../src';
 // import README from '../README.md';
 
 import FormikResults from '../../../story-utils/FormikResults';
-import { singleValueSchema, multiValueSchema, options, SelectedOption } from './utils';
+import { singleValueSchema, multiValueSchema, options, SelectedOption, autofillOptions } from './utils';
 
 export default {
   title: 'Form Components/Select',
@@ -23,6 +23,7 @@ export default {
     disabled: false,
     helpMessage: 'This is a message to provide guidance',
     isMulti: false,
+    isClearable: false,
     min: 2,
     max: 3,
     raw: false,
@@ -30,7 +31,18 @@ export default {
   },
 } as Meta;
 
-export const Default: Story = ({ autofill, creatable, disabled, helpMessage, isMulti, max, min, raw, required }) => (
+export const Default: Story = ({
+  autofill,
+  creatable,
+  disabled,
+  helpMessage,
+  isMulti,
+  isClearable,
+  max,
+  min,
+  raw,
+  required,
+}) => (
   <FormikResults
     onSubmit={() => {
       console.log('submitted');
@@ -40,28 +52,48 @@ export const Default: Story = ({ autofill, creatable, disabled, helpMessage, isM
       autoFill1: '',
       autoFill2: '',
     }}
-    validationSchema={isMulti ? multiValueSchema('select', required, min, max) : singleValueSchema('select', required)}
+    validationSchema={
+      isMulti
+        ? multiValueSchema('select', required, min, max, !autofill)
+        : singleValueSchema('select', required, !autofill)
+    }
   >
     <Row>
       <Col>
-        <Select
-          name="select"
-          aria-label="stand-alone"
-          autofill={autofill}
-          creatable={creatable}
-          helpMessage={helpMessage}
-          isDisabled={disabled}
-          isMulti={isMulti}
-          maxLength={max}
-          options={options}
-          raw={raw}
-        />
         {autofill ? (
           <>
+            <Select
+              name="select"
+              aria-label="stand-alone"
+              autofill
+              creatable={creatable}
+              helpMessage={helpMessage}
+              isDisabled={disabled}
+              isMulti={isMulti}
+              isClearable={isClearable}
+              maxLength={max}
+              options={autofillOptions}
+              raw={raw}
+              required={required}
+            />
             <Field name="autoFill1" type="text" label="Autofill Value 1" />
             <Field name="autoFill2" type="text" label="Autofill Value 2" />
           </>
-        ) : null}
+        ) : (
+          <Select
+            name="select"
+            aria-label="stand-alone"
+            creatable={creatable}
+            helpMessage={helpMessage}
+            isDisabled={disabled}
+            isMulti={isMulti}
+            isClearable={isClearable}
+            maxLength={max}
+            options={options}
+            raw={raw}
+            required={required}
+          />
+        )}
         <Button className="mt-3" color="primary" type="submit">
           Submit
         </Button>
