@@ -2,6 +2,15 @@
 
 This file was generated using [@jscutlery/semver](https://github.com/jscutlery/semver).
 
+# [3.2.0](https://github.com/Availity/availity-react/compare/@availity/select@3.1.2...@availity/select@3.2.0) (2022-06-30)
+
+
+### Features
+
+* **select:** getResult to respect async functions ([4eea613](https://github.com/Availity/availity-react/commit/4eea613107c74a0d26161e5351dbf57da2726581))
+
+
+
 ## [3.1.2](https://github.com/Availity/availity-react/compare/@availity/select@3.1.1...@availity/select@3.1.2) (2022-06-23)
 
 
