@@ -220,9 +220,9 @@ const ResourceSelect = ({
         let items = [];
         if (pageAll) {
           items = resp.data ? resp.data : resp;
-          if (getResult) items = typeof getResult === 'function' ? getResult.call(resource, items) : items[getResult];
+          if (getResult) items = typeof getResult === 'function' ? await getResult.call(resource, items) : items[getResult];
         } else {
-          items = typeof getResult === 'function' ? getResult.call(resource, resp.data) : resp.data[getResult];
+          items = typeof getResult === 'function' ? await getResult.call(resource, resp.data) : resp.data[getResult];
         }
 
         if (hasMore === undefined) {
