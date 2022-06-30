@@ -9,7 +9,7 @@ A select list that automatically loads and pages through payers for supported tr
 ```jsx
 import React from 'react';
 import { Form } from '@availity/form';
-import { AvPayerSelect } from '@availity/select/resources';
+import { AvPayerSelect } from '@availity/select';
 import { Button } from 'reactstrap';
 import * as yup from 'yup';
 import '@availity/yup';
@@ -31,7 +31,7 @@ const Example = () => (
         region: 'FL',
         tranTypeCode: '1',
       }}
-      customerId='12345'
+      customerId="12345"
     />
     <Button color="primary" type="submit">
       Submit
