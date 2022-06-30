@@ -177,7 +177,7 @@ If present, this will serve as the argument name for the typed search value when
 ### Pre-made Resource Selects
 
 :::important
-The imports were changed in version 3+. In previous versions of `@availity/select` you will need to import the resources from `@availity/select/resources`
+The imports were changed in version 3.0.0. In previous versions, you had to import the components from `@availity/select/resources`. You can now import them from the base package. eg: `import { AvProviderSelect } from '@availity/select';`
 :::
 
 The following components can be imported by name from `@availity/select`
@@ -190,7 +190,7 @@ The following components can be imported by name from `@availity/select`
 - AvCodeSelect
 - AvPayerSelect
 
-These components are `ResourceSelect` with pre-configured `resource`, `valueKey`, and `labelKey` to make it easy to use. All of the props for `ResourceSelect` can be provided to override the defaults of these pre-made components. For some of these components, you will want to provide the `customerId` prop.
+These components use the `ResourceSelect` component with pre-configured `resource`, `valueKey`, and `labelKey` props. All of the props for `ResourceSelect` can be provided to override the defaults of these pre-made components. For some of these components, you must provide the `customerId` prop.
 
 #### Example
 
@@ -206,7 +206,7 @@ import {
   AvUserSelect,
   AvCodeSelect,
   AvPayerSelect,
-} from '@availity/select/resources';
+} from '@availity/select';
 import * as yup from 'yup';
 
 const schema = yup.object().shape({
