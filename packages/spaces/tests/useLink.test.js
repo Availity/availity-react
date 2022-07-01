@@ -1,19 +1,38 @@
 import React from 'react';
 import { waitFor, cleanup, render, fireEvent } from '@testing-library/react';
-import '@availity/hooks';
+import { useCurrentUser } from '@availity/hooks';
 import nativeForm from '@availity/native-form';
-import { SpacesLink } from '..';
+import { avWebQLApi } from '@availity/api-axios';
+import Spaces, { SpacesLink } from '..';
 import '../src/helpers';
 
-jest.mock('@availity/hooks', () => ({
-  useCurrentUser: jest.fn().mockReturnValue({
-    data: {
-      akaname: 'aka123456789',
-    },
-  }),
+jest.mock('@availity/hooks', () => {
+  const original = jest.requireActual('@availity/hooks');
+  return {
+    ...original,
+    useCurrentUser: jest.fn(),
+  };
+});
+
+useCurrentUser.mockImplementation(() => ({
+  data: {
+    akaname: 'aka123456789',
+  },
 }));
 
 jest.mock('@availity/native-form');
+
+jest.mock('@availity/api-axios');
+
+avWebQLApi.create.mockResolvedValue({
+  data: {
+    data: {
+      configurationFindOne: {
+        description: 'This is a disclaimer.',
+      },
+    },
+  },
+});
 
 const buildSpacesLink = (space) => (
   <SpacesLink
@@ -142,12 +161,23 @@ describe('useLink', () => {
     space.link.url = '/path/to/url';
     space.metadata = { disclaimerId: 'disclaimerId' };
 
-    const { container } = render(buildSpacesLink(space));
+    const { container, findByText } = render(
+      <Spaces clientId="my-client-id" spaces={[space]}>
+        {buildSpacesLink(space)}
+      </Spaces>
+    );
 
     const linkHeader7 = await waitFor(() => container.querySelector('#app-title-7'));
     fireEvent.click(linkHeader7);
+
+    const disclaimer = await findByText('This is a disclaimer.');
+    expect(disclaimer).toBeDefined();
+
+    const modalSubmit = await findByText('Accept');
+    fireEvent.click(modalSubmit);
+
     await waitFor(() => {
-      expect(window.open).toHaveBeenCalledWith('/web/spc/disclaimers/#/?spaceId=7&ssoText=disclaimerId', '_self');
+      expect(window.open).toHaveBeenCalledWith('/path/to/url?spaceId=7', '_self');
       expect(nativeForm).not.toHaveBeenCalled();
     });
   });
@@ -158,12 +188,23 @@ describe('useLink', () => {
     space.link.url = '/path/to/url';
     space.metadata = { disclaimerId: 'disclaimerId' };
 
-    const { container } = render(buildSpacesLink(space));
+    const { container, findByText } = render(
+      <Spaces clientId="my-client-id" spaces={[space]}>
+        {buildSpacesLink(space)}
+      </Spaces>
+    );
 
     const linkHeader8 = await waitFor(() => container.querySelector('#app-title-8'));
     fireEvent.keyPress(linkHeader8, { charCode: 13 });
+
+    const disclaimer = await findByText('This is a disclaimer.');
+    expect(disclaimer).toBeDefined();
+
+    const modalSubmit = await findByText('Accept');
+    fireEvent.click(modalSubmit);
+
     await waitFor(() => {
-      expect(window.open).toHaveBeenCalledWith('/web/spc/disclaimers/#/?spaceId=8&ssoText=disclaimerId', '_self');
+      expect(window.open).toHaveBeenCalledWith('/path/to/url?spaceId=8', '_self');
       expect(nativeForm).not.toHaveBeenCalled();
     });
   });

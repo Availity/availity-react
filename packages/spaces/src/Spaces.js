@@ -4,6 +4,7 @@ import PropTypes from 'prop-types';
 import { avWebQLApi } from '@availity/api-axios';
 import { useEffectAsync } from '@availity/hooks';
 import { spacesReducer, INITIAL_STATE, normalizeSpaces, isFunction } from './helpers';
+import ModalProvider, { useModal } from './modals/ModalProvider';
 
 // TODO: types
 
@@ -197,19 +198,23 @@ const Spaces = ({ query, variables, clientId, spaceIds, payerIds, children, spac
     }
   }, [payerIds, spaceIds]);
 
+  const hasParentModalProvider = useModal() !== undefined;
+
+  const spacesChildren = isFunction(children)
+    ? (() =>
+        children({
+          // if children is function, as long as spacesMap contains all values and we return them, no breaking change
+          spaces: normalizeSpaces([...spacesMap.values()]),
+          loading,
+          error,
+        }))()
+    : children;
+
   return (
     <SpacesContext.Provider
       value={{ spaces: spacesMap, spacesByConfig: configIdsMap, spacesByPayer: payerIdsMap, loading, error }}
     >
-      {isFunction(children)
-        ? (() =>
-            children({
-              // if children is function, as long as spacesMap contains all values and we return them, no breaking change
-              spaces: normalizeSpaces([...spacesMap.values()]),
-              loading,
-              error,
-            }))()
-        : children}
+      {!hasParentModalProvider ? <ModalProvider>{spacesChildren}</ModalProvider> : spacesChildren}
     </SpacesContext.Provider>
   );
 };
