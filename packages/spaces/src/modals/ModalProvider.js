@@ -110,8 +110,10 @@ const ModalProvider = ({ children }) => {
         })
       }
     >
-      <Modal toggle={toggle} isOpen={isOpen}>
-        <ModalHeader>{title}</ModalHeader>
+      <Modal labelledBy="disclaimer-header" role="dialog" aria-modal toggle={toggle} isOpen={isOpen}>
+        <ModalHeader id="disclaimer-header" className="h5" tag="div" role="heading" aria-level="2">
+          {title}
+        </ModalHeader>
         {Body && (
           <Body
             {...modalOptions}
