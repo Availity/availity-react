@@ -3,7 +3,7 @@ import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 import classNames from 'classnames';
 import { useField, useFormikContext } from 'formik';
-import RSelect, { components as reactSelectComponents, selectProps } from 'react-select';
+import RSelect, { components as reactSelectComponents } from 'react-select';
 import Creatable from 'react-select/creatable';
 import { AsyncPaginate as Async, withAsyncPaginate } from 'react-select-async-paginate';
 import get from 'lodash/get';
@@ -483,7 +483,7 @@ components.Option.propTypes = {
 };
 
 components.Input.propTypes = {
-  selectProps,
+  selectProps: PropTypes.object,
 };
 
 components.MultiValueRemove.propTypes = {
