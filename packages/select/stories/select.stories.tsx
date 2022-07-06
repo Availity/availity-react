@@ -54,8 +54,8 @@ export const Default: Story = ({
     }}
     validationSchema={
       isMulti
-        ? multiValueSchema('select', required, min, max, !autofill)
-        : singleValueSchema('select', required, !autofill)
+        ? multiValueSchema('select', required, min, max, !autofill && !raw)
+        : singleValueSchema('select', required, !autofill && !raw)
     }
   >
     <Row>

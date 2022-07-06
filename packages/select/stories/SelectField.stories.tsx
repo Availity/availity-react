@@ -58,33 +58,48 @@ export const SelectFieldStory: Story = ({
     }}
     validationSchema={
       isMulti
-        ? multiValueSchema('select', required, min, max, !autofill)
-        : singleValueSchema('select', required, !autofill)
+        ? multiValueSchema('select', required, min, max, !autofill && !raw)
+        : singleValueSchema('select', required, !autofill && !raw)
     }
   >
     <Row>
       <Col>
-        <SelectField
-          name="select"
-          autofill={autofill}
-          creatable={creatable}
-          helpId={helpId}
-          helpMessage={helpMessage}
-          isDisabled={disabled}
-          isMulti={isMulti}
-          isClearable={isClearable}
-          label={label}
-          maxLength={max}
-          options={!autofill ? options : autofillOptions}
-          raw={raw}
-          required={required}
-        />
         {autofill ? (
           <>
+            <SelectField
+              name="select"
+              label={label}
+              autofill
+              creatable={creatable}
+              helpId={helpId}
+              helpMessage={helpMessage}
+              isDisabled={disabled}
+              isMulti={isMulti}
+              isClearable={isClearable}
+              maxLength={max}
+              options={autofillOptions}
+              raw={raw}
+              required={required}
+            />
             <Field name="autoFill1" type="text" label="Autofill Value 1" />
             <Field name="autoFill2" type="text" label="Autofill Value 2" />
           </>
-        ) : null}
+        ) : (
+          <SelectField
+            name="select"
+            label={label}
+            creatable={creatable}
+            helpId={helpId}
+            helpMessage={helpMessage}
+            isDisabled={disabled}
+            isMulti={isMulti}
+            isClearable={isClearable}
+            maxLength={max}
+            options={options}
+            raw={raw}
+            required={required}
+          />
+        )}
         <Button color="primary" type="submit">
           Submit
         </Button>

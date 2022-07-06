@@ -70,7 +70,7 @@ const validateSelectAllOptions = (options) => {
 // needed for inline styling of clear button
 const wrapperStyle = { display: 'flex' };
 
-export const SelectStyles = (showError, styles, isInline) => ({
+export const selectStyles = (showError, styles, isInline) => ({
   styles: {
     ...styles,
     container: (provided) => ({
@@ -418,7 +418,7 @@ const Select = ({
           'av-select',
           touched ? 'is-touched' : 'is-untouched',
           fieldError ? 'av-invalid' : 'av-valid',
-          touched && fieldError && 'is-invalid'
+          errorShown && 'is-invalid'
         )}
         getOptionLabel={getOptionLabel}
         getOptionValue={getOptionValue}
@@ -431,7 +431,7 @@ const Select = ({
         options={selectOptions}
         defaultOptions={waitUntilFocused ? [] : true}
         cacheUniqs={_cacheUniq}
-        {...SelectStyles(!!errorShown, styles, attributes.isClearable || attributes.isMulti)}
+        {...selectStyles(!!errorShown, styles, attributes.isClearable || attributes.isMulti)}
         {...attributes}
         value={getViewValue()}
       />
@@ -488,12 +488,6 @@ components.Input.propTypes = {
 
 components.MultiValueRemove.propTypes = {
   innerProps: PropTypes.object,
-};
-
-SelectStyles.propTypes = {
-  showError: PropTypes.bool,
-  isInline: PropTypes.bool,
-  styles: PropTypes.object,
 };
 
 export default Select;

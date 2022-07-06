@@ -3,15 +3,14 @@ import type { ReactNode } from 'react';
 import type { Props as RSelectProps, GroupBase, StylesConfig, ThemeConfig } from 'react-select';
 import type { AsyncPaginateProps } from 'react-select-async-paginate';
 import type { FieldValidator } from 'formik';
-import React from 'react';
 
-export interface SelectStyleProps {
+export interface SelectStyleArgs {
   showError?: boolean;
-  styles?: React.CSSProperties;
+  styles?: StylesConfig;
   isInline?: boolean;
 }
 
-export declare const SelectStyles: (props: SelectStyleProps) => {
+export declare const selectStyles: (props: SelectStyleArgs) => {
   styles: StylesConfig;
   theme: ThemeConfig;
 };
@@ -20,7 +19,7 @@ export type SelectProps<Option, IsMulti extends boolean, Group extends GroupBase
   allowSelectAll?: boolean;
   autofill?: boolean | Record<string, string | ((value: any) => any)>;
   cacheUniq?: any | any[];
-  clearButtonClassName?: string = 'btn btn-link link';
+  clearButtonClassName?: string;
   creatable?: boolean;
   feedback?: boolean;
   helpMessage?: ReactNode;

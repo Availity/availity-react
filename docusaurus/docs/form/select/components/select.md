@@ -6,13 +6,13 @@ Select dropdown without a Label or Feedback
 
 ### Additional Resources
 
-- `SelectStyles(showError, styles, isInline)`
+- `selectStyles(showError, styles, isInline)`
   - Extract styling of this component for cases when react-select is used directly.
   - Returns style and theme object to be spread on Select
-  - Props
+  - Args
     - `showError?: boolean` if error styling should be applied
-    - `styles?: css object` same as react-select styles prop
-    - `isInline?: boolean` if inline styling should be applied, must be within a flexbox.
+    - `styles?: StylesConfig object` refer to react-select docs for info on styles
+    - `isInline?: boolean` if inline styling should be applied, must be within a flexbox
 
 ### Example
 
