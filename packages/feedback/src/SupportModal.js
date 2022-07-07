@@ -14,7 +14,7 @@ const SupportModal = ({ supportIsActive, toggle, supportZIndex, setSupportIsActi
       fade
       id="supportModal"
       data-testid="supportModal"
-      aria-labelledby="support-form-header"
+      labelledBy="support-form-header"
       isOpen={supportIsActive}
       toggle={toggle}
       zIndex={supportZIndex}
