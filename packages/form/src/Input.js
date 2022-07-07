@@ -60,7 +60,6 @@ Input.propTypes = {
 };
 
 Input.defaultProps = {
-  required: false,
   tag: RsInput,
 };
 

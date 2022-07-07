@@ -108,7 +108,7 @@ const Field = ({
           className={labelClass}
           hidden={labelHidden}
           size={size}
-          required={!!required}
+          required={required}
           helpId={helpId}
           disabled={disabled}
           {...labelCol}
@@ -147,7 +147,6 @@ Field.propTypes = {
 
 Field.defaultProps = {
   tag: RsInput,
-  required: false,
 };
 
 export default Field;
