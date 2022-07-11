@@ -15,7 +15,7 @@ describe('TrainingLink', () => {
   test('should render with name', () => {
     const { container } = render(<TrainingLink link="http://catvidoes.com" name="Appeals" />);
 
-    expect(container).toHaveTextContent('Need Help? Watch a demo (opens in a new tab) for Appeals');
+    expect(container).toHaveTextContent('Need Help? Watch a demo for Appeals');
   });
 
   test('should render link with proper styling', () => {
