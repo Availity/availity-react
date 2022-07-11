@@ -12,7 +12,7 @@ const TrainingLink = ({ name, link }: TrainingLinkProps): JSX.Element => (
   <span style={shouldProbablyBeInUIKit} className="ml-auto">
     Need Help?{' '}
     <a href={link} style={linkStyles} className="link" target="_blank" rel="noopener noreferrer">
-      Watch a demo
+      Watch a demo <span className="sr-only">(opens in a new tab</span>
     </a>{' '}
     <span className="sr-only">(opens in a new tab) </span>
     for {name}
