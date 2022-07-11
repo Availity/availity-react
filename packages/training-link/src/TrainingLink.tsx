@@ -14,6 +14,7 @@ const TrainingLink = ({ name, link }: TrainingLinkProps): JSX.Element => (
     <a href={link} style={linkStyles} className="link" target="_blank" rel="noopener noreferrer">
       Watch a demo
     </a>{' '}
+    <span className="sr-only">(opens in a new tab) </span>
     for {name}
   </span>
 );
