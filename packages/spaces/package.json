@@ -52,7 +52,7 @@
   },
   "peerDependencies": {
     "@availity/api-axios": "^6.0.0",
-    "@availity/favorites": "^3.1.0",
+    "@availity/favorites": "^3.4.2",
     "axios": "^0.21.1",
     "react": ">=16.8.6",
     "react-query": "^3.29.0",

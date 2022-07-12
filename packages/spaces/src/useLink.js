@@ -4,29 +4,44 @@ import { isAbsoluteUrl } from '@availity/resolve-url';
 import { useCurrentUser } from '@availity/hooks';
 import { useSpaces, useSpacesContext } from './Spaces';
 import { updateTopApps, updateUrl } from './helpers';
+import { useModal } from './modals/ModalProvider';
 
 export default (spaceOrSpaceId, { clientId: propsClientId, linkAttributes = {} } = {}) => {
   const { clientId = propsClientId } = useSpacesContext() || {};
 
   const [spaceFromSpacesProvider] = useSpaces(spaceOrSpaceId);
 
+  const { data: user } = useCurrentUser();
+
+  const openModal = useModal();
+
   const {
     metadata = {},
+    parents = [],
     name,
     type,
-    id,
+    configurationId,
     description,
     link = {},
     ...space
   } = spaceFromSpacesProvider || (typeof spaceOrSpaceId === 'object' ? spaceOrSpaceId : {});
 
-  const legacySso = () => {
-    // redirect to disclaimers ui
-    // TODO: update ui to accommodate flows where only disclaimer is needed
-    window.open(`/web/spc/disclaimers/#/?spaceId=${id}&ssoText=${metadata.disclaimerId}`, '_self');
-  };
+  const parentPayerSpaces = parents.filter(
+    (p) => p.type && (p.type.toLowerCase() === 'space' || p.type.toLowerCase() === 'payerspace') // no world stuff
+  );
 
-  const { data: user } = useCurrentUser();
+  const legacySso = () => {
+    openModal('DISCLAIMER_MODAL', {
+      disclaimerId: metadata.disclaimerId,
+      name,
+      spaceType: type,
+      id: configurationId,
+      title: name,
+      description,
+      link,
+      user: user.akaname,
+    });
+  };
 
   const linkSso = async (event) => {
     if (metadata && metadata.ssoId) {
@@ -45,7 +60,7 @@ export default (spaceOrSpaceId, { clientId: propsClientId, linkAttributes = {} }
       };
 
       try {
-        await updateTopApps(id, type, user.akaname);
+        await updateTopApps(configurationId, type, user.akaname);
         await nativeForm(metadata.ssoId, attributes, options, type);
       } catch {
         // eslint-disable-next-line no-console
@@ -62,7 +77,7 @@ export default (spaceOrSpaceId, { clientId: propsClientId, linkAttributes = {} }
       return;
     }
 
-    await updateTopApps(id, type, user.akaname);
+    await updateTopApps(configurationId, type, user.akaname);
 
     const target = getTarget(link.target);
     const url = !isAbsoluteUrl(link.url)
@@ -79,17 +94,32 @@ export default (spaceOrSpaceId, { clientId: propsClientId, linkAttributes = {} }
     window.open(url, target);
   };
 
+  const openMultiPayerModal = () =>
+    openModal('MULTI_PAYER_MODAL', {
+      title: 'Open Link as Payer',
+      name,
+      parentPayerSpaces,
+      link,
+      id: configurationId,
+      spaceType: type,
+      metadata,
+      user: user.akaname,
+    });
+
   const mediaProps = {
     // FIXME: there was some accessibility bug here, missing prop?
     role: 'link',
   };
 
-  if (metadata.ssoId) {
+  if (metadata?.ssoId) {
     mediaProps.onClick = linkSso;
     mediaProps.onKeyPress = (e) => e.charCode === 13 && linkSso(e);
-  } else if (metadata.disclaimerId) {
+  } else if (metadata?.disclaimerId) {
     mediaProps.onClick = legacySso;
     mediaProps.onKeyPress = (e) => e.charCode === 13 && legacySso(e);
+  } else if (parentPayerSpaces.length > 1) {
+    mediaProps.onClick = openMultiPayerModal;
+    mediaProps.onKeyPress = (e) => e.charCode === 13 && openMultiPayerModal(e);
   } else {
     mediaProps.onClick = openLink;
     mediaProps.onKeyPress = (e) => e.charCode === 13 && openLink(e);
@@ -99,7 +129,7 @@ export default (spaceOrSpaceId, { clientId: propsClientId, linkAttributes = {} }
     {
       ...space,
       type,
-      id,
+      configurationId,
       name,
       description,
       metadata,
