@@ -2,6 +2,20 @@
 
 This file was generated using [@jscutlery/semver](https://github.com/jscutlery/semver).
 
+# [6.2.0](https://github.com/Availity/availity-react/compare/@availity/spaces@6.1.2...@availity/spaces@6.2.0) (2022-07-12)
+
+
+### Bug Fixes
+
+* **spaces:** update Modal in ModalProvider for accessibility ([8499b25](https://github.com/Availity/availity-react/commit/8499b25028178f3d726e8f62ed7df61a67789d7e))
+
+
+### Features
+
+* **spaces:** update useLink to use modals for disclaimers ([dcca167](https://github.com/Availity/availity-react/commit/dcca167b59db9c9f9ef62b76895e29fc7b30d264))
+
+
+
 ## [6.1.2](https://github.com/Availity/availity-react/compare/@availity/spaces@6.1.1...@availity/spaces@6.1.2) (2022-06-21)
 
 
