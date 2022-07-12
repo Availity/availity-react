@@ -51,7 +51,7 @@
     "reactstrap": "^8.10.1"
   },
   "peerDependencies": {
-    "@availity/api-axios": "^6.0.0",
+    "@availity/api-axios": "^6.0.0 || ^7.0.0",
     "@availity/favorites": "^3.4.2",
     "axios": "^0.21.1",
     "react": ">=16.8.6",
