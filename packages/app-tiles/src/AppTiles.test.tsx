@@ -7,6 +7,7 @@ const parent = {
     name: 'alt text',
   },
 };
+const parentShortName = { shortName: 'SN' };
 
 describe('AppIcon', () => {
   test('should render', () => {
@@ -33,10 +34,26 @@ describe('AppIcon', () => {
     expect(alt).toBe(parent.images.name);
   });
 
+  test('should render parent shortName when no image is provided and one parent exists without image', () => {
+    render(<AppTiles parents={[parentShortName]} />);
+    const text = screen.getByText(parentShortName.shortName);
+    expect(text).toBeTruthy();
+  });
+
   test('should render multiple parents in tile-container', () => {
     const { container } = render(<AppTiles parents={[parent, parent]} />);
     const tileContainer = container.querySelector('.tile-container');
     expect(tileContainer).toBeTruthy();
+  });
+
+  test('should render parent images and short names in tile-container', () => {
+    const { container } = render(<AppTiles parents={[parent, parentShortName]} />);
+    const tileContainer = container.querySelector('.tile-container');
+    const images = container.querySelectorAll('img');
+    const text = screen.getByText(parentShortName.shortName);
+    expect(tileContainer).toBeTruthy();
+    expect(images.length).toBe(1);
+    expect(text).toBeTruthy();
   });
 
   test('should render 4 parent images inside tile-container when no image is provided and 4+ parents exist', () => {
