@@ -2,6 +2,21 @@
 
 This file was generated using [@jscutlery/semver](https://github.com/jscutlery/semver).
 
+# [3.3.0](https://github.com/Availity/availity-react/compare/@availity/select@3.2.0...@availity/select@3.3.0) (2022-07-13)
+
+
+### Bug Fixes
+
+* **select:** cleanup clear button and selectStyles ([f5fbeaa](https://github.com/Availity/availity-react/commit/f5fbeaab2717f3f11d08f1f34d882a59210e072b))
+* **select:** fix input component proptype ([fe5752a](https://github.com/Availity/availity-react/commit/fe5752acff50ea8fdae7495088bcc17346d4a716))
+
+
+### Features
+
+* **select:** move clear field button to outside of field, allow aria-required, export styling fix [#933](https://github.com/Availity/availity-react/issues/933) ([d2b82f2](https://github.com/Availity/availity-react/commit/d2b82f2d6a9112191524a35e0abc2d006d28553b))
+
+
+
 # [3.2.0](https://github.com/Availity/availity-react/compare/@availity/select@3.1.2...@availity/select@3.2.0) (2022-06-30)
 
 
