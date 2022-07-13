@@ -2,6 +2,19 @@
 
 This file was generated using [@jscutlery/semver](https://github.com/jscutlery/semver).
 
+# [1.6.0](https://github.com/Availity/availity-react/compare/@availity/training-link@1.5.1...@availity/training-link@1.6.0) (2022-07-13)
+
+
+### Features
+
+* **training-link:** i think this addresses roxanne's comment ([6697760](https://github.com/Availity/availity-react/commit/6697760ac2776110108fc3c12024f07b2459bc72))
+* **training-link:** i think this addresses roxanne's comment ([bdb2802](https://github.com/Availity/availity-react/commit/bdb280258f09d0254e1850a5612a0597cb4ef087))
+* **training-link:** make training link 508 compliant by adding opens in a new tab to the demo link, change test to match new verbiage ([7b7d163](https://github.com/Availity/availity-react/commit/7b7d163e4dc9287cc79ea7a1f024a7d3d0388b74))
+* **training-link:** now we don't need this in the test ([1d9cdc7](https://github.com/Availity/availity-react/commit/1d9cdc7628d85c6c4b15f8a3ecf0d990bcf3f0dc))
+* **training-link:** typing is hard - last try then im just going to pay attention to this meeting ([bf992ce](https://github.com/Availity/availity-react/commit/bf992ce3639191f572a8b31ef5dfbf53e9bf707d))
+
+
+
 ## [1.5.1](https://github.com/Availity/availity-react/compare/@availity/training-link@1.5.0...@availity/training-link@1.5.1) (2022-06-14)
 
 
