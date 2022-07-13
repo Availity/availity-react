@@ -2,6 +2,20 @@
 
 This file was generated using [@jscutlery/semver](https://github.com/jscutlery/semver).
 
+# [1.3.0](https://github.com/Availity/availity-react/compare/@availity/docusaurus@1.2.2...@availity/docusaurus@1.3.0) (2022-07-13)
+
+
+### Bug Fixes
+
+* **select:** cleanup clear button and selectStyles ([f5fbeaa](https://github.com/Availity/availity-react/commit/f5fbeaab2717f3f11d08f1f34d882a59210e072b))
+
+
+### Features
+
+* **select:** move clear field button to outside of field, allow aria-required, export styling fix [#933](https://github.com/Availity/availity-react/issues/933) ([d2b82f2](https://github.com/Availity/availity-react/commit/d2b82f2d6a9112191524a35e0abc2d006d28553b))
+
+
+
 ## [1.2.2](https://github.com/Availity/availity-react/compare/@availity/docusaurus@1.2.1...@availity/docusaurus@1.2.2) (2022-06-30)
 
 
