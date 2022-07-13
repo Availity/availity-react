@@ -7,7 +7,7 @@ import { Field } from '@availity/form';
 import { SelectField } from '../src';
 // import README from '../README.md';
 
-import { singleValueSchema, multiValueSchema, options, SelectedOption } from './utils';
+import { singleValueSchema, multiValueSchema, options, autofillOptions, SelectedOption } from './utils';
 import FormikResults from '../../../story-utils/FormikResults';
 
 export default {
@@ -24,7 +24,8 @@ export default {
     helpId: '',
     helpMessage: 'This is a message to provide guidance',
     isMulti: false,
-    label: 'Select Field Label',
+    isClearable: false,
+    label: 'Select Field',
     min: 2,
     max: 3,
     raw: false,
@@ -39,6 +40,7 @@ export const SelectFieldStory: Story = ({
   helpId,
   helpMessage,
   isMulti,
+  isClearable,
   label,
   max,
   min,
@@ -54,30 +56,50 @@ export const SelectFieldStory: Story = ({
       autoFill1: '',
       autoFill2: '',
     }}
-    validationSchema={isMulti ? multiValueSchema('select', required, min, max) : singleValueSchema('select', required)}
+    validationSchema={
+      isMulti
+        ? multiValueSchema('select', required, min, max, !autofill && !raw)
+        : singleValueSchema('select', required, !autofill && !raw)
+    }
   >
     <Row>
       <Col>
-        <SelectField
-          name="select"
-          autofill={autofill}
-          creatable={creatable}
-          helpId={helpId}
-          helpMessage={helpMessage}
-          isDisabled={disabled}
-          isMulti={isMulti}
-          label={label}
-          maxLength={max}
-          options={options}
-          raw={raw}
-          required={required}
-        />
         {autofill ? (
           <>
+            <SelectField
+              name="select"
+              label={label}
+              autofill
+              creatable={creatable}
+              helpId={helpId}
+              helpMessage={helpMessage}
+              isDisabled={disabled}
+              isMulti={isMulti}
+              isClearable={isClearable}
+              maxLength={max}
+              options={autofillOptions}
+              raw={raw}
+              required={required}
+            />
             <Field name="autoFill1" type="text" label="Autofill Value 1" />
             <Field name="autoFill2" type="text" label="Autofill Value 2" />
           </>
-        ) : null}
+        ) : (
+          <SelectField
+            name="select"
+            label={label}
+            creatable={creatable}
+            helpId={helpId}
+            helpMessage={helpMessage}
+            isDisabled={disabled}
+            isMulti={isMulti}
+            isClearable={isClearable}
+            maxLength={max}
+            options={options}
+            raw={raw}
+            required={required}
+          />
+        )}
         <Button color="primary" type="submit">
           Submit
         </Button>
