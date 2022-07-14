@@ -28,7 +28,7 @@ export const MODAL_TYPES = {
       disabled: selectedOption === undefined,
     }),
     onSubmit: ({ metadata, link, id: spaceId, name }, modalState, dispatch) => {
-      if (metadata.disclaimerId) {
+      if (metadata?.disclaimerId) {
         dispatch({
           type: 'OPEN_DISCLAIMER_MODAL',
           disclaimerId: metadata.disclaimerId,
