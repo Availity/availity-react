@@ -30,6 +30,7 @@ const AvDate = ({
   datePickerProps,
   'data-testid': dataTestId,
   openDirection = 'down',
+  required,
   ...attributes
 }) => {
   const { setFieldValue, setFieldTouched, validateField } = useFormikContext();
@@ -180,6 +181,7 @@ const AvDate = ({
           isOutsideRange={isOutsideRange(min, max)}
           navPosition="navPositionBottom"
           openDirection={openDirection}
+          required={required}
         />
       </InputGroup>
     </>
@@ -200,6 +202,7 @@ AvDate.propTypes = {
   validate: PropTypes.func,
   datePickerProps: PropTypes.object,
   openDirection: PropTypes.string,
+  required: PropTypes.bool,
 };
 
 export default AvDate;

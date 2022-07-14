@@ -18,7 +18,7 @@ const DateField = ({ name, label, labelClass, labelHidden, labelAttrs, id = name
         {label}
       </Label>
     )}
-    <Date name={name} id={id} {...props} />
+    <Date name={name} id={id} required={required} {...props} />
     <Feedback name={name} />
   </FormGroup>
 );
