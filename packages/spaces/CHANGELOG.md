@@ -2,6 +2,15 @@
 
 This file was generated using [@jscutlery/semver](https://github.com/jscutlery/semver).
 
+## [6.2.2](https://github.com/Availity/availity-react/compare/@availity/spaces@6.2.1...@availity/spaces@6.2.2) (2022-07-14)
+
+
+### Bug Fixes
+
+* **spaces:** add optional chaining to ModalProvider to prevent error when metadata is null ([9fa7527](https://github.com/Availity/availity-react/commit/9fa7527578a60787ace79e22be2da793141f0cda))
+
+
+
 ## [6.2.1](https://github.com/Availity/availity-react/compare/@availity/spaces@6.2.0...@availity/spaces@6.2.1) (2022-07-12)
 
 
