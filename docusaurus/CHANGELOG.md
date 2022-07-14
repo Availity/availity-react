@@ -2,6 +2,17 @@
 
 This file was generated using [@jscutlery/semver](https://github.com/jscutlery/semver).
 
+## [1.3.1](https://github.com/Availity/availity-react/compare/@availity/docusaurus@1.3.0...@availity/docusaurus@1.3.1) (2022-07-14)
+
+
+### Bug Fixes
+
+* **app-tiles:** add app-tiles.mdx PF-3258 ([90446d8](https://github.com/Availity/availity-react/commit/90446d82ea25b29ee55f3dac4c33306c585b9d89))
+* **app-tiles:** documentation fix PF-3258 ([052b5f8](https://github.com/Availity/availity-react/commit/052b5f8af5da665a502af75ebe5d735745c347cc))
+* **app-tiles:** documentation fix PF-3258 ([24344f2](https://github.com/Availity/availity-react/commit/24344f244e6a8a881fdf4a7d432e455e2c3cb114))
+
+
+
 # [1.3.0](https://github.com/Availity/availity-react/compare/@availity/docusaurus@1.2.2...@availity/docusaurus@1.3.0) (2022-07-13)
 
 
