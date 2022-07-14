@@ -1,6 +1,5 @@
 import React from 'react';
 import { Story, Meta } from '@storybook/react';
-import '../styles.scss';
 import AppTiles from './AppTiles';
 // import README from '../README.md';
 

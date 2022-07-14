@@ -1,5 +1,6 @@
 import React from 'react';
 import classNames from 'classnames';
+import css from './AppTiles.module.scss';
 import PropTypes from 'prop-types';
 
 export type AppTilesProps = {
@@ -49,7 +50,7 @@ const AppTiles = ({
           {parents[0].images?.tile ? (
             <img className="w-100 h-100 align-baseline" src={parents[0].images.tile} alt={parents[0].images.name} />
           ) : (
-            parents[0].shortName || parents[0].name
+            parents[0].shortName
           )}
         </Tag>
       );
@@ -57,12 +58,12 @@ const AppTiles = ({
 
     return (
       <Tag className={`app-icon app-icon-${size} ${className}`}>
-        <div className="tile-container">
+        <div className={css.container}>
           {parents.map((parent) =>
             parent.images?.tile ? (
-              <img className="tile" src={parent.images.tile} alt={parent.images.name} />
+              <img className={css.tile} src={parent.images.tile} alt={parent.images.name} />
             ) : (
-              <div className={`app-icon app-icon-${color} tile`}>{parent.shortName || parent.name}</div>
+              <div className={`app-icon app-icon-${color} ${css.tile}`}>{parent.shortName}</div>
             )
           )}
         </div>

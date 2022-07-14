@@ -1,4 +1,5 @@
 import { render, screen } from '@testing-library/react';
+import css from './AppTiles.module.scss';
 import AppTiles from '.';
 
 const parent = {
@@ -22,9 +23,9 @@ describe('AppIcon', () => {
     expect(src).toBe(image);
   });
 
-  test('should render parent image when no image is provided and only one parent exists, not in tile-container', () => {
+  test('should render parent image when no image is provided and only one parent exists, not in container', () => {
     const { container } = render(<AppTiles parents={[parent]} />);
-    const tileContainer = container.querySelector('.tile-container');
+    const tileContainer = container.querySelector(css.container);
     const images = container.querySelectorAll('img');
     const src = images[0].getAttribute('src');
     const alt = images[0].getAttribute('alt');
@@ -40,15 +41,15 @@ describe('AppIcon', () => {
     expect(text).toBeTruthy();
   });
 
-  test('should render multiple parents in tile-container', () => {
+  test('should render multiple parents in container', () => {
     const { container } = render(<AppTiles parents={[parent, parent]} />);
-    const tileContainer = container.querySelector('.tile-container');
+    const tileContainer = container.querySelector(`.${css.container}`);
     expect(tileContainer).toBeTruthy();
   });
 
-  test('should render parent images and short names in tile-container', () => {
+  test('should render parent images and short names in container', () => {
     const { container } = render(<AppTiles parents={[parent, parentShortName]} />);
-    const tileContainer = container.querySelector('.tile-container');
+    const tileContainer = container.querySelector(`.${css.container}`);
     const images = container.querySelectorAll('img');
     const text = screen.getByText(parentShortName.shortName);
     expect(tileContainer).toBeTruthy();
@@ -56,9 +57,9 @@ describe('AppIcon', () => {
     expect(text).toBeTruthy();
   });
 
-  test('should render 4 parent images inside tile-container when no image is provided and 4+ parents exist', () => {
+  test('should render 4 parent images inside container when no image is provided and 4+ parents exist', () => {
     const { container } = render(<AppTiles parents={[parent, parent, parent, parent, parent]} />);
-    const tileContainer = container.querySelector('.tile-container');
+    const tileContainer = container.querySelector(`.${css.container}`);
     const images = container.querySelectorAll('img');
     expect(tileContainer).toBeTruthy();
     expect(images.length).toBe(4);
