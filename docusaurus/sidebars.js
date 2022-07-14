@@ -26,6 +26,7 @@ module.exports = {
             ],
           },
           'components/app-icon',
+          'components/app-tiles',
           {
             type: 'category',
             label: 'Authorize',

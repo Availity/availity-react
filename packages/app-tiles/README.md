@@ -22,4 +22,4 @@ yarn add @availity/app-tiles
 
 ## Documentation
 
-Check out more documentation at [availity.github.io](https://availity.github.io/availity-react/components/app-icon)
+Check out more documentation at [availity.github.io](https://availity.github.io/availity-react/components/app-tiles)
