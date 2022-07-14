@@ -1,0 +1,70 @@
+---
+title: App Tiles
+summary: Availity UI Kit application tiles react component.
+---
+
+A component which outputs one an Icon made of tiles.
+
+[![Version](https://img.shields.io/npm/v/@availity/app-tiles.svg?style=for-the-badge)](https://www.npmjs.com/package/@availity/app-tiles)
+
+### Installation
+
+npm
+
+```bash
+npm install @availity/app-tiles --save
+```
+
+Yarn
+
+```bash
+yarn add @availity/app-tiles
+```
+
+### Example
+
+```jsx
+import React from 'react';
+import AppTiles from '@availity/app-tiles';
+
+const Example = () => (
+  <>
+    <AppTiles shortName="SN" color="blue" image="/path/to/image" branded size="sm"/>
+    <AppTiles shortName="SN" color="red" size="xl" parents={[
+      { images: { tile: "/path/to/image" } },
+      { shortName: "SN" }
+    ]}/>
+    <AppTiles shortName="SN"/>
+  </>
+);
+```
+
+#### Live example
+
+[Storybook](https://availity.github.io/availity-react/storybook/?path=/docs/components-apptiles--default)
+
+### Props
+
+#### `size? string`
+
+Potential values: `"lg"`, `"xl"`
+
+#### `color?: string`
+
+Potential values: `"black"`, `"blue"`, `"green"`, `"orange"`, `"red"`. **Default:** `"black"`
+
+#### `branded?: boolean`
+
+Triggers "branded" styles
+
+#### `image?: string`
+
+If image source is provided, it will render this instead of parents.
+
+#### `alt?: string`
+
+For `src` prop. the alt property for your image source is not found or is loading.
+
+#### `parents?: object[]`
+
+If parents are provided, it will render up to the first in the icon, ether images.tile or shortName.
