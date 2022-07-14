@@ -1,14 +1,11 @@
 import React from 'react';
 import { Story, Meta } from '@storybook/react';
 import AppTiles from './AppTiles';
-// import README from '../README.md';
 
 export default {
   title: 'Components/AppTiles',
   parameters: {
-    docs: {
-      // page: README,
-    },
+    docs: {},
   },
 } as Meta;
 
