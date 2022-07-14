@@ -2,14 +2,11 @@ import React from 'react';
 import { Story, Meta } from '@storybook/react';
 
 import AppIcon from './AppIcon';
-// import README from '../README.md';
 
 export default {
   title: 'Components/AppIcon',
   parameters: {
-    docs: {
-      // page: README,
-    },
+    docs: {},
   },
 } as Meta;
 
