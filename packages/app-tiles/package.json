@@ -1,0 +1,49 @@
+{
+  "name": "@availity/app-tiles",
+  "version": "0.0.0",
+  "description": "Availity UI Kit application tiled icon react component.",
+  "keywords": [
+    "react",
+    "availity",
+    "app-tiles"
+  ],
+  "homepage": "https://availity.github.io/availity-react/components/app-tiles",
+  "bugs": {
+    "url": "https://github.com/Availity/availity-react/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Availity/availity-react.git",
+    "directory": "packages/app-tiles"
+  },
+  "license": "MIT",
+  "author": "Evan Sharp <evan.sharp@availity.com>",
+  "browser": "./dist/index.js",
+  "main": "./dist/index.js",
+  "module": "./dist/index.mjs",
+  "types": "./dist/index.d.ts",
+  "scripts": {
+    "build": "tsup src/index.ts --format esm,cjs --dts",
+    "dev": "tsup src/index.ts --format esm,cjs --watch --dts",
+    "clean": "rm -rf dist",
+    "clean:nm": "rm -rf node_modules",
+    "bundlesize": "bundlesize",
+    "publish": "yarn npm publish --tolerate-republish --access public",
+    "publish:canary": "yarn npm publish --access public --tag canary"
+  },
+  "dependencies": {
+    "classnames": "^2.3.1"
+  },
+  "devDependencies": {
+    "react": "^17.0.2",
+    "react-dom": "^17.0.2",
+    "tsup": "^5.12.7",
+    "typescript": "^4.6.4"
+  },
+  "peerDependencies": {
+    "react": ">=16.3.0"
+  },
+  "publishConfig": {
+    "access": "public"
+  }
+}
