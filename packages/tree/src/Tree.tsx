@@ -311,7 +311,7 @@ const Tree = ({
               {!item.isHidden && (
                 <>
                   <Row>
-                    <Col sm="8">
+                    <Col sm="7">
                       <FormGroup check>
                         {!item.isDisabled && selectable && (
                           <Input
@@ -333,7 +333,7 @@ const Tree = ({
                     </Col>
 
                     {item.children && item.children.length > 0 && (
-                      <Col sm="4">
+                      <Col sm="5">
                         <div className="form-inline d-flex justify-content-end ml-auto align-items-center">
                           {isRoot && selectable && (
                             <Button
