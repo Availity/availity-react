@@ -10,18 +10,25 @@ export default {
   title: 'Components/Tree',
 } as Meta;
 
-export const Default: Story = ({ enableSearch, searchLabel, expandAll, selectable }) => {
+export const Default: Story = ({
+  enableSearch,
+  searchLabel,
+  expandAll,
+  selectable,
+  condensed,
+  defaultExpandParent,
+}) => {
   const [selectedItems] = useState<TreeItem[]>([]);
   const [newSelectedList, setNewSelectedList] = useState<TreeItem[]>([]);
 
   const flatTreeItems: TreeItem[] = [
     {
       id: '1',
-      name: 'Parent',
+      name: 'Parent that has some long text',
     },
     {
       id: '2',
-      name: 'Second Level Parent',
+      name: 'Second Level Parent with long text',
       parentId: '1',
     },
     {
@@ -56,7 +63,7 @@ export const Default: Story = ({ enableSearch, searchLabel, expandAll, selectabl
 
   useEffect(() => {
     console.log('items', items);
-  }, [items])
+  }, [items]);
 
   const onItemsSelected = useCallback((selected: TreeItem[]): void => {
     setNewSelectedList(selected);
@@ -73,6 +80,7 @@ export const Default: Story = ({ enableSearch, searchLabel, expandAll, selectabl
           onItemsSelected={onItemsSelected}
           selectedItems={selectedItems}
           selectable={selectable}
+          defaultExpandParent={defaultExpandParent}
         />
       </div>
       <section>
@@ -90,6 +98,8 @@ Default.storyName = 'default';
 Default.args = {
   enableSearch: true,
   searchLabel: 'Search Me',
-  expandAll: true,
-  selectable: false,
+  expandAll: false,
+  selectable: true,
+  condensed: false,
+  defaultExpandParent: true,
 };
