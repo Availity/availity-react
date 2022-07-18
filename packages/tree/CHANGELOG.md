@@ -2,6 +2,15 @@
 
 This file was generated using [@jscutlery/semver](https://github.com/jscutlery/semver).
 
+## [0.1.2-alpha.0](https://github.com/Availity/availity-react/compare/@availity/tree@0.1.1...@availity/tree@0.1.2-alpha.0) (2022-07-18)
+
+
+### Features
+
+* **tree:** fix some style issues, and add option to default expand first parent ([b443679](https://github.com/Availity/availity-react/commit/b443679fb398c00f90225fa82e4a5f36273d6e80))
+
+
+
 ## [0.1.1](https://github.com/Availity/availity-react/compare/@availity/tree@0.1.0...@availity/tree@0.1.1) (2022-06-14)
 
 
