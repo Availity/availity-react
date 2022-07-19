@@ -2,6 +2,15 @@
 
 This file was generated using [@jscutlery/semver](https://github.com/jscutlery/semver).
 
+## [3.3.1](https://github.com/Availity/availity-react/compare/@availity/select@3.3.0...@availity/select@3.3.1) (2022-07-19)
+
+
+### Bug Fixes
+
+* **select:** add unique label to clear button ([00c05c1](https://github.com/Availity/availity-react/commit/00c05c1d8c8c6fd3aa8ae671fe44bc63580437ea))
+
+
+
 # [3.3.0](https://github.com/Availity/availity-react/compare/@availity/select@3.2.0...@availity/select@3.3.0) (2022-07-13)
 
 
