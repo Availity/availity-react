@@ -2,6 +2,15 @@
 
 This file was generated using [@jscutlery/semver](https://github.com/jscutlery/semver).
 
+## [0.1.2-alpha.2](https://github.com/Availity/availity-react/compare/@availity/tree@0.1.2-alpha.1...@availity/tree@0.1.2-alpha.2) (2022-07-19)
+
+
+### Features
+
+* **tree:** more style tweaks, rename prop ([a54bd74](https://github.com/Availity/availity-react/commit/a54bd74f0901fcc410d193b1452e09ed80e24f0d))
+
+
+
 ## [0.1.2-alpha.1](https://github.com/Availity/availity-react/compare/@availity/tree@0.1.2-alpha.0...@availity/tree@0.1.2-alpha.1) (2022-07-18)
 
 
