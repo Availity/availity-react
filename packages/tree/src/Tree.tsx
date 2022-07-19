@@ -1,6 +1,8 @@
 import Icon from '@availity/icon';
 import React, { useState, useEffect, useCallback } from 'react';
 import { Button, Col, FormGroup, Input, Label, Row } from 'reactstrap';
+import classNames from 'classnames';
+
 import TreeItem from './TreeItem';
 
 const SELECT_ALL = 'Select All';
@@ -23,7 +25,7 @@ export type TreeProps = {
   selectedItems?: TreeItem[];
   expandAll?: boolean;
   selectable?: boolean;
-  defaultExpandParent?: boolean;
+  expandParent?: boolean;
 };
 
 export const buildTree = (items: TreeItem[]) => {
@@ -39,9 +41,19 @@ export const buildTree = (items: TreeItem[]) => {
     if (value.parentId && parents.get(value.parentId)) {
       const parent = parents.get(value.parentId);
       if (parent) {
+        value.depth = (parent.depth || 0) + 1;
+        const itemToUpdate = parents.get(key);
+        if (itemToUpdate) {
+          itemToUpdate.depth = value.depth;
+        }
         parent.children?.push(value);
       }
     } else {
+      value.depth = 0;
+      const itemToUpdate = parents.get(key);
+      if (itemToUpdate) {
+        itemToUpdate.depth = value.depth;
+      }
       tree.push(value);
     }
   }
@@ -59,7 +71,7 @@ const Tree = ({
   expandAll = false,
   parentId,
   selectable = false,
-  defaultExpandParent = true,
+  expandParent = true,
 }: TreeProps): JSX.Element | null => {
   const [treeItems, setTreeItems] = useState(items);
   const [selectedList, setSelectedList] = useState(selectedItems);
@@ -103,7 +115,7 @@ const Tree = ({
     if (treeItems) {
       if (!isReady) {
         for (const item of treeItems) {
-          item.isExpanded = item.isExpanded || expandAll || (isRoot && defaultExpandParent) || false;
+          item.isExpanded = item.isExpanded || expandAll || (isRoot && expandParent) || false;
           item.isHidden = item.isHidden || false;
           item.isDisabled = item.isDisabled || false;
           item.isSelected = selectedItems.map((item) => item.id).includes(item.id) || item.isSelected || false;
@@ -279,7 +291,7 @@ const Tree = ({
       <div data-testid={`tree-view-${parentId || 'parent'}`} className="tree-view">
         {isRoot && enableSearch && (
           <div className="form-group">
-            <Label className="font-weight-bold">{searchLabel}</Label>
+            {searchLabel && <Label className="font-weight-bold">{searchLabel}</Label>}
             <Input
               data-testid="tree-search-input"
               type="text"
@@ -305,11 +317,11 @@ const Tree = ({
           </div>
         )}
 
-        <ul className="pl-0">
+        <ul>
           {treeItems.map((item) => (
             <li data-testid={`tree-view-item-${item.id}`} key={`tree-view-item-${item.id}`}>
               {!item.isHidden && (
-                <>
+                <div style={{ paddingLeft: `${(item.depth || 0) * 20}px` }}>
                   <Row>
                     <Col sm="7">
                       <FormGroup check>
@@ -368,7 +380,7 @@ const Tree = ({
                       </Col>
                     )}
                   </Row>
-                </>
+                </div>
               )}
               {item.children && item.children.length > 0 && item.isExpanded && (
                 <ul>

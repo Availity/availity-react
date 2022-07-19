@@ -10,14 +10,7 @@ export default {
   title: 'Components/Tree',
 } as Meta;
 
-export const Default: Story = ({
-  enableSearch,
-  searchLabel,
-  expandAll,
-  selectable,
-  condensed,
-  defaultExpandParent,
-}) => {
+export const Default: Story = ({ enableSearch, searchLabel, expandAll, selectable, expandParent }) => {
   const [selectedItems] = useState<TreeItem[]>([]);
   const [newSelectedList, setNewSelectedList] = useState<TreeItem[]>([]);
 
@@ -80,7 +73,7 @@ export const Default: Story = ({
           onItemsSelected={onItemsSelected}
           selectedItems={selectedItems}
           selectable={selectable}
-          defaultExpandParent={defaultExpandParent}
+          expandParent={expandParent}
         />
       </div>
       <section>
@@ -100,6 +93,5 @@ Default.args = {
   searchLabel: 'Search Me',
   expandAll: false,
   selectable: true,
-  condensed: false,
-  defaultExpandParent: true,
+  expandParent: true,
 };
