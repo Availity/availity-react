@@ -439,8 +439,13 @@ const Select = ({
         <button
           type="button"
           className={clearButtonClassName}
+          aria-label={`clear ${
+            attributes['aria-label'] || name.replace(/[\W_]+/g, ' ').replace(/[A-Z]/g, ' $&') || ''
+          }`}
           onClick={() => onChangeHandler(attributes.isMulti ? [] : null)}
-        >{`clear${attributes.isMulti ? ' all' : ''}`}</button>
+        >
+          clear
+        </button>
       ) : null}
     </div>
   );
