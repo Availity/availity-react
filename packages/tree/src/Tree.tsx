@@ -41,19 +41,9 @@ export const buildTree = (items: TreeItem[]) => {
     if (value.parentId && parents.get(value.parentId)) {
       const parent = parents.get(value.parentId);
       if (parent) {
-        value.depth = (parent.depth || 0) + 1;
-        const itemToUpdate = parents.get(key);
-        if (itemToUpdate) {
-          itemToUpdate.depth = value.depth;
-        }
         parent.children?.push(value);
       }
     } else {
-      value.depth = 0;
-      const itemToUpdate = parents.get(key);
-      if (itemToUpdate) {
-        itemToUpdate.depth = value.depth;
-      }
       tree.push(value);
     }
   }
@@ -321,7 +311,7 @@ const Tree = ({
           {treeItems.map((item) => (
             <li data-testid={`tree-view-item-${item.id}`} key={`tree-view-item-${item.id}`}>
               {!item.isHidden && (
-                <div style={{ paddingLeft: `${(item.depth || 0) * 20}px` }}>
+                <div>
                   <Row>
                     <Col sm="7">
                       <FormGroup check>
