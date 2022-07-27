@@ -462,4 +462,72 @@ describe('SpacesLink', () => {
 
     expect(link12_title.getAttribute('role')).toBe('listitem');
   });
+
+  it('renders title without link role when ghosted', async () => {
+    const space = {
+      id: 'encoded13',
+      configurationId: '13',
+      type: 'APPLICATION',
+      name: 'no link application',
+      description: 'This is a application',
+      link: {
+        url: '/path/to/url',
+        text: 'title',
+        target: '_self',
+      },
+      metadata: {
+        ghosted: true,
+      },
+    };
+    const { container } = render(
+      <SpacesLink
+        id="application-link-13"
+        space={space}
+        linkAttributes={{
+          spaceId: '13',
+        }}
+        role="listitem"
+        clientId="my-client-id"
+        title={space.link.text}
+      />
+    );
+
+    const link13_title = await waitFor(() => container.querySelector('#app-title-13'));
+
+    expect(link13_title.getAttribute('role')).toBe('listitem');
+  });
+
+  it("renders title with link role when url is provided and ghosted = 'false'", async () => {
+    const space = {
+      id: 'encoded14',
+      configurationId: '14',
+      type: 'APPLICATION',
+      name: 'application with link',
+      description: 'This is a application',
+      link: {
+        url: '/path/to/url',
+        text: 'title',
+        target: '_self',
+      },
+      metadata: {
+        ghosted: 'false',
+      },
+    };
+    const { container } = render(
+      <SpacesLink
+        id="application-link-14"
+        space={space}
+        linkAttributes={{
+          spaceId: '14',
+        }}
+        role="listitem"
+        clientId="my-client-id"
+        title={space.link.text}
+      />
+    );
+
+    const link14_title = await waitFor(() => container.querySelector('#app-title-14'));
+
+    expect(link14_title.getAttribute('role')).toBe('link');
+  });
 });
