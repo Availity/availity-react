@@ -2,6 +2,15 @@
 
 This file was generated using [@jscutlery/semver](https://github.com/jscutlery/semver).
 
+# [6.3.0](https://github.com/Availity/availity-react/compare/@availity/spaces@6.2.2...@availity/spaces@6.3.0) (2022-07-28)
+
+
+### Features
+
+* **spaces:** hide link for shosted configs PF-3282 ([44bd980](https://github.com/Availity/availity-react/commit/44bd980d49b561874a502cf0a112dcf867495dc7))
+
+
+
 ## [6.2.2](https://github.com/Availity/availity-react/compare/@availity/spaces@6.2.1...@availity/spaces@6.2.2) (2022-07-14)
 
 
