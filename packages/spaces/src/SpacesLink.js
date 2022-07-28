@@ -99,6 +99,8 @@ const Link = ({
     linkAttributes,
   });
 
+  const showUrl = link?.url && (!metadata?.ghosted || metadata.ghosted === 'false');
+
   const getIconTitle = useCallback(() => {
     if (shortName) return shortName;
 
@@ -197,7 +199,7 @@ const Link = ({
       : cloneElement(children, {
           role: 'link',
           tabIndex: 0,
-          style: { cursor: link?.url ? 'pointer' : 'not-allowed' },
+          style: { cursor: showUrl ? 'pointer' : 'not-allowed' },
           'aria-label': name,
           ...analytics,
           ...props,
@@ -237,11 +239,11 @@ const Link = ({
                   )}
                   tabIndex={0}
                   style={{
-                    cursor: link?.url ? 'pointer' : 'not-allowed',
+                    cursor: showUrl ? 'pointer' : 'not-allowed',
                   }}
                   {...analytics}
                   {...props}
-                  role={link?.url ? 'link' : role}
+                  role={showUrl ? 'link' : role}
                   aria-label={name}
                   aria-describedby={`app-new-badge-${configurationId}`}
                 >
