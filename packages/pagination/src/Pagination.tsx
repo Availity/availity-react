@@ -1,8 +1,8 @@
-import React, { useState, useContext, useEffect, useRef } from 'react';
+import React, { createContext, useState, useContext, useEffect, useRef } from 'react';
 import isFunction from 'lodash/isFunction';
 import { useDebounce } from 'react-use';
 
-export type PaginationCtx<TItem extends Record<string, unknown>> = {
+export type PaginationCtx<TItem> = {
   total: number;
   pageCount: number;
   page: TItem[];
@@ -21,18 +21,18 @@ export type PaginationCtx<TItem extends Record<string, unknown>> = {
   setDoFocusRefOnPageChange: (doFocus: boolean) => void;
 };
 
-export const PaginationContext = React.createContext<PaginationCtx<Record<string, unknown>> | null>(null);
+export const PaginationContext = createContext<PaginationCtx<unknown> | null>(null);
 
-export const usePagination = <TItem extends Record<string, unknown>>(): PaginationCtx<TItem> => {
+export function usePagination<TItem>(): PaginationCtx<TItem> {
   const ctx = useContext(PaginationContext);
   if (!ctx) throw new Error('usePagination must be used inside the Pagination Provider');
   return ctx as PaginationCtx<TItem>;
-};
+}
 
 // todos
 // Add another `useEffect` for only updating the items without calling the function if the `itemsPerPage` prop changes
 
-export type PaginationProps<TItem extends Record<string, unknown>> = {
+export type PaginationProps<TItem> = {
   children?: React.ReactNode;
   debounceTimeout?: number;
   defaultPage?: number;
@@ -67,7 +67,7 @@ const defaultValues = {
   shouldReturnPrevious: false,
 };
 
-const Pagination = <TItem extends Record<string, unknown>>({
+function Pagination<TItem>({
   items: theItems = defaultValues.items,
   page: propsCurrentPage,
   itemsPerPage = defaultValues.itemsPerPage,
@@ -79,8 +79,8 @@ const Pagination = <TItem extends Record<string, unknown>>({
   debounceTimeout = defaultValues.debounceTimeout,
   shouldReturnPrevious = defaultValues.shouldReturnPrevious,
   onError,
-}: PaginationProps<TItem>): JSX.Element => {
-  const ref = React.useRef<HTMLSpanElement>(null);
+}: PaginationProps<TItem>): JSX.Element {
+  const ref = useRef<HTMLSpanElement>(null);
   const [stateCurrentPage, setPage] = useState(defaultPage);
   const [doFocusRefOnPageChange, setDoFocusRefOnPageChange] = useState(false);
   const [pageData, setPageData] = useState<PaginationState<TItem>>({
@@ -216,6 +216,6 @@ const Pagination = <TItem extends Record<string, unknown>>({
       {children}
     </PaginationContext.Provider>
   );
-};
+}
 
 export default Pagination;
