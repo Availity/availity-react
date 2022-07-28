@@ -2,6 +2,15 @@
 
 This file was generated using [@jscutlery/semver](https://github.com/jscutlery/semver).
 
+## [2.15.2](https://github.com/Availity/availity-react/compare/@availity/pagination@2.15.1...@availity/pagination@2.15.2) (2022-07-28)
+
+
+### Bug Fixes
+
+* **pagination:** item type no longer extends Record ([99a7a54](https://github.com/Availity/availity-react/commit/99a7a545dd73b3b75b2114b07f19fed732a0b19b))
+
+
+
 ## [2.15.1](https://github.com/Availity/availity-react/compare/@availity/pagination@2.15.0...@availity/pagination@2.15.1) (2022-06-14)
 
 
