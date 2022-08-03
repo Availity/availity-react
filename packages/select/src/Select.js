@@ -70,13 +70,15 @@ const validateSelectAllOptions = (options) => {
 // needed for inline styling of clear button
 const wrapperStyle = { display: 'flex' };
 
-export const selectStyles = (showError, styles, isInline) => ({
+export const selectStyles = (showError, styles) => ({
   styles: {
     ...styles,
     container: (provided) => ({
       ...provided,
-      display: isInline ? 'inline-flex' : 'inherit',
-      flexGrow: '1',
+      // firefox fix for grids https://github.com/JedWatson/react-select/issues/5170
+      display: 'grid',
+      gridTemplateColumns: 'minmax(0, 1fr)',
+      width: '100%',
     }),
     placeholder: (provided, state) => {
       if (state.isDisabled) {
@@ -431,7 +433,7 @@ const Select = ({
         options={selectOptions}
         defaultOptions={waitUntilFocused ? [] : true}
         cacheUniqs={_cacheUniq}
-        {...selectStyles(!!errorShown, styles, attributes.isClearable || attributes.isMulti)}
+        {...selectStyles(!!errorShown, styles)}
         {...attributes}
         value={getViewValue()}
       />
