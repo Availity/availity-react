@@ -2,6 +2,15 @@
 
 This file was generated using [@jscutlery/semver](https://github.com/jscutlery/semver).
 
+## [1.3.2](https://github.com/Availity/availity-react/compare/@availity/docusaurus@1.3.1...@availity/docusaurus@1.3.2) (2022-08-03)
+
+
+### Bug Fixes
+
+* **select:** firefox grid bug ([851b9d3](https://github.com/Availity/availity-react/commit/851b9d30a6eca9c0488a87d878be7f275411ce4b))
+
+
+
 ## [1.3.1](https://github.com/Availity/availity-react/compare/@availity/docusaurus@1.3.0...@availity/docusaurus@1.3.1) (2022-07-14)
 
 
