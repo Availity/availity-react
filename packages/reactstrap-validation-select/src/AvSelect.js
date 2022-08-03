@@ -273,6 +273,13 @@ class AvSelect extends AvBaseInput {
         defaultOptions
         styles={{
           ...styles,
+          container: (provided) => ({
+            ...provided,
+            // firefox fix for grids https://github.com/JedWatson/react-select/issues/5170
+            display: 'grid',
+            gridTemplateColumns: 'minmax(0, 1fr)',
+            width: '100%',
+          }),
           placeholder: (provided, state) => {
             if (state.isDisabled) {
               return provided;
