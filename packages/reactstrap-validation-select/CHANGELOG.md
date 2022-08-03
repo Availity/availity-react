@@ -2,6 +2,15 @@
 
 This file was generated using [@jscutlery/semver](https://github.com/jscutlery/semver).
 
+## [9.5.2](https://github.com/Availity/availity-react/compare/@availity/reactstrap-validation-select@9.5.1...@availity/reactstrap-validation-select@9.5.2) (2022-08-03)
+
+
+### Bug Fixes
+
+* **reactstrap-validation-select:** firefox grid bug ([50fcea3](https://github.com/Availity/availity-react/commit/50fcea353208b16ec276762758b265ce2d148109))
+
+
+
 ## [9.5.1](https://github.com/Availity/availity-react/compare/@availity/reactstrap-validation-select@9.5.0...@availity/reactstrap-validation-select@9.5.1) (2022-06-14)
 
 
