@@ -2,6 +2,15 @@
 
 This file was generated using [@jscutlery/semver](https://github.com/jscutlery/semver).
 
+## [3.3.2](https://github.com/Availity/availity-react/compare/@availity/select@3.3.1...@availity/select@3.3.2) (2022-08-03)
+
+
+### Bug Fixes
+
+* **select:** firefox grid bug ([851b9d3](https://github.com/Availity/availity-react/commit/851b9d30a6eca9c0488a87d878be7f275411ce4b))
+
+
+
 ## [3.3.1](https://github.com/Availity/availity-react/compare/@availity/select@3.3.0...@availity/select@3.3.1) (2022-07-19)
 
 
