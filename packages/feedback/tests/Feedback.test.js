@@ -199,4 +199,30 @@ describe('Feedback', () => {
       expect(onClose).toHaveBeenCalledTimes(1);
     });
   });
+
+  test('should render passed text on the button', async () => {
+    const displayText = 'This is my Content.';
+    const { getByText } = render(<Feedback>{displayText}</Feedback>);
+
+    const btn = getByText(displayText);
+
+    expect(btn).toBeDefined();
+  });
+
+  test('should render passed children and text', async () => {
+    const displayText = ' User Feedback';
+    const { getByRole } = render(
+      <Feedback>
+        <span className="icon icon-user-plus" />
+        {displayText}
+      </Feedback>
+    );
+
+    const btn = getByRole('button');
+    const span = btn.firstChild;
+
+    expect(span).toBeDefined();
+    expect(span.className).toBe('icon icon-user-plus');
+    expect(btn.textContent).toBe(displayText);
+  });
 });
