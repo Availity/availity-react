@@ -1,6 +1,6 @@
-import { useQuery } from 'react-query';
+import { useQuery, useQueryClient } from 'react-query';
 
-import { checkPermissions } from './api';
+import { checkPermissions, getRegion } from './api';
 import type { QueryOptions, RequestedPermissions, RequestedResources } from './types';
 
 type Parameters = {
@@ -17,11 +17,17 @@ const useAuthorize = (
   parameters: Parameters = {},
   options?: QueryOptions
 ): Result => {
+  const queryClient = useQueryClient();
+
   const { organizationId, customerId, region = true, resources } = parameters;
 
   const { data: authorized = false, isLoading } = useQuery(
     ['useAuthorize', permissions, region, resources, organizationId, customerId],
-    () => checkPermissions(permissions, region, resources, organizationId, customerId),
+    async () => {
+      const currentRegion = await queryClient.fetchQuery(['region'], () => getRegion(region));
+
+      return checkPermissions(permissions, currentRegion, resources, organizationId, customerId);
+    },
     { enabled: permissions.length > 0, ...options }
   );
 

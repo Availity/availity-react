@@ -2,6 +2,11 @@ import { avUserPermissionsApi, avRegionsApi } from '@availity/api-axios';
 
 import type { Permission, RequestedPermissions, RequestedResources } from './types';
 
+/**
+ * Fetch the current region for the logged in user.
+ *
+ * If the region is a string then it will be returned without fetching.
+ */
 export const getRegion = async (region?: boolean | string): Promise<string | undefined> => {
   if (region === true) {
     const resp = await avRegionsApi.getCurrentRegion();
@@ -12,14 +17,17 @@ export const getRegion = async (region?: boolean | string): Promise<string | und
   return region || undefined;
 };
 
+/**
+ * Fetch the permissions for the logged in user
+ */
 export const getPermissions = async (
   permissions: RequestedPermissions,
-  region?: boolean | string
+  region?: string
 ): Promise<Record<string, Permission>> => {
   if (!permissions) return {};
 
   // TODO: fix these types
-  const response = await avUserPermissionsApi.getPermissions(permissions as string[], await getRegion(region));
+  const response = await avUserPermissionsApi.getPermissions(permissions as string[], region);
 
   return response.reduce<Record<string, Permission>>((prev, cur) => {
     prev[cur.id] = cur;
@@ -27,6 +35,9 @@ export const getPermissions = async (
   }, {});
 };
 
+/**
+ * Validate whether the user has the permission
+ */
 export const checkPermission = (
   permission?: Permission,
   resources?: RequestedResources,
@@ -75,9 +86,12 @@ export const checkPermission = (
   return isAuthorizedForCustomerId && isAuthorizedForOrganizationId && isAuthorizedForResources;
 };
 
+/**
+ * Validate multiple permissions
+ */
 export const checkPermissions = async (
   permissions: RequestedPermissions,
-  region: boolean | string = true,
+  region?: string,
   resources?: RequestedResources,
   organizationId?: string,
   customerId?: string
