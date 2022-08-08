@@ -1,18 +1,19 @@
-import { useCallback, useEffect, useState } from 'react';
+import { useCallback, useState } from 'react';
 import { Meta, Story } from '@storybook/react';
-
+import cloneDeep from 'lodash/cloneDeep';
 import Tree, { buildTree } from '.';
 
 import '../styles.scss';
 import TreeItem from './TreeItem';
+import { Button } from 'reactstrap';
 
 export default {
   title: 'Components/Tree',
 } as Meta;
 
 export const Default: Story = ({ enableSearch, searchLabel, expandAll, selectable, expandParent }) => {
-  const [selectedItems] = useState<TreeItem[]>([]);
   const [newSelectedList, setNewSelectedList] = useState<TreeItem[]>([]);
+  const [isTreeVisible, setIsTreeVisible] = useState(true);
 
   const flatTreeItems: TreeItem[] = [
     {
@@ -50,31 +51,49 @@ export const Default: Story = ({ enableSearch, searchLabel, expandAll, selectabl
       name: 'Child Test 4',
       parentId: '7',
     },
+    {
+      id: '8',
+      name: 'Child Test 5',
+      parentId: '7',
+    },
   ];
 
-  const [items] = useState(buildTree(flatTreeItems));
+  const tree = buildTree(flatTreeItems, [flatTreeItems.find((o) => !o.parentId)?.id || '']);
+  const [items, setItems] = useState(tree);
+  const [initialState] = useState<TreeItem[]>(cloneDeep(tree));
 
-  useEffect(() => {
-    console.log('items', items);
-  }, [items]);
+  const [selectedItems] = useState<TreeItem[]>([items[0]]);
 
   const onItemsSelected = useCallback((selected: TreeItem[]): void => {
     setNewSelectedList(selected);
   }, []);
 
+  const resetTree = async () => {
+    await setNewSelectedList([]);
+    await setItems(cloneDeep(initialState));
+  };
+
   return (
     <>
-      <div style={{ width: 500 }}>
-        <Tree
-          expandAll={expandAll}
-          enableSearch={enableSearch}
-          searchLabel={searchLabel}
-          items={items}
-          onItemsSelected={onItemsSelected}
-          selectedItems={selectedItems}
-          selectable={selectable}
-          expandParent={expandParent}
-        />
+      <Button className="p-2" onClick={() => resetTree()}>
+        Reset Tree
+      </Button>
+      <Button className="p-2 ml-1" onClick={() => setIsTreeVisible(!isTreeVisible)}>
+        {isTreeVisible ? 'Hide' : 'Show'} Tree
+      </Button>
+      <div className="p-1" style={{ width: 500 }}>
+        {isTreeVisible && (
+          <Tree
+            expandAll={expandAll}
+            enableSearch={enableSearch}
+            searchLabel={searchLabel}
+            items={items}
+            onItemsSelected={onItemsSelected}
+            selectedItems={selectedItems}
+            selectable={selectable}
+            onDismount={resetTree}
+          />
+        )}
       </div>
       <section>
         <h5>Selected Items:</h5>
@@ -93,5 +112,4 @@ Default.args = {
   searchLabel: 'Search Me',
   expandAll: false,
   selectable: true,
-  expandParent: true,
 };
