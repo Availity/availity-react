@@ -2,6 +2,15 @@
 
 This file was generated using [@jscutlery/semver](https://github.com/jscutlery/semver).
 
+## [0.1.2-alpha.5](https://github.com/Availity/availity-react/compare/@availity/tree@0.1.2-alpha.4...@availity/tree@0.1.2-alpha.5) (2022-08-08)
+
+
+### Features
+
+* **tree:** add ability to reset tree ([4163a54](https://github.com/Availity/availity-react/commit/4163a544c4f85c8108fa95a4ec2419e2ff13dfb3))
+
+
+
 ## [0.1.2-alpha.4](https://github.com/Availity/availity-react/compare/@availity/tree@0.1.2-alpha.3...@availity/tree@0.1.2-alpha.4) (2022-07-22)
 
 
