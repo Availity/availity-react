@@ -2,6 +2,15 @@
 
 This file was generated using [@jscutlery/semver](https://github.com/jscutlery/semver).
 
+## [7.1.2](https://github.com/Availity/availity-react/compare/@availity/feedback@7.1.1...@availity/feedback@7.1.2) (2022-08-08)
+
+
+### Bug Fixes
+
+* **feedback:** fixed support for children ([6787df2](https://github.com/Availity/availity-react/commit/6787df20081450a63d732328152461af1aabcbb8))
+
+
+
 ## [7.1.1](https://github.com/Availity/availity-react/compare/@availity/feedback@7.1.0...@availity/feedback@7.1.1) (2022-06-14)
 
 
