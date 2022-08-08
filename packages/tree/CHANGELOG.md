@@ -2,6 +2,15 @@
 
 This file was generated using [@jscutlery/semver](https://github.com/jscutlery/semver).
 
+## [0.1.2-alpha.6](https://github.com/Availity/availity-react/compare/@availity/tree@0.1.2-alpha.5...@availity/tree@0.1.2-alpha.6) (2022-08-08)
+
+
+### Features
+
+* **tree:** add missing hooks dependency ([12d333a](https://github.com/Availity/availity-react/commit/12d333afd16ef01052fa24d2992a83ec89729709))
+
+
+
 ## [0.1.2-alpha.5](https://github.com/Availity/availity-react/compare/@availity/tree@0.1.2-alpha.4...@availity/tree@0.1.2-alpha.5) (2022-08-08)
 
 
