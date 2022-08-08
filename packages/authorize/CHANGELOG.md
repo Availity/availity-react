@@ -2,6 +2,15 @@
 
 This file was generated using [@jscutlery/semver](https://github.com/jscutlery/semver).
 
+# [2.2.0](https://github.com/Availity/availity-react/compare/@availity/authorize@2.1.1...@availity/authorize@2.2.0) (2022-08-08)
+
+
+### Features
+
+* **authorize:** cache region ([3da1c36](https://github.com/Availity/availity-react/commit/3da1c36bc07f6115fb21696041ecbecd7989a7a6))
+
+
+
 ## [2.1.1](https://github.com/Availity/availity-react/compare/@availity/authorize@2.1.0...@availity/authorize@2.1.1) (2022-06-14)
 
 
