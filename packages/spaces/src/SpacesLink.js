@@ -91,6 +91,7 @@ const Link = ({
       colors = {},
       link,
       configurationId,
+      isGhosted,
       ...restLink
     } = {},
     props = {},
@@ -99,7 +100,7 @@ const Link = ({
     linkAttributes,
   });
 
-  const showUrl = link?.url && (!metadata?.ghosted || metadata.ghosted === 'false');
+  const showUrl = !isGhosted && link?.url;
 
   const getIconTitle = useCallback(() => {
     if (shortName) return shortName;

@@ -463,7 +463,7 @@ describe('SpacesLink', () => {
     expect(link12_title.getAttribute('role')).toBe('listitem');
   });
 
-  it('renders title without link role when ghosted', async () => {
+  it('renders title without link role when isGhosted', async () => {
     const space = {
       id: 'encoded13',
       configurationId: '13',
@@ -475,9 +475,7 @@ describe('SpacesLink', () => {
         text: 'title',
         target: '_self',
       },
-      metadata: {
-        ghosted: true,
-      },
+      isGhosted: true,
     };
     const { container } = render(
       <SpacesLink
@@ -497,7 +495,7 @@ describe('SpacesLink', () => {
     expect(link13_title.getAttribute('role')).toBe('listitem');
   });
 
-  it("renders title with link role when url is provided and ghosted = 'false'", async () => {
+  it('renders title with link role when url is provided and isGhosted = false', async () => {
     const space = {
       id: 'encoded14',
       configurationId: '14',
@@ -509,8 +507,37 @@ describe('SpacesLink', () => {
         text: 'title',
         target: '_self',
       },
-      metadata: {
-        ghosted: 'false',
+      isGhosted: false,
+    };
+    const { container } = render(
+      <SpacesLink
+        id="application-link-14"
+        space={space}
+        linkAttributes={{
+          spaceId: '14',
+        }}
+        role="listitem"
+        clientId="my-client-id"
+        title={space.link.text}
+      />
+    );
+
+    const link14_title = await waitFor(() => container.querySelector('#app-title-14'));
+
+    expect(link14_title.getAttribute('role')).toBe('link');
+  });
+
+  it('renders title with link role when url is provided and isGhosted is undefined', async () => {
+    const space = {
+      id: 'encoded14',
+      configurationId: '14',
+      type: 'APPLICATION',
+      name: 'application with link',
+      description: 'This is a application',
+      link: {
+        url: '/path/to/url',
+        text: 'title',
+        target: '_self',
       },
     };
     const { container } = render(
