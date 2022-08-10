@@ -2,6 +2,15 @@
 
 This file was generated using [@jscutlery/semver](https://github.com/jscutlery/semver).
 
+## [6.3.1](https://github.com/Availity/availity-react/compare/@availity/spaces@6.3.0...@availity/spaces@6.3.1) (2022-08-10)
+
+
+### Bug Fixes
+
+* **spaces:** use isGhosted property for spaces link PF-3282 ([8b48e68](https://github.com/Availity/availity-react/commit/8b48e68d791d2c97a5e0efc4beea8d5559567f98))
+
+
+
 # [6.3.0](https://github.com/Availity/availity-react/compare/@availity/spaces@6.2.2...@availity/spaces@6.3.0) (2022-07-28)
 
 
