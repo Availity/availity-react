@@ -32,6 +32,7 @@ const PageHeader = ({
   homeUrl,
   linkTag,
   className,
+  variables,
   ...props
 }) => {
   const spaces = useSpaces(spaceId, payerId);
@@ -67,6 +68,7 @@ const PageHeader = ({
           spaceIds={spaceId ? [spaceId] : undefined}
           payerIds={payerId ? [payerId] : undefined}
           clientId={clientId}
+          variables={variables}
         >
           <SpacesLogo {...logoAttrs} />
         </Spaces>
@@ -165,6 +167,7 @@ PageHeader.propTypes = {
   clientId: PropTypes.string,
   iconSrc: PropTypes.string,
   iconAlt: PropTypes.string,
+  variables: PropTypes.object,
 };
 
 PageHeader.defaultProps = {
