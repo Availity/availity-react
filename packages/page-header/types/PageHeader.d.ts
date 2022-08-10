@@ -29,6 +29,7 @@ export interface PageHeaderProps extends React.HTMLAttributes<HTMLDivElement> {
   clientId?: string;
   homeUrl?: string;
   showCrumbs?: boolean;
+  spacesVariables?: Record<string, unknown>;
 }
 
 declare const PageHeader: React.FC<PageHeaderProps>;
