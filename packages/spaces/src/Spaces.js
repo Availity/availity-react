@@ -253,8 +253,8 @@ Spaces.defaultProps = {
   // TODO: move to .graphql file
   // TODO: confirm we have everything needed from old SpacesFragment request
   query: `
-  query configurationFindMany($ids: [String!], $payerIDs: [ID!], $types: [TypeEnum!]) {
-    configurationPagination(filter: { ids: $ids, payerIds: $payerIDs, types: $types }) {
+  query configurationFindMany($ids: [String!], $payerIDs: [ID!], $types: [TypeEnum!], $status: StatusEnum) {
+    configurationPagination(filter: { ids: $ids, payerIds: $payerIDs, types: $types, status: $status }) {
       pageInfo {
         hasNextPage
         currentPage

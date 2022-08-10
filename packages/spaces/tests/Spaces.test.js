@@ -241,6 +241,67 @@ describe('Spaces', () => {
     });
   });
 
+  describe('getAllSpaces with all statuses', () => {
+    it('gets all spaces', async () => {
+      avWebQLApi.create
+        .mockResolvedValueOnce({
+          data: {
+            data: {
+              configurationPagination: {
+                pageInfo: {
+                  currentPage: 1,
+                  hasNextPage: true,
+                },
+                items: [{ id: '1' }, {}, {}, {}, {}],
+              },
+            },
+          },
+        })
+        .mockResolvedValueOnce({
+          data: {
+            data: {
+              configurationPagination: {
+                pageInfo: {
+                  currentPage: 2,
+                  hasNextPage: false,
+                },
+                items: [{}, {}, {}, {}, { id: '10' }],
+              },
+            },
+          },
+        });
+
+      const spaces = await getAllSpaces({
+        query: 'query',
+        clientId: 'clientId',
+        variables: {
+          types: ['space'],
+          status: 'ALL',
+        },
+      });
+
+      // Check correct spaces get returned
+      expect(spaces.length).toBe(10);
+      expect(spaces[0].id).toBe('1');
+      expect(spaces[spaces.length - 1].id).toBe('10');
+
+      // Check correct avWebQLApi calls were made
+      expect(avWebQLApi.create).toHaveBeenCalledTimes(2);
+      expect(avWebQLApi.create.mock.calls[1][0].variables.page).toBe(2);
+    });
+
+    it('should throw error when missing clientId', async () => {
+      let message = false;
+      try {
+        await getAllSpaces({ query: 'query' });
+      } catch (error) {
+        const { message: mess } = error;
+        message = mess;
+      }
+      expect(message).toBe('clientId is required');
+    });
+  });
+
   describe('normalizeSpaces', () => {
     it('normalizes space pairs', async () => {
       const spaces = [{ metadata: [{ name: 'a', value: '1' }] }];
