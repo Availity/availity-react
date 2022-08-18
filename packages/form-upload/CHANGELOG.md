@@ -2,6 +2,16 @@
 
 This file was generated using [@jscutlery/semver](https://github.com/jscutlery/semver).
 
+## [0.9.2](https://github.com/Availity/availity-react/compare/@availity/form-upload@0.9.1...@availity/form-upload@0.9.2) (2022-08-18)
+
+
+### Bug Fixes
+
+* **form-upload:** update types ([7a45643](https://github.com/Availity/availity-react/commit/7a45643123c75f8aaa1ad77c53e937c24764cd21))
+* **form-upload:** update types ([27d9aa0](https://github.com/Availity/availity-react/commit/27d9aa09fa1905351f94ef0d475e95e2b5420635))
+
+
+
 ## [0.9.1](https://github.com/Availity/availity-react/compare/@availity/form-upload@0.9.0...@availity/form-upload@0.9.1) (2022-06-14)
 
 
