@@ -4,6 +4,6 @@ export interface FileListProps {
   onRemoveFile?: Function;
 }
 
-declare const FileList: React.ComponentType<FileListProps>;
+declare const FileList: (props: FileListProps) => JSX.Element | null;
 
 export default FileList;

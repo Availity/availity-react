@@ -10,6 +10,6 @@ export interface FilePickerBtnProps {
   'data-testid'?: string;
 }
 
-declare const FilePickerBtn: React.ComponentType<FilePickerBtnProps>;
+declare const FilePickerBtn: (props: FilePickerBtnProps) => JSX.Element;
 
 export default FilePickerBtn;

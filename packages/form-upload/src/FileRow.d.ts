@@ -11,18 +11,18 @@ type ChildrenArgument = {
   file: FileType;
   metadata?: object;
   name: string;
-  remove: Function;
+  remove: () => void;
   ext: string;
   icon: string;
-  progressBar: Function;
+  progressBar: () => JSX.Element;
 };
 
 export interface FileRowProps {
-  onRemove: Function;
-  children?: (arg: ChildrenArgument) => void;
+  onRemove: (id: string) => void;
+  children?: (args: ChildrenArgument) => JSX.Element;
   file?: File;
 }
 
-declare const FileRow: React.ComponentType<FileRowProps>;
+declare const FileRow: (props: FileRowProps) => JSX.Element;
 
 export default FileRow;

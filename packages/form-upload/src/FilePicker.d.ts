@@ -1,5 +1,7 @@
+import React from 'react';
+
 export interface FilePickerProps {
-  tag?: Function | string;
+  tag?: React.ElementType;
   onChange?: Function;
   multiple?: boolean;
   children?: Function;
@@ -8,6 +10,6 @@ export interface FilePickerProps {
   maxSize?: number | string;
 }
 
-declare const FilePicker: React.ComponentType<FilePickerProps>;
+declare const FilePicker: (props: FilePickerProps) => JSX.Element;
 
 export default FilePicker;
