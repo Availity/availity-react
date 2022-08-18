@@ -9,7 +9,7 @@ export interface UploadProps {
   allowedFileNameCharacters?: string;
   allowedFileTypes?: string[];
   onFileUpload?: Function;
-  onFilePreUpload?: Function;
+  onFilePreUpload?: Function[];
   onFileRemove?: Function;
   deliverFileOnSubmit?: boolean;
   deliveryChannel?: string;
