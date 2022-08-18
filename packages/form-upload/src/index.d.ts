@@ -1,9 +1,9 @@
-import Upload from './types/Upload';
-import FilePicker from './types/FilePicker';
-import FileList from './types/FileList';
-import FileRow from './types/FileRow';
-import FilePickerBtn from './types/FilePickerBtn';
-import UploadProgressBar from './types/UploadProgressBar';
+import Upload from './Upload';
+import FilePicker from './FilePicker';
+import FileList from './FileList';
+import FileRow from './FileRow';
+import FilePickerBtn from './FilePickerBtn';
+import UploadProgressBar from './UploadProgressBar';
 
 export default Upload;
 

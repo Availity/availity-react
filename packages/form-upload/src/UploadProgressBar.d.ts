@@ -1,3 +1,5 @@
+import React from 'react';
+
 type UploadType = {
   sendPassword: Function;
   onProgress: any[];
@@ -16,10 +18,10 @@ export interface UploadProgressBarProps {
   onError?: Function;
   animated?: boolean;
   className?: string;
-  tag?: React.ReactType | string;
+  tag?: React.ElementType;
   striped?: boolean;
 }
 
-declare const UploadProgressBar: React.ComponentType<UploadProgressBarProps>;
+declare const UploadProgressBar: (props: UploadProgressBarProps) => JSX.Element;
 
 export default UploadProgressBar;
