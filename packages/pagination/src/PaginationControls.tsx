@@ -153,9 +153,9 @@ const PaginationControls = ({
         ''
       )}
       {showPaginationText && (
-        <div data-testid="pagination-text" className="pagination-text pt-1 pl-2 pr-2">
+        <li data-testid="pagination-text" className="pagination-text pt-1 pl-2 pr-2">
           {populatePaginationText ? populatePaginationText(lower, upper, total) : `${lower}-${upper} of ${total}`}
-        </div>
+        </li>
       )}
     </Pagination>
   ) : null;
