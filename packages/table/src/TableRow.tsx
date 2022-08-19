@@ -23,6 +23,7 @@ export type Props<T extends IdType> = {
 } & React.HTMLAttributes<HTMLElement>;
 
 const TableRow = <T extends IdType>({
+  id,
   row,
   index,
   onRowClick,
@@ -63,7 +64,7 @@ const TableRow = <T extends IdType>({
   const buildRowProps = () => {
     const props = getRowProps ? getRowProps(row) : {};
     props.className = classNames(rowClasses, props.className);
-    return { ...props, ...definedRowProps, ...rest };
+    return { ...props, ...definedRowProps, id, ...rest };
   };
 
   const definedCellProps = {
@@ -88,7 +89,7 @@ const TableRow = <T extends IdType>({
     <>
       <tr {...row.getRowProps(buildRowProps())}>{children}</tr>
       {AdditionalContent && (
-        <tr {...buildRowProps()}>
+        <tr {...buildRowProps()} id={`${id}_additional_content`}>
           {isFirstColumnSticky && <td className="sticky sticky-left" />}
           <td colSpan={numberOfNonStickyColumns} style={{ borderTop: 0 }} {...definedCellProps}>
             <AdditionalContent record={row.original} {...additionalContentProps} />
