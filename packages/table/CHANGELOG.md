@@ -2,6 +2,15 @@
 
 This file was generated using [@jscutlery/semver](https://github.com/jscutlery/semver).
 
+## [0.5.2-alpha.0](https://github.com/Availity/availity-react/compare/@availity/table@0.5.1...@availity/table@0.5.2-alpha.0) (2022-08-19)
+
+
+### Bug Fixes
+
+* **table:** fix accessibility issues with action menu and ensure unique ids ([450e687](https://github.com/Availity/availity-react/commit/450e687e5054ad62c7fc53e274a9be4f49cd0963))
+
+
+
 ## [0.5.1](https://github.com/Availity/availity-react/compare/@availity/table@0.5.0...@availity/table@0.5.1) (2022-06-14)
 
 
