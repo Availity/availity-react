@@ -13,10 +13,15 @@ const TableActionMenu = ({ id, children }: Props): JSX.Element => {
 
   return (
     <Dropdown id={id} className="dropdown-action-menu" direction="left" isOpen={isOpen} toggle={toggle}>
-      <DropdownToggle id={`${id}_dropdown_toggle`} data-boundary="viewport" className="btn btn-ghost">
+      <DropdownToggle
+        id={`${id}_dropdown_toggle`}
+        aria-label="Action Menu"
+        data-boundary="viewport"
+        className="btn btn-ghost"
+      >
         <Icon id={`${id}_dropdown_toggle_icon`} name="menu" />
       </DropdownToggle>
-      <DropdownMenu id={`${id}_dropdown_toggle_icon`} className="dropdown-action-menu" container=".av-grid-row-even td">
+      <DropdownMenu id={`${id}_dropdown_menu`} className="dropdown-action-menu" container=".av-grid-row-even td">
         {children}
       </DropdownMenu>
     </Dropdown>
