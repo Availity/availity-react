@@ -279,26 +279,27 @@ exports[`Table should not display primary action column when provided 1`] = `
         >
           <div
             class="dropdown-action-menu dropleft dropdown"
-            id="table_row_action_menu_1"
+            id="table_row_action_menu_0"
           >
             <button
               aria-expanded="false"
               aria-haspopup="true"
+              aria-label="Action Menu"
               class="btn btn-ghost btn btn-secondary"
               data-boundary="viewport"
-              id="table_row_action_menu_1_dropdown_toggle"
+              id="table_row_action_menu_0_dropdown_toggle"
               type="button"
             >
               <i
                 aria-hidden="true"
                 class="icon icon-menu"
-                id="table_row_action_menu_1_dropdown_toggle_icon"
+                id="table_row_action_menu_0_dropdown_toggle_icon"
               />
             </button>
             <div
               aria-hidden="true"
               class="dropdown-action-menu dropdown-menu"
-              id="table_row_action_menu_1_dropdown_toggle_icon"
+              id="table_row_action_menu_0_dropdown_menu"
               role="menu"
               tabindex="-1"
             >
@@ -313,12 +314,12 @@ exports[`Table should not display primary action column when provided 1`] = `
               </button>
               <div
                 class="dropdown-divider"
-                id="table_row_action_menu_item_1_action_actionDivider"
+                id="table_row_action_menu_item_0_action_actionDivider"
                 tabindex="-1"
               />
               <button
                 class="dropdown-item"
-                id="table_row_action_menu_item_2_action_action2"
+                id="table_row_action_menu_item_0_action_action2"
                 role="menuitem"
                 tabindex="0"
                 type="button"
@@ -330,7 +331,7 @@ exports[`Table should not display primary action column when provided 1`] = `
           <i
             aria-hidden="true"
             class="icon icon-file-pdf"
-            data-testid="table_row_action_menu_item_1_primaryAction"
+            data-testid="table_row_action_menu_item_0_primaryAction"
             style="cursor: pointer;"
             title="View File"
           />
@@ -393,26 +394,27 @@ exports[`Table should not display primary action column when provided 1`] = `
         >
           <div
             class="dropdown-action-menu dropleft dropdown"
-            id="table_row_action_menu_2"
+            id="table_row_action_menu_1"
           >
             <button
               aria-expanded="false"
               aria-haspopup="true"
+              aria-label="Action Menu"
               class="btn btn-ghost btn btn-secondary"
               data-boundary="viewport"
-              id="table_row_action_menu_2_dropdown_toggle"
+              id="table_row_action_menu_1_dropdown_toggle"
               type="button"
             >
               <i
                 aria-hidden="true"
                 class="icon icon-menu"
-                id="table_row_action_menu_2_dropdown_toggle_icon"
+                id="table_row_action_menu_1_dropdown_toggle_icon"
               />
             </button>
             <div
               aria-hidden="true"
               class="dropdown-action-menu dropdown-menu"
-              id="table_row_action_menu_2_dropdown_toggle_icon"
+              id="table_row_action_menu_1_dropdown_menu"
               role="menu"
               tabindex="-1"
             >
@@ -423,7 +425,7 @@ exports[`Table should not display primary action column when provided 1`] = `
               />
               <button
                 class="dropdown-item"
-                id="table_row_action_menu_item_2_action_action2"
+                id="table_row_action_menu_item_1_action_action2"
                 role="menuitem"
                 tabindex="0"
                 type="button"
@@ -1181,26 +1183,27 @@ exports[`Table should render with formatted cells 1`] = `
         >
           <div
             class="dropdown-action-menu dropleft dropdown"
-            id="table_row_action_menu_1"
+            id="table_row_action_menu_0"
           >
             <button
               aria-expanded="false"
               aria-haspopup="true"
+              aria-label="Action Menu"
               class="btn btn-ghost btn btn-secondary"
               data-boundary="viewport"
-              id="table_row_action_menu_1_dropdown_toggle"
+              id="table_row_action_menu_0_dropdown_toggle"
               type="button"
             >
               <i
                 aria-hidden="true"
                 class="icon icon-menu"
-                id="table_row_action_menu_1_dropdown_toggle_icon"
+                id="table_row_action_menu_0_dropdown_toggle_icon"
               />
             </button>
             <div
               aria-hidden="true"
               class="dropdown-action-menu dropdown-menu"
-              id="table_row_action_menu_1_dropdown_toggle_icon"
+              id="table_row_action_menu_0_dropdown_menu"
               role="menu"
               tabindex="-1"
             >
@@ -1215,12 +1218,12 @@ exports[`Table should render with formatted cells 1`] = `
               </button>
               <div
                 class="dropdown-divider"
-                id="table_row_action_menu_item_1_action_actionDivider"
+                id="table_row_action_menu_item_0_action_actionDivider"
                 tabindex="-1"
               />
               <button
                 class="dropdown-item"
-                id="table_row_action_menu_item_2_action_action2"
+                id="table_row_action_menu_item_0_action_action2"
                 role="menuitem"
                 tabindex="0"
                 type="button"
@@ -1232,7 +1235,7 @@ exports[`Table should render with formatted cells 1`] = `
           <i
             aria-hidden="true"
             class="icon icon-file-pdf"
-            data-testid="table_row_action_menu_item_1_primaryAction"
+            data-testid="table_row_action_menu_item_0_primaryAction"
             style="cursor: pointer;"
             title="View File"
           />
@@ -1295,26 +1298,27 @@ exports[`Table should render with formatted cells 1`] = `
         >
           <div
             class="dropdown-action-menu dropleft dropdown"
-            id="table_row_action_menu_2"
+            id="table_row_action_menu_1"
           >
             <button
               aria-expanded="false"
               aria-haspopup="true"
+              aria-label="Action Menu"
               class="btn btn-ghost btn btn-secondary"
               data-boundary="viewport"
-              id="table_row_action_menu_2_dropdown_toggle"
+              id="table_row_action_menu_1_dropdown_toggle"
               type="button"
             >
               <i
                 aria-hidden="true"
                 class="icon icon-menu"
-                id="table_row_action_menu_2_dropdown_toggle_icon"
+                id="table_row_action_menu_1_dropdown_toggle_icon"
               />
             </button>
             <div
               aria-hidden="true"
               class="dropdown-action-menu dropdown-menu"
-              id="table_row_action_menu_2_dropdown_toggle_icon"
+              id="table_row_action_menu_1_dropdown_menu"
               role="menu"
               tabindex="-1"
             >
@@ -1325,7 +1329,7 @@ exports[`Table should render with formatted cells 1`] = `
               />
               <button
                 class="dropdown-item"
-                id="table_row_action_menu_item_2_action_action2"
+                id="table_row_action_menu_item_1_action_action2"
                 role="menuitem"
                 tabindex="0"
                 type="button"
