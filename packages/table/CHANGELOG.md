@@ -2,6 +2,15 @@
 
 This file was generated using [@jscutlery/semver](https://github.com/jscutlery/semver).
 
+## [0.5.2-alpha.1](https://github.com/Availity/availity-react/compare/@availity/table@0.5.2-alpha.0...@availity/table@0.5.2-alpha.1) (2022-08-22)
+
+
+### Bug Fixes
+
+* **table:** correct duplicate ids on elements ([92c5289](https://github.com/Availity/availity-react/commit/92c528986b9517bb3a24751c931b888eca8d1d96))
+
+
+
 ## [0.5.2-alpha.0](https://github.com/Availity/availity-react/compare/@availity/table@0.5.1...@availity/table@0.5.2-alpha.0) (2022-08-19)
 
 
