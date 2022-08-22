@@ -15,7 +15,7 @@ const ActionCell = <T extends IdType>({
   actions,
   primaryAction,
 }: ActionCellConfig<T>): ((cell: Cell<T>) => JSX.Element) => {
-  const ActionCellDef = ({ row: { original }, index }: Cell<T>): JSX.Element => {
+  const ActionCellDef = ({ row: { original, id } }: Cell<T>): JSX.Element => {
     const isPrimaryActionVisible = primaryAction
       ? primaryAction.isVisible
         ? primaryAction.isVisible(original)
@@ -24,11 +24,11 @@ const ActionCell = <T extends IdType>({
 
     return (
       <>
-        <TableActionMenu id={`table_row_action_menu_${original.id ? original.id : index}`}>
-          {actions.map((action, index) => (
+        <TableActionMenu id={`table_row_action_menu_${id}`}>
+          {actions.map((action) => (
             <TableActionMenuItem
               key={action.id}
-              id={`table_row_action_menu_item_${index}`}
+              id={`table_row_action_menu_item_${id}`}
               action={action}
               record={original}
             />
@@ -36,7 +36,7 @@ const ActionCell = <T extends IdType>({
         </TableActionMenu>
         {primaryAction && isPrimaryActionVisible && (
           <Icon
-            data-testid={`table_row_action_menu_item_${original.id}_primaryAction`}
+            data-testid={`table_row_action_menu_item_${id}_primaryAction`}
             name={primaryAction.iconName}
             title={primaryAction.title}
             onClick={() => primaryAction.onClick(original)}

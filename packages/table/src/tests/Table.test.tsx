@@ -107,18 +107,14 @@ const formattedColumns = [
 
 describe('Table', () => {
   test('should render basic table', () => {
-    const { container } = render(
-      <Table data={basicData} columns={basicColumns}/>
-    );
+    const { container } = render(<Table data={basicData} columns={basicColumns} />);
 
     expect(container).toBeDefined();
     expect(container).toMatchSnapshot();
   });
 
   test('should render selectable table', async () => {
-    const { container } = render(
-      <Table selectable data={basicData} columns={basicColumns}/>
-    );
+    const { container } = render(<Table selectable data={basicData} columns={basicColumns} />);
 
     expect(container).toBeDefined();
     expect(container).toMatchSnapshot();
@@ -147,9 +143,7 @@ describe('Table', () => {
   });
 
   test('should render with expected ids', () => {
-    const { container } = render(
-      <Table id="my_availity_table" data={basicData} columns={basicColumns}/>
-    );
+    const { container } = render(<Table id="my_availity_table" data={basicData} columns={basicColumns} />);
 
     expect(container).toBeDefined();
     expect(container).toMatchSnapshot();
@@ -158,7 +152,7 @@ describe('Table', () => {
   test('should call onRowClick when event is provided', async () => {
     const onRowClick = jest.fn();
     const { container, getByTestId } = render(
-      <Table onRowClick={onRowClick} data={basicData} columns={basicColumns}/>
+      <Table onRowClick={onRowClick} data={basicData} columns={basicColumns} />
     );
 
     expect(container).toBeDefined();
@@ -175,7 +169,7 @@ describe('Table', () => {
   test('should call onRowClick when event is provided for selectable table', async () => {
     const onRowClick = jest.fn();
     const { container, getByTestId } = render(
-      <Table selectable onRowClick={onRowClick} data={basicData} columns={basicColumns}/>
+      <Table selectable onRowClick={onRowClick} data={basicData} columns={basicColumns} />
     );
 
     expect(container).toBeDefined();
@@ -193,7 +187,7 @@ describe('Table', () => {
     const onRowSelected = jest.fn();
 
     const { container, getByTestId } = render(
-      <Table selectable onRowSelected={onRowSelected} data={basicData} columns={basicColumns}/>
+      <Table selectable onRowSelected={onRowSelected} data={basicData} columns={basicColumns} />
     );
 
     expect(container).toBeDefined();
@@ -210,7 +204,7 @@ describe('Table', () => {
     const onSort = jest.fn();
 
     const { container, getByTestId } = render(
-      <Table onSort={onSort} sortable data={basicData} columns={basicColumns} manualSortBy/>
+      <Table onSort={onSort} sortable data={basicData} columns={basicColumns} manualSortBy />
     );
 
     expect(container).toBeDefined();
@@ -233,9 +227,7 @@ describe('Table', () => {
       },
     ];
 
-    const { container, queryByTestId } = render(
-      <Table data={basicData} columns={columnsToUse}/>
-    );
+    const { container, queryByTestId } = render(<Table data={basicData} columns={columnsToUse} />);
 
     expect(container).toBeDefined();
     expect(container).toMatchSnapshot();
@@ -245,17 +237,15 @@ describe('Table', () => {
   });
 
   test('should not display primary action column when provided', async () => {
-    const { container, queryByTestId } = render(
-      <Table data={formattedData} columns={formattedColumns}/>
-    );
+    const { container, queryByTestId } = render(<Table data={formattedData} columns={formattedColumns} />);
 
     expect(container).toBeDefined();
     expect(container).toMatchSnapshot();
 
-    const primaryAction1 = queryByTestId('table_row_action_menu_item_1_primaryAction');
+    const primaryAction1 = queryByTestId('table_row_action_menu_item_0_primaryAction');
     expect(primaryAction1).not.toBeNull();
 
-    const primaryAction2 = queryByTestId('table_row_action_menu_item_3_primaryAction');
+    const primaryAction2 = queryByTestId('table_row_action_menu_item_2_primaryAction');
     expect(primaryAction2).toBeNull();
   });
 });
