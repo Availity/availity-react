@@ -133,7 +133,7 @@ describe('Date', () => {
   test('renders aria-describedby', async () => {
     const onSubmit = jest.fn();
 
-    const { container } = render(
+    const { getByText, container } = render(
       <Form
         initialValues={{
           dateRange: '',
@@ -147,6 +147,19 @@ describe('Date', () => {
         <Button type="submit">Submit</Button>
       </Form>
     );
+
+    await waitFor(() => {
+      // No feedback component with no errors
+      const getById = queryByAttribute.bind(null, 'id');
+      const firstInput = getById(container, 'dateRange-start');
+      expect(firstInput).toBeDefined();
+      expect(firstInput).toHaveAttribute('aria-describedby', 'DateInput__screen-reader-message-dateRange-start ');
+      const secondInput = getById(container, 'dateRange-end');
+      expect(secondInput).toBeDefined();
+      expect(secondInput).toHaveAttribute('aria-describedby', 'DateInput__screen-reader-message-dateRange-end ');
+    });
+
+    fireEvent.click(getByText('Submit')); // Needed to set error state on form to make feedback show up
 
     await waitFor(() => {
       const getById = queryByAttribute.bind(null, 'id');
