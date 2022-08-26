@@ -1,6 +1,6 @@
 {
   "name": "@availity/pagination",
-  "version": "2.15.3-alpha.0",
+  "version": "2.15.3",
   "description": "component for displaying paginated data",
   "keywords": [
     "availity",
