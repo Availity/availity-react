@@ -2,6 +2,15 @@
 
 This file was generated using [@jscutlery/semver](https://github.com/jscutlery/semver).
 
+# [4.5.0](https://github.com/Availity/availity-react/compare/@availity/reactstrap-validation-date@4.4.1...@availity/reactstrap-validation-date@4.5.0) (2022-08-29)
+
+
+### Features
+
+* **reactstrap-validation-date:** switch to combobox, resolve accessibility warnings ([30f8eb9](https://github.com/Availity/availity-react/commit/30f8eb9294cff8e6831393fb6b97bca8bfbce7b4))
+
+
+
 ## [4.4.1](https://github.com/Availity/availity-react/compare/@availity/reactstrap-validation-date@4.4.0...@availity/reactstrap-validation-date@4.4.1) (2022-06-14)
 
 
