@@ -34,7 +34,7 @@
   },
   "devDependencies": {
     "@availity/api-axios": "^7.0.1",
-    "@availity/yup": "^5.1.0",
+    "@availity/yup": "^5.1.2",
     "axios": "^0.21.4",
     "formik": "^2.2.9",
     "react": "^17.0.2",
@@ -43,7 +43,7 @@
   },
   "peerDependencies": {
     "@availity/api-axios": "^6.0.0",
-    "@availity/yup": "^5.1.0",
+    "@availity/yup": "^5.1.2",
     "axios": "^0.21.1",
     "formik": "^2.0.1",
     "react": ">=16.3.0",
