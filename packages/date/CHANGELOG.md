@@ -2,6 +2,15 @@
 
 This file was generated using [@jscutlery/semver](https://github.com/jscutlery/semver).
 
+# [4.2.0](https://github.com/Availity/availity-react/compare/@availity/date@4.1.2...@availity/date@4.2.0) (2022-08-29)
+
+
+### Features
+
+* **date:** switch to combobox, resolve accessibility warnings ([a3651af](https://github.com/Availity/availity-react/commit/a3651af6f82b475bd626bc62933406839d9a7e4a))
+
+
+
 ## [4.1.2](https://github.com/Availity/availity-react/compare/@availity/date@4.1.1...@availity/date@4.1.2) (2022-08-26)
 
 
