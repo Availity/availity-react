@@ -2,6 +2,15 @@
 
 This file was generated using [@jscutlery/semver](https://github.com/jscutlery/semver).
 
+## [1.5.2](https://github.com/Availity/availity-react/compare/@availity/form@1.5.1...@availity/form@1.5.2) (2022-08-29)
+
+
+### Bug Fixes
+
+* **form:** remove required default value ([53c8fdb](https://github.com/Availity/availity-react/commit/53c8fdb6b1f65be14cee89badbe161583f74a7d4))
+
+
+
 ## [1.5.1](https://github.com/Availity/availity-react/compare/@availity/form@1.5.0...@availity/form@1.5.1) (2022-06-14)
 
 
