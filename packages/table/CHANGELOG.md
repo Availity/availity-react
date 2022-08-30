@@ -2,6 +2,15 @@
 
 This file was generated using [@jscutlery/semver](https://github.com/jscutlery/semver).
 
+## [0.5.2-alpha.2](https://github.com/Availity/availity-react/compare/@availity/table@0.5.2-alpha.1...@availity/table@0.5.2-alpha.2) (2022-08-30)
+
+
+### Bug Fixes
+
+* **table:** fix currency cell to allow for strings or JSX. Also ensure it doesn't format undefined as it produces NaN ([092f26e](https://github.com/Availity/availity-react/commit/092f26e333e00479252843adb206bfbb3e558a7e))
+
+
+
 ## [0.5.2-alpha.1](https://github.com/Availity/availity-react/compare/@availity/table@0.5.2-alpha.0...@availity/table@0.5.2-alpha.1) (2022-08-22)
 
 
