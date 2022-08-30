@@ -1,5 +1,5 @@
 import React from 'react';
-import ReactCurrencyInput from 'react-currency-input-field';
+import ReactCurrencyInput, { CurrencyInputProps } from 'react-currency-input-field';
 import classnames from 'classnames';
 import { useField, useFormikContext } from 'formik';
 import Feedback from './Feedback';
@@ -11,9 +11,9 @@ type Props = {
   placeholder?: string;
   disabled?: boolean;
   onValueChanged: (value: string | undefined) => void;
-};
+} & CurrencyInputProps;
 
-const CurrencyInput = ({ id, name, value, placeholder, disabled, onValueChanged }: Props) => {
+const CurrencyInput = ({ id, name, value, placeholder, disabled, onValueChanged, ...attributes }: Props) => {
   const { setFieldValue, setFieldTouched } = useFormikContext();
   const [, metadata] = useField({
     name,
@@ -71,6 +71,15 @@ const CurrencyInput = ({ id, name, value, placeholder, disabled, onValueChanged 
           formatDecimals(event.target.value.replace('$', ''));
         }}
         onValueChange={onValueChanged}
+        allowNegativeValue={false}
+        transformRawValue={(rawValue: string) => {
+          // This resolves an issue where entering decimals first will not format properly: https://github.com/cchanxzy/react-currency-input-field/issues/249
+          if (rawValue && rawValue.startsWith('.')) {
+            return `0${rawValue}`;
+          }
+          return rawValue;
+        }}
+        {...attributes}
       />
       <Feedback name={name} />
     </>
