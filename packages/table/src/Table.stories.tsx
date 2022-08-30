@@ -13,6 +13,7 @@ import Table, {
   TableSort,
   TableContext,
   TableContent,
+  CurrencyCell,
 } from '.';
 import '../styles.scss';
 
@@ -42,6 +43,13 @@ const columns = [
     defaultCanSort: true,
     disableSortBy: false,
     Cell: BadgeCell('primary'),
+  },
+  {
+    Header: 'Currency Cell',
+    accessor: 'amount',
+    defaultCanSort: true,
+    disableSortBy: false,
+    Cell: CurrencyCell({ defaultValue: <span className="text-muted">Not Available</span> }),
   },
   {
     id: 'actions',
@@ -135,7 +143,7 @@ BasicTable.args = {
   sortable: false,
   selectable: true,
   columns,
-  data: response.data.patientPagination.items,
+  data: response.data.patientPagination.items.map((d) => ({ ...d, amount: '2.45' })),
   headerProps: { style: { background: 'gray' } },
   bodyProps: { style: {} },
 };
@@ -203,7 +211,7 @@ WithControls.args = {
   sortable: true,
   selectable: true,
   columns,
-  data: response.data.patientPagination.items,
+  data: response.data.patientPagination.items.map((d) => ({ ...d, amount: '' })),
   headerProps: { style: { background: '#f0f0f0' } },
   bodyProps: { style: {} },
 };
@@ -230,7 +238,7 @@ WithScrollableContainer.args = {
   sortable: false,
   selectable: false,
   columns,
-  data: response.data.patientPagination.items,
+  data: response.data.patientPagination.items.map((d) => ({ ...d, amount: undefined })),
   headerProps: { sticky: true, style: { background: '#333' } },
   bodyProps: { style: {} },
 };
