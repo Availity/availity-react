@@ -8,7 +8,7 @@ export interface CurrencyCellConfig {
   currency?: string;
   style?: string;
   numberFormat?: string;
-  defaultValue?: string;
+  defaultValue?: string | React.ReactChild | React.ElementType;
   locales?: string;
 }
 
@@ -19,18 +19,19 @@ const CurrencyCell = ({
 }: CurrencyCellConfig): JSX.Element | ((cell: CellProps) => JSX.Element) => {
   const CurrencyCellDef = ({ value }: CellProps): JSX.Element => {
     let formattedValue;
+
     if (!value) {
       formattedValue = defaultValue;
+    } else {
+      value = typeof value === 'string' ? Number.parseFloat(value) : value;
+      const formatNum = new Intl.NumberFormat(locales, {
+        style: 'currency',
+        currency,
+      }).format;
+
+      formattedValue = formatNum(value);
     }
-
-    value = typeof value === 'string' ? Number.parseFloat(value) : value;
-    const formatNum = new Intl.NumberFormat(locales, {
-      style: 'currency',
-      currency,
-    }).format;
-
-    formattedValue = formatNum(value);
-    return <span title={formattedValue}>{formattedValue}</span>;
+    return <span title={typeof formattedValue === 'string' ? formattedValue : undefined}>{formattedValue}</span>;
   };
 
   return CurrencyCellDef;
