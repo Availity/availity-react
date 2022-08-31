@@ -2,6 +2,15 @@
 
 This file was generated using [@jscutlery/semver](https://github.com/jscutlery/semver).
 
+## [1.5.3-alpha.0](https://github.com/Availity/availity-react/compare/@availity/form@1.5.2...@availity/form@1.5.3-alpha.0) (2022-08-30)
+
+
+### Bug Fixes
+
+* **form:** prevent negative values in currency input, issues with decimals first ([bbf5389](https://github.com/Availity/availity-react/commit/bbf53897b811771979fae367c902d4dcaed2e4d3))
+
+
+
 ## [1.5.2](https://github.com/Availity/availity-react/compare/@availity/form@1.5.1...@availity/form@1.5.2) (2022-08-29)
 
 
