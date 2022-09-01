@@ -2,6 +2,15 @@
 
 This file was generated using [@jscutlery/semver](https://github.com/jscutlery/semver).
 
+## [0.5.2-alpha.3](https://github.com/Availity/availity-react/compare/@availity/table@0.5.2-alpha.2...@availity/table@0.5.2-alpha.3) (2022-09-01)
+
+
+### Bug Fixes
+
+* **table:** adjust cell definitions to better handle undefined values ([895428d](https://github.com/Availity/availity-react/commit/895428d4006b0dc4b90f75129e33640be127da1c))
+
+
+
 ## [0.5.2-alpha.2](https://github.com/Availity/availity-react/compare/@availity/table@0.5.2-alpha.1...@availity/table@0.5.2-alpha.2) (2022-08-30)
 
 
