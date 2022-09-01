@@ -7,17 +7,21 @@ export type CellProps = {
 
 export interface DateTimeCellConfig {
   dateFormat: string;
-  timeFormat?: string;
-  convertTimeZone?: boolean;
+  defaultValue?: string | React.ReactChild | React.ElementType;
 }
 
-const DateCell = ({ dateFormat }: DateTimeCellConfig): JSX.Element | ((cell: CellProps) => JSX.Element) => {
+const DateCell = ({
+  dateFormat,
+  defaultValue,
+}: DateTimeCellConfig): JSX.Element | ((cell: CellProps) => JSX.Element) => {
   const DateCellDef = ({ value }: CellProps): JSX.Element => {
     let formattedValue;
-    if (value) {
+    if (!value) {
+      formattedValue = defaultValue;
+    } else {
       formattedValue = moment(value).format(dateFormat);
     }
-    return <span title={formattedValue}>{formattedValue}</span>;
+    return <span title={typeof formattedValue === 'string' ? formattedValue : undefined}>{formattedValue}</span>;
   };
 
   return DateCellDef;
