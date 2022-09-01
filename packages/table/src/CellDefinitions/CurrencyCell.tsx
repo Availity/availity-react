@@ -7,7 +7,6 @@ type CellProps = {
 export interface CurrencyCellConfig {
   currency?: string;
   style?: string;
-  numberFormat?: string;
   defaultValue?: string | React.ReactChild | React.ElementType;
   locales?: string;
 }
@@ -15,6 +14,7 @@ export interface CurrencyCellConfig {
 const CurrencyCell = ({
   currency = 'USD',
   defaultValue = '',
+  style = 'currency',
   locales = 'en-us',
 }: CurrencyCellConfig): JSX.Element | ((cell: CellProps) => JSX.Element) => {
   const CurrencyCellDef = ({ value }: CellProps): JSX.Element => {
@@ -25,7 +25,7 @@ const CurrencyCell = ({
     } else {
       value = typeof value === 'string' ? Number.parseFloat(value) : value;
       const formatNum = new Intl.NumberFormat(locales, {
-        style: 'currency',
+        style,
         currency,
       }).format;
 

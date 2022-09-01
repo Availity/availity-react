@@ -16,6 +16,7 @@ import Table, {
   CurrencyCell,
 } from '.';
 import '../styles.scss';
+import IconWithTooltipCell from './CellDefinitions/IconWIthTooltipCell';
 
 const columns = [
   {
@@ -42,7 +43,7 @@ const columns = [
     accessor: 'subscriberRelationship',
     defaultCanSort: true,
     disableSortBy: false,
-    Cell: BadgeCell('primary'),
+    Cell: BadgeCell('primary', undefined, <span className="text-muted">Not Available</span>),
   },
   {
     Header: 'Currency Cell',
@@ -50,6 +51,18 @@ const columns = [
     defaultCanSort: true,
     disableSortBy: false,
     Cell: CurrencyCell({ defaultValue: <span className="text-muted">Not Available</span> }),
+  },
+  {
+    Header: 'Has Middle Name',
+    accessor: 'middleName',
+    defaultCanSort: true,
+    disableSortBy: false,
+    Cell: IconWithTooltipCell({
+      name: 'ok',
+      getId: (row) => `IconHasMiddleName_${row.id}`,
+      tooltipText: (value) => `Middle Name: ${value}`,
+      defaultValue: 'Not Available',
+    }),
   },
   {
     id: 'actions',
