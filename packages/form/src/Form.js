@@ -3,7 +3,6 @@ import PropTypes from 'prop-types';
 import { v4 as uuid } from 'uuid';
 import { Form as RsForm } from 'reactstrap';
 import { Formik, Form as FForm, useFormikContext } from 'formik';
-import '../styles.scss';
 
 const useFormikFocusFirstInvalidField = (id, focusInvalidField, invalidInputSelectors) => {
   const formik = useFormikContext();
