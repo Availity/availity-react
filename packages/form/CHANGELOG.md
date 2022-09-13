@@ -2,6 +2,16 @@
 
 This file was generated using [@jscutlery/semver](https://github.com/jscutlery/semver).
 
+# [1.6.0](https://github.com/Availity/availity-react/compare/@availity/form@1.5.3...@availity/form@1.6.0) (2022-09-13)
+
+
+### Features
+
+* **feedback:** add icon to feedback when in error ([2d6577f](https://github.com/Availity/availity-react/commit/2d6577f69e76fbfe433f940c451cada30d681820))
+* **form:** removed import of styles, added to storybook ([f1d418b](https://github.com/Availity/availity-react/commit/f1d418b64558d15434d764cc96ed1171b336b58a))
+
+
+
 ## [1.5.3](https://github.com/Availity/availity-react/compare/@availity/form@1.5.2...@availity/form@1.5.3) (2022-08-31)
 
 

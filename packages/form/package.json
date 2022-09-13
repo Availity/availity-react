@@ -1,6 +1,6 @@
 {
   "name": "@availity/form",
-  "version": "1.5.3",
+  "version": "1.6.0",
   "description": "Form Wrapper around formik using reactstrap components",
   "keywords": [
     "react",
