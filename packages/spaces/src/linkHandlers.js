@@ -1,0 +1,55 @@
+import { getUrl, getTarget } from '@availity/link';
+import nativeForm from '@availity/native-form';
+import { isAbsoluteUrl } from '@availity/resolve-url';
+import { updateTopApps, updateUrl } from './helpers';
+
+export const openLink = async (space, { akaname, linkAttributes }) => {
+  if (!space?.link?.url) {
+    return;
+  }
+
+  await updateTopApps(space.configurationId, space.type, akaname);
+
+  const target = getTarget(space.link.target);
+  const url = !isAbsoluteUrl(space.link.url)
+    ? getUrl(
+        updateUrl(
+          space.link.url,
+          'spaceId',
+          space.parents && space.parents[0] ? space.parents[0].id : linkAttributes.spaceId
+        ),
+        false,
+        false
+      )
+    : space.link.url;
+  window.open(url, target);
+};
+
+export const linkSso = async (space, { akaname, clientId, linkAttributes, event }) => {
+  if (space.metadata && space.metadata.ssoId) {
+    event.preventDefault();
+
+    const options = space.link?.target ? { target: getTarget(space.link.target) } : undefined;
+
+    const attributes = {
+      X_Client_ID: clientId,
+      X_XSRF_TOKEN: document.cookie.replace(/(?:(?:^|.*;\s*)XSRF-TOKEN\s*=\s*([^;]*).*$)|^.*$/, '$1'),
+      // TODO: this attribute gets set on the html form, does it ever make it to magneto? what is it used for?
+      // seems to have logging implications
+      // spaceId: parents && parents[0] ? parents[0].id : linkAttributes.spaceId,
+      spaceId: linkAttributes.spaceId,
+      ...linkAttributes,
+    };
+
+    try {
+      await updateTopApps(space.configurationId, space.type, akaname);
+      await nativeForm(space.metadata.ssoId, attributes, options, space.type);
+    } catch {
+      // eslint-disable-next-line no-console
+      console.warn('Something went wrong');
+    }
+
+    return false;
+  }
+  return false;
+};
