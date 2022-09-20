@@ -6,6 +6,7 @@ import SpacesIcon from './src/SpacesIcon';
 import SpacesImage from './src/SpacesImage';
 import SpacesLink from './src/SpacesLink';
 import useLink from './src/useLink';
+import { openLink, openSsoLink } from './src/linkHandlers';
 
 import { normalizeSpaces } from './src/helpers';
 
@@ -38,4 +39,6 @@ export {
   useLink,
   useSpaces,
   useSpacesContext,
+  openLink,
+  openSsoLink,
 };
