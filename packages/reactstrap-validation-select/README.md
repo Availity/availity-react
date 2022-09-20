@@ -52,6 +52,8 @@ Please refer to [react-select with async pagination](https://github.com/TheSharp
 - **`raw`**: Boolean. Optional. Default: `false`. If `true`, the entire object of the selected value will be returned as the value instead of the value for the `valueKey` within the object.
 - **`valueKey`**: String. Optional. The key of the value you want returned when selected. Default: `value`
 - **`labelKey`**: String. Optional. The key for the label you want to appear in the dropdown for the user to see. Default `label`
+- **`ariaFeedback`**: Object. Optional. An Object that has two properties: `feedbackId` and `errorMessage`. It maps an error message to an error id.
+- **`placeholder`**: String. Optional. A place holder for displaying error message or help message that can be visible to screen readers only. 
 - **`autofill`**: Boolean or Object. Optional. Default: `false`. If `true`, when the value of the dropdown changes, if the `isMulti` prop is `false` _and_ the new value of the dropdown is an object, all fields on the form corresponding to the new value are auto-filled. In order for a field to be auto-filled, the `name` property on the field _must_ match the key inside the new value.
 
 For example, if the new value is `{ "payer": "Availity" }`, in order for the payer input in the form to be auto-filled to "Availity", the `name` prop on the input must be "payer".

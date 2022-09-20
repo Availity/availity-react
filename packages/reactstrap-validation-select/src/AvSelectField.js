@@ -46,7 +46,7 @@ class AvSelectField extends Component {
       const feedbackClasses = classNames('d-block', feedbackClass);
       const feedbackId = `${id}-feedback`;
       feedback = <AvFeedback className={feedbackClasses} id={feedbackId}>{validation.errorMessage}</AvFeedback>;
-      ariaFeedback = {hasError: true, ariaErrorId: feedbackId, ariaErrorDesc: validation.errorMessage}
+      ariaFeedback = {feedbackId: feedbackId, errorMessage: validation.errorMessage}
     }
 
     let thisLabel = false;
@@ -67,7 +67,7 @@ class AvSelectField extends Component {
     return (
       <AvGroup className={groupClass}>
         {thisLabel}
-        <AvSelect name={name} ariaMessage={ariaFeedback} {...attributes} />
+        <AvSelect name={name} ariaFeedback={ariaFeedback} {...attributes} />
         {helpMessage ? <FormText id={`${name}-helpmessage`.toLowerCase()}>{helpMessage}</FormText> : null}
         {feedback}
       </AvGroup>
