@@ -4,6 +4,7 @@ import SpacesDisclaimer from './types/SpacesDisclaimer';
 import SpacesAgreement from './types/SpacesAgreement';
 import SpacesGhostText from './types/SpacesGhostText';
 import { normalizeSpaces } from './types/helpers';
+import { openLink, openSsoLink } from './types/linkHandlers';
 
 export default Spaces;
 
@@ -22,4 +23,6 @@ export {
   useSpacesContext,
   SpacesContext,
   normalizeSpaces,
+  openLink,
+  openSsoLink,
 };
