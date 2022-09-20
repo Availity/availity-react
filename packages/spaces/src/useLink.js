@@ -1,7 +1,7 @@
 import { useCurrentUser } from '@availity/hooks';
 import { useSpaces, useSpacesContext } from './Spaces';
 import { useModal } from './modals/ModalProvider';
-import { openLink, linkSso } from './linkHandlers';
+import { openLink, openSsoLink } from './linkHandlers';
 
 export default (spaceOrSpaceId, { clientId: propsClientId, linkAttributes = {} } = {}) => {
   const { clientId = propsClientId } = useSpacesContext() || {};
@@ -51,9 +51,9 @@ export default (spaceOrSpaceId, { clientId: propsClientId, linkAttributes = {} }
   };
 
   if (metadata?.ssoId) {
-    mediaProps.onClick = (event) => linkSso(space, { event, akaname: user.akaname, clientId, linkAttributes });
+    mediaProps.onClick = (event) => openSsoLink(space, { event, akaname: user.akaname, clientId, linkAttributes });
     mediaProps.onKeyPress = (event) =>
-      event.charCode === 13 && linkSso(space, { event, akaname: user.akaname, clientId, linkAttributes });
+      event.charCode === 13 && openSsoLink(space, { event, akaname: user.akaname, clientId, linkAttributes });
   } else if (metadata?.disclaimerId) {
     mediaProps.onClick = legacySso;
     mediaProps.onKeyPress = (e) => e.charCode === 13 && legacySso(e);

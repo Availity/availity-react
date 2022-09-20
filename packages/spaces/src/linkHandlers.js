@@ -25,7 +25,7 @@ export const openLink = async (space, { akaname, linkAttributes }) => {
   window.open(url, target);
 };
 
-export const linkSso = async (space, { akaname, clientId, linkAttributes, event }) => {
+export const openSsoLink = async (space, { akaname, clientId, linkAttributes, event }) => {
   if (space.metadata && space.metadata.ssoId) {
     event.preventDefault();
 
@@ -36,7 +36,6 @@ export const linkSso = async (space, { akaname, clientId, linkAttributes, event 
       X_XSRF_TOKEN: document.cookie.replace(/(?:(?:^|.*;\s*)XSRF-TOKEN\s*=\s*([^;]*).*$)|^.*$/, '$1'),
       // TODO: this attribute gets set on the html form, does it ever make it to magneto? what is it used for?
       // seems to have logging implications
-      // spaceId: parents && parents[0] ? parents[0].id : linkAttributes.spaceId,
       spaceId: linkAttributes.spaceId,
       ...linkAttributes,
     };
