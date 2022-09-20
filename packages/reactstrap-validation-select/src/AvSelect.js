@@ -236,6 +236,7 @@ class AvSelect extends AvBaseInput {
       components: componentsOverride,
       placeholder,
       ariaFeedback,
+      helpMessage,
       ...attributes
     } = this.props;
     const { newOptions } = this.state;
@@ -262,7 +263,7 @@ class AvSelect extends AvBaseInput {
     }
 
      // Enhance placeholder for accessibility
-  placeholder = (
+  const enhancedPlaceholder = (
     <>
       {placeholder || 'Select...'}
       <span className="sr-only">
@@ -373,9 +374,9 @@ class AvSelect extends AvBaseInput {
             primary: '#3262af',
           },
         })}
-        aria-errormessage={touched && hasError && ariaFeedback.errorMessage && this.getValue() ? ariaFeedback.feedbackId : ''}
+        aria-errormessage={touched && hasError && ariaFeedback?.errorMessage && this.getValue() ? ariaFeedback?.feedbackId : ''}
         aria-invalid={touched && hasError}
-        placeholder={placeholder}
+        placeholder={enhancedPlaceholder}
         options={!attributes.loadOptions ? [...options, ...newOptions] : undefined}
         onCreateOption={this.handleCreate}
         components={{ ...components, ...componentsOverride }}
@@ -397,7 +398,11 @@ AvSelect.propTypes = {
   loadOptions: PropTypes.func,
   raw: PropTypes.bool,
   creatable: PropTypes.bool,
-  ariaFeedback: PropTypes.object,
+  ariaFeedback: PropTypes.shape({
+    feedbackId: PropTypes.string,
+    errorMessage: PropTypes.string
+    }),
+  helpMessage: PropTypes.oneOfType([PropTypes.string, PropTypes.node]),
   placeholder: PropTypes.string,
   autofill: PropTypes.oneOfType([PropTypes.bool, PropTypes.object]),
 };

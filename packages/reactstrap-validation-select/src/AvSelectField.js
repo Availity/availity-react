@@ -67,7 +67,7 @@ class AvSelectField extends Component {
     return (
       <AvGroup className={groupClass}>
         {thisLabel}
-        <AvSelect name={name} ariaFeedback={ariaFeedback} {...attributes} />
+        <AvSelect name={name} ariaFeedback={ariaFeedback} helpMessage={helpMessage} {...attributes} />
         {helpMessage ? <FormText id={`${name}-helpmessage`.toLowerCase()}>{helpMessage}</FormText> : null}
         {feedback}
       </AvGroup>
