@@ -2,7 +2,7 @@ import { AvInput } from './AvInput';
 
 interface AriaFeedbackType {
   feedbackId: string;
-  errorMessage: dtring;
+  errorMessage: string;
 }
 
 export interface AvSelectProps extends AvInput {
