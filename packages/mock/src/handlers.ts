@@ -85,7 +85,9 @@ export const handlers = [
   ),
 
   // ExtendedPayers
-  rest.get(routes.EXTENDEDPAYERS, (req, res, ctx) => res(delay(defaultDelay), ctx.status(200), ctx.json(extendedPayers))),
+  rest.get(routes.EXTENDEDPAYERS, (req, res, ctx) =>
+    res(delay(defaultDelay), ctx.status(200), ctx.json(extendedPayers))
+  ),
 
   // Providers
   rest.get(routes.PROVIDERS, (req, res, ctx) => res(delay(defaultDelay), ctx.status(200), ctx.json(providers))),
@@ -103,6 +105,9 @@ export const handlers = [
   rest.post(routes.WEB, (req, res, ctx) => res(delay(defaultDelay), ctx.status(200), ctx.json(spaces))),
   graphql.query('patientPagination', (req, res, ctx) => res(delay(defaultDelay), ctx.status(200), ctx.data(patients))),
   graphql.query('configurationFindMany', (req, res, ctx) =>
+    res(delay(defaultDelay), ctx.status(200), ctx.data(spaces))
+  ),
+  graphql.query('configurationPagination', (req, res, ctx) =>
     res(delay(defaultDelay), ctx.status(200), ctx.data(spaces))
   ),
   graphql.query('configurationFindById', (req, res, ctx) =>

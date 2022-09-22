@@ -137,7 +137,7 @@ export interface SpacesProps {
   variables?: Record<string, any>;
   spaceIds?: string[];
   payerIds?: string[];
-  spaces?: string[];
+  spaces?: Space[];
 }
 
 declare function useSpaces(...ids: (string | undefined | null)[]): Space[];

@@ -2,21 +2,21 @@
 title: <Space />
 ---
 
-This is the provider component needed for `@availity/spaces` components to work. All `@availity/spaces` components must be children of a Spaces provider.
+This is the provider component needed for `@availity/spaces` components to work. All `@availity/spaces` components must be children of a Spaces provider. The spaces provider is used to fetch a list of spaces for use within it's descendants.
 
 ### Props
 
 #### `clientId?: string`
 
-The Client ID obtained from APIConnect. Must be subscribed to the slotmachine API.
+The Client ID obtained from APIConnect. Must be subscribed to the thanos API.
 
 #### `query?: string`
 
-Override the default slotmachine query
+Override the default thanos query
 
 #### `variables?: object`
 
-Override the default variables used in the slotmachine query. Default: `{ types: ['space'] }`. If the spaces provider should contain spaces of a type other than `space`, you _must_ override this prop.
+Override the default variables used in the thanos query. Default: `{ types: ['space'] }`. If the spaces provider should contain spaces of a type other than `space`, you _must_ override this prop.
 
 #### `spaces?: object[]`
 

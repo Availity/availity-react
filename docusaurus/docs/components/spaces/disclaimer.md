@@ -2,7 +2,7 @@
 title: <SpacesDisclaimer />
 ---
 
-Display the disclaimer for a given space id.
+This component must be a descendent of the `<Spaces/>` provider. Display the disclaimer for a given space id received from the `<Spaces />` provider.
 
 ### Example
 
