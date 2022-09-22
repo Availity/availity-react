@@ -2,6 +2,24 @@
 
 This file was generated using [@jscutlery/semver](https://github.com/jscutlery/semver).
 
+## [2.15.3](https://github.com/Availity/availity-react/compare/@availity/pagination@2.15.2...@availity/pagination@2.15.3) (2022-08-26)
+
+
+### Bug Fixes
+
+* **pagination:** update div to li to fix 508 compliance issues ([8a34a7f](https://github.com/Availity/availity-react/commit/8a34a7f3aa9eff579ec984c0bbfc107af0a7af60))
+
+
+
+## [2.15.3-alpha.0](https://github.com/Availity/availity-react/compare/@availity/pagination@2.15.2...@availity/pagination@2.15.3-alpha.0) (2022-08-18)
+
+
+### Bug Fixes
+
+* **pagination:** update div to li to fix 508 compliance issues ([8a34a7f](https://github.com/Availity/availity-react/commit/8a34a7f3aa9eff579ec984c0bbfc107af0a7af60))
+
+
+
 ## [2.15.2](https://github.com/Availity/availity-react/compare/@availity/pagination@2.15.1...@availity/pagination@2.15.2) (2022-07-28)
 
 

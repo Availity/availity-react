@@ -17,6 +17,7 @@ export type DateRangeProps = {
   onPickerFocusChange?: (arg: { focusedInput: 'startDate' | 'endDate' | null }) => void;
   customArrowIcon?: React.ReactNode;
   allowInvalidDates?: boolean;
+  feedback?: boolean;
 } & Omit<DateProps, 'datePickerProps'>;
 
 declare const DateRange: (props: DateRangeProps) => JSX.Element;

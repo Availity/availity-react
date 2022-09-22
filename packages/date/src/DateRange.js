@@ -59,7 +59,7 @@ const DateRange = ({
   innerRef,
   className,
   format = isoDateFormat,
-  ariaDescribedBy,
+  feedback,
   datepickerProps,
   'data-testid': dataTestId,
   autoSync,
@@ -96,6 +96,9 @@ const DateRange = ({
     metadata.touched && metadata.error && 'is-invalid',
     !startValue && !endValue && 'current-day-highlight'
   );
+
+  const error = !!metadata.touched && !!metadata.error;
+  const feedbackId = error && feedback ? `${name}-feedback`.toLowerCase() : '';
 
   // Should only run validation once per real change to component, instead of each time setFieldValue/Touched is called.
   // By batching multiple calls for validation we can avoid multiple moment comparisons of the same values
@@ -292,7 +295,7 @@ const DateRange = ({
         <DateRangePicker
           renderMonthElement={renderMonthElement}
           minimumNights={0}
-          ariaDescribedBy={ariaDescribedBy}
+          ariaDescribedBy={feedbackId}
           enableOutsideDays
           autoComplete="date"
           numberOfMonths={2}
@@ -323,7 +326,7 @@ DateRange.propTypes = {
   validate: PropTypes.func,
   min: limitPropType,
   max: limitPropType,
-  ariaDescribedBy: PropTypes.string,
+  feedback: PropTypes.bool,
   className: PropTypes.string,
   disabled: PropTypes.bool,
   onChange: PropTypes.func,

@@ -147,7 +147,6 @@ Field.propTypes = {
 
 Field.defaultProps = {
   tag: RsInput,
-  required: false,
 };
 
 export default Field;

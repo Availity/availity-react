@@ -2,6 +2,26 @@
 
 This file was generated using [@jscutlery/semver](https://github.com/jscutlery/semver).
 
+# [4.2.0](https://github.com/Availity/availity-react/compare/@availity/date@4.1.2...@availity/date@4.2.0) (2022-08-29)
+
+
+### Features
+
+* **date:** switch to combobox, resolve accessibility warnings ([a3651af](https://github.com/Availity/availity-react/commit/a3651af6f82b475bd626bc62933406839d9a7e4a))
+
+
+
+## [4.1.2](https://github.com/Availity/availity-react/compare/@availity/date@4.1.1...@availity/date@4.1.2) (2022-08-26)
+
+
+### Bug Fixes
+
+* **date:** adding feedback to DateRange type ([96fb04d](https://github.com/Availity/availity-react/commit/96fb04dc02f7d13edaee7c2ccbe5d7bd9be61d0f))
+* **date:** conditionally add aria-describedby for date range so feedback id is always valid ([c1e71ea](https://github.com/Availity/availity-react/commit/c1e71eabf4f95a7248e019484b14faafcf11de91))
+* **date:** modify date range field test so that it checks whether the feedback shows up or not ([1af0e22](https://github.com/Availity/availity-react/commit/1af0e22b5588e9f8ca54511634108ff55d3b9077))
+
+
+
 ## [4.1.1](https://github.com/Availity/availity-react/compare/@availity/date@4.1.0...@availity/date@4.1.1) (2022-06-14)
 
 

@@ -1,6 +1,6 @@
 {
   "name": "@availity/reactstrap-validation-date",
-  "version": "4.4.1",
+  "version": "4.5.0",
   "description": "Wrapper for react-date-range to work with availity-reactstrap-validation",
   "keywords": [
     "availity",
@@ -26,7 +26,7 @@
     "publish:canary": "yarn npm publish --access public --tag canary"
   },
   "dependencies": {
-    "@availity/react-dates": "^21.12.1",
+    "@availity/react-dates": "^21.13.0",
     "classnames": "^2.3.1",
     "lodash": "^4.17.21",
     "moment": "^2.29.3",

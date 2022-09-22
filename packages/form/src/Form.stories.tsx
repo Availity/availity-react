@@ -7,6 +7,7 @@ import { avDate } from '@availity/yup';
 import { Phone } from '@availity/phone';
 import { DateField } from '@availity/date';
 import { SelectField } from '@availity/select';
+import '@availity/form/styles.scss';
 
 import {
   Field,

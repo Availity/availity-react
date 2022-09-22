@@ -121,4 +121,27 @@ describe('CurrencyInput', () => {
 
     expect(container.querySelector('input').getAttribute('id')).toEqual('paidAmountId');
   });
+
+  test('should transform raw value when decimal is entered first', () => {
+    const { container } = render(
+      <Form
+        onSubmit={() => {}}
+        initialValues={{
+          paidAmount: '',
+        }}
+      >
+        <CurrencyInput name="paidAmount" id="paidAmountId" />
+      </Form>
+    );
+
+    const currencyInput = container.querySelector('input');
+
+    fireEvent.focus(currencyInput);
+    fireEvent.change(currencyInput, { target: { value: '.1' } });
+    fireEvent.blur(currencyInput);
+
+    setTimeout(() => {
+      expect(currencyInput.value).toEqual('$0.10');
+    });
+  });
 });
