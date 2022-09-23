@@ -16,7 +16,7 @@ Override the default thanos query
 
 #### `variables?: object`
 
-Override the default variables used in the thanos query. Default: `{ types: ['space'] }`. If the spaces provider should contain spaces of a type other than `space`, you _must_ override this prop.
+Override the default variables used in the thanos query. Default: `{ types: [PAYERSPACE] }`. If the spaces provider should contain configurations of a type other than `PAYERSPACE`, you _must_ override this prop.
 
 #### `spaces?: object[]`
 
