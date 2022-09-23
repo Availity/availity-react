@@ -8,7 +8,7 @@ export function openLink(
   }
 ): Promise<void>;
 
-export function openSsoLink(
+export function openLinkWithSso(
   space: Space,
   settings: {
     akaname: string;
