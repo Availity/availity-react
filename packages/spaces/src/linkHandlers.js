@@ -12,11 +12,7 @@ export const openLink = async (space, { akaname, payerSpaceId }) => {
 
   const target = getTarget(space.link.target);
   const url = !isAbsoluteUrl(space.link.url)
-    ? getUrl(
-        updateUrl(space.link.url, 'spaceId', space.parents && space.parents[0] ? space.parents[0].id : payerSpaceId),
-        false,
-        false
-      )
+    ? getUrl(updateUrl(space.link.url, 'spaceId', space.parents?.[0]?.id || payerSpaceId), false, false)
     : space.link.url;
 
   window.open(url, target);
