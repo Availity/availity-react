@@ -2,6 +2,8 @@
 title: <SpacesImage />
 ---
 
+This component must be a descendent of the `<Spaces/>` provider. Display an image based on the spaceId or payerId received from the `<Spaces />` provider.
+
 ### Example
 
 ```jsx
