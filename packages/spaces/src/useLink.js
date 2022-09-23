@@ -1,7 +1,7 @@
 import { useCurrentUser } from '@availity/hooks';
 import { useSpaces, useSpacesContext } from './Spaces';
 import { useModal } from './modals/ModalProvider';
-import { openLink, openSsoLink } from './linkHandlers';
+import { openLink, openLinkWithSso } from './linkHandlers';
 
 export default (spaceOrSpaceId, { clientId: propsClientId, linkAttributes = {} } = {}) => {
   const { clientId = propsClientId } = useSpacesContext() || {};
@@ -51,9 +51,26 @@ export default (spaceOrSpaceId, { clientId: propsClientId, linkAttributes = {} }
   };
 
   if (metadata?.ssoId) {
-    mediaProps.onClick = (event) => openSsoLink(space, { event, akaname: user.akaname, clientId, linkAttributes });
-    mediaProps.onKeyPress = (event) =>
-      event.charCode === 13 && openSsoLink(space, { event, akaname: user.akaname, clientId, linkAttributes });
+    mediaProps.onClick = (event) => {
+      event.preventDefault();
+      openLinkWithSso(space, {
+        akaname: user.akaname,
+        clientId,
+        payerSpaceId: linkAttributes.spaceId,
+        ssoParams: linkAttributes,
+      });
+    };
+    mediaProps.onKeyPress = (event) => {
+      if (event.charCode === 13) {
+        event.preventDefault();
+        openLinkWithSso(space, {
+          akaname: user.akaname,
+          clientId,
+          payerSpaceId: linkAttributes.spaceId,
+          ssoParams: linkAttributes,
+        });
+      }
+    };
   } else if (metadata?.disclaimerId) {
     mediaProps.onClick = legacySso;
     mediaProps.onKeyPress = (e) => e.charCode === 13 && legacySso(e);
@@ -61,8 +78,9 @@ export default (spaceOrSpaceId, { clientId: propsClientId, linkAttributes = {} }
     mediaProps.onClick = openMultiPayerModal;
     mediaProps.onKeyPress = (e) => e.charCode === 13 && openMultiPayerModal(e);
   } else {
-    mediaProps.onClick = () => openLink(space, { akaname: user.akaname, linkAttributes });
-    mediaProps.onKeyPress = (e) => e.charCode === 13 && openLink(space, { akaname: user.akaname, linkAttributes });
+    mediaProps.onClick = () => openLink(space, { akaname: user.akaname, payerSpaceId: linkAttributes.spaceId });
+    mediaProps.onKeyPress = (e) =>
+      e.charCode === 13 && openLink(space, { akaname: user.akaname, payerSpaceId: linkAttributes.spaceId });
   }
 
   return [

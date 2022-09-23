@@ -3,45 +3,38 @@ import nativeForm from '@availity/native-form';
 import { isAbsoluteUrl } from '@availity/resolve-url';
 import { updateTopApps, updateUrl } from './helpers';
 
-export const openLink = async (space, { akaname, linkAttributes }) => {
+export const openLink = async (space, { akaname, payerSpaceId }) => {
   if (!space?.link?.url) {
     return;
   }
 
-  await updateTopApps(space.configurationId, space.type, akaname);
+  await updateTopApps(space, akaname);
 
   const target = getTarget(space.link.target);
   const url = !isAbsoluteUrl(space.link.url)
     ? getUrl(
-        updateUrl(
-          space.link.url,
-          'spaceId',
-          space.parents && space.parents[0] ? space.parents[0].id : linkAttributes.spaceId
-        ),
+        updateUrl(space.link.url, 'spaceId', space.parents && space.parents[0] ? space.parents[0].id : payerSpaceId),
         false,
         false
       )
     : space.link.url;
+
   window.open(url, target);
 };
 
-export const openSsoLink = async (space, { akaname, clientId, linkAttributes, event }) => {
+export const openLinkWithSso = async (space, { akaname, clientId, payerSpaceId, ssoParams }) => {
   if (space.metadata && space.metadata.ssoId) {
-    event.preventDefault();
-
     const options = space.link?.target ? { target: getTarget(space.link.target) } : undefined;
 
     const attributes = {
       X_Client_ID: clientId,
       X_XSRF_TOKEN: document.cookie.replace(/(?:(?:^|.*;\s*)XSRF-TOKEN\s*=\s*([^;]*).*$)|^.*$/, '$1'),
-      // TODO: this attribute gets set on the html form, does it ever make it to magneto? what is it used for?
-      // seems to have logging implications
-      spaceId: linkAttributes.spaceId,
-      ...linkAttributes,
+      spaceId: payerSpaceId, // required by Magneto for SAMLs
+      ...ssoParams,
     };
 
     try {
-      await updateTopApps(space.configurationId, space.type, akaname);
+      await updateTopApps(space, akaname);
       await nativeForm(space.metadata.ssoId, attributes, options, space.type);
     } catch {
       // eslint-disable-next-line no-console

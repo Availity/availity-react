@@ -3,8 +3,8 @@ import SpacesImage from './types/SpacesImage';
 import SpacesDisclaimer from './types/SpacesDisclaimer';
 import SpacesAgreement from './types/SpacesAgreement';
 import SpacesGhostText from './types/SpacesGhostText';
-import { normalizeSpaces } from './types/helpers';
-import { openLink, openSsoLink } from './types/linkHandlers';
+import { normalizeSpaces, updateTopApps } from './types/helpers';
+import { openLink, openLinkWithSso } from './types/linkHandlers';
 
 export default Spaces;
 
@@ -24,5 +24,6 @@ export {
   SpacesContext,
   normalizeSpaces,
   openLink,
-  openSsoLink,
+  openLinkWithSso,
+  updateTopApps,
 };

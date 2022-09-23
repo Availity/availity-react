@@ -110,11 +110,11 @@ const getLocalStorageTopApps = (akaname) => {
   return topAppsValues;
 };
 
-export const updateTopApps = async (spaceId, type, akaname) => {
-  if (!spaceId || !type) return;
+export const updateTopApps = async (space, akaname) => {
+  if (!space.configurationId || !space.type) return;
 
   // If we can track the space
-  if (canTrackSpace(spaceId, type)) {
+  if (canTrackSpace(space.configurationId, space.type)) {
     const today = dayjs();
 
     // Grab the current top apps from localstorage
@@ -123,10 +123,13 @@ export const updateTopApps = async (spaceId, type, akaname) => {
     // Update the last updated date. For use in top nav to actually sync with settings api
     window.localStorage.setItem(`${TOP_APPS.KEYS.LAST_UPDATED}-${akaname}`, today.format());
 
-    const currentCount = topApps[spaceId] && typeof topApps[spaceId].count === 'number' ? topApps[spaceId].count : 0;
+    const currentCount =
+      topApps[space.configurationId] && typeof topApps[space.configurationId].count === 'number'
+        ? topApps[space.configurationId].count
+        : 0;
 
-    topApps[spaceId] = {
-      ...topApps[spaceId],
+    topApps[space.configurationId] = {
+      ...topApps[space.configurationId],
       count: currentCount + 1,
       lastUse: today.format(),
     };

@@ -2,23 +2,15 @@ import { Space } from './Spaces';
 
 export function openLink(
   space: Space,
-  {
-    akaname,
-    linkAttributes,
-  }: {
+  settings: {
     akaname: string;
-    linkAttributes: { spaceId: string };
+    payerSpaceId: string;
   }
 ): Promise<void>;
 
 export function openSsoLink(
   space: Space,
-  {
-    akaname,
-    clientId,
-    linkAttributes,
-    event,
-  }: {
+  settings: {
     akaname: string;
     clientId: string;
     linkAttributes: { spaceId: string };

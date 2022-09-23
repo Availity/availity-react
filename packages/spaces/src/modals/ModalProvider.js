@@ -131,7 +131,7 @@ const ModalProvider = ({ children }) => {
             onClick={() => {
               onSubmit(modalOptions, modalState, dispatch);
 
-              updateTopApps(modalOptions.id, modalOptions.type, modalOptions.user);
+              updateTopApps({ configurationId: modalOptions.id, type: modalOptions.type }, modalOptions.user);
 
               toggle();
             }}
