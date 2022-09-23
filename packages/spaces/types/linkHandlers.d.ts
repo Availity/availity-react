@@ -13,7 +13,7 @@ export function openSsoLink(
   settings: {
     akaname: string;
     clientId: string;
-    linkAttributes: { spaceId: string };
-    event: Event;
+    payerSpaceId: string;
+    ssoParams?: Record<string, any>;
   }
 ): Promise<boolean>;

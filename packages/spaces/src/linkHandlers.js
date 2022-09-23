@@ -29,7 +29,7 @@ export const openLinkWithSso = async (space, { akaname, clientId, payerSpaceId, 
     const attributes = {
       X_Client_ID: clientId,
       X_XSRF_TOKEN: document.cookie.replace(/(?:(?:^|.*;\s*)XSRF-TOKEN\s*=\s*([^;]*).*$)|^.*$/, '$1'),
-      spaceId: payerSpaceId, // required by Magneto for SAMLs
+      spaceId: payerSpaceId, // required by Magneto
       ...ssoParams,
     };
 
