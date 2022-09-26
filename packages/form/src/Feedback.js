@@ -5,7 +5,17 @@ import { ErrorMessage } from 'formik';
 
 const Feedback = ({ name, ...rest }) => {
   const feedbackId = `${name}-feedback`.toLowerCase();
-  return <ErrorMessage id={feedbackId} component={FormFeedback} name={name} {...rest} />;
+  const AvFeedback = ({ children, ...rest }) => (
+    <FormFeedback {...rest}>
+      <i className="icon icon-attention" aria-label="Error" />
+      {children}
+    </FormFeedback>
+  );
+
+  AvFeedback.propTypes = {
+    children: PropTypes.node,
+  };
+  return <ErrorMessage id={feedbackId} component={AvFeedback} name={name} {...rest} />;
 };
 
 Feedback.propTypes = {
