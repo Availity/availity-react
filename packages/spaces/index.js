@@ -6,8 +6,8 @@ import SpacesIcon from './src/SpacesIcon';
 import SpacesImage from './src/SpacesImage';
 import SpacesLink from './src/SpacesLink';
 import useLink from './src/useLink';
-
-import { normalizeSpaces } from './src/helpers';
+import { openLink, openLinkWithSso } from './src/linkHandlers';
+import { normalizeSpaces, updateTopApps } from './src/helpers';
 
 const SpacesLogo = SpacesImage.create({
   imageType: 'images.logo',
@@ -38,4 +38,7 @@ export {
   useLink,
   useSpaces,
   useSpacesContext,
+  openLink,
+  openLinkWithSso,
+  updateTopApps,
 };

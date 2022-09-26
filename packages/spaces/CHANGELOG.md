@@ -2,6 +2,36 @@
 
 This file was generated using [@jscutlery/semver](https://github.com/jscutlery/semver).
 
+## [6.3.6](https://github.com/Availity/availity-react/compare/@availity/spaces@6.3.5...@availity/spaces@6.3.6) (2022-09-23)
+
+
+### Bug Fixes
+
+* **spaces:** fix types bug ([9734964](https://github.com/Availity/availity-react/commit/9734964574fb44ba0005d0b2af1a858630bdd7e4))
+
+
+
+## [6.3.5](https://github.com/Availity/availity-react/compare/@availity/spaces@6.3.4...@availity/spaces@6.3.5) (2022-09-23)
+
+
+
+## [6.3.4](https://github.com/Availity/availity-react/compare/@availity/spaces@6.3.3...@availity/spaces@6.3.4) (2022-09-23)
+
+
+
+## [6.3.3](https://github.com/Availity/availity-react/compare/@availity/spaces@6.3.2...@availity/spaces@6.3.3) (2022-09-20)
+
+
+### Bug Fixes
+
+* **spaces:** fix types and exports ([cf17d6d](https://github.com/Availity/availity-react/commit/cf17d6dad1bc0dc88d70308b9547a6b67d685d00))
+
+
+
+## [6.3.2](https://github.com/Availity/availity-react/compare/@availity/spaces@6.3.1...@availity/spaces@6.3.2) (2022-09-20)
+
+
+
 ## [6.3.1](https://github.com/Availity/availity-react/compare/@availity/spaces@6.3.0...@availity/spaces@6.3.1) (2022-08-10)
 
 
