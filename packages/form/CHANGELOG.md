@@ -2,6 +2,18 @@
 
 This file was generated using [@jscutlery/semver](https://github.com/jscutlery/semver).
 
+# [1.7.0](https://github.com/Availity/availity-react/compare/@availity/form@1.6.0...@availity/form@1.7.0) (2022-09-26)
+
+
+### Features
+
+* **feedback:** moved AvFeedback outside of Feedback so proptypes wasn't enclosed ([2d8eaa4](https://github.com/Availity/availity-react/commit/2d8eaa4dd5be22d83152e3bb4118437254b33094))
+* **feedback:** removed previous css changes for attention circle and added new one that doesn't require import ([842a20b](https://github.com/Availity/availity-react/commit/842a20bc72c44ad56e574acd9ba1f0ac2d44e68d))
+* **feedback:** separated out icon from aria label into sr-only text field ([b9a29b6](https://github.com/Availity/availity-react/commit/b9a29b645b042fe5bca30b4fe70352f41cfca4fd))
+* **feedback:** updating unit tests to have Error: text ([547955d](https://github.com/Availity/availity-react/commit/547955dc037f663d3ba52e6c442a394429c51e2f))
+
+
+
 # [1.6.0](https://github.com/Availity/availity-react/compare/@availity/form@1.5.3...@availity/form@1.6.0) (2022-09-13)
 
 
