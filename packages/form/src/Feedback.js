@@ -5,7 +5,8 @@ import { ErrorMessage } from 'formik';
 
 const AvFeedback = ({ children, ...rest }) => (
   <FormFeedback {...rest}>
-    <i className="icon icon-attention" aria-label="Error" />
+    <i className="icon icon-attention" aria-hidden />
+    <div className="sr-only">Error:</div>
     {children}
   </FormFeedback>
 );
