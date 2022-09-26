@@ -28,7 +28,7 @@ describe('Feedback', () => {
     await waitFor(() => {
       const feedback = getByTestId('hello-feedback');
 
-      expect(feedback.textContent).toBe('Oops');
+      expect(feedback.textContent).toBe('Error:Oops');
       expect(feedback).toHaveAttribute('id', 'hello-feedback');
     });
   });
