@@ -1,0 +1,45 @@
+{
+  "name": "@availity/navigation",
+  "version": "1.0.0",
+  "description": "Utilities for navigating the portal based on Thanos configurations",
+  "keywords": [
+    "availity",
+    "navigation"
+  ],
+  "homepage": "https://availity.github.io/availity-react/components/navigation/index",
+  "bugs": {
+    "url": "https://github.com/Availity/availity-react/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Availity/availity-react.git",
+    "directory": "packages/navigation"
+  },
+  "license": "MIT",
+  "author": "Daniel Pickett <daniel.pickett@availity.com>",
+  "browser": "./dist/index.js",
+  "main": "./dist/index.js",
+  "module": "./dist/index.mjs",
+  "types": "./dist/index.d.ts",
+  "scripts": {
+    "build": "tsup --dts",
+    "dev": "tsup src/index.ts --format esm,cjs --watch --dts",
+    "clean": "rm -rf dist",
+    "clean:nm": "rm -rf node_modules",
+    "bundlesize": "bundlesize",
+    "publish": "yarn npm publish --tolerate-republish --access public",
+    "publish:canary": "yarn npm publish --access public --tag canary"
+  },
+  "devDependencies": {
+    "tsup": "^5.12.7",
+    "typescript": "^4.6.4"
+  },
+  "publishConfig": {
+    "access": "public"
+  },
+  "dependencies": {
+    "@availity/message-core": "^6.1.0",
+    "@availity/native-form": "^5.0.3",
+    "dayjs": "^1.11.5"
+  }
+}

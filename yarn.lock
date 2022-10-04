@@ -217,6 +217,19 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@availity/api-axios@npm:7.0.3":
+  version: 7.0.3
+  resolution: "@availity/api-axios@npm:7.0.3"
+  dependencies:
+    "@availity/resolve-url": 2.0.3
+    lodash: ^4.17.21
+    qs: ^6.10.1
+  peerDependencies:
+    axios: ^0.21.4
+  checksum: f27392383ee888354d1bd281438b67ceb88946f043d2fd1e865d527c106cc1b194073fa4265d4c2c3baf652681347e80efcec5848426fbc937ce175f37a2d168
+  languageName: node
+  linkType: hard
+
 "@availity/app-icon@workspace:*, @availity/app-icon@workspace:packages/app-icon":
   version: 0.0.0-use.local
   resolution: "@availity/app-icon@workspace:packages/app-icon"
@@ -682,6 +695,27 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@availity/native-form@npm:^5.0.3":
+  version: 5.0.3
+  resolution: "@availity/native-form@npm:5.0.3"
+  dependencies:
+    "@availity/api-axios": 7.0.3
+  checksum: baba65443af1cb4b10f27509924a1f6216814888d04a05f6c45e38db898cda823d5a8b254831dbbe8249b6a6b91324b2606d50aa36becf74a2688afd467e19d5
+  languageName: node
+  linkType: hard
+
+"@availity/navigation@workspace:packages/navigation":
+  version: 0.0.0-use.local
+  resolution: "@availity/navigation@workspace:packages/navigation"
+  dependencies:
+    "@availity/message-core": ^6.1.0
+    "@availity/native-form": ^5.0.3
+    dayjs: ^1.11.5
+    tsup: ^5.12.7
+    typescript: ^4.6.4
+  languageName: unknown
+  linkType: soft
+
 "@availity/page-header@workspace:packages/page-header":
   version: 0.0.0-use.local
   resolution: "@availity/page-header@workspace:packages/page-header"
@@ -876,6 +910,13 @@ __metadata:
   version: 2.0.1
   resolution: "@availity/resolve-url@npm:2.0.1"
   checksum: df0884c805ab9ac014b4dc63e7730db8add3ce9f18af8afb09a8221b8dc95a4c8b05e49944f535c6fd5c51c3a8dfe16a03ab263b1087c2635627e5dce0fee495
+  languageName: node
+  linkType: hard
+
+"@availity/resolve-url@npm:2.0.3":
+  version: 2.0.3
+  resolution: "@availity/resolve-url@npm:2.0.3"
+  checksum: 280f7ad7c0f769c5431e78b1f7f775b08216f4374988c15b3ad98ab8e9ed46baba2de3aa2fe66810f99af1a8eea084cfbfaed1ebbf50a3ef26e5343cca4aeb45
   languageName: node
   linkType: hard
 
@@ -11130,6 +11171,13 @@ __metadata:
   version: 1.11.2
   resolution: "dayjs@npm:1.11.2"
   checksum: 78f8bd04a9e5f5554aa06eacda65a7d59e162d39f621a46fd34fb3b51367c3662426d86b4e2f4ac535f81e0c4d5af3e8a83b37e672412eb556267d726c61f8f3
+  languageName: node
+  linkType: hard
+
+"dayjs@npm:^1.11.5":
+  version: 1.11.5
+  resolution: "dayjs@npm:1.11.5"
+  checksum: e3bbaa7b4883b31be4bf75a181f1447fbb19800c29b332852125aab96baeff3ac232dcba8b88c4ea17d3b636c99dac5fb9d1af4bb6ae26615698bbc4a852dffb
   languageName: node
   linkType: hard
 
