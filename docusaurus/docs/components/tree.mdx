@@ -45,7 +45,7 @@ const Example = ({ myData }: Props) => (
   useEffect(() => {
     // buildTree will construct a list of TreeItems as expected by the tree component
     // this optionally allows you to pass an array of expandedIds and selectedIds
-    const tree = buildTree(officesResponse.results, expandedIds, selectedIds);
+    const tree = buildTree(myData, expandedIds, selectedIds);
     await setInitialState(cloneDeep(tree));
     await setTree(tree);
   }, []);
