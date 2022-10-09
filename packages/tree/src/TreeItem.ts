@@ -17,8 +17,6 @@ export default class TreeItem {
 
   areAllChildrenSelected?: boolean;
 
-  depth?: number;
-
   constructor(obj: TreeItem) {
     this.id = obj.id;
     this.parentId = obj.parentId;
@@ -29,6 +27,5 @@ export default class TreeItem {
     this.name = obj.name;
     this.children = obj.children;
     this.areAllChildrenSelected = obj.areAllChildrenSelected;
-    this.depth = obj.depth;
   }
 }

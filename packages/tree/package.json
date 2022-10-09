@@ -1,6 +1,6 @@
 {
   "name": "@availity/tree",
-  "version": "0.1.2-alpha.6",
+  "version": "0.1.2",
   "description": "This is a component for displaying hierarchical data",
   "keywords": [
     "react",
@@ -32,7 +32,6 @@
     "publish:canary": "yarn npm publish --access public --tag canary"
   },
   "dependencies": {
-    "@availity/hooks": "workspace:*",
     "@availity/icon": "workspace:*"
   },
   "devDependencies": {

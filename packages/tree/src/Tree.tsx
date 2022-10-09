@@ -1,5 +1,4 @@
 import Icon from '@availity/icon';
-import { useMount } from '@availity/hooks';
 import React, { useState, useEffect, useCallback } from 'react';
 import { Button, Col, FormGroup, Input, Label, Row } from 'reactstrap';
 
@@ -63,24 +62,11 @@ const Tree = ({
   expandAll = false,
   parentId,
   selectable = false,
-  onDismount,
 }: TreeProps): JSX.Element | null => {
   const [treeItems, setTreeItems] = useState(items);
   const [selectedList, setSelectedList] = useState(selectedItems);
   const [allExpanded, setAllExpanded] = useState(expandAll);
   const [searchTerm, setSearchTerm] = useState('');
-
-  useMount(() => {
-    return () => {
-      if (!isRoot) {
-        return;
-      }
-
-      if (onDismount) {
-        onDismount();
-      }
-    };
-  });
 
   const areAllExpanded = (items: TreeItem[]) => {
     let allExpanded = items.every((item) => item.isExpanded || item.children?.length === 0);

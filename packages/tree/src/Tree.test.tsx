@@ -331,4 +331,58 @@ describe('Tree', () => {
       expect(response.length).toEqual(3);
     });
   });
+
+  test('should clear search term when items change', async () => {
+    let myItems = [...items];
+    const { rerender } = render(<Tree items={myItems} expandAll enableSearch />);
+
+    const input = screen.getByTestId('tree-search-input');
+    expect(input).not.toBeNull();
+
+    fireEvent.change(input, { target: { value: 'Validation' } });
+
+    await waitFor(async () => {
+      const input = screen.getByTestId('tree-search-input') as HTMLInputElement;
+      expect(input).not.toBeNull();
+      expect(input.value).toBe('Validation');
+    });
+
+    rerender(<Tree items={[]} expandAll enableSearch />);
+
+    await waitFor(async () => {
+      const input = screen.getByTestId('tree-search-input') as HTMLInputElement;
+      expect(input.value).toBe('');
+    });
+  });
+
+  test('should select tree items by id when provided', async () => {
+    const hierarchicalTreeItems = buildTree(flatTreeItems, [], ['5']);
+
+    render(<Tree items={hierarchicalTreeItems} expandAll enableSearch selectable />);
+
+    const treeElement = await waitFor(() => screen.getByTestId('tree-view-parent'));
+    expect(treeElement).not.toBeNull();
+
+    const checkedItem = await waitFor(() => screen.getByTestId('chk-tree-view-item-select-5') as HTMLInputElement);
+    expect(checkedItem.checked).toBeTruthy();
+  });
+
+  test('should expand tree items by id when provided', async () => {
+    const hierarchicalTreeItems = buildTree(flatTreeItems, ['1', '7']);
+
+    const { queryByTestId, debug } = render(
+      <Tree items={hierarchicalTreeItems} expandAll={false} enableSearch selectable />
+    );
+
+    const treeElement = await waitFor(() => screen.getByTestId('tree-view-parent'));
+    expect(treeElement).not.toBeNull();
+
+    debug();
+    expect(queryByTestId('tree-view-1')).not.toBeNull();
+    expect(queryByTestId('tree-view-7')).not.toBeNull();
+
+    expect(queryByTestId('tree-view-3')).toBeNull();
+    expect(queryByTestId('tree-view-4')).toBeNull();
+    expect(queryByTestId('tree-view-5')).toBeNull();
+  });
 });
