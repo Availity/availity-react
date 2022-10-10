@@ -370,19 +370,40 @@ describe('Tree', () => {
   test('should expand tree items by id when provided', async () => {
     const hierarchicalTreeItems = buildTree(flatTreeItems, ['1', '7']);
 
-    const { queryByTestId, debug } = render(
-      <Tree items={hierarchicalTreeItems} expandAll={false} enableSearch selectable />
-    );
+    const { queryByTestId } = render(<Tree items={hierarchicalTreeItems} enableSearch selectable />);
 
     const treeElement = await waitFor(() => screen.getByTestId('tree-view-parent'));
     expect(treeElement).not.toBeNull();
 
-    debug();
     expect(queryByTestId('tree-view-1')).not.toBeNull();
     expect(queryByTestId('tree-view-7')).not.toBeNull();
 
     expect(queryByTestId('tree-view-3')).toBeNull();
     expect(queryByTestId('tree-view-4')).toBeNull();
     expect(queryByTestId('tree-view-5')).toBeNull();
+  });
+
+  test('should appropriately expand all for all children in the chain', async () => {
+    const onItemExpanded = jest.fn();
+
+    const hierarchicalTreeItems = buildTree(flatTreeItems);
+    hierarchicalTreeItems.forEach((item) => (item.isExpanded = false));
+
+    render(<Tree items={hierarchicalTreeItems} expandAll={false} onItemsExpanded={onItemExpanded} />);
+
+    const treeElement = await waitFor(() => screen.getByTestId('tree-view-parent'));
+    expect(treeElement).not.toBeNull();
+
+    fireEvent.click(screen.getByTestId('btn-expand-all-1'));
+
+    await waitFor(async () => {
+      expect(onItemExpanded).toHaveBeenCalledTimes(1);
+    });
+
+    await waitFor(() => screen.getByTestId('tree-view-item-2'));
+    fireEvent.click(screen.getByTestId('btn-expand-all-2'));
+
+    await waitFor(() => screen.getByTestId('tree-view-item-3'));
+    expect(onItemExpanded).toHaveBeenCalledTimes(2);
   });
 });

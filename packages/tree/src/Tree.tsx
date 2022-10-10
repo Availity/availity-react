@@ -20,7 +20,6 @@ export type TreeProps = {
   isRoot?: boolean;
   onItemsSelected?: (selectedItems: TreeItem[]) => void;
   onItemsExpanded?: (expandedItems?: TreeItem[]) => void;
-  onDismount?: () => void;
   parentId?: string;
   selectedItems?: TreeItem[];
   expandAll?: boolean;
