@@ -269,6 +269,11 @@ describe('Table', () => {
         Cell: CurrencyCell({ defaultValue }),
       },
       {
+        Header: 'Badge Cell',
+        accessor: 'badge',
+        Cell: BadgeCell('success', '', 'Not Available'),
+      },
+      {
         Header: 'Icon',
         accessor: 'icon',
         Cell: IconCell({ name: 'doc-alt', title: 'View Notes', defaultValue }),
@@ -320,16 +325,45 @@ describe('Table', () => {
     const currencyCell = screen.getByTestId('table_row_0_cell_0');
     expect(currencyCell.textContent).toBe(defaultValue);
 
-    const iconCell1 = screen.getByTestId('table_row_0_cell_1');
+    const badgeCell = screen.getByTestId('table_row_0_cell_1');
+    expect(badgeCell.textContent).toBe(defaultValue);
+
+    const iconCell1 = screen.getByTestId('table_row_0_cell_2');
     expect(iconCell1.textContent).toBe(defaultValue);
 
-    const iconCell2 = screen.getByTestId('table_row_0_cell_2');
+    const iconCell2 = screen.getByTestId('table_row_0_cell_3');
     expect(iconCell2.textContent).toBe(defaultValue);
 
-    const iconCell3 = screen.getByTestId('table_row_0_cell_3');
+    const iconCell3 = screen.getByTestId('table_row_0_cell_4');
     expect(iconCell3.textContent).toBe(defaultValue);
 
-    const dateCell = screen.getByTestId('table_row_0_cell_4');
+    const dateCell = screen.getByTestId('table_row_0_cell_5');
     expect(dateCell.textContent).toBe(defaultValue);
+  });
+
+  test('should display badge when no display text is provided', async () => {
+    const columDefs = [
+      {
+        Header: 'Badge Cell',
+        accessor: 'badge',
+        Cell: BadgeCell('success'),
+      },
+    ] as Column<Record<string, string | boolean | number | undefined>>[];
+
+    const currentData = [
+      {
+        id: '1',
+        badge: 'Test',
+      },
+    ];
+
+    render(
+      <Table data={currentData} columns={columDefs}>
+        <TableContent />
+      </Table>
+    );
+
+    const badgeCell = screen.getByTestId('table_row_0_cell_0');
+    expect(badgeCell.textContent).toBe(currentData[0].badge);
   });
 });
