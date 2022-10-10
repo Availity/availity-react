@@ -198,8 +198,17 @@ exports[`Table should not display primary action column when provided 1`] = `
         </th>
         <th
           colspan="1"
-          data-testid="table_header_row_0_cell_6_actions"
-          id="table_header_row_0_cell_6_actions"
+          data-testid="table_header_row_0_cell_6_iconWithTooltip"
+          id="table_header_row_0_cell_6_iconWithTooltip"
+          role="columnheader"
+          title="Icon With Tooltip"
+        >
+          Icon With Tooltip
+        </th>
+        <th
+          colspan="1"
+          data-testid="table_header_row_0_cell_7_actions"
+          id="table_header_row_0_cell_7_actions"
           role="columnheader"
           title="Actions"
         >
@@ -276,6 +285,16 @@ exports[`Table should not display primary action column when provided 1`] = `
         <td
           data-testid="table_row_0_cell_6"
           id="table_row_0_cell_6"
+        >
+          <i
+            aria-hidden="true"
+            class="icon icon-ok"
+            id="IconWithTooltip_0"
+          />
+        </td>
+        <td
+          data-testid="table_row_0_cell_7"
+          id="table_row_0_cell_7"
         >
           <div
             class="dropdown-action-menu dropleft dropdown"
@@ -373,11 +392,15 @@ exports[`Table should not display primary action column when provided 1`] = `
         <td
           data-testid="table_row_1_cell_3"
           id="table_row_1_cell_3"
-        />
+        >
+          
+        </td>
         <td
           data-testid="table_row_1_cell_4"
           id="table_row_1_cell_4"
-        />
+        >
+          
+        </td>
         <td
           data-testid="table_row_1_cell_5"
           id="table_row_1_cell_5"
@@ -391,6 +414,12 @@ exports[`Table should not display primary action column when provided 1`] = `
         <td
           data-testid="table_row_1_cell_6"
           id="table_row_1_cell_6"
+        >
+          Not Available
+        </td>
+        <td
+          data-testid="table_row_1_cell_7"
+          id="table_row_1_cell_7"
         >
           <div
             class="dropdown-action-menu dropleft dropdown"
@@ -1102,8 +1131,17 @@ exports[`Table should render with formatted cells 1`] = `
         </th>
         <th
           colspan="1"
-          data-testid="table_header_row_0_cell_6_actions"
-          id="table_header_row_0_cell_6_actions"
+          data-testid="table_header_row_0_cell_6_iconWithTooltip"
+          id="table_header_row_0_cell_6_iconWithTooltip"
+          role="columnheader"
+          title="Icon With Tooltip"
+        >
+          Icon With Tooltip
+        </th>
+        <th
+          colspan="1"
+          data-testid="table_header_row_0_cell_7_actions"
+          id="table_header_row_0_cell_7_actions"
           role="columnheader"
           title="Actions"
         >
@@ -1180,6 +1218,16 @@ exports[`Table should render with formatted cells 1`] = `
         <td
           data-testid="table_row_0_cell_6"
           id="table_row_0_cell_6"
+        >
+          <i
+            aria-hidden="true"
+            class="icon icon-ok"
+            id="IconWithTooltip_0"
+          />
+        </td>
+        <td
+          data-testid="table_row_0_cell_7"
+          id="table_row_0_cell_7"
         >
           <div
             class="dropdown-action-menu dropleft dropdown"
@@ -1277,11 +1325,15 @@ exports[`Table should render with formatted cells 1`] = `
         <td
           data-testid="table_row_1_cell_3"
           id="table_row_1_cell_3"
-        />
+        >
+          
+        </td>
         <td
           data-testid="table_row_1_cell_4"
           id="table_row_1_cell_4"
-        />
+        >
+          
+        </td>
         <td
           data-testid="table_row_1_cell_5"
           id="table_row_1_cell_5"
@@ -1295,6 +1347,12 @@ exports[`Table should render with formatted cells 1`] = `
         <td
           data-testid="table_row_1_cell_6"
           id="table_row_1_cell_6"
+        >
+          Not Available
+        </td>
+        <td
+          data-testid="table_row_1_cell_7"
+          id="table_row_1_cell_7"
         >
           <div
             class="dropdown-action-menu dropleft dropdown"

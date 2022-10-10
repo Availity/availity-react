@@ -10,12 +10,14 @@ export type IconConfig<T> = {
   name: string;
   title?: string;
   getTitle?: (value: T) => string;
+  defaultValue?: string | React.ReactChild | React.ElementType;
 } & IconProps;
 
 const IconCell = <T extends unknown>({
   name,
   title,
   getTitle,
+  defaultValue = '',
   ...attributes
 }: IconConfig<T>): JSX.Element | ((cell: CellProps<T>) => JSX.Element | null) => {
   const IconCellDef = ({ value }: CellProps<T>): JSX.Element | null => {
@@ -26,7 +28,7 @@ const IconCell = <T extends unknown>({
       generatedTitle = getTitle(value);
     }
 
-    return value ? <Icon name={name} title={generatedTitle} {...attributes} /> : null;
+    return value ? <Icon name={name} title={generatedTitle} {...attributes} /> : <>{defaultValue}</>;
   };
 
   return IconCellDef;

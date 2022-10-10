@@ -14,9 +14,9 @@ import Table, {
   TableContext,
   TableContent,
   CurrencyCell,
+  IconWithTooltipCell,
 } from '.';
 import '../styles.scss';
-import IconWithTooltipCell from './CellDefinitions/IconWIthTooltipCell';
 
 const columns = [
   {
@@ -36,7 +36,7 @@ const columns = [
     accessor: 'birthDate',
     defaultCanSort: true,
     disableSortBy: false,
-    Cell: DateCell({ dateFormat: 'MM/DD/yyyy' }),
+    Cell: DateCell({ dateFormat: 'MM/DD/yyyy', defaultValue: <span className="text-muted">Not Available</span> }),
   },
   {
     Header: 'Subscriber Relationship',

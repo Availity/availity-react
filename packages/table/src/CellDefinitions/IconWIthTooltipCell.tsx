@@ -1,4 +1,4 @@
-import React, { ReactElement } from 'react';
+import React from 'react';
 import Icon, { IconProps } from '@availity/icon';
 import { UncontrolledTooltip, UncontrolledTooltipProps } from 'reactstrap';
 import { IdType, Row } from '../types/ReactTable';

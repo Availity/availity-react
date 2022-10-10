@@ -1,4 +1,4 @@
-export { ActionCell, BadgeCell, CurrencyCell, DateCell, IconCell } from './CellDefinitions';
+export { ActionCell, BadgeCell, CurrencyCell, DateCell, IconCell, IconWithTooltipCell } from './CellDefinitions';
 
 export type { ActionCellConfig, CurrencyCellConfig, DateTimeCellConfig, IconConfig } from './CellDefinitions';
 

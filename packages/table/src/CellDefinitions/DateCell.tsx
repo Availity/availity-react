@@ -21,7 +21,12 @@ const DateCell = ({
     } else {
       formattedValue = moment(value).format(dateFormat);
     }
-    return <span title={typeof formattedValue === 'string' ? formattedValue : undefined}>{formattedValue}</span>;
+
+    return formattedValue !== defaultValue ? (
+      <span title={typeof formattedValue === 'string' ? formattedValue : undefined}>{formattedValue}</span>
+    ) : (
+      <>{defaultValue}</>
+    );
   };
 
   return DateCellDef;

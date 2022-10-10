@@ -63,7 +63,12 @@ To display a basic table, the `Table` component with no children is the only thi
 
 ```jsx
 import React from 'react';
-import Table, { TableContent, TableContext, BulkTableActions, TableSorter } from '@availity/table';
+import Table, {
+  TableContent,
+  TableContext,
+  BulkTableActions,
+  TableSorter,
+} from '@availity/table';
 import Pagination, { PaginationControls } from '@availity/pagination';
 import '@availity/table/style.scss';
 
@@ -291,7 +296,7 @@ const columns = [
 
 ### Badge Cell
 
-This is used to display a Reactstrap Badge in a cell. See [Availity UI Kit](https://availity.github.io/availity-uikit/v3/components#Badges-Contextual-Variations) and [ReactStrap](https://reactstrap.github.io/components/badge/) for available stylings.
+This is used to display a Reactstrap Badge in a cell. See [Availity UI Kit](https://availity.github.io/availity-uikit/v4/components#Badges-Contextual-Variations) and [ReactStrap](https://reactstrap.github.io/components/badge/) for available stylings.
 
 #### Usages
 
@@ -309,7 +314,7 @@ const columns = [
   {
     Header: 'Badge',
     accessor: 'badge',
-    Cell: Badgecell('success'),
+    Cell: BadgeCell('success'),
   },
 ];
 ```
@@ -365,7 +370,7 @@ const columns = [
 This is used to have an cell display an icon. This will only show the icon if the value for the cell is populated (or `true`).
 In order to show an icon always and not conditionally you can utilize `BuildIcon` and supply it the name of the icon and title.
 
-See [Availity UI Kit](https://availity.github.io/availity-uikit/v3/icons) for available icons.
+See [Availity UI Kit](https://availity.github.io/availity-uikit/v4/icons) for available icons.
 
 #### Usages
 
@@ -387,7 +392,7 @@ If the title (tooltip) of the icon is dependent on the data of the record, it is
 ```jsx
 const columns = [
   {
-    Header: <Icon name="flag" title="Flag for follup" />,
+    Header: <Icon name="flag" title="Flag for followup" />,
     accessor: 'followup',
     Cell: IconCell({
       name: 'flag',
@@ -396,6 +401,31 @@ const columns = [
     }),
   },
 ];
+```
+
+### Icon With Tooltip Cell
+
+This cell definition is the same as the IconCell, but will display a Reactstrap tooltip when hovering over it.
+An ID must be populated so that the tooltip can be applied to the correct target. You can do this by populating a `getId(row)` function to access the data in the row.
+
+Additionally, to populate the tooltip text from the record, a `tooltipText(value)` function can be supplied to populate the tooltip text from the cell value.
+If the text is the same each time, you can also just set this value to a string (`tooltipText: 'My tooltip'`).
+
+See [Availity UI Kit](https://availity.github.io/availity-uikit/v4/icons) for available icons.
+
+#### Usages
+
+```jsx
+    const columns = [
+      Header: 'Has Middle Name',
+      accessor: 'middleName'
+      Cell: IconWithTooltipCell({
+        name: 'ok',
+        getId: (row) => `IconHasMiddleName_${row.id}`,
+        tooltipText: (value) => `Middle Name: ${value}`,
+        defaultValue: 'Not Available',
+      }),
+    ]
 ```
 
 ## Column Configuration Properties
@@ -609,7 +639,13 @@ If `<TableControls>` are being utilized, move the `<TableControls>` to be a chil
 
 ```jsx
 import React from 'react';
-import Table, { TableProvider, TableControls, BulkTableActions, TableSorter, TableContext } from '@availity/table';
+import Table, {
+  TableProvider,
+  TableControls,
+  BulkTableActions,
+  TableSorter,
+  TableContext,
+} from '@availity/table';
 import Pagination, { PaginationControls } from '@availity/pagination';
 
 import '@availity/table/style.scss';
@@ -663,6 +699,7 @@ const Example = () => (
   </TableProvider>
 );
 ```
+
 #### After
 
 ```jsx
@@ -751,5 +788,3 @@ const Example = () : JSX.Element => (
     </Table>
 );
 ```
-
-
