@@ -1,6 +1,6 @@
 /* eslint-disable import/prefer-default-export */
 import nativeForm from '@availity/native-form';
-import { Configuration } from '../../types/thanos-types';
+import { Configuration } from '../types/thanos-types';
 import { updateTopApps } from './updateTopApps';
 
 export const openLinkWithSso = async (
@@ -25,7 +25,7 @@ export const openLinkWithSso = async (
         /(?:(?:^|.*;\s*)XSRF-TOKEN\s*=\s*([^;]*).*$)|^.*$/,
         '$1'
       ),
-      spaceId: payerSpaceId,
+      ...(payerSpaceId ? { spaceId: payerSpaceId } : {}),
       ...ssoParams,
     };
 
