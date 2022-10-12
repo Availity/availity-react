@@ -80,9 +80,9 @@ const TableContent = <T extends IdType>(): JSX.Element | null => {
           prepareRow(row);
           return (
             <TableRow
-              id={`${populateId()}table_row_${rowIndex}`}
-              data-testid={`${populateId()}table_row_${rowIndex}`}
-              key={`${populateId()}table_row_${rowIndex.toString()}`}
+              id={`${populateId()}table_row_${row.id}`}
+              data-testid={`${populateId()}table_row_${row.id}`}
+              key={`${populateId()}table_row_${row.id}`}
               index={rowIndex}
               row={row as Row<T>}
               onRowClick={selectable ? undefined : onRowClick}
@@ -95,9 +95,9 @@ const TableContent = <T extends IdType>(): JSX.Element | null => {
             >
               {row.cells.map((cell, cellIndex: number) => (
                 <TableCell<T>
-                  id={`${populateId()}table_row_${rowIndex}_cell_${cellIndex}`}
+                  id={`${populateId()}table_row_${row.id}_cell_${cellIndex}`}
                   data-testid={`${populateId()}table_row_${rowIndex}_cell_${cellIndex}`}
-                  key={`${populateId()}table_row_${rowIndex.toString()}_cell_${cellIndex.toString()}`}
+                  key={`${populateId()}table_row_${row.id}_cell_${cellIndex.toString()}`}
                   cell={cell as Cell<T>}
                   onCellClick={selectable ? onRowClick : onCellClick}
                   getCellProps={getCellProps as (cell: Cell<T>) => React.HTMLAttributes<HTMLTableCellElement>}

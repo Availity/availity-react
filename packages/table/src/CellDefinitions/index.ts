@@ -3,6 +3,7 @@ export { default as BadgeCell } from './BadgeCell';
 export { default as CurrencyCell } from './CurrencyCell';
 export { default as DateCell } from './DateCell';
 export { default as IconCell } from './IconCell';
+export { default as IconWithTooltipCell } from './IconWIthTooltipCell';
 
 export type { ActionCellConfig } from './ActionCell';
 export type { CurrencyCellConfig } from './CurrencyCell';
