@@ -2,6 +2,20 @@
 
 This file was generated using [@jscutlery/semver](https://github.com/jscutlery/semver).
 
+## [0.5.2](https://github.com/Availity/availity-react/compare/@availity/table@0.5.1...@availity/table@0.5.2) (2022-10-12)
+
+
+### Bug Fixes
+
+* **table:** add some additional test coverage ([5d0cc1b](https://github.com/Availity/availity-react/commit/5d0cc1b2b143eb92db156790738056833d8cef39))
+* **table:** add tests, update docs ([8ee8e53](https://github.com/Availity/availity-react/commit/8ee8e5312d0259698b30f5b23c87d07553241d0d))
+* **table:** adjust cell definitions to better handle undefined values ([c026910](https://github.com/Availity/availity-react/commit/c0269109af6726ee51534265bbe48efae08f2574))
+* **table:** correct duplicate ids on elements ([5e63653](https://github.com/Availity/availity-react/commit/5e636536903961dc8fb3a97d153da2ccbdfd1e3a))
+* **table:** fix accessibility issues with action menu and ensure unique ids ([da0613a](https://github.com/Availity/availity-react/commit/da0613abff4c6be74571cc285a90dcb8889510f4))
+* **table:** fix currency cell to allow for strings or JSX. Also ensure it doesn't format undefined as it produces NaN ([d8a8239](https://github.com/Availity/availity-react/commit/d8a82392888344ccab8b2d684c2096ce2c8d9fe8))
+
+
+
 ## [0.5.2-alpha.3](https://github.com/Availity/availity-react/compare/@availity/table@0.5.2-alpha.2...@availity/table@0.5.2-alpha.3) (2022-09-01)
 
 
