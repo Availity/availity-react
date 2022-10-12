@@ -3,6 +3,7 @@ import { FileError } from 'react-dropzone/typings/react-dropzone';
 export interface UploadProps {
   allowedFileNameCharacters?: string;
   allowedFileTypes?: string[];
+  btnColor?: string;
   btnText?: React.ReactNode;
   bucketId: string;
   children?: Function;
