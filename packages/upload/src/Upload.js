@@ -136,6 +136,7 @@ class Upload extends Component {
 
   render() {
     const {
+      btnColor,
       btnText,
       max,
       multiple,
@@ -184,7 +185,7 @@ class Upload extends Component {
         <FilePickerBtn
           data-testid="file-picker"
           onChange={this.handleFileInputChange}
-          color={files.length === 0 ? 'light' : 'link'}
+          color={files.length === 0 ? btnColor : 'link'}
           multiple={multiple}
           allowedFileTypes={allowedFileTypes}
           maxSize={maxSize}
@@ -212,6 +213,7 @@ class Upload extends Component {
 }
 
 Upload.propTypes = {
+  btnColor: PropTypes.string,
   btnText: PropTypes.node,
   bucketId: PropTypes.string.isRequired,
   customerId: PropTypes.string.isRequired,
@@ -234,6 +236,7 @@ Upload.propTypes = {
 };
 
 Upload.defaultProps = {
+  btnColor: 'light',
   multiple: true,
   showFileDrop: false,
   disabled: false,

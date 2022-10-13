@@ -106,6 +106,10 @@ const Example = () => (
 
 Identifies the field and matches the validation schema.
 
+#### `btnColor?: string`
+
+The color of the button. Refer to the Reactstrap documentation to determine which colors are available. **Default:** `light`.
+
 #### `btnText?: ReactNode`
 
 `+ Add File` for initial file or `+ Add Another File Attachment` if an attachment already have been selected. | The text that appears on the button.
