@@ -1,0 +1,51 @@
+{
+  "name": "@availity/nav-tabs",
+  "version": "1.0.0",
+  "description": "A component for accessible navigation tabs",
+  "keywords": [
+    "react",
+    "availity"
+  ],
+  "bugs": {
+    "url": "https://github.com/Availity/availity-react/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Availity/availity-react.git"
+  },
+  "license": "MIT",
+  "author": "Megan Cole <megan.cole@availity.com>",
+  "browser": "./dist/index.js",
+  "main": "./dist/index.js",
+  "module": "./dist/index.mjs",
+  "types": "./dist/index.d.ts",
+  "scripts": {
+    "build": "tsup src/index.ts --format esm,cjs --dts",
+    "dev": "tsup src/index.ts --format esm,cjs --watch --dts",
+    "clean": "rm -rf dist",
+    "clean:nm": "rm -rf node_modules",
+    "bundlesize": "bundlesize",
+    "publish": "yarn npm publish --tolerate-republish --access public",
+    "publish:canary": "yarn npm publish --access public --tag canary"
+  },
+  "dependencies": {
+    "classnames": "^2.3.1",
+    "lodash": "^4.17.21"
+  },
+  "devDependencies": {
+    "react": "^17.0.2",
+    "react-dom": "^17.0.2",
+    "reactstrap": "^8.10.1",
+    "tsup": "^5.12.7",
+    "typescript": "^4.6.4"
+  },
+  "peerDependencies": {
+    "availity-uikit": ">=3.0.0",
+    "react": "^17.0.2",
+    "react-dom": "^17.0.2",
+    "reactstrap": "^8.0.0"
+  },
+  "publishConfig": {
+    "access": "public"
+  }
+}
