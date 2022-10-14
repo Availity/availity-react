@@ -1,6 +1,6 @@
 import React from 'react';
 import { Meta, Story } from '@storybook/react';
-import Tabs from './Tabs';
+import { Tabs } from '.';
 
 import '../styles.scss';
 
@@ -11,10 +11,10 @@ export default {
       // page: README,
     },
   },
+  args: {
+    tabAray: ['Tab 1', 'Tab 2'],
+  },
 } as Meta;
 
 export const Tabs: Story = ({ tabArray }) => <Tabs tabArray={tabArray} />;
-Tabs.args = {
-  tabArray: ['Tab1'],
-};
 Tabs.storyName = 'Nav Tabs';
