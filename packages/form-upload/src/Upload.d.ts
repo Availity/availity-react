@@ -2,6 +2,7 @@ import React from 'react';
 import type { FileError } from 'react-dropzone/typings/react-dropzone';
 
 export interface UploadProps {
+  btnColor?: string;
   btnText?: React.ReactNode;
   bucketId: string;
   customerId: string;

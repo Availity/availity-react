@@ -20,6 +20,7 @@ const dropzoneFallback = <div data-testid="dropzone-fallback">Loading...</div>;
 const Upload = ({
   allowedFileNameCharacters,
   allowedFileTypes,
+  btnColor = 'light',
   btnText,
   bucketId,
   children,
@@ -254,7 +255,7 @@ const Upload = ({
       <FilePickerBtn
         data-testid="file-picker"
         onChange={handleFileInputChange}
-        color={fieldValue.length === 0 ? 'light' : 'link'}
+        color={fieldValue.length === 0 ? btnColor : 'link'}
         multiple={multiple}
         allowedFileTypes={allowedFileTypes}
         maxSize={maxSize}
@@ -283,6 +284,7 @@ Upload.propTypes = {
   name: PropTypes.string.isRequired,
   allowedFileNameCharacters: PropTypes.string,
   allowedFileTypes: PropTypes.arrayOf(PropTypes.string),
+  btnColor: PropTypes.string,
   btnText: PropTypes.node,
   children: PropTypes.func,
   className: PropTypes.string,
