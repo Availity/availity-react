@@ -37,11 +37,11 @@ const Tabs = ({ tabArray }: NavigationProps): JSX.Element => {
           <NavLink
             id={tab}
             className="mr-1"
-            onClick={toggleTabs}
+            onClick={() => toggleTabs(tab)}
             active={activeTab === tab}
             tag="button"
             role="tab"
-            aria-selected={activeTab}
+            aria-selected={!!activeTab}
             aria-controls={`${tab?.toLowerCase()}-tab`}
             tabIndex={activeTab ? 0 : -1}
           >

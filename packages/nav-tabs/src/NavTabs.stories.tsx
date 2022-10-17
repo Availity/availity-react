@@ -16,5 +16,5 @@ export default {
   },
 } as Meta;
 
-export const Tabs: Story = ({ tabArray }) => <Tabs tabArray={tabArray} />;
-Tabs.storyName = 'Nav Tabs';
+export const NavTabs: Story = ({ tabArray }) => <Tabs tabArray={tabArray} />;
+NavTabs.storyName = 'Nav Tabs';
