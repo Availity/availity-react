@@ -2,6 +2,15 @@
 
 This file was generated using [@jscutlery/semver](https://github.com/jscutlery/semver).
 
+# [0.10.0](https://github.com/Availity/availity-react/compare/@availity/form-upload@0.9.2...@availity/form-upload@0.10.0) (2022-10-18)
+
+
+### Features
+
+* **form-upload:** add prop btnColor to Upload component ([e1b8e14](https://github.com/Availity/availity-react/commit/e1b8e1480466f58f2eaf9f7bc4b0f21b6f950392))
+
+
+
 ## [0.9.2](https://github.com/Availity/availity-react/compare/@availity/form-upload@0.9.1...@availity/form-upload@0.9.2) (2022-08-18)
 
 
