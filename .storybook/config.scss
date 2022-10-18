@@ -4,3 +4,12 @@ $availity-font-path: '~availity-uikit/fonts';
 pre.prismjs {
   color: inherit;
 }
+
+[id*='hidden'][id*='components'] {
+  display: none !important;
+}
+
+.argstable-remove-default th:last-child,
+.argstable-remove-default td:last-child {
+  display: none !important;
+}

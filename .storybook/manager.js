@@ -17,7 +17,7 @@ addons.setConfig({
   panelPosition: 'bottom',
   theme,
   sidebar: {
-    collapsedRoots: ['components', 'form-components', 'hooks', 'legacy-form-components', 'deprecated'],
+    collapsedRoots: ['components', 'form-components', 'hooks', 'legacy-form-components', 'deprecated', '3rd-party'],
   },
 });
 

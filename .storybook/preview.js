@@ -17,6 +17,7 @@ export const parameters = {
         ['Form', 'Date', 'Phone', 'Select', 'Upload'],
         'Legacy Form Components',
         'Deprecated',
+        '3rd Party',
       ],
     },
   },

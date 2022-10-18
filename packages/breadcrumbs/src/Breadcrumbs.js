@@ -32,16 +32,22 @@ const Breadcrumbs = ({ crumbs, active, emptyState, children, linkTag: LinkTag, h
 };
 
 Breadcrumbs.propTypes = {
+  /** The currently active page */
+  active: PropTypes.string.isRequired,
+  /** Additional parent breadcrumbs */
   crumbs: PropTypes.arrayOf(
     PropTypes.shape({
       name: PropTypes.string,
       url: PropTypes.string,
     })
   ),
+  /** Tag for link */
   linkTag: PropTypes.oneOfType([PropTypes.func, PropTypes.string]),
-  active: PropTypes.string.isRequired,
+  /** Breadcrumb value when state is empty */
   emptyState: PropTypes.string,
+  /** Node to go between parent and active breadcrumb */
   children: PropTypes.node,
+  /** URL for home breadcrumb */
   homeUrl: PropTypes.string,
 };
 
