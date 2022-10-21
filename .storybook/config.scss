@@ -5,7 +5,8 @@ pre.prismjs {
   color: inherit;
 }
 
-[id*='hidden'][id*='components'] {
+// Doesn't work for sidebar items, must place sidebar styling in manager-head.html
+[id*='--hidden'] {
   display: none !important;
 }
 
