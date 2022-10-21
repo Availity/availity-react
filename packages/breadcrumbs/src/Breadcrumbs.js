@@ -32,16 +32,22 @@ const Breadcrumbs = ({ crumbs, active, emptyState, children, linkTag: LinkTag, h
 };
 
 Breadcrumbs.propTypes = {
+  /** The name of the active page (the page the user is currently on). */
+  active: PropTypes.string.isRequired,
+  /** The ancestor pages. Objects in array contain `name` (String) and `url` (String) properties. */
   crumbs: PropTypes.arrayOf(
     PropTypes.shape({
       name: PropTypes.string,
       url: PropTypes.string,
     })
   ),
+  /** Custom link tag for the links. */
   linkTag: PropTypes.oneOfType([PropTypes.func, PropTypes.string]),
-  active: PropTypes.string.isRequired,
+  /** The value to display when the active page or an ancestor does not have a value. */
   emptyState: PropTypes.string,
+  /** The children must be a reactstrap `BreadcrumbItem` components. */
   children: PropTypes.node,
+  /** Url for the Home route. */
   homeUrl: PropTypes.string,
 };
 

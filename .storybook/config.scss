@@ -4,3 +4,13 @@ $availity-font-path: '~availity-uikit/fonts';
 pre.prismjs {
   color: inherit;
 }
+
+// Doesn't work for sidebar items, must place sidebar styling in manager-head.html
+[id*='--hidden'] {
+  display: none !important;
+}
+
+.argstable-remove-default th:last-child,
+.argstable-remove-default td:last-child {
+  display: none !important;
+}

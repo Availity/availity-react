@@ -1,7 +1,13 @@
 module.exports = {
-  stories: ['./*.stories.mdx', '../packages/**/*.stories.tsx'],
+  stories: ['./*.stories.mdx', './stories/*.stories.mdx', './stories/*.stories.tsx', '../packages/**/*.stories.tsx'],
   addons: ['@storybook/addon-essentials', '@storybook/addon-a11y', '@storybook/addon-docs'],
   staticDirs: ['../static', './static'],
+  typescript: {
+    reactDocgenTypescriptOptions: {
+      shouldExtractLiteralValuesFromEnum: true,
+      propFilter: (prop) => (prop.parent ? !/node_modules\/(?!reactstrap).*/.test(prop.parent.fileName) : true),
+    },
+  },
   webpackFinal: async (config) => {
     config.module.rules.push(
       {
