@@ -71,6 +71,8 @@ const Link = ({
   linkAttributes,
   role,
   analytics,
+  customBadgeText,
+  customBadgeColor,
   ...rest
 }) => {
   const { loading } = useSpacesContext() || {};
@@ -169,6 +171,28 @@ const Link = ({
     [activeDate, isNew, showDate, showNew, stacked, configurationId]
   );
 
+  const customBadgeDisplay = useMemo(
+    () => (
+      <div
+        className={classNames({
+          'text-center': stacked,
+          'media media-right': !stacked,
+        })}
+      >
+        <Badge
+          color={customBadgeColor || 'info'}
+          className={classNames({
+            'ml-2': showDate || showNew,
+          })}
+          id={`app-custom-badge-${customBadgeText}`}
+        >
+          {customBadgeText}
+        </Badge>
+      </div>
+    ),
+    [customBadgeColor, customBadgeText, showDate, showNew, stacked]
+  );
+
   if (isLoading) {
     return <Loader id={`app-${configurationId}-loading`} skeletonProps={skeletonProps} {...rest} />;
   }
@@ -251,6 +275,7 @@ const Link = ({
                   {name}
                 </TitleTag>
                 {stacked && dateInfo}
+                {stacked && customBadgeDisplay}
                 {showDescription && description && (
                   <TextTag
                     tag="div"
@@ -273,6 +298,7 @@ const Link = ({
               </Media>
             )}
         {!stacked && dateInfo}
+        {!stacked && customBadgeDisplay}
       </BodyTag>
     </Tag>
   );
@@ -307,6 +333,8 @@ Link.propTypes = {
   linkAttributes: PropTypes.object,
   role: PropTypes.string,
   analytics: PropTypes.object,
+  customBadgeText: PropTypes.string,
+  customBadgeColor: PropTypes.string,
 };
 
 Link.defaultProps = {
