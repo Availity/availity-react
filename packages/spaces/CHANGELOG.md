@@ -2,6 +2,15 @@
 
 This file was generated using [@jscutlery/semver](https://github.com/jscutlery/semver).
 
+# [6.4.0](https://github.com/Availity/availity-react/compare/@availity/spaces@6.3.6...@availity/spaces@6.4.0) (2022-10-27)
+
+
+### Features
+
+* **spaces:** allow custom badges on SpacesLink ([5895c0d](https://github.com/Availity/availity-react/commit/5895c0d5e48793aae117f2fa2cd65c6104c87700))
+
+
+
 ## [6.3.6](https://github.com/Availity/availity-react/compare/@availity/spaces@6.3.5...@availity/spaces@6.3.6) (2022-09-23)
 
 
