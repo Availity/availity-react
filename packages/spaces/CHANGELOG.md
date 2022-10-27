@@ -2,6 +2,15 @@
 
 This file was generated using [@jscutlery/semver](https://github.com/jscutlery/semver).
 
+# [6.5.0](https://github.com/Availity/availity-react/compare/@availity/spaces@6.4.0...@availity/spaces@6.5.0) (2022-10-27)
+
+
+### Features
+
+* **spaces:** remove aria-describedby when not new ([72edbea](https://github.com/Availity/availity-react/commit/72edbea34cd3c3a8edea01a988bca8934ca55f36))
+
+
+
 # [6.4.0](https://github.com/Availity/availity-react/compare/@availity/spaces@6.3.6...@availity/spaces@6.4.0) (2022-10-27)
 
 
