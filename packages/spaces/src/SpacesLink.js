@@ -270,7 +270,7 @@ const Link = ({
                   {...props}
                   role={showUrl ? 'link' : role}
                   aria-label={name}
-                  aria-describedby={`app-new-badge-${configurationId}`}
+                  aria-describedby={showNew && isNew ? `app-new-badge-${configurationId}` : undefined}
                 >
                   {name}
                 </TitleTag>
