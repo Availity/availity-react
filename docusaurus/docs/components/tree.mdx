@@ -26,15 +26,29 @@ yarn add @availity/tree
 
 ```jsx
 import React from 'react';
-import Tree, { TreeItem } from '@availity/tree';
+import Tree, { buildTree, TreeItem } from '@availity/tree';
 
-const Example = () => (
+const Example = ({ myData }: Props) => (
   const [valueList, setValueList] = useState<TreeItem[]>([]);
   const [tree, setTree] = useState<TreeItem[]>([]);
+  const [initialState, setInitialState] = useState<TreeItem[]>([]);
 
   const onSelected = (selectedItems: TreeItem[]) => {
     setTentativeSelectList(selectedItems.map((item) => ({ code: item.id, value: item.name })));
   };
+
+  const reset = () => {
+    setTentativeSelectList([]);
+    setTree(cloneDeep(initialState));
+  };
+
+  useEffect(() => {
+    // buildTree will construct a list of TreeItems as expected by the tree component
+    // this optionally allows you to pass an array of expandedIds and selectedIds
+    const tree = buildTree(myData, expandedIds, selectedIds);
+    await setInitialState(cloneDeep(tree));
+    await setTree(tree);
+  }, []);
 
    return (
         <>
@@ -42,10 +56,10 @@ const Example = () => (
                 items={tree}
                 expandAll
                 enableSearch
-                searchLabel={treeLabel}
                 selectedItems={valueList}
                 onItemsSelected={onSelected}
             />
+            <Button id="btnResetTree" onClick={() => reset()}>Reset Tree</Button>
         </>
     );
 );
@@ -58,25 +72,30 @@ Checkout the [Storybook](https://availity.github.io/availity-react/storybook/?pa
 ### Props
 
 #### `items: TreeItem[]`
+
 Required. The list of items to display in the tree.
 
-####  `enableSearch?: boolean`
+#### `enableSearch?: boolean`
+
 Defaults to false. When enabled, there is a search input box that will display and allow for the user to limit the items in the tree based on the typed search value.
 
-####  `searchLabel?: string`
+#### `searchLabel?: string`
+
 The label that displays above the text box.
 
-####  `expandAll?: boolean`
-Defaults to false. When true, the tree view will be entirely expanded on initial load. 
+#### `expandAll?: boolean`
 
-####  `onItemsSelected?: (selectedIds: AvTreeItem[]) => void`
+Defaults to false. When true, the tree view will be entirely expanded on initial load.
+
+#### `onItemsSelected?: (selectedIds: TreeItem[]) => void`
+
 Whenever an item is selected in the tree, it fires this event to let the parent know of the items that are selected.
 
 ### Functions
 
-####  buildTree
-Whenever the items are in a flat array, call this method to build the hierarchical list that is ready for the tree.
+#### buildTree(data: any, expandedIds: string[], selectedIds: string[])
 
+Whenever the items are in a flat array, call this method to build the hierarchical list that is ready for the tree.
 
 ### Types
 

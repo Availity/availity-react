@@ -12,6 +12,13 @@
     top: 0;
   }
 
+  ul:not(:first-child) {
+    padding-left: 0 !important;
+  }
+  ul:first-child {
+    padding-left: 20px;
+  }
+
   li {
     list-style: none;
   }

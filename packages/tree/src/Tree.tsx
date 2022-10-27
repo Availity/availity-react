@@ -1,6 +1,7 @@
 import Icon from '@availity/icon';
 import React, { useState, useEffect, useCallback } from 'react';
-import { Button, FormGroup, Input, Label } from 'reactstrap';
+import { Button, Col, FormGroup, Input, Label, Row } from 'reactstrap';
+
 import TreeItem from './TreeItem';
 
 const SELECT_ALL = 'Select All';
@@ -10,27 +11,29 @@ const EXPAND_ALL = 'Expand All';
 const COLLAPSE_ALL = 'Collapse All';
 
 const areAllChildrenSelected = (item: TreeItem) =>
-  (item.isSelected && item.children?.every((child) => !child.isDisabled ? child.isSelected : true)) || false;
+  (item.isSelected && item.children?.every((child) => (!child.isDisabled ? child.isSelected : true))) || false;
 
 export type TreeProps = {
   searchLabel?: string;
   enableSearch?: boolean;
   items: TreeItem[];
   isRoot?: boolean;
-  onItemsSelected?: (selectedIds: TreeItem[]) => void;
-  onItemsExpanded?: () => void;
+  onItemsSelected?: (selectedItems: TreeItem[]) => void;
+  onItemsExpanded?: (expandedItems?: TreeItem[]) => void;
   parentId?: string;
   selectedItems?: TreeItem[];
   expandAll?: boolean;
-  selectable?: boolean
+  selectable?: boolean;
 };
 
-export const buildTree = (items: TreeItem[]) => {
+export const buildTree = (items: TreeItem[], expandedIds?: string[], selectedIds?: string[]) => {
   const tree: TreeItem[] = [];
   const parents: Map<string, TreeItem> = new Map<string, TreeItem>();
 
   for (const item of items) {
-    item.children =[];
+    item.children = [];
+    item.isSelected = selectedIds ? selectedIds.includes(item.id) : item.isSelected;
+    item.isExpanded = expandedIds ? expandedIds.includes(item.id) : item.isExpanded;
     parents.set(item.id, item);
   }
 
@@ -57,14 +60,15 @@ const Tree = ({
   onItemsExpanded,
   expandAll = false,
   parentId,
-  selectable = false
+  selectable = false,
 }: TreeProps): JSX.Element | null => {
   const [treeItems, setTreeItems] = useState(items);
   const [selectedList, setSelectedList] = useState(selectedItems);
   const [allExpanded, setAllExpanded] = useState(expandAll);
+  const [searchTerm, setSearchTerm] = useState('');
 
   const areAllExpanded = (items: TreeItem[]) => {
-    let allExpanded = items.every((item) => item.isExpanded);
+    let allExpanded = items.every((item) => item.isExpanded || item.children?.length === 0);
     for (const item of items) {
       if (item.children) {
         allExpanded = allExpanded && areAllExpanded(item.children);
@@ -87,6 +91,11 @@ const Tree = ({
   const [rootSelectText, setRootSelectText] = useState(SELECT_ALL);
   const [rootExpandAllText, setRootExpandAllText] = useState(expandAll ? COLLAPSE_ALL : EXPAND_ALL);
   const [isReady, setIsReady] = useState(false);
+
+  useEffect(() => {
+    setTreeItems(items);
+    setSearchTerm('');
+  }, [items]);
 
   const walkTree = useCallback((item: TreeItem, fn: (item: TreeItem) => void) => {
     fn(item);
@@ -112,12 +121,6 @@ const Tree = ({
     }
   }, [treeItems, expandAll, isReady, selectedItems]);
 
-  const handleItemSelected = useCallback(() => {
-    if (onItemsSelected) {
-      onItemsSelected(selectedList);
-    }
-  }, [selectedList, onItemsSelected]);
-
   useEffect(() => {
     if (areAllSelected(treeItems)) {
       setRootSelectText(DESELECT_ALL);
@@ -128,9 +131,7 @@ const Tree = ({
     for (const item of treeItems) {
       item.areAllChildrenSelected = areAllChildrenSelected(item);
     }
-
-    handleItemSelected();
-  }, [selectedList, treeItems, areAllSelected, handleItemSelected]);
+  }, [selectedList, areAllSelected]);
 
   useEffect(() => {
     if (selectedItems.length > 0) {
@@ -141,7 +142,7 @@ const Tree = ({
         });
       }
     }
-  }, [selectedItems, walkTree, treeItems]);
+  }, [selectedItems, walkTree]);
 
   const filterItems = (items: TreeItem[], searchTerm: string) => {
     const searchValue = searchTerm.toUpperCase();
@@ -166,10 +167,18 @@ const Tree = ({
     const itemToUpdate = treeItems.find((t) => t.id === item.id);
     if (itemToUpdate) {
       item.isSelected = !item.isSelected;
+      let selected = [];
+
       if (item.isSelected) {
-        setSelectedList([...selectedList, item]);
+        selected = [...selectedList, item];
+        setSelectedList(selected);
       } else {
-        setSelectedList(selectedList.filter((item) => item.id !== itemToUpdate.id));
+        selected = selectedList.filter((item) => item.id !== itemToUpdate.id);
+        setSelectedList(selected);
+      }
+
+      if (onItemsSelected) {
+        onItemsSelected(selected);
       }
     }
   };
@@ -187,6 +196,7 @@ const Tree = ({
   };
 
   const search = (value: string) => {
+    setSearchTerm(value);
     filterItems(items, value);
     setTreeItems([...treeItems]);
   };
@@ -225,7 +235,7 @@ const Tree = ({
   };
 
   const toggleSelectAll = () => {
-    const isSelected = !areAllSelected(items);
+    const isSelected = !areAllSelected(treeItems);
     for (const item of treeItems) {
       walkTree(item, (item) => {
         item.isSelected = isSelected;
@@ -233,7 +243,11 @@ const Tree = ({
       });
     }
 
-    setSelectedList(getSelectedItems(items));
+    setSelectedList(getSelectedItems(treeItems));
+
+    if (onItemsSelected) {
+      onItemsSelected(getSelectedItems(treeItems));
+    }
   };
 
   const toggleSelectChildren = (item: TreeItem) => {
@@ -251,20 +265,42 @@ const Tree = ({
       });
     }
 
-    setSelectedList(getSelectedItems(items));
+    setSelectedList(getSelectedItems(treeItems));
     setTreeItems([...treeItems]);
+
+    if (onItemsSelected) {
+      onItemsSelected(getSelectedItems(treeItems));
+    }
   };
 
   const onChildrenSelected = useCallback(() => {
     setSelectedList(getSelectedItems(treeItems));
+    for (const child of treeItems || []) {
+      walkTree(child, (child) => {
+        if (child.isDisabled) {
+          return;
+        }
+        child.areAllChildrenSelected = areAllChildrenSelected(child);
+      });
+    }
+    if (onItemsSelected) {
+      onItemsSelected(getSelectedItems(treeItems));
+    }
   }, [getSelectedItems, treeItems]);
 
   const onChildrenExpanded = () => {
-    setAllExpanded(areAllExpanded(items));
-    if (areAllExpanded(items)) {
-      setRootExpandAllText(COLLAPSE_ALL);
-    } else {
-      setRootExpandAllText(EXPAND_ALL);
+    setAllExpanded(areAllExpanded(treeItems));
+
+    if (isRoot) {
+      if (areAllExpanded(items)) {
+        setRootExpandAllText(COLLAPSE_ALL);
+      } else {
+        setRootExpandAllText(EXPAND_ALL);
+      }
+    }
+
+    if (onItemsExpanded) {
+      onItemsExpanded();
     }
   };
 
@@ -277,13 +313,14 @@ const Tree = ({
       <div data-testid={`tree-view-${parentId || 'parent'}`} className="tree-view">
         {isRoot && enableSearch && (
           <div className="form-group">
-            <Label className="font-weight-bold">{searchLabel}</Label>
+            {searchLabel && <Label className="font-weight-bold">{searchLabel}</Label>}
             <Input
               data-testid="tree-search-input"
               type="text"
               className="form-control"
               id="search"
               placeholder="Search"
+              value={searchTerm}
               onChange={(event: React.ChangeEvent<HTMLInputElement>) => search(event.target.value)}
             />
           </div>
@@ -291,61 +328,84 @@ const Tree = ({
 
         {isRoot && (
           <div className="form-group mb-1">
-            <Button data-testid="btn-expand-all" id="btnExpandAll" color="link" className="p-0" onClick={toggleExpandAll}>
+            <Button
+              data-testid="btn-expand-all"
+              id="btnExpandAll"
+              color="link"
+              className="p-0"
+              onClick={toggleExpandAll}
+            >
               {rootExpandAllText}
             </Button>
           </div>
         )}
 
-        <ul className="pl-0">
+        <ul>
           {treeItems.map((item) => (
             <li data-testid={`tree-view-item-${item.id}`} key={`tree-view-item-${item.id}`}>
               {!item.isHidden && (
-                <>
-                  <div className="d-flex">
-                    <FormGroup check>
-                      {!item.isDisabled && selectable && (
-                        <Input
-                          id={`chkSelect_${item.id}`}
-                          data-testid={`chk-tree-view-item-select-${item.id}`}
-                          type="checkbox"
-                          checked={item.isSelected}
-                          onChange={() => toggleSelect(item)}
-                        />
-                      )}
-                      <Label data-testid={`tree-view-item-${item.id}-label`} className={item.isDisabled ? 'text-muted' : ''} check>
-                        {item.name}
-                      </Label>
-                    </FormGroup>
+                <div>
+                  <Row>
+                    <Col sm="7">
+                      <FormGroup check>
+                        {!item.isDisabled && selectable && (
+                          <Input
+                            id={`chkSelect_${item.id}`}
+                            name={`chkSelect_${item.id}`}
+                            data-testid={`chk-tree-view-item-select-${item.id}`}
+                            type="checkbox"
+                            checked={item.isSelected}
+                            onChange={() => toggleSelect(item)}
+                          />
+                        )}
+                        <Label
+                          data-testid={`tree-view-item-${item.id}-label`}
+                          className={item.isDisabled ? 'text-muted' : ''}
+                          check
+                          for={`chkSelect_${item.id}`}
+                        >
+                          {item.name}
+                        </Label>
+                      </FormGroup>
+                    </Col>
 
                     {item.children && item.children.length > 0 && (
-                      <div className="form-inline d-flex justify-content-end ml-auto align-items-center">
-                        {isRoot && selectable && (
-                          <Button data-testid="btn-select-all" color="link" className="pb-0 pt-0" onClick={() => toggleSelectAll()}>
-                            {rootSelectText}
+                      <Col sm="5">
+                        <div className="form-inline d-flex justify-content-end ml-auto align-items-center">
+                          {isRoot && selectable && (
+                            <Button
+                              data-testid="btn-select-all"
+                              color="link"
+                              className="pb-0 pt-0"
+                              onClick={() => toggleSelectAll()}
+                            >
+                              {rootSelectText}
+                            </Button>
+                          )}
+                          {selectable && (
+                            <FormGroup check>
+                              <Input
+                                data-testid={`chkSelectAllChildren_${item.id}`}
+                                id={`chkSelectAllChildren_${item.id}`}
+                                type="checkbox"
+                                checked={item.areAllChildrenSelected}
+                                onChange={() => toggleSelectChildren(item)}
+                              />{' '}
+                            </FormGroup>
+                          )}
+                          <Button
+                            data-testid={`btn-expand-all-${item.id}`}
+                            color="link"
+                            className="icon-expand p-0 text-decoration-none"
+                            onClick={() => toggleExpand(item)}
+                          >
+                            <Icon size="lg" className="expand-tree" name={item.isExpanded ? 'down-dir' : 'right-dir'} />
                           </Button>
-                        )}
-                        {selectable && (<FormGroup check>
-                          <Input
-                            data-testid={`chkSelectAllChildren_${item.id}`}
-                            id={`chkSelectAllChildren_${item.id}`}
-                            type="checkbox"
-                            checked={item.areAllChildrenSelected}
-                            onChange={() => toggleSelectChildren(item)}
-                          />{' '}
-                        </FormGroup>)}
-                        <Button
-                          data-testid={`btn-expand-all-${item.id}`}
-                          color="link"
-                          className="icon-expand p-0 text-decoration-none"
-                          onClick={() => toggleExpand(item)}
-                        >
-                          <Icon size="lg" className="expand-tree" name={item.isExpanded ? 'down-dir' : 'right-dir'} />
-                        </Button>
-                      </div>
+                        </div>
+                      </Col>
                     )}
-                  </div>
-                </>
+                  </Row>
+                </div>
               )}
               {item.children && item.children.length > 0 && item.isExpanded && (
                 <ul>

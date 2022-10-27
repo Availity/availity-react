@@ -2,6 +2,64 @@
 
 This file was generated using [@jscutlery/semver](https://github.com/jscutlery/semver).
 
+## [0.1.2-alpha.6](https://github.com/Availity/availity-react/compare/@availity/tree@0.1.2-alpha.5...@availity/tree@0.1.2-alpha.6) (2022-08-08)
+
+
+### Features
+
+* **tree:** add missing hooks dependency ([12d333a](https://github.com/Availity/availity-react/commit/12d333afd16ef01052fa24d2992a83ec89729709))
+
+
+
+## [0.1.2-alpha.5](https://github.com/Availity/availity-react/compare/@availity/tree@0.1.2-alpha.4...@availity/tree@0.1.2-alpha.5) (2022-08-08)
+
+
+### Features
+
+* **tree:** add ability to reset tree ([4163a54](https://github.com/Availity/availity-react/commit/4163a544c4f85c8108fa95a4ec2419e2ff13dfb3))
+
+
+
+## [0.1.2-alpha.4](https://github.com/Availity/availity-react/compare/@availity/tree@0.1.2-alpha.3...@availity/tree@0.1.2-alpha.4) (2022-07-22)
+
+
+
+## [0.1.2-alpha.3](https://github.com/Availity/availity-react/compare/@availity/tree@0.1.2-alpha.2...@availity/tree@0.1.2-alpha.3) (2022-07-22)
+
+
+### Features
+
+* **tree:** revert depth approach and just use stylesheet ([39a3e11](https://github.com/Availity/availity-react/commit/39a3e11addb0b8253768444dfd270738b4d3f31d))
+
+
+
+## [0.1.2-alpha.2](https://github.com/Availity/availity-react/compare/@availity/tree@0.1.2-alpha.1...@availity/tree@0.1.2-alpha.2) (2022-07-19)
+
+
+### Features
+
+* **tree:** more style tweaks, rename prop ([a54bd74](https://github.com/Availity/availity-react/commit/a54bd74f0901fcc410d193b1452e09ed80e24f0d))
+
+
+
+## [0.1.2-alpha.1](https://github.com/Availity/availity-react/compare/@availity/tree@0.1.2-alpha.0...@availity/tree@0.1.2-alpha.1) (2022-07-18)
+
+
+### Features
+
+* **tree:** style tweak ([1da9e29](https://github.com/Availity/availity-react/commit/1da9e2998375228f7d791c91285b43e5708a4f8f))
+
+
+
+## [0.1.2-alpha.0](https://github.com/Availity/availity-react/compare/@availity/tree@0.1.1...@availity/tree@0.1.2-alpha.0) (2022-07-18)
+
+
+### Features
+
+* **tree:** fix some style issues, and add option to default expand first parent ([b443679](https://github.com/Availity/availity-react/commit/b443679fb398c00f90225fa82e4a5f36273d6e80))
+
+
+
 ## [0.1.1](https://github.com/Availity/availity-react/compare/@availity/tree@0.1.0...@availity/tree@0.1.1) (2022-06-14)
 
 
