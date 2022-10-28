@@ -172,25 +172,26 @@ const Link = ({
   );
 
   const customBadgeDisplay = useMemo(
-    () => (
-      <div
-        className={classNames({
-          'text-center': stacked,
-          'media media-right': !stacked,
-        })}
-      >
-        <Badge
-          color={customBadgeColor || 'info'}
+    () =>
+      customBadgeText && (
+        <div
           className={classNames({
-            'ml-2': showDate || showNew,
+            'text-center': stacked,
+            'media media-right': !stacked,
           })}
-          id={`app-custom-badge-${customBadgeText}`}
         >
-          {customBadgeText}
-        </Badge>
-      </div>
-    ),
-    [customBadgeColor, customBadgeText, showDate, showNew, stacked]
+          <Badge
+            color={customBadgeColor || 'info'}
+            className={classNames({
+              'ml-2': linkStyle !== 'card' && (showDate || showNew),
+            })}
+            id={`app-custom-badge-${customBadgeText}`}
+          >
+            {customBadgeText}
+          </Badge>
+        </div>
+      ),
+    [customBadgeColor, customBadgeText, showDate, showNew, stacked, linkStyle]
   );
 
   if (isLoading) {
@@ -256,7 +257,7 @@ const Link = ({
                   id={`app-title-${configurationId}`}
                   className={classNames(
                     {
-                      'mb-0': !showDescription || !description,
+                      'mb-0': !customBadgeDisplay && (!showDescription || !description),
                       'pt-3': stacked,
                       'text-center': stacked,
                     },
@@ -275,7 +276,7 @@ const Link = ({
                   {name}
                 </TitleTag>
                 {stacked && dateInfo}
-                {stacked && customBadgeDisplay}
+                {linkStyle === 'card' && customBadgeDisplay}
                 {showDescription && description && (
                   <TextTag
                     tag="div"
@@ -298,7 +299,7 @@ const Link = ({
               </Media>
             )}
         {!stacked && dateInfo}
-        {!stacked && customBadgeDisplay}
+        {linkStyle !== 'card' && customBadgeDisplay}
       </BodyTag>
     </Tag>
   );
