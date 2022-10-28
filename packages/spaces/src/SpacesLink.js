@@ -183,7 +183,7 @@ const Link = ({
           <Badge
             color={customBadgeColor || 'info'}
             className={classNames({
-              'ml-2': showDate || showNew,
+              'ml-2': linkStyle !== 'card' && (showDate || showNew),
             })}
             id={`app-custom-badge-${customBadgeText}`}
           >
@@ -191,7 +191,7 @@ const Link = ({
           </Badge>
         </div>
       ),
-    [customBadgeColor, customBadgeText, showDate, showNew, stacked]
+    [customBadgeColor, customBadgeText, showDate, showNew, stacked, linkStyle]
   );
 
   if (isLoading) {
