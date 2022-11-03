@@ -3,7 +3,7 @@ import { Meta, Story } from '@storybook/react';
 // import { button } from '@storybook/addon-knobs';
 import mock from 'xhr-mock';
 
-import Upload, { FilePicker, FilePickerBtn } from '..';
+import Upload, { FilePicker, FilePickerBtn, FileList } from '..';
 // import README from '../README.md';
 // import MockUpload from '../tests/mockUpload';
 
@@ -50,6 +50,16 @@ mock.use('HEAD', /\/ms\/api\/availity\/internal\/core\/vault\/upload\/v1\/resuma
     .body('')
 );
 // mock.use(proxy);
+
+const file = (fileName: string) => ({
+  id: fileName,
+  file: {
+    name: fileName,
+  },
+  onProgress: [],
+  onSuccess: [],
+  onError: [],
+});
 
 // let instance;
 export default {
@@ -180,3 +190,17 @@ RestrictFileName.storyName = 'restrict file name';
 //   color: 'success',
 // };
 // ProgressBar.storyName = 'progress bar';
+
+export const FileListStory: Story = ({ fileName1, fileName2 }) => {
+  const files = [file(fileName1), file(fileName2)];
+  return (
+    <div className="py-3">
+      <FileList files={files} />
+    </div>
+  );
+};
+FileListStory.args = {
+  fileName1: 'testfile1.pdf',
+  fileName2: 'testfile2.png',
+};
+FileListStory.storyName = 'file list';
