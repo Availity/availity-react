@@ -61,7 +61,7 @@ const FileRow = ({ onRemove, children, file }) => {
         </div>
       </td>
       <td className="align-middle" style={{ width: '45%' }}>
-        <UploadProgressBar upload={file} />
+        <UploadProgressBar upload={file} aria-label={`${file.file.name} upload`} />
       </td>
       <td className="align-middle" style={{ width: '10%' }}>
         <Button data-testid="remove-file-btn" color="link" className="text-danger px-0" onClick={remove}>
