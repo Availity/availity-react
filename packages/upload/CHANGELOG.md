@@ -2,6 +2,15 @@
 
 This file was generated using [@jscutlery/semver](https://github.com/jscutlery/semver).
 
+# [3.6.0](https://github.com/Availity/availity-react/compare/@availity/upload@3.5.0...@availity/upload@3.6.0) (2022-11-04)
+
+
+### Features
+
+* **upload:** accessible name for UploadProgressBar ([1a66e0d](https://github.com/Availity/availity-react/commit/1a66e0d367ec3e9044fa41c44af9668a8deabeae))
+
+
+
 # [3.5.0](https://github.com/Availity/availity-react/compare/@availity/upload@3.4.1...@availity/upload@3.5.0) (2022-10-13)
 
 
