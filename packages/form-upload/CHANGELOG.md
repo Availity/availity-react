@@ -2,6 +2,16 @@
 
 This file was generated using [@jscutlery/semver](https://github.com/jscutlery/semver).
 
+# [0.11.0](https://github.com/Availity/availity-react/compare/@availity/form-upload@0.10.0...@availity/form-upload@0.11.0) (2022-11-04)
+
+
+### Features
+
+* **form-upload:** accessible name for remove file button ([fa8a6ae](https://github.com/Availity/availity-react/commit/fa8a6aeac86296337ac483bf11a2ee51a6c08b59))
+* **form-upload:** accessible name for UploadProgressBar ([9e41559](https://github.com/Availity/availity-react/commit/9e415594901b1eb2ad7a2bf5123856bec72a5297))
+
+
+
 # [0.10.0](https://github.com/Availity/availity-react/compare/@availity/form-upload@0.9.2...@availity/form-upload@0.10.0) (2022-10-18)
 
 
