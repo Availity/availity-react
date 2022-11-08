@@ -2,6 +2,10 @@
 
 This file was generated using [@jscutlery/semver](https://github.com/jscutlery/semver).
 
+## [4.5.1](https://github.com/Availity/availity-react/compare/@availity/reactstrap-validation-date@4.5.0...@availity/reactstrap-validation-date@4.5.1) (2022-11-08)
+
+
+
 # [4.5.0](https://github.com/Availity/availity-react/compare/@availity/reactstrap-validation-date@4.4.1...@availity/reactstrap-validation-date@4.5.0) (2022-08-29)
 
 
