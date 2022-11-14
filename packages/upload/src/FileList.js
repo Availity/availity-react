@@ -26,7 +26,7 @@ const FileList = ({ files, children, onRemoveFile, onPasswordSubmit, passwordMod
   }
 
   return files.length > 0 ? (
-    <Table size="sm" hover style={{ tableLayout: 'fixed' }} {...rest}>
+    <Table size="sm" role="presentation" hover style={{ tableLayout: 'fixed' }} {...rest}>
       <caption className="sr-only">List of files uploaded</caption>
       <thead>
         <tr>
