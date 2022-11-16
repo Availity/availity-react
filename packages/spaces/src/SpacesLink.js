@@ -178,6 +178,7 @@ const Link = ({
           className={classNames({
             'text-center': stacked,
             'media media-right': !stacked,
+            'mr-2': !stacked && showDate,
           })}
         >
           <Badge
@@ -298,8 +299,8 @@ const Link = ({
                 )}
               </Media>
             )}
-        {!stacked && dateInfo}
         {linkStyle !== 'card' && customBadgeDisplay}
+        {!stacked && dateInfo}
       </BodyTag>
     </Tag>
   );
