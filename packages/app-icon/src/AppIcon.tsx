@@ -2,14 +2,23 @@ import React from 'react';
 import classNames from 'classnames';
 
 export type AppIconProps = {
+  /** For src prop. the alt property for your image source is not found or is loading. */
   alt?: string;
+  /** Triggers "branded" styles. */
   branded?: boolean;
+  /**  */
   children?: React.ReactNode;
+  /**  */
   className?: string;
+  /** Potential values: "black", "blue", "green", "orange", "red". */
   color?: string;
+  /** Potential values: "lg", "xl". */
   size?: string;
+  /** If image source is provided, it will render this instead of children. */
   src?: string;
+  /**  */
   tag?: React.ElementType;
+  /**  */
   title?: string;
 };
 
