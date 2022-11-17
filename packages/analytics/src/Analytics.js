@@ -35,12 +35,19 @@ const Analytics = ({ children, plugins, pageTracking, autoTrack, recursive, attr
 };
 
 Analytics.propTypes = {
+  /**  */
   children: PropTypes.node,
+  /** A plugin or array of plugins to pass to the underlying AvAnalytics class instance. */
   plugins: PropTypes.array,
+  /** Enable or disable page tracking on initialization. */
   pageTracking: PropTypes.bool,
+  /** Enable or disable auto tracking on initialization. */
   autoTrack: PropTypes.bool,
+  /** Enable or disable recursive functionality on initialization. */
   recursive: PropTypes.bool,
+  /** Customize the prefix used for data analytics attributes used for auto tracking. */
   attributePrefix: PropTypes.string,
+  /** Array of event modifiers enabling you to use other keywords for action instead of click for event type matching. */
   eventModifiers: PropTypes.array,
 };
 
