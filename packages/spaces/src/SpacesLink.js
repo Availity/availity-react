@@ -277,7 +277,6 @@ const Link = ({
                   {name}
                 </TitleTag>
                 {stacked && dateInfo}
-                {linkStyle === 'card' && customBadgeDisplay}
                 {showDescription && description && (
                   <TextTag
                     tag="div"
@@ -297,6 +296,7 @@ const Link = ({
                     </ReactMarkdown>
                   </TextTag>
                 )}
+                {linkStyle === 'card' && customBadgeDisplay}
               </Media>
             )}
         {linkStyle !== 'card' && customBadgeDisplay}
