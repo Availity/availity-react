@@ -44,12 +44,13 @@ export const FavoriteHeart = ({
   disabled = false,
   size,
 }: {
+  /** The unique id of the favorite item to be fetched from API. */
   id: string;
 
-  /**
-   * @param {string} props.name The name of the item to be favorited. Used to create an accessible label.
-   */
+  /** Name of item to be favorited. Used to generate unique name of control, needed for accessibility. */
   name: string;
+
+  /** Called once the favorite heart has been clicked and updated. */
   onChange?: (
     isFavorited: boolean,
     event: React.ChangeEvent<HTMLInputElement> | React.KeyboardEvent<HTMLInputElement>
@@ -95,7 +96,7 @@ export const FavoriteHeart = ({
     disabled || (!isLastClickedFavorite && (status === 'initLoading' || status === 'reloading'))
       ? 'not-allowed'
       : undefined;
-  
+
   const tooltipContent = `${isFavorited ? 'Remove from' : 'Add to'} My Favorites`;
 
   return (
