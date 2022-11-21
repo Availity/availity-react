@@ -7,18 +7,22 @@ import orderBy from 'lodash/orderBy';
 import RemovableBadge from './RemovableBadge';
 
 export type BadgeItem = {
+  /** This is the text that will be displayed in the badge. */
   displayText: string;
+  /** This is a unique value for the badge, which is passed up to the onRemove function to describe which badge is being removed. */
   value: string;
+  /** Optionally display the badges in a specified order. */
   order?: number;
 } & BadgeProps;
 
-export type Props = {
-  id?: string;
-  onRemove?: (badgeList: BadgeItem[]) => void;
+export type RemovableBadgeListProps = {
   badges: BadgeItem[];
+  id?: string;
+  /** This is the function that is called whenever a badge in the list has been removed. It passes in the current badge list, after the badge has been removed. */
+  onRemove?: (badgeList: BadgeItem[]) => void;
 } & React.HTMLAttributes<HTMLElement>;
 
-const RemovableBadgeList = ({ id, badges, onRemove, ...rest }: Props): JSX.Element => {
+const RemovableBadgeList = ({ badges, id, onRemove, ...rest }: RemovableBadgeListProps): JSX.Element => {
   const [badgeList, setBadgeList] = useState(badges);
 
   useEffect(() => {
