@@ -15,7 +15,11 @@ export default {
       // page: README,
       description: {
         component:
-          "Component for showing content based on the user's permissions. Wrap this component around content you only want specific users to see.\n\nThis package uses react-query to handle data fetching. This means you must add a QueryClientProvider to your app if you do not already have one. The default setup should cover most use-cases. However, there are 2 options we recommend looking into in order to determine what is correct for your app. These settings are refetchOnWindowFocus and staleTime. The first option sets whether the to refetch the query when the window is focused, and the other is the default marker for how long the query is valid. ",
+          "Component for showing content based on the user's permissions. Wrap this component around content you only want specific users to see.\n\n" +
+          "This package uses <a href='https://tanstack.com/query/v4/?from=reactQueryV3' target='_blank'>react-query</a> to handle data fetching. This means you must add a " +
+          "<a href='https://tanstack.com/query/v4/docs/reference/QueryClient?from=reactQueryV3' target='_blank'>QueryClientProvider</a> to your app if you do not already have one. " +
+          'The default setup should cover most use-cases. However, there are 2 options we recommend looking into in order to determine what is correct for your app. ' +
+          'These settings are refetchOnWindowFocus and staleTime. The first option sets whether the to refetch the query when the window is focused, and the other is the default marker for how long the query is valid. ',
       },
     },
   },
@@ -83,12 +87,5 @@ export const Props: Story = () => (
     <h4>Availity Props</h4>
     <h5>Authorize</h5>
     <ArgsTable of={Authorize} />
-
-    {/*<h4>Reactstrap Props</h4>*/}
-    {/*<h5>Badge</h5>*/}
-    {/*<div>Additional props on RemovableBadge spread to this component</div>*/}
-    {/*<div className="argstable-remove-default">*/}
-    {/*  <ArgsTable of={hidden_RSBadge} />*/}
-    {/*</div>*/}
   </>
 );
