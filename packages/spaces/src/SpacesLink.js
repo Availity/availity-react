@@ -178,21 +178,15 @@ const Link = ({
           className={classNames({
             'text-center': stacked,
             'media media-right': !stacked,
-            'mr-2': !stacked && showDate,
+            'mr-2': linkStyle !== 'card' && (showDate || (showNew && isNew)),
           })}
         >
-          <Badge
-            color={customBadgeColor || 'info'}
-            className={classNames({
-              'ml-2': linkStyle !== 'card' && (showDate || showNew),
-            })}
-            id={`app-custom-badge-${customBadgeText}`}
-          >
+          <Badge color={customBadgeColor || 'info'} id={`app-custom-badge-${customBadgeText}`}>
             {customBadgeText}
           </Badge>
         </div>
       ),
-    [customBadgeColor, customBadgeText, showDate, showNew, stacked, linkStyle]
+    [customBadgeColor, customBadgeText, showDate, showNew, stacked, linkStyle, isNew]
   );
 
   if (isLoading) {
