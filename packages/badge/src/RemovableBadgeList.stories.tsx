@@ -1,12 +1,20 @@
 import React, { useState } from 'react';
 import { Meta, Story } from '@storybook/react';
 import { Button } from 'reactstrap';
-import { RemovableBadgeList, BadgeItem, RemovableBadgeProps } from '.';
+import { ArgsTable } from '@storybook/addon-docs';
+import { RemovableBadgeList, BadgeItem, RemovableBadgeProps, RemovableBadge } from '.';
+import { hidden_RSBadge } from './RemovableBadge.stories';
 
 export default {
   title: 'Components/Badge/Removable Badge/List',
   parameters: {
-    docs: {},
+    docs: {
+      // page: README,
+      description: {
+        component:
+          'This component allows you to specify a list of badges and handles removing the badge from the badge list.',
+      },
+    },
   },
 } as Meta;
 
@@ -42,4 +50,24 @@ export const Default: Story<RemovableBadgeProps> = () => {
     </>
   );
 };
+
+export const Props: Story = () => (
+  <>
+    <h4>Availity Props</h4>
+    <h5>Removable Badge List</h5>
+    <ArgsTable of={RemovableBadgeList} />
+
+    <h5>Removable Badge</h5>
+    <div>Child components</div>
+    <ArgsTable of={RemovableBadge} />
+
+    <h4>Reactstrap Props</h4>
+    <h5>Badge</h5>
+    <div>Additional props on RemovableBadge spread to this component</div>
+    <div className="argstable-remove-default">
+      <ArgsTable of={hidden_RSBadge} />
+    </div>
+  </>
+);
+
 Default.storyName = 'default';
