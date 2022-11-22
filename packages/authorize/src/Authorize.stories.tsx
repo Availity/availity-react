@@ -5,6 +5,7 @@ import BlockUi from 'react-block-ui';
 import { QueryClientProvider, QueryClient } from 'react-query';
 
 import Authorize, { useAuthorize } from '.';
+import { ArgsTable } from '@storybook/addon-docs';
 // import README from '../README.md';
 
 export default {
@@ -12,6 +13,14 @@ export default {
   parameters: {
     docs: {
       // page: README,
+      description: {
+        component:
+          "Component for showing content based on the user's permissions. Wrap this component around content you only want specific users to see.\n\n" +
+          "This package uses <a href='https://tanstack.com/query/v4/?from=reactQueryV3' target='_blank'>react-query</a> to handle data fetching. This means you must add a " +
+          "<a href='https://tanstack.com/query/v4/docs/reference/QueryClient?from=reactQueryV3' target='_blank'>QueryClientProvider</a> to your app if you do not already have one. " +
+          'The default setup should cover most use-cases. However, there are 2 options we recommend looking into in order to determine what is correct for your app. ' +
+          'These settings are refetchOnWindowFocus and staleTime. The first option sets whether the to refetch the query when the window is focused, and the other is the default marker for how long the query is valid. ',
+      },
     },
   },
   decorators: [
@@ -72,3 +81,11 @@ export const UseAuthorize: Story = ({ authorized, organizationId, permissions, r
   );
 };
 UseAuthorize.storyName = 'useAuthorize';
+
+export const Props: Story = () => (
+  <>
+    <h4>Availity Props</h4>
+    <h5>Authorize</h5>
+    <ArgsTable of={Authorize} />
+  </>
+);
