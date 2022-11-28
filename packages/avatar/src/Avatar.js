@@ -57,7 +57,9 @@ const Avatar = ({ fallback, skeletonProps, ...props }) => {
 };
 
 Avatar.propTypes = {
+  /** Image url to render if the url for the avatar is not found. */
   fallback: PropTypes.string,
+  /** Dimensions passed to loader to show while the avatar is loading. */
   skeletonProps: skeletonPropType,
 };
 
