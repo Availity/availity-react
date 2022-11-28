@@ -1,7 +1,10 @@
 import React from 'react';
 import { Story, Meta } from '@storybook/react';
 
-import Avatar from '../src/Avatar';
+import Avatar, { SkeletonType } from '../src/Avatar';
+import { ArgsTable } from '@storybook/addon-docs';
+import { Img, ImgProps } from 'react-image';
+import Skeleton from 'react-loading-skeleton';
 // import README from '../README.md';
 
 export default {
@@ -9,6 +12,9 @@ export default {
   parameters: {
     docs: {
       // page: README,
+      description: {
+        component: 'Availity user avatar component.',
+      },
     },
   },
 } as Meta;
@@ -28,3 +34,28 @@ Default.args = {
   skeletonWidth: '350px',
 };
 Default.storyName = 'default';
+
+export const hidden_RSImg = (props: ImgProps) => <Img {...props} />;
+export const hidden_RSSkeleton = (props: SkeletonType) => <Skeleton {...props} />;
+export const Props: Story = () => (
+  <>
+    <h4>Availity Props</h4>
+    <h5>Avatar</h5>
+    <ArgsTable of={Avatar} />
+
+    <h4>React Image Props</h4>
+    <h5>Img</h5>
+    <div>Additional props on Avatar spread to this component</div>
+    <div className="argstable-remove-default">
+      <ArgsTable of={hidden_RSImg} />
+    </div>
+
+    <h4>React Loading Skeleton</h4>
+    <h5>Skeleton</h5>
+    <div>Additional props on Img spread to this component</div>
+    <div></div>
+    <div className="argstable-remove-default">
+      <ArgsTable of={hidden_RSSkeleton} />
+    </div>
+  </>
+);
