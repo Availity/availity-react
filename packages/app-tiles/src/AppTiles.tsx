@@ -4,14 +4,20 @@ import css from './AppTiles.module.scss';
 import PropTypes from 'prop-types';
 
 export type AppTilesProps = {
+  /** For src prop. the alt property for your image source is not found or is loading. */
   alt?: string;
+  /** Triggers "branded" styles */
   branded?: boolean;
   className?: string;
+  /** Potential values: "black", "blue", "green", "orange", "red". Default: "black" */
   color?: string;
+  /** Potential values: "lg", "xl" */
   size?: string;
   tag?: React.ElementType;
+  /** If image source is provided, it will render this instead of parents. */
   image?: string;
   shortName?: string;
+  /** If parents are provided, it will render up to the first in the icon, ether images.tile or shortName. */
   parents?: any[];
 };
 

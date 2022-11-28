@@ -1,11 +1,16 @@
 import React from 'react';
 import { Story, Meta } from '@storybook/react';
 import AppTiles from './AppTiles';
+import { ArgsTable } from '@storybook/addon-docs';
 
 export default {
   title: 'Components/AppTiles',
   parameters: {
-    docs: {},
+    docs: {
+      description: {
+        component: 'A component which outputs an Icon made of tiles.',
+      },
+    },
   },
 } as Meta;
 
@@ -77,3 +82,11 @@ Default.argTypes = {
 };
 
 Default.storyName = 'default';
+
+export const Props: Story = () => (
+  <>
+    <h4>Availity Props</h4>
+    <h5>Avatar</h5>
+    <ArgsTable of={AppTiles} />
+  </>
+);
