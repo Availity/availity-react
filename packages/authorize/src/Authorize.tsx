@@ -34,7 +34,7 @@ const Authorize = ({
   customerId,
   organizationId,
   region = true,
-  loader,
+  loader = true,
   negate,
   children = null,
   unauthorized = null,
