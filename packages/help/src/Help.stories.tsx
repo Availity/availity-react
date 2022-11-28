@@ -2,6 +2,7 @@ import React from 'react';
 import { Meta, Story } from '@storybook/react';
 
 import { FieldHelpIcon } from '.';
+import { ArgsTable } from '@storybook/addon-docs';
 // import README from "../README.md";
 
 export default {
@@ -9,6 +10,9 @@ export default {
   parameters: {
     docs: {
       // page: README,
+      description: {
+        component: 'Help Wrapper for Oxygen Learning Docs on the Portal.',
+      },
     },
   },
 } as Meta;
@@ -19,3 +23,11 @@ export const Default: Story = () => (
   </div>
 );
 Default.storyName = 'default';
+
+export const Props: Story = () => (
+  <>
+    <h4>Availity Props</h4>
+    <h5>Help</h5>
+    <ArgsTable of={FieldHelpIcon} />
+  </>
+);

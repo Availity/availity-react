@@ -108,12 +108,14 @@ export const useHelp = ({ type, id }: { type: 'vendor' | 'provider' | 'payer'; i
 };
 
 export type HelpProps = {
-  type?: 'vendor' | 'provider' | 'payer';
+  /** The page level help ID Required */
   id: string;
+  /** The page level help type: ie.: provider | vendor | payer | insight. Required */
+  type?: 'vendor' | 'provider' | 'payer';
   children?: React.ReactNode;
 };
 
-export const Help = ({ type = 'vendor', id, children }: HelpProps): JSX.Element => {
+export const Help = ({ id, type = 'vendor', children }: HelpProps): JSX.Element => {
   useHelp({ type, id });
 
   return <>{children}</>;
@@ -133,13 +135,17 @@ const handleKeyPress = (event: React.KeyboardEvent<HTMLElement>, id: string): vo
 };
 
 export type FieldHelpIconProps = {
-  color?: string;
-  size?: string;
+  /** The field Help ID Required */
   id: string;
+  /** The bootstrap 3 color of the icon. Default:primary */
+  color?: string;
+  /** The size of the help icon. Default: 1x */
+  size?: string;
+  /** The id of the associated label for aria-describedby, needed for accessibility. */
   labelId?: string;
 };
 
-export const FieldHelpIcon = ({ color = 'primary', size = '1x', id, labelId }: FieldHelpIconProps): JSX.Element => (
+export const FieldHelpIcon = ({ id, color = 'primary', size = '1x', labelId }: FieldHelpIconProps): JSX.Element => (
   <Icon
     role="link"
     data-testid="field-help-icon"
