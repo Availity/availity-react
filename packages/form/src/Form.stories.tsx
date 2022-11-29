@@ -7,6 +7,7 @@ import { avDate } from '@availity/yup';
 import { Phone } from '@availity/phone';
 import { DateField } from '@availity/date';
 import { SelectField } from '@availity/select';
+import { ArgsTable } from '@storybook/addon-docs';
 
 import {
   Field,
@@ -29,6 +30,9 @@ export default {
   parameters: {
     docs: {
       // page: README,
+      description: {
+        component: 'Availity form components that are wired to be hooked up to formik.',
+      },
     },
   },
   args: {
@@ -147,6 +151,13 @@ export const _Input: Story<FormStoryProps> = ({ required }) => (
   </FormResults>
 );
 _Input.storyName = 'Input';
+_Input.parameters = {
+  docs: {
+    description: {
+      story: 'Basic Input field that utilizes the Form validation.',
+    },
+  },
+};
 
 type LabelStoryProps = {
   helpId: string;
@@ -165,6 +176,13 @@ _Label.args = {
   children: 'Label Text',
 };
 _Label.storyName = 'Label';
+_Label.parameters = {
+  docs: {
+    description: {
+      story: 'Label that handles required indicator and field help icon. Uses Reactstrap Label.',
+    },
+  },
+};
 
 export const _FormGroup: Story<FormStoryProps> = ({ required }) => (
   <FormResults
@@ -185,6 +203,13 @@ export const _FormGroup: Story<FormStoryProps> = ({ required }) => (
   </FormResults>
 );
 _FormGroup.storyName = 'Form Group';
+_FormGroup.parameters = {
+  docs: {
+    description: {
+      story: 'Wrapper for an Input field. Uses reactstrap FormGroup.',
+    },
+  },
+};
 
 type FieldStoryProps = {
   helpMessage: string;
@@ -214,6 +239,13 @@ _Field.args = {
   helpId: '',
 };
 _Field.storyName = 'Field';
+_Field.parameters = {
+  docs: {
+    description: {
+      story: 'Input field wrapped in additional features such as label, feedback, grid options, etc.',
+    },
+  },
+};
 
 type CheckboxStoryProps = {
   helpId: string;
@@ -252,7 +284,13 @@ _Checkbox.args = {
   helpId: '',
   labelClassName: 'label',
 };
-_Checkbox.storyName = 'Checkbox';
+_Checkbox.parameters = {
+  docs: {
+    description: {
+      story: 'Inputs of type checkbox. Checkboxes should be wrapped in a CheckboxGroup.',
+    },
+  },
+};
 
 type RadioStoryProps = CheckboxStoryProps;
 
@@ -283,6 +321,13 @@ _Radio.args = {
   labelClassName: 'label',
 };
 _Radio.storyName = 'Radio';
+_Radio.parameters = {
+  docs: {
+    description: {
+      story: 'Inputs of type radio. Radios should be wrapped in a RadioGroup.',
+    },
+  },
+};
 
 export const _CurrencyInput: Story<{ value: string | undefined }> = ({ value }) => {
   const [newValue, setNewValue] = useState(value);
@@ -314,3 +359,44 @@ _CurrencyInput.storyName = 'Currency';
 _CurrencyInput.args = {
   value: '4.93',
 };
+_CurrencyInput.parameters = {
+  docs: {
+    description: {
+      story: 'Input field that utilizes the Form validation. Formats and displays the value as a currency ($USD).',
+    },
+  },
+};
+
+export const Props: Story = () => (
+  <>
+    <h4>Availity Props</h4>
+
+    <h5>Input</h5>
+    <ArgsTable of={Input} />
+
+    <h5>Label</h5>
+    <ArgsTable of={Label} />
+
+    <h5>Form Group</h5>
+    <ArgsTable of={FormGroup} />
+
+    <h5>Field</h5>
+    <ArgsTable of={Field} />
+
+    <h5>Checkbox Group</h5>
+    <ArgsTable of={CheckboxGroup} />
+
+    <h5>Checkbox</h5>
+    <ArgsTable of={Checkbox} />
+
+    <h5>Radio</h5>
+    <ArgsTable of={Radio} />
+
+    <h4>React Currency Input Field Props</h4>
+    <h5>React Currency Input</h5>
+    <div>Additional props on CurrencyInput spread to this component</div>
+    <div className="argstable-remove-default">
+      <ArgsTable of={CurrencyInput} />
+    </div>
+  </>
+);

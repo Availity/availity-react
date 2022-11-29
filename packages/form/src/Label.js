@@ -53,8 +53,11 @@ const Label = ({ helpId, id, required, children, ...attributes }) => {
 };
 
 Label.propTypes = {
+  /** Id of the label element. Default is generated UUID. */
   id: PropTypes.string,
+  /** Help topic id, adds <FieldHelpIcon/> next to the label (should not be within label for accessibility). */
   helpId: PropTypes.string,
+  /** Will add <RequiredAsterisk /> to label. */
   required: PropTypes.bool,
   children: PropTypes.oneOfType([PropTypes.func, PropTypes.node]),
 };

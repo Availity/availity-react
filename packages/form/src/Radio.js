@@ -47,12 +47,18 @@ const Radio = ({ label, id, name, value: checkValue, className, groupClassName, 
 Radio.propTypes = {
   children: PropTypes.node,
   className: PropTypes.string,
+  /** Disables the radio button. */
   disabled: PropTypes.bool,
   groupClassName: PropTypes.string,
+  /** Help topic id, adds <FieldHelpIcon/> next to the label (should not be within label for accessibility). */
   helpId: PropTypes.string,
+  /** Id for the radio button. */
   id: PropTypes.string,
+  /** Label for the radio button. */
   label: PropTypes.node,
+  /** Should match <RadioGroup /> name for validation and accessibly linking button to form feedback. */
   name: PropTypes.string,
+  /** Value of the radio button. */
   value: PropTypes.oneOfType([PropTypes.string, PropTypes.bool, PropTypes.object]),
 };
 
