@@ -7,6 +7,7 @@ import { avDate } from '@availity/yup';
 import { Phone } from '@availity/phone';
 import { DateField } from '@availity/date';
 import { SelectField } from '@availity/select';
+import { ArgsTable } from '@storybook/addon-docs';
 
 import {
   Field,
@@ -23,8 +24,6 @@ import {
 // import README from '../form/README.md';
 
 import FormResults from '../../../story-utils/FormikResults';
-import { ArgsTable } from '@storybook/addon-docs';
-import ReactCurrencyInput from 'react-currency-input-field';
 
 export default {
   title: 'Form Components/Form',
