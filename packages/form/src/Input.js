@@ -4,7 +4,7 @@ import classNames from 'classnames';
 import { Input as RsInput } from 'reactstrap';
 import { useField } from 'formik';
 
-const Input = ({ tag: Tag, className, onChange: propsOnChange, validate, name, feedback, help, required, ...rest }) => {
+const Input = ({ name, tag: Tag, className, onChange: propsOnChange, validate, feedback, help, required, ...rest }) => {
   const [{ onChange, ...field }, metadata] = useField({
     name,
     validate,
@@ -49,12 +49,18 @@ const Input = ({ tag: Tag, className, onChange: propsOnChange, validate, name, f
 };
 
 Input.propTypes = {
-  className: PropTypes.string,
-  feedback: PropTypes.bool,
-  help: PropTypes.bool,
+  /** Identifies the field and matches the validation */
   name: PropTypes.string.isRequired,
+  /** Class name passed to the input. */
+  className: PropTypes.string,
+  /** Will add default feedback id to aria-describedby. */
+  feedback: PropTypes.bool,
+  /** Will add default help message id to aria-describedby. Used by <Field />. */
+  help: PropTypes.bool,
   onChange: PropTypes.func,
+  /** Will add aria-required to input. */
   required: PropTypes.bool,
+  /** The Node or tag to substitute as the input field. Default is reactstrap Input tag. */
   tag: PropTypes.oneOfType([PropTypes.func, PropTypes.string]),
   validate: PropTypes.func,
 };

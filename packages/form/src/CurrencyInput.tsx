@@ -5,15 +5,15 @@ import { useField, useFormikContext } from 'formik';
 import Feedback from './Feedback';
 
 type Props = {
+  name: string;
+  onValueChanged: (value: string | undefined) => void;
   id?: string;
   value?: string;
-  name: string;
   placeholder?: string;
   disabled?: boolean;
-  onValueChanged: (value: string | undefined) => void;
 } & CurrencyInputProps;
 
-const CurrencyInput = ({ id, name, value, placeholder, disabled, onValueChanged, ...attributes }: Props) => {
+const CurrencyInput = ({ name, onValueChanged, id, value, placeholder, disabled, ...attributes }: Props) => {
   const { setFieldValue, setFieldTouched } = useFormikContext();
   const [, metadata] = useField({
     name,
