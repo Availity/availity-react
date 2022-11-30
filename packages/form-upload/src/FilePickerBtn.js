@@ -45,13 +45,19 @@ const FilePickerBtn = ({
 };
 
 FilePickerBtn.propTypes = {
+  /** Callback when the button is clicked. */
   onClick: PropTypes.func,
+  /** Callback when the user has selected a file or multiple files. */
   onChange: PropTypes.func,
+  /** Indicates that the user will be allowed to select multiple files when selecting files from the OS prompt. */
   multiple: PropTypes.bool,
+  /** Identifies the field and matches the validation schema. */
   name: PropTypes.string.isRequired,
   color: PropTypes.string,
   children: PropTypes.node,
+  /** The file types you want to restrict uploading to. eg: ['.jpeg', '.jpg']. */
   allowedFileTypes: PropTypes.arrayOf(PropTypes.string),
+  /** The maximum file size (in bytes) for a file to be uploaded. */
   maxSize: PropTypes.number,
   'data-testid': PropTypes.string,
 };
