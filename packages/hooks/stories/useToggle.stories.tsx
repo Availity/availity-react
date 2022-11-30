@@ -21,6 +21,11 @@ export default {
     readme: {
       // page: README,
     },
+    docs: {
+      description: {
+        component: 'Returns a boolean that can easily be toggled. Useful for loaders, and toggle components.',
+      },
+    },
   },
 } as Meta;
 

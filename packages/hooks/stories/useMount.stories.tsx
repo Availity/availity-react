@@ -10,6 +10,9 @@ export default {
   parameters: {
     docs: {
       // page: README,
+      description: {
+        component: 'Hook that runs a function on mount and dismount if a function is returned.',
+      },
     },
   },
 } as Meta;

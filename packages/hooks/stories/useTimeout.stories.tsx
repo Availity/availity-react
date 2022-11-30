@@ -9,6 +9,9 @@ export default {
   parameters: {
     docs: {
       // page: README,
+      description: {
+        component: 'Hook that returns true after the given amount of time in milliseconds.',
+      },
     },
   },
 } as Meta;

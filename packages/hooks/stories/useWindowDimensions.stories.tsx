@@ -15,7 +15,11 @@ const ListenerComponent = () => {
 export default {
   title: 'Hooks/useWindowDimensions',
   parameters: {
-    docs: {},
+    docs: {
+      description: {
+        component: "Hook that returns the window's current dimensions.",
+      },
+    },
   },
 } as Meta;
 

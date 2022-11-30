@@ -12,6 +12,9 @@ export default {
   parameters: {
     docs: {
       // page: README,
+      description: {
+        component: 'Hook that returns the current user.',
+      },
     },
   },
   decorators: [
