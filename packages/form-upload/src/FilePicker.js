@@ -7,8 +7,8 @@ import { useFormikContext, useField } from 'formik';
 let id = 0;
 
 const FilePicker = ({
-  tag: Tag,
   name,
+  tag: Tag,
   maxSize,
   allowedFileTypes,
   children,
@@ -59,12 +59,18 @@ const FilePicker = ({
 };
 
 FilePicker.propTypes = {
+  /** Identifies the field and matches the validation schema. */
+  name: PropTypes.string.isRequired,
+  /** The raw underlying component/element that should be rendered. */
   tag: PropTypes.oneOfType([PropTypes.func, PropTypes.string]),
+  /** Callback when the user has selected a file or multiple files. */
   onChange: PropTypes.func,
+  /** Indicates that the user will be allowed to select multiple files when selecting files from the OS prompt. */
   multiple: PropTypes.bool,
   children: PropTypes.func,
-  name: PropTypes.string.isRequired,
+  /** The file types you want to restrict uploading to. eg: ['.jpeg', '.jpg']. */
   allowedFileTypes: PropTypes.arrayOf(PropTypes.string),
+  /** The maximum file size (in bytes) for a file to be uploaded. */
   maxSize: PropTypes.oneOfType([PropTypes.number, PropTypes.string]),
   className: PropTypes.string,
 };

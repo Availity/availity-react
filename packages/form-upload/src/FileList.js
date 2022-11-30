@@ -44,8 +44,10 @@ const FileList = ({ files, children, onRemoveFile, ...rest }) => {
 };
 
 FileList.propTypes = {
+  /** List of removable files with upload statuses. */
   files: PropTypes.array,
   children: PropTypes.func,
+  /** Callback called when file is removed. The callback is provided two arguments. 1. the updated files and 2. the id of the file that was removed. */
   onRemoveFile: PropTypes.func,
 };
 
