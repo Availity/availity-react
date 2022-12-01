@@ -1,7 +1,8 @@
 import React from 'react';
 import { Story, Meta } from '@storybook/react';
+import { ArgsTable } from '@storybook/addon-docs';
 
-import Feedback from '../src/Feedback';
+import Feedback, { FeedbackProps } from '../src/Feedback';
 import FeedbackForm from '../src/FeedbackForm';
 // import README from '../README.md';
 
@@ -154,3 +155,19 @@ WithForm.args = {
   ],
 };
 WithForm.storyName = 'with form';
+
+export const hidden_RSFeedback = (props: FeedbackProps) => <Feedback {...props} />;
+export const Props: Story = () => (
+  <>
+    <h4>Availity Props</h4>
+    <h5>Feedback</h5>
+    <ArgsTable of={Feedback} />
+
+    <h4>Reactstrap Props</h4>
+    <h5>Feedback</h5>
+    <div>Additional props on Feedback spread to this component</div>
+    <div className="argstable-remove-default">
+      <ArgsTable of={hidden_RSFeedback} />
+    </div>
+  </>
+);

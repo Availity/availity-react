@@ -73,21 +73,32 @@ const Feedback = ({
 };
 
 Feedback.propTypes = {
-  appName: PropTypes.string,
-  modal: PropTypes.bool,
-  zIndex: PropTypes.oneOfType([PropTypes.number, PropTypes.string]),
-  supportZIndex: PropTypes.oneOfType([PropTypes.number, PropTypes.string]),
-  children: PropTypes.node,
-  className: PropTypes.string,
-  outline: PropTypes.bool,
-  color: PropTypes.string,
-  formProps: PropTypes.object,
-  prompt: PropTypes.string,
-  onFeedbackSent: PropTypes.func,
-  onModalOpenChange: PropTypes.func,
   analytics: PropTypes.shape({
     info: PropTypes.func.isRequired,
   }),
+  /** The name of the application this feedback is for. It is used in the API request to indicate where the feedback came from. */
+  appName: PropTypes.string,
+  /** Whether to open the FeedbackForm in a modal */
+  modal: PropTypes.bool,
+  /** Allows for overriding the z-indexvalue from react-strap Modalcomponent. */
+  zIndex: PropTypes.oneOfType([PropTypes.number, PropTypes.string]),
+  /** Allows for overriding the z-index value from reactstrap Support Modal component. */
+  supportZIndex: PropTypes.oneOfType([PropTypes.number, PropTypes.string]),
+  /** The text to display on the submit button. */
+  children: PropTypes.node,
+  className: PropTypes.string,
+  /** Indicates if the button should use the "outline" styles or not. */
+  outline: PropTypes.bool,
+  /** The color of the button. Default: "light". */
+  color: PropTypes.string,
+  /** Props to be spread to the underlying FeedbackForm. See the FeedbackForm Props. */
+  formProps: PropTypes.object,
+  /** Text that prompts the user to provider feedback. Default: "Tell us what you think about ${appName}.". */
+  prompt: PropTypes.string,
+  /** Callback for when the feedback is submitted. It is called with the feedback object. */
+  onFeedbackSent: PropTypes.func,
+  onModalOpenChange: PropTypes.func,
+  /** Toggle whether or not to show the "Open a Support ticket" link in the FeedbackForm */
   showSupport: PropTypes.bool,
 };
 
