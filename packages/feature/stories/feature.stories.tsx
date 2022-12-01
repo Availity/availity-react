@@ -1,7 +1,8 @@
 import React from 'react';
 import { Story, Meta } from '@storybook/react';
+import { ArgsTable } from '@storybook/addon-docs';
 
-import Feature from '../src/Feature';
+import Feature, { FeatureProps } from '../src/Feature';
 // import README from "@availity/feature/README.md";
 
 export default {
@@ -9,6 +10,10 @@ export default {
   parameters: {
     docs: {
       // page: README,
+      description: {
+        component:
+          'Check environment features for the current environment to determine if a particular feature is enabled.',
+      },
     },
   },
 } as Meta;
@@ -34,3 +39,19 @@ Default.args = {
   children: 'This is the cool new feature. Lucky you, you get to see it.',
 };
 Default.storyName = 'default';
+
+export const hidden_RSFeature = (props: FeatureProps) => <Feature {...props} />;
+export const Props: Story = () => (
+  <>
+    <h4>Availity Props</h4>
+    <h5>Feature</h5>
+    <ArgsTable of={Feature} />
+
+    <h4>Reactstrap Props</h4>
+    <h5>Feature</h5>
+    <div>Additional props on Features spread to this component</div>
+    <div className="argstable-remove-default">
+      <ArgsTable of={hidden_RSFeature} />
+    </div>
+  </>
+);
