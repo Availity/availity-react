@@ -1,5 +1,6 @@
 import React from 'react';
 import { Meta, Story } from '@storybook/react';
+import { ArgsTable } from '@storybook/addon-docs';
 import { Row, Col } from 'reactstrap';
 
 import Spaces, {
@@ -10,6 +11,7 @@ import Spaces, {
   SpacesGhostText,
   SpacesAgreement,
 } from '..';
+import { SpacesProps } from '../types/Spaces';
 // import README from '../README.md';
 
 export default {
@@ -17,6 +19,11 @@ export default {
   parameters: {
     docs: {
       // page: README,
+      description: {
+        component: `This is the provider component needed for @availity/spaces components to work. 
+        All @availity/spaces components must be children of a Spaces provider. 
+        The spaces provider is used to fetch a list of spaces for use within its descendants.`,
+      },
     },
   },
 } as Meta;
@@ -100,3 +107,19 @@ export const GhostText: Story = () => (
   </div>
 );
 GhostText.storyName = 'ghost text';
+
+export const hidden_RSSpaces = (props: SpacesProps) => <Spaces {...props} />;
+export const Props: Story = () => (
+  <>
+    <h4>Availity Props</h4>
+    <h5>Spaces</h5>
+    <ArgsTable of={Spaces} />
+
+    <h4>Reactstrap Props</h4>
+    <h5>Spaces</h5>
+    <div>Additional props on Spaces spread to this component</div>
+    <div className="argstable-remove-default">
+      <ArgsTable of={hidden_RSSpaces} />
+    </div>
+  </>
+);

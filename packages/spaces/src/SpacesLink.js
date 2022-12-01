@@ -301,33 +301,69 @@ const Link = ({
 };
 
 Link.propTypes = {
+  /** If no spaceId is provided, the first space in the spaces array is used.
+   * Note: This is only to be used when the Spaces provider should only ever contain a single space. */
   spaceId: PropTypes.string,
+  /** Use to directly pass a space to the component rather than have it fetched from the spaces API.
+   * This component does not have to be a child of a SpacesProvider.
+   * Note: If you are wanting to take advantage of the sso links you will additionally need to pass the clientId in. */
   space: PropTypes.object,
+  /** Children can be a react child or render prop. */
   children: PropTypes.oneOfType([PropTypes.node, PropTypes.element]),
+  /** Tag to overwrite the root component rendered. */
   tag: PropTypes.oneOfType([PropTypes.func, PropTypes.string]),
+  /** Tag to overwrite the body component that renders the title, description and date values.
+   * It defaults to CardBody or div depending on the value of the linkStyle prop. */
   bodyTag: PropTypes.oneOfType([PropTypes.func, PropTypes.string]),
+  /** Tag to overwrite the title component. If linkStyle prop is set to "card", defaults to CardTitle.
+   * If linkStyle is set to "list", defaults to ListGroupItemHeading. Otherwise, defaults to div. */
   titleTag: PropTypes.oneOfType([PropTypes.func, PropTypes.string]),
+  /** Tag to overwrite the text component. If linkStyle prop is set to "card", defaults to CardText.
+   * If linkStyle is set to "list", defaults to ListGroupItemText. Otherwise, defaults to div. */
   textTag: PropTypes.oneOfType([PropTypes.func, PropTypes.string]),
   titleClassName: PropTypes.string,
+  /** When true, utilizes the reactstrap Card component for styling. */
   card: PropTypes.bool,
+  /** When true, renders an @availity/icon next to the title if present on the space. */
   icon: PropTypes.bool,
+  /** When true, renders the Spaces description beneath the title. */
   description: PropTypes.bool,
+  /** When passed in, provides predefined styles for the component. Possible values are card, and list. */
   linkStyle: PropTypes.string,
+  /** When true, renders an app icon to the left of the title and formats depending on the space information given. */
   appIcon: PropTypes.bool,
+  /** When true, renders the FavoriteHeart component to the left of the Component.
+   * Note, this does require you to have wrapped your component somewhere in the Favorites Provider.
+   * This also requires the peerDependency react-query. */
   favorite: PropTypes.bool,
+  /** When true, renders the title, and allow for the description and date info to be added on. Default: true */
   body: PropTypes.bool,
+  /** When true, renders the activeDate of the space. */
   showDate: PropTypes.bool,
+  /** When true, renders a "New!" badge if the activeDate is less than 30 days old. */
   showNew: PropTypes.bool,
+  /** Adjusts the icon size of the AppIcon if enabled. */
   size: PropTypes.string,
+  /** When true, renders the component vertically. */
   stacked: PropTypes.bool,
+  /** Optionally pass in your own loading state for the component if you are managing the state yourself. */
   loading: PropTypes.bool,
+  /** Required when space is not provided, or space is provided and space contains an sso link. */
   clientId: PropTypes.string,
   style: PropTypes.object,
   className: PropTypes.string,
+  /** Dimensions passed to loader to show while the image is loading. */
   skeletonProps: skeletonPropType,
+  /** Allows the description length to be truncated. */
   maxDescriptionLength: PropTypes.number,
+  /** Additional attributes you may want to tack onto the native-form when submitting a SAML sso.
+   *  i.e. spaceId or sourceApplicationId */
   linkAttributes: PropTypes.object,
+  /** Allows the role of the root component to be overwritten.
+   * If linkStyle prop is set to "list", defaults to "listitem". */
   role: PropTypes.string,
+  /** When Analytics props are passed inside the analytics props, they will be passed down to the click item.
+   * For more information on Analytics props see: Autotrack Logged Events */
   analytics: PropTypes.object,
   customBadgeText: PropTypes.string,
   customBadgeColor: PropTypes.string,

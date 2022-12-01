@@ -27,7 +27,11 @@ SpacesAgreement.defaultProps = {
 };
 
 SpacesAgreement.propTypes = {
+  /** The id of the space to render the agreement for.
+   * If no spaceId is provided, the first space in the spaces array is used.
+   * Note: This is only to be used when the Spaces provider should only ever contain a single space. */
   spaceId: PropTypes.string,
+  /** Render the agreement as markdown. */
   markdown: PropTypes.bool,
   id: PropTypes.string,
 };

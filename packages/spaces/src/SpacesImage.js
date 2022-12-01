@@ -43,10 +43,23 @@ const SpacesImage = ({ spaceId, payerId, imageType, fallback, skeletonProps, ...
 };
 
 SpacesImage.propTypes = {
+  /** Required if payerId is not provided.
+   * The payer spaces ID of the payer to render the image for.
+   * If no spaceId or payerId is provided, the first space in the spaces array is used.
+   * Note: This is only to be used when the Spaces provider should only ever contain a single space. */
   spaceId: PropTypes.string,
+  /** Required if spaceId is not provided.
+   * The payer ID of the payer to render the image for.
+   * If no spaceId or payerId is provided, the first space in the spaces array is used.
+   * Note: This is only to be used when the Spaces provider should only ever contain a single space.
+   * Note: If the payerId is associated with more than one payer space, the order in which they are returned should not be relied upon.
+   * If a specific payer space is required, you'll need to filter the list that is returned. */
   payerId: PropTypes.string,
+  /** The fallback image url to render if the url for the spaces image is not valid or not found */
   fallback: PropTypes.string,
+  /** The path on the space containing the image reference. Defaults to: "url". */
   imageType: PropTypes.string,
+  /** Dimensions passed to loader to show while the image is loading. */
   skeletonProps: skeletonPropType,
   id: PropTypes.string,
 };

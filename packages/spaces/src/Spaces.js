@@ -240,12 +240,25 @@ export const useSpaces = (...ids) => {
 };
 
 Spaces.propTypes = {
+  /** The Client ID obtained from APIConnect. Must be subscribed to the thanos API. */
   clientId: PropTypes.string.isRequired,
+  /** Children can be a react child or render prop. */
   children: PropTypes.oneOfType([PropTypes.node, PropTypes.func]),
+  /** Override the default thanos query */
   query: PropTypes.string,
+  /** Override the default variables used in the thanos query. Default: { types: [PAYERSPACE] }.
+   * If the spaces provider should contain configurations of a type other than PAYERSPACE, you must override this prop. */
   variables: PropTypes.object,
+  /** Array of spaceIds the Spaces provider should fetch the spaces for.
+   * Any spaceIds already included in spaces will not be fetched again. */
   spaceIds: PropTypes.arrayOf(PropTypes.string),
+  /** Array of payerIds the Spaces provider should fetch the spaces for.
+   * Any payerIds already included in spaces will not be fetched again.
+   * Note: If a payerId is associated with more than one payer space, the order in which they are returned should not be relied upon.
+   * If a specific payer space is required, you'll need to filter the list that is returned. */
   payerIds: PropTypes.arrayOf(PropTypes.string),
+  /** Array of spaces to be passed into the Spaces provider.
+   * Useful for if you already have the spaces in your app and don't want the spaces provider to have to fetch them again. */
   spaces: PropTypes.arrayOf(PropTypes.object),
 };
 
