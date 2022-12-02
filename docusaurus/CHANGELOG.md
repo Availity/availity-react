@@ -2,6 +2,20 @@
 
 This file was generated using [@jscutlery/semver](https://github.com/jscutlery/semver).
 
+# [1.5.0](https://github.com/Availity/availity-react/compare/@availity/docusaurus@1.4.1...@availity/docusaurus@1.5.0) (2022-12-02)
+
+
+### Bug Fixes
+
+* **docusaurus:** resolve duplicate routes after v2 upgrade ([f8f9e1c](https://github.com/Availity/availity-react/commit/f8f9e1c7aaac79a3dc681f0aa9b3044c0abb2ca5))
+
+
+### Features
+
+* **docusaurus:** upgrade docusaurus to v2 ([2d8cf4e](https://github.com/Availity/availity-react/commit/2d8cf4ea2cc0c20725b063e3c2ef5d706aa74213))
+
+
+
 ## [1.4.1](https://github.com/Availity/availity-react/compare/@availity/docusaurus@1.4.0...@availity/docusaurus@1.4.1) (2022-10-27)
 
 
