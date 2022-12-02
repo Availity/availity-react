@@ -1,5 +1,6 @@
 ---
 title: <ListGroupItem />
+slug: list-group-item
 ---
 
 Availity's ListGroup, which can feature Cards and Selectable items
