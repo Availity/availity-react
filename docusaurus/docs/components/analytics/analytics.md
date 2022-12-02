@@ -1,5 +1,6 @@
 ---
 title: <Analytics />
+slug: analytics
 ---
 
 [![Version](https://img.shields.io/npm/v/@availity/analytics-core.svg?style=for-the-badge)](https://www.npmjs.com/package/@availity/analytics-core)

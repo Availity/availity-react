@@ -1,5 +1,6 @@
 ---
 title: <Upload />
+slug: upload
 ---
 
 The default export is an all-in-one solution which handles uploads, encrypted file password requests and file state management for you.

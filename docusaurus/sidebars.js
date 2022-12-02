@@ -119,7 +119,7 @@ module.exports = {
             label: 'Spaces',
             items: [
               'components/spaces/index',
-              'components/spaces/spaces',
+              'components/spaces/space',
               'components/spaces/images',
               'components/spaces/disclaimer',
               'components/spaces/agreement',

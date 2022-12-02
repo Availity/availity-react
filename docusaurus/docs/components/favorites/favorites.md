@@ -1,5 +1,6 @@
 ---
 title: <Favorites />
+slug: favorites
 ---
 
 The Provider Component that stores all of the user's favorites for use in the favorite components.
