@@ -1,29 +1,29 @@
 .button {
-    max-height: 38px;
+  max-height: 38px;
 
-    &.is-loading {
-        min-width: 200px;
-    }
+  &.is-loading {
+    min-width: 100%;
+  }
 
-    .block-ui {
-        min-height: 38px;
-    }
+  .block-ui {
+    min-height: 38px;
+  }
 
-    .block-ui-message-container {
-        transform: translateY(-80%);
-    }
+  .block-ui-message-container {
+    transform: translateY(-80%);
+  }
 
-    .block-ui-message {
-        height: 38px;
-    }
+  .block-ui-message {
+    height: 38px;
+  }
 
-    .block-ui-overlay {
-        background: transparent;
-    }
+  .block-ui-overlay {
+    background: transparent;
+  }
 
-    &:not(.btn-light) {
-        .loading-bullet {
-            color: #fff;
-        }
+  &:not(.btn-light) {
+    .loading-bullet {
+      color: #fff;
     }
+  }
 }
