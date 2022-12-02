@@ -72,8 +72,12 @@ jobs:
           file: ./coverage/coverage-final.json
           token: ${{ secrets.CODECOV_TOKEN }}
 
-      - name: Build Docs and Storybook
-        run: yarn build:docs && yarn build:storybook
+      - name: Build Docs
+        if: ${{matrix.node > 14}}
+        run: yarn build:docs
+
+      - name: Build Storybook
+        run: yarn build:storybook
 #       TODO: fix Netlify draft deploys, investigate gh-pages for draft docs
 #         if: github.actor != 'dependabot[bot]'
 #       - name: Deploy draft to Netlify
