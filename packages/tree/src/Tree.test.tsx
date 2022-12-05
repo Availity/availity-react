@@ -50,6 +50,18 @@ const items: TreeItem[] = [
       },
     ],
   },
+  {
+    id: '8',
+    name: '2nd Root',
+    children: [
+      {
+        id: '9',
+        name: '2nd Root Child',
+        parentId: '8',
+        children: [],
+      },
+    ],
+  },
 ];
 
 const flatTreeItems: TreeItem[] = [
@@ -87,6 +99,15 @@ const flatTreeItems: TreeItem[] = [
     id: '6',
     name: 'Validation Office',
     parentId: '7',
+  },
+  {
+    id: '8',
+    name: '2nd Root',
+  },
+  {
+    id: '9',
+    name: '2nd Root Child',
+    parentId: '8',
   },
 ];
 
@@ -269,7 +290,7 @@ describe('Tree', () => {
     await waitFor(async () => {
       expect(screen.getByTestId('btn-select-all').textContent).toBe('Deselect All');
       const response = onItemsSelected.mock.lastCall[0];
-      expect(response.length).toEqual(7);
+      expect(response.length).toEqual(9);
     });
 
     fireEvent.click(screen.getByTestId('btn-select-all'));
@@ -277,6 +298,13 @@ describe('Tree', () => {
       expect(screen.getByTestId('btn-select-all').textContent).toBe('Select All');
       const response = onItemsSelected.mock.lastCall[0];
       expect(response.length).toEqual(0);
+    });
+  });
+
+  test('should only show Select All Link on first item on root level', async () => {
+    render(<Tree items={[...items]} expandAll={false} selectable />);
+    await waitFor(async () => {
+      expect(screen.getAllByTestId('btn-select-all').length).toBe(1);
     });
   });
 
