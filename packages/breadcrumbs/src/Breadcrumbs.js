@@ -4,7 +4,7 @@ import { Breadcrumb, BreadcrumbItem } from 'reactstrap';
 
 const Breadcrumbs = ({ crumbs, active, emptyState, children, linkTag: LinkTag, homeUrl, ...rest }) => {
   const renderBreadCrumb = (crumb) => {
-    // default breadcrumb item render
+    // default breadcrumbitem render
     let breadCrumbItemChildren = <span>{emptyState}</span>;
     // render static links
     if (crumb.name && crumb.url) {
