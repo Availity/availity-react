@@ -21,3 +21,13 @@ See our [contributing guide](./.github/CONTRIBUTING.md) on how to contribute to 
 ## License
 
 [MIT](./LICENSE)
+
+### Running the App
+
+Install the dependencies, build components, run the app
+
+```bash
+yarn
+yarn build:components
+yarn start
+```
