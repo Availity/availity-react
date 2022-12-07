@@ -1,9 +1,7 @@
 import React from 'react';
 import { Meta, Story } from '@storybook/react';
-
-import TrainingLink, { TrainingLinkProps } from './TrainingLink';
 import { ArgsTable } from '@storybook/addon-docs';
-// import README from '../../README.md';
+import TrainingLink, { TrainingLinkProps } from './TrainingLink';
 
 export default {
   title: 'Components/Training Link',

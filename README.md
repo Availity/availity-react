@@ -21,6 +21,3 @@ See our [contributing guide](./.github/CONTRIBUTING.md) on how to contribute to 
 ## License
 
 [MIT](./LICENSE)
-
-
-## Testing SSH connnect
