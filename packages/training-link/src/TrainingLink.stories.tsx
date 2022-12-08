@@ -8,7 +8,7 @@ export default {
   parameters: {
     docs: {
       description: {
-        component: 'Component for allowing link out to training in the Header component',
+        component: 'A component for allowing link out to training in the Header component',
       },
     },
   },
