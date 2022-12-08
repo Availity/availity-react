@@ -4,8 +4,10 @@ const shouldProbablyBeInUIKit = { paddingTop: '12px' };
 const linkStyles = { fontWeight: 'bold' } as const;
 
 export type TrainingLinkProps = {
-  name: string;
-  link: string;
+  /**Link to training video.*/
+  link?: string;
+  /**Name of your app to make the sentence complete.*/
+  name?: string;
 };
 
 const TrainingLink = ({ name, link }: TrainingLinkProps): JSX.Element => (
