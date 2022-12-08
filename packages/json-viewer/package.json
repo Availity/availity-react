@@ -1,6 +1,6 @@
 {
   "name": "@availity/json-viewer",
-  "version": "1.2.1",
+  "version": "1.2.2",
   "description": "React component that renders JSON data in an accessible way",
   "keywords": [
     "react",
