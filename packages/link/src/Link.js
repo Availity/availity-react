@@ -88,7 +88,7 @@ AvLink.propTypes = {
   onClick: PropTypes.func,
   /** When false, the url prop to AvLink is not formatted to leverage loadApp. */
   loadApp: PropTypes.bool,
-  /**  Additional classes that should be applied to Disclaimer.
+  /**  Additional classes that should be applied to Link.
       or Pass a string containing the class names as a prop. */
   className: PropTypes.string,
   rel: PropTypes.string,
