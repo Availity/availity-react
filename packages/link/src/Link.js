@@ -76,12 +76,20 @@ AvLink.defaultProps = {
 };
 
 AvLink.propTypes = {
+  /** Where to open the linked document. */
   target: PropTypes.string,
+  /** The tag to use in the link that gets rendered. Default: <a>. */
   tag: PropTypes.oneOfType([PropTypes.func, PropTypes.string]),
+  /** Children can be a react child or render pop. */
   children: PropTypes.node,
+  /** The url of the page the link goes to. */
   href: PropTypes.string.isRequired,
+  /** Function to run onClick of the link. The first argument passed to onClick is the event. The second argument is the processed url. */
   onClick: PropTypes.func,
+  /** When false, the url prop to AvLink is not formatted to leverage loadApp. */
   loadApp: PropTypes.bool,
+  /**  Additional classes that should be applied to Disclaimer.
+      or Pass a string containing the class names as a prop. */
   className: PropTypes.string,
   rel: PropTypes.string,
 };

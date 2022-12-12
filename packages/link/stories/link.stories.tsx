@@ -1,8 +1,8 @@
 import React from 'react';
 import { Story, Meta } from '@storybook/react';
-
+import { ArgsTable } from '@storybook/addon-docs';
 import Link from '..';
-// import README from '../README.md';
+import AvLink from '../types/Link';
 
 export default {
   title: 'Components/Link',
@@ -30,3 +30,11 @@ export const WithRelativeUrl: Story = () => (
   </div>
 );
 WithRelativeUrl.storyName = 'with relative url';
+
+export const Props: Story = () => (
+  <>
+    <h4>Availity Props</h4>
+    <h5>Link Props</h5>
+    <ArgsTable of={Link} />
+  </>
+);
