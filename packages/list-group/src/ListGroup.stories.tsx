@@ -1,7 +1,7 @@
 import React from 'react';
 import { ArgsTable } from '@storybook/addon-docs';
 import { Story, Meta } from '@storybook/react';
-import { ListGroupItem } from 'reactstrap';
+import { ListGroup as RsListGroup, ListGroupItem } from 'reactstrap';
 
 import ListGroup from '..';
 // import README from '../README.md';
@@ -30,11 +30,17 @@ export const Default: Story = ({ cards, selectable }) => (
   </ListGroup>
 );
 
+export const hidden_RsListGroup = (props: RsListGroup) => <RsListGroup {...props} />;
+
 export const Props: Story = () => (
   <>
     <h4>Availity Props</h4>
     <h5>ListGroup</h5>
     <ArgsTable of={ListGroup} />
+
+    <h4>ReactStrap Props</h4>
+    <h5>ListGroup</h5>
+    <ArgsTable of={hidden_RsListGroup} />
   </>
 );
 
