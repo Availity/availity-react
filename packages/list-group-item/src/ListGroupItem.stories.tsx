@@ -13,6 +13,9 @@ export default {
   parameters: {
     docs: {
       // page: README,
+      description: {
+        component: 'List Group Item with some Availity flair',
+      },
     },
   },
   args: {
