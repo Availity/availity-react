@@ -1,4 +1,5 @@
 import React from 'react';
+import { ArgsTable } from '@storybook/addon-docs';
 import { Meta, Story } from '@storybook/react';
 import ListGroup from '@availity/list-group';
 
@@ -92,3 +93,14 @@ Status.argTypes = {
   },
 };
 Status.storyName = 'status';
+
+export const Props: Story = () => (
+  <>
+    <h4>Availity Props</h4>
+    <h5>ListGroup</h5>
+    <ArgsTable of={ListGroupItem} />
+
+    <h5>ListGroupItemStatus</h5>
+    <ArgsTable of={ListGroupItemStatus} />
+  </>
+);

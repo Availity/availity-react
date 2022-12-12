@@ -8,7 +8,9 @@ const ListGroupItem = ({ borderColor, className, ...props }) => {
 };
 
 ListGroupItem.propTypes = {
+  /** The border color to display on the left of the item. Uses Availity UI Kit variants. Must be used within a `ListGroup` from `@availity/list-group` with the `cards` prop set to `true` */
   borderColor: PropTypes.string,
+  /** The name of the class. */
   className: PropTypes.string,
 };
 
