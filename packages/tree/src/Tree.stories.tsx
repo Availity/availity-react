@@ -56,6 +56,15 @@ export const Default: Story = ({ enableSearch, searchLabel, expandAll, selectabl
       name: 'Child Test 5',
       parentId: '7',
     },
+    {
+      id: '9',
+      name: '2nd Root',
+    },
+    {
+      id: '10',
+      name: '2nd Root Child',
+      parentId: '9',
+    },
   ];
 
   const tree = buildTree(flatTreeItems, [flatTreeItems.find((o) => !o.parentId)?.id || '']);
@@ -91,7 +100,6 @@ export const Default: Story = ({ enableSearch, searchLabel, expandAll, selectabl
             onItemsSelected={onItemsSelected}
             selectedItems={selectedItems}
             selectable={selectable}
-            onDismount={resetTree}
           />
         )}
       </div>

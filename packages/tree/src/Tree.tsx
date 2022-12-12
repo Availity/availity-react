@@ -341,7 +341,7 @@ const Tree = ({
         )}
 
         <ul>
-          {treeItems.map((item) => (
+          {treeItems.map((item, index) => (
             <li data-testid={`tree-view-item-${item.id}`} key={`tree-view-item-${item.id}`}>
               {!item.isHidden && (
                 <div>
@@ -372,7 +372,7 @@ const Tree = ({
                     {item.children && item.children.length > 0 && (
                       <Col sm="5">
                         <div className="form-inline d-flex justify-content-end ml-auto align-items-center">
-                          {isRoot && selectable && (
+                          {isRoot && index === 0 && selectable && (
                             <Button
                               data-testid="btn-select-all"
                               color="link"

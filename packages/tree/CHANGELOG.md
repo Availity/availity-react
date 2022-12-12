@@ -2,6 +2,19 @@
 
 This file was generated using [@jscutlery/semver](https://github.com/jscutlery/semver).
 
+## [0.2.1-alpha.1](https://github.com/Availity/availity-react/compare/@availity/tree@0.2.1-alpha.0...@availity/tree@0.2.1-alpha.1) (2022-12-06)
+
+
+
+## [0.2.1-alpha.0](https://github.com/Availity/availity-react/compare/@availity/tree@0.2.0...@availity/tree@0.2.1-alpha.0) (2022-12-05)
+
+
+### Bug Fixes
+
+* **tree:** only show select all link on first root object ([3afdfe1](https://github.com/Availity/availity-react/commit/3afdfe17b7634a86bc9393d97e5faef5f700642c))
+
+
+
 # [0.2.0](https://github.com/Availity/availity-react/compare/@availity/tree@0.1.1...@availity/tree@0.2.0) (2022-10-27)
 
 
