@@ -10,14 +10,23 @@ import 'react-block-ui/style.css';
 import { usePagination } from './Pagination';
 
 export type PaginationContentProps = {
+  /** The component to render when iterating through the current page of items. The contents of the item will be spread on the props of the component when rendered. */
   component: React.ElementType;
-  children?: React.ReactNode;
-  containerProps?: BlockUiProps;
-  loadingMessage?: string;
+  /** The key of the object rendered in the component to be used during mapping. */
   itemKey: string;
+  /** Customize the contents of what gets rendered. Children can be a react child or a function that accepts the pagination items. */
+  children?: React.ReactNode;
+  /** Props to be spread onto the `<BlockUI />` tag. */
+  containerProps?: BlockUiProps;
+  /** The message to render with the loading bar when in the loading state. */
+  loadingMessage?: string;
+  /** If `true`, calls `BlockUI` to simulate a loading state if the provider is loading. */
   loader?: boolean;
+  /** If `true`, renders pagination content inside an infinite scroll component. */
   infiniteScroll?: boolean;
+  /** Only used when `infiniteScroll` is true. See [react-infinite-scroll-component](https://github.com/ankeetmaini/react-infinite-scroll-component#props) */
   infiniteScrollProps?: InfiniteScrollProps;
+  /** The tag to render the `<BlockUI />` as. **Default:** `div`. */
   containerTag?: React.ElementType;
 };
 

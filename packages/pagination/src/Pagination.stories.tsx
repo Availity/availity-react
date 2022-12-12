@@ -1,4 +1,5 @@
 import React from 'react';
+import { ArgsTable } from '@storybook/addon-docs';
 import { Meta, Story } from '@storybook/react';
 import { Card, CardBody, CardText, CardTitle, Col } from 'reactstrap';
 import AvApi from '@availity/api-axios';
@@ -48,6 +49,19 @@ export default {
       // page: README,
     },
   },
+  args: {
+    autoHide: true,
+    breakLabel: true,
+    directionLinks: true,
+    infiniteScroll: false,
+    itemsPerPage: 5,
+    loadingMessage: 'Loading',
+    marginPages: 2,
+    pageRange: 5,
+    showLoader: false,
+    unstyled: false,
+    showPaginationText: false,
+  },
 } as Meta;
 
 export const Default: Story = ({
@@ -88,19 +102,7 @@ export const Default: Story = ({
     </div>
   </Pagination>
 );
-Default.args = {
-  autoHide: true,
-  breakLabel: true,
-  directionLinks: true,
-  infiniteScroll: false,
-  itemsPerPage: 5,
-  loadingMessage: 'Loading',
-  marginPages: 2,
-  pageRange: 5,
-  showLoader: false,
-  unstyled: false,
-  showPaginationText: false,
-};
+
 Default.storyName = 'default';
 
 export const Controls: Story = ({ autoHide, directionLinks, showPaginationText }) => (
@@ -150,4 +152,22 @@ Resource.args = {
   pageRange: 5,
   showLoader: true,
 };
+
 Resource.storyName = 'resource';
+
+export const Props: Story = () => (
+  <>
+    <h4>Availity Props</h4>
+    <h5>Pagination</h5>
+    <ArgsTable of={Pagination} />
+
+    <h5>PaginationContent</h5>
+    <ArgsTable of={PaginationContent} />
+
+    <h5>PaginationControls</h5>
+    <ArgsTable of={PaginationControls} />
+
+    <h5>AvResourcePagination</h5>
+    <ArgsTable of={AvResourcePagination} />
+  </>
+);
