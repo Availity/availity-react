@@ -2,6 +2,16 @@
 
 This file was generated using [@jscutlery/semver](https://github.com/jscutlery/semver).
 
+# [1.7.0](https://github.com/Availity/availity-react/compare/@availity/training-link@1.6.0...@availity/training-link@1.7.0) (2022-12-08)
+
+
+### Features
+
+* **training-link:** props changess ([0c5ce42](https://github.com/Availity/availity-react/commit/0c5ce42ccb525df9617620fbbe9588e9b4229330))
+* **training-link:** remove spaces ([e2c1c1b](https://github.com/Availity/availity-react/commit/e2c1c1bac079da32098a601c039bd075d55f7f22))
+
+
+
 # [1.6.0](https://github.com/Availity/availity-react/compare/@availity/training-link@1.5.1...@availity/training-link@1.6.0) (2022-07-13)
 
 
