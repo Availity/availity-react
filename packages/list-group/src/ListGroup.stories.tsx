@@ -1,4 +1,5 @@
 import React from 'react';
+import { ArgsTable } from '@storybook/addon-docs';
 import { Story, Meta } from '@storybook/react';
 import { ListGroupItem } from 'reactstrap';
 
@@ -10,7 +11,14 @@ export default {
   parameters: {
     docs: {
       // page: README,
+      description: {
+        component: "Availity's ListGroup, which can feature Cards and Selectable items.",
+      },
     },
+  },
+  args: {
+    cards: false,
+    selectable: false,
   },
 } as Meta;
 
@@ -22,9 +30,12 @@ export const Default: Story = ({ cards, selectable }) => (
   </ListGroup>
 );
 
-Default.args = {
-  cards: false,
-  selectable: false,
-};
+export const Props: Story = () => (
+  <>
+    <h4>Availity Props</h4>
+    <h5>ListGroup</h5>
+    <ArgsTable of={ListGroup} />
+  </>
+);
 
 Default.storyName = 'default';
