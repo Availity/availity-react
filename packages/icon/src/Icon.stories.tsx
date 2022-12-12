@@ -1,7 +1,7 @@
 import React from 'react';
 import { Meta, Story } from '@storybook/react';
 import icons from 'availity-uikit/fonts/config.json';
-
+import { ArgsTable } from '@storybook/addon-docs';
 import Icon from '.';
 // import README from '../README.md';
 
@@ -56,5 +56,17 @@ Default.argTypes = {
     type: 'select',
     options: colors,
   },
+  hover: {
+    type: 'select',
+    options: false,
+  },
 };
 Default.storyName = 'default';
+
+export const Props: Story = () => (
+  <>
+    <h4>Availity Props</h4>
+    <h5>Icon Props</h5>
+    <ArgsTable of={Icon} />
+  </>
+);
