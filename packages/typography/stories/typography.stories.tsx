@@ -1,8 +1,7 @@
 import React from 'react';
 import { Meta, Story } from '@storybook/react';
-
+import { ArgsTable } from '@storybook/addon-docs';
 import { Agreement, Disclaimer } from '..';
-// import README from '../README.md';
 
 export default {
   title: 'Components/Typography',
@@ -85,3 +84,14 @@ _Disclaimer.args = {
   styled: true,
 };
 _Disclaimer.storyName = 'disclaimer';
+
+export const Props: Story = () => (
+  <>
+    <h4>Availity Props</h4>
+    <h5>Disclaimer Props</h5>
+    <ArgsTable of={Disclaimer} />
+    <h4>Availity Props</h4>
+    <h5>Agreement Props</h5>
+    <ArgsTable of={Agreement} />
+  </>
+);
