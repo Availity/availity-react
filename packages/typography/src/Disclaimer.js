@@ -18,9 +18,14 @@ Disclaimer.defaultProps = {
 };
 
 Disclaimer.propTypes = {
+  /** It can be one of type either string or function. */
   tag: PropTypes.oneOfType([PropTypes.func, PropTypes.string]),
+  /** Additional classes that should be applied to Disclaimer.
+      or Pass a string containing the class names as a prop. */
   className: PropTypes.string,
+  /** Determine if a vertical bar is displayed to the left of the disclaimer. Default is true */
   styled: PropTypes.bool,
+  /** Children can be react child or render prop. */
   children: PropTypes.node,
 };
 
