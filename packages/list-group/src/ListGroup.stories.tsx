@@ -40,7 +40,9 @@ export const Props: Story = () => (
 
     <h4>ReactStrap Props</h4>
     <h5>ListGroup</h5>
-    <ArgsTable of={hidden_RsListGroup} />
+    <div className="argstable-remove-default">
+      <ArgsTable of={hidden_RsListGroup} />
+    </div>
   </>
 );
 

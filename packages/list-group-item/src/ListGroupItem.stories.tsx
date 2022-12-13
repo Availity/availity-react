@@ -111,6 +111,8 @@ export const Props: Story = () => (
 
     <h4>Reactstrap Props</h4>
     <h5>ListGroupItem</h5>
-    <ArgsTable of={hidden_RsListGroupItem} />
+    <div className="argstable-remove-default">
+      <ArgsTable of={hidden_RsListGroupItem} />
+    </div>
   </>
 );
