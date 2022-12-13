@@ -2,7 +2,6 @@ import React from 'react';
 import { Story, Meta } from '@storybook/react';
 import { ArgsTable } from '@storybook/addon-docs';
 import Link from '..';
-import AvLink from '../types/Link';
 
 export default {
   title: 'Components/Link',
