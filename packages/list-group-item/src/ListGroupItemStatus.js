@@ -42,9 +42,13 @@ const ListItemStatus = ({ color, titleContent, children, badge, ...props }) => {
 };
 
 ListItemStatus.propTypes = {
-  titleContent: PropTypes.node,
+  /** The content that renders when the features are enabled. */
   children: PropTypes.node.isRequired,
+  /** When present, adds a title on the same level as the badge. If of type `string` then defaults to using `<span>` tag. */
+  titleContent: PropTypes.node,
+  /** Set the color for the border and the badge. **Default:** `"info"`. */
   color: PropTypes.string,
+  /** If a String, the text to render inside of the `<Badge />`. If an Object, expects `text` (String) and `color` (String) properties. `text` is the text to render inside the badge. `color` is the color of the badge. */
   badge: PropTypes.oneOfType([
     PropTypes.bool,
     PropTypes.string,
