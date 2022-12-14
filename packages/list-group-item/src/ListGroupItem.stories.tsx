@@ -2,7 +2,7 @@ import React from 'react';
 import { ArgsTable } from '@storybook/addon-docs';
 import { Meta, Story } from '@storybook/react';
 import ListGroup from '@availity/list-group';
-import { ListGroupItem as RsListGroupItem } from 'reactstrap';
+import { ListGroupItem as RsListGroupItem, ListGroupItemProps } from 'reactstrap';
 
 import ListGroupItem, { ListGroupItemStatus } from '..';
 // import README from '../README.md';
@@ -98,7 +98,7 @@ Status.argTypes = {
 };
 Status.storyName = 'status';
 
-export const hidden_RsListGroupItem = (props: RsListGroupItem) => <RsListGroupItem {...props} />;
+export const hidden_RsListGroupItem = (props: ListGroupItemProps) => <RsListGroupItem {...props} />;
 
 export const Props: Story = () => (
   <>
