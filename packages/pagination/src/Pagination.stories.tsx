@@ -1,11 +1,27 @@
 import React from 'react';
 import { ArgsTable } from '@storybook/addon-docs';
 import { Meta, Story } from '@storybook/react';
-import { Card, CardBody, CardText, CardTitle, Col } from 'reactstrap';
+import {
+  Pagination as RsPagination,
+  PaginationProps as RsPaginationProps,
+  Card,
+  CardBody,
+  CardText,
+  CardTitle,
+  Col,
+} from 'reactstrap';
 import AvApi from '@availity/api-axios';
 import paginationData from '@availity/mock/src/data/pagination.json';
-
-import { Pagination, PaginationContent, PaginationControls, AvResourcePagination } from '..';
+import {
+  Pagination,
+  PaginationProps,
+  PaginationContent,
+  PaginationContentProps,
+  PaginationControls,
+  PaginationControlsProps,
+  AvResourcePagination,
+  AvResourcePaginationProps,
+} from '..';
 // import README from '../README.md';
 
 interface Name {
@@ -47,20 +63,10 @@ export default {
   parameters: {
     docs: {
       // page: README,
+      description: {
+        component: 'Pagination, the Availity way.',
+      },
     },
-  },
-  args: {
-    autoHide: true,
-    breakLabel: true,
-    directionLinks: true,
-    infiniteScroll: false,
-    itemsPerPage: 5,
-    loadingMessage: 'Loading',
-    marginPages: 2,
-    pageRange: 5,
-    showLoader: false,
-    unstyled: false,
-    showPaginationText: false,
   },
 } as Meta;
 
@@ -103,6 +109,19 @@ export const Default: Story = ({
   </Pagination>
 );
 
+Default.args = {
+  autoHide: true,
+  breakLabel: true,
+  directionLinks: true,
+  infiniteScroll: false,
+  itemsPerPage: 5,
+  loadingMessage: 'Loading',
+  marginPages: 2,
+  pageRange: 5,
+  showLoader: false,
+  unstyled: false,
+  showPaginationText: false,
+};
 Default.storyName = 'default';
 
 export const Controls: Story = ({ autoHide, directionLinks, showPaginationText }) => (
@@ -152,22 +171,55 @@ Resource.args = {
   pageRange: 5,
   showLoader: true,
 };
+Resource.storyName = 'AvResource';
 
-Resource.storyName = 'resource';
+export const hidden_Pagination = (props: PaginationProps<unknown>) => <Pagination {...props} />;
+
+export const hidden_PaginationContent = (props: PaginationContentProps) => (
+  <Pagination items={paginationData}>
+    <PaginationContent {...props} component={Component} />
+  </Pagination>
+);
+
+export const hidden_PaginationControls = (props: PaginationControlsProps) => (
+  <Pagination items={paginationData}>
+    <PaginationControls {...props} />
+  </Pagination>
+);
+
+export const hidden_AvResourcePagination = (props: AvResourcePaginationProps<unknown[]>) => (
+  <AvResourcePagination {...props} />
+);
+
+export const hidden_RsPagination = (props: RsPaginationProps) => <RsPagination {...props} />;
 
 export const Props: Story = () => (
   <>
     <h4>Availity Props</h4>
     <h5>Pagination</h5>
-    <ArgsTable of={Pagination} />
+    <div className="argstable-remove-default">
+      <ArgsTable of={hidden_Pagination} />
+    </div>
 
     <h5>PaginationContent</h5>
-    <ArgsTable of={PaginationContent} />
+    <div className="argstable-remove-default">
+      <ArgsTable of={hidden_PaginationContent} />
+    </div>
 
     <h5>PaginationControls</h5>
-    <ArgsTable of={PaginationControls} />
+    <div className="argstable-remove-default">
+      <ArgsTable of={hidden_PaginationControls} />
+    </div>
 
     <h5>AvResourcePagination</h5>
-    <ArgsTable of={AvResourcePagination} />
+    <div className="argstable-remove-default">
+      <ArgsTable of={hidden_AvResourcePagination} />
+    </div>
+
+    <h4>Reactstrap Pagination</h4>
+    <h5>Pagination</h5>
+    <div className="argstable-remove-default">
+      <ArgsTable of={hidden_RsPagination} />
+    </div>
   </>
 );
