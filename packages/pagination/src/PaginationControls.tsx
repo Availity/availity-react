@@ -9,15 +9,25 @@ const leftCaret = '\u2039'; // ‹
 const rightCaret = '\u203A'; // ›
 
 export type PaginationControlsProps = {
+  /*  Allows for custom aria-label. */
   'aria-label'?: string;
+  /* If enabled and there are no items, the component is hidden. */
   autoHide?: boolean;
+  /* When `true` an ellipse is displayed when there are more pages outside of the page range. */
   breakLabel?: boolean;
+  /* */
   className?: string;
+  /* If enabled, shows next and previous arrows on the "Next" and "Back" buttons. */
   directionLinks?: boolean;
+  /* Add bootstrap styles to list element. */
   listClassName?: string;
+  /* The number of pages to display on the ends when there are pages outside of the page range. **Default:** `2`. */
   marginPages?: number;
+  /* The number of pages to display at a time. **Default**: `5`. */
   pageRange?: number;
+  /* When `showPaginationText` is true, this function allows for customization of the pagination text that is displayed. */
   populatePaginationText?: (lower: number, upper: number, total: number) => React.ReactNode;
+  /* When true, this will show pagination text next to the controls describing the current page and page range. This defaults to the following: 1-50 of 100. */
   showPaginationText?: boolean;
 };
 
