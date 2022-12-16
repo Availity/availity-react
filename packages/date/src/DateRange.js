@@ -322,23 +322,42 @@ const DateRange = ({
 
 DateRange.propTypes = {
   id: PropTypes.string.isRequired,
+  /** The name of the field. Will be the key of the selected dates that come through in the values of the `onSubmit` callback. */
   name: PropTypes.string.isRequired,
   validate: PropTypes.func,
+  /** Used in conjunction with `max` to derive `isOutsideRange` prop from `react-dates` and selectable year options in datepicker. Dates outside the allowed range will not be clickable in datepicker. */
   min: limitPropType,
+  /** Used in conjunction with `min` to derive isOutsideRange prop from `react-dates` and selectable year options in datepicker. Dates outside the allowed range will not be clickable in datepicker. */
   max: limitPropType,
   feedback: PropTypes.bool,
   className: PropTypes.string,
+  /** Whether the date range is disabled. */
   disabled: PropTypes.bool,
   onChange: PropTypes.func,
+  /** Function to be run when focus on the input changes. `focusedInput` contains the `id` of the focused field. Possible Values:
+ <ul><li>`startId` - the id of the start field. `"<name>-start"`</li>
+<li>`endId` - the id of the end field. `"<name>-end"`</li>
+<li>`undefined` - the date range was unfocused </li>
+</ul>
+*/
   onPickerFocusChange: PropTypes.func,
   innerRef: PropTypes.oneOfType([PropTypes.func, PropTypes.node]),
+  /** How to format date value in `onSubmit` callback. Must be a format recognized by <a href={https://momentjs.com/docs/#/displaying/format/}>moment.</a>. Default:`MM/DD/YYYY` */
   format: PropTypes.string,
+  /** Toggle whether the calendar is shown. */
+  datepicker: PropTypes.bool,
+  /** Props to be spread onto the datepicker component from <a href={https://github.com/react-dates/react-dates#singledatepicker}>react-dates.</a>. */
   datepickerProps: PropTypes.object,
   'data-testid': PropTypes.string,
+  /** Toggle whether the other date should be automatically synced to the selected date when focus changes. Dates are only auto synced the first time the input is touched and if the date field to auto sync is empty
+   Props to be spread onto the datepicker component from <a href={https://github.com/react-dates/react-dates#singledatepicker}>react-dates.</a>. */
   autoSync: PropTypes.bool,
+  /** Show preset date ranges when calendar is visible. Accepts boolean to display default ranges. If `string[]` will strip subset of ranges off defaults. If `object` will overwrite the default ranges. */
   ranges: PropTypes.oneOfType([PropTypes.bool, PropTypes.array, PropTypes.object]),
   customArrowIcon: PropTypes.oneOfType([PropTypes.string, PropTypes.node]),
+  /** Set which direction the date picker renders. Possible values are `up` and `down`. Default: `down` */
   openDirection: PropTypes.string,
+  /** Defaults to false, with this behavior the onInputChange handler will not pass through invalid dates to formik. By setting this prop to true, you can allow formik to handle invalid dates. Very useful for getting errors from non-required date range components. */
   allowInvalidDates: PropTypes.bool,
 };
 
