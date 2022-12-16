@@ -173,21 +173,66 @@ Resource.args = {
 };
 Resource.storyName = 'AvResource';
 
-export const hidden_Pagination = (props: PaginationProps<unknown>) => <Pagination {...props} />;
+export const hidden_Pagination = ({
+  items,
+  itemsPerPage = 10,
+  defaultPage = 1,
+  debounceTimeout = 0,
+  shouldReturnPrevious = false,
+}: PaginationProps<object>) => {
+  const props = {
+    items,
+    itemsPerPage,
+    defaultPage,
+    debounceTimeout,
+    shouldReturnPrevious,
+  };
+  return <Pagination {...props} />;
+};
 
-export const hidden_PaginationContent = (props: PaginationContentProps) => (
-  <Pagination items={paginationData}>
-    <PaginationContent {...props} component={Component} />
-  </Pagination>
-);
+export const hidden_PaginationContent = ({
+  itemKey,
+  loader = false,
+  infiniteScroll = false,
+  containerTag = 'div',
+}: PaginationContentProps) => {
+  const props = {
+    itemKey,
+    loader,
+    infiniteScroll,
+    containerTag,
+  };
+  return (
+    <Pagination items={paginationData}>
+      <PaginationContent {...props} component={Component} />
+    </Pagination>
+  );
+};
 
-export const hidden_PaginationControls = (props: PaginationControlsProps) => (
-  <Pagination items={paginationData}>
-    <PaginationControls {...props} />
-  </Pagination>
-);
+export const hidden_PaginationControls = ({
+  autoHide = true,
+  breakLabel = true,
+  directionLinks = false,
+  marginPages = 2,
+  pageRange = 5,
+  showPaginationText = false,
+}: PaginationControlsProps) => {
+  const props = {
+    autoHide,
+    breakLabel,
+    directionLinks,
+    marginPages,
+    pageRange,
+    showPaginationText,
+  };
+  return (
+    <Pagination items={paginationData}>
+      <PaginationControls {...props} />
+    </Pagination>
+  );
+};
 
-export const hidden_AvResourcePagination = (props: AvResourcePaginationProps<unknown[]>) => (
+export const hidden_AvResourcePagination = (props: AvResourcePaginationProps<any[]>) => (
   <AvResourcePagination {...props} />
 );
 
@@ -197,24 +242,16 @@ export const Props: Story = () => (
   <>
     <h4>Availity Props</h4>
     <h5>Pagination</h5>
-    <div className="argstable-remove-default">
-      <ArgsTable of={hidden_Pagination} />
-    </div>
+    <ArgsTable of={hidden_Pagination} />
 
     <h5>PaginationContent</h5>
-    <div className="argstable-remove-default">
-      <ArgsTable of={hidden_PaginationContent} />
-    </div>
+    <ArgsTable of={hidden_PaginationContent} />
 
     <h5>PaginationControls</h5>
-    <div className="argstable-remove-default">
-      <ArgsTable of={hidden_PaginationControls} />
-    </div>
+    <ArgsTable of={hidden_PaginationControls} />
 
     <h5>AvResourcePagination</h5>
-    <div className="argstable-remove-default">
-      <ArgsTable of={hidden_AvResourcePagination} />
-    </div>
+    <ArgsTable of={hidden_AvResourcePagination} />
 
     <h4>Reactstrap Pagination</h4>
     <h5>Pagination</h5>
