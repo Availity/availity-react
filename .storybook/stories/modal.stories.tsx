@@ -18,7 +18,7 @@ export default {
     docs: {
       description: {
         component:
-          'Custom Buttons for actions in forms, dialogs, and more with support for multiple sizes, states, and more.',
+          'Blocking modal dialog. Pay attention to accessibility issues with heading level and accessible name for the dialog.',
       },
       // page: README,
     },
@@ -96,28 +96,6 @@ export const modalDisplayStory = () => (
   </div>
 );
 modalDisplayStory.storyName = 'Modal (display only)';
-
-// export const ButtonStory = (args) => <Button {...args} />;
-// ButtonStory.storyName = 'Button';
-// ButtonStory.args = {
-//   children: 'Click Me',
-//   color: 'primary',
-//   outline: false,
-//   size: undefined,
-//   block: false,
-//   active: false,
-//   close: false,
-// };
-// ButtonStory.argTypes = {
-//   color: {
-//     control: { type: 'select' },
-//     options: colors,
-//   },
-//   size: {
-//     control: { type: 'select' },
-//     options: ['', 'sm', 'lg'],
-//   },
-// };
 
 export const hidden_RSModal = ({ children, ...ModalProps }: ModalProps): Modal => (
   <Modal {...ModalProps}>{children}</Modal>
