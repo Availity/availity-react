@@ -5,7 +5,7 @@ import { Button } from 'reactstrap';
 import { avDate, dateRange } from '@availity/yup';
 import * as yup from 'yup';
 import { unitOfTime } from 'moment';
-
+import { ArgsTable } from '@storybook/addon-docs';
 import FormikDate from '../src/Date';
 import DateField from '../src/DateField';
 import DateRange from '../src/DateRange';
@@ -245,3 +245,17 @@ _DateRangeField.argTypes = {
   },
 };
 _DateRangeField.storyName = 'DateRangeField';
+
+export const Props: Story = () => (
+  <>
+    <h4>Availity Props</h4>
+    <h5>Date</h5>
+    <ArgsTable of={FormikDate} />
+    <h5>DateField</h5>
+    <ArgsTable of={DateField} />
+    <h5>DateRange</h5>
+    <ArgsTable of={DateRange} />
+    <h5>DateRangeField</h5>
+    <ArgsTable of={DateRangeField} />
+  </>
+);
