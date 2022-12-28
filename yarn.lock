@@ -420,7 +420,7 @@ __metadata:
     "@types/react": ^17.0.45
     "@types/react-dom": ^17.0.16
     adio: ^1.2.1
-    availity-uikit: ^4.1.5
+    availity-uikit: ^4.3.0
     babel-loader: ^8.2.5
     babel-preset-react-app: ^10.0.1
     codecov: ^3.8.3
@@ -9989,12 +9989,12 @@ __metadata:
   languageName: node
   linkType: hard
 
-"availity-uikit@npm:^4.1.5":
-  version: 4.1.5
-  resolution: "availity-uikit@npm:4.1.5"
+"availity-uikit@npm:^4.3.0":
+  version: 4.3.0
+  resolution: "availity-uikit@npm:4.3.0"
   dependencies:
     bootstrap: 4.5.3
-  checksum: 677ddbfacfc8a69617c448dc5a04ea1be5516cec318df268d5859454d835c345b580c8b5c41f92a57f91ba0120a7b896501ea90a894ec91a3ddc830a9f24147b
+  checksum: 00f495095e6049426cd2b8e9b7ed44ff467cd1ed77045676119fdb8e4316e2589eda17d8ed938fce409b8807d1b2ea79b0dde66d4e1d5fe0e1a44fbb7720a6f2
   languageName: node
   linkType: hard
 
