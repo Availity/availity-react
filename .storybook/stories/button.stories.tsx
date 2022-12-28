@@ -42,6 +42,16 @@ ButtonStory.argTypes = {
   },
 };
 
+export const Colors = () => (
+  <>
+    {colors.map((color) => (
+      <Button color={color} key={color}>
+        {color}
+      </Button>
+    ))}
+  </>
+);
+
 export const hidden_RSButton = ({ children, ...buttonProps }: ButtonProps): Button => (
   <Button {...buttonProps}>{children}</Button>
 );
