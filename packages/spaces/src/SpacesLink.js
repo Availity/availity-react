@@ -113,7 +113,7 @@ const Link = ({
       return <Icon className={icons.navigation} id={`${idPrefix}app-${icons.navigation}-icon-${configurationId}`} />;
 
     return <Icon name="desktop" id={`${idPrefix}app-desktop-icon-${configurationId}`} />;
-  }, [icons.navigation, shortName, configurationId]);
+  }, [icons.navigation, shortName, configurationId, idPrefix]);
 
   const appIcon = useMemo(() => {
     if (!showAppIcon) return null;
@@ -130,7 +130,17 @@ const Link = ({
         {getIconTitle()}
       </AppIcon>
     );
-  }, [description, getIconTitle, icons.navigation, showAppIcon, showDescription, size, stacked, configurationId]);
+  }, [
+    description,
+    getIconTitle,
+    icons.navigation,
+    showAppIcon,
+    showDescription,
+    size,
+    stacked,
+    configurationId,
+    idPrefix,
+  ]);
 
   const favoriteIcon = useMemo(
     () =>
@@ -144,7 +154,7 @@ const Link = ({
           <FavoriteHeart id={`${idPrefix}${configurationId}`} name={name} onChange={(_, e) => e.stopPropagation()} />
         </span>
       ),
-    [favorite, configurationId, name, showAppIcon]
+    [favorite, configurationId, name, showAppIcon, idPrefix]
   );
 
   const dateInfo = useMemo(
@@ -171,7 +181,7 @@ const Link = ({
           )}
         </div>
       ),
-    [activeDate, isNew, showDate, showNew, stacked, configurationId]
+    [activeDate, isNew, showDate, showNew, stacked, configurationId, idPrefix]
   );
 
   const customBadgeDisplay = useMemo(
@@ -189,7 +199,7 @@ const Link = ({
           </Badge>
         </div>
       ),
-    [customBadgeColor, customBadgeText, showDate, showNew, stacked, linkStyle, isNew]
+    [customBadgeColor, customBadgeText, showDate, showNew, stacked, linkStyle, isNew, idPrefix]
   );
 
   if (isLoading) {
