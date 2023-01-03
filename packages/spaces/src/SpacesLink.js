@@ -73,6 +73,7 @@ const Link = ({
   analytics,
   customBadgeText,
   customBadgeColor,
+  idPrefix,
   ...rest
 }) => {
   const { loading } = useSpacesContext() || {};
@@ -109,10 +110,10 @@ const Link = ({
 
     // We have to pass `name` as `className` bc of how its stored in spaces
     if (icons.navigation)
-      return <Icon className={icons.navigation} id={`app-${icons.navigation}-icon-${configurationId}`} />;
+      return <Icon className={icons.navigation} id={`${idPrefix}app-${icons.navigation}-icon-${configurationId}`} />;
 
-    return <Icon name="desktop" id={`app-desktop-icon-${configurationId}`} />;
-  }, [icons.navigation, shortName, configurationId]);
+    return <Icon name="desktop" id={`${idPrefix}app-desktop-icon-${configurationId}`} />;
+  }, [icons.navigation, shortName, configurationId, idPrefix]);
 
   const appIcon = useMemo(() => {
     if (!showAppIcon) return null;
@@ -124,12 +125,22 @@ const Link = ({
           top: showDescription && description && !stacked ? -5 : 0,
         }}
         size={size === undefined && stacked ? 'lg' : size}
-        id={`app-appIcon-${configurationId}`}
+        id={`${idPrefix}app-appIcon-${configurationId}`}
       >
         {getIconTitle()}
       </AppIcon>
     );
-  }, [description, getIconTitle, icons.navigation, showAppIcon, showDescription, size, stacked, configurationId]);
+  }, [
+    description,
+    getIconTitle,
+    icons.navigation,
+    showAppIcon,
+    showDescription,
+    size,
+    stacked,
+    configurationId,
+    idPrefix,
+  ]);
 
   const favoriteIcon = useMemo(
     () =>
@@ -140,10 +151,10 @@ const Link = ({
             'pr-2': !showAppIcon,
           })}
         >
-          <FavoriteHeart id={configurationId} name={name} onChange={(_, e) => e.stopPropagation()} />
+          <FavoriteHeart id={`${idPrefix}${configurationId}`} name={name} onChange={(_, e) => e.stopPropagation()} />
         </span>
       ),
-    [favorite, configurationId, name, showAppIcon]
+    [favorite, configurationId, name, showAppIcon, idPrefix]
   );
 
   const dateInfo = useMemo(
@@ -160,15 +171,17 @@ const Link = ({
               className={classNames({
                 'mr-2': showDate,
               })}
-              id={`app-new-badge-${configurationId}`}
+              id={`${idPrefix}app-new-badge-${configurationId}`}
             >
               New!
             </Badge>
           )}
-          {showDate && <small id={`app-display-date-${configurationId}`}>{getDisplayDate(activeDate)}</small>}
+          {showDate && (
+            <small id={`${idPrefix}app-display-date-${configurationId}`}>{getDisplayDate(activeDate)}</small>
+          )}
         </div>
       ),
-    [activeDate, isNew, showDate, showNew, stacked, configurationId]
+    [activeDate, isNew, showDate, showNew, stacked, configurationId, idPrefix]
   );
 
   const customBadgeDisplay = useMemo(
@@ -181,16 +194,16 @@ const Link = ({
             'mr-2': linkStyle !== 'card' && (showDate || (showNew && isNew)),
           })}
         >
-          <Badge color={customBadgeColor || 'info'} id={`app-custom-badge-${customBadgeText}`}>
+          <Badge color={customBadgeColor || 'info'} id={`${idPrefix}app-custom-badge-${customBadgeText}`}>
             {customBadgeText}
           </Badge>
         </div>
       ),
-    [customBadgeColor, customBadgeText, showDate, showNew, stacked, linkStyle, isNew]
+    [customBadgeColor, customBadgeText, showDate, showNew, stacked, linkStyle, isNew, idPrefix]
   );
 
   if (isLoading) {
-    return <Loader id={`app-${configurationId}-loading`} skeletonProps={skeletonProps} {...rest} />;
+    return <Loader id={`${idPrefix}app-${configurationId}-loading`} skeletonProps={skeletonProps} {...rest} />;
   }
 
   Tag = getContainerTag(Tag, linkStyle);
@@ -247,9 +260,9 @@ const Link = ({
         {children
           ? renderChildren()
           : body && (
-              <Media body id={`${type}-${configurationId}`} className="text-dark">
+              <Media body id={`${idPrefix}${type}-${configurationId}`} className="text-dark">
                 <TitleTag
-                  id={`app-title-${configurationId}`}
+                  id={`${idPrefix}app-title-${configurationId}`}
                   className={classNames(
                     {
                       'mb-0': !customBadgeDisplay && (!showDescription || !description),
@@ -266,7 +279,7 @@ const Link = ({
                   {...props}
                   role={showUrl ? 'link' : role}
                   aria-label={name}
-                  aria-describedby={showNew && isNew ? `app-new-badge-${configurationId}` : undefined}
+                  aria-describedby={showNew && isNew ? `${idPrefix}app-new-badge-${configurationId}` : undefined}
                 >
                   {name}
                 </TitleTag>
@@ -277,7 +290,7 @@ const Link = ({
                     className={classNames('mt-1', {
                       'text-center': stacked,
                     })}
-                    id={`app-description-${configurationId}`}
+                    id={`${idPrefix}app-description-${configurationId}`}
                   >
                     {/* TODO: just rendering text, do we need markdown component? */}
                     <ReactMarkdown className="Card-text">
@@ -367,11 +380,14 @@ Link.propTypes = {
   analytics: PropTypes.object,
   customBadgeText: PropTypes.string,
   customBadgeColor: PropTypes.string,
+  /** prefix for ids to prevent duplicates when the same config link is displayed on the page more than once */
+  idPrefix: PropTypes.string,
 };
 
 Link.defaultProps = {
   linkStyle: 'default',
   body: true,
+  idPrefix: '',
 };
 
 export default Link;
