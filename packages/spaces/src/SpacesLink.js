@@ -194,12 +194,15 @@ const Link = ({
             'mr-2': linkStyle !== 'card' && (showDate || (showNew && isNew)),
           })}
         >
-          <Badge color={customBadgeColor || 'info'} id={`${idPrefix}app-custom-badge-${customBadgeText}`}>
+          <Badge
+            color={customBadgeColor || 'info'}
+            id={`${idPrefix}app-custom-badge-${configurationId}-${customBadgeText}`}
+          >
             {customBadgeText}
           </Badge>
         </div>
       ),
-    [customBadgeColor, customBadgeText, showDate, showNew, stacked, linkStyle, isNew, idPrefix]
+    [customBadgeColor, customBadgeText, showDate, showNew, stacked, linkStyle, isNew, idPrefix, configurationId]
   );
 
   if (isLoading) {
