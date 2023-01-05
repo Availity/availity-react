@@ -508,7 +508,7 @@ __metadata:
   resolution: "@availity/button@workspace:packages/button"
   dependencies:
     react: ^17.0.2
-    react-block-ui: ^1.3.3
+    react-block-ui: ^1.3.6
     react-dom: ^17.0.2
     reactstrap: ^8.10.1
     tsup: ^5.12.7
@@ -23098,6 +23098,18 @@ __metadata:
     react: ^0.14.9 || ^15.3.0 || ^16.0.0
     react-dom: ^0.14.9 || ^15.3.0 || ^16.0.0
   checksum: b9d00a9e7e8f27d7a0f58dd7ac879cbfa5d7b445145a5496f41fd7df7ddd7b1c8b5627104a14c89e7e8522534b0594f588507a54351043544469169220fc5fed
+  languageName: node
+  linkType: hard
+
+"react-block-ui@npm:^1.3.6":
+  version: 1.3.6
+  resolution: "react-block-ui@npm:1.3.6"
+  dependencies:
+    prop-types: ^15.6.2
+  peerDependencies:
+    react: ^0.14.9 || ^15.3.0 || ^16.0.0
+    react-dom: ^0.14.9 || ^15.3.0 || ^16.0.0
+  checksum: b32017a22140cf30daa238c270b6a8856703a0fe4244e5454e840472b924a097014f3738be3f576dfde734d41c254962d35544fe6d3fc331822cd7d31e11289b
   languageName: node
   linkType: hard
 
