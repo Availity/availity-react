@@ -2,6 +2,15 @@
 
 This file was generated using [@jscutlery/semver](https://github.com/jscutlery/semver).
 
+# [1.4.0](https://github.com/Availity/availity-react/compare/@availity/button@1.3.1...@availity/button@1.4.0) (2023-01-05)
+
+
+### Features
+
+* **button:** bump react-block-ui for accessibility changes ([8dd0f4f](https://github.com/Availity/availity-react/commit/8dd0f4fc4276a850aee84b25cc22e074853962ba))
+
+
+
 ## [1.3.1](https://github.com/Availity/availity-react/compare/@availity/button@1.3.0...@availity/button@1.3.1) (2022-06-14)
 
 
