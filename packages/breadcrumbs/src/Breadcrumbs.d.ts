@@ -1,6 +1,6 @@
 import { BreadcrumbProps as RsBreadcrumbsProps } from 'reactstrap';
 
-type Crumb = {
+export type Crumb = {
   name: string;
   url: string;
 };
