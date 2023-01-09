@@ -24,7 +24,7 @@ export type ResourceSelectProps<
     | ((data: any) => boolean)
     | ((data: { totalCount: number; limit: number; offset: number }) => boolean);
   itemsPerPage?: number;
-  method?: 'POST';
+  method?: 'POST' | 'GET';
   minCharsToSearch?: number;
   onError?: (error: unknown) => void;
   onPageChange?: (inputValue: any, page: any) => void;
