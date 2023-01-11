@@ -2,6 +2,15 @@
 
 This file was generated using [@jscutlery/semver](https://github.com/jscutlery/semver).
 
+# [3.4.0](https://github.com/Availity/availity-react/compare/@availity/select@3.3.2...@availity/select@3.4.0) (2023-01-11)
+
+
+### Features
+
+* **select:** add support for the resource select to call regular (get) query instead of forcing it to be a postget to fix significant performance issues ([21b9312](https://github.com/Availity/availity-react/commit/21b9312672f82db696a01e6f499cda082eb55e11))
+
+
+
 ## [3.3.3-alpha.0](https://github.com/Availity/availity-react/compare/@availity/select@3.3.2...@availity/select@3.3.3-alpha.0) (2023-01-09)
 
 
