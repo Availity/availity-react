@@ -53,6 +53,7 @@ export type Cell<T extends IdType, V = any> = RtCell<T, V> & {
   row: Row<T>;
   column: Column<T>;
   original: T;
+  data: T[];
 };
 
 export type ExtendedTableHeader<T extends IdType> = HeaderGroup<T> &

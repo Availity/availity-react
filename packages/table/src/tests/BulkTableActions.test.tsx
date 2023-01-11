@@ -45,6 +45,10 @@ const bulkActions = [
     onClick: jest.fn(),
     isVisible: () => false,
   },
+  {
+    id: 'action3',
+    displayText: () => 'Populated By function',
+  },
 ];
 
 describe('BulkTableActions', () => {
