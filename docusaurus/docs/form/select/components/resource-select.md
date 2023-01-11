@@ -59,9 +59,9 @@ Configuration object used in the query method on the resource. Useful for defini
 
 Object used to create querystring parameters in the request. If function, will return new object with params for request.
 
-#### `method?: string`
+#### `method?: POST | GET`
 
-Override method to use `post` request on REST calls with `graphqlConfig`.
+Override method to use `POST` request on REST calls with `graphqlConfig`. When method = 'GET', on populating the options it will call the `query` function on the API Resource rather then default to a POST GET for cases when not using graphql.
 
 #### `customerId?: string`
 
