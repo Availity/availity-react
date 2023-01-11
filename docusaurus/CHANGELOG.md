@@ -2,6 +2,15 @@
 
 This file was generated using [@jscutlery/semver](https://github.com/jscutlery/semver).
 
+# [1.6.0](https://github.com/Availity/availity-react/compare/@availity/docusaurus@1.5.0...@availity/docusaurus@1.6.0) (2023-01-11)
+
+
+### Features
+
+* **select:** add documentation ([23c0d5e](https://github.com/Availity/availity-react/commit/23c0d5e7d5b85e43559a8a90a931db406b733e69))
+
+
+
 # [1.5.0](https://github.com/Availity/availity-react/compare/@availity/docusaurus@1.4.1...@availity/docusaurus@1.5.0) (2022-12-02)
 
 
