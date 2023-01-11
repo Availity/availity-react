@@ -2,6 +2,15 @@
 
 This file was generated using [@jscutlery/semver](https://github.com/jscutlery/semver).
 
+## [3.3.3-alpha.0](https://github.com/Availity/availity-react/compare/@availity/breadcrumbs@3.3.2...@availity/breadcrumbs@3.3.3-alpha.0) (2023-01-09)
+
+
+### Bug Fixes
+
+* **breadcrumbs:** properly export types for 'crumb' and 'breadcrumbprops' ([c138695](https://github.com/Availity/availity-react/commit/c1386951f9c38bac2403710cb81fc248d3f7a4a4))
+
+
+
 ## [3.3.2](https://github.com/Availity/availity-react/compare/@availity/breadcrumbs@3.3.1...@availity/breadcrumbs@3.3.2) (2022-10-21)
 
 

@@ -1,1 +1,1 @@
-export { default } from './src/Breadcrumbs';
+export { default, Crumb, BreadCrumbProps } from './src/Breadcrumbs';
