@@ -28,6 +28,9 @@ export default {
   parameters: {
     docs: {
       // page: README,
+      description: {
+        component: 'Hook that allows asynchronous functions to be called in the standard useEffect hook.',
+      },
     },
   },
 } as Meta;

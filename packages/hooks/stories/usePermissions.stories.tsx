@@ -12,6 +12,9 @@ export default {
   parameters: {
     docs: {
       // sidebar: README,
+      description: {
+        component: 'Hook that returns user permissions.',
+      },
     },
   },
   decorators: [
