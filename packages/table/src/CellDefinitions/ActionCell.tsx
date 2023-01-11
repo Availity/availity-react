@@ -9,11 +9,13 @@ import { PrimaryRecordAction } from '../types/PrimaryRecordAction';
 export interface ActionCellConfig<T> {
   actions: RecordAction<T>[];
   primaryAction?: PrimaryRecordAction<T>;
+  container?: string;
 }
 
 const ActionCell = <T extends IdType>({
   actions,
   primaryAction,
+  container = 'body',
 }: ActionCellConfig<T>): ((cell: Cell<T>) => JSX.Element) => {
   const ActionCellDef = ({ row: { original, id } }: Cell<T>): JSX.Element => {
     const isPrimaryActionVisible = primaryAction
@@ -24,7 +26,7 @@ const ActionCell = <T extends IdType>({
 
     return (
       <>
-        <TableActionMenu id={`table_row_action_menu_${id}`}>
+        <TableActionMenu id={`table_row_action_menu_${id}`} container={container}>
           {actions.map((action) => (
             <TableActionMenuItem
               key={action.id}
@@ -37,8 +39,10 @@ const ActionCell = <T extends IdType>({
         {primaryAction && isPrimaryActionVisible && (
           <Icon
             data-testid={`table_row_action_menu_item_${id}_primaryAction`}
-            name={primaryAction.iconName}
-            title={primaryAction.title}
+            name={
+              typeof primaryAction.iconName === 'string' ? primaryAction.iconName : primaryAction.iconName(original)
+            }
+            title={typeof primaryAction.title === 'string' ? primaryAction.title : primaryAction.title(original)}
             onClick={() => primaryAction.onClick(original)}
           />
         )}

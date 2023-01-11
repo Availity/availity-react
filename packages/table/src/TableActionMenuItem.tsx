@@ -18,6 +18,13 @@ const TableActionMenuItem = <T extends IdType>({ id, action, record }: Props<T>)
     return null;
   }
 
+  const displayText =
+    typeof action.displayText === 'string'
+      ? action.displayText
+      : typeof action.displayText === 'function'
+      ? (action.displayText as (record?: T) => string | React.ReactChild | React.ElementType)(record)
+      : '';
+
   const setOnClickProps = () => {
     if (!action.onClick) {
       return null;
@@ -30,7 +37,7 @@ const TableActionMenuItem = <T extends IdType>({ id, action, record }: Props<T>)
     <DropdownItem id={`${id}_action_${action.id}`} key={action.id} divider />
   ) : (
     <DropdownItem id={`${id}_action_${action.id}`} key={action.id} {...setOnClickProps()}>
-      {action.displayText}
+      {displayText}
     </DropdownItem>
   );
 };

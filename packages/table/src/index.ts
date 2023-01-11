@@ -1,6 +1,20 @@
-export { ActionCell, BadgeCell, CurrencyCell, DateCell, IconCell, IconWithTooltipCell } from './CellDefinitions';
+export {
+  ActionCell,
+  BadgeCell,
+  CurrencyCell,
+  DateCell,
+  DefaultValueCell,
+  IconCell,
+  IconWithTooltipCell,
+} from './CellDefinitions';
 
-export type { ActionCellConfig, CurrencyCellConfig, DateTimeCellConfig, IconConfig } from './CellDefinitions';
+export type {
+  ActionCellConfig,
+  CurrencyCellConfig,
+  DateTimeCellConfig,
+  DefaultValueCellProps,
+  IconConfig,
+} from './CellDefinitions';
 
 export type {
   OnRowSelectedEvent,

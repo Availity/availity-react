@@ -7,9 +7,10 @@ type Props = {
   id?: string;
   /** Children can be a react child. **/
   children: React.ReactNode;
+  container?: string;
 };
 
-const TableActionMenu = ({ id, children }: Props): JSX.Element => {
+const TableActionMenu = ({ id, children, container = 'body' }: Props): JSX.Element => {
   const [isOpen, setIsOpen] = useState(false);
   const toggle = () => setIsOpen(!isOpen);
 
@@ -23,7 +24,7 @@ const TableActionMenu = ({ id, children }: Props): JSX.Element => {
       >
         <Icon id={`${id}_dropdown_toggle_icon`} name="menu" />
       </DropdownToggle>
-      <DropdownMenu id={`${id}_dropdown_menu`} className="dropdown-action-menu" container=".av-grid-row-even td">
+      <DropdownMenu id={`${id}_dropdown_menu`} className="dropdown-action-menu" container={container}>
         {children}
       </DropdownMenu>
     </Dropdown>

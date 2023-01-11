@@ -8,6 +8,7 @@ import ActionCell from '../CellDefinitions/ActionCell';
 import BadgeCell from '../CellDefinitions/BadgeCell';
 import IconCell from '../CellDefinitions/IconCell';
 import DateCell from '../CellDefinitions/DateCell';
+import DefaultValueCell from '../CellDefinitions/DefaultValueCell';
 import IconWithTooltipCell from '../CellDefinitions/IconWIthTooltipCell';
 import { Cell, Column } from '../types/ReactTable';
 import TableContent from '../TableContent';
@@ -365,5 +366,170 @@ describe('Table', () => {
 
     const badgeCell = screen.getByTestId('table_row_0_cell_0');
     expect(badgeCell.textContent).toBe(currentData[0].badge);
+  });
+});
+
+describe('ActionCell', () => {
+  test('should allow display text to be set via a function for primary action', () => {
+    const columDefs = [
+      {
+        id: 'actions',
+        Header: 'Actions',
+        Cell: ActionCell({
+          actions: [],
+          primaryAction: {
+            iconName: (record?: Record<string, string | boolean | number>) =>
+              record?.conditionalValue ? 'THIS' : 'OR_THIS',
+            title: (record?: Record<string, string | boolean | number>) =>
+              record?.conditionalValue ? 'THIS' : 'OR THIS',
+            isVisible: (record?: Record<string, string | boolean | number>) => !!record?.quickAction,
+            onClick: (record?: Record<string, unknown>) => {
+              // eslint-disable-next-line no-console
+              console.log(`action on record ${record?.id}`);
+            },
+          },
+        }),
+      },
+    ] as Column<Record<string, string | boolean | number | undefined>>[];
+
+    const currentData = [
+      {
+        id: '1',
+        conditionalValue: false,
+        quickAction: true,
+      },
+      {
+        id: '2',
+        conditionalValue: true,
+        quickAction: true,
+      },
+    ];
+
+    render(
+      <Table data={currentData} columns={columDefs}>
+        <TableContent />
+      </Table>
+    );
+
+    const primaryActionIcon1 = screen.getByTestId(`table_row_action_menu_item_0_primaryAction`);
+    expect(primaryActionIcon1).not.toBeNull();
+    expect(primaryActionIcon1).toHaveAttribute('class', 'icon icon-OR_THIS');
+    expect(primaryActionIcon1).toHaveAttribute('title', 'OR THIS');
+
+    const primaryActionIcon2 = screen.getByTestId(`table_row_action_menu_item_1_primaryAction`);
+    expect(primaryActionIcon2).not.toBeNull();
+    expect(primaryActionIcon2).toHaveAttribute('class', 'icon icon-THIS');
+    expect(primaryActionIcon2).toHaveAttribute('title', 'THIS');
+  });
+});
+
+describe('DefaultValueCell', () => {
+  test('should show default value when value is undefined', () => {
+    const DEFAULT_TEXT = 'Not Available';
+    const columDefs = [
+      {
+        accessor: 'conditionalValue',
+        Header: 'Default',
+        Cell: DefaultValueCell({ defaultValue: DEFAULT_TEXT }),
+      },
+    ] as Column<Record<string, string | boolean | number | undefined>>[];
+
+    const currentData = [
+      {
+        id: '1',
+        conditionalValue: undefined,
+      },
+    ];
+
+    render(
+      <Table data={currentData} columns={columDefs}>
+        <TableContent />
+      </Table>
+    );
+
+    const cell1 = screen.getByTestId('table_row_0_cell_0');
+    expect(cell1.textContent).toBe(DEFAULT_TEXT);
+  });
+
+  test('should not display default value when value is provided', () => {
+    const DEFAULT_TEXT = 'Not Available';
+    const columDefs = [
+      {
+        accessor: 'conditionalValue',
+        Header: 'Default1',
+        Cell: DefaultValueCell({ defaultValue: DEFAULT_TEXT }),
+      },
+    ] as Column<Record<string, string | boolean | number | undefined>>[];
+
+    const currentData = [
+      {
+        id: '1',
+        conditionalValue: 'Something here',
+      },
+    ];
+
+    render(
+      <Table data={currentData} columns={columDefs}>
+        <TableContent />
+      </Table>
+    );
+
+    const cell1 = screen.getByTestId('table_row_0_cell_0');
+    expect(cell1.textContent).not.toBe(DEFAULT_TEXT);
+    expect(cell1.textContent).toBe('Something here');
+  });
+
+  test('should render default value when it is a component', () => {
+    const DEFAULT_TEXT_EL = (): JSX.Element => <div data-testid="default-text">Not Available</div>;
+
+    const columDefs = [
+      {
+        accessor: 'conditionalValue',
+        Header: 'Default1',
+        Cell: DefaultValueCell({ defaultValue: <DEFAULT_TEXT_EL /> }),
+      },
+    ] as Column<Record<string, string | boolean | number | undefined>>[];
+
+    const currentData = [
+      {
+        id: '1',
+        conditionalValue: undefined,
+      },
+    ];
+
+    render(
+      <Table data={currentData} columns={columDefs}>
+        <TableContent />
+      </Table>
+    );
+
+    const cell1 = screen.getByTestId('table_row_0_cell_0');
+    expect(cell1.querySelector('[data-testid=default-text]')).not.toBeNull();
+  });
+
+  test('should render default value when it is html', () => {
+    const columDefs = [
+      {
+        accessor: 'conditionalValue',
+        Header: 'Default1',
+        Cell: DefaultValueCell({ defaultValue: <div data-testid="default-text">Not Available</div> }),
+      },
+    ] as Column<Record<string, string | boolean | number | undefined>>[];
+
+    const currentData = [
+      {
+        id: '1',
+        conditionalValue: undefined,
+      },
+    ];
+
+    render(
+      <Table data={currentData} columns={columDefs}>
+        <TableContent />
+      </Table>
+    );
+
+    const cell1 = screen.getByTestId('table_row_0_cell_0');
+    expect(cell1.querySelector('[data-testid=default-text]')).not.toBeNull();
   });
 });
