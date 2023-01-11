@@ -2,6 +2,15 @@
 
 This file was generated using [@jscutlery/semver](https://github.com/jscutlery/semver).
 
+## [0.5.4-alpha.0](https://github.com/Availity/availity-react/compare/@availity/table@0.5.3...@availity/table@0.5.4-alpha.0) (2023-01-11)
+
+
+### Features
+
+* **table:** add support to display text function for all actions, add defaultvaluecell, add ability to pass in container for action menu to avoid it getting hidden in a scrollable container ([c5a9e6d](https://github.com/Availity/availity-react/commit/c5a9e6d0edda8c754e4412971fb000d4adb22345))
+
+
+
 ## [0.5.3](https://github.com/Availity/availity-react/compare/@availity/table@0.5.2...@availity/table@0.5.3) (2022-11-08)
 
 
