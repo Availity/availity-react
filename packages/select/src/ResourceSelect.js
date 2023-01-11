@@ -192,6 +192,8 @@ const ResourceSelect = ({
           },
           ...rest.requestConfig,
         });
+    } else if (method === 'GET') {
+      fetch = () => resource.query({ params });
     } else {
       fetch = () =>
         resource.postGet(
@@ -220,7 +222,8 @@ const ResourceSelect = ({
         let items = [];
         if (pageAll) {
           items = resp.data ? resp.data : resp;
-          if (getResult) items = typeof getResult === 'function' ? await getResult.call(resource, items) : items[getResult];
+          if (getResult)
+            items = typeof getResult === 'function' ? await getResult.call(resource, items) : items[getResult];
         } else {
           items = typeof getResult === 'function' ? await getResult.call(resource, resp.data) : resp.data[getResult];
         }
@@ -311,6 +314,8 @@ ResourceSelect.propTypes = {
     post: PropTypes.func,
     getResult: PropTypes.oneOfType([PropTypes.string, PropTypes.func]),
     all: PropTypes.func,
+    // Avoid any type of backwards compatibility issues with resources not have query defined. Allow function or any.
+    query: PropTypes.oneOfType([PropTypes.func, PropTypes.any]),
   }).isRequired,
   getResult: PropTypes.oneOfType([PropTypes.string, PropTypes.func]),
   hasMore: PropTypes.oneOfType([PropTypes.bool, PropTypes.func]),
