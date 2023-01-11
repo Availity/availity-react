@@ -1,7 +1,7 @@
 import React from 'react';
 import { render, cleanup } from '@testing-library/react';
 import { NavLink } from 'reactstrap';
-import Breadcrumbs from '..';
+import Breadcrumbs, { Crumb } from '..';
 
 afterEach(cleanup);
 
@@ -18,7 +18,7 @@ describe('Breadcrumbs', () => {
   });
 
   test('should render crumbs', () => {
-    const crumbs = [
+    const crumbs: Crumb[] = [
       {
         name: 'my grand parent page',
         url: '/parent-page',
@@ -33,7 +33,7 @@ describe('Breadcrumbs', () => {
   });
 
   test('should render crumbs with missing values', () => {
-    const crumbs = [
+    const crumbs: Crumb[] = [
       {
         name: 'my grand parent page',
         url: '/parent-page',
@@ -48,7 +48,7 @@ describe('Breadcrumbs', () => {
   });
 
   test('should render custom ellipse', () => {
-    const crumbs = [
+    const crumbs: Crumb[] = [
       {
         name: '',
         url: '',
