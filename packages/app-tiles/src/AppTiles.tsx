@@ -47,8 +47,8 @@ const AppTiles = ({
     );
   }
 
-  if (parents?.length && parents[0]) {
-    parents = parents.slice(0, 4);
+  if (parents?.length && parents[0] != null) {
+    parents = parents.filter((parent) => parent != null).slice(0, 4);
 
     if (parents.length === 1) {
       return (
