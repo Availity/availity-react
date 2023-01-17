@@ -5,11 +5,11 @@ import css from './AppTiles.module.scss';
 
 type ValidParent = {
   images?: {
-    name: string;
-    shortName: string;
-    tile: string;
+    name?: string;
+    shortName?: string;
+    tile?: string;
   };
-  shortName: string;
+  shortName?: string;
 };
 
 export type AppTilesProps = {
