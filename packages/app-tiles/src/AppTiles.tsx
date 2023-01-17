@@ -1,7 +1,16 @@
 import React from 'react';
 import classNames from 'classnames';
-import css from './AppTiles.module.scss';
 import PropTypes from 'prop-types';
+import css from './AppTiles.module.scss';
+
+type ValidParent = {
+  images?: {
+    name?: string;
+    shortName?: string;
+    tile?: string;
+  };
+  shortName?: string;
+};
 
 export type AppTilesProps = {
   /** For src prop. the alt property for your image source is not found or is loading. */
@@ -18,7 +27,7 @@ export type AppTilesProps = {
   image?: string;
   shortName?: string;
   /** If parents are provided, it will render up to the first in the icon, ether images.tile or shortName. */
-  parents?: any[];
+  parents?: (ValidParent | null)[];
 };
 
 const AppTiles = ({
@@ -47,16 +56,21 @@ const AppTiles = ({
     );
   }
 
-  if (parents?.length && parents[0]) {
-    parents = parents.slice(0, 4);
+  const validParents: ValidParent[] =
+    (parents?.filter((parent) => parent != null)?.slice(0, 4) as ValidParent[] | null) || [];
 
-    if (parents.length === 1) {
+  if (validParents.length > 0) {
+    if (validParents.length === 1) {
       return (
         <Tag className={classes}>
-          {parents[0].images?.tile ? (
-            <img className="w-100 h-100 align-baseline" src={parents[0].images.tile} alt={parents[0].images.name} />
+          {validParents[0].images?.tile ? (
+            <img
+              className="w-100 h-100 align-baseline"
+              src={validParents[0].images?.tile || ''}
+              alt={validParents[0].images?.name || ''}
+            />
           ) : (
-            parents[0].shortName
+            validParents[0].shortName
           )}
         </Tag>
       );
@@ -65,7 +79,7 @@ const AppTiles = ({
     return (
       <Tag className={`app-icon app-icon-${size} ${className}`}>
         <div className={css.container}>
-          {parents.map((parent) =>
+          {validParents.map((parent) =>
             parent.images?.tile ? (
               <img className={css.tile} src={parent.images.tile} alt={parent.images.name} />
             ) : (

@@ -47,6 +47,12 @@ describe('AppIcon', () => {
     expect(tileContainer).toBeTruthy();
   });
 
+  test('should render multiple parents in container, despite having a null parent', () => {
+    const { container } = render(<AppTiles parents={[parent, null, parent]} />);
+    const tileContainer = container.querySelector(`.${css.container}`);
+    expect(tileContainer).toBeTruthy();
+  });
+
   test('should render parent images and short names in container', () => {
     const { container } = render(<AppTiles parents={[parent, parentShortName]} />);
     const tileContainer = container.querySelector(`.${css.container}`);
