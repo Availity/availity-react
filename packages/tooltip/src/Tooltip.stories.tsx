@@ -29,7 +29,7 @@ Default.storyName = 'default';
 
 export const Props: Story = () => (
   <>
-    <h4>Availity Props</h4>
+    <h4>Reactstrap Props</h4>
     <h5>Tooltip</h5>
     <ArgsTable of={Tooltip} />
   </>

@@ -147,6 +147,7 @@ module.exports = {
               'components/table/tableControls',
             ],
           },
+          'components/tooltip',
           'components/training-link',
           'components/tree',
           {

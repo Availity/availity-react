@@ -1,0 +1,45 @@
+---
+title: Tooltip
+---
+
+508 compliant accessible tooltip.  Allows user to select tooltip text and closes on hitting the escape key.
+
+[![Version](https://img.shields.io/npm/v/@availity/tooltip.svg?style=for-the-badge)](https://www.npmjs.com/package/@availity/tooltip)
+
+### Installation
+
+npm
+
+```bash
+npm install @availity/tooltip --save
+```
+
+Yarn
+
+```bash
+yarn add  @availity/tooltip
+```
+
+### Tooltip example
+
+```jsx
+import React from 'react';
+import Tooltip from '@availity/tooltip';
+
+const Example = () => (
+  <div>
+    <Tooltip target="tooltip">
+      <span>This is a tooltip</span>
+    </Tooltip>
+    <span id="tooltip">hover me!</span>
+  </div>
+);
+```
+
+### Tooltip Props
+
+#### `target: string`
+
+The id of the element to receive the tooltip **Required**
+
+See [Reactstrap Tooltip documentation](https://reactstrap.github.io/?path=/docs/components-tooltip--tooltip) for remaining props.

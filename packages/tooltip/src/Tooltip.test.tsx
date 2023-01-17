@@ -6,7 +6,7 @@ afterEach(cleanup);
 
 describe('Tooltip', () => {
   test('should render', () => {
-    const { container } = render(
+    const baseDom = render(
       <>
         <Tooltip target="tooltip">
           <span>This is a tooltip</span>
@@ -15,7 +15,8 @@ describe('Tooltip', () => {
       </>
     );
 
-    expect(container).toMatchSnapshot();
+    fireEvent.mouseOver(baseDom.getByTestId('tooltip'));
+    expect(baseDom.getByText('This is a tooltip')).toBeDefined();
   });
 
   test('should close on esc', () => {
@@ -30,7 +31,6 @@ describe('Tooltip', () => {
       </>
     );
     fireEvent.mouseOver(baseDom.getByTestId('tooltip'));
-    expect(baseDom.getByText('This is a tooltip')).toBeDefined();
 
     fireEvent.keyDown(baseDom.container, { key: 'Escape', code: 'Escape' });
     expect(baseDom.getByText('This is a tooltip')).toBeUndefined();
