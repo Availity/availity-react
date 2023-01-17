@@ -64,6 +64,7 @@ const FileRow = ({ onRemove, children, file, onPasswordSubmit, passwordModalZInd
           upload={file}
           onPasswordSubmit={onPasswordSubmit}
           passwordModalZIndex={passwordModalZIndex}
+          aria-label={`${file.file.name} upload`}
         />
       </td>
       <td className="align-middle" style={{ width: '10%' }}>

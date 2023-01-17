@@ -1,5 +1,6 @@
 ---
 title: <Upload />
+slug: upload
 ---
 
 The default export is an all-in-one solution which handles uploads, encrypted file password requests and file state management for you.
@@ -105,6 +106,10 @@ const Example = () => (
 #### `name: string`
 
 Identifies the field and matches the validation schema.
+
+#### `btnColor?: string`
+
+The color of the button. Refer to the Reactstrap documentation to determine which colors are available. **Default:** `light`.
 
 #### `btnText?: ReactNode`
 

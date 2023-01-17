@@ -3,6 +3,68 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# 3.2.0 (2022-05-11)
+
+
+### Features
+
+* **select:** add custom select for payers through extended-payers api ([22eda92](https://github.com/Availity/availity-react/commit/22eda92850a870047bb5ab3df1a4b62297b392cb))
+* **select:** fix typo in doc and sanitize out mock data ([4165bb8](https://github.com/Availity/availity-react/commit/4165bb859b3470a18a5b2ed870f8e378cc0aac9c))
+* **select:** properly use all call instead of postGet ([42f8350](https://github.com/Availity/availity-react/commit/42f83503736aa5cc0597bf1ced584a768adcebf3))
+
+
+
+
+
+# 3.1.0 (2022-05-03)
+
+
+### Features
+
+* **favorites:** add `disabled` prop to heart ([fb42164](https://github.com/Availity/availity-react/commit/fb42164ac413676e8c3e35484566fca0cb46a70d))
+
+
+
+
+
+## 3.0.1 (2022-04-14)
+
+
+### Bug Fixes
+
+* **page-header:** account for payerId with multiple associated spaces and no spaceId passed ([871caf0](https://github.com/Availity/availity-react/commit/871caf05ad4d94bcd51f3df8a899d7a36191a227))
+
+
+
+
+
+# 3.0.0 (2022-03-03)
+
+
+* refactor(favorites)!: remove bootstrap, add react-query, rewrite to TypeScript ([eebe86b](https://github.com/Availity/availity-react/commit/eebe86b450024b57f73bac8f45219b9803fe8651))
+
+
+### BREAKING CHANGES
+
+* Adds react-query v3 as a peer dependency
+* Requires all components to be used inside react-query's QueryClientProvider
+* No longer requires availity-uikit or any other Bootstrap dependent
+
+
+
+
+
+# 2.2.0 (2022-01-31)
+
+
+### Features
+
+* **mock:** convert to ts and update data ([4f32967](https://github.com/Availity/availity-react/commit/4f32967117676aeef7c7de26a072263e184dfe30))
+
+
+
+
+
 ## [2.1.8](https://github.com/Availity/availity-react/compare/@availity/mock@2.1.7...@availity/mock@2.1.8) (2022-01-11)
 
 

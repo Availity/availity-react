@@ -8,17 +8,33 @@ It can be helpful to understand the `formik` hook `useFormikContext()` for acces
 
 ### Installation
 
+NPM
+
 ```bash
-npm install @availity/date @availity/form formik@^2.0.1-rc.5 react reactstrap --save
+npm install @availity/date @availity/form formik reactstrap@^8.0.0
+```
+
+Yarn
+
+```
+yarn add @availity/date @availity/form formik reactstrap@^8.0.0
+```
+
+### Styling
+
+You must import the `styles.scss` file `@availity/date` provides in order to have the field styled correctly
+
+```js
+import Date from '@availity/date';
+import '@availity/date/styles.scss';
 ```
 
 ### Validation
 
 See [yup](https://github.com/jquense/yup) and [@availity/yup](https://github.com/Availity/sdk-js/tree/master/packages/yup). Note: to use this package with `@availity/yup` you will need to import the `moment` version as noted in the example below.
 
-Currently, we recommend pinning the `yup` version to `0.31.1` to avoid bringing in some breaking changes from that project.
-
 ### References
 
 - [react-dates](https://github.com/airbnb/react-dates)
 - [formik](https://github.com/jaredpalmer/formik)
+- [reactstrap](https://deploy-preview-2356--reactstrap.netlify.app/)

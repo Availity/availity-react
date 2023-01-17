@@ -1,13 +1,10 @@
 import React from 'react';
-import { render, fireEvent, waitFor, cleanup } from '@testing-library/react';
+import { render, fireEvent, waitFor } from '@testing-library/react';
 import { Button, Label } from 'reactstrap';
 import { Form } from '@availity/form';
 import * as yup from 'yup';
-import { DateField } from '..';
 
-afterEach(() => {
-  cleanup();
-});
+import { DateField } from '../src';
 
 describe('Date', () => {
   test('renders with a string label', async () => {

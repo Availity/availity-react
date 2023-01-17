@@ -1,21 +1,24 @@
 import React from 'react';
-import Icon from '@availity/icon';
+import Icon, { IconProps } from '@availity/icon';
 
 type CellValue<T> = T;
 type CellProps<T> = {
   value: CellValue<T>;
 };
 
-export interface IconConfig<T> {
+export type IconConfig<T> = {
   name: string;
   title?: string;
   getTitle?: (value: T) => string;
-}
+  defaultValue?: string | React.ReactChild | React.ElementType;
+} & IconProps;
 
 const IconCell = <T extends unknown>({
   name,
   title,
   getTitle,
+  defaultValue = '',
+  ...attributes
 }: IconConfig<T>): JSX.Element | ((cell: CellProps<T>) => JSX.Element | null) => {
   const IconCellDef = ({ value }: CellProps<T>): JSX.Element | null => {
     let generatedTitle;
@@ -25,7 +28,7 @@ const IconCell = <T extends unknown>({
       generatedTitle = getTitle(value);
     }
 
-    return value ? <Icon name={name} title={generatedTitle} /> : null;
+    return value ? <Icon name={name} title={generatedTitle} {...attributes} /> : <>{defaultValue}</>;
   };
 
   return IconCellDef;

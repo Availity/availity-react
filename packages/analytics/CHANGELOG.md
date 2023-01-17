@@ -1,7 +1,42 @@
-# Change Log
+# Changelog
 
-All notable changes to this project will be documented in this file.
-See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
+This file was generated using [@jscutlery/semver](https://github.com/jscutlery/semver).
+
+## [1.5.2](https://github.com/Availity/availity-react/compare/@availity/analytics@1.5.1...@availity/analytics@1.5.2) (2022-11-17)
+
+
+
+## [1.5.1](https://github.com/Availity/availity-react/compare/@availity/analytics@1.5.0...@availity/analytics@1.5.1) (2022-06-14)
+
+
+
+# [1.5.0](https://github.com/Availity/availity-react/compare/@availity/analytics@1.4.3...@availity/analytics@1.5.0) (2022-06-14)
+
+
+### Features
+
+* **form:** add currency input ([fa9eea6](https://github.com/Availity/availity-react/commit/fa9eea6a3b3dd2ef741a0658c102e36c6db5288c))
+
+
+
+## [1.4.3](https://github.com/Availity/availity-react/compare/@availity/analytics@1.4.2...@availity/analytics@1.4.3) (2022-06-10)
+
+
+
+## [1.4.2](https://github.com/Availity/availity-react/compare/@availity/analytics@1.4.1...@availity/analytics@1.4.2) (2022-05-24)
+
+
+
+## 1.4.1 (2022-03-03)
+
+
+### Bug Fixes
+
+* **analytics:** makes init funciton optional for plugins ([baf8e02](https://github.com/Availity/availity-react/commit/baf8e023cfa4f12596e041ef84653f7828435a6f))
+
+
+
+
 
 # [1.4.0](https://github.com/Availity/availity-react/compare/@availity/analytics@1.2.2...@availity/analytics@1.4.0) (2021-12-20)
 

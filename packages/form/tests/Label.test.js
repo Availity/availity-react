@@ -1,9 +1,7 @@
 import React from 'react';
-import { render, cleanup } from '@testing-library/react';
+import { render } from '@testing-library/react';
 
-import { Label } from '..';
-
-afterEach(cleanup);
+import { Label } from '../src';
 
 describe('Label', () => {
   test('renders', () => {

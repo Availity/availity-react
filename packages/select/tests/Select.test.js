@@ -5,7 +5,7 @@ import { components } from 'react-select';
 import * as yup from 'yup';
 import { Form, Input } from '@availity/form';
 
-import Select from '..';
+import Select from '../src';
 
 const singleValueSchema = (name) =>
   yup.object().shape({
@@ -125,7 +125,7 @@ describe('Select', () => {
           singleSelect: undefined,
         }}
         onSubmit={onSubmit}
-        validationSchema={singleValueSchema('singleSelect')}
+        validationSchema={multiValueSchema('singleSelect', true, 1, 2)}
       >
         <Select isMulti name="singleSelect" options={groupedOptions} data-testid="single-select" />
         <Button type="submit">Submit</Button>
@@ -328,7 +328,9 @@ describe('Select', () => {
           singleSelect: undefined,
         }}
         onSubmit={onSubmit}
-        validationSchema={singleValueSchema('singleSelect')}
+        validationSchema={yup.object().shape({
+          singleSelect: yup.object(),
+        })}
       >
         <Select name="singleSelect" options={options} raw data-testid="single-select" />
         <Button type="submit">Submit</Button>
@@ -734,6 +736,7 @@ describe('Select', () => {
       expect(optionOne).toHaveAttribute('name');
     });
   });
+
   test('renders error message in placeholder with invalid', async () => {
     const { container, getByText } = render(
       <Form
@@ -756,6 +759,7 @@ describe('Select', () => {
       expect(hiddenPlaceholderMessage.innerHTML).toContain('This field is required.');
     });
   });
+
   test('renders help message in placeholder', async () => {
     const { container, getByText } = render(
       <Form
@@ -849,6 +853,8 @@ describe('Select', () => {
     fireEvent.keyDown(select, { key: 'ArrowDown', keyCode: 40 });
     fireEvent.keyDown(select, { key: 'Enter', keyCode: 13 });
 
-    expect(getByText('Foo')).toBeDefined();
+    await waitFor(() => {
+      expect(getByText('Foo')).toBeDefined();
+    });
   });
 });

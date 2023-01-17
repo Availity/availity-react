@@ -1,7 +1,88 @@
-# Change Log
+# Changelog
 
-All notable changes to this project will be documented in this file.
-See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
+This file was generated using [@jscutlery/semver](https://github.com/jscutlery/semver).
+
+## [2.15.5](https://github.com/Availity/availity-react/compare/@availity/pagination@2.15.4...@availity/pagination@2.15.5) (2022-12-16)
+
+
+
+## [2.15.4](https://github.com/Availity/availity-react/compare/@availity/pagination@2.15.3...@availity/pagination@2.15.4) (2022-12-15)
+
+
+
+## [2.15.3](https://github.com/Availity/availity-react/compare/@availity/pagination@2.15.2...@availity/pagination@2.15.3) (2022-08-26)
+
+
+### Bug Fixes
+
+* **pagination:** update div to li to fix 508 compliance issues ([8a34a7f](https://github.com/Availity/availity-react/commit/8a34a7f3aa9eff579ec984c0bbfc107af0a7af60))
+
+
+
+## [2.15.3-alpha.0](https://github.com/Availity/availity-react/compare/@availity/pagination@2.15.2...@availity/pagination@2.15.3-alpha.0) (2022-08-18)
+
+
+### Bug Fixes
+
+* **pagination:** update div to li to fix 508 compliance issues ([8a34a7f](https://github.com/Availity/availity-react/commit/8a34a7f3aa9eff579ec984c0bbfc107af0a7af60))
+
+
+
+## [2.15.2](https://github.com/Availity/availity-react/compare/@availity/pagination@2.15.1...@availity/pagination@2.15.2) (2022-07-28)
+
+
+### Bug Fixes
+
+* **pagination:** item type no longer extends Record ([99a7a54](https://github.com/Availity/availity-react/commit/99a7a545dd73b3b75b2114b07f19fed732a0b19b))
+
+
+
+## [2.15.1](https://github.com/Availity/availity-react/compare/@availity/pagination@2.15.0...@availity/pagination@2.15.1) (2022-06-14)
+
+
+
+# [2.15.0](https://github.com/Availity/availity-react/compare/@availity/pagination@2.14.1...@availity/pagination@2.15.0) (2022-06-14)
+
+
+### Features
+
+* **form:** add currency input ([fa9eea6](https://github.com/Availity/availity-react/commit/fa9eea6a3b3dd2ef741a0658c102e36c6db5288c))
+
+
+
+## [2.14.1](https://github.com/Availity/availity-react/compare/@availity/pagination@2.14.0...@availity/pagination@2.14.1) (2022-06-10)
+
+
+
+# [2.14.0](https://github.com/Availity/availity-react/compare/@availity/pagination@2.13.4...@availity/pagination@2.14.0) (2022-05-24)
+
+
+### Bug Fixes
+
+* upgrade yup and update sb stories ([68aeafe](https://github.com/Availity/availity-react/commit/68aeafe4fd7d90d7c88dbb24636ba7770fe87aa3))
+
+
+### Features
+
+* **pagination:** convert to typescript ([04af0f9](https://github.com/Availity/availity-react/commit/04af0f96203ea528ad31d7f01248490750b336d8))
+
+
+
+## 2.13.4 (2022-03-08)
+
+**Note:** Version bump only for package @availity/pagination
+
+
+
+
+
+## 2.13.3 (2022-02-18)
+
+**Note:** Version bump only for package @availity/pagination
+
+
+
+
 
 ## [2.13.2](https://github.com/Availity/availity-react/compare/@availity/pagination@2.13.1...@availity/pagination@2.13.2) (2021-12-20)
 

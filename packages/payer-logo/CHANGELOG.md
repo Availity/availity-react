@@ -1,7 +1,35 @@
-# Change Log
+# Changelog
 
-All notable changes to this project will be documented in this file.
-See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
+This file was generated using [@jscutlery/semver](https://github.com/jscutlery/semver).
+
+## [5.2.1](https://github.com/Availity/availity-react/compare/@availity/payer-logo@5.2.0...@availity/payer-logo@5.2.1) (2022-06-14)
+
+
+
+# [5.2.0](https://github.com/Availity/availity-react/compare/@availity/payer-logo@5.1.5...@availity/payer-logo@5.2.0) (2022-06-14)
+
+
+### Features
+
+* **form:** add currency input ([fa9eea6](https://github.com/Availity/availity-react/commit/fa9eea6a3b3dd2ef741a0658c102e36c6db5288c))
+
+
+
+## [5.1.5](https://github.com/Availity/availity-react/compare/@availity/payer-logo@5.1.4...@availity/payer-logo@5.1.5) (2022-06-10)
+
+
+
+## [5.1.4](https://github.com/Availity/availity-react/compare/@availity/payer-logo@5.1.3...@availity/payer-logo@5.1.4) (2022-05-24)
+
+
+
+## 5.1.3 (2022-02-18)
+
+**Note:** Version bump only for package @availity/payer-logo
+
+
+
+
 
 ## [5.1.2](https://github.com/Availity/availity-react/compare/@availity/payer-logo@5.1.1...@availity/payer-logo@5.1.2) (2021-12-20)
 

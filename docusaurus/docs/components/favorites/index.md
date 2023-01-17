@@ -8,8 +8,16 @@ Favorite Heart for favoriting items such as resources/applications etc.
 
 ### Installation
 
+NPM
+
 ```bash
-npx install-peerdeps @availity/favorites --save
+npm install @availity/favorites @availity/api-axios axios react-query
+```
+
+Yarn
+
+```bash
+yarn add @availity/favorites @availity/api-axios axios react-query
 ```
 
 ### Example

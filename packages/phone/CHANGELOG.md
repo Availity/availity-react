@@ -1,7 +1,56 @@
-# Change Log
+# Changelog
 
-All notable changes to this project will be documented in this file.
-See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
+This file was generated using [@jscutlery/semver](https://github.com/jscutlery/semver).
+
+## [2.1.1](https://github.com/Availity/availity-react/compare/@availity/phone@2.1.0...@availity/phone@2.1.1) (2022-06-14)
+
+
+
+# [2.1.0](https://github.com/Availity/availity-react/compare/@availity/phone@2.0.1...@availity/phone@2.1.0) (2022-06-14)
+
+
+### Features
+
+* **form:** add currency input ([fa9eea6](https://github.com/Availity/availity-react/commit/fa9eea6a3b3dd2ef741a0658c102e36c6db5288c))
+
+
+
+## [2.0.1](https://github.com/Availity/availity-react/compare/@availity/phone@2.0.0...@availity/phone@2.0.1) (2022-06-10)
+
+
+
+# [2.0.0](https://github.com/Availity/availity-react/compare/@availity/phone@1.2.5...@availity/phone@2.0.0) (2022-05-24)
+
+
+### Bug Fixes
+
+* upgrade yup and update sb stories ([68aeafe](https://github.com/Availity/availity-react/commit/68aeafe4fd7d90d7c88dbb24636ba7770fe87aa3))
+
+
+* feat(phone)!: upgrade to yup 0.32.0 ([dadde41](https://github.com/Availity/availity-react/commit/dadde41e7535ee444a0737a7ba31d5467a34133f))
+
+
+### BREAKING CHANGES
+
+* must be using yup 0.32.0
+
+
+
+## 1.2.5 (2022-03-09)
+
+**Note:** Version bump only for package @availity/phone
+
+
+
+
+
+## [1.2.4](https://github.com/Availity/availity-react/compare/@availity/phone@1.2.3...@availity/phone@1.2.4) (2022-02-11)
+
+**Note:** Version bump only for package @availity/phone
+
+
+
+
 
 ## [1.2.3](https://github.com/Availity/availity-react/compare/@availity/phone@1.2.2...@availity/phone@1.2.3) (2021-12-20)
 

@@ -41,9 +41,16 @@ class AvSelectField extends Component {
 
     const validation = this.context.FormCtrl ? this.context.FormCtrl.getInputState(name) : {};
     let feedback = null;
+    let ariaFeedback = {};
     if (validation.errorMessage) {
       const feedbackClasses = classNames('d-block', feedbackClass);
-      feedback = <AvFeedback className={feedbackClasses}>{validation.errorMessage}</AvFeedback>;
+      const feedbackId = `${id}-feedback`;
+      feedback = (
+        <AvFeedback className={feedbackClasses} id={feedbackId}>
+          {validation.errorMessage}
+        </AvFeedback>
+      );
+      ariaFeedback = { feedbackId, errorMessage: validation.errorMessage };
     }
 
     let thisLabel = false;
@@ -64,7 +71,7 @@ class AvSelectField extends Component {
     return (
       <AvGroup className={groupClass}>
         {thisLabel}
-        <AvSelect name={name} {...attributes} />
+        <AvSelect name={name} ariaFeedback={ariaFeedback} helpMessage={helpMessage} {...attributes} />
         {helpMessage ? <FormText id={`${name}-helpmessage`.toLowerCase()}>{helpMessage}</FormText> : null}
         {feedback}
       </AvGroup>
@@ -76,7 +83,7 @@ AvSelectField.propTypes = {
   label: PropTypes.node,
   labelHidden: PropTypes.bool,
   id: PropTypes.string,
-  helpMessage: PropTypes.string,
+  helpMessage: PropTypes.oneOfType([PropTypes.string, PropTypes.node]),
   feedbackClass: PropTypes.string,
   groupClass: PropTypes.string,
   labelClass: PropTypes.string,

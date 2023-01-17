@@ -1,6 +1,6 @@
 {
   "name": "@availity/favorites",
-  "version": "2.3.3",
+  "version": "3.4.3",
   "description": "Favorite Heart for favoriting items such as links/resources etc.",
   "keywords": [
     "react",
@@ -18,27 +18,42 @@
   },
   "license": "MIT",
   "author": "Kyle Gray <kyle.gray@availity.com>",
-  "main": "index.js",
-  "types": "index.d.ts",
+  "browser": "./dist/index.js",
+  "main": "./dist/index.js",
+  "module": "./dist/index.mjs",
+  "types": "./dist/index.d.ts",
+  "scripts": {
+    "build": "tsup --dts",
+    "dev": "tsup src/index.ts --format esm,cjs --watch --dts",
+    "clean": "rm -rf dist",
+    "clean:nm": "rm -rf node_modules",
+    "bundlesize": "bundlesize",
+    "publish": "yarn npm publish --tolerate-republish --access public",
+    "publish:canary": "yarn npm publish --access public --tag canary"
+  },
   "dependencies": {
-    "@availity/analytics-core": "^3.1.5",
-    "@availity/hooks": "^3.1.2",
-    "@availity/message-core": "^5.0.1",
-    "lodash": "^4.17.21",
-    "prop-types": "^15.7.2"
+    "@availity/analytics-core": "^4.0.1",
+    "@availity/hooks": "workspace:*",
+    "@availity/message-core": "^6.1.0",
+    "@radix-ui/react-tooltip": "0.1.6",
+    "lodash": "^4.17.21"
   },
   "devDependencies": {
-    "@availity/api-axios": "^6.0.0",
-    "axios": "^0.21.1",
+    "@availity/api-axios": "^7.0.1",
+    "axios": "^0.21.4",
+    "esbuild-sass-plugin": "^2.2.6",
     "react": "^17.0.2",
     "react-dom": "^17.0.2",
-    "reactstrap": "^8.9.0"
+    "react-query": "^3.39.0",
+    "tsup": "^5.12.7",
+    "typescript": "^4.6.4"
   },
   "peerDependencies": {
     "@availity/api-axios": "^6.0.0",
     "axios": "^0.21.1",
     "react": ">=16.8.0",
-    "reactstrap": "^8.0.0 || ^7.1.0"
+    "react-dom": ">=16.8.0",
+    "react-query": "^3.34.8"
   },
   "publishConfig": {
     "access": "public"

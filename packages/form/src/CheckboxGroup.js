@@ -93,13 +93,19 @@ const CheckboxGroup = ({
 };
 
 CheckboxGroup.propTypes = {
-  children: PropTypes.node,
-  groupClassName: PropTypes.string,
-  helpId: PropTypes.string,
-  label: PropTypes.node,
+  /** Name of the checkbox group. Should match name given in initialValues/validationSchema. */
   name: PropTypes.string.isRequired,
+  children: PropTypes.node,
+  /** Class name to apply to the form control. */
+  groupClassName: PropTypes.string,
+  /** Help topic id, adds <FieldHelpIcon/> next to the label (should not be within label for accessibility). */
+  helpId: PropTypes.string,
+  /** Label for the group or checkboxes. */
+  label: PropTypes.node,
   onChange: PropTypes.func,
+  /** Class name to apply to the Label. Default is Legend styling */
   labelClassName: PropTypes.string,
+  /** Will add <RequiredAsterisk /> to label. */
   required: PropTypes.bool,
 };
 

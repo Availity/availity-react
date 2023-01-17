@@ -234,6 +234,9 @@ class AvSelect extends AvBaseInput {
       creatable,
       options,
       components: componentsOverride,
+      placeholder,
+      ariaFeedback,
+      helpMessage,
       ...attributes
     } = this.props;
     const { newOptions } = this.state;
@@ -259,6 +262,17 @@ class AvSelect extends AvBaseInput {
       Tag = Creatable;
     }
 
+    // Enhance placeholder for accessibility
+    const enhancedPlaceholder = (
+      <>
+        {placeholder || 'Select...'}
+        <span className="sr-only">
+          {(touched && hasError && ariaFeedback?.errorMessage) || null}
+          {helpMessage || null}
+        </span>
+      </>
+    );
+
     return (
       <Tag
         ref={attributes.loadOptions ? undefined : selectRef}
@@ -273,6 +287,13 @@ class AvSelect extends AvBaseInput {
         defaultOptions
         styles={{
           ...styles,
+          container: (provided) => ({
+            ...provided,
+            // firefox fix for grids https://github.com/JedWatson/react-select/issues/5170
+            display: 'grid',
+            gridTemplateColumns: 'minmax(0, 1fr)',
+            width: '100%',
+          }),
           placeholder: (provided, state) => {
             if (state.isDisabled) {
               return provided;
@@ -318,8 +339,10 @@ class AvSelect extends AvBaseInput {
               zIndex: state.focused && '3',
             };
           },
+          menu: (provided) => ({ ...provided, borderRadius: '.25em' }),
           multiValue: (provided) => ({
             ...provided,
+            borderRadius: '0.25em',
             width: 'auto',
           }),
           input: (provided) => ({
@@ -351,6 +374,11 @@ class AvSelect extends AvBaseInput {
             primary: '#3262af',
           },
         })}
+        aria-errormessage={
+          touched && hasError && ariaFeedback?.errorMessage && this.getValue() ? ariaFeedback?.feedbackId : ''
+        }
+        aria-invalid={touched && hasError}
+        placeholder={enhancedPlaceholder}
         options={!attributes.loadOptions ? [...options, ...newOptions] : undefined}
         onCreateOption={this.handleCreate}
         components={{ ...components, ...componentsOverride }}
@@ -372,6 +400,12 @@ AvSelect.propTypes = {
   loadOptions: PropTypes.func,
   raw: PropTypes.bool,
   creatable: PropTypes.bool,
+  ariaFeedback: PropTypes.shape({
+    feedbackId: PropTypes.string,
+    errorMessage: PropTypes.string,
+  }),
+  helpMessage: PropTypes.oneOfType([PropTypes.string, PropTypes.node]),
+  placeholder: PropTypes.string,
   autofill: PropTypes.oneOfType([PropTypes.bool, PropTypes.object]),
 };
 

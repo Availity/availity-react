@@ -1,9 +1,13 @@
 import Spaces, { useSpaces, useSpacesContext, SpacesContext } from './src/Spaces';
-import SpacesImage from './src/SpacesImage';
-import SpacesDisclaimer from './src/SpacesDisclaimer';
 import SpacesAgreement from './src/SpacesAgreement';
+import SpacesDisclaimer from './src/SpacesDisclaimer';
 import SpacesGhostText from './src/SpacesGhostText';
-import { sanitizeSpaces } from './src/helpers';
+import SpacesIcon from './src/SpacesIcon';
+import SpacesImage from './src/SpacesImage';
+import SpacesLink from './src/SpacesLink';
+import useLink from './src/useLink';
+import { openLink, openLinkWithSso } from './src/linkHandlers';
+import { normalizeSpaces, updateTopApps } from './src/helpers';
 
 const SpacesLogo = SpacesImage.create({
   imageType: 'images.logo',
@@ -20,15 +24,21 @@ const SpacesBillboard = SpacesImage.create({
 export default Spaces;
 
 export {
+  normalizeSpaces,
+  SpacesAgreement,
+  SpacesBillboard,
+  SpacesContext,
+  SpacesDisclaimer,
+  SpacesGhostText,
+  SpacesIcon,
+  SpacesImage,
+  SpacesLink,
   SpacesLogo,
   SpacesTile,
-  SpacesBillboard,
-  SpacesImage,
-  SpacesDisclaimer,
-  SpacesAgreement,
-  SpacesGhostText,
+  useLink,
   useSpaces,
   useSpacesContext,
-  SpacesContext,
-  sanitizeSpaces,
+  openLink,
+  openLinkWithSso,
+  updateTopApps,
 };

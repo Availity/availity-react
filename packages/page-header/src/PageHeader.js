@@ -5,6 +5,7 @@ import Breadcrumbs from '@availity/breadcrumbs';
 import AppIcon from '@availity/app-icon';
 import Feedback from '@availity/feedback';
 import Spaces, { SpacesLogo, useSpaces, useSpacesContext } from '@availity/spaces';
+import '../styles.scss';
 
 const PageHeader = ({
   payerId,
@@ -33,10 +34,19 @@ const PageHeader = ({
   className,
   ...props
 }) => {
-  const [spaceForSpaceID, spaceForPayerID] = useSpaces(spaceId, payerId);
+  const spaces = useSpaces(spaceId, payerId);
+
+  let firstSpaceForPayerID;
+  let firstSpaceForSpaceID;
+  if (!spaceId && payerId && spaces[0]) {
+    firstSpaceForPayerID = spaces[0];
+  } else {
+    firstSpaceForSpaceID = spaces[0];
+    firstSpaceForPayerID = spaces[1];
+  }
   const { loading: spacesIsLoading } = useSpacesContext() || {};
 
-  const _space = spaceForSpaceID || spaceForPayerID;
+  const _space = firstSpaceForSpaceID || firstSpaceForPayerID;
 
   let payerLogo = null;
   if (payerId || logo) {
@@ -50,10 +60,14 @@ const PageHeader = ({
       },
     };
     payerLogo =
-      spaceForPayerID || (logo && spaceForSpaceID) || spacesIsLoading ? (
+      firstSpaceForPayerID || (logo && firstSpaceForSpaceID) || spacesIsLoading ? (
         <SpacesLogo {...logoAttrs} />
       ) : (
-        <Spaces spaceIds={spaceId ? [spaceId] : undefined} payerIds={[payerId]} clientId={clientId}>
+        <Spaces
+          spaceIds={spaceId ? [spaceId] : undefined}
+          payerIds={payerId ? [payerId] : undefined}
+          clientId={clientId}
+        >
           <SpacesLogo {...logoAttrs} />
         </Spaces>
       );
@@ -62,26 +76,17 @@ const PageHeader = ({
   const _spaceName = spaceName || (_space && _space.name);
   if ((spaceId || _spaceName) && !crumbs) {
     const url =
-      spaceForSpaceID && spaceForSpaceID.link && spaceForSpaceID.link.url
-        ? spaceForSpaceID.link.url
+      firstSpaceForSpaceID && firstSpaceForSpaceID.link && firstSpaceForSpaceID.link.url
+        ? firstSpaceForSpaceID.link.url
         : `/web/spc/spaces/#/${spaceId}`;
     crumbs = [{ name: _spaceName, url }];
   }
 
-  const feedback = useMemo(
-    () => (
-      <Feedback
-        appName={appName}
-        className={`d-inline-flex flex-shrink-0 ${payerId ? 'mx-3' : ''}`}
-        {...feedbackProps}
-      />
-    ),
-    [appName, feedbackProps, payerId]
-  );
+  const feedback = useMemo(() => <Feedback appName={appName} {...feedbackProps} />, [appName, feedbackProps]);
 
   return (
     <>
-      <div className="d-flex align-items-start flex-shrink-0">
+      <div className="page-header-above">
         {showCrumbs ? (
           <>
             {React.isValidElement(crumbs) ? (
@@ -93,36 +98,29 @@ const PageHeader = ({
         ) : null}
         {component}
       </div>
-      <div
-        className={classNames(
-          'page-header page-header-brand d-flex justify-content-between align-items-end',
-          className
-        )}
-        data-testid="page-header"
-        {...props}
-      >
+      <div className={classNames('page-header', className)} data-testid="page-header" {...props}>
         <Tag
-          className={classNames('page-header-title page-header-left d-flex align-items-center mb-0', titleClassName)}
+          className={classNames('page-header-title', titleClassName)}
           data-testid="page-header-title"
           {...restTitleProps}
         >
           {!payerId && appAbbr && (
             <AppIcon
-              className="mr-2"
               data-testid="page-header-app-icon"
               color={iconColor}
               branded={branded}
               title={appName}
               src={iconSrc}
               alt={iconAlt}
+              aria-hidden
             >
               {appAbbr}
             </AppIcon>
           )}
-          {children || <h1 className="mb-0">{appName}</h1>}
+          {children || <h1>{appName}</h1>}
         </Tag>
         {!RenderRightContent ? (
-          <div className="page-header-left d-flex flex-wrap flex-md-nowrap flex-grow align-items-end justify-content-end">
+          <div className="page-header-right">
             {showFeedback && feedback}
             {payerLogo}
           </div>
@@ -177,8 +175,7 @@ PageHeader.defaultProps = {
   payerId: null,
   homeUrl: '/public/apps/dashboard',
   titleProps: {},
-  renderRightClassName:
-    'page-header-left d-flex flex-wrap flex-md-nowrap flex-grow align-items-end justify-content-end',
+  renderRightClassName: 'page-header-right',
   showCrumbs: true,
 };
 

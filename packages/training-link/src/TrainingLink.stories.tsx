@@ -1,19 +1,20 @@
 import React from 'react';
 import { Meta, Story } from '@storybook/react';
-
-import TrainingLink, { Props } from './TrainingLink';
-// import README from '../../README.md';
+import { ArgsTable } from '@storybook/addon-docs';
+import TrainingLink, { TrainingLinkProps } from './TrainingLink';
 
 export default {
   title: 'Components/Training Link',
   parameters: {
     docs: {
-      // page: README,
+      description: {
+        component: 'A component for allowing link out to training in the Header component',
+      },
     },
   },
 } as Meta;
 
-export const Default: Story<Props> = ({ link, name }) => <TrainingLink link={link} name={name} />;
+export const Default: Story<TrainingLinkProps> = ({ link, name }) => <TrainingLink link={link} name={name} />;
 
 Default.args = {
   name: 'Appeals',
@@ -21,3 +22,11 @@ Default.args = {
 };
 
 Default.storyName = 'default';
+
+export const Props: Story = () => (
+  <>
+    <h4>Availity Props</h4>
+    <h5>Avatar</h5>
+    <ArgsTable of={TrainingLink} />
+  </>
+);

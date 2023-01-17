@@ -1,7 +1,119 @@
-# Change Log
+# Changelog
 
-All notable changes to this project will be documented in this file.
-See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
+This file was generated using [@jscutlery/semver](https://github.com/jscutlery/semver).
+
+## [4.2.2](https://github.com/Availity/availity-react/compare/@availity/date@4.2.1...@availity/date@4.2.2) (2022-12-28)
+
+
+
+## [4.2.1](https://github.com/Availity/availity-react/compare/@availity/date@4.2.0...@availity/date@4.2.1) (2022-11-08)
+
+
+
+# [4.2.0](https://github.com/Availity/availity-react/compare/@availity/date@4.1.2...@availity/date@4.2.0) (2022-08-29)
+
+
+### Features
+
+* **date:** switch to combobox, resolve accessibility warnings ([a3651af](https://github.com/Availity/availity-react/commit/a3651af6f82b475bd626bc62933406839d9a7e4a))
+
+
+
+## [4.1.2](https://github.com/Availity/availity-react/compare/@availity/date@4.1.1...@availity/date@4.1.2) (2022-08-26)
+
+
+### Bug Fixes
+
+* **date:** adding feedback to DateRange type ([96fb04d](https://github.com/Availity/availity-react/commit/96fb04dc02f7d13edaee7c2ccbe5d7bd9be61d0f))
+* **date:** conditionally add aria-describedby for date range so feedback id is always valid ([c1e71ea](https://github.com/Availity/availity-react/commit/c1e71eabf4f95a7248e019484b14faafcf11de91))
+* **date:** modify date range field test so that it checks whether the feedback shows up or not ([1af0e22](https://github.com/Availity/availity-react/commit/1af0e22b5588e9f8ca54511634108ff55d3b9077))
+
+
+
+## [4.1.1](https://github.com/Availity/availity-react/compare/@availity/date@4.1.0...@availity/date@4.1.1) (2022-06-14)
+
+
+
+# [4.1.0](https://github.com/Availity/availity-react/compare/@availity/date@4.0.3...@availity/date@4.1.0) (2022-06-14)
+
+
+### Features
+
+* **form:** add currency input ([fa9eea6](https://github.com/Availity/availity-react/commit/fa9eea6a3b3dd2ef741a0658c102e36c6db5288c))
+
+
+
+## [4.0.3](https://github.com/Availity/availity-react/compare/@availity/date@4.0.2...@availity/date@4.0.3) (2022-06-13)
+
+
+### Bug Fixes
+
+* **date:** remove css from bundle as it was only producing an error ([d7f8660](https://github.com/Availity/availity-react/commit/d7f86600eb68f774e18cc5379d3d458ca4252564))
+
+
+
+## [4.0.2](https://github.com/Availity/availity-react/compare/@availity/date@4.0.1...@availity/date@4.0.2) (2022-06-10)
+
+
+
+## [4.0.1](https://github.com/Availity/availity-react/compare/@availity/date@4.0.0...@availity/date@4.0.1) (2022-05-26)
+
+
+### Bug Fixes
+
+* set @availity/yup version ([47640d2](https://github.com/Availity/availity-react/commit/47640d2983821f8ead367221e57bcdd6be36d505))
+
+
+
+# [4.0.0](https://github.com/Availity/availity-react/compare/@availity/date@3.4.5...@availity/date@4.0.0) (2022-05-24)
+
+
+* build(date)!: switch to nx ([4558f3b](https://github.com/Availity/availity-react/commit/4558f3b1511c218e98494a1f641ec515d8d9eda7))
+
+
+### BREAKING CHANGES
+
+* upgrade to @availity/yup 5.0.0
+
+
+
+## 3.4.5 (2022-03-09)
+
+**Note:** Version bump only for package @availity/date
+
+
+
+
+
+## [3.4.4](https://github.com/Availity/availity-react/compare/@availity/date@3.3.1...@availity/date@3.4.4) (2022-02-11)
+
+**Note:** Version bump only for package @availity/date
+
+
+
+
+
+## [3.4.3](https://github.com/Availity/availity-react/compare/@availity/date@3.4.2...@availity/date@3.4.3) (2022-02-03)
+
+
+### Bug Fixes
+
+* **date:** fix DateRangePicker props on element definition so that they are customizable and not hardcoded ([e1c229a](https://github.com/Availity/availity-react/commit/e1c229a99d960c4338e21ea4120aad2526416fc8))
+
+
+
+
+
+## 3.4.2 (2022-02-02)
+
+
+### Bug Fixes
+
+* **date:** prevent loss of onChange handler when date value is manually cleared out ([00fd97e](https://github.com/Availity/availity-react/commit/00fd97ee183cbc2afe87f3bb7b276097ea5c31f6))
+
+
+
+
 
 ## [3.4.1](https://github.com/Availity/availity-react/compare/@availity/date@3.4.0...@availity/date@3.4.1) (2022-01-18)
 

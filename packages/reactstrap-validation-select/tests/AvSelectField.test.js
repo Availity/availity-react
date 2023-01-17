@@ -33,7 +33,7 @@ describe('AvSelect', () => {
   });
 
   test('works with error message', async () => {
-    const { getByText } = renderSelect({
+    const { container, getByText } = renderSelect({
       options,
       classNamePrefix: 'test__creatable',
       getResult: 'regions',
@@ -45,7 +45,9 @@ describe('AvSelect', () => {
       },
     });
     fireEvent.click(getByText('Submit'));
-    const err = await waitFor(() => getByText('This field is wrong.'));
-    expect(err).toBeDefined();
+    await waitFor(() => {
+      const invalidFeedbackMessage = container.querySelector('.invalid-feedback');
+      expect(invalidFeedbackMessage.innerHTML).toContain('This field is wrong.');
+    });
   });
 });

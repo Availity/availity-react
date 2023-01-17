@@ -45,6 +45,8 @@ const Example = () => (
 
 Extends [SelectField Props](/form/select/components/select-field/#props).
 
+Note: the `valueKey` prop will only work if you also pass `false` to the `raw` prop.
+
 #### `name: string`
 
 The name of the field. Will be the key of the selected date that comes through in the values of the `onSubmit` callback.
@@ -75,7 +77,7 @@ When this prop changes, all cached options are cleared. (see [react-select-async
 
 #### `watchParams?: string[]`
 
-If present, the options reset when any of the parameters specified in the array change value. This is useful for when a customerId changes and you need to load a new list of options for the user to choose from. Used to derive `cacheUniq` if `cacheUniq` prop is not provided.
+Provide a list of properties to listen to from the parameters prop. If present, the options reset when any of the parameters specified in the array change value. This is useful for when a customerId changes and you need to load a new list of options for the user to choose from. This list will be used to derive cacheUniq when the cacheUniq prop is not provided. When using `watchParams`, the `parameters` prop must must be populated with values that are in the `watchParams` object.
 
 #### `resource: AxiosResource`
 
@@ -167,13 +169,18 @@ async function postGet(data, config, additionalPostGetArgs) {
   return super.postGet(data, config);
 }
 ```
+
 #### `searchTerm?: string`
 
-If present, this will serve as the argument name for the typed search value when sending the request to the API. This defaults to `q`. 
+If present, this will serve as the argument name for the typed search value when sending the request to the API. This defaults to `q`.
 
 ### Pre-made Resource Selects
 
-The following components can be imported by name from `@availity/select/resources`
+:::important
+The imports were changed in version 3.0.0. In previous versions, you had to import the components from `@availity/select/resources`. You can now import them from the base package. eg: `import { AvProviderSelect } from '@availity/select';`
+:::
+
+The following components can be imported by name from `@availity/select`
 
 - AvProviderSelect
 - AvOrganizationSelect
@@ -181,8 +188,9 @@ The following components can be imported by name from `@availity/select/resource
 - AvNavigationSelect
 - AvUserSelect
 - AvCodeSelect
+- AvPayerSelect
 
-These components are `ResourceSelect` with pre-configured `resource`, `valueKey`, and `labelKey` to make it easy to use. All of the props for `ResourceSelect` can be provided to override the defaults of these pre-made components. For some of these components, you will want to provide the `customerId` prop.
+These components use the `ResourceSelect` component with pre-configured `resource`, `valueKey`, and `labelKey` props. All of the props for `ResourceSelect` can be provided to override the defaults of these pre-made components. For some of these components, you must provide the `customerId` prop.
 
 #### Example
 
@@ -197,7 +205,8 @@ import {
   AvNavigationSelect,
   AvUserSelect,
   AvCodeSelect,
-} from '@availity/select/resources';
+  AvPayerSelect,
+} from '@availity/select';
 import * as yup from 'yup';
 
 const schema = yup.object().shape({
@@ -209,6 +218,7 @@ const schema = yup.object().shape({
   user: yup.string().required('This field is required.'),
   code: yup.string().required('This field is required.'),
   patient: yup.string().required('This field is required.'),
+  payer: yup.string().required('This field is required.'),
 });
 
 const Example = () => (
@@ -222,6 +232,7 @@ const Example = () => (
       user: null,
       code: null,
       patient: null,
+      payer: null,
     }}
     onSubmit={(values) => apiResource.submit(values)}
     validationSchema={schema}
@@ -255,6 +266,18 @@ const Example = () => (
     />
     <AvUserSelect name="user" label="Select a User" customerId={customerId} />
     <AvCodeSelect name="code" label="Select a Code" />
+    <AvPayerSelect
+      name="payer"
+      requiredParams={['region', 'tranTypeCode']}
+      watchParams={['region', 'tranTypeCode']}
+      customerId={customerId}
+      parameters={{
+        region: 'FL',
+        tranTypeCode: '1',
+      }}
+      label="Select a Payer"
+      required
+    />
   </Form>
 );
 ```

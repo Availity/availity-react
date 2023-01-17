@@ -1,7 +1,39 @@
-# Change Log
+# Changelog
 
-All notable changes to this project will be documented in this file.
-See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
+This file was generated using [@jscutlery/semver](https://github.com/jscutlery/semver).
+
+## [0.6.2](https://github.com/Availity/availity-react/compare/@availity/avatar@0.6.1...@availity/avatar@0.6.2) (2022-11-28)
+
+
+
+## [0.6.1](https://github.com/Availity/availity-react/compare/@availity/avatar@0.6.0...@availity/avatar@0.6.1) (2022-06-14)
+
+
+
+# [0.6.0](https://github.com/Availity/availity-react/compare/@availity/avatar@0.5.5...@availity/avatar@0.6.0) (2022-06-14)
+
+
+### Features
+
+* **form:** add currency input ([fa9eea6](https://github.com/Availity/availity-react/commit/fa9eea6a3b3dd2ef741a0658c102e36c6db5288c))
+
+
+
+## [0.5.5](https://github.com/Availity/availity-react/compare/@availity/avatar@0.5.4...@availity/avatar@0.5.5) (2022-06-10)
+
+
+
+## [0.5.4](https://github.com/Availity/availity-react/compare/@availity/avatar@0.5.3...@availity/avatar@0.5.4) (2022-05-24)
+
+
+
+## 0.5.3 (2022-02-18)
+
+**Note:** Version bump only for package @availity/avatar
+
+
+
+
 
 ## [0.5.2](https://github.com/Availity/availity-react/compare/@availity/avatar@0.5.1...@availity/avatar@0.5.2) (2021-12-20)
 

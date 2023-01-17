@@ -42,7 +42,7 @@ class AvResourceSelect extends Component {
         variables: {
           perPage: this.props.itemsPerPage,
           filters: {
-            q: encodeURIComponent(inputValue),
+            q: this.props.encodeSearchValue ? encodeURIComponent(inputValue) : inputValue,
           },
         },
       };
@@ -62,7 +62,7 @@ class AvResourceSelect extends Component {
       }
     } else {
       params = {
-        q: encodeURIComponent(inputValue),
+        q: this.props.encodeSearchValue ? encodeURIComponent(inputValue) : inputValue,
         limit: this.props.itemsPerPage,
         customerId: this.props.customerId,
       };
@@ -260,11 +260,13 @@ AvResourceSelect.propTypes = {
   minCharsToSearch: PropTypes.number,
   onFocus: PropTypes.func,
   waitUntilFocused: PropTypes.bool,
+  encodeSearchValue: PropTypes.bool,
 };
 
 AvResourceSelect.defaultProps = {
   delay: 350,
   itemsPerPage: 50,
+  encodeSearchValue: true,
 };
 
 export default AvResourceSelect;

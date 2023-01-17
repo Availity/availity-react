@@ -1,26 +1,32 @@
 /* eslint-disable import/prefer-default-export */
-import { themes } from '@storybook/theming';
-
 import './config.scss';
 
 export const parameters = {
   docs: {
-    theme: themes.dark,
+    source: {
+      type: 'code',
+    },
   },
   options: {
-    name: 'availity-react',
-    url: 'https://github.com/availity/availity-react',
-    goFullScreen: false,
-    showStoriesPanel: true,
-    showAddonPanel: true,
-    showSearchBox: false,
-    addonPanelInRight: true,
+    storySort: {
+      order: [
+        'Home',
+        'Hooks',
+        'Components',
+        'Form Components',
+        ['Form', 'Date', 'Phone', 'Select', 'Upload'],
+        'Legacy Form Components',
+        'Deprecated',
+        '3rd Party',
+      ],
+    },
   },
+  viewMode: 'docs',
 };
 
 // Make sure we are in the browser before starting
 if (typeof global.process === 'undefined') {
-  const { worker } = require('../packages/mock/src');
+  const { worker } = require('../packages/mock/src/browser');
 
   const config =
     process.env.NODE_ENV === 'development'

@@ -4,20 +4,23 @@
     "first_name": "Barbra",
     "last_name": "Tull",
     "email": "btull0@usatoday.com",
-    "isActive": true
+    "isActive": true,
+    "aPropThatIsHidden": "1"
   },
   {
     "id": 2,
     "first_name": "Karlis",
     "last_name": "Yurshev",
     "email": "kyurshev1@spotify.com",
-    "isActive": false
+    "isActive": false,
+    "aPropThatIsHidden": "1"
   },
   {
     "id": 3,
     "first_name": "Bordie",
     "last_name": "Marsy",
     "email": "bmarsy2@elegantthemes.com",
-    "isActive": true
+    "isActive": true,
+    "aPropThatIsHidden": "1"
   }
 ]

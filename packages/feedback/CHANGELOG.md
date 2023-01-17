@@ -1,7 +1,166 @@
-# Change Log
+# Changelog
 
-All notable changes to this project will be documented in this file.
-See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
+This file was generated using [@jscutlery/semver](https://github.com/jscutlery/semver).
+
+## [7.1.3](https://github.com/Availity/availity-react/compare/@availity/feedback@7.1.2...@availity/feedback@7.1.3) (2022-12-01)
+
+
+
+## [7.1.2](https://github.com/Availity/availity-react/compare/@availity/feedback@7.1.1...@availity/feedback@7.1.2) (2022-08-08)
+
+
+### Bug Fixes
+
+* **feedback:** fixed support for children ([6787df2](https://github.com/Availity/availity-react/commit/6787df20081450a63d732328152461af1aabcbb8))
+
+
+
+## [7.1.1](https://github.com/Availity/availity-react/compare/@availity/feedback@7.1.0...@availity/feedback@7.1.1) (2022-06-14)
+
+
+
+# [7.1.0](https://github.com/Availity/availity-react/compare/@availity/feedback@7.0.2...@availity/feedback@7.1.0) (2022-06-14)
+
+
+### Features
+
+* **form:** add currency input ([fa9eea6](https://github.com/Availity/availity-react/commit/fa9eea6a3b3dd2ef741a0658c102e36c6db5288c))
+
+
+
+## [7.0.2](https://github.com/Availity/availity-react/compare/@availity/feedback@7.0.1...@availity/feedback@7.0.2) (2022-06-10)
+
+
+
+## [7.0.1](https://github.com/Availity/availity-react/compare/@availity/feedback@7.0.0...@availity/feedback@7.0.1) (2022-05-26)
+
+
+### Bug Fixes
+
+* set @availity/yup version ([47640d2](https://github.com/Availity/availity-react/commit/47640d2983821f8ead367221e57bcdd6be36d505))
+
+
+
+# [7.0.0](https://github.com/Availity/availity-react/compare/@availity/feedback@6.2.27...@availity/feedback@7.0.0) (2022-05-24)
+
+
+### Bug Fixes
+
+* upgrade yup and update sb stories ([68aeafe](https://github.com/Availity/availity-react/commit/68aeafe4fd7d90d7c88dbb24636ba7770fe87aa3))
+
+
+* feat(feedback)!: switch to nx ([d2b5339](https://github.com/Availity/availity-react/commit/d2b533977e86479971dc7fb7b1edbc2bd90ba761))
+
+
+### BREAKING CHANGES
+
+* upgraded to @availity/yup 5.0.0 and @availity/select 3.0.0
+
+
+
+## 6.2.27 (2022-05-11)
+
+**Note:** Version bump only for package @availity/feedback
+
+
+
+
+
+## [6.2.26](https://github.com/Availity/availity-react/compare/@availity/feedback@6.2.25...@availity/feedback@6.2.26) (2022-03-09)
+
+**Note:** Version bump only for package @availity/feedback
+
+
+
+
+
+## [6.2.25](https://github.com/Availity/availity-react/compare/@availity/feedback@6.2.24...@availity/feedback@6.2.25) (2022-02-24)
+
+**Note:** Version bump only for package @availity/feedback
+
+
+
+
+
+## [6.2.24](https://github.com/Availity/availity-react/compare/@availity/feedback@6.2.23...@availity/feedback@6.2.24) (2022-02-24)
+
+**Note:** Version bump only for package @availity/feedback
+
+
+
+
+
+## [6.2.23](https://github.com/Availity/availity-react/compare/@availity/feedback@6.2.22...@availity/feedback@6.2.23) (2022-02-23)
+
+**Note:** Version bump only for package @availity/feedback
+
+
+
+
+
+## 6.2.22 (2022-02-23)
+
+**Note:** Version bump only for package @availity/feedback
+
+
+
+
+
+## [6.2.21](https://github.com/Availity/availity-react/compare/@availity/feedback@6.2.20...@availity/feedback@6.2.21) (2022-02-18)
+
+**Note:** Version bump only for package @availity/feedback
+
+
+
+
+
+## 6.2.20 (2022-02-17)
+
+**Note:** Version bump only for package @availity/feedback
+
+
+
+
+
+## [6.2.19](https://github.com/Availity/availity-react/compare/@availity/feedback@6.2.18...@availity/feedback@6.2.19) (2022-02-11)
+
+**Note:** Version bump only for package @availity/feedback
+
+
+
+
+
+## [6.2.18](https://github.com/Availity/availity-react/compare/@availity/feedback@6.2.17...@availity/feedback@6.2.18) (2022-02-04)
+
+**Note:** Version bump only for package @availity/feedback
+
+
+
+
+
+## 6.2.17 (2022-02-03)
+
+**Note:** Version bump only for package @availity/feedback
+
+
+
+
+
+## [6.2.16](https://github.com/Availity/availity-react/compare/@availity/feedback@6.2.15...@availity/feedback@6.2.16) (2022-01-27)
+
+**Note:** Version bump only for package @availity/feedback
+
+
+
+
+
+## [6.2.15](https://github.com/Availity/availity-react/compare/@availity/feedback@6.2.14...@availity/feedback@6.2.15) (2022-01-25)
+
+**Note:** Version bump only for package @availity/feedback
+
+
+
+
 
 ## [6.2.14](https://github.com/Availity/availity-react/compare/@availity/feedback@6.2.12...@availity/feedback@6.2.14) (2022-01-19)
 

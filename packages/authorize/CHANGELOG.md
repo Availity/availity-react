@@ -1,7 +1,70 @@
-# Change Log
+# Changelog
 
-All notable changes to this project will be documented in this file.
-See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
+This file was generated using [@jscutlery/semver](https://github.com/jscutlery/semver).
+
+## [2.2.1](https://github.com/Availity/availity-react/compare/@availity/authorize@2.2.0...@availity/authorize@2.2.1) (2022-11-22)
+
+
+
+# [2.2.0](https://github.com/Availity/availity-react/compare/@availity/authorize@2.1.1...@availity/authorize@2.2.0) (2022-08-08)
+
+
+### Features
+
+* **authorize:** cache region ([3da1c36](https://github.com/Availity/availity-react/commit/3da1c36bc07f6115fb21696041ecbecd7989a7a6))
+
+
+
+## [2.1.1](https://github.com/Availity/availity-react/compare/@availity/authorize@2.1.0...@availity/authorize@2.1.1) (2022-06-14)
+
+
+
+# [2.1.0](https://github.com/Availity/availity-react/compare/@availity/authorize@2.0.3...@availity/authorize@2.1.0) (2022-06-14)
+
+
+### Features
+
+* **form:** add currency input ([fa9eea6](https://github.com/Availity/availity-react/commit/fa9eea6a3b3dd2ef741a0658c102e36c6db5288c))
+
+
+
+## [2.0.3](https://github.com/Availity/availity-react/compare/@availity/authorize@2.0.2...@availity/authorize@2.0.3) (2022-06-10)
+
+
+
+## [2.0.2](https://github.com/Availity/availity-react/compare/@availity/authorize@2.0.1...@availity/authorize@2.0.2) (2022-05-24)
+
+
+
+## 2.0.1 (2022-04-05)
+
+
+### Bug Fixes
+
+* **authorize:** move react-dom and react-query to peerDeps ([a3c25f9](https://github.com/Availity/availity-react/commit/a3c25f971719dea936dc7c7a3c7253f951c9f0d1))
+
+
+
+
+
+# 2.0.0 (2022-01-31)
+
+
+### Bug Fixes
+
+* **authorize:** change query key to useAuthorize ([e916267](https://github.com/Availity/availity-react/commit/e91626725bae7c843e6f7023e5dc769169bf363b))
+
+
+* feat(authorize)!: convert to typescript and add react-query ([056744a](https://github.com/Availity/availity-react/commit/056744ac7526544095cfe45749ed5249d73a8956))
+
+
+### BREAKING CHANGES
+
+* react-query provider now required,  args are stricter
+
+
+
+
 
 ## [1.6.2](https://github.com/Availity/availity-react/compare/@availity/authorize@1.6.1...@availity/authorize@1.6.2) (2021-12-20)
 

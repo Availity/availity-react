@@ -8,6 +8,14 @@ Availity feedback with smiley faces react component.
 
 ### Installation
 
+NPM
+
 ```bash
-npx install-peerdeps @availity/feedback --save
+npm install @availity/feedback @availity/api-axios @availity/yup axios formik reactstrap@^8.0.0
+```
+
+Yarn
+
+```bash
+yarn add @availity/feedback @availity/api-axios @availity/yup axios formik reactstrap@^8.0.0
 ```

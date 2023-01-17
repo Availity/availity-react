@@ -1,7 +1,36 @@
-# Change Log
+# Changelog
 
-All notable changes to this project will be documented in this file.
-See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
+This file was generated using [@jscutlery/semver](https://github.com/jscutlery/semver).
+
+# [1.5.0](https://github.com/Availity/availity-react/compare/@availity/typography@1.4.1...@availity/typography@1.5.0) (2022-12-12)
+
+
+### Features
+
+* **typography:** typography props ([1fa45d9](https://github.com/Availity/availity-react/commit/1fa45d92ff1219d58cf08465f0e2148bd8d661a0))
+
+
+
+## [1.4.1](https://github.com/Availity/availity-react/compare/@availity/typography@1.4.0...@availity/typography@1.4.1) (2022-06-14)
+
+
+
+# [1.4.0](https://github.com/Availity/availity-react/compare/@availity/typography@1.3.4...@availity/typography@1.4.0) (2022-06-14)
+
+
+### Features
+
+* **form:** add currency input ([fa9eea6](https://github.com/Availity/availity-react/commit/fa9eea6a3b3dd2ef741a0658c102e36c6db5288c))
+
+
+
+## [1.3.4](https://github.com/Availity/availity-react/compare/@availity/typography@1.3.3...@availity/typography@1.3.4) (2022-06-10)
+
+
+
+## [1.3.3](https://github.com/Availity/availity-react/compare/@availity/typography@1.3.2...@availity/typography@1.3.3) (2022-05-24)
+
+
 
 ## [1.3.2](https://github.com/Availity/availity-react/compare/@availity/typography@1.3.1...@availity/typography@1.3.2) (2021-12-20)
 

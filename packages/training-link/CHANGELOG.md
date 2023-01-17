@@ -1,7 +1,50 @@
-# Change Log
+# Changelog
 
-All notable changes to this project will be documented in this file.
-See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
+This file was generated using [@jscutlery/semver](https://github.com/jscutlery/semver).
+
+# [1.7.0](https://github.com/Availity/availity-react/compare/@availity/training-link@1.6.0...@availity/training-link@1.7.0) (2022-12-08)
+
+
+### Features
+
+* **training-link:** props changess ([0c5ce42](https://github.com/Availity/availity-react/commit/0c5ce42ccb525df9617620fbbe9588e9b4229330))
+* **training-link:** remove spaces ([e2c1c1b](https://github.com/Availity/availity-react/commit/e2c1c1bac079da32098a601c039bd075d55f7f22))
+
+
+
+# [1.6.0](https://github.com/Availity/availity-react/compare/@availity/training-link@1.5.1...@availity/training-link@1.6.0) (2022-07-13)
+
+
+### Features
+
+* **training-link:** i think this addresses roxanne's comment ([6697760](https://github.com/Availity/availity-react/commit/6697760ac2776110108fc3c12024f07b2459bc72))
+* **training-link:** i think this addresses roxanne's comment ([bdb2802](https://github.com/Availity/availity-react/commit/bdb280258f09d0254e1850a5612a0597cb4ef087))
+* **training-link:** make training link 508 compliant by adding opens in a new tab to the demo link, change test to match new verbiage ([7b7d163](https://github.com/Availity/availity-react/commit/7b7d163e4dc9287cc79ea7a1f024a7d3d0388b74))
+* **training-link:** now we don't need this in the test ([1d9cdc7](https://github.com/Availity/availity-react/commit/1d9cdc7628d85c6c4b15f8a3ecf0d990bcf3f0dc))
+* **training-link:** typing is hard - last try then im just going to pay attention to this meeting ([bf992ce](https://github.com/Availity/availity-react/commit/bf992ce3639191f572a8b31ef5dfbf53e9bf707d))
+
+
+
+## [1.5.1](https://github.com/Availity/availity-react/compare/@availity/training-link@1.5.0...@availity/training-link@1.5.1) (2022-06-14)
+
+
+
+# [1.5.0](https://github.com/Availity/availity-react/compare/@availity/training-link@1.4.4...@availity/training-link@1.5.0) (2022-06-14)
+
+
+### Features
+
+* **form:** add currency input ([fa9eea6](https://github.com/Availity/availity-react/commit/fa9eea6a3b3dd2ef741a0658c102e36c6db5288c))
+
+
+
+## [1.4.4](https://github.com/Availity/availity-react/compare/@availity/training-link@1.4.3...@availity/training-link@1.4.4) (2022-06-10)
+
+
+
+## [1.4.3](https://github.com/Availity/availity-react/compare/@availity/training-link@1.4.2...@availity/training-link@1.4.3) (2022-05-24)
+
+
 
 ## [1.4.2](https://github.com/Availity/availity-react/compare/@availity/training-link@1.4.1...@availity/training-link@1.4.2) (2021-12-20)
 

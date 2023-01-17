@@ -1,7 +1,269 @@
-# Change Log
+# Changelog
 
-All notable changes to this project will be documented in this file.
-See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
+This file was generated using [@jscutlery/semver](https://github.com/jscutlery/semver).
+
+## [6.5.6](https://github.com/Availity/availity-react/compare/@availity/spaces@6.5.5...@availity/spaces@6.5.6) (2023-01-03)
+
+
+
+## [6.5.5](https://github.com/Availity/availity-react/compare/@availity/spaces@6.5.4...@availity/spaces@6.5.5) (2022-12-01)
+
+
+
+## [6.5.4](https://github.com/Availity/availity-react/compare/@availity/spaces@6.5.3...@availity/spaces@6.5.4) (2022-11-22)
+
+
+
+## [6.5.3](https://github.com/Availity/availity-react/compare/@availity/spaces@6.5.2...@availity/spaces@6.5.3) (2022-11-17)
+
+
+
+## [6.5.2](https://github.com/Availity/availity-react/compare/@availity/spaces@6.5.1...@availity/spaces@6.5.2) (2022-11-16)
+
+
+
+## [6.5.1](https://github.com/Availity/availity-react/compare/@availity/spaces@6.5.0...@availity/spaces@6.5.1) (2022-10-28)
+
+
+
+# [6.5.0](https://github.com/Availity/availity-react/compare/@availity/spaces@6.4.0...@availity/spaces@6.5.0) (2022-10-27)
+
+
+### Features
+
+* **spaces:** remove aria-describedby when not new ([72edbea](https://github.com/Availity/availity-react/commit/72edbea34cd3c3a8edea01a988bca8934ca55f36))
+
+
+
+# [6.4.0](https://github.com/Availity/availity-react/compare/@availity/spaces@6.3.6...@availity/spaces@6.4.0) (2022-10-27)
+
+
+### Features
+
+* **spaces:** allow custom badges on SpacesLink ([5895c0d](https://github.com/Availity/availity-react/commit/5895c0d5e48793aae117f2fa2cd65c6104c87700))
+
+
+
+## [6.3.6](https://github.com/Availity/availity-react/compare/@availity/spaces@6.3.5...@availity/spaces@6.3.6) (2022-09-23)
+
+
+### Bug Fixes
+
+* **spaces:** fix types bug ([9734964](https://github.com/Availity/availity-react/commit/9734964574fb44ba0005d0b2af1a858630bdd7e4))
+
+
+
+## [6.3.5](https://github.com/Availity/availity-react/compare/@availity/spaces@6.3.4...@availity/spaces@6.3.5) (2022-09-23)
+
+
+
+## [6.3.4](https://github.com/Availity/availity-react/compare/@availity/spaces@6.3.3...@availity/spaces@6.3.4) (2022-09-23)
+
+
+
+## [6.3.3](https://github.com/Availity/availity-react/compare/@availity/spaces@6.3.2...@availity/spaces@6.3.3) (2022-09-20)
+
+
+### Bug Fixes
+
+* **spaces:** fix types and exports ([cf17d6d](https://github.com/Availity/availity-react/commit/cf17d6dad1bc0dc88d70308b9547a6b67d685d00))
+
+
+
+## [6.3.2](https://github.com/Availity/availity-react/compare/@availity/spaces@6.3.1...@availity/spaces@6.3.2) (2022-09-20)
+
+
+
+## [6.3.1](https://github.com/Availity/availity-react/compare/@availity/spaces@6.3.0...@availity/spaces@6.3.1) (2022-08-10)
+
+
+### Bug Fixes
+
+* **spaces:** use isGhosted property for spaces link PF-3282 ([8b48e68](https://github.com/Availity/availity-react/commit/8b48e68d791d2c97a5e0efc4beea8d5559567f98))
+
+
+
+# [6.3.0](https://github.com/Availity/availity-react/compare/@availity/spaces@6.2.2...@availity/spaces@6.3.0) (2022-07-28)
+
+
+### Features
+
+* **spaces:** hide link for shosted configs PF-3282 ([44bd980](https://github.com/Availity/availity-react/commit/44bd980d49b561874a502cf0a112dcf867495dc7))
+
+
+
+## [6.2.2](https://github.com/Availity/availity-react/compare/@availity/spaces@6.2.1...@availity/spaces@6.2.2) (2022-07-14)
+
+
+### Bug Fixes
+
+* **spaces:** add optional chaining to ModalProvider to prevent error when metadata is null ([9fa7527](https://github.com/Availity/availity-react/commit/9fa7527578a60787ace79e22be2da793141f0cda))
+
+
+
+## [6.2.1](https://github.com/Availity/availity-react/compare/@availity/spaces@6.2.0...@availity/spaces@6.2.1) (2022-07-12)
+
+
+
+# [6.2.0](https://github.com/Availity/availity-react/compare/@availity/spaces@6.1.2...@availity/spaces@6.2.0) (2022-07-12)
+
+
+### Bug Fixes
+
+* **spaces:** update Modal in ModalProvider for accessibility ([8499b25](https://github.com/Availity/availity-react/commit/8499b25028178f3d726e8f62ed7df61a67789d7e))
+
+
+### Features
+
+* **spaces:** update useLink to use modals for disclaimers ([dcca167](https://github.com/Availity/availity-react/commit/dcca167b59db9c9f9ef62b76895e29fc7b30d264))
+
+
+
+## [6.1.2](https://github.com/Availity/availity-react/compare/@availity/spaces@6.1.1...@availity/spaces@6.1.2) (2022-06-21)
+
+
+### Bug Fixes
+
+* **spaces:** remove link role when no url is provided PF-3073 ([608b014](https://github.com/Availity/availity-react/commit/608b014bfa89fa69c853572b8178e9d88e74b010))
+
+
+
+## [6.1.1](https://github.com/Availity/availity-react/compare/@availity/spaces@6.1.0...@availity/spaces@6.1.1) (2022-06-14)
+
+
+
+# [6.1.0](https://github.com/Availity/availity-react/compare/@availity/spaces@6.0.9...@availity/spaces@6.1.0) (2022-06-14)
+
+
+### Features
+
+* **form:** add currency input ([fa9eea6](https://github.com/Availity/availity-react/commit/fa9eea6a3b3dd2ef741a0658c102e36c6db5288c))
+
+
+
+## [6.0.9](https://github.com/Availity/availity-react/compare/@availity/spaces@6.0.8...@availity/spaces@6.0.9) (2022-06-10)
+
+
+
+## [6.0.8](https://github.com/Availity/availity-react/compare/@availity/spaces@6.0.7...@availity/spaces@6.0.8) (2022-06-02)
+
+
+### Bug Fixes
+
+* **spaces:** aadd ability to give class to Link title PF-2340 ([23d3230](https://github.com/Availity/availity-react/commit/23d3230bc687b14c1f7c2e03ed56bdf3eaf19a45))
+* **spaces:** use classNames second param and aadd unit test PF-2340 ([09f4457](https://github.com/Availity/availity-react/commit/09f44573506284c8ee43a15ccea12c6f71205c19))
+
+
+
+## [6.0.7](https://github.com/Availity/availity-react/compare/@availity/spaces@6.0.6...@availity/spaces@6.0.7) (2022-05-24)
+
+
+### Bug Fixes
+
+* add navigation icons fields to spaces graphql query string ([4414b20](https://github.com/Availity/availity-react/commit/4414b206374ec9527b4dfcf5adda01a0657024fc))
+* fix spaces graphql query string ([ad9ceb5](https://github.com/Availity/availity-react/commit/ad9ceb5bacfbdeba292add52a9854d8f21f5d0ee))
+
+
+
+## [6.0.6](https://github.com/Availity/availity-react/compare/@availity/spaces@6.0.5...@availity/spaces@6.0.6) (2022-05-24)
+
+
+### Bug Fixes
+
+* upgrade yup and update sb stories ([68aeafe](https://github.com/Availity/availity-react/commit/68aeafe4fd7d90d7c88dbb24636ba7770fe87aa3))
+
+
+
+## 6.0.5 (2022-05-20)
+
+
+### Bug Fixes
+
+* **spaces:** new badge 508 compliance ([87bf351](https://github.com/Availity/availity-react/commit/87bf3517439a2707aa34d2d7c998582289f9be93))
+
+
+
+
+
+## [6.0.4](https://github.com/Availity/availity-react/compare/@availity/spaces@6.0.3...@availity/spaces@6.0.4) (2022-05-18)
+
+**Note:** Version bump only for package @availity/spaces
+
+
+
+
+
+## [6.0.3](https://github.com/Availity/availity-react/compare/@availity/spaces@6.0.2...@availity/spaces@6.0.3) (2022-05-11)
+
+
+### Bug Fixes
+
+* **spaces:** missing useMemo id dep ([44f9620](https://github.com/Availity/availity-react/commit/44f9620072e5dbb8897627207768b15c920bdeb7))
+
+
+
+
+
+## 6.0.2 (2022-05-09)
+
+**Note:** Version bump only for package @availity/spaces
+
+
+
+
+
+## 6.0.1 (2022-05-03)
+
+**Note:** Version bump only for package @availity/spaces
+
+
+
+
+
+# [6.0.0](https://github.com/Availity/availity-react/compare/@availity/spaces@5.2.0...@availity/spaces@6.0.0) (2022-04-13)
+
+
+### Code Refactoring
+
+* **spaces:** add note about multiple spaces being associated with a payerId ([e65ad0e](https://github.com/Availity/availity-react/commit/e65ad0e02242965cd038e03e84780a8a005af170))
+
+
+### BREAKING CHANGES
+
+* **spaces:** payerIds associated with more than one payer space can return in any order
+
+
+
+
+
+# [5.2.0](https://github.com/Availity/availity-react/compare/@availity/spaces@5.0.3...@availity/spaces@5.2.0) (2022-04-13)
+
+
+### Bug Fixes
+
+* **spaces:** build url with params ([25e47ae](https://github.com/Availity/availity-react/commit/25e47ae8048b3ee3e6588161e797ac9c0fc07829))
+* **spaces:** pass children instead of source to ReactMarkdown ([7a7cec4](https://github.com/Availity/availity-react/commit/7a7cec43727122e85fffbca49b94d91c1b8cffa3))
+* **spaces:** rename sanitizeSpaces to normalizeSpaces ([55b37fd](https://github.com/Availity/availity-react/commit/55b37fdba0cec374ac430bff6c8aafe646e14adc))
+* **spaces:** update SpacesLink types to fix conssole warnings ([9ee0f62](https://github.com/Availity/availity-react/commit/9ee0f6206af2f7d38ccf8df1a023ca70a54e89d1))
+* **spaces:** use correct roles for links ([8cad77b](https://github.com/Availity/availity-react/commit/8cad77b197dfc13a1623fee151aaabfe7272740e))
+
+
+### Features
+
+* **spaces:** add updateTopApps logic ([b34a163](https://github.com/Availity/availity-react/commit/b34a163b0614c2321e471d480308084246adbf31))
+* **spaces:** initial SpacesLink update commit ([849f6f6](https://github.com/Availity/availity-react/commit/849f6f643af45d86748606feadf4393423575d40))
+
+
+
+
+
+## 5.1.3 (2022-02-18)
+
+**Note:** Version bump only for package @availity/spaces
+
+
+
+
 
 ## [5.1.2](https://github.com/Availity/availity-react/compare/@availity/spaces@5.1.1...@availity/spaces@5.1.2) (2021-12-20)
 

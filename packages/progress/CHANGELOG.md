@@ -1,7 +1,32 @@
-# Change Log
+# Changelog
 
-All notable changes to this project will be documented in this file.
-See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
+This file was generated using [@jscutlery/semver](https://github.com/jscutlery/semver).
+
+## [1.5.1](https://github.com/Availity/availity-react/compare/@availity/progress@1.5.0...@availity/progress@1.5.1) (2022-06-14)
+
+
+
+# [1.5.0](https://github.com/Availity/availity-react/compare/@availity/progress@1.4.1...@availity/progress@1.5.0) (2022-06-14)
+
+
+### Features
+
+* **form:** add currency input ([fa9eea6](https://github.com/Availity/availity-react/commit/fa9eea6a3b3dd2ef741a0658c102e36c6db5288c))
+
+
+
+## [1.4.1](https://github.com/Availity/availity-react/compare/@availity/progress@1.4.0...@availity/progress@1.4.1) (2022-06-10)
+
+
+
+# [1.4.0](https://github.com/Availity/availity-react/compare/@availity/progress@1.3.2...@availity/progress@1.4.0) (2022-05-24)
+
+
+### Features
+
+* **progress:** convert to typescript ([22170bf](https://github.com/Availity/availity-react/commit/22170bf4fcbe555c67e575db3878eabcacca157a))
+
+
 
 ## [1.3.2](https://github.com/Availity/availity-react/compare/@availity/progress@1.3.1...@availity/progress@1.3.2) (2021-12-20)
 

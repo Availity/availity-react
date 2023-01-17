@@ -1,7 +1,223 @@
-# Change Log
+# Changelog
 
-All notable changes to this project will be documented in this file.
-See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
+This file was generated using [@jscutlery/semver](https://github.com/jscutlery/semver).
+
+## [3.3.2](https://github.com/Availity/availity-react/compare/@availity/select@3.3.1...@availity/select@3.3.2) (2022-08-03)
+
+
+### Bug Fixes
+
+* **select:** firefox grid bug ([851b9d3](https://github.com/Availity/availity-react/commit/851b9d30a6eca9c0488a87d878be7f275411ce4b))
+
+
+
+## [3.3.1](https://github.com/Availity/availity-react/compare/@availity/select@3.3.0...@availity/select@3.3.1) (2022-07-19)
+
+
+### Bug Fixes
+
+* **select:** add unique label to clear button ([00c05c1](https://github.com/Availity/availity-react/commit/00c05c1d8c8c6fd3aa8ae671fe44bc63580437ea))
+
+
+
+# [3.3.0](https://github.com/Availity/availity-react/compare/@availity/select@3.2.0...@availity/select@3.3.0) (2022-07-13)
+
+
+### Bug Fixes
+
+* **select:** cleanup clear button and selectStyles ([f5fbeaa](https://github.com/Availity/availity-react/commit/f5fbeaab2717f3f11d08f1f34d882a59210e072b))
+* **select:** fix input component proptype ([fe5752a](https://github.com/Availity/availity-react/commit/fe5752acff50ea8fdae7495088bcc17346d4a716))
+
+
+### Features
+
+* **select:** move clear field button to outside of field, allow aria-required, export styling fix [#933](https://github.com/Availity/availity-react/issues/933) ([d2b82f2](https://github.com/Availity/availity-react/commit/d2b82f2d6a9112191524a35e0abc2d006d28553b))
+
+
+
+# [3.2.0](https://github.com/Availity/availity-react/compare/@availity/select@3.1.2...@availity/select@3.2.0) (2022-06-30)
+
+
+### Features
+
+* **select:** getResult to respect async functions ([4eea613](https://github.com/Availity/availity-react/commit/4eea613107c74a0d26161e5351dbf57da2726581))
+
+
+
+## [3.1.2](https://github.com/Availity/availity-react/compare/@availity/select@3.1.1...@availity/select@3.1.2) (2022-06-23)
+
+
+### Bug Fixes
+
+* **select:** display selected option when raw is false ([3095ada](https://github.com/Availity/availity-react/commit/3095ada5e85b91f55a2c039722e872a7dcbdc777))
+
+
+
+## [3.1.1](https://github.com/Availity/availity-react/compare/@availity/select@3.1.0...@availity/select@3.1.1) (2022-06-14)
+
+
+
+# [3.1.0](https://github.com/Availity/availity-react/compare/@availity/select@3.0.1...@availity/select@3.1.0) (2022-06-14)
+
+
+### Features
+
+* **form:** add currency input ([fa9eea6](https://github.com/Availity/availity-react/commit/fa9eea6a3b3dd2ef741a0658c102e36c6db5288c))
+
+
+
+## [3.0.1](https://github.com/Availity/availity-react/compare/@availity/select@3.0.0...@availity/select@3.0.1) (2022-06-10)
+
+
+
+# [3.0.0](https://github.com/Availity/availity-react/compare/@availity/select@2.10.0...@availity/select@3.0.0) (2022-05-24)
+
+
+### Bug Fixes
+
+* upgrade yup and update sb stories ([68aeafe](https://github.com/Availity/availity-react/commit/68aeafe4fd7d90d7c88dbb24636ba7770fe87aa3))
+
+
+* feat(select)!: compile with tsup ([537ac57](https://github.com/Availity/availity-react/commit/537ac57812688dce41f02b575dda0fc281a3d958))
+
+
+### BREAKING CHANGES
+
+* import resources from the root file instead of @availity/select/resources
+
+
+
+# 2.10.0 (2022-05-11)
+
+
+### Features
+
+* **select:** add back unit test for extended payers api all call ([0d4a8cf](https://github.com/Availity/availity-react/commit/0d4a8cf27a184f31517b495a3b3e9faa96f0c708))
+* **select:** add custom select for payers through extended-payers api ([22eda92](https://github.com/Availity/availity-react/commit/22eda92850a870047bb5ab3df1a4b62297b392cb))
+* **select:** creating a resource select directly instead of making payer select to avoid null defaultconfig issues ([f81a1f6](https://github.com/Availity/availity-react/commit/f81a1f6622cc4fc8fc0bbfebfa46d20e788b0e54))
+* **select:** properly use all call instead of postGet ([42f8350](https://github.com/Availity/availity-react/commit/42f83503736aa5cc0597bf1ced584a768adcebf3))
+* **select:** remove redundant select unit test and update documentation ([40d6f90](https://github.com/Availity/availity-react/commit/40d6f90ef7b9777d9ea86cbd7571bf6d1e595240))
+
+
+
+
+
+## [2.9.1](https://github.com/Availity/availity-react/compare/@availity/select@2.9.0...@availity/select@2.9.1) (2022-03-09)
+
+
+### Bug Fixes
+
+* **select:** add resource select types ([2cda8f4](https://github.com/Availity/availity-react/commit/2cda8f48459d12f8b272a4411ea044a810106b13))
+* **select:** fix typedefs for all select components ([2334bce](https://github.com/Availity/availity-react/commit/2334bceeb48dbcf01b91c706e5f3049c8bf345a9))
+
+
+
+
+
+# [2.9.0](https://github.com/Availity/availity-react/compare/@availity/select@2.8.0...@availity/select@2.9.0) (2022-02-24)
+
+
+### Features
+
+* **select:** add aria-hidden='false' for individual clear indicator ([ae17081](https://github.com/Availity/availity-react/commit/ae17081e143210beaa8eef42456cd8ec2def6863))
+* **select:** merge conflicts ([7af8633](https://github.com/Availity/availity-react/commit/7af863357d225c1386660fb8b8ac13574fd6917a))
+* **select:** run prettier ([00c10e3](https://github.com/Availity/availity-react/commit/00c10e3e07cc5993859cf5714cdefbf19bc68c90))
+
+
+
+
+
+# [2.8.0](https://github.com/Availity/availity-react/compare/@availity/select@2.7.1...@availity/select@2.8.0) (2022-02-24)
+
+
+### Features
+
+* **select:** added role and aria attributes to clear indicator of select ([f2feca8](https://github.com/Availity/availity-react/commit/f2feca8c08e6b6a46daa2dc9dc7b018571c8db3d))
+* **select:** fix lint errors ([1f0f8b3](https://github.com/Availity/availity-react/commit/1f0f8b3aad77d2bf30b44d6837159a129747d063))
+* **select:** remove console statement ([46d4d9d](https://github.com/Availity/availity-react/commit/46d4d9d1870c18ae98bacda3325fa32db040d2da))
+
+
+
+
+
+## [2.7.1](https://github.com/Availity/availity-react/compare/@availity/select@2.7.0...@availity/select@2.7.1) (2022-02-23)
+
+
+### Bug Fixes
+
+* update proptype and typedef for helpMessage ([f61d0a1](https://github.com/Availity/availity-react/commit/f61d0a1c204900e55046262aa2f06056ce858c3b))
+
+
+
+
+
+# 2.7.0 (2022-02-23)
+
+
+### Features
+
+* add prop to allow inputValue to not be encoded ([9c598a8](https://github.com/Availity/availity-react/commit/9c598a8d4b69f3aebfc215a56f81501fa3451b58))
+
+
+
+
+
+## 2.6.5 (2022-02-17)
+
+
+### Bug Fixes
+
+* **select:** allow valueKey to work with ResourceSelect ([85c554d](https://github.com/Availity/availity-react/commit/85c554d6d5b519c5d9ec6342a6f5b074ae8520a9))
+
+
+
+
+
+## [2.6.4](https://github.com/Availity/availity-react/compare/@availity/select@2.6.3...@availity/select@2.6.4) (2022-02-11)
+
+**Note:** Version bump only for package @availity/select
+
+
+
+
+
+## [2.6.3](https://github.com/Availity/availity-react/compare/@availity/select@2.6.2...@availity/select@2.6.3) (2022-02-04)
+
+**Note:** Version bump only for package @availity/select
+
+
+
+
+
+## 2.6.2 (2022-02-03)
+
+**Note:** Version bump only for package @availity/select
+
+
+
+
+
+## [2.6.1](https://github.com/Availity/availity-react/compare/@availity/select@2.6.0...@availity/select@2.6.1) (2022-01-27)
+
+
+### Bug Fixes
+
+* **select:** remove role and attributes from clear indicator ([b4eae57](https://github.com/Availity/availity-react/commit/b4eae5751967a1f85b9b0c6e0064086e50f13e56))
+
+
+
+
+
+# [2.6.0](https://github.com/Availity/availity-react/compare/@availity/select@2.5.0...@availity/select@2.6.0) (2022-01-25)
+
+
+### Features
+
+* **select:** added role and aria attributes to clear indicator of select ([8de0038](https://github.com/Availity/availity-react/commit/8de003825d3049f07ec25a8fc8decbfc3a357323))
+
+
+
+
 
 # [2.5.0](https://github.com/Availity/availity-react/compare/@availity/select@2.4.0...@availity/select@2.5.0) (2022-01-19)
 

@@ -6,8 +6,8 @@ import '@availity/react-dates/initialize';
 import { SingleDatePicker } from '@availity/react-dates';
 import { InputGroup, Input, Row, Col } from 'reactstrap';
 import moment from 'moment';
+
 import '../polyfills';
-import '../styles.scss';
 
 import { isOutsideRange, limitPropType, buildYearPickerOptions } from './utils';
 
@@ -25,11 +25,11 @@ const AvDate = ({
   onPickerFocusChange,
   min,
   max,
-  format,
+  format = 'MM/DD/YYYY',
   validate,
   datePickerProps,
   'data-testid': dataTestId,
-  openDirection,
+  openDirection = 'down',
   ...attributes
 }) => {
   const { setFieldValue, setFieldTouched, validateField } = useFormikContext();
@@ -74,15 +74,15 @@ const AvDate = ({
   };
 
   const onPickerChange = (value) => {
-    if (value === null) return;
-
     let val = value;
-    if (val instanceof Object && val.isValid()) {
-      val = val.format(isoDateFormat);
-    }
+    if (val !== null) {
+      if (val instanceof Object && val.isValid()) {
+        val = val.format(isoDateFormat);
+      }
 
-    setFieldValue(name, val, false);
-    setFieldTouched(name, true, false);
+      setFieldValue(name, val, false);
+      setFieldTouched(name, true, false);
+    }
 
     if (onChange) {
       onChange(val);
@@ -167,6 +167,8 @@ const AvDate = ({
       >
         <SingleDatePicker
           renderMonthElement={renderMonthElement}
+          autoComplete="date"
+          numberOfMonths={1}
           {...datePickerProps}
           disabled={attributes.disabled}
           id={pickerId}
@@ -175,11 +177,9 @@ const AvDate = ({
           onDateChange={onPickerChange}
           focused={isFocused}
           onFocusChange={onFocusChange}
-          numberOfMonths={1}
           isOutsideRange={isOutsideRange(min, max)}
           navPosition="navPositionBottom"
           openDirection={openDirection}
-          autoComplete="date"
         />
       </InputGroup>
     </>
@@ -187,24 +187,29 @@ const AvDate = ({
 };
 
 AvDate.propTypes = {
+  /** The name of the field. Will be the key of the selected date that comes through in the values of the `onSubmit` callback. */
   name: PropTypes.string.isRequired,
+  /** Whether the date is disabled. */
   disabled: PropTypes.bool,
   className: PropTypes.string,
+  /** Used in conjunction with `max` to derive `isOutsideRange` prop from `react-dates` and selectable year options in datepicker. Dates outside the allowed range will not be clickable in datepicker. */
   min: limitPropType,
+  /** Used in conjunction with min to derive `isOutsideRange` prop from `react-dates` and selectable year options in datepicker. Dates outside the allowed range will not be clickable in datepicker. */
   max: limitPropType,
   onChange: PropTypes.func,
+  /** Function to be run when focus on the input changes. */
   onPickerFocusChange: PropTypes.func,
   innerRef: PropTypes.oneOfType([PropTypes.func, PropTypes.node]),
+  /** How to format date value in `onSubmit` callback. Must be a format recognized by <a href={https://momentjs.com/docs/#/displaying/format/}>moment.</a>Default: `MM/DD/YYYY` */
   format: PropTypes.string,
+  /** Toggle whether the calendar is shown. */
+  datePicker: PropTypes.bool,
   'data-testid': PropTypes.string,
   validate: PropTypes.func,
+  /** Props to be spread onto the datepicker component from `react-dates`. */
   datePickerProps: PropTypes.object,
+  /** Set which direction the date picker renders. Possible values are `up` and `down`. Default: `down` */
   openDirection: PropTypes.string,
-};
-
-AvDate.defaultProps = {
-  format: 'MM/DD/YYYY',
-  openDirection: 'down',
 };
 
 export default AvDate;

@@ -1,29 +1,9 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import Skeleton from 'react-loading-skeleton';
-import { Img } from 'react-image';
 import get from 'lodash/get';
-
+import { Img } from 'react-image';
+import Loader, { skeletonPropType } from './Loader';
 import { useSpaces, useSpacesContext } from './Spaces';
-
-const skeletonPropType = PropTypes.shape({
-  width: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
-  height: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
-});
-
-const Loader = ({ skeletonProps, ...rest }) => (
-  <span {...rest}>
-    <Skeleton {...skeletonProps} />
-  </span>
-);
-Loader.propTypes = {
-  skeletonProps: skeletonPropType,
-};
-Loader.defaultProps = {
-  skeletonProps: {
-    height: '100%',
-  },
-};
 
 const SpacesImage = ({ spaceId, payerId, imageType, fallback, skeletonProps, ...props }) => {
   const [space = {}] = useSpaces(spaceId || payerId);
@@ -33,7 +13,7 @@ const SpacesImage = ({ spaceId, payerId, imageType, fallback, skeletonProps, ...
   let url = get(space, imageType);
 
   if (!url && loading) {
-    return <Loader data-testid={`space-${imageType}-${id}-loading`} skeletonProps={skeletonProps} {...props} />;
+    return <Loader id={`app-${id}-loading`} skeletonProps={skeletonProps} {...props} />;
   }
 
   // We can probably remove this at some point once our spaces data is complete
@@ -46,20 +26,42 @@ const SpacesImage = ({ spaceId, payerId, imageType, fallback, skeletonProps, ...
   return (
     <Img
       data-testid={`space-${imageType}-${id}`}
+      id={props.id || `app-img-${id}`}
       src={url}
       alt={`Space ${imageType}`}
-      loader={<Loader data-testid={`space-${imageType}-${id}`} skeletonProps={skeletonProps} {...props} />}
+      loader={
+        <Loader
+          id={`app-img-${id}-loading`}
+          data-testid={`space-${imageType}-${id}`}
+          skeletonProps={skeletonProps}
+          {...props}
+        />
+      }
       {...props}
     />
   );
 };
 
 SpacesImage.propTypes = {
+  /** Required if payerId is not provided.
+   * The payer spaces ID of the payer to render the image for.
+   * If no spaceId or payerId is provided, the first space in the spaces array is used.
+   * Note: This is only to be used when the Spaces provider should only ever contain a single space. */
   spaceId: PropTypes.string,
+  /** Required if spaceId is not provided.
+   * The payer ID of the payer to render the image for.
+   * If no spaceId or payerId is provided, the first space in the spaces array is used.
+   * Note: This is only to be used when the Spaces provider should only ever contain a single space.
+   * Note: If the payerId is associated with more than one payer space, the order in which they are returned should not be relied upon.
+   * If a specific payer space is required, you'll need to filter the list that is returned. */
   payerId: PropTypes.string,
+  /** The fallback image url to render if the url for the spaces image is not valid or not found */
   fallback: PropTypes.string,
+  /** The path on the space containing the image reference. Defaults to: "url". */
   imageType: PropTypes.string,
+  /** Dimensions passed to loader to show while the image is loading. */
   skeletonProps: skeletonPropType,
+  id: PropTypes.string,
 };
 
 SpacesImage.defaultProps = {

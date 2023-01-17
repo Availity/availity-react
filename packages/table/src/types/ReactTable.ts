@@ -12,6 +12,11 @@ import {
   UseTableHeaderGroupProps,
   UseRowSelectOptions,
   UseTableOptions,
+  UseSortByOptions,
+  UsePaginationOptions,
+  UsePaginationInstanceProps,
+  UseColumnOrderInstanceProps,
+  UseRowSelectState,
 } from 'react-table';
 
 import { TableSort } from './TableSort';
@@ -25,6 +30,10 @@ export type Row<T extends IdType> = RtRow<T> & {
   original: T;
 };
 
+export type RowProps = {
+  isDisabled?: boolean;
+} & React.HTMLAttributes<HTMLTableRowElement>;
+
 export type Column<T extends IdType> = RtColumn<T> & {
   className?: string;
   stickyRight?: boolean;
@@ -34,9 +43,12 @@ export type Column<T extends IdType> = RtColumn<T> & {
   defaultCanSort?: boolean;
   disableSortBy?: boolean;
   label?: string;
+  hidden?: boolean;
+  isVisible?: boolean;
 };
 
-export type Cell<T extends IdType> = RtCell<T> & {
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
+export type Cell<T extends IdType, V = any> = RtCell<T, V> & {
   index: number;
   row: Row<T>;
   column: Column<T>;
@@ -59,19 +71,27 @@ export type TableOptions<T extends IdType> = RtTableOptions<T> &
     autoResetSelectedRows?: boolean;
     autoResetSortBy?: boolean;
     manualSortBy?: boolean;
-  };
+    hiddenColumns?: string[];
+    initialState?: Partial<TableState<T>> & CurrentTableState<T>;
+  } & UseSortByOptions<T> &
+  UsePaginationOptions<T>;
 
 export type TableInstance<T extends IdType> = UseSortByInstanceProps<T> &
   UseRowSelectInstanceProps<T> &
   UseRowSelectOptions<T> &
-  RtTableInstance<T> & {
+  RtTableInstance<T> &
+  UseColumnOrderInstanceProps<T> &
+  UsePaginationInstanceProps<T> & {
     toggleAllPageRowsSelected: (set?: boolean) => void;
     selectedFlatRows: Row<T>[];
     isAllRowsSelected: boolean;
     toggleAllRowsSelected: () => void;
     sortBy?: TableSort;
+  } & {
+    manualSortBy?: boolean;
   };
 
-export interface CurrentTableState extends TableState {
-  sortBy?: TableSort[];
-}
+export type CurrentTableState<T extends IdType> = TableState &
+  Partial<UseRowSelectState<T>> & {
+    sortBy?: TableSort[];
+  };

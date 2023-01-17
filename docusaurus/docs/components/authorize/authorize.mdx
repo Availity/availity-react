@@ -1,0 +1,63 @@
+---
+title: Authorize
+slug: authorize
+---
+
+Component for showing content based on the user's permissions. Wrap this component around content you only want specific users to see.
+
+This package uses [react-query](https://react-query.tanstack.com/) to handle data fetching. This means you must add a [QueryClientProvider](https://react-query.tanstack.com/reference/QueryClientProvider#_top) to your app if you do not already have one. The default setup should cover most use-cases. However, there are 2 options we recommend looking into in order to determine what is correct for your app. These settings are `refetchOnWindowFocus` and `staleTime`. The first option sets whether the to refetch the query when the window is focused, and the other is the default marker for how long the query is valid.
+
+## Props
+
+### `permissions: (string | string[])[]`
+
+Can either be a string, eg: `"1234"`, a number, eg: `1234`, or an array, which can contain permission ID strings/numbers as well as other arrays which contain permission ID strings/numbers, eg: `['1234', '2345', ['3456', '4567'], ['5678', '6789']]`. The items in a nested array indicate permission IDs that must _all_ be granted to the user to be considered authorized - they act as "AND". The items in the top of the array act as "OR" - if _any_ are granted, the user is considered authorized. The example `['1234', '2345', ['3456', '4567'], ['5678', '6789']]` is similar to `'1234' OR '2345' OR ('3456' && '4567') OR ('5678' && '6789')`.
+
+### `resources?: (string | string[])[]`
+
+When present, the permission is validated to ensure it contains the resource(s). Can either be a string, eg: `"12345"`, a number, eg: `12345`, or an array, which can contain resource ID strings/numbers as well as other arrays which contain resource ID strings/numbers, eg: `['12345', '23456', ['34567', '45678'], ['56789', '67890']]`. The items in a nested array indicate resource IDs that must _all_ be granted to the user to be considered authorized - they act as "AND". The items in the top of the array act as "OR" - if _any_ are granted, the user is considered authorized. The example `['12345', '23456', ['34567', '45678'], ['56789', '67890']]` is similar to `'12345' OR '23456' OR ('34567' && '45678') OR ('56789' && '67890')`.
+
+### `loader?: boolean | ReactNode`
+
+When `true`, `BlockUi` is used when loading the permissions. When a `node`, that node is rendered instead of `BlockUi` when loading the permissions. When `false`, nothing is rendered when loading the permissions. **Default:** `true`.
+
+### `organizationId?: string`
+
+When present, the permission is validated to ensure it is assigned to the organization.
+
+### `customerId?: string`
+
+When present, the permission is validated to ensure it is assigned to the customer.
+
+### `region?: string | boolean`
+
+When a string, the permission is validated to ensure it is assigned in the provided region. When true, the permission is validated to ensure it is assigned in the current region. **Default:** `true`.
+
+### `unauthorized?: ReactNode`
+
+The content that renders when the user _does not_ have the permissions required.
+
+### `children: ReactNode`
+
+The content that renders when the user _does_ have the permissions required.
+
+### `negate?: boolean`
+
+Negate the authorization. If the user _does_ have the permissions specified, they are considered "unauthorized" (shown the `unauthorized` prop content). If the user _does not_ have the permissions specified, they are considered "authorized" (shown the `children` prop content)
+
+## Example
+
+```jsx
+import React from 'react';
+import Authorize from '@availity/authorize';
+
+const Example = () => (
+  <Authorize permissions={['1234']}>
+    {/* stuff to render if the user is authorized with permission indicated above */}
+  </Authorize>
+);
+```
+
+## Storybook
+
+[Live Example](https://availity.github.io/availity-react/storybook/?path=/story/components-authorize--default)

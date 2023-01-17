@@ -1,0 +1,43 @@
+{
+  "totalCount": 19,
+  "count": 19,
+  "offset": 0,
+  "limit": 300,
+  "links": {
+    "self": {
+      "href": "https://qa-apps.availity.com/api/internal/v1/extended-payers?state=FL&transactionType=EBREACT"
+    }
+  },
+  "extendedAccessPayers": [
+    {
+      "id": "99999",
+      "payerName": "BENEFIT PLAN",
+      "payerId": "12345"
+    },
+    {
+      "id": "99998",
+      "payerName": "FUN HEALTH PLANS",
+      "payerId": "32154"
+    },
+    {
+      "id": "99997",
+      "payerName": "HAPPY HEALTHCARE",
+      "payerId": "22215"
+    },
+    {
+      "id": "99996",
+      "payerName": "TEST HEALTH",
+      "payerId": "TESTPAYER"
+    },
+    {
+      "id": "99995",
+      "payerName": "HAHAHS",
+      "payerId": "99911"
+    },
+    {
+      "id": "99994",
+      "payerName": "FL MEDICINE",
+      "payerId": "11199"
+    }
+  ]
+}

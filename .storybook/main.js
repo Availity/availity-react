@@ -1,20 +1,41 @@
-const path = require('path');
-
 module.exports = {
-  stories: ['../packages/**/*.stories.tsx'],
-  addons: ['@storybook/addon-essentials', '@storybook/addon-a11y'],
-  staticDirs: ['../static'],
+  stories: ['./*.stories.mdx', './stories/*.stories.mdx', './stories/*.stories.tsx', '../packages/**/*.stories.tsx'],
+  addons: ['@storybook/addon-essentials', '@storybook/addon-a11y', '@storybook/addon-docs'],
+  staticDirs: ['../static', './static'],
+  typescript: {
+    reactDocgenTypescriptOptions: {
+      shouldExtractLiteralValuesFromEnum: true,
+      propFilter: (prop) => (prop.parent ? !/node_modules\/(?!reactstrap).*/.test(prop.parent.fileName) : true),
+    },
+  },
   webpackFinal: async (config) => {
     config.module.rules.push(
       {
         test: /\.scss$/,
+        use: [
+          'style-loader',
+          {
+            loader: 'css-loader',
+            options: {
+              modules: {
+                localIdentName: '[name]__[local]__[hash:base64:5]',
+              },
+            },
+          },
+          'sass-loader',
+        ],
+        include: /\.module\.scss$/,
+      },
+      {
+        test: /\.scss$/,
         use: ['style-loader', 'css-loader', 'sass-loader'],
-        include: path.resolve(__dirname, '../'),
+        exclude: /\.module\.scss$/,
       },
       {
         test: /\.(js|jsx|ts|tsx)$/,
         loader: require.resolve('babel-loader'),
         options: {
+          sourceType: 'unambiguous',
           presets: [['react-app', { flow: false, typescript: true }]],
         },
         include: new RegExp(`node_modules[/\\\\](?=(@availity)).*`),

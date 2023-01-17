@@ -1,5 +1,6 @@
 ---
 title: <Feedback />
+slug: feedback
 ---
 
 ### Example

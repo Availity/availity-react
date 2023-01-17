@@ -1,10 +1,9 @@
 import React from 'react';
-import { render, waitFor, fireEvent, cleanup } from '@testing-library/react';
+import { render, waitFor, fireEvent } from '@testing-library/react';
 import { Button } from 'reactstrap';
 import * as yup from 'yup';
-import { Form, Input, Feedback } from '..';
 
-afterEach(cleanup);
+import { Form, Input, Feedback } from '../src';
 
 describe('Feedback', () => {
   test('renders feedback error', async () => {
@@ -29,7 +28,7 @@ describe('Feedback', () => {
     await waitFor(() => {
       const feedback = getByTestId('hello-feedback');
 
-      expect(feedback.textContent).toBe('Oops');
+      expect(feedback.textContent).toBe('Error:Oops');
       expect(feedback).toHaveAttribute('id', 'hello-feedback');
     });
   });

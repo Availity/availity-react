@@ -1,4 +1,4 @@
-type SkeletonType = {
+export type SkeletonType = {
   width?: string | number;
   height?: string | number;
 };

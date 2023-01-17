@@ -1,7 +1,40 @@
-# Change Log
+# Changelog
 
-All notable changes to this project will be documented in this file.
-See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
+This file was generated using [@jscutlery/semver](https://github.com/jscutlery/semver).
+
+## [4.5.1](https://github.com/Availity/availity-react/compare/@availity/reactstrap-validation-date@4.5.0...@availity/reactstrap-validation-date@4.5.1) (2022-11-08)
+
+
+
+# [4.5.0](https://github.com/Availity/availity-react/compare/@availity/reactstrap-validation-date@4.4.1...@availity/reactstrap-validation-date@4.5.0) (2022-08-29)
+
+
+### Features
+
+* **reactstrap-validation-date:** switch to combobox, resolve accessibility warnings ([30f8eb9](https://github.com/Availity/availity-react/commit/30f8eb9294cff8e6831393fb6b97bca8bfbce7b4))
+
+
+
+## [4.4.1](https://github.com/Availity/availity-react/compare/@availity/reactstrap-validation-date@4.4.0...@availity/reactstrap-validation-date@4.4.1) (2022-06-14)
+
+
+
+# [4.4.0](https://github.com/Availity/availity-react/compare/@availity/reactstrap-validation-date@4.3.4...@availity/reactstrap-validation-date@4.4.0) (2022-06-14)
+
+
+### Features
+
+* **form:** add currency input ([fa9eea6](https://github.com/Availity/availity-react/commit/fa9eea6a3b3dd2ef741a0658c102e36c6db5288c))
+
+
+
+## [4.3.4](https://github.com/Availity/availity-react/compare/@availity/reactstrap-validation-date@4.3.3...@availity/reactstrap-validation-date@4.3.4) (2022-06-10)
+
+
+
+## [4.3.3](https://github.com/Availity/availity-react/compare/@availity/reactstrap-validation-date@4.3.2...@availity/reactstrap-validation-date@4.3.3) (2022-05-24)
+
+
 
 ## 4.3.2 (2022-01-18)
 

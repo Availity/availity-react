@@ -26,8 +26,19 @@ module.exports = {
             ],
           },
           'components/app-icon',
-          'components/authorize',
+          'components/app-tiles',
+          {
+            type: 'category',
+            label: 'Authorize',
+            items: [
+              'components/authorize/index',
+              'components/authorize/authorize',
+              'components/authorize/useAuthorize',
+            ],
+          },
+          // 'components/authorize',
           'components/avatar',
+          'components/button',
           'components/breadcrumbs',
           {
             type: 'category',
@@ -64,9 +75,18 @@ module.exports = {
               'components/hooks/use-permissions',
               'components/hooks/use-organizations',
               'components/hooks/use-providers',
+              'components/hooks/use-window-dimensions',
             ],
           },
           'components/icon',
+          {
+            type: 'category',
+            label: 'JSON Viewer',
+            items: [
+              'components/json-viewer/index',
+              'components/json-viewer/json-viewer',
+            ],
+          },
           'components/link',
           'components/list-group',
           {
@@ -92,13 +112,14 @@ module.exports = {
               'components/pagination/context',
             ],
           },
+          'components/badge',
           'components/progress',
           {
             type: 'category',
             label: 'Spaces',
             items: [
               'components/spaces/index',
-              'components/spaces/spaces',
+              'components/spaces/space',
               'components/spaces/images',
               'components/spaces/disclaimer',
               'components/spaces/agreement',
@@ -127,6 +148,7 @@ module.exports = {
             ],
           },
           'components/training-link',
+          'components/tree',
           {
             type: 'category',
             label: 'Typography',
@@ -161,8 +183,8 @@ module.exports = {
               'form/date/index',
               'form/date/components/date',
               'form/date/components/date-field',
-              'form/date/components/date-range-field',
               'form/date/components/date-range',
+              'form/date/components/date-range-field',
             ],
           },
           {
@@ -184,6 +206,7 @@ module.exports = {
               'form/select/components/resource-select',
               'form/select/components/region-select',
               'form/select/components/organization-select',
+              'form/select/components/payer-select',
             ],
           },
           {

@@ -57,13 +57,20 @@ const Checkbox = ({
 
 Checkbox.propTypes = {
   className: PropTypes.string,
+  /** Disables the checkbox. */
   disabled: PropTypes.bool,
   groupClassName: PropTypes.string,
+  /** Should match <CheckboxGroup /> name to accessibly link input to form feedback. */
   groupName: PropTypes.string,
+  /** Help topic id, adds <FieldHelpIcon/> next to the label (should not be within label for accessibility). */
   helpId: PropTypes.string,
+  /** Id and name for the checkbox. */
   id: PropTypes.string,
+  /** Will render the checkbox inline with other checkboxes. Default: true. */
   inline: PropTypes.bool,
+  /** Label for the checkbox. */
   label: PropTypes.string,
+  /** Value of the checkbox. */
   value: PropTypes.oneOfType([PropTypes.string, PropTypes.bool, PropTypes.object]),
 };
 

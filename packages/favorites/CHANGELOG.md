@@ -1,7 +1,113 @@
-# Change Log
+# Changelog
 
-All notable changes to this project will be documented in this file.
-See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
+This file was generated using [@jscutlery/semver](https://github.com/jscutlery/semver).
+
+## [3.4.3](https://github.com/Availity/availity-react/compare/@availity/favorites@3.4.2...@availity/favorites@3.4.3) (2022-11-28)
+
+
+
+## [3.4.2](https://github.com/Availity/availity-react/compare/@availity/favorites@3.4.1...@availity/favorites@3.4.2) (2022-06-27)
+
+
+### Bug Fixes
+
+* **favorites:** add message-core subscription for `av:favorites:update` ([55db901](https://github.com/Availity/availity-react/commit/55db90132a2713bea0815d739b645ba52d8d9ed9))
+* **favorites:** fix tests for recieving postMessages from elsewhere ([bf58f1a](https://github.com/Availity/availity-react/commit/bf58f1aeec3c5e70a2e8a25eec036edb52f36a98))
+* **favorites:** remove console.log from test ([32d6904](https://github.com/Availity/availity-react/commit/32d6904d6bb957fdc2a9c3d7518c40a46dfab830))
+
+
+
+## [3.4.1](https://github.com/Availity/availity-react/compare/@availity/favorites@3.4.0...@availity/favorites@3.4.1) (2022-06-14)
+
+
+
+# [3.4.0](https://github.com/Availity/availity-react/compare/@availity/favorites@3.3.2...@availity/favorites@3.4.0) (2022-06-14)
+
+
+### Features
+
+* **form:** add currency input ([fa9eea6](https://github.com/Availity/availity-react/commit/fa9eea6a3b3dd2ef741a0658c102e36c6db5288c))
+
+
+
+## [3.3.2](https://github.com/Availity/availity-react/compare/@availity/favorites@3.3.1...@availity/favorites@3.3.2) (2022-06-10)
+
+
+
+## [3.3.1](https://github.com/Availity/availity-react/compare/@availity/favorites@3.3.0...@availity/favorites@3.3.1) (2022-05-24)
+
+
+
+# 3.3.0 (2022-05-09)
+
+
+### Features
+
+* **favorites:** added remove content for tooltip and refactored tests to fix order bug and improve tests ([e58b5a0](https://github.com/Availity/availity-react/commit/e58b5a0026b406656f1e036534ae9a155a5665f8))
+
+
+
+
+
+# 3.2.0 (2022-05-03)
+
+
+### Features
+
+* **favorites:** add `disabled` prop to heart ([fb42164](https://github.com/Availity/availity-react/commit/fb42164ac413676e8c3e35484566fca0cb46a70d))
+* **favorites:** add test for `disabled` prop ([93031cb](https://github.com/Availity/availity-react/commit/93031cb07c0634023af1eb984dd3ccc917aa866d))
+
+
+
+
+
+# 3.1.0 (2022-03-08)
+
+
+### Features
+
+* **favorites:** add `onFavoritesChange` prop to provider ([b7984e0](https://github.com/Availity/availity-react/commit/b7984e05cac41da672410707c6ef4050aecb2e59))
+* **favorites:** add `size` prop to heart ([5057bcf](https://github.com/Availity/availity-react/commit/5057bcfcc9af7df0e0e79370bc6e8a8e8a04da93))
+
+
+
+
+
+# 3.0.0 (2022-03-03)
+
+
+### Bug Fixes
+
+* **favorites:** restore default export ([4b334ae](https://github.com/Availity/availity-react/commit/4b334ae9b987bbce6c9a6c73b7a5281fdb4e11af))
+
+
+### Features
+
+* **favorites:** improved accessibility for loading state ([9038803](https://github.com/Availity/availity-react/commit/90388033f095f312d0ea8e2ca124bb875cb54c6c))
+* **favorites:** initial refactor removing bootstrap PF-2802 ([f05a093](https://github.com/Availity/availity-react/commit/f05a0939c596ceb82d2c6849b87e9aea92306d21))
+* **favorites:** remove logging ([3c8de83](https://github.com/Availity/availity-react/commit/3c8de8315eb0906ba7076397e89a92a35dd1fbda))
+
+
+* refactor(favorites)!: remove bootstrap, add react-query, rewrite to TypeScript ([eebe86b](https://github.com/Availity/availity-react/commit/eebe86b450024b57f73bac8f45219b9803fe8651))
+
+
+### BREAKING CHANGES
+
+* Adds react-query v3 as a peer dependency
+* Requires all components to be used inside react-query's QueryClientProvider
+* No longer requires availity-uikit or any other Bootstrap dependent
+
+
+
+
+
+## 2.3.4 (2022-02-18)
+
+**Note:** Version bump only for package @availity/favorites
+
+
+
+
 
 ## [2.3.3](https://github.com/Availity/availity-react/compare/@availity/favorites@2.3.2...@availity/favorites@2.3.3) (2021-12-20)
 

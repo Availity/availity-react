@@ -4,6 +4,7 @@ exports[`TableSorter should render sort options in dropdown menu 1`] = `
 <div>
   <div
     class="table-controls"
+    data-testid="test-controls-container"
   >
     <form
       class="form-inline"
@@ -29,7 +30,7 @@ exports[`TableSorter should render sort options in dropdown menu 1`] = `
             data-testid="sorter_toggle"
             type="button"
           >
-             First name
+            First Name
           </button>
           <div
             aria-hidden="true"
@@ -45,7 +46,7 @@ exports[`TableSorter should render sort options in dropdown menu 1`] = `
               tabindex="0"
               type="button"
             >
-               First name
+              First Name
             </button>
           </div>
           <button
@@ -71,6 +72,7 @@ exports[`TableSorter should render table Sorter 1`] = `
 <div>
   <div
     class="table-controls"
+    data-testid="test-controls-container"
   >
     <form
       class="form-inline"
@@ -142,6 +144,7 @@ exports[`TableSorter should show ascending icon 1`] = `
 <div>
   <div
     class="table-controls"
+    data-testid="test-controls-container"
   >
     <form
       class="form-inline"
@@ -167,7 +170,7 @@ exports[`TableSorter should show ascending icon 1`] = `
             data-testid="sorter_toggle"
             type="button"
           >
-             First name
+            First Name
           </button>
           <div
             aria-hidden="true"
@@ -183,7 +186,7 @@ exports[`TableSorter should show ascending icon 1`] = `
               tabindex="0"
               type="button"
             >
-               First name
+              First Name
             </button>
           </div>
           <button
@@ -209,6 +212,7 @@ exports[`TableSorter should show descending icon 1`] = `
 <div>
   <div
     class="table-controls"
+    data-testid="test-controls-container"
   >
     <form
       class="form-inline"
@@ -234,7 +238,7 @@ exports[`TableSorter should show descending icon 1`] = `
             data-testid="sorter_toggle"
             type="button"
           >
-             First name
+            First Name
           </button>
           <div
             aria-hidden="true"
@@ -250,7 +254,7 @@ exports[`TableSorter should show descending icon 1`] = `
               tabindex="0"
               type="button"
             >
-               First name
+              First Name
             </button>
           </div>
           <button

@@ -1,7 +1,234 @@
-# Change Log
+# Changelog
 
-All notable changes to this project will be documented in this file.
-See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
+This file was generated using [@jscutlery/semver](https://github.com/jscutlery/semver).
+
+## [11.3.1](https://github.com/Availity/availity-react/compare/@availity/page-header@11.3.0...@availity/page-header@11.3.1) (2022-06-14)
+
+
+
+# [11.3.0](https://github.com/Availity/availity-react/compare/@availity/page-header@11.2.9...@availity/page-header@11.3.0) (2022-06-14)
+
+
+### Features
+
+* **form:** add currency input ([fa9eea6](https://github.com/Availity/availity-react/commit/fa9eea6a3b3dd2ef741a0658c102e36c6db5288c))
+
+
+
+## [11.2.9](https://github.com/Availity/availity-react/compare/@availity/page-header@11.2.8...@availity/page-header@11.2.9) (2022-06-10)
+
+
+
+## [11.2.8](https://github.com/Availity/availity-react/compare/@availity/page-header@11.2.7...@availity/page-header@11.2.8) (2022-05-26)
+
+
+### Bug Fixes
+
+* update peerDep ranges ([1e26d13](https://github.com/Availity/availity-react/commit/1e26d1388383fdbd1dc919ab97c1b6f1c5a047be))
+
+
+
+## [11.2.7](https://github.com/Availity/availity-react/compare/@availity/page-header@11.2.6...@availity/page-header@11.2.7) (2022-05-24)
+
+
+### Bug Fixes
+
+* upgrade yup and update sb stories ([68aeafe](https://github.com/Availity/availity-react/commit/68aeafe4fd7d90d7c88dbb24636ba7770fe87aa3))
+
+
+
+## 11.2.6 (2022-05-20)
+
+**Note:** Version bump only for package @availity/page-header
+
+
+
+
+
+## [11.2.5](https://github.com/Availity/availity-react/compare/@availity/page-header@11.2.4...@availity/page-header@11.2.5) (2022-05-18)
+
+**Note:** Version bump only for package @availity/page-header
+
+
+
+
+
+## [11.2.4](https://github.com/Availity/availity-react/compare/@availity/page-header@11.2.3...@availity/page-header@11.2.4) (2022-05-11)
+
+**Note:** Version bump only for package @availity/page-header
+
+
+
+
+
+## [11.2.3](https://github.com/Availity/availity-react/compare/@availity/page-header@11.2.2...@availity/page-header@11.2.3) (2022-05-11)
+
+**Note:** Version bump only for package @availity/page-header
+
+
+
+
+
+## 11.2.2 (2022-05-09)
+
+**Note:** Version bump only for package @availity/page-header
+
+
+
+
+
+## [11.2.1](https://github.com/Availity/availity-react/compare/@availity/page-header@11.2.0...@availity/page-header@11.2.1) (2022-05-03)
+
+**Note:** Version bump only for package @availity/page-header
+
+
+
+
+
+# [11.2.0](https://github.com/Availity/availity-react/compare/@availity/page-header@11.1.30...@availity/page-header@11.2.0) (2022-04-20)
+
+
+### Features
+
+* **page-header:** responsiveness and debootstrapifying ([ce4b2f9](https://github.com/Availity/availity-react/commit/ce4b2f9086d2fe2c808297fc606db6581b768a7b))
+
+
+
+
+
+## [11.1.30](https://github.com/Availity/availity-react/compare/@availity/page-header@11.1.29...@availity/page-header@11.1.30) (2022-04-14)
+
+
+### Bug Fixes
+
+* **page-header:** account for payerId with multiple associated spaces and no spaceId passed ([871caf0](https://github.com/Availity/availity-react/commit/871caf05ad4d94bcd51f3df8a899d7a36191a227))
+
+
+
+
+
+## [11.1.29](https://github.com/Availity/availity-react/compare/@availity/page-header@11.1.28...@availity/page-header@11.1.29) (2022-04-13)
+
+**Note:** Version bump only for package @availity/page-header
+
+
+
+
+
+## [11.1.28](https://github.com/Availity/availity-react/compare/@availity/page-header@11.1.27...@availity/page-header@11.1.28) (2022-04-13)
+
+**Note:** Version bump only for package @availity/page-header
+
+
+
+
+
+## [11.1.27](https://github.com/Availity/availity-react/compare/@availity/page-header@11.1.25...@availity/page-header@11.1.27) (2022-03-09)
+
+**Note:** Version bump only for package @availity/page-header
+
+
+
+
+
+## 11.1.26 (2022-03-04)
+
+
+### Bug Fixes
+
+* **page-header:** dont send in empty payerId ([9b9e551](https://github.com/Availity/availity-react/commit/9b9e5512216cefffe2e3f67ca223e50e805dfc90))
+
+
+
+
+
+## [11.1.25](https://github.com/Availity/availity-react/compare/@availity/page-header@11.1.24...@availity/page-header@11.1.25) (2022-02-24)
+
+**Note:** Version bump only for package @availity/page-header
+
+
+
+
+
+## [11.1.24](https://github.com/Availity/availity-react/compare/@availity/page-header@11.1.23...@availity/page-header@11.1.24) (2022-02-24)
+
+**Note:** Version bump only for package @availity/page-header
+
+
+
+
+
+## [11.1.23](https://github.com/Availity/availity-react/compare/@availity/page-header@11.1.22...@availity/page-header@11.1.23) (2022-02-23)
+
+**Note:** Version bump only for package @availity/page-header
+
+
+
+
+
+## 11.1.22 (2022-02-23)
+
+**Note:** Version bump only for package @availity/page-header
+
+
+
+
+
+## [11.1.21](https://github.com/Availity/availity-react/compare/@availity/page-header@11.1.20...@availity/page-header@11.1.21) (2022-02-18)
+
+**Note:** Version bump only for package @availity/page-header
+
+
+
+
+
+## 11.1.20 (2022-02-17)
+
+**Note:** Version bump only for package @availity/page-header
+
+
+
+
+
+## [11.1.19](https://github.com/Availity/availity-react/compare/@availity/page-header@11.1.18...@availity/page-header@11.1.19) (2022-02-11)
+
+**Note:** Version bump only for package @availity/page-header
+
+
+
+
+
+## [11.1.18](https://github.com/Availity/availity-react/compare/@availity/page-header@11.1.17...@availity/page-header@11.1.18) (2022-02-04)
+
+**Note:** Version bump only for package @availity/page-header
+
+
+
+
+
+## 11.1.17 (2022-02-03)
+
+**Note:** Version bump only for package @availity/page-header
+
+
+
+
+
+## [11.1.16](https://github.com/Availity/availity-react/compare/@availity/page-header@11.1.15...@availity/page-header@11.1.16) (2022-01-27)
+
+**Note:** Version bump only for package @availity/page-header
+
+
+
+
+
+## [11.1.15](https://github.com/Availity/availity-react/compare/@availity/page-header@11.1.14...@availity/page-header@11.1.15) (2022-01-25)
+
+**Note:** Version bump only for package @availity/page-header
+
+
+
+
 
 ## [11.1.14](https://github.com/Availity/availity-react/compare/@availity/page-header@11.1.12...@availity/page-header@11.1.14) (2022-01-19)
 

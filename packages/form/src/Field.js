@@ -125,29 +125,46 @@ const Field = ({
 };
 
 Field.propTypes = {
+  /** Identifies the field and matches the validation schema. */
   name: PropTypes.string.isRequired,
+  /** Append an InputAddon to the end of the Input. */
   append: PropTypes.node,
+  /** Optionally override the way the input is rendered with child render prop. */
   children: PropTypes.func,
+  /** Disable the <Field />. */
   disabled: PropTypes.bool,
+  /* Object mapping number of columns to the label and input. */
   grid: PropTypes.object,
+  /** Pass additional attributes to Form Group */
   groupAttrs: PropTypes.object,
+  /** Help topic id, adds <FieldHelpIcon/> next to the label (should not be within label for accessibility). */
   helpId: PropTypes.string,
+  /** Display info text below the field */
   helpMessage: PropTypes.node,
+  /** Class names passed to the input tag. */
   inputClass: PropTypes.string,
+  /** Contents of the field label. Renders within a Reactstrap <Label />. */
   label: PropTypes.node,
+  /** Pass additional attributes to the label */
   labelAttrs: PropTypes.object,
+  /** Class names passed to the label tag. */
   labelClass: PropTypes.string,
+  /** Used to hide the label. */
   labelHidden: PropTypes.bool,
+  /** Append an InputAddon to the start of the Input. */
   prepend: PropTypes.node,
+  /** Mark the field as read only. */
   readOnly: PropTypes.bool,
+  /** Will add aria-required to input, will add <RequiredAsterisk /> to label. */
   required: PropTypes.bool,
+  /** Size of the input field. Potential values: "lg", "sm" */
   size: PropTypes.string,
+  /** The Node or tag to substitute as the input field. Default is reactstrap Input tag. */
   tag: PropTypes.oneOfType([PropTypes.func, PropTypes.string]),
 };
 
 Field.defaultProps = {
   tag: RsInput,
-  required: false,
 };
 
 export default Field;

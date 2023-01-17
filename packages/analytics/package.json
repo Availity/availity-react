@@ -1,6 +1,6 @@
 {
   "name": "@availity/analytics",
-  "version": "1.4.0",
+  "version": "1.5.2",
   "description": "Track click and page view events for the user.",
   "keywords": [
     "react",
@@ -20,9 +20,13 @@
   "author": "Kyle Gray <kyle.gray@gmail.com>",
   "main": "src/index.js",
   "types": "src/index.d.ts",
+  "scripts": {
+    "publish": "yarn npm publish --tolerate-republish --access public",
+    "publish:canary": "yarn npm publish --access public --tag canary"
+  },
   "dependencies": {
-    "@availity/analytics-core": "^3.1.5",
-    "prop-types": "^15.7.2"
+    "@availity/analytics-core": "^4.0.1",
+    "prop-types": "^15.8.1"
   },
   "devDependencies": {
     "react": "^17.0.2",

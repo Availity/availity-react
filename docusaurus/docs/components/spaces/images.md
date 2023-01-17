@@ -2,6 +2,8 @@
 title: <SpacesImage />
 ---
 
+This component must be a descendent of the `<Spaces/>` provider. Display an image based on the spaceId or payerId received from the `<Spaces />` provider.
+
 ### Example
 
 ```jsx
@@ -38,6 +40,8 @@ Required if `payerId` is not provided. The payer spaces ID of the payer to rende
 #### `payerId?: string`
 
 Required if `spaceId` is not provided. The payer ID of the payer to render the image for. If no `spaceId` or `payerId` is provided, the first space in the `spaces` array is used. Note: This is only to be used when the Spaces provider should only ever contain a single space.
+
+> Note: If the payerId is associated with more than one payer space, the order in which they are returned should not be relied upon. If a specific payer space is required, you'll need to filter the list that is returned.
 
 #### `skeletonProps?: object`
 

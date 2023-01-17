@@ -1,6 +1,6 @@
 {
   "name": "@availity/date",
-  "version": "3.4.1",
+  "version": "4.2.2",
   "description": "Wrapper for react-dates to work with formik",
   "keywords": [
     "availity",
@@ -18,32 +18,43 @@
   },
   "license": "MIT",
   "author": "Tyson Warner <tyson.warner@availity.com>",
-  "main": "index.js",
-  "types": "index.d.ts",
+  "browser": "./dist/index.js",
+  "main": "./dist/index.js",
+  "module": "./dist/index.mjs",
+  "types": "./dist/index.d.ts",
+  "scripts": {
+    "build": "tsup --loader \".js=jsx\" --dts",
+    "dev": "tsup src/index.js --format esm,cjs --loader \".js=jsx\" --watch --dts",
+    "clean": "rm -rf dist",
+    "clean:nm": "rm -rf node_modules",
+    "bundlesize": "bundlesize",
+    "publish": "yarn npm publish --tolerate-republish --access public",
+    "publish:canary": "yarn npm publish --access public --tag canary"
+  },
   "dependencies": {
-    "@availity/react-dates": "^21.12.1",
-    "@types/react-dates": "^21.8.2",
+    "@availity/react-dates": "^21.13.0",
     "classnames": "^2.3.1",
     "lodash": "^4.17.21",
-    "moment": "^2.29.1",
-    "prop-types": "^15.7.2"
+    "moment": "^2.29.4",
+    "prop-types": "^15.8.1"
   },
   "devDependencies": {
-    "@availity/form": "^1.2.3",
-    "@availity/yup": "^3.2.0",
-    "formik": "^2.2.8",
+    "@availity/form": "workspace:*",
+    "@availity/yup": "^5.1.0",
+    "@types/react-dates": "^21.8.3",
+    "esbuild-sass-plugin": "^2.2.6",
+    "formik": "^2.2.9",
     "react": "^17.0.2",
     "react-dom": "^17.0.2",
-    "reactstrap": "^8.9.0",
-    "yup": "^0.30.0"
+    "reactstrap": "^8.10.1",
+    "tsup": "^5.12.7",
+    "typescript": "^4.6.4"
   },
   "peerDependencies": {
     "@availity/form": "^1.1.0",
-    "@availity/yup": "^3.0.2",
     "formik": "^2.0.1",
     "react": ">=16.3.0",
-    "reactstrap": "^8.0.0 || ^7.0.0 || ^6.0.0",
-    "yup": "^0.27.0"
+    "reactstrap": "^8.0.0"
   },
   "publishConfig": {
     "access": "public"

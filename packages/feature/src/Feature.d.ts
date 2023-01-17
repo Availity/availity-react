@@ -1,5 +1,5 @@
 export interface FeatureProps {
-  features: string | Array<Array<String> | string>;
+  features: string | Array<Array<string> | string>;
   loader?: boolean | React.ReactNode;
   whenDisabled?: React.ReactNode;
   negate?: boolean;

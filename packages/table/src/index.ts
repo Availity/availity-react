@@ -1,4 +1,4 @@
-export { ActionCell, BadgeCell, CurrencyCell, DateCell, IconCell } from './CellDefinitions';
+export { ActionCell, BadgeCell, CurrencyCell, DateCell, IconCell, IconWithTooltipCell } from './CellDefinitions';
 
 export type { ActionCellConfig, CurrencyCellConfig, DateTimeCellConfig, IconConfig } from './CellDefinitions';
 
@@ -16,13 +16,15 @@ export type {
   TableInstance,
   CurrentTableState,
   ExtendedTableHeader,
+  IdType,
 } from './types';
 
 export { default } from './Table';
 
-export { useTableContext, TableContext, AvTableContext } from './TableContext';
+export { useTableContext, TableContext } from './TableContext';
+export type { AvTableContext } from './TableContext';
 
-export { default as TableProvider, TableProviderProps } from './TableProvider';
+export { default as TableContent } from './TableContent';
 
 export { default as ScrollableContainer } from './ScrollableContainer';
 

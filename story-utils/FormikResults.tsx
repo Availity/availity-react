@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
-import { Form } from '@availity/form';
-import { FormikConfig, FormikValues, useFormikContext } from 'formik';
+import { Form, FormProps } from '@availity/form';
+import { useFormikContext } from 'formik';
+import moment from 'moment';
 
 type Result = {
   errors: string;
@@ -21,27 +22,29 @@ const Results = () => {
 
   useEffect(() => {
     if (submitCount > 0) {
-      setSubmitted(new Date().toJSON());
+      setSubmitted(moment().format('h:mm:ss a'));
     }
   }, [submitCount]);
 
   return submitted ? (
     <div>
-      <p>Results (submitted {submitted}):</p>
-      <p>Errors: {results?.errors}</p>
-      <div>
-        Values: <pre>{results?.values}</pre>
-      </div>
+      <p>Results as of {submitted}</p>
+      <p>Errors:</p>
+      <pre>{results?.errors}</pre>
+      <p>Values:</p>
+      <pre>{results?.values}</pre>
     </div>
   ) : null;
 };
 
-const FormikResults: React.FC<FormikConfig<FormikValues>> = ({ children, ...props }) => (
-  <Form {...props}>
-    {children}
-    <hr />
-    <Results />
-  </Form>
-);
+function FormikResults<FormValues>({ children, ...props }: FormProps<FormValues>): JSX.Element {
+  return (
+    <Form {...props}>
+      {children}
+      <hr />
+      <Results />
+    </Form>
+  );
+}
 
 export default FormikResults;

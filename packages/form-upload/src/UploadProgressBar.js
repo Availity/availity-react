@@ -33,6 +33,7 @@ const UploadProgressBar = ({ upload, ...rest }) => {
 
   const verifyPassword = (event) => {
     event.preventDefault();
+    event.stopPropagation();
     upload.sendPassword(password);
     toggleModal();
   };
@@ -84,6 +85,7 @@ const UploadProgressBar = ({ upload, ...rest }) => {
 };
 
 UploadProgressBar.propTypes = {
+  /** The upload instance returned by creating a new Upload via upload-core. */
   upload: PropTypes.shape({
     sendPassword: PropTypes.func.isRequired,
     onProgress: PropTypes.array.isRequired,
@@ -94,11 +96,16 @@ UploadProgressBar.propTypes = {
     id: PropTypes.string.isRequired,
     status: PropTypes.string,
   }).isRequired,
+  /** Callback function to hook into the onProgress within the Upload instance provided in the upload prop. */
   onProgress: PropTypes.func,
+  /** Callback function to hook into the onSuccess within the Upload instance provided in the upload prop. */
   onSuccess: PropTypes.func,
+  /** Callback function to hook into the onError within the Upload instance provided in the upload prop. */
   onError: PropTypes.func,
+  /** When true the progress bar has animated stripes while uploading is in progress. */
   animated: PropTypes.bool,
   className: PropTypes.string,
+  /** Triggers the "striped" style in the progress bar. */
   striped: PropTypes.bool,
 };
 

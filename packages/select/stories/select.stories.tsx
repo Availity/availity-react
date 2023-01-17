@@ -1,69 +1,14 @@
 /* eslint-disable no-console */
 import React from 'react';
 import { Meta, Story } from '@storybook/react';
-import { Button } from 'reactstrap';
-import AvApi from '@availity/api-axios';
-import * as yup from 'yup';
-import '@availity/yup';
-import { Feedback, FormGroup, Field, Label } from '@availity/form';
+import { Button, Col, Row } from 'reactstrap';
+import { Field } from '@availity/form';
 
-import Select, { SelectField, ResourceSelect } from '..';
+import Select from '../src';
 // import README from '../README.md';
 
 import FormikResults from '../../../story-utils/FormikResults';
-
-const options = [
-  { label: 'Option 1', value: 'value for option 1' },
-  { label: 'Option 2', value: 'value for option 2' },
-  { label: 'Option 3', value: 'value for option 3' },
-  { label: 'Option 4', value: 'value for option 4' },
-];
-const autofillOptions = [
-  {
-    label: 'Option 1',
-    value: {
-      autoFill1: 'option 1 autofill value 1',
-      autoFill2: 'option 1 autofill value 2',
-    },
-  },
-  {
-    label: 'Option 2',
-    value: {
-      autoFill1: 'option 2 autofill value 1',
-      autoFill2: 'option 2 autofill value 2',
-    },
-  },
-  {
-    label: 'Option 3',
-    value: {
-      autoFill1: 'option 3 autofill value 1',
-      autoFill2: 'option 3 autofill value 2',
-    },
-  },
-  {
-    label: 'Option 4',
-    value: {
-      autoFill1: 'option 4 autofill value 1',
-      autoFill2: 'option 4 autofill value 2',
-    },
-  },
-];
-const singleValueSchema = (name: string, required: boolean) =>
-  yup.object().shape({
-    [name]: yup.string().isRequired(required, 'This field is required.').nullable(),
-  });
-
-const multiValueSchema = (name: string, required: boolean, min: number, max: number) =>
-  yup.object().shape({
-    [name]: yup
-      .array()
-      .of(yup.string())
-      .min(min, `Must select at least ${min} option${min !== 1 && 's'}.`)
-      .max(max, `Cannot select more than ${max} option${max !== 1 && 's'}.`)
-      .isRequired(required, 'This field is required.'),
-  });
-const avCustomResource = new AvApi({ name: 'my-custom-resource' });
-const avGraphqlResource = new AvApi({ name: 'my-custom-graphql' });
+import { singleValueSchema, multiValueSchema, options, SelectedOption, autofillOptions } from './utils';
 
 export default {
   title: 'Form Components/Select',
@@ -78,6 +23,7 @@ export default {
     disabled: false,
     helpMessage: 'This is a message to provide guidance',
     isMulti: false,
+    isClearable: false,
     min: 2,
     max: 3,
     raw: false,
@@ -85,48 +31,13 @@ export default {
   },
 } as Meta;
 
-export const Default: Story = ({ autofill, creatable, disabled, isMulti, max, min, raw, required }) => (
-  <FormikResults
-    onSubmit={() => {
-      console.log('submitted');
-    }}
-    initialValues={{
-      standAlone: undefined,
-      autoFill1: '',
-      autoFill2: '',
-    }}
-    validationSchema={
-      isMulti ? multiValueSchema('standAlone', required, min, max) : singleValueSchema('standAlone', required)
-    }
-  >
-    <Select
-      name="standAlone"
-      autofill={autofill}
-      isMulti={isMulti}
-      creatable={creatable}
-      options={autofill ? autofillOptions : options}
-      maxLength={max}
-      aria-label="stand-alone"
-      raw={raw}
-      isDisabled={disabled}
-    />
-    {autofill && <Field name="autoFill1" type="text" label="Autofill Value 1" />}
-    {autofill && <Field name="autoFill2" type="text" label="Autofill Value 2" />}
-    <Button className="mt-3" color="primary" type="submit">
-      Submit
-    </Button>
-  </FormikResults>
-);
-Default.args = {};
-Default.storyName = 'default';
-
-export const WithLabel: Story = ({
+export const Default: Story = ({
   autofill,
   creatable,
   disabled,
-  errorMessage,
+  helpMessage,
   isMulti,
-  label,
+  isClearable,
   max,
   min,
   raw,
@@ -137,190 +48,61 @@ export const WithLabel: Story = ({
       console.log('submitted');
     }}
     initialValues={{
-      standAloneWithLabel: null,
+      select: undefined,
       autoFill1: '',
       autoFill2: '',
     }}
     validationSchema={
       isMulti
-        ? multiValueSchema('standAloneWithLabel', required, min, max)
-        : singleValueSchema('standAloneWithLabel', required)
+        ? multiValueSchema('select', required, min, max, !autofill && !raw)
+        : singleValueSchema('select', required, !autofill && !raw)
     }
   >
-    <FormGroup for="standAloneWithLabel">
-      <Label for="standAloneWithLabel" required={required}>
-        {label}
-      </Label>
-      <Select
-        name="standAloneWithLabel"
-        autofill={autofill}
-        maxLength={max}
-        isMulti={isMulti}
-        options={autofill ? autofillOptions : options}
-        creatable={creatable}
-        raw={raw}
-        isDisabled={disabled}
-      />
-      <Feedback name="standAloneWithLabel">{errorMessage}</Feedback>
-    </FormGroup>
-    {autofill && <Field name="autoFill1" type="text" label="Autofill Value 1" />}
-    {autofill && <Field name="autoFill2" type="text" label="Autofill Value 2" />}
-    <Button color="primary" type="submit">
-      Submit
-    </Button>
+    <Row>
+      <Col>
+        {autofill ? (
+          <>
+            <Select
+              name="select"
+              aria-label="stand-alone"
+              autofill
+              creatable={creatable}
+              helpMessage={helpMessage}
+              isDisabled={disabled}
+              isMulti={isMulti}
+              isClearable={isClearable}
+              maxLength={max}
+              options={autofillOptions}
+              raw={raw}
+              required={required}
+            />
+            <Field name="autoFill1" type="text" label="Autofill Value 1" />
+            <Field name="autoFill2" type="text" label="Autofill Value 2" />
+          </>
+        ) : (
+          <Select
+            name="select"
+            aria-label="stand-alone"
+            creatable={creatable}
+            helpMessage={helpMessage}
+            isDisabled={disabled}
+            isMulti={isMulti}
+            isClearable={isClearable}
+            maxLength={max}
+            options={options}
+            raw={raw}
+            required={required}
+          />
+        )}
+        <Button className="mt-3" color="primary" type="submit">
+          Submit
+        </Button>
+      </Col>
+      <Col md="5">
+        <SelectedOption field="select" />
+      </Col>
+    </Row>
   </FormikResults>
 );
-WithLabel.args = {
-  errorMessage: 'This field is invalid',
-  label: 'Select Label',
-};
-WithLabel.storyName = 'with label';
 
-export const _SelectField: Story = ({
-  autofill,
-  creatable,
-  disabled,
-  helpId,
-  helpMessage,
-  isMulti,
-  label,
-  max,
-  min,
-  raw,
-  required,
-}) => (
-  <FormikResults
-    onSubmit={() => {
-      console.log('submitted');
-    }}
-    initialValues={{
-      SelectField: undefined,
-      autoFill1: '',
-      autoFill2: '',
-    }}
-    validationSchema={
-      isMulti ? multiValueSchema('SelectField', required, min, max) : singleValueSchema('SelectField', required)
-    }
-  >
-    <SelectField
-      name="SelectField"
-      autofill={autofill}
-      label={label}
-      maxLength={max}
-      creatable={creatable}
-      isMulti={isMulti}
-      options={autofill ? autofillOptions : options}
-      required={required}
-      raw={raw}
-      isDisabled={disabled}
-      helpId={helpId}
-      helpMessage={helpMessage}
-    />
-    {autofill && <Field name="autoFill1" type="text" label="Autofill Value 1" />}
-    {autofill && <Field name="autoFill2" type="text" label="Autofill Value 2" />}
-    <Button color="primary" type="submit">
-      Submit
-    </Button>
-  </FormikResults>
-);
-_SelectField.args = {
-  helpId: '',
-  label: 'Select Label',
-};
-_SelectField.storyName = 'SelectField';
-
-export const _ResourceSelect: Story = ({
-  creatable,
-  disabled,
-  helpMessage,
-  isMulti,
-  label,
-  max,
-  min,
-  raw,
-  required,
-}) => (
-  <FormikResults
-    onSubmit={() => {
-      console.log('submitted');
-    }}
-    initialValues={{
-      ResourceSelect: null,
-    }}
-    validationSchema={
-      isMulti ? multiValueSchema('SelectField', required, min, max) : singleValueSchema('SelectField', required)
-    }
-  >
-    <ResourceSelect
-      label={label}
-      name="ResourceSelect"
-      labelKey="name"
-      maxLength={max}
-      helpMessage={helpMessage}
-      isMulti={isMulti}
-      raw={raw}
-      required={required}
-      creatable={creatable}
-      isDisabled={disabled}
-      resource={avCustomResource}
-    />
-    <Button color="primary" type="submit">
-      Submit
-    </Button>
-  </FormikResults>
-);
-_ResourceSelect.args = {
-  label: 'Resource Select',
-};
-_ResourceSelect.storyName = 'ResourceSelect';
-
-export const GraphQlResourceSelect: Story = ({ creatable, disabled, isMulti, label, max, min, raw, required }) => (
-  <FormikResults
-    onSubmit={() => {
-      console.log('submitted');
-    }}
-    initialValues={{
-      ResourceSelect: null,
-    }}
-    validationSchema={
-      isMulti ? multiValueSchema('SelectField', required, min, max) : singleValueSchema('SelectField', required)
-    }
-  >
-    <ResourceSelect
-      label={label}
-      name="ResourceSelect"
-      labelKey="value"
-      valueKey="id"
-      maxLength={max}
-      raw={raw}
-      isMulti={isMulti}
-      required={required}
-      resource={avGraphqlResource}
-      creatable={creatable}
-      isDisabled={disabled}
-      graphqlConfig={{
-        type: 'custom',
-        query: `
-          query customPagination {
-            count
-            pageInfo {
-              hasNextPage
-            }
-            items {
-              id
-              value
-            }
-          }
-        `,
-      }}
-      getResult={(response) => response.data.customPagination.items}
-    />
-    <Button color="primary" type="submit">
-      Submit
-    </Button>
-  </FormikResults>
-);
-GraphQlResourceSelect.args = {
-  label: 'GraphQL Resource Select',
-};
-GraphQlResourceSelect.storyName = 'GraphQL ResourceSelect';
+Default.storyName = '<Select />';

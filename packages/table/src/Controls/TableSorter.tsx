@@ -32,16 +32,16 @@ const TableSorter = <T extends IdType>({
   disabled,
   color,
   sortOptions,
-  autoGenerateSortOptions,
+  autoGenerateSortOptions = true,
   ...rest
 }: Props): JSX.Element | null => {
   const { sortableColumns, instance } = useTableContext();
   const { toggleSortBy, state } = instance as TableInstance<T>;
 
-  const [isSortingDropdownOpen, setIsSortingDropdownOpen] = useState<boolean>(false);
+  const [isSortingDropdownOpen, setIsSortingDropdownOpen] = useState(false);
   const [tableSort, setTableSort] = useState<TableSortOption | undefined>();
-  const [tableSortDesc, setTableSortDesc] = useState<boolean>(true);
-  const [isDisabled, setIsDisabled] = useState<boolean>(disabled || false);
+  const [tableSortDesc, setTableSortDesc] = useState(true);
+  const [isDisabled, setIsDisabled] = useState(disabled || false);
   const [displayedSortOptions, setDisplayedSortOptions] = useState<TableSortOption[]>();
 
   useEffect(() => {
@@ -55,13 +55,13 @@ const TableSorter = <T extends IdType>({
         availableSortOptions = [...availableSortOptions, ...sortOptions];
       }
 
-      setDisplayedSortOptions(sortBy(availableSortOptions, option => option.label.toUpperCase()));
+      setDisplayedSortOptions(sortBy(availableSortOptions, (option) => option.label.toUpperCase()));
     }
   }, [sortOptions, autoGenerateSortOptions, sortableColumns]);
 
   useEffect(() => {
     if (state && displayedSortOptions) {
-      const { sortBy } = state as CurrentTableState;
+      const { sortBy } = state as CurrentTableState<T>;
       if (!sortBy) {
         return;
       }
@@ -173,7 +173,4 @@ const TableSorter = <T extends IdType>({
   );
 };
 
-TableSorter.defaultProps = {
-  autoGenerateSortOptions: true,
-};
 export default TableSorter;

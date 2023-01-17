@@ -1,7 +1,45 @@
-# Change Log
+# Changelog
 
-All notable changes to this project will be documented in this file.
-See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
+This file was generated using [@jscutlery/semver](https://github.com/jscutlery/semver).
+
+# [3.6.0](https://github.com/Availity/availity-react/compare/@availity/upload@3.5.0...@availity/upload@3.6.0) (2022-11-04)
+
+
+### Features
+
+* **upload:** accessible name for UploadProgressBar ([1a66e0d](https://github.com/Availity/availity-react/commit/1a66e0d367ec3e9044fa41c44af9668a8deabeae))
+
+
+
+# [3.5.0](https://github.com/Availity/availity-react/compare/@availity/upload@3.4.1...@availity/upload@3.5.0) (2022-10-13)
+
+
+### Features
+
+* **form-upload:** add prop btnColor to Upload component ([d5d78bb](https://github.com/Availity/availity-react/commit/d5d78bb1d27d088942745f05136364bb91a064e8))
+
+
+
+## [3.4.1](https://github.com/Availity/availity-react/compare/@availity/upload@3.4.0...@availity/upload@3.4.1) (2022-06-14)
+
+
+
+# [3.4.0](https://github.com/Availity/availity-react/compare/@availity/upload@3.3.4...@availity/upload@3.4.0) (2022-06-14)
+
+
+### Features
+
+* **form:** add currency input ([fa9eea6](https://github.com/Availity/availity-react/commit/fa9eea6a3b3dd2ef741a0658c102e36c6db5288c))
+
+
+
+## [3.3.4](https://github.com/Availity/availity-react/compare/@availity/upload@3.3.3...@availity/upload@3.3.4) (2022-06-10)
+
+
+
+## [3.3.3](https://github.com/Availity/availity-react/compare/@availity/upload@3.3.2...@availity/upload@3.3.3) (2022-05-24)
+
+
 
 ## [3.3.2](https://github.com/Availity/availity-react/compare/@availity/upload@3.3.1...@availity/upload@3.3.2) (2021-12-20)
 

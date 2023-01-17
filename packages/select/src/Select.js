@@ -11,7 +11,7 @@ import has from 'lodash/has';
 import isFunction from 'lodash/isFunction';
 import isEqual from 'lodash/isEqual';
 
-const { DownChevron, CrossIcon, DropdownIndicator, ClearIndicator, Option } = reactSelectComponents;
+const { DownChevron, DropdownIndicator, Input, Option, MultiValueRemove } = reactSelectComponents;
 
 const CreatableAsyncPaginate = withAsyncPaginate(Creatable);
 
@@ -22,12 +22,11 @@ const components = {
       <span className="sr-only">Toggle Select Options</span>
     </DropdownIndicator>
   ),
-  ClearIndicator: (props) => (
-    <ClearIndicator {...props}>
-      <CrossIcon />
-      <span className="sr-only">Clear all selections</span>
-    </ClearIndicator>
-  ),
+  ClearIndicator: () => null,
+  Input: (props) => {
+    const { 'aria-required': required } = props.selectProps;
+    return <Input {...props} aria-required={required} />;
+  },
   Option: (props) => {
     const innerProps = {
       ...props.innerProps,
@@ -36,6 +35,13 @@ const components = {
       name: props.innerProps.id,
     };
     return <Option {...props} innerProps={innerProps} />;
+  },
+  MultiValueRemove: (props) => {
+    const innerProps = {
+      ...props.innerProps,
+      'aria-hidden': false,
+    };
+    return <MultiValueRemove {...props} innerProps={innerProps} />;
   },
 };
 
@@ -61,6 +67,109 @@ const validateSelectAllOptions = (options) => {
   }
 };
 
+// needed for inline styling of clear button
+const wrapperStyle = { display: 'flex' };
+
+export const selectStyles = (showError, styles) => ({
+  styles: {
+    ...styles,
+    container: (provided) => ({
+      ...provided,
+      // firefox fix for grids https://github.com/JedWatson/react-select/issues/5170
+      display: 'grid',
+      gridTemplateColumns: 'minmax(0, 1fr)',
+      width: '100%',
+    }),
+    placeholder: (provided, state) => {
+      if (state.isDisabled) {
+        return {
+          ...provided,
+          borderColor: '#ced4da',
+          color: '#495057',
+        };
+      }
+      const showErrors = showError && !state.focused;
+
+      return {
+        ...provided,
+        color: showErrors ? '#3D3D3D' : '#666',
+        maxWidth: '99%',
+      };
+    },
+    valueContainer: (provided) => ({
+      ...provided,
+      width: '90%',
+    }),
+    singleValue: (provided) => ({
+      ...provided,
+      color: '#495057',
+    }),
+    control: (provided, state) => {
+      if (state.isDisabled) {
+        return {
+          ...provided,
+          flexGrow: '1',
+          borderRadius: '0.25em',
+          borderColor: 'inherit',
+          backgroundColor: '#e9ecef',
+        };
+      }
+
+      return {
+        ...provided,
+        flexGrow: '1',
+        borderRadius: '0.25em',
+        backgroundColor: 'white',
+        borderColor: showError ? '#dc3545' : '#555',
+        ':hover': {
+          borderColor: showError ? '#dc3545' : '#555',
+          cursor: 'text',
+        },
+        ':focus-within': {
+          borderColor: showError ? '#dc3545' : '#2261b5',
+          boxShadow: showError ? '0 0 0 0.2rem rgba(220 53 69 / 25%)' : '0 0 0 0.2rem #2261b5',
+        },
+        zIndex: state.focused && '3',
+      };
+    },
+    menu: (provided) => ({ ...provided, borderRadius: '.25em' }),
+    multiValue: (provided) => ({
+      ...provided,
+      borderRadius: '0.25em',
+      width: 'auto',
+    }),
+    input: (provided) => ({
+      ...provided,
+      maxWidth: '99%',
+    }),
+    dropdownIndicator: (provided, state) => {
+      if (state.isDisabled) {
+        return provided;
+      }
+      const showErrors = showError && !state.focused;
+
+      return {
+        ...provided,
+        pointerEvents: 'none',
+        color: showErrors ? '#dc3545' : '#555',
+      };
+    },
+    option: (provided) => ({
+      ...provided,
+    }),
+  },
+  theme: (theme) => ({
+    ...theme,
+    borderRadius: 0,
+    boxShadow: 0,
+    colors: {
+      ...theme.colors,
+      primary25: '#b8d4fb',
+      primary: '#3262af',
+    },
+  }),
+});
+
 const Select = ({
   name,
   validate,
@@ -78,6 +187,8 @@ const Select = ({
   feedback,
   placeholder,
   components: componentOverrides,
+  required,
+  clearButtonClassName,
   ...attributes
 }) => {
   const [{ onChange, value: fieldValue, ...field }, { touched, error: fieldError }] = useField({
@@ -88,21 +199,28 @@ const Select = ({
 
   const [newOptions, setNewOptions] = useState([]);
 
+  const errorShown = touched && fieldError;
+
   let _cacheUniq = attributes.cacheUniq;
 
   if (!Array.isArray(_cacheUniq)) {
     _cacheUniq = [_cacheUniq];
   }
 
+  // Enhance placeholder for accessibility
   placeholder = (
     <>
       {placeholder || 'Select...'}
       <span className="sr-only">
-        {(touched && fieldError) || null} {helpMessage || null}
+        {errorShown || null} {helpMessage || null}
       </span>
     </>
   );
 
+  /**
+   * Get the path to the label from the option. Uses the `labelKey` prop.
+   * Default to the `label` property on the option
+   */
   const getOptionLabel = (option) => {
     if (option.__isNew__) {
       return option.label;
@@ -111,8 +229,15 @@ const Select = ({
     return option[get(attributes, 'labelKey', 'label')];
   };
 
+  /**
+   * Get the path to the value from the option. Uses the `valueKey` prop.
+   * Default to the `value` property on the option
+   */
   const getValueKey = (attrs = attributes) => get(attrs, 'valueKey', 'value');
 
+  /**
+   * Get the actual value for the option.
+   */
   const getOptionValue = (option) =>
     attributes.raw && !attributes.valueKey ? option : get(option, getValueKey(attributes), option);
 
@@ -120,7 +245,7 @@ const Select = ({
     if (attributes.isMulti && digIfMulti && Array.isArray(value)) {
       return value.map((val) => prepValue(val));
     }
-    if (attributes.raw || attributes.loadOptions) {
+    if (attributes.raw || (attributes.loadOptions && !attributes.valueKey)) {
       return value;
     }
     const valueKey = getValueKey();
@@ -128,7 +253,13 @@ const Select = ({
     return get(value, valueKey, value);
   };
 
+  /**
+   * Find the actual option in the list when the set value
+   * is a string or number
+   */
   const findOptionFromValue = (value, options) => {
+    // selectRef.current.commonProps has the options returned by loadOptions function
+    options = options || selectRef?.current?.commonProps.options;
     if (Array.isArray(options)) {
       const flattened = [...options, ...newOptions].reduce((prev, current) => {
         if (current.type === 'group') {
@@ -142,8 +273,21 @@ const Select = ({
     return null;
   };
 
+  /**
+   * Get the value that will be used by the dropdown.
+   */
   const getViewValue = () => {
-    if (attributes.raw || attributes.loadOptions || !options) return fieldValue;
+    // Return entire object when:
+    // 1) raw prop is set
+    // 2) loadOptions is set and labelKey and getOptionLabel are not given
+    // 3) loadOptions is not set and no options are available
+    if (
+      attributes.raw ||
+      (attributes.loadOptions && !attributes.labelKey && !attributes.getOptionLabel) ||
+      (!attributes.loadOptions && !options)
+    ) {
+      return fieldValue;
+    }
     if (attributes.isMulti && Array.isArray(fieldValue)) {
       return fieldValue.map((value) => findOptionFromValue(value, options) || value);
     }
@@ -261,126 +405,60 @@ const Select = ({
   }
 
   return (
-    <Tag
-      {...field}
-      onChange={onChangeHandler}
-      ref={attributes.loadOptions ? undefined : selectRef}
-      selectRef={attributes.loadOptions ? selectRef : undefined}
-      name={name}
-      classNamePrefix="av"
-      role="listbox"
-      onCreateOption={handleCreate}
-      className={classNames(
-        className,
-        'av-select',
-        touched ? 'is-touched' : 'is-untouched',
-        fieldError ? 'av-invalid' : 'av-valid',
-        touched && fieldError && 'is-invalid'
-      )}
-      getOptionLabel={getOptionLabel}
-      getOptionValue={getOptionValue}
-      closeMenuOnSelect={!attributes.isMulti}
-      aria-invalid={fieldError && touched}
-      aria-errormessage={feedback && fieldValue && fieldError && touched ? `${name}-feedback`.toLowerCase() : ''}
-      placeholder={placeholder}
-      components={{ ...components, ...componentOverrides }}
-      options={selectOptions}
-      defaultOptions={waitUntilFocused ? [] : true}
-      cacheUniqs={_cacheUniq}
-      styles={{
-        ...styles,
-        placeholder: (provided, state) => {
-          if (state.isDisabled) {
-            return {
-              ...provided,
-              borderColor: '#ced4da',
-            };
-          }
-          const showError = touched && fieldError && !state.focused;
-
-          return {
-            ...provided,
-            color: showError ? '#3D3D3D' : '#666',
-            maxWidth: '99%',
-          };
-        },
-        valueContainer: (provided) => ({
-          ...provided,
-          width: '90%',
-        }),
-        singleValue: (provided) => ({
-          ...provided,
-          color: '#495057',
-        }),
-        control: (provided, state) => {
-          if (state.isDisabled) {
-            return {
-              ...provided,
-              borderRadius: '0.25em',
-              borderColor: 'inherit',
-              backgroundColor: '#e9ecef',
-            };
-          }
-          const showError = touched && fieldError;
-
-          return {
-            ...provided,
-            borderRadius: '0.25em',
-            backgroundColor: 'white',
-            borderColor: showError ? '#dc3545' : '#555',
-            ':hover': {
-              borderColor: showError ? '#dc3545' : '#555',
-              cursor: 'text',
-            },
-            ':focus-within': {
-              borderColor: showError ? '#dc3545' : '#2261b5',
-              boxShadow: showError ? '0 0 0 0.2rem rgba(220 53 69 / 25%)' : '0 0 0 0.2rem #2261b5',
-            },
-            zIndex: state.focused && '3',
-          };
-        },
-        multiValue: (provided) => ({
-          ...provided,
-          width: 'auto',
-        }),
-        input: (provided) => ({
-          ...provided,
-          maxWidth: '99%',
-        }),
-        dropdownIndicator: (provided, state) => {
-          if (state.isDisabled) {
-            return provided;
-          }
-          const showError = touched && fieldError && !state.focused;
-
-          return {
-            ...provided,
-            pointerEvents: 'none',
-            color: showError ? '#dc3545' : '#555',
-          };
-        },
-        option: (provided) => ({
-          ...provided,
-        }),
-      }}
-      theme={(theme) => ({
-        ...theme,
-        borderRadius: 0,
-        boxShadow: 0,
-        colors: {
-          ...theme.colors,
-          primary25: '#b8d4fb',
-          primary: '#3262af',
-        },
-      })}
-      {...attributes}
-      value={getViewValue()}
-    />
+    <div style={wrapperStyle}>
+      <Tag
+        {...field}
+        onChange={onChangeHandler}
+        ref={attributes.loadOptions ? undefined : selectRef}
+        selectRef={attributes.loadOptions ? selectRef : undefined}
+        name={name}
+        classNamePrefix="av"
+        role="listbox"
+        onCreateOption={handleCreate}
+        className={classNames(
+          className,
+          'av-select',
+          touched ? 'is-touched' : 'is-untouched',
+          fieldError ? 'av-invalid' : 'av-valid',
+          errorShown && 'is-invalid'
+        )}
+        getOptionLabel={getOptionLabel}
+        getOptionValue={getOptionValue}
+        closeMenuOnSelect={!attributes.isMulti}
+        aria-invalid={!!errorShown || undefined}
+        aria-errormessage={feedback && fieldValue && errorShown ? `${name}-feedback`.toLowerCase() : ''}
+        aria-required={required}
+        placeholder={placeholder}
+        components={{ ...components, ...componentOverrides }}
+        options={selectOptions}
+        defaultOptions={waitUntilFocused ? [] : true}
+        cacheUniqs={_cacheUniq}
+        {...selectStyles(!!errorShown, styles)}
+        {...attributes}
+        value={getViewValue()}
+      />
+      {attributes.isClearable || attributes.isMulti ? (
+        <button
+          type="button"
+          className={clearButtonClassName}
+          aria-label={`clear ${
+            attributes['aria-label'] || name.replace(/[\W_]+/g, ' ').replace(/[A-Z]/g, ' $&') || ''
+          }`}
+          onClick={() => onChangeHandler(attributes.isMulti ? [] : null)}
+        >
+          clear
+        </button>
+      ) : null}
+    </div>
   );
 };
 
 Select.defaultTypes = {
   waitUntilFocused: false,
+};
+
+Select.defaultProps = {
+  clearButtonClassName: 'btn btn-link link',
 };
 
 Select.propTypes = {
@@ -398,15 +476,25 @@ Select.propTypes = {
   autofill: PropTypes.oneOfType([PropTypes.bool, PropTypes.object]),
   allowSelectAll: PropTypes.bool,
   waitUntilFocused: PropTypes.bool,
-  helpMessage: PropTypes.string,
+  helpMessage: PropTypes.oneOfType([PropTypes.string, PropTypes.node]),
   feedback: PropTypes.bool,
   placeholder: PropTypes.string,
   components: PropTypes.object,
+  required: PropTypes.bool,
+  clearButtonClassName: PropTypes.string,
 };
 
 components.Option.propTypes = {
   innerProps: PropTypes.object,
   isSelected: PropTypes.bool,
+};
+
+components.Input.propTypes = {
+  selectProps: PropTypes.object,
+};
+
+components.MultiValueRemove.propTypes = {
+  innerProps: PropTypes.object,
 };
 
 export default Select;

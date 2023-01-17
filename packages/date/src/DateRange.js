@@ -6,6 +6,7 @@ import classNames from 'classnames';
 import { useField, useFormikContext } from 'formik';
 import pick from 'lodash/pick';
 import moment from 'moment';
+
 import '../polyfills';
 
 import { isOutsideRange, limitPropType, buildYearPickerOptions } from './utils';
@@ -57,15 +58,15 @@ const DateRange = ({
   onPickerFocusChange,
   innerRef,
   className,
-  format,
-  ariaDescribedBy,
+  format = isoDateFormat,
+  feedback,
   datepickerProps,
   'data-testid': dataTestId,
   autoSync,
   ranges: propsRanges,
   customArrowIcon,
-  openDirection,
-  allowInvalidDates,
+  openDirection = 'down',
+  allowInvalidDates = false,
   ...attributes
 }) => {
   const { setFieldValue, setFieldTouched, validateField } = useFormikContext();
@@ -95,6 +96,9 @@ const DateRange = ({
     metadata.touched && metadata.error && 'is-invalid',
     !startValue && !endValue && 'current-day-highlight'
   );
+
+  const error = !!metadata.touched && !!metadata.error;
+  const feedbackId = error && feedback ? `${name}-feedback`.toLowerCase() : '';
 
   // Should only run validation once per real change to component, instead of each time setFieldValue/Touched is called.
   // By batching multiple calls for validation we can avoid multiple moment comparisons of the same values
@@ -291,8 +295,10 @@ const DateRange = ({
         <DateRangePicker
           renderMonthElement={renderMonthElement}
           minimumNights={0}
-          ariaDescribedBy={ariaDescribedBy}
+          ariaDescribedBy={feedbackId}
           enableOutsideDays
+          autoComplete="date"
+          numberOfMonths={2}
           {...datepickerProps}
           startDate={getDateValue(startValue)}
           startDateId={startId}
@@ -306,10 +312,8 @@ const DateRange = ({
           renderCalendarInfo={renderDateRanges}
           customArrowIcon={customArrowIcon}
           isOutsideRange={isOutsideRange(min, max, format)}
-          numberOfMonths={2}
           navPosition="navPositionBottom"
           openDirection={openDirection}
-          autoComplete="date"
         />
       </InputGroup>
     </>
@@ -318,30 +322,42 @@ const DateRange = ({
 
 DateRange.propTypes = {
   id: PropTypes.string.isRequired,
+  /** The name of the field. Will be the key of the selected dates that come through in the values of the `onSubmit` callback. */
   name: PropTypes.string.isRequired,
   validate: PropTypes.func,
+  /** Used in conjunction with `max` to derive `isOutsideRange` prop from `react-dates` and selectable year options in datepicker. Dates outside the allowed range will not be clickable in datepicker. */
   min: limitPropType,
+  /** Used in conjunction with `min` to derive isOutsideRange prop from `react-dates` and selectable year options in datepicker. Dates outside the allowed range will not be clickable in datepicker. */
   max: limitPropType,
-  ariaDescribedBy: PropTypes.string,
+  feedback: PropTypes.bool,
   className: PropTypes.string,
+  /** Whether the date range is disabled. */
   disabled: PropTypes.bool,
   onChange: PropTypes.func,
+  /** Function to be run when focus on the input changes. `focusedInput` contains the `id` of the focused field.
+   * Possible Values:
+   * - `startId`: the id of the start field. `"<name>-start"`
+   * - `endId`: the id of the end field. `"<name>-end"`
+   * - `undefined`: the date range was unfocused
+   */
   onPickerFocusChange: PropTypes.func,
   innerRef: PropTypes.oneOfType([PropTypes.func, PropTypes.node]),
+  /** How to format date value in `onSubmit` callback. Must be a format recognized by <a href={https://momentjs.com/docs/#/displaying/format/}>moment.</a>. Default:`MM/DD/YYYY` */
   format: PropTypes.string,
+  /** Toggle whether the calendar is shown. */
+  datepicker: PropTypes.bool,
+  /** Props to be spread onto the datepicker component from <a href={https://github.com/react-dates/react-dates#singledatepicker}>react-dates.</a>. */
   datepickerProps: PropTypes.object,
   'data-testid': PropTypes.string,
+  /** Toggle whether the other date should be automatically synced to the selected date when focus changes. Dates are only auto synced the first time the input is touched and if the date field to auto sync is empty */
   autoSync: PropTypes.bool,
+  /** Show preset date ranges when calendar is visible. Accepts boolean to display default ranges. If `string[]` will strip subset of ranges off defaults. If `object` will overwrite the default ranges. */
   ranges: PropTypes.oneOfType([PropTypes.bool, PropTypes.array, PropTypes.object]),
   customArrowIcon: PropTypes.oneOfType([PropTypes.string, PropTypes.node]),
+  /** Set which direction the date picker renders. Possible values are `up` and `down`. Default: `down` */
   openDirection: PropTypes.string,
+  /** Defaults to false, with this behavior the onInputChange handler will not pass through invalid dates to formik. By setting this prop to true, you can allow formik to handle invalid dates. Very useful for getting errors from non-required date range components. */
   allowInvalidDates: PropTypes.bool,
-};
-
-DateRange.defaultProps = {
-  format: isoDateFormat,
-  openDirection: 'down',
-  allowInvalidDates: false,
 };
 
 export default DateRange;

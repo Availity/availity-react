@@ -7,9 +7,9 @@ Availity React is a repo of [React](https://beta.reactjs.org/) components built 
 
 Many of the packages provided by `availity-react` are wrappers around common `reactstrap` components. If you can't find what you're looking for in these docs, take a look at the [Reactstrap documentation](https://reactstrap.github.io).
 
-:::note
+<!-- :::note
 Try the `search bar` at the top right of every page for faster browsing. The search bar leverages [Algolia](https://www.algolia.com/) to provide lightning fast searches across all our docs.
-:::
+::: -->
 
 ## Supported Browsers
 

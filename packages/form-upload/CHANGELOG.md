@@ -1,7 +1,92 @@
-# Change Log
+# Changelog
 
-All notable changes to this project will be documented in this file.
-See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
+This file was generated using [@jscutlery/semver](https://github.com/jscutlery/semver).
+
+## [0.11.1](https://github.com/Availity/availity-react/compare/@availity/form-upload@0.11.0...@availity/form-upload@0.11.1) (2022-11-30)
+
+
+
+# [0.11.0](https://github.com/Availity/availity-react/compare/@availity/form-upload@0.10.0...@availity/form-upload@0.11.0) (2022-11-04)
+
+
+### Features
+
+* **form-upload:** accessible name for remove file button ([fa8a6ae](https://github.com/Availity/availity-react/commit/fa8a6aeac86296337ac483bf11a2ee51a6c08b59))
+* **form-upload:** accessible name for UploadProgressBar ([9e41559](https://github.com/Availity/availity-react/commit/9e415594901b1eb2ad7a2bf5123856bec72a5297))
+
+
+
+# [0.10.0](https://github.com/Availity/availity-react/compare/@availity/form-upload@0.9.2...@availity/form-upload@0.10.0) (2022-10-18)
+
+
+### Features
+
+* **form-upload:** add prop btnColor to Upload component ([e1b8e14](https://github.com/Availity/availity-react/commit/e1b8e1480466f58f2eaf9f7bc4b0f21b6f950392))
+
+
+
+## [0.9.2](https://github.com/Availity/availity-react/compare/@availity/form-upload@0.9.1...@availity/form-upload@0.9.2) (2022-08-18)
+
+
+### Bug Fixes
+
+* **form-upload:** update types ([7a45643](https://github.com/Availity/availity-react/commit/7a45643123c75f8aaa1ad77c53e937c24764cd21))
+* **form-upload:** update types ([27d9aa0](https://github.com/Availity/availity-react/commit/27d9aa09fa1905351f94ef0d475e95e2b5420635))
+
+
+
+## [0.9.1](https://github.com/Availity/availity-react/compare/@availity/form-upload@0.9.0...@availity/form-upload@0.9.1) (2022-06-14)
+
+
+
+# [0.9.0](https://github.com/Availity/availity-react/compare/@availity/form-upload@0.8.8...@availity/form-upload@0.9.0) (2022-06-14)
+
+
+### Features
+
+* **form:** add currency input ([fa9eea6](https://github.com/Availity/availity-react/commit/fa9eea6a3b3dd2ef741a0658c102e36c6db5288c))
+
+
+
+## [0.8.8](https://github.com/Availity/availity-react/compare/@availity/form-upload@0.8.7...@availity/form-upload@0.8.8) (2022-06-10)
+
+
+
+## [0.8.7](https://github.com/Availity/availity-react/compare/@availity/form-upload@0.8.6...@availity/form-upload@0.8.7) (2022-05-24)
+
+
+### Bug Fixes
+
+* upgrade yup and update sb stories ([68aeafe](https://github.com/Availity/availity-react/commit/68aeafe4fd7d90d7c88dbb24636ba7770fe87aa3))
+
+
+
+## 0.8.6 (2022-05-19)
+
+
+### Bug Fixes
+
+* **form-upload:** stop propagation from form submit to prevent submission of parent forms ([b76094b](https://github.com/Availity/availity-react/commit/b76094b9e5c5655091dedb70fc3c13776bde2054))
+
+
+
+
+
+## 0.8.5 (2022-03-09)
+
+**Note:** Version bump only for package @availity/form-upload
+
+
+
+
+
+## [0.8.4](https://github.com/Availity/availity-react/compare/@availity/form-upload@0.8.3...@availity/form-upload@0.8.4) (2022-02-11)
+
+**Note:** Version bump only for package @availity/form-upload
+
+
+
+
 
 ## [0.8.3](https://github.com/Availity/availity-react/compare/@availity/form-upload@0.8.2...@availity/form-upload@0.8.3) (2021-12-20)
 

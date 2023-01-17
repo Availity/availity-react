@@ -4,6 +4,7 @@ exports[`BulkTableActions should render default bulk actions 1`] = `
 <div>
   <div
     class="table-controls"
+    data-testid="test-controls-container"
   >
     <form
       class="form-inline"

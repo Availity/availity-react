@@ -14,6 +14,7 @@ const FormGroup = ({ className, for: For, ...props }) => {
 
 FormGroup.propTypes = {
   className: PropTypes.string,
+  /** Used to match the wrapped input. Must be the same name given to the input field. */
   for: PropTypes.string,
 };
 

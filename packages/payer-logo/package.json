@@ -1,6 +1,6 @@
 {
   "name": "@availity/payer-logo",
-  "version": "5.1.2",
+  "version": "5.2.1",
   "description": "Easy to use component to display the payer&#x27;s logo given the payer&#x27;s ID",
   "keywords": [
     "react",
@@ -20,14 +20,18 @@
   "author": "Evan Sharp <evan.sharp@availity.com>",
   "main": "index.js",
   "types": "index.d.ts",
+  "scripts": {
+    "publish": "yarn npm publish --tolerate-republish --access public",
+    "publish:canary": "yarn npm publish --access public --tag canary"
+  },
   "dependencies": {
-    "@availity/hooks": "^3.1.2",
+    "@availity/hooks": "workspace:*",
     "lodash": "^4.17.21",
-    "prop-types": "^15.7.2"
+    "prop-types": "^15.8.1"
   },
   "devDependencies": {
-    "@availity/api-axios": "^6.0.0",
-    "axios": "^0.21.1",
+    "@availity/api-axios": "^7.0.1",
+    "axios": "^0.21.4",
     "react": "^17.0.2",
     "react-dom": "^17.0.2"
   },

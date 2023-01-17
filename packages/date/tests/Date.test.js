@@ -1,15 +1,13 @@
 import React from 'react';
-import { render, fireEvent, waitFor, cleanup, within } from '@testing-library/react';
+import { render, fireEvent, waitFor, within } from '@testing-library/react';
+import userEvent from '@testing-library/user-event';
 import { Button } from 'reactstrap';
 import { Form } from '@availity/form';
 import { avDate } from '@availity/yup';
 import { object } from 'yup';
 import moment from 'moment';
-import FormikDate from '..';
 
-afterEach(() => {
-  cleanup();
-});
+import FormikDate from '../src';
 
 describe('Date', () => {
   test('renders error classes', async () => {
@@ -65,6 +63,31 @@ describe('Date', () => {
 
     await waitFor(() => {
       expect(onChange.mock.calls[0][0]).toBe('1997-01-04');
+    });
+  });
+
+  test('renders call on change when clearing out value manually', async () => {
+    const onSubmit = jest.fn();
+    const onChange = jest.fn();
+
+    const { container } = render(
+      <Form
+        initialValues={{
+          singleDate: '01/04/1997',
+        }}
+        onSubmit={onSubmit}
+      >
+        <FormikDate name="singleDate" data-testid="single-select" onChange={onChange} />
+        <Button type="submit">Submit</Button>
+      </Form>
+    );
+
+    const input = container.querySelector('.DateInput_input');
+    input.setSelectionRange(0, 10);
+    userEvent.type(input, '01/04/1997{backspace}');
+
+    await waitFor(() => {
+      expect(onChange.mock.calls[0][0]).toBeNull();
     });
   });
 

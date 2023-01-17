@@ -1,2 +1,1 @@
-export { default } from './types/ListGroup';
-export * from './types/ListGroup';
+export { default, ListGroupProps } from './src/ListGroup';

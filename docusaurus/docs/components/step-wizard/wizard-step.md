@@ -25,7 +25,9 @@ const Example = () => (
 );
 ```
 
-#### Live example: <a href="https://availity.github.io/availity-react/storybook/?path=/story/components-stepwizard--default"> Storybook</a>
+#### Live example
+
+[Storybook](https://availity.github.io/availity-react/storybook/?path=/docs/components-wizard--default)
 
 ### Props
 

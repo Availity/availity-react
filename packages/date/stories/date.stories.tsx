@@ -4,19 +4,19 @@ import { Meta, Story } from '@storybook/react';
 import { Button } from 'reactstrap';
 import { avDate, dateRange } from '@availity/yup';
 import * as yup from 'yup';
-import moment from 'moment';
-
+import { unitOfTime } from 'moment';
+import { ArgsTable } from '@storybook/addon-docs';
 import FormikDate from '../src/Date';
 import DateField from '../src/DateField';
 import DateRange from '../src/DateRange';
 import DateRangeField from '../src/DateRangeField';
 
-import '../styles.scss';
 // import README from '../README.md';
 
 import FormikResults from '../../../story-utils/FormikResults';
 
-const distanceUnits = ['day', 'month'];
+type Units = unitOfTime.DurationConstructor;
+const distanceUnits: Units[] = ['day', 'month'];
 
 export default {
   title: 'Form Components/Date',
@@ -26,7 +26,6 @@ export default {
     },
   },
   args: {
-    datepicker: true,
     disabled: false,
     max: '',
     min: '',
@@ -34,97 +33,75 @@ export default {
   },
 } as Meta;
 
-export const DateInput: Story = ({ datepicker, disabled, max, min, required }) => {
-  const dateFormat = 'MM/DD/YYYY';
-  const minDate = moment(min).format(dateFormat);
-  const maxDate = moment(max).format(dateFormat);
-
-  return (
-    <FormikResults
-      onSubmit={() => {
-        console.log('submitted');
-      }}
-      initialValues={{
-        dateOfService: '',
-      }}
-      validationSchema={yup.object().shape({
-        dateOfService: avDate({
-          format: dateFormat,
-        })
-          .isRequired(required, 'This field is required.')
-          .min(min && !max && minDate)
-          .max(!min && max && maxDate)
-          .between(min && max && minDate, maxDate),
-      })}
-    >
-      <FormikDate
-        id="dateOfService"
-        name="dateOfService"
-        disabled={disabled}
-        datepicker={datepicker}
-        min={min && minDate}
-        max={max && maxDate}
-      />
-
-      <Button className="mt-3" color="primary" type="submit">
-        Submit
-      </Button>
-    </FormikResults>
-  );
+type DateStoryProps = {
+  disabled: boolean;
+  min: string;
+  max: string;
+  required: boolean;
 };
+
+export const DateInput: Story<DateStoryProps> = ({ disabled, max, min, required }) => (
+  <FormikResults
+    onSubmit={() => {
+      console.log('submitted');
+    }}
+    initialValues={{
+      date: '',
+    }}
+    validationSchema={yup.object().shape({
+      date: avDate()
+        .min(min && !max ? min : '')
+        .max(!min && max ? max : '')
+        .between(min, max)
+        .isRequired(required),
+    })}
+  >
+    <FormikDate id="date" name="date" disabled={disabled} min={min} max={max} />
+    <Button className="mt-3" color="primary" type="submit">
+      Submit
+    </Button>
+  </FormikResults>
+);
 DateInput.storyName = 'date';
 
-export const _DateField: Story = ({ datepicker, disabled, helpId, label, max, min, required }) => {
-  const dateFormat = 'MM/DD/YYYY';
-  const minDate = moment(min).format(dateFormat);
-  const maxDate = moment(max).format(dateFormat);
-  const schema = yup.object().shape({
-    dateOfService: avDate({
-      format: dateFormat,
-    })
-      .isRequired(required, 'This field is required.')
-      .min(min && !max && minDate)
-      .max(!min && max && maxDate)
-      .between(min && max && minDate, maxDate),
-  });
-
-  return (
-    <FormikResults
-      onSubmit={() => {
-        console.log('submitted');
-      }}
-      initialValues={{
-        dateOfService: '',
-      }}
-      validationSchema={schema}
-    >
-      <DateField
-        id="dateOfService"
-        name="dateOfService"
-        label={label}
-        required={required}
-        helpId={helpId}
-        disabled={disabled}
-        datepicker={datepicker}
-        min={min && minDate}
-        max={max && maxDate}
-      />
-
-      <Button className="ml-1" color="primary" type="submit">
-        Submit
-      </Button>
-    </FormikResults>
-  );
-};
+export const _DateField: Story<DateStoryProps & { label: string }> = ({ disabled, label, max, min, required }) => (
+  <FormikResults
+    onSubmit={() => {
+      console.log('submitted');
+    }}
+    initialValues={{
+      date: '',
+    }}
+    validationSchema={yup.object().shape({
+      date: avDate()
+        .min(min && !max ? min : '')
+        .max(!min && max ? max : '')
+        .between(min, max)
+        .isRequired(required, label && `${label} is required.`),
+    })}
+  >
+    <DateField id="date" name="date" label={label} required={required} disabled={disabled} min={min} max={max} />
+    <Button className="ml-1" color="primary" type="submit">
+      Submit
+    </Button>
+  </FormikResults>
+);
 _DateField.args = {
   label: 'Date Field',
-  helpId: '',
 };
 _DateField.storyName = 'DateField';
 
-export const _DateRange: Story = ({
+type DateRangeStoryProps = {
+  autoSync: boolean;
+  maxDistance: number;
+  maxDistanceUnits: Units;
+  minDistance: number;
+  minDistanceUnits: Units;
+  ranges: boolean;
+} & DateStoryProps;
+
+export const _DateRange: Story<DateRangeStoryProps> = ({
   autoSync,
-  datepicker,
   disabled,
   max,
   maxDistance,
@@ -134,58 +111,49 @@ export const _DateRange: Story = ({
   minDistanceUnits,
   ranges,
   required,
-}) => {
-  const dateFormat = 'MM/DD/YYYY';
-  const minDate = moment(min).format(dateFormat);
-  const maxDate = moment(max).format(dateFormat);
-
-  return (
-    <FormikResults
-      onSubmit={() => {
-        console.log('submitted');
-      }}
-      initialValues={{
-        dateOfService: '',
-      }}
-      validationSchema={yup.object().shape({
-        dateOfService: dateRange({
-          startKey: 'startDate',
-          endKey: 'endDate',
-          format: dateFormat,
+}) => (
+  <FormikResults
+    onSubmit={() => {
+      console.log('submitted');
+    }}
+    initialValues={{
+      dateRange: '',
+    }}
+    validationSchema={yup.object().shape({
+      dateRange: dateRange({
+        startKey: 'startDate',
+        endKey: 'endDate',
+      })
+        .min(min && !max ? min : '')
+        .max(!min && max ? max : '')
+        .between(min, max)
+        .distance({
+          min: {
+            value: minDistance,
+            units: minDistanceUnits,
+          },
+          max: {
+            value: maxDistance,
+            units: maxDistanceUnits,
+          },
         })
-          .min(min && !max && minDate)
-          .max(!min && max && maxDate)
-          .between(min && max && minDate, maxDate)
-          .distance({
-            min: {
-              value: minDistance,
-              units: minDistanceUnits,
-            },
-            max: {
-              value: maxDistance,
-              units: maxDistanceUnits,
-            },
-          })
-          .isRequired(required, 'This field is required.'),
-      })}
-    >
-      <DateRange
-        id="dateOfService"
-        name="dateOfService"
-        disabled={disabled}
-        datepicker={datepicker}
-        autoSync={autoSync}
-        ranges={ranges}
-        min={min && minDate}
-        max={max && maxDate}
-      />
-
-      <Button className="mt-1 ml-1" color="primary" type="submit">
-        Submit
-      </Button>
-    </FormikResults>
-  );
-};
+        .isRequired(required, 'This field is required.'),
+    })}
+  >
+    <DateRange
+      id="dateRange"
+      name="dateRange"
+      disabled={disabled}
+      autoSync={autoSync}
+      ranges={ranges}
+      min={min}
+      max={max}
+    />
+    <Button className="mt-1 ml-1" color="primary" type="submit">
+      Submit
+    </Button>
+  </FormikResults>
+);
 _DateRange.args = {
   autoSync: false,
   maxDistance: 0,
@@ -204,11 +172,9 @@ _DateRange.argTypes = {
 };
 _DateRange.storyName = 'DateRange';
 
-export const _DateRangeField: Story = ({
+export const _DateRangeField: Story<DateRangeStoryProps> = ({
   autoSync,
-  datepicker,
   disabled,
-  helpId,
   max,
   maxDistance,
   maxDistanceUnits,
@@ -217,65 +183,53 @@ export const _DateRangeField: Story = ({
   minDistanceUnits,
   ranges,
   required,
-}) => {
-  const dateFormat = 'YYYY-MM-DD';
-  const minDate = moment(min).format(dateFormat);
-  const maxDate = moment(max).format(dateFormat);
-
-  return (
-    <FormikResults
-      onSubmit={() => {
-        console.log('submitted');
-      }}
-      initialValues={{
-        dateOfService: {
-          startDate: '',
-          endDate: '',
-        },
-      }}
-      validationSchema={yup.object().shape({
-        dateOfService: dateRange({
-          format: dateFormat,
-        })
-          .min(min && !max && minDate)
-          .max(!min && max && maxDate)
-          .between(min && max && minDate, maxDate)
-          .isRequired(required, 'This field is required.')
-          .distance({
-            min: {
-              value: minDistance,
-              units: minDistanceUnits,
-            },
-            max: {
-              value: maxDistance,
-              units: maxDistanceUnits,
-            },
-          }),
-      })}
-    >
-      <DateRangeField
-        id="dateOfService"
-        name="dateOfService"
-        label="Date of Service"
-        disabled={disabled}
-        required={required}
-        helpId={helpId}
-        datepicker={datepicker}
-        autoSync={autoSync}
-        ranges={ranges}
-        format={dateFormat}
-        min={min && minDate}
-        max={max && maxDate}
-      />
-      <Button className="mt-1 ml-1" color="primary" type="submit">
-        Submit
-      </Button>
-    </FormikResults>
-  );
-};
+}) => (
+  <FormikResults
+    onSubmit={() => {
+      console.log('submitted');
+    }}
+    initialValues={{
+      dateRange: {
+        startDate: '',
+        endDate: '',
+      },
+    }}
+    validationSchema={yup.object().shape({
+      dateRange: dateRange()
+        .min(min && !max ? min : '')
+        .max(!min && max ? max : '')
+        .between(min, max)
+        .isRequired(required, 'This field is required.')
+        .distance({
+          min: {
+            value: minDistance,
+            units: minDistanceUnits,
+          },
+          max: {
+            value: maxDistance,
+            units: maxDistanceUnits,
+          },
+        }),
+    })}
+  >
+    <DateRangeField
+      id="dateRange"
+      name="dateRange"
+      label="Date of Service"
+      disabled={disabled}
+      required={required}
+      autoSync={autoSync}
+      ranges={ranges}
+      min={min}
+      max={max}
+    />
+    <Button className="mt-1 ml-1" color="primary" type="submit">
+      Submit
+    </Button>
+  </FormikResults>
+);
 _DateRangeField.args = {
   autoSync: false,
-  helpId: '',
   maxDistance: 0,
   maxDistanceUnits: distanceUnits[0],
   minDistance: 0,
@@ -291,3 +245,17 @@ _DateRangeField.argTypes = {
   },
 };
 _DateRangeField.storyName = 'DateRangeField';
+
+export const Props: Story = () => (
+  <>
+    <h4>Availity Props</h4>
+    <h5>Date</h5>
+    <ArgsTable of={FormikDate} />
+    <h5>DateField</h5>
+    <ArgsTable of={DateField} />
+    <h5>DateRange</h5>
+    <ArgsTable of={DateRange} />
+    <h5>DateRangeField</h5>
+    <ArgsTable of={DateRangeField} />
+  </>
+);

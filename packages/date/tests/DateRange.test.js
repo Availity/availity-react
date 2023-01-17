@@ -1,14 +1,11 @@
 import React from 'react';
-import { render, fireEvent, waitFor, cleanup, within } from '@testing-library/react';
+import { render, fireEvent, waitFor, within } from '@testing-library/react';
 import { Button } from 'reactstrap';
 import { Form } from '@availity/form';
 import { object, string } from 'yup';
 import moment from 'moment';
-import { DateRange } from '..';
 
-afterEach(() => {
-  cleanup();
-});
+import { DateRange } from '../src';
 
 describe('DateRange', () => {
   test('renders error classes', async () => {

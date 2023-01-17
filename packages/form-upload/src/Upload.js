@@ -20,6 +20,7 @@ const dropzoneFallback = <div data-testid="dropzone-fallback">Loading...</div>;
 const Upload = ({
   allowedFileNameCharacters,
   allowedFileTypes,
+  btnColor = 'light',
   btnText,
   bucketId,
   children,
@@ -254,7 +255,7 @@ const Upload = ({
       <FilePickerBtn
         data-testid="file-picker"
         onChange={handleFileInputChange}
-        color={fieldValue.length === 0 ? 'light' : 'link'}
+        color={fieldValue.length === 0 ? btnColor : 'link'}
         multiple={multiple}
         allowedFileTypes={allowedFileTypes}
         maxSize={maxSize}
@@ -277,31 +278,55 @@ const Upload = ({
 };
 
 Upload.propTypes = {
+  /** The ID of the bucket you want to upload to. */
   bucketId: PropTypes.string.isRequired,
+  /** The ID obtained from APIConnect. Must be subscribed to the resumeable uploads API. */
   clientId: PropTypes.string.isRequired,
+  /** The customer ID for the organization the user is uploading on behalf of. */
   customerId: PropTypes.string.isRequired,
+  /** Identifies the field and matches the validation schema. */
   name: PropTypes.string.isRequired,
+  /** Restrict the file name characters to a regex set. */
   allowedFileNameCharacters: PropTypes.string,
+  /** Restrict the file types allowed to be uploaded to. eg: ['.jpeg', '.jpg']. */
   allowedFileTypes: PropTypes.arrayOf(PropTypes.string),
+  /** The color of the button. Refer to the Reactstrap documentation to determine which colors are available. */
+  btnColor: PropTypes.string,
+  /** + Add File for initial file or + Add Another File Attachment if an attachment already have been selected. | The text that appears on the button. */
   btnText: PropTypes.node,
   children: PropTypes.func,
   className: PropTypes.string,
+  /** This prop is used in tandem with deliveryChannel and fileDeliveryMetadata so that your files will only get delivered to fileDeliveryApi when the form is being submitted. When false, the files are delivered as the user adds them.  */
   deliverFileOnSubmit: PropTypes.bool,
+  /** The name of the delivery channel that is unique to where you will deliver files via the avFileDeliveryApi. */
   deliveryChannel: PropTypes.string,
+  /** Disable the file input. */
   disabled: PropTypes.bool,
+  /** A custom fallback element to render while Dropzone is being imported from 'react-dropzone. Since Dropzone is only used when showFileDrop is true, it is imported using lazy loading and suspense to cut down on the bundle size the client needs to initially download. */
   fallback: PropTypes.node,
   feedbackClass: PropTypes.string,
+  /** The metadata properties that have been configured for the delivery channel you are trying to reach with avFilesDeliveryApi. */
   fileDeliveryMetadata: PropTypes.oneOfType([PropTypes.object, PropTypes.func]),
+  /** Override the default error message for files rejected when showFileDrop is true. */
   getDropRejectionMessage: PropTypes.func,
+  /** The maximum number of files allowed to be uploaded. 0 (or a falsey value) means unlimited. When the max number has been reached, the add button will disappear. */
   max: PropTypes.number,
+  /** The maximum file size (in bytes) for a file to be uploaded. */
   maxSize: PropTypes.number,
+  /** The total maximum combined file size (in bytes) for all the files to be uploaded. */
   totalMaxSize: PropTypes.number,
+  /** Indicates that the user will be allowed to select multiple files when selecting files from the OS prompt. */
   multiple: PropTypes.bool,
+  /** Callback to be executed when the delivery API call(s) have failed. It is called with the error that was thrown. */
   onDeliveryError: PropTypes.func,
+  /** Callback to be executed when the delivery API call(s) have completed. It is called with an array of API responses (array of one if a single call was made). Note: a delivery can be REJECTED/FAILED/etc when the success callback is called - make sure to check the deliveryStatus for accurate handling. */
   onDeliverySuccess: PropTypes.func,
   onFilePreUpload: PropTypes.arrayOf(PropTypes.func),
+  /** Callback called when file is removed. The callback is provided two arguments. 1. the updated files and 2. the id of the file that was removed. */
   onFileRemove: PropTypes.func,
+  /** Callback to be executed when file is uploaded. The callback is provided the Upload instance from upload-core SDK. Use this callback to hook into the upload.onSuccess and upload.onError events and track which files have been uploaded and get references returned by the API if needed. */
   onFileUpload: PropTypes.func,
+  /** Set as true to show a drag and drop file upload option instead of a button (file explorer still available on click). */
   showFileDrop: PropTypes.bool,
 };
 

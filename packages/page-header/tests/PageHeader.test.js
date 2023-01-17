@@ -132,7 +132,7 @@ describe('PageHeader', () => {
 
       const { getByTestId } = render(
         <Spaces payerIds={['payer1']} clientId="my-client-id">
-          <PageHeader appName="Payer Space" payerId="payer1" />
+          <PageHeader appName="Payer Space" payerId="payer1" clientId="my-client-id" />
         </Spaces>
       );
 

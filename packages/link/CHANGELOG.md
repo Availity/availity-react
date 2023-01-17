@@ -1,7 +1,44 @@
-# Change Log
+# Changelog
 
-All notable changes to this project will be documented in this file.
-See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
+This file was generated using [@jscutlery/semver](https://github.com/jscutlery/semver).
+
+## [2.5.2](https://github.com/Availity/availity-react/compare/@availity/link@2.5.1...@availity/link@2.5.2) (2022-12-13)
+
+
+
+## [2.5.1](https://github.com/Availity/availity-react/compare/@availity/link@2.5.0...@availity/link@2.5.1) (2022-06-14)
+
+
+
+# [2.5.0](https://github.com/Availity/availity-react/compare/@availity/link@2.4.5...@availity/link@2.5.0) (2022-06-14)
+
+
+### Features
+
+* **form:** add currency input ([fa9eea6](https://github.com/Availity/availity-react/commit/fa9eea6a3b3dd2ef741a0658c102e36c6db5288c))
+
+
+
+## [2.4.5](https://github.com/Availity/availity-react/compare/@availity/link@2.4.4...@availity/link@2.4.5) (2022-06-10)
+
+
+
+## [2.4.4](https://github.com/Availity/availity-react/compare/@availity/link@2.4.3...@availity/link@2.4.4) (2022-05-24)
+
+
+### Bug Fixes
+
+* upgrade yup and update sb stories ([68aeafe](https://github.com/Availity/availity-react/commit/68aeafe4fd7d90d7c88dbb24636ba7770fe87aa3))
+
+
+
+## 2.4.3 (2022-02-22)
+
+**Note:** Version bump only for package @availity/link
+
+
+
+
 
 ## [2.4.2](https://github.com/Availity/availity-react/compare/@availity/link@2.4.1...@availity/link@2.4.2) (2021-12-20)
 

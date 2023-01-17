@@ -17,3 +17,12 @@ reports/
 /**/node_modules
 /**/storybook-docs
 /**/storybook-static
+
+.yarn/*
+!.yarn/patches
+!.yarn/releases
+!.yarn/plugins
+!.yarn/sdks
+!.yarn/versions
+yarn-error.log
+.pnp.*

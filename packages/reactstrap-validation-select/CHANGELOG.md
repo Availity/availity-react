@@ -1,7 +1,89 @@
-# Change Log
+# Changelog
 
-All notable changes to this project will be documented in this file.
-See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
+This file was generated using [@jscutlery/semver](https://github.com/jscutlery/semver).
+
+# [9.6.0](https://github.com/Availity/availity-react/compare/@availity/reactstrap-validation-select@9.5.2...@availity/reactstrap-validation-select@9.6.0) (2022-09-22)
+
+
+### Features
+
+* **reactstrap-validation-select:** add feedback message id to be referenced by aria describedby ([ac544b7](https://github.com/Availity/availity-react/commit/ac544b7b240485cdc2b4a8fbaf12201fb41ab6db))
+* **reactstrap-validation-select:** fixed issues found in pr ([3063ff2](https://github.com/Availity/availity-react/commit/3063ff282dbdce955c6132b5e94ed30d038e3dd6))
+* **reactstrap-validation-select:** fixed linting message error ([c2accb1](https://github.com/Availity/availity-react/commit/c2accb1e238c32b7e4bc89c5558735b2a1c4ed68))
+* **reactstrap-validation-select:** fixed readme text and linting issue ([8542272](https://github.com/Availity/availity-react/commit/8542272090dbe1a7cbcf637699bd4fafb95073c4))
+* **reactstrap-validation-select:** fixed typo ([b0e6391](https://github.com/Availity/availity-react/commit/b0e639166f4737aa269866249cf0eddd2ff4b59c))
+* **reactstrap-validation-select:** fixed unit tests ([0312a0c](https://github.com/Availity/availity-react/commit/0312a0c2b1f45a3c1f0dc6719cd87d382a167a75))
+* **reactstrap-validation-select:** made changes according to pr review remarks ([944482e](https://github.com/Availity/availity-react/commit/944482ec0366dfa2e845887caa1d392b129ed5c8))
+
+
+
+## [9.5.2](https://github.com/Availity/availity-react/compare/@availity/reactstrap-validation-select@9.5.1...@availity/reactstrap-validation-select@9.5.2) (2022-08-03)
+
+
+### Bug Fixes
+
+* **reactstrap-validation-select:** firefox grid bug ([50fcea3](https://github.com/Availity/availity-react/commit/50fcea353208b16ec276762758b265ce2d148109))
+
+
+
+## [9.5.1](https://github.com/Availity/availity-react/compare/@availity/reactstrap-validation-select@9.5.0...@availity/reactstrap-validation-select@9.5.1) (2022-06-14)
+
+
+
+# [9.5.0](https://github.com/Availity/availity-react/compare/@availity/reactstrap-validation-select@9.4.3...@availity/reactstrap-validation-select@9.5.0) (2022-06-14)
+
+
+### Features
+
+* **form:** add currency input ([fa9eea6](https://github.com/Availity/availity-react/commit/fa9eea6a3b3dd2ef741a0658c102e36c6db5288c))
+
+
+
+## [9.4.3](https://github.com/Availity/availity-react/compare/@availity/reactstrap-validation-select@9.4.2...@availity/reactstrap-validation-select@9.4.3) (2022-06-10)
+
+
+
+## [9.4.2](https://github.com/Availity/availity-react/compare/@availity/reactstrap-validation-select@9.4.1...@availity/reactstrap-validation-select@9.4.2) (2022-05-24)
+
+
+
+## [9.4.1](https://github.com/Availity/availity-react/compare/@availity/reactstrap-validation-select@9.4.0...@availity/reactstrap-validation-select@9.4.1) (2022-02-23)
+
+
+### Bug Fixes
+
+* update proptype and typedef for helpMessage ([f61d0a1](https://github.com/Availity/availity-react/commit/f61d0a1c204900e55046262aa2f06056ce858c3b))
+
+
+
+
+
+# 9.4.0 (2022-02-23)
+
+
+### Features
+
+* add prop to allow inputValue to not be encoded ([9c598a8](https://github.com/Availity/availity-react/commit/9c598a8d4b69f3aebfc215a56f81501fa3451b58))
+
+
+
+
+
+## [9.3.2](https://github.com/Availity/availity-react/compare/@availity/reactstrap-validation-select@9.3.1...@availity/reactstrap-validation-select@9.3.2) (2022-02-04)
+
+**Note:** Version bump only for package @availity/reactstrap-validation-select
+
+
+
+
+
+## 9.3.1 (2022-02-03)
+
+**Note:** Version bump only for package @availity/reactstrap-validation-select
+
+
+
+
 
 # 9.3.0 (2022-01-13)
 

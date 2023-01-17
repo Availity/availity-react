@@ -2,6 +2,7 @@
 import React from 'react';
 import { Story, Meta } from '@storybook/react';
 import { Button } from 'reactstrap';
+import { ArgsTable } from '@storybook/addon-docs';
 
 import Analytics from './Analytics';
 // import README from '../README.md';
@@ -91,6 +92,14 @@ export const Default: Story = ({ id, action, eventModifiers, recursive }) => {
     </Analytics>
   );
 };
+
+export const Props: Story = () => (
+  <>
+    <h4>Availity Props</h4>
+    <h5>Analytics</h5>
+    <ArgsTable of={Analytics} />
+  </>
+);
 
 Default.args = {
   id: 'my-button',

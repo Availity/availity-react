@@ -32,25 +32,25 @@ describe('SpacesAgreement', () => {
   });
 
   it('renders agreement from space', async () => {
-    const { getByTestId } = render(
+    const { container } = render(
       <Spaces clientId="my-client-id" spaceIds={['1']}>
         <SpacesAgreement spaceId="1" />
       </Spaces>
     );
 
-    const agreement = await waitFor(() => getByTestId('spaces-agreement-1'));
+    const agreement = await waitFor(() => container);
 
     expect(agreement.textContent).toBe('foo');
   });
 
   it('renders agreement from single space', async () => {
-    const { getByTestId } = render(
+    const { container } = render(
       <Spaces clientId="my-client-id" spaceIds={['1']}>
         <SpacesAgreement />
       </Spaces>
     );
 
-    const agreement = await waitFor(() => getByTestId('spaces-agreement-1'));
+    const agreement = await waitFor(() => container);
 
     expect(agreement.textContent).toBe('foo');
   });

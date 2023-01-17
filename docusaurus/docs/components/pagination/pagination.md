@@ -1,5 +1,6 @@
 ---
 title: <Pagination />
+slug: pagination
 ---
 
 This is the provider component needed for `@availity/pagination` components to work. All `@availity/pagination` components must be children of a Pagination provider.

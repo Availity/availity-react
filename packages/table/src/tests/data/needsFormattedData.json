@@ -6,7 +6,9 @@
     "badge": "badge field",
     "icon": true,
     "date": "1956-02-16T05:00:00.000+0000",
-    "icon2": "someValue"
+    "icon2": "someValue",
+    "iconWithTooltip": "Value!",
+    "quickAction": true
   },
   {
     "id": 2,
@@ -14,6 +16,7 @@
     "currency": "43.08",
     "badge": "badge field",
     "icon": false,
-    "date": "1990-02-16T05:00:00.000+0000"
+    "date": "1990-02-16T05:00:00.000+0000",
+    "quickAction": false
   }
 ]

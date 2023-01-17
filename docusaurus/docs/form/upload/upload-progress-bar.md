@@ -13,13 +13,11 @@ import { UploadProgressBar } from '@availity/upload';
 const Example = () => <UploadProgressBar upload={uploadInstance} animated />;
 ```
 
-#### Live example: <a href="https://availity.github.io/availity-react/storybook/?path=/story/components-upload--progress-bar"> Storybook</a>
-
 ### Props
 
 #### `upload?: UploadCore`
 
-The upload instance returned by creating a `new Upload` via [upload-core](https://github.com/Availity/sdk-js/tree/master/packages/upload-core).
+The upload instance returned by creating a `new Upload` via [upload-core](https://github.com/Availity/sdk-js/tree/master/packages/upload-core#readme).
 
 #### `onProgress?: (upload: UploadCore) => void`
 

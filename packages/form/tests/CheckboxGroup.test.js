@@ -1,19 +1,18 @@
 import React from 'react';
-import { render, waitFor, fireEvent, cleanup } from '@testing-library/react';
+import { render, waitFor, fireEvent } from '@testing-library/react';
 import { Button } from 'reactstrap';
 import * as yup from 'yup';
-import { Form, Checkbox, CheckboxGroup } from '..';
 
-afterEach(cleanup);
+import { Form, Checkbox, CheckboxGroup } from '../src';
 
 describe('CheckboxGroup', () => {
-  test('renders with group class name', async () => {
+  test('renders with group class name', () => {
     const { getByTestId } = render(
       <Form
         initialValues={{
           hello: [],
         }}
-        onSubmit={() => {}}
+        onSubmit={jest.fn()}
         // eslint-disable-next-line no-undef
         validationSchema={yup.object().shape({
           hello: yup.array().required('At least one checkbox is required'),
@@ -37,10 +36,9 @@ describe('CheckboxGroup', () => {
         initialValues={{
           hello: [],
         }}
-        onSubmit={() => {}}
-        // eslint-disable-next-line no-undef
+        onSubmit={jest.fn()}
         validationSchema={yup.object().shape({
-          hello: yup.array().required('At least one checkbox is required'),
+          hello: yup.array().min(1, 'At least one checkbox is required'),
         })}
       >
         <CheckboxGroup name="hello" label="Checkbox Group">
@@ -68,7 +66,7 @@ describe('CheckboxGroup', () => {
         initialValues={{
           hello: '',
         }}
-        onSubmit={() => {}}
+        onSubmit={jest.fn()}
       >
         <CheckboxGroup name="hello" label="Checkbox Group" helpId="helloHelpTopic">
           <Checkbox label="Check One" value="uno" />
@@ -86,7 +84,7 @@ describe('CheckboxGroup', () => {
         initialValues={{
           hello: '',
         }}
-        onSubmit={() => {}}
+        onSubmit={jest.fn()}
       >
         <CheckboxGroup name="hello" label="Checkbox Group" required>
           <Checkbox label="Check One" value="uno" />
@@ -182,6 +180,7 @@ describe('CheckboxGroup', () => {
         validationSchema={yup.object().shape({
           hello: yup.array(),
         })}
+        onSubmit={jest.fn()}
       >
         <CheckboxGroup onChange={onChange} name="hello" label="Checkbox Group">
           <Checkbox label="Check One" value="uno" />

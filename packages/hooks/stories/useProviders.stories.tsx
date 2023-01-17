@@ -7,8 +7,6 @@ import { useProviders } from '..';
 
 import ResourceComponent from './ResourceComponent';
 
-const queryClient = new QueryClient();
-
 export default {
   title: 'Hooks/useProviders',
   parameters: {
@@ -18,7 +16,7 @@ export default {
   },
   decorators: [
     (Story) => (
-      <QueryClientProvider client={queryClient}>
+      <QueryClientProvider client={new QueryClient()}>
         <Story />
       </QueryClientProvider>
     ),

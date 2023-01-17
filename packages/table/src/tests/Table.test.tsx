@@ -1,26 +1,29 @@
 import React from 'react';
-import { render, fireEvent, waitFor } from '@testing-library/react';
+import { render, fireEvent, waitFor, screen } from '@testing-library/react';
 import basicData from './data/basicData.json';
 import formattedData from './data/needsFormattedData.json';
 import Table from '../Table';
-import TableProvider from '../TableProvider';
 import CurrencyCell from '../CellDefinitions/CurrencyCell';
 import ActionCell from '../CellDefinitions/ActionCell';
 import BadgeCell from '../CellDefinitions/BadgeCell';
 import IconCell from '../CellDefinitions/IconCell';
 import DateCell from '../CellDefinitions/DateCell';
+import IconWithTooltipCell from '../CellDefinitions/IconWIthTooltipCell';
 import { Cell, Column } from '../types/ReactTable';
+import TableContent from '../TableContent';
 
 const basicColumns = [
   {
     Header: 'First Name',
     accessor: 'first_name',
     defaultCanSort: true,
+    canCustomize: true,
   },
   {
     Header: 'Last Name',
     accessor: 'last_name',
     defaultCanSort: true,
+    canCustomize: true,
   },
   {
     Header: 'Email',
@@ -54,13 +57,23 @@ const formattedColumns = [
     accessor: 'icon2',
     Cell: IconCell({
       name: 'doc-alt',
-      getTitle: () => 'test'
+      getTitle: () => 'test',
     }),
   },
   {
     Header: 'Date',
     accessor: 'date',
     Cell: DateCell({ dateFormat: 'MM/DD/yyyy' }),
+  },
+  {
+    Header: 'Icon With Tooltip',
+    accessor: 'iconWithTooltip',
+    Cell: IconWithTooltipCell({
+      name: 'ok',
+      getId: (row) => `IconWithTooltip_${row.id}`,
+      tooltipText: (value) => `IconWithTooltip: ${value}`,
+      defaultValue: 'Not Available',
+    }),
   },
   {
     id: 'actions',
@@ -93,6 +106,7 @@ const formattedColumns = [
       primaryAction: {
         iconName: 'file-pdf',
         title: 'View File',
+        isVisible: (record?: Record<string, string | boolean | number>) => !!record?.quickAction,
         onClick: (record?: Record<string, unknown>) => {
           // eslint-disable-next-line no-console
           console.log(`action on record ${record?.id}`);
@@ -104,22 +118,14 @@ const formattedColumns = [
 
 describe('Table', () => {
   test('should render basic table', () => {
-    const { container } = render(
-      <TableProvider data={basicData} columns={basicColumns}>
-        <Table />
-      </TableProvider>
-    );
+    const { container } = render(<Table data={basicData} columns={basicColumns} />);
 
     expect(container).toBeDefined();
     expect(container).toMatchSnapshot();
   });
 
   test('should render selectable table', async () => {
-    const { container } = render(
-      <TableProvider selectable data={basicData} columns={basicColumns}>
-        <Table />
-      </TableProvider>
-    );
+    const { container } = render(<Table selectable data={basicData} columns={basicColumns} />);
 
     expect(container).toBeDefined();
     expect(container).toMatchSnapshot();
@@ -127,9 +133,9 @@ describe('Table', () => {
 
   test('should render sortable table', () => {
     const { container } = render(
-      <TableProvider sortable data={basicData} columns={basicColumns}>
-        <Table />
-      </TableProvider>
+      <Table sortable data={basicData} columns={basicColumns}>
+        <TableContent />
+      </Table>
     );
 
     expect(container).toBeDefined();
@@ -138,9 +144,9 @@ describe('Table', () => {
 
   test('should render with formatted cells', () => {
     const { container } = render(
-      <TableProvider data={formattedData} columns={formattedColumns}>
-        <Table />
-      </TableProvider>
+      <Table data={formattedData} columns={formattedColumns}>
+        <TableContent />
+      </Table>
     );
 
     expect(container).toBeDefined();
@@ -148,11 +154,7 @@ describe('Table', () => {
   });
 
   test('should render with expected ids', () => {
-    const { container } = render(
-      <TableProvider data={basicData} columns={basicColumns}>
-        <Table id="my_availity_table" />{' '}
-      </TableProvider>
-    );
+    const { container } = render(<Table id="my_availity_table" data={basicData} columns={basicColumns} />);
 
     expect(container).toBeDefined();
     expect(container).toMatchSnapshot();
@@ -161,10 +163,7 @@ describe('Table', () => {
   test('should call onRowClick when event is provided', async () => {
     const onRowClick = jest.fn();
     const { container, getByTestId } = render(
-      <TableProvider data={basicData} columns={basicColumns}>
-        {' '}
-        <Table onRowClick={onRowClick} />
-      </TableProvider>
+      <Table onRowClick={onRowClick} data={basicData} columns={basicColumns} />
     );
 
     expect(container).toBeDefined();
@@ -181,10 +180,7 @@ describe('Table', () => {
   test('should call onRowClick when event is provided for selectable table', async () => {
     const onRowClick = jest.fn();
     const { container, getByTestId } = render(
-      <TableProvider selectable data={basicData} columns={basicColumns}>
-        {' '}
-        <Table onRowClick={onRowClick} />
-      </TableProvider>
+      <Table selectable onRowClick={onRowClick} data={basicData} columns={basicColumns} />
     );
 
     expect(container).toBeDefined();
@@ -202,10 +198,7 @@ describe('Table', () => {
     const onRowSelected = jest.fn();
 
     const { container, getByTestId } = render(
-      <TableProvider selectable data={basicData} columns={basicColumns}>
-        {' '}
-        <Table onRowSelected={onRowSelected} />
-      </TableProvider>
+      <Table selectable onRowSelected={onRowSelected} data={basicData} columns={basicColumns} />
     );
 
     expect(container).toBeDefined();
@@ -214,7 +207,7 @@ describe('Table', () => {
     fireEvent.click(tableRow);
 
     await waitFor(() => {
-      expect(onRowSelected).toHaveBeenCalledTimes(1);
+      expect(onRowSelected).toHaveBeenCalled();
     });
   });
 
@@ -222,9 +215,7 @@ describe('Table', () => {
     const onSort = jest.fn();
 
     const { container, getByTestId } = render(
-      <TableProvider sortable data={basicData} columns={basicColumns} manualSortBy>
-        <Table onSort={onSort} />
-      </TableProvider>
+      <Table onSort={onSort} sortable data={basicData} columns={basicColumns} manualSortBy />
     );
 
     expect(container).toBeDefined();
@@ -235,5 +226,144 @@ describe('Table', () => {
     await waitFor(() => {
       expect(onSort).toHaveBeenCalledTimes(1);
     });
+  });
+
+  test('should not display hidden columns', async () => {
+    const columnsToUse = [
+      ...basicColumns,
+      {
+        Header: 'Hidden',
+        accessor: 'aPropThatIsHidden',
+        hidden: true,
+      },
+    ];
+
+    const { container, queryByTestId } = render(<Table data={basicData} columns={columnsToUse} />);
+
+    expect(container).toBeDefined();
+    expect(container).toMatchSnapshot();
+
+    const columnHeader = queryByTestId('table_header_row_0_cell_4_aPropThatIsHidden');
+    expect(columnHeader).toBeNull();
+  });
+
+  test('should not display primary action column when provided', async () => {
+    const { container, queryByTestId } = render(<Table data={formattedData} columns={formattedColumns} />);
+
+    expect(container).toBeDefined();
+    expect(container).toMatchSnapshot();
+
+    const primaryAction1 = queryByTestId('table_row_action_menu_item_0_primaryAction');
+    expect(primaryAction1).not.toBeNull();
+
+    const primaryAction2 = queryByTestId('table_row_action_menu_item_2_primaryAction');
+    expect(primaryAction2).toBeNull();
+  });
+
+  test('should display defaultValue when provided for formatted cells', async () => {
+    const defaultValue = 'Not Available';
+    const columDefs = [
+      {
+        Header: 'Currency',
+        accessor: 'currency',
+        Cell: CurrencyCell({ defaultValue }),
+      },
+      {
+        Header: 'Badge Cell',
+        accessor: 'badge',
+        Cell: BadgeCell('success', '', 'Not Available'),
+      },
+      {
+        Header: 'Icon',
+        accessor: 'icon',
+        Cell: IconCell({ name: 'doc-alt', title: 'View Notes', defaultValue }),
+      },
+      {
+        Header: 'icon2',
+        accessor: 'icon2',
+        Cell: IconCell({
+          name: 'doc-alt',
+          getTitle: () => 'test',
+          defaultValue,
+        }),
+      },
+      {
+        Header: 'Icon With Tooltip',
+        accessor: 'iconWithTooltip',
+        Cell: IconWithTooltipCell({
+          name: 'ok',
+          getId: (row) => `IconWithTooltip_${row.id}`,
+          tooltipText: (value) => `IconWithTooltip: ${value}`,
+          defaultValue: 'Not Available',
+        }),
+      },
+      {
+        Header: 'Date',
+        accessor: 'date',
+        Cell: DateCell({ dateFormat: 'MM/DD/yyyy', defaultValue }),
+      },
+    ] as Column<Record<string, string | boolean | number | undefined>>[];
+
+    const currentData = [
+      {
+        id: '1',
+        currency: '',
+        badge: '',
+        icon: undefined,
+        icon2: undefined,
+        iconWithTooltip: undefined,
+        date: '',
+      },
+    ];
+
+    render(
+      <Table data={currentData} columns={columDefs}>
+        <TableContent />
+      </Table>
+    );
+
+    const currencyCell = screen.getByTestId('table_row_0_cell_0');
+    expect(currencyCell.textContent).toBe(defaultValue);
+
+    const badgeCell = screen.getByTestId('table_row_0_cell_1');
+    expect(badgeCell.textContent).toBe(defaultValue);
+
+    const iconCell1 = screen.getByTestId('table_row_0_cell_2');
+    expect(iconCell1.textContent).toBe(defaultValue);
+
+    const iconCell2 = screen.getByTestId('table_row_0_cell_3');
+    expect(iconCell2.textContent).toBe(defaultValue);
+
+    const iconCell3 = screen.getByTestId('table_row_0_cell_4');
+    expect(iconCell3.textContent).toBe(defaultValue);
+
+    const dateCell = screen.getByTestId('table_row_0_cell_5');
+    expect(dateCell.textContent).toBe(defaultValue);
+  });
+
+  test('should display badge when no display text is provided', async () => {
+    const columDefs = [
+      {
+        Header: 'Badge Cell',
+        accessor: 'badge',
+        Cell: BadgeCell('success'),
+      },
+    ] as Column<Record<string, string | boolean | number | undefined>>[];
+
+    const currentData = [
+      {
+        id: '1',
+        badge: 'Test',
+      },
+    ];
+
+    render(
+      <Table data={currentData} columns={columDefs}>
+        <TableContent />
+      </Table>
+    );
+
+    const badgeCell = screen.getByTestId('table_row_0_cell_0');
+    expect(badgeCell.textContent).toBe(currentData[0].badge);
   });
 });

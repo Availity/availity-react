@@ -3,7 +3,7 @@ import { render } from '@testing-library/react';
 import { Button } from 'reactstrap';
 import { Form } from '@availity/form';
 
-import { SelectField } from '..';
+import { SelectField } from '../src';
 
 describe('Select', () => {
   test('renders with Label', async () => {

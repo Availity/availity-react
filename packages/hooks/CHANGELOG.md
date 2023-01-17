@@ -1,7 +1,44 @@
-# Change Log
+# Changelog
 
-All notable changes to this project will be documented in this file.
-See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
+This file was generated using [@jscutlery/semver](https://github.com/jscutlery/semver).
+
+## [3.3.1](https://github.com/Availity/availity-react/compare/@availity/hooks@3.3.0...@availity/hooks@3.3.1) (2022-06-14)
+
+
+
+# [3.3.0](https://github.com/Availity/availity-react/compare/@availity/hooks@3.2.2...@availity/hooks@3.3.0) (2022-06-14)
+
+
+### Features
+
+* **form:** add currency input ([fa9eea6](https://github.com/Availity/availity-react/commit/fa9eea6a3b3dd2ef741a0658c102e36c6db5288c))
+
+
+
+## [3.2.2](https://github.com/Availity/availity-react/compare/@availity/hooks@3.2.1...@availity/hooks@3.2.2) (2022-06-10)
+
+
+
+## [3.2.1](https://github.com/Availity/availity-react/compare/@availity/hooks@3.2.0...@availity/hooks@3.2.1) (2022-05-24)
+
+
+### Bug Fixes
+
+* upgrade yup and update sb stories ([68aeafe](https://github.com/Availity/availity-react/commit/68aeafe4fd7d90d7c88dbb24636ba7770fe87aa3))
+
+
+
+# 3.2.0 (2022-02-18)
+
+
+### Features
+
+* **hooks:** add documentation to sidebar, some formatting ([fbd9964](https://github.com/Availity/availity-react/commit/fbd99648c18993394f773d8540c1be023acf6e5b))
+* **hooks:** add useWindowDimensionsHook ([203d9c0](https://github.com/Availity/availity-react/commit/203d9c0a31362ec084c94c4ae50ab4b6efbc876b))
+
+
+
+
 
 ## [3.1.2](https://github.com/Availity/availity-react/compare/@availity/hooks@3.1.1...@availity/hooks@3.1.2) (2021-12-20)
 

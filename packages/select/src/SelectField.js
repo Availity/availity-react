@@ -55,7 +55,7 @@ SelectField.propTypes = {
   feedbackClass: PropTypes.string,
   groupClass: PropTypes.string,
   helpId: PropTypes.string,
-  helpMessage: PropTypes.string,
+  helpMessage: PropTypes.oneOfType([PropTypes.string, PropTypes.node]),
   label: PropTypes.node,
   labelClass: PropTypes.string,
   labelHidden: PropTypes.bool,
