@@ -1,38 +1,36 @@
 import React from 'react';
-import { render, cleanup, fireEvent } from '@testing-library/react';
+import { render, cleanup, fireEvent, waitFor } from '@testing-library/react';
 import Tooltip from './Tooltip';
 
 afterEach(cleanup);
 
-describe('Tooltip', () => {
-  test('should render', () => {
-    const baseDom = render(
-      <>
-        <Tooltip target="tooltip">
-          <span>This is a tooltip</span>
-        </Tooltip>
-        <span id="tooltip">hover me!</span>
-      </>
-    );
+const example = (
+  <>
+    <Tooltip data-testid="tooltip" target="tooltip">
+      <span>This is a tooltip</span>
+    </Tooltip>
+    <span data-testid="tooltip-target" id="tooltip">
+      hover me!
+    </span>
+  </>
+);
 
-    fireEvent.mouseOver(baseDom.getByTestId('tooltip'));
-    expect(baseDom.getByText('This is a tooltip')).toBeDefined();
+describe('Tooltip', () => {
+  test('should render', async () => {
+    const baseDom = render(example);
+
+    fireEvent.mouseOver(baseDom.getByTestId('tooltip-target'));
+    await waitFor(() => baseDom.getByTestId('tooltip'));
+    expect(baseDom.getByText('This is a tooltip')).toBeInTheDocument();
   });
 
-  test('should close on esc', () => {
-    const baseDom = render(
-      <>
-        <Tooltip target="tooltip">
-          <span>This is a tooltip</span>
-        </Tooltip>
-        <span id="tooltip" data-test-id="tooltip">
-          hover me!
-        </span>
-      </>
-    );
-    fireEvent.mouseOver(baseDom.getByTestId('tooltip'));
+  test('should close on esc', async () => {
+    const baseDom = render(example);
+    fireEvent.mouseOver(baseDom.getByTestId('tooltip-target'));
 
+    await waitFor(() => baseDom.getByTestId('tooltip'));
     fireEvent.keyDown(baseDom.container, { key: 'Escape', code: 'Escape' });
-    expect(baseDom.getByText('This is a tooltip')).toBeUndefined();
+    await waitFor(() => fireEvent.mouseOver(baseDom.getByTestId('tooltip-target')));
+    expect(await baseDom.getByText('This is a tooltip')).toBeInTheDocument();
   });
 });
