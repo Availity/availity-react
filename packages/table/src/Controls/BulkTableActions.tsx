@@ -88,7 +88,9 @@ const BulkTableActions = <T extends IdType>({
               };
 
               if (isVisible) {
-                return (
+                return action.divider ? (
+                  <DropdownItem data-testid={`bulk_action_${action.id}`} key={action.id} divider />
+                ) : (
                   <DropdownItem data-testid={`bulk_action_${action.id}`} key={`${action.id}`} {...setProps()}>
                     {action.displayText}
                   </DropdownItem>
