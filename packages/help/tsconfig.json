@@ -1,5 +1,4 @@
 {
   "extends": "../../tsconfig.json",
-  "include": [".", "src/Tooltip.stories.tsx"],
   "exclude": ["dist", "build", "node_modules"]
 }
