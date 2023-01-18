@@ -35,6 +35,9 @@ export type {
 
 export { default } from './Table';
 
+export { default as TableActionMenu } from './TableActionMenu';
+export type { TableActionMenuProps } from './TableActionMenu';
+
 export { useTableContext, TableContext } from './TableContext';
 export type { AvTableContext } from './TableContext';
 
