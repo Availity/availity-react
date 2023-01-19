@@ -1107,6 +1107,7 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@availity/table@workspace:packages/table"
   dependencies:
+    "@availity/hooks": "workspace:*"
     "@availity/icon": "workspace:*"
     "@types/react-table": ^7.7.12
     classnames: ^2.3.1

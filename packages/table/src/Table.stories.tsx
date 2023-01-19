@@ -18,6 +18,7 @@ import Table, {
   IconWithTooltipCell,
 } from '.';
 import '../styles.scss';
+import { truncate } from 'fs/promises';
 
 const columns = [
   {
@@ -70,6 +71,7 @@ const columns = [
     Header: 'Actions',
     className: 'action-column',
     Cell: ActionCell({
+      isSticky: true,
       actions: [
         {
           id: 'action1',

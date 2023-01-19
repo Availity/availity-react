@@ -29,6 +29,7 @@
     "publish:canary": "yarn npm publish --access public --tag canary"
   },
   "dependencies": {
+    "@availity/hooks": "workspace:*",
     "@availity/icon": "workspace:*",
     "@types/react-table": "^7.7.12",
     "classnames": "^2.3.1",

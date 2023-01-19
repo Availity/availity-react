@@ -1,5 +1,6 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import Icon from '@availity/icon';
+
 import {
   Dropdown,
   DropdownToggle,
@@ -30,6 +31,7 @@ const TableActionMenu = ({
   onMenuToggled,
 }: TableActionMenuProps): JSX.Element => {
   const [isOpen, setIsOpen] = useState(false);
+
   const toggle = () => {
     const newIsOpenVal = !isOpen;
     setIsOpen(newIsOpenVal);
