@@ -8,7 +8,6 @@ import TableActionMenuItem from '../TableActionMenuItem';
 import { Cell, IdType } from '../types/ReactTable';
 import { RecordAction } from '../types/RecordAction';
 import { PrimaryRecordAction } from '../types/PrimaryRecordAction';
-import { useTableContext } from '../TableContext';
 
 export interface ActionCellConfig<T> {
   actions: RecordAction<T>[];
@@ -25,18 +24,17 @@ const ActionCell = <T extends IdType>({
 }: ActionCellConfig<T>): ((cell: Cell<T>) => JSX.Element) => {
   const ActionCellDef = ({ row: { original, id } }: Cell<T>): JSX.Element => {
     const { height, width } = useWindowDimensions();
-    const { scrollable } = useTableContext();
 
     const [menuPositionTransform, setMenuPositionTransform] = useState<string | undefined>();
 
     const stickyMenuModifiers = useMemo(
       () => ({
         eventListeners: {
-          scroll: !(isSticky && scrollable),
+          scroll: !isSticky,
         },
         maintainInitialPosition: {
           order: 849,
-          enabled: isSticky && scrollable,
+          enabled: isSticky,
           fn: (data: Popper.Data) => {
             if (!isSticky) {
               return data;
@@ -54,7 +52,7 @@ const ActionCell = <T extends IdType>({
           requires: ['computeStyles'],
         },
       }),
-      [isSticky, menuPositionTransform, scrollable]
+      [isSticky, menuPositionTransform]
     );
 
     const isPrimaryActionVisible = primaryAction
@@ -87,7 +85,7 @@ const ActionCell = <T extends IdType>({
       <>
         <TableActionMenu
           id={`table_row_action_menu_${id}`}
-          onMenuToggled={isSticky && scrollable ? onMenuToggled : undefined}
+          onMenuToggled={isSticky ? onMenuToggled : undefined}
           dropdownMenuProps={{
             modifiers: { ...stickyMenuModifiers, ...modifiers },
             ...dropDownMenuAttrs,
