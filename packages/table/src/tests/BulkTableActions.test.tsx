@@ -8,6 +8,8 @@ import { Column } from '../types/ReactTable';
 import Table from '../Table';
 import TableContent from '../TableContent';
 
+jest.mock('@availity/hooks');
+
 const basicColumns = [
   {
     Header: 'First Name',
