@@ -19,11 +19,9 @@ const TableActionMenuItem = <T extends IdType>({ id, action, record }: Props<T>)
   }
 
   const displayText =
-    typeof action.displayText === 'string'
-      ? action.displayText
-      : typeof action.displayText === 'function'
+    typeof action.displayText === 'function'
       ? (action.displayText as (record?: T) => string | React.ReactChild | React.ElementType)(record)
-      : '';
+      : action.displayText;
 
   const setOnClickProps = () => {
     if (!action.onClick) {

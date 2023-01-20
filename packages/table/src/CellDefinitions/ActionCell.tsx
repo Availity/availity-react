@@ -105,9 +105,9 @@ const ActionCell = <T extends IdType>({
           <Icon
             data-testid={`table_row_action_menu_item_${id}_primaryAction`}
             name={
-              typeof primaryAction.iconName === 'string' ? primaryAction.iconName : primaryAction.iconName(original)
+              typeof primaryAction.iconName === 'function' ? primaryAction.iconName(original) : primaryAction.iconName
             }
-            title={typeof primaryAction.title === 'string' ? primaryAction.title : primaryAction.title(original)}
+            title={typeof primaryAction.title === 'function' ? primaryAction.title(original) : primaryAction.title}
             onClick={() => primaryAction.onClick(original)}
           />
         )}
