@@ -36,11 +36,45 @@ describe('BlockUi', () => {
   });
 
   test('should block and use custom message', () => {
-    const { getByText } = render(
+    const { getAllByText } = render(
       <BlockUi blocking message="Loading">
         <p>child</p>
       </BlockUi>
     );
-    expect(getByText('Loading')).toBeDefined();
+    expect(getAllByText('Loading')[1]).toBeDefined();
+  });
+
+  test('should block and have default message for screenreader', () => {
+    const { getAllByText } = render(
+      <BlockUi blocking>
+        <p>child</p>
+      </BlockUi>
+    );
+
+    // component inserts two focusable elements to control tabbing behavior
+    // and needs a screenreader message for each
+    const srMessage1 = getAllByText('loading')[0];
+    const srMessage2 = getAllByText('loading')[1];
+
+    expect(srMessage1).toBeDefined();
+    expect(srMessage1?.className).toContain('sr-only');
+
+    expect(srMessage2).toBeDefined();
+    expect(srMessage2?.className).toContain('sr-only');
+  });
+
+  test('should block and have custom message for screenreader', () => {
+    const { getAllByText, queryByText } = render(
+      <BlockUi blocking message="Loading">
+        <p>child</p>
+      </BlockUi>
+    );
+
+    // default screenreader message "loading" should be replaced
+    expect(queryByText('loading')).toBeNull();
+
+    const srMessage = getAllByText('Loading')[0];
+    expect(srMessage).toBeDefined();
+    expect(srMessage?.className).toContain('sr-only');
   });
 });
