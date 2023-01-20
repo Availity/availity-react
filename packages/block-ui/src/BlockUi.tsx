@@ -7,13 +7,21 @@ import DefaultLoader from './Loader';
 import './BlockUi.css';
 
 export type Props = {
+  /** Set whether the component should block its children */
   blocking: boolean;
+  /** children to display */
   children?: ReactNode;
+  /** CSS class name to pass to component */
   className?: string;
+  /** Set whether the blocking component should follow the scroll or stay at a fixed postion */
   keepInView?: boolean;
+  /** Loader component to use */
   loader?: JSX.Element;
+  /** The message to display. Can also be a component. */
   message?: string | ReactNode;
+  /** Control if the children are shown when the component is being blocked */
   renderChildren?: boolean;
+  /** tag to render as container element */
   tag?: ElementType;
 };
 
@@ -114,7 +122,11 @@ function BlockUi({
 
   return (
     <Tag className={blocking ? `block-ui ${className}` : className} aria-busy={blocking}>
-      {blocking ? <div tabIndex={0} onKeyUp={tabbedUpTop} onKeyDown={tabbedDownTop} ref={topFocusRef} /> : null}
+      {blocking ? (
+        <div tabIndex={0} onKeyUp={tabbedUpTop} onKeyDown={tabbedDownTop} ref={topFocusRef} className="sr-only">
+          {message || 'loading'}
+        </div>
+      ) : null}
       {shouldRenderChildren ? children : null}
       {blocking ? (
         <div
@@ -131,8 +143,8 @@ function BlockUi({
             style={{ top: keepInView ? top : undefined }}
           >
             <div className="block-ui-message">
-              {message}
-              {isValidElement(loader) ? loader : null}
+              {message || <div className="sr-only">loading</div>}
+              {isValidElement(loader) ? <div aria-hidden>{loader}</div> : null}
             </div>
           </div>
         </div>
