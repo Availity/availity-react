@@ -21,26 +21,26 @@ jobs:
 
     steps:
       - name: Checkout Code
-        uses: actions/checkout@v2
+        uses: actions/checkout@v3
         with:
           fetch-depth: 0
           token: ${{ secrets.BOT_TOKEN }}
 
       - name: Derive appropriate SHAs for base and head for `nx affected` commands
-        uses: nrwl/nx-set-shas@v2
+        uses: nrwl/nx-set-shas@v3
         with:
           main-branch-name: 'master'
 
       - name: Set Node Version
-        uses: actions/setup-node@v2
+        uses: actions/setup-node@v3
         with:
           node-version: ${{ matrix.node }}
 
       - name: Get yarn cache directory path
         id: yarn-cache-dir-path
-        run: echo "::set-output name=dir::$(yarn cache dir)"
+        run: echo "{dir}={$(yarn cache dir)}" >> $GITHUB_OUTPUT
 
-      - uses: actions/cache@v2
+      - uses: actions/cache@v3
         id: yarn-cache
         with:
           path: ${{ steps.yarn-cache-dir-path.outputs.dir }}
@@ -67,12 +67,12 @@ jobs:
         run: yarn version:dry-run
 
       - name: Upload coverage report
-        uses: codecov/codecov-action@v1.0.6 # FIXME: no CI provider detected
+        uses: codecov/codecov-action@v3 # FIXME: no CI provider detected
         with:
           file: ./coverage/coverage-final.json
           token: ${{ secrets.CODECOV_TOKEN }}
 
-      - name: Build Docs
+      - name: Build Docs (Node 16+ Only)
         if: ${{matrix.node > 14}}
         run: yarn build:docs
 
