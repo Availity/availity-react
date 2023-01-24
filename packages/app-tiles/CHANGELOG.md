@@ -2,6 +2,19 @@
 
 This file was generated using [@jscutlery/semver](https://github.com/jscutlery/semver).
 
+## [0.1.2](https://github.com/Availity/availity-react/compare/@availity/app-tiles@0.1.1...@availity/app-tiles@0.1.2) (2023-01-24)
+
+
+### Bug Fixes
+
+* **app-tiles:** fixing error with null parents in AppTiles ([6a8b90e](https://github.com/Availity/availity-react/commit/6a8b90ec8e6286e9a676564c12f0d2e5e1f1613c))
+* **app-tiles:** fixing typescript issues ([f6b8f57](https://github.com/Availity/availity-react/commit/f6b8f57165023946784fcd3ea979b7397f8c552b))
+* **app-tiles:** fixing version publish issue manually ([dcfdf10](https://github.com/Availity/availity-react/commit/dcfdf107835a089ebb11627f97adf7f6c2c1a845))
+* **app-tiles:** refactoring AppTiles and updating type from any ([a829ab5](https://github.com/Availity/availity-react/commit/a829ab585c8a590ff9ab40989aeb968d6cae2cdb))
+* **app-tiles:** refactoring AppTiles and updating type from any ([0b728d0](https://github.com/Availity/availity-react/commit/0b728d0c63aa8b2c2d8ad95bc2525a15e9ba9079))
+
+
+
 ## [0.1.1](https://github.com/Availity/availity-react/compare/@availity/app-tiles@0.1.0...@availity/app-tiles@0.1.1) (2022-11-28)
 
 
