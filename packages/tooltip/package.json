@@ -1,0 +1,48 @@
+{
+  "name": "@availity/tooltip",
+  "version": "1.0.0",
+  "description": "Context Provider to assist with tooltip Menu on Portal for specific pages",
+  "keywords": [
+    "react",
+    "availity",
+    "tooltip"
+  ],
+  "homepage": "https://availity.github.io/availity-react/components/tooltip",
+  "bugs": {
+    "url": "https://github.com/Availity/availity-react/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Availity/availity-react.git",
+    "directory": "packages/tooltip"
+  },
+  "license": "MIT",
+  "author": "Andrew Clarke <andrew.clarke@availity.com>",
+  "browser": "./dist/index.js",
+  "main": "./dist/index.js",
+  "module": "./dist/index.mjs",
+  "types": "./dist/index.d.ts",
+  "scripts": {
+    "build": "tsup src/index.ts --format esm,cjs --dts",
+    "dev": "tsup src/index.ts --format esm,cjs --watch --dts",
+    "clean": "rm -rf dist",
+    "clean:nm": "rm -rf node_modules",
+    "bundlesize": "bundlesize",
+    "publish": "yarn npm publish --tolerate-republish --access public",
+    "publish:canary": "yarn npm publish --access public --tag canary"
+  },
+  "devDependencies": {
+    "react": "^17.0.2",
+    "react-dom": "^17.0.2",
+    "reactstrap": "^8.10.1",
+    "tsup": "^5.12.7",
+    "typescript": "^4.6.4"
+  },
+  "peerDependencies": {
+    "react": ">=16.3.0",
+    "reactstrap": "^8.10.1"
+  },
+  "publishConfig": {
+    "access": "public"
+  }
+}
