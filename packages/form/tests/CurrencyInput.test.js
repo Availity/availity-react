@@ -8,12 +8,7 @@ import { Form, CurrencyInput } from '../src';
 describe('CurrencyInput', () => {
   test('renders with initial value', () => {
     const { container } = render(
-      <Form
-        onSubmit={() => {
-          console.log('submitted');
-        }}
-        initialValues={{}}
-      >
+      <Form onSubmit={() => {}} initialValues={{}}>
         <CurrencyInput name="paidAmount" value="1.11" />
         <Button type="submit">Submit</Button>
       </Form>
@@ -25,9 +20,7 @@ describe('CurrencyInput', () => {
   test('renders danger className when invalid form', async () => {
     const { getByText, container } = render(
       <Form
-        onSubmit={() => {
-          console.log('submitted');
-        }}
+        onSubmit={() => {}}
         initialValues={{}}
         validationSchema={yup.object().shape({
           paidAmount: yup.string().required('This field is required'),
@@ -53,9 +46,7 @@ describe('CurrencyInput', () => {
   test('renders invalid aria attribute on input when invalid form', async () => {
     const { getByText, container } = render(
       <Form
-        onSubmit={() => {
-          console.log('submitted');
-        }}
+        onSubmit={() => {}}
         initialValues={{}}
         validationSchema={yup.object().shape({
           paidAmount: yup.string().required('This field is required'),
@@ -81,12 +72,7 @@ describe('CurrencyInput', () => {
 
   test('should format decimals on blur', async () => {
     const { container } = render(
-      <Form
-        onSubmit={() => {
-          console.log('submitted');
-        }}
-        initialValues={{}}
-      >
+      <Form onSubmit={() => {}} initialValues={{}}>
         <>
           <CurrencyInput name="paidAmount" value="1" />
           <Button type="submit">Submit</Button>

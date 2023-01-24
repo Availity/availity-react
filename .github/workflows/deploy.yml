@@ -14,7 +14,7 @@ jobs:
 
     steps:
       - name: Checkout Code
-        uses: actions/checkout@v2
+        uses: actions/checkout@v3
         with:
           token: ${{ secrets.BOT_TOKEN }}
           fetch-depth: 0
@@ -22,21 +22,22 @@ jobs:
 
       # - run: git fetch --depth=1 origin +refs/tags/*:refs/tags/*
       - name: Derive appropriate SHAs for base and head for `nx affected` commands
-        uses: nrwl/nx-set-shas@v2
+        uses: nrwl/nx-set-shas@v3
         with:
           main-branch-name: 'master'
 
       - name: Set Node Version
-        uses: actions/setup-node@v2
+        uses: actions/setup-node@v3
         with:
           node-version: 16
 
       - name: Get yarn cache directory path
         id: yarn-cache-dir-path
         run: |
-          echo "::set-output name=dir::$(yarn config get cacheFolder)"
+          echo "dir=$(yarn config get cacheFolder)" >> $GITHUB_OUTPUT
 
-      - uses: actions/cache@v2
+      - name: Restore yarn cache
+        uses: actions/cache@v3
         id: yarn-cache
         with:
           path: ${{ steps.yarn-cache-dir-path.outputs.dir }}
@@ -60,7 +61,7 @@ jobs:
         run: yarn test:ci
 
       - name: Upload coverage report
-        uses: codecov/codecov-action@v1.0.6
+        uses: codecov/codecov-action@v3
         with:
           file: ./coverage/coverage-final.json
           token: ${{ secrets.CODECOV_TOKEN }}
@@ -81,7 +82,7 @@ jobs:
         run: yarn deploy:ci
 
       - name: Deploy Docs and Storybook
-        uses: crazy-max/ghaction-github-pages@v2
+        uses: crazy-max/ghaction-github-pages@v3
         with:
           target_branch: gh-pages
           build_dir: docusaurus/build
