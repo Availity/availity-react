@@ -2,6 +2,16 @@
 
 This file was generated using [@jscutlery/semver](https://github.com/jscutlery/semver).
 
+# [1.7.0](https://github.com/Availity/availity-react/compare/@availity/docusaurus@1.6.0...@availity/docusaurus@1.7.0) (2023-01-24)
+
+
+### Features
+
+* **help:** add tooltip to help package with escape to close tooltip ([b9f1754](https://github.com/Availity/availity-react/commit/b9f175447a19688ac4c4a2bfd4f471652175eea4))
+* **help:** tooltip.mdx capitalize Examples ([de5c8b3](https://github.com/Availity/availity-react/commit/de5c8b359d6b7c6af182d0cfa97f5f25bf6dc9b5))
+
+
+
 # [1.6.0](https://github.com/Availity/availity-react/compare/@availity/docusaurus@1.5.0...@availity/docusaurus@1.6.0) (2023-01-11)
 
 
