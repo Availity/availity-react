@@ -1,5 +1,6 @@
 import React from 'react';
 import { render } from '@testing-library/react';
+import userEvent from '@testing-library/user-event';
 
 import BlockUi from './BlockUi';
 
@@ -24,6 +25,43 @@ describe('BlockUi', () => {
       </BlockUi>
     );
     expect(getByText('child')).toBeDefined();
+  });
+
+  test('should block, render children, and block tabbing to children', () => {
+    const { getByText, getAllByRole } = render(
+      <>
+        <button type="button">before</button>
+        <BlockUi blocking>
+          <button type="button">child</button>
+        </BlockUi>
+        <button type="button">after</button>
+      </>
+    );
+    const before = getAllByRole('button')[0];
+    const child = getByText('child');
+    const after = getAllByRole('button')[2];
+
+    before.focus();
+    userEvent.tab();
+
+    expect(child).toBeDefined();
+    expect(child).not.toHaveFocus();
+    expect(document.activeElement?.innerHTML).toContain('loading');
+
+    userEvent.tab();
+
+    expect(after).toHaveFocus();
+
+    // shift tab to traverse backwards
+    userEvent.tab({ shift: true });
+
+    expect(child).toBeDefined();
+    expect(child).not.toHaveFocus();
+    expect(document.activeElement?.innerHTML).toContain('loading');
+
+    userEvent.tab({ shift: true });
+
+    expect(before).toHaveFocus();
   });
 
   test('should block and hide children', () => {
