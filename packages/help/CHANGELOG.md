@@ -2,6 +2,17 @@
 
 This file was generated using [@jscutlery/semver](https://github.com/jscutlery/semver).
 
+# [2.2.0](https://github.com/Availity/availity-react/compare/@availity/help@2.1.2...@availity/help@2.2.0) (2023-01-24)
+
+
+### Features
+
+* **help:** add tooltip to help package with escape to close tooltip ([b9f1754](https://github.com/Availity/availity-react/commit/b9f175447a19688ac4c4a2bfd4f471652175eea4))
+* **help:** add tooltip to help package with escape to close tooltip ([f6eb365](https://github.com/Availity/availity-react/commit/f6eb365e36d5e30bc6bd8a709381c46aa0029c5d))
+* **tooltip:** cleanup from github comments ([c54f93c](https://github.com/Availity/availity-react/commit/c54f93cf792e53ab6d84669504727ee849a7cddd))
+
+
+
 ## [2.1.2](https://github.com/Availity/availity-react/compare/@availity/help@2.1.1...@availity/help@2.1.2) (2022-11-28)
 
 

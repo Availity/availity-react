@@ -1,6 +1,6 @@
 {
   "name": "@availity/help",
-  "version": "2.1.2",
+  "version": "2.2.0",
   "description": "Context Provider to assist with Help Menu on Portal for specific pages",
   "keywords": [
     "react",
