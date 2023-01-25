@@ -94,11 +94,11 @@ const PayerLogo = ({ spaceId, payerId, clientId, ...props }) => {
 };
 
 PayerLogo.propTypes = {
-  /** String. Required. Client ID to use to fetch the payer's logo. */
+  /** Client ID to use to fetch the payer's logo. */
   clientId: PropTypes.string.isRequired,
-  /** String. Optional, required if `payerId` is not provided. The payer spaces ID for the payer for which you want a logo. */
+  /** Required if `payerId` is not provided. The payer spaces ID for the payer for which you want a logo. */
   spaceId: PropTypes.string,
-  /** String. Optional, required if `spaceId` is not provided. The payer ID for the payer for which you want a logo. */
+  /** Required if `spaceId` is not provided. The payer ID for the payer for which you want a logo. */
   payerId: PropTypes.string,
 };
 
