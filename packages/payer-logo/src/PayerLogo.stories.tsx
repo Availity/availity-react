@@ -11,7 +11,7 @@ export default {
     docs: {
       // page: README,
       description: {
-        component: "Easy to use component to display the payer's logo given the payer's ID",
+        component: "DEPRECATED: Easy to use component to display the payer's logo given the payer's ID",
       },
     },
   },
