@@ -1,7 +1,16 @@
 export type { OnTableClickEvent } from './OnTableClickEvent';
 export type { OnRowSelectedEvent } from './OnRowSelectedEvent';
 
-export type { Row, Column, Cell, ExtendedTableHeader, CurrentTableState, TableInstance, RowProps, IdType } from './ReactTable';
+export type {
+  Row,
+  Column,
+  Cell,
+  ExtendedTableHeader,
+  CurrentTableState,
+  TableInstance,
+  RowProps,
+  IdType,
+} from './ReactTable';
 
 export type { TableAction } from './TableAction';
 export type { BulkRecordAction } from './BulkRecordAction';

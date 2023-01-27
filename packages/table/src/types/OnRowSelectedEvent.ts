@@ -1,5 +1,5 @@
-import { IdType, Row } from "./ReactTable";
+import { IdType, Row } from './ReactTable';
 
 export interface OnRowSelectedEvent<T extends IdType> {
-  selectedRows: Row<T>[]
+  selectedRows: Row<T>[];
 }

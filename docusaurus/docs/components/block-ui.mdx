@@ -1,0 +1,85 @@
+---
+title: Block UI
+summary: Component for blocking sections of a User Interface
+---
+
+[![Version](https://img.shields.io/npm/v/@availity/block-ui.svg?style=for-the-badge)](https://www.npmjs.com/package/@availity/block-ui)
+
+### Installation
+
+npm
+
+```bash
+npm install @availity/block-ui
+```
+
+Yarn
+
+```bash
+yarn add @availity/block-ui
+```
+
+### Usage
+
+#### Example
+
+```jsx
+import React, { useState } from 'react';
+import BlockUi from '@availity/block-ui';
+
+const Example = () => {
+  const [loading, setLoading] = useState(false);
+
+  const handleSubmit = () => {
+    setLoading(true);
+    // do stuff...
+    setLoading(false);
+  };
+
+  return (
+    <BlockUi blocking={loading}>
+      <div>Child components</div>
+    </BlockUi>
+  );
+};
+```
+
+The `BlockUi` component uses a `div` as the default tag. You can override this by using the `tag` prop. Some tags may appear broken at first. In most cases, you can fix this by adding `display: block` as a style. We reecommend creating a CSS class and passing in the `className` prop. If you are using `bootstrap`, then you can leverage the existing class `d-block`
+
+```jsx
+import React, { useState } from 'react';
+import BlockUi from '@availity/block-ui';
+
+const Example = () => {
+  const [loading, setLoading] = useState(false);
+
+  const handleSubmit = () => {
+    setLoading(true);
+    // do stuff...
+    setLoading(false);
+  };
+
+  return (
+    <BlockUi tag="span" className="d-block" blocking={loading}>
+      <div>Child components</div>
+    </BlockUi>
+  );
+};
+```
+
+#### Storybook
+
+Check out our [Storybook](https://availity.github.io/availity-react/storybook/?path=/story/components-block-ui--default) for more examples
+
+#### Props
+
+|  Prop Name            |  Types                |  Default  |  Description                                                                           |
+| --------------------- | --------------------- | --------- | -------------------------------------------------------------------------------------- |
+| blocking (required)   | `boolean`             |           | Set whether the component should block its children                                    |
+| children              | `ReactNode`           |           | children to display                                                                    |
+| className             | `string`              |           | CSS class name to pass to component                                                    |
+| keepInView            | `boolean`             |           | Set whether the blocking component should follow the scroll or stay at a fixed postion |
+| loader                | `JSX.Element`         |           | Loader component to use                                                                |
+| message               | `string or ReactNode` |           | The message to display. Can also be a component.                                       |
+| renderChildren        | `boolean`             | `true`    | Control if the children are shown when the component is being blocked                  |
+| tag                   | `ElementType`         | `<div />` | tag to render as container element                                                     |

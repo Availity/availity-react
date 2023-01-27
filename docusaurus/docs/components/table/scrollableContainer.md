@@ -27,7 +27,7 @@ const columns = [
 
 const Example = () => (
   <ScrollableContainer>
-    <Table columns={columns} data={records}/>
+    <Table columns={columns} data={records} />
   </ScrollableContainer>
 );
 ```

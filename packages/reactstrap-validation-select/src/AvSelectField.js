@@ -45,8 +45,12 @@ class AvSelectField extends Component {
     if (validation.errorMessage) {
       const feedbackClasses = classNames('d-block', feedbackClass);
       const feedbackId = `${id}-feedback`;
-      feedback = <AvFeedback className={feedbackClasses} id={feedbackId}>{validation.errorMessage}</AvFeedback>;
-      ariaFeedback = {feedbackId, errorMessage: validation.errorMessage}
+      feedback = (
+        <AvFeedback className={feedbackClasses} id={feedbackId}>
+          {validation.errorMessage}
+        </AvFeedback>
+      );
+      ariaFeedback = { feedbackId, errorMessage: validation.errorMessage };
     }
 
     let thisLabel = false;

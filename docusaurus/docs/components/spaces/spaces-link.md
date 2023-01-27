@@ -12,9 +12,7 @@ The `<SpacesLink />` component is used to handle the complexities of configurati
 
 ```jsx
 import React from 'react';
-import Spaces, {
-  SpacesLink
-} from '@availity/spaces';
+import Spaces, { SpacesLink } from '@availity/spaces';
 
 <Spaces
   spaceIds={['73162546201441126239486200007187']}
@@ -79,7 +77,7 @@ When `true`, renders the `FavoriteHeart` component to the left of the Component.
 
 ### `body?: boolean`
 
-When `true`, renders the title, and allow for the description and date info to be added on. *Default:* `true`
+When `true`, renders the title, and allow for the description and date info to be added on. _Default:_ `true`
 
 ### `showDate?: boolean`
 

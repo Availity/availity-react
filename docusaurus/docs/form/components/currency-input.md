@@ -11,21 +11,20 @@ import React from 'react';
 import { CurrencyInput } from '@p3/react-common';
 
 const MyComponent = () => {
-    const [myValue, setMyValue] = useState('');
+  const [myValue, setMyValue] = useState('');
 
-    return (
-       <CurrencyInput
-        id='search-currency'
-        name='myCurrencyField'
-        placeholder='Enter a value...'
-        value={myValue}
-        onValueChanged={async (value) => {
-            setMyValue(value);
-        }}
+  return (
+    <CurrencyInput
+      id="search-currency"
+      name="myCurrencyField"
+      placeholder="Enter a value..."
+      value={myValue}
+      onValueChanged={async (value) => {
+        setMyValue(value);
+      }}
     />
-    )
-}
-
+  );
+};
 ```
 
 ## Props
