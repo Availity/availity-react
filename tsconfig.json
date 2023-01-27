@@ -24,6 +24,7 @@
       "@availity/authorize": ["packages/authorize"],
       "@availity/avatar": ["packages/avatar"],
       "@availity/badge": ["packages/badge"],
+      "@availity/block-ui": ["packages/block-ui"],
       "@availity/breadcrumbs": ["packages/breadcrumbs"],
       "@availity/button": ["packages/button"],
       "@availity/date": ["packages/date"],
