@@ -2,6 +2,20 @@
 
 This file was generated using [@jscutlery/semver](https://github.com/jscutlery/semver).
 
+# [1.8.0](https://github.com/Availity/availity-react/compare/@availity/docusaurus@1.7.0...@availity/docusaurus@1.8.0) (2023-01-27)
+
+
+### Bug Fixes
+
+* **block-ui:** remove unused code and add docs ([a961486](https://github.com/Availity/availity-react/commit/a9614863be43da1d6064dc6ebfd138677ae9b870))
+
+
+### Features
+
+* **block-ui:** add new block-ui component ([96c36e9](https://github.com/Availity/availity-react/commit/96c36e9b549a2ae57675c9167d014d8dd15c5f23))
+
+
+
 # [1.7.0](https://github.com/Availity/availity-react/compare/@availity/docusaurus@1.6.0...@availity/docusaurus@1.7.0) (2023-01-24)
 
 
