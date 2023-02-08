@@ -13,8 +13,11 @@ WizardStepBadge.defaultProps = {
 };
 
 WizardStepBadge.propTypes = {
+  /** Additional classes that should be applied to agreement. * */
   className: PropTypes.string,
+  /** Children can be a react child. * */
   children: PropTypes.node,
+  /** The actual name of the tag being generated. Defaults to 'a' or 'div'. * */
   tag: PropTypes.oneOfType([PropTypes.func, PropTypes.string]),
 };
 

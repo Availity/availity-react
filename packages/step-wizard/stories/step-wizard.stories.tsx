@@ -1,6 +1,6 @@
 import React from 'react';
 import { Meta, Story } from '@storybook/react';
-
+import { ArgsTable } from '@storybook/addon-docs';
 import Wizard, { WizardStep, WizardStepBadge, WizardStepTitle } from '..';
 // import README from '../README.md';
 
@@ -91,3 +91,20 @@ Default.args = {
   thirdStepHref: '#step-3',
 };
 Default.storyName = 'default';
+
+export const Props: Story = () => (
+  <>
+    <h4>Availity Props</h4>
+    <h5>Wizard</h5>
+    <ArgsTable of={Wizard} />
+
+    <h5>WizardStep</h5>
+    <ArgsTable of={WizardStep} />
+
+    <h5>WizardStepBadge</h5>
+    <ArgsTable of={WizardStepBadge} />
+
+    <h5>WizardStepTitle</h5>
+    <ArgsTable of={WizardStepTitle} />
+  </>
+);
