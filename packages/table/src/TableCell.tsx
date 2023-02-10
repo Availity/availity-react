@@ -10,6 +10,8 @@ type Props<T extends IdType> = {
   cell: Cell<T>;
   /**  **/
   scrollable?: boolean;
+  
+  isFixedWith?: boolean;
   /**  **/
   getCellProps: (cell: Cell<T>) => React.HTMLAttributes<HTMLTableCellElement>;
 
@@ -25,7 +27,7 @@ const TableCell = <T extends IdType>({
   getCellProps,
   ...rest
 }: Props<T>): JSX.Element => {
-  const { className, disableClick, stickyLeft, stickyRight } = cell.column;
+  const { className, disableClick, stickyLeft, stickyRight, width, minWidth, maxWidth } = cell.column;
 
   const isFixedWidth = scrollable && !className;
 
@@ -43,11 +45,11 @@ const TableCell = <T extends IdType>({
   };
 
   const buildCellProps = () => {
-    const props = getCellProps(cell);
+    const props = cell.getCellProps();
+
     props.className = classNames(
       className || '',
       {
-        'fixed-width-text': isFixedWidth,
         'cursor-pointer': !!onCellClick,
         sticky: stickyRight || stickyLeft,
         'sticky-right': stickyRight,
@@ -55,7 +57,16 @@ const TableCell = <T extends IdType>({
       },
       props.className
     );
-    return { ...props, ...cellProps, ...rest };
+    return {
+      ...props,
+      ...cellProps,
+      style: {
+        width,
+        minWidth,
+        maxWidth,
+      },
+      ...rest,
+    };
   };
 
   return <td {...cell.getCellProps(buildCellProps)}>{children}</td>;

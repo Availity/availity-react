@@ -1,5 +1,17 @@
 import React, { useEffect, useState } from 'react';
-import { Badge, Button, ButtonDropdown, ButtonGroup, DropdownItem, DropdownMenu, DropdownToggle } from 'reactstrap';
+import {
+  Badge,
+  Button,
+  ButtonDropdown,
+  ButtonDropdownProps,
+  ButtonGroup,
+  ButtonGroupProps,
+  DropdownItem,
+  DropdownMenu,
+  DropdownMenuProps,
+  DropdownToggle,
+  DropdownToggleProps,
+} from 'reactstrap';
 import { useTableContext } from '../TableContext';
 import { BulkRecordAction } from '../types/BulkRecordAction';
 import { IdType, TableInstance } from '../types/ReactTable';
@@ -10,6 +22,13 @@ type Props<T> = {
   recordName?: string;
   bulkActions?: BulkRecordAction<T>[];
   color?: string;
+  container?: string;
+
+  buttonGroupProps?: ButtonGroupProps;
+  buttonDropdownProps?: ButtonDropdownProps;
+  dropdownToggleProps?: DropdownToggleProps;
+  dropdownMenuProps?: DropdownMenuProps;
+
   onRecordsSelected?: (records: T[]) => void;
 } & React.HTMLAttributes<HTMLElement>;
 
@@ -18,7 +37,12 @@ const BulkTableActions = <T extends IdType>({
   disabled,
   color,
   recordName = 'Records',
+  container = 'body',
   bulkActions,
+  buttonGroupProps,
+  buttonDropdownProps,
+  dropdownToggleProps,
+  dropdownMenuProps,
   onRecordsSelected,
 }: Props<T>): JSX.Element | null => {
   const { instance } = useTableContext();
@@ -57,7 +81,13 @@ const BulkTableActions = <T extends IdType>({
   };
 
   return (
-    <ButtonGroup data-testid="bulk_actions_btn_group" id={id} disabled={isDisabled} className="btn-group">
+    <ButtonGroup
+      data-testid="bulk_actions_btn_group"
+      id={id}
+      disabled={isDisabled}
+      className="btn-group"
+      {...buttonGroupProps}
+    >
       <Button
         data-testid="select_deselect_all_records"
         disabled={disabled}
@@ -69,14 +99,15 @@ const BulkTableActions = <T extends IdType>({
         <Badge pill>{numberOfSelectedRows}</Badge> {selectionButtonText} All {recordName}
       </Button>
       {bulkActions && (
-        <ButtonDropdown isOpen={isSelectionDropdownOpen} toggle={toggleSelectionDropdown}>
+        <ButtonDropdown isOpen={isSelectionDropdownOpen} toggle={toggleSelectionDropdown} {...buttonDropdownProps}>
           <DropdownToggle
             data-testid="bulk_actions_toggle"
             disabled={numberOfSelectedRows === 0 || disabled}
             color={color}
             caret
+            {...dropdownToggleProps}
           />
-          <DropdownMenu color={color}>
+          <DropdownMenu color={color} container={container} {...dropdownMenuProps}>
             {bulkActions?.map((action) => {
               const isVisible = action.isVisible ? action.isVisible(selectedFlatRows.map((row) => row.original)) : true;
               const setProps = () => {
@@ -84,12 +115,20 @@ const BulkTableActions = <T extends IdType>({
                   return null;
                 }
                 const clickEvent = action.onClick;
-                return { onClick: () => clickEvent(selectedFlatRows.map((row) => row.original)) };
+                return {
+                  onClick: () => clickEvent(selectedFlatRows.map((row) => row.original)),
+                  ...action.dropdownItemProps,
+                };
               };
 
               if (isVisible) {
                 return action.divider ? (
-                  <DropdownItem data-testid={`bulk_action_${action.id}`} key={action.id} divider />
+                  <DropdownItem
+                    data-testid={`bulk_action_${action.id}`}
+                    key={action.id}
+                    divider
+                    {...action.dropdownItemProps}
+                  />
                 ) : (
                   <DropdownItem data-testid={`bulk_action_${action.id}`} key={`${action.id}`} {...setProps()}>
                     {action.displayText}

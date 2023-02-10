@@ -15,6 +15,7 @@ const TableContent = <T extends IdType>(): JSX.Element | null => {
     id,
     scrollable,
     sortable,
+    footer,
     tableProps,
     headerProps,
     onSort,
@@ -30,7 +31,7 @@ const TableContent = <T extends IdType>(): JSX.Element | null => {
     getRowProps,
   } = useTableContext();
 
-  const { getTableProps, getTableBodyProps, headerGroups, rows, prepareRow, manualSortBy, page } =
+  const { getTableProps, getTableBodyProps, headerGroups, rows, prepareRow, manualSortBy, page, footerGroups } =
     tableInstance as TableInstance<T>;
 
   const populateId = () => (id ? `${id}_` : '');
@@ -109,6 +110,17 @@ const TableContent = <T extends IdType>(): JSX.Element | null => {
           );
         })}
       </tbody>
+      {footer && (
+        <tfoot>
+          {footerGroups.map((group) => (
+            <tr {...group.getFooterGroupProps()}>
+              {group.headers.map((column) => (
+                <td {...column.getFooterProps()}>{column.render('Footer')}</td>
+              ))}
+            </tr>
+          ))}
+        </tfoot>
+      )}
     </RsTable>
   );
 };

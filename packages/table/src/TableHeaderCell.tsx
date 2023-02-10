@@ -2,6 +2,7 @@ import React from 'react';
 import classNames from 'classnames';
 import { ExtendedTableHeader, IdType } from './types/ReactTable';
 import { TableSort } from './types/TableSort';
+import { UncontrolledTooltip } from 'reactstrap';
 
 type Props<T extends IdType> = {
   /** This is a unique id that is prepended to the element **/
@@ -49,21 +50,33 @@ const TableHeaderCell = <T extends IdType>({
   };
 
   const getHeaderColumnProps = (column: ExtendedTableHeader<T>) => {
+    const inheritProps = column.getHeaderProps();
     const props = {
       className: classNames(column.className || '', {
-        'fixed-width-text': scrollable && !column.className,
         sticky: column.stickyRight || column.stickyLeft,
         'sticky-right': column.stickyRight,
         'sticky-left': column.stickyLeft,
       }),
-      title: column.label || typeof column.Header === 'string' ? column.Header?.toString() : undefined,
+      title: undefined,
+      style: {
+        width: column.width,
+        minWidth: column.width,
+        maxWidth: column.width,
+      },
+      ...inheritProps,
     };
     return sortable ? { ...column.getSortByToggleProps(props) } : props;
   };
 
   return (
     <th {...column.getHeaderProps(getHeaderColumnProps(column))} {...getOnClick()} {...rest}>
-      <>{children}</>
+      <span id={`${column.id}-th-title`}>{children}</span>
+      {column.label ||
+        (typeof column.Header === 'string' && (
+          <UncontrolledTooltip placement="top" target={`${column.id}-th-title`} boundary="window">
+            {column.Header?.toString()}
+          </UncontrolledTooltip>
+        ))}
     </th>
   );
 };

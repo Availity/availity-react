@@ -1,3 +1,4 @@
+import { DropdownItemProps } from 'reactstrap';
 import { TableAction } from './TableAction';
 
 export interface BulkRecordAction<T> extends TableAction {
@@ -8,4 +9,5 @@ export interface BulkRecordAction<T> extends TableAction {
     | React.ReactChild
     | React.ElementType
     | ((records?: T[]) => string | React.ReactChild | React.ElementType);
+  dropdownItemProps?: DropdownItemProps;
 }

@@ -8,11 +8,13 @@ import TableActionMenuItem from '../TableActionMenuItem';
 import { Cell, IdType } from '../types/ReactTable';
 import { RecordAction } from '../types/RecordAction';
 import { PrimaryRecordAction } from '../types/PrimaryRecordAction';
+import { UncontrolledTooltip, UncontrolledTooltipProps } from 'reactstrap';
 
 export interface ActionCellConfig<T> {
   actions: RecordAction<T>[];
   primaryAction?: PrimaryRecordAction<T>;
   tableActionMenuProps?: Omit<TableActionMenuProps, 'children'>;
+  tooltipProps?: UncontrolledTooltipProps;
   isSticky?: boolean;
 }
 
@@ -20,6 +22,7 @@ const ActionCell = <T extends IdType>({
   actions,
   primaryAction,
   tableActionMenuProps,
+  tooltipProps,
   isSticky,
 }: ActionCellConfig<T>): ((cell: Cell<T>) => JSX.Element) => {
   const ActionCellDef = ({ row: { original, id } }: Cell<T>): JSX.Element => {
@@ -102,14 +105,24 @@ const ActionCell = <T extends IdType>({
           ))}
         </TableActionMenu>
         {primaryAction && isPrimaryActionVisible && (
-          <Icon
-            data-testid={`table_row_action_menu_item_${id}_primaryAction`}
-            name={
-              typeof primaryAction.iconName === 'function' ? primaryAction.iconName(original) : primaryAction.iconName
-            }
-            title={typeof primaryAction.title === 'function' ? primaryAction.title(original) : primaryAction.title}
-            onClick={() => primaryAction.onClick(original)}
-          />
+          <>
+            <Icon
+              id={`table_row_action_menu_item_${id}_primaryAction`}
+              data-testid={`table_row_action_menu_item_${id}_primaryAction`}
+              name={
+                typeof primaryAction.iconName === 'function' ? primaryAction.iconName(original) : primaryAction.iconName
+              }
+              onClick={() => primaryAction.onClick(original)}
+            />
+            <UncontrolledTooltip
+              placement="top"
+              target={`table_row_action_menu_item_${id}_primaryAction`}
+              boundary="window"
+              {...tooltipProps}
+            >
+              {typeof primaryAction.title === 'function' ? primaryAction.title(original) : primaryAction.title}
+            </UncontrolledTooltip>
+          </>
         )}
       </>
     );

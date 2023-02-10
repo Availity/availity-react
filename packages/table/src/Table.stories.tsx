@@ -19,12 +19,19 @@ import Table, {
 } from '.';
 import '../styles.scss';
 
+const defaultColumn = {
+  width: 'auto',
+};
+
 const columns = [
   {
     Header: 'First Name',
     accessor: 'firstName',
     defaultCanSort: true,
     disableSortBy: false,
+    width: 500,
+    minWidth: 500,
+    maxWidth: 500,
   },
   {
     Header: 'Last Name',
@@ -69,6 +76,9 @@ const columns = [
     id: 'actions',
     Header: 'Actions',
     className: 'action-column',
+    minWidth: 96,
+    width: 96,
+    maxWidth: 96,
     Cell: ActionCell({
       isSticky: true,
       actions: [
@@ -148,6 +158,7 @@ export const BasicTable: Story = ({ sortable, selectable, columns, data, headerP
     data={data}
     headerProps={headerProps}
     bodyProps={bodyProps}
+    defaultColumn={defaultColumn}
     onRowSelected={(event) => {
       // eslint-disable-next-line no-console
       console.log('Row selected', event);
@@ -175,17 +186,19 @@ export const WithControls: Story = ({ sortable, selectable, columns, data, heade
     paged
     sortable={sortable}
     selectable={selectable}
+    selectionColumnProps={{ width: 50 }}
     columns={columns}
     data={data}
     headerProps={headerProps}
     bodyProps={bodyProps}
+    defaultColumn={defaultColumn}
     onRowSelected={(event) => {
       // eslint-disable-next-line no-console
       console.log('Row selected', event);
     }}
   >
     <TableControls className="pb-2">
-      <BulkTableActions color="light" bulkActions={bulkActions} />
+      <BulkTableActions color="light" bulkActions={bulkActions} dropdownMenuProps={{ right: true }} />
       <TableSorter
         color="light"
         className="ml-1"

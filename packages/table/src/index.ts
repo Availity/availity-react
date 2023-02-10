@@ -34,6 +34,7 @@ export type {
 } from './types';
 
 export { default } from './Table';
+export type { CommonTableProps } from './Table';
 
 export { default as TableActionMenu } from './TableActionMenu';
 export type { TableActionMenuProps } from './TableActionMenu';

@@ -11,6 +11,7 @@ import {
   usePagination,
   PluginHook,
   useRowState,
+  useExpanded,
 } from 'react-table';
 import { TableSort } from './types/TableSort';
 import { Cell, Column, IdType, Row, TableInstance, TableOptions, RowProps } from './types/ReactTable';
@@ -61,8 +62,7 @@ export type CommonTableProps<T extends IdType> = {
   additionalContent?: React.ElementType;
   /**  **/
   additionalContentProps?: Record<string, string | number | boolean | undefined | null>;
-
-  /** This property is automatically set when it is wrapped in a scrollable
+  footer?: boolean;
    * container. This will apply fixed column widths to force it to scroll
    * rather than minify the columns to fit in a set container. **/
   scrollable?: boolean;
@@ -70,6 +70,7 @@ export type CommonTableProps<T extends IdType> = {
    * to true, then the first column of the table will be a checkbox column
    * that will toggle selecting and deselecting the row. **/
   selectable?: boolean;
+  selectionColumnProps?: Partial<Column<T>>;
   /** This function determines if a row in a selectable table can be
    * selected. By default if no function is provided to this property,
    * all rows in the table are selectable. **/
@@ -104,10 +105,12 @@ const Table = <T extends IdType>({
   selectable = false,
   scrollable,
   sortable = false,
+  footer = false,
   id,
   tableProps,
   bodyProps,
   headerProps,
+  selectionColumnProps,
   onRowClick,
   onCellClick,
   onRowSelected,
@@ -138,6 +141,7 @@ const Table = <T extends IdType>({
     } as TableOptions<T>,
     ...(pluginHooks || []),
     useSortBy,
+    useExpanded,
     usePagination,
     useRowSelect,
     useColumnOrder,
@@ -146,7 +150,6 @@ const Table = <T extends IdType>({
       const selectionColumn = {
         id: 'selection',
         title: 'Select record(s)',
-        className: 'fixed-width-selection',
         defaultCanSort: false,
         disableSortBy: true,
         disableClick: true,
@@ -172,6 +175,7 @@ const Table = <T extends IdType>({
             </div>
           );
         },
+        ...selectionColumnProps,
       };
 
       hooks.visibleColumns.push((columns: Column<T>[]) => {
@@ -217,6 +221,7 @@ const Table = <T extends IdType>({
         AdditionalContent,
         additionalContentProps,
         paged,
+        footer,
         onRowClick,
         onCellClick,
         getCanSelectRow,

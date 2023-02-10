@@ -12,13 +12,7 @@ const BadgeCell = (
 ): JSX.Element | ((cell: CellProps) => JSX.Element | null) | null => {
   const BadgeCellDef = ({ value }: CellProps): JSX.Element | null => {
     const defaultVal = defaultValue || null;
-    return value ? (
-      <Badge color={color} title={value}>
-        {value}
-      </Badge>
-    ) : defaultValue ? (
-      <>{defaultVal}</>
-    ) : null;
+    return value ? <Badge color={color}>{value}</Badge> : defaultValue ? <>{defaultVal}</> : null;
   };
 
   if (displayText !== '') {
