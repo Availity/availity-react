@@ -1108,13 +1108,13 @@ __metadata:
   resolution: "@availity/table@workspace:packages/table"
   dependencies:
     "@availity/icon": "workspace:*"
-    "@types/react-table": ^7.7.12
+    "@types/react-table": ^7.7.14
     classnames: ^2.3.1
     lodash: ^4.17.21
     moment: ^2.29.4
     react: ^17.0.2
     react-dom: ^17.0.2
-    react-table: ^7.7.0
+    react-table: ^7.8.0
     reactstrap: ^8.10.1
     tsup: ^5.12.7
     typescript: ^4.6.4
@@ -8286,12 +8286,12 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@types/react-table@npm:^7.7.12":
-  version: 7.7.12
-  resolution: "@types/react-table@npm:7.7.12"
+"@types/react-table@npm:^7.7.14":
+  version: 7.7.14
+  resolution: "@types/react-table@npm:7.7.14"
   dependencies:
     "@types/react": "*"
-  checksum: 287ea68e75b56c2e70e6d6491cd172348c7302b032789047eb2dca1b25b240684e48a60f58140575828b790f95724b9f3ec4d3adce82fc1c05d994def1449009
+  checksum: 238047beca9abecc4b3e1e377b823b492b1a00d011b8456012bbcbd2682d5a7e0c0b1cca6384ccc41e724156e991d35e5725a5a3c4b01ff7bbaf095643569da9
   languageName: node
   linkType: hard
 
@@ -23661,12 +23661,12 @@ __metadata:
   languageName: node
   linkType: hard
 
-"react-table@npm:^7.7.0":
-  version: 7.7.0
-  resolution: "react-table@npm:7.7.0"
+"react-table@npm:^7.8.0":
+  version: 7.8.0
+  resolution: "react-table@npm:7.8.0"
   peerDependencies:
-    react: ^16.8.3 || ^17.0.0-0
-  checksum: a679edecc76d3e51311b095528395b38ac85a1ffa371716bea01559a5fdc75af9a6abb9bb907c63190c8e77da22b11f7b05065b3a45d190d8f43cb83e4366206
+    react: ^16.8.3 || ^17.0.0-0 || ^18.0.0
+  checksum: 44ca0fb848c6869cd793cede8dc33072b38ebb8f8d2833565afe7cf3eac5d1fa455ac5fb9d06838b16fab0523d5d03e3e82f7645032f71245096e67b892313b9
   languageName: node
   linkType: hard
 
