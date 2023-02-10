@@ -4,9 +4,13 @@ import { OnTableClickEvent } from './types/OnTableClickEvent';
 import { Cell, IdType } from './types/ReactTable';
 
 type Props<T extends IdType> = {
+  /**  **/
   id?: string;
+  /**  **/
   cell: Cell<T>;
+  /**  **/
   scrollable?: boolean;
+  /**  **/
   getCellProps: (cell: Cell<T>) => React.HTMLAttributes<HTMLTableCellElement>;
 
   children: React.ReactNode;
