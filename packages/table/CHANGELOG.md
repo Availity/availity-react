@@ -2,6 +2,14 @@
 
 This file was generated using [@jscutlery/semver](https://github.com/jscutlery/semver).
 
+# [0.6.0-alpha.4](https://github.com/Availity/availity-react/compare/@availity/table@0.6.0-alpha.3...@availity/table@0.6.0-alpha.4) (2023-02-10)
+
+
+### Features
+
+* **table:** enhancements with column widths and tooltip configuration, add footer suppport ([d254ad3](https://github.com/Availity/availity-react/commit/d254ad383746c94ebbf74b1e5d0f658a763db508))
+
+
 
 # [0.6.0-alpha.0](https://github.com/Availity/availity-react/compare/@availity/table@0.5.3...@availity/table@0.6.0-alpha.0) (2023-01-18)
 
