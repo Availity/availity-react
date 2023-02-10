@@ -3,7 +3,9 @@ import Icon from '@availity/icon';
 import { Dropdown, DropdownToggle, DropdownMenu } from 'reactstrap';
 
 type Props = {
+  /** This is a unique id that is prepended to the element **/
   id?: string;
+  /** Children can be a react child. **/
   children: React.ReactNode;
 };
 

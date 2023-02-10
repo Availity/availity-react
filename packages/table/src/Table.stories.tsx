@@ -1,5 +1,6 @@
 import React from 'react';
 import { Meta, Story } from '@storybook/react';
+import { ArgsTable } from '@storybook/addon-docs';
 import response from '@availity/mock/src/data/patients.json';
 import Pagination, { PaginationControls } from '@availity/pagination';
 import Table, {
@@ -256,3 +257,14 @@ WithScrollableContainer.args = {
   bodyProps: { style: {} },
 };
 WithScrollableContainer.storyName = 'with scrollable container';
+
+export const Props: Story = () => (
+  <>
+    <h4>Availity Props</h4>
+    <h5>Table</h5>
+    <ArgsTable of={Table} />
+
+    <h5>Table Context</h5>
+    <ArgsTable of={TableContext} />
+  </>
+);

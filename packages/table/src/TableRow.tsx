@@ -6,19 +6,30 @@ import { OnTableClickEvent } from './types/OnTableClickEvent';
 import { Column, IdType, Row, RowProps, TableInstance } from './types/ReactTable';
 
 export type Props<T extends IdType> = {
+  /** This is a unique id that is prepended to the element **/
   id?: string;
+  /**  **/
   row: Row<T>;
+  /** The index of the row that was clicked. **/
   index: number;
+  /**  **/
   onRowClick?: (event: OnTableClickEvent<HTMLElement, T>) => void;
+  /**  **/
   onCellClick?: (event: OnTableClickEvent<HTMLElement, T>) => void;
 
+  /**  **/
   AdditionalContent?: React.ElementType;
+  /**  **/
   additionalContentProps?: Record<string, string | number | boolean | undefined | null>;
+  /**  **/
   scrollable?: boolean;
+  /**  **/
   instance?: TableInstance<T>;
 
+  /**  **/
   getRowProps?: (row: Row<T>) => RowProps;
 
+  /** Children can be a react child. **/
   children?: React.ReactNode;
 } & React.HTMLAttributes<HTMLElement>;
 
