@@ -27,6 +27,11 @@ const AvPayerSelect = ({ name, customerId, ...props }) => (
 );
 
 AvPayerSelect.propTypes = {
+  /**
+   * The extended-payers API from aries requires a customerId prop that must be a string.
+   * The AvPayerSelect will use the customerId prop in the request header, X-Availity-Customer-Id, of the all call to extended-payers.
+   * This is necessary for the AvPayerSelect select to only contain payers that are accesible and related to the organization specified, and not all the organizations that the user belongs.
+   */
   customerId: PropTypes.string.isRequired,
   name: PropTypes.string.isRequired,
 };

@@ -462,25 +462,47 @@ Select.defaultProps = {
 };
 
 Select.propTypes = {
+  /** The name of the field. Will be the key of the selected option(s) that come through in the values of the onSubmit callback of the form. */
   name: PropTypes.string.isRequired,
+  /**  */
   validate: PropTypes.func,
+  /** Array of options that populate the select menu. Grouped options are also supported, but must include the property type: 'group' */
   options: PropTypes.array,
+  /**  */
   loadOptions: PropTypes.func,
+  /** If true, the entire object of the selected value is returned as the value instead of the value for the valueKey within the object. */
   raw: PropTypes.bool,
+  /**  */
   className: PropTypes.string,
+  /** Ref passed to react-select-async-paginate component if in async mode. */
   selectRef: PropTypes.object,
+  /** refer to react-select docs for info on styles */
   styles: PropTypes.object,
+  /** The maximum number of options that can be selected ( when isMulti is true) */
   maxLength: PropTypes.number,
+  /**  */
   onChange: PropTypes.func,
+  /** Allow new items to be created if not found. Default: false. */
   creatable: PropTypes.bool,
+  /** If true, when the value of the dropdown changes, if the isMulti prop is false and the new value of the dropdown is an object, all fields on the form corresponding to the new value are auto-filled. In order for a field to be auto-filled, the name property on the field must match the key inside the new value.
+   * For example, if the new value is { "payer": "Availity" }, in order for the payer input in the form to be auto-filled to "Availity", the name prop on the input must be "payer".
+   * If autofill is an object, when the value of the dropdown changes, if the isMulti prop is false and the new value of the dropdown is an object, all fields on the form corresponding to the keys in the autofill prop will be auto-filled.
+   * When autofill is an object, the values in the object can be a string or a function. When a string, the key in the autofill prop gets auto-filled to that path on the selected option. When a function, it gets called with the selected option, and the key in the autofill prop gets auto-filled to the return value of the function.
+   */
   autofill: PropTypes.oneOfType([PropTypes.bool, PropTypes.object]),
+  /** Adds a Select all option ( when isMulti is true). Note: allowSelectAll is ignored when loadOptions is defined. */
   allowSelectAll: PropTypes.bool,
+  /** When true, the network request is not made until the dropdown has been focused. Defaults to false. */
   waitUntilFocused: PropTypes.bool,
+  /** Adds hidden help message to placeholder so it is read with aria-describedby (should match visible help message). */
   helpMessage: PropTypes.oneOfType([PropTypes.string, PropTypes.node]),
+  /** Will add default <Feedback /> id to aria-errormessage. */
   feedback: PropTypes.bool,
   placeholder: PropTypes.string,
   components: PropTypes.object,
+  /** Will add aria-required to input. */
   required: PropTypes.bool,
+  /** Class names to add to clear button (only available when isMulti or isClearable). Default: btn btn-link link */
   clearButtonClassName: PropTypes.string,
 };
 

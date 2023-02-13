@@ -1,10 +1,11 @@
 /* eslint-disable no-console */
 import React from 'react';
 import { Meta, Story } from '@storybook/react';
+import { ArgsTable } from '@storybook/addon-docs';
 import { Button, Col, Row } from 'reactstrap';
 import AvApi from '@availity/api-axios';
-
 import ResourceSelect from '../src/ResourceSelect';
+
 import {
   AvCodeSelect,
   AvNavigationSelect,
@@ -27,7 +28,9 @@ export default {
   title: 'Form Components/Select/Async Selects',
   parameters: {
     docs: {
-      // page: README,
+      description: {
+        component: 'A select list that automatically loads and pages through regions when the user scrolls down.',
+      },
     },
   },
   args: {
@@ -469,3 +472,11 @@ UserSelect.args = {
 };
 
 UserSelect.storyName = '<AvUserSelect />';
+
+export const Props: Story = () => (
+  <>
+    <h4>Availity Props</h4>
+    <h5>ResourceSelect</h5>
+    <ArgsTable of={ResourceSelect} />
+  </>
+);

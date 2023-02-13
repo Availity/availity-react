@@ -1,6 +1,7 @@
 /* eslint-disable no-console */
 import React from 'react';
 import { Meta, Story } from '@storybook/react';
+import { ArgsTable } from '@storybook/addon-docs';
 import { Button, Col, Row } from 'reactstrap';
 import { Field } from '@availity/form';
 
@@ -112,3 +113,11 @@ export const SelectFieldStory: Story = ({
 );
 
 SelectFieldStory.storyName = '<SelectField />';
+
+const Props: Story = () => (
+  <>
+    <h4>Availity Props</h4>
+    <h5>SelectField</h5>
+    <ArgsTable of={SelectField} />
+  </>
+);
