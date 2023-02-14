@@ -49,6 +49,8 @@ const TableHeaderCell = <T extends IdType>({
     return null;
   };
 
+  const isFixedWidth = scrollable;
+
   const getHeaderColumnProps = (column: ExtendedTableHeader<T>) => {
     const inheritProps = column.getHeaderProps();
     const props = {
@@ -58,11 +60,13 @@ const TableHeaderCell = <T extends IdType>({
         'sticky-left': column.stickyLeft,
       }),
       title: undefined,
-      style: {
-        width: column.width,
-        minWidth: column.width,
-        maxWidth: column.width,
-      },
+      style: isFixedWidth
+        ? {
+            width: column.width,
+            minWidth: column.width,
+            maxWidth: column.width,
+          }
+        : undefined,
       ...inheritProps,
     };
     return sortable ? { ...column.getSortByToggleProps(props) } : props;

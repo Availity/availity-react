@@ -60,11 +60,13 @@ const TableCell = <T extends IdType>({
     return {
       ...props,
       ...cellProps,
-      style: {
-        width,
-        minWidth,
-        maxWidth,
-      },
+      style: isFixedWidth
+        ? {
+            width,
+            minWidth,
+            maxWidth,
+          }
+        : undefined,
       ...rest,
     };
   };
