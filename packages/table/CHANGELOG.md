@@ -2,6 +2,15 @@
 
 This file was generated using [@jscutlery/semver](https://github.com/jscutlery/semver).
 
+# [0.6.0-alpha.6](https://github.com/Availity/availity-react/compare/@availity/table@0.6.0-alpha.5...@availity/table@0.6.0-alpha.6) (2023-02-14)
+
+
+### Features
+
+* **table:** pass in flag for use column widths ([a6d50e4](https://github.com/Availity/availity-react/commit/a6d50e41495a18a9f5dbd4166f1873d651766b99))
+
+
+
 # [0.6.0-alpha.5](https://github.com/Availity/availity-react/compare/@availity/table@0.6.0-alpha.4...@availity/table@0.6.0-alpha.5) (2023-02-14)
 
 
