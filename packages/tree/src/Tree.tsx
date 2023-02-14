@@ -14,15 +14,25 @@ const areAllChildrenSelected = (item: TreeItem) =>
   (item.isSelected && item.children?.every((child) => (!child.isDisabled ? child.isSelected : true))) || false;
 
 export type TreeProps = {
-  searchLabel?: string;
-  enableSearch?: boolean;
+  /** Required. The list of items to display in the tree. */
   items: TreeItem[];
+  /** The label that displays above the text box. */
+  searchLabel?: string;
+  /** When enabled, there is a search input box that will display and allow for the user to limit the items in the tree based on the typed search value. */
+  enableSearch?: boolean;
+  /** Determines whether this is the root of the tree structure */
   isRoot?: boolean;
+  /** Whenever an item is selected in the tree, it fires this event to let the parent know of the items that are selected. */
   onItemsSelected?: (selectedItems: TreeItem[]) => void;
+  /** Whenever an item is expanded in the tree, it fires this event to let the parent know of the items that are expanded. */
   onItemsExpanded?: (expandedItems?: TreeItem[]) => void;
+  /** The id of the parent tree */
   parentId?: string;
+  /** The items which are selected in the tree */
   selectedItems?: TreeItem[];
+  /** When true, the tree view will be entirely expanded on initial load. */
   expandAll?: boolean;
+  /** Determines whether items can be selected in the tree */
   selectable?: boolean;
 };
 
