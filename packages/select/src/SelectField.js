@@ -51,7 +51,7 @@ const SelectField = ({
 };
 
 SelectField.propTypes = {
-  /** The name of the field and name of the HTML Input. Without this, no input will be rendered. Will be the key of the selected option(s) that come through in the values of the onSubmit callback of the form. */
+  /** Thee name of the field and name of the HTML Input. Without this, no input will be rendered. Will be the key of the selected option(s) that come through in the values of the onSubmit callback of the form. */
   name: PropTypes.string.isRequired,
   /** Class names to pass to the Feedback. */
   feedbackClass: PropTypes.string,

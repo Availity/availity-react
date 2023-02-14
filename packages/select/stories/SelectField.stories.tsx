@@ -114,7 +114,7 @@ export const SelectFieldStory: Story = ({
 
 SelectFieldStory.storyName = '<SelectField />';
 
-const Props: Story = () => (
+export const SelectFieldProps: Story = () => (
   <>
     <h4>Availity Props</h4>
     <h5>SelectField</h5>

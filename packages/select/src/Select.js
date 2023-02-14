@@ -464,15 +464,12 @@ Select.defaultProps = {
 Select.propTypes = {
   /** The name of the field. Will be the key of the selected option(s) that come through in the values of the onSubmit callback of the form. */
   name: PropTypes.string.isRequired,
-  /**  */
   validate: PropTypes.func,
   /** Array of options that populate the select menu. Grouped options are also supported, but must include the property type: 'group' */
   options: PropTypes.array,
-  /**  */
   loadOptions: PropTypes.func,
   /** If true, the entire object of the selected value is returned as the value instead of the value for the valueKey within the object. */
   raw: PropTypes.bool,
-  /**  */
   className: PropTypes.string,
   /** Ref passed to react-select-async-paginate component if in async mode. */
   selectRef: PropTypes.object,
@@ -480,7 +477,6 @@ Select.propTypes = {
   styles: PropTypes.object,
   /** The maximum number of options that can be selected ( when isMulti is true) */
   maxLength: PropTypes.number,
-  /**  */
   onChange: PropTypes.func,
   /** Allow new items to be created if not found. Default: false. */
   creatable: PropTypes.bool,
