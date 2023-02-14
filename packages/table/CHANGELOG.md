@@ -2,6 +2,15 @@
 
 This file was generated using [@jscutlery/semver](https://github.com/jscutlery/semver).
 
+# [0.6.0-alpha.5](https://github.com/Availity/availity-react/compare/@availity/table@0.6.0-alpha.4...@availity/table@0.6.0-alpha.5) (2023-02-14)
+
+
+### Features
+
+* **table:** only add style widths if in fixed container ([7e18180](https://github.com/Availity/availity-react/commit/7e181808c35133dc07bd8c82c25aa5650c82b212))
+
+
+
 # [0.6.0-alpha.4](https://github.com/Availity/availity-react/compare/@availity/table@0.6.0-alpha.3...@availity/table@0.6.0-alpha.4) (2023-02-10)
 
 
