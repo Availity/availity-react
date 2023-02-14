@@ -5,7 +5,7 @@ import { ArgsTable } from '@storybook/addon-docs';
 import { Button, Col, Row } from 'reactstrap';
 import { Field } from '@availity/form';
 
-import Select from '../src';
+import Select, { SelectField } from '../src';
 // import README from '../README.md';
 
 import FormikResults from '../../../story-utils/FormikResults';
@@ -108,6 +108,94 @@ export const Default: Story = ({
   </FormikResults>
 );
 
+export const _SelectField: Story = ({
+  autofill,
+  creatable,
+  disabled,
+  helpId,
+  helpMessage,
+  isMulti,
+  isClearable,
+  label,
+  max,
+  min,
+  raw,
+  required,
+}) => (
+  <FormikResults
+    onSubmit={() => {
+      console.log('submitted');
+    }}
+    initialValues={{
+      select: undefined,
+      autoFill1: '',
+      autoFill2: '',
+    }}
+    validationSchema={
+      isMulti
+        ? multiValueSchema('select', required, min, max, !autofill && !raw)
+        : singleValueSchema('select', required, !autofill && !raw)
+    }
+  >
+    <Row>
+      <Col>
+        {autofill ? (
+          <>
+            <SelectField
+              name="select"
+              label={label}
+              autofill
+              creatable={creatable}
+              helpId={helpId}
+              helpMessage={helpMessage}
+              isDisabled={disabled}
+              isMulti={isMulti}
+              isClearable={isClearable}
+              maxLength={max}
+              options={autofillOptions}
+              raw={raw}
+              required={required}
+            />
+            <Field name="autoFill1" type="text" label="Autofill Value 1" />
+            <Field name="autoFill2" type="text" label="Autofill Value 2" />
+          </>
+        ) : (
+          <SelectField
+            name="select"
+            label={label}
+            creatable={creatable}
+            helpId={helpId}
+            helpMessage={helpMessage}
+            isDisabled={disabled}
+            isMulti={isMulti}
+            isClearable={isClearable}
+            maxLength={max}
+            options={options}
+            raw={raw}
+            required={required}
+          />
+        )}
+        <Button color="primary" type="submit">
+          Submit
+        </Button>
+      </Col>
+      <Col md="5">
+        <SelectedOption field="select" />
+      </Col>
+    </Row>
+  </FormikResults>
+);
+
+_SelectField.storyName = '<SelectField />';
+
+_SelectField.parameters = {
+  docs: {
+    description: {
+      story: 'Select with a Label and Feedback that appears below the input.',
+    },
+  },
+};
+
 Default.storyName = '<Select />';
 
 export const Props: Story = () => (
@@ -115,5 +203,8 @@ export const Props: Story = () => (
     <h4>Availity Props</h4>
     <h5>Select</h5>
     <ArgsTable of={Select} />
+
+    <h5>SelectField</h5>
+    <ArgsTable of={SelectField} />
   </>
 );

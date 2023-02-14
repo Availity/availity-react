@@ -308,7 +308,7 @@ const ResourceSelect = ({
 ResourceSelect.propTypes = {
   /** The name of the field. Will be the key of the selected date that comes through in the values of the onSubmit callback. */
   name: PropTypes.string.isRequired,
-  /** Availity API resource (see @availity/api-axios). */
+  /** Availity API resource ([see @availity/api-axios](https://availity.github.io/sdk-js/api/getting-started/)). */
   resource: PropTypes.shape({
     postGet: PropTypes.func,
     post: PropTypes.func,
@@ -325,7 +325,7 @@ ResourceSelect.propTypes = {
   getResult: PropTypes.oneOfType([PropTypes.string, PropTypes.func]),
   /** If true, ResourceSelect attempts to retrieve the next page of results. response.data from the axios response is passed as the only argument to hasMore when hasMore is a function. Defaults to: ({ totalCount, limit, offset }) => totalCount > offset + limit; for non-GraphQL apis. Defaults to (data) => data.data[${this.props.graphqlConfig.type}Pagination].pageInfo.hasNextPage for GraphQL apis. */
   hasMore: PropTypes.oneOfType([PropTypes.bool, PropTypes.func]),
-  /** Set to debounceTimeout if debounceTimeout is not provided. (see react-select-async-paginate) */
+  /** Set to debounceTimeout if debounceTimeout is not provided. ([see react-select-async-paginate](https://www.npmjs.com/package/react-select-async-paginate)) */
   delay: PropTypes.number,
   /** The amount of time (in milliseconds) to wait after the user has stopped typing before making the network request (debounced input). Default: 350 */
   debounceTimeout: PropTypes.number,
@@ -345,10 +345,10 @@ ResourceSelect.propTypes = {
   watchParams: PropTypes.array,
   /** The minimum number of characters the user must input before ResourceSelect makes the network request. If the user has not inputted any characters, the network request will still be made. Useful for relieving pressure on the api the resource is calling. */
   minCharsToSearch: PropTypes.number,
-  /** When this prop changes, all cached options are cleared. (see react-select-async-paginate) */
+  /** When this prop changes, all cached options are cleared. ([see react-select-async-paginate](https://www.npmjs.com/package/react-select-async-paginate)) */
   // eslint-disable-next-line react/forbid-prop-types
   cacheUniq: PropTypes.any,
-  /** Additional properties to pass to AsyncPaginate (see react-select-async-paginate) */
+  /** Additional properties to pass to AsyncPaginate ([see react-select-async-paginate](https://www.npmjs.com/package/react-select-async-paginate)) */
   additional: PropTypes.object,
   /** Object containing type (String) and query (String) properties. type is the type of asset returned. query is the GraphQL query to use in the request. */
   graphqlConfig: PropTypes.shape({
