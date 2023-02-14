@@ -1,7 +1,7 @@
 import React from 'react';
 import { Meta, Story } from '@storybook/react';
 import { ArgsTable } from '@storybook/addon-docs';
-import Progress, { ProgressProps } from '.';
+import Progress from '.';
 // import README from '../README.md';
 
 export default {
