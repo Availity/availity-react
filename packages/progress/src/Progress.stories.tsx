@@ -1,7 +1,7 @@
 import React from 'react';
 import { Meta, Story } from '@storybook/react';
-
-import Progress from '.';
+import { ArgsTable } from '@storybook/addon-docs';
+import Progress, { ProgressProps } from '.';
 // import README from '../README.md';
 
 export default {
@@ -28,3 +28,11 @@ Default.args = {
   color: 'success',
 };
 Default.storyName = 'default';
+
+export const Props: Story = () => (
+  <>
+    <h4>Availity Props</h4>
+    <h5>Progress</h5>
+    <ArgsTable of={Progress} />
+  </>
+);
