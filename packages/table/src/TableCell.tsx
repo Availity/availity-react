@@ -11,7 +11,7 @@ type Props<T extends IdType> = {
   /**  **/
   scrollable?: boolean;
   
-  isFixedWith?: boolean;
+  useColumnWidths?: boolean;
   /**  **/
   getCellProps: (cell: Cell<T>) => React.HTMLAttributes<HTMLTableCellElement>;
 
@@ -23,16 +23,14 @@ const TableCell = <T extends IdType>({
   cell,
   scrollable,
   children,
+  useColumnWidths,
   onCellClick,
   getCellProps,
   ...rest
 }: Props<T>): JSX.Element => {
   const { className, disableClick, stickyLeft, stickyRight, width, minWidth, maxWidth } = cell.column;
 
-  const isFixedWidth = scrollable && !className;
-
   const cellProps = {
-    title: cell.value && isFixedWidth ? cell.value.toString() : undefined,
     onClick: (e: React.MouseEvent<HTMLTableCellElement, MouseEvent>) => {
       if (!disableClick && onCellClick)
         onCellClick({
@@ -60,7 +58,7 @@ const TableCell = <T extends IdType>({
     return {
       ...props,
       ...cellProps,
-      style: isFixedWidth
+      style: useColumnWidths
         ? {
             width,
             minWidth,

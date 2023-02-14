@@ -22,6 +22,7 @@ type Props<T extends IdType> = {
   sortable?: boolean;
   /**  **/
   manualSortBy?: boolean;
+  useColumnWidths?: boolean;
 } & React.HTMLAttributes<HTMLElement>;
 
 const TableHeaderCell = <T extends IdType>({
@@ -32,6 +33,7 @@ const TableHeaderCell = <T extends IdType>({
   scrollable,
   sortable,
   manualSortBy,
+  useColumnWidths,
 
   ...rest
 }: Props<T>): JSX.Element => {
@@ -49,8 +51,6 @@ const TableHeaderCell = <T extends IdType>({
     return null;
   };
 
-  const isFixedWidth = scrollable;
-
   const getHeaderColumnProps = (column: ExtendedTableHeader<T>) => {
     const inheritProps = column.getHeaderProps();
     const props = {
@@ -60,7 +60,7 @@ const TableHeaderCell = <T extends IdType>({
         'sticky-left': column.stickyLeft,
       }),
       title: undefined,
-      style: isFixedWidth
+      style: useColumnWidths
         ? {
             width: column.width,
             minWidth: column.width,

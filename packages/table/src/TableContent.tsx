@@ -24,6 +24,7 @@ const TableContent = <T extends IdType>(): JSX.Element | null => {
     selectable,
     AdditionalContent,
     additionalContentProps,
+    useColumnWidths,
 
     onRowClick,
     onCellClick,
@@ -61,6 +62,7 @@ const TableContent = <T extends IdType>(): JSX.Element | null => {
                     sortable={sortable}
                     manualSortBy={manualSortBy}
                     column={header}
+                    useColumnWidths={useColumnWidths}
                   >
                     {header.render('Header')}
                     {sortable && header.defaultCanSort && header.disableSortBy !== true ? (
@@ -102,6 +104,7 @@ const TableContent = <T extends IdType>(): JSX.Element | null => {
                   cell={cell as Cell<T>}
                   onCellClick={selectable ? onRowClick : onCellClick}
                   getCellProps={getCellProps as (cell: Cell<T>) => React.HTMLAttributes<HTMLTableCellElement>}
+                  useColumnWidths={useColumnWidths}
                 >
                   {cell.render('Cell')}
                 </TableCell>

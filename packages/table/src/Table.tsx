@@ -70,6 +70,7 @@ export type CommonTableProps<T extends IdType> = {
    * to true, then the first column of the table will be a checkbox column
    * that will toggle selecting and deselecting the row. **/
   selectable?: boolean;
+  useColumnWidths?: boolean;
   selectionColumnProps?: Partial<Column<T>>;
   /** This function determines if a row in a selectable table can be
    * selected. By default if no function is provided to this property,
@@ -111,6 +112,7 @@ const Table = <T extends IdType>({
   bodyProps,
   headerProps,
   selectionColumnProps,
+  useColumnWidths,
   onRowClick,
   onCellClick,
   onRowSelected,
@@ -228,6 +230,7 @@ const Table = <T extends IdType>({
         onSort,
         onRowSelected,
         tableProps,
+        useColumnWidths,
       }}
     >
       {children || <TableContent />}

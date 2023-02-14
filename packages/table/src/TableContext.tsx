@@ -56,6 +56,7 @@ export type AvTableContext = {
   /** This determines whether the table is sortable or not. **/
   sortable?: boolean;
   footer?: boolean;
+  useColumnWidths?: boolean;
   /** This boolean determines whether the table is paged or not. This
    * works with the usePagination hook that is documented in react-table.
    * This defaults to false. **/
@@ -72,6 +73,7 @@ export const TableContext = React.createContext<AvTableContext>({
   scrollable: false,
   sortable: false,
   footer: false,
+  useColumnWidths: false,
   getRowProps: () => ({} as RowProps),
   getCellProps: () => ({} as React.HTMLAttributes<HTMLTableCellElement>),
 });
