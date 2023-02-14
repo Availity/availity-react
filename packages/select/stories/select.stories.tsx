@@ -15,7 +15,9 @@ export default {
   title: 'Form Components/Select',
   parameters: {
     docs: {
-      // page: README,
+      description: {
+        component: 'Select dropdown without a Label or Feedback',
+      },
     },
   },
   args: {

@@ -15,7 +15,10 @@ export default {
   title: 'Form Components/Select',
   parameters: {
     docs: {
-      // page: README,
+      description: {
+        component:
+          'The same as Select but with a Label that appears above the input and a Feedback that appears below the input.',
+      },
     },
   },
   args: {
