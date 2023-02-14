@@ -51,14 +51,23 @@ const SelectField = ({
 };
 
 SelectField.propTypes = {
+  /** The name of the field and name of the HTML Input. Without this, no input will be rendered. Will be the key of the selected option(s) that come through in the values of the onSubmit callback of the form. */
   name: PropTypes.string.isRequired,
+  /** Class names to pass to the Feedback. */
   feedbackClass: PropTypes.string,
+  /** Class names to pass to the FormGroup. */
   groupClass: PropTypes.string,
+  /** Help topic id, adds <FieldHelpIcon/> next to the label (should not be within label for accessibility). */
   helpId: PropTypes.string,
+  /** Adds help message below input. */
   helpMessage: PropTypes.oneOfType([PropTypes.string, PropTypes.node]),
+  /** The label to render above the Select input. */
   label: PropTypes.node,
+  /** Class names to pass to the Label. */
   labelClass: PropTypes.string,
+  /** Whether the label should be hidden. */
   labelHidden: PropTypes.bool,
+  /** Will add <RequiredAsterisk /> to label. */
   required: PropTypes.bool,
 };
 

@@ -52,8 +52,9 @@ const AvRegionSelect = ({ defaultToCurrentRegion, name, ...props }) => {
 };
 
 AvRegionSelect.propTypes = {
-  defaultToCurrentRegion: PropTypes.bool,
   name: PropTypes.string.isRequired,
+  /** When true, the input will be defaulted to the user's currently selected region. Defaults to false */
+  defaultToCurrentRegion: PropTypes.bool,
 };
 
 export default AvRegionSelect;
