@@ -139,7 +139,7 @@ export const Props: Story = () => (
     <h5>Tree</h5>
     <ArgsTable of={Tree} />
 
-    <h4>Tree Item</h4>
+    <h5>Tree Item</h5>
     <ArgsTable of={hidden_TreeItemComponent} />
   </>
 );
