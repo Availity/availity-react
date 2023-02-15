@@ -1,18 +1,21 @@
 # This workflow will do a clean install of node dependencies, build the source code, and run tests across different versions of node
 # For more information see: https://help.github.com/actions/language-and-framework-guides/using-nodejs-with-github-actions
 
+# If adding a step that requires SECRETS or GITHUB WRITE PERMISSIONS be sure to have dependabot skip it.
+# > if: ${{ github.actor != 'dependabot[bot]' }}
+
 name: Node.js CI
 
 on:
   pull_request:
     branches: [master]
+  merge_group:
 
 jobs:
   # This job will:
   #   * deploy a draft every time there is a pull request created or synchronized that is not on master branch
   #   * comment on that pull request with the deploy URL
   build:
-    if: ${{ github.actor != 'dependabot[bot]' }}
     runs-on: ${{ matrix.os }}
     strategy:
       matrix:
@@ -24,7 +27,6 @@ jobs:
         uses: actions/checkout@v3
         with:
           fetch-depth: 0
-          token: ${{ secrets.BOT_TOKEN }}
 
       - name: Derive appropriate SHAs for base and head for `nx affected` commands
         uses: nrwl/nx-set-shas@v3
@@ -68,6 +70,7 @@ jobs:
         run: yarn version:dry-run
 
       - name: Upload coverage report
+        if: ${{ github.actor != 'dependabot[bot]' }}
         uses: codecov/codecov-action@v3 # FIXME: no CI provider detected
         with:
           file: ./coverage/coverage-final.json
