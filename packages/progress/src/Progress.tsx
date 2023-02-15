@@ -3,13 +3,20 @@ import classNames from 'classnames';
 import toNumber from 'lodash/toNumber';
 
 export type ProgressProps = {
+  /** The tag to render the progress bar as. */
   tag?: React.ElementType;
+  /** Triggers the "animated" style in the progress bar. */
   animated?: boolean;
+  /** Triggers the "striped" style in the progress bar. */
   striped?: boolean;
+  /** Triggers the "complete" style in the progress bar. When true, a checkmark appears at the end of the progress bar */
   complete?: boolean;
+  /** The amount of the progress bar that should be filled (relative to the max) */
   value?: number | string;
+  /** The maximum amount of the progress bar. */
   max?: number | string;
   className?: string;
+  /** The color of the progress bar. */
   color?: string;
   children?: React.ReactNode; // TODO: check if this is right
 };
