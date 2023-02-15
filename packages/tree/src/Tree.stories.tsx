@@ -1,5 +1,6 @@
 import { useCallback, useState } from 'react';
 import { Meta, Story } from '@storybook/react';
+import { ArgsTable } from '@storybook/addon-docs';
 import cloneDeep from 'lodash/cloneDeep';
 import Tree, { buildTree } from '.';
 
@@ -9,6 +10,14 @@ import { Button } from 'reactstrap';
 
 export default {
   title: 'Components/Tree',
+  parameters: {
+    docs: {
+      description: {
+        component:
+          'This component builds out a hierarchical tree of objects, with the ability to expand/collapse, select, and search.',
+      },
+    },
+  },
 } as Meta;
 
 export const Default: Story = ({ enableSearch, searchLabel, expandAll, selectable, expandParent }) => {
@@ -114,6 +123,26 @@ export const Default: Story = ({ enableSearch, searchLabel, expandAll, selectabl
     </>
   );
 };
+('');
+export const hidden_TreeItemComponent = ({
+  isExpanded = false,
+  isSelected = false,
+  isHidden = false,
+  isDisabled = false,
+}: TreeItem): JSX.Element => {
+  return <></>;
+};
+
+export const Props: Story = () => (
+  <>
+    <h4>Availity Props</h4>
+    <h5>Tree</h5>
+    <ArgsTable of={Tree} />
+
+    <h5>Tree Item</h5>
+    <ArgsTable of={hidden_TreeItemComponent} />
+  </>
+);
 Default.storyName = 'default';
 Default.args = {
   enableSearch: true,
