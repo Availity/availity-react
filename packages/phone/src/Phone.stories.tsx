@@ -4,7 +4,7 @@ import { Story, Meta } from '@storybook/react';
 import { ArgsTable } from '@storybook/addon-docs';
 import { Button } from 'reactstrap';
 import * as yup from 'yup';
-import Field from '../../form/src/Field';
+import { FieldProps } from '@availity/form';
 import { Phone } from '..';
 
 import './validatePhone';
@@ -75,6 +75,10 @@ Default.args = {
 };
 Default.storyName = 'default';
 
+export const hidden_FieldProps = ({}: FieldProps): JSX.Element => {
+  return <></>;
+};
+
 export const Props: Story = () => (
   <>
     <h4>Availity Props</h4>
@@ -84,6 +88,6 @@ export const Props: Story = () => (
     <h4>Availity Form Props</h4>
     <h5>Field</h5>
     <div>Props passed from Phone to Field component </div>
-    <ArgsTable of={Field} />
+    <ArgsTable of={hidden_FieldProps} />
   </>
 );
