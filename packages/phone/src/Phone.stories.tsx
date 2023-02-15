@@ -1,10 +1,12 @@
 /* eslint-disable no-console */
 import React from 'react';
 import { Story, Meta } from '@storybook/react';
+import { ArgsTable } from '@storybook/addon-docs';
 import { Button } from 'reactstrap';
 import * as yup from 'yup';
-
+import Field from '../../form/src/Field';
 import { Phone } from '..';
+
 import './validatePhone';
 // import README from '../README.md';
 
@@ -14,7 +16,9 @@ export default {
   title: 'Form Components/Phone',
   parameters: {
     docs: {
-      // page: README,
+      description: {
+        component: 'Availity Phone component using Formik and Yup',
+      },
     },
   },
 } as Meta;
@@ -70,3 +74,16 @@ Default.args = {
   extColProps: { xs: { size: 3 } },
 };
 Default.storyName = 'default';
+
+export const Props: Story = () => (
+  <>
+    <h4>Availity Props</h4>
+    <h5>Phone</h5>
+    <ArgsTable of={Phone} />
+
+    <h4>Availity Form Props</h4>
+    <h5>Field</h5>
+    <div>Props passed from Phone to Field component </div>
+    <ArgsTable of={Field} />
+  </>
+);
