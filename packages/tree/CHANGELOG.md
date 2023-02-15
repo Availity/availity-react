@@ -2,6 +2,16 @@
 
 This file was generated using [@jscutlery/semver](https://github.com/jscutlery/semver).
 
+# [0.3.0](https://github.com/Availity/availity-react/compare/@availity/tree@0.2.2...@availity/tree@0.3.0) (2023-02-15)
+
+
+### Features
+
+* **tree:** tree storybook update h4 to h5 ([a1849cd](https://github.com/Availity/availity-react/commit/a1849cd45ed9e12412663e1f22fab6dc1264a152))
+* **tree:** update storybook for tree ([97770fe](https://github.com/Availity/availity-react/commit/97770fed5e3d960239a9d5b0ea45cbd2654b7830))
+
+
+
 ## [0.2.2](https://github.com/Availity/availity-react/compare/@availity/tree@0.2.1...@availity/tree@0.2.2) (2023-01-27)
 
 
