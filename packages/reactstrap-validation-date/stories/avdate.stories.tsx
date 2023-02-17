@@ -356,7 +356,7 @@ export const hidden_AvInputProps = ({}: AvInput): JSX.Element => {
   return <></>;
 };
 
-export const hidden_AvGroupProps = ({}: LabelProps): JSX.Element => {
+export const hidden_AvLabelProps = ({}: LabelProps): JSX.Element => {
   return <></>;
 };
 
@@ -382,6 +382,6 @@ export const Props: Story = () => (
     <h4>Reactstrap Props</h4>
     <h5>Label props</h5>
     <div>Available attributes for labelAttrs</div>
-    <ArgsTable of={hidden_AvGroupProps} />
+    <ArgsTable of={hidden_AvLabelProps} />
   </>
 );
