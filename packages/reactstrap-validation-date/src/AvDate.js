@@ -189,9 +189,13 @@ class AvDate extends Component {
 
 AvDate.propTypes = {
   ...AvInput.propTypes,
+  /**  Minimum date to allow the datepicker and input to take. You can either pass the min here or in the validate object if you want a custom error message with it. */
   min: limitPropType,
+  /** Max date to allow the datepicker and input to take. You can either pass the max here or in the validate object if you want a custom error message with it. */
   max: limitPropType,
+  /** Function to be run when focus on the input changes. */
   onPickerFocusChange: PropTypes.func,
+  /** Props to be spread onto the datepicker component from [react-dates](https://github.com/react-dates/react-dates#singledatepicker). */
   datePickerProps: PropTypes.object,
 };
 

@@ -111,7 +111,11 @@ class AvDateRangeField extends Component {
 }
 
 AvDateRangeField.propTypes = {
+  /** The name of the field. Will be the key of the selected date that comes through in the values of the onSubmit callback. */
+  name: PropTypes.string.isRequired,
+  /** The text that renders inside the Label above the input. */
   label: PropTypes.node,
+  /** Used to control if the label is displayed. When set to true, the label in the field won't be visible. */
   labelHidden: PropTypes.bool,
   disabled: PropTypes.bool,
   readOnly: PropTypes.bool,
@@ -120,14 +124,17 @@ AvDateRangeField.propTypes = {
   labelClass: PropTypes.string,
   helpMessage: PropTypes.oneOfType([PropTypes.string, PropTypes.object]),
   errorMessage: PropTypes.oneOfType([PropTypes.string, PropTypes.object]),
+  /** Pass additional attributes to the label */
   labelAttrs: PropTypes.object,
+  /** Pass additional attributes to the group */
   groupAttrs: PropTypes.object,
   grid: PropTypes.object,
+  /** object which will be spread on the start date input. It must contain the name prop as required by availity-reactstrap-validation. It can contain additional validations as well. */
   start: PropTypes.object,
+  /** object which will be spread on the end date input. It must contain the name prop as required by availity-reactstrap-validation. It can contain additional validations as well. */
   end: PropTypes.object,
   size: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
   children: PropTypes.node,
-  name: PropTypes.string.isRequired,
 };
 
 AvDateRangeField.contextTypes = {
