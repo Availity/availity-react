@@ -91,6 +91,8 @@ class AvDateField extends Component {
 }
 
 AvDateField.propTypes = {
+  /** The name of the field. Will be the key of the selected date that comes through in the values of the onSubmit callback. */
+  name: PropTypes.string.isRequired,
   /** The text that renders inside the Label above the input. */
   label: PropTypes.node,
   /** Used to control if the label is displayed. When set to true, the label in the field won't be visible. */
@@ -109,8 +111,6 @@ AvDateField.propTypes = {
   groupAttrs: PropTypes.object,
   grid: PropTypes.object,
   children: PropTypes.node,
-  /** The name of the field. Will be the key of the selected date that comes through in the values of the onSubmit callback. */
-  name: PropTypes.string.isRequired,
   size: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
 };
 
