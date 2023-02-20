@@ -396,16 +396,23 @@ AvSelect.contextTypes = {
 
 AvSelect.propTypes = {
   ...AvBaseInput.propTypes,
+  /** Array of options that populate the select menu. Grouped options are also supported, but must include the property type: 'group'. */
   options: PropTypes.array,
   loadOptions: PropTypes.func,
+  /**  If true, the entire object of the selected value will be returned as the value instead of the value for the valueKey within the object. */
   raw: PropTypes.bool,
+  /** Allow new items to be created if not found. */
   creatable: PropTypes.bool,
+  /** An Object that has two properties: feedbackId and errorMessage. It maps an error message to an error id. */
   ariaFeedback: PropTypes.shape({
     feedbackId: PropTypes.string,
     errorMessage: PropTypes.string,
   }),
+  /** Adds hidden help message to placeholder so it is read with aria-describedby (should match visible help message). */
   helpMessage: PropTypes.oneOfType([PropTypes.string, PropTypes.node]),
+  /** Placeholder text for the input. */
   placeholder: PropTypes.string,
+  /** If true, when the value of the dropdown changes, if the isMulti prop is false and the new value of the dropdown is an object, all fields on the form corresponding to the new value are auto-filled. In order for a field to be auto-filled, the name property on the field must match the key inside the new value. */
   autofill: PropTypes.oneOfType([PropTypes.bool, PropTypes.object]),
 };
 

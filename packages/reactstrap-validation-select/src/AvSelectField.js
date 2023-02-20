@@ -80,14 +80,19 @@ class AvSelectField extends Component {
 }
 
 AvSelectField.propTypes = {
+  name: PropTypes.string.isRequired,
+  /** The name of the field. Will be the key of the selected option(s) that come through in the values of the onSubmit callback of the form. */
   label: PropTypes.node,
   labelHidden: PropTypes.bool,
   id: PropTypes.string,
+  /** Adds hidden help message to placeholder so it is read with aria-describedby (should match visible help message). */
   helpMessage: PropTypes.oneOfType([PropTypes.string, PropTypes.node]),
+  /** ClassName to add to the AvFeedback */
   feedbackClass: PropTypes.string,
+  /** ClassName to add to the wrapping AvGroup */
   groupClass: PropTypes.string,
+  /** The key for the label you want to appear in the dropdown for the user to see. */
   labelClass: PropTypes.string,
-  name: PropTypes.string.isRequired,
 };
 
 AvSelectField.contextTypes = {
