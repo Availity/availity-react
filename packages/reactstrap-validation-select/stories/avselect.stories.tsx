@@ -229,16 +229,6 @@ _AvSelectResource.args = {
   requiredErrorMessage: 'This field is required',
 };
 _AvSelectResource.storyName = 'AvSelectResource';
-/** AvSelect and AvSelectResource
- * 
- * export const Props: Story = () => (
-  <>
-    <h4>Availity Props</h4>
-    <h5>Progress</h5>
-    <ArgsTable of={AvSelect} />
-  </>
-);
- */
 
 _AvSelectField.parameters = {
   docs: {
