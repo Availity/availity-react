@@ -1,5 +1,6 @@
 import React from 'react';
 import { Meta, Story } from '@storybook/react';
+import { ArgsTable } from '@storybook/addon-docs';
 import { Label, Button } from 'reactstrap';
 import AvApi from '@availity/api-axios';
 import { AvGroup, AvFeedback, AvField } from 'availity-reactstrap-validation';
@@ -54,7 +55,9 @@ export default {
   title: 'Legacy Form Components/AvSelect',
   parameters: {
     docs: {
-      // page: README,
+      description: {
+        component: 'This is the underlying select without the AvGroup, Label or AvFeedback',
+      },
     },
   },
   args: {
@@ -226,3 +229,80 @@ _AvSelectResource.args = {
   requiredErrorMessage: 'This field is required',
 };
 _AvSelectResource.storyName = 'AvSelectResource';
+/** AvSelect and AvSelectResource
+ * 
+ * export const Props: Story = () => (
+  <>
+    <h4>Availity Props</h4>
+    <h5>Progress</h5>
+    <ArgsTable of={AvSelect} />
+  </>
+);
+ */
+
+_AvSelectField.parameters = {
+  docs: {
+    description: {
+      story:
+        "Please refer to [react-select with async pagination's](https://github.com/TheSharpieOne/react-select/tree/npm/v2-async-pagination) props and [availity-reactstrap-validation's](https://github.com/Availity/availity-reactstrap-validation) field validation props. This component just combines those.",
+    },
+  },
+};
+
+_AvSelectResource.parameters = {
+  docs: {
+    description: {
+      story:
+        'A select list which automatically loads and pages though a resource when the user scrolls down. The search field will fire a request after the debounce timer (see debounceTimeout prop) using the given resource prop with the payload: {limit: "50", offset:"0", q:"user typed search text after debounce"}',
+    },
+  },
+};
+
+//export const hidden_RSBreadcrumb = (props: AvBaseInput) => <AvBaseInput {...props} />;
+export const Props: Story = () => (
+  <>
+    <h4>Availity Props</h4>
+    <h5>AvSelect</h5>
+    <div>
+      Please refer to{' '}
+      <a href="https://github.com/TheSharpieOne/react-select/tree/npm/v2-async-pagination">
+        react-select with async pagination's
+      </a>{' '}
+      props and{' '}
+      <a href="https://github.com/Availity/availity-reactstrap-validation">
+        {' '}
+        availity-reactstrap-validation's validation
+      </a>{' '}
+      input props. This component just combines those.
+    </div>
+    <ArgsTable of={AvSelect} />
+    <h5>AvSelectResource</h5>
+    <div>
+      Please refer to{' '}
+      <a href="https://github.com/TheSharpieOne/react-select/tree/npm/v2-async-pagination">
+        react-select with async pagination's
+      </a>{' '}
+      props and{' '}
+      <a href="https://github.com/Availity/availity-reactstrap-validation">
+        {' '}
+        availity-reactstrap-validation's validation
+      </a>{' '}
+      input props. This component just combines those.
+    </div>
+    <ArgsTable of={AvSelectResource} />
+    <h5>AvSelectField</h5>
+    <div>
+      Please refer to{' '}
+      <a href="https://github.com/TheSharpieOne/react-select/tree/npm/v2-async-pagination">
+        react-select with async pagination's
+      </a>{' '}
+      props and{' '}
+      <a href="https://github.com/Availity/availity-reactstrap-validation">
+        {' '}
+        availity-reactstrap-validation's validation
+      </a>{' '}
+      props. This component just combines those.
+    </div>
+    <ArgsTable of={AvSelectField} />
+  </>
+);
