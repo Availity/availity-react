@@ -18,6 +18,7 @@ import {
   UseColumnOrderInstanceProps,
   UseRowSelectState,
   UseExpandedRowProps,
+  UseExpandedInstanceProps,
 } from 'react-table';
 
 import { TableSort } from './TableSort';
@@ -84,6 +85,7 @@ export type TableInstance<T extends IdType> = UseSortByInstanceProps<T> &
   UseRowSelectInstanceProps<T> &
   UseRowSelectOptions<T> &
   RtTableInstance<T> &
+  UseExpandedInstanceProps<T> &
   UseColumnOrderInstanceProps<T> &
   UsePaginationInstanceProps<T> & {
     toggleAllPageRowsSelected: (set?: boolean) => void;
