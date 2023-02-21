@@ -2,6 +2,15 @@
 
 This file was generated using [@jscutlery/semver](https://github.com/jscutlery/semver).
 
+# [0.6.0-alpha.7](https://github.com/Availity/availity-react/compare/@availity/table@0.6.0-alpha.6...@availity/table@0.6.0-alpha.7) (2023-02-21)
+
+
+### Features
+
+* **table:** adding forwardref in order to access instance in a parent component and passing in row data to leverage hooks on rows ([f617bca](https://github.com/Availity/availity-react/commit/f617bcad393f2fca8944419e5a49d055cb36f191))
+
+
+
 # [0.6.0-alpha.6](https://github.com/Availity/availity-react/compare/@availity/table@0.6.0-alpha.5...@availity/table@0.6.0-alpha.6) (2023-02-14)
 
 
