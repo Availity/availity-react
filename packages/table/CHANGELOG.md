@@ -2,6 +2,15 @@
 
 This file was generated using [@jscutlery/semver](https://github.com/jscutlery/semver).
 
+# [0.6.0-alpha.8](https://github.com/Availity/availity-react/compare/@availity/table@0.6.0-alpha.7...@availity/table@0.6.0-alpha.8) (2023-02-21)
+
+
+### Features
+
+* **table:** add useexpanded tableinstance type ([59630e8](https://github.com/Availity/availity-react/commit/59630e8c9582f3ed70e10c8655b6fdab81cda721))
+
+
+
 # [0.6.0-alpha.7](https://github.com/Availity/availity-react/compare/@availity/table@0.6.0-alpha.6...@availity/table@0.6.0-alpha.7) (2023-02-21)
 
 
