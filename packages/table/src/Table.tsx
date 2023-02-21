@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { ForwardedRef, forwardRef, ReactElement, Ref, useEffect, useImperativeHandle, useState } from 'react';
 import filter from 'lodash/filter';
 import {
   Hooks,
@@ -89,6 +89,10 @@ export type CommonTableProps<T extends IdType> = {
   children?: React.ReactNode | React.ReactChild;
 };
 
+export type TableRef<T extends IdType> = {
+  instance: TableInstance<T>;
+};
+
 export type TableProps<T extends IdType> = {
   /** This is an array of column definitions based off of react-table Column. */
   columns: Column<T>[];
@@ -98,33 +102,36 @@ export type TableProps<T extends IdType> = {
   CommonTableProps<T> &
   TableOptions<T>;
 
-const Table = <T extends IdType>({
-  additionalContent: AdditionalContent,
-  additionalContentProps,
-  columns,
-  data,
-  selectable = false,
-  scrollable,
-  sortable = false,
-  footer = false,
-  id,
-  tableProps,
-  bodyProps,
-  headerProps,
-  selectionColumnProps,
-  useColumnWidths,
-  onRowClick,
-  onCellClick,
-  onRowSelected,
-  getCanSelectRow,
-  getRowProps = () => ({} as RowProps),
-  getCellProps = () => ({} as React.HTMLAttributes<HTMLTableCellElement>),
-  onSort,
-  paged = false,
-  pluginHooks,
-  children,
-  ...rest
-}: TableProps<T>): JSX.Element | null => {
+const TableComponent = <T extends IdType>(
+  {
+    additionalContent: AdditionalContent,
+    additionalContentProps,
+    columns,
+    data,
+    selectable = false,
+    scrollable,
+    sortable = false,
+    footer = false,
+    id,
+    tableProps,
+    bodyProps,
+    headerProps,
+    selectionColumnProps,
+    useColumnWidths,
+    onRowClick,
+    onCellClick,
+    onRowSelected,
+    getCanSelectRow,
+    getRowProps = () => ({} as RowProps),
+    getCellProps = () => ({} as React.HTMLAttributes<HTMLTableCellElement>),
+    onSort,
+    paged = false,
+    pluginHooks,
+    children,
+    ...rest
+  }: TableProps<T>,
+  ref: Ref<TableRef<T>>
+): JSX.Element | null => {
   const [selectedTableRows, setSelectedTableRows] = useState<Row<T>[]>([]);
   const [sortableColumns] = useState<TableSortOption[]>(
     filter(columns, (column) => !column.disableSortBy && column.defaultCanSort).map((column) => {
@@ -205,6 +212,14 @@ const Table = <T extends IdType>({
     }
   }, [selectedTableRows, onRowSelected]);
 
+  useImperativeHandle<TableRef<T>, TableRef<T>>(
+    ref,
+    () => ({
+      instance: tableInstance,
+    }),
+    [tableInstance]
+  );
+
   return (
     <TableContext.Provider
       value={{
@@ -238,4 +253,7 @@ const Table = <T extends IdType>({
   );
 };
 
+const Table = forwardRef(TableComponent) as <T extends IdType>(
+  p: TableProps<T> & { ref?: Ref<TableRef<T>> }
+) => JSX.Element;
 export default Table;

@@ -16,7 +16,7 @@ import { useTableContext } from '../TableContext';
 import { BulkRecordAction } from '../types/BulkRecordAction';
 import { IdType, TableInstance } from '../types/ReactTable';
 
-type Props<T> = {
+type Props<T extends IdType> = {
   id?: string;
   disabled?: boolean;
   recordName?: string;
@@ -109,14 +109,23 @@ const BulkTableActions = <T extends IdType>({
           />
           <DropdownMenu color={color} container={container} {...dropdownMenuProps}>
             {bulkActions?.map((action) => {
-              const isVisible = action.isVisible ? action.isVisible(selectedFlatRows.map((row) => row.original)) : true;
+              const isVisible = action.isVisible
+                ? action.isVisible(
+                    selectedFlatRows.map((row) => row.original),
+                    selectedFlatRows
+                  )
+                : true;
               const setProps = () => {
                 if (!action.onClick) {
                   return null;
                 }
                 const clickEvent = action.onClick;
                 return {
-                  onClick: () => clickEvent(selectedFlatRows.map((row) => row.original)),
+                  onClick: () =>
+                    clickEvent(
+                      selectedFlatRows.map((row) => row.original),
+                      selectedFlatRows
+                    ),
                   ...action.dropdownItemProps,
                 };
               };
