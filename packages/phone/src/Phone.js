@@ -54,9 +54,9 @@ Phone.propTypes = {
   }),
   /** Displays a Reactstrap <Label /> for the field. */
   label: PropTypes.string,
-  /** Enable the phone extension field. This is false by default. */
+  /** Enable the phone extension field. */
   showExtension: PropTypes.bool,
-  /** Default country for parsing national numbers. [This is the two letter ISO country code](https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2). If no code is provided, the default is 'US'. */
+  /** Default country for parsing national numbers. [This is the two letter ISO country code](https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2). */
   country: PropTypes.string,
   /** Used to control props on the <Col /> for the phone field, if needed. The phone column defaults to xs: { size: 12 } when not rendering an extension field, and defaults to xs: { size: 10 } when rendering an extension field. */
   phoneColProps: PropTypes.object,

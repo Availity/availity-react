@@ -75,19 +75,11 @@ Default.args = {
 };
 Default.storyName = 'default';
 
-export const hidden_FieldProps = ({}: FieldProps): JSX.Element => {
-  return <></>;
-};
-
 export const Props: Story = () => (
   <>
     <h4>Availity Props</h4>
     <h5>Phone</h5>
+    <div>Additional props are passed to the @availity/form field component</div>
     <ArgsTable of={Phone} />
-
-    <h4>Availity Form Props</h4>
-    <h5>Field</h5>
-    <div>Props passed from Phone to Field component </div>
-    <ArgsTable of={hidden_FieldProps} />
   </>
 );
