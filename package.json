@@ -70,7 +70,7 @@
   },
   "dependencies": {
     "@commitlint/cli": "^16.3.0",
-    "@commitlint/config-conventional": "^16.2.4",
+    "@commitlint/config-conventional": "^17.4.4",
     "@commitlint/config-nx-scopes": "^16.3.0",
     "@jscutlery/semver": "^2.25.2",
     "@nrwl/cli": "14.1.5",
