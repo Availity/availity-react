@@ -49,10 +49,10 @@ Phone.propTypes = {
   extProps: PropTypes.shape({
     name: PropTypes.string.isRequired,
     label: PropTypes.string,
-    /** Used to control props on <Col /> for the extension field, if needed. The extension column has no default size value, so it's default will effectively be size: { 12 - phoneColSize } unless otherwise specified. */
+    /** Used to control props on `<Col />` for the extension field, if needed. The extension column has no default size value, so it's default will effectively be size: { 12 - phoneColSize } unless otherwise specified. */
     extColProps: PropTypes.object,
   }),
-  /** Displays a Reactstrap <Label /> for the field. */
+  /** Displays a Reactstrap `<Label />` for the field. */
   label: PropTypes.string,
   /** Enable the phone extension field. */
   showExtension: PropTypes.bool,
