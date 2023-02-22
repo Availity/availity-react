@@ -541,18 +541,26 @@ class AvDateRange extends Component {
 
 AvDateRange.propTypes = {
   ...AvInput.propTypes,
+  /** object which will be spread on the start date input. It must contain the name prop as required by availity-reactstrap-validation. It can contain additional validations as well. */
   start: PropTypes.shape(AvInput.propTypes),
+  /** object which will be spread on the end date input. It must contain the name prop as required by availity-reactstrap-validation. It can contain additional validations as well. */
   end: PropTypes.shape(AvInput.propTypes),
   onChange: PropTypes.func,
   validate: PropTypes.object,
   type: PropTypes.string,
   disabled: PropTypes.bool,
+  /**  Max date to allow the datepicker and input to take. You can either pass the max here or in the validate object if you want a custom error message with it. */
   max: limitPropType,
+  /**  Minimum date to allow the datepicker and input to take. You can either pass the min here or in the validate object if you want a custom error message with it. */
   min: limitPropType,
+  /** Object containing the min and max distance the start and end dates are allowed to be apart from each other. See example below. */
   distance: PropTypes.object,
+  /** Renders list of ranges preset to the left of the calendar */
   ranges: PropTypes.oneOfType([PropTypes.bool, PropTypes.array, PropTypes.object]),
+  /** Function to be run when focus on the input changes. focusedInput contains the id of the focused field. */
   onPickerFocusChange: PropTypes.func,
   defaultValues: PropTypes.object,
+  /** Toggle whether the other date should be automatically synced to the selected date when focus changes. Dates are only auto synced the first time the input is touched and if the date field to auto sync is empty */
   autoSync: PropTypes.bool,
 };
 

@@ -231,13 +231,13 @@ AvResourceSelect.create = (defaults) => {
 };
 
 AvResourceSelect.propTypes = {
-  requestConfig: PropTypes.object,
-  method: PropTypes.string,
   resource: PropTypes.shape({
     postGet: PropTypes.func,
     post: PropTypes.func,
     getResult: PropTypes.oneOfType([PropTypes.string, PropTypes.func]),
   }).isRequired,
+  requestConfig: PropTypes.object,
+  method: PropTypes.string,
   getResult: PropTypes.oneOfType([PropTypes.string, PropTypes.func]),
   hasMore: PropTypes.oneOfType([PropTypes.bool, PropTypes.func]),
   delay: PropTypes.number,
