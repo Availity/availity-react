@@ -29,7 +29,7 @@
     "lodash": "^4.17.21",
     "prop-types": "^15.8.1",
     "react-image": "^4.0.3",
-    "react-loading-skeleton": "^2.2.0"
+    "react-loading-skeleton": "^3.1.1"
   },
   "devDependencies": {
     "@availity/api-axios": "^7.0.1",
