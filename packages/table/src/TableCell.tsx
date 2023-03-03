@@ -4,19 +4,20 @@ import { OnTableClickEvent } from './types/OnTableClickEvent';
 import { Cell, IdType } from './types/ReactTable';
 
 type Props<T extends IdType> = {
-  /**  **/
+  /** This is a unique id that is prepended to the element **/
   id?: string;
-  /**  **/
+  /** This is the react-table Cell that is being displayed.  **/
   cell: Cell<T>;
-  /**  **/
+  /** Determines whether the table is contained in a set scrollable container. */
   scrollable?: boolean;
-  
-  useColumnWidths?: boolean;
-  /**  **/
+  /** This function provides any DOM properties that should be passed onto the `<td>` elements. Optionally pass in the Cell object in order to conditionally add DOM properties based on data of the cell.   */
   getCellProps: (cell: Cell<T>) => React.HTMLAttributes<HTMLTableCellElement>;
-
-  children: React.ReactNode;
+  /** Callback function that will be called when the cell is clicked if provided. **/
   onCellClick?: (event: OnTableClickEvent<HTMLElement, T>) => void;
+  /** When true, it will take the width as defined in the column configuration and apply it to the styles of each column.  */
+  useColumnWidths?: boolean;
+  /** Children can be a react child. **/
+  children: React.ReactNode;
 } & React.HTMLAttributes<HTMLElement>;
 
 const TableCell = <T extends IdType>({

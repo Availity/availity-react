@@ -8,25 +8,25 @@ import { Column, IdType, Row, RowProps, TableInstance } from './types/ReactTable
 export type Props<T extends IdType> = {
   /** This is a unique id that is prepended to the element **/
   id?: string;
-  /**  **/
+  /** The Row that is being displayed. **/
   row: Row<T>;
   /** The index of the row that was clicked. **/
   index: number;
-  /**  **/
+  /** Callback function that will be called when the row is clicked if provided. **/
   onRowClick?: (event: OnTableClickEvent<HTMLElement, T>) => void;
-  /**  **/
+  /** Callback function that will be called when the cell is clicked if provided. **/
   onCellClick?: (event: OnTableClickEvent<HTMLElement, T>) => void;
 
-  /**  **/
+  /** This designates a Component that will be displayed in the table row for the record. This content displays in an additional `<tr>` with a colspan equal to the number of columns that are NOT sticky.  */
   AdditionalContent?: React.ElementType;
-  /**  **/
+  /**  Additional Properties that should be added to the additional content component when it is rendered. */
   additionalContentProps?: Record<string, string | number | boolean | undefined | null>;
-  /**  **/
+  /** Determines whether the table is contained in a set scrollable container. */
   scrollable?: boolean;
-  /**  **/
+  /** The react-table table instance **/
   instance?: TableInstance<T>;
 
-  /**  **/
+  /** This function provides any DOM properties that should be passed onto the `<tr>` element. Optionally pass in the Row object in order to conditionally add DOM properties based on the data of the row. */
   getRowProps?: (row: Row<T>) => RowProps;
 
   /** Children can be a react child. **/

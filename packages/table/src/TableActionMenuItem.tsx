@@ -34,7 +34,12 @@ const TableActionMenuItem = <T extends IdType>({ id, action, record }: Props<T>)
   return action.divider ? (
     <DropdownItem id={`${id}_action_${action.id}`} key={action.id} divider />
   ) : (
-    <DropdownItem id={`${id}_action_${action.id}`} key={action.id} {...setOnClickProps()}>
+    <DropdownItem
+      id={`${id}_action_${action.id}`}
+      key={action.id}
+      data-testid={`${id}_action_${action.id}`}
+      {...setOnClickProps()}
+    >
       {displayText}
     </DropdownItem>
   );

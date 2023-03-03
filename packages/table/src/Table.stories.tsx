@@ -63,7 +63,6 @@ const columns = [
     Header: 'Currency Cell',
     accessor: 'amount',
     Footer: (info: any) => {
-      // Only calculate total visits if rows change
       const total = React.useMemo(
         () => info.rows.reduce((sum: number, row: any) => parseFloat(info.rows[0].original.amount) + sum, 0),
         [info.rows]
@@ -365,12 +364,7 @@ export const PropsStory: Story = () => (
     <hr />
     <h4>Availity Props</h4>
     <h5>Table</h5>
-    <div className="argstable-remove-default">
-      <ArgsTable of={hidden_avTable} />
-    </div>
-    <hr />
-    <h4>React-Table Props</h4>
-    Visit <a href="https://react-table-v7.tanstack.com/">react-table</a> for full documentation of this.
+    <ArgsTable of={hidden_avTable} />
   </>
 );
 PropsStory.storyName = 'props';

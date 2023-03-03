@@ -1,7 +1,6 @@
 import React, { useRef } from 'react';
 import { render, fireEvent, waitFor, screen } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
-import { UsePaginationInstanceProps, UseTableInstanceProps } from 'react-table';
 
 import basicData from './data/basicData.json';
 import formattedData from './data/needsFormattedData.json';
@@ -15,7 +14,6 @@ import DefaultValueCell from '../CellDefinitions/DefaultValueCell';
 import IconWithTooltipCell from '../CellDefinitions/IconWIthTooltipCell';
 import { Cell, Column, Row } from '../types/ReactTable';
 import TableContent from '../TableContent';
-import { act } from 'react-dom/test-utils';
 
 const basicColumns = [
   {

@@ -61,6 +61,10 @@ export type AvTableContext = {
    * works with the usePagination hook that is documented in react-table.
    * This defaults to false. **/
   paged?: boolean;
+  /** This boolean determines whether a footer should be displayed. */
+  footer?: boolean;
+  /** When true, it will take the width as defined in the column configuration and apply it to the styles of each column.  */
+  useColumnWidths?: boolean;
   /**  */
   sortableColumns?: TableSortOption[];
   /** The react-table Row instance that was clicked */

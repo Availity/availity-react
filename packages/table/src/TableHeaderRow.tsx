@@ -5,7 +5,7 @@ import { IdType } from './types/ReactTable';
 export type Props<T extends IdType> = {
   /** This is a unique id that is prepended to the element **/
   id?: string;
-  /**  **/
+  /** The react-table header **/
   headerGroup: ExtendedTableHeader<T>;
   /** This function will be called whenever the table has been sorted. **/
   onSort?: (sortBy: TableSort[]) => void;

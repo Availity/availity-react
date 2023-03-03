@@ -7,7 +7,7 @@ import { UncontrolledTooltip } from 'reactstrap';
 type Props<T extends IdType> = {
   /** This is a unique id that is prepended to the element **/
   id?: string;
-  /**  **/
+  /** The react-table Column that is build displayed.  **/
   column: ExtendedTableHeader<T>;
   /** This function will be called whenever the table has been sorted. **/
   onSort?: (sortBy: TableSort[]) => void;
@@ -20,8 +20,9 @@ type Props<T extends IdType> = {
   scrollable?: boolean;
   /** This determines whether the table is sortable or not. **/
   sortable?: boolean;
-  /**  **/
+  /** Correlates with whether the sorting is done outside of the table component or not. If sorting is performed outside of the component, this should be set to true. **/
   manualSortBy?: boolean;
+  /** When true, it will take the width as defined in the column configuration and apply it to the styles of each column.  */
   useColumnWidths?: boolean;
 } & React.HTMLAttributes<HTMLElement>;
 

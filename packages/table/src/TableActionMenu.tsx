@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 import Icon from '@availity/icon';
 
 import {
@@ -14,9 +14,13 @@ export type TableActionMenuProps = {
   id?: string;
   /** Children can be a react child. **/
   children: React.ReactNode;
+  /** This is utilized for the Popper dropdown menu. Defaults to 'body'. **/
   container?: string;
+  /** Reactstrap DropdownProps that should be passed into the Dropdown component. **/
   dropdownProps?: DropdownProps;
+  /** Reactstrap DropdownToggleProps that should be passed into the DropdownToggle component. **/
   dropdownToggleProps?: DropdownToggleProps;
+  /** Reactstrap dropdownMenuProps that should be passed into the DropdownMenu component. **/
   dropdownMenuProps?: DropdownMenuProps;
   onMenuToggled?: (isOpen: boolean) => void;
 };
@@ -44,6 +48,7 @@ const TableActionMenu = ({
   return (
     <Dropdown
       id={id}
+      data-testid={`${id}_dropdown`}
       className="dropdown-action-menu"
       direction="left"
       isOpen={isOpen}

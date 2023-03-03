@@ -259,6 +259,28 @@ The `instance` property is tied directly to the [react-table Table Instance](htt
 
 This is used to display an action menu in a cell.
 
+#### `actions?: RecordAction<T>[]`
+
+The actions that are present in the dropdown.
+
+#### `primaryTableAction?:PrimaryRecordAction<T>`
+
+This is the primary action of record. It displays as an clickable icon underneath the Action Menu on the table row.
+
+#### `isSticky?: boolean`
+
+When the action menu is open, setting this to true means that the action menu will maintain the same position even on scroll or resize. This default to default to match the default Popper beahvior of automatically calculating the correct position of the Dropdown Menu.
+
+#### `tableActionMenuProps?: TableActionMenuProps`
+
+Any additional properties that should be passed to the `TableActionMenu` component.
+
+#### `tooltipProps?: UncontrolledTooltipProps`
+
+This is only utilized when there is a primary action on the table. This will override any of the default tooltip props for the `UncontrolledTooltip` that appears when hovering over the primary action icon.
+
+### Action Definitions
+
 #### `isVisible?`: (record?: T) => boolean
 
 This is an optional function that can be used to conditionally display an action. The record will be passed into the function so that, if needed, the properties on the record can determine if the action is visible or not. If this properties are not populated, the action will always display.
@@ -327,6 +349,20 @@ const columns = [
 ];
 ```
 
+#### Props
+
+`color: string`
+
+The color of the badge. Refer to the Reactstrap documentation linked above for available stylings.
+
+`displayText: string`
+
+The text that should be displayed inside the badge
+
+`defaultValue: string`
+
+An optional default value text or component that can be displayed whenever the value of the cell is not defined.
+
 ### Currency Cell
 
 This is used to format currency in a cell. You can optionally pass it a default value to display if the value is null.
@@ -373,6 +409,24 @@ const columns = [
 ];
 ```
 
+#### Props
+
+`dateFormat: string`
+
+The format of the date string that you want to be displayed.
+
+`defaultValue?: string`
+
+An optional default value text or component that can be displayed whenever the value of the cell is not defined.
+
+`displayTooltip?: boolean`
+
+Boolean that determines if a tooltip should be displayed on hovering over the cell. Defaults to true.
+
+`tooltipProps?: UncontrolledTooltipProps`
+
+This will override any of the default tooltip props for the `UncontrolledTooltip` that appears when hovering over the primary action icon.
+
 ### Icon Cell
 
 This is used to have an cell display an icon. This will only show the icon if the value for the cell is populated (or `true`).
@@ -395,7 +449,7 @@ In the body of the table, the icon is displayed if the hasNotes property is set 
     ]
 ```
 
-If the title (tooltip) of the icon is dependent on the data of the record, it is possible to pass a function to the IconCell (as `getTitle`) to populate the record.
+If the title of the icon is dependent on the data of the record, it is possible to pass a function to the IconCell (as `getTitle`) to populate the record.
 
 ```jsx
 const columns = [
@@ -436,6 +490,28 @@ See [Availity UI Kit](https://availity.github.io/availity-uikit/v4/icons) for av
     ]
 ```
 
+#### Props
+
+`name: string`
+
+The name of the icon that is displayed.See [Availity UI Kit](https://availity.github.io/availity-uikit/v4/icons) for available icons.
+
+`defaultValue?: string`
+
+An optional default value text or component that can be displayed whenever the value of the cell is not defined.
+
+`tooltipText?: string | ((value: T) => string)`
+
+The text that should display inside the tooltip. This can take in either a hard coded string or a function that refers to the cell value to populate the tooltip.
+
+`getId? (row: Row<T>) => string`
+
+Use this to formulate an id that is unique for the table. This is required for the tooltip to be able to correctly set target.
+
+`tooltipProps?: UncontrolledTooltipProps`
+
+This will override any of the default tooltip props for the `UncontrolledTooltip` that appears when hovering over the primary action icon.
+
 ### Default Value Cell
 
 This cell will display default text whenever the cell value is not defined.
@@ -449,6 +525,12 @@ This cell will display default text whenever the cell value is not defined.
       Cell: DefaultValueCell('Not Available'),
     ]
 ```
+
+#### Props
+
+`defaultValue?: string`
+
+An optional default value text or component that can be displayed whenever the value of the cell is not defined.
 
 ## Column Configuration Properties
 
@@ -478,6 +560,29 @@ Display a formatted header, such as an Icon.
   const columns = [
         {
             Header: <Icon name="phone" title="phone/>,
+            ...
+        }
+    ]
+```
+
+The same applies for adding a `Footer` for a column cell (make sure to also add the `footer` prop to the table to ensure that it displays).
+
+```jsx
+
+  const columns = [
+        {
+            Footer: 'My Column',
+            ...
+        }
+    ]
+```
+
+Display a formatted header, such as an Icon.
+
+```jsx
+  const columns = [
+        {
+            Footer: <Icon name="phone" title="phone/>,
             ...
         }
     ]
@@ -607,7 +712,7 @@ const columns = [
 
 Note that this is not supported in IE 11.
 
-## Accessing the Table Ref in a parent component
+## Accessing the Table Ref in a Parent Component
 
 It is common that a parent component will need to have access to the the table instance. This can be done utilizing React Refs.
 
