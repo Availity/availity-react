@@ -55,8 +55,6 @@ export type AvTableContext = {
   selectable?: boolean;
   /** This determines whether the table is sortable or not. **/
   sortable?: boolean;
-  footer?: boolean;
-  useColumnWidths?: boolean;
   /** This boolean determines whether the table is paged or not. This
    * works with the usePagination hook that is documented in react-table.
    * This defaults to false. **/
