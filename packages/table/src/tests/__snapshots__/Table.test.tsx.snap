@@ -347,6 +347,7 @@ exports[`Table should not display primary action column when not provided 1`] = 
         >
           <div
             class="dropdown-action-menu dropleft dropdown"
+            data-testid="table_row_action_menu_0_dropdown"
             id="table_row_action_menu_0"
           >
             <button
@@ -373,6 +374,7 @@ exports[`Table should not display primary action column when not provided 1`] = 
             >
               <button
                 class="dropdown-item"
+                data-testid="table_row_action_menu_item_0_action_action1"
                 id="table_row_action_menu_item_0_action_action1"
                 role="menuitem"
                 tabindex="0"
@@ -387,6 +389,7 @@ exports[`Table should not display primary action column when not provided 1`] = 
               />
               <button
                 class="dropdown-item"
+                data-testid="table_row_action_menu_item_0_action_action2"
                 id="table_row_action_menu_item_0_action_action2"
                 role="menuitem"
                 tabindex="0"
@@ -479,6 +482,7 @@ exports[`Table should not display primary action column when not provided 1`] = 
         >
           <div
             class="dropdown-action-menu dropleft dropdown"
+            data-testid="table_row_action_menu_1_dropdown"
             id="table_row_action_menu_1"
           >
             <button
@@ -510,6 +514,7 @@ exports[`Table should not display primary action column when not provided 1`] = 
               />
               <button
                 class="dropdown-item"
+                data-testid="table_row_action_menu_item_1_action_action2"
                 id="table_row_action_menu_item_1_action_action2"
                 role="menuitem"
                 tabindex="0"
@@ -1393,6 +1398,7 @@ exports[`Table should render with formatted cells 1`] = `
         >
           <div
             class="dropdown-action-menu dropleft dropdown"
+            data-testid="table_row_action_menu_0_dropdown"
             id="table_row_action_menu_0"
           >
             <button
@@ -1419,6 +1425,7 @@ exports[`Table should render with formatted cells 1`] = `
             >
               <button
                 class="dropdown-item"
+                data-testid="table_row_action_menu_item_0_action_action1"
                 id="table_row_action_menu_item_0_action_action1"
                 role="menuitem"
                 tabindex="0"
@@ -1433,6 +1440,7 @@ exports[`Table should render with formatted cells 1`] = `
               />
               <button
                 class="dropdown-item"
+                data-testid="table_row_action_menu_item_0_action_action2"
                 id="table_row_action_menu_item_0_action_action2"
                 role="menuitem"
                 tabindex="0"
@@ -1525,6 +1533,7 @@ exports[`Table should render with formatted cells 1`] = `
         >
           <div
             class="dropdown-action-menu dropleft dropdown"
+            data-testid="table_row_action_menu_1_dropdown"
             id="table_row_action_menu_1"
           >
             <button
@@ -1556,6 +1565,7 @@ exports[`Table should render with formatted cells 1`] = `
               />
               <button
                 class="dropdown-item"
+                data-testid="table_row_action_menu_item_1_action_action2"
                 id="table_row_action_menu_item_1_action_action2"
                 role="menuitem"
                 tabindex="0"
