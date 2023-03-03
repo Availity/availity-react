@@ -1,6 +1,7 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { Meta, Story } from '@storybook/react';
 import { ArgsTable } from '@storybook/addon-docs';
+
 import response from '@availity/mock/src/data/patients.json';
 import Pagination, { PaginationControls } from '@availity/pagination';
 import Table, {
@@ -16,6 +17,7 @@ import Table, {
   TableContent,
   CurrencyCell,
   IconWithTooltipCell,
+  CommonTableProps,
 } from '.';
 import '../styles.scss';
 
@@ -27,21 +29,24 @@ const columns = [
   {
     Header: 'First Name',
     accessor: 'firstName',
+    Footer: 'First Name',
     defaultCanSort: true,
     disableSortBy: false,
-    width: 500,
-    minWidth: 500,
-    maxWidth: 500,
+    width: 150,
+    minWidth: 150,
+    maxWidth: 150,
   },
   {
     Header: 'Last Name',
     accessor: 'lastName',
+    Footer: 'Last Name',
     defaultCanSort: true,
     disableSortBy: false,
   },
   {
     Header: 'Birth Date',
     accessor: 'birthDate',
+    Footer: 'Birth Date',
     defaultCanSort: true,
     disableSortBy: false,
     Cell: DateCell({ dateFormat: 'MM/DD/yyyy', defaultValue: <span className="text-muted">Not Available</span> }),
@@ -49,6 +54,7 @@ const columns = [
   {
     Header: 'Subscriber Relationship',
     accessor: 'subscriberRelationship',
+    Footer: 'Subscriber Relationship',
     defaultCanSort: true,
     disableSortBy: false,
     Cell: BadgeCell('primary', undefined, <span className="text-muted">Not Available</span>),
@@ -56,6 +62,15 @@ const columns = [
   {
     Header: 'Currency Cell',
     accessor: 'amount',
+    Footer: (info: any) => {
+      // Only calculate total visits if rows change
+      const total = React.useMemo(
+        () => info.rows.reduce((sum: number, row: any) => parseFloat(info.rows[0].original.amount) + sum, 0),
+        [info.rows]
+      );
+
+      return <>Total: {total.toFixed(2)}</>;
+    },
     defaultCanSort: true,
     disableSortBy: false,
     Cell: CurrencyCell({ defaultValue: <span className="text-muted">Not Available</span> }),
@@ -147,33 +162,104 @@ export default {
   },
 } as Meta;
 
-export const BasicTable: Story = ({ sortable, selectable, columns, data, headerProps, bodyProps }) => (
-  <Table
-    initialState={{
-      sortBy: [{ id: 'firstName', desc: false }],
-    }}
-    sortable={sortable}
-    selectable={selectable}
-    columns={columns}
-    data={data}
-    headerProps={headerProps}
-    bodyProps={bodyProps}
-    defaultColumn={defaultColumn}
-    onRowSelected={(event) => {
-      // eslint-disable-next-line no-console
-      console.log('Row selected', event);
-    }}
-  />
-);
+export const BasicTable: Story = ({
+  sortable,
+  selectable,
+  columns,
+  data,
+  headerProps,
+  bodyProps,
+  footer,
+  useColumnWidths,
+}) => {
+  const [records, setRecords] = useState([]);
+  const [selectedRows, setSelectedRow] = useState([]);
+
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      setRecords(data);
+    }, 5000);
+    return () => clearTimeout(timer);
+  }, []);
+
+  const onRowSelected = (event: any) => {
+    setSelectedRow(event.selectedRows);
+  };
+
+  return (
+    <>
+      {selectable && (
+        <>
+          Selected Rows:
+          <ul>
+            {selectedRows.map((row: any) => (
+              <li key={row.id}>{row.id}</li>
+            ))}
+          </ul>
+        </>
+      )}
+      <Table
+        initialState={{
+          sortBy: [{ id: 'firstName', desc: false }],
+        }}
+        footer={footer}
+        sortable={sortable}
+        selectable={selectable}
+        columns={columns}
+        data={records}
+        headerProps={headerProps}
+        bodyProps={bodyProps}
+        defaultColumn={defaultColumn}
+        onRowSelected={onRowSelected}
+        useColumnWidths={useColumnWidths}
+      />
+    </>
+  );
+};
 BasicTable.args = {
-  sortable: false,
+  sortable: true,
   selectable: true,
   columns,
-  data: response.data.patientPagination.items.map((d) => ({ ...d, amount: '2.45' })),
+  data: response.data.patientPagination.items.map((d) => ({ ...d, amount: 2.45 })),
   headerProps: { style: { background: 'gray' } },
   bodyProps: { style: {} },
+  footer: false,
+  useColumnWidths: false,
 };
 BasicTable.storyName = 'basic';
+
+export const WithAdditionalContent: Story = ({ columns, data }) => {
+  const AdditionalContent = (): JSX.Element => (
+    <div>This is some additional content that should be displayed inside the cell.</div>
+  );
+
+  const [records, setRecords] = useState([]);
+  const [selectedRows, setSelectedRow] = useState([]);
+
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      setRecords(data);
+    }, 5000);
+    return () => clearTimeout(timer);
+  }, []);
+
+  return (
+    <Table
+      initialState={{
+        sortBy: [{ id: 'firstName', desc: false }],
+      }}
+      columns={columns}
+      data={records}
+      defaultColumn={defaultColumn}
+      additionalContent={AdditionalContent}
+    />
+  );
+};
+WithAdditionalContent.args = {
+  columns,
+  data: response.data.patientPagination.items.map((d) => ({ ...d, amount: 2.45 })),
+};
+WithAdditionalContent.storyName = 'with additional content';
 
 export const WithControls: Story = ({ sortable, selectable, columns, data, headerProps, bodyProps }) => (
   <Table
@@ -267,18 +353,30 @@ WithScrollableContainer.args = {
   selectable: false,
   columns,
   data: response.data.patientPagination.items.map((d) => ({ ...d, amount: undefined })),
-  headerProps: { sticky: true, style: { background: '#333' } },
+  headerProps: { sticky: true, style: { background: '#fff' } },
   bodyProps: { style: {} },
 };
 WithScrollableContainer.storyName = 'with scrollable container';
 
-export const Props: Story = () => (
+export const hidden_avTable = (props: CommonTableProps<any>) => <Table data={[]} columns={[]} {...props} />;
+
+export const PropsStory: Story = () => (
   <>
+    <hr />
     <h4>Availity Props</h4>
     <h5>Table</h5>
-    <ArgsTable of={Table} />
-
-    <h5>Table Context</h5>
-    <ArgsTable of={TableContext} />
+    <div className="argstable-remove-default">
+      <ArgsTable of={hidden_avTable} />
+    </div>
+    <hr />
+    <h4>React-Table Props</h4>
+    Visit <a href="https://react-table-v7.tanstack.com/">react-table</a> for full documentation of this.
   </>
 );
+PropsStory.storyName = 'props';
+PropsStory.parameters = {
+  previewTabs: {
+    canvas: { hidden: true },
+  },
+  viewMode: 'docs',
+};

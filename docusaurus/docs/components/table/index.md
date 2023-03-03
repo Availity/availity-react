@@ -195,6 +195,14 @@ This function determines if a row in a selectable table can be selected. By defa
 
 This function is called whenever a row on the table has been clicked.
 
+#### `useColumnWidths: boolean`
+
+When true, it will take the width as defined in the column configuration and apply it to the styles of each column. It is recommended that when this is true that you set a `defaultColumn` with a width of `auto` to ensure that the columns just take whatever width is necessary to fit the content.
+
+#### `footer: boolean`
+
+Determines whether a footer should be displayed. Footer configuration must be added the Column Definition for the Footer value for the column to display.
+
 ##### OnTableClickEvent Props
 
 `instance: Row` The react-table [Row](https://react-table.tanstack.com/docs/api/useTable#row-properties) instance that was clicked.
@@ -428,6 +436,20 @@ See [Availity UI Kit](https://availity.github.io/availity-uikit/v4/icons) for av
     ]
 ```
 
+### Default Value Cell
+
+This cell will display default text whenever the cell value is not defined.
+
+#### Usages
+
+```jsx
+    const columns = [
+      Header: 'Has Middle Name',
+      accessor: 'middleName'
+      Cell: DefaultValueCell('Not Available'),
+    ]
+```
+
 ## Column Configuration Properties
 
 To see a comprehensive list of available properties for column configuration, view the [react-table documentation](https://react-table.tanstack.com/docs/api/useTable#column-options).
@@ -490,6 +512,22 @@ When there is an on OnRowClick event populated, this designates that the column 
 #### `hidden`
 
 When this is true, the column will be hidden in the table.
+
+#### `width?: number`
+
+The width of the column. Use this in combination with `useColumnWidths` boolean on the `<Table>` component.
+
+#### `minWidth?: number`
+
+The min-width of the column. Use this in combination with `useColumnWidths` boolean on the `<Table>` component.
+
+#### `maxWidth?: number`
+
+The max-width of the column. Use this in combination with `useColumnWidths` boolean on the `<Table>` component.
+
+#### `Footer`
+
+What should be displayed in the Footer for the column. `footer` must be added to the table for this to display.
 
 ## Styling the Table
 
@@ -568,6 +606,73 @@ const columns = [
 ```
 
 Note that this is not supported in IE 11.
+
+## Accessing the Table Ref in a parent component
+
+It is common that a parent component will need to have access to the the table instance. This can be done utilizing React Refs.
+
+There is now an exported `TableRef` that contains the react-table `tableInstance`.
+
+```jsx
+import React from 'react';
+import Table, { TableRef } from '@availity/table';
+
+import MyObject from '@types/MyObject';
+
+type Props = {
+  data: MyObject[];
+};
+
+const MyComponent = ({ data }: Props) : JSX.Element => {
+  const ref = useRef<TableRef<MyObject>>(null);
+  const [areAllSelected, setAreAllSelected] = useState(false);
+
+  const columns =  useMemo(
+    () =>
+    [
+      {
+        Header: 'Column 1',
+        accessor: 'column1',
+      },
+      {
+        Header: 'Column 2',
+        accessor: 'column2',
+      },
+      {
+        Header: 'Column 3',
+        accessor: 'column3',
+      },
+    ],
+    []
+  );
+
+
+  const toggleSelectAll = () => {
+    const selectAll = !areAllSelected;
+    setAreAllSelected(selectAll);
+    tableRef.current?.instance?.toggleAllRowsSelected(showAll);
+  };
+
+  return (
+    <>
+      <Input
+        id="checkSelectAll"
+        aria-labelledby="lblSelectAll"
+        type="checkbox"
+        checked={showAllDetails}
+        onChange={toggleSelectAll}
+      />
+      <Label id="lblSelectAll" className="ml-1 mr-2" check>
+      Select All
+      </Label>
+   <Table ref={ref} selectable columns={columns} data={data}/>
+  </>
+  )
+}
+
+export const MyComponent;
+
+```
 
 ## Migrating from version 0.3.x
 

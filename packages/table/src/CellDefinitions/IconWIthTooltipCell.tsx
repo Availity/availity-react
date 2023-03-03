@@ -34,7 +34,7 @@ const IconWithTooltipCell = <T extends IdType>({
       <>
         <Icon id={idVal} name={name} {...attributes} />
         {idVal && (
-          <UncontrolledTooltip target={idVal} {...tooltipProps}>
+          <UncontrolledTooltip role="tooltip" target={idVal} {...tooltipProps}>
             {tooltip}
           </UncontrolledTooltip>
         )}

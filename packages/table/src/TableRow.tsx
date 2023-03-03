@@ -102,7 +102,7 @@ const TableRow = <T extends IdType>({
       {AdditionalContent && (
         <tr {...buildRowProps()} id={`${id}_additional_content`}>
           {isFirstColumnSticky && <td className="sticky sticky-left" />}
-          <td colSpan={numberOfNonStickyColumns} style={{ borderTop: 0 }} {...definedCellProps}>
+          <td colSpan={numberOfNonStickyColumns} className="border-0" {...definedCellProps}>
             <AdditionalContent row={row} record={row.original} {...additionalContentProps} />
           </td>
           {isLastColumnSticky && <td className="sticky sticky-right" />}

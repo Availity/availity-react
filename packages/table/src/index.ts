@@ -47,3 +47,4 @@ export { default as TableContent } from './TableContent';
 export { default as ScrollableContainer } from './ScrollableContainer';
 
 export { TableSorter, TableControls, BulkTableActions } from './Controls';
+export type { BulkTableActionsProps } from './Controls';

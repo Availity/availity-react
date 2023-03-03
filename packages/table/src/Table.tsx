@@ -9,9 +9,9 @@ import {
   useTable,
   Column as RtColumn,
   usePagination,
-  PluginHook,
   useRowState,
   useExpanded,
+  PluginHook,
 } from 'react-table';
 import { TableSort } from './types/TableSort';
 import { Cell, Column, IdType, Row, TableInstance, TableOptions, RowProps } from './types/ReactTable';
@@ -28,64 +28,51 @@ type HeaderProps = {
 } & React.HTMLAttributes<HTMLElement>;
 
 export type CommonTableProps<T extends IdType> = {
-  /** This is a unique id that is prepended to the table and nested table elements. **/
+  /** The Id of the table, utilized to create ids for table rows, table cells, etc. */
   id?: string;
-  /** Any DOM properties that should be passed onto the <table> element. **/
+  /** Additional properties  to pass to the `<table/>` element.*/
   tableProps?: React.HTMLAttributes<HTMLElement>;
-  /** Any DOM properties that should be passed onto the <tbody> element. **/
+  /** Additional properties to pass into the `<tbody/> component */
   bodyProps?: React.HTMLAttributes<HTMLElement>;
-  /** This function provides any DOM properties that should be passed
-   * onto the <td> elements. Optionally pass in the Cell object in order
-   * to conditionally add DOM properties based on data of the cell. **/
+  /** This function provides any DOM properties that should be passed onto the `<td>` elements. Optionally pass in the Cell object in order to conditionally add DOM properties based on data of the cell.   */
   getCellProps?: (cell: Cell<T>) => React.HTMLAttributes<HTMLTableCellElement>;
-  /** This function provides any DOM properties that should be passed onto
-   * the <tr> element. Optionally pass in the Row object in order to
-   * conditionally add DOM properties based on the data of the row. **/
+  /** This function provides any DOM properties that should be passed onto the `<tr>` element. Optionally pass in the Row object in order to conditionally add DOM properties based on the data of the row. */
   getRowProps?: (row: Row<T>) => RowProps;
-
-  /** This function is called whenever a cell on the row has been clicked. **/
+  /** This function is called whenever a cell is clicked. */
   onCellClick?: (event: OnTableClickEvent<HTMLElement, T>) => void;
-  /** This function is called whenever a row on the table has been clicked. **/
+  /** This function is called whenever a row on the table has been clicked. */
   onRowClick?: (event: OnTableClickEvent<HTMLElement, T>) => void;
-  /** Event handler for when a row is selected. **/
+  /** When a table is selectable, this event is called whenever a row is selected. */
   onRowSelected?: (event: OnRowSelectedEvent<T>) => void;
-  /** Any DOM properties that should be passed onto the <thead> element.
-   * A special boolean property sticky' is added here to allow for
-   * designating the header as 'sticky' or not. **/
+  /** Any DOM properties that should be passed onto the `<thead>` element. A special boolean property `sticky'` is added here to allow for designating the header as 'sticky' or not.*/
   headerProps?: HeaderProps;
-  /** This function will be called whenever the table has been sorted. **/
+  /** The function that is called whenever the table is sorted. Sortable must be true and columns must be configured to allow for sorting. */
   onSort?: (sortBy: TableSort[]) => void;
 
-  /** This designates a Component that will be displayed in the table
-   * row for the record. This content displays in an additional <tr>
-   * with a colspan equal to the number of columns that are NOT sticky. **/
+  /** This designates a Component that will be displayed in the table row for the record. This content displays in an additional `<tr>` with a colspan equal to the number of columns that are NOT sticky.  */
   additionalContent?: React.ElementType;
-  /**  **/
+  /**  Additional Properties that should be added to the additional content component when it is rendered. */
   additionalContentProps?: Record<string, string | number | boolean | undefined | null>;
-  footer?: boolean;
-   * container. This will apply fixed column widths to force it to scroll
-   * rather than minify the columns to fit in a set container. **/
-  scrollable?: boolean;
-  /** This determines whether the table is selectable or not. If it is set
-   * to true, then the first column of the table will be a checkbox column
-   * that will toggle selecting and deselecting the row. **/
-  selectable?: boolean;
-  useColumnWidths?: boolean;
-  selectionColumnProps?: Partial<Column<T>>;
-  /** This function determines if a row in a selectable table can be
-   * selected. By default if no function is provided to this property,
-   * all rows in the table are selectable. **/
-  getCanSelectRow?: (record: T) => boolean;
-  /**  **/
-  sortable?: boolean;
-  /** This boolean determines whether the table is paged or not. This
-   * works with the usePagination hook that is documented in react-table.
-   * This defaults to false. **/
-  paged?: boolean;
 
-  /** Custom plugin hooks that should be passed to the table. **/
+  /** Determines whether a footer should be displayed. */
+  footer?: boolean;
+  /** Determines whether the table should be contained in a set scrollable container. */
+  scrollable?: boolean;
+  /** Determines whether the table should be selectable. When true, the first column will be a column of checkboxes to either select/deselect all records or individual records. */
+  selectable?: boolean;
+  /** When true, it will take the width as defined in the column configuration and apply it to the styles of each column.  */
+  useColumnWidths?: boolean;
+  /** Because this component dynamically builds the selection column, this allows for any customization to be added to the Selection Column */
+  selectionColumnProps?: Partial<Column<T>>;
+  /** If rows should be conditionally selected, use this function to indicate the conditions per record. */
+  getCanSelectRow?: (record: T) => boolean;
+  /** Determines whether the table should be scrollable. */
+  sortable?: boolean;
+  /** Determines if this is a paged table. Only set this to true if doing client side paging. */
+  paged?: boolean;
+  /** Custom plugin hooks that should be passed to the table. For more information on how to utilize and apply hooks, refer to the react-table documentation. */
   pluginHooks?: PluginHook<T>[];
-  /** Children can be a react child. **/
+  /** Any child elements that should be added underneath the table context. */
   children?: React.ReactNode | React.ReactChild;
 };
 

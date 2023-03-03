@@ -115,6 +115,7 @@ const ActionCell = <T extends IdType>({
               onClick={() => primaryAction.onClick(original)}
             />
             <UncontrolledTooltip
+              role="tooltip"
               placement="top"
               target={`table_row_action_menu_item_${id}_primaryAction`}
               boundary="window"

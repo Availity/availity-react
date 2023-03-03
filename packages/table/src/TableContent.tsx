@@ -114,11 +114,13 @@ const TableContent = <T extends IdType>(): JSX.Element | null => {
         })}
       </tbody>
       {footer && (
-        <tfoot>
+        <tfoot data-testid={`${populateId()}table_footer`}>
           {footerGroups.map((group) => (
-            <tr {...group.getFooterGroupProps()}>
+            <tr data-testid={`${populateId()}table_footer_row`} {...group.getFooterGroupProps()}>
               {group.headers.map((column) => (
-                <td {...column.getFooterProps()}>{column.render('Footer')}</td>
+                <td data-testid={`${populateId()}table_footer_row_${column.id}`} {...column.getFooterProps()}>
+                  {column.render('Footer')}
+                </td>
               ))}
             </tr>
           ))}

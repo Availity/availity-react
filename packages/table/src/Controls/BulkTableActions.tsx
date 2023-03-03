@@ -16,7 +16,7 @@ import { useTableContext } from '../TableContext';
 import { BulkRecordAction } from '../types/BulkRecordAction';
 import { IdType, TableInstance } from '../types/ReactTable';
 
-type Props<T extends IdType> = {
+export type BulkTableActionsProps<T extends IdType> = {
   id?: string;
   disabled?: boolean;
   recordName?: string;
@@ -44,7 +44,7 @@ const BulkTableActions = <T extends IdType>({
   dropdownToggleProps,
   dropdownMenuProps,
   onRecordsSelected,
-}: Props<T>): JSX.Element | null => {
+}: BulkTableActionsProps<T>): JSX.Element | null => {
   const { instance } = useTableContext();
   const { isAllRowsSelected, toggleAllRowsSelected, selectedFlatRows } = instance as TableInstance<T>;
 

@@ -1,8 +1,11 @@
-import React from 'react';
+import React, { useRef } from 'react';
 import { render, fireEvent, waitFor, screen } from '@testing-library/react';
+import userEvent from '@testing-library/user-event';
+import { UsePaginationInstanceProps, UseTableInstanceProps } from 'react-table';
+
 import basicData from './data/basicData.json';
 import formattedData from './data/needsFormattedData.json';
-import Table from '../Table';
+import Table, { TableRef } from '../Table';
 import CurrencyCell from '../CellDefinitions/CurrencyCell';
 import ActionCell from '../CellDefinitions/ActionCell';
 import BadgeCell from '../CellDefinitions/BadgeCell';
@@ -10,8 +13,9 @@ import IconCell from '../CellDefinitions/IconCell';
 import DateCell from '../CellDefinitions/DateCell';
 import DefaultValueCell from '../CellDefinitions/DefaultValueCell';
 import IconWithTooltipCell from '../CellDefinitions/IconWIthTooltipCell';
-import { Cell, Column } from '../types/ReactTable';
+import { Cell, Column, Row } from '../types/ReactTable';
 import TableContent from '../TableContent';
+import { act } from 'react-dom/test-utils';
 
 const basicColumns = [
   {
@@ -118,6 +122,10 @@ const formattedColumns = [
 ] as Column<Record<string, string | boolean | number | undefined>>[];
 
 describe('Table', () => {
+  afterEach(() => {
+    jest.clearAllMocks();
+  });
+
   test('should render basic table', () => {
     const { container } = render(<Table data={basicData} columns={basicColumns} />);
 
@@ -248,7 +256,7 @@ describe('Table', () => {
     expect(columnHeader).toBeNull();
   });
 
-  test('should not display primary action column when provided', async () => {
+  test('should not display primary action column when not provided', async () => {
     const { container, queryByTestId } = render(<Table data={formattedData} columns={formattedColumns} />);
 
     expect(container).toBeDefined();
@@ -367,10 +375,145 @@ describe('Table', () => {
     const badgeCell = screen.getByTestId('table_row_0_cell_0');
     expect(badgeCell.textContent).toBe(currentData[0].badge);
   });
+
+  test('should add style and width to tds when useColumnWidths = true', async () => {
+    const columDefs = [
+      {
+        Header: 'Value 1',
+        accessor: 'val1',
+        width: 200,
+        minWidth: 200,
+        maxWidth: 200,
+      },
+      {
+        Header: 'Value 2',
+        accessor: 'val2',
+        width: 100,
+        minWidth: 100,
+        maxWidth: 100,
+      },
+    ] as Column<Record<string, string | boolean | number | undefined>>[];
+
+    const currentData = [
+      {
+        id: '1',
+        val1: 'Something',
+        val2: 'Something else',
+      },
+      {
+        id: '2',
+        val1: 'Something else entirely',
+        val2: 'Something else again',
+      },
+    ];
+
+    render(
+      <Table data={currentData} columns={columDefs} useColumnWidths defaultColumn={{ width: 'auto' }}>
+        <TableContent />
+      </Table>
+    );
+
+    await waitFor(() => {
+      const cell1 = screen.getByTestId('table_row_1_cell_0');
+      expect(cell1).toHaveAttribute('style', 'width: 200px; min-width: 200px; max-width: 200px;');
+
+      const cell2 = screen.getByTestId('table_row_1_cell_1');
+      expect(cell2).toHaveAttribute('style', 'width: 100px; min-width: 100px; max-width: 100px;');
+    });
+  });
+
+  test('should not add style and width to tds when useColumnWidths = false', async () => {
+    const columDefs = [
+      {
+        Header: 'Value 1',
+        accessor: 'val1',
+      },
+      {
+        Header: 'Value 2',
+        accessor: 'val2',
+      },
+    ] as Column<Record<string, string | boolean | number | undefined>>[];
+
+    const currentData = [
+      {
+        id: '1',
+        val1: 'Something',
+        val2: 'Something else',
+      },
+      {
+        id: '2',
+        val1: 'Something else entirely',
+        val2: 'Something else again',
+      },
+    ];
+
+    render(
+      <Table data={currentData} columns={columDefs} defaultColumn={{ width: 'auto' }}>
+        <TableContent />
+      </Table>
+    );
+
+    await waitFor(() => {
+      const cell1 = screen.getByTestId('table_row_1_cell_0');
+      expect(cell1).not.toHaveAttribute('style');
+
+      const cell2 = screen.getByTestId('table_row_1_cell_1');
+      expect(cell2).not.toHaveAttribute('style');
+    });
+  });
+
+  test('should populate footer when provided', async () => {
+    const columDefs = [
+      {
+        Header: 'Value 1',
+        accessor: 'val1',
+        Footer: 'VAL 1 FOOT',
+      },
+      {
+        Header: 'Value 2',
+        accessor: 'val2',
+        Footer: 'VAL 2 FOOT',
+      },
+    ] as Column<Record<string, string | boolean | number | undefined>>[];
+
+    const currentData = [
+      {
+        id: '1',
+        val1: 'Something',
+        val2: 'Something else',
+      },
+      {
+        id: '2',
+        val1: 'Something else entirely',
+        val2: 'Something else again',
+      },
+    ];
+
+    const { debug } = render(
+      <Table data={currentData} columns={columDefs} footer>
+        <TableContent />
+      </Table>
+    );
+
+    debug();
+
+    await waitFor(() => {
+      expect(screen.getByTestId('table_footer')).not.toBeNull();
+      expect(screen.getByTestId('table_footer_row')).not.toBeNull();
+
+      const footerVal1 = screen.getByTestId('table_footer_row_val1');
+      expect(footerVal1).not.toBeNull();
+      expect(footerVal1).toHaveTextContent('VAL 1 FOOT');
+
+      const footerVal2 = screen.getByTestId('table_footer_row_val2');
+      expect(footerVal2).not.toBeNull();
+      expect(footerVal2).toHaveTextContent('VAL 2 FOOT');
+    });
+  });
 });
 
 describe('ActionCell', () => {
-  test('should allow display text to be set via a function for primary action', () => {
+  test('should allow display text to be set via a function for primary action', async () => {
     const columDefs = [
       {
         id: 'actions',
@@ -414,12 +557,24 @@ describe('ActionCell', () => {
     const primaryActionIcon1 = screen.getByTestId(`table_row_action_menu_item_0_primaryAction`);
     expect(primaryActionIcon1).not.toBeNull();
     expect(primaryActionIcon1).toHaveAttribute('class', 'icon icon-OR_THIS');
-    expect(primaryActionIcon1).toHaveAttribute('title', 'OR THIS');
+
+    userEvent.hover(screen.getByTestId('table_row_action_menu_item_0_primaryAction'));
+
+    await waitFor(() => {
+      const icon1Tooltip = screen.getByRole('tooltip');
+      expect(icon1Tooltip).toHaveTextContent('OR THIS');
+    });
 
     const primaryActionIcon2 = screen.getByTestId(`table_row_action_menu_item_1_primaryAction`);
     expect(primaryActionIcon2).not.toBeNull();
     expect(primaryActionIcon2).toHaveAttribute('class', 'icon icon-THIS');
-    expect(primaryActionIcon2).toHaveAttribute('title', 'THIS');
+
+    userEvent.hover(screen.getByTestId('table_row_action_menu_item_1_primaryAction'));
+
+    await waitFor(() => {
+      const icon1Tooltip = screen.getByRole('tooltip');
+      expect(icon1Tooltip).toHaveTextContent('THIS');
+    });
   });
 });
 
