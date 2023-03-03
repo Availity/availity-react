@@ -22,6 +22,7 @@ export type TableActionMenuProps = {
   dropdownToggleProps?: DropdownToggleProps;
   /** Reactstrap dropdownMenuProps that should be passed into the DropdownMenu component. **/
   dropdownMenuProps?: DropdownMenuProps;
+  /** Function called whenever the menu is open/closed */
   onMenuToggled?: (isOpen: boolean) => void;
 };
 

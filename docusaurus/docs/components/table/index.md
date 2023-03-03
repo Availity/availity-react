@@ -269,7 +269,7 @@ This is the primary action of record. It displays as an clickable icon underneat
 
 #### `isSticky?: boolean`
 
-When the action menu is open, setting this to true means that the action menu will maintain the same position even on scroll or resize. This default to default to match the default Popper beahvior of automatically calculating the correct position of the Dropdown Menu.
+When the action menu is open, setting this to true means that the action menu will maintain the same position even on scroll or resize. When false, the behavior matches the default Popper behavior of automatically calculating the correct position of the Dropdown Menu.
 
 #### `tableActionMenuProps?: TableActionMenuProps`
 
@@ -277,7 +277,7 @@ Any additional properties that should be passed to the `TableActionMenu` compone
 
 #### `tooltipProps?: UncontrolledTooltipProps`
 
-This is only utilized when there is a primary action on the table. This will override any of the default tooltip props for the `UncontrolledTooltip` that appears when hovering over the primary action icon.
+This is only utilized when there is a primary action on the table. This will override any of the default tooltip props for the `UncontrolledTooltip` that appear when hovering over the primary action icon.
 
 ### Action Definitions
 
@@ -357,7 +357,7 @@ The color of the badge. Refer to the Reactstrap documentation linked above for a
 
 `displayText: string`
 
-The text that should be displayed inside the badge
+The text that should be displayed inside the badge.
 
 `defaultValue: string`
 
@@ -425,7 +425,7 @@ Boolean that determines if a tooltip should be displayed on hovering over the ce
 
 `tooltipProps?: UncontrolledTooltipProps`
 
-This will override any of the default tooltip props for the `UncontrolledTooltip` that appears when hovering over the primary action icon.
+This will override any of the default tooltip props for the `UncontrolledTooltip` that appear when hovering over the primary action icon.
 
 ### Icon Cell
 
@@ -494,7 +494,7 @@ See [Availity UI Kit](https://availity.github.io/availity-uikit/v4/icons) for av
 
 `name: string`
 
-The name of the icon that is displayed.See [Availity UI Kit](https://availity.github.io/availity-uikit/v4/icons) for available icons.
+The name of the icon that is displayed. See [Availity UI Kit](https://availity.github.io/availity-uikit/v4/icons) for available icons.
 
 `defaultValue?: string`
 
@@ -502,15 +502,15 @@ An optional default value text or component that can be displayed whenever the v
 
 `tooltipText?: string | ((value: T) => string)`
 
-The text that should display inside the tooltip. This can take in either a hard coded string or a function that refers to the cell value to populate the tooltip.
+The text that should display inside the tooltip. This can be either a hard coded string or a function that refers to the cell value to populate the tooltip.
 
 `getId? (row: Row<T>) => string`
 
-Use this to formulate an id that is unique for the table. This is required for the tooltip to be able to correctly set target.
+Use this to formulate an id that is unique for the table. This is required for the tooltip to be able to correctly set the target and appear on hover over the correct element.
 
 `tooltipProps?: UncontrolledTooltipProps`
 
-This will override any of the default tooltip props for the `UncontrolledTooltip` that appears when hovering over the primary action icon.
+This will override any of the default tooltip props for the `UncontrolledTooltip` that appear when hovering over the primary action icon.
 
 ### Default Value Cell
 
@@ -719,7 +719,7 @@ It is common that a parent component will need to have access to the the table i
 There is now an exported `TableRef` that contains the react-table `tableInstance`.
 
 ```jsx
-import React from 'react';
+import React, { useRef } from 'react';
 import Table, { TableRef } from '@availity/table';
 
 import MyObject from '@types/MyObject';
@@ -764,7 +764,7 @@ const MyComponent = ({ data }: Props) : JSX.Element => {
         id="checkSelectAll"
         aria-labelledby="lblSelectAll"
         type="checkbox"
-        checked={showAllDetails}
+        checked={areAllSelected}
         onChange={toggleSelectAll}
       />
       <Label id="lblSelectAll" className="ml-1 mr-2" check>

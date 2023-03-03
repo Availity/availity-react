@@ -511,6 +511,55 @@ describe('Table', () => {
 });
 
 describe('ActionCell', () => {
+  test('should allow displayText to be set via a function for action', async () => {
+    const columDefs = [
+      {
+        id: 'actions',
+        Header: 'Actions',
+        Cell: ActionCell({
+          actions: [
+            {
+              id: 'myAction',
+              displayText: (record: Record<string, string | boolean | number | undefined>) =>
+                record?.conditionalValue ? 'THIS' : 'OR_THIS',
+            },
+          ],
+        }),
+      },
+    ] as Column<Record<string, string | boolean | number | undefined>>[];
+
+    const currentData = [
+      {
+        id: '1',
+        conditionalValue: false,
+      },
+      {
+        id: '2',
+        conditionalValue: true,
+      },
+    ];
+
+    const { debug } = render(
+      <Table data={currentData} columns={columDefs}>
+        <TableContent />
+      </Table>
+    );
+
+    debug();
+
+    await waitFor(() => {
+      const actionItem1 = screen.getByTestId('table_row_action_menu_item_0_action_myAction');
+      expect(actionItem1).not.toBeNull();
+
+      expect(actionItem1).toHaveTextContent('OR_THIS');
+
+      const actionItem2 = screen.getByTestId('table_row_action_menu_item_1_action_myAction');
+      expect(actionItem2).not.toBeNull();
+
+      expect(actionItem2).toHaveTextContent('THIS');
+    });
+  });
+
   test('should allow display text to be set via a function for primary action', async () => {
     const columDefs = [
       {
@@ -546,7 +595,7 @@ describe('ActionCell', () => {
       },
     ];
 
-    render(
+    const { debug } = render(
       <Table data={currentData} columns={columDefs}>
         <TableContent />
       </Table>
@@ -684,5 +733,31 @@ describe('DefaultValueCell', () => {
 
     const cell1 = screen.getByTestId('table_row_0_cell_0');
     expect(cell1.querySelector('[data-testid=default-text]')).not.toBeNull();
+  });
+
+  test('should just display empty string when no default value is provided', () => {
+    const columDefs = [
+      {
+        accessor: 'conditionalValue',
+        Header: 'Default1',
+        Cell: DefaultValueCell({}),
+      },
+    ] as Column<Record<string, string | boolean | number | undefined>>[];
+
+    const currentData = [
+      {
+        id: '1',
+        conditionalValue: undefined,
+      },
+    ];
+
+    render(
+      <Table data={currentData} columns={columDefs}>
+        <TableContent />
+      </Table>
+    );
+
+    const cell1 = screen.getByTestId('table_row_0_cell_0');
+    expect(cell1).toHaveTextContent('');
   });
 });
