@@ -337,21 +337,35 @@ const Tree = ({
         )}
 
         {isRoot && (
-          <div className="form-group mb-1">
-            <Button
-              data-testid="btn-expand-all"
-              id="btnExpandAll"
-              color="link"
-              className="p-0"
-              onClick={toggleExpandAll}
-            >
-              {rootExpandAllText}
-            </Button>
+          <div className="d-flex justify-content-between">
+            <Col xs="auto" className="pl-0">
+              <Button
+                data-testid="btn-expand-all"
+                id="btnExpandAll"
+                color="link"
+                className="p-0"
+                onClick={toggleExpandAll}
+              >
+                {rootExpandAllText}
+              </Button>
+            </Col>
+            {selectable && (
+              <Col xs="auto" className="pr-0">
+                <Button
+                  data-testid="btn-select-all"
+                  color="link"
+                  className="pb-0 pt-0"
+                  onClick={() => toggleSelectAll()}
+                >
+                  {rootSelectText}
+                </Button>
+              </Col>
+            )}
           </div>
         )}
 
         <ul>
-          {treeItems.map((item, index) => (
+          {treeItems.map((item) => (
             <li data-testid={`tree-view-item-${item.id}`} key={`tree-view-item-${item.id}`}>
               {!item.isHidden && (
                 <div>
@@ -382,16 +396,6 @@ const Tree = ({
                     {item.children && item.children.length > 0 && (
                       <Col sm="5">
                         <div className="form-inline d-flex justify-content-end ml-auto align-items-center">
-                          {isRoot && index === 0 && selectable && (
-                            <Button
-                              data-testid="btn-select-all"
-                              color="link"
-                              className="pb-0 pt-0"
-                              onClick={() => toggleSelectAll()}
-                            >
-                              {rootSelectText}
-                            </Button>
-                          )}
                           {selectable && (
                             <FormGroup check>
                               <Input
