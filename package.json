@@ -91,6 +91,7 @@
     "babel-loader": "^8.2.5",
     "babel-preset-react-app": "^10.0.1",
     "codecov": "^3.8.3",
+    "concurrently": "^7.6.0",
     "conventional-changelog-cli": "^2.2.2",
     "css-loader": "^5.2.7",
     "dependency-check": "^4.1.0",
@@ -120,8 +121,5 @@
   "msw": {
     "workerDirectory": "static"
   },
-  "packageManager": "yarn@3.2.0",
-  "devDependencies": {
-    "concurrently": "^7.6.0"
-  }
+  "packageManager": "yarn@3.2.0"
 }
