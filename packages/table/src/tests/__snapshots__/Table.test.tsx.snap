@@ -345,61 +345,32 @@ exports[`Table should not display primary action column when not provided 1`] = 
           id="table_row_0_cell_7"
           role="cell"
         >
-          <div
-            class="dropdown-action-menu dropleft dropdown"
-            data-testid="table_row_action_menu_0_dropdown"
-            id="table_row_action_menu_0"
-          >
+          <div>
             <button
-              aria-expanded="false"
-              aria-haspopup="true"
-              aria-label="Action Menu"
-              class="btn btn-ghost btn btn-secondary"
-              data-boundary="viewport"
-              data-testid="table_row_action_menu_0_dropdown_toggle"
-              id="table_row_action_menu_0_dropdown_toggle"
+              class="dropdown-item"
+              data-testid="table_row_action_menu_item_0_action_action1"
+              id="table_row_action_menu_item_0_action_action1"
+              role="menuitem"
+              tabindex="0"
               type="button"
             >
-              <i
-                aria-hidden="true"
-                class="icon icon-menu"
-                id="table_row_action_menu_0_dropdown_toggle_icon"
-              />
+              Action 1
             </button>
             <div
-              aria-hidden="true"
-              class="dropdown-action-menu dropdown-menu"
-              data-testid="table_row_action_menu_0_dropdown_menu"
-              id="table_row_action_menu_0_dropdown_menu"
-              role="menu"
+              class="dropdown-divider"
+              id="table_row_action_menu_item_0_action_actionDivider"
               tabindex="-1"
+            />
+            <button
+              class="dropdown-item"
+              data-testid="table_row_action_menu_item_0_action_action2"
+              id="table_row_action_menu_item_0_action_action2"
+              role="menuitem"
+              tabindex="0"
+              type="button"
             >
-              <button
-                class="dropdown-item"
-                data-testid="table_row_action_menu_item_0_action_action1"
-                id="table_row_action_menu_item_0_action_action1"
-                role="menuitem"
-                tabindex="0"
-                type="button"
-              >
-                Action 1
-              </button>
-              <div
-                class="dropdown-divider"
-                id="table_row_action_menu_item_0_action_actionDivider"
-                tabindex="-1"
-              />
-              <button
-                class="dropdown-item"
-                data-testid="table_row_action_menu_item_0_action_action2"
-                id="table_row_action_menu_item_0_action_action2"
-                role="menuitem"
-                tabindex="0"
-                type="button"
-              >
-                Action 2
-              </button>
-            </div>
+              Action 2
+            </button>
           </div>
           <i
             aria-hidden="true"
@@ -482,51 +453,22 @@ exports[`Table should not display primary action column when not provided 1`] = 
           id="table_row_1_cell_7"
           role="cell"
         >
-          <div
-            class="dropdown-action-menu dropleft dropdown"
-            data-testid="table_row_action_menu_1_dropdown"
-            id="table_row_action_menu_1"
-          >
+          <div>
+            <div
+              class="dropdown-divider"
+              id="table_row_action_menu_item_1_action_actionDivider"
+              tabindex="-1"
+            />
             <button
-              aria-expanded="false"
-              aria-haspopup="true"
-              aria-label="Action Menu"
-              class="btn btn-ghost btn btn-secondary"
-              data-boundary="viewport"
-              data-testid="table_row_action_menu_1_dropdown_toggle"
-              id="table_row_action_menu_1_dropdown_toggle"
+              class="dropdown-item"
+              data-testid="table_row_action_menu_item_1_action_action2"
+              id="table_row_action_menu_item_1_action_action2"
+              role="menuitem"
+              tabindex="0"
               type="button"
             >
-              <i
-                aria-hidden="true"
-                class="icon icon-menu"
-                id="table_row_action_menu_1_dropdown_toggle_icon"
-              />
+              Action 2
             </button>
-            <div
-              aria-hidden="true"
-              class="dropdown-action-menu dropdown-menu"
-              data-testid="table_row_action_menu_1_dropdown_menu"
-              id="table_row_action_menu_1_dropdown_menu"
-              role="menu"
-              tabindex="-1"
-            >
-              <div
-                class="dropdown-divider"
-                id="table_row_action_menu_item_1_action_actionDivider"
-                tabindex="-1"
-              />
-              <button
-                class="dropdown-item"
-                data-testid="table_row_action_menu_item_1_action_action2"
-                id="table_row_action_menu_item_1_action_action2"
-                role="menuitem"
-                tabindex="0"
-                type="button"
-              >
-                Action 2
-              </button>
-            </div>
           </div>
         </td>
       </tr>
@@ -1400,61 +1342,32 @@ exports[`Table should render with formatted cells 1`] = `
           id="table_row_0_cell_7"
           role="cell"
         >
-          <div
-            class="dropdown-action-menu dropleft dropdown"
-            data-testid="table_row_action_menu_0_dropdown"
-            id="table_row_action_menu_0"
-          >
+          <div>
             <button
-              aria-expanded="false"
-              aria-haspopup="true"
-              aria-label="Action Menu"
-              class="btn btn-ghost btn btn-secondary"
-              data-boundary="viewport"
-              data-testid="table_row_action_menu_0_dropdown_toggle"
-              id="table_row_action_menu_0_dropdown_toggle"
+              class="dropdown-item"
+              data-testid="table_row_action_menu_item_0_action_action1"
+              id="table_row_action_menu_item_0_action_action1"
+              role="menuitem"
+              tabindex="0"
               type="button"
             >
-              <i
-                aria-hidden="true"
-                class="icon icon-menu"
-                id="table_row_action_menu_0_dropdown_toggle_icon"
-              />
+              Action 1
             </button>
             <div
-              aria-hidden="true"
-              class="dropdown-action-menu dropdown-menu"
-              data-testid="table_row_action_menu_0_dropdown_menu"
-              id="table_row_action_menu_0_dropdown_menu"
-              role="menu"
+              class="dropdown-divider"
+              id="table_row_action_menu_item_0_action_actionDivider"
               tabindex="-1"
+            />
+            <button
+              class="dropdown-item"
+              data-testid="table_row_action_menu_item_0_action_action2"
+              id="table_row_action_menu_item_0_action_action2"
+              role="menuitem"
+              tabindex="0"
+              type="button"
             >
-              <button
-                class="dropdown-item"
-                data-testid="table_row_action_menu_item_0_action_action1"
-                id="table_row_action_menu_item_0_action_action1"
-                role="menuitem"
-                tabindex="0"
-                type="button"
-              >
-                Action 1
-              </button>
-              <div
-                class="dropdown-divider"
-                id="table_row_action_menu_item_0_action_actionDivider"
-                tabindex="-1"
-              />
-              <button
-                class="dropdown-item"
-                data-testid="table_row_action_menu_item_0_action_action2"
-                id="table_row_action_menu_item_0_action_action2"
-                role="menuitem"
-                tabindex="0"
-                type="button"
-              >
-                Action 2
-              </button>
-            </div>
+              Action 2
+            </button>
           </div>
           <i
             aria-hidden="true"
@@ -1537,51 +1450,22 @@ exports[`Table should render with formatted cells 1`] = `
           id="table_row_1_cell_7"
           role="cell"
         >
-          <div
-            class="dropdown-action-menu dropleft dropdown"
-            data-testid="table_row_action_menu_1_dropdown"
-            id="table_row_action_menu_1"
-          >
+          <div>
+            <div
+              class="dropdown-divider"
+              id="table_row_action_menu_item_1_action_actionDivider"
+              tabindex="-1"
+            />
             <button
-              aria-expanded="false"
-              aria-haspopup="true"
-              aria-label="Action Menu"
-              class="btn btn-ghost btn btn-secondary"
-              data-boundary="viewport"
-              data-testid="table_row_action_menu_1_dropdown_toggle"
-              id="table_row_action_menu_1_dropdown_toggle"
+              class="dropdown-item"
+              data-testid="table_row_action_menu_item_1_action_action2"
+              id="table_row_action_menu_item_1_action_action2"
+              role="menuitem"
+              tabindex="0"
               type="button"
             >
-              <i
-                aria-hidden="true"
-                class="icon icon-menu"
-                id="table_row_action_menu_1_dropdown_toggle_icon"
-              />
+              Action 2
             </button>
-            <div
-              aria-hidden="true"
-              class="dropdown-action-menu dropdown-menu"
-              data-testid="table_row_action_menu_1_dropdown_menu"
-              id="table_row_action_menu_1_dropdown_menu"
-              role="menu"
-              tabindex="-1"
-            >
-              <div
-                class="dropdown-divider"
-                id="table_row_action_menu_item_1_action_actionDivider"
-                tabindex="-1"
-              />
-              <button
-                class="dropdown-item"
-                data-testid="table_row_action_menu_item_1_action_action2"
-                id="table_row_action_menu_item_1_action_action2"
-                role="menuitem"
-                tabindex="0"
-                type="button"
-              >
-                Action 2
-              </button>
-            </div>
           </div>
         </td>
       </tr>

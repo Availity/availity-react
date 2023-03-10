@@ -16,6 +16,7 @@ import DefaultValueCell from '../CellDefinitions/DefaultValueCell';
 import IconWithTooltipCell from '../CellDefinitions/IconWIthTooltipCell';
 import { Cell, Column } from '../types/ReactTable';
 import TableContent from '../TableContent';
+import TableActionMenu, { TableActionMenuProps } from '../TableActionMenu';
 
 const basicColumns = [
   {
@@ -597,7 +598,20 @@ describe('Table', () => {
   });
 });
 
+const mockChildComponent = jest.fn();
+jest.mock('../TableActionMenu', () => ({
+  __esModule: true,
+  default: (props: TableActionMenuProps) => {
+    mockChildComponent(props);
+    return <div>{props.children}</div>;
+  },
+}));
+
 describe('ActionCell', () => {
+  beforeEach(() => {
+    jest.resetAllMocks();
+  });
+
   test('should allow displayText to be set via a function for action', async () => {
     const columDefs = [
       {
@@ -645,7 +659,7 @@ describe('ActionCell', () => {
     });
   });
 
-  test('should sticky action menu when isSticky is true', async () => {
+  test('should set modifiers when isSticky is true', async () => {
     const columDefs = [
       {
         id: 'actions',
@@ -667,9 +681,52 @@ describe('ActionCell', () => {
         id: '1',
         conditionalValue: false,
       },
+    ];
+
+    render(
+      <Table data={currentData} columns={columDefs}>
+        <TableContent />
+      </Table>
+    );
+
+    await waitFor(() => {
+      expect(mockChildComponent).toHaveBeenNthCalledWith(
+        1,
+        expect.objectContaining({
+          dropdownMenuProps: {
+            modifiers: expect.objectContaining({
+              eventListeners: expect.objectContaining({
+                scroll: false,
+              }),
+              maintainInitialPosition: expect.objectContaining({ enabled: true }),
+            }),
+          },
+        })
+      );
+    });
+  });
+
+  test('should set modifiers when isSticky is false', async () => {
+    const columDefs = [
       {
-        id: '2',
-        conditionalValue: true,
+        id: 'actions',
+        Header: 'Actions',
+        Cell: ActionCell({
+          isSticky: false,
+          actions: [
+            {
+              id: 'myAction',
+              displayText: 'My Action',
+            },
+          ],
+        }),
+      },
+    ] as Column<Record<string, string | boolean | number | undefined>>[];
+
+    const currentData = [
+      {
+        id: '1',
+        conditionalValue: false,
       },
     ];
 
@@ -679,19 +736,20 @@ describe('ActionCell', () => {
       </Table>
     );
 
-    const actionMenu = screen.getByTestId('table_row_action_menu_1_dropdown_toggle');
-    fireEvent.click(actionMenu);
-
-    act(() => {
-      window.innerWidth = 500;
-      window.innerHeight = 500;
-
-      fireEvent(window, new Event('resize'));
-    });
-
     await waitFor(() => {
-      const actionMenuShown = screen.getByTestId('table_row_action_menu_1_dropdown_menu');
-      expect(actionMenuShown).toHaveAttribute('style');
+      expect(mockChildComponent).toHaveBeenNthCalledWith(
+        1,
+        expect.objectContaining({
+          dropdownMenuProps: {
+            modifiers: expect.objectContaining({
+              eventListeners: expect.objectContaining({
+                scroll: true,
+              }),
+              maintainInitialPosition: expect.objectContaining({ enabled: false }),
+            }),
+          },
+        })
+      );
     });
   });
 
@@ -756,6 +814,54 @@ describe('ActionCell', () => {
     await waitFor(() => {
       const icon1Tooltip = screen.getByRole('tooltip');
       expect(icon1Tooltip).toHaveTextContent('THIS');
+    });
+  });
+
+  test('should call action on primary action click', async () => {
+    const action = jest.fn();
+
+    const columDefs = [
+      {
+        id: 'actions',
+        Header: 'Actions',
+        Cell: ActionCell({
+          actions: [],
+          primaryAction: {
+            iconName: 'heart',
+            title: 'action',
+
+            onClick: action,
+          },
+        }),
+      },
+    ] as Column<Record<string, string | boolean | number | undefined>>[];
+
+    const currentData = [
+      {
+        id: '1',
+        conditionalValue: false,
+        quickAction: true,
+      },
+      {
+        id: '2',
+        conditionalValue: true,
+        quickAction: true,
+      },
+    ];
+
+    render(
+      <Table data={currentData} columns={columDefs}>
+        <TableContent />
+      </Table>
+    );
+
+    const primaryActionIcon1 = screen.getByTestId(`table_row_action_menu_item_0_primaryAction`);
+    expect(primaryActionIcon1).not.toBeNull();
+
+    fireEvent.click(primaryActionIcon1);
+
+    await waitFor(() => {
+      expect(action).toHaveBeenCalled();
     });
   });
 });
