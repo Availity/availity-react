@@ -12,7 +12,7 @@ export type DefaultValueCellProps<T> = {
 const DefaultValueCell = <T extends unknown>({
   defaultValue = '',
 }: DefaultValueCellProps<T>): JSX.Element | ((cell: CellProps<T>) => JSX.Element | null) => {
-  const DefaultValueCellDef = ({ value }: CellProps<T>): JSX.Element | null => <>{value ? value : defaultValue}</>;
+  const DefaultValueCellDef = ({ value }: CellProps<T>): JSX.Element | null => <>{value || defaultValue}</>;
 
   return DefaultValueCellDef;
 };

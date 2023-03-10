@@ -1,10 +1,12 @@
-import React, { useRef } from 'react';
+import React from 'react';
 import { render, fireEvent, waitFor, screen } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
+import * as Popper from 'popper.js';
+import { act } from 'react-dom/test-utils';
 
 import basicData from './data/basicData.json';
 import formattedData from './data/needsFormattedData.json';
-import Table, { TableRef } from '../Table';
+import Table from '../Table';
 import CurrencyCell from '../CellDefinitions/CurrencyCell';
 import ActionCell from '../CellDefinitions/ActionCell';
 import BadgeCell from '../CellDefinitions/BadgeCell';
@@ -12,7 +14,7 @@ import IconCell from '../CellDefinitions/IconCell';
 import DateCell from '../CellDefinitions/DateCell';
 import DefaultValueCell from '../CellDefinitions/DefaultValueCell';
 import IconWithTooltipCell from '../CellDefinitions/IconWIthTooltipCell';
-import { Cell, Column, Row } from '../types/ReactTable';
+import { Cell, Column } from '../types/ReactTable';
 import TableContent from '../TableContent';
 
 const basicColumns = [
@@ -118,6 +120,21 @@ const formattedColumns = [
     }),
   },
 ] as Column<Record<string, string | boolean | number | undefined>>[];
+
+jest.mock('popper.js', () => {
+  const PopperJS = jest.requireActual('popper.js');
+
+  return class {
+    static placements = PopperJS.placements;
+
+    constructor() {
+      return {
+        destroy: () => {},
+        scheduleUpdate: jest.fn(),
+      };
+    }
+  };
+});
 
 describe('Table', () => {
   afterEach(() => {
@@ -380,15 +397,15 @@ describe('Table', () => {
         Header: 'Value 1',
         accessor: 'val1',
         width: 200,
-        minWidth: 200,
-        maxWidth: 200,
+        minWidth: 300,
+        maxWidth: 400,
       },
       {
         Header: 'Value 2',
         accessor: 'val2',
         width: 100,
-        minWidth: 100,
-        maxWidth: 100,
+        minWidth: 200,
+        maxWidth: 300,
       },
     ] as Column<Record<string, string | boolean | number | undefined>>[];
 
@@ -413,10 +430,10 @@ describe('Table', () => {
 
     await waitFor(() => {
       const cell1 = screen.getByTestId('table_row_1_cell_0');
-      expect(cell1).toHaveAttribute('style', 'width: 200px; min-width: 200px; max-width: 200px;');
+      expect(cell1).toHaveAttribute('style', 'width: 200px; min-width: 300px; max-width: 400px;');
 
       const cell2 = screen.getByTestId('table_row_1_cell_1');
-      expect(cell2).toHaveAttribute('style', 'width: 100px; min-width: 100px; max-width: 100px;');
+      expect(cell2).toHaveAttribute('style', 'width: 100px; min-width: 200px; max-width: 300px;');
     });
   });
 
@@ -487,13 +504,11 @@ describe('Table', () => {
       },
     ];
 
-    const { debug } = render(
+    render(
       <Table data={currentData} columns={columDefs} footer>
         <TableContent />
       </Table>
     );
-
-    debug();
 
     await waitFor(() => {
       expect(screen.getByTestId('table_footer')).not.toBeNull();
@@ -506,6 +521,78 @@ describe('Table', () => {
       const footerVal2 = screen.getByTestId('table_footer_row_val2');
       expect(footerVal2).not.toBeNull();
       expect(footerVal2).toHaveTextContent('VAL 2 FOOT');
+    });
+  });
+
+  test('should pass in cellProps when getCellProps is provided', async () => {
+    const getCellProps = () => ({ style: { color: 'rgb(255, 255, 255)' } });
+
+    render(<Table data={basicData} columns={basicColumns} getCellProps={getCellProps} />);
+
+    await waitFor(() => {
+      const cells = screen.getAllByRole('cell');
+
+      for (const cell of cells) {
+        expect(cell).toHaveStyle('color: rgb(255, 255, 255);');
+      }
+    });
+  });
+
+  test('should merge getCellProps and column widths', async () => {
+    const getCellProps = () => ({ style: { color: 'rgb(255, 255, 255)' } });
+
+    const columDefs = [
+      {
+        Header: 'Value 1',
+        accessor: 'val1',
+        width: 200,
+        minWidth: 300,
+        maxWidth: 400,
+      },
+      {
+        Header: 'Value 2',
+        accessor: 'val2',
+        width: 100,
+        minWidth: 200,
+        maxWidth: 300,
+      },
+    ] as Column<Record<string, string | boolean | number | undefined>>[];
+
+    const currentData = [
+      {
+        id: '1',
+        val1: 'Something',
+        val2: 'Something else',
+      },
+      {
+        id: '2',
+        val1: 'Something else entirely',
+        val2: 'Something else again',
+      },
+    ];
+
+    render(
+      <Table
+        data={currentData}
+        columns={columDefs}
+        getCellProps={getCellProps}
+        useColumnWidths
+        defaultColumn={{ width: 'auto' }}
+      />
+    );
+
+    await waitFor(() => {
+      const cells = screen.getAllByRole('cell');
+
+      for (const cell of cells) {
+        expect(cell).toHaveStyle('color: rgb(255, 255, 255);');
+      }
+
+      const cell1 = screen.getByTestId('table_row_1_cell_0');
+      expect(cell1).toHaveStyle('width: 200px; min-width: 300px; max-width: 400px;');
+
+      const cell2 = screen.getByTestId('table_row_1_cell_1');
+      expect(cell2).toHaveStyle('width: 100px; min-width: 200px; max-width: 300px;');
     });
   });
 });
@@ -539,13 +626,11 @@ describe('ActionCell', () => {
       },
     ];
 
-    const { debug } = render(
+    render(
       <Table data={currentData} columns={columDefs}>
         <TableContent />
       </Table>
     );
-
-    debug();
 
     await waitFor(() => {
       const actionItem1 = screen.getByTestId('table_row_action_menu_item_0_action_myAction');
@@ -557,6 +642,56 @@ describe('ActionCell', () => {
       expect(actionItem2).not.toBeNull();
 
       expect(actionItem2).toHaveTextContent('THIS');
+    });
+  });
+
+  test('should sticky action menu when isSticky is true', async () => {
+    const columDefs = [
+      {
+        id: 'actions',
+        Header: 'Actions',
+        Cell: ActionCell({
+          isSticky: true,
+          actions: [
+            {
+              id: 'myAction',
+              displayText: 'My Action',
+            },
+          ],
+        }),
+      },
+    ] as Column<Record<string, string | boolean | number | undefined>>[];
+
+    const currentData = [
+      {
+        id: '1',
+        conditionalValue: false,
+      },
+      {
+        id: '2',
+        conditionalValue: true,
+      },
+    ];
+
+    render(
+      <Table data={currentData} columns={columDefs}>
+        <TableContent />
+      </Table>
+    );
+
+    const actionMenu = screen.getByTestId('table_row_action_menu_1_dropdown_toggle');
+    fireEvent.click(actionMenu);
+
+    act(() => {
+      window.innerWidth = 500;
+      window.innerHeight = 500;
+
+      fireEvent(window, new Event('resize'));
+    });
+
+    await waitFor(() => {
+      const actionMenuShown = screen.getByTestId('table_row_action_menu_1_dropdown_menu');
+      expect(actionMenuShown).toHaveAttribute('style');
     });
   });
 
@@ -595,7 +730,7 @@ describe('ActionCell', () => {
       },
     ];
 
-    const { debug } = render(
+    render(
       <Table data={currentData} columns={columDefs}>
         <TableContent />
       </Table>

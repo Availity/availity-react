@@ -12,15 +12,15 @@ import {
 
 export type TableActionMenuProps = {
   id?: string;
-  /** Children can be a react child. **/
+  /** Children can be a react child. */
   children: React.ReactNode;
-  /** This is utilized for the Popper dropdown menu. Defaults to 'body'. **/
+  /** This is utilized for the Popper dropdown menu. Defaults to 'body'. */
   container?: string;
-  /** Reactstrap DropdownProps that should be passed into the Dropdown component. **/
+  /** Reactstrap DropdownProps that should be passed into the Dropdown component. */
   dropdownProps?: DropdownProps;
-  /** Reactstrap DropdownToggleProps that should be passed into the DropdownToggle component. **/
+  /** Reactstrap DropdownToggleProps that should be passed into the DropdownToggle component. */
   dropdownToggleProps?: DropdownToggleProps;
-  /** Reactstrap dropdownMenuProps that should be passed into the DropdownMenu component. **/
+  /** Reactstrap DropdownMenuProps that should be passed into the DropdownMenu component. */
   dropdownMenuProps?: DropdownMenuProps;
   /** Function called whenever the menu is open/closed */
   onMenuToggled?: (isOpen: boolean) => void;
@@ -58,6 +58,7 @@ const TableActionMenu = ({
     >
       <DropdownToggle
         id={`${id}_dropdown_toggle`}
+        data-testid={`${id}_dropdown_toggle`}
         aria-label="Action Menu"
         data-boundary="viewport"
         className="btn btn-ghost"
@@ -67,6 +68,7 @@ const TableActionMenu = ({
       </DropdownToggle>
       <DropdownMenu
         id={`${id}_dropdown_menu`}
+        data-testid={`${id}_dropdown_menu`}
         className="dropdown-action-menu"
         container={container}
         {...dropdownMenuProps}

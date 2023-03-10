@@ -8,7 +8,7 @@ type CellProps<T extends IdType> = {
   column: Column<T>;
 };
 
-export interface CurrencyCellConfig<T> {
+export interface CurrencyCellConfig {
   currency?: string;
   style?: string;
   defaultValue?: string | React.ReactChild | React.ElementType;
@@ -24,7 +24,7 @@ const CurrencyCell = <T extends IdType>({
   locales = 'en-us',
   displayTooltip = true,
   tooltipProps,
-}: CurrencyCellConfig<T>): JSX.Element | ((cell: CellProps<T>) => JSX.Element) => {
+}: CurrencyCellConfig): JSX.Element | ((cell: CellProps<T>) => JSX.Element) => {
   const CurrencyCellDef = ({ value, row, column }: CellProps<T>): JSX.Element => {
     let formattedValue;
 

@@ -582,7 +582,7 @@ Display a formatted header, such as an Icon.
 ```jsx
   const columns = [
         {
-            Footer: <Icon name="phone" title="phone/>,
+            Footer: <Icon name="phone" title="phone"/>,
             ...
         }
     ]
@@ -770,8 +770,8 @@ const MyComponent = ({ data }: Props) : JSX.Element => {
       <Label id="lblSelectAll" className="ml-1 mr-2" check>
       Select All
       </Label>
-   <Table ref={ref} selectable columns={columns} data={data}/>
-  </>
+      <Table ref={ref} selectable columns={columns} data={data}/>
+    </>
   )
 }
 

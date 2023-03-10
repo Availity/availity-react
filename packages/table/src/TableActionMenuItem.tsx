@@ -4,11 +4,11 @@ import { IdType } from './types/ReactTable';
 import { RecordAction } from './types/RecordAction';
 
 type Props<T extends IdType> = {
-  /** This is a unique id that is prepended to the element **/
+  /** This is a unique id that is prepended to the element */
   id?: string;
-  /** This is where the isVisible and onClick actions will be passed in **/
+  /** This is where the isVisible and onClick actions will be passed in */
   action: RecordAction<T>;
-  /** The record under observation **/
+  /** The record under observation */
   record: T;
 };
 

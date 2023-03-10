@@ -32,9 +32,9 @@ const columns = [
     Footer: 'First Name',
     defaultCanSort: true,
     disableSortBy: false,
-    width: 150,
-    minWidth: 150,
-    maxWidth: 150,
+    width: 200,
+    minWidth: 200,
+    maxWidth: 200,
   },
   {
     Header: 'Last Name',
@@ -64,7 +64,7 @@ const columns = [
     accessor: 'amount',
     Footer: (info: any) => {
       const total = React.useMemo(
-        () => info.rows.reduce((sum: number, row: any) => parseFloat(info.rows[0].original.amount) + sum, 0),
+        () => info.rows.reduce((sum: number) => Number.parseFloat(info.rows[0].original.amount) + sum, 0),
         [info.rows]
       );
 
@@ -233,7 +233,6 @@ export const WithAdditionalContent: Story = ({ columns, data }) => {
   );
 
   const [records, setRecords] = useState([]);
-  const [selectedRows, setSelectedRow] = useState([]);
 
   useEffect(() => {
     const timer = setTimeout(() => {

@@ -356,6 +356,7 @@ exports[`Table should not display primary action column when not provided 1`] = 
               aria-label="Action Menu"
               class="btn btn-ghost btn btn-secondary"
               data-boundary="viewport"
+              data-testid="table_row_action_menu_0_dropdown_toggle"
               id="table_row_action_menu_0_dropdown_toggle"
               type="button"
             >
@@ -368,6 +369,7 @@ exports[`Table should not display primary action column when not provided 1`] = 
             <div
               aria-hidden="true"
               class="dropdown-action-menu dropdown-menu"
+              data-testid="table_row_action_menu_0_dropdown_menu"
               id="table_row_action_menu_0_dropdown_menu"
               role="menu"
               tabindex="-1"
@@ -491,6 +493,7 @@ exports[`Table should not display primary action column when not provided 1`] = 
               aria-label="Action Menu"
               class="btn btn-ghost btn btn-secondary"
               data-boundary="viewport"
+              data-testid="table_row_action_menu_1_dropdown_toggle"
               id="table_row_action_menu_1_dropdown_toggle"
               type="button"
             >
@@ -503,6 +506,7 @@ exports[`Table should not display primary action column when not provided 1`] = 
             <div
               aria-hidden="true"
               class="dropdown-action-menu dropdown-menu"
+              data-testid="table_row_action_menu_1_dropdown_menu"
               id="table_row_action_menu_1_dropdown_menu"
               role="menu"
               tabindex="-1"
@@ -1407,6 +1411,7 @@ exports[`Table should render with formatted cells 1`] = `
               aria-label="Action Menu"
               class="btn btn-ghost btn btn-secondary"
               data-boundary="viewport"
+              data-testid="table_row_action_menu_0_dropdown_toggle"
               id="table_row_action_menu_0_dropdown_toggle"
               type="button"
             >
@@ -1419,6 +1424,7 @@ exports[`Table should render with formatted cells 1`] = `
             <div
               aria-hidden="true"
               class="dropdown-action-menu dropdown-menu"
+              data-testid="table_row_action_menu_0_dropdown_menu"
               id="table_row_action_menu_0_dropdown_menu"
               role="menu"
               tabindex="-1"
@@ -1542,6 +1548,7 @@ exports[`Table should render with formatted cells 1`] = `
               aria-label="Action Menu"
               class="btn btn-ghost btn btn-secondary"
               data-boundary="viewport"
+              data-testid="table_row_action_menu_1_dropdown_toggle"
               id="table_row_action_menu_1_dropdown_toggle"
               type="button"
             >
@@ -1554,6 +1561,7 @@ exports[`Table should render with formatted cells 1`] = `
             <div
               aria-hidden="true"
               class="dropdown-action-menu dropdown-menu"
+              data-testid="table_row_action_menu_1_dropdown_menu"
               id="table_row_action_menu_1_dropdown_menu"
               role="menu"
               tabindex="-1"

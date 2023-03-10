@@ -30,11 +30,13 @@ type HeaderProps = {
 export type CommonTableProps<T extends IdType> = {
   /** The Id of the table, utilized to create ids for table rows, table cells, etc. */
   id?: string;
-  /** Additional properties  to pass to the `<table/>` element.*/
+  /** Any DOM properties properties that should be passed to the `<table/>` element. */
   tableProps?: React.HTMLAttributes<HTMLElement>;
-  /** Additional properties to pass into the `<tbody/> component */
+  /** Any DOM properties that should be passed onto the `<thead>` element. A special boolean property `sticky` is added here to allow for designating the header as 'sticky' or not. */
+  headerProps?: HeaderProps;
+  /** Any DOM properties that should be passed into the `<tbody/> component. */
   bodyProps?: React.HTMLAttributes<HTMLElement>;
-  /** This function provides any DOM properties that should be passed onto the `<td>` elements. Optionally pass in the Cell object in order to conditionally add DOM properties based on data of the cell.   */
+  /** This function provides any DOM properties that should be passed onto the `<td>` elements. Optionally pass in the Cell object in order to conditionally add DOM properties based on data of the cell. */
   getCellProps?: (cell: Cell<T>) => React.HTMLAttributes<HTMLTableCellElement>;
   /** This function provides any DOM properties that should be passed onto the `<tr>` element. Optionally pass in the Row object in order to conditionally add DOM properties based on the data of the row. */
   getRowProps?: (row: Row<T>) => RowProps;
@@ -44,14 +46,12 @@ export type CommonTableProps<T extends IdType> = {
   onRowClick?: (event: OnTableClickEvent<HTMLElement, T>) => void;
   /** When a table is selectable, this event is called whenever a row is selected. */
   onRowSelected?: (event: OnRowSelectedEvent<T>) => void;
-  /** Any DOM properties that should be passed onto the `<thead>` element. A special boolean property `sticky'` is added here to allow for designating the header as 'sticky' or not.*/
-  headerProps?: HeaderProps;
   /** The function that is called whenever the table is sorted. Sortable must be true and columns must be configured to allow for sorting. */
   onSort?: (sortBy: TableSort[]) => void;
 
-  /** This designates a Component that will be displayed in the table row for the record. This content displays in an additional `<tr>` with a colspan equal to the number of columns that are NOT sticky.  */
+  /** This designates a Component that will be displayed in the table row for the record. This content displays in an additional `<tr>` with a colspan equal to the number of columns that are NOT sticky. */
   additionalContent?: React.ElementType;
-  /**  Additional Properties that should be added to the additional content component when it is rendered. */
+  /** Additional Properties that should be added to the additional content component when it is rendered. */
   additionalContentProps?: Record<string, string | number | boolean | undefined | null>;
 
   /** Determines whether a footer should be displayed. */
@@ -60,9 +60,9 @@ export type CommonTableProps<T extends IdType> = {
   scrollable?: boolean;
   /** Determines whether the table should be selectable. When true, the first column will be a column of checkboxes to either select/deselect all records or individual records. */
   selectable?: boolean;
-  /** When true, it will take the width as defined in the column configuration and apply it to the styles of each column.  */
+  /** When true, it will take the width as defined in the column configuration and apply it to the styles of each column. */
   useColumnWidths?: boolean;
-  /** Because this component dynamically builds the selection column, this allows for any customization to be added to the Selection Column */
+  /** Because this component dynamically builds the selection column, this allows for any customization to be added to the Selection Column. */
   selectionColumnProps?: Partial<Column<T>>;
   /** If rows should be conditionally selected, use this function to indicate the conditions per record. */
   getCanSelectRow?: (record: T) => boolean;
@@ -212,9 +212,9 @@ const TableComponent = <T extends IdType>(
       value={{
         id,
         instance: tableInstance,
-        /* eslint-disable @typescript-eslint/no-explicit-any */
+        /** eslint-disable @typescript-eslint/no-explicit-any */
         getCellProps: getCellProps as (cell: Cell<Record<string, any>>) => React.HTMLAttributes<HTMLTableCellElement>,
-        /* eslint-disable @typescript-eslint/no-explicit-any */
+        /** eslint-disable @typescript-eslint/no-explicit-any */
         getRowProps: getRowProps as (row: Row<Record<string, any>>) => RowProps,
         selectable,
         sortable,

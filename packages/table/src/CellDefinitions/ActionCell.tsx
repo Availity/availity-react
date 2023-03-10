@@ -1,4 +1,6 @@
 import React, { useEffect, useMemo, useState } from 'react';
+import { UncontrolledTooltip, UncontrolledTooltipProps } from 'reactstrap';
+
 import * as Popper from 'popper.js';
 import { useWindowDimensions } from '@availity/hooks';
 
@@ -8,7 +10,6 @@ import TableActionMenuItem from '../TableActionMenuItem';
 import { Cell, IdType } from '../types/ReactTable';
 import { RecordAction } from '../types/RecordAction';
 import { PrimaryRecordAction } from '../types/PrimaryRecordAction';
-import { UncontrolledTooltip, UncontrolledTooltipProps } from 'reactstrap';
 
 export interface ActionCellConfig<T> {
   actions: RecordAction<T>[];
@@ -88,6 +89,7 @@ const ActionCell = <T extends IdType>({
       <>
         <TableActionMenu
           id={`table_row_action_menu_${id}`}
+          data-test-id={`table_row_action_menu_${id}`}
           onMenuToggled={isSticky ? onMenuToggled : undefined}
           dropdownMenuProps={{
             modifiers: { ...stickyMenuModifiers, ...modifiers },
