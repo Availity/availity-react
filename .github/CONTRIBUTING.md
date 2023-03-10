@@ -25,6 +25,16 @@ yarn build:components
 
 You are now ready to begin development in the repo!
 
+## Security
+
+For additional security, this repository uses the python library detect-secrets from [Yelp](https://github.com/Yelp/detect-secrets). Our pre-push hook assumes that you have this installed on your system and will prevent git pushes if this is not the case. For detailed installation and configuration instructions see Yelp's documentation but hopefully all you will need to do is run
+
+```bash
+brew install detect-secrets
+```
+
+and you should be able to successfully push a test commit to any git remote and now you are ready to start contributing!
+
 ## Local Development
 
 ### Storybook
