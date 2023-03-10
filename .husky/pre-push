@@ -1,7 +1,6 @@
 #!/bin/sh
 . "$(dirname "$0")/_/husky.sh"
 
-yarn lint:affected
-yarn test:affected
+yarn concurrently "yarn lint:affected" "yarn test:affected" "yarn check:registry" "git ls-files -z | xargs -0 detect-secrets-hook --exclude-files '.*/data/.*' --exclude-files '\.yarn/.*' --baseline .secrets.baseline"
 # yarn check:deps
-yarn check:registry
+

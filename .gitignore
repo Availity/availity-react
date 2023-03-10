@@ -26,3 +26,5 @@ reports/
 !.yarn/versions
 yarn-error.log
 .pnp.*
+
+.secrets.baseline
