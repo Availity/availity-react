@@ -1,5 +1,5 @@
 import { cleanup } from '@testing-library/react';
-import { updateTopApps } from '../src/helpers';
+import { updateTopApps, updateUrl } from '../src/helpers';
 
 const localStorageMock = (() => {
   let store = {};
@@ -85,5 +85,17 @@ describe('updateTopApps', () => {
     await updateTopApps({ configurationId: 'reporting', type: 'APPLICATION' }, 'aka123456789');
 
     expect(window.localStorage.getItem('myTopApps-aka123456789')).toEqual(undefined);
+  });
+  describe('updateUrl', () => {
+    it('should parse the given url return the existing and new params in alphabetical order', () => {
+      let updatedUrl = updateUrl('http://www.example.com?foo=bar#hashme', 'fakeKey', 'fakeValue');
+      expect(updatedUrl).toBe('http://www.example.com?fakeKey=fakeValue&foo=bar%23hashme');
+
+      updatedUrl = updateUrl('http://www.example.com', 'fakeKey', 'fakeValue');
+      expect(updatedUrl).toBe('http://www.example.com?fakeKey=fakeValue');
+
+      updatedUrl = updateUrl('http://www.example.com?foo=bar', 'fakeKey', 'fakeValue');
+      expect(updatedUrl).toBe('http://www.example.com?fakeKey=fakeValue&foo=bar');
+    });
   });
 });

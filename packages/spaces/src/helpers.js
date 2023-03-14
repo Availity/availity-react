@@ -1,4 +1,4 @@
-import qs from 'query-string';
+import qs from 'qs';
 import avMessage from '@availity/message-core';
 import dayjs from 'dayjs';
 
@@ -66,10 +66,13 @@ export const isFunction = (obj) => typeof obj === 'function';
 export const updateUrl = (url, key, value) => {
   const [uri, queryString] = url.split('?');
   const currentParams = qs.parse(queryString);
-  const newParams = qs.stringify({
-    ...currentParams,
-    [key]: value,
-  });
+  const newParams = qs.stringify(
+    {
+      ...currentParams,
+      [key]: value,
+    },
+    { sort: (a, b) => a.localeCompare(b) }
+  );
 
   return `${uri}?${newParams}`;
 };
