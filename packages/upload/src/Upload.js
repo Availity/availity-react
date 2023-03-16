@@ -213,25 +213,63 @@ class Upload extends Component {
 }
 
 Upload.propTypes = {
-  btnColor: PropTypes.string,
-  btnText: PropTypes.node,
+  /** The ID of the bucket you want to upload to. */
   bucketId: PropTypes.string.isRequired,
+  /** The customer ID for the organization the user is uploading on behalf of. */
   customerId: PropTypes.string.isRequired,
+  /** The ID obtained from APIConnect. Must be subscribed to the resumeable uploads API. */
   clientId: PropTypes.string.isRequired,
+  /** The color of the button. Refer to the Reactstrap documentation to determine which colors
+   * are available. **Default:** `light`. */
+  btnColor: PropTypes.string,
+  /** `+ Add File` for initial file or `+ Add Another File Attachment` if an attachment
+   * already have been selected. | The text that appears on the button. */
+  btnText: PropTypes.node,
+  /** Restrict the file name characters to a regex set. */
   allowedFileNameCharacters: PropTypes.string,
+  /** Restrict the file types allowed to be uploaded to. eg: `['.jpeg', '.jpg']`. */
   allowedFileTypes: PropTypes.arrayOf(PropTypes.string),
+  /** Callback to be executed when file is uploaded. The callback is provided the `Upload`
+   * instance from upload-core SDK. Use this callback to hook into the `upload.onSuccess`
+   * and `upload.onError` events and track which files have been uploaded and get references
+   * returned by the API if needed. See [example callback function above](###Callback-Function-Example) */
   onFileUpload: PropTypes.func,
+  /** An array of callbacks called before the file is uploaded. Each function should return a true
+   * or false. If one of these is false, then it will not upload. Useful for scanning files for
+   * corruption before uploading to the vault. To ensure that the file is not uploaded and return
+   * false, call setError on the UploadCore object to set some error message via calling
+   * upload.setError('rejected', somemessage) method for updating the UI. Make sure this is done
+   * relatively synchronously. */
   onFilePreUpload: PropTypes.arrayOf(PropTypes.func),
+  /** Callback called when file is removed. The callback is provided two arguments. 1. the updated
+   * files and 2. the id of the file that was removed */
   onFileRemove: PropTypes.func,
+  /** The maximum file size (in bytes) for a file to be uploaded. */
   maxSize: PropTypes.number,
+  /** The maximum number of files allowed to be uploaded. `0` (or a falsey value) means unlimited.
+   * When the max number has been reached, the add button will disappear. */
   max: PropTypes.number,
+  /** Indicates that the user will be allowed to select multiple files when selecting files from
+   * the OS prompt. **Default:** `true`. */
   multiple: PropTypes.bool,
+  /** Children can be a react child or render prop. */
   children: PropTypes.func,
+  /** Identifies the field and matches the validation schema. */
   name: PropTypes.string,
+  /** Set as true to show a drag and drop file upload option instead of a button (file explorer
+   * still available on click). */
   showFileDrop: PropTypes.bool,
+  /** Override the default error message for files rejected when `showFileDrop` is `true`. */
   getDropRejectionMessage: PropTypes.func,
+  /** Disable the file input **Default:** `false`. */
   disabled: PropTypes.bool,
+  /** When a user uploads an encrypted file, they are prompted to input a password. This function
+   * is called when the password form is submitted. By default, the event bubbles and will submit
+   * a form if the upload component is a child element of that form. Useful for adding
+   * event.stopPropagation() if this behavior is not desired. */
   onPasswordSubmit: PropTypes.func,
+  /** Override the default z-index for the password prompt modal. Useful for squashing IE11 bugs
+   * by setting to auto if your upload component is already inside another modal. */
   passwordModalZIndex: PropTypes.oneOfType([PropTypes.number, PropTypes.string]),
 };
 
