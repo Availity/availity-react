@@ -1,6 +1,6 @@
 {
   "name": "@availity/tree",
-  "version": "0.3.1-alpha.0",
+  "version": "0.4.0",
   "description": "This is a component for displaying hierarchical data",
   "keywords": [
     "react",

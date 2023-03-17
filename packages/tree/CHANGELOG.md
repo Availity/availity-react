@@ -2,6 +2,15 @@
 
 This file was generated using [@jscutlery/semver](https://github.com/jscutlery/semver).
 
+# [0.4.0](https://github.com/Availity/availity-react/compare/@availity/tree@0.3.0...@availity/tree@0.4.0) (2023-03-17)
+
+
+### Features
+
+* **table:** fix alignment of select all link to be right aligned to the right of the expand all text ([6daef1b](https://github.com/Availity/availity-react/commit/6daef1b060c8fe65d16eed87128a67d89213ebcb))
+
+
+
 ## [0.3.1-alpha.0](https://github.com/Availity/availity-react/compare/@availity/tree@0.3.0...@availity/tree@0.3.1-alpha.0) (2023-03-06)
 
 
