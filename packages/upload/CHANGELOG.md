@@ -2,6 +2,15 @@
 
 This file was generated using [@jscutlery/semver](https://github.com/jscutlery/semver).
 
+# [3.7.0](https://github.com/Availity/availity-react/compare/@availity/upload@3.6.0...@availity/upload@3.7.0) (2023-03-17)
+
+
+### Features
+
+* **upload:** add props ([40ebe1d](https://github.com/Availity/availity-react/commit/40ebe1da3bcb4246374df8fbcb0d9959723deaa0))
+
+
+
 # [3.6.0](https://github.com/Availity/availity-react/compare/@availity/upload@3.5.0...@availity/upload@3.6.0) (2022-11-04)
 
 
