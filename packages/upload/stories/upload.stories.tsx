@@ -1,5 +1,6 @@
 import React from 'react';
 import { Meta, Story } from '@storybook/react';
+import { ArgsTable } from '@storybook/addon-docs';
 // import { button } from '@storybook/addon-knobs';
 import mock from 'xhr-mock';
 
@@ -73,6 +74,9 @@ export default {
   parameters: {
     docs: {
       // page: README,
+      description: {
+        component: 'The default export is an all-in-one solution which handles uploads, encrypted file password requests and file state management for you.'
+      }
     },
   },
 } as Meta;
@@ -204,3 +208,11 @@ FileListStory.args = {
   fileName2: 'testfile2.png',
 };
 FileListStory.storyName = 'file list';
+
+export const Props: Story = () => (
+  <>
+    <h4>Availity Props</h4>
+    <h5>Breadcrumbs</h5>
+    <ArgsTable of={Upload} />
+  </>
+);
