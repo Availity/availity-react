@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { Meta, Story } from '@storybook/react';
+import { ArgsTable } from '@storybook/addon-docs';
 import { Button, Col, Row } from 'reactstrap';
 
 import { LoadingButton } from '.';
@@ -8,6 +9,14 @@ import '../styles.scss';
 
 export default {
   title: 'Components/Button/Loading Button',
+  parameters: {
+    docs: {
+      // page: README,
+      description: {
+        component: 'This is a button component that displays a loading indicator inside of it when loading',
+      },
+    },
+  },
 } as Meta;
 
 export const Default: Story = () => {
@@ -42,5 +51,13 @@ export const Default: Story = () => {
     </>
   );
 };
+
+export const Props: Story = () => (
+  <>
+    <h4>Availity Props</h4>
+    <h5>LoadingButton</h5>
+    <ArgsTable of={LoadingButton} />
+  </>
+);
 
 Default.storyName = 'default';
