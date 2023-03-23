@@ -75,8 +75,9 @@ export default {
     docs: {
       // page: README,
       description: {
-        component: 'The default export is an all-in-one solution which handles uploads, encrypted file password requests and file state management for you.'
-      }
+        component:
+          'The default export is an all-in-one solution which handles uploads, encrypted file password requests and file state management for you.',
+      },
     },
   },
 } as Meta;
@@ -212,7 +213,7 @@ FileListStory.storyName = 'file list';
 export const Props: Story = () => (
   <>
     <h4>Availity Props</h4>
-    <h5>Breadcrumbs</h5>
+    <h5>Upload</h5>
     <ArgsTable of={Upload} />
   </>
 );
