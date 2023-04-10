@@ -3,6 +3,7 @@ import type { ReactNode } from 'react';
 import type { Props as RSelectProps, GroupBase, StylesConfig, ThemeConfig } from 'react-select';
 import type { AsyncPaginateProps } from 'react-select-async-paginate';
 import type { FieldValidator } from 'formik';
+import { ButtonProps } from 'reactstrap';
 
 export interface SelectStyleArgs {
   showError?: boolean;
@@ -20,7 +21,9 @@ export type SelectProps<Option, IsMulti extends boolean, Group extends GroupBase
   autofill?: boolean | Record<string, string | ((value: any) => any)>;
   cacheUniq?: any | any[];
   clearButtonClassName?: string;
+  clearButtonText?: string;
   creatable?: boolean;
+  clearButtonProps?: ButtonProps;
   feedback?: boolean;
   helpMessage?: ReactNode;
   labelKey?: string;

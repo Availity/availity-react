@@ -31,6 +31,8 @@ export default {
     max: 3,
     raw: false,
     required: true,
+    clearButtonText: 'clear',
+    clearButtonProps: {},
   },
 } as Meta;
 
@@ -45,6 +47,8 @@ export const Default: Story = ({
   min,
   raw,
   required,
+  clearButtonText,
+  clearButtonProps,
 }) => (
   <FormikResults
     onSubmit={() => {
@@ -78,6 +82,8 @@ export const Default: Story = ({
               options={autofillOptions}
               raw={raw}
               required={required}
+              clearButtonText={clearButtonText}
+              clearButtonProps={clearButtonProps}
             />
             <Field name="autoFill1" type="text" label="Autofill Value 1" />
             <Field name="autoFill2" type="text" label="Autofill Value 2" />
@@ -95,6 +101,8 @@ export const Default: Story = ({
             options={options}
             raw={raw}
             required={required}
+            clearButtonText={clearButtonText}
+            clearButtonProps={clearButtonProps}
           />
         )}
         <Button className="mt-3" color="primary" type="submit">
@@ -121,6 +129,8 @@ export const _SelectField: Story = ({
   min,
   raw,
   required,
+  clearButtonText,
+  clearButtonProps,
 }) => (
   <FormikResults
     onSubmit={() => {
@@ -155,6 +165,8 @@ export const _SelectField: Story = ({
               options={autofillOptions}
               raw={raw}
               required={required}
+              clearButtonText={clearButtonText}
+              clearButtonProps={clearButtonProps}
             />
             <Field name="autoFill1" type="text" label="Autofill Value 1" />
             <Field name="autoFill2" type="text" label="Autofill Value 2" />
@@ -173,6 +185,8 @@ export const _SelectField: Story = ({
             options={options}
             raw={raw}
             required={required}
+            clearButtonText={clearButtonText}
+            clearButtonProps={clearButtonProps}
           />
         )}
         <Button color="primary" type="submit">

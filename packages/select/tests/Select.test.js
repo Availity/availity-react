@@ -857,4 +857,69 @@ describe('Select', () => {
       expect(getByText('Foo')).toBeDefined();
     });
   });
+
+  test('when isClearable should display the clear button', async () => {
+    const { getByText } = render(
+      <Form
+        initialValues={{
+          singleSelect: undefined,
+        }}
+        onSubmit={() => {}}
+        validationSchema={singleValueSchema('singleSelect')}
+      >
+        <Select name="singleSelect" options={options} data-testid="single-select" isClearable />
+        <Button type="submit">Submit</Button>
+      </Form>
+    );
+
+    const clearButton = await waitFor(() => getByText('clear'));
+    expect(clearButton).toBeDefined();
+  });
+
+  test('when isClearable should display clear button with custom `clear` text when provided', async () => {
+    const { getByText } = render(
+      <Form
+        initialValues={{
+          singleSelect: undefined,
+        }}
+        onSubmit={() => {}}
+        validationSchema={singleValueSchema('singleSelect')}
+      >
+        <Select
+          name="singleSelect"
+          options={options}
+          data-testid="single-select"
+          isClearable
+          clearButtonText="Clear!"
+        />
+        <Button type="submit">Submit</Button>
+      </Form>
+    );
+    const clearButton = await waitFor(() => getByText('Clear!'));
+    expect(clearButton).toBeDefined();
+  });
+
+  test('when isClearable should set clearButtonProps', async () => {
+    const { getByText } = render(
+      <Form
+        initialValues={{
+          singleSelect: undefined,
+        }}
+        onSubmit={() => {}}
+        validationSchema={singleValueSchema('singleSelect')}
+      >
+        <Select
+          name="singleSelect"
+          options={options}
+          data-testid="single-select"
+          isClearable
+          clearButtonText="Clear!"
+          clearButtonProps={{ disabled: true }}
+        />
+        <Button type="submit">Submit</Button>
+      </Form>
+    );
+    const clearButton = await waitFor(() => getByText('Clear!'));
+    expect(clearButton).toBeDisabled();
+  });
 });
