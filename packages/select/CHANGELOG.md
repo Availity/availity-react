@@ -2,6 +2,17 @@
 
 This file was generated using [@jscutlery/semver](https://github.com/jscutlery/semver).
 
+# [3.5.0](https://github.com/Availity/availity-react/compare/@availity/select@3.4.1...@availity/select@3.5.0) (2023-04-14)
+
+
+### Features
+
+* **select:** add ability to configure clear button text and not have it hard-coded with a lower case c, as well as other select props ([8ca554a](https://github.com/Availity/availity-react/commit/8ca554a4bbc76600491bb57f89287efaf19450f1))
+* **select:** update disabling of clear button to be the default behavior ([412fe9b](https://github.com/Availity/availity-react/commit/412fe9b03419449b8959d40529a30f3b1e591781))
+* **select:** update documentation and wording ([e79cba0](https://github.com/Availity/availity-react/commit/e79cba0e4904093c1c004864b13750691f37545e))
+
+
+
 ## [3.4.2-alpha.0](https://github.com/Availity/availity-react/compare/@availity/select@3.4.1...@availity/select@3.4.2-alpha.0) (2023-04-10)
 
 
