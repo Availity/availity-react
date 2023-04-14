@@ -189,6 +189,8 @@ const Select = ({
   components: componentOverrides,
   required,
   clearButtonClassName,
+  clearButtonText = 'clear',
+  clearButtonProps = {},
   ...attributes
 }) => {
   const [{ onChange, value: fieldValue, ...field }, { touched, error: fieldError }] = useField({
@@ -445,8 +447,10 @@ const Select = ({
             attributes['aria-label'] || name.replace(/[\W_]+/g, ' ').replace(/[A-Z]/g, ' $&') || ''
           }`}
           onClick={() => onChangeHandler(attributes.isMulti ? [] : null)}
+          disabled={!fieldValue || (Array.isArray(fieldValue) && fieldValue.length === 0)}
+          {...clearButtonProps}
         >
-          clear
+          {clearButtonText}
         </button>
       ) : null}
     </div>
@@ -500,6 +504,10 @@ Select.propTypes = {
   required: PropTypes.bool,
   /** Class names to add to clear button (only available when isMulti or isClearable). Default: btn btn-link link */
   clearButtonClassName: PropTypes.string,
+  /** Text that should be displayed in the clear button (only available when isMulti or isClearable). Default: clear */
+  clearButtonText: PropTypes.string,
+  /** Additional properties that should be set on the clear button (only available when isMulti or isClearable). */
+  clearButtonProps: PropTypes.object,
 };
 
 components.Option.propTypes = {

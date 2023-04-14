@@ -124,6 +124,14 @@ Adds a `Select all` option ( when `isMulti` is `true`). Note: `allowSelectAll` i
 
 Class names to add to clear button (only available when `isMulti` or `isClearable`). **Default:** `btn btn-link link`
 
+#### `clearButtonText?: string`
+
+Text that should be displayed in the clear button (only available when `isMulti` or `isClearable`). **Default:** `clear`
+
+#### `clearButtonProps?: ButtonProps`
+
+Additional properties that should be set on the clear button (only available when `isMulti` or `isClearable`).
+
 ### `waitUntilFocused?: boolean`
 
 When true, the network request is not made until the dropdown has been focused. Defaults to `false`.

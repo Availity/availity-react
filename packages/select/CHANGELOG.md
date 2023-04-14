@@ -2,6 +2,15 @@
 
 This file was generated using [@jscutlery/semver](https://github.com/jscutlery/semver).
 
+## [3.4.2-alpha.0](https://github.com/Availity/availity-react/compare/@availity/select@3.4.1...@availity/select@3.4.2-alpha.0) (2023-04-10)
+
+
+### Features
+
+* **select:** add ability to configure clear button text and not have it hard-coded with a lower case c, as well as other select props ([8ca554a](https://github.com/Availity/availity-react/commit/8ca554a4bbc76600491bb57f89287efaf19450f1))
+
+
+
 ## [3.4.1](https://github.com/Availity/availity-react/compare/@availity/select@3.4.0...@availity/select@3.4.1) (2023-02-14)
 
 
