@@ -922,4 +922,220 @@ describe('Select', () => {
     const clearButton = await waitFor(() => getByText('Clear!'));
     expect(clearButton).toBeDisabled();
   });
+
+  test('when isClearable and has no value should disable the clear button', async () => {
+    const { getByText } = render(
+      <Form
+        initialValues={{
+          singleSelect: undefined,
+        }}
+        onSubmit={() => {}}
+        validationSchema={singleValueSchema('singleSelect')}
+      >
+        <Select
+          name="singleSelect"
+          options={options}
+          data-testid="single-select"
+          isClearable
+          clearButtonText="Clear!"
+        />
+        <Button type="submit">Submit</Button>
+      </Form>
+    );
+    const clearButton = await waitFor(() => getByText('Clear!'));
+    expect(clearButton).toBeDisabled();
+  });
+
+  test('when isClearable and isMulti and has no value should disable the clear button', async () => {
+    const { getByText } = render(
+      <Form
+        initialValues={{
+          singleSelect: undefined,
+        }}
+        onSubmit={() => {}}
+        validationSchema={singleValueSchema('singleSelect')}
+      >
+        <Select
+          name="singleSelect"
+          options={options}
+          isMulti
+          data-testid="single-select"
+          isClearable
+          clearButtonText="Clear!"
+        />
+        <Button type="submit">Submit</Button>
+      </Form>
+    );
+    const clearButton = await waitFor(() => getByText('Clear!'));
+    expect(clearButton).toBeDisabled();
+  });
+
+  test('when isClearable and has value should enable the clear button', async () => {
+    const { getByText } = render(
+      <Form
+        initialValues={{
+          singleSelect: options[0],
+        }}
+        onSubmit={() => {}}
+        validationSchema={singleValueSchema('singleSelect')}
+      >
+        <Select
+          name="singleSelect"
+          options={options}
+          data-testid="single-select"
+          isClearable
+          clearButtonText="Clear!"
+        />
+        <Button type="submit">Submit</Button>
+      </Form>
+    );
+    const clearButton = await waitFor(() => getByText('Clear!'));
+    expect(clearButton).not.toBeDisabled();
+  });
+
+  test('when isClearable and isMulti and has value should enable the clear button', async () => {
+    const { getByText } = render(
+      <Form
+        initialValues={{
+          singleSelect: options[0],
+        }}
+        onSubmit={() => {}}
+        validationSchema={singleValueSchema('singleSelect')}
+      >
+        <Select
+          name="singleSelect"
+          options={options}
+          isMulti
+          data-testid="single-select"
+          isClearable
+          clearButtonText="Clear!"
+        />
+        <Button type="submit">Submit</Button>
+      </Form>
+    );
+    const clearButton = await waitFor(() => getByText('Clear!'));
+    expect(clearButton).not.toBeDisabled();
+  });
+
+  test('when isClearable and has no value should enable the clear button after selecting value', async () => {
+    const { container, getByText } = render(
+      <Form
+        initialValues={{
+          singleSelect: undefined,
+        }}
+        onSubmit={() => {}}
+        validationSchema={singleValueSchema('singleSelect')}
+      >
+        <Select
+          name="singleSelect"
+          options={options}
+          data-testid="single-select"
+          isClearable
+          clearButtonText="Clear!"
+        />
+        <Button type="submit">Submit</Button>
+      </Form>
+    );
+
+    const clearButton = await waitFor(() => getByText('Clear!'));
+    expect(clearButton).toBeDisabled();
+
+    await selectItem(container, getByText, 'Option 1');
+
+    await waitFor(() => {
+      expect(clearButton).not.toBeDisabled();
+    });
+  });
+
+  test('when isClearable and isMulti and has no value should enable the clear button after selecting value', async () => {
+    const { container, getByText } = render(
+      <Form
+        initialValues={{
+          singleSelect: undefined,
+        }}
+        onSubmit={() => {}}
+        validationSchema={singleValueSchema('singleSelect')}
+      >
+        <Select
+          name="singleSelect"
+          options={options}
+          isMulti
+          data-testid="single-select"
+          isClearable
+          clearButtonText="Clear!"
+        />
+        <Button type="submit">Submit</Button>
+      </Form>
+    );
+
+    const clearButton = await waitFor(() => getByText('Clear!'));
+    expect(clearButton).toBeDisabled();
+
+    await selectItem(container, getByText, 'Option 1');
+
+    await waitFor(() => {
+      expect(clearButton).not.toBeDisabled();
+    });
+  });
+
+  test('when isClearable and has value should disable the clear button after clearing the value', async () => {
+    const { getByText } = render(
+      <Form
+        initialValues={{
+          singleSelect: options[0],
+        }}
+        onSubmit={() => {}}
+        validationSchema={singleValueSchema('singleSelect')}
+      >
+        <Select
+          name="singleSelect"
+          options={options}
+          data-testid="single-select"
+          isClearable
+          clearButtonText="Clear!"
+        />
+        <Button type="submit">Submit</Button>
+      </Form>
+    );
+
+    const clearButton = await waitFor(() => getByText('Clear!'));
+    expect(clearButton).not.toBeDisabled();
+
+    fireEvent.click(clearButton);
+
+    await waitFor(() => {
+      expect(clearButton).toBeDisabled();
+    });
+  });
+
+  test('when isClearable and isMulti and has value should disable the clear button after clearing the value', async () => {
+    const { getByText } = render(
+      <Form
+        initialValues={{
+          singleSelect: options[0],
+        }}
+        onSubmit={() => {}}
+        validationSchema={singleValueSchema('singleSelect')}
+      >
+        <Select
+          name="singleSelect"
+          options={options}
+          isMulti
+          data-testid="single-select"
+          isClearable
+          clearButtonText="Clear!"
+        />
+        <Button type="submit">Submit</Button>
+      </Form>
+    );
+
+    const clearButton = await waitFor(() => getByText('Clear!'));
+    expect(clearButton).not.toBeDisabled();
+
+    fireEvent.click(clearButton);
+
+    await waitFor(() => {
+      expect(clearButton).toBeDisabled();
+    });
+  });
 });

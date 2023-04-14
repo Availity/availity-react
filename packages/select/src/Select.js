@@ -447,6 +447,7 @@ const Select = ({
             attributes['aria-label'] || name.replace(/[\W_]+/g, ' ').replace(/[A-Z]/g, ' $&') || ''
           }`}
           onClick={() => onChangeHandler(attributes.isMulti ? [] : null)}
+          disabled={!fieldValue || (Array.isArray(fieldValue) && fieldValue.length === 0)}
           {...clearButtonProps}
         >
           {clearButtonText}
