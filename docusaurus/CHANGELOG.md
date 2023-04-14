@@ -2,6 +2,16 @@
 
 This file was generated using [@jscutlery/semver](https://github.com/jscutlery/semver).
 
+# [1.9.0](https://github.com/Availity/availity-react/compare/@availity/docusaurus@1.8.1...@availity/docusaurus@1.9.0) (2023-04-14)
+
+
+### Features
+
+* **select:** add ability to configure clear button text and not have it hard-coded with a lower case c, as well as other select props ([8ca554a](https://github.com/Availity/availity-react/commit/8ca554a4bbc76600491bb57f89287efaf19450f1))
+* **select:** update documentation and wording ([e79cba0](https://github.com/Availity/availity-react/commit/e79cba0e4904093c1c004864b13750691f37545e))
+
+
+
 ## [1.8.1](https://github.com/Availity/availity-react/compare/@availity/docusaurus@1.8.0...@availity/docusaurus@1.8.1) (2023-02-23)
 
 
