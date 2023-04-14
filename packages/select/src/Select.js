@@ -505,7 +505,7 @@ Select.propTypes = {
   clearButtonClassName: PropTypes.string,
   /** Text that should be displayed in the clear button (only available when isMulti or isClearable). Default: clear */
   clearButtonText: PropTypes.string,
-  /** Additional properties other that should be set on the clear button (only available when isMulti or isClearable). */
+  /** Additional properties that should be set on the clear button (only available when isMulti or isClearable). */
   clearButtonProps: PropTypes.object,
 };
 

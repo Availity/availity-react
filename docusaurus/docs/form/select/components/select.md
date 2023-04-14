@@ -128,9 +128,9 @@ Class names to add to clear button (only available when `isMulti` or `isClearabl
 
 Text that should be displayed in the clear button (only available when `isMulti` or `isClearable`). **Default:** `clear`
 
-#### `disableClearButtonWhenNoValue?: boolean`
+#### `clearButtonProps?: ButtonProps`
 
-Disable the clear button if no value is populated (only available when `isMulti` or `isClearable`). **Default:** `false`
+Additional properties that should be set on the clear button (only available when `isMulti` or `isClearable`).
 
 ### `waitUntilFocused?: boolean`
 
