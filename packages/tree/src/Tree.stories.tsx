@@ -20,8 +20,7 @@ export default {
   },
 } as Meta;
 
-export const Default: Story = ({ enableSearch, searchLabel, expandAll, selectable, expandParent }) => {
-  const [newSelectedList, setNewSelectedList] = useState<TreeItem[]>([]);
+export const Default: Story = ({ enableSearch, searchLabel, expandAll, selectable, displayDisabledItems }) => {
   const [isTreeVisible, setIsTreeVisible] = useState(true);
 
   const flatTreeItems: TreeItem[] = [
@@ -52,22 +51,26 @@ export const Default: Story = ({ enableSearch, searchLabel, expandAll, selectabl
     },
     {
       id: '7',
-      name: 'Child Test 3',
+      name: 'Child Test 4',
+      isExpanded: true,
+      isDisabled: true,
       parentId: '1',
     },
     {
       id: '6',
-      name: 'Child Test 4',
-      parentId: '7',
+      name: 'Child Test 5',
+      isSelected: true,
+      parentId: '2',
     },
     {
       id: '8',
-      name: 'Child Test 5',
-      parentId: '7',
+      name: 'Child Test 6',
+      parentId: '2',
     },
     {
       id: '9',
       name: '2nd Root',
+      isExpanded: true,
     },
     {
       id: '10',
@@ -76,11 +79,15 @@ export const Default: Story = ({ enableSearch, searchLabel, expandAll, selectabl
     },
   ];
 
-  const tree = buildTree(flatTreeItems, [flatTreeItems.find((o) => !o.parentId)?.id || '']);
+  const tree = buildTree(flatTreeItems, ['1']);
   const [items, setItems] = useState(tree);
   const [initialState] = useState<TreeItem[]>(cloneDeep(tree));
 
-  const [selectedItems] = useState<TreeItem[]>([items[0]]);
+  const [selectedItems, setSelectedItems] = useState<TreeItem[]>([items[0]]);
+  const [newSelectedList, setNewSelectedList] = useState<TreeItem[]>([
+    items[0],
+    ...flatTreeItems.filter((item) => item.isSelected === true),
+  ]);
 
   const onItemsSelected = useCallback((selected: TreeItem[]): void => {
     setNewSelectedList(selected);
@@ -109,6 +116,7 @@ export const Default: Story = ({ enableSearch, searchLabel, expandAll, selectabl
             onItemsSelected={onItemsSelected}
             selectedItems={selectedItems}
             selectable={selectable}
+            displayDisabledItems={displayDisabledItems}
           />
         )}
       </div>
@@ -149,4 +157,5 @@ Default.args = {
   searchLabel: 'Search Me',
   expandAll: false,
   selectable: true,
+  displayDisabledItems: true,
 };
