@@ -2,6 +2,15 @@
 
 This file was generated using [@jscutlery/semver](https://github.com/jscutlery/semver).
 
+## [0.4.1-alpha.1](https://github.com/Availity/availity-react/compare/@availity/tree@0.4.1-alpha.0...@availity/tree@0.4.1-alpha.1) (2023-04-18)
+
+
+### Bug Fixes
+
+* **tree:** fix nested selected items issue ([55338c0](https://github.com/Availity/availity-react/commit/55338c096eeb895ff27140eed2d80c930c5b2f02))
+
+
+
 ## [0.4.1-alpha.0](https://github.com/Availity/availity-react/compare/@availity/tree@0.4.0...@availity/tree@0.4.1-alpha.0) (2023-04-18)
 
 
