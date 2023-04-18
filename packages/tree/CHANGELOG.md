@@ -2,6 +2,15 @@
 
 This file was generated using [@jscutlery/semver](https://github.com/jscutlery/semver).
 
+## [0.4.1-alpha.0](https://github.com/Availity/availity-react/compare/@availity/tree@0.4.0...@availity/tree@0.4.1-alpha.0) (2023-04-18)
+
+
+### Features
+
+* **tree:** prevent item from being selected when hidden or disabled, add option to hide disabled items, misc bug fixes with searching and selecting ([b9ea327](https://github.com/Availity/availity-react/commit/b9ea3272cd4529a4df7a62a2e48581289a2f3d6a))
+
+
+
 # [0.4.0](https://github.com/Availity/availity-react/compare/@availity/tree@0.3.0...@availity/tree@0.4.0) (2023-03-17)
 
 
