@@ -120,7 +120,9 @@ const Tree = ({
 
   useEffect(() => {
     setSelectedList(selectedItems);
+  }, [selectedItems]);
 
+  useEffect(() => {
     if (!treeItems) {
       return;
     }
@@ -130,11 +132,11 @@ const Tree = ({
         item.isExpanded = item.isExpanded || expandAll || false;
         item.isDisabled = item.isDisabled || false;
         item.isHidden = (item.isDisabled && displayDisabledItems === false) || item.isHidden || false;
-        item.isSelected = selectedItems.map((item) => item.id).includes(item.id) || item.isSelected || false;
+        item.isSelected = selectedList.map((item) => item.id).includes(item.id) || item.isSelected || false;
         item.areAllChildrenSelected = areAllChildrenSelected(item);
       });
     }
-  }, [treeItems, expandAll, selectedItems, displayDisabledItems]);
+  }, [treeItems, expandAll, selectedList, displayDisabledItems]);
 
   useEffect(() => {
     const canExpandCollapseItems = (items: TreeItem[]) => {
@@ -389,9 +391,7 @@ const Tree = ({
                               name={`chkSelect_${item.id}`}
                               data-testid={`chk-tree-view-item-select-${item.id}`}
                               type="checkbox"
-                              checked={
-                                selectedList.map((item) => item.id).includes(item.id) || item.isSelected || false
-                              }
+                              checked={item.isSelected || false}
                               onChange={() => toggleSelect(item)}
                             />
                           )}
@@ -445,7 +445,7 @@ const Tree = ({
                     isRoot={false}
                     items={item.children}
                     parentId={item.id}
-                    selectedItems={selectedItems}
+                    selectedItems={selectedList}
                     onItemsSelected={onChildrenSelected}
                     onItemsExpanded={onChildrenExpanded}
                     expandAll={expandAll}
