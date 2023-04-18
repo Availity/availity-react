@@ -2,6 +2,15 @@
 
 This file was generated using [@jscutlery/semver](https://github.com/jscutlery/semver).
 
+## [7.1.4](https://github.com/Availity/availity-react/compare/@availity/feedback@7.1.3...@availity/feedback@7.1.4) (2023-04-18)
+
+
+### Bug Fixes
+
+* **feedback:** disable button on submit to avoid log spam ([#1269](https://github.com/Availity/availity-react/issues/1269)) ([5cfc7b5](https://github.com/Availity/availity-react/commit/5cfc7b5be9de5d8e3705adef1374a1858c30a7cd))
+
+
+
 ## [7.1.3](https://github.com/Availity/availity-react/compare/@availity/feedback@7.1.2...@availity/feedback@7.1.3) (2022-12-01)
 
 
