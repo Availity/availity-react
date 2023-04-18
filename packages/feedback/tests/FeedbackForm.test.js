@@ -24,6 +24,11 @@ avRegionsApi.getCurrentRegion = jest.fn(() =>
 afterEach(cleanup);
 
 describe('FeedbackForm', () => {
+  beforeEach(() => {
+    // reset log messages api mock
+    avLogMessagesApi.info.mockClear();
+    avLogMessagesApi.info = jest.fn(() => Promise.resolve());
+  });
   test('should disable submit button until smile selected', () => {
     const { getByText } = render(<FeedbackForm name="Payer Space" />);
 
@@ -82,6 +87,36 @@ describe('FeedbackForm', () => {
       },
       { timeout: 2500 }
     );
+  });
+
+  test('should submit and disable button when clicked', async () => {
+    // mock log messages api to return a promise that resolves after 3 seconds
+    avLogMessagesApi.info = jest.fn(() => new Promise((resolve) => setTimeout(resolve, 3000)));
+    const { getByLabelText, getByText } = render(<FeedbackForm name="Payer Space" />);
+
+    // Simulate the Click
+    fireEvent.click(getByText('Smiley face'));
+
+    // Get the Input Node for the Feedback
+    const feedbackNode = getByLabelText('What do you like?');
+
+    // Simulate a user typing the value below into the field
+    fireEvent.change(feedbackNode, {
+      target: { value: 'some good text here' },
+    });
+
+    // find the submit button
+    const submitButton = getByText('Send Feedback');
+    // click the submit button twice
+    fireEvent.click(submitButton);
+    // wait for the button to be disabled
+    await waitFor(() => expect(submitButton).toBeDisabled());
+    fireEvent.click(submitButton);
+    // wait for log messages to have been called once
+    await waitFor(() => expect(avLogMessagesApi.info).toHaveBeenCalledTimes(1));
+
+    // wait for success message to show
+    await waitFor(() => expect(getByText('Thank you for your feedback.')).toBeInTheDocument(), { timeout: 5000 });
   });
 
   test('should submit with feedback text value when enter is pressed', async () => {

@@ -45,8 +45,10 @@ const FeedbackForm = ({
 }) => {
   const [active, setActive] = useState(null);
   const [sent, setSent] = useState(null);
+  const [loading, setLoading] = useState(null);
   const ref = useRef();
   const sendFeedback = async ({ smileField, ...values }) => {
+    setLoading(true);
     const response = await avRegionsApi.getCurrentRegion();
 
     await analytics.info({
@@ -62,6 +64,7 @@ const FeedbackForm = ({
     });
 
     setSent(values);
+    setLoading(false);
   };
 
   // Close the Modal once sent after 2 seconds
@@ -238,7 +241,7 @@ const FeedbackForm = ({
             }}
             type="submit"
             color="primary"
-            disabled={!active}
+            disabled={Boolean(!active || loading)}
           >
             Send Feedback
           </Button>
