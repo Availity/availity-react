@@ -383,7 +383,7 @@ const Tree = ({
                 <li data-testid={`tree-view-item-${item.id}`}>
                   <div>
                     <Row>
-                      <Col sm="7">
+                      <Col xs="10" sm="9">
                         <FormGroup check>
                           {!item.isDisabled && selectable && (
                             <Input
@@ -407,7 +407,7 @@ const Tree = ({
                       </Col>
 
                       {item.children && item.children.length > 0 && (
-                        <Col sm="5">
+                        <Col xs="2" sm="3">
                           <div className="form-inline d-flex justify-content-end ml-auto align-items-center">
                             {selectable && !item.isDisabled && (
                               <FormGroup check>
