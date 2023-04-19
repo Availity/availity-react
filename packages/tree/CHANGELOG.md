@@ -2,6 +2,15 @@
 
 This file was generated using [@jscutlery/semver](https://github.com/jscutlery/semver).
 
+## [0.4.1-alpha.3](https://github.com/Availity/availity-react/compare/@availity/tree@0.4.1-alpha.2...@availity/tree@0.4.1-alpha.3) (2023-04-19)
+
+
+### Bug Fixes
+
+* **tree:** fix overall select and collapse behavior when filtering ([d3869df](https://github.com/Availity/availity-react/commit/d3869df78780986b8b4065bf9b446ae94580aa2d))
+
+
+
 ## [0.4.1-alpha.2](https://github.com/Availity/availity-react/compare/@availity/tree@0.4.1-alpha.1...@availity/tree@0.4.1-alpha.2) (2023-04-19)
 
 
