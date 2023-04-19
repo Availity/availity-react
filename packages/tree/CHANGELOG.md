@@ -2,6 +2,15 @@
 
 This file was generated using [@jscutlery/semver](https://github.com/jscutlery/semver).
 
+## [0.4.1-alpha.2](https://github.com/Availity/availity-react/compare/@availity/tree@0.4.1-alpha.1...@availity/tree@0.4.1-alpha.2) (2023-04-19)
+
+
+### Bug Fixes
+
+* **tree:** tweak when tree is displayed under small sizes ([47f613a](https://github.com/Availity/availity-react/commit/47f613ac2c06b88a5e4af6b08a2094b1debf2355))
+
+
+
 ## [0.4.1-alpha.1](https://github.com/Availity/availity-react/compare/@availity/tree@0.4.1-alpha.0...@availity/tree@0.4.1-alpha.1) (2023-04-18)
 
 
