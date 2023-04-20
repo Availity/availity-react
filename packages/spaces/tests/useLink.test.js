@@ -34,14 +34,12 @@ avWebQLApi.create.mockResolvedValue({
   },
 });
 
-const buildSpacesLink = (space) => (
+const buildSpacesLink = (space, linkAttributes) => (
   <SpacesLink
     id={`application-link-${space.id}`}
     titleTag="h5"
     space={space}
-    linkAttributes={{
-      spaceId: space.id,
-    }}
+    linkAttributes={linkAttributes}
     clientId="my-client-id"
     linkStyle="card"
     title={space.link.text}
@@ -65,13 +63,19 @@ describe('useLink', () => {
       text: 'the link',
       target: '_self',
     },
+    parents: [
+      {
+        id: 'parentId',
+        type: 'space',
+      },
+    ],
   };
 
   it('should not call linkUrl onclick with no url', async () => {
     space.id = '1';
     space.configurationId = '1';
 
-    const { container } = render(buildSpacesLink(space));
+    const { container } = render(buildSpacesLink(space, { spaceId: space.id }));
 
     fireEvent.click(container);
     await waitFor(() => {
@@ -84,7 +88,7 @@ describe('useLink', () => {
     space.id = '2';
     space.configurationId = '2';
 
-    const { container } = render(buildSpacesLink(space));
+    const { container } = render(buildSpacesLink(space, { spaceId: space.id }));
 
     fireEvent.keyPress(container, { charCode: 13 });
     await waitFor(() => {
@@ -98,7 +102,7 @@ describe('useLink', () => {
     space.configurationId = '3';
     space.link.url = '/path/to/url';
 
-    const { container } = render(buildSpacesLink(space));
+    const { container } = render(buildSpacesLink(space, { spaceId: space.id }));
 
     const linkHeader3 = await waitFor(() => container.querySelector('#app-title-3'));
     fireEvent.click(linkHeader3);
@@ -113,7 +117,7 @@ describe('useLink', () => {
     space.configurationId = '4';
     space.link.url = '/path/to/url';
 
-    const { container } = render(buildSpacesLink(space));
+    const { container } = render(buildSpacesLink(space, { spaceId: space.id }));
 
     const linkHeader4 = await waitFor(() => container.querySelector('#app-title-4'));
 
@@ -129,7 +133,7 @@ describe('useLink', () => {
     space.configurationId = '5';
     space.link.url = 'https://www.google.com';
 
-    const { container } = render(buildSpacesLink(space));
+    const { container } = render(buildSpacesLink(space, { spaceId: space.id }));
 
     const linkHeader5 = await waitFor(() => container.querySelector('#app-title-5'));
     fireEvent.click(linkHeader5);
@@ -144,13 +148,65 @@ describe('useLink', () => {
     space.configurationId = '6';
     space.link.url = 'https://www.google.com';
 
-    const { container } = render(buildSpacesLink(space));
+    const { container } = render(buildSpacesLink(space, { spaceId: space.id }));
 
     const linkHeader6 = await waitFor(() => container.querySelector('#app-title-6'));
 
     fireEvent.keyPress(linkHeader6, { charCode: 13 });
     await waitFor(() => {
       expect(window.open).toHaveBeenCalledWith('https://www.google.com', '_self');
+      expect(nativeForm).not.toHaveBeenCalled();
+    });
+  });
+
+  it('should not call linkUrl if multiPayerModal used (multiple space parents)', async () => {
+    space.id = '6';
+    space.configurationId = '6';
+    space.link.url = '/path/to/url';
+    space.parents = [
+      {
+        id: 'parentId',
+        type: 'space',
+      },
+      {
+        id: 'parentId2',
+        type: 'space',
+      },
+    ];
+
+    const { container } = render(buildSpacesLink(space));
+
+    const linkHeader6 = await waitFor(() => container.querySelector('#app-title-6'));
+
+    fireEvent.keyPress(linkHeader6, { charCode: 13 });
+    await waitFor(() => {
+      expect(window.open).not.toHaveBeenCalled();
+      expect(nativeForm).not.toHaveBeenCalled();
+    });
+  });
+
+  it('should call linkUrl if multiPayerModal used but linkAttributes.spaceId is passed', async () => {
+    space.id = '6';
+    space.configurationId = '6';
+    space.link.url = '/path/to/url';
+    space.parents = [
+      {
+        id: 'parentId',
+        type: 'space',
+      },
+      {
+        id: 'parentId2',
+        type: 'space',
+      },
+    ];
+
+    const { container } = render(buildSpacesLink(space, { spaceId: space.id }));
+
+    const linkHeader6 = await waitFor(() => container.querySelector('#app-title-6'));
+
+    fireEvent.keyPress(linkHeader6, { charCode: 13 });
+    await waitFor(() => {
+      expect(window.open).toHaveBeenCalledWith('/path/to/url?spaceId=6', '_self');
       expect(nativeForm).not.toHaveBeenCalled();
     });
   });
@@ -163,7 +219,7 @@ describe('useLink', () => {
 
     const { container, findByText } = render(
       <Spaces clientId="my-client-id" spaces={[space]}>
-        {buildSpacesLink(space)}
+        {buildSpacesLink(space, { spaceId: space.id })}
       </Spaces>
     );
 
@@ -190,7 +246,7 @@ describe('useLink', () => {
 
     const { container, findByText } = render(
       <Spaces clientId="my-client-id" spaces={[space]}>
-        {buildSpacesLink(space)}
+        {buildSpacesLink(space, { spaceId: space.id })}
       </Spaces>
     );
 
@@ -217,7 +273,7 @@ describe('useLink', () => {
       ssoId: 'ssoId',
     };
 
-    const { container } = render(buildSpacesLink(space));
+    const { container } = render(buildSpacesLink(space, { spaceId: space.id }));
 
     const linkHeader9 = await waitFor(() => container.querySelector('#app-title-9'));
     fireEvent.click(linkHeader9);
@@ -240,7 +296,7 @@ describe('useLink', () => {
       ssoId: 'ssoId',
     };
 
-    const { container } = render(buildSpacesLink(space));
+    const { container } = render(buildSpacesLink(space, { spaceId: space.id }));
 
     const linkHeader10 = await waitFor(() => container.querySelector('#app-title-10'));
     fireEvent.keyPress(linkHeader10, { charCode: 13 });
