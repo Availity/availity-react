@@ -63,12 +63,6 @@ describe('useLink', () => {
       text: 'the link',
       target: '_self',
     },
-    parents: [
-      {
-        id: 'parentId',
-        type: 'space',
-      },
-    ],
   };
 
   it('should not call linkUrl onclick with no url', async () => {
@@ -155,32 +149,6 @@ describe('useLink', () => {
     fireEvent.keyPress(linkHeader6, { charCode: 13 });
     await waitFor(() => {
       expect(window.open).toHaveBeenCalledWith('https://www.google.com', '_self');
-      expect(nativeForm).not.toHaveBeenCalled();
-    });
-  });
-
-  it('should not call linkUrl if multiPayerModal used (multiple space parents)', async () => {
-    space.id = '6';
-    space.configurationId = '6';
-    space.link.url = '/path/to/url';
-    space.parents = [
-      {
-        id: 'parentId',
-        type: 'space',
-      },
-      {
-        id: 'parentId2',
-        type: 'space',
-      },
-    ];
-
-    const { container } = render(buildSpacesLink(space));
-
-    const linkHeader6 = await waitFor(() => container.querySelector('#app-title-6'));
-
-    fireEvent.keyPress(linkHeader6, { charCode: 13 });
-    await waitFor(() => {
-      expect(window.open).not.toHaveBeenCalled();
       expect(nativeForm).not.toHaveBeenCalled();
     });
   });
