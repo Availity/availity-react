@@ -2,6 +2,15 @@
 
 This file was generated using [@jscutlery/semver](https://github.com/jscutlery/semver).
 
+## [0.4.1-alpha.4](https://github.com/Availity/availity-react/compare/@availity/tree@0.4.1-alpha.3...@availity/tree@0.4.1-alpha.4) (2023-04-21)
+
+
+### Bug Fixes
+
+* **tree:** refactor to fix overall data and state change issues ([eca7fd1](https://github.com/Availity/availity-react/commit/eca7fd1ba039845a58fc7b929e31c465d9a635b2))
+
+
+
 ## [0.4.1-alpha.3](https://github.com/Availity/availity-react/compare/@availity/tree@0.4.1-alpha.2...@availity/tree@0.4.1-alpha.3) (2023-04-19)
 
 
