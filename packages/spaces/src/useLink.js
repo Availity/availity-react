@@ -74,7 +74,7 @@ export default (spaceOrSpaceId, { clientId: propsClientId, linkAttributes = {} }
   } else if (metadata?.disclaimerId) {
     mediaProps.onClick = legacySso;
     mediaProps.onKeyPress = (e) => e.charCode === 13 && legacySso(e);
-  } else if (parentPayerSpaces.length > 1) {
+  } else if (parentPayerSpaces.length > 1 && !linkAttributes.spaceId) {
     mediaProps.onClick = openMultiPayerModal;
     mediaProps.onKeyPress = (e) => e.charCode === 13 && openMultiPayerModal(e);
   } else {

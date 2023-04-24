@@ -85,13 +85,7 @@ avWebQLApi.create.mockResolvedValue({
 
 const MultiPayerModal = () => (
   <Spaces spaceIds={['1']} clientId="my-client-id">
-    <SpacesLink
-      spaceId="1"
-      clientId="my-client-id"
-      linkAttributes={{
-        spaceId: '1',
-      }}
-    />
+    <SpacesLink spaceId="1" clientId="my-client-id" />
   </Spaces>
 );
 
