@@ -2,6 +2,16 @@
 
 This file was generated using [@jscutlery/semver](https://github.com/jscutlery/semver).
 
+## [6.5.9](https://github.com/Availity/availity-react/compare/@availity/spaces@6.5.8...@availity/spaces@6.5.9) (2023-04-24)
+
+
+### Bug Fixes
+
+* **spaces:** append the passed spaceId over the first parent if present ([17aeb51](https://github.com/Availity/availity-react/commit/17aeb51ec7c4a390d8360856ef81743073b25d4a))
+* **spaces:** useLink don't show multipayermodal if spaceId is passed ([bf5e084](https://github.com/Availity/availity-react/commit/bf5e084200e589e279f9ca6f730bebb9909b7aff))
+
+
+
 ## [6.5.8](https://github.com/Availity/availity-react/compare/@availity/spaces@6.5.7...@availity/spaces@6.5.8) (2023-03-14)
 
 
