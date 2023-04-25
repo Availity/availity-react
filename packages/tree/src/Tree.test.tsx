@@ -1,5 +1,6 @@
 import React from 'react';
 import { render, waitFor, fireEvent, screen, cleanup } from '@testing-library/react';
+import cloneDeep from 'lodash/cloneDeep';
 import Tree, { buildTree } from './Tree';
 import TreeItem from './TreeItem';
 
@@ -127,8 +128,14 @@ describe('Tree', () => {
     cleanup();
   });
 
+  beforeEach(() => {
+    cleanup();
+    jest.resetModules();
+  });
+
   test('should render parent with children', async () => {
-    render(<Tree items={[...items]} expandAll />);
+    const items = cloneDeep(buildTree(flatTreeItems));
+    render(<Tree items={items} expandAll />);
 
     const treeElement = await waitFor(() => screen.getByTestId('tree-view-parent'));
     expect(treeElement).not.toBeNull();
@@ -147,11 +154,13 @@ describe('Tree', () => {
   });
 
   test('should select items on load', async () => {
+    const items = cloneDeep(buildTree(flatTreeItems));
+
     const onItemsSelected = jest.fn();
 
     render(
       <Tree
-        items={[...items]}
+        items={items}
         expandAll
         selectable
         onItemsSelected={onItemsSelected}
@@ -183,6 +192,8 @@ describe('Tree', () => {
   });
 
   test('should remove checkbox when item is disabled and mute text', async () => {
+    const items = cloneDeep(buildTree(flatTreeItems));
+
     const { queryByTestId } = render(<Tree items={items} expandAll />);
 
     const treeElement = await waitFor(() => screen.getByTestId('tree-view-parent'));
@@ -196,40 +207,56 @@ describe('Tree', () => {
   test('should expand item on click', async () => {
     const onItemExpanded = jest.fn();
 
-    const theseItems = [...items];
-    theseItems.forEach((item) => (item.isExpanded = false));
-    const { queryByTestId } = render(<Tree items={[...items]} expandAll={false} onItemsExpanded={onItemExpanded} />);
+    const items = cloneDeep(buildTree(flatTreeItems));
+    const { queryByTestId } = render(<Tree items={items} expandAll={false} onItemsExpanded={onItemExpanded} />);
 
+    /** Check to see that the tre view is even rendered. */
     const treeElement = await waitFor(() => screen.getByTestId('tree-view-parent'));
     expect(treeElement).not.toBeNull();
 
-    expect(queryByTestId('tree-view-2')).toBeNull();
+    /** Root items should be displayed. */
+    expect(queryByTestId('tree-view-item-1')).not.toBeNull();
+    expect(queryByTestId('tree-view-item-8')).not.toBeNull();
+
+    /** Going to expand first root item - first root child items should not be displayed. */
+    expect(queryByTestId('tree-view-1')).toBeNull();
     expect(queryByTestId('tree-view-7')).toBeNull();
 
+    /** Expand the first root element. */
     fireEvent.click(screen.getByTestId('btn-expand-all-1'));
 
     await waitFor(async () => {
-      expect(queryByTestId('tree-view-2')).not.toBeNull();
-      expect(queryByTestId('tree-view-7')).not.toBeNull();
+      /** First root item should be displayed. */
+      expect(queryByTestId('tree-view-1')).not.toBeNull();
 
+      /** Child Items of first root item should be displayed */
       expect(queryByTestId('tree-view-6')).toBeNull();
       expect(queryByTestId('tree-view-3')).toBeNull();
 
       expect(onItemExpanded).toHaveBeenCalledTimes(1);
 
-      fireEvent.click(screen.getByTestId('btn-expand-all-1'));
+      expect(queryByTestId('tree-view-2')).toBeNull();
+
+      fireEvent.click(screen.getByTestId('btn-expand-all-2'));
 
       await waitFor(async () => {
-        expect(queryByTestId('tree-view-2')).toBeNull();
-        expect(queryByTestId('tree-view-7')).toBeNull();
-
-        expect(onItemExpanded).toHaveBeenCalledTimes(2);
+        expect(queryByTestId('tree-view-2')).not.toBeNull();
       });
+    });
+
+    /** Collapse the first root element. */
+    fireEvent.click(screen.getByTestId('btn-expand-all-1'));
+
+    await waitFor(async () => {
+      expect(queryByTestId('tree-view-2')).toBeNull();
+      expect(onItemExpanded).toHaveBeenCalledTimes(3);
     });
   });
 
   test('should collapse item on click when item is expanded', async () => {
-    const { queryByTestId } = render(<Tree items={[...items]} expandAll />);
+    const items = cloneDeep(buildTree(flatTreeItems));
+
+    const { queryByTestId } = render(<Tree items={...items} expandAll />);
 
     const treeElement = await waitFor(() => screen.getByTestId('tree-view-parent'));
     expect(treeElement).not.toBeNull();
@@ -248,7 +275,8 @@ describe('Tree', () => {
   test('should select item on click', async () => {
     const onItemsSelected = jest.fn();
 
-    render(<Tree items={[...items]} expandAll selectable onItemsSelected={onItemsSelected} selectedItems={[]} />);
+    const items = cloneDeep(buildTree(flatTreeItems));
+    render(<Tree items={items} expandAll selectable onItemsSelected={onItemsSelected} />);
 
     const treeElement = await waitFor(() => screen.getByTestId('tree-view-parent'));
     expect(treeElement).not.toBeNull();
@@ -264,7 +292,8 @@ describe('Tree', () => {
   });
 
   test('should expand and collapse all on click', async () => {
-    render(<Tree items={[...items]} expandAll={false} />);
+    const items = cloneDeep(buildTree(flatTreeItems));
+    render(<Tree items={items} expandAll={false} />);
 
     expect(screen.getByTestId('btn-expand-all').textContent).toBe('Expand All');
 
@@ -282,7 +311,9 @@ describe('Tree', () => {
   test('should select and deselect all on click', async () => {
     const onItemsSelected = jest.fn();
 
-    render(<Tree items={[...items]} expandAll={false} selectable onItemsSelected={onItemsSelected} />);
+    const items = cloneDeep(buildTree(flatTreeItems));
+
+    render(<Tree items={items} expandAll={false} selectable onItemsSelected={onItemsSelected} />);
 
     expect(screen.getByTestId('btn-select-all').textContent).toBe('Select All');
 
@@ -290,7 +321,7 @@ describe('Tree', () => {
     await waitFor(async () => {
       expect(screen.getByTestId('btn-select-all').textContent).toBe('Deselect All');
       const response = onItemsSelected.mock.lastCall[0];
-      expect(response.length).toEqual(9);
+      expect(response.length).toEqual(8);
     });
 
     fireEvent.click(screen.getByTestId('btn-select-all'));
@@ -302,51 +333,53 @@ describe('Tree', () => {
   });
 
   test('should only show Select All Link on first item on root level', async () => {
-    render(<Tree items={[...items]} expandAll={false} selectable />);
+    const items = cloneDeep(buildTree(flatTreeItems));
+    render(<Tree items={items} expandAll={false} selectable />);
     await waitFor(async () => {
       expect(screen.getAllByTestId('btn-select-all').length).toBe(1);
     });
   });
 
   test('should show search input when enableSearch is true', async () => {
-    const { queryByTestId } = render(<Tree items={[...items]} expandAll={false} enableSearch />);
+    const items = cloneDeep(buildTree(flatTreeItems));
+    const { queryByTestId } = render(<Tree items={items} expandAll={false} enableSearch />);
     expect(queryByTestId('tree-search-input')).not.toBeNull();
   });
 
   test('should hide search input when enableSearch is false', async () => {
-    const { queryByTestId } = render(<Tree items={[...items]} expandAll={false} enableSearch={false} />);
+    const items = cloneDeep(buildTree(flatTreeItems));
+    const { queryByTestId } = render(<Tree items={items} expandAll={false} enableSearch={false} />);
     expect(queryByTestId('tree-search-input')).toBeNull();
   });
 
   test('should search and filter results', async () => {
+    const items = cloneDeep(buildTree(flatTreeItems));
     const { queryByTestId } = render(<Tree items={items} expandAll enableSearch />);
 
     const input = screen.getByTestId('tree-search-input');
     expect(input).not.toBeNull();
+    expect(queryByTestId('tree-view-item-6-label')).not.toBeNull();
 
     fireEvent.change(input, { target: { value: 'Validation' } });
 
     await waitFor(async () => {
+      const input = screen.getByTestId('tree-search-input') as HTMLInputElement;
+      expect(input).not.toBeNull();
+      expect(input.value).toBe('Validation');
+    });
+
+    await waitFor(async () => {
       expect(queryByTestId('tree-view-item-6-label')).not.toBeNull();
       expect(queryByTestId('tree-view-item-2-label')).toBeNull();
-
-      const input = screen.getByTestId('tree-search-input');
-      expect(input).not.toBeNull();
-
       fireEvent.change(input, { target: { value: '' } });
     });
   });
 
-  test('should select all children on click', async () => {
+  test('should select all children on click that are not disabled', async () => {
     const onItemsSelected = jest.fn();
 
-    const theseItems = [...items];
-    theseItems.forEach((item) => {
-      item.isExpanded = true;
-      item.isHidden = false;
-    });
-
-    render(<Tree items={theseItems} expandAll selectable onItemsSelected={onItemsSelected} />);
+    const items = cloneDeep(buildTree(flatTreeItems));
+    render(<Tree items={items} expandAll selectable onItemsSelected={onItemsSelected} selectedItems={[]} />);
 
     const selectAllChildren = await waitFor(() => screen.getByTestId('chkSelectAllChildren_2'));
 
@@ -356,13 +389,14 @@ describe('Tree', () => {
 
     await waitFor(async () => {
       const response = onItemsSelected.mock.lastCall[0];
+      expect(response.find((item: TreeItem) => item.id === '3')).toBeUndefined();
       expect(response.length).toEqual(3);
     });
   });
 
   test('should clear search term when items change', async () => {
-    let myItems = [...items];
-    const { rerender } = render(<Tree items={myItems} expandAll enableSearch />);
+    const items = cloneDeep(buildTree(flatTreeItems));
+    const { rerender } = render(<Tree items={items} expandAll enableSearch />);
 
     const input = screen.getByTestId('tree-search-input');
     expect(input).not.toBeNull();
@@ -384,7 +418,7 @@ describe('Tree', () => {
   });
 
   test('should select tree items by id when provided', async () => {
-    const hierarchicalTreeItems = buildTree(flatTreeItems, [], ['5']);
+    const hierarchicalTreeItems = cloneDeep(buildTree(flatTreeItems, [], ['5']));
 
     render(<Tree items={hierarchicalTreeItems} expandAll enableSearch selectable />);
 
@@ -396,7 +430,7 @@ describe('Tree', () => {
   });
 
   test('should expand tree items by id when provided', async () => {
-    const hierarchicalTreeItems = buildTree(flatTreeItems, ['1', '7']);
+    const hierarchicalTreeItems = cloneDeep(buildTree(flatTreeItems, ['1', '7']));
 
     const { queryByTestId } = render(<Tree items={hierarchicalTreeItems} enableSearch selectable />);
 
@@ -411,27 +445,182 @@ describe('Tree', () => {
     expect(queryByTestId('tree-view-5')).toBeNull();
   });
 
-  test('should appropriately expand all for all children in the chain', async () => {
-    const onItemExpanded = jest.fn();
+  test('should show disabled items when displayDisabledItems = true', async () => {
+    const items = cloneDeep(buildTree(flatTreeItems));
+    render(<Tree items={items} expandAll displayDisabledItems />);
 
-    const hierarchicalTreeItems = buildTree(flatTreeItems);
-    hierarchicalTreeItems.forEach((item) => (item.isExpanded = false));
+    expect(screen.getByTestId('tree-view-item-3')).not.toBeNull();
+  });
 
-    render(<Tree items={hierarchicalTreeItems} expandAll={false} onItemsExpanded={onItemExpanded} />);
-
-    const treeElement = await waitFor(() => screen.getByTestId('tree-view-parent'));
-    expect(treeElement).not.toBeNull();
-
-    fireEvent.click(screen.getByTestId('btn-expand-all-1'));
-
+  test('should not show disabled items when displayDisabledItems = false', async () => {
+    const items = cloneDeep(buildTree(flatTreeItems));
+    const { queryByTestId } = render(<Tree items={items} expandAll displayDisabledItems={false} />);
     await waitFor(async () => {
-      expect(onItemExpanded).toHaveBeenCalledTimes(1);
+      expect(queryByTestId('tree-view-item-3')).toBeNull();
+    });
+  });
+
+  test('select all should only select items that are filtered', async () => {
+    const onItemsSelected = jest.fn();
+
+    const items = cloneDeep(buildTree(flatTreeItems));
+    render(<Tree items={items} selectable expandAll enableSearch onItemsSelected={onItemsSelected} />);
+
+    const input = screen.getByTestId('tree-search-input');
+    expect(input).not.toBeNull();
+    expect(screen.getByTestId('btn-select-all').textContent).toBe('Select All');
+
+    fireEvent.click(screen.getByTestId('btn-select-all'));
+    await waitFor(async () => {
+      expect(screen.getByTestId('btn-select-all').textContent).toBe('Deselect All');
+      const response = onItemsSelected.mock.lastCall[0];
+      expect(response.length).toEqual(8);
     });
 
-    await waitFor(() => screen.getByTestId('tree-view-item-2'));
-    fireEvent.click(screen.getByTestId('btn-expand-all-2'));
+    fireEvent.click(screen.getByTestId('btn-select-all'));
+    await waitFor(async () => {
+      expect(screen.getByTestId('btn-select-all').textContent).toBe('Select All');
+      const response = onItemsSelected.mock.lastCall[0];
+      expect(response.length).toEqual(0);
+    });
 
-    await waitFor(() => screen.getByTestId('tree-view-item-3'));
-    expect(onItemExpanded).toHaveBeenCalledTimes(2);
+    fireEvent.change(input, { target: { value: 'Validation' } });
+
+    await waitFor(async () => {
+      const input = screen.getByTestId('tree-search-input') as HTMLInputElement;
+      expect(input).not.toBeNull();
+      expect(input.value).toBe('Validation');
+    });
+
+    fireEvent.click(screen.getByTestId('btn-select-all'));
+    await waitFor(async () => {
+      expect(screen.getByTestId('btn-select-all').textContent).toBe('Deselect All');
+      const response = onItemsSelected.mock.lastCall[0];
+      expect(response.length).toEqual(1);
+    });
+  });
+
+  test('de-select all should only select items that are filtered', async () => {
+    const onItemsSelected = jest.fn();
+
+    const items = cloneDeep(buildTree(flatTreeItems));
+    const { queryByTestId } = render(
+      <Tree items={items} selectable expandAll enableSearch onItemsSelected={onItemsSelected} />
+    );
+
+    const input = screen.getByTestId('tree-search-input');
+    expect(input).not.toBeNull();
+    expect(screen.getByTestId('btn-select-all').textContent).toBe('Select All');
+
+    fireEvent.click(screen.getByTestId('btn-select-all'));
+    await waitFor(async () => {
+      expect(screen.getByTestId('btn-select-all').textContent).toBe('Deselect All');
+      const response = onItemsSelected.mock.lastCall[0];
+      expect(response.length).toEqual(8);
+    });
+
+    fireEvent.change(input, { target: { value: 'Validation' } });
+
+    await waitFor(async () => {
+      const input = screen.getByTestId('tree-search-input') as HTMLInputElement;
+      expect(input).not.toBeNull();
+      expect(input.value).toBe('Validation');
+      expect(queryByTestId('chk-tree-view-item-select-6')).toBeChecked();
+      fireEvent.click(screen.getByTestId('btn-select-all'));
+    });
+
+    await waitFor(async () => {
+      expect(screen.getByTestId('btn-select-all').textContent).toBe('Select All');
+      const response = onItemsSelected.mock.lastCall[0];
+      expect(response.length).toEqual(7);
+    });
+  });
+
+  test('should show Expand All text when filtered items have children that are collapsed', async () => {
+    const items = cloneDeep(buildTree(flatTreeItems));
+    render(<Tree items={items} selectable expandAll enableSearch />);
+
+    const input = screen.getByTestId('tree-search-input');
+    expect(input).not.toBeNull();
+    expect(screen.getByTestId('btn-expand-all').textContent).toBe('Collapse All');
+
+    fireEvent.click(screen.getByTestId('btn-expand-all'));
+    await waitFor(async () => {
+      expect(screen.getByTestId('btn-expand-all').textContent).toBe('Expand All');
+    });
+
+    fireEvent.change(input, { target: { value: '2nd Root' } });
+
+    await waitFor(async () => {
+      expect(screen.getByTestId('btn-expand-all').textContent).toBe('Collapse All');
+      fireEvent.click(screen.getByTestId('btn-expand-all-8'));
+    });
+
+    await waitFor(async () => {
+      expect(screen.getByTestId('btn-expand-all').textContent).toBe('Expand All');
+    });
+  });
+
+  test('should show Collapse All text when filtered items have children that are expanded', async () => {
+    const items = cloneDeep(buildTree(flatTreeItems));
+    render(<Tree items={items} selectable expandAll enableSearch />);
+
+    const input = screen.getByTestId('tree-search-input');
+    expect(input).not.toBeNull();
+    expect(screen.getByTestId('btn-expand-all').textContent).toBe('Collapse All');
+
+    fireEvent.click(screen.getByTestId('btn-expand-all'));
+    await waitFor(async () => {
+      expect(screen.getByTestId('btn-expand-all').textContent).toBe('Expand All');
+    });
+
+    fireEvent.change(input, { target: { value: '2nd Root' } });
+
+    await waitFor(async () => {
+      expect(screen.getByTestId('btn-expand-all').textContent).toBe('Collapse All');
+    });
+  });
+
+  test('should not show expand all or collapse all if filtered items do not have children', async () => {
+    const items = cloneDeep(buildTree(flatTreeItems));
+    const { queryByTestId } = render(<Tree items={items} selectable expandAll enableSearch />);
+
+    const input = screen.getByTestId('tree-search-input');
+    expect(input).not.toBeNull();
+    expect(screen.getByTestId('btn-expand-all').textContent).toBe('Collapse All');
+
+    fireEvent.click(screen.getByTestId('btn-expand-all'));
+    await waitFor(async () => {
+      expect(screen.getByTestId('btn-expand-all').textContent).toBe('Expand All');
+    });
+
+    fireEvent.change(input, { target: { value: '2nd Root Child' } });
+
+    await waitFor(async () => {
+      const input = screen.getByTestId('tree-search-input') as HTMLInputElement;
+      expect(input).not.toBeNull();
+      expect(input.value).toBe('2nd Root Child');
+
+      expect(queryByTestId('btn-expand-all')).toBeNull();
+    });
+  });
+
+  test('should not show expand all/collapse all text or select all/deselect all if filtered items are empty', async () => {
+    const items = cloneDeep(buildTree(flatTreeItems));
+    const { queryByTestId } = render(<Tree items={items} selectable expandAll enableSearch />);
+
+    const input = screen.getByTestId('tree-search-input');
+    expect(input).not.toBeNull();
+
+    fireEvent.change(input, { target: { value: 'Not here!' } });
+
+    await waitFor(async () => {
+      const input = screen.getByTestId('tree-search-input') as HTMLInputElement;
+      expect(input).not.toBeNull();
+      expect(input.value).toBe('Not here!');
+
+      expect(queryByTestId('btn-expand-all')).toBeNull();
+      expect(queryByTestId('btn-select-all')).toBeNull();
+    });
   });
 });

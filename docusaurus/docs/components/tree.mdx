@@ -87,9 +87,17 @@ The label that displays above the text box.
 
 Defaults to false. When true, the tree view will be entirely expanded on initial load.
 
+#### `displayDisabledItems?: boolean`
+
+Defaults to true. When true, disabled items will be hidden in the tree.
+
 #### `onItemsSelected?: (selectedIds: TreeItem[]) => void`
 
 Whenever an item is selected in the tree, it fires this event to let the parent know of the items that are selected.
+
+#### `onItemsExpanded?: (expandedItems: TreeItem[]) => void`
+
+Whenever an item is expanded in the tree, it fires this event.
 
 ### Functions
 

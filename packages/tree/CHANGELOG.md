@@ -2,6 +2,60 @@
 
 This file was generated using [@jscutlery/semver](https://github.com/jscutlery/semver).
 
+## [0.4.1-alpha.5](https://github.com/Availity/availity-react/compare/@availity/tree@0.4.1-alpha.4...@availity/tree@0.4.1-alpha.5) (2023-04-25)
+
+
+### Bug Fixes
+
+* **tree:** add and fix test, documenation ([7236bb3](https://github.com/Availity/availity-react/commit/7236bb32e7abd2985a8b225925140531b9b4c049))
+
+
+
+## [0.4.1-alpha.4](https://github.com/Availity/availity-react/compare/@availity/tree@0.4.1-alpha.3...@availity/tree@0.4.1-alpha.4) (2023-04-21)
+
+
+### Bug Fixes
+
+* **tree:** refactor to fix overall data and state change issues ([eca7fd1](https://github.com/Availity/availity-react/commit/eca7fd1ba039845a58fc7b929e31c465d9a635b2))
+
+
+
+## [0.4.1-alpha.3](https://github.com/Availity/availity-react/compare/@availity/tree@0.4.1-alpha.2...@availity/tree@0.4.1-alpha.3) (2023-04-19)
+
+
+### Bug Fixes
+
+* **tree:** fix overall select and collapse behavior when filtering ([d3869df](https://github.com/Availity/availity-react/commit/d3869df78780986b8b4065bf9b446ae94580aa2d))
+
+
+
+## [0.4.1-alpha.2](https://github.com/Availity/availity-react/compare/@availity/tree@0.4.1-alpha.1...@availity/tree@0.4.1-alpha.2) (2023-04-19)
+
+
+### Bug Fixes
+
+* **tree:** tweak when tree is displayed under small sizes ([47f613a](https://github.com/Availity/availity-react/commit/47f613ac2c06b88a5e4af6b08a2094b1debf2355))
+
+
+
+## [0.4.1-alpha.1](https://github.com/Availity/availity-react/compare/@availity/tree@0.4.1-alpha.0...@availity/tree@0.4.1-alpha.1) (2023-04-18)
+
+
+### Bug Fixes
+
+* **tree:** fix nested selected items issue ([55338c0](https://github.com/Availity/availity-react/commit/55338c096eeb895ff27140eed2d80c930c5b2f02))
+
+
+
+## [0.4.1-alpha.0](https://github.com/Availity/availity-react/compare/@availity/tree@0.4.0...@availity/tree@0.4.1-alpha.0) (2023-04-18)
+
+
+### Features
+
+* **tree:** prevent item from being selected when hidden or disabled, add option to hide disabled items, misc bug fixes with searching and selecting ([b9ea327](https://github.com/Availity/availity-react/commit/b9ea3272cd4529a4df7a62a2e48581289a2f3d6a))
+
+
+
 # [0.4.0](https://github.com/Availity/availity-react/compare/@availity/tree@0.3.0...@availity/tree@0.4.0) (2023-03-17)
 
 

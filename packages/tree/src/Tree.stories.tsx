@@ -20,18 +20,17 @@ export default {
   },
 } as Meta;
 
-export const Default: Story = ({ enableSearch, searchLabel, expandAll, selectable, expandParent }) => {
-  const [newSelectedList, setNewSelectedList] = useState<TreeItem[]>([]);
+export const Default: Story = ({ enableSearch, searchLabel, expandAll, selectable, displayDisabledItems }) => {
   const [isTreeVisible, setIsTreeVisible] = useState(true);
 
   const flatTreeItems: TreeItem[] = [
     {
       id: '1',
-      name: 'Parent that has some long text',
+      name: 'Parent',
     },
     {
       id: '2',
-      name: 'Second Level Parent with long text',
+      name: 'Second Level Parent',
       parentId: '1',
     },
     {
@@ -52,42 +51,41 @@ export const Default: Story = ({ enableSearch, searchLabel, expandAll, selectabl
     },
     {
       id: '7',
-      name: 'Child Test 3',
+      name: 'Availity Webinars',
       parentId: '1',
     },
     {
       id: '6',
-      name: 'Child Test 4',
+      name: 'Validation Office',
       parentId: '7',
     },
     {
       id: '8',
-      name: 'Child Test 5',
-      parentId: '7',
-    },
-    {
-      id: '9',
       name: '2nd Root',
     },
     {
-      id: '10',
+      id: '9',
       name: '2nd Root Child',
-      parentId: '9',
+      parentId: '8',
     },
   ];
 
-  const tree = buildTree(flatTreeItems, [flatTreeItems.find((o) => !o.parentId)?.id || '']);
+  const tree = buildTree(flatTreeItems, []);
   const [items, setItems] = useState(tree);
   const [initialState] = useState<TreeItem[]>(cloneDeep(tree));
 
   const [selectedItems] = useState<TreeItem[]>([items[0]]);
+  const [newSelectedList, setNewSelectedList] = useState<TreeItem[]>([
+    items[0],
+    ...flatTreeItems.filter((item) => item.isSelected === true),
+  ]);
 
   const onItemsSelected = useCallback((selected: TreeItem[]): void => {
     setNewSelectedList(selected);
   }, []);
 
   const resetTree = async () => {
-    await setNewSelectedList([]);
+    await setNewSelectedList([items[0], ...flatTreeItems.filter((item) => item.isSelected === true)]);
     await setItems(cloneDeep(initialState));
   };
 
@@ -109,6 +107,7 @@ export const Default: Story = ({ enableSearch, searchLabel, expandAll, selectabl
             onItemsSelected={onItemsSelected}
             selectedItems={selectedItems}
             selectable={selectable}
+            displayDisabledItems={displayDisabledItems}
           />
         )}
       </div>
@@ -149,4 +148,5 @@ Default.args = {
   searchLabel: 'Search Me',
   expandAll: false,
   selectable: true,
+  displayDisabledItems: true,
 };
