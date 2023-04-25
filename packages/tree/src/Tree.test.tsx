@@ -164,12 +164,12 @@ describe('Tree', () => {
         expandAll
         selectable
         onItemsSelected={onItemsSelected}
-        // selectedItems={[
-        //   {
-        //     id: '7',
-        //     name: 'Availity Webinars',
-        //   },
-        // ]}
+        selectedItems={[
+          {
+            id: '7',
+            name: 'Availity Webinars',
+          },
+        ]}
       />
     );
 
@@ -358,16 +358,19 @@ describe('Tree', () => {
 
     const input = screen.getByTestId('tree-search-input');
     expect(input).not.toBeNull();
+    expect(queryByTestId('tree-view-item-6-label')).not.toBeNull();
 
     fireEvent.change(input, { target: { value: 'Validation' } });
 
     await waitFor(async () => {
+      const input = screen.getByTestId('tree-search-input') as HTMLInputElement;
+      expect(input).not.toBeNull();
+      expect(input.value).toBe('Validation');
+    });
+
+    await waitFor(async () => {
       expect(queryByTestId('tree-view-item-6-label')).not.toBeNull();
       expect(queryByTestId('tree-view-item-2-label')).toBeNull();
-
-      const input = screen.getByTestId('tree-search-input');
-      expect(input).not.toBeNull();
-
       fireEvent.change(input, { target: { value: '' } });
     });
   });
@@ -452,8 +455,9 @@ describe('Tree', () => {
   test('should not show disabled items when displayDisabledItems = false', async () => {
     const items = cloneDeep(buildTree(flatTreeItems));
     const { queryByTestId } = render(<Tree items={items} expandAll displayDisabledItems={false} />);
-
-    expect(queryByTestId('tree-view-item-3')).toBeNull();
+    await waitFor(async () => {
+      expect(queryByTestId('tree-view-item-3')).toBeNull();
+    });
   });
 
   test('select all should only select items that are filtered', async () => {
@@ -496,13 +500,127 @@ describe('Tree', () => {
     });
   });
 
-  test('de-select all should only select items that are filtered', async () => {});
+  test('de-select all should only select items that are filtered', async () => {
+    const onItemsSelected = jest.fn();
 
-  test('should show Expand All text when filtered items have children that are collapsed', async () => {});
+    const items = cloneDeep(buildTree(flatTreeItems));
+    const { queryByTestId } = render(
+      <Tree items={items} selectable expandAll enableSearch onItemsSelected={onItemsSelected} />
+    );
 
-  test('should show Collapse All text when filtered items have children that are expanded', async () => {});
+    const input = screen.getByTestId('tree-search-input');
+    expect(input).not.toBeNull();
+    expect(screen.getByTestId('btn-select-all').textContent).toBe('Select All');
 
-  test('should not show expand all or collapse all if filtered items do not have children', async () => {});
+    fireEvent.click(screen.getByTestId('btn-select-all'));
+    await waitFor(async () => {
+      expect(screen.getByTestId('btn-select-all').textContent).toBe('Deselect All');
+      const response = onItemsSelected.mock.lastCall[0];
+      expect(response.length).toEqual(8);
+    });
 
-  test('should not show expand all/collapse all text or select all/deselect all if filtered items are empty', async () => {});
+    fireEvent.change(input, { target: { value: 'Validation' } });
+
+    await waitFor(async () => {
+      const input = screen.getByTestId('tree-search-input') as HTMLInputElement;
+      expect(input).not.toBeNull();
+      expect(input.value).toBe('Validation');
+      expect(queryByTestId('chk-tree-view-item-select-6')).toBeChecked();
+      fireEvent.click(screen.getByTestId('btn-select-all'));
+    });
+
+    await waitFor(async () => {
+      expect(screen.getByTestId('btn-select-all').textContent).toBe('Select All');
+      const response = onItemsSelected.mock.lastCall[0];
+      expect(response.length).toEqual(7);
+    });
+  });
+
+  test('should show Expand All text when filtered items have children that are collapsed', async () => {
+    const items = cloneDeep(buildTree(flatTreeItems));
+    render(<Tree items={items} selectable expandAll enableSearch />);
+
+    const input = screen.getByTestId('tree-search-input');
+    expect(input).not.toBeNull();
+    expect(screen.getByTestId('btn-expand-all').textContent).toBe('Collapse All');
+
+    fireEvent.click(screen.getByTestId('btn-expand-all'));
+    await waitFor(async () => {
+      expect(screen.getByTestId('btn-expand-all').textContent).toBe('Expand All');
+    });
+
+    fireEvent.change(input, { target: { value: '2nd Root' } });
+
+    await waitFor(async () => {
+      expect(screen.getByTestId('btn-expand-all').textContent).toBe('Collapse All');
+      fireEvent.click(screen.getByTestId('btn-expand-all-8'));
+    });
+
+    await waitFor(async () => {
+      expect(screen.getByTestId('btn-expand-all').textContent).toBe('Expand All');
+    });
+  });
+
+  test('should show Collapse All text when filtered items have children that are expanded', async () => {
+    const items = cloneDeep(buildTree(flatTreeItems));
+    render(<Tree items={items} selectable expandAll enableSearch />);
+
+    const input = screen.getByTestId('tree-search-input');
+    expect(input).not.toBeNull();
+    expect(screen.getByTestId('btn-expand-all').textContent).toBe('Collapse All');
+
+    fireEvent.click(screen.getByTestId('btn-expand-all'));
+    await waitFor(async () => {
+      expect(screen.getByTestId('btn-expand-all').textContent).toBe('Expand All');
+    });
+
+    fireEvent.change(input, { target: { value: '2nd Root' } });
+
+    await waitFor(async () => {
+      expect(screen.getByTestId('btn-expand-all').textContent).toBe('Collapse All');
+    });
+  });
+
+  test('should not show expand all or collapse all if filtered items do not have children', async () => {
+    const items = cloneDeep(buildTree(flatTreeItems));
+    const { queryByTestId } = render(<Tree items={items} selectable expandAll enableSearch />);
+
+    const input = screen.getByTestId('tree-search-input');
+    expect(input).not.toBeNull();
+    expect(screen.getByTestId('btn-expand-all').textContent).toBe('Collapse All');
+
+    fireEvent.click(screen.getByTestId('btn-expand-all'));
+    await waitFor(async () => {
+      expect(screen.getByTestId('btn-expand-all').textContent).toBe('Expand All');
+    });
+
+    fireEvent.change(input, { target: { value: '2nd Root Child' } });
+
+    await waitFor(async () => {
+      const input = screen.getByTestId('tree-search-input') as HTMLInputElement;
+      expect(input).not.toBeNull();
+      expect(input.value).toBe('2nd Root Child');
+
+      expect(queryByTestId('btn-expand-all')).toBeNull();
+    });
+  });
+
+  test('should not show expand all/collapse all text or select all/deselect all if filtered items are empty', async () => {
+    const items = cloneDeep(buildTree(flatTreeItems));
+    const { queryByTestId } = render(<Tree items={items} selectable expandAll enableSearch />);
+
+    const input = screen.getByTestId('tree-search-input');
+    expect(input).not.toBeNull();
+
+    fireEvent.change(input, { target: { value: 'Not here!' } });
+
+    await waitFor(async () => {
+      const input = screen.getByTestId('tree-search-input') as HTMLInputElement;
+      expect(input).not.toBeNull();
+      expect(input.value).toBe('Not here!');
+
+      expect(queryByTestId('btn-expand-all')).toBeNull();
+      expect(queryByTestId('btn-select-all')).toBeNull();
+    });
+  });
 });

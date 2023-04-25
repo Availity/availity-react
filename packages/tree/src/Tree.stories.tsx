@@ -105,7 +105,7 @@ export const Default: Story = ({ enableSearch, searchLabel, expandAll, selectabl
             searchLabel={searchLabel}
             items={items}
             onItemsSelected={onItemsSelected}
-            selectedItems={selectedItems}
+            // selectedItems={selectedItems}
             selectable={selectable}
             displayDisabledItems={displayDisabledItems}
           />

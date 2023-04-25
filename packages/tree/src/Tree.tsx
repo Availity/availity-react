@@ -24,11 +24,9 @@ export type TreeProps = {
   onItemsSelected?: (selectedItems: TreeItem[]) => void;
   /** Whenever an item is expanded in the tree, it fires this event to let the parent know of the items that are expanded. */
   onItemsExpanded?: (expandedItems?: TreeItem[]) => void;
-  /** The id of the parent tree */
-  parentId?: string;
   /** The items which are selected in the tree */
   selectedItems?: TreeItem[];
-
+  /** The items which are expanded in the tree */
   expandedItems?: TreeItem[];
   /** When true, the tree view will be entirely expanded on initial load. */
   expandAll?: boolean;
@@ -72,7 +70,6 @@ const Tree = ({
   onItemsSelected,
   onItemsExpanded,
   expandAll = false,
-  parentId,
   selectable = false,
   displayDisabledItems = true,
 }: TreeProps): JSX.Element | null => {
@@ -95,7 +92,8 @@ const Tree = ({
     setSelectedList(selectedItems);
     const updateSelectedItems = (items: TreeItem[]): TreeItem[] => {
       for (const item of items) {
-        item.isSelected = !item.isDisabled && selectedList.map((item) => item.id).includes(item.id);
+        item.isSelected =
+          !item.isDisabled && (selectedList.map((item) => item.id).includes(item.id) || item.isSelected);
         if (item.children) {
           item.children = updateSelectedItems(item.children || []);
         }
@@ -125,14 +123,11 @@ const Tree = ({
     const applyHideDisabledItems = (items: TreeItem[], displayDisabledItems: boolean) => {
       const newItems: TreeItem[] = [];
       for (const item of items) {
-        let newItem: TreeItem = {
-          ...item,
-          isHidden: (item.isDisabled && displayDisabledItems === false) || item.isHidden || false,
-        };
+        item.isHidden = (item.isDisabled && displayDisabledItems === false) || item.isHidden || false;
         if (item.children && item.children.length > 0) {
-          newItem.children = applyHideDisabledItems(item.children, displayDisabledItems);
+          item.children = applyHideDisabledItems(item.children, displayDisabledItems);
         }
-        newItems.push(newItem);
+        newItems.push(item);
       }
       return newItems;
     };
@@ -176,15 +171,14 @@ const Tree = ({
     const applyExpandAll = (items: TreeItem[], expandAll: boolean) => {
       const newItems: TreeItem[] = [];
       for (const item of items) {
-        let newItem: TreeItem = { ...item, isExpanded: expandAll || item.isExpanded };
+        item.isExpanded = expandAll || item.isExpanded || false;
         if (item.children && item.children.length > 0) {
-          newItem.children = applyExpandAll(item.children, expandAll);
+          item.children = applyExpandAll(item.children, expandAll);
         }
-        newItems.push(newItem);
+        newItems.push(item);
       }
       return newItems;
     };
-
     if (expandAll) {
       setTreeItems(applyExpandAll(items, expandAll));
     }
@@ -233,7 +227,9 @@ const Tree = ({
     }
 
     const hiddenItems = items.filter((item) => !rootItems.map((rootItem) => rootItem.id).includes(item.id));
-    for (const hiddenItem of hiddenItems) hiddenItem.isHidden = true;
+    for (const hiddenItem of hiddenItems) {
+      hiddenItem.isHidden = true;
+    }
     for (const item of items) {
       if (item.children) {
         const matchedChildren = item.children.filter((item) => item.name.toUpperCase().includes(searchValue));
@@ -408,7 +404,7 @@ const Tree = ({
 
   return (
     <>
-      <div data-testid={`tree-view-${parentId || 'parent'}`} className="tree-view">
+      <div data-testid="tree-view-parent" className="tree-view">
         {enableSearch && (
           <div className="form-group">
             {searchLabel && <Label className="font-weight-bold">{searchLabel}</Label>}

@@ -5,11 +5,7 @@ import Icon from '@availity/icon';
 
 import TreeItem from './TreeItem';
 
-const areAllChildrenSelected = (item: TreeItem) =>
-  (item.isSelected && item.children?.every((child) => (!child.isDisabled ? child.isSelected : true))) || false;
-
 type TreeItemContentProps = {
-  parentId?: string;
   items: TreeItem[];
   onItemExpanded: (item: TreeItem) => void;
   onItemsSelected: (items: TreeItem[]) => void;
@@ -18,14 +14,13 @@ type TreeItemContentProps = {
 };
 
 const TreeItemContent = ({
-  parentId,
   items,
   onItemExpanded,
   onItemsSelected,
   selectable,
   toggleSelectChildren,
 }: TreeItemContentProps) => (
-  <ul data-testid={`tree-view-${parentId || 'parent'}`}>
+  <ul>
     {items.map((item) => (
       <React.Fragment key={`tree-view-item-${item.id}`}>
         {!item.isHidden && (
@@ -85,14 +80,13 @@ const TreeItemContent = ({
           </li>
         )}
         {item.children && item.children.length > 0 && item.isExpanded && (
-          <ul>
+          <ul data-testid={`tree-view-${item.id}`}>
             <TreeItemContent
               items={item.children}
               onItemExpanded={onItemExpanded}
               onItemsSelected={onItemsSelected}
               toggleSelectChildren={toggleSelectChildren}
               selectable={selectable}
-              parentId={parentId}
             />
           </ul>
         )}
