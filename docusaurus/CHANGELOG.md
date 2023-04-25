@@ -2,6 +2,16 @@
 
 This file was generated using [@jscutlery/semver](https://github.com/jscutlery/semver).
 
+## [1.9.1](https://github.com/Availity/availity-react/compare/@availity/docusaurus@1.9.0...@availity/docusaurus@1.9.1) (2023-04-25)
+
+
+### Bug Fixes
+
+* **tree:** add and fix test, documenation ([74dc131](https://github.com/Availity/availity-react/commit/74dc131fd68387888100a40088bba19ed6ce8489))
+* **tree:** documentation updates ([d89462d](https://github.com/Availity/availity-react/commit/d89462d56a7af14c6749620a32b08c4c13106364))
+
+
+
 # [1.9.0](https://github.com/Availity/availity-react/compare/@availity/docusaurus@1.8.1...@availity/docusaurus@1.9.0) (2023-04-14)
 
 
