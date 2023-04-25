@@ -2,6 +2,26 @@
 
 This file was generated using [@jscutlery/semver](https://github.com/jscutlery/semver).
 
+# [0.5.0](https://github.com/Availity/availity-react/compare/@availity/tree@0.4.0...@availity/tree@0.5.0) (2023-04-25)
+
+
+### Bug Fixes
+
+* **tree:** add and fix test, documenation ([74dc131](https://github.com/Availity/availity-react/commit/74dc131fd68387888100a40088bba19ed6ce8489))
+* **tree:** documentation updates ([d89462d](https://github.com/Availity/availity-react/commit/d89462d56a7af14c6749620a32b08c4c13106364))
+* **tree:** fix nested selected items issue ([9ce7ce2](https://github.com/Availity/availity-react/commit/9ce7ce26710a0e72710e94f04de9ceaf990b6656))
+* **tree:** fix overall select and collapse behavior when filtering ([4928900](https://github.com/Availity/availity-react/commit/49289009b78da352d74866a12a3a9bf00ceb0ab2))
+* **tree:** fix story ([4ff305e](https://github.com/Availity/availity-react/commit/4ff305e18c8cd5bb3136babff8e501a7bba9ffc3))
+* **tree:** refactor to fix overall data and state change issues ([57f8d5c](https://github.com/Availity/availity-react/commit/57f8d5c8e4a9cf3cbfbe15f6ea2de84e21c83d65))
+* **tree:** tweak when tree is displayed under small sizes ([e1572a3](https://github.com/Availity/availity-react/commit/e1572a3f1e67f7e967edddec3d094fcb1bca6821))
+
+
+### Features
+
+* **tree:** prevent item from being selected when hidden or disabled, add option to hide disabled items, misc bug fixes with searching and selecting ([b9ea327](https://github.com/Availity/availity-react/commit/b9ea3272cd4529a4df7a62a2e48581289a2f3d6a))
+
+
+
 ## [0.4.1-alpha.5](https://github.com/Availity/availity-react/compare/@availity/tree@0.4.1-alpha.4...@availity/tree@0.4.1-alpha.5) (2023-04-25)
 
 
