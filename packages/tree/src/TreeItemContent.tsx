@@ -6,9 +6,13 @@ import Icon from '@availity/icon';
 import TreeItem from './TreeItem';
 
 type TreeItemContentProps = {
+  /** The items that are displayed in the tree view item. */
   items: TreeItem[];
+  /** Whenever an item is expanded in the tree, it fires this event to let the parent know of the items that are expanded. */
   onItemExpanded: (item: TreeItem) => void;
+  /** Whenever an item is selected in the tree, it fires this event to let the parent know of the items that are selected. */
   onItemsSelected: (items: TreeItem[]) => void;
+  /** Whenever the select all children checkbox is checked, if fire this event to appropriately select all of the children. */
   toggleSelectChildren: (item: TreeItem) => void;
   selectable?: boolean;
 };
