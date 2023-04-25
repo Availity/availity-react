@@ -74,7 +74,7 @@ export const Default: Story = ({ enableSearch, searchLabel, expandAll, selectabl
   const [items, setItems] = useState(tree);
   const [initialState] = useState<TreeItem[]>(cloneDeep(tree));
 
-  const [selectedItems, setSelectedItems] = useState<TreeItem[]>([items[0]]);
+  const [selectedItems] = useState<TreeItem[]>([items[0]]);
   const [newSelectedList, setNewSelectedList] = useState<TreeItem[]>([
     items[0],
     ...flatTreeItems.filter((item) => item.isSelected === true),
@@ -85,7 +85,7 @@ export const Default: Story = ({ enableSearch, searchLabel, expandAll, selectabl
   }, []);
 
   const resetTree = async () => {
-    await setNewSelectedList([]);
+    await setNewSelectedList([items[0], ...flatTreeItems.filter((item) => item.isSelected === true)]);
     await setItems(cloneDeep(initialState));
   };
 
@@ -105,7 +105,7 @@ export const Default: Story = ({ enableSearch, searchLabel, expandAll, selectabl
             searchLabel={searchLabel}
             items={items}
             onItemsSelected={onItemsSelected}
-            // selectedItems={selectedItems}
+            selectedItems={selectedItems}
             selectable={selectable}
             displayDisabledItems={displayDisabledItems}
           />
