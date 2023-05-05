@@ -344,8 +344,6 @@ DateRange.propTypes = {
   innerRef: PropTypes.oneOfType([PropTypes.func, PropTypes.node]),
   /** How to format date value in `onSubmit` callback. Must be a format recognized by <a href={https://momentjs.com/docs/#/displaying/format/}>moment.</a>. Default:`MM/DD/YYYY` */
   format: PropTypes.string,
-  /** Toggle whether the calendar is shown. */
-  datepicker: PropTypes.bool,
   /** Props to be spread onto the datepicker component from <a href={https://github.com/react-dates/react-dates#singledatepicker}>react-dates.</a>. */
   datepickerProps: PropTypes.object,
   'data-testid': PropTypes.string,

@@ -89,10 +89,6 @@ Function to be run when focus on the input changes.
 
 How to format date value in `onSubmit` callback. Must be a format recognized by [moment](https://momentjs.com/docs/#/displaying/format/). **Default: `MM/DD/YYYY`**
 
-#### `datepicker?: boolean`
-
-Toggle whether the calendar is shown.
-
 #### `datePickerProps?: SingleDatePickerShape`
 
 Props to be spread onto the datepicker component from [react-dates](https://github.com/airbnb/react-dates#singledatepicker).
