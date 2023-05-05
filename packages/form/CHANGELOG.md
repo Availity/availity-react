@@ -2,6 +2,15 @@
 
 This file was generated using [@jscutlery/semver](https://github.com/jscutlery/semver).
 
+## [1.7.3](https://github.com/Availity/availity-react/compare/@availity/form@1.7.2...@availity/form@1.7.3) (2023-05-05)
+
+
+### Bug Fixes
+
+* **form:** change proptype for checkbox label from PropTypes.string to PropsTypes.node, edit storybook with example ([#1272](https://github.com/Availity/availity-react/issues/1272)) ([9052b82](https://github.com/Availity/availity-react/commit/9052b8212999be6c752030887f82b938dcb62c4c))
+
+
+
 ## [1.7.2](https://github.com/Availity/availity-react/compare/@availity/form@1.7.1...@availity/form@1.7.2) (2023-01-24)
 
 
