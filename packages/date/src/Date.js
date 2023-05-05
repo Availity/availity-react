@@ -202,8 +202,6 @@ AvDate.propTypes = {
   innerRef: PropTypes.oneOfType([PropTypes.func, PropTypes.node]),
   /** How to format date value in `onSubmit` callback. Must be a format recognized by <a href={https://momentjs.com/docs/#/displaying/format/}>moment.</a>Default: `MM/DD/YYYY` */
   format: PropTypes.string,
-  /** Toggle whether the calendar is shown. */
-  datePicker: PropTypes.bool,
   'data-testid': PropTypes.string,
   validate: PropTypes.func,
   /** Props to be spread onto the datepicker component from `react-dates`. */
