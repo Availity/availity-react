@@ -69,7 +69,7 @@ Checkbox.propTypes = {
   /** Will render the checkbox inline with other checkboxes. Default: true. */
   inline: PropTypes.bool,
   /** Label for the checkbox. */
-  label: PropTypes.string,
+  label: PropTypes.node,
   /** Value of the checkbox. */
   value: PropTypes.oneOfType([PropTypes.string, PropTypes.bool, PropTypes.object]),
 };

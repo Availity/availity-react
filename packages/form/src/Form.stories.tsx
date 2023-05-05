@@ -101,6 +101,7 @@ export const Default: Story<FormStoryProps> = ({ required }) => {
         <Checkbox groupName="checkboxGroup" label="Check One" value="uno" helpId="option1" />
         <Checkbox groupName="checkboxGroup" label="Check Two" value="dos" />
         <Checkbox groupName="checkboxGroup" label="Check Three" value="tres" helpId="option3" />
+        <Checkbox groupName="checkboxGroup" label={<>Check Four</>} value="cuatro" />
       </CheckboxGroup>
       <RadioGroup name="radioGroup" label="Radio Group" required={required}>
         <Radio name="radioGroup" label="Radio One" value="uno" />
@@ -274,6 +275,7 @@ export const _Checkbox: Story<CheckboxStoryProps> = ({ required, helpId, labelCl
       <Checkbox groupName="checkboxGroup" label="Check One" value="uno" />
       <Checkbox groupName="checkboxGroup" label="Check Two" value="dos" />
       <Checkbox groupName="checkboxGroup" label="Check Three" value="tres" />
+      <Checkbox groupName="checkboxGroup" label={<>Check Four</>} value="cuatro" />
     </CheckboxGroup>
     <Button className="ml-1" color="primary" type="submit">
       Submit
