@@ -2,6 +2,15 @@
 
 This file was generated using [@jscutlery/semver](https://github.com/jscutlery/semver).
 
+## [4.2.3](https://github.com/Availity/availity-react/compare/@availity/date@4.2.2...@availity/date@4.2.3) (2023-05-05)
+
+
+### Bug Fixes
+
+* **date:** remove datepicker prop-type ([360dfcd](https://github.com/Availity/availity-react/commit/360dfcdf61c4ce064b16175693f666b44e3f46aa))
+
+
+
 ## [4.2.2](https://github.com/Availity/availity-react/compare/@availity/date@4.2.1...@availity/date@4.2.2) (2022-12-28)
 
 
