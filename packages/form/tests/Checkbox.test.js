@@ -6,6 +6,8 @@ import * as yup from 'yup';
 import { Form, Checkbox, CheckboxGroup } from '../src';
 
 describe('Checkbox', () => {
+  const spyError = jest.spyOn(global.console, 'error');
+
   test('renders with initial value', () => {
     const { container, getByText, getByDisplayValue } = render(
       <Form
@@ -197,5 +199,17 @@ describe('Checkbox', () => {
     );
 
     expect(container.querySelector('input').getAttribute('id')).toEqual('test');
+  });
+
+  test('throws no warning for invalid label prop type', () => {
+    render(
+      <Form initialValues={{ hello: '' }} onSubmit={() => {}}>
+        <CheckboxGroup name="hello" label="Checkbox Group">
+          <Checkbox label={<>content</>} value="uno" id="test" />
+        </CheckboxGroup>
+      </Form>
+    );
+
+    expect(spyError).toHaveBeenCalledTimes(0);
   });
 });

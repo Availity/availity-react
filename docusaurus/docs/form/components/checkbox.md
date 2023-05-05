@@ -26,6 +26,11 @@ const Example = () => (
       <Checkbox groupName="hello" label="Check One" value="uno" />
       <Checkbox groupName="hello" label="Check Two" value="dos" />
       <Checkbox groupName="hello" label="Check Three" value="tres" />
+      <Checkbox
+        groupName="checkboxGroup"
+        label={<>Check Four</>}
+        value="cuatro"
+      />
     </CheckboxGroup>
     <Button type="submit" color="primary">
       Submit

@@ -19,7 +19,7 @@ describe('CheckboxGroup', () => {
         })}
       >
         <CheckboxGroup name="hello" label="Checkbox Group" groupClassName="some-group">
-          <Checkbox label="Chcek One" value="uno" />
+          <Checkbox label="Check One" value="uno" />
         </CheckboxGroup>
         <Button type="submit">Submit</Button>
       </Form>
@@ -45,6 +45,7 @@ describe('CheckboxGroup', () => {
           <Checkbox label="Chcek One" value="uno" />
           <Checkbox label="Check Two" value="dos" />
           <Checkbox label="Check Three" value="tres" />
+          <Checkbox label={<>Check Four</>} value="cuatro" />
         </CheckboxGroup>
         <Button type="submit">Submit</Button>
       </Form>
@@ -113,6 +114,7 @@ describe('CheckboxGroup', () => {
           <Checkbox label="Check One" value="uno" />
           <Checkbox label="Check Two" value="dos" />
           <Checkbox label="Check Three" value="tres" />
+          <Checkbox label={<>Check Four</>} value="cuatro" />
         </CheckboxGroup>
         <Button type="submit">Submit</Button>
       </Form>
