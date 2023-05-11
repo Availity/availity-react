@@ -24,4 +24,22 @@ describe('FilePickerBtn', () => {
     );
     expect(container).toBeDefined();
   });
+
+  test('should be disabled when using disabled prop', () => {
+    const { getByRole } = renderFilePickerBtn(
+      { initialValues: { file: undefined } },
+      { disabled: true, name: 'file', onChange: () => {} }
+    );
+    const buttonElement = getByRole('button');
+    expect(buttonElement).toBeDisabled();
+  });
+
+  test('should be enabled when not using disabled prop', () => {
+    const { getByRole } = renderFilePickerBtn(
+      { initialValues: { file: undefined } },
+      { name: 'file', onChange: () => {} }
+    );
+    const buttonElement = getByRole('button');
+    expect(buttonElement).not.toBeDisabled();
+  });
 });
