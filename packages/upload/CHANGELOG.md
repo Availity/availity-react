@@ -2,6 +2,17 @@
 
 This file was generated using [@jscutlery/semver](https://github.com/jscutlery/semver).
 
+## [3.8.1](https://github.com/Availity/availity-react/compare/@availity/upload@3.8.0...@availity/upload@3.8.1) (2023-05-12)
+
+
+### Bug Fixes
+
+* **upload:** correcting generic types to hardocde a inputelement change event handler ([#1277](https://github.com/Availity/availity-react/issues/1277)) ([6690447](https://github.com/Availity/availity-react/commit/6690447b940996ebde3bb0afed51da2a95af454a))
+* **upload:** make filepickerbtn and filepicker types more generic so proper types get passed through [#1277](https://github.com/Availity/availity-react/issues/1277) ([a3eb991](https://github.com/Availity/availity-react/commit/a3eb9918b47ad75b9e7537708386e8ac7cac870f))
+* **upload:** remove unnecessary tag ([#1277](https://github.com/Availity/availity-react/issues/1277)) ([c5acc5e](https://github.com/Availity/availity-react/commit/c5acc5e9e2a1850bbf3f70848c3c164c556507b4))
+
+
+
 # [3.8.0](https://github.com/Availity/availity-react/compare/@availity/upload@3.7.0...@availity/upload@3.8.0) (2023-03-23)
 
 
