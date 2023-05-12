@@ -1,13 +1,13 @@
 import React from 'react';
 
-export interface FilePickerProps<T extends React.ElementType> {
-  tag?: T;
+export interface FilePickerProps {
+  tag?: React.ElementType;
   multiple?: boolean;
   children?: React.ReactNode;
   name?: string;
   allowedFileTypes?: string[];
   maxSize?: number | string;
-  onChange?: React.ComponentProps<T>['onChange'];
+  onChange?: React.ChangeEventHandler<HTMLInputElement>;
 }
 
 declare const FilePicker: (props: FilePickerProps) => JSX.Element;

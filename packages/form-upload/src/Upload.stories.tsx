@@ -2,9 +2,9 @@ import React from 'react';
 import { Meta, Story } from '@storybook/react';
 import { Form } from '@availity/form';
 
-import Upload, { FileList, FilePicker, FilePickerBtn, UploadProgressBar } from '.';
 import { ArgsTable } from '@storybook/addon-docs';
 import { CustomInput } from 'reactstrap';
+import Upload, { FileList, FilePicker, FilePickerBtn, UploadProgressBar } from '.';
 
 const file = (fileName: string) => ({
   id: fileName,
