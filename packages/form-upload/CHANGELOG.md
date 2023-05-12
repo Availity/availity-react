@@ -2,6 +2,17 @@
 
 This file was generated using [@jscutlery/semver](https://github.com/jscutlery/semver).
 
+## [0.11.2](https://github.com/Availity/availity-react/compare/@availity/form-upload@0.11.1...@availity/form-upload@0.11.2) (2023-05-12)
+
+
+### Bug Fixes
+
+* **form-upload:** correcting generic types to hardocde a inputelement change event handler ([#1277](https://github.com/Availity/availity-react/issues/1277)) ([96bcefd](https://github.com/Availity/availity-react/commit/96bcefdf3c1e8e333165c7615298e77936102a8b))
+* **form-upload:** make filepickerbtn and filepicker types more generic so proper types get passed through [#1277](https://github.com/Availity/availity-react/issues/1277) ([06cc4c0](https://github.com/Availity/availity-react/commit/06cc4c0a5156922b7f696701020675cd95d92e28))
+* **form-upload:** remove unnecessary tag ([#1277](https://github.com/Availity/availity-react/issues/1277)) ([b4e1509](https://github.com/Availity/availity-react/commit/b4e15091ef3c4b3c53b9e07584293b5182ad4990))
+
+
+
 ## [0.11.1](https://github.com/Availity/availity-react/compare/@availity/form-upload@0.11.0...@availity/form-upload@0.11.1) (2022-11-30)
 
 
