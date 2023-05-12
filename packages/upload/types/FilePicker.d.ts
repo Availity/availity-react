@@ -1,11 +1,11 @@
 export interface FilePickerProps {
-  tag?: Function | string;
-  onChange?: Function;
+  tag?: React.ElementType;
   multiple?: boolean;
-  children?: Function;
+  children?: React.ReactNode;
   name?: string;
-  allowedFileTypes?: Array<string>;
+  allowedFileTypes?: string[];
   maxSize?: number | string;
+  onChange?: React.ChangeEventHandler<HTMLInputElement>;
 }
 
 declare const FilePicker: React.ComponentType<FilePickerProps>;

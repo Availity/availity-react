@@ -1,11 +1,8 @@
-export interface FilePickerBtnProps {
-  onClick?: Function;
-  onChange?: Function;
+export interface FilePickerBtnProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
+  onChange?: React.ChangeEventHandler<HTMLInputElement>;
   multiple?: boolean;
   name?: string;
-  color?: string;
-  children?: React.ReactType;
-  allowedFileTypes?: Array<string>;
+  allowedFileTypes?: string[];
   maxSize?: number;
   'data-testid'?: string;
 }
