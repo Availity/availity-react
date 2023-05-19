@@ -2,7 +2,6 @@ import React from 'react';
 import { render, screen, waitFor } from '@testing-library/react';
 import { QueryClient, QueryClientProvider } from 'react-query';
 import { server } from '@availity/mock/src/server';
-
 import Authorize from './Authorize';
 
 describe('Authorize', () => {
@@ -171,5 +170,32 @@ describe('Authorize', () => {
     await waitFor(() => {
       expect(screen.getByText('You do not have permission to see this')).toBeDefined();
     });
+  });
+
+  test('shows BlockUi while fetching permissions', async () => {
+    render(
+      <QueryClientProvider client={queryClient}>
+        <Authorize permissions={['1234']} loader>
+          You have permission to see this
+        </Authorize>
+      </QueryClientProvider>
+    );
+    const loadingElements = screen.getAllByText('loading');
+
+    // Filter out the visible one
+    const visibleLoadingElement = loadingElements.find((element) => {
+      // Get computed style of the element
+      const style = window.getComputedStyle(element);
+
+      // Return true if the element is visible
+      return style && style.display !== 'none' && style.visibility !== 'hidden' && style.opacity !== '0';
+    });
+    screen.debug();
+    expect(visibleLoadingElement).toBeInTheDocument();
+
+    // Once data has been fetched, the BlockUi component should no longer be visible
+    await waitFor(() => expect(visibleLoadingElement).not.toBeVisible());
+    await waitFor(() => expect(screen.getByText('You have permission to see this')).toBeInTheDocument());
+    screen.debug();
   });
 });
