@@ -190,12 +190,10 @@ describe('Authorize', () => {
       // Return true if the element is visible
       return style && style.display !== 'none' && style.visibility !== 'hidden' && style.opacity !== '0';
     });
-    screen.debug();
     expect(visibleLoadingElement).toBeInTheDocument();
 
     // Once data has been fetched, the BlockUi component should no longer be visible
     await waitFor(() => expect(visibleLoadingElement).not.toBeVisible());
     await waitFor(() => expect(screen.getByText('You have permission to see this')).toBeInTheDocument());
-    screen.debug();
   });
 });
