@@ -2,6 +2,17 @@
 
 This file was generated using [@jscutlery/semver](https://github.com/jscutlery/semver).
 
+# [2.3.0](https://github.com/Availity/availity-react/compare/@availity/authorize@2.2.1...@availity/authorize@2.3.0) (2023-05-23)
+
+
+### Features
+
+* **authorize:** adding a test to check for blockui when fetching ([6d14150](https://github.com/Availity/availity-react/commit/6d14150ad52fae1e43f02f133ce964bedfb75241))
+* **authorize:** remove screen.debug() ([0b6176c](https://github.com/Availity/availity-react/commit/0b6176c22c9f031bb0260896d6e04d66fecb2be2))
+* **authorize:** replace deprecated @availity/react-block-ui library with new @availity/block-ui ([6188c5b](https://github.com/Availity/availity-react/commit/6188c5bfe5e470347cd272645737529aa23ac62f))
+
+
+
 ## [2.2.1](https://github.com/Availity/availity-react/compare/@availity/authorize@2.2.0...@availity/authorize@2.2.1) (2022-11-22)
 
 
