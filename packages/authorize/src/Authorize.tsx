@@ -1,7 +1,6 @@
 import React from 'react';
 import type { ReactNode } from 'react';
-import BlockUi from 'react-block-ui';
-import 'react-block-ui/style.css';
+import BlockUi from '@availity/block-ui';
 
 import useAuthorize from './useAuthorize';
 import type { QueryOptions, RequestedPermissions, RequestedResources } from './types';

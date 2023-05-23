@@ -1,11 +1,11 @@
 import React from 'react';
 import { Story, Meta } from '@storybook/react';
 import { Alert } from 'reactstrap';
-import BlockUi from 'react-block-ui';
+import BlockUi from '@availity/block-ui';
 import { QueryClientProvider, QueryClient } from 'react-query';
 
-import Authorize, { useAuthorize } from '.';
 import { ArgsTable } from '@storybook/addon-docs';
+import Authorize, { useAuthorize } from '.';
 // import README from '../README.md';
 
 export default {
