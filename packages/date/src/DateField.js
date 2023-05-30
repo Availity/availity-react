@@ -4,7 +4,18 @@ import { FormGroup, Feedback, Label } from '@availity/form';
 
 import Date from './Date';
 
-const DateField = ({ name, label, labelClass, labelHidden, labelAttrs, id = name, required, helpId, ...props }) => (
+const DateField = ({
+  name,
+  label,
+  labelClass,
+  labelHidden,
+  labelAttrs,
+  id = name,
+  required,
+  helpId,
+  placeholder,
+  ...props
+}) => (
   <FormGroup for={name}>
     {label && (
       <Label
@@ -18,7 +29,7 @@ const DateField = ({ name, label, labelClass, labelHidden, labelAttrs, id = name
         {label}
       </Label>
     )}
-    <Date name={name} id={id} {...props} />
+    <Date name={name} id={id} placeholder={placeholder} {...props} />
     <Feedback name={name} />
   </FormGroup>
 );
@@ -39,6 +50,8 @@ DateField.propTypes = {
   required: PropTypes.bool,
   /** Help topic id, adds `<FieldHelpIcon/>` next to the label (should not be within label for accessibility). */
   helpId: PropTypes.string,
+  /** Placeholder input when no values have been entered. */
+  placeholder: PropTypes.string,
 };
 
 export default DateField;

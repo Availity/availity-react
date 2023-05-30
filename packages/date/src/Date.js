@@ -20,6 +20,7 @@ const yearPickerStyles = {
 const AvDate = ({
   className,
   name,
+  placeholder,
   innerRef,
   onChange,
   onPickerFocusChange,
@@ -58,7 +59,7 @@ const AvDate = ({
 
   // For updating when we delete the current input
   const onInputChange = (value) => {
-    const date = moment(value, [isoDateFormat, format, 'MMDDYYYY', 'YYYYMMDD', 'M/D/YYYY'], true);
+    const date = moment(value, [isoDateFormat, format, 'MMDDYYYY', 'YYYYMMDD', 'M/D/YYYY', 'MM-DD-YYYY'], true);
     const isoFormatted = date.format(isoDateFormat);
     setFieldValue(name, date.isValid() ? isoFormatted : date, false);
     setFieldTouched(name, true, false);
@@ -172,7 +173,7 @@ const AvDate = ({
           {...datePickerProps}
           disabled={attributes.disabled}
           id={pickerId}
-          placeholder={format.toLowerCase()}
+          placeholder={placeholder ?? format.toLowerCase()}
           date={getDateValue()}
           onDateChange={onPickerChange}
           focused={isFocused}
@@ -202,14 +203,14 @@ AvDate.propTypes = {
   innerRef: PropTypes.oneOfType([PropTypes.func, PropTypes.node]),
   /** How to format date value in `onSubmit` callback. Must be a format recognized by <a href={https://momentjs.com/docs/#/displaying/format/}>moment.</a>Default: `MM/DD/YYYY` */
   format: PropTypes.string,
-  /** Toggle whether the calendar is shown. */
-  datePicker: PropTypes.bool,
   'data-testid': PropTypes.string,
   validate: PropTypes.func,
   /** Props to be spread onto the datepicker component from `react-dates`. */
   datePickerProps: PropTypes.object,
   /** Set which direction the date picker renders. Possible values are `up` and `down`. Default: `down` */
   openDirection: PropTypes.string,
+  /** Placeholder input when no values have been entered. */
+  placeholder: PropTypes.string,
 };
 
 export default AvDate;

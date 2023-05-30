@@ -10,6 +10,7 @@ export type DateFieldProps = {
   labelAttrs?: LabelProps;
   required?: boolean;
   helpId?: string;
+  placeholder?: string;
 } & DateProps;
 
 declare const DateField: (props: DateFieldProps) => JSX.Element;

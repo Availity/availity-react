@@ -30,6 +30,7 @@ export default {
     max: '',
     min: '',
     required: true,
+    placeholder: 'mm/dd/yyyy',
   },
 } as Meta;
 
@@ -38,9 +39,10 @@ type DateStoryProps = {
   min: string;
   max: string;
   required: boolean;
+  placeholder: string;
 };
 
-export const DateInput: Story<DateStoryProps> = ({ disabled, max, min, required }) => (
+export const DateInput: Story<DateStoryProps> = ({ disabled, max, min, required, placeholder }) => (
   <FormikResults
     onSubmit={() => {
       console.log('submitted');
@@ -56,7 +58,7 @@ export const DateInput: Story<DateStoryProps> = ({ disabled, max, min, required 
         .isRequired(required),
     })}
   >
-    <FormikDate id="date" name="date" disabled={disabled} min={min} max={max} />
+    <FormikDate id="date" name="date" disabled={disabled} min={min} max={max} placeholder={placeholder} />
     <Button className="mt-3" color="primary" type="submit">
       Submit
     </Button>
@@ -64,7 +66,14 @@ export const DateInput: Story<DateStoryProps> = ({ disabled, max, min, required 
 );
 DateInput.storyName = 'date';
 
-export const _DateField: Story<DateStoryProps & { label: string }> = ({ disabled, label, max, min, required }) => (
+export const _DateField: Story<DateStoryProps & { label: string }> = ({
+  disabled,
+  label,
+  max,
+  min,
+  required,
+  placeholder,
+}) => (
   <FormikResults
     onSubmit={() => {
       console.log('submitted');
@@ -80,7 +89,16 @@ export const _DateField: Story<DateStoryProps & { label: string }> = ({ disabled
         .isRequired(required, label && `${label} is required.`),
     })}
   >
-    <DateField id="date" name="date" label={label} required={required} disabled={disabled} min={min} max={max} />
+    <DateField
+      id="date"
+      name="date"
+      label={label}
+      required={required}
+      disabled={disabled}
+      min={min}
+      max={max}
+      placeholder={placeholder}
+    />
     <Button className="ml-1" color="primary" type="submit">
       Submit
     </Button>
