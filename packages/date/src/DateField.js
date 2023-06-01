@@ -4,18 +4,7 @@ import { FormGroup, Feedback, Label } from '@availity/form';
 
 import Date from './Date';
 
-const DateField = ({
-  name,
-  label,
-  labelClass,
-  labelHidden,
-  labelAttrs,
-  id = name,
-  required,
-  helpId,
-  placeholder,
-  ...props
-}) => (
+const DateField = ({ name, label, labelClass, labelHidden, labelAttrs, id = name, required, helpId, ...props }) => (
   <FormGroup for={name}>
     {label && (
       <Label
@@ -29,7 +18,7 @@ const DateField = ({
         {label}
       </Label>
     )}
-    <Date name={name} id={id} placeholder={placeholder} {...props} />
+    <Date name={name} id={id} {...props} />
     <Feedback name={name} />
   </FormGroup>
 );
