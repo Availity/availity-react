@@ -2,6 +2,17 @@
 
 This file was generated using [@jscutlery/semver](https://github.com/jscutlery/semver).
 
+## [4.2.4](https://github.com/Availity/availity-react/compare/@availity/date@4.2.3...@availity/date@4.2.4) (2023-06-01)
+
+
+### Bug Fixes
+
+* **date:** add placeholder and additional format option ([07aa46e](https://github.com/Availity/availity-react/commit/07aa46e58eb609e4ed97c543d6172c87f07a2a23))
+* **date:** address comments ([294ec2d](https://github.com/Availity/availity-react/commit/294ec2d2275b5562a45df78e9afe0d411a2309be))
+* **date:** remove extra prop ([681df8d](https://github.com/Availity/availity-react/commit/681df8d2568af1e49ae7f5580c0a58565da29713))
+
+
+
 ## [4.2.3](https://github.com/Availity/availity-react/compare/@availity/date@4.2.2...@availity/date@4.2.3) (2023-05-05)
 
 
