@@ -39,6 +39,8 @@ DateField.propTypes = {
   required: PropTypes.bool,
   /** Help topic id, adds `<FieldHelpIcon/>` next to the label (should not be within label for accessibility). */
   helpId: PropTypes.string,
+  /** Placeholder input when no values have been entered. */
+  placeholder: PropTypes.string,
 };
 
 export default DateField;

@@ -26,6 +26,7 @@ export type DateProps = {
   datePickerProps?: SingleDatePickerShape;
   validate?: FieldValidator;
   openDirection?: 'down' | 'up';
+  placeholder?: string;
 };
 
 declare const Date: (props: DateProps) => JSX.Element;
