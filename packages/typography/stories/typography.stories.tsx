@@ -23,7 +23,7 @@ AgreementStory.storyName = 'Agreement';
 AgreementStory.args = {
   tag: 'div',
   className: 'my-agreement-class',
-  children: <p>Sample agreement text</p>,
+  children: 'Sample agreement text',
 };
 
 export const DisclaimerStory: Story = ({ children, tag, className, styled }) => (
@@ -37,7 +37,7 @@ DisclaimerStory.args = {
   tag: 'div',
   className: 'my-disclaimer-class',
   styled: true,
-  children: <p>Sample disclaimer text</p>,
+  children: 'Sample disclaimer text',
 };
 
 export const Props: Story = () => (

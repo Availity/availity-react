@@ -1,10 +1,8 @@
 import React from 'react';
-import { render, cleanup } from '@testing-library/react';
+import { render } from '@testing-library/react';
 import Disclaimer from '../src/Disclaimer';
 
 describe('Disclaimer', () => {
-  afterEach(cleanup);
-
   test('should render styled', () => {
     const { getByTestId } = render(<Disclaimer />);
 

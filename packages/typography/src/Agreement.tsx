@@ -2,8 +2,8 @@ import React, { ReactNode, ElementType } from 'react';
 import classNames from 'classnames';
 
 interface AgreementProps {
-  /** Custom HTML tag. Can be a string representing an HTML tag or a React component */
-  tag?: ElementType | string;
+  /** Custom tag. Can be an HTML tag or a React component. */
+  tag?: ElementType;
   /** Additional classes to apply to the Agreement */
   className?: string;
   /** The children to render within the Agreement */

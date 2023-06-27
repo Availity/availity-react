@@ -1,10 +1,8 @@
 import React from 'react';
-import { render, cleanup } from '@testing-library/react';
+import { render } from '@testing-library/react';
 import Agreement from '../src/Agreement';
 
 describe('Agreement', () => {
-  afterEach(cleanup);
-
   test('should render with className', () => {
     const { getByTestId } = render(<Agreement className="test-class" />);
 
