@@ -2,6 +2,15 @@
 
 This file was generated using [@jscutlery/semver](https://github.com/jscutlery/semver).
 
+# [1.6.0](https://github.com/Availity/availity-react/compare/@availity/typography@1.5.0...@availity/typography@1.6.0) (2023-06-27)
+
+
+### Features
+
+* **typography:** converting to typescript ([#1282](https://github.com/Availity/availity-react/issues/1282)) ([#1283](https://github.com/Availity/availity-react/issues/1283)) ([340426d](https://github.com/Availity/availity-react/commit/340426d5d2b175208c87f7f874d68b979c35b885))
+
+
+
 # [1.5.0](https://github.com/Availity/availity-react/compare/@availity/typography@1.4.1...@availity/typography@1.5.0) (2022-12-12)
 
 
