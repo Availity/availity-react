@@ -25,6 +25,7 @@
     "publish:canary": "yarn npm publish --access public --tag canary"
   },
   "dependencies": {
+    "@availity/block-ui": "workspace:^",
     "@availity/form": "workspace:*",
     "@availity/hooks": "workspace:*",
     "@availity/icon": "workspace:*",

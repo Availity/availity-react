@@ -489,7 +489,7 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@availity/block-ui@^1.0.0, @availity/block-ui@workspace:packages/block-ui":
+"@availity/block-ui@^1.0.0, @availity/block-ui@workspace:^, @availity/block-ui@workspace:packages/block-ui":
   version: 0.0.0-use.local
   resolution: "@availity/block-ui@workspace:packages/block-ui"
   dependencies:
@@ -622,6 +622,7 @@ __metadata:
   resolution: "@availity/feedback@workspace:packages/feedback"
   dependencies:
     "@availity/api-axios": ^7.0.1
+    "@availity/block-ui": "workspace:^"
     "@availity/form": "workspace:*"
     "@availity/hooks": "workspace:*"
     "@availity/icon": "workspace:*"
