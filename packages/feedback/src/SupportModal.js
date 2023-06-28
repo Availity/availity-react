@@ -1,13 +1,12 @@
 import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 import { Modal } from 'reactstrap';
-import BlockUi from 'react-block-ui';
-import 'react-block-ui/style.css';
+import BlockUi from '@availity/block-ui';
 
 import SupportForm from './SupportForm';
 
 const SupportModal = ({ supportIsActive, toggle, supportZIndex, setSupportIsActive, feedbackToggle }) => {
-  const [blocking, setBlocking] = useState(null);
+  const [blocking, setBlocking] = useState(false);
 
   return (
     <Modal
