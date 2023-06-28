@@ -2,6 +2,15 @@
 
 This file was generated using [@jscutlery/semver](https://github.com/jscutlery/semver).
 
+## [7.1.5](https://github.com/Availity/availity-react/compare/@availity/feedback@7.1.4...@availity/feedback@7.1.5) (2023-06-28)
+
+
+### Bug Fixes
+
+* **feedback:** fix deps and update to new block ui ([#1287](https://github.com/Availity/availity-react/issues/1287)) ([44bbb7a](https://github.com/Availity/availity-react/commit/44bbb7a277c5414a092e6435d8ec456eb6a5a34d))
+
+
+
 ## [7.1.4](https://github.com/Availity/availity-react/compare/@availity/feedback@7.1.3...@availity/feedback@7.1.4) (2023-04-18)
 
 
