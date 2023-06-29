@@ -67,4 +67,20 @@ describe('Loading Button', () => {
       expect(onClick).not.toBeCalled();
     });
   });
+
+  test('BlockUi is visible while loading and disappears when loading completes', async () => {
+    const { rerender } = render(<LoadingButton isLoading>Submit</LoadingButton>);
+
+    // 'loading' text should be in the document when loading
+    expect(screen.getAllByText('loading')).toHaveLength(2);
+
+    // Re-render with loading set to false
+    rerender(<LoadingButton isLoading={false}>Submit</LoadingButton>);
+
+    // 'loading' text should no longer be in the document when not loading
+    await waitFor(() => expect(screen.queryByText('loading')).not.toBeInTheDocument());
+
+    // The 'Submit' text should always be in the document
+    expect(screen.getByText('Submit')).toBeInTheDocument();
+  });
 });
