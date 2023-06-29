@@ -1,5 +1,5 @@
 import React from 'react';
-import BlockUi from 'react-block-ui';
+import BlockUi from '@availity/block-ui';
 import { Button } from 'reactstrap';
 import type { ButtonProps } from 'reactstrap';
 
