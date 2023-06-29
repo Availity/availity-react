@@ -2,6 +2,15 @@
 
 This file was generated using [@jscutlery/semver](https://github.com/jscutlery/semver).
 
+# [1.6.0](https://github.com/Availity/availity-react/compare/@availity/button@1.5.0...@availity/button@1.6.0) (2023-06-29)
+
+
+### Features
+
+* **button:** upgrading react-block-ui to @availity/block-ui [#1288](https://github.com/Availity/availity-react/issues/1288) ([#1289](https://github.com/Availity/availity-react/issues/1289)) ([4635c81](https://github.com/Availity/availity-react/commit/4635c8158f5f2cd6c3c37c4c288700719b262722))
+
+
+
 # [1.5.0](https://github.com/Availity/availity-react/compare/@availity/button@1.4.0...@availity/button@1.5.0) (2023-03-23)
 
 
