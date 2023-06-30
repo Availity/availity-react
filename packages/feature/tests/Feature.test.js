@@ -45,4 +45,17 @@ describe('Feature', () => {
       expect(screen.getByText('You do not have permission to see this')).toBeDefined();
     });
   });
+
+  test('should show BlockUi when loading', async () => {
+    render(<Feature features="1234" loader />);
+
+    // 'loading' text should be in the document when loading
+    expect(screen.getAllByText('loading')).toHaveLength(2);
+
+    // Re-render with loading set to false
+    render(<Feature features="1234" loader={false} />);
+
+    // 'loading' text should not be in the document when not loading
+    await waitFor(() => expect(screen.queryByText('loading')).not.toBeInTheDocument());
+  });
 });

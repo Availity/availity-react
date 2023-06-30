@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
 import PropTypes from 'prop-types';
-import BlockUi from 'react-block-ui';
-import 'react-block-ui/style.css';
+import BlockUi from '@availity/block-ui';
 import { useEffectAsync } from '@availity/hooks';
 import isFeatureEnabled from './isFeatureEnabled';
 
