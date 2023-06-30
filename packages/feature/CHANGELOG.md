@@ -2,6 +2,15 @@
 
 This file was generated using [@jscutlery/semver](https://github.com/jscutlery/semver).
 
+# [1.5.0](https://github.com/Availity/availity-react/compare/@availity/feature@1.4.2...@availity/feature@1.5.0) (2023-06-30)
+
+
+### Features
+
+* **feature:** upgrading react-block-ui to @availity/block-ui [#1291](https://github.com/Availity/availity-react/issues/1291) ([78ec512](https://github.com/Availity/availity-react/commit/78ec5123ef347ba05f2b3ec4d1617f84c8bc08c7))
+
+
+
 ## [1.4.2](https://github.com/Availity/availity-react/compare/@availity/feature@1.4.1...@availity/feature@1.4.2) (2022-12-01)
 
 
