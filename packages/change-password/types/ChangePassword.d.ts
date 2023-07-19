@@ -1,6 +1,13 @@
 export interface Condition {
-  message: string
-  passes: ((passwords: { currentPassword: string; newPassword: string; confirmPassword: string }) => boolean)
+  message: string;
+  passes: (passwords: {
+    currentPassword: string;
+    newPassword: string;
+    confirmNewPassword: string;
+    currentPasswordTouched: boolean;
+    newPasswordTouched: boolean;
+    confirmNewPasswordTouched: boolean;
+  }) => boolean;
 }
 
 export interface ChangePasswordProps {
@@ -22,14 +29,14 @@ export interface ChangePasswordContext {
   conditions: Condition[];
   currentPasswordIconRef: React.Ref;
   newPasswordIconRef: React.Ref;
-  confirmPasswordIconRef: React.Ref;
+  confirmNewPasswordIconRef: React.Ref;
   currentPasswordVisible: boolean;
   setCurrentPasswordVisible: () => boolean;
   newPasswordVisible: boolean;
   setNewPasswordVisible: () => boolean;
-  confirmPasswordVisible: boolean;
-  setConfirmPasswordVisible: () => boolean;
-};
+  confirmNewPasswordVisible: boolean;
+  setConfirmNewPasswordVisible: () => boolean;
+}
 
 declare function useChangePasswordContext(): ChangePasswordContext;
 

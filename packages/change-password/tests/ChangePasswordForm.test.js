@@ -10,7 +10,6 @@ afterEach(() => {
 });
 
 describe('ChangePasswordForm', () => {
-
   it('renders custom header', async () => {
     const header = 'This is a custom header';
     const { getByText } = render(
@@ -24,7 +23,7 @@ describe('ChangePasswordForm', () => {
 
   it('submits api request with new password', async () => {
     const resource = {
-      changePassword: jest.fn().mockResolvedValue('Your password was successfully updated')
+      changePassword: jest.fn().mockResolvedValue('Your password was successfully updated'),
     };
 
     const onHandleSubmit = jest.fn();
@@ -37,7 +36,7 @@ describe('ChangePasswordForm', () => {
 
     const currentPasswordInput = getByTestId('current-password-input');
     const newPasswordInput = getByTestId('new-password-input');
-    const confirmPasswordInput = getByTestId('confirm-password-input');
+    const confirmNewPasswordInput = getByTestId('confirm-new-password-input');
 
     await fireEvent.change(currentPasswordInput, {
       target: {
@@ -53,9 +52,9 @@ describe('ChangePasswordForm', () => {
       },
     });
 
-    await fireEvent.change(confirmPasswordInput, {
+    await fireEvent.change(confirmNewPasswordInput, {
       target: {
-        name: 'confirmPassword',
+        name: 'confirmNewPassword',
         value: 'my_new_password',
       },
     });
@@ -70,7 +69,7 @@ describe('ChangePasswordForm', () => {
 
       // Test that onHandleSubmit was called
       expect(onHandleSubmit).toHaveBeenCalledTimes(1);
-      expect(onHandleSubmit.mock.calls[0][0].result).toBe('Your password was successfully updated')
+      expect(onHandleSubmit.mock.calls[0][0].result).toBe('Your password was successfully updated');
 
       expect(getByText('Your password was successfully changed')).toBeDefined();
     });
@@ -78,7 +77,7 @@ describe('ChangePasswordForm', () => {
 
   it('renders custom on success message', async () => {
     const resource = {
-      changePassword: jest.fn().mockResolvedValue('Your password was successfully updated')
+      changePassword: jest.fn().mockResolvedValue('Your password was successfully updated'),
     };
 
     const CustomPasswordComponent = () => {
@@ -88,9 +87,7 @@ describe('ChangePasswordForm', () => {
         setSuccess('Congratulations! Your password was successfully changed.');
       };
 
-      return (
-        <ChangePasswordForm onHandleSubmit={onHandleSubmit} />
-      );
+      return <ChangePasswordForm onHandleSubmit={onHandleSubmit} />;
     };
 
     const { getByTestId, getByText } = render(
@@ -101,7 +98,7 @@ describe('ChangePasswordForm', () => {
 
     const currentPasswordInput = getByTestId('current-password-input');
     const newPasswordInput = getByTestId('new-password-input');
-    const confirmPasswordInput = getByTestId('confirm-password-input');
+    const confirmNewPasswordInput = getByTestId('confirm-new-password-input');
 
     await fireEvent.change(currentPasswordInput, {
       target: {
@@ -117,9 +114,9 @@ describe('ChangePasswordForm', () => {
       },
     });
 
-    await fireEvent.change(confirmPasswordInput, {
+    await fireEvent.change(confirmNewPasswordInput, {
       target: {
-        name: 'confirmPassword',
+        name: 'confirmNewPassword',
         value: 'my_new_password',
       },
     });
@@ -138,7 +135,7 @@ describe('ChangePasswordForm', () => {
 
   it('renders error message', async () => {
     const resource = {
-      changePassword: jest.fn().mockRejectedValue('Failed to change password')
+      changePassword: jest.fn().mockRejectedValue('Failed to change password'),
     };
 
     const { getByTestId, getByText } = render(
@@ -149,7 +146,7 @@ describe('ChangePasswordForm', () => {
 
     const currentPasswordInput = getByTestId('current-password-input');
     const newPasswordInput = getByTestId('new-password-input');
-    const confirmPasswordInput = getByTestId('confirm-password-input');
+    const confirmNewPasswordInput = getByTestId('confirm-new-password-input');
 
     await fireEvent.change(currentPasswordInput, {
       target: {
@@ -165,9 +162,9 @@ describe('ChangePasswordForm', () => {
       },
     });
 
-    await fireEvent.change(confirmPasswordInput, {
+    await fireEvent.change(confirmNewPasswordInput, {
       target: {
-        name: 'confirmPassword',
+        name: 'confirmNewPassword',
         value: 'my_new_password',
       },
     });
@@ -186,7 +183,7 @@ describe('ChangePasswordForm', () => {
 
   it('renders custom error message', async () => {
     const resource = {
-      changePassword: jest.fn().mockRejectedValue('Failed to change password')
+      changePassword: jest.fn().mockRejectedValue('Failed to change password'),
     };
 
     const CustomPasswordComponent = () => {
@@ -196,9 +193,7 @@ describe('ChangePasswordForm', () => {
         setError('Whoopsies! We were unable to update your password.');
       };
 
-      return (
-        <ChangePasswordForm onError={onError} />
-      );
+      return <ChangePasswordForm onError={onError} />;
     };
 
     const { getByTestId, getByText } = render(
@@ -209,7 +204,7 @@ describe('ChangePasswordForm', () => {
 
     const currentPasswordInput = getByTestId('current-password-input');
     const newPasswordInput = getByTestId('new-password-input');
-    const confirmPasswordInput = getByTestId('confirm-password-input');
+    const confirmNewPasswordInput = getByTestId('confirm-new-password-input');
 
     await fireEvent.change(currentPasswordInput, {
       target: {
@@ -225,9 +220,9 @@ describe('ChangePasswordForm', () => {
       },
     });
 
-    await fireEvent.change(confirmPasswordInput, {
+    await fireEvent.change(confirmNewPasswordInput, {
       target: {
-        name: 'confirmPassword',
+        name: 'confirmNewPassword',
         value: 'my_new_password',
       },
     });
@@ -246,7 +241,7 @@ describe('ChangePasswordForm', () => {
 
   it('toggles whether passwords are visible', async () => {
     const resource = {
-      changePassword: jest.fn()
+      changePassword: jest.fn(),
     };
 
     const { getByTestId } = render(
@@ -257,22 +252,21 @@ describe('ChangePasswordForm', () => {
 
     const currentPasswordInput = getByTestId('current-password-input');
     const newPasswordInput = getByTestId('new-password-input');
-    const confirmPasswordInput = getByTestId('confirm-password-input');
+    const confirmNewPasswordInput = getByTestId('confirm-new-password-input');
     const currentPasswordIcon = getByTestId('current-password-icon');
     const newPasswordIcon = getByTestId('new-password-icon');
-    const confirmPasswordIcon = getByTestId('confirm-password-icon');
+    const confirmNewPasswordIcon = getByTestId('confirm-new-password-icon');
 
     expect(currentPasswordInput.type).toBe('password');
     expect(newPasswordInput.type).toBe('password');
-    expect(confirmPasswordInput.type).toBe('password');
+    expect(confirmNewPasswordInput.type).toBe('password');
 
     await fireEvent.mouseDown(currentPasswordIcon);
     await fireEvent.mouseDown(newPasswordIcon);
-    await fireEvent.mouseDown(confirmPasswordIcon);
+    await fireEvent.mouseDown(confirmNewPasswordIcon);
 
     expect(currentPasswordInput.type).toBe('text');
     expect(newPasswordInput.type).toBe('text');
-    expect(confirmPasswordInput.type).toBe('text');
-
+    expect(confirmNewPasswordInput.type).toBe('text');
   });
 });

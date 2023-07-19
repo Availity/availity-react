@@ -6,8 +6,8 @@ export interface ChangePasswordFormProps {
   maxLength?: number;
   currentPasswordProps?: any;
   newPasswordProps?: any;
-  confirmPasswordProps?: any;
-};
+  confirmNewPasswordProps?: any;
+}
 
 declare const ChangePasswordForm: React.FC<ChangePasswordFormProps>;
 

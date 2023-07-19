@@ -16,7 +16,7 @@ Function to call when an error occurs calling the `changePassword` method on the
 
 #### `additionalButtons?: React.ReactNode`
 
-Additional Buttons to render to the right of the Submit button. 
+Additional Buttons to render to the right of the Submit button.
 
 #### `header?: React.ReactNode`
 
@@ -34,7 +34,6 @@ Additional props to spread onto the current password input field
 
 Additional props to spread onto the new password input field
 
-#### `confirmPasswordProps?: object`
+#### `confirmNewPasswordProps?: object`
 
-Additional props to spread onto the confirm password input field
-
+Additional props to spread onto the confirm new password input field
