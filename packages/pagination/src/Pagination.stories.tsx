@@ -21,7 +21,7 @@ import {
   PaginationControlsProps,
   AvResourcePagination,
   AvResourcePaginationProps,
-} from '..';
+} from '.';
 // import README from '../README.md';
 
 interface Name {
