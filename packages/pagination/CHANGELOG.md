@@ -2,6 +2,15 @@
 
 This file was generated using [@jscutlery/semver](https://github.com/jscutlery/semver).
 
+# [2.16.0](https://github.com/Availity/availity-react/compare/@availity/pagination@2.15.5...@availity/pagination@2.16.0) (2023-07-20)
+
+
+### Features
+
+* add change password component ([47e7041](https://github.com/Availity/availity-react/commit/47e70411c459a0651e60c605bffe2ccfc6d0e872))
+
+
+
 ## [2.15.5](https://github.com/Availity/availity-react/compare/@availity/pagination@2.15.4...@availity/pagination@2.15.5) (2022-12-16)
 
 
