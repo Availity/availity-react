@@ -42,6 +42,16 @@ module.exports = {
           'components/breadcrumbs',
           {
             type: 'category',
+            label: 'Change Password',
+            items: [
+              'components/change-password/index',
+              'components/change-password/change-password',
+              'components/change-password/change-password-form',
+              'components/change-password/use-change-password',
+            ],
+          },
+          {
+            type: 'category',
             label: 'Favorites',
             items: [
               'components/favorites/index',

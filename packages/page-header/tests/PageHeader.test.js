@@ -70,7 +70,7 @@ describe('PageHeader', () => {
     const { getByText } = render(
       <PageHeader
         appName="Payer Space"
-        component={<TrainingLink name="Appeals" link="https://www.youtube.com/watch?v=GgwE94KZJ7E" />}
+        component={<TrainingLink name="Appeals" link="https://www.youtube.com/watch?v=dQw4w9WgXcQ" />}
       >
         <p>this is cool</p>
       </PageHeader>

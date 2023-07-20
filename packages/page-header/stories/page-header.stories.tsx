@@ -139,7 +139,7 @@ export const WithTrainingLink: Story = ({ appName, feedback, homeUrl }) => (
   <PageHeader
     appName={appName}
     homeUrl={homeUrl}
-    component={<TrainingLink link="https://www.youtube.com/watch?v=GgwE94KZJ7E" name="Payer Space" />}
+    component={<TrainingLink link="https://www.youtube.com/watch?v=dQw4w9WgXcQ" name="Payer Space" />}
     feedback={feedback}
   />
 );

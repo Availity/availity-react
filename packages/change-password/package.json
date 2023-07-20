@@ -1,0 +1,52 @@
+{
+  "name": "@availity/change-password",
+  "version": "1.0.0",
+  "description": "Easy to use change-password components",
+  "keywords": [
+    "react",
+    "availity",
+    "change-password"
+  ],
+  "homepage": "https://availity.github.io/availity-react/components/change-password/index",
+  "bugs": {
+    "url": "https://github.com/Availity/availity-react/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Availity/availity-react.git",
+    "directory": "packages/change-password"
+  },
+  "license": "MIT",
+  "author": "Tyson Warner <tyson.warner@availity.com>",
+  "main": "index.js",
+  "types": "index.d.ts",
+  "scripts": {
+    "publish": "yarn npm publish --tolerate-republish --access public",
+    "publish:canary": "yarn npm publish --access public --tag canary"
+  },
+  "dependencies": {
+    "@availity/form": "workspace:*",
+    "@availity/icon": "workspace:*",
+    "classnames": "^2.3.1",
+    "dayjs": "^1.11.2",
+    "lodash": "^4.17.21",
+    "prop-types": "^15.8.1"
+  },
+  "devDependencies": {
+    "@availity/api-axios": "^7.0.1",
+    "axios": "^0.21.4",
+    "react": "^17.0.2",
+    "react-dom": "^17.0.2",
+    "reactstrap": "^8.10.1"
+  },
+  "peerDependencies": {
+    "@availity/api-axios": "^6.0.0 || ^7.0.0",
+    "axios": "^0.21.1",
+    "react": ">=16.8.6",
+    "react-query": "^3.29.0",
+    "reactstrap": "^8.0.0"
+  },
+  "publishConfig": {
+    "access": "public"
+  }
+}
