@@ -2,6 +2,15 @@
 
 This file was generated using [@jscutlery/semver](https://github.com/jscutlery/semver).
 
+## [11.3.3](https://github.com/Availity/availity-react/compare/@availity/page-header@11.3.2...@availity/page-header@11.3.3) (2023-07-20)
+
+
+### Bug Fixes
+
+* **page-header:** fix link ([10dd984](https://github.com/Availity/availity-react/commit/10dd984614b1526ed993ada96a220ebcbe81e9c1))
+
+
+
 ## [11.3.2](https://github.com/Availity/availity-react/compare/@availity/page-header@11.3.1...@availity/page-header@11.3.2) (2023-01-25)
 
 
