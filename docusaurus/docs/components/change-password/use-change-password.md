@@ -46,7 +46,7 @@ Toggle whether or not the ChangePassword component is in a loading state
 
 #### `error: any`
 
-The error state of the ChangePassword component. The error will appear in a red reactstrap `Alert`
+The error state of the ChangePassword component. The error will appear in a red reactstrap `<Alert/>`
 
 #### `setError: () => void`
 
@@ -54,7 +54,7 @@ Set the error state of the ChangePassword component
 
 #### `success: any`
 
-The success state of the ChangePassword component. The success will appear in a green reactstrap `Alert`
+The success state of the ChangePassword component. The success will appear in a green reactstrap `<Alert/>`
 
 #### `setSuccess: () => void`
 
@@ -88,11 +88,11 @@ The conditions that must be satisified in order for a password change to be subm
 
 #### currentPasswordIconRef React.ReactRef
 
-The ref to to the current password icon
+The ref to the current password icon
 
 #### newPasswordIconRef React.ReactRef
 
-The ref to to the new password icon
+The ref to the new password icon
 
 #### confirmNewPasswordIconRef React.ReactRef
 
