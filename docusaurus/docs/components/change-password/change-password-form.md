@@ -6,13 +6,13 @@ The form to change the user's password
 
 ### Props
 
-#### `onHandleSubmit?: ({ result: any ) => void`
+#### `onHandleSubmit?: ({ result: any, setSuccess: func, setError: func } ) => void`
 
-Function to call when the form is submitted. It is called with an object containing the result from the `changePassword` method that is called on the `resource`
+Function to call when the form is submitted. It is called with an object containing the result from the `changePassword` method that is called on the `resource`, the `setSuccess` function, and the `setError` function.
 
-#### `onError?: () => void`
+#### `onError?: ({ error: Error, setSuccess: func, setError: func }) => void`
 
-Function to call when an error occurs calling the `changePassword` method on the `resource`. It is called with an object containing the `error` caught from calling `resource.changePassword()`
+Function to call when an error occurs calling the `changePassword` method on the `resource`. It is called with an object containing the `error` caught from calling `resource.changePassword()`, the `setSuccess` function, and the `setError` function.
 
 #### `additionalButtons?: React.ReactNode`
 

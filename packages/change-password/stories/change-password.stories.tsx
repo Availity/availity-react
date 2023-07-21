@@ -36,12 +36,6 @@ class AvChangePasswordApi extends AvApi {
 export const Default: Story = () => {
   const resource = new AvChangePasswordApi();
 
-  const [submitted, setSubmitted] = useState(false);
-
-  const onHandleSubmit = () => {
-    setSubmitted(true);
-  };
-
   const changePasswordSchema = yup.object().shape({
     currentPassword: yup.string().required('Input your current password'),
     newPassword: yup
@@ -83,7 +77,7 @@ export const Default: Story = () => {
   const conditions = [
     {
       message: 'Have 8 to 15 characters',
-      passes: ({ newPassword, newPasswordTouched }) => {
+      passes: ({ newPassword, newPasswordTouched, submitted }) => {
         if (new RegExp(/^.{8,15}$/).test(newPassword)) {
           if (newPasswordTouched) return true;
           return null;
@@ -94,7 +88,7 @@ export const Default: Story = () => {
     },
     {
       message: 'Have a number',
-      passes: ({ newPassword, newPasswordTouched }) => {
+      passes: ({ newPassword, newPasswordTouched, submitted }) => {
         if (new RegExp(/\d/).test(newPassword)) {
           if (newPasswordTouched) return true;
           return null;
@@ -105,7 +99,7 @@ export const Default: Story = () => {
     },
     {
       message: 'Have an uppercase letter',
-      passes: ({ newPassword, newPasswordTouched }) => {
+      passes: ({ newPassword, newPasswordTouched, submitted }) => {
         if (new RegExp('[A-Z]').test(newPassword)) {
           if (newPasswordTouched) return true;
           return null;
@@ -116,7 +110,7 @@ export const Default: Story = () => {
     },
     {
       message: 'Have a lowercase letter',
-      passes: ({ newPassword, newPasswordTouched }) => {
+      passes: ({ newPassword, newPasswordTouched, submitted }) => {
         if (new RegExp('[a-z]').test(newPassword)) {
           if (newPasswordTouched) return true;
           return null;
@@ -127,7 +121,7 @@ export const Default: Story = () => {
     },
     {
       message: 'Have a special character',
-      passes: ({ newPassword, newPasswordTouched }) => {
+      passes: ({ newPassword, newPasswordTouched, submitted }) => {
         if (new RegExp(/[!"#$%&'()*+,./:;<=>?@[\\\]^_`{|}~-]/).test(newPassword)) {
           if (newPasswordTouched) return true;
           return null;
@@ -138,7 +132,7 @@ export const Default: Story = () => {
     },
     {
       message: 'Not contain your user Id',
-      passes: ({ newPassword, newPasswordTouched }) => {
+      passes: ({ newPassword, newPasswordTouched, submitted }) => {
         if (new RegExp(`^((?!${me.userId}).)*$`).test(newPassword)) {
           if (newPasswordTouched) return true;
           return null;
@@ -149,7 +143,7 @@ export const Default: Story = () => {
     },
     {
       message: 'Not contain spaces',
-      passes: ({ newPassword, newPasswordTouched }) => {
+      passes: ({ newPassword, newPasswordTouched, submitted }) => {
         if (new RegExp('^\\S*$').test(newPassword)) {
           if (newPasswordTouched) return true;
           return null;
@@ -162,7 +156,7 @@ export const Default: Story = () => {
 
   return (
     <ChangePassword resource={resource} schema={changePasswordSchema} conditions={conditions}>
-      <ChangePasswordForm onHandleSubmit={onHandleSubmit} />
+      <ChangePasswordForm />
     </ChangePassword>
   );
 };

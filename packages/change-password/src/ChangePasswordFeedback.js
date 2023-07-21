@@ -5,7 +5,7 @@ import { useChangePasswordContext } from './ChangePassword';
 import './ChangePasswordFeedback.scss';
 
 const ChangePasswordFeedback = () => {
-  const { conditions = [] } = useChangePasswordContext();
+  const { conditions = [], submitted } = useChangePasswordContext();
 
   const { values, touched } = useFormikContext();
   const { currentPassword, newPassword, confirmNewPassword } = values;
@@ -22,6 +22,7 @@ const ChangePasswordFeedback = () => {
             currentPasswordTouched: currentPassword || touched.currentPassword === true,
             newPasswordTouched: newPassword || touched.newPassword === true,
             confirmNewPasswordTouched: confirmNewPassword || touched.confirmNewPassword === true,
+            submitted,
           });
           return (
             <div key={message} className="passwordElement pt-3">
