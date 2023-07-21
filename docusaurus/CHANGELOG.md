@@ -2,6 +2,15 @@
 
 This file was generated using [@jscutlery/semver](https://github.com/jscutlery/semver).
 
+## [1.10.1](https://github.com/Availity/availity-react/compare/@availity/docusaurus@1.10.0...@availity/docusaurus@1.10.1) (2023-07-21)
+
+
+### Bug Fixes
+
+* pass additional args to onError, onHandleSubmit, passes funcs ([5412e5a](https://github.com/Availity/availity-react/commit/5412e5a247e8dc2b37307a4878a5a394f21efeb3))
+
+
+
 # [1.10.0](https://github.com/Availity/availity-react/compare/@availity/docusaurus@1.9.3...@availity/docusaurus@1.10.0) (2023-07-20)
 
 
