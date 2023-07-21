@@ -10,6 +10,7 @@ const ChangePassword = ({ resource, schema, conditions, children }) => {
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
   const [success, setSuccess] = useState(null);
+  const [submitted, setSubmitted] = useState(false);
 
   const currentPasswordIconRef = useRef(null);
   const newPasswordIconRef = useRef(null);
@@ -28,6 +29,8 @@ const ChangePassword = ({ resource, schema, conditions, children }) => {
         setError,
         success,
         setSuccess,
+        submitted,
+        setSubmitted,
         resource,
         schema,
         conditions,

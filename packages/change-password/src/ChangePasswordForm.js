@@ -36,21 +36,23 @@ const ChangePasswordForm = ({
     setNewPasswordVisible,
     confirmNewPasswordVisible,
     setConfirmNewPasswordVisible,
+    setSubmitted,
   } = useChangePasswordContext();
 
   const handleSubmit = async ({ currentPassword, newPassword }) => {
     setLoading(true);
+    setSubmitted(true);
     try {
       const result = await resource.changePassword({ currentPassword, newPassword });
       setSuccess('Your password was successfully changed');
       if (onHandleSubmit) {
-        await onHandleSubmit({ result });
+        await onHandleSubmit({ result, setSuccess, setError });
       }
       setLoading(false);
     } catch (error) {
       setError('An error occurred changing your password');
       if (onError) {
-        await onError({ error });
+        await onError({ error, setSuccess, setError });
       }
       setLoading(false);
     }
