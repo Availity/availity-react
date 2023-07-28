@@ -9,6 +9,7 @@ import ListGroupItem from '@availity/list-group-item';
 import dayjs from 'dayjs';
 import AppIcon from '@availity/app-icon';
 import Icon from '@availity/icon';
+import AvLink from '@availity/link';
 import { useSpacesContext } from './Spaces';
 import { isFunction } from './helpers';
 import useLink from './useLink';
@@ -51,6 +52,7 @@ const Link = ({
   appIcon: showAppIcon,
   favorite,
   icon,
+  showName,
   showNew,
   showDate,
   stacked,
@@ -259,7 +261,13 @@ const Link = ({
       >
         {!stacked && favoriteIcon}
         {appIcon}
-        {icon && <Icon name={icons.navigation} />}
+        {icon && type.toUpperCase() === 'FILE' ? (
+          <AvLink target="_blank" href={restLink.url}>
+            <Icon name={restLink.metadataPairs?.find((pair) => pair.name === 'icon')?.value} />
+          </AvLink>
+        ) : (
+          <Icon name={icons.navigation} />
+        )}
         {children
           ? renderChildren()
           : body && (
@@ -284,7 +292,7 @@ const Link = ({
                   aria-label={name}
                   aria-describedby={showNew && isNew ? `${idPrefix}app-new-badge-${configurationId}` : undefined}
                 >
-                  {name}
+                  {showName ? name : null}
                 </TitleTag>
                 {stacked && dateInfo}
                 {showDescription && description && (
@@ -356,6 +364,8 @@ Link.propTypes = {
   body: PropTypes.bool,
   /** When true, renders the activeDate of the space. */
   showDate: PropTypes.bool,
+  /** When true, renders the name of the space. Default: true */
+  showName: PropTypes.bool,
   /** When true, renders a "New!" badge if the activeDate is less than 30 days old. */
   showNew: PropTypes.bool,
   /** Adjusts the icon size of the AppIcon if enabled. */
@@ -391,6 +401,7 @@ Link.defaultProps = {
   linkStyle: 'default',
   body: true,
   idPrefix: '',
+  showName: true,
 };
 
 export default Link;
