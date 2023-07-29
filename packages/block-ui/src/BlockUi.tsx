@@ -6,7 +6,7 @@ import type { ElementType, KeyboardEvent, KeyboardEventHandler, ReactNode } from
 import DefaultLoader from './Loader';
 import './BlockUi.css';
 
-export type Props = {
+export type Props = React.HTMLAttributes<HTMLElement> & {
   /** Set whether the component should block its children */
   blocking: boolean;
   /** children to display */
@@ -34,6 +34,7 @@ function BlockUi({
   message,
   renderChildren = true,
   tag: Tag = 'div',
+  ...rest
 }: Props): JSX.Element {
   const [top, setTop] = useState<string | number>('50%');
 
@@ -121,7 +122,7 @@ function BlockUi({
   const shouldRenderChildren = !blocking || renderChildren;
 
   return (
-    <Tag className={blocking ? `block-ui ${className}` : className} aria-busy={blocking}>
+    <Tag className={blocking ? `block-ui ${className}` : className} aria-busy={blocking} {...rest}>
       {blocking ? (
         <div tabIndex={0} onKeyUp={tabbedUpTop} onKeyDown={tabbedDownTop} ref={topFocusRef} className="sr-only">
           {message || 'loading'}
