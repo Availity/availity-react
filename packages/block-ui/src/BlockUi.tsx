@@ -8,7 +8,7 @@ import './BlockUi.css';
 
 export type Props = React.HTMLAttributes<HTMLElement> & {
   /** Set whether the component should block its children */
-  blocking: boolean;
+  blocking?: boolean;
   /** children to display */
   children?: ReactNode;
   /** CSS class name to pass to component */
