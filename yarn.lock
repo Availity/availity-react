@@ -537,6 +537,7 @@ __metadata:
   resolution: "@availity/change-password@workspace:packages/change-password"
   dependencies:
     "@availity/api-axios": ^7.0.1
+    "@availity/block-ui": "workspace:^"
     "@availity/form": "workspace:*"
     "@availity/icon": "workspace:*"
     axios: ^0.21.4

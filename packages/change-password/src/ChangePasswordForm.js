@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import BlockUI from 'react-block-ui';
+import BlockUI from '@availity/block-ui';
 import Icon from '@availity/icon';
 import { Alert, Button, CardBody, CardFooter, Col, Row } from 'reactstrap';
 import { Form, Field } from '@availity/form';
