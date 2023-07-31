@@ -2,10 +2,9 @@ import React, { useMemo } from 'react';
 import { Button } from 'reactstrap';
 import InfiniteScroll from 'react-infinite-scroll-component';
 import type { Props as InfiniteScrollProps } from 'react-infinite-scroll-component';
-import BlockUI from 'react-block-ui';
-import type { BlockUiProps } from 'react-block-ui';
+import BlockUI from '@availity/block-ui';
+import type { Props as BlockUiProps } from '@availity/block-ui';
 import isFunction from 'lodash/isFunction';
-import 'react-block-ui/style.css';
 
 import { usePagination } from './Pagination';
 
@@ -19,7 +18,7 @@ export type PaginationContentProps = {
   /** Props to be spread onto the `<BlockUI />` tag. */
   containerProps?: BlockUiProps;
   /** The message to render with the loading bar when in the loading state. */
-  loadingMessage?: string;
+  loadingMessage?: string | React.ReactNode;
   /** If `true`, calls `BlockUI` to simulate a loading state if the provider is loading. */
   loader?: boolean;
   /** If `true`, renders pagination content inside an infinite scroll component. */

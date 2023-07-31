@@ -537,6 +537,7 @@ __metadata:
   resolution: "@availity/change-password@workspace:packages/change-password"
   dependencies:
     "@availity/api-axios": ^7.0.1
+    "@availity/block-ui": "workspace:^"
     "@availity/form": "workspace:*"
     "@availity/icon": "workspace:*"
     axios: ^0.21.4
@@ -885,10 +886,10 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@availity/pagination@workspace:packages/pagination"
   dependencies:
+    "@availity/block-ui": "workspace:^"
     "@availity/hooks": "workspace:*"
     lodash: ^4.17.21
     react: ^17.0.2
-    react-block-ui: ^1.3.3
     react-dom: ^17.0.2
     react-infinite-scroll-component: ^6.1.0
     react-use: ^17.3.2
@@ -23128,18 +23129,6 @@ __metadata:
     lodash.flow: ^3.3.0
     pure-color: ^1.2.0
   checksum: 00a12dddafc8a9025cca933b0dcb65fca41c81fa176d1fc3a6a9d0242127042e2c0a604f4c724a3254dd2c6aeb5ef55095522ff22f5462e419641c1341a658e4
-  languageName: node
-  linkType: hard
-
-"react-block-ui@npm:^1.3.3":
-  version: 1.3.3
-  resolution: "react-block-ui@npm:1.3.3"
-  dependencies:
-    prop-types: ^15.6.2
-  peerDependencies:
-    react: ^0.14.9 || ^15.3.0 || ^16.0.0
-    react-dom: ^0.14.9 || ^15.3.0 || ^16.0.0
-  checksum: b9d00a9e7e8f27d7a0f58dd7ac879cbfa5d7b445145a5496f41fd7df7ddd7b1c8b5627104a14c89e7e8522534b0594f588507a54351043544469169220fc5fed
   languageName: node
   linkType: hard
 
