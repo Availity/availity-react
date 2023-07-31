@@ -2,6 +2,20 @@
 
 This file was generated using [@jscutlery/semver](https://github.com/jscutlery/semver).
 
+# [1.1.0](https://github.com/Availity/availity-react/compare/@availity/block-ui@1.0.0...@availity/block-ui@1.1.0) (2023-07-31)
+
+
+### Bug Fixes
+
+* **block-ui:** extend blockui prop types as HTMLAttributes, export props ([8df529e](https://github.com/Availity/availity-react/commit/8df529ead74d3ce94f1d4158649e82e49fc7696d))
+
+
+### Features
+
+* **block-ui:** make blocking prop optional to match react-block-ui ([6fbc035](https://github.com/Availity/availity-react/commit/6fbc035b961294f1f7048be25c62e229955b2cf2))
+
+
+
 # 1.0.0 (2023-01-27)
 
 
