@@ -1,6 +1,6 @@
 {
   "name": "@availity/pagination",
-  "version": "2.16.0",
+  "version": "2.17.0",
   "description": "component for displaying paginated data",
   "keywords": [
     "availity",
@@ -32,8 +32,8 @@
     "publish:canary": "yarn npm publish --access public --tag canary"
   },
   "dependencies": {
+    "@availity/block-ui": "workspace:^",
     "lodash": "^4.17.21",
-    "react-block-ui": "^1.3.3",
     "react-infinite-scroll-component": "^6.1.0",
     "react-use": "^17.3.2"
   },

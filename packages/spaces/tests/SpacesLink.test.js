@@ -557,4 +557,74 @@ describe('SpacesLink', () => {
 
     expect(link14_title.getAttribute('role')).toBe('link');
   });
+
+  it('renders link with icon for type file when icon is true', async () => {
+    const space = {
+      id: 'encoded14',
+      configurationId: '14',
+      type: 'FILE',
+      url: '/path/to/url',
+      name: 'file with link',
+      metadataPairs: [{ name: 'icon', value: 'file-archive' }],
+      description: 'This is a file',
+      link: {
+        url: '/path/to/url',
+        text: 'title',
+        target: '_self',
+      },
+    };
+    const { getByTestId } = render(
+      <SpacesLink
+        id="application-link-14"
+        icon
+        space={space}
+        linkAttributes={{
+          spaceId: '14',
+        }}
+        role="listitem"
+        clientId="my-client-id"
+        title={space.link.text}
+      />
+    );
+
+    const link = await waitFor(() => getByTestId('av-link-tag'));
+    expect(link.href).toContain('/public/apps/home/#!/loadApp?appUrl=%2Fpath%2Fto%2Furl');
+    const icon = await waitFor(() => getByTestId('icon'));
+    expect(icon.className).toBe('icon icon-file-archive');
+  });
+
+  it('renders icon for non file type when icon is true', async () => {
+    const space = {
+      id: 'encoded14',
+      configurationId: '14',
+      type: 'LINK',
+      name: 'file with link',
+      url: '/path/to/url',
+      icons: {
+        navigation: 'desktop',
+      },
+      description: 'This is a file',
+      link: {
+        url: '/path/to/url',
+        text: 'title',
+        target: '_self',
+      },
+    };
+
+    const { getByTestId } = render(
+      <SpacesLink
+        id="application-link-14"
+        space={space}
+        linkAttributes={{
+          spaceId: '14',
+        }}
+        role="listitem"
+        clientId="my-client-id"
+        title={space.link.text}
+      />
+    );
+
+    const icon = await waitFor(() => getByTestId('icon'));
+    expect(icon.className).toBe('icon icon-desktop');
+  });
 });

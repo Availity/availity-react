@@ -47,7 +47,7 @@ describe('Pagination Content', () => {
       ],
     });
 
-    const { getByTestId } = render(
+    const { getByTestId, getAllByTestId } = render(
       <Pagination items={loadPage} itemsPerPage={3}>
         <PaginationContent
           itemKey="key"
@@ -58,13 +58,13 @@ describe('Pagination Content', () => {
       </Pagination>
     );
 
-    expect(getByTestId('loading-message')).toBeDefined();
+    expect(getAllByTestId('loading-message')).toBeDefined();
 
     const paginationContent = await waitFor(() => getByTestId('pagination-content-con'));
 
     expect(paginationContent).not.toBe(null);
 
-    await waitForElementToBeRemoved(() => getByTestId('loading-message'));
+    await waitForElementToBeRemoved(() => getAllByTestId('loading-message'));
 
     for (const item of loadPage().items) expect(getByTestId(`item-${item.value}`)).toBeDefined();
   });
@@ -80,7 +80,7 @@ describe('Pagination Content', () => {
       ],
     });
 
-    const { getByTestId } = render(
+    const { getByTestId, getAllByTestId } = render(
       <Pagination items={loadPage} itemsPerPage={3}>
         <PaginationContent
           itemKey="key"
@@ -102,7 +102,7 @@ describe('Pagination Content', () => {
       </Pagination>
     );
 
-    expect(getByTestId('loading-message')).toBeDefined();
+    expect(getAllByTestId('loading-message')).toBeDefined();
 
     const paginationContent = await waitFor(() => getByTestId('pagination-content-con'));
 

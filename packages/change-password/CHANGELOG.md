@@ -2,6 +2,15 @@
 
 This file was generated using [@jscutlery/semver](https://github.com/jscutlery/semver).
 
+# [0.2.0](https://github.com/Availity/availity-react/compare/@availity/change-password@0.1.1...@availity/change-password@0.2.0) (2023-07-31)
+
+
+### Features
+
+* **change-password:** remove deprecated react-block-ui and change to @availity/block-ui ([18797ab](https://github.com/Availity/availity-react/commit/18797abc426a89a85a4d71ac893b4b12ad69455f))
+
+
+
 ## [0.1.1](https://github.com/Availity/availity-react/compare/@availity/change-password@0.1.0...@availity/change-password@0.1.1) (2023-07-21)
 
 

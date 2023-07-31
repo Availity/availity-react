@@ -2,6 +2,15 @@
 
 This file was generated using [@jscutlery/semver](https://github.com/jscutlery/semver).
 
+# [6.6.0](https://github.com/Availity/availity-react/compare/@availity/spaces@6.5.9...@availity/spaces@6.6.0) (2023-07-31)
+
+
+### Features
+
+* **spaces:** add showName prop, special handling for type FILE to SpacesLink ([00b0b6e](https://github.com/Availity/availity-react/commit/00b0b6ee98c80415c6290fb594719e4fa70da136))
+
+
+
 ## [6.5.9](https://github.com/Availity/availity-react/compare/@availity/spaces@6.5.8...@availity/spaces@6.5.9) (2023-04-24)
 
 
