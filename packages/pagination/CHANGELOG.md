@@ -2,6 +2,15 @@
 
 This file was generated using [@jscutlery/semver](https://github.com/jscutlery/semver).
 
+# [2.17.0](https://github.com/Availity/availity-react/compare/@availity/pagination@2.16.0...@availity/pagination@2.17.0) (2023-07-31)
+
+
+### Features
+
+* **pagination:** remove react-block-ui in favor of @availity/block-ui, update tests ([60c9aa7](https://github.com/Availity/availity-react/commit/60c9aa736c10dea223126f885166322467a44f71))
+
+
+
 # [2.16.0](https://github.com/Availity/availity-react/compare/@availity/pagination@2.15.5...@availity/pagination@2.16.0) (2023-07-20)
 
 
