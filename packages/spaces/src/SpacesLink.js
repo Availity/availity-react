@@ -263,10 +263,10 @@ const Link = ({
         {appIcon}
         {icon && type.toUpperCase() === 'FILE' ? (
           <AvLink target="_blank" href={restLink.url}>
-            <Icon name={restLink.metadataPairs?.find((pair) => pair.name === 'icon')?.value} />
+            <Icon data-testid="icon" name={restLink.metadataPairs?.find((pair) => pair.name === 'icon')?.value} />
           </AvLink>
         ) : (
-          <Icon name={icons.navigation} />
+          <Icon data-testid="icon" name={icons.navigation} />
         )}
         {children
           ? renderChildren()
