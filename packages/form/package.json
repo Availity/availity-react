@@ -37,7 +37,7 @@
     "classnames": "^2.3.1",
     "prop-types": "^15.8.1",
     "react-currency-input-field": "^3.6.0",
-    "uuid": "^8.3.2"
+    "uuid": "^9.0.0"
   },
   "devDependencies": {
     "formik": "^2.2.9",
