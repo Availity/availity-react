@@ -54,14 +54,19 @@ describe('SupportForm', () => {
             customerId: 'cid4',
             name: 'Org 4',
           },
+          {
+            id: 'org5',
+            customerId: 'cid5',
+            name: 'Org 5',
+          },
         ],
       },
     });
 
     avOrganizationsApi.getOrganizations.mockResolvedValue({
       data: {
-        totalCount: 4,
-        count: 4,
+        totalCount: 5,
+        count: 5,
         offset: 0,
         limit: 50,
         organizations: [
@@ -84,6 +89,11 @@ describe('SupportForm', () => {
             id: 'org4',
             customerId: 'cid4',
             name: 'Org 4',
+          },
+          {
+            id: 'org5',
+            customerId: 'cid5',
+            name: 'Org 5',
           },
         ],
       },
