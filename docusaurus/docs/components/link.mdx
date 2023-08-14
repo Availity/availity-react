@@ -22,14 +22,38 @@ yarn add @availity/link
 
 ### Example
 
+The `AvLink` component has been modified to work with the Availity Portal. The portal serves apps based on the `appUrl` query parameter and the `AvLink` component assumes you want to navigate with that rule in mind. This is the preferred method for routing from app to app in the portal as it properly accounts for the `Navigation` when inside the portal.
+
+Let's assume we have an application that is served at the url: `/web/hello/world`. If we pass that relative url to the `href` prop, then clicking the link will take us to: `https://availity.github.io/public/apps/home/#!/loadApp?appUrl=%2Fweb%2Fhello%2Fworld`. Notice our provided url was encoded and added to the `appUrl` query parameter. The code for the above sample can be found below.
+
+```jsx
+import React from 'react';
+import AvLink from '@availity/link';
+
+const Example = () => <AvLink href="/web/hello/world">My Application</AvLink>;
+```
+
+If instead you would like to route directly to `apps.availity.com/web/hello/world`, then set the `loadApp` prop to `false`. This is _not_ recommended as you could lose the `Navigation`.
+
 ```jsx
 import React from 'react';
 import AvLink from '@availity/link';
 
 const Example = () => (
-  <AvLink href="/public/apps/my-app" target="newBody">
+  <AvLink href="/web/hello/world" loadApp={false}>
     My Application
   </AvLink>
+);
+```
+
+You do not need to worry about using the `loadApp` prop when you pass an absolute url. Navigating away from the portal is the most common use case for this functionality. For example, the following code would send the user directly to the Availity marketing site
+
+```jsx
+import React from 'react';
+import AvLink from '@availity/link';
+
+const Example = () => (
+  <AvLink href="https://www.availity.com">My Application</AvLink>
 );
 ```
 
