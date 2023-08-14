@@ -2,6 +2,16 @@
 
 This file was generated using [@jscutlery/semver](https://github.com/jscutlery/semver).
 
+# [0.2.0](https://github.com/Availity/availity-react/compare/@availity/app-tiles@0.1.2...@availity/app-tiles@0.2.0) (2023-08-14)
+
+
+### Features
+
+* **app-tiles:** adding alternative alt text for when undefined values are present EB-233 ([e198cc7](https://github.com/Availity/availity-react/commit/e198cc73790ca98cadfb5a7feb91536c4c31ed53))
+* **app-tiles:** changing default fallback to App Tile EB-233 ([d681641](https://github.com/Availity/availity-react/commit/d681641b2af4e32ccb5560b080f642107d38bc4b))
+
+
+
 ## [0.1.2](https://github.com/Availity/availity-react/compare/@availity/app-tiles@0.1.1...@availity/app-tiles@0.1.2) (2023-01-24)
 
 
