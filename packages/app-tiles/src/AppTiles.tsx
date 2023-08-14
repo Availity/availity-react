@@ -85,7 +85,7 @@ const AppTiles = ({
               <img
                 className={css.tile}
                 src={parent.images.tile}
-                alt={parent.images.name || parent.name || 'App Icon'}
+                alt={parent.images.name || parent.name || 'App Tile'}
               />
             ) : (
               <div className={`app-icon app-icon-${color} ${css.tile}`}>{parent.shortName}</div>
