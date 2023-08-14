@@ -9,6 +9,7 @@ type ValidParent = {
     shortName?: string;
     tile?: string;
   };
+  name?: string;
   shortName?: string;
 };
 
@@ -81,7 +82,11 @@ const AppTiles = ({
         <div className={css.container}>
           {validParents.map((parent) =>
             parent.images?.tile ? (
-              <img className={css.tile} src={parent.images.tile} alt={parent.images.name} />
+              <img
+                className={css.tile}
+                src={parent.images.tile}
+                alt={parent.images.name || parent.name || 'App Tile'}
+              />
             ) : (
               <div className={`app-icon app-icon-${color} ${css.tile}`}>{parent.shortName}</div>
             )
