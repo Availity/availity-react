@@ -8,6 +8,8 @@ import { Column } from '../types/ReactTable';
 import Table from '../Table';
 import TableContent from '../TableContent';
 
+jest.mock('@availity/hooks');
+
 const basicColumns = [
   {
     Header: 'First Name',
@@ -40,10 +42,18 @@ const bulkActions = [
     onClick: jest.fn(),
   },
   {
+    id: 'actionDivider',
+    divider: true,
+  },
+  {
     id: 'action2',
     displayText: 'Action 2',
     onClick: jest.fn(),
     isVisible: () => false,
+  },
+  {
+    id: 'action3',
+    displayText: () => 'Populated By function',
   },
 ];
 
@@ -184,5 +194,34 @@ describe('BulkTableActions', () => {
     await waitFor(() => {
       expect(onRowsSelected).toHaveBeenCalled();
     });
+  });
+
+  test('should populate buttonGroupProps when provided', async () => {
+    const props = { vertical: true };
+
+    const { getByTestId } = render(
+      <Table data={basicData} columns={basicColumns}>
+        <TableControls>
+          <BulkTableActions bulkActions={bulkActions} buttonGroupProps={props} />
+        </TableControls>
+        <TableContent />
+      </Table>
+    );
+
+    expect(getByTestId('bulk_actions_btn_group')).toHaveAttribute('class', 'btn-group btn-group-vertical');
+  });
+
+  test('should add divider to bulk action menu when provided', async () => {
+    const { getByTestId } = render(
+      <Table data={basicData} columns={basicColumns}>
+        <TableControls>
+          <BulkTableActions bulkActions={bulkActions} />
+        </TableControls>
+        <TableContent />
+      </Table>
+    );
+
+    expect(getByTestId('bulk_action_actionDivider')).not.toBeNull();
+    expect(getByTestId('bulk_action_actionDivider')).toHaveClass('dropdown-divider');
   });
 });

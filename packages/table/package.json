@@ -1,6 +1,6 @@
 {
   "name": "@availity/table",
-  "version": "0.5.5",
+  "version": "0.6.0-alpha.8",
   "description": "A generic table wrapper for react-table",
   "keywords": [
     "react",
@@ -29,6 +29,7 @@
     "publish:canary": "yarn npm publish --access public --tag canary"
   },
   "dependencies": {
+    "@availity/hooks": "workspace:*",
     "@availity/icon": "workspace:*",
     "@types/react-table": "^7.7.12",
     "classnames": "^2.3.1",

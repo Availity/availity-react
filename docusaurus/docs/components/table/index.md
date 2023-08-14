@@ -195,6 +195,14 @@ This function determines if a row in a selectable table can be selected. By defa
 
 This function is called whenever a row on the table has been clicked.
 
+#### `useColumnWidths: boolean`
+
+When true, it will take the width as defined in the column configuration and apply it to the styles of each column. It is recommended that when this is true that you set a `defaultColumn` with a width of `auto` to ensure that the columns just take whatever width is necessary to fit the content.
+
+#### `footer: boolean`
+
+Determines whether a footer should be displayed. Footer configuration must be added the Column Definition for the Footer value for the column to display.
+
 ##### OnTableClickEvent Props
 
 `instance: Row` The react-table [Row](https://react-table.tanstack.com/docs/api/useTable#row-properties) instance that was clicked.
@@ -250,6 +258,28 @@ The `instance` property is tied directly to the [react-table Table Instance](htt
 ### Action Cell
 
 This is used to display an action menu in a cell.
+
+#### `actions?: RecordAction<T>[]`
+
+The actions that are present in the dropdown.
+
+#### `primaryTableAction?:PrimaryRecordAction<T>`
+
+This is the primary action of record. It displays as an clickable icon underneath the Action Menu on the table row.
+
+#### `isSticky?: boolean`
+
+When the action menu is open, setting this to true means that the action menu will maintain the same position even on scroll or resize. When false, the behavior matches the default Popper behavior of automatically calculating the correct position of the Dropdown Menu.
+
+#### `tableActionMenuProps?: TableActionMenuProps`
+
+Any additional properties that should be passed to the `TableActionMenu` component.
+
+#### `tooltipProps?: UncontrolledTooltipProps`
+
+This is only utilized when there is a primary action on the table. This will override any of the default tooltip props for the `UncontrolledTooltip` that appear when hovering over the primary action icon.
+
+### Action Definitions
 
 #### `isVisible?`: (record?: T) => boolean
 
@@ -319,6 +349,20 @@ const columns = [
 ];
 ```
 
+#### Props
+
+`color: string`
+
+The color of the badge. Refer to the Reactstrap documentation linked above for available stylings.
+
+`displayText: string`
+
+The text that should be displayed inside the badge.
+
+`defaultValue: string`
+
+An optional default value text or component that can be displayed whenever the value of the cell is not defined.
+
 ### Currency Cell
 
 This is used to format currency in a cell. You can optionally pass it a default value to display if the value is null.
@@ -365,6 +409,24 @@ const columns = [
 ];
 ```
 
+#### Props
+
+`dateFormat: string`
+
+The format of the date string that you want to be displayed.
+
+`defaultValue?: string`
+
+An optional default value text or component that can be displayed whenever the value of the cell is not defined.
+
+`displayTooltip?: boolean`
+
+Boolean that determines if a tooltip should be displayed on hovering over the cell. Defaults to true.
+
+`tooltipProps?: UncontrolledTooltipProps`
+
+This will override any of the default tooltip props for the `UncontrolledTooltip` that appear when hovering over the primary action icon.
+
 ### Icon Cell
 
 This is used to have an cell display an icon. This will only show the icon if the value for the cell is populated (or `true`).
@@ -387,7 +449,7 @@ In the body of the table, the icon is displayed if the hasNotes property is set 
     ]
 ```
 
-If the title (tooltip) of the icon is dependent on the data of the record, it is possible to pass a function to the IconCell (as `getTitle`) to populate the record.
+If the title of the icon is dependent on the data of the record, it is possible to pass a function to the IconCell (as `getTitle`) to populate the record.
 
 ```jsx
 const columns = [
@@ -428,6 +490,48 @@ See [Availity UI Kit](https://availity.github.io/availity-uikit/v4/icons) for av
     ]
 ```
 
+#### Props
+
+`name: string`
+
+The name of the icon that is displayed. See [Availity UI Kit](https://availity.github.io/availity-uikit/v4/icons) for available icons.
+
+`defaultValue?: string`
+
+An optional default value text or component that can be displayed whenever the value of the cell is not defined.
+
+`tooltipText?: string | ((value: T) => string)`
+
+The text that should display inside the tooltip. This can be either a hard coded string or a function that refers to the cell value to populate the tooltip.
+
+`getId? (row: Row<T>) => string`
+
+Use this to formulate an id that is unique for the table. This is required for the tooltip to be able to correctly set the target and appear on hover over the correct element.
+
+`tooltipProps?: UncontrolledTooltipProps`
+
+This will override any of the default tooltip props for the `UncontrolledTooltip` that appear when hovering over the primary action icon.
+
+### Default Value Cell
+
+This cell will display default text whenever the cell value is not defined.
+
+#### Usages
+
+```jsx
+    const columns = [
+      Header: 'Has Middle Name',
+      accessor: 'middleName'
+      Cell: DefaultValueCell('Not Available'),
+    ]
+```
+
+#### Props
+
+`defaultValue?: string`
+
+An optional default value text or component that can be displayed whenever the value of the cell is not defined.
+
 ## Column Configuration Properties
 
 To see a comprehensive list of available properties for column configuration, view the [react-table documentation](https://react-table.tanstack.com/docs/api/useTable#column-options).
@@ -456,6 +560,29 @@ Display a formatted header, such as an Icon.
   const columns = [
         {
             Header: <Icon name="phone" title="phone/>,
+            ...
+        }
+    ]
+```
+
+The same applies for adding a `Footer` for a column cell (make sure to also add the `footer` prop to the table to ensure that it displays).
+
+```jsx
+
+  const columns = [
+        {
+            Footer: 'My Column',
+            ...
+        }
+    ]
+```
+
+Display a formatted header, such as an Icon.
+
+```jsx
+  const columns = [
+        {
+            Footer: <Icon name="phone" title="phone"/>,
             ...
         }
     ]
@@ -490,6 +617,22 @@ When there is an on OnRowClick event populated, this designates that the column 
 #### `hidden`
 
 When this is true, the column will be hidden in the table.
+
+#### `width?: number`
+
+The width of the column. Use this in combination with `useColumnWidths` boolean on the `<Table>` component.
+
+#### `minWidth?: number`
+
+The min-width of the column. Use this in combination with `useColumnWidths` boolean on the `<Table>` component.
+
+#### `maxWidth?: number`
+
+The max-width of the column. Use this in combination with `useColumnWidths` boolean on the `<Table>` component.
+
+#### `Footer`
+
+What should be displayed in the Footer for the column. `footer` must be added to the table for this to display.
 
 ## Styling the Table
 
@@ -568,6 +711,73 @@ const columns = [
 ```
 
 Note that this is not supported in IE 11.
+
+## Accessing the Table Ref in a Parent Component
+
+It is common that a parent component will need to have access to the the table instance. This can be done utilizing React Refs.
+
+There is now an exported `TableRef` that contains the react-table `tableInstance`.
+
+```jsx
+import React, { useRef } from 'react';
+import Table, { TableRef } from '@availity/table';
+
+import MyObject from '@types/MyObject';
+
+type Props = {
+  data: MyObject[];
+};
+
+const MyComponent = ({ data }: Props) : JSX.Element => {
+  const ref = useRef<TableRef<MyObject>>(null);
+  const [areAllSelected, setAreAllSelected] = useState(false);
+
+  const columns =  useMemo(
+    () =>
+    [
+      {
+        Header: 'Column 1',
+        accessor: 'column1',
+      },
+      {
+        Header: 'Column 2',
+        accessor: 'column2',
+      },
+      {
+        Header: 'Column 3',
+        accessor: 'column3',
+      },
+    ],
+    []
+  );
+
+
+  const toggleSelectAll = () => {
+    const selectAll = !areAllSelected;
+    setAreAllSelected(selectAll);
+    tableRef.current?.instance?.toggleAllRowsSelected(showAll);
+  };
+
+  return (
+    <>
+      <Input
+        id="checkSelectAll"
+        aria-labelledby="lblSelectAll"
+        type="checkbox"
+        checked={areAllSelected}
+        onChange={toggleSelectAll}
+      />
+      <Label id="lblSelectAll" className="ml-1 mr-2" check>
+      Select All
+      </Label>
+      <Table ref={ref} selectable columns={columns} data={data}/>
+    </>
+  )
+}
+
+export const MyComponent;
+
+```
 
 ## Migrating from version 0.3.x
 

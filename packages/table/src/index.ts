@@ -1,6 +1,20 @@
-export { ActionCell, BadgeCell, CurrencyCell, DateCell, IconCell, IconWithTooltipCell } from './CellDefinitions';
+export {
+  ActionCell,
+  BadgeCell,
+  CurrencyCell,
+  DateCell,
+  DefaultValueCell,
+  IconCell,
+  IconWithTooltipCell,
+} from './CellDefinitions';
 
-export type { ActionCellConfig, CurrencyCellConfig, DateTimeCellConfig, IconConfig } from './CellDefinitions';
+export type {
+  ActionCellConfig,
+  CurrencyCellConfig,
+  DateTimeCellConfig,
+  DefaultValueCellProps,
+  IconConfig,
+} from './CellDefinitions';
 
 export type {
   OnRowSelectedEvent,
@@ -20,6 +34,10 @@ export type {
 } from './types';
 
 export { default } from './Table';
+export type { CommonTableProps, TableRef } from './Table';
+
+export { default as TableActionMenu } from './TableActionMenu';
+export type { TableActionMenuProps } from './TableActionMenu';
 
 export { useTableContext, TableContext } from './TableContext';
 export type { AvTableContext } from './TableContext';
@@ -29,3 +47,4 @@ export { default as TableContent } from './TableContent';
 export { default as ScrollableContainer } from './ScrollableContainer';
 
 export { TableSorter, TableControls, BulkTableActions } from './Controls';
+export type { BulkTableActionsProps } from './Controls';

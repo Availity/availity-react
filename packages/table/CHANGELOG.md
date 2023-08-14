@@ -2,6 +2,59 @@
 
 This file was generated using [@jscutlery/semver](https://github.com/jscutlery/semver).
 
+# [0.6.0-alpha.8](https://github.com/Availity/availity-react/compare/@availity/table@0.6.0-alpha.7...@availity/table@0.6.0-alpha.8) (2023-02-21)
+
+
+### Features
+
+* **table:** add useexpanded tableinstance type ([59630e8](https://github.com/Availity/availity-react/commit/59630e8c9582f3ed70e10c8655b6fdab81cda721))
+
+
+
+# [0.6.0-alpha.7](https://github.com/Availity/availity-react/compare/@availity/table@0.6.0-alpha.6...@availity/table@0.6.0-alpha.7) (2023-02-21)
+
+
+### Features
+
+* **table:** adding forwardref in order to access instance in a parent component and passing in row data to leverage hooks on rows ([f617bca](https://github.com/Availity/availity-react/commit/f617bcad393f2fca8944419e5a49d055cb36f191))
+
+
+
+# [0.6.0-alpha.6](https://github.com/Availity/availity-react/compare/@availity/table@0.6.0-alpha.5...@availity/table@0.6.0-alpha.6) (2023-02-14)
+
+
+### Features
+
+* **table:** pass in flag for use column widths ([a6d50e4](https://github.com/Availity/availity-react/commit/a6d50e41495a18a9f5dbd4166f1873d651766b99))
+
+
+
+# [0.6.0-alpha.5](https://github.com/Availity/availity-react/compare/@availity/table@0.6.0-alpha.4...@availity/table@0.6.0-alpha.5) (2023-02-14)
+
+
+### Features
+
+* **table:** only add style widths if in fixed container ([7e18180](https://github.com/Availity/availity-react/commit/7e181808c35133dc07bd8c82c25aa5650c82b212))
+
+
+
+# [0.6.0-alpha.4](https://github.com/Availity/availity-react/compare/@availity/table@0.6.0-alpha.3...@availity/table@0.6.0-alpha.4) (2023-02-10)
+
+
+### Features
+
+* **table:** enhancements with column widths and tooltip configuration, add footer suppport ([d254ad3](https://github.com/Availity/availity-react/commit/d254ad383746c94ebbf74b1e5d0f658a763db508))
+
+
+
+# [0.6.0-alpha.0](https://github.com/Availity/availity-react/compare/@availity/table@0.5.3...@availity/table@0.6.0-alpha.0) (2023-01-18)
+
+
+### Features
+
+* **table:** add support to display text function for all actions, add defaultvaluecell, add ability to pass in container for action menu to avoid it getting hidden in a scrollable container ([2fdb114](https://github.com/Availity/availity-react/commit/2fdb114938b3f4d049acc2f20cc577c1c41154cd))
+* **table:** update actioncell to take in more configurable props for dropdown including popper modifiers ([d013061](https://github.com/Availity/availity-react/commit/d0130618e7100872a3465e5956adb71ec2624f4e))
+
 ## [0.5.5](https://github.com/Availity/availity-react/compare/@availity/table@0.5.4...@availity/table@0.5.5) (2023-02-10)
 
 

@@ -1,7 +1,11 @@
 import React from 'react';
+import { UncontrolledTooltip, UncontrolledTooltipProps } from 'reactstrap';
+import { Column, IdType, Row } from '../types/ReactTable';
 
-type CellProps = {
+type CellProps<T extends IdType> = {
   value: string | number;
+  row: Row<T>;
+  column: Column<T>;
 };
 
 export interface CurrencyCellConfig {
@@ -9,15 +13,19 @@ export interface CurrencyCellConfig {
   style?: string;
   defaultValue?: string | React.ReactChild | React.ElementType;
   locales?: string;
+  displayTooltip?: boolean;
+  tooltipProps?: UncontrolledTooltipProps;
 }
 
-const CurrencyCell = ({
+const CurrencyCell = <T extends IdType>({
   currency = 'USD',
   defaultValue = '',
   style = 'currency',
   locales = 'en-us',
-}: CurrencyCellConfig): JSX.Element | ((cell: CellProps) => JSX.Element) => {
-  const CurrencyCellDef = ({ value }: CellProps): JSX.Element => {
+  displayTooltip = true,
+  tooltipProps,
+}: CurrencyCellConfig): JSX.Element | ((cell: CellProps<T>) => JSX.Element) => {
+  const CurrencyCellDef = ({ value, row, column }: CellProps<T>): JSX.Element => {
     let formattedValue;
 
     if (!value) {
@@ -31,8 +39,22 @@ const CurrencyCell = ({
 
       formattedValue = formatNum(value);
     }
+
     return formattedValue !== defaultValue ? (
-      <span title={typeof formattedValue === 'string' ? formattedValue : undefined}>{formattedValue}</span>
+      <>
+        <span id={`currency-cell-${row.id}-${column.id}`}>{formattedValue}</span>
+        {displayTooltip && typeof formattedValue === 'string' && (
+          <UncontrolledTooltip
+            role="tooltip"
+            placement="top"
+            target={`currency-cell-${row.id}-${column.id}`}
+            boundary="window"
+            {...tooltipProps}
+          >
+            {typeof formattedValue === 'string' ? formattedValue : undefined}
+          </UncontrolledTooltip>
+        )}
+      </>
     ) : (
       <>{defaultValue}</>
     );

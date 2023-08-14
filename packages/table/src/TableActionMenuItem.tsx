@@ -4,11 +4,11 @@ import { IdType } from './types/ReactTable';
 import { RecordAction } from './types/RecordAction';
 
 type Props<T extends IdType> = {
-  /** This is a unique id that is prepended to the element **/
+  /** This is a unique id that is prepended to the element */
   id?: string;
-  /** This is where the isVisible and onClick actions will be passed in **/
+  /** This is where the isVisible and onClick actions will be passed in */
   action: RecordAction<T>;
-  /** The record under observation **/
+  /** The record under observation */
   record: T;
 };
 
@@ -17,6 +17,11 @@ const TableActionMenuItem = <T extends IdType>({ id, action, record }: Props<T>)
   if (!isVisible) {
     return null;
   }
+
+  const displayText =
+    typeof action.displayText === 'function'
+      ? (action.displayText as (record?: T) => string | React.ReactChild | React.ElementType)(record)
+      : action.displayText;
 
   const setOnClickProps = () => {
     if (!action.onClick) {
@@ -29,8 +34,13 @@ const TableActionMenuItem = <T extends IdType>({ id, action, record }: Props<T>)
   return action.divider ? (
     <DropdownItem id={`${id}_action_${action.id}`} key={action.id} divider />
   ) : (
-    <DropdownItem id={`${id}_action_${action.id}`} key={action.id} {...setOnClickProps()}>
-      {action.displayText}
+    <DropdownItem
+      id={`${id}_action_${action.id}`}
+      key={action.id}
+      data-testid={`${id}_action_${action.id}`}
+      {...setOnClickProps()}
+    >
+      {displayText}
     </DropdownItem>
   );
 };

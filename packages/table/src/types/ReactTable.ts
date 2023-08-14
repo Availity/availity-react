@@ -17,6 +17,8 @@ import {
   UsePaginationInstanceProps,
   UseColumnOrderInstanceProps,
   UseRowSelectState,
+  UseExpandedRowProps,
+  UseExpandedInstanceProps,
 } from 'react-table';
 
 import { TableSort } from './TableSort';
@@ -24,11 +26,13 @@ import { TableSort } from './TableSort';
 /* eslint-disable-next-line  @typescript-eslint/ban-types */
 export type IdType = { id?: string | number } & object;
 
-export type Row<T extends IdType> = RtRow<T> & {
-  toggleRowSelected: () => void;
-  getToggleRowSelectedProps: () => void;
-  original: T;
-};
+export type Row<T extends IdType> = RtRow<T> &
+  UseExpandedRowProps<T> & {
+    toggleRowSelected: () => void;
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    getToggleRowSelectedProps: () => any;
+    original: T;
+  };
 
 export type RowProps = {
   isDisabled?: boolean;
@@ -53,6 +57,7 @@ export type Cell<T extends IdType, V = any> = RtCell<T, V> & {
   row: Row<T>;
   column: Column<T>;
   original: T;
+  data: T[];
 };
 
 export type ExtendedTableHeader<T extends IdType> = HeaderGroup<T> &
@@ -80,6 +85,7 @@ export type TableInstance<T extends IdType> = UseSortByInstanceProps<T> &
   UseRowSelectInstanceProps<T> &
   UseRowSelectOptions<T> &
   RtTableInstance<T> &
+  UseExpandedInstanceProps<T> &
   UseColumnOrderInstanceProps<T> &
   UsePaginationInstanceProps<T> & {
     toggleAllPageRowsSelected: (set?: boolean) => void;

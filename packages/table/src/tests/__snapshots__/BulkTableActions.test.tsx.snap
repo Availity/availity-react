@@ -70,6 +70,18 @@ exports[`BulkTableActions should render default bulk actions 1`] = `
             >
               Action 2
             </button>
+            <div
+              class="dropdown-divider"
+              data-testid="bulk_action_actionDivider"
+              tabindex="-1"
+            />
+            <button
+              class="dropdown-item"
+              data-testid="bulk_action_action3"
+              role="menuitem"
+              tabindex="0"
+              type="button"
+            />
           </div>
         </div>
       </div>

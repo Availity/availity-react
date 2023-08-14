@@ -20,27 +20,36 @@ exports[`Table should not display hidden columns 1`] = `
           data-testid="table_header_row_0_cell_0_first_name"
           id="table_header_row_0_cell_0_first_name"
           role="columnheader"
-          title="First Name"
         >
-          First Name
+          <span
+            id="first_name-th-title"
+          >
+            First Name
+          </span>
         </th>
         <th
           colspan="1"
           data-testid="table_header_row_0_cell_1_last_name"
           id="table_header_row_0_cell_1_last_name"
           role="columnheader"
-          title="Last Name"
         >
-          Last Name
+          <span
+            id="last_name-th-title"
+          >
+            Last Name
+          </span>
         </th>
         <th
           colspan="1"
           data-testid="table_header_row_0_cell_2_email"
           id="table_header_row_0_cell_2_email"
           role="columnheader"
-          title="Email"
         >
-          Email
+          <span
+            id="email-th-title"
+          >
+            Email
+          </span>
         </th>
       </tr>
     </thead>
@@ -56,18 +65,21 @@ exports[`Table should not display hidden columns 1`] = `
         <td
           data-testid="table_row_0_cell_0"
           id="table_row_0_cell_0"
+          role="cell"
         >
           Barbra
         </td>
         <td
           data-testid="table_row_0_cell_1"
           id="table_row_0_cell_1"
+          role="cell"
         >
           Tull
         </td>
         <td
           data-testid="table_row_0_cell_2"
           id="table_row_0_cell_2"
+          role="cell"
         >
           btull0@usatoday.com
         </td>
@@ -81,18 +93,21 @@ exports[`Table should not display hidden columns 1`] = `
         <td
           data-testid="table_row_1_cell_0"
           id="table_row_1_cell_0"
+          role="cell"
         >
           Karlis
         </td>
         <td
           data-testid="table_row_1_cell_1"
           id="table_row_1_cell_1"
+          role="cell"
         >
           Yurshev
         </td>
         <td
           data-testid="table_row_1_cell_2"
           id="table_row_1_cell_2"
+          role="cell"
         >
           kyurshev1@spotify.com
         </td>
@@ -106,18 +121,21 @@ exports[`Table should not display hidden columns 1`] = `
         <td
           data-testid="table_row_2_cell_0"
           id="table_row_2_cell_0"
+          role="cell"
         >
           Bordie
         </td>
         <td
           data-testid="table_row_2_cell_1"
           id="table_row_2_cell_1"
+          role="cell"
         >
           Marsy
         </td>
         <td
           data-testid="table_row_2_cell_2"
           id="table_row_2_cell_2"
+          role="cell"
         >
           bmarsy2@elegantthemes.com
         </td>
@@ -127,7 +145,7 @@ exports[`Table should not display hidden columns 1`] = `
 </div>
 `;
 
-exports[`Table should not display primary action column when provided 1`] = `
+exports[`Table should not display primary action column when not provided 1`] = `
 <div>
   <table
     class="av-grid table"
@@ -147,72 +165,96 @@ exports[`Table should not display primary action column when provided 1`] = `
           data-testid="table_header_row_0_cell_0_text"
           id="table_header_row_0_cell_0_text"
           role="columnheader"
-          title="Basic Text"
         >
-          Basic Text
+          <span
+            id="text-th-title"
+          >
+            Basic Text
+          </span>
         </th>
         <th
           colspan="1"
           data-testid="table_header_row_0_cell_1_currency"
           id="table_header_row_0_cell_1_currency"
           role="columnheader"
-          title="Currency"
         >
-          Currency
+          <span
+            id="currency-th-title"
+          >
+            Currency
+          </span>
         </th>
         <th
           colspan="1"
           data-testid="table_header_row_0_cell_2_badge"
           id="table_header_row_0_cell_2_badge"
           role="columnheader"
-          title="Badge"
         >
-          Badge
+          <span
+            id="badge-th-title"
+          >
+            Badge
+          </span>
         </th>
         <th
           colspan="1"
           data-testid="table_header_row_0_cell_3_icon"
           id="table_header_row_0_cell_3_icon"
           role="columnheader"
-          title="Icon"
         >
-          Icon
+          <span
+            id="icon-th-title"
+          >
+            Icon
+          </span>
         </th>
         <th
           colspan="1"
           data-testid="table_header_row_0_cell_4_icon2"
           id="table_header_row_0_cell_4_icon2"
           role="columnheader"
-          title="icon2"
         >
-          icon2
+          <span
+            id="icon2-th-title"
+          >
+            icon2
+          </span>
         </th>
         <th
           colspan="1"
           data-testid="table_header_row_0_cell_5_date"
           id="table_header_row_0_cell_5_date"
           role="columnheader"
-          title="Date"
         >
-          Date
+          <span
+            id="date-th-title"
+          >
+            Date
+          </span>
         </th>
         <th
           colspan="1"
           data-testid="table_header_row_0_cell_6_iconWithTooltip"
           id="table_header_row_0_cell_6_iconWithTooltip"
           role="columnheader"
-          title="Icon With Tooltip"
         >
-          Icon With Tooltip
+          <span
+            id="iconWithTooltip-th-title"
+          >
+            Icon With Tooltip
+          </span>
         </th>
         <th
           colspan="1"
           data-testid="table_header_row_0_cell_7_actions"
           id="table_header_row_0_cell_7_actions"
           role="columnheader"
-          title="Actions"
         >
-          Actions
+          <span
+            id="actions-th-title"
+          >
+            Actions
+          </span>
         </th>
       </tr>
     </thead>
@@ -228,15 +270,17 @@ exports[`Table should not display primary action column when provided 1`] = `
         <td
           data-testid="table_row_0_cell_0"
           id="table_row_0_cell_0"
+          role="cell"
         >
           My Text Field
         </td>
         <td
           data-testid="table_row_0_cell_1"
           id="table_row_0_cell_1"
+          role="cell"
         >
           <span
-            title="$43.08"
+            id="currency-cell-0-currency"
           >
             $43.08
           </span>
@@ -244,10 +288,10 @@ exports[`Table should not display primary action column when provided 1`] = `
         <td
           data-testid="table_row_0_cell_2"
           id="table_row_0_cell_2"
+          role="cell"
         >
           <span
             class="badge badge-badge-success"
-            title="badge field"
           >
             badge field
           </span>
@@ -255,6 +299,7 @@ exports[`Table should not display primary action column when provided 1`] = `
         <td
           data-testid="table_row_0_cell_3"
           id="table_row_0_cell_3"
+          role="cell"
         >
           <i
             aria-hidden="true"
@@ -265,6 +310,7 @@ exports[`Table should not display primary action column when provided 1`] = `
         <td
           data-testid="table_row_0_cell_4"
           id="table_row_0_cell_4"
+          role="cell"
         >
           <i
             aria-hidden="true"
@@ -275,9 +321,10 @@ exports[`Table should not display primary action column when provided 1`] = `
         <td
           data-testid="table_row_0_cell_5"
           id="table_row_0_cell_5"
+          role="cell"
         >
           <span
-            title="02/16/1956"
+            id="date-cell-0-date"
           >
             02/16/1956
           </span>
@@ -285,6 +332,7 @@ exports[`Table should not display primary action column when provided 1`] = `
         <td
           data-testid="table_row_0_cell_6"
           id="table_row_0_cell_6"
+          role="cell"
         >
           <i
             aria-hidden="true"
@@ -295,64 +343,41 @@ exports[`Table should not display primary action column when provided 1`] = `
         <td
           data-testid="table_row_0_cell_7"
           id="table_row_0_cell_7"
+          role="cell"
         >
-          <div
-            class="dropdown-action-menu dropleft dropdown"
-            id="table_row_action_menu_0"
-          >
+          <div>
             <button
-              aria-expanded="false"
-              aria-haspopup="true"
-              aria-label="Action Menu"
-              class="btn btn-ghost btn btn-secondary"
-              data-boundary="viewport"
-              id="table_row_action_menu_0_dropdown_toggle"
+              class="dropdown-item"
+              data-testid="table_row_action_menu_item_0_action_action1"
+              id="table_row_action_menu_item_0_action_action1"
+              role="menuitem"
+              tabindex="0"
               type="button"
             >
-              <i
-                aria-hidden="true"
-                class="icon icon-menu"
-                id="table_row_action_menu_0_dropdown_toggle_icon"
-              />
+              Action 1
             </button>
             <div
-              aria-hidden="true"
-              class="dropdown-action-menu dropdown-menu"
-              id="table_row_action_menu_0_dropdown_menu"
-              role="menu"
+              class="dropdown-divider"
+              id="table_row_action_menu_item_0_action_actionDivider"
               tabindex="-1"
+            />
+            <button
+              class="dropdown-item"
+              data-testid="table_row_action_menu_item_0_action_action2"
+              id="table_row_action_menu_item_0_action_action2"
+              role="menuitem"
+              tabindex="0"
+              type="button"
             >
-              <button
-                class="dropdown-item"
-                id="table_row_action_menu_item_0_action_action1"
-                role="menuitem"
-                tabindex="0"
-                type="button"
-              >
-                Action 1
-              </button>
-              <div
-                class="dropdown-divider"
-                id="table_row_action_menu_item_0_action_actionDivider"
-                tabindex="-1"
-              />
-              <button
-                class="dropdown-item"
-                id="table_row_action_menu_item_0_action_action2"
-                role="menuitem"
-                tabindex="0"
-                type="button"
-              >
-                Action 2
-              </button>
-            </div>
+              Action 2
+            </button>
           </div>
           <i
             aria-hidden="true"
             class="icon icon-file-pdf"
             data-testid="table_row_action_menu_item_0_primaryAction"
+            id="table_row_action_menu_item_0_primaryAction"
             style="cursor: pointer;"
-            title="View File"
           />
         </td>
       </tr>
@@ -365,15 +390,17 @@ exports[`Table should not display primary action column when provided 1`] = `
         <td
           data-testid="table_row_1_cell_0"
           id="table_row_1_cell_0"
+          role="cell"
         >
           My Text Field
         </td>
         <td
           data-testid="table_row_1_cell_1"
           id="table_row_1_cell_1"
+          role="cell"
         >
           <span
-            title="$43.08"
+            id="currency-cell-1-currency"
           >
             $43.08
           </span>
@@ -381,10 +408,10 @@ exports[`Table should not display primary action column when provided 1`] = `
         <td
           data-testid="table_row_1_cell_2"
           id="table_row_1_cell_2"
+          role="cell"
         >
           <span
             class="badge badge-badge-success"
-            title="badge field"
           >
             badge field
           </span>
@@ -392,21 +419,24 @@ exports[`Table should not display primary action column when provided 1`] = `
         <td
           data-testid="table_row_1_cell_3"
           id="table_row_1_cell_3"
+          role="cell"
         >
           
         </td>
         <td
           data-testid="table_row_1_cell_4"
           id="table_row_1_cell_4"
+          role="cell"
         >
           
         </td>
         <td
           data-testid="table_row_1_cell_5"
           id="table_row_1_cell_5"
+          role="cell"
         >
           <span
-            title="02/16/1990"
+            id="date-cell-1-date"
           >
             02/16/1990
           </span>
@@ -414,54 +444,31 @@ exports[`Table should not display primary action column when provided 1`] = `
         <td
           data-testid="table_row_1_cell_6"
           id="table_row_1_cell_6"
+          role="cell"
         >
           Not Available
         </td>
         <td
           data-testid="table_row_1_cell_7"
           id="table_row_1_cell_7"
+          role="cell"
         >
-          <div
-            class="dropdown-action-menu dropleft dropdown"
-            id="table_row_action_menu_1"
-          >
+          <div>
+            <div
+              class="dropdown-divider"
+              id="table_row_action_menu_item_1_action_actionDivider"
+              tabindex="-1"
+            />
             <button
-              aria-expanded="false"
-              aria-haspopup="true"
-              aria-label="Action Menu"
-              class="btn btn-ghost btn btn-secondary"
-              data-boundary="viewport"
-              id="table_row_action_menu_1_dropdown_toggle"
+              class="dropdown-item"
+              data-testid="table_row_action_menu_item_1_action_action2"
+              id="table_row_action_menu_item_1_action_action2"
+              role="menuitem"
+              tabindex="0"
               type="button"
             >
-              <i
-                aria-hidden="true"
-                class="icon icon-menu"
-                id="table_row_action_menu_1_dropdown_toggle_icon"
-              />
+              Action 2
             </button>
-            <div
-              aria-hidden="true"
-              class="dropdown-action-menu dropdown-menu"
-              id="table_row_action_menu_1_dropdown_menu"
-              role="menu"
-              tabindex="-1"
-            >
-              <div
-                class="dropdown-divider"
-                id="table_row_action_menu_item_1_action_actionDivider"
-                tabindex="-1"
-              />
-              <button
-                class="dropdown-item"
-                id="table_row_action_menu_item_1_action_action2"
-                role="menuitem"
-                tabindex="0"
-                type="button"
-              >
-                Action 2
-              </button>
-            </div>
           </div>
         </td>
       </tr>
@@ -490,27 +497,36 @@ exports[`Table should render basic table 1`] = `
           data-testid="table_header_row_0_cell_0_first_name"
           id="table_header_row_0_cell_0_first_name"
           role="columnheader"
-          title="First Name"
         >
-          First Name
+          <span
+            id="first_name-th-title"
+          >
+            First Name
+          </span>
         </th>
         <th
           colspan="1"
           data-testid="table_header_row_0_cell_1_last_name"
           id="table_header_row_0_cell_1_last_name"
           role="columnheader"
-          title="Last Name"
         >
-          Last Name
+          <span
+            id="last_name-th-title"
+          >
+            Last Name
+          </span>
         </th>
         <th
           colspan="1"
           data-testid="table_header_row_0_cell_2_email"
           id="table_header_row_0_cell_2_email"
           role="columnheader"
-          title="Email"
         >
-          Email
+          <span
+            id="email-th-title"
+          >
+            Email
+          </span>
         </th>
       </tr>
     </thead>
@@ -526,18 +542,21 @@ exports[`Table should render basic table 1`] = `
         <td
           data-testid="table_row_0_cell_0"
           id="table_row_0_cell_0"
+          role="cell"
         >
           Barbra
         </td>
         <td
           data-testid="table_row_0_cell_1"
           id="table_row_0_cell_1"
+          role="cell"
         >
           Tull
         </td>
         <td
           data-testid="table_row_0_cell_2"
           id="table_row_0_cell_2"
+          role="cell"
         >
           btull0@usatoday.com
         </td>
@@ -551,18 +570,21 @@ exports[`Table should render basic table 1`] = `
         <td
           data-testid="table_row_1_cell_0"
           id="table_row_1_cell_0"
+          role="cell"
         >
           Karlis
         </td>
         <td
           data-testid="table_row_1_cell_1"
           id="table_row_1_cell_1"
+          role="cell"
         >
           Yurshev
         </td>
         <td
           data-testid="table_row_1_cell_2"
           id="table_row_1_cell_2"
+          role="cell"
         >
           kyurshev1@spotify.com
         </td>
@@ -576,18 +598,21 @@ exports[`Table should render basic table 1`] = `
         <td
           data-testid="table_row_2_cell_0"
           id="table_row_2_cell_0"
+          role="cell"
         >
           Bordie
         </td>
         <td
           data-testid="table_row_2_cell_1"
           id="table_row_2_cell_1"
+          role="cell"
         >
           Marsy
         </td>
         <td
           data-testid="table_row_2_cell_2"
           id="table_row_2_cell_2"
+          role="cell"
         >
           bmarsy2@elegantthemes.com
         </td>
@@ -613,50 +638,62 @@ exports[`Table should render selectable table 1`] = `
         role="row"
       >
         <th
-          class="fixed-width-selection"
           colspan="1"
           data-testid="table_header_row_0_cell_0_selection"
           id="table_header_row_0_cell_0_selection"
           role="columnheader"
         >
-          <div
-            class="text-center"
+          <span
+            id="selection-th-title"
           >
-            <input
-              aria-label="Select all records"
-              data-testid="table_header_select_all"
-              style="cursor: pointer;"
-              title="Toggle All Rows Selected"
-              type="checkbox"
-            />
-          </div>
+            <div
+              class="text-center"
+            >
+              <input
+                aria-label="Select all records"
+                data-testid="table_header_select_all"
+                style="cursor: pointer;"
+                title="Toggle All Rows Selected"
+                type="checkbox"
+              />
+            </div>
+          </span>
         </th>
         <th
           colspan="1"
           data-testid="table_header_row_0_cell_1_first_name"
           id="table_header_row_0_cell_1_first_name"
           role="columnheader"
-          title="First Name"
         >
-          First Name
+          <span
+            id="first_name-th-title"
+          >
+            First Name
+          </span>
         </th>
         <th
           colspan="1"
           data-testid="table_header_row_0_cell_2_last_name"
           id="table_header_row_0_cell_2_last_name"
           role="columnheader"
-          title="Last Name"
         >
-          Last Name
+          <span
+            id="last_name-th-title"
+          >
+            Last Name
+          </span>
         </th>
         <th
           colspan="1"
           data-testid="table_header_row_0_cell_3_email"
           id="table_header_row_0_cell_3_email"
           role="columnheader"
-          title="Email"
         >
-          Email
+          <span
+            id="email-th-title"
+          >
+            Email
+          </span>
         </th>
       </tr>
     </thead>
@@ -670,9 +707,9 @@ exports[`Table should render selectable table 1`] = `
         role="row"
       >
         <td
-          class="fixed-width-selection"
           data-testid="table_row_0_cell_0"
           id="table_row_0_cell_0"
+          role="cell"
         >
           <div
             class="text-center"
@@ -689,18 +726,21 @@ exports[`Table should render selectable table 1`] = `
         <td
           data-testid="table_row_0_cell_1"
           id="table_row_0_cell_1"
+          role="cell"
         >
           Barbra
         </td>
         <td
           data-testid="table_row_0_cell_2"
           id="table_row_0_cell_2"
+          role="cell"
         >
           Tull
         </td>
         <td
           data-testid="table_row_0_cell_3"
           id="table_row_0_cell_3"
+          role="cell"
         >
           btull0@usatoday.com
         </td>
@@ -712,9 +752,9 @@ exports[`Table should render selectable table 1`] = `
         role="row"
       >
         <td
-          class="fixed-width-selection"
           data-testid="table_row_1_cell_0"
           id="table_row_1_cell_0"
+          role="cell"
         >
           <div
             class="text-center"
@@ -731,18 +771,21 @@ exports[`Table should render selectable table 1`] = `
         <td
           data-testid="table_row_1_cell_1"
           id="table_row_1_cell_1"
+          role="cell"
         >
           Karlis
         </td>
         <td
           data-testid="table_row_1_cell_2"
           id="table_row_1_cell_2"
+          role="cell"
         >
           Yurshev
         </td>
         <td
           data-testid="table_row_1_cell_3"
           id="table_row_1_cell_3"
+          role="cell"
         >
           kyurshev1@spotify.com
         </td>
@@ -754,9 +797,9 @@ exports[`Table should render selectable table 1`] = `
         role="row"
       >
         <td
-          class="fixed-width-selection"
           data-testid="table_row_2_cell_0"
           id="table_row_2_cell_0"
+          role="cell"
         >
           <div
             class="text-center"
@@ -773,18 +816,21 @@ exports[`Table should render selectable table 1`] = `
         <td
           data-testid="table_row_2_cell_1"
           id="table_row_2_cell_1"
+          role="cell"
         >
           Bordie
         </td>
         <td
           data-testid="table_row_2_cell_2"
           id="table_row_2_cell_2"
+          role="cell"
         >
           Marsy
         </td>
         <td
           data-testid="table_row_2_cell_3"
           id="table_row_2_cell_3"
+          role="cell"
         >
           bmarsy2@elegantthemes.com
         </td>
@@ -815,13 +861,16 @@ exports[`Table should render sortable table 1`] = `
           id="table_header_row_0_cell_0_first_name"
           role="columnheader"
           style="cursor: pointer;"
-          title="First Name"
         >
-          First Name
-          <i
-            aria-hidden="true"
-            class="icon icon-sort"
-          />
+          <span
+            id="first_name-th-title"
+          >
+            First Name
+            <i
+              aria-hidden="true"
+              class="icon icon-sort"
+            />
+          </span>
         </th>
         <th
           colspan="1"
@@ -829,13 +878,16 @@ exports[`Table should render sortable table 1`] = `
           id="table_header_row_0_cell_1_last_name"
           role="columnheader"
           style="cursor: pointer;"
-          title="Last Name"
         >
-          Last Name
-          <i
-            aria-hidden="true"
-            class="icon icon-sort"
-          />
+          <span
+            id="last_name-th-title"
+          >
+            Last Name
+            <i
+              aria-hidden="true"
+              class="icon icon-sort"
+            />
+          </span>
         </th>
         <th
           colspan="1"
@@ -843,9 +895,12 @@ exports[`Table should render sortable table 1`] = `
           id="table_header_row_0_cell_2_email"
           role="columnheader"
           style="cursor: pointer;"
-          title="Email"
         >
-          Email
+          <span
+            id="email-th-title"
+          >
+            Email
+          </span>
         </th>
       </tr>
     </thead>
@@ -861,18 +916,21 @@ exports[`Table should render sortable table 1`] = `
         <td
           data-testid="table_row_0_cell_0"
           id="table_row_0_cell_0"
+          role="cell"
         >
           Barbra
         </td>
         <td
           data-testid="table_row_0_cell_1"
           id="table_row_0_cell_1"
+          role="cell"
         >
           Tull
         </td>
         <td
           data-testid="table_row_0_cell_2"
           id="table_row_0_cell_2"
+          role="cell"
         >
           btull0@usatoday.com
         </td>
@@ -886,18 +944,21 @@ exports[`Table should render sortable table 1`] = `
         <td
           data-testid="table_row_1_cell_0"
           id="table_row_1_cell_0"
+          role="cell"
         >
           Karlis
         </td>
         <td
           data-testid="table_row_1_cell_1"
           id="table_row_1_cell_1"
+          role="cell"
         >
           Yurshev
         </td>
         <td
           data-testid="table_row_1_cell_2"
           id="table_row_1_cell_2"
+          role="cell"
         >
           kyurshev1@spotify.com
         </td>
@@ -911,18 +972,21 @@ exports[`Table should render sortable table 1`] = `
         <td
           data-testid="table_row_2_cell_0"
           id="table_row_2_cell_0"
+          role="cell"
         >
           Bordie
         </td>
         <td
           data-testid="table_row_2_cell_1"
           id="table_row_2_cell_1"
+          role="cell"
         >
           Marsy
         </td>
         <td
           data-testid="table_row_2_cell_2"
           id="table_row_2_cell_2"
+          role="cell"
         >
           bmarsy2@elegantthemes.com
         </td>
@@ -953,27 +1017,36 @@ exports[`Table should render with expected ids 1`] = `
           data-testid="my_availity_table_table_header_row_0_cell_0_first_name"
           id="my_availity_table_table_header_row_0_cell_0_first_name"
           role="columnheader"
-          title="First Name"
         >
-          First Name
+          <span
+            id="first_name-th-title"
+          >
+            First Name
+          </span>
         </th>
         <th
           colspan="1"
           data-testid="my_availity_table_table_header_row_0_cell_1_last_name"
           id="my_availity_table_table_header_row_0_cell_1_last_name"
           role="columnheader"
-          title="Last Name"
         >
-          Last Name
+          <span
+            id="last_name-th-title"
+          >
+            Last Name
+          </span>
         </th>
         <th
           colspan="1"
           data-testid="my_availity_table_table_header_row_0_cell_2_email"
           id="my_availity_table_table_header_row_0_cell_2_email"
           role="columnheader"
-          title="Email"
         >
-          Email
+          <span
+            id="email-th-title"
+          >
+            Email
+          </span>
         </th>
       </tr>
     </thead>
@@ -989,18 +1062,21 @@ exports[`Table should render with expected ids 1`] = `
         <td
           data-testid="my_availity_table_table_row_0_cell_0"
           id="my_availity_table_table_row_0_cell_0"
+          role="cell"
         >
           Barbra
         </td>
         <td
           data-testid="my_availity_table_table_row_0_cell_1"
           id="my_availity_table_table_row_0_cell_1"
+          role="cell"
         >
           Tull
         </td>
         <td
           data-testid="my_availity_table_table_row_0_cell_2"
           id="my_availity_table_table_row_0_cell_2"
+          role="cell"
         >
           btull0@usatoday.com
         </td>
@@ -1014,18 +1090,21 @@ exports[`Table should render with expected ids 1`] = `
         <td
           data-testid="my_availity_table_table_row_1_cell_0"
           id="my_availity_table_table_row_1_cell_0"
+          role="cell"
         >
           Karlis
         </td>
         <td
           data-testid="my_availity_table_table_row_1_cell_1"
           id="my_availity_table_table_row_1_cell_1"
+          role="cell"
         >
           Yurshev
         </td>
         <td
           data-testid="my_availity_table_table_row_1_cell_2"
           id="my_availity_table_table_row_1_cell_2"
+          role="cell"
         >
           kyurshev1@spotify.com
         </td>
@@ -1039,18 +1118,21 @@ exports[`Table should render with expected ids 1`] = `
         <td
           data-testid="my_availity_table_table_row_2_cell_0"
           id="my_availity_table_table_row_2_cell_0"
+          role="cell"
         >
           Bordie
         </td>
         <td
           data-testid="my_availity_table_table_row_2_cell_1"
           id="my_availity_table_table_row_2_cell_1"
+          role="cell"
         >
           Marsy
         </td>
         <td
           data-testid="my_availity_table_table_row_2_cell_2"
           id="my_availity_table_table_row_2_cell_2"
+          role="cell"
         >
           bmarsy2@elegantthemes.com
         </td>
@@ -1080,72 +1162,96 @@ exports[`Table should render with formatted cells 1`] = `
           data-testid="table_header_row_0_cell_0_text"
           id="table_header_row_0_cell_0_text"
           role="columnheader"
-          title="Basic Text"
         >
-          Basic Text
+          <span
+            id="text-th-title"
+          >
+            Basic Text
+          </span>
         </th>
         <th
           colspan="1"
           data-testid="table_header_row_0_cell_1_currency"
           id="table_header_row_0_cell_1_currency"
           role="columnheader"
-          title="Currency"
         >
-          Currency
+          <span
+            id="currency-th-title"
+          >
+            Currency
+          </span>
         </th>
         <th
           colspan="1"
           data-testid="table_header_row_0_cell_2_badge"
           id="table_header_row_0_cell_2_badge"
           role="columnheader"
-          title="Badge"
         >
-          Badge
+          <span
+            id="badge-th-title"
+          >
+            Badge
+          </span>
         </th>
         <th
           colspan="1"
           data-testid="table_header_row_0_cell_3_icon"
           id="table_header_row_0_cell_3_icon"
           role="columnheader"
-          title="Icon"
         >
-          Icon
+          <span
+            id="icon-th-title"
+          >
+            Icon
+          </span>
         </th>
         <th
           colspan="1"
           data-testid="table_header_row_0_cell_4_icon2"
           id="table_header_row_0_cell_4_icon2"
           role="columnheader"
-          title="icon2"
         >
-          icon2
+          <span
+            id="icon2-th-title"
+          >
+            icon2
+          </span>
         </th>
         <th
           colspan="1"
           data-testid="table_header_row_0_cell_5_date"
           id="table_header_row_0_cell_5_date"
           role="columnheader"
-          title="Date"
         >
-          Date
+          <span
+            id="date-th-title"
+          >
+            Date
+          </span>
         </th>
         <th
           colspan="1"
           data-testid="table_header_row_0_cell_6_iconWithTooltip"
           id="table_header_row_0_cell_6_iconWithTooltip"
           role="columnheader"
-          title="Icon With Tooltip"
         >
-          Icon With Tooltip
+          <span
+            id="iconWithTooltip-th-title"
+          >
+            Icon With Tooltip
+          </span>
         </th>
         <th
           colspan="1"
           data-testid="table_header_row_0_cell_7_actions"
           id="table_header_row_0_cell_7_actions"
           role="columnheader"
-          title="Actions"
         >
-          Actions
+          <span
+            id="actions-th-title"
+          >
+            Actions
+          </span>
         </th>
       </tr>
     </thead>
@@ -1161,15 +1267,17 @@ exports[`Table should render with formatted cells 1`] = `
         <td
           data-testid="table_row_0_cell_0"
           id="table_row_0_cell_0"
+          role="cell"
         >
           My Text Field
         </td>
         <td
           data-testid="table_row_0_cell_1"
           id="table_row_0_cell_1"
+          role="cell"
         >
           <span
-            title="$43.08"
+            id="currency-cell-0-currency"
           >
             $43.08
           </span>
@@ -1177,10 +1285,10 @@ exports[`Table should render with formatted cells 1`] = `
         <td
           data-testid="table_row_0_cell_2"
           id="table_row_0_cell_2"
+          role="cell"
         >
           <span
             class="badge badge-badge-success"
-            title="badge field"
           >
             badge field
           </span>
@@ -1188,6 +1296,7 @@ exports[`Table should render with formatted cells 1`] = `
         <td
           data-testid="table_row_0_cell_3"
           id="table_row_0_cell_3"
+          role="cell"
         >
           <i
             aria-hidden="true"
@@ -1198,6 +1307,7 @@ exports[`Table should render with formatted cells 1`] = `
         <td
           data-testid="table_row_0_cell_4"
           id="table_row_0_cell_4"
+          role="cell"
         >
           <i
             aria-hidden="true"
@@ -1208,9 +1318,10 @@ exports[`Table should render with formatted cells 1`] = `
         <td
           data-testid="table_row_0_cell_5"
           id="table_row_0_cell_5"
+          role="cell"
         >
           <span
-            title="02/16/1956"
+            id="date-cell-0-date"
           >
             02/16/1956
           </span>
@@ -1218,6 +1329,7 @@ exports[`Table should render with formatted cells 1`] = `
         <td
           data-testid="table_row_0_cell_6"
           id="table_row_0_cell_6"
+          role="cell"
         >
           <i
             aria-hidden="true"
@@ -1228,64 +1340,41 @@ exports[`Table should render with formatted cells 1`] = `
         <td
           data-testid="table_row_0_cell_7"
           id="table_row_0_cell_7"
+          role="cell"
         >
-          <div
-            class="dropdown-action-menu dropleft dropdown"
-            id="table_row_action_menu_0"
-          >
+          <div>
             <button
-              aria-expanded="false"
-              aria-haspopup="true"
-              aria-label="Action Menu"
-              class="btn btn-ghost btn btn-secondary"
-              data-boundary="viewport"
-              id="table_row_action_menu_0_dropdown_toggle"
+              class="dropdown-item"
+              data-testid="table_row_action_menu_item_0_action_action1"
+              id="table_row_action_menu_item_0_action_action1"
+              role="menuitem"
+              tabindex="0"
               type="button"
             >
-              <i
-                aria-hidden="true"
-                class="icon icon-menu"
-                id="table_row_action_menu_0_dropdown_toggle_icon"
-              />
+              Action 1
             </button>
             <div
-              aria-hidden="true"
-              class="dropdown-action-menu dropdown-menu"
-              id="table_row_action_menu_0_dropdown_menu"
-              role="menu"
+              class="dropdown-divider"
+              id="table_row_action_menu_item_0_action_actionDivider"
               tabindex="-1"
+            />
+            <button
+              class="dropdown-item"
+              data-testid="table_row_action_menu_item_0_action_action2"
+              id="table_row_action_menu_item_0_action_action2"
+              role="menuitem"
+              tabindex="0"
+              type="button"
             >
-              <button
-                class="dropdown-item"
-                id="table_row_action_menu_item_0_action_action1"
-                role="menuitem"
-                tabindex="0"
-                type="button"
-              >
-                Action 1
-              </button>
-              <div
-                class="dropdown-divider"
-                id="table_row_action_menu_item_0_action_actionDivider"
-                tabindex="-1"
-              />
-              <button
-                class="dropdown-item"
-                id="table_row_action_menu_item_0_action_action2"
-                role="menuitem"
-                tabindex="0"
-                type="button"
-              >
-                Action 2
-              </button>
-            </div>
+              Action 2
+            </button>
           </div>
           <i
             aria-hidden="true"
             class="icon icon-file-pdf"
             data-testid="table_row_action_menu_item_0_primaryAction"
+            id="table_row_action_menu_item_0_primaryAction"
             style="cursor: pointer;"
-            title="View File"
           />
         </td>
       </tr>
@@ -1298,15 +1387,17 @@ exports[`Table should render with formatted cells 1`] = `
         <td
           data-testid="table_row_1_cell_0"
           id="table_row_1_cell_0"
+          role="cell"
         >
           My Text Field
         </td>
         <td
           data-testid="table_row_1_cell_1"
           id="table_row_1_cell_1"
+          role="cell"
         >
           <span
-            title="$43.08"
+            id="currency-cell-1-currency"
           >
             $43.08
           </span>
@@ -1314,10 +1405,10 @@ exports[`Table should render with formatted cells 1`] = `
         <td
           data-testid="table_row_1_cell_2"
           id="table_row_1_cell_2"
+          role="cell"
         >
           <span
             class="badge badge-badge-success"
-            title="badge field"
           >
             badge field
           </span>
@@ -1325,21 +1416,24 @@ exports[`Table should render with formatted cells 1`] = `
         <td
           data-testid="table_row_1_cell_3"
           id="table_row_1_cell_3"
+          role="cell"
         >
           
         </td>
         <td
           data-testid="table_row_1_cell_4"
           id="table_row_1_cell_4"
+          role="cell"
         >
           
         </td>
         <td
           data-testid="table_row_1_cell_5"
           id="table_row_1_cell_5"
+          role="cell"
         >
           <span
-            title="02/16/1990"
+            id="date-cell-1-date"
           >
             02/16/1990
           </span>
@@ -1347,54 +1441,31 @@ exports[`Table should render with formatted cells 1`] = `
         <td
           data-testid="table_row_1_cell_6"
           id="table_row_1_cell_6"
+          role="cell"
         >
           Not Available
         </td>
         <td
           data-testid="table_row_1_cell_7"
           id="table_row_1_cell_7"
+          role="cell"
         >
-          <div
-            class="dropdown-action-menu dropleft dropdown"
-            id="table_row_action_menu_1"
-          >
+          <div>
+            <div
+              class="dropdown-divider"
+              id="table_row_action_menu_item_1_action_actionDivider"
+              tabindex="-1"
+            />
             <button
-              aria-expanded="false"
-              aria-haspopup="true"
-              aria-label="Action Menu"
-              class="btn btn-ghost btn btn-secondary"
-              data-boundary="viewport"
-              id="table_row_action_menu_1_dropdown_toggle"
+              class="dropdown-item"
+              data-testid="table_row_action_menu_item_1_action_action2"
+              id="table_row_action_menu_item_1_action_action2"
+              role="menuitem"
+              tabindex="0"
               type="button"
             >
-              <i
-                aria-hidden="true"
-                class="icon icon-menu"
-                id="table_row_action_menu_1_dropdown_toggle_icon"
-              />
+              Action 2
             </button>
-            <div
-              aria-hidden="true"
-              class="dropdown-action-menu dropdown-menu"
-              id="table_row_action_menu_1_dropdown_menu"
-              role="menu"
-              tabindex="-1"
-            >
-              <div
-                class="dropdown-divider"
-                id="table_row_action_menu_item_1_action_actionDivider"
-                tabindex="-1"
-              />
-              <button
-                class="dropdown-item"
-                id="table_row_action_menu_item_1_action_action2"
-                role="menuitem"
-                tabindex="0"
-                type="button"
-              >
-                Action 2
-              </button>
-            </div>
           </div>
         </td>
       </tr>

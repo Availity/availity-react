@@ -15,6 +15,7 @@ const TableContent = <T extends IdType>(): JSX.Element | null => {
     id,
     scrollable,
     sortable,
+    footer,
     tableProps,
     headerProps,
     onSort,
@@ -23,6 +24,7 @@ const TableContent = <T extends IdType>(): JSX.Element | null => {
     selectable,
     AdditionalContent,
     additionalContentProps,
+    useColumnWidths,
 
     onRowClick,
     onCellClick,
@@ -30,7 +32,7 @@ const TableContent = <T extends IdType>(): JSX.Element | null => {
     getRowProps,
   } = useTableContext();
 
-  const { getTableProps, getTableBodyProps, headerGroups, rows, prepareRow, manualSortBy, page } =
+  const { getTableProps, getTableBodyProps, headerGroups, rows, prepareRow, manualSortBy, page, footerGroups } =
     tableInstance as TableInstance<T>;
 
   const populateId = () => (id ? `${id}_` : '');
@@ -60,6 +62,7 @@ const TableContent = <T extends IdType>(): JSX.Element | null => {
                     sortable={sortable}
                     manualSortBy={manualSortBy}
                     column={header}
+                    useColumnWidths={useColumnWidths}
                   >
                     {header.render('Header')}
                     {sortable && header.defaultCanSort && header.disableSortBy !== true ? (
@@ -101,6 +104,7 @@ const TableContent = <T extends IdType>(): JSX.Element | null => {
                   cell={cell as Cell<T>}
                   onCellClick={selectable ? onRowClick : onCellClick}
                   getCellProps={getCellProps as (cell: Cell<T>) => React.HTMLAttributes<HTMLTableCellElement>}
+                  useColumnWidths={useColumnWidths}
                 >
                   {cell.render('Cell')}
                 </TableCell>
@@ -109,6 +113,19 @@ const TableContent = <T extends IdType>(): JSX.Element | null => {
           );
         })}
       </tbody>
+      {footer && (
+        <tfoot data-testid={`${populateId()}table_footer`}>
+          {footerGroups.map((group) => (
+            <tr data-testid={`${populateId()}table_footer_row`} {...group.getFooterGroupProps()}>
+              {group.headers.map((column) => (
+                <td data-testid={`${populateId()}table_footer_row_${column.id}`} {...column.getFooterProps()}>
+                  {column.render('Footer')}
+                </td>
+              ))}
+            </tr>
+          ))}
+        </tfoot>
+      )}
     </RsTable>
   );
 };
