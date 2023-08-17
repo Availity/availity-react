@@ -2,6 +2,15 @@
 
 This file was generated using [@jscutlery/semver](https://github.com/jscutlery/semver).
 
+## [1.6.1](https://github.com/Availity/availity-react/compare/@availity/typography@1.6.0...@availity/typography@1.6.1) (2023-08-17)
+
+
+### Bug Fixes
+
+* **typography:** fix a 'could not find a declaration file for module typography' message when importing into project ([a316697](https://github.com/Availity/availity-react/commit/a316697e7357202a23e286b750da9037b82b4ce6))
+
+
+
 # [1.6.0](https://github.com/Availity/availity-react/compare/@availity/typography@1.5.0...@availity/typography@1.6.0) (2023-06-27)
 
 
