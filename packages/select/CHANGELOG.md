@@ -2,6 +2,15 @@
 
 This file was generated using [@jscutlery/semver](https://github.com/jscutlery/semver).
 
+## [3.5.1](https://github.com/Availity/availity-react/compare/@availity/select@3.5.0...@availity/select@3.5.1) (2023-09-01)
+
+
+### Bug Fixes
+
+* **select:** updating react-select and adding aria-controls to input to fix 508 compliance issues EB-234 ([c32e9a4](https://github.com/Availity/availity-react/commit/c32e9a4335beac51208d05bf695112ee026c5415))
+
+
+
 # [3.5.0](https://github.com/Availity/availity-react/compare/@availity/select@3.4.1...@availity/select@3.5.0) (2023-04-14)
 
 
