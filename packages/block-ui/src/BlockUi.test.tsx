@@ -27,7 +27,8 @@ describe('BlockUi', () => {
     expect(getByText('child')).toBeDefined();
   });
 
-  test('should block, render children, and block tabbing to children', () => {
+  test('should block, render children, and block tabbing to children', async () => {
+    const user = userEvent.setup();
     const { getByText, getAllByRole } = render(
       <>
         <button type="button">before</button>
@@ -42,24 +43,24 @@ describe('BlockUi', () => {
     const after = getAllByRole('button')[2];
 
     before.focus();
-    userEvent.tab();
+    await user.tab();
 
     expect(child).toBeDefined();
     expect(child).not.toHaveFocus();
     expect(document.activeElement?.innerHTML).toContain('loading');
 
-    userEvent.tab();
+    await user.tab();
 
     expect(after).toHaveFocus();
 
     // shift tab to traverse backwards
-    userEvent.tab({ shift: true });
+    await user.tab({ shift: true });
 
     expect(child).toBeDefined();
     expect(child).not.toHaveFocus();
     expect(document.activeElement?.innerHTML).toContain('loading');
 
-    userEvent.tab({ shift: true });
+    await user.tab({ shift: true });
 
     expect(before).toHaveFocus();
   });

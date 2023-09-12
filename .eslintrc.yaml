@@ -6,6 +6,7 @@ rules:
   react/destructuring-assignment: 0
   react/forbid-foreign-prop-types: 0
   react/no-access-state-in-setstate: 0
+  jest/expect-expect: 0
   guard-for-in: 0
   no-restricted-syntax: 0
   react/prefer-stateless-function: 0

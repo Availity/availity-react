@@ -121,8 +121,8 @@ export const handlers = [
   ),
 
   // Pagination example
-  rest.post(routes.PAGINATION, (req, res, ctx) => {
-    const parsed = parse(req.body as string);
+  rest.post<string>(routes.PAGINATION, (req, res, ctx) => {
+    const parsed = parse(req.body);
 
     const limit = Number(parsed.limit);
     const offset = Number(parsed.offset);

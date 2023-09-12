@@ -25,13 +25,13 @@
     "publish:canary": "yarn npm publish --access public --tag canary"
   },
   "dependencies": {
-    "@availity/resolve-url": "^2.0.1",
-    "classnames": "^2.3.1",
+    "@availity/resolve-url": "^2.0.4",
+    "classnames": "^2.3.2",
     "prop-types": "^15.8.1"
   },
   "devDependencies": {
-    "react": "^17.0.2",
-    "react-dom": "^17.0.2"
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0"
   },
   "peerDependencies": {
     "react": ">=16.3.0"

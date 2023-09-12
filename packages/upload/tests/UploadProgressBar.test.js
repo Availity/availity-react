@@ -1,5 +1,6 @@
 import React from 'react';
-import { render, cleanup, fireEvent } from '@testing-library/react';
+import { render, fireEvent, act } from '@testing-library/react';
+
 import MockUpload from './mockUpload';
 import { UploadProgressBar } from '..';
 
@@ -8,7 +9,6 @@ const instance = new MockUpload();
 describe('UploadProgressBar', () => {
   afterEach(() => {
     instance.reset();
-    cleanup();
     jest.clearAllMocks();
   });
 
@@ -17,9 +17,12 @@ describe('UploadProgressBar', () => {
     expect(bar).toBeDefined();
   });
 
-  test('should render progress', () => {
+  test('should render progress', async () => {
     const { getByTestId } = render(<UploadProgressBar upload={instance} />);
-    instance.progress(50);
+
+    act(() => {
+      instance.progress(50);
+    });
 
     const progress = getByTestId('upload-progress');
     expect(progress).toBeDefined();
@@ -27,7 +30,10 @@ describe('UploadProgressBar', () => {
 
   test('should render success', () => {
     const { getByTestId } = render(<UploadProgressBar upload={instance} />);
-    instance.success();
+
+    act(() => {
+      instance.success();
+    });
 
     const progressBar = getByTestId('upload-progress');
 
@@ -36,7 +42,10 @@ describe('UploadProgressBar', () => {
 
   test('should render error', () => {
     const { getByTestId } = render(<UploadProgressBar upload={instance} />);
-    instance.error('File upload rejected');
+
+    act(() => {
+      instance.error('File upload rejected');
+    });
 
     const message = getByTestId('upload-error-message');
     expect(message).toBeDefined();
@@ -44,7 +53,10 @@ describe('UploadProgressBar', () => {
 
   test('should render password verification button', () => {
     const { getByTestId } = render(<UploadProgressBar upload={instance} />);
-    instance.error('Encrypted files require a password', 'encrypted');
+
+    act(() => {
+      instance.error('Encrypted files require a password', 'encrypted');
+    });
 
     const btn = getByTestId('password-form-encrypted');
     expect(btn).toBeDefined();
@@ -57,14 +69,22 @@ describe('UploadProgressBar', () => {
         <UploadProgressBar upload={instance} />
       </form>
     );
+
     const { getByTestId, findByLabelText, findByTestId } = render(<SubmittingForm />);
-    instance.error('Encrypted files require a password', 'encrypted');
+
+    act(() => {
+      instance.error('Encrypted files require a password', 'encrypted');
+    });
     fireEvent.click(getByTestId('password-form-button'));
+
     const input = await findByLabelText('Password');
-    fireEvent.change(input, { target: { value: 'password123' } });
     const form = await findByTestId('password-form-modal');
+
+    fireEvent.change(input, { target: { value: 'password123' } });
     fireEvent.submit(form);
+
     const progress = await findByTestId('upload-progress');
+
     expect(progress).toBeDefined();
     expect(handleSubmit).toHaveBeenCalled();
   });
@@ -76,22 +96,36 @@ describe('UploadProgressBar', () => {
         <UploadProgressBar upload={instance} onPasswordSubmit={(e) => e.stopPropagation()} />
       </form>
     );
+
     const { getByTestId, findByLabelText, findByTestId } = render(<NonSubmittingForm />);
-    instance.error('Encrypted files require a password', 'encrypted');
+
+    act(() => {
+      instance.error('Encrypted files require a password', 'encrypted');
+    });
+
     fireEvent.click(getByTestId('password-form-button'));
+
     const input = await findByLabelText('Password');
-    fireEvent.change(input, { target: { value: 'password123' } });
     const form = await findByTestId('password-form-modal');
+
+    fireEvent.change(input, { target: { value: 'password123' } });
     fireEvent.submit(form);
+
     const progress = await findByTestId('upload-progress');
+
     expect(progress).toBeDefined();
     expect(handleSubmit).not.toHaveBeenCalled();
   });
 
   test('an undefined passwordModalZIndex should leave the modals zIndex as the default 1050', async () => {
     const { getByTestId, findByTestId } = render(<UploadProgressBar upload={instance} />);
-    instance.error('Encrypted files require a password', 'encrypted');
+
+    act(() => {
+      instance.error('Encrypted files require a password', 'encrypted');
+    });
+
     fireEvent.click(getByTestId('password-form-button'));
+
     const form = await findByTestId('password-form-modal');
     const container = form.parentElement.parentElement.parentElement.parentElement.parentElement;
 
@@ -100,7 +134,11 @@ describe('UploadProgressBar', () => {
 
   test('setting passwordModalZIndex should change the modals zIndex as the default 1050', async () => {
     const { getByTestId, findByTestId } = render(<UploadProgressBar upload={instance} passwordModalZIndex="auto" />);
-    instance.error('Encrypted files require a password', 'encrypted');
+
+    act(() => {
+      instance.error('Encrypted files require a password', 'encrypted');
+    });
+
     fireEvent.click(getByTestId('password-form-button'));
     const form = await findByTestId('password-form-modal');
     const container = form.parentElement.parentElement.parentElement.parentElement.parentElement;
