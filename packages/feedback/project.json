@@ -3,7 +3,7 @@
   "projectType": "library",
   "targets": {
     "test": {
-      "executor": "@nrwl/jest:jest",
+      "executor": "@nx/jest:jest",
       "outputs": ["coverage/feedback"],
       "options": { "jestConfig": "packages/feedback/jest.config.js", "passWithNoTests": true }
     },
@@ -11,13 +11,13 @@
       "executor": "@jscutlery/semver:version",
       "options": {
         "preset": "angular",
-        "commitMessageFormat": "chore(${projectName}): release version ${version} [skip ci]",
-        "tagPrefix": "@availity/${projectName}@",
+        "commitMessageFormat": "chore({projectName}): release version ${version} [skip ci]",
+        "tagPrefix": "@availity/{projectName}@",
         "baseBranch": "master"
       }
     },
     "lint": {
-      "executor": "@nrwl/linter:eslint",
+      "executor": "@nx/linter:eslint",
       "options": {
         "eslintConfig": ".eslintrc.yaml",
         "lintFilePatterns": ["packages/feedback/**/*.{js,ts}"],

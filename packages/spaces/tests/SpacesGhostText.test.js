@@ -43,26 +43,22 @@ describe('SpacesGhostText', () => {
   });
 
   it('renders ghost text for space', async () => {
-    const { container } = render(
+    const { getByText } = render(
       <Spaces clientId="my-client-id" spaceIds={['1', '2']}>
         <SpacesGhostText spaceId="1" />
       </Spaces>
     );
 
-    const ghost = await waitFor(() => container);
-
-    expect(ghost.textContent).toBe('foo');
+    await waitFor(() => getByText('foo'));
   });
 
   it('renders ghost text for single space', async () => {
-    const { container } = render(
+    const { getByText } = render(
       <Spaces clientId="my-client-id" spaceIds={['1', '2']}>
         <SpacesGhostText />
       </Spaces>
     );
 
-    const ghost = await waitFor(() => container);
-
-    expect(ghost.textContent).toBe('foo');
+    await waitFor(() => getByText('foo'));
   });
 });

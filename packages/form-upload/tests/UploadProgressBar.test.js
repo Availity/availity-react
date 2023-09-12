@@ -1,37 +1,39 @@
 import React from 'react';
-import { render, cleanup, waitFor, fireEvent } from '@testing-library/react';
-import { act } from 'react-dom/test-utils';
-import MockUpload from './mockUpload';
+import { render, fireEvent, act } from '@testing-library/react';
 
+import MockUpload from './mockUpload';
 import { UploadProgressBar } from '../src';
 
 describe('UploadProgressBar', () => {
   let instance;
+
   beforeEach(() => {
     instance = new MockUpload();
   });
+
   afterEach(() => {
-    cleanup();
     jest.clearAllMocks();
   });
 
-  test('should render', () => {
-    const { container } = render(<UploadProgressBar upload={instance} />);
-    expect(container).toBeDefined();
+  test('should render', async () => {
+    const { getByTestId } = render(<UploadProgressBar upload={instance} />);
+
+    getByTestId('upload-progress');
   });
 
-  test('should render progress', () => {
+  test('should show progress', async () => {
     const { getByTestId } = render(<UploadProgressBar upload={instance} />);
+
     act(() => {
       instance.progress(50);
     });
 
-    const el = getByTestId('upload-progress');
-    expect(el).toBeDefined();
+    getByTestId('upload-progress');
   });
 
-  test('should render success', () => {
+  test('should show success', () => {
     const { getByTestId } = render(<UploadProgressBar upload={instance} />);
+
     act(() => {
       instance.success();
     });
@@ -40,38 +42,37 @@ describe('UploadProgressBar', () => {
     expect(progressBar.className).toContain('progress-complete');
   });
 
-  test('should render error', async () => {
+  test('should show error', async () => {
     const { getByTestId } = render(<UploadProgressBar upload={instance} />);
 
     act(() => {
       instance.error('File upload rejected');
     });
 
-    await waitFor(() => {
-      const el = getByTestId('upload-error-message');
-      expect(el).toBeDefined();
-    });
+    getByTestId('upload-error-message');
   });
 
-  test('should render password verification button', () => {
+  test('should show password verification button', async () => {
     const { getByTestId } = render(<UploadProgressBar upload={instance} />);
+
     act(() => {
       instance.error('Encrypted files require a password', 'encrypted');
     });
 
-    const el = getByTestId('password-form-encrypted');
-    expect(el).toBeDefined();
+    getByTestId('password-form-encrypted');
   });
 
-  test('should render password modal', () => {
+  test('should show password modal', () => {
     const { getByTestId, getByText } = render(<UploadProgressBar upload={instance} />);
-    instance.error('Encrypted files require a password', 'encrypted');
+
+    act(() => {
+      instance.error('Encrypted files require a password', 'encrypted');
+    });
 
     const enterPassword = getByText('Enter password');
     fireEvent.click(enterPassword);
 
-    const modal = getByTestId('password-form-modal');
-    expect(modal).toBeDefined();
+    getByTestId('password-form-modal');
   });
 
   test('should not submit parent forms on password submit', () => {
@@ -82,7 +83,10 @@ describe('UploadProgressBar', () => {
         <UploadProgressBar upload={instance} />
       </form>
     );
-    instance.error('Encrypted files require a password', 'encrypted');
+
+    act(() => {
+      instance.error('Encrypted files require a password', 'encrypted');
+    });
 
     const enterPassword = getByText('Enter password');
     fireEvent.click(enterPassword);
@@ -96,21 +100,21 @@ describe('UploadProgressBar', () => {
     expect(submitFunction).not.toHaveBeenCalled();
   });
 
-  test('should render striped', () => {
+  test('should show striped', () => {
     const { getByTestId } = render(<UploadProgressBar upload={instance} striped />);
 
     const progressBar = getByTestId('progress-inner');
     expect(progressBar.className).toContain('progress-bar-striped');
   });
 
-  test('should render animated', () => {
+  test('should show animated', () => {
     const { getByTestId } = render(<UploadProgressBar upload={instance} animated />);
 
     const progressBar = getByTestId('progress-inner');
     expect(progressBar.className).toContain('progress-bar-animated');
   });
 
-  test('should render striped and animated', () => {
+  test('should show striped and animated', () => {
     const { getByTestId } = render(<UploadProgressBar upload={instance} striped animated />);
 
     const progressBar = getByTestId('progress-inner');

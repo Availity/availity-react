@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { fireEvent, render, waitFor } from '@testing-library/react';
 import AvApi, { avRegionsApi, avProvidersApi, avCodesApi } from '@availity/api-axios';
+import userEvent from '@testing-library/user-event';
 import { Button } from 'reactstrap';
 import { Form } from '@availity/form';
 
@@ -1123,7 +1124,9 @@ describe('Custom Resources', () => {
 
       const { getByText } = render(<RegionComponent regionProps={regionProps} />);
 
-      fireEvent.click(getByText('Submit'));
+      const user = userEvent.setup();
+
+      await user.click(getByText('Submit'));
       await waitFor(() => {
         expect(onSubmit).toHaveBeenCalledWith(
           expect.objectContaining({

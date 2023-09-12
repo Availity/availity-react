@@ -1,5 +1,5 @@
 import React from 'react';
-import { render, waitFor, cleanup } from '@testing-library/react';
+import { render, waitFor } from '@testing-library/react';
 import { avWebQLApi } from '@availity/api-axios';
 import Spaces, { SpacesAgreement } from '..';
 
@@ -28,30 +28,25 @@ avWebQLApi.create.mockResolvedValue({
 describe('SpacesAgreement', () => {
   afterEach(() => {
     jest.clearAllMocks();
-    cleanup();
   });
 
   it('renders agreement from space', async () => {
-    const { container } = render(
+    const { getByText } = render(
       <Spaces clientId="my-client-id" spaceIds={['1']}>
         <SpacesAgreement spaceId="1" />
       </Spaces>
     );
 
-    const agreement = await waitFor(() => container);
-
-    expect(agreement.textContent).toBe('foo');
+    await waitFor(() => getByText('foo'));
   });
 
   it('renders agreement from single space', async () => {
-    const { container } = render(
+    const { getByText } = render(
       <Spaces clientId="my-client-id" spaceIds={['1']}>
         <SpacesAgreement />
       </Spaces>
     );
 
-    const agreement = await waitFor(() => container);
-
-    expect(agreement.textContent).toBe('foo');
+    await waitFor(() => getByText('foo'));
   });
 });
