@@ -3,7 +3,7 @@ const { pathsToModuleNameMapper } = require('ts-jest');
 const { compilerOptions } = require('../tsconfig.json');
 
 module.exports = {
-  setupFilesAfterEnv: ['@testing-library/jest-dom/extend-expect'],
+  setupFilesAfterEnv: ['@testing-library/jest-dom'],
   globalSetup: '../../jest/global-setup.js',
   transform: {
     '^.+\\.(ts|tsx|js|html)$': 'ts-jest',
@@ -19,6 +19,7 @@ module.exports = {
   },
   coverageReporters: ['json'],
   moduleNameMapper: {
+    '^axios$': require.resolve('axios'),
     ...pathsToModuleNameMapper(compilerOptions.paths, { prefix: '<rootDir>/../../' }),
     '\\.(css|scss)$': 'identity-obj-proxy',
   },
