@@ -1,5 +1,5 @@
 {
-  "extends": "@nrwl/workspace/presets/npm.json",
+  "extends": "@nx/workspace/presets/npm.json",
   "npmScope": "availity",
   "tasksRunnerOptions": {
     "default": {
@@ -33,7 +33,7 @@
     "defaultBase": "master"
   },
   "pluginsConfig": {
-    "@nrwl/js": {
+    "@nx/js": {
       "analyzeSourceFiles": false
     }
   }

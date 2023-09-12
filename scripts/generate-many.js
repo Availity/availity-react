@@ -12,7 +12,7 @@ async function generateMany() {
       const proj = require(path.resolve(process.cwd(), `packages/${project}/project.json`));
 
       proj.targets.lint = {
-        executor: '@nrwl/linter:eslint',
+        executor: '@nx/linter:eslint',
         options: {
           eslintConfig: '.eslintrc.yaml',
           lintFilePatterns: [`packages/${project}/**/*.{js,ts}`],
