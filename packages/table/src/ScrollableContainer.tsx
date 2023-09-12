@@ -12,6 +12,8 @@ const ScrollableContainer = ({ id, children, ...rest }: Props): JSX.Element => (
     {Array.isArray(children) &&
       children.map((child, index) => cloneElement(child, { scrollable: 'true', key: index.toString() }))}
 
+    {/* eslint-disable-next-line @typescript-eslint/ban-ts-comment */}
+    {/* @ts-ignore */}
     {!Array.isArray(children) && isValidElement(children) && cloneElement(children, { scrollable: 'true' })}
   </div>
 );

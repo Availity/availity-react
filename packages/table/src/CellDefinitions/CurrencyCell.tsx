@@ -42,7 +42,9 @@ const CurrencyCell = <T extends IdType>({
 
     return formattedValue !== defaultValue ? (
       <>
-        <span id={`currency-cell-${row.id}-${column.id}`}>{formattedValue}</span>
+        <span id={`currency-cell-${row.id}-${column.id}`}>
+          <>{formattedValue}</>
+        </span>
         {displayTooltip && typeof formattedValue === 'string' && (
           <UncontrolledTooltip
             role="tooltip"

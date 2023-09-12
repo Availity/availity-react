@@ -28,7 +28,8 @@ const TableControls = ({ id, disabled, children, ...rest }: Props): JSX.Element 
           if (!isValidElement(child)) {
             return null;
           }
-
+          // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+          // @ts-ignore
           return cloneElement(child, { disabled: isDisabled, key: `table_controls_${index}` });
         })}
       </Form>
