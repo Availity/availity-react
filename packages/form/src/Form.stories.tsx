@@ -8,6 +8,7 @@ import { Phone } from '@availity/phone';
 import { DateField } from '@availity/date';
 import { SelectField } from '@availity/select';
 import { ArgsTable } from '@storybook/addon-docs';
+import '@availity/date/styles.scss';
 
 import {
   Field,
