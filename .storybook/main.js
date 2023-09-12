@@ -1,13 +1,37 @@
-module.exports = {
+import path from 'path';
+import remarkGfm from 'remark-gfm';
+
+function getAbsolutePath(value) {
+  return path.dirname(require.resolve(path.join(value, 'package.json')));
+}
+
+const config = {
   stories: ['./*.stories.mdx', './stories/*.stories.mdx', './stories/*.stories.tsx', '../packages/**/*.stories.tsx'],
-  addons: ['@storybook/addon-essentials', '@storybook/addon-a11y', '@storybook/addon-docs'],
+
+  addons: [
+    getAbsolutePath('@storybook/addon-essentials'),
+    getAbsolutePath('@storybook/addon-a11y'),
+    {
+      name: '@storybook/addon-docs',
+      options: {
+        mdxPluginOptions: {
+          mdxCompileOptions: {
+            remarkPlugins: [remarkGfm],
+          },
+        },
+      },
+    },
+  ],
+
   staticDirs: ['../static', './static'],
+
   typescript: {
     reactDocgenTypescriptOptions: {
       shouldExtractLiteralValuesFromEnum: true,
       propFilter: (prop) => (prop.parent ? !/node_modules\/(?!reactstrap).*/.test(prop.parent.fileName) : true),
     },
   },
+
   webpackFinal: async (config) => {
     config.module.rules.push(
       {
@@ -34,10 +58,6 @@ module.exports = {
       {
         test: /\.(js|jsx|ts|tsx)$/,
         loader: require.resolve('babel-loader'),
-        options: {
-          sourceType: 'unambiguous',
-          presets: [['react-app', { flow: false, typescript: true }]],
-        },
         include: new RegExp(`node_modules[/\\\\](?=(@availity)).*`),
       }
     );
@@ -46,4 +66,15 @@ module.exports = {
 
     return config;
   },
+
+  framework: {
+    name: getAbsolutePath('@storybook/react-webpack5'),
+    options: {},
+  },
+
+  docs: {
+    autodocs: true,
+  },
 };
+
+export default config;
