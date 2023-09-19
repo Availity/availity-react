@@ -25,7 +25,7 @@ const components = {
   ClearIndicator: () => null,
   Input: (props) => {
     const { 'aria-required': required } = props.selectProps;
-    return <Input {...props} aria-required={required} />;
+    return <Input aria-controls="" {...props} aria-required={required} />;
   },
   Option: (props) => {
     const innerProps = {
