@@ -1,12 +1,12 @@
 import React, { useState } from 'react';
 import { Story, Meta } from '@storybook/react';
-import { ArgsTable } from '@storybook/addon-docs';
 
 import BlockUi, { Props } from './BlockUi';
 // import README from '../README.md';
 
 export default {
   title: 'Components/Block UI',
+  component: BlockUi,
   parameters: {
     docs: {
       // page: README,
@@ -71,12 +71,3 @@ const Template: Story<Props> = ({ tag, ...args }) => {
 };
 
 export const Default = Template.bind({});
-
-export const PropsStory: Story = () => (
-  <>
-    <h4>Availity Props</h4>
-    <h5>BlockUi</h5>
-    <ArgsTable of={BlockUi} />
-  </>
-);
-PropsStory.storyName = 'Props';

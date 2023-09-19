@@ -2,11 +2,12 @@ import React from 'react';
 import { Meta, Story } from '@storybook/react';
 
 import HelpProvider, { FieldHelpIcon, Help } from '.';
-import { ArgsTable } from '@storybook/addon-docs';
+import { FieldHelpIconProps } from './Help';
 // import README from "../README.md";
 
 export default {
   title: 'Components/Help',
+  component: Help,
   parameters: {
     docs: {
       // page: README,
@@ -36,13 +37,4 @@ export const Field: Story = () => (
 );
 Field.storyName = 'field';
 
-export const Props: Story = () => (
-  <>
-    <h4>Availity Props</h4>
-    <h5>Page Level Help</h5>
-    <ArgsTable of={Help} />
-
-    <h5>Field Level Help</h5>
-    <ArgsTable of={FieldHelpIcon} />
-  </>
-);
+export const hidden_FieldHelpIcon = (props: FieldHelpIconProps) => <FieldHelpIcon {...props} />;

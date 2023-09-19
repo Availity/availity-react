@@ -1,11 +1,10 @@
 /* eslint-disable no-console */
 import React from 'react';
 import { Meta, Story } from '@storybook/react';
-import { ArgsTable } from '@storybook/addon-docs';
 import { Button, Col, Row } from 'reactstrap';
 import { Field } from '@availity/form';
 
-import Select, { SelectField } from '../src';
+import Select, { SelectField, SelectFieldProps } from '../src';
 // import README from '../README.md';
 
 import FormikResults from '../../../story-utils/FormikResults';
@@ -13,6 +12,7 @@ import { singleValueSchema, multiValueSchema, options, SelectedOption, autofillO
 
 export default {
   title: 'Form Components/Select',
+  component: Select,
   parameters: {
     docs: {
       description: {
@@ -212,13 +212,4 @@ _SelectField.parameters = {
 
 Default.storyName = '<Select />';
 
-export const Props: Story = () => (
-  <>
-    <h4>Availity Props</h4>
-    <h5>Select</h5>
-    <ArgsTable of={Select} />
-
-    <h5>SelectField</h5>
-    <ArgsTable of={SelectField} />
-  </>
-);
+export const hidden_SelectField = (props: SelectFieldProps<unknown, false>) => <SelectField {...props} />;

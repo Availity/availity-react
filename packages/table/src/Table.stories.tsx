@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from 'react';
 import { Meta, Story } from '@storybook/react';
-import { ArgsTable } from '@storybook/addon-docs';
 
 import response from '@availity/mock/src/data/patients.json';
 import Pagination, { PaginationControls } from '@availity/pagination';
@@ -154,6 +153,7 @@ const bulkActions = [
 
 export default {
   title: 'Components/Table',
+  component: Table,
   parameters: {
     docs: {
       // page: README,
@@ -357,19 +357,3 @@ WithScrollableContainer.args = {
 WithScrollableContainer.storyName = 'with scrollable container';
 
 export const hidden_avTable = (props: CommonTableProps<any>) => <Table data={[]} columns={[]} {...props} />;
-
-export const PropsStory: Story = () => (
-  <>
-    <hr />
-    <h4>Availity Props</h4>
-    <h5>Table</h5>
-    <ArgsTable of={hidden_avTable} />
-  </>
-);
-PropsStory.storyName = 'props';
-PropsStory.parameters = {
-  previewTabs: {
-    canvas: { hidden: true },
-  },
-  viewMode: 'docs',
-};

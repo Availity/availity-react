@@ -1,8 +1,7 @@
 import React from 'react';
 import { Story, Meta } from '@storybook/react';
-import { ArgsTable } from '@storybook/addon-docs';
 
-import AppIcon, { AppIconProps } from './AppIcon';
+import AppIcon from './AppIcon';
 // import README from '../README.md';
 
 export default {
@@ -20,14 +19,6 @@ export const Default: Story = ({ alt, branded, children, className, color, size,
   <AppIcon size={size} color={color} branded={branded} className={className} src={src} alt={alt}>
     {children}
   </AppIcon>
-);
-
-export const Props: Story = () => (
-  <>
-    <h4>Availity Props</h4>
-    <h5>App Icon</h5>
-    <ArgsTable of={AppIcon} />
-  </>
 );
 
 Default.args = {

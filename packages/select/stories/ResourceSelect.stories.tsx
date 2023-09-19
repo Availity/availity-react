@@ -1,7 +1,6 @@
 /* eslint-disable no-console */
 import React from 'react';
 import { Meta, Story } from '@storybook/react';
-import { ArgsTable } from '@storybook/addon-docs';
 import { Button, Col, Row } from 'reactstrap';
 import AvApi from '@availity/api-axios';
 import ResourceSelect from '../src/ResourceSelect';
@@ -472,11 +471,3 @@ UserSelect.args = {
 };
 
 UserSelect.storyName = '<AvUserSelect />';
-
-export const Props: Story = () => (
-  <>
-    <h4>Availity Props</h4>
-    <h5>ResourceSelect</h5>
-    <ArgsTable of={ResourceSelect} />
-  </>
-);

@@ -1,15 +1,16 @@
 import React from 'react';
 import { Meta, Story } from '@storybook/react';
-import { ArgsTable } from '@storybook/addon-docs';
 import { Label, Button } from 'reactstrap';
 import AvApi from '@availity/api-axios';
 import { AvGroup, AvFeedback, AvField } from 'availity-reactstrap-validation';
 
 import AvSelect, { AvSelectField } from '..';
-import AvSelectResource from '../resources';
+import AvResourceSelect from '../resources';
 // import README from '../README.md';
 
 import AvFormResults from '../../../story-utils/AvFormResults';
+import { AvSelectFieldProps } from '../types/AvSelectField';
+import { AvResourceSelectProps } from '../types/AvResourceSelect';
 
 const options = [
   { label: 'Option 1', value: 'value for option 1' },
@@ -53,6 +54,7 @@ const avCustomResource = new AvApi({ name: 'my-custom-resource' });
 
 export default {
   title: 'Legacy Form Components/AvSelect',
+  component: AvSelect,
   parameters: {
     docs: {
       description: {
@@ -184,7 +186,7 @@ _AvSelectField.args = {
 };
 _AvSelectField.storyName = 'AvSelectField';
 
-export const _AvSelectResource: Story = ({
+export const _AvResourceSelect: Story = ({
   creatable,
   disabled,
   errorMessage,
@@ -196,14 +198,14 @@ export const _AvSelectResource: Story = ({
   requiredErrorMessage,
 }) => (
   <AvFormResults>
-    <AvSelectResource
+    <AvResourceSelect
       label={
         <>
           {label}
           {required ? <span className="text-danger">*</span> : null}
         </>
       }
-      name="AvSelectResource"
+      name="AvResourceSelect"
       minLength={min}
       maxLength={max}
       isMulti={isMulti}
@@ -223,12 +225,12 @@ export const _AvSelectResource: Story = ({
     <Button color="primary">Submit</Button>
   </AvFormResults>
 );
-_AvSelectResource.args = {
+_AvResourceSelect.args = {
   errorMessage: 'This field is invalid',
   label: 'Custom Select',
   requiredErrorMessage: 'This field is required',
 };
-_AvSelectResource.storyName = 'AvSelectResource';
+_AvResourceSelect.storyName = 'AvSelectResource';
 
 _AvSelectField.parameters = {
   docs: {
@@ -239,7 +241,7 @@ _AvSelectField.parameters = {
   },
 };
 
-_AvSelectResource.parameters = {
+_AvResourceSelect.parameters = {
   docs: {
     description: {
       story:
@@ -248,50 +250,5 @@ _AvSelectResource.parameters = {
   },
 };
 
-export const Props: Story = () => (
-  <>
-    <h4>Availity Props</h4>
-    <h5>AvSelect</h5>
-    <div>
-      Please refer to{' '}
-      <a href="https://github.com/TheSharpieOne/react-select/tree/npm/v2-async-pagination">
-        react-select with async pagination's
-      </a>{' '}
-      props and{' '}
-      <a href="https://github.com/Availity/availity-reactstrap-validation">
-        {' '}
-        availity-reactstrap-validation's validation
-      </a>{' '}
-      input props. This component just combines those.
-    </div>
-    <ArgsTable of={AvSelect} />
-    <h5>AvSelectResource</h5>
-    <div>
-      Please refer to{' '}
-      <a href="https://github.com/TheSharpieOne/react-select/tree/npm/v2-async-pagination">
-        react-select with async pagination's
-      </a>{' '}
-      props and{' '}
-      <a href="https://github.com/Availity/availity-reactstrap-validation">
-        {' '}
-        availity-reactstrap-validation's validation
-      </a>{' '}
-      input props. This component just combines those.
-    </div>
-    <ArgsTable of={AvSelectResource} />
-    <h5>AvSelectField</h5>
-    <div>
-      Please refer to{' '}
-      <a href="https://github.com/TheSharpieOne/react-select/tree/npm/v2-async-pagination">
-        react-select with async pagination's
-      </a>{' '}
-      props and{' '}
-      <a href="https://github.com/Availity/availity-reactstrap-validation">
-        {' '}
-        availity-reactstrap-validation's validation
-      </a>{' '}
-      props. This component just combines those.
-    </div>
-    <ArgsTable of={AvSelectField} />
-  </>
-);
+export const hidden_AvSelectField = (props: AvSelectFieldProps) => <AvSelectField {...props} />;
+export const hidden_AvResourceSelectField = (props: AvResourceSelectProps) => <AvResourceSelect {...props} />;

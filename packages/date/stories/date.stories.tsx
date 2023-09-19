@@ -5,11 +5,10 @@ import { Button } from 'reactstrap';
 import { avDate, dateRange } from '@availity/yup';
 import * as yup from 'yup';
 import { unitOfTime } from 'moment';
-import { ArgsTable } from '@storybook/addon-docs';
 import FormikDate from '../src/Date';
-import DateField from '../src/DateField';
-import DateRange from '../src/DateRange';
-import DateRangeField from '../src/DateRangeField';
+import DateField, { DateFieldProps } from '../src/DateField';
+import DateRange, { DateRangeProps } from '../src/DateRange';
+import DateRangeField, { DateRangeFieldProps } from '../src/DateRangeField';
 
 // import README from '../README.md';
 
@@ -20,6 +19,7 @@ const distanceUnits: Units[] = ['day', 'month'];
 
 export default {
   title: 'Form Components/Date',
+  component: FormikDate,
   parameters: {
     docs: {
       // page: README,
@@ -264,16 +264,6 @@ _DateRangeField.argTypes = {
 };
 _DateRangeField.storyName = 'DateRangeField';
 
-export const Props: Story = () => (
-  <>
-    <h4>Availity Props</h4>
-    <h5>Date</h5>
-    <ArgsTable of={FormikDate} />
-    <h5>DateField</h5>
-    <ArgsTable of={DateField} />
-    <h5>DateRange</h5>
-    <ArgsTable of={DateRange} />
-    <h5>DateRangeField</h5>
-    <ArgsTable of={DateRangeField} />
-  </>
-);
+export const hidden_DateField = (props: DateFieldProps) => <DateField {...props} />;
+export const hidden_DateRange = (props: DateRangeProps) => <DateRange {...props} />;
+export const hidden_DateRangeField = (props: DateRangeFieldProps) => <DateRangeField {...props} />;

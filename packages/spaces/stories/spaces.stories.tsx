@@ -1,6 +1,5 @@
 import React from 'react';
 import { Meta, Story } from '@storybook/react';
-import { ArgsTable } from '@storybook/addon-docs';
 import { Row, Col } from 'reactstrap';
 
 import Spaces, {
@@ -11,11 +10,15 @@ import Spaces, {
   SpacesGhostText,
   SpacesAgreement,
 } from '..';
-import { SpacesProps } from '../types/Spaces';
+import { SpacesImageProps } from '../types/SpacesImage';
+import { SpacesDisclaimerProps } from '../types/SpacesDisclaimer';
+import { SpacesAgreementProps } from '../types/SpacesAgreement';
+import { SpacesGhostTextProps } from '../types/SpacesGhostText';
 // import README from '../README.md';
 
 export default {
   title: 'Components/Spaces',
+  component: Spaces,
   parameters: {
     docs: {
       // page: README,
@@ -108,18 +111,9 @@ export const GhostText: Story = () => (
 );
 GhostText.storyName = 'ghost text';
 
-export const hidden_RSSpaces = (props: SpacesProps) => <Spaces {...props} />;
-export const Props: Story = () => (
-  <>
-    <h4>Availity Props</h4>
-    <h5>Spaces</h5>
-    <ArgsTable of={Spaces} />
-
-    <h4>Reactstrap Props</h4>
-    <h5>Spaces</h5>
-    <div>Additional props on Spaces spread to this component</div>
-    <div className="argstable-remove-default">
-      <ArgsTable of={hidden_RSSpaces} />
-    </div>
-  </>
-);
+export const hidden_SpacesLogo = (props: SpacesImageProps) => <SpacesLogo {...props} />;
+export const hidden_SpacesTile = (props: SpacesImageProps) => <SpacesTile {...props} />;
+export const hidden_SpacesBillboard = (props: SpacesImageProps) => <SpacesBillboard {...props} />;
+export const hidden_SpacesDisclaimer = (props: SpacesDisclaimerProps) => <SpacesDisclaimer {...props} />;
+export const hidden_SpacesAgreement = (props: SpacesAgreementProps) => <SpacesAgreement {...props} />;
+export const hidden_SpacesGhostText = (props: SpacesGhostTextProps) => <SpacesGhostText {...props} />;

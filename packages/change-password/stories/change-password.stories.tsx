@@ -1,6 +1,5 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { Story, Meta } from '@storybook/react';
-import { ArgsTable } from '@storybook/addon-docs';
 import * as yup from 'yup';
 import AvApi from '@availity/api-axios';
 import ChangePassword, { ChangePasswordForm } from '..';
@@ -162,19 +161,3 @@ export const Default: Story = () => {
 };
 
 Default.storyName = 'default';
-
-export const ChangePasswordProps: Story = () => (
-  <>
-    <h4>Availity Props</h4>
-    <h5>ChangePassword</h5>
-    <ArgsTable of={ChangePassword} />
-  </>
-);
-
-export const ChangePasswordFormProps: Story = () => (
-  <>
-    <h4>Availity Props</h4>
-    <h5>ChangePasswordForm</h5>
-    <ArgsTable of={ChangePasswordForm} />
-  </>
-);

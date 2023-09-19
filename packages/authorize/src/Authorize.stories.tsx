@@ -4,7 +4,6 @@ import { Alert } from 'reactstrap';
 import BlockUi from '@availity/block-ui';
 import { QueryClientProvider, QueryClient } from 'react-query';
 
-import { ArgsTable } from '@storybook/addon-docs';
 import Authorize, { useAuthorize } from '.';
 // import README from '../README.md';
 
@@ -81,11 +80,3 @@ export const UseAuthorize: Story = ({ authorized, organizationId, permissions, r
   );
 };
 UseAuthorize.storyName = 'useAuthorize';
-
-export const Props: Story = () => (
-  <>
-    <h4>Availity Props</h4>
-    <h5>Authorize</h5>
-    <ArgsTable of={Authorize} />
-  </>
-);

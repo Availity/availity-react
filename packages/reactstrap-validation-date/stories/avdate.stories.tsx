@@ -1,19 +1,21 @@
 import React from 'react';
 import { Meta, Story } from '@storybook/react';
-import { ArgsTable } from '@storybook/addon-docs';
-import { Label, Button, LabelProps } from 'reactstrap';
+import { Label, Button } from 'reactstrap';
 import { AvGroup, AvFeedback } from 'availity-reactstrap-validation';
-import { AvInput } from '../types/AvInput';
 
 import { AvDate, AvDateField, AvDateRange, AvDateRangeField } from '..';
 // import README from '../README.md';
 import '../styles.scss';
 
 import AvFormResults from '../../../story-utils/AvFormResults';
+import { AvDateFieldProps } from '../types/AvDateField';
+import { AvDateRangeProps } from '../types/AvDateRange';
+import { AvDateRangeFieldProps } from '../types/AvDateRangeField';
 
 const types = ['text', 'date'];
 export default {
   title: 'Legacy Form Components/AvDate',
+  component: AvDate,
   parameters: {
     docs: {
       // page: README,
@@ -352,36 +354,6 @@ _AvDateRangeField.argTypes = {
 };
 _AvDateRangeField.storyName = 'AvDateRangeField';
 
-export const hidden_AvInputProps = ({}: AvInput): JSX.Element => {
-  return <></>;
-};
-
-export const hidden_AvLabelProps = ({}: LabelProps): JSX.Element => {
-  return <></>;
-};
-
-export const Props: Story = () => (
-  <>
-    <h4>Availity Props</h4>
-    <h5>AvDate</h5>
-    <ArgsTable of={AvDate} />
-
-    <h5>AvDateField</h5>
-    <ArgsTable of={AvDateField} />
-
-    <h5>AvDateRange</h5>
-    <ArgsTable of={AvDateRange} />
-
-    <h5>AvDateRangeField</h5>
-    <ArgsTable of={AvDateRangeField} />
-
-    <h5>AvInput</h5>
-    <div>AvInput props used by AvDate</div>
-    <ArgsTable of={hidden_AvInputProps} />
-
-    <h4>Reactstrap Props</h4>
-    <h5>Label props</h5>
-    <div>Available attributes for labelAttrs</div>
-    <ArgsTable of={hidden_AvLabelProps} />
-  </>
-);
+export const hidden_AvDateField = (props: AvDateFieldProps) => <AvDateField {...props} />;
+export const hidden_AvDateRange = (props: AvDateRangeProps) => <AvDateRange {...props} />;
+export const hidden_AvDateRangeField = (props: AvDateRangeFieldProps) => <AvDateRangeField {...props} />;

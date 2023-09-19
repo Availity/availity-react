@@ -725,7 +725,7 @@ __metadata:
     uuid: ^9.0.1
     xhr-mock: ^2.5.1
   peerDependencies:
-    "@availity/api-axios": ^6.0.0
+    "@availity/api-axios": ^8.0.0
     "@availity/form": ^1.1.0
     "@availity/upload-core": ^4.1.1
     formik: ^2.0.1

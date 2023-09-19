@@ -1,15 +1,15 @@
-import { useCallback, useState } from 'react';
+import React, { useCallback, useState } from 'react';
 import { Meta, Story } from '@storybook/react';
-import { ArgsTable } from '@storybook/addon-docs';
 import cloneDeep from 'lodash/cloneDeep';
-import Tree, { buildTree } from '.';
-
-import '../styles.scss';
-import TreeItem from './TreeItem';
 import { Button } from 'reactstrap';
+
+import Tree, { buildTree } from '.';
+import TreeItem from './TreeItem';
+import '../styles.scss';
 
 export default {
   title: 'Components/Tree',
+  component: Tree,
   parameters: {
     docs: {
       description: {
@@ -115,33 +115,19 @@ export const Default: Story = ({ enableSearch, searchLabel, expandAll, selectabl
         <h5>Selected Items:</h5>
         {newSelectedList
           ?.map((item) => ({ id: item.id, name: item.name }))
-          .map((item) => (
-            <pre key={item.id}>{JSON.stringify(item, null, 2)}</pre>
-          ))}
+          .map((item) => <pre key={item.id}>{JSON.stringify(item, null, 2)}</pre>)}
       </section>
     </>
   );
 };
-('');
+
 export const hidden_TreeItemComponent = ({
   isExpanded = false,
   isSelected = false,
   isHidden = false,
   isDisabled = false,
-}: TreeItem): JSX.Element => {
-  return <></>;
-};
+}: TreeItem): JSX.Element => <></>;
 
-export const Props: Story = () => (
-  <>
-    <h4>Availity Props</h4>
-    <h5>Tree</h5>
-    <ArgsTable of={Tree} />
-
-    <h5>Tree Item</h5>
-    <ArgsTable of={hidden_TreeItemComponent} />
-  </>
-);
 Default.storyName = 'default';
 Default.args = {
   enableSearch: true,

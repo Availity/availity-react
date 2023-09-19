@@ -1,6 +1,5 @@
 import React from 'react';
 import { Story, Meta } from '@storybook/react';
-import { ArgsTable } from '@storybook/addon-docs';
 import { MemoryRouter as Router, Route, Routes, Link } from 'react-router-dom';
 import { Breadcrumb, BreadcrumbProps, BreadcrumbItem, BreadcrumbItemProps } from 'reactstrap';
 
@@ -9,6 +8,7 @@ import Breadcrumbs from '../src/Breadcrumbs';
 
 export default {
   title: 'Components/Breadcrumbs',
+  component: Breadcrumb,
   decorators: [
     (Story) => (
       <Router initialEntries={['/react-router-demo']}>
@@ -89,23 +89,3 @@ WithCustomContent.storyName = 'with custom content';
 
 export const hidden_RSBreadcrumb = (props: BreadcrumbProps) => <Breadcrumb {...props} />;
 export const hidden_RSBreadcrumbItem = (props: BreadcrumbItemProps) => <BreadcrumbItem {...props} />;
-export const Props: Story = () => (
-  <>
-    <h4>Availity Props</h4>
-    <h5>Breadcrumbs</h5>
-    <ArgsTable of={Breadcrumbs} />
-
-    <h4>Reactstrap Props</h4>
-    <h5>Breadcrumb</h5>
-    <div>Additional props on Breadcrumbs spread to this component</div>
-    <div className="argstable-remove-default">
-      <ArgsTable of={hidden_RSBreadcrumb} />
-    </div>
-
-    <h5>BreadcrumbItem</h5>
-    <div>Child components</div>
-    <div className="argstable-remove-default">
-      <ArgsTable of={hidden_RSBreadcrumbItem} />
-    </div>
-  </>
-);

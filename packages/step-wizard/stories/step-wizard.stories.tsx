@@ -1,11 +1,14 @@
 import React from 'react';
 import { Meta, Story } from '@storybook/react';
-import { ArgsTable } from '@storybook/addon-docs';
 import Wizard, { WizardStep, WizardStepBadge, WizardStepTitle } from '..';
+import { WizardStepProps } from '../types/WizardStep';
+import { WizardStepBadgeProps } from '../types/WizardStepBadge';
+import { WizardStepTitleProps } from '../types/WizardStepTitle';
 // import README from '../README.md';
 
 export default {
   title: 'Components/Wizard',
+  component: Wizard,
   parameters: {
     docs: {
       // page: README,
@@ -92,19 +95,6 @@ Default.args = {
 };
 Default.storyName = 'default';
 
-export const Props: Story = () => (
-  <>
-    <h4>Availity Props</h4>
-    <h5>Wizard</h5>
-    <ArgsTable of={Wizard} />
-
-    <h5>WizardStep</h5>
-    <ArgsTable of={WizardStep} />
-
-    <h5>WizardStepBadge</h5>
-    <ArgsTable of={WizardStepBadge} />
-
-    <h5>WizardStepTitle</h5>
-    <ArgsTable of={WizardStepTitle} />
-  </>
-);
+export const hidden_WizardStep = (props: WizardStepProps) => <WizardStep {...props} />;
+export const hidden_WizardStepBadge = (props: WizardStepBadgeProps) => <WizardStepBadge {...props} />;
+export const hidden_WizardStepTitle = (props: WizardStepTitleProps) => <WizardStepTitle {...props} />;

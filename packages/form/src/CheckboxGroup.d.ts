@@ -2,7 +2,7 @@
 import { ReactNode } from 'react';
 import { FormGroupProps } from 'reactstrap';
 
-interface CheckboxGroupProps extends FormGroupProps {
+export interface CheckboxGroupProps extends FormGroupProps {
   name: string;
   label?: ReactNode;
   labelClassName?: string;

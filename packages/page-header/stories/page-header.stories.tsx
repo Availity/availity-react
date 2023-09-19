@@ -1,6 +1,5 @@
 import React from 'react';
 import { Meta, Story } from '@storybook/react';
-import { ArgsTable } from '@storybook/addon-docs';
 import { BreadcrumbItem, Button } from 'reactstrap';
 import TrainingLink from '@availity/training-link';
 import Breadcrumbs from '@availity/breadcrumbs';
@@ -174,11 +173,3 @@ WithCustomRightContent.args = {
   payerId: '',
 };
 WithCustomRightContent.storyName = 'with custom right content';
-
-export const Props: Story = () => (
-  <>
-    <h4>Availity Props</h4>
-    <h5>PageHeader</h5>
-    <ArgsTable of={PageHeader} />
-  </>
-);

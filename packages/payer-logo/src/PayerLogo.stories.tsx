@@ -1,6 +1,5 @@
 import React from 'react';
 import { Meta, Story } from '@storybook/react';
-import { ArgsTable } from '@storybook/addon-docs';
 
 import PayerLogo from '..';
 // import README from '../README.md';
@@ -40,11 +39,3 @@ WithSpaceId.args = {
   clientId: 'my-client-id',
 };
 WithSpaceId.storyName = 'with space ID';
-
-export const Props: Story = () => (
-  <>
-    <h4>Availity Props</h4>
-    <h5>PayerLogo</h5>
-    <ArgsTable of={PayerLogo} />
-  </>
-);
