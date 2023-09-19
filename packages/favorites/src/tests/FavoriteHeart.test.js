@@ -486,15 +486,13 @@ describe('FavoriteHeart', () => {
     );
 
     const heart = container.querySelector('#av-favorite-heart-1234');
+    const user = userEvent.setup();
 
     expect(heart).toBeDefined();
 
     await waitFor(() => expect(heart).not.toBeChecked());
 
-    const event = new MouseEvent('mouseDown');
-
-    fireEvent.mouseDown(heart, event);
-    fireEvent.click(heart);
+    await user.click(heart);
 
     await waitFor(() => expect(heart).toBeChecked());
     expect(onMouseDown).toHaveBeenCalledTimes(1);
