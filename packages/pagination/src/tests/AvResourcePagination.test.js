@@ -1,5 +1,5 @@
 import React from 'react';
-import { render, waitFor, fireEvent } from '@testing-library/react';
+import { render, waitFor, fireEvent, act } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 import { PaginationControls, usePagination, AvResourcePagination, PaginationContent } from '..';
 import paginationData from './data/pagination.json';
@@ -142,7 +142,9 @@ describe('AvResourcePagination', () => {
     await waitFor(() => getByTestId('5af1e71f1a38311cd5afe2fe'), { timeout: 1500 });
     await waitFor(() => getByTestId('5af1e71f3ef279b4188aeecd'), { timeout: 1500 });
 
-    fireEvent.scroll(window, { target: { scrollY: 1000 } });
+    act(() => {
+      fireEvent.scroll(window, { target: { scrollY: 1000 } });
+    });
 
     // Wait for pagination-con to re-render aftering loading prop is toggled
     await waitFor(() => getByTestId('infinite-scroll-container'), { timeout: 1500 });
