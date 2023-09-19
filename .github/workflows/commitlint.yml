@@ -14,8 +14,8 @@ jobs:
         with:
           node-version: 18
 
-      - run: yarn install --immutable
+      - run: yarn install
 
-      - uses: wagoid/commitlint-github-action@v4
+      - uses: wagoid/commitlint-github-action@v5
         env:
           NODE_PATH: ${{ github.workspace }}/node_modules
