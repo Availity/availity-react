@@ -311,6 +311,7 @@ __metadata:
     "@nx/nx-darwin-arm64": ^16.5.1
     "@nx/nx-darwin-x64": ^16.5.1
     "@nx/nx-linux-x64-gnu": ^16.5.1
+    "@nx/nx-linux-x64-musl": ^16.5.1
     "@nx/nx-win32-x64-msvc": ^16.5.1
     "@nx/workspace": ^16.8.1
     "@storybook/addon-a11y": ^7.4.1
@@ -366,6 +367,8 @@ __metadata:
     "@nx/nx-darwin-x64":
       optional: true
     "@nx/nx-linux-x64-gnu":
+      optional: true
+    "@nx/nx-linux-x64-musl":
       optional: true
     "@nx/nx-win32-x64-msvc":
       optional: true
@@ -4902,7 +4905,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@nx/nx-linux-x64-musl@npm:16.8.1":
+"@nx/nx-linux-x64-musl@npm:16.8.1, @nx/nx-linux-x64-musl@npm:^16.5.1":
   version: 16.8.1
   resolution: "@nx/nx-linux-x64-musl@npm:16.8.1"
   conditions: os=linux & cpu=x64 & libc=musl
