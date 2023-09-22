@@ -308,6 +308,10 @@ __metadata:
     "@jscutlery/semver": ^3.1.0
     "@nx/jest": ^16.8.1
     "@nx/linter": ^16.8.1
+    "@nx/nx-darwin-arm64": ^16.5.1
+    "@nx/nx-darwin-x64": ^16.5.1
+    "@nx/nx-linux-x64-gnu": ^16.5.1
+    "@nx/nx-win32-x64-msvc": ^16.5.1
     "@nx/workspace": ^16.8.1
     "@storybook/addon-a11y": ^7.4.1
     "@storybook/addon-essentials": ^7.4.1
@@ -356,6 +360,15 @@ __metadata:
     ts-jest: ^29.1.1
     typescript: ^4.9.5
     vite: ^4.4.9
+  dependenciesMeta:
+    "@nx/nx-darwin-arm64":
+      optional: true
+    "@nx/nx-darwin-x64":
+      optional: true
+    "@nx/nx-linux-x64-gnu":
+      optional: true
+    "@nx/nx-win32-x64-msvc":
+      optional: true
   languageName: unknown
   linkType: soft
 
@@ -4840,14 +4853,14 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@nx/nx-darwin-arm64@npm:16.8.1":
+"@nx/nx-darwin-arm64@npm:16.8.1, @nx/nx-darwin-arm64@npm:^16.5.1":
   version: 16.8.1
   resolution: "@nx/nx-darwin-arm64@npm:16.8.1"
   conditions: os=darwin & cpu=arm64
   languageName: node
   linkType: hard
 
-"@nx/nx-darwin-x64@npm:16.8.1":
+"@nx/nx-darwin-x64@npm:16.8.1, @nx/nx-darwin-x64@npm:^16.5.1":
   version: 16.8.1
   resolution: "@nx/nx-darwin-x64@npm:16.8.1"
   conditions: os=darwin & cpu=x64
@@ -4882,7 +4895,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@nx/nx-linux-x64-gnu@npm:16.8.1":
+"@nx/nx-linux-x64-gnu@npm:16.8.1, @nx/nx-linux-x64-gnu@npm:^16.5.1":
   version: 16.8.1
   resolution: "@nx/nx-linux-x64-gnu@npm:16.8.1"
   conditions: os=linux & cpu=x64 & libc=glibc
@@ -4903,7 +4916,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@nx/nx-win32-x64-msvc@npm:16.8.1":
+"@nx/nx-win32-x64-msvc@npm:16.8.1, @nx/nx-win32-x64-msvc@npm:^16.5.1":
   version: 16.8.1
   resolution: "@nx/nx-win32-x64-msvc@npm:16.8.1"
   conditions: os=win32 & cpu=x64
