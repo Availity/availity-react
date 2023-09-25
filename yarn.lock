@@ -308,6 +308,7 @@ __metadata:
     "@jscutlery/semver": ^3.1.0
     "@nx/jest": ^16.9.0
     "@nx/linter": ^16.9.0
+    "@nx/nx-linux-x64-musl": ^16.9.0
     "@nx/workspace": ^16.9.0
     "@storybook/addon-a11y": ^7.4.1
     "@storybook/addon-essentials": ^7.4.1
@@ -341,7 +342,7 @@ __metadata:
     jest-environment-jsdom-global: ^4.0.0
     jest-jasmine2: ^29.7.0
     lint-staged: ^14.0.1
-    nx: 16.9.0
+    nx: ^16.9.0
     plop: ^2.7.6
     postcss-modules: ^4.3.1
     prettier: ^3.0.3
@@ -4893,7 +4894,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@nx/nx-linux-x64-musl@npm:16.9.0":
+"@nx/nx-linux-x64-musl@npm:16.9.0, @nx/nx-linux-x64-musl@npm:^16.9.0":
   version: 16.9.0
   resolution: "@nx/nx-linux-x64-musl@npm:16.9.0"
   conditions: os=linux & cpu=x64 & libc=musl
@@ -20172,7 +20173,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"nx@npm:16.9.0":
+"nx@npm:16.9.0, nx@npm:^16.9.0":
   version: 16.9.0
   resolution: "nx@npm:16.9.0"
   dependencies:
