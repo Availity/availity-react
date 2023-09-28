@@ -2,6 +2,15 @@
 
 This file was generated using [@jscutlery/semver](https://github.com/jscutlery/semver).
 
+## [6.6.1](https://github.com/Availity/availity-react/compare/@availity/spaces@6.6.0...@availity/spaces@6.6.1) (2023-09-28)
+
+
+### Bug Fixes
+
+* **spaces:** null check for link type ([8b3dace](https://github.com/Availity/availity-react/commit/8b3dace7936b595988a4a936ed4eff00272d6f62))
+
+
+
 # [6.6.0](https://github.com/Availity/availity-react/compare/@availity/spaces@6.5.9...@availity/spaces@6.6.0) (2023-07-31)
 
 
