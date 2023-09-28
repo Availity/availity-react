@@ -261,7 +261,7 @@ const Link = ({
       >
         {!stacked && favoriteIcon}
         {appIcon}
-        {icon && type.toUpperCase() === 'FILE' ? (
+        {icon && type?.toUpperCase() === 'FILE' ? (
           <AvLink target="_blank" href={restLink.url}>
             <Icon data-testid="icon" name={restLink.metadataPairs?.find((pair) => pair.name === 'icon')?.value} />
           </AvLink>
