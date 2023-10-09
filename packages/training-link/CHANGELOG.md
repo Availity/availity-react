@@ -2,6 +2,10 @@
 
 This file was generated using [@jscutlery/semver](https://github.com/jscutlery/semver).
 
+## [1.7.2](https://github.com/Availity/availity-react/compare/@availity/training-link@1.7.1...@availity/training-link@1.7.2) (2023-10-09)
+
+
+
 ## [1.7.1](https://github.com/Availity/availity-react/compare/@availity/training-link@1.7.0...@availity/training-link@1.7.1) (2023-01-27)
 
 
