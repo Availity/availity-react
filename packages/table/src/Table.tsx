@@ -109,8 +109,8 @@ const TableComponent = <T extends IdType>(
     onCellClick,
     onRowSelected,
     getCanSelectRow,
-    getRowProps = () => ({} as RowProps),
-    getCellProps = () => ({} as React.HTMLAttributes<HTMLTableCellElement>),
+    getRowProps = () => ({}) as RowProps,
+    getCellProps = () => ({}) as React.HTMLAttributes<HTMLTableCellElement>,
     onSort,
     paged = false,
     pluginHooks,
@@ -174,6 +174,8 @@ const TableComponent = <T extends IdType>(
         ...selectionColumnProps,
       };
 
+      // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+      // @ts-ignore
       hooks.visibleColumns.push((columns: Column<T>[]) => {
         const cols = [];
         if (selectable) {

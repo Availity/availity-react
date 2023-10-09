@@ -1,6 +1,5 @@
 import React, { useState } from 'react';
 import { Meta, Story } from '@storybook/react';
-import { ArgsTable } from '@storybook/addon-docs';
 import { Button, Col, Row } from 'reactstrap';
 
 import { LoadingButton } from '.';
@@ -51,13 +50,5 @@ export const Default: Story = () => {
     </>
   );
 };
-
-export const Props: Story = () => (
-  <>
-    <h4>Availity Props</h4>
-    <h5>LoadingButton</h5>
-    <ArgsTable of={LoadingButton} />
-  </>
-);
 
 Default.storyName = 'default';

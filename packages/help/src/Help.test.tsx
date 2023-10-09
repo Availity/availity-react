@@ -65,13 +65,13 @@ describe('Field Help', () => {
     });
   });
 
-  test('expects message to be sent on enter', () => {
+  test('expects message to be sent on enter', async () => {
+    const user = userEvent.setup();
     const { getByTestId } = render(<FieldHelpIcon id="Express_Entry_Fields" />);
 
     const node = getByTestId('field-help-icon');
-    node.focus();
-    userEvent.type(node, '{enter}');
-    // fireEvent.keyDown(document.activeElement, {key: 'Enter', code: 'Enter'});
+    await user.type(node, '{enter}');
+
     expect(avMessageMock.send).toHaveBeenCalledWith({
       event: constants.OPEN_FIELD_HELP,
       id: 'Express_Entry_Fields',

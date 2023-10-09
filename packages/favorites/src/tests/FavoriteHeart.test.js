@@ -1,6 +1,7 @@
 import React from 'react';
-import { fireEvent, render, waitFor, cleanup } from '@testing-library/react';
+import { fireEvent, render, waitFor, act } from '@testing-library/react';
 import PropTypes from 'prop-types';
+import userEvent from '@testing-library/user-event';
 import { avSettingsApi } from '@availity/api-axios';
 import avMessages from '@availity/message-core';
 import { QueryClient, QueryClientProvider } from 'react-query';
@@ -78,6 +79,7 @@ avMessages.subscribe = jest.fn((event, fn) => {
 
     fn(data);
   });
+  return () => jest.fn();
 });
 
 avMessages.send = jest.fn((payload, target = window.top) => {
@@ -145,7 +147,6 @@ describe('FavoriteHeart', () => {
   afterEach(() => {
     jest.clearAllMocks();
     queryClient.clear();
-    cleanup();
     global.document.createRange = null;
   });
 
@@ -162,6 +163,8 @@ describe('FavoriteHeart', () => {
       })
     );
 
+    const user = userEvent.setup();
+
     const { container } = render(
       <Providers>
         <FavoriteHeart id="123" />
@@ -170,11 +173,9 @@ describe('FavoriteHeart', () => {
 
     const heart = container.querySelector('#av-favorite-heart-123');
 
-    expect(heart).toBeDefined();
-
     await waitFor(() => expect(heart).not.toBeChecked());
 
-    fireEvent.click(heart);
+    user.click(heart);
 
     await waitFor(() => {
       expect(avMessages.send).toHaveBeenCalledTimes(1);
@@ -195,7 +196,10 @@ describe('FavoriteHeart', () => {
 
     await waitFor(() => expect(heart).not.toBeChecked());
 
-    await fireEvent.mouseOver(heart);
+    act(() => {
+      fireEvent.mouseOver(heart);
+    });
+
     expect(heart).toBeDefined();
 
     await waitFor(
@@ -231,7 +235,10 @@ describe('FavoriteHeart', () => {
 
     await waitFor(() => expect(heart).toBeChecked());
 
-    await fireEvent.mouseOver(heart);
+    act(() => {
+      fireEvent.mouseOver(heart);
+    });
+
     expect(heart).toBeDefined();
 
     await waitFor(
@@ -283,7 +290,9 @@ describe('FavoriteHeart', () => {
     await waitFor(() => expect(heart).not.toBeChecked());
 
     // Simulate user favoriting item
-    fireEvent.click(heart);
+    act(() => {
+      fireEvent.click(heart);
+    });
 
     await waitFor(() => expect(heart).toBeChecked());
 
@@ -337,7 +346,9 @@ describe('FavoriteHeart', () => {
 
     await waitFor(() => expect(heart).toBeChecked());
 
-    fireEvent.click(heart);
+    act(() => {
+      fireEvent.click(heart);
+    });
 
     await waitFor(() => expect(heart).not.toBeChecked());
 
@@ -475,15 +486,13 @@ describe('FavoriteHeart', () => {
     );
 
     const heart = container.querySelector('#av-favorite-heart-1234');
+    const user = userEvent.setup();
 
     expect(heart).toBeDefined();
 
     await waitFor(() => expect(heart).not.toBeChecked());
 
-    const event = new MouseEvent('mouseDown');
-
-    fireEvent.mouseDown(heart, event);
-    fireEvent.click(heart);
+    await user.click(heart);
 
     await waitFor(() => expect(heart).toBeChecked());
     expect(onMouseDown).toHaveBeenCalledTimes(1);
@@ -501,6 +510,7 @@ describe('FavoriteHeart', () => {
         ],
       },
     });
+    const user = userEvent.setup();
     const onChange = jest.fn(() => {});
     const { container } = render(
       <Providers>
@@ -510,11 +520,9 @@ describe('FavoriteHeart', () => {
 
     const heart = container.querySelector('#av-favorite-heart-1234');
 
-    expect(heart).toBeDefined();
-
     await waitFor(() => expect(heart).not.toBeChecked());
 
-    fireEvent.click(heart);
+    user.click(heart);
 
     await waitFor(() => expect(heart).toBeChecked());
 
@@ -524,6 +532,7 @@ describe('FavoriteHeart', () => {
 
   test('should call onFavoritesChange when favorited', async () => {
     const initialFavoritedId = 'my_favorite_id';
+    const user = userEvent.setup();
 
     avSettingsApi.getApplication = jest.fn(() =>
       Promise.resolve({
@@ -560,11 +569,9 @@ describe('FavoriteHeart', () => {
 
     const heart = container.querySelector(`#av-favorite-heart-${initialFavoritedId}`);
 
-    expect(heart).toBeDefined();
-
     await waitFor(() => expect(heart).not.toBeChecked());
 
-    fireEvent.click(heart);
+    user.click(heart);
 
     await waitFor(() => expect(heart).toBeChecked());
 

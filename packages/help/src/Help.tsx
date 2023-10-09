@@ -154,7 +154,7 @@ export const FieldHelpIcon = ({ id, color = 'primary', size = '1x', labelId }: F
     color={color}
     onClick={() => triggerFieldHelp(id)}
     tabIndex={0}
-    onKeyPress={(event) => handleKeyPress(event, id)}
+    onKeyDown={(event) => handleKeyPress(event, id)}
     aria-hidden="false"
     aria-label="help"
     aria-describedby={labelId}

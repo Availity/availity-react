@@ -27,7 +27,9 @@ const DateCell = <T extends IdType>({
 
     return formattedValue !== defaultValue ? (
       <>
-        <span id={`date-cell-${row.id}-${column.id}`}>{formattedValue}</span>
+        <span id={`date-cell-${row.id}-${column.id}`}>
+          <>{formattedValue}</>
+        </span>
         {displayTooltip && typeof formattedValue === 'string' && (
           <UncontrolledTooltip
             role="tooltip"

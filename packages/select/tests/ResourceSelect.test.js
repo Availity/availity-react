@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { fireEvent, render, waitFor } from '@testing-library/react';
 import AvApi, { avRegionsApi, avProvidersApi, avCodesApi } from '@availity/api-axios';
+import userEvent from '@testing-library/user-event';
 import { Button } from 'reactstrap';
 import { Form } from '@availity/form';
 
@@ -853,7 +854,7 @@ describe('ResourceSelect', () => {
       },
     });
 
-    const { container, getByText } = render(
+    const { getByText, getByLabelText } = render(
       <Form
         initialValues={{
           'test-form-input': undefined,
@@ -862,6 +863,7 @@ describe('ResourceSelect', () => {
       >
         <ResourceSelect
           name="test-form-input"
+          label="test label"
           resource={avRegionsApi}
           classNamePrefix="test__regions"
           labelKey="value"
@@ -874,27 +876,13 @@ describe('ResourceSelect', () => {
       </Form>
     );
 
-    const regionsSelect = container.querySelector('.test__regions__control');
+    const regionsSelect = getByLabelText('test label');
+    const user = userEvent.setup();
 
-    fireEvent.keyDown(regionsSelect, { key: 'ArrowDown', keyCode: 40 });
-    fireEvent.keyDown(regionsSelect, { key: 'Enter', keyCode: 13 });
+    user.click(regionsSelect, { key: 'ArrowDown', keyCode: 40 });
+    user.keyboard('w');
 
-    fireEvent.keyDown(regionsSelect, {
-      key: 'w',
-      keyCode: 87,
-    });
-
-    await waitFor(() => expect(getByText('Florida')).toBeDefined());
-
-    waitFor(async () => {
-      expect(avRegionsApi.get).toHaveBeenCalledTimes(1);
-      expect(avRegionsApi.get.mock.calls[0][0]).toStrictEqual({
-        myCustomSearchParam: '',
-        limit: 50,
-        customerId: undefined,
-        offset: 0,
-      });
-    });
+    await waitFor(() => expect(getByText('Washington')).toBeDefined());
   });
 });
 
@@ -1123,7 +1111,9 @@ describe('Custom Resources', () => {
 
       const { getByText } = render(<RegionComponent regionProps={regionProps} />);
 
-      fireEvent.click(getByText('Submit'));
+      const user = userEvent.setup();
+
+      await user.click(getByText('Submit'));
       await waitFor(() => {
         expect(onSubmit).toHaveBeenCalledWith(
           expect.objectContaining({

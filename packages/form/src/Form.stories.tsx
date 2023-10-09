@@ -7,7 +7,7 @@ import { avDate } from '@availity/yup';
 import { Phone } from '@availity/phone';
 import { DateField } from '@availity/date';
 import { SelectField } from '@availity/select';
-import { ArgsTable } from '@storybook/addon-docs';
+import '@availity/date/styles.scss';
 
 import {
   Field,
@@ -20,13 +20,22 @@ import {
   Radio,
   FormGroup,
   RequiredKey,
+  LabelProps,
+  Form,
+  FieldProps,
 } from '.';
 // import README from '../form/README.md';
 
 import FormResults from '../../../story-utils/FormikResults';
+import { InputProps } from './Input';
+import { CheckboxGroupProps } from './CheckboxGroup';
+import { CheckboxProps } from './Checkbox';
+import { Props as CurrencyInputProps } from './CurrencyInput';
+import { Props as FormGroupProps } from './FormGroup';
 
 export default {
   title: 'Form Components/Form',
+  component: Form,
   parameters: {
     docs: {
       // page: README,
@@ -369,36 +378,11 @@ _CurrencyInput.parameters = {
   },
 };
 
-export const Props: Story = () => (
-  <>
-    <h4>Availity Props</h4>
-
-    <h5>Input</h5>
-    <ArgsTable of={Input} />
-
-    <h5>Label</h5>
-    <ArgsTable of={Label} />
-
-    <h5>Form Group</h5>
-    <ArgsTable of={FormGroup} />
-
-    <h5>Field</h5>
-    <ArgsTable of={Field} />
-
-    <h5>Checkbox Group</h5>
-    <ArgsTable of={CheckboxGroup} />
-
-    <h5>Checkbox</h5>
-    <ArgsTable of={Checkbox} />
-
-    <h5>Radio</h5>
-    <ArgsTable of={Radio} />
-
-    <h4>React Currency Input Field Props</h4>
-    <h5>React Currency Input</h5>
-    <div>Additional props on CurrencyInput spread to this component</div>
-    <div className="argstable-remove-default">
-      <ArgsTable of={CurrencyInput} />
-    </div>
-  </>
-);
+export const hidden_Input = (props: InputProps) => <Input {...props} />;
+export const hidden_Label = (props: LabelProps) => <Label {...props} />;
+export const hidden_Field = (props: FieldProps) => <Field {...props} />;
+export const hidden_Checkbox = (props: CheckboxProps) => <Checkbox {...props} />;
+export const hidden_CheckboxGroup = (props: CheckboxGroupProps) => <CheckboxGroup {...props} />;
+export const hidden_Radio = (props: RadioStoryProps) => <Radio {...props} />;
+export const hidden_FormGroup = (props: FormGroupProps) => <FormGroup {...props} />;
+export const hidden_CurrencyInput = (props: CurrencyInputProps) => <CurrencyInput {...props} />;

@@ -60,7 +60,7 @@ export const Dismissable = () => {
   );
 };
 
-export const hidden_RSAlert = ({ children, ...alertProps }: AlertProps): Alert => (
+export const hidden_RSAlert = ({ children, ...alertProps }: AlertProps): JSX.Element => (
   <Alert {...alertProps}>{children}</Alert>
 );
 

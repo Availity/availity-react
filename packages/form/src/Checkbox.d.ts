@@ -1,7 +1,7 @@
 /* eslint-disable @typescript-eslint/ban-types */
 import { HTMLAttributes, ReactNode } from 'react';
 
-interface CheckboxProps extends HTMLAttributes<HTMLInputElement> {
+export interface CheckboxProps extends HTMLAttributes<HTMLInputElement> {
   label?: ReactNode;
   value?: string | boolean | object;
   inline?: boolean;

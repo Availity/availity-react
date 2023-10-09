@@ -2,7 +2,6 @@ import React from 'react';
 import { Meta, Story } from '@storybook/react';
 
 import Tooltip from './Tooltip';
-import { ArgsTable } from '@storybook/addon-docs';
 // import README from "../README.md";
 
 export default {
@@ -26,11 +25,3 @@ export const Default: Story = () => (
   </div>
 );
 Default.storyName = 'default';
-
-export const Props: Story = () => (
-  <>
-    <h4>Reactstrap Props</h4>
-    <h5>Tooltip</h5>
-    <ArgsTable of={Tooltip} />
-  </>
-);

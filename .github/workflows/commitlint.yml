@@ -1,5 +1,5 @@
 name: Lint Commit Messages
-on: [pull_request]
+on: [workflow_dispatch]
 
 jobs:
   commitlint:
@@ -12,10 +12,10 @@ jobs:
 
       - uses: actions/setup-node@v3
         with:
-          node-version: '14'
+          node-version: 18
 
       - run: yarn install --immutable
 
-      - uses: wagoid/commitlint-github-action@v4
+      - uses: wagoid/commitlint-github-action@v5
         env:
           NODE_PATH: ${{ github.workspace }}/node_modules

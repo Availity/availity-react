@@ -140,7 +140,7 @@ const BulkTableActions = <T extends IdType>({
                   />
                 ) : (
                   <DropdownItem data-testid={`bulk_action_${action.id}`} key={`${action.id}`} {...setProps()}>
-                    {action.displayText}
+                    <>{action.displayText}</>
                   </DropdownItem>
                 );
               }

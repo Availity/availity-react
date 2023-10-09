@@ -613,6 +613,8 @@ describe('ActionCell', () => {
   });
 
   test('should allow displayText to be set via a function for action', async () => {
+    // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+    // @ts-ignore
     const columDefs = [
       {
         id: 'actions',
@@ -660,6 +662,8 @@ describe('ActionCell', () => {
   });
 
   test('should set modifiers when isSticky is true', async () => {
+    // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+    // @ts-ignore
     const columDefs = [
       {
         id: 'actions',
@@ -707,6 +711,8 @@ describe('ActionCell', () => {
   });
 
   test('should set modifiers when isSticky is false', async () => {
+    // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+    // @ts-ignore
     const columDefs = [
       {
         id: 'actions',
@@ -754,6 +760,8 @@ describe('ActionCell', () => {
   });
 
   test('should allow display text to be set via a function for primary action', async () => {
+    // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+    // @ts-ignore
     const columDefs = [
       {
         id: 'actions',
@@ -788,6 +796,8 @@ describe('ActionCell', () => {
       },
     ];
 
+    const user = userEvent.setup();
+
     render(
       <Table data={currentData} columns={columDefs}>
         <TableContent />
@@ -798,7 +808,7 @@ describe('ActionCell', () => {
     expect(primaryActionIcon1).not.toBeNull();
     expect(primaryActionIcon1).toHaveAttribute('class', 'icon icon-OR_THIS');
 
-    userEvent.hover(screen.getByTestId('table_row_action_menu_item_0_primaryAction'));
+    await user.hover(screen.getByTestId('table_row_action_menu_item_0_primaryAction'));
 
     await waitFor(() => {
       const icon1Tooltip = screen.getByRole('tooltip');
@@ -809,7 +819,7 @@ describe('ActionCell', () => {
     expect(primaryActionIcon2).not.toBeNull();
     expect(primaryActionIcon2).toHaveAttribute('class', 'icon icon-THIS');
 
-    userEvent.hover(screen.getByTestId('table_row_action_menu_item_1_primaryAction'));
+    await user.hover(screen.getByTestId('table_row_action_menu_item_1_primaryAction'));
 
     await waitFor(() => {
       const icon1Tooltip = screen.getByRole('tooltip');
@@ -820,6 +830,8 @@ describe('ActionCell', () => {
   test('should call action on primary action click', async () => {
     const action = jest.fn();
 
+    // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+    // @ts-ignore
     const columDefs = [
       {
         id: 'actions',

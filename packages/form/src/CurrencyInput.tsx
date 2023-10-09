@@ -4,7 +4,7 @@ import classnames from 'classnames';
 import { useField, useFormikContext } from 'formik';
 import Feedback from './Feedback';
 
-type Props = {
+export type Props = {
   name: string;
   onValueChanged: (value: string | undefined) => void;
   id?: string;

@@ -1,6 +1,5 @@
 import React from 'react';
 import { Meta, Story } from '@storybook/react';
-import { ArgsTable } from '@storybook/addon-docs';
 // import { button } from '@storybook/addon-knobs';
 import mock from 'xhr-mock';
 
@@ -209,11 +208,3 @@ FileListStory.args = {
   fileName2: 'testfile2.png',
 };
 FileListStory.storyName = 'file list';
-
-export const Props: Story = () => (
-  <>
-    <h4>Availity Props</h4>
-    <h5>Upload</h5>
-    <ArgsTable of={Upload} />
-  </>
-);

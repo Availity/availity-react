@@ -1,10 +1,13 @@
 import React from 'react';
 import { Meta, Story } from '@storybook/react';
 import { Form } from '@availity/form';
-
-import { ArgsTable } from '@storybook/addon-docs';
 import { CustomInput } from 'reactstrap';
+
 import Upload, { FileList, FilePicker, FilePickerBtn, UploadProgressBar } from '.';
+import { FileListProps } from './FileList';
+import { FilePickerProps } from './FilePicker';
+import { FilePickerBtnProps } from './FilePickerBtn';
+import { UploadProgressBarProps } from './UploadProgressBar';
 
 const file = (fileName: string) => ({
   id: fileName,
@@ -115,22 +118,7 @@ UploadProgressBarStory.parameters = {
   },
 };
 
-export const Props: Story = () => (
-  <>
-    <h4>Availity Props</h4>
-    <h5>Upload</h5>
-    <ArgsTable of={Upload} />
-
-    <h5>File List</h5>
-    <ArgsTable of={FileList} />
-
-    <h5>File Picker</h5>
-    <ArgsTable of={FilePicker} />
-
-    <h5>File Picker Button</h5>
-    <ArgsTable of={FilePickerBtn} />
-
-    <h5>Upload Progress Bar</h5>
-    <ArgsTable of={UploadProgressBar} />
-  </>
-);
+export const hidden_FileList = (props: FileListProps) => <FileList {...props} />;
+export const hidden_FilePicker = (props: FilePickerProps) => <FilePicker {...props} />;
+export const hidden_FilePickerBtn = (props: FilePickerBtnProps) => <FilePickerBtn {...props} />;
+export const hidden_UploadProgressBar = (props: UploadProgressBarProps) => <UploadProgressBar {...props} />;

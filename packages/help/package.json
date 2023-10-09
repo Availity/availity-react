@@ -33,13 +33,13 @@
   },
   "dependencies": {
     "@availity/icon": "workspace:*",
-    "@availity/message-core": "^6.0.1"
+    "@availity/message-core": "^6.1.1"
   },
   "devDependencies": {
-    "react": "^17.0.2",
-    "react-dom": "^17.0.2",
-    "tsup": "^5.12.7",
-    "typescript": "^4.6.4"
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "tsup": "^7.2.0",
+    "typescript": "^4.9.5"
   },
   "peerDependencies": {
     "react": ">=16.3.0"

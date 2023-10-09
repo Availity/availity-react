@@ -1,12 +1,10 @@
 import React from 'react';
 import { Story, Meta } from '@storybook/react';
 import { QueryClientProvider, QueryClient } from 'react-query';
-import { ArgsTable } from '@storybook/addon-docs';
 import mockFavorites from '../../mock/src/data/settings.json';
 
 import { FavoritesProvider } from './context';
 import { FavoriteHeart } from './FavoriteHeart';
-import Tooltip from './components/FavoritesTooltip';
 // import README from '../README.md';
 
 export default {
@@ -50,14 +48,6 @@ export const Default: Story = () => (
       ))}
     </FavoritesProvider>
   </QueryClientProvider>
-);
-
-export const Props: Story = () => (
-  <>
-    <h4>Availity Props</h4>
-    <h5>Favorites</h5>
-    <ArgsTable of={FavoriteHeart} />
-  </>
 );
 
 Default.storyName = 'default';

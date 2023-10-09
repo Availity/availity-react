@@ -420,16 +420,12 @@ exports[`Table should not display primary action column when not provided 1`] = 
           data-testid="table_row_1_cell_3"
           id="table_row_1_cell_3"
           role="cell"
-        >
-          
-        </td>
+        />
         <td
           data-testid="table_row_1_cell_4"
           id="table_row_1_cell_4"
           role="cell"
-        >
-          
-        </td>
+        />
         <td
           data-testid="table_row_1_cell_5"
           id="table_row_1_cell_5"
@@ -1417,16 +1413,12 @@ exports[`Table should render with formatted cells 1`] = `
           data-testid="table_row_1_cell_3"
           id="table_row_1_cell_3"
           role="cell"
-        >
-          
-        </td>
+        />
         <td
           data-testid="table_row_1_cell_4"
           id="table_row_1_cell_4"
           role="cell"
-        >
-          
-        </td>
+        />
         <td
           data-testid="table_row_1_cell_5"
           id="table_row_1_cell_5"

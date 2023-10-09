@@ -1,9 +1,10 @@
 import React, { useState } from 'react';
 import { useToggle } from '@availity/hooks';
-import { render, waitFor, fireEvent } from '@testing-library/react';
+import { render, waitFor } from '@testing-library/react';
+import userEvent from '@testing-library/user-event';
+
 import { Pagination, PaginationControls, usePagination } from '..';
 
-// eslint-disable-next-line react/prop-types
 const PaginationJson = () => {
   const pagination = usePagination();
 
@@ -24,15 +25,14 @@ describe('Pagination', () => {
       </Pagination>
     );
 
-    const paginationCon = await waitFor(() => getByTestId('pagination-con'));
-
-    expect(paginationCon).toBeDefined();
-
-    expect(JSON.parse(paginationCon.textContent)).toEqual(
-      expect.objectContaining({
-        page: items,
-      })
-    );
+    await waitFor(() => {
+      const paginationCon = getByTestId('pagination-con');
+      expect(JSON.parse(paginationCon.textContent)).toEqual(
+        expect.objectContaining({
+          page: items,
+        })
+      );
+    });
   });
 
   test('should provide a list given a function', async () => {
@@ -52,15 +52,14 @@ describe('Pagination', () => {
       </Pagination>
     );
 
-    const paginationCon = await waitFor(() => getByTestId('pagination-con'));
-
-    expect(paginationCon).toBeDefined();
-
-    expect(JSON.parse(paginationCon.textContent)).toEqual(
-      expect.objectContaining({
-        page: getItems().items,
-      })
-    );
+    await waitFor(() => {
+      const paginationCon = getByTestId('pagination-con');
+      expect(JSON.parse(paginationCon.textContent)).toEqual(
+        expect.objectContaining({
+          page: getItems().items,
+        })
+      );
+    });
   });
 
   test('show new page of items when page changes', async () => {
@@ -70,6 +69,8 @@ describe('Pagination', () => {
       { value: '3', key: 3 },
     ];
 
+    const user = userEvent.setup();
+
     const { getByTestId } = render(
       <Pagination items={items} itemsPerPage={1}>
         <PaginationJson />
@@ -77,29 +78,26 @@ describe('Pagination', () => {
       </Pagination>
     );
 
-    let paginationCon = await waitFor(() => getByTestId('pagination-con'));
+    await waitFor(() => {
+      const paginationCon = getByTestId('pagination-con');
+      expect(JSON.parse(paginationCon.textContent)).toEqual(
+        expect.objectContaining({
+          page: [items[0]],
+        })
+      );
+    });
 
-    expect(paginationCon).toBeDefined();
-
-    expect(JSON.parse(paginationCon.textContent)).toEqual(
-      expect.objectContaining({
-        page: [items[0]],
-      })
-    );
-
-    fireEvent.click(getByTestId('pagination-control-next-link'));
+    await user.click(getByTestId('pagination-control-next-link'));
 
     // Wait for component to render nothing
-    waitFor(() => expect(getByTestId('pagination-con')).toBeDefined());
-
-    // Get the component now with the new page data
-    paginationCon = await waitFor(() => getByTestId('pagination-con'));
-
-    expect(JSON.parse(paginationCon.textContent)).toEqual(
-      expect.objectContaining({
-        page: [items[1]],
-      })
-    );
+    await waitFor(() => {
+      const paginationCon = getByTestId('pagination-con');
+      expect(JSON.parse(paginationCon.textContent)).toEqual(
+        expect.objectContaining({
+          page: [items[1]],
+        })
+      );
+    });
   });
 
   test('should call onPageChange when page changes', async () => {
@@ -108,6 +106,8 @@ describe('Pagination', () => {
       { value: '2', key: 2 },
       { value: '3', key: 3 },
     ];
+
+    const user = userEvent.setup();
 
     const mockOnPageChange = jest.fn((page) => page);
 
@@ -118,30 +118,32 @@ describe('Pagination', () => {
       </Pagination>
     );
 
-    let paginationCon = await waitFor(() => getByTestId('pagination-con'));
+    await waitFor(() => {
+      const paginationCon = getByTestId('pagination-con');
+      expect(JSON.parse(paginationCon.textContent)).toEqual(
+        expect.objectContaining({
+          page: [items[0]],
+        })
+      );
+    });
 
-    expect(paginationCon).toBeDefined();
-
-    expect(JSON.parse(paginationCon.textContent)).toEqual(
-      expect.objectContaining({
-        page: [items[0]],
-      })
-    );
-
-    fireEvent.click(getByTestId('pagination-control-next-link'));
+    await user.click(getByTestId('pagination-control-next-link'));
 
     // Wait for component to render nothing
-    waitFor(() => expect(getByTestId('pagination-con')).toBeDefined());
+    // waitFor(() => expect(getByTestId('pagination-con')).toBeDefined());
 
     // Get the component now with the new page data
-    paginationCon = await waitFor(() => getByTestId('pagination-con'));
-
-    expect(mockOnPageChange).toHaveBeenCalledTimes(1);
+    await waitFor(() => {
+      getByTestId('pagination-con');
+      expect(mockOnPageChange).toHaveBeenCalledTimes(1);
+    });
   });
 
   test('should re-render if watch List updates', async () => {
     // Create Mock Function
     const mockFunc = jest.fn(() => {});
+
+    const user = userEvent.setup();
 
     // Create Component to call the function everytime the component updates
     const SomeComponent = React.memo(() => {
@@ -172,7 +174,7 @@ describe('Pagination', () => {
 
     const { getByTestId } = render(<ComponentWrapper />);
 
-    await waitFor(() => getByTestId(`current-page`));
+    await waitFor(() => getByTestId('current-page'));
 
     // Called once after the pagination has loaded
     await waitFor(() => {
@@ -180,7 +182,7 @@ describe('Pagination', () => {
     });
 
     // Clicking the button will trigger a state update
-    fireEvent.click(getByTestId('hello-btn'));
+    await user.click(getByTestId('hello-btn'));
 
     await waitFor(() => {
       expect(mockFunc).toHaveBeenCalledTimes(3);
@@ -188,7 +190,7 @@ describe('Pagination', () => {
   });
 
   test('should reset page to 1 if resetParams updates', async () => {
-    jest.useFakeTimers();
+    const user = userEvent.setup();
     // Create component with button that explicitly sets the current page to 2
     const SomeComponent = React.memo(() => {
       const { loading, currentPage, setPage } = usePagination();
@@ -249,42 +251,51 @@ describe('Pagination', () => {
 
     const { getByTestId } = render(<ComponentWrapper />);
 
-    jest.advanceTimersByTime(10);
+    await waitFor(() => {
+      const currentPageBtn = getByTestId('current-page');
+      expect(currentPageBtn.textContent).toBe('1');
+    });
 
-    let currentPageButton = await waitFor(() => getByTestId(`current-page`));
+    await waitFor(() => {
+      const paginationCon = getByTestId('pagination-con');
 
-    let paginationCon = await waitFor(() => getByTestId('pagination-con'));
-
-    expect(paginationCon).toBeDefined();
-
-    // Check current page is 1 on first render
-    expect(currentPageButton.textContent).toBe('1');
-    expect(JSON.parse(paginationCon.textContent)).toEqual(
-      expect.objectContaining({
-        allPages: firstItems,
-      })
-    );
+      // Check current page is 1 on first render
+      expect(JSON.parse(paginationCon.textContent)).toEqual(
+        expect.objectContaining({
+          allPages: firstItems,
+        })
+      );
+    });
 
     // Check current page is 2 after set page button is called
-    fireEvent.click(getByTestId('set-page-btn'));
-    jest.advanceTimersByTime(10);
-    currentPageButton = await waitFor(() => getByTestId(`current-page`));
-    paginationCon = await waitFor(() => getByTestId('pagination-con'));
-    expect(currentPageButton.textContent).toBe('2');
-    expect(JSON.parse(paginationCon.textContent)).toEqual(
-      expect.objectContaining({
-        allPages: [...firstItems, ...secondItems],
-      })
-    );
+    await user.click(getByTestId('set-page-btn'));
+
+    await waitFor(() => {
+      const currentPageBtn = getByTestId('current-page');
+      expect(currentPageBtn.textContent).toBe('2');
+    });
+
+    await waitFor(() => {
+      const paginationCon = getByTestId('pagination-con');
+      expect(JSON.parse(paginationCon.textContent)).toEqual(
+        expect.objectContaining({
+          allPages: [...firstItems, ...secondItems],
+        })
+      );
+    });
 
     // Check current page is 1 after resetParams changes
-    fireEvent.click(getByTestId('toggle-btn'));
-    jest.advanceTimersByTime(10);
-    currentPageButton = await waitFor(() => getByTestId(`current-page`));
-    paginationCon = await waitFor(() => getByTestId('pagination-con'));
-    expect(currentPageButton.textContent).toBe('1');
+    await user.click(getByTestId('toggle-btn'));
 
-    expect(JSON.stringify(JSON.parse(paginationCon.textContent).allPages)).toBe(JSON.stringify(firstItems));
+    await waitFor(() => {
+      const currentPageBtn = getByTestId('current-page');
+      expect(currentPageBtn.textContent).toBe('1');
+    });
+
+    await waitFor(() => {
+      const paginationCon = getByTestId('pagination-con');
+      expect(JSON.stringify(JSON.parse(paginationCon.textContent).allPages)).toBe(JSON.stringify(firstItems));
+    });
   });
 
   test('should reset page to 1 and refetch page data if resetParams updates, items is a function, and already on page 1', async () => {
@@ -298,6 +309,8 @@ describe('Pagination', () => {
         </div>
       );
     });
+
+    const user = userEvent.setup();
 
     const firstItems = [];
     const secondItems = [];
@@ -336,45 +349,44 @@ describe('Pagination', () => {
 
     const { getByTestId } = render(<ComponentWrapper />);
 
-    jest.advanceTimersByTime(10);
-    let currentPageButton = await waitFor(() => getByTestId(`current-page`));
-
-    // Check current page is 1 on first render
-    expect(currentPageButton.textContent).toBe('1');
+    await waitFor(() => {
+      const currentPageBtn = getByTestId('current-page');
+      // Check current page is 1 on first render
+      expect(currentPageBtn.textContent).toBe('1');
+    });
 
     // Check correct items render
-    let paginationCon = await waitFor(() => getByTestId('pagination-con'));
-
-    expect(paginationCon).toBeDefined();
-
-    expect(JSON.parse(paginationCon.textContent)).toEqual(
-      expect.objectContaining({
-        page: firstItems,
-        allPages: firstItems,
-      })
-    );
-
-    // Check items function was called once on first render
-    expect(items).toHaveBeenCalledTimes(1);
+    await waitFor(() => {
+      const paginationCon = getByTestId('pagination-con');
+      expect(JSON.parse(paginationCon.textContent)).toEqual(
+        expect.objectContaining({
+          page: firstItems,
+          allPages: firstItems,
+        })
+      );
+      // Check items function was called once on first render
+      expect(items).toHaveBeenCalledTimes(1);
+    });
 
     // Check items function was called again when reset params change, items is a function, and already on page 1
-    fireEvent.click(getByTestId('toggle-btn'));
-    jest.advanceTimersByTime(10);
-    currentPageButton = await waitFor(() => getByTestId(`current-page`));
-    expect(currentPageButton.textContent).toBe('1');
-    expect(items).toHaveBeenCalledTimes(2);
+    await user.click(getByTestId('toggle-btn'));
+
+    await waitFor(() => {
+      const currentPageBtn = getByTestId('current-page');
+      expect(currentPageBtn.textContent).toBe('1');
+      expect(items).toHaveBeenCalledTimes(2);
+    });
 
     // Check correct items render
-    paginationCon = await waitFor(() => getByTestId('pagination-con'));
-
-    expect(paginationCon).toBeDefined();
-
-    expect(JSON.parse(paginationCon.textContent)).toEqual(
-      expect.objectContaining({
-        page: secondItems,
-        allPages: [...firstItems, ...secondItems],
-      })
-    );
+    await waitFor(() => {
+      const paginationCon = getByTestId('pagination-con');
+      expect(JSON.parse(paginationCon.textContent)).toEqual(
+        expect.objectContaining({
+          page: secondItems,
+          allPages: [...firstItems, ...secondItems],
+        })
+      );
+    });
   });
 
   test('show correct page when given defaultPage', async () => {
@@ -384,6 +396,8 @@ describe('Pagination', () => {
       { value: '3', key: 3 },
     ];
 
+    const user = userEvent.setup();
+
     const { getByTestId } = render(
       <Pagination items={items} itemsPerPage={1} defaultPage={2}>
         <PaginationJson />
@@ -391,32 +405,30 @@ describe('Pagination', () => {
       </Pagination>
     );
 
-    jest.advanceTimersByTime(10);
-    let paginationCon = await waitFor(() => getByTestId('pagination-con'));
-
-    expect(paginationCon).toBeDefined();
-
-    expect(JSON.parse(paginationCon.textContent)).toEqual(
-      expect.objectContaining({
-        page: [items[1]],
-      })
-    );
+    await waitFor(() => {
+      const paginationCon = getByTestId('pagination-con');
+      expect(JSON.parse(paginationCon.textContent)).toEqual(
+        expect.objectContaining({
+          page: [items[1]],
+        })
+      );
+    });
 
     // Testing that clicking next still works with a defaultPage
-    fireEvent.click(getByTestId('pagination-control-next-link'));
+    await user.click(getByTestId('pagination-control-next-link'));
 
     // Wait for component to render nothing
-    waitFor(() => expect(getByTestId('pagination-con')).toBeDefined());
+    await waitFor(() => getByTestId('pagination-con'));
 
-    jest.advanceTimersByTime(10);
     // Get the component now with the new page data
-    paginationCon = await waitFor(() => getByTestId('pagination-con'));
-
-    expect(JSON.parse(paginationCon.textContent)).toEqual(
-      expect.objectContaining({
-        page: [items[2]],
-      })
-    );
+    await waitFor(() => {
+      const paginationCon = getByTestId('pagination-con');
+      expect(JSON.parse(paginationCon.textContent)).toEqual(
+        expect.objectContaining({
+          page: [items[2]],
+        })
+      );
+    });
   });
 
   test('show correct page when given page from props', async () => {
@@ -425,6 +437,8 @@ describe('Pagination', () => {
       { value: '2', key: 2 },
       { value: '3', key: 3 },
     ];
+
+    const user = userEvent.setup();
 
     const Component = () => {
       const [page, setPage] = useState(2);
@@ -439,32 +453,30 @@ describe('Pagination', () => {
 
     const { getByTestId } = render(<Component />);
 
-    jest.advanceTimersByTime(10);
-    let paginationCon = await waitFor(() => getByTestId('pagination-con'));
-
-    expect(paginationCon).toBeDefined();
-
-    expect(JSON.parse(paginationCon.textContent)).toEqual(
-      expect.objectContaining({
-        page: [items[1]],
-      })
-    );
+    await waitFor(() => {
+      const paginationCon = getByTestId('pagination-con');
+      expect(JSON.parse(paginationCon.textContent)).toEqual(
+        expect.objectContaining({
+          page: [items[1]],
+        })
+      );
+    });
 
     // Testing that clicking next still works with a defaultPage
-    fireEvent.click(getByTestId('pagination-control-next-link'));
+    await user.click(getByTestId('pagination-control-next-link'));
 
     // Wait for component to render nothing
-    waitFor(() => expect(getByTestId('pagination-con')).toBeDefined());
+    await waitFor(() => getByTestId('pagination-con'));
 
-    jest.advanceTimersByTime(10);
     // Get the component now with the new page data
-    paginationCon = await waitFor(() => getByTestId('pagination-con'));
-
-    expect(JSON.parse(paginationCon.textContent)).toEqual(
-      expect.objectContaining({
-        page: [items[2]],
-      })
-    );
+    await waitFor(() => {
+      const paginationCon = getByTestId('pagination-con');
+      expect(JSON.parse(paginationCon.textContent)).toEqual(
+        expect.objectContaining({
+          page: [items[2]],
+        })
+      );
+    });
   });
 
   it('does not fetch page data when shouldReturnPrevious is true', async () => {
@@ -476,6 +488,8 @@ describe('Pagination', () => {
         { value: '3', key: 3 },
       ],
     });
+
+    const user = userEvent.setup();
 
     const ComponentWrapper = () => {
       const [shouldReturnPrevious, setShouldReturnPrevious] = useState(true);
@@ -499,16 +513,15 @@ describe('Pagination', () => {
     expect(getItems).not.toHaveBeenCalled();
 
     // Set shouldReturnPrevious to true
-    fireEvent.click(getByTestId('toggle-return-previous-btn'));
+    await user.click(getByTestId('toggle-return-previous-btn'));
 
-    jest.advanceTimersByTime(10);
     // Check getItems was called
     await waitFor(() => {
       expect(getItems).toHaveBeenCalledTimes(1);
     });
 
     // Set shouldReturnPrevious to false
-    fireEvent.click(getByTestId('toggle-return-previous-btn'));
+    await user.click(getByTestId('toggle-return-previous-btn'));
 
     // Check getItems has still only been called one time
     await waitFor(() => {
@@ -516,9 +529,8 @@ describe('Pagination', () => {
     });
 
     // Set shouldReturnPrevious to true
-    fireEvent.click(getByTestId('toggle-return-previous-btn'));
+    await user.click(getByTestId('toggle-return-previous-btn'));
 
-    jest.advanceTimersByTime(10);
     await waitFor(() => {
       expect(getItems).toHaveBeenCalledTimes(2);
     });
@@ -538,6 +550,8 @@ describe('Pagination', () => {
       );
     };
 
+    const user = userEvent.setup();
+
     const getItems = jest.fn().mockRejectedValue(new Error('Async error'));
 
     const onError = jest.fn();
@@ -548,15 +562,13 @@ describe('Pagination', () => {
       </Pagination>
     );
 
-    jest.advanceTimersByTime(10);
     await waitFor(() => {
       expect(getItems).toHaveBeenCalledTimes(1);
+      expect(getByTestId('pagination-error-container').textContent).toBe('Async error');
     });
 
-    expect(getByTestId('pagination-error-container').textContent).toBe('Async error');
-
     // Clear the error
-    fireEvent.click(getByTestId('clear-error-btn'));
+    await user.click(getByTestId('clear-error-btn'));
 
     // Check the error was cleared
     expect(getByTestId('pagination-error-container').textContent).toBe('no error');

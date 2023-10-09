@@ -1,5 +1,5 @@
 import React from 'react';
-import { render, waitFor, cleanup } from '@testing-library/react';
+import { render, waitFor } from '@testing-library/react';
 import { avWebQLApi } from '@availity/api-axios';
 import Spaces, { SpacesDisclaimer } from '..';
 
@@ -28,30 +28,25 @@ avWebQLApi.create.mockResolvedValue({
 describe('SpacesDisclaimer', () => {
   afterEach(() => {
     jest.clearAllMocks();
-    cleanup();
   });
 
   it('renders disclaimer from space', async () => {
-    const { container } = render(
+    const { getByText } = render(
       <Spaces clientId="my-client-id" spaceIds={['1']}>
         <SpacesDisclaimer spaceId="1" />
       </Spaces>
     );
 
-    const disclaimer = await waitFor(() => container);
-
-    expect(disclaimer.textContent).toBe('foo');
+    await waitFor(() => getByText('foo'));
   });
 
   it('renders disclaimer from single space', async () => {
-    const { container } = render(
+    const { getByText } = render(
       <Spaces clientId="my-client-id" spaceIds={['1']}>
         <SpacesDisclaimer />
       </Spaces>
     );
 
-    const disclaimer = await waitFor(() => container);
-
-    expect(disclaimer.textContent).toBe('foo');
+    await waitFor(() => getByText('foo'));
   });
 });

@@ -1,5 +1,4 @@
 import React from 'react';
-import { ArgsTable } from '@storybook/addon-docs';
 import { Meta, Story } from '@storybook/react';
 import {
   Pagination as RsPagination,
@@ -60,6 +59,7 @@ const resource = new AvApi({ name: 'pagination' });
 
 export default {
   title: 'Components/Pagination',
+  component: Pagination,
   parameters: {
     docs: {
       // page: README,
@@ -237,26 +237,3 @@ export const hidden_AvResourcePagination = (props: AvResourcePaginationProps<any
 );
 
 export const hidden_RsPagination = (props: RsPaginationProps) => <RsPagination {...props} />;
-
-export const Props: Story = () => (
-  <>
-    <h4>Availity Props</h4>
-    <h5>Pagination</h5>
-    <ArgsTable of={hidden_Pagination} />
-
-    <h5>PaginationContent</h5>
-    <ArgsTable of={hidden_PaginationContent} />
-
-    <h5>PaginationControls</h5>
-    <ArgsTable of={hidden_PaginationControls} />
-
-    <h5>AvResourcePagination</h5>
-    <ArgsTable of={hidden_AvResourcePagination} />
-
-    <h4>Reactstrap Pagination</h4>
-    <h5>Pagination</h5>
-    <div className="argstable-remove-default">
-      <ArgsTable of={hidden_RsPagination} />
-    </div>
-  </>
-);

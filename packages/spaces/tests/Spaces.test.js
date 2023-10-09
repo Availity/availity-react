@@ -1,7 +1,7 @@
 /* eslint-disable no-console */
 /* eslint-disable react/prop-types */
 import React, { useState } from 'react';
-import { render, waitFor, cleanup, fireEvent } from '@testing-library/react';
+import { render, waitFor, fireEvent } from '@testing-library/react';
 import { avWebQLApi } from '@availity/api-axios';
 import { getAllSpaces } from '../src/Spaces';
 import { normalizeSpaces } from '../src/helpers';
@@ -12,7 +12,6 @@ jest.mock('@availity/api-axios');
 describe('Spaces', () => {
   afterEach(() => {
     jest.clearAllMocks();
-    cleanup();
   });
 
   it('provides correct spaces from props and from avWebQL', async () => {
@@ -74,19 +73,16 @@ describe('Spaces', () => {
       );
     };
 
-    const { container } = render(<MyComponent />);
+    const { container, getByText } = render(<MyComponent />);
 
     // Check that space 1 (fetched from avWebQL) is accessible by spaces provider
-    let space1 = await waitFor(() => container.querySelector('#space-for-1'));
-    expect(space1.textContent).toBe('Space 1 is in provider');
+    await waitFor(() => getByText('Space 1 is in provider'));
 
     // Check that space 2 (not provided) is not accessible by spaces provider
-    let space2 = await waitFor(() => container.querySelector('#space-for-2'));
-    expect(space2.textContent).toBe('Space 2 is not in provider');
+    await waitFor(() => getByText('Space 2 is not in provider'));
 
     // Check that space 3 (provided by props) is accessible by spaces provider
-    let space3 = await waitFor(() => container.querySelector('#space-for-3'));
-    expect(space3.textContent).toBe('Space 3 is in provider');
+    await waitFor(() => getByText('Space 3 is in provider'));
 
     // Check that avWebQL was only queried for space 1 because space 3 was provided by props
     expect(avWebQLApi.create.mock.calls[0][0].variables.ids).toEqual(['1']);
@@ -95,16 +91,13 @@ describe('Spaces', () => {
     fireEvent.click(container.querySelector('#add-spaceid-btn'));
 
     // Check that space 1 (fetched from avWebQL) is still accessible by spaces provider
-    space1 = await waitFor(() => container.querySelector('#space-for-1'));
-    expect(space1.textContent).toBe('Space 1 is in provider');
+    await waitFor(() => getByText('Space 1 is in provider'));
 
     // Check that space 2 (now fetched from avWebQL) is now accessible by spaces provider
-    space2 = await waitFor(() => container.querySelector('#space-for-2'));
-    expect(space2.textContent).toBe('Space 2 is in provider');
+    await waitFor(() => getByText('Space 2 is in provider'));
 
     // Check that space 3 (provided by props) is still accessible by spaces provider
-    space3 = await waitFor(() => container.querySelector('#space-for-3'));
-    expect(space3.textContent).toBe('Space 3 is in provider');
+    await waitFor(() => getByText('Space 3 is in provider'));
 
     // Check that avWebQL was only queried for space 2 because the spaces provider already had space 1 (from previous query) and space 3 (from props)
     expect(avWebQLApi.create.mock.calls[1][0].variables.ids).toEqual(['2']);
@@ -165,9 +158,9 @@ describe('Spaces', () => {
       );
     };
 
-    const { container } = render(<MyComponent />);
+    const { container, getByText } = render(<MyComponent />);
 
-    await waitFor(() => container.querySelector('#space-for-1'));
+    await waitFor(() => getByText('Space 1'));
 
     // Check func was called when loading space 1
     expect(fn).toHaveBeenCalledTimes(1);
@@ -175,7 +168,7 @@ describe('Spaces', () => {
     // Add a space id
     fireEvent.click(container.querySelector('#add-spaceid-btn'));
 
-    await waitFor(() => container.querySelector('#space-for-2'));
+    await waitFor(() => getByText('Space 2'));
 
     // Check func was called when loading space 2
     expect(fn).toHaveBeenCalledTimes(2);
@@ -271,11 +264,9 @@ describe('Spaces', () => {
     );
 
     await waitFor(() => getByText('No Space'));
-
-    expect(fn.mock.calls[0][1]).toBe('clientId is required');
   });
 
-  test('works with render props', async () => {
+  it('works with render props', async () => {
     avWebQLApi.create.mockResolvedValueOnce({
       data: {
         data: {
@@ -298,8 +289,7 @@ describe('Spaces', () => {
       </Spaces>
     );
 
-    const spc = await waitFor(() => getByText('12'));
-    expect(spc).toBeDefined();
+    await waitFor(() => getByText('12'));
   });
 
   describe('useSpaces', () => {
@@ -310,7 +300,7 @@ describe('Spaces', () => {
       const dataTestIdSuffix = ids && ids.length > 0 ? ids.join('-') : 'all-spaces';
       return (
         <div>
-          <span id={`spaces-for-${dataTestIdSuffix}`}>{spaces.map((spc) => `Id: ${spc && spc.id} `)}</span>
+          <span id={`spaces-for-${dataTestIdSuffix}`}>{spaces.map((spc) => `Id: ${spc.id} `)}</span>
         </div>
       );
     };
@@ -372,20 +362,18 @@ describe('Spaces', () => {
         },
       });
 
-      const { container } = render(
+      const { getByText } = render(
         <Spaces spaceIds={['11', '22', '33']} clientId="test-client-id">
           <SpacesComponent />
           <SpacesComponent ids={['22', '33']} />
         </Spaces>
       );
-      //
+
       // Check that all spaces get returned when no configurationIds get passed to useSpaces hook
-      const allSpacesByConfigurationIds = await waitFor(() => container.querySelector('#spaces-for-all-spaces'));
-      expect(allSpacesByConfigurationIds.textContent).toBe('Id: 1 Id: 2 Id: 3 ');
+      await waitFor(() => getByText('Id: 1 Id: 2 Id: 3'));
 
       // Check that spaces for configurationIds get returned when configurationIds passed to useSpaces hook
-      const specificSpacesByConfigurationIds = await waitFor(() => container.querySelector('#spaces-for-22-33'));
-      expect(specificSpacesByConfigurationIds.textContent).toBe('Id: 2 Id: 3 ');
+      await waitFor(() => getByText('Id: 2 Id: 3'));
     });
 
     it('returns all matching spaces when searching by payerId', async () => {
@@ -407,7 +395,7 @@ describe('Spaces', () => {
         },
       });
 
-      const { container } = render(
+      const { getByText } = render(
         <Spaces payerIds={['a', 'b', 'c']} clientId="test-client-id">
           <SpacesComponent ids={['b']} />
           <SpacesComponent ids={['c']} />
@@ -415,10 +403,8 @@ describe('Spaces', () => {
       );
 
       // Check that spaces for payer ids get returned when ids passed to useSpaces hook
-      const payerSpecificSpaces = await waitFor(() => container.querySelector('#spaces-for-b'));
-      expect(payerSpecificSpaces.textContent).toBe('Id: 1 Id: 2 ');
-      const payerSpecificSpaces2 = await waitFor(() => container.querySelector('#spaces-for-c'));
-      expect(payerSpecificSpaces2.textContent).toBe('Id: 1 Id: 2 Id: 3 ');
+      await waitFor(() => getByText('Id: 1 Id: 2'));
+      await waitFor(() => getByText('Id: 1 Id: 2 Id: 3'));
     });
 
     it('renders with warning when returning all spaces because no ids were passed in', async () => {

@@ -70,6 +70,7 @@ describe('Date', () => {
     const onSubmit = jest.fn();
     const onChange = jest.fn();
 
+    const user = userEvent.setup();
     const { container } = render(
       <Form
         initialValues={{
@@ -84,7 +85,7 @@ describe('Date', () => {
 
     const input = container.querySelector('.DateInput_input');
     input.setSelectionRange(0, 10);
-    userEvent.type(input, '01/04/1997{backspace}');
+    await user.type(input, '01/04/1997{backspace}');
 
     await waitFor(() => {
       expect(onChange.mock.calls[0][0]).toBeNull();

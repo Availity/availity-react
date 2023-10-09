@@ -1,5 +1,5 @@
 import React from 'react';
-import { render, fireEvent, waitFor, within } from '@testing-library/react';
+import { render, fireEvent, waitFor, within, act } from '@testing-library/react';
 import { Button } from 'reactstrap';
 import { Form } from '@availity/form';
 import { object, string } from 'yup';
@@ -463,13 +463,18 @@ describe('DateRange', () => {
     });
 
     // Simulate User hitting the 'Today' pre-set
-    container.querySelector('.CalendarDay__today').click();
-    container.querySelector('.CalendarDay__today').click();
+    act(() => {
+      fireEvent.click(container.querySelector('.CalendarDay__today'));
+    });
+    // We use two "act"s to make sure the first input finishes updating before clicking
+    // the button again
+    act(() => {
+      fireEvent.click(container.querySelector('.CalendarDay__today'));
+    });
 
     const today = moment().format('MM/DD/YYYY');
 
     expect(container.querySelectorAll('.DateInput_input.DateInput_input_1')[0].value).toEqual(today);
-
     expect(container.querySelectorAll('.DateInput_input.DateInput_input_1')[1].value).toEqual(today);
   });
 

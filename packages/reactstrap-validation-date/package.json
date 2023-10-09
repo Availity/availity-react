@@ -27,7 +27,7 @@
   },
   "dependencies": {
     "@availity/react-dates": "^21.13.1",
-    "classnames": "^2.3.1",
+    "classnames": "^2.3.2",
     "lodash": "^4.17.21",
     "moment": "^2.29.4",
     "prop-types": "^15.8.1",
@@ -36,9 +36,9 @@
   "devDependencies": {
     "@types/react-dates": "^21.8.3",
     "availity-reactstrap-validation": "^2.7.1",
-    "date-fns": "^2.28.0",
-    "react": "^17.0.2",
-    "react-dom": "^17.0.2",
+    "date-fns": "^2.30.0",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
     "reactstrap": "^8.10.1"
   },
   "peerDependencies": {
