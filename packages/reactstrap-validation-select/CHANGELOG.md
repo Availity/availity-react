@@ -2,6 +2,20 @@
 
 This file was generated using [@jscutlery/semver](https://github.com/jscutlery/semver).
 
+# [10.0.0](https://github.com/Availity/availity-react/compare/@availity/reactstrap-validation-select@9.6.3...@availity/reactstrap-validation-select@10.0.0) (2023-10-09)
+
+
+### Features
+
+* upgrade deps ([eccefc0](https://github.com/Availity/availity-react/commit/eccefc0549ebd5057595f6ac696642789375f48a))
+
+
+### BREAKING CHANGES
+
+* axios v1 is now required
+
+
+
 ## [9.6.3](https://github.com/Availity/availity-react/compare/@availity/reactstrap-validation-select@9.6.2...@availity/reactstrap-validation-select@9.6.3) (2023-02-22)
 
 
