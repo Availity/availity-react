@@ -1,6 +1,6 @@
 {
   "name": "@availity/form-upload",
-  "version": "0.11.4",
+  "version": "1.0.0",
   "description": "Availity upload component for uploading files, compatible with @availity/form",
   "keywords": [
     "react",
