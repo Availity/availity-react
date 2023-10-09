@@ -2,6 +2,15 @@
 
 This file was generated using [@jscutlery/semver](https://github.com/jscutlery/semver).
 
+## [0.6.1](https://github.com/Availity/availity-react/compare/@availity/table@0.6.0...@availity/table@0.6.1) (2023-10-09)
+
+
+### Bug Fixes
+
+* upgrade deps and misc fixes for types ([454b436](https://github.com/Availity/availity-react/commit/454b4364fa4dd7bfffd004496cfc75e22db2fa81))
+
+
+
 # [0.6.0](https://github.com/Availity/availity-react/compare/@availity/table@0.5.5...@availity/table@0.6.0) (2023-08-14)
 
 

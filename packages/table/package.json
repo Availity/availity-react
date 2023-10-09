@@ -1,6 +1,6 @@
 {
   "name": "@availity/table",
-  "version": "0.6.0",
+  "version": "0.6.1",
   "description": "A generic table wrapper for react-table",
   "keywords": [
     "react",
