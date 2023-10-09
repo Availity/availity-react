@@ -2,6 +2,20 @@
 
 This file was generated using [@jscutlery/semver](https://github.com/jscutlery/semver).
 
+# [12.0.0](https://github.com/Availity/availity-react/compare/@availity/page-header@11.3.4...@availity/page-header@12.0.0) (2023-10-09)
+
+
+### Features
+
+* upgrade deps ([eccefc0](https://github.com/Availity/availity-react/commit/eccefc0549ebd5057595f6ac696642789375f48a))
+
+
+### BREAKING CHANGES
+
+* axios v1 is now required
+
+
+
 ## [11.3.4](https://github.com/Availity/availity-react/compare/@availity/page-header@11.3.3...@availity/page-header@11.3.4) (2023-08-02)
 
 
