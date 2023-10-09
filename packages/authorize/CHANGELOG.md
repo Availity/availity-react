@@ -2,6 +2,20 @@
 
 This file was generated using [@jscutlery/semver](https://github.com/jscutlery/semver).
 
+# [3.0.0](https://github.com/Availity/availity-react/compare/@availity/authorize@2.3.0...@availity/authorize@3.0.0) (2023-10-09)
+
+
+### Features
+
+* upgrade deps ([eccefc0](https://github.com/Availity/availity-react/commit/eccefc0549ebd5057595f6ac696642789375f48a))
+
+
+### BREAKING CHANGES
+
+* axios v1 is now required
+
+
+
 # [2.3.0](https://github.com/Availity/availity-react/compare/@availity/authorize@2.2.1...@availity/authorize@2.3.0) (2023-05-23)
 
 
