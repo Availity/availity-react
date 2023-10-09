@@ -2,6 +2,20 @@
 
 This file was generated using [@jscutlery/semver](https://github.com/jscutlery/semver).
 
+# [1.0.0](https://github.com/Availity/availity-react/compare/@availity/change-password@0.2.0...@availity/change-password@1.0.0) (2023-10-09)
+
+
+### Features
+
+* upgrade deps ([eccefc0](https://github.com/Availity/availity-react/commit/eccefc0549ebd5057595f6ac696642789375f48a))
+
+
+### BREAKING CHANGES
+
+* axios v1 is now required
+
+
+
 # [0.2.0](https://github.com/Availity/availity-react/compare/@availity/change-password@0.1.1...@availity/change-password@0.2.0) (2023-07-31)
 
 
