@@ -1,6 +1,6 @@
 {
   "name": "@availity/select",
-  "version": "3.5.1",
+  "version": "4.0.0",
   "description": "Wrapper for react-select to work with formik",
   "keywords": [
     "availity",
