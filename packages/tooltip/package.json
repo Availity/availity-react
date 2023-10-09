@@ -1,6 +1,6 @@
 {
   "name": "@availity/tooltip",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "Context Provider to assist with tooltip Menu on Portal for specific pages",
   "keywords": [
     "react",
