@@ -2,6 +2,15 @@
 
 This file was generated using [@jscutlery/semver](https://github.com/jscutlery/semver).
 
+## [2.17.1](https://github.com/Availity/availity-react/compare/@availity/pagination@2.17.0...@availity/pagination@2.17.1) (2023-10-09)
+
+
+### Bug Fixes
+
+* update test ([6b46317](https://github.com/Availity/availity-react/commit/6b46317ce02662b6fb5ada6fb6c1bf2cef703b65))
+
+
+
 # [2.17.0](https://github.com/Availity/availity-react/compare/@availity/pagination@2.16.0...@availity/pagination@2.17.0) (2023-07-31)
 
 
