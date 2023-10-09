@@ -2,6 +2,25 @@
 
 This file was generated using [@jscutlery/semver](https://github.com/jscutlery/semver).
 
+# [4.0.0](https://github.com/Availity/availity-react/compare/@availity/favorites@3.4.3...@availity/favorites@4.0.0) (2023-10-09)
+
+
+### Bug Fixes
+
+* update test ([4200f28](https://github.com/Availity/availity-react/commit/4200f28e11bfbfcc37121b4f1776669ec907110e))
+
+
+### Features
+
+* upgrade deps ([eccefc0](https://github.com/Availity/availity-react/commit/eccefc0549ebd5057595f6ac696642789375f48a))
+
+
+### BREAKING CHANGES
+
+* axios v1 is now required
+
+
+
 ## [3.4.3](https://github.com/Availity/availity-react/compare/@availity/favorites@3.4.2...@availity/favorites@3.4.3) (2022-11-28)
 
 
