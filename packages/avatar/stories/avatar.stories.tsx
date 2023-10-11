@@ -1,5 +1,5 @@
 import React from 'react';
-import { Meta, StoryObj } from '@storybook/react';
+import { StoryObj } from '@storybook/react';
 import { Img, ImgProps } from 'react-image';
 import Skeleton from 'react-loading-skeleton';
 
@@ -8,15 +8,8 @@ import Avatar, { SkeletonType } from '../src/Avatar';
 
 export default {
   title: 'Components/Avatar',
-  parameters: {
-    docs: {
-      // page: README,
-      description: {
-        component: 'Availity user avatar component.',
-      },
-    },
-  },
-} as Meta;
+  component: Avatar,
+};
 
 type AvatarStoryProps = {
   fallback: string;
@@ -35,7 +28,7 @@ export const _Avatar: StoryObj<AvatarStoryProps> = {
     />
   ),
   args: {
-    fallback: '/public/apps/my-profile/images/Avatars-00.png',
+    fallback: 'public/apps/my-profile/images/Avatars-00.png',
     skeletonHeight: '350px',
     skeletonWidth: '350px',
   },
