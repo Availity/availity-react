@@ -1,4 +1,4 @@
-import { useQuery } from 'react-query';
+import { useQuery } from '@tanstack/react-query';
 import { avRegionsApi } from '@availity/api-axios';
 
 async function fetchRegion() {
