@@ -33,6 +33,7 @@
     "@availity/message-core": "^6.1.1",
     "@availity/native-form": "^5.0.4",
     "@availity/typography": "workspace:*",
+    "@tanstack/react-query": "^4.36.1",
     "classnames": "^2.3.2",
     "dayjs": "^1.11.9",
     "lodash": "^4.17.21",
@@ -55,7 +56,6 @@
     "@availity/favorites": "^3.4.2",
     "axios": "^1.0.0",
     "react": ">=16.8.6",
-    "react-query": "^3.29.0",
     "reactstrap": "^8.0.0"
   },
   "publishConfig": {
