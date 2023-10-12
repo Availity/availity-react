@@ -6,6 +6,9 @@ import Skeleton from 'react-loading-skeleton';
 import Avatar, { SkeletonType } from '../src/Avatar';
 // import README from '../README.md';
 
+/**
+ * # Availity user avatar component.
+ */
 export default {
   title: 'Components/Avatar',
   component: Avatar,
