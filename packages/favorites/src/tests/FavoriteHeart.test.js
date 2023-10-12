@@ -4,7 +4,7 @@ import PropTypes from 'prop-types';
 import userEvent from '@testing-library/user-event';
 import { avSettingsApi } from '@availity/api-axios';
 import avMessages from '@availity/message-core';
-import { QueryClient, QueryClientProvider } from 'react-query';
+import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 
 import maxFavorites from './maxFavorites.json';
 import Favorites, { FavoriteHeart } from '..';

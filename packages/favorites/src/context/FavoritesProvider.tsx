@@ -1,6 +1,6 @@
 import React, { ReactNode, createContext, useEffect, useMemo, useContext, useState } from 'react';
 import avMessages from '@availity/message-core';
-import { useQueryClient } from 'react-query';
+import { useQueryClient } from '@tanstack/react-query';
 import { AV_INTERNAL_GLOBALS, MAX_FAVORITES } from './constants';
 import { openMaxModal, sendUpdateMessage, useSubmitFavorites, useFavoritesQuery, Favorite } from './utils';
 

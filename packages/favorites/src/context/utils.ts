@@ -1,6 +1,6 @@
 import avMessages from '@availity/message-core';
 import { avSettingsApi } from '@availity/api-axios';
-import { useMutation, useQuery, useQueryClient, UseQueryResult } from 'react-query';
+import { useMutation, useQuery, useQueryClient, UseQueryResult } from '@tanstack/react-query';
 import { AV_INTERNAL_GLOBALS, NAV_APP_ID } from './constants';
 
 export type Favorite = {
