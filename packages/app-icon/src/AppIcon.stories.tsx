@@ -1,44 +1,40 @@
 import React from 'react';
-import { Story, Meta } from '@storybook/react';
+import { StoryObj } from '@storybook/react';
 
 import AppIcon from './AppIcon';
 // import README from '../README.md';
 
 export default {
   title: 'Components/AppIcon',
-  parameters: {
-    docs: {
-      // page: README,
-    },
-  },
-} as Meta;
+  component: AppIcon,
+};
 
 const colors = ['black', 'blue', 'orange', 'green'];
 
-export const Default: Story = ({ alt, branded, children, className, color, size, src }) => (
-  <AppIcon size={size} color={color} branded={branded} className={className} src={src} alt={alt}>
-    {children}
-  </AppIcon>
-);
-
-Default.args = {
-  children: 'AI',
-  size: '',
-  color: colors[0],
-  className: '',
-  branded: false,
-  src: '',
-  alt: '',
-};
-Default.argTypes = {
-  size: {
-    type: 'select',
-    options: ['lg', 'xl'],
+export const _AppIcon: StoryObj<typeof AppIcon> = {
+  render: ({ alt, branded, children, className, color, size, src }) => (
+    <AppIcon size={size} color={color} branded={branded} className={className} src={src} alt={alt}>
+      {children}
+    </AppIcon>
+  ),
+  args: {
+    children: 'AI',
+    size: '',
+    color: colors[0],
+    className: '',
+    branded: false,
+    src: '',
+    alt: '',
   },
-  color: {
-    type: 'select',
-    options: colors,
+  argTypes: {
+    size: {
+      type: 'select',
+      options: ['lg', 'xl'],
+    },
+    color: {
+      type: 'select',
+      options: colors,
+    },
   },
+  storyName: 'default',
 };
-
-Default.storyName = 'default';
