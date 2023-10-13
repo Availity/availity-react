@@ -72,5 +72,4 @@ export const _AppTiles: StoryObj<typeof AppTiles> = {
       options: colors,
     },
   },
-  storyName: 'default',
 };
