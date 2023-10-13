@@ -38,7 +38,7 @@ const getFavorites = async () => {
   return validatedFavorites;
 };
 
-export const useFavoritesQuery = (): UseQueryResult<Favorite[], unknown> => useQuery('favorites', getFavorites);
+export const useFavoritesQuery = (): UseQueryResult<Favorite[], unknown> => useQuery(['favorites'], getFavorites);
 
 type MutationOptions = {
   onMutationStart?: (targetFavoriteId: string) => void;
@@ -53,7 +53,7 @@ export const useSubmitFavorites = ({ onMutationStart }: MutationOptions) => {
       onMutationStart?.(variables.targetFavoriteId);
     },
     onSuccess(data) {
-      queryClient.setQueryData('favorites', data.favorites);
+      queryClient.setQueryData(['favorites'], data.favorites);
     },
   });
   return { submitFavorites, ...rest };
