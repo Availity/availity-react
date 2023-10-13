@@ -4,6 +4,13 @@ import AppTiles from './AppTiles';
 
 export default {
   title: 'Components/AppTiles',
+  parameters: {
+    docs: {
+      description: {
+        component: 'A component which outputs an Icon made of tiles.',
+      },
+    },
+  },
   component: AppTiles,
 };
 
