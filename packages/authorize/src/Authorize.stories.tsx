@@ -1,5 +1,5 @@
 import React from 'react';
-import { Story, Meta } from '@storybook/react';
+import { StoryObj } from '@storybook/react';
 import { Alert } from 'reactstrap';
 import BlockUi from '@availity/block-ui';
 import { QueryClientProvider, QueryClient } from 'react-query';
@@ -36,47 +36,51 @@ export default {
     authorized: 'You are authorized to see this content.',
     region: true,
   },
-} as Meta;
-
-export const Default: Story = ({ authorized, loader, negate, organizationId, permissions, region, unauthorized }) => (
-  <div>
-    <p>
-      For this demo, the following permissions are granted: 1234, 2345, 3456, 4567, 5678, 6789. You can use the knobs to
-      see what the component will do when you set the required permissions to various things.
-    </p>
-    <hr />
-    <Authorize
-      permissions={permissions}
-      organizationId={organizationId}
-      negate={negate}
-      loader={loader}
-      unauthorized={<Alert color="danger">{unauthorized}</Alert>}
-      region={region}
-    >
-      <Alert color="success">{authorized}</Alert>
-    </Authorize>
-  </div>
-);
-Default.args = {
-  negate: false,
-  loader: true,
+  component: Authorize,
 };
-Default.storyName = 'default';
 
-export const UseAuthorize: Story = ({ authorized, organizationId, permissions, region, unauthorized }) => {
-  const { authorized: isAuthorized, isLoading } = useAuthorize(permissions, { organizationId, region });
-
-  return (
+export const _Authorize: StoryObj<typeof Authorize> = {
+  render: ({ authorized, loader, negate, organizationId, permissions, region, unauthorized }) => (
     <div>
       <p>
         For this demo, the following permissions are granted: 1234, 2345, 3456, 4567, 5678, 6789. You can use the knobs
         to see what the component will do when you set the required permissions to various things.
       </p>
       <hr />
-      <BlockUi blocking={isLoading} renderChildren={false}>
-        {isAuthorized ? <Alert color="success">{authorized}</Alert> : <Alert color="danger">{unauthorized}</Alert>}
-      </BlockUi>
+      <Authorize
+        permissions={permissions}
+        organizationId={organizationId}
+        negate={negate}
+        loader={loader}
+        unauthorized={<Alert color="danger">{unauthorized}</Alert>}
+        region={region}
+      >
+        <Alert color="success">{authorized}</Alert>
+      </Authorize>
     </div>
-  );
+  ),
+  args: {
+    negate: false,
+    loader: true,
+  },
 };
-UseAuthorize.storyName = 'useAuthorize';
+
+export const _UseAuthorize: StoryObj<typeof BlockUi> = {
+  render: ({ authorized, organizationId, permissions, region, unauthorized }) => {
+    const { authorized: isAuthorized, isLoading } = useAuthorize(permissions, { organizationId, region });
+
+    return (
+      <div>
+        <p>
+          For this demo, the following permissions are granted: 1234, 2345, 3456, 4567, 5678, 6789. You can use the
+          knobs to see what the component will do when you set the required permissions to various things.
+        </p>
+        <hr />
+        <BlockUi blocking={isLoading} renderChildren={false}>
+          {isAuthorized ? <Alert color="success">{authorized}</Alert> : <Alert color="danger">{unauthorized}</Alert>}
+        </BlockUi>
+      </div>
+    );
+  },
+  storyName: 'useAuthorize',
+};
