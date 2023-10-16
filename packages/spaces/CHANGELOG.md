@@ -2,6 +2,21 @@
 
 This file was generated using [@jscutlery/semver](https://github.com/jscutlery/semver).
 
+# [8.0.0](https://github.com/Availity/availity-react/compare/@availity/spaces@7.0.0...@availity/spaces@8.0.0) (2023-10-16)
+
+
+### Features
+
+* **spaces:** upgrade react query to v4 ([a28f8f3](https://github.com/Availity/availity-react/commit/a28f8f31d57609b798a69025bd5dcab395de5e19))
+
+
+### BREAKING CHANGES
+
+* **spaces:** react query has been upgraded to v4. you must upgrade
+to @tanstack/react-query@^4.36.1 in order to use this package now
+
+
+
 # [7.0.0](https://github.com/Availity/availity-react/compare/@availity/spaces@6.6.1...@availity/spaces@7.0.0) (2023-10-09)
 
 
