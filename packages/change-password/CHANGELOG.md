@@ -2,6 +2,21 @@
 
 This file was generated using [@jscutlery/semver](https://github.com/jscutlery/semver).
 
+# [2.0.0](https://github.com/Availity/availity-react/compare/@availity/change-password@1.0.0...@availity/change-password@2.0.0) (2023-10-16)
+
+
+### Features
+
+* **change-password:** upgrade react query to v4 ([1b635a0](https://github.com/Availity/availity-react/commit/1b635a04a70afa666919578398aa1569641abae7))
+
+
+### BREAKING CHANGES
+
+* **change-password:** react query has been upgraded to v4. you must upgrade
+to @tanstack/react-query@^4.36.1 in order to use this package now
+
+
+
 # [1.0.0](https://github.com/Availity/availity-react/compare/@availity/change-password@0.2.0...@availity/change-password@1.0.0) (2023-10-09)
 
 
