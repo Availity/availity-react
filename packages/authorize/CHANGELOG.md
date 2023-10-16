@@ -2,6 +2,21 @@
 
 This file was generated using [@jscutlery/semver](https://github.com/jscutlery/semver).
 
+# [4.0.0](https://github.com/Availity/availity-react/compare/@availity/authorize@3.0.0...@availity/authorize@4.0.0) (2023-10-16)
+
+
+### Features
+
+* **authorize:** upgrade react query to v4 ([69a78bd](https://github.com/Availity/availity-react/commit/69a78bdf39de42324981727c330baec21db5415d))
+
+
+### BREAKING CHANGES
+
+* **authorize:** react query has been upgraded to v4. you must upgrade
+to @tanstack/react-query@^4.36.1 in order to use this package now
+
+
+
 # [3.0.0](https://github.com/Availity/availity-react/compare/@availity/authorize@2.3.0...@availity/authorize@3.0.0) (2023-10-09)
 
 
