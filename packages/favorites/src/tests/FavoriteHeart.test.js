@@ -4,7 +4,7 @@ import PropTypes from 'prop-types';
 import userEvent from '@testing-library/user-event';
 import { avSettingsApi } from '@availity/api-axios';
 import avMessages from '@availity/message-core';
-import { QueryClient, QueryClientProvider } from 'react-query';
+import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 
 import maxFavorites from './maxFavorites.json';
 import Favorites, { FavoriteHeart } from '..';
@@ -277,6 +277,8 @@ describe('FavoriteHeart', () => {
       },
     });
 
+    const user = userEvent.setup();
+
     const { container } = render(
       <Providers>
         <FavoriteHeart id="789" />
@@ -285,24 +287,24 @@ describe('FavoriteHeart', () => {
 
     const heart = container.querySelector('#av-favorite-heart-789');
 
-    expect(heart).toBeDefined();
-
     await waitFor(() => expect(heart).not.toBeChecked());
 
     // Simulate user favoriting item
-    act(() => {
-      fireEvent.click(heart);
+    await user.click(heart);
+
+    await waitFor(() => {
+      expect(avSettingsApi.setApplication).toHaveBeenCalledTimes(1);
+
+      // Test that favorite gets sent to settings and to correct position
+      expect(avSettingsApi.setApplication.mock.calls[0][1].favorites).toEqual(favorites);
+      expect(avMessages.send).toHaveBeenCalledTimes(1);
+      expect(avMessages.send.mock.calls[0][0].event).toBe('av:favorites:update');
+
+      // Test that post message sent to window.parent sends favorites returned from settings api
+      expect(avMessages.send.mock.calls[0][0].favorites).toEqual(favorites);
+
+      expect(heart).toBeChecked();
     });
-
-    await waitFor(() => expect(heart).toBeChecked());
-
-    expect(avSettingsApi.setApplication).toHaveBeenCalledTimes(1);
-    // Test that favorite gets sent to settings and to correct position
-    expect(avSettingsApi.setApplication.mock.calls[0][1].favorites).toEqual(favorites);
-    expect(avMessages.send).toHaveBeenCalledTimes(1);
-    expect(avMessages.send.mock.calls[0][0].event).toBe('av:favorites:update');
-    // Test that post message sent to window.parent sends favorites returned from settings api
-    expect(avMessages.send.mock.calls[0][0].favorites).toEqual(favorites);
   });
 
   test('should render favorited', async () => {
