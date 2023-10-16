@@ -16,14 +16,6 @@ export default {
       </Router>
     ),
   ],
-  parameters: {
-    docs: {
-      // page: README,
-      // description: {
-      //   component: ''
-      // }
-    },
-  },
   args: {
     emptyState: '...',
     activePage: 'Payer Spaces',
