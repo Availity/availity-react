@@ -15,6 +15,7 @@ export default {
       },
     },
   },
+  component: Feature,
 };
 
 export const _Default: StoryObj<typeof Feature> = {
