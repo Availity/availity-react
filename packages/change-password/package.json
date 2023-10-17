@@ -1,6 +1,6 @@
 {
   "name": "@availity/change-password",
-  "version": "1.0.0",
+  "version": "2.0.0",
   "description": "Easy to use change-password components",
   "keywords": [
     "react",
@@ -28,6 +28,7 @@
     "@availity/block-ui": "workspace:^",
     "@availity/form": "workspace:*",
     "@availity/icon": "workspace:*",
+    "@tanstack/react-query": "^4.36.1",
     "classnames": "^2.3.2",
     "dayjs": "^1.11.9",
     "lodash": "^4.17.21",
@@ -44,7 +45,6 @@
     "@availity/api-axios": "^8.0.0",
     "axios": "^1.0.0",
     "react": ">=16.8.6",
-    "react-query": "^3.29.0",
     "reactstrap": "^8.0.0"
   },
   "publishConfig": {

@@ -15,23 +15,21 @@ const PaginationJson = () => {
 const mockResponse = {
   postGet: jest.fn(
     async (params = {}, config = {}) =>
-      new Promise((resolve) =>
-        setTimeout(() => {
-          const { offset = 0, limit = 50 } = params;
-          const notifications = data.slice(offset, offset + limit);
+      new Promise((resolve) => {
+        const { offset = 0, limit = 50 } = params;
+        const notifications = data.slice(offset, offset + limit);
 
-          resolve({
-            config,
-            data: {
-              totalCount: data.length,
-              count: notifications.length,
-              offset,
-              limit,
-              notifications,
-            },
-          });
-        }, 1000)
-      )
+        resolve({
+          config,
+          data: {
+            totalCount: data.length,
+            count: notifications.length,
+            offset,
+            limit,
+            notifications,
+          },
+        });
+      })
   ),
 };
 
@@ -139,15 +137,15 @@ describe('AvResourcePagination', () => {
     await waitFor(() => getByTestId('infinite-scroll-container'));
 
     // Check that first page renders
-    await waitFor(() => getByTestId('5af1e71f1a38311cd5afe2fe'), { timeout: 1500 });
-    await waitFor(() => getByTestId('5af1e71f3ef279b4188aeecd'), { timeout: 1500 });
+    await waitFor(() => getByTestId('5af1e71f1a38311cd5afe2fe'));
+    await waitFor(() => getByTestId('5af1e71f3ef279b4188aeecd'));
 
     act(() => {
       fireEvent.scroll(window, { target: { scrollY: 1000 } });
     });
 
     // Wait for pagination-con to re-render aftering loading prop is toggled
-    await waitFor(() => getByTestId('infinite-scroll-container'), { timeout: 1500 });
+    await waitFor(() => getByTestId('infinite-scroll-container'));
 
     // Check that first and second page render
     await waitFor(() => getByTestId('5af1e71f1a38311cd5afe2fe'));

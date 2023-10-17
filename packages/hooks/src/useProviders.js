@@ -1,4 +1,4 @@
-import { useQuery } from 'react-query';
+import { useQuery } from '@tanstack/react-query';
 import { avProvidersApi } from '@availity/api-axios';
 
 const fetchProviders = async (config) => avProvidersApi.getProviders(config.customerId, config);

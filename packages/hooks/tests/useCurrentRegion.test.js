@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { waitFor, cleanup } from '@testing-library/react';
 import { avRegionsApi } from '@availity/api-axios';
-import { QueryClient } from 'react-query';
+import { QueryClient } from '@tanstack/react-query';
 import { useCurrentRegion } from '..';
 import renderWithClient from './util';
 
