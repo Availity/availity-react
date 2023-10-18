@@ -1,5 +1,5 @@
 import React from 'react';
-import { Story, Meta } from '@storybook/react';
+import { StoryObj } from '@storybook/react';
 
 import JsonViewer from '.';
 // import README from '../README.md';
@@ -19,8 +19,9 @@ export default {
     expandAll: false,
     data: { foo: { bar: { baz: ['stuff', 'things', 'etc.'] } } },
   },
-} as Meta;
+  component: JsonViewer,
+};
 
-export const Default: Story = ({ data, expandAll }) => <JsonViewer data={data} expandAll={expandAll} />;
-
-Default.storyName = 'default';
+export const _Default: StoryObj<typeof JsonViewer> = {
+  render: ({ data, expandAll }) => <JsonViewer data={data} expandAll={expandAll} />,
+};
