@@ -1,5 +1,5 @@
 import React from 'react';
-import { Story, Meta } from '@storybook/react';
+import { StoryObj } from '@storybook/react';
 import { ListGroup as RsListGroup, ListGroupItem, ListGroupProps } from 'reactstrap';
 
 import ListGroup from '..';
@@ -20,16 +20,16 @@ export default {
     cards: false,
     selectable: false,
   },
-} as Meta;
+};
 
-export const Default: Story = ({ cards, selectable }) => (
-  <ListGroup cards={cards} selectable={selectable}>
-    <ListGroupItem>item</ListGroupItem>
-    <ListGroupItem>item</ListGroupItem>
-    <ListGroupItem>item</ListGroupItem>
-  </ListGroup>
-);
+export const _Default: StoryObj<typeof ListGroup> = {
+  render: ({ cards, selectable }) => (
+    <ListGroup cards={cards} selectable={selectable}>
+      <ListGroupItem>item</ListGroupItem>
+      <ListGroupItem>item</ListGroupItem>
+      <ListGroupItem>item</ListGroupItem>
+    </ListGroup>
+  ),
+};
 
 export const hidden_RsListGroup = (props: ListGroupProps) => <RsListGroup {...props} />;
-
-Default.storyName = 'default';
