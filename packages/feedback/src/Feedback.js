@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { Dropdown, DropdownToggle } from 'reactstrap';
-import { avLogMessagesApi } from '@availity/api-axios';
+import { avLogMessagesApi, avTelemetryApi } from '@availity/api-axios';
 import { useToggle } from '@availity/hooks';
 import FeedbackDropdown from './FeedbackDropdown';
 import FeedbackModal from './FeedbackModal';
@@ -37,7 +37,26 @@ const Feedback = ({
       className={`${className} hidden-print`}
       {...props}
     >
-      <DropdownToggle color={color} outline={outline}>
+      <DropdownToggle
+        color={color}
+        outline={outline}
+        onClick={() =>
+          avTelemetryApi.info({
+            customerId: '0000',
+            contact: 'BigBitBandits@availity.com',
+            source_system: window.navigator.userAgent,
+            version: '1',
+            telemetryBody: {
+              entries: {
+                event: 'open feedback',
+                action: 'click',
+                label: JSON.stringify(children),
+                category: 'feedback',
+              },
+            },
+          })
+        }
+      >
         {children || (showSupport ? 'Feedback & Support' : 'Give Feedback')}
       </DropdownToggle>
       {modal ? (
