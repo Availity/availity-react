@@ -2,6 +2,30 @@
 
 This file was generated using [@jscutlery/semver](https://github.com/jscutlery/semver).
 
+## [5.0.1](https://github.com/Availity/availity-react/compare/@availity/favorites@5.0.0...@availity/favorites@5.0.1) (2023-10-17)
+
+
+
+# [5.0.0](https://github.com/Availity/availity-react/compare/@availity/favorites@4.0.0...@availity/favorites@5.0.0) (2023-10-16)
+
+
+### Bug Fixes
+
+* **favorites:** fix flaky test ([63a3756](https://github.com/Availity/availity-react/commit/63a3756e559f17943ecefce3e127fb9dd0451160))
+
+
+### Features
+
+* **favorites:** upgrade react query to v4 ([69a9230](https://github.com/Availity/availity-react/commit/69a9230de6deb8ce3fb59dd6d38bfcd83bfd5e82))
+
+
+### BREAKING CHANGES
+
+* **favorites:** react query has been upgraded to v4. you must upgrade
+to @tanstack/react-query@^4.36.1 in order to use this package now
+
+
+
 # [4.0.0](https://github.com/Availity/availity-react/compare/@availity/favorites@3.4.3...@availity/favorites@4.0.0) (2023-10-09)
 
 

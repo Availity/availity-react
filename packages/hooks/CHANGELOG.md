@@ -2,6 +2,21 @@
 
 This file was generated using [@jscutlery/semver](https://github.com/jscutlery/semver).
 
+# [5.0.0](https://github.com/Availity/availity-react/compare/@availity/hooks@4.0.0...@availity/hooks@5.0.0) (2023-10-16)
+
+
+### Features
+
+* **hooks:** upgrade react query to v4 ([9b7b266](https://github.com/Availity/availity-react/commit/9b7b266fbbd880114d162d5a4f89f7a9f34a6a6f))
+
+
+### BREAKING CHANGES
+
+* **hooks:** react query has been upgraded to v4. you must upgrade
+to @tanstack/react-query@^4.36.1 in order to use this package now
+
+
+
 # [4.0.0](https://github.com/Availity/availity-react/compare/@availity/hooks@3.3.3...@availity/hooks@4.0.0) (2023-10-09)
 
 

@@ -2,7 +2,7 @@ import React from 'react';
 import { StoryObj } from '@storybook/react';
 import { Alert } from 'reactstrap';
 import BlockUi from '@availity/block-ui';
-import { QueryClientProvider, QueryClient } from 'react-query';
+import { QueryClientProvider, QueryClient } from '@tanstack/react-query';
 
 import Authorize, { useAuthorize } from '.';
 // import README from '../README.md';

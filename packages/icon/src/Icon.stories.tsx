@@ -1,5 +1,5 @@
 import React from 'react';
-import { Meta, Story } from '@storybook/react';
+import { StoryObj } from '@storybook/react';
 import icons from 'availity-uikit/fonts/config.json';
 import Icon from '.';
 // import README from '../README.md';
@@ -29,35 +29,37 @@ export default {
       // page: README,
     },
   },
-} as Meta;
+  component: Icon,
+};
 
-export const Default: Story = ({ name, size, color, hover }) => (
-  <div className="py-3">
-    <Icon name={name} size={size} color={color} onClick={hover ? () => ({}) : undefined} />
-  </div>
-);
-Default.args = {
-  name: 'home',
-  size: '3x',
-  color: 'none',
-  hover: false,
+export const _Default: StoryObj<typeof Icon> = {
+  render: ({ name, size, color, hover }) => (
+    <div className="py-3">
+      <Icon name={name} size={size} color={color} onClick={hover ? () => ({}) : undefined} />
+    </div>
+  ),
+  args: {
+    name: 'home',
+    size: '3x',
+    color: 'none',
+    hover: false,
+  },
+  argTypes: {
+    name: {
+      type: 'select',
+      options: iconOptions,
+    },
+    size: {
+      type: 'select',
+      options: sizes,
+    },
+    color: {
+      type: 'select',
+      options: colors,
+    },
+    hover: {
+      type: 'select',
+      options: false,
+    },
+  },
 };
-Default.argTypes = {
-  name: {
-    type: 'select',
-    options: iconOptions,
-  },
-  size: {
-    type: 'select',
-    options: sizes,
-  },
-  color: {
-    type: 'select',
-    options: colors,
-  },
-  hover: {
-    type: 'select',
-    options: false,
-  },
-};
-Default.storyName = 'default';

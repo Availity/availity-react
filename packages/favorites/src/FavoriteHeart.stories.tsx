@@ -1,6 +1,6 @@
 import React from 'react';
-import { Story, Meta } from '@storybook/react';
-import { QueryClientProvider, QueryClient } from 'react-query';
+import { StoryObj } from '@storybook/react';
+import { QueryClientProvider, QueryClient } from '@tanstack/react-query';
 import mockFavorites from '../../mock/src/data/settings.json';
 
 import { FavoritesProvider } from './context';
@@ -9,12 +9,8 @@ import { FavoriteHeart } from './FavoriteHeart';
 
 export default {
   title: 'Components/Favorites',
-  parameters: {
-    docs: {
-      // page: README,
-    },
-  },
-} as Meta;
+  component: FavoriteHeart,
+};
 
 type StoryFavorites = {
   name: string;
@@ -27,27 +23,27 @@ const storyFavorites: StoryFavorites[] = mockFavorites.settings[0].favorites.map
 
 storyFavorites.push({ id: 'another-retired-app', name: 'Another retired app' });
 
-export const Default: Story = () => (
-  <QueryClientProvider
-    client={
-      new QueryClient({
-        defaultOptions: {
-          queries: {
-            refetchOnWindowFocus: false,
+export const _FavoritesHeart: StoryObj = {
+  render: () => (
+    <QueryClientProvider
+      client={
+        new QueryClient({
+          defaultOptions: {
+            queries: {
+              refetchOnWindowFocus: false,
+            },
           },
-        },
-      })
-    }
-  >
-    <FavoritesProvider>
-      {storyFavorites.map((fav) => (
-        <div style={{ display: 'flex', gap: '1rem' }} key={fav.id}>
-          <FavoriteHeart id={fav.id} name={fav.name} disabled={fav.name.includes('retired')} />
-          <div>{fav.name}</div>
-        </div>
-      ))}
-    </FavoritesProvider>
-  </QueryClientProvider>
-);
-
-Default.storyName = 'default';
+        })
+      }
+    >
+      <FavoritesProvider>
+        {storyFavorites.map((fav) => (
+          <div style={{ display: 'flex', gap: '1rem' }} key={fav.id}>
+            <FavoriteHeart id={fav.id} name={fav.name} disabled={fav.name.includes('retired')} />
+            <div>{fav.name}</div>
+          </div>
+        ))}
+      </FavoritesProvider>
+    </QueryClientProvider>
+  ),
+};

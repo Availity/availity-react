@@ -1,6 +1,6 @@
 {
   "name": "@availity/favorites",
-  "version": "4.0.0",
+  "version": "5.0.1",
   "description": "Favorite Heart for favoriting items such as links/resources etc.",
   "keywords": [
     "react",
@@ -36,6 +36,7 @@
     "@availity/hooks": "workspace:*",
     "@availity/message-core": "^6.1.1",
     "@radix-ui/react-tooltip": "0.1.6",
+    "@tanstack/react-query": "^4.36.1",
     "lodash": "^4.17.21"
   },
   "devDependencies": {
@@ -44,7 +45,6 @@
     "esbuild-sass-plugin": "^2.15.0",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
-    "react-query": "^3.39.3",
     "tsup": "^7.2.0",
     "typescript": "^4.9.5"
   },
@@ -52,8 +52,7 @@
     "@availity/api-axios": "^8.0.0",
     "axios": "^1.0.0",
     "react": ">=16.8.0",
-    "react-dom": ">=16.8.0",
-    "react-query": "^3.34.8"
+    "react-dom": ">=16.8.0"
   },
   "publishConfig": {
     "access": "public"

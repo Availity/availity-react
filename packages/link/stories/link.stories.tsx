@@ -1,30 +1,36 @@
 import React from 'react';
-import { Story, Meta } from '@storybook/react';
-import Link from '..';
+import { StoryObj } from '@storybook/react';
+import Link, { AvLinkProps } from '..';
 
 export default {
   title: 'Components/Link',
-  parameters: {
-    docs: {
-      // page: README,
-    },
+  components: Link,
+};
+
+export const _WithAbsoluteUrl: StoryObj<AvLinkProps> = {
+  render: ({ href, target }) => (
+    <div className="py-3">
+      <Link href={href} target={target}>
+        Availity Github
+      </Link>
+    </div>
+  ),
+  args: {
+    href: 'https://github.com/Availity',
+    target: '_blank',
   },
-} as Meta;
+};
 
-export const WithAbsoluteUrl: Story = () => (
-  <div className="py-3">
-    <Link href="https://github.com/Availity" target="_blank">
-      Availity Github
-    </Link>
-  </div>
-);
-WithAbsoluteUrl.storyName = 'with absolute url';
-
-export const WithRelativeUrl: Story = () => (
-  <div className="py-3">
-    <Link href="/public/apps/my-app" target="_blank">
-      My Application
-    </Link>
-  </div>
-);
-WithRelativeUrl.storyName = 'with relative url';
+export const _WithRelativeUrl: StoryObj<AvLinkProps> = {
+  render: ({ href, target }) => (
+    <div className="py-3">
+      <Link href={href} target={target}>
+        My Application
+      </Link>
+    </div>
+  ),
+  args: {
+    href: '/public/apps/my-app',
+    target: '_blank',
+  },
+};

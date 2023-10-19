@@ -1,5 +1,5 @@
 import { AxiosRequestConfig } from 'axios';
-import { UseQueryOptions, UseQueryResult } from 'react-query';
+import { UseQueryOptions, UseQueryResult } from '@tanstack/react-query';
 import { AriesHookBase } from './aries';
 
 interface ProvidersBase {

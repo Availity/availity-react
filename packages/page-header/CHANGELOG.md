@@ -2,6 +2,21 @@
 
 This file was generated using [@jscutlery/semver](https://github.com/jscutlery/semver).
 
+# [13.0.0](https://github.com/Availity/availity-react/compare/@availity/page-header@12.0.0...@availity/page-header@13.0.0) (2023-10-17)
+
+
+### Features
+
+* **page-header:** require spaces ^8.0.0 ([316b74f](https://github.com/Availity/availity-react/commit/316b74f94a1c8cf1ec3fdc7b9f02d739767e5641))
+
+
+### BREAKING CHANGES
+
+* **page-header:** the @availity/spaces peer dependency must be ^8.0.0 in
+order to use this package now
+
+
+
 # [12.0.0](https://github.com/Availity/availity-react/compare/@availity/page-header@11.3.4...@availity/page-header@12.0.0) (2023-10-09)
 
 

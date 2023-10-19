@@ -1,4 +1,4 @@
-import { useQuery, useQueryClient } from 'react-query';
+import { useQuery, useQueryClient } from '@tanstack/react-query';
 
 import { checkPermissions, getRegion } from './api';
 import type { QueryOptions, RequestedPermissions, RequestedResources } from './types';
