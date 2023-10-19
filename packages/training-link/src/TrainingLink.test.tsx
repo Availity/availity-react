@@ -18,6 +18,12 @@ describe('TrainingLink', () => {
     expect(container).toHaveTextContent('Need Help? Watch a demo (opens in a new tab) for Appeals');
   });
 
+  test('should render without name', () => {
+    const { container } = render(<TrainingLink link="http://catvidoes.com" />);
+
+    expect(container).toHaveTextContent('Need Help? Learn More');
+  });
+
   test('should render link with proper styling', () => {
     const { getByRole } = render(<TrainingLink link="http://catvidoes.com" name="Appeals" />);
 
