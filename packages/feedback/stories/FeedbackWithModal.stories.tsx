@@ -6,13 +6,13 @@ import FeedbackForm from '../src/FeedbackForm';
 // import README from '../README.md';
 
 export default {
-  title: 'Components/Feedback/Feedback',
+  title: 'Components/Feedback/FeedbackWithModal',
   components: Feedback,
 };
 
 const colorOptions = ['secondary', 'success', 'info', 'danger', 'warning'];
 
-export const _Default: StoryObj<typeof Feedback> = {
+export const _DefaultWithModal: StoryObj<typeof Feedback> = {
   render: ({
     btnText,
     aboutOptions,
@@ -59,7 +59,7 @@ export const _Default: StoryObj<typeof Feedback> = {
     btnOutline: false,
     btnColor: colorOptions[0],
     className: '',
-    modal: false,
+    modal: true,
   },
   argTypes: {
     btnColor: {
@@ -67,4 +67,5 @@ export const _Default: StoryObj<typeof Feedback> = {
       options: colorOptions,
     },
   },
+  name: 'default w/ modal',
 };
