@@ -395,7 +395,7 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@availity/block-ui@^1.0.0, @availity/block-ui@workspace:^, @availity/block-ui@workspace:packages/block-ui":
+"@availity/block-ui@^1.0.0, @availity/block-ui@^1.1.2, @availity/block-ui@workspace:^, @availity/block-ui@workspace:packages/block-ui":
   version: 0.0.0-use.local
   resolution: "@availity/block-ui@workspace:packages/block-ui"
   dependencies:
@@ -547,7 +547,30 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@availity/feedback@workspace:*, @availity/feedback@workspace:packages/feedback":
+"@availity/feedback@npm:7.1.8-alpha.0":
+  version: 7.1.8-alpha.0
+  resolution: "@availity/feedback@npm:7.1.8-alpha.0"
+  dependencies:
+    "@availity/api-axios": ^8.0.3
+    "@availity/block-ui": ^1.1.2
+    "@availity/form": 1.7.5
+    "@availity/hooks": 5.0.0
+    "@availity/icon": 0.11.4
+    "@availity/native-form": ^5.0.4
+    "@availity/select": 4.0.0
+    prop-types: ^15.8.1
+  peerDependencies:
+    "@availity/api-axios": ^8.0.0
+    "@availity/yup": ^5.1.0
+    axios: ^1.0.0
+    formik: ^2.0.1
+    react: ">=16.3.0"
+    reactstrap: ^8.0.0
+  checksum: 5850e43eeab25e22dc39d9a42147b8e759c1377b8e4fd60768a5970e2eda3ccd478221d56273c7f6c3e64e31602fca04cec345f4dec06d26a273988cb42ed46e
+  languageName: node
+  linkType: hard
+
+"@availity/feedback@workspace:packages/feedback":
   version: 0.0.0-use.local
   resolution: "@availity/feedback@workspace:packages/feedback"
   dependencies:
@@ -607,7 +630,7 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@availity/form@workspace:*, @availity/form@workspace:packages/form":
+"@availity/form@1.7.5, @availity/form@workspace:*, @availity/form@workspace:packages/form":
   version: 0.0.0-use.local
   resolution: "@availity/form@workspace:packages/form"
   dependencies:
@@ -645,7 +668,7 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@availity/hooks@workspace:*, @availity/hooks@workspace:packages/hooks":
+"@availity/hooks@5.0.0, @availity/hooks@workspace:*, @availity/hooks@workspace:packages/hooks":
   version: 0.0.0-use.local
   resolution: "@availity/hooks@workspace:packages/hooks"
   dependencies:
@@ -662,7 +685,7 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@availity/icon@workspace:*, @availity/icon@workspace:packages/icon":
+"@availity/icon@0.11.4, @availity/icon@workspace:*, @availity/icon@workspace:packages/icon":
   version: 0.0.0-use.local
   resolution: "@availity/icon@workspace:packages/icon"
   dependencies:
@@ -765,7 +788,7 @@ __metadata:
     "@availity/api-axios": ^8.0.3
     "@availity/app-icon": "workspace:*"
     "@availity/breadcrumbs": "workspace:*"
-    "@availity/feedback": "workspace:*"
+    "@availity/feedback": 7.1.8-alpha.0
     "@availity/payer-logo": "workspace:*"
     "@availity/spaces": "workspace:*"
     "@availity/training-link": "workspace:*"
@@ -948,7 +971,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@availity/select@workspace:*, @availity/select@workspace:packages/select":
+"@availity/select@4.0.0, @availity/select@workspace:*, @availity/select@workspace:packages/select":
   version: 0.0.0-use.local
   resolution: "@availity/select@workspace:packages/select"
   dependencies:
