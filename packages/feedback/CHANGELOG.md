@@ -2,6 +2,21 @@
 
 This file was generated using [@jscutlery/semver](https://github.com/jscutlery/semver).
 
+## [7.1.8-alpha.0](https://github.com/Availity/availity-react/compare/@availity/feedback@7.1.7...@availity/feedback@7.1.8-alpha.0) (2023-10-19)
+
+
+### Features
+
+* **feedback:** add telemetry ([7591e5f](https://github.com/Availity/availity-react/commit/7591e5f32e9f6609112ccf325cfde13bb7da220f))
+* upgrade deps ([eccefc0](https://github.com/Availity/availity-react/commit/eccefc0549ebd5057595f6ac696642789375f48a))
+
+
+### BREAKING CHANGES
+
+* axios v1 is now required
+
+
+
 # [8.0.0](https://github.com/Availity/availity-react/compare/@availity/feedback@7.1.7...@availity/feedback@8.0.0) (2023-10-09)
 
 
