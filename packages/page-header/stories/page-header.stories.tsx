@@ -1,5 +1,5 @@
 import React from 'react';
-import { Meta, Story } from '@storybook/react';
+import { StoryObj } from '@storybook/react';
 import { BreadcrumbItem, Button } from 'reactstrap';
 import TrainingLink from '@availity/training-link';
 import Breadcrumbs from '@availity/breadcrumbs';
@@ -47,129 +47,136 @@ export default {
     feedback: false,
     homeUrl: '/public/apps/dashboard',
   },
-} as Meta;
-
-export const Default: Story = ({ appName, feedback, homeUrl }) => (
-  <PageHeader appName={appName} homeUrl={homeUrl} feedback={feedback} />
-);
-Default.storyName = 'default';
-
-export const WithAppIcon: Story = ({ abbreviation, appName, feedback, homeUrl, iconAlt, iconColor, iconSrc }) => (
-  <PageHeader
-    appName={appName}
-    appAbbr={abbreviation}
-    homeUrl={homeUrl}
-    iconColor={iconColor}
-    iconSrc={iconSrc}
-    iconAlt={iconAlt}
-    feedback={feedback}
-  />
-);
-WithAppIcon.args = {
-  abbreviation: 'PS',
-  iconAlt: '',
-  iconColor: colors[0],
-  iconSrc: '',
+  component: PageHeader,
 };
-WithAppIcon.storyName = 'with app icon';
 
-export const WithPayerLogo: Story = ({ appName, feedback, homeUrl, payerId, logo, spaceId }) => {
-  // renderRightContent needed to use fallback logo
-  const CustomRightContent: React.FC<RightContentProps> = ({
-    feedback: Feedback,
-    payerLogo,
-    className,
-  }: RightContentProps) => (
-    <div className={className}>
-      {feedback && Feedback}
-      {payerLogo && <SpacesLogo payerId={payerId} spaceId={spaceId} {...logoAttrs} />}
-    </div>
-  );
+export const _Default: StoryObj<typeof PageHeader> = {
+  render: ({ appName, feedback, homeUrl }) => <PageHeader appName={appName} homeUrl={homeUrl} feedback={feedback} />,
+};
 
-  return (
-    <div>
+export const _WithAppIcon: StoryObj<typeof PageHeader> = {
+  render: ({ abbreviation, appName, feedback, homeUrl, iconAlt, iconColor, iconSrc }) => (
+    <PageHeader
+      appName={appName}
+      appAbbr={abbreviation}
+      homeUrl={homeUrl}
+      iconColor={iconColor}
+      iconSrc={iconSrc}
+      iconAlt={iconAlt}
+      feedback={feedback}
+    />
+  ),
+  args: {
+    abbreviation: 'PS',
+    iconAlt: '',
+    iconColor: colors[0],
+    iconSrc: '',
+  },
+};
+
+export const _WithPayerLogo: StoryObj<typeof PageHeader> = {
+  render: ({ appName, feedback, homeUrl, payerId, logo, spaceId }) => {
+    // renderRightContent needed to use fallback logo
+    const CustomRightContent: React.FC<RightContentProps> = ({
+      feedback: Feedback,
+      payerLogo,
+      className,
+    }: RightContentProps) => (
+      <div className={className}>
+        {feedback && Feedback}
+        {payerLogo && <SpacesLogo payerId={payerId} spaceId={spaceId} {...logoAttrs} />}
+      </div>
+    );
+
+    return (
+      <div>
+        <PageHeader
+          homeUrl={homeUrl}
+          appName={appName}
+          clientId="clientId"
+          payerId={payerId}
+          spaceId={spaceId}
+          feedback={feedback}
+          renderRightContent={CustomRightContent}
+          logo={logo}
+        />
+        <p>Note: the logo is a sample image, and not an actual logo</p>
+      </div>
+    );
+  },
+  args: {
+    payerId: 'availity1',
+    logo: false,
+    spaceId: '',
+  },
+};
+
+export const _WithPayerSpaceBreadcrumb: StoryObj<typeof PageHeader> = {
+  render: ({ appName, feedback, homeUrl, spaceId, spaceName }) => (
+    <PageHeader homeUrl={homeUrl} appName={appName} feedback={feedback} spaceId={spaceId} spaceName={spaceName} />
+  ),
+  args: {
+    spaceId: '73162546201441126239486200007187',
+    spaceName: 'PayerSpace',
+  },
+};
+
+export const _WithArbitraryBreadcrumbs: StoryObj<typeof PageHeader> = {
+  render: ({ appName, crumbs, feedback, homeUrl }) => (
+    <PageHeader appName={appName} homeUrl={homeUrl} crumbs={crumbs} feedback={feedback} />
+  ),
+  args: {
+    crumbs: [
+      { name: 'Grand Parent', url: '/grand-parent' },
+      { name: 'Parent', url: '/parent' },
+    ],
+  },
+};
+
+export const _WithCustomBreadcrumbs: StoryObj<typeof PageHeader> = {
+  render: ({ appName, feedback, homeUrl }) => (
+    <PageHeader homeUrl={homeUrl} appName={appName} crumbs={CustomBreadcrumbs} feedback={feedback} />
+  ),
+};
+
+export const _WithTrainingLink: StoryObj<typeof PageHeader> = {
+  render: ({ appName, feedback, homeUrl }) => (
+    <PageHeader
+      appName={appName}
+      homeUrl={homeUrl}
+      component={<TrainingLink link="https://www.youtube.com/watch?v=dQw4w9WgXcQ" name="Payer Space" />}
+      feedback={feedback}
+    />
+  ),
+};
+
+export const _WithCustomRightContent: StoryObj<typeof PageHeader> = {
+  render: ({ appName, feedback, homeUrl, payerId }) => {
+    const CustomRightContent: React.FC<RightContentProps> = ({
+      feedback: Feedback,
+      payerLogo,
+      className,
+    }: RightContentProps) => (
+      <div className={className}>
+        <Button color="danger">Custom Button</Button>
+        <Button>Custom Button with long name</Button>
+        {feedback && Feedback}
+        {payerLogo && <SpacesLogo payerId={payerId} {...logoAttrs} />}
+      </div>
+    );
+
+    return (
       <PageHeader
         homeUrl={homeUrl}
         appName={appName}
         clientId="clientId"
         payerId={payerId}
-        spaceId={spaceId}
         feedback={feedback}
         renderRightContent={CustomRightContent}
-        logo={logo}
       />
-      <p>Note: the logo is a sample image, and not an actual logo</p>
-    </div>
-  );
+    );
+  },
+  args: {
+    payerId: '',
+  },
 };
-WithPayerLogo.args = {
-  payerId: 'availity1',
-  logo: false,
-  spaceId: '',
-};
-WithPayerLogo.storyName = 'with payer logo';
-
-export const WithPayerSpaceBreadcrumb: Story = ({ appName, feedback, homeUrl, spaceId, spaceName }) => (
-  <PageHeader homeUrl={homeUrl} appName={appName} feedback={feedback} spaceId={spaceId} spaceName={spaceName} />
-);
-WithPayerSpaceBreadcrumb.args = {
-  spaceId: '73162546201441126239486200007187',
-  spaceName: 'PayerSpace',
-};
-WithPayerSpaceBreadcrumb.storyName = 'with payer space breadcrumb';
-
-export const WithArbitraryBreadcrumbs: Story = ({ appName, crumbs, feedback, homeUrl }) => (
-  <PageHeader appName={appName} homeUrl={homeUrl} crumbs={crumbs} feedback={feedback} />
-);
-WithArbitraryBreadcrumbs.args = {
-  crumbs: [
-    { name: 'Grand Parent', url: '/grand-parent' },
-    { name: 'Parent', url: '/parent' },
-  ],
-};
-WithArbitraryBreadcrumbs.storyName = 'with arbitrary breadcrumbs';
-
-export const WithCustomBreadcrumbs: Story = ({ appName, feedback, homeUrl }) => (
-  <PageHeader homeUrl={homeUrl} appName={appName} crumbs={CustomBreadcrumbs} feedback={feedback} />
-);
-WithCustomBreadcrumbs.storyName = 'with custom breadcrumbs';
-
-export const WithTrainingLink: Story = ({ appName, feedback, homeUrl }) => (
-  <PageHeader
-    appName={appName}
-    homeUrl={homeUrl}
-    component={<TrainingLink link="https://www.youtube.com/watch?v=dQw4w9WgXcQ" name="Payer Space" />}
-    feedback={feedback}
-  />
-);
-WithTrainingLink.storyName = 'with training link';
-
-export const WithCustomRightContent: Story = ({ appName, feedback, homeUrl, payerId }) => {
-  const CustomRightContent: React.FC<RightContentProps> = ({
-    feedback: Feedback,
-    payerLogo,
-    className,
-  }: RightContentProps) => (
-    <div className={className}>
-      <Button color="danger">Custom Button</Button>
-      <Button>Custom Button with long name</Button>
-      {feedback && Feedback}
-      {payerLogo && <SpacesLogo payerId={payerId} {...logoAttrs} />}
-    </div>
-  );
-
-  return (
-    <PageHeader
-      homeUrl={homeUrl}
-      appName={appName}
-      clientId="clientId"
-      payerId={payerId}
-      feedback={feedback}
-      renderRightContent={CustomRightContent}
-    />
-  );
-};
-WithCustomRightContent.args = {
-  payerId: '',
-};
-WithCustomRightContent.storyName = 'with custom right content';
