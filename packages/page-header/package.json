@@ -28,7 +28,7 @@
   "dependencies": {
     "@availity/app-icon": "workspace:*",
     "@availity/breadcrumbs": "workspace:*",
-    "@availity/feedback": "7.1.8-alpha.0",
+    "@availity/feedback": "7.1.8-alpha.1",
     "@availity/payer-logo": "workspace:*",
     "classnames": "^2.3.2",
     "prop-types": "^15.8.1"

@@ -547,9 +547,9 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@availity/feedback@npm:7.1.8-alpha.0":
-  version: 7.1.8-alpha.0
-  resolution: "@availity/feedback@npm:7.1.8-alpha.0"
+"@availity/feedback@npm:7.1.8-alpha.1":
+  version: 7.1.8-alpha.1
+  resolution: "@availity/feedback@npm:7.1.8-alpha.1"
   dependencies:
     "@availity/api-axios": ^8.0.3
     "@availity/block-ui": ^1.1.2
@@ -566,7 +566,7 @@ __metadata:
     formik: ^2.0.1
     react: ">=16.3.0"
     reactstrap: ^8.0.0
-  checksum: 5850e43eeab25e22dc39d9a42147b8e759c1377b8e4fd60768a5970e2eda3ccd478221d56273c7f6c3e64e31602fca04cec345f4dec06d26a273988cb42ed46e
+  checksum: 7e390abd3330173c5d842d2d7b581ab2401f0758ed5053db45356590056bc1ef310260cb00d97dd0640d92e3471f7ecf8e1dd58e332fbfaed66b428916dbecf0
   languageName: node
   linkType: hard
 
@@ -788,7 +788,7 @@ __metadata:
     "@availity/api-axios": ^8.0.3
     "@availity/app-icon": "workspace:*"
     "@availity/breadcrumbs": "workspace:*"
-    "@availity/feedback": 7.1.8-alpha.0
+    "@availity/feedback": 7.1.8-alpha.1
     "@availity/payer-logo": "workspace:*"
     "@availity/spaces": "workspace:*"
     "@availity/training-link": "workspace:*"
