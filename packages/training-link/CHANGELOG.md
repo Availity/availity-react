@@ -2,6 +2,16 @@
 
 This file was generated using [@jscutlery/semver](https://github.com/jscutlery/semver).
 
+# [1.8.0](https://github.com/Availity/availity-react/compare/@availity/training-link@1.7.2...@availity/training-link@1.8.0) (2023-10-19)
+
+
+### Features
+
+* **training-link:** aded text to show opens new window ([0f7fc07](https://github.com/Availity/availity-react/commit/0f7fc07ea73b4dae36c136d7e99968e9f9d11832))
+* **training-link:** when name is not sent Learn More link will be rendered ([cf3fdb9](https://github.com/Availity/availity-react/commit/cf3fdb9067654c23cbdd2b39ee50725c3e7bc6aa))
+
+
+
 ## [1.7.2](https://github.com/Availity/availity-react/compare/@availity/training-link@1.7.1...@availity/training-link@1.7.2) (2023-10-09)
 
 
