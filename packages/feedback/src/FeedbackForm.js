@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useRef } from 'react';
 import PropTypes from 'prop-types';
 import { Button, ModalBody, ModalHeader, ModalFooter, FormGroup } from 'reactstrap';
-import { avLogMessagesApi, avRegionsApi } from '@availity/api-axios';
+import { avLogMessagesApi, avRegionsApi, avTelemetryApi } from '@availity/api-axios';
 import { Form, Field } from '@availity/form';
 import { SelectField } from '@availity/select';
 import * as yup from 'yup';
@@ -61,6 +61,14 @@ const FeedbackForm = ({
       submitTime: new Date(),
       ...values, // Spread the form values onto the logger
       ...staticFields, // Spread the static key value pairs onto the logger
+    });
+
+    await avTelemetryApi.info({
+      customerId: '0000',
+      contact: 'BigBitBandits@availity.com',
+      source_system: window.navigator.userAgent,
+      version: '1',
+      telemetryBody: { entries: { event: 'submit', action: 'click', label: 'Submit', category: 'feedback' } },
     });
 
     setSent(values);
