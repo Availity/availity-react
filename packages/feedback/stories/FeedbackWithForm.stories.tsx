@@ -7,7 +7,7 @@ import FeedbackForm from '../src/FeedbackForm';
 
 export default {
   title: 'Components/Feedback/FeedbackWithForm',
-  components: FeedbackForm,
+  component: FeedbackForm,
 };
 
 export const _WithForm: StoryObj<typeof FeedbackForm> = {

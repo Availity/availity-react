@@ -7,7 +7,7 @@ import FeedbackForm from '../src/FeedbackForm';
 
 export default {
   title: 'Components/Feedback/Feedback',
-  components: Feedback,
+  component: Feedback,
 };
 
 const colorOptions = ['secondary', 'success', 'info', 'danger', 'warning'];
