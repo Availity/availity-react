@@ -68,12 +68,15 @@ describe('PageHeader', () => {
 
   test('should render trainingLink', () => {
     const { getByText } = render(
-      <PageHeader appName="Payer Space" component={<TrainingLink link="https://www.youtube.com/watch?v=dQw4w9WgXcQ" />}>
+      <PageHeader
+        appName="Payer Space"
+        component={<TrainingLink name="Appeals" link="https://www.youtube.com/watch?v=dQw4w9WgXcQ" />}
+      >
         <p>this is cool</p>
       </PageHeader>
     );
 
-    const el = getByText('Learn More');
+    const el = getByText('Watch a demo');
     expect(el).toBeDefined();
   });
 
