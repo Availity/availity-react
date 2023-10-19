@@ -1,6 +1,6 @@
 /* eslint-disable no-console */
 import React from 'react';
-import { Story, Meta } from '@storybook/react';
+import { StoryObj } from '@storybook/react';
 import { Button } from 'reactstrap';
 
 import Analytics from './Analytics';
@@ -8,14 +8,17 @@ import Analytics from './Analytics';
 
 export default {
   title: 'Components/Analytics',
-  parameters: {
-    docs: {
-      // page: README,
-    },
-  },
-} as Meta;
+  component: Analytics,
+};
 
-export const Default: Story = ({ id, action, eventModifiers, recursive }) => {
+type AnalyticsStoryProps = {
+  id: string;
+  action: string;
+  eventModifiers?: string | string[];
+  recursive: boolean;
+};
+
+const AnalyticsStory = ({ id, action, eventModifiers, recursive }: AnalyticsStoryProps) => {
   const [state, setState] = React.useState('');
   const [count, setCount] = React.useState(0);
 
@@ -92,11 +95,12 @@ export const Default: Story = ({ id, action, eventModifiers, recursive }) => {
   );
 };
 
-Default.args = {
-  id: 'my-button',
-  action: 'click',
-  eventModifiers: ['action'],
-  recursive: true,
+export const _Analytics: StoryObj<AnalyticsStoryProps> = {
+  render: (props) => <AnalyticsStory id={props.id} recursive={props.recursive} action={props.action} />,
+  args: {
+    id: 'my-button',
+    action: 'click',
+    eventModifiers: ['action'],
+    recursive: true,
+  },
 };
-
-Default.storyName = 'default';
