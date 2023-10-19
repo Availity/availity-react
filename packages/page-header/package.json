@@ -1,6 +1,6 @@
 {
   "name": "@availity/page-header",
-  "version": "12.0.0",
+  "version": "11.3.5-alpha.0",
   "description": "The standard page header for Availity Portal Applications",
   "keywords": [
     "react",
