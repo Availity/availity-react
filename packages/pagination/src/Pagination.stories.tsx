@@ -58,7 +58,7 @@ const Component = ({ name, address }: ComponentProps): JSX.Element => (
 const resource = new AvApi({ name: 'pagination' });
 
 /**
- * # Pagination, the Availity way.
+ * Pagination, the Availity way.
  */
 export default {
   title: 'Components/Pagination',
