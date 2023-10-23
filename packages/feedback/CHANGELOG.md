@@ -2,6 +2,15 @@
 
 This file was generated using [@jscutlery/semver](https://github.com/jscutlery/semver).
 
+## [7.1.8-alpha.2](https://github.com/Availity/availity-react/compare/@availity/feedback@7.1.8-alpha.1...@availity/feedback@7.1.8-alpha.2) (2023-10-23)
+
+
+### Bug Fixes
+
+* **feedback:** use appName for source_system in telemetry body ([8a33d9a](https://github.com/Availity/availity-react/commit/8a33d9a80bbd5c4715088dfb88f6294f11262cd2))
+
+
+
 ## [7.1.8-alpha.1](https://github.com/Availity/availity-react/compare/@availity/feedback@7.1.8-alpha.0...@availity/feedback@7.1.8-alpha.1) (2023-10-19)
 
 
