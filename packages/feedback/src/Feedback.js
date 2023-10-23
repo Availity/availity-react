@@ -50,7 +50,7 @@ const Feedback = ({
               entries: {
                 event: 'open feedback',
                 action: 'click',
-                label: JSON.stringify(children),
+                label: JSON.stringify(children || (showSupport ? 'Feedback & Support' : 'Give Feedback')),
                 category: 'feedback',
               },
             },
