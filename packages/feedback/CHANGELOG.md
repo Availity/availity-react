@@ -2,6 +2,15 @@
 
 This file was generated using [@jscutlery/semver](https://github.com/jscutlery/semver).
 
+## [7.1.8-alpha.4](https://github.com/Availity/availity-react/compare/@availity/feedback@7.1.8-alpha.3...@availity/feedback@7.1.8-alpha.4) (2023-10-23)
+
+
+### Bug Fixes
+
+* **feedback:** update telemetryBody.label in DropdownToggle ([82524cc](https://github.com/Availity/availity-react/commit/82524cca3b5fab32e78984fbd1702f55b9d16d5a))
+
+
+
 ## [7.1.8-alpha.3](https://github.com/Availity/availity-react/compare/@availity/feedback@7.1.8-alpha.2...@availity/feedback@7.1.8-alpha.3) (2023-10-23)
 
 
