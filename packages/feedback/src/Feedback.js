@@ -44,7 +44,7 @@ const Feedback = ({
           avTelemetryApi.info({
             customerId: '0000',
             contact: 'BigBitBandits@availity.com',
-            source_system: appName,
+            source_system: appName.replaceAll(' ', '-'),
             version: '1',
             telemetryBody: {
               entries: {

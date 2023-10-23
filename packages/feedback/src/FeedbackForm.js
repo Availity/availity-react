@@ -66,7 +66,7 @@ const FeedbackForm = ({
     await avTelemetryApi.info({
       customerId: '0000',
       contact: 'BigBitBandits@availity.com',
-      source_system: name,
+      source_system: name.replaceAll(' ', '-'),
       version: '1',
       telemetryBody: { entries: { event: 'submit', action: 'click', label: 'Submit', category: 'feedback' } },
     });
