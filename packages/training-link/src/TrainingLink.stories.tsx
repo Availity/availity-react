@@ -1,5 +1,5 @@
 import React from 'react';
-import { Meta, Story } from '@storybook/react';
+import { StoryObj } from '@storybook/react';
 import TrainingLink, { TrainingLinkProps } from './TrainingLink';
 
 export default {
@@ -11,13 +11,13 @@ export default {
       },
     },
   },
-} as Meta;
-
-export const Default: Story<TrainingLinkProps> = ({ link, name }) => <TrainingLink link={link} name={name} />;
-
-Default.args = {
-  name: 'Appeals',
-  link: 'https://google.com',
+  component: TrainingLink,
 };
 
-Default.storyName = 'default';
+export const _Default: StoryObj<typeof TrainingLink> = {
+  render: ({ link, name }) => <TrainingLink link={link} name={name} />,
+  args: {
+    name: 'Appeals',
+    link: 'https://google.com',
+  },
+};
