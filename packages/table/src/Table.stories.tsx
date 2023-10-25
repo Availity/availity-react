@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { Meta, Story } from '@storybook/react';
+import { StoryObj } from '@storybook/react';
 
 import response from '@availity/mock/src/data/patients.json';
 import Pagination, { PaginationControls } from '@availity/pagination';
@@ -19,6 +19,7 @@ import Table, {
   CommonTableProps,
 } from '.';
 import '../styles.scss';
+import { TableProps } from 'reactstrap';
 
 const defaultColumn = {
   width: 'auto',
@@ -154,14 +155,9 @@ const bulkActions = [
 export default {
   title: 'Components/Table',
   component: Table,
-  parameters: {
-    docs: {
-      // page: README,
-    },
-  },
-} as Meta;
+};
 
-export const BasicTable: Story = ({
+const BasicTableStory = ({
   sortable,
   selectable,
   columns,
@@ -170,7 +166,7 @@ export const BasicTable: Story = ({
   bodyProps,
   footer,
   useColumnWidths,
-}) => {
+}: TableProps) => {
   const [records, setRecords] = useState([]);
   const [selectedRows, setSelectedRow] = useState([]);
 
@@ -215,19 +211,22 @@ export const BasicTable: Story = ({
     </>
   );
 };
-BasicTable.args = {
-  sortable: true,
-  selectable: true,
-  columns,
-  data: response.data.patientPagination.items.map((d) => ({ ...d, amount: 2.45 })),
-  headerProps: { style: { background: 'gray' } },
-  bodyProps: { style: {} },
-  footer: false,
-  useColumnWidths: false,
-};
-BasicTable.storyName = 'basic';
 
-export const WithAdditionalContent: Story = ({ columns, data }) => {
+export const _BasicTable: StoryObj<TableProps> = {
+  render: BasicTableStory,
+  args: {
+    sortable: true,
+    selectable: true,
+    columns,
+    data: response.data.patientPagination.items.map((d) => ({ ...d, amount: 2.45 })),
+    headerProps: { style: { background: 'gray' } },
+    bodyProps: { style: {} },
+    footer: false,
+    useColumnWidths: false,
+  },
+};
+
+const WithAdditionalContentStory = ({ columns, data }: TableProps) => {
   const AdditionalContent = (): JSX.Element => (
     <div>This is some additional content that should be displayed inside the cell.</div>
   );
@@ -253,13 +252,15 @@ export const WithAdditionalContent: Story = ({ columns, data }) => {
     />
   );
 };
-WithAdditionalContent.args = {
-  columns,
-  data: response.data.patientPagination.items.map((d) => ({ ...d, amount: 2.45 })),
+export const _WithAdditionalContent: StoryObj = {
+  render: WithAdditionalContentStory,
+  args: {
+    columns,
+    data: response.data.patientPagination.items.map((d) => ({ ...d, amount: 2.45 })),
+  },
 };
-WithAdditionalContent.storyName = 'with additional content';
 
-export const WithControls: Story = ({ sortable, selectable, columns, data, headerProps, bodyProps }) => (
+const WithControlsStory = ({ sortable, selectable, columns, data, headerProps, bodyProps }: TableProps) => (
   <Table
     initialState={{
       sortBy: [{ id: 'firstName', desc: false }],
@@ -319,17 +320,20 @@ export const WithControls: Story = ({ sortable, selectable, columns, data, heade
     <TableContent />
   </Table>
 );
-WithControls.args = {
-  sortable: true,
-  selectable: true,
-  columns,
-  data: response.data.patientPagination.items.map((d) => ({ ...d, amount: '' })),
-  headerProps: { style: { background: '#f0f0f0' } },
-  bodyProps: { style: {} },
-};
-WithControls.storyName = 'with controls';
 
-export const WithScrollableContainer: Story = ({ sortable, selectable, columns, data, headerProps, bodyProps }) => (
+export const _WithControls: StoryObj = {
+  render: WithControlsStory,
+  args: {
+    sortable: true,
+    selectable: true,
+    columns,
+    data: response.data.patientPagination.items.map((d) => ({ ...d, amount: '' })),
+    headerProps: { style: { background: '#f0f0f0' } },
+    bodyProps: { style: {} },
+  },
+};
+
+const WithScrollableContainerStory = ({ sortable, selectable, columns, data, headerProps, bodyProps }: TableProps) => (
   <ScrollableContainer>
     <Table
       initialState={{
@@ -346,14 +350,17 @@ export const WithScrollableContainer: Story = ({ sortable, selectable, columns, 
     </Table>
   </ScrollableContainer>
 );
-WithScrollableContainer.args = {
-  sortable: false,
-  selectable: false,
-  columns,
-  data: response.data.patientPagination.items.map((d) => ({ ...d, amount: undefined })),
-  headerProps: { sticky: true, style: { background: '#fff' } },
-  bodyProps: { style: {} },
+
+export const _WithScrollableContainer: StoryObj = {
+  render: WithScrollableContainerStory,
+  args: {
+    sortable: false,
+    selectable: false,
+    columns,
+    data: response.data.patientPagination.items.map((d) => ({ ...d, amount: undefined })),
+    headerProps: { sticky: true, style: { background: '#fff' } },
+    bodyProps: { style: {} },
+  },
 };
-WithScrollableContainer.storyName = 'with scrollable container';
 
 export const hidden_avTable = (props: CommonTableProps<any>) => <Table data={[]} columns={[]} {...props} />;
