@@ -4,6 +4,7 @@ import { StoryObj } from '@storybook/react';
 import response from '@availity/mock/src/data/patients.json';
 import Pagination, { PaginationControls } from '@availity/pagination';
 import Table, {
+  Column,
   ScrollableContainer,
   DateCell,
   BadgeCell,
@@ -17,9 +18,9 @@ import Table, {
   CurrencyCell,
   IconWithTooltipCell,
   CommonTableProps,
+  TableProps,
 } from '.';
 import '../styles.scss';
-import { TableProps } from 'reactstrap';
 
 const defaultColumn = {
   width: 'auto',
@@ -127,7 +128,7 @@ const columns = [
       },
     }),
   },
-];
+] as Column<any>[];
 
 const bulkActions = [
   {
@@ -166,14 +167,12 @@ const BasicTableStory = ({
   bodyProps,
   footer,
   useColumnWidths,
-}: TableProps) => {
-  const [records, setRecords] = useState([]);
-  const [selectedRows, setSelectedRow] = useState([]);
+}: TableProps<any>) => {
+  const [records, setRecords] = useState<any>([]);
+  const [selectedRows, setSelectedRow] = useState<any>([]);
 
   useEffect(() => {
-    const timer = setTimeout(() => {
-      setRecords(data);
-    }, 5000);
+    const timer = setTimeout(() => setRecords(data), 5000);
     return () => clearTimeout(timer);
   }, []);
 
@@ -212,26 +211,26 @@ const BasicTableStory = ({
   );
 };
 
-export const _BasicTable: StoryObj<TableProps> = {
+export const _BasicTable: StoryObj<TableProps<any>> = {
   render: BasicTableStory,
   args: {
     sortable: true,
     selectable: true,
     columns,
     data: response.data.patientPagination.items.map((d) => ({ ...d, amount: 2.45 })),
-    headerProps: { style: { background: 'gray' } },
+    headerProps: { style: { background: 'gray' }, sticky: false },
     bodyProps: { style: {} },
     footer: false,
     useColumnWidths: false,
   },
 };
 
-const WithAdditionalContentStory = ({ columns, data }: TableProps) => {
+const WithAdditionalContentStory = ({ columns, data }: TableProps<any>) => {
   const AdditionalContent = (): JSX.Element => (
     <div>This is some additional content that should be displayed inside the cell.</div>
   );
 
-  const [records, setRecords] = useState([]);
+  const [records, setRecords] = useState<any>([]);
 
   useEffect(() => {
     const timer = setTimeout(() => {
@@ -260,7 +259,7 @@ export const _WithAdditionalContent: StoryObj = {
   },
 };
 
-const WithControlsStory = ({ sortable, selectable, columns, data, headerProps, bodyProps }: TableProps) => (
+const WithControlsStory = ({ sortable, selectable, columns, data, headerProps, bodyProps }: TableProps<any>) => (
   <Table
     initialState={{
       sortBy: [{ id: 'firstName', desc: false }],
@@ -333,7 +332,14 @@ export const _WithControls: StoryObj = {
   },
 };
 
-const WithScrollableContainerStory = ({ sortable, selectable, columns, data, headerProps, bodyProps }: TableProps) => (
+const WithScrollableContainerStory = ({
+  sortable,
+  selectable,
+  columns,
+  data,
+  headerProps,
+  bodyProps,
+}: TableProps<any>) => (
   <ScrollableContainer>
     <Table
       initialState={{
