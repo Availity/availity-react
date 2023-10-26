@@ -2,6 +2,10 @@
 
 This file was generated using [@jscutlery/semver](https://github.com/jscutlery/semver).
 
+## [3.8.4](https://github.com/Availity/availity-react/compare/@availity/upload@3.8.3...@availity/upload@3.8.4) (2023-10-26)
+
+
+
 ## [3.8.3](https://github.com/Availity/availity-react/compare/@availity/upload@3.8.2...@availity/upload@3.8.3) (2023-10-09)
 
 
