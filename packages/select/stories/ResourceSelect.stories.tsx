@@ -1,6 +1,6 @@
 /* eslint-disable no-console */
 import React from 'react';
-import { Meta, Story } from '@storybook/react';
+import { StoryObj } from '@storybook/react';
 import { Button, Col, Row } from 'reactstrap';
 import AvApi from '@availity/api-axios';
 import ResourceSelect from '../src/ResourceSelect';
@@ -19,6 +19,7 @@ import { singleValueSchema, multiValueSchema, SelectedOption } from './utils';
 // import README from '../README.md';
 
 import FormikResults from '../../../story-utils/FormikResults';
+import Select from '../src/Select';
 
 const avCustomResource = new AvApi({ name: 'my-custom-resource' });
 const avGraphqlResource = new AvApi({ name: 'my-custom-graphql' });
@@ -38,88 +39,79 @@ export default {
     raw: true,
     required: true,
   },
-} as Meta;
-
-export const Default: Story = ({ creatable, disabled, helpMessage, isMulti, label, max, min, raw, required }) => (
-  <FormikResults
-    onSubmit={() => {
-      console.log('submitted');
-    }}
-    initialValues={{
-      resourceSelect: null,
-    }}
-    validationSchema={
-      isMulti ? multiValueSchema('resourceSelect', required, min, max) : singleValueSchema('resourceSelect', required)
-    }
-  >
-    <Row>
-      <Col>
-        <ResourceSelect
-          name="resourceSelect"
-          creatable={creatable}
-          helpMessage={helpMessage}
-          isDisabled={disabled}
-          isMulti={isMulti}
-          label={label}
-          labelKey="name"
-          valueKey="value"
-          maxLength={max}
-          raw={raw}
-          required={required}
-          resource={avCustomResource}
-        />
-        <Button color="primary" type="submit">
-          Submit
-        </Button>
-      </Col>
-      <Col md="5">
-        <SelectedOption field="resourceSelect" />
-      </Col>
-    </Row>
-  </FormikResults>
-);
-
-Default.args = {
-  creatable: false,
-  helpMessage: 'Do the thing',
-  label: 'Resource Select',
-  min: 2,
-  max: 3,
+  component: Select,
 };
 
-Default.storyName = '<ResourceSelect />';
+export const _Default: StoryObj<typeof Select> = {
+  render: ({ creatable, disabled, helpMessage, isMulti, label, max, min, raw, required }) => (
+    <FormikResults
+      onSubmit={() => {
+        console.log('submitted');
+      }}
+      initialValues={{
+        resourceSelect: null,
+      }}
+      validationSchema={
+        isMulti ? multiValueSchema('resourceSelect', required, min, max) : singleValueSchema('resourceSelect', required)
+      }
+    >
+      <Row>
+        <Col>
+          <ResourceSelect
+            name="resourceSelect"
+            creatable={creatable}
+            helpMessage={helpMessage}
+            isDisabled={disabled}
+            isMulti={isMulti}
+            label={label}
+            labelKey="name"
+            valueKey="value"
+            maxLength={max}
+            raw={raw}
+            required={required}
+            resource={avCustomResource}
+          />
+          <Button color="primary" type="submit">
+            Submit
+          </Button>
+        </Col>
+        <Col md="5">
+          <SelectedOption field="resourceSelect" />
+        </Col>
+      </Row>
+    </FormikResults>
+  ),
+  args: {
+    creatable: false,
+    helpMessage: 'Do the thing',
+    label: 'Resource Select',
+    min: 2,
+    max: 3,
+  },
+};
 
-export const GraphQlResourceSelect: Story = ({
-  creatable,
-  disabled,
-  helpMessage,
-  isMulti,
-  label,
-  max,
-  min,
-  raw,
-  required,
-}) => (
-  <FormikResults
-    onSubmit={() => {
-      console.log('submitted');
-    }}
-    initialValues={{
-      graphqlSelect: null,
-    }}
-    validationSchema={
-      isMulti ? multiValueSchema('graphqlSelect', required, min, max) : singleValueSchema('graphqlSelect', required)
-    }
-  >
-    <Row>
-      <Col>
-        <ResourceSelect
-          name="graphqlSelect"
-          creatable={creatable}
-          getResult={(response) => response.data.customPagination.items}
-          graphqlConfig={{
-            type: 'custom',
-            query: `
+export const _GraphQlResourceSelect: StoryObj<typeof Select> = {
+  render: ({ creatable, disabled, helpMessage, isMulti, label, max, min, raw, required }) => (
+    <FormikResults
+      onSubmit={() => {
+        console.log('submitted');
+      }}
+      initialValues={{
+        graphqlSelect: null,
+      }}
+      validationSchema={
+        isMulti ? multiValueSchema('graphqlSelect', required, min, max) : singleValueSchema('graphqlSelect', required)
+      }
+    >
+      <Row>
+        <Col>
+          <ResourceSelect
+            name="graphqlSelect"
+            creatable={creatable}
+            getResult={(response) => response.data.customPagination.items}
+            graphqlConfig={{
+              type: 'custom',
+              query: `
           query customPagination {
             count
             pageInfo {
@@ -131,343 +123,333 @@ export const GraphQlResourceSelect: Story = ({
             }
           }
         `,
-          }}
-          helpMessage={helpMessage}
-          isDisabled={disabled}
-          isMulti={isMulti}
-          label={label}
-          labelKey="value"
-          maxLength={max}
-          raw={raw}
-          required={required}
-          resource={avGraphqlResource}
-          valueKey="id"
-        />
-        <Button color="primary" type="submit">
-          Submit
-        </Button>
-      </Col>
-      <Col md="5">
-        <SelectedOption field="graphqlSelect" />
-      </Col>
-    </Row>
-  </FormikResults>
-);
-
-GraphQlResourceSelect.args = {
-  creatable: false,
-  helpMessage: 'Do the thing',
-  label: 'GraphQL Select',
-  min: 2,
-  max: 3,
+            }}
+            helpMessage={helpMessage}
+            isDisabled={disabled}
+            isMulti={isMulti}
+            label={label}
+            labelKey="value"
+            maxLength={max}
+            raw={raw}
+            required={required}
+            resource={avGraphqlResource}
+            valueKey="id"
+          />
+          <Button color="primary" type="submit">
+            Submit
+          </Button>
+        </Col>
+        <Col md="5">
+          <SelectedOption field="graphqlSelect" />
+        </Col>
+      </Row>
+    </FormikResults>
+  ),
+  args: {
+    creatable: false,
+    helpMessage: 'Do the thing',
+    label: 'GraphQL Select',
+    min: 2,
+    max: 3,
+  },
 };
 
-GraphQlResourceSelect.storyName = '<ResourceSelect /> with GraphQL';
-
-export const CodeSelect: Story = ({ disabled, isMulti, label, list, raw, required }) => (
-  <FormikResults
-    onSubmit={() => {
-      console.log('submitted');
-    }}
-    initialValues={{
-      codeSelect: null,
-    }}
-    validationSchema={singleValueSchema('codeSelect', required)}
-  >
-    <Row>
-      <Col>
-        <AvCodeSelect
-          name="codeSelect"
-          isDisabled={disabled}
-          isMulti={isMulti}
-          label={label}
-          parameters={{ list }}
-          raw={raw}
-          required={required}
-        />
-        <Button color="primary" type="submit">
-          Submit
-        </Button>
-      </Col>
-      <Col md="5">
-        <SelectedOption field="codeSelect" />
-      </Col>
-    </Row>
-  </FormikResults>
-);
-
-CodeSelect.args = {
-  label: 'Select a Code',
-  list: 'GENALLPRV03',
+export const _CodeSelect: StoryObj<typeof Select> = {
+  render: ({ disabled, isMulti, label, list, raw, required }) => (
+    <FormikResults
+      onSubmit={() => {
+        console.log('submitted');
+      }}
+      initialValues={{
+        codeSelect: null,
+      }}
+      validationSchema={singleValueSchema('codeSelect', required)}
+    >
+      <Row>
+        <Col>
+          <AvCodeSelect
+            name="codeSelect"
+            isDisabled={disabled}
+            isMulti={isMulti}
+            label={label}
+            parameters={{ list }}
+            raw={raw}
+            required={required}
+          />
+          <Button color="primary" type="submit">
+            Submit
+          </Button>
+        </Col>
+        <Col md="5">
+          <SelectedOption field="codeSelect" />
+        </Col>
+      </Row>
+    </FormikResults>
+  ),
+  args: {
+    label: 'Select a Code',
+    list: 'GENALLPRV03',
+  },
 };
 
-CodeSelect.storyName = '<AvCodeSelect />';
-
-export const NavigationSelect: Story = ({ disabled, isMulti, label, raw, required }) => (
-  <FormikResults
-    onSubmit={() => {
-      console.log('submitted');
-    }}
-    initialValues={{
-      navSelect: null,
-    }}
-    validationSchema={singleValueSchema('navSelect', required)}
-  >
-    <Row>
-      <Col>
-        <AvNavigationSelect
-          name="navSelect"
-          isDisabled={disabled}
-          isMulti={isMulti}
-          label={label}
-          raw={raw}
-          required={required}
-        />
-        <Button color="primary" type="submit">
-          Submit
-        </Button>
-      </Col>
-      <Col md="5">
-        <SelectedOption field="navSelect" />
-      </Col>
-    </Row>
-  </FormikResults>
-);
-
-NavigationSelect.args = {
-  label: 'Select a Payer Space',
+export const _NavigationSelect: StoryObj<typeof Select> = {
+  render: ({ disabled, isMulti, label, raw, required }) => (
+    <FormikResults
+      onSubmit={() => {
+        console.log('submitted');
+      }}
+      initialValues={{
+        navSelect: null,
+      }}
+      validationSchema={singleValueSchema('navSelect', required)}
+    >
+      <Row>
+        <Col>
+          <AvNavigationSelect
+            name="navSelect"
+            isDisabled={disabled}
+            isMulti={isMulti}
+            label={label}
+            raw={raw}
+            required={required}
+          />
+          <Button color="primary" type="submit">
+            Submit
+          </Button>
+        </Col>
+        <Col md="5">
+          <SelectedOption field="navSelect" />
+        </Col>
+      </Row>
+    </FormikResults>
+  ),
+  args: {
+    label: 'Select a Payer Space',
+  },
 };
 
-NavigationSelect.storyName = '<AvNavigationSelect />';
-
-export const OrganizationSelect: Story = ({ disabled, isMulti, label, raw, required }) => (
-  <FormikResults
-    onSubmit={() => {
-      console.log('submitted');
-    }}
-    initialValues={{
-      orgSelect: null,
-    }}
-    validationSchema={singleValueSchema('orgSelect', required)}
-  >
-    <Row>
-      <Col>
-        <AvOrganizationSelect
-          name="orgSelect"
-          isDisabled={disabled}
-          isMulti={isMulti}
-          label={label}
-          raw={raw}
-          required={required}
-        />
-        <Button color="primary" type="submit">
-          Submit
-        </Button>
-      </Col>
-      <Col md="5">
-        <SelectedOption field="orgSelect" />
-      </Col>
-    </Row>
-  </FormikResults>
-);
-
-OrganizationSelect.args = {
-  label: 'Select an Organization',
+export const _OrganizationSelect: StoryObj<typeof Select> = {
+  render: ({ disabled, isMulti, label, raw, required }) => (
+    <FormikResults
+      onSubmit={() => {
+        console.log('submitted');
+      }}
+      initialValues={{
+        orgSelect: null,
+      }}
+      validationSchema={singleValueSchema('orgSelect', required)}
+    >
+      <Row>
+        <Col>
+          <AvOrganizationSelect
+            name="orgSelect"
+            isDisabled={disabled}
+            isMulti={isMulti}
+            label={label}
+            raw={raw}
+            required={required}
+          />
+          <Button color="primary" type="submit">
+            Submit
+          </Button>
+        </Col>
+        <Col md="5">
+          <SelectedOption field="orgSelect" />
+        </Col>
+      </Row>
+    </FormikResults>
+  ),
+  args: {
+    label: 'Select an Organization',
+  },
 };
 
-OrganizationSelect.storyName = '<AvOrganizationSelect />';
-
-export const PayerSelect: Story = ({ disabled, isMulti, label, raw, required, region, tranTypeCode, customerId }) => (
-  <FormikResults
-    onSubmit={() => {
-      console.log('submitted');
-    }}
-    initialValues={{
-      payerSelect: null,
-    }}
-    validationSchema={singleValueSchema('payerSelect', required)}
-  >
-    <Row>
-      <Col>
-        <AvPayerSelect
-          name="payerSelect"
-          isDisabled={disabled}
-          isMulti={isMulti}
-          label={label}
-          raw={raw}
-          required={required}
-          customerId={customerId}
-          parameters={{
-            region,
-            tranTypeCode,
-          }}
-        />
-        <Button color="primary" type="submit">
-          Submit
-        </Button>
-      </Col>
-      <Col md="5">
-        <SelectedOption field="payerSelect" />
-      </Col>
-    </Row>
-  </FormikResults>
-);
-
-PayerSelect.args = {
-  label: 'Select a Payer',
-  region: 'FL',
-  tranTypeCode: 'EBREACT',
-  customerId: '12345',
+export const _PayerSelect: StoryObj<typeof Select> = {
+  render: ({ disabled, isMulti, label, raw, required, region, tranTypeCode, customerId }) => (
+    <FormikResults
+      onSubmit={() => {
+        console.log('submitted');
+      }}
+      initialValues={{
+        payerSelect: null,
+      }}
+      validationSchema={singleValueSchema('payerSelect', required)}
+    >
+      <Row>
+        <Col>
+          <AvPayerSelect
+            name="payerSelect"
+            isDisabled={disabled}
+            isMulti={isMulti}
+            label={label}
+            raw={raw}
+            required={required}
+            customerId={customerId}
+            parameters={{
+              region,
+              tranTypeCode,
+            }}
+          />
+          <Button color="primary" type="submit">
+            Submit
+          </Button>
+        </Col>
+        <Col md="5">
+          <SelectedOption field="payerSelect" />
+        </Col>
+      </Row>
+    </FormikResults>
+  ),
+  args: {
+    label: 'Select a Payer',
+    region: 'FL',
+    tranTypeCode: 'EBREACT',
+    customerId: '12345',
+  },
 };
 
-PayerSelect.storyName = '<AvPayerSelect />';
-
-export const PermissionsSelect: Story = ({ disabled, isMulti, label, raw, required }) => (
-  <FormikResults
-    onSubmit={() => {
-      console.log('submitted');
-    }}
-    initialValues={{
-      permissionSelect: null,
-    }}
-    validationSchema={singleValueSchema('permissionSelect', required)}
-  >
-    <Row>
-      <Col>
-        <AvPermissionSelect
-          name="permissionSelect"
-          isDisabled={disabled}
-          isMulti={isMulti}
-          label={label}
-          raw={raw}
-          required={required}
-        />
-        <Button color="primary" type="submit">
-          Submit
-        </Button>
-      </Col>
-      <Col md="5">
-        <SelectedOption field="permissionSelect" />
-      </Col>
-    </Row>
-  </FormikResults>
-);
-
-PermissionsSelect.args = {
-  label: 'Select a Permission',
+export const _PermissionsSelect: StoryObj<typeof Select> = {
+  render: ({ disabled, isMulti, label, raw, required }) => (
+    <FormikResults
+      onSubmit={() => {
+        console.log('submitted');
+      }}
+      initialValues={{
+        permissionSelect: null,
+      }}
+      validationSchema={singleValueSchema('permissionSelect', required)}
+    >
+      <Row>
+        <Col>
+          <AvPermissionSelect
+            name="permissionSelect"
+            isDisabled={disabled}
+            isMulti={isMulti}
+            label={label}
+            raw={raw}
+            required={required}
+          />
+          <Button color="primary" type="submit">
+            Submit
+          </Button>
+        </Col>
+        <Col md="5">
+          <SelectedOption field="permissionSelect" />
+        </Col>
+      </Row>
+    </FormikResults>
+  ),
+  args: {
+    label: 'Select a Permission',
+  },
 };
 
-PermissionsSelect.storyName = '<AvPermissionSelect />';
-
-export const ProviderSelect: Story = ({ customerId, disabled, isMulti, label, raw, required }) => (
-  <FormikResults
-    onSubmit={() => {
-      console.log('submitted');
-    }}
-    initialValues={{
-      providerSelect: null,
-    }}
-    validationSchema={singleValueSchema('providerSelect', required)}
-  >
-    <Row>
-      <Col>
-        <AvProviderSelect
-          name="providerSelect"
-          customerId={customerId}
-          isDisabled={disabled}
-          isMulti={isMulti}
-          label={label}
-          raw={raw}
-          required={required}
-        />
-        <Button color="primary" type="submit">
-          Submit
-        </Button>
-      </Col>
-      <Col md="5">
-        <SelectedOption field="providerSelect" />
-      </Col>
-    </Row>
-  </FormikResults>
-);
-
-ProviderSelect.args = {
-  customerId: '1234',
-  label: 'Select a Provider',
+export const _ProviderSelect: StoryObj<typeof Select> = {
+  render: ({ customerId, disabled, isMulti, label, raw, required }) => (
+    <FormikResults
+      onSubmit={() => {
+        console.log('submitted');
+      }}
+      initialValues={{
+        providerSelect: null,
+      }}
+      validationSchema={singleValueSchema('providerSelect', required)}
+    >
+      <Row>
+        <Col>
+          <AvProviderSelect
+            name="providerSelect"
+            customerId={customerId}
+            isDisabled={disabled}
+            isMulti={isMulti}
+            label={label}
+            raw={raw}
+            required={required}
+          />
+          <Button color="primary" type="submit">
+            Submit
+          </Button>
+        </Col>
+        <Col md="5">
+          <SelectedOption field="providerSelect" />
+        </Col>
+      </Row>
+    </FormikResults>
+  ),
+  args: {
+    customerId: '1234',
+    label: 'Select a Provider',
+  },
 };
 
-ProviderSelect.storyName = '<AvProviderSelect />';
-
-export const RegionSelect: Story = ({ disabled, isMulti, label, raw, required }) => (
-  <FormikResults
-    onSubmit={() => {
-      console.log('submitted');
-    }}
-    initialValues={{
-      regionSelect: null,
-    }}
-    validationSchema={singleValueSchema('regionSelect', required)}
-  >
-    <Row>
-      <Col>
-        <AvRegionSelect
-          name="regionSelect"
-          isDisabled={disabled}
-          isMulti={isMulti}
-          label={label}
-          raw={raw}
-          required={required}
-        />
-        <Button color="primary" type="submit">
-          Submit
-        </Button>
-      </Col>
-      <Col md="5">
-        <SelectedOption field="regionSelect" />
-      </Col>
-    </Row>
-  </FormikResults>
-);
-
-RegionSelect.args = {
-  label: 'Select a Region',
+export const _RegionSelect: StoryObj<typeof Select> = {
+  render: ({ disabled, isMulti, label, raw, required }) => (
+    <FormikResults
+      onSubmit={() => {
+        console.log('submitted');
+      }}
+      initialValues={{
+        regionSelect: null,
+      }}
+      validationSchema={singleValueSchema('regionSelect', required)}
+    >
+      <Row>
+        <Col>
+          <AvRegionSelect
+            name="regionSelect"
+            isDisabled={disabled}
+            isMulti={isMulti}
+            label={label}
+            raw={raw}
+            required={required}
+          />
+          <Button color="primary" type="submit">
+            Submit
+          </Button>
+        </Col>
+        <Col md="5">
+          <SelectedOption field="regionSelect" />
+        </Col>
+      </Row>
+    </FormikResults>
+  ),
+  args: {
+    label: 'Select a Region',
+  },
 };
 
-RegionSelect.storyName = '<AvRegionSelect />';
-
-export const UserSelect: Story = ({ disabled, isMulti, label, raw, required }) => (
-  <FormikResults
-    onSubmit={() => {
-      console.log('submitted');
-    }}
-    initialValues={{
-      userSelect: null,
-    }}
-    validationSchema={singleValueSchema('userSelect', required)}
-  >
-    <Row>
-      <Col>
-        <AvUserSelect
-          name="userSelect"
-          isDisabled={disabled}
-          isMulti={isMulti}
-          label={label}
-          raw={raw}
-          required={required}
-        />
-        <Button color="primary" type="submit">
-          Submit
-        </Button>
-      </Col>
-      <Col md="5">
-        <SelectedOption field="userSelect" />
-      </Col>
-    </Row>
-  </FormikResults>
-);
-
-UserSelect.args = {
-  label: 'Select a User',
+export const _UserSelect: StoryObj<typeof Select> = {
+  render: ({ disabled, isMulti, label, raw, required }) => (
+    <FormikResults
+      onSubmit={() => {
+        console.log('submitted');
+      }}
+      initialValues={{
+        userSelect: null,
+      }}
+      validationSchema={singleValueSchema('userSelect', required)}
+    >
+      <Row>
+        <Col>
+          <AvUserSelect
+            name="userSelect"
+            isDisabled={disabled}
+            isMulti={isMulti}
+            label={label}
+            raw={raw}
+            required={required}
+          />
+          <Button color="primary" type="submit">
+            Submit
+          </Button>
+        </Col>
+        <Col md="5">
+          <SelectedOption field="userSelect" />
+        </Col>
+      </Row>
+    </FormikResults>
+  ),
+  args: {
+    label: 'Select a User',
+  },
 };
-
-UserSelect.storyName = '<AvUserSelect />';
