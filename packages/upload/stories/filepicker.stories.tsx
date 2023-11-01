@@ -3,8 +3,11 @@ import { StoryObj } from '@storybook/react';
 // import { button } from '@storybook/addon-knobs';
 import mock from 'xhr-mock';
 
-import { FileList } from '..';
+import { FilePicker } from '..';
+// import README from '../README.md';
+// import MockUpload from '../tests/mockUpload';
 
+const log = window.console.log.bind(console);
 mock.post(/\/ms\/api\/availity\/internal\/core\/vault\/upload\/v1\/resumable\/[^/]\//, (req, res) =>
   res
     .status(201)
@@ -48,23 +51,13 @@ mock.use('HEAD', /\/ms\/api\/availity\/internal\/core\/vault\/upload\/v1\/resuma
 );
 // mock.use(proxy);
 
-const file = (fileName: string) => ({
-  id: fileName,
-  file: {
-    name: fileName,
-  },
-  onProgress: [],
-  onSuccess: [],
-  onError: [],
-});
-
 // let instance;
 /**
  * The default export is an all-in-one solution which handles uploads, encrypted file password requests and file state management for you.
  */
 export default {
-  title: 'Components/Upload/FileList',
-  component: FileList,
+  title: 'Components/Upload/FilePicker',
+  component: FilePicker,
   // decorators: [
   //   (story) => {
   //     instance = new MockUpload();
@@ -73,21 +66,18 @@ export default {
   // ],
 };
 
-type FileListStoryProps = {
-  fileName1: string;
-  fileName2: string;
-};
-export const _Default: StoryObj<typeof FileList> = {
-  render: ({ fileName1, fileName2 }) => {
-    const files = [file(fileName1), file(fileName2)];
-    return (
-      <div className="py-3">
-        <FileList files={files} />
-      </div>
-    );
-  },
+export const _Default: StoryObj<typeof FilePicker> = {
+  render: ({ allowedFileTypes, maxSize }) => (
+    <div className="py-3">
+      <p>
+        This component does not do much out-of-the-box, it mostly just ensures the value gets reset after a file is
+        chosen so that the user can chose the same file again.
+      </p>
+      <FilePicker onChange={log} allowedFileTypes={allowedFileTypes} maxSize={maxSize} />
+    </div>
+  ),
   args: {
-    fileName1: 'testfile1.pdf',
-    fileName2: 'testfile2.png',
+    allowedFileTypes: [],
+    maxSize: 0,
   },
 };

@@ -51,16 +51,6 @@ mock.use('HEAD', /\/ms\/api\/availity\/internal\/core\/vault\/upload\/v1\/resuma
 );
 // mock.use(proxy);
 
-const file = (fileName: string) => ({
-  id: fileName,
-  file: {
-    name: fileName,
-  },
-  onProgress: [],
-  onSuccess: [],
-  onError: [],
-});
-
 // let instance;
 /**
  * The default export is an all-in-one solution which handles uploads, encrypted file password requests and file state management for you.
@@ -100,38 +90,6 @@ export const _Upload: StoryObj<typeof Upload> = {
   },
 };
 
-export const _PickerButton: StoryObj<typeof Upload> = {
-  render: ({ allowedFileTypes, disabled, maxSize }) => (
-    <div className="py-3">
-      <p>
-        This component does not do much out-of-the-box, it is mostly just a button that triggers a file input which
-        ensures the value gets reset after a file is chosen so that the user can choose the same file again.
-      </p>
-      <FilePickerBtn allowedFileTypes={allowedFileTypes} maxSize={maxSize} disabled={disabled} />
-    </div>
-  ),
-  args: {
-    allowedFileTypes: [],
-    disabled: false,
-    maxSize: 0,
-  },
-};
-
-export const PickerField: StoryObj<typeof Upload> = {
-  render: ({ allowedFileTypes, maxSize }) => (
-    <div className="py-3">
-      <p>
-        This component does not do much out-of-the-box, it mostly just ensures the value gets reset after a file is
-        chosen so that the user can chose the same file again.
-      </p>
-      <FilePicker onChange={log} allowedFileTypes={allowedFileTypes} maxSize={maxSize} />
-    </div>
-  ),
-  args: {
-    allowedFileTypes: [],
-    maxSize: 0,
-  },
-};
 export const _RestrictFileTypes: StoryObj<typeof Upload> = {
   render: ({ allowedFileTypes, disabled, max, maxSize, multiple }) => (
     <div className="py-3">
