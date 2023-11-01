@@ -1,6 +1,7 @@
 /* eslint-disable no-console */
 import React from 'react';
 import { StoryObj } from '@storybook/react';
+import '../styles.scss';
 import { Button } from 'reactstrap';
 import { avDate, dateRange } from '@availity/yup';
 import * as yup from 'yup';
