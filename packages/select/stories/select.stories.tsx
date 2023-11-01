@@ -10,21 +10,18 @@ import Select, { SelectField, SelectFieldProps } from '../src';
 import FormikResults from '../../../story-utils/FormikResults';
 import { singleValueSchema, multiValueSchema, options, SelectedOption, autofillOptions } from './utils';
 
-/**
- * Select dropdown without a Label or Feedback
- */
 export default {
   title: 'Form Components/Select',
   component: Select,
   args: {
     autofill: false,
     creatable: false,
-    disabled: false,
+    isDisabled: false,
     helpMessage: 'This is a message to provide guidance',
     isMulti: false,
     isClearable: false,
-    min: 2,
-    max: 3,
+    minLength: 2,
+    maxLength: 3,
     raw: false,
     required: true,
     clearButtonText: 'clear',
@@ -33,31 +30,19 @@ export default {
   },
 };
 
-type SelectStoryProps = {
-  autofill: boolean;
-  creatable: boolean;
-  disabled: boolean;
-  helpMessage: string;
-  isMulti: boolean;
-  isClearable: boolean;
-  max: number;
-  min: number;
-  raw: boolean;
-  required: boolean;
-  clearButtonText: string;
-  clearButtonProps: object;
-};
-
-export const _Select: StoryObj<SelectStoryProps> = {
+/**
+ * Select dropdown without a Label or Feedback
+ */
+export const _Select: StoryObj<typeof Select> = {
   render: ({
     autofill,
     creatable,
-    disabled,
+    isDisabled,
     helpMessage,
     isMulti,
     isClearable,
-    max,
-    min,
+    maxLength,
+    minLength,
     raw,
     required,
     clearButtonText,
@@ -74,7 +59,13 @@ export const _Select: StoryObj<SelectStoryProps> = {
       }}
       validationSchema={
         isMulti
-          ? multiValueSchema('select', required, min, max, !autofill && !raw)
+          ? multiValueSchema(
+              'select',
+              required || false,
+              minLength || 0,
+              maxLength || Number.MAX_SAFE_INTEGER,
+              !autofill && !raw
+            )
           : singleValueSchema('select', required, !autofill && !raw)
       }
     >
@@ -88,10 +79,10 @@ export const _Select: StoryObj<SelectStoryProps> = {
                 autofill
                 creatable={creatable}
                 helpMessage={helpMessage}
-                isDisabled={disabled}
+                isDisabled={isDisabled}
                 isMulti={isMulti}
                 isClearable={isClearable}
-                maxLength={max}
+                maxLength={maxLength}
                 options={autofillOptions}
                 raw={raw}
                 required={required}
@@ -107,10 +98,10 @@ export const _Select: StoryObj<SelectStoryProps> = {
               aria-label="stand-alone"
               creatable={creatable}
               helpMessage={helpMessage}
-              isDisabled={disabled}
+              isDisabled={isDisabled}
               isMulti={isMulti}
               isClearable={isClearable}
-              maxLength={max}
+              maxLength={maxLength}
               options={options}
               raw={raw}
               required={required}
@@ -129,38 +120,22 @@ export const _Select: StoryObj<SelectStoryProps> = {
     </FormikResults>
   ),
 };
-type SelectFieldStoryProps = {
-  autofill: boolean;
-  creatable: boolean;
-  disabled: boolean;
-  helpId: string;
-  helpMessage: string;
-  isMulti: boolean;
-  isClearable: boolean;
-  label: string;
-  max: number;
-  min: number;
-  raw: boolean;
-  required: boolean;
-  clearButtonText: string;
-  clearButtonProps: object;
-};
 
 /**
  * Select with a Label and Feedback that appears below the input.
  */
-export const _SelectField: StoryObj<SelectFieldStoryProps> = {
+export const _SelectField: StoryObj<typeof SelectField> = {
   render: ({
     autofill,
     creatable,
-    disabled,
+    isDisabled,
     helpId,
     helpMessage,
     isMulti,
     isClearable,
     label,
-    max,
-    min,
+    maxLength,
+    minLength,
     raw,
     required,
     clearButtonText,
@@ -177,7 +152,13 @@ export const _SelectField: StoryObj<SelectFieldStoryProps> = {
       }}
       validationSchema={
         isMulti
-          ? multiValueSchema('select', required, min, max, !autofill && !raw)
+          ? multiValueSchema(
+              'select',
+              required || false,
+              minLength || 0,
+              maxLength || Number.MAX_SAFE_INTEGER,
+              !autofill && !raw
+            )
           : singleValueSchema('select', required, !autofill && !raw)
       }
     >
@@ -192,10 +173,10 @@ export const _SelectField: StoryObj<SelectFieldStoryProps> = {
                 creatable={creatable}
                 helpId={helpId}
                 helpMessage={helpMessage}
-                isDisabled={disabled}
+                isDisabled={isDisabled}
                 isMulti={isMulti}
                 isClearable={isClearable}
-                maxLength={max}
+                maxLength={maxLength}
                 options={autofillOptions}
                 raw={raw}
                 required={required}
@@ -212,10 +193,10 @@ export const _SelectField: StoryObj<SelectFieldStoryProps> = {
               creatable={creatable}
               helpId={helpId}
               helpMessage={helpMessage}
-              isDisabled={disabled}
+              isDisabled={isDisabled}
               isMulti={isMulti}
               isClearable={isClearable}
-              maxLength={max}
+              maxLength={maxLength}
               options={options}
               raw={raw}
               required={required}
