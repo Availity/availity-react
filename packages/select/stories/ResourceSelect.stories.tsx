@@ -19,7 +19,6 @@ import { singleValueSchema, multiValueSchema, SelectedOption } from './utils';
 // import README from '../README.md';
 
 import FormikResults from '../../../story-utils/FormikResults';
-import Select from '../src/Select';
 
 const avCustomResource = new AvApi({ name: 'my-custom-resource' });
 const avGraphqlResource = new AvApi({ name: 'my-custom-graphql' });
@@ -39,10 +38,10 @@ export default {
     raw: true,
     required: true,
   },
-  component: Select,
+  component: ResourceSelect,
 };
 
-export const _Default: StoryObj<typeof Select> = {
+export const _Default: StoryObj<typeof ResourceSelect> = {
   render: ({ creatable, disabled, helpMessage, isMulti, label, max, min, raw, required }) => (
     <FormikResults
       onSubmit={() => {
@@ -90,7 +89,7 @@ export const _Default: StoryObj<typeof Select> = {
   },
 };
 
-export const _GraphQlResourceSelect: StoryObj<typeof Select> = {
+export const _GraphQlResourceSelect: StoryObj<typeof ResourceSelect> = {
   render: ({ creatable, disabled, helpMessage, isMulti, label, max, min, raw, required }) => (
     <FormikResults
       onSubmit={() => {
@@ -154,7 +153,7 @@ export const _GraphQlResourceSelect: StoryObj<typeof Select> = {
   },
 };
 
-export const _CodeSelect: StoryObj<typeof Select> = {
+export const _CodeSelect: Story<typeof AvCodeSelect> = {
   render: ({ disabled, isMulti, label, list, raw, required }) => (
     <FormikResults
       onSubmit={() => {
@@ -192,7 +191,7 @@ export const _CodeSelect: StoryObj<typeof Select> = {
   },
 };
 
-export const _NavigationSelect: StoryObj<typeof Select> = {
+export const _NavigationSelect: StoryObj<typeof AvNavigationSelect> = {
   render: ({ disabled, isMulti, label, raw, required }) => (
     <FormikResults
       onSubmit={() => {
@@ -228,7 +227,7 @@ export const _NavigationSelect: StoryObj<typeof Select> = {
   },
 };
 
-export const _OrganizationSelect: StoryObj<typeof Select> = {
+export const _OrganizationSelect: StoryObj<typeof AvOrganizationSelect> = {
   render: ({ disabled, isMulti, label, raw, required }) => (
     <FormikResults
       onSubmit={() => {
@@ -264,7 +263,7 @@ export const _OrganizationSelect: StoryObj<typeof Select> = {
   },
 };
 
-export const _PayerSelect: StoryObj<typeof Select> = {
+export const _PayerSelect: StoryObj<typeof AvPayerSelect> = {
   render: ({ disabled, isMulti, label, raw, required, region, tranTypeCode, customerId }) => (
     <FormikResults
       onSubmit={() => {
@@ -308,7 +307,7 @@ export const _PayerSelect: StoryObj<typeof Select> = {
   },
 };
 
-export const _PermissionsSelect: StoryObj<typeof Select> = {
+export const _PermissionsSelect: StoryObj<typeof AvPermissionSelect> = {
   render: ({ disabled, isMulti, label, raw, required }) => (
     <FormikResults
       onSubmit={() => {
@@ -344,7 +343,7 @@ export const _PermissionsSelect: StoryObj<typeof Select> = {
   },
 };
 
-export const _ProviderSelect: StoryObj<typeof Select> = {
+export const _ProviderSelect: StoryObj<typeof AvProviderSelect> = {
   render: ({ customerId, disabled, isMulti, label, raw, required }) => (
     <FormikResults
       onSubmit={() => {
@@ -382,7 +381,7 @@ export const _ProviderSelect: StoryObj<typeof Select> = {
   },
 };
 
-export const _RegionSelect: StoryObj<typeof Select> = {
+export const _RegionSelect: StoryObj<typeof AvRegionSelect> = {
   render: ({ disabled, isMulti, label, raw, required }) => (
     <FormikResults
       onSubmit={() => {
@@ -418,7 +417,7 @@ export const _RegionSelect: StoryObj<typeof Select> = {
   },
 };
 
-export const _UserSelect: StoryObj<typeof Select> = {
+export const _UserSelect: StoryObj<typeof AvUserSelect> = {
   render: ({ disabled, isMulti, label, raw, required }) => (
     <FormikResults
       onSubmit={() => {
