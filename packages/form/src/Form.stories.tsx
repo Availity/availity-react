@@ -35,7 +35,7 @@ import { Props as FormGroupProps } from './FormGroup';
 
 export default {
   title: 'Form Components/Form',
-  component: Form,
+  component: FormResults,
   parameters: {
     docs: {
       // page: README,
@@ -51,7 +51,7 @@ export default {
 
 type FormStoryProps = { required: boolean };
 
-export const _Default: StoryObj<typeof Form> = {
+export const _Default: StoryObj<typeof FormResults> = {
   render: ({ required }) => {
     const options = [
       { label: 'Option 1', value: 'value for option 1' },
@@ -140,7 +140,7 @@ export const _Default: StoryObj<typeof Form> = {
     );
   },
 };
-export const _Input: StoryObj<typeof Form> = {
+export const _Input: StoryObj<typeof FormResults> = {
   render: ({ required }) => (
     <FormResults
       onSubmit={() => {
@@ -170,7 +170,7 @@ export const _Input: StoryObj<typeof Form> = {
   },
 };
 
-export const _FormGroup: StoryObj<typeof Form> = {
+export const _FormGroup: StoryObj<typeof FormResults> = {
   render: ({ required }) => (
     <FormResults
       onSubmit={() => {
@@ -203,7 +203,7 @@ type FieldStoryProps = {
   helpId: string;
 } & FormStoryProps;
 
-export const _Field: StoryObj<typeof Form> = {
+export const _Field: StoryObj<typeof FormResults> = {
   render: ({ required, helpMessage, helpId }) => (
     <FormResults
       onSubmit={() => {
@@ -240,7 +240,7 @@ type CheckboxStoryProps = {
   labelClassName: string;
 } & FormStoryProps;
 
-export const _Checkbox: StoryObj<typeof Form> = {
+export const _Checkbox: StoryObj<typeof FormResults> = {
   render: ({ required, helpId, labelClassName }) => (
     <FormResults
       onSubmit={() => {
@@ -285,7 +285,7 @@ export const _Checkbox: StoryObj<typeof Form> = {
 
 type RadioStoryProps = CheckboxStoryProps;
 
-export const _Radio: StoryObj<typeof Form> = {
+export const _Radio: StoryObj<typeof FormResults> = {
   render: ({ required, helpId, labelClassName }) => (
     <FormResults
       onSubmit={() => {
@@ -321,7 +321,7 @@ export const _Radio: StoryObj<typeof Form> = {
   },
 };
 
-export const _CurrencyInput: StoryObj<typeof Form> = {
+export const _CurrencyInput: StoryObj<typeof FormResults> = {
   render: ({ value }) => {
     const [newValue, setNewValue] = useState(value);
 
