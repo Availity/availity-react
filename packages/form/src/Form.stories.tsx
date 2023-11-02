@@ -35,7 +35,7 @@ import { Props as FormGroupProps } from './FormGroup';
 
 export default {
   title: 'Form Components/Form',
-  component: FormResults,
+  component: Form,
   parameters: {
     docs: {
       // page: README,
@@ -203,7 +203,7 @@ type FieldStoryProps = {
   helpId: string;
 } & FormStoryProps;
 
-export const _Field: StoryObj<typeof FormResults> = {
+export const _Field: StoryObj<typeof Field> = {
   render: ({ required, helpMessage, helpId }) => (
     <FormResults
       onSubmit={() => {
@@ -240,7 +240,7 @@ type CheckboxStoryProps = {
   labelClassName: string;
 } & FormStoryProps;
 
-export const _Checkbox: StoryObj<typeof FormResults> = {
+export const _Checkbox: StoryObj<typeof CheckboxGroup> = {
   render: ({ required, helpId, labelClassName }) => (
     <FormResults
       onSubmit={() => {
@@ -285,7 +285,7 @@ export const _Checkbox: StoryObj<typeof FormResults> = {
 
 type RadioStoryProps = CheckboxStoryProps;
 
-export const _Radio: StoryObj<typeof FormResults> = {
+export const _Radio: StoryObj<typeof RadioGroup> = {
   render: ({ required, helpId, labelClassName }) => (
     <FormResults
       onSubmit={() => {
@@ -321,7 +321,7 @@ export const _Radio: StoryObj<typeof FormResults> = {
   },
 };
 
-export const _CurrencyInput: StoryObj<typeof FormResults> = {
+export const _CurrencyInput: StoryObj<typeof CurrencyInput> = {
   render: ({ value }) => {
     const [newValue, setNewValue] = useState(value);
 
