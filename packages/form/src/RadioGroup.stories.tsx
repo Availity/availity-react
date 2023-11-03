@@ -26,15 +26,6 @@ export default {
   },
 };
 
-type FormStoryProps = { required: boolean };
-
-type CheckboxStoryProps = {
-  helpId: string;
-  labelClassName: string;
-} & FormStoryProps;
-
-type RadioStoryProps = CheckboxStoryProps;
-
 export const _RadioGroup: StoryObj<typeof RadioGroup> = {
   render: ({ required, helpId, labelClassName }) => (
     <FormResults
@@ -74,5 +65,3 @@ export const _RadioGroup: StoryObj<typeof RadioGroup> = {
     },
   },
 };
-
-export const hidden_Radio = (props: RadioStoryProps) => <Radio {...props} />;
