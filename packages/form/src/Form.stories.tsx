@@ -9,6 +9,15 @@ import { DateField } from '@availity/date';
 import { SelectField } from '@availity/select';
 import '@availity/date/styles.scss';
 
+import FormResults from '../../../story-utils/FormikResults';
+import { FormProps } from './Form';
+import { InputProps } from './Input';
+import { CheckboxGroupProps } from './CheckboxGroup';
+import { CheckboxProps } from './Checkbox';
+import { RadioGroupProps } from './RadioGroup';
+import { RadioProps } from './Radio';
+import { Props as CurrencyInputProps } from './CurrencyInput';
+import { Props as FormGroupProps } from './FormGroup';
 import {
   Field,
   Input,
@@ -24,21 +33,11 @@ import {
   Form,
   FieldProps,
 } from '.';
-// import README from '../form/README.md';
-
-import FormResults from '../../../story-utils/FormikResults';
-import { InputProps } from './Input';
-import { CheckboxGroupProps } from './CheckboxGroup';
-import { CheckboxProps } from './Checkbox';
-import { Props as CurrencyInputProps } from './CurrencyInput';
-import { Props as FormGroupProps } from './FormGroup';
 
 export default {
   title: 'Form Components/Form',
-  component: Form,
   parameters: {
     docs: {
-      // page: README,
       description: {
         component: 'Availity form components that are wired to be hooked up to formik.',
       },
@@ -51,7 +50,7 @@ export default {
 
 type FormStoryProps = { required: boolean };
 
-export const _Default: StoryObj<typeof FormResults> = {
+export const _Default: StoryObj<FormStoryProps> = {
   render: ({ required }) => {
     const options = [
       { label: 'Option 1', value: 'value for option 1' },
@@ -141,11 +140,13 @@ export const _Default: StoryObj<typeof FormResults> = {
   },
 };
 
+export const hidden_Form = (props: FormProps<unknown>) => <Form {...props} />;
 export const hidden_Input = (props: InputProps) => <Input {...props} />;
 export const hidden_Label = (props: LabelProps) => <Label {...props} />;
 export const hidden_Field = (props: FieldProps) => <Field {...props} />;
 export const hidden_Checkbox = (props: CheckboxProps) => <Checkbox {...props} />;
 export const hidden_CheckboxGroup = (props: CheckboxGroupProps) => <CheckboxGroup {...props} />;
+export const hidden_Radio = (props: RadioProps) => <Radio {...props} />;
+export const hidden_RadioGroup = (props: RadioGroupProps) => <RadioGroup {...props} />;
 export const hidden_FormGroup = (props: FormGroupProps) => <FormGroup {...props} />;
 export const hidden_CurrencyInput = (props: CurrencyInputProps) => <CurrencyInput {...props} />;
-export const hidden_Radio = (props: RadioProps) => <Radio {...props} />;

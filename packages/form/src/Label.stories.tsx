@@ -7,7 +7,7 @@ import { Label } from '.';
 // import README from '../form/README.md';
 
 export default {
-  title: 'Form Components/Form/Form Label',
+  title: 'Form Components/Form/Label',
   component: Label,
   args: {
     required: false,
