@@ -26,7 +26,7 @@ export default {
   },
 };
 
-export const _Default: StoryObj<typeof Input> = {
+export const _Input: StoryObj<typeof Input> = {
   render: ({ required }) => (
     <FormResults
       onSubmit={() => {
@@ -36,7 +36,11 @@ export const _Default: StoryObj<typeof Input> = {
         hello: '',
       }}
       validationSchema={yup.object().shape({
-        hello: yup.string().isRequired(required, 'This field is required'),
+        hello: yup.string().when([], {
+          is: () => required,
+          then: yup.string().required('This field is required'),
+          otherwise: yup.string().notRequired(),
+        }),
       })}
     >
       <div className="d-flex">

@@ -26,7 +26,7 @@ export default {
   },
 };
 
-export const _Default: StoryObj<typeof Field> = {
+export const _Field: StoryObj<typeof Field> = {
   render: ({ required, helpMessage, helpId }) => (
     <FormResults
       onSubmit={() => {
@@ -36,7 +36,11 @@ export const _Default: StoryObj<typeof Field> = {
         hello: '',
       }}
       validationSchema={yup.object().shape({
-        hello: yup.string().isRequired(required, 'This field is required.'),
+        hello: yup.string().when([], {
+          is: () => required,
+          then: yup.string().required('This field is required.'),
+          otherwise: yup.string().notRequired(),
+        }),
       })}
     >
       <Field name="hello" type="text" label="Hello" helpMessage={helpMessage} helpId={helpId} required={required} />

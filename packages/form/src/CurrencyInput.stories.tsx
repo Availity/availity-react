@@ -26,7 +26,7 @@ export default {
   },
 };
 
-export const _Default: StoryObj<typeof CurrencyInput> = {
+export const _CurrencyInput: StoryObj<typeof CurrencyInput> = {
   render: ({ value }) => {
     const [newValue, setNewValue] = useState(value);
 

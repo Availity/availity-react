@@ -26,14 +26,7 @@ export default {
   },
 };
 
-type FormStoryProps = { required: boolean };
-
-type CheckboxStoryProps = {
-  helpId: string;
-  labelClassName: string;
-} & FormStoryProps;
-
-export const _Default: StoryObj<typeof CheckboxGroup> = {
+export const _CheckboxGroup: StoryObj<typeof CheckboxGroup> = {
   render: ({ required, helpId, labelClassName }) => (
     <FormResults
       onSubmit={() => {
@@ -43,7 +36,11 @@ export const _Default: StoryObj<typeof CheckboxGroup> = {
         checkboxGroup: [],
       }}
       validationSchema={yup.object().shape({
-        checkboxGroup: yup.array().isRequired(required, 'At least one checkbox is required'),
+        checkboxGroup: yup.array().when([], {
+          is: () => required,
+          then: yup.array().required('At least one checkbox is required'),
+          otherwise: yup.array().notRequired(),
+        }),
       })}
     >
       <CheckboxGroup
@@ -75,5 +72,3 @@ export const _Default: StoryObj<typeof CheckboxGroup> = {
     },
   },
 };
-
-type RadioStoryProps = CheckboxStoryProps;

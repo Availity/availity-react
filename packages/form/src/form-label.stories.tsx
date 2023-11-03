@@ -14,13 +14,7 @@ export default {
   },
 };
 
-type LabelStoryProps = {
-  helpId: string;
-  className: string;
-  children: React.ReactNode;
-} & FormStoryProps;
-
-export const _Default: StoryObj<typeof Label> = {
+export const _Label: StoryObj<typeof Label> = {
   render: ({ required, helpId, className, children }) => (
     <Label required={required} helpId={helpId} className={className}>
       {children}

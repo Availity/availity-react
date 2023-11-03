@@ -35,7 +35,7 @@ type CheckboxStoryProps = {
 
 type RadioStoryProps = CheckboxStoryProps;
 
-export const _Default: StoryObj<typeof RadioGroup> = {
+export const _RadioGroup: StoryObj<typeof RadioGroup> = {
   render: ({ required, helpId, labelClassName }) => (
     <FormResults
       onSubmit={() => {
@@ -45,7 +45,11 @@ export const _Default: StoryObj<typeof RadioGroup> = {
         hello: '',
       }}
       validationSchema={yup.object().shape({
-        hello: yup.string().isRequired(required, 'This field is required.'),
+        hello: yup.string().when([], {
+          is: () => required,
+          then: yup.string().required('This field is required.'),
+          otherwise: yup.string().notRequired(),
+        }),
       })}
     >
       <RadioGroup name="hello" label="Radio Group" helpId={helpId} required={required} labelClassName={labelClassName}>

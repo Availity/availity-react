@@ -148,3 +148,4 @@ export const hidden_Checkbox = (props: CheckboxProps) => <Checkbox {...props} />
 export const hidden_CheckboxGroup = (props: CheckboxGroupProps) => <CheckboxGroup {...props} />;
 export const hidden_FormGroup = (props: FormGroupProps) => <FormGroup {...props} />;
 export const hidden_CurrencyInput = (props: CurrencyInputProps) => <CurrencyInput {...props} />;
+export const hidden_Radio = (props: RadioStoryProps) => <Radio {...props} />;

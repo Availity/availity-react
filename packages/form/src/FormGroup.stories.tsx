@@ -26,7 +26,7 @@ export default {
   },
 };
 
-export const _Default: StoryObj<typeof FormGroup> = {
+export const _FormGroup: StoryObj<typeof FormGroup> = {
   render: ({ required }) => (
     <FormResults
       onSubmit={() => {
@@ -36,7 +36,11 @@ export const _Default: StoryObj<typeof FormGroup> = {
         hello: '',
       }}
       validationSchema={yup.object().shape({
-        hello: yup.string().isRequired(required, 'This field is required.'),
+        hello: yup.string().when([], {
+          is: () => required,
+          then: yup.string().required('This field is required.'),
+          otherwise: yup.string().notRequired(),
+        }),
       })}
     >
       <FormGroup for="hello" data-testid="hello-group">
