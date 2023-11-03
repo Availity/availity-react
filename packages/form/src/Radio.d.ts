@@ -1,7 +1,7 @@
 /* eslint-disable @typescript-eslint/ban-types */
 import { HTMLAttributes, ReactNode } from 'react';
 
-interface RadioProps extends HTMLAttributes<HTMLInputElement> {
+export interface RadioProps extends HTMLAttributes<HTMLInputElement> {
   label?: ReactNode;
   name?: string;
   id?: string;
