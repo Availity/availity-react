@@ -645,7 +645,7 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@availity/hooks@workspace:*, @availity/hooks@workspace:packages/hooks":
+"@availity/hooks@workspace:*, @availity/hooks@workspace:^5.0.0, @availity/hooks@workspace:packages/hooks":
   version: 0.0.0-use.local
   resolution: "@availity/hooks@workspace:packages/hooks"
   dependencies:
@@ -812,7 +812,7 @@ __metadata:
   resolution: "@availity/payer-logo@workspace:packages/payer-logo"
   dependencies:
     "@availity/api-axios": ^8.0.3
-    "@availity/hooks": "workspace:*"
+    "@availity/hooks": "workspace:^5.0.0"
     axios: ^1.5.0
     lodash: ^4.17.21
     prop-types: ^15.8.1
