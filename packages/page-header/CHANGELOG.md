@@ -2,6 +2,20 @@
 
 This file was generated using [@jscutlery/semver](https://github.com/jscutlery/semver).
 
+## [13.0.3](https://github.com/Availity/availity-react/compare/@availity/page-header@13.0.2...@availity/page-header@13.0.3) (2023-11-07)
+
+### Dependency Updates
+
+* `payer-logo` updated to version `13.0.2`
+* `spaces` updated to version `13.0.2`
+* `training-link` updated to version `13.0.2`
+
+### Bug Fixes
+
+* **page-header:** add trackDeps ([1b48275](https://github.com/Availity/availity-react/commit/1b482754aba9e0df7f3451787832397c9ec2a2f2))
+
+
+
 ## [13.0.2](https://github.com/Availity/availity-react/compare/@availity/page-header@13.0.1...@availity/page-header@13.0.2) (2023-10-19)
 
 
