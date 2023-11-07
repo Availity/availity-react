@@ -25,7 +25,7 @@
     "publish:canary": "yarn npm publish --access public --tag canary"
   },
   "dependencies": {
-    "@availity/hooks": "workspace:*",
+    "@availity/hooks": "workspace:^5.0.0",
     "lodash": "^4.17.21",
     "prop-types": "^15.8.1"
   },
