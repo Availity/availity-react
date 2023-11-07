@@ -2,6 +2,21 @@
 
 This file was generated using [@jscutlery/semver](https://github.com/jscutlery/semver).
 
+# [7.0.0](https://github.com/Availity/availity-react/compare/@availity/payer-logo@6.0.0...@availity/payer-logo@7.0.0) (2023-11-07)
+
+
+### Features
+
+* **payer-logo:** upgrade version of hooks ([65d9d40](https://github.com/Availity/availity-react/commit/65d9d404f4207b68ec5ab05e6b72054682389409))
+
+
+### BREAKING CHANGES
+
+* **payer-logo:** @availity/hooks v4 requires react-query
+whereas v5 requires @tanstack/react-query
+
+
+
 # [6.0.0](https://github.com/Availity/availity-react/compare/@availity/payer-logo@5.2.2...@availity/payer-logo@6.0.0) (2023-10-09)
 
 
