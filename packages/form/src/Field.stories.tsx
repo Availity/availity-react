@@ -1,5 +1,5 @@
 /* eslint-disable no-console */
-import React, { useState } from 'react';
+import React from 'react';
 import { StoryObj } from '@storybook/react';
 import { Button } from 'reactstrap';
 import * as yup from 'yup';
