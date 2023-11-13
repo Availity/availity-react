@@ -2,6 +2,23 @@
 
 This file was generated using [@jscutlery/semver](https://github.com/jscutlery/semver).
 
+# [1.8.0](https://github.com/Availity/availity-react/compare/@availity/form@1.7.6...@availity/form@1.8.0) (2023-11-13)
+
+### Dependency Updates
+
+* `icon` updated to version `1.7.6`
+
+### Bug Fixes
+
+* **help:** add @availity/icon as dep ([5b6e801](https://github.com/Availity/availity-react/commit/5b6e80161a72fd651fb37cc9e8c2b018c6b92212))
+
+
+### Features
+
+* **form:** move FieldHelpIcon ([be958bc](https://github.com/Availity/availity-react/commit/be958bc28ea522c90304fd75264cb95bb7f93310))
+
+
+
 ## [1.7.6](https://github.com/Availity/availity-react/compare/@availity/form@1.7.5...@availity/form@1.7.6) (2023-11-03)
 
 
