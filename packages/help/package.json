@@ -32,7 +32,6 @@
     "publish:canary": "yarn npm publish --access public --tag canary"
   },
   "dependencies": {
-    "@availity/icon": "workspace:*",
     "@availity/message-core": "^6.1.1"
   },
   "devDependencies": {

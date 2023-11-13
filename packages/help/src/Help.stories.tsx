@@ -1,8 +1,8 @@
 import React from 'react';
 import { StoryObj } from '@storybook/react';
 
-import HelpProvider, { FieldHelpIcon, Help } from '.';
-import { FieldHelpIconProps, HelpProps } from './Help';
+import HelpProvider, { Help } from '.';
+import { HelpProps } from './Help';
 // import README from "../README.md";
 
 /**
@@ -28,17 +28,3 @@ export const _Help: StoryObj<HelpProps> = {
     id: '1234-5678-9101-1213',
   },
 };
-
-export const _FieldHelp: StoryObj<FieldHelpIconProps> = {
-  render: ({ id, labelId }) => (
-    <div id="testId">
-      Select A Provider <FieldHelpIcon id={id} labelId={labelId} />
-    </div>
-  ),
-  args: {
-    id: '1234-5678-910',
-    labelId: 'testId',
-  },
-};
-
-export const hidden_FieldHelpIcon = (props: FieldHelpIconProps) => <FieldHelpIcon {...props} />;
