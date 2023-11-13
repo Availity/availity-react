@@ -2,6 +2,18 @@
 
 This file was generated using [@jscutlery/semver](https://github.com/jscutlery/semver).
 
+# [3.0.0](https://github.com/Availity/availity-react/compare/@availity/help@2.2.2...@availity/help@3.0.0) (2023-11-13)
+
+
+* feat(help)!: move FieldHelpIcon to form package ([b18551b](https://github.com/Availity/availity-react/commit/b18551bebae1150c1622d0c291af47b988e0bd88))
+
+
+### BREAKING CHANGES
+
+* FieldHelpIcon no longer exported. Use @availity/form instead
+
+
+
 ## [2.2.2](https://github.com/Availity/availity-react/compare/@availity/help@2.2.1...@availity/help@2.2.2) (2023-10-18)
 
 
