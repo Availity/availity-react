@@ -1,6 +1,5 @@
 import React, { createContext, useContext, useState, useEffect, useCallback } from 'react';
 import avMessages from '@availity/message-core';
-import Icon from '@availity/icon';
 
 type HelpObject = {
   id: string;
@@ -24,7 +23,6 @@ const useHelpContext = () => {
 export const constants = {
   SET_HELP: 'nav:help:set',
   RESET_HELP: 'nav:help:reset',
-  OPEN_FIELD_HELP: 'nav:help:field',
 } as const;
 
 const HelpProvider = ({ children }: { children: React.ReactNode }): JSX.Element => {
@@ -120,45 +118,5 @@ export const Help = ({ id, type = 'vendor', children }: HelpProps): JSX.Element 
 
   return <>{children}</>;
 };
-
-export const triggerFieldHelp = (id: string): void => {
-  avMessages.send({
-    event: constants.OPEN_FIELD_HELP,
-    id,
-  });
-};
-
-const handleKeyPress = (event: React.KeyboardEvent<HTMLElement>, id: string): void => {
-  if (event.key === 'Enter') {
-    triggerFieldHelp(id);
-  }
-};
-
-export type FieldHelpIconProps = {
-  /** The field Help ID Required */
-  id: string;
-  /** The bootstrap 3 color of the icon. Default:primary */
-  color?: string;
-  /** The size of the help icon. Default: 1x */
-  size?: string;
-  /** The id of the associated label for aria-describedby, needed for accessibility. */
-  labelId?: string;
-};
-
-export const FieldHelpIcon = ({ id, color = 'primary', size = '1x', labelId }: FieldHelpIconProps): JSX.Element => (
-  <Icon
-    role="link"
-    data-testid="field-help-icon"
-    name="help-circle"
-    size={size}
-    color={color}
-    onClick={() => triggerFieldHelp(id)}
-    tabIndex={0}
-    onKeyDown={(event) => handleKeyPress(event, id)}
-    aria-hidden="false"
-    aria-label="help"
-    aria-describedby={labelId}
-  />
-);
 
 export default HelpProvider;

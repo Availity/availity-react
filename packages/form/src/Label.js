@@ -2,7 +2,8 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { v4 as uuid } from 'uuid';
 import { Label as RSLabel } from 'reactstrap';
-import { FieldHelpIcon } from '@availity/help';
+
+import FieldHelpIcon from './FieldHelpIcon';
 
 export const RequiredAsterisk = () => (
   // required-asterisk class available in availity-uikit v4.1.5+

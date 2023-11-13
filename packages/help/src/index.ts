@@ -1,1 +1,1 @@
-export { default, Help, useHelp, constants, triggerFieldHelp, FieldHelpIcon } from './Help';
+export { default, Help, useHelp, constants } from './Help';

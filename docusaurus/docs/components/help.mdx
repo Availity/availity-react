@@ -44,36 +44,3 @@ The page level help ID **Required**
 #### `type: string`
 
 The page level help type: ie.: provider | vendor | payer | insight. **Required**
-
-### Field Level Help Icon Example
-
-```jsx
-import React from 'react';
-import { FieldHelpIcon } from '@availity/help';
-import { Label } from 'reactstrap';
-
-const Example = () => (
-  <div>
-    <Label id="provider-label">Select A Provider</Label>
-    <FieldHelpIcon id="1234-5678-910" labelId="provider-label" />
-  </div>
-);
-```
-
-## Field Help Props
-
-#### `id: string`
-
-The field Help ID **Required**
-
-#### `color?: string`
-
-The bootstrap 3 color of the icon. **Default:**`primary`
-
-#### `size?: string`
-
-The size of the help icon. **Default:** `1x`
-
-### `labelId?: string`
-
-The id of the associated label for `aria-describedby`, needed for accessibility.
