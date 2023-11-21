@@ -1138,4 +1138,65 @@ describe('Select', () => {
       expect(clearButton).toBeDisabled();
     });
   });
+
+  test('defaults to only option', async () => {
+    const { getByText } = render(
+      <Form
+        initialValues={{}}
+        onSubmit={() => {}}
+        validationSchema={singleValueSchema('singleSelect')}
+      >
+        <Select
+          name="singleSelect"
+          options={[options[0]]}
+          data-testid="single-select"
+          defaultToOnlyOption
+        />
+        <Button type="submit">Submit</Button>
+      </Form>
+    );
+
+    await waitFor(() => expect(getByText('Option 1')).toBeDefined());
+  });
+
+  test('does not default to only option if multi or clearable', async () => {
+    const { getByText } = render(
+      <Form
+        initialValues={{}}
+        onSubmit={() => {}}
+        validationSchema={singleValueSchema('singleSelect')}
+      >
+        <Select
+          name="singleSelect"
+          options={[options[0]]}
+          data-testid="single-select"
+          isClearable
+          defaultToOnlyOption
+        />
+        <Button type="submit">Submit</Button>
+      </Form>
+    );
+
+    await waitFor(() => expect(getByText('Option 1')).not.toBeDefined());
+  });
+
+  test('defaults to first option', async () => {
+    const { getByText } = render(
+      <Form
+        initialValues={{}}
+        onSubmit={() => {}}
+        validationSchema={singleValueSchema('singleSelect')}
+      >
+        <Select
+          name="singleSelect"
+          options={options}
+          data-testid="single-select"
+          defaultToFirstOption
+        />
+        <Button type="submit">Submit</Button>
+      </Form>
+    );
+
+    await waitFor(() => expect(getByText('Option 1')).toBeDefined());
+  });
 });

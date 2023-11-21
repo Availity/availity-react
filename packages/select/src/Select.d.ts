@@ -24,6 +24,8 @@ export type SelectProps<Option, IsMulti extends boolean, Group extends GroupBase
   clearButtonText?: string;
   creatable?: boolean;
   clearButtonProps?: ButtonProps;
+  defaultToFirstOption?: boolean;
+  defaultToOnlyOption?: boolean;
   feedback?: boolean;
   helpMessage?: ReactNode;
   labelKey?: string;

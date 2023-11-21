@@ -191,6 +191,8 @@ const Select = ({
   clearButtonClassName,
   clearButtonText = 'clear',
   clearButtonProps = {},
+  defaultToOnlyOption,
+  defaultToFirstOption,
   ...attributes
 }) => {
   const [{ onChange, value: fieldValue, ...field }, { touched, error: fieldError }] = useField({
@@ -399,6 +401,20 @@ const Select = ({
     } else {
       selectOptions = [...options, ...newOptions];
     }
+
+    // defaultToOnly/FirstOption
+    if (
+      !attributes.isMulti &&
+      !attributes.isClearable &&
+      selectOptions?.length > 0 &&
+      getOptionValue(fieldValue) !== getOptionValue(selectOptions[0])
+    ) {
+      if (defaultToOnlyOption && selectOptions?.length === 1) {
+        setFieldValue(name, getOptionValue(selectOptions[0]));
+      } else if (defaultToFirstOption) {
+        setFieldValue(name, getOptionValue(selectOptions[0]));
+      }
+    }
   }
 
   if (attributes.loadOptions && allowSelectAll) {
@@ -508,6 +524,10 @@ Select.propTypes = {
   clearButtonText: PropTypes.string,
   /** Additional properties that should be set on the clear button (only available when isMulti or isClearable). */
   clearButtonProps: PropTypes.object,
+  /** Automatically select the option if it is the only one available. Ignored if loadOptions or isClearable/isMulti is used */
+  defaultToOnlyOption: PropTypes.bool,
+  /** Automatically select the first option if there are any options. Ignored if loadOptions or isClearable/isMulti is used */
+  defaultToFirstOption: PropTypes.bool,
 };
 
 components.Option.propTypes = {
