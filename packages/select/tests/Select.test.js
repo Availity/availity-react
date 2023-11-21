@@ -1151,7 +1151,7 @@ describe('Select', () => {
   });
 
   test('does not default to only option if multi or clearable', async () => {
-    const { getByText } = render(
+    const { getByPlaceholderText } = render(
       <Form initialValues={{}} onSubmit={() => {}} validationSchema={singleValueSchema('singleSelect')}>
         <Select
           name="singleSelect"
@@ -1164,7 +1164,7 @@ describe('Select', () => {
       </Form>
     );
 
-    await waitFor(() => expect(getByText('Option 1')).toBeNull());
+    await waitFor(() => expect(getByPlaceholderText('Select...')).toBeDefined());
   });
 
   test('defaults to first option', async () => {
