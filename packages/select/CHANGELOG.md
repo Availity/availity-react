@@ -2,6 +2,15 @@
 
 This file was generated using [@jscutlery/semver](https://github.com/jscutlery/semver).
 
+# [4.1.0](https://github.com/Availity/availity-react/compare/@availity/select@4.0.2...@availity/select@4.1.0) (2023-11-29)
+
+
+### Features
+
+* **select:** add defaultToOnlyOption and defaultToFirstOption for normal Selects ([7fbccbb](https://github.com/Availity/availity-react/commit/7fbccbb6e8211bc2fa3fb31d101877736f7c85eb))
+
+
+
 ## [4.0.2](https://github.com/Availity/availity-react/compare/@availity/select@4.0.1...@availity/select@4.0.2) (2023-11-03)
 
 
