@@ -235,7 +235,7 @@ describe('ResourceSelect', () => {
 
     expect(providerOption).toBeDefined();
     expect(avProvidersApi.postGet).toHaveBeenCalledTimes(2);
-    expect(avProvidersApi.postGet.mock.calls[1][0]).toBe('q=&limit=50&customerId=1195&offset=0');
+    expect(avProvidersApi.postGet.mock.calls[1][0]).toBe('q=&limit=50&customerId=1195&offset=0&role=OFFICE');
   });
 
   it('waits to query resource until input is focused when waitUntilFocused is true', async () => {
