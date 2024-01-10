@@ -13,7 +13,7 @@ const ProviderSelect = ResourceSelect.create({
 
 const AvProviderSelect = ({ searchAll = false, parameters: originalParams, ...props }) => {
   let parameters = originalParams;
-  if (!searchAll) {
+  if (!searchAll && typeof parameters !== 'function') {
     parameters = { ...originalParams, role: 'OFFICE' };
   }
   return <ProviderSelect {...props} parameters={parameters} />;
@@ -21,7 +21,7 @@ const AvProviderSelect = ({ searchAll = false, parameters: originalParams, ...pr
 
 AvProviderSelect.propTypes = {
   searchAll: PropTypes.bool,
-  parameters: PropTypes.object,
+  parameters: PropTypes.oneOf(PropTypes.object, PropTypes.func),
 };
 
 export default AvProviderSelect;
