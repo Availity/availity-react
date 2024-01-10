@@ -215,7 +215,7 @@ describe('ResourceSelect', () => {
 
     expect(providerOption).toBeDefined();
     expect(avProvidersApi.postGet).toHaveBeenCalledTimes(1);
-    expect(avProvidersApi.postGet.mock.calls[0][0]).toBe('q=&limit=50&customerId=1194&offset=0');
+    expect(avProvidersApi.postGet.mock.calls[0][0]).toBe('q=&limit=50&customerId=1194&offset=0&role=OFFICE');
 
     // rerender with same props should not trigger api call
     rerender(<ProviderComponent providerProps={providerProps} />);
