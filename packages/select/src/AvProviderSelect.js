@@ -21,7 +21,7 @@ const AvProviderSelect = ({ searchAll = false, parameters: originalParams, ...pr
 
 AvProviderSelect.propTypes = {
   searchAll: PropTypes.bool,
-  parameters: PropTypes.oneOf(PropTypes.object, PropTypes.func),
+  parameters: PropTypes.oneOf([PropTypes.object, PropTypes.func]),
 };
 
 export default AvProviderSelect;
