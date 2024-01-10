@@ -3,6 +3,7 @@ import { fireEvent, render, waitFor } from '@testing-library/react';
 import AvApi, { avRegionsApi, avProvidersApi, avCodesApi } from '@availity/api-axios';
 import userEvent from '@testing-library/user-event';
 import { Button } from 'reactstrap';
+// eslint-disable-next-line import/no-unresolved
 import { Form } from '@availity/form';
 
 import { ResourceSelect } from '../src';
