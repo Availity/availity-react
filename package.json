@@ -90,7 +90,7 @@
     "@types/react": "^18.2.21",
     "@types/react-dom": "^18.2.7",
     "adio": "^1.2.1",
-    "availity-uikit": "^4.6.2",
+    "availity-uikit": "^4.6.3",
     "babel-loader": "^9.1.3",
     "babel-preset-react-app": "^10.0.1",
     "codecov": "^3.8.3",
