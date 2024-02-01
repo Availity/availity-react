@@ -322,7 +322,7 @@ __metadata:
     "@types/react": ^18.2.21
     "@types/react-dom": ^18.2.7
     adio: ^1.2.1
-    availity-uikit: ^4.5.1
+    availity-uikit: ^4.6.3
     babel-loader: ^9.1.3
     babel-preset-react-app: ^10.0.1
     codecov: ^3.8.3
@@ -9546,12 +9546,10 @@ __metadata:
   languageName: node
   linkType: hard
 
-"availity-uikit@npm:^4.5.1":
-  version: 4.5.1
-  resolution: "availity-uikit@npm:4.5.1"
-  dependencies:
-    bootstrap: 4.5.3
-  checksum: c0274d147d35e02bbaca29deebacadfb617867aacafd5880e6784db0215d28c26931c51d7e9d5e9b65ac15fab886b358e6af53419bfd72b54cde8855e714cded
+"availity-uikit@npm:^4.6.3":
+  version: 4.6.3
+  resolution: "availity-uikit@npm:4.6.3"
+  checksum: 5c8fa657cb74a67ef09931704d11e1702bbea7715eb7d0048f4f24f1582c648f97f66077dc44ecc3e081a4a70ae9f2c53bd5ef978d6498735e7e511795a304cd
   languageName: node
   linkType: hard
 
@@ -10060,16 +10058,6 @@ __metadata:
   version: 1.0.0
   resolution: "boolbase@npm:1.0.0"
   checksum: 3e25c80ef626c3a3487c73dbfc70ac322ec830666c9ad915d11b701142fab25ec1e63eff2c450c74347acfd2de854ccde865cd79ef4db1683f7c7b046ea43bb0
-  languageName: node
-  linkType: hard
-
-"bootstrap@npm:4.5.3":
-  version: 4.5.3
-  resolution: "bootstrap@npm:4.5.3"
-  peerDependencies:
-    jquery: 1.9.1 - 3
-    popper.js: ^1.16.1
-  checksum: b57b2e0b162b619c5f40e0cd97803137a7bc4dc16e58a63d1978e45fa367814bce3f4625e8f404bf5484c9cd7fc4fa04d2d9550d2f5dce5d1c58fa86192a6e85
   languageName: node
   linkType: hard
 
