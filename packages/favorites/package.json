@@ -32,15 +32,15 @@
     "publish:canary": "yarn npm publish --access public --tag canary"
   },
   "dependencies": {
-    "@availity/analytics-core": "^4.0.4",
+    "@availity/analytics-core": "^4.0.5",
     "@availity/hooks": "workspace:*",
-    "@availity/message-core": "^6.1.1",
+    "@availity/message-core": "^6.1.2",
     "@radix-ui/react-tooltip": "0.1.6",
     "@tanstack/react-query": "^4.36.1",
     "lodash": "^4.17.21"
   },
   "devDependencies": {
-    "@availity/api-axios": "^8.0.3",
+    "@availity/api-axios": "^8.0.4",
     "axios": "^1.5.0",
     "esbuild-sass-plugin": "^2.15.0",
     "react": "^18.2.0",

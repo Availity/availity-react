@@ -343,12 +343,12 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@availity/analytics-core@npm:^4.0.4":
-  version: 4.0.4
-  resolution: "@availity/analytics-core@npm:4.0.4"
+"@availity/analytics-core@npm:^4.0.5":
+  version: 4.0.5
+  resolution: "@availity/analytics-core@npm:4.0.5"
   dependencies:
     yup: ^0.32.11
-  checksum: bd8833921c245873ef9273389ab442cebe1dae78c3e31d22b927f98e1e3580cfdc500ad0dfd09b14bba16d1282436b281c96984da451dba42742f664cc71b7e6
+  checksum: 8b254f713de33685e9a13c76202bca33a2744c7b5cae95eb191786916d764cb87f9588be12d656b5f43be932b2dd60ef54ac73e94a8aa4d6d63f0b7188f30300
   languageName: node
   linkType: hard
 
@@ -356,7 +356,7 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@availity/analytics@workspace:packages/analytics"
   dependencies:
-    "@availity/analytics-core": ^4.0.4
+    "@availity/analytics-core": ^4.0.5
     prop-types: ^15.8.1
     react: ^18.2.0
     react-dom: ^18.2.0
@@ -365,16 +365,16 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@availity/api-axios@npm:8.0.3, @availity/api-axios@npm:^8.0.3":
-  version: 8.0.3
-  resolution: "@availity/api-axios@npm:8.0.3"
+"@availity/api-axios@npm:8.0.4, @availity/api-axios@npm:^8.0.4":
+  version: 8.0.4
+  resolution: "@availity/api-axios@npm:8.0.4"
   dependencies:
-    "@availity/resolve-url": 2.0.4
+    "@availity/resolve-url": 2.0.5
     lodash: ^4.17.21
     qs: ^6.11.2
   peerDependencies:
     axios: ^1.4.0
-  checksum: 6a87f6d617b62f5d3a492057e6b23bfffad9f122897d58cd2cebef22e66d569883f2af07a39360f07fc55417c379a89828af57a94e1d4852382cd653d20ddb5b
+  checksum: 831a64a3444558c35efef66eacad8cb5e0de595c8061207700cd689ffac55d337606d92a27d4aeb70f8ca718c3c3d4def1d8907135a127628da5222684b46206
   languageName: node
   linkType: hard
 
@@ -410,7 +410,7 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@availity/authorize@workspace:packages/authorize"
   dependencies:
-    "@availity/api-axios": ^8.0.3
+    "@availity/api-axios": ^8.0.4
     "@availity/block-ui": ^1.0.0
     "@tanstack/react-query": ^4.36.1
     axios: ^1.5.0
@@ -462,7 +462,7 @@ __metadata:
     css-loader: ^5.2.7
     dependency-check: ^4.1.0
     eslint: ^7.32.0
-    eslint-config-availity: ^8.0.9
+    eslint-config-availity: ^9.0.0
     eslint-plugin-storybook: ^0.6.13
     husky: ^8.0.3
     identity-obj-proxy: ^3.0.0
@@ -494,7 +494,7 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@availity/avatar@workspace:packages/avatar"
   dependencies:
-    "@availity/api-axios": ^8.0.3
+    "@availity/api-axios": ^8.0.4
     "@availity/hooks": "workspace:*"
     axios: ^1.5.0
     lodash: ^4.17.21
@@ -574,7 +574,7 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@availity/change-password@workspace:packages/change-password"
   dependencies:
-    "@availity/api-axios": ^8.0.3
+    "@availity/api-axios": ^8.0.4
     "@availity/block-ui": "workspace:^"
     "@availity/form": "workspace:*"
     "@availity/icon": "workspace:*"
@@ -601,7 +601,7 @@ __metadata:
   dependencies:
     "@availity/form": "workspace:*"
     "@availity/react-dates": ^21.13.1
-    "@availity/yup": ^5.1.3
+    "@availity/yup": ^5.1.4
     "@types/react-dates": ^21.8.3
     classnames: ^2.3.2
     esbuild-sass-plugin: ^2.15.0
@@ -639,10 +639,10 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@availity/favorites@workspace:packages/favorites"
   dependencies:
-    "@availity/analytics-core": ^4.0.4
-    "@availity/api-axios": ^8.0.3
+    "@availity/analytics-core": ^4.0.5
+    "@availity/api-axios": ^8.0.4
     "@availity/hooks": "workspace:*"
-    "@availity/message-core": ^6.1.1
+    "@availity/message-core": ^6.1.2
     "@radix-ui/react-tooltip": 0.1.6
     "@tanstack/react-query": ^4.36.1
     axios: ^1.5.0
@@ -683,14 +683,14 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@availity/feedback@workspace:packages/feedback"
   dependencies:
-    "@availity/api-axios": ^8.0.3
+    "@availity/api-axios": ^8.0.4
     "@availity/block-ui": "workspace:^"
     "@availity/form": "workspace:*"
     "@availity/hooks": "workspace:*"
     "@availity/icon": "workspace:*"
-    "@availity/native-form": ^5.0.4
+    "@availity/native-form": ^5.0.5
     "@availity/select": "workspace:*"
-    "@availity/yup": ^5.1.3
+    "@availity/yup": ^5.1.4
     axios: ^1.5.0
     formik: ^2.4.4
     prop-types: ^15.8.1
@@ -711,11 +711,11 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@availity/form-upload@workspace:packages/form-upload"
   dependencies:
-    "@availity/api-axios": ^8.0.3
+    "@availity/api-axios": ^8.0.4
     "@availity/form": "workspace:*"
     "@availity/icon": "workspace:*"
     "@availity/progress": "workspace:*"
-    "@availity/upload-core": ^5.0.4
+    "@availity/upload-core": ^5.0.5
     "@types/uuid": ^9.0.3
     classnames: ^2.3.2
     formik: ^2.4.4
@@ -744,7 +744,7 @@ __metadata:
   resolution: "@availity/form@workspace:packages/form"
   dependencies:
     "@availity/icon": "workspace:*"
-    "@availity/message-core": ^6.1.1
+    "@availity/message-core": ^6.1.2
     classnames: ^2.3.2
     formik: ^2.4.4
     prop-types: ^15.8.1
@@ -767,7 +767,7 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@availity/help@workspace:packages/help"
   dependencies:
-    "@availity/message-core": ^6.1.1
+    "@availity/message-core": ^6.1.2
     react: ^18.2.0
     react-dom: ^18.2.0
     tsup: ^7.2.0
@@ -781,7 +781,7 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@availity/hooks@workspace:packages/hooks"
   dependencies:
-    "@availity/api-axios": ^8.0.3
+    "@availity/api-axios": ^8.0.4
     "@tanstack/react-query": ^4.36.1
     axios: ^1.5.0
     prop-types: ^15.8.1
@@ -826,7 +826,7 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@availity/link@workspace:packages/link"
   dependencies:
-    "@availity/resolve-url": ^2.0.4
+    "@availity/resolve-url": ^2.0.5
     classnames: ^2.3.2
     prop-types: ^15.8.1
     react: ^18.2.0
@@ -865,10 +865,10 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@availity/message-core@npm:^6.1.1":
-  version: 6.1.1
-  resolution: "@availity/message-core@npm:6.1.1"
-  checksum: 8214b7e1c949a994fb9eeb5ef140648b6a965039d50f8b858179dca8da8c7608aa415bc0e301fac6512885c121f69622c6b95c39a61d4b58d1f7a9c63a2d8171
+"@availity/message-core@npm:^6.1.2":
+  version: 6.1.2
+  resolution: "@availity/message-core@npm:6.1.2"
+  checksum: 1fd135ff1dc8db99442a5b1691f017e61377b88334e62eae1f3a6509706b3285d99d20f161275b3cfe0dac0870034be3d1bf8e0d573d151ded7447056edee4b3
   languageName: node
   linkType: hard
 
@@ -881,12 +881,12 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@availity/native-form@npm:^5.0.4":
-  version: 5.0.4
-  resolution: "@availity/native-form@npm:5.0.4"
+"@availity/native-form@npm:^5.0.5":
+  version: 5.0.5
+  resolution: "@availity/native-form@npm:5.0.5"
   dependencies:
-    "@availity/api-axios": 8.0.3
-  checksum: fead29e2bbbe4dab30907ce9589784f082fe3c1a066de03b5ebc034c4ec1dcf904e83f7698581d15e59e72d78d5913bf7a043f55121a31c2e4487cb4127a2527
+    "@availity/api-axios": 8.0.4
+  checksum: 6d3df5d14eae129e965fe5fd1fa7e97c2910d00e610f66e442678fad1df8d9aec4b4c929b550e13db62bd2ef24a5ca7c505a36c7cdb5b815db6f0baddf583f3a
   languageName: node
   linkType: hard
 
@@ -894,7 +894,7 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@availity/page-header@workspace:packages/page-header"
   dependencies:
-    "@availity/api-axios": ^8.0.3
+    "@availity/api-axios": ^8.0.4
     "@availity/app-icon": "workspace:*"
     "@availity/breadcrumbs": "workspace:*"
     "@availity/feedback": "workspace:*"
@@ -943,7 +943,7 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@availity/payer-logo@workspace:packages/payer-logo"
   dependencies:
-    "@availity/api-axios": ^8.0.3
+    "@availity/api-axios": ^8.0.4
     "@availity/hooks": "workspace:^5.0.0"
     axios: ^1.5.0
     lodash: ^4.17.21
@@ -1051,7 +1051,7 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@availity/reactstrap-validation-select@workspace:packages/reactstrap-validation-select"
   dependencies:
-    "@availity/api-axios": ^8.0.3
+    "@availity/api-axios": ^8.0.4
     availity-reactstrap-validation: ^2.7.1
     axios: ^1.5.0
     classnames: ^2.3.2
@@ -1073,10 +1073,10 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@availity/resolve-url@npm:2.0.4, @availity/resolve-url@npm:^2.0.4":
-  version: 2.0.4
-  resolution: "@availity/resolve-url@npm:2.0.4"
-  checksum: 284a440482d5ef0e28a34e8787f021568d9954d67565645f7d89434dcd414f20b6a174c9bec0142f0a6db230a09eed1bdcb6849809c0e9f3d2379629905d3dae
+"@availity/resolve-url@npm:2.0.5, @availity/resolve-url@npm:^2.0.5":
+  version: 2.0.5
+  resolution: "@availity/resolve-url@npm:2.0.5"
+  checksum: 59980fbd26173a91872c435d7e8617e45049de50d3f67710a1dc845b7740908309dd8b324189f4479d99a18deae013abc7c0e9b87f7bac8d7080123693bfd396
   languageName: node
   linkType: hard
 
@@ -1084,7 +1084,7 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@availity/select@workspace:packages/select"
   dependencies:
-    "@availity/api-axios": ^8.0.3
+    "@availity/api-axios": ^8.0.4
     "@availity/form": "workspace:*"
     axios: ^1.5.0
     classnames: ^2.3.2
@@ -1114,15 +1114,15 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@availity/spaces@workspace:packages/spaces"
   dependencies:
-    "@availity/api-axios": ^8.0.3
+    "@availity/api-axios": ^8.0.4
     "@availity/app-icon": "workspace:*"
     "@availity/favorites": "workspace:*"
     "@availity/hooks": "workspace:*"
     "@availity/icon": "workspace:*"
     "@availity/link": "workspace:*"
     "@availity/list-group-item": "workspace:*"
-    "@availity/message-core": ^6.1.1
-    "@availity/native-form": ^5.0.4
+    "@availity/message-core": ^6.1.2
+    "@availity/native-form": ^5.0.5
     "@availity/typography": "workspace:*"
     "@tanstack/react-query": ^4.36.1
     axios: ^1.5.0
@@ -1241,13 +1241,13 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@availity/upload-core@npm:^5.0.4":
-  version: 5.0.4
-  resolution: "@availity/upload-core@npm:5.0.4"
+"@availity/upload-core@npm:^5.0.5":
+  version: 5.0.5
+  resolution: "@availity/upload-core@npm:5.0.5"
   dependencies:
-    "@availity/resolve-url": 2.0.4
+    "@availity/resolve-url": 2.0.5
     tus-js-client: 1.7.1
-  checksum: e448d6cab0a50d618d81c9af1c99c7ab0863bc0337898943a5a20719ee353e30ec5ab66376980476d570a36e0ac405cf95bece87825a835b36c8c52c66f90f5a
+  checksum: f24cc1d7b5dcd044a9371baa64eca27e713064e01d14e48890e62fc70d17c36acef3d5222cdcf11f69ecd0a8c06178b9fba057ae8fe6969cb647731b0391e6b4
   languageName: node
   linkType: hard
 
@@ -1256,7 +1256,7 @@ __metadata:
   resolution: "@availity/upload@workspace:packages/upload"
   dependencies:
     "@availity/progress": "workspace:*"
-    "@availity/upload-core": ^5.0.4
+    "@availity/upload-core": ^5.0.5
     prop-types: ^15.8.1
     react: ^18.2.0
     react-dom: ^18.2.0
@@ -1272,15 +1272,15 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@availity/yup@npm:^5.1.3":
-  version: 5.1.3
-  resolution: "@availity/yup@npm:5.1.3"
+"@availity/yup@npm:^5.1.4":
+  version: 5.1.4
+  resolution: "@availity/yup@npm:5.1.4"
   dependencies:
     lodash: ^4.17.21
     yup: ^0.32.11
   peerDependencies:
     moment: ^2.24.0
-  checksum: 7a17fa9e44e08bcb9d75c236d0780a61345917a0492505fddcf4353dd62963e475c9e442e274cfe07c4c488a57f2d4875345bf48d403f7a4b25b0e2d0e9fcaf0
+  checksum: 95771475730efa73b1414b8b8c3caaa9bdf4ab6a2ddd61386bf7ec4d93a76b85a27a36f99098c63dd323954eb313b9174ed97239ca7c2f06f3c8b43cf3a71ec8
   languageName: node
   linkType: hard
 
@@ -1361,7 +1361,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@babel/core@npm:^7.23.3":
+"@babel/core@npm:^7.22.15, @babel/core@npm:^7.23.3":
   version: 7.23.9
   resolution: "@babel/core@npm:7.23.9"
   dependencies:
@@ -1384,7 +1384,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@babel/eslint-parser@npm:^7.12.16, @babel/eslint-parser@npm:^7.16.0":
+"@babel/eslint-parser@npm:^7.12.16":
   version: 7.22.15
   resolution: "@babel/eslint-parser@npm:7.22.15"
   dependencies:
@@ -1395,6 +1395,20 @@ __metadata:
     "@babel/core": ^7.11.0
     eslint: ^7.5.0 || ^8.0.0
   checksum: efdc749164a40de1b68e3ed395f441dfb7864c85d0a2ee3e4bc4f06dd0b7f675acb9be97cdc9025b88b3e80d38749a2b30e392ce7f6a79313c3aaf82ba8ccd68
+  languageName: node
+  linkType: hard
+
+"@babel/eslint-parser@npm:^7.22.15":
+  version: 7.23.10
+  resolution: "@babel/eslint-parser@npm:7.23.10"
+  dependencies:
+    "@nicolo-ribaudo/eslint-scope-5-internals": 5.1.1-v1
+    eslint-visitor-keys: ^2.1.0
+    semver: ^6.3.1
+  peerDependencies:
+    "@babel/core": ^7.11.0
+    eslint: ^7.5.0 || ^8.0.0
+  checksum: 81249edee14f95720044f393b5b0a681a230ac2bde3d656b0c55b1cec4c5cb99ce0584ef6acd2e5413acc7905daee1b2e1db8e3fab18a3a74c508098a584ec9a
   languageName: node
   linkType: hard
 
@@ -8655,20 +8669,21 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@typescript-eslint/parser@npm:^5.11.0":
-  version: 5.62.0
-  resolution: "@typescript-eslint/parser@npm:5.62.0"
+"@typescript-eslint/parser@npm:^6.6.0":
+  version: 6.21.0
+  resolution: "@typescript-eslint/parser@npm:6.21.0"
   dependencies:
-    "@typescript-eslint/scope-manager": 5.62.0
-    "@typescript-eslint/types": 5.62.0
-    "@typescript-eslint/typescript-estree": 5.62.0
+    "@typescript-eslint/scope-manager": 6.21.0
+    "@typescript-eslint/types": 6.21.0
+    "@typescript-eslint/typescript-estree": 6.21.0
+    "@typescript-eslint/visitor-keys": 6.21.0
     debug: ^4.3.4
   peerDependencies:
-    eslint: ^6.0.0 || ^7.0.0 || ^8.0.0
+    eslint: ^7.0.0 || ^8.0.0
   peerDependenciesMeta:
     typescript:
       optional: true
-  checksum: d168f4c7f21a7a63f47002e2d319bcbb6173597af5c60c1cf2de046b46c76b4930a093619e69faf2d30214c29ab27b54dcf1efc7046a6a6bd6f37f59a990e752
+  checksum: 162fe3a867eeeffda7328bce32dae45b52283c68c8cb23258fb9f44971f761991af61f71b8c9fe1aa389e93dfe6386f8509c1273d870736c507d76dd40647b68
   languageName: node
   linkType: hard
 
@@ -8689,6 +8704,16 @@ __metadata:
     "@typescript-eslint/types": 5.62.0
     "@typescript-eslint/visitor-keys": 5.62.0
   checksum: 6062d6b797fe1ce4d275bb0d17204c827494af59b5eaf09d8a78cdd39dadddb31074dded4297aaf5d0f839016d601032857698b0e4516c86a41207de606e9573
+  languageName: node
+  linkType: hard
+
+"@typescript-eslint/scope-manager@npm:6.21.0":
+  version: 6.21.0
+  resolution: "@typescript-eslint/scope-manager@npm:6.21.0"
+  dependencies:
+    "@typescript-eslint/types": 6.21.0
+    "@typescript-eslint/visitor-keys": 6.21.0
+  checksum: 71028b757da9694528c4c3294a96cc80bc7d396e383a405eab3bc224cda7341b88e0fc292120b35d3f31f47beac69f7083196c70616434072fbcd3d3e62d3376
   languageName: node
   linkType: hard
 
@@ -8720,6 +8745,13 @@ __metadata:
   version: 5.62.0
   resolution: "@typescript-eslint/types@npm:5.62.0"
   checksum: 48c87117383d1864766486f24de34086155532b070f6264e09d0e6139449270f8a9559cfef3c56d16e3bcfb52d83d42105d61b36743626399c7c2b5e0ac3b670
+  languageName: node
+  linkType: hard
+
+"@typescript-eslint/types@npm:6.21.0":
+  version: 6.21.0
+  resolution: "@typescript-eslint/types@npm:6.21.0"
+  checksum: 9501b47d7403417af95fc1fb72b2038c5ac46feac0e1598a46bcb43e56a606c387e9dcd8a2a0abe174c91b509f2d2a8078b093786219eb9a01ab2fbf9ee7b684
   languageName: node
   linkType: hard
 
@@ -8759,6 +8791,25 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@typescript-eslint/typescript-estree@npm:6.21.0":
+  version: 6.21.0
+  resolution: "@typescript-eslint/typescript-estree@npm:6.21.0"
+  dependencies:
+    "@typescript-eslint/types": 6.21.0
+    "@typescript-eslint/visitor-keys": 6.21.0
+    debug: ^4.3.4
+    globby: ^11.1.0
+    is-glob: ^4.0.3
+    minimatch: 9.0.3
+    semver: ^7.5.4
+    ts-api-utils: ^1.0.1
+  peerDependenciesMeta:
+    typescript:
+      optional: true
+  checksum: dec02dc107c4a541e14fb0c96148f3764b92117c3b635db3a577b5a56fc48df7a556fa853fb82b07c0663b4bf2c484c9f245c28ba3e17e5cb0918ea4cab2ea21
+  languageName: node
+  linkType: hard
+
 "@typescript-eslint/utils@npm:5.62.0, @typescript-eslint/utils@npm:^5.45.0":
   version: 5.62.0
   resolution: "@typescript-eslint/utils@npm:5.62.0"
@@ -8794,6 +8845,16 @@ __metadata:
     "@typescript-eslint/types": 5.62.0
     eslint-visitor-keys: ^3.3.0
   checksum: 976b05d103fe8335bef5c93ad3f76d781e3ce50329c0243ee0f00c0fcfb186c81df50e64bfdd34970148113f8ade90887f53e3c4938183afba830b4ba8e30a35
+  languageName: node
+  linkType: hard
+
+"@typescript-eslint/visitor-keys@npm:6.21.0":
+  version: 6.21.0
+  resolution: "@typescript-eslint/visitor-keys@npm:6.21.0"
+  dependencies:
+    "@typescript-eslint/types": 6.21.0
+    eslint-visitor-keys: ^3.4.1
+  checksum: 67c7e6003d5af042d8703d11538fca9d76899f0119130b373402819ae43f0bc90d18656aa7add25a24427ccf1a0efd0804157ba83b0d4e145f06107d7d1b7433
   languageName: node
   linkType: hard
 
@@ -13793,15 +13854,15 @@ __metadata:
   languageName: node
   linkType: hard
 
-"eslint-config-availity@npm:^8.0.9":
-  version: 8.0.9
-  resolution: "eslint-config-availity@npm:8.0.9"
+"eslint-config-availity@npm:^9.0.0":
+  version: 9.0.0
+  resolution: "eslint-config-availity@npm:9.0.0"
   dependencies:
-    "@babel/core": ^7.16.0
-    "@babel/eslint-parser": ^7.16.0
-    "@babel/preset-react": ^7.16.0
+    "@babel/core": ^7.22.15
+    "@babel/eslint-parser": ^7.22.15
+    "@babel/preset-react": ^7.22.15
     "@typescript-eslint/eslint-plugin": ^5.11.0
-    "@typescript-eslint/parser": ^5.11.0
+    "@typescript-eslint/parser": ^6.6.0
     babel-plugin-root-import: ^6.6.0
     eslint: ^7.31.0
     eslint-config-airbnb: ^18.2.1
@@ -13818,7 +13879,7 @@ __metadata:
     eslint-plugin-unicorn: ^34.0.1
   peerDependencies:
     typescript: ^4.5.5
-  checksum: 8f93fa9df99b5def6d0e9adf5159a335ece1d30e4e375d5a0d68fcf2bf21758393637eecf03885b9babb42a3bf2751f346c648d28d82c68f4939d8c8a5ec28e8
+  checksum: 19ecba4954ef5a67f1a852bdc13277a452652585816a0399d2cc7ebc1fe9934080449bf771348b8571150a051ecb3da2a8303a7dcfa3cd7c96ad919299126ec9
   languageName: node
   linkType: hard
 
@@ -14092,7 +14153,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"eslint-visitor-keys@npm:^3.3.0":
+"eslint-visitor-keys@npm:^3.3.0, eslint-visitor-keys@npm:^3.4.1":
   version: 3.4.3
   resolution: "eslint-visitor-keys@npm:3.4.3"
   checksum: 36e9ef87fca698b6fd7ca5ca35d7b2b6eeaaf106572e2f7fd31c12d3bfdaccdb587bba6d3621067e5aece31c8c3a348b93922ab8f7b2cbc6aaab5e1d89040c60
@@ -20741,21 +20802,21 @@ __metadata:
   languageName: node
   linkType: hard
 
+"minimatch@npm:9.0.3, minimatch@npm:^9.0.1":
+  version: 9.0.3
+  resolution: "minimatch@npm:9.0.3"
+  dependencies:
+    brace-expansion: ^2.0.1
+  checksum: 253487976bf485b612f16bf57463520a14f512662e592e95c571afdab1442a6a6864b6c88f248ce6fc4ff0b6de04ac7aa6c8bb51e868e99d1d65eb0658a708b5
+  languageName: node
+  linkType: hard
+
 "minimatch@npm:^5.0.1":
   version: 5.1.6
   resolution: "minimatch@npm:5.1.6"
   dependencies:
     brace-expansion: ^2.0.1
   checksum: 7564208ef81d7065a370f788d337cd80a689e981042cb9a1d0e6580b6c6a8c9279eba80010516e258835a988363f99f54a6f711a315089b8b42694f5da9d0d77
-  languageName: node
-  linkType: hard
-
-"minimatch@npm:^9.0.1":
-  version: 9.0.3
-  resolution: "minimatch@npm:9.0.3"
-  dependencies:
-    brace-expansion: ^2.0.1
-  checksum: 253487976bf485b612f16bf57463520a14f512662e592e95c571afdab1442a6a6864b6c88f248ce6fc4ff0b6de04ac7aa6c8bb51e868e99d1d65eb0658a708b5
   languageName: node
   linkType: hard
 
@@ -26960,6 +27021,15 @@ __metadata:
   version: 2.1.0
   resolution: "trough@npm:2.1.0"
   checksum: a577bb561c2b401cc0e1d9e188fcfcdf63b09b151ff56a668da12197fe97cac15e3d77d5b51f426ccfd94255744a9118e9e9935afe81a3644fa1be9783c82886
+  languageName: node
+  linkType: hard
+
+"ts-api-utils@npm:^1.0.1":
+  version: 1.2.1
+  resolution: "ts-api-utils@npm:1.2.1"
+  peerDependencies:
+    typescript: ">=4.2.0"
+  checksum: 17a2a4454d65a6765b9351304cfd516fcda3098f49d72bba90cb7f22b6a09a573b4a1993fd7de7d6b8046c408960c5f21a25e64ccb969d484b32ea3b3e19d6e4
   languageName: node
   linkType: hard
 
