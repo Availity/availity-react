@@ -3,7 +3,7 @@ title: Introduction
 slug: /
 ---
 
-Availity React is a repo of [React](https://beta.reactjs.org/) components built for web projects on the Availity Portal. This site provides documentation on how to use those components.
+Availity React is a repo of [React](https://react.dev/) components built for web projects on the Availity Portal. This site provides documentation on how to use those components.
 
 Many of the packages provided by `availity-react` are wrappers around common `reactstrap` components. If you can't find what you're looking for in these docs, take a look at the [Reactstrap documentation](https://reactstrap.github.io).
 
