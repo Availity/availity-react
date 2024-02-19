@@ -29,19 +29,27 @@ import AppTiles from '@availity/app-tiles';
 
 const Example = () => (
   <>
-    <AppTiles shortName="SN" color="blue" image="/path/to/image" branded size="sm"/>
-    <AppTiles shortName="SN" color="red" size="xl" parents={[
-      { images: { tile: "/path/to/image" } },
-      { shortName: "SN" }
-    ]}/>
-    <AppTiles shortName="SN"/>
+    <AppTiles
+      shortName="SN"
+      color="blue"
+      image="/path/to/image"
+      branded
+      size="sm"
+    />
+    <AppTiles
+      shortName="SN"
+      color="red"
+      size="xl"
+      parents={[{ images: { tile: '/path/to/image' } }, { shortName: 'SN' }]}
+    />
+    <AppTiles shortName="SN" />
   </>
 );
 ```
 
 #### Live example
 
-[Storybook](https://availity.github.io/availity-react/storybook/?path=/docs/components-apptiles--default)
+[Storybook](https://availity.github.io/availity-react/storybook/?path=/docs/components-apptiles--docs)
 
 ### Props
 

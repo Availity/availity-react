@@ -30,7 +30,7 @@ const Example = () => {
 };
 ```
 
-#### Live example: <a href="https://availity.github.io/availity-react/storybook/?path=/story/components-upload--picker-field"> Storybook</a>
+#### Live example: <a href="https://availity.github.io/availity-react/storybook/?path=/story/form-components-upload--file-picker-story"> Storybook</a>
 
 ### Props
 

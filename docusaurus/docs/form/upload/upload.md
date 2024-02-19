@@ -99,7 +99,7 @@ const Example = () => (
 );
 ```
 
-#### Live example: <a href="https://availity.github.io/availity-react/storybook/?path=/story/components-upload--default"> Storybook</a>
+#### Live example: <a href="https://availity.github.io/availity-react/storybook/?path=/story/form-components-upload--default"> Storybook</a>
 
 ### Props
 
