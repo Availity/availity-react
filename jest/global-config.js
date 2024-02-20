@@ -10,7 +10,7 @@ module.exports = {
   },
   moduleFileExtensions: ['ts', 'js', 'tsx'],
   preset: '../../jest.preset.js',
-  testEnvironment: 'jest-environment-jsdom-global',
+  testEnvironment: 'jsdom',
   globals: {
     'ts-jest': {
       tsconfig: '<rootDir>/tsconfig.spec.json',

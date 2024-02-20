@@ -256,7 +256,7 @@ describe('Tree', () => {
   test('should collapse item on click when item is expanded', async () => {
     const items = cloneDeep(buildTree(flatTreeItems));
 
-    const { queryByTestId } = render(<Tree items={...items} expandAll />);
+    const { queryByTestId } = render(<Tree items={items} expandAll />);
 
     const treeElement = await waitFor(() => screen.getByTestId('tree-view-parent'));
     expect(treeElement).not.toBeNull();
