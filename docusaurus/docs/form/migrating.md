@@ -41,7 +41,7 @@ const Example = () => {
 };
 ```
 
-With `@availity/form`, we use `yup` and `@availity/yup` to define the validation schema for all of the inputs in the form on the `<Form />` component with the `validationSchema` prop from [formik](https://jaredpalmer.com/formik/docs/guides/validation#validationschema), like so:
+With `@availity/form`, we use `yup` and `@availity/yup` to define the validation schema for all of the inputs in the form on the `<Form />` component with the `validationSchema` prop from [formik](https://formik.org/docs/guides/validation#validationschema), like so:
 
 ```jsx
 import React from 'react';
@@ -63,7 +63,7 @@ const Example = () => {
 };
 ```
 
-Another key difference is we define the initial state of the inputs in the form with the `initialValues` prop from [formik](https://jaredpalmer.com/formik/docs/api/formik#initialvalues-values) on the `<Form />` component.
+Another key difference is we define the initial state of the inputs in the form with the `initialValues` prop from [formik](https://formik.org/docs/api/formik#initialvalues-values) on the `<Form />` component.
 
 ## Form with `availity-reactstrap-validation`
 

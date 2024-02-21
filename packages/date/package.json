@@ -27,7 +27,6 @@
     "dev": "tsup src/index.js --format esm,cjs --loader \".js=jsx\" --watch --dts",
     "clean": "rm -rf dist",
     "clean:nm": "rm -rf node_modules",
-    "bundlesize": "bundlesize",
     "publish": "yarn npm publish --tolerate-republish --access public",
     "publish:canary": "yarn npm publish --access public --tag canary"
   },
@@ -40,7 +39,7 @@
   },
   "devDependencies": {
     "@availity/form": "workspace:*",
-    "@availity/yup": "^5.1.3",
+    "@availity/yup": "^5.1.4",
     "@types/react-dates": "^21.8.3",
     "esbuild-sass-plugin": "^2.15.0",
     "formik": "^2.4.4",
@@ -48,7 +47,7 @@
     "react-dom": "^18.2.0",
     "reactstrap": "^8.10.1",
     "tsup": "^7.2.0",
-    "typescript": "^4.9.5"
+    "typescript": "^5.3.3"
   },
   "peerDependencies": {
     "@availity/form": "^1.1.0",

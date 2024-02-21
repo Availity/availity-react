@@ -41,7 +41,7 @@ const Example = () => (
 );
 ```
 
-#### Live example: [Storybook](https://availity.github.io/availity-react/storybook/?path=/story/formik-select--selectfield)
+#### Live example: [Storybook](https://availity.github.io/availity-react/storybook/?path=/story/form-components-select--select-field)
 
 ### Props
 

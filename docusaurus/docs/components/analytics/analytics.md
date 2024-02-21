@@ -5,7 +5,7 @@ slug: analytics
 
 [![Version](https://img.shields.io/npm/v/@availity/analytics-core.svg?style=for-the-badge)](https://www.npmjs.com/package/@availity/analytics-core)
 
-#### Live example: [Storybook](https://availity.github.io/availity-react/storybook/?path=/story/components-analytics--default)
+#### Live example: [Storybook](https://availity.github.io/availity-react/storybook/?path=/docs/components-analytics--docs)
 
 This `<Analytics />` component is part of Availity's toolset for tracking user interactions and page views in your application. For a helpful overview of how to setup these tools, read our [Setting Up Logging](https://availity.github.io/availity-workflow/recipes/logging/) guide. Logging in a React application at Availity involves imports from this React focused [@availity/analytics](https://www.npmjs.com/package/@availity/analytics) package and from [@availity/analytics-core](https://www.npmjs.com/package/@availity/analytics-core). Starting with the Setting Up Logging guide will give you a better understanding of how they work together.
 

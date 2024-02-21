@@ -39,7 +39,7 @@ const Example = () => (
 );
 ```
 
-#### Live example: [Storybook](https://availity.github.io/availity-react/storybook/?path=/story/formik-select--resourceselect)
+#### Live example: [Storybook](https://availity.github.io/availity-react/storybook/?path=/docs/form-components-select-async-selects--docs)
 
 ### Props
 

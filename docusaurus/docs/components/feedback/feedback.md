@@ -20,7 +20,7 @@ const Example = () => (
 );
 ```
 
-#### Live example: <a href="https://availity.github.io/availity-react/storybook/?path=/story/components-feedback--default"> Storybook</a>
+#### Live example: <a href="https://availity.github.io/availity-react/storybook/?path=/docs/components-feedback-feedback--docs"> Storybook</a>
 
 ### Props
 
