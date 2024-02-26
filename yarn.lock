@@ -716,7 +716,7 @@ __metadata:
     "@availity/icon": "workspace:*"
     "@availity/progress": "workspace:*"
     "@availity/upload-core": ^5.0.5
-    "@types/uuid": ^9.0.3
+    "@types/uuid": ^9.0.8
     classnames: ^2.3.2
     formik: ^2.4.4
     nock: ^13.3.3
@@ -8600,10 +8600,10 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@types/uuid@npm:^9.0.3":
-  version: 9.0.5
-  resolution: "@types/uuid@npm:9.0.5"
-  checksum: 7577940949619768303c0bf0a7cc235fac3cfae1c0bb4a2e85bfb87b2eb1024955ab446f775394d259442cd769b663b6ce43c39bdfc955d946bf833804ddb421
+"@types/uuid@npm:^9.0.8":
+  version: 9.0.8
+  resolution: "@types/uuid@npm:9.0.8"
+  checksum: b8c60b7ba8250356b5088302583d1704a4e1a13558d143c549c408bf8920535602ffc12394ede77f8a8083511b023704bc66d1345792714002bfa261b17c5275
   languageName: node
   linkType: hard
 
