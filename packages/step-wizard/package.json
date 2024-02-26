@@ -26,7 +26,7 @@
     "publish:canary": "yarn npm publish --access public --tag canary"
   },
   "dependencies": {
-    "classnames": "^2.3.2",
+    "classnames": "^2.5.1",
     "prop-types": "^15.8.1"
   },
   "devDependencies": {

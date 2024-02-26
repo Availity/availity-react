@@ -30,7 +30,7 @@
     "@availity/breadcrumbs": "workspace:*",
     "@availity/feedback": "workspace:*",
     "@availity/payer-logo": "workspace:*",
-    "classnames": "^2.3.2",
+    "classnames": "^2.5.1",
     "prop-types": "^15.8.1"
   },
   "devDependencies": {
