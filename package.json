@@ -116,7 +116,7 @@
     "react-docgen-typescript-loader": "^3.7.2",
     "react-docgen-typescript-webpack-plugin": "^1.1.0",
     "react-dom": "^18.2.0",
-    "react-router-dom": "^6.15.0",
+    "react-router-dom": "^6.22.2",
     "sass-loader": "^10.4.1",
     "storybook": "^7.4.1",
     "style-loader": "^2.0.0",
