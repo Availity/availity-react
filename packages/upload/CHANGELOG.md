@@ -2,6 +2,15 @@
 
 This file was generated using [@jscutlery/semver](https://github.com/jscutlery/semver).
 
+## [3.8.7](https://github.com/Availity/availity-react/compare/@availity/upload@3.8.6...@availity/upload@3.8.7) (2024-03-07)
+
+
+### Bug Fixes
+
+* **upload:** upload-core peerDep incapatibility ([b1e6b24](https://github.com/Availity/availity-react/commit/b1e6b24727b96930d31bc5935413853baa0370ee))
+
+
+
 ## [3.8.6](https://github.com/Availity/availity-react/compare/@availity/upload@3.8.5...@availity/upload@3.8.6) (2024-02-21)
 
 
