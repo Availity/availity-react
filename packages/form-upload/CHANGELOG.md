@@ -2,6 +2,15 @@
 
 This file was generated using [@jscutlery/semver](https://github.com/jscutlery/semver).
 
+## [1.0.3](https://github.com/Availity/availity-react/compare/@availity/form-upload@1.0.2...@availity/form-upload@1.0.3) (2024-03-07)
+
+
+### Bug Fixes
+
+* **form-upload:** upload-core peerDep incapatibility ([9abead6](https://github.com/Availity/availity-react/commit/9abead6f70de6b2f556fdad6f4928b311ce8c7b3))
+
+
+
 ## [1.0.2](https://github.com/Availity/availity-react/compare/@availity/form-upload@1.0.1...@availity/form-upload@1.0.2) (2024-02-26)
 
 
