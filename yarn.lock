@@ -731,7 +731,7 @@ __metadata:
   peerDependencies:
     "@availity/api-axios": ^8.0.0
     "@availity/form": ^1.1.0
-    "@availity/upload-core": ^4.1.1
+    "@availity/upload-core": ^5.0.5
     formik: ^2.0.1
     react: ">=16.8.0"
     react-dropzone: ^11.0.0
@@ -1139,7 +1139,7 @@ __metadata:
     reactstrap: ^8.10.1
   peerDependencies:
     "@availity/api-axios": ^8.0.0
-    "@availity/favorites": ^3.4.2
+    "@availity/favorites": ^5.0.0
     axios: ^1.0.0
     react: ">=16.8.6"
     reactstrap: ^8.0.0
@@ -1264,7 +1264,7 @@ __metadata:
     reactstrap: ^8.10.1
     uuid: ^9.0.1
   peerDependencies:
-    "@availity/upload-core": ^4.1.1
+    "@availity/upload-core": ^5.0.5
     react: ">=16.8.0"
     react-dom: ">=16.8.0"
     react-dropzone: ^11.0.0

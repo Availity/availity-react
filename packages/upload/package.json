@@ -37,7 +37,7 @@
     "reactstrap": "^8.10.1"
   },
   "peerDependencies": {
-    "@availity/upload-core": "^4.1.1",
+    "@availity/upload-core": "^5.0.5",
     "react": ">=16.8.0",
     "react-dom": ">=16.8.0",
     "react-dropzone": "^11.0.0",
