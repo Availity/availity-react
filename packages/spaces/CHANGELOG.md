@@ -2,6 +2,15 @@
 
 This file was generated using [@jscutlery/semver](https://github.com/jscutlery/semver).
 
+## [8.0.3](https://github.com/Availity/availity-react/compare/@availity/spaces@8.0.2...@availity/spaces@8.0.3) (2024-03-07)
+
+
+### Bug Fixes
+
+* **spaces:** favorites peerDep incapatibility ([ab9e5d9](https://github.com/Availity/availity-react/commit/ab9e5d9e794f08b88967e32e9cf542499565e659))
+
+
+
 ## [8.0.2](https://github.com/Availity/availity-react/compare/@availity/spaces@8.0.1...@availity/spaces@8.0.2) (2024-02-21)
 
 
