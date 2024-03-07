@@ -53,7 +53,7 @@
   },
   "peerDependencies": {
     "@availity/api-axios": "^8.0.0",
-    "@availity/favorites": "^3.4.2",
+    "@availity/favorites": "^5.0.0",
     "axios": "^1.0.0",
     "react": ">=16.8.6",
     "reactstrap": "^8.0.0"
