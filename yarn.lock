@@ -731,7 +731,7 @@ __metadata:
   peerDependencies:
     "@availity/api-axios": ^8.0.0
     "@availity/form": ^1.1.0
-    "@availity/upload-core": ^4.1.1
+    "@availity/upload-core": ^5.0.5
     formik: ^2.0.1
     react: ">=16.8.0"
     react-dropzone: ^11.0.0
