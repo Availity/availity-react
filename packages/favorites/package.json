@@ -31,7 +31,7 @@
     "publish:canary": "yarn npm publish --access public --tag canary"
   },
   "dependencies": {
-    "@availity/analytics-core": "^4.0.5",
+    "@availity/analytics-core": "^4.1.0",
     "@availity/hooks": "workspace:*",
     "@availity/message-core": "^6.1.2",
     "@radix-ui/react-tooltip": "0.1.6",

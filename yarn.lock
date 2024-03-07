@@ -343,12 +343,13 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@availity/analytics-core@npm:^4.0.5":
-  version: 4.0.5
-  resolution: "@availity/analytics-core@npm:4.0.5"
+"@availity/analytics-core@npm:^4.1.0":
+  version: 4.1.0
+  resolution: "@availity/analytics-core@npm:4.1.0"
   dependencies:
+    uuid: ^9.0.1
     yup: ^0.32.11
-  checksum: 8b254f713de33685e9a13c76202bca33a2744c7b5cae95eb191786916d764cb87f9588be12d656b5f43be932b2dd60ef54ac73e94a8aa4d6d63f0b7188f30300
+  checksum: a6e1eb704ed250f0f02f58d78c51c92e60d622c3be7ac69c4e70c122557b90f315d9e1c76f0bc2899e176b65790a8477bb1e127080490ffa3ffd6a23d05afc95
   languageName: node
   linkType: hard
 
@@ -356,7 +357,7 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@availity/analytics@workspace:packages/analytics"
   dependencies:
-    "@availity/analytics-core": ^4.0.5
+    "@availity/analytics-core": ^4.1.0
     prop-types: ^15.8.1
     react: ^18.2.0
     react-dom: ^18.2.0
@@ -639,7 +640,7 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@availity/favorites@workspace:packages/favorites"
   dependencies:
-    "@availity/analytics-core": ^4.0.5
+    "@availity/analytics-core": ^4.1.0
     "@availity/api-axios": ^8.0.4
     "@availity/hooks": "workspace:*"
     "@availity/message-core": ^6.1.2
