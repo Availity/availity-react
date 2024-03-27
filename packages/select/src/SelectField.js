@@ -2,6 +2,7 @@ import React, { useEffect } from 'react';
 import PropTypes from 'prop-types';
 import classNames from 'classnames';
 import { FormText } from 'reactstrap';
+// eslint-disable-next-line import/no-unresolved
 import { FormGroup, Feedback, Label } from '@availity/form';
 
 import Select from './Select';
