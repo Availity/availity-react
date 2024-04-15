@@ -452,7 +452,7 @@ __metadata:
     "@testing-library/user-event": ^14.5.2
     "@types/jest": ^29.5.12
     "@types/node": ^18.17.15
-    "@types/react": ^18.2.21
+    "@types/react": ^18.2.78
     "@types/react-dom": ^18.2.7
     adio: ^1.2.1
     availity-uikit: ^4.6.3
@@ -8475,7 +8475,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@types/react@npm:*, @types/react@npm:>=16, @types/react@npm:^18.2.21":
+"@types/react@npm:*, @types/react@npm:>=16":
   version: 18.2.28
   resolution: "@types/react@npm:18.2.28"
   dependencies:
@@ -8483,6 +8483,16 @@ __metadata:
     "@types/scheduler": "*"
     csstype: ^3.0.2
   checksum: 81381bedeba83278f4c9febb0b83e0bd3f42a25897a50b9cb36ef53651d34b3d50f87ebf11211ea57ea575131f85d31e93e496ce46478a00b0f9bf7b26b5917a
+  languageName: node
+  linkType: hard
+
+"@types/react@npm:^18.2.78":
+  version: 18.2.78
+  resolution: "@types/react@npm:18.2.78"
+  dependencies:
+    "@types/prop-types": "*"
+    csstype: ^3.0.2
+  checksum: f686d735707d46690d05ac76e8c8a619802ea6a4a8f2837981669f7dc13b6984751edc4994242afa3be279df15c67b72a5a658f02a7c5ca16f9a0b4878f1bf18
   languageName: node
   linkType: hard
 
