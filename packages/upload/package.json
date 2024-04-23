@@ -30,7 +30,7 @@
     "uuid": "^9.0.1"
   },
   "devDependencies": {
-    "@availity/upload-core": "^5.0.5",
+    "@availity/upload-core": "^5.0.6",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-dropzone": "^11.7.1",

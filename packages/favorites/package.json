@@ -39,7 +39,7 @@
     "lodash": "^4.17.21"
   },
   "devDependencies": {
-    "@availity/api-axios": "^8.0.4",
+    "@availity/api-axios": "^8.0.7",
     "axios": "^1.6.7",
     "esbuild-sass-plugin": "^2.15.0",
     "react": "^18.2.0",

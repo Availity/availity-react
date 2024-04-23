@@ -31,9 +31,9 @@
     "uuid": "^9.0.1"
   },
   "devDependencies": {
-    "@availity/api-axios": "^8.0.4",
+    "@availity/api-axios": "^8.0.7",
     "@availity/form": "workspace:*",
-    "@availity/upload-core": "^5.0.5",
+    "@availity/upload-core": "^5.0.6",
     "@types/uuid": "^9.0.8",
     "formik": "^2.4.4",
     "nock": "^13.3.3",
