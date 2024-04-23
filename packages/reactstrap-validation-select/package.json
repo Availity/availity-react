@@ -34,7 +34,7 @@
     "react-select-async-paginate": "^0.6.2"
   },
   "devDependencies": {
-    "@availity/api-axios": "^8.0.4",
+    "@availity/api-axios": "^8.0.7",
     "availity-reactstrap-validation": "^2.7.1",
     "axios": "^1.6.7",
     "react": "^18.2.0",
