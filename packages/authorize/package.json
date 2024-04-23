@@ -1,6 +1,6 @@
 {
   "name": "@availity/authorize",
-  "version": "4.0.2",
+  "version": "4.0.3",
   "description": "Check user permissions to see if the current user is authorized to see your content.",
   "keywords": [
     "react",
