@@ -9,6 +9,7 @@ export interface RadioProps extends HTMLAttributes<HTMLInputElement> {
   value?: string | boolean | object;
   disabled?: boolean;
   helpId?: string;
+  isHelpVideoType?: boolean;
 }
 
 declare const Radio: (props: RadioProps) => JSX.Element;

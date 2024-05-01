@@ -4,7 +4,18 @@ import { FormGroup, Feedback, Label } from '@availity/form';
 
 import Date from './Date';
 
-const DateField = ({ name, label, labelClass, labelHidden, labelAttrs, id = name, required, helpId, ...props }) => (
+const DateField = ({
+  name,
+  label,
+  labelClass,
+  labelHidden,
+  labelAttrs,
+  id = name,
+  required,
+  helpId,
+  isHelpVideoType,
+  ...props
+}) => (
   <FormGroup for={name}>
     {label && (
       <Label
@@ -13,6 +24,7 @@ const DateField = ({ name, label, labelClass, labelHidden, labelAttrs, id = name
         hidden={labelHidden}
         required={required}
         helpId={helpId}
+        isHelpVideoType={isHelpVideoType}
         {...labelAttrs}
       >
         {label}
@@ -41,6 +53,8 @@ DateField.propTypes = {
   helpId: PropTypes.string,
   /** Placeholder input when no values have been entered. */
   placeholder: PropTypes.string,
+  /** Allows the type of `<FieldHelpIcon/>` to be changed between help-icon and video-help */
+  isHelpVideoType: PropTypes.bool,
 };
 
 export default DateField;

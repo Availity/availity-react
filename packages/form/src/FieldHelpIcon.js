@@ -18,11 +18,11 @@ const handleKeyPress = (event, id) => {
   }
 };
 
-const FieldHelpIcon = ({ id, color = 'primary', size = '1x', labelId }) => (
+const FieldHelpIcon = ({ id, color = 'primary', size = '1x', labelId, isHelpVideoType }) => (
   <Icon
     role="link"
     data-testid="field-help-icon"
-    name="help-circle"
+    name={isHelpVideoType ? 'video-help' : 'help-circle'}
     size={size}
     color={color}
     onClick={() => triggerFieldHelp(id)}
@@ -39,6 +39,7 @@ FieldHelpIcon.propTypes = {
   color: PropTypes.string,
   size: PropTypes.string,
   labelId: PropTypes.string,
+  isHelpVideoType: PropTypes.bool,
 };
 
 export default FieldHelpIcon;

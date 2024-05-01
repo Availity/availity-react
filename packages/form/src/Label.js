@@ -25,7 +25,7 @@ export const RequiredKey = () => (
   </div>
 );
 
-const Label = ({ helpId, id, required, children, ...attributes }) => {
+const Label = ({ helpId, id, required, children, isHelpVideoType, ...attributes }) => {
   const labelId = id || uuid();
   const Wrapper = ({ children }) => {
     if (helpId && (attributes.className || attributes.style)) {
@@ -48,7 +48,7 @@ const Label = ({ helpId, id, required, children, ...attributes }) => {
         ) : null}
         {children}
       </RSLabel>
-      {helpId ? <FieldHelpIcon labelId={labelId} id={helpId} /> : null}
+      {helpId ? <FieldHelpIcon labelId={labelId} id={helpId} isHelpVideoType={isHelpVideoType} /> : null}
     </Wrapper>
   );
 };
@@ -61,6 +61,8 @@ Label.propTypes = {
   /** Will add <RequiredAsterisk /> to label. */
   required: PropTypes.bool,
   children: PropTypes.oneOfType([PropTypes.func, PropTypes.node]),
+  /** Allows the type of `<FieldHelpIcon/>` to be changed between help-icon and video-help */
+  isHelpVideoType: PropTypes.bool,
 };
 
 export default Label;
