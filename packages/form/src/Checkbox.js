@@ -17,6 +17,7 @@ const Checkbox = ({
   inline,
   label,
   value: checkValue,
+  isVideoType,
   ...attributes
 }) => {
   const { value, toggle, metadata } = useCheckboxGroup(checkValue);
@@ -48,7 +49,7 @@ const Checkbox = ({
         checked={value}
         onChange={toggle}
       />
-      <Label check id={labelId} for={inputId} helpId={helpId}>
+      <Label check id={labelId} for={inputId} helpId={helpId} isVideoType={isVideoType}>
         {label}
       </Label>
     </FormGroup>
@@ -72,6 +73,8 @@ Checkbox.propTypes = {
   label: PropTypes.node,
   /** Value of the checkbox. */
   value: PropTypes.oneOfType([PropTypes.string, PropTypes.bool, PropTypes.object]),
+  /** Allows the type of FieldIcon to be changed between help-icon and video-help */
+  isVideoType: PropTypes.bool,
 };
 
 Checkbox.defaultProps = {

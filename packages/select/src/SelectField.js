@@ -16,6 +16,7 @@ const SelectField = ({
   helpId,
   required,
   helpMessage,
+  isVideoType,
   ...attributes
 }) => {
   useEffect(() => {
@@ -35,6 +36,7 @@ const SelectField = ({
       className={labelClass}
       required={required}
       helpId={helpId}
+      isVideoType={isVideoType}
     >
       {label}
     </Label>
@@ -69,6 +71,8 @@ SelectField.propTypes = {
   labelHidden: PropTypes.bool,
   /** Will add <RequiredAsterisk /> to label. */
   required: PropTypes.bool,
+  /** Allows the type of FieldIcon to be changed between help-icon and video-help */
+  isVideoType: PropTypes.bool,
 };
 
 export default SelectField;

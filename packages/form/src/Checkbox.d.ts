@@ -10,6 +10,7 @@ export interface CheckboxProps extends HTMLAttributes<HTMLInputElement> {
   groupClassName?: string;
   groupName?: string;
   helpId?: string;
+  isVideoType?: boolean | false;
 }
 
 declare const Checkbox: (props: CheckboxProps) => JSX.Element;

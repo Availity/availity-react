@@ -25,6 +25,7 @@ export interface FieldProps extends InputProps {
   append?: string | ReactNode;
   prepend?: string | ReactNode;
   helpId?: string;
+  isVideoType?: boolean | false;
 }
 
 declare const Field: (props: FieldProps) => JSX.Element;

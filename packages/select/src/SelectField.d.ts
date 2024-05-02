@@ -11,6 +11,7 @@ export type SelectFieldProps<Option, IsMulti extends boolean, Group extends Grou
   labelClass?: string;
   labelHidden?: boolean;
   required?: boolean;
+  isVideoType?: boolean;
 } & SelectProps<Option, IsMulti, Group>;
 
 declare const SelectField: <Option, IsMulti extends boolean, Group extends GroupBase<Option> = GroupBase<Option>>(
