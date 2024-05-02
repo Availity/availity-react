@@ -11,9 +11,9 @@ interface FieldChildProps {
 
 export interface FieldProps extends InputProps {
   label?: ReactNode;
-  labelHidden?: boolean | false;
-  disabled?: boolean | false;
-  readOnly?: boolean | false;
+  labelHidden?: boolean;
+  disabled?: boolean;
+  readOnly?: boolean;
   inputClass?: string;
   labelClass?: string;
   helpMessage?: string | object;
@@ -25,7 +25,7 @@ export interface FieldProps extends InputProps {
   append?: string | ReactNode;
   prepend?: string | ReactNode;
   helpId?: string;
-  isVideoType?: boolean | false;
+  isHelpVideoType?: boolean;
 }
 
 declare const Field: (props: FieldProps) => JSX.Element;

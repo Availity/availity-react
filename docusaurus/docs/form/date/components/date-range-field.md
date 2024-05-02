@@ -91,3 +91,7 @@ Help topic id, adds `<FieldHelpIcon/>` next to the label (should not be within l
 #### `required?: boolean`
 
 Will add `<RequiredAsterisk />` to label.
+
+#### `isHelpVideoType?: boolean`
+
+Allows the type of `<FieldHelpIcon/>` to be changed between help-icon and video-help

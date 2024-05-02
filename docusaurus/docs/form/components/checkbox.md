@@ -70,3 +70,7 @@ Disables the checkbox.
 #### `inline?: boolean`
 
 Will render the checkbox inline with other checkboxes. **Default:** true.
+
+#### `isHelpVideoType?: boolean`
+
+Allows the type of `<FieldHelpIcon/>` to be changed between help-icon and video-help

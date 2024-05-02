@@ -2,8 +2,8 @@ import { LabelProps as RSLabelProps } from 'reactstrap';
 
 export interface LabelProps extends RSLabelProps {
   helpId?: string;
-  required?: boolean | false;
-  isVideoType?: boolean | false;
+  required?: boolean;
+  isHelpVideoType?: boolean;
 }
 
 declare const Label: (props: LabelProps) => JSX.Element;

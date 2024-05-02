@@ -105,3 +105,7 @@ Append an InputAddon to the end of the Input.
 #### `prepend?: React.ReactNode | string`
 
 Append an InputAddon to the start of the Input.
+
+#### `isHelpVideoType?: boolean`
+
+Allows the type of `<FieldHelpIcon/>` to be changed between help-icon and video-help

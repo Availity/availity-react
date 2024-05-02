@@ -83,6 +83,10 @@ Class names to pass to the `Feedback`.
 
 Class names to pass to the `FormGroup`.
 
+#### `isHelpVideoType?: boolean`
+
+Allows the type of `<FieldHelpIcon/>` to be changed between help-icon and video-help
+
 ### 508 Compliance
 
 `<SelectField />` will automatically associate the `FormGroup` and `Label` based on its `name` prop, not an `id` prop. Using an `id` prop that is the same as `name` on this component will result in an orphaned form label and break 508 compliance.
