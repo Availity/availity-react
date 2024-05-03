@@ -9,6 +9,7 @@ export type DateRangeFieldProps = {
   labelAttrs?: React.HTMLAttributes<HTMLLabelElement>;
   required?: boolean;
   helpId?: string;
+  isHelpVideoType?: boolean;
 } & DateRangeProps;
 
 declare const DateRangeField: (props: DateRangeFieldProps) => JSX.Element;

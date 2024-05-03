@@ -43,6 +43,7 @@ const CheckboxGroup = ({
   labelClassName,
   required,
   helpId,
+  isHelpVideoType,
   ...rest
 }) => {
   const [field, metadata] = useField(name);
@@ -71,7 +72,7 @@ const CheckboxGroup = ({
           {label}
         </legend>
         <div className={labelClasses} style={styles}>
-          <Label tag="div" aria-hidden helpId={helpId} required={required}>
+          <Label tag="div" aria-hidden helpId={helpId} required={required} isHelpVideoType={isHelpVideoType}>
             {label}
           </Label>
         </div>
@@ -107,6 +108,8 @@ CheckboxGroup.propTypes = {
   labelClassName: PropTypes.string,
   /** Will add <RequiredAsterisk /> to label. */
   required: PropTypes.bool,
+  /** Allows the type of `<FieldHelpIcon/>` to be changed between help-icon and video-help */
+  isHelpVideoType: PropTypes.bool,
 };
 
 export default CheckboxGroup;

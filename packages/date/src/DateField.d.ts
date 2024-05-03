@@ -10,6 +10,7 @@ export type DateFieldProps = {
   labelAttrs?: LabelProps;
   required?: boolean;
   helpId?: string;
+  isHelpVideoType?: boolean;
 } & DateProps;
 
 declare const DateField: (props: DateFieldProps) => JSX.Element;

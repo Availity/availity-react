@@ -59,3 +59,7 @@ Value of the radio button.
 #### `disabled?: boolean`
 
 Disables the radio button.
+
+#### `isHelpVideoType?: boolean`
+
+Allows the type of `<FieldHelpIcon/>` to be changed between help-icon and video-help

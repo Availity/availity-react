@@ -13,6 +13,7 @@ const DateRangeField = ({
   id = name,
   required,
   helpId,
+  isHelpVideoType,
   ...props
 }) => (
   <FormGroup for={name}>
@@ -23,6 +24,7 @@ const DateRangeField = ({
         hidden={labelHidden}
         required={required}
         helpId={helpId}
+        isHelpVideoType={isHelpVideoType}
         {...labelAttrs}
       >
         {label}
@@ -49,6 +51,8 @@ DateRangeField.propTypes = {
   required: PropTypes.bool,
   /** Help topic id, adds `<FieldHelpIcon/>` next to the label (should not be within label for accessibility). */
   helpId: PropTypes.string,
+  /** Allows the type of `<FieldHelpIcon/>` to be changed between help-icon and video-help */
+  isHelpVideoType: PropTypes.bool,
 };
 
 export default DateRangeField;

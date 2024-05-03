@@ -28,6 +28,7 @@ const Field = ({
   prepend,
   append,
   children,
+  isHelpVideoType,
   ...attributes
 }) => {
   let row = false;
@@ -111,6 +112,7 @@ const Field = ({
           required={!!required}
           helpId={helpId}
           disabled={disabled}
+          isHelpVideoType={isHelpVideoType}
           {...labelCol}
           {...labelAttrs}
         >
@@ -161,6 +163,8 @@ Field.propTypes = {
   size: PropTypes.string,
   /** The Node or tag to substitute as the input field. Default is reactstrap Input tag. */
   tag: PropTypes.oneOfType([PropTypes.func, PropTypes.string]),
+  /** Allows the type of `<FieldHelpIcon/>` to be changed between help-icon and video-help */
+  isHelpVideoType: PropTypes.bool,
 };
 
 Field.defaultProps = {

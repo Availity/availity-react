@@ -7,6 +7,8 @@ type FieldHelpIconProps = {
   size?: string;
   /** The id of the associated label for aria-describedby, needed for accessibility. */
   labelId?: string;
+  /** The prop that allows the type of icon to be changed to video-help, if needed  */
+  isHelpVideoType?: boolean;
 };
 
 declare const FieldHelpIcon: (props: FieldHelpIconProps) => JSX.Element;

@@ -33,6 +33,7 @@ const RadioGroup = ({
   helpId,
   labelClassName,
   required,
+  isHelpVideoType,
   ...rest
 }) => {
   const [field, metadata] = useField(name);
@@ -60,7 +61,7 @@ const RadioGroup = ({
           {label}
         </legend>
         <div className={labelClasses} style={styles}>
-          <Label tag="div" aria-hidden helpId={helpId} required={required}>
+          <Label tag="div" aria-hidden helpId={helpId} required={required} isHelpVideoType={isHelpVideoType}>
             {label}
           </Label>
         </div>
@@ -91,6 +92,7 @@ RadioGroup.propTypes = {
   onChange: PropTypes.func,
   labelClassName: PropTypes.string,
   required: PropTypes.bool,
+  isHelpVideoType: PropTypes.bool,
 };
 
 export default RadioGroup;

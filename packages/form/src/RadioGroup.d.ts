@@ -8,9 +8,10 @@ export interface RadioGroupProps extends FormGroupProps {
   labelClassName?: string;
   groupClassName?: string;
   onChange?: (value: any) => void;
-  inline?: boolean | false;
+  inline?: boolean;
   helpId?: string;
-  required?: boolean | false;
+  required?: boolean;
+  isHelpVideoType?: boolean;
 }
 
 declare const RadioGroup: (props: RadioGroupProps) => JSX.Element;

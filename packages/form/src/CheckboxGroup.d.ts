@@ -9,7 +9,8 @@ export interface CheckboxGroupProps extends FormGroupProps {
   groupClassName?: string;
   onChange?: (value: any) => void;
   helpId?: string;
-  required?: boolean | false;
+  required?: boolean;
+  isHelpVideoType?: boolean;
 }
 
 declare const CheckboxGroup: (props: CheckboxGroupProps) => JSX.Element;

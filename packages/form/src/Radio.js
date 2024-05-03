@@ -8,7 +8,18 @@ import { useRadioGroup } from './RadioGroup';
 import FormGroup from './FormGroup';
 import Label from './Label';
 
-const Radio = ({ label, id, name, value: checkValue, className, groupClassName, children, helpId, ...attributes }) => {
+const Radio = ({
+  label,
+  id,
+  name,
+  value: checkValue,
+  className,
+  groupClassName,
+  children,
+  helpId,
+  isHelpVideoType,
+  ...attributes
+}) => {
   const { value, setValue, metadata, inline } = useRadioGroup(checkValue);
 
   const [inputId] = useState(id || uuid());
@@ -37,7 +48,7 @@ const Radio = ({ label, id, name, value: checkValue, className, groupClassName, 
         checked={value}
         onChange={setValue}
       />
-      <Label check id={labelId} for={inputId} helpId={helpId}>
+      <Label check id={labelId} for={inputId} helpId={helpId} isHelpVideoType={isHelpVideoType}>
         {label || children}
       </Label>
     </FormGroup>
@@ -60,6 +71,8 @@ Radio.propTypes = {
   name: PropTypes.string,
   /** Value of the radio button. */
   value: PropTypes.oneOfType([PropTypes.string, PropTypes.bool, PropTypes.object]),
+  /** Allows the type of `<FieldHelpIcon/>` to be changed between help-icon and video-help */
+  isHelpVideoType: PropTypes.bool,
 };
 
 export default Radio;
