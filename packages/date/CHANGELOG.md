@@ -2,6 +2,15 @@
 
 This file was generated using [@jscutlery/semver](https://github.com/jscutlery/semver).
 
+# [4.3.0](https://github.com/Availity/availity-react/compare/@availity/date@4.2.10...@availity/date@4.3.0) (2024-05-03)
+
+
+### Features
+
+* **form:** added logic for changing default help icon to video icon ([320e986](https://github.com/Availity/availity-react/commit/320e986af2898e1b7d840f6a983f8a8a066fc1d5))
+
+
+
 ## [4.2.10](https://github.com/Availity/availity-react/compare/@availity/date@4.2.9...@availity/date@4.2.10) (2024-04-23)
 
 
