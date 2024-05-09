@@ -4,25 +4,24 @@ import { Alert } from 'reactstrap';
 import BlockUi from '@availity/block-ui';
 import { QueryClientProvider, QueryClient } from '@tanstack/react-query';
 
-import Authorize, { useAuthorize } from '.';
-// import README from '../README.md';
+import { useAuthorize, UseAuthorizeProps } from '.';
 
+// exporting as a component allows for args generation
+export const UseAuthorizeComponent = (args: UseAuthorizeProps) => <div>{JSON.stringify(args)}</div>;
+
+/** Hook for determining authorization based on a list of permissions with optional parameters.
+ *
+ * This package uses [react-query](https://tanstack.com/query/v4/docs/framework/react/overview) to handle data fetching.
+ * This means you must add a [QueryClientProvider](https://tanstack.com/query/v4/docs/framework/react/reference/QueryClientProvider)
+ * to your app if you do not already have one.
+ *
+ * The default setup should cover most use-cases. However, there are 2 query options we recommend looking into
+ * in order to determine what is correct for your app. These settings are `refetchOnWindowFocus` and
+ * `staleTime`. The first option sets whether the to refetch the query when the window is focused, and
+ * the other is the default marker for how long the query is valid.
+ */
 export default {
-  title: 'Components/Authorize/UseAuthorize',
-  parameters: {
-    docs: {
-      // page: README,
-      description: {
-        component:
-          "Hook for showing content based on the user's permissions. Wrap this component around content you only want specific users to see.\n\n" +
-          "This package uses <a href='https://tanstack.com/query/v4/?from=reactQueryV3' target='_blank'>react-query</a> to handle data fetching. This means you must add a " +
-          "<a href='https://tanstack.com/query/v4/docs/reference/QueryClient?from=reactQueryV3' target='_blank'>QueryClientProvider</a> to your app if you do not already have one. " +
-          'The default setup should cover most use-cases. However, there are 2 options we recommend looking into in order to determine what is correct for your app. ' +
-          'These settings are refetchOnWindowFocus and staleTime. The first option sets whether the to refetch the query when the window is focused, and the other is the default marker for how long the query is valid. ',
-      },
-    },
-  },
-
+  title: 'Components/Authorize/useAuthorize',
   decorators: [
     (Story: () => JSX.Element) => (
       <QueryClientProvider client={new QueryClient()}>
@@ -32,17 +31,32 @@ export default {
   ],
   args: {
     permissions: ['1234'],
-    organizationId: '1111',
-    unauthorized: 'You are not authorized to see this content.',
-    authorized: 'You are authorized to see this content.',
-    region: true,
+    parameters: {
+      organizationId: '1111',
+      region: true,
+    },
+    queryOptions: {
+      refetchOnWindowFocus: false,
+    },
   },
-  component: BlockUi,
+  argTypes: {
+    queryOptions: {
+      name: 'options',
+    },
+  },
+  component: UseAuthorizeComponent,
+  excludeStories: /.*Component$/,
 };
 
-export const _UseAuthorize: StoryObj<typeof BlockUi> = {
-  render: ({ authorized, organizationId, permissions, region, unauthorized }) => {
-    const { authorized: isAuthorized, isLoading } = useAuthorize(permissions, { organizationId, region });
+export const _UseAuthorize: StoryObj<typeof UseAuthorizeComponent> = {
+  render: ({ permissions, parameters, queryOptions }: UseAuthorizeProps) => (
+    <pre>{JSON.stringify(useAuthorize(permissions, parameters, queryOptions), null, 2)}</pre>
+  ),
+};
+
+export const _BlockUIExample: StoryObj<typeof UseAuthorizeComponent> = {
+  render: ({ permissions, parameters, queryOptions }: UseAuthorizeProps) => {
+    const { authorized, isLoading } = useAuthorize(permissions, parameters, queryOptions);
 
     return (
       <div>
@@ -52,7 +66,11 @@ export const _UseAuthorize: StoryObj<typeof BlockUi> = {
         </p>
         <hr />
         <BlockUi blocking={isLoading} renderChildren={false}>
-          {isAuthorized ? <Alert color="success">{authorized}</Alert> : <Alert color="danger">{unauthorized}</Alert>}
+          {authorized ? (
+            <Alert color="success">You are authorized to see this content.</Alert>
+          ) : (
+            <Alert color="danger">You are not authorized to see this content.</Alert>
+          )}
         </BlockUi>
       </div>
     );

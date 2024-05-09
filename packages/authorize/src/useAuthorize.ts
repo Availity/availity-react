@@ -1,22 +1,15 @@
 import { useQuery, useQueryClient } from '@tanstack/react-query';
 
 import { checkPermissions, getRegion } from './api';
-import type { QueryOptions, RequestedPermissions, RequestedResources } from './types';
+import { Options, Parameters, Permissions } from './types';
 
-type Parameters = {
-  organizationId?: string;
-  customerId?: string;
-  region?: boolean | string;
-  resources?: RequestedResources;
-};
-
-type Result = { authorized: boolean; isLoading: boolean };
+export type UseAuthorizeProps = Permissions & Parameters & Options;
 
 const useAuthorize = (
-  permissions: RequestedPermissions,
-  parameters: Parameters = {},
-  options?: QueryOptions
-): Result => {
+  permissions: UseAuthorizeProps['permissions'],
+  parameters: UseAuthorizeProps['parameters'] = {},
+  options?: UseAuthorizeProps['queryOptions']
+): { authorized: boolean; isLoading: boolean } => {
   const queryClient = useQueryClient();
 
   const { organizationId, customerId, region = true, resources } = parameters;
