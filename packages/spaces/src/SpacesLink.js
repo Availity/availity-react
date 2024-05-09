@@ -1,7 +1,7 @@
 import React, { useMemo, useCallback, cloneElement } from 'react';
 import PropTypes from 'prop-types';
 import classNames from 'classnames';
-import truncate from 'lodash.truncate';
+import truncate from 'lodash/truncate';
 import ReactMarkdown from 'react-markdown';
 import { FavoriteHeart } from '@availity/favorites';
 import { Card, CardBody, Media, CardText, CardTitle, Badge, ListGroupItemHeading, ListGroupItemText } from 'reactstrap';
@@ -22,13 +22,13 @@ const getContainerTag = (propTag = 'div', linkStyle) =>
   ({
     card: Card,
     list: ListGroupItem,
-  }[linkStyle] || propTag);
+  })[linkStyle] || propTag;
 
 const getBodyTag = (propTag = 'div', linkStyle) =>
   ({
     card: CardBody,
     list: 'div',
-  }[linkStyle] || propTag);
+  })[linkStyle] || propTag;
 
 const getTitleTag = (propTag, linkStyle) =>
   propTag ||
@@ -42,7 +42,7 @@ const getTextTag = (propTag = 'div', linkStyle) =>
   ({
     card: CardText,
     list: ListGroupItemText,
-  }[linkStyle] || propTag);
+  })[linkStyle] || propTag;
 
 const Link = ({
   spaceId,
