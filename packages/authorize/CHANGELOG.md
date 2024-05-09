@@ -2,6 +2,15 @@
 
 This file was generated using [@jscutlery/semver](https://github.com/jscutlery/semver).
 
+# [4.1.0](https://github.com/Availity/availity-react/compare/@availity/authorize@4.0.3...@availity/authorize@4.1.0) (2024-05-09)
+
+
+### Features
+
+* **authorize:** export useauthorize types ([eecb449](https://github.com/Availity/availity-react/commit/eecb4495d67487520c2f0e230a5cab9256d3aa63))
+
+
+
 ## [4.0.3](https://github.com/Availity/availity-react/compare/@availity/authorize@4.0.2...@availity/authorize@4.0.3) (2024-04-23)
 
 
