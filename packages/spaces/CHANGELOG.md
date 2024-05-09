@@ -2,6 +2,15 @@
 
 This file was generated using [@jscutlery/semver](https://github.com/jscutlery/semver).
 
+## [8.0.5](https://github.com/Availity/availity-react/compare/@availity/spaces@8.0.4...@availity/spaces@8.0.5) (2024-05-09)
+
+
+### Bug Fixes
+
+* **spaces:** update lodash import ([33ea68e](https://github.com/Availity/availity-react/commit/33ea68e5274b59b52253282a6108b8c517c049c8))
+
+
+
 ## [8.0.4](https://github.com/Availity/availity-react/compare/@availity/spaces@8.0.3...@availity/spaces@8.0.4) (2024-04-23)
 
 
