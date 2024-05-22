@@ -359,7 +359,7 @@ __metadata:
   dependencies:
     "@availity/analytics-core": ^4.1.0
     prop-types: ^15.8.1
-    react: ^18.2.0
+    react: ^18.3.1
     react-dom: ^18.2.0
   peerDependencies:
     react: ">=16.8.0"
@@ -397,7 +397,7 @@ __metadata:
   resolution: "@availity/app-icon@workspace:packages/app-icon"
   dependencies:
     classnames: ^2.3.2
-    react: ^18.2.0
+    react: ^18.3.1
     react-dom: ^18.2.0
     tsup: ^7.2.0
     typescript: ^5.3.3
@@ -411,7 +411,7 @@ __metadata:
   resolution: "@availity/app-tiles@workspace:packages/app-tiles"
   dependencies:
     classnames: ^2.3.2
-    react: ^18.2.0
+    react: ^18.3.1
     react-dom: ^18.2.0
     tsup: ^7.2.0
     typescript: ^5.3.3
@@ -428,7 +428,7 @@ __metadata:
     "@availity/block-ui": ^1.0.0
     "@tanstack/react-query": ^4.36.1
     axios: ^1.6.7
-    react: ^18.2.0
+    react: ^18.3.1
     react-dom: ^18.2.0
     tsup: ^7.2.0
     typescript: ^5.3.3
@@ -465,7 +465,7 @@ __metadata:
     "@testing-library/user-event": ^14.5.2
     "@types/jest": ^29.5.12
     "@types/node": ^18.17.15
-    "@types/react": ^18.2.21
+    "@types/react": ^18.3.2
     "@types/react-dom": ^18.2.7
     adio: ^1.2.1
     availity-uikit: ^4.6.3
@@ -490,7 +490,7 @@ __metadata:
     plop: ^2.7.6
     postcss-modules: ^4.3.1
     prettier: ^3.0.3
-    react: ^18.2.0
+    react: ^18.3.1
     react-docgen-typescript-loader: ^3.7.2
     react-docgen-typescript-webpack-plugin: ^1.1.0
     react-dom: ^18.2.0
@@ -513,7 +513,7 @@ __metadata:
     axios: ^1.6.7
     lodash: ^4.17.21
     prop-types: ^15.8.1
-    react: ^18.2.0
+    react: ^18.3.1
     react-dom: ^18.2.0
     react-image: ^4.1.0
     react-loading-skeleton: ^2.2.0
@@ -530,7 +530,7 @@ __metadata:
   dependencies:
     "@availity/icon": "workspace:*"
     lodash: ^4.17.21
-    react: ^18.2.0
+    react: ^18.3.1
     react-dom: ^18.2.0
     reactstrap: ^8.10.1
     tsup: ^7.2.0
@@ -545,7 +545,7 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@availity/block-ui@workspace:packages/block-ui"
   dependencies:
-    react: ^18.2.0
+    react: ^18.3.1
     react-dom: ^18.2.0
     tsup: ^7.2.0
     typescript: ^5.3.3
@@ -559,7 +559,7 @@ __metadata:
   resolution: "@availity/breadcrumbs@workspace:packages/breadcrumbs"
   dependencies:
     prop-types: ^15.8.1
-    react: ^18.2.0
+    react: ^18.3.1
     react-dom: ^18.2.0
     reactstrap: ^8.10.1
   peerDependencies:
@@ -573,7 +573,7 @@ __metadata:
   resolution: "@availity/button@workspace:packages/button"
   dependencies:
     "@availity/block-ui": "workspace:^"
-    react: ^18.2.0
+    react: ^18.3.1
     react-dom: ^18.2.0
     reactstrap: ^8.10.1
     tsup: ^7.2.0
@@ -598,7 +598,7 @@ __metadata:
     dayjs: ^1.11.9
     lodash: ^4.17.21
     prop-types: ^15.8.1
-    react: ^18.2.0
+    react: ^18.3.1
     react-dom: ^18.2.0
     reactstrap: ^8.10.1
   peerDependencies:
@@ -623,7 +623,7 @@ __metadata:
     lodash: ^4.17.21
     moment: ^2.30.1
     prop-types: ^15.8.1
-    react: ^18.2.0
+    react: ^18.3.1
     react-dom: ^18.2.0
     reactstrap: ^8.10.1
     tsup: ^7.2.0
@@ -644,7 +644,7 @@ __metadata:
     "@docusaurus/preset-classic": ^3.1.1
     "@mdx-js/react": ^3.0.1
     clsx: ^2.1.0
-    react: ^18.2.0
+    react: ^18.3.1
     react-dom: ^18.2.0
   languageName: unknown
   linkType: soft
@@ -662,7 +662,7 @@ __metadata:
     axios: ^1.6.7
     esbuild-sass-plugin: ^2.15.0
     lodash: ^4.17.21
-    react: ^18.2.0
+    react: ^18.3.1
     react-dom: ^18.2.0
     tsup: ^7.2.0
     typescript: ^5.3.3
@@ -683,7 +683,7 @@ __metadata:
     axios-mock-adapter: ^1.22.0
     fs-extra: ^11.1.1
     prop-types: ^15.8.1
-    react: ^18.2.0
+    react: ^18.3.1
     react-dom: ^18.2.0
   peerDependencies:
     axios: ^1.0.0
@@ -708,7 +708,7 @@ __metadata:
     axios: ^1.6.7
     formik: ^2.4.4
     prop-types: ^15.8.1
-    react: ^18.2.0
+    react: ^18.3.1
     react-dom: ^18.2.0
     reactstrap: ^8.10.1
   peerDependencies:
@@ -734,7 +734,7 @@ __metadata:
     classnames: ^2.3.2
     formik: ^2.4.4
     nock: ^13.3.3
-    react: ^18.2.0
+    react: ^18.3.1
     react-dom: ^18.2.0
     react-dropzone: ^11.7.1
     reactstrap: ^8.10.1
@@ -762,7 +762,7 @@ __metadata:
     classnames: ^2.3.2
     formik: ^2.4.4
     prop-types: ^15.8.1
-    react: ^18.2.0
+    react: ^18.3.1
     react-currency-input-field: ^3.6.11
     react-dom: ^18.2.0
     reactstrap: ^8.10.1
@@ -782,7 +782,7 @@ __metadata:
   resolution: "@availity/help@workspace:packages/help"
   dependencies:
     "@availity/message-core": ^6.1.2
-    react: ^18.2.0
+    react: ^18.3.1
     react-dom: ^18.2.0
     tsup: ^7.2.0
     typescript: ^5.3.3
@@ -799,7 +799,7 @@ __metadata:
     "@tanstack/react-query": ^4.36.1
     axios: ^1.6.7
     prop-types: ^15.8.1
-    react: ^18.2.0
+    react: ^18.3.1
     react-dom: ^18.2.0
   peerDependencies:
     "@availity/api-axios": ^8.0.0
@@ -813,7 +813,7 @@ __metadata:
   resolution: "@availity/icon@workspace:packages/icon"
   dependencies:
     classnames: ^2.3.2
-    react: ^18.2.0
+    react: ^18.3.1
     react-dom: ^18.2.0
     tsup: ^7.2.0
     typescript: ^5.3.3
@@ -827,7 +827,7 @@ __metadata:
   resolution: "@availity/json-viewer@workspace:packages/json-viewer"
   dependencies:
     classnames: ^2.3.2
-    react: ^18.2.0
+    react: ^18.3.1
     react-dom: ^18.2.0
     tsup: ^7.2.0
     typescript: ^5.3.3
@@ -843,7 +843,7 @@ __metadata:
     "@availity/resolve-url": ^2.0.5
     classnames: ^2.3.2
     prop-types: ^15.8.1
-    react: ^18.2.0
+    react: ^18.3.1
     react-dom: ^18.2.0
   peerDependencies:
     react: ">=16.3.0"
@@ -855,7 +855,7 @@ __metadata:
   resolution: "@availity/list-group-item@workspace:packages/list-group-item"
   dependencies:
     prop-types: ^15.8.1
-    react: ^18.2.0
+    react: ^18.3.1
     react-dom: ^18.2.0
     reactstrap: ^8.10.1
   peerDependencies:
@@ -870,7 +870,7 @@ __metadata:
   dependencies:
     classnames: ^2.3.2
     prop-types: ^15.8.1
-    react: ^18.2.0
+    react: ^18.3.1
     react-dom: ^18.2.0
     reactstrap: ^8.10.1
   peerDependencies:
@@ -919,7 +919,7 @@ __metadata:
     classnames: ^2.3.2
     formik: ^2.4.4
     prop-types: ^15.8.1
-    react: ^18.2.0
+    react: ^18.3.1
     react-dom: ^18.2.0
     yup: ^0.32.11
   peerDependencies:
@@ -940,7 +940,7 @@ __metadata:
     "@availity/block-ui": "workspace:^"
     "@availity/hooks": "workspace:*"
     lodash: ^4.17.21
-    react: ^18.2.0
+    react: ^18.3.1
     react-dom: ^18.2.0
     react-infinite-scroll-component: ^6.1.0
     react-use: ^17.4.0
@@ -962,7 +962,7 @@ __metadata:
     axios: ^1.6.7
     lodash: ^4.17.21
     prop-types: ^15.8.1
-    react: ^18.2.0
+    react: ^18.3.1
     react-dom: ^18.2.0
   peerDependencies:
     "@availity/api-axios": ^8.0.0
@@ -979,7 +979,7 @@ __metadata:
     formik: ^2.4.4
     libphonenumber-js: ^1.10.44
     prop-types: ^15.8.1
-    react: ^18.2.0
+    react: ^18.3.1
     react-dom: ^18.2.0
     reactstrap: ^8.10.1
     yup: ^0.32.11
@@ -998,7 +998,7 @@ __metadata:
   dependencies:
     classnames: ^2.3.2
     lodash: ^4.17.21
-    react: ^18.2.0
+    react: ^18.3.1
     react-dom: ^18.2.0
     tsup: ^7.2.0
     typescript: ^5.3.3
@@ -1049,7 +1049,7 @@ __metadata:
     lodash: ^4.17.21
     moment: ^2.30.1
     prop-types: ^15.8.1
-    react: ^18.2.0
+    react: ^18.3.1
     react-dom: ^18.2.0
     react-with-direction: ^1.4.0
     reactstrap: ^8.10.1
@@ -1072,7 +1072,7 @@ __metadata:
     lodash: ^4.17.21
     prop-types: ^15.8.1
     qs: ^6.11.2
-    react: ^18.2.0
+    react: ^18.3.1
     react-dom: ^18.2.0
     react-select: ^5.7.4
     react-select-async-paginate: ^0.6.2
@@ -1106,7 +1106,7 @@ __metadata:
     lodash: ^4.17.21
     prop-types: ^15.8.1
     qs: ^6.11.2
-    react: ^18.2.0
+    react: ^18.3.1
     react-dom: ^18.2.0
     react-select: ^5.7.4
     react-select-async-paginate: ^0.6.2
@@ -1145,7 +1145,7 @@ __metadata:
     lodash: ^4.17.21
     prop-types: ^15.8.1
     qs: ^6.11.2
-    react: ^18.2.0
+    react: ^18.3.1
     react-dom: ^18.2.0
     react-image: ^4.1.0
     react-loading-skeleton: ^2.2.0
@@ -1166,7 +1166,7 @@ __metadata:
   dependencies:
     classnames: ^2.3.2
     prop-types: ^15.8.1
-    react: ^18.2.0
+    react: ^18.3.1
     react-dom: ^18.2.0
   peerDependencies:
     react: ">=16.3.0"
@@ -1183,7 +1183,7 @@ __metadata:
     classnames: ^2.3.2
     lodash: ^4.17.21
     moment: ^2.30.1
-    react: ^18.2.0
+    react: ^18.3.1
     react-dom: ^18.2.0
     react-table: ^7.8.0
     reactstrap: ^8.10.1
@@ -1201,7 +1201,7 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@availity/tooltip@workspace:packages/tooltip"
   dependencies:
-    react: ^18.2.0
+    react: ^18.3.1
     react-dom: ^18.2.0
     reactstrap: ^8.10.1
     tsup: ^7.2.0
@@ -1216,7 +1216,7 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@availity/training-link@workspace:packages/training-link"
   dependencies:
-    react: ^18.2.0
+    react: ^18.3.1
     react-dom: ^18.2.0
     tsup: ^7.2.0
     typescript: ^5.3.3
@@ -1230,7 +1230,7 @@ __metadata:
   resolution: "@availity/tree@workspace:packages/tree"
   dependencies:
     "@availity/icon": "workspace:*"
-    react: ^18.2.0
+    react: ^18.3.1
     react-dom: ^18.2.0
     reactstrap: ^8.10.1
     tsup: ^7.2.0
@@ -1247,7 +1247,7 @@ __metadata:
   dependencies:
     classnames: ^2.3.2
     prop-types: ^15.8.1
-    react: ^18.2.0
+    react: ^18.3.1
     react-dom: ^18.2.0
     tsup: ^7.2.0
   peerDependencies:
@@ -1272,7 +1272,7 @@ __metadata:
     "@availity/progress": "workspace:*"
     "@availity/upload-core": ^5.0.6
     prop-types: ^15.8.1
-    react: ^18.2.0
+    react: ^18.3.1
     react-dom: ^18.2.0
     react-dropzone: ^11.7.1
     reactstrap: ^8.10.1
@@ -8488,7 +8488,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@types/react@npm:*, @types/react@npm:>=16, @types/react@npm:^18.2.21":
+"@types/react@npm:*, @types/react@npm:>=16":
   version: 18.2.28
   resolution: "@types/react@npm:18.2.28"
   dependencies:
@@ -8496,6 +8496,16 @@ __metadata:
     "@types/scheduler": "*"
     csstype: ^3.0.2
   checksum: 81381bedeba83278f4c9febb0b83e0bd3f42a25897a50b9cb36ef53651d34b3d50f87ebf11211ea57ea575131f85d31e93e496ce46478a00b0f9bf7b26b5917a
+  languageName: node
+  linkType: hard
+
+"@types/react@npm:^18.3.2":
+  version: 18.3.2
+  resolution: "@types/react@npm:18.3.2"
+  dependencies:
+    "@types/prop-types": "*"
+    csstype: ^3.0.2
+  checksum: d0b8b9d0ede6cd28dbbe34106d914b5e3652d9d7aa9d0f32fe6171506b6fc7c826d9d6571642976a5422bd29c5022fd893a710ed59a1177a0c1df8e02cf17ffe
   languageName: node
   linkType: hard
 
@@ -24207,12 +24217,12 @@ __metadata:
   languageName: node
   linkType: hard
 
-"react@npm:^18.2.0":
-  version: 18.2.0
-  resolution: "react@npm:18.2.0"
+"react@npm:^18.3.1":
+  version: 18.3.1
+  resolution: "react@npm:18.3.1"
   dependencies:
     loose-envify: ^1.1.0
-  checksum: 88e38092da8839b830cda6feef2e8505dec8ace60579e46aa5490fc3dc9bba0bd50336507dc166f43e3afc1c42939c09fe33b25fae889d6f402721dcd78fca1b
+  checksum: a27bcfa8ff7c15a1e50244ad0d0c1cb2ad4375eeffefd266a64889beea6f6b64c4966c9b37d14ee32d6c9fcd5aa6ba183b6988167ab4d127d13e7cb5b386a376
   languageName: node
   linkType: hard
 
