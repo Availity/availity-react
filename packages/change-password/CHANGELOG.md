@@ -2,6 +2,15 @@
 
 This file was generated using [@jscutlery/semver](https://github.com/jscutlery/semver).
 
+# [2.1.0](https://github.com/Availity/availity-react/compare/@availity/change-password@2.0.3...@availity/change-password@2.1.0) (2024-05-22)
+
+
+### Features
+
+* **change-password:** add support for custom alert toggles ([1903267](https://github.com/Availity/availity-react/commit/190326702c187f6ec82c7ef551856cd64161a175))
+
+
+
 ## [2.0.3](https://github.com/Availity/availity-react/compare/@availity/change-password@2.0.2...@availity/change-password@2.0.3) (2024-04-23)
 
 
