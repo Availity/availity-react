@@ -6,6 +6,14 @@ The form to change the user's password
 
 ### Props
 
+#### `onErrorToggle?: ({ setLoading: func, setError: func, setSuccess: func, setSubmitted: func }) => void`
+
+Function to call when error `<Alert/>` is toggled. Defaults to setting the error state to null.
+
+#### `onSuccessToggle?: ({ setLoading: func, setError: func, setSuccess: func, setSubmitted: func }) => void`
+
+Function to call when success `<Alert/>` is toggled. Defaults to setting the success state to null.
+
 #### `onHandleSubmit?: ({ result: any, setSuccess: func, setError: func } ) => void`
 
 Function to call when the form is submitted. It is called with an object containing the result from the `changePassword` method that is called on the `resource`, the `setSuccess` function, and the `setError` function.

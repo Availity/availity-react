@@ -9,6 +9,8 @@ import ChangePasswordFeedback from './ChangePasswordFeedback';
 import './ChangePasswordForm.scss';
 
 const ChangePasswordForm = ({
+  onErrorToggle,
+  onSuccessToggle,
   onHandleSubmit,
   onError,
   additionalButtons,
@@ -58,6 +60,15 @@ const ChangePasswordForm = ({
     }
   };
 
+  const _onErrorToggle =
+    onErrorToggle && typeof onErrorToggle === 'function'
+      ? () => onErrorToggle({ setLoading, setError, setSuccess, setSubmitted })
+      : () => setError(null);
+  const _onSuccessToggle =
+    onSuccessToggle && typeof onSuccessToggle === 'function'
+      ? () => onSuccessToggle({ setLoading, setError, setSuccess, setSubmitted })
+      : () => setSuccess(null);
+
   return (
     <BlockUI blocking={loading}>
       <Form
@@ -69,10 +80,10 @@ const ChangePasswordForm = ({
           {header}
           <Row>
             <Col>
-              <Alert isOpen={!!error} color="danger" toggle={() => setError(null)}>
+              <Alert isOpen={!!error} color="danger" toggle={_onErrorToggle}>
                 {error}
               </Alert>
-              <Alert isOpen={!!success} color="success" toggle={() => setSuccess(null)}>
+              <Alert isOpen={!!success} color="success" toggle={_onSuccessToggle}>
                 {success}
               </Alert>
               <div className="password-with-icon">
@@ -192,6 +203,8 @@ const ChangePasswordForm = ({
 };
 
 ChangePasswordForm.propTypes = {
+  onErrorToggle: PropTypes.func,
+  onSuccessToggle: PropTypes.func,
   onHandleSubmit: PropTypes.func,
   onError: PropTypes.func,
   additionalButtons: PropTypes.node,
