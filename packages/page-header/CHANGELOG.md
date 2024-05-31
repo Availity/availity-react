@@ -2,6 +2,14 @@
 
 This file was generated using [@jscutlery/semver](https://github.com/jscutlery/semver).
 
+## [13.0.8](https://github.com/Availity/availity-react/compare/@availity/page-header@13.0.7...@availity/page-header@13.0.8) (2024-05-31)
+
+### Dependency Updates
+
+* `feedback` updated to version `13.0.7`
+* `spaces` updated to version `13.0.7`
+
+
 ## [13.0.7](https://github.com/Availity/availity-react/compare/@availity/page-header@13.0.6...@availity/page-header@13.0.7) (2024-05-09)
 
 ### Dependency Updates
