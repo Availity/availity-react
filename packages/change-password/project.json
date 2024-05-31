@@ -13,7 +13,8 @@
         "preset": "angular",
         "commitMessageFormat": "chore({projectName}): release version ${version} [skip ci]",
         "tagPrefix": "@availity/{projectName}@",
-        "baseBranch": "master"
+        "baseBranch": "master",
+        "trackDeps": true
       }
     },
     "lint": {
