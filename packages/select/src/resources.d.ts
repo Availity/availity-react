@@ -10,7 +10,7 @@ export { AvOrganizationSelect, AvRegionSelect };
 type PrebuiltResourceSelectProps<
   Option,
   IsMulti extends boolean,
-  Group extends GroupBase<Option> = GroupBase<Option>
+  Group extends GroupBase<Option> = GroupBase<Option>,
 > = Omit<ResourceSelectProps<Option, IsMulti, Group>, 'resource'>;
 
 type Code = {
@@ -21,7 +21,7 @@ type Code = {
 export declare const AvCodeSelect: <
   Option = Code,
   IsMulti extends boolean = boolean,
-  Group extends GroupBase<Option> = GroupBase<Option>
+  Group extends GroupBase<Option> = GroupBase<Option>,
 >(
   props: PrebuiltResourceSelectProps<Option, IsMulti, Group>
 ) => JSX.Element;
@@ -40,7 +40,7 @@ type NavOption = {
 export declare const AvNavigationSelect: <
   Option = NavOption,
   IsMulti extends boolean = boolean,
-  Group extends GroupBase<Option> = GroupBase<Option>
+  Group extends GroupBase<Option> = GroupBase<Option>,
 >(
   props: PrebuiltResourceSelectProps<Option, IsMulti, Group>
 ) => JSX.Element;
@@ -54,7 +54,7 @@ type Payer = {
 export declare const AvPayerSelect: <
   Option = Payer,
   IsMulti extends boolean = boolean,
-  Group extends GroupBase<Option> = GroupBase<Option>
+  Group extends GroupBase<Option> = GroupBase<Option>,
 >(
   props: PrebuiltResourceSelectProps<Option, IsMulti, Group> & { customerId: string }
 ) => JSX.Element;
@@ -84,7 +84,7 @@ type Permission = {
 export declare const AvPermissionSelect: <
   Option = Permission,
   IsMulti extends boolean = boolean,
-  Group extends GroupBase<Option> = GroupBase<Option>
+  Group extends GroupBase<Option> = GroupBase<Option>,
 >(
   props: PrebuiltResourceSelectProps<Option, IsMulti, Group>
 ) => JSX.Element;
@@ -109,12 +109,20 @@ type Provider = {
   };
 };
 
+type AvProviderSelectProps<
+  Option,
+  IsMulti extends boolean = boolean,
+  Group extends GroupBase<Option> = GroupBase<Option>,
+> = PrebuiltResourceSelectProps<Option, IsMulti, Group> & {
+  searchAll?: boolean;
+};
+
 export declare const AvProviderSelect: <
   Option = Provider,
   IsMulti extends boolean = boolean,
-  Group extends GroupBase<Option> = GroupBase<Option>
+  Group extends GroupBase<Option> = GroupBase<Option>,
 >(
-  props: PrebuiltResourceSelectProps<Option, IsMulti, Group> & { customerId: string }
+  props: AvProviderSelectProps<Option, IsMulti, Group> & { customerId: string }
 ) => JSX.Element;
 
 type User = {
@@ -135,7 +143,7 @@ type User = {
 export declare const AvUserSelect: <
   Option = User,
   IsMulti extends boolean = boolean,
-  Group extends GroupBase<Option> = GroupBase<Option>
+  Group extends GroupBase<Option> = GroupBase<Option>,
 >(
   props: PrebuiltResourceSelectProps<Option, IsMulti, Group>
 ) => JSX.Element;
