@@ -42,7 +42,7 @@
     "@availity/api-axios": "^8.0.7",
     "axios": "^1.6.7",
     "esbuild-sass-plugin": "^2.15.0",
-    "react": "^18.2.0",
+    "react": "^18.3.1",
     "react-dom": "^18.2.0",
     "tsup": "^7.2.0",
     "typescript": "^5.3.3"
