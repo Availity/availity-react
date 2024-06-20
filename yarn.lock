@@ -396,7 +396,7 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@availity/app-icon@workspace:packages/app-icon"
   dependencies:
-    classnames: ^2.3.2
+    classnames: ^2.5.1
     react: ^18.2.0
     react-dom: ^18.2.0
     tsup: ^7.2.0
@@ -410,7 +410,7 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@availity/app-tiles@workspace:packages/app-tiles"
   dependencies:
-    classnames: ^2.3.2
+    classnames: ^2.5.1
     react: ^18.2.0
     react-dom: ^18.2.0
     tsup: ^7.2.0
@@ -594,7 +594,7 @@ __metadata:
     "@availity/icon": "workspace:*"
     "@tanstack/react-query": ^4.36.1
     axios: ^1.6.7
-    classnames: ^2.3.2
+    classnames: ^2.5.1
     dayjs: ^1.11.9
     lodash: ^4.17.21
     prop-types: ^15.8.1
@@ -617,7 +617,7 @@ __metadata:
     "@availity/react-dates": ^21.13.1
     "@availity/yup": ^5.1.5
     "@types/react-dates": ^21.8.3
-    classnames: ^2.3.2
+    classnames: ^2.5.1
     esbuild-sass-plugin: ^2.15.0
     formik: ^2.4.4
     lodash: ^4.17.21
@@ -731,7 +731,7 @@ __metadata:
     "@availity/progress": "workspace:*"
     "@availity/upload-core": ^5.0.6
     "@types/uuid": ^9.0.8
-    classnames: ^2.3.2
+    classnames: ^2.5.1
     formik: ^2.4.4
     nock: ^13.3.3
     react: ^18.2.0
@@ -759,7 +759,7 @@ __metadata:
   dependencies:
     "@availity/icon": "workspace:*"
     "@availity/message-core": ^6.1.2
-    classnames: ^2.3.2
+    classnames: ^2.5.1
     formik: ^2.4.4
     prop-types: ^15.8.1
     react: ^18.2.0
@@ -812,7 +812,7 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@availity/icon@workspace:packages/icon"
   dependencies:
-    classnames: ^2.3.2
+    classnames: ^2.5.1
     react: ^18.2.0
     react-dom: ^18.2.0
     tsup: ^7.2.0
@@ -826,7 +826,7 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@availity/json-viewer@workspace:packages/json-viewer"
   dependencies:
-    classnames: ^2.3.2
+    classnames: ^2.5.1
     react: ^18.2.0
     react-dom: ^18.2.0
     tsup: ^7.2.0
@@ -841,7 +841,7 @@ __metadata:
   resolution: "@availity/link@workspace:packages/link"
   dependencies:
     "@availity/resolve-url": ^2.0.5
-    classnames: ^2.3.2
+    classnames: ^2.5.1
     prop-types: ^15.8.1
     react: ^18.2.0
     react-dom: ^18.2.0
@@ -868,7 +868,7 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@availity/list-group@workspace:packages/list-group"
   dependencies:
-    classnames: ^2.3.2
+    classnames: ^2.5.1
     prop-types: ^15.8.1
     react: ^18.2.0
     react-dom: ^18.2.0
@@ -916,7 +916,7 @@ __metadata:
     "@availity/spaces": "workspace:*"
     "@availity/training-link": "workspace:*"
     axios: ^1.6.7
-    classnames: ^2.3.2
+    classnames: ^2.5.1
     formik: ^2.4.4
     prop-types: ^15.8.1
     react: ^18.2.0
@@ -996,7 +996,7 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@availity/progress@workspace:packages/progress"
   dependencies:
-    classnames: ^2.3.2
+    classnames: ^2.5.1
     lodash: ^4.17.21
     react: ^18.2.0
     react-dom: ^18.2.0
@@ -1044,7 +1044,7 @@ __metadata:
     "@availity/react-dates": ^21.13.1
     "@types/react-dates": ^21.8.3
     availity-reactstrap-validation: ^2.7.1
-    classnames: ^2.3.2
+    classnames: ^2.5.1
     date-fns: ^2.30.0
     lodash: ^4.17.21
     moment: ^2.30.1
@@ -1068,7 +1068,7 @@ __metadata:
     "@availity/api-axios": ^8.0.7
     availity-reactstrap-validation: ^2.7.1
     axios: ^1.6.7
-    classnames: ^2.3.2
+    classnames: ^2.5.1
     lodash: ^4.17.21
     prop-types: ^15.8.1
     qs: ^6.11.2
@@ -1101,7 +1101,7 @@ __metadata:
     "@availity/api-axios": ^8.0.7
     "@availity/form": "workspace:*"
     axios: ^1.6.7
-    classnames: ^2.3.2
+    classnames: ^2.5.1
     formik: ^2.4.4
     lodash: ^4.17.21
     prop-types: ^15.8.1
@@ -1140,7 +1140,7 @@ __metadata:
     "@availity/typography": "workspace:*"
     "@tanstack/react-query": ^4.36.1
     axios: ^1.6.7
-    classnames: ^2.3.2
+    classnames: ^2.5.1
     dayjs: ^1.11.9
     lodash: ^4.17.21
     prop-types: ^15.8.1
@@ -1164,7 +1164,7 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@availity/step-wizard@workspace:packages/step-wizard"
   dependencies:
-    classnames: ^2.3.2
+    classnames: ^2.5.1
     prop-types: ^15.8.1
     react: ^18.2.0
     react-dom: ^18.2.0
@@ -1180,7 +1180,7 @@ __metadata:
     "@availity/hooks": "workspace:*"
     "@availity/icon": "workspace:*"
     "@types/react-table": ^7.7.15
-    classnames: ^2.3.2
+    classnames: ^2.5.1
     lodash: ^4.17.21
     moment: ^2.30.1
     react: ^18.2.0
@@ -1245,7 +1245,7 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@availity/typography@workspace:packages/typography"
   dependencies:
-    classnames: ^2.3.2
+    classnames: ^2.5.1
     prop-types: ^15.8.1
     react: ^18.2.0
     react-dom: ^18.2.0
@@ -11213,10 +11213,17 @@ __metadata:
   languageName: node
   linkType: hard
 
-"classnames@npm:^2.2.3, classnames@npm:^2.2.6, classnames@npm:^2.3.2":
+"classnames@npm:^2.2.3, classnames@npm:^2.2.6":
   version: 2.3.2
   resolution: "classnames@npm:2.3.2"
   checksum: 2c62199789618d95545c872787137262e741f9db13328e216b093eea91c85ef2bfb152c1f9e63027204e2559a006a92eb74147d46c800a9f96297ae1d9f96f4e
+  languageName: node
+  linkType: hard
+
+"classnames@npm:^2.5.1":
+  version: 2.5.1
+  resolution: "classnames@npm:2.5.1"
+  checksum: da424a8a6f3a96a2e87d01a432ba19315503294ac7e025f9fece656db6b6a0f7b5003bb1fbb51cbb0d9624d964f1b9bb35a51c73af9b2434c7b292c42231c1e5
   languageName: node
   linkType: hard
 
