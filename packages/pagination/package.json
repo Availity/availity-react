@@ -34,7 +34,7 @@
     "@availity/block-ui": "workspace:^",
     "lodash": "^4.17.21",
     "react-infinite-scroll-component": "^6.1.0",
-    "react-use": "^17.4.0"
+    "react-use": "^17.5.0"
   },
   "devDependencies": {
     "@availity/hooks": "workspace:*",
