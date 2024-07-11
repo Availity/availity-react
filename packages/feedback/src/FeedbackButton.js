@@ -6,7 +6,7 @@ import Icon from '@availity/icon';
 const btnStyles = { fontSize: '1.4em', padding: '.2em .4em' };
 const iconStyles = { margin: '0px' };
 
-const FeedbackButton = ({ onClick, icon, active, children, iconSize, ...rest }) => (
+const FeedbackButton = ({ onClick, icon, active, children, iconSize = '', ...rest }) => (
   <Button
     style={btnStyles}
     color={active === icon ? 'primary' : 'light'}
@@ -23,15 +23,11 @@ const FeedbackButton = ({ onClick, icon, active, children, iconSize, ...rest }) 
 );
 
 FeedbackButton.propTypes = {
-  onClick: PropTypes.func,
+  onClick: PropTypes.func.isRequired,
   icon: PropTypes.string,
   active: PropTypes.string,
   children: PropTypes.node,
   iconSize: PropTypes.string,
-};
-
-FeedbackButton.defaultProps = {
-  iconSize: '',
 };
 
 export default FeedbackButton;
