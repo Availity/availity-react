@@ -2,6 +2,20 @@
 
 This file was generated using [@jscutlery/semver](https://github.com/jscutlery/semver).
 
+# [9.0.0](https://github.com/Availity/availity-react/compare/@availity/feedback@8.0.4...@availity/feedback@9.0.0) (2024-07-12)
+
+
+### Features
+
+* **feedback:** default to use avLogMessagesApiV2 to send feedback ([e06ff98](https://github.com/Availity/availity-react/commit/e06ff9806d8bd3095b0f6000947e9357f69c11c9))
+
+
+### BREAKING CHANGES
+
+* **feedback:** this will break splunk dashboards
+
+
+
 ## [8.0.4](https://github.com/Availity/availity-react/compare/@availity/feedback@8.0.3...@availity/feedback@8.0.4) (2024-05-31)
 
 ### Dependency Updates
