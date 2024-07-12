@@ -8,28 +8,28 @@ import Spaces, { SpacesLogo, useSpaces, useSpacesContext } from '@availity/space
 import '../styles.scss';
 
 const PageHeader = ({
-  payerId,
+  payerId = null,
   logo,
   spaceName,
-  spaceId,
+  spaceId = null,
   children,
   appName,
   appAbbr,
   iconColor,
   branded,
-  showCrumbs,
+  showCrumbs = true,
   crumbs,
   feedback: showFeedback,
   feedbackProps,
-  titleProps: { className: titleClassName, ...restTitleProps },
+  titleProps: { className: titleClassName, ...restTitleProps } = {},
   renderRightContent: RenderRightContent,
-  renderRightClassName,
+  renderRightClassName = 'page-header-right',
   component,
-  tag: Tag,
+  tag: Tag = 'div',
   clientId,
   iconSrc,
   iconAlt,
-  homeUrl,
+  homeUrl = '/public/apps/dashboard',
   linkTag,
   className,
   ...props
@@ -189,18 +189,6 @@ PageHeader.propTypes = {
   iconSrc: PropTypes.string,
   /** Required if iconSrc is used. Image alt property of <AppIcon /> */
   iconAlt: PropTypes.string,
-};
-
-PageHeader.defaultProps = {
-  tag: 'div',
-  // SpaceId and payerId are defaulted to null to prevent `useSpace` from
-  // returning a space we may not want
-  spaceId: null,
-  payerId: null,
-  homeUrl: '/public/apps/dashboard',
-  titleProps: {},
-  renderRightClassName: 'page-header-right',
-  showCrumbs: true,
 };
 
 export default PageHeader;

@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useRef } from 'react';
 import PropTypes from 'prop-types';
 import { Button, ModalBody, ModalHeader, ModalFooter, FormGroup } from 'reactstrap';
-import { avLogMessagesApi, avRegionsApi } from '@availity/api-axios';
+import { avLogMessagesApiV2, avRegionsApi } from '@availity/api-axios';
 import { Form, Field } from '@availity/form';
 import { SelectField } from '@availity/select';
 import * as yup from 'yup';
@@ -29,24 +29,25 @@ const FeedbackForm = ({
   name,
   onClose,
   faceOptions,
-  aboutOptions,
-  aboutLabel,
+  aboutOptions = [],
+  aboutLabel = 'This is about',
   onFeedbackSent,
   prompt,
-  additionalComments,
+  additionalComments = false,
   staticFields,
-  analytics,
+  analytics = avLogMessagesApiV2,
   modalHeaderProps,
-  showSupport,
+  showSupport = false,
   setSupportIsActive,
   autoFocusFeedbackButton,
-  modal,
+  modal = true,
   ...formProps
 }) => {
   const [active, setActive] = useState(null);
   const [sent, setSent] = useState(null);
   const [loading, setLoading] = useState(null);
   const ref = useRef();
+
   const sendFeedback = async ({ smileField, ...values }) => {
     setLoading(true);
     const response = await avRegionsApi.getCurrentRegion();
@@ -289,7 +290,7 @@ FeedbackForm.propTypes = {
   /** Props to be spread onto the <ModalHeader /> rendered inside of the <FeedbackForm />. See ModalHeader
    *For accessibility use className instead of tag to adjust size and style of header. */
   modalHeaderProps: PropTypes.shape({ ...ModalHeader.propTypes }),
-  /** Override the analytics instance that is passed in. Default avLogMessagesApi */
+  /** Override the analytics instance that is passed in. Default avLogMessagesApiV2 */
   analytics: PropTypes.shape({
     info: PropTypes.func.isRequired,
   }),
@@ -300,15 +301,6 @@ FeedbackForm.propTypes = {
    * This is to avoid issues with focus causing other elements to close (e.g. dropdowns) */
   autoFocusFeedbackButton: PropTypes.bool,
   modal: PropTypes.bool,
-};
-
-FeedbackForm.defaultProps = {
-  aboutOptions: [],
-  aboutLabel: 'This is about',
-  additionalComments: false,
-  analytics: avLogMessagesApi,
-  showSupport: false,
-  modal: true,
 };
 
 export default FeedbackForm;

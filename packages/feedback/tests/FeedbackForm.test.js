@@ -1,13 +1,13 @@
 import React from 'react';
 import { render, fireEvent, waitFor, cleanup } from '@testing-library/react';
-import { avLogMessagesApi, avRegionsApi } from '@availity/api-axios';
+import { avLogMessagesApiV2, avRegionsApi } from '@availity/api-axios';
 import { FeedbackForm } from '..';
 
 jest.mock('@availity/api-axios');
 
 jest.useFakeTimers();
 
-avLogMessagesApi.info = jest.fn(() => Promise.resolve());
+avLogMessagesApiV2.info = jest.fn(() => Promise.resolve());
 
 avRegionsApi.getCurrentRegion = jest.fn(() =>
   Promise.resolve({
@@ -26,8 +26,8 @@ afterEach(cleanup);
 describe('FeedbackForm', () => {
   beforeEach(() => {
     // reset log messages api mock
-    avLogMessagesApi.info.mockClear();
-    avLogMessagesApi.info = jest.fn(() => Promise.resolve());
+    avLogMessagesApiV2.info.mockClear();
+    avLogMessagesApiV2.info = jest.fn(() => Promise.resolve());
   });
   test('should disable submit button until smile selected', () => {
     const { getByText } = render(<FeedbackForm name="Payer Space" />);
@@ -91,7 +91,7 @@ describe('FeedbackForm', () => {
 
   test('should submit and disable button when clicked', async () => {
     // mock log messages api to return a promise that resolves after 3 seconds
-    avLogMessagesApi.info = jest.fn(() => new Promise((resolve) => setTimeout(resolve, 3000)));
+    avLogMessagesApiV2.info = jest.fn(() => new Promise((resolve) => setTimeout(resolve, 3000)));
     const { getByLabelText, getByText } = render(<FeedbackForm name="Payer Space" />);
 
     // Simulate the Click
@@ -113,7 +113,7 @@ describe('FeedbackForm', () => {
     await waitFor(() => expect(submitButton).toBeDisabled());
     fireEvent.click(submitButton);
     // wait for log messages to have been called once
-    await waitFor(() => expect(avLogMessagesApi.info).toHaveBeenCalledTimes(1));
+    await waitFor(() => expect(avLogMessagesApiV2.info).toHaveBeenCalledTimes(1));
 
     // wait for success message to show
     await waitFor(() => expect(getByText('Thank you for your feedback.')).toBeInTheDocument(), { timeout: 5000 });

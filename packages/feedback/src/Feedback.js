@@ -1,25 +1,26 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { Dropdown, DropdownToggle } from 'reactstrap';
-import { avLogMessagesApi } from '@availity/api-axios';
+import { avLogMessagesApiV2 } from '@availity/api-axios';
 import { useToggle } from '@availity/hooks';
+
 import FeedbackDropdown from './FeedbackDropdown';
 import FeedbackModal from './FeedbackModal';
 
 const Feedback = ({
   appName,
-  modal,
+  modal = false,
   zIndex,
   supportZIndex,
   children,
-  analytics,
+  analytics = avLogMessagesApiV2,
   className,
   outline,
-  color,
+  color = 'secondary',
   formProps,
   prompt,
   onFeedbackSent,
-  showSupport,
+  showSupport = false,
   onModalOpenChange,
   ...props
 }) => {
@@ -27,7 +28,8 @@ const Feedback = ({
 
   const handleFeedbackToggle = () => {
     feedbackToggle();
-    onModalOpenChange(!feedbackIsOpen);
+
+    if (onModalOpenChange) onModalOpenChange(!feedbackIsOpen);
   };
 
   return (
@@ -100,14 +102,6 @@ Feedback.propTypes = {
   onModalOpenChange: PropTypes.func,
   /** Toggle whether or not to show the "Open a Support ticket" link in the FeedbackForm */
   showSupport: PropTypes.bool,
-};
-
-Feedback.defaultProps = {
-  modal: false,
-  color: 'secondary',
-  analytics: avLogMessagesApi,
-  showSupport: false,
-  onModalOpenChange: Object,
 };
 
 export default Feedback;

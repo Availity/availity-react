@@ -1,11 +1,29 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { useField, useFormikContext } from 'formik';
+
 import FeedbackButton from './FeedbackButton';
 
 const btnStyles = { flex: 1, margin: '0 2% 0 2%' };
+const defaultOptions = [
+  {
+    icon: 'smile',
+    description: 'Smiley face',
+    label: 'What do you like?',
+  },
+  {
+    icon: 'meh',
+    description: 'Meh face',
+    label: 'What would you improve?',
+  },
+  {
+    icon: 'frown',
+    description: 'Frowny face',
+    label: "What don't you like?",
+  },
+];
 
-const SmileField = ({ name, options, onChange, autoFocusFeedbackButton, onClose, modal }) => {
+const SmileField = ({ name, options = defaultOptions, onChange, autoFocusFeedbackButton = true, onClose, modal }) => {
   const [{ value }] = useField(name);
   const { setFieldValue } = useFormikContext();
 
@@ -53,27 +71,6 @@ SmileField.propTypes = {
   onChange: PropTypes.func,
   autoFocusFeedbackButton: PropTypes.bool,
   modal: PropTypes.bool,
-};
-
-SmileField.defaultProps = {
-  options: [
-    {
-      icon: 'smile',
-      description: 'Smiley face',
-      label: 'What do you like?',
-    },
-    {
-      icon: 'meh',
-      description: 'Meh face',
-      label: 'What would you improve?',
-    },
-    {
-      icon: 'frown',
-      description: 'Frowny face',
-      label: "What don't you like?",
-    },
-  ],
-  autoFocusFeedbackButton: true,
 };
 
 export default SmileField;
