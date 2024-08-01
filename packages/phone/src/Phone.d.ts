@@ -13,6 +13,7 @@ export interface PhoneProps extends FieldProps {
   showExtension?: boolean;
   phoneColProps?: object;
   extProps?: ExtensionProps;
+  formatInitialValue?: boolean;
 }
 
 declare const Phone: (props: PhoneProps) => JSX.Element;

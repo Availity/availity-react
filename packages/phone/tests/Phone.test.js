@@ -24,11 +24,11 @@ const phoneProps = {
   },
 };
 
-const renderPhone = (props, strictValidation = false) => {
+const renderPhone = (props, strictValidation = false, initialPhoneValue = '201') => {
   const Component = () => (
     <Form
       initialValues={{
-        test_phone: '201',
+        test_phone: initialPhoneValue,
       }}
       onSubmit={() => {}}
       validationSchema={yup.object().shape({
@@ -53,6 +53,12 @@ describe('Phone', () => {
     });
 
     await expect(getByText('Ext.')).toBeDefined();
+  });
+
+  test('Should format valid phone number when it initializes', async () => {
+    const { getByDisplayValue } = renderPhone({ ...phoneProps, formatInitialValue: true }, false, '2015550123');
+
+    await expect(getByDisplayValue('(201) 555-0123')).toBeDefined();
   });
 
   test('Should format valid phone number', async () => {

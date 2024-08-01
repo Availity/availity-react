@@ -1,12 +1,21 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import PropTypes from 'prop-types';
 import { Field } from '@availity/form';
 import { useFormikContext } from 'formik';
 import { AsYouType } from 'libphonenumber-js';
 import { Row, Col } from 'reactstrap';
 
-const Phone = ({ name, label, country = 'US', showExtension = false, extProps, phoneColProps, ...restPhoneProps }) => {
-  const { setFieldValue, setFieldTouched } = useFormikContext();
+const Phone = ({
+  name,
+  label,
+  country = 'US',
+  showExtension = false,
+  extProps,
+  phoneColProps,
+  formatInitialValue,
+  ...restPhoneProps
+}) => {
+  const { setFieldValue, setFieldTouched, values } = useFormikContext();
 
   let ext = null;
   if (showExtension) {
@@ -26,6 +35,13 @@ const Phone = ({ name, label, country = 'US', showExtension = false, extProps, p
 
     return asYouType.formattedOutput;
   };
+
+  useEffect(() => {
+    if (formatInitialValue) {
+      setFieldValue(name, asYouFormat(values[name]), false);
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
 
   const formatPhoneOnBlur = ({ target: { value } }) => {
     setFieldValue(name, asYouFormat(value), true);
@@ -60,6 +76,8 @@ Phone.propTypes = {
   country: PropTypes.string,
   /** Used to control props on the `<Col />` for the phone field, if needed. The phone column defaults to xs: { size: 12 } when not rendering an extension field, and defaults to xs: { size: 10 } when rendering an extension field. */
   phoneColProps: PropTypes.object,
+  /** When true, when the field is first rendered, it will trigger the formatter to update the value. */
+  formatInitialValue: PropTypes.bool,
 };
 
 export default Phone;
