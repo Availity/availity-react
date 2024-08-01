@@ -2,6 +2,15 @@
 
 This file was generated using [@jscutlery/semver](https://github.com/jscutlery/semver).
 
+# [2.2.0](https://github.com/Availity/availity-react/compare/@availity/phone@2.1.4...@availity/phone@2.2.0) (2024-08-01)
+
+
+### Features
+
+* **phone:** initial format value ([#1447](https://github.com/Availity/availity-react/issues/1447)) ([3398a65](https://github.com/Availity/availity-react/commit/3398a65973bc46152ccd302f14b458e0af4d59d1))
+
+
+
 ## [2.1.4](https://github.com/Availity/availity-react/compare/@availity/phone@2.1.3...@availity/phone@2.1.4) (2023-10-30)
 
 
