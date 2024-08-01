@@ -43,7 +43,7 @@
     "@types/react-dates": "^21.8.3",
     "esbuild-sass-plugin": "^2.15.0",
     "formik": "^2.4.4",
-    "react": "^18.2.0",
+    "react": "^18.3.1",
     "react-dom": "^18.2.0",
     "reactstrap": "^8.10.1",
     "tsup": "^7.2.0",
