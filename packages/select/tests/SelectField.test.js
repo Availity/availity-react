@@ -1,6 +1,7 @@
 import React from 'react';
 import { render } from '@testing-library/react';
 import { Button } from 'reactstrap';
+// eslint-disable-next-line import/no-unresolved
 import { Form } from '@availity/form';
 
 import { SelectField } from '../src';
