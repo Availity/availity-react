@@ -27,6 +27,7 @@ export const RequiredKey = () => (
 
 const Label = ({ helpId, id, required, children, isHelpVideoType, ...attributes }) => {
   const labelId = id || uuid();
+  // eslint-disable-next-line react/no-unstable-nested-components
   const Wrapper = ({ children }) => {
     if (helpId && (attributes.className || attributes.style)) {
       return (
@@ -35,6 +36,7 @@ const Label = ({ helpId, id, required, children, isHelpVideoType, ...attributes 
         </div>
       );
     }
+    // eslint-disable-next-line react/jsx-no-useless-fragment
     return <>{children}</>;
   };
 

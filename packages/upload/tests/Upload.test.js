@@ -14,7 +14,7 @@ describe('Upload', () => {
   test('adding a file', () => {
     const { getByTestId } = render(<Upload clientId="a" bucketId="b" customerId="c" showFileDrop />);
 
-    const file = new Buffer.from('hello world'.split('')); // eslint-disable-line new-cap
+    const file = new Buffer.from([...'hello world']); // eslint-disable-line new-cap
     file.name = 'fileName.png';
     const fileEvent = { target: { files: [file] } };
 
@@ -29,7 +29,7 @@ describe('Upload', () => {
     const { getByTestId, queryByTestId } = render(<Upload clientId="a" bucketId="b" customerId="c" />);
 
     // Create a new file
-    const file = new Buffer.from('hello world'.split('')); // eslint-disable-line new-cap
+    const file = new Buffer.from([...'hello world']); // eslint-disable-line new-cap
     file.name = 'fileName.png';
 
     const fileEvent = { target: { files: [file] } };
@@ -53,7 +53,7 @@ describe('Upload', () => {
     const { getByTestId } = render(<Upload clientId="a" bucketId="b" customerId="c" onFilePreUpload={[mockFunc]} />);
     const inputNode = getByTestId('file-picker');
 
-    const file = new Buffer.from('hello world'.split('')); // eslint-disable-line new-cap
+    const file = new Buffer.from([...'hello world']); // eslint-disable-line new-cap
     file.name = 'fileName.png';
     const fileEvent = { target: { files: [file] } };
 
@@ -74,7 +74,7 @@ describe('Upload', () => {
 
     const inputNode = getByTestId('file-picker');
 
-    const file = new Buffer.from('hello world'.split('')); // eslint-disable-line new-cap
+    const file = new Buffer.from([...'hello world']); // eslint-disable-line new-cap
     file.name = 'fileName.png';
     const fileEvent = { target: { files: [file] } };
 
@@ -91,7 +91,7 @@ describe('Upload', () => {
 
   test('adds file via dropzone', () => {
     const { getByTestId } = render(<Upload clientId="a" bucketId="b" customerId="c" showFileDrop />);
-    const file = new Buffer.from('hello world'.split('')); // eslint-disable-line new-cap
+    const file = new Buffer.from([...'hello world']); // eslint-disable-line new-cap
     file.name = 'fileName.png';
 
     const inputNode = getByTestId('file-picker');
@@ -106,7 +106,7 @@ describe('Upload', () => {
     const { getByTestId, getByText } = render(
       <Upload clientId="a" bucketId="b" customerId="c" showFileDrop maxSize={10} />
     );
-    const file = new Buffer.from('hello world'.split('')); // eslint-disable-line new-cap
+    const file = new Buffer.from([...'hello world']); // eslint-disable-line new-cap
     file.name = 'fileName.png';
     file.size = 11;
 
@@ -134,7 +134,7 @@ describe('Upload', () => {
         onFilePreUpload={[() => false]}
       />
     );
-    const file = new Buffer.from('hello world'.split('')); // eslint-disable-line new-cap
+    const file = new Buffer.from([...'hello world']); // eslint-disable-line new-cap
     file.name = 'fileName.png';
     file.size = 11;
     const inputNode = getByTestId('file-picker');
@@ -143,7 +143,7 @@ describe('Upload', () => {
     fireEvent.drop(inputNode, fileEvent);
 
     expect(inputNode.files.length).toBe(1);
-    expect(myfunc).toBeCalledTimes(0);
+    expect(myfunc).toHaveBeenCalledTimes(0);
   });
 
   test('a discontinue result from a function in the property onFilePreUpload does not stop an error message from generating', async () => {
@@ -167,7 +167,7 @@ describe('Upload', () => {
         onFilePreUpload={[() => false]}
       />
     );
-    const file = new Buffer.from('hello world'.split('')); // eslint-disable-line new-cap
+    const file = new Buffer.from([...'hello world']); // eslint-disable-line new-cap
     file.name = 'fileName.png';
     file.size = 11;
     const inputNode = getByTestId('file-picker');
@@ -201,7 +201,7 @@ describe('Upload', () => {
         getDropRejectionMessage={getDropRejectionMessage}
       />
     );
-    const file = new Buffer.from('hello world'.split('')); // eslint-disable-line new-cap
+    const file = new Buffer.from([...'hello world']); // eslint-disable-line new-cap
     file.name = 'fileName.png';
     file.size = 11;
 

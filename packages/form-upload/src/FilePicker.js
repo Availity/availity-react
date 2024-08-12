@@ -28,8 +28,8 @@ const FilePicker = ({
   const onChange = (event) => {
     const { files } = event.target;
     const value = [];
-    for (let i = 0; i < files.length; i++) {
-      value[i] = files[i];
+    for (const [i, file_] of files.entries()) {
+      value[i] = file_;
     }
     setFieldValue(name, value, true);
     if (onChangeCallback) onChangeCallback(event);

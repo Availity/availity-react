@@ -1,11 +1,14 @@
 {
-  "root": "packages/typography",
+  "name": "@availity/typography",
+  "$schema": "../../node_modules/nx/schemas/project-schema.json",
   "projectType": "library",
   "targets": {
     "test": {
       "executor": "@nx/jest:jest",
-      "outputs": ["coverage/typography"],
-      "options": { "jestConfig": "packages/typography/jest.config.js", "passWithNoTests": true }
+      "outputs": ["{workspaceRoot}/coverage/typography"],
+      "options": {
+        "jestConfig": "packages/typography/jest.config.js"
+      }
     },
     "version": {
       "executor": "@jscutlery/semver:version",
@@ -17,10 +20,9 @@
       }
     },
     "lint": {
-      "executor": "@nx/linter:eslint",
+      "executor": "@nx/eslint:lint",
       "options": {
         "eslintConfig": ".eslintrc.yaml",
-        "lintFilePatterns": ["packages/typography/**/*.{js,ts}"],
         "silent": false,
         "fix": false,
         "cache": true,

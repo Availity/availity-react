@@ -1,10 +1,2 @@
-import ChangePassword, { useChangePasswordContext, ChangePasswordContext } from './src/ChangePassword';
-import ChangePasswordForm from './src/ChangePasswordForm';
-
-export default ChangePassword;
-
-export {
-  useChangePasswordContext,
-  ChangePasswordContext,
-  ChangePasswordForm,
-};
+export { default, useChangePasswordContext, ChangePasswordContext } from './src/ChangePassword';
+export { default as ChangePasswordForm } from './src/ChangePasswordForm';

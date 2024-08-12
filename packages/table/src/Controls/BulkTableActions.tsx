@@ -140,6 +140,7 @@ const BulkTableActions = <T extends IdType>({
                   />
                 ) : (
                   <DropdownItem data-testid={`bulk_action_${action.id}`} key={`${action.id}`} {...setProps()}>
+                    {/* eslint-disable-next-line react/jsx-no-useless-fragment */}
                     <>{action.displayText}</>
                   </DropdownItem>
                 );

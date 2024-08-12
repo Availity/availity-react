@@ -14,7 +14,7 @@ const { DownChevron, CrossIcon, DropdownIndicator, ClearIndicator } = reactSelec
 
 const createOption = (label, labelKey = 'label', valueKey = 'value') => ({
   [labelKey]: label,
-  [valueKey]: label.toLowerCase().replace(/\W/g, ''),
+  [valueKey]: label.toLowerCase().replaceAll(/\W/g, ''),
 });
 
 const components = {
@@ -83,10 +83,10 @@ class AvSelect extends AvBaseInput {
       defaultValue = [];
     }
     let value = this.props.defaultValue;
-    if (typeof value === 'undefined' && this.context.FormCtrl) {
+    if (value === undefined && this.context.FormCtrl) {
       value = this.context.FormCtrl.getDefaultValue(this.props.name);
     }
-    return typeof value === 'undefined' ? defaultValue : value;
+    return value === undefined ? defaultValue : value;
   }
 
   getValueKey(nextProps = this.props) {

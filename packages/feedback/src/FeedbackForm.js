@@ -53,7 +53,7 @@ const FeedbackForm = ({
     const response = await avRegionsApi.getCurrentRegion();
 
     await analytics.info({
-      surveyId: `${name.replace(/\s/g, '_')}_Smile_Survey`,
+      surveyId: `${name.replaceAll(/\s/g, '_')}_Smile_Survey`,
       smileLocation: `${name}`,
       smile: `icon-${smileField.icon}`,
       url: window.location.href,

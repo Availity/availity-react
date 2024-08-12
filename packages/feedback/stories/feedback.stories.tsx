@@ -2,7 +2,6 @@ import React from 'react';
 import { StoryObj } from '@storybook/react';
 
 import Feedback from '../src/Feedback';
-import FeedbackForm from '../src/FeedbackForm';
 // import README from '../README.md';
 
 export default {

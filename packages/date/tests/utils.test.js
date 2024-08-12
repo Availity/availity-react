@@ -124,7 +124,7 @@ describe('utils', () => {
 
       expect(yearPicker.length).toBe(month.year() - min.year() + 1);
       expect(yearPicker.length).not.toBe(max.year() - min.year() + 1);
-      expect(yearPicker[yearPicker.length - 1].value).toBe(month.year());
+      expect(yearPicker.at(-1).value).toBe(month.year());
     });
 
     it('renders correct options current month.year() < min', () => {

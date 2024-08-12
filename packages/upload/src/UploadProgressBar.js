@@ -17,13 +17,13 @@ class UploadProgressBar extends Component {
     props.upload.onError.push(this.onError);
   }
 
-  componentDidMount = () => {
+  componentDidMount() {
     this._isMounted = true;
-  };
+  }
 
-  componentWillUnmount = () => {
+  componentWillUnmount() {
     this._isMounted = false;
-  };
+  }
 
   onProgress = () => {
     const { upload, onProgress } = this.props;

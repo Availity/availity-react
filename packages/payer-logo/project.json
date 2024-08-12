@@ -1,11 +1,14 @@
 {
-  "root": "packages/payer-logo",
+  "name": "@availity/payer-logo",
+  "$schema": "../../node_modules/nx/schemas/project-schema.json",
   "projectType": "library",
   "targets": {
     "test": {
       "executor": "@nx/jest:jest",
-      "outputs": ["coverage/payer-logo"],
-      "options": { "jestConfig": "packages/payer-logo/jest.config.js", "passWithNoTests": true }
+      "outputs": ["{workspaceRoot}/coverage/payer-logo"],
+      "options": {
+        "jestConfig": "packages/payer-logo/jest.config.js"
+      }
     },
     "version": {
       "executor": "@jscutlery/semver:version",
@@ -17,10 +20,9 @@
       }
     },
     "lint": {
-      "executor": "@nx/linter:eslint",
+      "executor": "@nx/eslint:lint",
       "options": {
         "eslintConfig": ".eslintrc.yaml",
-        "lintFilePatterns": ["packages/payer-logo/**/*.{js,ts}"],
         "silent": false,
         "fix": false,
         "cache": true,

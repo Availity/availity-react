@@ -1,11 +1,14 @@
 {
-  "root": "packages/step-wizard",
+  "name": "@availity/step-wizard",
+  "$schema": "../../node_modules/nx/schemas/project-schema.json",
   "projectType": "library",
   "targets": {
     "test": {
       "executor": "@nx/jest:jest",
-      "outputs": ["coverage/step-wizard"],
-      "options": { "jestConfig": "packages/step-wizard/jest.config.js", "passWithNoTests": true }
+      "outputs": ["{workspaceRoot}/coverage/step-wizard"],
+      "options": {
+        "jestConfig": "packages/step-wizard/jest.config.js"
+      }
     },
     "version": {
       "executor": "@jscutlery/semver:version",
@@ -17,10 +20,9 @@
       }
     },
     "lint": {
-      "executor": "@nx/linter:eslint",
+      "executor": "@nx/eslint:lint",
       "options": {
         "eslintConfig": ".eslintrc.yaml",
-        "lintFilePatterns": ["packages/step-wizard/**/*.{js,ts}"],
         "silent": false,
         "fix": false,
         "cache": true,

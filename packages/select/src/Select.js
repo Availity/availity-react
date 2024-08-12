@@ -47,7 +47,7 @@ const components = {
 
 const createOption = (label, labelKey = 'label', valueKey = 'value') => ({
   [labelKey]: label,
-  [valueKey]: label.toLowerCase().replace(/\W/g, ''),
+  [valueKey]: label.toLowerCase().replaceAll(/\W/g, ''),
 });
 
 const areValueAndOptionValueEqual = (value, optionValue) => isEqual(value, optionValue);
@@ -309,7 +309,7 @@ const Select = ({
   }
 
   const onChangeHandler = async (newValue) => {
-    if (newValue && newValue.length > 0 && newValue[newValue.length - 1].value === selectAllOption.value) {
+    if (newValue && newValue.length > 0 && newValue.at(-1).value === selectAllOption.value) {
       newValue = options;
     }
 
@@ -460,7 +460,7 @@ const Select = ({
           type="button"
           className={clearButtonClassName}
           aria-label={`clear ${
-            attributes['aria-label'] || name.replace(/[\W_]+/g, ' ').replace(/[A-Z]/g, ' $&') || ''
+            attributes['aria-label'] || name.replaceAll(/[\W_]+/g, ' ').replaceAll(/[A-Z]/g, ' $&') || ''
           }`}
           onClick={() => onChangeHandler(attributes.isMulti ? [] : null)}
           disabled={!fieldValue || (Array.isArray(fieldValue) && fieldValue.length === 0)}

@@ -22,6 +22,7 @@ const ChangePassword = ({ resource, schema, conditions, children }) => {
 
   return (
     <ChangePasswordContext.Provider
+      // eslint-disable-next-line react/jsx-no-constructed-context-values
       value={{
         loading,
         setLoading,

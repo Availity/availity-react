@@ -30,7 +30,7 @@ const TableHeaderCell = <T extends IdType>({
   column,
   children,
   onSort,
-
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
   scrollable,
   sortable,
   manualSortBy,

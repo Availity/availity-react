@@ -34,7 +34,7 @@ const AvResourcePagination = <TData,>({
     const params = {
       limit: itemsPerPage,
       offset: (page - 1) * itemsPerPage,
-      ...(parameters.params || {}),
+      ...parameters.params,
     };
 
     const resp = await resource.postGet(params, parameters || {});

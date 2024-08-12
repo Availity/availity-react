@@ -1,11 +1,14 @@
 {
-  "root": "packages/feature",
+  "name": "@availity/feature",
+  "$schema": "../../node_modules/nx/schemas/project-schema.json",
   "projectType": "library",
   "targets": {
     "test": {
       "executor": "@nx/jest:jest",
-      "outputs": ["coverage/feature"],
-      "options": { "jestConfig": "packages/feature/jest.config.js", "passWithNoTests": true }
+      "outputs": ["{workspaceRoot}/coverage/feature"],
+      "options": {
+        "jestConfig": "packages/feature/jest.config.js"
+      }
     },
     "version": {
       "executor": "@jscutlery/semver:version",
@@ -17,10 +20,9 @@
       }
     },
     "lint": {
-      "executor": "@nx/linter:eslint",
+      "executor": "@nx/eslint:lint",
       "options": {
         "eslintConfig": ".eslintrc.yaml",
-        "lintFilePatterns": ["packages/feature/**/*.{js,ts}"],
         "silent": false,
         "fix": false,
         "cache": true,

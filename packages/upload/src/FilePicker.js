@@ -18,8 +18,8 @@ class FilePicker extends Component {
     const { files } = event.target;
     const { onChange } = this.props;
     this.value = [];
-    for (let i = 0; i < files.length; i++) {
-      this.value[i] = files[i];
+    for (const [i, file] of files.entries()) {
+      this.value[i] = file;
     }
     this.setState({ value: this.value });
     this.validate();

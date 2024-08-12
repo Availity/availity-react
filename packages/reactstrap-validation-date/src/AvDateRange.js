@@ -1,3 +1,4 @@
+/* eslint-disable react/no-unused-class-component-methods */
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { InputGroup, Button } from 'reactstrap';
@@ -445,9 +446,9 @@ class AvDateRange extends Component {
     const minDate = validate && validate.min ? validate.min.value : min;
     const maxDate = validate && validate.max ? validate.max.value : max;
 
-    const startId = `${(id || name).replace(/[^\da-z]/gi, '')}-start`;
+    const startId = `${(id || name).replaceAll(/[^\da-z]/gi, '')}-start`;
 
-    const endId = `${(id || name).replace(/[^\da-z]/gi, '')}-end`;
+    const endId = `${(id || name).replaceAll(/[^\da-z]/gi, '')}-end`;
 
     const touched =
       this.context.FormCtrl.isTouched(this.props.start.name) && this.context.FormCtrl.isTouched(this.props.end.name);

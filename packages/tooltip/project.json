@@ -1,11 +1,14 @@
 {
-  "root": "packages/tooltip",
+  "name": "@availity/tooltip",
+  "$schema": "../../node_modules/nx/schemas/project-schema.json",
   "projectType": "library",
   "targets": {
     "test": {
       "executor": "@nx/jest:jest",
-      "outputs": ["coverage/tooltip"],
-      "options": { "jestConfig": "packages/tooltip/jest.config.js", "passWithNoTests": true }
+      "outputs": ["{workspaceRoot}/coverage/tooltip"],
+      "options": {
+        "jestConfig": "packages/tooltip/jest.config.js"
+      }
     },
     "version": {
       "executor": "@jscutlery/semver:version",
@@ -17,10 +20,9 @@
       }
     },
     "lint": {
-      "executor": "@nx/linter:eslint",
+      "executor": "@nx/eslint:lint",
       "options": {
         "eslintConfig": ".eslintrc.yaml",
-        "lintFilePatterns": ["packages/tooltip/**/*.{js,ts}"],
         "silent": false,
         "fix": false,
         "cache": true,

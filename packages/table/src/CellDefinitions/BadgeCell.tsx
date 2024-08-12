@@ -12,6 +12,7 @@ const BadgeCell = (
 ): JSX.Element | ((cell: CellProps) => JSX.Element | null) | null => {
   const BadgeCellDef = ({ value }: CellProps): JSX.Element | null => {
     const defaultVal = defaultValue || null;
+    // eslint-disable-next-line react/jsx-no-useless-fragment
     return value ? <Badge color={color}>{value}</Badge> : defaultValue ? <>{defaultVal}</> : null;
   };
 
