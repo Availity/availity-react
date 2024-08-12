@@ -223,13 +223,13 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@availity/analytics-core@npm:^4.1.0":
-  version: 4.1.2
-  resolution: "@availity/analytics-core@npm:4.1.2"
+"@availity/analytics-core@npm:^5.0.0":
+  version: 5.0.0
+  resolution: "@availity/analytics-core@npm:5.0.0"
   dependencies:
-    uuid: ^9.0.1
+    uuid: ^10.0.0
     yup: ^0.32.11
-  checksum: 2c074235b8cdfd03cf2f4ebad3e3f419b0897fb8b152c7bea9dec37533123ba688f08f12fffe7092d038a560a69270017b6fa602fd80cb456b937de7365a5d4b
+  checksum: 410c0e3dc8a387fc3f4f827599f576b9cba18404fb2a3ba4730476c0f2b24b8ccfeaed8f67b39156c8fccdca62362c0dc8dd1c208df957b5b598169725ecc7b9
   languageName: node
   linkType: hard
 
@@ -237,7 +237,7 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@availity/analytics@workspace:packages/analytics"
   dependencies:
-    "@availity/analytics-core": ^4.1.0
+    "@availity/analytics-core": ^5.0.0
     prop-types: ^15.8.1
     react: ^18.3.1
     react-dom: ^18.3.1
@@ -246,16 +246,16 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@availity/api-axios@npm:8.0.8, @availity/api-axios@npm:^8.0.7":
-  version: 8.0.8
-  resolution: "@availity/api-axios@npm:8.0.8"
+"@availity/api-axios@npm:9.0.0, @availity/api-axios@npm:^9.0.0":
+  version: 9.0.0
+  resolution: "@availity/api-axios@npm:9.0.0"
   dependencies:
-    "@availity/resolve-url": 2.0.5
+    "@availity/resolve-url": 3.0.0
     lodash: ^4.17.21
-    qs: ^6.11.2
+    qs: ^6.12.3
   peerDependencies:
     axios: ^1.4.0
-  checksum: c02fc126d9542e034ac015df767810ac169777749cc51d1531672ae73f754a57c44f642ace842b348c608dcc9e9c619547c2102e2d7a34342c33086361184ccf
+  checksum: bcafd76d418e7bfa00d6d0f7062296ffc374d032e56781ef0fbca61e05d073786a388f180ad569c5b31f17181a4178bd6c23d9a50a96b955e3a02f8ab08827c8
   languageName: node
   linkType: hard
 
@@ -291,7 +291,7 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@availity/authorize@workspace:packages/authorize"
   dependencies:
-    "@availity/api-axios": ^8.0.7
+    "@availity/api-axios": ^9.0.0
     "@availity/block-ui": ^1.0.0
     "@tanstack/react-query": ^4.36.1
     axios: ^1.7.3
@@ -375,7 +375,7 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@availity/avatar@workspace:packages/avatar"
   dependencies:
-    "@availity/api-axios": ^8.0.7
+    "@availity/api-axios": ^9.0.0
     "@availity/hooks": "workspace:*"
     axios: ^1.7.3
     lodash: ^4.17.21
@@ -455,7 +455,7 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@availity/change-password@workspace:packages/change-password"
   dependencies:
-    "@availity/api-axios": ^8.0.7
+    "@availity/api-axios": ^9.0.0
     "@availity/block-ui": "workspace:^"
     "@availity/form": "workspace:*"
     "@availity/icon": "workspace:*"
@@ -482,7 +482,7 @@ __metadata:
   dependencies:
     "@availity/form": "workspace:*"
     "@availity/react-dates": ^21.13.1
-    "@availity/yup": ^5.1.5
+    "@availity/yup": ^6.0.0
     "@types/react-dates": ^21.8.6
     classnames: ^2.5.1
     esbuild-sass-plugin: ^2.15.0
@@ -520,10 +520,10 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@availity/favorites@workspace:packages/favorites"
   dependencies:
-    "@availity/analytics-core": ^4.1.0
-    "@availity/api-axios": ^8.0.7
+    "@availity/analytics-core": ^5.0.0
+    "@availity/api-axios": ^9.0.0
     "@availity/hooks": "workspace:*"
-    "@availity/message-core": ^6.1.2
+    "@availity/message-core": ^7.0.0
     "@radix-ui/react-tooltip": 0.1.6
     "@tanstack/react-query": ^4.36.1
     axios: ^1.7.3
@@ -564,14 +564,14 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@availity/feedback@workspace:packages/feedback"
   dependencies:
-    "@availity/api-axios": ^8.0.7
+    "@availity/api-axios": ^9.0.0
     "@availity/block-ui": "workspace:^"
     "@availity/form": "workspace:*"
     "@availity/hooks": "workspace:*"
     "@availity/icon": "workspace:*"
-    "@availity/native-form": ^5.0.5
+    "@availity/native-form": ^6.0.0
     "@availity/select": "workspace:*"
-    "@availity/yup": ^5.1.5
+    "@availity/yup": ^6.0.0
     axios: ^1.7.3
     formik: ^2.4.6
     prop-types: ^15.8.1
@@ -592,11 +592,11 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@availity/form-upload@workspace:packages/form-upload"
   dependencies:
-    "@availity/api-axios": ^8.0.7
+    "@availity/api-axios": ^9.0.0
     "@availity/form": "workspace:*"
     "@availity/icon": "workspace:*"
     "@availity/progress": "workspace:*"
-    "@availity/upload-core": ^5.0.6
+    "@availity/upload-core": ^6.0.0
     "@types/uuid": ^9.0.8
     classnames: ^2.5.1
     formik: ^2.4.6
@@ -625,7 +625,7 @@ __metadata:
   resolution: "@availity/form@workspace:packages/form"
   dependencies:
     "@availity/icon": "workspace:*"
-    "@availity/message-core": ^6.1.2
+    "@availity/message-core": ^7.0.0
     classnames: ^2.5.1
     formik: ^2.4.6
     prop-types: ^15.8.1
@@ -648,7 +648,7 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@availity/help@workspace:packages/help"
   dependencies:
-    "@availity/message-core": ^6.1.2
+    "@availity/message-core": ^7.0.0
     react: ^18.3.1
     react-dom: ^18.3.1
     tsup: ^7.2.0
@@ -662,7 +662,7 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@availity/hooks@workspace:packages/hooks"
   dependencies:
-    "@availity/api-axios": ^8.0.7
+    "@availity/api-axios": ^9.0.0
     "@tanstack/react-query": ^4.36.1
     axios: ^1.7.3
     prop-types: ^15.8.1
@@ -707,7 +707,7 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@availity/link@workspace:packages/link"
   dependencies:
-    "@availity/resolve-url": ^2.0.5
+    "@availity/resolve-url": ^3.0.0
     classnames: ^2.5.1
     prop-types: ^15.8.1
     react: ^18.3.1
@@ -746,10 +746,10 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@availity/message-core@npm:^6.1.2":
-  version: 6.1.3
-  resolution: "@availity/message-core@npm:6.1.3"
-  checksum: 46ca06275f19d9c07d44a2810bfbc76601088436d002ec142109a61abac6e091e72a564427ec1524d427bea33f25e3a8253143e913562d0b72344b015503889f
+"@availity/message-core@npm:^7.0.0":
+  version: 7.0.0
+  resolution: "@availity/message-core@npm:7.0.0"
+  checksum: ae6c6443b0280927670a56c054f14a2899a39417e148133f3f2be14bc18b18e055c97fa08ea01a2839e4d766aa75dbdde3ca47bdba4548309362ae95160a8fee
   languageName: node
   linkType: hard
 
@@ -762,12 +762,12 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@availity/native-form@npm:^5.0.5":
-  version: 5.0.6
-  resolution: "@availity/native-form@npm:5.0.6"
+"@availity/native-form@npm:^6.0.0":
+  version: 6.0.0
+  resolution: "@availity/native-form@npm:6.0.0"
   dependencies:
-    "@availity/api-axios": 8.0.8
-  checksum: ab583c6080b642293ed898d70ca61d68e2ffcecd1909a6153732000394da4909aa44acb3dad97d019091436d15fd80936242a1dcffa059bfe133bc44850b9cf7
+    "@availity/api-axios": 9.0.0
+  checksum: d1a1e1a8d27a42eaff7e3e5cf46b33e5c29919c913c9571bcfa2bf8a43f2ad48ad784d6e26b73ac70c6dc1e21570c6387b1111c11d9a0965c0087c665e3a0300
   languageName: node
   linkType: hard
 
@@ -775,7 +775,7 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@availity/page-header@workspace:packages/page-header"
   dependencies:
-    "@availity/api-axios": ^8.0.7
+    "@availity/api-axios": ^9.0.0
     "@availity/app-icon": "workspace:*"
     "@availity/breadcrumbs": "workspace:*"
     "@availity/feedback": "workspace:*"
@@ -824,7 +824,7 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@availity/payer-logo@workspace:packages/payer-logo"
   dependencies:
-    "@availity/api-axios": ^8.0.7
+    "@availity/api-axios": ^9.0.0
     "@availity/hooks": "workspace:^5.0.0"
     axios: ^1.7.3
     lodash: ^4.17.21
@@ -932,7 +932,7 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@availity/reactstrap-validation-select@workspace:packages/reactstrap-validation-select"
   dependencies:
-    "@availity/api-axios": ^8.0.7
+    "@availity/api-axios": ^9.0.0
     availity-reactstrap-validation: ^2.7.1
     axios: ^1.7.3
     classnames: ^2.5.1
@@ -954,17 +954,10 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@availity/resolve-url@npm:2.0.5":
-  version: 2.0.5
-  resolution: "@availity/resolve-url@npm:2.0.5"
-  checksum: 59980fbd26173a91872c435d7e8617e45049de50d3f67710a1dc845b7740908309dd8b324189f4479d99a18deae013abc7c0e9b87f7bac8d7080123693bfd396
-  languageName: node
-  linkType: hard
-
-"@availity/resolve-url@npm:2.0.6, @availity/resolve-url@npm:^2.0.5":
-  version: 2.0.6
-  resolution: "@availity/resolve-url@npm:2.0.6"
-  checksum: 3fa0348428316386404a618e31388757cc5be62f80efef8ec8390612d907f37a70579825d4b6bd1de7b5a5ac8410a14e36e74dc617cc3bccacb04c1e1bbe5a20
+"@availity/resolve-url@npm:3.0.0, @availity/resolve-url@npm:^3.0.0":
+  version: 3.0.0
+  resolution: "@availity/resolve-url@npm:3.0.0"
+  checksum: 5dac7fa0368dc1c18a38b02f96462ae3bfd85953ccc0605bbd2e008a3dd6d904aa73b3deb2318bb1e3ba4feb989acb774712d206b7bffd7e793123e4716789d4
   languageName: node
   linkType: hard
 
@@ -972,7 +965,7 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@availity/select@workspace:packages/select"
   dependencies:
-    "@availity/api-axios": ^8.0.7
+    "@availity/api-axios": ^9.0.0
     "@availity/form": "workspace:*"
     axios: ^1.7.3
     classnames: ^2.5.1
@@ -1002,15 +995,15 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@availity/spaces@workspace:packages/spaces"
   dependencies:
-    "@availity/api-axios": ^8.0.7
+    "@availity/api-axios": ^9.0.0
     "@availity/app-icon": "workspace:*"
     "@availity/favorites": "workspace:*"
     "@availity/hooks": "workspace:*"
     "@availity/icon": "workspace:*"
     "@availity/link": "workspace:*"
     "@availity/list-group-item": "workspace:*"
-    "@availity/message-core": ^6.1.2
-    "@availity/native-form": ^5.0.5
+    "@availity/message-core": ^7.0.0
+    "@availity/native-form": ^6.0.0
     "@availity/typography": "workspace:*"
     "@tanstack/react-query": ^4.36.1
     axios: ^1.7.3
@@ -1129,13 +1122,13 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@availity/upload-core@npm:^5.0.6":
-  version: 5.0.7
-  resolution: "@availity/upload-core@npm:5.0.7"
+"@availity/upload-core@npm:^6.0.0":
+  version: 6.0.0
+  resolution: "@availity/upload-core@npm:6.0.0"
   dependencies:
-    "@availity/resolve-url": 2.0.6
+    "@availity/resolve-url": 3.0.0
     tus-js-client: 1.7.1
-  checksum: d26cfd8ec3b36f0ab5b2cca6059b5e45f0f7d06460ea7e1653a8a0b1a3555d25f0397876f0d5425aeb26193dded8d3e302a4cfa2e91859aa86dde6fb55b68647
+  checksum: 1f16f4c62533e80c5a6e659f38e8b86d9e77c42e38351be9b2562404bf5f9bb7e84d19bc41d2f3859d5de602006b6a3f6fb3dc375326638a156f078329cdf38f
   languageName: node
   linkType: hard
 
@@ -1144,7 +1137,7 @@ __metadata:
   resolution: "@availity/upload@workspace:packages/upload"
   dependencies:
     "@availity/progress": "workspace:*"
-    "@availity/upload-core": ^5.0.6
+    "@availity/upload-core": ^6.0.0
     prop-types: ^15.8.1
     react: ^18.3.1
     react-dom: ^18.3.1
@@ -1160,15 +1153,15 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@availity/yup@npm:^5.1.5":
-  version: 5.1.6
-  resolution: "@availity/yup@npm:5.1.6"
+"@availity/yup@npm:^6.0.0":
+  version: 6.0.0
+  resolution: "@availity/yup@npm:6.0.0"
   dependencies:
     lodash: ^4.17.21
     yup: ^0.32.11
   peerDependencies:
     moment: ^2.24.0
-  checksum: b7f99b2058ebbe3a2b34341be979beb4e32ee29c7aeeecabf724805d625e6287deaa0dc1b34d25342afd026e9beaf60ded35ec7d42169bf906d8cfecdf0a582f
+  checksum: 8d28a765756697f7465fd9749088959600bdb24ee9d2814b34f65e21452c29b6f17ccd4faee490b228843e7d95626a3d821ac2b002311c66aa3234bd36bff33f
   languageName: node
   linkType: hard
 
@@ -23115,7 +23108,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"qs@npm:^6.10.0, qs@npm:^6.11.2, qs@npm:^6.12.3, qs@npm:^6.13.0":
+"qs@npm:^6.10.0, qs@npm:^6.12.3, qs@npm:^6.13.0":
   version: 6.13.0
   resolution: "qs@npm:6.13.0"
   dependencies:
@@ -27829,6 +27822,15 @@ __metadata:
   version: 1.0.1
   resolution: "utils-merge@npm:1.0.1"
   checksum: c81095493225ecfc28add49c106ca4f09cdf56bc66731aa8dabc2edbbccb1e1bfe2de6a115e5c6a380d3ea166d1636410b62ef216bb07b3feb1cfde1d95d5080
+  languageName: node
+  linkType: hard
+
+"uuid@npm:^10.0.0":
+  version: 10.0.0
+  resolution: "uuid@npm:10.0.0"
+  bin:
+    uuid: dist/bin/uuid
+  checksum: 4b81611ade2885d2313ddd8dc865d93d8dccc13ddf901745edca8f86d99bc46d7a330d678e7532e7ebf93ce616679fb19b2e3568873ac0c14c999032acb25869
   languageName: node
   linkType: hard
 

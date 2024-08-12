@@ -31,7 +31,7 @@
     "publish:canary": "yarn npm publish --access public --tag canary"
   },
   "dependencies": {
-    "@availity/message-core": "^6.1.2"
+    "@availity/message-core": "^7.0.0"
   },
   "devDependencies": {
     "react": "^18.3.1",

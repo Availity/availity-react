@@ -39,7 +39,7 @@
     "react-select-async-paginate": "^0.6.2"
   },
   "devDependencies": {
-    "@availity/api-axios": "^8.0.7",
+    "@availity/api-axios": "^9.0.0",
     "@availity/form": "workspace:*",
     "axios": "^1.7.3",
     "formik": "^2.4.6",
