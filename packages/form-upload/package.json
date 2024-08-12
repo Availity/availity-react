@@ -27,7 +27,7 @@
   "dependencies": {
     "@availity/icon": "workspace:*",
     "@availity/progress": "workspace:*",
-    "classnames": "^2.3.2",
+    "classnames": "^2.5.1",
     "uuid": "^9.0.1"
   },
   "devDependencies": {
@@ -35,14 +35,14 @@
     "@availity/form": "workspace:*",
     "@availity/upload-core": "^5.0.6",
     "@types/uuid": "^9.0.8",
-    "formik": "^2.4.4",
-    "nock": "^13.3.3",
-    "react": "^18.2.0",
-    "react-dom": "^18.2.0",
+    "formik": "^2.4.6",
+    "nock": "^13.5.4",
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1",
     "react-dropzone": "^11.7.1",
     "reactstrap": "^8.10.1",
     "tsup": "^7.2.0",
-    "typescript": "^5.3.3",
+    "typescript": "^5.5.4",
     "xhr-mock": "^2.5.1"
   },
   "peerDependencies": {

@@ -27,18 +27,18 @@
   },
   "dependencies": {
     "@availity/react-dates": "^21.13.1",
-    "classnames": "^2.3.2",
+    "classnames": "^2.5.1",
     "lodash": "^4.17.21",
     "moment": "^2.30.1",
     "prop-types": "^15.8.1",
     "react-with-direction": "^1.4.0"
   },
   "devDependencies": {
-    "@types/react-dates": "^21.8.3",
+    "@types/react-dates": "^21.8.6",
     "availity-reactstrap-validation": "^2.7.1",
     "date-fns": "^2.30.0",
-    "react": "^18.2.0",
-    "react-dom": "^18.2.0",
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1",
     "reactstrap": "^8.10.1"
   },
   "peerDependencies": {
