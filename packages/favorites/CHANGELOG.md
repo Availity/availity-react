@@ -2,6 +2,15 @@
 
 This file was generated using [@jscutlery/semver](https://github.com/jscutlery/semver).
 
+## [5.0.6](https://github.com/Availity/availity-react/compare/@availity/favorites@5.0.5...@availity/favorites@5.0.6) (2024-08-14)
+
+
+### Bug Fixes
+
+* update message-core ([9a53067](https://github.com/Availity/availity-react/commit/9a530678e73c22616598ab07fedd360f991773eb))
+
+
+
 ## [5.0.5](https://github.com/Availity/availity-react/compare/@availity/favorites@5.0.4...@availity/favorites@5.0.5) (2024-05-31)
 
 

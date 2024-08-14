@@ -1,6 +1,6 @@
 {
   "name": "@availity/spaces",
-  "version": "8.0.6",
+  "version": "8.0.7",
   "description": "Easy to use spaces components",
   "keywords": [
     "react",
@@ -30,7 +30,7 @@
     "@availity/icon": "workspace:*",
     "@availity/link": "workspace:*",
     "@availity/list-group-item": "workspace:*",
-    "@availity/message-core": "^7.0.0",
+    "@availity/message-core": "^7.0.1",
     "@availity/native-form": "^6.0.0",
     "@availity/typography": "workspace:*",
     "@tanstack/react-query": "^4.36.1",

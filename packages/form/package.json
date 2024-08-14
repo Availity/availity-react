@@ -1,6 +1,6 @@
 {
   "name": "@availity/form",
-  "version": "1.9.0",
+  "version": "1.9.1",
   "description": "Form Wrapper around formik using reactstrap components",
   "keywords": [
     "react",
@@ -33,7 +33,7 @@
   },
   "dependencies": {
     "@availity/icon": "workspace:*",
-    "@availity/message-core": "^7.0.0",
+    "@availity/message-core": "^7.0.1",
     "classnames": "^2.5.1",
     "prop-types": "^15.8.1",
     "react-currency-input-field": "^3.8.0",

@@ -183,6 +183,8 @@ export const _DateRangeField: StoryObj<typeof FormikDate> = {
     minDistanceUnits,
     ranges,
     required,
+    name = 'dateRange',
+    ...rest
   }) => (
     <FormikResults
       onSubmit={() => {
@@ -214,7 +216,7 @@ export const _DateRangeField: StoryObj<typeof FormikDate> = {
     >
       <DateRangeField
         id="dateRange"
-        name="dateRange"
+        name={name}
         label="Date of Service"
         disabled={disabled}
         required={required}
@@ -222,6 +224,7 @@ export const _DateRangeField: StoryObj<typeof FormikDate> = {
         ranges={ranges}
         min={min}
         max={max}
+        {...rest}
       />
       <Button className="mt-1 ml-1" color="primary" type="submit">
         Submit
@@ -235,6 +238,9 @@ export const _DateRangeField: StoryObj<typeof FormikDate> = {
     minDistance: 0,
     minDistanceUnits: distanceUnits[0],
     ranges: false,
+    datepickerProps: {
+      hideKeyboardShortcutsPanel: true,
+    },
   },
   argTypes: {
     maxDistanceUnits: {
