@@ -27,7 +27,7 @@
   "dependencies": {
     "@availity/progress": "workspace:*",
     "prop-types": "^15.8.1",
-    "uuid": "^9.0.1"
+    "uuid": "^10.0.0"
   },
   "devDependencies": {
     "@availity/upload-core": "^6.0.0",
