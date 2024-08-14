@@ -108,7 +108,7 @@
     "jest-environment-jsdom": "^29.7.0",
     "jest-environment-jsdom-global": "^4.0.0",
     "jest-jasmine2": "^29.7.0",
-    "lint-staged": "^14.0.1",
+    "lint-staged": "^15.2.9",
     "nx": "19.5.7",
     "plop": "^2.7.6",
     "postcss-modules": "^4.3.1",
