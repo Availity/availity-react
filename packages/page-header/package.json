@@ -37,7 +37,7 @@
     "@availity/api-axios": "^9.0.0",
     "@availity/spaces": "workspace:*",
     "@availity/training-link": "workspace:*",
-    "axios": "^1.7.3",
+    "axios": "^1.7.4",
     "formik": "^2.4.6",
     "react": "^18.3.1",
     "react-dom": "^18.3.1",
@@ -46,7 +46,7 @@
   "peerDependencies": {
     "@availity/api-axios": "^8.0.0",
     "@availity/spaces": "^8.0.0",
-    "axios": "^1.0.0",
+    "axios": "^1.7.4",
     "formik": "^2.0.1",
     "react": ">=16.11.0",
     "react-dom": ">=16.11.0",
