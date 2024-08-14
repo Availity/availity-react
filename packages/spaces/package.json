@@ -30,7 +30,7 @@
     "@availity/icon": "workspace:*",
     "@availity/link": "workspace:*",
     "@availity/list-group-item": "workspace:*",
-    "@availity/message-core": "^6.1.2",
+    "@availity/message-core": "^7.0.1",
     "@availity/native-form": "^5.0.5",
     "@availity/typography": "workspace:*",
     "@tanstack/react-query": "^4.36.1",

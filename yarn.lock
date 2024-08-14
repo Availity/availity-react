@@ -656,7 +656,7 @@ __metadata:
     "@availity/analytics-core": ^4.1.0
     "@availity/api-axios": ^8.0.7
     "@availity/hooks": "workspace:*"
-    "@availity/message-core": ^6.1.2
+    "@availity/message-core": ^7.0.1
     "@radix-ui/react-tooltip": 0.1.6
     "@tanstack/react-query": ^4.36.1
     axios: ^1.6.7
@@ -758,7 +758,7 @@ __metadata:
   resolution: "@availity/form@workspace:packages/form"
   dependencies:
     "@availity/icon": "workspace:*"
-    "@availity/message-core": ^6.1.2
+    "@availity/message-core": ^7.0.1
     classnames: ^2.3.2
     formik: ^2.4.4
     prop-types: ^15.8.1
@@ -781,7 +781,7 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@availity/help@workspace:packages/help"
   dependencies:
-    "@availity/message-core": ^6.1.2
+    "@availity/message-core": ^7.0.1
     react: ^18.2.0
     react-dom: ^18.2.0
     tsup: ^7.2.0
@@ -879,10 +879,10 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@availity/message-core@npm:^6.1.2":
-  version: 6.1.2
-  resolution: "@availity/message-core@npm:6.1.2"
-  checksum: 1fd135ff1dc8db99442a5b1691f017e61377b88334e62eae1f3a6509706b3285d99d20f161275b3cfe0dac0870034be3d1bf8e0d573d151ded7447056edee4b3
+"@availity/message-core@npm:^7.0.1":
+  version: 7.0.1
+  resolution: "@availity/message-core@npm:7.0.1"
+  checksum: e18835f8c5bdb2630d6af54ace963666288e4530f5a3ea722761f89a3ff050cdac04347d96c6be033629b6e5414a0e8cef242c76bf4dec50068ae00a91ef26f9
   languageName: node
   linkType: hard
 
@@ -1135,7 +1135,7 @@ __metadata:
     "@availity/icon": "workspace:*"
     "@availity/link": "workspace:*"
     "@availity/list-group-item": "workspace:*"
-    "@availity/message-core": ^6.1.2
+    "@availity/message-core": ^7.0.1
     "@availity/native-form": ^5.0.5
     "@availity/typography": "workspace:*"
     "@tanstack/react-query": ^4.36.1
