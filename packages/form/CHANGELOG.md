@@ -2,6 +2,15 @@
 
 This file was generated using [@jscutlery/semver](https://github.com/jscutlery/semver).
 
+## [1.9.1](https://github.com/Availity/availity-react/compare/@availity/form@1.9.0...@availity/form@1.9.1) (2024-08-14)
+
+
+### Bug Fixes
+
+* update message-core ([9a53067](https://github.com/Availity/availity-react/commit/9a530678e73c22616598ab07fedd360f991773eb))
+
+
+
 # [1.9.0](https://github.com/Availity/availity-react/compare/@availity/form@1.8.1...@availity/form@1.9.0) (2024-05-03)
 
 
