@@ -31,7 +31,7 @@
   },
   "devDependencies": {
     "@availity/api-axios": "^8.0.7",
-    "axios": "^1.6.7",
+    "axios": "^1.7.4",
     "react": "^18.2.0",
     "react-dom": "^18.2.0"
   },

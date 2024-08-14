@@ -427,7 +427,7 @@ __metadata:
     "@availity/api-axios": ^8.0.7
     "@availity/block-ui": ^1.0.0
     "@tanstack/react-query": ^4.36.1
-    axios: ^1.6.7
+    axios: ^1.7.4
     react: ^18.2.0
     react-dom: ^18.2.0
     tsup: ^7.2.0
@@ -510,7 +510,7 @@ __metadata:
   dependencies:
     "@availity/api-axios": ^8.0.7
     "@availity/hooks": "workspace:*"
-    axios: ^1.6.7
+    axios: ^1.7.4
     lodash: ^4.17.21
     prop-types: ^15.8.1
     react: ^18.2.0
@@ -593,7 +593,7 @@ __metadata:
     "@availity/form": "workspace:*"
     "@availity/icon": "workspace:*"
     "@tanstack/react-query": ^4.36.1
-    axios: ^1.6.7
+    axios: ^1.7.4
     classnames: ^2.3.2
     dayjs: ^1.11.9
     lodash: ^4.17.21
@@ -659,7 +659,7 @@ __metadata:
     "@availity/message-core": ^7.0.1
     "@radix-ui/react-tooltip": 0.1.6
     "@tanstack/react-query": ^4.36.1
-    axios: ^1.6.7
+    axios: ^1.7.4
     esbuild-sass-plugin: ^2.15.0
     lodash: ^4.17.21
     react: ^18.2.0
@@ -679,7 +679,7 @@ __metadata:
   resolution: "@availity/feature@workspace:packages/feature"
   dependencies:
     "@availity/block-ui": "workspace:^"
-    axios: ^1.6.7
+    axios: ^1.7.4
     axios-mock-adapter: ^1.22.0
     fs-extra: ^11.1.1
     prop-types: ^15.8.1
@@ -705,7 +705,7 @@ __metadata:
     "@availity/native-form": ^5.0.5
     "@availity/select": "workspace:*"
     "@availity/yup": ^5.1.5
-    axios: ^1.6.7
+    axios: ^1.7.4
     formik: ^2.4.4
     prop-types: ^15.8.1
     react: ^18.2.0
@@ -797,7 +797,7 @@ __metadata:
   dependencies:
     "@availity/api-axios": ^8.0.7
     "@tanstack/react-query": ^4.36.1
-    axios: ^1.6.7
+    axios: ^1.7.4
     prop-types: ^15.8.1
     react: ^18.2.0
     react-dom: ^18.2.0
@@ -915,7 +915,7 @@ __metadata:
     "@availity/payer-logo": "workspace:*"
     "@availity/spaces": "workspace:*"
     "@availity/training-link": "workspace:*"
-    axios: ^1.6.7
+    axios: ^1.7.4
     classnames: ^2.3.2
     formik: ^2.4.4
     prop-types: ^15.8.1
@@ -959,7 +959,7 @@ __metadata:
   dependencies:
     "@availity/api-axios": ^8.0.7
     "@availity/hooks": "workspace:^5.0.0"
-    axios: ^1.6.7
+    axios: ^1.7.4
     lodash: ^4.17.21
     prop-types: ^15.8.1
     react: ^18.2.0
@@ -1067,7 +1067,7 @@ __metadata:
   dependencies:
     "@availity/api-axios": ^8.0.7
     availity-reactstrap-validation: ^2.7.1
-    axios: ^1.6.7
+    axios: ^1.7.4
     classnames: ^2.3.2
     lodash: ^4.17.21
     prop-types: ^15.8.1
@@ -1100,7 +1100,7 @@ __metadata:
   dependencies:
     "@availity/api-axios": ^8.0.7
     "@availity/form": "workspace:*"
-    axios: ^1.6.7
+    axios: ^1.7.4
     classnames: ^2.3.2
     formik: ^2.4.4
     lodash: ^4.17.21
@@ -1139,7 +1139,7 @@ __metadata:
     "@availity/native-form": ^5.0.5
     "@availity/typography": "workspace:*"
     "@tanstack/react-query": ^4.36.1
-    axios: ^1.6.7
+    axios: ^1.7.4
     classnames: ^2.3.2
     dayjs: ^1.11.9
     lodash: ^4.17.21
@@ -10081,7 +10081,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"axios@npm:^1.0.0, axios@npm:^1.6.7":
+"axios@npm:^1.0.0":
   version: 1.6.7
   resolution: "axios@npm:1.6.7"
   dependencies:
@@ -10089,6 +10089,17 @@ __metadata:
     form-data: ^4.0.0
     proxy-from-env: ^1.1.0
   checksum: 87d4d429927d09942771f3b3a6c13580c183e31d7be0ee12f09be6d5655304996bb033d85e54be81606f4e89684df43be7bf52d14becb73a12727bf33298a082
+  languageName: node
+  linkType: hard
+
+"axios@npm:^1.7.4":
+  version: 1.7.4
+  resolution: "axios@npm:1.7.4"
+  dependencies:
+    follow-redirects: ^1.15.6
+    form-data: ^4.0.0
+    proxy-from-env: ^1.1.0
+  checksum: 0c17039a9acfe6a566fca8431ba5c1b455c83d30ea6157fec68a6722878fcd30f3bd32d172f6bee0c51fe75ca98e6414ddcd968a87b5606b573731629440bfaf
   languageName: node
   linkType: hard
 
@@ -15054,7 +15065,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"follow-redirects@npm:^1.0.0, follow-redirects@npm:^1.15.4":
+"follow-redirects@npm:^1.0.0, follow-redirects@npm:^1.15.4, follow-redirects@npm:^1.15.6":
   version: 1.15.6
   resolution: "follow-redirects@npm:1.15.6"
   peerDependenciesMeta:
