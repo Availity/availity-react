@@ -2,6 +2,55 @@
 
 This file was generated using [@jscutlery/semver](https://github.com/jscutlery/semver).
 
+# [1.10.0](https://github.com/Availity/availity-react/compare/@availity/dinosaurdocs@1.9.0...@availity/dinosaurdocs@1.10.0) (2024-08-22)
+
+
+### Bug Fixes
+
+* **app-tiles:** add app-tiles.mdx PF-3258 ([90446d8](https://github.com/Availity/availity-react/commit/90446d82ea25b29ee55f3dac4c33306c585b9d89))
+* **app-tiles:** documentation fix PF-3258 ([052b5f8](https://github.com/Availity/availity-react/commit/052b5f8af5da665a502af75ebe5d735745c347cc))
+* **app-tiles:** documentation fix PF-3258 ([24344f2](https://github.com/Availity/availity-react/commit/24344f244e6a8a881fdf4a7d432e455e2c3cb114))
+* **block-ui:** remove unused code and add docs ([a961486](https://github.com/Availity/availity-react/commit/a9614863be43da1d6064dc6ebfd138677ae9b870))
+* **change-password:** documentation fixes ([7cfa372](https://github.com/Availity/availity-react/commit/7cfa372ec65c002ecfa0e57c1025207e6bac2d05))
+* **date:** remove css from bundle as it was only producing an error ([d7f8660](https://github.com/Availity/availity-react/commit/d7f86600eb68f774e18cc5379d3d458ca4252564))
+* **docusaurus:** resolve duplicate routes after v2 upgrade ([f8f9e1c](https://github.com/Availity/availity-react/commit/f8f9e1c7aaac79a3dc681f0aa9b3044c0abb2ca5))
+* **form:** change proptype for checkbox label from PropTypes.string to PropsTypes.node, edit storybook with example ([#1272](https://github.com/Availity/availity-react/issues/1272)) ([9052b82](https://github.com/Availity/availity-react/commit/9052b8212999be6c752030887f82b938dcb62c4c))
+* pass additional args to onError, onHandleSubmit, passes funcs ([5412e5a](https://github.com/Availity/availity-react/commit/5412e5a247e8dc2b37307a4878a5a394f21efeb3))
+* rename confirmPassword to confirmNewPassword, fix icon styling ([75b8167](https://github.com/Availity/availity-react/commit/75b8167416adecea2ef0b9db73875906c93a851a))
+* **select:** cleanup clear button and selectStyles ([f5fbeaa](https://github.com/Availity/availity-react/commit/f5fbeaab2717f3f11d08f1f34d882a59210e072b))
+* **select:** firefox grid bug ([851b9d3](https://github.com/Availity/availity-react/commit/851b9d30a6eca9c0488a87d878be7f275411ce4b))
+* **table:** add tests, update docs ([8ee8e53](https://github.com/Availity/availity-react/commit/8ee8e5312d0259698b30f5b23c87d07553241d0d))
+* **tree:** add and fix test, documenation ([74dc131](https://github.com/Availity/availity-react/commit/74dc131fd68387888100a40088bba19ed6ce8489))
+* **tree:** add tests, update docs, and remove unused code ([e26d3d4](https://github.com/Availity/availity-react/commit/e26d3d4666d9ea4b1f937da5ac08ab02b695ae0f))
+* **tree:** documentation updates ([d89462d](https://github.com/Availity/availity-react/commit/d89462d56a7af14c6749620a32b08c4c13106364))
+* **tree:** minor documentation tweak ([7a84bd5](https://github.com/Availity/availity-react/commit/7a84bd53b2c7f2685ced93094a6c841a8397b8a4))
+
+
+### Features
+
+* add change password component ([47e7041](https://github.com/Availity/availity-react/commit/47e70411c459a0651e60c605bffe2ccfc6d0e872))
+* **block-ui:** add new block-ui component ([96c36e9](https://github.com/Availity/availity-react/commit/96c36e9b549a2ae57675c9167d014d8dd15c5f23))
+* **change-password:** add support for custom alert toggles ([1903267](https://github.com/Availity/availity-react/commit/190326702c187f6ec82c7ef551856cd64161a175))
+* **docusaurus:** upgrade docusaurus to v2 ([2d8cf4e](https://github.com/Availity/availity-react/commit/2d8cf4ea2cc0c20725b063e3c2ef5d706aa74213))
+* **form-upload:** add prop btnColor to Upload component ([d5d78bb](https://github.com/Availity/availity-react/commit/d5d78bb1d27d088942745f05136364bb91a064e8))
+* **form:** add currency input ([3d3c66f](https://github.com/Availity/availity-react/commit/3d3c66f697fab156d44db518d0631b96ccb6719f))
+* **form:** add currency input ([fa9eea6](https://github.com/Availity/availity-react/commit/fa9eea6a3b3dd2ef741a0658c102e36c6db5288c))
+* **form:** add currency input docs ([2bda12c](https://github.com/Availity/availity-react/commit/2bda12c66771c96cc86914b6841a1be2a7d2aaf1))
+* **form:** added logic for changing default help icon to video icon ([320e986](https://github.com/Availity/availity-react/commit/320e986af2898e1b7d840f6a983f8a8a066fc1d5))
+* **help:** add tooltip to help package with escape to close tooltip ([b9f1754](https://github.com/Availity/availity-react/commit/b9f175447a19688ac4c4a2bfd4f471652175eea4))
+* **help:** tooltip.mdx capitalize Examples ([de5c8b3](https://github.com/Availity/availity-react/commit/de5c8b359d6b7c6af182d0cfa97f5f25bf6dc9b5))
+* **select:** add ability to configure clear button text and not have it hard-coded with a lower case c, as well as other select props ([8ca554a](https://github.com/Availity/availity-react/commit/8ca554a4bbc76600491bb57f89287efaf19450f1))
+* **select:** add documentation ([23c0d5e](https://github.com/Availity/availity-react/commit/23c0d5e7d5b85e43559a8a90a931db406b733e69))
+* **select:** move clear field button to outside of field, allow aria-required, export styling fix [#933](https://github.com/Availity/availity-react/issues/933) ([d2b82f2](https://github.com/Availity/availity-react/commit/d2b82f2d6a9112191524a35e0abc2d006d28553b))
+* **select:** update documentation and wording ([e79cba0](https://github.com/Availity/availity-react/commit/e79cba0e4904093c1c004864b13750691f37545e))
+* **table:** add some documentation, stories, and tests for fixes and updates ([493c370](https://github.com/Availity/availity-react/commit/493c370fbe4d26ab414f0feae93b56c7cc3efd8d))
+* **table:** code review fixes and add more tests ([90c120c](https://github.com/Availity/availity-react/commit/90c120ce353e1b07ee7b8aa745198603ea907e2f))
+* **table:** documentation proofreading + more tests ([4926f42](https://github.com/Availity/availity-react/commit/4926f42d7596f15e560dfe24245c85ede30f763c))
+* **table:** more documentation, fix table props that I had but broke on merge with changes by others ([5a06a27](https://github.com/Availity/availity-react/commit/5a06a2733ac41e628305929ab0f36005e1a713f5))
+* **tree:** add tree component ([f952b85](https://github.com/Availity/availity-react/commit/f952b8580b798c836fc6e8d91b54f9dc29bc2a55))
+
+
+
 # 1.0.0 (2024-08-22)
 
 
