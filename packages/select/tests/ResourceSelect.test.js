@@ -3,6 +3,7 @@ import { fireEvent, render, waitFor } from '@testing-library/react';
 import AvApi, { avRegionsApi, avProvidersApi, avCodesApi } from '@availity/api-axios';
 import userEvent from '@testing-library/user-event';
 import { Button } from 'reactstrap';
+// eslint-disable-next-line import/no-unresolved
 import { Form } from '@availity/form';
 
 import { ResourceSelect } from '../src';
@@ -214,7 +215,7 @@ describe('ResourceSelect', () => {
 
     expect(providerOption).toBeDefined();
     expect(avProvidersApi.postGet).toHaveBeenCalledTimes(1);
-    expect(avProvidersApi.postGet.mock.calls[0][0]).toBe('q=&limit=50&customerId=1194&offset=0');
+    expect(avProvidersApi.postGet.mock.calls[0][0]).toBe('q=&limit=50&customerId=1194&offset=0&role=OFFICE');
 
     // rerender with same props should not trigger api call
     rerender(<ProviderComponent providerProps={providerProps} />);
@@ -234,7 +235,7 @@ describe('ResourceSelect', () => {
 
     expect(providerOption).toBeDefined();
     expect(avProvidersApi.postGet).toHaveBeenCalledTimes(2);
-    expect(avProvidersApi.postGet.mock.calls[1][0]).toBe('q=&limit=50&customerId=1195&offset=0');
+    expect(avProvidersApi.postGet.mock.calls[1][0]).toBe('q=&limit=50&customerId=1195&offset=0&role=OFFICE');
   });
 
   it('waits to query resource until input is focused when waitUntilFocused is true', async () => {

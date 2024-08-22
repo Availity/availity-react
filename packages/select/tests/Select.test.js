@@ -3,6 +3,7 @@ import { render, fireEvent, waitFor } from '@testing-library/react';
 import { Button } from 'reactstrap';
 import { components } from 'react-select';
 import * as yup from 'yup';
+// eslint-disable-next-line import/no-unresolved
 import { Form, Input } from '@availity/form';
 
 import Select from '../src';
