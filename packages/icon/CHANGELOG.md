@@ -2,6 +2,33 @@
 
 This file was generated using [@jscutlery/semver](https://github.com/jscutlery/semver).
 
+# 0.1.0 (2024-08-22)
+
+
+### Bug Fixes
+
+* **icon:** unit tests not working, updated readme and types ([4fc9300](https://github.com/Availity/availity-react/commit/4fc93003e019a47daf09931a84cef4e6402d25dd))
+* removed npmrc and added config to lerna for now creating locks ([efe82ab](https://github.com/Availity/availity-react/commit/efe82ab5a9a38cc8113d5cc71416f1ef347eb4c4))
+
+
+### Features
+
+* **docs:** updated to use yarn and added readmes ([3b94748](https://github.com/Availity/availity-react/commit/3b947487ef18c6e11486ad39203882a11bc8a1e7))
+* **feedback:** removed unused prop ([2f85c3f](https://github.com/Availity/availity-react/commit/2f85c3f15fd4d004074bda93aedf6cdd5368cc39))
+* **feedback:** updated feedback components for accessibility ([45cbf4d](https://github.com/Availity/availity-react/commit/45cbf4d4964a71d95db127bd931574f6e0424bbc))
+* **form-upload:** add form-upload package ([5ac7d46](https://github.com/Availity/availity-react/commit/5ac7d46cc45a00600bb08002ce075a0a70c5f06d))
+* **form:** add currency input ([fa9eea6](https://github.com/Availity/availity-react/commit/fa9eea6a3b3dd2ef741a0658c102e36c6db5288c))
+* **icon:** added package for icons ([6ab3b2f](https://github.com/Availity/availity-react/commit/6ab3b2f3a252eccc07f743bfc29ae6f140052f74))
+* **icon:** adding hover style if there is an onclick on the icon ([64627c7](https://github.com/Availity/availity-react/commit/64627c7a08935ac0acd10fe15b9af47a1aebb039))
+* **icon:** adding test ([86581b9](https://github.com/Availity/availity-react/commit/86581b9d534c027c53b04445f9c189ae98c0b34c))
+* **icon:** fixing hover ([a42a6fd](https://github.com/Availity/availity-react/commit/a42a6fd09ff7cd723e3ee07f25f146c025f4cb3b))
+* **icon:** removing copy paste line ([fd89783](https://github.com/Availity/availity-react/commit/fd89783cdd8a79136b4ef750991004ac256bef68))
+* move storybook, stories, and fix hmr ([2f65f71](https://github.com/Availity/availity-react/commit/2f65f71769d2d981e22700b87a09516833588f64))
+* **pagination:** pagination components using hooks ([590e5fd](https://github.com/Availity/availity-react/commit/590e5fd05fcf0656d2309ae091938b334fd422ee)), closes [#27](https://github.com/Availity/availity-react/issues/27) [#64](https://github.com/Availity/availity-react/issues/64)
+* **reactstrap-validation-date:** added back the ranges props ([b5b4d05](https://github.com/Availity/availity-react/commit/b5b4d059c32662d3e8c1d49642c755cbceb73396))
+
+
+
 ## [0.11.7](https://github.com/Availity/availity-react/compare/@availity/icon@0.11.6...@availity/icon@0.11.7) (2024-02-21)
 
 
