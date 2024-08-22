@@ -2,6 +2,14 @@
 
 This file was generated using [@jscutlery/semver](https://github.com/jscutlery/semver).
 
+## [2.17.7](https://github.com/Availity/availity-react/compare/@availity/pagination@2.17.6...@availity/pagination@2.17.7) (2024-08-22)
+
+### Dependency Updates
+
+* `@availity/hooks` updated to version `2.17.6`
+* `@availity/block-ui` updated to version `2.17.6`
+
+
 # 1.0.0 (2024-08-22)
 
 ### Dependency Updates
