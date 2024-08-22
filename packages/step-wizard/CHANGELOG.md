@@ -2,6 +2,10 @@
 
 This file was generated using [@jscutlery/semver](https://github.com/jscutlery/semver).
 
+## [1.5.5](https://github.com/Availity/availity-react/compare/@availity/step-wizard@1.5.4...@availity/step-wizard@1.5.5) (2024-08-22)
+
+
+
 # 0.1.0 (2024-08-22)
 
 
