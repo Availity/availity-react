@@ -2,6 +2,13 @@
 
 This file was generated using [@jscutlery/semver](https://github.com/jscutlery/semver).
 
+## [1.9.2](https://github.com/Availity/availity-react/compare/@availity/form@1.9.1...@availity/form@1.9.2) (2024-08-22)
+
+### Dependency Updates
+
+* `@availity/icon` updated to version `1.9.1`
+
+
 # 1.0.0 (2024-08-22)
 
 ### Dependency Updates
