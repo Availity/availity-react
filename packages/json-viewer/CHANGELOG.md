@@ -2,6 +2,10 @@
 
 This file was generated using [@jscutlery/semver](https://github.com/jscutlery/semver).
 
+## [1.2.6](https://github.com/Availity/availity-react/compare/@availity/json-viewer@1.2.5...@availity/json-viewer@1.2.6) (2024-08-22)
+
+
+
 # 0.1.0 (2024-08-22)
 
 
