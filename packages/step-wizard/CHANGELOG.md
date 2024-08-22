@@ -2,6 +2,25 @@
 
 This file was generated using [@jscutlery/semver](https://github.com/jscutlery/semver).
 
+# 0.1.0 (2024-08-22)
+
+
+### Bug Fixes
+
+* **step-wizard:** add className prop to type def of Wizard ([ad9d337](https://github.com/Availity/availity-react/commit/ad9d3378ed88e2ebdaca483edecb3d4a51106325))
+* **step-wizard:** add className prop to Wizard ([24e2529](https://github.com/Availity/availity-react/commit/24e25291adece532ee05af5b80c9668b0388b5aa))
+* **step-wizard:** spread additional props onto wizard components ([163fdf0](https://github.com/Availity/availity-react/commit/163fdf01c59f2a5b5015f765064b27c2d29e9e37))
+
+
+### Features
+
+* **docs:** updated to use yarn and added readmes ([3b94748](https://github.com/Availity/availity-react/commit/3b947487ef18c6e11486ad39203882a11bc8a1e7))
+* **form:** add currency input ([fa9eea6](https://github.com/Availity/availity-react/commit/fa9eea6a3b3dd2ef741a0658c102e36c6db5288c))
+* move storybook, stories, and fix hmr ([2f65f71](https://github.com/Availity/availity-react/commit/2f65f71769d2d981e22700b87a09516833588f64))
+* **step-wizard:** add step wizard package ([0e21d6a](https://github.com/Availity/availity-react/commit/0e21d6a7055982e1d392faffee65b46bda520453))
+
+
+
 ## [1.5.4](https://github.com/Availity/availity-react/compare/@availity/step-wizard@1.5.3...@availity/step-wizard@1.5.4) (2023-10-24)
 
 
