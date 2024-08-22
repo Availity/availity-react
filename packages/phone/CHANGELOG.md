@@ -2,6 +2,35 @@
 
 This file was generated using [@jscutlery/semver](https://github.com/jscutlery/semver).
 
+# 1.0.0 (2024-08-22)
+
+
+### Bug Fixes
+
+* **phone:** remove yup.number validation method, remove async from test ([b346896](https://github.com/Availity/availity-react/commit/b346896414fc71c208be4f39cf6ac77412c5fea0))
+* **phone:** typings for PhoneProps and ExtensionProps should extend FieldProps ([cdd467b](https://github.com/Availity/availity-react/commit/cdd467b3158dead419c3bfa6f551e5badf6edf3c))
+* **phone:** update types ([30c7fc8](https://github.com/Availity/availity-react/commit/30c7fc885b1b91b04a5153fbf796e8c136692be4))
+* upgrade yup and update sb stories ([68aeafe](https://github.com/Availity/availity-react/commit/68aeafe4fd7d90d7c88dbb24636ba7770fe87aa3))
+
+
+* feat(phone)!: upgrade to yup 0.32.0 ([dadde41](https://github.com/Availity/availity-react/commit/dadde41e7535ee444a0737a7ba31d5467a34133f))
+
+
+### Features
+
+* **form:** add currency input ([fa9eea6](https://github.com/Availity/availity-react/commit/fa9eea6a3b3dd2ef741a0658c102e36c6db5288c))
+* move storybook, stories, and fix hmr ([2f65f71](https://github.com/Availity/availity-react/commit/2f65f71769d2d981e22700b87a09516833588f64))
+* **phone:** add types ([b5cf0e6](https://github.com/Availity/availity-react/commit/b5cf0e62871266cc2e5689258912b1ba533bceb5))
+* **phone:** initial commit for phone package ([76b7227](https://github.com/Availity/availity-react/commit/76b7227adee750265daa4e65486606d102a1e5c2))
+* **phone:** initial format value ([#1447](https://github.com/Availity/availity-react/issues/1447)) ([3398a65](https://github.com/Availity/availity-react/commit/3398a65973bc46152ccd302f14b458e0af4d59d1))
+
+
+### BREAKING CHANGES
+
+* must be using yup 0.32.0
+
+
+
 # [2.2.0](https://github.com/Availity/availity-react/compare/@availity/phone@2.1.4...@availity/phone@2.2.0) (2024-08-01)
 
 
