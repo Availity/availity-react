@@ -2,6 +2,68 @@
 
 This file was generated using [@jscutlery/semver](https://github.com/jscutlery/semver).
 
+# 1.0.0 (2024-08-22)
+
+
+### Bug Fixes
+
+* eslint issues ([bc4d8e9](https://github.com/Availity/availity-react/commit/bc4d8e9252a37c067de3e5b15e583c4a3c06d6c5))
+* **feature:** fixed the repository for npm ([7a13a9e](https://github.com/Availity/availity-react/commit/7a13a9ea4533c1565998ed6c28439d22016c285e))
+* fixed package-locks ([ddb49bb](https://github.com/Availity/availity-react/commit/ddb49bbffef1e4fae59f84fb283f5c4a422c8657))
+* **payer-logo:** correct path from payerID query ([a6edbaf](https://github.com/Availity/availity-react/commit/a6edbaf6cf7688f5c71d7a81854e7c9591c60e1a))
+* **payer-logo:** fix lodash import ([81ccf0c](https://github.com/Availity/availity-react/commit/81ccf0ce04e74151b81faad749566f250e7b2aae))
+* **payer-logo:** fix typescript definition for clientId ([ec06bfa](https://github.com/Availity/availity-react/commit/ec06bfa499f0f29937a48e5454b389dcc7be8eec))
+* **payer-logo:** make ajax call to get appropriate logo ([37e154c](https://github.com/Availity/availity-react/commit/37e154c192e21d46d2c9166a0c9f6b1971fb3d62))
+* **payer-logo:** send clientId in request to slotmachine ([08ac445](https://github.com/Availity/availity-react/commit/08ac445cd6c6237bac2874d6654ae2cbb4619e96))
+* **payer-logo:** update types ([368a336](https://github.com/Availity/availity-react/commit/368a336e86c5894c491d8d5223fd5b8ecc31fff3))
+* re-created package-locks ([49726de](https://github.com/Availity/availity-react/commit/49726dea08a61201a44c7c63c14715dda195cc25))
+* removed npmrc and added config to lerna for now creating locks ([efe82ab](https://github.com/Availity/availity-react/commit/efe82ab5a9a38cc8113d5cc71416f1ef347eb4c4))
+* removed package-locks,added npmrc ignore,fixed react as hoisted dep ([4648319](https://github.com/Availity/availity-react/commit/4648319b1298096de2e3e37bf6246e5f169ace0e))
+* so many package-lock.json's ([8b5dc24](https://github.com/Availity/availity-react/commit/8b5dc24168f9eecae9f3f52da0b49e6da831a643))
+
+
+### Code Refactoring
+
+* **payer-logo:** made api resources peer dep ([6e8c7fa](https://github.com/Availity/availity-react/commit/6e8c7fa29dcb71da9837a1bbd0888f9941f087dd))
+
+
+### Features
+
+* add spaces package ([e2eff44](https://github.com/Availity/availity-react/commit/e2eff4448cfe4d28e91dfaeb87dc1e4ca17df817))
+* **feature:** added packages from av-react to public ([2c32cf3](https://github.com/Availity/availity-react/commit/2c32cf353f22847a5a293eecf800315a051646f3))
+* **feature:** adding typescript support ([cfe57a2](https://github.com/Availity/availity-react/commit/cfe57a265b97ba9a053fb3bee54d2b054fa86e8f))
+* **form:** add currency input ([fa9eea6](https://github.com/Availity/availity-react/commit/fa9eea6a3b3dd2ef741a0658c102e36c6db5288c))
+* move storybook, stories, and fix hmr ([2f65f71](https://github.com/Availity/availity-react/commit/2f65f71769d2d981e22700b87a09516833588f64))
+* **pagination:** pagination components using hooks ([590e5fd](https://github.com/Availity/availity-react/commit/590e5fd05fcf0656d2309ae091938b334fd422ee)), closes [#27](https://github.com/Availity/availity-react/issues/27) [#64](https://github.com/Availity/availity-react/issues/64)
+* **payer-logo:** switch to webQL from slotmachine ([7e5b932](https://github.com/Availity/availity-react/commit/7e5b93232142fcb79eedf57de2cbee68da680e62))
+* **payer-logo:** upgrade version of hooks ([65d9d40](https://github.com/Availity/availity-react/commit/65d9d404f4207b68ec5ab05e6b72054682389409))
+* upgrade deps ([eccefc0](https://github.com/Availity/availity-react/commit/eccefc0549ebd5057595f6ac696642789375f48a))
+
+
+### BREAKING CHANGES
+
+* **payer-logo:** @availity/hooks v4 requires react-query
+whereas v5 requires @tanstack/react-query
+* axios v1 is now required
+* **payer-logo:** response format of webQL is different than from
+slotmachine
+
+This is unlikely to break anyone using the components in this package in
+a typical fashion, but if you:
+
+1. use the `useSpaces` hook to do anything
+custom, the shape of a configuration (returned by webQL) differs
+slightly from a space (return by slotmachine). you may need to account
+for this
+
+2. pass in a custom query or variables to the Spaces provider the query
+   format and variables structure in webQL is different than that from slotmachine
+* **payer-logo:** api-axios api-core and axios are peer deps now
+* **payer-logo:** clientId prop is required. it is needed in order to
+call slotmachine
+
+
+
 ## [7.0.2](https://github.com/Availity/availity-react/compare/@availity/payer-logo@7.0.1...@availity/payer-logo@7.0.2) (2024-04-23)
 
 
