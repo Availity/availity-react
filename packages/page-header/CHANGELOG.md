@@ -2,6 +2,140 @@
 
 This file was generated using [@jscutlery/semver](https://github.com/jscutlery/semver).
 
+# 1.0.0 (2024-08-22)
+
+### Dependency Updates
+
+* `@availity/spaces` updated to version `1.0.0`
+* `@availity/training-link` updated to version `0.1.0`
+* `@availity/app-icon` updated to version `0.1.0`
+* `@availity/breadcrumbs` updated to version `1.0.0`
+* `@availity/feedback` updated to version `1.0.0`
+* `@availity/payer-logo` updated to version `1.0.0`
+
+### Bug Fixes
+
+* **breadcrumbs, page-header:** fixed tests ([63e0ac7](https://github.com/Availity/availity-react/commit/63e0ac7fcb0f072286c6f0dc821729f826d3a2f8))
+* eslint issues ([bc4d8e9](https://github.com/Availity/availity-react/commit/bc4d8e9252a37c067de3e5b15e583c4a3c06d6c5))
+* **feature:** fixed the repository for npm ([7a13a9e](https://github.com/Availity/availity-react/commit/7a13a9ea4533c1565998ed6c28439d22016c285e))
+* fixed package-locks ([ddb49bb](https://github.com/Availity/availity-react/commit/ddb49bbffef1e4fae59f84fb283f5c4a422c8657))
+* included pageheader test snapshot ([a315f8e](https://github.com/Availity/availity-react/commit/a315f8e0c453efc4b0335bb9cf9890ee79a62663))
+* package lock urls ([51fbc03](https://github.com/Availity/availity-react/commit/51fbc0337503712f2a289897b7887ca0a739e8f0))
+* **page-header:** account for payerId with multiple associated spaces and no spaceId passed ([871caf0](https://github.com/Availity/availity-react/commit/871caf05ad4d94bcd51f3df8a899d7a36191a227))
+* **page-header:** add trackDeps ([1b48275](https://github.com/Availity/availity-react/commit/1b482754aba9e0df7f3451787832397c9ec2a2f2))
+* **page-header:** allow crumbs to be hidden ([38f93e7](https://github.com/Availity/availity-react/commit/38f93e7b4ae9e970919f5c9dc096232e704c4cbc))
+* **page-header:** allow custom crumbs in crumbs prop ([d3af59f](https://github.com/Availity/availity-react/commit/d3af59fc94b48f43f961f646c9c9d4737e12c03e))
+* **page-header:** correct usage of useSpace ([2bc911c](https://github.com/Availity/availity-react/commit/2bc911c4d93ddf493bcc9e058036f166b7c5e9f0))
+* **page-header:** dont send in empty payerId ([9b9e551](https://github.com/Availity/availity-react/commit/9b9e5512216cefffe2e3f67ca223e50e805dfc90))
+* **page-header:** ensure breadcrumbs parent div never gets squished ([2060a03](https://github.com/Availity/availity-react/commit/2060a03d5c6bcfd7a11d8a3c39dd892123123ebd))
+* **page-header:** fix link ([10dd984](https://github.com/Availity/availity-react/commit/10dd984614b1526ed993ada96a220ebcbe81e9c1))
+* **page-header:** honor custom crumbs passed in ([d28e188](https://github.com/Availity/availity-react/commit/d28e188050230c3ab1c44b68e13748fb1a7cbf8a))
+* **page-header:** made spaces peer dep to prevent duplicate installations ([a3d705d](https://github.com/Availity/availity-react/commit/a3d705d2e6ac3b60f2ca3da962539a2f6ebfb246))
+* **page-header:** removing breadcrumb type check ([0896c2d](https://github.com/Availity/availity-react/commit/0896c2d53801da347d44b307ae049641cee5b29a))
+* **page-header:** update types ReactNode ([23292dd](https://github.com/Availity/availity-react/commit/23292dd5a0fa4193f55723de9c3205934292199d))
+* re-created package-locks ([49726de](https://github.com/Availity/availity-react/commit/49726dea08a61201a44c7c63c14715dda195cc25))
+* removed npmrc and added config to lerna for now creating locks ([efe82ab](https://github.com/Availity/availity-react/commit/efe82ab5a9a38cc8113d5cc71416f1ef347eb4c4))
+* removed package-locks,added npmrc ignore,fixed react as hoisted dep ([4648319](https://github.com/Availity/availity-react/commit/4648319b1298096de2e3e37bf6246e5f169ace0e))
+* so many package-lock.json's ([8b5dc24](https://github.com/Availity/availity-react/commit/8b5dc24168f9eecae9f3f52da0b49e6da831a643))
+* **spaces:** fixes from code review ([47ba435](https://github.com/Availity/availity-react/commit/47ba435806f0e76870564b085a741298b7350a92))
+* update peerDep ranges ([1e26d13](https://github.com/Availity/availity-react/commit/1e26d1388383fdbd1dc919ab97c1b6f1c5a047be))
+* upgrade yup and update sb stories ([68aeafe](https://github.com/Availity/availity-react/commit/68aeafe4fd7d90d7c88dbb24636ba7770fe87aa3))
+
+
+### Build System
+
+* **page-header:** update dependencies ([104ed57](https://github.com/Availity/availity-react/commit/104ed5781d92c4cf8563084eae4ae4cfcab579de))
+
+
+### chore
+
+* **page-header:** feedback update to latest formik should have been major bump ([f217189](https://github.com/Availity/availity-react/commit/f21718948013b9a4fbf7ed6c3105088f6fafe9a7))
+
+
+### Code Refactoring
+
+* **page-header:** made api resources peer dep ([66e136a](https://github.com/Availity/availity-react/commit/66e136a0f3751ef20e84524761eb760e5334fe91))
+* **page-header:** refactored page header strcuture to fix ux ([d79d269](https://github.com/Availity/availity-react/commit/d79d2697356935c8d0a4c9d4f1b4d4ab8335e836))
+* **spaces:** remove useSpace hook in favor of useSpaces ([8a6a932](https://github.com/Availity/availity-react/commit/8a6a932da6cde1adc12fff5ff725615d0ea641a0))
+
+
+### Features
+
+* add spaces package ([e2eff44](https://github.com/Availity/availity-react/commit/e2eff4448cfe4d28e91dfaeb87dc1e4ca17df817))
+* added dynamic breadcrumb (react-router tests) ([f79f8cf](https://github.com/Availity/availity-react/commit/f79f8cfe27522f3bb1fd2266fa613a9bf28a0611))
+* **docs:** updated to use yarn and added readmes ([3b94748](https://github.com/Availity/availity-react/commit/3b947487ef18c6e11486ad39203882a11bc8a1e7))
+* **feature:** added packages from av-react to public ([2c32cf3](https://github.com/Availity/availity-react/commit/2c32cf353f22847a5a293eecf800315a051646f3))
+* **feature:** adding typescript support ([cfe57a2](https://github.com/Availity/availity-react/commit/cfe57a265b97ba9a053fb3bee54d2b054fa86e8f))
+* **feedback:** refactored feedback component with more options ([becab2e](https://github.com/Availity/availity-react/commit/becab2ebb2b5ada96b1d08f054e372376dfa17ea))
+* **form:** add currency input ([fa9eea6](https://github.com/Availity/availity-react/commit/fa9eea6a3b3dd2ef741a0658c102e36c6db5288c))
+* integrated dynamic breadcrumbs into PageHeader ([7865b13](https://github.com/Availity/availity-react/commit/7865b13041fe570165caf5dcfc0888f264af2ff4))
+* move storybook, stories, and fix hmr ([2f65f71](https://github.com/Availity/availity-react/commit/2f65f71769d2d981e22700b87a09516833588f64))
+* **page-header:** add clientId prop ([85067b9](https://github.com/Availity/availity-react/commit/85067b95951b12a327be783c6c25bcd013c5b258))
+* **page-header:** add feedbackProps prop type ([525b9e9](https://github.com/Availity/availity-react/commit/525b9e91892f253dc5a12f02181866828f0d1f16))
+* **page-header:** add renderRightClassName props and defaults ([c8403fe](https://github.com/Availity/availity-react/commit/c8403feca1ec881c9bdc8e6e4b5416a83311da76))
+* **page-header:** added function prop to render custom right content ([9b36f16](https://github.com/Availity/availity-react/commit/9b36f162714c7bf277b20627e170b389a41c8810))
+* **page-header:** added new app-icon props to page-header ([b1a4ca0](https://github.com/Availity/availity-react/commit/b1a4ca0425f2f752ad8bf78336af98e7096e97eb))
+* **page-header:** allow crumbs to be hidden ([f882669](https://github.com/Availity/availity-react/commit/f8826692cd4beabe54c3ab11c21e61fe38a44529))
+* **page-header:** allow logo and feedback to rendered at same time ([227d6b9](https://github.com/Availity/availity-react/commit/227d6b9fefadcd86f53d86da077fa4e6bf37d445)), closes [#88](https://github.com/Availity/availity-react/issues/88)
+* **page-header:** remove defaultProps usage ([a757455](https://github.com/Availity/availity-react/commit/a7574558931895d65f53bcdb72eca39234161ef1))
+* **page-header:** require spaces ^8.0.0 ([316b74f](https://github.com/Availity/availity-react/commit/316b74f94a1c8cf1ec3fdc7b9f02d739767e5641))
+* **page-header:** responsiveness and debootstrapifying ([ce4b2f9](https://github.com/Availity/availity-react/commit/ce4b2f9086d2fe2c808297fc606db6581b768a7b))
+* **page-header:** switch to webQL from slotmachine ([14fe0e7](https://github.com/Availity/availity-react/commit/14fe0e76c64befdd786f2ec2491d39925b7a5416))
+* **page-header:** use space from spaces provider if it exists ([f3e5bdd](https://github.com/Availity/availity-react/commit/f3e5bddf064d0c5f267f65f1b91252df4670279a))
+* **select:** add autofill prop ([37d3fba](https://github.com/Availity/availity-react/commit/37d3fba66e4020a34b628eda0bac3da4fa35ccf3))
+* **spaces:** add SpacesFile component ([d0d95a9](https://github.com/Availity/availity-react/commit/d0d95a97a04f6af660841bbe24a95ce20dabd3f7))
+* upgrade deps ([eccefc0](https://github.com/Availity/availity-react/commit/eccefc0549ebd5057595f6ac696642789375f48a))
+
+
+### BREAKING CHANGES
+
+* **page-header:** feedback has a breaking change which requires a breaking change here
+* **page-header:** the @availity/spaces peer dependency must be ^8.0.0 in
+order to use this package now
+* axios v1 is now required
+* **page-header:** response format of webQL is different than from
+slotmachine
+
+This is unlikely to break anyone using the components in this package in
+a typical fashion, but if you:
+
+1. use the `useSpaces` hook to do anything
+custom, the shape of a configuration (returned by webQL) differs
+slightly from a space (return by slotmachine). you may need to account
+for this
+
+2. pass in a custom query or variables to the Spaces provider the query
+   format and variables structure in webQL is different than that from slotmachine
+* **page-header:** api-core and localstorage-core have been bumped to next major version
+* **spaces:** `useSpace` is no longer available. Use `useSpaces`
+instead. Additionally, `isGhost` is no longer exported as that property is computed server side and assigned to the space asset
+
+*Before:*
+```js
+import { useSpace } from '@availity/spaces';
+
+// ...
+const { space: space1, loading, error, isGhost } = useSpace('1');
+const { space: space2 } = useSpace('2');
+const { space: space3 } = useSpace('3');
+```
+
+*After:*
+```js
+import { useSpaces, useSpacesContext } from '@availity/spaces';
+
+// ...
+const [space1, space2, space3] = useSpaces('1', '2', '3');
+const { loading, error } = useSpacesContext();
+```
+* **page-header:** Tag prop now is defaulted to div and appName instead of children will render an h1 tag by default
+* **page-header:** `@availity/spaces` is now a peer dependency
+* **page-header:** api-axios api-core and axios are peer deps now
+* **page-header:** this requires formik and yup to be installed alongside for feedback to work
+* **feedback:** The feedback modal has a new look.
+
+
+
 ## [14.0.1](https://github.com/Availity/availity-react/compare/@availity/page-header@14.0.0...@availity/page-header@14.0.1) (2024-08-14)
 
 ### Dependency Updates
