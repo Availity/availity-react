@@ -2,6 +2,52 @@
 
 This file was generated using [@jscutlery/semver](https://github.com/jscutlery/semver).
 
+# 1.0.0 (2024-08-22)
+
+
+### Bug Fixes
+
+* eslint issues ([bc4d8e9](https://github.com/Availity/availity-react/commit/bc4d8e9252a37c067de3e5b15e583c4a3c06d6c5))
+* **hooks:** moved region fetching into useEffect, and adding trycatch to better handle errors ([e3d8454](https://github.com/Availity/availity-react/commit/e3d845457bb7d5ed7facde0081258d990c1eae6e))
+* **hooks:** remove effect from dependency array in useMount ([a096fa4](https://github.com/Availity/availity-react/commit/a096fa45af7aaa40a09c87254aef0de864fa8ab6))
+* **hooks:** use optional chaining ([ec54426](https://github.com/Availity/availity-react/commit/ec54426b81cb63f4e3ce14ba1fd1fb9c0f208d23))
+* removed npmrc and added config to lerna for now creating locks ([efe82ab](https://github.com/Availity/availity-react/commit/efe82ab5a9a38cc8113d5cc71416f1ef347eb4c4))
+* removed package-locks,added npmrc ignore,fixed react as hoisted dep ([4648319](https://github.com/Availity/availity-react/commit/4648319b1298096de2e3e37bf6246e5f169ace0e))
+* upgrade yup and update sb stories ([68aeafe](https://github.com/Availity/availity-react/commit/68aeafe4fd7d90d7c88dbb24636ba7770fe87aa3))
+
+
+### Features
+
+* allow for options to be passed in ([1d99a8b](https://github.com/Availity/availity-react/commit/1d99a8b942267c5be69711576ef4f64b8e36bacb))
+* **docs:** updated to use yarn and added readmes ([3b94748](https://github.com/Availity/availity-react/commit/3b947487ef18c6e11486ad39203882a11bc8a1e7))
+* **form:** add currency input ([fa9eea6](https://github.com/Availity/availity-react/commit/fa9eea6a3b3dd2ef741a0658c102e36c6db5288c))
+* **hooks:** add documentation to sidebar, some formatting ([fbd9964](https://github.com/Availity/availity-react/commit/fbd99648c18993394f773d8540c1be023acf6e5b))
+* **hooks:** add usePermissions, useOrganizations, useProviders hook ([458f5e5](https://github.com/Availity/availity-react/commit/458f5e50038c4fdc5a23919daec918a87cdb08e9))
+* **hooks:** add useWindowDimensionsHook ([203d9c0](https://github.com/Availity/availity-react/commit/203d9c0a31362ec084c94c4ae50ab4b6efbc876b))
+* **hooks:** added some common hooks to a new package ([98663fd](https://github.com/Availity/availity-react/commit/98663fd4742b988b0f11ad15236addf3237c9c0d))
+* **hooks:** added storybook story for useCurrentUser ([00277b7](https://github.com/Availity/availity-react/commit/00277b73e15e4f26210d81fdc27a56fb94380838))
+* **hooks:** added useCurrentUser hook ([8cab508](https://github.com/Availity/availity-react/commit/8cab5089074747bd1a970b48427c5ba8918d0db0))
+* **hooks:** added useTimout and useMount hooks, tests, and docs ([e82c81e](https://github.com/Availity/availity-react/commit/e82c81ef840531b4327dcb823d6f3cfdda19fa22))
+* **hooks:** fixed the copy pasta ([d82d5f9](https://github.com/Availity/availity-react/commit/d82d5f93e9c3609fe2142043043d1c01ef7f48e1))
+* **hooks:** upgrade react query to v4 ([9b7b266](https://github.com/Availity/availity-react/commit/9b7b266fbbd880114d162d5a4f89f7a9f34a6a6f))
+* **hooks:** upgrade to react-query v2 ([2da4115](https://github.com/Availity/availity-react/commit/2da411548721cee86be33dd92cf62a99f80e86cf))
+* **hooks:** upgrade to react-query v3 ([351aeff](https://github.com/Availity/availity-react/commit/351aeff7bc6b2c14379b2113bc17624a956dfdd6))
+* move storybook, stories, and fix hmr ([2f65f71](https://github.com/Availity/availity-react/commit/2f65f71769d2d981e22700b87a09516833588f64))
+* **pagination:** pagination components using hooks ([590e5fd](https://github.com/Availity/availity-react/commit/590e5fd05fcf0656d2309ae091938b334fd422ee)), closes [#27](https://github.com/Availity/availity-react/issues/27) [#64](https://github.com/Availity/availity-react/issues/64)
+* update to use react-query ([d762643](https://github.com/Availity/availity-react/commit/d762643e49da3de41922021833ab5bd209d2cbf9))
+* upgrade deps ([eccefc0](https://github.com/Availity/availity-react/commit/eccefc0549ebd5057595f6ac696642789375f48a))
+
+
+### BREAKING CHANGES
+
+* **hooks:** react query has been upgraded to v4. you must upgrade
+to @tanstack/react-query@^4.36.1 in order to use this package now
+* axios v1 is now required
+* **hooks:** react-query ^3.0.0 is now required
+* **hooks:** the return shapes have changed for most async hooks
+
+
+
 ## [5.0.2](https://github.com/Availity/availity-react/compare/@availity/hooks@5.0.1...@availity/hooks@5.0.2) (2024-04-23)
 
 
