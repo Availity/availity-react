@@ -2,6 +2,50 @@
 
 This file was generated using [@jscutlery/semver](https://github.com/jscutlery/semver).
 
+# 0.1.0 (2024-08-22)
+
+### Dependency Updates
+
+* `@availity/icon` updated to version `0.1.0`
+
+### Bug Fixes
+
+* **tree:** add and fix test, documenation ([74dc131](https://github.com/Availity/availity-react/commit/74dc131fd68387888100a40088bba19ed6ce8489))
+* **tree:** add some more test coverage ([20740ff](https://github.com/Availity/availity-react/commit/20740ff1f76fd0f602d5bd63038de316e1e58238))
+* **tree:** add tests, update docs, and remove unused code ([e26d3d4](https://github.com/Availity/availity-react/commit/e26d3d4666d9ea4b1f937da5ac08ab02b695ae0f))
+* **tree:** documentation updates ([d89462d](https://github.com/Availity/availity-react/commit/d89462d56a7af14c6749620a32b08c4c13106364))
+* **tree:** downgrade version to what is was before ([bb27edd](https://github.com/Availity/availity-react/commit/bb27edd841efee0534296d11d33207cbb3ea2099))
+* **tree:** fix nested selected items issue ([9ce7ce2](https://github.com/Availity/availity-react/commit/9ce7ce26710a0e72710e94f04de9ceaf990b6656))
+* **tree:** fix overall select and collapse behavior when filtering ([4928900](https://github.com/Availity/availity-react/commit/49289009b78da352d74866a12a3a9bf00ceb0ab2))
+* **tree:** fix story ([4ff305e](https://github.com/Availity/availity-react/commit/4ff305e18c8cd5bb3136babff8e501a7bba9ffc3))
+* **tree:** only show select all link on first root object ([3afdfe1](https://github.com/Availity/availity-react/commit/3afdfe17b7634a86bc9393d97e5faef5f700642c))
+* **tree:** refactor to fix overall data and state change issues ([57f8d5c](https://github.com/Availity/availity-react/commit/57f8d5c8e4a9cf3cbfbe15f6ea2de84e21c83d65))
+* **tree:** tweak when tree is displayed under small sizes ([e1572a3](https://github.com/Availity/availity-react/commit/e1572a3f1e67f7e967edddec3d094fcb1bca6821))
+
+
+### Features
+
+* **table:** fix alignment of select all link to be right aligned to the right of the expand all text ([6daef1b](https://github.com/Availity/availity-react/commit/6daef1b060c8fe65d16eed87128a67d89213ebcb))
+* **tree:** add ability to reset tree ([9f9fd4f](https://github.com/Availity/availity-react/commit/9f9fd4f7951523d99aa8d43708cbe58174623bd0))
+* **tree:** add missing hooks dependency ([e6f9ab6](https://github.com/Availity/availity-react/commit/e6f9ab6da711cc07e052d6b97726450ad62ab493))
+* **tree:** add more code coverage with jest tests ([89c8e48](https://github.com/Availity/availity-react/commit/89c8e48e588273e038a2a6abd4d236572d9ec43a))
+* **tree:** add tree component ([fc44b39](https://github.com/Availity/availity-react/commit/fc44b39804ee974651d4c6078816e1994b9ff4c8))
+* **tree:** add tree component ([bff9761](https://github.com/Availity/availity-react/commit/bff97616eaead96c526c7a9e2daba62bf8b0b6e8))
+* **tree:** add tree component ([f952b85](https://github.com/Availity/availity-react/commit/f952b8580b798c836fc6e8d91b54f9dc29bc2a55))
+* **tree:** fix package.json ([627a42c](https://github.com/Availity/availity-react/commit/627a42ca829b297228e1332c99f991c50692f5be))
+* **tree:** fix some style issues, and add option to default expand first parent ([bcd66c3](https://github.com/Availity/availity-react/commit/bcd66c311fa5568d5b6e4172328955e2df6f3fd7))
+* **tree:** more style tweaks, rename prop ([f24d8b1](https://github.com/Availity/availity-react/commit/f24d8b11732966d67bd0acc6ed1dff61c5c7a514))
+* **tree:** prevent item from being selected when hidden or disabled, add option to hide disabled items, misc bug fixes with searching and selecting ([b9ea327](https://github.com/Availity/availity-react/commit/b9ea3272cd4529a4df7a62a2e48581289a2f3d6a))
+* **tree:** remove react-block-ui dep ([78a8155](https://github.com/Availity/availity-react/commit/78a81558c000139c4617eef35ee9df5c8e57aea2))
+* **tree:** remove uneeded treeitems update ([11b9f57](https://github.com/Availity/availity-react/commit/11b9f5799d3d8195e554ccaaa062b0ba99ea1a12))
+* **tree:** revert depth approach and just use stylesheet ([ad1d4e0](https://github.com/Availity/availity-react/commit/ad1d4e0769ae3cc1ca1b03c29d036679a10b54dd))
+* **tree:** style tweak ([a60d30d](https://github.com/Availity/availity-react/commit/a60d30d587df1bca2e2af84d435b9fbdf7768774))
+* **tree:** tree storybook update h4 to h5 ([a1849cd](https://github.com/Availity/availity-react/commit/a1849cd45ed9e12412663e1f22fab6dc1264a152))
+* **tree:** update storybook for tree ([97770fe](https://github.com/Availity/availity-react/commit/97770fed5e3d960239a9d5b0ea45cbd2654b7830))
+* **tree:** update to use map instead of record in buildTree ([0227e0b](https://github.com/Availity/availity-react/commit/0227e0b1e6ffd15b32074318dd26a8b956a80f87))
+
+
+
 ## [0.5.4](https://github.com/Availity/availity-react/compare/@availity/tree@0.5.3...@availity/tree@0.5.4) (2024-05-31)
 
 
