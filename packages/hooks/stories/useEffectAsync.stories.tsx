@@ -5,12 +5,17 @@ import { Card } from 'reactstrap';
 import { useEffectAsync, useToggle } from '..';
 // import README from '../README.md';
 
-const asyncFunction = (data: string) => new Promise((resolve) => setInterval(() => resolve(data), 1000));
+const asyncFunction = (data: string) =>
+  new Promise((resolve) => {
+    setInterval(() => resolve(data), 1000);
+  });
 
 const AsyncComponent = ({ mockData }: { mockData: string }) => {
   const [loading, toggle] = useToggle(true);
   const [state, setState] = useState(null);
 
+  // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+  // @ts-ignore
   useEffectAsync(async () => {
     if (!loading) {
       toggle();

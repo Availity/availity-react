@@ -146,8 +146,8 @@ const Upload = ({
 
   const setFiles = (files) => {
     let selectedFiles = [];
-    for (let i = 0; i < files.length; i++) {
-      selectedFiles[i] = files[i];
+    for (const [i, file] of files.entries()) {
+      selectedFiles[i] = file;
     }
 
     if (max && selectedFiles.length + fieldValue.length > max) {

@@ -64,7 +64,7 @@ describe('Loading Button', () => {
 
     fireEvent.click(buttonElement);
     await waitFor(() => {
-      expect(onClick).not.toBeCalled();
+      expect(onClick).not.toHaveBeenCalled();
     });
   });
 

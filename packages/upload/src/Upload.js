@@ -1,3 +1,4 @@
+/* eslint-disable react/no-unused-class-component-methods */
 import React, { Component, createRef } from 'react';
 import PropTypes from 'prop-types';
 import UploadCore from '@availity/upload-core';
@@ -40,8 +41,8 @@ class Upload extends Component {
 
   setFiles = (files) => {
     let selectedFiles = [];
-    for (let i = 0; i < files.length; i++) {
-      selectedFiles[i] = files[i];
+    for (const [i, file] of files.entries()) {
+      selectedFiles[i] = file;
     }
     if (this.props.max && selectedFiles.length + this.state.files.length > this.props.max) {
       selectedFiles = selectedFiles.slice(0, Math.max(0, this.props.max - this.state.files.length));
@@ -55,7 +56,7 @@ class Upload extends Component {
           clientId: this.props.clientId,
           fileTypes: this.props.allowedFileTypes,
           maxSize: this.props.maxSize,
-          onPreStart: this.props.onFilePreUpload ? this.props.onFilePreUpload : [],
+          onPreStart: this.props.onFilePreUpload || [],
           allowedFileNameCharacters: this.props.allowedFileNameCharacters,
         };
         const upload = new UploadCore(file, options);

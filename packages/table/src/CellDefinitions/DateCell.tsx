@@ -28,6 +28,7 @@ const DateCell = <T extends IdType>({
     return formattedValue !== defaultValue ? (
       <>
         <span id={`date-cell-${row.id}-${column.id}`}>
+          {/* eslint-disable-next-line react/jsx-no-useless-fragment */}
           <>{formattedValue}</>
         </span>
         {displayTooltip && typeof formattedValue === 'string' && (
@@ -43,6 +44,7 @@ const DateCell = <T extends IdType>({
         )}
       </>
     ) : (
+      // eslint-disable-next-line react/jsx-no-useless-fragment
       <>{defaultValue}</>
     );
   };

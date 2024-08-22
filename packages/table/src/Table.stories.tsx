@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import React, { useEffect, useState } from 'react';
 import { StoryObj } from '@storybook/react';
 
@@ -225,11 +226,11 @@ export const _BasicTable: StoryObj<TableProps<any>> = {
   },
 };
 
-const WithAdditionalContentStory = ({ columns, data }: TableProps<any>) => {
-  const AdditionalContent = (): JSX.Element => (
-    <div>This is some additional content that should be displayed inside the cell.</div>
-  );
+const AdditionalContent = (): JSX.Element => (
+  <div>This is some additional content that should be displayed inside the cell.</div>
+);
 
+const WithAdditionalContentStory = ({ columns, data }: TableProps<any>) => {
   const [records, setRecords] = useState<any>([]);
 
   useEffect(() => {

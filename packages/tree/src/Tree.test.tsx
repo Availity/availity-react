@@ -285,7 +285,7 @@ describe('Tree', () => {
     await waitFor(async () => {
       const response = onItemsSelected.mock.lastCall[0];
       expect(response.length).toEqual(1);
-      expect(response.some((item: TreeItem) => item.id === '1'));
+      expect(response.some((item: TreeItem) => item.id === '1')).toBeTruthy();
 
       fireEvent.click(screen.getByTestId('chk-tree-view-item-select-1'));
     });

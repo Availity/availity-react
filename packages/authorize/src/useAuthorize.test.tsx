@@ -23,6 +23,7 @@ const Component = ({ permissions, children, ...options }: ComponentProps) => {
   }
 
   return authorized ? (
+    // eslint-disable-next-line react/jsx-no-useless-fragment
     <>{children}</>
   ) : (
     <span data-testid="component-content">You do not have permission to see this</span>

@@ -70,6 +70,7 @@ const RadioGroup = ({
   }
 
   return (
+    // eslint-disable-next-line react/jsx-no-constructed-context-values
     <RadioGroupContext.Provider value={{ ...field, groupOnChange, metadata, inline }}>
       <FormGroup tag={tag} for={name} {...rest}>
         {legend}

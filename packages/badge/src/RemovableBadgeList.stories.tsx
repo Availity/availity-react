@@ -1,7 +1,8 @@
+/* eslint-disable react-hooks/rules-of-hooks */
 import React, { useState } from 'react';
 import { StoryObj } from '@storybook/react';
 import { Button } from 'reactstrap';
-import { RemovableBadgeList, BadgeItem, RemovableBadgeProps } from '.';
+import { RemovableBadgeList, BadgeItem } from '.';
 
 export default {
   title: 'Components/Badge/Removable Badge/List',

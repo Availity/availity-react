@@ -27,22 +27,22 @@
   "dependencies": {
     "@availity/icon": "workspace:*",
     "@availity/progress": "workspace:*",
-    "classnames": "^2.3.2",
-    "uuid": "^9.0.1"
+    "classnames": "^2.5.1",
+    "uuid": "^10.0.0"
   },
   "devDependencies": {
-    "@availity/api-axios": "^8.0.7",
+    "@availity/api-axios": "^9.0.0",
     "@availity/form": "workspace:*",
-    "@availity/upload-core": "^5.0.6",
-    "@types/uuid": "^9.0.8",
-    "formik": "^2.4.4",
-    "nock": "^13.3.3",
-    "react": "^18.2.0",
-    "react-dom": "^18.2.0",
+    "@availity/upload-core": "^6.0.0",
+    "@types/uuid": "^10.0.0",
+    "formik": "^2.4.6",
+    "nock": "^13.5.4",
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1",
     "react-dropzone": "^11.7.1",
     "reactstrap": "^8.10.1",
-    "tsup": "^7.2.0",
-    "typescript": "^5.3.3",
+    "tsup": "^8.2.4",
+    "typescript": "^5.5.4",
     "xhr-mock": "^2.5.1"
   },
   "peerDependencies": {

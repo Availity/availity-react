@@ -1,11 +1,14 @@
 {
-  "root": "packages/icon",
+  "name": "@availity/icon",
+  "$schema": "../../node_modules/nx/schemas/project-schema.json",
   "projectType": "library",
   "targets": {
     "test": {
       "executor": "@nx/jest:jest",
-      "outputs": ["coverage/icon"],
-      "options": { "jestConfig": "packages/icon/jest.config.js", "passWithNoTests": true }
+      "outputs": ["{workspaceRoot}/coverage/icon"],
+      "options": {
+        "jestConfig": "packages/icon/jest.config.js"
+      }
     },
     "version": {
       "executor": "@jscutlery/semver:version",
@@ -17,10 +20,9 @@
       }
     },
     "lint": {
-      "executor": "@nx/linter:eslint",
+      "executor": "@nx/eslint:lint",
       "options": {
         "eslintConfig": ".eslintrc.yaml",
-        "lintFilePatterns": ["packages/icon/**/*.{js,ts}"],
         "silent": false,
         "fix": false,
         "cache": true,

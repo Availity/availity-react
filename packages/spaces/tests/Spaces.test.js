@@ -215,7 +215,7 @@ describe('Spaces', () => {
       // Check correct spaces get returned
       expect(spaces.length).toBe(10);
       expect(spaces[0].id).toBe('1');
-      expect(spaces[spaces.length - 1].id).toBe('10');
+      expect(spaces.at(-1).id).toBe('10');
 
       // Check correct avWebQLApi calls were made
       expect(avWebQLApi.create).toHaveBeenCalledTimes(2);

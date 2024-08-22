@@ -14,12 +14,12 @@ import { AvInput } from 'availity-reactstrap-validation';
 import { isOutsideRange, limitPropType } from './utils';
 
 class AvDate extends Component {
-  static getDerivedStateFromProps = ({ value }, prevState) => {
+  static getDerivedStateFromProps({ value }, prevState) {
     if (value !== undefined && value !== prevState.value) {
       return { value };
     }
     return null;
-  };
+  }
 
   getDateValue = () => {
     const { value, format } = this.state;
@@ -127,7 +127,7 @@ class AvDate extends Component {
     const minDate = validate && validate.min ? validate.min.value : min;
     const maxDate = validate && validate.max ? validate.max.value : max;
 
-    const pickerId = `${(this.props.id || name).replace(/[^\da-z]/gi, '')}-btn`;
+    const pickerId = `${(this.props.id || name).replaceAll(/[^\da-z]/gi, '')}-btn`;
 
     const touched = FormCtrl.isTouched(name);
     const hasError = FormCtrl.hasError(name);

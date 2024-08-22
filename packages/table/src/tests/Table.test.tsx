@@ -1,8 +1,7 @@
+/* eslint-disable unicorn/consistent-function-scoping */
 import React from 'react';
 import { render, fireEvent, waitFor, screen } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
-import * as Popper from 'popper.js';
-import { act } from 'react-dom/test-utils';
 
 import basicData from './data/basicData.json';
 import formattedData from './data/needsFormattedData.json';
@@ -16,7 +15,7 @@ import DefaultValueCell from '../CellDefinitions/DefaultValueCell';
 import IconWithTooltipCell from '../CellDefinitions/IconWIthTooltipCell';
 import { Cell, Column } from '../types/ReactTable';
 import TableContent from '../TableContent';
-import TableActionMenu, { TableActionMenuProps } from '../TableActionMenu';
+import { TableActionMenuProps } from '../TableActionMenu';
 
 const basicColumns = [
   {
@@ -129,6 +128,7 @@ jest.mock('popper.js', () => {
     static placements = PopperJS.placements;
 
     constructor() {
+      // eslint-disable-next-line no-constructor-return
       return {
         destroy: () => {},
         scheduleUpdate: jest.fn(),

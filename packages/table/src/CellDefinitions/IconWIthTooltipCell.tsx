@@ -28,7 +28,7 @@ const IconWithTooltipCell = <T extends IdType>({
 }: IconWithTooltipConfig<T>): JSX.Element | ((cell: CellProps<T>) => JSX.Element | null) => {
   const IconCellDef = ({ value, row }: CellProps<T>): JSX.Element | null => {
     const tooltip = typeof tooltipText === 'string' ? tooltipText : tooltipText(value);
-    const idVal = id ? id : getId ? getId(row) : undefined;
+    const idVal = id || (getId ? getId(row) : undefined);
 
     return value ? (
       <>
@@ -40,6 +40,7 @@ const IconWithTooltipCell = <T extends IdType>({
         )}
       </>
     ) : defaultValue ? (
+      // eslint-disable-next-line react/jsx-no-useless-fragment
       <>{defaultValue}</>
     ) : null;
   };

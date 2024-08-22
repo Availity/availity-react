@@ -15,23 +15,23 @@ describe('ChangePasswordFeedback', () => {
     const conditions = [
       {
         message: 'Have 8 to 16 characters',
-        passes: ({ newPassword }) => new RegExp(/^.{8,16}$/).test(newPassword),
+        passes: ({ newPassword }) => /^.{8,16}$/.test(newPassword),
       },
       {
         message: 'Have a number',
-        passes: ({ newPassword }) => new RegExp(/\d/).test(newPassword),
+        passes: ({ newPassword }) => /\d/.test(newPassword),
       },
       {
         message: 'Have an uppercase letter',
-        passes: ({ newPassword }) => new RegExp('[A-Z]').test(newPassword),
+        passes: ({ newPassword }) => /[A-Z]/.test(newPassword),
       },
       {
         message: 'Have a lowercase letter',
-        passes: ({ newPassword }) => new RegExp('[a-z]').test(newPassword),
+        passes: ({ newPassword }) => /[a-z]/.test(newPassword),
       },
       {
         message: 'Have a special character',
-        passes: ({ newPassword }) => new RegExp(/[!"#$%&'()*+,./:;<=>?@[\\\]^_`{|}~-]/).test(newPassword),
+        passes: ({ newPassword }) => /[!"#$%&'()*+,./:;<=>?@[\\\]^_`{|}~-]/.test(newPassword),
       },
       {
         message: 'Not contain your user Id',
@@ -39,7 +39,7 @@ describe('ChangePasswordFeedback', () => {
       },
       {
         message: 'Not contain spaces',
-        passes: ({ newPassword }) => new RegExp('^\\S*$').test(newPassword),
+        passes: ({ newPassword }) => /^\S*$/.test(newPassword),
       },
       {
         message: 'This one should always display the empty circle',

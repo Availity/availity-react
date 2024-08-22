@@ -9,6 +9,7 @@ async function isFeatureEnabled(features) {
 
   let envFeatures;
   try {
+    // eslint-disable-next-line unicorn/no-await-expression-member
     envFeatures = (await featureCache).data || [];
   } catch {
     return true;

@@ -22,6 +22,7 @@ type Props<T extends IdType> = {
 
 const TableCell = <T extends IdType>({
   cell,
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
   scrollable,
   children,
   useColumnWidths,

@@ -46,7 +46,6 @@ const AvCodeSelect = AvResourceSelect.create({
   watchParams: ['list'],
 });
 
-export default AvResourceSelect;
 export {
   AvProviderSelect,
   AvOrganizationSelect,
@@ -56,3 +55,5 @@ export {
   AvUserSelect,
   AvCodeSelect,
 };
+
+export { default } from './src/AvResourceSelect';

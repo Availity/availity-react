@@ -26,26 +26,26 @@
     "publish:canary": "yarn npm publish --access public --tag canary"
   },
   "dependencies": {
-    "classnames": "^2.3.2",
+    "classnames": "^2.5.1",
     "lodash": "^4.17.21",
     "prop-types": "^15.8.1",
-    "qs": "^6.11.2",
-    "react-select": "^5.7.4",
+    "qs": "^6.13.0",
+    "react-select": "^5.8.0",
     "react-select-async-paginate": "^0.6.2"
   },
   "devDependencies": {
-    "@availity/api-axios": "^8.0.7",
+    "@availity/api-axios": "^9.0.0",
     "availity-reactstrap-validation": "^2.7.1",
-    "axios": "^1.6.7",
-    "react": "^18.2.0",
-    "react-dom": "^18.2.0",
+    "axios": "^1.7.4",
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1",
     "reactstrap": "^8.10.1"
   },
   "peerDependencies": {
     "@availity/api-axios": "^8.0.0",
     "availity-reactstrap-validation": "^2.7.0",
     "availity-uikit": "^4.0.0",
-    "axios": "^1.0.0",
+    "axios": "^1.7.4",
     "react": ">=16.8.3",
     "reactstrap": "^8.0.0"
   },

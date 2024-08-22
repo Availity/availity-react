@@ -48,7 +48,7 @@ export const buildTree = (items: TreeItem[], expandedIds?: string[], selectedIds
     parents.set(item.id, item);
   }
 
-  for (let [key, value] of parents) {
+  for (const [, value] of parents) {
     if (value.parentId && parents.get(value.parentId)) {
       const parent = parents.get(value.parentId);
       if (parent) {
@@ -260,11 +260,7 @@ const Tree = ({
       if (itemToUpdate && !item.isDisabled && !item.isHidden) {
         item.isSelected = !itemToUpdate.isSelected;
 
-        if (item.isSelected) {
-          selected = [...selected, item];
-        } else {
-          selected = selected.filter((item) => item.id !== itemToUpdate.id);
-        }
+        selected = item.isSelected ? [...selected, item] : selected.filter((item) => item.id !== itemToUpdate.id);
       }
     }
 
@@ -403,56 +399,54 @@ const Tree = ({
   };
 
   return (
-    <>
-      <div data-testid="tree-view-parent" className="tree-view">
-        {enableSearch && (
-          <div className="form-group">
-            {searchLabel && <Label className="font-weight-bold">{searchLabel}</Label>}
-            <Input
-              data-testid="tree-search-input"
-              type="text"
-              className="form-control"
-              id="search"
-              placeholder="Search"
-              value={searchTerm}
-              onChange={(event: React.ChangeEvent<HTMLInputElement>) => search(event.target.value)}
-            />
-          </div>
-        )}
-
-        <div className="d-flex justify-content-between">
-          <Col xs="auto" className="pl-0">
-            {canExpand && (
-              <Button
-                data-testid="btn-expand-all"
-                id="btnExpandAll"
-                color="link"
-                className="p-0"
-                onClick={toggleExpandAll}
-              >
-                {rootExpandAllText}
-              </Button>
-            )}
-          </Col>
-
-          {selectable && canSelectDeselect && (
-            <Col xs="auto" className="pr-0">
-              <Button data-testid="btn-select-all" color="link" className="pb-0 pt-0" onClick={() => toggleSelectAll()}>
-                {rootSelectText}
-              </Button>
-            </Col>
-          )}
+    <div data-testid="tree-view-parent" className="tree-view">
+      {enableSearch && (
+        <div className="form-group">
+          {searchLabel && <Label className="font-weight-bold">{searchLabel}</Label>}
+          <Input
+            data-testid="tree-search-input"
+            type="text"
+            className="form-control"
+            id="search"
+            placeholder="Search"
+            value={searchTerm}
+            onChange={(event: React.ChangeEvent<HTMLInputElement>) => search(event.target.value)}
+          />
         </div>
+      )}
 
-        <TreeItemContent
-          items={treeItems}
-          onItemExpanded={toggleExpand}
-          onItemsSelected={toggleSelect}
-          toggleSelectChildren={toggleSelectChildren}
-          selectable={selectable}
-        />
+      <div className="d-flex justify-content-between">
+        <Col xs="auto" className="pl-0">
+          {canExpand && (
+            <Button
+              data-testid="btn-expand-all"
+              id="btnExpandAll"
+              color="link"
+              className="p-0"
+              onClick={toggleExpandAll}
+            >
+              {rootExpandAllText}
+            </Button>
+          )}
+        </Col>
+
+        {selectable && canSelectDeselect && (
+          <Col xs="auto" className="pr-0">
+            <Button data-testid="btn-select-all" color="link" className="pb-0 pt-0" onClick={() => toggleSelectAll()}>
+              {rootSelectText}
+            </Button>
+          </Col>
+        )}
       </div>
-    </>
+
+      <TreeItemContent
+        items={treeItems}
+        onItemExpanded={toggleExpand}
+        onItemsSelected={toggleSelect}
+        toggleSelectChildren={toggleSelectChildren}
+        selectable={selectable}
+      />
+    </div>
   );
 };
 

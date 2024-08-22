@@ -91,7 +91,12 @@ describe('FeedbackForm', () => {
 
   test('should submit and disable button when clicked', async () => {
     // mock log messages api to return a promise that resolves after 3 seconds
-    avLogMessagesApiV2.info = jest.fn(() => new Promise((resolve) => setTimeout(resolve, 3000)));
+    avLogMessagesApiV2.info = jest.fn(
+      () =>
+        new Promise((resolve) => {
+          setTimeout(resolve, 3000);
+        })
+    );
     const { getByLabelText, getByText } = render(<FeedbackForm name="Payer Space" />);
 
     // Simulate the Click

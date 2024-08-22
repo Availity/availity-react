@@ -1,11 +1,14 @@
 {
-  "root": "packages/feedback",
+  "name": "@availity/feedback",
+  "$schema": "../../node_modules/nx/schemas/project-schema.json",
   "projectType": "library",
   "targets": {
     "test": {
       "executor": "@nx/jest:jest",
-      "outputs": ["coverage/feedback"],
-      "options": { "jestConfig": "packages/feedback/jest.config.js", "passWithNoTests": true }
+      "outputs": ["{workspaceRoot}/coverage/feedback"],
+      "options": {
+        "jestConfig": "packages/feedback/jest.config.js"
+      }
     },
     "version": {
       "executor": "@jscutlery/semver:version",
@@ -18,10 +21,9 @@
       }
     },
     "lint": {
-      "executor": "@nx/linter:eslint",
+      "executor": "@nx/eslint:lint",
       "options": {
         "eslintConfig": ".eslintrc.yaml",
-        "lintFilePatterns": ["packages/feedback/**/*.{js,ts}"],
         "silent": false,
         "fix": false,
         "cache": true,

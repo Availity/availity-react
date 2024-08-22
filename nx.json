@@ -1,14 +1,27 @@
 {
-  "extends": "@nx/workspace/presets/npm.json",
-  "npmScope": "availity",
-  "tasksRunnerOptions": {
-    "default": {
-      "runner": "nx/tasks-runners/default",
+  "targetDefaults": {
+    "build": {
+      "cache": true
+    },
+    "@nx/jest:jest": {
+      "cache": true,
+      "inputs": ["default", "^default", "{workspaceRoot}/jest.preset.js"],
       "options": {
-        "cacheableOperations": ["build", "test", "lint", "package", "prepare"]
+        "passWithNoTests": true
+      },
+      "configurations": {
+        "ci": {
+          "ci": true,
+          "codeCoverage": true
+        }
       }
+    },
+    "@nx/eslint:lint": {
+      "cache": true,
+      "inputs": ["default", "{workspaceRoot}/.eslintrc.yaml", "{workspaceRoot}/tools/eslint-rules/**/*"]
     }
   },
+  "extends": "@nx/workspace/presets/npm.json",
   "targetDependencies": {
     "build": [
       {
@@ -29,12 +42,11 @@
       }
     ]
   },
-  "affected": {
-    "defaultBase": "master"
-  },
   "pluginsConfig": {
     "@nx/js": {
       "analyzeSourceFiles": false
     }
-  }
+  },
+  "useInferencePlugins": false,
+  "defaultBase": "master"
 }

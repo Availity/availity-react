@@ -78,7 +78,7 @@ export const _Default: StoryObj<typeof ChangePassword> = {
       {
         message: 'Have 8 to 15 characters',
         passes: ({ newPassword, newPasswordTouched, submitted }) => {
-          if (new RegExp(/^.{8,15}$/).test(newPassword)) {
+          if (/^.{8,15}$/.test(newPassword)) {
             if (newPasswordTouched) return true;
             return null;
           }
@@ -89,7 +89,7 @@ export const _Default: StoryObj<typeof ChangePassword> = {
       {
         message: 'Have a number',
         passes: ({ newPassword, newPasswordTouched, submitted }) => {
-          if (new RegExp(/\d/).test(newPassword)) {
+          if (/\d/.test(newPassword)) {
             if (newPasswordTouched) return true;
             return null;
           }
@@ -100,7 +100,7 @@ export const _Default: StoryObj<typeof ChangePassword> = {
       {
         message: 'Have an uppercase letter',
         passes: ({ newPassword, newPasswordTouched, submitted }) => {
-          if (new RegExp('[A-Z]').test(newPassword)) {
+          if (/[A-Z]/.test(newPassword)) {
             if (newPasswordTouched) return true;
             return null;
           }
@@ -111,7 +111,7 @@ export const _Default: StoryObj<typeof ChangePassword> = {
       {
         message: 'Have a lowercase letter',
         passes: ({ newPassword, newPasswordTouched, submitted }) => {
-          if (new RegExp('[a-z]').test(newPassword)) {
+          if (/[a-z]/.test(newPassword)) {
             if (newPasswordTouched) return true;
             return null;
           }
@@ -122,7 +122,7 @@ export const _Default: StoryObj<typeof ChangePassword> = {
       {
         message: 'Have a special character',
         passes: ({ newPassword, newPasswordTouched, submitted }) => {
-          if (new RegExp(/[!"#$%&'()*+,./:;<=>?@[\\\]^_`{|}~-]/).test(newPassword)) {
+          if (/[!"#$%&'()*+,./:;<=>?@[\\\]^_`{|}~-]/.test(newPassword)) {
             if (newPasswordTouched) return true;
             return null;
           }
@@ -144,7 +144,7 @@ export const _Default: StoryObj<typeof ChangePassword> = {
       {
         message: 'Not contain spaces',
         passes: ({ newPassword, newPasswordTouched, submitted }) => {
-          if (new RegExp('^\\S*$').test(newPassword)) {
+          if (/^\S*$/.test(newPassword)) {
             if (newPasswordTouched) return true;
             return null;
           }

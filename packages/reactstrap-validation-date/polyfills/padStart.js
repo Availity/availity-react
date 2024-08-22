@@ -4,7 +4,7 @@ if (!String.prototype.padStart) {
   String.prototype.padStart = function padStart(targetLength, padString) {
     // eslint-disable-next-line no-bitwise
     targetLength >>= 0; // truncate if number, or convert non-number to 0;
-    padString = String(typeof padString !== 'undefined' ? padString : ' ');
+    padString = String(padString !== undefined ? padString : ' ');
     if (this.length >= targetLength) {
       return String(this);
       // eslint-disable-next-line no-else-return

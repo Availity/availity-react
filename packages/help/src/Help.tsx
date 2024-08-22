@@ -78,6 +78,7 @@ const HelpProvider = ({ children }: { children: React.ReactNode }): JSX.Element 
 
   return (
     <HelpContext.Provider
+      // eslint-disable-next-line react/jsx-no-constructed-context-values
       value={{
         addHelp,
         removeHelp,
@@ -116,6 +117,7 @@ export type HelpProps = {
 export const Help = ({ id, type = 'vendor', children }: HelpProps): JSX.Element => {
   useHelp({ type, id });
 
+  // eslint-disable-next-line react/jsx-no-useless-fragment
   return <>{children}</>;
 };
 

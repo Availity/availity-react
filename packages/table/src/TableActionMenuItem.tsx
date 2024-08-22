@@ -40,6 +40,7 @@ const TableActionMenuItem = <T extends IdType>({ id, action, record }: Props<T>)
       data-testid={`${id}_action_${action.id}`}
       {...setOnClickProps()}
     >
+      {/* eslint-disable-next-line react/jsx-no-useless-fragment */}
       <>{displayText}</>
     </DropdownItem>
   );

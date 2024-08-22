@@ -221,7 +221,7 @@ const ResourceSelect = ({
 
         let items = [];
         if (pageAll) {
-          items = resp.data ? resp.data : resp;
+          items = resp.data || resp;
           if (getResult)
             items = typeof getResult === 'function' ? await getResult.call(resource, items) : items[getResult];
         } else {

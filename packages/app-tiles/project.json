@@ -1,11 +1,14 @@
 {
-  "root": "packages/app-tiles",
+  "name": "@availity/app-tiles",
+  "$schema": "../../node_modules/nx/schemas/project-schema.json",
   "projectType": "library",
   "targets": {
     "test": {
       "executor": "@nx/jest:jest",
-      "outputs": ["coverage/app-tiles"],
-      "options": { "jestConfig": "packages/app-tiles/jest.config.js", "passWithNoTests": true }
+      "outputs": ["{workspaceRoot}/coverage/app-tiles"],
+      "options": {
+        "jestConfig": "packages/app-tiles/jest.config.js"
+      }
     },
     "version": {
       "executor": "@jscutlery/semver:version",
@@ -17,10 +20,9 @@
       }
     },
     "lint": {
-      "executor": "@nx/linter:eslint",
+      "executor": "@nx/eslint:lint",
       "options": {
         "eslintConfig": ".eslintrc.yaml",
-        "lintFilePatterns": ["packages/app-tiles/**/*.{js,ts}"],
         "silent": false,
         "fix": false,
         "cache": true,

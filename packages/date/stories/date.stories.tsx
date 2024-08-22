@@ -13,6 +13,7 @@ import DateRangeField, { DateRangeFieldProps } from '../src/DateRangeField';
 
 // import README from '../README.md';
 
+// eslint-disable-next-line import/no-relative-packages
 import FormikResults from '../../../story-utils/FormikResults';
 
 type Units = unitOfTime.DurationConstructor;
@@ -33,14 +34,6 @@ export default {
     required: true,
     placeholder: 'mm/dd/yyyy',
   },
-};
-
-type DateStoryProps = {
-  disabled: boolean;
-  min: string;
-  max: string;
-  required: boolean;
-  placeholder: string;
 };
 
 export const DateInput: StoryObj<typeof FormikDate> = {
@@ -104,15 +97,6 @@ export const _DateField: StoryObj<typeof FormikDate> = {
     label: 'Date Field',
   },
 };
-
-type DateRangeStoryProps = {
-  autoSync: boolean;
-  maxDistance: number;
-  maxDistanceUnits: Units;
-  minDistance: number;
-  minDistanceUnits: Units;
-  ranges: boolean;
-} & DateStoryProps;
 
 export const _DateRange: StoryObj<typeof FormikDate> = {
   render: ({
