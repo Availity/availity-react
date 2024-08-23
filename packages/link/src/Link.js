@@ -4,8 +4,10 @@ import classNames from 'classnames';
 import { isAbsoluteUrl } from '@availity/resolve-url';
 
 // if absolute or loadApp is disabled, return url. otherwise loadappify the url
-export const getUrl = (url = '', loadApp, absolute) => {
-  if (absolute || !loadApp) return url;
+export const getUrl = (url = '', loadApp = false, absolute = false) => {
+  const isEssentials = /(test|qa(p?)-)?essentials\.availity\.com/.test(url);
+
+  if ((absolute || !loadApp) && !isEssentials) return url;
 
   return `/public/apps/home/#!/loadApp?appUrl=${encodeURIComponent(url)}`;
 };
