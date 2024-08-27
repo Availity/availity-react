@@ -2,6 +2,15 @@
 
 This file was generated using [@jscutlery/semver](https://github.com/jscutlery/semver).
 
+# [2.6.0](https://github.com/Availity/availity-react/compare/@availity/link@2.5.6...@availity/link@2.6.0) (2024-08-27)
+
+
+### Features
+
+* **link:** update link to encode essentials urls ([#1458](https://github.com/Availity/availity-react/issues/1458)) ([29f64fd](https://github.com/Availity/availity-react/commit/29f64fd3491f4cf136dba21aef2b0c6970bd6dfe))
+
+
+
 ## [2.5.6](https://github.com/Availity/availity-react/compare/@availity/link@2.5.5...@availity/link@2.5.6) (2024-08-22)
 
 
