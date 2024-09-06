@@ -265,6 +265,37 @@ describe('Upload', () => {
     expect(mockFunc).toHaveBeenCalled();
   });
 
+  test('uses cloud url when isCloud is true', async () => {
+    const mockFn = jest.fn();
+    render(
+      <Form
+        initialValues={initialValues}
+        onSubmit={(values) => {
+          // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+          // @ts-ignore
+          mockFn(values.upload?.[0].options.endpoint);
+        }}
+      >
+        <Upload {...defaultUploadProps} isCloud />
+        <button type="submit">click</button>
+      </Form>
+    );
+
+    const file: UploadFile = Buffer.from('hello world');
+    file.name = 'fileName.png';
+    const fileEvent = { target: { files: [file] } };
+
+    const inputNode = screen.getByTestId('file-picker') as HTMLInputElement;
+    fireEvent.change(inputNode, fileEvent);
+
+    fireEvent.click(screen.getByText('click'));
+
+    expect(inputNode.files?.length).toBe(1);
+    await waitFor(() => {
+      expect(mockFn).toHaveBeenCalledWith('http://localhost/cloud/vault/upload/v1/resumable');
+    });
+  });
+
   describe('dropzone', () => {
     afterEach(() => {
       jest.resetModules();

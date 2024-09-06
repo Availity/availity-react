@@ -17,6 +17,8 @@ const Dropzone = React.lazy(() => import('react-dropzone'));
 
 const dropzoneFallback = <div data-testid="dropzone-fallback">Loading...</div>;
 
+const CLOUD_URL = '/cloud/vault/upload/v1/resumable';
+
 const Upload = ({
   allowedFileNameCharacters,
   allowedFileTypes,
@@ -45,6 +47,7 @@ const Upload = ({
   onFileUpload,
   showFileDrop = false,
   fallback = dropzoneFallback,
+  isCloud,
 }) => {
   const [field, metadata] = useField(name);
   const { errors, isSubmitting, isValidating, setFieldError, setFieldValue, setFieldTouched } = useFormikContext();
@@ -159,7 +162,7 @@ const Upload = ({
     const newFiles = [
       ...fieldValue,
       ...selectedFiles.map((file) => {
-        const upload = new UploadCore(file, {
+        const options = {
           bucketId,
           customerId,
           clientId,
@@ -167,7 +170,9 @@ const Upload = ({
           fileTypes: allowedFileTypes,
           maxSize,
           allowedFileNameCharacters,
-        });
+        };
+        if (isCloud) options.endpoint = CLOUD_URL;
+        const upload = new UploadCore(file, options);
         upload.id = `${upload.id}-${uuid()}`;
         if (file.dropRejectionMessage) {
           upload.errorMessage = file.dropRejectionMessage;
@@ -309,6 +314,8 @@ Upload.propTypes = {
   fileDeliveryMetadata: PropTypes.oneOfType([PropTypes.object, PropTypes.func]),
   /** Override the default error message for files rejected when showFileDrop is true. */
   getDropRejectionMessage: PropTypes.func,
+  /** Set if the component is being used in the cloud. This will override the URL being used. */
+  isCloud: PropTypes.bool,
   /** The maximum number of files allowed to be uploaded. 0 (or a falsey value) means unlimited. When the max number has been reached, the add button will disappear. */
   max: PropTypes.number,
   /** The maximum file size (in bytes) for a file to be uploaded. */

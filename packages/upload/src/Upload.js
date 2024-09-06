@@ -10,6 +10,8 @@ import FileList from './FileList';
 import '../styles.scss';
 
 const validationAttrs = ['min', 'max', 'required'];
+const CLOUD_URL = '/cloud/vault/upload/v1/resumable';
+
 class Upload extends Component {
   constructor(props) {
     super(props);
@@ -58,14 +60,20 @@ class Upload extends Component {
           onPreStart: this.props.onFilePreUpload ? this.props.onFilePreUpload : [],
           allowedFileNameCharacters: this.props.allowedFileNameCharacters,
         };
+
+        if (this.props.isCloud) options.endpoint = CLOUD_URL;
+
         const upload = new UploadCore(file, options);
         upload.id = `${upload.id}-${uuid()}`;
+
         if (file.dropRejectionMessage) {
           upload.errorMessage = file.dropRejectionMessage;
         } else {
           upload.start();
         }
+
         if (this.props.onFileUpload) this.props.onFileUpload(upload);
+
         return upload;
       })
     );
@@ -271,6 +279,8 @@ Upload.propTypes = {
   /** Override the default z-index for the password prompt modal. Useful for squashing IE11 bugs
    * by setting to auto if your upload component is already inside another modal. */
   passwordModalZIndex: PropTypes.oneOfType([PropTypes.number, PropTypes.string]),
+  /** Set if the component is being used in the cloud. This will override the URL being used. */
+  isCloud: PropTypes.bool,
 };
 
 Upload.defaultProps = {
