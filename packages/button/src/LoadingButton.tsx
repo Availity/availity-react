@@ -32,7 +32,7 @@ const LoadingButton = ({
     {...rest}
   >
     <BlockUi tag="div" blocking={isLoading} keepInView />
-    {!isLoading && <>{children}</>}
+    {!isLoading && children}
   </Button>
 );
 

@@ -47,6 +47,7 @@ const CurrencyInput = ({ name, onValueChanged, id, value, placeholder, disabled,
       maximumFractionDigits: 2,
     };
 
+    // eslint-disable-next-line unicorn/prefer-string-replace-all
     const decimalValue = number.toLocaleString(undefined, options).replace(/,/g, '');
     setFieldValue(name, decimalValue);
 

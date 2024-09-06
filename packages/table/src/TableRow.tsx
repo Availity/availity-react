@@ -92,6 +92,7 @@ const TableRow = <T extends IdType>({
   };
 
   const isFirstColumnSticky = columns[0].stickyLeft === true;
+  // eslint-disable-next-line unicorn/prefer-at
   const isLastColumnSticky = columns.slice(-1)[0].stickyRight === true;
 
   const numberOfNonStickyColumns = filter(columns, (c) => !(c.stickyRight || c.stickyLeft)).length;

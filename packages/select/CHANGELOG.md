@@ -2,6 +2,151 @@
 
 This file was generated using [@jscutlery/semver](https://github.com/jscutlery/semver).
 
+## [4.2.1](https://github.com/Availity/availity-react/compare/@availity/select@4.2.0...@availity/select@4.2.1) (2024-08-22)
+
+
+
+# 1.0.0 (2024-08-22)
+
+
+### Bug Fixes
+
+* clearable multiselects not getting cleared when clicking x on the value ([25f4e56](https://github.com/Availity/availity-react/commit/25f4e56718e40131f40fa9efd1d54ecbc8e87992))
+* coordinate accessible UI changes ([ee84d14](https://github.com/Availity/availity-react/commit/ee84d14412864943e626422e075071cd0571f783))
+* eslint issues ([bc4d8e9](https://github.com/Availity/availity-react/commit/bc4d8e9252a37c067de3e5b15e583c4a3c06d6c5))
+* **select,reactstrap-validation-select:** fixed select color to fix contrast issue with white text ([6e5bf3a](https://github.com/Availity/availity-react/commit/6e5bf3aa21446c17fc29548a177ac2ba75e85b07))
+* **select:** add getResult function to AvRegionSelect ([9ae580d](https://github.com/Availity/availity-react/commit/9ae580db51b94b6cf717624a4eebb2e8de4ee882))
+* **select:** add pageAll to ts ([72e3c24](https://github.com/Availity/availity-react/commit/72e3c240b01fd40f193664759463c41b200e4a67))
+* **select:** add paging info to patients query ([27269a7](https://github.com/Availity/availity-react/commit/27269a76c2b77bace3ebcfe59ea940c6c5f45a94))
+* **select:** add resource select types ([2cda8f4](https://github.com/Availity/availity-react/commit/2cda8f48459d12f8b272a4411ea044a810106b13))
+* **select:** add unique label to clear button ([00c05c1](https://github.com/Availity/availity-react/commit/00c05c1d8c8c6fd3aa8ae671fe44bc63580437ea))
+* **select:** allow fieldnames that use dot notation to be autofilled ([d89e10a](https://github.com/Availity/availity-react/commit/d89e10ade91e4d8b1da3c43ee6f1152cff6fc436))
+* **select:** allow pageAll to call getResult for addtl filtering ([b1cef12](https://github.com/Availity/availity-react/commit/b1cef12afd37cf24b6885c7fadb990b55e36dda7))
+* **select:** allow valueKey to work with ResourceSelect ([85c554d](https://github.com/Availity/availity-react/commit/85c554d6d5b519c5d9ec6342a6f5b074ae8520a9))
+* **select:** allowSelectAll account for null value ([3f47b7e](https://github.com/Availity/availity-react/commit/3f47b7e420407065c0491f8cb886178308223661))
+* **select:** changed menu item color to black ([8e42914](https://github.com/Availity/availity-react/commit/8e429144e90501ba4c9afbca78fa4a00d2e21fb8))
+* **select:** cleanup clear button and selectStyles ([f5fbeaa](https://github.com/Availity/availity-react/commit/f5fbeaab2717f3f11d08f1f34d882a59210e072b))
+* **select:** display selected option when raw is false ([3095ada](https://github.com/Availity/availity-react/commit/3095ada5e85b91f55a2c039722e872a7dcbdc777))
+* **select:** ensure cacheUniq is an array and rename to cacheUniqs ([0338c32](https://github.com/Availity/availity-react/commit/0338c322fed01c6a87aa07cfcb48d2913cfbafcf))
+* **select:** firefox grid bug ([851b9d3](https://github.com/Availity/availity-react/commit/851b9d30a6eca9c0488a87d878be7f275411ce4b))
+* **select:** fix incorrect limit/offset passed into query parameters ([1f46c5b](https://github.com/Availity/availity-react/commit/1f46c5bdf9aa56e979abaeedb1ed95dfff6ee061))
+* **select:** fix input component proptype ([fe5752a](https://github.com/Availity/availity-react/commit/fe5752acff50ea8fdae7495088bcc17346d4a716))
+* **select:** fix props as parameters not being used ([13c5ab5](https://github.com/Availity/availity-react/commit/13c5ab5a7df1bd038f96c0b2fa4643e890515cfa))
+* **select:** fix typedefs for all select components ([2334bce](https://github.com/Availity/availity-react/commit/2334bceeb48dbcf01b91c706e5f3049c8bf345a9))
+* **select:** fixed the contrast issues with the select options background and text color ([1ba87f5](https://github.com/Availity/availity-react/commit/1ba87f5a1b064ce43888547e87315761f1fdf1ef))
+* **select:** fixes additionalPostGetArgs object always being created, removes extra comma in docs ([4201222](https://github.com/Availity/availity-react/commit/4201222a5759767ec84970874d54b8be472993ee))
+* **select:** fixes case where validation messages do not appear due to inputId being different than name. Closes [#434](https://github.com/Availity/availity-react/issues/434) ([ea332fc](https://github.com/Availity/availity-react/commit/ea332fcb19bb37acbb558d6edda4c402b90e253c))
+* **select:** fixes error when cacheUniq isn't an array ([c3de0ce](https://github.com/Availity/availity-react/commit/c3de0ce6693221ca427919b244dd2ce01ab92181))
+* **select:** fixes multiple API calls on component mount ([fd45b4a](https://github.com/Availity/availity-react/commit/fd45b4a7dc558eb602b1e6702a5e0587a859e528))
+* **select:** fixes raw option being returned from getViewValue by doing a deep comparison ([27a6c8f](https://github.com/Availity/availity-react/commit/27a6c8fef7c943d1207b4e62195f09b3c0826a3d))
+* **select:** pass params to all and check pageAll resp for data ([1f32afe](https://github.com/Availity/availity-react/commit/1f32afe5086f5bbd7e500a0c7e00adf8201571e9))
+* **select:** pass ref as selectRef when using async component ([729630e](https://github.com/Availity/availity-react/commit/729630e478d5b953f87614af95c83755c5f1c3b6))
+* **select:** prevent values from being set to undefined ([393447d](https://github.com/Availity/availity-react/commit/393447d69cd03043cd049449d61630b28d66370b))
+* **select:** prevents the provided styles from react-select from being overridden by the styles applied in an error condition ([9ad49db](https://github.com/Availity/availity-react/commit/9ad49db37e8e8355a43df93cb46097af675a8642))
+* **select:** remove role and attributes from clear indicator ([b4eae57](https://github.com/Availity/availity-react/commit/b4eae5751967a1f85b9b0c6e0064086e50f13e56))
+* **select:** rename to pageAll ([83f9b39](https://github.com/Availity/availity-react/commit/83f9b3978c8e87270a1d1d3a495e728837e20e9b))
+* **select:** sanitize values when isMulti true ([f4aad12](https://github.com/Availity/availity-react/commit/f4aad12fd1a101f1ad2627d556e12e8ddf391018))
+* **select:** set field value to initial value on autofill when new value undefined ([19cda81](https://github.com/Availity/availity-react/commit/19cda8178e3e448c2d064f3c54823a92654e1d7e))
+* **select:** set new colors due to accessibility issue when error changes border and color ([40b0156](https://github.com/Availity/availity-react/commit/40b0156f41436bf4b293d44861127996e5b4489d))
+* **select:** update orgSelect ts ([391add7](https://github.com/Availity/availity-react/commit/391add716450be30c7410cf81d0ac6696511dbb7))
+* **select:** update typedef ([42f8cd3](https://github.com/Availity/availity-react/commit/42f8cd37b6cd4d1d38882988de73d4c82385ac4f))
+* **select:** updating react-select and adding aria-controls to input to fix 508 compliance issues EB-234 ([c32e9a4](https://github.com/Availity/availity-react/commit/c32e9a4335beac51208d05bf695112ee026c5415))
+* **select:** use label from availity/form ([77dc1a5](https://github.com/Availity/availity-react/commit/77dc1a5fc73f38531371a81ee464c3c64b55e514))
+* **select:** use valueKey when creating new options ([6d5c113](https://github.com/Availity/availity-react/commit/6d5c1133a397fc5ebeb09be1a412ee6972f16666))
+* **select:** use withAsyncPaginate instead of SelectComponent prop for creatable AsyncPaginate selects ([b45b0d4](https://github.com/Availity/availity-react/commit/b45b0d4a4a041c3d8c35939fc7e6494bd96cf5b8))
+* update proptype and typedef for helpMessage ([f61d0a1](https://github.com/Availity/availity-react/commit/f61d0a1c204900e55046262aa2f06056ce858c3b))
+* update test ([d897e3b](https://github.com/Availity/availity-react/commit/d897e3b35344f67ef9c63b95524c1527ab9aa090))
+* upgrade eslint-config-availity and fix the errors ([6da0423](https://github.com/Availity/availity-react/commit/6da0423ecfa72b426287fd62ad00445fefce024e))
+* upgrade yup and update sb stories ([68aeafe](https://github.com/Availity/availity-react/commit/68aeafe4fd7d90d7c88dbb24636ba7770fe87aa3))
+
+
+* feat(select)!: compile with tsup ([537ac57](https://github.com/Availity/availity-react/commit/537ac57812688dce41f02b575dda0fc281a3d958))
+* feat(select)!: upgrade react-select v3 to v5 and removed unneeded type import ([43bd83c](https://github.com/Availity/availity-react/commit/43bd83c837acaa9c3d844826bd150bcc7667b5af))
+
+
+### Features
+
+* add defaultToFirstOption for resource select ([5ea6c80](https://github.com/Availity/availity-react/commit/5ea6c80216319f1548299a51bfe083f002a44798))
+* add prop to allow inputValue to not be encoded ([9c598a8](https://github.com/Availity/availity-react/commit/9c598a8d4b69f3aebfc215a56f81501fa3451b58))
+* **docs:** updated to use yarn and added readmes ([3b94748](https://github.com/Availity/availity-react/commit/3b947487ef18c6e11486ad39203882a11bc8a1e7))
+* **form:** add currency input ([fa9eea6](https://github.com/Availity/availity-react/commit/fa9eea6a3b3dd2ef741a0658c102e36c6db5288c))
+* **form:** added logic for changing default help icon to video icon ([320e986](https://github.com/Availity/availity-react/commit/320e986af2898e1b7d840f6a983f8a8a066fc1d5))
+* move storybook, stories, and fix hmr ([2f65f71](https://github.com/Availity/availity-react/commit/2f65f71769d2d981e22700b87a09516833588f64))
+* rmv unused prop type SIH-1194 ([266928f](https://github.com/Availity/availity-react/commit/266928f2a3fa7e2c046e3d7a2ca0c416461a5af0))
+* **select:** add ability to configure clear button text and not have it hard-coded with a lower case c, as well as other select props ([8ca554a](https://github.com/Availity/availity-react/commit/8ca554a4bbc76600491bb57f89287efaf19450f1))
+* **select:** add ability to override searchTerm and fix default of method to POST ([7af25f0](https://github.com/Availity/availity-react/commit/7af25f07162c9d725ea2c394eb95b40958e680db))
+* **select:** add ability to waitUntilFocused to loadOptions ([d975506](https://github.com/Availity/availity-react/commit/d97550667aa8d6823327417c60028fc0312f1599))
+* **select:** add additionalPostGetArgs to ResourceSelect, revert AvOrganizationSelect ([2529885](https://github.com/Availity/availity-react/commit/2529885bc6a7e3083e9663ea5c86706d32dc8314))
+* **select:** add allowSelectAll option when isMulti is true ([21953a9](https://github.com/Availity/availity-react/commit/21953a91e631291f470daf7f256a016934936ae2))
+* **select:** add aria-hidden='false' for individual clear indicator ([ae17081](https://github.com/Availity/availity-react/commit/ae17081e143210beaa8eef42456cd8ec2def6863))
+* **select:** add autofill prop ([37d3fba](https://github.com/Availity/availity-react/commit/37d3fba66e4020a34b628eda0bac3da4fa35ccf3))
+* **select:** add back unit test for extended payers api all call ([0d4a8cf](https://github.com/Availity/availity-react/commit/0d4a8cf27a184f31517b495a3b3e9faa96f0c708))
+* **select:** add custom select for payers through extended-payers api ([22eda92](https://github.com/Availity/availity-react/commit/22eda92850a870047bb5ab3df1a4b62297b392cb))
+* **select:** add defaultToCurrentRegion prop to AvRegionSelect ([d7ec17e](https://github.com/Availity/availity-react/commit/d7ec17e231e3b20f0a98edbb6e6ddfaf6a1ddabd))
+* **select:** add defaultToOnlyOption and defaultToFirstOption for normal Selects ([7fbccbb](https://github.com/Availity/availity-react/commit/7fbccbb6e8211bc2fa3fb31d101877736f7c85eb))
+* **select:** add defaultToOnlyOption prop ([a39d7de](https://github.com/Availity/availity-react/commit/a39d7de018437c51f41b3e3373af41d45db3c760))
+* **select:** add docs, reset typescript file ([9f875a2](https://github.com/Availity/availity-react/commit/9f875a283f0966bbbb79396b92b77287d81f976e))
+* **select:** add filteredOrganizations api to AvOrganizationSelect ([5a13594](https://github.com/Availity/availity-react/commit/5a135946c04c5aa0fdeaf90f5d979e78480eaee4))
+* **select:** add helpMessage prop ([68014af](https://github.com/Availity/availity-react/commit/68014afc0bcb6b082ff6042c8880655fe31ada1d))
+* **select:** add label component with required asterisk ([ee4913c](https://github.com/Availity/availity-react/commit/ee4913c42813e19eb45bcf97fd14c307b831c5f3))
+* **select:** add minCharsToSearch prop ([4a7e7fa](https://github.com/Availity/availity-react/commit/4a7e7fa5ed266dc0e006ccccd2102aff340dcc36))
+* **select:** add onError prop for api errors ([eadc10e](https://github.com/Availity/availity-react/commit/eadc10efb0c9a67071656f2c0b1b8a556cad281e))
+* **select:** add pageAllSearchBy and add to regionSelect ([f72a83c](https://github.com/Availity/availity-react/commit/f72a83c30ed88b10edf8865f7e5d296c66369359))
+* **select:** add pageAllSearchBy to tst ([9377f80](https://github.com/Availity/availity-react/commit/9377f807dab720e85391f5616294068b802b14c8))
+* **select:** add patient dropdown ([4f8d67c](https://github.com/Availity/availity-react/commit/4f8d67cbdb8a934c847b2bd4a1005eb6c642f15a))
+* **select:** add permissionsIds to organizationSelect postGetArgs ([28ea098](https://github.com/Availity/availity-react/commit/28ea098a6c6985dcad58a0c0330f35ef45025cef))
+* **select:** add placeholder prop ([0f115fc](https://github.com/Availity/availity-react/commit/0f115fc01d812ab65ff1458ed4f3a66684188f39))
+* **select:** add shouldFilterByAllOptions param for client side filtering on regions ([fc58730](https://github.com/Availity/availity-react/commit/fc587300f4e0f27013d337c85ad4c3211df23d45))
+* **select:** add shouldSearch prop ([9f49099](https://github.com/Availity/availity-react/commit/9f490992f4d32a514a95d10367ebd072f963eb8d))
+* **select:** add support for the resource select to call regular (get) query instead of forcing it to be a postget to fix significant performance issues ([21b9312](https://github.com/Availity/availity-react/commit/21b9312672f82db696a01e6f499cda082eb55e11))
+* **select:** add test, apply searchTerm for graph ql stuff too ([725bd64](https://github.com/Availity/availity-react/commit/725bd64a877b63e56bae82af495ffc9e890cf7f4))
+* **select:** add ts props to orgSelect ([c2f44ba](https://github.com/Availity/availity-react/commit/c2f44baedabf190aae37804365f53b2c96552278))
+* **select:** add waitUntilFocused prop ([4d70c12](https://github.com/Availity/availity-react/commit/4d70c12bd10dea36cd2ed9333555661f1514b735))
+* **select:** added role and aria attributes to clear indicator of select ([f2feca8](https://github.com/Availity/availity-react/commit/f2feca8c08e6b6a46daa2dc9dc7b018571c8db3d))
+* **select:** added role and aria attributes to clear indicator of select ([8de0038](https://github.com/Availity/availity-react/commit/8de003825d3049f07ec25a8fc8decbfc3a357323))
+* **select:** added select package using formik ([770d9c1](https://github.com/Availity/availity-react/commit/770d9c10b169ec8cd4a2a6aeed5ade488319c26c))
+* **select:** allow components override ([3db073d](https://github.com/Availity/availity-react/commit/3db073dc3b3dd3532b60f809ed349a61e14ab17f))
+* **select:** allow numbers for org select ([035b735](https://github.com/Availity/availity-react/commit/035b73590a5e5964786fc2f95b328fc146755876))
+* **select:** associate help and error messages to input ([5e042c6](https://github.com/Availity/availity-react/commit/5e042c600887a2aa7fd82c3d3f245c63666464a0))
+* **select:** creating a resource select directly instead of making payer select to avoid null defaultconfig issues ([f81a1f6](https://github.com/Availity/availity-react/commit/f81a1f6622cc4fc8fc0bbfebfa46d20e788b0e54))
+* **select:** fix lint errors ([1f0f8b3](https://github.com/Availity/availity-react/commit/1f0f8b3aad77d2bf30b44d6837159a129747d063))
+* **select:** getResult to respect async functions ([4eea613](https://github.com/Availity/availity-react/commit/4eea613107c74a0d26161e5351dbf57da2726581))
+* **select:** handle AutoFillType function values ([c9d5540](https://github.com/Availity/availity-react/commit/c9d55405437478e03f4275200da1c26a20d086fa))
+* **select:** keep permissionId param in doc organizationSelect, undefined check ([07764f1](https://github.com/Availity/availity-react/commit/07764f1393f8ad0a7c0b64f7817c98318595fa13))
+* **select:** make disabled state match availity/form components and 508 compliant ([c4e8b25](https://github.com/Availity/availity-react/commit/c4e8b25f3dddaaf5ce5850340fa86a171203ebb6))
+* **select:** move clear field button to outside of field, allow aria-required, export styling fix [#933](https://github.com/Availity/availity-react/issues/933) ([d2b82f2](https://github.com/Availity/availity-react/commit/d2b82f2d6a9112191524a35e0abc2d006d28553b))
+* **select:** properly use all call instead of postGet ([42f8350](https://github.com/Availity/availity-react/commit/42f83503736aa5cc0597bf1ced584a768adcebf3))
+* **select:** pull field help icon out of label element ([e2ead22](https://github.com/Availity/availity-react/commit/e2ead22326ec5863755398d9b3f68b78c14345c1))
+* **select:** remove console statement ([46d4d9d](https://github.com/Availity/availity-react/commit/46d4d9d1870c18ae98bacda3325fa32db040d2da))
+* **select:** remove redundant select unit test and update documentation ([40d6f90](https://github.com/Availity/availity-react/commit/40d6f90ef7b9777d9ea86cbd7571bf6d1e595240))
+* **select:** rename error variable ([f1e74f8](https://github.com/Availity/availity-react/commit/f1e74f8cffeaf232b7df85fdc6e2b7385f436d6d))
+* **select:** rename error variable ([ed50160](https://github.com/Availity/availity-react/commit/ed50160fc5523b4fd4badfcf04d8f10f7491155e))
+* **select:** run prettier ([00c10e3](https://github.com/Availity/availity-react/commit/00c10e3e07cc5993859cf5714cdefbf19bc68c90))
+* **select:** update disabling of clear button to be the default behavior ([412fe9b](https://github.com/Availity/availity-react/commit/412fe9b03419449b8959d40529a30f3b1e591781))
+* **select:** update documentation and wording ([e79cba0](https://github.com/Availity/availity-react/commit/e79cba0e4904093c1c004864b13750691f37545e))
+* **select:** upgrade react-select-async-paginate to latest ([ec4b380](https://github.com/Availity/availity-react/commit/ec4b380284594255b346b20943e3e969a17b4bd5))
+* upgrade deps ([eccefc0](https://github.com/Availity/availity-react/commit/eccefc0549ebd5057595f6ac696642789375f48a))
+* use distinct id as name and add proptypes ([a4b1de2](https://github.com/Availity/availity-react/commit/a4b1de29709d5658aba53674123b4bed4b9d0789))
+* used innerProps to add role, name and state to field options SIH-1194 ([d67a6c0](https://github.com/Availity/availity-react/commit/d67a6c08ec3c8e904c8d113fee2bdadca421aac1))
+* used innerProps to add role, name and state to field options SIH-1194 ([61bbaea](https://github.com/Availity/availity-react/commit/61bbaeaa1934b2a9837a709f56c9751a5f2c5a3b))
+* used innerProps to add role, name and state to field options SIH-1194 ([2ac2233](https://github.com/Availity/availity-react/commit/2ac223320c844c5b6767fb80f8e816e50a8a1987))
+
+
+### Reverts
+
+* Revert "test(select): onError test" ([972a58c](https://github.com/Availity/availity-react/commit/972a58c44aaf76666bee74fe77837668ce4b5ba1))
+
+
+### BREAKING CHANGES
+
+* axios v1 is now required
+* import resources from the root file instead of @availity/select/resources
+* **select:** Requires v1.1.0 of form for label component
+* upgraded to version 5 of react-select
+feat(select): added new yarn.lock
+
+
+
 # [4.2.0](https://github.com/Availity/availity-react/compare/@availity/select@4.1.2...@availity/select@4.2.0) (2024-05-03)
 
 

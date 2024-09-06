@@ -2,6 +2,29 @@
 
 This file was generated using [@jscutlery/semver](https://github.com/jscutlery/semver).
 
+## [1.5.7](https://github.com/Availity/availity-react/compare/@availity/analytics@1.5.6...@availity/analytics@1.5.7) (2024-08-22)
+
+
+
+# 0.1.0 (2024-08-22)
+
+
+### Bug Fixes
+
+* **analytics:** makes init funciton optional for plugins ([baf8e02](https://github.com/Availity/availity-react/commit/baf8e023cfa4f12596e041ef84653f7828435a6f))
+* **analytics:** vbump @availity/analytics-core ([ed5cb47](https://github.com/Availity/availity-react/commit/ed5cb473b3aea7752ac8d31fbff19ba2b2358d9b))
+
+
+### Features
+
+* **analytics:** added analytics package ([10b4fb3](https://github.com/Availity/availity-react/commit/10b4fb39b05c0191e51c56e0ddee56cfc46bcd54))
+* **analytics:** switch from useRef to useMemo and add to story ([3c9b737](https://github.com/Availity/availity-react/commit/3c9b73799a0e7f20aa521f5a48faa33c772ffa3e))
+* **analytics:** updating analytics component react and ts ([02d717f](https://github.com/Availity/availity-react/commit/02d717f1ccd6cb77791a677635914ad05c48672a))
+* **form:** add currency input ([fa9eea6](https://github.com/Availity/availity-react/commit/fa9eea6a3b3dd2ef741a0658c102e36c6db5288c))
+* move storybook, stories, and fix hmr ([2f65f71](https://github.com/Availity/availity-react/commit/2f65f71769d2d981e22700b87a09516833588f64))
+
+
+
 ## [1.5.6](https://github.com/Availity/availity-react/compare/@availity/analytics@1.5.5...@availity/analytics@1.5.6) (2024-03-18)
 
 

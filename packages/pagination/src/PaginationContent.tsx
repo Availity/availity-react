@@ -57,6 +57,7 @@ const PaginationContent = <TItem extends Record<string, unknown>>({
           }
 
           if (indexOfItemToReference === index) {
+            // eslint-disable-next-line react/no-unstable-nested-components
             const ComponentWithRef = React.forwardRef<HTMLSpanElement>((props, innerRef) => (
               <>
                 <span className="sr-only" ref={innerRef} />

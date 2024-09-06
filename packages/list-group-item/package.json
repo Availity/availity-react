@@ -1,6 +1,6 @@
 {
   "name": "@availity/list-group-item",
-  "version": "1.4.5",
+  "version": "1.4.6",
   "description": "List Group Item with some Availity flair",
   "keywords": [
     "react",
@@ -28,8 +28,8 @@
     "prop-types": "^15.8.1"
   },
   "devDependencies": {
-    "react": "^18.2.0",
-    "react-dom": "^18.2.0",
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1",
     "reactstrap": "^8.10.1"
   },
   "peerDependencies": {

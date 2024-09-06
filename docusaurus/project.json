@@ -1,5 +1,6 @@
 {
-  "root": "docusaurus",
+  "name": "@availity/dinosaurdocs",
+  "$schema": "../node_modules/nx/schemas/project-schema.json",
   "projectType": "application",
   "targets": {
     "version": {
@@ -7,15 +8,14 @@
       "options": {
         "preset": "angular",
         "commitMessageFormat": "chore({projectName}): release version ${version} [skip ci]",
-        "tagPrefix": "@availity/{projectName}@",
+        "tagPrefix": "{projectName}@",
         "baseBranch": "master"
       }
     },
     "lint": {
-      "executor": "@nx/linter:eslint",
+      "executor": "@nx/eslint:lint",
       "options": {
         "eslintConfig": ".eslintrc.yaml",
-        "lintFilePatterns": ["docusaurus/**/*.{js,ts}"],
         "silent": false,
         "fix": false,
         "cache": true,

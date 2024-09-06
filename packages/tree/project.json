@@ -1,27 +1,29 @@
 {
-  "root": "packages/tree",
+  "name": "@availity/tree",
+  "$schema": "../../node_modules/nx/schemas/project-schema.json",
   "projectType": "library",
   "targets": {
     "test": {
       "executor": "@nx/jest:jest",
-      "outputs": ["coverage/tree"],
-      "options": { "jestConfig": "packages/tree/jest.config.js", "passWithNoTests": true }
+      "outputs": ["{workspaceRoot}/coverage/tree"],
+      "options": {
+        "jestConfig": "packages/tree/jest.config.js"
+      }
     },
     "version": {
       "executor": "@jscutlery/semver:version",
       "options": {
         "preset": "angular",
         "commitMessageFormat": "chore({projectName}): release version ${version} [skip ci]",
-        "tagPrefix": "@availity/{projectName}@",
+        "tagPrefix": "{projectName}@",
         "baseBranch": "master",
         "trackDeps": true
       }
     },
     "lint": {
-      "executor": "@nx/linter:eslint",
+      "executor": "@nx/eslint:lint",
       "options": {
         "eslintConfig": ".eslintrc.yaml",
-        "lintFilePatterns": ["packages/tree/**/*.{js,ts}"],
         "silent": false,
         "fix": false,
         "cache": true,

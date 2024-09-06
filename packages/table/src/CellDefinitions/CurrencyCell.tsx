@@ -10,7 +10,7 @@ type CellProps<T extends IdType> = {
 
 export interface CurrencyCellConfig {
   currency?: string;
-  style?: string;
+  style?: 'decimal' | 'currency' | 'percent' | 'unit';
   defaultValue?: string | React.ReactChild | React.ElementType;
   locales?: string;
   displayTooltip?: boolean;
@@ -43,6 +43,7 @@ const CurrencyCell = <T extends IdType>({
     return formattedValue !== defaultValue ? (
       <>
         <span id={`currency-cell-${row.id}-${column.id}`}>
+          {/* eslint-disable-next-line react/jsx-no-useless-fragment */}
           <>{formattedValue}</>
         </span>
         {displayTooltip && typeof formattedValue === 'string' && (
@@ -58,6 +59,7 @@ const CurrencyCell = <T extends IdType>({
         )}
       </>
     ) : (
+      // eslint-disable-next-line react/jsx-no-useless-fragment
       <>{defaultValue}</>
     );
   };

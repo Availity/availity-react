@@ -35,11 +35,7 @@ const IndeterminateCheckbox = React.forwardRef(
       }
     }, [combinedRef, indeterminate]);
 
-    return (
-      <>
-        <input type="checkbox" ref={combinedRef} {...rest} />
-      </>
-    );
+    return <input type="checkbox" ref={combinedRef} {...rest} />;
   }
 );
 

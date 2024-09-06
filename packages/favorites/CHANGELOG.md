@@ -2,6 +2,88 @@
 
 This file was generated using [@jscutlery/semver](https://github.com/jscutlery/semver).
 
+## [5.0.7](https://github.com/Availity/availity-react/compare/@availity/favorites@5.0.6...@availity/favorites@5.0.7) (2024-08-22)
+
+### Dependency Updates
+
+* `@availity/hooks` updated to version `5.0.6`
+
+
+# 1.0.0 (2024-08-22)
+
+### Dependency Updates
+
+* `@availity/hooks` updated to version `1.0.0`
+
+### Bug Fixes
+
+* eslint issues ([bc4d8e9](https://github.com/Availity/availity-react/commit/bc4d8e9252a37c067de3e5b15e583c4a3c06d6c5))
+* **favorites:** add message-core subscription for `av:favorites:update` ([55db901](https://github.com/Availity/availity-react/commit/55db90132a2713bea0815d739b645ba52d8d9ed9))
+* **favorites:** disable lint rule ([e328b64](https://github.com/Availity/availity-react/commit/e328b648283edfd495eadb55661b6f3988e1fe3a))
+* **favorites:** fix favorites sent in avMessage when favorites deleted ([4feacef](https://github.com/Availity/availity-react/commit/4feacef50ac72fe57acb822a947c8a4f7bed12f0))
+* **favorites:** fix favorites structure in sendUpdate postMessage ([3094d47](https://github.com/Availity/availity-react/commit/3094d4735394c623a75adddf51c03eec9847fbb6))
+* **favorites:** fix flaky test ([63a3756](https://github.com/Availity/availity-react/commit/63a3756e559f17943ecefce3e127fb9dd0451160))
+* **favorites:** fix logic determining max favorite ([4ce16cd](https://github.com/Availity/availity-react/commit/4ce16cd8d114e78a5a0a18b1ee7a71af6c8c9505))
+* **favorites:** fix tests for recieving postMessages from elsewhere ([bf58f1a](https://github.com/Availity/availity-react/commit/bf58f1aeec3c5e70a2e8a25eec036edb52f36a98))
+* **favorites:** fixed focus event ([7c67fe5](https://github.com/Availity/availity-react/commit/7c67fe59ddb1a107c8714cc7c71a742cdb7f7c09))
+* **favorites:** remove console.log from test ([32d6904](https://github.com/Availity/availity-react/commit/32d6904d6bb957fdc2a9c3d7518c40a46dfab830))
+* **favorites:** restore default export ([4b334ae](https://github.com/Availity/availity-react/commit/4b334ae9b987bbce6c9a6c73b7a5281fdb4e11af))
+* **favorites:** send post message to window.parent when favorite added ([b7448e4](https://github.com/Availity/availity-react/commit/b7448e4456856b264fab3f6b3e4c95a8d8f69d7d))
+* **favorites:** set favorites to an empty array rather than undefined ([2ee2249](https://github.com/Availity/availity-react/commit/2ee2249b3d91f4df3eb245358bd46d692c298d76))
+* **favorites:** subscribe to favorites update ([2cf65b9](https://github.com/Availity/availity-react/commit/2cf65b9d7c5775607363736a5bbb6dedfdbbc584))
+* update message-core ([9a53067](https://github.com/Availity/availity-react/commit/9a530678e73c22616598ab07fedd360f991773eb))
+* update test ([4200f28](https://github.com/Availity/availity-react/commit/4200f28e11bfbfcc37121b4f1776669ec907110e))
+
+
+### Code Refactoring
+
+* **favorites:** made api resources peer dep ([0ddf6ec](https://github.com/Availity/availity-react/commit/0ddf6ec819318b15d82378c7beed62db7db617a7))
+
+
+* refactor(favorites)!: remove bootstrap, add react-query, rewrite to TypeScript ([eebe86b](https://github.com/Availity/availity-react/commit/eebe86b450024b57f73bac8f45219b9803fe8651))
+
+
+### Features
+
+* **docs:** updated to use yarn and added readmes ([3b94748](https://github.com/Availity/availity-react/commit/3b947487ef18c6e11486ad39203882a11bc8a1e7))
+* **favorites:** accessibility label tests ([9d66b7e](https://github.com/Availity/availity-react/commit/9d66b7eb73cae08550d4ae0787e3b10dbe112a1a))
+* **favorites:** accessibility updates ([37135f4](https://github.com/Availity/availity-react/commit/37135f48e7d9d57f06a339bb921525b67fa53937))
+* **favorites:** add `disabled` prop to heart ([fb42164](https://github.com/Availity/availity-react/commit/fb42164ac413676e8c3e35484566fca0cb46a70d))
+* **favorites:** add `onFavoritesChange` prop to provider ([b7984e0](https://github.com/Availity/availity-react/commit/b7984e05cac41da672410707c6ef4050aecb2e59))
+* **favorites:** add `size` prop to heart ([5057bcf](https://github.com/Availity/availity-react/commit/5057bcfcc9af7df0e0e79370bc6e8a8e8a04da93))
+* **favorites:** add test for `disabled` prop ([93031cb](https://github.com/Availity/availity-react/commit/93031cb07c0634023af1eb984dd3ccc917aa866d))
+* **favorites:** added export for context ([1e7df28](https://github.com/Availity/availity-react/commit/1e7df28bf3d805462070dfcef91ec8112288ed0d))
+* **favorites:** added remove content for tooltip and refactored tests to fix order bug and improve tests ([e58b5a0](https://github.com/Availity/availity-react/commit/e58b5a0026b406656f1e036534ae9a155a5665f8))
+* **favorites:** improved accessibility for loading state ([9038803](https://github.com/Availity/availity-react/commit/90388033f095f312d0ea8e2ca124bb875cb54c6c))
+* **favorites:** initial refactor removing bootstrap PF-2802 ([f05a093](https://github.com/Availity/availity-react/commit/f05a0939c596ceb82d2c6849b87e9aea92306d21))
+* **favorites:** remove logging ([3c8de83](https://github.com/Availity/availity-react/commit/3c8de8315eb0906ba7076397e89a92a35dd1fbda))
+* **favorites:** upgrade react query to v4 ([69a9230](https://github.com/Availity/availity-react/commit/69a9230de6deb8ce3fb59dd6d38bfcd83bfd5e82))
+* **form:** add currency input ([fa9eea6](https://github.com/Availity/availity-react/commit/fa9eea6a3b3dd2ef741a0658c102e36c6db5288c))
+* move storybook, stories, and fix hmr ([2f65f71](https://github.com/Availity/availity-react/commit/2f65f71769d2d981e22700b87a09516833588f64))
+* upgrade deps ([eccefc0](https://github.com/Availity/availity-react/commit/eccefc0549ebd5057595f6ac696642789375f48a))
+
+
+### BREAKING CHANGES
+
+* **favorites:** react query has been upgraded to v4. you must upgrade
+to @tanstack/react-query@^4.36.1 in order to use this package now
+* axios v1 is now required
+* Adds react-query v3 as a peer dependency
+* Requires all components to be used inside react-query's QueryClientProvider
+* No longer requires availity-uikit or any other Bootstrap dependent
+* **favorites:** api-axios api-core and axios are peer deps now
+
+
+
+## [5.0.6](https://github.com/Availity/availity-react/compare/@availity/favorites@5.0.5...@availity/favorites@5.0.6) (2024-08-14)
+
+
+### Bug Fixes
+
+* update message-core ([9a53067](https://github.com/Availity/availity-react/commit/9a530678e73c22616598ab07fedd360f991773eb))
+
+
+
 ## [5.0.5](https://github.com/Availity/availity-react/compare/@availity/favorites@5.0.4...@availity/favorites@5.0.5) (2024-05-31)
 
 

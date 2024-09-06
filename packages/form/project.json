@@ -1,27 +1,29 @@
 {
-  "root": "packages/form",
+  "name": "@availity/form",
+  "$schema": "../../node_modules/nx/schemas/project-schema.json",
   "projectType": "library",
   "targets": {
     "test": {
       "executor": "@nx/jest:jest",
-      "outputs": ["coverage/form"],
-      "options": { "jestConfig": "packages/form/jest.config.js", "passWithNoTests": true }
+      "outputs": ["{workspaceRoot}/coverage/form"],
+      "options": {
+        "jestConfig": "packages/form/jest.config.js"
+      }
     },
     "version": {
       "executor": "@jscutlery/semver:version",
       "options": {
         "preset": "angular",
         "commitMessageFormat": "chore({projectName}): release version ${version} [skip ci]",
-        "tagPrefix": "@availity/{projectName}@",
+        "tagPrefix": "{projectName}@",
         "baseBranch": "master",
         "trackDeps": true
       }
     },
     "lint": {
-      "executor": "@nx/linter:eslint",
+      "executor": "@nx/eslint:lint",
       "options": {
         "eslintConfig": ".eslintrc.yaml",
-        "lintFilePatterns": ["packages/form/**/*.{js,ts}"],
         "silent": false,
         "fix": false,
         "cache": true,

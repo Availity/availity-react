@@ -10,6 +10,7 @@ type Props = {
 const ScrollableContainer = ({ id, children, ...rest }: Props): JSX.Element => (
   <div id={id} className="av-scrollable-table-wrapper" {...rest}>
     {Array.isArray(children) &&
+      // eslint-disable-next-line react/no-array-index-key
       children.map((child, index) => cloneElement(child, { scrollable: 'true', key: index.toString() }))}
 
     {/* eslint-disable-next-line @typescript-eslint/ban-ts-comment */}

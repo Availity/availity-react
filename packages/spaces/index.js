@@ -1,13 +1,4 @@
-import Spaces, { useSpaces, useSpacesContext, SpacesContext } from './src/Spaces';
-import SpacesAgreement from './src/SpacesAgreement';
-import SpacesDisclaimer from './src/SpacesDisclaimer';
-import SpacesGhostText from './src/SpacesGhostText';
-import SpacesIcon from './src/SpacesIcon';
 import SpacesImage from './src/SpacesImage';
-import SpacesLink from './src/SpacesLink';
-import useLink from './src/useLink';
-import { openLink, openLinkWithSso } from './src/linkHandlers';
-import { normalizeSpaces, updateTopApps } from './src/helpers';
 
 const SpacesLogo = SpacesImage.create({
   imageType: 'images.logo',
@@ -21,24 +12,15 @@ const SpacesBillboard = SpacesImage.create({
   imageType: 'images.billboard',
 });
 
-export default Spaces;
+export { SpacesBillboard, SpacesLogo, SpacesTile };
 
-export {
-  normalizeSpaces,
-  SpacesAgreement,
-  SpacesBillboard,
-  SpacesContext,
-  SpacesDisclaimer,
-  SpacesGhostText,
-  SpacesIcon,
-  SpacesImage,
-  SpacesLink,
-  SpacesLogo,
-  SpacesTile,
-  useLink,
-  useSpaces,
-  useSpacesContext,
-  openLink,
-  openLinkWithSso,
-  updateTopApps,
-};
+export { default, SpacesContext, useSpaces, useSpacesContext } from './src/Spaces';
+export { normalizeSpaces, updateTopApps } from './src/helpers';
+export { default as SpacesAgreement } from './src/SpacesAgreement';
+export { default as SpacesDisclaimer } from './src/SpacesDisclaimer';
+export { default as SpacesGhostText } from './src/SpacesGhostText';
+export { default as SpacesIcon } from './src/SpacesIcon';
+export { default as SpacesImage } from './src/SpacesImage';
+export { default as SpacesLink } from './src/SpacesLink';
+export { default as useLink } from './src/useLink';
+export { openLink, openLinkWithSso } from './src/linkHandlers';

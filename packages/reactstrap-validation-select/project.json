@@ -1,26 +1,28 @@
 {
-  "root": "packages/reactstrap-validation-select",
+  "name": "@availity/reactstrap-validation-select",
+  "$schema": "../../node_modules/nx/schemas/project-schema.json",
   "projectType": "library",
   "targets": {
     "test": {
       "executor": "@nx/jest:jest",
-      "outputs": ["coverage/reactstrap-validation-select"],
-      "options": { "jestConfig": "packages/reactstrap-validation-select/jest.config.js", "passWithNoTests": true }
+      "outputs": ["{workspaceRoot}/coverage/reactstrap-validation-select"],
+      "options": {
+        "jestConfig": "packages/reactstrap-validation-select/jest.config.js"
+      }
     },
     "version": {
       "executor": "@jscutlery/semver:version",
       "options": {
         "preset": "angular",
         "commitMessageFormat": "chore({projectName}): release version ${version} [skip ci]",
-        "tagPrefix": "@availity/{projectName}@",
+        "tagPrefix": "{projectName}@",
         "baseBranch": "master"
       }
     },
     "lint": {
-      "executor": "@nx/linter:eslint",
+      "executor": "@nx/eslint:lint",
       "options": {
         "eslintConfig": ".eslintrc.yaml",
-        "lintFilePatterns": ["packages/reactstrap-validation-select/**/*.{js,ts}"],
         "silent": false,
         "fix": false,
         "cache": true,

@@ -1,6 +1,6 @@
 {
   "name": "@availity/select",
-  "version": "4.2.0",
+  "version": "4.2.1",
   "description": "Wrapper for react-select to work with formik",
   "keywords": [
     "availity",
@@ -31,29 +31,29 @@
     "publish:canary": "yarn npm publish --access public --tag canary"
   },
   "dependencies": {
-    "classnames": "^2.3.2",
+    "classnames": "^2.5.1",
     "lodash": "^4.17.21",
     "prop-types": "^15.8.1",
-    "qs": "^6.11.2",
-    "react-select": "^5.7.4",
+    "qs": "^6.13.0",
+    "react-select": "^5.8.0",
     "react-select-async-paginate": "^0.6.2"
   },
   "devDependencies": {
-    "@availity/api-axios": "^8.0.7",
+    "@availity/api-axios": "^9.0.0",
     "@availity/form": "workspace:*",
-    "axios": "^1.6.7",
-    "formik": "^2.4.4",
-    "react": "^18.2.0",
-    "react-dom": "^18.2.0",
+    "axios": "^1.7.4",
+    "formik": "^2.4.6",
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1",
     "reactstrap": "^8.10.1",
-    "tsup": "^7.2.0",
-    "typescript": "^5.3.3",
+    "tsup": "^8.2.4",
+    "typescript": "^5.5.4",
     "yup": "^0.32.11"
   },
   "peerDependencies": {
     "@availity/api-axios": "^8.0.0",
     "@availity/form": "^1.1.0",
-    "axios": "^1.0.0",
+    "axios": "^1.7.4",
     "formik": "^2.0.1",
     "react": ">=16.8.3",
     "reactstrap": "^8.0.0"

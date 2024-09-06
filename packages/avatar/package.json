@@ -1,6 +1,6 @@
 {
   "name": "@availity/avatar",
-  "version": "1.0.4",
+  "version": "1.0.5",
   "description": "Availity User avatar component",
   "keywords": [
     "react",
@@ -32,14 +32,14 @@
     "react-loading-skeleton": "^2.2.0"
   },
   "devDependencies": {
-    "@availity/api-axios": "^8.0.7",
-    "axios": "^1.6.7",
-    "react": "^18.2.0",
-    "react-dom": "^18.2.0"
+    "@availity/api-axios": "^9.0.0",
+    "axios": "^1.7.4",
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1"
   },
   "peerDependencies": {
     "@availity/api-axios": "^8.0.0",
-    "axios": "^1.0.0",
+    "axios": "^1.7.4",
     "react": ">=16.8.0"
   },
   "publishConfig": {

@@ -212,6 +212,7 @@ function Pagination<TItem>({
 
   return (
     <PaginationContext.Provider
+      // eslint-disable-next-line react/jsx-no-constructed-context-values
       value={{
         ...pageData,
         setPage: updatePage,

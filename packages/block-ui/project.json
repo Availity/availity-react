@@ -1,26 +1,28 @@
 {
-  "root": "packages/block-ui",
+  "name": "@availity/block-ui",
+  "$schema": "../../node_modules/nx/schemas/project-schema.json",
   "projectType": "library",
   "targets": {
     "test": {
       "executor": "@nx/jest:jest",
-      "outputs": ["coverage/block-ui"],
-      "options": { "jestConfig": "packages/block-ui/jest.config.js", "passWithNoTests": true }
+      "outputs": ["{workspaceRoot}/coverage/block-ui"],
+      "options": {
+        "jestConfig": "packages/block-ui/jest.config.js"
+      }
     },
     "version": {
       "executor": "@jscutlery/semver:version",
       "options": {
         "preset": "angular",
         "commitMessageFormat": "chore({projectName}): release version ${version} [skip ci]",
-        "tagPrefix": "@availity/{projectName}@",
+        "tagPrefix": "{projectName}@",
         "baseBranch": "master"
       }
     },
     "lint": {
-      "executor": "@nx/linter:eslint",
+      "executor": "@nx/eslint:lint",
       "options": {
         "eslintConfig": ".eslintrc.yaml",
-        "lintFilePatterns": ["packages/block-ui/**/*.{js,ts}"],
         "silent": false,
         "fix": false,
         "cache": true,

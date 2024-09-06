@@ -2,6 +2,88 @@
 
 This file was generated using [@jscutlery/semver](https://github.com/jscutlery/semver).
 
+## [3.8.10](https://github.com/Availity/availity-react/compare/@availity/upload@3.8.9...@availity/upload@3.8.10) (2024-08-22)
+
+### Dependency Updates
+
+* `@availity/progress` updated to version `3.8.9`
+
+
+# 1.0.0 (2024-08-22)
+
+### Dependency Updates
+
+* `@availity/progress` updated to version `0.1.0`
+
+### Bug Fixes
+
+* eslint issues ([bc4d8e9](https://github.com/Availity/availity-react/commit/bc4d8e9252a37c067de3e5b15e583c4a3c06d6c5))
+* fixed package-locks ([ddb49bb](https://github.com/Availity/availity-react/commit/ddb49bbffef1e4fae59f84fb283f5c4a422c8657))
+* re-created package-locks ([49726de](https://github.com/Availity/availity-react/commit/49726dea08a61201a44c7c63c14715dda195cc25))
+* removed npmrc and added config to lerna for now creating locks ([efe82ab](https://github.com/Availity/availity-react/commit/efe82ab5a9a38cc8113d5cc71416f1ef347eb4c4))
+* removed package-locks,added npmrc ignore,fixed react as hoisted dep ([4648319](https://github.com/Availity/availity-react/commit/4648319b1298096de2e3e37bf6246e5f169ace0e))
+* rename prop ([1159b61](https://github.com/Availity/availity-react/commit/1159b61b25f4f605662314f60c68fa2d1164e335))
+* so many package-lock.json's ([8b5dc24](https://github.com/Availity/availity-react/commit/8b5dc24168f9eecae9f3f52da0b49e6da831a643))
+* upgrade eslint-config-availity and fix the errors ([6da0423](https://github.com/Availity/availity-react/commit/6da0423ecfa72b426287fd62ad00445fefce024e))
+* **upload:** correcting generic types to hardocde a inputelement change event handler ([#1277](https://github.com/Availity/availity-react/issues/1277)) ([6690447](https://github.com/Availity/availity-react/commit/6690447b940996ebde3bb0afed51da2a95af454a))
+* **upload:** display errors for dropzone rejections ([a17f118](https://github.com/Availity/availity-react/commit/a17f11819db153c4e60ed5ebc70af6e3fbadca27))
+* **upload:** ensure unique upload ids ([a574863](https://github.com/Availity/availity-react/commit/a57486324d5f9f17ed8b8fa93ec0001c4316175b))
+* **upload:** file button handler fix ([8a07293](https://github.com/Availity/availity-react/commit/8a07293bf5c6f73c845cea4080294e60031cbb90))
+* **upload:** fix lint ([4fe8cd0](https://github.com/Availity/availity-react/commit/4fe8cd0e1182d4937108e7efc3990956650c7e10))
+* **upload:** fix package.json for build ([9e26285](https://github.com/Availity/availity-react/commit/9e262853acbadb68105f94524cbdc0829f98f2a4))
+* **upload:** fix package.json for build ([2710030](https://github.com/Availity/availity-react/commit/2710030b2e394034a9cfdff562b3a59ebc4e07b2))
+* **upload:** make filepickerbtn and filepicker types more generic so proper types get passed through [#1277](https://github.com/Availity/availity-react/issues/1277) ([a3eb991](https://github.com/Availity/availity-react/commit/a3eb9918b47ad75b9e7537708386e8ac7cac870f))
+* **upload:** remove unnecessary tag ([#1277](https://github.com/Availity/availity-react/issues/1277)) ([c5acc5e](https://github.com/Availity/availity-react/commit/c5acc5e9e2a1850bbf3f70848c3c164c556507b4))
+* **upload:** upload-core dependency patch bump ([f4403d6](https://github.com/Availity/availity-react/commit/f4403d6acefcaac151b9f4a46243c4331fa99dbc))
+* **upload:** upload-core peerDep incapatibility ([b1e6b24](https://github.com/Availity/availity-react/commit/b1e6b24727b96930d31bc5935413853baa0370ee))
+
+
+### chore
+
+* **upload:** bump react-dropzone peer dependency ([c98cbe3](https://github.com/Availity/availity-react/commit/c98cbe33a2989987bdfa88b4aa1f464aae30f465))
+
+
+### Features
+
+* add onPasswordSubmit handler to upload ([ce6e277](https://github.com/Availity/availity-react/commit/ce6e2771878481d50d49193a6a1b3571e629107f))
+* add passwordModalzIndex prop ([8d4378c](https://github.com/Availity/availity-react/commit/8d4378cf2dcb682b6741eccef23814c9dbe5d1c3))
+* add tests for upload password modal zIndex prop ([3e5eb07](https://github.com/Availity/availity-react/commit/3e5eb072f94abfa6ba30fee720ef19673da07abf))
+* **button:** add props ([5d2fdf1](https://github.com/Availity/availity-react/commit/5d2fdf190b456b988b81e5ad4b2a572085a2f21a))
+* **docs:** updated to use yarn and added readmes ([3b94748](https://github.com/Availity/availity-react/commit/3b947487ef18c6e11486ad39203882a11bc8a1e7))
+* **feature:** adding typescript support ([cfe57a2](https://github.com/Availity/availity-react/commit/cfe57a265b97ba9a053fb3bee54d2b054fa86e8f))
+* **form-upload,upload:** add onFilePreUpload callbacks to UploadCore constructor ([33b1c23](https://github.com/Availity/availity-react/commit/33b1c2333a255ccf9e1cc96b2f5dbeb0fac0d739)), closes [/github.com/Availity/sdk-js/blob/9b5e81bef0216d13fab6ca0bbe87370e2019f490/README.md#L16-L19](https://github.com//github.com/Availity/sdk-js/blob/9b5e81bef0216d13fab6ca0bbe87370e2019f490/README.md/issues/L16-L19)
+* **form-upload:** add form-upload package ([5ac7d46](https://github.com/Availity/availity-react/commit/5ac7d46cc45a00600bb08002ce075a0a70c5f06d))
+* **form-upload:** add prop btnColor to Upload component ([d5d78bb](https://github.com/Availity/availity-react/commit/d5d78bb1d27d088942745f05136364bb91a064e8))
+* **form:** add currency input ([fa9eea6](https://github.com/Availity/availity-react/commit/fa9eea6a3b3dd2ef741a0658c102e36c6db5288c))
+* move storybook, stories, and fix hmr ([2f65f71](https://github.com/Availity/availity-react/commit/2f65f71769d2d981e22700b87a09516833588f64))
+* **upload:** accessible name for UploadProgressBar ([1a66e0d](https://github.com/Availity/availity-react/commit/1a66e0d367ec3e9044fa41c44af9668a8deabeae))
+* **upload:** add disabled prop ([6029d84](https://github.com/Availity/availity-react/commit/6029d84563435ecc148cdbcf302b03dcb79fb394))
+* **upload:** add drag and drop for uploads ([a45ad71](https://github.com/Availity/availity-react/commit/a45ad71288c5d061e52d460a740554e96017c4f7))
+* **upload:** add props ([40ebe1d](https://github.com/Availity/availity-react/commit/40ebe1da3bcb4246374df8fbcb0d9959723deaa0))
+* **upload:** add upload ([caf9e7c](https://github.com/Availity/availity-react/commit/caf9e7c1fe428542d37cd5a480f3c95f9c5288c6))
+* **upload:** added a test ([4180341](https://github.com/Availity/availity-react/commit/41803413b00c37d51d41f1d6df5c3eb827508841))
+* **upload:** adding stories for uploads ([0641d72](https://github.com/Availity/availity-react/commit/0641d729801af85b0543fc51f4e7eb8d4137ba5b))
+* **upload:** fixed dependency mismatch used while developing ([288e577](https://github.com/Availity/availity-react/commit/288e577a21281840a19eb6645d4c140543815837))
+* **upload:** pass id of file removed in onFileRemove callback ([376eb43](https://github.com/Availity/availity-react/commit/376eb43a5081fd7f541657b1ccc7d67971a4d51c))
+* **upload:** rereenabling filename validation ([b02a5f2](https://github.com/Availity/availity-react/commit/b02a5f2bfb98fd175ab5fbd5794f645afa4da35d))
+* **upload:** return upload onPasswordSubmit callback ([6e10896](https://github.com/Availity/availity-react/commit/6e10896011565d23056211ab7a67f12994097575))
+* **upload:** upgrade react-dropzone from 7.x to 10.x ([5a3c204](https://github.com/Availity/availity-react/commit/5a3c20499648853855f6bbd488c36bd6259e9007))
+
+
+### BREAKING CHANGES
+
+* **form-upload,upload:** require @availity/upload-core@^4.0.0, uses functions not directly compatible with IE11
+https://github.com/Availity/sdk-js/blob/master/packages/upload-core/CHANGELOG.md#breaking-changes
+* **upload:** react-dropzone >= 11.0.0 is now required. This change
+was made in order to show the reasons why files were rejected to the
+user.
+* **upload:** - react >= 16.8 is required
+- @see breaking changes in 10.x https://github.com/react-dropzone/react-dropzone/releases/tag/v10.0.0
+-  @see breaking changes in 9.x https://github.com/react-dropzone/react-dropzone/releases/tag/v9.0.0
+- @see breaking changes in 8.x https://github.com/react-dropzone/react-dropzone/releases/tag/v8.0.0
+
+
+
 ## [3.8.9](https://github.com/Availity/availity-react/compare/@availity/upload@3.8.8...@availity/upload@3.8.9) (2024-05-31)
 
 

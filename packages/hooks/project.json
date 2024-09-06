@@ -1,26 +1,28 @@
 {
-  "root": "packages/hooks",
+  "name": "@availity/hooks",
+  "$schema": "../../node_modules/nx/schemas/project-schema.json",
   "projectType": "library",
   "targets": {
     "test": {
       "executor": "@nx/jest:jest",
-      "outputs": ["coverage/hooks"],
-      "options": { "jestConfig": "packages/hooks/jest.config.js", "passWithNoTests": true }
+      "outputs": ["{workspaceRoot}/coverage/hooks"],
+      "options": {
+        "jestConfig": "packages/hooks/jest.config.js"
+      }
     },
     "version": {
       "executor": "@jscutlery/semver:version",
       "options": {
         "preset": "angular",
         "commitMessageFormat": "chore({projectName}): release version ${version} [skip ci]",
-        "tagPrefix": "@availity/{projectName}@",
+        "tagPrefix": "{projectName}@",
         "baseBranch": "master"
       }
     },
     "lint": {
-      "executor": "@nx/linter:eslint",
+      "executor": "@nx/eslint:lint",
       "options": {
         "eslintConfig": ".eslintrc.yaml",
-        "lintFilePatterns": ["packages/hooks/**/*.{js,ts}"],
         "silent": false,
         "fix": false,
         "cache": true,

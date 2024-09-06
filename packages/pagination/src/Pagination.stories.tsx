@@ -248,7 +248,7 @@ export const hidden_PaginationControls = ({
   );
 };
 
-export const hidden_AvResourcePagination = (props: AvResourcePaginationProps<any[]>) => (
+export const hidden_AvResourcePagination = (props: AvResourcePaginationProps<unknown[]>) => (
   <AvResourcePagination {...props} />
 );
 

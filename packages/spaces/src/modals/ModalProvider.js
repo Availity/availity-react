@@ -103,6 +103,7 @@ const ModalProvider = ({ children }) => {
 
   return (
     <ModalContext.Provider
+      // eslint-disable-next-line react/jsx-no-constructed-context-values
       value={(modalType, modalOptions) =>
         dispatch({
           type: `OPEN_${modalType}`,

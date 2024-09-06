@@ -30,6 +30,7 @@ const TableControls = ({ id, disabled, children, ...rest }: Props): JSX.Element 
           }
           // eslint-disable-next-line @typescript-eslint/ban-ts-comment
           // @ts-ignore
+          // eslint-disable-next-line react/no-array-index-key
           return cloneElement(child, { disabled: isDisabled, key: `table_controls_${index}` });
         })}
       </Form>

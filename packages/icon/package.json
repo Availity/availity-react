@@ -1,6 +1,6 @@
 {
   "name": "@availity/icon",
-  "version": "0.11.7",
+  "version": "0.11.8",
   "description": "Simple Icon Component that uses classes from availity uikit",
   "keywords": [
     "react",
@@ -31,13 +31,13 @@
     "publish:canary": "yarn npm publish --access public --tag canary"
   },
   "dependencies": {
-    "classnames": "^2.3.2"
+    "classnames": "^2.5.1"
   },
   "devDependencies": {
-    "react": "^18.2.0",
-    "react-dom": "^18.2.0",
-    "tsup": "^7.2.0",
-    "typescript": "^5.3.3"
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1",
+    "tsup": "^8.2.4",
+    "typescript": "^5.5.4"
   },
   "peerDependencies": {
     "react": ">=16.3.0"

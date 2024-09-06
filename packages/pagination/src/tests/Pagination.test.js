@@ -161,14 +161,12 @@ describe('Pagination', () => {
     const ComponentWrapper = () => {
       const [state, setState] = useState('hello');
       return (
-        <>
-          <Pagination watchList={[state]}>
-            <button type="button" data-testid="hello-btn" onClick={() => setState('world')}>
-              Toggle
-            </button>
-            <SomeComponent />
-          </Pagination>
-        </>
+        <Pagination watchList={[state]}>
+          <button type="button" data-testid="hello-btn" onClick={() => setState('world')}>
+            Toggle
+          </button>
+          <SomeComponent />
+        </Pagination>
       );
     };
 
@@ -237,15 +235,13 @@ describe('Pagination', () => {
     const ComponentWrapper = () => {
       const [isToggled, toggle] = useToggle();
       return (
-        <>
-          <Pagination items={items} resetParams={[isToggled]}>
-            <button type="button" data-testid="toggle-btn" onClick={() => toggle()}>
-              Toggle
-            </button>
-            <SomeComponent />
-            <PaginationJson />
-          </Pagination>
-        </>
+        <Pagination items={items} resetParams={[isToggled]}>
+          <button type="button" data-testid="toggle-btn" onClick={() => toggle()}>
+            Toggle
+          </button>
+          <SomeComponent />
+          <PaginationJson />
+        </Pagination>
       );
     };
 
@@ -335,15 +331,13 @@ describe('Pagination', () => {
     const ComponentWrapper = () => {
       const [isToggled, toggle] = useToggle();
       return (
-        <>
-          <Pagination items={items} resetParams={[isToggled]}>
-            <button type="button" data-testid="toggle-btn" onClick={() => toggle()}>
-              Toggle
-            </button>
-            <SomeComponent />
-            <PaginationJson />
-          </Pagination>
-        </>
+        <Pagination items={items} resetParams={[isToggled]}>
+          <button type="button" data-testid="toggle-btn" onClick={() => toggle()}>
+            Toggle
+          </button>
+          <SomeComponent />
+          <PaginationJson />
+        </Pagination>
       );
     };
 
@@ -494,17 +488,15 @@ describe('Pagination', () => {
     const ComponentWrapper = () => {
       const [shouldReturnPrevious, setShouldReturnPrevious] = useState(true);
       return (
-        <>
-          <Pagination items={getItems} shouldReturnPrevious={shouldReturnPrevious}>
-            <button
-              type="button"
-              data-testid="toggle-return-previous-btn"
-              onClick={() => setShouldReturnPrevious(!shouldReturnPrevious)}
-            >
-              Toggle
-            </button>
-          </Pagination>
-        </>
+        <Pagination items={getItems} shouldReturnPrevious={shouldReturnPrevious}>
+          <button
+            type="button"
+            data-testid="toggle-return-previous-btn"
+            onClick={() => setShouldReturnPrevious(!shouldReturnPrevious)}
+          >
+            Toggle
+          </button>
+        </Pagination>
       );
     };
 

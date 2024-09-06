@@ -120,7 +120,7 @@ const PaginationControls = ({
           (index >= selected - leftSide && index <= selected + rightSide)
         ) {
           items.push(createItem(pageNumber));
-        } else if (items[items.length - 1] !== breakView && breakLabel) {
+        } else if (items.at(-1) !== breakView && breakLabel) {
           breakView = createBreak(pageNumber);
           items.push(breakView);
         }

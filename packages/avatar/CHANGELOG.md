@@ -2,6 +2,45 @@
 
 This file was generated using [@jscutlery/semver](https://github.com/jscutlery/semver).
 
+## [1.0.5](https://github.com/Availity/availity-react/compare/@availity/avatar@1.0.4...@availity/avatar@1.0.5) (2024-08-22)
+
+### Dependency Updates
+
+* `@availity/hooks` updated to version `1.0.4`
+
+
+# 1.0.0 (2024-08-22)
+
+### Dependency Updates
+
+* `@availity/hooks` updated to version `1.0.0`
+
+### Bug Fixes
+
+* **avatar:** fix deps, default url logic ([ec98838](https://github.com/Availity/availity-react/commit/ec9883842bfdb01dc396cae2bde3c9d2f36dc4bb))
+
+
+### chore
+
+* **avatar:** upgrade dependencies ([78d3402](https://github.com/Availity/availity-react/commit/78d340299f3026f93a4da0a350613bd0624e47b0))
+
+
+### Features
+
+* **avatar:** add user avatar component ([78699b6](https://github.com/Availity/availity-react/commit/78699b69c44b5191aa092f0b4326dbb30a186009))
+* **docs:** updated to use yarn and added readmes ([3b94748](https://github.com/Availity/availity-react/commit/3b947487ef18c6e11486ad39203882a11bc8a1e7))
+* **form:** add currency input ([fa9eea6](https://github.com/Availity/availity-react/commit/fa9eea6a3b3dd2ef741a0658c102e36c6db5288c))
+* move storybook, stories, and fix hmr ([2f65f71](https://github.com/Availity/availity-react/commit/2f65f71769d2d981e22700b87a09516833588f64))
+* upgrade deps ([eccefc0](https://github.com/Availity/availity-react/commit/eccefc0549ebd5057595f6ac696642789375f48a))
+
+
+### BREAKING CHANGES
+
+* axios v1 is now required
+* **avatar:** react >= 16.8.0 is now required
+
+
+
 ## [1.0.4](https://github.com/Availity/availity-react/compare/@availity/avatar@1.0.3...@availity/avatar@1.0.4) (2024-05-31)
 
 

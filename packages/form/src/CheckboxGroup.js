@@ -81,6 +81,7 @@ const CheckboxGroup = ({
   }
 
   return (
+    // eslint-disable-next-line react/jsx-no-constructed-context-values
     <CheckboxGroupContext.Provider value={{ ...field, groupOnChange, metadata }}>
       <FormGroup tag={tag} for={name} {...rest}>
         {legend}

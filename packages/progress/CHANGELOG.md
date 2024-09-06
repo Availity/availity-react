@@ -2,6 +2,29 @@
 
 This file was generated using [@jscutlery/semver](https://github.com/jscutlery/semver).
 
+## [1.5.6](https://github.com/Availity/availity-react/compare/@availity/progress@1.5.5...@availity/progress@1.5.6) (2024-08-22)
+
+
+
+# 0.1.0 (2024-08-22)
+
+
+### Bug Fixes
+
+* **progress:** update types ([82ec332](https://github.com/Availity/availity-react/commit/82ec3323b3bcbca8bd4b1ce7113cff8f0bfdb4fe))
+
+
+### Features
+
+* **docs:** updated to use yarn and added readmes ([3b94748](https://github.com/Availity/availity-react/commit/3b947487ef18c6e11486ad39203882a11bc8a1e7))
+* **form:** add currency input ([fa9eea6](https://github.com/Availity/availity-react/commit/fa9eea6a3b3dd2ef741a0658c102e36c6db5288c))
+* move storybook, stories, and fix hmr ([2f65f71](https://github.com/Availity/availity-react/commit/2f65f71769d2d981e22700b87a09516833588f64))
+* **progress:** add color prop ([de51610](https://github.com/Availity/availity-react/commit/de5161058a81af0ad8ab4fad9cc47d01142f209b))
+* **progress:** add progress bar package ([c549a3f](https://github.com/Availity/availity-react/commit/c549a3f611dadf61eb29e56be7f46ea66c15dd5e))
+* **progress:** convert to typescript ([22170bf](https://github.com/Availity/availity-react/commit/22170bf4fcbe555c67e575db3878eabcacca157a))
+
+
+
 ## [1.5.5](https://github.com/Availity/availity-react/compare/@availity/progress@1.5.4...@availity/progress@1.5.5) (2024-02-21)
 
 

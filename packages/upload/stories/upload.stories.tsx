@@ -1,9 +1,8 @@
 import React from 'react';
 import { StoryObj } from '@storybook/react';
 // import { button } from '@storybook/addon-knobs';
-import mock from 'xhr-mock';
 
-import Upload, { FilePicker, FilePickerBtn } from '..';
+import Upload from '..';
 // import README from '../README.md';
 
 /**

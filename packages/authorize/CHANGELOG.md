@@ -2,6 +2,65 @@
 
 This file was generated using [@jscutlery/semver](https://github.com/jscutlery/semver).
 
+## [4.1.1](https://github.com/Availity/availity-react/compare/@availity/authorize@4.1.0...@availity/authorize@4.1.1) (2024-08-22)
+
+
+
+# 1.0.0 (2024-08-22)
+
+
+### Bug Fixes
+
+* **authorize:** change query key to useAuthorize ([e916267](https://github.com/Availity/availity-react/commit/e91626725bae7c843e6f7023e5dc769169bf363b))
+* **authorize:** fixed unit tests :facepalm: ([87cac9d](https://github.com/Availity/availity-react/commit/87cac9d56fd5648b30f6bf367ce710579fa79a98))
+* **authorize:** move react-dom and react-query to peerDeps ([a3c25f9](https://github.com/Availity/availity-react/commit/a3c25f971719dea936dc7c7a3c7253f951c9f0d1))
+* **authorize:** resolve linter errors and add type ([fafea0c](https://github.com/Availity/availity-react/commit/fafea0c2b7ef6547b405e385e6b90df260aa8f52))
+* **authorize:** the authorize component was using the wrong axi struct ([acb90b1](https://github.com/Availity/availity-react/commit/acb90b188825893719b34d011e51ff0e0eb49092))
+* **feature:** fixed the repository for npm ([7a13a9e](https://github.com/Availity/availity-react/commit/7a13a9ea4533c1565998ed6c28439d22016c285e))
+* fixed package-locks ([ddb49bb](https://github.com/Availity/availity-react/commit/ddb49bbffef1e4fae59f84fb283f5c4a422c8657))
+* re-created package-locks ([49726de](https://github.com/Availity/availity-react/commit/49726dea08a61201a44c7c63c14715dda195cc25))
+* removed npmrc and added config to lerna for now creating locks ([efe82ab](https://github.com/Availity/availity-react/commit/efe82ab5a9a38cc8113d5cc71416f1ef347eb4c4))
+* removed package-locks,added npmrc ignore,fixed react as hoisted dep ([4648319](https://github.com/Availity/availity-react/commit/4648319b1298096de2e3e37bf6246e5f169ace0e))
+* so many package-lock.json's ([8b5dc24](https://github.com/Availity/availity-react/commit/8b5dc24168f9eecae9f3f52da0b49e6da831a643))
+
+
+* feat(authorize)!: convert to typescript and add react-query ([056744a](https://github.com/Availity/availity-react/commit/056744ac7526544095cfe45749ed5249d73a8956))
+
+
+### Features
+
+* **authorize:** add resources filter ([e266abc](https://github.com/Availity/availity-react/commit/e266abc037fd5940ffe7f5e4ef5852bff36a39de))
+* **authorize:** adding a test to check for blockui when fetching ([6d14150](https://github.com/Availity/availity-react/commit/6d14150ad52fae1e43f02f133ce964bedfb75241))
+* **authorize:** adds currentRegion to values returned from useAuthorize() ([245dd2c](https://github.com/Availity/availity-react/commit/245dd2c7015ed77870247b0ecfaccd5922983a6d))
+* **authorize:** cache region ([3da1c36](https://github.com/Availity/availity-react/commit/3da1c36bc07f6115fb21696041ecbecd7989a7a6))
+* **authorize:** created custom hook for getting authorized state ([cce12f3](https://github.com/Availity/availity-react/commit/cce12f3d10a3c66234d74ea0637f0fa3bbaf665d))
+* **authorize:** export useauthorize types ([eecb449](https://github.com/Availity/availity-react/commit/eecb4495d67487520c2f0e230a5cab9256d3aa63))
+* **authorize:** remove screen.debug() ([0b6176c](https://github.com/Availity/availity-react/commit/0b6176c22c9f031bb0260896d6e04d66fecb2be2))
+* **authorize:** replace deprecated @availity/react-block-ui library with new @availity/block-ui ([6188c5b](https://github.com/Availity/availity-react/commit/6188c5bfe5e470347cd272645737529aa23ac62f))
+* **authorize:** update type definition ([7a415c7](https://github.com/Availity/availity-react/commit/7a415c77fa042f60ba17b975a7c45eb4ab1e23a8))
+* **authorize:** upgrade react query to v4 ([69a78bd](https://github.com/Availity/availity-react/commit/69a78bdf39de42324981727c330baec21db5415d))
+* **docs:** updated to use yarn and added readmes ([3b94748](https://github.com/Availity/availity-react/commit/3b947487ef18c6e11486ad39203882a11bc8a1e7))
+* **feature:** added packages from av-react to public ([2c32cf3](https://github.com/Availity/availity-react/commit/2c32cf353f22847a5a293eecf800315a051646f3))
+* **feature:** adding typescript support ([cfe57a2](https://github.com/Availity/availity-react/commit/cfe57a265b97ba9a053fb3bee54d2b054fa86e8f))
+* **form:** add currency input ([fa9eea6](https://github.com/Availity/availity-react/commit/fa9eea6a3b3dd2ef741a0658c102e36c6db5288c))
+* move storybook, stories, and fix hmr ([2f65f71](https://github.com/Availity/availity-react/commit/2f65f71769d2d981e22700b87a09516833588f64))
+* upgrade deps ([eccefc0](https://github.com/Availity/availity-react/commit/eccefc0549ebd5057595f6ac696642789375f48a))
+
+
+### Performance Improvements
+
+* **authorize:** dont need to check undefined permissions ([cb8fabe](https://github.com/Availity/availity-react/commit/cb8fabe6ab2e05e2b648b440dde414df37aa837c))
+
+
+### BREAKING CHANGES
+
+* **authorize:** react query has been upgraded to v4. you must upgrade
+to @tanstack/react-query@^4.36.1 in order to use this package now
+* axios v1 is now required
+* react-query provider now required,  args are stricter
+
+
+
 # [4.1.0](https://github.com/Availity/availity-react/compare/@availity/authorize@4.0.3...@availity/authorize@4.1.0) (2024-05-09)
 
 

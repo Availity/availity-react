@@ -105,6 +105,7 @@ export const FavoritesProvider = ({
 
   return (
     <FavoritesContext.Provider
+      // eslint-disable-next-line react/jsx-no-constructed-context-values
       value={{
         favorites,
         queryStatus,

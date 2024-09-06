@@ -88,6 +88,7 @@ const PageHeader = ({
     <>
       <div className="page-header-above">
         {showCrumbs ? (
+          // eslint-disable-next-line react/jsx-no-useless-fragment
           <>
             {React.isValidElement(crumbs) ? (
               crumbs

@@ -6,6 +6,7 @@ import Breadcrumbs from '@availity/breadcrumbs';
 import { SpacesLogo } from '@availity/spaces';
 
 import PageHeader, { RightContentProps } from '..';
+// eslint-disable-next-line import/no-relative-packages
 import fallback from '../../../static/static/spaces/12345/sample-logo.png';
 // import README from '../README.md';
 

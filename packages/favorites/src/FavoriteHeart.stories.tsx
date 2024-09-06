@@ -1,6 +1,7 @@
 import React from 'react';
 import { StoryObj } from '@storybook/react';
 import { QueryClientProvider, QueryClient } from '@tanstack/react-query';
+// eslint-disable-next-line import/no-relative-packages
 import mockFavorites from '../../mock/src/data/settings.json';
 
 import { FavoritesProvider } from './context';

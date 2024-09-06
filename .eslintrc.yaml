@@ -10,9 +10,9 @@ rules:
   guard-for-in: 0
   no-restricted-syntax: 0
   react/prefer-stateless-function: 0
-  unicorn/no-reduce: 0
   # disabled to support older versions of workflow that do not polyfill Array.prototype.find (not supported in IE)
   unicorn/prefer-array-find: 0
   unicorn/no-abusive-eslint-disable: 0
   unicorn/no-lonely-if: 0
   unicorn/no-array-for-each: 0
+  no-restricted-exports: 0

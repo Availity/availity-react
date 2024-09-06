@@ -2,6 +2,91 @@
 
 This file was generated using [@jscutlery/semver](https://github.com/jscutlery/semver).
 
+## [1.0.7](https://github.com/Availity/availity-react/compare/@availity/form-upload@1.0.6...@availity/form-upload@1.0.7) (2024-08-22)
+
+### Dependency Updates
+
+* `@availity/form` updated to version `1.0.6`
+* `@availity/icon` updated to version `1.0.6`
+* `@availity/progress` updated to version `1.0.6`
+
+
+# 1.0.0 (2024-08-22)
+
+### Dependency Updates
+
+* `@availity/form` updated to version `1.0.0`
+* `@availity/icon` updated to version `0.1.0`
+* `@availity/progress` updated to version `0.1.0`
+
+### Bug Fixes
+
+* add classnames dep ([9bdda6f](https://github.com/Availity/availity-react/commit/9bdda6f1ec1e0b23e31fe81008c94f69b940804d))
+* **form-upload:** add missing api-axios and api-core peer deps ([4a30e89](https://github.com/Availity/availity-react/commit/4a30e891e65943588568f1ba45f0b324fb7eb3fb))
+* **form-upload:** correcting generic types to hardocde a inputelement change event handler ([#1277](https://github.com/Availity/availity-react/issues/1277)) ([96bcefd](https://github.com/Availity/availity-react/commit/96bcefdf3c1e8e333165c7615298e77936102a8b))
+* **form-upload:** display errors for dropzone rejections ([b64a352](https://github.com/Availity/availity-react/commit/b64a3523591a27c83b9b6281b186d7d359bcec44))
+* **form-upload:** ensure unique upload ids ([a8ae860](https://github.com/Availity/availity-react/commit/a8ae8603cea4d3657d11f351e7995f9296a54964))
+* **form-upload:** fix uuid import ([631f076](https://github.com/Availity/availity-react/commit/631f0763ef94311dfa722a42027d9995f40ad440))
+* **form-upload:** make filepickerbtn and filepicker types more generic so proper types get passed through [#1277](https://github.com/Availity/availity-react/issues/1277) ([06cc4c0](https://github.com/Availity/availity-react/commit/06cc4c0a5156922b7f696701020675cd95d92e28))
+* **form-upload:** remove unnecessary tag ([#1277](https://github.com/Availity/availity-react/issues/1277)) ([b4e1509](https://github.com/Availity/availity-react/commit/b4e15091ef3c4b3c53b9e07584293b5182ad4990))
+* **form-upload:** resolve lint errors ([92d2f84](https://github.com/Availity/availity-react/commit/92d2f846d80af76e0e355dc6f4f33174a50bd368))
+* **form-upload:** stop propagation from form submit to prevent submission of parent forms ([b76094b](https://github.com/Availity/availity-react/commit/b76094b9e5c5655091dedb70fc3c13776bde2054))
+* **form-upload:** update types ([7a45643](https://github.com/Availity/availity-react/commit/7a45643123c75f8aaa1ad77c53e937c24764cd21))
+* **form-upload:** update types ([27d9aa0](https://github.com/Availity/availity-react/commit/27d9aa09fa1905351f94ef0d475e95e2b5420635))
+* **form-upload:** upload-core peerDep incapatibility ([9abead6](https://github.com/Availity/availity-react/commit/9abead6f70de6b2f556fdad6f4928b311ce8c7b3))
+* upgrade yup and update sb stories ([68aeafe](https://github.com/Availity/availity-react/commit/68aeafe4fd7d90d7c88dbb24636ba7770fe87aa3))
+* **upload:** upload-core dependency patch bump ([f4403d6](https://github.com/Availity/availity-react/commit/f4403d6acefcaac151b9f4a46243c4331fa99dbc))
+
+
+### chore
+
+* **form-upload:** bump react-dropzone peer dependency ([e2298c6](https://github.com/Availity/availity-react/commit/e2298c6d1021578e8b1aad74d7f1bbe9af0dfad3))
+
+
+### Features
+
+* add fileDelivery callbacks ([61d3203](https://github.com/Availity/availity-react/commit/61d320393a25ad61fac0ef849411af1fa684256d))
+* **form-upload,upload:** add onFilePreUpload callbacks to UploadCore constructor ([33b1c23](https://github.com/Availity/availity-react/commit/33b1c2333a255ccf9e1cc96b2f5dbeb0fac0d739)), closes [/github.com/Availity/sdk-js/blob/9b5e81bef0216d13fab6ca0bbe87370e2019f490/README.md#L16-L19](https://github.com//github.com/Availity/sdk-js/blob/9b5e81bef0216d13fab6ca0bbe87370e2019f490/README.md/issues/L16-L19)
+* **form-upload:** accessible name for remove file button ([fa8a6ae](https://github.com/Availity/availity-react/commit/fa8a6aeac86296337ac483bf11a2ee51a6c08b59))
+* **form-upload:** accessible name for UploadProgressBar ([9e41559](https://github.com/Availity/availity-react/commit/9e415594901b1eb2ad7a2bf5123856bec72a5297))
+* **form-upload:** add disabled prop ([a769961](https://github.com/Availity/availity-react/commit/a769961a08710ceccb0212f0d51aea3e1743f7bf))
+* **form-upload:** add form-upload package ([5ac7d46](https://github.com/Availity/availity-react/commit/5ac7d46cc45a00600bb08002ce075a0a70c5f06d))
+* **form-upload:** add prop btnColor to Upload component ([e1b8e14](https://github.com/Availity/availity-react/commit/e1b8e1480466f58f2eaf9f7bc4b0f21b6f950392))
+* **form-upload:** add totalMaxSize prop ([5fcd077](https://github.com/Availity/availity-react/commit/5fcd077cb2a91c5f4c3979aa40e15baefb74ead7))
+* **form-upload:** added a test for form-upload as well ([9f89d26](https://github.com/Availity/availity-react/commit/9f89d26caf2824c0887435af5666a3ab23bd5992))
+* **form-upload:** added a test for form-upload as well ([7f57d1a](https://github.com/Availity/availity-react/commit/7f57d1adad628125be3272d88d817507892b67d3))
+* **form-upload:** added a test for form-upload as well ([f21d06f](https://github.com/Availity/availity-react/commit/f21d06fbd03705a7c24dc9bac77de3ddecd3b9ff))
+* **form-upload:** adding options for file delivery on upload ([00986fb](https://github.com/Availity/availity-react/commit/00986fb2f960ba962cff9a6332b183e1721496ef))
+* **form-upload:** allow fileDeliveryMetadata to be a function ([8d0c994](https://github.com/Availity/availity-react/commit/8d0c9942d9f53933a73e1364fe52daa2bd4a4704))
+* **form-upload:** file delivery on submit ([579067d](https://github.com/Availity/availity-react/commit/579067dc67093bb31f75ce459860949f7c54464c))
+* **form-upload:** file delivery on upload ([f2e893e](https://github.com/Availity/availity-react/commit/f2e893ead990d2494bb66237662c2e7e172040ab))
+* **form-upload:** pass id of file removed in onFileRemove callback ([1e6e63c](https://github.com/Availity/availity-react/commit/1e6e63cd402e31f8fc9015364f9f20fc06af0f82))
+* **form-upload:** refereneces still undefined ([99eab12](https://github.com/Availity/availity-react/commit/99eab124623ebb4cbf47851a1b02d4faf9cc2b71))
+* **form:** add currency input ([fa9eea6](https://github.com/Availity/availity-react/commit/fa9eea6a3b3dd2ef741a0658c102e36c6db5288c))
+* move storybook, stories, and fix hmr ([2f65f71](https://github.com/Availity/availity-react/commit/2f65f71769d2d981e22700b87a09516833588f64))
+* upgrade deps ([eccefc0](https://github.com/Availity/availity-react/commit/eccefc0549ebd5057595f6ac696642789375f48a))
+* **upload:** added a test for form-upload as well ([8272901](https://github.com/Availity/availity-react/commit/82729016cc02b8f27b5f456c2129fa8d6da60aa3))
+* **upload:** updated form-upload to include callback for onFilePreUpload ([243c3b8](https://github.com/Availity/availity-react/commit/243c3b86cf451fdf298e4fee1a818d4a0d4e0f00))
+
+
+### BREAKING CHANGES
+
+* axios v1 is now required
+* **form-upload,upload:** require @availity/upload-core@^4.0.0, uses functions not directly compatible with IE11
+https://github.com/Availity/sdk-js/blob/master/packages/upload-core/CHANGELOG.md#breaking-changes
+* **form-upload:** react-dropzone >= 11.0.0 is now required. This change
+was made in order to show the reasons why files were rejected to the
+user.
+
+
+
+## [1.0.6](https://github.com/Availity/availity-react/compare/@availity/form-upload@1.0.5...@availity/form-upload@1.0.6) (2024-08-14)
+
+### Dependency Updates
+
+* `form` updated to version `1.0.5`
+
+
 ## [1.0.5](https://github.com/Availity/availity-react/compare/@availity/form-upload@1.0.4...@availity/form-upload@1.0.5) (2024-05-31)
 
 ### Dependency Updates

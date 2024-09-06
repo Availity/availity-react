@@ -73,8 +73,8 @@ const DateRange = ({
   const [{ value = {} }, metadata] = useField({ name, validate });
   const [focusedInput, setFocusedInput] = useState(null);
 
-  const startId = `${(id || name).replace(/[^\da-z]/gi, '')}-start`;
-  const endId = `${(id || name).replace(/[^\da-z]/gi, '')}-end`;
+  const startId = `${(id || name).replaceAll(/[^\da-z]/gi, '')}-start`;
+  const endId = `${(id || name).replaceAll(/[^\da-z]/gi, '')}-end`;
 
   const startValue = value.startDate || '';
   const endValue = value.endDate || '';

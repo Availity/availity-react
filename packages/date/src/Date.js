@@ -46,7 +46,7 @@ const AvDate = ({
     !field.value && 'current-day-highlight'
   );
 
-  const pickerId = `${(attributes.id || name).replace(/[^\da-z]/gi, '')}-picker`;
+  const pickerId = `${(attributes.id || name).replaceAll(/[^\da-z]/gi, '')}-picker`;
 
   // Should only run validation once per real change to component, instead of each time setFieldValue/Touched is called.
   // By batching multiple calls for validation we can avoid multiple moment comparisons of the same values

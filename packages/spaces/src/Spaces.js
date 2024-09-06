@@ -212,6 +212,7 @@ const Spaces = ({ query, variables, clientId, spaceIds, payerIds, children, spac
 
   return (
     <SpacesContext.Provider
+      // eslint-disable-next-line react/jsx-no-constructed-context-values
       value={{ spaces: spacesMap, spacesByConfig: configIdsMap, spacesByPayer: payerIdsMap, loading, error }}
     >
       {!hasParentModalProvider ? <ModalProvider>{spacesChildren}</ModalProvider> : spacesChildren}
@@ -229,6 +230,7 @@ export const useSpaces = (...ids) => {
   if (shouldReturnAllSpaces) {
     // eslint-disable-next-line no-console
     console.warn(`You did not pass in an ID to find a space, returning all spaces.`);
+    // eslint-disable-next-line no-unsafe-optional-chaining
     return normalizeSpaces([...spaces?.values()]);
   }
 

@@ -1,6 +1,6 @@
 {
   "name": "@availity/upload",
-  "version": "3.8.9",
+  "version": "3.8.10",
   "author": "Evan Sharp <evan.sharp@availity.com>",
   "description": "Availity upload component for uploading files",
   "keywords": [
@@ -27,12 +27,12 @@
   "dependencies": {
     "@availity/progress": "workspace:*",
     "prop-types": "^15.8.1",
-    "uuid": "^9.0.1"
+    "uuid": "^10.0.0"
   },
   "devDependencies": {
-    "@availity/upload-core": "^5.0.6",
-    "react": "^18.2.0",
-    "react-dom": "^18.2.0",
+    "@availity/upload-core": "^6.0.0",
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1",
     "react-dropzone": "^11.7.1",
     "reactstrap": "^8.10.1"
   },

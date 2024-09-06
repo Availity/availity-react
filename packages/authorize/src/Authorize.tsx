@@ -1,3 +1,4 @@
+/* eslint-disable react/jsx-no-useless-fragment */
 import React from 'react';
 import type { ReactNode } from 'react';
 import BlockUi from '@availity/block-ui';

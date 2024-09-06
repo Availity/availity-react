@@ -1,6 +1,6 @@
 import React from 'react';
 import { StoryObj } from '@storybook/react';
-import TrainingLink, { TrainingLinkProps } from './TrainingLink';
+import TrainingLink from './TrainingLink';
 
 export default {
   title: 'Components/Training Link',

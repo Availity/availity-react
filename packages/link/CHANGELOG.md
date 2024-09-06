@@ -2,6 +2,60 @@
 
 This file was generated using [@jscutlery/semver](https://github.com/jscutlery/semver).
 
+# [2.6.0](https://github.com/Availity/availity-react/compare/@availity/link@2.5.6...@availity/link@2.6.0) (2024-08-27)
+
+
+### Features
+
+* **link:** update link to encode essentials urls ([#1458](https://github.com/Availity/availity-react/issues/1458)) ([29f64fd](https://github.com/Availity/availity-react/commit/29f64fd3491f4cf136dba21aef2b0c6970bd6dfe))
+
+
+
+## [2.5.6](https://github.com/Availity/availity-react/compare/@availity/link@2.5.5...@availity/link@2.5.6) (2024-08-22)
+
+
+
+# 1.0.0 (2024-08-22)
+
+
+### Bug Fixes
+
+* add classnames dep ([9bdda6f](https://github.com/Availity/availity-react/commit/9bdda6f1ec1e0b23e31fe81008c94f69b940804d))
+* coordinate accessible UI changes ([ee84d14](https://github.com/Availity/availity-react/commit/ee84d14412864943e626422e075071cd0571f783))
+* link classNames ([b81f3ea](https://github.com/Availity/availity-react/commit/b81f3ea409bd90e81f6477132fddfa1436f724ed))
+* **link:** fix link target logic ([ffff832](https://github.com/Availity/availity-react/commit/ffff83241657e321418f2a76a3aa0823ae13c53d))
+* **link:** fixes assignment inside if statement. Extract rel logic into setRel function ([0f317fb](https://github.com/Availity/availity-react/commit/0f317fb79c97900781a62342518be8f2f37c71cd))
+* **link:** removed required prop for url and changed to href ([9dcd0de](https://github.com/Availity/availity-react/commit/9dcd0deff0eab291953ba1ed38d00bed2112dc16))
+* **link:** return self as target default ([7163443](https://github.com/Availity/availity-react/commit/7163443ec0852896232a871f28468731c5ace5f8))
+* **link:** update types ([5385416](https://github.com/Availity/availity-react/commit/5385416b13dec242357f27317caaedff694e1087))
+* remove training-link snapshot, update link tests ([150ba4e](https://github.com/Availity/availity-react/commit/150ba4e59241f7843d11cbbee566fa356defeac9))
+* upgrade yup and update sb stories ([68aeafe](https://github.com/Availity/availity-react/commit/68aeafe4fd7d90d7c88dbb24636ba7770fe87aa3))
+
+
+### Code Refactoring
+
+* **link:** made link extends anchor tag ([ccc370a](https://github.com/Availity/availity-react/commit/ccc370a3c52a020dd884ab5884223eabd6f57188))
+
+
+### Features
+
+* add link component ([1a745fa](https://github.com/Availity/availity-react/commit/1a745fa46655058eb3ff4cadaa0e06bdcb250a49))
+* **docs:** updated to use yarn and added readmes ([3b94748](https://github.com/Availity/availity-react/commit/3b947487ef18c6e11486ad39203882a11bc8a1e7))
+* **form:** add currency input ([fa9eea6](https://github.com/Availity/availity-react/commit/fa9eea6a3b3dd2ef741a0658c102e36c6db5288c))
+* **link:** add loadApp prop ([48f4d06](https://github.com/Availity/availity-react/commit/48f4d064017fafc78f4bca68b29f22fdc12deb5e))
+* **link:** add onClick prop type ([8e3a646](https://github.com/Availity/availity-react/commit/8e3a646769d78b4ba4c6b599636bf5e2b15bda19))
+* **link:** adding underline for all links 508 compliance ([72d6190](https://github.com/Availity/availity-react/commit/72d61903fea4057e6465e8c991711a9a0b2705d0))
+* **link:** default rel prop when linking to external sites ([b604701](https://github.com/Availity/availity-react/commit/b604701087360f47885580a8d426c97027b23cec))
+* **link:** migrating from spaces link branch ([e923de3](https://github.com/Availity/availity-react/commit/e923de36978b51e3f4c2bd0d49e3975b72922eb3))
+* move storybook, stories, and fix hmr ([2f65f71](https://github.com/Availity/availity-react/commit/2f65f71769d2d981e22700b87a09516833588f64))
+
+
+### BREAKING CHANGES
+
+* **link:** url prop has been renamed to href to align with that standard anchor elements
+
+
+
 ## [2.5.5](https://github.com/Availity/availity-react/compare/@availity/link@2.5.4...@availity/link@2.5.5) (2024-02-21)
 
 

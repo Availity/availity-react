@@ -1,3 +1,4 @@
+/* eslint-disable react/no-unstable-nested-components */
 import React, { forwardRef, Ref, useEffect, useImperativeHandle, useState } from 'react';
 import filter from 'lodash/filter';
 import {
@@ -211,12 +212,13 @@ const TableComponent = <T extends IdType>(
 
   return (
     <TableContext.Provider
+      // eslint-disable-next-line react/jsx-no-constructed-context-values
       value={{
         id,
         instance: tableInstance,
-        /** eslint-disable @typescript-eslint/no-explicit-any */
+        // eslint-disable-next-line @typescript-eslint/no-explicit-any
         getCellProps: getCellProps as (cell: Cell<Record<string, any>>) => React.HTMLAttributes<HTMLTableCellElement>,
-        /** eslint-disable @typescript-eslint/no-explicit-any */
+        // eslint-disable-next-line @typescript-eslint/no-explicit-any
         getRowProps: getRowProps as (row: Row<Record<string, any>>) => RowProps,
         selectable,
         sortable,

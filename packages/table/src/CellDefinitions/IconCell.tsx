@@ -13,7 +13,7 @@ export type IconConfig<T> = {
   defaultValue?: string | React.ReactChild | React.ElementType;
 } & IconProps;
 
-const IconCell = <T extends unknown>({
+const IconCell = <T,>({
   name,
   title,
   getTitle,
@@ -28,6 +28,7 @@ const IconCell = <T extends unknown>({
       generatedTitle = getTitle(value);
     }
 
+    // eslint-disable-next-line react/jsx-no-useless-fragment
     return value ? <Icon name={name} title={generatedTitle} {...attributes} /> : <>{defaultValue}</>;
   };
 
