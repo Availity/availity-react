@@ -2,6 +2,15 @@
 
 This file was generated using [@jscutlery/semver](https://github.com/jscutlery/semver).
 
+# [1.1.0](https://github.com/Availity/availity-react/compare/@availity/form-upload@1.0.7...@availity/form-upload@1.1.0) (2024-09-09)
+
+
+### Features
+
+* add isCloud prop ([6d1d4b8](https://github.com/Availity/availity-react/commit/6d1d4b8c8d29004d1571c4e8d88076e73358860f))
+
+
+
 ## [1.0.7](https://github.com/Availity/availity-react/compare/@availity/form-upload@1.0.6...@availity/form-upload@1.0.7) (2024-08-22)
 
 ### Dependency Updates
