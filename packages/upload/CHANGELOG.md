@@ -2,6 +2,20 @@
 
 This file was generated using [@jscutlery/semver](https://github.com/jscutlery/semver).
 
+# [3.9.0](https://github.com/Availity/availity-react/compare/@availity/upload@3.8.10...@availity/upload@3.9.0) (2024-09-09)
+
+
+### Bug Fixes
+
+* update unit tests ([60ee232](https://github.com/Availity/availity-react/commit/60ee2328dfc24deb31b63a301702c7a711fb7b5c))
+
+
+### Features
+
+* add isCloud prop ([6d1d4b8](https://github.com/Availity/availity-react/commit/6d1d4b8c8d29004d1571c4e8d88076e73358860f))
+
+
+
 ## [3.8.10](https://github.com/Availity/availity-react/compare/@availity/upload@3.8.9...@availity/upload@3.8.10) (2024-08-22)
 
 ### Dependency Updates
