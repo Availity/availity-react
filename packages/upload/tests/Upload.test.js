@@ -1,8 +1,15 @@
 import React from 'react';
-import { render, fireEvent, cleanup, waitFor } from '@testing-library/react';
+import { screen, render, fireEvent, waitFor } from '@testing-library/react';
+
 import Upload from '..';
 
-afterEach(cleanup);
+const getDropRejectionMessage = (errors) => {
+  let msg = '';
+  for (const error of errors) {
+    msg += error.code === 'file-too-large' ? 'my custom error message' : 'this file is no good';
+  }
+  return msg;
+};
 
 describe('Upload', () => {
   test('should render', () => {
@@ -12,13 +19,13 @@ describe('Upload', () => {
   });
 
   test('adding a file', () => {
-    const { getByTestId } = render(<Upload clientId="a" bucketId="b" customerId="c" showFileDrop />);
+    render(<Upload clientId="a" bucketId="b" customerId="c" showFileDrop />);
 
-    const file = new Buffer.from([...'hello world']); // eslint-disable-line new-cap
+    const file = Buffer.from('hello world');
     file.name = 'fileName.png';
     const fileEvent = { target: { files: [file] } };
 
-    const inputNode = getByTestId('file-picker');
+    const inputNode = screen.getByTestId('file-picker');
 
     fireEvent.change(inputNode, fileEvent);
 
@@ -26,34 +33,34 @@ describe('Upload', () => {
   });
 
   test('removing a file', () => {
-    const { getByTestId, queryByTestId } = render(<Upload clientId="a" bucketId="b" customerId="c" />);
+    render(<Upload clientId="a" bucketId="b" customerId="c" />);
 
     // Create a new file
-    const file = new Buffer.from([...'hello world']); // eslint-disable-line new-cap
+    const file = Buffer.from('hello world');
     file.name = 'fileName.png';
 
     const fileEvent = { target: { files: [file] } };
 
-    const inputNode = getByTestId('file-picker');
+    const inputNode = screen.getByTestId('file-picker');
 
     // Simulate the upload to the Components
     fireEvent.change(inputNode, fileEvent);
 
     expect(inputNode.files.length).toBe(1);
 
-    const filerow = getByTestId('remove-file-btn');
+    const filerow = screen.getByTestId('remove-file-btn');
 
     fireEvent.click(filerow);
 
-    expect(queryByTestId('remove-file-btn')).toBeNull();
+    expect(screen.queryByTestId('remove-file-btn')).toBeNull();
   });
 
   test('calls onFilePreUpload callback', () => {
     const mockFunc = jest.fn();
-    const { getByTestId } = render(<Upload clientId="a" bucketId="b" customerId="c" onFilePreUpload={[mockFunc]} />);
-    const inputNode = getByTestId('file-picker');
+    render(<Upload clientId="a" bucketId="b" customerId="c" onFilePreUpload={[mockFunc]} />);
+    const inputNode = screen.getByTestId('file-picker');
 
-    const file = new Buffer.from([...'hello world']); // eslint-disable-line new-cap
+    const file = Buffer.from('hello world');
     file.name = 'fileName.png';
     const fileEvent = { target: { files: [file] } };
 
@@ -61,20 +68,21 @@ describe('Upload', () => {
 
     expect(inputNode.files.length).toBe(1);
 
-    const filerow = getByTestId('remove-file-btn');
+    const filerow = screen.getByTestId('remove-file-btn');
 
     fireEvent.click(filerow);
 
     expect(mockFunc).toHaveBeenCalled();
   });
+
   test('calls onFileRemove callback', () => {
     const mockFunc = jest.fn();
 
-    const { getByTestId } = render(<Upload clientId="a" bucketId="b" customerId="c" onFileRemove={mockFunc} />);
+    render(<Upload clientId="a" bucketId="b" customerId="c" onFileRemove={mockFunc} />);
 
-    const inputNode = getByTestId('file-picker');
+    const inputNode = screen.getByTestId('file-picker');
 
-    const file = new Buffer.from([...'hello world']); // eslint-disable-line new-cap
+    const file = Buffer.from('hello world');
     file.name = 'fileName.png';
     const fileEvent = { target: { files: [file] } };
 
@@ -82,7 +90,7 @@ describe('Upload', () => {
 
     expect(inputNode.files.length).toBe(1);
 
-    const filerow = getByTestId('remove-file-btn');
+    const filerow = screen.getByTestId('remove-file-btn');
 
     fireEvent.click(filerow);
 
@@ -90,11 +98,11 @@ describe('Upload', () => {
   });
 
   test('adds file via dropzone', () => {
-    const { getByTestId } = render(<Upload clientId="a" bucketId="b" customerId="c" showFileDrop />);
-    const file = new Buffer.from([...'hello world']); // eslint-disable-line new-cap
+    render(<Upload clientId="a" bucketId="b" customerId="c" showFileDrop />);
+    const file = Buffer.from('hello world');
     file.name = 'fileName.png';
 
-    const inputNode = getByTestId('file-picker');
+    const inputNode = screen.getByTestId('file-picker');
     const fileEvent = { target: { files: [file] } };
 
     fireEvent.drop(inputNode, fileEvent);
@@ -103,27 +111,25 @@ describe('Upload', () => {
   });
 
   test('uses default drop rejection message', async () => {
-    const { getByTestId, getByText } = render(
-      <Upload clientId="a" bucketId="b" customerId="c" showFileDrop maxSize={10} />
-    );
-    const file = new Buffer.from([...'hello world']); // eslint-disable-line new-cap
+    render(<Upload clientId="a" bucketId="b" customerId="c" showFileDrop maxSize={10} />);
+    const file = Buffer.from('hello world');
     file.name = 'fileName.png';
     file.size = 11;
 
-    const inputNode = getByTestId('file-picker');
+    const inputNode = screen.getByTestId('file-picker');
     const fileEvent = { target: { files: [file] } };
 
     fireEvent.drop(inputNode, fileEvent);
 
     expect(inputNode.files.length).toBe(1);
     await waitFor(() => {
-      expect(getByText('File is larger than 10 bytes')).toBeDefined();
+      expect(screen.getByText('File is larger than 10 bytes')).toBeDefined();
     });
   });
 
   test('a discontinue result from a function in the property onFilePreUpload should prevent onFileUpload from being called', async () => {
     const myfunc = jest.fn();
-    const { getByTestId } = render(
+    render(
       <Upload
         clientId="a"
         bucketId="b"
@@ -134,10 +140,10 @@ describe('Upload', () => {
         onFilePreUpload={[() => false]}
       />
     );
-    const file = new Buffer.from([...'hello world']); // eslint-disable-line new-cap
+    const file = Buffer.from('hello world');
     file.name = 'fileName.png';
     file.size = 11;
-    const inputNode = getByTestId('file-picker');
+    const inputNode = screen.getByTestId('file-picker');
     const fileEvent = { target: { files: [file] } };
 
     fireEvent.drop(inputNode, fileEvent);
@@ -147,16 +153,7 @@ describe('Upload', () => {
   });
 
   test('a discontinue result from a function in the property onFilePreUpload does not stop an error message from generating', async () => {
-    // eslint-disable-next-line unicorn/consistent-function-scoping
-    const getDropRejectionMessage = (errors) => {
-      let msg = '';
-      for (const error of errors) {
-        msg += error.code === 'file-too-large' ? 'my custom error message' : 'this file is no good';
-      }
-      return msg;
-    };
-
-    const { getByTestId, getByText } = render(
+    render(
       <Upload
         clientId="a"
         bucketId="b"
@@ -167,31 +164,22 @@ describe('Upload', () => {
         onFilePreUpload={[() => false]}
       />
     );
-    const file = new Buffer.from([...'hello world']); // eslint-disable-line new-cap
+    const file = Buffer.from('hello world');
     file.name = 'fileName.png';
     file.size = 11;
-    const inputNode = getByTestId('file-picker');
+    const inputNode = screen.getByTestId('file-picker');
     const fileEvent = { target: { files: [file] } };
 
     fireEvent.drop(inputNode, fileEvent);
 
     expect(inputNode.files.length).toBe(1);
     await waitFor(() => {
-      expect(getByText('my custom error message')).toBeDefined();
+      expect(screen.getByText('my custom error message')).toBeDefined();
     });
   });
 
   test('uses custom drop rejection message', async () => {
-    // eslint-disable-next-line unicorn/consistent-function-scoping
-    const getDropRejectionMessage = (errors) => {
-      let msg = '';
-      for (const error of errors) {
-        msg += error.code === 'file-too-large' ? 'my custom error message' : 'this file is no good';
-      }
-      return msg;
-    };
-
-    const { getByTestId, getByText } = render(
+    render(
       <Upload
         clientId="a"
         bucketId="b"
@@ -201,18 +189,50 @@ describe('Upload', () => {
         getDropRejectionMessage={getDropRejectionMessage}
       />
     );
-    const file = new Buffer.from([...'hello world']); // eslint-disable-line new-cap
+    const file = Buffer.from('hello world');
     file.name = 'fileName.png';
     file.size = 11;
 
-    const inputNode = getByTestId('file-picker');
+    const inputNode = screen.getByTestId('file-picker');
     const fileEvent = { target: { files: [file] } };
 
     fireEvent.drop(inputNode, fileEvent);
 
     expect(inputNode.files.length).toBe(1);
     await waitFor(() => {
-      expect(getByText('my custom error message')).toBeDefined();
+      expect(screen.getByText('my custom error message')).toBeDefined();
+    });
+  });
+
+  test('uses cloud url when isCloud is true', async () => {
+    const mockFn = jest.fn();
+
+    render(
+      <Upload
+        clientId="a"
+        bucketId="b"
+        customerId="c"
+        isCloud
+        onFilePreUpload={[
+          (file) => {
+            mockFn(file.options.endpoint);
+          },
+        ]}
+      />
+    );
+
+    const file = Buffer.from('hello world');
+    file.name = 'fileName.png';
+    const fileEvent = { target: { files: [file] } };
+
+    const inputNode = screen.getByTestId('file-picker');
+
+    fireEvent.change(inputNode, fileEvent);
+
+    expect(inputNode.files.length).toBe(1);
+
+    await waitFor(() => {
+      expect(mockFn).toHaveBeenCalledWith('http://localhost/cloud/vault/upload/v1/resumable');
     });
   });
 });
