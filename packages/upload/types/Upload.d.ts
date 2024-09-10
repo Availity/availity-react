@@ -11,6 +11,7 @@ export interface UploadProps {
   customerId: string;
   disabled?: boolean;
   getDropRejectionMessage?: (errors: FileError[], file: File) => string;
+  endpoint?: string;
   max?: number;
   maxSize?: number;
   multiple?: boolean;

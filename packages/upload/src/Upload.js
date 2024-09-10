@@ -62,6 +62,7 @@ class Upload extends Component {
           allowedFileNameCharacters: this.props.allowedFileNameCharacters,
         };
 
+        if (this.props.endpoint) options.endpoint = this.props.endpoint;
         if (this.props.isCloud) options.endpoint = CLOUD_URL;
 
         const upload = new UploadCore(file, options);
@@ -282,6 +283,8 @@ Upload.propTypes = {
   passwordModalZIndex: PropTypes.oneOfType([PropTypes.number, PropTypes.string]),
   /** Set if the component is being used in the cloud. This will override the URL being used. */
   isCloud: PropTypes.bool,
+  /** Override the endpoint used for uploading the file(s) */
+  endpoint: PropTypes.string,
 };
 
 Upload.defaultProps = {

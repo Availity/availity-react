@@ -235,4 +235,36 @@ describe('Upload', () => {
       expect(mockFn).toHaveBeenCalledWith('http://localhost/cloud/vault/upload/v1/resumable');
     });
   });
+
+  test('uses endpoint passed in props for upload', async () => {
+    const mockFn = jest.fn();
+
+    render(
+      <Upload
+        clientId="a"
+        bucketId="b"
+        customerId="c"
+        endpoint="/test/foo"
+        onFilePreUpload={[
+          (file) => {
+            mockFn(file.options.endpoint);
+          },
+        ]}
+      />
+    );
+
+    const file = Buffer.from('hello world');
+    file.name = 'fileName.png';
+    const fileEvent = { target: { files: [file] } };
+
+    const inputNode = screen.getByTestId('file-picker');
+
+    fireEvent.change(inputNode, fileEvent);
+
+    expect(inputNode.files.length).toBe(1);
+
+    await waitFor(() => {
+      expect(mockFn).toHaveBeenCalledWith('http://localhost/test/foo');
+    });
+  });
 });
