@@ -2,6 +2,15 @@
 
 This file was generated using [@jscutlery/semver](https://github.com/jscutlery/semver).
 
+## [1.1.1](https://github.com/Availity/availity-react/compare/@availity/form-upload@1.1.0...@availity/form-upload@1.1.1) (2024-09-11)
+
+
+### Bug Fixes
+
+* allow overriding endpoint ([1cf8db0](https://github.com/Availity/availity-react/commit/1cf8db0208bb3674db3fa1b3d0a41819e8889f9f))
+
+
+
 # [1.1.0](https://github.com/Availity/availity-react/compare/@availity/form-upload@1.0.7...@availity/form-upload@1.1.0) (2024-09-09)
 
 
