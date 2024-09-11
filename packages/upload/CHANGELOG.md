@@ -2,6 +2,15 @@
 
 This file was generated using [@jscutlery/semver](https://github.com/jscutlery/semver).
 
+## [3.9.1](https://github.com/Availity/availity-react/compare/@availity/upload@3.9.0...@availity/upload@3.9.1) (2024-09-11)
+
+
+### Bug Fixes
+
+* allow overriding endpoint ([1cf8db0](https://github.com/Availity/availity-react/commit/1cf8db0208bb3674db3fa1b3d0a41819e8889f9f))
+
+
+
 # [3.9.0](https://github.com/Availity/availity-react/compare/@availity/upload@3.8.10...@availity/upload@3.9.0) (2024-09-09)
 
 
