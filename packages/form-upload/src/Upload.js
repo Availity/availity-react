@@ -31,6 +31,7 @@ const Upload = ({
   customerId,
   deliverFileOnSubmit = false,
   deliveryChannel,
+  endpoint,
   onDeliverySuccess,
   onDeliveryError,
   disabled = false,
@@ -171,6 +172,7 @@ const Upload = ({
           maxSize,
           allowedFileNameCharacters,
         };
+        if (endpoint) options.endpoint = endpoint;
         if (isCloud) options.endpoint = CLOUD_URL;
         const upload = new UploadCore(file, options);
         upload.id = `${upload.id}-${uuid()}`;
@@ -316,6 +318,8 @@ Upload.propTypes = {
   getDropRejectionMessage: PropTypes.func,
   /** Set if the component is being used in the cloud. This will override the URL being used. */
   isCloud: PropTypes.bool,
+  /** Override the endpoint used for uploading the file(s) */
+  endpoint: PropTypes.string,
   /** The maximum number of files allowed to be uploaded. 0 (or a falsey value) means unlimited. When the max number has been reached, the add button will disappear. */
   max: PropTypes.number,
   /** The maximum file size (in bytes) for a file to be uploaded. */
