@@ -150,8 +150,10 @@ const Upload = ({
 
   const setFiles = (files) => {
     let selectedFiles = [];
-    for (const [i, file] of files.entries()) {
-      selectedFiles[i] = file;
+    // FileList is not iterable
+    // eslint-disable-next-line unicorn/no-for-loop
+    for (let i = 0; i < files.length; i++) {
+      selectedFiles[i] = files[i];
     }
 
     if (max && selectedFiles.length + fieldValue.length > max) {

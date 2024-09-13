@@ -28,8 +28,10 @@ const FilePicker = ({
   const onChange = (event) => {
     const { files } = event.target;
     const value = [];
-    for (const [i, file_] of files.entries()) {
-      value[i] = file_;
+    // FileList is not iterable
+    // eslint-disable-next-line unicorn/no-for-loop
+    for (let i = 0; i < files.length; i++) {
+      value[i] = files[i];
     }
     setFieldValue(name, value, true);
     if (onChangeCallback) onChangeCallback(event);

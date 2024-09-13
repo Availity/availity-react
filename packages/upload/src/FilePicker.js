@@ -18,8 +18,10 @@ class FilePicker extends Component {
     const { files } = event.target;
     const { onChange } = this.props;
     this.value = [];
-    for (const [i, file] of files.entries()) {
-      this.value[i] = file;
+    // FileList is not iterable
+    // eslint-disable-next-line unicorn/no-for-loop
+    for (let i = 0; i < files.length; i++) {
+      this.value[i] = files[i];
     }
     this.setState({ value: this.value });
     this.validate();
