@@ -43,8 +43,10 @@ class Upload extends Component {
 
   setFiles = (files) => {
     let selectedFiles = [];
-    for (const [i, file] of files.entries()) {
-      selectedFiles[i] = file;
+    // FileList is not iterable
+    // eslint-disable-next-line unicorn/no-for-loop
+    for (let i = 0; i < files.length; i++) {
+      selectedFiles[i] = files[i];
     }
     if (this.props.max && selectedFiles.length + this.state.files.length > this.props.max) {
       selectedFiles = selectedFiles.slice(0, Math.max(0, this.props.max - this.state.files.length));
