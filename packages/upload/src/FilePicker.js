@@ -17,6 +17,7 @@ class FilePicker extends Component {
   onChange = (event) => {
     const { files } = event.target;
     const { onChange } = this.props;
+    this.value = [];
     // FileList is not iterable
     // eslint-disable-next-line unicorn/no-for-loop
     for (let i = 0; i < files.length; i++) {
