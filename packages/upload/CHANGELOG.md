@@ -2,6 +2,16 @@
 
 This file was generated using [@jscutlery/semver](https://github.com/jscutlery/semver).
 
+## [3.9.2](https://github.com/Availity/availity-react/compare/@availity/upload@3.9.1...@availity/upload@3.9.2) (2024-09-13)
+
+
+### Bug Fixes
+
+* initialize this.value ([540ecf6](https://github.com/Availity/availity-react/commit/540ecf63eed4339edb89ee6bae8a27e67466975e))
+* use for over for of ([e8cb892](https://github.com/Availity/availity-react/commit/e8cb89267edecebaefc5c2d56cf4aad6c43c4fef))
+
+
+
 ## [3.9.1](https://github.com/Availity/availity-react/compare/@availity/upload@3.9.0...@availity/upload@3.9.1) (2024-09-11)
 
 
