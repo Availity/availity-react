@@ -2,6 +2,15 @@
 
 This file was generated using [@jscutlery/semver](https://github.com/jscutlery/semver).
 
+## [3.9.3](https://github.com/Availity/availity-react/compare/@availity/upload@3.9.2...@availity/upload@3.9.3) (2024-09-16)
+
+
+### Bug Fixes
+
+* update url ([09dcc21](https://github.com/Availity/availity-react/commit/09dcc21d0e88387addebb108ce45a35fd2c13049))
+
+
+
 ## [3.9.2](https://github.com/Availity/availity-react/compare/@availity/upload@3.9.1...@availity/upload@3.9.2) (2024-09-13)
 
 
