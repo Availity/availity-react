@@ -17,7 +17,7 @@ const Dropzone = React.lazy(() => import('react-dropzone'));
 
 const dropzoneFallback = <div data-testid="dropzone-fallback">Loading...</div>;
 
-const CLOUD_URL = '/cloud/vault/upload/v1/resumable';
+const CLOUD_URL = '/cloud/appl/vault/upload/v1/resumable';
 
 const Upload = ({
   allowedFileNameCharacters,
