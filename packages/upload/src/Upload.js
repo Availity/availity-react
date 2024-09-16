@@ -11,7 +11,7 @@ import FileList from './FileList';
 import '../styles.scss';
 
 const validationAttrs = ['min', 'max', 'required'];
-const CLOUD_URL = '/cloud/vault/upload/v1/resumable';
+const CLOUD_URL = '/cloud/appl/vault/upload/v1/resumable';
 
 class Upload extends Component {
   constructor(props) {

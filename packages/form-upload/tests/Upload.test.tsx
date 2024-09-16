@@ -292,7 +292,7 @@ describe('Upload', () => {
 
     expect(inputNode.files?.length).toBe(1);
     await waitFor(() => {
-      expect(mockFn).toHaveBeenCalledWith('http://localhost/cloud/vault/upload/v1/resumable');
+      expect(mockFn).toHaveBeenCalledWith('http://localhost/cloud/appl/vault/upload/v1/resumable');
     });
   });
 
