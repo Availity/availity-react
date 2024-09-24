@@ -597,7 +597,7 @@ __metadata:
     "@availity/form": "workspace:*"
     "@availity/icon": "workspace:*"
     "@availity/progress": "workspace:*"
-    "@availity/upload-core": ^6.0.0
+    "@availity/upload-core": ^6.0.1
     "@types/uuid": ^10.0.0
     classnames: ^2.5.1
     formik: ^2.4.6
@@ -1123,13 +1123,13 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@availity/upload-core@npm:^6.0.0":
-  version: 6.0.0
-  resolution: "@availity/upload-core@npm:6.0.0"
+"@availity/upload-core@npm:^6.0.1":
+  version: 6.0.1
+  resolution: "@availity/upload-core@npm:6.0.1"
   dependencies:
     "@availity/resolve-url": 3.0.0
     tus-js-client: 1.7.1
-  checksum: 1f16f4c62533e80c5a6e659f38e8b86d9e77c42e38351be9b2562404bf5f9bb7e84d19bc41d2f3859d5de602006b6a3f6fb3dc375326638a156f078329cdf38f
+  checksum: ffb2356e02ecb2d418614cd492714916c77d6a60b930ddc991f312e958810a718b13d64d759cc1f959236316f47df94f97adf0a748e62fea2263ce0d52a4fa64
   languageName: node
   linkType: hard
 
@@ -1138,7 +1138,7 @@ __metadata:
   resolution: "@availity/upload@workspace:packages/upload"
   dependencies:
     "@availity/progress": "workspace:*"
-    "@availity/upload-core": ^6.0.0
+    "@availity/upload-core": ^6.0.1
     prop-types: ^15.8.1
     react: ^18.3.1
     react-dom: ^18.3.1
