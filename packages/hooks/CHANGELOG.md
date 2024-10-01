@@ -2,6 +2,15 @@
 
 This file was generated using [@jscutlery/semver](https://github.com/jscutlery/semver).
 
+# [5.1.0](https://github.com/Availity/availity-react/compare/@availity/hooks@5.0.3...@availity/hooks@5.1.0) (2024-10-01)
+
+
+### Features
+
+* **hooks:** add useUpdateNav ([68d0f21](https://github.com/Availity/availity-react/commit/68d0f21d1eb034065d7528ebf6033f2e8f20057e))
+
+
+
 ## [5.0.3](https://github.com/Availity/availity-react/compare/@availity/hooks@5.0.2...@availity/hooks@5.0.3) (2024-08-22)
 
 
