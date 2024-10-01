@@ -7,4 +7,5 @@ export { default as useCurrentUser } from './types/useCurrentUser';
 export { default as useProviders } from './types/useProviders';
 export { default as usePermissions } from './types/usePermissions';
 export { default as useOrganizations } from './types/useOrganizations';
+export { default as useUpdateNav } from './types/useUpdateNav';
 export { default as useWindowDimensions } from './types/useWindowDimensions';
