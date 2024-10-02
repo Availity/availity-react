@@ -33,3 +33,29 @@ const App = () => {
   );
 };
 ```
+
+It is also possible to make a wrapper component using the `useUpdateNav` hook and `Outlet` component from `react-router-dom`.
+
+```jsx
+import React from 'react';
+import { useUpdateNav } from '@availity/hooks';
+import { Router, Routes, Route, Outlet } from 'react-router-dom';
+import { Home, Search } from './components';
+
+const RouteWrapper = () => {
+  useUpdateNav();
+
+  return <Outlet />;
+};
+
+const App = () => {
+  return (
+    <Router>
+      <Route element={<RouteWrapper />}>
+        <Route path="/" element={<Home />} />
+        <Route path="/search" element={<Search />} />
+      </Route>
+    </Router>
+  );
+};
+```

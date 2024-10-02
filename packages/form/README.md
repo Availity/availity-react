@@ -22,4 +22,4 @@ yarn add @availity/form
 
 ## Documentation
 
-Check out more documentation at [availity.github.io](https://availity.github.io/availity-react/form/index)
+Check out more documentation at [availity.github.io](https://availity.github.io/availity-react/form/)

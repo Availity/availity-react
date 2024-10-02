@@ -22,4 +22,4 @@ yarn add @availity/pagination
 
 ## Documentation
 
-Check out more documentation at [availity.github.io](https://availity.github.io/availity-react/components/pagination/index)
+Check out more documentation at [availity.github.io](https://availity.github.io/availity-react/components/pagination/)

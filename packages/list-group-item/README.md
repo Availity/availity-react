@@ -22,4 +22,4 @@ yarn add @availity/list-group-item
 
 ## Documentation
 
-Check out more documentation at [availity.github.io](https://availity.github.io/availity-react/components/list-group-item/index)
+Check out more documentation at [availity.github.io](https://availity.github.io/availity-react/components/list-group-item/)
