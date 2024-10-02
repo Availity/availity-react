@@ -2,6 +2,10 @@
 
 This file was generated using [@jscutlery/semver](https://github.com/jscutlery/semver).
 
+## [1.4.7](https://github.com/Availity/availity-react/compare/@availity/list-group-item@1.4.6...@availity/list-group-item@1.4.7) (2024-10-02)
+
+
+
 ## [1.4.6](https://github.com/Availity/availity-react/compare/@availity/list-group-item@1.4.5...@availity/list-group-item@1.4.6) (2024-08-22)
 
 
