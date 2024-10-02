@@ -22,4 +22,4 @@ yarn add @availity/form-upload
 
 ## Documentation
 
-Check out more documentation at [availity.github.io](https://availity.github.io/availity-react/form/upload/index)
+Check out more documentation at [availity.github.io](https://availity.github.io/availity-react/form/upload/)

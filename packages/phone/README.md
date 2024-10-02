@@ -22,4 +22,4 @@ yarn add @availity/phone
 
 ## Documentation
 
-Check out more documentation at [availity.github.io](https://availity.github.io/availity-react/form/phone/index)
+Check out more documentation at [availity.github.io](https://availity.github.io/availity-react/form/phone/)

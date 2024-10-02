@@ -22,4 +22,4 @@ yarn add @availity/step-wizard
 
 ## Documentation
 
-Check out more documentation at [availity.github.io](https://availity.github.io/availity-react/components/step-wizard/index)
+Check out more documentation at [availity.github.io](https://availity.github.io/availity-react/components/step-wizard/)

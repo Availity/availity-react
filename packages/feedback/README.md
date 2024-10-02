@@ -22,4 +22,4 @@ yarn add @availity/feedback
 
 ## Documentation
 
-Check out more documentation at [availity.github.io](https://availity.github.io/availity-react/components/feedback/index)
+Check out more documentation at [availity.github.io](https://availity.github.io/availity-react/components/feedback/)

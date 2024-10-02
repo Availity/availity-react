@@ -22,4 +22,4 @@ yarn add @availity/favorites
 
 ## Documentation
 
-Check out more documentation at [availity.github.io](https://availity.github.io/availity-react/components/favorites/index)
+Check out more documentation at [availity.github.io](https://availity.github.io/availity-react/components/favorites/)

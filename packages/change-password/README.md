@@ -22,5 +22,4 @@ yarn add @availity/change-password
 
 ## Documentation
 
-Check out more documentation at [availity.github.io](https://availity.github.io/availity-react/components/change-password/index)
-
+Check out more documentation at [availity.github.io](https://availity.github.io/availity-react/components/change-password/)

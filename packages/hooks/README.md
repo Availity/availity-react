@@ -22,4 +22,4 @@ yarn add @availity/hooks
 
 ## Documentation
 
-Check out more documentation at [availity.github.io](https://availity.github.io/availity-react/components/hooks/index)
+Check out more documentation at [availity.github.io](https://availity.github.io/availity-react/components/hooks/)
