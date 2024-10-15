@@ -49,9 +49,9 @@
     "yup": "^0.32.11"
   },
   "peerDependencies": {
-    "formik": "^2.0.1",
-    "react": ">=16.8.3",
-    "reactstrap": "^8.0.0"
+    "formik": "^2.4.6",
+    "react": "^18.3.1",
+    "reactstrap": "^8.10.1"
   },
   "publishConfig": {
     "access": "public"

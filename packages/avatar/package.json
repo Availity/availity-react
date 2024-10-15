@@ -32,15 +32,15 @@
     "react-loading-skeleton": "^2.2.0"
   },
   "devDependencies": {
-    "@availity/api-axios": "^9.0.0",
+    "@availity/api-axios": "^9.0.3",
     "axios": "^1.7.4",
     "react": "^18.3.1",
     "react-dom": "^18.3.1"
   },
   "peerDependencies": {
-    "@availity/api-axios": "^8.0.0",
+    "@availity/api-axios": "^9.0.3",
     "axios": "^1.7.4",
-    "react": ">=16.8.0"
+    "react": "^18.3.1"
   },
   "publishConfig": {
     "access": "public"
