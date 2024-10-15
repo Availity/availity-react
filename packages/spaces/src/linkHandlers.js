@@ -11,9 +11,9 @@ export const openLink = async (space, { akaname, payerSpaceId }) => {
   await updateTopApps(space, akaname);
 
   const target = getTarget(space.link.target);
-  const url = !isAbsoluteUrl(space.link.url) || /(test|qa(p?)-)?essentials\.availity\.com/.test(space.link.url)
+  const url = !isAbsoluteUrl(space.link.url)
     ? getUrl(updateUrl(space.link.url, 'spaceId', payerSpaceId || space.parents?.[0]?.id), false, false)
-    : space.link.url;
+    : /(test|qa(p?)-)?essentials\.availity\.com/.test(space.link.url) ? updateUrl(space.link.url, 'spaceId', payerSpaceId || space.parents?.[0]?.id) : space.link.url;
 
   window.open(url, target);
 };
