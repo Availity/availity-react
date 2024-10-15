@@ -2,6 +2,15 @@
 
 This file was generated using [@jscutlery/semver](https://github.com/jscutlery/semver).
 
+## [8.0.13](https://github.com/Availity/availity-react/compare/@availity/spaces@8.0.12...@availity/spaces@8.0.13) (2024-10-15)
+
+
+### Bug Fixes
+
+* **spaces:** append spaceId for essentials links and don't double loadapp ([6d41bf5](https://github.com/Availity/availity-react/commit/6d41bf587c80cbb5cf67a2289dd7ea751202d1b9))
+
+
+
 ## [8.0.12](https://github.com/Availity/availity-react/compare/@availity/spaces@8.0.11...@availity/spaces@8.0.12) (2024-10-14)
 
 
