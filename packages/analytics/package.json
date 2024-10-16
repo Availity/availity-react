@@ -1,6 +1,6 @@
 {
   "name": "@availity/analytics",
-  "version": "1.5.8",
+  "version": "1.5.9",
   "description": "Track click and page view events for the user.",
   "keywords": [
     "react",
