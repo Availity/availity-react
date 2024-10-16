@@ -2,6 +2,13 @@
 
 This file was generated using [@jscutlery/semver](https://github.com/jscutlery/semver).
 
+## [3.9.6](https://github.com/Availity/availity-react/compare/@availity/upload@3.9.5...@availity/upload@3.9.6) (2024-10-16)
+
+### Dependency Updates
+
+* `@availity/progress` updated to version `3.9.5`
+
+
 ## [3.9.5](https://github.com/Availity/availity-react/compare/@availity/upload@3.9.4...@availity/upload@3.9.5) (2024-10-07)
 
 
