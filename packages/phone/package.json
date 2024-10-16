@@ -37,11 +37,11 @@
     "yup": "^0.32.11"
   },
   "peerDependencies": {
-    "@availity/form": "^1.1.0",
-    "formik": "^2.0.1",
-    "react": ">=16.8.3",
-    "reactstrap": "^8.0.0",
-    "yup": "^0.32.0"
+    "@availity/form": "^1.9.3",
+    "formik": "^2.4.6",
+    "react": "^18.0.0",
+    "reactstrap": "^8.10.1",
+    "yup": "^0.32.11"
   },
   "publishConfig": {
     "access": "public"

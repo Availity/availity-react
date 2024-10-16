@@ -34,7 +34,7 @@
     "prop-types": "^15.8.1"
   },
   "devDependencies": {
-    "@availity/api-axios": "^9.0.0",
+    "@availity/api-axios": "^9.0.3",
     "@availity/spaces": "workspace:*",
     "@availity/training-link": "workspace:*",
     "axios": "^1.7.4",
@@ -44,13 +44,13 @@
     "yup": "^0.32.11"
   },
   "peerDependencies": {
-    "@availity/api-axios": "^8.0.0",
-    "@availity/spaces": "^8.0.0",
+    "@availity/api-axios": "^9.0.3",
+    "@availity/spaces": "^8.0.13",
     "axios": "^1.7.4",
-    "formik": "^2.0.1",
-    "react": ">=16.11.0",
-    "react-dom": ">=16.11.0",
-    "yup": "^0.32.0"
+    "formik": "^2.4.6",
+    "react": "^18.0.0",
+    "react-dom": "^18.0.0",
+    "yup": "^0.32.11"
   },
   "publishConfig": {
     "access": "public"

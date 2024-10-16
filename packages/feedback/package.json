@@ -29,13 +29,13 @@
     "@availity/form": "workspace:*",
     "@availity/hooks": "workspace:*",
     "@availity/icon": "workspace:*",
-    "@availity/native-form": "^6.0.0",
+    "@availity/native-form": "^6.0.3",
     "@availity/select": "workspace:*",
     "prop-types": "^15.8.1"
   },
   "devDependencies": {
-    "@availity/api-axios": "^9.0.0",
-    "@availity/yup": "^6.0.0",
+    "@availity/api-axios": "^9.0.3",
+    "@availity/yup": "^6.0.1",
     "axios": "^1.7.4",
     "formik": "^2.4.6",
     "react": "^18.3.1",
@@ -43,12 +43,12 @@
     "reactstrap": "^8.10.1"
   },
   "peerDependencies": {
-    "@availity/api-axios": "^8.0.0",
-    "@availity/yup": "^5.1.0",
+    "@availity/api-axios": "^9.0.3",
+    "@availity/yup": "^6.0.1",
     "axios": "^1.7.4",
-    "formik": "^2.0.1",
-    "react": ">=16.3.0",
-    "reactstrap": "^8.0.0"
+    "formik": "^2.4.6",
+    "react": "^18.0.0",
+    "reactstrap": "^8.10.1"
   },
   "publishConfig": {
     "access": "public"

@@ -39,7 +39,7 @@
     "react-select-async-paginate": "^0.6.2"
   },
   "devDependencies": {
-    "@availity/api-axios": "^9.0.0",
+    "@availity/api-axios": "^9.0.3",
     "@availity/form": "workspace:*",
     "axios": "^1.7.4",
     "formik": "^2.4.6",
@@ -51,12 +51,12 @@
     "yup": "^0.32.11"
   },
   "peerDependencies": {
-    "@availity/api-axios": "^8.0.0",
-    "@availity/form": "^1.1.0",
+    "@availity/api-axios": "^9.0.3",
+    "@availity/form": "^1.9.3",
     "axios": "^1.7.4",
-    "formik": "^2.0.1",
-    "react": ">=16.8.3",
-    "reactstrap": "^8.0.0"
+    "formik": "^2.4.6",
+    "react": "^18.0.0",
+    "reactstrap": "^8.10.1"
   },
   "publishConfig": {
     "access": "public"

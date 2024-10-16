@@ -31,7 +31,7 @@
     "@availity/link": "workspace:*",
     "@availity/list-group-item": "workspace:*",
     "@availity/message-core": "^7.0.1",
-    "@availity/native-form": "^6.0.0",
+    "@availity/native-form": "^6.0.3",
     "@availity/typography": "workspace:*",
     "@tanstack/react-query": "^4.36.1",
     "classnames": "^2.5.1",
@@ -44,7 +44,7 @@
     "react-markdown": "^6.0.3"
   },
   "devDependencies": {
-    "@availity/api-axios": "^9.0.0",
+    "@availity/api-axios": "^9.0.3",
     "@availity/favorites": "workspace:*",
     "axios": "^1.7.4",
     "react": "^18.3.1",
@@ -52,11 +52,11 @@
     "reactstrap": "^8.10.1"
   },
   "peerDependencies": {
-    "@availity/api-axios": "^8.0.0",
-    "@availity/favorites": "^5.0.0",
+    "@availity/api-axios": "^9.0.3",
+    "@availity/favorites": "^5.0.9",
     "axios": "^1.7.4",
-    "react": ">=16.8.6",
-    "reactstrap": "^8.0.0"
+    "react": "^18.0.0",
+    "reactstrap": "^8.10.1"
   },
   "publishConfig": {
     "access": "public"

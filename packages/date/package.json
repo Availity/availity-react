@@ -39,7 +39,7 @@
   },
   "devDependencies": {
     "@availity/form": "workspace:*",
-    "@availity/yup": "^6.0.0",
+    "@availity/yup": "^6.0.1",
     "@types/react-dates": "^21.8.6",
     "esbuild-sass-plugin": "^2.15.0",
     "formik": "^2.4.6",
@@ -50,10 +50,10 @@
     "typescript": "^5.5.4"
   },
   "peerDependencies": {
-    "@availity/form": "^1.1.0",
-    "formik": "^2.0.1",
-    "react": ">=16.3.0",
-    "reactstrap": "^8.0.0"
+    "@availity/form": "^1.9.3",
+    "formik": "^2.4.6",
+    "react": "^18.0.0",
+    "reactstrap": "^8.10.1"
   },
   "publishConfig": {
     "access": "public"

@@ -223,13 +223,13 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@availity/analytics-core@npm:^5.0.0":
-  version: 5.0.0
-  resolution: "@availity/analytics-core@npm:5.0.0"
+"@availity/analytics-core@npm:^5.0.3":
+  version: 5.0.3
+  resolution: "@availity/analytics-core@npm:5.0.3"
   dependencies:
     uuid: ^10.0.0
     yup: ^0.32.11
-  checksum: 410c0e3dc8a387fc3f4f827599f576b9cba18404fb2a3ba4730476c0f2b24b8ccfeaed8f67b39156c8fccdca62362c0dc8dd1c208df957b5b598169725ecc7b9
+  checksum: 85b1613273bdf9e9abeb39118578f064c78c7d739650372969d9f5a86b4a1fe05060f4e5e511cadc8cfbf1b6a81511c1c40164d7234b309e27e6ddac25a1b79a
   languageName: node
   linkType: hard
 
@@ -237,25 +237,25 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@availity/analytics@workspace:packages/analytics"
   dependencies:
-    "@availity/analytics-core": ^5.0.0
+    "@availity/analytics-core": ^5.0.3
     prop-types: ^15.8.1
     react: ^18.3.1
     react-dom: ^18.3.1
   peerDependencies:
-    react: ">=16.8.0"
+    react: ^18.0.0
   languageName: unknown
   linkType: soft
 
-"@availity/api-axios@npm:9.0.0, @availity/api-axios@npm:^9.0.0":
-  version: 9.0.0
-  resolution: "@availity/api-axios@npm:9.0.0"
+"@availity/api-axios@npm:9.0.3, @availity/api-axios@npm:^9.0.3":
+  version: 9.0.3
+  resolution: "@availity/api-axios@npm:9.0.3"
   dependencies:
     "@availity/resolve-url": 3.0.0
     lodash: ^4.17.21
-    qs: ^6.12.3
+    qs: ^6.13.0
   peerDependencies:
-    axios: ^1.4.0
-  checksum: bcafd76d418e7bfa00d6d0f7062296ffc374d032e56781ef0fbca61e05d073786a388f180ad569c5b31f17181a4178bd6c23d9a50a96b955e3a02f8ab08827c8
+    axios: ^1.7.7
+  checksum: 4121322ca7958480588c192f7d1822c9764fe456a2959707c924dccb31ff8485b543f10debaee5b0ed5f40def903322fed42077e1c394adadeeed3d4c9008f10
   languageName: node
   linkType: hard
 
@@ -269,7 +269,7 @@ __metadata:
     tsup: ^8.2.4
     typescript: ^5.5.4
   peerDependencies:
-    react: ">=16.3.0"
+    react: ^18.0.0
   languageName: unknown
   linkType: soft
 
@@ -283,7 +283,7 @@ __metadata:
     tsup: ^8.2.4
     typescript: ^5.5.4
   peerDependencies:
-    react: ">=16.3.0"
+    react: ^18.0.0
   languageName: unknown
   linkType: soft
 
@@ -291,7 +291,7 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@availity/authorize@workspace:packages/authorize"
   dependencies:
-    "@availity/api-axios": ^9.0.0
+    "@availity/api-axios": ^9.0.3
     "@availity/block-ui": ^1.0.0
     "@tanstack/react-query": ^4.36.1
     axios: ^1.7.4
@@ -300,10 +300,10 @@ __metadata:
     tsup: ^8.2.4
     typescript: ^5.5.4
   peerDependencies:
-    "@availity/api-axios": ^8.0.0
+    "@availity/api-axios": ^9.0.3
     axios: ^1.7.4
-    react: ">=16.8.0"
-    react-dom: ">=16.8.0"
+    react: ^18.0.0
+    react-dom: ^18.0.0
   languageName: unknown
   linkType: soft
 
@@ -376,7 +376,7 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@availity/avatar@workspace:packages/avatar"
   dependencies:
-    "@availity/api-axios": ^9.0.0
+    "@availity/api-axios": ^9.0.3
     "@availity/hooks": "workspace:*"
     axios: ^1.7.4
     lodash: ^4.17.21
@@ -386,9 +386,9 @@ __metadata:
     react-image: ^4.1.0
     react-loading-skeleton: ^2.2.0
   peerDependencies:
-    "@availity/api-axios": ^8.0.0
+    "@availity/api-axios": ^9.0.3
     axios: ^1.7.4
-    react: ">=16.8.0"
+    react: ^18.0.0
   languageName: unknown
   linkType: soft
 
@@ -404,8 +404,8 @@ __metadata:
     tsup: ^8.2.4
     typescript: ^5.5.4
   peerDependencies:
-    react: ">=16.3.0"
-    reactstrap: ^8.0.0
+    react: ^18.0.0
+    reactstrap: ^8.10.1
   languageName: unknown
   linkType: soft
 
@@ -418,7 +418,7 @@ __metadata:
     tsup: ^8.2.4
     typescript: ^5.5.4
   peerDependencies:
-    react: ">=16.8.0"
+    react: ^18.0.0
   languageName: unknown
   linkType: soft
 
@@ -431,8 +431,8 @@ __metadata:
     react-dom: ^18.3.1
     reactstrap: ^8.10.1
   peerDependencies:
-    react: ">=16.3.0"
-    reactstrap: ^8.0.0
+    react: ^18.0.0
+    reactstrap: ^8.10.1
   languageName: unknown
   linkType: soft
 
@@ -447,8 +447,8 @@ __metadata:
     tsup: ^8.2.4
     typescript: ^5.5.4
   peerDependencies:
-    react: ">=16.3.0"
-    reactstrap: ^8.0.0
+    react: ^18.0.0
+    reactstrap: ^8.10.1
   languageName: unknown
   linkType: soft
 
@@ -456,7 +456,7 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@availity/change-password@workspace:packages/change-password"
   dependencies:
-    "@availity/api-axios": ^9.0.0
+    "@availity/api-axios": ^9.0.3
     "@availity/block-ui": "workspace:^"
     "@availity/form": "workspace:*"
     "@availity/icon": "workspace:*"
@@ -470,10 +470,10 @@ __metadata:
     react-dom: ^18.3.1
     reactstrap: ^8.10.1
   peerDependencies:
-    "@availity/api-axios": ^8.0.0
+    "@availity/api-axios": ^9.0.3
     axios: ^1.7.4
-    react: ">=16.8.6"
-    reactstrap: ^8.0.0
+    react: ^18.0.0
+    reactstrap: ^8.10.1
   languageName: unknown
   linkType: soft
 
@@ -483,7 +483,7 @@ __metadata:
   dependencies:
     "@availity/form": "workspace:*"
     "@availity/react-dates": ^21.13.1
-    "@availity/yup": ^6.0.0
+    "@availity/yup": ^6.0.1
     "@types/react-dates": ^21.8.6
     classnames: ^2.5.1
     esbuild-sass-plugin: ^2.15.0
@@ -497,10 +497,10 @@ __metadata:
     tsup: ^8.2.4
     typescript: ^5.5.4
   peerDependencies:
-    "@availity/form": ^1.1.0
-    formik: ^2.0.1
-    react: ">=16.3.0"
-    reactstrap: ^8.0.0
+    "@availity/form": ^1.9.3
+    formik: ^2.4.6
+    react: ^18.0.0
+    reactstrap: ^8.10.1
   languageName: unknown
   linkType: soft
 
@@ -521,8 +521,8 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@availity/favorites@workspace:packages/favorites"
   dependencies:
-    "@availity/analytics-core": ^5.0.0
-    "@availity/api-axios": ^9.0.0
+    "@availity/analytics-core": ^5.0.3
+    "@availity/api-axios": ^9.0.3
     "@availity/hooks": "workspace:*"
     "@availity/message-core": ^7.0.1
     "@radix-ui/react-tooltip": 0.1.6
@@ -535,10 +535,10 @@ __metadata:
     tsup: ^8.2.4
     typescript: ^5.5.4
   peerDependencies:
-    "@availity/api-axios": ^8.0.0
+    "@availity/api-axios": ^9.0.3
     axios: ^1.7.4
-    react: ">=16.8.0"
-    react-dom: ">=16.8.0"
+    react: ^18.0.0
+    react-dom: ^18.0.0
   languageName: unknown
   linkType: soft
 
@@ -555,7 +555,7 @@ __metadata:
     react-dom: ^18.3.1
   peerDependencies:
     axios: ^1.7.4
-    react: ">=16.3.0"
+    react: ^18.0.0
   bin:
     generate-features-json: bin.js
   languageName: unknown
@@ -565,14 +565,14 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@availity/feedback@workspace:packages/feedback"
   dependencies:
-    "@availity/api-axios": ^9.0.0
+    "@availity/api-axios": ^9.0.3
     "@availity/block-ui": "workspace:^"
     "@availity/form": "workspace:*"
     "@availity/hooks": "workspace:*"
     "@availity/icon": "workspace:*"
-    "@availity/native-form": ^6.0.0
+    "@availity/native-form": ^6.0.3
     "@availity/select": "workspace:*"
-    "@availity/yup": ^6.0.0
+    "@availity/yup": ^6.0.1
     axios: ^1.7.4
     formik: ^2.4.6
     prop-types: ^15.8.1
@@ -580,12 +580,12 @@ __metadata:
     react-dom: ^18.3.1
     reactstrap: ^8.10.1
   peerDependencies:
-    "@availity/api-axios": ^8.0.0
-    "@availity/yup": ^5.1.0
+    "@availity/api-axios": ^9.0.3
+    "@availity/yup": ^6.0.1
     axios: ^1.7.4
-    formik: ^2.0.1
-    react: ">=16.3.0"
-    reactstrap: ^8.0.0
+    formik: ^2.4.6
+    react: ^18.0.0
+    reactstrap: ^8.10.1
   languageName: unknown
   linkType: soft
 
@@ -593,7 +593,7 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@availity/form-upload@workspace:packages/form-upload"
   dependencies:
-    "@availity/api-axios": ^9.0.0
+    "@availity/api-axios": ^9.0.3
     "@availity/form": "workspace:*"
     "@availity/icon": "workspace:*"
     "@availity/progress": "workspace:*"
@@ -611,13 +611,13 @@ __metadata:
     uuid: ^10.0.0
     xhr-mock: ^2.5.1
   peerDependencies:
-    "@availity/api-axios": ^8.0.0
-    "@availity/form": ^1.1.0
-    "@availity/upload-core": ^5.0.5
-    formik: ^2.0.1
-    react: ">=16.8.0"
-    react-dropzone: ^11.0.0
-    reactstrap: ^8.0.0
+    "@availity/api-axios": ^9.0.3
+    "@availity/form": ^1.9.3
+    "@availity/upload-core": ^6.0.1
+    formik: ^2.4.6
+    react: ^18.0.0
+    react-dropzone: ^11.7.1
+    reactstrap: ^8.10.1
   languageName: unknown
   linkType: soft
 
@@ -639,9 +639,9 @@ __metadata:
     uuid: ^10.0.0
     yup: ^0.32.11
   peerDependencies:
-    formik: ^2.0.1
-    react: ">=16.8.3"
-    reactstrap: ^8.0.0
+    formik: ^2.4.6
+    react: ^18.0.0
+    reactstrap: ^8.10.1
   languageName: unknown
   linkType: soft
 
@@ -655,7 +655,7 @@ __metadata:
     tsup: ^8.2.4
     typescript: ^5.5.4
   peerDependencies:
-    react: ">=16.3.0"
+    react: ^18.0.0
   languageName: unknown
   linkType: soft
 
@@ -663,7 +663,7 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@availity/hooks@workspace:packages/hooks"
   dependencies:
-    "@availity/api-axios": ^9.0.0
+    "@availity/api-axios": ^9.0.3
     "@availity/message-core": ^7.0.1
     "@tanstack/react-query": ^4.36.1
     axios: ^1.7.4
@@ -672,11 +672,11 @@ __metadata:
     react-dom: ^18.3.1
     react-router-dom: ^6.26.0
   peerDependencies:
-    "@availity/api-axios": ^9.0.0
+    "@availity/api-axios": ^9.0.3
     "@availity/message-core": ^7.0.1
     axios: ^1.7.4
-    react: ">=16.8.0"
-    react-router-dom: ^6.0.0
+    react: ^18.0.0
+    react-router-dom: ^6.26.0
   languageName: unknown
   linkType: soft
 
@@ -690,7 +690,7 @@ __metadata:
     tsup: ^8.2.4
     typescript: ^5.5.4
   peerDependencies:
-    react: ">=16.3.0"
+    react: ^18.0.0
   languageName: unknown
   linkType: soft
 
@@ -704,7 +704,7 @@ __metadata:
     tsup: ^8.2.4
     typescript: ^5.5.4
   peerDependencies:
-    react: ">=16.3.0"
+    react: ^18.0.0
   languageName: unknown
   linkType: soft
 
@@ -718,7 +718,7 @@ __metadata:
     react: ^18.3.1
     react-dom: ^18.3.1
   peerDependencies:
-    react: ">=16.3.0"
+    react: ^18.0.0
   languageName: unknown
   linkType: soft
 
@@ -731,8 +731,8 @@ __metadata:
     react-dom: ^18.3.1
     reactstrap: ^8.10.1
   peerDependencies:
-    react: ">=16.3.0"
-    reactstrap: ^8.0.0
+    react: ^18.0.0
+    reactstrap: ^8.10.1
   languageName: unknown
   linkType: soft
 
@@ -746,8 +746,8 @@ __metadata:
     react-dom: ^18.3.1
     reactstrap: ^8.10.1
   peerDependencies:
-    react: ">=16.3.0"
-    reactstrap: ^8.0.0
+    react: ^18.0.0
+    reactstrap: ^8.10.1
   languageName: unknown
   linkType: soft
 
@@ -767,12 +767,12 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@availity/native-form@npm:^6.0.0":
-  version: 6.0.0
-  resolution: "@availity/native-form@npm:6.0.0"
+"@availity/native-form@npm:^6.0.3":
+  version: 6.0.3
+  resolution: "@availity/native-form@npm:6.0.3"
   dependencies:
-    "@availity/api-axios": 9.0.0
-  checksum: d1a1e1a8d27a42eaff7e3e5cf46b33e5c29919c913c9571bcfa2bf8a43f2ad48ad784d6e26b73ac70c6dc1e21570c6387b1111c11d9a0965c0087c665e3a0300
+    "@availity/api-axios": 9.0.3
+  checksum: acb137b972a9c540e63f56201c061baa7f28326e5827308099f442c7db5ce9cbe8b6c4ff98d9a0a5eb1803fba13a52843a7b444fc3f9eb034c3d8bb7eaefe3e6
   languageName: node
   linkType: hard
 
@@ -780,7 +780,7 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@availity/page-header@workspace:packages/page-header"
   dependencies:
-    "@availity/api-axios": ^9.0.0
+    "@availity/api-axios": ^9.0.3
     "@availity/app-icon": "workspace:*"
     "@availity/breadcrumbs": "workspace:*"
     "@availity/feedback": "workspace:*"
@@ -795,13 +795,13 @@ __metadata:
     react-dom: ^18.3.1
     yup: ^0.32.11
   peerDependencies:
-    "@availity/api-axios": ^8.0.0
-    "@availity/spaces": ^8.0.0
+    "@availity/api-axios": ^9.0.3
+    "@availity/spaces": ^8.0.13
     axios: ^1.7.4
-    formik: ^2.0.1
-    react: ">=16.11.0"
-    react-dom: ">=16.11.0"
-    yup: ^0.32.0
+    formik: ^2.4.6
+    react: ^18.0.0
+    react-dom: ^18.0.0
+    yup: ^0.32.11
   languageName: unknown
   linkType: soft
 
@@ -820,8 +820,8 @@ __metadata:
     tsup: ^8.2.4
     typescript: ^5.5.4
   peerDependencies:
-    react: ">=16.8.0"
-    reactstrap: ^8.0.0
+    react: ^18.0.0
+    reactstrap: ^8.10.1
   languageName: unknown
   linkType: soft
 
@@ -829,7 +829,7 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@availity/payer-logo@workspace:packages/payer-logo"
   dependencies:
-    "@availity/api-axios": ^9.0.0
+    "@availity/api-axios": ^9.0.3
     "@availity/hooks": "workspace:^5.0.0"
     axios: ^1.7.4
     lodash: ^4.17.21
@@ -837,9 +837,9 @@ __metadata:
     react: ^18.3.1
     react-dom: ^18.3.1
   peerDependencies:
-    "@availity/api-axios": ^8.0.0
+    "@availity/api-axios": ^9.0.3
     axios: ^1.7.4
-    react: ">=16.8.3"
+    react: ^18.0.0
   languageName: unknown
   linkType: soft
 
@@ -856,11 +856,11 @@ __metadata:
     reactstrap: ^8.10.1
     yup: ^0.32.11
   peerDependencies:
-    "@availity/form": ^1.1.0
-    formik: ^2.0.1
-    react: ">=16.8.3"
-    reactstrap: ^8.0.0
-    yup: ^0.32.0
+    "@availity/form": ^1.9.3
+    formik: ^2.4.6
+    react: ^18.0.0
+    reactstrap: ^8.10.1
+    yup: ^0.32.11
   languageName: unknown
   linkType: soft
 
@@ -875,7 +875,7 @@ __metadata:
     tsup: ^8.2.4
     typescript: ^5.5.4
   peerDependencies:
-    react: ">=16.3.0"
+    react: ^18.0.0
   languageName: unknown
   linkType: soft
 
@@ -926,10 +926,10 @@ __metadata:
     react-with-direction: ^1.4.0
     reactstrap: ^8.10.1
   peerDependencies:
-    availity-reactstrap-validation: ^2.5.3
-    date-fns: ^2.16.1
-    react: ">=16.3.0"
-    reactstrap: ^8.0.0
+    availity-reactstrap-validation: ^2.7.1
+    date-fns: ^2.30.0
+    react: ^18.0.0
+    reactstrap: ^8.10.1
   languageName: unknown
   linkType: soft
 
@@ -937,7 +937,7 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@availity/reactstrap-validation-select@workspace:packages/reactstrap-validation-select"
   dependencies:
-    "@availity/api-axios": ^9.0.0
+    "@availity/api-axios": ^9.0.3
     availity-reactstrap-validation: ^2.7.1
     axios: ^1.7.4
     classnames: ^2.5.1
@@ -950,12 +950,12 @@ __metadata:
     react-select-async-paginate: ^0.6.2
     reactstrap: ^8.10.1
   peerDependencies:
-    "@availity/api-axios": ^8.0.0
-    availity-reactstrap-validation: ^2.7.0
-    availity-uikit: ^4.0.0
+    "@availity/api-axios": ^9.0.3
+    availity-reactstrap-validation: ^2.7.1
+    availity-uikit: ^4.7.0
     axios: ^1.7.4
-    react: ">=16.8.3"
-    reactstrap: ^8.0.0
+    react: ^18.0.0
+    reactstrap: ^8.10.1
   languageName: unknown
   linkType: soft
 
@@ -970,7 +970,7 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@availity/select@workspace:packages/select"
   dependencies:
-    "@availity/api-axios": ^9.0.0
+    "@availity/api-axios": ^9.0.3
     "@availity/form": "workspace:*"
     axios: ^1.7.4
     classnames: ^2.5.1
@@ -987,12 +987,12 @@ __metadata:
     typescript: ^5.5.4
     yup: ^0.32.11
   peerDependencies:
-    "@availity/api-axios": ^8.0.0
-    "@availity/form": ^1.1.0
+    "@availity/api-axios": ^9.0.3
+    "@availity/form": ^1.9.3
     axios: ^1.7.4
-    formik: ^2.0.1
-    react: ">=16.8.3"
-    reactstrap: ^8.0.0
+    formik: ^2.4.6
+    react: ^18.0.0
+    reactstrap: ^8.10.1
   languageName: unknown
   linkType: soft
 
@@ -1000,7 +1000,7 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@availity/spaces@workspace:packages/spaces"
   dependencies:
-    "@availity/api-axios": ^9.0.0
+    "@availity/api-axios": ^9.0.3
     "@availity/app-icon": "workspace:*"
     "@availity/favorites": "workspace:*"
     "@availity/hooks": "workspace:*"
@@ -1008,7 +1008,7 @@ __metadata:
     "@availity/link": "workspace:*"
     "@availity/list-group-item": "workspace:*"
     "@availity/message-core": ^7.0.1
-    "@availity/native-form": ^6.0.0
+    "@availity/native-form": ^6.0.3
     "@availity/typography": "workspace:*"
     "@tanstack/react-query": ^4.36.1
     axios: ^1.7.4
@@ -1024,11 +1024,11 @@ __metadata:
     react-markdown: ^6.0.3
     reactstrap: ^8.10.1
   peerDependencies:
-    "@availity/api-axios": ^8.0.0
-    "@availity/favorites": ^5.0.0
+    "@availity/api-axios": ^9.0.3
+    "@availity/favorites": ^5.0.9
     axios: ^1.7.4
-    react: ">=16.8.6"
-    reactstrap: ^8.0.0
+    react: ^18.0.0
+    reactstrap: ^8.10.1
   languageName: unknown
   linkType: soft
 
@@ -1041,7 +1041,7 @@ __metadata:
     react: ^18.3.1
     react-dom: ^18.3.1
   peerDependencies:
-    react: ">=16.3.0"
+    react: ^18.0.0
   languageName: unknown
   linkType: soft
 
@@ -1062,10 +1062,10 @@ __metadata:
     tsup: ^8.2.4
     typescript: ^5.5.4
   peerDependencies:
-    availity-uikit: ">=3.0.0"
-    react: ^17.0.2
-    react-dom: ^17.0.2
-    reactstrap: ^8.0.0
+    availity-uikit: ">=4.7.0"
+    react: ^18.0.0
+    react-dom: ^18.0.0
+    reactstrap: ^8.10.1
   languageName: unknown
   linkType: soft
 
@@ -1079,7 +1079,7 @@ __metadata:
     tsup: ^8.2.4
     typescript: ^5.5.4
   peerDependencies:
-    react: ">=16.3.0"
+    react: ^18.0.0
     reactstrap: ^8.10.1
   languageName: unknown
   linkType: soft
@@ -1093,7 +1093,7 @@ __metadata:
     tsup: ^8.2.4
     typescript: ^5.5.4
   peerDependencies:
-    react: ">=16.3.0"
+    react: ^18.0.0
   languageName: unknown
   linkType: soft
 
@@ -1108,8 +1108,8 @@ __metadata:
     tsup: ^8.2.4
     typescript: ^5.5.4
   peerDependencies:
-    react: ">=16.3.0"
-    reactstrap: ^8.0.0
+    react: ^18.0.0
+    reactstrap: ^8.10.1
   languageName: unknown
   linkType: soft
 
@@ -1123,7 +1123,7 @@ __metadata:
     react-dom: ^18.3.1
     tsup: ^8.2.4
   peerDependencies:
-    react: ">=16.3.0"
+    react: ^18.0.0
   languageName: unknown
   linkType: soft
 
@@ -1150,23 +1150,23 @@ __metadata:
     reactstrap: ^8.10.1
     uuid: ^10.0.0
   peerDependencies:
-    "@availity/upload-core": ^5.0.5
-    react: ">=16.8.0"
-    react-dom: ">=16.8.0"
-    react-dropzone: ^11.0.0
-    reactstrap: ^8.0.0
+    "@availity/upload-core": ^6.0.1
+    react: ^18.0.0
+    react-dom: ^18.0.0
+    react-dropzone: ^11.7.1
+    reactstrap: ^8.10.1
   languageName: unknown
   linkType: soft
 
-"@availity/yup@npm:^6.0.0":
-  version: 6.0.0
-  resolution: "@availity/yup@npm:6.0.0"
+"@availity/yup@npm:^6.0.1":
+  version: 6.0.1
+  resolution: "@availity/yup@npm:6.0.1"
   dependencies:
     lodash: ^4.17.21
     yup: ^0.32.11
   peerDependencies:
-    moment: ^2.24.0
-  checksum: 8d28a765756697f7465fd9749088959600bdb24ee9d2814b34f65e21452c29b6f17ccd4faee490b228843e7d95626a3d821ac2b002311c66aa3234bd36bff33f
+    moment: ^2.30.1
+  checksum: 8c90b6ae39a864723b4cf968d1581b1cf095d5417372cbedcf843c6ba44df30ea3d254f43e6ee596930017a71f2b5583672fe91601bb5f720721033f3aa43cc7
   languageName: node
   linkType: hard
 
@@ -6249,114 +6249,114 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@rollup/rollup-android-arm-eabi@npm:4.20.0":
-  version: 4.20.0
-  resolution: "@rollup/rollup-android-arm-eabi@npm:4.20.0"
+"@rollup/rollup-android-arm-eabi@npm:4.24.0":
+  version: 4.24.0
+  resolution: "@rollup/rollup-android-arm-eabi@npm:4.24.0"
   conditions: os=android & cpu=arm
   languageName: node
   linkType: hard
 
-"@rollup/rollup-android-arm64@npm:4.20.0":
-  version: 4.20.0
-  resolution: "@rollup/rollup-android-arm64@npm:4.20.0"
+"@rollup/rollup-android-arm64@npm:4.24.0":
+  version: 4.24.0
+  resolution: "@rollup/rollup-android-arm64@npm:4.24.0"
   conditions: os=android & cpu=arm64
   languageName: node
   linkType: hard
 
-"@rollup/rollup-darwin-arm64@npm:4.20.0":
-  version: 4.20.0
-  resolution: "@rollup/rollup-darwin-arm64@npm:4.20.0"
+"@rollup/rollup-darwin-arm64@npm:4.24.0":
+  version: 4.24.0
+  resolution: "@rollup/rollup-darwin-arm64@npm:4.24.0"
   conditions: os=darwin & cpu=arm64
   languageName: node
   linkType: hard
 
-"@rollup/rollup-darwin-x64@npm:4.20.0":
-  version: 4.20.0
-  resolution: "@rollup/rollup-darwin-x64@npm:4.20.0"
+"@rollup/rollup-darwin-x64@npm:4.24.0":
+  version: 4.24.0
+  resolution: "@rollup/rollup-darwin-x64@npm:4.24.0"
   conditions: os=darwin & cpu=x64
   languageName: node
   linkType: hard
 
-"@rollup/rollup-linux-arm-gnueabihf@npm:4.20.0":
-  version: 4.20.0
-  resolution: "@rollup/rollup-linux-arm-gnueabihf@npm:4.20.0"
+"@rollup/rollup-linux-arm-gnueabihf@npm:4.24.0":
+  version: 4.24.0
+  resolution: "@rollup/rollup-linux-arm-gnueabihf@npm:4.24.0"
   conditions: os=linux & cpu=arm & libc=glibc
   languageName: node
   linkType: hard
 
-"@rollup/rollup-linux-arm-musleabihf@npm:4.20.0":
-  version: 4.20.0
-  resolution: "@rollup/rollup-linux-arm-musleabihf@npm:4.20.0"
+"@rollup/rollup-linux-arm-musleabihf@npm:4.24.0":
+  version: 4.24.0
+  resolution: "@rollup/rollup-linux-arm-musleabihf@npm:4.24.0"
   conditions: os=linux & cpu=arm & libc=musl
   languageName: node
   linkType: hard
 
-"@rollup/rollup-linux-arm64-gnu@npm:4.20.0":
-  version: 4.20.0
-  resolution: "@rollup/rollup-linux-arm64-gnu@npm:4.20.0"
+"@rollup/rollup-linux-arm64-gnu@npm:4.24.0":
+  version: 4.24.0
+  resolution: "@rollup/rollup-linux-arm64-gnu@npm:4.24.0"
   conditions: os=linux & cpu=arm64 & libc=glibc
   languageName: node
   linkType: hard
 
-"@rollup/rollup-linux-arm64-musl@npm:4.20.0":
-  version: 4.20.0
-  resolution: "@rollup/rollup-linux-arm64-musl@npm:4.20.0"
+"@rollup/rollup-linux-arm64-musl@npm:4.24.0":
+  version: 4.24.0
+  resolution: "@rollup/rollup-linux-arm64-musl@npm:4.24.0"
   conditions: os=linux & cpu=arm64 & libc=musl
   languageName: node
   linkType: hard
 
-"@rollup/rollup-linux-powerpc64le-gnu@npm:4.20.0":
-  version: 4.20.0
-  resolution: "@rollup/rollup-linux-powerpc64le-gnu@npm:4.20.0"
+"@rollup/rollup-linux-powerpc64le-gnu@npm:4.24.0":
+  version: 4.24.0
+  resolution: "@rollup/rollup-linux-powerpc64le-gnu@npm:4.24.0"
   conditions: os=linux & cpu=ppc64 & libc=glibc
   languageName: node
   linkType: hard
 
-"@rollup/rollup-linux-riscv64-gnu@npm:4.20.0":
-  version: 4.20.0
-  resolution: "@rollup/rollup-linux-riscv64-gnu@npm:4.20.0"
+"@rollup/rollup-linux-riscv64-gnu@npm:4.24.0":
+  version: 4.24.0
+  resolution: "@rollup/rollup-linux-riscv64-gnu@npm:4.24.0"
   conditions: os=linux & cpu=riscv64 & libc=glibc
   languageName: node
   linkType: hard
 
-"@rollup/rollup-linux-s390x-gnu@npm:4.20.0":
-  version: 4.20.0
-  resolution: "@rollup/rollup-linux-s390x-gnu@npm:4.20.0"
+"@rollup/rollup-linux-s390x-gnu@npm:4.24.0":
+  version: 4.24.0
+  resolution: "@rollup/rollup-linux-s390x-gnu@npm:4.24.0"
   conditions: os=linux & cpu=s390x & libc=glibc
   languageName: node
   linkType: hard
 
-"@rollup/rollup-linux-x64-gnu@npm:4.20.0":
-  version: 4.20.0
-  resolution: "@rollup/rollup-linux-x64-gnu@npm:4.20.0"
+"@rollup/rollup-linux-x64-gnu@npm:4.24.0":
+  version: 4.24.0
+  resolution: "@rollup/rollup-linux-x64-gnu@npm:4.24.0"
   conditions: os=linux & cpu=x64 & libc=glibc
   languageName: node
   linkType: hard
 
-"@rollup/rollup-linux-x64-musl@npm:4.20.0":
-  version: 4.20.0
-  resolution: "@rollup/rollup-linux-x64-musl@npm:4.20.0"
+"@rollup/rollup-linux-x64-musl@npm:4.24.0":
+  version: 4.24.0
+  resolution: "@rollup/rollup-linux-x64-musl@npm:4.24.0"
   conditions: os=linux & cpu=x64 & libc=musl
   languageName: node
   linkType: hard
 
-"@rollup/rollup-win32-arm64-msvc@npm:4.20.0":
-  version: 4.20.0
-  resolution: "@rollup/rollup-win32-arm64-msvc@npm:4.20.0"
+"@rollup/rollup-win32-arm64-msvc@npm:4.24.0":
+  version: 4.24.0
+  resolution: "@rollup/rollup-win32-arm64-msvc@npm:4.24.0"
   conditions: os=win32 & cpu=arm64
   languageName: node
   linkType: hard
 
-"@rollup/rollup-win32-ia32-msvc@npm:4.20.0":
-  version: 4.20.0
-  resolution: "@rollup/rollup-win32-ia32-msvc@npm:4.20.0"
+"@rollup/rollup-win32-ia32-msvc@npm:4.24.0":
+  version: 4.24.0
+  resolution: "@rollup/rollup-win32-ia32-msvc@npm:4.24.0"
   conditions: os=win32 & cpu=ia32
   languageName: node
   linkType: hard
 
-"@rollup/rollup-win32-x64-msvc@npm:4.20.0":
-  version: 4.20.0
-  resolution: "@rollup/rollup-win32-x64-msvc@npm:4.20.0"
+"@rollup/rollup-win32-x64-msvc@npm:4.24.0":
+  version: 4.24.0
+  resolution: "@rollup/rollup-win32-x64-msvc@npm:4.24.0"
   conditions: os=win32 & cpu=x64
   languageName: node
   linkType: hard
@@ -7928,10 +7928,10 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@types/estree@npm:*, @types/estree@npm:1.0.5, @types/estree@npm:^1.0.0, @types/estree@npm:^1.0.5":
-  version: 1.0.5
-  resolution: "@types/estree@npm:1.0.5"
-  checksum: dd8b5bed28e6213b7acd0fb665a84e693554d850b0df423ac8076cc3ad5823a6bc26b0251d080bdc545af83179ede51dd3f6fa78cad2c46ed1f29624ddf3e41a
+"@types/estree@npm:*, @types/estree@npm:1.0.6, @types/estree@npm:^1.0.0, @types/estree@npm:^1.0.5":
+  version: 1.0.6
+  resolution: "@types/estree@npm:1.0.6"
+  checksum: 8825d6e729e16445d9a1dd2fb1db2edc5ed400799064cd4d028150701031af012ba30d6d03fe9df40f4d7a437d0de6d2b256020152b7b09bde9f2e420afdffd9
   languageName: node
   linkType: hard
 
@@ -24206,8 +24206,8 @@ __metadata:
   linkType: hard
 
 "rollup@npm:^2.25.0 || ^3.3.0, rollup@npm:^3.27.1":
-  version: 3.29.4
-  resolution: "rollup@npm:3.29.4"
+  version: 3.29.5
+  resolution: "rollup@npm:3.29.5"
   dependencies:
     fsevents: ~2.3.2
   dependenciesMeta:
@@ -24215,31 +24215,31 @@ __metadata:
       optional: true
   bin:
     rollup: dist/bin/rollup
-  checksum: 8bb20a39c8d91130825159c3823eccf4dc2295c9a0a5c4ed851a5bf2167dbf24d9a29f23461a54c955e5506395e6cc188eafc8ab0e20399d7489fb33793b184e
+  checksum: 6f8304e58ac8170a715e61e46c4aa674b2ae2587ed2a712dab58f72e5e54803ae40b485fbe6b3e6a694f4c8f7a59ab936ccf9f6b686c7cfd1f1970fa9ecadf1a
   languageName: node
   linkType: hard
 
 "rollup@npm:^4.19.0":
-  version: 4.20.0
-  resolution: "rollup@npm:4.20.0"
+  version: 4.24.0
+  resolution: "rollup@npm:4.24.0"
   dependencies:
-    "@rollup/rollup-android-arm-eabi": 4.20.0
-    "@rollup/rollup-android-arm64": 4.20.0
-    "@rollup/rollup-darwin-arm64": 4.20.0
-    "@rollup/rollup-darwin-x64": 4.20.0
-    "@rollup/rollup-linux-arm-gnueabihf": 4.20.0
-    "@rollup/rollup-linux-arm-musleabihf": 4.20.0
-    "@rollup/rollup-linux-arm64-gnu": 4.20.0
-    "@rollup/rollup-linux-arm64-musl": 4.20.0
-    "@rollup/rollup-linux-powerpc64le-gnu": 4.20.0
-    "@rollup/rollup-linux-riscv64-gnu": 4.20.0
-    "@rollup/rollup-linux-s390x-gnu": 4.20.0
-    "@rollup/rollup-linux-x64-gnu": 4.20.0
-    "@rollup/rollup-linux-x64-musl": 4.20.0
-    "@rollup/rollup-win32-arm64-msvc": 4.20.0
-    "@rollup/rollup-win32-ia32-msvc": 4.20.0
-    "@rollup/rollup-win32-x64-msvc": 4.20.0
-    "@types/estree": 1.0.5
+    "@rollup/rollup-android-arm-eabi": 4.24.0
+    "@rollup/rollup-android-arm64": 4.24.0
+    "@rollup/rollup-darwin-arm64": 4.24.0
+    "@rollup/rollup-darwin-x64": 4.24.0
+    "@rollup/rollup-linux-arm-gnueabihf": 4.24.0
+    "@rollup/rollup-linux-arm-musleabihf": 4.24.0
+    "@rollup/rollup-linux-arm64-gnu": 4.24.0
+    "@rollup/rollup-linux-arm64-musl": 4.24.0
+    "@rollup/rollup-linux-powerpc64le-gnu": 4.24.0
+    "@rollup/rollup-linux-riscv64-gnu": 4.24.0
+    "@rollup/rollup-linux-s390x-gnu": 4.24.0
+    "@rollup/rollup-linux-x64-gnu": 4.24.0
+    "@rollup/rollup-linux-x64-musl": 4.24.0
+    "@rollup/rollup-win32-arm64-msvc": 4.24.0
+    "@rollup/rollup-win32-ia32-msvc": 4.24.0
+    "@rollup/rollup-win32-x64-msvc": 4.24.0
+    "@types/estree": 1.0.6
     fsevents: ~2.3.2
   dependenciesMeta:
     "@rollup/rollup-android-arm-eabi":
@@ -24278,7 +24278,7 @@ __metadata:
       optional: true
   bin:
     rollup: dist/bin/rollup
-  checksum: 92c6c68a93d7726345df2627fd5b0a88d1481fbe76e6c8ad84a8eae6835c03fc36ed4cb3271350b5290397b26eb97a97297496ca972289b2299a24e81649bca0
+  checksum: b7e915b0cc43749c2c71255ff58858496460b1a75148db2abecc8e9496af83f488517768593826715f610e20e480a5ae7f1132a1408eb1d364830d6b239325cf
   languageName: node
   linkType: hard
 
