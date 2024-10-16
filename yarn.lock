@@ -242,7 +242,7 @@ __metadata:
     react: ^18.3.1
     react-dom: ^18.3.1
   peerDependencies:
-    react: ^18.3.1
+    react: ^18.0.0
   languageName: unknown
   linkType: soft
 
@@ -269,7 +269,7 @@ __metadata:
     tsup: ^8.2.4
     typescript: ^5.5.4
   peerDependencies:
-    react: ^18.3.1
+    react: ^18.0.0
   languageName: unknown
   linkType: soft
 
@@ -283,7 +283,7 @@ __metadata:
     tsup: ^8.2.4
     typescript: ^5.5.4
   peerDependencies:
-    react: ^18.3.1
+    react: ^18.0.0
   languageName: unknown
   linkType: soft
 
@@ -302,8 +302,8 @@ __metadata:
   peerDependencies:
     "@availity/api-axios": ^9.0.3
     axios: ^1.7.4
-    react: ^18.3.1
-    react-dom: ^18.3.1
+    react: ^18.0.0
+    react-dom: ^18.0.0
   languageName: unknown
   linkType: soft
 
@@ -388,7 +388,7 @@ __metadata:
   peerDependencies:
     "@availity/api-axios": ^9.0.3
     axios: ^1.7.4
-    react: ^18.3.1
+    react: ^18.0.0
   languageName: unknown
   linkType: soft
 
@@ -404,7 +404,7 @@ __metadata:
     tsup: ^8.2.4
     typescript: ^5.5.4
   peerDependencies:
-    react: ^18.3.1
+    react: ^18.0.0
     reactstrap: ^8.10.1
   languageName: unknown
   linkType: soft
@@ -418,7 +418,7 @@ __metadata:
     tsup: ^8.2.4
     typescript: ^5.5.4
   peerDependencies:
-    react: ^18.3.1
+    react: ^18.0.0
   languageName: unknown
   linkType: soft
 
@@ -431,7 +431,7 @@ __metadata:
     react-dom: ^18.3.1
     reactstrap: ^8.10.1
   peerDependencies:
-    react: ^18.3.1
+    react: ^18.0.0
     reactstrap: ^8.10.1
   languageName: unknown
   linkType: soft
@@ -447,7 +447,7 @@ __metadata:
     tsup: ^8.2.4
     typescript: ^5.5.4
   peerDependencies:
-    react: ^18.3.1
+    react: ^18.0.0
     reactstrap: ^8.10.1
   languageName: unknown
   linkType: soft
@@ -472,7 +472,7 @@ __metadata:
   peerDependencies:
     "@availity/api-axios": ^9.0.3
     axios: ^1.7.4
-    react: ^18.3.1
+    react: ^18.0.0
     reactstrap: ^8.10.1
   languageName: unknown
   linkType: soft
@@ -499,7 +499,7 @@ __metadata:
   peerDependencies:
     "@availity/form": ^1.9.3
     formik: ^2.4.6
-    react: ^18.3.1
+    react: ^18.0.0
     reactstrap: ^8.10.1
   languageName: unknown
   linkType: soft
@@ -537,8 +537,8 @@ __metadata:
   peerDependencies:
     "@availity/api-axios": ^9.0.3
     axios: ^1.7.4
-    react: ^18.3.1
-    react-dom: ^18.3.1
+    react: ^18.0.0
+    react-dom: ^18.0.0
   languageName: unknown
   linkType: soft
 
@@ -555,7 +555,7 @@ __metadata:
     react-dom: ^18.3.1
   peerDependencies:
     axios: ^1.7.4
-    react: ^18.3.1
+    react: ^18.0.0
   bin:
     generate-features-json: bin.js
   languageName: unknown
@@ -584,7 +584,7 @@ __metadata:
     "@availity/yup": ^6.0.1
     axios: ^1.7.4
     formik: ^2.4.6
-    react: ^18.3.1
+    react: ^18.0.0
     reactstrap: ^8.10.1
   languageName: unknown
   linkType: soft
@@ -615,7 +615,7 @@ __metadata:
     "@availity/form": ^1.9.3
     "@availity/upload-core": ^6.0.1
     formik: ^2.4.6
-    react: ^18.3.1
+    react: ^18.0.0
     react-dropzone: ^11.7.1
     reactstrap: ^8.10.1
   languageName: unknown
@@ -640,7 +640,7 @@ __metadata:
     yup: ^0.32.11
   peerDependencies:
     formik: ^2.4.6
-    react: ^18.3.1
+    react: ^18.0.0
     reactstrap: ^8.10.1
   languageName: unknown
   linkType: soft
@@ -655,7 +655,7 @@ __metadata:
     tsup: ^8.2.4
     typescript: ^5.5.4
   peerDependencies:
-    react: ^18.3.1
+    react: ^18.0.0
   languageName: unknown
   linkType: soft
 
@@ -675,7 +675,7 @@ __metadata:
     "@availity/api-axios": ^9.0.3
     "@availity/message-core": ^7.0.1
     axios: ^1.7.4
-    react: ^18.3.1
+    react: ^18.0.0
     react-router-dom: ^6.26.0
   languageName: unknown
   linkType: soft
@@ -690,7 +690,7 @@ __metadata:
     tsup: ^8.2.4
     typescript: ^5.5.4
   peerDependencies:
-    react: ^18.3.1
+    react: ^18.0.0
   languageName: unknown
   linkType: soft
 
@@ -704,7 +704,7 @@ __metadata:
     tsup: ^8.2.4
     typescript: ^5.5.4
   peerDependencies:
-    react: ^18.3.1
+    react: ^18.0.0
   languageName: unknown
   linkType: soft
 
@@ -718,7 +718,7 @@ __metadata:
     react: ^18.3.1
     react-dom: ^18.3.1
   peerDependencies:
-    react: ^18.3.1
+    react: ^18.0.0
   languageName: unknown
   linkType: soft
 
@@ -731,7 +731,7 @@ __metadata:
     react-dom: ^18.3.1
     reactstrap: ^8.10.1
   peerDependencies:
-    react: ^18.3.1
+    react: ^18.0.0
     reactstrap: ^8.10.1
   languageName: unknown
   linkType: soft
@@ -746,7 +746,7 @@ __metadata:
     react-dom: ^18.3.1
     reactstrap: ^8.10.1
   peerDependencies:
-    react: ^18.3.1
+    react: ^18.0.0
     reactstrap: ^8.10.1
   languageName: unknown
   linkType: soft
@@ -799,8 +799,8 @@ __metadata:
     "@availity/spaces": ^8.0.13
     axios: ^1.7.4
     formik: ^2.4.6
-    react: ^18.3.1
-    react-dom: ^18.3.1
+    react: ^18.0.0
+    react-dom: ^18.0.0
     yup: ^0.32.11
   languageName: unknown
   linkType: soft
@@ -820,7 +820,7 @@ __metadata:
     tsup: ^8.2.4
     typescript: ^5.5.4
   peerDependencies:
-    react: ^18.3.1
+    react: ^18.0.0
     reactstrap: ^8.10.1
   languageName: unknown
   linkType: soft
@@ -839,7 +839,7 @@ __metadata:
   peerDependencies:
     "@availity/api-axios": ^9.0.3
     axios: ^1.7.4
-    react: ^18.3.1
+    react: ^18.0.0
   languageName: unknown
   linkType: soft
 
@@ -858,7 +858,7 @@ __metadata:
   peerDependencies:
     "@availity/form": ^1.9.3
     formik: ^2.4.6
-    react: ^18.3.1
+    react: ^18.0.0
     reactstrap: ^8.10.1
     yup: ^0.32.11
   languageName: unknown
@@ -875,7 +875,7 @@ __metadata:
     tsup: ^8.2.4
     typescript: ^5.5.4
   peerDependencies:
-    react: ^18.3.1
+    react: ^18.0.0
   languageName: unknown
   linkType: soft
 
@@ -928,7 +928,7 @@ __metadata:
   peerDependencies:
     availity-reactstrap-validation: ^2.7.1
     date-fns: ^2.30.0
-    react: ^18.3.1
+    react: ^18.0.0
     reactstrap: ^8.10.1
   languageName: unknown
   linkType: soft
@@ -954,7 +954,7 @@ __metadata:
     availity-reactstrap-validation: ^2.7.1
     availity-uikit: ^4.7.0
     axios: ^1.7.4
-    react: ^18.3.1
+    react: ^18.0.0
     reactstrap: ^8.10.1
   languageName: unknown
   linkType: soft
@@ -991,7 +991,7 @@ __metadata:
     "@availity/form": ^1.9.3
     axios: ^1.7.4
     formik: ^2.4.6
-    react: ^18.3.1
+    react: ^18.0.0
     reactstrap: ^8.10.1
   languageName: unknown
   linkType: soft
@@ -1027,7 +1027,7 @@ __metadata:
     "@availity/api-axios": ^9.0.3
     "@availity/favorites": ^5.0.9
     axios: ^1.7.4
-    react: ^18.3.1
+    react: ^18.0.0
     reactstrap: ^8.10.1
   languageName: unknown
   linkType: soft
@@ -1041,7 +1041,7 @@ __metadata:
     react: ^18.3.1
     react-dom: ^18.3.1
   peerDependencies:
-    react: ^18.3.1
+    react: ^18.0.0
   languageName: unknown
   linkType: soft
 
@@ -1063,8 +1063,8 @@ __metadata:
     typescript: ^5.5.4
   peerDependencies:
     availity-uikit: ">=4.7.0"
-    react: ^18.3.1
-    react-dom: ^18.3.1
+    react: ^18.0.0
+    react-dom: ^18.0.0
     reactstrap: ^8.10.1
   languageName: unknown
   linkType: soft
@@ -1079,7 +1079,7 @@ __metadata:
     tsup: ^8.2.4
     typescript: ^5.5.4
   peerDependencies:
-    react: ^18.3.1
+    react: ^18.0.0
     reactstrap: ^8.10.1
   languageName: unknown
   linkType: soft
@@ -1093,7 +1093,7 @@ __metadata:
     tsup: ^8.2.4
     typescript: ^5.5.4
   peerDependencies:
-    react: ^18.3.1
+    react: ^18.0.0
   languageName: unknown
   linkType: soft
 
@@ -1108,7 +1108,7 @@ __metadata:
     tsup: ^8.2.4
     typescript: ^5.5.4
   peerDependencies:
-    react: ^18.3.1
+    react: ^18.0.0
     reactstrap: ^8.10.1
   languageName: unknown
   linkType: soft
@@ -1123,7 +1123,7 @@ __metadata:
     react-dom: ^18.3.1
     tsup: ^8.2.4
   peerDependencies:
-    react: ^18.3.1
+    react: ^18.0.0
   languageName: unknown
   linkType: soft
 
@@ -1151,8 +1151,8 @@ __metadata:
     uuid: ^10.0.0
   peerDependencies:
     "@availity/upload-core": ^6.0.1
-    react: ^18.3.1
-    react-dom: ^18.3.1
+    react: ^18.0.0
+    react-dom: ^18.0.0
     react-dropzone: ^11.7.1
     reactstrap: ^8.10.1
   languageName: unknown
