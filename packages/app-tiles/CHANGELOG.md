@@ -2,6 +2,10 @@
 
 This file was generated using [@jscutlery/semver](https://github.com/jscutlery/semver).
 
+## [0.2.5](https://github.com/Availity/availity-react/compare/@availity/app-tiles@0.2.4...@availity/app-tiles@0.2.5) (2024-10-16)
+
+
+
 ## [0.2.4](https://github.com/Availity/availity-react/compare/@availity/app-tiles@0.2.3...@availity/app-tiles@0.2.4) (2024-08-22)
 
 
