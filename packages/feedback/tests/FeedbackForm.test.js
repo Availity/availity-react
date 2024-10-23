@@ -92,7 +92,7 @@ describe('FeedbackForm', () => {
   test('should submit without feedback text value when feedbackText set to false', async () => {
     const onFeedbackSent = jest.fn();
 
-    const { getByLabelText, getByText } = render(<FeedbackForm onFeedbackSent={onFeedbackSent} name="Payer Space" feedbackText={false}/>);
+    const { getByText } = render(<FeedbackForm onFeedbackSent={onFeedbackSent} name="Payer Space" feedbackText={false}/>);
 
     // Simulate the Click
     fireEvent.click(getByText('Smiley face'));
