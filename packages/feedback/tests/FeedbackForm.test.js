@@ -89,6 +89,28 @@ describe('FeedbackForm', () => {
     );
   });
 
+  test('should submit without feedback text value when feedbackText set to false', async () => {
+    const onFeedbackSent = jest.fn();
+
+    const { getByLabelText, getByText } = render(<FeedbackForm onFeedbackSent={onFeedbackSent} name="Payer Space" feedbackText={false}/>);
+
+    // Simulate the Click
+    fireEvent.click(getByText('Smiley face'));
+
+    fireEvent.click(getByText('Send Feedback'));
+
+    await waitFor(
+      () => {
+        expect(onFeedbackSent).toHaveBeenCalledWith(
+          expect.objectContaining({
+            active: 'smile',
+          })
+        );
+      },
+      { timeout: 2500 }
+    );
+  });
+
   test('should submit and disable button when clicked', async () => {
     // mock log messages api to return a promise that resolves after 3 seconds
     avLogMessagesApiV2.info = jest.fn(
