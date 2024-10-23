@@ -2,6 +2,17 @@
 
 This file was generated using [@jscutlery/semver](https://github.com/jscutlery/semver).
 
+# [9.1.0](https://github.com/Availity/availity-react/compare/@availity/feedback@9.0.5...@availity/feedback@9.1.0) (2024-10-23)
+
+
+### Features
+
+* ON-10523 added unit test for feedbackText Prop ([938fd5a](https://github.com/Availity/availity-react/commit/938fd5af5a92b4228e4547c4dd74a1a1421af0b1))
+* ON-10523 feedback text area optional in feedback form component ([95d9182](https://github.com/Availity/availity-react/commit/95d9182ff6bea73a8c27ef7764b78862fcc76177))
+* ON-10523 modified unit test for feedbackText Prop ([eed0e83](https://github.com/Availity/availity-react/commit/eed0e830dfdfc95165a493b719a1f0204e978e19))
+
+
+
 ## [9.0.5](https://github.com/Availity/availity-react/compare/@availity/feedback@9.0.4...@availity/feedback@9.0.5) (2024-10-16)
 
 ### Dependency Updates
