@@ -30,6 +30,7 @@ const FeedbackForm = ({
   onClose,
   faceOptions,
   aboutOptions = [],
+  feedbackText = true,
   aboutLabel = 'This is about',
   onFeedbackSent,
   prompt,
@@ -129,7 +130,10 @@ const FeedbackForm = ({
           smileField: undefined,
         }}
         validationSchema={yup.object().shape({
-          feedback: yup.string().max(200, 'Feedback cannot exceed 200 characters.').required('This field is required.'),
+          feedback: yup
+            .string()
+            .max(200, 'Feedback cannot exceed 200 characters.')
+            .isRequired(feedbackText, 'This field is required.'),
           additionalFeedback: yup.string().max(200, 'Additional Feedback cannot exceed 200 characters.'),
           smileField: yup
             .object()
@@ -276,6 +280,8 @@ FeedbackForm.propTypes = {
       value: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
     })
   ),
+  /** If false, then feedback text area is made optional */
+  feedbackText: PropTypes.bool,
   /** Label text for the dropdown created via the aboutOptions prop. Default: "This is about".
    *Previously aboutPlaceholder. All placeholders replaced with labels starting v6.0.0. */
   aboutLabel: PropTypes.node,
