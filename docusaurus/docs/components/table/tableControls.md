@@ -82,7 +82,7 @@ const Example = () : JSX.Element => (
             {({ instance }) => (
                 <Pagination
                 itemsPerPage={instance.state.pageSize}
-                page={instance.currentPage}
+                page={instance.state.pageIndex + 1}
                 onPageChange={(page: number) => {
                     const { gotoPage } = instance;
                     gotoPage(page - 1);
@@ -193,7 +193,7 @@ Below is an example of how to configure it (client-size pagination).
         {({ instance }) => (
           <Pagination
             itemsPerPage={instance.state.pageSize}
-            page={instance.currentPage}
+            page={instance.state.pageIndex + 1}
             onPageChange={(page: number) => {
               const { gotoPage } = instance;
               gotoPage(page - 1);

@@ -297,7 +297,7 @@ const WithControlsStory = ({ sortable, selectable, columns, data, headerProps, b
           {({ instance }) => (
             <Pagination
               itemsPerPage={instance.state.pageSize}
-              page={instance.currentPage}
+              page={instance.state.pageIndex + 1}
               onPageChange={(page: number) => {
                 const { gotoPage } = instance;
                 gotoPage(page - 1);

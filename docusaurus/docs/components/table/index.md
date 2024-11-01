@@ -97,7 +97,7 @@ const Example = () => (
           {({ instance }) => (
             <Pagination
               itemsPerPage={instance.state.pageSize}
-              page={instance.currentPage}
+              page={instance.state.pageIndex - 1 }
               onPageChange={(page: number) => {
                 const { gotoPage } = instance;
                 gotoPage(page - 1);
@@ -885,7 +885,7 @@ const Example = () => (
           {({ instance }) => (
             <Pagination
               itemsPerPage={instance.state.pageSize}
-              page={instance.currentPage}
+              page={instance.state.pageIndex + 1 }
               onPageChange={(page: number) => {
                 const { gotoPage } = instance;
                 gotoPage(page - 1);
@@ -974,7 +974,7 @@ const Example = () : JSX.Element => (
             {({ instance }) => (
                 <Pagination
                 itemsPerPage={instance.state.pageSize}
-                page={instance.currentPage}
+                page={instance.state.pageIndex + 1}
                 onPageChange={(page: number) => {
                     const { gotoPage } = instance;
                     gotoPage(page - 1);
