@@ -149,7 +149,7 @@ This determines whether the table is sortable or not.
 
 #### `initialState?: object`
 
-This object definition sets the initial state of the table, including the default sort by definition.
+This object definition sets the initial state of the table, including the default sort by definition and page size. Ex. `initialState: { sortBy: [{ id: 'firstName', desc: false }], pageSize: 5 }`;
 
 #### `additionalContent?: ReactNode`
 
