@@ -100,4 +100,5 @@ export type TableInstance<T extends IdType> = UseSortByInstanceProps<T> &
 export type CurrentTableState<T extends IdType> = TableState &
   Partial<UseRowSelectState<T>> & {
     sortBy?: TableSort[];
+    pageSize?: number;
   };
