@@ -8,5 +8,5 @@ export { default as RadioGroup } from './RadioGroup';
 export { default as Radio } from './Radio';
 export { default as Feedback } from './Feedback';
 export { default as Label, RequiredAsterisk, RequiredKey } from './Label';
-export { default as FieldHelpIcon } from './FieldHelpIcon';
+export { default as FieldHelpIcon, triggerFieldHelp } from './FieldHelpIcon';
 export { default as CurrencyInput } from './CurrencyInput';
