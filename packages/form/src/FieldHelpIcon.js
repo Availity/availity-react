@@ -5,7 +5,7 @@ import Icon from '@availity/icon';
 
 export const OPEN_FIELD_HELP = 'nav:help:field';
 
-const triggerFieldHelp = (id) => {
+export const triggerFieldHelp = (id) => {
   avMessages.send({
     event: OPEN_FIELD_HELP,
     id,
