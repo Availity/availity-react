@@ -2,6 +2,21 @@
 
 This file was generated using [@jscutlery/semver](https://github.com/jscutlery/semver).
 
+# [1.10.0](https://github.com/Availity/availity-react/compare/@availity/form@1.9.4...@availity/form@1.10.0) (2024-11-12)
+
+
+### Bug Fixes
+
+* **form:** add type export ([7751b7d](https://github.com/Availity/availity-react/commit/7751b7d53f5491ad6a511c80d6ef8fec74881967))
+
+
+### Features
+
+* **form:** export triggerFieldHelp func ([82c303c](https://github.com/Availity/availity-react/commit/82c303c9dbf52fd13ed0b960487b93f1bd4ba6a6))
+* **form:** export triggerFieldHelp function from types ([f24c9c4](https://github.com/Availity/availity-react/commit/f24c9c4c5ffb392b82c18c7026ee6fe6f659feac))
+
+
+
 ## [1.9.4](https://github.com/Availity/availity-react/compare/@availity/form@1.9.3...@availity/form@1.9.4) (2024-10-16)
 
 ### Dependency Updates
