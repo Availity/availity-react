@@ -13,8 +13,10 @@ type FieldHelpIconProps = {
 
 declare const FieldHelpIcon: (props: FieldHelpIconProps) => JSX.Element;
 
+declare const triggerFieldHelp: (id: string) => void;
+
 declare const OPEN_FIELD_HELP: string;
 
-export { FieldHelpIconProps, OPEN_FIELD_HELP };
+export { FieldHelpIconProps, OPEN_FIELD_HELP, triggerFieldHelp };
 
 export default FieldHelpIcon;
