@@ -42,6 +42,10 @@ The maximum length of the user's password
 
 Additional props to spread onto the current password input field
 
+#### `showCurrentPassword?: boolean`
+
+Conditionally render the current password input field. Defaults to `true`
+
 #### `newPasswordProps?: object`
 
 Additional props to spread onto the new password input field

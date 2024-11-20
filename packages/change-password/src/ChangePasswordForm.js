@@ -18,6 +18,7 @@ const ChangePasswordForm = ({
   header,
   maxLength = 30,
   currentPasswordProps,
+  showCurrentPassword = true,
   newPasswordProps,
   confirmNewPasswordProps,
 }) => {
@@ -87,37 +88,42 @@ const ChangePasswordForm = ({
               <Alert isOpen={!!success} color="success" toggle={_onSuccessToggle}>
                 {success}
               </Alert>
-              <div className="password-with-icon">
-                <Field
-                  name="currentPassword"
-                  data-testid="current-password-input"
-                  label="Current Password"
-                  maxLength={maxLength}
-                  placeholder="Input your current password"
-                  type={currentPasswordVisible ? 'text' : 'password'}
-                  {...currentPasswordProps}
-                />
-                <Icon
-                  name={`eye${currentPasswordVisible ? '' : '-off'}`}
-                  data-testid="current-password-icon"
-                  id="current-password-eye"
-                  role="button"
-                  label="password-visibility"
-                  onMouseDown={(e) => {
-                    currentPasswordIconRef?.current?.focus();
-                    e.preventDefault();
-                    setCurrentPasswordVisible(!currentPasswordVisible);
-                  }}
-                  onKeyDown={(e) => {
-                    if (e.keyCode === 13 || e.keyCode === 32) {
-                      setCurrentPasswordVisible(!currentPasswordVisible);
-                    }
-                  }}
-                  tabIndex={0}
-                  aria-label={currentPasswordVisible ? 'Hide Password' : 'Show Password'}
-                  ref={currentPasswordIconRef}
-                />
-              </div>
+
+              {
+                showCurrentPassword ? (
+                  <div className="password-with-icon">
+                    <Field
+                      name="currentPassword"
+                      data-testid="current-password-input"
+                      label="Current Password"
+                      maxLength={maxLength}
+                      placeholder="Input your current password"
+                      type={currentPasswordVisible ? 'text' : 'password'}
+                      {...currentPasswordProps}
+                    />
+                    <Icon
+                      name={`eye${currentPasswordVisible ? '' : '-off'}`}
+                      data-testid="current-password-icon"
+                      id="current-password-eye"
+                      role="button"
+                      label="password-visibility"
+                      onMouseDown={(e) => {
+                        currentPasswordIconRef?.current?.focus();
+                        e.preventDefault();
+                        setCurrentPasswordVisible(!currentPasswordVisible);
+                      }}
+                      onKeyDown={(e) => {
+                        if (e.keyCode === 13 || e.keyCode === 32) {
+                          setCurrentPasswordVisible(!currentPasswordVisible);
+                        }
+                      }}
+                      tabIndex={0}
+                      aria-label={currentPasswordVisible ? 'Hide Password' : 'Show Password'}
+                      ref={currentPasswordIconRef}
+                    />
+                  </div>
+                ) : null
+              }
 
               <div className="password-with-icon">
                 <Field
@@ -214,6 +220,7 @@ ChangePasswordForm.propTypes = {
   header: PropTypes.node,
   maxLength: PropTypes.number,
   currentPasswordProps: PropTypes.object,
+  showCurrentPassword: PropTypes.bool,
   newPasswordProps: PropTypes.object,
   confirmNewPasswordProps: PropTypes.object,
 };

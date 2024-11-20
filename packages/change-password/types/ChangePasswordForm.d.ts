@@ -6,6 +6,7 @@ export interface ChangePasswordFormProps {
   header?: React.ReactNode;
   maxLength?: number;
   currentPasswordProps?: any;
+  showCurrentPassword?: boolean;
   newPasswordProps?: any;
   confirmNewPasswordProps?: any;
 }
