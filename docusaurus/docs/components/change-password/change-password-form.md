@@ -26,6 +26,10 @@ Function to call when an error occurs calling the `changePassword` method on the
 
 Additional Buttons to render to the right of the Submit button.
 
+#### `additionalFields?: React.ReactNode`
+
+Additional Fields to render in the `<Form />`
+
 #### `header?: React.ReactNode`
 
 The header to render above the form inputs

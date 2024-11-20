@@ -2,6 +2,7 @@ export interface ChangePasswordFormProps {
   onHandleSubmit?: (arg: { result: any }) => void;
   onError?: (arg: { error: Error }) => void;
   additionalButtons?: React.ReactNode;
+  additionalFields?: React.ReactNode;
   header?: React.ReactNode;
   maxLength?: number;
   currentPasswordProps?: any;

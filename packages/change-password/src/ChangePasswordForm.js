@@ -14,6 +14,7 @@ const ChangePasswordForm = ({
   onHandleSubmit,
   onError,
   additionalButtons,
+  additionalFields,
   header,
   maxLength = 30,
   currentPasswordProps,
@@ -183,6 +184,7 @@ const ChangePasswordForm = ({
                   ref={confirmNewPasswordIconRef}
                 />
               </div>
+              {additionalFields}
             </Col>
             <Col>
               <ChangePasswordFeedback />
@@ -208,6 +210,7 @@ ChangePasswordForm.propTypes = {
   onHandleSubmit: PropTypes.func,
   onError: PropTypes.func,
   additionalButtons: PropTypes.node,
+  additionalFields: PropTypes.node,
   header: PropTypes.node,
   maxLength: PropTypes.number,
   currentPasswordProps: PropTypes.object,
