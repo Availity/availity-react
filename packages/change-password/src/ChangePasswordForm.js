@@ -42,11 +42,11 @@ const ChangePasswordForm = ({
     setSubmitted,
   } = useChangePasswordContext();
 
-  const handleSubmit = async ({ currentPassword, newPassword }) => {
+  const handleSubmit = async ({ ...formFields }) => {
     setLoading(true);
     setSubmitted(true);
     try {
-      const result = await resource.changePassword({ currentPassword, newPassword });
+      const result = await resource.changePassword({ ...formFields });
       setSuccess('Your password was successfully changed');
       if (onHandleSubmit) {
         await onHandleSubmit({ result, setSuccess, setError });
