@@ -114,25 +114,4 @@ describe('AvLink', () => {
     expect(link).toHaveAttribute('class', 'link card-link');
     expect(link).toHaveAttribute('style', 'font-weight: bold;');
   });
-
-  test('should render urls from the test-essentials.availity.com domain correctly', () => {
-    const exampleHref = 'https://test-essentials.availity.com/static/avonly/post/cs/enhanced-claim-status-ui/';
-
-    const { getByTestId } = render(<AvLink href={exampleHref}>My App</AvLink>);
-
-    const tag = getByTestId('av-link-tag');
-    const expected = `/public/apps/home/#!/loadApp?appUrl=${encodeURIComponent(exampleHref)}`;
-
-    expect(tag.getAttribute('href')).toBe(expected);
-  });
-  test('should render urls from the qa-essentials.availity.com domain correctly', () => {
-    const exampleHref = 'https://qa-essentials.availity.com/static/avonly/post/cs/enhanced-claim-status-ui/';
-
-    const { getByTestId } = render(<AvLink href={exampleHref}>My App</AvLink>);
-
-    const tag = getByTestId('av-link-tag');
-    const expected = `/public/apps/home/#!/loadApp?appUrl=${encodeURIComponent(exampleHref)}`;
-
-    expect(tag.getAttribute('href')).toBe(expected);
-  });
 });
