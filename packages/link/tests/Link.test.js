@@ -1,8 +1,7 @@
 import React from 'react';
-import { render, cleanup, fireEvent } from '@testing-library/react';
-import AvLink from '..';
+import { render, fireEvent } from '@testing-library/react';
 
-afterEach(cleanup);
+import AvLink from '..';
 
 describe('AvLink', () => {
   test('should render absolute url', () => {

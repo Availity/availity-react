@@ -1,1 +1,2 @@
-export { default, getUrl, getTarget, AvLinkProps } from './types/Link';
+export { default, AvLinkProps } from './types/Link';
+export { getLocation, getTarget, getLocation } from './types/util';
