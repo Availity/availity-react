@@ -31,6 +31,7 @@ const ChangePasswordForm = ({
     setSuccess,
     resource,
     schema,
+    initialValues,
     currentPasswordIconRef,
     newPasswordIconRef,
     confirmNewPasswordIconRef,
@@ -74,7 +75,7 @@ const ChangePasswordForm = ({
   return (
     <BlockUI blocking={loading}>
       <Form
-        initialValues={{ currentPassword: '', newPassword: '', confirmNewPassword: '' }}
+        initialValues={{ currentPassword: '', newPassword: '', confirmNewPassword: '', ...initialValues }}
         validationSchema={schema}
         onSubmit={handleSubmit}
       >
@@ -223,6 +224,7 @@ ChangePasswordForm.propTypes = {
   showCurrentPassword: PropTypes.bool,
   newPasswordProps: PropTypes.object,
   confirmNewPasswordProps: PropTypes.object,
+  initialValues: PropTypes.object,
 };
 
 export default ChangePasswordForm;
