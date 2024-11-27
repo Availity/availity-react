@@ -26,6 +26,10 @@ Function to call when an error occurs calling the `changePassword` method on the
 
 Additional Buttons to render to the right of the Submit button.
 
+#### `additionalFields?: React.ReactNode`
+
+Additional Fields to render in the `<Form />`
+
 #### `header?: React.ReactNode`
 
 The header to render above the form inputs
@@ -37,6 +41,10 @@ The maximum length of the user's password
 #### `currentPasswordProps?: object`
 
 Additional props to spread onto the current password input field
+
+#### `showCurrentPassword?: boolean`
+
+Conditionally render the current password input field. Defaults to `true`
 
 #### `newPasswordProps?: object`
 
