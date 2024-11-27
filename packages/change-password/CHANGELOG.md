@@ -2,6 +2,17 @@
 
 This file was generated using [@jscutlery/semver](https://github.com/jscutlery/semver).
 
+# [2.2.0](https://github.com/Availity/availity-react/compare/@availity/change-password@2.1.6...@availity/change-password@2.2.0) (2024-11-27)
+
+
+### Features
+
+* **change-password:** add additionalFields prop ([e8bf057](https://github.com/Availity/availity-react/commit/e8bf057826ba2bafbca732aaabcb3ffdb965c3b1))
+* **change-password:** add showCurrentPassword prop ([1cb9088](https://github.com/Availity/availity-react/commit/1cb9088ab92658b550bc7bc4c3be440b48e74c4f))
+* **change-password:** allow developer to use additionalFields in resource call ([ccf00bf](https://github.com/Availity/availity-react/commit/ccf00bf410780c58d59cdad00bead1cb6f0faf28))
+
+
+
 ## [2.1.6](https://github.com/Availity/availity-react/compare/@availity/change-password@2.1.5...@availity/change-password@2.1.6) (2024-11-12)
 
 ### Dependency Updates
