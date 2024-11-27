@@ -2,6 +2,16 @@
 
 This file was generated using [@jscutlery/semver](https://github.com/jscutlery/semver).
 
+# [1.11.0](https://github.com/Availity/availity-react/compare/@availity/dinosaurdocs@1.10.3...@availity/dinosaurdocs@1.11.0) (2024-11-27)
+
+
+### Features
+
+* **change-password:** add additionalFields prop ([e8bf057](https://github.com/Availity/availity-react/commit/e8bf057826ba2bafbca732aaabcb3ffdb965c3b1))
+* **change-password:** add showCurrentPassword prop ([1cb9088](https://github.com/Availity/availity-react/commit/1cb9088ab92658b550bc7bc4c3be440b48e74c4f))
+
+
+
 ## [1.10.3](https://github.com/Availity/availity-react/compare/@availity/dinosaurdocs@1.10.2...@availity/dinosaurdocs@1.10.3) (2024-11-04)
 
 
