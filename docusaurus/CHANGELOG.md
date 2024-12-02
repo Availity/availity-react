@@ -2,6 +2,15 @@
 
 This file was generated using [@jscutlery/semver](https://github.com/jscutlery/semver).
 
+# [1.12.0](https://github.com/Availity/availity-react/compare/@availity/dinosaurdocs@1.11.0...@availity/dinosaurdocs@1.12.0) (2024-12-02)
+
+
+### Features
+
+* **change-password:** add initialFields prop ([ac01d42](https://github.com/Availity/availity-react/commit/ac01d42f3d589d0b2f3c5be4f8e51fe35ec36b3a))
+
+
+
 # [1.11.0](https://github.com/Availity/availity-react/compare/@availity/dinosaurdocs@1.10.3...@availity/dinosaurdocs@1.11.0) (2024-11-27)
 
 
