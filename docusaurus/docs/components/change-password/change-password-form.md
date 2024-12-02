@@ -30,6 +30,10 @@ Additional Buttons to render to the right of the Submit button.
 
 Additional Fields to render in the `<Form />`
 
+#### `initialValues?: object`
+
+Explicitly set initial values for the form. Spreads onto the default `initialValues`. Useful in conjunction with `additionalFields`
+
 #### `header?: React.ReactNode`
 
 The header to render above the form inputs

@@ -4,6 +4,7 @@ export interface ChangePasswordFormProps {
   additionalButtons?: React.ReactNode;
   additionalFields?: React.ReactNode;
   header?: React.ReactNode;
+  initialFields?: any;
   maxLength?: number;
   currentPasswordProps?: any;
   showCurrentPassword?: boolean;
