@@ -2,6 +2,15 @@
 
 This file was generated using [@jscutlery/semver](https://github.com/jscutlery/semver).
 
+# [2.3.0](https://github.com/Availity/availity-react/compare/@availity/change-password@2.2.0...@availity/change-password@2.3.0) (2024-12-02)
+
+
+### Features
+
+* **change-password:** add initialFields prop ([ac01d42](https://github.com/Availity/availity-react/commit/ac01d42f3d589d0b2f3c5be4f8e51fe35ec36b3a))
+
+
+
 # [2.2.0](https://github.com/Availity/availity-react/compare/@availity/change-password@2.1.6...@availity/change-password@2.2.0) (2024-11-27)
 
 
