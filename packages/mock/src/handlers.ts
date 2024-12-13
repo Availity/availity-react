@@ -1,5 +1,5 @@
 /* eslint-disable import/prefer-default-export */
-import { rest, graphql, compose, context } from 'msw';
+import { rest, graphql, compose, context, MockedRequest } from 'msw';
 import { parse } from 'qs';
 
 import * as routes from './routes';
@@ -32,6 +32,8 @@ function delay(duration: number) {
 }
 
 const defaultDelay = 500; // .5 sec
+
+const requestHeaders = new Map<string, MockedRequest['headers']>();
 
 export const handlers = [
   // User
@@ -131,5 +133,113 @@ export const handlers = [
     const response = { totalCount: pagination.length, count: items.length, offset, limit, items };
 
     return res(delay(defaultDelay), ctx.status(200), ctx.json(response));
+  }),
+
+  // Attachments Cloud
+  rest.post(routes.ATTACHMENTS_CLOUD_POST, async (req, res, ctx) => {
+    // Save file size for patch request
+    requestHeaders.set(req.id, req.headers);
+
+    return res(
+      delay(defaultDelay),
+      ctx.status(201),
+      ctx.json(null),
+      ctx.set({
+        'cache-control': 'no-store',
+        'transfer-encoding': 'chunked',
+        'tus-resumable': '1.0.0',
+        'upload-expires': 'Fri, 12 Jan 2030 15:54:39 GMT',
+        location: req.id,
+      })
+    );
+
+    // return new HttpResponse(null, {
+    //   status: 201,
+    //   headers: {
+    //     'cache-control': 'no-store',
+    // 'transfer-encoding': 'chunked',
+    // 'tus-resumable': '1.0.0',
+    // 'upload-expires': 'Fri, 12 Jan 2030 15:54:39 GMT',
+    // location: requestId,
+    //   },
+    // });
+  }),
+
+  rest.patch<{ location: string }>(routes.ATTACHMENTS_CLOUD_PATCH, async (req, res, ctx) => {
+    // Parse passed in offset
+    let reqOffset = Number(req.headers.get('upload-offset'));
+    reqOffset = Number.isNaN(reqOffset) ? 0 : reqOffset;
+
+    // Get file size from previous request
+    let fileSize = Number(requestHeaders.get(req.params.location)?.get('upload-length'));
+    fileSize = Number.isNaN(fileSize) ? 0 : fileSize;
+
+    // If it's the first page then return half the file size
+    const offset = reqOffset === 0 ? `${fileSize / 2}` : `${fileSize}`;
+
+    return res(
+      delay(defaultDelay),
+      ctx.status(204),
+      // ctx.json(null),
+      ctx.set({
+        'cache-control': 'no-store',
+        'tus-resumable': '1.0.0',
+        'upload-expires': 'Fri, 12 Jan 2030 15:54:39 GMT',
+        'upload-offset': offset,
+      })
+    );
+
+    // return new HttpResponse(null, {
+    //   status: 204,
+    //   headers: {
+    //     'cache-control': 'no-store',
+    //     'tus-resumable': '1.0.0',
+    //     'upload-expires': 'Fri, 12 Jan 2030 15:54:39 GMT',
+    //     'upload-offset': offset,
+    //   },
+    // });
+  }),
+
+  rest.head<{ bucket: string; location: string }>(routes.ATTACHMENTS_CLOUD_HEAD, async (req, res, ctx) => {
+    const headers = requestHeaders.get(req.params.location);
+
+    const fileSize = headers?.get('upload-length') || '0';
+    const metadata = headers?.get('upload-metadata') || '';
+
+    return res(
+      delay(defaultDelay),
+      ctx.status(200),
+      ctx.json(null),
+      ctx.set({
+        'av-scan-bytes': fileSize,
+        'av-scan-result': 'accepted',
+        'cache-control': 'no-store',
+        references: `["approved/${req.params.bucket}/${req.params.location}"]`,
+        's3-references': `["s3://path-to-vault/approved/${req.params.bucket}/${req.params.location}"]`,
+        'transfer-encoding': 'chunked',
+        'tus-resumable': '1.0.0',
+        'upload-length': fileSize,
+        'upload-metadata': metadata,
+        'upload-offset': fileSize,
+        'upload-result': 'accepted',
+      })
+    );
+
+    // return new HttpResponse(null, {
+    //   status: 200,
+    //   headers: {
+    //     'av-scan-bytes': fileSize,
+    //     'av-scan-result': 'accepted',
+    //     'cache-control': 'no-store',
+    //     references: `["approved/${req.params.bucket}/${req.params.location}"]`,
+    //     's3-references': `["s3://path-to-vault/approved/${req.params.bucket}/${req.params.location}"]`,
+    //     'transfer-encoding': 'chunked',
+    //     'tus-resumable': '1.0.0',
+    //     'upload-length': fileSize,
+    //     'upload-metadata': metadata,
+    //     'upload-offset': fileSize,
+    //     'upload-result': 'accepted',
+    //   },
+    // });
   }),
 ];

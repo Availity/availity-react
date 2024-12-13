@@ -7,7 +7,6 @@ import { FormGroup, Feedback } from '@availity/form';
 import Icon from '@availity/icon';
 import { useField, useFormikContext } from 'formik';
 import classNames from 'classnames';
-import { v4 as uuid } from 'uuid';
 
 import FilePickerBtn from './FilePickerBtn';
 import FileList from './FileList';
@@ -148,7 +147,7 @@ const Upload = ({
     }
   };
 
-  const setFiles = (files) => {
+  const setFiles = async (files) => {
     let selectedFiles = [];
     // FileList is not iterable
     // eslint-disable-next-line unicorn/no-for-loop
@@ -160,11 +159,10 @@ const Upload = ({
       selectedFiles = selectedFiles.slice(0, Math.max(0, max - fieldValue.length));
     }
 
-    // eslint-disable-next-line unicorn/prefer-spread
     let newFilesTotalSize = 0;
     const newFiles = [
       ...fieldValue,
-      ...selectedFiles.map((file) => {
+      ...selectedFiles.map(async (file) => {
         const options = {
           bucketId,
           customerId,
@@ -177,7 +175,7 @@ const Upload = ({
         if (endpoint) options.endpoint = endpoint;
         if (isCloud) options.endpoint = CLOUD_URL;
         const upload = new UploadCore(file, options);
-        upload.id = `${upload.id}-${uuid()}`;
+        await upload.generateId();
         if (file.dropRejectionMessage) {
           upload.errorMessage = file.dropRejectionMessage;
         } else if (totalMaxSize && totalSize + newFilesTotalSize + upload.file.size > totalMaxSize) {
@@ -209,11 +207,11 @@ const Upload = ({
     setFieldValue(name, newFiles, true);
   };
 
-  const handleFileInputChange = (event) => {
-    setFiles(event.target.files);
+  const handleFileInputChange = async (event) => {
+    await setFiles(event.target.files);
   };
 
-  const onDrop = (acceptedFiles, fileRejections) => {
+  const onDrop = async (acceptedFiles, fileRejections) => {
     const rejectedFilesToDrop = fileRejections.map(({ file, errors }) => {
       const dropRejectionMessage = getDropRejectionMessage
         ? getDropRejectionMessage(errors, file)
@@ -222,7 +220,7 @@ const Upload = ({
       file.dropRejectionMessage = dropRejectionMessage;
       return file;
     });
-    setFiles([...acceptedFiles, ...rejectedFilesToDrop]);
+    await setFiles([...acceptedFiles, ...rejectedFilesToDrop]);
   };
 
   let fileAddArea;

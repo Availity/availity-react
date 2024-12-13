@@ -4,7 +4,6 @@ import PropTypes from 'prop-types';
 import UploadCore from '@availity/upload-core';
 import Dropzone from 'react-dropzone';
 import { InputGroup } from 'reactstrap';
-import { v4 as uuid } from 'uuid';
 
 import FilePickerBtn from './FilePickerBtn';
 import FileList from './FileList';
@@ -41,7 +40,7 @@ class Upload extends Component {
     });
   };
 
-  setFiles = (files) => {
+  setFiles = async (files) => {
     let selectedFiles = [];
     // FileList is not iterable
     // eslint-disable-next-line unicorn/no-for-loop
@@ -51,44 +50,46 @@ class Upload extends Component {
     if (this.props.max && selectedFiles.length + this.state.files.length > this.props.max) {
       selectedFiles = selectedFiles.slice(0, Math.max(0, this.props.max - this.state.files.length));
     }
-    // eslint-disable-next-line unicorn/prefer-spread
-    this.files = this.files.concat(
-      selectedFiles.map((file) => {
-        const options = {
-          bucketId: this.props.bucketId,
-          customerId: this.props.customerId,
-          clientId: this.props.clientId,
-          fileTypes: this.props.allowedFileTypes,
-          maxSize: this.props.maxSize,
-          onPreStart: this.props.onFilePreUpload || [],
-          allowedFileNameCharacters: this.props.allowedFileNameCharacters,
-        };
+    this.files = await Promise.all(
+      // eslint-disable-next-line unicorn/prefer-spread
+      this.files.concat(
+        selectedFiles.map(async (file) => {
+          const options = {
+            bucketId: this.props.bucketId,
+            customerId: this.props.customerId,
+            clientId: this.props.clientId,
+            fileTypes: this.props.allowedFileTypes,
+            maxSize: this.props.maxSize,
+            onPreStart: this.props.onFilePreUpload || [],
+            allowedFileNameCharacters: this.props.allowedFileNameCharacters,
+          };
 
-        if (this.props.endpoint) options.endpoint = this.props.endpoint;
-        if (this.props.isCloud) options.endpoint = CLOUD_URL;
+          if (this.props.endpoint) options.endpoint = this.props.endpoint;
+          if (this.props.isCloud) options.endpoint = CLOUD_URL;
 
-        const upload = new UploadCore(file, options);
-        upload.id = `${upload.id}-${uuid()}`;
+          const upload = new UploadCore(file, options);
+          await upload.generateId();
 
-        if (file.dropRejectionMessage) {
-          upload.errorMessage = file.dropRejectionMessage;
-        } else {
-          upload.start();
-        }
+          if (file.dropRejectionMessage) {
+            upload.errorMessage = file.dropRejectionMessage;
+          } else {
+            upload.start();
+          }
 
-        if (this.props.onFileUpload) this.props.onFileUpload(upload);
+          if (this.props.onFileUpload) this.props.onFileUpload(upload);
 
-        return upload;
-      })
+          return upload;
+        })
+      )
     );
     this.setState({ files: this.files });
   };
 
-  handleFileInputChange = (event) => {
-    this.setFiles(event.target.files);
+  handleFileInputChange = async (event) => {
+    await this.setFiles(event.target.files);
   };
 
-  onDrop = (acceptedFiles, fileRejections) => {
+  onDrop = async (acceptedFiles, fileRejections) => {
     const rejectedFilesToDrop = fileRejections.map(({ file, errors }) => {
       const dropRejectionMessage = this.props.getDropRejectionMessage
         ? this.props.getDropRejectionMessage(errors, file)
@@ -97,7 +98,7 @@ class Upload extends Component {
       file.dropRejectionMessage = dropRejectionMessage;
       return file;
     });
-    this.setFiles([...acceptedFiles, ...rejectedFilesToDrop]);
+    await this.setFiles([...acceptedFiles, ...rejectedFilesToDrop]);
   };
 
   reset = () => {
