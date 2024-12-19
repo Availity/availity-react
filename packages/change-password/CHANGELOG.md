@@ -2,6 +2,15 @@
 
 This file was generated using [@jscutlery/semver](https://github.com/jscutlery/semver).
 
+## [2.3.1](https://github.com/Availity/availity-react/compare/@availity/change-password@2.3.0...@availity/change-password@2.3.1) (2024-12-19)
+
+
+### Bug Fixes
+
+* **change-password:** retrieve initialValues from props over context ([b89e59f](https://github.com/Availity/availity-react/commit/b89e59f1296251be683d4086dcf5325d080b6ba5))
+
+
+
 # [2.3.0](https://github.com/Availity/availity-react/compare/@availity/change-password@2.2.0...@availity/change-password@2.3.0) (2024-12-02)
 
 
