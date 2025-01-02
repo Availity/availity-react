@@ -815,7 +815,7 @@ __metadata:
     react: ^18.3.1
     react-dom: ^18.3.1
     react-infinite-scroll-component: ^6.1.0
-    react-use: ^17.5.1
+    react-use: ^17.6.0
     reactstrap: ^8.10.1
     tsup: ^8.2.4
     typescript: ^5.5.4
@@ -23333,9 +23333,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"react-use@npm:^17.5.1":
-  version: 17.5.1
-  resolution: "react-use@npm:17.5.1"
+"react-use@npm:^17.6.0":
+  version: 17.6.0
+  resolution: "react-use@npm:17.6.0"
   dependencies:
     "@types/js-cookie": ^2.2.6
     "@xobotyi/scrollbar-width": ^1.9.5
@@ -23354,7 +23354,7 @@ __metadata:
   peerDependencies:
     react: "*"
     react-dom: "*"
-  checksum: 68f4333d986161038308a844d4ab99103484b69a0599a03c345eeb7cb5a0eabd0c55994fefc471ef11d4d2799a8e063d7f11fe0c48d56b54516333025fc7d726
+  checksum: c76de18b56b554bfbb28199e4ad4098f4e4ab15f0d3cefef661a7a5e6a4c167ae85390fc7bc648c34b80c17498abf1e8223d7078f3e51c09e4da70e11a41a54e
   languageName: node
   linkType: hard
 
