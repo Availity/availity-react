@@ -2,6 +2,15 @@
 
 This file was generated using [@jscutlery/semver](https://github.com/jscutlery/semver).
 
+## [1.2.1](https://github.com/Availity/availity-react/compare/@availity/form-upload@1.2.0...@availity/form-upload@1.2.1) (2025-01-21)
+
+
+### Bug Fixes
+
+* add missing path override for fud aws ([148a161](https://github.com/Availity/availity-react/commit/148a1616f994877adab7860f29122a865cf001ba))
+
+
+
 # [1.2.0](https://github.com/Availity/availity-react/compare/@availity/form-upload@1.1.9...@availity/form-upload@1.2.0) (2025-01-21)
 
 
