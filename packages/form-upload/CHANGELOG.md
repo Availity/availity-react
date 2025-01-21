@@ -2,6 +2,16 @@
 
 This file was generated using [@jscutlery/semver](https://github.com/jscutlery/semver).
 
+# [1.2.0](https://github.com/Availity/availity-react/compare/@availity/form-upload@1.1.9...@availity/form-upload@1.2.0) (2025-01-21)
+
+
+### Features
+
+* use aws fud if isCloud only ([2930a27](https://github.com/Availity/availity-react/commit/2930a27ed80abdaec2c4aff46dcf45f7696042d0))
+* use cloud file upload delivery endpoint if vault cloud or endpoint override used ([158e836](https://github.com/Availity/availity-react/commit/158e836733df6b1f7b1293958c133d6da5d2d371))
+
+
+
 ## [1.1.9](https://github.com/Availity/availity-react/compare/@availity/form-upload@1.1.8...@availity/form-upload@1.1.9) (2024-11-21)
 
 
