@@ -77,7 +77,7 @@ const Upload = ({
               },
             ],
           };
-          if (endpoint || isCloud) {
+          if (isCloud) {
             uploadResults.push(
               avFilesDeliveryApi.uploadFilesDelivery(data, {
                 name: CLOUD_URL_FUD,
@@ -115,6 +115,7 @@ const Upload = ({
       setFieldError,
       onDeliverySuccess,
       onDeliveryError,
+      isCloud
     ]
   );
 
