@@ -80,6 +80,7 @@ const Upload = ({
           if (isCloud) {
             uploadResults.push(
               avFilesDeliveryApi.uploadFilesDelivery(data, {
+                path: '',
                 name: CLOUD_URL_FUD,
                 clientId,
                 customerId,
