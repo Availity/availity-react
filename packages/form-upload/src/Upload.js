@@ -18,6 +18,7 @@ const Dropzone = React.lazy(() => import('react-dropzone'));
 const dropzoneFallback = <div data-testid="dropzone-fallback">Loading...</div>;
 
 const CLOUD_URL = '/cloud/web/appl/vault/upload/v1/resumable';
+const CLOUD_URL_FUD = '/cloud/web/appl/file-upload-delivery/v1/batch/deliveries';
 
 const Upload = ({
   allowedFileNameCharacters,
@@ -76,13 +77,22 @@ const Upload = ({
               },
             ],
           };
-
-          uploadResults.push(
-            avFilesDeliveryApi.uploadFilesDelivery(data, {
-              clientId,
-              customerId,
-            })
-          );
+          if (endpoint || isCloud) {
+            uploadResults.push(
+              avFilesDeliveryApi.uploadFilesDelivery(data, {
+                name: CLOUD_URL_FUD,
+                clientId,
+                customerId,
+              })
+            );
+          } else {
+            uploadResults.push(
+              avFilesDeliveryApi.uploadFilesDelivery(data, {
+                clientId,
+                customerId,
+              })
+            );
+          }
         }
 
         const responses = await Promise.all(uploadResults);
@@ -174,8 +184,8 @@ const Upload = ({
           maxSize,
           allowedFileNameCharacters,
         };
-        if (endpoint) options.endpoint = endpoint;
         if (isCloud) options.endpoint = CLOUD_URL;
+        if (endpoint) options.endpoint = endpoint;
         const upload = new UploadCore(file, options);
         upload.id = `${upload.id}-${uuid()}`;
         if (file.dropRejectionMessage) {
