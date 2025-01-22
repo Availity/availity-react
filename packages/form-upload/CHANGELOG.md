@@ -2,6 +2,16 @@
 
 This file was generated using [@jscutlery/semver](https://github.com/jscutlery/semver).
 
+## [1.2.2](https://github.com/Availity/availity-react/compare/@availity/form-upload@1.2.1...@availity/form-upload@1.2.2) (2025-01-22)
+
+
+### Bug Fixes
+
+* fix s3 url for aws fud ([4dfb928](https://github.com/Availity/availity-react/commit/4dfb928244d5c1a0c1be0764a220cbe4db4adb65))
+* pass full s3 url for aws fud ([b6c3651](https://github.com/Availity/availity-react/commit/b6c365135e5265b0e9ccfa70637392e12ea322db))
+
+
+
 ## [1.2.1](https://github.com/Availity/availity-react/compare/@availity/form-upload@1.2.0...@availity/form-upload@1.2.1) (2025-01-21)
 
 
