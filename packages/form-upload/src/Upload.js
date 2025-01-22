@@ -72,7 +72,7 @@ const Upload = ({
             deliveries: [
               {
                 deliveryChannel,
-                fileURI: u.references[0],
+                fileURI: isCloud ? u.s3References[0] : u.references[0],
                 metadata: typeof fileDeliveryMetadata === 'function' ? fileDeliveryMetadata(u) : fileDeliveryMetadata,
               },
             ],
