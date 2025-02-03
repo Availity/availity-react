@@ -77,7 +77,7 @@
     "@nx/jest": "19.5.7",
     "@nx/workspace": "19.5.7",
     "@storybook/addon-a11y": "^7.4.1",
-    "@storybook/addon-essentials": "^7.4.1",
+    "@storybook/addon-essentials": "^8.5.3",
     "@storybook/addon-mdx-gfm": "^7.4.1",
     "@storybook/react": "^7.4.1",
     "@storybook/react-vite": "^7.4.1",
