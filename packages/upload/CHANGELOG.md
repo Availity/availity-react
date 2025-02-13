@@ -2,64 +2,13 @@
 
 This file was generated using [@jscutlery/semver](https://github.com/jscutlery/semver).
 
-# [3.10.0-alpha.1](https://github.com/Availity/availity-react/compare/@availity/upload@3.10.0-alpha.0...@availity/upload@3.10.0-alpha.1) (2024-12-13)
 
-
-
-# [3.10.0-alpha.0](https://github.com/Availity/availity-react/compare/@availity/upload@3.9.6...@availity/upload@3.10.0-alpha.0) (2024-12-13)
+## [3.9.7](https://github.com/Availity/availity-react/compare/@availity/upload@3.9.6...@availity/upload@3.9.7) (2024-11-21)
 
 
 ### Bug Fixes
 
 * update upload-core ([c20acff](https://github.com/Availity/availity-react/commit/c20acfffdc5f595f9fb7c67e833f4d68a60141b6))
-
-
-### Features
-
-* update to latest upload-core ([df7270f](https://github.com/Availity/availity-react/commit/df7270fcf638586276039145e79fdbb0ddb69ebd))
-
-
-
-# [3.10.0-alpha.0](https://github.com/Availity/availity-react/compare/@availity/upload@3.9.6...@availity/upload@3.10.0-alpha.0) (2024-12-13)
-
-
-### Bug Fixes
-
-* update upload-core ([c20acff](https://github.com/Availity/availity-react/commit/c20acfffdc5f595f9fb7c67e833f4d68a60141b6))
-
-
-### Features
-
-* update to latest upload-core ([df7270f](https://github.com/Availity/availity-react/commit/df7270fcf638586276039145e79fdbb0ddb69ebd))
-
-
-
-# [3.10.0-alpha.0](https://github.com/Availity/availity-react/compare/@availity/upload@3.9.6...@availity/upload@3.10.0-alpha.0) (2024-12-13)
-
-
-### Bug Fixes
-
-* update upload-core ([c20acff](https://github.com/Availity/availity-react/commit/c20acfffdc5f595f9fb7c67e833f4d68a60141b6))
-
-
-### Features
-
-* update to latest upload-core ([df7270f](https://github.com/Availity/availity-react/commit/df7270fcf638586276039145e79fdbb0ddb69ebd))
-
-
-
-# [3.10.0-alpha.0](https://github.com/Availity/availity-react/compare/@availity/upload@3.9.6...@availity/upload@3.10.0-alpha.0) (2024-12-13)
-
-
-### Bug Fixes
-
-* update upload-core ([c20acff](https://github.com/Availity/availity-react/commit/c20acfffdc5f595f9fb7c67e833f4d68a60141b6))
-
-
-### Features
-
-* update to latest upload-core ([df7270f](https://github.com/Availity/availity-react/commit/df7270fcf638586276039145e79fdbb0ddb69ebd))
-
 
 
 ## [3.9.6](https://github.com/Availity/availity-react/compare/@availity/upload@3.9.5...@availity/upload@3.9.6) (2024-10-16)

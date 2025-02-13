@@ -2,17 +2,43 @@
 
 This file was generated using [@jscutlery/semver](https://github.com/jscutlery/semver).
 
-# [1.2.0-alpha.0](https://github.com/Availity/availity-react/compare/@availity/form-upload@1.1.8...@availity/form-upload@1.2.0-alpha.0) (2024-12-13)
+
+## [1.2.2](https://github.com/Availity/availity-react/compare/@availity/form-upload@1.2.1...@availity/form-upload@1.2.2) (2025-01-22)
+
+
+### Bug Fixes
+
+* fix s3 url for aws fud ([4dfb928](https://github.com/Availity/availity-react/commit/4dfb928244d5c1a0c1be0764a220cbe4db4adb65))
+* pass full s3 url for aws fud ([b6c3651](https://github.com/Availity/availity-react/commit/b6c365135e5265b0e9ccfa70637392e12ea322db))
+
+
+
+## [1.2.1](https://github.com/Availity/availity-react/compare/@availity/form-upload@1.2.0...@availity/form-upload@1.2.1) (2025-01-21)
+
+
+### Bug Fixes
+
+* add missing path override for fud aws ([148a161](https://github.com/Availity/availity-react/commit/148a1616f994877adab7860f29122a865cf001ba))
+
+
+
+# [1.2.0](https://github.com/Availity/availity-react/compare/@availity/form-upload@1.1.9...@availity/form-upload@1.2.0) (2025-01-21)
+
+
+
+### Features
+
+* use aws fud if isCloud only ([2930a27](https://github.com/Availity/availity-react/commit/2930a27ed80abdaec2c4aff46dcf45f7696042d0))
+* use cloud file upload delivery endpoint if vault cloud or endpoint override used ([158e836](https://github.com/Availity/availity-react/commit/158e836733df6b1f7b1293958c133d6da5d2d371))
+
+
+
+## [1.1.9](https://github.com/Availity/availity-react/compare/@availity/form-upload@1.1.8...@availity/form-upload@1.1.9) (2024-11-21)
 
 
 ### Bug Fixes
 
 * update upload-core ([c20acff](https://github.com/Availity/availity-react/commit/c20acfffdc5f595f9fb7c67e833f4d68a60141b6))
-
-
-### Features
-
-* update to latest upload-core ([df7270f](https://github.com/Availity/availity-react/commit/df7270fcf638586276039145e79fdbb0ddb69ebd))
 
 
 
