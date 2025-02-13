@@ -33,7 +33,6 @@ const FilePicker = ({
     for (let i = 0; i < files.length; i++) {
       value[i] = files[i];
     }
-    // setFieldValue(name, value, true);
     if (onChangeCallback) onChangeCallback(event);
   };
 
