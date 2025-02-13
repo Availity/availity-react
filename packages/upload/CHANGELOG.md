@@ -2,6 +2,25 @@
 
 This file was generated using [@jscutlery/semver](https://github.com/jscutlery/semver).
 
+# [4.0.0](https://github.com/Availity/availity-react/compare/@availity/upload@3.9.7...@availity/upload@4.0.0) (2025-02-13)
+
+
+### Bug Fixes
+
+* update peerDep version ([85a2fdc](https://github.com/Availity/availity-react/commit/85a2fdc0207a5a337f37b2ff8aa8b792bd1847fe))
+
+
+### Features
+
+* update to latest upload-core ([df7270f](https://github.com/Availity/availity-react/commit/df7270fcf638586276039145e79fdbb0ddb69ebd))
+* **upload:** upgrade upload-core ([8fe94c7](https://github.com/Availity/availity-react/commit/8fe94c719c6fb8a3d44d79b9baa813d2c40b9edf))
+
+
+### BREAKING CHANGES
+
+* **upload:** upgrade major versions of @availity/upload-core to v7
+
+
 
 ## [3.9.7](https://github.com/Availity/availity-react/compare/@availity/upload@3.9.6...@availity/upload@3.9.7) (2024-11-21)
 
