@@ -135,6 +135,14 @@ Restrict the file name characters to a regex set.
 
 Restrict the file types allowed to be uploaded to. eg: `['.jpeg', '.jpg']`.
 
+#### `isCloud?: boolean`
+
+Toggle whether the component should call the cloud version of the service
+
+#### `endpoint?: string`
+
+Set the endpoint that should be called if you have a custom service to call.
+
 #### `onFileUpload?: (upload: UploadCore) => void`
 
 Callback to be executed when file is uploaded. The callback is provided the `Upload` instance from upload-core SDK. Use this callback to hook into the `upload.onSuccess` and `upload.onError` events and track which files have been uploaded and get references returned by the API if needed. See [example callback function above](#callback-function-example)
