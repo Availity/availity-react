@@ -2,6 +2,15 @@
 
 This file was generated using [@jscutlery/semver](https://github.com/jscutlery/semver).
 
+## [1.10.1](https://github.com/Availity/availity-react/compare/@availity/form@1.10.0...@availity/form@1.10.1) (2025-02-13)
+
+
+### Bug Fixes
+
+* **form:** update how default props are set ([bcfff03](https://github.com/Availity/availity-react/commit/bcfff0374b53b54de27accd73094bcb65571524c))
+
+
+
 # [1.10.0](https://github.com/Availity/availity-react/compare/@availity/form@1.9.4...@availity/form@1.10.0) (2024-11-12)
 
 
