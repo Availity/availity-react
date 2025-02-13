@@ -23,20 +23,23 @@ const FocusableForm = ({ children, focusProps, ...rest }) => {
   return <RsForm {...rest}>{children}</RsForm>;
 };
 
+const defaultInvalidInputSelectors =
+  'input[aria-invalid="true"], div.is-invalid input:first-of-type:not([hidden]):not([style*="display:none"]):not([style*="display: none"])';
+
 const Form = ({
   initialValues,
   enableReinitialize,
-  onSubmit,
+  onSubmit = () => {},
   initialStatus,
   initialErrors,
   initialTouched,
   onReset,
   validationSchema,
   validate,
-  focusInvalidField,
+  focusInvalidField = true,
   id,
   innerRef,
-  invalidInputSelectors,
+  invalidInputSelectors = defaultInvalidInputSelectors,
   children,
   ...rest
 }) => {
@@ -81,13 +84,6 @@ Form.propTypes = {
   onSubmit: PropTypes.func,
   validate: PropTypes.func,
   validationSchema: PropTypes.object,
-};
-
-Form.defaultProps = {
-  focusInvalidField: true,
-  invalidInputSelectors:
-    'input[aria-invalid="true"], div.is-invalid input:first-of-type:not([hidden]):not([style*="display:none"]):not([style*="display: none"])',
-  onSubmit: () => {},
 };
 
 FocusableForm.propTypes = {

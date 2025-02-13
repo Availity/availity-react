@@ -4,7 +4,17 @@ import classNames from 'classnames';
 import { Input as RsInput } from 'reactstrap';
 import { useField } from 'formik';
 
-const Input = ({ name, tag: Tag, className, onChange: propsOnChange, validate, feedback, help, required, ...rest }) => {
+const Input = ({
+  name,
+  tag: Tag = RsInput,
+  className,
+  onChange: propsOnChange,
+  validate,
+  feedback,
+  help,
+  required,
+  ...rest
+}) => {
   const [{ onChange, ...field }, metadata] = useField({
     name,
     validate,
@@ -63,10 +73,6 @@ Input.propTypes = {
   /** The Node or tag to substitute as the input field. Default is reactstrap Input tag. */
   tag: PropTypes.oneOfType([PropTypes.func, PropTypes.string]),
   validate: PropTypes.func,
-};
-
-Input.defaultProps = {
-  tag: RsInput,
 };
 
 export default Input;

@@ -29,6 +29,7 @@ const Field = ({
   append,
   children,
   isHelpVideoType,
+  tag = RsInput,
   ...attributes
 }) => {
   let row = false;
@@ -58,6 +59,7 @@ const Field = ({
       readOnly={readOnly}
       feedback
       help={!!helpMessage}
+      tag={tag}
       {...attributes}
     />
   );
@@ -165,10 +167,6 @@ Field.propTypes = {
   tag: PropTypes.oneOfType([PropTypes.func, PropTypes.string]),
   /** Allows the type of `<FieldHelpIcon/>` to be changed between help-icon and video-help */
   isHelpVideoType: PropTypes.bool,
-};
-
-Field.defaultProps = {
-  tag: RsInput,
 };
 
 export default Field;
