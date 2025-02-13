@@ -2,6 +2,20 @@
 
 This file was generated using [@jscutlery/semver](https://github.com/jscutlery/semver).
 
+# [2.0.0](https://github.com/Availity/availity-react/compare/@availity/dinosaurdocs@1.12.0...@availity/dinosaurdocs@2.0.0) (2025-02-13)
+
+
+### Features
+
+* **upload:** upgrade upload-core ([8fe94c7](https://github.com/Availity/availity-react/commit/8fe94c719c6fb8a3d44d79b9baa813d2c40b9edf))
+
+
+### BREAKING CHANGES
+
+* **upload:** upgrade major versions of @availity/upload-core to v7
+
+
+
 # [1.12.0](https://github.com/Availity/availity-react/compare/@availity/dinosaurdocs@1.11.0...@availity/dinosaurdocs@1.12.0) (2024-12-02)
 
 
