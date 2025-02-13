@@ -2,6 +2,29 @@
 
 This file was generated using [@jscutlery/semver](https://github.com/jscutlery/semver).
 
+# [2.0.0](https://github.com/Availity/availity-react/compare/@availity/form-upload@1.2.2...@availity/form-upload@2.0.0) (2025-02-13)
+
+### Dependency Updates
+
+* `@availity/form` updated to version `1.2.2`
+
+### Bug Fixes
+
+* remove commented code ([d12b87b](https://github.com/Availity/availity-react/commit/d12b87bcbea90d63d14af3ddd680f8764e3cab93))
+* update peerDep version ([85a2fdc](https://github.com/Availity/availity-react/commit/85a2fdc0207a5a337f37b2ff8aa8b792bd1847fe))
+
+
+### Features
+
+* **form-upload:** upgrade upload-core ([712a545](https://github.com/Availity/availity-react/commit/712a545551fd83427604a8c44de3b4e10901f9f0))
+* update to latest upload-core ([df7270f](https://github.com/Availity/availity-react/commit/df7270fcf638586276039145e79fdbb0ddb69ebd))
+
+
+### BREAKING CHANGES
+
+* **form-upload:** upgrade major versions of @availity/upload-core to v7
+
+
 
 ## [1.2.2](https://github.com/Availity/availity-react/compare/@availity/form-upload@1.2.1...@availity/form-upload@1.2.2) (2025-01-22)
 
