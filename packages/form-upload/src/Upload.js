@@ -7,7 +7,6 @@ import { FormGroup, Feedback } from '@availity/form';
 import Icon from '@availity/icon';
 import { useField, useFormikContext } from 'formik';
 import classNames from 'classnames';
-import { v4 as uuid } from 'uuid';
 
 import FilePickerBtn from './FilePickerBtn';
 import FileList from './FileList';
@@ -160,7 +159,7 @@ const Upload = ({
     }
   };
 
-  const setFiles = (files) => {
+  const setFiles = async (files) => {
     let selectedFiles = [];
     // FileList is not iterable
     // eslint-disable-next-line unicorn/no-for-loop
@@ -172,60 +171,64 @@ const Upload = ({
       selectedFiles = selectedFiles.slice(0, Math.max(0, max - fieldValue.length));
     }
 
-    // eslint-disable-next-line unicorn/prefer-spread
-    let newFilesTotalSize = 0;
-    const newFiles = [
-      ...fieldValue,
-      ...selectedFiles.map((file) => {
-        const options = {
-          bucketId,
-          customerId,
-          clientId,
-          onPreStart: onFilePreUpload,
-          fileTypes: allowedFileTypes,
-          maxSize,
-          allowedFileNameCharacters,
-        };
-        if (isCloud) options.endpoint = CLOUD_URL;
-        if (endpoint) options.endpoint = endpoint;
-        const upload = new UploadCore(file, options);
-        upload.id = `${upload.id}-${uuid()}`;
-        if (file.dropRejectionMessage) {
-          upload.errorMessage = file.dropRejectionMessage;
-        } else if (totalMaxSize && totalSize + newFilesTotalSize + upload.file.size > totalMaxSize) {
-          upload.errorMessage = 'Total documents size is too large';
-        } else {
-          upload.start();
-          newFilesTotalSize += upload.file.size;
-        }
-        if (onFileUpload) {
-          onFileUpload(upload);
-        } else if (deliveryChannel && fileDeliveryMetadata) {
-          upload.onSuccess.push(() => {
-            if (upload?.references?.[0]) {
-              // allow form to revalidate when upload is complete
-              setFieldTouched(name, true);
-              // deliver upon upload complete, not form submit
-              if (!deliverFileOnSubmit) {
-                callFileDelivery(upload);
-              }
+    const uploads = [...fieldValue];
+
+    const options = {
+      bucketId,
+      customerId,
+      clientId,
+      onPreStart: onFilePreUpload,
+      fileTypes: allowedFileTypes,
+      maxSize,
+      allowedFileNameCharacters,
+    };
+
+    if (isCloud) options.endpoint = CLOUD_URL;
+    if (endpoint) options.endpoint = endpoint;
+
+    let newTotalSize = 0;
+
+    for await (const file of selectedFiles) {
+      const upload = new UploadCore(file, options);
+      await upload.generateId();
+
+      if (file.dropRejectionMessage) {
+        upload.errorMessage = file.dropRejectionMessage;
+      } else if (totalMaxSize && totalSize + newTotalSize + upload.file.size > totalMaxSize) {
+        upload.errorMessage = 'Total documents size is too large';
+      } else {
+        upload.start();
+        newTotalSize += upload.file.size;
+      }
+
+      if (onFileUpload) {
+        onFileUpload(upload);
+      } else if (deliveryChannel && fileDeliveryMetadata) {
+        upload.onSuccess.push(() => {
+          if (upload?.references?.[0]) {
+            // allow form to revalidate when upload is complete
+            setFieldTouched(name, true);
+            // deliver upon upload complete, not form submit
+            if (!deliverFileOnSubmit) {
+              callFileDelivery(upload);
             }
-          });
-        }
+          }
+        });
+      }
 
-        return upload;
-      }),
-    ];
+      uploads.push(upload);
+    }
 
-    setTotalSize(totalSize + newFilesTotalSize);
-    setFieldValue(name, newFiles, true);
+    setTotalSize(totalSize + newTotalSize);
+    await setFieldValue(name, uploads, true);
   };
 
-  const handleFileInputChange = (event) => {
-    setFiles(event.target.files);
+  const handleFileInputChange = async (event) => {
+    event.stopPropagation();
+    await setFiles(event.target.files);
   };
 
-  const onDrop = (acceptedFiles, fileRejections) => {
+  const onDrop = async (acceptedFiles, fileRejections) => {
     const rejectedFilesToDrop = fileRejections.map(({ file, errors }) => {
       const dropRejectionMessage = getDropRejectionMessage
         ? getDropRejectionMessage(errors, file)
@@ -234,7 +237,7 @@ const Upload = ({
       file.dropRejectionMessage = dropRejectionMessage;
       return file;
     });
-    setFiles([...acceptedFiles, ...rejectedFilesToDrop]);
+    await setFiles([...acceptedFiles, ...rejectedFilesToDrop]);
   };
 
   let fileAddArea;

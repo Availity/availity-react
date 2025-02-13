@@ -38,7 +38,19 @@ export const Default: Story = ({ showFileDrop }) => (
       // noop
     }}
   >
-    <Upload name="upload" clientId="123" customerId="123" bucketId="789" showFileDrop={showFileDrop} />
+    <Upload
+      name="upload"
+      clientId="123"
+      customerId="123"
+      bucketId="789"
+      showFileDrop={showFileDrop}
+      deliveryChannel="test"
+      deliverFileOnSubmit={false}
+      fileDeliveryMetadata={{
+        payerId: 'AvailityTest',
+      }}
+    />
+    <button type="submit">click</button>
   </Form>
 );
 Default.args = {

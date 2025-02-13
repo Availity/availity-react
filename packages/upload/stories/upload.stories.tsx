@@ -11,73 +11,53 @@ import Upload from '..';
 export default {
   title: 'Components/Upload',
   component: Upload,
-};
-
-export const _Upload: StoryObj<typeof Upload> = {
-  render: ({ allowedFileTypes, disabled, max, maxSize, multiple }) => (
-    <div className="py-3">
-      <Upload
-        clientId="a"
-        bucketId="b"
-        customerId="c"
-        multiple={multiple}
-        disabled={disabled}
-        max={max}
-        allowedFileTypes={allowedFileTypes}
-        maxSize={maxSize}
-      />
-    </div>
-  ),
   args: {
-    allowedFileTypes: ['.jpg', '.jpeg', '.doc', '.docx'],
+    clientId: 'a',
+    bucketId: 'b',
+    customerId: 'c',
+    allowedFileTypes: ['.jpg', '.jpeg', '.doc', '.docx', '.txt'],
     disabled: false,
+    isCloud: true,
     max: 0,
     maxSize: 0,
     multiple: false,
   },
 };
 
+export const _Upload: StoryObj<typeof Upload> = {
+  render: (args) => (
+    <div className="py-3">
+      <Upload {...args} />
+    </div>
+  ),
+};
+
 export const _RestrictFileTypes: StoryObj<typeof Upload> = {
-  render: ({ allowedFileTypes, disabled, max, maxSize, multiple }) => (
+  render: (args) => (
     <div className="py-3">
       <p>Allows you to define which file types are available to upload.</p>
       <p>Here we have jpg, jpeg, doc and docx available to be selected.</p>
-      <Upload
-        clientId="a"
-        bucketId="b"
-        customerId="c"
-        multiple={multiple}
-        disabled={disabled}
-        max={max}
-        allowedFileTypes={allowedFileTypes}
-        maxSize={maxSize}
-      />
+      <Upload {...args} />
     </div>
   ),
   args: {
     allowedFileTypes: ['.jpg', '.jpeg', '.doc', '.docx'],
-    disabled: false,
-    max: 0,
-    maxSize: 0,
-    multiple: false,
   },
 };
 
 export const _RestrictFileName: StoryObj<typeof Upload> = {
-  render: ({ disabled, allowedFileNameCharacters }) => (
+  render: (args) => (
     <div className="py-3">
       <p>Allows you to restrict characters are permissible in the filename of uploads.</p>
       <p>Here we will allow files with any letter, number or the characters _ and - in its name. (-_a-zA-Z0-9)</p>
-      <Upload
-        clientId="a"
-        bucketId="b"
-        customerId="c"
-        allowedFileNameCharacters={allowedFileNameCharacters}
-        disabled={disabled}
-      />
+      <Upload {...args} />
     </div>
   ),
+  args: {
+    allowedFileNameCharacters: '-_a-zA-Z0-9',
+  },
 };
+
 // TODO: fix story that used knobs api
 // export const ProgressBar: Story = ({ animated, striped, complete, color }) => {
 //   button('+10%', () => instance.progress(10), 'Mock Actions');

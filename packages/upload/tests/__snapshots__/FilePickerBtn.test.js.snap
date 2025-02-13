@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Upload should render 1`] = `
+exports[`FilePickerBtn should render 1`] = `
 <div>
   <div
     class="d-none"

@@ -14,7 +14,7 @@ const Checkbox = ({
   groupName,
   helpId,
   id,
-  inline,
+  inline = true,
   label,
   value: checkValue,
   isHelpVideoType,
@@ -75,10 +75,6 @@ Checkbox.propTypes = {
   value: PropTypes.oneOfType([PropTypes.string, PropTypes.bool, PropTypes.object]),
   /** Allows the type of `<FieldHelpIcon/>` to be changed between help-icon and video-help */
   isHelpVideoType: PropTypes.bool,
-};
-
-Checkbox.defaultProps = {
-  inline: true,
 };
 
 export default Checkbox;

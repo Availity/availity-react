@@ -1,5 +1,6 @@
-import React from 'react';
+import React, { act } from 'react';
 import { screen, render, fireEvent, waitFor } from '@testing-library/react';
+import { server } from '@availity/mock/src/server';
 
 import Upload from '..';
 
@@ -12,13 +13,22 @@ const getDropRejectionMessage = (errors) => {
 };
 
 describe('Upload', () => {
-  test('should render', () => {
-    const { container } = render(<Upload clientId="a" bucketId="b" customerId="c" />);
+  // start msw server
+  beforeAll(() => server.listen());
 
-    expect(container).toMatchSnapshot();
+  // clear cache and reset msw handlers
+  afterEach(() => server.resetHandlers());
+
+  // terminate the server
+  afterAll(() => server.close());
+
+  test('should render', () => {
+    render(<Upload clientId="a" bucketId="b" customerId="c" />);
+
+    expect(screen.getByTestId('file-picker')).toBeDefined();
   });
 
-  test('adding a file', () => {
+  test('adding a file', async () => {
     render(<Upload clientId="a" bucketId="b" customerId="c" showFileDrop />);
 
     const file = Buffer.from('hello world');
@@ -27,35 +37,47 @@ describe('Upload', () => {
 
     const inputNode = screen.getByTestId('file-picker');
 
-    fireEvent.change(inputNode, fileEvent);
+    act(() => {
+      fireEvent.change(inputNode, fileEvent);
+    });
 
-    expect(inputNode.files.length).toBe(1);
+    await waitFor(() => {
+      expect(inputNode.files.length).toBe(1);
+    });
   });
 
-  test('removing a file', () => {
+  test('removing a file', async () => {
     render(<Upload clientId="a" bucketId="b" customerId="c" />);
 
     // Create a new file
     const file = Buffer.from('hello world');
     file.name = 'fileName.png';
-
     const fileEvent = { target: { files: [file] } };
 
     const inputNode = screen.getByTestId('file-picker');
 
     // Simulate the upload to the Components
-    fireEvent.change(inputNode, fileEvent);
+    act(() => {
+      fireEvent.change(inputNode, fileEvent);
+    });
 
-    expect(inputNode.files.length).toBe(1);
+    let removeFileBtn;
 
-    const filerow = screen.getByTestId('remove-file-btn');
+    await waitFor(() => {
+      expect(inputNode.files.length).toBe(1);
+      removeFileBtn = screen.getByTestId('remove-file-btn');
+    });
 
-    fireEvent.click(filerow);
+    act(() => {
+      fireEvent.click(removeFileBtn);
+    });
 
-    expect(screen.queryByTestId('remove-file-btn')).toBeNull();
+    await waitFor(() => {
+      expect(screen.queryByTestId('remove-file-btn')).toBeNull();
+    });
   });
 
-  test('calls onFilePreUpload callback', () => {
+  test('calls onFilePreUpload callback', async () => {
     const mockFunc = jest.fn();
     render(<Upload clientId="a" bucketId="b" customerId="c" onFilePreUpload={[mockFunc]} />);
     const inputNode = screen.getByTestId('file-picker');
@@ -64,18 +86,22 @@ describe('Upload', () => {
     file.name = 'fileName.png';
     const fileEvent = { target: { files: [file] } };
 
-    fireEvent.change(inputNode, fileEvent);
+    act(() => {
+      fireEvent.change(inputNode, fileEvent);
+    });
 
-    expect(inputNode.files.length).toBe(1);
+    await waitFor(() => {
+      expect(inputNode.files.length).toBe(1);
 
-    const filerow = screen.getByTestId('remove-file-btn');
+      screen.getByTestId('remove-file-btn');
+    });
 
-    fireEvent.click(filerow);
-
-    expect(mockFunc).toHaveBeenCalled();
+    await waitFor(() => {
+      expect(mockFunc).toHaveBeenCalled();
+    });
   });
 
-  test('calls onFileRemove callback', () => {
+  test('calls onFileRemove callback', async () => {
     const mockFunc = jest.fn();
 
     render(<Upload clientId="a" bucketId="b" customerId="c" onFileRemove={mockFunc} />);
@@ -88,11 +114,16 @@ describe('Upload', () => {
 
     fireEvent.change(inputNode, fileEvent);
 
-    expect(inputNode.files.length).toBe(1);
+    let removeFileBtn;
 
-    const filerow = screen.getByTestId('remove-file-btn');
+    await waitFor(() => {
+      expect(inputNode.files.length).toBe(1);
+      removeFileBtn = screen.getByTestId('remove-file-btn');
+    });
 
-    fireEvent.click(filerow);
+    act(() => {
+      fireEvent.click(removeFileBtn);
+    });
 
     expect(mockFunc).toHaveBeenCalled();
   });
