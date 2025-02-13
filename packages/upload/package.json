@@ -29,14 +29,14 @@
     "prop-types": "^15.8.1"
   },
   "devDependencies": {
-    "@availity/upload-core": "7.0.0",
+    "@availity/upload-core": "^7.0.0",
     "react": "^18.3.1",
     "react-dom": "^18.3.1",
     "react-dropzone": "^11.7.1",
     "reactstrap": "^8.10.1"
   },
   "peerDependencies": {
-    "@availity/upload-core": "7.0.0-alpha.5",
+    "@availity/upload-core": "^7.0.0",
     "react": "^18.0.0",
     "react-dom": "^18.0.0",
     "react-dropzone": "^11.7.1",

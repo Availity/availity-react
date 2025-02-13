@@ -597,7 +597,7 @@ __metadata:
     "@availity/form": "workspace:*"
     "@availity/icon": "workspace:*"
     "@availity/progress": "workspace:*"
-    "@availity/upload-core": 7.0.0
+    "@availity/upload-core": ^7.0.0
     classnames: ^2.5.1
     formik: ^2.4.6
     nock: ^13.5.4
@@ -611,7 +611,7 @@ __metadata:
   peerDependencies:
     "@availity/api-axios": ^9.0.3
     "@availity/form": ^1.9.3
-    "@availity/upload-core": 7.0.0-alpha.5
+    "@availity/upload-core": ^7.0.0
     formik: ^2.4.6
     react: ^18.0.0
     react-dropzone: ^11.7.1
@@ -1125,7 +1125,7 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@availity/upload-core@npm:7.0.0":
+"@availity/upload-core@npm:^7.0.0":
   version: 7.0.0
   resolution: "@availity/upload-core@npm:7.0.0"
   dependencies:
@@ -1140,14 +1140,14 @@ __metadata:
   resolution: "@availity/upload@workspace:packages/upload"
   dependencies:
     "@availity/progress": "workspace:*"
-    "@availity/upload-core": 7.0.0
+    "@availity/upload-core": ^7.0.0
     prop-types: ^15.8.1
     react: ^18.3.1
     react-dom: ^18.3.1
     react-dropzone: ^11.7.1
     reactstrap: ^8.10.1
   peerDependencies:
-    "@availity/upload-core": 7.0.0-alpha.5
+    "@availity/upload-core": ^7.0.0
     react: ^18.0.0
     react-dom: ^18.0.0
     react-dropzone: ^11.7.1
