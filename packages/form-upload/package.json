@@ -32,7 +32,7 @@
   "devDependencies": {
     "@availity/api-axios": "^9.0.3",
     "@availity/form": "workspace:*",
-    "@availity/upload-core": "7.0.0-alpha.5",
+    "@availity/upload-core": "7.0.0",
     "formik": "^2.4.6",
     "nock": "^13.5.4",
     "react": "^18.3.1",

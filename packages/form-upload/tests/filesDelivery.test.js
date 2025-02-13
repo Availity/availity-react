@@ -1,16 +1,10 @@
-/* eslint-disable jest/no-done-callback */
-import React from 'react';
-import { render, fireEvent, waitFor } from '@testing-library/react';
-import { avFilesDeliveryApi } from '@availity/api-axios';
+import React, { act } from 'react';
+import { render, screen, fireEvent, waitFor } from '@testing-library/react';
 import { Form } from '@availity/form';
 import { Button } from 'reactstrap';
-import nock from 'nock';
-import xhrMock from 'xhr-mock';
-import UploadCore from '@availity/upload-core';
+import { server } from '@availity/mock/src/server';
 
 import Upload from '..';
-
-jest.mock('@availity/api-axios');
 
 const renderUpload = (formProps, uploadProps) =>
   render(
@@ -20,76 +14,20 @@ const renderUpload = (formProps, uploadProps) =>
     </Form>
   );
 
-// FIXME: how can we await form-upload/Upload's onSuccess callback without resorting
-// to adding a second upload here and pushing done() into onSuccess?
-const createTestExtendingUpload = (file, done) => {
-  const upload = new UploadCore(file, {
-    bucketId: 'testbucket',
-    customerId: 'b',
-    clientId: 'c',
-  });
-  const success = jest.fn();
-  upload.onSuccess.push(success, () => {
-    expect(success).toHaveBeenCalled();
-    done();
-  });
-
-  return upload;
-};
-
 describe('filesDelivery upload', () => {
-  beforeEach(() => {
-    global.jsdom.reconfigure({
-      url: 'https://dev.local/other',
-    });
-    xhrMock.setup();
+  // start msw server
+  beforeAll(() => server.listen());
 
-    nock('https://dev.local').post('/ms/api/availity/internal/core/vault/upload/v1/resumable/testbucket/').reply(
-      201,
-      {},
-      {
-        'tus-resumable': '1.0.0',
-        'upload-expires': 'Fri, 12 Jan 2030 15:54:39 GMT',
-        'transfer-encoding': 'chunked',
-        location: '4611142db7c049bbbe37376583a3f46b',
-      }
-    );
+  // clear cache and reset msw handlers
+  afterEach(() => server.resetHandlers());
 
-    nock('https://dev.local')
-      .patch('/ms/api/availity/internal/core/vault/upload/v1/resumable/testbucket/4611142db7c049bbbe37376583a3f46b')
-      .reply(
-        204,
-        {},
-        {
-          'tus-resumable': '1.0.0',
-          'upload-expires': 'Fri, 12 Jan 2030 15:54:39 GMT',
-          'transfer-encoding': 'chunked',
-          'Upload-Offset': 12,
-          references: '["/files/105265/9ee77f6d-9779-4b96-a995-0df47657e504"]',
-        }
-      );
+  // terminate the server
+  afterAll(() => server.close());
 
-    xhrMock.use('HEAD', /.*4611142db7c049bbbe37376583a3f46b.*/, {
-      status: 200,
-      headers: {
-        'Content-Length': '0',
-        'AV-Scan-Result': 'accepted',
-        'Upload-Result': 'accepted',
-      },
-    });
-  });
+  test('calls avFilesDeliveryApi when deliveryChannel and fileDeliveryMetadata are defined and deliverFileOnSubmit is false', async () => {
+    const mockOnDeliverySuccess = jest.fn();
 
-  afterEach(() => {
-    xhrMock.teardown();
-  });
-
-  test('calls avFilesDeliveryApi when deliveryChannel and fileDeliveryMetadata are defined and deliverFileOnSubmit is false', async (done) => {
-    avFilesDeliveryApi.uploadFilesDelivery.mockResolvedValue({
-      id: '123456',
-      status: 'COMPLETE',
-    });
-
-    const { getByTestId } = renderUpload(
+    renderUpload(
       {
         initialValues: {
           upload: null,
@@ -105,6 +43,9 @@ describe('filesDelivery upload', () => {
         fileDeliveryMetadata: {
           payerId: 'AvailityTest',
         },
+        onDeliverySuccess: () => {
+          mockOnDeliverySuccess();
+        },
       }
     );
 
@@ -116,38 +57,47 @@ describe('filesDelivery upload', () => {
       },
     };
 
-    const upload = createTestExtendingUpload(file, done);
-    upload.start();
+    const inputNode = screen.getByTestId('file-picker');
 
-    const inputNode = getByTestId('file-picker');
-
-    fireEvent.change(inputNode, fileEvent);
-    expect(inputNode.files.length).toBe(1);
-
-    await waitFor(() => expect(avFilesDeliveryApi.uploadFilesDelivery).toHaveBeenCalledTimes(1));
-  });
-
-  test('calls avFilesDeliveryApi onSubmit when deliverFileOnSubmit is true and deliveryChannel and fileDeliveryMetadata are defined', async (done) => {
-    const onSubmit = jest.fn();
-    avFilesDeliveryApi.uploadFilesDelivery.mockResolvedValue({
-      id: '123456',
-      status: 'COMPLETE',
+    act(() => {
+      fireEvent.change(inputNode, fileEvent);
     });
 
-    const { getByTestId, getByText } = renderUpload(
-      { initialValues: { upload: null }, onSubmit },
+    await waitFor(() => {
+      expect(inputNode.files.length).toBe(1);
+      screen.getByTestId('remove-file-btn');
+    });
+
+    waitFor(() => {
+      expect(mockOnDeliverySuccess).toHaveBeenCalled();
+    });
+  });
+
+  test('calls avFilesDeliveryApi onSubmit when deliverFileOnSubmit is true and deliveryChannel and fileDeliveryMetadata are defined', async () => {
+    const mockOnSubmit = jest.fn();
+    const mockOnDeliverySuccess = jest.fn();
+    const mockOnDeliveryError = jest.fn();
+
+    renderUpload(
+      { initialValues: { upload: null }, onSubmit: mockOnSubmit },
       {
         name: 'upload',
         clientId: 'a',
         bucketId: 'testbucket',
         customerId: 'c',
         deliverFileOnSubmit: true,
-        deliverChannel: 'test',
+        deliveryChannel: 'test',
         fileDeliveryMetadata: { payerId: 'AvailityTest' },
+        onDeliverySuccess: () => {
+          mockOnDeliverySuccess();
+        },
+        onDeliveryError: () => {
+          mockOnDeliveryError();
+        },
       }
     );
 
-    const inputNode = getByTestId('file-picker');
+    const inputNode = screen.getByTestId('file-picker');
 
     const file = Buffer.from('hello world!');
     file.name = 'a';
@@ -157,39 +107,45 @@ describe('filesDelivery upload', () => {
       },
     };
 
-    const upload = createTestExtendingUpload(file, done);
-    upload.start();
-
-    fireEvent.change(inputNode, fileEvent);
-    expect(inputNode.files.length).toBe(1);
-
-    fireEvent.click(getByText('Submit'));
-    await waitFor(() => expect(onSubmit).toHaveBeenCalled());
-    await waitFor(() => expect(avFilesDeliveryApi.uploadFilesDelivery).toHaveBeenCalledTimes(1));
-  });
-
-  test('does not call avFilesDeliveryApi when onFileUpload is defined', async (done) => {
-    const mockFunc = jest.fn();
-    avFilesDeliveryApi.uploadFilesDelivery.mockResolvedValue({
-      id: '123456',
-      status: 'COMPLETE',
+    act(() => {
+      fireEvent.change(inputNode, fileEvent);
     });
 
-    const { getByTestId } = renderUpload(
+    await waitFor(() => {
+      expect(inputNode.files.length).toBe(1);
+      screen.getByTestId('remove-file-btn');
+    });
+
+    act(() => {
+      fireEvent.click(screen.getByText('Submit'));
+    });
+
+    await waitFor(() => expect(mockOnSubmit).toHaveBeenCalled());
+    await waitFor(() => expect(mockOnDeliverySuccess).toHaveBeenCalledTimes(1));
+  });
+
+  test('does not call avFilesDeliveryApi when onFileUpload is defined', async () => {
+    const mockOnFileUpload = jest.fn();
+    const mockOnDeliverySuccess = jest.fn();
+    const mockOnDeliveryError = jest.fn();
+
+    renderUpload(
       { initialValues: { upload: null } },
       {
         name: 'upload',
         clientId: 'a',
         bucketId: 'testbucket',
         customerId: 'c',
-        onFileUpload: mockFunc,
+        onFileUpload: mockOnFileUpload,
         deliverFileOnSubmit: false,
-        deliverChannel: 'test',
+        deliveryChannel: 'test',
         fileDeliveryMetadata: { payerId: 'AvailityTest' },
+        onDeliverySuccess: mockOnDeliverySuccess,
+        onDeliveryError: mockOnDeliveryError,
       }
     );
 
-    const inputNode = getByTestId('file-picker');
+    const inputNode = screen.getByTestId('file-picker');
 
     const file = Buffer.from('hello world!');
     file.name = 'a';
@@ -199,17 +155,24 @@ describe('filesDelivery upload', () => {
       },
     };
 
-    const upload = createTestExtendingUpload(file, done);
-    upload.start();
-
-    fireEvent.change(inputNode, fileEvent);
+    act(() => {
+      fireEvent.change(inputNode, fileEvent);
+    });
     expect(inputNode.files.length).toBe(1);
 
-    const filerow = getByTestId('remove-file-btn');
+    let removeFileBtn;
+    await waitFor(() => {
+      expect(inputNode.files.length).toBe(1);
+      removeFileBtn = screen.getByTestId('remove-file-btn');
+    });
 
-    fireEvent.click(filerow);
+    fireEvent.click(removeFileBtn);
 
-    expect(mockFunc).toHaveBeenCalled();
-    await waitFor(() => expect(avFilesDeliveryApi.uploadFilesDelivery).not.toHaveBeenCalled());
+    await waitFor(() => {
+      expect(mockOnFileUpload).toHaveBeenCalled();
+    });
+
+    await waitFor(() => expect(mockOnDeliverySuccess).not.toHaveBeenCalled());
+    await waitFor(() => expect(mockOnDeliveryError).not.toHaveBeenCalled());
   });
 });

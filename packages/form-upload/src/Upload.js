@@ -159,55 +159,60 @@ const Upload = ({
       selectedFiles = selectedFiles.slice(0, Math.max(0, max - fieldValue.length));
     }
 
-    let newFilesTotalSize = 0;
-    const newFiles = [
-      ...fieldValue,
-      ...selectedFiles.map(async (file) => {
-        const options = {
-          bucketId,
-          customerId,
-          clientId,
-          onPreStart: onFilePreUpload,
-          fileTypes: allowedFileTypes,
-          maxSize,
-          allowedFileNameCharacters,
-        };
-        if (endpoint) options.endpoint = endpoint;
-        if (isCloud) options.endpoint = CLOUD_URL;
-        const upload = new UploadCore(file, options);
-        await upload.generateId();
-        if (file.dropRejectionMessage) {
-          upload.errorMessage = file.dropRejectionMessage;
-        } else if (totalMaxSize && totalSize + newFilesTotalSize + upload.file.size > totalMaxSize) {
-          upload.errorMessage = 'Total documents size is too large';
-        } else {
-          upload.start();
-          newFilesTotalSize += upload.file.size;
-        }
-        if (onFileUpload) {
-          onFileUpload(upload);
-        } else if (deliveryChannel && fileDeliveryMetadata) {
-          upload.onSuccess.push(() => {
-            if (upload?.references?.[0]) {
-              // allow form to revalidate when upload is complete
-              setFieldTouched(name, true);
-              // deliver upon upload complete, not form submit
-              if (!deliverFileOnSubmit) {
-                callFileDelivery(upload);
-              }
+    const uploads = [...fieldValue];
+
+    const options = {
+      bucketId,
+      customerId,
+      clientId,
+      onPreStart: onFilePreUpload,
+      fileTypes: allowedFileTypes,
+      maxSize,
+      allowedFileNameCharacters,
+    };
+
+    if (endpoint) options.endpoint = endpoint;
+    if (isCloud) options.endpoint = CLOUD_URL;
+
+    let newTotalSize = 0;
+
+    for await (const file of selectedFiles) {
+      const upload = new UploadCore(file, options);
+      await upload.generateId();
+
+      if (file.dropRejectionMessage) {
+        upload.errorMessage = file.dropRejectionMessage;
+      } else if (totalMaxSize && totalSize + newTotalSize + upload.file.size > totalMaxSize) {
+        upload.errorMessage = 'Total documents size is too large';
+      } else {
+        upload.start();
+        newTotalSize += upload.file.size;
+      }
+
+      if (onFileUpload) {
+        onFileUpload(upload);
+      } else if (deliveryChannel && fileDeliveryMetadata) {
+        upload.onSuccess.push(() => {
+          if (upload?.references?.[0]) {
+            // allow form to revalidate when upload is complete
+            setFieldTouched(name, true);
+            // deliver upon upload complete, not form submit
+            if (!deliverFileOnSubmit) {
+              callFileDelivery(upload);
             }
-          });
-        }
+          }
+        });
+      }
 
-        return upload;
-      }),
-    ];
+      uploads.push(upload);
+    }
 
-    setTotalSize(totalSize + newFilesTotalSize);
-    setFieldValue(name, newFiles, true);
+    setTotalSize(totalSize + newTotalSize);
+    await setFieldValue(name, uploads, true);
   };
 
   const handleFileInputChange = async (event) => {
+    event.stopPropagation();
     await setFiles(event.target.files);
   };
 

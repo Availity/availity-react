@@ -1,22 +1,26 @@
-/* eslint-disable react/react-in-jsx-scope */
-/* eslint-disable new-cap */
-// import React from 'react';
-import { screen, render, fireEvent, waitFor, cleanup } from '@testing-library/react';
+import { act } from 'react';
+import { screen, render, fireEvent, waitFor } from '@testing-library/react';
 import { Form } from '@availity/form';
+import { server } from '@availity/mock/src/server';
+import type UploadCore from '@availity/upload-core';
+
 import Upload from '../src';
 
-// const renderUpload = (formProps, uploadProps) =>
-//   render(
-//     <Form {...formProps}>
-//       <Upload {...uploadProps} />
-//     </Form>
-//   );
+const getFileRemoveBtn = async (): Promise<HTMLElement> => waitFor(() => screen.getByTestId('remove-file-btn'));
 
 type UploadFile = Buffer & { name?: string; size?: number };
 const initialValues = { upload: null };
 const defaultUploadProps = { name: 'upload', clientId: 'a', bucketId: 'b', customerId: 'c' };
 
 describe('Upload', () => {
+  // start msw server
+  beforeAll(() => server.listen());
+
+  // clear cache and reset msw handlers
+  afterEach(() => server.resetHandlers());
+
+  // terminate the server
+  afterAll(() => server.close());
   // beforeEach(() => {
   //   // This is useful to isolate specific modules for every test so that local module state doesn't conflict between tests.
   //   // Makes lazy loading react-dropzone consistent instead of relying on only one test to set it up
@@ -33,14 +37,6 @@ describe('Upload', () => {
   // });
 
   test('should render', () => {
-    // const { container } = renderUpload(
-    //   { initialValues: { upload: null } },
-    //   { name: 'upload', clientId: 'a', bucketId: 'b', customerId: 'c' }
-    // );
-    // jest.isolateModules(() => {
-    //   // eslint-disable-next-line @typescript-eslint/no-var-requires
-    //   Upload = require('../src/Upload').default;
-    // });
     const { container } = render(
       <Form
         initialValues={initialValues}
@@ -55,16 +51,7 @@ describe('Upload', () => {
     expect(container).toBeDefined();
   });
 
-  test('adding a file', () => {
-    // const { getByTestId } = renderUpload(
-    //   { initialValues: { upload: null } },
-    //   {
-    //     name: 'upload',
-    //     clientId: 'a',
-    //     bucketId: 'b',
-    //     customerId: 'c',
-    //   }
-    // );
+  test('adding a single file', async () => {
     render(
       <Form
         initialValues={initialValues}
@@ -81,23 +68,17 @@ describe('Upload', () => {
     const fileEvent = { target: { files: [file] } };
 
     const inputNode = screen.getByTestId('file-picker') as HTMLInputElement;
-    fireEvent.change(inputNode, fileEvent);
 
-    expect(inputNode.files?.length).toBe(1);
+    act(() => {
+      fireEvent.change(inputNode, fileEvent);
+    });
+
+    await waitFor(() => {
+      expect(inputNode.files?.length).toBe(1);
+    });
   });
 
-  test('adding a file over maxSize', () => {
-    // const { getByTestId, getByText } = renderUpload(
-    //   { initialValues: { upload: null } },
-    //   {
-    //     name: 'upload',
-    //     clientId: 'a',
-    //     bucketId: 'b',
-    //     customerId: 'c',
-    //     maxSize: 100,
-    //   }
-    // );
-
+  test('adding a file over maxSize', async () => {
     render(
       <Form
         initialValues={initialValues}
@@ -115,23 +96,17 @@ describe('Upload', () => {
     const fileEvent = { target: { files: [file] } };
 
     const inputNode = screen.getByTestId('file-picker');
-    fireEvent.change(inputNode, fileEvent);
+    act(() => {
+      fireEvent.change(inputNode, fileEvent);
+    });
 
-    expect(screen.getByText('Document is too large')).toBeDefined();
+    await waitFor(() => {
+      expect(screen.getByText('Document is too large')).toBeDefined();
+    });
   });
 
-  test('adding a file over totalMaxSize', () => {
-    // const { getByTestId, getByText } = renderUpload(
-    //   { initialValues: { upload: null } },
-    //   {
-    //     name: 'upload',
-    //     clientId: 'a',
-    //     bucketId: 'b',
-    //     customerId: 'c',
-    //     maxSize: 700,
-    //     totalMaxSize: 1000,
-    //   }
-    // );
+  test('adding a file over totalMaxSize', async () => {
+    // FIXME: is bork
     render(
       <Form
         initialValues={initialValues}
@@ -146,20 +121,25 @@ describe('Upload', () => {
     const file: UploadFile = Buffer.from('hello world');
     file.name = 'fileName.png';
     file.size = 600;
-    const fileEvent = { target: { files: [file] } };
+
+    const file2: UploadFile = Buffer.from('hello world');
+    file2.name = 'fileName2.png';
+    file2.size = 600;
 
     const inputNode = screen.getByTestId('file-picker');
-    fireEvent.change(inputNode, fileEvent);
-    fireEvent.change(inputNode, fileEvent);
 
-    expect(screen.getByText('Total documents size is too large')).toBeDefined();
+    const fileEvent = { target: { files: [file, file2] } };
+
+    act(() => {
+      fireEvent.change(inputNode, fileEvent);
+    });
+
+    await waitFor(() => {
+      expect(screen.getByText('Total documents size is too large')).toBeDefined();
+    });
   });
 
-  test('removing a file', () => {
-    // const { getByTestId, queryByTestId } = renderUpload(
-    //   { initialValues: { upload: null } },
-    //   { name: 'upload', clientId: 'a', bucketId: 'b', customerId: 'c' }
-    // );
+  test('removing a file', async () => {
     render(
       <Form
         initialValues={initialValues}
@@ -177,32 +157,27 @@ describe('Upload', () => {
 
     const fileEvent = { target: { files: [file] } };
 
-    const inputNode = screen.getByTestId('file-picker') as HTMLInputElement;
+    const inputNode = screen.getByTestId('file-picker');
 
-    // Simulate the upload to the Components
-    fireEvent.change(inputNode, fileEvent);
+    act(() => {
+      // Simulate the upload to the Components
+      fireEvent.change(inputNode, fileEvent);
+    });
 
-    expect(inputNode.files?.length).toBe(1);
+    const removeFileBtn = await getFileRemoveBtn();
 
-    const filerow = screen.getByTestId('remove-file-btn');
+    act(() => {
+      fireEvent.click(removeFileBtn);
+    });
 
-    fireEvent.click(filerow);
-
-    expect(screen.queryByTestId('remove-file-btn')).toBeNull();
+    await waitFor(() => {
+      expect(screen.queryByTestId('remove-file-btn')).toBeNull();
+    });
   });
 
-  test('calls onFilePreUpload callback', () => {
+  test('calls onFilePreUpload callback', async () => {
     const mockFunc = jest.fn();
-    // const { getByTestId } = renderUpload(
-    //   { initialValues: { upload: null } },
-    //   {
-    //     name: 'upload',
-    //     clientId: 'a',
-    //     bucketId: 'b',
-    //     customerId: 'c',
-    //     onFilePreUpload: [mockFunc],
-    //   }
-    // );
+
     render(
       <Form
         initialValues={initialValues}
@@ -217,26 +192,31 @@ describe('Upload', () => {
 
     const file: UploadFile = Buffer.from('hello world');
     file.name = 'fileName.png';
+
     const fileEvent = { target: { files: [file] } };
-    fireEvent.change(inputNode, fileEvent);
-    expect(inputNode.files?.length).toBe(1);
-    const filerow = screen.getByTestId('remove-file-btn');
-    fireEvent.click(filerow);
-    expect(mockFunc).toHaveBeenCalled();
+
+    act(() => {
+      fireEvent.change(inputNode, fileEvent);
+    });
+
+    await waitFor(() => {
+      expect(inputNode.files?.length).toBe(1);
+    });
+
+    const removeFileBtn = await getFileRemoveBtn();
+
+    act(() => {
+      fireEvent.click(removeFileBtn);
+    });
+
+    await waitFor(() => {
+      expect(mockFunc).toHaveBeenCalled();
+    });
   });
 
-  test('calls onFileRemove callback', () => {
-    const mockFunc = jest.fn();
-    // const { getByTestId } = renderUpload(
-    //   { initialValues: { upload: null } },
-    //   {
-    //     name: 'upload',
-    //     clientId: 'a',
-    //     bucketId: 'b',
-    //     customerId: 'c',
-    //     onFileRemove: mockFunc,
-    //   }
-    // );
+  test('calls onFileRemove callback', async () => {
+    const onFileRemoveMock = jest.fn();
+
     render(
       <Form
         initialValues={initialValues}
@@ -244,7 +224,7 @@ describe('Upload', () => {
           // noop
         }}
       >
-        <Upload {...defaultUploadProps} onFileRemove={mockFunc} />
+        <Upload {...defaultUploadProps} onFileRemove={onFileRemoveMock} />
       </Form>
     );
 
@@ -254,29 +234,38 @@ describe('Upload', () => {
     file.name = 'fileName.png';
     const fileEvent = { target: { files: [file] } };
 
-    fireEvent.change(inputNode, fileEvent);
+    act(() => {
+      fireEvent.change(inputNode, fileEvent);
+    });
 
-    expect(inputNode.files?.length).toBe(1);
+    await waitFor(() => {
+      expect(inputNode.files?.length).toBe(1);
+    });
 
-    const filerow = screen.getByTestId('remove-file-btn');
+    const removeFileBtn = await getFileRemoveBtn();
 
-    fireEvent.click(filerow);
+    act(() => {
+      fireEvent.click(removeFileBtn);
+    });
 
-    expect(mockFunc).toHaveBeenCalled();
+    await waitFor(() => {
+      expect(screen.queryByTestId('remove-file-btn')).toBeNull();
+      expect(onFileRemoveMock).toHaveBeenCalled();
+    });
   });
 
   test('uses cloud url when isCloud is true', async () => {
     const mockFn = jest.fn();
+    const onFileUploadMock = jest.fn();
+
     render(
-      <Form
+      <Form<{ upload: UploadCore[] | null }>
         initialValues={initialValues}
         onSubmit={(values) => {
-          // eslint-disable-next-line @typescript-eslint/ban-ts-comment
-          // @ts-ignore
           mockFn(values.upload?.[0].options.endpoint);
         }}
       >
-        <Upload {...defaultUploadProps} isCloud />
+        <Upload {...defaultUploadProps} isCloud onFileUpload={onFileUploadMock} />
         <button type="submit">click</button>
       </Form>
     );
@@ -286,28 +275,38 @@ describe('Upload', () => {
     const fileEvent = { target: { files: [file] } };
 
     const inputNode = screen.getByTestId('file-picker') as HTMLInputElement;
-    fireEvent.change(inputNode, fileEvent);
 
-    fireEvent.click(screen.getByText('click'));
+    act(() => {
+      fireEvent.change(inputNode, fileEvent);
+    });
 
-    expect(inputNode.files?.length).toBe(1);
+    // This will make sure the test waits until the file is added to proceed
     await waitFor(() => {
+      expect(onFileUploadMock).toHaveBeenCalled();
+    });
+
+    act(() => {
+      fireEvent.click(screen.getByText('click'));
+    });
+
+    await waitFor(() => {
+      expect(inputNode.files?.length).toBe(1);
       expect(mockFn).toHaveBeenCalledWith('http://localhost/cloud/web/appl/vault/upload/v1/resumable');
     });
   });
 
   test('uses given endpoint when passed', async () => {
     const mockFn = jest.fn();
+    const onFileUploadMock = jest.fn();
+
     render(
-      <Form
+      <Form<{ upload: UploadCore[] | null }>
         initialValues={initialValues}
         onSubmit={(values) => {
-          // eslint-disable-next-line @typescript-eslint/ban-ts-comment
-          // @ts-ignore
           mockFn(values.upload?.[0].options.endpoint);
         }}
       >
-        <Upload {...defaultUploadProps} endpoint="/test/foo" />
+        <Upload {...defaultUploadProps} endpoint="/test/foo" onFileUpload={onFileUploadMock} />
         <button type="submit">click</button>
       </Form>
     );
@@ -317,32 +316,36 @@ describe('Upload', () => {
     const fileEvent = { target: { files: [file] } };
 
     const inputNode = screen.getByTestId('file-picker') as HTMLInputElement;
-    fireEvent.change(inputNode, fileEvent);
 
-    fireEvent.click(screen.getByText('click'));
+    act(() => {
+      fireEvent.change(inputNode, fileEvent);
+    });
 
-    expect(inputNode.files?.length).toBe(1);
+    // This will make sure the test waits until the file is added to proceed
+    await waitFor(() => {
+      expect(onFileUploadMock).toHaveBeenCalled();
+    });
+
+    act(() => {
+      fireEvent.click(screen.getByText('click'));
+    });
+
     await waitFor(() => {
       expect(mockFn).toHaveBeenCalledWith('http://localhost/test/foo');
     });
   });
 
   describe('dropzone', () => {
-    afterEach(() => {
-      jest.resetModules();
-      cleanup();
-    });
+    // start msw server
+    beforeAll(() => server.listen());
+
+    // clear cache and reset msw handlers
+    afterEach(() => server.resetHandlers());
+
+    // terminate the server
+    afterAll(() => server.close());
+
     test('lazy loads dropzone', async () => {
-      // const { getByTestId } = renderUpload(
-      //   { initialValues: { upload: null } },
-      //   {
-      //     name: 'upload',
-      //     clientId: 'a',
-      //     bucketId: 'b',
-      //     customerId: 'c',
-      //     showFileDrop: true,
-      //   }
-      // );
       render(
         <Form
           initialValues={initialValues}

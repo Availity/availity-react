@@ -8,7 +8,7 @@ let id = 0;
 
 const FilePicker = ({
   name,
-  tag: Tag,
+  tag: Tag = CustomInput,
   maxSize,
   allowedFileTypes,
   children,
@@ -33,7 +33,7 @@ const FilePicker = ({
     for (let i = 0; i < files.length; i++) {
       value[i] = files[i];
     }
-    setFieldValue(name, value, true);
+    // setFieldValue(name, value, true);
     if (onChangeCallback) onChangeCallback(event);
   };
 
@@ -75,10 +75,6 @@ FilePicker.propTypes = {
   /** The maximum file size (in bytes) for a file to be uploaded. */
   maxSize: PropTypes.oneOfType([PropTypes.number, PropTypes.string]),
   className: PropTypes.string,
-};
-
-FilePicker.defaultProps = {
-  tag: CustomInput,
 };
 
 export default FilePicker;

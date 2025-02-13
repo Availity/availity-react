@@ -12,6 +12,8 @@ const FilePickerBtn = ({
   allowedFileTypes,
   maxSize,
   'data-testid': testId,
+  color = 'primary',
+  children = 'Select File',
   ...rest
 }) => {
   const input = useRef(null);
@@ -39,7 +41,9 @@ const FilePickerBtn = ({
           data-testid={testId}
         />
       </div>
-      <Button {...rest} onClick={onBtnClick} />
+      <Button color={color} {...rest} onClick={onBtnClick}>
+        {children}
+      </Button>
     </>
   );
 };
@@ -60,11 +64,6 @@ FilePickerBtn.propTypes = {
   /** The maximum file size (in bytes) for a file to be uploaded. */
   maxSize: PropTypes.number,
   'data-testid': PropTypes.string,
-};
-
-FilePickerBtn.defaultProps = {
-  color: 'primary',
-  children: 'Select File',
 };
 
 export default FilePickerBtn;

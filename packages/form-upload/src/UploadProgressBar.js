@@ -109,6 +109,4 @@ UploadProgressBar.propTypes = {
   striped: PropTypes.bool,
 };
 
-UploadProgressBar.defaultProps = {};
-
 export default UploadProgressBar;
