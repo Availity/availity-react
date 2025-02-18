@@ -25,9 +25,9 @@ const fileTypeIconMap = {
   pdf: 'file-pdf',
 };
 
-const FileRow = ({ onRemove, children, file }) => {
+const FileRow = ({ onRemove, children, file, index }) => {
   const remove = () => {
-    onRemove(file.id);
+    onRemove(file.id, index);
   };
 
   const progressBar = () => <UploadProgressBar upload={file} />;
@@ -83,6 +83,7 @@ FileRow.propTypes = {
     }).isRequired,
     options: PropTypes.object,
   }),
+  index: PropTypes.number,
 };
 
 export default FileRow;

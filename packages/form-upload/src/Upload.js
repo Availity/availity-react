@@ -115,7 +115,7 @@ const Upload = ({
       setFieldError,
       onDeliverySuccess,
       onDeliveryError,
-      isCloud
+      isCloud,
     ]
   );
 
@@ -149,8 +149,24 @@ const Upload = ({
     onFileUpload,
   ]);
 
-  const removeFile = (fileId) => {
-    const newFiles = fieldValue.filter((file) => file.id !== fileId);
+  const validator = useCallback(
+    (file) => {
+      const isDuplicate = fieldValue.some((prev) => prev.file.name === file.name);
+      if (isDuplicate) {
+        return {
+          code: 'duplicate-name',
+          message: 'A file with this name already exists',
+        };
+      }
+
+      return null;
+    },
+    [fieldValue]
+  );
+
+  const removeFile = (fileId, fileIndex) => {
+    const newFiles = fieldValue.filter((file, index) => file.id !== fileId || index !== fileIndex);
+
     if (newFiles.length !== fieldValue.length) {
       setFieldValue(name, newFiles, true);
       const removedFile = fieldValue.find((file) => file.id === fileId);
@@ -254,7 +270,13 @@ const Upload = ({
         <Input name={name} style={{ display: 'none' }} />
         <InputGroup disabled={disabled} className={classes}>
           <Suspense fallback={fallback}>
-            <Dropzone onDrop={onDrop} multiple={multiple} maxSize={maxSize} accept={allowedFileTypes}>
+            <Dropzone
+              onDrop={onDrop}
+              multiple={multiple}
+              maxSize={maxSize}
+              accept={allowedFileTypes}
+              validator={validator}
+            >
               {({ getRootProps, getInputProps, isDragActive }) => (
                 <section>
                   <div

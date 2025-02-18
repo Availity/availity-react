@@ -7,8 +7,8 @@ import FileRow from './FileRow';
 const FileList = ({ files, children, onRemoveFile, ...rest }) => {
   const list = useMemo(
     () =>
-      files.map((file) => (
-        <FileRow key={file.id} file={file} onRemove={onRemoveFile}>
+      files.map((file, index) => (
+        <FileRow key={file.id} file={file} onRemove={onRemoveFile} index={index}>
           {children}
         </FileRow>
       )),
