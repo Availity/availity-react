@@ -50,7 +50,6 @@ export const Default: Story = ({ showFileDrop }) => (
         payerId: 'AvailityTest',
       }}
     />
-    <button type="submit">click</button>
   </Form>
 );
 Default.args = {
