@@ -2,6 +2,15 @@
 
 This file was generated using [@jscutlery/semver](https://github.com/jscutlery/semver).
 
+## [2.0.3](https://github.com/Availity/availity-react/compare/@availity/form-upload@2.0.2...@availity/form-upload@2.0.3) (2025-02-20)
+
+
+### Bug Fixes
+
+* **form-upload:** validate duplicates ([3e5a23c](https://github.com/Availity/availity-react/commit/3e5a23c610248e8b56a16f062ef14a368249635e))
+
+
+
 ## [2.0.2](https://github.com/Availity/availity-react/compare/@availity/form-upload@2.0.1...@availity/form-upload@2.0.2) (2025-02-18)
 
 
