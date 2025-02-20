@@ -208,10 +208,14 @@ const Upload = ({
       const upload = new UploadCore(file, options);
       await upload.generateId();
 
+      const validationResult = validator(file);
+
       if (file.dropRejectionMessage) {
         upload.errorMessage = file.dropRejectionMessage;
       } else if (totalMaxSize && totalSize + newTotalSize + upload.file.size > totalMaxSize) {
         upload.errorMessage = 'Total documents size is too large';
+      } else if (validationResult) {
+        upload.errorMessage = validationResult.message;
       } else {
         upload.start();
         newTotalSize += upload.file.size;
