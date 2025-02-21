@@ -8,14 +8,14 @@ jobs:
   Repo-Metrics-Report:
     runs-on: ubuntu-latest
     steps:
-      - name: Check out the repository to the runner
-        uses: actions/checkout@v4
-        with:
-          fetch-depth: 0
-      - name: Install Dependencies
-        run: yarn install --immutable
-      - name: Run Code Coverage Report
-        run: yarn test:coverage
+      #   - name: Check out the repository to the runner
+      #     uses: actions/checkout@v4
+      #     with:
+      #       fetch-depth: 0
+      #   - name: Install Dependencies
+      #     run: yarn install --immutable
+      #   - name: Run Code Coverage Report
+      #     run: yarn test:coverage
       - name: Get Merged PRs from the last two weeks
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
@@ -58,12 +58,12 @@ jobs:
             Total PRs: \(.total_prs)
             Average Time to Merge: \(.average_hours) hours"
           ' prs.json > metrics.txt
-      - name: Format Coverage Report
-        run: |
-          echo "Code Coverage Report:" >> metrics.txt
-          jq -r '
-            (.total | to_entries[] | "\(.key): \(.value)")
-          ' coverage/coverage-final.json >> metrics.txt
+      #   - name: Format Coverage Report
+      #     run: |
+      #       echo "Code Coverage Report:" >> metrics.txt
+      #       jq -r '
+      #         (.total | to_entries[] | "\(.key): \(.value)")
+      #       ' coverage/coverage-final.json >> metrics.txt
       - name: Print Repo Metrics Report
         run: |
           echo "${{ github.repository_owner }} ${{ github.event.repository.name }} Repo Metrics"
