@@ -1,6 +1,6 @@
 {
   "name": "@availity/upload",
-  "version": "4.0.0",
+  "version": "4.0.1",
   "author": "Evan Sharp <evan.sharp@availity.com>",
   "description": "Availity upload component for uploading files",
   "keywords": [
@@ -29,7 +29,7 @@
     "prop-types": "^15.8.1"
   },
   "devDependencies": {
-    "@availity/upload-core": "^7.0.0",
+    "@availity/upload-core": "^7.0.1",
     "react": "^18.3.1",
     "react-dom": "^18.3.1",
     "react-dropzone": "^11.7.1",

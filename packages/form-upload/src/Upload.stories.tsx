@@ -31,7 +31,13 @@ export default {
   },
 } as Meta;
 
-export const Default: Story = ({ showFileDrop }) => (
+export const Default: Story = ({
+  allowedFileNameCharacters,
+  allowedFileTypes,
+  deliverOnSubmit,
+  deliveryChannel,
+  showFileDrop,
+}) => (
   <Form
     initialValues={{ upload: null }}
     onSubmit={() => {
@@ -43,17 +49,21 @@ export const Default: Story = ({ showFileDrop }) => (
       clientId="123"
       customerId="123"
       bucketId="789"
+      allowedFileNameCharacters={allowedFileNameCharacters}
+      allowedFileTypes={allowedFileTypes}
       showFileDrop={showFileDrop}
-      deliveryChannel="test"
-      deliverFileOnSubmit={false}
+      deliveryChannel={deliveryChannel}
+      deliverFileOnSubmit={deliverOnSubmit}
       fileDeliveryMetadata={{
         payerId: 'AvailityTest',
       }}
     />
-    <button type="submit">click</button>
   </Form>
 );
 Default.args = {
+  allowedFileNameCharacters: '',
+  deliverOnSubmit: false,
+  deliveryChannel: 'test',
   showFileDrop: true,
 };
 Default.storyName = 'default';
