@@ -1,0 +1,70 @@
+name: Get Repo Metrics
+# on: workflow_dispatch
+on:
+  push:
+    branches:
+      - build/repo-metrics
+jobs:
+  Repo-Metrics-Report:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out the repository to the runner
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - name: Install Dependencies
+        run: yarn install --immutable
+      - name: Run Code Coverage Report
+        run: yarn test:coverage
+      - name: Get Merged PRs from the last two weeks
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          OWNER: ${{ github.repository_owner }}
+          REPO: ${{ github.event.repository.name }}
+        run: |
+          gh api graphql -f query='
+            query($owner: String!, $repo: String!) {
+              repository(owner: $owner, name: $repo) {
+                pullRequests(
+                  states: [MERGED],
+                  first: 25,
+                  orderBy: {field: UPDATED_AT, direction: DESC}
+                ) {
+                  nodes {
+                    createdAt
+                    mergedAt
+                  }
+                }
+              }
+            }' \
+            -f owner=$OWNER \
+            -f repo=$REPO > prs.json
+      - name: Calculate Mean Time To Merge
+        run: |
+          jq -r '
+            .data.repository.pullRequests.nodes |
+            reduce .[] as $pr (
+              {"total_prs": 0, "total_hours": 0};
+              . + {
+                "total_prs": (.total_prs + 1),
+                "total_hours": (.total_hours + (($pr.mergedAt | fromdateiso8601) - ($pr.createdAt | fromdateiso8601)) / 3600)
+              }
+            ) |
+            {
+              total_prs: .total_prs,
+              average_hours: (.total_hours / .total_prs)
+            } |
+            "PR Metrics Summary:
+            Total PRs: \(.total_prs)
+            Average Time to Merge: \(.average_hours) hours"
+          ' prs.json > metrics.txt
+      - name: Format Coverage Report
+        run: |
+          echo "Code Coverage Report:" >> metrics.txt
+          jq -r '
+            (.total | to_entries[] | "\(.key): \(.value)")
+          ' coverage/coverage-final.json >> metrics.txt
+      - name: Print Repo Metrics Report
+        run: |
+          echo "${{ github.repository_owner }} ${{ github.event.repository.name }} Repo Metrics"
+          cat metrics.txt

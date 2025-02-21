@@ -17,7 +17,7 @@ module.exports = {
     },
     jsdom: true,
   },
-  // coverageReporters: ['json'],
+  coverageReporters: ['json-summary'],
   moduleNameMapper: {
     '^axios$': require.resolve('axios'),
     ...pathsToModuleNameMapper(compilerOptions.paths, { prefix: '<rootDir>/../../' }),

@@ -62,7 +62,8 @@
     "start:docs": "nx start @availity/dinosaurdocs",
     "test": "nx run-many --target=test --all",
     "test:affected": "nx affected --target=test",
-    "test:ci": "nx affected --target=test --parallel=3 --runInBand --coverage && node ./scripts/merge-coverage.js"
+    "test:ci": "nx affected --target=test --parallel=3 --runInBand --coverage && node ./scripts/merge-coverage.js",
+    "test:coverage": "nx run-many --all --target=test --parallel=3 --runInBand --coverage && node ./scripts/merge-coverage.js"
   },
   "resolutions": {
     "decode-uri-component": "^0.2.2",
