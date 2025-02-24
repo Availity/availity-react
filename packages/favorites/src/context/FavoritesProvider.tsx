@@ -105,7 +105,7 @@ export const FavoritesProvider = ({
     sendUpdateMessage(response.favorites, applicationId);
     onFavoritesChange?.(response.favorites);
 
-    const isFavorited = response.favorites.find((f) => f.id === id);
+    const isFavorited = response.favorites.find((f: any) => f.id === id);
 
     return !!isFavorited;
   };
