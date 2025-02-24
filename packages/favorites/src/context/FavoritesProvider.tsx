@@ -1,7 +1,7 @@
 import React, { ReactNode, createContext, useEffect, useMemo, useContext, useState } from 'react';
 import avMessages from '@availity/message-core';
 import { useQueryClient } from '@tanstack/react-query';
-import { AV_INTERNAL_GLOBALS, MAX_FAVORITES } from './constants';
+import { AV_INTERNAL_GLOBALS, MAX_FAVORITES, NAV_APP_ID } from './constants';
 import { openMaxModal, sendUpdateMessage, useSubmitFavorites, useFavoritesQuery, Favorite } from './utils';
 
 type StatusUnion = 'idle' | 'error' | 'loading' | 'success';
@@ -20,46 +20,53 @@ const FavoritesContext = createContext<FavoritesContextType | null>(null);
 export const FavoritesProvider = ({
   children,
   onFavoritesChange,
+  applicationId = NAV_APP_ID,
+  maxFavorites = MAX_FAVORITES,
 }: {
   children: ReactNode;
   onFavoritesChange?: (favorites: Favorite[]) => void;
+  applicationId?: string;
+  maxFavorites?: number;
+
 }): JSX.Element => {
-  const [lastClickedFavoriteId, setlastClickedFavoriteId] = useState<string>('');
+  const [lastClickedFavoriteId, setLastClickedFavoriteId] = useState<string>('');
 
   const queryClient = useQueryClient();
-  const { data: favorites, status: queryStatus } = useFavoritesQuery();
+  const { data: favorites, status: queryStatus } = useFavoritesQuery(applicationId);
 
   const { submitFavorites, status: mutationStatus } = useSubmitFavorites({
     onMutationStart(targetFavoriteId) {
-      setlastClickedFavoriteId(targetFavoriteId);
+      setLastClickedFavoriteId(targetFavoriteId);
     },
-  });
+  }, applicationId);
 
   useEffect(() => {
-    const unsubscribeFavoritesChanged = avMessages.subscribe(
-      AV_INTERNAL_GLOBALS.FAVORITES_CHANGED,
-      (data) => {
-        if (data?.favorites) {
-          queryClient.setQueryData(['favorites'], data?.favorites);
-        }
-      },
-      { ignoreSameWindow: false }
-    );
+    if (applicationId === NAV_APP_ID) {
+      const unsubscribeFavoritesChanged = avMessages.subscribe(
+        AV_INTERNAL_GLOBALS.FAVORITES_CHANGED,
+        (data) => {
+          if (data?.favorites) {
+            queryClient.setQueryData(['favorites'], data?.favorites);
+          }
+        },
+        { ignoreSameWindow: false }
+      );
 
-    const unsubscribeFavoritesUpdate = avMessages.subscribe(
-      AV_INTERNAL_GLOBALS.FAVORITES_UPDATE,
-      (data) => {
-        if (data?.favorites) {
-          queryClient.setQueryData(['favorites'], data?.favorites);
-        }
-      },
-      { ignoreSameWindow: false }
-    );
+      const unsubscribeFavoritesUpdate = avMessages.subscribe(
+        AV_INTERNAL_GLOBALS.FAVORITES_UPDATE,
+        (data) => {
+          if (data?.favorites) {
+            queryClient.setQueryData(['favorites'], data?.favorites);
+          }
+        },
+        { ignoreSameWindow: false }
+      );
 
-    return () => {
-      unsubscribeFavoritesChanged();
-      unsubscribeFavoritesUpdate();
-    };
+      return () => {
+        unsubscribeFavoritesChanged();
+        unsubscribeFavoritesUpdate();
+      };
+    }
   }, [queryClient]);
 
   const deleteFavorite = async (id: string) => {
@@ -69,7 +76,7 @@ export const FavoritesProvider = ({
         targetFavoriteId: id,
       });
 
-      sendUpdateMessage(response.favorites);
+      sendUpdateMessage(response.favorites, applicationId);
       onFavoritesChange?.(response.favorites);
     }
   };
@@ -77,8 +84,8 @@ export const FavoritesProvider = ({
   const addFavorite = async (id: string) => {
     if (!favorites) return false;
 
-    if (favorites.length >= MAX_FAVORITES) {
-      openMaxModal();
+    if (favorites.length >= maxFavorites) {
+      openMaxModal(applicationId);
       return false;
     }
 
@@ -95,7 +102,7 @@ export const FavoritesProvider = ({
       targetFavoriteId: id,
     });
 
-    sendUpdateMessage(response.favorites);
+    sendUpdateMessage(response.favorites, applicationId);
     onFavoritesChange?.(response.favorites);
 
     const isFavorited = response.favorites.find((f) => f.id === id);
@@ -121,7 +128,7 @@ export const FavoritesProvider = ({
 };
 
 // eslint-disable-next-line @typescript-eslint/no-empty-function
-const noOp = () => {};
+const noOp = () => { };
 
 type MergedStatusUnion = 'initLoading' | 'reloading' | 'error' | 'success';
 export const useFavorites = (
