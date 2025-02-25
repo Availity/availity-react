@@ -48,14 +48,15 @@ type MutationOptions = {
 // eslint-disable-next-line @typescript-eslint/explicit-module-boundary-types
 export const useSubmitFavorites = ({ onMutationStart }: MutationOptions, applicationId: string) => {
   const queryClient = useQueryClient();
-  const { mutateAsync: submitFavorites, ...rest } = useMutation(({ favorites, targetFavoriteId }: MutationVariables) => submit({ favorites, targetFavoriteId }, applicationId), {
-    onMutate(variables: MutationVariables) {
-      onMutationStart?.(variables.targetFavoriteId);
-    },
-    onSuccess(data: SettingsResponse) {
-      queryClient.setQueryData(['favorites'], data.favorites);
-    },
-  });
+  const { mutateAsync: submitFavorites, ...rest } = useMutation(({ favorites, targetFavoriteId }: MutationVariables) => submit({ favorites, targetFavoriteId }, applicationId),
+    {
+      onMutate(variables) {
+        onMutationStart?.(variables.targetFavoriteId);
+      },
+      onSuccess(data) {
+        queryClient.setQueryData(['favorites'], data.favorites);
+      },
+    });
   return { submitFavorites, ...rest };
 };
 
