@@ -67,7 +67,8 @@ export const FavoritesProvider = ({
         unsubscribeFavoritesUpdate();
       };
     }
-  }, [queryClient]);
+    return () => null;
+  }, [queryClient, applicationId]);
 
   const deleteFavorite = async (id: string) => {
     if (favorites) {
@@ -105,7 +106,7 @@ export const FavoritesProvider = ({
     sendUpdateMessage(response.favorites, applicationId);
     onFavoritesChange?.(response.favorites);
 
-    const isFavorited = response.favorites.find((f: any) => f.id === id);
+    const isFavorited = response.favorites.find((f: Favorite) => f.id === id);
 
     return !!isFavorited;
   };

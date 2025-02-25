@@ -49,10 +49,10 @@ type MutationOptions = {
 export const useSubmitFavorites = ({ onMutationStart }: MutationOptions, applicationId: string) => {
   const queryClient = useQueryClient();
   const { mutateAsync: submitFavorites, ...rest } = useMutation(({ favorites, targetFavoriteId }: MutationVariables) => submit({ favorites, targetFavoriteId }, applicationId), {
-    onMutate(variables: any) {
+    onMutate(variables: MutationVariables) {
       onMutationStart?.(variables.targetFavoriteId);
     },
-    onSuccess(data: any) {
+    onSuccess(data: SettingsResponse) {
       queryClient.setQueryData(['favorites'], data.favorites);
     },
   });
@@ -68,8 +68,9 @@ export const sendUpdateMessage = (favorites: Favorite[], applicationId: string):
   }
 };
 
-export const openMaxModal = (applicationId: string): void => {
+export const openMaxModal = (applicationId: string): void | null => {
   if (applicationId === NAV_APP_ID) {
     return avMessages.send(AV_INTERNAL_GLOBALS.MAX_FAVORITES);
   }
+  return null;
 }
