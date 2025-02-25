@@ -2,6 +2,15 @@
 
 This file was generated using [@jscutlery/semver](https://github.com/jscutlery/semver).
 
+# [5.1.0](https://github.com/Availity/availity-react/compare/@availity/favorites@5.0.10...@availity/favorites@5.1.0) (2025-02-25)
+
+
+### Features
+
+* **favorites:** add applicationId, maxFavorites prop ([d97fcad](https://github.com/Availity/availity-react/commit/d97fcadc22a02a802f65781abdd171f7d8b84276))
+
+
+
 ## [5.0.10](https://github.com/Availity/availity-react/compare/@availity/favorites@5.0.9...@availity/favorites@5.0.10) (2024-10-16)
 
 ### Dependency Updates
