@@ -90,9 +90,7 @@ export const FavoritesProvider = ({
     if (!favorites) return false;
 
     if (favorites.length >= maxFavorites) {
-      if (applicationId === NAV_APP_ID) {
-        openMaxModal(applicationId);
-      }
+      openMaxModal(applicationId);
       if (onMaxFavoritesReached && typeof onMaxFavoritesReached === 'function') {
         await onMaxFavoritesReached(favorites);
       }
