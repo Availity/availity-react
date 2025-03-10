@@ -2,6 +2,10 @@
 
 This file was generated using [@jscutlery/semver](https://github.com/jscutlery/semver).
 
+## [1.1.6](https://github.com/Availity/availity-react/compare/@availity/block-ui@1.1.5...@availity/block-ui@1.1.6) (2025-03-10)
+
+
+
 ## [1.1.5](https://github.com/Availity/availity-react/compare/@availity/block-ui@1.1.4...@availity/block-ui@1.1.5) (2024-10-16)
 
 
