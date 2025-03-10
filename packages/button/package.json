@@ -1,6 +1,6 @@
 {
   "name": "@availity/button",
-  "version": "1.6.5",
+  "version": "1.6.6",
   "description": "This provides specialized functionality for button components",
   "keywords": [
     "react",
