@@ -40,7 +40,7 @@
     "prop-types": "^15.8.1",
     "qs": "^6.13.0",
     "react-image": "^4.1.0",
-    "react-loading-skeleton": "^2.2.0",
+    "react-loading-skeleton": "^3.5.0",
     "react-markdown": "^6.0.3"
   },
   "devDependencies": {
