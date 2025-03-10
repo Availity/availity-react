@@ -40,7 +40,7 @@
   },
   "devDependencies": {
     "@availity/api-axios": "^9.0.3",
-    "axios": "^1.7.4",
+    "axios": "^1.8.2",
     "esbuild-sass-plugin": "^2.15.0",
     "react": "^18.3.1",
     "react-dom": "^18.3.1",
@@ -49,7 +49,7 @@
   },
   "peerDependencies": {
     "@availity/api-axios": "^9.0.3",
-    "axios": "^1.7.4",
+    "axios": "^1.8.2",
     "react": "^18.0.0",
     "react-dom": "^18.0.0"
   },
