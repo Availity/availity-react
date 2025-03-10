@@ -2,6 +2,10 @@
 
 This file was generated using [@jscutlery/semver](https://github.com/jscutlery/semver).
 
+## [2.3.3](https://github.com/Availity/availity-react/compare/@availity/change-password@2.3.2...@availity/change-password@2.3.3) (2025-03-10)
+
+
+
 ## [2.3.2](https://github.com/Availity/availity-react/compare/@availity/change-password@2.3.1...@availity/change-password@2.3.2) (2025-02-13)
 
 ### Dependency Updates
