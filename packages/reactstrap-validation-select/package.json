@@ -36,7 +36,7 @@
   "devDependencies": {
     "@availity/api-axios": "^9.0.3",
     "availity-reactstrap-validation": "^2.7.1",
-    "axios": "^1.7.4",
+    "axios": "^1.8.2",
     "react": "^18.3.1",
     "react-dom": "^18.3.1",
     "reactstrap": "^8.10.1"
@@ -45,7 +45,7 @@
     "@availity/api-axios": "^9.0.3",
     "availity-reactstrap-validation": "^2.7.1",
     "availity-uikit": "^4.7.0",
-    "axios": "^1.7.4",
+    "axios": "^1.8.2",
     "react": "^18.0.0",
     "reactstrap": "^8.10.1"
   },
