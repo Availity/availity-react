@@ -2,6 +2,16 @@
 
 This file was generated using [@jscutlery/semver](https://github.com/jscutlery/semver).
 
+## [8.0.17](https://github.com/Availity/availity-react/compare/@availity/spaces@8.0.16...@availity/spaces@8.0.17) (2025-03-10)
+
+### Dependency Updates
+
+* `@availity/favorites` updated to version `8.0.16`
+* `@availity/app-icon` updated to version `8.0.16`
+* `@availity/icon` updated to version `8.0.16`
+* `@availity/typography` updated to version `8.0.16`
+
+
 ## [8.0.16](https://github.com/Availity/availity-react/compare/@availity/spaces@8.0.15...@availity/spaces@8.0.16) (2025-03-10)
 
 ### Dependency Updates
