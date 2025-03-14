@@ -32,8 +32,8 @@
     "react-loading-skeleton": "^2.2.0"
   },
   "devDependencies": {
-    "@availity/api-axios": "^9.0.3",
-    "axios": "^1.8.2",
+    "@availity/api-axios": "^9.0.7",
+    "axios": "^1.8.3",
     "react": "^18.3.1",
     "react-dom": "^18.3.1"
   },

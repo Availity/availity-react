@@ -223,13 +223,13 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@availity/analytics-core@npm:^5.0.3":
-  version: 5.0.3
-  resolution: "@availity/analytics-core@npm:5.0.3"
+"@availity/analytics-core@npm:^5.0.10":
+  version: 5.0.10
+  resolution: "@availity/analytics-core@npm:5.0.10"
   dependencies:
     uuid: ^10.0.0
     yup: ^0.32.11
-  checksum: 85b1613273bdf9e9abeb39118578f064c78c7d739650372969d9f5a86b4a1fe05060f4e5e511cadc8cfbf1b6a81511c1c40164d7234b309e27e6ddac25a1b79a
+  checksum: 9db1302ce2decff9cbd3d0b0cfa478fe547772b171ae0b74f1bf7af0b380daa300a6603eb1f368df82445ffca404cdd991507b2a81e900222aee6e37f0690cee
   languageName: node
   linkType: hard
 
@@ -237,7 +237,7 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@availity/analytics@workspace:packages/analytics"
   dependencies:
-    "@availity/analytics-core": ^5.0.3
+    "@availity/analytics-core": ^5.0.10
     prop-types: ^15.8.1
     react: ^18.3.1
     react-dom: ^18.3.1
@@ -246,16 +246,29 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@availity/api-axios@npm:9.0.3, @availity/api-axios@npm:^9.0.3":
-  version: 9.0.3
-  resolution: "@availity/api-axios@npm:9.0.3"
+"@availity/api-axios@npm:10.0.2":
+  version: 10.0.2
+  resolution: "@availity/api-axios@npm:10.0.2"
+  dependencies:
+    "@availity/resolve-url": 3.0.3
+    lodash: ^4.17.21
+    qs: ^6.13.1
+  peerDependencies:
+    axios: ^1.7.7
+  checksum: b2197839ae2d55223b7c63efe43d8deffd4a5c846ee3f7bc4189eb5cb5e717a824539b9bb8c83d34a4cdb4b38e8074064061435f50ec789e1cb83dd80814f8be
+  languageName: node
+  linkType: hard
+
+"@availity/api-axios@npm:^9.0.7":
+  version: 9.0.7
+  resolution: "@availity/api-axios@npm:9.0.7"
   dependencies:
     "@availity/resolve-url": 3.0.0
     lodash: ^4.17.21
     qs: ^6.13.0
   peerDependencies:
     axios: ^1.7.7
-  checksum: 4121322ca7958480588c192f7d1822c9764fe456a2959707c924dccb31ff8485b543f10debaee5b0ed5f40def903322fed42077e1c394adadeeed3d4c9008f10
+  checksum: 1e16626382ea69eacdc412ea4473c07ccd01140569626bf41913f65b25eafac03a22a5fcb580f5f246fb9d3ed6c58914f15d2c0a778b50e011207954e5ae6c20
   languageName: node
   linkType: hard
 
@@ -291,10 +304,10 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@availity/authorize@workspace:packages/authorize"
   dependencies:
-    "@availity/api-axios": ^9.0.3
+    "@availity/api-axios": ^9.0.7
     "@availity/block-ui": ^1.0.0
     "@tanstack/react-query": ^4.36.1
-    axios: ^1.8.2
+    axios: ^1.8.3
     react: ^18.3.1
     react-dom: ^18.3.1
     tsup: ^8.4.0
@@ -376,9 +389,9 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@availity/avatar@workspace:packages/avatar"
   dependencies:
-    "@availity/api-axios": ^9.0.3
+    "@availity/api-axios": ^9.0.7
     "@availity/hooks": "workspace:*"
-    axios: ^1.8.2
+    axios: ^1.8.3
     lodash: ^4.17.21
     prop-types: ^15.8.1
     react: ^18.3.1
@@ -456,12 +469,12 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@availity/change-password@workspace:packages/change-password"
   dependencies:
-    "@availity/api-axios": ^9.0.3
+    "@availity/api-axios": ^9.0.7
     "@availity/block-ui": "workspace:^"
     "@availity/form": "workspace:*"
     "@availity/icon": "workspace:*"
     "@tanstack/react-query": ^4.36.1
-    axios: ^1.8.2
+    axios: ^1.8.3
     classnames: ^2.5.1
     dayjs: ^1.11.12
     lodash: ^4.17.21
@@ -483,7 +496,7 @@ __metadata:
   dependencies:
     "@availity/form": "workspace:*"
     "@availity/react-dates": ^21.13.1
-    "@availity/yup": ^6.0.1
+    "@availity/yup": ^6.0.3
     "@types/react-dates": ^21.8.6
     classnames: ^2.5.1
     esbuild-sass-plugin: ^2.15.0
@@ -521,13 +534,13 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@availity/favorites@workspace:packages/favorites"
   dependencies:
-    "@availity/analytics-core": ^5.0.3
-    "@availity/api-axios": ^9.0.3
+    "@availity/analytics-core": ^5.0.10
+    "@availity/api-axios": ^9.0.7
     "@availity/hooks": "workspace:*"
-    "@availity/message-core": ^7.0.1
+    "@availity/message-core": ^7.0.5
     "@radix-ui/react-tooltip": 0.1.6
     "@tanstack/react-query": ^4.36.1
-    axios: ^1.8.2
+    axios: ^1.8.3
     esbuild-sass-plugin: ^2.15.0
     lodash: ^4.17.21
     react: ^18.3.1
@@ -547,7 +560,7 @@ __metadata:
   resolution: "@availity/feature@workspace:packages/feature"
   dependencies:
     "@availity/block-ui": "workspace:^"
-    axios: ^1.8.2
+    axios: ^1.8.3
     axios-mock-adapter: ^2.0.0
     fs-extra: ^11.2.0
     prop-types: ^15.8.1
@@ -565,15 +578,15 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@availity/feedback@workspace:packages/feedback"
   dependencies:
-    "@availity/api-axios": ^9.0.3
+    "@availity/api-axios": ^9.0.7
     "@availity/block-ui": "workspace:^"
     "@availity/form": "workspace:*"
     "@availity/hooks": "workspace:*"
     "@availity/icon": "workspace:*"
-    "@availity/native-form": ^6.0.3
+    "@availity/native-form": ^6.0.10
     "@availity/select": "workspace:*"
-    "@availity/yup": ^6.0.1
-    axios: ^1.8.2
+    "@availity/yup": ^6.0.3
+    axios: ^1.8.3
     formik: ^2.4.6
     prop-types: ^15.8.1
     react: ^18.3.1
@@ -593,11 +606,11 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@availity/form-upload@workspace:packages/form-upload"
   dependencies:
-    "@availity/api-axios": ^9.0.3
+    "@availity/api-axios": ^9.0.7
     "@availity/form": "workspace:*"
     "@availity/icon": "workspace:*"
     "@availity/progress": "workspace:*"
-    "@availity/upload-core": ^7.0.1
+    "@availity/upload-core": ^7.0.4
     classnames: ^2.5.1
     formik: ^2.4.6
     nock: ^13.5.4
@@ -624,7 +637,7 @@ __metadata:
   resolution: "@availity/form@workspace:packages/form"
   dependencies:
     "@availity/icon": "workspace:*"
-    "@availity/message-core": ^7.0.1
+    "@availity/message-core": ^7.0.5
     classnames: ^2.5.1
     formik: ^2.4.6
     prop-types: ^15.8.1
@@ -647,7 +660,7 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@availity/help@workspace:packages/help"
   dependencies:
-    "@availity/message-core": ^7.0.1
+    "@availity/message-core": ^7.0.5
     react: ^18.3.1
     react-dom: ^18.3.1
     tsup: ^8.4.0
@@ -661,10 +674,10 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@availity/hooks@workspace:packages/hooks"
   dependencies:
-    "@availity/api-axios": ^9.0.3
-    "@availity/message-core": ^7.0.1
+    "@availity/api-axios": ^9.0.7
+    "@availity/message-core": ^7.0.5
     "@tanstack/react-query": ^4.36.1
-    axios: ^1.8.2
+    axios: ^1.8.3
     prop-types: ^15.8.1
     react: ^18.3.1
     react-dom: ^18.3.1
@@ -710,7 +723,7 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@availity/link@workspace:packages/link"
   dependencies:
-    "@availity/resolve-url": ^3.0.0
+    "@availity/resolve-url": ^3.0.3
     classnames: ^2.5.1
     prop-types: ^15.8.1
     react: ^18.3.1
@@ -749,10 +762,10 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@availity/message-core@npm:^7.0.1":
-  version: 7.0.1
-  resolution: "@availity/message-core@npm:7.0.1"
-  checksum: e18835f8c5bdb2630d6af54ace963666288e4530f5a3ea722761f89a3ff050cdac04347d96c6be033629b6e5414a0e8cef242c76bf4dec50068ae00a91ef26f9
+"@availity/message-core@npm:^7.0.5":
+  version: 7.0.5
+  resolution: "@availity/message-core@npm:7.0.5"
+  checksum: 9c90920874ec1823d24f74717a856d60b5a738c8060d616675170a3a1397d5e70fdbfed5d6c9ca2aa0020710c990aafb655f0279dbf8a0ae1c53e971bea8fad7
   languageName: node
   linkType: hard
 
@@ -765,12 +778,12 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@availity/native-form@npm:^6.0.3":
-  version: 6.0.3
-  resolution: "@availity/native-form@npm:6.0.3"
+"@availity/native-form@npm:^6.0.10":
+  version: 6.0.10
+  resolution: "@availity/native-form@npm:6.0.10"
   dependencies:
-    "@availity/api-axios": 9.0.3
-  checksum: acb137b972a9c540e63f56201c061baa7f28326e5827308099f442c7db5ce9cbe8b6c4ff98d9a0a5eb1803fba13a52843a7b444fc3f9eb034c3d8bb7eaefe3e6
+    "@availity/api-axios": 10.0.2
+  checksum: ce4700796e0bcf4cb7fa581cecaea128d528851bda0964bf42fecf67fc8df61e4735fa4e5d0cf06ef352d0da0e27688385ce08f74b4c23a63a968910d8e0d144
   languageName: node
   linkType: hard
 
@@ -778,14 +791,14 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@availity/page-header@workspace:packages/page-header"
   dependencies:
-    "@availity/api-axios": ^9.0.3
+    "@availity/api-axios": ^9.0.7
     "@availity/app-icon": "workspace:*"
     "@availity/breadcrumbs": "workspace:*"
     "@availity/feedback": "workspace:*"
     "@availity/payer-logo": "workspace:*"
     "@availity/spaces": "workspace:*"
     "@availity/training-link": "workspace:*"
-    axios: ^1.8.2
+    axios: ^1.8.3
     classnames: ^2.5.1
     formik: ^2.4.6
     prop-types: ^15.8.1
@@ -827,9 +840,9 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@availity/payer-logo@workspace:packages/payer-logo"
   dependencies:
-    "@availity/api-axios": ^9.0.3
+    "@availity/api-axios": ^9.0.7
     "@availity/hooks": "workspace:^5.0.0"
-    axios: ^1.8.2
+    axios: ^1.8.3
     lodash: ^4.17.21
     prop-types: ^15.8.1
     react: ^18.3.1
@@ -935,9 +948,9 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@availity/reactstrap-validation-select@workspace:packages/reactstrap-validation-select"
   dependencies:
-    "@availity/api-axios": ^9.0.3
+    "@availity/api-axios": ^9.0.7
     availity-reactstrap-validation: ^2.7.1
-    axios: ^1.8.2
+    axios: ^1.8.3
     classnames: ^2.5.1
     lodash: ^4.17.21
     prop-types: ^15.8.1
@@ -957,10 +970,17 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@availity/resolve-url@npm:3.0.0, @availity/resolve-url@npm:^3.0.0":
+"@availity/resolve-url@npm:3.0.0":
   version: 3.0.0
   resolution: "@availity/resolve-url@npm:3.0.0"
   checksum: 5dac7fa0368dc1c18a38b02f96462ae3bfd85953ccc0605bbd2e008a3dd6d904aa73b3deb2318bb1e3ba4feb989acb774712d206b7bffd7e793123e4716789d4
+  languageName: node
+  linkType: hard
+
+"@availity/resolve-url@npm:3.0.3, @availity/resolve-url@npm:^3.0.3":
+  version: 3.0.3
+  resolution: "@availity/resolve-url@npm:3.0.3"
+  checksum: 36fe5ff7a79cef1b4ef805059d9c233cca83456e6421ca63b75dcc072617caef44d02b1db110abac78ea22c2c888dba45463ed49dfb11b2d90d17629519b2211
   languageName: node
   linkType: hard
 
@@ -968,9 +988,9 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@availity/select@workspace:packages/select"
   dependencies:
-    "@availity/api-axios": ^9.0.3
+    "@availity/api-axios": ^9.0.7
     "@availity/form": "workspace:*"
-    axios: ^1.8.2
+    axios: ^1.8.3
     classnames: ^2.5.1
     formik: ^2.4.6
     lodash: ^4.17.21
@@ -998,18 +1018,18 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@availity/spaces@workspace:packages/spaces"
   dependencies:
-    "@availity/api-axios": ^9.0.3
+    "@availity/api-axios": ^9.0.7
     "@availity/app-icon": "workspace:*"
     "@availity/favorites": "workspace:*"
     "@availity/hooks": "workspace:*"
     "@availity/icon": "workspace:*"
     "@availity/link": "workspace:*"
     "@availity/list-group-item": "workspace:*"
-    "@availity/message-core": ^7.0.1
-    "@availity/native-form": ^6.0.3
+    "@availity/message-core": ^7.0.5
+    "@availity/native-form": ^6.0.10
     "@availity/typography": "workspace:*"
     "@tanstack/react-query": ^4.36.1
-    axios: ^1.8.2
+    axios: ^1.8.3
     classnames: ^2.5.1
     dayjs: ^1.11.12
     lodash: ^4.17.21
@@ -1125,13 +1145,13 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@availity/upload-core@npm:^7.0.1":
-  version: 7.0.1
-  resolution: "@availity/upload-core@npm:7.0.1"
+"@availity/upload-core@npm:^7.0.4":
+  version: 7.0.4
+  resolution: "@availity/upload-core@npm:7.0.4"
   dependencies:
-    "@availity/resolve-url": 3.0.0
+    "@availity/resolve-url": 3.0.3
     tus-js-client: 4.2.3
-  checksum: 1f3e2555d0476095e01755e5831b38b280032859585a2feec5d524e2409287ebc23a19d6af12ba68e25ef1e353ffa555d8ee4820cba7522d66aab613b93dc9d8
+  checksum: a34b0abd94771ab3a6d73a5f426b705e5fb81d6bf34194c5678446be95ee58f69caae3db02a08b8952b34d17c0a28980c16ea2306bd915b89ea3fd7500f93e49
   languageName: node
   linkType: hard
 
@@ -1140,7 +1160,7 @@ __metadata:
   resolution: "@availity/upload@workspace:packages/upload"
   dependencies:
     "@availity/progress": "workspace:*"
-    "@availity/upload-core": ^7.0.1
+    "@availity/upload-core": ^7.0.4
     prop-types: ^15.8.1
     react: ^18.3.1
     react-dom: ^18.3.1
@@ -1155,15 +1175,15 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@availity/yup@npm:^6.0.1":
-  version: 6.0.1
-  resolution: "@availity/yup@npm:6.0.1"
+"@availity/yup@npm:^6.0.3":
+  version: 6.0.3
+  resolution: "@availity/yup@npm:6.0.3"
   dependencies:
     lodash: ^4.17.21
     yup: ^0.32.11
   peerDependencies:
     moment: ^2.30.1
-  checksum: 8c90b6ae39a864723b4cf968d1581b1cf095d5417372cbedcf843c6ba44df30ea3d254f43e6ee596930017a71f2b5583672fe91601bb5f720721033f3aa43cc7
+  checksum: 66b207064b3759118b06a6b032f3484e339dd5c34d1dbb4b115f75332c79f7ab890d0bf40b433316e0164c6479dd9726e768f1f1c93be57a6b2642a5452361c2
   languageName: node
   linkType: hard
 
@@ -9918,7 +9938,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"axios@npm:^1.7.2, axios@npm:^1.8.2":
+"axios@npm:^1.7.2":
   version: 1.8.2
   resolution: "axios@npm:1.8.2"
   dependencies:
@@ -9926,6 +9946,17 @@ __metadata:
     form-data: ^4.0.0
     proxy-from-env: ^1.1.0
   checksum: c47a43b79a058aa9e53a65bec9ade35c9f6e76a3999c795a79a2d205fb5f803fd4245497a0209a9727cbbe4f558791dd852ad2c168c5fc030259c11598ed8fd7
+  languageName: node
+  linkType: hard
+
+"axios@npm:^1.8.3":
+  version: 1.8.3
+  resolution: "axios@npm:1.8.3"
+  dependencies:
+    follow-redirects: ^1.15.6
+    form-data: ^4.0.0
+    proxy-from-env: ^1.1.0
+  checksum: 85fc8ad7d968e43ea9da5513310637d29654b181411012ee14cc0a4b3662782e6c81ac25eea40b5684f86ed2d8a01fa6fc20b9b48c4da14ef4eaee848fea43bc
   languageName: node
   linkType: hard
 
@@ -10552,6 +10583,16 @@ __metadata:
   languageName: node
   linkType: hard
 
+"call-bind-apply-helpers@npm:^1.0.1, call-bind-apply-helpers@npm:^1.0.2":
+  version: 1.0.2
+  resolution: "call-bind-apply-helpers@npm:1.0.2"
+  dependencies:
+    es-errors: ^1.3.0
+    function-bind: ^1.1.2
+  checksum: b2863d74fcf2a6948221f65d95b91b4b2d90cfe8927650b506141e669f7d5de65cea191bf788838bc40d13846b7886c5bc5c84ab96c3adbcf88ad69a72fcdc6b
+  languageName: node
+  linkType: hard
+
 "call-bind@npm:^1.0.0, call-bind@npm:^1.0.2, call-bind@npm:^1.0.5, call-bind@npm:^1.0.6, call-bind@npm:^1.0.7":
   version: 1.0.7
   resolution: "call-bind@npm:1.0.7"
@@ -10562,6 +10603,16 @@ __metadata:
     get-intrinsic: ^1.2.4
     set-function-length: ^1.2.1
   checksum: 295c0c62b90dd6522e6db3b0ab1ce26bdf9e7404215bda13cfee25b626b5ff1a7761324d58d38b1ef1607fc65aca2d06e44d2e18d0dfc6c14b465b00d8660029
+  languageName: node
+  linkType: hard
+
+"call-bound@npm:^1.0.2":
+  version: 1.0.4
+  resolution: "call-bound@npm:1.0.4"
+  dependencies:
+    call-bind-apply-helpers: ^1.0.2
+    get-intrinsic: ^1.3.0
+  checksum: 2f6399488d1c272f56306ca60ff696575e2b7f31daf23bc11574798c84d9f2759dceb0cb1f471a85b77f28962a7ac6411f51d283ea2e45319009a19b6ccab3b2
   languageName: node
   linkType: hard
 
@@ -12952,6 +13003,17 @@ __metadata:
   languageName: node
   linkType: hard
 
+"dunder-proto@npm:^1.0.1":
+  version: 1.0.1
+  resolution: "dunder-proto@npm:1.0.1"
+  dependencies:
+    call-bind-apply-helpers: ^1.0.1
+    es-errors: ^1.3.0
+    gopd: ^1.2.0
+  checksum: 149207e36f07bd4941921b0ca929e3a28f1da7bd6b6ff8ff7f4e2f2e460675af4576eeba359c635723dc189b64cdd4787e0255897d5b135ccc5d15cb8685fc90
+  languageName: node
+  linkType: hard
+
 "duplexer@npm:^0.1.1, duplexer@npm:^0.1.2":
   version: 0.1.2
   resolution: "duplexer@npm:0.1.2"
@@ -13256,6 +13318,13 @@ __metadata:
   languageName: node
   linkType: hard
 
+"es-define-property@npm:^1.0.1":
+  version: 1.0.1
+  resolution: "es-define-property@npm:1.0.1"
+  checksum: 0512f4e5d564021c9e3a644437b0155af2679d10d80f21adaf868e64d30efdfbd321631956f20f42d655fedb2e3a027da479fad3fa6048f768eb453a80a5f80a
+  languageName: node
+  linkType: hard
+
 "es-errors@npm:^1.2.1, es-errors@npm:^1.3.0":
   version: 1.3.0
   resolution: "es-errors@npm:1.3.0"
@@ -13322,6 +13391,15 @@ __metadata:
   dependencies:
     es-errors: ^1.3.0
   checksum: 26f0ff78ab93b63394e8403c353842b2272836968de4eafe97656adfb8a7c84b9099bf0fe96ed58f4a4cddc860f6e34c77f91649a58a5daa4a9c40b902744e3c
+  languageName: node
+  linkType: hard
+
+"es-object-atoms@npm:^1.1.1":
+  version: 1.1.1
+  resolution: "es-object-atoms@npm:1.1.1"
+  dependencies:
+    es-errors: ^1.3.0
+  checksum: 214d3767287b12f36d3d7267ef342bbbe1e89f899cfd67040309fc65032372a8e60201410a99a1645f2f90c1912c8c49c8668066f6bdd954bcd614dda2e3da97
   languageName: node
   linkType: hard
 
@@ -15108,6 +15186,24 @@ __metadata:
   languageName: node
   linkType: hard
 
+"get-intrinsic@npm:^1.2.5, get-intrinsic@npm:^1.3.0":
+  version: 1.3.0
+  resolution: "get-intrinsic@npm:1.3.0"
+  dependencies:
+    call-bind-apply-helpers: ^1.0.2
+    es-define-property: ^1.0.1
+    es-errors: ^1.3.0
+    es-object-atoms: ^1.1.1
+    function-bind: ^1.1.2
+    get-proto: ^1.0.1
+    gopd: ^1.2.0
+    has-symbols: ^1.1.0
+    hasown: ^2.0.2
+    math-intrinsics: ^1.1.0
+  checksum: 301008e4482bb9a9cb49e132b88fee093bff373b4e6def8ba219b1e96b60158a6084f273ef5cafe832e42cd93462f4accb46a618d35fe59a2b507f2388c5b79d
+  languageName: node
+  linkType: hard
+
 "get-nonce@npm:^1.0.0":
   version: 1.0.1
   resolution: "get-nonce@npm:1.0.1"
@@ -15140,6 +15236,16 @@ __metadata:
   version: 5.1.1
   resolution: "get-port@npm:5.1.1"
   checksum: 0162663ffe5c09e748cd79d97b74cd70e5a5c84b760a475ce5767b357fb2a57cb821cee412d646aa8a156ed39b78aab88974eddaa9e5ee926173c036c0713787
+  languageName: node
+  linkType: hard
+
+"get-proto@npm:^1.0.1":
+  version: 1.0.1
+  resolution: "get-proto@npm:1.0.1"
+  dependencies:
+    dunder-proto: ^1.0.1
+    es-object-atoms: ^1.0.0
+  checksum: 4fc96afdb58ced9a67558698b91433e6b037aaa6f1493af77498d7c85b141382cf223c0e5946f334fb328ee85dfe6edd06d218eaf09556f4bc4ec6005d7f5f7b
   languageName: node
   linkType: hard
 
@@ -15468,6 +15574,13 @@ __metadata:
   languageName: node
   linkType: hard
 
+"gopd@npm:^1.2.0":
+  version: 1.2.0
+  resolution: "gopd@npm:1.2.0"
+  checksum: cc6d8e655e360955bdccaca51a12a474268f95bb793fc3e1f2bdadb075f28bfd1fd988dab872daf77a61d78cbaf13744bc8727a17cfb1d150d76047d805375f3
+  languageName: node
+  linkType: hard
+
 "got@npm:^12.1.0":
   version: 12.6.1
   resolution: "got@npm:12.6.1"
@@ -15639,6 +15752,13 @@ __metadata:
   version: 1.0.3
   resolution: "has-symbols@npm:1.0.3"
   checksum: a054c40c631c0d5741a8285010a0777ea0c068f99ed43e5d6eb12972da223f8af553a455132fdb0801bdcfa0e0f443c0c03a68d8555aa529b3144b446c3f2410
+  languageName: node
+  linkType: hard
+
+"has-symbols@npm:^1.1.0":
+  version: 1.1.0
+  resolution: "has-symbols@npm:1.1.0"
+  checksum: b2316c7302a0e8ba3aaba215f834e96c22c86f192e7310bdf689dd0e6999510c89b00fbc5742571507cebf25764d68c988b3a0da217369a73596191ac0ce694b
   languageName: node
   linkType: hard
 
@@ -18849,6 +18969,13 @@ __metadata:
   languageName: node
   linkType: hard
 
+"math-intrinsics@npm:^1.1.0":
+  version: 1.1.0
+  resolution: "math-intrinsics@npm:1.1.0"
+  checksum: 0e513b29d120f478c85a70f49da0b8b19bc638975eca466f2eeae0071f3ad00454c621bf66e16dd435896c208e719fc91ad79bbfba4e400fe0b372e7c1c9c9a2
+  languageName: node
+  linkType: hard
+
 "mdast-util-definitions@npm:^4.0.0":
   version: 4.0.0
   resolution: "mdast-util-definitions@npm:4.0.0"
@@ -21077,6 +21204,13 @@ __metadata:
   languageName: node
   linkType: hard
 
+"object-inspect@npm:^1.13.3":
+  version: 1.13.4
+  resolution: "object-inspect@npm:1.13.4"
+  checksum: 582810c6a8d2ef988ea0a39e69e115a138dad8f42dd445383b394877e5816eb4268489f316a6f74ee9c4e0a984b3eab1028e3e79d62b1ed67c726661d55c7a8b
+  languageName: node
+  linkType: hard
+
 "object-is@npm:^1.1.2, object-is@npm:^1.1.5":
   version: 1.1.6
   resolution: "object-is@npm:1.1.6"
@@ -22768,6 +22902,15 @@ __metadata:
   dependencies:
     side-channel: ^1.0.6
   checksum: e9404dc0fc2849245107108ce9ec2766cde3be1b271de0bf1021d049dc5b98d1a2901e67b431ac5509f865420a7ed80b7acb3980099fe1c118a1c5d2e1432ad8
+  languageName: node
+  linkType: hard
+
+"qs@npm:^6.13.1":
+  version: 6.14.0
+  resolution: "qs@npm:6.14.0"
+  dependencies:
+    side-channel: ^1.1.0
+  checksum: 189b52ad4e9a0da1a16aff4c58b2a554a8dad9bd7e287c7da7446059b49ca2e33a49e570480e8be406b87fccebf134f51c373cbce36c8c83859efa0c9b71d635
   languageName: node
   linkType: hard
 
@@ -24921,6 +25064,41 @@ __metadata:
   languageName: node
   linkType: hard
 
+"side-channel-list@npm:^1.0.0":
+  version: 1.0.0
+  resolution: "side-channel-list@npm:1.0.0"
+  dependencies:
+    es-errors: ^1.3.0
+    object-inspect: ^1.13.3
+  checksum: 603b928997abd21c5a5f02ae6b9cc36b72e3176ad6827fab0417ead74580cc4fb4d5c7d0a8a2ff4ead34d0f9e35701ed7a41853dac8a6d1a664fcce1a044f86f
+  languageName: node
+  linkType: hard
+
+"side-channel-map@npm:^1.0.1":
+  version: 1.0.1
+  resolution: "side-channel-map@npm:1.0.1"
+  dependencies:
+    call-bound: ^1.0.2
+    es-errors: ^1.3.0
+    get-intrinsic: ^1.2.5
+    object-inspect: ^1.13.3
+  checksum: 42501371cdf71f4ccbbc9c9e2eb00aaaab80a4c1c429d5e8da713fd4d39ef3b8d4a4b37ed4f275798a65260a551a7131fd87fe67e922dba4ac18586d6aab8b06
+  languageName: node
+  linkType: hard
+
+"side-channel-weakmap@npm:^1.0.2":
+  version: 1.0.2
+  resolution: "side-channel-weakmap@npm:1.0.2"
+  dependencies:
+    call-bound: ^1.0.2
+    es-errors: ^1.3.0
+    get-intrinsic: ^1.2.5
+    object-inspect: ^1.13.3
+    side-channel-map: ^1.0.1
+  checksum: a815c89bc78c5723c714ea1a77c938377ea710af20d4fb886d362b0d1f8ac73a17816a5f6640f354017d7e292a43da9c5e876c22145bac00b76cfb3468001736
+  languageName: node
+  linkType: hard
+
 "side-channel@npm:^1.0.4, side-channel@npm:^1.0.6":
   version: 1.0.6
   resolution: "side-channel@npm:1.0.6"
@@ -24930,6 +25108,19 @@ __metadata:
     get-intrinsic: ^1.2.4
     object-inspect: ^1.13.1
   checksum: bfc1afc1827d712271453e91b7cd3878ac0efd767495fd4e594c4c2afaa7963b7b510e249572bfd54b0527e66e4a12b61b80c061389e129755f34c493aad9b97
+  languageName: node
+  linkType: hard
+
+"side-channel@npm:^1.1.0":
+  version: 1.1.0
+  resolution: "side-channel@npm:1.1.0"
+  dependencies:
+    es-errors: ^1.3.0
+    object-inspect: ^1.13.3
+    side-channel-list: ^1.0.0
+    side-channel-map: ^1.0.1
+    side-channel-weakmap: ^1.0.2
+  checksum: bf73d6d6682034603eb8e99c63b50155017ed78a522d27c2acec0388a792c3ede3238b878b953a08157093b85d05797217d270b7666ba1f111345fbe933380ff
   languageName: node
   linkType: hard
 
