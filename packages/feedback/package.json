@@ -29,14 +29,14 @@
     "@availity/form": "workspace:*",
     "@availity/hooks": "workspace:*",
     "@availity/icon": "workspace:*",
-    "@availity/native-form": "^6.0.3",
+    "@availity/native-form": "^6.0.10",
     "@availity/select": "workspace:*",
     "prop-types": "^15.8.1"
   },
   "devDependencies": {
-    "@availity/api-axios": "^9.0.3",
-    "@availity/yup": "^6.0.1",
-    "axios": "^1.8.2",
+    "@availity/api-axios": "^9.0.7",
+    "@availity/yup": "^6.0.3",
+    "axios": "^1.8.3",
     "formik": "^2.4.6",
     "react": "^18.3.1",
     "react-dom": "^18.3.1",

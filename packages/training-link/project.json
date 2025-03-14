@@ -1,5 +1,5 @@
 {
-  "name": "@availity/training-link",
+  "name": "training-link",
   "$schema": "../../node_modules/nx/schemas/project-schema.json",
   "projectType": "library",
   "targets": {
@@ -16,7 +16,7 @@
       "options": {
         "preset": "angular",
         "commitMessageFormat": "chore({projectName}): release version ${version} [skip ci]",
-        "tagPrefix": "{projectName}@",
+        "tagPrefix": "@availity/{projectName}@",
         "baseBranch": "master"
       }
     },

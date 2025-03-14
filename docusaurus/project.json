@@ -1,5 +1,5 @@
 {
-  "name": "@availity/dinosaurdocs",
+  "name": "dinosaurdocs",
   "$schema": "../node_modules/nx/schemas/project-schema.json",
   "projectType": "application",
   "targets": {
@@ -8,7 +8,7 @@
       "options": {
         "preset": "angular",
         "commitMessageFormat": "chore({projectName}): release version ${version} [skip ci]",
-        "tagPrefix": "{projectName}@",
+        "tagPrefix": "@availity/{projectName}@",
         "baseBranch": "master"
       }
     },
