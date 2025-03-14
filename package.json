@@ -33,8 +33,8 @@
   },
   "scripts": {
     "build": "nx run-many --target=build --all",
-    "build:components": "nx run-many --target=build --all --exclude=@availity/dinosaurdocs",
-    "build:docs": "nx build @availity/dinosaurdocs",
+    "build:components": "nx run-many --target=build --all --exclude=dinosaurdocs",
+    "build:docs": "nx build dinosaurdocs",
     "build:storybook": "storybook build",
     "build:storybook:netlify": "NODE_ENV=production storybook build -c .storybook -o ./docusaurus/build/storybook --quiet",
     "build:storybook:production": "NODE_ENV=production storybook build -c .storybook -o ./storybook-docs --quiet",
@@ -46,7 +46,7 @@
     "clean:nuke": "yarn clean && rm -rf node_modules/",
     "codecov:ci": "codecov",
     "deploy:ci": "yarn build:docs && yarn build:storybook:netlify",
-    "deploy:docs": "nx deploy @availity/dinosaurdocs",
+    "deploy:docs": "nx deploy dinosaurdocs",
     "dev": "nx run-many --target=dev --all",
     "format": "prettier '**/*.{js,ts,tsx,json}' --write --ignore-unknown",
     "format:check": "prettier '**/*.{js,ts,tsx,json,md}' --check --ignore-unknown",
@@ -59,7 +59,7 @@
     "version": "nx affected --target version --parallel=1",
     "version:dry-run": "nx affected --target version --dryRun --parallel=1",
     "start": "storybook dev -p 6006",
-    "start:docs": "nx start @availity/dinosaurdocs",
+    "start:docs": "nx start dinosaurdocs",
     "test": "nx run-many --target=test --all",
     "test:affected": "nx affected --target=test",
     "test:ci": "nx affected --target=test --parallel=3 --runInBand --coverage && node ./scripts/merge-coverage.js"
