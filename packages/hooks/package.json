@@ -34,14 +34,14 @@
     "axios": "^1.8.2",
     "react": "^18.3.1",
     "react-dom": "^18.3.1",
-    "react-router-dom": "^6.26.0"
+    "react-router-dom": "^7.5.0"
   },
   "peerDependencies": {
     "@availity/api-axios": "^9.0.3",
     "@availity/message-core": "^7.0.1",
     "axios": "^1.8.2",
     "react": "^18.0.0",
-    "react-router-dom": "^6.26.0"
+    "react-router-dom": "^7.5.0"
   },
   "publishConfig": {
     "access": "public"
