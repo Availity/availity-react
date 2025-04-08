@@ -62,12 +62,10 @@ const TableRow = <T extends IdType>({
   const definedRowProps = {
     onClick: (event: React.MouseEvent<HTMLTableRowElement, MouseEvent>) => {
       if (onRowClick) {
-        onRowClick({
-          ...event,
-          data: row.original,
-          index: row.index,
-          row,
-        } as OnTableClickEvent<HTMLTableRowElement, T>);
+        onRowClick({ ...event, data: row.original, index: row.index, row } as OnTableClickEvent<
+          HTMLTableRowElement,
+          T
+        >);
       }
     },
   };
@@ -81,12 +79,10 @@ const TableRow = <T extends IdType>({
   const definedCellProps = {
     onClick: (event: React.MouseEvent<HTMLTableCellElement, MouseEvent>) => {
       if (onCellClick) {
-        onCellClick({
-          ...event,
-          data: row.original,
-          index: row.index,
-          row,
-        } as OnTableClickEvent<HTMLTableCellElement, T>);
+        onCellClick({ ...event, data: row.original, index: row.index, row } as OnTableClickEvent<
+          HTMLTableCellElement,
+          T
+        >);
       }
     },
   };
@@ -102,10 +98,14 @@ const TableRow = <T extends IdType>({
       <tr {...row.getRowProps(buildRowProps())}>{children}</tr>
       {AdditionalContent && (
         <tr {...buildRowProps()} id={`${id}_additional_content`}>
+          {/* This is a known bug: https://github.com/jsx-eslint/eslint-plugin-jsx-a11y/issues/954 */}
+          {/*  eslint-disable-next-line jsx-a11y/control-has-associated-label */}
           {isFirstColumnSticky && <td className="sticky sticky-left" />}
           <td colSpan={numberOfNonStickyColumns} className="border-0" {...definedCellProps}>
             <AdditionalContent row={row} record={row.original} {...additionalContentProps} />
           </td>
+          {/* This is a known bug: https://github.com/jsx-eslint/eslint-plugin-jsx-a11y/issues/954 */}
+          {/*  eslint-disable-next-line jsx-a11y/control-has-associated-label */}
           {isLastColumnSticky && <td className="sticky sticky-right" />}
         </tr>
       )}

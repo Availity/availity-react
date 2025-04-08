@@ -30,13 +30,13 @@
     "@availity/icon": "workspace:*",
     "@tanstack/react-query": "^4.36.1",
     "classnames": "^2.5.1",
-    "dayjs": "^1.11.12",
+    "dayjs": "^1.11.13",
     "lodash": "^4.17.21",
     "prop-types": "^15.8.1"
   },
   "devDependencies": {
-    "@availity/api-axios": "^9.0.3",
-    "axios": "^1.8.2",
+    "@availity/api-axios": "^10.0.2",
+    "axios": "^1.8.4",
     "react": "^18.3.1",
     "react-dom": "^18.3.1",
     "reactstrap": "^8.10.1"

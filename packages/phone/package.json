@@ -25,7 +25,7 @@
     "publish:canary": "yarn npm publish --access public --tag canary"
   },
   "dependencies": {
-    "libphonenumber-js": "^1.11.5",
+    "libphonenumber-js": "^1.12.6",
     "prop-types": "^15.8.1"
   },
   "devDependencies": {
