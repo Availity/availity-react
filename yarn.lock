@@ -14756,11 +14756,11 @@ __metadata:
   linkType: hard
 
 "estree-util-value-to-estree@npm:^3.0.1":
-  version: 3.1.2
-  resolution: "estree-util-value-to-estree@npm:3.1.2"
+  version: 3.3.3
+  resolution: "estree-util-value-to-estree@npm:3.3.3"
   dependencies:
     "@types/estree": ^1.0.0
-  checksum: 31c4b9f3a2e64119b994a86d70070325b6ec238a21842669e79b0d6a7190150293616c8f38fee1c369c18bbef405064d883aa38c05311db5d0a211a30e9924d6
+  checksum: 73851f26715300046228cf8a36986c101d6741d7a2b024f684675e75d1191bc07b0dc069926876729efd5650343d23bffe76104221b7dc862965632302b05524
   languageName: node
   linkType: hard
 
@@ -16899,13 +16899,13 @@ __metadata:
   linkType: hard
 
 "image-size@npm:^1.0.2":
-  version: 1.1.1
-  resolution: "image-size@npm:1.1.1"
+  version: 1.2.1
+  resolution: "image-size@npm:1.2.1"
   dependencies:
     queue: 6.0.2
   bin:
     image-size: bin/image-size.js
-  checksum: 23b3a515dded89e7f967d52b885b430d6a5a903da954fce703130bfb6069d738d80e6588efd29acfaf5b6933424a56535aa7bf06867e4ebd0250c2ee51f19a4a
+  checksum: 8601ddd4edc1db16f097f5cf585c23214e29c3b8f4d8a8f8d59b8e3bae2338c8a5073236bfff421d8541091a98a38b802ed049203c745286a69d1aac4e5bc4c7
   languageName: node
   linkType: hard
 
@@ -23599,9 +23599,9 @@ __metadata:
   linkType: hard
 
 "prismjs@npm:^1.29.0":
-  version: 1.29.0
-  resolution: "prismjs@npm:1.29.0"
-  checksum: 007a8869d4456ff8049dc59404e32d5666a07d99c3b0e30a18bd3b7676dfa07d1daae9d0f407f20983865fd8da56de91d09cb08e6aa61f5bc420a27c0beeaf93
+  version: 1.30.0
+  resolution: "prismjs@npm:1.30.0"
+  checksum: a68eddd4c5f1c506badb5434b0b28a7cc2479ed1df91bc4218e6833c7971ef40c50ec481ea49749ac964256acb78d8b66a6bd11554938e8998e46c18b5f9a580
   languageName: node
   linkType: hard
 
@@ -27044,14 +27044,14 @@ __metadata:
   linkType: hard
 
 "tar-fs@npm:^2.1.1":
-  version: 2.1.1
-  resolution: "tar-fs@npm:2.1.1"
+  version: 2.1.2
+  resolution: "tar-fs@npm:2.1.2"
   dependencies:
     chownr: ^1.1.1
     mkdirp-classic: ^0.5.2
     pump: ^3.0.0
     tar-stream: ^2.1.4
-  checksum: f5b9a70059f5b2969e65f037b4e4da2daf0fa762d3d232ffd96e819e3f94665dbbbe62f76f084f1acb4dbdcce16c6e4dac08d12ffc6d24b8d76720f4d9cf032d
+  checksum: 6b4fcd38a644b5cd3325f687b9f1f48cd19809b63cbc8376fe794f68361849a17120d036833b3a97de6acb1df588844476309b8c2d0bcaf53f19da2d56ac07de
   languageName: node
   linkType: hard
 
