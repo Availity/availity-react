@@ -25,7 +25,7 @@
     "publish:canary": "yarn npm publish --access public --tag canary"
   },
   "dependencies": {
-    "@availity/resolve-url": "^3.0.0",
+    "@availity/resolve-url": "^3.0.3",
     "classnames": "^2.5.1",
     "prop-types": "^15.8.1"
   },
