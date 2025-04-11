@@ -1,6 +1,6 @@
 {
   "name": "@availity/hooks",
-  "version": "5.1.3",
+  "version": "5.1.4",
   "description": "A group of pre-built hooks that are common in most apps",
   "keywords": [
     "react",
