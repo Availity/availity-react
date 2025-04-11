@@ -1,6 +1,6 @@
 {
   "name": "@availity/phone",
-  "version": "2.2.3",
+  "version": "2.2.4",
   "description": "Availity Phone component using Formik and Yup",
   "keywords": [
     "availity",
