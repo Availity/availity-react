@@ -2,6 +2,15 @@
 
 This file was generated using [@jscutlery/semver](https://github.com/jscutlery/semver).
 
+## [14.0.16](https://github.com/Availity/availity-react/compare/@availity/page-header@14.0.15...@availity/page-header@14.0.16) (2025-04-29)
+
+### Dependency Updates
+
+* `@availity/spaces` updated to version `14.0.15`
+* `@availity/feedback` updated to version `14.0.15`
+* `@availity/payer-logo` updated to version `14.0.15`
+
+
 ## [14.0.15](https://github.com/Availity/availity-react/compare/@availity/page-header@14.0.14...@availity/page-header@14.0.15) (2025-04-11)
 
 ### Dependency Updates
