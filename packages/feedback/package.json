@@ -29,12 +29,12 @@
     "@availity/form": "workspace:*",
     "@availity/hooks": "workspace:*",
     "@availity/icon": "workspace:*",
-    "@availity/native-form": "^6.0.10",
+    "@availity/native-form": "^6.0.11",
     "@availity/select": "workspace:*",
     "prop-types": "^15.8.1"
   },
   "devDependencies": {
-    "@availity/api-axios": "^10.0.2",
+    "@availity/api-axios": "^10.0.3",
     "@availity/yup": "^6.0.3",
     "axios": "^1.8.4",
     "formik": "^2.4.6",
@@ -43,7 +43,7 @@
     "reactstrap": "^8.10.1"
   },
   "peerDependencies": {
-    "@availity/api-axios": "^9.0.3",
+    "@availity/api-axios": "^10.0.3",
     "@availity/yup": "^6.0.1",
     "axios": "^1.8.2",
     "formik": "^2.4.6",
