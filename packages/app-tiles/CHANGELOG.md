@@ -2,6 +2,15 @@
 
 This file was generated using [@jscutlery/semver](https://github.com/jscutlery/semver).
 
+## [0.2.7](https://github.com/Availity/availity-react/compare/@availity/app-tiles@0.2.6...@availity/app-tiles@0.2.7) (2025-05-14)
+
+
+### Bug Fixes
+
+* restored style injection lost in package version 0.2.1 ([42ba8ee](https://github.com/Availity/availity-react/commit/42ba8ee3a7c8ef9f929d13a475ccc79866f475ba))
+
+
+
 ## [0.2.6](https://github.com/Availity/availity-react/compare/@availity/app-tiles@0.2.5...@availity/app-tiles@0.2.6) (2025-03-10)
 
 
