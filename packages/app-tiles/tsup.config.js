@@ -6,8 +6,8 @@ module.exports = defineConfig({
   format: ['esm', 'cjs'],
   esbuildPlugins: [
     sassPlugin({
+      type: 'style',
       transform: postcssModules({
-        extract: false,
         modules: {
           generateScopedName: '[hash:base64:12]',
         },
