@@ -2,6 +2,20 @@
 
 This file was generated using [@jscutlery/semver](https://github.com/jscutlery/semver).
 
+# [2.0.0](https://github.com/Availity/availity-react/compare/@availity/avatar@1.0.11...@availity/avatar@2.0.0) (2025-05-15)
+
+
+### Features
+
+* drop support for node 16 add support for node 20 and 22 ([e31da14](https://github.com/Availity/availity-react/commit/e31da1439915fcd9cd16e049362ff2dc63e4c48b))
+
+
+### BREAKING CHANGES
+
+* drop support for Node 16
+
+
+
 ## [1.0.11](https://github.com/Availity/availity-react/compare/@availity/avatar@1.0.10...@availity/avatar@1.0.11) (2025-04-29)
 
 ### Dependency Updates
