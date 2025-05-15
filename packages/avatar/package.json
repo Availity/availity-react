@@ -32,13 +32,13 @@
     "react-loading-skeleton": "^2.2.0"
   },
   "devDependencies": {
-    "@availity/api-axios": "^10.0.3",
+    "@availity/api-axios": "^11.0.0",
     "axios": "^1.8.4",
     "react": "^18.3.1",
     "react-dom": "^18.3.1"
   },
   "peerDependencies": {
-    "@availity/api-axios": "^10.0.3",
+    "@availity/api-axios": "^11.0.0",
     "axios": "^1.8.2",
     "react": "^18.0.0"
   },

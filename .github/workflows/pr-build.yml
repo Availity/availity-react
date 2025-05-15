@@ -20,7 +20,7 @@ jobs:
     strategy:
       matrix:
         os: [ubuntu-latest, macos-latest]
-        node: [16, 18]
+        node: [18, 20, 22]
 
     steps:
       - name: Checkout Code
@@ -76,8 +76,7 @@ jobs:
           file: ./coverage/coverage-final.json
           token: ${{ secrets.CODECOV_TOKEN }}
 
-      - name: Build Docs (Node 18 Only)
-        if: ${{matrix.node > 16}}
+      - name: Build Docs
         run: yarn build:docs
 
       - name: Build Storybook
