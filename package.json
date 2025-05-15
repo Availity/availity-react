@@ -128,7 +128,7 @@
   "devDependencies": {
     "@commitlint/cli": "^18.6.1",
     "@commitlint/config-conventional": "^18.6.3",
-    "@commitlint/config-nx-scopes": "^18.6.1"
+    "@commitlint/config-nx-scopes": "^19.8.1"
   },
   "msw": {
     "workerDirectory": "static"
