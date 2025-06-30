@@ -80,7 +80,7 @@
     "@storybook/addon-essentials": "^7.6.20",
     "@storybook/addon-mdx-gfm": "^7.6.20",
     "@storybook/react": "^7.6.20",
-    "@storybook/react-vite": "^7.6.20",
+    "@storybook/react-vite": "^9.0.14",
     "@storybook/react-webpack5": "^7.6.20",
     "@testing-library/dom": "^10.4.0",
     "@testing-library/jest-dom": "^6.6.3",
