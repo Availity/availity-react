@@ -11,7 +11,7 @@ const colors = ['success', 'info', 'danger', 'warning', 'secondary'];
  * List Group Item with some Availity flair
  */
 export default {
-  title: 'Components/List Group Item',
+  title: 'Bootstrap Components/List Group Item',
   component: ListGroupItem,
   args: {
     cards: false,

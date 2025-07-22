@@ -4,7 +4,7 @@ import FeedbackForm from '../src/FeedbackForm';
 // import README from '../README.md';
 
 export default {
-  title: 'Components/Feedback/FeedbackWithForm',
+  title: 'Bootstrap Components/Feedback/FeedbackWithForm',
   component: FeedbackForm,
 };
 

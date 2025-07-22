@@ -13,7 +13,7 @@ import { Input, FormGroup } from '.';
 import FormResults from '../../../story-utils/FormikResults';
 
 export default {
-  title: 'Form Components/Form/FormGroup',
+  title: 'Bootstrap Components/Form/FormGroup',
   component: FormGroup,
   parameters: {
     docs: {

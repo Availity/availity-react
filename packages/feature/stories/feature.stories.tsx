@@ -5,7 +5,7 @@ import Feature from '../src/Feature';
 // import README from "@availity/feature/README.md";
 
 export default {
-  title: 'Components/Feature',
+  title: 'Bootstrap Components/Feature',
   parameters: {
     docs: {
       // page: README,

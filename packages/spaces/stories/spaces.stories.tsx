@@ -17,7 +17,7 @@ import { SpacesGhostTextProps } from '../types/SpacesGhostText';
 // import README from '../README.md';
 
 export default {
-  title: 'Components/Spaces',
+  title: 'Bootstrap Components/Spaces',
   component: Spaces,
   parameters: {
     docs: {

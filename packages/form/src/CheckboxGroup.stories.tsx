@@ -13,7 +13,7 @@ import { Checkbox, CheckboxGroup } from '.';
 import FormResults from '../../../story-utils/FormikResults';
 
 export default {
-  title: 'Form Components/Form/CheckboxGroup',
+  title: 'Bootstrap Components/Form/CheckboxGroup',
   component: CheckboxGroup,
   parameters: {
     docs: {

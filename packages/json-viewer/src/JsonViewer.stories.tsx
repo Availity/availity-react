@@ -5,7 +5,7 @@ import JsonViewer from '.';
 // import README from '../README.md';
 
 export default {
-  title: 'Components/JsonViewer',
+  title: 'Bootstrap Components/JsonViewer',
   parameters: {
     docs: {
       // page: README,

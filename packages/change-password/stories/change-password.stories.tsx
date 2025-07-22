@@ -5,7 +5,7 @@ import AvApi from '@availity/api-axios';
 import ChangePassword, { ChangePasswordForm } from '..';
 
 export default {
-  title: 'Components/Change Password',
+  title: 'Bootstrap Components/Change Password',
   parameters: {
     docs: {
       description: {

@@ -5,7 +5,7 @@ import Feedback from '../src/Feedback';
 // import README from '../README.md';
 
 export default {
-  title: 'Components/Feedback/Feedback',
+  title: 'Bootstrap Components/Feedback/Feedback',
   component: Feedback,
 };
 

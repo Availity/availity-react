@@ -36,7 +36,7 @@ import {
 } from '.';
 
 export default {
-  title: 'Form Components/Form',
+  title: 'Bootstrap Components/Form',
   parameters: {
     docs: {
       description: {

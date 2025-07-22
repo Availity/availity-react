@@ -25,7 +25,7 @@ const avCustomResource = new AvApi({ name: 'my-custom-resource' });
 const avGraphqlResource = new AvApi({ name: 'my-custom-graphql' });
 
 export default {
-  title: 'Form Components/Select/Async Selects',
+  title: 'Bootstrap Components/Select/Async Selects',
   parameters: {
     docs: {
       description: {

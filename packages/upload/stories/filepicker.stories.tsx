@@ -11,7 +11,7 @@ const log = window.console.log.bind(console);
  * The default export is an all-in-one solution which handles uploads, encrypted file password requests and file state management for you.
  */
 export default {
-  title: 'Components/Upload/FilePicker',
+  title: 'Bootstrap Components/Upload/FilePicker',
   component: FilePicker,
 };
 

@@ -3,7 +3,7 @@ import { StoryObj } from '@storybook/react';
 import TrainingLink from './TrainingLink';
 
 export default {
-  title: 'Components/Training Link',
+  title: 'Bootstrap Components/Training Link',
   parameters: {
     docs: {
       description: {

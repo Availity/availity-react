@@ -3,7 +3,7 @@ import type { StoryObj } from '@storybook/react';
 import Agreement from '../src/Agreement';
 
 export default {
-  title: 'Components/Typography/Agreement',
+  title: 'Bootstrap Components/Typography/Agreement',
   component: Agreement,
 };
 

@@ -22,7 +22,7 @@ export const UseAuthorizeComponent = (args: UseAuthorizeProps) => <div>{JSON.str
  * the other is the default marker for how long the query is valid.
  */
 export default {
-  title: 'Components/Authorize/useAuthorize',
+  title: 'Bootstrap Components/Authorize/useAuthorize',
   decorators: [
     (Story: () => JSX.Element) => (
       <QueryClientProvider client={new QueryClient()}>

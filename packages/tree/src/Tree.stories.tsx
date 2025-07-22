@@ -7,7 +7,7 @@ import Tree, { buildTree, TreeItem } from '.';
 import '../styles.scss';
 
 export default {
-  title: 'Components/Tree',
+  title: 'Bootstrap Components/Tree',
   component: Tree,
   parameters: {
     docs: {
