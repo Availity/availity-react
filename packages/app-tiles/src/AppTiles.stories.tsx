@@ -3,7 +3,7 @@ import { StoryObj } from '@storybook/react';
 import AppTiles from './AppTiles';
 
 export default {
-  title: 'Components/AppTiles',
+  title: 'Bootstrap Components/AppTiles',
   parameters: {
     docs: {
       description: {

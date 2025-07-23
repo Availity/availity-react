@@ -13,7 +13,7 @@ import { Input } from '.';
 import FormResults from '../../../story-utils/FormikResults';
 
 export default {
-  title: 'Form Components/Form/Input',
+  title: 'Bootstrap Components/Form/Input',
   component: Input,
   parameters: {
     docs: {

@@ -1,0 +1,69 @@
+---
+title: App Icon
+summary: Availity UI Kit application icon react component.
+---
+
+A component which outputs one of the "App Icons" from [Availity UI Kit](http://availity.github.io/availity-uikit/v3/components#App-Icons)
+
+[![Version](https://img.shields.io/npm/v/@availity/app-icon.svg?style=for-the-badge)](https://www.npmjs.com/package/@availity/app-icon)
+
+### Installation
+
+npm
+
+```bash
+npm install @availity/app-icon --save
+```
+
+Yarn
+
+```bash
+yarn add @availity/app-icon
+```
+
+### Example
+
+```jsx
+import React from 'react';
+import AppIcon from '@availity/app-icon';
+
+const Example = () => (
+  <>
+    <AppIcon title="Payer Space" color="blue" branded size="xl">
+      PS
+    </AppIcon>
+    <AppIcon title="Payer Space" color="red" size="xl">
+      PS
+    </AppIcon>
+    <AppIcon title="Payer Space" color="orange">
+      PS
+    </AppIcon>
+  </>
+);
+```
+
+#### Live example
+
+[Storybook](https://availity.github.io/availity-react/storybook/?path=/docs/bootstrap-components-appicon--docs)
+
+### Props
+
+#### `size? string`
+
+Potential values: `"lg"`, `"xl"`
+
+#### `color?: string`
+
+Potential values: `"black"`, `"blue"`, `"green"`, `"orange"`, `"red"`. **Default:** `"black"`
+
+#### `branded?: boolean`
+
+Triggers "branded" styles
+
+#### `src?: string`
+
+If image source is provided, it will render this instead of children.
+
+#### `alt?: string`
+
+For `src` prop. the alt property for your image source is not found or is loading.

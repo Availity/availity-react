@@ -20,7 +20,7 @@ type Units = unitOfTime.DurationConstructor;
 const distanceUnits: Units[] = ['day', 'month'];
 
 export default {
-  title: 'Form Components/Date',
+  title: 'Bootstrap Components/Date',
   component: FormikDate,
   parameters: {
     docs: {

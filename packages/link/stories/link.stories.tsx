@@ -3,7 +3,7 @@ import { StoryObj } from '@storybook/react';
 import Link, { AvLinkProps } from '..';
 
 export default {
-  title: 'Components/Link',
+  title: 'Bootstrap Components/Link',
   components: Link,
 };
 

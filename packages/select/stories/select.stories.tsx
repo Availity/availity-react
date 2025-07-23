@@ -12,7 +12,7 @@ import FormikResults from '../../../story-utils/FormikResults';
 import { singleValueSchema, multiValueSchema, options, SelectedOption, autofillOptions } from './utils';
 
 export default {
-  title: 'Form Components/Select',
+  title: 'Bootstrap Components/Select',
   component: Select,
   args: {
     autofill: false,

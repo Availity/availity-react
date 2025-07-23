@@ -3,7 +3,7 @@ import type { StoryObj } from '@storybook/react';
 import Disclaimer from '../src/Disclaimer';
 
 export default {
-  title: 'Components/Typography/Disclaimer',
+  title: 'Bootstrap Components/Typography/Disclaimer',
   component: Disclaimer,
 };
 

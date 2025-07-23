@@ -6,7 +6,7 @@ import BlockUi from './BlockUi';
 // import README from '../README.md';
 
 export default {
-  title: 'Components/Block UI',
+  title: 'Bootstrap Components/Block UI',
   component: BlockUi,
   parameters: {
     docs: {

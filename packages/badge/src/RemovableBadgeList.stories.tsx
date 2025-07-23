@@ -5,7 +5,7 @@ import { Button } from 'reactstrap';
 import { RemovableBadgeList, BadgeItem } from '.';
 
 export default {
-  title: 'Components/Badge/Removable Badge/List',
+  title: 'Bootstrap Components/Badge/Removable Badge/List',
   component: RemovableBadgeList,
   parameters: {
     docs: {

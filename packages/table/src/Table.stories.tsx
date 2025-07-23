@@ -155,7 +155,7 @@ const bulkActions = [
 ];
 
 export default {
-  title: 'Components/Table',
+  title: 'Bootstrap Components/Table',
   component: Table,
 };
 

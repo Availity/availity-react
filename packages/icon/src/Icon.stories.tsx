@@ -23,7 +23,7 @@ const colors = [
 const iconOptions = icons.glyphs.map((glyph) => glyph.css);
 
 export default {
-  title: 'Components/Icon',
+  title: 'Bootstrap Components/Icon',
   parameters: {
     docs: {
       // page: README,

@@ -8,7 +8,7 @@ import { LoadingButton } from '.';
 import '../styles.scss';
 
 export default {
-  title: 'Components/Button/Loading Button',
+  title: 'Bootstrap Components/Button/Loading Button',
   parameters: {
     docs: {
       // page: README,

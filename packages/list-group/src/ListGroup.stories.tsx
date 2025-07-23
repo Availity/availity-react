@@ -6,7 +6,7 @@ import ListGroup from '..';
 // import README from '../README.md';
 
 export default {
-  title: 'Components/List Group',
+  title: 'Bootstrap Components/List Group',
   component: ListGroup,
   parameters: {
     docs: {

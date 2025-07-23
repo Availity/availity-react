@@ -33,7 +33,7 @@ const logoAttrs = {
 const colors = ['black', 'blue', 'orange', 'green'];
 
 export default {
-  title: 'Components/Page Header',
+  title: 'Bootstrap Components/Page Header',
   parameters: {
     docs: {
       // page: README,

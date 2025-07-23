@@ -3,6 +3,10 @@ title: Introduction
 slug: /
 ---
 
+:::warning
+This collection has been replaced by Availity Element.
+:::
+
 Availity React is a repo of [React](https://react.dev/) components built for web projects on the Availity Portal. This site provides documentation on how to use those components.
 
 Many of the packages provided by `availity-react` are wrappers around common `reactstrap` components. If you can't find what you're looking for in these docs, take a look at the [Reactstrap documentation](https://reactstrap.github.io).

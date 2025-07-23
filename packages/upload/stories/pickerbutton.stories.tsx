@@ -10,7 +10,7 @@ import { FilePickerBtn } from '..';
  * The default export is an all-in-one solution which handles uploads, encrypted file password requests and file state management for you.
  */
 export default {
-  title: 'Components/Upload/PickerButton',
+  title: 'Bootstrap Components/Upload/PickerButton',
   component: FilePickerBtn,
 };
 

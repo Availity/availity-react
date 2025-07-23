@@ -8,7 +8,7 @@ import Tooltip from './Tooltip';
  * Accessible tooltip for hovering over.
  */
 export default {
-  title: 'Components/Tooltip',
+  title: 'Bootstrap Components/Tooltip',
   component: Tooltip,
 };
 

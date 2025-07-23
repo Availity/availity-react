@@ -9,7 +9,7 @@ import Upload from '..';
  * The default export is an all-in-one solution which handles uploads, encrypted file password requests and file state management for you.
  */
 export default {
-  title: 'Components/Upload',
+  title: 'Bootstrap Components/Upload',
   component: Upload,
   args: {
     clientId: 'a',

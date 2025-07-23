@@ -7,7 +7,7 @@ import Breadcrumbs from '../src/Breadcrumbs';
 // import README from '../README.md';
 
 export default {
-  title: 'Components/Breadcrumbs',
+  title: 'Bootstrap Components/Breadcrumbs',
   component: Breadcrumb,
   decorators: [
     (Story) => (

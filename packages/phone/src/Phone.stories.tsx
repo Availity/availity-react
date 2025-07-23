@@ -13,7 +13,7 @@ import './validatePhone';
 import FormikResults from '../../../story-utils/FormikResults';
 
 export default {
-  title: 'Form Components/Phone',
+  title: 'Bootstrap Components/Phone',
   parameters: {
     docs: {
       description: {

@@ -17,7 +17,7 @@ import Authorize from '.';
  * the other is the default marker for how long the query is valid.
  */
 const meta: Meta<typeof Authorize> = {
-  title: 'Components/Authorize/Authorize',
+  title: 'Bootstrap Components/Authorize/Authorize',
   component: Authorize,
   decorators: [
     (Story: () => JSX.Element) => (

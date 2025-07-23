@@ -7,7 +7,7 @@ import { WizardStepTitleProps } from '../types/WizardStepTitle';
 // import README from '../README.md';
 
 export default {
-  title: 'Components/Wizard',
+  title: 'Bootstrap Components/Wizard',
   component: Wizard,
 };
 

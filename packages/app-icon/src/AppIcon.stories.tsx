@@ -5,7 +5,7 @@ import AppIcon from './AppIcon';
 // import README from '../README.md';
 
 export default {
-  title: 'Components/AppIcon',
+  title: 'Bootstrap Components/AppIcon',
   component: AppIcon,
 };
 

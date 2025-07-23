@@ -4,7 +4,7 @@ import Progress from '.';
 // import README from '../README.md';
 
 export default {
-  title: 'Components/Progress',
+  title: 'Bootstrap Components/Progress',
   component: Progress,
 };
 

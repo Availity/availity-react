@@ -9,7 +9,7 @@ import { FavoriteHeart } from './FavoriteHeart';
 // import README from '../README.md';
 
 export default {
-  title: 'Components/Favorites',
+  title: 'Bootstrap Components/Favorites',
   component: FavoriteHeart,
 };
 

@@ -4,7 +4,7 @@ import { StoryObj } from '@storybook/react';
 import FieldHelpIcon, { FieldHelpIconProps } from './FieldHelpIcon';
 
 export default {
-  title: 'Form Components/Form/FieldHelpIcon',
+  title: 'Bootstrap Components/Form/FieldHelpIcon',
   component: FieldHelpIcon,
   parameters: {
     docs: {

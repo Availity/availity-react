@@ -13,7 +13,7 @@ import { RadioGroup, Radio } from '.';
 import FormResults from '../../../story-utils/FormikResults';
 
 export default {
-  title: 'Form Components/Form/RadioGroup',
+  title: 'Bootstrap Components/Form/RadioGroup',
   component: FormResults,
   parameters: {
     docs: {

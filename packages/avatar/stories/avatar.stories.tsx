@@ -10,7 +10,7 @@ import Avatar, { SkeletonType } from '../src/Avatar';
  * # Availity user avatar component.
  */
 export default {
-  title: 'Components/Avatar',
+  title: 'Bootstrap Components/Avatar',
   component: Avatar,
 };
 

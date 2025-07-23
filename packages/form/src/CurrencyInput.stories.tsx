@@ -12,7 +12,7 @@ import { CurrencyInput } from '.';
 import FormResults from '../../../story-utils/FormikResults';
 
 export default {
-  title: 'Form Components/Form/CurrencyInput',
+  title: 'Bootstrap Components/Form/CurrencyInput',
   component: CurrencyInput,
   parameters: {
     docs: {

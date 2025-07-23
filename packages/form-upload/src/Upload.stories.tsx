@@ -20,7 +20,7 @@ const file = (fileName: string) => ({
 });
 
 export default {
-  title: 'Form Components/Upload',
+  title: 'Bootstrap Components/Upload',
   parameters: {
     docs: {
       description: {
