@@ -2,6 +2,23 @@
 
 This file was generated using [@jscutlery/semver](https://github.com/jscutlery/semver).
 
+## [8.0.20](https://github.com/Availity/availity-react/compare/@availity/spaces@8.0.19...@availity/spaces@8.0.20) (2025-07-23)
+
+### Dependency Updates
+
+* `@availity/favorites` updated to version `8.0.19`
+* `@availity/app-icon` updated to version `8.0.19`
+* `@availity/icon` updated to version `8.0.19`
+* `@availity/link` updated to version `8.0.19`
+* `@availity/list-group-item` updated to version `8.0.19`
+* `@availity/typography` updated to version `8.0.19`
+
+### Bug Fixes
+
+* moved bootstrap components to separate folder as well as added waring about replacement, UXDS-919 ([5c23ad2](https://github.com/Availity/availity-react/commit/5c23ad29ba12adcd7b7e579d21a92d99d69ce33e))
+
+
+
 ## [8.0.19](https://github.com/Availity/availity-react/compare/@availity/spaces@8.0.18...@availity/spaces@8.0.19) (2025-04-29)
 
 ### Dependency Updates
