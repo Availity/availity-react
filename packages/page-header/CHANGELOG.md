@@ -2,6 +2,22 @@
 
 This file was generated using [@jscutlery/semver](https://github.com/jscutlery/semver).
 
+## [14.0.17](https://github.com/Availity/availity-react/compare/@availity/page-header@14.0.16...@availity/page-header@14.0.17) (2025-07-23)
+
+### Dependency Updates
+
+* `@availity/spaces` updated to version `14.0.16`
+* `@availity/training-link` updated to version `14.0.16`
+* `@availity/app-icon` updated to version `14.0.16`
+* `@availity/breadcrumbs` updated to version `14.0.16`
+* `@availity/feedback` updated to version `14.0.16`
+
+### Bug Fixes
+
+* moved bootstrap components to separate folder as well as added waring about replacement, UXDS-919 ([5c23ad2](https://github.com/Availity/availity-react/commit/5c23ad29ba12adcd7b7e579d21a92d99d69ce33e))
+
+
+
 ## [14.0.16](https://github.com/Availity/availity-react/compare/@availity/page-header@14.0.15...@availity/page-header@14.0.16) (2025-04-29)
 
 ### Dependency Updates
