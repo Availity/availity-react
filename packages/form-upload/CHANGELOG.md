@@ -2,6 +2,20 @@
 
 This file was generated using [@jscutlery/semver](https://github.com/jscutlery/semver).
 
+## [2.0.7](https://github.com/Availity/availity-react/compare/@availity/form-upload@2.0.6...@availity/form-upload@2.0.7) (2025-07-23)
+
+### Dependency Updates
+
+* `@availity/form` updated to version `2.0.6`
+* `@availity/icon` updated to version `2.0.6`
+* `@availity/progress` updated to version `2.0.6`
+
+### Bug Fixes
+
+* moved bootstrap components to separate folder as well as added waring about replacement, UXDS-919 ([5c23ad2](https://github.com/Availity/availity-react/commit/5c23ad29ba12adcd7b7e579d21a92d99d69ce33e))
+
+
+
 ## [2.0.6](https://github.com/Availity/availity-react/compare/@availity/form-upload@2.0.5...@availity/form-upload@2.0.6) (2025-04-29)
 
 
