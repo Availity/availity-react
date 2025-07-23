@@ -13,7 +13,7 @@ import { FeedbackForm } from '@availity/feedback';
 const Example = () => <FeedbackForm name="Payer Space" />;
 ```
 
-#### Live example: [Storybook](https://availity.github.io/availity-react/storybook/?path=/docs/components-feedback-feedbackwithform--docs)
+#### Live example: [Storybook](https://availity.github.io/availity-react/storybook/?path=/docs/bootstrap-components-feedback-feedbackwithform--docs)
 
 ### Props
 

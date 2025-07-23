@@ -18,7 +18,7 @@ const Example = () => (
 );
 ```
 
-#### Live example: <a href="https://availity.github.io/availity-react/storybook/?path=/story/components-pagination--av-resource"> Storybook</a>
+#### Live example: <a href="https://availity.github.io/availity-react/storybook/?path=/story/bootstrap-components-pagination--av-resource"> Storybook</a>
 
 ### Props
 

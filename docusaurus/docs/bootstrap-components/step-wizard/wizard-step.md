@@ -27,7 +27,7 @@ const Example = () => (
 
 #### Live example
 
-[Storybook](https://availity.github.io/availity-react/storybook/?path=/docs/components-wizard--docs)
+[Storybook](https://availity.github.io/availity-react/storybook/?path=/docs/bootstrap-components-wizard--docs)
 
 ### Props
 

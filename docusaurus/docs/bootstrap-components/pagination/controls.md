@@ -13,7 +13,7 @@ import { PaginationControls } from '@availity/pagination';
 const Example = () => <PaginationControls directionLinks />;
 ```
 
-#### Live example: <a href="https://availity.github.io/availity-react/storybook/?path=/story/components-pagination--controls"> Storybook</a>
+#### Live example: <a href="https://availity.github.io/availity-react/storybook/?path=/story/bootstrap-components-pagination--controls"> Storybook</a>
 
 ### Props
 
