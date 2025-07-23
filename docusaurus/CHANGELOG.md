@@ -2,6 +2,18 @@
 
 This file was generated using [@jscutlery/semver](https://github.com/jscutlery/semver).
 
+## [2.0.2](https://github.com/Availity/availity-react/compare/@availity/dinosaurdocs@2.0.1...@availity/dinosaurdocs@2.0.2) (2025-07-23)
+
+
+### Bug Fixes
+
+* moved all bootstrap docusaurus components to new folder, UXDS-919 ([584310c](https://github.com/Availity/availity-react/commit/584310c17d58cf160eb80d3548a74a0e8b768a16))
+* moved hooks back to components, UXDS-919 ([fa87bcb](https://github.com/Availity/availity-react/commit/fa87bcb907a8c4efc66552d9cc0ea0d833ecfd3d))
+* removed change to link that wasn't storybook, UXDS-919 ([da378e8](https://github.com/Availity/availity-react/commit/da378e8a51bf16c5c5c65608c0f58c766bd9a4f5))
+* updated storybook links for components that are now bootstrap, UXDS-919 ([b50f3ec](https://github.com/Availity/availity-react/commit/b50f3ec64db1a89cfe8851b8da01b3eea5329be8))
+
+
+
 ## [2.0.1](https://github.com/Availity/availity-react/compare/@availity/dinosaurdocs@2.0.0...@availity/dinosaurdocs@2.0.1) (2025-04-11)
 
 
