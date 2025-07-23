@@ -2,6 +2,18 @@
 
 This file was generated using [@jscutlery/semver](https://github.com/jscutlery/semver).
 
+## [1.3.10](https://github.com/Availity/availity-react/compare/@availity/badge@1.3.9...@availity/badge@1.3.10) (2025-07-23)
+
+### Dependency Updates
+
+* `@availity/icon` updated to version `1.3.9`
+
+### Bug Fixes
+
+* moved bootstrap components to separate folder as well as added waring about replacement, UXDS-919 ([5c23ad2](https://github.com/Availity/availity-react/commit/5c23ad29ba12adcd7b7e579d21a92d99d69ce33e))
+
+
+
 ## [1.3.9](https://github.com/Availity/availity-react/compare/@availity/badge@1.3.8...@availity/badge@1.3.9) (2025-03-10)
 
 ### Dependency Updates
