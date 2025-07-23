@@ -2,6 +2,15 @@
 
 This file was generated using [@jscutlery/semver](https://github.com/jscutlery/semver).
 
+## [5.0.1](https://github.com/Availity/availity-react/compare/@availity/date@5.0.0...@availity/date@5.0.1) (2025-07-23)
+
+
+### Bug Fixes
+
+* moved bootstrap components to separate folder as well as added waring about replacement, UXDS-919 ([5c23ad2](https://github.com/Availity/availity-react/commit/5c23ad29ba12adcd7b7e579d21a92d99d69ce33e))
+
+
+
 # [5.0.0](https://github.com/Availity/availity-react/compare/@availity/date@4.3.6...@availity/date@5.0.0) (2025-05-15)
 
 
