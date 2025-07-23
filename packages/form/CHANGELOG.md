@@ -2,6 +2,18 @@
 
 This file was generated using [@jscutlery/semver](https://github.com/jscutlery/semver).
 
+## [1.10.4](https://github.com/Availity/availity-react/compare/@availity/form@1.10.3...@availity/form@1.10.4) (2025-07-23)
+
+### Dependency Updates
+
+* `@availity/icon` updated to version `1.10.3`
+
+### Bug Fixes
+
+* moved bootstrap components to separate folder as well as added waring about replacement, UXDS-919 ([5c23ad2](https://github.com/Availity/availity-react/commit/5c23ad29ba12adcd7b7e579d21a92d99d69ce33e))
+
+
+
 ## [1.10.3](https://github.com/Availity/availity-react/compare/@availity/form@1.10.2...@availity/form@1.10.3) (2025-04-11)
 
 
