@@ -2,6 +2,15 @@
 
 This file was generated using [@jscutlery/semver](https://github.com/jscutlery/semver).
 
+## [1.1.7](https://github.com/Availity/availity-react/compare/@availity/block-ui@1.1.6...@availity/block-ui@1.1.7) (2025-07-23)
+
+
+### Bug Fixes
+
+* moved bootstrap components to separate folder as well as added waring about replacement, UXDS-919 ([5c23ad2](https://github.com/Availity/availity-react/commit/5c23ad29ba12adcd7b7e579d21a92d99d69ce33e))
+
+
+
 ## [1.1.6](https://github.com/Availity/availity-react/compare/@availity/block-ui@1.1.5...@availity/block-ui@1.1.6) (2025-03-10)
 
 
