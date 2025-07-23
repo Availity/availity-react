@@ -2,6 +2,20 @@
 
 This file was generated using [@jscutlery/semver](https://github.com/jscutlery/semver).
 
+## [3.0.1](https://github.com/Availity/availity-react/compare/@availity/change-password@3.0.0...@availity/change-password@3.0.1) (2025-07-23)
+
+### Dependency Updates
+
+* `@availity/block-ui` updated to version `3.0.0`
+* `@availity/form` updated to version `3.0.0`
+* `@availity/icon` updated to version `3.0.0`
+
+### Bug Fixes
+
+* moved bootstrap components to separate folder as well as added waring about replacement, UXDS-919 ([5c23ad2](https://github.com/Availity/availity-react/commit/5c23ad29ba12adcd7b7e579d21a92d99d69ce33e))
+
+
+
 # [3.0.0](https://github.com/Availity/availity-react/compare/@availity/change-password@2.3.6...@availity/change-password@3.0.0) (2025-05-15)
 
 
