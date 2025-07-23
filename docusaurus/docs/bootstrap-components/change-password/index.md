@@ -11,4 +11,3 @@ Easy to use change password components
 ```bash
 npx install-peerdeps @availity/change-password --save
 ```
-
