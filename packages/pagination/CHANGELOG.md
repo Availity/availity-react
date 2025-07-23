@@ -2,6 +2,18 @@
 
 This file was generated using [@jscutlery/semver](https://github.com/jscutlery/semver).
 
+## [2.17.15](https://github.com/Availity/availity-react/compare/@availity/pagination@2.17.14...@availity/pagination@2.17.15) (2025-07-23)
+
+### Dependency Updates
+
+* `@availity/block-ui` updated to version `2.17.14`
+
+### Bug Fixes
+
+* moved bootstrap components to separate folder as well as added waring about replacement, UXDS-919 ([5c23ad2](https://github.com/Availity/availity-react/commit/5c23ad29ba12adcd7b7e579d21a92d99d69ce33e))
+
+
+
 ## [2.17.14](https://github.com/Availity/availity-react/compare/@availity/pagination@2.17.13...@availity/pagination@2.17.14) (2025-04-29)
 
 ### Dependency Updates
