@@ -48,7 +48,7 @@ const Example = () => (
 
 #### Live example
 
-[Storybook](https://availity.github.io/availity-react/storybook/?path=/docs/form-components-phone--default)
+[Storybook](https://availity.github.io/availity-react/storybook/?path=/docs/bootstrap-components-phone--default)
 
 ### Props
 

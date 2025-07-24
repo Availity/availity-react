@@ -17,7 +17,7 @@ const Example = () => (
 );
 ```
 
-#### Live example: [Storybook](https://availity.github.io/availity-react/storybook/?path=/docs/form-components-form-fieldhelpicon--docs)
+#### Live example: [Storybook](https://availity.github.io/availity-react/storybook/?path=/docs/bootstrap-components-form-fieldhelpicon--docs)
 
 ### Props
 

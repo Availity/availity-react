@@ -58,7 +58,7 @@ const Example = () => (
 
 #### Live example
 
-[Storybook](https://availity.github.io/availity-react/storybook/?path=/docs/form-components-date--date-range-field)
+[Storybook](https://availity.github.io/availity-react/storybook/?path=/docs/bootstrap-components-date--date-range-field)
 
 ### Props
 

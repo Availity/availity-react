@@ -40,7 +40,7 @@ const Example = () => (
 );
 ```
 
-#### Live example: [Storybook](https://availity.github.io/availity-react/storybook/?path=/story/form-components-select-async-selects--payer-select)
+#### Live example: [Storybook](https://availity.github.io/availity-react/storybook/?path=/story/bootstrap-components-select-async-selects--payer-select)
 
 ### Props
 
