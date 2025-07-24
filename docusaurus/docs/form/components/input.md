@@ -31,7 +31,7 @@ const Example = () => (
 );
 ```
 
-#### Live example: [Storybook](https://availity.github.io/availity-react/storybook/?path=/docs/form-components-form-input--docs)
+#### Live example: [Storybook](https://availity.github.io/availity-react/storybook/?path=/docs/bootstrap-components-form-input--docs)
 
 ### Props
 

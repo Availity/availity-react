@@ -39,7 +39,7 @@ const Example = () => (
 );
 ```
 
-#### Live example: [Storybook](https://availity.github.io/availity-react/storybook/?path=/docs/form-components-form-checkboxgroup--docs)
+#### Live example: [Storybook](https://availity.github.io/availity-react/storybook/?path=/docs/bootstrap-components-form-checkboxgroup--docs)
 
 ### Props
 

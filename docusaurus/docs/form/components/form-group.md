@@ -30,7 +30,7 @@ const Example = () => (
 );
 ```
 
-#### Live example: [Storybook](https://availity.github.io/availity-react/storybook/?path=/docs/form-components-form-formgroup--docs)
+#### Live example: [Storybook](https://availity.github.io/availity-react/storybook/?path=/docs/bootstrap-components-form-formgroup--docs)
 
 ### Props
 
