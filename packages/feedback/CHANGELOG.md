@@ -2,6 +2,14 @@
 
 This file was generated using [@jscutlery/semver](https://github.com/jscutlery/semver).
 
+## [9.1.8](https://github.com/Availity/availity-react/compare/@availity/feedback@9.1.7...@availity/feedback@9.1.8) (2025-08-13)
+
+### Dependency Updates
+
+* `@availity/form` updated to version `9.1.7`
+* `@availity/hooks` updated to version `9.1.7`
+
+
 ## [9.1.7](https://github.com/Availity/availity-react/compare/@availity/feedback@9.1.6...@availity/feedback@9.1.7) (2025-07-23)
 
 ### Dependency Updates
