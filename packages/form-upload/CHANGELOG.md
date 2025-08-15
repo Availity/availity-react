@@ -2,6 +2,16 @@
 
 This file was generated using [@jscutlery/semver](https://github.com/jscutlery/semver).
 
+# [2.1.0](https://github.com/Availity/availity-react/compare/@availity/form-upload@2.0.8...@availity/form-upload@2.1.0) (2025-08-15)
+
+
+### Features
+
+* **form-upload:** allow custom headers ([1006b71](https://github.com/Availity/availity-react/commit/1006b7184ff86dfbc85e759d8f59bb6c1cd8cafd))
+* **upload:** allow custom headers ([5b2d3e5](https://github.com/Availity/availity-react/commit/5b2d3e50f8d0e73891daeac4a6e3d0bf30650867))
+
+
+
 ## [2.0.8](https://github.com/Availity/availity-react/compare/@availity/form-upload@2.0.7...@availity/form-upload@2.0.8) (2025-08-13)
 
 ### Dependency Updates
