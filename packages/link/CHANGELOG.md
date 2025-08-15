@@ -2,6 +2,15 @@
 
 This file was generated using [@jscutlery/semver](https://github.com/jscutlery/semver).
 
+# [2.7.0](https://github.com/Availity/availity-react/compare/@availity/link@2.6.3...@availity/link@2.7.0) (2025-08-15)
+
+
+### Features
+
+* **upload:** allow custom headers ([5b2d3e5](https://github.com/Availity/availity-react/commit/5b2d3e50f8d0e73891daeac4a6e3d0bf30650867))
+
+
+
 ## [2.6.3](https://github.com/Availity/availity-react/compare/@availity/link@2.6.2...@availity/link@2.6.3) (2025-07-23)
 
 
