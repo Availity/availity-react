@@ -298,4 +298,37 @@ describe('Upload', () => {
       expect(mockFn).toHaveBeenCalledWith('http://localhost/test/foo');
     });
   });
+
+  test('passes customHeaders to UploadCore options', async () => {
+    const customHeaders = { 'X-Custom-Header': 'test-value' };
+    const mockFn = jest.fn();
+
+    render(
+      <Upload
+        clientId="a"
+        bucketId="b"
+        customerId="c"
+        customHeaders={customHeaders}
+        onFilePreUpload={[
+          (file) => {
+            mockFn(file.options.headers);
+          },
+        ]}
+      />
+    );
+
+    const file = Buffer.from('hello world');
+    file.name = 'fileName.png';
+    const fileEvent = { target: { files: [file] } };
+
+    const inputNode = screen.getByTestId('file-picker');
+
+    fireEvent.change(inputNode, fileEvent);
+
+    expect(inputNode.files.length).toBe(1);
+
+    await waitFor(() => {
+      expect(mockFn).toHaveBeenCalledWith(customHeaders);
+    });
+  });
 });

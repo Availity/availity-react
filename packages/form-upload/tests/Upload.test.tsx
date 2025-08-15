@@ -335,6 +335,46 @@ describe('Upload', () => {
     });
   });
 
+  test('passes customHeaders to UploadCore options', async () => {
+    const customHeaders = { 'X-Custom-Header': 'test-value' };
+    const mockFn = jest.fn();
+    const onFileUploadMock = jest.fn();
+
+    render(
+      <Form<{ upload: UploadCore[] | null }>
+        initialValues={initialValues}
+        onSubmit={(values) => {
+          mockFn(values.upload?.[0].options.customHeaders);
+        }}
+      >
+        <Upload {...defaultUploadProps} customHeaders={customHeaders} onFileUpload={onFileUploadMock} />
+        <button type="submit">click</button>
+      </Form>
+    );
+
+    const file: UploadFile = Buffer.from('hello world');
+    file.name = 'fileName.png';
+    const fileEvent = { target: { files: [file] } };
+
+    const inputNode = screen.getByTestId('file-picker') as HTMLInputElement;
+
+    act(() => {
+      fireEvent.change(inputNode, fileEvent);
+    });
+
+    await waitFor(() => {
+      expect(onFileUploadMock).toHaveBeenCalled();
+    });
+
+    act(() => {
+      fireEvent.click(screen.getByText('click'));
+    });
+
+    await waitFor(() => {
+      expect(mockFn).toHaveBeenCalledWith(customHeaders);
+    });
+  });
+
   describe('dropzone', () => {
     // start msw server
     beforeAll(() => server.listen());

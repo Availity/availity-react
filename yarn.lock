@@ -601,7 +601,7 @@ __metadata:
     "@availity/form": "workspace:*"
     "@availity/icon": "workspace:*"
     "@availity/progress": "workspace:*"
-    "@availity/upload-core": ^7.1.1
+    "@availity/upload-core": ^8.1.0
     classnames: ^2.5.1
     formik: ^2.4.6
     nock: ^13.5.6
@@ -615,7 +615,7 @@ __metadata:
   peerDependencies:
     "@availity/api-axios": ^10.0.3
     "@availity/form": ^1.9.3
-    "@availity/upload-core": ^7.0.0
+    "@availity/upload-core": ^8.0.0
     formik: ^2.4.6
     react: ^18.0.0
     react-dropzone: ^11.7.1
@@ -714,7 +714,7 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@availity/link@workspace:packages/link"
   dependencies:
-    "@availity/resolve-url": ^3.0.3
+    "@availity/resolve-url": ^4.0.0
     classnames: ^2.5.1
     prop-types: ^15.8.1
     react: ^18.3.1
@@ -961,14 +961,14 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@availity/resolve-url@npm:3.0.3, @availity/resolve-url@npm:^3.0.3":
+"@availity/resolve-url@npm:3.0.3":
   version: 3.0.3
   resolution: "@availity/resolve-url@npm:3.0.3"
   checksum: 36fe5ff7a79cef1b4ef805059d9c233cca83456e6421ca63b75dcc072617caef44d02b1db110abac78ea22c2c888dba45463ed49dfb11b2d90d17629519b2211
   languageName: node
   linkType: hard
 
-"@availity/resolve-url@npm:4.0.0":
+"@availity/resolve-url@npm:4.0.0, @availity/resolve-url@npm:^4.0.0":
   version: 4.0.0
   resolution: "@availity/resolve-url@npm:4.0.0"
   checksum: 9ee4097eb5e39c20073b44a75f6af9da8ec69e431547af1936b57f8f5da588bfd6a7714f07c093044605e9f51bb469f0838b2840a79a4ab5b5bee8bbeb9c811a
@@ -1136,13 +1136,13 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@availity/upload-core@npm:^7.1.1":
-  version: 7.1.1
-  resolution: "@availity/upload-core@npm:7.1.1"
+"@availity/upload-core@npm:^8.1.0":
+  version: 8.1.0
+  resolution: "@availity/upload-core@npm:8.1.0"
   dependencies:
-    "@availity/resolve-url": 3.0.3
-    tus-js-client: 4.2.3
-  checksum: 0d686166610d7c4e215ada21e736d0c8fad341bff8329cc51832bd5ac403aec8b8f97547424de269d430d19797dc1d113e12e777cc85fd4d48f11a903cefd8d5
+    "@availity/resolve-url": 4.0.0
+    tus-js-client: 4.3.1
+  checksum: fe9b0dce3e79ca6698b8ebfea53cd0b215ac505a57a8e198e9bb0feb8a0452601479de0d10075b37760e2ae0493e644789b1874f2dde574ed30cb48751f604db
   languageName: node
   linkType: hard
 
@@ -1151,14 +1151,14 @@ __metadata:
   resolution: "@availity/upload@workspace:packages/upload"
   dependencies:
     "@availity/progress": "workspace:*"
-    "@availity/upload-core": ^7.1.1
+    "@availity/upload-core": ^8.1.0
     prop-types: ^15.8.1
     react: ^18.3.1
     react-dom: ^18.3.1
     react-dropzone: ^11.7.1
     reactstrap: ^8.10.1
   peerDependencies:
-    "@availity/upload-core": ^7.0.0
+    "@availity/upload-core": ^8.0.0
     react: ^18.0.0
     react-dom: ^18.0.0
     react-dropzone: ^11.7.1
@@ -27503,9 +27503,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"tus-js-client@npm:4.2.3":
-  version: 4.2.3
-  resolution: "tus-js-client@npm:4.2.3"
+"tus-js-client@npm:4.3.1":
+  version: 4.3.1
+  resolution: "tus-js-client@npm:4.3.1"
   dependencies:
     buffer-from: ^1.1.2
     combine-errors: ^3.0.3
@@ -27514,7 +27514,7 @@ __metadata:
     lodash.throttle: ^4.1.1
     proper-lockfile: ^4.1.2
     url-parse: ^1.5.7
-  checksum: c2180111a443d6f5bff1923888fe40cf7490a054fb3e818bc3f16897ef0744ad2d83bcabe5f7b5d24f6e57f0d95231612c13eb71cc55d15deeff06fc6ddc0cdf
+  checksum: d9e4462469eba2c2410672bed620ebb57eac89f6fb885c5bbf349ce83084af179bf54a6848790ae439c4d79d07d830caefe36fcd5cb21af4e7f64bbaf33d8156
   languageName: node
   linkType: hard
 
