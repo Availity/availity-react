@@ -615,7 +615,7 @@ __metadata:
   peerDependencies:
     "@availity/api-axios": ^10.0.3
     "@availity/form": ^1.9.3
-    "@availity/upload-core": ^7.0.0
+    "@availity/upload-core": ^8.0.0
     formik: ^2.4.6
     react: ^18.0.0
     react-dropzone: ^11.7.1
@@ -1158,7 +1158,7 @@ __metadata:
     react-dropzone: ^11.7.1
     reactstrap: ^8.10.1
   peerDependencies:
-    "@availity/upload-core": ^7.0.0
+    "@availity/upload-core": ^8.0.0
     react: ^18.0.0
     react-dom: ^18.0.0
     react-dropzone: ^11.7.1
