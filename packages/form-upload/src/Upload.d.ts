@@ -27,6 +27,7 @@ export interface UploadProps {
   name?: string;
   showFileDrop?: boolean;
   getDropRejectionMessage?: (errors: FileError[], file: File) => string;
+  customHeaders?: object;
 }
 
 declare const Upload: (props: UploadProps) => JSX.Element;

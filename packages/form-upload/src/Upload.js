@@ -49,6 +49,7 @@ const Upload = ({
   showFileDrop = false,
   fallback = dropzoneFallback,
   isCloud,
+  customHeaders,
 }) => {
   const [field, metadata] = useField(name);
   const { errors, isSubmitting, isValidating, setFieldError, setFieldValue, setFieldTouched } = useFormikContext();
@@ -197,6 +198,7 @@ const Upload = ({
       fileTypes: allowedFileTypes,
       maxSize,
       allowedFileNameCharacters,
+      customHeaders,
     };
 
     if (isCloud) options.endpoint = CLOUD_URL;
@@ -382,6 +384,8 @@ Upload.propTypes = {
   onFileUpload: PropTypes.func,
   /** Set as true to show a drag and drop file upload option instead of a button (file explorer still available on click). */
   showFileDrop: PropTypes.bool,
+  /** Set custom headers on the upload request */
+  customHeaders: PropTypes.object,
 };
 
 export default Upload;
