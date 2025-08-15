@@ -344,7 +344,7 @@ describe('Upload', () => {
       <Form<{ upload: UploadCore[] | null }>
         initialValues={initialValues}
         onSubmit={(values) => {
-          mockFn(values.upload?.[0].options.customHeaders);
+          mockFn(values.upload?.[0].options.headers);
         }}
       >
         <Upload {...defaultUploadProps} customHeaders={customHeaders} onFileUpload={onFileUploadMock} />
@@ -372,6 +372,92 @@ describe('Upload', () => {
 
     await waitFor(() => {
       expect(mockFn).toHaveBeenCalledWith(customHeaders);
+    });
+  });
+
+  test('passes customHeaders function result to UploadCore options', async () => {
+    const customHeadersFunction = jest.fn((file: File) => ({
+      'X-File-Name': file.name,
+      'x-metadata-content-type': `application/${file.name.split('.').pop()?.toLowerCase()}`,
+    }));
+    const mockFn = jest.fn();
+    const onFileUploadMock = jest.fn();
+
+    render(
+      <Form<{ upload: UploadCore[] | null }>
+        initialValues={initialValues}
+        onSubmit={(values) => {
+          mockFn(values.upload?.[0].options.headers);
+        }}
+      >
+        <Upload {...defaultUploadProps} customHeaders={customHeadersFunction} onFileUpload={onFileUploadMock} />
+        <button type="submit">click</button>
+      </Form>
+    );
+
+    const file: UploadFile = Buffer.from('hello world');
+    file.name = 'fileName.png';
+    const fileEvent = { target: { files: [file] } };
+
+    const inputNode = screen.getByTestId('file-picker') as HTMLInputElement;
+
+    act(() => {
+      fireEvent.change(inputNode, fileEvent);
+    });
+
+    await waitFor(() => {
+      expect(onFileUploadMock).toHaveBeenCalled();
+      expect(customHeadersFunction).toHaveBeenCalledWith(file);
+    });
+
+    act(() => {
+      fireEvent.click(screen.getByText('click'));
+    });
+
+    await waitFor(() => {
+      expect(mockFn).toHaveBeenCalledWith({
+        'X-File-Name': 'fileName.png',
+        'x-metadata-content-type': 'application/png',
+      });
+    });
+  });
+
+  test('handles customHeaders as undefined', async () => {
+    const mockFn = jest.fn();
+    const onFileUploadMock = jest.fn();
+
+    render(
+      <Form<{ upload: UploadCore[] | null }>
+        initialValues={initialValues}
+        onSubmit={(values) => {
+          mockFn(values.upload?.[0].options.headers);
+        }}
+      >
+        <Upload {...defaultUploadProps} onFileUpload={onFileUploadMock} />
+        <button type="submit">click</button>
+      </Form>
+    );
+
+    const file: UploadFile = Buffer.from('hello world');
+    file.name = 'fileName.png';
+    const fileEvent = { target: { files: [file] } };
+
+    const inputNode = screen.getByTestId('file-picker') as HTMLInputElement;
+
+    act(() => {
+      fireEvent.change(inputNode, fileEvent);
+    });
+
+    await waitFor(() => {
+      expect(onFileUploadMock).toHaveBeenCalled();
+    });
+
+    act(() => {
+      fireEvent.click(screen.getByText('click'));
+    });
+
+    await waitFor(() => {
+      expect(mockFn).toHaveBeenCalledWith(undefined);
     });
   });
 

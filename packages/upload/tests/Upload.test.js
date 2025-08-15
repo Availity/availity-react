@@ -331,4 +331,75 @@ describe('Upload', () => {
       expect(mockFn).toHaveBeenCalledWith(customHeaders);
     });
   });
+
+  test('passes customHeaders function result to UploadCore options', async () => {
+    const customHeadersFunction = jest.fn((file) => ({
+      'X-File-Name': file.name,
+      'x-metadata-content-type': `application/${file.name.split('.').pop()?.toLowerCase()}`,
+    }));
+    const mockFn = jest.fn();
+
+    render(
+      <Upload
+        clientId="a"
+        bucketId="b"
+        customerId="c"
+        customHeaders={customHeadersFunction}
+        onFilePreUpload={[
+          (file) => {
+            mockFn(file.options.headers);
+          },
+        ]}
+      />
+    );
+
+    const file = Buffer.from('hello world');
+    file.name = 'fileName.png';
+    const fileEvent = { target: { files: [file] } };
+
+    const inputNode = screen.getByTestId('file-picker');
+
+    fireEvent.change(inputNode, fileEvent);
+
+    expect(inputNode.files.length).toBe(1);
+
+    await waitFor(() => {
+      expect(customHeadersFunction).toHaveBeenCalledWith(file);
+      expect(mockFn).toHaveBeenCalledWith({
+        'X-File-Name': 'fileName.png',
+        'x-metadata-content-type': 'application/png',
+      });
+    });
+  });
+
+  test('handles customHeaders as undefined', async () => {
+    const mockFn = jest.fn();
+
+    render(
+      <Upload
+        clientId="a"
+        bucketId="b"
+        customerId="c"
+        onFilePreUpload={[
+          (file) => {
+            mockFn(file.options.headers);
+          },
+        ]}
+      />
+    );
+
+    const file = Buffer.from('hello world');
+    file.name = 'fileName.png';
+    const fileEvent = { target: { files: [file] } };
+
+    const inputNode = screen.getByTestId('file-picker');
+
+    fireEvent.change(inputNode, fileEvent);
+
+    expect(inputNode.files.length).toBe(1);
+
+    await waitFor(() => {
+      expect(mockFn).toHaveBeenCalledWith(undefined);
+    });
+  });
 });
