@@ -54,6 +54,8 @@ class Upload extends Component {
       // eslint-disable-next-line unicorn/prefer-spread
       this.files.concat(
         selectedFiles.map(async (file) => {
+          const headers =
+            typeof this.props.customHeaders === 'function' ? this.props.customHeaders(file) : this.props.customHeaders;
           const options = {
             bucketId: this.props.bucketId,
             customerId: this.props.customerId,
@@ -62,7 +64,7 @@ class Upload extends Component {
             maxSize: this.props.maxSize,
             onPreStart: this.props.onFilePreUpload || [],
             allowedFileNameCharacters: this.props.allowedFileNameCharacters,
-            headers: this.props.customHeaders,
+            headers,
           };
 
           if (this.props.endpoint) options.endpoint = this.props.endpoint;
@@ -290,7 +292,7 @@ Upload.propTypes = {
   /** Override the endpoint used for uploading the file(s) */
   endpoint: PropTypes.string,
   /** Set custom headers on the upload request */
-  customHeaders: PropTypes.object,
+  customHeaders: PropTypes.oneOfType([PropTypes.object, PropTypes.func]),
 };
 
 Upload.defaultProps = {

@@ -198,7 +198,6 @@ const Upload = ({
       fileTypes: allowedFileTypes,
       maxSize,
       allowedFileNameCharacters,
-      customHeaders,
     };
 
     if (isCloud) options.endpoint = CLOUD_URL;
@@ -207,6 +206,8 @@ const Upload = ({
     let newTotalSize = 0;
 
     for await (const file of selectedFiles) {
+      options.headers = typeof customHeaders === 'function' ? customHeaders(file) : customHeaders;
+
       const upload = new UploadCore(file, options);
       await upload.generateId();
 
@@ -385,7 +386,7 @@ Upload.propTypes = {
   /** Set as true to show a drag and drop file upload option instead of a button (file explorer still available on click). */
   showFileDrop: PropTypes.bool,
   /** Set custom headers on the upload request */
-  customHeaders: PropTypes.object,
+  customHeaders: PropTypes.oneOfType([PropTypes.object, PropTypes.func]),
 };
 
 export default Upload;
