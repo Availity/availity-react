@@ -32,7 +32,7 @@
   "devDependencies": {
     "@availity/api-axios": "^10.0.3",
     "@availity/form": "workspace:*",
-    "@availity/upload-core": "^7.1.1",
+    "@availity/upload-core": "^8.1.0",
     "formik": "^2.4.6",
     "nock": "^13.5.6",
     "react": "^18.3.1",
@@ -46,7 +46,7 @@
   "peerDependencies": {
     "@availity/api-axios": "^10.0.3",
     "@availity/form": "^1.9.3",
-    "@availity/upload-core": "^7.0.0",
+    "@availity/upload-core": "^8.0.0",
     "formik": "^2.4.6",
     "react": "^18.0.0",
     "react-dropzone": "^11.7.1",

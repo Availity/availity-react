@@ -62,6 +62,7 @@ class Upload extends Component {
             maxSize: this.props.maxSize,
             onPreStart: this.props.onFilePreUpload || [],
             allowedFileNameCharacters: this.props.allowedFileNameCharacters,
+            headers: this.props.customHeaders,
           };
 
           if (this.props.endpoint) options.endpoint = this.props.endpoint;
@@ -288,6 +289,8 @@ Upload.propTypes = {
   isCloud: PropTypes.bool,
   /** Override the endpoint used for uploading the file(s) */
   endpoint: PropTypes.string,
+  /** Set custom headers on the upload request */
+  customHeaders: PropTypes.object,
 };
 
 Upload.defaultProps = {
