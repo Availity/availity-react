@@ -2,6 +2,15 @@
 
 This file was generated using [@jscutlery/semver](https://github.com/jscutlery/semver).
 
+# [4.2.0](https://github.com/Availity/availity-react/compare/@availity/upload@4.1.0...@availity/upload@4.2.0) (2025-08-15)
+
+
+### Features
+
+* **upload, form-upload:** allow headers to be passed as a function ([1ff2a91](https://github.com/Availity/availity-react/commit/1ff2a913cff2bded5b5f3568a091eded84a581a7))
+
+
+
 # [4.1.0](https://github.com/Availity/availity-react/compare/@availity/upload@4.0.5...@availity/upload@4.1.0) (2025-08-15)
 
 
