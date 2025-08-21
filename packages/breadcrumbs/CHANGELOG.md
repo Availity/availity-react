@@ -2,6 +2,15 @@
 
 This file was generated using [@jscutlery/semver](https://github.com/jscutlery/semver).
 
+## [3.3.9](https://github.com/Availity/availity-react/compare/@availity/breadcrumbs@3.3.8...@availity/breadcrumbs@3.3.9) (2025-08-21)
+
+
+### Bug Fixes
+
+* **breadcrumbs:** default homeUrl to cloud dashboard ([464ba08](https://github.com/Availity/availity-react/commit/464ba0855a5176d173f6ba1e933234fde93d8286))
+
+
+
 ## [3.3.8](https://github.com/Availity/availity-react/compare/@availity/breadcrumbs@3.3.7...@availity/breadcrumbs@3.3.8) (2025-07-23)
 
 
