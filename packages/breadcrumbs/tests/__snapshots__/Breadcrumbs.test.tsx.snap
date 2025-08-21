@@ -13,7 +13,7 @@ exports[`Breadcrumbs should render 1`] = `
     >
       <a
         aria-label="Home"
-        href="/public/apps/dashboard"
+        href="/static/web/onb/onboarding-ui-apps/dashboard-ui/"
       >
         Home
       </a>
@@ -41,7 +41,7 @@ exports[`Breadcrumbs should render child as current page 1`] = `
     >
       <a
         aria-label="Home"
-        href="/public/apps/dashboard"
+        href="/static/web/onb/onboarding-ui-apps/dashboard-ui/"
       >
         Home
       </a>
@@ -69,7 +69,7 @@ exports[`Breadcrumbs should render crumbs 1`] = `
     >
       <a
         aria-label="Home"
-        href="/public/apps/dashboard"
+        href="/static/web/onb/onboarding-ui-apps/dashboard-ui/"
       >
         Home
       </a>
@@ -117,7 +117,7 @@ exports[`Breadcrumbs should render crumbs with missing values 1`] = `
     >
       <a
         aria-label="Home"
-        href="/public/apps/dashboard"
+        href="/static/web/onb/onboarding-ui-apps/dashboard-ui/"
       >
         Home
       </a>
@@ -162,7 +162,7 @@ exports[`Breadcrumbs should render custom ellipse 1`] = `
     >
       <a
         aria-label="Home"
-        href="/public/apps/dashboard"
+        href="/static/web/onb/onboarding-ui-apps/dashboard-ui/"
       >
         Home
       </a>
