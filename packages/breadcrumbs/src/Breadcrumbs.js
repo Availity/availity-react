@@ -53,7 +53,7 @@ Breadcrumbs.propTypes = {
 
 Breadcrumbs.defaultProps = {
   emptyState: '…',
-  homeUrl: '/public/apps/dashboard',
+  homeUrl: '/static/web/onb/onboarding-ui-apps/dashboard-ui/',
   linkTag: 'a',
 };
 
