@@ -2,6 +2,13 @@
 
 This file was generated using [@jscutlery/semver](https://github.com/jscutlery/semver).
 
+## [14.0.20](https://github.com/Availity/availity-react/compare/@availity/page-header@14.0.19...@availity/page-header@14.0.20) (2025-08-21)
+
+### Dependency Updates
+
+* `@availity/breadcrumbs` updated to version `14.0.19`
+
+
 ## [14.0.19](https://github.com/Availity/availity-react/compare/@availity/page-header@14.0.18...@availity/page-header@14.0.19) (2025-08-15)
 
 ### Dependency Updates
