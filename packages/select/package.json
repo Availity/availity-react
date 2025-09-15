@@ -41,7 +41,7 @@
   "devDependencies": {
     "@availity/api-axios": "^10.0.3",
     "@availity/form": "workspace:*",
-    "axios": "^1.8.4",
+    "axios": "^1.12.2",
     "formik": "^2.4.6",
     "react": "^18.3.1",
     "react-dom": "^18.3.1",
