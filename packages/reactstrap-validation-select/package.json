@@ -34,18 +34,18 @@
     "react-select-async-paginate": "^0.6.2"
   },
   "devDependencies": {
-    "@availity/api-axios": "^10.0.3",
+    "@availity/api-axios": "^11.2.2",
     "availity-reactstrap-validation": "^2.7.1",
-    "axios": "^1.8.4",
+    "axios": "^1.12.2",
     "react": "^18.3.1",
     "react-dom": "^18.3.1",
     "reactstrap": "^8.10.1"
   },
   "peerDependencies": {
-    "@availity/api-axios": "^10.0.3",
+    "@availity/api-axios": "^11.0.0",
     "availity-reactstrap-validation": "^2.7.1",
     "availity-uikit": "^4.7.0",
-    "axios": "^1.8.2",
+    "axios": "^1.12.2",
     "react": "^18.0.0",
     "reactstrap": "^8.10.1"
   },

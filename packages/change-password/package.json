@@ -35,15 +35,15 @@
     "prop-types": "^15.8.1"
   },
   "devDependencies": {
-    "@availity/api-axios": "^11.0.0",
-    "axios": "^1.8.4",
+    "@availity/api-axios": "^11.2.2",
+    "axios": "^1.12.2",
     "react": "^18.3.1",
     "react-dom": "^18.3.1",
     "reactstrap": "^8.10.1"
   },
   "peerDependencies": {
     "@availity/api-axios": "^11.0.0",
-    "axios": "^1.8.2",
+    "axios": "^1.12.2",
     "react": "^18.0.0",
     "reactstrap": "^8.10.1"
   },
