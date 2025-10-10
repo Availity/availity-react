@@ -164,7 +164,7 @@ jobs:
         run: yarn install --immutable
 
       - name: Build Docs
-        run: yarn build:docs
+        run: yarn deploy:ci
 
       - name: Upload Pages Artifact
         uses: actions/upload-pages-artifact@56afc609e74202658d3ffba0e8f6dda462b719fa # v3.0.1
