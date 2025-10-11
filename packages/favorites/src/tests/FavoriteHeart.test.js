@@ -120,9 +120,9 @@ const setApplicationMock = jest.fn().mockResolvedValue({
   },
 });
 
-const Providers = ({ children }) => (
+const Providers = ({ children, ...rest }) => (
   <QueryClientProvider client={queryClient}>
-    <Favorites>{children}</Favorites>
+    <Favorites {...rest}>{children}</Favorites>
   </QueryClientProvider>
 );
 
@@ -638,5 +638,43 @@ describe('FavoriteHeart', () => {
     const heart = container.querySelector('#av-favorite-heart-123');
 
     expect(heart).toBeDisabled();
+  });
+
+  test('should call custom onMaxFavoritesReachedHandler', async () => {
+    avSettingsApi.getApplication = jest.fn(() =>
+      Promise.resolve({
+        data: {
+          settings: [
+            {
+              favorites: maxFavorites,
+            },
+          ],
+        },
+      })
+    );
+
+    const user = userEvent.setup();
+
+    const onMaxFavoritesReached = jest.fn();
+
+    const { container } = render(
+      <Providers onMaxFavoritesReached={onMaxFavoritesReached}>
+        <FavoriteHeart id="123" />
+      </Providers>
+    );
+
+    const heart = container.querySelector('#av-favorite-heart-123');
+
+    await waitFor(() => expect(heart).not.toBeChecked());
+
+    user.click(heart);
+
+    await waitFor(() => {
+      expect(avMessages.send).toHaveBeenCalledTimes(1);
+      expect(avMessages.send.mock.calls[0][0]).toBe('av:favorites:maxed');
+      expect(onMaxFavoritesReached).toHaveBeenCalledTimes(1);
+    });
+
+    await waitForPostMessageToSettle();
   });
 });

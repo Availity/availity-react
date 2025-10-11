@@ -20,25 +20,29 @@ const FavoritesContext = createContext<FavoritesContextType | null>(null);
 export const FavoritesProvider = ({
   children,
   onFavoritesChange,
+  onMaxFavoritesReached,
   applicationId = NAV_APP_ID,
   maxFavorites = MAX_FAVORITES,
 }: {
   children: ReactNode;
   onFavoritesChange?: (favorites: Favorite[]) => void;
+  onMaxFavoritesReached?: (favorites: Favorite[]) => void;
   applicationId?: string;
   maxFavorites?: number;
-
 }): JSX.Element => {
   const [lastClickedFavoriteId, setLastClickedFavoriteId] = useState<string>('');
 
   const queryClient = useQueryClient();
   const { data: favorites, status: queryStatus } = useFavoritesQuery(applicationId);
 
-  const { submitFavorites, status: mutationStatus } = useSubmitFavorites({
-    onMutationStart(targetFavoriteId) {
-      setLastClickedFavoriteId(targetFavoriteId);
+  const { submitFavorites, status: mutationStatus } = useSubmitFavorites(
+    {
+      onMutationStart(targetFavoriteId) {
+        setLastClickedFavoriteId(targetFavoriteId);
+      },
     },
-  }, applicationId);
+    applicationId
+  );
 
   useEffect(() => {
     if (applicationId === NAV_APP_ID) {
@@ -87,6 +91,9 @@ export const FavoritesProvider = ({
 
     if (favorites.length >= maxFavorites) {
       openMaxModal(applicationId);
+      if (onMaxFavoritesReached && typeof onMaxFavoritesReached === 'function') {
+        await onMaxFavoritesReached(favorites);
+      }
       return false;
     }
 
@@ -129,7 +136,7 @@ export const FavoritesProvider = ({
 };
 
 // eslint-disable-next-line @typescript-eslint/no-empty-function
-const noOp = () => { };
+const noOp = () => {};
 
 type MergedStatusUnion = 'initLoading' | 'reloading' | 'error' | 'success';
 export const useFavorites = (
