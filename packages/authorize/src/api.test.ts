@@ -16,9 +16,9 @@ describe('authorize api', () => {
     expect(region).toBe('FL');
   });
 
-  test('getRegion returns undefined when given falsey value', async () => {
+  test('getRegion returns null when given falsey value', async () => {
     const region = await getRegion(false);
-    expect(region).toBeUndefined();
+    expect(region).toBeNull();
   });
 
   test('getRegion returns value when not falsey', async () => {
