@@ -4,12 +4,11 @@
 # If adding a step that requires SECRETS or GITHUB WRITE PERMISSIONS be sure to have dependabot skip it.
 # > if: ${{ github.actor != 'dependabot[bot]' }}
 
-name: Node.js CI
+name: Pull Request Build
 
 on:
   pull_request:
     branches: [master]
-  merge_group:
 
 jobs:
   # This job will:
@@ -24,17 +23,17 @@ jobs:
 
     steps:
       - name: Checkout Code
-        uses: actions/checkout@v3
+        uses: actions/checkout@08eba0b27e820071cde6df949e0beb9ba4906955 # v4.3.0
         with:
           fetch-depth: 0
 
       - name: Derive appropriate SHAs for base and head for `nx affected` commands
-        uses: nrwl/nx-set-shas@v3
+        uses: nrwl/nx-set-shas@826660b82addbef3abff5fa871492ebad618c9e1 # v4.3.3
         with:
           main-branch-name: 'master'
 
       - name: Set Node Version
-        uses: actions/setup-node@v3
+        uses: actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020 # v4.4.0
         with:
           node-version: ${{ matrix.node }}
 
@@ -43,7 +42,7 @@ jobs:
         run: echo "dir=$(yarn config get cacheFolder)" >> $GITHUB_OUTPUT
 
       - name: Restore yarn cache
-        uses: actions/cache@v3
+        uses: actions/cache@0057852bfaa89a56745cba8c7296529d2fc39830 # v4.3.0
         id: yarn-cache
         with:
           path: ${{ steps.yarn-cache-dir-path.outputs.dir }}
@@ -69,28 +68,10 @@ jobs:
       - name: Version Bump Dry Run
         run: yarn version:dry-run
 
-      - name: Upload coverage report
-        if: ${{ github.actor != 'dependabot[bot]' }}
-        uses: codecov/codecov-action@v3 # FIXME: no CI provider detected
-        with:
-          file: ./coverage/coverage-final.json
-          token: ${{ secrets.CODECOV_TOKEN }}
-
       - name: Build Docs
+        if: ${{ matrix.node == 22 }}
         run: yarn build:docs
 
       - name: Build Storybook
+        if: ${{ matrix.node == 22 }}
         run: yarn build:storybook
-#       TODO: fix Netlify draft deploys, investigate gh-pages for draft docs
-#         if: github.actor != 'dependabot[bot]'
-#       - name: Deploy draft to Netlify
-#         uses: South-Paw/action-netlify-deploy@v1.0.4
-#         if: github.actor != 'dependabot[bot]'
-#         with:
-#           github-token: ${{ secrets.BOT_TOKEN }}
-#           netlify-auth-token: ${{ secrets.NETLIFY_DEPLOY_KEY }}
-#           netlify-site-id: ${{ secrets.NETLIFY_SITE_API_ID }}
-#           config-path: './netlify.toml'
-#           build-dir: './docusaurus/build'
-#           draft: true
-#           comment-on-pull-request: true
