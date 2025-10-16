@@ -108,17 +108,11 @@ jobs:
       - name: Check for Version Changes
         id: changes
         run: |
-          git status
-          git diff --name-only
-          # Check for changes excluding .yarnrc.yml
           if git diff --quiet HEAD -- ':!.yarnrc.yml'; then
             echo "has_changes=false" >> $GITHUB_OUTPUT
-            echo "No version changes detected (excluding .yarnrc.yml)"
           else
             echo "has_changes=true" >> $GITHUB_OUTPUT
-            echo "Version changes detected (excluding .yarnrc.yml)"
           fi
-          echo "Output set to: $(cat $GITHUB_OUTPUT | grep has_changes)"
 
       - name: Publish
         if: steps.changes.outputs.has_changes == 'true'
