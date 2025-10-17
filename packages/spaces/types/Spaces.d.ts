@@ -138,6 +138,7 @@ export interface SpacesProps {
   spaceIds?: string[];
   payerIds?: string[];
   spaces?: Space[];
+  operationName?: string;
 }
 
 declare function useSpaces(...ids: (string | undefined | null)[]): Space[];
