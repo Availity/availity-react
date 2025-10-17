@@ -101,6 +101,10 @@ jobs:
           # Reset .yarnrc.yml to prevent committing
           git checkout -- .yarnrc.yml
 
+      - name: Store initial commit SHA
+        id: initial-sha
+        run: echo "sha=$(git rev-parse HEAD)" >> $GITHUB_OUTPUT
+
       - name: Version Packages
         run: |
           yarn nx affected --target version --parallel=1
@@ -108,10 +112,14 @@ jobs:
       - name: Check for Version Changes
         id: changes
         run: |
-          if [ "$(git rev-list --count HEAD^..HEAD)" -eq 0 ]; then
+          INITIAL_SHA="${{ steps.initial-sha.outputs.sha }}"
+          CURRENT_SHA=$(git rev-parse HEAD)
+          if [ "$INITIAL_SHA" = "$CURRENT_SHA" ]; then
             echo "has_changes=false" >> $GITHUB_OUTPUT
+            echo "No new commits created by version step"
           else
             echo "has_changes=true" >> $GITHUB_OUTPUT
+            echo "New commits created by version step"
           fi
 
       - name: Publish
