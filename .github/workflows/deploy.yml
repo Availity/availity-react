@@ -95,17 +95,16 @@ jobs:
 
       - name: Setup Publish Config
         run: |
-          yarn config set npmAuthToken "${{ secrets.NPM_TOKEN }}"
           git config user.email ${{ secrets.GH_EMAIL }}
           git config user.name ${{ secrets.GH_USER }}
-          # Reset .yarnrc.yml to prevent committing
-          git checkout -- .yarnrc.yml
 
       - name: Store initial commit SHA
         id: initial-sha
         run: echo "sha=$(git rev-parse HEAD)" >> $GITHUB_OUTPUT
 
       - name: Version Packages
+        env:
+          NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
         run: |
           yarn nx affected --target version --parallel=1
 
@@ -124,6 +123,8 @@ jobs:
 
       - name: Publish
         if: steps.changes.outputs.has_changes == 'true'
+        env:
+          NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
         run: |
           yarn nx affected --target publish --parallel=1
 
