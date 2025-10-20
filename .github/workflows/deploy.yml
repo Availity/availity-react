@@ -172,6 +172,7 @@ jobs:
       - name: Upload Pages Artifact
         uses: actions/upload-pages-artifact@56afc609e74202658d3ffba0e8f6dda462b719fa # v3.0.1
         with:
+          name: github-pages-docs
           path: docusaurus/build
 
       - name: Deploy to GitHub Pages
