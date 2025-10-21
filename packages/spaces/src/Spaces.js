@@ -8,6 +8,11 @@ import ModalProvider, { useModal } from './modals/ModalProvider';
 
 // TODO: types
 
+export const parseOperationName = (query) => {
+  const match = query.match(/(?:query|mutation|subscription)\s+([_a-z]\w*)/i);
+  return match?.[1];
+};
+
 // TODO: if we are always grabbing all spaces, send a large limit (50?) over
 export const getAllSpaces = async ({ query, clientId, variables, operationName, _spaces = [] }) => {
   if (!clientId) {
@@ -19,9 +24,7 @@ export const getAllSpaces = async ({ query, clientId, variables, operationName, 
     variables,
   };
 
-  if (operationName) {
-    requestBody.operationName = operationName;
-  }
+  requestBody.operationName = operationName || parseOperationName(query) || 'PuiBootstrapSpacesAnonymousOperation';
 
   const {
     data: {
@@ -275,7 +278,7 @@ Spaces.defaultProps = {
   // TODO: move to .graphql file
   // TODO: confirm we have everything needed from old SpacesFragment request
   query: `
-  query configurationFindMany($ids: [String!], $payerIDs: [ID!], $types: [TypeEnum!]) {
+  query PuiBootstrapSpacesAnonymousOperation($ids: [String!], $payerIDs: [ID!], $types: [TypeEnum!]) {
     configurationPagination(filter: { ids: $ids, payerIds: $payerIDs, types: $types }) {
       pageInfo {
         hasNextPage
