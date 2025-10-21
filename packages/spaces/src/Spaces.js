@@ -8,23 +8,29 @@ import ModalProvider, { useModal } from './modals/ModalProvider';
 
 // TODO: types
 
+export const parseOperationName = (query) => {
+  const match = query.match(/(?:query|mutation|subscription)\s+([_a-z]\w*)/i);
+  return match?.[1];
+};
+
 // TODO: if we are always grabbing all spaces, send a large limit (50?) over
-export const getAllSpaces = async ({ query, clientId, variables, _spaces = [] }) => {
+export const getAllSpaces = async ({ query, clientId, variables, operationName, _spaces = [] }) => {
   if (!clientId) {
     throw new Error('clientId is required');
   }
+
+  const requestBody = {
+    query,
+    variables,
+  };
+
+  requestBody.operationName = operationName || parseOperationName(query) || 'PuiBootstrapSpacesAnonymousOperation';
 
   const {
     data: {
       data: { configurationPagination },
     },
-  } = await avWebQLApi.create(
-    {
-      query,
-      variables,
-    },
-    { headers: { 'X-Client-ID': clientId } }
-  );
+  } = await avWebQLApi.create(requestBody, { headers: { 'X-Client-ID': clientId } });
 
   const {
     pageInfo: { currentPage, hasNextPage },
@@ -40,7 +46,7 @@ export const getAllSpaces = async ({ query, clientId, variables, _spaces = [] })
       ...variables,
       page: currentPage + 1,
     };
-    return getAllSpaces({ query, clientId, variables: vars, _spaces });
+    return getAllSpaces({ query, clientId, variables: vars, operationName, _spaces });
   }
 
   return _spaces;
@@ -52,7 +58,7 @@ export const useSpacesContext = () => useContext(SpacesContext);
 
 // react-query -> initial cache values come from props, then if we have spaceIdsToQuery or payerIdsToQuery, we do, then update cache/prev values
 // what would cache keys be based on? separate caches for spaces and spacesByPayerIds?
-const Spaces = ({ query, variables, clientId, spaceIds, payerIds, children, spaces: spacesFromProps }) => {
+const Spaces = ({ query, variables, clientId, spaceIds, payerIds, children, spaces: spacesFromProps, operationName }) => {
   const [{ previousSpacesMap, previousSpacesByConfigMap, previousSpacesByPayerMap, loading, error }, dispatch] =
     useReducer(spacesReducer, INITIAL_STATE); // TODO: react-query. Don't expose cache time options to users
 
@@ -125,6 +131,7 @@ const Spaces = ({ query, variables, clientId, spaceIds, payerIds, children, spac
           query,
           clientId,
           variables: vars,
+          operationName,
         });
 
         // TODO: move to react-query onSuccess?
@@ -160,6 +167,7 @@ const Spaces = ({ query, variables, clientId, spaceIds, payerIds, children, spac
           query,
           clientId,
           variables: vars,
+          operationName,
         });
 
         for (const space of spacesByPayerIds) {
@@ -262,13 +270,15 @@ Spaces.propTypes = {
   /** Array of spaces to be passed into the Spaces provider.
    * Useful for if you already have the spaces in your app and don't want the spaces provider to have to fetch them again. */
   spaces: PropTypes.arrayOf(PropTypes.object),
+  /** Optional operation name for the GraphQL query. */
+  operationName: PropTypes.string,
 };
 
 Spaces.defaultProps = {
   // TODO: move to .graphql file
   // TODO: confirm we have everything needed from old SpacesFragment request
   query: `
-  query configurationFindMany($ids: [String!], $payerIDs: [ID!], $types: [TypeEnum!]) {
+  query PuiBootstrapSpacesAnonymousOperation($ids: [String!], $payerIDs: [ID!], $types: [TypeEnum!]) {
     configurationPagination(filter: { ids: $ids, payerIds: $payerIDs, types: $types }) {
       pageInfo {
         hasNextPage
@@ -378,6 +388,7 @@ Spaces.defaultProps = {
   spaceIds: [],
   payerIds: [],
   spaces: [],
+  operationName: 'PuiBootstrapSpacesAnonymousOperation',
 };
 
 export default Spaces;
