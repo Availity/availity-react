@@ -68,6 +68,7 @@ jobs:
     permissions:
       contents: write # Required for git push and creating tags
       pull-requests: write # Required for creating pull requests
+      id-token: write
     steps:
       - uses: actions/checkout@08eba0b27e820071cde6df949e0beb9ba4906955 # v4.3.0
         with:
@@ -87,6 +88,9 @@ jobs:
           cache: 'yarn'
           cache-dependency-path: 'yarn.lock'
 
+      - name: Install latest npm
+        run: npm install -g npm@latest
+
       - name: Install Dependencies
         run: yarn install --immutable
 
@@ -95,7 +99,6 @@ jobs:
 
       - name: Setup Publish Config
         run: |
-          yarn config set npmAuthToken "${{ secrets.NPM_TOKEN }}"
           git config user.email ${{ secrets.GH_EMAIL }}
           git config user.name ${{ secrets.GH_USER }}
 
