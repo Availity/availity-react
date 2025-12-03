@@ -37,7 +37,7 @@
     "yup": "^0.32.11"
   },
   "peerDependencies": {
-    "@availity/form": "^1.9.3",
+    "@availity/form": "workspace:*",
     "formik": "^2.4.6",
     "react": "^18.0.0",
     "reactstrap": "^8.10.1",
