@@ -30,7 +30,7 @@
     "classnames": "^2.5.1"
   },
   "devDependencies": {
-    "@availity/api-axios": "^11.2.2",
+    "@availity/api-axios": "^12.0.0",
     "@availity/form": "workspace:*",
     "@availity/upload-core": "^8.1.1",
     "formik": "^2.4.6",
@@ -44,9 +44,9 @@
     "xhr-mock": "^2.5.1"
   },
   "peerDependencies": {
-    "@availity/api-axios": "^11.0.0",
-    "@availity/form": "^1.9.3",
-    "@availity/upload-core": "^8.0.0",
+    "@availity/api-axios": "^12.0.0",
+    "@availity/form": "workspace:*",
+    "@availity/upload-core": "^8.1.1",
     "formik": "^2.4.6",
     "react": "^18.0.0",
     "react-dropzone": "^11.7.1",
