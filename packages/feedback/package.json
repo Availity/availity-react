@@ -29,12 +29,12 @@
     "@availity/form": "workspace:*",
     "@availity/hooks": "workspace:*",
     "@availity/icon": "workspace:*",
-    "@availity/native-form": "^7.0.7",
+    "@availity/native-form": "^7.0.8",
     "@availity/select": "workspace:*",
     "prop-types": "^15.8.1"
   },
   "devDependencies": {
-    "@availity/api-axios": "^12.0.0",
+    "@availity/api-axios": "^12.0.1",
     "@availity/yup": "^7.0.0",
     "axios": "^1.13.2",
     "formik": "^2.4.6",
