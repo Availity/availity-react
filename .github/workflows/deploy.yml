@@ -124,12 +124,12 @@ jobs:
           fi
 
       - name: Publish
-        if: steps.changes.outputs.has_changes == 'true'
+        if: ${{ steps.changes.outputs.has_changes == 'true' }}
         run: |
           yarn nx affected --target publish --parallel=1
 
       - name: Create Release PR
-        if: steps.changes.outputs.has_changes == 'true'
+        if: ${{ steps.changes.outputs.has_changes == 'true' }}
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
