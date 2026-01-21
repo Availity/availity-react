@@ -36,7 +36,7 @@
     "@availity/message-core": "^8.0.2",
     "@radix-ui/react-tooltip": "0.1.6",
     "@tanstack/react-query": "^4.36.1",
-    "lodash": "^4.17.21"
+    "lodash": "^4.17.23"
   },
   "devDependencies": {
     "@availity/api-axios": "^12.0.1",
