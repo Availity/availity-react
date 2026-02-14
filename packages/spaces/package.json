@@ -38,7 +38,7 @@
     "dayjs": "^1.11.13",
     "lodash": "^4.17.21",
     "prop-types": "^15.8.1",
-    "qs": "^6.14.0",
+    "qs": "^6.14.2",
     "react-image": "^4.1.0",
     "react-loading-skeleton": "^2.2.0",
     "react-markdown": "^6.0.3"
