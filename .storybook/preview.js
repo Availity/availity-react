@@ -37,3 +37,4 @@ if (typeof global.process === 'undefined') {
 
   worker.start(config);
 }
+export const tags = ['autodocs'];
