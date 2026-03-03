@@ -1,7 +1,7 @@
 import React from 'react';
 import { StoryObj } from '@storybook/react';
 import { MemoryRouter as Router, Route, Routes, Link } from 'react-router-dom';
-import { Breadcrumb, BreadcrumbProps, BreadcrumbItem, BreadcrumbItemProps } from 'reactstrap';
+import { Breadcrumb, BreadcrumbItem } from 'reactstrap';
 
 import Breadcrumbs from '../src/Breadcrumbs';
 // import README from '../README.md';
@@ -80,6 +80,3 @@ export const _WithCustomContent: StoryObj<typeof Breadcrumbs> = {
     </Routes>
   ),
 };
-
-export const hidden_RSBreadcrumb = (props: BreadcrumbProps) => <Breadcrumb {...props} />;
-export const hidden_RSBreadcrumbItem = (props: BreadcrumbItemProps) => <BreadcrumbItem {...props} />;

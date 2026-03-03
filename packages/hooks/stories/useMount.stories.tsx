@@ -1,6 +1,6 @@
 /* eslint-disable react/no-unstable-nested-components */
 import React, { useState } from 'react';
-import { Meta, Story } from '@storybook/react';
+import { Meta } from '@storybook/react';
 import { Card } from 'reactstrap';
 
 import { useMount } from '..';
@@ -18,15 +18,15 @@ export default {
   },
 } as Meta;
 
-export const Default: Story = () => {
-  const Component = () => {
-    const [text, setText] = useState('hello');
-    useMount(() => {
-      setText('world');
-    });
-    return <Card body>{text}</Card>;
-  };
-
-  return <Component />;
+const Component = () => {
+  const [text, setText] = useState('hello');
+  useMount(() => {
+    setText('world');
+  });
+  return <Card body>{text}</Card>;
 };
-Default.storyName = 'default';
+
+export const Default = {
+  render: () => <Component />,
+  name: 'default',
+};

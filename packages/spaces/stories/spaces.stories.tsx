@@ -10,10 +10,6 @@ import Spaces, {
   SpacesGhostText,
   SpacesAgreement,
 } from '..';
-import { SpacesImageProps } from '../types/SpacesImage';
-import { SpacesDisclaimerProps } from '../types/SpacesDisclaimer';
-import { SpacesAgreementProps } from '../types/SpacesAgreement';
-import { SpacesGhostTextProps } from '../types/SpacesGhostText';
 // import README from '../README.md';
 
 export default {
@@ -114,10 +110,3 @@ export const _GhostText: StoryObj<typeof Spaces> = {
     </div>
   ),
 };
-
-export const hidden_SpacesLogo = (props: SpacesImageProps) => <SpacesLogo {...props} />;
-export const hidden_SpacesTile = (props: SpacesImageProps) => <SpacesTile {...props} />;
-export const hidden_SpacesBillboard = (props: SpacesImageProps) => <SpacesBillboard {...props} />;
-export const hidden_SpacesDisclaimer = (props: SpacesDisclaimerProps) => <SpacesDisclaimer {...props} />;
-export const hidden_SpacesAgreement = (props: SpacesAgreementProps) => <SpacesAgreement {...props} />;
-export const hidden_SpacesGhostText = (props: SpacesGhostTextProps) => <SpacesGhostText {...props} />;

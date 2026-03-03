@@ -4,7 +4,7 @@ import { StoryObj } from '@storybook/react';
 import { Button, Col, Row } from 'reactstrap';
 import { Field } from '@availity/form';
 
-import Select, { SelectField, SelectFieldProps } from '../src';
+import Select, { SelectField } from '../src';
 // import README from '../README.md';
 
 // eslint-disable-next-line import/no-relative-packages
@@ -216,5 +216,3 @@ export const _SelectField: StoryObj<typeof SelectField> = {
     </FormikResults>
   ),
 };
-
-export const hidden_SelectField = (props: SelectFieldProps<unknown, false>) => <SelectField {...props} />;

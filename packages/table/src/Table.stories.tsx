@@ -18,7 +18,6 @@ import Table, {
   TableContent,
   CurrencyCell,
   IconWithTooltipCell,
-  CommonTableProps,
   TableProps,
 } from '.';
 import '../styles.scss';
@@ -369,5 +368,3 @@ export const _WithScrollableContainer: StoryObj = {
     bodyProps: { style: {} },
   },
 };
-
-export const hidden_avTable = (props: CommonTableProps<any>) => <Table data={[]} columns={[]} {...props} />;

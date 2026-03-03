@@ -17,16 +17,6 @@ const config = {
   addons: [
     getAbsolutePath('@storybook/addon-essentials'),
     getAbsolutePath('@storybook/addon-a11y'),
-    {
-      name: '@storybook/addon-docs',
-      options: {
-        mdxPluginOptions: {
-          mdxCompileOptions: {
-            remarkPlugins: [remarkGfm],
-          },
-        },
-      },
-    },
     getAbsolutePath('@storybook/addon-webpack5-compiler-babel'),
   ],
 
@@ -81,7 +71,9 @@ const config = {
     options: {},
   },
 
-  docs: {},
+  docs: {
+    autodocs: true,
+  },
 };
 
 export default config;

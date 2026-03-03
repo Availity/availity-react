@@ -1,5 +1,5 @@
 import React from 'react';
-import { Meta, Story } from '@storybook/react';
+import { Meta } from '@storybook/react';
 import { Button } from 'reactstrap';
 
 import {
@@ -35,255 +35,205 @@ export default {
   },
 } as Meta;
 
-export const _AvCodeSelect: Story = ({
-  disabled,
-  errorMessage,
-  isMulti,
-  label,
-  max,
-  min,
-  required,
-  requiredErrorMessage,
-}) => (
-  <AvFormResults>
-    <AvCodeSelect
-      name="AvCodeSelect"
-      label={label}
-      minLength={min}
-      maxLength={max}
-      isMulti={isMulti}
-      required={required}
-      errorMessage={errorMessage}
-      parameters={{
-        list: 'ALLCPTCODES',
-      }}
-      validate={{
-        required: {
-          value: required,
-          errorMessage: required && requiredErrorMessage,
-        },
-      }}
-      isDisabled={disabled}
-    />
-    <Button color="primary">Submit</Button>
-  </AvFormResults>
-);
-_AvCodeSelect.args = {
-  label: 'Select a Code',
+export const _AvCodeSelect = {
+  render: ({ disabled, errorMessage, isMulti, label, max, min, required, requiredErrorMessage }) => (
+    <AvFormResults>
+      <AvCodeSelect
+        name="AvCodeSelect"
+        label={label}
+        minLength={min}
+        maxLength={max}
+        isMulti={isMulti}
+        required={required}
+        errorMessage={errorMessage}
+        parameters={{
+          list: 'ALLCPTCODES',
+        }}
+        validate={{
+          required: {
+            value: required,
+            errorMessage: required && requiredErrorMessage,
+          },
+        }}
+        isDisabled={disabled}
+      />
+      <Button color="primary">Submit</Button>
+    </AvFormResults>
+  ),
+  args: {
+    label: 'Select a Code',
+  },
+  name: 'AvCodeSelect',
 };
-_AvCodeSelect.storyName = 'AvCodeSelect';
 
-export const _AvNavigationSelect: Story = ({
-  disabled,
-  errorMessage,
-  isMulti,
-  label,
-  max,
-  min,
-  required,
-  requiredErrorMessage,
-}) => (
-  <AvFormResults>
-    <AvNavigationSelect
-      name="AvNavigationSelect"
-      label={label}
-      minLength={min}
-      maxLength={max}
-      isMulti={isMulti}
-      required={required}
-      errorMessage={errorMessage}
-      validate={{
-        required: {
-          value: required,
-          errorMessage: required && requiredErrorMessage,
-        },
-      }}
-      isDisabled={disabled}
-    />
-    <Button color="primary">Submit</Button>
-  </AvFormResults>
-);
-_AvNavigationSelect.args = {
-  label: 'Select a Payer Space',
+export const _AvNavigationSelect = {
+  render: ({ disabled, errorMessage, isMulti, label, max, min, required, requiredErrorMessage }) => (
+    <AvFormResults>
+      <AvNavigationSelect
+        name="AvNavigationSelect"
+        label={label}
+        minLength={min}
+        maxLength={max}
+        isMulti={isMulti}
+        required={required}
+        errorMessage={errorMessage}
+        validate={{
+          required: {
+            value: required,
+            errorMessage: required && requiredErrorMessage,
+          },
+        }}
+        isDisabled={disabled}
+      />
+      <Button color="primary">Submit</Button>
+    </AvFormResults>
+  ),
+  args: {
+    label: 'Select a Payer Space',
+  },
+  name: 'AvNavigationSelect',
 };
-_AvNavigationSelect.storyName = 'AvNavigationSelect';
 
-export const _AvOrganizationSelect: Story = ({
-  disabled,
-  errorMessage,
-  isMulti,
-  label,
-  max,
-  min,
-  required,
-  requiredErrorMessage,
-}) => (
-  <AvFormResults>
-    <AvOrganizationSelect
-      name="AvOrganizationSelect"
-      label={label}
-      minLength={min}
-      maxLength={max}
-      isMulti={isMulti}
-      required={required}
-      errorMessage={errorMessage}
-      validate={{
-        required: {
-          value: required,
-          errorMessage: required && requiredErrorMessage,
-        },
-      }}
-      isDisabled={disabled}
-    />
-    <Button color="primary">Submit</Button>
-  </AvFormResults>
-);
-_AvOrganizationSelect.args = {
-  label: 'Select an Organization',
+export const _AvOrganizationSelect = {
+  render: ({ disabled, errorMessage, isMulti, label, max, min, required, requiredErrorMessage }) => (
+    <AvFormResults>
+      <AvOrganizationSelect
+        name="AvOrganizationSelect"
+        label={label}
+        minLength={min}
+        maxLength={max}
+        isMulti={isMulti}
+        required={required}
+        errorMessage={errorMessage}
+        validate={{
+          required: {
+            value: required,
+            errorMessage: required && requiredErrorMessage,
+          },
+        }}
+        isDisabled={disabled}
+      />
+      <Button color="primary">Submit</Button>
+    </AvFormResults>
+  ),
+  args: {
+    label: 'Select an Organization',
+  },
+  name: 'AvOrganizationSelect',
 };
-_AvOrganizationSelect.storyName = 'AvOrganizationSelect';
 
-export const _AvPermissionSelect: Story = ({
-  disabled,
-  errorMessage,
-  isMulti,
-  label,
-  max,
-  min,
-  required,
-  requiredErrorMessage,
-}) => (
-  <AvFormResults>
-    <AvPermissionSelect
-      name="AvPermissionSelect"
-      label={label}
-      minLength={min}
-      maxLength={max}
-      isMulti={isMulti}
-      required={required}
-      errorMessage={errorMessage}
-      validate={{
-        required: {
-          value: required,
-          errorMessage: required && requiredErrorMessage,
-        },
-      }}
-      isDisabled={disabled}
-    />
-    <Button color="primary">Submit</Button>
-  </AvFormResults>
-);
-_AvPermissionSelect.args = {
-  label: 'Select a Permission',
+export const _AvPermissionSelect = {
+  render: ({ disabled, errorMessage, isMulti, label, max, min, required, requiredErrorMessage }) => (
+    <AvFormResults>
+      <AvPermissionSelect
+        name="AvPermissionSelect"
+        label={label}
+        minLength={min}
+        maxLength={max}
+        isMulti={isMulti}
+        required={required}
+        errorMessage={errorMessage}
+        validate={{
+          required: {
+            value: required,
+            errorMessage: required && requiredErrorMessage,
+          },
+        }}
+        isDisabled={disabled}
+      />
+      <Button color="primary">Submit</Button>
+    </AvFormResults>
+  ),
+  args: {
+    label: 'Select a Permission',
+  },
+  name: 'AvPermissionSelect',
 };
-_AvPermissionSelect.storyName = 'AvPermissionSelect';
 
-export const _AvProviderSelect: Story = ({
-  customerId,
-  disabled,
-  errorMessage,
-  isMulti,
-  label,
-  max,
-  min,
-  required,
-  requiredErrorMessage,
-}) => (
-  <AvFormResults>
-    <AvProviderSelect
-      name="AvProviderSelect"
-      label={label}
-      customerId={customerId}
-      requiredParams={['customerId']}
-      watchParams={['customerId']}
-      minLength={min}
-      maxLength={max}
-      isMulti={isMulti}
-      required={required}
-      errorMessage={errorMessage}
-      validate={{
-        required: {
-          value: required,
-          errorMessage: required && requiredErrorMessage,
-        },
-      }}
-      isDisabled={disabled}
-    />
-    <Button color="primary">Submit</Button>
-  </AvFormResults>
-);
-_AvProviderSelect.args = {
-  customerId: '1234',
-  label: 'Select a Provider',
+export const _AvProviderSelect = {
+  render: ({ customerId, disabled, errorMessage, isMulti, label, max, min, required, requiredErrorMessage }) => (
+    <AvFormResults>
+      <AvProviderSelect
+        name="AvProviderSelect"
+        label={label}
+        customerId={customerId}
+        requiredParams={['customerId']}
+        watchParams={['customerId']}
+        minLength={min}
+        maxLength={max}
+        isMulti={isMulti}
+        required={required}
+        errorMessage={errorMessage}
+        validate={{
+          required: {
+            value: required,
+            errorMessage: required && requiredErrorMessage,
+          },
+        }}
+        isDisabled={disabled}
+      />
+      <Button color="primary">Submit</Button>
+    </AvFormResults>
+  ),
+  args: {
+    customerId: '1234',
+    label: 'Select a Provider',
+  },
+  name: 'AvProviderSelect',
 };
-_AvProviderSelect.storyName = 'AvProviderSelect';
 
-export const _AvRegionSelect: Story = ({
-  disabled,
-  errorMessage,
-  isMulti,
-  label,
-  max,
-  min,
-  required,
-  requiredErrorMessage,
-}) => (
-  <AvFormResults>
-    <AvRegionSelect
-      name="AvRegionSelect"
-      label={label}
-      minLength={min}
-      maxLength={max}
-      isMulti={isMulti}
-      required={required}
-      errorMessage={errorMessage}
-      validate={{
-        required: {
-          value: required,
-          errorMessage: required && requiredErrorMessage,
-        },
-      }}
-      isDisabled={disabled}
-    />
-    <Button color="primary">Submit</Button>
-  </AvFormResults>
-);
-_AvRegionSelect.args = {
-  label: 'Select a Region',
+export const _AvRegionSelect = {
+  render: ({ disabled, errorMessage, isMulti, label, max, min, required, requiredErrorMessage }) => (
+    <AvFormResults>
+      <AvRegionSelect
+        name="AvRegionSelect"
+        label={label}
+        minLength={min}
+        maxLength={max}
+        isMulti={isMulti}
+        required={required}
+        errorMessage={errorMessage}
+        validate={{
+          required: {
+            value: required,
+            errorMessage: required && requiredErrorMessage,
+          },
+        }}
+        isDisabled={disabled}
+      />
+      <Button color="primary">Submit</Button>
+    </AvFormResults>
+  ),
+  args: {
+    label: 'Select a Region',
+  },
+  name: 'AvRegionSelect',
 };
-_AvRegionSelect.storyName = 'AvRegionSelect';
 
-export const _AvUserSelect: Story = ({
-  disabled,
-  errorMessage,
-  isMulti,
-  label,
-  max,
-  min,
-  required,
-  requiredErrorMessage,
-}) => (
-  <AvFormResults>
-    <AvUserSelect
-      name="AvUserSelect"
-      label={label}
-      minLength={min}
-      maxLength={max}
-      isMulti={isMulti}
-      required={required}
-      errorMessage={errorMessage}
-      validate={{
-        required: {
-          value: required,
-          errorMessage: required && requiredErrorMessage,
-        },
-      }}
-      isDisabled={disabled}
-    />
-    <Button color="primary">Submit</Button>
-  </AvFormResults>
-);
-_AvUserSelect.args = {
-  label: 'Select a User',
+export const _AvUserSelect = {
+  render: ({ disabled, errorMessage, isMulti, label, max, min, required, requiredErrorMessage }) => (
+    <AvFormResults>
+      <AvUserSelect
+        name="AvUserSelect"
+        label={label}
+        minLength={min}
+        maxLength={max}
+        isMulti={isMulti}
+        required={required}
+        errorMessage={errorMessage}
+        validate={{
+          required: {
+            value: required,
+            errorMessage: required && requiredErrorMessage,
+          },
+        }}
+        isDisabled={disabled}
+      />
+      <Button color="primary">Submit</Button>
+    </AvFormResults>
+  ),
+  args: {
+    label: 'Select a User',
+  },
+  name: 'AvUserSelect',
 };
-_AvUserSelect.storyName = 'AvUserSelect';

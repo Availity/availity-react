@@ -1,9 +1,7 @@
 import React from 'react';
 import { StoryObj } from '@storybook/react';
 import Wizard, { WizardStep, WizardStepBadge, WizardStepTitle } from '..';
-import { WizardStepProps } from '../types/WizardStep';
-import { WizardStepBadgeProps } from '../types/WizardStepBadge';
-import { WizardStepTitleProps } from '../types/WizardStepTitle';
+
 // import README from '../README.md';
 
 export default {
@@ -111,7 +109,3 @@ export const _Wizard: StoryObj<WizardStoryProps> = {
     thirdStepHref: '#step-3',
   },
 };
-
-export const hidden_WizardStep = (props: WizardStepProps) => <WizardStep {...props} />;
-export const hidden_WizardStepBadge = (props: WizardStepBadgeProps) => <WizardStepBadge {...props} />;
-export const hidden_WizardStepTitle = (props: WizardStepTitleProps) => <WizardStepTitle {...props} />;

@@ -1,4 +1,4 @@
-import { Meta } from '@storybook/addon-docs';
+import { Meta } from '@storybook/blocks';
 import { Button } from 'reactstrap';
 
 <Meta title="3rd Party/Reactstrap/Installation" />

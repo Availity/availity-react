@@ -27,5 +27,3 @@ export const _FieldHelp: StoryObj<FieldHelpIconProps> = {
     labelId: 'testId',
   },
 };
-
-// export const hidden_FieldHelpIcon = (props: FieldHelpIconProps) => <FieldHelpIcon {...props} />;

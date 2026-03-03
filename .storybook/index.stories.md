@@ -1,5 +1,5 @@
-import { Meta } from '@storybook/addon-docs';
-import{Alert} from 'reactstrap'; 
+import { Meta } from '@storybook/blocks';
+import { Alert } from 'reactstrap';
 
 <Meta title="Home" />
 
