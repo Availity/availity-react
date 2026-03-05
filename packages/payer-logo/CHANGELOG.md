@@ -2,6 +2,10 @@
 
 This file was generated using [@jscutlery/semver](https://github.com/jscutlery/semver).
 
+## [7.0.11](https://github.com/Availity/availity-react/compare/@availity/payer-logo@7.0.10...@availity/payer-logo@7.0.11) (2026-03-05)
+
+
+
 ## [7.0.10](https://github.com/Availity/availity-react/compare/@availity/payer-logo@7.0.9...@availity/payer-logo@7.0.10) (2026-01-09)
 
 
