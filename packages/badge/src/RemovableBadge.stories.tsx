@@ -1,7 +1,7 @@
 /* eslint-disable react-hooks/rules-of-hooks */
 import React, { useState } from 'react';
 import { StoryObj } from '@storybook/react';
-import { Badge, BadgeProps, Button } from 'reactstrap';
+import { Button } from 'reactstrap';
 import { RemovableBadge, BadgeItem } from '.';
 
 export default {
@@ -41,5 +41,3 @@ export const _Default: StoryObj<typeof RemovableBadge> = {
     );
   },
 };
-
-export const hidden_RSBadge = (props: BadgeProps) => <Badge {...props} />;

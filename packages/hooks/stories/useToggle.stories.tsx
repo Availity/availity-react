@@ -1,5 +1,5 @@
 import React from 'react';
-import { Meta, Story } from '@storybook/react';
+import { Meta } from '@storybook/react';
 import { Button } from 'reactstrap';
 
 import { useToggle } from '..';
@@ -29,11 +29,12 @@ export default {
   },
 } as Meta;
 
-export const Default: Story = () => <Component />;
-Default.storyName = 'default';
+export const Default = { render: () => <Component />, name: 'default' };
 
-export const WithInitialValue: Story = ({ initialValue }) => <Component initialValue={initialValue} />;
-WithInitialValue.args = {
-  initialValue: true,
+export const WithInitialValue = {
+  render: ({ initialValue }) => <Component initialValue={initialValue} />,
+  args: {
+    initialValue: true,
+  },
+  name: 'with initialValue',
 };
-WithInitialValue.storyName = 'with initialValue';

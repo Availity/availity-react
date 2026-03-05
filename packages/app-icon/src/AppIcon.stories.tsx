@@ -36,5 +36,5 @@ export const _AppIcon: StoryObj<typeof AppIcon> = {
       options: colors,
     },
   },
-  storyName: 'default',
+  name: 'default',
 };

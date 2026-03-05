@@ -1,5 +1,4 @@
 import React, { useState } from 'react';
-import { ArgsTable } from '@storybook/addon-docs';
 import { Alert, AlertProps } from 'reactstrap';
 
 import { colors } from './options';
@@ -20,20 +19,20 @@ export default {
   },
 };
 
-export const AlertStory = (args) => <Alert {...args} />;
-
-AlertStory.args = {
-  children: 'Hey! Pay attention.',
-  color: 'primary',
-};
-
-AlertStory.argTypes = {
-  color: {
-    control: { type: 'select' },
-    options: colors,
+export const AlertStory = {
+  render: (args: AlertProps) => <Alert {...args} />,
+  args: {
+    children: 'Hey! Pay attention.',
+    color: 'primary',
   },
+  argTypes: {
+    color: {
+      control: { type: 'select' },
+      options: colors,
+    },
+  },
+  name: 'Alert',
 };
-AlertStory.storyName = 'Alert';
 
 export const Colors = () => (
   <>
@@ -59,17 +58,3 @@ export const Dismissable = () => {
     </Alert>
   );
 };
-
-export const hidden_RSAlert = ({ children, ...alertProps }: AlertProps): JSX.Element => (
-  <Alert {...alertProps}>{children}</Alert>
-);
-
-export const Props = () => (
-  <>
-    <h4>Reactstrap Props</h4>
-    <h5>Alert</h5>
-    <div className="argstable-remove-default">
-      <ArgsTable of={hidden_RSAlert} />
-    </div>
-  </>
-);

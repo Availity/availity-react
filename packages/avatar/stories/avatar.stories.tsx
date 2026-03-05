@@ -1,9 +1,6 @@
 import React from 'react';
 import { StoryObj } from '@storybook/react';
-import { Img, ImgProps } from 'react-image';
-import Skeleton from 'react-loading-skeleton';
-
-import Avatar, { SkeletonType } from '../src/Avatar';
+import Avatar from '..';
 // import README from '../README.md';
 
 /**
@@ -36,6 +33,3 @@ export const _Avatar: StoryObj<AvatarStoryProps> = {
     skeletonWidth: '350px',
   },
 };
-
-export const hidden_RSImg = (props: ImgProps) => <Img {...props} />;
-export const hidden_RSSkeleton = (props: SkeletonType) => <Skeleton {...props} />;

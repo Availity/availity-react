@@ -1,6 +1,6 @@
 import React from 'react';
 import { StoryObj } from '@storybook/react';
-import { ListGroup as RsListGroup, ListGroupItem, ListGroupProps } from 'reactstrap';
+import { ListGroupItem } from 'reactstrap';
 
 import ListGroup from '..';
 // import README from '../README.md';
@@ -31,5 +31,3 @@ export const _Default: StoryObj<typeof ListGroup> = {
     </ListGroup>
   ),
 };
-
-export const hidden_RsListGroup = (props: ListGroupProps) => <RsListGroup {...props} />;

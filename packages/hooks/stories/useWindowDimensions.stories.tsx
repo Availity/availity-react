@@ -1,5 +1,5 @@
 import React from 'react';
-import { Meta, Story } from '@storybook/react';
+import { Meta } from '@storybook/react';
 import { useWindowDimensions } from '..';
 
 const ListenerComponent = () => {
@@ -23,5 +23,4 @@ export default {
   },
 } as Meta;
 
-export const Default: Story = () => <ListenerComponent />;
-Default.storyName = 'default';
+export const Default = { render: () => <ListenerComponent />, name: 'default' };

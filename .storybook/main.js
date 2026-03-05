@@ -17,16 +17,7 @@ const config = {
   addons: [
     getAbsolutePath('@storybook/addon-essentials'),
     getAbsolutePath('@storybook/addon-a11y'),
-    {
-      name: '@storybook/addon-docs',
-      options: {
-        mdxPluginOptions: {
-          mdxCompileOptions: {
-            remarkPlugins: [remarkGfm],
-          },
-        },
-      },
-    },
+    getAbsolutePath('@storybook/addon-webpack5-compiler-babel'),
   ],
 
   staticDirs: ['../static', './static'],
@@ -36,6 +27,8 @@ const config = {
       shouldExtractLiteralValuesFromEnum: true,
       propFilter: (prop) => (prop.parent ? !/node_modules\/(?!reactstrap).*/.test(prop.parent.fileName) : true),
     },
+
+    reactDocgen: 'react-docgen-typescript',
   },
 
   webpackFinal: async (config) => {

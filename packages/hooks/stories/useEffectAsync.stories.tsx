@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Meta, Story } from '@storybook/react';
+import { Meta } from '@storybook/react';
 import { Card } from 'reactstrap';
 
 import { useEffectAsync, useToggle } from '..';
@@ -40,8 +40,10 @@ export default {
   },
 } as Meta;
 
-export const Default: Story = ({ data }) => <AsyncComponent mockData={data} />;
-Default.args = {
-  data: 'Test Data',
+export const Default = {
+  render: ({ data }) => <AsyncComponent mockData={data} />,
+  args: {
+    data: 'Test Data',
+  },
+  name: 'default',
 };
-Default.storyName = 'default';

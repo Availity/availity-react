@@ -1,9 +1,9 @@
 import React from 'react';
-import { ArgsTable } from '@storybook/addon-docs';
+import { ArgTypes } from '@storybook/blocks';
 
 const OutsideArgsTable = (...props) => (
   <div className="outside-args-table">
-    <ArgsTable {...props} />
+    <ArgTypes {...props} />
   </div>
 );
 

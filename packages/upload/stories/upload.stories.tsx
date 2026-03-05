@@ -78,4 +78,4 @@ export const _RestrictFileName: StoryObj<typeof Upload> = {
 //   complete: false,
 //   color: 'success',
 // };
-// ProgressBar.storyName = 'progress bar';
+// ProgressBar.name = 'progress bar';

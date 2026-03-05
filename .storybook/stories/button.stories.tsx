@@ -1,5 +1,4 @@
 import React from 'react';
-import { ArgsTable } from '@storybook/addon-docs';
 import { Button, ButtonProps } from 'reactstrap';
 
 import { colors } from './options';
@@ -20,26 +19,28 @@ export default {
   },
 };
 
-export const ButtonStory = (args) => <Button {...args} />;
-ButtonStory.storyName = 'Button';
-ButtonStory.args = {
-  children: 'Click Me',
-  color: 'primary',
-  outline: false,
-  size: undefined,
-  block: false,
-  active: false,
-  close: false,
-};
-ButtonStory.argTypes = {
-  color: {
-    control: { type: 'select' },
-    options: colors,
+export const ButtonStory = {
+  render: (args: ButtonProps) => <Button {...args} />,
+  args: {
+    children: 'Click Me',
+    color: 'primary',
+    outline: false,
+    size: undefined,
+    block: false,
+    active: false,
+    close: false,
   },
-  size: {
-    control: { type: 'select' },
-    options: ['', 'sm', 'lg'],
+  argTypes: {
+    color: {
+      control: { type: 'select' },
+      options: colors,
+    },
+    size: {
+      control: { type: 'select' },
+      options: ['', 'sm', 'lg'],
+    },
   },
+  name: 'Button',
 };
 
 export const Colors = () => (
@@ -49,19 +50,5 @@ export const Colors = () => (
         {color}
       </Button>
     ))}
-  </>
-);
-
-export const hidden_RSButton = ({ children, ...buttonProps }: ButtonProps): Button => (
-  <Button {...buttonProps}>{children}</Button>
-);
-
-export const Props = () => (
-  <>
-    <h4>Reactstrap Props</h4>
-    <h5>Button</h5>
-    <div className="argstable-remove-default">
-      <ArgsTable of={hidden_RSButton} />
-    </div>
   </>
 );

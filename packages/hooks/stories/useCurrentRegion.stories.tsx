@@ -1,5 +1,5 @@
 import React from 'react';
-import { Meta, Story } from '@storybook/react';
+import { Meta } from '@storybook/react';
 import { QueryClientProvider, QueryClient } from '@tanstack/react-query';
 
 import { useCurrentRegion } from '..';
@@ -26,9 +26,13 @@ export default {
   ],
 } as Meta;
 
-export const Default: Story = () => {
+const ResourceExample = () => {
   const { data, isLoading } = useCurrentRegion();
 
   return <ResourceComponent title="Region" data={data} loading={isLoading} />;
 };
-Default.storyName = 'default';
+
+export const Default = {
+  render: () => <ResourceExample />,
+  name: 'default',
+};

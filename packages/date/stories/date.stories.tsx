@@ -7,9 +7,9 @@ import { avDate, dateRange } from '@availity/yup';
 import * as yup from 'yup';
 import { unitOfTime } from 'moment';
 import FormikDate from '../src/Date';
-import DateField, { DateFieldProps } from '../src/DateField';
-import DateRange, { DateRangeProps } from '../src/DateRange';
-import DateRangeField, { DateRangeFieldProps } from '../src/DateRangeField';
+import DateField from '../src/DateField';
+import DateRange from '../src/DateRange';
+import DateRangeField from '../src/DateRangeField';
 
 // import README from '../README.md';
 
@@ -251,7 +251,3 @@ export const _DateRangeField: StoryObj<typeof FormikDate> = {
     },
   },
 };
-
-export const hidden_DateField = (props: DateFieldProps) => <DateField {...props} />;
-export const hidden_DateRange = (props: DateRangeProps) => <DateRange {...props} />;
-export const hidden_DateRangeField = (props: DateRangeFieldProps) => <DateRangeField {...props} />;

@@ -1,16 +1,5 @@
 import React, { useState } from 'react';
-import { ArgsTable } from '@storybook/addon-docs';
-import {
-  Button,
-  Modal,
-  ModalProps,
-  ModalHeader,
-  ModalHeaderProps,
-  ModalBody,
-  ModalBodyProps,
-  ModalFooter,
-  ModalFooterProps,
-} from 'reactstrap';
+import { Button, Modal, ModalProps, ModalHeader, ModalBody, ModalFooter } from 'reactstrap';
 
 export default {
   title: '3rd Party/Reactstrap/Modal',
@@ -28,7 +17,7 @@ export default {
   },
 };
 
-export const modal = (args) => {
+const ModalElement = (args: ModalProps) => {
   const [modal, setModal] = useState(false);
 
   const toggle = () => setModal(!modal);
@@ -61,73 +50,43 @@ export const modal = (args) => {
     </div>
   );
 };
-modal.args = {
-  fullscreen: false,
-  size: undefined,
-  backdrop: true,
-  fade: true,
-  centered: false,
-  scrollable: false,
+
+export const modal = {
+  render: (args: ModalProps) => <ModalElement {...args} />,
+  args: {
+    fullscreen: false,
+    size: undefined,
+    backdrop: true,
+    fade: true,
+    centered: false,
+    scrollable: false,
+  },
+  argTypes: {
+    fullscreen: {
+      control: { type: 'select' },
+      options: ['', true, 'sm', 'md', 'lg', 'xl'],
+    },
+    size: {
+      control: { type: 'select' },
+      options: ['', 'sm', 'lg', 'xl'],
+    },
+  },
+  name: 'default',
 };
 
-modal.argTypes = {
-  fullscreen: {
-    control: { type: 'select' },
-    options: ['', true, 'sm', 'md', 'lg', 'xl'],
-  },
-  size: {
-    control: { type: 'select' },
-    options: ['', 'sm', 'lg', 'xl'],
-  },
+export const modalDisplayStory = {
+  render: () => (
+    <div className="modal-dialog" aria-labelledby="display-modal-story-header" role="dialog" tabIndex={-1}>
+      <div className="modal-content">
+        <ModalHeader id="display-modal-story-header" toggle={() => null}>
+          Header
+        </ModalHeader>
+        <ModalBody>Body</ModalBody>
+        <ModalFooter>
+          <Button>Button</Button>
+        </ModalFooter>
+      </div>
+    </div>
+  ),
+  name: 'Modal (display only)',
 };
-modal.storyName = 'default';
-
-export const modalDisplayStory = () => (
-  <div className="modal-dialog" aria-labelledby="display-modal-story-header" role="dialog" tabIndex={-1}>
-    <div className="modal-content">
-      <ModalHeader id="display-modal-story-header" toggle={() => null}>
-        Header
-      </ModalHeader>
-      <ModalBody>Body</ModalBody>
-      <ModalFooter>
-        <Button>Button</Button>
-      </ModalFooter>
-    </div>
-  </div>
-);
-modalDisplayStory.storyName = 'Modal (display only)';
-
-export const hidden_RSModal = ({ children, ...ModalProps }: ModalProps): Modal => (
-  <Modal {...ModalProps}>{children}</Modal>
-);
-export const hidden_RSModalHeader = ({ children, ...ModalHeaderProps }: ModalHeaderProps): ModalHeader => (
-  <ModalHeader {...ModalHeaderProps}>{children}</ModalHeader>
-);
-export const hidden_RSModalBody = ({ children, ...ModalBodyProps }: ModalBodyProps): ModalBody => (
-  <ModalBody {...ModalBodyProps}>{children}</ModalBody>
-);
-export const hidden_RSModalFooter = ({ children, ...ModalFooterProps }: ModalFooterProps): ModalFooter => (
-  <ModalFooter {...ModalFooterProps}>{children}</ModalFooter>
-);
-
-export const Props = () => (
-  <>
-    <h4>Reactstrap Props</h4>
-    <h5>Modal</h5>
-    <div className="argstable-remove-default">
-      <ArgsTable of={hidden_RSModal} />
-    </div>
-    <h5>ModalHeader</h5>
-    <div className="argstable-remove-default">
-      <ArgsTable of={hidden_RSModalHeader} />
-    </div>
-    <h5>ModalBody</h5>
-    <div className="argstable-remove-default">
-      <ArgsTable of={hidden_RSModalBody} />
-    </div>
-    <h5>ModalFooter</h5>
-    <div className="argstable-remove-default">
-      <ArgsTable of={hidden_RSModalFooter} />
-    </div>
-  </>
-);

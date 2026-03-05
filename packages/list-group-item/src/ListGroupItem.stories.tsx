@@ -1,7 +1,7 @@
 import React from 'react';
 import { StoryObj } from '@storybook/react';
 import ListGroup from '@availity/list-group';
-import { ListGroupItem as RsListGroupItem, ListGroupItemProps } from 'reactstrap';
+import { ListGroupItemProps } from 'reactstrap';
 
 import ListGroupItem, { ListGroupItemStatus, ListGroupItemStatusProps } from '..';
 // import README from '../README.md';
@@ -93,6 +93,3 @@ export const _ListGroupItemStatus: StoryObj<ListGroupItemStatusProps> = {
     },
   },
 };
-
-export const hidden_RsListGroupItem = (props: ListGroupItemProps) => <RsListGroupItem {...props} />;
-export const hidden_RsListGroupItemStatus = (props: ListGroupItemStatusProps) => <ListGroupItemStatus {...props} />;

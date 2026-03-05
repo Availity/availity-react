@@ -1,26 +1,9 @@
 import React from 'react';
 import { StoryObj } from '@storybook/react';
-import {
-  Pagination as RsPagination,
-  PaginationProps as RsPaginationProps,
-  Card,
-  CardBody,
-  CardText,
-  CardTitle,
-  Col,
-} from 'reactstrap';
+import { Card, CardBody, CardText, CardTitle, Col } from 'reactstrap';
 import AvApi from '@availity/api-axios';
 import paginationData from '@availity/mock/src/data/pagination.json';
-import {
-  Pagination,
-  PaginationProps,
-  PaginationContent,
-  PaginationContentProps,
-  PaginationControls,
-  PaginationControlsProps,
-  AvResourcePagination,
-  AvResourcePaginationProps,
-} from '.';
+import { Pagination, PaginationContent, PaginationContentProps, PaginationControls, AvResourcePagination } from '.';
 // import README from '../README.md';
 
 interface Name {
@@ -188,68 +171,3 @@ export const _AvResource: StoryObj<PaginationContentProps> = {
     showLoader: true,
   },
 };
-
-export const hidden_Pagination = ({
-  items,
-  itemsPerPage = 10,
-  defaultPage = 1,
-  debounceTimeout = 0,
-  shouldReturnPrevious = false,
-}: PaginationProps<object>) => {
-  const props = {
-    items,
-    itemsPerPage,
-    defaultPage,
-    debounceTimeout,
-    shouldReturnPrevious,
-  };
-  return <Pagination {...props} />;
-};
-
-export const hidden_PaginationContent = ({
-  itemKey,
-  loader = false,
-  infiniteScroll = false,
-  containerTag = 'div',
-}: PaginationContentProps) => {
-  const props = {
-    itemKey,
-    loader,
-    infiniteScroll,
-    containerTag,
-  };
-  return (
-    <Pagination items={paginationData}>
-      <PaginationContent {...props} component={Component} />
-    </Pagination>
-  );
-};
-
-export const hidden_PaginationControls = ({
-  autoHide = true,
-  breakLabel = true,
-  directionLinks = false,
-  marginPages = 2,
-  pageRange = 5,
-  showPaginationText = false,
-}: PaginationControlsProps) => {
-  const props = {
-    autoHide,
-    breakLabel,
-    directionLinks,
-    marginPages,
-    pageRange,
-    showPaginationText,
-  };
-  return (
-    <Pagination items={paginationData}>
-      <PaginationControls {...props} />
-    </Pagination>
-  );
-};
-
-export const hidden_AvResourcePagination = (props: AvResourcePaginationProps<unknown[]>) => (
-  <AvResourcePagination {...props} />
-);
-
-export const hidden_RsPagination = (props: RsPaginationProps) => <RsPagination {...props} />;

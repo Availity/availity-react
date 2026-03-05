@@ -1,5 +1,4 @@
 import React from 'react';
-import { ArgsTable } from '@storybook/addon-docs';
 import { Badge, BadgeProps, Button } from 'reactstrap';
 
 import { colors } from './options';
@@ -19,21 +18,17 @@ export default {
   },
 };
 
-export const BadgeStory = (args) => <Badge {...args} />;
-
-BadgeStory.args = {
-  children: 'New',
-  color: 'primary',
-  pill: false,
-};
-
-BadgeStory.argTypes = {
-  color: {
-    control: { type: 'select' },
-    options: colors,
+export const BadgeStory = {
+  render: (args: BadgeProps) => <Badge {...args} />,
+  args: { children: 'New', color: 'primary', pill: false },
+  argTypes: {
+    color: {
+      control: { type: 'select' },
+      options: colors,
+    },
   },
+  name: 'Badge',
 };
-BadgeStory.storyName = 'Badge';
 
 export const Colors = () => (
   <>
@@ -51,18 +46,4 @@ export const Counter = () => (
       Notifications <Badge color="secondary">4</Badge>
     </Button>
   </div>
-);
-
-export const hidden_RSBadge = ({ children, ...badgeProps }: BadgeProps): Badge => (
-  <Badge {...badgeProps}>{children}</Badge>
-);
-
-export const Props = () => (
-  <>
-    <h4>Reactstrap Props</h4>
-    <h5>Badge</h5>
-    <div className="argstable-remove-default">
-      <ArgsTable of={hidden_RSBadge} />
-    </div>
-  </>
 );
