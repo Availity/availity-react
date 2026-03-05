@@ -2,6 +2,16 @@
 
 This file was generated using [@jscutlery/semver](https://github.com/jscutlery/semver).
 
+## [8.1.3](https://github.com/Availity/availity-react/compare/@availity/spaces@8.1.2...@availity/spaces@8.1.3) (2026-03-05)
+
+### Dependency Updates
+
+* `@availity/favorites` updated to version `8.1.2`
+* `@availity/app-icon` updated to version `8.1.2`
+* `@availity/hooks` updated to version `8.1.2`
+* `@availity/list-group-item` updated to version `8.1.2`
+
+
 ## [8.1.2](https://github.com/Availity/availity-react/compare/@availity/spaces@8.1.1...@availity/spaces@8.1.2) (2026-01-09)
 
 ### Dependency Updates
