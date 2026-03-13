@@ -2,6 +2,13 @@
 
 This file was generated using [@jscutlery/semver](https://github.com/jscutlery/semver).
 
+## [0.6.22](https://github.com/Availity/availity-react/compare/@availity/table@0.6.21...@availity/table@0.6.22) (2026-03-13)
+
+### Dependency Updates
+
+* `@availity/hooks` updated to version `0.6.21`
+
+
 ## [0.6.21](https://github.com/Availity/availity-react/compare/@availity/table@0.6.20...@availity/table@0.6.21) (2026-03-05)
 
 ### Dependency Updates
