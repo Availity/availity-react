@@ -7,14 +7,14 @@ import type { Permission, RequestedPermissions, RequestedResources } from './typ
  *
  * If the region is a string then it will be returned without fetching.
  */
-export const getRegion = async (region?: boolean | string): Promise<string | undefined> => {
+export const getRegion = async (region?: boolean | string): Promise<string | null> => {
   if (region === true) {
     const resp = await avRegionsApi.getCurrentRegion();
 
-    return resp?.data?.regions?.[0]?.id;
+    return resp?.data?.regions?.[0]?.id || null;
   }
 
-  return region || undefined;
+  return region || null;
 };
 
 /**
@@ -22,12 +22,12 @@ export const getRegion = async (region?: boolean | string): Promise<string | und
  */
 export const getPermissions = async (
   permissions: RequestedPermissions,
-  region?: string
+  region?: string | null
 ): Promise<Record<string, Permission>> => {
   if (!permissions) return {};
 
   // TODO: fix these types
-  const response = await avUserPermissionsApi.getPermissions(permissions as string[], region);
+  const response = await avUserPermissionsApi.getPermissions(permissions as string[], region || undefined);
 
   return response.reduce<Record<string, Permission>>((prev, cur) => {
     prev[cur.id] = cur;
@@ -91,7 +91,7 @@ export const checkPermission = (
  */
 export const checkPermissions = async (
   permissions: RequestedPermissions,
-  region?: string,
+  region?: string | null,
   resources?: RequestedResources,
   organizationId?: string,
   customerId?: string
