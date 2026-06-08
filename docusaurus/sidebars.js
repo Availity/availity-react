@@ -41,6 +41,7 @@ module.exports = {
               'components/hooks/use-organizations',
               'components/hooks/use-providers',
               'components/hooks/use-window-dimensions',
+              'components/hooks/use-stash',
             ],
           },
         ],
