@@ -9,3 +9,4 @@ export { default as usePermissions } from './src/usePermissions';
 export { default as useOrganizations } from './src/useOrganizations';
 export { default as useUpdateNav } from './src/useUpdateNav';
 export { default as useWindowDimensions } from './src/useWindowDimensions';
+export { default as useStash } from './src/useStash';

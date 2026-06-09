@@ -280,7 +280,7 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@availity/api-axios@npm:12.1.0, @availity/api-axios@npm:^12.1.0":
+"@availity/api-axios@npm:12.1.0":
   version: 12.1.0
   resolution: "@availity/api-axios@npm:12.1.0"
   dependencies:
@@ -291,6 +291,20 @@ __metadata:
     "@availity/upload-core": ^8.1.0
     axios: ^1.7.7
   checksum: 10/c33d94a0f0546203138b222fe2cfc031fc5185b09184d2df8bd24c539506056c644970a728951f2ba1e6df3c3733ea9164b6b26b0341275835042cfc631da711
+  languageName: node
+  linkType: hard
+
+"@availity/api-axios@npm:^12.1.0, @availity/api-axios@npm:^12.3.1":
+  version: 12.3.1
+  resolution: "@availity/api-axios@npm:12.3.1"
+  dependencies:
+    "@availity/resolve-url": "npm:4.1.0"
+    lodash: "npm:^4.17.23"
+    qs: "npm:^6.15.0"
+  peerDependencies:
+    "@availity/upload-core": ^8.1.0
+    axios: ^1.7.7
+  checksum: 10/52650233c912c2c7a9878e1347e25cdcf3cf761916409617b80eca8ee0bff589f73fa7564644f734410e59f3985a8da4645e9fd2a0ee68400482171676f1b5a5
   languageName: node
   linkType: hard
 
@@ -698,7 +712,7 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@availity/hooks@workspace:packages/hooks"
   dependencies:
-    "@availity/api-axios": "npm:^12.1.0"
+    "@availity/api-axios": "npm:^12.3.1"
     "@availity/message-core": "npm:^8.0.2"
     "@tanstack/react-query": "npm:^4.36.1"
     axios: "npm:^1.13.2"
@@ -998,6 +1012,13 @@ __metadata:
   version: 4.0.1
   resolution: "@availity/resolve-url@npm:4.0.1"
   checksum: 10/15986635f77aadeadf7807340e3ca49b84d46c164c324315c099e7a97f7336dec5fa031fe48196b29046c9e5dff64852dda33f2a7005b560179947d3a960e097
+  languageName: node
+  linkType: hard
+
+"@availity/resolve-url@npm:4.1.0":
+  version: 4.1.0
+  resolution: "@availity/resolve-url@npm:4.1.0"
+  checksum: 10/3100f5028ae7522d94876894115b6224dc242a851cb96db7d22d427b989dc514fcffe2205c542651fe58ae21449eec53f5e05c68975fd5ea32580a2714d21a21
   languageName: node
   linkType: hard
 
