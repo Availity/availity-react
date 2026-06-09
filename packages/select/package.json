@@ -41,7 +41,7 @@
   "devDependencies": {
     "@availity/api-axios": "^12.1.0",
     "@availity/form": "workspace:*",
-    "axios": "^1.13.2",
+    "axios": "^1.16.0",
     "formik": "^2.4.6",
     "react": "^18.3.1",
     "react-dom": "^18.3.1",
@@ -53,7 +53,7 @@
   "peerDependencies": {
     "@availity/api-axios": "^12.0.0",
     "@availity/form": "workspace:*",
-    "axios": "^1.13.2",
+    "axios": "^1.16.0",
     "formik": "^2.4.6",
     "react": "^18.0.0",
     "reactstrap": "^8.10.1"
