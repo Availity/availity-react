@@ -4,10 +4,15 @@
   "projectType": "library",
   "targets": {
     "test": {
-      "executor": "@nx/jest:jest",
-      "outputs": ["{workspaceRoot}/coverage/pagination"],
+      "executor": "nx:run-commands",
       "options": {
-        "jestConfig": "packages/pagination/jest.config.js"
+        "command": "vitest run --project=pagination",
+        "cwd": "."
+      },
+      "configurations": {
+        "ci": {
+          "command": "vitest run --project=pagination --coverage"
+        }
       }
     },
     "version": {
@@ -33,6 +38,12 @@
         "noEslintrc": false,
         "hasTypeAwareRules": true,
         "cacheStrategy": "metadata"
+      }
+    },
+    "build": {
+      "command": "tsup src/index.ts --format esm --dts",
+      "options": {
+        "cwd": "packages/pagination"
       }
     }
   }

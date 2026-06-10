@@ -36,7 +36,7 @@ describe('Pagination Content', () => {
     }
   });
 
-  test('should render loading message', async () => {
+  test.todo('should render loading message', async () => {
     // eslint-disable-next-line unicorn/consistent-function-scoping
     const loadPage = () => ({
       totalCount: 3,

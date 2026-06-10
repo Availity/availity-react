@@ -29,7 +29,7 @@ const AvResourcePagination = <TData,>({
   getResult,
   children,
   ...paginationProps
-}: AvResourcePaginationProps<TData>): JSX.Element => {
+}: AvResourcePaginationProps<TData>): React.JSX.Element => {
   const loadPage = async (page: number, itemsPerPage: number) => {
     const params = {
       limit: itemsPerPage,

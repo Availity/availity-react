@@ -13,7 +13,7 @@ const PaginationJson = () => {
 };
 
 const mockResponse = {
-  postGet: jest.fn(
+  postGet: vi.fn(
     async (params = {}, config = {}) =>
       new Promise((resolve) => {
         const { offset = 0, limit = 50 } = params;

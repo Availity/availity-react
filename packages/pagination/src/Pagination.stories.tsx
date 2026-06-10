@@ -1,5 +1,5 @@
 import React from 'react';
-import { StoryObj } from '@storybook/react';
+import { StoryObj } from '@storybook/react-vite';
 import { Card, CardBody, CardText, CardTitle, Col } from 'reactstrap';
 import AvApi from '@availity/api-axios';
 import paginationData from '@availity/mock/src/data/pagination.json';
@@ -44,7 +44,7 @@ const resource = new AvApi({ name: 'pagination' });
  * Pagination, the Availity way.
  */
 export default {
-  title: 'Bootstrap Components/Pagination',
+  title: 'Deprecated/Pagination',
   component: Pagination,
 };
 

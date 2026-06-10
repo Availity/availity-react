@@ -90,7 +90,7 @@ function Pagination<TItem>({
   debounceTimeout = defaultValues.debounceTimeout,
   shouldReturnPrevious = defaultValues.shouldReturnPrevious,
   onError,
-}: PaginationProps<TItem>): JSX.Element {
+}: PaginationProps<TItem>): React.JSX.Element {
   const ref = useRef<HTMLSpanElement>(null);
   const [stateCurrentPage, setPage] = useState(defaultPage);
   const [doFocusRefOnPageChange, setDoFocusRefOnPageChange] = useState(false);

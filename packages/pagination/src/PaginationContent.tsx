@@ -40,7 +40,7 @@ const PaginationContent = <TItem extends Record<string, unknown>>({
   infiniteScrollProps,
   children,
   ...rest
-}: PaginationContentProps): JSX.Element => {
+}: PaginationContentProps): React.JSX.Element => {
   const { page, currentPage, setPage, allPages, hasMore, loading, lower, ref, setDoFocusRefOnPageChange } =
     usePagination<TItem>();
 

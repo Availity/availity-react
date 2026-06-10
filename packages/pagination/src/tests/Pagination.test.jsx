@@ -109,7 +109,7 @@ describe('Pagination', () => {
 
     const user = userEvent.setup();
 
-    const mockOnPageChange = jest.fn((page) => page);
+    const mockOnPageChange = vi.fn((page) => page);
 
     const { getByTestId } = render(
       <Pagination onPageChange={mockOnPageChange} items={items} itemsPerPage={1}>
@@ -141,7 +141,7 @@ describe('Pagination', () => {
 
   test('should re-render if watch List updates', async () => {
     // Create Mock Function
-    const mockFunc = jest.fn(() => {});
+    const mockFunc = vi.fn(() => {});
 
     const user = userEvent.setup();
 
@@ -219,7 +219,7 @@ describe('Pagination', () => {
       }
     }
 
-    const items = jest
+    const items = vi
       .fn()
       .mockResolvedValueOnce({
         items: firstItems,
@@ -318,7 +318,7 @@ describe('Pagination', () => {
       }
     }
 
-    const items = jest
+    const items = vi
       .fn()
       .mockResolvedValueOnce({
         items: firstItems,
@@ -474,7 +474,7 @@ describe('Pagination', () => {
   });
 
   it('does not fetch page data when shouldReturnPrevious is true', async () => {
-    const getItems = jest.fn().mockResolvedValue({
+    const getItems = vi.fn().mockResolvedValue({
       totalCount: 3,
       items: [
         { value: '1', key: 1 },
@@ -544,9 +544,9 @@ describe('Pagination', () => {
 
     const user = userEvent.setup();
 
-    const getItems = jest.fn().mockRejectedValue(new Error('Async error'));
+    const getItems = vi.fn().mockRejectedValue(new Error('Async error'));
 
-    const onError = jest.fn();
+    const onError = vi.fn();
 
     const { getByTestId } = render(
       <Pagination onError={onError} items={getItems}>
