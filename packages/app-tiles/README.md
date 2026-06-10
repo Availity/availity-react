@@ -1,5 +1,11 @@
 # @availity/app-tiles
 
+## ⚠️ Deprecated
+
+This package is deprecated and no longer actively maintained. Future updates are not guaranteed. We recommend migrating to [`@availity/element`](https://availity.github.io/element).
+
+---
+
 > Availity UI Kit application tiles react component.
 
 [![Version](https://img.shields.io/npm/v/@availity/app-tiles.svg?style=for-the-badge)](https://www.npmjs.com/package/@availity/app-tiles)

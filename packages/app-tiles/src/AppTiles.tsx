@@ -36,11 +36,11 @@ const AppTiles = ({
   image,
   shortName,
   parents,
-  color,
+  color = 'black',
   className,
   size,
   branded,
-  alt,
+  alt = '',
 }: AppTilesProps) => {
   const classes = classNames(className, 'app-icon', {
     [`app-icon-${color}`]: color && !branded,
@@ -109,12 +109,6 @@ AppTiles.propTypes = {
   parents: PropTypes.array,
   tag: PropTypes.oneOfType([PropTypes.func, PropTypes.string]),
   alt: PropTypes.string,
-};
-
-AppTiles.defaultProps = {
-  alt: '',
-  tag: 'span',
-  color: 'black',
 };
 
 export default AppTiles;
