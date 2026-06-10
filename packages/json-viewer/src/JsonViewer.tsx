@@ -25,7 +25,7 @@ function isObject(value: unknown): value is Record<string, unknown> {
   return !!value && typeof value === 'object';
 }
 
-function getDetails({ data, expandAll, keyClassNames, summaryClassNames }: Detailable): (JSX.Element | null)[] {
+function getDetails({ data, expandAll, keyClassNames, summaryClassNames }: Detailable): (React.JSX.Element | null)[] {
   return Object.entries(data).map((entry) => {
     const [key, value] = entry;
     if (isPrimitive(value)) {
@@ -61,7 +61,7 @@ function JsonViewer({
   keyClassNames,
   summaryClassNames,
   backgroundColor = 'light',
-}: JsonViewerProps): JSX.Element {
+}: JsonViewerProps): React.JSX.Element {
   const details = getDetails({ data, expandAll, keyClassNames, summaryClassNames });
   return (
     <ul data-testid="topLevelUl" className={classnames(`p-2 list-unstyled bg-${backgroundColor}`, listClassNames)}>
