@@ -1,5 +1,11 @@
 # @availity/step-wizard
 
+## ⚠️ Deprecated
+
+This package is deprecated and no longer actively maintained. Future updates are not guaranteed. We recommend migrating to [`@availity/element`](https://availity.github.io/element).
+
+---
+
 > Step Wizard - the Availity Way
 
 [![Version](https://img.shields.io/npm/v/@availity/step-wizard.svg?style=for-the-badge)](https://www.npmjs.com/package/@availity/step-wizard)

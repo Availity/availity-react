@@ -2,15 +2,11 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import classNames from 'classnames';
 
-const WizardStepTitle = ({ tag: Tag, className: classes, children, ...rest }) => (
+const WizardStepTitle = ({ tag: Tag = 'span', className: classes, children, ...rest }) => (
   <Tag className={classNames(classes, 'stepwizard-title')} {...rest}>
     {children}
   </Tag>
 );
-
-WizardStepTitle.defaultProps = {
-  tag: 'span',
-};
 
 WizardStepTitle.propTypes = {
   /** Additional classes that should be applied to agreement. * */

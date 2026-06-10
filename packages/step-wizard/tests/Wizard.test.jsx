@@ -1,6 +1,6 @@
 import React from 'react';
 import { render, cleanup } from '@testing-library/react';
-import Wizard from '..';
+import Wizard from '../index.js';
 
 describe('Wizard', () => {
   afterEach(cleanup);

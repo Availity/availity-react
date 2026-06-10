@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import classNames from 'classnames';
 
-const Wizard = ({ tag: Tag, bar, stacked, children, progress, className: classes, ...rest }) => (
+const Wizard = ({ tag: Tag = 'div', bar, stacked, children, progress, className: classes, ...rest }) => (
   <Tag
     className={classNames(
       classes,
@@ -17,10 +17,6 @@ const Wizard = ({ tag: Tag, bar, stacked, children, progress, className: classes
     <div className="stepwizard-row">{children}</div>
   </Tag>
 );
-
-Wizard.defaultProps = {
-  tag: 'div',
-};
 
 Wizard.propTypes = {
   /** Triggers the "bar" style in the stepwizard. * */

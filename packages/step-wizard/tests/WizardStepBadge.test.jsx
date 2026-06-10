@@ -1,6 +1,6 @@
 import React from 'react';
 import { render, cleanup } from '@testing-library/react';
-import { WizardStepBadge } from '..';
+import { WizardStepBadge } from '../index.js';
 
 describe('WizardStepBadge', () => {
   afterEach(cleanup);
