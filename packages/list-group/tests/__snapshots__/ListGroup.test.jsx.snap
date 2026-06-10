@@ -1,0 +1,33 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`ListGroup > should render 1`] = `
+<div>
+  <ul
+    class="list-group"
+  />
+</div>
+`;
+
+exports[`ListGroup > should render cards 1`] = `
+<div>
+  <ul
+    class="list-group-cards list-group"
+  />
+</div>
+`;
+
+exports[`ListGroup > should render selectable 1`] = `
+<div>
+  <ul
+    class="list-group-selectable list-group"
+  />
+</div>
+`;
+
+exports[`ListGroup > should render selectable cards 1`] = `
+<div>
+  <ul
+    class="list-group-cards list-group-selectable list-group"
+  />
+</div>
+`;

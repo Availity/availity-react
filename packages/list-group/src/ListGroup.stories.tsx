@@ -1,12 +1,12 @@
 import React from 'react';
-import { StoryObj } from '@storybook/react';
+import { StoryObj } from '@storybook/react-vite';
 import { ListGroupItem } from 'reactstrap';
 
 import ListGroup from '..';
 // import README from '../README.md';
 
 export default {
-  title: 'Bootstrap Components/List Group',
+  title: 'Deprecated/List Group',
   component: ListGroup,
   parameters: {
     docs: {
