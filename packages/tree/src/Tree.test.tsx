@@ -130,7 +130,7 @@ describe('Tree', () => {
 
   beforeEach(() => {
     cleanup();
-    jest.resetModules();
+    vi.resetModules();
   });
 
   test('should render parent with children', async () => {
@@ -156,7 +156,7 @@ describe('Tree', () => {
   test('should select items on load', async () => {
     const items = cloneDeep(buildTree(flatTreeItems));
 
-    const onItemsSelected = jest.fn();
+    const onItemsSelected = vi.fn();
 
     render(
       <Tree
@@ -205,7 +205,7 @@ describe('Tree', () => {
   });
 
   test('should expand item on click', async () => {
-    const onItemExpanded = jest.fn();
+    const onItemExpanded = vi.fn();
 
     const items = cloneDeep(buildTree(flatTreeItems));
     const { queryByTestId } = render(<Tree items={items} expandAll={false} onItemsExpanded={onItemExpanded} />);
@@ -273,7 +273,7 @@ describe('Tree', () => {
   });
 
   test('should select item on click', async () => {
-    const onItemsSelected = jest.fn();
+    const onItemsSelected = vi.fn();
 
     const items = cloneDeep(buildTree(flatTreeItems));
     render(<Tree items={items} expandAll selectable onItemsSelected={onItemsSelected} />);
@@ -309,7 +309,7 @@ describe('Tree', () => {
   });
 
   test('should select and deselect all on click', async () => {
-    const onItemsSelected = jest.fn();
+    const onItemsSelected = vi.fn();
 
     const items = cloneDeep(buildTree(flatTreeItems));
 
@@ -376,7 +376,7 @@ describe('Tree', () => {
   });
 
   test('should select all children on click that are not disabled', async () => {
-    const onItemsSelected = jest.fn();
+    const onItemsSelected = vi.fn();
 
     const items = cloneDeep(buildTree(flatTreeItems));
     render(<Tree items={items} expandAll selectable onItemsSelected={onItemsSelected} selectedItems={[]} />);
@@ -461,7 +461,7 @@ describe('Tree', () => {
   });
 
   test('select all should only select items that are filtered', async () => {
-    const onItemsSelected = jest.fn();
+    const onItemsSelected = vi.fn();
 
     const items = cloneDeep(buildTree(flatTreeItems));
     render(<Tree items={items} selectable expandAll enableSearch onItemsSelected={onItemsSelected} />);
@@ -501,7 +501,7 @@ describe('Tree', () => {
   });
 
   test('de-select all should only select items that are filtered', async () => {
-    const onItemsSelected = jest.fn();
+    const onItemsSelected = vi.fn();
 
     const items = cloneDeep(buildTree(flatTreeItems));
     const { queryByTestId } = render(
