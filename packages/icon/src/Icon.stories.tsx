@@ -1,5 +1,5 @@
 import React from 'react';
-import { StoryObj } from '@storybook/react';
+import { StoryObj } from '@storybook/react-vite';
 import icons from 'availity-uikit/fonts/config.json';
 import Icon from '.';
 // import README from '../README.md';
@@ -23,7 +23,7 @@ const colors = [
 const iconOptions = icons.glyphs.map((glyph) => glyph.css);
 
 export default {
-  title: 'Bootstrap Components/Icon',
+  title: 'Deprecated/Icon',
   parameters: {
     docs: {
       // page: README,

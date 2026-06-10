@@ -1,5 +1,11 @@
 # @availity/icon
 
+## ⚠️ Deprecated
+
+This package is deprecated and no longer actively maintained. Future updates are not guaranteed. We recommend migrating to [`@availity/element`](https://availity.github.io/element).
+
+---
+
 > Simple icon component that is a wrapper for the icons in the availity uikit. **[Icon List](http://availity.github.io/availity-uikit/v4/icons)**
 
 [![Version](https://img.shields.io/npm/v/@availity/icon.svg?style=for-the-badge)](https://www.npmjs.com/package/@availity/icon)
