@@ -4,10 +4,15 @@
   "projectType": "library",
   "targets": {
     "test": {
-      "executor": "@nx/jest:jest",
-      "outputs": ["{workspaceRoot}/coverage/favorites"],
+      "executor": "nx:run-commands",
       "options": {
-        "jestConfig": "packages/favorites/jest.config.js"
+        "command": "vitest run --project=favorites",
+        "cwd": "."
+      },
+      "configurations": {
+        "ci": {
+          "command": "vitest run --project=favorites --coverage"
+        }
       }
     },
     "version": {
@@ -33,6 +38,12 @@
         "noEslintrc": false,
         "hasTypeAwareRules": true,
         "cacheStrategy": "metadata"
+      }
+    },
+    "build": {
+      "command": "tsup --dts",
+      "options": {
+        "cwd": "packages/favorites"
       }
     }
   }

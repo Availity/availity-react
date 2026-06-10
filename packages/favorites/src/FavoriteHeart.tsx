@@ -63,7 +63,7 @@ export const FavoriteHeart = ({
    * width of the outer container. Sizes smaller '1.5rem' or equivalent will have no effect.
    */
   size?: string;
-}): JSX.Element => {
+}): React.JSX.Element => {
   const { isFavorited, isLastClickedFavorite, status, toggleFavorite } = useFavorites(id);
 
   const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {

@@ -1,5 +1,5 @@
 import React from 'react';
-import { StoryObj } from '@storybook/react';
+import { StoryObj } from '@storybook/react-vite';
 import { QueryClientProvider, QueryClient } from '@tanstack/react-query';
 // eslint-disable-next-line import/no-relative-packages
 import mockFavorites from '../../mock/src/data/settings.json';
@@ -9,7 +9,7 @@ import { FavoriteHeart } from './FavoriteHeart';
 // import README from '../README.md';
 
 export default {
-  title: 'Bootstrap Components/Favorites',
+  title: 'Deprecated/Favorites',
   component: FavoriteHeart,
 };
 

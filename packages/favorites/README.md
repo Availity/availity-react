@@ -1,5 +1,11 @@
 # @availity/favorites
 
+## ⚠️ Deprecated
+
+This package is deprecated and no longer actively maintained. Future updates are not guaranteed. We recommend migrating to [`@availity/element`](https://availity.github.io/element).
+
+---
+
 > Favorite Heart for favoriting items such as resources/applications etc.
 
 [![Version](https://img.shields.io/npm/v/@availity/favorites.svg?style=for-the-badge)](https://www.npmjs.com/package/@availity/favorites)

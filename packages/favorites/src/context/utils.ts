@@ -31,14 +31,14 @@ const submit = async ({ favorites, targetFavoriteId }: MutationVariables, applic
 };
 
 const getFavorites = async (applicationId: string) => {
-  const result = await avSettingsApi.getApplication(applicationId);
+  const result: { data?: { settings?: Array<{ favorites?: unknown }> } } = await avSettingsApi.getApplication(applicationId);
   const unvalidatedFavorites = result?.data?.settings?.[0]?.favorites;
   const validatedFavorites = validateFavorites(unvalidatedFavorites);
 
   return validatedFavorites;
 };
 
-export const useFavoritesQuery = (applicationId: string): UseQueryResult<Favorite[], unknown> => useQuery(['favorites'], () => getFavorites(applicationId));
+export const useFavoritesQuery = (applicationId: string): UseQueryResult<Favorite[], unknown> => useQuery({ queryKey: ['favorites'], queryFn: () => getFavorites(applicationId) });
 
 type MutationOptions = {
   onMutationStart?: (targetFavoriteId: string) => void;
@@ -48,15 +48,15 @@ type MutationOptions = {
 // eslint-disable-next-line @typescript-eslint/explicit-module-boundary-types
 export const useSubmitFavorites = ({ onMutationStart }: MutationOptions, applicationId: string) => {
   const queryClient = useQueryClient();
-  const { mutateAsync: submitFavorites, ...rest } = useMutation(({ favorites, targetFavoriteId }: MutationVariables) => submit({ favorites, targetFavoriteId }, applicationId),
-    {
-      onMutate(variables) {
-        onMutationStart?.(variables.targetFavoriteId);
-      },
-      onSuccess(data) {
-        queryClient.setQueryData(['favorites'], data.favorites);
-      },
-    });
+  const { mutateAsync: submitFavorites, ...rest } = useMutation({
+    mutationFn: ({ favorites, targetFavoriteId }: MutationVariables) => submit({ favorites, targetFavoriteId }, applicationId),
+    onMutate(variables) {
+      onMutationStart?.(variables.targetFavoriteId);
+    },
+    onSuccess(data) {
+      queryClient.setQueryData(['favorites'], data.favorites);
+    },
+  });
   return { submitFavorites, ...rest };
 };
 

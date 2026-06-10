@@ -11,8 +11,8 @@ import Favorites, { FavoriteHeart } from '..';
 
 const queryClient = new QueryClient();
 
-jest.mock('@availity/api-axios');
-jest.mock('@availity/message-core');
+vi.mock('@availity/api-axios');
+vi.mock('@availity/message-core');
 
 global.document.createRange = () => ({
   setStart: () => {},
@@ -53,7 +53,7 @@ const domain = () => {
   return '*';
 };
 
-avMessages.subscribe = jest.fn((event, fn) => {
+avMessages.subscribe = vi.fn((event, fn) => {
   window.addEventListener('message', (event) => {
     if (!event || !event.data) {
       // check origin as trusted domain
@@ -79,10 +79,10 @@ avMessages.subscribe = jest.fn((event, fn) => {
 
     fn(data);
   });
-  return () => jest.fn();
+  return () => vi.fn();
 });
 
-avMessages.send = jest.fn((payload, target = window.top) => {
+avMessages.send = vi.fn((payload, target = window.top) => {
   try {
     const message = typeof payload === 'string' ? payload : JSON.stringify(payload);
     target.postMessage(message, domain());
@@ -95,7 +95,7 @@ avMessages.send = jest.fn((payload, target = window.top) => {
 // If a test finishes before a post message has settled, it can be captured by the following test, polluting it's data
 const waitForPostMessageToSettle = () => waitFor(() => expect(avMessages.send).toHaveBeenCalled());
 
-const getApplicationMock = jest.fn().mockResolvedValue({
+const getApplicationMock = vi.fn().mockResolvedValue({
   data: {
     settings: [
       {
@@ -114,7 +114,7 @@ const getApplicationMock = jest.fn().mockResolvedValue({
   },
 });
 
-const setApplicationMock = jest.fn().mockResolvedValue({
+const setApplicationMock = vi.fn().mockResolvedValue({
   data: {
     favorites: [],
   },
@@ -145,13 +145,13 @@ describe('FavoriteHeart', () => {
   });
 
   afterEach(() => {
-    jest.clearAllMocks();
+    vi.clearAllMocks();
     queryClient.clear();
     global.document.createRange = null;
   });
 
   test('should call max modal when at max favorites', async () => {
-    avSettingsApi.getApplication = jest.fn(() =>
+    avSettingsApi.getApplication = vi.fn(() =>
       Promise.resolve({
         data: {
           settings: [
@@ -213,7 +213,7 @@ describe('FavoriteHeart', () => {
   });
 
   test('should show tooltip with remove message', async () => {
-    avSettingsApi.setApplication = jest.fn().mockResolvedValue({
+    avSettingsApi.setApplication = vi.fn().mockResolvedValue({
       data: {
         favorites: [
           {
@@ -271,7 +271,7 @@ describe('FavoriteHeart', () => {
       { id: '456', pos: 1 },
       { id: '789', pos: 2 },
     ];
-    avSettingsApi.setApplication = jest.fn().mockResolvedValue({
+    avSettingsApi.setApplication = vi.fn().mockResolvedValue({
       data: {
         favorites,
       },
@@ -403,7 +403,7 @@ describe('FavoriteHeart', () => {
 
   test('should delete favorite and send post message with updated favorites', async () => {
     const favorites = [{ id: '456', pos: 0 }];
-    avSettingsApi.setApplication = jest.fn(() =>
+    avSettingsApi.setApplication = vi.fn(() =>
       Promise.resolve({
         data: {
           favorites,
@@ -438,7 +438,7 @@ describe('FavoriteHeart', () => {
 
   test('should delete favorite and send post message with updated favorites when enter is pressed', async () => {
     const favorites = [{ id: '456', pos: 0 }];
-    avSettingsApi.setApplication = jest.fn(() =>
+    avSettingsApi.setApplication = vi.fn(() =>
       Promise.resolve({
         data: {
           favorites,
@@ -470,7 +470,7 @@ describe('FavoriteHeart', () => {
   });
 
   test('should call onMouseDown once toggled', async () => {
-    avSettingsApi.setApplication = jest.fn().mockResolvedValue({
+    avSettingsApi.setApplication = vi.fn().mockResolvedValue({
       data: {
         favorites: [
           {
@@ -480,7 +480,7 @@ describe('FavoriteHeart', () => {
         ],
       },
     });
-    const onMouseDown = jest.fn(() => {});
+    const onMouseDown = vi.fn(() => {});
     const { container } = render(
       <Providers>
         <FavoriteHeart onMouseDown={onMouseDown} id="1234" />
@@ -502,7 +502,7 @@ describe('FavoriteHeart', () => {
   });
 
   test('should call onChange once toggled', async () => {
-    avSettingsApi.setApplication = jest.fn().mockResolvedValue({
+    avSettingsApi.setApplication = vi.fn().mockResolvedValue({
       data: {
         favorites: [
           {
@@ -513,7 +513,7 @@ describe('FavoriteHeart', () => {
       },
     });
     const user = userEvent.setup();
-    const onChange = jest.fn(() => {});
+    const onChange = vi.fn(() => {});
     const { container } = render(
       <Providers>
         <FavoriteHeart onChange={onChange} id="1234" />
@@ -536,7 +536,7 @@ describe('FavoriteHeart', () => {
     const initialFavoritedId = 'my_favorite_id';
     const user = userEvent.setup();
 
-    avSettingsApi.getApplication = jest.fn(() =>
+    avSettingsApi.getApplication = vi.fn(() =>
       Promise.resolve({
         data: {
           settings: [
@@ -548,7 +548,7 @@ describe('FavoriteHeart', () => {
       })
     );
 
-    avSettingsApi.setApplication = jest.fn().mockResolvedValue({
+    avSettingsApi.setApplication = vi.fn().mockResolvedValue({
       data: {
         favorites: [
           {
@@ -559,7 +559,7 @@ describe('FavoriteHeart', () => {
       },
     });
 
-    const handleFavoritesChange = jest.fn(() => {});
+    const handleFavoritesChange = vi.fn(() => {});
 
     const { container } = render(
       <QueryClientProvider client={queryClient}>
@@ -584,7 +584,7 @@ describe('FavoriteHeart', () => {
   test('should call onFavoritesChange when unfavorited', async () => {
     const initialFavoritedId = 'my_favorite_id';
 
-    avSettingsApi.getApplication = jest.fn(() =>
+    avSettingsApi.getApplication = vi.fn(() =>
       Promise.resolve({
         data: {
           settings: [
@@ -601,7 +601,7 @@ describe('FavoriteHeart', () => {
       })
     );
 
-    const handleFavoritesChange = jest.fn(() => {});
+    const handleFavoritesChange = vi.fn(() => {});
 
     const { container } = render(
       <QueryClientProvider client={queryClient}>
