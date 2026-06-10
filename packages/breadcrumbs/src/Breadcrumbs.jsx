@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { Breadcrumb, BreadcrumbItem } from 'reactstrap';
 
-const Breadcrumbs = ({ crumbs, active, emptyState, children, linkTag: LinkTag, homeUrl, ...rest }) => {
+const Breadcrumbs = ({ crumbs, active, emptyState = '…', children, linkTag: LinkTag = 'a', homeUrl = '/static/web/onb/onboarding-ui-apps/dashboard-ui/', ...rest }) => {
   const renderBreadCrumb = (crumb) => {
     // default breadcrumbitem render
     let breadCrumbItemChildren = <span>{emptyState}</span>;
@@ -49,12 +49,6 @@ Breadcrumbs.propTypes = {
   children: PropTypes.node,
   /** Url for the Home route. */
   homeUrl: PropTypes.string,
-};
-
-Breadcrumbs.defaultProps = {
-  emptyState: '…',
-  homeUrl: '/static/web/onb/onboarding-ui-apps/dashboard-ui/',
-  linkTag: 'a',
 };
 
 export default Breadcrumbs;
