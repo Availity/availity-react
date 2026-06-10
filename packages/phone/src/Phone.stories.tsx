@@ -1,6 +1,6 @@
 /* eslint-disable no-console */
 import React from 'react';
-import { StoryObj } from '@storybook/react';
+import { StoryObj } from '@storybook/react-vite';
 import { Button } from 'reactstrap';
 import * as yup from 'yup';
 import '@availity/yup';
@@ -13,7 +13,7 @@ import './validatePhone';
 import FormikResults from '../../../story-utils/FormikResults';
 
 export default {
-  title: 'Bootstrap Components/Phone',
+  title: 'Deprecated/Phone',
   parameters: {
     docs: {
       description: {

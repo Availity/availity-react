@@ -3,7 +3,7 @@ import * as yup from 'yup';
 import '../src/validatePhone';
 import { render, fireEvent, waitFor, cleanup } from '@testing-library/react';
 import { Form } from '@availity/form';
-import { Phone } from '..';
+import { Phone } from '../index.js';
 
 const phoneProps = {
   name: 'test_phone',
