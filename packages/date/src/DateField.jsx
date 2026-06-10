@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { FormGroup, Feedback, Label } from '@availity/form';
 
-import Date from './Date';
+import Date from './Date.jsx';
 
 const DateField = ({
   name,

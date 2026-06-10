@@ -9,7 +9,7 @@ import { DateRange } from '../src';
 
 describe('DateRange', () => {
   test('renders error classes', async () => {
-    const onSubmit = jest.fn();
+    const onSubmit = vi.fn();
 
     const { getByText, getByTestId } = render(
       <Form
@@ -36,8 +36,8 @@ describe('DateRange', () => {
   });
 
   test('onChange callback works', async () => {
-    const onSubmit = jest.fn();
-    const onChange = jest.fn();
+    const onSubmit = vi.fn();
+    const onChange = vi.fn();
 
     const { container } = render(
       <Form
@@ -80,7 +80,7 @@ describe('DateRange', () => {
   });
 
   test('does not update formik with invalid format dates', async () => {
-    const onSubmit = jest.fn();
+    const onSubmit = vi.fn();
 
     const { container, getByText } = render(
       <Form
@@ -136,7 +136,7 @@ describe('DateRange', () => {
   });
 
   test('updates formik with invalid dates with allowInvalidDates prop', async () => {
-    const handleSubmit = jest.fn();
+    const handleSubmit = vi.fn();
 
     const { container, getByText } = render(
       <Form
@@ -192,7 +192,7 @@ describe('DateRange', () => {
   });
 
   test('autoSync updates other value', async () => {
-    const onSubmit = jest.fn();
+    const onSubmit = vi.fn();
 
     const { container } = render(
       <Form
@@ -245,7 +245,7 @@ describe('DateRange', () => {
   });
 
   test('works with text input', async () => {
-    const onSubmit = jest.fn();
+    const onSubmit = vi.fn();
 
     const { container, getByText } = render(
       <Form
@@ -295,7 +295,7 @@ describe('DateRange', () => {
   });
 
   test('works with text input in M/D/YYYY format', async () => {
-    const onSubmit = jest.fn();
+    const onSubmit = vi.fn();
 
     const { container, getByText } = render(
       <Form
@@ -345,7 +345,7 @@ describe('DateRange', () => {
   });
 
   test('works with date picker', async () => {
-    const onSubmit = jest.fn();
+    const onSubmit = vi.fn();
 
     const { container, getByText } = render(
       <Form
@@ -398,7 +398,7 @@ describe('DateRange', () => {
   });
 
   test('same day can be selected', async () => {
-    const onSubmit = jest.fn();
+    const onSubmit = vi.fn();
 
     const { container, getByText } = render(
       <Form
@@ -440,7 +440,7 @@ describe('DateRange', () => {
   });
 
   test('pre-selected date ranges appear', async () => {
-    const onSubmit = jest.fn();
+    const onSubmit = vi.fn();
 
     const { container } = render(
       <Form
@@ -537,7 +537,7 @@ describe('DateRange', () => {
   });
 
   test('renders new year option when navigating past initial range', async () => {
-    const onChange = jest.fn();
+    const onChange = vi.fn();
 
     const min = moment('12/01/2020').subtract(1, 'years');
     const max = moment().add(1, 'years');

@@ -1,6 +1,6 @@
 /* eslint-disable no-console */
 import React from 'react';
-import { StoryObj } from '@storybook/react';
+import { StoryObj } from '@storybook/react-vite';
 import '../styles.scss';
 import { Button } from 'reactstrap';
 import { avDate, dateRange } from '@availity/yup';
@@ -20,7 +20,7 @@ type Units = unitOfTime.DurationConstructor;
 const distanceUnits: Units[] = ['day', 'month'];
 
 export default {
-  title: 'Bootstrap Components/Date',
+  title: 'Deprecated/Date',
   component: FormikDate,
   parameters: {
     docs: {

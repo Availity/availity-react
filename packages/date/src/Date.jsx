@@ -9,7 +9,7 @@ import moment from 'moment';
 
 import '../polyfills';
 
-import { isOutsideRange, limitPropType, buildYearPickerOptions } from './utils';
+import { isOutsideRange, limitPropType, buildYearPickerOptions } from './utils.js';
 
 export const isoDateFormat = 'YYYY-MM-DD';
 

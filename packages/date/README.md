@@ -1,5 +1,11 @@
 # @availity/date
 
+## ⚠️ Deprecated
+
+This package is deprecated and no longer actively maintained. Future updates are not guaranteed. We recommend migrating to [`@availity/element`](https://availity.github.io/element).
+
+---
+
 > Wrapper for [react-dates](https://github.com/airbnb/react-dates) to work with [formik](https://github.com/jaredpalmer/formik)
 
 [![Version](https://img.shields.io/npm/v/@availity/date.svg?style=for-the-badge)](https://www.npmjs.com/package/@availity/date)

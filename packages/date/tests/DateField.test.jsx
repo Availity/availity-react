@@ -8,7 +8,7 @@ import { DateField } from '../src';
 
 describe('Date', () => {
   test('renders with a string label', async () => {
-    const onSubmit = jest.fn();
+    const onSubmit = vi.fn();
 
     const { getByText } = render(
       <Form
@@ -29,7 +29,7 @@ describe('Date', () => {
   });
 
   test('renders with a component label', async () => {
-    const onSubmit = jest.fn();
+    const onSubmit = vi.fn();
 
     const { getByText } = render(
       <Form
@@ -50,7 +50,7 @@ describe('Date', () => {
   });
 
   test('renders label props passed with labelAttrs', async () => {
-    const onSubmit = jest.fn();
+    const onSubmit = vi.fn();
 
     const { getByText } = render(
       <Form
@@ -103,7 +103,7 @@ describe('Date', () => {
   });
 
   test('renders error text', async () => {
-    const onSubmit = jest.fn();
+    const onSubmit = vi.fn();
 
     const { getByText, getByTestId } = render(
       <Form

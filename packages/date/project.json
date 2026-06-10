@@ -4,10 +4,15 @@
   "projectType": "library",
   "targets": {
     "test": {
-      "executor": "@nx/jest:jest",
-      "outputs": ["{workspaceRoot}/coverage/date"],
+      "executor": "nx:run-commands",
       "options": {
-        "jestConfig": "packages/date/jest.config.js"
+        "command": "vitest run --project=date",
+        "cwd": "."
+      },
+      "configurations": {
+        "ci": {
+          "command": "vitest run --project=date --coverage"
+        }
       }
     },
     "version": {
@@ -16,7 +21,8 @@
         "preset": "angular",
         "commitMessageFormat": "chore({projectName}): release version ${version} [skip ci]",
         "tagPrefix": "{projectName}@",
-        "baseBranch": "master"
+        "baseBranch": "master",
+        "trackDeps": true
       }
     },
     "lint": {
@@ -33,6 +39,13 @@
         "hasTypeAwareRules": true,
         "cacheStrategy": "metadata"
       }
+    },
+    "build": {
+      "command": "tsup --dts",
+      "options": {
+        "cwd": "packages/date"
+      },
+      "dependsOn": []
     }
   }
 }

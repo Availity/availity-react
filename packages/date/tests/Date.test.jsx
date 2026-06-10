@@ -11,7 +11,7 @@ import FormikDate from '../src';
 
 describe('Date', () => {
   test('renders error classes', async () => {
-    const onSubmit = jest.fn();
+    const onSubmit = vi.fn();
 
     const { getByText, getByTestId } = render(
       <Form
@@ -38,8 +38,8 @@ describe('Date', () => {
   });
 
   test('renders calls on change', async () => {
-    const onSubmit = jest.fn();
-    const onChange = jest.fn();
+    const onSubmit = vi.fn();
+    const onChange = vi.fn();
 
     const { container } = render(
       <Form
@@ -67,8 +67,8 @@ describe('Date', () => {
   });
 
   test('renders call on change when clearing out value manually', async () => {
-    const onSubmit = jest.fn();
-    const onChange = jest.fn();
+    const onSubmit = vi.fn();
+    const onChange = vi.fn();
 
     const user = userEvent.setup();
     const { container } = render(
@@ -93,7 +93,7 @@ describe('Date', () => {
   });
 
   test('works with text input', async () => {
-    const onSubmit = jest.fn();
+    const onSubmit = vi.fn();
 
     const { container, getByText } = render(
       <Form
@@ -128,7 +128,7 @@ describe('Date', () => {
   });
 
   test('works with text input in M/D/YYYY format', async () => {
-    const onSubmit = jest.fn();
+    const onSubmit = vi.fn();
 
     const { container, getByText } = render(
       <Form
@@ -163,7 +163,7 @@ describe('Date', () => {
   });
 
   test('works with date picker', async () => {
-    const onSubmit = jest.fn();
+    const onSubmit = vi.fn();
 
     const { container, getByText } = render(
       <Form
@@ -252,7 +252,7 @@ describe('Date', () => {
   });
 
   test('renders new year option when navigating past initial range', async () => {
-    const onChange = jest.fn();
+    const onChange = vi.fn();
 
     const min = moment('12/01/2020').subtract(1, 'years');
     const max = moment().add(1, 'years');
