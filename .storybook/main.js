@@ -1,79 +1,42 @@
-import path from 'path';
-import remarkGfm from 'remark-gfm';
-
-function getAbsolutePath(value) {
-  return path.dirname(require.resolve(path.join(value, 'package.json')));
-}
-
+import { createRequire } from "node:module";
+import { dirname, join } from "node:path";
+const require = createRequire(import.meta.url);
 const config = {
   stories: [
-    './*.stories.mdx',
-    './stories/*.stories.mdx',
+    './*.stories.tsx',
     './stories/*.stories.tsx',
     '../packages/**/*.stories.tsx',
-    '../packages/**/*.stories.mdx',
   ],
 
-  addons: [
-    getAbsolutePath('@storybook/addon-essentials'),
-    getAbsolutePath('@storybook/addon-a11y'),
-    getAbsolutePath('@storybook/addon-webpack5-compiler-babel'),
-  ],
-
+  addons: [getAbsolutePath("@storybook/addon-a11y"), getAbsolutePath("@storybook/addon-docs")],
   staticDirs: ['../static', './static'],
 
-  typescript: {
-    reactDocgenTypescriptOptions: {
-      shouldExtractLiteralValuesFromEnum: true,
-      propFilter: (prop) => (prop.parent ? !/node_modules\/(?!reactstrap).*/.test(prop.parent.fileName) : true),
-    },
-
-    reactDocgen: 'react-docgen-typescript',
-  },
-
-  webpackFinal: async (config) => {
-    config.module.rules.push(
-      {
-        test: /\.scss$/,
-        use: [
-          'style-loader',
-          {
-            loader: 'css-loader',
-            options: {
-              modules: {
-                localIdentName: '[name]__[local]__[hash:base64:5]',
-              },
-            },
-          },
-          'sass-loader',
-        ],
-        include: /\.module\.scss$/,
-      },
-      {
-        test: /\.scss$/,
-        use: ['style-loader', 'css-loader', 'sass-loader'],
-        exclude: /\.module\.scss$/,
-      },
-      {
-        test: /\.(js|jsx|ts|tsx)$/,
-        loader: require.resolve('babel-loader'),
-        include: new RegExp(`node_modules[/\\\\](?=(@availity)).*`),
-      }
-    );
-
-    config.resolve.extensions.push('.ts', '.tsx');
-
-    return config;
-  },
-
   framework: {
-    name: getAbsolutePath('@storybook/react-webpack5'),
-    options: {},
+    name: getAbsolutePath("@storybook/react-vite"),
+    options: {
+      builder: {
+        viteConfigPath: undefined,
+      },
+    },
   },
 
-  docs: {
-    autodocs: true,
-  },
+  viteFinal: async (config) => {
+    config.resolve = {
+      ...config.resolve,
+      conditions: ['source', ...(config.resolve?.conditions || [])],
+    };
+    config.css = {
+      ...config.css,
+      modules: {
+        localsConvention: 'camelCase',
+      },
+    };
+    return config;
+  }
 };
 
 export default config;
+
+function getAbsolutePath(value) {
+  return dirname(require.resolve(join(value, "package.json")));
+}

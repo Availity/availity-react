@@ -1,4 +1,3 @@
-/* eslint-disable import/prefer-default-export */
 import './config.scss';
 
 export const parameters = {
@@ -11,11 +10,8 @@ export const parameters = {
     storySort: {
       order: [
         'Home',
-        'Hooks',
         'Components',
-        'Form Components',
-        ['Form', 'Date', 'Phone', 'Select', 'Upload'],
-        'Legacy Form Components',
+        'Hooks',
         'Deprecated',
         '3rd Party',
       ],
@@ -26,10 +22,10 @@ export const parameters = {
 
 // Make sure we are in the browser before starting
 if (typeof global.process === 'undefined') {
-  const { worker } = require('../packages/mock/src/browser');
+  const { worker } = await import('../packages/mock/src/browser.ts');
 
   const config =
-    process.env.NODE_ENV === 'development'
+    import.meta.env.MODE === 'development'
       ? undefined
       : {
           serviceWorker: { url: '/availity-react/storybook/mockServiceWorker.js' },
@@ -37,4 +33,5 @@ if (typeof global.process === 'undefined') {
 
   worker.start(config);
 }
+
 export const tags = ['autodocs'];
