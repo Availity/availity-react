@@ -1,5 +1,5 @@
 import React from 'react';
-import { StoryObj } from '@storybook/react';
+import { StoryObj } from '@storybook/react-vite';
 
 import Tooltip from './Tooltip';
 // import README from "../README.md";
@@ -8,7 +8,7 @@ import Tooltip from './Tooltip';
  * Accessible tooltip for hovering over.
  */
 export default {
-  title: 'Bootstrap Components/Tooltip',
+  title: 'Deprecated/Tooltip',
   component: Tooltip,
 };
 
