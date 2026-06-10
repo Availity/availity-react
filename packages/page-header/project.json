@@ -4,10 +4,15 @@
   "projectType": "library",
   "targets": {
     "test": {
-      "executor": "@nx/jest:jest",
-      "outputs": ["{workspaceRoot}/coverage/page-header"],
+      "executor": "nx:run-commands",
       "options": {
-        "jestConfig": "packages/page-header/jest.config.js"
+        "command": "vitest run --project=page-header",
+        "cwd": "."
+      },
+      "configurations": {
+        "ci": {
+          "command": "vitest run --project=page-header --coverage"
+        }
       }
     },
     "version": {
@@ -33,6 +38,12 @@
         "noEslintrc": false,
         "hasTypeAwareRules": true,
         "cacheStrategy": "metadata"
+      }
+    },
+    "build": {
+      "command": "tsup",
+      "options": {
+        "cwd": "packages/page-header"
       }
     }
   }

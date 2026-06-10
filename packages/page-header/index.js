@@ -1,1 +1,1 @@
-export { default } from './src/PageHeader';
+export { default } from './src/PageHeader.jsx';

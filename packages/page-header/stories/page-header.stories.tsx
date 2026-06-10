@@ -1,5 +1,5 @@
 import React from 'react';
-import { StoryObj } from '@storybook/react';
+import { StoryObj } from '@storybook/react-vite';
 import { BreadcrumbItem, Button } from 'reactstrap';
 import TrainingLink from '@availity/training-link';
 import Breadcrumbs from '@availity/breadcrumbs';
@@ -33,7 +33,7 @@ const logoAttrs = {
 const colors = ['black', 'blue', 'orange', 'green'];
 
 export default {
-  title: 'Bootstrap Components/Page Header',
+  title: 'Deprecated/Page Header',
   parameters: {
     docs: {
       // page: README,

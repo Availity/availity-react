@@ -4,12 +4,12 @@ import TrainingLink from '@availity/training-link';
 import { avWebQLApi } from '@availity/api-axios';
 import { NavLink } from 'reactstrap';
 import Spaces from '@availity/spaces';
-import PageHeader from '..';
+import PageHeader from '../index.js';
 
-jest.mock('@availity/api-axios');
+vi.mock('@availity/api-axios');
 
 afterEach(() => {
-  jest.clearAllMocks();
+  vi.clearAllMocks();
   cleanup();
 });
 
