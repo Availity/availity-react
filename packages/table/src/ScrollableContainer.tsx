@@ -4,10 +4,10 @@ type Props = {
   /** This is a unique id that is prepended to the element */
   id?: string;
   /** Children can be a react child. */
-  children?: React.ReactNode | React.ReactChild;
+  children?: React.ReactNode;
 } & React.HTMLAttributes<HTMLElement>;
 
-const ScrollableContainer = ({ id, children, ...rest }: Props): JSX.Element => (
+const ScrollableContainer = ({ id, children, ...rest }: Props): React.JSX.Element => (
   <div id={id} className="av-scrollable-table-wrapper" {...rest}>
     {Array.isArray(children) &&
       // eslint-disable-next-line react/no-array-index-key

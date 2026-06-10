@@ -9,7 +9,7 @@ import TableCell from './TableCell';
 import { Cell, ExtendedTableHeader, IdType, Row, TableInstance, RowProps } from './types/ReactTable';
 import { useTableContext } from './TableContext';
 
-const TableContent = <T extends IdType>(): JSX.Element | null => {
+const TableContent = <T extends IdType>(): React.JSX.Element | null => {
   const {
     instance: tableInstance,
     id,
@@ -38,7 +38,7 @@ const TableContent = <T extends IdType>(): JSX.Element | null => {
   const populateId = () => (id ? `${id}_` : '');
 
   return (
-    <RsTable id={id} {...getTableProps({ className: 'av-grid' })} {...tableProps}>
+    <RsTable id={id} {...(getTableProps({ className: 'av-grid' }) as Record<string, unknown>)} {...tableProps}>
       <TableHeader id={`${populateId()}table_header`} {...headerProps}>
         {headerGroups.map((headerGroup, rowIndex: number) => {
           const headerGroupEx = headerGroup as ExtendedTableHeader<T>;
@@ -78,7 +78,7 @@ const TableContent = <T extends IdType>(): JSX.Element | null => {
           );
         })}
       </TableHeader>
-      <tbody {...getTableBodyProps()} {...bodyProps}>
+      <tbody {...(getTableBodyProps() as Record<string, unknown>)} {...bodyProps}>
         {(paged ? page : rows).map((row, rowIndex: number) => {
           prepareRow(row);
           return (
@@ -116,9 +116,9 @@ const TableContent = <T extends IdType>(): JSX.Element | null => {
       {footer && (
         <tfoot data-testid={`${populateId()}table_footer`}>
           {footerGroups.map((group) => (
-            <tr data-testid={`${populateId()}table_footer_row`} {...group.getFooterGroupProps()}>
+            <tr data-testid={`${populateId()}table_footer_row`} {...(group.getFooterGroupProps() as unknown as Record<string, unknown>)}>
               {group.headers.map((column) => (
-                <td data-testid={`${populateId()}table_footer_row_${column.id}`} {...column.getFooterProps()}>
+                <td data-testid={`${populateId()}table_footer_row_${column.id}`} {...(column.getFooterProps() as unknown as Record<string, unknown>)}>
                   {column.render('Footer')}
                 </td>
               ))}

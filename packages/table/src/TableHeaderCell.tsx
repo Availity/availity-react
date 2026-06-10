@@ -37,7 +37,7 @@ const TableHeaderCell = <T extends IdType>({
   useColumnWidths,
 
   ...rest
-}: Props<T>): JSX.Element => {
+}: Props<T>): React.JSX.Element => {
   const sort = () => {
     column.toggleSortBy(!column.isSortedDesc, false);
     if (onSort) {

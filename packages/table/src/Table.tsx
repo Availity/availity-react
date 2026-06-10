@@ -74,7 +74,7 @@ export type CommonTableProps<T extends IdType> = {
   /** Custom plugin hooks that should be passed to the table. For more information on how to utilize and apply hooks, refer to the react-table documentation. */
   pluginHooks?: PluginHook<T>[];
   /** Any child elements that should be added underneath the table context. */
-  children?: React.ReactNode | React.ReactChild;
+  children?: React.ReactNode;
 };
 
 export type TableRef<T extends IdType> = {
@@ -119,7 +119,7 @@ const TableComponent = <T extends IdType>(
     ...rest
   }: TableProps<T>,
   ref: Ref<TableRef<T>>
-): JSX.Element | null => {
+): React.JSX.Element | null => {
   const [selectedTableRows, setSelectedTableRows] = useState<Row<T>[]>([]);
   const [sortableColumns] = useState<TableSortOption[]>(
     filter(columns, (column) => !column.disableSortBy && column.defaultCanSort).map((column) => {
@@ -246,5 +246,5 @@ const TableComponent = <T extends IdType>(
 
 const Table = forwardRef(TableComponent) as <T extends IdType>(
   p: TableProps<T> & { ref?: Ref<TableRef<T>> }
-) => JSX.Element;
+) => React.JSX.Element;
 export default Table;

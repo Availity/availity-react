@@ -46,7 +46,7 @@ const TableRow = <T extends IdType>({
   getRowProps,
   children,
   ...rest
-}: Props<T>): JSX.Element => {
+}: Props<T>): React.JSX.Element => {
   const { selectedFlatRows: selectedRows, visibleColumns } = instance as TableInstance<T>;
   const columns = (visibleColumns || []) as Column<T>[];
 

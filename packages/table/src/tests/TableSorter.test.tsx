@@ -117,7 +117,7 @@ describe('TableSorter', () => {
   });
 
   test('should sort on dropdown select', async () => {
-    const onSort = jest.fn();
+    const onSort = vi.fn();
 
     const { getByTestId } = render(
       <Table sortable data={basicData} columns={basicColumns}>
@@ -142,7 +142,7 @@ describe('TableSorter', () => {
   });
 
   test('should populate sortOptions when provided', async () => {
-    const onSort = jest.fn();
+    const onSort = vi.fn();
 
     const { getByTestId } = render(
       <Table sortable data={basicData} columns={basicColumns}>

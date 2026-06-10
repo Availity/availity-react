@@ -11,7 +11,7 @@ type CellProps<T extends IdType> = {
 
 export interface DateTimeCellConfig {
   dateFormat: string;
-  defaultValue?: string | React.ReactChild | React.ElementType;
+  defaultValue?: string | React.ReactNode | React.ElementType;
   displayTooltip?: boolean;
   tooltipProps?: UncontrolledTooltipProps;
 }
@@ -21,8 +21,8 @@ const DateCell = <T extends IdType>({
   defaultValue,
   displayTooltip = true,
   tooltipProps,
-}: DateTimeCellConfig): JSX.Element | ((cell: CellProps<T>) => JSX.Element) => {
-  const DateCellDef = ({ value, row, column }: CellProps<T>): JSX.Element => {
+}: DateTimeCellConfig): React.JSX.Element | ((cell: CellProps<T>) => React.JSX.Element) => {
+  const DateCellDef = ({ value, row, column }: CellProps<T>): React.JSX.Element => {
     const formattedValue = !value ? defaultValue : moment(value).format(dateFormat);
 
     return formattedValue !== defaultValue ? (

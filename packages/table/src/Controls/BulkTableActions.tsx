@@ -44,7 +44,7 @@ const BulkTableActions = <T extends IdType>({
   dropdownToggleProps,
   dropdownMenuProps,
   onRecordsSelected,
-}: BulkTableActionsProps<T>): JSX.Element | null => {
+}: BulkTableActionsProps<T>): React.JSX.Element | null => {
   const { instance } = useTableContext();
   const { isAllRowsSelected, toggleAllRowsSelected, selectedFlatRows } = instance as TableInstance<T>;
 

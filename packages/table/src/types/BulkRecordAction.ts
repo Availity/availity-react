@@ -7,8 +7,8 @@ export interface BulkRecordAction<T extends IdType> extends TableAction {
   isVisible?: (records?: T[], rows?: Row<T>[]) => boolean;
   displayText?:
     | string
-    | React.ReactChild
+    | React.ReactNode
     | React.ElementType
-    | ((records: T[], rows?: Row<T>[]) => string | React.ReactChild | React.ElementType);
+    | ((records: T[], rows?: Row<T>[]) => string | React.ReactNode | React.ElementType);
   dropdownItemProps?: DropdownItemProps;
 }

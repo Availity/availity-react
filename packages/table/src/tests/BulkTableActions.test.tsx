@@ -8,7 +8,7 @@ import { Column } from '../types/ReactTable';
 import Table from '../Table';
 import TableContent from '../TableContent';
 
-jest.mock('@availity/hooks');
+vi.mock('@availity/hooks');
 
 const basicColumns = [
   {
@@ -34,12 +34,12 @@ const bulkActions = [
     id: 'action1',
     displayText: 'Action 1',
     isVisible: (records?: Record<string, string | boolean | number>[]) => every(records, { isActive: true }),
-    onClick: jest.fn(),
+    onClick: vi.fn(),
   },
   {
     id: 'action2',
     displayText: 'Action 2',
-    onClick: jest.fn(),
+    onClick: vi.fn(),
   },
   {
     id: 'actionDivider',
@@ -48,7 +48,7 @@ const bulkActions = [
   {
     id: 'action2',
     displayText: 'Action 2',
-    onClick: jest.fn(),
+    onClick: vi.fn(),
     isVisible: () => false,
   },
   {
@@ -169,7 +169,7 @@ describe('BulkTableActions', () => {
   });
 
   test('should fire onRecordsSelected when provided', async () => {
-    const onRowsSelected = jest.fn();
+    const onRowsSelected = vi.fn();
 
     const { getByTestId } = render(
       <Table

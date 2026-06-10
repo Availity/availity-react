@@ -34,7 +34,7 @@ const TableSorter = <T extends IdType>({
   sortOptions,
   autoGenerateSortOptions = true,
   ...rest
-}: Props): JSX.Element | null => {
+}: Props): React.JSX.Element | null => {
   const { sortableColumns, instance } = useTableContext();
   const { toggleSortBy, state } = instance as TableInstance<T>;
 

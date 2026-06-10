@@ -25,8 +25,8 @@ const ActionCell = <T extends IdType>({
   tableActionMenuProps,
   tooltipProps,
   isSticky,
-}: ActionCellConfig<T>): ((cell: Cell<T>) => JSX.Element) => {
-  const ActionCellDef = ({ row: { original, id } }: Cell<T>): JSX.Element => {
+}: ActionCellConfig<T>): ((cell: Cell<T>) => React.JSX.Element) => {
+  const ActionCellDef = ({ row: { original, id } }: Cell<T>): React.JSX.Element => {
     const { height, width } = useWindowDimensions();
 
     const [menuPositionTransform, setMenuPositionTransform] = useState<string | undefined>();

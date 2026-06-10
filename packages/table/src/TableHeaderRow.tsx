@@ -17,7 +17,7 @@ export type Props<T extends IdType> = {
   children?: React.ReactNode;
 } & React.HTMLAttributes<HTMLElement>;
 
-const TableHeaderRow = <T extends IdType>({ headerGroup, scrollable, children, ...rest }: Props<T>): JSX.Element => (
+const TableHeaderRow = <T extends IdType>({ headerGroup, scrollable, children, ...rest }: Props<T>): React.JSX.Element => (
   <tr
     {...headerGroup.getHeaderGroupProps({
       className: scrollable ? 'fixed-width-tr' : '',

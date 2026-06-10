@@ -1,8 +1,9 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import React, { useEffect, useState } from 'react';
-import { StoryObj } from '@storybook/react';
+import { StoryObj } from '@storybook/react-vite';
 
 import response from '@availity/mock/src/data/patients.json';
+// eslint-disable-next-line import/no-named-as-default
 import Pagination, { PaginationControls } from '@availity/pagination';
 import Table, {
   Column,
@@ -154,7 +155,7 @@ const bulkActions = [
 ];
 
 export default {
-  title: 'Bootstrap Components/Table',
+  title: 'Deprecated/Table',
   component: Table,
 };
 
@@ -225,7 +226,7 @@ export const _BasicTable: StoryObj<TableProps<any>> = {
   },
 };
 
-const AdditionalContent = (): JSX.Element => (
+const AdditionalContent = (): React.JSX.Element => (
   <div>This is some additional content that should be displayed inside the cell.</div>
 );
 

@@ -23,8 +23,7 @@ import {
 
 import { TableSort } from './TableSort';
 
-/* eslint-disable-next-line  @typescript-eslint/ban-types */
-export type IdType = { id?: string | number } & object;
+export type IdType = { id?: string | number } & Record<string, unknown>;
 
 export type Row<T extends IdType> = RtRow<T> &
   UseExpandedRowProps<T> & {
