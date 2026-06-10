@@ -12,7 +12,7 @@ describe('UploadProgressBar', () => {
   });
 
   afterEach(() => {
-    jest.clearAllMocks();
+    vi.clearAllMocks();
   });
 
   test('should render', async () => {
@@ -76,7 +76,7 @@ describe('UploadProgressBar', () => {
   });
 
   test('should not submit parent forms on password submit', () => {
-    const submitFunction = jest.fn();
+    const submitFunction = vi.fn();
 
     const { getByTestId, getByText } = render(
       <form onSubmit={submitFunction}>

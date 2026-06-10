@@ -1,5 +1,5 @@
 import React from 'react';
-import { Meta } from '@storybook/react';
+import { Meta } from '@storybook/react-vite';
 import { Form } from '@availity/form';
 import { CustomInput } from 'reactstrap';
 
@@ -19,7 +19,7 @@ const file = (fileName: string) => ({
 });
 
 export default {
-  title: 'Bootstrap Components/Upload',
+  title: 'Deprecated/Upload',
   parameters: {
     docs: {
       description: {

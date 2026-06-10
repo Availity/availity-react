@@ -2,7 +2,7 @@ import React, { useRef } from 'react';
 import PropTypes from 'prop-types';
 import { Button, Input } from 'reactstrap';
 
-import FilePicker from './FilePicker';
+import FilePicker from './FilePicker.jsx';
 
 const FilePickerBtn = ({
   onClick,

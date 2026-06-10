@@ -8,8 +8,8 @@ import Icon from '@availity/icon';
 import { useField, useFormikContext } from 'formik';
 import classNames from 'classnames';
 
-import FilePickerBtn from './FilePickerBtn';
-import FileList from './FileList';
+import FilePickerBtn from './FilePickerBtn.jsx';
+import FileList from './FileList.jsx';
 import '../styles.scss';
 
 const Dropzone = React.lazy(() => import('react-dropzone'));

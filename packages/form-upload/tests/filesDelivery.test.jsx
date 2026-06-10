@@ -4,7 +4,7 @@ import { Form } from '@availity/form';
 import { Button } from 'reactstrap';
 import { server } from '@availity/mock/src/server';
 
-import Upload from '..';
+import Upload from '../src/index.js';
 
 const renderUpload = (formProps, uploadProps) =>
   render(
@@ -25,7 +25,7 @@ describe('filesDelivery upload', () => {
   afterAll(() => server.close());
 
   test('calls avFilesDeliveryApi when deliveryChannel and fileDeliveryMetadata are defined and deliverFileOnSubmit is false', async () => {
-    const mockOnDeliverySuccess = jest.fn();
+    const mockOnDeliverySuccess = vi.fn();
 
     renderUpload(
       {
@@ -74,9 +74,9 @@ describe('filesDelivery upload', () => {
   });
 
   test('calls avFilesDeliveryApi onSubmit when deliverFileOnSubmit is true and deliveryChannel and fileDeliveryMetadata are defined', async () => {
-    const mockOnSubmit = jest.fn();
-    const mockOnDeliverySuccess = jest.fn();
-    const mockOnDeliveryError = jest.fn();
+    const mockOnSubmit = vi.fn();
+    const mockOnDeliverySuccess = vi.fn();
+    const mockOnDeliveryError = vi.fn();
 
     renderUpload(
       { initialValues: { upload: null }, onSubmit: mockOnSubmit },
@@ -125,9 +125,9 @@ describe('filesDelivery upload', () => {
   });
 
   test('does not call avFilesDeliveryApi when onFileUpload is defined', async () => {
-    const mockOnFileUpload = jest.fn();
-    const mockOnDeliverySuccess = jest.fn();
-    const mockOnDeliveryError = jest.fn();
+    const mockOnFileUpload = vi.fn();
+    const mockOnDeliverySuccess = vi.fn();
+    const mockOnDeliveryError = vi.fn();
 
     renderUpload(
       { initialValues: { upload: null } },
