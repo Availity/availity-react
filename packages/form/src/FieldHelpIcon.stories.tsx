@@ -1,10 +1,10 @@
 import React from 'react';
-import { StoryObj } from '@storybook/react';
+import { StoryObj } from '@storybook/react-vite';
 
 import FieldHelpIcon, { FieldHelpIconProps } from './FieldHelpIcon';
 
 export default {
-  title: 'Bootstrap Components/Form/FieldHelpIcon',
+  title: 'Deprecated/Form/FieldHelpIcon',
   component: FieldHelpIcon,
   parameters: {
     docs: {

@@ -3,36 +3,46 @@ import PropTypes from 'prop-types';
 import classNames from 'classnames';
 import { useField, useFormikContext } from 'formik';
 
-import Feedback from './Feedback';
-import FormGroup from './FormGroup';
-import Label from './Label';
+import Feedback from './Feedback.jsx';
+import FormGroup from './FormGroup.jsx';
+import Label from './Label.jsx';
 
-export const RadioGroupContext = createContext();
+export const CheckboxGroupContext = createContext();
 
-export const useRadioGroup = (radioValue) => {
+export const useCheckboxGroup = (name) => {
   const { setFieldValue } = useFormikContext();
-  const { name: groupName, value = '', groupOnChange, ...rest } = useContext(RadioGroupContext);
+  const { name: groupName, groupOnChange, value = [], ...rest } = useContext(CheckboxGroupContext);
 
-  const setValue = () => {
-    setFieldValue(groupName, radioValue);
+  const toggle = () => {
+    const valueArray = [...value];
+
+    const indexOfVal = valueArray.indexOf(name);
+
+    if (indexOfVal === -1) {
+      valueArray.push(name);
+    } else {
+      valueArray.splice(indexOfVal, 1);
+    }
+
+    setFieldValue(groupName, valueArray);
+
     if (groupOnChange) {
-      groupOnChange(radioValue);
+      groupOnChange(valueArray);
     }
   };
 
-  return { groupName, setValue, value: value === radioValue, ...rest };
+  return { toggle, value: value.indexOf(name) > -1, ...rest };
 };
 
-const RadioGroup = ({
+const CheckboxGroup = ({
   name,
   children,
-  label,
   onChange: groupOnChange,
   groupClassName,
-  inline = false,
-  helpId,
+  label,
   labelClassName,
   required,
+  helpId,
   isHelpVideoType,
   ...rest
 }) => {
@@ -51,13 +61,14 @@ const RadioGroup = ({
   if (label) {
     tag = 'fieldset';
     const legendId = `${name}-legend`.toLowerCase();
+    const srRequiredAsterisk = required ? '* ' : null;
     const styles = { cursor: 'default', lineHeight: 'inherit', color: '#000' };
     const labelClasses = classNames('form-inline', labelClassName, !labelClassName && 'h4 font-weight-normal');
 
     legend = (
       <>
         <legend id={legendId} className="sr-only">
-          {required ? '* ' : null}
+          {srRequiredAsterisk}
           {label}
         </legend>
         <div className={labelClasses} style={styles}>
@@ -71,29 +82,35 @@ const RadioGroup = ({
 
   return (
     // eslint-disable-next-line react/jsx-no-constructed-context-values
-    <RadioGroupContext.Provider value={{ ...field, groupOnChange, metadata, inline }}>
+    <CheckboxGroupContext.Provider value={{ ...field, groupOnChange, metadata }}>
       <FormGroup tag={tag} for={name} {...rest}>
         {legend}
-        <div className={classes} data-testid={`radio-items-${name}`}>
+        <div className={classes} data-testid={`check-items-${name}`}>
           {children}
         </div>
         <Feedback name={name} />
       </FormGroup>
-    </RadioGroupContext.Provider>
+    </CheckboxGroupContext.Provider>
   );
 };
 
-RadioGroup.propTypes = {
+CheckboxGroup.propTypes = {
+  /** Name of the checkbox group. Should match name given in initialValues/validationSchema. */
+  name: PropTypes.string.isRequired,
   children: PropTypes.node,
+  /** Class name to apply to the form control. */
   groupClassName: PropTypes.string,
+  /** Help topic id, adds <FieldHelpIcon/> next to the label (should not be within label for accessibility). */
   helpId: PropTypes.string,
-  inline: PropTypes.bool,
+  /** Label for the group or checkboxes. */
   label: PropTypes.node,
-  name: PropTypes.string,
   onChange: PropTypes.func,
+  /** Class name to apply to the Label. Default is Legend styling */
   labelClassName: PropTypes.string,
+  /** Will add <RequiredAsterisk /> to label. */
   required: PropTypes.bool,
+  /** Allows the type of `<FieldHelpIcon/>` to be changed between help-icon and video-help */
   isHelpVideoType: PropTypes.bool,
 };
 
-export default RadioGroup;
+export default CheckboxGroup;

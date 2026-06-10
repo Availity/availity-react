@@ -18,14 +18,11 @@
     "directory": "packages/form"
   },
   "license": "MIT",
+  "type": "module",
   "author": "Kyle Gray <kyle.gray@availity.com>",
-  "browser": "./dist/index.js",
-  "main": "./dist/index.js",
-  "module": "./dist/index.mjs",
-  "types": "./dist/index.d.ts",
   "scripts": {
-    "build": "tsup src/index.js --format esm,cjs --loader \".js=jsx\" --dts",
-    "dev": "tsup src/index.js --format esm,cjs --loader \".js=jsx\" --watch --dts",
+    "build": "tsup src/index.js --format esm --clean --dts",
+    "dev": "tsup src/index.js --format esm --watch --dts",
     "clean": "rm -rf dist",
     "clean:nm": "rm -rf node_modules",
     "publish": "yarn npm publish --tolerate-republish --access public",
@@ -33,19 +30,18 @@
   },
   "dependencies": {
     "@availity/icon": "workspace:*",
-    "@availity/message-core": "^8.0.2",
+    "@availity/message-core": "^9.0.2",
     "classnames": "^2.5.1",
     "prop-types": "^15.8.1",
     "react-currency-input-field": "^3.10.0",
     "uuid": "^10.0.0"
   },
   "devDependencies": {
-    "formik": "^2.4.6",
+    "formik": "^2.4.9",
     "react": "^18.3.1",
     "react-dom": "^18.3.1",
     "reactstrap": "^8.10.1",
-    "tsup": "^8.4.0",
-    "typescript": "^5.5.4",
+    "tsup": "^8.5.1",
     "yup": "^0.32.11"
   },
   "peerDependencies": {
@@ -55,5 +51,14 @@
   },
   "publishConfig": {
     "access": "public"
+  },
+  "exports": {
+    ".": {
+      "source": "./src/index.js",
+      "import": {
+        "types": "./dist/index.d.ts",
+        "default": "./dist/index.js"
+      }
+    }
   }
 }

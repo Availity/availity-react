@@ -5,7 +5,7 @@ import avMessageMock from '@availity/message-core';
 
 import FieldHelpIcon, { OPEN_FIELD_HELP } from '../src/FieldHelpIcon';
 
-jest.mock('@availity/message-core');
+vi.mock('@availity/message-core');
 
 describe('Field Help', () => {
   test('it renders help Icon', () => {

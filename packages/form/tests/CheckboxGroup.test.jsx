@@ -12,7 +12,7 @@ describe('CheckboxGroup', () => {
         initialValues={{
           hello: [],
         }}
-        onSubmit={jest.fn()}
+        onSubmit={vi.fn()}
         // eslint-disable-next-line no-undef
         validationSchema={yup.object().shape({
           hello: yup.array().required('At least one checkbox is required'),
@@ -36,7 +36,7 @@ describe('CheckboxGroup', () => {
         initialValues={{
           hello: [],
         }}
-        onSubmit={jest.fn()}
+        onSubmit={vi.fn()}
         validationSchema={yup.object().shape({
           hello: yup.array().min(1, 'At least one checkbox is required'),
         })}
@@ -67,7 +67,7 @@ describe('CheckboxGroup', () => {
         initialValues={{
           hello: '',
         }}
-        onSubmit={jest.fn()}
+        onSubmit={vi.fn()}
       >
         <CheckboxGroup name="hello" label="Checkbox Group" helpId="helloHelpTopic">
           <Checkbox label="Check One" value="uno" />
@@ -85,7 +85,7 @@ describe('CheckboxGroup', () => {
         initialValues={{
           hello: '',
         }}
-        onSubmit={jest.fn()}
+        onSubmit={vi.fn()}
       >
         <CheckboxGroup name="hello" label="Checkbox Group" required>
           <Checkbox label="Check One" value="uno" />
@@ -98,7 +98,7 @@ describe('CheckboxGroup', () => {
   });
 
   test('submits with proper radio values', async () => {
-    const onSubmit = jest.fn();
+    const onSubmit = vi.fn();
     const { getByText } = render(
       <Form
         initialValues={{
@@ -136,7 +136,7 @@ describe('CheckboxGroup', () => {
   });
 
   test('submits with unchecked radio values', async () => {
-    const onSubmit = jest.fn();
+    const onSubmit = vi.fn();
     const { getByText } = render(
       <Form
         initialValues={{
@@ -172,7 +172,7 @@ describe('CheckboxGroup', () => {
   });
 
   test('calls on change callback', async () => {
-    const onChange = jest.fn();
+    const onChange = vi.fn();
 
     const { getByText } = render(
       <Form
@@ -182,7 +182,7 @@ describe('CheckboxGroup', () => {
         validationSchema={yup.object().shape({
           hello: yup.array(),
         })}
-        onSubmit={jest.fn()}
+        onSubmit={vi.fn()}
       >
         <CheckboxGroup onChange={onChange} name="hello" label="Checkbox Group">
           <Checkbox label="Check One" value="uno" />

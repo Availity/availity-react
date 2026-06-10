@@ -1,7 +1,7 @@
 /* eslint-disable react-hooks/rules-of-hooks */
 /* eslint-disable no-console */
 import React, { useState } from 'react';
-import { StoryObj } from '@storybook/react';
+import { StoryObj } from '@storybook/react-vite';
 import * as yup from 'yup';
 import '@availity/date/styles.scss';
 
@@ -12,7 +12,7 @@ import { CurrencyInput } from '.';
 import FormResults from '../../../story-utils/FormikResults';
 
 export default {
-  title: 'Bootstrap Components/Form/CurrencyInput',
+  title: 'Deprecated/Form/CurrencyInput',
   component: CurrencyInput,
   parameters: {
     docs: {

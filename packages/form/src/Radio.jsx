@@ -4,23 +4,23 @@ import { Input } from 'reactstrap';
 import { v4 as uuid } from 'uuid';
 import classNames from 'classnames';
 
-import { useCheckboxGroup } from './CheckboxGroup';
-import FormGroup from './FormGroup';
-import Label from './Label';
+import { useRadioGroup } from './RadioGroup.jsx';
+import FormGroup from './FormGroup.jsx';
+import Label from './Label.jsx';
 
-const Checkbox = ({
+const Radio = ({
+  label,
+  id,
+  name,
+  value: checkValue,
   className,
   groupClassName,
-  groupName,
+  children,
   helpId,
-  id,
-  inline = true,
-  label,
-  value: checkValue,
   isHelpVideoType,
   ...attributes
 }) => {
-  const { value, toggle, metadata } = useCheckboxGroup(checkValue);
+  const { value, setValue, metadata, inline } = useRadioGroup(checkValue);
 
   const [inputId] = useState(id || uuid());
 
@@ -30,51 +30,49 @@ const Checkbox = ({
     metadata.touched && metadata.error && 'is-invalid'
   );
 
-  // should only reference feedback id when feedback is in the DOM
   const errorIndicated = !!metadata.touched && !!metadata.error;
-  const groupFeedbackId = errorIndicated && groupName ? `${groupName}-feedback`.toLowerCase() : '';
+  const feedbackId = errorIndicated && name ? `${name}-feedback`.toLowerCase() : '';
   const labelId = `${inputId}-label`.toLowerCase();
 
   return (
-    <FormGroup for={inputId} className={groupClassName} check inline={inline} disabled={attributes.disabled}>
+    <FormGroup for={inputId} check className={groupClassName} inline={inline} disabled={attributes.disabled}>
       <Input
         id={inputId}
-        name={inputId}
+        name={name || inputId}
         className={classes}
-        type="checkbox"
+        type="radio"
         invalid={errorIndicated}
-        aria-describedby={groupFeedbackId}
+        aria-describedby={feedbackId}
         {...attributes}
         value={checkValue}
         checked={value}
-        onChange={toggle}
+        onChange={setValue}
       />
       <Label check id={labelId} for={inputId} helpId={helpId} isHelpVideoType={isHelpVideoType}>
-        {label}
+        {label || children}
       </Label>
     </FormGroup>
   );
 };
 
-Checkbox.propTypes = {
+Radio.propTypes = {
+  children: PropTypes.node,
   className: PropTypes.string,
-  /** Disables the checkbox. */
+  /** Disables the radio button. */
   disabled: PropTypes.bool,
   groupClassName: PropTypes.string,
-  /** Should match <CheckboxGroup /> name to accessibly link input to form feedback. */
-  groupName: PropTypes.string,
   /** Help topic id, adds <FieldHelpIcon/> next to the label (should not be within label for accessibility). */
   helpId: PropTypes.string,
-  /** Id and name for the checkbox. */
+  /** Id for the radio button. */
   id: PropTypes.string,
-  /** Will render the checkbox inline with other checkboxes. Default: true. */
-  inline: PropTypes.bool,
-  /** Label for the checkbox. */
+  /** Label for the radio button. */
   label: PropTypes.node,
-  /** Value of the checkbox. */
+  /** Should match <RadioGroup /> name for validation and accessibly linking button to form feedback. */
+  name: PropTypes.string,
+  /** Value of the radio button. */
   value: PropTypes.oneOfType([PropTypes.string, PropTypes.bool, PropTypes.object]),
   /** Allows the type of `<FieldHelpIcon/>` to be changed between help-icon and video-help */
   isHelpVideoType: PropTypes.bool,
 };
 
-export default Checkbox;
+export default Radio;

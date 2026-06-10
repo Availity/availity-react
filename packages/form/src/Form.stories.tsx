@@ -1,6 +1,6 @@
 /* eslint-disable no-console */
 import React from 'react';
-import { StoryObj } from '@storybook/react';
+import { StoryObj } from '@storybook/react-vite';
 import { Button } from 'reactstrap';
 import * as yup from 'yup';
 import { avDate } from '@availity/yup';
@@ -14,7 +14,7 @@ import FormResults from '../../../story-utils/FormikResults';
 import { Field, Checkbox, CheckboxGroup, RadioGroup, Radio, RequiredKey } from '.';
 
 export default {
-  title: 'Bootstrap Components/Form',
+  title: 'Deprecated/Form',
   parameters: {
     docs: {
       description: {

@@ -20,7 +20,7 @@ describe('Form', () => {
       hello: yup.string().required('This field is required.'),
     });
 
-    const onSubmit = jest.fn();
+    const onSubmit = vi.fn();
 
     const { getByTestId, getByText } = render(
       <Form
@@ -56,7 +56,7 @@ describe('Form', () => {
       radioGroup: yup.string().required('A selection is required'),
     });
 
-    const onSubmit = jest.fn();
+    const onSubmit = vi.fn();
 
     const { getByTestId, getByText } = render(
       <Form
@@ -121,7 +121,7 @@ describe('Form', () => {
       { label: 'Option 4', value: 'value for option 4' },
     ];
 
-    const onSubmit = jest.fn();
+    const onSubmit = vi.fn();
 
     const { container, getByText } = render(
       <Form
@@ -160,7 +160,7 @@ describe('Form', () => {
       { label: 'Option 4', value: 'value for option 4' },
     ];
 
-    const onSubmit = jest.fn();
+    const onSubmit = vi.fn();
 
     const { container, getByText } = render(
       <Form
@@ -198,7 +198,7 @@ describe('Form', () => {
       second: yup.string().required('This field is required.'),
     });
 
-    const onSubmit = jest.fn();
+    const onSubmit = vi.fn();
 
     const { container, getByText } = render(
       <Form
@@ -231,7 +231,7 @@ describe('Form', () => {
       second: yup.string().required('This field is required.'),
     });
 
-    const onSubmit = jest.fn();
+    const onSubmit = vi.fn();
 
     const { container, getByTestId, getByText } = render(
       <Form

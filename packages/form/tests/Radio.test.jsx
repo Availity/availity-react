@@ -7,7 +7,7 @@ import { Form, Radio, RadioGroup } from '../src';
 
 describe('Radio', () => {
   test('submits with initial value', async () => {
-    const onSubmit = jest.fn();
+    const onSubmit = vi.fn();
 
     const { container, getByText } = render(
       <Form
@@ -42,7 +42,7 @@ describe('Radio', () => {
   });
 
   test('submits with selected value', async () => {
-    const onSubmit = jest.fn();
+    const onSubmit = vi.fn();
 
     const { container, getByText, getByTestId } = render(
       <Form

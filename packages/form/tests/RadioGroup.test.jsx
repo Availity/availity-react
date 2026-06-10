@@ -59,7 +59,7 @@ describe('RadioGroup', () => {
   });
 
   test('submits with proper radio value', async () => {
-    const onSubmit = jest.fn();
+    const onSubmit = vi.fn();
     const { getByText } = render(
       <Form
         initialValues={{
@@ -95,7 +95,7 @@ describe('RadioGroup', () => {
   });
 
   test('calls on change callback', async () => {
-    const onChange = jest.fn();
+    const onChange = vi.fn();
     const { getByText } = render(
       <Form
         initialValues={{
