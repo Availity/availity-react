@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import { DropdownMenu } from 'reactstrap';
 import BlockUi from '@availity/block-ui';
 
-import SupportForm from './SupportForm';
+import SupportForm from './SupportForm.jsx';
 
 const dropdownStyles = { width: '550px', maxWidth: '90vw', padding: 0 };
 

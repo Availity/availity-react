@@ -4,8 +4,8 @@ import { avOrganizationsApi, avWebQLApi } from '@availity/api-axios';
 import nativeForm from '@availity/native-form';
 import SupportForm from '../src/SupportForm';
 
-jest.mock('@availity/api-axios');
-jest.mock('@availity/native-form');
+vi.mock('@availity/api-axios');
+vi.mock('@availity/native-form');
 
 afterEach(cleanup);
 
@@ -25,8 +25,8 @@ const selectItem = async (container, getByText, name) => {
 
 describe('SupportForm', () => {
   test('it ssos', async () => {
-    const setSupportIsActive = jest.fn();
-    const setBlocking = jest.fn();
+    const setSupportIsActive = vi.fn();
+    const setBlocking = vi.fn();
     const { container, getByText, getByTestId } = render(
       <SupportForm setSupportIsActive={setSupportIsActive} setBlocking={setBlocking} />
     );

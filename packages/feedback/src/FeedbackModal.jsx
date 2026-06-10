@@ -2,8 +2,8 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { Modal } from 'reactstrap';
 
-import FeedbackForm from './FeedbackForm';
-import SupportModal from './SupportModal';
+import FeedbackForm from './FeedbackForm.jsx';
+import SupportModal from './SupportModal.jsx';
 
 const FeedbackModal = ({ isOpen, toggle, zIndex, showSupport, supportZIndex, feedbackToggle, ...formOptions }) => {
   const [supportIsActive, setSupportIsActive] = React.useState(false);

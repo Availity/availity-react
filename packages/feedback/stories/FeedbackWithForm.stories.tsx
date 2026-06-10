@@ -1,10 +1,10 @@
 import React from 'react';
-import { StoryObj } from '@storybook/react';
+import { StoryObj } from '@storybook/react-vite';
 import FeedbackForm from '../src/FeedbackForm';
 // import README from '../README.md';
 
 export default {
-  title: 'Bootstrap Components/Feedback/FeedbackWithForm',
+  title: 'Deprecated/Feedback/FeedbackWithForm',
   component: FeedbackForm,
 };
 

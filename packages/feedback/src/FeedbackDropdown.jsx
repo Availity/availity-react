@@ -2,9 +2,9 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { DropdownMenu } from 'reactstrap';
 
-import FeedbackForm from './FeedbackForm';
-import SupportModal from './SupportModal';
-import SupportDropdown from './SupportDropdown';
+import FeedbackForm from './FeedbackForm.jsx';
+import SupportModal from './SupportModal.jsx';
+import SupportDropdown from './SupportDropdown.jsx';
 
 const dropdownStyles = { width: '550px', maxWidth: '90vw', padding: 0 };
 

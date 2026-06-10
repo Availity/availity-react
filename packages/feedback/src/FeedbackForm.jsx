@@ -6,7 +6,7 @@ import { Form, Field } from '@availity/form';
 import { SelectField } from '@availity/select';
 import * as yup from 'yup';
 
-import SmileField from './SmileField';
+import SmileField from './SmileField.jsx';
 
 yup.addMethod(yup.string, 'isRequired', function format(isRequired, msg) {
   return this.test({

@@ -1,6 +1,6 @@
 import React from 'react';
 import { render, fireEvent, cleanup, waitFor } from '@testing-library/react';
-import Feedback from '..';
+import Feedback from '../index.js';
 
 global.document.createRange = () => ({
   setStart: () => {},
@@ -33,7 +33,7 @@ describe('Feedback', () => {
   });
 
   test('should call onClose in form', async () => {
-    const onClose = jest.fn();
+    const onClose = vi.fn();
 
     const { getByTestId, getByText } = render(<Feedback appName="Test Space" formProps={{ onClose }} />);
 
@@ -61,7 +61,7 @@ describe('Feedback', () => {
   });
 
   test('should call onClose in modal', async () => {
-    const onClose = jest.fn();
+    const onClose = vi.fn();
 
     const { getByTestId, getByText } = render(<Feedback appName="Test Space" formProps={{ onClose }} modal />);
 
@@ -96,7 +96,7 @@ describe('Feedback', () => {
   });
 
   test('should focus FeedbackButton when enter is clicked', async () => {
-    const onChange = jest.fn();
+    const onChange = vi.fn();
 
     const { getByTestId, getByText } = render(<Feedback appName="Test Space" formProps={{ onChange }} />);
 
@@ -116,7 +116,7 @@ describe('Feedback', () => {
   });
 
   test('should close when first feedbackButton is shift+tabbed', async () => {
-    const onClose = jest.fn();
+    const onClose = vi.fn();
 
     const { getByTestId, getByText } = render(<Feedback appName="Test Space" formProps={{ onClose }} />);
 
@@ -137,7 +137,7 @@ describe('Feedback', () => {
   });
 
   test('should close when the close button is tabbed and give feedback is disabled', async () => {
-    const onClose = jest.fn();
+    const onClose = vi.fn();
 
     const { getByTestId, getByText } = render(<Feedback appName="Test Space" formProps={{ onClose }} />);
 
@@ -157,7 +157,7 @@ describe('Feedback', () => {
   });
 
   test('should not close when the close button is tabbed and give feedback is not disabled', async () => {
-    const onClose = jest.fn();
+    const onClose = vi.fn();
 
     const { getByTestId, getByText } = render(<Feedback appName="Test Space" formProps={{ onClose }} />);
 
@@ -179,7 +179,7 @@ describe('Feedback', () => {
   });
 
   test('should close when the send feedback button is tabbed', async () => {
-    const onClose = jest.fn();
+    const onClose = vi.fn();
 
     const { getByTestId, getByText } = render(<Feedback appName="Test Space" formProps={{ onClose }} />);
 

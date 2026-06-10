@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import { Modal } from 'reactstrap';
 import BlockUi from '@availity/block-ui';
 
-import SupportForm from './SupportForm';
+import SupportForm from './SupportForm.jsx';
 
 const SupportModal = ({ supportIsActive, toggle, supportZIndex, setSupportIsActive, feedbackToggle }) => {
   const [blocking, setBlocking] = useState(false);

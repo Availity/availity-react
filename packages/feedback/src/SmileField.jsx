@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { useField, useFormikContext } from 'formik';
 
-import FeedbackButton from './FeedbackButton';
+import FeedbackButton from './FeedbackButton.jsx';
 
 const btnStyles = { flex: 1, margin: '0 2% 0 2%' };
 const defaultOptions = [

@@ -4,8 +4,8 @@ import { Dropdown, DropdownToggle } from 'reactstrap';
 import { avLogMessagesApiV2 } from '@availity/api-axios';
 import { useToggle } from '@availity/hooks';
 
-import FeedbackDropdown from './FeedbackDropdown';
-import FeedbackModal from './FeedbackModal';
+import FeedbackDropdown from './FeedbackDropdown.jsx';
+import FeedbackModal from './FeedbackModal.jsx';
 
 const Feedback = ({
   appName,

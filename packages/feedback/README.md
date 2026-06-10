@@ -1,5 +1,11 @@
 # @availity/feedback
 
+## ⚠️ Deprecated
+
+This package is deprecated and no longer actively maintained. Future updates are not guaranteed. We recommend migrating to [`@availity/element`](https://availity.github.io/element).
+
+---
+
 > Availity feedback with smiley faces react component.
 
 [![Version](https://img.shields.io/npm/v/@availity/feedback.svg?style=for-the-badge)](https://www.npmjs.com/package/@availity/feedback)

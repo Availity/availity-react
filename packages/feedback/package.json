@@ -17,10 +17,12 @@
     "directory": "packages/feedback"
   },
   "license": "MIT",
+  "type": "module",
   "author": "Evan Sharp <evan.sharp@availity.com>",
-  "main": "index.js",
-  "types": "index.d.ts",
   "scripts": {
+    "build": "tsup index.js --format esm --clean --dts",
+    "dev": "tsup index.js --format esm --watch --dts",
+    "clean": "rm -rf dist",
     "publish": "yarn npm publish --tolerate-republish --access public",
     "publish:canary": "yarn npm publish --access public --tag canary"
   },
@@ -29,21 +31,22 @@
     "@availity/form": "workspace:*",
     "@availity/hooks": "workspace:*",
     "@availity/icon": "workspace:*",
-    "@availity/native-form": "^7.0.12",
+    "@availity/native-form": "^8.0.2",
     "@availity/select": "workspace:*",
     "prop-types": "^15.8.1"
   },
   "devDependencies": {
-    "@availity/api-axios": "^12.1.0",
-    "@availity/yup": "^7.0.1",
-    "axios": "^1.13.2",
-    "formik": "^2.4.6",
+    "@availity/api-axios": "^13.0.2",
+    "@availity/yup": "^7.1.0",
+    "axios": "^1.17.0",
+    "formik": "^2.4.9",
     "react": "^18.3.1",
     "react-dom": "^18.3.1",
-    "reactstrap": "^8.10.1"
+    "reactstrap": "^8.10.1",
+    "tsup": "^8.5.1"
   },
   "peerDependencies": {
-    "@availity/api-axios": "^12.0.0",
+    "@availity/api-axios": "^12.0.0 || ^13.0.0",
     "@availity/yup": "^7.0.0",
     "axios": "^1.13.2",
     "formik": "^2.4.6",
@@ -52,5 +55,14 @@
   },
   "publishConfig": {
     "access": "public"
+  },
+  "exports": {
+    ".": {
+      "source": "./index.js",
+      "import": {
+        "types": "./index.d.ts",
+        "default": "./dist/index.js"
+      }
+    }
   }
 }
