@@ -18,10 +18,17 @@
     "directory": "packages/mock"
   },
   "license": "MIT",
+  "type": "module",
   "author": "Kyle Gray <kyle.gray@availity.com>",
-  "main": "src/index.js",
+  "main": "src/browser.ts",
+  "exports": {
+    "./src/*": "./src/*"
+  },
   "dependencies": {
     "msw": "^0.36.8",
-    "qs": "^6.14.0"
+    "qs": "^6.15.2"
+  },
+  "devDependencies": {
+    "@types/qs": "^6.15.1"
   }
 }
