@@ -6,56 +6,143 @@
     "esModuleInterop": true,
     "forceConsistentCasingInFileNames": true,
     "isolatedModules": true,
-    "moduleResolution": "node",
+    "moduleResolution": "bundler",
     "preserveWatchOutput": true,
     "resolveJsonModule": true,
     "skipLibCheck": true,
     "strict": true,
     "strictFunctionTypes": false,
     "strictNullChecks": true,
-    "lib": ["ES2017", "dom"],
+    "lib": [
+      "ES2020",
+      "dom"
+    ],
+    "types": ["vitest/globals", "node"],
     "module": "ESNext",
-    "target": "ES6",
+    "target": "ES2020",
     "jsx": "react-jsx",
     "baseUrl": ".",
     "paths": {
-      "@availity/analytics": ["packages/analytics"],
-      "@availity/app-icon": ["packages/app-icon"],
-      "@availity/authorize": ["packages/authorize"],
-      "@availity/avatar": ["packages/avatar"],
-      "@availity/badge": ["packages/badge"],
-      "@availity/block-ui": ["packages/block-ui"],
-      "@availity/breadcrumbs": ["packages/breadcrumbs"],
-      "@availity/button": ["packages/button"],
-      "@availity/date": ["packages/date"],
-      "@availity/favorites": ["packages/favorites"],
-      "@availity/feature": ["packages/feature"],
-      "@availity/feedback": ["packages/feedback"],
-      "@availity/form": ["packages/form"],
-      "@availity/form-upload": ["packages/form-upload"],
-      "@availity/help": ["packages/help"],
-      "@availity/hooks": ["packages/hooks"],
-      "@availity/icon": ["packages/icon"],
-      "@availity/json-viewer": ["packages/json-viewer"],
-      "@availity/link": ["packages/link"],
-      "@availity/list-group": ["packages/list-group"],
-      "@availity/list-group-item": ["packages/list-group-item"],
-      "@availity/mock": ["packages/mock"],
-      "@availity/page-header": ["packages/page-header"],
-      "@availity/pagination": ["packages/pagination"],
-      "@availity/payer-logo": ["packages/payer-logo"],
-      "@availity/phone": ["packages/phone"],
-      "@availity/progress": ["packages/progress"],
-      "@availity/reactstrap-validation-date": ["packages/reactstrap-validation-date"],
-      "@availity/reactstrap-validation-select": ["packages/reactstrap-validation-select"],
-      "@availity/select": ["packages/select"],
-      "@availity/spaces": ["packages/spaces"],
-      "@availity/step-wizard": ["packages/step-wizard"],
-      "@availity/table": ["packages/table"],
-      "@availity/training-link": ["packages/training-link"],
-      "@availity/typography": ["packages/typography"],
-      "@availity/upload": ["packages/upload"]
+      "@availity/analytics": [
+        "packages/analytics"
+      ],
+      "@availity/app-icon": [
+        "packages/app-icon/src/index.ts"
+      ],
+      "@availity/authorize": [
+        "packages/authorize/src/index.ts"
+      ],
+      "@availity/avatar": [
+        "packages/avatar"
+      ],
+      "@availity/badge": [
+        "packages/badge/src/index.ts"
+      ],
+      "@availity/block-ui": [
+        "packages/block-ui/src/index.ts"
+      ],
+      "@availity/breadcrumbs": [
+        "packages/breadcrumbs"
+      ],
+      "@availity/button": [
+        "packages/button/src/index.ts"
+      ],
+      "@availity/date": [
+        "packages/date/src/index.js"
+      ],
+      "@availity/favorites": [
+        "packages/favorites/src/index.ts"
+      ],
+      "@availity/feature": [
+        "packages/feature"
+      ],
+      "@availity/feedback": [
+        "packages/feedback"
+      ],
+      "@availity/form": [
+        "packages/form/src/index.js"
+      ],
+      "@availity/form-upload": [
+        "packages/form-upload"
+      ],
+      "@availity/help": [
+        "packages/help/src/index.ts"
+      ],
+      "@availity/hooks": [
+        "packages/hooks/src/index.ts"
+      ],
+      "@availity/icon": [
+        "packages/icon/src/index.ts"
+      ],
+      "@availity/json-viewer": [
+        "packages/json-viewer/src/index.ts"
+      ],
+      "@availity/link": [
+        "packages/link"
+      ],
+      "@availity/list-group": [
+        "packages/list-group"
+      ],
+      "@availity/list-group-item": [
+        "packages/list-group-item"
+      ],
+      "@availity/mock": [
+        "packages/mock"
+      ],
+      "@availity/page-header": [
+        "packages/page-header"
+      ],
+      "@availity/pagination": [
+        "packages/pagination/src/index.ts"
+      ],
+      "@availity/payer-logo": [
+        "packages/payer-logo"
+      ],
+      "@availity/phone": [
+        "packages/phone"
+      ],
+      "@availity/progress": [
+        "packages/progress/src/index.ts"
+      ],
+      "@availity/reactstrap-validation-date": [
+        "packages/reactstrap-validation-date"
+      ],
+      "@availity/reactstrap-validation-select": [
+        "packages/reactstrap-validation-select"
+      ],
+      "@availity/select": [
+        "packages/select/src/index.js"
+      ],
+      "@availity/spaces": [
+        "packages/spaces"
+      ],
+      "@availity/step-wizard": [
+        "packages/step-wizard"
+      ],
+      "@availity/table": [
+        "packages/table/src/index.ts"
+      ],
+      "@availity/training-link": [
+        "packages/training-link/src/index.ts"
+      ],
+      "@availity/typography": [
+        "packages/typography/src/index.ts"
+      ],
+      "@availity/upload": [
+        "packages/upload"
+      ],
+      "@availity/app-tiles": [
+        "packages/app-tiles/src/index.ts"
+      ],
+      "@availity/tooltip": [
+        "packages/tooltip/src/index.ts"
+      ],
+      "@availity/tree": [
+        "packages/tree/src/index.ts"
+      ]
     }
   },
-  "exclude": ["**/node_modules/"]
+  "exclude": [
+    "**/node_modules/"
+  ]
 }
