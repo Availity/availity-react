@@ -10,7 +10,7 @@ import { DateRangePicker } from '@availity/react-dates';
 import '@availity/react-dates/initialize';
 import classNames from 'classnames';
 
-import { isOutsideRange, limitPropType, isSameDay } from './utils';
+import { isOutsideRange, limitPropType, isSameDay } from './utils.js';
 import '../polyfills';
 
 let count = 0;

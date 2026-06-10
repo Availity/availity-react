@@ -3,14 +3,21 @@ import PropTypes from 'prop-types';
 import { AvGroup, AvFeedback } from 'availity-reactstrap-validation';
 import { Col, FormText, Label } from 'reactstrap';
 
-import AvDate from './AvDate';
+import AvDateRange from './AvDateRange.jsx';
 
 const colSizes = ['xs', 'sm', 'md', 'lg', 'xl'];
 
-class AvDateField extends Component {
+class AvDateRangeField extends Component {
   getChildContext() {
     this.FormCtrl = { ...this.context.FormCtrl };
     const registerValidator = this.FormCtrl.register;
+    const { getInputState } = this.FormCtrl;
+    this.FormCtrl.getInputState = (inputName) => {
+      if (inputName === this.props.start.name || inputName === this.props.end.name) {
+        return this.getInputState();
+      }
+      return getInputState(inputName);
+    };
     this.FormCtrl.register = (input, updater = input && input.forceUpdate) => {
       registerValidator(input, () => {
         this.forceUpdate();
@@ -21,6 +28,13 @@ class AvDateField extends Component {
       FormCtrl: this.FormCtrl,
     };
   }
+
+  getInputState = () => {
+    const startValidation = this.context.FormCtrl.getInputState(this.props.start.name);
+    if (startValidation.errorMessage) return startValidation;
+    const endValidation = this.context.FormCtrl.getInputState(this.props.end.name);
+    return endValidation;
+  };
 
   render() {
     let row = false;
@@ -55,16 +69,22 @@ class AvDateField extends Component {
     }
 
     const input = (
-      <AvDate id={id} className={inputClass} size={size} disabled={disabled} readOnly={readOnly} {...attributes}>
+      <AvDateRange
+        id={id}
+        className={inputClass}
+        size={size}
+        disabled={disabled}
+        readOnly={readOnly}
+        ariaDescribedBy={`${this.props.name.toLowerCase()}-feedback`}
+        {...attributes}
+      >
         {children}
-      </AvDate>
+      </AvDateRange>
     );
 
-    const validation = this.context.FormCtrl.getInputState(this.props.name);
+    const validation = this.getInputState();
 
-    const feedback = validation.errorMessage ? (
-      <AvFeedback className="d-block">{validation.errorMessage}</AvFeedback>
-    ) : null;
+    const feedback = validation.error ? <AvFeedback className="d-block">{validation.errorMessage}</AvFeedback> : null;
     const help = helpMessage ? <FormText>{helpMessage}</FormText> : null;
 
     return (
@@ -90,7 +110,7 @@ class AvDateField extends Component {
   }
 }
 
-AvDateField.propTypes = {
+AvDateRangeField.propTypes = {
   /** The name of the field. Will be the key of the selected date that comes through in the values of the onSubmit callback. */
   name: PropTypes.string.isRequired,
   /** The text that renders inside the Label above the input. */
@@ -101,25 +121,28 @@ AvDateField.propTypes = {
   readOnly: PropTypes.bool,
   id: PropTypes.string,
   inputClass: PropTypes.string,
-  /** The name of the class for the label. Will be passed to the className prop of the label in the field. */
   labelClass: PropTypes.string,
   helpMessage: PropTypes.oneOfType([PropTypes.string, PropTypes.object]),
   errorMessage: PropTypes.oneOfType([PropTypes.string, PropTypes.object]),
   /** Pass additional attributes to the label */
   labelAttrs: PropTypes.object,
-  /** Pass additional attributes to the AvGroup */
+  /** Pass additional attributes to the group */
   groupAttrs: PropTypes.object,
   grid: PropTypes.object,
-  children: PropTypes.node,
+  /** object which will be spread on the start date input. It must contain the name prop as required by availity-reactstrap-validation. It can contain additional validations as well. */
+  start: PropTypes.object,
+  /** object which will be spread on the end date input. It must contain the name prop as required by availity-reactstrap-validation. It can contain additional validations as well. */
+  end: PropTypes.object,
   size: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
+  children: PropTypes.node,
 };
 
-AvDateField.contextTypes = {
+AvDateRangeField.contextTypes = {
   FormCtrl: PropTypes.object.isRequired,
 };
 
-AvDateField.childContextTypes = {
+AvDateRangeField.childContextTypes = {
   FormCtrl: PropTypes.object.isRequired,
 };
 
-export default AvDateField;
+export default AvDateRangeField;

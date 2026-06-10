@@ -3,15 +3,15 @@ import { render, cleanup, fireEvent, waitFor } from '@testing-library/react';
 import { AvForm } from 'availity-reactstrap-validation';
 import { Button } from 'reactstrap';
 import moment from 'moment';
-import { AvDateRange } from '..';
+import { AvDateRange } from '../index.js';
 
-const onValidSubmit = jest.fn();
-const onInvalidSubmit = jest.fn();
-const onSubmit = jest.fn();
+const onValidSubmit = vi.fn();
+const onInvalidSubmit = vi.fn();
+const onSubmit = vi.fn();
 
 afterEach(() => {
   cleanup();
-  jest.clearAllMocks();
+  vi.clearAllMocks();
 });
 
 // eslint-disable-next-line react/prop-types

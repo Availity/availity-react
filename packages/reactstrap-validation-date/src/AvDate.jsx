@@ -11,7 +11,7 @@ import '../polyfills';
 import { inputType, isoDateFormat } from 'availity-reactstrap-validation/lib/AvValidator/utils';
 import { AvInput } from 'availity-reactstrap-validation';
 
-import { isOutsideRange, limitPropType } from './utils';
+import { isOutsideRange, limitPropType } from './utils.js';
 
 class AvDate extends Component {
   static getDerivedStateFromProps({ value }, prevState) {

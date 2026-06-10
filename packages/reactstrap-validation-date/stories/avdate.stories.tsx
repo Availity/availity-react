@@ -1,5 +1,5 @@
 import React from 'react';
-import { Meta } from '@storybook/react';
+import { Meta } from '@storybook/react-vite';
 import { Label, Button } from 'reactstrap';
 import { AvGroup, AvFeedback } from 'availity-reactstrap-validation';
 
@@ -13,7 +13,7 @@ import { AvDateFieldProps } from '../types/AvDateField';
 
 const types = ['text', 'date'];
 export default {
-  title: 'Legacy Form Components/AvDate',
+  title: 'Deprecated/AvDate',
   component: AvDate,
   parameters: {
     docs: {

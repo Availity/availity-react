@@ -2,7 +2,7 @@ import React from 'react';
 import { render, cleanup, fireEvent, waitFor } from '@testing-library/react';
 import { AvForm } from 'availity-reactstrap-validation';
 import { Button } from 'reactstrap';
-import { AvDateField } from '..';
+import { AvDateField } from '../index.js';
 
 afterEach(() => {
   cleanup();

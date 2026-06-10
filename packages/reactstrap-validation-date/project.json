@@ -4,10 +4,15 @@
   "projectType": "library",
   "targets": {
     "test": {
-      "executor": "@nx/jest:jest",
-      "outputs": ["{workspaceRoot}/coverage/reactstrap-validation-date"],
+      "executor": "nx:run-commands",
       "options": {
-        "jestConfig": "packages/reactstrap-validation-date/jest.config.js"
+        "command": "vitest run --project=reactstrap-validation-date",
+        "cwd": "."
+      },
+      "configurations": {
+        "ci": {
+          "command": "vitest run --project=reactstrap-validation-date --coverage"
+        }
       }
     },
     "version": {
@@ -32,6 +37,12 @@
         "noEslintrc": false,
         "hasTypeAwareRules": true,
         "cacheStrategy": "metadata"
+      }
+    },
+    "build": {
+      "command": "tsup index.js --format esm",
+      "options": {
+        "cwd": "packages/reactstrap-validation-date"
       }
     }
   }
