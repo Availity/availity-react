@@ -2,7 +2,7 @@ import React from 'react';
 import { Meta } from '@storybook/react-vite';
 import { Button } from 'reactstrap';
 
-import { useToggle } from '..';
+import { useToggle } from '../src';
 // import README from '../README.md';
 
 const Component = ({ initialValue = false }: { initialValue?: boolean }) => {
@@ -32,7 +32,7 @@ export default {
 export const Default = { render: () => <Component />, name: 'default' };
 
 export const WithInitialValue = {
-  render: ({ initialValue }) => <Component initialValue={initialValue} />,
+  render: ({ initialValue }: { initialValue: boolean }) => <Component initialValue={initialValue} />,
   args: {
     initialValue: true,
   },

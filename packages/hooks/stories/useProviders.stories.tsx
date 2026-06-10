@@ -2,7 +2,7 @@ import React from 'react';
 import { Meta } from '@storybook/react-vite';
 import { QueryClientProvider, QueryClient } from '@tanstack/react-query';
 
-import { useProviders } from '..';
+import { useProviders } from '../src';
 // import README from '../README.md';
 
 import ResourceComponent from './ResourceComponent';
@@ -28,7 +28,7 @@ export default {
 
 const ResourceExample = () => {
   const { data, isLoading } = useProviders({
-    customerId: 123,
+    customerId: '123',
   });
 
   return <ResourceComponent title="Providers" data={data} loading={isLoading} />;

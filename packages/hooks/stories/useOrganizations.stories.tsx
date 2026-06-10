@@ -2,7 +2,7 @@ import React from 'react';
 import { Meta } from '@storybook/react-vite';
 import { QueryClientProvider, QueryClient } from '@tanstack/react-query';
 
-import { useOrganizations } from '..';
+import { useOrganizations } from '../src';
 // import README from '../README.md';
 
 import ResourceComponent from './ResourceComponent';
@@ -27,7 +27,7 @@ export default {
 } as Meta;
 
 const ResourceExample = () => {
-  const { data, isLoading } = useOrganizations();
+  const { data, isLoading } = useOrganizations({});
 
   return <ResourceComponent title="Organizations" data={data} loading={isLoading} />;
 };

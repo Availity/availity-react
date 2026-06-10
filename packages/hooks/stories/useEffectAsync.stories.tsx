@@ -2,17 +2,17 @@ import React, { useState } from 'react';
 import { Meta } from '@storybook/react-vite';
 import { Card } from 'reactstrap';
 
-import { useEffectAsync, useToggle } from '..';
+import { useEffectAsync, useToggle } from '../src';
 // import README from '../README.md';
 
 const asyncFunction = (data: string) =>
-  new Promise((resolve) => {
+  new Promise<string>((resolve) => {
     setInterval(() => resolve(data), 1000);
   });
 
 const AsyncComponent = ({ mockData }: { mockData: string }) => {
   const [loading, toggle] = useToggle(true);
-  const [state, setState] = useState(null);
+  const [state, setState] = useState('');
 
   // eslint-disable-next-line @typescript-eslint/ban-ts-comment
   // @ts-ignore
@@ -41,7 +41,7 @@ export default {
 } as Meta;
 
 export const Default = {
-  render: ({ data }) => <AsyncComponent mockData={data} />,
+  render: ({ data }: { data: string }) => <AsyncComponent mockData={data} />,
   args: {
     data: 'Test Data',
   },

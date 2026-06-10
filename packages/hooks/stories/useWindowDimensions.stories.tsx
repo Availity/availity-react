@@ -1,6 +1,6 @@
 import React from 'react';
 import { Meta } from '@storybook/react-vite';
-import { useWindowDimensions } from '..';
+import { useWindowDimensions } from '../src';
 
 const ListenerComponent = () => {
   const { height, width } = useWindowDimensions();
