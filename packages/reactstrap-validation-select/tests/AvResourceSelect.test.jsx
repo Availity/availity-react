@@ -4,10 +4,10 @@ import { avRegionsApi, avProvidersApi, avCodesApi } from '@availity/api-axios';
 import { AvForm } from 'availity-reactstrap-validation';
 import { Button } from 'reactstrap';
 
-import { AvResourceSelect } from '..';
+import { AvResourceSelect } from '../index.js';
 import { AvProviderSelect } from '../resources';
 
-jest.mock('@availity/api-axios');
+vi.mock('@availity/api-axios');
 
 const renderSelect = (props) =>
   render(
@@ -18,7 +18,7 @@ const renderSelect = (props) =>
 
 describe('AvResourceSelect', () => {
   afterEach(() => {
-    jest.clearAllMocks();
+    vi.clearAllMocks();
   });
 
   it('returns resource options', async () => {

@@ -1,5 +1,5 @@
 import React from 'react';
-import { Meta } from '@storybook/react';
+import { Meta } from '@storybook/react-vite';
 import { Label, Button } from 'reactstrap';
 import AvApi from '@availity/api-axios';
 import { AvGroup, AvFeedback, AvField } from 'availity-reactstrap-validation';
@@ -52,7 +52,7 @@ const autofillOptions = [
 const avCustomResource = new AvApi({ name: 'my-custom-resource' });
 
 export default {
-  title: 'Legacy Form Components/AvSelect',
+  title: 'Deprecated/AvSelect',
   component: AvSelect,
   parameters: {
     docs: {

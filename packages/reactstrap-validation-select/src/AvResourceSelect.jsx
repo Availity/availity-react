@@ -3,8 +3,8 @@ import PropTypes from 'prop-types';
 import qs from 'qs';
 import get from 'lodash/get';
 
-import AvSelect from './AvSelect';
-import AvSelectField from './AvSelectField';
+import AvSelect from './AvSelect.jsx';
+import AvSelectField from './AvSelectField.jsx';
 
 class AvResourceSelect extends Component {
   constructor(props) {

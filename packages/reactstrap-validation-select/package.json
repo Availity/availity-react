@@ -18,31 +18,34 @@
     "directory": "packages/reactstrap-validation-select"
   },
   "license": "MIT",
+  "type": "module",
   "author": "Evan Sharp <evan.sharp@availity.com>",
-  "main": "index.js",
-  "types": "index.d.ts",
   "scripts": {
+    "build": "tsup index.js --format esm --clean --dts",
+    "dev": "tsup index.js --format esm --watch --dts",
+    "clean": "rm -rf dist",
     "publish": "yarn npm publish --tolerate-republish --access public",
     "publish:canary": "yarn npm publish --access public --tag canary"
   },
   "dependencies": {
     "classnames": "^2.5.1",
-    "lodash": "^4.17.21",
+    "lodash": "^4.18.1",
     "prop-types": "^15.8.1",
-    "qs": "^6.14.0",
-    "react-select": "^5.10.1",
+    "qs": "^6.15.2",
+    "react-select": "^5.10.2",
     "react-select-async-paginate": "^0.6.2"
   },
   "devDependencies": {
-    "@availity/api-axios": "^12.1.0",
+    "@availity/api-axios": "^13.0.2",
     "availity-reactstrap-validation": "^2.7.1",
-    "axios": "^1.13.2",
+    "axios": "^1.17.0",
     "react": "^18.3.1",
     "react-dom": "^18.3.1",
-    "reactstrap": "^8.10.1"
+    "reactstrap": "^8.10.1",
+    "tsup": "^8.5.1"
   },
   "peerDependencies": {
-    "@availity/api-axios": "^12.0.0",
+    "@availity/api-axios": "^12.0.0 || ^13.0.0",
     "availity-reactstrap-validation": "^2.7.1",
     "availity-uikit": "^4.7.0",
     "axios": "^1.13.2",
@@ -51,5 +54,15 @@
   },
   "publishConfig": {
     "access": "public"
+  },
+  "exports": {
+    ".": {
+      "source": "./index.js",
+      "import": {
+        "types": "./index.d.ts",
+        "default": "./dist/index.js"
+      }
+    },
+    "./styles.scss": "./styles.scss"
   }
 }

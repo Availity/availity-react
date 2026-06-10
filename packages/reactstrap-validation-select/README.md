@@ -1,5 +1,11 @@
 # @availity/reactstrap-validation-select
 
+## ⚠️ Deprecated
+
+This package is deprecated and no longer actively maintained. Future updates are not guaranteed. This package is not compatible with React 19 and will not be upgraded. We recommend migrating to [`@availity/element`](https://availity.github.io/element).
+
+---
+
 > Wrapper for react-select (with async pagination) to work with availity-reactstrap-validation.
 
 [![Version](https://img.shields.io/npm/v/@availity/reactstrap-validation-select.svg?style=for-the-badge)](https://www.npmjs.com/package/@availity/reactstrap-validation-select)

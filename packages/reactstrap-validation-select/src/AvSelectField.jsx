@@ -4,7 +4,7 @@ import { AvGroup, AvFeedback } from 'availity-reactstrap-validation';
 import classNames from 'classnames';
 import { Label, FormText } from 'reactstrap';
 
-import AvSelect from './AvSelect';
+import AvSelect from './AvSelect.jsx';
 
 class AvSelectField extends Component {
   getChildContext() {

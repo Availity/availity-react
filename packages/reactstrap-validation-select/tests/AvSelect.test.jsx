@@ -3,7 +3,7 @@ import { render, fireEvent, waitFor } from '@testing-library/react';
 import { AvForm, AvInput } from 'availity-reactstrap-validation';
 import { Button } from 'reactstrap';
 
-import AvSelect from '..';
+import AvSelect from '../index.js';
 
 const options = [
   { label: 'Option 1', value: 'value for option 1' },
@@ -69,7 +69,7 @@ describe('AvSelect', () => {
   });
 
   test('creatable works with custom keys', async () => {
-    const onSubmit = jest.fn();
+    const onSubmit = vi.fn();
     const { container, getByText } = render(
       <AvForm onSubmit={onSubmit}>
         <AvSelect
@@ -130,7 +130,7 @@ describe('AvSelect', () => {
       },
     ];
 
-    const onSubmit = jest.fn();
+    const onSubmit = vi.fn();
     const { container, getByText } = render(
       <AvForm onSubmit={onSubmit}>
         <AvSelect name="test-form-input" options={opts} classNamePrefix="test" raw autofill />
@@ -191,7 +191,7 @@ describe('AvSelect', () => {
       },
     ];
 
-    const onSubmit = jest.fn();
+    const onSubmit = vi.fn();
     const { container, getByText } = render(
       <AvForm onSubmit={onSubmit}>
         <AvSelect

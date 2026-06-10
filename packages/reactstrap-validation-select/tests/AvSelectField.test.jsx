@@ -3,7 +3,7 @@ import { render, fireEvent, waitFor } from '@testing-library/react';
 import { AvForm } from 'availity-reactstrap-validation';
 import { Button } from 'reactstrap';
 
-import { AvSelectField } from '..';
+import { AvSelectField } from '../index.js';
 
 const options = [
   { label: 'Option 1', value: 'value for option 1' },
