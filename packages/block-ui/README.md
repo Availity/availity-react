@@ -1,5 +1,11 @@
 # @availity/block-ui
 
+## ⚠️ Deprecated
+
+This package is deprecated and no longer actively maintained. Future updates are not guaranteed. We recommend migrating to [`@availity/element`](https://availity.github.io/element).
+
+---
+
 > Availity loading indicator
 
 [![Version](https://img.shields.io/npm/v/@availity/block-ui.svg?style=for-the-badge)](https://www.npmjs.com/package/@availity/block-ui)
