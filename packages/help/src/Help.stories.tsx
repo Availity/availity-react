@@ -1,5 +1,5 @@
 import React from 'react';
-import { StoryObj } from '@storybook/react';
+import { StoryObj } from '@storybook/react-vite';
 
 import HelpProvider, { Help } from '.';
 import { HelpProps } from './Help';

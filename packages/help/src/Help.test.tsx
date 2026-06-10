@@ -4,10 +4,10 @@ import avMessageMock from '@availity/message-core';
 
 import HelpProvider, { Help, constants } from '.';
 
-jest.mock('@availity/message-core');
+vi.mock('@availity/message-core');
 
 afterEach(() => {
-  jest.clearAllMocks();
+  vi.clearAllMocks();
 });
 
 describe('Help', () => {
