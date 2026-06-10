@@ -32,7 +32,7 @@ function AppIcon({
   className,
   children,
   ...props
-}: AppIconProps): JSX.Element {
+}: AppIconProps): React.JSX.Element {
   const classes = classNames(className, 'app-icon', {
     [`app-icon-${color}`]: color && !branded,
     [`app-icon-branded-${color}`]: color && branded,

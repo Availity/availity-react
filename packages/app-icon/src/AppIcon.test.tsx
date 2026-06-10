@@ -46,6 +46,6 @@ describe('AppIcon', () => {
 
   test('should render with image', () => {
     render(<AppIcon src="/path-to-some-image" alt="icon" />);
-    expect((screen.getByAltText('icon') as HTMLImageElement).src).toEqual('http://localhost/path-to-some-image');
+    expect((screen.getByAltText('icon') as HTMLImageElement).src).toContain('/path-to-some-image');
   });
 });

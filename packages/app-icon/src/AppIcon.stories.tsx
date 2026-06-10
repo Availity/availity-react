@@ -1,11 +1,11 @@
 import React from 'react';
-import { StoryObj } from '@storybook/react';
+import { StoryObj } from '@storybook/react-vite';
 
 import AppIcon from './AppIcon';
 // import README from '../README.md';
 
 export default {
-  title: 'Bootstrap Components/AppIcon',
+  title: 'Deprecated/AppIcon',
   component: AppIcon,
 };
 
