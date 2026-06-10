@@ -25,7 +25,7 @@ describe('Removable Badge List', () => {
   });
 
   test('should call onRemove onClick', async () => {
-    const onRemove = jest.fn();
+    const onRemove = vi.fn();
 
     render(<RemovableBadgeList badges={badgeList} onRemove={onRemove} />);
 

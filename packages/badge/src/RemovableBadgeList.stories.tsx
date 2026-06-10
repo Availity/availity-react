@@ -1,11 +1,11 @@
 /* eslint-disable react-hooks/rules-of-hooks */
 import React, { useState } from 'react';
-import { StoryObj } from '@storybook/react';
+import { StoryObj } from '@storybook/react-vite';
 import { Button } from 'reactstrap';
 import { RemovableBadgeList, BadgeItem } from '.';
 
 export default {
-  title: 'Bootstrap Components/Badge/Removable Badge/List',
+  title: 'Deprecated/Badge/Removable Badge/List',
   component: RemovableBadgeList,
   parameters: {
     docs: {

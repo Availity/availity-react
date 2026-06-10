@@ -1,5 +1,11 @@
 # @availity/badge
 
+## ⚠️ Deprecated
+
+This package is deprecated and no longer actively maintained. Future updates are not guaranteed. We recommend migrating to [`@availity/element`](https://availity.github.io/element).
+
+---
+
 > Removable Badge Component
 
 [![Version](https://img.shields.io/npm/v/@availity/badge.svg?style=for-the-badge)](https://www.npmjs.com/package/@availity/badge)
