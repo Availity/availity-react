@@ -1,15 +1,15 @@
 import React from 'react';
 import { render, cleanup, waitFor } from '@testing-library/react';
 import { avSettingsApi } from '@availity/api-axios';
-import Avatar from '..';
+import Avatar from '../index.js';
 
-jest.mock('@availity/api-axios');
+vi.mock('@availity/api-axios');
 
 afterEach(cleanup);
 
 describe('Avatar', () => {
   afterEach(() => {
-    jest.clearAllMocks();
+    vi.clearAllMocks();
     cleanup();
   });
 

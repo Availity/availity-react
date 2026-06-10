@@ -4,10 +4,15 @@
   "projectType": "library",
   "targets": {
     "test": {
-      "executor": "@nx/jest:jest",
-      "outputs": ["{workspaceRoot}/coverage/avatar"],
+      "executor": "nx:run-commands",
       "options": {
-        "jestConfig": "packages/avatar/jest.config.js"
+        "command": "vitest run --project=avatar",
+        "cwd": "."
+      },
+      "configurations": {
+        "ci": {
+          "command": "vitest run --project=avatar --coverage"
+        }
       }
     },
     "version": {
@@ -33,6 +38,12 @@
         "noEslintrc": false,
         "hasTypeAwareRules": true,
         "cacheStrategy": "metadata"
+      }
+    },
+    "build": {
+      "command": "tsup index.js --format esm --dts",
+      "options": {
+        "cwd": "packages/avatar"
       }
     }
   }

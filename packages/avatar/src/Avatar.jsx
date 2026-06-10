@@ -11,7 +11,7 @@ const skeletonPropType = PropTypes.shape({
   height: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
 });
 
-const Loader = ({ skeletonProps, ...rest }) => (
+const Loader = ({ skeletonProps = { height: '100%' }, ...rest }) => (
   <span {...rest}>
     <Skeleton {...skeletonProps} />
   </span>
@@ -21,13 +21,7 @@ Loader.propTypes = {
   skeletonProps: skeletonPropType,
 };
 
-Loader.defaultProps = {
-  skeletonProps: {
-    height: '100%',
-  },
-};
-
-const Avatar = ({ fallback, skeletonProps, ...props }) => {
+const Avatar = ({ fallback = '/public/apps/my-profile/images/Avatars-00.png', skeletonProps, ...props }) => {
   const [avatar, setAvatar] = useState(fallback);
   const [loading, setLoading] = useState(true);
 
@@ -61,10 +55,6 @@ Avatar.propTypes = {
   fallback: PropTypes.string,
   /** Dimensions passed to loader to show while the avatar is loading. */
   skeletonProps: skeletonPropType,
-};
-
-Avatar.defaultProps = {
-  fallback: '/public/apps/my-profile/images/Avatars-00.png',
 };
 
 export default Avatar;
