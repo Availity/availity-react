@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 
-export default function useTimeout(ms = 0) {
+export default function useTimeout(ms = 0): boolean {
   const [ready, setReady] = useState(false);
 
   useEffect(() => {

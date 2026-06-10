@@ -1,12 +1,12 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { waitFor, cleanup } from '@testing-library/react';
-import { avPermissionsApi } from '@availity/api-axios';
+import { avOrganizationsApi } from '@availity/api-axios';
 import { QueryClient } from '@tanstack/react-query';
 import renderWithClient from './util';
-import { usePermissions } from '..';
+import { useOrganizations } from '../src/index';
 
-jest.mock('@availity/api-axios');
+vi.mock('@availity/api-axios');
 
 let queryStates = [];
 beforeEach(() => {
@@ -16,7 +16,7 @@ beforeEach(() => {
 const queryClient = new QueryClient();
 
 afterEach(() => {
-  jest.clearAllMocks();
+  vi.clearAllMocks();
   cleanup();
   queryClient.clear();
   queryStates = [];
@@ -29,7 +29,7 @@ const pushState = (state) => {
 const Component = ({ log }) => {
   // Mirror testing methods from react-query instead of relying on timing or booleans
   // https://github.com/tannerlinsley/react-query/blob/master/src/react/tests/useQuery.test.tsx
-  const state = usePermissions({}, { cacheTime: 0, retry: false });
+  const state = useOrganizations({}, { gcTime: 0, retry: false });
 
   // not directly used in assertions here, but useful for debugging purposes
   if (log) log(state);
@@ -49,13 +49,13 @@ Component.propTypes = {
   log: PropTypes.func,
 };
 
-describe('usePermissions', () => {
+describe('useOrganizations', () => {
   test('should return an error', async () => {
-    avPermissionsApi.getPermissions.mockRejectedValueOnce('An error occurred');
+    avOrganizationsApi.getOrganizations.mockRejectedValueOnce('An error occurred');
 
     const { getByText } = renderWithClient(queryClient, <Component log={pushState} />);
 
-    getByText('Status: loading');
+    getByText('Status: pending');
     await waitFor(() => {
       const el = getByText('Status: error');
       expect(el).toBeDefined();
@@ -66,22 +66,44 @@ describe('usePermissions', () => {
     });
   });
 
-  test('should return permissions', async () => {
-    avPermissionsApi.getPermissions.mockResolvedValueOnce({
-      id: '44',
-      description: 'test',
-      links: { self: { href: 'test.com' } },
+  test('should return organizations', async () => {
+    avOrganizationsApi.getOrganizations.mockResolvedValueOnce({
+      data: {
+        organizations: [
+          {
+            links: {
+              permissions: { href: 'test' },
+              patients: { href: 'test' },
+              self: { href: 'test' },
+              admin: { href: 'test' },
+              businessArrangements: { href: 'test' },
+              users: { href: 'test' },
+            },
+          },
+        ],
+      },
     });
 
     const { getByText } = renderWithClient(queryClient, <Component log={pushState} />);
 
-    getByText('Status: loading');
+    getByText('Status: pending');
     await waitFor(() => {
       const el = getByText(
         `Data: ${JSON.stringify({
-          id: '44',
-          description: 'test',
-          links: { self: { href: 'test.com' } },
+          data: {
+            organizations: [
+              {
+                links: {
+                  permissions: { href: 'test' },
+                  patients: { href: 'test' },
+                  self: { href: 'test' },
+                  admin: { href: 'test' },
+                  businessArrangements: { href: 'test' },
+                  users: { href: 'test' },
+                },
+              },
+            ],
+          },
         })}`
       );
       expect(el).toBeDefined();

@@ -1,6 +1,6 @@
 /* eslint-disable react/no-unstable-nested-components */
 import React, { useState, useEffect } from 'react';
-import { Meta } from '@storybook/react';
+import { Meta } from '@storybook/react-vite';
 
 import { useTimeout } from '..';
 // import README from '../README.md';

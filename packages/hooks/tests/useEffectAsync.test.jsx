@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { render, waitFor, act, cleanup } from '@testing-library/react';
-import { useEffectAsync } from '..';
+import { useEffectAsync } from '../src/index';
 
 afterEach(cleanup);
 

@@ -1,12 +1,12 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { waitFor, cleanup } from '@testing-library/react';
-import { avOrganizationsApi } from '@availity/api-axios';
+import { avRegionsApi } from '@availity/api-axios';
 import { QueryClient } from '@tanstack/react-query';
+import { useCurrentRegion } from '../src/index';
 import renderWithClient from './util';
-import { useOrganizations } from '..';
 
-jest.mock('@availity/api-axios');
+vi.mock('@availity/api-axios');
 
 let queryStates = [];
 beforeEach(() => {
@@ -16,7 +16,7 @@ beforeEach(() => {
 const queryClient = new QueryClient();
 
 afterEach(() => {
-  jest.clearAllMocks();
+  vi.clearAllMocks();
   cleanup();
   queryClient.clear();
   queryStates = [];
@@ -29,7 +29,7 @@ const pushState = (state) => {
 const Component = ({ log }) => {
   // Mirror testing methods from react-query instead of relying on timing or booleans
   // https://github.com/tannerlinsley/react-query/blob/master/src/react/tests/useQuery.test.tsx
-  const state = useOrganizations({}, { cacheTime: 0, retry: false });
+  const state = useCurrentRegion({ gcTime: 0, retry: false });
 
   // not directly used in assertions here, but useful for debugging purposes
   if (log) log(state);
@@ -49,13 +49,12 @@ Component.propTypes = {
   log: PropTypes.func,
 };
 
-describe('useOrganizations', () => {
-  test('should return an error', async () => {
-    avOrganizationsApi.getOrganizations.mockRejectedValueOnce('An error occurred');
-
+describe('useCurrentRegion', () => {
+  test('handle error', async () => {
+    avRegionsApi.getCurrentRegion.mockRejectedValueOnce('An error occurred');
     const { getByText } = renderWithClient(queryClient, <Component log={pushState} />);
 
-    getByText('Status: loading');
+    getByText('Status: pending');
     await waitFor(() => {
       const el = getByText('Status: error');
       expect(el).toBeDefined();
@@ -66,44 +65,29 @@ describe('useOrganizations', () => {
     });
   });
 
-  test('should return organizations', async () => {
-    avOrganizationsApi.getOrganizations.mockResolvedValueOnce({
+  test('handle success', async () => {
+    avRegionsApi.getCurrentRegion.mockResolvedValueOnce({
+      config: { polling: false },
       data: {
-        organizations: [
+        regions: [
           {
-            links: {
-              permissions: { href: 'test' },
-              patients: { href: 'test' },
-              self: { href: 'test' },
-              admin: { href: 'test' },
-              businessArrangements: { href: 'test' },
-              users: { href: 'test' },
-            },
+            id: 'FL',
+            value: 'Florida',
           },
         ],
       },
+      status: 200,
+      statusText: 'Ok',
     });
 
     const { getByText } = renderWithClient(queryClient, <Component log={pushState} />);
 
-    getByText('Status: loading');
+    getByText('Status: pending');
     await waitFor(() => {
       const el = getByText(
         `Data: ${JSON.stringify({
-          data: {
-            organizations: [
-              {
-                links: {
-                  permissions: { href: 'test' },
-                  patients: { href: 'test' },
-                  self: { href: 'test' },
-                  admin: { href: 'test' },
-                  businessArrangements: { href: 'test' },
-                  users: { href: 'test' },
-                },
-              },
-            ],
-          },
+          code: 'FL',
+          value: 'Florida',
         })}`
       );
       expect(el).toBeDefined();

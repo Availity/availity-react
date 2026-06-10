@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Meta } from '@storybook/react';
+import { Meta } from '@storybook/react-vite';
 import { Card } from 'reactstrap';
 
 import { useEffectAsync, useToggle } from '..';
@@ -29,7 +29,7 @@ const AsyncComponent = ({ mockData }: { mockData: string }) => {
 };
 
 export default {
-  title: 'Hooks/useEffectAsync',
+  title: 'Deprecated/useEffectAsync',
   parameters: {
     docs: {
       // page: README,

@@ -1,6 +1,6 @@
 import React from 'react';
 import { render, fireEvent, cleanup } from '@testing-library/react';
-import { useToggle } from '..';
+import { useToggle } from '../src/index';
 
 afterEach(cleanup);
 

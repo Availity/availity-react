@@ -1,6 +1,6 @@
 import React from 'react';
 import { render, waitFor, act, fireEvent } from '@testing-library/react';
-import { useWindowDimensions } from '..';
+import { useWindowDimensions } from '../src/index';
 
 const Component = () => {
   const { height, width } = useWindowDimensions();

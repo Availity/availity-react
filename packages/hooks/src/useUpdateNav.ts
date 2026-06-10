@@ -2,7 +2,7 @@ import { useEffect } from 'react';
 import { useLocation } from 'react-router-dom';
 import avMessage from '@availity/message-core';
 
-const useUpdateNav = () => {
+const useUpdateNav = (): void => {
   const location = useLocation();
 
   useEffect(() => {

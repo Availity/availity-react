@@ -1,12 +1,12 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { waitFor, cleanup } from '@testing-library/react';
-import { avUserApi } from '@availity/api-axios';
+import { avPermissionsApi } from '@availity/api-axios';
 import { QueryClient } from '@tanstack/react-query';
-import { useCurrentUser } from '..';
 import renderWithClient from './util';
+import { usePermissions } from '../src/index';
 
-jest.mock('@availity/api-axios');
+vi.mock('@availity/api-axios');
 
 let queryStates = [];
 beforeEach(() => {
@@ -16,7 +16,7 @@ beforeEach(() => {
 const queryClient = new QueryClient();
 
 afterEach(() => {
-  jest.clearAllMocks();
+  vi.clearAllMocks();
   cleanup();
   queryClient.clear();
   queryStates = [];
@@ -29,7 +29,7 @@ const pushState = (state) => {
 const Component = ({ log }) => {
   // Mirror testing methods from react-query instead of relying on timing or booleans
   // https://github.com/tannerlinsley/react-query/blob/master/src/react/tests/useQuery.test.tsx
-  const state = useCurrentUser({ cacheTime: 0, retry: false });
+  const state = usePermissions({}, { gcTime: 0, retry: false });
 
   // not directly used in assertions here, but useful for debugging purposes
   if (log) log(state);
@@ -49,13 +49,13 @@ Component.propTypes = {
   log: PropTypes.func,
 };
 
-describe('useCurrentUser', () => {
-  test('should set error on rejected promise', async () => {
-    avUserApi.me.mockRejectedValueOnce('An error occurred');
+describe('usePermissions', () => {
+  test('should return an error', async () => {
+    avPermissionsApi.getPermissions.mockRejectedValueOnce('An error occurred');
 
     const { getByText } = renderWithClient(queryClient, <Component log={pushState} />);
 
-    getByText('Status: loading');
+    getByText('Status: pending');
     await waitFor(() => {
       const el = getByText('Status: error');
       expect(el).toBeDefined();
@@ -66,26 +66,22 @@ describe('useCurrentUser', () => {
     });
   });
 
-  test('should return user', async () => {
-    avUserApi.me.mockResolvedValueOnce({
-      id: 'aka12345',
-      userId: 'testExample',
-      akaname: 'aka12345',
-      lastName: 'Last',
-      firstName: 'First',
+  test('should return permissions', async () => {
+    avPermissionsApi.getPermissions.mockResolvedValueOnce({
+      id: '44',
+      description: 'test',
+      links: { self: { href: 'test.com' } },
     });
 
     const { getByText } = renderWithClient(queryClient, <Component log={pushState} />);
 
-    getByText('Status: loading');
+    getByText('Status: pending');
     await waitFor(() => {
       const el = getByText(
         `Data: ${JSON.stringify({
-          id: 'aka12345',
-          userId: 'testExample',
-          akaname: 'aka12345',
-          lastName: 'Last',
-          firstName: 'First',
+          id: '44',
+          description: 'test',
+          links: { self: { href: 'test.com' } },
         })}`
       );
       expect(el).toBeDefined();

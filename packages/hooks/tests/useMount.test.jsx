@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { render, cleanup } from '@testing-library/react';
-import { useMount } from '..';
+import { useMount } from '../src/index';
 
 afterEach(cleanup);
 
