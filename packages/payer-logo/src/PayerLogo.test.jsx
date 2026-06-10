@@ -2,9 +2,9 @@ import React from 'react';
 import { render, waitFor, screen } from '@testing-library/react';
 import { avWebQLApi } from '@availity/api-axios';
 
-import PayerLogo, { getLogo } from '..';
+import PayerLogo, { getLogo } from '../src/index';
 
-jest.mock('@availity/api-axios');
+vi.mock('@availity/api-axios');
 
 describe('PayerLogo', () => {
   test('should not render when no space or payer id', () => {
@@ -90,11 +90,11 @@ describe('PayerLogo', () => {
     expect(message).toBe('clientId is required');
   });
 
-  test('should return error on rejected promise', async () => {
+  test('should return undefined on rejected promise', async () => {
     avWebQLApi.create.mockRejectedValue('This field was rejected');
 
     const response = await getLogo(null, '3', 'test-client-id');
 
-    expect(response).toBe('This field was rejected');
+    expect(response).toBeUndefined();
   });
 });

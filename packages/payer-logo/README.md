@@ -1,6 +1,12 @@
 # @availity/payer-logo
 
-> THIS PACKAGE HAS BEEN DEPRECATED IN FAVOR OF `@availity/spaces`
+## ⚠️ Deprecated
+
+This package is deprecated and no longer actively maintained. Future updates are not guaranteed. We recommend migrating to [`@availity/element`](https://availity.github.io/element).
+
+---
+
+> Easy to use component to display the payer&#x27;s logo given the payer&#x27;s ID
 
 [![Version](https://img.shields.io/npm/v/@availity/payer-logo.svg?style=for-the-badge)](https://www.npmjs.com/package/@availity/payer-logo)
 [![NPM Downloads](https://img.shields.io/npm/dt/@availity/payer-logo.svg?style=for-the-badge)](https://www.npmjs.com/package/@availity/payer-logo)
