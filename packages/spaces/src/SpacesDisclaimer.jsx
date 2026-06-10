@@ -3,9 +3,9 @@ import PropTypes from 'prop-types';
 import { Disclaimer } from '@availity/typography';
 import ReactMarkdown from 'react-markdown';
 
-import { useSpaces } from './Spaces';
+import { useSpaces } from './Spaces.jsx';
 
-const SpacesDisclaimer = ({ styled, spaceId, markdown, ...props }) => {
+const SpacesDisclaimer = ({ styled, spaceId, markdown = false, ...props }) => {
   const [space = {}] = useSpaces(spaceId);
   const { description: disclaimer, id } = space;
 
@@ -20,10 +20,6 @@ const SpacesDisclaimer = ({ styled, spaceId, markdown, ...props }) => {
   }
 
   return null;
-};
-
-SpacesDisclaimer.defaultProps = {
-  markdown: false,
 };
 
 SpacesDisclaimer.propTypes = {

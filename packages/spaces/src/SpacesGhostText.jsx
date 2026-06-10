@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-import { useSpaces } from './Spaces';
+import { useSpaces } from './Spaces.jsx';
 
 const SpacesGhostText = ({ spaceId, id, ...props }) => {
   const [space = {}] = useSpaces(spaceId);

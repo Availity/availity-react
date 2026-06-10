@@ -3,9 +3,9 @@ import PropTypes from 'prop-types';
 import Icon from '@availity/icon';
 import AppIcon from '@availity/app-icon';
 import classNames from 'classnames';
-import { useSpacesContext } from './Spaces';
-import useLink from './useLink';
-import Loader, { skeletonPropType } from './Loader';
+import { useSpacesContext } from './Spaces.jsx';
+import useLink from './useLink.js';
+import Loader, { skeletonPropType } from './Loader.jsx';
 
 const SpacesIcon = ({
   spaceId,

@@ -2,9 +2,12 @@ import React from 'react';
 import { render, waitFor, cleanup } from '@testing-library/react';
 import { useCurrentUser } from '@availity/hooks';
 import dayjs from 'dayjs';
-import { SpacesLink } from '..';
+import { SpacesLink } from '../index.js';
 
-jest.mock('@availity/hooks');
+vi.mock('@availity/hooks', async () => ({
+  ...(await vi.importActual('@availity/hooks')),
+  useCurrentUser: vi.fn(),
+}));
 useCurrentUser.mockResolvedValue({
   data: {
     akaname: 'aka123456789',
@@ -13,7 +16,7 @@ useCurrentUser.mockResolvedValue({
 
 describe('SpacesLink', () => {
   afterEach(() => {
-    jest.clearAllMocks();
+    vi.clearAllMocks();
     cleanup();
   });
 

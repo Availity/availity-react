@@ -7,18 +7,13 @@ export const skeletonPropType = PropTypes.shape({
   height: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
 });
 
-const Loader = ({ skeletonProps, ...rest }) => (
+const Loader = ({ skeletonProps = { height: '100%' }, ...rest }) => (
   <span {...rest}>
     <Skeleton {...skeletonProps} />
   </span>
 );
 Loader.propTypes = {
   skeletonProps: skeletonPropType,
-};
-Loader.defaultProps = {
-  skeletonProps: {
-    height: '100%',
-  },
 };
 
 export default Loader;

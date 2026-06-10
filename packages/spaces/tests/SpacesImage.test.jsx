@@ -1,13 +1,13 @@
 import React from 'react';
 import { render, waitFor, cleanup } from '@testing-library/react';
 import { avWebQLApi } from '@availity/api-axios';
-import Spaces, { SpacesLogo, SpacesTile, SpacesBillboard, SpacesImage } from '..';
+import Spaces, { SpacesLogo, SpacesTile, SpacesBillboard, SpacesImage } from '../index.js';
 
-jest.mock('@availity/api-axios');
+vi.mock('@availity/api-axios');
 
 describe('SpacesImage', () => {
   afterEach(() => {
-    jest.clearAllMocks();
+    vi.clearAllMocks();
     cleanup();
   });
 

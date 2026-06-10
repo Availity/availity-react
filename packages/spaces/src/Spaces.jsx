@@ -3,8 +3,8 @@ import React, { createContext, useContext, useReducer } from 'react';
 import PropTypes from 'prop-types';
 import { avWebQLApi } from '@availity/api-axios';
 import { useEffectAsync } from '@availity/hooks';
-import { spacesReducer, INITIAL_STATE, normalizeSpaces, isFunction } from './helpers';
-import ModalProvider, { useModal } from './modals/ModalProvider';
+import { spacesReducer, INITIAL_STATE, normalizeSpaces, isFunction } from './helpers.js';
+import ModalProvider, { useModal } from './modals/ModalProvider.jsx';
 
 // TODO: types
 
@@ -56,9 +56,124 @@ export const SpacesContext = createContext();
 
 export const useSpacesContext = () => useContext(SpacesContext);
 
+// TODO: move to .graphql file
+// TODO: confirm we have everything needed from old SpacesFragment request
+const DEFAULT_QUERY = `
+  query PuiBootstrapSpacesAnonymousOperation($ids: [String!], $payerIDs: [ID!], $types: [TypeEnum!]) {
+    configurationPagination(filter: { ids: $ids, payerIds: $payerIDs, types: $types }) {
+      pageInfo {
+        hasNextPage
+        currentPage
+      }
+      items {
+        ... on Configuration {
+          configurationId
+          name
+          shortName
+          type
+          activeDate
+          isNew
+          description
+          payerIDs
+          parentIDs
+          metadataPairs {
+            name
+            value
+          }
+        }
+
+        ... on Node {
+          id
+        }
+
+        ... on Alert {
+          link {
+            text
+            target
+            url
+          }
+        }
+
+        ... on Container {
+          link {
+            text
+            target
+            url
+          }
+          images {
+            tile
+            promotional
+            logo
+            billboard
+          }
+        }
+
+        ... on PayerSpace {
+          link {
+            text
+            target
+            url
+          }
+          images {
+            tile
+            logo
+            billboard
+          }
+          url
+        }
+
+        ... on Application {
+          link {
+            text
+            target
+            url
+          }
+        }
+
+        ... on Resource {
+          link {
+            text
+            target
+            url
+          }
+        }
+
+        ... on Navigation {
+          icons {
+            dashboard
+            navigation
+          }
+          images {
+            promotional
+          }
+        }
+
+        ... on Learning {
+          images {
+            promotional
+          }
+        }
+
+        ... on Proxy {
+          url
+        }
+
+        ... on File {
+          url
+        }
+      }
+    }
+  }
+  `;
+
 // react-query -> initial cache values come from props, then if we have spaceIdsToQuery or payerIdsToQuery, we do, then update cache/prev values
 // what would cache keys be based on? separate caches for spaces and spacesByPayerIds?
-const Spaces = ({ query, variables, clientId, spaceIds, payerIds, children, spaces: spacesFromProps, operationName }) => {
+const DEFAULT_VARIABLES = { types: ['PAYERSPACE'] };
+const DEFAULT_SPACE_IDS = [];
+const DEFAULT_PAYER_IDS = [];
+const DEFAULT_SPACES = [];
+
+const Spaces = ({ query = DEFAULT_QUERY, variables = DEFAULT_VARIABLES, clientId, spaceIds = DEFAULT_SPACE_IDS, payerIds = DEFAULT_PAYER_IDS, children, spaces: spacesFromProps = DEFAULT_SPACES, operationName = 'PuiBootstrapSpacesAnonymousOperation' }) => {
   const [{ previousSpacesMap, previousSpacesByConfigMap, previousSpacesByPayerMap, loading, error }, dispatch] =
     useReducer(spacesReducer, INITIAL_STATE); // TODO: react-query. Don't expose cache time options to users
 
@@ -272,123 +387,6 @@ Spaces.propTypes = {
   spaces: PropTypes.arrayOf(PropTypes.object),
   /** Optional operation name for the GraphQL query. */
   operationName: PropTypes.string,
-};
-
-Spaces.defaultProps = {
-  // TODO: move to .graphql file
-  // TODO: confirm we have everything needed from old SpacesFragment request
-  query: `
-  query PuiBootstrapSpacesAnonymousOperation($ids: [String!], $payerIDs: [ID!], $types: [TypeEnum!]) {
-    configurationPagination(filter: { ids: $ids, payerIds: $payerIDs, types: $types }) {
-      pageInfo {
-        hasNextPage
-        currentPage
-      }
-      items {
-        ... on Configuration {
-          configurationId
-          name
-          shortName
-          type
-          activeDate
-          isNew
-          description
-          payerIDs
-          parentIDs
-          metadataPairs {
-            name
-            value
-          }
-        }
-
-        ... on Node {
-          id
-        }
-
-        ... on Alert {
-          link {
-            text
-            target
-            url
-          }
-        }
-
-        ... on Container {
-          link {
-            text
-            target
-            url
-          }
-          images {
-            tile
-            promotional
-            logo
-            billboard
-          }
-        }
-
-        ... on PayerSpace {
-          link {
-            text
-            target
-            url
-          }
-          images {
-            tile
-            logo
-            billboard
-          }
-          url
-        }
-
-        ... on Application {
-          link {
-            text
-            target
-            url
-          }
-        }
-
-        ... on Resource {
-          link {
-            text
-            target
-            url
-          }
-        }
-
-        ... on Navigation {
-          icons {
-            dashboard
-            navigation
-          }
-          images {
-            promotional
-          }
-        }
-
-        ... on Learning {
-          images {
-            promotional
-          }
-        }
-
-        ... on Proxy {
-          url
-        }
-
-        ... on File {
-          url
-        }
-      }
-    }
-  }
-  `,
-  variables: { types: ['PAYERSPACE'] },
-  spaceIds: [],
-  payerIds: [],
-  spaces: [],
-  operationName: 'PuiBootstrapSpacesAnonymousOperation',
 };
 
 export default Spaces;

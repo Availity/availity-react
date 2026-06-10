@@ -3,9 +3,9 @@ import PropTypes from 'prop-types';
 import { getUrl, getTarget } from '@availity/link';
 import { isAbsoluteUrl } from '@availity/resolve-url';
 import { Modal, ModalHeader, ModalFooter, Button } from 'reactstrap';
-import DisclaimerModal from './DisclaimerModal';
-import MultiPayerModal from './MultiPayerModal';
-import { updateUrl, updateTopApps } from '../helpers';
+import DisclaimerModal from './DisclaimerModal.jsx';
+import MultiPayerModal from './MultiPayerModal.jsx';
+import { updateUrl, updateTopApps } from '../helpers.js';
 
 export const ModalContext = createContext();
 

@@ -10,10 +10,10 @@ import dayjs from 'dayjs';
 import AppIcon from '@availity/app-icon';
 import Icon from '@availity/icon';
 import AvLink from '@availity/link';
-import { useSpacesContext } from './Spaces';
-import { isFunction } from './helpers';
-import useLink from './useLink';
-import Loader, { skeletonPropType } from './Loader';
+import { useSpacesContext } from './Spaces.jsx';
+import { isFunction } from './helpers.js';
+import useLink from './useLink.js';
+import Loader, { skeletonPropType } from './Loader.jsx';
 import '../styles.scss';
 
 const getDisplayDate = (date) => dayjs(date).format('MM/DD/YYYY');
@@ -52,18 +52,18 @@ const Link = ({
   appIcon: showAppIcon,
   favorite,
   icon,
-  showName,
+  showName = true,
   showNew,
   showDate,
   stacked,
-  body,
+  body = true,
   description: showDescription,
   tag: Tag,
   bodyTag: BodyTag,
   titleTag: TitleTag,
   textTag: TextTag,
   titleClassName,
-  linkStyle,
+  linkStyle = 'default',
   size,
   loading: propsLoading,
   clientId: propsClientId,
@@ -75,7 +75,7 @@ const Link = ({
   analytics,
   customBadgeText,
   customBadgeColor,
-  idPrefix,
+  idPrefix = '',
   ...rest
 }) => {
   const { loading } = useSpacesContext() || {};
@@ -395,13 +395,6 @@ Link.propTypes = {
   customBadgeColor: PropTypes.string,
   /** prefix for ids to prevent duplicates when the same config link is displayed on the page more than once */
   idPrefix: PropTypes.string,
-};
-
-Link.defaultProps = {
-  linkStyle: 'default',
-  body: true,
-  idPrefix: '',
-  showName: true,
 };
 
 export default Link;

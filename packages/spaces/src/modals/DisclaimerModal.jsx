@@ -4,7 +4,7 @@ import get from 'lodash/get';
 import { avWebQLApi } from '@availity/api-axios';
 import ReactMarkdown from 'react-markdown';
 import { ModalBody } from 'reactstrap';
-import Loader from '../Loader';
+import Loader from '../Loader.jsx';
 
 const disclaimerQuery = `query configurationFindOne($id: ID!) {
   configurationFindOne(id: $id) {

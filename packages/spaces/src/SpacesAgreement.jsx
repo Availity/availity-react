@@ -3,9 +3,9 @@ import PropTypes from 'prop-types';
 import { Agreement } from '@availity/typography';
 import ReactMarkdown from 'react-markdown';
 
-import { useSpaces } from './Spaces';
+import { useSpaces } from './Spaces.jsx';
 
-const SpacesAgreement = ({ spaceId, markdown, ...props }) => {
+const SpacesAgreement = ({ spaceId, markdown = false, ...props }) => {
   const [space = {}] = useSpaces(spaceId);
   const { description: agreement, id } = space;
 
@@ -20,10 +20,6 @@ const SpacesAgreement = ({ spaceId, markdown, ...props }) => {
   }
 
   return null;
-};
-
-SpacesAgreement.defaultProps = {
-  markdown: false,
 };
 
 SpacesAgreement.propTypes = {

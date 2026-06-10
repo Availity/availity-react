@@ -1,9 +1,9 @@
 import React from 'react';
 import { render, waitFor } from '@testing-library/react';
 import { avWebQLApi } from '@availity/api-axios';
-import Spaces, { SpacesDisclaimer } from '..';
+import Spaces, { SpacesAgreement } from '../index.js';
 
-jest.mock('@availity/api-axios');
+vi.mock('@availity/api-axios');
 
 avWebQLApi.create.mockResolvedValue({
   data: {
@@ -25,25 +25,25 @@ avWebQLApi.create.mockResolvedValue({
   },
 });
 
-describe('SpacesDisclaimer', () => {
+describe('SpacesAgreement', () => {
   afterEach(() => {
-    jest.clearAllMocks();
+    vi.clearAllMocks();
   });
 
-  it('renders disclaimer from space', async () => {
+  it('renders agreement from space', async () => {
     const { getByText } = render(
       <Spaces clientId="my-client-id" spaceIds={['1']}>
-        <SpacesDisclaimer spaceId="1" />
+        <SpacesAgreement spaceId="1" />
       </Spaces>
     );
 
     await waitFor(() => getByText('foo'));
   });
 
-  it('renders disclaimer from single space', async () => {
+  it('renders agreement from single space', async () => {
     const { getByText } = render(
       <Spaces clientId="my-client-id" spaceIds={['1']}>
-        <SpacesDisclaimer />
+        <SpacesAgreement />
       </Spaces>
     );
 

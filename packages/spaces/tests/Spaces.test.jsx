@@ -5,13 +5,13 @@ import { render, waitFor, fireEvent } from '@testing-library/react';
 import { avWebQLApi } from '@availity/api-axios';
 import { getAllSpaces } from '../src/Spaces';
 import { normalizeSpaces } from '../src/helpers';
-import Spaces, { useSpaces, useSpacesContext } from '..';
+import Spaces, { useSpaces, useSpacesContext } from '../index.js';
 
-jest.mock('@availity/api-axios');
+vi.mock('@availity/api-axios');
 
 describe('Spaces', () => {
   afterEach(() => {
-    jest.clearAllMocks();
+    vi.clearAllMocks();
   });
 
   it('provides correct spaces from props and from avWebQL', async () => {
@@ -132,7 +132,7 @@ describe('Spaces', () => {
         },
       });
 
-    const fn = jest.fn(() => {});
+    const fn = vi.fn(() => {});
     // Create component to call mock function
     const SpaceComponent = ({ spaceId }) => {
       const [space] = useSpaces(spaceId);
@@ -246,7 +246,7 @@ describe('Spaces', () => {
 
   it('returns error when missing clientId', async () => {
     // Create component that renders a SpaceComponent for the current space id
-    const fn = jest.fn(() => {});
+    const fn = vi.fn(() => {});
     // Create component to call mock function
     const SpaceComponent = ({ spaceId }) => {
       const [space] = useSpaces(spaceId);
@@ -281,7 +281,7 @@ describe('Spaces', () => {
       },
     });
 
-    console.warn = jest.fn();
+    console.warn = vi.fn();
 
     const { getByText } = render(
       <Spaces spaceIds={['1', '2']} clientId="test-client-id">
@@ -408,7 +408,7 @@ describe('Spaces', () => {
     });
 
     it('renders with warning when returning all spaces because no ids were passed in', async () => {
-      const consoleWarnMock = jest.spyOn(console, 'warn').mockImplementation(() => {});
+      const consoleWarnMock = vi.spyOn(console, 'warn').mockImplementation(() => {});
       const SpacesComponent = ({ ids = [] }) => {
         const spaces = useSpaces(...ids);
 

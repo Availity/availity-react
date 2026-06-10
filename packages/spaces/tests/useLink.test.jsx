@@ -3,14 +3,14 @@ import { waitFor, cleanup, render, fireEvent } from '@testing-library/react';
 import { useCurrentUser } from '@availity/hooks';
 import nativeForm from '@availity/native-form';
 import { avWebQLApi } from '@availity/api-axios';
-import Spaces, { SpacesLink } from '..';
+import Spaces, { SpacesLink } from '../index.js';
 import '../src/helpers';
 
-jest.mock('@availity/hooks', () => {
-  const original = jest.requireActual('@availity/hooks');
+vi.mock('@availity/hooks', async () => {
+  const original = await vi.importActual('@availity/hooks');
   return {
     ...original,
-    useCurrentUser: jest.fn(),
+    useCurrentUser: vi.fn(),
   };
 });
 
@@ -20,9 +20,9 @@ useCurrentUser.mockImplementation(() => ({
   },
 }));
 
-jest.mock('@availity/native-form');
+vi.mock('@availity/native-form');
 
-jest.mock('@availity/api-axios');
+vi.mock('@availity/api-axios');
 
 avWebQLApi.create.mockResolvedValue({
   data: {
@@ -48,10 +48,10 @@ const buildSpacesLink = (space, linkAttributes) => (
 
 describe('useLink', () => {
   beforeEach(() => {
-    Object.defineProperty(window, 'open', { value: jest.fn() });
+    Object.defineProperty(window, 'open', { value: vi.fn() });
   });
   afterEach(() => {
-    jest.clearAllMocks();
+    vi.clearAllMocks();
     cleanup();
   });
 
