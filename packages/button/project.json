@@ -4,10 +4,15 @@
   "projectType": "library",
   "targets": {
     "test": {
-      "executor": "@nx/jest:jest",
-      "outputs": ["{workspaceRoot}/coverage/button"],
+      "executor": "nx:run-commands",
       "options": {
-        "jestConfig": "packages/button/jest.config.js"
+        "command": "vitest run --project=button",
+        "cwd": "."
+      },
+      "configurations": {
+        "ci": {
+          "command": "vitest run --project=button --coverage"
+        }
       }
     },
     "version": {
@@ -32,6 +37,12 @@
         "noEslintrc": false,
         "hasTypeAwareRules": true,
         "cacheStrategy": "metadata"
+      }
+    },
+    "build": {
+      "command": "tsup src/index.ts --format esm --dts",
+      "options": {
+        "cwd": "packages/button"
       }
     }
   }
