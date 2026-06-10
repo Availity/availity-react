@@ -1,5 +1,5 @@
 import React from 'react';
-import { StoryObj } from '@storybook/react';
+import { StoryObj } from '@storybook/react-vite';
 // import { button } from '@storybook/addon-knobs';
 
 import Upload from '..';
@@ -9,7 +9,7 @@ import Upload from '..';
  * The default export is an all-in-one solution which handles uploads, encrypted file password requests and file state management for you.
  */
 export default {
-  title: 'Bootstrap Components/Upload',
+  title: 'Deprecated/Upload',
   component: Upload,
   args: {
     clientId: 'a',

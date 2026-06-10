@@ -5,8 +5,8 @@ import UploadCore from '@availity/upload-core';
 import Dropzone from 'react-dropzone';
 import { InputGroup } from 'reactstrap';
 
-import FilePickerBtn from './FilePickerBtn';
-import FileList from './FileList';
+import FilePickerBtn from './FilePickerBtn.jsx';
+import FileList from './FileList.jsx';
 import '../styles.scss';
 
 const validationAttrs = ['min', 'max', 'required'];

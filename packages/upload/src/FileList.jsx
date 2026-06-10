@@ -2,7 +2,7 @@ import React, { useMemo } from 'react';
 import PropTypes from 'prop-types';
 import { Table } from 'reactstrap';
 
-import FileRow from './FileRow';
+import FileRow from './FileRow.jsx';
 
 const FileList = ({ files, children, onRemoveFile, onPasswordSubmit, passwordModalZIndex, ...rest }) => {
   const list = useMemo(

@@ -18,9 +18,11 @@
     "directory": "packages/upload"
   },
   "license": "MIT",
-  "main": "index.js",
-  "types": "index.d.ts",
+  "type": "module",
   "scripts": {
+    "build": "tsup --clean",
+    "dev": "tsup --watch",
+    "clean": "rm -rf dist",
     "publish": "yarn npm publish --tolerate-republish --access public",
     "publish:canary": "yarn npm publish --access public --tag canary"
   },
@@ -29,11 +31,12 @@
     "prop-types": "^15.8.1"
   },
   "devDependencies": {
-    "@availity/upload-core": "^8.1.1",
+    "@availity/upload-core": "^9.0.2",
     "react": "^18.3.1",
     "react-dom": "^18.3.1",
     "react-dropzone": "^11.7.1",
-    "reactstrap": "^8.10.1"
+    "reactstrap": "^8.10.1",
+    "tsup": "^8.5.1"
   },
   "peerDependencies": {
     "@availity/upload-core": "^8.1.1",
@@ -44,5 +47,15 @@
   },
   "publishConfig": {
     "access": "public"
+  },
+  "exports": {
+    ".": {
+      "source": "./index.js",
+      "import": {
+        "types": "./index.d.ts",
+        "default": "./dist/index.js"
+      }
+    },
+    "./styles.scss": "./styles.scss"
   }
 }

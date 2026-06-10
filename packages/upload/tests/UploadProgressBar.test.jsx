@@ -2,14 +2,14 @@ import React from 'react';
 import { render, fireEvent, act } from '@testing-library/react';
 
 import MockUpload from './mockUpload';
-import { UploadProgressBar } from '..';
+import { UploadProgressBar } from '../index.js';
 
 const instance = new MockUpload();
 
 describe('UploadProgressBar', () => {
   afterEach(() => {
     instance.reset();
-    jest.clearAllMocks();
+    vi.clearAllMocks();
   });
 
   test('should render', () => {
@@ -63,7 +63,7 @@ describe('UploadProgressBar', () => {
   });
 
   test('should submit parent form on password submit', async () => {
-    const handleSubmit = jest.fn();
+    const handleSubmit = vi.fn();
     const SubmittingForm = () => (
       <form data-testid="form" onSubmit={handleSubmit}>
         <UploadProgressBar upload={instance} />
@@ -90,7 +90,7 @@ describe('UploadProgressBar', () => {
   });
 
   test('should not submit parent form with onPasswordSubmit stopPropagation', async () => {
-    const handleSubmit = jest.fn();
+    const handleSubmit = vi.fn();
     const NonSubmittingForm = () => (
       <form data-testid="form" onSubmit={handleSubmit}>
         <UploadProgressBar upload={instance} onPasswordSubmit={(e) => e.stopPropagation()} />

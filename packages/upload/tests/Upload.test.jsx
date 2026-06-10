@@ -2,7 +2,7 @@ import React, { act } from 'react';
 import { screen, render, fireEvent, waitFor } from '@testing-library/react';
 import { server } from '@availity/mock/src/server';
 
-import Upload from '..';
+import Upload from '../index.js';
 
 const getDropRejectionMessage = (errors) => {
   let msg = '';
@@ -78,7 +78,7 @@ describe('Upload', () => {
   });
 
   test('calls onFilePreUpload callback', async () => {
-    const mockFunc = jest.fn();
+    const mockFunc = vi.fn();
     render(<Upload clientId="a" bucketId="b" customerId="c" onFilePreUpload={[mockFunc]} />);
     const inputNode = screen.getByTestId('file-picker');
 
@@ -102,7 +102,7 @@ describe('Upload', () => {
   });
 
   test('calls onFileRemove callback', async () => {
-    const mockFunc = jest.fn();
+    const mockFunc = vi.fn();
 
     render(<Upload clientId="a" bucketId="b" customerId="c" onFileRemove={mockFunc} />);
 
@@ -159,7 +159,7 @@ describe('Upload', () => {
   });
 
   test('a discontinue result from a function in the property onFilePreUpload should prevent onFileUpload from being called', async () => {
-    const myfunc = jest.fn();
+    const myfunc = vi.fn();
     render(
       <Upload
         clientId="a"
@@ -236,7 +236,7 @@ describe('Upload', () => {
   });
 
   test('uses cloud url when isCloud is true', async () => {
-    const mockFn = jest.fn();
+    const mockFn = vi.fn();
 
     render(
       <Upload
@@ -263,12 +263,12 @@ describe('Upload', () => {
     expect(inputNode.files.length).toBe(1);
 
     await waitFor(() => {
-      expect(mockFn).toHaveBeenCalledWith('http://localhost/cloud/web/appl/vault/upload/v1/resumable');
+      expect(mockFn).toHaveBeenCalledWith('http://localhost:3000/cloud/web/appl/vault/upload/v1/resumable');
     });
   });
 
   test('uses endpoint passed in props for upload', async () => {
-    const mockFn = jest.fn();
+    const mockFn = vi.fn();
 
     render(
       <Upload
@@ -295,13 +295,13 @@ describe('Upload', () => {
     expect(inputNode.files.length).toBe(1);
 
     await waitFor(() => {
-      expect(mockFn).toHaveBeenCalledWith('http://localhost/test/foo');
+      expect(mockFn).toHaveBeenCalledWith('http://localhost:3000/test/foo');
     });
   });
 
   test('passes customHeaders to UploadCore options', async () => {
     const customHeaders = { 'X-Custom-Header': 'test-value' };
-    const mockFn = jest.fn();
+    const mockFn = vi.fn();
 
     render(
       <Upload
@@ -333,11 +333,11 @@ describe('Upload', () => {
   });
 
   test('passes customHeaders function result to UploadCore options', async () => {
-    const customHeadersFunction = jest.fn((file) => ({
+    const customHeadersFunction = vi.fn((file) => ({
       'X-File-Name': file.name,
       'x-metadata-content-type': `application/${file.name.split('.').pop()?.toLowerCase()}`,
     }));
-    const mockFn = jest.fn();
+    const mockFn = vi.fn();
 
     render(
       <Upload
@@ -373,7 +373,7 @@ describe('Upload', () => {
   });
 
   test('handles customHeaders as undefined', async () => {
-    const mockFn = jest.fn();
+    const mockFn = vi.fn();
 
     render(
       <Upload

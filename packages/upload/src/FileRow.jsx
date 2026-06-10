@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { Button } from 'reactstrap';
 
-import UploadProgressBar from './UploadProgressBar';
+import UploadProgressBar from './UploadProgressBar.jsx';
 
 const fileTypeIconMap = {
   png: 'file-image',
