@@ -1,9 +1,9 @@
 import React from 'react';
-import { StoryObj } from '@storybook/react';
+import { StoryObj } from '@storybook/react-vite';
 import Link, { AvLinkProps } from '..';
 
 export default {
-  title: 'Bootstrap Components/Link',
+  title: 'Deprecated/Link',
   components: Link,
 };
 

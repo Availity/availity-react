@@ -50,7 +50,7 @@ const setRel = (url, target, absolute) => {
 
 const linkStyles = { fontWeight: 'bold' };
 
-const AvLink = ({ tag: Tag, href, target, children, onClick, loadApp, className, ...props }) => {
+const AvLink = ({ tag: Tag = 'a', href, target, children, onClick, loadApp = true, className, ...props }) => {
   const absolute = isAbsoluteUrl(href);
   const url = getUrl(href, loadApp, absolute);
   const classnames = classNames('link', className);
@@ -70,11 +70,6 @@ const AvLink = ({ tag: Tag, href, target, children, onClick, loadApp, className,
       {children}
     </Tag>
   );
-};
-
-AvLink.defaultProps = {
-  tag: 'a',
-  loadApp: true,
 };
 
 AvLink.propTypes = {

@@ -1,6 +1,6 @@
 import React from 'react';
 import { render, cleanup, fireEvent } from '@testing-library/react';
-import AvLink from '..';
+import AvLink from '../index.js';
 
 afterEach(cleanup);
 
@@ -62,7 +62,7 @@ describe('AvLink', () => {
   });
 
   test('should call onClick', () => {
-    const onClick = jest.fn();
+    const onClick = vi.fn();
 
     const { getByTestId } = render(
       <AvLink loadApp={false} href="/public/apps/my-app" onClick={onClick}>
