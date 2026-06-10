@@ -1,23 +1,20 @@
+/* eslint-disable react-hooks/rules-of-hooks */
 import React from 'react';
-import { Meta, StoryObj } from '@storybook/react';
+import { Meta, StoryObj } from '@storybook/react-vite';
 import { Alert } from 'reactstrap';
+import BlockUi from '@availity/block-ui';
 import { QueryClientProvider, QueryClient } from '@tanstack/react-query';
 
-import Authorize from '.';
+import Authorize, { useAuthorize } from '.';
 
-/** Component for showing content based on the user's permissions. Wrap this component around content you only want specific users to see.
+/** Check user permissions to see if the current user is authorized to see your content.
  *
- * The `useAuthorize` hook utilizes [react-query](https://tanstack.com/query/v4/docs/framework/react/overview) to handle data fetching.
+ * This package uses [react-query](https://tanstack.com/query/v4/docs/framework/react/overview) to handle data fetching.
  * This means you must add a [QueryClientProvider](https://tanstack.com/query/v4/docs/framework/react/reference/QueryClientProvider)
  * to your app if you do not already have one.
- *
- * The default setup should cover most use-cases. However, there are 2 query options we recommend looking into
- * in order to determine what is correct for your app. These settings are `refetchOnWindowFocus` and
- * `staleTime`. The first option sets whether the to refetch the query when the window is focused, and
- * the other is the default marker for how long the query is valid.
  */
 const meta: Meta<typeof Authorize> = {
-  title: 'Bootstrap Components/Authorize/Authorize',
+  title: 'Components/Authorize',
   component: Authorize,
   decorators: [
     (Story: () => JSX.Element) => (
@@ -26,7 +23,6 @@ const meta: Meta<typeof Authorize> = {
       </QueryClientProvider>
     ),
   ],
-  tags: ['autodocs'],
   args: {
     permissions: ['1234'],
     organizationId: '1111',
@@ -37,18 +33,14 @@ const meta: Meta<typeof Authorize> = {
     loader: true,
   },
   argTypes: {
-    children: {
-      control: 'text',
-    },
-    unauthorized: {
-      control: 'text',
-    },
+    children: { control: 'text' },
+    unauthorized: { control: 'text' },
   },
 };
 
 export default meta;
 
-export const _Authorize: StoryObj<typeof Authorize> = {
+export const Component: StoryObj<typeof Authorize> = {
   render: ({ children, unauthorized, ...args }) => (
     <div>
       <p>
@@ -61,4 +53,26 @@ export const _Authorize: StoryObj<typeof Authorize> = {
       </Authorize>
     </div>
   ),
+};
+
+export const Hook: StoryObj<typeof Authorize> = {
+  render: () => {
+    const { authorized, isLoading } = useAuthorize(['1234'], { organizationId: '1111', region: true });
+
+    return (
+      <div>
+        <p>
+          For this demo, the following permissions are granted: 1234, 2345, 3456, 4567, 5678, 6789.
+        </p>
+        <hr />
+        <BlockUi blocking={isLoading} renderChildren={false}>
+          {authorized ? (
+            <Alert color="success">You are authorized to see this content.</Alert>
+          ) : (
+            <Alert color="danger">You are not authorized to see this content.</Alert>
+          )}
+        </BlockUi>
+      </div>
+    );
+  },
 };

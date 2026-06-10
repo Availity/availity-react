@@ -14,15 +14,18 @@ const useAuthorize = (
 
   const { organizationId, customerId, region = true, resources } = parameters;
 
-  const { data: authorized = false, isLoading } = useQuery(
-    ['useAuthorize', permissions, region, resources, organizationId, customerId],
-    async () => {
-      const currentRegion = await queryClient.fetchQuery(['region'], () => getRegion(region));
+  const { data: authorized = false, isLoading } = useQuery({
+    queryKey: ['useAuthorize', permissions, region, resources, organizationId, customerId],
+    queryFn: async () => {
+      const currentRegion = region
+        ? await queryClient.fetchQuery({ queryKey: ['region'], queryFn: () => getRegion(region) })
+        : undefined;
 
       return checkPermissions(permissions, currentRegion, resources, organizationId, customerId);
     },
-    { enabled: permissions.length > 0, ...options }
-  );
+    enabled: permissions.length > 0,
+    ...options,
+  });
 
   return { authorized, isLoading };
 };
