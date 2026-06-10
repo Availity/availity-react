@@ -2,11 +2,11 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { Badge } from 'reactstrap';
 
-import ListGroupItem from './ListGroupItem';
+import ListGroupItem from './ListGroupItem.jsx';
 
 const defaultColor = 'info';
 
-const ListItemStatus = ({ color, titleContent, children, badge, ...props }) => {
+const ListItemStatus = ({ color, titleContent = <span />, children, badge, ...props }) => {
   const borderColor = color || (badge && badge.color) || defaultColor;
   let title = titleContent;
 
@@ -57,10 +57,6 @@ ListItemStatus.propTypes = {
       text: PropTypes.string,
     }),
   ]),
-};
-
-ListItemStatus.defaultProps = {
-  titleContent: <span />,
 };
 
 export default ListItemStatus;

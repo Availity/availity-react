@@ -4,10 +4,15 @@
   "projectType": "library",
   "targets": {
     "test": {
-      "executor": "@nx/jest:jest",
-      "outputs": ["{workspaceRoot}/coverage/list-group-item"],
+      "executor": "nx:run-commands",
       "options": {
-        "jestConfig": "packages/list-group-item/jest.config.js"
+        "command": "vitest run --project=list-group-item",
+        "cwd": "."
+      },
+      "configurations": {
+        "ci": {
+          "command": "vitest run --project=list-group-item --coverage"
+        }
       }
     },
     "version": {
@@ -32,6 +37,12 @@
         "noEslintrc": false,
         "hasTypeAwareRules": true,
         "cacheStrategy": "metadata"
+      }
+    },
+    "build": {
+      "command": "tsup index.js --format esm",
+      "options": {
+        "cwd": "packages/list-group-item"
       }
     }
   }

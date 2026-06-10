@@ -1,5 +1,5 @@
 import React from 'react';
-import { StoryObj } from '@storybook/react';
+import { StoryObj } from '@storybook/react-vite';
 import ListGroup from '@availity/list-group';
 import { ListGroupItemProps } from 'reactstrap';
 
@@ -11,7 +11,7 @@ const colors = ['success', 'info', 'danger', 'warning', 'secondary'];
  * List Group Item with some Availity flair
  */
 export default {
-  title: 'Bootstrap Components/List Group Item',
+  title: 'Deprecated/List Group Item',
   component: ListGroupItem,
   args: {
     cards: false,

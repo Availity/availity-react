@@ -1,5 +1,11 @@
 # @availity/list-group-item
 
+## ⚠️ Deprecated
+
+This package is deprecated and no longer actively maintained. Future updates are not guaranteed. We recommend migrating to [`@availity/element`](https://availity.github.io/element).
+
+---
+
 > List Group Item with some Availity flair
 
 [![Version](https://img.shields.io/npm/v/@availity/list-group-item.svg?style=for-the-badge)](https://www.npmjs.com/package/@availity/list-group-item)

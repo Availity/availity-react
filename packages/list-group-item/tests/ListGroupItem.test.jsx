@@ -1,6 +1,6 @@
 import React from 'react';
 import { render, cleanup } from '@testing-library/react';
-import ListGroupItem from '..';
+import ListGroupItem from '../index.js';
 
 afterEach(cleanup);
 
