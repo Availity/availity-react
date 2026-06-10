@@ -8,9 +8,9 @@ import { Form } from '@availity/form';
 import { ResourceSelect } from '../src';
 import { AvProviderSelect, AvRegionSelect, AvPayerSelect } from '../src/resources';
 
-jest.mock('@availity/api-axios');
+vi.mock('@availity/api-axios');
 
-const onSubmit = jest.fn();
+const onSubmit = vi.fn();
 
 const renderSelect = (props) => {
   const Component = () => {
@@ -36,7 +36,7 @@ const renderSelect = (props) => {
 
 describe('ResourceSelect', () => {
   afterEach(() => {
-    jest.clearAllMocks();
+    vi.clearAllMocks();
   });
 
   it('returns resource options', async () => {

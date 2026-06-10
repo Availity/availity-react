@@ -188,7 +188,7 @@ const Select = ({
   placeholder,
   components: componentOverrides,
   required,
-  clearButtonClassName,
+  clearButtonClassName = 'btn btn-link link',
   clearButtonText = 'clear',
   clearButtonProps = {},
   defaultToOnlyOption,
@@ -475,10 +475,6 @@ const Select = ({
 
 Select.defaultTypes = {
   waitUntilFocused: false,
-};
-
-Select.defaultProps = {
-  clearButtonClassName: 'btn btn-link link',
 };
 
 Select.propTypes = {

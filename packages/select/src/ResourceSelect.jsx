@@ -4,15 +4,15 @@ import qs from 'qs';
 import get from 'lodash/get';
 import { useFormikContext } from 'formik';
 
-import Select from './Select';
-import SelectField from './SelectField';
+import Select from './Select.jsx';
+import SelectField from './SelectField.jsx';
 
 const ResourceSelect = ({
   name,
   method,
-  delay,
+  delay = 350,
   debounceTimeout = delay,
-  itemsPerPage,
+  itemsPerPage = 50,
   watchParams,
   cacheUniq,
   additional,
@@ -22,15 +22,15 @@ const ResourceSelect = ({
   graphqlConfig,
   minCharsToSearch,
   onFocus,
-  waitUntilFocused,
-  defaultToOnlyOption,
-  defaultToFirstOption,
-  shouldSearch,
+  waitUntilFocused = false,
+  defaultToOnlyOption = false,
+  defaultToFirstOption = false,
+  shouldSearch = true,
   additionalPostGetArgs,
-  pageAll,
+  pageAll = false,
   pageAllSearchBy,
-  searchTerm,
-  encodeSearchValue,
+  searchTerm = 'q',
+  encodeSearchValue = true,
   ...rest
 }) => {
   const { setFieldValue } = useFormikContext();
@@ -375,18 +375,6 @@ ResourceSelect.propTypes = {
   /** If present, this will serve as the argument name for the typed search value when sending the request to the API. This defaults to q. */
   searchTerm: PropTypes.string,
   encodeSearchValue: PropTypes.bool,
-};
-
-ResourceSelect.defaultProps = {
-  delay: 350,
-  itemsPerPage: 50,
-  waitUntilFocused: false,
-  defaultToOnlyOption: false,
-  defaultToFirstOption: false,
-  shouldSearch: true,
-  pageAll: false,
-  searchTerm: 'q',
-  encodeSearchValue: true,
 };
 
 const ucFirst = (str) => str && str.charAt(0).toUpperCase() + str.slice(1);

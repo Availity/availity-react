@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import { useFormikContext } from 'formik';
 import { avRegionsApi } from '@availity/api-axios';
 
-import ResourceSelect from './ResourceSelect';
+import ResourceSelect from './ResourceSelect.jsx';
 
 const RegionSelect = ResourceSelect.create({
   resource: avRegionsApi,

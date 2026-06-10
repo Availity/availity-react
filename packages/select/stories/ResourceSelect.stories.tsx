@@ -1,6 +1,6 @@
 /* eslint-disable no-console */
 import React from 'react';
-import { StoryObj } from '@storybook/react';
+import { StoryObj } from '@storybook/react-vite';
 import { Button, Col, Row } from 'reactstrap';
 import AvApi from '@availity/api-axios';
 import ResourceSelect from '../src/ResourceSelect';
@@ -25,7 +25,7 @@ const avCustomResource = new AvApi({ name: 'my-custom-resource' });
 const avGraphqlResource = new AvApi({ name: 'my-custom-graphql' });
 
 export default {
-  title: 'Bootstrap Components/Select/Async Selects',
+  title: 'Deprecated/Select/Async Selects',
   parameters: {
     docs: {
       description: {

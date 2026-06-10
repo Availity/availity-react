@@ -1,6 +1,6 @@
 import { avCodesApi, avNavigationApi, avPermissionsApi, avProvidersApi, avUserApi } from '@availity/api-axios';
 
-import ResourceSelect from './ResourceSelect';
+import ResourceSelect from './ResourceSelect.jsx';
 
 const AvCodeSelect = ResourceSelect.create({
   resource: avCodesApi,
@@ -38,6 +38,6 @@ const AvUserSelect = ResourceSelect.create({
 
 export { AvCodeSelect, AvNavigationSelect, AvPermissionSelect, AvProviderSelect, AvUserSelect };
 
-export { default as AvOrganizationSelect } from './AvOrganizationSelect';
-export { default as AvPayerSelect } from './AvPayerSelect';
-export { default as AvRegionSelect } from './AvRegionSelect';
+export { default as AvOrganizationSelect } from './AvOrganizationSelect.jsx';
+export { default as AvPayerSelect } from './AvPayerSelect.jsx';
+export { default as AvRegionSelect } from './AvRegionSelect.jsx';

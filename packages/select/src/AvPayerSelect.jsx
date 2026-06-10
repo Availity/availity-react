@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import AvApi from '@availity/api-axios';
 
-import ResourceSelect from './ResourceSelect';
+import ResourceSelect from './ResourceSelect.jsx';
 
 const extendedPayersApi = new AvApi({ path: '/api/internal', name: 'extended-payers' });
 

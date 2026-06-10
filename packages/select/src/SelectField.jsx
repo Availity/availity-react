@@ -4,7 +4,7 @@ import classNames from 'classnames';
 import { FormText } from 'reactstrap';
 import { FormGroup, Feedback, Label } from '@availity/form';
 
-import Select from './Select';
+import Select from './Select.jsx';
 
 const SelectField = ({
   feedbackClass,

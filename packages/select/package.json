@@ -17,14 +17,11 @@
     "directory": "packages/select"
   },
   "license": "MIT",
+  "type": "module",
   "author": "Evan Sharp <evan.sharp@availity.com>",
-  "browser": "./dist/index.js",
-  "main": "./dist/index.js",
-  "module": "./dist/index.mjs",
-  "types": "./dist/index.d.ts",
   "scripts": {
-    "build": "tsup src/index.js --format esm,cjs --loader \".js=jsx\" --dts",
-    "dev": "tsup src/index.js --format esm,cjs --loader \".js=jsx\" --watch --dts",
+    "build": "tsup src/index.js --format esm --clean --dts",
+    "dev": "tsup src/index.js --format esm --watch --dts",
     "clean": "rm -rf dist",
     "clean:nm": "rm -rf node_modules",
     "publish": "yarn npm publish --tolerate-republish --access public",
@@ -32,26 +29,25 @@
   },
   "dependencies": {
     "classnames": "^2.5.1",
-    "lodash": "^4.17.21",
+    "lodash": "^4.18.1",
     "prop-types": "^15.8.1",
-    "qs": "^6.14.0",
-    "react-select": "^5.10.1",
+    "qs": "^6.15.2",
+    "react-select": "^5.10.2",
     "react-select-async-paginate": "^0.6.2"
   },
   "devDependencies": {
-    "@availity/api-axios": "^12.1.0",
+    "@availity/api-axios": "^13.0.2",
     "@availity/form": "workspace:*",
-    "axios": "^1.13.2",
-    "formik": "^2.4.6",
+    "axios": "^1.17.0",
+    "formik": "^2.4.9",
     "react": "^18.3.1",
     "react-dom": "^18.3.1",
     "reactstrap": "^8.10.1",
-    "tsup": "^8.4.0",
-    "typescript": "^5.5.4",
+    "tsup": "^8.5.1",
     "yup": "^0.32.11"
   },
   "peerDependencies": {
-    "@availity/api-axios": "^12.0.0",
+    "@availity/api-axios": "^12.0.0 || ^13.0.0",
     "@availity/form": "workspace:*",
     "axios": "^1.13.2",
     "formik": "^2.4.6",
@@ -60,5 +56,14 @@
   },
   "publishConfig": {
     "access": "public"
+  },
+  "exports": {
+    ".": {
+      "source": "./src/index.js",
+      "import": {
+        "types": "./dist/index.d.ts",
+        "default": "./dist/index.js"
+      }
+    }
   }
 }

@@ -60,7 +60,7 @@ const selectItem = async (container, getByText, name) => {
 
 describe('Select', () => {
   test('single value submits', async () => {
-    const onSubmit = jest.fn();
+    const onSubmit = vi.fn();
     const { container, getByText } = render(
       <Form
         initialValues={{
@@ -89,7 +89,7 @@ describe('Select', () => {
   });
 
   test('single value grouped options submits', async () => {
-    const onSubmit = jest.fn();
+    const onSubmit = vi.fn();
     const { container, getByText } = render(
       <Form
         initialValues={{
@@ -118,7 +118,7 @@ describe('Select', () => {
   });
 
   test('multi select grouped options submits', async () => {
-    const onSubmit = jest.fn();
+    const onSubmit = vi.fn();
     const { container, getByText } = render(
       <Form
         initialValues={{
@@ -147,7 +147,7 @@ describe('Select', () => {
   });
 
   test('multi select submits', async () => {
-    const onSubmit = jest.fn();
+    const onSubmit = vi.fn();
     const { container, getByText } = render(
       <Form
         initialValues={{
@@ -177,7 +177,7 @@ describe('Select', () => {
   });
 
   test('select all submits', async () => {
-    const onSubmit = jest.fn();
+    const onSubmit = vi.fn();
     const { container, getByText } = render(
       <Form
         initialValues={{
@@ -206,7 +206,7 @@ describe('Select', () => {
   });
 
   test('select all submits from null initial value', async () => {
-    const onSubmit = jest.fn();
+    const onSubmit = vi.fn();
     const { container, getByText } = render(
       <Form
         initialValues={{
@@ -235,7 +235,7 @@ describe('Select', () => {
   });
 
   test('select all submits with initialValue', async () => {
-    const onSubmit = jest.fn();
+    const onSubmit = vi.fn();
     const { container, getByText } = render(
       <Form
         initialValues={{
@@ -289,7 +289,7 @@ describe('Select', () => {
   });
 
   test(`maxLength doesn't allow more than X Options`, async () => {
-    const onSubmit = jest.fn();
+    const onSubmit = vi.fn();
     const { container, getByText } = render(
       <Form
         initialValues={{
@@ -321,7 +321,7 @@ describe('Select', () => {
   });
 
   test('raw props submits whole object', async () => {
-    const onSubmit = jest.fn();
+    const onSubmit = vi.fn();
     const { container, getByText } = render(
       <Form
         initialValues={{
@@ -375,7 +375,7 @@ describe('Select', () => {
       },
     ];
 
-    const onSubmit = jest.fn();
+    const onSubmit = vi.fn();
     const { container, getByText } = render(
       <Form
         initialValues={{
@@ -444,7 +444,7 @@ describe('Select', () => {
       },
     ];
 
-    const onSubmit = jest.fn();
+    const onSubmit = vi.fn();
     const { container, getByText } = render(
       <Form
         initialValues={{
@@ -527,7 +527,7 @@ describe('Select', () => {
       },
     ];
 
-    const onSubmit = jest.fn();
+    const onSubmit = vi.fn();
     const { container, getByText } = render(
       <Form
         initialValues={{
@@ -574,7 +574,7 @@ describe('Select', () => {
   });
 
   test('async creatable', async () => {
-    const loadOptions = jest.fn();
+    const loadOptions = vi.fn();
 
     loadOptions.mockResolvedValue({
       options: [
@@ -603,7 +603,7 @@ describe('Select', () => {
       },
     });
 
-    const onSubmit = jest.fn();
+    const onSubmit = vi.fn();
     const { container, getByText } = render(
       <Form
         initialValues={{
@@ -650,7 +650,7 @@ describe('Select', () => {
   });
 
   test('waits to query resource until input is focused when waitUntilFocused is true', async () => {
-    const loadOptions = jest.fn();
+    const loadOptions = vi.fn();
 
     loadOptions.mockResolvedValue({
       options: [
@@ -665,7 +665,7 @@ describe('Select', () => {
       },
     });
 
-    const onSubmit = jest.fn();
+    const onSubmit = vi.fn();
     const { container } = render(
       <Form
         initialValues={{
@@ -707,7 +707,7 @@ describe('Select', () => {
   });
 
   test('checks accessibility of the options', async () => {
-    const onSubmit = jest.fn();
+    const onSubmit = vi.fn();
     const { container, getByText } = render(
       <Form
         initialValues={{
@@ -789,7 +789,7 @@ describe('Select', () => {
   });
 
   test('renders aria attributes when invalid', async () => {
-    const onSubmit = jest.fn();
+    const onSubmit = vi.fn();
     const { container, getByText } = render(
       <Form
         initialValues={{
@@ -831,7 +831,7 @@ describe('Select', () => {
     // Display 'Foo' as the selected value instead of the given option
     const SingleValue = (props) => <components.SingleValue {...props}>Foo</components.SingleValue>;
 
-    const onSubmit = jest.fn();
+    const onSubmit = vi.fn();
     const { container, getByText } = render(
       <Form
         initialValues={{
