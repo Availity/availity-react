@@ -1,2 +1,2 @@
-export { default, useChangePasswordContext, ChangePasswordContext } from './src/ChangePassword';
-export { default as ChangePasswordForm } from './src/ChangePasswordForm';
+export { default, useChangePasswordContext, ChangePasswordContext } from './src/ChangePassword.jsx';
+export { default as ChangePasswordForm } from './src/ChangePasswordForm.jsx';

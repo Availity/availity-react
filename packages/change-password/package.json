@@ -17,10 +17,12 @@
     "directory": "packages/change-password"
   },
   "license": "MIT",
+  "type": "module",
   "author": "Tyson Warner <tyson.warner@availity.com>",
-  "main": "index.js",
-  "types": "index.d.ts",
   "scripts": {
+    "build": "tsup --clean",
+    "dev": "tsup --watch",
+    "clean": "rm -rf dist",
     "publish": "yarn npm publish --tolerate-republish --access public",
     "publish:canary": "yarn npm publish --access public --tag canary"
   },
@@ -28,26 +30,37 @@
     "@availity/block-ui": "workspace:^",
     "@availity/form": "workspace:*",
     "@availity/icon": "workspace:*",
-    "@tanstack/react-query": "^4.36.1",
     "classnames": "^2.5.1",
     "dayjs": "^1.11.13",
-    "lodash": "^4.17.21",
+    "lodash": "^4.18.1",
     "prop-types": "^15.8.1"
   },
   "devDependencies": {
-    "@availity/api-axios": "^12.1.0",
-    "axios": "^1.13.2",
+    "@availity/api-axios": "^13.0.2",
+    "@tanstack/react-query": "^5.75.5",
+    "axios": "^1.17.0",
     "react": "^18.3.1",
     "react-dom": "^18.3.1",
-    "reactstrap": "^8.10.1"
+    "reactstrap": "^8.10.1",
+    "tsup": "^8.5.1"
   },
   "peerDependencies": {
-    "@availity/api-axios": "^12.0.0",
+    "@availity/api-axios": "^12.0.0 || ^13.0.0",
+    "@tanstack/react-query": "^5.75.5",
     "axios": "^1.13.2",
     "react": "^18.0.0",
     "reactstrap": "^8.10.1"
   },
   "publishConfig": {
     "access": "public"
+  },
+  "exports": {
+    ".": {
+      "source": "./index.js",
+      "import": {
+        "types": "./index.d.ts",
+        "default": "./dist/index.js"
+      }
+    }
   }
 }

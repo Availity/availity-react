@@ -1,7 +1,7 @@
 import React from 'react';
 import Icon from '@availity/icon';
 import { useFormikContext } from 'formik';
-import { useChangePasswordContext } from './ChangePassword';
+import { useChangePasswordContext } from './ChangePassword.jsx';
 import './ChangePasswordFeedback.scss';
 
 const ChangePasswordFeedback = () => {

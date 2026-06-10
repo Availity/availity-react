@@ -1,11 +1,11 @@
 import React from 'react';
-import { StoryObj } from '@storybook/react';
+import { StoryObj } from '@storybook/react-vite';
 import * as yup from 'yup';
 import AvApi from '@availity/api-axios';
 import ChangePassword, { ChangePasswordForm } from '..';
 
 export default {
-  title: 'Bootstrap Components/Change Password',
+  title: 'Deprecated/Change Password',
   parameters: {
     docs: {
       description: {

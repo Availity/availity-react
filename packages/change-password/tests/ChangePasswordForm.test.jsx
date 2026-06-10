@@ -1,11 +1,11 @@
 import React from 'react';
 import { render, waitFor, fireEvent, cleanup } from '@testing-library/react';
-import ChangePassword, { ChangePasswordForm, useChangePasswordContext } from '..';
+import ChangePassword, { ChangePasswordForm, useChangePasswordContext } from '../index.js';
 
-jest.mock('@availity/api-axios');
+vi.mock('@availity/api-axios');
 
 afterEach(() => {
-  jest.clearAllMocks();
+  vi.clearAllMocks();
   cleanup();
 });
 
@@ -23,10 +23,10 @@ describe('ChangePasswordForm', () => {
 
   it('submits api request with new password', async () => {
     const resource = {
-      changePassword: jest.fn().mockResolvedValue('Your password was successfully updated'),
+      changePassword: vi.fn().mockResolvedValue('Your password was successfully updated'),
     };
 
-    const onHandleSubmit = jest.fn();
+    const onHandleSubmit = vi.fn();
 
     const { getByTestId, getByText } = render(
       <ChangePassword resource={resource}>
@@ -77,7 +77,7 @@ describe('ChangePasswordForm', () => {
 
   it('renders custom on success message', async () => {
     const resource = {
-      changePassword: jest.fn().mockResolvedValue('Your password was successfully updated'),
+      changePassword: vi.fn().mockResolvedValue('Your password was successfully updated'),
     };
 
     const CustomPasswordComponent = () => {
@@ -135,7 +135,7 @@ describe('ChangePasswordForm', () => {
 
   it('renders error message', async () => {
     const resource = {
-      changePassword: jest.fn().mockRejectedValue('Failed to change password'),
+      changePassword: vi.fn().mockRejectedValue('Failed to change password'),
     };
 
     const { getByTestId, getByText } = render(
@@ -183,7 +183,7 @@ describe('ChangePasswordForm', () => {
 
   it('renders custom error message', async () => {
     const resource = {
-      changePassword: jest.fn().mockRejectedValue('Failed to change password'),
+      changePassword: vi.fn().mockRejectedValue('Failed to change password'),
     };
 
     const CustomPasswordComponent = () => {
@@ -241,7 +241,7 @@ describe('ChangePasswordForm', () => {
 
   it('toggles whether passwords are visible', async () => {
     const resource = {
-      changePassword: jest.fn(),
+      changePassword: vi.fn(),
     };
 
     const { getByTestId } = render(

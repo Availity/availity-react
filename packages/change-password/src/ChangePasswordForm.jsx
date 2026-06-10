@@ -4,8 +4,8 @@ import BlockUI from '@availity/block-ui';
 import Icon from '@availity/icon';
 import { Alert, Button, CardBody, CardFooter, Col, Row } from 'reactstrap';
 import { Form, Field } from '@availity/form';
-import { useChangePasswordContext } from './ChangePassword';
-import ChangePasswordFeedback from './ChangePasswordFeedback';
+import { useChangePasswordContext } from './ChangePassword.jsx';
+import ChangePasswordFeedback from './ChangePasswordFeedback.jsx';
 import './ChangePasswordForm.scss';
 
 const ChangePasswordForm = ({

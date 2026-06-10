@@ -1,11 +1,11 @@
 import React from 'react';
 import { render, fireEvent, cleanup } from '@testing-library/react';
-import ChangePassword, { ChangePasswordForm } from '..';
+import ChangePassword, { ChangePasswordForm } from '../index.js';
 
-jest.mock('@availity/api-axios');
+vi.mock('@availity/api-axios');
 
 afterEach(() => {
-  jest.clearAllMocks();
+  vi.clearAllMocks();
   cleanup();
 });
 
@@ -47,7 +47,7 @@ describe('ChangePasswordFeedback', () => {
       },
     ];
 
-    const resource = { changePassword: jest.fn() };
+    const resource = { changePassword: vi.fn() };
     const { getByTestId } = render(
       <ChangePassword resource={resource} conditions={conditions}>
         <ChangePasswordForm />

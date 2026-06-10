@@ -1,5 +1,11 @@
 # @availity/change-password
 
+## ⚠️ Deprecated
+
+This package is deprecated and no longer actively maintained. Future updates are not guaranteed. We recommend migrating to [`@availity/element`](https://availity.github.io/element).
+
+---
+
 > Easy to use change password component
 
 [![Version](https://img.shields.io/npm/v/@availity/change-password.svg?style=for-the-badge)](https://www.npmjs.com/package/@availity/change-password)
