@@ -1,9 +1,9 @@
 import React from 'react';
-import type { StoryObj } from '@storybook/react';
+import type { StoryObj } from '@storybook/react-vite';
 import Agreement from '../src/Agreement';
 
 export default {
-  title: 'Bootstrap Components/Typography/Agreement',
+  title: 'Deprecated/Typography/Agreement',
   component: Agreement,
 };
 
