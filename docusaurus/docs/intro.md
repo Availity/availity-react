@@ -1,19 +1,22 @@
 ---
 title: Introduction
 slug: /
+sidebar_position: 1
 ---
 
 :::warning
-This collection has been replaced by Availity Element.
+The components in this repo that relied on Bootstrap and availity-uikit for styling have been deprecated and moved to [Availity Element](https://availity.github.io/element). Some packages (such as hooks, analytics, authorize, feature, help, json-viewer, and mock) are still actively supported here.
 :::
 
 Availity React is a repo of [React](https://react.dev/) components built for web projects on the Availity Portal. This site provides documentation on how to use those components.
 
-Many of the packages provided by `availity-react` are wrappers around common `reactstrap` components. If you can't find what you're looking for in these docs, take a look at the [Reactstrap documentation](https://reactstrap.github.io).
-
 <!-- :::note
 Try the `search bar` at the top right of every page for faster browsing. The search bar leverages [Algolia](https://www.algolia.com/) to provide lightning fast searches across all our docs.
 ::: -->
+
+## ESM Only
+
+All packages in this repository are now published as ESM (ECMAScript Modules) only. CommonJS (CJS) builds are no longer provided. Make sure your bundler and environment support ESM imports.
 
 ## Supported Browsers
 
