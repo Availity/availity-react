@@ -1,6 +1,6 @@
 import axios from 'axios';
 import MockAdapter from 'axios-mock-adapter';
-import { isFeatureEnabled, getFeatureCache } from '..';
+import { isFeatureEnabled, getFeatureCache } from '../src/index';
 
 const mock = new MockAdapter(axios, { delayResponse: 1000 });
 const features = ['AV-1234', 'AV-2345', 'AV-3456', 'AV-4567', 'AV-5678', 'AV-6789'];

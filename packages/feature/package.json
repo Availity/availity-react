@@ -18,32 +18,43 @@
   },
   "license": "MIT",
   "author": "Evan Sharp <evan.sharp@gmail.com>",
-  "main": "index.js",
-  "types": "index.d.ts",
+  "type": "module",
   "bin": {
     "generate-features-json": "bin.js"
   },
   "scripts": {
     "feature": "generate-features-json . path-to-dist",
     "publish": "yarn npm publish --tolerate-republish --access public",
-    "publish:canary": "yarn npm publish --access public --tag canary"
+    "publish:canary": "yarn npm publish --access public --tag canary",
+    "build": "tsup src/index.ts --format esm --clean --dts",
+    "dev": "tsup src/index.ts --format esm --watch --dts",
+    "clean": "rm -rf dist"
   },
   "dependencies": {
     "@availity/block-ui": "workspace:^",
-    "fs-extra": "^11.3.0",
-    "prop-types": "^15.8.1"
+    "@availity/hooks": "workspace:^"
   },
   "devDependencies": {
-    "axios": "^1.13.2",
+    "axios": "^1.17.0",
     "axios-mock-adapter": "^2.1.0",
     "react": "^18.3.1",
-    "react-dom": "^18.3.1"
+    "react-dom": "^18.3.1",
+    "tsup": "^8.5.1"
   },
   "peerDependencies": {
     "axios": "^1.13.2",
-    "react": "^18.0.0"
+    "react": "^18.0.0 || ^19.0.0"
   },
   "publishConfig": {
     "access": "public"
+  },
+  "exports": {
+    ".": {
+      "source": "./src/index.ts",
+      "import": {
+        "types": "./dist/index.d.ts",
+        "default": "./dist/index.js"
+      }
+    }
   }
 }

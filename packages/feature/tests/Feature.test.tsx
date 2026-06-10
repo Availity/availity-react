@@ -1,7 +1,7 @@
 import React from 'react';
 import { render, screen, waitFor } from '@testing-library/react';
 
-import Feature from '..';
+import Feature from '../src/index';
 
 describe('Feature', () => {
   test('should render loading', async () => {
