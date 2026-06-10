@@ -1,6 +1,6 @@
 /* eslint-disable no-console */
 import React from 'react';
-import { StoryObj } from '@storybook/react';
+import { StoryObj } from '@storybook/react-vite';
 import { Button } from 'reactstrap';
 
 import Analytics from './Analytics';

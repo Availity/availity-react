@@ -4,10 +4,10 @@ import { render, cleanup, fireEvent, waitFor } from '@testing-library/react';
 import Analytics, { useAnalytics } from '.';
 
 const makePlugin = () => ({
-  isEnabled: jest.fn(() => true),
-  init: jest.fn(),
-  trackEvent: jest.fn(),
-  trackPageView: jest.fn(),
+  isEnabled: vi.fn(() => true),
+  init: vi.fn(),
+  trackEvent: vi.fn(),
+  trackPageView: vi.fn(),
 });
 
 describe('Analytics', () => {
