@@ -2,6 +2,15 @@
 
 This file was generated using [@jscutlery/semver](https://github.com/jscutlery/semver).
 
+# [5.2.0](https://github.com/Availity/availity-react/compare/@availity/hooks@5.1.11...@availity/hooks@5.2.0) (2026-06-09)
+
+
+### Features
+
+* **hooks:** add useStash hook ([da6aff7](https://github.com/Availity/availity-react/commit/da6aff7039ae00ab995da74aa57d843cff301f66))
+
+
+
 ## [5.1.11](https://github.com/Availity/availity-react/compare/@availity/hooks@5.1.10...@availity/hooks@5.1.11) (2026-03-13)
 
 

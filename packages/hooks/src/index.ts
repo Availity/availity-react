@@ -9,6 +9,7 @@ export { default as usePermissions } from './usePermissions';
 export { default as useOrganizations } from './useOrganizations';
 export { default as useUpdateNav } from './useUpdateNav';
 export { default as useWindowDimensions } from './useWindowDimensions';
+export { default as useStash } from './useStash';
 
 export type { CurrentRegion } from './useCurrentRegion';
 export type { CurrentUser } from './useCurrentUser';
