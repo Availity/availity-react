@@ -9,7 +9,7 @@ import type { Permission, RequestedPermissions, RequestedResources } from './typ
  */
 export const getRegion = async (region?: boolean | string): Promise<string | undefined> => {
   if (region === true) {
-    const resp = await avRegionsApi.getCurrentRegion();
+    const resp = (await avRegionsApi.getCurrentRegion()) as { data?: { regions?: { id?: string }[] } };
 
     return resp?.data?.regions?.[0]?.id;
   }
@@ -26,8 +26,7 @@ export const getPermissions = async (
 ): Promise<Record<string, Permission>> => {
   if (!permissions) return {};
 
-  // TODO: fix these types
-  const response = await avUserPermissionsApi.getPermissions(permissions as string[], region);
+  const response = (await avUserPermissionsApi.getPermissions(permissions as string[], region)) as unknown as Permission[];
 
   return response.reduce<Record<string, Permission>>((prev, cur) => {
     prev[cur.id] = cur;

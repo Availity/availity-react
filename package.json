@@ -60,7 +60,7 @@
     "version:dry-run": "nx affected --target version --dryRun --parallel=1",
     "start": "storybook dev -p 6006",
     "start:docs": "nx start @availity/dinosaurdocs",
-    "typecheck": "tsc --noEmit",
+    "typecheck": "tsc --noEmit -p tsconfig.typecheck.json",
     "test": "nx run-many --target=test",
     "test:affected": "nx affected --target=test",
     "test:ci": "vitest run --coverage",
