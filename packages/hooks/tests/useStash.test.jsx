@@ -3,10 +3,13 @@ import PropTypes from 'prop-types';
 import { waitFor, cleanup } from '@testing-library/react';
 import { avStashApi } from '@availity/api-axios';
 import { QueryClient } from '@tanstack/react-query';
+import { vi, describe, test, expect, beforeEach, afterEach } from 'vitest';
 import { useStash } from '../src';
 import renderWithClient from './util';
 
-jest.mock('@availity/api-axios');
+vi.mock('@availity/api-axios', () => ({
+  avStashApi: { get: vi.fn() },
+}));
 
 let queryStates = [];
 beforeEach(() => {
@@ -16,7 +19,7 @@ beforeEach(() => {
 const queryClient = new QueryClient();
 
 afterEach(() => {
-  jest.clearAllMocks();
+  vi.clearAllMocks();
   cleanup();
   queryClient.clear();
   queryStates = [];
@@ -27,11 +30,8 @@ const pushState = (state) => {
 };
 
 const Component = ({ sessionId, log }) => {
-  // Mirror testing methods from react-query instead of relying on timing or booleans
-  // https://github.com/tannerlinsley/react-query/blob/master/src/react/tests/useQuery.test.tsx
-  const state = useStash(sessionId, { cacheTime: 0, retry: false });
+  const state = useStash(sessionId, { gcTime: 0, retry: false });
 
-  // not directly used in assertions here, but useful for debugging purposes
   if (log) log(state);
 
   const { data, error, status } = state;
@@ -56,7 +56,7 @@ describe('useStash', () => {
 
     const { getByText } = renderWithClient(queryClient, <Component sessionId="test-session-id" log={pushState} />);
 
-    getByText('Status: loading');
+    getByText('Status: pending');
     await waitFor(() => {
       const el = getByText('Status: error');
       expect(el).toBeDefined();
@@ -73,7 +73,7 @@ describe('useStash', () => {
 
     const { getByText } = renderWithClient(queryClient, <Component sessionId="test-session-id" log={pushState} />);
 
-    getByText('Status: loading');
+    getByText('Status: pending');
     await waitFor(() => {
       const el = getByText(`Data: ${JSON.stringify(mockData)}`);
       expect(el).toBeDefined();
@@ -83,7 +83,7 @@ describe('useStash', () => {
   test('should not fetch when sessionId is empty', () => {
     const { getByText } = renderWithClient(queryClient, <Component sessionId="" log={pushState} />);
 
-    getByText('Status: loading');
+    getByText('Status: pending');
     expect(avStashApi.get).not.toHaveBeenCalled();
   });
 });
