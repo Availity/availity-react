@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import { waitFor, cleanup } from '@testing-library/react';
 import { avStashApi } from '@availity/api-axios';
 import { QueryClient } from '@tanstack/react-query';
-import { useStash } from '..';
+import { useStash } from '../src';
 import renderWithClient from './util';
 
 jest.mock('@availity/api-axios');
