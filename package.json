@@ -79,7 +79,6 @@
     "@types/react": "^19.2.17",
     "@types/react-dom": "^19.2.3",
     "availity-uikit": "^4.7.2",
-    "conventional-changelog-cli": "^5.0.0",
     "eslint": "8.57.1",
     "eslint-config-availity": "^10.0.10",
     "eslint-plugin-storybook": "9.1.20",
