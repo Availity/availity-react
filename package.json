@@ -66,10 +66,6 @@
     "test:ci": "vitest run --coverage",
     "test:coverage": "vitest run --coverage"
   },
-  "resolutions": {
-    "decode-uri-component": "^0.2.2",
-    "socks": "2.7.3"
-  },
   "dependencies": {
     "@jscutlery/semver": "^5.8.1",
     "@nx/eslint": "21.6.11",
