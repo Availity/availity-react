@@ -2,6 +2,23 @@
 
 This file was generated using [@jscutlery/semver](https://github.com/jscutlery/semver).
 
+# [4.0.0](https://github.com/Availity/availity-react/compare/@availity/change-password@3.0.7...@availity/change-password@4.0.0) (2026-06-12)
+
+### Dependency Updates
+
+* `@availity/block-ui` updated to version `3.0.7`
+* `@availity/form` updated to version `3.0.7`
+* `@availity/icon` updated to version `3.0.7`
+
+* feat(change-password)!: migrate to ESM exports, vitest, and @tanstack/react-query v5 ([1ac513b](https://github.com/Availity/availity-react/commit/1ac513bb190ac980cffa46b5c0203b89045c8006))
+
+
+### BREAKING CHANGES
+
+* Package now uses ESM exports field and requires @tanstack/react-query ^5.
+
+
+
 ## [3.0.7](https://github.com/Availity/availity-react/compare/@availity/change-password@3.0.6...@availity/change-password@3.0.7) (2026-03-13)
 
 
