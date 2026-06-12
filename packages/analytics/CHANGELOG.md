@@ -2,6 +2,18 @@
 
 This file was generated using [@jscutlery/semver](https://github.com/jscutlery/semver).
 
+# [2.0.0](https://github.com/Availity/availity-react/compare/@availity/analytics@1.5.16...@availity/analytics@2.0.0) (2026-06-12)
+
+
+* feat(analytics)!: migrate to ESM exports and vitest ([fcc3e13](https://github.com/Availity/availity-react/commit/fcc3e13216075cfd6ec0e3ed928de1fd0fbb3539))
+
+
+### BREAKING CHANGES
+
+* Package now uses ESM exports field. CJS require() is no longer supported.
+
+
+
 ## [1.5.16](https://github.com/Availity/availity-react/compare/@availity/analytics@1.5.15...@availity/analytics@1.5.16) (2026-03-13)
 
 
