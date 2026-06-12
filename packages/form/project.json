@@ -4,10 +4,15 @@
   "projectType": "library",
   "targets": {
     "test": {
-      "executor": "@nx/jest:jest",
-      "outputs": ["{workspaceRoot}/coverage/form"],
+      "executor": "nx:run-commands",
       "options": {
-        "jestConfig": "packages/form/jest.config.js"
+        "command": "vitest run --project=form",
+        "cwd": "."
+      },
+      "configurations": {
+        "ci": {
+          "command": "vitest run --project=form --coverage"
+        }
       }
     },
     "version": {
@@ -34,6 +39,13 @@
         "hasTypeAwareRules": true,
         "cacheStrategy": "metadata"
       }
+    },
+    "build": {
+      "command": "tsup src/index.js --format esm --dts",
+      "options": {
+        "cwd": "packages/form"
+      },
+      "dependsOn": [{"projects": ["@availity/icon"], "target": "build"}]
     }
   }
 }

@@ -4,10 +4,15 @@
   "projectType": "library",
   "targets": {
     "test": {
-      "executor": "@nx/jest:jest",
-      "outputs": ["{workspaceRoot}/coverage/tree"],
+      "executor": "nx:run-commands",
       "options": {
-        "jestConfig": "packages/tree/jest.config.js"
+        "command": "vitest run --project=tree",
+        "cwd": "."
+      },
+      "configurations": {
+        "ci": {
+          "command": "vitest run --project=tree --coverage"
+        }
       }
     },
     "version": {
@@ -33,6 +38,12 @@
         "noEslintrc": false,
         "hasTypeAwareRules": true,
         "cacheStrategy": "metadata"
+      }
+    },
+    "build": {
+      "command": "tsup src/index.ts --format esm --dts",
+      "options": {
+        "cwd": "packages/tree"
       }
     }
   }

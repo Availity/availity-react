@@ -4,10 +4,15 @@
   "projectType": "library",
   "targets": {
     "test": {
-      "executor": "@nx/jest:jest",
-      "outputs": ["{workspaceRoot}/coverage/payer-logo"],
+      "executor": "nx:run-commands",
       "options": {
-        "jestConfig": "packages/payer-logo/jest.config.js"
+        "command": "vitest run --project=payer-logo",
+        "cwd": "."
+      },
+      "configurations": {
+        "ci": {
+          "command": "vitest run --project=payer-logo --coverage"
+        }
       }
     },
     "version": {
@@ -32,6 +37,12 @@
         "noEslintrc": false,
         "hasTypeAwareRules": true,
         "cacheStrategy": "metadata"
+      }
+    },
+    "build": {
+      "command": "tsup src/index.ts --format esm --dts",
+      "options": {
+        "cwd": "packages/payer-logo"
       }
     }
   }

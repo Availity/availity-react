@@ -11,7 +11,7 @@ export type RemovableBadgeProps = {
   onRemove: (value: string) => void;
 } & BadgeProps;
 
-const RemovableBadge = ({ children, value, onRemove, ...rest }: RemovableBadgeProps): JSX.Element => (
+const RemovableBadge = ({ children, value, onRemove, ...rest }: RemovableBadgeProps): React.JSX.Element => (
   <Badge data-testid="removable_badge" {...rest}>
     <Icon data-testid="removable_badge_remove" name="cancel" onClick={() => onRemove(value)} />
     {children}

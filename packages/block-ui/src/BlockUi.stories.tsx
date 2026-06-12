@@ -1,12 +1,12 @@
 /* eslint-disable react-hooks/rules-of-hooks */
 import React, { useState } from 'react';
-import { StoryObj } from '@storybook/react';
+import { StoryObj } from '@storybook/react-vite';
 
 import BlockUi from './BlockUi';
 // import README from '../README.md';
 
 export default {
-  title: 'Bootstrap Components/Block UI',
+  title: 'Deprecated/Block UI',
   component: BlockUi,
   parameters: {
     docs: {

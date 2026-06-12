@@ -1,8 +1,8 @@
 import React from 'react';
-import { Meta } from '@storybook/react';
+import { Meta } from '@storybook/react-vite';
 import { QueryClientProvider, QueryClient } from '@tanstack/react-query';
 
-import { usePermissions } from '..';
+import { usePermissions } from '../src';
 // import README from '../README.md';
 
 import ResourceComponent from './ResourceComponent';
@@ -27,7 +27,7 @@ export default {
 } as Meta;
 
 const ResourceExample = () => {
-  const { data, isLoading } = usePermissions();
+  const { data, isLoading } = usePermissions('123');
 
   return <ResourceComponent title="Permissions" data={data} loading={isLoading} />;
 };

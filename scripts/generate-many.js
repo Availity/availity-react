@@ -1,21 +1,18 @@
-const path = require('path');
-const fs = require('fs');
+import { readdirSync, readFileSync, writeFileSync } from 'fs';
+import { resolve } from 'path';
 
 async function generateMany() {
-  const projects = fs.readdirSync('./packages').filter((dir) => dir !== 'mock');
+  const projects = readdirSync('./packages').filter((dir) => dir !== 'mock');
   console.log('projects:', projects);
 
   for (const project of projects) {
-    // run nx generator command
     try {
-      // eslint-disable-next-line import/no-dynamic-require
-      const proj = require(path.resolve(process.cwd(), `packages/${project}/project.json`));
+      const proj = JSON.parse(readFileSync(resolve(process.cwd(), `packages/${project}/project.json`), 'utf8'));
 
       proj.targets.lint = {
-        executor: '@nx/eslint:eslint',
+        executor: '@nx/eslint:lint',
         options: {
           eslintConfig: '.eslintrc.yaml',
-          lintFilePatterns: [`packages/${project}/**/*.{js,ts}`],
           silent: false,
           fix: false,
           cache: true,
@@ -28,13 +25,8 @@ async function generateMany() {
         },
       };
 
-      fs.writeFile(`packages/${project}/project.json`, JSON.stringify(proj), (err) => {
-        if (err) throw err;
-        console.log('file saved');
-      });
-
-      // if (stdout) console.log('stdout:\n', stdout);
-      // if (stderr) console.error('stderr:\n', stderr);
+      writeFileSync(`packages/${project}/project.json`, JSON.stringify(proj, null, 2) + '\n');
+      console.log('file saved:', project);
     } catch (error) {
       console.error(error);
     }

@@ -1,5 +1,11 @@
 # @availity/tooltip
 
+## ⚠️ Deprecated
+
+This package is deprecated and no longer actively maintained. Future updates are not guaranteed. We recommend migrating to [`@availity/element`](https://availity.github.io/element).
+
+---
+
 > Accessible tooltip supporing text that can be selected and closing on hitting the escape key.
 
 [![Version](https://img.shields.io/npm/v/@availity/favorites.svg?style=for-the-badge)](https://www.npmjs.com/package/@availity/tooltip)

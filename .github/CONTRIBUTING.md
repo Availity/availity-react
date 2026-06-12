@@ -4,11 +4,11 @@ This monorepo is managed using [yarn](https://yarnpkg.com/getting-started) and [
 
 ## Installation
 
-Ensure you are running version 14 or 16 of `node` and [yarn](https://yarnpkg.com/lang/en/) is installed. We recommend using [nvm](https://github.com/nvm-sh/nvm#readme) or [fnm](https://github.com/Schniz/fnm#readme) to manage your installation of `node`.
+Ensure you are running Node 22 or 24 and have [corepack](https://nodejs.org/api/corepack.html) enabled (which provides the correct version of yarn). We recommend using [nvm](https://github.com/nvm-sh/nvm#readme) or [fnm](https://github.com/Schniz/fnm#readme) to manage your installation of `node`.
 
 ```bash
 node --version
-npm install -g yarn
+corepack enable
 ```
 
 Install the dependencies with `yarn`. The first install might take a while. All subsequent installs should proceed more quickly.
@@ -37,12 +37,16 @@ yarn start
 
 ### Unit Tests
 
-All new features should have a unit test added. The unit tests will run when you push your code. If you run the tests on your own the results will be cached. This means subsequent executions of `yarn test` will only run tests against code that has changed.
-
-Currently you cannot run all of the tests in watchmode. You can run watchmode for one package at a time. Here is an example for the `app-icon` packge
+All new features should have a unit test added. Tests are run with [Vitest](https://vitest.dev/).
 
 ```bash
-yarn nx test app-icon --watch
+yarn test
+```
+
+You can run tests for a single package:
+
+```bash
+yarn nx test app-icon
 ```
 
 ### Linting

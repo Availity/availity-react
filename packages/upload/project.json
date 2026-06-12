@@ -1,22 +1,26 @@
 {
-  "name": "upload",
+  "name": "@availity/upload",
   "$schema": "../../node_modules/nx/schemas/project-schema.json",
   "projectType": "library",
   "targets": {
     "test": {
-      "executor": "@nx/jest:jest",
-      "outputs": ["{workspaceRoot}/coverage/upload"],
+      "executor": "nx:run-commands",
       "options": {
-        "jestConfig": "packages/upload/jest.config.js",
-        "passWithNoTests": false
+        "command": "vitest run --project=upload",
+        "cwd": "."
+      },
+      "configurations": {
+        "ci": {
+          "command": "vitest run --project=upload --coverage"
+        }
       }
     },
     "version": {
       "executor": "@jscutlery/semver:version",
       "options": {
         "preset": "angular",
-        "commitMessageFormat": "chore({projectName}): release version {version}",
-        "tagPrefix": "@availity/{projectName}@",
+        "commitMessageFormat": "chore({projectName}): release version ${version} [skip ci]",
+        "tagPrefix": "{projectName}@",
         "baseBranch": "master",
         "trackDeps": true
       }
@@ -34,6 +38,12 @@
         "noEslintrc": false,
         "hasTypeAwareRules": true,
         "cacheStrategy": "metadata"
+      }
+    },
+    "build": {
+      "command": "tsup",
+      "options": {
+        "cwd": "packages/upload"
       }
     }
   }

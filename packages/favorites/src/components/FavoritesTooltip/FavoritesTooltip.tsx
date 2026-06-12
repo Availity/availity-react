@@ -10,7 +10,7 @@ const Tooltip = ({
   children: ReactNode;
   content: string;
   'data-testid'?: string;
-}): JSX.Element => (
+}) => (
   <Provider>
     <Root>
       <Trigger asChild>{children}</Trigger>

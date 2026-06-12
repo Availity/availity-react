@@ -1,5 +1,11 @@
 # @availity/form-upload
 
+## ⚠️ Deprecated
+
+This package is deprecated and no longer actively maintained. Future updates are not guaranteed. We recommend migrating to [`@availity/element`](https://availity.github.io/element).
+
+---
+
 > Availity upload component for uploading files, compatible with @availity/form
 
 [![Version](https://img.shields.io/npm/v/@availity/form-upload.svg?style=for-the-badge)](https://www.npmjs.com/package/@availity/form-upload)

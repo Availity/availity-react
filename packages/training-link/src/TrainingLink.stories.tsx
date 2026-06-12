@@ -1,9 +1,9 @@
 import React from 'react';
-import { StoryObj } from '@storybook/react';
+import { StoryObj } from '@storybook/react-vite';
 import TrainingLink from './TrainingLink';
 
 export default {
-  title: 'Bootstrap Components/Training Link',
+  title: 'Deprecated/Training Link',
   parameters: {
     docs: {
       description: {

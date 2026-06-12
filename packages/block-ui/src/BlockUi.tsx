@@ -16,7 +16,7 @@ export type Props = React.HTMLAttributes<HTMLElement> & {
   /** Set whether the blocking component should follow the scroll or stay at a fixed postion */
   keepInView?: boolean;
   /** Loader component to use */
-  loader?: JSX.Element;
+  loader?: React.JSX.Element;
   /** The message to display. Can also be a component. */
   message?: string | ReactNode;
   /** Control if the children are shown when the component is being blocked */
@@ -35,7 +35,7 @@ function BlockUi({
   renderChildren = true,
   tag: Tag = 'div',
   ...rest
-}: Props): JSX.Element {
+}: Props): React.JSX.Element {
   const [top, setTop] = useState<string | number>('50%');
 
   const blockerRef = useRef<HTMLDivElement>(null);

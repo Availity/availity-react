@@ -1,11 +1,11 @@
 import React from 'react';
-import { StoryObj } from '@storybook/react';
+import { StoryObj } from '@storybook/react-vite';
 import Wizard, { WizardStep, WizardStepBadge, WizardStepTitle } from '..';
 
 // import README from '../README.md';
 
 export default {
-  title: 'Bootstrap Components/Wizard',
+  title: 'Deprecated/Wizard',
   component: Wizard,
 };
 

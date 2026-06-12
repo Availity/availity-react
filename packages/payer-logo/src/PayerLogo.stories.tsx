@@ -1,7 +1,7 @@
 import React from 'react';
-import { Meta } from '@storybook/react';
+import { Meta } from '@storybook/react-vite';
 
-import PayerLogo from '..';
+import PayerLogo from '.';
 // import README from '../README.md';
 
 export default {
@@ -16,8 +16,10 @@ export default {
   },
 } as Meta;
 
+type Props = { payerId?: string; clientId: string; spaceId?: string };
+
 export const WithPayerId = {
-  render: ({ payerId, clientId }) => (
+  render: ({ payerId, clientId }: Props) => (
     <div>
       <PayerLogo payerId={payerId} clientId={clientId} />
       <p>Note: this is not a real logo. It is a sample image.</p>
@@ -31,7 +33,7 @@ export const WithPayerId = {
 };
 
 export const WithSpaceId = {
-  render: ({ spaceId, clientId }) => (
+  render: ({ spaceId, clientId }: Props) => (
     <div>
       <PayerLogo spaceId={spaceId} clientId={clientId} />
       <p>Note: this is not a real logo. It is a sample image.</p>

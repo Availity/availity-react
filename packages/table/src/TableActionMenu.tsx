@@ -34,7 +34,7 @@ const TableActionMenu = ({
   dropdownToggleProps,
   dropdownMenuProps,
   onMenuToggled,
-}: TableActionMenuProps): JSX.Element => {
+}: TableActionMenuProps): React.JSX.Element => {
   const [isOpen, setIsOpen] = useState(false);
 
   const toggle = () => {

@@ -1,12 +1,12 @@
 import React, { createContext, useContext, useState, useEffect, useCallback } from 'react';
 import avMessages from '@availity/message-core';
 
-type HelpObject = {
+export type HelpObject = {
   id: string;
   type?: 'vendor' | 'provider' | 'payer';
 };
 
-type HelpCtx = {
+export type HelpCtx = {
   addHelp: (data: HelpObject) => void;
   removeHelp: (id: string) => void;
   help: HelpObject | undefined;
@@ -25,7 +25,7 @@ export const constants = {
   RESET_HELP: 'nav:help:reset',
 } as const;
 
-const HelpProvider = ({ children }: { children: React.ReactNode }): JSX.Element => {
+const HelpProvider = ({ children }: { children: React.ReactNode }): React.JSX.Element => {
   const [help, setHelp] = useState<HelpObject>();
 
   const addHelp = useCallback((newHelp: HelpObject) => {
@@ -114,7 +114,7 @@ export type HelpProps = {
   children?: React.ReactNode;
 };
 
-export const Help = ({ id, type = 'vendor', children }: HelpProps): JSX.Element => {
+export const Help = ({ id, type = 'vendor', children }: HelpProps): React.JSX.Element => {
   useHelp({ type, id });
 
   // eslint-disable-next-line react/jsx-no-useless-fragment

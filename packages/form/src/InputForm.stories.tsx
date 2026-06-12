@@ -1,7 +1,7 @@
 /* eslint-disable unicorn/no-thenable */
 /* eslint-disable no-console */
 import React from 'react';
-import { StoryObj } from '@storybook/react';
+import { StoryObj } from '@storybook/react-vite';
 import { Button } from 'reactstrap';
 import * as yup from 'yup';
 import '@availity/date/styles.scss';
@@ -13,7 +13,7 @@ import { Input } from '.';
 import FormResults from '../../../story-utils/FormikResults';
 
 export default {
-  title: 'Bootstrap Components/Form/Input',
+  title: 'Deprecated/Form/Input',
   component: Input,
   parameters: {
     docs: {

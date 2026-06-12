@@ -17,10 +17,12 @@
     "directory": "packages/list-group"
   },
   "license": "MIT",
+  "type": "module",
   "author": "Evan Sharp <evan.sharp@availity.com>",
-  "main": "index.js",
-  "types": "index.d.ts",
   "scripts": {
+    "build": "tsup index.js --format esm --clean --dts",
+    "dev": "tsup index.js --format esm --watch --dts",
+    "clean": "rm -rf dist",
     "publish": "yarn npm publish --tolerate-republish --access public",
     "publish:canary": "yarn npm publish --access public --tag canary"
   },
@@ -31,7 +33,8 @@
   "devDependencies": {
     "react": "^18.3.1",
     "react-dom": "^18.3.1",
-    "reactstrap": "^8.10.1"
+    "reactstrap": "^8.10.1",
+    "tsup": "^8.5.1"
   },
   "peerDependencies": {
     "react": "^18.0.0",
@@ -39,5 +42,14 @@
   },
   "publishConfig": {
     "access": "public"
+  },
+  "exports": {
+    ".": {
+      "source": "./index.js",
+      "import": {
+        "types": "./index.d.ts",
+        "default": "./dist/index.js"
+      }
+    }
   }
 }

@@ -1,7 +1,7 @@
 import React from 'react';
 import { render, cleanup } from '@testing-library/react';
 import { NavLink } from 'reactstrap';
-import Breadcrumbs, { Crumb } from '..';
+import Breadcrumbs, { Crumb } from '../index.js';
 
 afterEach(cleanup);
 

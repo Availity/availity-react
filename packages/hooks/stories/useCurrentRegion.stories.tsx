@@ -1,8 +1,8 @@
 import React from 'react';
-import { Meta } from '@storybook/react';
+import { Meta } from '@storybook/react-vite';
 import { QueryClientProvider, QueryClient } from '@tanstack/react-query';
 
-import { useCurrentRegion } from '..';
+import { useCurrentRegion } from '../src';
 // import README from '../README.md';
 
 import ResourceComponent from './ResourceComponent';

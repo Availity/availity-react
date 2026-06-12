@@ -17,7 +17,7 @@ describe('Loading Button', () => {
   });
 
   test('is clickable when not loading', async () => {
-    const onClick = jest.fn();
+    const onClick = vi.fn();
 
     const buttonText = 'Text';
     render(
@@ -50,7 +50,7 @@ describe('Loading Button', () => {
   });
 
   test('is disabled when loading', async () => {
-    const onClick = jest.fn();
+    const onClick = vi.fn();
     const buttonText = 'Text';
 
     render(

@@ -17,38 +17,44 @@
     "directory": "packages/authorize"
   },
   "license": "MIT",
+  "type": "module",
   "author": "Evan Sharp <evan.sharp@gmail.com>",
-  "browser": "./dist/index.js",
-  "main": "./dist/index.js",
-  "module": "./dist/index.mjs",
-  "types": "./dist/index.d.ts",
   "scripts": {
-    "build": "tsup src/index.ts --format esm,cjs --dts",
-    "dev": "tsup src/index.ts --format esm,cjs --watch --dts",
+    "build": "tsup src/index.ts --format esm --clean --dts",
+    "dev": "tsup src/index.ts --format esm --watch --dts",
     "clean": "rm -rf dist",
     "clean:nm": "rm -rf node_modules",
     "publish": "yarn npm publish --tolerate-republish --access public",
     "publish:canary": "yarn npm publish --access public --tag canary"
   },
   "dependencies": {
-    "@availity/block-ui": "^1.0.0",
-    "@tanstack/react-query": "^4.36.1"
+    "@availity/block-ui": "^1.0.0"
   },
   "devDependencies": {
-    "@availity/api-axios": "^12.1.0",
-    "axios": "^1.13.2",
+    "@availity/api-axios": "^13.0.2",
+    "@tanstack/react-query": "^5.75.5",
+    "axios": "^1.17.0",
     "react": "^18.3.1",
     "react-dom": "^18.3.1",
-    "tsup": "^8.4.0",
-    "typescript": "^5.5.4"
+    "tsup": "^8.5.1"
   },
   "peerDependencies": {
-    "@availity/api-axios": "^12.0.0",
+    "@availity/api-axios": "^12.0.0 || ^13.0.0",
+    "@tanstack/react-query": "^5.75.5",
     "axios": "^1.13.2",
     "react": "^18.0.0",
     "react-dom": "^18.0.0"
   },
   "publishConfig": {
     "access": "public"
+  },
+  "exports": {
+    ".": {
+      "source": "./src/index.ts",
+      "import": {
+        "types": "./dist/index.d.ts",
+        "default": "./dist/index.js"
+      }
+    }
   }
 }

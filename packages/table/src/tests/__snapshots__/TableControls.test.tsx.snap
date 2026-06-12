@@ -1,6 +1,6 @@
-// Jest Snapshot v1, https://goo.gl/fbAQLP
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
 
-exports[`TableControls should disable all records when disabled is false 1`] = `
+exports[`TableControls > should disable all records when disabled is false 1`] = `
 <div>
   <div
     class="table-controls"
@@ -136,7 +136,7 @@ exports[`TableControls should disable all records when disabled is false 1`] = `
 </div>
 `;
 
-exports[`TableControls should disable all records when disabled is true 1`] = `
+exports[`TableControls > should disable all records when disabled is true 1`] = `
 <div>
   <div
     class="table-controls"
@@ -277,7 +277,7 @@ exports[`TableControls should disable all records when disabled is true 1`] = `
 </div>
 `;
 
-exports[`TableControls should render table controls with one child 1`] = `
+exports[`TableControls > should render table controls with one child 1`] = `
 <div>
   <div
     class="table-controls"
@@ -355,7 +355,7 @@ exports[`TableControls should render table controls with one child 1`] = `
 </div>
 `;
 
-exports[`TableControls should render table controls with two children 1`] = `
+exports[`TableControls > should render table controls with two children 1`] = `
 <div>
   <div
     class="table-controls"

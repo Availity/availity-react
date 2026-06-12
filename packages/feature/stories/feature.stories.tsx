@@ -1,11 +1,11 @@
 import React from 'react';
-import { StoryObj } from '@storybook/react';
+import { StoryObj } from '@storybook/react-vite';
 
 import Feature from '../src/Feature';
 // import README from "@availity/feature/README.md";
 
 export default {
-  title: 'Bootstrap Components/Feature',
+  title: 'Components/Feature',
   parameters: {
     docs: {
       // page: README,
@@ -18,7 +18,7 @@ export default {
   component: Feature,
 };
 
-export const _Default: StoryObj<typeof Feature> = {
+export const FeatureComponent: StoryObj<typeof Feature> = {
   render: ({ features, negate, loader, whenDisabled, children }) => (
     <div>
       <p>

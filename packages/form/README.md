@@ -1,5 +1,11 @@
 # @availity/form
 
+## ⚠️ Deprecated
+
+This package is deprecated and no longer actively maintained. Future updates are not guaranteed. We recommend migrating to [`@availity/element`](https://availity.github.io/element).
+
+---
+
 > Availity form components that are wired to be hooked up to [formik](https://github.com/jaredpalmer/formik)
 
 [![Version](https://img.shields.io/npm/v/@availity/form.svg?style=for-the-badge)](https://www.npmjs.com/package/@availity/form)

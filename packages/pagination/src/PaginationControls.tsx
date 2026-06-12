@@ -40,7 +40,7 @@ const PaginationControls = ({
   showPaginationText = false,
   populatePaginationText,
   ...rest
-}: PaginationControlsProps): JSX.Element | null => {
+}: PaginationControlsProps): React.JSX.Element | null => {
   const { pageCount, currentPage, setPage, lower, upper, total } = usePagination();
 
   const createItem = (pageNumber: number) => (

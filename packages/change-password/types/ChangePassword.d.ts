@@ -38,7 +38,7 @@ export interface ChangePasswordContext {
   setConfirmNewPasswordVisible: () => boolean;
 }
 
-declare function useChangePasswordContext(): ChangePasswordContext;
+export function useChangePasswordContext(): ChangePasswordContext;
 
 declare const ChangePassword: React.FC<ChangePasswordProps>;
 

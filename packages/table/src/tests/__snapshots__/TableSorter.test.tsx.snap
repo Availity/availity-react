@@ -1,6 +1,6 @@
-// Jest Snapshot v1, https://goo.gl/fbAQLP
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
 
-exports[`TableSorter should render sort options in dropdown menu 1`] = `
+exports[`TableSorter > should render sort options in dropdown menu 1`] = `
 <div>
   <div
     class="table-controls"
@@ -68,7 +68,7 @@ exports[`TableSorter should render sort options in dropdown menu 1`] = `
 </div>
 `;
 
-exports[`TableSorter should render table Sorter 1`] = `
+exports[`TableSorter > should render table Sorter 1`] = `
 <div>
   <div
     class="table-controls"
@@ -140,7 +140,7 @@ exports[`TableSorter should render table Sorter 1`] = `
 </div>
 `;
 
-exports[`TableSorter should show ascending icon 1`] = `
+exports[`TableSorter > should show ascending icon 1`] = `
 <div>
   <div
     class="table-controls"
@@ -208,7 +208,7 @@ exports[`TableSorter should show ascending icon 1`] = `
 </div>
 `;
 
-exports[`TableSorter should show descending icon 1`] = `
+exports[`TableSorter > should show descending icon 1`] = `
 <div>
   <div
     class="table-controls"

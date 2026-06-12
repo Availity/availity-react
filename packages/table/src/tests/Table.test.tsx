@@ -121,8 +121,8 @@ const formattedColumns = [
   },
 ] as Column<Record<string, string | boolean | number | undefined>>[];
 
-jest.mock('popper.js', () => {
-  const PopperJS = jest.requireActual('popper.js');
+vi.mock('popper.js', () => {
+  const PopperJS = vi.importActual('popper.js');
 
   return class {
     static placements = PopperJS.placements;
@@ -131,7 +131,7 @@ jest.mock('popper.js', () => {
       // eslint-disable-next-line no-constructor-return
       return {
         destroy: () => {},
-        scheduleUpdate: jest.fn(),
+        scheduleUpdate: vi.fn(),
       };
     }
   };
@@ -139,7 +139,7 @@ jest.mock('popper.js', () => {
 
 describe('Table', () => {
   afterEach(() => {
-    jest.clearAllMocks();
+    vi.clearAllMocks();
   });
 
   test('should render basic table', () => {
@@ -186,7 +186,7 @@ describe('Table', () => {
   });
 
   test('should call onRowClick when event is provided', async () => {
-    const onRowClick = jest.fn();
+    const onRowClick = vi.fn();
     const { container, getByTestId } = render(
       <Table onRowClick={onRowClick} data={basicData} columns={basicColumns} />
     );
@@ -203,7 +203,7 @@ describe('Table', () => {
   });
 
   test('should call onRowClick when event is provided for selectable table', async () => {
-    const onRowClick = jest.fn();
+    const onRowClick = vi.fn();
     const { container, getByTestId } = render(
       <Table selectable onRowClick={onRowClick} data={basicData} columns={basicColumns} />
     );
@@ -220,7 +220,7 @@ describe('Table', () => {
   });
 
   test('should call onRowSelected when provided', async () => {
-    const onRowSelected = jest.fn();
+    const onRowSelected = vi.fn();
 
     const { container, getByTestId } = render(
       <Table selectable onRowSelected={onRowSelected} data={basicData} columns={basicColumns} />
@@ -237,7 +237,7 @@ describe('Table', () => {
   });
 
   test('should sort table when clicking header', async () => {
-    const onSort = jest.fn();
+    const onSort = vi.fn();
 
     const { container, getByTestId } = render(
       <Table onSort={onSort} sortable data={basicData} columns={basicColumns} manualSortBy />
@@ -598,8 +598,8 @@ describe('Table', () => {
   });
 });
 
-const mockChildComponent = jest.fn();
-jest.mock('../TableActionMenu', () => ({
+const mockChildComponent = vi.fn();
+vi.mock('../TableActionMenu', () => ({
   __esModule: true,
   default: (props: TableActionMenuProps) => {
     mockChildComponent(props);
@@ -609,7 +609,7 @@ jest.mock('../TableActionMenu', () => ({
 
 describe('ActionCell', () => {
   beforeEach(() => {
-    jest.resetAllMocks();
+    vi.resetAllMocks();
   });
 
   test('should allow displayText to be set via a function for action', async () => {
@@ -828,7 +828,7 @@ describe('ActionCell', () => {
   });
 
   test('should call action on primary action click', async () => {
-    const action = jest.fn();
+    const action = vi.fn();
 
     // eslint-disable-next-line @typescript-eslint/ban-ts-comment
     // @ts-ignore
@@ -935,7 +935,7 @@ describe('DefaultValueCell', () => {
   });
 
   test('should render default value when it is a component', () => {
-    const DEFAULT_TEXT_EL = (): JSX.Element => <div data-testid="default-text">Not Available</div>;
+    const DEFAULT_TEXT_EL = (): React.JSX.Element => <div data-testid="default-text">Not Available</div>;
 
     const columDefs = [
       {

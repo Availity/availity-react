@@ -11,17 +11,15 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/Availity/availity-react.git"
+    "url": "https://github.com/Availity/availity-react.git",
+    "directory": "packages/table"
   },
   "license": "MIT",
+  "type": "module",
   "author": "Ashlee Zeigler <ashlee.zeigler@availity.com>",
-  "browser": "./dist/index.js",
-  "main": "./dist/index.js",
-  "module": "./dist/index.mjs",
-  "types": "./dist/index.d.ts",
   "scripts": {
-    "build": "tsup src/index.ts --format esm,cjs --dts",
-    "dev": "tsup src/index.ts --format esm,cjs --watch --dts",
+    "build": "tsup src/index.ts --format esm --clean --dts",
+    "dev": "tsup src/index.ts --format esm --watch --dts",
     "clean": "rm -rf dist",
     "clean:nm": "rm -rf node_modules",
     "publish": "yarn npm publish --tolerate-republish --access public",
@@ -32,7 +30,7 @@
     "@availity/icon": "workspace:*",
     "@types/react-table": "^7.7.20",
     "classnames": "^2.5.1",
-    "lodash": "^4.17.21",
+    "lodash": "^4.18.1",
     "moment": "^2.30.1",
     "react-table": "^7.8.0"
   },
@@ -40,8 +38,7 @@
     "react": "^18.3.1",
     "react-dom": "^18.3.1",
     "reactstrap": "^8.10.1",
-    "tsup": "^8.4.0",
-    "typescript": "^5.5.4"
+    "tsup": "^8.5.1"
   },
   "peerDependencies": {
     "availity-uikit": ">=4.7.0",
@@ -51,5 +48,15 @@
   },
   "publishConfig": {
     "access": "public"
+  },
+  "exports": {
+    ".": {
+      "source": "./src/index.ts",
+      "import": {
+        "types": "./dist/index.d.ts",
+        "default": "./dist/index.js"
+      }
+    },
+    "./styles.scss": "./styles.scss"
   }
 }

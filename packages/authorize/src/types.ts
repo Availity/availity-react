@@ -62,7 +62,7 @@ export type Parameters = {
 export type Options = {
   /** React Query Options */
   queryOptions?: Omit<
-    UseQueryOptions<boolean, unknown, boolean, (string | boolean | (string | string[])[] | undefined)[]>,
+    UseQueryOptions<boolean, unknown, boolean>,
     'queryKey' | 'queryFn'
   >;
 };

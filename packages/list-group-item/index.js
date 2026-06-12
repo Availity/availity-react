@@ -1,2 +1,2 @@
-export { default } from './src/ListGroupItem';
-export { default as ListGroupItemStatus } from './src/ListGroupItemStatus';
+export { default } from './src/ListGroupItem.jsx';
+export { default as ListGroupItemStatus } from './src/ListGroupItemStatus.jsx';

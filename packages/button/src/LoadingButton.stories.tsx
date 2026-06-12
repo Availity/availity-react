@@ -1,6 +1,6 @@
 /* eslint-disable react-hooks/rules-of-hooks */
 import React, { useState } from 'react';
-import { StoryObj } from '@storybook/react';
+import { StoryObj } from '@storybook/react-vite';
 import { Button, Col, Row } from 'reactstrap';
 
 import { LoadingButton } from '.';
@@ -8,7 +8,7 @@ import { LoadingButton } from '.';
 import '../styles.scss';
 
 export default {
-  title: 'Bootstrap Components/Button/Loading Button',
+  title: 'Deprecated/Button/Loading Button',
   parameters: {
     docs: {
       // page: README,

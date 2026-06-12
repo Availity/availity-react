@@ -1,4 +1,4 @@
-export { default } from './Date';
-export { default as DateField } from './DateField';
-export { default as DateRange } from './DateRange';
-export { default as DateRangeField } from './DateRangeField';
+export { default } from './Date.jsx';
+export { default as DateField } from './DateField.jsx';
+export { default as DateRange } from './DateRange.jsx';
+export { default as DateRangeField } from './DateRangeField.jsx';

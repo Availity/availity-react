@@ -10,7 +10,7 @@ export type AgreementProps = {
   children?: ReactNode;
 };
 
-const Agreement = ({ tag: Tag = 'div', className, children, ...rest }: AgreementProps): JSX.Element => (
+const Agreement = ({ tag: Tag = 'div', className, children, ...rest }: AgreementProps): React.JSX.Element => (
   <Tag data-testid="agreement" className={classNames(className, 'agreement')} {...rest}>
     {children}
   </Tag>

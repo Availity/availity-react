@@ -1,8 +1,8 @@
 /* eslint-disable react/no-unstable-nested-components */
 import React, { useState, useEffect } from 'react';
-import { Meta } from '@storybook/react';
+import { Meta } from '@storybook/react-vite';
 
-import { useTimeout } from '..';
+import { useTimeout } from '../src';
 // import README from '../README.md';
 
 export default {
@@ -17,7 +17,13 @@ export default {
   },
 } as Meta;
 
-const Component = ({ beforeTimeout, afterTimeout, timeout }) => {
+type Props = {
+  beforeTimeout: string;
+  afterTimeout: string;
+  timeout: number;
+};
+
+const Component = ({ beforeTimeout, afterTimeout, timeout }: Props) => {
   const [value, setValue] = useState(beforeTimeout);
   const ready = useTimeout(timeout);
 
@@ -25,7 +31,7 @@ const Component = ({ beforeTimeout, afterTimeout, timeout }) => {
     if (ready) {
       setValue(afterTimeout);
     }
-  }, [ready]);
+  }, [afterTimeout, ready]);
 
   return (
     <div>
@@ -36,7 +42,7 @@ const Component = ({ beforeTimeout, afterTimeout, timeout }) => {
 };
 
 export const Default = {
-  render: ({ beforeTimeout, afterTimeout, timeout }) => (
+  render: ({ beforeTimeout, afterTimeout, timeout }: Props) => (
     <Component beforeTimeout={beforeTimeout} afterTimeout={afterTimeout} timeout={timeout} />
   ),
   args: {

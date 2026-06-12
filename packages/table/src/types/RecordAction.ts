@@ -5,7 +5,7 @@ export interface RecordAction<T> extends TableAction {
   isVisible?: (record?: T) => boolean;
   displayText?:
     | string
-    | React.ReactChild
+    | React.ReactNode
     | React.ElementType
-    | ((record?: T) => string | React.ReactChild | React.ElementType);
+    | ((record?: T) => string | React.ReactNode | React.ElementType);
 }

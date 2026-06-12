@@ -1,5 +1,5 @@
 import React from 'react';
-import { Meta } from '@storybook/react';
+import { Meta } from '@storybook/react-vite';
 import { Button } from 'reactstrap';
 
 import {
@@ -17,7 +17,7 @@ import {
 import AvFormResults from '../../../story-utils/AvFormResults';
 
 export default {
-  title: 'Legacy Form Components/AvSelect/resources',
+  title: 'Deprecated/AvSelect/resources',
   parameters: {
     docs: {
       // page: README,

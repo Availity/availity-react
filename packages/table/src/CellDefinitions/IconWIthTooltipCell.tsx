@@ -14,7 +14,7 @@ export type IconWithTooltipConfig<T extends IdType> = {
   tooltipText: string | ((value: T) => string);
   getId?: (row: Row<T>) => string;
   tooltipProps?: UncontrolledTooltipProps;
-  defaultValue?: string | React.ReactChild | React.ElementType;
+  defaultValue?: string | React.ReactNode | React.ElementType;
 } & IconProps;
 
 const IconWithTooltipCell = <T extends IdType>({
@@ -25,8 +25,8 @@ const IconWithTooltipCell = <T extends IdType>({
   tooltipProps,
   defaultValue,
   ...attributes
-}: IconWithTooltipConfig<T>): JSX.Element | ((cell: CellProps<T>) => JSX.Element | null) => {
-  const IconCellDef = ({ value, row }: CellProps<T>): JSX.Element | null => {
+}: IconWithTooltipConfig<T>): React.JSX.Element | ((cell: CellProps<T>) => React.JSX.Element | null) => {
+  const IconCellDef = ({ value, row }: CellProps<T>): React.JSX.Element | null => {
     const tooltip = typeof tooltipText === 'string' ? tooltipText : tooltipText(value);
     const idVal = id || (getId ? getId(row) : undefined);
 

@@ -4,10 +4,15 @@
   "projectType": "library",
   "targets": {
     "test": {
-      "executor": "@nx/jest:jest",
-      "outputs": ["{workspaceRoot}/coverage/feedback"],
+      "executor": "nx:run-commands",
       "options": {
-        "jestConfig": "packages/feedback/jest.config.js"
+        "command": "vitest run --project=feedback",
+        "cwd": "."
+      },
+      "configurations": {
+        "ci": {
+          "command": "vitest run --project=feedback --coverage"
+        }
       }
     },
     "version": {
@@ -33,6 +38,12 @@
         "noEslintrc": false,
         "hasTypeAwareRules": true,
         "cacheStrategy": "metadata"
+      }
+    },
+    "build": {
+      "command": "tsup index.js --format esm",
+      "options": {
+        "cwd": "packages/feedback"
       }
     }
   }

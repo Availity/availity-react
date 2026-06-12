@@ -1,7 +1,7 @@
 import { useCurrentUser } from '@availity/hooks';
-import { useSpaces, useSpacesContext } from './Spaces';
-import { useModal } from './modals/ModalProvider';
-import { openLink, openLinkWithSso } from './linkHandlers';
+import { useSpaces, useSpacesContext } from './Spaces.jsx';
+import { useModal } from './modals/ModalProvider.jsx';
+import { openLink, openLinkWithSso } from './linkHandlers.js';
 
 export default (spaceOrSpaceId, { clientId: propsClientId, linkAttributes = {} } = {}) => {
   const { clientId = propsClientId } = useSpacesContext() || {};

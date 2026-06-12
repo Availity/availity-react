@@ -23,7 +23,7 @@ const LoadingButton = ({
   children,
   type = 'submit',
   ...rest
-}: LoadingButtonProps): JSX.Element => (
+}: LoadingButtonProps): React.JSX.Element => (
   <Button
     id={id}
     disabled={isLoading}

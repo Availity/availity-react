@@ -1,5 +1,5 @@
 import React from 'react';
-import { StoryObj } from '@storybook/react';
+import { StoryObj } from '@storybook/react-vite';
 import { MemoryRouter as Router, Route, Routes, Link } from 'react-router-dom';
 import { Breadcrumb, BreadcrumbItem } from 'reactstrap';
 
@@ -7,7 +7,7 @@ import Breadcrumbs from '../src/Breadcrumbs';
 // import README from '../README.md';
 
 export default {
-  title: 'Bootstrap Components/Breadcrumbs',
+  title: 'Deprecated/Breadcrumbs',
   component: Breadcrumb,
   decorators: [
     (Story) => (

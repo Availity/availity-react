@@ -39,7 +39,7 @@ describe('Icon', () => {
   });
 
   test('should render with pointer if onClick', () => {
-    const onClick = jest.fn();
+    const onClick = vi.fn();
     const { getByTestId } = render(<Icon data-testid="icon" name="home" color="primary" onClick={onClick} />);
 
     const icon = getByTestId('icon');

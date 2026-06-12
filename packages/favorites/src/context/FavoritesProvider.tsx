@@ -4,7 +4,7 @@ import { useQueryClient } from '@tanstack/react-query';
 import { AV_INTERNAL_GLOBALS, MAX_FAVORITES, NAV_APP_ID } from './constants';
 import { openMaxModal, sendUpdateMessage, useSubmitFavorites, useFavoritesQuery, Favorite } from './utils';
 
-type StatusUnion = 'idle' | 'error' | 'loading' | 'success';
+type StatusUnion = 'idle' | 'error' | 'pending' | 'success';
 
 type FavoritesContextType = {
   favorites?: Favorite[];
@@ -28,7 +28,7 @@ export const FavoritesProvider = ({
   applicationId?: string;
   maxFavorites?: number;
 
-}): JSX.Element => {
+}): React.JSX.Element => {
   const [lastClickedFavoriteId, setLastClickedFavoriteId] = useState<string>('');
 
   const queryClient = useQueryClient();
@@ -44,9 +44,10 @@ export const FavoritesProvider = ({
     if (applicationId === NAV_APP_ID) {
       const unsubscribeFavoritesChanged = avMessages.subscribe(
         AV_INTERNAL_GLOBALS.FAVORITES_CHANGED,
-        (data) => {
-          if (data?.favorites) {
-            queryClient.setQueryData(['favorites'], data?.favorites);
+        (data: unknown) => {
+          const d = data as { favorites?: Favorite[] };
+          if (d?.favorites) {
+            queryClient.setQueryData(['favorites'], d?.favorites);
           }
         },
         { ignoreSameWindow: false }
@@ -54,9 +55,10 @@ export const FavoritesProvider = ({
 
       const unsubscribeFavoritesUpdate = avMessages.subscribe(
         AV_INTERNAL_GLOBALS.FAVORITES_UPDATE,
-        (data) => {
-          if (data?.favorites) {
-            queryClient.setQueryData(['favorites'], data?.favorites);
+        (data: unknown) => {
+          const d = data as { favorites?: Favorite[] };
+          if (d?.favorites) {
+            queryClient.setQueryData(['favorites'], d?.favorites);
           }
         },
         { ignoreSameWindow: false }
@@ -156,11 +158,11 @@ export const useFavorites = (
 
   const toggleFavorite = () => (isFavorited ? deleteFavorite(id) : addFavorite(id));
 
-  const isDisabled = queryStatus === 'loading' || queryStatus === 'idle' || mutationStatus === 'loading';
+  const isDisabled = queryStatus === 'pending' || queryStatus === 'idle' || mutationStatus === 'pending';
 
   let status: MergedStatusUnion = 'initLoading';
-  if (queryStatus === 'loading') status = 'initLoading';
-  if (mutationStatus === 'loading') status = 'reloading';
+  if (queryStatus === 'pending') status = 'initLoading';
+  if (mutationStatus === 'pending') status = 'reloading';
   if (queryStatus === 'error' || mutationStatus === 'error') status = 'error';
   if (queryStatus === 'success' && (mutationStatus === 'success' || mutationStatus === 'idle')) status = 'success';
 

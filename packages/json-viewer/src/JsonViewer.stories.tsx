@@ -1,11 +1,11 @@
 import React from 'react';
-import { StoryObj } from '@storybook/react';
+import { StoryObj } from '@storybook/react-vite';
 
 import JsonViewer from '.';
 // import README from '../README.md';
 
 export default {
-  title: 'Bootstrap Components/JsonViewer',
+  title: 'Components/JsonViewer',
   parameters: {
     docs: {
       // page: README,
@@ -22,6 +22,6 @@ export default {
   component: JsonViewer,
 };
 
-export const _Default: StoryObj<typeof JsonViewer> = {
+export const JSONViewer: StoryObj<typeof JsonViewer> = {
   render: ({ data, expandAll }) => <JsonViewer data={data} expandAll={expandAll} />,
 };

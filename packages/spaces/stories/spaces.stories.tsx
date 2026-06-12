@@ -1,5 +1,5 @@
 import React from 'react';
-import { StoryObj } from '@storybook/react';
+import { StoryObj } from '@storybook/react-vite';
 import { Row, Col } from 'reactstrap';
 
 import Spaces, {
@@ -13,7 +13,7 @@ import Spaces, {
 // import README from '../README.md';
 
 export default {
-  title: 'Bootstrap Components/Spaces',
+  title: 'Deprecated/Spaces',
   component: Spaces,
   parameters: {
     docs: {

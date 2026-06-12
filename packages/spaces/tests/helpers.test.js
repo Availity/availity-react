@@ -21,11 +21,11 @@ const localStorageMock = (() => {
 
 describe('updateTopApps', () => {
   beforeEach(() => {
-    jest.useFakeTimers('modern').setSystemTime(new Date('2022-01-01').getTime());
+    vi.useFakeTimers('modern').setSystemTime(new Date('2022-01-01').getTime());
     Object.defineProperty(window, 'localStorage', { value: localStorageMock });
   });
   afterEach(() => {
-    jest.clearAllMocks();
+    vi.clearAllMocks();
     window.localStorage.clear();
     cleanup();
   });

@@ -1,5 +1,11 @@
 # @availity/button
 
+## ⚠️ Deprecated
+
+This package is deprecated and no longer actively maintained. Future updates are not guaranteed. We recommend migrating to [`@availity/element`](https://availity.github.io/element).
+
+---
+
 > This is a button component that displays a loading indicator inside of it when loading
 
 [![Version](https://img.shields.io/npm/v/@availity/button.svg?style=for-the-badge)](https://www.npmjs.com/package/@availity/button)

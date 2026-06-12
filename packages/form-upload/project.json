@@ -1,14 +1,18 @@
 {
-  "name": "form-upload",
+  "name": "@availity/form-upload",
   "$schema": "../../node_modules/nx/schemas/project-schema.json",
   "projectType": "library",
   "targets": {
     "test": {
-      "executor": "@nx/jest:jest",
-      "outputs": ["{workspaceRoot}/coverage/form-upload"],
+      "executor": "nx:run-commands",
       "options": {
-        "jestConfig": "packages/form-upload/jest.config.js",
-        "passWithNoTests": false
+        "command": "vitest run --project=form-upload",
+        "cwd": "."
+      },
+      "configurations": {
+        "ci": {
+          "command": "vitest run --project=form-upload --coverage"
+        }
       }
     },
     "version": {
@@ -16,7 +20,7 @@
       "options": {
         "preset": "angular",
         "commitMessageFormat": "chore({projectName}): release version ${version} [skip ci]",
-        "tagPrefix": "@availity/{projectName}@",
+        "tagPrefix": "{projectName}@",
         "baseBranch": "master",
         "trackDeps": true
       }
@@ -34,6 +38,12 @@
         "noEslintrc": false,
         "hasTypeAwareRules": true,
         "cacheStrategy": "metadata"
+      }
+    },
+    "build": {
+      "command": "tsup",
+      "options": {
+        "cwd": "packages/form-upload"
       }
     }
   }

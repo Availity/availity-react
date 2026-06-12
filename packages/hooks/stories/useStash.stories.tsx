@@ -2,7 +2,7 @@ import React from 'react';
 import { Meta } from '@storybook/react';
 import { QueryClientProvider, QueryClient } from '@tanstack/react-query';
 
-import { useStash } from '..';
+import { useStash } from '../src';
 
 import ResourceComponent from './ResourceComponent';
 

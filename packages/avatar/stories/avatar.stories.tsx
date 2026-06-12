@@ -1,5 +1,5 @@
 import React from 'react';
-import { StoryObj } from '@storybook/react';
+import { StoryObj } from '@storybook/react-vite';
 import Avatar from '..';
 // import README from '../README.md';
 
@@ -7,7 +7,7 @@ import Avatar from '..';
  * # Availity user avatar component.
  */
 export default {
-  title: 'Bootstrap Components/Avatar',
+  title: 'Deprecated/Avatar',
   component: Avatar,
 };
 

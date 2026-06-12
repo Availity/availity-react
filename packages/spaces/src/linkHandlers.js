@@ -1,7 +1,7 @@
 import { getUrl, getTarget } from '@availity/link';
 import nativeForm from '@availity/native-form';
 import { isAbsoluteUrl } from '@availity/resolve-url';
-import { updateTopApps, updateUrl } from './helpers';
+import { updateTopApps, updateUrl } from './helpers.js';
 
 export const openLink = async (space, { akaname, payerSpaceId }) => {
   if (!space?.link?.url) {

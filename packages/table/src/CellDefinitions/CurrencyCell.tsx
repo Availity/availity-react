@@ -11,7 +11,7 @@ type CellProps<T extends IdType> = {
 export interface CurrencyCellConfig {
   currency?: string;
   style?: 'decimal' | 'currency' | 'percent' | 'unit';
-  defaultValue?: string | React.ReactChild | React.ElementType;
+  defaultValue?: string | React.ReactNode | React.ElementType;
   locales?: string;
   displayTooltip?: boolean;
   tooltipProps?: UncontrolledTooltipProps;
@@ -24,8 +24,8 @@ const CurrencyCell = <T extends IdType>({
   locales = 'en-us',
   displayTooltip = true,
   tooltipProps,
-}: CurrencyCellConfig): JSX.Element | ((cell: CellProps<T>) => JSX.Element) => {
-  const CurrencyCellDef = ({ value, row, column }: CellProps<T>): JSX.Element => {
+}: CurrencyCellConfig): React.JSX.Element | ((cell: CellProps<T>) => React.JSX.Element) => {
+  const CurrencyCellDef = ({ value, row, column }: CellProps<T>): React.JSX.Element => {
     let formattedValue;
 
     if (!value) {

@@ -4,10 +4,15 @@
   "projectType": "library",
   "targets": {
     "test": {
-      "executor": "@nx/jest:jest",
-      "outputs": ["{workspaceRoot}/coverage/change-password"],
+      "executor": "nx:run-commands",
       "options": {
-        "jestConfig": "packages/change-password/jest.config.js"
+        "command": "vitest run --project=change-password",
+        "cwd": "."
+      },
+      "configurations": {
+        "ci": {
+          "command": "vitest run --project=change-password --coverage"
+        }
       }
     },
     "version": {
@@ -33,6 +38,12 @@
         "noEslintrc": false,
         "hasTypeAwareRules": true,
         "cacheStrategy": "metadata"
+      }
+    },
+    "build": {
+      "command": "tsup",
+      "options": {
+        "cwd": "packages/change-password"
       }
     }
   }

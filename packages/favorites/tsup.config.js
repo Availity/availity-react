@@ -1,9 +1,10 @@
-const { defineConfig } = require('tsup');
-const { sassPlugin, postcssModules } = require('esbuild-sass-plugin');
+import { defineConfig } from 'tsup';
+import { sassPlugin, postcssModules } from 'esbuild-sass-plugin';
 
-module.exports = defineConfig({
+export default defineConfig({
   entry: ['src/index.ts'],
-  format: ['esm', 'cjs'],
+  format: ['esm'],
+  dts: true,
   esbuildPlugins: [
     sassPlugin({
       transform: postcssModules({

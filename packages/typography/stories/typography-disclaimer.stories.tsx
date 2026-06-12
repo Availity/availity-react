@@ -1,9 +1,9 @@
 import React from 'react';
-import type { StoryObj } from '@storybook/react';
+import type { StoryObj } from '@storybook/react-vite';
 import Disclaimer from '../src/Disclaimer';
 
 export default {
-  title: 'Bootstrap Components/Typography/Disclaimer',
+  title: 'Deprecated/Typography/Disclaimer',
   component: Disclaimer,
 };
 

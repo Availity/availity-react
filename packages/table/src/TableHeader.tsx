@@ -9,7 +9,7 @@ export type Props = {
   children?: React.ReactNode;
 } & React.HTMLAttributes<HTMLElement>;
 
-const TableHeader = ({ sticky, children, ...rest }: Props): JSX.Element => (
+const TableHeader = ({ sticky, children, ...rest }: Props): React.JSX.Element => (
   <thead className={`av-grid-row-header${sticky ? ' sticky-header' : ''}`} {...rest}>
     {children}
   </thead>

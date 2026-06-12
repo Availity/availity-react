@@ -29,7 +29,7 @@ const TableCell = <T extends IdType>({
   onCellClick,
   getCellProps,
   ...rest
-}: Props<T>): JSX.Element => {
+}: Props<T>): React.JSX.Element => {
   const { className, disableClick, stickyLeft, stickyRight, width, minWidth, maxWidth } = cell.column;
 
   const cellProps = {

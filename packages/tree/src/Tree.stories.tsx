@@ -1,5 +1,5 @@
 import React, { useCallback, useState } from 'react';
-import { StoryObj } from '@storybook/react';
+import { StoryObj } from '@storybook/react-vite';
 import cloneDeep from 'lodash/cloneDeep';
 import { Button } from 'reactstrap';
 
@@ -7,7 +7,7 @@ import Tree, { buildTree, TreeItem } from '.';
 import '../styles.scss';
 
 export default {
-  title: 'Bootstrap Components/Tree',
+  title: 'Deprecated/Tree',
   component: Tree,
   parameters: {
     docs: {

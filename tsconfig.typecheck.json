@@ -1,0 +1,15 @@
+{
+  "extends": "./tsconfig.json",
+  "exclude": [
+    "**/node_modules/",
+    "**/*.stories.tsx",
+    "**/*.stories.ts",
+    "**/*.test.tsx",
+    "**/*.test.ts",
+    "**/*.test.jsx",
+    "**/*.test.js",
+    "**/tests/",
+    "story-utils/",
+    "docusaurus/"
+  ]
+}

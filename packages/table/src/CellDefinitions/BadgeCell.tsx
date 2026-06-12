@@ -8,9 +8,9 @@ type CellProps = {
 const BadgeCell = (
   color: string,
   displayText = '',
-  defaultValue?: string | null | React.ReactChild | React.ElementType
-): JSX.Element | ((cell: CellProps) => JSX.Element | null) | null => {
-  const BadgeCellDef = ({ value }: CellProps): JSX.Element | null => {
+  defaultValue?: string | null | React.ReactNode | React.ElementType
+): React.JSX.Element | ((cell: CellProps) => React.JSX.Element | null) | null => {
+  const BadgeCellDef = ({ value }: CellProps): React.JSX.Element | null => {
     const defaultVal = defaultValue || null;
     // eslint-disable-next-line react/jsx-no-useless-fragment
     return value ? <Badge color={color}>{value}</Badge> : defaultValue ? <>{defaultVal}</> : null;

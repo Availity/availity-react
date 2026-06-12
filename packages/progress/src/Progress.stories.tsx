@@ -1,10 +1,10 @@
 import React from 'react';
-import { StoryObj } from '@storybook/react';
+import { StoryObj } from '@storybook/react-vite';
 import Progress from '.';
 // import README from '../README.md';
 
 export default {
-  title: 'Bootstrap Components/Progress',
+  title: 'Deprecated/Progress',
   component: Progress,
 };
 

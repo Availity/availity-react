@@ -22,7 +22,7 @@ export type RemovableBadgeListProps = {
   onRemove?: (badgeList: BadgeItem[]) => void;
 } & React.HTMLAttributes<HTMLElement>;
 
-const RemovableBadgeList = ({ badges, id, onRemove, ...rest }: RemovableBadgeListProps): JSX.Element => {
+const RemovableBadgeList = ({ badges, id, onRemove, ...rest }: RemovableBadgeListProps): React.JSX.Element => {
   const [badgeList, setBadgeList] = useState(badges);
 
   useEffect(() => {

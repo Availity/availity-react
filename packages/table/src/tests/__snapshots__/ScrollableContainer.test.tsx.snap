@@ -1,6 +1,6 @@
-// Jest Snapshot v1, https://goo.gl/fbAQLP
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
 
-exports[`Scrollable Container should render 1`] = `
+exports[`Scrollable Container > should render 1`] = `
 <div>
   <div
     class="av-scrollable-table-wrapper"
@@ -14,7 +14,7 @@ exports[`Scrollable Container should render 1`] = `
 </div>
 `;
 
-exports[`Scrollable Container should render multiple children 1`] = `
+exports[`Scrollable Container > should render multiple children 1`] = `
 <div>
   <div
     class="av-scrollable-table-wrapper"

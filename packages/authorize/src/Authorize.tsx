@@ -28,7 +28,7 @@ const Authorize = ({
   children = null,
   unauthorized = null,
   queryOptions,
-}: AuthorizeProps): JSX.Element | null => {
+}: AuthorizeProps): React.JSX.Element | null => {
   const { authorized, isLoading } = useAuthorize(
     permissions,
     {

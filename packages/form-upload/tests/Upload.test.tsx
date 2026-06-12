@@ -24,7 +24,7 @@ describe('Upload', () => {
   // beforeEach(() => {
   //   // This is useful to isolate specific modules for every test so that local module state doesn't conflict between tests.
   //   // Makes lazy loading react-dropzone consistent instead of relying on only one test to set it up
-  // jest.isolateModules(() => {
+  // vi.isolateModules(() => {
   //   // eslint-disable-next-line @typescript-eslint/no-var-requires
   //   Upload = require('../src/Upload');
   // });
@@ -33,7 +33,7 @@ describe('Upload', () => {
   // let Upload;
 
   // afterEach(() => {
-  //   jest.resetModules();
+  //   vi.resetModules();
   // });
 
   test('should render', () => {
@@ -176,7 +176,7 @@ describe('Upload', () => {
   });
 
   test('calls onFilePreUpload callback', async () => {
-    const mockFunc = jest.fn();
+    const mockFunc = vi.fn();
 
     render(
       <Form
@@ -215,7 +215,7 @@ describe('Upload', () => {
   });
 
   test('calls onFileRemove callback', async () => {
-    const onFileRemoveMock = jest.fn();
+    const onFileRemoveMock = vi.fn();
 
     render(
       <Form
@@ -255,8 +255,8 @@ describe('Upload', () => {
   });
 
   test('uses cloud url when isCloud is true', async () => {
-    const mockFn = jest.fn();
-    const onFileUploadMock = jest.fn();
+    const mockFn = vi.fn();
+    const onFileUploadMock = vi.fn();
 
     render(
       <Form<{ upload: UploadCore[] | null }>
@@ -291,13 +291,13 @@ describe('Upload', () => {
 
     await waitFor(() => {
       expect(inputNode.files?.length).toBe(1);
-      expect(mockFn).toHaveBeenCalledWith('http://localhost/cloud/web/appl/vault/upload/v1/resumable');
+      expect(mockFn).toHaveBeenCalledWith('http://localhost:3000/cloud/web/appl/vault/upload/v1/resumable');
     });
   });
 
   test('uses given endpoint when passed', async () => {
-    const mockFn = jest.fn();
-    const onFileUploadMock = jest.fn();
+    const mockFn = vi.fn();
+    const onFileUploadMock = vi.fn();
 
     render(
       <Form<{ upload: UploadCore[] | null }>
@@ -331,14 +331,14 @@ describe('Upload', () => {
     });
 
     await waitFor(() => {
-      expect(mockFn).toHaveBeenCalledWith('http://localhost/test/foo');
+      expect(mockFn).toHaveBeenCalledWith('http://localhost:3000/test/foo');
     });
   });
 
   test('passes customHeaders to UploadCore options', async () => {
     const customHeaders = { 'X-Custom-Header': 'test-value' };
-    const mockFn = jest.fn();
-    const onFileUploadMock = jest.fn();
+    const mockFn = vi.fn();
+    const onFileUploadMock = vi.fn();
 
     render(
       <Form<{ upload: UploadCore[] | null }>
@@ -376,12 +376,12 @@ describe('Upload', () => {
   });
 
   test('passes customHeaders function result to UploadCore options', async () => {
-    const customHeadersFunction = jest.fn((file: File) => ({
+    const customHeadersFunction = vi.fn((file: File) => ({
       'X-File-Name': file.name,
       'x-metadata-content-type': `application/${file.name.split('.').pop()?.toLowerCase()}`,
     }));
-    const mockFn = jest.fn();
-    const onFileUploadMock = jest.fn();
+    const mockFn = vi.fn();
+    const onFileUploadMock = vi.fn();
 
     render(
       <Form<{ upload: UploadCore[] | null }>
@@ -423,8 +423,8 @@ describe('Upload', () => {
   });
 
   test('handles customHeaders as undefined', async () => {
-    const mockFn = jest.fn();
-    const onFileUploadMock = jest.fn();
+    const mockFn = vi.fn();
+    const onFileUploadMock = vi.fn();
 
     render(
       <Form<{ upload: UploadCore[] | null }>

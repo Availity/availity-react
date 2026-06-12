@@ -31,7 +31,7 @@ const Progress = ({
   className: classes,
   color = 'success',
   ...rest
-}: ProgressProps): JSX.Element => {
+}: ProgressProps): React.JSX.Element => {
   const percent = (toNumber(value) / toNumber(max)) * 100;
 
   return (

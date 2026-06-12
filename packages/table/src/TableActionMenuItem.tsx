@@ -12,7 +12,7 @@ type Props<T extends IdType> = {
   record: T;
 };
 
-const TableActionMenuItem = <T extends IdType>({ id, action, record }: Props<T>): JSX.Element | null => {
+const TableActionMenuItem = <T extends IdType>({ id, action, record }: Props<T>): React.JSX.Element | null => {
   const isVisible = action.isVisible ? action.isVisible(record) : true;
   if (!isVisible) {
     return null;
@@ -20,7 +20,7 @@ const TableActionMenuItem = <T extends IdType>({ id, action, record }: Props<T>)
 
   const displayText =
     typeof action.displayText === 'function'
-      ? (action.displayText as (record?: T) => string | React.ReactChild | React.ElementType)(record)
+      ? (action.displayText as (record?: T) => string | React.ReactNode | React.ElementType)(record)
       : action.displayText;
 
   const setOnClickProps = () => {

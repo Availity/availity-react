@@ -1,6 +1,6 @@
 /* eslint-disable no-console */
 import React from 'react';
-import { StoryObj } from '@storybook/react';
+import { StoryObj } from '@storybook/react-vite';
 import { Button, Col, Row } from 'reactstrap';
 import { Field } from '@availity/form';
 
@@ -12,7 +12,7 @@ import FormikResults from '../../../story-utils/FormikResults';
 import { singleValueSchema, multiValueSchema, options, SelectedOption, autofillOptions } from './utils';
 
 export default {
-  title: 'Bootstrap Components/Select',
+  title: 'Deprecated/Select',
   component: Select,
   args: {
     autofill: false,

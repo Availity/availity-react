@@ -8,7 +8,7 @@ type Props = {
   children?: React.ReactNode[] | React.ReactNode;
 } & React.HTMLAttributes<HTMLElement>;
 
-const TableControls = ({ id, disabled, children, ...rest }: Props): JSX.Element | null => {
+const TableControls = ({ id, disabled, children, ...rest }: Props): React.JSX.Element | null => {
   const [isDisabled, setIsDisabled] = useState(disabled || false);
 
   const { instance } = useTableContext();

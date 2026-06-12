@@ -1,6 +1,6 @@
-// Jest Snapshot v1, https://goo.gl/fbAQLP
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
 
-exports[`Table should not display hidden columns 1`] = `
+exports[`Table > should not display hidden columns 1`] = `
 <div>
   <table
     class="av-grid table"
@@ -145,7 +145,7 @@ exports[`Table should not display hidden columns 1`] = `
 </div>
 `;
 
-exports[`Table should not display primary action column when not provided 1`] = `
+exports[`Table > should not display primary action column when not provided 1`] = `
 <div>
   <table
     class="av-grid table"
@@ -473,7 +473,7 @@ exports[`Table should not display primary action column when not provided 1`] = 
 </div>
 `;
 
-exports[`Table should render basic table 1`] = `
+exports[`Table > should render basic table 1`] = `
 <div>
   <table
     class="av-grid table"
@@ -618,7 +618,7 @@ exports[`Table should render basic table 1`] = `
 </div>
 `;
 
-exports[`Table should render selectable table 1`] = `
+exports[`Table > should render selectable table 1`] = `
 <div>
   <table
     class="av-grid table"
@@ -836,7 +836,7 @@ exports[`Table should render selectable table 1`] = `
 </div>
 `;
 
-exports[`Table should render sortable table 1`] = `
+exports[`Table > should render sortable table 1`] = `
 <div>
   <table
     class="av-grid table"
@@ -992,7 +992,7 @@ exports[`Table should render sortable table 1`] = `
 </div>
 `;
 
-exports[`Table should render with expected ids 1`] = `
+exports[`Table > should render with expected ids 1`] = `
 <div>
   <table
     class="av-grid table"
@@ -1138,7 +1138,7 @@ exports[`Table should render with expected ids 1`] = `
 </div>
 `;
 
-exports[`Table should render with formatted cells 1`] = `
+exports[`Table > should render with formatted cells 1`] = `
 <div>
   <table
     class="av-grid table"

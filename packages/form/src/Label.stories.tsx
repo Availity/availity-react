@@ -1,13 +1,13 @@
 /* eslint-disable no-console */
 import React from 'react';
-import { StoryObj } from '@storybook/react';
+import { StoryObj } from '@storybook/react-vite';
 import '@availity/date/styles.scss';
 
 import { Label } from '.';
 // import README from '../form/README.md';
 
 export default {
-  title: 'Bootstrap Components/Form/Label',
+  title: 'Deprecated/Form/Label',
   component: Label,
   args: {
     required: false,

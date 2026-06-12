@@ -1,5 +1,11 @@
 # @availity/upload
 
+## ⚠️ Deprecated
+
+This package is deprecated and no longer actively maintained. Future updates are not guaranteed. This package is not compatible with React 19 and will not be upgraded. We recommend migrating to [`@availity/element`](https://availity.github.io/element).
+
+---
+
 > Availity component for uploading files
 
 [![Version](https://img.shields.io/npm/v/@availity/upload.svg?style=for-the-badge)](https://www.npmjs.com/package/@availity/upload)

@@ -17,14 +17,11 @@
     "directory": "packages/pagination"
   },
   "license": "MIT",
+  "type": "module",
   "author": "Evan Sharp <evan.sharp@availity.com>",
-  "browser": "./dist/index.js",
-  "main": "./dist/index.js",
-  "module": "./dist/index.mjs",
-  "types": "./dist/index.d.ts",
   "scripts": {
-    "build": "tsup src/index.ts --format esm,cjs --dts",
-    "dev": "tsup src/index.ts --format esm,cjs --watch --dts",
+    "build": "tsup src/index.ts --format esm --clean --dts",
+    "dev": "tsup src/index.ts --format esm --watch --dts",
     "clean": "rm -rf dist",
     "clean:nm": "rm -rf node_modules",
     "publish": "yarn npm publish --tolerate-republish --access public",
@@ -32,8 +29,8 @@
   },
   "dependencies": {
     "@availity/block-ui": "workspace:^",
-    "lodash": "^4.17.21",
-    "react-infinite-scroll-component": "^6.1.0",
+    "lodash": "^4.18.1",
+    "react-infinite-scroll-component": "^6.1.1",
     "react-use": "^17.6.0"
   },
   "devDependencies": {
@@ -41,8 +38,7 @@
     "react": "^18.3.1",
     "react-dom": "^18.3.1",
     "reactstrap": "^8.10.1",
-    "tsup": "^8.4.0",
-    "typescript": "^5.5.4"
+    "tsup": "^8.5.1"
   },
   "peerDependencies": {
     "react": "^18.0.0",
@@ -51,5 +47,14 @@
   "publishConfig": {
     "access": "public"
   },
-  "gitHead": "49d436db19e42e3c16b4185b12e9dfcce60ec253"
+  "gitHead": "49d436db19e42e3c16b4185b12e9dfcce60ec253",
+  "exports": {
+    ".": {
+      "source": "./src/index.ts",
+      "import": {
+        "types": "./dist/index.d.ts",
+        "default": "./dist/index.js"
+      }
+    }
+  }
 }

@@ -4,11 +4,15 @@
   "projectType": "library",
   "targets": {
     "test": {
-      "executor": "@nx/jest:jest",
-      "outputs": ["{workspaceRoot}/coverage/training-link"],
+      "executor": "nx:run-commands",
       "options": {
-        "jestConfig": "packages/training-link/jest.config.js",
-        "verbose": true
+        "command": "vitest run --project=training-link",
+        "cwd": "."
+      },
+      "configurations": {
+        "ci": {
+          "command": "vitest run --project=training-link --coverage"
+        }
       }
     },
     "version": {
@@ -33,6 +37,12 @@
         "noEslintrc": false,
         "hasTypeAwareRules": true,
         "cacheStrategy": "metadata"
+      }
+    },
+    "build": {
+      "command": "tsup src/index.ts --format esm --dts",
+      "options": {
+        "cwd": "packages/training-link"
       }
     }
   }

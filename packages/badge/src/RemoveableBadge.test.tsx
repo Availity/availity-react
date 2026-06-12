@@ -4,7 +4,7 @@ import RemovableBadge from './RemovableBadge';
 
 describe('Removable Badge', () => {
   test('should render', async () => {
-    const onRemove = jest.fn();
+    const onRemove = vi.fn();
     const displayText = 'My Badge';
     const color = 'primary';
 
@@ -21,7 +21,7 @@ describe('Removable Badge', () => {
   });
 
   test('should call onRemove onClick', async () => {
-    const onRemove = jest.fn();
+    const onRemove = vi.fn();
     const displayText = 'My Badge';
     const color = 'primary';
 

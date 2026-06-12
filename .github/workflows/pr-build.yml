@@ -19,7 +19,7 @@ jobs:
     strategy:
       matrix:
         os: [ubuntu-latest, macos-latest]
-        node: [18, 20, 22]
+        node: [22, 24]
 
     steps:
       - name: Checkout Code
@@ -56,8 +56,19 @@ jobs:
       - name: Install Dependencies
         run: yarn install --immutable
 
+      - name: Restore Nx Cache
+        uses: actions/cache@0057852bfaa89a56745cba8c7296529d2fc39830 # v4.3.0
+        with:
+          path: .nx/cache
+          key: nx-${{ runner.os }}-${{ matrix.node }}-${{ hashFiles('yarn.lock') }}-${{ github.sha }}
+          restore-keys: |
+            nx-${{ runner.os }}-${{ matrix.node }}-${{ hashFiles('yarn.lock') }}-
+
       - name: Build
         run: yarn build:components
+
+      - name: Typecheck
+        run: yarn typecheck
 
       - name: Lint
         run: yarn nx affected --target=lint
@@ -69,9 +80,9 @@ jobs:
         run: yarn version:dry-run
 
       - name: Build Docs
-        if: ${{ matrix.node == 22 }}
+        if: ${{ matrix.node == 24 }}
         run: yarn build:docs
 
       - name: Build Storybook
-        if: ${{ matrix.node == 22 }}
+        if: ${{ matrix.node == 24 }}
         run: yarn build:storybook

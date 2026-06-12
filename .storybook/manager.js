@@ -1,6 +1,6 @@
-import { addons } from '@storybook/manager-api';
-import { create } from '@storybook/theming';
-import { STORY_RENDERED } from '@storybook/core-events';
+import { addons } from 'storybook/manager-api';
+import { create } from 'storybook/theming';
+import { STORY_RENDERED } from 'storybook/internal/core-events';
 
 const githubLogo = 'https://avatars.githubusercontent.com/u/329985?s=100';
 
@@ -17,7 +17,7 @@ addons.setConfig({
   panelPosition: 'bottom',
   theme,
   sidebar: {
-    collapsedRoots: ['components', 'form-components', 'hooks', 'legacy-form-components', 'deprecated', '3rd-party'],
+    collapsedRoots: ['deprecated', '3rd-party'],
   },
 });
 
@@ -36,10 +36,14 @@ addons.register('TitleAddon', (api) => {
     let title;
     if (!storyData) {
       title = customTitle;
-    } else if (storyData.name === 'Page' || storyData.name === 'default') {
-      title = `${storyData.kind} ⋅ ${customTitle}`;
     } else {
-      title = `${storyData.kind} - ${storyData.name} ⋅ ${customTitle}`;
+      const kind = storyData.kind || storyData.title || '';
+      const displayKind = kind.replace(/^(Components|Hooks|Deprecated)\//, '');
+      if (!displayKind || storyData.name === 'Page' || storyData.name === 'default') {
+        title = displayKind ? `${displayKind} ⋅ ${customTitle}` : customTitle;
+      } else {
+        title = `${displayKind} - ${storyData.name} ⋅ ${customTitle}`;
+      }
     }
 
     if (document.title !== title) {

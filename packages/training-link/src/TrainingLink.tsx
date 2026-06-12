@@ -11,7 +11,7 @@ export type TrainingLinkProps = {
   name?: string;
 };
 
-const TrainingLink = ({ name, link }: TrainingLinkProps): JSX.Element =>
+const TrainingLink = ({ name, link }: TrainingLinkProps): React.JSX.Element =>
   name ? (
     <span style={shouldProbablyBeInUIKit} className="ml-auto">
       Need Help?{' '}

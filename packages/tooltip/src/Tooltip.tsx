@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { Tooltip as RSTooltip, TooltipProps } from 'reactstrap';
 
-const Tooltip = ({ placement = 'auto', children, ...rest }: TooltipProps): JSX.Element => {
+const Tooltip = ({ placement = 'auto', children, ...rest }: TooltipProps): React.JSX.Element => {
   const [tooltipOpen, setTooltipOpen] = useState(false);
   const toggleTooltipOpen = () => setTooltipOpen(!tooltipOpen);
   useEffect(() => {

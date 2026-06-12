@@ -69,6 +69,20 @@ export const handlers = [
     return res(delay(defaultDelay), ctx.status(200), ctx.json(response));
   }),
 
+  // User Permissions (Aries 2 endpoint)
+  rest.get(routes.USER_PERMISSIONS, (req, res, ctx) => {
+    const params = parse(req.url.search, { ignoreQueryPrefix: true });
+    const permissionIds = Array.isArray(params.permissionId) ? params.permissionId : [params.permissionId];
+    const response = {
+      axiUserPermissions:
+        !params.region || params.region === 'FL'
+          ? axiPermissions.axiUserPermissions.filter(({ id }) => permissionIds.includes(id))
+          : [],
+    };
+
+    return res(delay(defaultDelay), ctx.status(200), ctx.json(response));
+  }),
+
   // Permissions
   rest.get(routes.PERMISSIONS, (req, res, ctx) => res(delay(defaultDelay), ctx.status(200), ctx.json(permissions))),
   rest.post(routes.PERMISSIONS, (req, res, ctx) => res(delay(defaultDelay), ctx.status(200), ctx.json(permissions))),

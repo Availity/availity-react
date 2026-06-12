@@ -1,9 +1,9 @@
 import React from 'react';
-import { StoryObj } from '@storybook/react';
+import { StoryObj } from '@storybook/react-vite';
 import AppTiles from './AppTiles';
 
 export default {
-  title: 'Bootstrap Components/AppTiles',
+  title: 'Deprecated/AppTiles',
   parameters: {
     docs: {
       description: {
