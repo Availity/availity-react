@@ -2,6 +2,18 @@
 
 This file was generated using [@jscutlery/semver](https://github.com/jscutlery/semver).
 
+# [2.0.0](https://github.com/Availity/availity-react/compare/@availity/step-wizard@1.5.9...@availity/step-wizard@2.0.0) (2026-06-12)
+
+
+* feat(step-wizard)!: migrate to ESM exports and vitest ([81c9b63](https://github.com/Availity/availity-react/commit/81c9b63038815ce9bb52b17865fe2b933210fa0f))
+
+
+### BREAKING CHANGES
+
+* Package now uses ESM exports field. CJS require() is no longer supported.
+
+
+
 ## [1.5.9](https://github.com/Availity/availity-react/compare/@availity/step-wizard@1.5.8...@availity/step-wizard@1.5.9) (2026-03-05)
 
 
