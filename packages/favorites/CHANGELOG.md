@@ -2,6 +2,23 @@
 
 This file was generated using [@jscutlery/semver](https://github.com/jscutlery/semver).
 
+# [6.0.0](https://github.com/Availity/availity-react/compare/@availity/favorites@5.1.12...@availity/favorites@6.0.0) (2026-06-12)
+
+### Dependency Updates
+
+* `@availity/hooks` updated to version `5.1.12`
+* `@availity/mock` updated to version `5.1.12`
+
+* feat(favorites)!: migrate to ESM exports, vitest, and @tanstack/react-query v5 ([00ddd02](https://github.com/Availity/availity-react/commit/00ddd02644a9d958a474fd711db84e4ce89efc3e))
+
+
+### BREAKING CHANGES
+
+* Package now uses ESM exports field and requires @tanstack/react-query ^5.
+Status 'loading' is renamed to 'pending'.
+
+
+
 ## [5.1.12](https://github.com/Availity/availity-react/compare/@availity/favorites@5.1.11...@availity/favorites@5.1.12) (2026-06-09)
 
 ### Dependency Updates
