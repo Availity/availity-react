@@ -2,6 +2,26 @@
 
 This file was generated using [@jscutlery/semver](https://github.com/jscutlery/semver).
 
+# [15.0.0](https://github.com/Availity/availity-react/compare/@availity/page-header@14.0.27...@availity/page-header@15.0.0) (2026-06-12)
+
+### Dependency Updates
+
+* `@availity/spaces` updated to version `14.0.27`
+* `@availity/training-link` updated to version `14.0.27`
+* `@availity/app-icon` updated to version `14.0.27`
+* `@availity/breadcrumbs` updated to version `14.0.27`
+* `@availity/feedback` updated to version `14.0.27`
+* `@availity/payer-logo` updated to version `14.0.27`
+
+* feat(page-header)!: migrate to ESM exports and vitest ([9347be2](https://github.com/Availity/availity-react/commit/9347be269bf8be2b5b2ba2e881ae30f5f92cf5ce))
+
+
+### BREAKING CHANGES
+
+* Package now uses ESM exports field. CJS require() is no longer supported.
+
+
+
 ## [14.0.27](https://github.com/Availity/availity-react/compare/@availity/page-header@14.0.26...@availity/page-header@14.0.27) (2026-06-09)
 
 ### Dependency Updates
