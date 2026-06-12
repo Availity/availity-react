@@ -2,6 +2,18 @@
 
 This file was generated using [@jscutlery/semver](https://github.com/jscutlery/semver).
 
+# [1.0.0](https://github.com/Availity/availity-react/compare/@availity/app-tiles@0.2.8...@availity/app-tiles@1.0.0) (2026-06-12)
+
+
+* feat(app-tiles)!: migrate to ESM exports and vitest ([04340c0](https://github.com/Availity/availity-react/commit/04340c009b1100b89fc8b3ca27aa0fd62cb10315))
+
+
+### BREAKING CHANGES
+
+* Package now uses ESM exports field. CJS require() is no longer supported.
+
+
+
 ## [0.2.8](https://github.com/Availity/availity-react/compare/@availity/app-tiles@0.2.7...@availity/app-tiles@0.2.8) (2025-07-23)
 
 
