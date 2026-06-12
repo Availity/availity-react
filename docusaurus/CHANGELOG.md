@@ -2,6 +2,10 @@
 
 This file was generated using [@jscutlery/semver](https://github.com/jscutlery/semver).
 
+## [2.0.6](https://github.com/Availity/availity-react/compare/@availity/dinosaurdocs@2.0.5...@availity/dinosaurdocs@2.0.6) (2026-06-12)
+
+
+
 ## [2.0.5](https://github.com/Availity/availity-react/compare/@availity/dinosaurdocs@2.0.4...@availity/dinosaurdocs@2.0.5) (2026-06-09)
 
 
