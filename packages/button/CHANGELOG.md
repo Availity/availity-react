@@ -2,6 +2,18 @@
 
 This file was generated using [@jscutlery/semver](https://github.com/jscutlery/semver).
 
+# [2.0.0](https://github.com/Availity/availity-react/compare/@availity/button@1.6.7...@availity/button@2.0.0) (2026-06-12)
+
+
+* feat(button)!: migrate to ESM exports and vitest ([cacf563](https://github.com/Availity/availity-react/commit/cacf5631697c38036de0e9bbbe857c925dc573bc))
+
+
+### BREAKING CHANGES
+
+* Package now uses ESM exports field. CJS require() is no longer supported.
+
+
+
 ## [1.6.7](https://github.com/Availity/availity-react/compare/@availity/button@1.6.6...@availity/button@1.6.7) (2025-07-23)
 
 

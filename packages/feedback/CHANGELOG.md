@@ -2,6 +2,25 @@
 
 This file was generated using [@jscutlery/semver](https://github.com/jscutlery/semver).
 
+# [10.0.0](https://github.com/Availity/availity-react/compare/@availity/feedback@9.1.14...@availity/feedback@10.0.0) (2026-06-12)
+
+### Dependency Updates
+
+* `@availity/block-ui` updated to version `9.1.14`
+* `@availity/form` updated to version `9.1.14`
+* `@availity/hooks` updated to version `9.1.14`
+* `@availity/icon` updated to version `9.1.14`
+* `@availity/select` updated to version `9.1.14`
+
+* feat(feedback)!: migrate to ESM exports and vitest ([9141817](https://github.com/Availity/availity-react/commit/914181779586c92af88c70bac627b729e4a42c8c))
+
+
+### BREAKING CHANGES
+
+* Package now uses ESM exports field. CJS require() is no longer supported.
+
+
+
 ## [9.1.14](https://github.com/Availity/availity-react/compare/@availity/feedback@9.1.13...@availity/feedback@9.1.14) (2026-06-09)
 
 ### Dependency Updates

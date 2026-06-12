@@ -2,6 +2,18 @@
 
 This file was generated using [@jscutlery/semver](https://github.com/jscutlery/semver).
 
+# [2.0.0](https://github.com/Availity/availity-react/compare/@availity/training-link@1.8.6...@availity/training-link@2.0.0) (2026-06-12)
+
+
+* feat(training-link)!: migrate to ESM exports and vitest ([42ff61a](https://github.com/Availity/availity-react/commit/42ff61af8c021baf7b9e6ab33e5505c405ce0874))
+
+
+### BREAKING CHANGES
+
+* Package now uses ESM exports field. CJS require() is no longer supported.
+
+
+
 ## [1.8.6](https://github.com/Availity/availity-react/compare/@availity/training-link@1.8.5...@availity/training-link@1.8.6) (2025-07-23)
 
 

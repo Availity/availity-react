@@ -2,6 +2,27 @@
 
 This file was generated using [@jscutlery/semver](https://github.com/jscutlery/semver).
 
+# [9.0.0](https://github.com/Availity/availity-react/compare/@availity/spaces@8.1.5...@availity/spaces@9.0.0) (2026-06-12)
+
+### Dependency Updates
+
+* `@availity/favorites` updated to version `8.1.5`
+* `@availity/app-icon` updated to version `8.1.5`
+* `@availity/hooks` updated to version `8.1.5`
+* `@availity/icon` updated to version `8.1.5`
+* `@availity/link` updated to version `8.1.5`
+* `@availity/list-group-item` updated to version `8.1.5`
+* `@availity/typography` updated to version `8.1.5`
+
+* feat(spaces)!: migrate to ESM exports, vitest, and @tanstack/react-query v5 ([b94166d](https://github.com/Availity/availity-react/commit/b94166deed1df5a259d04ab64d2373a395e1f763))
+
+
+### BREAKING CHANGES
+
+* Package now uses ESM exports field and requires @tanstack/react-query ^5.
+
+
+
 ## [8.1.5](https://github.com/Availity/availity-react/compare/@availity/spaces@8.1.4...@availity/spaces@8.1.5) (2026-06-09)
 
 ### Dependency Updates

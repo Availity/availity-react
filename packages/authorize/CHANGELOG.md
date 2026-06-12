@@ -2,6 +2,19 @@
 
 This file was generated using [@jscutlery/semver](https://github.com/jscutlery/semver).
 
+# [6.0.0](https://github.com/Availity/availity-react/compare/@availity/authorize@5.0.6...@availity/authorize@6.0.0) (2026-06-12)
+
+
+* feat(authorize)!: migrate to ESM exports, vitest, and @tanstack/react-query v5 ([a24b615](https://github.com/Availity/availity-react/commit/a24b615cb063fffea8738a537d0efd4f91b2a1da))
+
+
+### BREAKING CHANGES
+
+* Package now uses ESM exports field and requires @tanstack/react-query ^5.
+The useQuery API now uses object syntax.
+
+
+
 ## [5.0.6](https://github.com/Availity/availity-react/compare/@availity/authorize@5.0.5...@availity/authorize@5.0.6) (2026-03-13)
 
 

@@ -2,6 +2,18 @@
 
 This file was generated using [@jscutlery/semver](https://github.com/jscutlery/semver).
 
+# [2.0.0](https://github.com/Availity/availity-react/compare/@availity/json-viewer@1.2.9...@availity/json-viewer@2.0.0) (2026-06-12)
+
+
+* feat(json-viewer)!: migrate to ESM exports and vitest ([dfb361a](https://github.com/Availity/availity-react/commit/dfb361ad3ba0311c9f7e8f832eb66d850ef6618b))
+
+
+### BREAKING CHANGES
+
+* Package now uses ESM exports field. CJS require() is no longer supported.
+
+
+
 ## [1.2.9](https://github.com/Availity/availity-react/compare/@availity/json-viewer@1.2.8...@availity/json-viewer@1.2.9) (2025-07-23)
 
 

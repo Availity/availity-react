@@ -2,6 +2,21 @@
 
 This file was generated using [@jscutlery/semver](https://github.com/jscutlery/semver).
 
+# [5.0.0](https://github.com/Availity/availity-react/compare/@availity/select@4.2.13...@availity/select@5.0.0) (2026-06-12)
+
+### Dependency Updates
+
+* `@availity/form` updated to version `4.2.13`
+
+* feat(select)!: migrate to ESM exports and vitest ([c449da9](https://github.com/Availity/availity-react/commit/c449da95e43f6da26554f50ca0dad3e7ca80c8f6))
+
+
+### BREAKING CHANGES
+
+* Package now uses ESM exports field. CJS require() is no longer supported.
+
+
+
 ## [4.2.13](https://github.com/Availity/availity-react/compare/@availity/select@4.2.12...@availity/select@4.2.13) (2026-03-13)
 
 

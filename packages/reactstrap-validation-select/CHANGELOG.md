@@ -2,6 +2,18 @@
 
 This file was generated using [@jscutlery/semver](https://github.com/jscutlery/semver).
 
+# [11.0.0](https://github.com/Availity/availity-react/compare/@availity/reactstrap-validation-select@10.0.12...@availity/reactstrap-validation-select@11.0.0) (2026-06-12)
+
+
+* feat(reactstrap-validation-select)!: migrate to ESM exports and vitest ([07aaf34](https://github.com/Availity/availity-react/commit/07aaf3499e1bc10d2949f2c863a3a5839599babe))
+
+
+### BREAKING CHANGES
+
+* Package now uses ESM exports field. CJS require() is no longer supported.
+
+
+
 ## [10.0.12](https://github.com/Availity/availity-react/compare/@availity/reactstrap-validation-select@10.0.11...@availity/reactstrap-validation-select@10.0.12) (2026-03-13)
 
 

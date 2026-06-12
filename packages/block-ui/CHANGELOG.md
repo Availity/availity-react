@@ -2,6 +2,18 @@
 
 This file was generated using [@jscutlery/semver](https://github.com/jscutlery/semver).
 
+# [2.0.0](https://github.com/Availity/availity-react/compare/@availity/block-ui@1.1.7...@availity/block-ui@2.0.0) (2026-06-12)
+
+
+* feat(block-ui)!: migrate to ESM exports and vitest ([bc53928](https://github.com/Availity/availity-react/commit/bc53928d2f93e7eeae9fc1a2af31a5362b24da17))
+
+
+### BREAKING CHANGES
+
+* Package now uses ESM exports field. CJS require() is no longer supported.
+
+
+
 ## [1.1.7](https://github.com/Availity/availity-react/compare/@availity/block-ui@1.1.6...@availity/block-ui@1.1.7) (2025-07-23)
 
 

@@ -2,6 +2,24 @@
 
 This file was generated using [@jscutlery/semver](https://github.com/jscutlery/semver).
 
+# [1.0.0](https://github.com/Availity/availity-react/compare/@availity/table@0.6.23...@availity/table@1.0.0) (2026-06-12)
+
+### Dependency Updates
+
+* `@availity/hooks` updated to version `0.6.23`
+* `@availity/icon` updated to version `0.6.23`
+* `@availity/mock` updated to version `0.6.23`
+* `@availity/pagination` updated to version `0.6.23`
+
+* feat(table)!: migrate to ESM exports and vitest ([0ce70b4](https://github.com/Availity/availity-react/commit/0ce70b4cd54a0fa3ef6a200c1a6e22e702a12834))
+
+
+### BREAKING CHANGES
+
+* Package now uses ESM exports field. CJS require() is no longer supported.
+
+
+
 ## [0.6.23](https://github.com/Availity/availity-react/compare/@availity/table@0.6.22...@availity/table@0.6.23) (2026-06-09)
 
 ### Dependency Updates

@@ -2,6 +2,23 @@
 
 This file was generated using [@jscutlery/semver](https://github.com/jscutlery/semver).
 
+# [3.0.0](https://github.com/Availity/availity-react/compare/@availity/pagination@2.17.22...@availity/pagination@3.0.0) (2026-06-12)
+
+### Dependency Updates
+
+* `@availity/hooks` updated to version `2.17.22`
+* `@availity/block-ui` updated to version `2.17.22`
+* `@availity/mock` updated to version `2.17.22`
+
+* feat(pagination)!: migrate to ESM exports and vitest ([95544e1](https://github.com/Availity/availity-react/commit/95544e1f0ca133c2ccf59aa137f581226e5d57b7))
+
+
+### BREAKING CHANGES
+
+* Package now uses ESM exports field. CJS require() is no longer supported.
+
+
+
 ## [2.17.22](https://github.com/Availity/availity-react/compare/@availity/pagination@2.17.21...@availity/pagination@2.17.22) (2026-06-09)
 
 ### Dependency Updates

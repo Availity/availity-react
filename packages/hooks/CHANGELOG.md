@@ -2,6 +2,19 @@
 
 This file was generated using [@jscutlery/semver](https://github.com/jscutlery/semver).
 
+# [6.0.0](https://github.com/Availity/availity-react/compare/@availity/hooks@5.2.0...@availity/hooks@6.0.0) (2026-06-12)
+
+
+* feat(hooks)!: migrate to ESM exports, vitest, and @tanstack/react-query v5 ([bab37b2](https://github.com/Availity/availity-react/commit/bab37b24f60ec88f7ade5bb23510053dae03ca38))
+
+
+### BREAKING CHANGES
+
+* Package now uses ESM exports field and requires @tanstack/react-query ^5.
+The useQuery API now uses object syntax. Status 'loading' is renamed to 'pending'.
+
+
+
 # [5.2.0](https://github.com/Availity/availity-react/compare/@availity/hooks@5.1.11...@availity/hooks@5.2.0) (2026-06-09)
 
 

@@ -2,6 +2,21 @@
 
 This file was generated using [@jscutlery/semver](https://github.com/jscutlery/semver).
 
+# [3.0.0](https://github.com/Availity/availity-react/compare/@availity/avatar@2.0.8...@availity/avatar@3.0.0) (2026-06-12)
+
+### Dependency Updates
+
+* `@availity/hooks` updated to version `2.0.8`
+
+* feat(avatar)!: migrate to ESM exports and vitest ([a673a7e](https://github.com/Availity/availity-react/commit/a673a7e69a287e37341ed2751590c56d60134306))
+
+
+### BREAKING CHANGES
+
+* Package now uses ESM exports field. CJS require() is no longer supported.
+
+
+
 ## [2.0.8](https://github.com/Availity/availity-react/compare/@availity/avatar@2.0.7...@availity/avatar@2.0.8) (2026-06-09)
 
 ### Dependency Updates

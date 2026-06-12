@@ -2,6 +2,18 @@
 
 This file was generated using [@jscutlery/semver](https://github.com/jscutlery/semver).
 
+# [5.0.0](https://github.com/Availity/availity-react/compare/@availity/reactstrap-validation-date@4.5.8...@availity/reactstrap-validation-date@5.0.0) (2026-06-12)
+
+
+* feat(reactstrap-validation-date)!: migrate to ESM exports and vitest ([a26f2ef](https://github.com/Availity/availity-react/commit/a26f2ef6938503a74b9d416f740f690aacd95b2c))
+
+
+### BREAKING CHANGES
+
+* Package now uses ESM exports field. CJS require() is no longer supported.
+
+
+
 ## [4.5.8](https://github.com/Availity/availity-react/compare/@availity/reactstrap-validation-date@4.5.7...@availity/reactstrap-validation-date@4.5.8) (2026-03-05)
 
 

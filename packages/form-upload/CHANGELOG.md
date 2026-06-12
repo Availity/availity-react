@@ -2,6 +2,25 @@
 
 This file was generated using [@jscutlery/semver](https://github.com/jscutlery/semver).
 
+# [3.0.0](https://github.com/Availity/availity-react/compare/@availity/form-upload@2.2.5...@availity/form-upload@3.0.0) (2026-06-12)
+
+### Dependency Updates
+
+* `@availity/form` updated to version `2.2.5`
+* `@availity/icon` updated to version `2.2.5`
+* `@availity/progress` updated to version `2.2.5`
+* `@availity/hooks` updated to version `2.2.5`
+* `@availity/mock` updated to version `2.2.5`
+
+* feat(form-upload)!: migrate to ESM exports and vitest ([6f4c8e5](https://github.com/Availity/availity-react/commit/6f4c8e53bd763334cd80d275a5757b091380c5bc))
+
+
+### BREAKING CHANGES
+
+* Package now uses ESM exports field. CJS require() is no longer supported.
+
+
+
 ## [2.2.5](https://github.com/Availity/availity-react/compare/@availity/form-upload@2.2.4...@availity/form-upload@2.2.5) (2026-03-13)
 
 

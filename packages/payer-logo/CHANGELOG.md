@@ -2,6 +2,18 @@
 
 This file was generated using [@jscutlery/semver](https://github.com/jscutlery/semver).
 
+# [8.0.0](https://github.com/Availity/availity-react/compare/@availity/payer-logo@7.0.12...@availity/payer-logo@8.0.0) (2026-06-12)
+
+
+* feat(payer-logo)!: migrate to ESM exports and vitest ([a57e867](https://github.com/Availity/availity-react/commit/a57e8672f27ebf77199c2b14f9df76fc291ebf12))
+
+
+### BREAKING CHANGES
+
+* Package now uses ESM exports field. CJS require() is no longer supported.
+
+
+
 ## [7.0.12](https://github.com/Availity/availity-react/compare/@availity/payer-logo@7.0.11...@availity/payer-logo@7.0.12) (2026-03-13)
 
 
