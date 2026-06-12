@@ -2,6 +2,18 @@
 
 This file was generated using [@jscutlery/semver](https://github.com/jscutlery/semver).
 
+# [2.0.0](https://github.com/Availity/availity-react/compare/@availity/typography@1.6.9...@availity/typography@2.0.0) (2026-06-12)
+
+
+* feat(typography)!: migrate to ESM exports and vitest ([fc08cdd](https://github.com/Availity/availity-react/commit/fc08cdd0bfa586a80372e3cc734e55062fb99b9e))
+
+
+### BREAKING CHANGES
+
+* Package now uses ESM exports field. CJS require() is no longer supported.
+
+
+
 ## [1.6.9](https://github.com/Availity/availity-react/compare/@availity/typography@1.6.8...@availity/typography@1.6.9) (2025-07-23)
 
 
