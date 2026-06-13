@@ -462,7 +462,16 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@availity/block-ui@npm:^1.0.0, @availity/block-ui@workspace:^, @availity/block-ui@workspace:packages/block-ui":
+"@availity/block-ui@npm:^1.0.0":
+  version: 1.1.7
+  resolution: "@availity/block-ui@npm:1.1.7"
+  peerDependencies:
+    react: ^18.0.0
+  checksum: 10/848db6c0b9daf69b754472ec0c25792262eb739e5b88d5688a661529a49129fd5837714406f8767223bdbba7c15b535540509e08aa5904a89f9570a518bc72d0
+  languageName: node
+  linkType: hard
+
+"@availity/block-ui@workspace:^, @availity/block-ui@workspace:packages/block-ui":
   version: 0.0.0-use.local
   resolution: "@availity/block-ui@workspace:packages/block-ui"
   dependencies:
@@ -15246,15 +15255,15 @@ __metadata:
   linkType: hard
 
 "joi@npm:^17.9.2":
-  version: 17.13.3
-  resolution: "joi@npm:17.13.3"
+  version: 17.13.4
+  resolution: "joi@npm:17.13.4"
   dependencies:
     "@hapi/hoek": "npm:^9.3.0"
     "@hapi/topo": "npm:^5.1.0"
     "@sideway/address": "npm:^4.1.5"
     "@sideway/formula": "npm:^3.0.1"
     "@sideway/pinpoint": "npm:^2.0.0"
-  checksum: 10/4c150db0c820c3a52f4a55c82c1fc5e144a5b5f4da9ffebc7339a15469d1a447ebb427ced446efcb9709ab56bd71a06c4c67c9381bc1b9f9ae63fc7c89209bdf
+  checksum: 10/0e407d4cc6cb0830b93c2d107f8b85113338473296025c31a931589359b58883e61fd183dd7532d3ab1ee014a01a20830a8fca90d9f0217d0c0894ee2cbf9ff5
   languageName: node
   linkType: hard
 
