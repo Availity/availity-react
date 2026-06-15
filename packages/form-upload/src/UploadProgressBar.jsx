@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import PropTypes from 'prop-types';
 import Progress from '@availity/progress';
 import { Button, Modal, ModalHeader, ModalBody, ModalFooter, Label, Input } from 'reactstrap';
@@ -8,23 +8,46 @@ const UploadProgressBar = ({ upload, ...rest }) => {
   const [password, setPassword] = useState('');
   const [error, setError] = useState(null);
   const [modalOpen, setModalOpen] = useState(false);
+  const mountedRef = useRef(true);
 
-  const onProgress = () => {
-    setStatePercentage(upload.percentage);
-    setError(false);
-    if (rest.onProgress) rest.onProgress(upload);
-  };
+  useEffect(() => {
+    mountedRef.current = true;
 
-  const onError = () => {
-    setError(true);
-    if (rest.onError) rest.onError(upload);
-  };
+    const onProgress = () => {
+      if (!mountedRef.current) return;
+      setStatePercentage(upload.percentage);
+      setError(false);
+      if (rest.onProgress) rest.onProgress(upload);
+    };
 
-  const onSuccess = () => {
-    setStatePercentage(100);
-    setError(false);
-    if (rest.onSuccess) rest.onSuccess(upload);
-  };
+    const onError = () => {
+      if (!mountedRef.current) return;
+      setError(true);
+      if (rest.onError) rest.onError(upload);
+    };
+
+    const onSuccess = () => {
+      if (!mountedRef.current) return;
+      setStatePercentage(100);
+      setError(false);
+      if (rest.onSuccess) rest.onSuccess(upload);
+    };
+
+    upload.onProgress.push(onProgress);
+    upload.onSuccess.push(onSuccess);
+    upload.onError.push(onError);
+
+    return () => {
+      mountedRef.current = false;
+      const progressIdx = upload.onProgress.indexOf(onProgress);
+      if (progressIdx > -1) upload.onProgress.splice(progressIdx, 1);
+      const successIdx = upload.onSuccess.indexOf(onSuccess);
+      if (successIdx > -1) upload.onSuccess.splice(successIdx, 1);
+      const errorIdx = upload.onError.indexOf(onError);
+      if (errorIdx > -1) upload.onError.splice(errorIdx, 1);
+    };
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [upload]);
 
   const toggleModal = () => {
     setModalOpen(!modalOpen);
@@ -41,10 +64,6 @@ const UploadProgressBar = ({ upload, ...rest }) => {
   const handlePasswordChange = (event) => {
     setPassword(event.target.value);
   };
-
-  upload.onProgress.push(onProgress);
-  upload.onSuccess.push(onSuccess);
-  upload.onError.push(onError);
 
   return upload.errorMessage ? (
     <>
