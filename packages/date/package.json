@@ -61,6 +61,7 @@
       "types": "./dist/index.d.ts",
       "import": "./dist/index.js"
     },
+    "./styles.scss": "./styles.scss",
     "./package.json": "./package.json"
   }
 }
