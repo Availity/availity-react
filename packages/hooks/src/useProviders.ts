@@ -1,36 +1,8 @@
 import { useQuery, UseQueryOptions, UseQueryResult } from '@tanstack/react-query';
-import { avProvidersApi } from '@availity/api-axios';
-import { AriesHookBase } from './types';
+import { avProvidersApi, ProvidersResponse as ApiProvidersResponse } from '@availity/api-axios';
 
-export interface ProvidersResponse extends AriesHookBase {
-  data: AriesHookBase['data'] & {
-    providers: {
-      id: string;
-      lastName: string;
-      firstName: string;
-      middleName: string;
-      uiDisplayName: string;
-      atypical: boolean;
-      npi: string;
-      customerIds: string[];
-      roles: { code: string; value: string }[];
-      primarySpecialty: { code: string; value: string };
-      primaryFax: {
-        internationalCellularCode: string;
-        areaCode: string;
-        phoneNumber: string;
-      };
-      primaryAddress: {
-        line1: string;
-        line2: string;
-        city: string;
-        state: string;
-        stateCode: string;
-        zip: { code: string; addon: string };
-      };
-    }[];
-  };
-}
+/** @deprecated Use `ProvidersResponse` from `@availity/api-axios` instead */
+export type ProvidersResponse = ApiProvidersResponse;
 
 export interface AvProvidersConfig {
   customerId: string;

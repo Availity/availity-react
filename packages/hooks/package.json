@@ -27,8 +27,8 @@
     "clean": "rm -rf dist"
   },
   "devDependencies": {
-    "@availity/api-axios": "^13.1.0",
-    "@availity/message-core": "^9.1.0",
+    "@availity/api-axios": "^13.2.0",
+    "@availity/message-core": "^9.2.0",
     "@tanstack/react-query": "^5.75.5",
     "axios": "^1.17.0",
     "react": "^18.3.1",
