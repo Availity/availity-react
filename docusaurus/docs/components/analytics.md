@@ -88,9 +88,13 @@ const App = () => (
 
 ## Props
 
-### `plugins?: AnalyticsPlugin | AnalyticsPlugin[]`
+### `children: ReactNode`
 
-A plugin or array of plugins to pass to the underlying AvAnalytics class instance. [Read more about analytics plugins](https://availity.github.io/sdk-js/resources/analytics/#plugins).
+**Required.** The child components to render inside the analytics provider.
+
+### `plugins?: AnalyticsPlugin[]`
+
+Array of plugins to pass to the underlying AvAnalytics class instance. [Read more about analytics plugins](https://availity.github.io/sdk-js/resources/analytics/#plugins).
 
 ### `pageTracking?: boolean`
 
@@ -129,3 +133,10 @@ const Example = () => {
   );
 };
 ```
+
+## Additional Exports
+
+The package also exports the following for advanced use cases:
+
+- **`AnalyticsContext`** — The React context used by the provider, useful for testing or custom wrappers.
+- **Types**: `AnalyticsProps`, `AnalyticsPlugin`, `AnalyticsEvent`, `AnalyticsContextValue`, `TrackEventOptions`

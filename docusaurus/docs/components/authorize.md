@@ -77,6 +77,10 @@ Content rendered when the user _does_ have the required permissions.
 
 Inverts authorization logic. Authorized users see `unauthorized` content and vice versa.
 
+#### `queryOptions?: UseQueryOptions`
+
+Options passed to the underlying `useQuery` hook from `@tanstack/react-query`. Allows customizing caching, refetching, and other query behaviors.
+
 ## useAuthorize Hook
 
 Hook that checks permissions and returns the authorization state.
@@ -86,9 +90,11 @@ import React from 'react';
 import { useAuthorize } from '@availity/authorize';
 
 const Component = () => {
-  const { authorized, isLoading } = useAuthorize(['1234', '5678'], {
-    region: 'FL',
-  });
+  const { authorized, isLoading } = useAuthorize(
+    ['1234', '5678'],
+    { region: 'FL' },
+    { enabled: true }
+  );
 
   if (isLoading) return <p>Loading...</p>;
   return authorized ? <p>Authorized</p> : <p>Not authorized</p>;
@@ -98,11 +104,12 @@ const Component = () => {
 ### Parameters
 
 - **`permissions`**: `(string | string[])[]` — Required. Same logic as the component prop.
-- **`options`**: Object — Optional.
+- **`parameters`**: Object — Optional. Default: `{}`.
   - **`organizationId`**: `string` — Validate against an organization.
   - **`customerId`**: `string` — Validate against a customer.
   - **`region`**: `string | boolean` — Validate against a region. **Default:** `true`.
   - **`resources`**: `(string | string[])[]` — Validate against resources.
+- **`queryOptions`**: `UseQueryOptions` — Optional. Options passed to the underlying `useQuery` hook (e.g., `enabled`, `retry`, `staleTime`).
 
 ### Return Value
 
