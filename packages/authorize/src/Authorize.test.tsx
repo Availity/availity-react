@@ -1,23 +1,14 @@
 import React from 'react';
 import { render, screen, waitFor } from '@testing-library/react';
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
-import { server } from '@availity/mock/src/server';
 import Authorize from './Authorize';
 
 describe('Authorize', () => {
   const queryClient = new QueryClient();
 
-  // start msw server
-  beforeAll(() => server.listen());
-
-  // clear cache and reset msw handlers
   afterEach(() => {
     queryClient.clear();
-    server.resetHandlers();
   });
-
-  // terminate the server
-  afterAll(() => server.close());
 
   test('should render authorized content', async () => {
     render(

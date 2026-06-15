@@ -176,10 +176,12 @@ describe('Tree', () => {
     const treeElement = await waitFor(() => screen.getByTestId('tree-view-parent'));
     expect(treeElement).not.toBeNull();
 
+    // eslint-disable-next-line unicorn/consistent-compound-words
     const treeItemCheckBoxSelected = await waitFor(() => screen.getByTestId('chk-tree-view-item-select-7'));
     expect(treeItemCheckBoxSelected).not.toBeNull();
     expect(treeItemCheckBoxSelected).toBeChecked();
 
+    // eslint-disable-next-line unicorn/consistent-compound-words
     const treeItemCheckBoxNotSelected = await waitFor(() => screen.getByTestId('chk-tree-view-item-select-1'));
     expect(treeItemCheckBoxNotSelected).not.toBeNull();
     expect(treeItemCheckBoxNotSelected).not.toBeChecked();

@@ -13,7 +13,7 @@ describe('CheckboxGroup', () => {
           hello: [],
         }}
         onSubmit={vi.fn()}
-        // eslint-disable-next-line no-undef
+         
         validationSchema={yup.object().shape({
           hello: yup.array().required('At least one checkbox is required'),
         })}
@@ -104,7 +104,7 @@ describe('CheckboxGroup', () => {
         initialValues={{
           hello: [],
         }}
-        // eslint-disable-next-line no-undef
+         
         onSubmit={onSubmit}
         validationSchema={yup.object().shape({
           hello: yup.array().required('At least one checkbox is required'),
@@ -142,7 +142,7 @@ describe('CheckboxGroup', () => {
         initialValues={{
           hello: ['uno', 'dos'],
         }}
-        // eslint-disable-next-line no-undef
+         
         onSubmit={onSubmit}
         validationSchema={yup.object().shape({
           hello: yup.array(),

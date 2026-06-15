@@ -4,8 +4,7 @@ import { useEffectAsync } from '../src/index';
 
 afterEach(cleanup);
 
-// eslint-disable-next-line react/prop-types
-const Component = ({ asyncFunc }) => {
+const Component = ({ asyncFunc }: { asyncFunc: () => Promise<string> }) => {
   const [state, setState] = useState('Hello');
 
   useEffectAsync(async () => {
@@ -20,17 +19,12 @@ const asyncFunc = () => Promise.resolve('World');
 
 describe('useEffectAsync', () => {
   test('should render "Hello" then "World"', async () => {
-    // Create Async Method
-    // Render
     const { getByTestId } = render(<Component asyncFunc={asyncFunc} />);
 
-    // Expect the component to render "Hello"
     expect(getByTestId('effect-test').textContent).toEqual('Hello');
 
-    // Wait for the Async Function to be called after mounting
     await waitFor(() => getByTestId('effect-test'));
 
-    // Expect the component to render "World"
     expect(getByTestId('effect-test').textContent).toEqual('World');
   });
 });

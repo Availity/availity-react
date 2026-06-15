@@ -8,11 +8,11 @@ export type Favorite = {
   pos: number;
 };
 
-/* eslint-disable-next-line @typescript-eslint/no-explicit-any, @typescript-eslint/explicit-module-boundary-types */
+/* eslint-disable-next-line @typescript-eslint/no-explicit-any */
 export const isFavorite = (arg: any): arg is Favorite =>
   Boolean(typeof arg?.id === 'string' && typeof arg?.pos === 'number');
 
-/* eslint-disable-next-line @typescript-eslint/no-explicit-any, @typescript-eslint/explicit-module-boundary-types */
+/* eslint-disable-next-line @typescript-eslint/no-explicit-any */
 export const validateFavorites = (unvalidatedFavorites: any): Favorite[] => {
   const validatedFavorites = Array.isArray(unvalidatedFavorites) ? unvalidatedFavorites?.filter(isFavorite) : [];
   return validatedFavorites;
@@ -45,7 +45,7 @@ type MutationOptions = {
 };
 
 // I'll give you a dollar if you can type this return type for me 💵
-// eslint-disable-next-line @typescript-eslint/explicit-module-boundary-types
+ 
 export const useSubmitFavorites = ({ onMutationStart }: MutationOptions, applicationId: string) => {
   const queryClient = useQueryClient();
   const { mutateAsync: submitFavorites, ...rest } = useMutation({

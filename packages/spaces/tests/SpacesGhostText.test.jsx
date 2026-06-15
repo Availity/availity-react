@@ -1,3 +1,4 @@
+/* eslint-disable vitest/expect-expect */
 import React from 'react';
 import { render, waitFor, cleanup } from '@testing-library/react';
 import { avWebQLApi } from '@availity/api-axios';

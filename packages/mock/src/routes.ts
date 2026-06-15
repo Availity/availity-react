@@ -20,6 +20,8 @@ export const USER = '/api/sdk/platform/v1/users/me';
 export const USERS = '/api/sdk/platform/v1/users';
 
 // Aries 2
+export const USER_A2 = '/cloud/web/appl/user-management/legacy/sdk/platform/v1/users/me';
+export const STASH = '/cloud/web/appl/stash/v1/session/data/:sessionId';
 export const USER_PERMISSIONS = '/cloud/web/appl/feature-management/legacy/v1/user-permissions';
 export const LOG_A2 = '/ms/api/availity/internal/spc/analytics/log';
 export const FILE_UPLOAD_DELIVERY = '/ms/api/availity/internal/platform/file-upload-delivery/v1/batch/deliveries';

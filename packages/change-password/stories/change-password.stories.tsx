@@ -55,6 +55,7 @@ export const _Default: StoryObj<typeof ChangePassword> = {
       confirmNewPassword: yup
         .string()
         .test('passMatches', 'Passwords do not match', function (value) {
+          // eslint-disable-next-line unicorn/no-this-outside-of-class
           const { resolve } = this;
           const password = resolve(yup.ref('newPassword'));
           const passwordsMatch = password === value; // true when confirmNewPassword === password

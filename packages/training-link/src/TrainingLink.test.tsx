@@ -5,27 +5,27 @@ import TrainingLink from './TrainingLink';
 
 describe('TrainingLink', () => {
   test('should render a link with correct href', () => {
-    const { getByRole } = render(<TrainingLink link="http://catvidoes.com" name="Appeals" />);
+    const { getByRole } = render(<TrainingLink link="https://catvidoes.com" name="Appeals" />);
 
     const link = getByRole('link');
 
-    expect(link.getAttribute('href')).toBe('http://catvidoes.com');
+    expect(link.getAttribute('href')).toBe('https://catvidoes.com');
   });
 
   test('should render with name', () => {
-    const { container } = render(<TrainingLink link="http://catvidoes.com" name="Appeals" />);
+    const { container } = render(<TrainingLink link="https://catvidoes.com" name="Appeals" />);
 
     expect(container).toHaveTextContent('Need Help? Watch a demo (opens in a new tab) for Appeals');
   });
 
   test('should render without name', () => {
-    const { container } = render(<TrainingLink link="http://catvidoes.com" />);
+    const { container } = render(<TrainingLink link="https://catvidoes.com" />);
 
     expect(container).toHaveTextContent('Need Help? Learn More');
   });
 
   test('should render link with proper styling', () => {
-    const { getByRole } = render(<TrainingLink link="http://catvidoes.com" name="Appeals" />);
+    const { getByRole } = render(<TrainingLink link="https://catvidoes.com" name="Appeals" />);
 
     const link = getByRole('link');
 

@@ -118,7 +118,7 @@ function Pagination<TItem>({
     if (onError && error) onError(error);
   }, [error, onError]);
 
-  // eslint-disable-next-line unicorn/consistent-function-scoping
+   
   const getPageData = async () => {
     try {
       toggleLoading(true);
@@ -138,7 +138,7 @@ function Pagination<TItem>({
       // todo - add prop if needed to handle this
       const page = isFunction(theItems) ? items : items.slice(lower - 1, upper);
 
-      // eslint-disable-next-line unicorn/explicit-length-check
+       
       const total = totalCount || items.length;
       const pageCount = Math.ceil(total / itemsPerPage);
 
@@ -204,7 +204,7 @@ function Pagination<TItem>({
           getPageData();
         }
       }
-      // eslint-disable-next-line react-hooks/exhaustive-deps
+       
     },
     debounceTimeout,
     [...resetParams]

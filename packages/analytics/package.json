@@ -27,7 +27,7 @@
     "publish:canary": "yarn npm publish --access public --tag canary"
   },
   "dependencies": {
-    "@availity/analytics-core": "^7.0.2",
+    "@availity/analytics-core": "^7.1.0",
     "prop-types": "^15.8.1"
   },
   "devDependencies": {
@@ -41,13 +41,13 @@
   "publishConfig": {
     "access": "public"
   },
+  "main": "./dist/index.js",
   "exports": {
     ".": {
       "source": "./src/index.ts",
-      "import": {
-        "types": "./dist/index.d.ts",
-        "default": "./dist/index.js"
-      }
-    }
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.js"
+    },
+    "./package.json": "./package.json"
   }
 }

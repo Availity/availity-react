@@ -28,15 +28,12 @@
     "lint": {
       "executor": "@nx/eslint:lint",
       "options": {
-        "eslintConfig": ".eslintrc.yaml",
         "silent": false,
         "fix": false,
         "cache": true,
         "cacheLocation": "./node_modules/.cache/upload/.eslintcache",
         "maxWarnings": -1,
         "quiet": false,
-        "noEslintrc": false,
-        "hasTypeAwareRules": true,
         "cacheStrategy": "metadata"
       }
     },

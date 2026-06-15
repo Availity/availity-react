@@ -31,20 +31,8 @@ jobs:
         uses: actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020 # v4.4.0
         with:
           node-version: 24
-
-      - name: Get yarn cache directory path
-        id: yarn-cache-dir-path
-        run: |
-          echo "dir=$(yarn config get cacheFolder)" >> $GITHUB_OUTPUT
-
-      - name: Restore yarn cache
-        uses: actions/cache@0057852bfaa89a56745cba8c7296529d2fc39830 # v4.3.0
-        id: yarn-cache
-        with:
-          path: ${{ steps.yarn-cache-dir-path.outputs.dir }}
-          key: ${{ runner.os }}-yarn-${{ hashFiles('**/yarn.lock') }}
-          restore-keys: |
-            ${{ runner.os }}-yarn-
+          cache: 'yarn'
+          cache-dependency-path: 'yarn.lock'
 
       # - name: Artifactory Check
       #   run: yarn check:registry
@@ -87,9 +75,6 @@ jobs:
           node-version: 24
           cache: 'yarn'
           cache-dependency-path: 'yarn.lock'
-
-      - name: Install latest npm
-        run: npm install -g npm@latest
 
       - name: Install Dependencies
         run: yarn install --immutable

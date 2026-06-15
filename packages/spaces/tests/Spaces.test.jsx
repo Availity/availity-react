@@ -1,5 +1,6 @@
 /* eslint-disable no-console */
 /* eslint-disable react/prop-types */
+/* eslint-disable vitest/expect-expect */
 import React, { useState } from 'react';
 import { render, waitFor, fireEvent } from '@testing-library/react';
 import { avWebQLApi } from '@availity/api-axios';

@@ -1,7 +1,6 @@
 import { act } from 'react';
 import { screen, render, fireEvent, waitFor } from '@testing-library/react';
 import { Form } from '@availity/form';
-import { server } from '@availity/mock/src/server';
 import type UploadCore from '@availity/upload-core';
 
 import Upload from '../src';
@@ -13,14 +12,6 @@ const initialValues = { upload: null };
 const defaultUploadProps = { name: 'upload', clientId: 'a', bucketId: 'b', customerId: 'c' };
 
 describe('Upload', () => {
-  // start msw server
-  beforeAll(() => server.listen());
-
-  // clear cache and reset msw handlers
-  afterEach(() => server.resetHandlers());
-
-  // terminate the server
-  afterAll(() => server.close());
   // beforeEach(() => {
   //   // This is useful to isolate specific modules for every test so that local module state doesn't conflict between tests.
   //   // Makes lazy loading react-dropzone consistent instead of relying on only one test to set it up
@@ -462,14 +453,6 @@ describe('Upload', () => {
   });
 
   describe('dropzone', () => {
-    // start msw server
-    beforeAll(() => server.listen());
-
-    // clear cache and reset msw handlers
-    afterEach(() => server.resetHandlers());
-
-    // terminate the server
-    afterAll(() => server.close());
 
     test('lazy loads dropzone', async () => {
       render(
@@ -490,7 +473,7 @@ describe('Upload', () => {
       expect(inputNode).toBeDefined();
     });
 
-    // eslint-disable-next-line jest/no-commented-out-tests
+    // eslint-disable-next-line vitest/no-commented-out-tests
     // test('accepts user fallback prop while lazy loading', async () => {
     //   // const { getByTestId } = renderUpload(
     //   //   { initialValues: { upload: null } },

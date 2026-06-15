@@ -88,14 +88,14 @@ describe('updateTopApps', () => {
   });
   describe('updateUrl', () => {
     it('should parse the given url return the existing and new params in alphabetical order', () => {
-      let updatedUrl = updateUrl('http://www.example.com?foo=bar#hashme', 'fakeKey', 'fakeValue');
-      expect(updatedUrl).toBe('http://www.example.com?fakeKey=fakeValue&foo=bar%23hashme');
+      let updatedUrl = updateUrl('https://www.example.com?foo=bar#hashme', 'fakeKey', 'fakeValue');
+      expect(updatedUrl).toBe('https://www.example.com?fakeKey=fakeValue&foo=bar%23hashme');
 
-      updatedUrl = updateUrl('http://www.example.com', 'fakeKey', 'fakeValue');
-      expect(updatedUrl).toBe('http://www.example.com?fakeKey=fakeValue');
+      updatedUrl = updateUrl('https://www.example.com', 'fakeKey', 'fakeValue');
+      expect(updatedUrl).toBe('https://www.example.com?fakeKey=fakeValue');
 
-      updatedUrl = updateUrl('http://www.example.com?foo=bar', 'fakeKey', 'fakeValue');
-      expect(updatedUrl).toBe('http://www.example.com?fakeKey=fakeValue&foo=bar');
+      updatedUrl = updateUrl('https://www.example.com?foo=bar', 'fakeKey', 'fakeValue');
+      expect(updatedUrl).toBe('https://www.example.com?fakeKey=fakeValue&foo=bar');
     });
   });
 });

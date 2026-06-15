@@ -4,9 +4,8 @@ import { useMount } from '../src/index';
 
 afterEach(cleanup);
 
-// eslint-disable-next-line react/prop-types
 const Component = () => {
-  const [state, setState] = useState();
+  const [state, setState] = useState<string | undefined>();
 
   useMount(() => {
     setState('test');

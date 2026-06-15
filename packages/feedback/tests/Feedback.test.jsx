@@ -19,7 +19,7 @@ describe('Feedback', () => {
 
     fireEvent.click(getByText('Give Feedback'));
 
-    // eslint-disable-next-line unicorn/prefer-query-selector
+     
     expect(getByTestId('feedback-form')).toBeDefined();
   });
 
@@ -28,7 +28,7 @@ describe('Feedback', () => {
 
     fireEvent.click(getByText('Give Feedback'));
 
-    // eslint-disable-next-line unicorn/prefer-query-selector
+     
     expect(getByTestId('feedbackModal')).toBeDefined();
   });
 
@@ -39,7 +39,7 @@ describe('Feedback', () => {
 
     fireEvent.click(getByText('Give Feedback'));
 
-    // eslint-disable-next-line unicorn/prefer-query-selector
+     
     expect(getByTestId('feedback-form')).toBeDefined();
 
     fireEvent.keyDown(getByText('Close'), {
@@ -67,7 +67,7 @@ describe('Feedback', () => {
 
     fireEvent.click(getByText('Give Feedback'));
 
-    // eslint-disable-next-line unicorn/prefer-query-selector
+     
     expect(getByTestId('feedbackModal')).toBeDefined();
 
     fireEvent.click(getByText('Close'));
@@ -86,7 +86,7 @@ describe('Feedback', () => {
 
     fireEvent.click(giveFeedbackButton);
 
-    // eslint-disable-next-line unicorn/prefer-query-selector
+     
     expect(getByTestId('feedback-form')).toBeDefined();
     expect(giveFeedbackButton).toHaveAttribute('aria-expanded', 'true');
 
@@ -102,7 +102,7 @@ describe('Feedback', () => {
 
     fireEvent.click(getByText('Give Feedback'));
 
-    // eslint-disable-next-line unicorn/prefer-query-selector
+     
     expect(getByTestId('feedback-form')).toBeDefined();
 
     fireEvent.keyDown(getByText('Smiley face'), {
@@ -122,7 +122,7 @@ describe('Feedback', () => {
 
     fireEvent.click(getByText('Give Feedback'));
 
-    // eslint-disable-next-line unicorn/prefer-query-selector
+     
     expect(getByTestId('feedback-form')).toBeDefined();
 
     fireEvent.keyDown(getByText('Smiley face'), {
@@ -143,7 +143,7 @@ describe('Feedback', () => {
 
     fireEvent.click(getByText('Give Feedback'));
 
-    // eslint-disable-next-line unicorn/prefer-query-selector
+     
     expect(getByTestId('feedback-form')).toBeDefined();
 
     fireEvent.keyDown(getByText('Close'), {
@@ -163,7 +163,7 @@ describe('Feedback', () => {
 
     fireEvent.click(getByText('Give Feedback'));
 
-    // eslint-disable-next-line unicorn/prefer-query-selector
+     
     expect(getByTestId('feedback-form')).toBeDefined();
 
     fireEvent.click(getByText('Smiley face'));
@@ -185,7 +185,7 @@ describe('Feedback', () => {
 
     fireEvent.click(getByText('Give Feedback'));
 
-    // eslint-disable-next-line unicorn/prefer-query-selector
+     
     expect(getByTestId('feedback-form')).toBeDefined();
 
     fireEvent.click(getByText('Smiley face'));

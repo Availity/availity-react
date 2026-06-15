@@ -8,7 +8,7 @@ describe('Feedback', () => {
   test('should render an icon', () => {
     const { getByTestId } = render(<FeedbackButton icon="home" />);
 
-    // eslint-disable-next-line unicorn/prefer-query-selector
+     
     expect(getByTestId('feedback-icon').className).toContain('icon-home');
   });
 

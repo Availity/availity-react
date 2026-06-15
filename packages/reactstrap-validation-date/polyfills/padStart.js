@@ -1,3 +1,4 @@
+/* eslint-disable unicorn/no-this-outside-of-class */
 // PolyFill For React Date
 if (!String.prototype.padStart) {
   // eslint-disable-next-line no-extend-native

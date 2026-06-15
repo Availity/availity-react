@@ -4,7 +4,7 @@ import classNames from 'classnames';
 const pointerStyles = { cursor: 'pointer' };
 
 export type IconProps = {
-  /** The name of the icon.  <a href={http://availity.github.io/availity-uikit/v3/icons}>Icon List</a>  */
+  /** The name of the icon.  <a href={https://availity.github.io/availity-uikit/v3/icons}>Icon List</a>  */
   name: string;
   /** The text color of the icon. Uses Availity UI Kit variants. */
   color?: string;

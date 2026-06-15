@@ -31,7 +31,7 @@
     "prop-types": "^15.8.1"
   },
   "devDependencies": {
-    "@availity/upload-core": "^9.0.2",
+    "@availity/upload-core": "^9.1.0",
     "react": "^18.3.1",
     "react-dom": "^18.3.1",
     "react-dropzone": "^11.7.1",
@@ -39,7 +39,7 @@
     "tsup": "^8.5.1"
   },
   "peerDependencies": {
-    "@availity/upload-core": "^8.1.1",
+    "@availity/upload-core": "^8.1.1 || ^9.0.0",
     "react": "^18.0.0",
     "react-dom": "^18.0.0",
     "react-dropzone": "^11.7.1",
@@ -48,14 +48,13 @@
   "publishConfig": {
     "access": "public"
   },
+  "main": "./dist/index.js",
   "exports": {
     ".": {
       "source": "./index.js",
-      "import": {
-        "types": "./index.d.ts",
-        "default": "./dist/index.js"
-      }
+      "types": "./index.d.ts",
+      "import": "./dist/index.js"
     },
-    "./styles.scss": "./styles.scss"
+    "./package.json": "./package.json"
   }
 }

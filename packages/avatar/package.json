@@ -34,7 +34,7 @@
     "react-loading-skeleton": "^2.2.0"
   },
   "devDependencies": {
-    "@availity/api-axios": "^13.0.2",
+    "@availity/api-axios": "^13.1.0",
     "axios": "^1.17.0",
     "react": "^18.3.1",
     "react-dom": "^18.3.1",
@@ -48,13 +48,13 @@
   "publishConfig": {
     "access": "public"
   },
+  "main": "./dist/index.js",
   "exports": {
     ".": {
       "source": "./index.js",
-      "import": {
-        "types": "./dist/index.d.ts",
-        "default": "./dist/index.js"
-      }
-    }
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.js"
+    },
+    "./package.json": "./package.json"
   }
 }

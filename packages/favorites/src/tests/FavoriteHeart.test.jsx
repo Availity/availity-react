@@ -74,7 +74,7 @@ avMessages.subscribe = vi.fn((event, fn) => {
       event = data;
       data = undefined;
     } else {
-      event = (data && data.event) || this.DEFAULT_EVENT;
+      event = (data && data.event) || this.DEFAULT_EVENT; // eslint-disable-line unicorn/no-this-outside-of-class
     }
 
     fn(data);
