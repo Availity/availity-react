@@ -19,7 +19,7 @@ describe('AppIcon', () => {
   test('should render image when provided', () => {
     const image = '/path/to/image';
     const { container } = render(<AppTiles image={image} />);
-    const src = container.querySelectorAll('img')[0].getAttribute('src');
+    const src = container.querySelector('img').getAttribute('src');
     expect(src).toBe(image);
   });
 

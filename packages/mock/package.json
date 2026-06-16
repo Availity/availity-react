@@ -20,12 +20,16 @@
   "license": "MIT",
   "type": "module",
   "author": "Kyle Gray <kyle.gray@availity.com>",
-  "main": "src/browser.ts",
+  "main": "./dist/browser.js",
   "exports": {
-    "./src/*": "./src/*"
+    "./server": "./src/server.ts",
+    "./browser": "./src/browser.ts",
+    "./handlers": "./src/handlers.ts",
+    "./src/*": "./src/*",
+    "./package.json": "./package.json"
   },
   "dependencies": {
-    "msw": "^0.36.8",
+    "msw": "^2.7.0",
     "qs": "^6.15.2"
   },
   "devDependencies": {

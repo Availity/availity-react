@@ -2,6 +2,11 @@
   "extends": "@nx/workspace/presets/npm.json",
   "defaultBase": "master",
   "useInferencePlugins": false,
+  "pluginsConfig": {
+    "@nx/js": {
+      "analyzeSourceFiles": true
+    }
+  },
   "namedInputs": {
     "production": [
       "default",
@@ -25,7 +30,7 @@
     },
     "@nx/eslint:lint": {
       "cache": true,
-      "inputs": ["default", "{workspaceRoot}/.eslintrc.yaml"]
+      "inputs": ["default", "{workspaceRoot}/eslint.config.js"]
     }
   }
 }

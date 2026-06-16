@@ -30,7 +30,7 @@
   },
   "dependencies": {
     "@availity/icon": "workspace:*",
-    "@availity/message-core": "^9.0.2",
+    "@availity/message-core": "^9.2.0",
     "classnames": "^2.5.1",
     "prop-types": "^15.8.1",
     "react-currency-input-field": "^3.10.0",
@@ -52,13 +52,13 @@
   "publishConfig": {
     "access": "public"
   },
+  "main": "./dist/index.js",
   "exports": {
     ".": {
       "source": "./src/index.js",
-      "import": {
-        "types": "./dist/index.d.ts",
-        "default": "./dist/index.js"
-      }
-    }
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.js"
+    },
+    "./package.json": "./package.json"
   }
 }

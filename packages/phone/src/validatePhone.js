@@ -1,3 +1,4 @@
+/* eslint-disable unicorn/no-this-outside-of-class */
 import { addMethod, string } from 'yup';
 import { AsYouType } from 'libphonenumber-js';
 

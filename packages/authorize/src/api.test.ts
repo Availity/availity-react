@@ -1,15 +1,6 @@
-import { server } from '@availity/mock/src/server';
 import { getRegion, getPermissions, checkPermission, checkPermissions } from './api';
 
 describe('authorize api', () => {
-  // start msw server
-  beforeAll(() => server.listen());
-
-  // clear cache and reset msw handlers
-  afterEach(() => server.resetHandlers());
-
-  // terminate the server
-  afterAll(() => server.close());
 
   test('getRegion returns region code', async () => {
     const region = await getRegion(true);

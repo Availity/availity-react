@@ -127,6 +127,7 @@ describe('UploadProgressBar', () => {
     fireEvent.click(getByTestId('password-form-button'));
 
     const form = await findByTestId('password-form-modal');
+    // eslint-disable-next-line unicorn/better-dom-traversing
     const container = form.parentElement.parentElement.parentElement.parentElement.parentElement;
 
     expect(container.style.zIndex).toBe('1050');
@@ -141,6 +142,7 @@ describe('UploadProgressBar', () => {
 
     fireEvent.click(getByTestId('password-form-button'));
     const form = await findByTestId('password-form-modal');
+    // eslint-disable-next-line unicorn/better-dom-traversing
     const container = form.parentElement.parentElement.parentElement.parentElement.parentElement;
 
     expect(container.style.zIndex).toBe('auto');

@@ -1,16 +1,8 @@
 import { useQuery, UseQueryOptions, UseQueryResult } from '@tanstack/react-query';
-import { avPermissionsApi } from '@availity/api-axios';
-import { AriesHookBase } from './types';
+import { avPermissionsApi, PermissionsResponse as ApiPermissionsResponse } from '@availity/api-axios';
 
-export interface PermissionsResponse extends AriesHookBase {
-  data: AriesHookBase['data'] & {
-    permissions: {
-      id: string;
-      description: string;
-      links: { self: { href: string } };
-    }[];
-  };
-}
+/** @deprecated Use `PermissionsResponse` from `@availity/api-axios` instead */
+export type PermissionsResponse = ApiPermissionsResponse;
 
 const fetchPermissions = async (config: string | string[]) =>
   avPermissionsApi.getPermissions(config) as unknown as PermissionsResponse;

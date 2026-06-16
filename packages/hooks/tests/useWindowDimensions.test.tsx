@@ -6,7 +6,6 @@ const Component = () => {
   const { height, width } = useWindowDimensions();
   return (
     <div data-testid="window_dimensions">
-      {' '}
       <span data-testid="window_height">{height}</span>
       <span data-testid="window_width">{width}</span>
     </div>

@@ -108,6 +108,7 @@ export const FavoritesProvider = ({
     sendUpdateMessage(response.favorites, applicationId);
     onFavoritesChange?.(response.favorites);
 
+    // eslint-disable-next-line unicorn/prefer-array-some
     const isFavorited = response.favorites.find((f: Favorite) => f.id === id);
 
     return !!isFavorited;
@@ -130,7 +131,7 @@ export const FavoritesProvider = ({
   );
 };
 
-// eslint-disable-next-line @typescript-eslint/no-empty-function
+ 
 const noOp = () => { };
 
 type MergedStatusUnion = 'initLoading' | 'reloading' | 'error' | 'success';

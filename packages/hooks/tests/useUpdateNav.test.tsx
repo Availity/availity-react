@@ -1,3 +1,4 @@
+import React from 'react';
 import { render, screen, fireEvent } from '@testing-library/react';
 import { MemoryRouter, useNavigate, Routes, Route } from 'react-router-dom';
 import avMessageMock from '@availity/message-core';
@@ -26,8 +27,7 @@ const Component = () => {
 describe('useUpdateNav', () => {
   test.todo('calls avMessage on location change', () => {
     render(
-      <MemoryRouter initialEntries={['/']}>
-        <Routes>
+      <MemoryRouter initialEntries={['/']}>n        <Routes>
           <Route path="/" element={<Component />} />
           <Route path="/test" element={<div>Example</div>} />
         </Routes>

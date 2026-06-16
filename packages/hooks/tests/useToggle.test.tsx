@@ -4,8 +4,7 @@ import { useToggle } from '../src/index';
 
 afterEach(cleanup);
 
-// eslint-disable-next-line react/prop-types
-const Component = ({ initialToggle = false }) => {
+const Component = ({ initialToggle = false }: { initialToggle?: boolean }) => {
   const [isToggled, toggle] = useToggle(initialToggle);
 
   return (

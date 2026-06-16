@@ -32,9 +32,9 @@
     "classnames": "^2.5.1"
   },
   "devDependencies": {
-    "@availity/api-axios": "^13.0.2",
+    "@availity/api-axios": "^13.2.0",
     "@availity/form": "workspace:*",
-    "@availity/upload-core": "^9.0.2",
+    "@availity/upload-core": "^9.2.0",
     "formik": "^2.4.9",
     "nock": "^13.5.6",
     "react": "^18.3.1",
@@ -56,14 +56,13 @@
   "publishConfig": {
     "access": "public"
   },
+  "main": "./dist/index.js",
   "exports": {
     ".": {
       "source": "./src/index.js",
-      "import": {
-        "types": "./src/index.d.ts",
-        "default": "./dist/index.js"
-      }
+      "types": "./src/index.d.ts",
+      "import": "./dist/index.js"
     },
-    "./styles.scss": "./styles.scss"
+    "./package.json": "./package.json"
   }
 }

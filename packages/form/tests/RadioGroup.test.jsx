@@ -65,7 +65,7 @@ describe('RadioGroup', () => {
         initialValues={{
           hello: '',
         }}
-        // eslint-disable-next-line no-undef
+         
         onSubmit={onSubmit}
         validationSchema={yup.object().shape({
           hello: yup.string().required('This field is required'),
@@ -101,7 +101,7 @@ describe('RadioGroup', () => {
         initialValues={{
           hello: '',
         }}
-        // eslint-disable-next-line no-undef
+         
         validationSchema={yup.object().shape({
           hello: yup.string().required('This field is required'),
         })}
@@ -139,6 +139,7 @@ describe('RadioGroup', () => {
     );
 
     const radioGroup = getByTestId('radio-items-hello');
+    // eslint-disable-next-line unicorn/better-dom-traversing
     const formGroup = radioGroup.children[0];
     expect(formGroup.className).toContain('form-check-inline');
   });

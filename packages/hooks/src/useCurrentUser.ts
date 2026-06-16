@@ -1,24 +1,13 @@
-import { avUserApi } from '@availity/api-axios';
+import { avUserApi, User } from '@availity/api-axios';
 import { useQuery, UseQueryOptions, UseQueryResult } from '@tanstack/react-query';
 
-export interface CurrentUser {
-  akaname: string;
-  createDate: string;
-  currentRegion: string;
-  email: string;
-  firstName: string;
-  lastName: string;
-  id: string;
-  jobTitle: string;
-  userHasSecurityException: boolean;
-  userId: string;
-  userValidated: boolean;
-}
+/** @deprecated Use `User` from `@availity/api-axios` instead */
+export type CurrentUser = User;
 
-const fetchUser = async () => avUserApi.me() as unknown as CurrentUser;
+const fetchUser = async () => avUserApi.me() as unknown as User;
 
 export default function useCurrentUser(
-  options?: Omit<UseQueryOptions<CurrentUser, unknown>, 'queryKey' | 'queryFn'>
-): UseQueryResult<CurrentUser, unknown> {
+  options?: Omit<UseQueryOptions<User, unknown>, 'queryKey' | 'queryFn'>
+): UseQueryResult<User, unknown> {
   return useQuery({ queryKey: ['user'], queryFn: fetchUser, ...options });
 }

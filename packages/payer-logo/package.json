@@ -30,7 +30,7 @@
     "lodash": "^4.18.1"
   },
   "devDependencies": {
-    "@availity/api-axios": "^13.0.2",
+    "@availity/api-axios": "^13.2.0",
     "axios": "^1.17.0",
     "react": "^18.3.1",
     "react-dom": "^18.3.1",
@@ -44,13 +44,13 @@
   "publishConfig": {
     "access": "public"
   },
+  "main": "./dist/index.js",
   "exports": {
     ".": {
       "source": "./src/index.ts",
-      "import": {
-        "types": "./dist/index.d.ts",
-        "default": "./dist/index.js"
-      }
-    }
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.js"
+    },
+    "./package.json": "./package.json"
   }
 }

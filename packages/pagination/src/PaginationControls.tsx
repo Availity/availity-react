@@ -1,5 +1,5 @@
-/* eslint-disable no-restricted-syntax */
-/* eslint-disable guard-for-in */
+ 
+ 
 import React from 'react';
 import { Pagination, PaginationItem, PaginationLink } from 'reactstrap';
 
@@ -59,13 +59,13 @@ const PaginationControls = ({
 
   const getForwardJump = () => {
     const forwardJump = currentPage + pageRange;
-    return forwardJump >= pageCount ? pageCount : forwardJump;
+    return Math.min(forwardJump, pageCount);
   };
 
   const getBackwardJump = () => {
     const backwardJump = currentPage - pageRange;
 
-    return backwardJump < 1 ? 1 : backwardJump;
+    return Math.max(backwardJump, 1);
   };
 
   const handleBreakClick = (index: number) => {

@@ -1,6 +1,5 @@
 import React, { act } from 'react';
 import { screen, render, fireEvent, waitFor } from '@testing-library/react';
-import { server } from '@availity/mock/src/server';
 
 import Upload from '../index.js';
 
@@ -13,14 +12,6 @@ const getDropRejectionMessage = (errors) => {
 };
 
 describe('Upload', () => {
-  // start msw server
-  beforeAll(() => server.listen());
-
-  // clear cache and reset msw handlers
-  afterEach(() => server.resetHandlers());
-
-  // terminate the server
-  afterAll(() => server.close());
 
   test('should render', () => {
     render(<Upload clientId="a" bucketId="b" customerId="c" />);

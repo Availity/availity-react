@@ -28,14 +28,14 @@
     "publish:canary": "yarn npm publish --access public --tag canary"
   },
   "dependencies": {
-    "@availity/analytics-core": "^7.0.2",
+    "@availity/analytics-core": "^7.2.0",
     "@availity/hooks": "workspace:*",
-    "@availity/message-core": "^9.0.2",
+    "@availity/message-core": "^9.2.0",
     "@radix-ui/react-tooltip": "0.1.6",
     "lodash": "^4.18.1"
   },
   "devDependencies": {
-    "@availity/api-axios": "^13.0.2",
+    "@availity/api-axios": "^13.2.0",
     "@tanstack/react-query": "^5.75.5",
     "axios": "^1.17.0",
     "esbuild-sass-plugin": "^2.16.1",
@@ -53,13 +53,13 @@
   "publishConfig": {
     "access": "public"
   },
+  "main": "./dist/index.js",
   "exports": {
     ".": {
       "source": "./src/index.ts",
-      "import": {
-        "types": "./dist/index.d.ts",
-        "default": "./dist/index.js"
-      }
-    }
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.js"
+    },
+    "./package.json": "./package.json"
   }
 }

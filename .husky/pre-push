@@ -1,4 +1,3 @@
 yarn lint:affected
 yarn test:affected
-# yarn check:deps
 yarn check:registry

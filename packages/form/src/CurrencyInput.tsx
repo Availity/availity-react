@@ -29,17 +29,17 @@ const CurrencyInput = ({ name, onValueChanged, id, value, placeholder, disabled,
   const formatDecimals = async (value: string | undefined): Promise<void> => {
     setFieldTouched(name, true);
     if (value === '') {
-      // eslint-disable-next-line unicorn/no-useless-undefined
+       
       setFieldValue(name, undefined);
       if (onValueChanged) {
-        // eslint-disable-next-line unicorn/no-useless-undefined
+         
         onValueChanged(undefined);
       }
 
       return;
     }
 
-    const noCommasValue = value?.replace(/,/g, '');
+    const noCommasValue = value?.replaceAll(',', '');
     const number = Number(noCommasValue);
 
     const options = {

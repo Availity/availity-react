@@ -87,3 +87,24 @@ const App = () => (
 #### `{ type, id }: { type: 'vendor' | 'provider' | 'payer'; id: string }`
 
 Object containing the help type and ID to register.
+
+### Return Value
+
+```ts
+type HelpCtx = {
+  addHelp: (data: HelpObject) => void;
+  removeHelp: (id: string) => void;
+  help: HelpObject | undefined;
+};
+```
+
+## constants
+
+Exported event name constants used internally for portal navigation messaging.
+
+```jsx
+import { constants } from '@availity/help';
+
+// constants.SET_HELP === 'nav:help:set'
+// constants.RESET_HELP === 'nav:help:reset'
+```

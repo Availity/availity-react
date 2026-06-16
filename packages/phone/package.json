@@ -49,13 +49,13 @@
   "publishConfig": {
     "access": "public"
   },
+  "main": "./dist/index.js",
   "exports": {
     ".": {
       "source": "./index.js",
-      "import": {
-        "types": "./index.d.ts",
-        "default": "./dist/index.js"
-      }
-    }
+      "types": "./index.d.ts",
+      "import": "./dist/index.js"
+    },
+    "./package.json": "./package.json"
   }
 }

@@ -1,12 +1,4 @@
-export interface AriesHookBase {
-  data: {
-    totalCount: number;
-    count: number;
-    offSet: number;
-    links: {
-      next: { href: string };
-      last: { href: string };
-      self: { href: string };
-    };
-  };
-}
+import { AriesPaginatedResponse } from '@availity/api-axios';
+
+/** @deprecated Use `AriesPaginatedResponse` from `@availity/api-axios` instead */
+export type AriesHookBase = AriesPaginatedResponse;

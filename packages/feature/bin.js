@@ -1,7 +1,7 @@
 #!/usr/bin/env node
 
 import fs from 'node:fs';
-import path from 'path';
+import path from 'node:path';
 
 let configFile = process.argv[2] || path.join('project', 'config');
 const buildPath = process.argv[3] || path.join(process.env.NODE_ENV === 'production' ? 'dist' : 'build', 'features');

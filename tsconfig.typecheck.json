@@ -10,6 +10,7 @@
     "**/*.test.js",
     "**/tests/",
     "story-utils/",
-    "docusaurus/"
+    "docusaurus/",
+    "vitest.setup.ts"
   ]
 }

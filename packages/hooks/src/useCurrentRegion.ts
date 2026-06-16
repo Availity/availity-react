@@ -1,5 +1,5 @@
 import { useQuery, UseQueryOptions, UseQueryResult } from '@tanstack/react-query';
-import { avRegionsApi } from '@availity/api-axios';
+import { avRegionsApi, Region } from '@availity/api-axios';
 
 export interface CurrentRegion {
   code: string;
@@ -8,7 +8,7 @@ export interface CurrentRegion {
 
 async function fetchRegion(): Promise<CurrentRegion> {
   const response = await avRegionsApi.getCurrentRegion();
-  const data = response?.data as { regions?: { id?: string; value?: string }[] };
+  const data = response?.data as { regions?: Region[] };
 
   return {
     code: data?.regions?.[0]?.id || '',

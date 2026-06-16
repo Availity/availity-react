@@ -4,12 +4,33 @@ This monorepo is managed using [yarn](https://yarnpkg.com/getting-started) and [
 
 ## Installation
 
-Ensure you are running Node 22 or 24 and have [corepack](https://nodejs.org/api/corepack.html) enabled (which provides the correct version of yarn). We recommend using [nvm](https://github.com/nvm-sh/nvm#readme) or [fnm](https://github.com/Schniz/fnm#readme) to manage your installation of `node`.
+Ensure you are running Node 22 or 24 (see `engines` in package.json). We recommend using [nvm](https://github.com/nvm-sh/nvm#readme) or [fnm](https://github.com/Schniz/fnm#readme) to manage your Node installation.
 
 ```bash
 node --version
+```
+
+### Setting up Yarn
+
+This repo uses Yarn 4 (defined in `packageManager` in package.json). You can set it up either way:
+
+**Option A: Corepack (recommended)**
+
+Corepack ships with Node.js and automatically uses the correct Yarn version:
+
+```bash
 corepack enable
 ```
+
+**Option B: Direct install**
+
+If you don't want to use corepack, install Yarn globally:
+
+```bash
+npm install -g yarn
+```
+
+### Installing dependencies
 
 Install the dependencies with `yarn`. The first install might take a while. All subsequent installs should proceed more quickly.
 

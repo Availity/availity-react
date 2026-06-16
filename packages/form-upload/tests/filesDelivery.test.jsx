@@ -2,7 +2,6 @@ import React, { act } from 'react';
 import { render, screen, fireEvent, waitFor } from '@testing-library/react';
 import { Form } from '@availity/form';
 import { Button } from 'reactstrap';
-import { server } from '@availity/mock/src/server';
 
 import Upload from '../src/index.js';
 
@@ -15,14 +14,6 @@ const renderUpload = (formProps, uploadProps) =>
   );
 
 describe('filesDelivery upload', () => {
-  // start msw server
-  beforeAll(() => server.listen());
-
-  // clear cache and reset msw handlers
-  afterEach(() => server.resetHandlers());
-
-  // terminate the server
-  afterAll(() => server.close());
 
   test('calls avFilesDeliveryApi when deliveryChannel and fileDeliveryMetadata are defined and deliverFileOnSubmit is false', async () => {
     const mockOnDeliverySuccess = vi.fn();

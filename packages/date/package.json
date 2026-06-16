@@ -54,14 +54,14 @@
   "publishConfig": {
     "access": "public"
   },
+  "main": "./dist/index.js",
   "exports": {
     ".": {
       "source": "./src/index.js",
-      "import": {
-        "types": "./dist/index.d.ts",
-        "default": "./dist/index.js"
-      }
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.js"
     },
-    "./styles.scss": "./styles.scss"
+    "./styles.scss": "./styles.scss",
+    "./package.json": "./package.json"
   }
 }

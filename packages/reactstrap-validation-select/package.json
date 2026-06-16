@@ -36,7 +36,7 @@
     "react-select-async-paginate": "^0.6.2"
   },
   "devDependencies": {
-    "@availity/api-axios": "^13.0.2",
+    "@availity/api-axios": "^13.2.0",
     "availity-reactstrap-validation": "^2.7.1",
     "axios": "^1.17.0",
     "react": "^18.3.1",
@@ -55,14 +55,13 @@
   "publishConfig": {
     "access": "public"
   },
+  "main": "./dist/index.js",
   "exports": {
     ".": {
       "source": "./index.js",
-      "import": {
-        "types": "./index.d.ts",
-        "default": "./dist/index.js"
-      }
+      "types": "./index.d.ts",
+      "import": "./dist/index.js"
     },
-    "./styles.scss": "./styles.scss"
+    "./package.json": "./package.json"
   }
 }

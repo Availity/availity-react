@@ -474,7 +474,7 @@ describe('DateRange', () => {
 
     const today = moment().format('MM/DD/YYYY');
 
-    expect(container.querySelectorAll('.DateInput_input.DateInput_input_1')[0].value).toEqual(today);
+    expect(container.querySelector('.DateInput_input.DateInput_input_1').value).toEqual(today);
     expect(container.querySelectorAll('.DateInput_input.DateInput_input_1')[1].value).toEqual(today);
   });
 

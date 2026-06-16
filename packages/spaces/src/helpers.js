@@ -59,9 +59,9 @@ export const isFunction = (obj) => typeof obj === 'function';
 
 // Examples:
 //
-//    - http://www.example.com?foo=bar#hashme
-//    - http://www.example.com
-//    - http://www.example.com?foo=bar
+//    - https://www.example.com?foo=bar#hashme
+//    - https://www.example.com
+//    - https://www.example.com?foo=bar
 //
 export const updateUrl = (url, key, value) => {
   const [uri, queryString] = url.split('?');

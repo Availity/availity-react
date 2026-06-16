@@ -37,7 +37,7 @@ const HelpProvider = ({ children }: { children: React.ReactNode }): React.JSX.El
   }, []);
 
   const removeHelp = useCallback((id: string) => {
-    // eslint-disable-next-line unicorn/no-useless-undefined
+     
     setHelp(undefined);
     avMessages.send({
       event: constants.RESET_HELP,

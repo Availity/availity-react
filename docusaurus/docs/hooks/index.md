@@ -34,4 +34,5 @@ yarn add @availity/hooks
 | [useToggle](use-toggle)                      | Returns a toggleable boolean            |
 | [useUpdateNav](use-update-nav)               | Syncs route changes with the portal nav |
 | [useWindowDimensions](use-window-dimensions) | Returns window height and width         |
+| [useStash](use-stash)                        | Returns data from the Stash API         |
 | [useEffectAsync](../deprecated/hooks/use-effect-async) | _(Deprecated)_ Async useEffect wrapper  |

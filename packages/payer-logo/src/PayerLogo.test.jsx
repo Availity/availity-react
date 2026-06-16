@@ -2,7 +2,7 @@ import React from 'react';
 import { render, waitFor, screen } from '@testing-library/react';
 import { avWebQLApi } from '@availity/api-axios';
 
-import PayerLogo, { getLogo } from '../src/index';
+import PayerLogo, { getLogo } from "./index";
 
 vi.mock('@availity/api-axios');
 
