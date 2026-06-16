@@ -2,6 +2,10 @@
 
 This file was generated using [@jscutlery/semver](https://github.com/jscutlery/semver).
 
+## [11.0.1](https://github.com/Availity/availity-react/compare/@availity/reactstrap-validation-select@11.0.0...@availity/reactstrap-validation-select@11.0.1) (2026-06-16)
+
+
+
 # [11.0.0](https://github.com/Availity/availity-react/compare/@availity/reactstrap-validation-select@10.0.12...@availity/reactstrap-validation-select@11.0.0) (2026-06-12)
 
 
