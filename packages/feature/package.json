@@ -1,6 +1,6 @@
 {
   "name": "@availity/feature",
-  "version": "2.0.0",
+  "version": "2.0.1",
   "description": "Check if a feature is enabled or disabled before doing something.",
   "keywords": [
     "react",
