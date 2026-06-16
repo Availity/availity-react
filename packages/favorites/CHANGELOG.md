@@ -2,6 +2,19 @@
 
 This file was generated using [@jscutlery/semver](https://github.com/jscutlery/semver).
 
+## [6.0.1](https://github.com/Availity/availity-react/compare/@availity/favorites@6.0.0...@availity/favorites@6.0.1) (2026-06-16)
+
+### Dependency Updates
+
+* `@availity/hooks` updated to version `6.0.0`
+* `@availity/mock` updated to version `6.0.0`
+
+### Bug Fixes
+
+* **favorites:** use fake timers to prevent radix-ui tooltip timer leak ([ee88405](https://github.com/Availity/availity-react/commit/ee884056fa66809faa409a2061e0fc221d06ccf1))
+
+
+
 # [6.0.0](https://github.com/Availity/availity-react/compare/@availity/favorites@5.1.12...@availity/favorites@6.0.0) (2026-06-12)
 
 ### Dependency Updates

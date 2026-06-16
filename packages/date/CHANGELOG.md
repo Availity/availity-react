@@ -2,6 +2,18 @@
 
 This file was generated using [@jscutlery/semver](https://github.com/jscutlery/semver).
 
+## [6.0.1](https://github.com/Availity/availity-react/compare/@availity/date@6.0.0...@availity/date@6.0.1) (2026-06-16)
+
+### Dependency Updates
+
+* `@availity/form` updated to version `6.0.0`
+
+### Bug Fixes
+
+* **date:** add styles.scss to package exports ([22c7fea](https://github.com/Availity/availity-react/commit/22c7fea3ead9bb4f7e6e7639adfdf2b92408bb82))
+
+
+
 # [6.0.0](https://github.com/Availity/availity-react/compare/@availity/date@5.0.2...@availity/date@6.0.0) (2026-06-12)
 
 ### Dependency Updates

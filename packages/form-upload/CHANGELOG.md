@@ -2,6 +2,21 @@
 
 This file was generated using [@jscutlery/semver](https://github.com/jscutlery/semver).
 
+## [3.0.1](https://github.com/Availity/availity-react/compare/@availity/form-upload@3.0.0...@availity/form-upload@3.0.1) (2026-06-16)
+
+### Dependency Updates
+
+* `@availity/form` updated to version `3.0.0`
+* `@availity/icon` updated to version `3.0.0`
+* `@availity/progress` updated to version `3.0.0`
+* `@availity/hooks` updated to version `3.0.0`
+
+### Bug Fixes
+
+* **form-upload:** prevent unhandled rejection from unmounted UploadProgressBar ([9b39e86](https://github.com/Availity/availity-react/commit/9b39e86a53a368d91d5da45a562ee59bd5f7b285))
+
+
+
 # [3.0.0](https://github.com/Availity/availity-react/compare/@availity/form-upload@2.2.5...@availity/form-upload@3.0.0) (2026-06-12)
 
 ### Dependency Updates
