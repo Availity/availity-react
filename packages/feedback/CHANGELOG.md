@@ -2,6 +2,17 @@
 
 This file was generated using [@jscutlery/semver](https://github.com/jscutlery/semver).
 
+## [10.0.1](https://github.com/Availity/availity-react/compare/@availity/feedback@10.0.0...@availity/feedback@10.0.1) (2026-06-16)
+
+### Dependency Updates
+
+* `@availity/block-ui` updated to version `10.0.0`
+* `@availity/form` updated to version `10.0.0`
+* `@availity/hooks` updated to version `10.0.0`
+* `@availity/icon` updated to version `10.0.0`
+* `@availity/select` updated to version `10.0.0`
+
+
 # [10.0.0](https://github.com/Availity/availity-react/compare/@availity/feedback@9.1.14...@availity/feedback@10.0.0) (2026-06-12)
 
 ### Dependency Updates
