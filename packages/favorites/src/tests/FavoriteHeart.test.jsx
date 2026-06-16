@@ -132,6 +132,7 @@ Providers.propTypes = {
 
 describe('FavoriteHeart', () => {
   beforeEach(() => {
+    vi.useFakeTimers({ shouldAdvanceTime: true });
     global.document.createRange = () => ({
       setStart: () => {},
       setEnd: () => {},
@@ -145,6 +146,8 @@ describe('FavoriteHeart', () => {
   });
 
   afterEach(() => {
+    vi.runOnlyPendingTimers();
+    vi.useRealTimers();
     vi.clearAllMocks();
     queryClient.clear();
     global.document.createRange = null;
