@@ -2,6 +2,20 @@
 
 This file was generated using [@jscutlery/semver](https://github.com/jscutlery/semver).
 
+# [7.0.0](https://github.com/Availity/availity-react/compare/@availity/hooks@6.0.1...@availity/hooks@7.0.0) (2026-08-05)
+
+
+### Features
+
+* **hooks:** update react-router peer dep and import to v7 ([#1732](https://github.com/Availity/availity-react/issues/1732)) ([80d8536](https://github.com/Availity/availity-react/commit/80d853685fcf51bbc5b769da889e1dab482c6139))
+
+
+### BREAKING CHANGES
+
+* **hooks:** requires react-router >=7.0.0
+
+
+
 ## [6.0.1](https://github.com/Availity/availity-react/compare/@availity/hooks@6.0.0...@availity/hooks@6.0.1) (2026-06-16)
 
 
