@@ -30,7 +30,7 @@
   },
   "dependencies": {
     "msw": "^2.7.0",
-    "qs": "^6.15.2"
+    "qs": "^6.16.0"
   },
   "devDependencies": {
     "@types/qs": "^6.15.1"
