@@ -93,9 +93,12 @@ const TableRow = <T extends IdType>({
 
   const numberOfNonStickyColumns = filter(columns, (c) => !(c.stickyRight || c.stickyLeft)).length;
 
+  const { key: rowKey, ...rowProps } = row.getRowProps(buildRowProps());
   return (
     <>
-      <tr {...row.getRowProps(buildRowProps())}>{children}</tr>
+      <tr key={rowKey} {...rowProps}>
+        {children}
+      </tr>
       {AdditionalContent && (
         <tr {...buildRowProps()} id={`${id}_additional_content`}>
           {/* This is a known bug: https://github.com/jsx-eslint/eslint-plugin-jsx-a11y/issues/954 */}

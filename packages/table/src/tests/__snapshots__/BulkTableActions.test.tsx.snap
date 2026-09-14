@@ -81,7 +81,9 @@ exports[`BulkTableActions > should render default bulk actions 1`] = `
               role="menuitem"
               tabindex="0"
               type="button"
-            />
+            >
+              Populated By function
+            </button>
           </div>
         </div>
       </div>

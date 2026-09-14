@@ -22,7 +22,7 @@ type Props<T extends IdType> = {
 
 const TableCell = <T extends IdType>({
   cell,
-   
+
   scrollable,
   children,
   useColumnWidths,
@@ -71,7 +71,12 @@ const TableCell = <T extends IdType>({
     };
   };
 
-  return <td {...cell.getCellProps(buildCellProps)}>{children}</td>;
+  const { key: tdKey, ...tdProps } = cell.getCellProps(buildCellProps);
+  return (
+    <td key={tdKey} {...tdProps}>
+      {children}
+    </td>
+  );
 };
 
 export default TableCell;

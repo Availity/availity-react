@@ -141,7 +141,14 @@ const BulkTableActions = <T extends IdType>({
                 ) : (
                   <DropdownItem data-testid={`bulk_action_${action.id}`} key={`${action.id}`} {...setProps()}>
                     {/* eslint-disable-next-line react/jsx-no-useless-fragment */}
-                    <>{action.displayText}</>
+                    <>
+                      {typeof action.displayText === 'function'
+                        ? action.displayText(
+                            selectedFlatRows.map((row) => row.original),
+                            selectedFlatRows
+                          )
+                        : action.displayText}
+                    </>
                   </DropdownItem>
                 );
               }
