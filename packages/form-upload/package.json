@@ -32,7 +32,7 @@
     "classnames": "^2.5.1"
   },
   "devDependencies": {
-    "@availity/api-axios": "^13.2.0",
+    "@availity/api-axios": "^13.2.1",
     "@availity/form": "workspace:*",
     "@availity/upload-core": "^9.2.0",
     "formik": "^2.4.9",
