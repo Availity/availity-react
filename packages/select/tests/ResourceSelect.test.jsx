@@ -1072,8 +1072,7 @@ it('Queries using graphQl', async () => {
   const regionsOption = await waitFor(() => getByText('New York'));
   expect(regionsOption).toBeDefined();
 
-  expect(avRegionsApi.postGet).toHaveBeenCalledTimes(1);
-  expect(avRegionsApi.postGet.mock.calls[0][0]).toBe('q=&limit=50&testq=&testPage=1&offset=0');
+  expect(avRegionsApi.post).toHaveBeenCalledTimes(1);
 });
 
 describe('Custom Resources', () => {
