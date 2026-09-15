@@ -40,11 +40,11 @@ const UploadProgressBar = ({ upload, ...rest }) => {
     return () => {
       mountedRef.current = false;
       const progressIdx = upload.onProgress.indexOf(onProgress);
-      if (progressIdx > -1) upload.onProgress.splice(progressIdx, 1);
+      if (progressIdx !== -1) upload.onProgress.splice(progressIdx, 1);
       const successIdx = upload.onSuccess.indexOf(onSuccess);
-      if (successIdx > -1) upload.onSuccess.splice(successIdx, 1);
+      if (successIdx !== -1) upload.onSuccess.splice(successIdx, 1);
       const errorIdx = upload.onError.indexOf(onError);
-      if (errorIdx > -1) upload.onError.splice(errorIdx, 1);
+      if (errorIdx !== -1) upload.onError.splice(errorIdx, 1);
     };
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [upload]);

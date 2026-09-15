@@ -121,7 +121,6 @@ const Upload = ({
   );
 
   useEffect(() => {
-    // eslint-disable-next-line unicorn/consistent-function-scoping
     async function checkValidFormAndCallFileDelivery() {
       if (Object.keys(errors).length === 0) {
         // deliver all on submit
