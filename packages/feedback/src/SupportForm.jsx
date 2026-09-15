@@ -78,6 +78,7 @@ function orgSelectTest(msg) {
     name: yup.string().isRequired(true, ORG_VALIDATION_MESSAGE),
   });
 
+  // eslint-disable-next-line unicorn/no-this-outside-of-class
   return this.test({
     name: 'orgSelectTest',
     exclusive: true,
@@ -128,7 +129,7 @@ const SupportForm = ({ setSupportIsActive, setBlocking, feedbackToggle }) => (
           onClick={() => setSupportIsActive(false)}
           color="secondary"
           type="button"
-          onKeyDown={({ keyCode }) => keyCode === 13 && setSupportIsActive(false)}
+          onKeyDown={({ key }) => key === 'Enter' && setSupportIsActive(false)}
         >
           Close
         </Button>

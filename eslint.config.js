@@ -1,9 +1,11 @@
 import browser from 'eslint-config-availity/browser';
+import { withVitest } from 'eslint-config-availity/test-runners';
 import storybook from 'eslint-plugin-storybook';
 
 export default [
   ...browser,
   ...storybook.configs['flat/recommended'],
+  ...withVitest,
   {
     rules: {
       'import/extensions': 'off',
@@ -18,16 +20,6 @@ export default [
       'unicorn/no-lonely-if': 'off',
       'unicorn/no-array-for-each': 'off',
       'no-restricted-exports': 'off',
-      'jest/no-deprecated-functions': 'off',
-      'jest/no-conditional-expect': 'off',
-      'jest/no-commented-out-tests': 'off',
-    },
-  },
-  {
-    languageOptions: {
-      globals: {
-        vi: 'readonly',
-      },
     },
   },
   {

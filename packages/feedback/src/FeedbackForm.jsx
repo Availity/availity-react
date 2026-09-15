@@ -9,6 +9,7 @@ import * as yup from 'yup';
 import SmileField from './SmileField.jsx';
 
 yup.addMethod(yup.string, 'isRequired', function format(isRequired, msg) {
+  // eslint-disable-next-line unicorn/no-this-outside-of-class
   return this.test({
     name: 'dateRange',
     exclusive: true,

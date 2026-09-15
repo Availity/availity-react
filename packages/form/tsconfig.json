@@ -3,7 +3,8 @@
   "include": ["."],
   "compilerOptions": {
     "allowJs": true,
-    "outDir": "dist"
+    "outDir": "dist",
+    "rootDir": "../.."
   },
   "exclude": ["dist", "build", "node_modules"]
 }
