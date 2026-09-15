@@ -2,6 +2,18 @@
 
 This file was generated using [@jscutlery/semver](https://github.com/jscutlery/semver).
 
+## [6.0.5](https://github.com/Availity/availity-react/compare/@availity/date@6.0.4...@availity/date@6.0.5) (2026-09-15)
+
+### Dependency Updates
+
+* `@availity/form` updated to version `6.0.4`
+
+### Bug Fixes
+
+* clean up console warnings in table, date, and phone packages ([281460d](https://github.com/Availity/availity-react/commit/281460d778ecb72c28a513e662144694fa486b8b))
+
+
+
 ## [6.0.4](https://github.com/Availity/availity-react/compare/@availity/date@6.0.3...@availity/date@6.0.4) (2026-09-14)
 
 ### Dependency Updates
