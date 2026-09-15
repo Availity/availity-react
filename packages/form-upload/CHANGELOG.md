@@ -2,6 +2,13 @@
 
 This file was generated using [@jscutlery/semver](https://github.com/jscutlery/semver).
 
+## [3.0.5](https://github.com/Availity/availity-react/compare/@availity/form-upload@3.0.4...@availity/form-upload@3.0.5) (2026-09-15)
+
+### Dependency Updates
+
+* `@availity/form` updated to version `3.0.4`
+
+
 ## [3.0.4](https://github.com/Availity/availity-react/compare/@availity/form-upload@3.0.3...@availity/form-upload@3.0.4) (2026-09-14)
 
 ### Dependency Updates
