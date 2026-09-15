@@ -16,6 +16,8 @@ jobs:
   #   * comment on that pull request with the deploy URL
   build:
     runs-on: ${{ matrix.os }}
+    env:
+      NX_DAEMON: 'false'
     strategy:
       matrix:
         os: [ubuntu-latest, macos-latest]
@@ -39,12 +41,6 @@ jobs:
           cache: 'yarn'
           cache-dependency-path: 'yarn.lock'
 
-      # - name: Artifactory Check
-      #   run: yarn check:registry
-
-      - name: Install Dependencies
-        run: yarn install --immutable
-
       - name: Restore Nx Cache
         uses: actions/cache@27d5ce7f107fe9357f9df03efb73ab90386fccae # v5.0.5
         with:
@@ -52,6 +48,9 @@ jobs:
           key: nx-${{ runner.os }}-${{ matrix.node }}-${{ hashFiles('yarn.lock') }}-${{ github.sha }}
           restore-keys: |
             nx-${{ runner.os }}-${{ matrix.node }}-${{ hashFiles('yarn.lock') }}-
+
+      - name: Install Dependencies
+        run: yarn install --immutable
 
       - name: Build
         run: yarn build:components
