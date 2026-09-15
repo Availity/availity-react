@@ -30,7 +30,7 @@ const TableHeaderCell = <T extends IdType>({
   column,
   children,
   onSort,
-   
+
   scrollable,
   sortable,
   manualSortBy,
@@ -73,8 +73,10 @@ const TableHeaderCell = <T extends IdType>({
     return sortable ? { ...column.getSortByToggleProps(props) } : props;
   };
 
+  const { key: thKey, ...thProps } = column.getHeaderProps(getHeaderColumnProps(column));
+
   return (
-    <th {...column.getHeaderProps(getHeaderColumnProps(column))} {...getOnClick()} {...rest}>
+    <th key={thKey} {...thProps} {...getOnClick()} {...rest}>
       <span id={`${column.id}-th-title`}>{children}</span>
       {column.label ||
         (typeof column.Header === 'string' && (

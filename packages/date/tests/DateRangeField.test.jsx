@@ -1,5 +1,5 @@
 import React from 'react';
-import { render, fireEvent, waitFor, queryByAttribute } from '@testing-library/react';
+import { render, fireEvent, waitFor, queryByAttribute, act } from '@testing-library/react';
 import { Button, Label } from 'reactstrap';
 import { Form } from '@availity/form';
 import * as yup from 'yup';
@@ -22,7 +22,9 @@ describe('Date', () => {
       </Form>
     );
 
-    fireEvent.click(getByText('Submit'));
+    await act(async () => {
+      fireEvent.click(getByText('Submit'));
+    });
 
     const el = getByText('My Date Field');
     expect(el).toBeDefined();
@@ -43,7 +45,9 @@ describe('Date', () => {
       </Form>
     );
 
-    fireEvent.click(getByText('Submit'));
+    await act(async () => {
+      fireEvent.click(getByText('Submit'));
+    });
 
     const label = getByText('My Date Field');
     expect(label.hasAttribute('for')).toBeFalsy();
@@ -64,7 +68,9 @@ describe('Date', () => {
       </Form>
     );
 
-    fireEvent.click(getByText('Submit'));
+    await act(async () => {
+      fireEvent.click(getByText('Submit'));
+    });
 
     const label = getByText('My Date Field');
     expect(label.tagName).toEqual('H3');

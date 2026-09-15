@@ -17,15 +17,20 @@ export type Props<T extends IdType> = {
   children?: React.ReactNode;
 } & React.HTMLAttributes<HTMLElement>;
 
-const TableHeaderRow = <T extends IdType>({ headerGroup, scrollable, children, ...rest }: Props<T>): React.JSX.Element => (
-  <tr
-    {...headerGroup.getHeaderGroupProps({
-      className: scrollable ? 'fixed-width-tr' : '',
-    })}
-    {...rest}
-  >
-    {children}
-  </tr>
-);
+const TableHeaderRow = <T extends IdType>({
+  headerGroup,
+  scrollable,
+  children,
+  ...rest
+}: Props<T>): React.JSX.Element => {
+  const { key, ...headerGroupProps } = headerGroup.getHeaderGroupProps({
+    className: scrollable ? 'fixed-width-tr' : '',
+  });
+  return (
+    <tr key={key} {...headerGroupProps} {...rest}>
+      {children}
+    </tr>
+  );
+};
 
 export default TableHeaderRow;

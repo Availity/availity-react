@@ -1,7 +1,7 @@
 import React from 'react';
 import * as yup from 'yup';
 import '../src/validatePhone';
-import { render, fireEvent, waitFor, cleanup } from '@testing-library/react';
+import { render, fireEvent, waitFor, cleanup, act } from '@testing-library/react';
 import { Form } from '@availity/form';
 import { Phone } from '../index.js';
 
@@ -66,15 +66,19 @@ describe('Phone', () => {
     const testPhoneInput = getByDisplayValue('201');
 
     // Set value
-    await fireEvent.change(testPhoneInput, {
-      target: {
-        name: 'test_phone',
-        value: '2015550123',
-      },
+    await act(async () => {
+      fireEvent.change(testPhoneInput, {
+        target: {
+          name: 'test_phone',
+          value: '2015550123',
+        },
+      });
     });
 
     // Formatter runs onBlur for screen reader friendliness
-    await fireEvent.blur(testPhoneInput);
+    await act(async () => {
+      fireEvent.blur(testPhoneInput);
+    });
 
     await expect(getByDisplayValue('(201) 555-0123')).toBeDefined();
   });
@@ -83,14 +87,18 @@ describe('Phone', () => {
     const { getByDisplayValue } = renderPhone(phoneProps);
     const testPhoneInput = getByDisplayValue('201');
 
-    await fireEvent.change(testPhoneInput, {
-      target: {
-        name: 'test_phone',
-        value: '20155501',
-      },
+    await act(async () => {
+      fireEvent.change(testPhoneInput, {
+        target: {
+          name: 'test_phone',
+          value: '20155501',
+        },
+      });
     });
 
-    await fireEvent.blur(testPhoneInput);
+    await act(async () => {
+      fireEvent.blur(testPhoneInput);
+    });
 
     await expect(getByDisplayValue('(201) 555-01')).toBeDefined();
   });
@@ -99,14 +107,18 @@ describe('Phone', () => {
     const { getByDisplayValue } = renderPhone(phoneProps);
     const testPhoneInput = getByDisplayValue('201');
 
-    await fireEvent.change(testPhoneInput, {
-      target: {
-        name: 'test_phone',
-        value: '22233344445',
-      },
+    await act(async () => {
+      fireEvent.change(testPhoneInput, {
+        target: {
+          name: 'test_phone',
+          value: '22233344445',
+        },
+      });
     });
 
-    await fireEvent.blur(testPhoneInput);
+    await act(async () => {
+      fireEvent.blur(testPhoneInput);
+    });
 
     await expect(getByDisplayValue('22233344445')).toBeDefined();
   });

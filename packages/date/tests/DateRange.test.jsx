@@ -454,7 +454,9 @@ describe('DateRange', () => {
       </Form>
     );
 
-    container.querySelector('.DateInput_input_1').focus();
+    await act(async () => {
+      container.querySelector('.DateInput_input_1').focus();
+    });
 
     await waitFor(() => {
       expect(
@@ -624,7 +626,9 @@ describe('DateRange', () => {
       </Form>
     );
 
-    container.querySelector('.DateInput_input_1').focus();
+    await act(async () => {
+      container.querySelector('.DateInput_input_1').focus();
+    });
 
     await waitFor(() => {
       expect(
@@ -649,7 +653,9 @@ describe('DateRange', () => {
       </Form>
     );
 
-    container.querySelector('.DateInput_input_1').focus();
+    await act(async () => {
+      container.querySelector('.DateInput_input_1').focus();
+    });
 
     await waitFor(() => {
       expect(
