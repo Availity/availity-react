@@ -14,7 +14,7 @@ const FeedbackButton = ({ onClick, icon, active, children, iconSize = '', ...res
     onClick={() => {
       onClick(icon);
     }}
-    onKeyDown={({ keyCode }) => keyCode === 13 && onClick(icon)}
+    onKeyDown={({ key }) => key === 'Enter' && onClick(icon)}
     {...rest}
   >
     <Icon data-testid="feedback-icon" name={icon} size={iconSize} style={iconStyles} />

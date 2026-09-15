@@ -1,4 +1,3 @@
-/* eslint-disable unicorn/prefer-spread */
 import React, { createContext, useContext, useReducer } from 'react';
 import PropTypes from 'prop-types';
 import { avWebQLApi } from '@availity/api-axios';
@@ -22,9 +21,8 @@ export const getAllSpaces = async ({ query, clientId, variables, operationName, 
   const requestBody = {
     query,
     variables,
+    operationName: operationName || parseOperationName(query) || 'PuiBootstrapSpacesAnonymousOperation',
   };
-
-  requestBody.operationName = operationName || parseOperationName(query) || 'PuiBootstrapSpacesAnonymousOperation';
 
   const {
     data: {
@@ -173,7 +171,16 @@ const DEFAULT_SPACE_IDS = [];
 const DEFAULT_PAYER_IDS = [];
 const DEFAULT_SPACES = [];
 
-const Spaces = ({ query = DEFAULT_QUERY, variables = DEFAULT_VARIABLES, clientId, spaceIds = DEFAULT_SPACE_IDS, payerIds = DEFAULT_PAYER_IDS, children, spaces: spacesFromProps = DEFAULT_SPACES, operationName = 'PuiBootstrapSpacesAnonymousOperation' }) => {
+const Spaces = ({
+  query = DEFAULT_QUERY,
+  variables = DEFAULT_VARIABLES,
+  clientId,
+  spaceIds = DEFAULT_SPACE_IDS,
+  payerIds = DEFAULT_PAYER_IDS,
+  children,
+  spaces: spacesFromProps = DEFAULT_SPACES,
+  operationName = 'PuiBootstrapSpacesAnonymousOperation',
+}) => {
   const [{ previousSpacesMap, previousSpacesByConfigMap, previousSpacesByPayerMap, loading, error }, dispatch] =
     useReducer(spacesReducer, INITIAL_STATE); // TODO: react-query. Don't expose cache time options to users
 
