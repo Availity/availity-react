@@ -2,6 +2,16 @@
 
 This file was generated using [@jscutlery/semver](https://github.com/jscutlery/semver).
 
+## [1.0.4](https://github.com/Availity/availity-react/compare/@availity/table@1.0.3...@availity/table@1.0.4) (2026-09-15)
+
+
+### Bug Fixes
+
+* clean up console warnings in table, date, and phone packages ([281460d](https://github.com/Availity/availity-react/commit/281460d778ecb72c28a513e662144694fa486b8b))
+* remove React.ElementType from BulkRecordAction displayText type ([73fd4b8](https://github.com/Availity/availity-react/commit/73fd4b8c2376c663d5373923491d8c974a909df6))
+
+
+
 ## [1.0.3](https://github.com/Availity/availity-react/compare/@availity/table@1.0.2...@availity/table@1.0.3) (2026-09-14)
 
 ### Dependency Updates
