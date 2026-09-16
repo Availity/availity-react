@@ -90,41 +90,39 @@ const ChangePasswordForm = ({
                 {success}
               </Alert>
 
-              {
-                showCurrentPassword ? (
-                  <div className="password-with-icon">
-                    <Field
-                      name="currentPassword"
-                      data-testid="current-password-input"
-                      label="Current Password"
-                      maxLength={maxLength}
-                      placeholder="Input your current password"
-                      type={currentPasswordVisible ? 'text' : 'password'}
-                      {...currentPasswordProps}
-                    />
-                    <Icon
-                      name={`eye${currentPasswordVisible ? '' : '-off'}`}
-                      data-testid="current-password-icon"
-                      id="current-password-eye"
-                      role="button"
-                      label="password-visibility"
-                      onMouseDown={(e) => {
-                        currentPasswordIconRef?.current?.focus();
-                        e.preventDefault();
+              {showCurrentPassword ? (
+                <div className="password-with-icon">
+                  <Field
+                    name="currentPassword"
+                    data-testid="current-password-input"
+                    label="Current Password"
+                    maxLength={maxLength}
+                    placeholder="Input your current password"
+                    type={currentPasswordVisible ? 'text' : 'password'}
+                    {...currentPasswordProps}
+                  />
+                  <Icon
+                    name={`eye${currentPasswordVisible ? '' : '-off'}`}
+                    data-testid="current-password-icon"
+                    id="current-password-eye"
+                    role="button"
+                    label="password-visibility"
+                    onMouseDown={(e) => {
+                      currentPasswordIconRef?.current?.focus();
+                      e.preventDefault();
+                      setCurrentPasswordVisible(!currentPasswordVisible);
+                    }}
+                    onKeyDown={(e) => {
+                      if (e.key === 'Enter' || e.key === ' ') {
                         setCurrentPasswordVisible(!currentPasswordVisible);
-                      }}
-                      onKeyDown={(e) => {
-                        if (e.keyCode === 13 || e.keyCode === 32) {
-                          setCurrentPasswordVisible(!currentPasswordVisible);
-                        }
-                      }}
-                      tabIndex={0}
-                      aria-label={currentPasswordVisible ? 'Hide Password' : 'Show Password'}
-                      ref={currentPasswordIconRef}
-                    />
-                  </div>
-                ) : null
-              }
+                      }
+                    }}
+                    tabIndex={0}
+                    aria-label={currentPasswordVisible ? 'Hide Password' : 'Show Password'}
+                    ref={currentPasswordIconRef}
+                  />
+                </div>
+              ) : null}
 
               <div className="password-with-icon">
                 <Field
@@ -149,7 +147,7 @@ const ChangePasswordForm = ({
                     setNewPasswordVisible(!newPasswordVisible);
                   }}
                   onKeyDown={(e) => {
-                    if (e.keyCode === 13 || e.keyCode === 32) {
+                    if (e.key === 'Enter' || e.key === ' ') {
                       setNewPasswordVisible(!newPasswordVisible);
                     }
                   }}
@@ -182,7 +180,7 @@ const ChangePasswordForm = ({
                     setConfirmNewPasswordVisible(!confirmNewPasswordVisible);
                   }}
                   onKeyDown={(e) => {
-                    if (e.keyCode === 13 || e.keyCode === 32) {
+                    if (e.key === 'Enter' || e.key === ' ') {
                       setConfirmNewPasswordVisible(!confirmNewPasswordVisible);
                     }
                   }}

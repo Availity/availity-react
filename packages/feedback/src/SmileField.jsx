@@ -31,10 +31,10 @@ const SmileField = ({ name, options = defaultOptions, onChange, autoFocusFeedbac
     <FeedbackButton
       autoFocus={i === 0 && autoFocusFeedbackButton}
       onKeyDown={(e) => {
-        if (e.shiftKey && e.keyCode === 9 && i === 0 && !modal) {
+        if (e.shiftKey && e.key === 'Tab' && i === 0 && !modal) {
           onClose();
         }
-        if (e.keyCode === 13) {
+        if (e.key === 'Enter') {
           setFieldValue(name, option);
           if (onChange) {
             onChange(option);
