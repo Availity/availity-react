@@ -2,6 +2,18 @@
 
 This file was generated using [@jscutlery/semver](https://github.com/jscutlery/semver).
 
+## [3.0.6](https://github.com/Availity/availity-react/compare/@availity/form-upload@3.0.5...@availity/form-upload@3.0.6) (2026-09-16)
+
+### Dependency Updates
+
+* `@availity/form` updated to version `3.0.5`
+
+### Bug Fixes
+
+* consistent-existence-index-check in form-upload UploadProgressBar ([661d741](https://github.com/Availity/availity-react/commit/661d7411d80f6c380bb51ff415a19eff34970843))
+
+
+
 ## [3.0.5](https://github.com/Availity/availity-react/compare/@availity/form-upload@3.0.4...@availity/form-upload@3.0.5) (2026-09-15)
 
 ### Dependency Updates
