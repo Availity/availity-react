@@ -2,6 +2,13 @@
 
 This file was generated using [@jscutlery/semver](https://github.com/jscutlery/semver).
 
+## [3.0.6](https://github.com/Availity/availity-react/compare/@availity/phone@3.0.5...@availity/phone@3.0.6) (2026-09-16)
+
+### Dependency Updates
+
+* `@availity/form` updated to version `3.0.5`
+
+
 ## [3.0.5](https://github.com/Availity/availity-react/compare/@availity/phone@3.0.4...@availity/phone@3.0.5) (2026-09-15)
 
 ### Dependency Updates
