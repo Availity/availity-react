@@ -41,6 +41,7 @@
   "publishConfig": {
     "access": "public"
   },
+  "sideEffects": false,
   "main": "./dist/index.js",
   "exports": {
     ".": {
