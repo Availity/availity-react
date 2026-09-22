@@ -32,8 +32,8 @@
     "@availity/icon": "workspace:*",
     "@availity/link": "workspace:*",
     "@availity/list-group-item": "workspace:*",
-    "@availity/message-core": "^9.2.0",
-    "@availity/native-form": "^8.2.1",
+    "@availity/message-core": "^9.3.2",
+    "@availity/native-form": "^8.3.1",
     "@availity/typography": "workspace:*",
     "classnames": "^2.5.1",
     "dayjs": "^1.11.23",
@@ -45,7 +45,7 @@
     "react-markdown": "^6.0.3"
   },
   "devDependencies": {
-    "@availity/api-axios": "^13.2.1",
+    "@availity/api-axios": "^13.3.1",
     "@availity/favorites": "workspace:*",
     "@tanstack/react-query": "^5.75.5",
     "axios": "^1.20.0",

@@ -36,7 +36,7 @@
     "prop-types": "^15.8.1"
   },
   "devDependencies": {
-    "@availity/api-axios": "^13.2.1",
+    "@availity/api-axios": "^13.3.1",
     "@availity/spaces": "workspace:*",
     "@availity/training-link": "workspace:*",
     "axios": "^1.20.0",

@@ -27,7 +27,7 @@
     "publish:canary": "yarn npm publish --access public --tag canary"
   },
   "dependencies": {
-    "@availity/analytics-core": "^7.2.1",
+    "@availity/analytics-core": "^7.3.1",
     "prop-types": "^15.8.1"
   },
   "devDependencies": {
@@ -41,6 +41,7 @@
   "publishConfig": {
     "access": "public"
   },
+  "sideEffects": false,
   "main": "./dist/index.js",
   "exports": {
     ".": {
