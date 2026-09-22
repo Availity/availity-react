@@ -81,7 +81,7 @@
     "@types/react-dom": "^19.2.3",
     "@vitest/eslint-plugin": "^1.0.0",
     "availity-uikit": "^4.7.2",
-    "eslint-config-availity": "^16.0.0",
+    "eslint-config-availity": "^16.0.1",
     "eslint-plugin-storybook": "9.1.20",
     "husky": "^9.1.7",
     "is-ci": "^3.0.1",
