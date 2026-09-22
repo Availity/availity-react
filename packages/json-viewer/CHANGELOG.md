@@ -2,6 +2,15 @@
 
 This file was generated using [@jscutlery/semver](https://github.com/jscutlery/semver).
 
+# [2.1.0](https://github.com/Availity/availity-react/compare/@availity/json-viewer@2.0.1...@availity/json-viewer@2.1.0) (2026-09-22)
+
+
+### Features
+
+* add sideEffects false to non-deprecated packages ([f389159](https://github.com/Availity/availity-react/commit/f389159b4746ee44781ae9a347da7903abec0814))
+
+
+
 ## [2.0.1](https://github.com/Availity/availity-react/compare/@availity/json-viewer@2.0.0...@availity/json-viewer@2.0.1) (2026-06-16)
 
 
