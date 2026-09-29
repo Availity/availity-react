@@ -1,17 +1,59 @@
 version: 2
 updates:
+  - package-ecosystem: "github-actions"
+    directory: "/"
+    schedule:
+      interval: "monthly"
+    groups:
+      gh-actions:
+        update-types:
+          - "minor"
+          - "patch"
+          - "major"
+
   - package-ecosystem: npm
-    directory: '/'
+    directory: "/"
+    versioning-strategy: increase-if-necessary
     schedule:
       interval: weekly
-      time: '10:00'
+      time: "10:00"
     open-pull-requests-limit: 10
+    commit-message:
+      prefix: build
+      prefix-development: chore
+    groups:
+      nx:
+        patterns:
+          - "nx"
+          - "@nx/*"
+      storybook:
+        patterns:
+          - "@storybook/*"
+          - "*storybook*"
+      versioning:
+        patterns:
+          - "@commitlint/*"
+          - "@jscutlery/semver"
+          - "conventional-changelog-*"
+      jest:
+        patterns:
+          - "jest"
+          - "*jest*"
+      typescript-eslint:
+        patterns:
+          - "@typescript-eslint/*"
+      dependencies:
+        dependency-type: "production"
+        update-types:
+          - "minor"
+          - "patch"
+      dev-dependencies:
+        dependency-type: "development"
+        update-types:
+          - "minor"
+          - "patch"
     ignore:
-      - dependency-name: '@typescript-eslint/parser'
-        versions: ['5.x']
-      - dependency-name: '@typescript-eslint/eslint-plugin'
-        versions: ['5.x']
-      - dependency-name: '@types/node'
-        versions: ['15.x', '16.x', '17.x']
-        versions: ['27.x']
+      # yup v1 introduced breaking changes; workspace packages are pinned to ^0.32.x
       - dependency-name: yup
+        update-types:
+          - "version-update:semver-major"
