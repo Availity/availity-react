@@ -2,6 +2,15 @@
 
 This file was generated using [@jscutlery/semver](https://github.com/jscutlery/semver).
 
+# [2.2.0](https://github.com/Availity/availity-react/compare/@availity/json-viewer@2.1.0...@availity/json-viewer@2.2.0) (2026-10-01)
+
+
+### Features
+
+* add React 19 peer dep support to authorize and json-viewer ([7eea832](https://github.com/Availity/availity-react/commit/7eea83246eb400b7683d83847df75cb31564c58d))
+
+
+
 # [2.1.0](https://github.com/Availity/availity-react/compare/@availity/json-viewer@2.0.1...@availity/json-viewer@2.1.0) (2026-09-22)
 
 

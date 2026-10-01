@@ -2,6 +2,14 @@
 
 This file was generated using [@jscutlery/semver](https://github.com/jscutlery/semver).
 
+## [2.0.10](https://github.com/Availity/availity-react/compare/@availity/form@2.0.9...@availity/form@2.0.10) (2026-10-01)
+
+### Dependency Updates
+
+* `@availity/phone` updated to version `2.0.9`
+* `@availity/select` updated to version `2.0.9`
+
+
 ## [2.0.9](https://github.com/Availity/availity-react/compare/@availity/form@2.0.8...@availity/form@2.0.9) (2026-09-29)
 
 ### Dependency Updates
