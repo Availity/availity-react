@@ -10,7 +10,7 @@ Nx monorepo of React components on Bootstrap 4, reactstrap, and Formik. This is 
 
 ## Environment
 
-- Node `^22 || ^24` (`.nvmrc` is 22).
+- Node `^22.12 || ^24` (`.nvmrc` is 24).
 - Yarn 4 (`packageManager: yarn@4.17.0`). Do not use npm or yarn 1.
 - Install with `yarn install --immutable`. Do not hand-edit `yarn.lock`.
 - React 18 is a runtime dependency in the root `package.json` (`^18.3.1`). Most packages declare `react` `^18.0.0` as a peer. The active `analytics`, `authorize`, `feature`, `help`, `hooks`, and `json-viewer` packages also accept React 19.

@@ -4,11 +4,11 @@ This monorepo is managed using [yarn](https://yarnpkg.com/getting-started) and [
 
 ## Prerequisites
 
-- **Node.js** — version 22 or 24 (see `engines` in `package.json`). A `.nvmrc` file is included set to `22`. We recommend [nvm](https://github.com/nvm-sh/nvm#readme) or [fnm](https://github.com/Schniz/fnm#readme):
+- **Node.js** — version 22.12+ or 24 (see `engines` in `package.json`). A `.nvmrc` file is included set to `24`. We recommend [nvm](https://github.com/nvm-sh/nvm#readme) or [fnm](https://github.com/Schniz/fnm#readme):
 
   ```bash
-  nvm install   # reads .nvmrc and installs Node 22
-  nvm use       # switches to Node 22
+  nvm install   # reads .nvmrc and installs Node 24
+  nvm use       # switches to Node 24
   ```
 
 - **Yarn 4** — defined in `packageManager: "yarn@4.17.0"` in `package.json`. The repo ships a pinned Yarn binary at `.yarn/releases/yarn-4.17.0.cjs`, so no global install is required. To enable `yarn` as a command, use Corepack (ships with Node.js):
