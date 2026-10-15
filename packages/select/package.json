@@ -33,7 +33,7 @@
     "prop-types": "^15.8.1",
     "qs": "^6.15.2",
     "react-select": "^5.10.2",
-    "react-select-async-paginate": "^0.6.2"
+    "react-select-async-paginate": "^0.7.11"
   },
   "devDependencies": {
     "@availity/api-axios": "^13.3.1",
