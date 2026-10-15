@@ -68,7 +68,7 @@
     "prepare": "husky"
   },
   "dependencies": {
-    "@jscutlery/semver": "^5.8.1",
+    "@jscutlery/semver": "^7.1.0",
     "@nx/eslint": "22.5.1",
     "@nx/workspace": "22.5.1",
     "@storybook/addon-a11y": "9.1.20",
